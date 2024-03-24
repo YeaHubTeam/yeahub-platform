@@ -1,0 +1,4 @@
+{
+  "./**/*.{ts,tsx,js,jsx}": ["npm run prettier", "npm run lint:ts:fix"],
+  "*.css": "npm run lint:css:fix"
+}
