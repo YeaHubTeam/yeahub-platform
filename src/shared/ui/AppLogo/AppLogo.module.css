@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  width: 100px;
+  height: 32px;
+  color: var(--color-black-900);
+} 

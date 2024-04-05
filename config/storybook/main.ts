@@ -10,6 +10,8 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-styling-webpack',
+    '@storybook/icons',
+    'storybook-react-i18next',
   ],
   framework: {
     name: '@storybook/react-webpack5',

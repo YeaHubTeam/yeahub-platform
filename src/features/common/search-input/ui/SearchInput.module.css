@@ -1,0 +1,40 @@
+.form {
+  position: relative;
+}
+
+.search {
+  position: relative;
+  padding: 12px 12px 12px 40px;
+  box-sizing: border-box;
+  width: 350px;
+  border: 1px solid var(--color-black-100);
+  border-radius: 63px;
+  color: var(--text-color-lightest);
+  font-size: var(--font-size-s);
+  transition: border-color .3s ease-in-out;
+}
+
+.search::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search:focus {
+  outline: none;
+  border-color: var(--color-purple-200);
+  color: var(--text-color-primary);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  color: var(--text-color-lightest);
+  transform: translateY(-50%);
+  transition: color .3s ease-in-out;
+}
+
+.search:focus + .icon {
+  color: var(--text-color-primary);
+}
