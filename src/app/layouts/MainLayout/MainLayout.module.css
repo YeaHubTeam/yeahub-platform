@@ -1,0 +1,13 @@
+.layout {
+  display: grid;
+  grid-template-rows: 76px 1fr;
+  grid-template-columns: 280px 1fr;
+}
+
+.sidebar {
+  grid-row: 1 / -1;
+}
+
+.main {
+  padding: 24px 20px;
+}

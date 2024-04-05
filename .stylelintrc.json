@@ -1,6 +1,6 @@
 {
   "extends": ["stylelint-config-standard"],
-  "ignoreFiles": ["coverage/**/*.css"],
+  "ignoreFiles": ["coverage/**/*.css", "src/app/styles/normalize.css"],
   "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
   "rules": {
     "scale-unlimited/declaration-strict-value": [

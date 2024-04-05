@@ -1,8 +1,8 @@
 import path from 'path';
 
-import webpack, { RuleSetRule } from 'webpack';
+import { Configuration, RuleSetRule, DefinePlugin } from 'webpack';
 
-export const storybookWebpack = ({ config }: { config: webpack.Configuration }) => {
+export const storybookWebpack = ({ config }: { config: Configuration }) => {
   config.resolve.modules.push(path.resolve(__dirname, '..', '..', 'src'));
   config.resolve.extensions.push('.ts', '.tsx');
   config.resolve.alias = {
@@ -21,6 +21,12 @@ export const storybookWebpack = ({ config }: { config: webpack.Configuration }) 
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   });
+
+  config!.plugins!.push(
+    new DefinePlugin({
+      __IS_DEV__: JSON.stringify(true),
+    }),
+  );
 
   return config;
 };

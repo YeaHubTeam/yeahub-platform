@@ -1,12 +1,12 @@
-import Icon from '@/shared/assets/accessibility.svg';
+import Icon from '@/shared/assets/icons/accessibility.svg';
 
 import styles from './Widget.module.css';
 
 interface WidgetProps {
-  /**
-   * Test prop
-   */
-  test?: string;
+	/**
+	 * Test prop
+	 */
+	test?: string;
 }
 
 /**
@@ -15,10 +15,10 @@ interface WidgetProps {
  */
 
 export const Widget = ({ test = 'test' }: WidgetProps) => {
-  return (
-    <div className={styles.widget}>
-      <Icon />
-      {test}
-    </div>
-  );
+	return (
+		<div className={styles.widget}>
+			<Icon />
+			{test}
+		</div>
+	);
 };
