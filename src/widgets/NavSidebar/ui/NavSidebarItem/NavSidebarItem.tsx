@@ -8,9 +8,9 @@ import { Badge } from '@/shared/ui/Badge';
 
 import { categoryCounts, categoryTitles } from '../../model/category';
 
-import styles from './NavigationSidebarItem.module.css';
+import styles from './NavSidebarItem.module.css';
 
-interface NavigationItemProps {
+interface NavItemProps {
 	title?: string;
 	name?: string;
 }
@@ -25,7 +25,7 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavigationItem: FC<NavigationItemProps> = ({ title, name = '' }) => {
+const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
@@ -43,11 +43,11 @@ const NavigationItem: FC<NavigationItemProps> = ({ title, name = '' }) => {
 	);
 };
 
-export const NavigationSidebarItem: FC = () => {
+export const NavSidebarItem: FC = () => {
 	return (
 		<nav className={styles.nav}>
 			{Object.entries(categoryTitles).map(([name, title]) => {
-				return <NavigationItem key={name} name={name} title={title} />;
+				return <NavItem key={name} name={name} title={title} />;
 			})}
 		</nav>
 	);

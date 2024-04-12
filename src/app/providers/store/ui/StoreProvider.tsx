@@ -17,6 +17,7 @@ interface StoreProviderProps {
  * @param initialState
  * @constructor
  */
+
 export const StoreProvider = ({
 	children,
 	initialState,

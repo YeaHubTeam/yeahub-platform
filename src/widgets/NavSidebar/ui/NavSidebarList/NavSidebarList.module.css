@@ -1,6 +1,7 @@
 .sidebar {
   height: 100vh;
   background: var(--background-block);
+  transition: background-color 0.3s ease-in-out;
 }
 	
 .header {
@@ -15,8 +16,9 @@
 .close-icon {
   width: 20px;
   height: 20px;
-  color: var(--color-black-500);
+  color: var(--text-color-lightest);
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 .content {
