@@ -80,13 +80,10 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--background-app);
-  color: var(--text-color-primary);
   line-height: 22px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-m);
   font-family: var(--font-family);
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .container {
