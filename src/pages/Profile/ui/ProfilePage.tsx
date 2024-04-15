@@ -4,7 +4,7 @@ import { Block } from '@/widgets/Block';
 
 import styles from './Profile.module.css';
 
-export const Profile: FC = () => {
+export const ProfilePage: FC = () => {
 	return (
 		<>
 			<h2 className={styles.title}>Profile</h2>

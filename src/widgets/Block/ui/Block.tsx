@@ -11,8 +11,7 @@ interface Props {
 
 /**
  * Reusable block component
- * @param { ReactNode } actionSlot actionSlot may include buttons (Editing, pagination, etc.)
- * @param { string | ReactNode } children main block content
+ * @param { string | ReactNode } children block content
  * @param { boolean } expandable if the flag is true then the block is expandable (an expand button appears)
  */
 
@@ -37,7 +36,7 @@ export const Block: FC<Props> = ({ children, expandable = false }) => {
 				window.removeEventListener('resize', blockHeightHandler);
 			};
 		}
-	}, []);
+	}, [expandable]);
 
 	const expandHandler = () => {
 		setIsExpand((prev) => !prev);
