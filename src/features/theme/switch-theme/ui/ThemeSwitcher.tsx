@@ -1,8 +1,7 @@
 import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
-import { LS_THEME_KEY } from '../model/constants/themeConstants';
-import { ThemeMods, Themes } from '../model/types/themeProvider';
-import { applyTheme, getSystemTheme, removeSavedTheme } from '../utils/themeUtils';
+import { ThemeMods } from '../model/types/themeProvider';
+import { applyTheme, getSavedTheme, getSystemTheme, removeSavedTheme } from '../utils/themeUtils';
 
 import styles from './ThemeSwitcher.module.css';
 
@@ -10,11 +9,10 @@ import styles from './ThemeSwitcher.module.css';
  * Theme switcher component.
  */
 
-const savedTheme = localStorage.getItem(LS_THEME_KEY) as Themes;
 const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
 export const ThemeSwitcher: FC = () => {
-	const [currentTheme, setCurrentTheme] = useState<ThemeMods>(savedTheme || 'auto');
+	const [currentTheme, setCurrentTheme] = useState<ThemeMods>(getSavedTheme() || 'auto');
 
 	/** Change theme */
 	useLayoutEffect(() => {

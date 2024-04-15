@@ -80,6 +80,7 @@
 
 body {
   min-height: 100vh;
+  background-color: var(--background-app);
   line-height: 22px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-m);
