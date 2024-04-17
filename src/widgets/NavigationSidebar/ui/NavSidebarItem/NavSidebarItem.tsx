@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import Main from '@/shared/assets/icons/main.svg';
@@ -8,9 +10,9 @@ import { Badge } from '@/shared/ui/Badge';
 
 import { categoryCounts, categoryTitles } from '../../model/category';
 
-import styles from './NavigationSidebarItem.module.css';
+import styles from './NavSidebarItem.module.css';
 
-interface NavigationItemProps {
+interface NavItemProps {
 	title?: string;
 	name?: string;
 }
@@ -25,9 +27,10 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavigationItem: FC<NavigationItemProps> = ({ title, name = '' }) => {
+const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
+	const isOpenSidebar = useSelector((state: any) => state.navigationSidebar.isOpenSidebar);
 
 	return (
 		<NavLink
@@ -36,18 +39,18 @@ const NavigationItem: FC<NavigationItemProps> = ({ title, name = '' }) => {
 		>
 			<div className={styles.wrap}>
 				<ImageComponent className={styles.image} />
-				<span className={styles.span}>{title}</span>
+				<span className={`${styles.span} ${isOpenSidebar && styles.closing}`}>{title}</span>
 			</div>
 			{count > 0 && <Badge count={count} />}
 		</NavLink>
 	);
 };
 
-export const NavigationSidebarItem: FC = () => {
+export const NavSidebarItem: FC = () => {
 	return (
 		<nav className={styles.nav}>
 			{Object.entries(categoryTitles).map(([name, title]) => {
-				return <NavigationItem key={name} name={name} title={title} />;
+				return <NavItem key={name} name={name} title={title} />;
 			})}
 		</nav>
 	);

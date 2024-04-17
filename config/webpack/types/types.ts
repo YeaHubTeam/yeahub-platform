@@ -4,6 +4,7 @@ export interface WebpackPaths {
   output: string;
   src: string;
   public: string;
+  env: string;
 }
 
 export type WebpackMode = 'production' | 'development';

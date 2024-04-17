@@ -2,12 +2,20 @@
   display: grid;
   grid-template-rows: 76px 1fr;
   grid-template-columns: 280px 1fr;
+  background-color: var(--background-app);
+  color: var(--text-color-primary);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, grid-template-columns 0.4s ease-in-out;;
+
 }
 
 .sidebar {
-  grid-row: 1 / -1;
+  grid-row: 1 / -1; 
 }
 
 .main {
   padding: 24px 20px;
+}
+
+.closing{
+  grid-template-columns: 88px 1fr;
 }

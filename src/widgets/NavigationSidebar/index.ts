@@ -1,2 +1,3 @@
-export { NavigationSidebar } from './ui/NavigationSidebar/NavigationSidebar';
-export { NavigationSidebarItem } from './ui/NavigationSidebarItem/NavigationSidebarItem';
+export { NavSidebarList } from './ui/NavSidebarList/NavSidebarList';
+export { NavSidebarItem } from './ui/NavSidebarItem/NavSidebarItem';
+export { navigationsSidebarSlice } from './model/slice';

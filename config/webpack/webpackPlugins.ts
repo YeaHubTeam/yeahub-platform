@@ -2,6 +2,7 @@ import path from 'path';
 
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
+import Dotenv from 'dotenv-webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -18,6 +19,9 @@ export const webpackPlugins = ({ isDev, paths }: WebpackOptions): Configuration[
     }),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+    }),
+    new Dotenv({
+      path: paths.env,
     }),
   ];
 

@@ -17,6 +17,7 @@ export default (env: EnvVariables) => {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     src: path.resolve(__dirname, 'src'),
     public: path.resolve(__dirname, 'public'),
+    env: path.resolve(__dirname, '.env.local'),
   };
   const isDev = env.mode === 'development';
   const options: WebpackOptions = {
