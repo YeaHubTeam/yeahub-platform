@@ -7,5 +7,6 @@
 .name {
   width: 100px;
   height: 32px;
-  color: var(--color-black-900);
+  color: var(--text-color-primary);
+  transition: color 0.3s ease-in-out;
 } 

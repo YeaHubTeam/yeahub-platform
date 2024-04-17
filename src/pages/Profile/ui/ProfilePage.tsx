@@ -4,7 +4,7 @@ import { Block } from '@/widgets/Block';
 
 import styles from './Profile.module.css';
 
-export const ProfilePage: FC = () => {
+const ProfilePage: FC = () => {
 	return (
 		<>
 			<h2 className={styles.title}>Profile</h2>
@@ -26,3 +26,5 @@ export const ProfilePage: FC = () => {
 		</>
 	);
 };
+
+export default ProfilePage;
