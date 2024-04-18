@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './Main.module.css';
+import styles from './MainPage.module.css';
 
 const MainPage: FC = () => {
 	return (

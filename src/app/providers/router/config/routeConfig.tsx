@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainPage } from '@/pages/Main';
-import { ProfilePage } from '@/pages/Profile';
+import { MainPage } from '@/pages/MainPage';
+import { ProfilePage } from '@/pages/ProfilePage';
 
 import { App } from '@/app/App';
 
