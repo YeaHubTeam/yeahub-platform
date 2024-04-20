@@ -1,4 +1,4 @@
-import { Configuration } from 'webpack';
+import { Configuration, Entry } from 'webpack';
 
 import { WebpackOptions } from './types/types';
 import { webpackDevServer } from './webpackDevServer';
@@ -10,9 +10,22 @@ import { webpackResolvers } from './webpackResolvers';
 export const webpackConfig = (options: WebpackOptions): Configuration => {
   const { isDev, mode, paths } = options;
 
+  const mainEntry: Entry = {
+    main: [paths.entry],
+  };
+
+  const initThemeEntry: Entry = isDev
+    ? {}
+    : {
+        initTheme: [paths.initTheme] as string[],
+      };
+
   return {
     mode: mode ?? 'development',
-    entry: paths.entry,
+    entry: {
+      ...mainEntry,
+      ...initThemeEntry,
+    },
     module: {
       rules: webpackLoaders(options),
     },

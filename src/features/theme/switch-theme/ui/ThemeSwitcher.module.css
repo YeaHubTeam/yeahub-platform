@@ -1,0 +1,15 @@
+.btn {
+  border: none;
+  background-color: transparent;
+  color: var(--text-color-primary);
+  transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: var(--text-color-lightest)
+}
+
+.btn:disabled {
+  opacity: 0.3;
+}
