@@ -16,56 +16,79 @@ interface Props {
  */
 
 export const Block: FC<Props> = ({ children, expandable = false }) => {
-	const blockRef = useRef<HTMLDivElement>(null);
-	const [blockHeight, setBlockHeight] = useState(0);
+	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
+	const [contentHeight, setContentHeight] = useState(0);
 
 	useLayoutEffect(() => {
 		if (expandable) {
-			const blockHeightHandler = () => {
-				const height = (blockRef.current?.getClientRects()[0].height as number)!;
-
-				setBlockHeight(isExpand ? height - 90 : height);
-				if (height < 250 || (isExpand && height - 90 < 250)) {
+			const changeContentHeight = () => {
+				const height = (contentRef.current?.getClientRects()[0].height as number)!;
+				if (height < 250) {
 					setIsExpand(false);
 				}
+				setContentHeight(height);
 			};
 
-			window.addEventListener('resize', blockHeightHandler);
+			window.addEventListener('resize', changeContentHeight);
 			return () => {
-				window.removeEventListener('resize', blockHeightHandler);
+				window.removeEventListener('resize', changeContentHeight);
 			};
 		}
-	}, [expandable, isExpand]);
+	}, [expandable]);
 
 	useLayoutEffect(() => {
-		if (expandable) {
-			const height = (blockRef.current?.getClientRects()[0].height as number)!;
-			setBlockHeight(height);
-		}
+		setContentHeight((contentRef.current?.getClientRects()[0].height as number)!);
 	}, [expandable]);
 
 	const expandHandler = useCallback(() => {
 		setIsExpand((prev) => !prev);
 	}, []);
 
-	const isHeightForExpand = blockHeight >= 250;
+	const isHeightForExpand = contentHeight >= 250;
 
 	return (
 		<div
-			ref={blockRef}
-			className={`${styles.block}
-			${isHeightForExpand && expandable ? styles['block-expandable'] : ''} 
-			${isExpand ? styles['block-expanded'] : ''}`}
+			className={`${styles.block} ${isHeightForExpand ? styles['block-expandable'] : ''}`}
+			style={{
+				height: isExpand ? `${contentHeight + 90}px` : '',
+			}}
 		>
-			{children}
+			<div ref={contentRef}>{children}</div>
 			{expandable && isHeightForExpand && (
-				<div className={styles['block-expand']}>
-					<button onClick={expandHandler}>
+				<>
+					<svg
+						className={`${styles['block-expand-svg']}`}
+						width="100%"
+						height="90"
+						viewBox="0 0 740 90"
+						preserveAspectRatio="xMidYMid slice"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M0 0H740V66C740 79.2548 729.255 90 716 90H24C10.7452 90 0 79.2548 0 66V0Z"
+							fill="url(#paint0_linear_1262_19118)"
+						/>
+						<defs>
+							<linearGradient
+								id="paint0_linear_1262_19118"
+								x1="370"
+								y1="0"
+								x2="370"
+								y2="90"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stopColor="white" stopOpacity="0" />
+								<stop offset="0.491518" stopColor="white" />
+							</linearGradient>
+						</defs>
+					</svg>
+					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
 						<Arrow className={`${isExpand ? styles['block-arrow-expanded'] : ''}`} />
 					</button>
-				</div>
+				</>
 			)}
 		</div>
 	);
