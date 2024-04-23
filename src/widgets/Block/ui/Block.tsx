@@ -15,7 +15,7 @@ interface Props {
  * @param { boolean } expandable if the flag is true then the block is expandable (an expand button appears)
  */
 
-const Expand = () => {
+const ExpandIcon = () => {
 	return (
 		<svg
 			className={`${styles['block-expand-svg']}`}
@@ -89,7 +89,7 @@ export const Block: FC<Props> = ({ children, expandable = false }) => {
 			<div ref={contentRef}>{children}</div>
 			{expandable && isHeightForExpand && (
 				<>
-					<Expand />
+					<ExpandIcon />
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
 						<Arrow className={`${isExpand ? styles['block-arrow-expanded'] : ''}`} />
