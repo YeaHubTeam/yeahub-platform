@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Main } from '@/pages/Main';
-import { Profile } from '@/pages/Profile';
+import { MainPage } from '@/pages/MainPage';
+import { ProfilePage } from '@/pages/ProfilePage';
 
 import { App } from '@/app/App';
 
@@ -12,11 +12,11 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Main />,
+				element: <MainPage />,
 			},
 			{
 				path: 'profile',
-				element: <Profile />,
+				element: <ProfilePage />,
 			},
 		],
 	},
