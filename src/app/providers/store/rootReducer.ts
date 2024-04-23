@@ -2,9 +2,9 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import { baseApi } from '@/shared/config/api/baseApi';
 
-import { navigationsSidebarSlice } from '@/widgets/NavigationSidebar';
+import { navSidebarSlice } from '@/widgets/NavSidebar';
 
 export const rootReducer = combineReducers({
-	[navigationsSidebarSlice.name]: navigationsSidebarSlice.reducer,
+	[navSidebarSlice.name]: navSidebarSlice.reducer,
 	[baseApi.reducerPath]: baseApi.reducer,
 });

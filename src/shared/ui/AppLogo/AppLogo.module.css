@@ -12,7 +12,7 @@
 .name {
   width: 100px;
   height: 32px;
-  color: var(--color-black-900);
+  color: var(--text-color-primary);
   transition: opacity .7s ease-in-out;
 } 
 

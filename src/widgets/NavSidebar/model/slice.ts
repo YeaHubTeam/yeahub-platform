@@ -4,8 +4,8 @@ const initialState = {
 	isOpenSidebar: false,
 };
 
-export const navigationsSidebarSlice = createSlice({
-	name: 'navigationSidebar',
+export const navSidebarSlice = createSlice({
+	name: 'navSidebar',
 	initialState,
 	reducers: {
 		toggleOpenSidebar: (state) => {
@@ -14,4 +14,4 @@ export const navigationsSidebarSlice = createSlice({
 	},
 });
 
-export const { toggleOpenSidebar } = navigationsSidebarSlice.actions;
+export const { toggleOpenSidebar } = navSidebarSlice.actions;

@@ -4,13 +4,14 @@ import { NavLink } from 'react-router-dom';
 import Main from '@/shared/assets/icons/main.svg';
 import Menu from '@/shared/assets/icons/menu.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Badge } from '@/shared/ui/Badge';
 
-import { categoryCounts, categoryTitles } from '../../model/category';
+import { categoryCounts, categoryTitles } from '../../../NavSidebar/model/category';
 
 import styles from './NavSidebarItem.module.css';
 
-interface NavItemProps {
+interface INavItemProps {
 	title?: string;
 	name?: string;
 }
@@ -25,7 +26,8 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
+const NavItem: FC<INavItemProps> = ({ title, name = '' }) => {
+	const isOpenSidebar = useAppSelector((state) => state.navSidebar.isOpenSidebar);
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
@@ -36,7 +38,7 @@ const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 		>
 			<div className={styles.wrap}>
 				<ImageComponent className={styles.image} />
-				<span className={styles.span}>{title}</span>
+				<span className={`${styles.span} ${isOpenSidebar ? styles['closing'] : ''}`}>{title}</span>
 			</div>
 			{count > 0 && <Badge count={count} />}
 		</NavLink>

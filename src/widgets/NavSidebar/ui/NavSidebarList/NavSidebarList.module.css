@@ -5,6 +5,7 @@
 }
 	
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,11 +15,36 @@
 }
 
 .close-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--text-color-lightest);
+  position: absolute;
+  right: -11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--background-nav-item);
+  transition: color 0.3s ease-in-out, opacity .3s ease-in;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
+}
+
+.arrow {
+  display: inline-block;
+  padding: 2px;
+  border: solid var(--color-black-800);
+  border-width: 0 2px 2px 0;
+  transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.left {
+  transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.close-icon:hover {
+  opacity:0.7
 }
 
 .content {

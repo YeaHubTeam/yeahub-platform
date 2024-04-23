@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
 import { Header } from '@/widgets/Header';
-import { NavSidebarList } from '@/widgets/NavigationSidebar';
+import { NavSidebarList } from '@/widgets/NavSidebar';
 
 import styles from './MainLayout.module.css';
 
 export const MainLayout = () => {
-	const isOpenSidebar = useSelector((state: any) => state.navigationSidebar.isOpenSidebar);
+	const isOpenSidebar = useAppSelector((state) => state.navSidebar.isOpenSidebar);
 
 	return (
-		<section className={`${styles.layout} ${isOpenSidebar && styles.closing}`}>
+		<section className={`${styles.layout} ${isOpenSidebar ? styles['closing'] : ''}`}>
 			<div className={styles.sidebar}>
 				<NavSidebarList />
 			</div>

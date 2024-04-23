@@ -16,6 +16,6 @@
   padding: 24px 20px;
 }
 
-.closing{
+.closing {
   grid-template-columns: 88px 1fr;
 }
