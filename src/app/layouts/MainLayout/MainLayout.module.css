@@ -4,8 +4,7 @@
   grid-template-columns: 280px 1fr;
   background-color: var(--background-app);
   color: var(--text-color-primary);
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, grid-template-columns 0.4s ease-in-out;;
-
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, grid-template-columns 0.4s ease-in-out;
 }
 
 .sidebar {
