@@ -11,7 +11,7 @@ import { categoryCounts, categoryTitles } from '../../../NavSidebar/model/catego
 
 import styles from './NavSidebarItem.module.css';
 
-interface INavItemProps {
+interface NavItemProps {
 	title?: string;
 	name?: string;
 }
@@ -26,7 +26,7 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavItem: FC<INavItemProps> = ({ title, name = '' }) => {
+const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 	const isOpenSidebar = useAppSelector((state) => state.navSidebar.isOpenSidebar);
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 
+import RightChevron from '@/shared/assets/icons/rightChevron.svg';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
@@ -21,10 +22,10 @@ export const NavSidebarList: FC = () => {
 			<div className={styles.header}>
 				<AppLogo />
 				<button
-					className={`${styles['close-icon']} ${isOpenSidebar ? styles['left'] : ''}`}
+					className={`${styles['close-icon']}  ${isOpenSidebar ? styles['left'] : ''}`}
 					onClick={handleToggleSidebar}
 				>
-					<div className={styles['arrow']}></div>
+					<RightChevron className={styles.arrow} />
 				</button>
 			</div>
 			<div className={styles.content}>

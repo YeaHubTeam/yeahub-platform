@@ -11,7 +11,7 @@ export const AppLogo: FC = () => {
 	const isOpenSidebar = useAppSelector((state) => state.navSidebar.isOpenSidebar);
 	return (
 		<NavLink to="/" className={`${styles.logo} ${isOpenSidebar ? styles['one'] : ''}`}>
-			<img className={styles['logo-image']} src={LogoImg} alt="LogoImg" />
+			<img className={`${styles['logo-image']}`} src={LogoImg} alt="LogoImg" />
 			<Logo className={`${styles.name} ${isOpenSidebar ? styles['closing'] : ''}`} />
 		</NavLink>
 	);

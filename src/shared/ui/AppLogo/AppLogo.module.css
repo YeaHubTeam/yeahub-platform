@@ -5,7 +5,7 @@
   transition: padding-left .5s ease-in-out;
 }
 
-.logo-image{
+.logo-image {
   padding-right: 5px;   
 }
 
@@ -16,12 +16,12 @@
   transition: opacity .7s ease-in-out;
 } 
 
-.closing{
+.closing {
   opacity: 0;
-  transition: opacity .4s ease-in-out;
+  transition: opacity .3s ease-in-out;
 }
 
-.one{
+.one {
   padding-left: 12px;
   transition: padding-left .4s ease-in-out;
 }
