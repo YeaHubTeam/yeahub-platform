@@ -12,7 +12,7 @@
   background-color: var(--background-block);
   color: var(--text-color-lightest);
   font-size: var(--font-size-s);
-  transition: border-color .3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .search::-webkit-search-cancel-button {
