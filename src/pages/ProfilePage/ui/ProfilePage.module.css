@@ -1,3 +1,24 @@
 .title {
   margin: 0;
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 740px;
+  max-width: 1000px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 360px;
+}
