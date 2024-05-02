@@ -2,11 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: padding-left .5s ease-in-out;
+}
+
+.logo-image {
+  padding-right: 5px;   
 }
 
 .name {
   width: 100px;
   height: 32px;
   color: var(--text-color-primary);
-  transition: color 0.3s ease-in-out;
+  transition: opacity .7s ease-in-out;
 } 
+
+.closing {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.one {
+  padding-left: 12px;
+  transition: padding-left .4s ease-in-out;
+}

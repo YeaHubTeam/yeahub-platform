@@ -1,8 +1,9 @@
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
-import { createReduxStore } from '@/shared/config/store/config';
 import { State } from '@/shared/config/store/State';
+
+import { createReduxStore } from '@/app/providers/store/config/config';
 
 interface StoreProviderProps {
 	/**
