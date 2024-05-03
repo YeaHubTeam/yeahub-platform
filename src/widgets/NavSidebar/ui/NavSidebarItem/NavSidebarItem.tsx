@@ -31,6 +31,7 @@ const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
+	// TODO: wait ui-kit
 	return (
 		<NavLink
 			to={`/${name}`}

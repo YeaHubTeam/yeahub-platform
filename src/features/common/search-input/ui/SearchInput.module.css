@@ -7,7 +7,7 @@
   padding: 12px 12px 12px 40px;
   box-sizing: border-box;
   width: 350px;
-  border: 1px solid var(--color-black-100);
+  border: 1px solid var(--border-color);
   border-radius: 63px;
   background-color: var(--background-block);
   color: var(--text-color-lightest);
