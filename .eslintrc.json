@@ -33,7 +33,7 @@
     "__IS_DEV__": true
   },
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["error", {"endOfLine": "auto"}],
     "react/function-component-definition": [
       2,
       {
