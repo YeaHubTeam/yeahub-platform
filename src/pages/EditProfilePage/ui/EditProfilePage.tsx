@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-import { Tabs } from '@/features/common/Tabs';
+import { Tabs } from '@/shared/ui/Tabs';
+
+import { Education } from '@/entities/Education';
+import { Experience } from '@/entities/Experience';
+import { AboutMe, PersonalInformation } from '@/entities/Profile';
+import { Skills } from '@/entities/Skills';
 
 import cls from './EditProfilePage.module.css';
 
@@ -18,21 +23,12 @@ export const EditProfilePage = () => {
 				setTabToggle={setCurrentActiveTab}
 			/>
 			<form>
-				{currentActiveTab === 0 && <div>test 0 </div>}
-				{currentActiveTab === 1 && (
-					<div className={cls.container}>
-						<div className={cls.description}>
-							<h3>О себе любимом(-ой)</h3>
-							<p>
-								Расскажи о себе всему сообществу. Мы ценим человека не за его профессиональные
-								качества, поэтому пиши всё чем хочешь поделиться
-							</p>
-						</div>
-						<div className={cls['textarea-container']}>
-							<textarea name="" id=""></textarea>
-						</div>
-					</div>
-				)}
+				{currentActiveTab === 0 && <PersonalInformation />}
+				{currentActiveTab === 1 && <AboutMe />}
+				{currentActiveTab === 2 && <Skills />}
+				{/* {currentActiveTab === 3 && <Projects />} ToDo создать блок */}
+				{currentActiveTab === 4 && <Experience />}
+				{currentActiveTab === 5 && <Education />}
 			</form>
 		</section>
 	);

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-//ToDo убрать ограничение правил для esLint
+//ToDo заменить на UIKit
 import { useEffect, useRef } from 'react';
 
 import cls from './Tabs.module.css';
@@ -8,8 +8,8 @@ import cls from './Tabs.module.css';
 interface TabProps {
 	names: Array<string>;
 	title: string;
-	tabToggle: number; // Принимаем tabToggle извне
-	setTabToggle: React.Dispatch<React.SetStateAction<number>>; // Принимаем setTabToggle извне
+	tabToggle: number;
+	setTabToggle: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const Tabs = ({ names, title, tabToggle, setTabToggle }: TabProps) => {
