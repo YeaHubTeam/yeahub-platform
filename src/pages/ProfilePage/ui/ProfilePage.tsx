@@ -1,10 +1,17 @@
 import { FC } from 'react';
+// import { useLoaderData } from 'react-router-dom';
+
+import { useGetUsersQuery } from '@/entities/users';
 
 import { Block } from '@/widgets/Block';
 
 import styles from './ProfilePage.module.css';
 
 const ProfilePage: FC = () => {
+	// const userDetail = useLoaderData() as User;
+	const { data } = useGetUsersQuery(null);
+	console.log(data);
+
 	const blockContent = `I’m a product designer + filmmaker currently working remotely at Twitter from beautiful
 	Manchester, United Kingdom. I’m passionate about designing digital products that have a
 	positive impact on the world. For 10 years, I’ve specialised in interface, experience &
