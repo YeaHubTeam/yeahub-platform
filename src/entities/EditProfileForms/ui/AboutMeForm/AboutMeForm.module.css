@@ -1,8 +1,3 @@
-.container {
-  display: flex;
-  gap: 120px;
-}
-  
 .description {
   max-width: 246px;
 }
@@ -26,7 +21,7 @@
   max-width: 706px;
 }
   
-.container textarea {
+textarea {
   padding: 16px;
   width: 100%;
   max-width: 706px;
@@ -35,6 +30,6 @@
   resize: vertical;
 }
   
-.container textarea:focus {
+textarea:focus {
   outline: none;
 }

@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
 				element: <ProfilePage />,
 			},
 			{
-				path: 'profile/edit',
+				path: 'edit',
 				element: <EditProfilePage />,
 			},
 		],

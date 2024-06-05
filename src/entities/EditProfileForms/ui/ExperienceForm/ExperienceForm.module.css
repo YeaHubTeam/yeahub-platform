@@ -1,14 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-  
-.wrapper {
-  display: flex;
-  gap: 120px;
-}
-    
 .description {
   max-width: 246px;
 }
@@ -33,7 +22,6 @@
   gap: 20px;
   width: 100%;
   max-width: 660px;
-     
 }
   
 .label {
@@ -51,17 +39,29 @@
 }
   
 .input {
-  margin-top: 80px;
   min-height: 48px;
   border-radius: 68px;
 }
   
 .input input {
-  padding: 12px 24px;
   color: var(--color-black-900);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-m);
 }
-    
-    
+
+.container-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--color-black-50);
+}
+
+.checkbox{
+  color: var(--colr-black-700);
+}
+
+.btn-text {
+  color: var(--color-red-600);
+}
   

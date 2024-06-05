@@ -5,7 +5,7 @@ interface CategoryCounts {
 export const categoryTitles = {
 	'': 'Главная',
 	profile: 'Мой профиль',
-	'profile/edit': 'Редактирование',
+	edit: 'Редактирование',
 	// ToDo: temporary link
 };
 

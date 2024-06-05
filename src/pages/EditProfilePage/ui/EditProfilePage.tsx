@@ -2,10 +2,14 @@ import { useState } from 'react';
 
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { Education } from '@/entities/Education';
-import { Experience } from '@/entities/Experience';
-import { AboutMe, PersonalInformation } from '@/entities/Profile';
-import { Skills } from '@/entities/Skills';
+import {
+	AboutMeForm,
+	EducationFrom,
+	ExperienceForm,
+	PersonalInformationForm,
+	ProjectForm,
+	SkillsForm,
+} from '@/entities/EditProfileForms';
 
 import cls from './EditProfilePage.module.css';
 
@@ -23,12 +27,12 @@ export const EditProfilePage = () => {
 				setTabToggle={setCurrentActiveTab}
 			/>
 			<form>
-				{currentActiveTab === 0 && <PersonalInformation />}
-				{currentActiveTab === 1 && <AboutMe />}
-				{currentActiveTab === 2 && <Skills />}
-				{/* {currentActiveTab === 3 && <Projects />} ToDo создать блок */}
-				{currentActiveTab === 4 && <Experience />}
-				{currentActiveTab === 5 && <Education />}
+				{currentActiveTab === 0 && <PersonalInformationForm />}
+				{currentActiveTab === 1 && <AboutMeForm />}
+				{currentActiveTab === 2 && <SkillsForm />}
+				{currentActiveTab === 3 && <ProjectForm />}
+				{currentActiveTab === 4 && <ExperienceForm />}
+				{currentActiveTab === 5 && <EducationFrom />}
 			</form>
 		</section>
 	);
