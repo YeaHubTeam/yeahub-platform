@@ -1,0 +1,12 @@
+.button {
+  all: initial;
+  cursor: pointer;
+}
+
+.icon {
+  vertical-align: middle;
+  padding: 8px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
