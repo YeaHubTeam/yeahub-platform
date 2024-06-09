@@ -1,0 +1,42 @@
+.item:not(:last-child) {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-black-100);
+}
+
+.link {
+  display: flex;
+  gap: 8px;
+  color: var(--color-black-900);
+  text-decoration: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.params {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  position: relative;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.title::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-purple-700);
+  transform: translateY(-50%);
+}

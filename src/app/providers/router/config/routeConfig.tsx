@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { InterviewPage } from '@/pages/InterviewPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'profile',
 				element: <ProfilePage />,
+			},
+			{
+				path: 'interview',
+				element: <InterviewPage />,
 			},
 		],
 	},

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import Main from '@/shared/assets/icons/main.svg';
 import Menu from '@/shared/assets/icons/menu.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
@@ -23,6 +24,7 @@ interface CategoryImages {
 const categoryImages: CategoryImages = {
 	'': Main,
 	profile: ProfileIcon,
+	interview: InterviewIcon,
 	default: Menu,
 };
 

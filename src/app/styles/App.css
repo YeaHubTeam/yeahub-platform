@@ -65,7 +65,9 @@
   --font-size-m: 16px;
   --font-size-l: 20px;
   --font-family: "Manrope", sans-serif;
+  --font-weight-400: 400;
   --font-weight-500: 500;
+  --font-weight-600: 600;
 }
 
 [theme="dark"] {
