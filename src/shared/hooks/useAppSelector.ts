@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { RootState } from '@/app/providers/store/config/config';
-export const useAppSelector = useSelector.withTypes<RootState>();
+import { createReduxStore } from '@/app/providers/store';
+
+export const useAppSelector: TypedUseSelectorHook<typeof createReduxStore> = useSelector;
