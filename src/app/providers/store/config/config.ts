@@ -1,30 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { usersApi, usersSlice } from '@/entities/users';
-
-// import { baseApi } from '@/shared/config/api/baseApi';
-// import { State } from '@/shared/config/store/State';
-
-// import { rootReducer } from '../rootReducer';
-
-// export const createReduxStore = (initialState?: State) => {
-// 	return configureStore({
-// 		reducer: rootReducer,
-// 		devTools: __IS_DEV__,
-// 		preloadedState: initialState,
-
-// 		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
-// 	});
-// };
-
-// export type RootState = ReturnType<typeof rootReducer>;
+import { authApi, authSlice } from '@/entities/auth';
 
 export const store = configureStore({
 	reducer: {
-		users: usersSlice.reducer,
-		[usersApi.reducerPath]: usersApi.reducer,
+		auth: authSlice.reducer,
+		[authApi.reducerPath]: authApi.reducer,
 	},
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([usersApi.middleware]),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([authApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -7,12 +7,14 @@ import styles from './Block.module.css';
 interface Props {
 	children?: ReactNode;
 	expandable?: boolean;
+	className?: string;
 }
 
 /**
  * Reusable block component
  * @param { string | ReactNode } children block content
  * @param { boolean } expandable if the flag is true then the block is expandable (an expand button appears)
+ * @param { string } className className string for custom styles
  */
 
 const ExpandIcon = () => {
@@ -47,7 +49,7 @@ const ExpandIcon = () => {
 	);
 };
 
-export const Block: FC<Props> = ({ children, expandable = false }) => {
+export const Block: FC<Props> = ({ children, expandable = false, className }) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
@@ -81,7 +83,7 @@ export const Block: FC<Props> = ({ children, expandable = false }) => {
 
 	return (
 		<div
-			className={`${styles.block} ${isHeightForExpand ? styles['block-expandable'] : ''}`}
+			className={`${styles.block} ${isHeightForExpand ? styles['block-expandable'] : ''} ${className ? className : ''}`}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}

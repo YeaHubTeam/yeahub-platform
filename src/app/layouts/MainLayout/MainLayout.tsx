@@ -1,6 +1,8 @@
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { Loader } from '@/shared/ui/Loader';
+
 import { Header } from '@/widgets/Header';
 import { NavSidebarList } from '@/widgets/NavSidebar';
 
@@ -17,9 +19,11 @@ export const MainLayout = () => {
 
 			<Header />
 			<main className={styles.main}>
-				<Suspense>
-					<Outlet />
-				</Suspense>
+				<div className={styles.container}>
+					<Suspense fallback={<Loader />}>
+						<Outlet />
+					</Suspense>
+				</div>
 			</main>
 		</section>
 	);

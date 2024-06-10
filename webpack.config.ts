@@ -32,7 +32,7 @@ export default (env: EnvVariables) => {
   };
   const isDev = env.mode === 'development';
   const options: WebpackOptions = {
-    port: env.port ?? 3000,
+    port: env.port ?? 3001,
     mode: env.mode,
     isDev,
     paths,

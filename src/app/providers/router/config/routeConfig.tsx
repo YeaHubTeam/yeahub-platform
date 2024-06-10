@@ -1,21 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-// import { usersApi } from '@/entities/users';
-
+import { Error404Page } from '@/pages/Error404Page';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 
 import { App } from '@/app/App';
-
-// import { store } from '../../store';
-
-// export const profileLoader: LoaderFunction = async ({ params }) => {
-// 	console.log(params);
-// 	const response = store.dispatch(usersApi.endpoints.getUsers.initiate(null));
-// 	const data = await response.unwrap();
-
-// 	return data;
-// };
 
 export const router = createBrowserRouter([
 	{
@@ -29,12 +18,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'profile',
 				element: <ProfilePage />,
-				// loader: profileLoader,
 			},
 			{
-				path: 'user/:id',
-				element: <ProfilePage />,
-				// loader: profileLoader,
+				path: '*',
+				element: <Error404Page />,
 			},
 		],
 	},

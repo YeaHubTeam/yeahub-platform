@@ -12,13 +12,20 @@
 }
 
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 24px;
   padding: 24px 20px;
   height: calc(100vh - 125px);
   max-height: 100%;
   overflow-y: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
 }
 
 .closing {
