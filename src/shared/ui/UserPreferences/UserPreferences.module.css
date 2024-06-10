@@ -2,16 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 }
 
-.avatar {
-  width: 48px;
-  height: 48px;
+.settings {
+  all: initial;
+  cursor: pointer;
 }
 
 .img {
   width: 100%;
-  height: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
 }
