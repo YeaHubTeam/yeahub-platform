@@ -6,7 +6,7 @@
 .link {
   display: flex;
   gap: 8px;
-  color: var(--color-black-900);
+  color: var(--text-color-bright);
   text-decoration: none;
 }
 

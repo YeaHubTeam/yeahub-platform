@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { Error404Page } from '@/pages/Error404Page';
 import { InterviewPage } from '@/pages/InterviewPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'interview',
 				element: <InterviewPage />,
+			},
+			{
+				path: '*',
+				element: <Error404Page />,
 			},
 		],
 	},

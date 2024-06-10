@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import styles from './QuestionParam.module.css';
 
-export interface QuestionParamProps {
+interface QuestionParamProps {
 	label: string;
 	value: number;
 }

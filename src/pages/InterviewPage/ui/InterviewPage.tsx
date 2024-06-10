@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { Block } from '@/widgets/Block';
+import { Block } from '@/shared/ui/Block';
+
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';

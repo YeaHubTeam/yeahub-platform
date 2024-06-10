@@ -5,7 +5,6 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import Main from '@/shared/assets/icons/main.svg';
 import Menu from '@/shared/assets/icons/menu.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Badge } from '@/shared/ui/Badge';
 
 import { categoryCounts, categoryTitles } from '../../../NavSidebar/model/category';
@@ -15,10 +14,15 @@ import styles from './NavSidebarItem.module.css';
 interface NavItemProps {
 	title?: string;
 	name?: string;
+	isOpen: boolean;
 }
 
 interface CategoryImages {
 	[key: string]: React.FC<React.SVGProps<SVGSVGElement>>;
+}
+
+interface Props {
+	isOpen: boolean;
 }
 
 const categoryImages: CategoryImages = {
@@ -28,8 +32,7 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
-	const isOpenSidebar = useAppSelector((state) => state.navSidebar.isOpenSidebar);
+const NavItem: FC<NavItemProps> = ({ title, name = '', isOpen }) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
@@ -41,18 +44,18 @@ const NavItem: FC<NavItemProps> = ({ title, name = '' }) => {
 		>
 			<div className={styles.wrap}>
 				<ImageComponent className={styles.image} />
-				<span className={`${styles.span} ${isOpenSidebar ? styles['closing'] : ''}`}>{title}</span>
+				<span className={`${styles.span} ${isOpen ? styles['closing'] : ''}`}>{title}</span>
 			</div>
 			{count > 0 && <Badge count={count} />}
 		</NavLink>
 	);
 };
 
-export const NavSidebarItem: FC = () => {
+export const NavSidebarItem: FC<Props> = ({ isOpen }) => {
 	return (
 		<nav className={styles.nav}>
 			{Object.entries(categoryTitles).map(([name, title]) => {
-				return <NavItem key={name} name={name} title={title} />;
+				return <NavItem key={name} name={name} title={title} isOpen={isOpen} />;
 			})}
 		</nav>
 	);
