@@ -27,7 +27,7 @@ const blockContent = `I’m a product designer + filmmaker currently working rem
 	a product designer + filmmaker currently working remotely at Twitter from beautiful`;
 
 const ProfilePage = () => {
-	const { data, isSuccess, isLoading, isError, error } = useGetProfileQuery(null);
+	const { data, isSuccess, isLoading, isError, error } = useGetProfileQuery();
 
 	return (
 		<>

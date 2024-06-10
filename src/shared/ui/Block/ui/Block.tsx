@@ -49,7 +49,7 @@ const ExpandIcon = () => {
 	);
 };
 
-export const Block: FC<Props> = ({ children, expandable = false, className }) => {
+export const Block: FC<Props> = ({ children, expandable = false, className = '' }) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
@@ -83,7 +83,7 @@ export const Block: FC<Props> = ({ children, expandable = false, className }) =>
 
 	return (
 		<div
-			className={`${styles.block} ${isHeightForExpand ? styles['block-expandable'] : ''} ${className ? className : ''}`}
+			className={`${styles.block} ${className} ${isHeightForExpand ? styles['block-expandable'] : ''}`}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}

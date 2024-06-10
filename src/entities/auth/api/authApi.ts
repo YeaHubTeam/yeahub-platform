@@ -6,7 +6,7 @@ import { GetProfileApiResponse } from '../model/types/authTypes';
 
 export const authApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getProfile: builder.query<GetProfileApiResponse, null>({
+		getProfile: builder.query<GetProfileApiResponse, void>({
 			query: () => 'auth/profile',
 			providesTags: [ApiTags.PROFILE_DETAIL],
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {

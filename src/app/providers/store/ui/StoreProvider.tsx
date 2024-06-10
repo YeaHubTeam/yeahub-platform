@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import { State } from '@/shared/config/store/State';
 
-import { store } from '../config/config';
+import { createReduxStore } from '../config/config';
 
 interface StoreProviderProps {
 	/**
@@ -19,6 +19,11 @@ interface StoreProviderProps {
  * @constructor
  */
 
-export const StoreProvider = ({ children }: PropsWithChildren<StoreProviderProps>) => {
+export const StoreProvider = ({
+	children,
+	initialState,
+}: PropsWithChildren<StoreProviderProps>) => {
+	const store = createReduxStore(initialState as State);
+
 	return <Provider store={store}>{children}</Provider>;
 };

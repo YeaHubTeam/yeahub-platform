@@ -16,6 +16,8 @@ interface Props {
 export const ErrorElement: FC<Props> = ({ fetchError, errorMsg = 'Неизвестная ошибка' }) => {
 	const navigate = useNavigate();
 
+	const handleBackBtnClick = () => navigate(-1);
+
 	return (
 		<Block className={styles.block}>
 			<div className={styles.wrapper}>
@@ -26,7 +28,7 @@ export const ErrorElement: FC<Props> = ({ fetchError, errorMsg = 'Неизвес
 						Ошибка: {fetchError && 'status' in fetchError ? fetchError.status : errorMsg}
 					</span>
 				</div>
-				<Button size="large" onClick={() => navigate(-1)}>
+				<Button size="large" onClick={handleBackBtnClick}>
 					Вернуться назад
 				</Button>
 			</div>

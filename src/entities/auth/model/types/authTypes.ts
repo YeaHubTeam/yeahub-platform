@@ -13,3 +13,7 @@ export type GetProfileApiResponse = {
 	updatedAt: string;
 	createdAt: string;
 };
+
+export type AuthState = {
+	profileDetail: GetProfileApiResponse | null;
+};

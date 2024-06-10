@@ -1,2 +1,2 @@
-export { store } from './config/config';
+export { createReduxStore } from './config/config';
 export { StoreProvider } from './ui/StoreProvider';

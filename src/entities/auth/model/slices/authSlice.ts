@@ -1,12 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { GetProfileApiResponse } from '../types/authTypes';
+import { AuthState, GetProfileApiResponse } from '../types/authTypes';
 
-interface State {
-	profileDetail: GetProfileApiResponse | null;
-}
-
-const initialState: State = {
+const initialState: AuthState = {
 	profileDetail: null,
 };
 
