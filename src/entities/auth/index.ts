@@ -1,3 +1,3 @@
 export { authApi, useGetProfileQuery } from './api/authApi';
-export { authSlice } from './model/slices/authSlice';
 export { type GetProfileApiResponse } from './model/types/authTypes';
+export { authSlice, setProfileDetail } from './model/slices/authSlice';

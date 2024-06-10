@@ -1,17 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface State {}
+import { GetProfileApiResponse } from '../types/authTypes';
 
-const initialState: State = {};
+interface State {
+	profileDetail: GetProfileApiResponse | null;
+}
+
+const initialState: State = {
+	profileDetail: null,
+};
 
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		// setUsersList: (state, action: PayloadAction<User[]>) => {
-		// 	state.usersList = action.payload;
-		// },
+		setProfileDetail: (state, action: PayloadAction<GetProfileApiResponse>) => {
+			state.profileDetail = action.payload;
+		},
 	},
 });
 
-// export const { setUsersList } = usersSlice.actions;
+export const { setProfileDetail } = authSlice.actions;
