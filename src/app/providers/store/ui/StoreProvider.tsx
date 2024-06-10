@@ -20,8 +20,5 @@ interface StoreProviderProps {
  */
 
 export const StoreProvider = ({ children }: PropsWithChildren<StoreProviderProps>) => {
-	// console.log(initialState);
-	// const store = createReduxStore(initialState as State);
-
 	return <Provider store={store}>{children}</Provider>;
 };
