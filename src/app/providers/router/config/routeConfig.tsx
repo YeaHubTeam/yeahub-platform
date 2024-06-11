@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Error404Page } from '@/pages/Error404Page';
+import { InterviewPage } from '@/pages/InterviewPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'profile',
 				element: <ProfilePage />,
+			},
+			{
+				path: 'interview',
+				element: <InterviewPage />,
 			},
 			{
 				path: 'login',

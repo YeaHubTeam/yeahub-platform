@@ -5,6 +5,7 @@ interface CategoryCounts {
 export const categoryTitles = {
 	'': 'Главная',
 	profile: 'Мой профиль',
+	interview: 'Собеседование',
 	login: 'Авторизация',
 };
 
