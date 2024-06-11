@@ -1,41 +1,9 @@
-.form {
-  position: relative;
+.input {
+  width: clamp(150px, -0.350rem + 30vw, 350px);
+  height: 44px;
+  border-radius: 60px;
 }
 
-.search {
-  position: relative;
-  padding: 12px 12px 12px 40px;
-  box-sizing: border-box;
-  width: 350px;
-  border: 1px solid var(--border-color);
-  border-radius: 63px;
-  background-color: var(--background-block);
-  color: var(--text-color-lightest);
-  font-size: var(--font-size-s);
-  transition: background-color 0.3s ease-in-out, border-color .3s ease-in-out;
-}
-
-.search::-webkit-search-cancel-button {
-  display: none;
-}
-
-.search:focus {
-  outline: none;
-  border-color: var(--color-purple-200);
-  color: var(--text-color-primary);
-}
-
-.icon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  width: 20px;
-  height: 20px;
-  color: var(--text-color-lightest);
-  transform: translateY(-50%);
-  transition: color .3s ease-in-out;
-}
-
-.search:focus + .icon {
-  color: var(--text-color-primary);
+.yeahub-input-preffix {
+  margin: 0;
 }
