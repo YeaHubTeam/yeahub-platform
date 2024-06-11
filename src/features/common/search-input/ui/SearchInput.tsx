@@ -32,7 +32,7 @@ export const SearchInput: FC<SearchInputProps> = ({ onSearch, placeholder = '–ù–
 				preffix={
 					<IconButton
 						type="submit"
-						aria-label="Large"
+						aria-label="perform a search"
 						form="square"
 						icon={<Icon icon="search" size={20} />}
 						size="small"

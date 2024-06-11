@@ -10,7 +10,7 @@ export const UserPreferences = () => {
 		<div className={styles.preferences}>
 			<div>
 				<IconButton
-					aria-label="Large"
+					aria-label="go to preferences"
 					disabled
 					form="square"
 					icon={<Icon icon="gearSix" size={20} />}
