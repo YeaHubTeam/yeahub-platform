@@ -15,3 +15,6 @@ export const createReduxStore = (initialState?: State) => {
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 	});
 };
+
+const store = createReduxStore();
+export type RootState = ReturnType<typeof store.getState>;

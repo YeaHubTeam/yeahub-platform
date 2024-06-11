@@ -11,10 +11,9 @@ export const Header: FC = () => {
 	const [searchResults, setSearchResults] = useState<string>('');
 
 	const handleSearch = (query: string) => {
+		console.log(searchResults);
 		setSearchResults(query);
 	};
-
-	console.log(searchResults);
 
 	return (
 		<header className={styles.header}>
