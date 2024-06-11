@@ -8,12 +8,17 @@ export type GetProfileApiResponse = {
 	city: string;
 	address: string;
 	avatarUrl: string;
-	refreshToken: string | null;
 	birthday: string;
 	updatedAt: string;
 	createdAt: string;
 };
 
+export type GetRefreshTokenApiResponse = {
+	access_token: string;
+	user: GetProfileApiResponse;
+};
+
 export type AuthState = {
 	profileDetail: GetProfileApiResponse | null;
+	accessToken: string | null;
 };
