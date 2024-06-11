@@ -1,4 +1,5 @@
 .btn {
+  margin-left: 8px;
   border: none;
   background-color: transparent;
   color: var(--text-color-primary);

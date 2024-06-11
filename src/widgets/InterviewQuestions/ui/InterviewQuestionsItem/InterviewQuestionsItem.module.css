@@ -27,6 +27,7 @@
   position: relative;
   margin: 0;
   padding-left: 10px;
+  transition: color 0.3s ease-in-out;
 }
 
 .title::before {

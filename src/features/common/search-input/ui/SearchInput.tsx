@@ -1,6 +1,5 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
-
-import SearchIcon from '@/shared/assets/icons/search.svg';
+import { Icon, Input, IconButton } from 'yeahub-ui-kit';
 
 import styles from './SearchInput.module.css';
 
@@ -25,14 +24,39 @@ export const SearchInput: FC<SearchInputProps> = ({ onSearch, placeholder = 'Н�
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
-			<input
-				className={`${styles.search}`}
-				type="search"
+			<Input
+				className={styles.input}
+				placeholder={placeholder}
 				value={query}
 				onChange={handleChange}
-				placeholder={placeholder}
+				preffix={
+					<IconButton
+						type="submit"
+						aria-label="perform a search"
+						form="square"
+						icon={<Icon icon="search" size={20} />}
+						size="small"
+						theme="tertiary"
+					/>
+				}
 			/>
-			<SearchIcon className={styles.icon} />
 		</form>
+	);
+};
+
+/*Подключение к будущему компоненту */
+export const Component: FC = () => {
+	const [searchResults, setSearchResults] = useState<string>('');
+
+	const handleSearch = (query: string) => {
+		setSearchResults(query);
+	};
+
+	console.log(searchResults);
+
+	return (
+		<>
+			<SearchInput onSearch={handleSearch} placeholder={'Найти человека, мероприятие...'} />
+		</>
 	);
 };
