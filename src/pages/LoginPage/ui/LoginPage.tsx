@@ -1,4 +1,5 @@
 import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Input } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
@@ -10,6 +11,8 @@ import { useLoginMutation, useLogoutMutation } from '@/entities/auth';
 import styles from './LoginPage.module.css';
 
 const LoginPage: FC = () => {
+	const navigate = useNavigate();
+
 	const [formState, setFormState] = useState<{ username: string; password: string }>({
 		username: 'name@server.com',
 		password: 'BestPassword2024',
@@ -32,7 +35,7 @@ const LoginPage: FC = () => {
 
 	const handleSubmitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		loginUser({ user: formState });
+		loginUser({ user: formState }).then(() => navigate('/'));
 	};
 
 	const handleLogoutUser = () => {

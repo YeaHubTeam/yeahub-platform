@@ -66,9 +66,6 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		// logout: builder.query<void, void>({
-		// 	query: () => 'auth/logout',
-		// }),
 		logout: builder.mutation<void, void>({
 			query: () => {
 				return {
@@ -78,12 +75,6 @@ export const authApi = baseApi.injectEndpoints({
 			},
 			async onQueryStarted(_, { dispatch }) {
 				try {
-					// const result = await queryFulfilled;
-					// const data = result.data;
-
-					// const accessToken = data.access_token;
-					// const user = data.user;
-
 					dispatch(setAccessToken(null));
 					dispatch(setProfileDetail(null));
 				} catch (error) {
