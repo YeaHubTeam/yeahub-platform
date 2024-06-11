@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { IconButton } from 'yeahub-ui-kit';
-import { Icon } from 'yeahub-ui-kit';
+import { Icon, IconButton } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
 
@@ -9,7 +8,7 @@ import styles from './UserPreferences.module.css';
 export const UserPreferences = () => {
 	return (
 		<div className={styles.preferences}>
-			<div className={styles.settings}>
+			<div>
 				<IconButton
 					aria-label="Large"
 					disabled
