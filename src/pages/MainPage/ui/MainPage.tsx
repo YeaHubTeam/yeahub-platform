@@ -1,11 +1,63 @@
-import { FC } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { Button } from 'yeahub-ui-kit';
+
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Block } from '@/shared/ui/Block';
+
+import { GetProfileApiResponse } from '@/entities/auth';
 
 import styles from './MainPage.module.css';
 
 const MainPage: FC = () => {
+	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
+
+	const { profileDetail } = useAppSelector((state) => state.auth);
+
+	const getPercentProfileFullness = useCallback((profileDetail: GetProfileApiResponse) => {
+		const allFileldsCount = Object.keys(profileDetail).length - 1;
+		const fullnessCount = Object.values(profileDetail).map((item) => item.length > 0).length - 1;
+
+		const percentFullness = (fullnessCount / allFileldsCount) * 100;
+
+		return percentFullness;
+	}, []);
+
+	useEffect(() => {
+		if (profileDetail) {
+			const percentFullness = getPercentProfileFullness(profileDetail);
+			setPercentProfileFullness(percentFullness as number);
+		}
+	}, [getPercentProfileFullness, profileDetail]);
+
 	return (
 		<>
-			<h2 className={styles.title}>Main</h2>
+			{profileDetail && (
+				<div className={styles.wrapper}>
+					<h2 className={styles.title}>Привет, {profileDetail.firstName}!</h2>
+					{percentProfileFullness < 100 && (
+						<Block className={styles.block}>
+							<div className={styles['block-wrapper']}>
+								<div className={styles['block-content']}>
+									<h3 className={styles['block-title']}>
+										Профиль заполнен на {percentProfileFullness}%
+									</h3>
+									<p className={styles['block-text']}>
+										Заполните свой профиль, чтобы мир мог увидеть вашу уникальность и вдохновиться
+										вашими достижениями. Каждая деталь добавляет картины вашей истории успеха
+									</p>
+								</div>
+								<Button className={styles.button} size="large">
+									Заполнить профиль
+								</Button>
+							</div>
+						</Block>
+					)}
+				</div>
+			)}
+			<span className={styles.text}>
+				Скоро здесь будут отображаться мероприятия сообщества, популярные статьи и многое ещё чего
+				интересного.
+			</span>
 		</>
 	);
 };
