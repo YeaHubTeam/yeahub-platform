@@ -19,3 +19,7 @@
   align-items: center;
   gap: 26px;
 }
+
+.auth-btn {
+  cursor: pointer;
+}

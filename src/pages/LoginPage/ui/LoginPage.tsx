@@ -1,5 +1,4 @@
 import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button, Input } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
@@ -11,8 +10,6 @@ import { useLoginMutation, useLogoutMutation } from '@/entities/auth';
 import styles from './LoginPage.module.css';
 
 const LoginPage: FC = () => {
-	const navigate = useNavigate();
-
 	const [formState, setFormState] = useState<{ username: string; password: string }>({
 		username: 'name@server.com',
 		password: 'BestPassword2024',
@@ -21,7 +18,7 @@ const LoginPage: FC = () => {
 	const [loginUser, { isLoading: isLoadingLoginUser }] = useLoginMutation();
 	const [logoutUser] = useLogoutMutation();
 
-	const { accessToken, profileDetail } = useAppSelector((state) => state.auth);
+	const { accessToken, profile } = useAppSelector((state) => state.auth);
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		const name = e.target.name;
@@ -35,7 +32,7 @@ const LoginPage: FC = () => {
 
 	const handleSubmitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		loginUser({ user: formState }).then(() => navigate('/'));
+		loginUser({ user: formState });
 	};
 
 	const handleLogoutUser = () => {
@@ -50,7 +47,7 @@ const LoginPage: FC = () => {
 				<Block className={styles.block}>
 					<div className={styles.wrapper}>
 						<h2 className={styles.title}>
-							{accessToken ? `Привет, ${profileDetail?.firstName}` : 'Авторизация'}
+							{accessToken ? `Привет, ${profile?.firstName}` : 'Авторизация'}
 						</h2>
 						{accessToken ? (
 							<>

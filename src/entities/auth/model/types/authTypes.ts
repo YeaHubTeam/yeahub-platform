@@ -19,6 +19,10 @@ export type GetRefreshTokenApiResponse = {
 };
 
 export type AuthState = {
-	profileDetail: GetProfileApiResponse | null;
+	profile: GetProfileApiResponse | null;
 	accessToken: string | null;
 };
+
+export interface ExtraArgument {
+	navigate: (path: string) => void;
+}

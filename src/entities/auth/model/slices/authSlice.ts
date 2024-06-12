@@ -4,7 +4,7 @@ import { AuthState, GetProfileApiResponse } from '../types/authTypes';
 
 const initialState: AuthState = {
 	accessToken: null,
-	profileDetail: null,
+	profile: null,
 };
 
 export const authSlice = createSlice({
@@ -14,10 +14,10 @@ export const authSlice = createSlice({
 		setAccessToken: (state, action: PayloadAction<string | null>) => {
 			state.accessToken = action.payload;
 		},
-		setProfileDetail: (state, action: PayloadAction<GetProfileApiResponse | null>) => {
-			state.profileDetail = action.payload;
+		setProfile: (state, action: PayloadAction<GetProfileApiResponse | null>) => {
+			state.profile = action.payload;
 		},
 	},
 });
 
-export const { setProfileDetail, setAccessToken } = authSlice.actions;
+export const { setProfile, setAccessToken } = authSlice.actions;

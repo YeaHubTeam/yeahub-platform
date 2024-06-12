@@ -15,7 +15,6 @@ export const MainLayout = () => {
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false); // TOFIX
 
 	const { accessToken } = useAppSelector((state) => state.auth);
-	console.warn('accessToken in store:', !!accessToken); // todo: remove
 
 	useRefreshTokenQuery(null, { skip: !!accessToken });
 

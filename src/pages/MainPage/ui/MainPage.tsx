@@ -11,11 +11,11 @@ import styles from './MainPage.module.css';
 const MainPage: FC = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
-	const { profileDetail } = useAppSelector((state) => state.auth);
+	const { profile } = useAppSelector((state) => state.auth);
 
-	const getPercentProfileFullness = useCallback((profileDetail: GetProfileApiResponse) => {
-		const allFileldsCount = Object.keys(profileDetail).length - 1;
-		const fullnessCount = Object.values(profileDetail).map((item) => item.length > 0).length - 1;
+	const getPercentProfileFullness = useCallback((profile: GetProfileApiResponse) => {
+		const allFileldsCount = Object.keys(profile).length - 1;
+		const fullnessCount = Object.values(profile).map((item) => item.length > 0).length - 1;
 
 		const percentFullness = (fullnessCount / allFileldsCount) * 100;
 
@@ -23,17 +23,17 @@ const MainPage: FC = () => {
 	}, []);
 
 	useEffect(() => {
-		if (profileDetail) {
-			const percentFullness = getPercentProfileFullness(profileDetail);
+		if (profile) {
+			const percentFullness = getPercentProfileFullness(profile);
 			setPercentProfileFullness(percentFullness as number);
 		}
-	}, [getPercentProfileFullness, profileDetail]);
+	}, [getPercentProfileFullness, profile]);
 
 	return (
 		<>
-			{profileDetail && (
+			{profile && (
 				<div className={styles.wrapper}>
-					<h2 className={styles.title}>Привет, {profileDetail.firstName}!</h2>
+					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
 					{percentProfileFullness < 100 && (
 						<Block className={styles.block}>
 							<div className={styles['block-wrapper']}>

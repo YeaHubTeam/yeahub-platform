@@ -5,6 +5,8 @@ import { State } from '@/shared/config/store/State';
 
 import { authSlice } from '@/entities/auth';
 
+import { router } from '../../router';
+
 export const createReduxStore = (initialState?: State) => {
 	return configureStore({
 		reducer: {
@@ -12,7 +14,14 @@ export const createReduxStore = (initialState?: State) => {
 			[baseApi.reducerPath]: baseApi.reducer,
 		},
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: {
+						navigate: router.navigate,
+					},
+				},
+			}).concat(baseApi.middleware),
 	});
 };
 

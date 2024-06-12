@@ -1,8 +1,12 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
-import { setAccessToken, setProfileDetail } from '../model/slices/authSlice';
-import { GetProfileApiResponse, GetRefreshTokenApiResponse } from '../model/types/authTypes';
+import { setAccessToken, setProfile } from '../model/slices/authSlice';
+import {
+	ExtraArgument,
+	GetProfileApiResponse,
+	GetRefreshTokenApiResponse,
+} from '../model/types/authTypes';
 
 export const authApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -14,7 +18,7 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					const data = result.data;
 
-					dispatch(setProfileDetail(data));
+					dispatch(setProfile(data));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -32,7 +36,7 @@ export const authApi = baseApi.injectEndpoints({
 					const user = data.user;
 
 					dispatch(setAccessToken(accessToken));
-					dispatch(setProfileDetail(user));
+					dispatch(setProfile(user));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -50,7 +54,7 @@ export const authApi = baseApi.injectEndpoints({
 					body: user,
 				};
 			},
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+			async onQueryStarted(_, { dispatch, queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
 					const data = result.data;
@@ -59,7 +63,10 @@ export const authApi = baseApi.injectEndpoints({
 					const user = data.user;
 
 					dispatch(setAccessToken(accessToken));
-					dispatch(setProfileDetail(user));
+					dispatch(setProfile(user));
+
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate('/');
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -76,7 +83,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch }) {
 				try {
 					dispatch(setAccessToken(null));
-					dispatch(setProfileDetail(null));
+					dispatch(setProfile(null));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

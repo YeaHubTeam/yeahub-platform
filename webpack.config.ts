@@ -31,6 +31,7 @@ export default (env: EnvVariables) => {
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
   };
   const isDev = env.mode === 'development';
+
   const options: WebpackOptions = {
     port: env.port ?? 3001,
     mode: env.mode,
