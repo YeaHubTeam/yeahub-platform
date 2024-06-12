@@ -2,6 +2,8 @@ build
 node_modules
 coverage
 .env
+.env.development
+.env.production
 
 # Logs
 logs
