@@ -23,6 +23,6 @@ FROM nginx:stable-alpine
 # Копировать собранные файлы в контейнер Nginx
 COPY --from=builder /app/build /usr/share/nginx/html
 
-EXPOSE 3002
+EXPOSE 5173
 
 CMD ["nginx", "-g", "daemon off;"]
