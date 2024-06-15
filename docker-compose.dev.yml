@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  platform_dev:
+    container_name: platform_dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env.development
+    ports:
+      - '${PORT}:${PORT}'
