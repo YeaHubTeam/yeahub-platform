@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-l);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-purple-700);
+  text-decoration: none;
+  font-weight: var(--font-weight-600);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: .3s ease-in-out;
+}
+
+.link:hover .icon {
+  transform: translateX(5px);
+}
