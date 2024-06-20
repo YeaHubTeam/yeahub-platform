@@ -1,1 +1,0 @@
-export { InterviewResults } from './InterviewResults';
