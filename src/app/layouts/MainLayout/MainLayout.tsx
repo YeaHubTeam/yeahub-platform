@@ -12,7 +12,7 @@ import { NavSidebarList } from '@/widgets/NavSidebar';
 import styles from './MainLayout.module.css';
 
 export const MainLayout = () => {
-	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false); // TOFIX
+	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	const { accessToken } = useAppSelector((state) => state.auth);
 

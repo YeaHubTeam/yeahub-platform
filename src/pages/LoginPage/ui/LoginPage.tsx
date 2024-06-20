@@ -39,6 +39,8 @@ const LoginPage: FC = () => {
 		logoutUser();
 	};
 
+	const loginTitle = accessToken ? `Привет, ${profile?.firstName}` : 'Авторизация';
+
 	return (
 		<>
 			{isLoadingLoginUser ? (
@@ -46,9 +48,7 @@ const LoginPage: FC = () => {
 			) : (
 				<Block className={styles.block}>
 					<div className={styles.wrapper}>
-						<h2 className={styles.title}>
-							{accessToken ? `Привет, ${profile?.firstName}` : 'Авторизация'}
-						</h2>
+						<h2 className={styles.title}>{loginTitle}</h2>
 						{accessToken ? (
 							<>
 								<Button onClick={handleLogoutUser} size="large">

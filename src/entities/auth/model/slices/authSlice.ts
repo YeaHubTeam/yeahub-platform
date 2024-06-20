@@ -1,5 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
+import { TNullable } from '@/shared/types/types';
+
 import { AuthState, GetProfileApiResponse } from '../types/authTypes';
 
 const initialState: AuthState = {
@@ -11,10 +13,10 @@ export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		setAccessToken: (state, action: PayloadAction<string | null>) => {
+		setAccessToken: (state, action: PayloadAction<TNullable<string>>) => {
 			state.accessToken = action.payload;
 		},
-		setProfile: (state, action: PayloadAction<GetProfileApiResponse | null>) => {
+		setProfile: (state, action: PayloadAction<TNullable<GetProfileApiResponse>>) => {
 			state.profile = action.payload;
 		},
 	},
