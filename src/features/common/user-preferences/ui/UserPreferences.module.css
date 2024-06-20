@@ -13,3 +13,13 @@
   width: 40px;
   height: 40px;
 }
+
+.auth-btns {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.auth-btn {
+  cursor: pointer;
+}

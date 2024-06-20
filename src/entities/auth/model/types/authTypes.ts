@@ -1,3 +1,5 @@
+import { TNullable } from '@/shared/types/types';
+
 export type GetProfileApiResponse = {
 	id: string;
 	firstName: string;
@@ -19,6 +21,10 @@ export type GetRefreshTokenApiResponse = {
 };
 
 export type AuthState = {
-	profileDetail: GetProfileApiResponse | null;
-	accessToken: string | null;
+	profile: TNullable<GetProfileApiResponse>;
+	accessToken: TNullable<string>;
 };
+
+export interface ExtraArgument {
+	navigate: (path: string) => void;
+}
