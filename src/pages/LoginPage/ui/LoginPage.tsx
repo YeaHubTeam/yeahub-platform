@@ -18,7 +18,7 @@ const LoginPage: FC = () => {
 	const [loginUser, { isLoading: isLoadingLoginUser }] = useLoginMutation();
 	const [logoutUser] = useLogoutMutation();
 
-	const { accessToken, profileDetail } = useAppSelector((state) => state.auth);
+	const { accessToken, profile } = useAppSelector((state) => state.auth);
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		const name = e.target.name;
@@ -39,6 +39,8 @@ const LoginPage: FC = () => {
 		logoutUser();
 	};
 
+	const loginTitle = accessToken ? `Привет, ${profile?.firstName}` : 'Авторизация';
+
 	return (
 		<>
 			{isLoadingLoginUser ? (
@@ -46,9 +48,7 @@ const LoginPage: FC = () => {
 			) : (
 				<Block className={styles.block}>
 					<div className={styles.wrapper}>
-						<h2 className={styles.title}>
-							{accessToken ? `Привет, ${profileDetail?.firstName}` : 'Авторизация'}
-						</h2>
+						<h2 className={styles.title}>{loginTitle}</h2>
 						{accessToken ? (
 							<>
 								<Button onClick={handleLogoutUser} size="large">
