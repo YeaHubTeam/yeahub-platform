@@ -6,14 +6,14 @@
 
 .header-title {
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-h-xs);
 }
 
 .link {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-purple-700);
+  color: var(--text-color-link-active);
   text-decoration: none;
   font-weight: var(--font-weight-600);
 }
@@ -21,7 +21,7 @@
 .icon {
   width: 24px;
   height: 24px;
-  transition: .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .link:hover .icon {

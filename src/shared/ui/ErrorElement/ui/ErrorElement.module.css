@@ -22,20 +22,19 @@
   color: var(--text-color-bright);
   line-height: 75px;
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-h-xxl);
 }
 
 .text {
   margin: 0;
   color: var(--text-color-light);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-h-xs);
 }
 	
 .error-msg {
   margin: 0;
   color: var(--text-color-light);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-s);
-
+  font-size: var(--font-size-p-s);
 }

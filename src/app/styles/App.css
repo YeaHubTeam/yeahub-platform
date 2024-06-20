@@ -53,6 +53,7 @@
   --background-block: var(--color-white-900);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
+  --text-color-link-active: var(--color-purple-700);
   --text-color-light: var(--color-black-700);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
@@ -62,13 +63,13 @@
   --border-color: var(--color-black-100);
 
   /* dimensions */
-  --font-size-xs: 12px;
-  --font-size-s: 14px;
-  --font-size-m: 16px;
-  --font-size-custom: 18px;
-  --font-size-l: 20px;
-  --font-size-xl: 36px;
-  --font-size-xxl: 60px;
+  --font-size-p-xs: 12px;
+  --font-size-p-s: 14px;
+  --font-size-p-m: 16px;
+  --font-size-p-l: 18px;
+  --font-size-h-xs: 20px;
+  --font-size-h-s: 36px;
+  --font-size-h-xxl: 60px;
   --font-family: "Manrope", sans-serif;
   --font-weight-400: 400;
   --font-weight-500: 500;
@@ -80,6 +81,7 @@
   --background-block: var(--color-black-900);
   --text-color-primary: var(--color-white-900);
   --text-color-bright: var(--color-white-900);
+  --text-color-link-active: var(--color-purple-700);
   --text-color-light: var(--color-white-900);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
@@ -95,7 +97,7 @@ body {
   background-color: var(--background-app);
   line-height: 140%;
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-p-m);
   font-family: var(--font-family);
 }
 

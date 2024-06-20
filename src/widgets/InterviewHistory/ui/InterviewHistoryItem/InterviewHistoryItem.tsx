@@ -2,9 +2,8 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { formatDate } from '@/shared/helpers/formatDate';
-import { InterviewResults } from '@/shared/ui/InterviewResults';
 
-import { Interview } from '@/entities/interview';
+import { Interview, InterviewResults } from '@/entities/interview';
 
 import styles from './InterviewHistoryItem.module.css';
 

@@ -20,10 +20,11 @@
 }
 
 .count {
-  color: var(--color-black-700);
+  color: var(--text-color-light);
 }
 
+
 .icon {
-  width: 21.5px;
-  height: 21.5px;
+  width: 24px;
+  height: 24px;
 }
