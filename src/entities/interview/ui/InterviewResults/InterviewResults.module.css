@@ -1,0 +1,30 @@
+.param {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color-lightest);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count {
+  color: var(--text-color-light);
+}
+
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

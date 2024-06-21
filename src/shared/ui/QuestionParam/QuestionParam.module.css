@@ -7,7 +7,7 @@
   background-color: var(--color-black-50);
   color: var(--color-black-800);
   font-weight: var(--font-weight-400);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-p-xs);
 }
 
 .value {

@@ -18,7 +18,7 @@
   margin: 0;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-h-xs);
 }
 
 .loader {
