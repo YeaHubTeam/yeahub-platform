@@ -14,7 +14,8 @@ export const UserPreferences = () => {
 	const accessToken = useSelector(getAccessToken);
 
 	const handleLoginBtn = useCallback(() => {
-		window.location.replace(process.env.LANDING_URL + 'login');
+		//todo не забыть убрать перед мерджем в develop
+		window.location.replace(/*process.env.LANDING_URL +*/ 'login');
 	}, []);
 	const handleRegisterBtn = useCallback(() => {
 		window.location.replace(process.env.LANDING_URL + 'registration');
