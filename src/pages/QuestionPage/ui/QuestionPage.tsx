@@ -2,7 +2,7 @@ import { Block } from '@/shared/ui/Block';
 
 import { useGetQuestionQuery } from '@/entities/question';
 
-import { QuestionHeader, QuestionBody } from '@/widgets/Question';
+import { QuestionHeader, QuestionBody, QuestionActions } from '@/widgets/Question';
 
 import styles from './QuestionPage.module.css';
 
@@ -16,6 +16,7 @@ export const QuestionPage = () => {
 					status={question?.status}
 					title={question?.title}
 				/>
+				<QuestionActions />
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</div>
 			<div className={styles['additional-info-wrapper']}>

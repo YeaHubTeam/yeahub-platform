@@ -14,7 +14,7 @@ export const QuestionBody = ({ shortAnswer, longAnswer }: props) => {
 				<h3>Краткий ответ</h3>
 				<p>{shortAnswer ?? ''}</p>
 			</Block>
-			<Block>
+			<Block expandable>
 				<h3>Развёрнутый ответ</h3>
 				<p>{longAnswer ?? ''}</p>
 			</Block>

@@ -1,0 +1,9 @@
+.question-actions{
+  margin-bottom: 40px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
