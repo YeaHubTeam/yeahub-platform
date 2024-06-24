@@ -11,21 +11,19 @@ interface props {
 
 export const QuestionHeader = ({ title, description, status }: props) => {
 	return (
-		<div className={styles['question-wrapper']}>
-			<Block>
-				<div className={styles['question-header-wrapper']}>
-					<div className={styles['image-wrapper']}>
-						<img src={QuestionImg} alt="Question" />
-					</div>
-					<div className={styles['title-wrapper']}>
-						<h2 className={styles['title']}>{title ?? ''}</h2>
-						<p className={styles['description']}>{description ?? ''}</p>
-					</div>
-					<div className={styles['label-wrapper']}>
-						<p className={styles['label']}>{status ?? 'template'}</p>
-					</div>
+		<Block className={styles.wrapper}>
+			<div className={styles['question-header-wrapper']}>
+				<div className={styles['image-wrapper']}>
+					<img src={QuestionImg} alt="Question" />
 				</div>
-			</Block>
-		</div>
+				<div className={styles['title-wrapper']}>
+					<h2 className={styles['title']}>{title ?? ''}</h2>
+					<p className={styles['description']}>{description ?? ''}</p>
+				</div>
+				<div className={styles['label-wrapper']}>
+					<p className={styles['label']}>{status ?? 'template'}</p>
+				</div>
+			</div>
+		</Block>
 	);
 };

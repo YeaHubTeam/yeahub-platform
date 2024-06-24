@@ -3,6 +3,11 @@
   gap: 20px;
 }
 
+.main-info-wrapper {
+  flex-basis: 67%;
+}
+
+
 .additional-info-wrapper {
   display: flex;
   flex-basis: 33%;
