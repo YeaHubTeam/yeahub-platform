@@ -11,9 +11,9 @@ export const QuestionPage = () => {
 	return (
 		<section className={styles.wrapper}>
 			<QuestionHeader
-				description={question!.description}
-				status={question!.status}
-				title={question!.title}
+				description={question?.description}
+				status={question?.status}
+				title={question?.title}
 			/>
 			<div className={styles['additional-info-wrapper']}>
 				<Block></Block>
