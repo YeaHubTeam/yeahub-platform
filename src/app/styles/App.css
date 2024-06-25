@@ -58,6 +58,7 @@
   --text-color-light: var(--color-black-700);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
+  --text-color-the-lightest: var(--color-black-400);
   --text-color-more-lightest: var(--color-black-300);
   --background-nav-item: var(--color-purple-100);
   --background-nav-item-hover: var(--color-black-25);
@@ -86,6 +87,7 @@
   --text-color-light: var(--color-white-900);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
+  --text-color-the-lightest: var(--color-black-400);
   --text-color-more-lightest: var(--color-black-300);
   --background-nav-item: var(--color-purple-500);
   --background-nav-item-hover: var(--color-black-800);
