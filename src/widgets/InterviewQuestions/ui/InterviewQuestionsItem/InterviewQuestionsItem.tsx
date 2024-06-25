@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
-import { Question } from '@/entities/question';
+import { Question } from '@/entities/interview';
 
 import styles from './InterviewQuestionsItem.module.css';
 

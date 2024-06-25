@@ -1,0 +1,37 @@
+.panel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.button {
+  border: none;
+  background-color: var(--color-white-900);
+  cursor: pointer;
+}
+
+.arrow {
+  width: 28px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  height: 44px;
+}
+
+.wrapper>button {
+  width: auto;
+  border-radius: 12px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+    color: var(--color-purple-700);
+
+    svg {
+      color: var(--color-purple-700);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-wrapper {
+  position: relative;
+  margin: 16px 0;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+}
+
+.image-wrapper::after {
+  position: absolute;
+  top: 216px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-black-400), var(--color-black-400));
+  content: '';
+}

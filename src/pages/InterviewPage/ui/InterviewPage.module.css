@@ -29,6 +29,17 @@
   grid-column: 7 / 13;
 }
 
+.preparation-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 24px;
+  max-width: 100%;
+  box-shadow: 0 8px 15px -5px rgb(0 0 0 / 10%);
+  border-radius: 12px;
+}
+
 .questions {
   display: flex;
   flex-direction: column;
