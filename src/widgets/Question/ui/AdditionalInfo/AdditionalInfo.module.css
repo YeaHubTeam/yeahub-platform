@@ -1,0 +1,19 @@
+.wrapper {
+  margin-bottom: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: var(--text-color-light);
+  font-size: var(--font-size-p-m);
+}
+
+.param-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.param-wrapper > li:first-child {
+  margin-right: 16px;
+}

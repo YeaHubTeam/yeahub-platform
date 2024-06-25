@@ -1,3 +1,5 @@
+export { AdditionalInfo } from './ui/AdditionalInfo/AdditionalInfo';
+
 export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
 
 export { QuestionActions } from './ui/QuestionActions/QuestionActions';

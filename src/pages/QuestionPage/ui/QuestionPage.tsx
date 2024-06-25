@@ -1,8 +1,12 @@
-import { Block } from '@/shared/ui/Block';
-
 import { useGetQuestionQuery } from '@/entities/question';
 
-import { QuestionHeader, QuestionBody, QuestionActions, ProgressBlock } from '@/widgets/Question';
+import {
+	QuestionHeader,
+	QuestionBody,
+	QuestionActions,
+	ProgressBlock,
+	AdditionalInfo,
+} from '@/widgets/Question';
 
 import styles from './QuestionPage.module.css';
 
@@ -21,7 +25,7 @@ export const QuestionPage = () => {
 			</div>
 			<div className={styles['additional-info-wrapper']}>
 				<ProgressBlock />
-				<Block></Block>
+				<AdditionalInfo />
 				<p>
 					Автор: <span>Дмитрий Мусенко</span>
 				</p>
