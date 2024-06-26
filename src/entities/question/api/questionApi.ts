@@ -5,7 +5,7 @@ import { Question } from '../model/types/question';
 export const questionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		getQuestion: build.query<Question, number>({
-			query: (id) => `https://api.test.yeahub.ru/questions/${id}`,
+			query: (id) => `${process.env.API_URL}questions/${id}`,
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
