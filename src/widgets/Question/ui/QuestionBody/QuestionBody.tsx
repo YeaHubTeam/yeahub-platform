@@ -2,21 +2,21 @@ import { Block } from '@/shared/ui/Block';
 
 import styles from './QuestionBody.module.css';
 
-interface props {
-	shortAnswer: string | undefined;
-	longAnswer: string | undefined;
+interface Props {
+	shortAnswer?: string;
+	longAnswer?: string;
 }
 
-export const QuestionBody = ({ shortAnswer, longAnswer }: props) => {
+export const QuestionBody = ({ shortAnswer, longAnswer }: Props) => {
 	return (
 		<>
 			<Block className={styles.wrapper}>
-				<h3>Краткий ответ</h3>
-				<p>{shortAnswer ?? ''}</p>
+				<h3 className={styles.title}>Краткий ответ</h3>
+				<p className={styles.text}>{shortAnswer ?? ''}</p>
 			</Block>
 			<Block expandable>
-				<h3>Развёрнутый ответ</h3>
-				<p>{longAnswer ?? ''}</p>
+				<h3 className={styles.title}>Развёрнутый ответ</h3>
+				<p className={styles.text}>{longAnswer ?? ''}</p>
 			</Block>
 		</>
 	);

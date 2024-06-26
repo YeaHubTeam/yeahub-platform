@@ -17,3 +17,7 @@
 .param-wrapper > li:first-child {
   margin-right: 16px;
 }
+
+.chip:not(:last-of-type) {
+  margin-right: 10px;
+}

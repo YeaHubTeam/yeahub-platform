@@ -13,16 +13,16 @@
 .title-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .title {
-  margin-top: 2px;
+  margin-bottom: 16px;
   color: var(--text-color-primary);
+  font-size: var(--font-size-h-s);
 }
 
 .description {
-  margin-bottom: 6px;
   color: var(--text-color-light);
   font-size: var(--font-size-p-m);
 }

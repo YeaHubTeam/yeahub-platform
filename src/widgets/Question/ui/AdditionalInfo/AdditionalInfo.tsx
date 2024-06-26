@@ -1,6 +1,7 @@
+import { Chip, Icon } from 'yeahub-ui-kit';
+
 import { Block } from '@/shared/ui/Block';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
-import { SkillLabel } from '@/shared/ui/SkillLabel';
 
 import styles from './AdditionalInfo.module.css';
 
@@ -18,9 +19,27 @@ export const AdditionalInfo = () => {
 				<h4 className={styles.title}>Навыки:</h4>
 				{/* //todo после правки интрфейса скила доделать нормальное отображение*/}
 				<ul className={styles['param-wrapper']}>
-					<SkillLabel img={undefined} title="React" />
-					<SkillLabel img={undefined} title="JavaScript" />
-					<SkillLabel img={undefined} title="Dom" />
+					<Chip
+						className={styles.chip}
+						label={'React'}
+						theme="primary"
+						active
+						preffix={<Icon icon="atom" />}
+					/>
+					<Chip
+						className={styles.chip}
+						label={'JavaScript'}
+						theme="primary"
+						active
+						preffix={<Icon icon="fileJs" />}
+					/>
+					<Chip
+						className={styles.chip}
+						label={'DOM'}
+						theme="primary"
+						active
+						preffix={<Icon icon="fileHtml" />}
+					/>
 				</ul>
 			</div>
 		</Block>
