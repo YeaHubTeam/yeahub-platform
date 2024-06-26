@@ -1,6 +1,6 @@
 .item:not(:last-child) {
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--color-black-100);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .link {
@@ -38,6 +38,6 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--color-purple-700);
+  background-color: var(--text-color-link-active);
   transform: translateY(-50%);
 }

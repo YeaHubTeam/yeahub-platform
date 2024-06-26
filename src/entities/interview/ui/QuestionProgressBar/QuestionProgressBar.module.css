@@ -5,12 +5,12 @@
 
   &::-webkit-progress-value {
     border-radius: 50px;
-    background-color: var(--color-purple-700);
+    background-color: var(--text-color-link-active);
   }
 
   &::-webkit-progress-bar {
     border-radius: 50px;
-    background-color: var(--color-purple-200);
+    background-color: var(--background-progress-bar);
   }
 }
 

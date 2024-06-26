@@ -6,7 +6,7 @@
 
 .button {
   border: none;
-  background-color: var(--color-white-900);
+  background: transparent;
   cursor: pointer;
 }
 
@@ -23,15 +23,20 @@
 .wrapper>button {
   width: auto;
   border-radius: 12px;
+  color: var(--text-color-bright);
+
+  svg {
+    color: var(--text-color-bright);
+  }
 
   &:hover,
   &:focus,
   &:active {
     border: none;
-    color: var(--color-purple-700);
+    color: var(--text-color-link-active);
 
     svg {
-      color: var(--color-purple-700);
+      color: var(--text-color-link-active);
     }
   }
 }

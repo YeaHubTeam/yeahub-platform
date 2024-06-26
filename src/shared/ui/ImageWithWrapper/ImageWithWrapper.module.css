@@ -4,7 +4,7 @@
   width: 70px;
   height: 50px;
   border-radius: 4px;
-  background-color: var(--color-purple-100);
+  background-color: var(--background-nav-item);
 }
 
 .image {

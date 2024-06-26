@@ -1,5 +1,5 @@
 // временные данные
-export const QUESTIONS_DATA = [
+export const INTERVIEW_QUESTIONS = [
 	{
 		id: 1,
 		title: 'Что такое Virtual DOM, и как он работает?',
