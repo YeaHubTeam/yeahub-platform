@@ -11,13 +11,16 @@ export const QuestionActions = () => {
 				<Button preffix={<Icon icon="student" />} theme="tertiary">
 					Учить
 				</Button>
-				<Button preffix={<Icon icon="bookmarks" />} theme="tertiary">
+				<Button preffix={<Icon icon="bookmarks" key={'bookmarks'} />} theme="tertiary">
 					Сохранить
 				</Button>
-				<Button preffix={<Icon icon="clockCounterClockwise" />} theme="tertiary">
+				<Button
+					preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} />}
+					theme="tertiary"
+				>
 					Повторить
 				</Button>
-				<Button preffix={<Icon icon="skipForward" />} theme="tertiary">
+				<Button preffix={<Icon icon="skipForward" key={'skipForward'} />} theme="tertiary">
 					Пропустить
 				</Button>
 			</div>

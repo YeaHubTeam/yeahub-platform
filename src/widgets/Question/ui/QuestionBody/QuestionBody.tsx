@@ -12,11 +12,11 @@ export const QuestionBody = ({ shortAnswer, longAnswer }: Props) => {
 		<>
 			<Block className={styles.wrapper}>
 				<h3 className={styles.title}>Краткий ответ</h3>
-				<p className={styles.text}>{shortAnswer ?? ''}</p>
+				<p className={styles.text}>{shortAnswer ?? 'Краткий ответ отсутствует'}</p>
 			</Block>
 			<Block expandable>
 				<h3 className={styles.title}>Развёрнутый ответ</h3>
-				<p className={styles.text}>{longAnswer ?? ''}</p>
+				<p className={styles.text}>{longAnswer ?? 'Ответ отсутствует'}</p>
 			</Block>
 		</>
 	);
