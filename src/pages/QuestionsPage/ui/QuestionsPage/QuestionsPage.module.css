@@ -11,10 +11,15 @@
   flex-basis: 67%;
 }
 
-
 .additional-info-wrapper {
   display: flex;
   flex-basis: 33%;
   flex-direction: column;
   gap: 20px;
+}
+
+.search {
+  position: sticky;
+  top: 0;
+  height: auto
 }

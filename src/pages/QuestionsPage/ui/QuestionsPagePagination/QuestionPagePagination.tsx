@@ -17,7 +17,6 @@ interface QuestionPagePaginationProps {
 }
 
 export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePaginationProps) => {
-	console.log('questionsResponse', questionsResponse);
 	const dispatch = useAppDispatch();
 	const page = useSelector(getQuestionsPageNum);
 

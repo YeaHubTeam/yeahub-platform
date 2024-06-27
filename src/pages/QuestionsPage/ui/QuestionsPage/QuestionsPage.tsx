@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import { Accordion } from '@/shared/ui/Accordion';
 import { Block } from '@/shared/ui/Block';
 /* import { ErrorElement } from '@/shared/ui/ErrorElement';
@@ -6,6 +8,9 @@ import { Loader } from '@/shared/ui/Loader'; */
 import { QuestionPreview } from '@/entities/question';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
+import { QuestionsSearchBar } from '@/widgets/Question';
+
+import { getQuestionsPageNum } from '../../model/selectors/questionsPageSelectors';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
@@ -76,7 +81,7 @@ const interviewQuestionsData = [
 		specializations: [1, 3],
 		skills: [10, 23],
 	},
-	{
+	/* {
 		id: 4,
 		title: 'Что такое Virtual DOM, и как он работает?',
 		description: 'What is a Virtual DOM and how it works?',
@@ -171,20 +176,28 @@ const interviewQuestionsData = [
 		rating: 10,
 		specializations: [1, 3],
 		skills: [10, 23],
-	},
+	}, */
 ];
 
+const response = {
+	data: interviewQuestionsData,
+	total: 100,
+	page: 2,
+	limit: 10,
+};
+
 const QuestionsPage = () => {
-	const { data: questions } = useGetQuestionsListQuery({ page: 1 });
+	const page = useSelector(getQuestionsPageNum);
+	const { data: questions } = useGetQuestionsListQuery({ page });
+
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Block className={styles.content}>
 					<h1>Вопросы React, JS555</h1>
-					{/* Skills */}
 					<hr />
-					{interviewQuestionsData &&
-						interviewQuestionsData.map((question) => {
+					{response.data &&
+						response.data.map((question) => {
 							return (
 								<Accordion key={question.id} title={question.title}>
 									<QuestionPreview question={question} />
@@ -195,7 +208,9 @@ const QuestionsPage = () => {
 				</Block>
 			</div>
 			<div className={styles['additional-info-wrapper']}>
-				<Block>Меню сбоку</Block>
+				<Block className={styles.search}>
+					<QuestionsSearchBar />
+				</Block>
 			</div>
 		</section>
 	);

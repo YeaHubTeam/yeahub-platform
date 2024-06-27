@@ -4,6 +4,10 @@
   gap: 12px;
 }
 
+.arrow-button {
+  cursor: pointer;
+}
+
 .page-button {
   display: flex;
   justify-content: center;
@@ -13,9 +17,10 @@
   border: none;
   border-radius: 3px;
   background: var(--light-gray);
+  cursor: pointer;
 }
 
 .active {
-  background: var(--text-color-primary);
+  background: var(--background-primary);
   color: var(--background-block)
 }

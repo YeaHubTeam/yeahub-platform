@@ -55,6 +55,7 @@ export const Pagination = ({
 				aria-label="back button"
 				form="round"
 				theme="outline"
+				className={styles['arrow-button']}
 				icon={<Icon icon="arrowLeft" size={20} />}
 			/>
 			{Array.from({ length: totalPages }).map((_, index) => (
@@ -73,6 +74,7 @@ export const Pagination = ({
 				aria-label="forward button"
 				form="round"
 				theme="outline"
+				className={styles['arrow-button']}
 				icon={<Icon icon="arrowRight" size={20} />}
 			/>
 		</div>
