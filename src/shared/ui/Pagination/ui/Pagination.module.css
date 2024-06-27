@@ -1,0 +1,21 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  background: var(--light-gray);
+}
+
+.active {
+  background: var(--text-color-primary);
+  color: var(--background-block)
+}
