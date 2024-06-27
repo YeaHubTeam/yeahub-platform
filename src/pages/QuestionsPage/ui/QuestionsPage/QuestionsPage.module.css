@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.content {
+  height: auto;
+}
+
+.main-info-wrapper {
+  flex-basis: 67%;
+}
+
+
+.additional-info-wrapper {
+  display: flex;
+  flex-basis: 33%;
+  flex-direction: column;
+  gap: 20px;
+}
