@@ -19,7 +19,7 @@ export const QuestionNavPanel: FC<Props> = ({ goToNextQuestion, goToPrevQuestion
 					textClassName={styles['action-button']}
 					theme="tertiary"
 					size="small"
-					preffix={<Icon icon="thumbsDown" size={24} />}
+					preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
 				>
 					Не знаю
 				</Button>
@@ -27,7 +27,7 @@ export const QuestionNavPanel: FC<Props> = ({ goToNextQuestion, goToPrevQuestion
 					textClassName={styles['action-button']}
 					theme="tertiary"
 					size="small"
-					preffix={<Icon icon="clockCounterClockwise" size={24} />}
+					preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
 				>
 					Повторить
 				</Button>
@@ -35,7 +35,7 @@ export const QuestionNavPanel: FC<Props> = ({ goToNextQuestion, goToPrevQuestion
 					textClassName={styles['action-button']}
 					theme="tertiary"
 					size="small"
-					preffix={<Icon icon="thumbsUp" size={24} />}
+					preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
 				>
 					Знаю
 				</Button>
