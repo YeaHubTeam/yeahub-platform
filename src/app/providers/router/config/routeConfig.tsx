@@ -35,7 +35,10 @@ export const router = createBrowserRouter([
 				path: 'questions',
 				element: <QuestionsPage />,
 			},
-			{ path: 'question', element: <QuestionPage /> },
+			{
+				path: 'question',
+				element: <QuestionPage />,
+			},
 			{
 				path: '*',
 				element: <Error404Page />,
