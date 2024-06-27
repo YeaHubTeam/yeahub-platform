@@ -1,0 +1,14 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--text-color-primary);
+  font-size: var(--font-size-h-xs);
+}
+
+.text {
+  color: var(--text-color-light);
+  font-size: var(--font-size-p-m);
+}

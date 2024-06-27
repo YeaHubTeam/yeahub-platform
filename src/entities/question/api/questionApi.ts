@@ -13,7 +13,7 @@ const questionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),
-		getQuestionById: build.query<Question, string>({
+		getQuestionById: build.query<Question, number>({
 			query: (questionId) => ({
 				url: `/questions/${questionId}`,
 			}),
