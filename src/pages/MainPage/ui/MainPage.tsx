@@ -1,4 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
@@ -36,6 +37,7 @@ const MainPage: FC = () => {
 			{profile && (
 				<div className={styles.wrapper}>
 					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
+					<Link to="/question">Вопрос</Link>
 					{isIncompleteProfile && (
 						<Block className={styles.block}>
 							<div className={styles['block-wrapper']}>

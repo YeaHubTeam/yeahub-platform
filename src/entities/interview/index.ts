@@ -1,5 +1,4 @@
 export type { Interview } from './model/types/interview';
-export type { Question } from './model/types/question';
 export { InterviewResults } from './ui/InterviewResults/InterviewResults';
 export { QuestionProgressBar } from './ui/QuestionProgressBar/QuestionProgressBar';
 export { INTERVIEW_QUESTIONS } from './model/data/interviewQuestions';
