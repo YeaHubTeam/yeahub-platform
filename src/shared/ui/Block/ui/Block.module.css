@@ -44,7 +44,7 @@
   gap: 4px;
   border: none;
   background: transparent;
-  color: var(--color-purple-700);
+  color: var(--text-color-link-active);
   transform: translate(-50%);
   cursor: pointer
 }

@@ -50,7 +50,9 @@
   --color-white-900: #FFF;
 
   /* light theme colors */
+  --background-progress-bar: var(--color-purple-200);
   --background-app: var(--color-black-25);
+  --background-button: var(--color-black-50);
   --background-block: var(--color-white-900);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
@@ -80,7 +82,9 @@
 }
 
 [theme="dark"] {
+  --background-progress-bar: var(--color-purple-200);
   --background-app: var(--color-black-800);
+  --background-button: var(--color-black-50);
   --background-block: var(--color-black-900);
   --text-color-primary: var(--color-white-900);
   --text-color-bright: var(--color-white-900);

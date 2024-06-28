@@ -1,11 +1,10 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
 }
 
 .header-title {
-  margin: 0;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
@@ -22,7 +21,7 @@
 .icon {
   width: 24px;
   height: 24px;
-  transition: .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .link:hover .icon {
