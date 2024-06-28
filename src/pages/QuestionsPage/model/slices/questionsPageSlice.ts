@@ -4,6 +4,7 @@ import { QuestionsPageState } from '../types/questionsPageType';
 
 const initialState: QuestionsPageState = {
 	page: 1,
+	skill: [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 };
 
 const questionsPageSlice = createSlice({
@@ -15,6 +16,9 @@ const questionsPageSlice = createSlice({
 		},
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
+		},
+		setSkill: (state, action: PayloadAction<number[]>) => {
+			state.skill = { ...state.skill, ...action.payload };
 		},
 	},
 });

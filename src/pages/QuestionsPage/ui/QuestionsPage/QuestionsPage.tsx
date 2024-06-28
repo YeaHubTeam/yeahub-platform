@@ -1,16 +1,18 @@
 import { useSelector } from 'react-redux';
 
-import { Accordion } from '@/shared/ui/Accordion';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Block } from '@/shared/ui/Block';
-/* import { ErrorElement } from '@/shared/ui/ErrorElement';
-import { Loader } from '@/shared/ui/Loader'; */
 
-import { QuestionPreview } from '@/entities/question';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
-import { QuestionsSearchBar } from '@/widgets/Question';
+import { QuestionsFilterPanel, QuestionsSummaryList } from '@/widgets/Question';
 
-import { getQuestionsPageNum } from '../../model/selectors/questionsPageSelectors';
+import {
+	//getQuestionsPageNum,
+	getQuestionsPageFilter,
+} from '../../model/selectors/questionsPageSelectors';
+import { questionsPageActions } from '../../model/slices/questionsPageSlice';
+import { QuestionsPageState } from '../../model/types/questionsPageType';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
@@ -187,29 +189,25 @@ const response = {
 };
 
 const QuestionsPage = () => {
-	const page = useSelector(getQuestionsPageNum);
-	const { data: questions } = useGetQuestionsListQuery({ page });
+	//const page = useSelector(getQuestionsPageNum);
+	const params = useSelector(getQuestionsPageFilter);
+	const dispatch = useAppDispatch();
+	const { data: questions } = useGetQuestionsListQuery(params);
+	const onChangeSearchParams = (updates: QuestionsPageState) => {
+		dispatch(questionsPageActions.setQuestionPageState(updates));
+	};
 
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Block className={styles.content}>
-					<h1>Вопросы React, JS555</h1>
-					<hr />
-					{response.data &&
-						response.data.map((question) => {
-							return (
-								<Accordion key={question.id} title={question.title}>
-									<QuestionPreview question={question} />
-								</Accordion>
-							);
-						})}
+					<QuestionsSummaryList questions={response?.data} />
 					<QuestionPagePagination questionsResponse={questions} />
 				</Block>
 			</div>
 			<div className={styles['additional-info-wrapper']}>
 				<Block className={styles.search}>
-					<QuestionsSearchBar />
+					<QuestionsFilterPanel onChange={onChangeSearchParams} />
 				</Block>
 			</div>
 		</section>
@@ -217,6 +215,3 @@ const QuestionsPage = () => {
 };
 
 export default QuestionsPage;
-
-//QuestionPreview with short answer for accordion with details button which will be redirect to the question page
-//QuestionsFilter for aside menu
