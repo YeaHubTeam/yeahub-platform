@@ -7,4 +7,4 @@ export { QuestionActions } from './ui/QuestionActions/QuestionActions';
 export { QuestionBody } from './ui/QuestionBody/QuestionBody';
 
 export { QuestionHeader } from './ui/QuestionHeader/QuestionHeader';
-export { QuestionsSearchBar } from './ui/QuestionsSearchBar/QuestionsSearchBar';
+export { QuestionsFilterPanel } from './ui/QuestionsFilterPanel/QuestionsFilterPanel';
