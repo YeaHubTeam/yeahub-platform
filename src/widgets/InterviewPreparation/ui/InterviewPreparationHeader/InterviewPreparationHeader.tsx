@@ -15,7 +15,7 @@ export const InterviewPreparationHeader: FC<Props> = ({ title, linkTitle }) => {
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
 			{linkTitle && (
-				<Link to="/questions" className={styles.link}>
+				<Link to="/interviewQuiz" className={styles.link}>
 					<span>{linkTitle}</span>
 					<ArrowRightIcon className={styles.icon} />
 				</Link>

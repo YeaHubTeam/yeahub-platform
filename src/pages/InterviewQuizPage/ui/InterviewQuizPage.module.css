@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: var(--text-color-bright);
+  font-weight: var(--font-weight-500);
+
+  >div {
+    height: auto;
+  }
+}
+
+.progress-bar-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-h-xs);
+}
+
+.progress-num {
+  color: var(--text-color-lightest);
+  font-size: var(--font-size-p-s);
+}
+
+.end-button {
+  position: relative;
+  margin: 24px 0;
+  margin-left: auto;
+}

@@ -13,30 +13,3 @@
 .arrow {
   width: 28px;
 }
-
-.wrapper {
-  display: flex;
-  gap: 8px;
-  height: 44px;
-}
-
-.wrapper>button {
-  width: auto;
-  border-radius: 12px;
-  color: var(--text-color-bright);
-
-  svg {
-    color: var(--text-color-bright);
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    border: none;
-    color: var(--text-color-link-active);
-
-    svg {
-      color: var(--text-color-link-active);
-    }
-  }
-}
