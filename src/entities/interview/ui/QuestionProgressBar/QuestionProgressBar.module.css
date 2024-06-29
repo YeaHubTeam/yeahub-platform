@@ -1,0 +1,19 @@
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+
+  &::-webkit-progress-value {
+    border-radius: 50px;
+    background-color: var(--text-color-link-active);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 50px;
+    background-color: var(--background-progress-bar);
+  }
+}
+
+.question {
+  margin-top: 4px;
+}

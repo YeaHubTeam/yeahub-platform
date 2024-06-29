@@ -4,7 +4,11 @@ import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStat } from '@/shared/ui/PassedQuestionStat';
 
+import { QuestionProgressBar } from '@/entities/interview';
+
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
+import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
@@ -12,7 +16,18 @@ import styles from './InterviewPage.module.css';
 const InterviewPage: FC = () => {
 	return (
 		<div className={styles.container}>
-			<Block></Block>
+			<Block>
+				<div className={styles.questions}>
+					<InterviewPreparationHeader
+						title="Подготовка к собеседованиям"
+						linkTitle="Пройти собеседование"
+					/>
+					<div className={styles['preparation-wrapper']}>
+						<QuestionProgressBar />
+						<QuestionSlider />
+					</div>
+				</div>
+			</Block>
 			<Block>
 				<div className={styles.questions}>
 					<InterviewQuestionHeader title="Статистика собеседований" />
@@ -20,6 +35,7 @@ const InterviewPage: FC = () => {
 					<LinkWithArrowRight link="" linkTitle="Посмотреть полностью" />
 				</div>
 			</Block>
+			<Block></Block>
 			<Block>
 				<div className={styles.questions}>
 					<InterviewQuestionHeader title="Список вопросов" linkTitle="Изучить" />
