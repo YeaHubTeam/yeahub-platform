@@ -6,8 +6,8 @@ const initialState: QuestionsPageState = {
 	page: 1,
 	title: '',
 	skill: [],
-	rate: [],
-	rating: [],
+	rate: [], // complexity
+	rating: [], // rate
 	progressStatus: [], //not implemented on BE side
 };
 

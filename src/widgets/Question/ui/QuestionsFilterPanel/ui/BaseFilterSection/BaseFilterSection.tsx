@@ -9,18 +9,12 @@ type DateType = {
 interface BaseFilterSectionProps {
 	title: string;
 	data: DateType[];
-	onClick?: (id: number) => void;
+	onClick: (id: number) => void;
 }
 
 import styles from './BaseFilterSection.module.css';
 
-//TODO active state, onClick - toggle state is active
-
-export const BaseFilterSection = ({
-	title,
-	data,
-	onClick = () => console.log('sss'),
-}: BaseFilterSectionProps) => {
+export const BaseFilterSection = ({ title, data, onClick }: BaseFilterSectionProps) => {
 	const onHandleClick = (id: number) => () => {
 		onClick(id);
 	};
