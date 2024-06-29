@@ -8,6 +8,24 @@ const rate = [
 	{ id: 5, title: '5' },
 ];
 
-export const RateFilterSection = () => {
-	return <BaseFilterSection data={rate} title="Рейтинг вопросов" />;
+interface RateFilterSectionProps {
+	selectedRate?: number[];
+	onChangeRate: (rate: number[]) => void;
+}
+
+export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSectionProps) => {
+	const onClick = (rateId: number) => {
+		const isDataExist = selectedRate?.some((item) => item === rateId);
+		const updates = isDataExist
+			? (selectedRate || []).filter((item) => item !== rateId)
+			: [...(selectedRate || []), rateId];
+		onChangeRate(updates);
+	};
+
+	const preparedData = rate.map((item) => ({
+		...item,
+		active: selectedRate?.some((selectedItem) => item.id === selectedItem),
+	}));
+
+	return <BaseFilterSection data={preparedData} title="Рейтинг вопросов" onClick={onClick} />;
 };

@@ -12,7 +12,6 @@ import {
 	getQuestionsPageFilter,
 } from '../../model/selectors/questionsPageSelectors';
 import { questionsPageActions } from '../../model/slices/questionsPageSlice';
-import { QuestionsPageState } from '../../model/types/questionsPageType';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
@@ -52,7 +51,7 @@ const interviewQuestionsData = [
 		skills: [10, 23],
 	},
 	{
-		id: 2,
+		id: 55,
 		title: 'Что такое Virtual DOM, и как он работает?',
 		description: 'What is a Virtual DOM and how it works?',
 		imageSrc:
@@ -189,12 +188,28 @@ const response = {
 };
 
 const QuestionsPage = () => {
-	//const page = useSelector(getQuestionsPageNum);
 	const params = useSelector(getQuestionsPageFilter);
 	const dispatch = useAppDispatch();
 	const { data: questions } = useGetQuestionsListQuery(params);
-	const onChangeSearchParams = (updates: QuestionsPageState) => {
-		dispatch(questionsPageActions.setQuestionPageState(updates));
+
+	const onChangeSearchParams = (value: string) => {
+		dispatch(questionsPageActions.setTitle(value));
+	};
+
+	const onChangeSkills = (skills: number[]) => {
+		dispatch(questionsPageActions.setSkills(skills));
+	};
+
+	const onChangeComplexity = (complexity: number[]) => {
+		dispatch(questionsPageActions.setComplexity(complexity));
+	};
+
+	const onChangeRate = (rate: number[]) => {
+		dispatch(questionsPageActions.setRate(rate));
+	};
+
+	const onChangeStatus = (status: number[]) => {
+		dispatch(questionsPageActions.setStatus(status));
 	};
 
 	return (
@@ -207,7 +222,14 @@ const QuestionsPage = () => {
 			</div>
 			<div className={styles['additional-info-wrapper']}>
 				<Block className={styles.search}>
-					<QuestionsFilterPanel onChange={onChangeSearchParams} />
+					<QuestionsFilterPanel
+						onChangeSearch={onChangeSearchParams}
+						onChangeSkills={onChangeSkills}
+						onChangeComplexity={onChangeComplexity}
+						onChangeRate={onChangeRate}
+						onChangeStatus={onChangeStatus}
+						filter={params}
+					/>
 				</Block>
 			</div>
 		</section>

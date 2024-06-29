@@ -1,5 +1,5 @@
 export interface Skill {
-	id: string;
+	id: number;
 	title: string;
 	description: string;
 	imageSrc: string;
@@ -9,4 +9,5 @@ export interface Skill {
 
 export interface SkillsListParams {
 	page?: number;
+	limit?: number;
 }

@@ -7,6 +7,27 @@ const progressStatus = [
 	{ id: 4, title: 'Все' },
 ];
 
-export const StatusFilterSection = () => {
-	return <BaseFilterSection data={progressStatus} title="Статус" />;
+interface StatusFilterSectionProps {
+	selectedStatuses?: number[];
+	onChangeStatus: (status: number[]) => void;
+}
+
+export const StatusFilterSection = ({
+	onChangeStatus,
+	selectedStatuses,
+}: StatusFilterSectionProps) => {
+	const onClick = (id: number) => {
+		const isDataExist = selectedStatuses?.some((item) => item === id);
+		const updates = isDataExist
+			? (selectedStatuses || []).filter((item) => item !== id)
+			: [...(selectedStatuses || []), id];
+		onChangeStatus(updates);
+	};
+
+	const preparedData = progressStatus.map((item) => ({
+		...item,
+		active: selectedStatuses?.some((selectedItem) => item.id === selectedItem),
+	}));
+
+	return <BaseFilterSection data={preparedData} title="Статус" onClick={onClick} />;
 };
