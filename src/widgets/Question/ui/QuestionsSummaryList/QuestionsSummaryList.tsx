@@ -6,11 +6,13 @@ interface QuestionsListProps {
 	questions?: Question[];
 }
 
+import styles from './QuestionsSummaryList.module.css';
+
 export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
 	return (
 		<>
 			<h1>Вопросы React, JS555</h1>
-			<hr />
+			<hr className={styles.divider} />
 			{questions &&
 				questions.map((question) => {
 					return (

@@ -36,6 +36,7 @@ export interface QuestionsListParams {
 	title?: string;
 	titleOrDescription?: string;
 	rate?: number[]; //complexity
+	rating?: number[]; //rate
 	specialization?: number[];
 	progressStatus?: number[]; //not implemented
 	complexity?: number[]; //not implemented
