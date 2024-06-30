@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-
-import ArrowRightIcon from '@/shared/assets/icons/arrowRight.svg';
+import { Icon } from 'yeahub-ui-kit';
 
 import styles from './LinkWithArrowRight.module.css';
 
@@ -10,11 +8,11 @@ interface Props {
 	linkTitle?: string;
 }
 
-export const LinkWithArrowRight: FC<Props> = ({ link, linkTitle }) => {
+export const LinkWithArrowRight = ({ link, linkTitle }: Props) => {
 	return (
 		<Link to={link} className={styles.link}>
 			<span>{linkTitle}</span>
-			<ArrowRightIcon className={styles.icon} />
+			<Icon icon="arrowRight" color="--palette-ui-purple-700" size={24} className={styles.icon} />
 		</Link>
 	);
 };

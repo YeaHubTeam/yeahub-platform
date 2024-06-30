@@ -35,7 +35,6 @@ const InterviewPage: FC = () => {
 					<LinkWithArrowRight link="" linkTitle="Посмотреть полностью" />
 				</div>
 			</Block>
-			<Block></Block>
 			<Block>
 				<div className={styles.questions}>
 					<InterviewQuestionHeader title="Список вопросов" linkTitle="Изучить" />

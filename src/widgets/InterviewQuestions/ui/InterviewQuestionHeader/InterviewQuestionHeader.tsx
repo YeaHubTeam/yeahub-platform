@@ -13,7 +13,7 @@ export const InterviewQuestionHeader: FC<Props> = ({ title, linkTitle }) => {
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{Boolean(linkTitle) && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
+			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
 		</div>
 	);
 };

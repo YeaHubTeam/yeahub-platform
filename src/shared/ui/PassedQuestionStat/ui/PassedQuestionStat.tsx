@@ -1,5 +1,4 @@
 import ReactECharts from 'echarts-for-react';
-import { FC } from 'react';
 
 import styles from './PassedQuestionStat.module.css';
 
@@ -10,7 +9,7 @@ interface Props {
 	saved?: number;
 }
 
-export const PassedQuestionStat: FC<Props> = ({ total, learned, unexplored, saved }) => {
+export const PassedQuestionStat = ({ total, learned, unexplored, saved }: Props) => {
 	const passedQuestionsPercent = Math.round((learned / total) * 100);
 
 	const gaugeData = [
@@ -28,8 +27,8 @@ export const PassedQuestionStat: FC<Props> = ({ total, learned, unexplored, save
 		series: [
 			{
 				type: 'gauge',
-				startAngle: 90,
-				endAngle: -270,
+				startAngle: 0,
+				endAngle: 360,
 				radius: '100%',
 				pointer: {
 					show: false,
@@ -68,43 +67,6 @@ export const PassedQuestionStat: FC<Props> = ({ total, learned, unexplored, save
 			},
 		],
 	};
-
-	// const option = {
-	// 	showEmptyCircle: true,
-	// 	title: {
-	// 		text: `${passedQuestionsPercent}%\n пройдено`,
-	// 		left: 'center',
-	// 		top: 'center',
-	// 	},
-	// 	series: [
-	// 		{
-	// 			name: 'Статистика собеседований',
-	// 			type: 'pie',
-	// 			radius: ['80%', '100%'],
-	// 			avoidLabelOverlap: false,
-	// 			label: {
-	// 				show: false,
-	// 			},
-	// 			labelLine: {
-	// 				show: false,
-	// 			},
-	// 			data: [
-	// 				{
-	// 					value: learned,
-	// 					name: 'Изучено',
-	// 					itemStyle: { color: '#400799', borderRadius: 16 },
-	// 				},
-	// 				{
-	// 					value: unexplored,
-	// 					name: 'Не изучено',
-	// 					itemStyle: {
-	// 						color: '#F0E7FF',
-	// 					},
-	// 				},
-	// 			],
-	// 		},
-	// 	],
-	// };
 
 	return (
 		<div className={styles.container}>
