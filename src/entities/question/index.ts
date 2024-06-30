@@ -1,2 +1,3 @@
 export type { Question } from './model/types/question';
-export { useGetQuestionQuery } from './api/questionApi';
+export { useGetQuestionByIdQuery, useGetQuestionsListQuery } from './api/questionApi';
+export { QuestionPreview } from './ui/QuestionPreview/QuestionPreview';

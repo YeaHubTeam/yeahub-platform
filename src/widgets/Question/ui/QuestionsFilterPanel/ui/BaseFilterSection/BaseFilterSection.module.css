@@ -1,0 +1,12 @@
+.title {
+  margin-bottom: 16px;
+  color: var(--text-color-light);
+  font-size: var(--font-size-p-m);
+}
+
+
+.category-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

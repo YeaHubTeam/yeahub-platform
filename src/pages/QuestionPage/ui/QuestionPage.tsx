@@ -1,4 +1,4 @@
-import { useGetQuestionQuery } from '@/entities/question';
+import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import {
 	QuestionHeader,
@@ -11,7 +11,7 @@ import {
 import styles from './QuestionPage.module.css';
 
 export const QuestionPage = () => {
-	const { data: question } = useGetQuestionQuery(1);
+	const { data: question } = useGetQuestionByIdQuery(1);
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>

@@ -1,0 +1,26 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arrow-button {
+  cursor: pointer;
+}
+
+.page-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  background: var(--light-gray);
+  cursor: pointer;
+}
+
+.active {
+  background: var(--background-primary);
+  color: var(--background-block)
+}

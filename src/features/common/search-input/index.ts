@@ -1,1 +1,1 @@
-// export { SearchInput } from './ui/SearchInput';
+export { SearchInput } from './ui/SearchInput';
