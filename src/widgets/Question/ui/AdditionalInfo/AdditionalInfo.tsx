@@ -7,7 +7,7 @@ import styles from './AdditionalInfo.module.css';
 
 export const AdditionalInfo = () => {
 	return (
-		<Block>
+		<Block className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Уровень:</h4>
 				<ul className={styles['param-wrapper']}>
