@@ -1,6 +1,6 @@
 import { AddAndSave, HorizontalContainer, VerticalContainer } from '../CommonElements';
 
-import cls from './EducationForm.module.css';
+import style from './EducationForm.module.css';
 import { EducationInputsBlock } from './EducationInputsBlock';
 
 export const EducationFrom = () => {
@@ -8,7 +8,7 @@ export const EducationFrom = () => {
 		<>
 			<VerticalContainer>
 				<HorizontalContainer>
-					<div className={cls.description}>
+					<div className={style.description}>
 						<h3>Где ты учился(-ась)</h3>
 						<p>
 							Мы понимаем что в IT образование уступает в приоритете навыкам, но это так же важно.

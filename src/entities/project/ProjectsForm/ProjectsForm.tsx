@@ -4,19 +4,19 @@ import { ImageLoader } from '@/shared/ui/ImageLoader';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
-import cls from './ProjectForm.module.css';
+import style from './ProjectForm.module.css';
 
 export const ProjectForm = () => {
 	return (
 		<>
-			<div className={cls['container-top']}>
-				<div className={cls.description}>
+			<div className={style['container-top']}>
+				<div className={style.description}>
 					<h3>Твои проекты</h3>
 					<p>Вау, а ты хорош</p>
 				</div>
 
-				<div className={cls['container-top-btn']}>
-					<Button className={cls['btn-add']} theme="tertiary" textClassName={cls['btn-add']}>
+				<div className={style['container-top-btn']}>
+					<Button className={style['btn-add']} theme="tertiary" textClassName={style['btn-add']}>
 						Изменить порядок
 					</Button>
 					<Button
@@ -33,30 +33,30 @@ export const ProjectForm = () => {
 			</h1>
 			<VerticalContainer>
 				<HorizontalContainer>
-					<div className={cls.description}>
+					<div className={style.description}>
 						<h3>Твои навыки</h3>
 						<p>Покажи что ты умеешь и в чём ты действительно хорошо</p>
 					</div>
-					<div className={cls['right-wrapper']}>
+					<div className={style['right-wrapper']}>
 						<ImageLoader />
-						<div className={cls['inputs-wrapper']}>
-							<Label className={cls.label} text="Название проекта" required>
-								<Input className={cls.input} />
+						<div className={style['inputs-wrapper']}>
+							<Label className={style.label} text="Название проекта" required>
+								<Input className={style.input} />
 							</Label>
-							<Label className={cls.label} text="Ссылка на проект" required>
-								<Input className={cls.input} />
+							<Label className={style.label} text="Ссылка на проект" required>
+								<Input className={style.input} />
 							</Label>
-							<Label className={cls['label-textarea']} text="Описание проекта" required>
+							<Label className={style['label-textarea']} text="Описание проекта" required>
 								<textarea
-									className={cls.textarea}
+									className={style.textarea}
 									placeholder="Расскажи чуть подробнее о проекте"
 									name=""
 									id=""
 								></textarea>
 							</Label>
 						</div>
-						<div className={cls['container-bottom-btn']}>
-							<Button size="medium" theme="tertiary" textClassName={cls['btn-text']}>
+						<div className={style['container-bottom-btn']}>
+							<Button size="medium" theme="tertiary" textClassName={style['btn-text']}>
 								Удалить
 							</Button>
 							<Button>Сохранить</Button>

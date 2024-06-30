@@ -3,7 +3,7 @@
 //ToDo заменить на UIKit
 import { useEffect, useRef } from 'react';
 
-import cls from './Tabs.module.css';
+import style from './Tabs.module.css';
 
 interface TabProps {
 	names: Array<string>;
@@ -28,7 +28,7 @@ export const Tabs = ({ names, title, tabToggle, setTabToggle }: TabProps) => {
 
 	useEffect(() => {
 		const tabElement = document.querySelector(
-			`.${cls['tab-item']}.${cls.active}`,
+			`.${style['tab-item']}.${style.active}`,
 		) as HTMLLIElement | null;
 		if (tabElement && lineRef.current) {
 			const tabRect = tabElement.offsetLeft;
@@ -38,14 +38,14 @@ export const Tabs = ({ names, title, tabToggle, setTabToggle }: TabProps) => {
 	}, []);
 
 	return (
-		<div className={cls['tab-container']}>
-			<div className={cls.line} ref={lineRef}></div>
+		<div className={style['tab-container']}>
+			<div className={style.line} ref={lineRef}></div>
 			<h2>{title}</h2>
-			<ul className={cls['tab-list']}>
+			<ul className={style['tab-list']}>
 				{names.map((name, index) => (
 					<li
 						key={index}
-						className={`${cls['tab-item']} ${tabToggle === index ? cls.active : ''}`}
+						className={`${style['tab-item']} ${tabToggle === index ? style.active : ''}`}
 						onClick={(e) => handleTabToggle(e, index)}
 					>
 						{name}

@@ -5,7 +5,7 @@ import { RefObject, useRef } from 'react';
 import Gallery from '@/shared/assets/images/Gallery.png';
 import withoutPhoto from '@/shared/assets/images/Photo_Profile.png';
 
-import cls from './ImageLoader.module.css';
+import style from './ImageLoader.module.css';
 
 export const ImageLoader = () => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
@@ -15,24 +15,24 @@ export const ImageLoader = () => {
 		}
 	};
 	return (
-		<div className={cls.container}>
-			<div className={cls['profile-picture-wrapper']}>
-				<div className={cls['avatar-wrapper']}>
+		<div className={style.container}>
+			<div className={style['profile-picture-wrapper']}>
+				<div className={style['avatar-wrapper']}>
 					<img src={withoutPhoto} alt="Avatar" />
 				</div>
-				<div onClick={handleUploader} className={cls['image-upload-container']}>
-					<div className={cls['svg-wrapper']}>
+				<div onClick={handleUploader} className={style['image-upload-container']}>
+					<div className={style['svg-wrapper']}>
 						<img src={Gallery} alt="" />
 					</div>
 
 					<p>
 						<span>Кликни для изменения</span> или перетащи сюда фотографию
 					</p>
-					<p className={cls['size-descriptions']}>JPG,PNG,JPEG (не более 5мб)</p>
+					<p className={style['size-descriptions']}>JPG,PNG,JPEG (не более 5мб)</p>
 					<input ref={uploaderRef} type="file" accept="image/*" hidden />
 				</div>
 			</div>
-			<button type="button" className={cls.btn}>
+			<button type="button" className={style.btn}>
 				Удалить фото
 			</button>
 		</div>
