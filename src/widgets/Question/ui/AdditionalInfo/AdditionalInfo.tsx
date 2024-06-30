@@ -7,6 +7,7 @@ import { QuestionSkill } from '@/entities/question';
 
 import styles from './AdditionalInfo.module.css';
 
+//todo после обновления рейтинга и сложности скорректировать рендер компонента
 interface Props {
 	rate?: number;
 	questionSkills?: QuestionSkill[];
