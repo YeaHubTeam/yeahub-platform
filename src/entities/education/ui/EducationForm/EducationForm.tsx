@@ -1,6 +1,4 @@
-import { AddAndSave } from '../CommonElements/AddAndSave/AddAndSave';
-import { HorizontalContainer } from '../CommonElements/HorizontalContainer/HorizontalContainer';
-import { VerticalContainer } from '../CommonElements/VerticalContainer/VerticalContainer';
+import { AddAndSave, HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import cls from './EducationForm.module.css';
 import { EducationInputsBlock } from './EducationInputsBlock';

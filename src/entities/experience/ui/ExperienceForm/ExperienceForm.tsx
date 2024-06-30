@@ -1,5 +1,4 @@
-import { HorizontalContainer, VerticalContainer } from '../CommonElements';
-import { AddAndSave } from '../CommonElements/AddAndSave/AddAndSave';
+import { AddAndSave, HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import cls from './ExperienceForm.module.css';
 import { ExperienceInputsBlock } from './ExperienceInputsBlock';
