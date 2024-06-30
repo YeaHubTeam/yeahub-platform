@@ -1,20 +1,22 @@
-import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Icon, IconButton } from 'yeahub-ui-kit';
 
-import Message from '@/shared/assets/icons/message.svg';
-import Notification from '@/shared/assets/icons/notification.svg';
-import Settings from '@/shared/assets/icons/settings.svg';
 import Avatar from '@/shared/assets/images/MockAvatar.png';
 
 import styles from './UserPreferences.module.css';
 
-export const UserPreferences: FC = () => {
+export const UserPreferences = () => {
 	return (
 		<div className={styles.preferences}>
-			<div className={styles['btns-group']}>
-				<Message className={styles.icon} />
-				<Notification className={styles.icon} />
-				<Settings className={styles.icon} />
+			<div>
+				<IconButton
+					aria-label="go to preferences"
+					disabled
+					form="square"
+					icon={<Icon icon="gearSix" size={20} />}
+					size="small"
+					theme="tertiary"
+				/>
 			</div>
 			<NavLink to="/" className={styles.avatar}>
 				<img className={styles.img} src={Avatar} alt="avatar" />

@@ -3,16 +3,18 @@ import { configureStore } from '@reduxjs/toolkit';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { State } from '@/shared/config/store/State';
 
-import { rootReducer } from '../rootReducer';
+import { authSlice } from '@/entities/auth';
 
 export const createReduxStore = (initialState?: State) => {
 	return configureStore({
-		reducer: rootReducer,
-		devTools: __IS_DEV__,
+		reducer: {
+			auth: authSlice.reducer,
+			[baseApi.reducerPath]: baseApi.reducer,
+		},
 		preloadedState: initialState,
-
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 	});
 };
 
-export type RootState = ReturnType<typeof rootReducer>;
+const store = createReduxStore();
+export type RootState = ReturnType<typeof store.getState>;

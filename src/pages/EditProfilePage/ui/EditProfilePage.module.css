@@ -9,7 +9,6 @@ section * {
 .section {
   padding: 24px;
   width: 100%;
-  max-width: 1120px;
   border-radius: 24px;
   background: var(--color-white-900);
 }
