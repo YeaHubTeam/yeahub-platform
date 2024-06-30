@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import {
@@ -11,7 +13,8 @@ import {
 import styles from './QuestionPage.module.css';
 
 export const QuestionPage = () => {
-	const { data: question } = useGetQuestionByIdQuery(1);
+	const { questionId } = useParams<{ questionId: string }>();
+	const { data: question } = useGetQuestionByIdQuery(questionId as string);
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
