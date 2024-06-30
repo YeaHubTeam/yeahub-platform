@@ -14,3 +14,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.author {
+  text-align: center;
+}

@@ -3,43 +3,42 @@ import { Chip, Icon } from 'yeahub-ui-kit';
 import { Block } from '@/shared/ui/Block';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
+import { QuestionSkill } from '@/entities/question';
+
 import styles from './AdditionalInfo.module.css';
 
-export const AdditionalInfo = () => {
+interface Props {
+	rate?: number;
+	questionSkills?: QuestionSkill[];
+}
+
+export const AdditionalInfo = ({ rate, questionSkills }: Props) => {
 	return (
 		<Block className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Уровень:</h4>
 				<ul className={styles['param-wrapper']}>
-					<QuestionParam label="Сложность" value={10} />
-					<QuestionParam label="Рейтинг" value={10} />
+					<QuestionParam label="Сложность" value={rate ?? 0} />
+					<QuestionParam label="Рейтинг" value={rate ?? 0} />
 				</ul>
 			</div>
 			<div>
 				<h4 className={styles.title}>Навыки:</h4>
-				{/* //todo после правки интрфейса скила доделать нормальное отображение*/}
 				<ul className={styles['param-wrapper']}>
-					<Chip
-						className={styles.chip}
-						label={'React'}
-						theme="primary"
-						active
-						preffix={<Icon icon="atom" />}
-					/>
-					<Chip
-						className={styles.chip}
-						label={'JavaScript'}
-						theme="primary"
-						active
-						preffix={<Icon icon="fileJs" />}
-					/>
-					<Chip
-						className={styles.chip}
-						label={'DOM'}
-						theme="primary"
-						active
-						preffix={<Icon icon="fileHtml" />}
-					/>
+					{questionSkills?.length
+						? questionSkills.map((skill) => {
+								return (
+									<Chip
+										key={skill.id}
+										className={styles.chip}
+										label={skill.title}
+										theme="primary"
+										active
+										preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
+									/>
+								);
+							})
+						: 'автор так и не понял к какой технологии относится данный вопрос'}
 				</ul>
 			</div>
 		</Block>

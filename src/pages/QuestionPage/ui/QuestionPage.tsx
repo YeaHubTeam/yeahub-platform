@@ -28,9 +28,9 @@ export const QuestionPage = () => {
 			</div>
 			<div className={styles['additional-info-wrapper']}>
 				<ProgressBlock />
-				<AdditionalInfo />
-				<p>
-					Автор: <span>Дмитрий Мусенко</span>
+				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
+				<p className={styles.author}>
+					Автор: <span>{question?.author ?? 'неизвестный, но очень умный'}</span>
 				</p>
 			</div>
 		</section>
