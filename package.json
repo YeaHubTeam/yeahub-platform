@@ -124,7 +124,7 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.1",
     "storybook-react-i18next": "^3.0.1",
-    "yeahub-ui-kit": "^1.0.10"
+    "yeahub-ui-kit": "^1.0.15"
   },
   "loki": {
     "configurations": {

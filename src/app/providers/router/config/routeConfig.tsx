@@ -6,6 +6,7 @@ import { InterviewPage } from '@/pages/InterviewPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
+import { QuestionPage } from '@/pages/QuestionPage';
 
 import { App } from '@/app/App';
 
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage />,
+			},
+			{
+				path: 'question',
+				element: <QuestionPage />,
 			},
 			{
 				path: '*',

@@ -1,4 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
@@ -11,30 +12,33 @@ import styles from './MainPage.module.css';
 const MainPage: FC = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
-	const { profileDetail } = useAppSelector((state) => state.auth);
+	const { profile } = useAppSelector((state) => state.auth);
 
-	const getPercentProfileFullness = useCallback((profileDetail: GetProfileApiResponse) => {
-		const allFileldsCount = Object.keys(profileDetail).length - 1;
-		const fullnessCount = Object.values(profileDetail).map((item) => item.length > 0).length - 1;
+	const getPercentProfileFullness = useCallback((profile: GetProfileApiResponse) => {
+		const allFileldsCount = Object.keys(profile).length - 1;
+		const fullnessCount =
+			Object.values(profile).filter((item) => item && item.length > 0).length - 1;
 
-		const percentFullness = (fullnessCount / allFileldsCount) * 100;
-
+		const percentFullness = Math.round((fullnessCount / allFileldsCount) * 100);
 		return percentFullness;
 	}, []);
 
 	useEffect(() => {
-		if (profileDetail) {
-			const percentFullness = getPercentProfileFullness(profileDetail);
+		if (profile) {
+			const percentFullness = getPercentProfileFullness(profile);
 			setPercentProfileFullness(percentFullness as number);
 		}
-	}, [getPercentProfileFullness, profileDetail]);
+	}, [getPercentProfileFullness, profile]);
+
+	const isIncompleteProfile = percentProfileFullness < 100;
 
 	return (
 		<>
-			{profileDetail && (
+			{profile && (
 				<div className={styles.wrapper}>
-					<h2 className={styles.title}>Привет, {profileDetail.firstName}!</h2>
-					{percentProfileFullness < 100 && (
+					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
+					<Link to="/question">Вопрос</Link>
+					{isIncompleteProfile && (
 						<Block className={styles.block}>
 							<div className={styles['block-wrapper']}>
 								<div className={styles['block-content']}>

@@ -16,7 +16,7 @@
   margin: 0;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-h-m);
 }
 
 .form {
