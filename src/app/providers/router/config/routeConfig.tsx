@@ -7,6 +7,7 @@ import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { QuestionPage } from '@/pages/QuestionPage';
+import { QuestionsPage } from '@/pages/QuestionsPage';
 
 import { App } from '@/app/App';
 
@@ -32,7 +33,11 @@ export const router = createBrowserRouter([
 				element: <LoginPage />,
 			},
 			{
-				path: 'question',
+				path: 'questions',
+				element: <QuestionsPage />,
+			},
+			{
+				path: 'questions/:questionId',
 				element: <QuestionPage />,
 			},
 			{

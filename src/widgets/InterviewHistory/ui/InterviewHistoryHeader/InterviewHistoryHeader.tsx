@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 
-import ArrowRightIcon from '@/shared/assets/icons/arrowRight.svg';
+import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 
 import styles from './InterviewHistoryHeader.module.css';
 
@@ -14,12 +13,7 @@ export const InterviewHistoryHeader: FC<Props> = ({ title, linkTitle }) => {
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{linkTitle && (
-				<Link to="/questions" className={styles.link}>
-					<span>{linkTitle}</span>
-					<ArrowRightIcon className={styles.icon} />
-				</Link>
-			)}
+			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
 		</div>
 	);
 };

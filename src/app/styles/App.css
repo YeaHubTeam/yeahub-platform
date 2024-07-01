@@ -66,6 +66,7 @@
   --background-nav-item: var(--color-purple-100);
   --background-nav-item-hover: var(--color-black-25);
   --border-color: var(--color-black-100);
+  --background-primary: var(--color-purple-700);
 
   /* dimensions */
   --font-size-p-xs: 12px;
@@ -98,6 +99,7 @@
   --background-nav-item: var(--color-purple-500);
   --background-nav-item-hover: var(--color-black-800);
   --border-color: var(--color-black-500);
+  --background-primary: var(--color-purple-700);
 }
 
 body {
