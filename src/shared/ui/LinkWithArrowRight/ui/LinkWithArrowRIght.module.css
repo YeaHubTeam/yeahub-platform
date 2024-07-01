@@ -3,7 +3,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 8px;
-  color: var(--color-purple-700);
+  color: var(--text-color-link-active);
   text-decoration: none;
   font-weight: var(--font-weight-600);
 }
