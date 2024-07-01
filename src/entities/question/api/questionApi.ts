@@ -1,21 +1,25 @@
+import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import { Response } from '@/shared/types/types';
 
-import { Question } from '../model/types/question';
+import { Question, QuestionsListParams } from '../model/types/question';
 
-export const questionApi = baseApi.injectEndpoints({
-	endpoints: (builder) => ({
-		getQuestion: builder.query<Question, number>({
-			query: (id) => `questions/${id}`,
-			async onQueryStarted(_, { queryFulfilled }) {
-				try {
-					const result = await queryFulfilled;
-					console.log(result.data);
-				} catch (error) {
-					console.log(error);
-				}
-			},
+const questionApi = baseApi.injectEndpoints({
+	endpoints: (build) => ({
+		getQuestionsList: build.query<Response<Question[]>, QuestionsListParams>({
+			query: (params) => ({
+				url: '/questions',
+				params,
+			}),
+			providesTags: [ApiTags.QUESTIONS],
+		}),
+		getQuestionById: build.query<Question, string>({
+			query: (questionId) => ({
+				url: `/questions/${questionId}`,
+			}),
+			providesTags: [ApiTags.QUESTION_DETAIL],
 		}),
 	}),
 });
 
-export const { useGetQuestionQuery } = questionApi;
+export const { useGetQuestionsListQuery, useGetQuestionByIdQuery } = questionApi;

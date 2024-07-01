@@ -3,7 +3,7 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.accordion + .accordion {
+.accordion+.accordion {
   margin-top: 24px;
 }
 

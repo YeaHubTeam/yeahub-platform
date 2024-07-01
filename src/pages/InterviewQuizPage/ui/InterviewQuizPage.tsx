@@ -28,7 +28,7 @@ const InterviewQuizPage = () => {
 					goToNextSlide={goToNextSlide}
 					goToPrevSlide={goToPrevSlide}
 				/>
-				<InterviewSlider id={id} title={title} imageSrc={imageSrc} longAnswer={longAnswer} />
+				<InterviewSlider id={id} title={title} imageSrc={imageSrc} longAnswer={longAnswer ?? ''} />
 				<Button className={styles['end-button']}>Завершить</Button>
 			</Block>
 		</div>

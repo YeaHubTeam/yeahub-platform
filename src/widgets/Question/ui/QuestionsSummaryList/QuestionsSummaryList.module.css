@@ -1,0 +1,5 @@
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-100); 
+}

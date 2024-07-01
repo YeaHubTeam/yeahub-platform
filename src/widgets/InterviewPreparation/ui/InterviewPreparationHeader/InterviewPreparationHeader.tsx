@@ -1,7 +1,4 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
-
-import ArrowRightIcon from '@/shared/assets/icons/arrowRight.svg';
+import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 
 import styles from './InterviewPreparationHeader.module.css';
 
@@ -10,16 +7,11 @@ interface Props {
 	linkTitle?: string;
 }
 
-export const InterviewPreparationHeader: FC<Props> = ({ title, linkTitle }) => {
+export const InterviewPreparationHeader = ({ title, linkTitle }: Props) => {
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{linkTitle && (
-				<Link to="/interviewQuiz" className={styles.link}>
-					<span>{linkTitle}</span>
-					<ArrowRightIcon className={styles.icon} />
-				</Link>
-			)}
+			{!!linkTitle && <LinkWithArrowRight link="/interviewQuiz" linkTitle={linkTitle} />}
 		</div>
 	);
 };

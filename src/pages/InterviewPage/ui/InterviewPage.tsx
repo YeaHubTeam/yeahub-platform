@@ -1,6 +1,8 @@
 import { FC } from 'react';
 
 import { Block } from '@/shared/ui/Block';
+import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
+import { PassedQuestionStat } from '@/shared/ui/PassedQuestionStat';
 
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
@@ -25,7 +27,13 @@ const InterviewPage: FC = () => {
 					</div>
 				</div>
 			</Block>
-			<Block></Block>
+			<Block>
+				<div className={styles.questions}>
+					<InterviewQuestionHeader title="Статистика собеседований" />
+					<PassedQuestionStat total={120} learned={20} unexplored={50} />
+					<LinkWithArrowRight link="" linkTitle="Посмотреть полностью" />
+				</div>
+			</Block>
 			<Block>
 				<div className={styles.questions}>
 					<InterviewQuestionHeader title="Список вопросов" linkTitle="Изучить" />
