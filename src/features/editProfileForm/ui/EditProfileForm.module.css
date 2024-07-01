@@ -1,0 +1,22 @@
+section * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+
+}
+
+.section {
+  padding: 24px;
+  width: 100%;
+  border-radius: 24px;
+  background: var(--color-white-900);
+}
+
+.section form {
+  margin-top: 36px;
+  max-width: 1026px;
+}
+
+
+

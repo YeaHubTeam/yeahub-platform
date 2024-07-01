@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
 import { InterviewPage } from '@/pages/InterviewPage';
 import { LoginPage } from '@/pages/LoginPage';
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'questions/:questionId',
 				element: <QuestionPage />,
+			},
+			{
+				path: 'edit',
+				element: <EditProfilePage />,
 			},
 			{
 				path: '*',
