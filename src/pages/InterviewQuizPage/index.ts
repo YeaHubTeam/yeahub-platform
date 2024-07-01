@@ -1,1 +1,1 @@
-export { InterviewQuizPage } from './ui/InterviewQuizPagу.lazy';
+export { InterviewQuizPage } from './ui/InterviewQuizPage.lazy';

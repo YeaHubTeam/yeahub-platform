@@ -1,37 +1,10 @@
 import { useState } from 'react';
 
-export interface Question {
-	id: number;
-	title: string;
-	description: string;
-	keywords: string[];
-	shortAnswer: string;
-	longAnswer: string;
-	status: string;
-	rate: number;
-	rating: number;
-	specializations: number[];
-	skills: number[];
-	imageSrc?: string;
-}
+// eslint-disable-next-line
+import { Question } from '@/entities/question';
 
 export const useSlideSwitcher = (questions: Question[]) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-
-	const {
-		id,
-		title,
-		description,
-		keywords,
-		shortAnswer,
-		longAnswer,
-		status,
-		rate,
-		rating,
-		specializations,
-		skills,
-		imageSrc,
-	} = questions[currentQuestion];
 
 	const goToNextSlide = () => {
 		setCurrentQuestion((prev) => (prev === questions.length - 1 ? 0 : prev + 1));
@@ -42,19 +15,7 @@ export const useSlideSwitcher = (questions: Question[]) => {
 	};
 
 	return {
-		currentQuestion,
-		id,
-		title,
-		description,
-		keywords,
-		shortAnswer,
-		longAnswer,
-		status,
-		rate,
-		rating,
-		specializations,
-		skills,
-		imageSrc,
+		...questions[currentQuestion],
 		goToNextSlide,
 		goToPrevSlide,
 	};

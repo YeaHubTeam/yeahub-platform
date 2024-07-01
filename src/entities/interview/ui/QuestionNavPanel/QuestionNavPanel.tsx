@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
@@ -11,11 +10,11 @@ interface Props {
 	showResponseButtons?: boolean;
 }
 
-export const QuestionNavPanel: FC<Props> = ({
+export const QuestionNavPanel = ({
 	goToNextSlide,
 	goToPrevSlide,
 	showResponseButtons = true,
-}) => {
+}: Props) => {
 	return (
 		<div className={styles.panel}>
 			<button className={styles.button} onClick={goToPrevSlide}>

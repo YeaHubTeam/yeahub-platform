@@ -1,13 +1,8 @@
-import { FC } from 'react';
 import { Icon, Button } from 'yeahub-ui-kit';
 
 import styles from './ResponseButtons.module.css';
 
-interface Props {
-	className?: string;
-}
-
-export const ResponseButtons: FC<Props> = ({ className }) => {
+export const ResponseButtons = ({ className }: { className?: string }) => {
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
 			<Button

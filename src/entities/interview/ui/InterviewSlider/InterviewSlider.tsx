@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
@@ -13,7 +13,7 @@ interface Props {
 	longAnswer: string;
 }
 
-export const InterviewSlider: FC<Props> = ({ id, title, imageSrc, longAnswer }) => {
+export const InterviewSlider = ({ id, title, imageSrc, longAnswer }: Props) => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
 	const toggleAnswerVisibility = () => {
@@ -24,12 +24,13 @@ export const InterviewSlider: FC<Props> = ({ id, title, imageSrc, longAnswer }) 
 		<article key={id} className={styles.slider}>
 			<div className={styles.wrapper}>
 				<p className={styles.question}>{title}</p>
-				{!isAnswerVisible && (
+				{!isAnswerVisible ? (
 					<button className={styles.answer} onClick={toggleAnswerVisibility}>
 						Посмотреть ответ
 					</button>
+				) : (
+					<div>{longAnswer}</div>
 				)}
-				{isAnswerVisible && <div>{longAnswer}</div>}
 				<ResponseButtons className={styles['response-buttons']} />
 			</div>
 			<ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />
