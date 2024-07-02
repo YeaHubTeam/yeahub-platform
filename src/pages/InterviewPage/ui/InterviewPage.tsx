@@ -2,10 +2,11 @@ import { FC } from 'react';
 
 import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
-import { PassedQuestionStat } from '@/shared/ui/PassedQuestionStat';
+import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { QuestionProgressBar } from '@/entities/interview';
 
+import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
 import { QuestionSlider } from '@/widgets/InterviewPreparation';
@@ -14,6 +15,21 @@ import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/Inter
 import styles from './InterviewPage.module.css';
 
 const InterviewPage: FC = () => {
+	const questionStats = [
+		{
+			title: 'Всего вопросов',
+			value: '120',
+		},
+		{
+			title: 'Не изучено',
+			value: '40',
+		},
+		{
+			title: 'Изучено',
+			value: '20',
+		},
+	];
+
 	return (
 		<div className={styles.container}>
 			<Block>
@@ -31,8 +47,9 @@ const InterviewPage: FC = () => {
 			<Block>
 				<div className={styles.questions}>
 					<InterviewQuestionHeader title="Статистика собеседований" />
-					<PassedQuestionStat total={120} learned={20} unexplored={50} />
-					<LinkWithArrowRight link="" linkTitle="Посмотреть полностью" />
+					<PassedQuestionChart total={120} learned={20} />
+					<PassedQuestionStatInfo stats={questionStats} />
+					<LinkWithArrowRight link="/interview-statistics" linkTitle="Посмотреть полностью" />
 				</div>
 			</Block>
 			<Block>

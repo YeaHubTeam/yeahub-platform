@@ -1,0 +1,24 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.container>div {
+  height: auto;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.block {
+  height: auto;
+}
+
+.questions > * + * {
+  margin-top: 20px;
+}
