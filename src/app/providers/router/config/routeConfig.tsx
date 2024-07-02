@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
 import { InterviewPage } from '@/pages/InterviewPage';
+import { InterviewQuizPage } from '@/pages/InterviewQuizPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'questions/:questionId',
 				element: <QuestionPage />,
+			},
+			{
+				path: 'interviewQuiz',
+				element: <InterviewQuizPage />,
 			},
 			{
 				path: 'edit',

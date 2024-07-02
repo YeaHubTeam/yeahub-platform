@@ -4,9 +4,8 @@ import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStat } from '@/shared/ui/PassedQuestionStat';
 
-import { QuestionProgressBar } from '@/entities/interview';
-
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
 import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
@@ -23,7 +22,7 @@ const InterviewPage: FC = () => {
 						linkTitle="Пройти собеседование"
 					/>
 					<div className={styles['preparation-wrapper']}>
-						<QuestionProgressBar />
+						<QuestionProgressBarBlock />
 						<QuestionSlider />
 					</div>
 				</div>
