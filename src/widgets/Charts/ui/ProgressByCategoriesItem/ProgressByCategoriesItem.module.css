@@ -1,0 +1,13 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}

@@ -1,7 +1,11 @@
 import { Block } from '@/shared/ui/Block';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
+import {
+	PassedInterviewStat,
+	PassedQuestionChart,
+	ProgressByCategoriesList,
+} from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewStatisticsPage.module.css';
@@ -32,6 +36,51 @@ const InterviewStatisticsPage = () => {
 		{ value: 55, name: 'Средний результат', itemStyle: { color: '#6A0BFF' } },
 	];
 
+	const progressData = [
+		{
+			category: 'React',
+			passed: 80,
+			total: 120,
+			value: (80 / 120) * 100,
+		},
+		{
+			category: 'Javascript',
+			passed: 90,
+			total: 200,
+			value: (90 / 200) * 100,
+		},
+		{
+			category: 'PHP',
+			passed: 50,
+			total: 150,
+			value: (50 / 150) * 100,
+		},
+		{
+			category: 'Redux',
+			passed: 100,
+			total: 150,
+			value: (100 / 150) * 100,
+		},
+		{
+			category: 'Typescript',
+			passed: 90,
+			total: 200,
+			value: (90 / 200) * 100,
+		},
+		{
+			category: 'CSS',
+			passed: 50,
+			total: 150,
+			value: (50 / 150) * 100,
+		},
+		{
+			category: 'HTML',
+			passed: 80,
+			total: 120,
+			value: (80 / 120) * 100,
+		},
+	];
+
 	return (
 		<div className={styles.container}>
 			<Block>
@@ -53,7 +102,12 @@ const InterviewStatisticsPage = () => {
 				<PassedQuestionStatInfo stats={questionStats} />
 			</div>
 			<Block></Block>
-			<Block></Block>
+			<Block className={styles.category} expandable>
+				<div className={styles['category-progress']}>
+					<InterviewQuestionHeader title="Прогресс" />
+					<ProgressByCategoriesList optionData={progressData} />
+				</div>
+			</Block>
 		</div>
 	);
 };

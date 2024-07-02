@@ -11,10 +11,7 @@ export interface AttemptData {
 export const AttemptInfoItem = ({ value, name, itemStyle }: AttemptData) => {
 	return (
 		<li className={styles.item}>
-			<div
-				className={styles.divide}
-				style={{ backgroundColor: itemStyle?.color ? itemStyle.color : 'none' }}
-			></div>
+			<div className={styles.divide} style={{ backgroundColor: itemStyle?.color || 'none' }}></div>
 			<div className={styles.info}>
 				<span className={styles.title}>{name}</span>
 				<span className={styles.value}>{value}%</span>
