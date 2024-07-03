@@ -1,24 +1,14 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.info {
-  display: flex;
-  gap: 12px
-}
-
 .stat {
   gap: 4px;
   padding: 8px 16px;
   box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
-  border-radius: 5px;
+  border-radius: 16px;
+  background-color: var(--background-block);
   font-size: var(--font-size-p-xs);
 }
 
-.stat h4 {
+.title {
   color: var(--text-color-more-lightest);
   font-weight: var(--font-weight-500);
+
 }
