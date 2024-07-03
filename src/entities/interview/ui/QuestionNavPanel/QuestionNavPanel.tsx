@@ -1,46 +1,27 @@
-import { FC } from 'react';
-import { Icon, Button } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
+
+import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
 import styles from './QuestionNavPanel.module.css';
 
 interface Props {
-	goToNextQuestion: () => void;
-	goToPrevQuestion: () => void;
+	goToNextSlide: () => void;
+	goToPrevSlide: () => void;
+	showResponseButtons?: boolean;
 }
 
-export const QuestionNavPanel: FC<Props> = ({ goToNextQuestion, goToPrevQuestion }) => {
+export const QuestionNavPanel = ({
+	goToNextSlide,
+	goToPrevSlide,
+	showResponseButtons = true,
+}: Props) => {
 	return (
 		<div className={styles.panel}>
-			<button className={styles.button} onClick={goToPrevQuestion}>
+			<button className={styles.button} onClick={goToPrevSlide}>
 				<Icon icon="caretCircleLeft" className={styles.arrow} color="--palette-ui-purple-700" />
 			</button>
-			<div className={styles.wrapper}>
-				<Button
-					textClassName={styles['action-button']}
-					theme="tertiary"
-					size="small"
-					preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
-				>
-					Не знаю
-				</Button>
-				<Button
-					textClassName={styles['action-button']}
-					theme="tertiary"
-					size="small"
-					preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
-				>
-					Повторить
-				</Button>
-				<Button
-					textClassName={styles['action-button']}
-					theme="tertiary"
-					size="small"
-					preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
-				>
-					Знаю
-				</Button>
-			</div>
-			<button className={styles.button} onClick={goToNextQuestion}>
+			{showResponseButtons && <ResponseButtons />}
+			<button className={styles.button} onClick={goToNextSlide}>
 				<Icon icon="caretCircleRight" className={styles.arrow} color="--palette-ui-purple-700" />
 			</button>
 		</div>
