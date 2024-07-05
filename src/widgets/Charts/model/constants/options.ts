@@ -43,4 +43,34 @@ export const options = {
 			},
 		],
 	},
+	pie: {
+		series: [
+			{
+				name: 'Всего попыток',
+				type: 'pie',
+				startAngle: 0,
+				endAngle: 360,
+				emphasis: {
+					scale: false,
+				},
+				label: {
+					show: true,
+					position: 'center',
+					formatter: `{a}\n 40`,
+					color: '#474747',
+					fontSize: 20,
+					fontWeight: 600,
+					lineHeight: 27,
+				},
+				radius: ['95%', '100%'],
+				avoidLabelOverlap: false,
+				legendHoverLink: false,
+				padAngle: 15,
+				itemStyle: {
+					borderRadius: 10,
+				},
+				data: {},
+			},
+		],
+	},
 };

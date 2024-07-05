@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.list > * + * {
+  margin-top: 24px;
+}

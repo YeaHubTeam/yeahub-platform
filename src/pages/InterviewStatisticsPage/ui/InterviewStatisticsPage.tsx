@@ -1,7 +1,7 @@
 import { Block } from '@/shared/ui/Block';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { PassedQuestionChart } from '@/widgets/Charts';
+import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewStatisticsPage.module.css';
@@ -26,9 +26,20 @@ const InterviewStatisticsPage = () => {
 		},
 	];
 
+	const attemptStats = [
+		{ value: 60, name: 'Лучший результат', itemStyle: { color: '#400799' } },
+		{ value: 40, name: 'Худший результат', itemStyle: { color: '#E1CEFF' } },
+		{ value: 55, name: 'Средний результат', itemStyle: { color: '#6A0BFF' } },
+	];
+
 	return (
 		<div className={styles.container}>
-			<Block></Block>
+			<Block>
+				<div className={styles.attempt}>
+					<InterviewQuestionHeader title="Статистика пройденных собеседований" centered />
+					<PassedInterviewStat totalAttempt={40} attemptData={attemptStats} />
+				</div>
+			</Block>
 			<div className={styles.progress}>
 				<Block className={styles.block}>
 					<div className={styles.questions}>
