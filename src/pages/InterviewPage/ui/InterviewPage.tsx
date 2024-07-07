@@ -4,8 +4,6 @@ import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { QuestionProgressBar } from '@/entities/interview';
-
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';

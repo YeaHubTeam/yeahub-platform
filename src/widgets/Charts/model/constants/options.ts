@@ -35,6 +35,7 @@ export const options = {
 				data: {},
 				detail: {
 					fontSize: 18,
+					fontFamily: 'Manrope',
 					lineHeight: 24,
 					fontWeight: 600,
 					color: '#474747',
@@ -56,9 +57,10 @@ export const options = {
 				label: {
 					show: true,
 					position: 'center',
-					formatter: `{a}\n 40`,
+					formatter: '',
 					color: '#474747',
 					fontSize: 20,
+					fontFamily: 'Manrope',
 					fontWeight: 600,
 					lineHeight: 27,
 				},
