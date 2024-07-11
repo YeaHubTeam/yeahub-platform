@@ -22,3 +22,7 @@
 .questions > * + * {
   margin-top: 20px;
 }
+
+.attempt > * + * {
+  margin-top: 50px;
+}
