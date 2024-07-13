@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  grid-template-columns: auto 360px;
+  gap: 20px;
+}
+
+.calendar-block {
+  width: 360px;
+  height: 292px;
+}

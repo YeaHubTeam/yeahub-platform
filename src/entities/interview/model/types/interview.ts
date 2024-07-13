@@ -6,4 +6,7 @@ export interface Interview {
 	date: Date;
 	correctAnswersCount: number;
 	incorrectAnswersCount: number;
+	timeStamp?: string;
+	questionCount?: number;
+	questionCategories?: string[];
 }

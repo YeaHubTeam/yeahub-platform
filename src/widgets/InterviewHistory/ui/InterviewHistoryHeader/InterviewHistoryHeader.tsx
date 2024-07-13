@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 
 import styles from './InterviewHistoryHeader.module.css';
@@ -9,11 +7,11 @@ interface Props {
 	linkTitle?: string;
 }
 
-export const InterviewHistoryHeader: FC<Props> = ({ title, linkTitle }) => {
+export const InterviewHistoryHeader = ({ title, linkTitle }: Props) => {
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
+			{!!linkTitle && <LinkWithArrowRight link="/interviewHistory" linkTitle={linkTitle} />}
 		</div>
 	);
 };
