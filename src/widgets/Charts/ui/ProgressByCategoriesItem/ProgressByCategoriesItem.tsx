@@ -18,7 +18,7 @@ interface Props {
 export const ProgressByCategoriesItem = ({ progressData }: Props) => {
 	const { category, total, passed } = progressData;
 
-	const barOption = JSON.parse(JSON.stringify(options.bar));
+	const barOption = structuredClone(options.bar);
 
 	barOption.dataset.source = [progressData];
 
