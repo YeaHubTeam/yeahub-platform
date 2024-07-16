@@ -75,4 +75,60 @@ export const options = {
 			},
 		],
 	},
+	bar: {
+		dataset: {
+			source: {},
+		},
+		grid: {
+			width: '100%',
+			height: '12px',
+			top: 0,
+			left: 0,
+		},
+		xAxis: {
+			max: 100,
+			axisLabel: {
+				show: false,
+			},
+			splitLine: {
+				show: false,
+			},
+		},
+		yAxis: {
+			type: 'category',
+			axisLabel: {
+				show: false,
+			},
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false,
+			},
+			splitLine: {
+				show: false,
+			},
+		},
+		series: [
+			{
+				encode: {
+					// Map the "amount" column to X axis.
+					x: 'value',
+					// Map the "product" column to Y axis
+					y: 'product',
+				},
+				type: 'bar',
+				barWidth: 12,
+				itemStyle: {
+					borderRadius: 21,
+					color: '#400799',
+				},
+				showBackground: true,
+				backgroundStyle: {
+					borderRadius: 21,
+					color: '#F0E7FF',
+				},
+			},
+		],
+	},
 };
