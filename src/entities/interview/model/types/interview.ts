@@ -7,3 +7,10 @@ export interface Interview {
 	correctAnswersCount: number;
 	incorrectAnswersCount: number;
 }
+
+export interface InterviewQuestion {
+	id: string;
+	img: string;
+	title: string;
+	result: string;
+}
