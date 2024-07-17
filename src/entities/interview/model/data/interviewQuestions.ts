@@ -1,3 +1,5 @@
+import { InterviewQuestionBtn } from '../types/interview';
+
 // временные данные
 export const INTERVIEW_QUESTIONS = [
 	{
@@ -63,19 +65,37 @@ export const MOCK_QUIZ = {
 			id: '1',
 			img: '',
 			title: 'Что такое Virtual DOM, и как он работает?',
-			result: 'Повторить',
+			result: 'repeat',
 		},
 		{
 			id: '2',
 			img: '',
 			title: 'Что такое Virtual DOM, и как он работает?',
-			result: 'Знаю',
+			result: 'success',
 		},
 		{
 			id: '3',
 			img: '',
 			title: 'Что такое Virtual DOM, и как он работает?',
-			result: 'Не знаю',
+			result: 'failed',
 		},
 	],
 };
+
+export const INTERVIEW_BTNS_DATA: InterviewQuestionBtn[] = [
+	{
+		result: 'failed',
+		label: 'Не знаю',
+		icon: 'thumbsDown',
+	},
+	{
+		result: 'repeat',
+		label: 'Повторить',
+		icon: 'clockCounterClockwise',
+	},
+	{
+		result: 'success',
+		label: 'Знаю',
+		icon: 'thumbsUp',
+	},
+];

@@ -9,12 +9,6 @@
   gap: 12px;
 }
 
-.info > button {
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 0;
-}
-
 .img {
   width: 154px;
   height: 110px;
