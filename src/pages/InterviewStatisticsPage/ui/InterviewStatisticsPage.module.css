@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.container>div {
+  height: auto;
+}
+
+.container > .category {
+  height: 471px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.block {
+  height: auto;
+}
+
+.questions > * + *, .category-progress > * + * {
+  margin-top: 20px;
+}
+
+.attempt > * + * {
+  margin-top: 50px;
+}

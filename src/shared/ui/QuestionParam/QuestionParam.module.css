@@ -4,8 +4,8 @@
   gap: 12px;
   padding: 4px 6px;
   border-radius: 4px;
-  background-color: var(--color-black-50);
-  color: var(--color-black-800);
+  background-color: var(--background-button);
+  color: var(--text-color-primary);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-xs);
 }
@@ -13,6 +13,6 @@
 .value {
   padding-inline: 5px;
   border-radius: 4px;
-  background-color: var(--color-purple-700);
-  color: var(--color-white-900);
+  background-color: var(--text-color-link-active);
+  color: var(--background-block);
 }

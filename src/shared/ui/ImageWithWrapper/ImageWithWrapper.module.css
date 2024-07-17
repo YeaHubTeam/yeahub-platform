@@ -3,9 +3,8 @@
   flex-shrink: 0;
   width: 70px;
   height: 50px;
-  overflow: hidden;
   border-radius: 4px;
-  background-color: var(--color-purple-100);
+  background-color: var(--background-nav-item);
 }
 
 .image {
@@ -14,5 +13,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
+  border-radius: inherit;
 }

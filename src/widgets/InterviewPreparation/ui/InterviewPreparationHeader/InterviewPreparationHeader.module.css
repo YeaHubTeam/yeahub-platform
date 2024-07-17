@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}

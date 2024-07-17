@@ -1,25 +1,21 @@
+import classNames from 'classnames';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 
-import ArrowRightIcon from '@/shared/assets/icons/arrowRight.svg';
+import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 
 import styles from './InterviewQuestionHeader.module.css';
 
 interface Props {
 	title: string;
 	linkTitle?: string;
+	centered?: boolean;
 }
 
-export const InterviewQuestionHeader: FC<Props> = ({ title, linkTitle }) => {
+export const InterviewQuestionHeader: FC<Props> = ({ title, linkTitle, centered = false }) => {
 	return (
-		<div className={styles.header}>
+		<div className={classNames(styles.header, { [styles.centered]: centered })}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{linkTitle && (
-				<Link to="/questions" className={styles.link}>
-					<span>{linkTitle}</span>
-					<ArrowRightIcon className={styles.icon} />
-				</Link>
-			)}
+			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
 		</div>
 	);
 };
