@@ -1,0 +1,16 @@
+.education-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.education-title {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-h-xs);
+}
+
+.education-edit {
+  margin-left: auto;
+  font-size: var(--font-size-p-s);
+  cursor: pointer;
+}
