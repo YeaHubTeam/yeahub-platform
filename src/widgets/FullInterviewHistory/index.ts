@@ -1,2 +1,4 @@
-export { FullInterviewHistoryItem } from './FullInterviewHistoryItem/FullInterviewHistoryItem';
-export { FullInterviewHistoryList } from './FullInterviewHistoryList/FullInterviewHistoryList';
+export { FullInterviewHistoryItem } from './ui/FullInterviewHistoryItem/FullInterviewHistoryItem';
+export { FullInterviewHistoryList } from './ui/FullInterviewHistoryList/FullInterviewHistoryList';
+export { InterviewHeader } from './ui/FullInterviewHistoryItem/InterviewHeader/InterviewHeader';
+export { InterviewParameters } from './ui/FullInterviewHistoryItem/InterviewParameters/InterviewParameters';
