@@ -4,6 +4,7 @@ import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
 import { InterviewPage } from '@/pages/InterviewPage';
 import { InterviewQuizPage } from '@/pages/InterviewQuizPage';
+import { InterviewQuizResultPage } from '@/pages/InterviewQuizResultPage';
 import { InterviewStatisticsPage } from '@/pages/InterviewStatisticsPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'interviewQuiz',
 				element: <InterviewQuizPage />,
+			},
+			{
+				path: 'interviewQuizResult',
+				element: <InterviewQuizResultPage />,
 			},
 			{
 				path: 'edit',
