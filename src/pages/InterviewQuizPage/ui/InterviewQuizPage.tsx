@@ -20,7 +20,7 @@ const InterviewQuizPage = () => {
 		<div className={styles.container}>
 			<Block>
 				<div className={styles['progress-bar-title']}>
-					<p>{t('progressBarTitle', 'Вопросы собеседования')}</p>
+					<p>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>10/45</span>
 				</div>
 				<QuestionProgressBar />
@@ -32,7 +32,7 @@ const InterviewQuizPage = () => {
 					goToPrevSlide={goToPrevSlide}
 				/>
 				<InterviewSlider id={id} title={title} imageSrc={imageSrc} longAnswer={longAnswer ?? ''} />
-				<Button className={styles['end-button']}>{t('completeQuizButton', 'Завершить')}</Button>
+				<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
 			</Block>
 		</div>
 	);

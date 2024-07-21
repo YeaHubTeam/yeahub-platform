@@ -15,7 +15,7 @@ export const ResponseButtons = ({ className }: { className?: string }) => {
 				size="small"
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
 			>
-				{t('quizButtons.doNotKnow', 'Не знаю')}
+				{t('quizButtons.doNotKnow')}
 			</Button>
 			<Button
 				textClassName={styles['action-button']}
@@ -23,7 +23,7 @@ export const ResponseButtons = ({ className }: { className?: string }) => {
 				size="small"
 				preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
 			>
-				{t('quizButtons.repeat', 'Повторить')}
+				{t('quizButtons.repeat')}
 			</Button>
 			<Button
 				textClassName={styles['action-button']}
@@ -31,7 +31,7 @@ export const ResponseButtons = ({ className }: { className?: string }) => {
 				size="small"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
 			>
-				{t('quizButtons.IKnow', 'Знаю')}
+				{t('quizButtons.IKnow')}
 			</Button>
 		</div>
 	);

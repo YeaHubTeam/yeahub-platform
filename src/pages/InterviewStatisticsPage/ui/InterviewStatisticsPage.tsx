@@ -16,19 +16,19 @@ const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 	const questionStats = [
 		{
-			title: t('questionStats.passedQuestions', 'Пройдено вопросов'),
+			title: t('questionStats.passedQuestions'),
 			value: '20/120',
 		},
 		{
-			title: t('questionStats.notStudied', 'Не изучено'),
+			title: t('questionStats.notStudied'),
 			value: '50',
 		},
 		{
-			title: t('questionStats.saved', 'Сохранено'),
+			title: t('questionStats.saved'),
 			value: '60',
 		},
 		{
-			title: t('questionStats.studied', 'Изучено'),
+			title: t('questionStats.studied'),
 			value: '20',
 		},
 	];
@@ -36,17 +36,17 @@ const InterviewStatisticsPage = () => {
 	const attemptStats = [
 		{
 			value: 60,
-			name: t('attemptStats.bestResult', 'Лучший результат'),
+			name: t('attemptStats.bestResult'),
 			itemStyle: { color: '#400799' },
 		},
 		{
 			value: 40,
-			name: t('attemptStats.worstResult', 'Худший результат'),
+			name: t('attemptStats.worstResult'),
 			itemStyle: { color: '#E1CEFF' },
 		},
 		{
 			value: 55,
-			name: t('attemptStats.avgResult', 'Средний результат'),
+			name: t('attemptStats.avgResult'),
 			itemStyle: { color: '#6A0BFF' },
 		},
 	];
@@ -100,20 +100,14 @@ const InterviewStatisticsPage = () => {
 		<div className={styles.container}>
 			<Block>
 				<div className={styles.attempt}>
-					<InterviewQuestionHeader
-						title={t('attemptStats.title', 'Статистика пройденных собеседований')}
-						centered
-					/>
+					<InterviewQuestionHeader title={t('attemptStats.title')} centered />
 					<PassedInterviewStat totalAttempt={40} attemptData={attemptStats} />
 				</div>
 			</Block>
 			<div className={styles.progress}>
 				<Block className={styles.block}>
 					<div className={styles.questions}>
-						<InterviewQuestionHeader
-							title={t('questionStats.title', 'Статистика пройденных вопросов по всем категориям')}
-							centered
-						/>
+						<InterviewQuestionHeader title={t('questionStats.title')} centered />
 						<PassedQuestionChart total={120} learned={20} />
 					</div>
 				</Block>
@@ -122,7 +116,7 @@ const InterviewStatisticsPage = () => {
 			<Block></Block>
 			<Block className={styles.category} expandable>
 				<div className={styles['category-progress']}>
-					<InterviewQuestionHeader title={t('progress.title', 'Прогресс')} />
+					<InterviewQuestionHeader title={t('progress.title')} />
 					<ProgressByCategoriesList optionData={progressData} />
 				</div>
 			</Block>

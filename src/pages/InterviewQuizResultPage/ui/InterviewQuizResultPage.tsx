@@ -20,19 +20,19 @@ const InterviewQuizResultPage = () => {
 
 	const questionStats = [
 		{
-			title: t('questionStats.passed', 'Пройдено вопросов'),
+			title: t('questionStats.passed'),
 			value: `${passedCount}/${allCount}`,
 		},
 		{
-			title: t('questionStats.timeSpent', 'Время'),
+			title: t('questionStats.timeSpent'),
 			value: formatTime(new Date(date)),
 		},
 		{
-			title: t('questionStats.date', 'Дата'),
+			title: t('questionStats.date'),
 			value: formatDate(new Date(date)),
 		},
 		{
-			title: t('questionStats.duration', 'Длительность'),
+			title: t('questionStats.duration'),
 			value: duration,
 		},
 	];
@@ -42,7 +42,7 @@ const InterviewQuizResultPage = () => {
 			<Block>
 				<div className={styles.result}>
 					<InterviewQuestionHeader
-						title={t('resultInterview.resultTitle', `Результат собеседования ${title}`, { title })}
+						title={t('resultInterview.resultTitle', null, { title })}
 						centered
 					/>
 					<PassedInterviewStat totalAttempt={totalAttempts} attemptData={stats} />
@@ -51,13 +51,7 @@ const InterviewQuizResultPage = () => {
 			<div className={styles.stats}>
 				<Block className={styles.block}>
 					<div className={styles.progress}>
-						<InterviewQuestionHeader
-							title={t(
-								'resultInterview.questionTitle',
-								'Статистика пройденных вопросов по всем категориям',
-							)}
-							centered
-						/>
+						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart total={allCount} learned={passedCount} />
 					</div>
 				</Block>
@@ -65,13 +59,7 @@ const InterviewQuizResultPage = () => {
 			</div>
 			<Block className={styles.passed}>
 				<div className={styles['passed-list']}>
-					<InterviewQuestionHeader
-						title={t(
-							'resultInterview.allPassedQuestionTitle',
-							'Список пройденных вопросов собеседования',
-						)}
-						centered
-					/>
+					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
 					<PassedQuestionsList questions={questions} />
 				</div>
 			</Block>

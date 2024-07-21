@@ -6,7 +6,7 @@ export const useI18nHelpers = (ns?: string | string[]) => {
 
 	const tWithNs = (
 		key: string,
-		defaultValue?: string,
+		defaultValue?: string | null,
 		options?: Omit<TOptions, 'defaultValue'>,
 	) => {
 		const keyWithNs = ns ? `${ns}.${key}` : key;

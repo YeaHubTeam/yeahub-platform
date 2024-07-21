@@ -24,8 +24,8 @@ export const InterviewQuestionsItem: FC<Props> = ({ question }) => {
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
 					<ul className={styles.params}>
-						<QuestionParam label={t('questions.rating', 'Рейтинг')} value={rating} />
-						<QuestionParam label={t('questions.complexity', 'Сложность')} value={rate} />
+						<QuestionParam label={t('questions.rating')} value={rating} />
+						<QuestionParam label={t('questions.complexity')} value={rate} />
 					</ul>
 				</div>
 			</Link>

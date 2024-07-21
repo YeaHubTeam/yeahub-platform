@@ -11,7 +11,7 @@ export const QuestionProgressBarBlock = () => {
 		<div>
 			<QuestionProgressBar />
 			<p className={styles.question}>
-				{t('preparation.progressBarTitle', 'Вопрос викторины', {
+				{t('preparation.progressBarTitle', null, {
 					fromQuestionNumber: 10,
 					toQuestionNumber: 45,
 				})}

@@ -27,7 +27,7 @@ export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
 					<h4 className={styles.title}>{title}</h4>
 					<ul className={styles.params}>
 						<InterviewResults
-							label={t('history_preparation.resultText', 'Результат')}
+							label={t('history_preparation.resultText')}
 							correctAnswersCount={correctAnswersCount}
 							incorrectAnswersCount={incorrectAnswersCount}
 						/>
