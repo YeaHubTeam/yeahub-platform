@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.container>div {
+  height: auto;
+}
+
+.progress, .result, .stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  gap: 50px;
+}
+
+.progress {
+  gap: 20px;
+}
+
+.stats {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.block {
+  height: auto;
+}
+
+.passed {
+  grid-column: span 2;
+}
+
+.passed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
