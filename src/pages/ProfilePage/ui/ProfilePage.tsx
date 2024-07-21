@@ -1,14 +1,12 @@
 import { FC } from 'react';
 
-import { Block } from '@/shared/ui/Block';
-
-import { AchievmentsBlockHeader, AchievmentsBlockList } from '@/widgets/ProfileAchievementCard';
-import { EducationCardList, EducationCardHeader } from '@/widgets/ProfileEducationCard';
-import { ExperienceBlockHeader, ExperienceBlockList } from '@/widgets/ProfileExperienceCard';
-import { InfoBlockHeader, InfoBlockText } from '@/widgets/ProfileInfoCard';
-import { ProjectsBlockHeader, ProjectsBlockList } from '@/widgets/ProfileProjectsCard';
-import { SkillsBlockHeader, SkillsBlockList } from '@/widgets/ProfileSkillsCard';
-import { UserLeftBlock, UserInfo } from '@/widgets/ProfileUserCard';
+import { AchievmentsBlock } from '@/widgets/ProfileAchievementCard';
+import { EducationBlock } from '@/widgets/ProfileEducationCard';
+import { ExperienceBlock } from '@/widgets/ProfileExperienceCard';
+import { InfoBlock } from '@/widgets/ProfileInfoCard';
+import { ProjectsBlock } from '@/widgets/ProfileProjectsCard';
+import { SkillsBlock } from '@/widgets/ProfileSkillsCard';
+import { UserCard } from '@/widgets/ProfileUserCard';
 
 import styles from './ProfilePage.module.css';
 
@@ -18,62 +16,15 @@ const ProfilePage: FC = () => {
 	return (
 		<div className={styles.content}>
 			<div className={styles.left}>
-				{/* Блок Пользователя */}
-				<Block>
-					<div className={styles.card}>
-						<UserLeftBlock />
-						<UserInfo />
-					</div>
-				</Block>
-
-				{/* Блок "Обо мне" */}
-				<Block expandable>
-					<div className={styles['info']}>
-						<InfoBlockHeader />
-						<InfoBlockText />
-					</div>
-				</Block>
-
-				{/* Блок Навыки */}
-				<Block>
-					<div className={styles['skills']}>
-						<SkillsBlockHeader />
-						<SkillsBlockList />
-					</div>
-				</Block>
-
-				{/* Блок проекты */}
-				<Block className={styles['projects-block']}>
-					<div className={styles['projects']}>
-						<ProjectsBlockHeader />
-						<ProjectsBlockList />
-					</div>
-				</Block>
-
-				{/* Блок опыта */}
-				<Block expandable>
-					<div className={styles['experience']}>
-						<ExperienceBlockHeader />
-						<ExperienceBlockList />
-					</div>
-				</Block>
-
-				{/* Блок Образование */}
-
-				<Block expandable>
-					<div className={styles['education']}>
-						<EducationCardHeader />
-						<EducationCardList />
-					</div>
-				</Block>
+				<UserCard />
+				<InfoBlock />
+				<SkillsBlock />
+				<ProjectsBlock />
+				<ExperienceBlock />
+				<EducationBlock />
 			</div>
 			<div className={styles.right}>
-				<Block>
-					<div className={styles['achievement']}>
-						<AchievmentsBlockHeader />
-						<AchievmentsBlockList />
-					</div>
-				</Block>
+				<AchievmentsBlock />
 			</div>
 		</div>
 	);

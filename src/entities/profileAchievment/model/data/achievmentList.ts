@@ -1,5 +1,7 @@
+import type { ProfileAchievment } from '../types/profileAchievment';
+
 // Временные данные
-export const ACHIEVMENT_LIST = [
+export const ACHIEVMENT_LIST: ProfileAchievment[] = [
 	{
 		id: 1,
 		img: 'https://s3-alpha-sig.figma.com/img/271b/8916/efc451e61ac759ca0598f69344dd5451?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GY3YCc~D6lpnhWY9wt2vgNdfnX92VobGMC5zaYBlhaNod8L-iJPBx2d8n6SCzplFPuF0LYnLAq8Y6mjFa7QzV~GZTqptiodBI73L1dtVU43e7G1Mu3BpD-CPBbZykmRY-PJOdcqrTMCQ9OltSPeBK208AspbcjwRrXbhzYkPEQcCsr-TyfA-InfRzInRJaOMZ0t7t7BWfQI2yUt2ojdaqXTMbmmE3ANk~1ZPW4xv2isRc8STBYxPQtGMkpGSDDcALDyyBrBpboTsT4yZJJFx4iGmIHUI3niiOcHsXqea9rL8OU7s~UZ67KKVGIRzVyrC5orfHegHtlTX9gqoZrIteg__',

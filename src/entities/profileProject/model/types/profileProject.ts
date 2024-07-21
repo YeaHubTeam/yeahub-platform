@@ -1,5 +1,5 @@
 export interface ProfileProject {
-	id: number;
+	id: string;
 	name: string;
 	imgUrl: string;
 }

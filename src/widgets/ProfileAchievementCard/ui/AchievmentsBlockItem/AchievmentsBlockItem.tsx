@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ProfileAchievment } from '@/entities/profileAchievment';
+import type { ProfileAchievment } from '@/entities/profileAchievment';
 
 import styles from './AchievmentsBlockItem.module.css';
 

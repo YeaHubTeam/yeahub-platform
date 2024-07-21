@@ -1,3 +1,4 @@
-export { EducationCardHeader } from './ui/EducationCardHeader/EducationCardHeader';
-export { EducationCardList } from './ui/EducationCardList/EducationCardList';
-export { EducationCardItem } from './ui/EducationCardItem/EducationCardItem';
+export { EducationBlock } from './ui/EducationBlock/EducationBlock';
+export { EducationBlockHeader } from './ui/EducationBlockHeader/EducationBlockHeader';
+export { EducationBlockList } from './ui/EducationBlockList/EducationBlockList';
+export { EducationBlockItem } from './ui/EducationBlockItem/EducationBlockItem';

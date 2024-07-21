@@ -1,7 +1,7 @@
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
 export interface ProfileSkill {
-	id: number;
+	id: string;
 	name: string;
 	iconName: IconsName;
 }

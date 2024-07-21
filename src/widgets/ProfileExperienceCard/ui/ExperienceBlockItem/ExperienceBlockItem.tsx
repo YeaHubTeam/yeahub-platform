@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ProfileExperience } from '@/entities/profileExperience';
+import type { ProfileExperience } from '@/entities/profileExperience';
 
 import styles from './ExperienceBlockItem.module.css';
 

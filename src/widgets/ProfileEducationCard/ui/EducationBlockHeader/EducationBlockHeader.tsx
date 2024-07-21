@@ -1,8 +1,8 @@
 import { Button } from 'yeahub-ui-kit';
 
-import styles from './EducationCardHeader.module.css';
+import styles from './EducationBlockHeader.module.css';
 
-export const EducationCardHeader = () => {
+export const EducationBlockHeader = () => {
 	return (
 		<div className={styles['education-header']}>
 			<h3 className={styles['education-title']}>Образование</h3>

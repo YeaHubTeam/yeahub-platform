@@ -1,5 +1,7 @@
+import type { ProfileEducation } from '../types/profileEducation';
+
 // Временные данные
-export const EDUCATION_LIST = [
+export const EDUCATION_LIST: ProfileEducation[] = [
 	{
 		id: 1,
 		university: 'Технический университет г. Брно',

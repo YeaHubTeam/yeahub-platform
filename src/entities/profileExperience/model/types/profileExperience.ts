@@ -1,5 +1,5 @@
 export interface ProfileExperience {
-	id: number;
+	id: string;
 	name: string;
 	imgUrl: string;
 	company: string;
