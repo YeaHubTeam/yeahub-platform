@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
-import styles from './styles.module.css';
+import styles from './LinkWithArrowRight.module.css';
 
 interface Props {
 	link: string;
