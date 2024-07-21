@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { formatDate } from '@/shared/helpers/formatDate';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { Interview, InterviewResults } from '@/entities/interview';
 
@@ -12,6 +14,7 @@ interface Props {
 }
 
 export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
+	const { t } = useI18nHelpers(i18Namespace.interview);
 	const { id, title, date, correctAnswersCount, incorrectAnswersCount } = interview;
 
 	const formattedDate = formatDate(date);
@@ -24,7 +27,7 @@ export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
 					<h4 className={styles.title}>{title}</h4>
 					<ul className={styles.params}>
 						<InterviewResults
-							label="Результат"
+							label={t('history_preparation.resultText', 'Результат')}
 							correctAnswersCount={correctAnswersCount}
 							incorrectAnswersCount={incorrectAnswersCount}
 						/>

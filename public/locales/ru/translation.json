@@ -1,3 +1,8 @@
 {
-  "language": "Русский"
+  "language": "Русский",
+  "quizButtons": {
+    "doNotKnow": "Не знаю",
+    "repeat": "Повторить",
+    "IKnow": "Знаю"
+  }
 }

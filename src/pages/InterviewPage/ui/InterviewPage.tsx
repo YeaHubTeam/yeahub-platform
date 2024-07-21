@@ -1,5 +1,5 @@
-import { FC } from 'react';
-
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
@@ -13,7 +13,9 @@ import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/Inter
 
 import styles from './InterviewPage.module.css';
 
-const InterviewPage: FC = () => {
+const InterviewPage = () => {
+	const { t } = useI18nHelpers(i18Namespace.interview);
+
 	const questionStats = [
 		{
 			title: 'Всего вопросов',
@@ -34,8 +36,8 @@ const InterviewPage: FC = () => {
 			<Block>
 				<div className={styles.questions}>
 					<InterviewPreparationHeader
-						title="Подготовка к собеседованиям"
-						linkTitle="Пройти собеседование"
+						title={t('preparation.title', 'Подготовка к собеседованиям')}
+						linkTitle={t('preparation.linkText', 'Пройти собеседование')}
 					/>
 					<div className={styles['preparation-wrapper']}>
 						<QuestionProgressBarBlock />
@@ -45,21 +47,30 @@ const InterviewPage: FC = () => {
 			</Block>
 			<Block>
 				<div className={styles.questions}>
-					<InterviewQuestionHeader title="Статистика собеседований" />
+					<InterviewQuestionHeader title={t('stats.title', 'Статистика собеседований')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight link="interview-statistics" linkTitle="Посмотреть полностью" />
+					<LinkWithArrowRight
+						link="/interview-statistics"
+						linkTitle={t('stats.linkText', 'Посмотреть полностью')}
+					/>
 				</div>
 			</Block>
 			<Block>
 				<div className={styles.questions}>
-					<InterviewQuestionHeader title="Список вопросов" linkTitle="Изучить" />
+					<InterviewQuestionHeader
+						title={t('questions.title', 'Статистика собеседований')}
+						linkTitle={t('questions.studied', 'Изучить')}
+					/>
 					<InterviewQuestionsList />
 				</div>
 			</Block>
 			<Block>
 				<div className={styles.questions}>
-					<InterviewHistoryHeader title="История собеседований" linkTitle="Подробнее" />
+					<InterviewHistoryHeader
+						title={t('history_preparation.title', 'История собеседований')}
+						linkTitle={t('history_preparation.linkText', 'Подробнее')}
+					/>
 					<InterviewHistoryList />
 				</div>
 			</Block>
