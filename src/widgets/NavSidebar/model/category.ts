@@ -6,10 +6,11 @@ export const categoryTitles = {
 	'': 'Главная',
 	profile: 'Мой профиль',
 	interview: 'Собеседование',
-	edit: 'Редактирование',
+	// edit: 'Редактирование',
 	// ToDo: temporary link
 };
 
 export const categoryCounts: CategoryCounts = {
 	profile: 0,
+	interview: 0,
 };
