@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+}
+
+.card-right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.card-name {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}
+
+.card-status {
+  padding: 2px 8px;
+  border-radius: 30px;
+  background-color: var(--color-green-100);
+  color: var(--color-green-900);
+  font-size: var(--font-size-p-xs);
+  user-select: none;
+}
+
+.card-edit {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: var(--font-size-p-s);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-info > li {
+  list-style-type:  none;
+}
+
+.card-info > li:nth-last-child(n + 2){
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+.card-info > li:nth-last-child(-n + 2){
+  color: var(--color-black-500);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.card-contacts {
+  margin-top: auto;
+}
+
+.card-contacts > h4 {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.card-link {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.card-link > * {
+  cursor: pointer;
+}
