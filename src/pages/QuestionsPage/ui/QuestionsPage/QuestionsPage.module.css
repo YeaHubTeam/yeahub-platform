@@ -21,5 +21,11 @@
 .search {
   position: sticky;
   top: 0;
-  height: auto
+  height: auto;
+}
+
+@media (width <= 970px) {
+  .wrapper {
+    flex-direction: column-reverse;
+  }
 }

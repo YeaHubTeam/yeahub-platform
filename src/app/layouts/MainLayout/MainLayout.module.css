@@ -4,11 +4,14 @@
   grid-template-columns: 280px 1fr;
   background-color: var(--background-app);
   color: var(--text-color-primary);
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, grid-template-columns 0.4s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    grid-template-columns 0.4s ease-in-out;
 }
 
 .sidebar {
-  grid-row: 1 / -1; 
+  grid-row: 1 / -1;
 }
 
 .main {
@@ -30,4 +33,34 @@
 
 .closing {
   grid-template-columns: 88px 1fr;
+}
+
+@media (width <= 780px) {
+  .layout {
+    grid-template-columns: 210px 1fr;
+  }
+}
+
+@media (width <= 700px) {
+  .layout {
+    grid-template-columns: 88px 1fr;
+  }
+}
+
+@media (width <= 500px) {
+  .layout {
+    grid-template-columns: 78px 1fr;
+  }
+}
+
+@media (width <= 480px) {
+  .layout {
+    grid-template-columns: 60px 1fr;
+  }
+}
+
+@media (width <= 380px) {
+  .layout {
+    grid-template-columns: 0 1fr;
+  }
 }

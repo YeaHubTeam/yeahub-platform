@@ -7,6 +7,7 @@
 
 .logo-image {
   padding-right: 5px;   
+  
 }
 
 .name {
@@ -24,4 +25,21 @@
 .one {
   padding-left: 12px;
   transition: padding-left .4s ease-in-out;
+}
+
+@media (width <= 700px) {
+  .name {
+    display: none;
+  }
+
+  .logo-image {
+    padding-right: 0;  
+    
+  }
+}
+
+@media (width <= 380px) {
+  .name {
+    /* display: block; */
+  }
 }

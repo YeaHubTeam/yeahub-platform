@@ -3,14 +3,28 @@
   border: none;
   background-color: transparent;
   color: var(--text-color-primary);
-  transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition:
+    color 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .btn:hover {
-  color: var(--text-color-lightest)
+  color: var(--text-color-lightest);
 }
 
 .btn:disabled {
   opacity: 0.3;
+}
+
+@media (width <= 580px) {
+  .btn {
+    font-size: var(--font-size-p-xs)
+  }
+}
+
+@media (width <= 450px) {
+  .btn {
+    display: none;
+  }
 }

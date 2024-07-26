@@ -11,7 +11,7 @@ import styles from './QuestionsSummaryList.module.css';
 export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
 	return (
 		<>
-			<h1>Вопросы React, JS555</h1>
+			<h1 className={styles.title}>Вопросы React, JS555</h1>
 			<hr className={styles.divider} />
 			{questions &&
 				questions.map((question) => {
