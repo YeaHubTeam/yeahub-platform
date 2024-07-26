@@ -1,0 +1,9 @@
+.wrapper {
+  display: block;
+}
+
+.styles-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 60%;
+}
