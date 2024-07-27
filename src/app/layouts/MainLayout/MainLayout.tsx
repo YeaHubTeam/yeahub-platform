@@ -2,6 +2,7 @@ import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Loader } from '@/shared/ui/Loader';
 
 import { useRefreshTokenQuery } from '@/entities/auth';
@@ -28,6 +29,7 @@ export const MainLayout = () => {
 			<main className={styles.main}>
 				<div className={styles.container}>
 					<Suspense fallback={<Loader />}>
+						<Breadcrumbs />
 						<Outlet />
 					</Suspense>
 				</div>

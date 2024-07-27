@@ -48,7 +48,7 @@ const InterviewPage: FC = () => {
 					<InterviewQuestionHeader title="Статистика собеседований" />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight link="/interview-statistics" linkTitle="Посмотреть полностью" />
+					<LinkWithArrowRight link="interview-statistics" linkTitle="Посмотреть полностью" />
 				</div>
 			</Block>
 			<Block>
