@@ -1,0 +1,15 @@
+{
+  "interviewQuizResult": {
+    "resultInterview": {
+      "resultTitle": "Результат собеседования {{title}}",
+      "questionTitle": "Статистика пройденных вопросов по всем категориям",
+      "allPassedQuestionTitle": "Список пройденных вопросов собеседования"
+    },
+    "questionStats": {
+      "passed": "Пройдено вопросов",
+      "timeSpent": "Время",
+      "date": "Дата",
+      "duration": "Длительность"
+    }
+  }
+}

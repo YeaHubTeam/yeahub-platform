@@ -1,24 +1,19 @@
-import i18n, { Resource } from 'i18next';
+import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
-type LangsFiles = 'translation';
 type Langs = 'en' | 'ru';
 
-const ns: LangsFiles[] = ['translation'];
 const supportedLngs: Langs[] = ['en', 'ru'];
 
-const resources: Resource = ns.reduce((acc: Resource, n) => {
-	supportedLngs.forEach((lng) => {
-		if (!acc[lng]) acc[lng] = {};
-		acc[lng] = {
-			...acc[lng],
-			[n]: require(`../../../../public/locales/${lng}/${n}.json`),
-		};
-	});
-	return acc;
-}, {});
+export const i18Namespace = {
+	translation: 'translation',
+	interview: 'interview',
+	interviewQuiz: 'interviewQuiz',
+	interviewQuizResult: 'interviewQuizResult',
+	interviewStatistics: 'interviewStatistics',
+};
 
 i18n
 	.use(Backend)
@@ -30,9 +25,10 @@ i18n
 		interpolation: {
 			escapeValue: false,
 		},
-		ns,
 		supportedLngs,
-		resources,
+		backend: {
+			loadPath: '/locales/{{lng}}/{{ns}}.json',
+		},
 	});
 
 export default i18n;

@@ -1,5 +1,7 @@
+import { i18Namespace } from '@/shared/config/i18n';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime } from '@/shared/helpers/formatTime';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
@@ -12,24 +14,25 @@ import { PassedQuestionsList } from '@/widgets/PassedQuestions';
 import styles from './InterviewResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
+	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
 	const { passedCount, allCount, date, duration, title, questions, stats, totalAttempts } =
 		MOCK_QUIZ;
 
 	const questionStats = [
 		{
-			title: 'Пройдено вопросов',
+			title: t('questionStats.passed'),
 			value: `${passedCount}/${allCount}`,
 		},
 		{
-			title: 'Время',
+			title: t('questionStats.timeSpent'),
 			value: formatTime(new Date(date)),
 		},
 		{
-			title: 'Дата',
+			title: t('questionStats.date'),
 			value: formatDate(new Date(date)),
 		},
 		{
-			title: 'Длительность',
+			title: t('questionStats.duration'),
 			value: duration,
 		},
 	];
@@ -38,17 +41,17 @@ const InterviewQuizResultPage = () => {
 		<div className={styles.container}>
 			<Block>
 				<div className={styles.result}>
-					<InterviewQuestionHeader title={`Результат собеседования ${title}`} centered />
+					<InterviewQuestionHeader
+						title={t('resultInterview.resultTitle', null, { title })}
+						centered
+					/>
 					<PassedInterviewStat totalAttempt={totalAttempts} attemptData={stats} />
 				</div>
 			</Block>
 			<div className={styles.stats}>
 				<Block className={styles.block}>
 					<div className={styles.progress}>
-						<InterviewQuestionHeader
-							title="Статистика пройденных вопросов по всем категориям"
-							centered
-						/>
+						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart total={allCount} learned={passedCount} />
 					</div>
 				</Block>
@@ -56,7 +59,7 @@ const InterviewQuizResultPage = () => {
 			</div>
 			<Block className={styles.passed}>
 				<div className={styles['passed-list']}>
-					<InterviewQuestionHeader title="Список пройденных вопросов собеседования" centered />
+					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
 					<PassedQuestionsList questions={questions} />
 				</div>
 			</Block>
