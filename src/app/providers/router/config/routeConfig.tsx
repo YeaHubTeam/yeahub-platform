@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
 								element: <QuestionsPage />,
 							},
 							{
-								path: 'questions/:questionId',
+								path: ':questionId',
 								element: <QuestionPage />,
 								handle: {
 									crumb: 'Подробнее',

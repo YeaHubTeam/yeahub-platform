@@ -22,7 +22,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 				</div>
 				<div>
 					<Button className={styles.details} theme="link">
-						<NavLink to={`/questions/${id}`}>Подробнее</NavLink>
+						<NavLink to={`interview/questions/${id}`}>Подробнее</NavLink>
 					</Button>
 				</div>
 			</div>
