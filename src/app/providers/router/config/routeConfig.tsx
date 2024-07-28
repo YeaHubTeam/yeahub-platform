@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { CreateInterviewPage } from '@/pages/CreateInterviewPage';
+import { CreateQuizPage } from '@/pages/CreateQuizPage';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
 import { InterviewPage } from '@/pages/InterviewPage';
@@ -33,12 +33,12 @@ export const router = createBrowserRouter([
 				element: <InterviewPage />,
 			},
 			{
-				path: 'interview-statistics',
-				element: <InterviewStatisticsPage />,
+				path: 'interview/quiz',
+				element: <CreateQuizPage />,
 			},
 			{
-				path: 'create-interview',
-				element: <CreateInterviewPage />,
+				path: 'interview-statistics',
+				element: <InterviewStatisticsPage />,
 			},
 			{
 				path: 'login',

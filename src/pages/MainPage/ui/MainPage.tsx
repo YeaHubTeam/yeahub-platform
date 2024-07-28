@@ -37,7 +37,7 @@ const MainPage: FC = () => {
 			{profile && (
 				<div className={styles.wrapper}>
 					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
-					<Link to={'create-interview'}> create interview</Link>
+					<Link to={'interview/quiz'}> create interview</Link>
 					{isIncompleteProfile && (
 						<Block className={styles.block}>
 							<div className={styles['block-wrapper']}>
