@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { Tabs } from '@/shared/ui/Tabs';
 
@@ -10,26 +11,61 @@ import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
 
 import style from './EditProfileForm.module.css';
 
-const tabs = ['Личная информация', 'Обо мне', 'Навыки', 'Проекты', 'Опыт работы', 'Образование'];
+const tabs = [
+	{
+		id: 0,
+		title: 'personal-information',
+		label: 'Личная информация',
+		Component: PersonalInformationForm,
+	},
+	{
+		id: 1,
+		title: 'about-me',
+		label: 'Обо мне',
+		Component: AboutMeForm,
+	},
+	{
+		id: 2,
+		title: 'skills',
+		label: 'Навыки',
+		Component: SkillsForm,
+	},
+	{
+		id: 3,
+		title: 'projects',
+		label: 'Проекты',
+		Component: ProjectForm,
+	},
+	{
+		id: 4,
+		title: 'experience',
+		label: 'Опыт работы',
+		Component: ExperienceForm,
+	},
+	{
+		id: 5,
+		title: 'education',
+		label: 'Образование',
+		Component: EducationFrom,
+	},
+];
 
 export const EditProfileForm = () => {
-	const [currentActiveTab, setCurrentActiveTab] = useState(0);
+	const { hash } = useLocation();
+	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
+		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
+	});
 
 	return (
 		<section className={style.section}>
 			<Tabs
 				title="Редактирование профиля"
-				names={tabs}
+				tabs={tabs}
 				tabToggle={currentActiveTab}
 				setTabToggle={setCurrentActiveTab}
 			/>
 			<form>
-				{currentActiveTab === 0 && <PersonalInformationForm />}
-				{currentActiveTab === 1 && <AboutMeForm />}
-				{currentActiveTab === 2 && <SkillsForm />}
-				{currentActiveTab === 3 && <ProjectForm />}
-				{currentActiveTab === 4 && <ExperienceForm />}
-				{currentActiveTab === 5 && <EducationFrom />}
+				{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
 			</form>
 		</section>
 	);

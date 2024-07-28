@@ -6,7 +6,6 @@ export const categoryTitles = {
 	'': 'Главная',
 	profile: 'Мой профиль',
 	interview: 'Собеседование',
-	// edit: 'Редактирование',
 	// ToDo: temporary link
 };
 
