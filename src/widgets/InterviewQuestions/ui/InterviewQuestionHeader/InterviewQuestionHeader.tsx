@@ -15,7 +15,7 @@ export const InterviewQuestionHeader: FC<Props> = ({ title, linkTitle, centered 
 	return (
 		<div className={classNames(styles.header, { [styles.centered]: centered })}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
+			{!!linkTitle && <LinkWithArrowRight link="questions" linkTitle={linkTitle} />}
 		</div>
 	);
 };

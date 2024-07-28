@@ -1,0 +1,7 @@
+.item {
+  color: var(--text-color-light);
+}
+
+.current {
+  color: var(--text-color-link-active);
+}

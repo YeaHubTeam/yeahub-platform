@@ -16,7 +16,7 @@ export const InterviewQuestionsItem: FC<Props> = ({ question }) => {
 	const { id, imageSrc, title, rate, rating } = question;
 	return (
 		<li className={styles.item}>
-			<Link to={`/questions/${id}`} className={styles.link}>
+			<Link to={`interview/questions/${id}`} className={styles.link}>
 				<ImageWithWrapper src={imageSrc} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
