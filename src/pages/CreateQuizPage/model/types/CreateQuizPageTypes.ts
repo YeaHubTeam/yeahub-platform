@@ -2,7 +2,7 @@ export interface CreateQuizPageState {
 	profileId?: string;
 	skills: number[];
 	complexity?: number[];
-	limit?: number;
+	limit: number;
 	mode: QuestionModeType;
 }
 

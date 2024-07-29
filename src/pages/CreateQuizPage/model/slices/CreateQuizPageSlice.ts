@@ -6,7 +6,7 @@ const initialState: CreateQuizPageState = {
 	profileId: undefined,
 	skills: [],
 	complexity: [],
-	limit: undefined,
+	limit: 1,
 	mode: 'NEW',
 };
 

@@ -1,3 +1,7 @@
+.main-wrapper {
+  height: 100%;
+}
+
 .wrapper {
   display: block;
 }

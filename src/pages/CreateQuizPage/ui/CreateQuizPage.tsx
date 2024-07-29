@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Block } from '@/shared/ui/Block';
 
 import { getAutProfile } from '@/entities/auth';
+import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
 
 import {
 	QuizQuestionComplexity,
@@ -25,7 +27,9 @@ const CreateQuizPage = () => {
 
 	const createQuizData = useSelector(getCreateQuizPageState);
 
-	const { skills, complexity } = createQuizData;
+	const { skills, complexity, mode, limit } = createQuizData;
+
+	const [trigger] = useLazyCreateNewQuizQuery();
 
 	const onChangeSkills = (skills: number[]) => {
 		dispatch(createQuizPageActions.setSkills(skills));
@@ -43,23 +47,47 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setLimit(limit));
 	};
 
+	const shouldCreateNewQuiz = !!profileId && !!skills.length && !!complexity?.length;
+
+	const handleCreateNewQuiz = () => {
+		if (shouldCreateNewQuiz) {
+			trigger({
+				profileId,
+				skills,
+				mode,
+				limit,
+				minComplexity: complexity[0],
+				maxComplexity: complexity[complexity.length - 1],
+			});
+		}
+	};
+
 	useEffect(() => {
 		if (profileId) dispatch(createQuizPageActions.setProfileId(profileId));
 	}, [dispatch, profileId]);
 
 	return (
-		<section className={styles.wrapper}>
-			<Block expandable={false}>
-				<h2>Собеседование</h2>
-				<QuizQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
-				<div>
-					<QuizQuestionComplexity
-						selectedComplexity={complexity}
-						onChangeComplexity={onChangeComplexity}
-					/>
-					<QuizQuestionMode onChangeMode={onChangeMode} />
-					<QuizQuestionCount onChangeLimit={onChangeLimit} />
+		<section>
+			<Block className={styles['main-wrapper']}>
+				<div className={styles.wrapper}>
+					<h2>Собеседование</h2>
+					<QuizQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+					<div>
+						<QuizQuestionComplexity
+							selectedComplexity={complexity}
+							onChangeComplexity={onChangeComplexity}
+						/>
+						<QuizQuestionMode onChangeMode={onChangeMode} />
+						<QuizQuestionCount onChangeLimit={onChangeLimit} />
+					</div>
 				</div>
+				<Button
+					disabled={!shouldCreateNewQuiz}
+					onClick={handleCreateNewQuiz}
+					suffix={<Icon icon="arrowRight" size={24} />}
+				>
+					Начать
+				</Button>
 			</Block>
 		</section>
 	);
