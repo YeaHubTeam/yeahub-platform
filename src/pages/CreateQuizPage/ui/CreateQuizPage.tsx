@@ -8,6 +8,7 @@ import { getAutProfile } from '@/entities/auth';
 
 import {
 	QuizQuestionComplexity,
+	QuizQuestionCount,
 	QuizQuestionMode,
 	QuizQuestionsCategories,
 } from '@/widgets/Question';
@@ -38,9 +39,9 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setMode(mode));
 	};
 
-	// const onChangeLimit = (limit: number) => {
-	// 	dispatch(createQuizPageActions.setLimit(limit));
-	// };
+	const onChangeLimit = (limit: number) => {
+		dispatch(createQuizPageActions.setLimit(limit));
+	};
 
 	useEffect(() => {
 		if (profileId) dispatch(createQuizPageActions.setProfileId(profileId));
@@ -57,6 +58,7 @@ const CreateQuizPage = () => {
 						onChangeComplexity={onChangeComplexity}
 					/>
 					<QuizQuestionMode onChangeMode={onChangeMode} />
+					<QuizQuestionCount onChangeLimit={onChangeLimit} />
 				</div>
 			</Block>
 		</section>

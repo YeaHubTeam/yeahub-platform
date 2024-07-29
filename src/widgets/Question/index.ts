@@ -12,3 +12,4 @@ export { QuestionsSummaryList } from './ui/QuestionsSummaryList/QuestionsSummary
 export { QuizQuestionsCategories } from './ui/QuizQuestionsCategories/QuizQuestionsCategories';
 export { QuizQuestionComplexity } from './ui/QuizQuestionComplexity/QuizQuestionComplexity';
 export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
+export { QuizQuestionCount } from './ui/QuizQuestionCount/QuizQuestionCount';
