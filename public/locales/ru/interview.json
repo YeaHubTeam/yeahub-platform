@@ -1,0 +1,29 @@
+{
+  "interview": {
+    "preparation": {
+      "title": "Подготовка к собеседованиям",
+      "linkText": "Пройти собеседование",
+      "progressBarTitle": "Вопрос викторины {{fromQuestionNumber}} из {{toQuestionNumber}}"
+    },
+    "stats": {
+      "title": "Статистика собеседований",
+      "linkText": "Посмотреть полностью",
+      "statsStudied": {
+        "allQuestions": "Всего вопросов",
+        "notStudied": "Не изучено",
+        "studied": "Изучено"
+      }
+    },
+    "questions": {
+      "title": "Список вопросов",
+      "studied": "Изучить",
+      "rating": "Рейтинг",
+      "complexity": "Сложность"
+    },
+    "history_preparation": {
+      "title": "История собеседований",
+      "linkText": "Подробнее",
+      "resultText": "Результат"
+    }
+  }
+}

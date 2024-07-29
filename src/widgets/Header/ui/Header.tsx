@@ -6,7 +6,7 @@ import Logo from '@/shared/assets/icons/logo.svg';
 import { BurgerMenu } from '@/shared/ui/BurgerMenu';
 
 import { UserPreferences } from '@/features/common/user-preferences';
-import { ThemeSwitcher } from '@/features/theme/switch-theme';
+// import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
 import styles from './Header.module.css';
 
@@ -32,7 +32,7 @@ const MemoHeader = () => {
 				</NavLink>
 			)}
 
-			<ThemeSwitcher />
+			{/* <ThemeSwitcher /> */}
 			<UserPreferences />
 
 			{isMobile && (

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
-				path: '/',
+				index: true,
 				element: <MainPage />,
 			},
 			{
@@ -29,31 +29,61 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'interview',
-				element: <InterviewPage />,
-			},
-			{
-				path: 'interview-statistics',
-				element: <InterviewStatisticsPage />,
+				element: <Outlet />,
+				handle: {
+					crumb: 'Обучение',
+				},
+				children: [
+					{
+						index: true,
+						element: <InterviewPage />,
+					},
+					{
+						path: 'interview-statistics',
+						element: <InterviewStatisticsPage />,
+						handle: {
+							crumb: 'Статистика собеседований',
+						},
+					},
+					{
+						path: 'interviewQuiz',
+						element: <InterviewQuizPage />,
+						handle: {
+							crumb: 'Викторина',
+						},
+					},
+					{
+						path: 'interviewQuizResult',
+						element: <InterviewQuizResultPage />,
+						handle: {
+							crumb: 'Результат викторины',
+						},
+					},
+					{
+						path: 'questions',
+						element: <Outlet />,
+						handle: {
+							crumb: 'Список вопросов',
+						},
+						children: [
+							{
+								index: true,
+								element: <QuestionsPage />,
+							},
+							{
+								path: ':questionId',
+								element: <QuestionPage />,
+								handle: {
+									crumb: 'Подробнее',
+								},
+							},
+						],
+					},
+				],
 			},
 			{
 				path: 'login',
 				element: <LoginPage />,
-			},
-			{
-				path: 'questions',
-				element: <QuestionsPage />,
-			},
-			{
-				path: 'questions/:questionId',
-				element: <QuestionPage />,
-			},
-			{
-				path: 'interviewQuiz',
-				element: <InterviewQuizPage />,
-			},
-			{
-				path: 'interviewQuizResult',
-				element: <InterviewQuizResultPage />,
 			},
 			{
 				path: 'edit',
