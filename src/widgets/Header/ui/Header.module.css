@@ -1,3 +1,4 @@
+/* Header.module.css */
 .header {
   display: flex;
   justify-content: end;
@@ -6,4 +7,30 @@
   height: 100%;
   border-bottom: 1px solid var(--border-color);
   transition: border-color 0.3s ease-in-out;
+}
+
+.burger {
+  display: none; 
+}
+
+.logo {
+  display: none; 
+}
+
+.name {
+  width: 100px;
+  height: 32px;
+  color: var(--text-color-primary);
+  transition: opacity 0.7s ease-in-out;
+}
+
+
+@media (width <= 480px) {
+  .burger {
+    display: block;
+  }
+
+  .logo {
+    display: flex;
+  }
 }

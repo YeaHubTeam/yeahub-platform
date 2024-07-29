@@ -16,14 +16,17 @@
   background-color: transparent;
   color: var(--text-color-primary);
   text-decoration: none;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 .item:hover {
   background-color: var(--background-nav-item-hover);
 }
 
-.item-active, .item-active:hover {
+.item-active,
+.item-active:hover {
   background-color: var(--background-nav-item);
 }
 
@@ -46,8 +49,18 @@
 }
 
 .closing {
-  opacity: 0; 
-  pointer-events: none; 
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease-in-out;
 }
 
+@media (width <= 768px) {
+  .span {
+    display: none;
+  }
+
+  .item {
+    justify-content: center;
+    padding: 10px 12px;
+  }
+}
