@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "tabs": {
+      "title": "Редактирование профиля",
+      "items": {
+        "personalInformation": "Личная информация",
+        "aboutMe": "Обо мне",
+        "skills": "Навыки",
+        "projects": "Проекты",
+        "experience": "Опыт работы",
+        "education": "Образование"
+      }
+    }
+  }
+}
