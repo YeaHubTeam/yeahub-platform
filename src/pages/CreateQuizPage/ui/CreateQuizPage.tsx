@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Block } from '@/shared/ui/Block';
 
-import { getAutProfile } from '@/entities/auth';
+import { useGetProfileQuery } from '@/entities/auth';
 import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
 
 import {
@@ -23,7 +22,7 @@ import styles from './CreateQuizPage.module.css';
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
-	const profileId = useSelector(getAutProfile);
+	const { data: userProfile } = useGetProfileQuery();
 
 	const createQuizData = useSelector(getCreateQuizPageState);
 
@@ -47,24 +46,23 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setLimit(limit));
 	};
 
-	const shouldCreateNewQuiz = !!profileId && !!skills.length && !!complexity?.length;
+	const shouldCreateNewQuiz =
+		!!userProfile?.profiles[0].profileId && !!skills.length && !!complexity?.length;
 
 	const handleCreateNewQuiz = () => {
 		if (shouldCreateNewQuiz) {
 			trigger({
-				profileId,
-				skills,
-				mode,
-				limit,
-				minComplexity: complexity[0],
-				maxComplexity: complexity[complexity.length - 1],
+				profileId: userProfile?.profiles[0].profileId,
+				params: {
+					skills,
+					minComplexity: complexity[0],
+					maxComplexity: complexity[complexity.length - 1],
+					limit,
+					mode,
+				},
 			});
 		}
 	};
-
-	useEffect(() => {
-		if (profileId) dispatch(createQuizPageActions.setProfileId(profileId));
-	}, [dispatch, profileId]);
 
 	return (
 		<section>

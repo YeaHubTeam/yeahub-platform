@@ -1,7 +1,11 @@
 type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 
-export interface CreateNewQuizParams {
+export interface CreateNewQuizGetRequest {
 	profileId: string;
+	params: CreateNewQuizParams;
+}
+
+export interface CreateNewQuizParams {
 	skills: number[];
 	minComplexity: number;
 	maxComplexity: number;
