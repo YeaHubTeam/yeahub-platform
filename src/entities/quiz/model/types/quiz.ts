@@ -2,11 +2,11 @@ type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateNewQuizGetRequest {
 	profileId: string;
+	skills: number[];
 	params: CreateNewQuizParams;
 }
 
 export interface CreateNewQuizParams {
-	skills: number[];
 	minComplexity: number;
 	maxComplexity: number;
 	limit: number;

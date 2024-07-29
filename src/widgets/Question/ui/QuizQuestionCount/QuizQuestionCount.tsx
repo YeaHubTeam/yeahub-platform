@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Counter } from '@/shared/ui/Counter';
 
+import styles from './QuizQuestionCount.module.css';
+
 interface QuizQuestionCountProps {
 	onChangeLimit: (limit: number) => void;
 }
@@ -16,7 +18,7 @@ export const QuizQuestionCount = ({ onChangeLimit }: QuizQuestionCountProps) => 
 
 	return (
 		<div>
-			<h3> Количество вопросов</h3>
+			<h3 className={styles.title}> Количество вопросов</h3>
 			<Counter count={counter} onChange={handleClick} />
 		</div>
 	);

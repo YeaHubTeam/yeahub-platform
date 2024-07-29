@@ -53,8 +53,8 @@ const CreateQuizPage = () => {
 		if (shouldCreateNewQuiz) {
 			trigger({
 				profileId: userProfile?.profiles[0].profileId,
+				skills,
 				params: {
-					skills,
 					minComplexity: complexity[0],
 					maxComplexity: complexity[complexity.length - 1],
 					limit,
@@ -66,26 +66,27 @@ const CreateQuizPage = () => {
 
 	return (
 		<section>
-			<Block className={styles['main-wrapper']}>
+			<Block className={styles.container}>
+				<h2 className={styles.title}>Собеседование</h2>
 				<div className={styles.wrapper}>
-					<h2>Собеседование</h2>
 					<QuizQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
-					<div>
+					<div className={styles['additional-wrapper']}>
 						<QuizQuestionComplexity
 							selectedComplexity={complexity}
 							onChangeComplexity={onChangeComplexity}
 						/>
 						<QuizQuestionMode onChangeMode={onChangeMode} />
 						<QuizQuestionCount onChangeLimit={onChangeLimit} />
+						<Button
+							className={styles.button}
+							disabled={!shouldCreateNewQuiz}
+							onClick={handleCreateNewQuiz}
+							suffix={<Icon icon="arrowRight" size={24} />}
+						>
+							Начать
+						</Button>
 					</div>
 				</div>
-				<Button
-					disabled={!shouldCreateNewQuiz}
-					onClick={handleCreateNewQuiz}
-					suffix={<Icon icon="arrowRight" size={24} />}
-				>
-					Начать
-				</Button>
 			</Block>
 		</section>
 	);

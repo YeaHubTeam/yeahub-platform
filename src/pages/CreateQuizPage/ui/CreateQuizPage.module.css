@@ -1,13 +1,24 @@
-.main-wrapper {
+.container {
   height: 100%;
 }
 
-.wrapper {
-  display: block;
+.title {
+  margin-bottom: 24px;
 }
 
-.styles-wrapper {
+.wrapper {
   display: flex;
-  flex-wrap: wrap;
-  max-width: 60%;
+  justify-content: space-between;
+  column-gap: 43px;
+}
+
+.additional-wrapper {
+  display: flex;
+  flex-basis: 40%;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.button {
+  margin-left: auto;
 }
