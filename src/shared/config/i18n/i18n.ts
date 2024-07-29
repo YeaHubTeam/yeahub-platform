@@ -13,6 +13,7 @@ export const i18Namespace = {
 	interviewQuiz: 'interviewQuiz',
 	interviewQuizResult: 'interviewQuizResult',
 	interviewStatistics: 'interviewStatistics',
+	profile: 'profile',
 };
 
 i18n
