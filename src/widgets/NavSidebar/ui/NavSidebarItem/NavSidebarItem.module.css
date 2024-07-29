@@ -54,13 +54,13 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-@media (width <= 700px) {
+@media (width <= 768px) {
   .span {
     display: none;
   }
 
   .item {
     justify-content: center;
-    padding: 10px 22px;
+    padding: 10px 12px;
   }
 }

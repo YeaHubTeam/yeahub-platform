@@ -45,7 +45,7 @@
   padding: 36px 20px 20px;
 }
 
-@media (width <= 700px) {
+@media (width <= 768px) {
   .close-icon {
     display: none;
   }
@@ -59,7 +59,7 @@
   }
 }
 
-@media (width <= 380px) {
+@media (width <= 480px) {
   .sidebar {
     display: none;
   }

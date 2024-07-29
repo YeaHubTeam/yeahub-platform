@@ -1,3 +1,4 @@
+/* Header.module.css */
 .header {
   display: flex;
   justify-content: space-between;
@@ -9,33 +10,27 @@
 }
 
 .burger {
-  display: none;
+  display: none; 
 }
 
 .logo {
-  display: none;
+  display: none; 
 }
 
-@media (width <= 380px) {
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: padding-left 0.5s ease-in-out;
-  }
+.name {
+  width: 100px;
+  height: 32px;
+  color: var(--text-color-primary);
+  transition: opacity 0.7s ease-in-out;
+}
 
-  .logo-image {
-    padding-right: 5px;
-  }
 
-  .name {
-    width: 100px;
-    height: 32px;
-    color: var(--text-color-primary);
-    transition: opacity 0.7s ease-in-out;
-  }
-
+@media (width <= 480px) {
   .burger {
     display: block;
+  }
+
+  .logo {
+    display: flex;
   }
 }

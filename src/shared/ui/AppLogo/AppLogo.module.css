@@ -27,7 +27,7 @@
   transition: padding-left .4s ease-in-out;
 }
 
-@media (width <= 700px) {
+@media (width <= 768px) {
   .name {
     display: none;
   }
@@ -35,11 +35,5 @@
   .logo-image {
     padding-right: 0;  
     
-  }
-}
-
-@media (width <= 380px) {
-  .name {
-    /* display: block; */
   }
 }

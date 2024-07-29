@@ -17,13 +17,13 @@
   opacity: 0.3;
 }
 
-@media (width <= 580px) {
+@media (width <= 768px) {
   .btn {
     font-size: var(--font-size-p-xs)
   }
 }
 
-@media (width <= 450px) {
+@media (width <= 480px) {
   .btn {
     display: none;
   }

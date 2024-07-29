@@ -1,4 +1,5 @@
-import React, { FC, useState, KeyboardEvent } from 'react';
+import { FC, useState, KeyboardEvent } from 'react';
+import { Icon, Popover } from 'yeahub-ui-kit';
 
 import styles from './BurgerMenu.module.css';
 
@@ -20,32 +21,45 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ menuItems, className = '' }) =
 		}
 	};
 
+	const closeMenu = () => {
+		setIsOpen(false);
+	};
+
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
-			<button
-				className={styles.btn}
-				onClick={toggleMenu}
-				aria-expanded={isOpen}
-				aria-label="Toggle menu"
+			<Popover
+				body={
+					<div className={styles.menu}>
+						{menuItems.map((item) => (
+							<div
+								key={item.id}
+								className={styles.item}
+								onClick={() => {
+									item.onClick();
+									closeMenu();
+								}}
+								onKeyDown={(event) => handleKeyPress(event, item.onClick)}
+								role="button"
+								tabIndex={0}
+							>
+								{item.label}
+							</div>
+						))}
+					</div>
+				}
+				isOpen={isOpen}
+				onClickOutside={closeMenu}
+				placement="bottom"
 			>
-				☰
-			</button>
-			{isOpen && (
-				<div className={styles.menu}>
-					{menuItems.map((item) => (
-						<div
-							key={item.id}
-							className={styles.item}
-							onClick={item.onClick}
-							onKeyDown={(event) => handleKeyPress(event, item.onClick)}
-							role="button"
-							tabIndex={0}
-						>
-							{item.label}
-						</div>
-					))}
-				</div>
-			)}
+				<button
+					className={styles.btn}
+					onClick={toggleMenu}
+					aria-expanded={isOpen}
+					aria-label="Toggle menu"
+				>
+					<Icon icon="list" />
+				</button>
+			</Popover>
 		</div>
 	);
 };

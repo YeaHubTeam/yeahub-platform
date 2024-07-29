@@ -24,13 +24,8 @@
   cursor: pointer;
 }
 
-@media (width <= 580px) {
-  .auth-btns {
-    gap: 10px;
-  }
-}
 
-@media (width <= 380px) {
+@media (width <= 480px) {
   .auth-btns {
     display: none;
   }

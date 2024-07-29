@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { isMobile } from 'react-device-detect';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import Logo from '@/shared/assets/icons/logo.svg';
@@ -9,7 +10,7 @@ import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
 import styles from './Header.module.css';
 
-const MemoHeader: FC = () => {
+const MemoHeader = () => {
 	const navigate = useNavigate();
 
 	const menuItems = [
@@ -25,18 +26,24 @@ const MemoHeader: FC = () => {
 
 	return (
 		<header className={styles.header}>
-			<NavLink to="/" className={styles.logo}>
-				<Logo className={styles.name} />
-			</NavLink>
+			{isMobile && (
+				<NavLink to="/" className={styles.logo}>
+					<Logo className={styles.name} />
+				</NavLink>
+			)}
+
 			<ThemeSwitcher />
 			<UserPreferences />
-			<BurgerMenu
-				className={styles.burger}
-				menuItems={menuItems.map((item) => ({
-					...item,
-					onClick: () => handleMenuClick(item.path),
-				}))}
-			/>
+
+			{isMobile && (
+				<BurgerMenu
+					className={styles.burger}
+					menuItems={menuItems.map((item) => ({
+						...item,
+						onClick: () => handleMenuClick(item.path),
+					}))}
+				/>
+			)}
 		</header>
 	);
 };
