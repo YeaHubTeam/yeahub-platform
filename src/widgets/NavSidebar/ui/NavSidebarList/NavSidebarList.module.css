@@ -3,7 +3,7 @@
   background: var(--background-block);
   transition: background-color 0.3s ease-in-out;
 }
-	
+
 .header {
   position: relative;
   display: flex;
@@ -43,4 +43,24 @@
 
 .content {
   padding: 36px 20px 20px;
+}
+
+@media (width <= 768px) {
+  .close-icon {
+    display: none;
+  }
+
+  .content {
+    padding: 36px 10px 20px;
+  }
+
+  .header {
+    justify-content: center;
+  }
+}
+
+@media (width <= 480px) {
+  .sidebar {
+    display: none;
+  }
 }

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
@@ -6,6 +7,8 @@ import { USER_INFO, USER_LINK } from '@/entities/profileUser';
 import styles from './UserInfo.module.css';
 
 export const UserInfo = () => {
+	const navigate = useNavigate();
+
 	const { first_name, last_name, status, age, position, experience, location, phone, email } =
 		USER_INFO;
 
@@ -14,7 +17,12 @@ export const UserInfo = () => {
 			<div className={styles['card-header']}>
 				<h2 className={styles['card-name']}>{`${first_name} ${last_name}`}</h2>
 				<div className={styles['card-status']}>{status}</div>
-				<Button theme="link" tagName="button" className={styles['card-edit']}>
+				<Button
+					theme="link"
+					tagName="button"
+					className={styles['card-edit']}
+					onClick={() => navigate('edit#personal-information')}
+				>
 					Редактировать
 				</Button>
 			</div>

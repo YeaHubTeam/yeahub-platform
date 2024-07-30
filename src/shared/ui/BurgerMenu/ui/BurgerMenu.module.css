@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+}
+
+.btn {
+  border: none;
+  background: none;
+  font-size: var(--font-size-h-s);
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  border: 1px solid #ccc;
+  background: white;
+}
+
+
+.item {
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #f0f0f0;
+}

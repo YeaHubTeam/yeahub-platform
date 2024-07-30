@@ -26,7 +26,23 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'profile',
-				element: <ProfilePage />,
+				element: <Outlet />,
+				handle: {
+					crumb: 'Профиль',
+				},
+				children: [
+					{
+						index: true,
+						element: <ProfilePage />,
+					},
+					{
+						path: 'edit',
+						element: <EditProfilePage />,
+						handle: {
+							crumb: 'Редактирование профиля',
+						},
+					},
+				],
 			},
 			{
 				path: 'interview',
@@ -85,10 +101,6 @@ export const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage />,
-			},
-			{
-				path: 'edit',
-				element: <EditProfilePage />,
 			},
 			{
 				path: 'interviewHistory',

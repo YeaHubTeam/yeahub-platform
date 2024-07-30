@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "tabs": {
+      "title": "Editing profile",
+      "items": {
+        "personalInformation": "Personal information",
+        "aboutMe": "About me",
+        "skills": "Skills",
+        "projects": "Projects",
+        "experience": "Experience",
+        "education": "Education"
+      }
+    }
+  }
+}

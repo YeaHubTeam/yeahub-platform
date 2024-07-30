@@ -23,3 +23,10 @@
 .auth-btn {
   cursor: pointer;
 }
+
+
+@media (width <= 480px) {
+  .auth-btns {
+    display: none;
+  }
+}

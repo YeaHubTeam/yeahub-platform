@@ -2,24 +2,36 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 //ToDo заменить на UIKit
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import style from './Tabs.module.css';
 
+interface EditTab {
+	id: number;
+	title: string;
+	label: string;
+	Component: () => JSX.Element;
+}
+
 interface TabProps {
-	names: Array<string>;
+	tabs: EditTab[];
 	title: string;
 	tabToggle: number;
 	setTabToggle: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Tabs = ({ names, title, tabToggle, setTabToggle }: TabProps) => {
+export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabProps) => {
 	const lineRef = useRef<HTMLDivElement>(null);
+	const navigate = useNavigate();
 
-	const handleTabToggle = (e: React.MouseEvent<HTMLLIElement>, id: number) => {
+	const handleTabToggle = (e: React.MouseEvent<HTMLLIElement>, id: number, pathname: string) => {
 		const tabElement = e.target as HTMLLIElement;
 		const tabRect = tabElement.offsetLeft;
 
 		setTabToggle(id);
+
+		navigate(`#${pathname}`);
+
 		if (lineRef.current) {
 			lineRef.current.style.width = tabElement.offsetWidth + 'px';
 			lineRef.current.style.left = `${tabRect}px`;
@@ -42,13 +54,13 @@ export const Tabs = ({ names, title, tabToggle, setTabToggle }: TabProps) => {
 			<div className={style.line} ref={lineRef}></div>
 			<h2>{title}</h2>
 			<ul className={style['tab-list']}>
-				{names.map((name, index) => (
+				{tabs.map((tab, index) => (
 					<li
 						key={index}
 						className={`${style['tab-item']} ${tabToggle === index ? style.active : ''}`}
-						onClick={(e) => handleTabToggle(e, index)}
+						onClick={(e) => handleTabToggle(e, index, tab.title)}
 					>
-						{name}
+						{tab.label}
 					</li>
 				))}
 			</ul>
