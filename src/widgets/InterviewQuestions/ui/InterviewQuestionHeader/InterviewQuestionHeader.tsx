@@ -13,11 +13,9 @@ interface Props {
 
 export const InterviewQuestionHeader: FC<Props> = ({ title, linkTitle, centered = false }) => {
 	return (
-		<div className={styles.header}>
-			<h3 className={classNames(styles['header-title'], { [styles.centered]: centered })}>
-				{title}
-			</h3>
-			{!!linkTitle && <LinkWithArrowRight link="/questions" linkTitle={linkTitle} />}
+		<div className={classNames(styles.header, { [styles.centered]: centered })}>
+			<h3 className={styles['header-title']}>{title}</h3>
+			{!!linkTitle && <LinkWithArrowRight link="questions" linkTitle={linkTitle} />}
 		</div>
 	);
 };

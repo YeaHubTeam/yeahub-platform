@@ -1,0 +1,10 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.projects-block {
+  height: fit-content;
+}

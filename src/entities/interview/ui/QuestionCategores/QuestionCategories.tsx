@@ -1,4 +1,4 @@
-import { Icon } from 'yeahub-ui-kit';
+import { Chip, Icon } from 'yeahub-ui-kit';
 
 import styles from './QuestionCategories.module.css';
 
@@ -8,21 +8,19 @@ interface Props {
 
 export const QuestionCategories = ({ questionCategories }: Props) => {
 	return (
-		<div>
+		<ul>
 			<p className={styles.title}>Категории вопросов</p>
 			{questionCategories?.map((category) => {
 				return (
-					<div key={category} className={styles.category}>
-						<Icon
-							icon="cubeFocus"
-							size={20}
-							color="--palette-ui-black-500"
-							className={styles.icon}
+					<li key={category} className={styles.category}>
+						<Chip
+							label={category}
+							preffix={<Icon icon="figmaLogo" className={styles.icon} />}
+							theme="primary"
 						/>
-						<span>{category}</span>
-					</div>
+					</li>
 				);
 			})}
-		</div>
+		</ul>
 	);
 };

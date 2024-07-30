@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
 import { UserPreferences } from '@/features/common/user-preferences';
-import { ThemeSwitcher } from '@/features/theme/switch-theme';
+// import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
 import styles from './Header.module.css';
 
 const MemoHeader: FC = () => {
 	return (
 		<header className={styles.header}>
-			<ThemeSwitcher />
+			{/* <ThemeSwitcher /> */}
 			<UserPreferences />
 		</header>
 	);

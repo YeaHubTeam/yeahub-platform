@@ -1,12 +1,16 @@
 .container {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-template-columns: 1.5fr 1fr;
   gap: 20px;
 }
 
 .container>div {
   height: auto;
+}
+
+.container > .category {
+  height: 471px;
 }
 
 .progress {
@@ -19,6 +23,10 @@
   height: auto;
 }
 
-.questions > * + * {
+.questions > * + *, .category-progress > * + * {
   margin-top: 20px;
+}
+
+.attempt > * + * {
+  margin-top: 50px;
 }

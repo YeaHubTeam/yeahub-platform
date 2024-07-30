@@ -6,11 +6,4 @@
 .category {
   display: inline-block;
   margin: 0 8px 8px 0;
-  padding: 10px 12px;
-  border: thin solid var(--border-color);
-  border-radius: 12px;
-}
-
-.icon {
-  margin-right: 8px;
 }

@@ -1,14 +1,13 @@
 /* stylelint-disable selector-class-pattern */
 .calendar-block {
-  height: 312px;
+  margin-bottom: auto;
+  height: auto;
 
-  /* Основные стили календаря */
   .react-calendar {
     border: none;
     font-family: var(--font-family);
   }
 
-  /* Стили для кнопок навигации */
   .react-calendar__navigation {
     margin-bottom: 8px;
     height: 56px;
@@ -23,6 +22,10 @@
         text-transform: capitalize;
       }
 
+      &:disabled {
+        background-color: var(--background-block);
+      }
+
       &:enabled:hover,
       &:enabled:focus {
         background-color: var(--background-block);
@@ -30,7 +33,6 @@
     }
   }
 
-  /* Стили для заголовков дней недели */
   .react-calendar__month-view__weekdays {
     color: var(--text-color-lightest);
     text-transform: none;
@@ -43,7 +45,6 @@
     }
   }
 
-  /* Стили для текущей даты */
   .react-calendar__tile--now {
     background: var(--background-block);
     text-transform: none;
@@ -59,7 +60,6 @@
     }
   }
 
-  /* Стили для активной даты */
   .react-calendar__tile--active {
     background-color: var(--background-block);
     text-transform: none;
@@ -76,7 +76,6 @@
     }
   }
 
-  /* Стили для ячеек календаря */
   .react-calendar__tile {
     display: flex;
     justify-content: center;
@@ -95,7 +94,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 24px;
+      width: 85%;
       height: 24px;
       border-radius: 50%;
       text-transform: none;
@@ -104,6 +103,14 @@
       &:hover {
         background-color: var(--background-progress-bar);
       }
+    }
+  }
+
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: var(--background-block);
+
+    abbr {
+      background-color: var(--background-progress-bar);
     }
   }
 }

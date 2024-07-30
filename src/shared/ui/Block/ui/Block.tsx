@@ -91,7 +91,7 @@ export const Block: FC<Props> = ({ children, expandable = false, className = '' 
 			<div ref={contentRef}>{children}</div>
 			{expandable && isHeightForExpand && (
 				<>
-					<ExpandIcon />
+					{!isExpand ? <ExpandIcon /> : null}
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
 						<Arrow className={`${isExpand ? styles['block-arrow-expanded'] : ''}`} />
