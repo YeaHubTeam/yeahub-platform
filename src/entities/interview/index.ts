@@ -10,3 +10,4 @@ export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 export { useSlideSwitcher } from './hooks/useSlideSwitcher';
 export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
+export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';

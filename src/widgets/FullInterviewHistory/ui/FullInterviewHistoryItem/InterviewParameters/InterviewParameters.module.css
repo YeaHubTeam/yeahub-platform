@@ -1,0 +1,15 @@
+.param {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.text {
+  color: var(--text-color-lightest);
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
