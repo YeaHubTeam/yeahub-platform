@@ -19,20 +19,27 @@ const InterviewQuizPage = () => {
 	return (
 		<div className={styles.container}>
 			<Block>
-				<div className={styles['progress-bar-title']}>
-					<p>{t('progressBarTitle')}</p>
+				<div className={styles['progress-bar']}>
+					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>10/45</span>
+					<QuestionProgressBar className={styles['progress-component']} />
 				</div>
-				<QuestionProgressBar />
 			</Block>
 			<Block>
-				<QuestionNavPanel
-					showResponseButtons={false}
-					goToNextSlide={goToNextSlide}
-					goToPrevSlide={goToPrevSlide}
-				/>
-				<InterviewSlider id={id} title={title} imageSrc={imageSrc} longAnswer={longAnswer ?? ''} />
-				<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
+				<div className={styles.question}>
+					<QuestionNavPanel
+						className={styles['slider-navigation']}
+						goToNextSlide={goToNextSlide}
+						goToPrevSlide={goToPrevSlide}
+					/>
+					<InterviewSlider
+						id={id}
+						title={title}
+						imageSrc={imageSrc}
+						longAnswer={longAnswer ?? ''}
+					/>
+					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
+				</div>
 			</Block>
 		</div>
 	);

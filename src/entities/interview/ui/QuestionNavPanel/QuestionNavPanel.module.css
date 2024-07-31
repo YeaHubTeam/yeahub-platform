@@ -1,7 +1,6 @@
 .panel {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
 }
 
 .button {
@@ -12,4 +11,17 @@
 
 .arrow {
   width: 28px;
+}
+
+@media (width >= 1024px) {
+  .action-btns {
+    display: none;
+  }
+}
+
+@media (width <= 1024px) {
+  .panel {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
 }
