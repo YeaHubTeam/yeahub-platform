@@ -5,6 +5,7 @@
 }
   
 .wrapper>button {
+  flex-shrink: 0;
   width: auto;
   border-radius: 12px;
   color: var(--text-color-bright);
@@ -22,5 +23,11 @@
     svg {
       color: var(--text-color-link-active);
     }
+  }
+}
+
+@media (width <= 768px) {
+  .action-button {
+    display: none;
   }
 }

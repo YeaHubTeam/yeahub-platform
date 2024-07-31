@@ -23,6 +23,7 @@ export const Breadcrumbs = () => {
 					<li className={styles.item} key={index}>
 						{index !== 0 && (
 							<Icon
+								className={styles.icon}
 								icon="caretRight"
 								color={
 									index === arr.length - 1 ? '--palette-ui-purple-700' : '--palette-ui-black-700'

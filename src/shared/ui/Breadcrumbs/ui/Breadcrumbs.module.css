@@ -9,3 +9,13 @@
   align-items: center;
   gap: 8px;
 }
+
+@media (width <= 768px) {
+  .item:not(:last-child) {
+    display: none;
+  }
+
+  .item:last-child .icon {
+    transform: rotate(180deg);
+  }
+}

@@ -10,9 +10,13 @@
   }
 }
 
+.progress-bar {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 1fr auto;
+}
+
 .progress-bar-title {
-  display: flex;
-  justify-content: space-between;
   font-size: var(--font-size-h-xs);
 }
 
@@ -21,8 +25,52 @@
   font-size: var(--font-size-p-s);
 }
 
+.progress-component {
+  grid-column: span 2;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .end-button {
   position: relative;
-  margin: 24px 0;
   margin-left: auto;
+}
+
+@media (width <= 1024px) {
+  .question {
+    gap: 16px;
+  }
+	
+  .slider-navigation {
+    order: 1;
+  }
+
+  .end-button {
+    order: 2;
+  }
+}
+
+@media (width <= 480px) {
+  .progress-bar {
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .progress-bar-title {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+  }
+
+  .progress-num {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+
+  .progress-component {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+  }
 }

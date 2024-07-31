@@ -22,17 +22,17 @@ export const InterviewSlider = ({ id, title, imageSrc, longAnswer }: Props) => {
 
 	return (
 		<article key={id} className={styles.slider}>
+			<p className={styles.question}>{title}</p>
 			<div className={styles.wrapper}>
-				<p className={styles.question}>{title}</p>
 				{!isAnswerVisible ? (
 					<button className={styles.answer} onClick={toggleAnswerVisibility}>
 						Посмотреть ответ
 					</button>
 				) : (
-					<div>{longAnswer}</div>
+					longAnswer
 				)}
-				<ResponseButtons className={styles['response-buttons']} />
 			</div>
+			<ResponseButtons className={styles['response-buttons']} />
 			<ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />
 		</article>
 	);
