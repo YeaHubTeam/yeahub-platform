@@ -17,7 +17,7 @@ export const InterviewResults: FC<Props> = ({
 	incorrectAnswersCount,
 }) => {
 	return (
-		<li className={styles.param}>
+		<div className={styles.param}>
 			<span>{label}:</span>
 			<div className={styles.wrapper}>
 				<div className={styles.result}>
@@ -29,6 +29,6 @@ export const InterviewResults: FC<Props> = ({
 					<span className={styles.count}>{incorrectAnswersCount}</span>
 				</div>
 			</div>
-		</li>
+		</div>
 	);
 };

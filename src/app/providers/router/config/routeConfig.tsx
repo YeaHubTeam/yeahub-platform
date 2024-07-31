@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
+import { InterviewHistoryPage } from '@/pages/InterviewHistoryPage';
 import { InterviewPage } from '@/pages/InterviewPage';
 import { InterviewQuizPage } from '@/pages/InterviewQuizPage';
 import { InterviewQuizResultPage } from '@/pages/InterviewQuizResultPage';
@@ -100,6 +101,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage />,
+			},
+			{
+				path: 'interviewHistory',
+				element: <InterviewHistoryPage />,
 			},
 			{
 				path: '*',
