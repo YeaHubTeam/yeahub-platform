@@ -1,17 +1,23 @@
 import { useState } from 'react';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { QuestionModeType } from '@/pages/CreateQuizPage';
+import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { BaseFilterSection } from '../QuestionsFilterPanel/ui/BaseFilterSection/BaseFilterSection';
+import { QuestionModeType } from '@/entities/quiz';
 
 interface QuizQuestionModeProps {
 	onChangeMode: (complexity: QuestionModeType) => void;
 }
 
-const quizQuestionModeData = [
+interface QuizQuestionModeData {
+	id: number;
+	value: QuestionModeType;
+	title: string;
+	active: boolean;
+}
+
+const quizQuestionModeData: QuizQuestionModeData[] = [
 	{ id: 1, value: 'REPEAT', title: 'Повторение', active: false },
-	{ id: 2, value: 'NEW', title: 'Только новые', active: true },
+	{ id: 2, value: 'NEW', title: 'Только новые', active: false },
 	{ id: 3, value: 'RANDOM', title: 'Случайные', active: false },
 ];
 
@@ -21,20 +27,14 @@ export const QuizQuestionMode = ({ onChangeMode }: QuizQuestionModeProps) => {
 	const handleChooseMode = (id: number) => {
 		const newValue = quizQuestionMode.find((mode) => mode.id === id);
 		const updatedModeData = quizQuestionMode.map((mode) => {
-			if (mode.id === id) {
-				return {
-					...mode,
-					active: true,
-				};
-			}
 			return {
 				...mode,
-				active: false,
+				active: mode.id === id,
 			};
 		});
 		setQuizQuestionMode(updatedModeData);
 		if (newValue) {
-			const value = newValue.value as QuestionModeType;
+			const value = newValue.value;
 			onChangeMode(value);
 		}
 	};

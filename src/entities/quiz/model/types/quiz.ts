@@ -1,16 +1,19 @@
-type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Question } from '@/entities/question';
+
+export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateNewQuizGetRequest {
-	profileId: string;
-	skills: number[];
-	params: CreateNewQuizParams;
+	profileId?: string;
+	params?: CreateNewQuizParams;
 }
 
 export interface CreateNewQuizParams {
-	minComplexity: number;
-	maxComplexity: number;
-	limit: number;
-	mode: QuestionModeType;
+	skills?: number[];
+	minComplexity?: number;
+	maxComplexity?: number;
+	limit?: number;
+	mode?: QuestionModeType;
 }
 
 export interface NewQuizResponse {
@@ -22,30 +25,12 @@ export interface NewQuizResponse {
 	id: string;
 }
 
-export interface Question {
-	id: number;
-	title: string;
-	description: string;
-	imageSrc: string;
-	keywords: string[];
-	longAnswer: string;
-	shortAnswer: string;
-	status: string;
-	rate: number;
-	createdAt: Date;
-	updatedAt: Date;
-	createdBy: null | string;
-	updatedBy: null;
-	questionSpecializations: QuestionSkill[];
-	questionSkills: QuestionSkill[];
-	complexity?: number;
+export interface Response {
+	answers: Answers[];
 }
 
-export interface QuestionSkill {
-	id: string;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
+export interface Answers {
+	questionId: number;
+	questionTitle: string;
+	answer: string;
 }

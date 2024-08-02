@@ -1,6 +1,6 @@
-import { BaseFilterSection } from '../QuestionsFilterPanel/ui/BaseFilterSection/BaseFilterSection';
+import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-interface QuizQuestionComplexityProps {
+interface ChooseQuestionComplexityProps {
 	selectedComplexity?: number[];
 	onChangeComplexity: (complexity: number[]) => void;
 }
@@ -11,10 +11,10 @@ const complexity = [
 	{ id: 3, title: '7-8', value: [7, 8] },
 	{ id: 4, title: '9-10', value: [9, 10] },
 ];
-export const QuizQuestionComplexity = ({
+export const ChooseQuestionComplexity = ({
 	selectedComplexity,
 	onChangeComplexity,
-}: QuizQuestionComplexityProps) => {
+}: ChooseQuestionComplexityProps) => {
 	const handleChooseComplexity = (id: number) => {
 		const newValues = complexity.find((item) => item.id === id)?.value || [];
 		const isDataExist = selectedComplexity?.some((item) => newValues.includes(item));

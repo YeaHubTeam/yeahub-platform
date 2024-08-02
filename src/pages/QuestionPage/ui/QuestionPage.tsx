@@ -30,7 +30,7 @@ export const QuestionPage = () => {
 				<ProgressBlock />
 				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
 				<p className={styles.author}>
-					Автор: <span>{question?.author ?? 'неизвестный, но очень умный'}</span>
+					Автор: <span>{question?.createdBy ?? 'неизвестный, но очень умный'}</span>
 				</p>
 			</div>
 		</section>

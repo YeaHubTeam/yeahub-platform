@@ -1,9 +1,9 @@
+import { QuestionModeType } from '@/entities/quiz';
+
 export interface CreateQuizPageState {
 	profileId?: string;
-	skills: number[];
+	skills?: number[];
 	complexity?: number[];
-	limit: number;
-	mode: QuestionModeType;
+	limit?: number;
+	mode?: QuestionModeType;
 }
-
-export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';

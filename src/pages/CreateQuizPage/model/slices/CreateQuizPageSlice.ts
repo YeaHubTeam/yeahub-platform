@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { CreateQuizPageState, QuestionModeType } from '../types/CreateQuizPageTypes';
+import { QuestionModeType } from '@/entities/quiz';
+
+import { CreateQuizPageState } from '../types/CreateQuizPageTypes';
 
 const initialState: CreateQuizPageState = {
 	profileId: undefined,
-	skills: [],
-	complexity: [],
-	limit: 1,
-	mode: 'NEW',
+	skills: undefined,
+	complexity: undefined,
+	limit: undefined,
+	mode: undefined,
 };
 
 const createQuizPageSlice = createSlice({

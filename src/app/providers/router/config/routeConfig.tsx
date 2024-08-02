@@ -41,23 +41,22 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'quiz',
-						element: <CreateQuizPage />,
-						handle: {
-							crumb: 'Собеседование',
-						},
+						element: <Outlet />,
+						handle: { crumb: 'Собеседование' },
+						children: [
+							{ index: true, element: <CreateQuizPage /> },
+							{
+								path: 'interviewQuiz',
+								element: <InterviewQuizPage />,
+								handle: { crumb: 'Викторина' },
+							},
+						],
 					},
 					{
 						path: 'interview-statistics',
 						element: <InterviewStatisticsPage />,
 						handle: {
 							crumb: 'Статистика собеседований',
-						},
-					},
-					{
-						path: 'interviewQuiz',
-						element: <InterviewQuizPage />,
-						handle: {
-							crumb: 'Викторина',
 						},
 					},
 					{

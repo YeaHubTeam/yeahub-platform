@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import { Counter } from '@/shared/ui/Counter';
 
-import styles from './QuizQuestionCount.module.css';
+import styles from './ChooseQuestionCount.module.css';
 
-interface QuizQuestionCountProps {
+interface ChooseQuestionCountProps {
 	onChangeLimit: (limit: number) => void;
 }
 
-export const QuizQuestionCount = ({ onChangeLimit }: QuizQuestionCountProps) => {
+export const ChooseQuestionCount = ({ onChangeLimit }: ChooseQuestionCountProps) => {
 	const [counter, setCounter] = useState(1);
 
 	const handleClick = (counter: number) => {

@@ -7,16 +7,10 @@ import { CreateNewQuizGetRequest, NewQuizResponse } from '../model/types/quiz';
 const quizApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		createNewQuiz: build.query<Response<NewQuizResponse>, CreateNewQuizGetRequest>({
-			query: ({ profileId, skills, params }) => {
-				const skillsParams = skills.map((skill, index) => `skills[${index}]=${skill}`).join('&');
-				const otherParams = new URLSearchParams({
-					minComplexity: `${params.minComplexity}`,
-					maxComplexity: `${params.maxComplexity}`,
-					limit: `${params.limit}`,
-					mode: params.mode,
-				}).toString();
+			query: ({ profileId, params }) => {
 				return {
-					url: `/interview-preparation/quizzes/new/${profileId}?${skillsParams}&${otherParams}`,
+					url: `/interview-preparation/quizzes/new/${profileId}`,
+					params,
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],

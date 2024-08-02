@@ -5,20 +5,21 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Block } from '@/shared/ui/Block';
 
 import { useGetProfileQuery } from '@/entities/auth';
-import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
-
 import {
-	QuizQuestionComplexity,
-	QuizQuestionCount,
-	QuizQuestionMode,
-	QuizQuestionsCategories,
-} from '@/widgets/Question';
+	ChooseQuestionComplexity,
+	ChooseQuestionCount,
+	ChooseQuestionsCategories,
+} from '@/entities/question';
+import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
+import { QuestionModeType } from '@/entities/quiz';
+import { QuizQuestionMode } from '@/entities/quiz';
 
 import { getCreateQuizPageState } from '../model/selectors/createQuizPageSelectors';
 import { createQuizPageActions } from '../model/slices/CreateQuizPageSlice';
-import { QuestionModeType } from '../model/types/CreateQuizPageTypes';
 
 import styles from './CreateQuizPage.module.css';
+
+const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
@@ -46,22 +47,17 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setLimit(limit));
 	};
 
-	const shouldCreateNewQuiz =
-		!!userProfile?.profiles[0].profileId && !!skills.length && !!complexity?.length;
-
 	const handleCreateNewQuiz = () => {
-		if (shouldCreateNewQuiz) {
-			trigger({
-				profileId: userProfile?.profiles[0].profileId,
+		trigger({
+			profileId: userProfile?.profiles[0].profileId || '',
+			params: {
 				skills,
-				params: {
-					minComplexity: complexity[0],
-					maxComplexity: complexity[complexity.length - 1],
-					limit,
-					mode,
-				},
-			});
-		}
+				minComplexity: complexity?.[0],
+				maxComplexity: complexity?.[complexity.length - 1],
+				limit,
+				mode,
+			},
+		});
 	};
 
 	return (
@@ -69,17 +65,20 @@ const CreateQuizPage = () => {
 			<Block className={styles.container}>
 				<h2 className={styles.title}>Собеседование</h2>
 				<div className={styles.wrapper}>
-					<QuizQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+					<ChooseQuestionsCategories
+						selectedSkills={skills}
+						onChangeSkills={onChangeSkills}
+						skillsLimit={MAX_LIMIT_CATEGORIES}
+					/>
 					<div className={styles['additional-wrapper']}>
-						<QuizQuestionComplexity
+						<ChooseQuestionComplexity
 							selectedComplexity={complexity}
 							onChangeComplexity={onChangeComplexity}
 						/>
 						<QuizQuestionMode onChangeMode={onChangeMode} />
-						<QuizQuestionCount onChangeLimit={onChangeLimit} />
+						<ChooseQuestionCount onChangeLimit={onChangeLimit} />
 						<Button
 							className={styles.button}
-							disabled={!shouldCreateNewQuiz}
 							onClick={handleCreateNewQuiz}
 							suffix={<Icon icon="arrowRight" size={24} />}
 						>
