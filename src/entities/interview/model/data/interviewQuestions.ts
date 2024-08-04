@@ -15,6 +15,10 @@ export const INTERVIEW_QUESTIONS = [
 		rating: 10,
 		specializations: [1, 3],
 		skills: [10, 23],
+		createdAt: '',
+		updatedAt: '',
+		createdBy: null,
+		updatedBy: null,
 	},
 	{
 		id: 2,
@@ -29,6 +33,10 @@ export const INTERVIEW_QUESTIONS = [
 		rating: 10,
 		specializations: [1, 3],
 		skills: [10, 23],
+		createdAt: '',
+		updatedAt: '',
+		createdBy: null,
+		updatedBy: null,
 	},
 	{
 		id: 3,
@@ -43,6 +51,10 @@ export const INTERVIEW_QUESTIONS = [
 		rating: 10,
 		specializations: [1, 3],
 		skills: [10, 23],
+		createdAt: '',
+		updatedAt: '',
+		createdBy: null,
+		updatedBy: null,
 	},
 ];
 

@@ -3,14 +3,14 @@ import { Chip, Icon } from 'yeahub-ui-kit';
 import { Block } from '@/shared/ui/Block';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
-import { QuestionSkill } from '@/entities/question';
+import { Skill } from '@/entities/skill';
 
 import styles from './AdditionalInfo.module.css';
 
 //todo после обновления рейтинга и сложности скорректировать рендер компонента
 interface Props {
 	rate?: number;
-	questionSkills?: QuestionSkill[];
+	questionSkills?: Skill[];
 }
 
 export const AdditionalInfo = ({ rate, questionSkills }: Props) => {

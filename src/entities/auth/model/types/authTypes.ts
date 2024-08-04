@@ -13,7 +13,13 @@ export type GetProfileApiResponse = {
 	birthday: string;
 	updatedAt: string;
 	createdAt: string;
+	profiles: Profile[];
 };
+
+export interface Profile {
+	profileId: string;
+	specializationID: number;
+}
 
 export type GetRefreshTokenApiResponse = {
 	access_token: string;

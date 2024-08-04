@@ -1,4 +1,9 @@
-import { BaseFilterSection } from '../BaseFilterSection/BaseFilterSection';
+import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+
+interface ChooseQuestionComplexityProps {
+	selectedComplexity?: number[];
+	onChangeComplexity: (complexity: number[]) => void;
+}
 
 const complexity = [
 	{ id: 1, title: '1-3', value: [1, 2, 3] },
@@ -6,17 +11,11 @@ const complexity = [
 	{ id: 3, title: '7-8', value: [7, 8] },
 	{ id: 4, title: '9-10', value: [9, 10] },
 ];
-
-interface ComplexityFilterSectionProps {
-	selectedComplexity?: number[];
-	onChangeComplexity: (complexity: number[]) => void;
-}
-
-export const ComplexityFilterSection = ({
-	onChangeComplexity,
+export const ChooseQuestionComplexity = ({
 	selectedComplexity,
-}: ComplexityFilterSectionProps) => {
-	const onClick = (id: number) => {
+	onChangeComplexity,
+}: ChooseQuestionComplexityProps) => {
+	const handleChooseComplexity = (id: number) => {
 		const newValues = complexity.find((item) => item.id === id)?.value || [];
 		const isDataExist = selectedComplexity?.some((item) => newValues.includes(item));
 		const updates = isDataExist
@@ -29,5 +28,11 @@ export const ComplexityFilterSection = ({
 		...item,
 		active: selectedComplexity?.some((selectedItem) => item.value.includes(selectedItem)),
 	}));
-	return <BaseFilterSection data={preparedData} title="Сложность вопросов" onClick={onClick} />;
+	return (
+		<BaseFilterSection
+			data={preparedData}
+			title="Сложность вопросов"
+			onClick={handleChooseComplexity}
+		/>
+	);
 };

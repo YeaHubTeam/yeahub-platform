@@ -1,0 +1,24 @@
+.container {
+  height: 100%;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 43px;
+}
+
+.additional-wrapper {
+  display: flex;
+  flex-basis: 40%;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.button {
+  margin-left: auto;
+}

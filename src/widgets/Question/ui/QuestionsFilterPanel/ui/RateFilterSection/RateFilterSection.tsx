@@ -1,4 +1,4 @@
-import { BaseFilterSection } from '../BaseFilterSection/BaseFilterSection';
+import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 const rate = [
 	{ id: 1, title: '1' },

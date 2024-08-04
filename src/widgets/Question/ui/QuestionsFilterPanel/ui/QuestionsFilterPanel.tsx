@@ -1,11 +1,11 @@
 import { useDebounce } from '@/shared/hooks/useDebounced';
 
+import { ChooseQuestionComplexity, ChooseQuestionsCategories } from '@/entities/question';
+
 import { SearchInput } from '@/features/common/search-input';
 
 import { FilterParams } from '../model/types';
 
-import { CategoryFilterSection } from './CategoryFilterSection/CategoryFilterSection';
-import { ComplexityFilterSection } from './ComplexityFilterSection/ComplexityFilterSection';
 import styles from './QuestionsFilterPanel.module.css';
 import { RateFilterSection } from './RateFilterSection/RateFilterSection';
 import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
@@ -36,8 +36,8 @@ export const QuestionsFilterPanel = ({
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput placeholder="Введите запрос" onSearch={debouncedSearch} />
-			<CategoryFilterSection selectedSkills={skill} onChangeSkills={onChangeSkills} />
-			<ComplexityFilterSection onChangeComplexity={onChangeComplexity} selectedComplexity={rate} />
+			<ChooseQuestionsCategories selectedSkills={skill} onChangeSkills={onChangeSkills} />
+			<ChooseQuestionComplexity onChangeComplexity={onChangeComplexity} selectedComplexity={rate} />
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rating} />
 			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatuses={progressStatus} />
 		</div>

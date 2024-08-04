@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import { CreateQuizPage } from '@/pages/CreateQuizPage';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
 import { InterviewHistoryPage } from '@/pages/InterviewHistoryPage';
@@ -56,17 +57,23 @@ export const router = createBrowserRouter([
 						element: <InterviewPage />,
 					},
 					{
+						path: 'quiz',
+						element: <Outlet />,
+						handle: { crumb: 'Собеседование' },
+						children: [
+							{ index: true, element: <CreateQuizPage /> },
+							{
+								path: 'interviewQuiz',
+								element: <InterviewQuizPage />,
+								handle: { crumb: 'Викторина' },
+							},
+						],
+					},
+					{
 						path: 'interview-statistics',
 						element: <InterviewStatisticsPage />,
 						handle: {
 							crumb: 'Статистика собеседований',
-						},
-					},
-					{
-						path: 'interviewQuiz',
-						element: <InterviewQuizPage />,
-						handle: {
-							crumb: 'Викторина',
 						},
 					},
 					{

@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  width: 100%;
+  max-width: 115px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-color-primary);
+}
+
+.count {
+  user-select: none;
+}
