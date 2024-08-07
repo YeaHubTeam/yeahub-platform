@@ -8,19 +8,28 @@ export const QuestionActions = () => {
 	return (
 		<Block className={styles['question-actions']}>
 			<div className={styles.wrapper}>
-				<Button preffix={<Icon icon="student" />} theme="tertiary">
+				<Button className={styles.btn} preffix={<Icon icon="student" />} theme="tertiary">
 					Учить
 				</Button>
-				<Button preffix={<Icon icon="bookmarks" key={'bookmarks'} />} theme="tertiary">
+				<Button
+					className={styles.btn}
+					preffix={<Icon icon="bookmarks" key={'bookmarks'} />}
+					theme="tertiary"
+				>
 					Сохранить
 				</Button>
 				<Button
+					className={styles.btn}
 					preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} />}
 					theme="tertiary"
 				>
 					Повторить
 				</Button>
-				<Button preffix={<Icon icon="skipForward" key={'skipForward'} />} theme="tertiary">
+				<Button
+					className={styles.btn}
+					preffix={<Icon icon="skipForward" key={'skipForward'} />}
+					theme="tertiary"
+				>
 					Пропустить
 				</Button>
 			</div>

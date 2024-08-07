@@ -1,4 +1,5 @@
 .normal-hight {
+  grid-area: AdditionalInfo;
   height: auto;
 }
 

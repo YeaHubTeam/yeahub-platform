@@ -1,4 +1,5 @@
 .wrapper {
+  grid-area: QuestionHeader;
   margin-bottom: 20px;
 }
 
@@ -44,4 +45,25 @@
   color: var(--color-green-900);
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-xs);
+}
+
+@media (width <= 480px) {
+  .img {
+    width: 54px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: var(--font-size-p-s);
+  }
+
+  .description {
+    font-size: var(--font-size-p-xss);
+  }
+
+  .label-wrapper {
+    width: 54px;
+  }
 }
