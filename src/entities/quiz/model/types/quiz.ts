@@ -17,7 +17,7 @@ export interface CreateNewQuizParams {
 }
 
 export interface NewQuizResponse {
-	profileID: string;
+	profileId: string;
 	fullCount: number;
 	skills: string[];
 	questions: Question[];
@@ -33,4 +33,21 @@ export interface Answers {
 	questionId: number;
 	questionTitle: string;
 	answer: string;
+	imageSrc?: string;
+	shortAnswer?: string;
 }
+
+export interface InterviewQuizParams {
+	page?: number;
+	limit?: number;
+}
+
+export interface InterviewQuizGetRequest {
+	profileId?: string;
+	params: InterviewQuizParams;
+}
+
+export type ActiveQuizDataResponse = Pick<
+	NewQuizResponse,
+	Exclude<keyof NewQuizResponse, 'questions'>
+>;

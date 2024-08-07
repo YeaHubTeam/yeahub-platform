@@ -58,6 +58,29 @@ export const INTERVIEW_QUESTIONS = [
 	},
 ];
 
+export const QUIZ_QUESTIONS = [
+	{
+		answer: 'UNKNOWN',
+		questionId: 1,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 2,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 3,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 4,
+		questionTitle: 'Event Loop11112323',
+	},
+];
+
 // Временные данные
 export const MOCK_QUIZ = {
 	id: '1',

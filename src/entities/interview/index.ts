@@ -2,6 +2,7 @@ export type { Interview, InterviewQuestion, InterviewQuestionBtn } from './model
 export { InterviewResults } from './ui/InterviewResults/InterviewResults';
 export { QuestionProgressBar } from './ui/QuestionProgressBar/QuestionProgressBar';
 export {
+	QUIZ_QUESTIONS,
 	INTERVIEW_QUESTIONS,
 	MOCK_QUIZ,
 	INTERVIEW_BTNS_DATA,

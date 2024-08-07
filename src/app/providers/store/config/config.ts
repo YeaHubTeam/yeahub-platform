@@ -6,6 +6,7 @@ import { State } from '@/shared/config/store/State';
 import { authSlice } from '@/entities/auth';
 
 import { createQuizPageReducer } from '@/pages/CreateQuizPage';
+import { interviewQuizPageReducer } from '@/pages/InterviewQuizPage';
 import { questionsPageReducer } from '@/pages/QuestionsPage';
 
 import { router } from '../../router';
@@ -16,6 +17,7 @@ export const createReduxStore = (initialState?: State) => {
 			auth: authSlice.reducer,
 			questionsPage: questionsPageReducer,
 			createQuizPage: createQuizPageReducer,
+			interviewQuizPage: interviewQuizPageReducer,
 			[baseApi.reducerPath]: baseApi.reducer,
 		},
 		preloadedState: initialState,
