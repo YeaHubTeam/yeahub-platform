@@ -17,7 +17,7 @@
   text-align: center;
 }
 
-@media (width <= 1024px) {
+@media (width <= 1280px) {
   .wrapper {
     grid-template-columns: auto;
     grid-template-areas: 

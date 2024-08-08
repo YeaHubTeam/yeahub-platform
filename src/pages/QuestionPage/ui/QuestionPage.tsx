@@ -16,6 +16,17 @@ export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 	const { data: question } = useGetQuestionByIdQuery(questionId as string);
 
+	let authorName = 'неизвестный, но очень умный';
+	if (question?.createdBy) {
+		try {
+			const authorData = JSON.parse(question.createdBy);
+			authorName = `${authorData.firstName} ${authorData.lastName}`;
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error('Ошибка при парсинге JSON данных автора:', error);
+		}
+	}
+
 	return (
 		<section className={styles.wrapper}>
 			<QuestionHeader
@@ -28,7 +39,7 @@ export const QuestionPage = () => {
 			<ProgressBlock />
 			<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
 			<p className={styles.author}>
-				Автор: <span>{question?.createdBy ?? 'неизвестный, но очень умный'}</span>
+				Автор: <span>{authorName}</span>
 			</p>
 		</section>
 	);

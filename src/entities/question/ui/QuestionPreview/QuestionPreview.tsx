@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useMatch } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { QuestionParam } from '@/shared/ui/QuestionParam';
@@ -13,6 +13,10 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question }: QuestionProps) => {
 	const { id, imageSrc, rate, rating, shortAnswer } = question;
+	const match = useMatch('/interview/questions/*');
+
+	const baseUrl = match?.pathnameBase || '/interview/questions';
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
@@ -22,7 +26,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 				</div>
 				<div>
 					<Button className={styles.details} theme="link">
-						<NavLink to={`interview/questions/${id}`}>Подробнее</NavLink>
+						<NavLink to={`${baseUrl}/${id}`}>Подробнее</NavLink>
 					</Button>
 				</div>
 			</div>
