@@ -15,6 +15,7 @@ import styles from './QuestionPage.module.css';
 export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 	const { data: question } = useGetQuestionByIdQuery(questionId as string);
+
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
