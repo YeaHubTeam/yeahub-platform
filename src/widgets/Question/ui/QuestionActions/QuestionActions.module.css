@@ -1,6 +1,7 @@
 .question-actions{
   grid-area: QuestionActions;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .wrapper {

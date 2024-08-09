@@ -1,5 +1,6 @@
 .wrapper {
   grid-area: QuestionBody;
+  margin-bottom: 4px;
 }
 
 .title {

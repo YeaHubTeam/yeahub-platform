@@ -1,14 +1,26 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  grid-template-areas: 
-    "QuestionHeader  ProgressBlock"
-    "QuestionActions   AdditionalInfo"
-    "QuestionBody   author";
+  display: flex;
   gap: 20px;
-  width: 100%
+  width: 100%;
 }
 
+.mobile {
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.additional {
+  display: flex;           
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+}
 
 .author {
   grid-area: author;
@@ -16,18 +28,3 @@
   width: auto;
   text-align: center;
 }
-
-@media (width <= 1280px) {
-  .wrapper {
-    grid-template-columns: auto;
-    grid-template-areas: 
-      "QuestionHeader"
-      "ProgressBlock"
-      "AdditionalInfo"
-      "author"
-      "QuestionActions"
-      "QuestionBody"
-  }
-}
-
-

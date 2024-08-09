@@ -1,3 +1,6 @@
+import classNames from 'classnames';
+import { useMemo } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useParams } from 'react-router-dom';
 
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -16,31 +19,50 @@ export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 	const { data: question } = useGetQuestionByIdQuery(questionId as string);
 
-	let authorName = 'неизвестный, но очень умный';
-	if (question?.createdBy) {
-		try {
-			const authorData = JSON.parse(question.createdBy);
-			authorName = `${authorData.firstName} ${authorData.lastName}`;
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error('Ошибка при парсинге JSON данных автора:', error);
+	const authorFullName = useMemo(() => {
+		if (question?.createdBy) {
+			const author = JSON.parse(question.createdBy);
+			return `${author.firstName} ${author.lastName}`;
 		}
+	}, [question]);
+
+	if (isMobile) {
+		return (
+			<section className={classNames(styles.wrapper, styles.mobile)}>
+				<QuestionHeader
+					description={question?.description}
+					status={question?.status}
+					title={question?.title}
+				/>
+				<QuestionActions />
+				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				<ProgressBlock />
+				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
+				<p className={styles.author}>
+					Автор: <span>{authorFullName}</span>
+				</p>
+			</section>
+		);
 	}
 
 	return (
 		<section className={styles.wrapper}>
-			<QuestionHeader
-				description={question?.description}
-				status={question?.status}
-				title={question?.title}
-			/>
-			<QuestionActions />
-			<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
-			<ProgressBlock />
-			<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
-			<p className={styles.author}>
-				Автор: <span>{authorName}</span>
-			</p>
+			<div className={styles.main}>
+				<QuestionHeader
+					description={question?.description}
+					status={question?.status}
+					title={question?.title}
+				/>
+				<QuestionActions />
+				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+			</div>
+			<div className={styles.additional}>
+				<ProgressBlock />
+				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
+				<p className={styles.author}>
+					Автор: <span>{authorFullName}</span>
+				</p>
+			</div>
 		</section>
 	);
 };
