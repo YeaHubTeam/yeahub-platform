@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { Interview, InterviewResults } from '@/entities/interview';
+import { Interview, InterviewResults } from '@/entities/quiz';
 
 import styles from './InterviewHistoryItem.module.css';
 

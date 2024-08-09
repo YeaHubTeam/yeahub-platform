@@ -1,3 +1,5 @@
+import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
+
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
 
@@ -34,7 +36,7 @@ export interface Answers {
 	questionTitle: string;
 	answer: string;
 	imageSrc?: string;
-	shortAnswer?: string;
+	longAnswer?: string;
 }
 
 export interface InterviewQuizParams {
@@ -47,7 +49,34 @@ export interface InterviewQuizGetRequest {
 	params: InterviewQuizParams;
 }
 
-export type ActiveQuizDataResponse = Pick<
-	NewQuizResponse,
-	Exclude<keyof NewQuizResponse, 'questions'>
->;
+export type ActiveQuizDataResponse = Omit<NewQuizResponse, 'questions'>;
+
+export interface ExtraArgument {
+	navigate: (path: string) => void;
+}
+
+export interface Interview {
+	id: number;
+	title: string;
+	description: string;
+	keywords: string[];
+	date: Date;
+	correctAnswersCount: number;
+	incorrectAnswersCount: number;
+	timeStamp?: string;
+	questionCount?: number;
+	questionCategories?: string[];
+}
+
+export interface InterviewQuestion {
+	id: string;
+	img: string;
+	title: string;
+	result: string;
+}
+
+export interface InterviewQuestionBtn {
+	result: string;
+	label: string;
+	icon: IconsName;
+}

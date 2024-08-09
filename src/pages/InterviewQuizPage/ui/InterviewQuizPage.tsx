@@ -6,11 +6,13 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
 import { useGetProfileQuery } from '@/entities/auth';
-import { QuestionProgressBar } from '@/entities/interview';
-import { QuestionNavPanel } from '@/entities/interview';
-import { useSlideSwitcher } from '@/entities/interview';
-import { InterviewSlider } from '@/entities/interview';
-import { useGetActiveQuizzesQuery } from '@/entities/quiz';
+import {
+	QuestionProgressBar,
+	QuestionNavPanel,
+	InterviewSlider,
+	useSlideSwitcher,
+	useGetActiveQuizzesQuery,
+} from '@/entities/quiz';
 
 import { getInterviewQuizPageState } from '../model/selectors/interviewQuizPageSelectors';
 
@@ -30,15 +32,25 @@ const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const quizzes = quizData?.data.flatMap((item) => item.response.answers);
-	const { questionId, questionTitle, imageSrc, answer, goToNextSlide, goToPrevSlide } =
-		useSlideSwitcher(quizzes ?? []);
+	const {
+		questionId,
+		questionTitle,
+		imageSrc,
+		longAnswer,
+		currentCount,
+		totalCount,
+		goToNextSlide,
+		goToPrevSlide,
+	} = useSlideSwitcher(quizzes ?? []);
 
 	return (
 		<div className={styles.container}>
 			<Block>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
-					<span className={styles['progress-num']}>10/45</span>
+					<span className={styles['progress-num']}>
+						{currentCount}/{totalCount}
+					</span>
 					<QuestionProgressBar className={styles['progress-component']} />
 				</div>
 			</Block>
@@ -53,7 +65,7 @@ const InterviewQuizPage = () => {
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						longAnswer={answer ?? ''}
+						longAnswer={longAnswer ?? ''}
 					/>
 					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
 				</div>

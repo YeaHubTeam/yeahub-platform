@@ -1,8 +1,6 @@
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
-import { QUIZ_QUESTIONS } from '@/entities/interview';
-import { useSlideSwitcher } from '@/entities/interview';
-import { QuestionNavPanel } from '@/entities/interview';
+import { QUIZ_QUESTIONS, QuestionNavPanel, useSlideSwitcher } from '@/entities/quiz';
 
 import styles from './QuestionSlider.module.css';
 

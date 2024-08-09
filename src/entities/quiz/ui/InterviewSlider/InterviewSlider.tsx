@@ -33,7 +33,7 @@ export const InterviewSlider = ({ id, title, imageSrc, longAnswer }: Props) => {
 				)}
 			</div>
 			<ResponseButtons className={styles['response-buttons']} />
-			<ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />
+			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>
 	);
 };

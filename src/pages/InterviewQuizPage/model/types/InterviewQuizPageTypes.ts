@@ -1,5 +1,5 @@
 export interface InterviewQuizPageState {
+	limit: number;
+	page: number;
 	profileId?: string;
-	limit?: number;
-	page?: number;
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { QuestionModeType } from '@/entities/quiz';
+import { QuestionModeType } from '../../model/types/quiz';
 
 interface QuizQuestionModeProps {
 	onChangeMode: (complexity: QuestionModeType) => void;

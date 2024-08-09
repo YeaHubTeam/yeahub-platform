@@ -5,6 +5,7 @@ import { Response } from '@/shared/types/types';
 import {
 	ActiveQuizDataResponse,
 	CreateNewQuizGetRequest,
+	ExtraArgument,
 	InterviewQuizGetRequest,
 	NewQuizResponse,
 } from '../model/types/quiz';
@@ -19,6 +20,17 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra }) {
+				try {
+					await queryFulfilled;
+
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate('interviewQuiz');
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
 		}),
 		getActiveQuizzes: build.query<Response<ActiveQuizDataResponse[]>, InterviewQuizGetRequest>({
 			query: ({ profileId, params }) => ({
@@ -26,6 +38,17 @@ const quizApi = baseApi.injectEndpoints({
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra }) {
+				try {
+					await queryFulfilled;
+
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate('interviewQuiz');
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
 		}),
 	}),
 });
