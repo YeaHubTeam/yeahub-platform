@@ -13,6 +13,7 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question }: QuestionProps) => {
 	const { id, imageSrc, rate, rating, shortAnswer } = question;
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
@@ -22,7 +23,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 				</div>
 				<div>
 					<Button className={styles.details} theme="link">
-						<NavLink to={`interview/questions/${id}`}>Подробнее</NavLink>
+						<NavLink to={`/interview/questions/${id}`}>Подробнее</NavLink>
 					</Button>
 				</div>
 			</div>

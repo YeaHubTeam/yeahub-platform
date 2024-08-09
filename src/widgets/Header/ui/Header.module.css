@@ -1,4 +1,3 @@
-/* Header.module.css */
 .header {
   display: flex;
   justify-content: end;
@@ -26,11 +25,15 @@
 
 
 @media (width <= 480px) {
+  .header {
+    justify-content: space-between;
+  }
+
   .burger {
     display: block;
   }
 
   .logo {
-    display: flex;
+    display: block;
   }
 }

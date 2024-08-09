@@ -24,7 +24,7 @@
   height: auto;
 }
 
-@media (width <= 970px) {
+@media (width <= 1024px) {
   .wrapper {
     flex-direction: column-reverse;
   }

@@ -4,7 +4,7 @@ import styles from './ProgressBlock.module.css';
 
 export const ProgressBlock = () => {
 	return (
-		<Block>
+		<Block className={styles.wrapper}>
 			<h3 className={styles.title}>Прогресс</h3>
 			<div>
 				<p className={styles.info}>Пройдено 3 из 3 вопрос изучен!</p>

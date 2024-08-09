@@ -19,7 +19,7 @@ export const InterviewQuestionsItem: FC<Props> = ({ question }) => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (
 		<li className={styles.item}>
-			<Link to={`interview/questions/${id}`} className={styles.link}>
+			<Link to={`questions/${id}`} className={styles.link}>
 				<ImageWithWrapper src={imageSrc} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
