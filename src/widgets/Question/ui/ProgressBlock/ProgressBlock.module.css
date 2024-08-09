@@ -1,7 +1,3 @@
-.wrapper {
-  grid-area: ProgressBlock;
-}
-
 .title {
   margin-bottom: 16px;
   color: var(--text-color-primary);

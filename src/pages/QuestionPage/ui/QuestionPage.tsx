@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -34,13 +34,13 @@ export const QuestionPage = () => {
 					status={question?.status}
 					title={question?.title}
 				/>
-				<QuestionActions />
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 				<ProgressBlock />
 				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
 				<p className={styles.author}>
-					Автор: <span>{authorFullName}</span>
+					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
+				<QuestionActions />
+				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		);
 	}
@@ -60,7 +60,7 @@ export const QuestionPage = () => {
 				<ProgressBlock />
 				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
 				<p className={styles.author}>
-					Автор: <span>{authorFullName}</span>
+					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 			</div>
 		</section>
