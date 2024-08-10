@@ -1,4 +1,3 @@
-/* eslint-disable @conarti/feature-sliced/public-api */
 /* eslint-disable @conarti/feature-sliced/layers-slices */
 import { AuthState } from '@/entities/auth';
 

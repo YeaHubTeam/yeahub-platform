@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line
-import { Question } from '@/entities/question';
+import { Answers } from '../model/types/quiz';
 
-export const useSlideSwitcher = (questions: Question[]) => {
+export const useSlideSwitcher = (questions: Answers[]) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	const goToNextSlide = () => {
@@ -16,6 +16,8 @@ export const useSlideSwitcher = (questions: Question[]) => {
 
 	return {
 		...questions[currentQuestion],
+		currentCount: currentQuestion + 1,
+		totalCount: questions.length,
 		goToNextSlide,
 		goToPrevSlide,
 	};

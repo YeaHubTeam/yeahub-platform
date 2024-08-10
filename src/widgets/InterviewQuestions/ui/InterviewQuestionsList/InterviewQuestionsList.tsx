@@ -1,4 +1,4 @@
-import { INTERVIEW_QUESTIONS } from '@/entities/interview';
+import { INTERVIEW_QUESTIONS } from '@/entities/quiz';
 
 import { InterviewQuestionsItem } from '../InterviewQuestionsItem/InterviewQuestionsItem';
 

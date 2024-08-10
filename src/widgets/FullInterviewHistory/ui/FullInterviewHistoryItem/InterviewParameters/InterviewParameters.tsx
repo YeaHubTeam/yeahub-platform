@@ -2,7 +2,7 @@ import { Icon } from 'yeahub-ui-kit';
 
 import { formatDate } from '@/shared/helpers/formatDate';
 
-import { type Interview, InterviewResults } from '@/entities/interview';
+import { type Interview, InterviewResults } from '@/entities/quiz';
 
 import styles from './InterviewParameters.module.css';
 

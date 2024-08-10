@@ -1,19 +1,18 @@
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
-import { INTERVIEW_QUESTIONS } from '@/entities/interview';
-import { useSlideSwitcher } from '@/entities/interview';
-import { QuestionNavPanel } from '@/entities/interview';
+import { QUIZ_QUESTIONS, QuestionNavPanel, useSlideSwitcher } from '@/entities/quiz';
 
 import styles from './QuestionSlider.module.css';
 
 export const QuestionSlider = () => {
-	const { title, imageSrc, goToNextSlide, goToPrevSlide } = useSlideSwitcher(INTERVIEW_QUESTIONS);
+	const { questionTitle, imageSrc, goToNextSlide, goToPrevSlide } =
+		useSlideSwitcher(QUIZ_QUESTIONS);
 
 	return (
 		<>
 			<div className={styles.question}>
-				<h2>{title}</h2>
-				<ImageWithWrapper src={imageSrc} alt={title} className={styles['image-wrapper']} />
+				<h2>{questionTitle}</h2>
+				<ImageWithWrapper src={imageSrc} alt={questionTitle} className={styles['image-wrapper']} />
 			</div>
 			<QuestionNavPanel goToNextSlide={goToNextSlide} goToPrevSlide={goToPrevSlide} />
 		</>
