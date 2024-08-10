@@ -4,8 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
-import { QuestionCategories } from '@/entities/quiz';
-import { QuizHistoryResponse } from '@/entities/quiz';
+import { QuestionCategories, type QuizHistoryResponse } from '@/entities/quiz';
 
 import styles from './FullInterviewHistoryItem.module.css';
 import { InterviewHeader } from './InterviewHeader/InterviewHeader';

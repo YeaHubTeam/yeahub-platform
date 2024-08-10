@@ -35,10 +35,6 @@ export interface QuizHistoryRequest {
 	profileID: string;
 	params: QuizHistoryParams;
 }
-export interface QuizHistoryRequest {
-	profileID: string;
-	params: QuizHistoryParams;
-}
 
 export interface QuizHistoryParams {
 	page?: number;

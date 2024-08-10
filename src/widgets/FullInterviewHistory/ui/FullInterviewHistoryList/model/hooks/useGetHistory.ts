@@ -1,8 +1,7 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 
 import { useGetProfileQuery } from '@/entities/auth';
-import { useGetHistoryQuizByIdQuery } from '@/entities/quiz';
-import type { QuizHistoryParams } from '@/entities/quiz';
+import { useGetHistoryQuizByIdQuery, type QuizHistoryParams } from '@/entities/quiz';
 
 /*
 TODO: refresh запрос срабатывает какждый раз, при обновлении страницы,
