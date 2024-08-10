@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -14,24 +13,36 @@ import {
 	useGetActiveQuizzesQuery,
 } from '@/entities/quiz';
 
-import { getInterviewQuizPageState } from '../model/selectors/interviewQuizPageSelectors';
-
 import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
 	const { data: userProfile } = useGetProfileQuery();
-	const { page, limit } = useSelector(getInterviewQuizPageState);
 	const { data: quizData } = useGetActiveQuizzesQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
-			page,
-			limit,
+			page: 1,
+			limit: 1,
 		},
 	});
 
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
-	const quizzes = quizData?.data.flatMap((item) => item.response.answers);
+	const getQuizzes = () => {
+		const answers = quizData?.data[0].response.answers;
+		const questions = quizData?.data[0].questions;
+		const quizzes = answers?.map((item) => {
+			const matchedQuestion = questions?.find((question) => question.id === item.questionId);
+			return {
+				...item,
+				imageSrc: matchedQuestion?.imageSrc,
+				shortAnswer: matchedQuestion?.shortAnswer,
+			};
+		});
+		return quizzes;
+	};
+
+	const quizzes = getQuizzes();
+
 	const {
 		questionId,
 		questionTitle,

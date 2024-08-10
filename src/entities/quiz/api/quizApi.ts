@@ -3,7 +3,6 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
 import {
-	ActiveQuizDataResponse,
 	CreateNewQuizGetRequest,
 	ExtraArgument,
 	InterviewQuizGetRequest,
@@ -32,23 +31,12 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getActiveQuizzes: build.query<Response<ActiveQuizDataResponse[]>, InterviewQuizGetRequest>({
+		getActiveQuizzes: build.query<Response<NewQuizResponse[]>, InterviewQuizGetRequest>({
 			query: ({ profileId, params }) => ({
 				url: `/interview-preparation/quizzes/active/${profileId}`,
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
-			async onQueryStarted(_, { queryFulfilled, extra }) {
-				try {
-					await queryFulfilled;
-
-					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('interviewQuiz');
-				} catch (error) {
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
 		}),
 	}),
 });

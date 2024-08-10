@@ -49,8 +49,6 @@ export interface InterviewQuizGetRequest {
 	params: InterviewQuizParams;
 }
 
-export type ActiveQuizDataResponse = Omit<NewQuizResponse, 'questions'>;
-
 export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
