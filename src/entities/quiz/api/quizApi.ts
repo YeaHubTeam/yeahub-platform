@@ -7,6 +7,8 @@ import {
 	ExtraArgument,
 	InterviewQuizGetRequest,
 	NewQuizResponse,
+	QuizHistoryRequest,
+	QuizHistoryResponse,
 } from '../model/types/quiz';
 
 const quizApi = baseApi.injectEndpoints({
@@ -22,7 +24,6 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					await queryFulfilled;
-
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('interviewQuiz');
 				} catch (error) {
@@ -38,7 +39,19 @@ const quizApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
 		}),
+
+		getHistoryQuizById: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
+			query: ({ profileID, params }) => {
+				return {
+					url: `/interview-preparation/quizzes/history/${profileID}`,
+					params,
+				};
+			},
+			providesTags: [ApiTags.HISTORY_QUIZ_BY_ID],
+		}),
 	}),
+	overrideExisting: true,
 });
 
-export const { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery } = quizApi;
+export const { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery, useGetHistoryQuizByIdQuery } =
+	quizApi;

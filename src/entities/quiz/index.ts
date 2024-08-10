@@ -7,10 +7,13 @@ export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
 export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
 export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';
 
-export { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery } from './api/quizApi';
+export {
+	useLazyCreateNewQuizQuery,
+	useGetActiveQuizzesQuery,
+	useGetHistoryQuizByIdQuery,
+} from './api/quizApi';
 
 export type {
-	QuestionModeType,
 	Answers,
 	ExtraArgument,
 	Interview,
@@ -24,3 +27,5 @@ export {
 	MOCK_QUIZ,
 	INTERVIEW_BTNS_DATA,
 } from './model/data/interviewQuestions';
+
+export type { QuestionModeType, QuizHistoryParams, QuizHistoryResponse } from './model/types/quiz';

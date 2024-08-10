@@ -2,7 +2,6 @@ import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
-
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateNewQuizGetRequest {
@@ -25,6 +24,53 @@ export interface NewQuizResponse {
 	questions: Question[];
 	response: Response;
 	id: string;
+}
+
+/**
+ * Модель запроса на получение истории собеседований
+ * @property {string} profileID - Идентификатор профиля пользователя. (не id пользователя)
+ * @property {QuizHistoryParams} params - Параметры викторины для запроса истории.
+ */
+export interface QuizHistoryRequest {
+	profileID: string;
+	params: QuizHistoryParams;
+}
+export interface QuizHistoryRequest {
+	profileID: string;
+	params: QuizHistoryParams;
+}
+
+export interface QuizHistoryParams {
+	page?: number;
+	limit?: number;
+	startAfter?: string;
+	startBefore?: string;
+	fullCount?: number;
+	successCount?: number;
+	skills?: string[];
+}
+
+/**
+ *Модель ответа на получение истории собеседований
+ 
+ * @property {string} id - Уникальный идентификатор истории собеседования.
+ * @property {string} profileId - Идентификатор профиля пользователя.
+ * @property {string} startDate - Дата и время начала собеседования.
+ * @property {string} endDate - Дата и время окончания собеседования.
+ * @property {number} fullCount - Общее количество вопросов собеседования.
+ * @property {number} successCount - Количество правильных ответов.
+ * @property {Array<string>} skills - Массив навыков, связанных с собеседованием.
+ * @property {Answers} response - Объект ответа на собеседование.
+ */
+export interface QuizHistoryResponse {
+	id: string;
+	profileId: string;
+	endDate: string;
+	startDate: string;
+	fullCount: number;
+	skills: string[];
+	response: Answers;
+	successCount: number;
 }
 
 export interface Response {
