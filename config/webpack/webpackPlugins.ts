@@ -21,10 +21,12 @@ export const webpackPlugins = ({ isDev, paths }: WebpackOptions): Configuration[
     }),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-      'process.env.PORT': JSON.stringify(process.env.PORT),
+      'process.env': JSON.stringify(process.env),
     }),
     new Dotenv({
       path: paths.env,
+      silent: true,
+      systemvars: true,
     }),
   ];
 
