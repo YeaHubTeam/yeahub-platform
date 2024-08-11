@@ -1,7 +1,6 @@
 import path from 'path';
 
 import dotenv from 'dotenv';
-import webpack from 'webpack';
 import type { Configuration } from 'webpack';
 
 import { WebpackMode, WebpackOptions, WebpackPaths } from './config/webpack/types/types';
@@ -51,24 +50,24 @@ export default (env: EnvVariables) => {
   const isDev = env.mode === 'development';
   const port = env.port ?? process.env.PORT ?? 3001;
 
-  const options: WebpackOptions = {
-    port: +port,
-    mode: env.mode,
-    isDev,
-    paths,
-  };
-
-  const config: Configuration = webpackConfig(options);
-
   // Добавляем DefinePlugin для передачи переменных окружения в приложение
   const envVars = {
+    __IS_DEV__: JSON.stringify(isDev),
     'process.env.NODE_ENV': JSON.stringify(env.mode),
     'process.env.PORT': JSON.stringify(process.env.PORT || port),
     'process.env.API_URL': JSON.stringify(process.env.API_URL),
     'process.env.LANDING_URL': JSON.stringify(process.env.LANDING_URL),
   };
 
-  config.plugins?.push(new webpack.DefinePlugin(envVars));
+  const options: WebpackOptions = {
+    port: +port,
+    mode: env.mode,
+    isDev,
+    paths,
+    envs: envVars,
+  };
+
+  const config: Configuration = webpackConfig(options);
 
   return config;
 };
