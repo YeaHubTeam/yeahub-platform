@@ -1,20 +1,30 @@
 .wrapper {
   display: flex;
   gap: 20px;
+  width: 100%;
 }
 
-.main-info-wrapper {
-  flex-basis: 67%;
+.mobile {
+  flex-direction: column;
 }
 
-
-.additional-info-wrapper {
+.main {
   display: flex;
-  flex-basis: 33%;
+  flex: 1;
   flex-direction: column;
   gap: 20px;
 }
 
+.additional {
+  display: flex;           
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+}
+
 .author {
+  grid-area: author;
+  margin: 0 auto;
+  width: auto;
   text-align: center;
 }

@@ -8,6 +8,8 @@ export interface WebpackPaths {
   env: string;
   locales: string;
   buildLocales: string;
+  httpsKey: string;
+  httpsCert: string;
 }
 
 export type WebpackMode = 'production' | 'development';
@@ -17,4 +19,7 @@ export interface WebpackOptions {
   paths: WebpackPaths;
   mode: WebpackMode;
   isDev: boolean;
+  envs: {
+    [key: string]: string | number;
+  };
 }

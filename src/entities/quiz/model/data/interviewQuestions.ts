@@ -1,4 +1,4 @@
-import { InterviewQuestionBtn } from '../types/interview';
+import { InterviewQuestionBtn } from '../types/quiz';
 
 // временные данные
 export const INTERVIEW_QUESTIONS = [
@@ -55,6 +55,29 @@ export const INTERVIEW_QUESTIONS = [
 		updatedAt: '',
 		createdBy: null,
 		updatedBy: null,
+	},
+];
+
+export const QUIZ_QUESTIONS = [
+	{
+		answer: 'UNKNOWN',
+		questionId: 1,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 2,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 3,
+		questionTitle: 'Event Loop11112323',
+	},
+	{
+		answer: 'UNKNOWN',
+		questionId: 4,
+		questionTitle: 'Event Loop11112323',
 	},
 ];
 

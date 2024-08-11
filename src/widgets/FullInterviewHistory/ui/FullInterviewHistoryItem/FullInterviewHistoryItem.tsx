@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Block } from '@/shared/ui/Block';
 
-import { QuestionCategories, type Interview } from '@/entities/interview';
+import { QuestionCategories, type Interview } from '@/entities/quiz';
 
 import styles from './FullInterviewHistoryItem.module.css';
 import { InterviewHeader } from './InterviewHeader/InterviewHeader';

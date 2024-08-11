@@ -1,10 +1,34 @@
 .question-actions{
   justify-content: center;
-  margin-bottom: 40px
+  margin-bottom: 20px;
 }
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.btn {
+  display: flex;
+  justify-content: start;
+}
+
+
+@media (width <= 480px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 135px 135px; 
+    gap: 10px;
+  }
+
+  .btn {
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-s);
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
 }

@@ -26,7 +26,7 @@
   background-color: var(--color-black-50);
 }
 
-@media (width <= 1440px) {
+@media (width < 1440px) {
   .content {
     display: flex;
     flex-direction: column-reverse;

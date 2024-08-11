@@ -2,7 +2,7 @@ import { Button, Icon } from 'yeahub-ui-kit';
 
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
-import { INTERVIEW_BTNS_DATA, InterviewQuestion } from '@/entities/interview';
+import { INTERVIEW_BTNS_DATA, InterviewQuestion } from '@/entities/quiz';
 
 import styles from './PassedQuestionsItem.module.css';
 
