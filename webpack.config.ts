@@ -36,6 +36,8 @@ export default (env: EnvVariables) => {
     env: path.resolve(__dirname, modes[env.mode]),
     locales: path.resolve(__dirname, 'public', 'locales'),
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
+    httpsKey: path.resolve(__dirname, 'cert', 'localhost.key'),
+    httpsCert: path.resolve(__dirname, 'cert', 'localhost.crt'),
   };
 
   // Пытаемся загрузить .env файл, если он существует
