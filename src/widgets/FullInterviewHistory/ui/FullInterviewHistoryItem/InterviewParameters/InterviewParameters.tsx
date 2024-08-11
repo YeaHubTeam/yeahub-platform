@@ -1,8 +1,9 @@
-import { differenceInSeconds, format, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { formatDate } from '@/shared/helpers/formatDate';
+import { getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { InterviewResults, type QuizHistoryResponse } from '@/entities/quiz';
@@ -17,15 +18,13 @@ export const InterviewParameters = ({ interview }: Props) => {
 	const { endDate, startDate, fullCount, successCount } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 
-	const formattedStartDate = parseISO(startDate);
-	const formattedEndDate = parseISO(endDate);
-
-	const difference = differenceInSeconds(formattedEndDate, formattedStartDate);
+	const timer = getTimeDifference(startDate, endDate);
+	const interviewStartDate = formatDate(parseISO(startDate), 'dd/MM/yyyy');
 	const incorrectAnswersCount = fullCount - successCount;
 
 	return (
 		<div className={styles.param}>
-			<time dateTime={formatDate(parseISO(startDate))}>
+			<time dateTime={interviewStartDate}>
 				<span className={styles.text}>{t('startDateInterviewTitle')}</span>
 				{formatDate(parseISO(startDate))}
 			</time>
@@ -37,12 +36,11 @@ export const InterviewParameters = ({ interview }: Props) => {
 				correctAnswersCount={successCount}
 				incorrectAnswersCount={incorrectAnswersCount}
 			/>
-			{difference > 0 && (
-				<div className={styles.time}>
-					<Icon icon="clock" size={24} color="--palette-ui-black-500" />
-					<time>{format(difference, 'HH:MM:SS')}</time>
-				</div>
-			)}
+
+			<div className={styles.time}>
+				<Icon icon="clock" size={24} color="--palette-ui-black-500" />
+				<time>{timer}</time>
+			</div>
 		</div>
 	);
 };

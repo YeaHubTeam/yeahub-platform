@@ -1,7 +1,7 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 
 import { useGetProfileQuery } from '@/entities/auth';
-import { useGetHistoryQuizByIdQuery, type QuizHistoryParams } from '@/entities/quiz';
+import { useGetHistoryQuizQuery, type QuizHistoryParams } from '@/entities/quiz';
 
 /*
 TODO: refresh запрос срабатывает какждый раз, при обновлении страницы,
@@ -14,7 +14,7 @@ export const useGetHistory = (params?: QuizHistoryParams) => {
 
 	const profileId = profile.data?.profiles[0].profileId;
 
-	const historyQuiz = useGetHistoryQuizByIdQuery(
+	const historyQuiz = useGetHistoryQuizQuery(
 		profileId
 			? {
 					profileID: profileId,

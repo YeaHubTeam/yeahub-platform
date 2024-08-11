@@ -40,7 +40,7 @@ const quizApi = baseApi.injectEndpoints({
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
 		}),
 
-		getHistoryQuizById: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
+		getHistoryQuiz: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
 			query: ({ profileID, params }) => {
 				return {
 					url: `/interview-preparation/quizzes/history/${profileID}`,
@@ -53,5 +53,5 @@ const quizApi = baseApi.injectEndpoints({
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery, useGetHistoryQuizByIdQuery } =
+export const { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery, useGetHistoryQuizQuery } =
 	quizApi;

@@ -10,7 +10,7 @@ export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';
 export {
 	useLazyCreateNewQuizQuery,
 	useGetActiveQuizzesQuery,
-	useGetHistoryQuizByIdQuery,
+	useGetHistoryQuizQuery,
 } from './api/quizApi';
 
 export type {
