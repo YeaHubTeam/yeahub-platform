@@ -17,4 +17,7 @@ export interface WebpackOptions {
   paths: WebpackPaths;
   mode: WebpackMode;
   isDev: boolean;
+  envs: {
+    [key: string]: string | number;
+  };
 }
