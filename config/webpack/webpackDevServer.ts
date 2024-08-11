@@ -1,3 +1,6 @@
+import { readFileSync } from 'fs';
+import path from 'path';
+
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
 import { WebpackOptions } from './types/types';
@@ -8,5 +11,9 @@ export const webpackDevServer = ({ port }: WebpackOptions): DevServerConfigurati
     open: true,
     historyApiFallback: true,
     hot: true,
+    https: {
+      key: readFileSync(path.resolve(__dirname, '..', '..', 'cert', 'localhost.key')),
+      cert: readFileSync(path.resolve(__dirname, '..', '..', 'cert', 'localhost.crt')),
+    },
   };
 };
