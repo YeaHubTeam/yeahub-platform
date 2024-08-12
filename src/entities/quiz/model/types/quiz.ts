@@ -27,10 +27,11 @@ export interface NewQuizResponse {
 }
 
 /**
- * Модель запроса на получение истории собеседований
- * @property {string} profileID - Идентификатор профиля пользователя. (не id пользователя)
- * @property {QuizHistoryParams} params - Параметры викторины для запроса истории.
+ * Request model for retrieving interview history
+ * @property {string} profileID - User profile identifier. (Not user ID)
+ * @property {QuizHistoryParams} params - Quiz parameters for the history request.
  */
+
 export interface QuizHistoryRequest {
 	profileID: string;
 	params: QuizHistoryParams;
@@ -47,17 +48,18 @@ export interface QuizHistoryParams {
 }
 
 /**
- *Модель ответа на получение истории собеседований
+ * Model for retrieving interview history
  
- * @property {string} id - Уникальный идентификатор истории собеседования.
- * @property {string} profileId - Идентификатор профиля пользователя.
- * @property {string} startDate - Дата и время начала собеседования.
- * @property {string} endDate - Дата и время окончания собеседования.
- * @property {number} fullCount - Общее количество вопросов собеседования.
- * @property {number} successCount - Количество правильных ответов.
- * @property {Array<string>} skills - Массив навыков, связанных с собеседованием.
- * @property {Answers} response - Объект ответа на собеседование.
+ * @property {string} id - Unique identifier of the interview history.
+ * @property {string} profileId - Identifier of the user profile.
+ * @property {string} startDate - Start date and time of the interview.
+ * @property {string} endDate - End date and time of the interview.
+ * @property {number} fullCount - Total number of questions in the interview.
+ * @property {number} successCount - Number of correct answers.
+ * @property {Array<string>} skills - Array of skills related to the interview.
+ * @property {Answers} response - Object containing the interview response.
  */
+
 export interface QuizHistoryResponse {
 	id: string;
 	profileId: string;
