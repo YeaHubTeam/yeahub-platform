@@ -47,7 +47,7 @@ const quizApi = baseApi.injectEndpoints({
 					params,
 				};
 			},
-			providesTags: [ApiTags.HISTORY_QUIZ_BY_ID],
+			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
 	}),
 	overrideExisting: true,

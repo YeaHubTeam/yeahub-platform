@@ -5,5 +5,5 @@ export enum ApiTags {
 	SKILLS = 'skills',
 	NEW_QUIZ = 'newQuiz',
 	INTERVIEW_QUIZ = 'inteview_quiz',
-	HISTORY_QUIZ_BY_ID = 'historyQuizById',
+	HISTORY_QUIZ = 'historyQuiz',
 }
