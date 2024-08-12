@@ -26,7 +26,7 @@ export const InterviewParameters = ({ interview }: Props) => {
 		<div className={styles.param}>
 			<time dateTime={interviewStartDate}>
 				<span className={styles.text}>{t('startDateInterviewTitle')}</span>
-				{formatDate(parseISO(startDate))}
+				{interviewStartDate}
 			</time>
 			<p>
 				<span className={styles.text}>{t('totalQuestionsTitle')}</span> {fullCount}
