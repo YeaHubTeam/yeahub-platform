@@ -16,7 +16,6 @@ export const MainLayout = () => {
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	const { accessToken } = useAppSelector((state) => state.auth);
-
 	useRefreshTokenQuery(null, { skip: !!accessToken });
 
 	return (

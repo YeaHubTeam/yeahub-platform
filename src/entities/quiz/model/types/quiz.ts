@@ -2,7 +2,6 @@ import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
-
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateNewQuizGetRequest {
@@ -25,6 +24,51 @@ export interface NewQuizResponse {
 	questions: Question[];
 	response: Response;
 	id: string;
+}
+
+/**
+ * Request model for retrieving interview history
+ * @property {string} profileID - User profile identifier. (Not user ID)
+ * @property {QuizHistoryParams} params - Quiz parameters for the history request.
+ */
+
+export interface QuizHistoryRequest {
+	profileID: string;
+	params: QuizHistoryParams;
+}
+
+export interface QuizHistoryParams {
+	page?: number;
+	limit?: number;
+	startAfter?: string;
+	startBefore?: string;
+	fullCount?: number;
+	successCount?: number;
+	skills?: string[];
+}
+
+/**
+ * Model for retrieving interview history
+ 
+ * @property {string} id - Unique identifier of the interview history.
+ * @property {string} profileId - Identifier of the user profile.
+ * @property {string} startDate - Start date and time of the interview.
+ * @property {string} endDate - End date and time of the interview.
+ * @property {number} fullCount - Total number of questions in the interview.
+ * @property {number} successCount - Number of correct answers.
+ * @property {Array<string>} skills - Array of skills related to the interview.
+ * @property {Answers} response - Object containing the interview response.
+ */
+
+export interface QuizHistoryResponse {
+	id: string;
+	profileId: string;
+	endDate: string;
+	startDate: string;
+	fullCount: number;
+	skills: string[];
+	response: Answers;
+	successCount: number;
 }
 
 export interface Response {

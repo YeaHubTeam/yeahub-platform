@@ -18,7 +18,7 @@ export const InterviewResults: FC<Props> = ({
 }) => {
 	return (
 		<div className={styles.param}>
-			<span>{label}:</span>
+			<span>{label}</span>
 			<div className={styles.wrapper}>
 				<div className={styles.result}>
 					<ArrowUp className={styles.icon} />
