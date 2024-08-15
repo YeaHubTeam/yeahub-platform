@@ -1,5 +1,4 @@
 .description {
-  margin-top: 36px;
   max-width: 246px;
 }
   
@@ -18,7 +17,6 @@
 }
   
 .textarea-container {
-  margin-top: 36px;
   width: 100%;
   max-width: 706px;
 }
