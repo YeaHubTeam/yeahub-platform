@@ -1,4 +1,5 @@
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
+import { TextArea } from 'yeahub-ui-kit';
 
 import { AboutMeInformation } from '../../model/types/aboutMeInformation';
 import { HorizontalContainer, NextBtn } from '../CommonElements';
@@ -8,7 +9,7 @@ import style from './AboutMeForm.module.css';
 export const AboutMeForm = () => {
 	const {
 		handleSubmit,
-		register,
+		control,
 		//formState: { errors },
 	} = useFormContext<AboutMeInformation>();
 
@@ -27,7 +28,13 @@ export const AboutMeForm = () => {
 				</div>
 				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
-					<textarea {...register('aboutMe')} />
+					<Controller
+						name="aboutMe"
+						control={control}
+						render={({ field: { onChange, value } }) => (
+							<TextArea placeholder="Placeholder" onChange={onChange} value={value} />
+						)}
+					/>
 				</div>
 			</HorizontalContainer>
 			<NextBtn handleClick={handleSubmit(onChangeAboutMeInformation)} />
