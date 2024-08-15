@@ -1,8 +1,20 @@
+import { useFormContext } from 'react-hook-form';
+
+import { AboutMeInformation } from '../../model/types/aboutMeInformation';
 import { HorizontalContainer, NextBtn } from '../CommonElements';
 
 import style from './AboutMeForm.module.css';
 
 export const AboutMeForm = () => {
+	const {
+		handleSubmit,
+		register,
+		//formState: { errors },
+	} = useFormContext<AboutMeInformation>();
+
+	const onChangeAboutMeInformation = (data: AboutMeInformation) => {
+		console.log(data);
+	};
 	return (
 		<>
 			<HorizontalContainer>
@@ -15,10 +27,10 @@ export const AboutMeForm = () => {
 				</div>
 				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
-					<textarea name="" id=""></textarea>
+					<textarea {...register('aboutMe')} />
 				</div>
 			</HorizontalContainer>
-			<NextBtn />
+			<NextBtn handleClick={handleSubmit(onChangeAboutMeInformation)} />
 		</>
 	);
 };
