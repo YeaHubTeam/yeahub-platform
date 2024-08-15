@@ -30,6 +30,7 @@ export const profileSchema = yup.object().shape({
 	skillLevel: yup.string().optional(),
 	socialLinks: yup.string().optional(),
 	aboutMe: yup.string().optional(),
+	skills: yup.string().optional(),
 });
 
 /* //todo сделать нормальную валидацию необязательных полей по примеру ниже
