@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,14 +11,16 @@ import {
 	QuestionNavPanel,
 	InterviewSlider,
 	useSlideSwitcher,
-	useGetActiveQuizzesQuery,
+	useGetActiveQuizQuery,
+	getActiveQuizQuestions,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile } = useGetProfileQuery();
-	const { data: quizData } = useGetActiveQuizzesQuery({
+	useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
@@ -25,34 +28,21 @@ const InterviewQuizPage = () => {
 		},
 	});
 
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
-
-	const getQuizzes = () => {
-		const answers = quizData?.data[0].response.answers;
-		const questions = quizData?.data[0].questions;
-		const quizzes = answers?.map((item) => {
-			const matchedQuestion = questions?.find((question) => question.id === item.questionId);
-			return {
-				...item,
-				imageSrc: matchedQuestion?.imageSrc,
-				shortAnswer: matchedQuestion?.shortAnswer,
-			};
-		});
-		return quizzes;
-	};
-
-	const quizzes = getQuizzes();
+	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
 
 	const {
 		questionId,
 		questionTitle,
 		imageSrc,
-		longAnswer,
+		shortAnswer,
 		currentCount,
+		activeQuestion,
 		totalCount,
+		answer,
+		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(quizzes ?? []);
+	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
 	return (
 		<div className={styles.container}>
@@ -60,9 +50,13 @@ const InterviewQuizPage = () => {
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>
-						{currentCount}/{totalCount}
+						{activeQuestion}/{totalCount}
 					</span>
-					<QuestionProgressBar className={styles['progress-component']} />
+					<QuestionProgressBar
+						className={styles['progress-component']}
+						currentCount={currentCount}
+						totalCount={totalCount}
+					/>
 				</div>
 			</Block>
 			<Block>
@@ -71,14 +65,20 @@ const InterviewQuizPage = () => {
 						className={styles['slider-navigation']}
 						goToNextSlide={goToNextSlide}
 						goToPrevSlide={goToPrevSlide}
+						answer={answer}
+						changeAnswer={changeAnswer}
 					/>
 					<InterviewSlider
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						longAnswer={longAnswer ?? ''}
+						shortAnswer={shortAnswer ?? ''}
+						answer={answer}
+						changeAnswer={changeAnswer}
 					/>
-					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
+					<Button disabled={currentCount !== totalCount} className={styles['end-button']}>
+						{t('completeQuizButton')}
+					</Button>
 				</div>
 			</Block>
 		</div>
