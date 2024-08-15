@@ -2,6 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
+import { setQuizzes } from '../model/slices/activeQuizzesSlice';
 import {
 	CreateNewQuizGetRequest,
 	ExtraArgument,
@@ -10,6 +11,7 @@ import {
 	QuizHistoryRequest,
 	QuizHistoryResponse,
 } from '../model/types/quiz';
+import { getQuizzesFromResponse } from '../utils/getQuizzes';
 
 const quizApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -38,6 +40,15 @@ const quizApi = baseApi.injectEndpoints({
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+				try {
+					const result = await queryFulfilled;
+					dispatch(setQuizzes(getQuizzesFromResponse(result.data?.data[0])));
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
 		}),
 
 		getHistoryQuiz: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({

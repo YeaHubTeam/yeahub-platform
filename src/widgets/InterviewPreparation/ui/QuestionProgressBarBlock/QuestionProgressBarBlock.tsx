@@ -9,7 +9,7 @@ export const QuestionProgressBarBlock = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (
 		<div>
-			<QuestionProgressBar />
+			<QuestionProgressBar currentCount={10} totalCount={45} />
 			<p className={styles.question}>
 				{t('preparation.progressBarTitle', null, {
 					fromQuestionNumber: 10,

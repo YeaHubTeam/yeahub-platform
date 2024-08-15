@@ -3,27 +3,35 @@
   gap: 8px;
   height: 44px;
 }
-  
-.wrapper>button {
+
+.btn {
   flex-shrink: 0;
   width: auto;
   border-radius: 12px;
   color: var(--text-color-bright);
-  
-  svg {
-    color: var(--text-color-bright);
-  }
-  
-  &:hover,
-  &:focus,
-  &:active {
-    border: none;
-    color: var(--text-color-link-active);
-  
-    svg {
-      color: var(--text-color-link-active);
-    }
-  }
+}
+
+.btn svg {
+  color: var(--text-color-bright);
+}
+
+.btn:is(:hover, :focus, :active) {
+  border: none;
+  color: var(--text-color-link-active);
+}
+
+.active-btn svg {
+  color: var(--text-color-link-active);
+}
+
+.btn:is(:hover, :focus, :active) svg {
+  color: var(--text-color-link-active);
+}
+
+.active-btn {
+  border: none;
+  background-color: var(--palette-ui-black-50);
+  color: var(--text-color-link-active);
 }
 
 @media (width <= 768px) {

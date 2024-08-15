@@ -10,10 +10,19 @@ interface Props {
 	id: number;
 	title: string;
 	imageSrc?: string;
-	longAnswer: string;
+	shortAnswer: string;
+	answer: string;
+	changeAnswer: (answer: string) => void;
 }
 
-export const InterviewSlider = ({ id, title, imageSrc, longAnswer }: Props) => {
+export const InterviewSlider = ({
+	id,
+	title,
+	imageSrc,
+	answer,
+	shortAnswer,
+	changeAnswer,
+}: Props) => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
 	const toggleAnswerVisibility = () => {
@@ -29,10 +38,14 @@ export const InterviewSlider = ({ id, title, imageSrc, longAnswer }: Props) => {
 						Посмотреть ответ
 					</button>
 				) : (
-					longAnswer
+					shortAnswer
 				)}
 			</div>
-			<ResponseButtons className={styles['response-buttons']} />
+			<ResponseButtons
+				className={styles['response-buttons']}
+				answer={answer}
+				changeAnswer={changeAnswer}
+			/>
 			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>
 	);

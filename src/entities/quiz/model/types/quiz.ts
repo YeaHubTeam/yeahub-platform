@@ -80,12 +80,16 @@ export interface Answers {
 	questionTitle: string;
 	answer: string;
 	imageSrc?: string;
-	longAnswer?: string;
+	shortAnswer?: string;
+}
+
+export interface ActiveQuizzesState {
+	quizzes: Answers[];
 }
 
 export interface InterviewQuizParams {
-	page?: number;
-	limit?: number;
+	page: number;
+	limit: number;
 }
 
 export interface InterviewQuizGetRequest {

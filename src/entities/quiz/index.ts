@@ -19,6 +19,7 @@ export type {
 	Interview,
 	InterviewQuestion,
 	InterviewQuestionBtn,
+	ActiveQuizzesState,
 } from './model/types/quiz';
 
 export {
@@ -29,3 +30,7 @@ export {
 } from './model/data/interviewQuestions';
 
 export type { QuestionModeType, QuizHistoryParams, QuizHistoryResponse } from './model/types/quiz';
+
+export { getActiveQuizzes } from './model/selectors/quizSelectors';
+
+export { activeQuizzesSlice, setQuizzes } from './model/slices/activeQuizzesSlice';
