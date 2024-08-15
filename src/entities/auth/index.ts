@@ -7,4 +7,4 @@ export {
 } from './api/authApi';
 export { type GetProfileApiResponse, type AuthState } from './model/types/authTypes';
 export { authSlice, setProfile } from './model/slices/authSlice';
-export { getAutProfile } from './model/selectors/authSelectors';
+export { getAuthProfile } from './model/selectors/authSelectors';

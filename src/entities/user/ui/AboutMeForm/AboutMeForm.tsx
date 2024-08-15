@@ -13,6 +13,7 @@ export const AboutMeForm = () => {
 						поэтому пиши всё чем хочешь поделиться
 					</p>
 				</div>
+				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
 					<textarea name="" id=""></textarea>
 				</div>
