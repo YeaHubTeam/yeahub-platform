@@ -3,12 +3,14 @@ import { Icon, Button } from 'yeahub-ui-kit';
 
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
+import { QuizQuestionAnswerType } from '../../model/types/quiz';
+
 import styles from './ResponseButtons.module.css';
 
 interface ResponseButtonsProps {
 	className?: string;
 	answer: string;
-	changeAnswer: (answer: string) => void;
+	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {

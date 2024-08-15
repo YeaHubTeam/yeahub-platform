@@ -1,4 +1,4 @@
-import { InterviewQuestionBtn } from '../types/quiz';
+import { Answers, InterviewQuestionBtn } from '../types/quiz';
 
 // временные данные
 export const INTERVIEW_QUESTIONS = [
@@ -58,7 +58,7 @@ export const INTERVIEW_QUESTIONS = [
 	},
 ];
 
-export const QUIZ_QUESTIONS = [
+export const QUIZ_QUESTIONS: Answers[] = [
 	{
 		answer: 'UNKNOWN',
 		questionId: 1,

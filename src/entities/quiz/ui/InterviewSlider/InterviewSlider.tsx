@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
+import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
 import styles from './InterviewSlider.module.css';
@@ -12,7 +13,7 @@ interface Props {
 	imageSrc?: string;
 	shortAnswer: string;
 	answer: string;
-	changeAnswer: (answer: string) => void;
+	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 }
 
 export const InterviewSlider = ({

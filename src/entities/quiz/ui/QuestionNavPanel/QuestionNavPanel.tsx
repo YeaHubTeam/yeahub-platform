@@ -1,15 +1,16 @@
 import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
+import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
 import styles from './QuestionNavPanel.module.css';
 
 interface Props {
+	answer: QuizQuestionAnswerType;
 	goToNextSlide: () => void;
 	goToPrevSlide: () => void;
-	answer: string;
-	changeAnswer: (answer: string) => void;
+	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	showResponseButtons?: boolean;
 	className?: string;
 }

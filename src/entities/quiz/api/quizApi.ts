@@ -2,7 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
-import { setQuizzes } from '../model/slices/activeQuizzesSlice';
+import { setActiveQuiz } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizGetRequest,
 	ExtraArgument,
@@ -11,7 +11,7 @@ import {
 	QuizHistoryRequest,
 	QuizHistoryResponse,
 } from '../model/types/quiz';
-import { getQuizzesFromResponse } from '../utils/getQuizzes';
+import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
 const quizApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -34,7 +34,7 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getActiveQuizzes: build.query<Response<NewQuizResponse[]>, InterviewQuizGetRequest>({
+		getActiveQuiz: build.query<Response<NewQuizResponse[]>, InterviewQuizGetRequest>({
 			query: ({ profileId, params }) => ({
 				url: `/interview-preparation/quizzes/active/${profileId}`,
 				params,
@@ -43,7 +43,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(setQuizzes(getQuizzesFromResponse(result.data?.data[0])));
+					dispatch(setActiveQuiz(getActiveQuizQuestions(result.data?.data[0])));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -64,5 +64,4 @@ const quizApi = baseApi.injectEndpoints({
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery, useGetHistoryQuizQuery } =
-	quizApi;
+export const { useLazyCreateNewQuizQuery, useGetActiveQuizQuery, useGetHistoryQuizQuery } = quizApi;

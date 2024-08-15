@@ -9,7 +9,7 @@ export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';
 
 export {
 	useLazyCreateNewQuizQuery,
-	useGetActiveQuizzesQuery,
+	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 } from './api/quizApi';
 
@@ -19,7 +19,7 @@ export type {
 	Interview,
 	InterviewQuestion,
 	InterviewQuestionBtn,
-	ActiveQuizzesState,
+	ActiveQuizState,
 } from './model/types/quiz';
 
 export {
@@ -29,8 +29,13 @@ export {
 	INTERVIEW_BTNS_DATA,
 } from './model/data/interviewQuestions';
 
-export type { QuestionModeType, QuizHistoryParams, QuizHistoryResponse } from './model/types/quiz';
+export type {
+	QuestionModeType,
+	QuizQuestionAnswerType,
+	QuizHistoryParams,
+	QuizHistoryResponse,
+} from './model/types/quiz';
 
-export { getActiveQuizzes } from './model/selectors/quizSelectors';
+export { getActiveQuizQuestions } from './model/selectors/quizSelectors';
 
-export { activeQuizzesSlice, setQuizzes } from './model/slices/activeQuizzesSlice';
+export { activeQuizSlice, setActiveQuiz } from './model/slices/activeQuizSlice';

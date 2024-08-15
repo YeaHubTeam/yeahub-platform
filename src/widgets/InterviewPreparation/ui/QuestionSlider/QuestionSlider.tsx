@@ -5,7 +5,7 @@ import { QUIZ_QUESTIONS, QuestionNavPanel, useSlideSwitcher } from '@/entities/q
 import styles from './QuestionSlider.module.css';
 
 export const QuestionSlider = () => {
-	const { questionTitle, imageSrc, goToNextSlide, goToPrevSlide } =
+	const { questionTitle, imageSrc, answer, changeAnswer, goToNextSlide, goToPrevSlide } =
 		useSlideSwitcher(QUIZ_QUESTIONS);
 
 	return (
@@ -14,7 +14,12 @@ export const QuestionSlider = () => {
 				<h2>{questionTitle}</h2>
 				<ImageWithWrapper src={imageSrc} alt={questionTitle} className={styles['image-wrapper']} />
 			</div>
-			<QuestionNavPanel goToNextSlide={goToNextSlide} goToPrevSlide={goToPrevSlide} />
+			<QuestionNavPanel
+				answer={answer}
+				changeAnswer={changeAnswer}
+				goToNextSlide={goToNextSlide}
+				goToPrevSlide={goToPrevSlide}
+			/>
 		</>
 	);
 };

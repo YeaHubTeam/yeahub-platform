@@ -11,15 +11,16 @@ import {
 	QuestionNavPanel,
 	InterviewSlider,
 	useSlideSwitcher,
-	useGetActiveQuizzesQuery,
-	getActiveQuizzes,
+	useGetActiveQuizQuery,
+	getActiveQuizQuestions,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile } = useGetProfileQuery();
-	useGetActiveQuizzesQuery({
+	useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
@@ -27,9 +28,7 @@ const InterviewQuizPage = () => {
 		},
 	});
 
-	const quizzes = useSelector(getActiveQuizzes);
-
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
 
 	const {
 		questionId,
@@ -37,12 +36,13 @@ const InterviewQuizPage = () => {
 		imageSrc,
 		shortAnswer,
 		currentCount,
+		activeQuestion,
 		totalCount,
 		answer,
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(quizzes ?? []);
+	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
 	return (
 		<div className={styles.container}>
@@ -50,7 +50,7 @@ const InterviewQuizPage = () => {
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>
-						{currentCount}/{totalCount}
+						{activeQuestion}/{totalCount}
 					</span>
 					<QuestionProgressBar
 						className={styles['progress-component']}
@@ -76,7 +76,9 @@ const InterviewQuizPage = () => {
 						answer={answer}
 						changeAnswer={changeAnswer}
 					/>
-					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
+					<Button disabled={currentCount !== totalCount} className={styles['end-button']}>
+						{t('completeQuizButton')}
+					</Button>
 				</div>
 			</Block>
 		</div>
