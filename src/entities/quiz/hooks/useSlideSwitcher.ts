@@ -9,7 +9,7 @@ import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
 export const useSlideSwitcher = (questions: Answers[]) => {
 	const dispatch = useAppDispatch();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const currentCount = questions.filter((question) => question.answer !== '').length;
+	const currentCount = questions.filter((question) => Boolean(question.answer)).length;
 
 	const changeAnswer = (answer: QuizQuestionAnswerType) => {
 		dispatch(

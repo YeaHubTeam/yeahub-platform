@@ -3,7 +3,7 @@ import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
-export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN' | 'REPEAT' | '';
+export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN' | 'REPEAT';
 
 export interface CreateNewQuizGetRequest {
 	profileId?: string;
