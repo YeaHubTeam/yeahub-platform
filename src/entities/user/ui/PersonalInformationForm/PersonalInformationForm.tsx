@@ -1,25 +1,20 @@
 import { useFormContext } from 'react-hook-form';
-import { Input, Label } from 'yeahub-ui-kit';
+import { Button, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
-import { personalInformation } from '../../model/types/personalInformation';
-import { HorizontalContainer, NextBtn, VerticalContainer } from '../CommonElements';
+import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './PersonalInformationForm.module.css';
 
-//todo добавить рендер ошибок при валидации
+//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
 
 export const PersonalInformationForm = () => {
 	const {
-		handleSubmit,
 		register,
 		//formState: { errors },
-	} = useFormContext<personalInformation>();
-
-	const onChangePersonalInformation = (data: personalInformation) => {
-		console.log(data);
-	};
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} = useFormContext<any>();
 
 	return (
 		<>
@@ -78,7 +73,9 @@ export const PersonalInformationForm = () => {
 					</div>
 				</HorizontalContainer>
 			</VerticalContainer>
-			<NextBtn handleClick={handleSubmit(onChangePersonalInformation)} />
+			<div className={style['btn-container']}>
+				<Button type="submit">Сохранить</Button>
+			</div>
 		</>
 	);
 };

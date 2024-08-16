@@ -1,21 +1,19 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import { TextArea } from 'yeahub-ui-kit';
+import { Button, TextArea } from 'yeahub-ui-kit';
 
-import { AboutMeInformation } from '../../model/types/aboutMeInformation';
-import { HorizontalContainer, NextBtn } from '../CommonElements';
+import { HorizontalContainer } from '../CommonElements';
 
 import style from './AboutMeForm.module.css';
 
+//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+
 export const AboutMeForm = () => {
 	const {
-		handleSubmit,
 		control,
 		//formState: { errors },
-	} = useFormContext<AboutMeInformation>();
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} = useFormContext<any>();
 
-	const onChangeAboutMeInformation = (data: AboutMeInformation) => {
-		console.log(data);
-	};
 	return (
 		<>
 			<HorizontalContainer>
@@ -37,7 +35,9 @@ export const AboutMeForm = () => {
 					/>
 				</div>
 			</HorizontalContainer>
-			<NextBtn handleClick={handleSubmit(onChangeAboutMeInformation)} />
+			<div className={style['btn-container']}>
+				<Button type="submit">Сохранить</Button>
+			</div>
 		</>
 	);
 };

@@ -1,6 +1,4 @@
 import * as yup from 'yup';
-import YupPassword from 'yup-password';
-YupPassword(yup);
 
 export const profileSchema = yup.object().shape({
 	image: yup
@@ -35,24 +33,24 @@ export const profileSchema = yup.object().shape({
 
 /* //todo сделать нормальную валидацию необязательных полей по примеру ниже
 address: yup.string().when("address", (value) => {
-      if (value) {
-        return yup
-          .string()
-          .min(5, "Address must be more than 5 characters long")
-          .max(255, "Address must be less than 255 characters long");
-      } else {
-        return yup
-          .string()
-          .transform((value, originalValue) => {
-            // Convert empty values to null
-            if (!value) {
-              return null;
-            }
-            return originalValue;
-          })
-          .nullable()
-          .optional();
-      }
-    }),
+			if (value) {
+				return yup
+					.string()
+					.min(5, "Address must be more than 5 characters long")
+					.max(255, "Address must be less than 255 characters long");
+			} else {
+				return yup
+					.string()
+					.transform((value, originalValue) => {
+						// Convert empty values to null
+						if (!value) {
+							return null;
+						}
+						return originalValue;
+					})
+					.nullable()
+					.optional();
+			}
+		}),
 
 */

@@ -68,6 +68,11 @@ export const EditProfileForm = () => {
 		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
 	});
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const onSubmit = (data: any) => {
+		console.log(data);
+	};
+
 	return (
 		<section className={style.section}>
 			<Tabs
@@ -77,7 +82,9 @@ export const EditProfileForm = () => {
 				setTabToggle={setCurrentActiveTab}
 			/>
 			<FormProvider {...methods}>
-				{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+				<form onSubmit={methods.handleSubmit(onSubmit)}>
+					{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+				</form>
 			</FormProvider>
 		</section>
 	);
