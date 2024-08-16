@@ -12,7 +12,9 @@ import {
 	InterviewSlider,
 	useSlideSwitcher,
 	useGetActiveQuizQuery,
+	useSaveQuizResultMutation,
 	getActiveQuizQuestions,
+	getActiveQuiz,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -27,8 +29,10 @@ const InterviewQuizPage = () => {
 			limit: 1,
 		},
 	});
+	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
+	const activeQuiz = useSelector(getActiveQuiz);
 
 	const {
 		questionId,
@@ -43,6 +47,16 @@ const InterviewQuizPage = () => {
 		goToNextSlide,
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	const handleSubmitQuiz = () => {
+		const quizToSave = {
+			...activeQuiz,
+			response: {
+				answers: activeQuizQuestions,
+			},
+		};
+		saveResult(quizToSave);
+	};
 
 	return (
 		<div className={styles.container}>
@@ -76,7 +90,11 @@ const InterviewQuizPage = () => {
 						answer={answer}
 						changeAnswer={changeAnswer}
 					/>
-					<Button disabled={currentCount !== totalCount} className={styles['end-button']}>
+					<Button
+						className={styles['end-button']}
+						disabled={currentCount !== totalCount}
+						onClick={handleSubmitQuiz}
+					>
 						{t('completeQuizButton')}
 					</Button>
 				</div>

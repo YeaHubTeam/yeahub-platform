@@ -2,8 +2,9 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
-import { setActiveQuiz } from '../model/slices/activeQuizSlice';
+import { setActiveQuiz, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
+	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
 	ExtraArgument,
 	InterviewQuizGetRequest,
@@ -11,6 +12,7 @@ import {
 	QuizHistoryRequest,
 	QuizHistoryResponse,
 } from '../model/types/quiz';
+import { getActiveQuizInfo } from '../utils/getActiveQuizInfo';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
 const quizApi = baseApi.injectEndpoints({
@@ -43,7 +45,8 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(setActiveQuiz(getActiveQuizQuestions(result.data?.data[0])));
+					dispatch(setActiveQuiz(getActiveQuizInfo(result.data?.data[0])));
+					dispatch(setActiveQuizQuestions(getActiveQuizQuestions(result.data?.data[0])));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -60,8 +63,33 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
+
+		saveQuizResult: build.mutation<boolean, ActiveQuizWithDate>({
+			query: (data) => {
+				return {
+					url: '/interview-preparation/quizzes',
+					method: 'POST',
+					body: data,
+				};
+			},
+			async onQueryStarted(arg, { queryFulfilled, extra }) {
+				try {
+					await queryFulfilled;
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate(`interviewQuiz/${arg.id}`);
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
 	}),
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewQuizQuery, useGetActiveQuizQuery, useGetHistoryQuizQuery } = quizApi;
+export const {
+	useLazyCreateNewQuizQuery,
+	useGetActiveQuizQuery,
+	useGetHistoryQuizQuery,
+	useSaveQuizResultMutation,
+} = quizApi;
