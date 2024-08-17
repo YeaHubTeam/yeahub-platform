@@ -1,14 +1,21 @@
 .stat {
   gap: 4px;
   padding: 8px 16px;
+  width: 100%;
   box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
   border-radius: 16px;
   background-color: var(--background-block);
-  font-size: var(--font-size-p-xs);
+  font-size: var(--font-size-p-s);
 }
 
 .title {
   color: var(--text-color-more-lightest);
   font-weight: var(--font-weight-500);
+}
 
+@media (width <= 1280px) {
+  .stat {
+    padding: 10px 8px;
+    font-size: var(--font-size-p-xs);
+  }
 }

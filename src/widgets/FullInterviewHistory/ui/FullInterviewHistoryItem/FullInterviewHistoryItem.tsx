@@ -13,11 +13,11 @@ interface Props {
 }
 
 export const FullInterviewHistoryItem = ({ interview }: Props) => {
-	const { id, title, questionCategories } = interview;
+	const { title, questionCategories } = interview;
 
 	return (
 		<li>
-			<Link to={`/interview/${id}`}>
+			<Link to="/interview/interviewHistory/interviewQuizResult">
 				<Block className={styles.container}>
 					<InterviewHeader title={title} />
 					<InterviewParameters interview={interview} />

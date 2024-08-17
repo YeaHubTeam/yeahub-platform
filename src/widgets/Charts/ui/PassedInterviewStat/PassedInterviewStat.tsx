@@ -13,12 +13,7 @@ interface Props {
 	height?: string;
 }
 
-export const PassedInterviewStat = ({
-	totalAttempt,
-	attemptData,
-	width = '307px',
-	height = '307px',
-}: Props) => {
+export const PassedInterviewStat = ({ totalAttempt, attemptData }: Props) => {
 	const pieOption = options.pie;
 	pieOption.series[0].label.formatter = `{a}\n ${totalAttempt}`;
 	pieOption.series[0].data = attemptData;
@@ -26,14 +21,12 @@ export const PassedInterviewStat = ({
 	return (
 		<div className={styles.wrapper}>
 			<ReactECharts
+				className={styles.charts}
 				option={pieOption}
 				opts={{ locale: 'RU' }}
 				style={{
-					width,
-					height,
 					backgroundColor: '#FDF4FF',
 					borderRadius: '50%',
-					flexShrink: 0,
 				}}
 			/>
 

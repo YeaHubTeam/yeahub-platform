@@ -1,5 +1,6 @@
 .info {
   display: flex;
-  justify-content: space-between;
   gap: 12px;
+  width: 100%;
+  font-size: var(--font-size-p-s);
 }

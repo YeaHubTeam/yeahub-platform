@@ -2,8 +2,18 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  max-width: 460px;
+}
+
+.wrapper>div:nth-child(1) {
+  width: 307px;
 }
 
 .list > * + * {
   margin-top: 24px;
+}
+
+.charts {
+  width: auto;
+  height: 307px;
 }
