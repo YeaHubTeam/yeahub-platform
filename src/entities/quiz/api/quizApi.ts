@@ -75,7 +75,7 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(`${arg.id}`);
+					typedExtra.navigate(`/interview/quiz/${arg.id}`);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
