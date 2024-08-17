@@ -14,7 +14,7 @@ import {
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
 	getActiveQuizQuestions,
-	getActiveQuiz,
+	getQuizStartDate,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -22,7 +22,7 @@ import styles from './InterviewQuizPage.module.css';
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile } = useGetProfileQuery();
-	useGetActiveQuizQuery({
+	const { data: activeQuiz } = useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
@@ -32,7 +32,7 @@ const InterviewQuizPage = () => {
 	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
-	const activeQuiz = useSelector(getActiveQuiz);
+	const activeQuizStartDate = useSelector(getQuizStartDate);
 
 	const {
 		questionId,
@@ -49,13 +49,17 @@ const InterviewQuizPage = () => {
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
 	const handleSubmitQuiz = () => {
-		const quizToSave = {
-			...activeQuiz,
-			response: {
-				answers: activeQuizQuestions,
-			},
-		};
-		saveResult(quizToSave);
+		if (activeQuiz) {
+			const quizToSave = {
+				...activeQuiz.data[0],
+				startDate: activeQuizStartDate,
+				response: {
+					answers: activeQuizQuestions,
+				},
+			};
+
+			saveResult(quizToSave);
+		}
 	};
 
 	return (

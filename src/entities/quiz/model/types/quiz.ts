@@ -89,7 +89,7 @@ export interface Answers {
 }
 
 export interface ActiveQuizState {
-	quiz: ActiveQuizWithDate;
+	startDate: string;
 	questions: Answers[];
 }
 
