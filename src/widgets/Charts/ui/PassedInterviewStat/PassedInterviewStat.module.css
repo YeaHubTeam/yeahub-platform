@@ -1,19 +1,15 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 50px;
-  max-width: 460px;
+  gap: 50px
 }
 
-.wrapper>div:nth-child(1) {
-  width: 307px;
+.list>*+* {
+  margin-top: clamp(16px, calc(16px + 6.67vw - 80px), 24px);
 }
 
-.list > * + * {
-  margin-top: 24px;
-}
-
-.charts {
-  width: auto;
-  height: 307px;
+@media (width <= 480px) {
+  .wrapper {
+    gap: 16px;
+  }
 }

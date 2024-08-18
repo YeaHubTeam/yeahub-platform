@@ -23,5 +23,22 @@
 .value {
   color: var(--text-color-light);
   font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-s);
+}
+
+@media (width <=480px) {
+  .item {
+    gap: 8px;
+  }
+
+  .divide {
+    height: 35px;
+  }
+
+  .title {
+    font-size: var(--font-size-p-s);
+  }
+
+  .value {
+    font-size: var(--font-size-p-xs);
+  }
 }

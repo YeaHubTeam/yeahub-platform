@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -39,9 +38,7 @@ const InterviewQuizPage = () => {
 						imageSrc={imageSrc}
 						longAnswer={longAnswer ?? ''}
 					/>
-					<Link to="/interview/interviewQuiz/interviewQuizResult">
-						<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
-					</Link>
+					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
 				</div>
 			</Block>
 		</div>

@@ -64,43 +64,17 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'interviewQuiz',
-						element: <Outlet />,
+						element: <InterviewQuizPage />,
 						handle: {
 							crumb: 'Викторина',
 						},
-						children: [
-							{
-								index: true,
-								element: <InterviewQuizPage />,
-							},
-							{
-								path: 'interviewQuizResult',
-								element: <InterviewQuizResultPage />,
-								handle: {
-									crumb: 'Результат викторины',
-								},
-							},
-						],
 					},
 					{
-						path: 'interviewHistory',
-						element: <Outlet />,
+						path: 'interviewQuizResult',
+						element: <InterviewQuizResultPage />,
 						handle: {
-							crumb: 'История собеседований',
+							crumb: 'Результат викторины',
 						},
-						children: [
-							{
-								index: true,
-								element: <InterviewHistoryPage />,
-							},
-							{
-								path: 'interviewQuizResult',
-								element: <InterviewQuizResultPage />,
-								handle: {
-									crumb: 'Результат викторины',
-								},
-							},
-						],
 					},
 					{
 						path: 'questions',
@@ -127,6 +101,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage />,
+			},
+			{
+				path: 'interviewHistory',
+				element: <InterviewHistoryPage />,
 			},
 			{
 				path: '*',

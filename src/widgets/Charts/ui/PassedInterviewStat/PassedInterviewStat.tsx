@@ -9,8 +9,6 @@ import styles from './PassedInterviewStat.module.css';
 interface Props {
 	totalAttempt: number;
 	attemptData: AttemptData[];
-	width?: string;
-	height?: string;
 }
 
 export const PassedInterviewStat = ({ totalAttempt, attemptData }: Props) => {
@@ -21,12 +19,13 @@ export const PassedInterviewStat = ({ totalAttempt, attemptData }: Props) => {
 	return (
 		<div className={styles.wrapper}>
 			<ReactECharts
-				className={styles.charts}
 				option={pieOption}
 				opts={{ locale: 'RU' }}
 				style={{
 					backgroundColor: '#FDF4FF',
 					borderRadius: '50%',
+					width: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
+					height: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
 				}}
 			/>
 
