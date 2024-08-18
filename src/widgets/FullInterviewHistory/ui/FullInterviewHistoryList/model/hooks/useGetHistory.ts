@@ -1,6 +1,6 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 
-import { useGetProfileQuery } from '@/entities/auth';
+import { useProfileQuery } from '@/entities/auth';
 import { useGetHistoryQuizQuery, type QuizHistoryParams } from '@/entities/quiz';
 
 /*
@@ -10,7 +10,7 @@ interviewHistory, запрос скипнется на получение дан
 */
 
 export const useGetHistory = (params?: QuizHistoryParams) => {
-	const profile = useGetProfileQuery();
+	const profile = useProfileQuery();
 
 	const profileId = profile.data?.profiles[0].profileId;
 

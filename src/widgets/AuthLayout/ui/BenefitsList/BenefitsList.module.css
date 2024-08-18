@@ -1,0 +1,11 @@
+.title {
+  margin-bottom: 14px;
+  line-height: normal;
+  font-size: var(--font-size-h-s);
+}
+
+.benefit-wrapper {
+  margin: 0;
+  margin-bottom: 70px;
+  padding: 0;
+}

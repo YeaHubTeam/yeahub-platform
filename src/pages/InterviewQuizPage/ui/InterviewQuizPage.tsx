@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
-import { useGetProfileQuery } from '@/entities/auth';
+import { useProfileQuery } from '@/entities/auth';
 import {
 	QuestionProgressBar,
 	QuestionNavPanel,
@@ -19,7 +19,7 @@ import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
-	const { data: userProfile } = useGetProfileQuery();
+	const { data: userProfile } = useProfileQuery();
 	useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {

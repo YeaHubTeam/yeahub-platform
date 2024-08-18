@@ -106,10 +106,6 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: 'login',
-				element: <LoginPage />,
-			},
-			{
 				path: 'interviewHistory',
 				element: <InterviewHistoryPage />,
 			},
@@ -118,5 +114,9 @@ export const router = createBrowserRouter([
 				element: <Error404Page />,
 			},
 		],
+	},
+	{
+		path: 'login',
+		element: <LoginPage />,
 	},
 ]);

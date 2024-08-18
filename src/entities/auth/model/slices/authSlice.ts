@@ -1,25 +1,33 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { TNullable } from '@/shared/types/types';
+import { AuthState, GetLoginResponse, GetProfileResponse } from '../types/auth';
 
-import { AuthState, GetProfileApiResponse } from '../types/authTypes';
-
-const initialState: AuthState = {
-	accessToken: null,
-	profile: null,
-};
-
-export const authSlice = createSlice({
+const authSlice = createSlice({
 	name: 'auth',
-	initialState,
+	initialState: {
+		accessToken: localStorage.getItem('accessToken') || '',
+		profile: null,
+		error: null,
+	} as AuthState,
 	reducers: {
-		setAccessToken: (state, action: PayloadAction<TNullable<string>>) => {
-			state.accessToken = action.payload;
-		},
-		setProfile: (state, action: PayloadAction<TNullable<GetProfileApiResponse>>) => {
+		setUserData: (state, action: PayloadAction<GetProfileResponse>) => {
 			state.profile = action.payload;
+			state.error = null;
+		},
+		setAccessToken: (state, action: PayloadAction<GetLoginResponse>) => {
+			const accessToken = action.payload.access_token;
+			state.accessToken = accessToken;
+			localStorage.setItem('accessToken', accessToken);
+		},
+		logOut: (state) => {
+			state.accessToken = '';
+			state.profile = null;
+			localStorage.removeItem('accessToken');
+		},
+		catchError: (state, action: PayloadAction<number>) => {
+			state.error = action.payload;
 		},
 	},
 });
 
-export const { setProfile, setAccessToken } = authSlice.actions;
+export const { reducer: authReducer, actions: authActions } = authSlice;
