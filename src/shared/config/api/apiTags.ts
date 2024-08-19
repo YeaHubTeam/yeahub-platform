@@ -3,4 +3,7 @@ export enum ApiTags {
 	QUESTION_DETAIL = 'question_detail',
 	QUESTIONS = 'questions',
 	SKILLS = 'skills',
+	NEW_QUIZ = 'newQuiz',
+	INTERVIEW_QUIZ = 'inteview_quiz',
+	HISTORY_QUIZ = 'historyQuiz',
 }

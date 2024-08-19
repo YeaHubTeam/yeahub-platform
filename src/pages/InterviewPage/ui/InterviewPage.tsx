@@ -50,7 +50,7 @@ const InterviewPage = () => {
 					<InterviewQuestionHeader title={t('stats.title')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight link="/interview-statistics" linkTitle={t('stats.linkText')} />
+					<LinkWithArrowRight link="interview-statistics" linkTitle={t('stats.linkText')} />
 				</div>
 			</Block>
 			<Block>

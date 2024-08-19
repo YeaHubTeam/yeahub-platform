@@ -11,7 +11,7 @@ export const InterviewPreparationHeader = ({ title, linkTitle }: Props) => {
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{!!linkTitle && <LinkWithArrowRight link="interviewQuiz" linkTitle={linkTitle} />}
+			{!!linkTitle && <LinkWithArrowRight link="quiz" linkTitle={linkTitle} />}
 		</div>
 	);
 };

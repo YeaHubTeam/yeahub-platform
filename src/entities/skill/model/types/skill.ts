@@ -11,3 +11,7 @@ export interface SkillsListParams {
 	page?: number;
 	limit?: number;
 }
+
+export interface SkillForForm {
+	skills: string;
+}

@@ -1,32 +1,28 @@
-export type QuestionType = 'task' | 'question' | 'test';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Skill } from '@/entities/skill';
 
-export interface QuestionSkill {
-	id: string;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
-}
+export type QuestionType = 'task' | 'question' | 'test';
 
 export interface Question {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc?: string;
-	keywords?: string[];
-	shortAnswer?: string;
-	status?: string;
+	imageSrc: string;
+	keywords: string[];
+	longAnswer: string;
+	shortAnswer: string;
+	status: string;
 	rate: number;
-	longAnswer?: string;
-	resources?: string[];
-	author?: string;
-	type?: QuestionType;
-	criteria?: string;
-	correctOptionId?: number;
-	explanation?: string;
-	time?: string;
-	questionSkills?: QuestionSkill[];
+	createdAt: string;
+	updatedAt: string;
+	createdBy: null | string;
+	updatedBy: null;
+	//todo убрать specializations, skills и rating так как это замоканные данные
+	questionSpecializations?: Skill[];
+	questionSkills?: Skill[];
+	complexity?: number;
+	specializations: number[];
+	skills: number[];
 	rating: number;
 }
 

@@ -30,6 +30,7 @@
 }
 
 .question {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -51,6 +52,7 @@
 
   .end-button {
     order: 2;
+    margin-top: 16px;
   }
 }
 

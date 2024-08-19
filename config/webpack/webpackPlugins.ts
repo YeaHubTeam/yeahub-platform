@@ -13,18 +13,21 @@ import { Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
 
 import { WebpackOptions } from './types/types';
 
-export const webpackPlugins = ({ isDev, paths }: WebpackOptions): Configuration['plugins'] => {
+export const webpackPlugins = ({
+  isDev,
+  paths,
+  envs,
+}: WebpackOptions): Configuration['plugins'] => {
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html,
       favicon: path.resolve(paths.public, 'images/favicon.svg'),
     }),
-    new DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev),
-      'process.env.PORT': JSON.stringify(process.env.PORT),
-    }),
+    new DefinePlugin(envs),
     new Dotenv({
       path: paths.env,
+      silent: true,
+      systemvars: true,
     }),
   ];
 

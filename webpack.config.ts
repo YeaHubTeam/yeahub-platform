@@ -8,8 +8,14 @@ import { webpackConfig } from './config/webpack/webpackConfig';
 
 interface EnvVariables {
   mode: WebpackMode;
-  port: number;
+  port?: number | string;
 }
+
+const modes = {
+  production: '.env.production',
+  development: '.env.development',
+  test: '.env.test',
+};
 
 export default (env: EnvVariables) => {
   const paths: WebpackPaths = {
@@ -27,26 +33,43 @@ export default (env: EnvVariables) => {
     ),
     src: path.resolve(__dirname, 'src'),
     public: path.resolve(__dirname, 'public'),
-    env: path.resolve(
-      __dirname,
-      env.mode === 'production' ? '.env.production' : '.env.development',
-    ),
+    env: path.resolve(__dirname, modes[env.mode]),
     locales: path.resolve(__dirname, 'public', 'locales'),
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
+    httpsKey: path.resolve(__dirname, 'cert', 'localhost.key'),
+    httpsCert: path.resolve(__dirname, 'cert', 'localhost.crt'),
   };
 
-  dotenv.config({ path: paths.env });
+  // Пытаемся загрузить .env файл, если он существует
+  try {
+    dotenv.config({ path: paths.env });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn(`Warning: .env file not found for ${env.mode} mode. Using process.env values.`);
+  }
 
   const isDev = env.mode === 'development';
   const port = env.port ?? process.env.PORT ?? 3001;
 
+  // Добавляем DefinePlugin для передачи переменных окружения в приложение
+  const envVars = {
+    __IS_DEV__: JSON.stringify(isDev),
+    'process.env.NODE_ENV': JSON.stringify(env.mode),
+    'process.env.PORT': JSON.stringify(process.env.PORT || port),
+    'process.env.API_URL': JSON.stringify(process.env.API_URL),
+    'process.env.LANDING_URL': JSON.stringify(process.env.LANDING_URL),
+  };
+
   const options: WebpackOptions = {
-    port: port,
+    port: +port,
     mode: env.mode,
     isDev,
     paths,
+    envs: envVars,
   };
 
   const config: Configuration = webpackConfig(options);
+
   return config;
 };

@@ -1,10 +1,19 @@
-import { Input, Label } from 'yeahub-ui-kit';
+import { useFormContext } from 'react-hook-form';
+import { Button, Input, Label } from 'yeahub-ui-kit';
 
-import { HorizontalContainer, NextBtn, VerticalContainer } from '../CommonElements';
+import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './SkillsForm.module.css';
 
+//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+
 export const SkillsForm = () => {
+	const {
+		register,
+		//formState: { errors },
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} = useFormContext<any>();
+
 	return (
 		<>
 			<VerticalContainer>
@@ -15,13 +24,19 @@ export const SkillsForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} text="Навык">
-							<Input className={style.input} placeholder="Выбери навык из списка" />
+							<Input
+								{...register('skills')}
+								className={style.input}
+								placeholder="Выбери навык из списка"
+							/>
 						</Label>
 						<p className={style.subtitle}>Выбранные навыки</p>
 					</div>
 				</HorizontalContainer>
 			</VerticalContainer>
-			<NextBtn />
+			<div className={style['btn-container']}>
+				<Button type="submit">Сохранить</Button>
+			</div>
 		</>
 	);
 };

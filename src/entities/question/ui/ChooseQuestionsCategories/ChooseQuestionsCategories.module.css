@@ -1,0 +1,11 @@
+.wrapper {
+  flex-basis: 60%;
+}
+
+.button {
+  margin-top: 16px;
+}
+
+.button:hover {
+  cursor: pointer;
+}

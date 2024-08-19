@@ -16,7 +16,7 @@ export const QuestionHeader = ({ title, description, status }: Props) => {
 		<Block className={styles.wrapper}>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
-					<img src={QuestionImg} alt="Question" />
+					<img className={styles.img} src={QuestionImg} alt="Question" />
 				</div>
 				<div className={styles['title-wrapper']}>
 					<h2 className={styles.title}>{title}</h2>

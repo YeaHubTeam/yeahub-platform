@@ -29,4 +29,8 @@
   .auth-btns {
     display: none;
   }
+  
+  .preferences {
+    display: none;
+  }
 }

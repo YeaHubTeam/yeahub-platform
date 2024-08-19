@@ -5,7 +5,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { MOCK_QUIZ } from '@/entities/interview';
+import { MOCK_QUIZ } from '@/entities/quiz';
 
 import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
