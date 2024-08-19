@@ -11,6 +11,7 @@ export {
 	useLazyCreateNewQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
+	useSaveQuizResultMutation,
 } from './api/quizApi';
 
 export type {
@@ -36,6 +37,6 @@ export type {
 	QuizHistoryResponse,
 } from './model/types/quiz';
 
-export { getActiveQuizQuestions } from './model/selectors/quizSelectors';
+export { getActiveQuizQuestions, getQuizStartDate } from './model/selectors/quizSelectors';
 
-export { activeQuizSlice, setActiveQuiz } from './model/slices/activeQuizSlice';
+export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';

@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
 const initialState: ActiveQuizState = {
+	startDate: '',
 	questions: [],
 };
 
@@ -10,7 +11,10 @@ export const activeQuizSlice = createSlice({
 	name: 'quiz',
 	initialState,
 	reducers: {
-		setActiveQuiz: (state, action: PayloadAction<Answers[]>) => {
+		setStartDate: (state, action: PayloadAction<string>) => {
+			state.startDate = action.payload;
+		},
+		setActiveQuizQuestions: (state, action: PayloadAction<Answers[]>) => {
 			state.questions = action.payload;
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
@@ -24,4 +28,5 @@ export const activeQuizSlice = createSlice({
 	},
 });
 
-export const { setActiveQuiz, changeQuestionAnswer } = activeQuizSlice.actions;
+export const { setStartDate, setActiveQuizQuestions, changeQuestionAnswer } =
+	activeQuizSlice.actions;
