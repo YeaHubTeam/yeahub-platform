@@ -5,7 +5,7 @@ import { Input, Icon, Button } from 'yeahub-ui-kit';
 
 import { errorMessageAdapter } from '@/shared/libs/utils/errorMessageAdapter';
 
-import { useAuthMutation } from '@/entities/auth';
+import { useLoginMutation } from '@/entities/auth';
 import { getAuthError } from '@/entities/auth';
 import { Auth } from '@/entities/auth';
 
@@ -14,7 +14,7 @@ import styles from './LoginForm.module.css';
 export const LoginForm = () => {
 	const errorState = useSelector(getAuthError);
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
-	const [loginMutation, { isLoading }] = useAuthMutation();
+	const [loginMutation, { isLoading }] = useLoginMutation();
 	const {
 		handleSubmit,
 		register,

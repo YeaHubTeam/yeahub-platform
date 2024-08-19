@@ -27,7 +27,11 @@
   margin-bottom: 6px;
   padding-left: 20px;
   border-radius: 68px;
-  background-color: var(--background-zero);
+  background-color: var(--background-app);
+}
+
+.input input {
+  color: var(--text-color-primary)
 }
 
 .error {
@@ -53,5 +57,5 @@
   text-align: center;
   line-height: normal;
   font-weight: var(--font-weight-600);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-h-xs);
 }

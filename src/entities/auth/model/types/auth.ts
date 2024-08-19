@@ -5,16 +5,10 @@ export interface Auth {
 	password: string;
 }
 
-export interface AuthState {
-	accessToken: TNullable<string>;
-	profile: TNullable<GetProfileResponse>;
-	error: TNullable<number>;
-}
-
-export interface GetProfileResponse {
-	id: string;
+export interface SignUp {
 	firstName: string;
 	lastName: string;
+	password: string;
 	phone: string;
 	email: string;
 	country: string | null;
@@ -22,12 +16,22 @@ export interface GetProfileResponse {
 	birthday: string | null;
 	address: string | null;
 	avatarUrl: string | null;
+}
+
+export interface AuthState {
+	accessToken: TNullable<string>;
+	profile: TNullable<GetProfileResponse>;
+	error: TNullable<number>;
+}
+
+export interface GetProfileResponse extends Omit<SignUp, 'password'> {
+	id: string;
 	updatedAt: string;
 	createdAt: string;
 	profiles: Profile[];
 }
 
-export interface GetLoginResponse {
+export interface GetAuthResponse {
 	access_token: string;
 	user: GetProfileResponse;
 }

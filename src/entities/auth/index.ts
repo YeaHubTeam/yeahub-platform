@@ -1,8 +1,9 @@
-export type { Auth, AuthState, GetProfileResponse } from './model/types/auth';
+export type { Auth, SignUp, AuthState, GetProfileResponse } from './model/types/auth';
 export { authReducer, authActions } from './model/slices/authSlice';
 export { getAuthData, getAuthError } from './model/selectors/authSelectors';
 export {
-	useAuthMutation,
+	useLoginMutation,
+	useSignUpMutation,
 	useProfileQuery,
 	useLazyLogoutQuery,
 	useLazyGetRefreshTokenQuery,

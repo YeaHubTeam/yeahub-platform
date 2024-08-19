@@ -13,6 +13,7 @@ import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { QuestionPage } from '@/pages/QuestionPage';
 import { QuestionsPage } from '@/pages/QuestionsPage';
+import { RegistrationPage } from '@/pages/RegistrationPage';
 
 import { App } from '@/app/App';
 
@@ -118,5 +119,9 @@ export const router = createBrowserRouter([
 	{
 		path: 'login',
 		element: <LoginPage />,
+	},
+	{
+		path: 'registration',
+		element: <RegistrationPage />,
 	},
 ]);
