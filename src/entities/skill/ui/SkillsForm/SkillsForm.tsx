@@ -1,7 +1,8 @@
-import { useFormContext } from 'react-hook-form';
-import { Button, Input, Label } from 'yeahub-ui-kit';
+import { Controller, useFormContext } from 'react-hook-form';
+import { Button } from 'yeahub-ui-kit';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
+import { SkillSelect } from '../SkillSelect/SkillSelect';
 
 import style from './SkillsForm.module.css';
 
@@ -9,7 +10,7 @@ import style from './SkillsForm.module.css';
 
 export const SkillsForm = () => {
 	const {
-		register,
+		control,
 		//formState: { errors },
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} = useFormContext<any>();
@@ -22,16 +23,13 @@ export const SkillsForm = () => {
 						<h3>Твои навыки</h3>
 						<p>Покажи что ты умеешь и в чём ты действительно хорошо</p>
 					</div>
-					<div className={style['inputs-wrapper']}>
-						<Label className={style.label} text="Навык">
-							<Input
-								{...register('skills')}
-								className={style.input}
-								placeholder="Выбери навык из списка"
-							/>
-						</Label>
-						<p className={style.subtitle}>Выбранные навыки</p>
-					</div>
+					<Controller
+						name="skills"
+						control={control}
+						render={({ field: { onChange, value } }) => (
+							<SkillSelect onChange={onChange} value={value} />
+						)}
+					/>
 				</HorizontalContainer>
 			</VerticalContainer>
 			<div className={style['btn-container']}>

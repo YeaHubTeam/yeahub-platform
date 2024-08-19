@@ -13,5 +13,5 @@ export interface SkillsListParams {
 }
 
 export interface SkillForForm {
-	skills: string;
+	skills: Skill[];
 }
