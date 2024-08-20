@@ -1,5 +1,8 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Select, Chip, Text } from 'yeahub-ui-kit';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
@@ -12,6 +15,7 @@ type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 't
 };
 
 export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
+	const { t } = useI18nHelpers(i18Namespace.profile);
 	const { data: skills } = useGetSkillsListQuery({});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
@@ -23,12 +27,11 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 		onChange(updates);
 	};
 
-	const handleDeleteSkill = useCallback(
-		(id: number) => () => {
-			setSelectedSkills((prevValue) => prevValue.filter((skillId) => skillId !== id));
-		},
-		[],
-	);
+	const handleDeleteSkill = (id: number) => () => {
+		const updates = selectedSkills.filter((skillId) => skillId !== id);
+		setSelectedSkills(updates);
+		onChange(updates);
+	};
 
 	const options = useMemo(() => {
 		return (skills?.data || [])
@@ -55,11 +58,12 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 				onChange={handleChange}
 				options={options}
 				type="default"
-				placeholder={options.length ? 'Выберите навык из списка' : 'Нет доступных опций'}
+				placeholder={options.length ? t('skillForm.skillSelect') : t('skillForm.emptySkillSelect')}
+				className={styles.select}
 			/>
-			{selectedSkills?.length && (
+			{Boolean(selectedSkills?.length) && (
 				<>
-					<Text text="Выбранные навыки" className={styles.title} />
+					<Text text={t('skillForm.selectedSkills')} className={styles.title} />
 					<div className={styles.selection}>
 						{selectedSkills?.map((skillId) => {
 							return (

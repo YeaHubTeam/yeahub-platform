@@ -2,8 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
   max-width: 740px;
   min-height: 162px;
+}
+
+.select {
+  max-width: 408px;
 }
 
 .selection {

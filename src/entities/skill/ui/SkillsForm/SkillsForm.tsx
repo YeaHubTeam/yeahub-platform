@@ -1,6 +1,9 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 import { SkillSelect } from '../SkillSelect/SkillSelect';
 
@@ -9,6 +12,8 @@ import style from './SkillsForm.module.css';
 //todo добавить рендер ошибок при валидации, добавить интерфейс для формы
 
 export const SkillsForm = () => {
+	const { t } = useI18nHelpers(i18Namespace.profile);
+
 	const {
 		control,
 		//formState: { errors },
@@ -20,8 +25,8 @@ export const SkillsForm = () => {
 			<VerticalContainer>
 				<HorizontalContainer>
 					<div className={style.description}>
-						<h3>Твои навыки</h3>
-						<p>Покажи что ты умеешь и в чём ты действительно хорошо</p>
+						<h3>{t('skillForm.yourSkills')}</h3>
+						<p>{t('skillForm.yourSkillsText')}</p>
 					</div>
 					<Controller
 						name="skills"
@@ -33,7 +38,7 @@ export const SkillsForm = () => {
 				</HorizontalContainer>
 			</VerticalContainer>
 			<div className={style['btn-container']}>
-				<Button type="submit">Сохранить</Button>
+				<Button type="submit">{t('skillForm.submitButtonText')}</Button>
 			</div>
 		</>
 	);
