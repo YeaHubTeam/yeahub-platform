@@ -10,6 +10,14 @@
         "experience": "Опыт работы",
         "education": "Образование"
       }
+    },
+    "skillForm": {
+      "skillSelect": "Выберите навык из списка",
+      "emptySkillSelect": "Нет доступных опций",
+      "selectedSkills": "Выбранные навыки",
+      "yourSkills": "Твои навыки",
+      "yourSkillsText": "Покажи, что ты умеешь и в чём ты действительно хорош",
+      "submitButtonText": "Сохранить"
     }
   }
 }

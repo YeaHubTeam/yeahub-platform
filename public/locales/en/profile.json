@@ -10,6 +10,14 @@
         "experience": "Experience",
         "education": "Education"
       }
+    },
+    "skillForm": {
+      "skillSelect": "Select skill from the list",
+      "emptySkillSelect": "No options available",
+      "selectedSkills": "Selected skills",
+      "yourSkills": "Your skills",
+      "yourSkillsText": "Show what you can do and what you are really good at",
+      "submitButtonText": "Save"
     }
   }
 }

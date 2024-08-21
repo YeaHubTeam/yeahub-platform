@@ -22,7 +22,6 @@
   gap: 20px;
   width: 100%;
   max-width: 660px;
-     
 }
   
 .label {
@@ -54,6 +53,10 @@
   font-weight: var(--font-weight-500);
   font-size: var(--color-black-800);
 }
-    
-    
-  
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 36px;
+} 

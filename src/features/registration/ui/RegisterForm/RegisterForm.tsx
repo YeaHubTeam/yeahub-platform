@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button, Icon, Input } from 'yeahub-ui-kit';
 
-import { SignUp, useSignUpMutation } from '@/entities/auth';
+import { SignUp, useRegisterMutation } from '@/entities/auth';
 
 import styles from './RegisterForm.module.css';
 
@@ -13,7 +13,7 @@ interface RegistrationValidation extends SignUp {
 
 export const RegisterForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
-	const [registrationMutation, { isLoading }] = useSignUpMutation();
+	const [registrationMutation, { isLoading }] = useRegisterMutation();
 
 	const {
 		handleSubmit,

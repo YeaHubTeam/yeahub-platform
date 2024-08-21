@@ -27,6 +27,10 @@ export interface NewQuizResponse {
 	id: string;
 }
 
+export interface ActiveQuizWithDate extends NewQuizResponse {
+	startDate: string;
+}
+
 /**
  * Request model for retrieving interview history
  * @property {string} profileID - User profile identifier. (Not user ID)
@@ -85,6 +89,7 @@ export interface Answers {
 }
 
 export interface ActiveQuizState {
+	startDate: string;
 	questions: Answers[];
 }
 

@@ -1,23 +1,22 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Text } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
 
-import { getAccessToken, getProfile } from '../model/selectors/userPreferencesSelectors';
+import { useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
-	const profile = useSelector(getProfile);
-	const accessToken = useSelector(getAccessToken);
+	const { data: profile } = useProfileQuery();
+	const accessToken = localStorage.getItem('accessToken');
 
 	const handleLoginBtn = useCallback(() => {
-		window.location.replace(process.env.LANDING_URL + 'login');
+		window.location.replace(process.env.LANDING_URL + 'auth/login');
 	}, []);
 	const handleRegisterBtn = useCallback(() => {
-		window.location.replace(process.env.LANDING_URL + 'registration');
+		window.location.replace(process.env.LANDING_URL + 'auth/registration');
 	}, []);
 
 	const isAuth = !!accessToken && !!profile;
@@ -37,7 +36,7 @@ export const UserPreferences = () => {
 						/>
 					</div>
 					<Text text={profile.firstName} />
-					<NavLink to="/login" className={styles.avatar}>
+					<NavLink to="/auth/login" className={styles.avatar}>
 						<img className={styles.img} src={profile.avatarUrl || Avatar} alt="avatar" />
 					</NavLink>
 				</div>

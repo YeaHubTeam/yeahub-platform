@@ -22,12 +22,12 @@ export const registerSchema = yup.object().shape({
 	passwordConfirmation: yup
 		.string()
 		.oneOf([yup.ref('password')], 'Пароль должен совпадать')
-		.required(),
+		.required('Поле обязательно для заполнения'),
 	isChecked: yup
 		.boolean()
 		.oneOf(
 			[true],
 			'Для регистрации необходимо согласиться на обработку персональных данных и условия соглашения',
 		)
-		.required(),
+		.required('Ячейка обязательна для заполнения'),
 });

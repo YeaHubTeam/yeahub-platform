@@ -47,4 +47,8 @@
   .layout {
     grid-template-columns: 0 1fr;
   }
+
+  .main {
+    padding: 16px;
+  }
 }

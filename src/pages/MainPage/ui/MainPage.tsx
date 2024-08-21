@@ -1,17 +1,16 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Block } from '@/shared/ui/Block';
 
-import { GetProfileResponse } from '@/entities/auth';
+import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
 import styles from './MainPage.module.css';
 
 const MainPage: FC = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
-	const { profile } = useAppSelector((state) => state.auth);
+	const { data: profile } = useProfileQuery();
 
 	const getPercentProfileFullness = useCallback((profile: GetProfileResponse) => {
 		const allFileldsCount = Object.keys(profile).length - 1;

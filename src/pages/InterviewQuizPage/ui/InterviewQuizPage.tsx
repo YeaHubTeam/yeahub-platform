@@ -12,7 +12,9 @@ import {
 	InterviewSlider,
 	useSlideSwitcher,
 	useGetActiveQuizQuery,
+	useSaveQuizResultMutation,
 	getActiveQuizQuestions,
+	getQuizStartDate,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -20,15 +22,17 @@ import styles from './InterviewQuizPage.module.css';
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile } = useProfileQuery();
-	useGetActiveQuizQuery({
+	const { data: activeQuiz } = useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
 			limit: 1,
 		},
 	});
+	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
+	const activeQuizStartDate = useSelector(getQuizStartDate);
 
 	const {
 		questionId,
@@ -43,6 +47,20 @@ const InterviewQuizPage = () => {
 		goToNextSlide,
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	const handleSubmitQuiz = () => {
+		if (activeQuiz) {
+			const quizToSave = {
+				...activeQuiz.data[0],
+				startDate: activeQuizStartDate,
+				response: {
+					answers: activeQuizQuestions,
+				},
+			};
+
+			saveResult(quizToSave);
+		}
+	};
 
 	return (
 		<div className={styles.container}>
@@ -76,7 +94,11 @@ const InterviewQuizPage = () => {
 						answer={answer}
 						changeAnswer={changeAnswer}
 					/>
-					<Button disabled={currentCount !== totalCount} className={styles['end-button']}>
+					<Button
+						className={styles['end-button']}
+						disabled={currentCount !== totalCount}
+						onClick={handleSubmitQuiz}
+					>
 						{t('completeQuizButton')}
 					</Button>
 				</div>

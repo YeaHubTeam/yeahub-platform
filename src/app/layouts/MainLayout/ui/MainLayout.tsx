@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Loader } from '@/shared/ui/Loader';
 
-import { useProfileQuery, useLazyGetRefreshTokenQuery } from '@/entities/auth';
+import { useProfileQuery, useLazyRefreshQuery } from '@/entities/auth';
 
 import { Header } from '@/widgets/Header';
 import { NavSidebarList } from '@/widgets/NavSidebar';
@@ -15,7 +15,7 @@ export const MainLayout = () => {
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	const { error } = useProfileQuery();
-	const [trigger] = useLazyGetRefreshTokenQuery();
+	const [trigger] = useLazyRefreshQuery();
 
 	useEffect(() => {
 		if (error) {

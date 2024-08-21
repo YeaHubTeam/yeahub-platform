@@ -6,7 +6,7 @@ import styles from './RegistrationLabel.module.css';
 export const RegistrationLabel = () => {
 	const navigate = useNavigate();
 	const handleClickNavigation = () => {
-		navigate('/registration');
+		navigate('/auth/registration');
 	};
 	return (
 		<div className={styles.wrapper}>

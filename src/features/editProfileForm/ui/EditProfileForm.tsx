@@ -1,4 +1,6 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -11,10 +13,17 @@ import { ProjectForm } from '@/entities/project';
 import { SkillsForm } from '@/entities/skill';
 import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
 
+import { profileSchema } from '../model/lib/validation/profileSchema';
+import { ProfileSchema } from '../model/types/profileTypes';
+
 import style from './EditProfileForm.module.css';
 
 export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
+	const methods = useForm<ProfileSchema>({
+		resolver: yupResolver(profileSchema),
+		mode: 'onTouched',
+	});
 	const tabs = [
 		{
 			id: 0,
@@ -59,6 +68,12 @@ export const EditProfileForm = () => {
 		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
 	});
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const onSubmit = (data: any) => {
+		// eslint-disable-next-line no-console
+		console.log(data);
+	};
+
 	return (
 		<section className={style.section}>
 			<Tabs
@@ -67,9 +82,11 @@ export const EditProfileForm = () => {
 				tabToggle={currentActiveTab}
 				setTabToggle={setCurrentActiveTab}
 			/>
-			<form>
-				{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
-			</form>
+			<FormProvider {...methods}>
+				<form onSubmit={methods.handleSubmit(onSubmit)}>
+					{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+				</form>
+			</FormProvider>
 		</section>
 	);
 };

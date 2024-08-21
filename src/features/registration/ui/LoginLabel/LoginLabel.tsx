@@ -6,7 +6,7 @@ import styles from './LoginLabel.module.css';
 export const LoginLabel = () => {
 	const navigate = useNavigate();
 	const handleClickNavigation = () => {
-		navigate('/login');
+		navigate('/auth/login');
 	};
 	return (
 		<div className={styles.wrapper}>

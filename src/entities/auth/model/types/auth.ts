@@ -1,5 +1,3 @@
-import { TNullable } from 'yeahub-ui-kit/build/hooks/useDialog';
-
 export interface Auth {
 	username: string;
 	password: string;
@@ -18,12 +16,6 @@ export interface SignUp {
 	avatarUrl: string | null;
 }
 
-export interface AuthState {
-	accessToken: TNullable<string>;
-	profile: TNullable<GetProfileResponse>;
-	error: TNullable<number>;
-}
-
 export interface GetProfileResponse extends Omit<SignUp, 'password'> {
 	id: string;
 	updatedAt: string;
@@ -39,4 +31,8 @@ export interface GetAuthResponse {
 export interface Profile {
 	profileId: string;
 	specializationID: number;
+}
+
+export interface ExtraArgument {
+	navigate: (path: string) => void;
 }
