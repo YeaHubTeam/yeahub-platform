@@ -12,6 +12,8 @@
       }
     },
     "skillForm": {
+      "specializationSelect": "Выберите специализацию",
+      "emptySpecializationSelect": "Нет доступных опций",
       "skillSelect": "Выберите навык из списка",
       "emptySkillSelect": "Нет доступных опций",
       "selectedSkills": "Выбранные навыки",
