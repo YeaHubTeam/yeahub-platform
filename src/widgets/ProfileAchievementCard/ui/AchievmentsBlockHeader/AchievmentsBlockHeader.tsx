@@ -1,4 +1,4 @@
-import { ACHIEVMENT_LIST } from '@/entities/profileAchievment';
+import { ACHIEVMENT_LIST } from '@/entities/achievement';
 
 import styles from './AchievmentsBlockHeader.module.css';
 
