@@ -1,4 +1,4 @@
-import { USER_INFO } from '@/entities/profileUser';
+import { USER_INFO } from '@/entities/user';
 
 import styles from './UserLeftBlock.module.css';
 

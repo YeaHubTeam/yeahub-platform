@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
-import { USER_INFO, USER_LINK } from '@/entities/profileUser';
+import { USER_INFO, USER_LINK } from '@/entities/user';
 
 import styles from './UserInfo.module.css';
 
