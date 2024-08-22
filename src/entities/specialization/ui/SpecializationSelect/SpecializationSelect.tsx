@@ -4,7 +4,6 @@ import { Select } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 
 import styles from './SpecializationSelect.module.css';
