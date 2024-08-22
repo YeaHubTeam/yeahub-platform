@@ -1,4 +1,5 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
 
 import {
 	Auth,
@@ -7,6 +8,8 @@ import {
 	GetProfileResponse,
 	SignUp,
 } from '../model/types/auth';
+
+const { setStoredItem, removeStoredItem } = manageLocalStorage('accessToken');
 
 export const authApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -19,7 +22,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setStoredItem(result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/');
 				} catch (error) {
@@ -37,7 +40,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setStoredItem(result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/');
 				} catch (error) {
@@ -54,7 +57,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					await queryFulfilled;
-					localStorage.removeItem('accessToken');
+					removeStoredItem();
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -66,7 +69,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setStoredItem(result.data.access_token);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

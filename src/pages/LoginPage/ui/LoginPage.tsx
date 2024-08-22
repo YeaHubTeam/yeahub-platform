@@ -1,6 +1,6 @@
 import { Button } from 'yeahub-ui-kit';
 
-import { getAccessToken } from '@/shared/helpers/getAccessToken';
+import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -8,9 +8,11 @@ import { LoginCreateForm } from '@/widgets/authentication/login';
 
 import styles from './LoginPage.module.css';
 
+const { getStoredItem } = manageLocalStorage('accessToken');
+
 const LoginPage = () => {
 	const { data: profile } = useProfileQuery();
-	const accessToken = getAccessToken();
+	const accessToken = getStoredItem();
 	const [trigger] = useLazyLogoutQuery();
 
 	const handleLogoutUser = () => {

@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getAccessToken } from '@/shared/helpers/getAccessToken';
+import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
 
 import { ApiTags } from './apiTags';
+
+const { getStoredItem } = manageLocalStorage('accessToken');
 
 export const baseApi = createApi({
 	tagTypes: Object.values(ApiTags),
@@ -11,7 +13,7 @@ export const baseApi = createApi({
 		baseUrl: process.env.API_URL,
 		credentials: 'include',
 		prepareHeaders: (headers) => {
-			const accessToken = getAccessToken();
+			const accessToken = getStoredItem();
 
 			if (accessToken) {
 				headers.set('Authorization', `Bearer ${accessToken}`);

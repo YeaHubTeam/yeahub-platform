@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
@@ -19,6 +20,9 @@ import {
 
 import styles from './InterviewQuizPage.module.css';
 
+const { removeStoredItem: removeStartDateQuiz } = manageLocalStorage('startDateQuiz');
+const { removeStoredItem: removeActiveQuiz } = manageLocalStorage('activeQuiz');
+
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile } = useProfileQuery();
@@ -29,7 +33,7 @@ const InterviewQuizPage = () => {
 			limit: 1,
 		},
 	});
-	const [saveResult] = useSaveQuizResultMutation();
+	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
 	const activeQuizStartDate = useSelector(getQuizStartDate);
@@ -59,6 +63,8 @@ const InterviewQuizPage = () => {
 			};
 
 			saveResult(quizToSave);
+			removeActiveQuiz();
+			removeStartDateQuiz();
 		}
 	};
 
@@ -96,7 +102,7 @@ const InterviewQuizPage = () => {
 					/>
 					<Button
 						className={styles['end-button']}
-						disabled={currentCount !== totalCount}
+						disabled={currentCount !== totalCount || isLoadingAfterSave}
 						onClick={handleSubmitQuiz}
 					>
 						{t('completeQuizButton')}
