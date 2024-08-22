@@ -1,7 +1,10 @@
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { Button, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
@@ -12,6 +15,7 @@ import style from './PersonalInformationForm.module.css';
 export const PersonalInformationForm = () => {
 	const {
 		register,
+		control,
 		//formState: { errors },
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} = useFormContext<any>();
@@ -36,10 +40,12 @@ export const PersonalInformationForm = () => {
 							<Input {...register('name')} className={style.input} />
 						</Label>
 						<Label className={style.label} required text="IT Специальность">
-							<Input
-								{...register('specialization')}
-								className={style.input}
-								placeholder="Граф. дизайнер"
+							<Controller
+								name="specialization"
+								control={control}
+								render={({ field: { onChange, value } }) => (
+									<SpecializationSelect onChange={onChange} value={value} />
+								)}
 							/>
 						</Label>
 						<Label className={style.label} text="Номер для связи">

@@ -30,7 +30,7 @@
   max-width: 320px;
 }
 
-.label span {
+.label > span {
   display: inline-block;
   margin-bottom: 8px;
   color: var(--color-black-700);
