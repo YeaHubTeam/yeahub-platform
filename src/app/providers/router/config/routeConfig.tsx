@@ -13,8 +13,11 @@ import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { QuestionPage } from '@/pages/QuestionPage';
 import { QuestionsPage } from '@/pages/QuestionsPage';
+import { RegistrationPage } from '@/pages/RegistrationPage';
 
 import { App } from '@/app/App';
+import { AuthLayout } from '@/app/layouts/AuthLayout';
+import { MainLayout } from '@/app/layouts/MainLayout';
 
 export const router = createBrowserRouter([
 	{
@@ -22,106 +25,122 @@ export const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
-				index: true,
-				element: <MainPage />,
-			},
-			{
-				path: 'profile',
-				element: <Outlet />,
-				handle: {
-					crumb: 'Профиль',
-				},
+				path: '/',
+				element: <MainLayout />,
 				children: [
 					{
 						index: true,
-						element: <ProfilePage />,
+						element: <MainPage />,
 					},
 					{
-						path: 'edit',
-						element: <EditProfilePage />,
-						handle: {
-							crumb: 'Редактирование профиля',
-						},
-					},
-				],
-			},
-			{
-				path: 'interview',
-				element: <Outlet />,
-				handle: {
-					crumb: 'Обучение',
-				},
-				children: [
-					{
-						index: true,
-						element: <InterviewPage />,
-					},
-					{
-						path: 'quiz',
+						path: 'profile',
 						element: <Outlet />,
-						handle: { crumb: 'Собеседование' },
+						handle: {
+							crumb: 'Профиль',
+						},
 						children: [
-							{ index: true, element: <CreateQuizPage /> },
 							{
-								path: 'interviewQuiz',
-								element: <InterviewQuizPage />,
+								index: true,
+								element: <ProfilePage />,
 							},
 							{
-								path: ':quizId',
+								path: 'edit',
+								element: <EditProfilePage />,
+								handle: {
+									crumb: 'Редактирование профиля',
+								},
+							},
+						],
+					},
+					{
+						path: 'interview',
+						element: <Outlet />,
+						handle: {
+							crumb: 'Обучение',
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewPage />,
+							},
+							{
+								path: 'quiz',
+								element: <Outlet />,
+								handle: { crumb: 'Собеседование' },
+								children: [
+									{ index: true, element: <CreateQuizPage /> },
+									{
+										path: 'interviewQuiz',
+										element: <InterviewQuizPage />,
+									},
+									{
+										path: ':quizId',
+										element: <InterviewQuizResultPage />,
+										handle: {
+											crumb: 'Результат викторины',
+										},
+									},
+								],
+							},
+							{
+								path: 'interview-statistics',
+								element: <InterviewStatisticsPage />,
+								handle: {
+									crumb: 'Статистика собеседований',
+								},
+							},
+							{
+								path: 'interviewQuizResult',
 								element: <InterviewQuizResultPage />,
 								handle: {
 									crumb: 'Результат викторины',
 								},
 							},
-						],
-					},
-					{
-						path: 'interview-statistics',
-						element: <InterviewStatisticsPage />,
-						handle: {
-							crumb: 'Статистика собеседований',
-						},
-					},
-					{
-						path: 'interviewQuizResult',
-						element: <InterviewQuizResultPage />,
-						handle: {
-							crumb: 'Результат викторины',
-						},
-					},
-					{
-						path: 'questions',
-						element: <Outlet />,
-						handle: {
-							crumb: 'Список вопросов',
-						},
-						children: [
 							{
-								index: true,
-								element: <QuestionsPage />,
-							},
-							{
-								path: ':questionId',
-								element: <QuestionPage />,
+								path: 'questions',
+								element: <Outlet />,
 								handle: {
-									crumb: 'Подробнее',
+									crumb: 'Список вопросов',
 								},
+								children: [
+									{
+										index: true,
+										element: <QuestionsPage />,
+									},
+									{
+										path: ':questionId',
+										element: <QuestionPage />,
+										handle: {
+											crumb: 'Подробнее',
+										},
+									},
+								],
 							},
 						],
+					},
+					{
+						path: 'interviewHistory',
+						element: <InterviewHistoryPage />,
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
 					},
 				],
 			},
 			{
-				path: 'login',
-				element: <LoginPage />,
-			},
-			{
-				path: 'interviewHistory',
-				element: <InterviewHistoryPage />,
-			},
-			{
-				path: '*',
-				element: <Error404Page />,
+				path: '/auth',
+				element: <AuthLayout />,
+				children: [
+					{
+						path: 'login',
+						element: <LoginPage />,
+					},
+					{
+						path: 'registration',
+						element: <RegistrationPage />,
+					},
+				],
 			},
 		],
 	},

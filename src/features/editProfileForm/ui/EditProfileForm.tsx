@@ -70,6 +70,7 @@ export const EditProfileForm = () => {
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const onSubmit = (data: any) => {
+		// eslint-disable-next-line no-console
 		console.log(data);
 	};
 

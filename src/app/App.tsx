@@ -1,7 +1,7 @@
-import { MainLayout } from './layouts/MainLayout/MainLayout';
+import { Outlet } from 'react-router-dom';
 import './styles/App.css';
 import './styles/normalize.css';
 
 export const App = () => {
-	return <MainLayout />;
+	return <Outlet />;
 };

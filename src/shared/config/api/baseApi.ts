@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { RootState } from '@/app/providers/store';
+import { getAccessToken } from '@/shared/helpers/getAccessToken';
 
 import { ApiTags } from './apiTags';
 
@@ -11,8 +10,8 @@ export const baseApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.API_URL,
 		credentials: 'include',
-		prepareHeaders: (headers, { getState }) => {
-			const accessToken = (getState() as RootState).auth.accessToken;
+		prepareHeaders: (headers) => {
+			const accessToken = getAccessToken();
 
 			if (accessToken) {
 				headers.set('Authorization', `Bearer ${accessToken}`);

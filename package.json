@@ -39,6 +39,7 @@
     "@babel/preset-typescript": "^7.23.3",
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
     "@feature-sliced/eslint-config": "^0.1.0-beta.6",
+    "@hookform/resolvers": "^3.9.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
@@ -96,6 +97,7 @@
     "postcss-loader": "^8.1.0",
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.2.5",
+    "react-hook-form": "^7.52.2",
     "react-refresh": "^0.14.0",
     "react-refresh-typescript": "^2.0.9",
     "regenerator-runtime": "^0.14.1",
@@ -112,7 +114,9 @@
     "webpack": "^5.90.1",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "yup": "^1.4.0",
+    "yup-password": "^0.4.0"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

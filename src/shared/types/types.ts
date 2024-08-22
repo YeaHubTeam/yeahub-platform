@@ -14,3 +14,13 @@ export interface Response<T> {
 	total: number;
 	page: number;
 }
+
+export interface GetLoginError {
+	error: {
+		status: number;
+		data: {
+			message: string;
+			statusCode: number;
+		};
+	};
+}

@@ -1,70 +1,25 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
-import { setAccessToken, setProfile } from '../model/slices/authSlice';
 import {
+	Auth,
 	ExtraArgument,
-	GetProfileApiResponse,
-	GetRefreshTokenApiResponse,
-} from '../model/types/authTypes';
+	GetAuthResponse,
+	GetProfileResponse,
+	SignUp,
+} from '../model/types/auth';
 
 export const authApi = baseApi.injectEndpoints({
-	endpoints: (builder) => ({
-		getProfile: builder.query<GetProfileApiResponse, void>({
-			query: () => 'auth/profile',
-			providesTags: [ApiTags.PROFILE_DETAIL],
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+	endpoints: (build) => ({
+		login: build.mutation<GetAuthResponse, Auth>({
+			query: (auth) => ({
+				url: 'auth/login',
+				method: 'POST',
+				body: auth,
+			}),
+			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
-					const data = result.data;
-
-					dispatch(setProfile(data));
-				} catch (error) {
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
-		refreshToken: builder.query<GetRefreshTokenApiResponse, null>({
-			query: () => 'auth/refresh',
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
-				try {
-					const result = await queryFulfilled;
-					const data = result.data;
-
-					const accessToken = data.access_token;
-					const user = data.user;
-
-					dispatch(setAccessToken(accessToken));
-					dispatch(setProfile(user));
-				} catch (error) {
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
-		login: builder.mutation<
-			GetRefreshTokenApiResponse,
-			{ user: { username: string; password: string }; method?: string }
-		>({
-			query: ({ user, method = 'POST' }) => {
-				return {
-					url: 'auth/login',
-					method,
-					body: user,
-				};
-			},
-			async onQueryStarted(_, { dispatch, queryFulfilled, extra }) {
-				try {
-					const result = await queryFulfilled;
-					const data = result.data;
-
-					const accessToken = data.access_token;
-					const user = data.user;
-
-					dispatch(setAccessToken(accessToken));
-					dispatch(setProfile(user));
-
+					localStorage.setItem('accessToken', result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/');
 				} catch (error) {
@@ -73,17 +28,45 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		logout: builder.mutation<void, void>({
-			query: () => {
-				return {
-					url: 'auth/logout',
-					method: 'GET',
-				};
-			},
-			async onQueryStarted(_, { dispatch }) {
+		register: build.mutation<GetAuthResponse, SignUp>({
+			query: (registration) => ({
+				url: 'auth/signUp',
+				method: 'POST',
+				body: registration,
+			}),
+			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
-					dispatch(setAccessToken(null));
-					dispatch(setProfile(null));
+					const result = await queryFulfilled;
+					localStorage.setItem('accessToken', result.data.access_token);
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate('/');
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
+		profile: build.query<GetProfileResponse, void>({
+			query: () => 'auth/profile',
+		}),
+		logout: build.query<void, void>({
+			query: () => 'auth/logout',
+			async onQueryStarted(_, { queryFulfilled }) {
+				try {
+					await queryFulfilled;
+					localStorage.removeItem('accessToken');
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
+		refresh: build.query<GetAuthResponse, void>({
+			query: () => 'auth/refresh',
+			async onQueryStarted(_, { queryFulfilled }) {
+				try {
+					const result = await queryFulfilled;
+					localStorage.setItem('accessToken', result.data.access_token);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -93,5 +76,10 @@ export const authApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useGetProfileQuery, useRefreshTokenQuery, useLoginMutation, useLogoutMutation } =
-	authApi;
+export const {
+	useLoginMutation,
+	useRegisterMutation,
+	useProfileQuery,
+	useLazyLogoutQuery,
+	useLazyRefreshQuery,
+} = authApi;

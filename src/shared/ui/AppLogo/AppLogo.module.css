@@ -15,7 +15,15 @@
   height: 32px;
   color: var(--text-color-primary);
   transition: opacity .7s ease-in-out;
-} 
+}
+
+.white {
+  color: var(--color-white-900);
+}
+
+.black {
+  color: var(--color-black-800);
+}
 
 .closing {
   opacity: 0;

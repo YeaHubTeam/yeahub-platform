@@ -1,11 +1,10 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Loader } from '@/shared/ui/Loader';
 
-import { useRefreshTokenQuery } from '@/entities/auth';
+import { useProfileQuery, useLazyRefreshQuery } from '@/entities/auth';
 
 import { Header } from '@/widgets/Header';
 import { NavSidebarList } from '@/widgets/NavSidebar';
@@ -15,8 +14,14 @@ import styles from './MainLayout.module.css';
 export const MainLayout = () => {
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
-	const { accessToken } = useAppSelector((state) => state.auth);
-	useRefreshTokenQuery(null, { skip: !!accessToken });
+	const { error } = useProfileQuery();
+	const [trigger] = useLazyRefreshQuery();
+
+	useEffect(() => {
+		if (error) {
+			trigger();
+		}
+	}, [error, trigger]);
 
 	return (
 		<section className={`${styles.layout} ${isOpenNavSidebar ? styles['closing'] : ''}`}>

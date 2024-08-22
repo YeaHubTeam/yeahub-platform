@@ -1,10 +1,8 @@
+export type { Auth, SignUp, GetProfileResponse, ExtraArgument } from './model/types/auth';
 export {
-	authApi,
-	useGetProfileQuery,
-	useRefreshTokenQuery,
 	useLoginMutation,
-	useLogoutMutation,
+	useRegisterMutation,
+	useProfileQuery,
+	useLazyLogoutQuery,
+	useLazyRefreshQuery,
 } from './api/authApi';
-export { type GetProfileApiResponse, type AuthState } from './model/types/authTypes';
-export { authSlice, setProfile } from './model/slices/authSlice';
-export { getAuthProfile } from './model/selectors/authSelectors';
