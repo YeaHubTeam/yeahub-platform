@@ -1,8 +1,8 @@
-import { useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton, Text } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
+import { getAccessToken } from '@/shared/helpers/getAccessToken';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -10,14 +10,15 @@ import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
 	const { data: profile } = useProfileQuery();
-	const accessToken = localStorage.getItem('accessToken');
+	const accessToken = getAccessToken();
+	const navigate = useNavigate();
 
-	const handleLoginBtn = useCallback(() => {
-		window.location.replace(process.env.LANDING_URL + 'auth/login');
-	}, []);
-	const handleRegisterBtn = useCallback(() => {
-		window.location.replace(process.env.LANDING_URL + 'auth/registration');
-	}, []);
+	const handleLoginBtn = () => {
+		navigate('/auth/login');
+	};
+	const handleRegisterBtn = () => {
+		navigate('/auth/registration');
+	};
 
 	const isAuth = !!accessToken && !!profile;
 

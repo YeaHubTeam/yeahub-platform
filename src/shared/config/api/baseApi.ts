@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { getAccessToken } from '@/shared/helpers/getAccessToken';
+
 import { ApiTags } from './apiTags';
 
 export const baseApi = createApi({
@@ -9,7 +11,7 @@ export const baseApi = createApi({
 		baseUrl: process.env.API_URL,
 		credentials: 'include',
 		prepareHeaders: (headers) => {
-			const accessToken = localStorage.getItem('accessToken');
+			const accessToken = getAccessToken();
 
 			if (accessToken) {
 				headers.set('Authorization', `Bearer ${accessToken}`);

@@ -13,7 +13,10 @@ export const registerSchema = yup.object().shape({
 		.trim()
 		.min(2, 'Введите корректную фамилию (не менее 2 символов)')
 		.required('Поле обязательно для заполнения'),
-	phone: yup.string().min(2).required('Поле обязательно для заполнения'),
+	phone: yup
+		.string()
+		.min(2, 'Введите корректный номер телефона (не менее 2 символов)')
+		.required('Поле обязательно для заполнения'),
 	email: yup.string().email('Введите корректный email').required('Поле обязательно для заполнения'),
 	password: yup
 		.string()
