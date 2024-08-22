@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import type { ProfileEducation } from '@/entities/profileEducation';
+import type { ProfileEducation } from '@/entities/education';
 
 import styles from './EducationBlockItem.module.css';
 

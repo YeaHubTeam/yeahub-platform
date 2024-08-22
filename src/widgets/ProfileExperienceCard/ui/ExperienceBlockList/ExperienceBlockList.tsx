@@ -1,4 +1,4 @@
-import { EXPERIENCE_LIST } from '@/entities/profileExperience';
+import { EXPERIENCE_LIST } from '@/entities/experience';
 
 import { ExperienceBlockItem } from '../ExperienceBlockItem/ExperienceBlockItem';
 

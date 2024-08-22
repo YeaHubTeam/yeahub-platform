@@ -1,4 +1,4 @@
-import { ProfileSkill, SKILL_ITEMS } from '@/entities/profileSkill';
+import { ProfileSkill, SKILL_ITEMS } from '@/entities/skill';
 
 import { SkillsBlockItem } from '../SkillsBlockItem/SkillsBlockItem';
 

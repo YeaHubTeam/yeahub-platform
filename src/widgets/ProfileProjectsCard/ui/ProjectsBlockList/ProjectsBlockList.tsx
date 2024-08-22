@@ -1,4 +1,4 @@
-import { PROJECT_LIST } from '@/entities/profileProject';
+import { PROJECT_LIST } from '@/entities/project';
 
 import { ProjectsBlockItem } from '../ProjectsBlockItem/ProjectsBlockItem';
 
