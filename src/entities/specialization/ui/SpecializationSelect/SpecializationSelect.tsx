@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { useGetSpecializationsListQuery } from '@/entities/specialization';
+import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 
 import styles from './SpecializationSelect.module.css';
 
@@ -17,8 +17,8 @@ type SpecializationSelectProps = Omit<
 	onChange: (value: number) => void;
 };
 
-const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+export const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) => {
+	const { t } = useI18nHelpers(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({});
 
 	const handleChange = (newValue: string | undefined) => {
@@ -48,5 +48,3 @@ const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) =>
 		/>
 	);
 };
-
-export default SpecializationSelect;

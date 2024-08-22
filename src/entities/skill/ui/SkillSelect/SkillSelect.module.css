@@ -11,6 +11,10 @@
   max-width: 408px;
 }
 
+.select select {
+  height: 46px;
+}
+
 .selection {
   display: flex;
   flex-wrap: wrap;

@@ -3,8 +3,10 @@ import { Button, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
+
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
-import SpecializationSelect from '../SpecializationSelect/SpecializationSelect';
 
 import style from './PersonalInformationForm.module.css';
 
