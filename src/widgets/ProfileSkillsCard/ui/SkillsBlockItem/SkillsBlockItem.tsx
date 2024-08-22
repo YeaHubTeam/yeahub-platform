@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
-import type { ProfileSkill } from '@/entities/profileSkill';
+import type { ProfileSkill } from '@/entities/skill';
 
 import styles from './SkillsBlockItem.module.css';
 
