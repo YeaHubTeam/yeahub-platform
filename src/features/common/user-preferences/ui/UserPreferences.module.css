@@ -24,6 +24,18 @@
   cursor: pointer;
 }
 
+.settings {
+  padding: 12px;
+}
+
+.button {
+  justify-content: start;
+  height: 40px;
+}
+
+.btn-active > .button {
+  background-color: var(--palette-ui-black-25);
+}
 
 @media (width <= 480px) {
   .auth-btns {

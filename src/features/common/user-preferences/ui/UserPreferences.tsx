@@ -1,54 +1,81 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, Icon, IconButton, Text } from 'yeahub-ui-kit';
+import cn from 'classnames';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_ACCESS_TOKEN_KEY, useProfileQuery } from '@/entities/auth';
+import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
-	const { data: profile } = useProfileQuery();
-	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
-	const navigate = useNavigate();
+	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
-	const handleLoginBtn = () => {
-		navigate('/auth/login');
-	};
-	const handleRegisterBtn = () => {
-		navigate('/auth/registration');
+	const [isOpenSettingsPopover, setIsOpenSettingsPopover] = useState<boolean>(false);
+
+	const [trigger] = useLazyLogoutQuery();
+
+	const handleLogoutUser = () => {
+		trigger();
 	};
 
-	const isAuth = !!accessToken && !!profile;
+	const handleOpenSettingsPopover = () => setIsOpenSettingsPopover((prev) => !prev);
+
+	const SettingsPopover = () => {
+		return (
+			<div key="settingpopemvcdf" className={styles.settings}>
+				<NavLink
+					to="/profile"
+					className={({ isActive }) => cn({ [styles['btn-active']]: isActive })}
+				>
+					<Button
+						className={styles.button}
+						theme="tertiary"
+						preffix={<Icon key="userPreferenceUserIcon" icon="user" size={24} />}
+					>
+						Мой профиль
+					</Button>
+				</NavLink>
+				<Button
+					className={styles.button}
+					theme="tertiary"
+					preffix={<Icon key="userPreferenceSignOutIcon" icon="signOut" size={24} />}
+					onClick={handleLogoutUser}
+				>
+					Выйти
+				</Button>
+			</div>
+		);
+	};
 
 	return (
-		<>
-			{isAuth ? (
-				<div className={styles.preferences}>
-					<div>
-						<IconButton
-							aria-label="go to preferences"
-							disabled
-							form="square"
-							icon={<Icon icon="gearSix" size={20} />}
-							size="small"
-							theme="tertiary"
-						/>
-					</div>
+		<div className={styles.preferences}>
+			<div>
+				<Popover
+					isOpen={isOpenSettingsPopover}
+					body={<SettingsPopover />}
+					onClickOutside={handleOpenSettingsPopover}
+				>
+					<IconButton
+						aria-label="go to preferences"
+						form="square"
+						icon={<Icon key="userPreferenceGearSixIcon" icon="gearSix" size={20} />}
+						size="small"
+						theme="tertiary"
+						onClick={handleOpenSettingsPopover}
+						isActive={isOpenSettingsPopover}
+					/>
+				</Popover>
+			</div>
+			{isSuccessGetProfile && (
+				<>
 					<Text text={profile.firstName} />
-					<NavLink to="/auth/login" className={styles.avatar}>
+					<div className={styles.avatar}>
 						<img className={styles.img} src={profile.avatarUrl || Avatar} alt="avatar" />
-					</NavLink>
-				</div>
-			) : (
-				<div className={styles['auth-btns']}>
-					<Button theme="link" onClick={handleLoginBtn} textClassName={styles['auth-btn']}>
-						Вход
-					</Button>
-					<Button onClick={handleRegisterBtn}>Регистрация</Button>
-				</div>
+					</div>
+				</>
 			)}
-		</>
+		</div>
 	);
 };

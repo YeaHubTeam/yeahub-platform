@@ -34,11 +34,9 @@ const InterviewPage = () => {
 	return (
 		<div className={styles.container}>
 			<Block>
-				<div className={styles.questions}>
-					<InterviewPreparationHeader
-						title={t('preparation.title')}
-						linkTitle={t('preparation.linkText')}
-					/>
+				<div className={styles.preparation}>
+					<InterviewPreparationHeader title={t('preparation.title')} />
+					<LinkWithArrowRight link="quiz" linkTitle={t('preparation.linkText')} />
 					<div className={styles['preparation-wrapper']}>
 						<QuestionProgressBarBlock />
 						<QuestionSlider />
@@ -46,7 +44,7 @@ const InterviewPage = () => {
 				</div>
 			</Block>
 			<Block>
-				<div className={styles.questions}>
+				<div className={styles.statistics}>
 					<InterviewQuestionHeader title={t('stats.title')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
@@ -59,13 +57,15 @@ const InterviewPage = () => {
 						title={t('questions.title')}
 						linkTitle={t('questions.studied', 'Изучить')}
 					/>
+					<LinkWithArrowRight link="questions" linkTitle={t('questions.studied')} />
 					<InterviewQuestionsList />
 				</div>
 			</Block>
 			<Block>
-				<div className={styles.questions}>
-					<InterviewHistoryHeader
-						title={t('history_preparation.title')}
+				<div className={styles.history}>
+					<InterviewHistoryHeader title={t('history_preparation.title')} />
+					<LinkWithArrowRight
+						link="/interviewHistory"
 						linkTitle={t('history_preparation.linkText')}
 					/>
 					<InterviewHistoryList />
