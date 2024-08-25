@@ -52,11 +52,12 @@ const InterviewPage = () => {
 				</div>
 			</Block>
 			<Block>
-				<div className={styles.list}>
+				<div className={styles.questions}>
 					<InterviewQuestionHeader
 						title={t('questions.title')}
 						linkTitle={t('questions.studied', 'Изучить')}
 					/>
+					<LinkWithArrowRight link="questions" linkTitle={t('questions.studied')} />
 					<InterviewQuestionsList />
 				</div>
 			</Block>
