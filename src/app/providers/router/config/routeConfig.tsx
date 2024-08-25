@@ -19,6 +19,9 @@ import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
+import { AuthRoute } from '../ui/AuthRoute';
+import { UnAuthRoute } from '../ui/UnAuthRoute';
+
 export const router = createBrowserRouter([
 	{
 		path: '/',
@@ -26,7 +29,11 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <MainLayout />,
+				element: (
+					<AuthRoute>
+						<MainLayout />
+					</AuthRoute>
+				),
 				children: [
 					{
 						index: true,
@@ -130,7 +137,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/auth',
-				element: <AuthLayout />,
+				element: (
+					<UnAuthRoute>
+						<AuthLayout />
+					</UnAuthRoute>
+				),
 				children: [
 					{
 						path: 'login',
