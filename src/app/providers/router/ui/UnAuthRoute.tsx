@@ -8,6 +8,6 @@ type Props = {
 export const UnAuthRoute = ({ children }: Props) => {
 	const isAuth = localStorage.getItem('accessToken');
 	const replaceUrl = '/';
-	// return children;
+
 	return !isAuth ? <>{children}</> : <Navigate to={replaceUrl} />;
 };
