@@ -8,3 +8,20 @@
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
+
+@media (width <= 768px) {
+  .header {
+    position: relative;
+    flex-direction: column;
+    align-items: start;
+		
+  }
+
+}
+
+@media (width <= 480px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+  }
+}

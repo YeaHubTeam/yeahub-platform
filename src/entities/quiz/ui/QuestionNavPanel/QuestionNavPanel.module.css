@@ -15,10 +15,8 @@
 
 @media (width <= 1024px) {
   .panel {
-    position: absolute;
     bottom: 67px;
     padding-bottom: 16px;
     width: 100%;
-    border-bottom: 1px solid var(--border-color);
   }
 }
