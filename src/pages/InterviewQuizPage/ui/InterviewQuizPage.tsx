@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
@@ -19,9 +18,6 @@ import {
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
-
-const { removeStoredItem: removeStartDateQuiz } = manageLocalStorage('startDateQuiz');
-const { removeStoredItem: removeActiveQuiz } = manageLocalStorage('activeQuiz');
 
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
@@ -63,8 +59,6 @@ const InterviewQuizPage = () => {
 			};
 
 			saveResult(quizToSave);
-			removeActiveQuiz();
-			removeStartDateQuiz();
 		}
 	};
 

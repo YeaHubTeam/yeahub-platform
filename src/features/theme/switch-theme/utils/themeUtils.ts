@@ -1,9 +1,7 @@
-import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, setToLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
 
 import { LS_THEME_KEY } from '../model/constants/themeConstants';
 import { Themes } from '../model/types/themeProvider';
-
-const { setStoredItem, getStoredItem, removeStoredItem } = manageLocalStorage(LS_THEME_KEY);
 
 /**
  * Determines the user's system preferred theme.
@@ -18,7 +16,7 @@ export const getSystemTheme = () =>
  * @returns {'light' | 'dark' | null} - The stored color scheme or null if it is not stored.
  */
 export function getSavedTheme(): Themes | null {
-	return getStoredItem() as Themes | null;
+	return getFromLS(LS_THEME_KEY) as Themes | null;
 }
 
 /**
@@ -30,7 +28,7 @@ export function getSavedTheme(): Themes | null {
  */
 export const applyTheme = (theme: Themes, persist: boolean = false): void => {
 	document.documentElement.setAttribute('theme', theme);
-	persist && setStoredItem(theme);
+	persist && setToLS(LS_THEME_KEY, theme);
 };
 
 /**
@@ -38,5 +36,5 @@ export const applyTheme = (theme: Themes, persist: boolean = false): void => {
  * @returns {void}
  */
 export const removeSavedTheme = () => {
-	removeStoredItem();
+	removeFromLS(LS_THEME_KEY);
 };

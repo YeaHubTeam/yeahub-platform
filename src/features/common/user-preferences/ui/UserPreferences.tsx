@@ -2,17 +2,15 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton, Text } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
-import { manageLocalStorage } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
-import { useProfileQuery } from '@/entities/auth';
+import { LS_ACCESS_TOKEN_KEY, useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferences.module.css';
 
-const { getStoredItem } = manageLocalStorage('accessToken');
-
 export const UserPreferences = () => {
 	const { data: profile } = useProfileQuery();
-	const accessToken = getStoredItem();
+	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const navigate = useNavigate();
 
 	const handleLoginBtn = () => {

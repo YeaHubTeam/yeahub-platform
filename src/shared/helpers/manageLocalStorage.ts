@@ -1,31 +1,12 @@
-export const manageLocalStorage = (key: string) => {
-	const setStoredItem = (value: unknown) => {
-		try {
-			localStorage.setItem(key, JSON.stringify(value));
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.log(error);
-		}
-	};
+export const setToLS = (key: string, value: unknown) => {
+	localStorage.setItem(key, JSON.stringify(value));
+};
 
-	const getStoredItem = () => {
-		try {
-			const item = localStorage.getItem(key);
-			return item ? JSON.parse(item) : null;
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.log(error);
-		}
-	};
+export const getFromLS = (key: string) => {
+	const item = localStorage.getItem(key);
+	return item ? JSON.parse(item) : null;
+};
 
-	const removeStoredItem = () => {
-		try {
-			localStorage.removeItem(key);
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.log(error);
-		}
-	};
-
-	return { setStoredItem, getStoredItem, removeStoredItem };
+export const removeFromLS = (key: string) => {
+	localStorage.removeItem(key);
 };
