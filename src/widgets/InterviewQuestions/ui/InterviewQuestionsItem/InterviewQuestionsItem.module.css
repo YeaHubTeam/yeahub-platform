@@ -41,3 +41,15 @@
   background-color: var(--text-color-link-active);
   transform: translateY(-50%);
 }
+
+@media(width <= 480px) {
+  .link {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .params {
+    justify-content: center;
+  }
+}

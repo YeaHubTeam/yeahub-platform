@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { getAccessToken } from '@/shared/helpers/getAccessToken';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
 import { ApiTags } from './apiTags';
 
@@ -11,7 +11,10 @@ export const baseApi = createApi({
 		baseUrl: process.env.API_URL,
 		credentials: 'include',
 		prepareHeaders: (headers) => {
-			const accessToken = getAccessToken();
+			/*
+				TODO: надо 'accessToken' заменить на константу LS_ACCESS_TOKEN_KEY и пофиксить циркулярку
+			*/
+			const accessToken = getFromLS('accessToken');
 
 			if (accessToken) {
 				headers.set('Authorization', `Bearer ${accessToken}`);
