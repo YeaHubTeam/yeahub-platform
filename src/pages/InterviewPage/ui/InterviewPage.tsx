@@ -1,8 +1,11 @@
 import { i18Namespace } from '@/shared/config/i18n';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
+
+import { LS_ACTIVE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
@@ -31,12 +34,17 @@ const InterviewPage = () => {
 		},
 	];
 
+	const isActiveQuizExist = !!getFromLS(LS_ACTIVE_QUIZ_KEY);
+
 	return (
 		<div className={styles.container}>
 			<Block>
 				<div className={styles.preparation}>
 					<InterviewPreparationHeader title={t('preparation.title')} />
-					<LinkWithArrowRight link="quiz" linkTitle={t('preparation.linkText')} />
+					<LinkWithArrowRight
+						link={isActiveQuizExist ? 'quiz/interviewQuiz' : 'quiz'}
+						linkTitle={t('preparation.linkText')}
+					/>
 					<div className={styles['preparation-wrapper']}>
 						<QuestionProgressBarBlock />
 						<QuestionSlider />
