@@ -1,5 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
+
+import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../constants/quizConstants';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
 const initialState: ActiveQuizState = {
@@ -13,6 +16,7 @@ export const activeQuizSlice = createSlice({
 	reducers: {
 		setStartDate: (state, action: PayloadAction<string>) => {
 			state.startDate = action.payload;
+			setToLS(LS_START_DATE_QUIZ_KEY, action.payload);
 		},
 		setActiveQuizQuestions: (state, action: PayloadAction<Answers[]>) => {
 			state.questions = action.payload;
@@ -24,6 +28,7 @@ export const activeQuizSlice = createSlice({
 				}
 				return question;
 			});
+			setToLS(LS_ACTIVE_QUIZ_KEY, state.questions);
 		},
 	},
 });

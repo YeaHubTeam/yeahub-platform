@@ -1,8 +1,8 @@
 import { Button } from 'yeahub-ui-kit';
 
-import { getAccessToken } from '@/shared/helpers/getAccessToken';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
-import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
+import { LS_ACCESS_TOKEN_KEY, useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
 import { LoginCreateForm } from '@/widgets/authentication/login';
 
@@ -10,8 +10,8 @@ import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
 	const { data: profile } = useProfileQuery();
-	const accessToken = getAccessToken();
 	const [trigger] = useLazyLogoutQuery();
+	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 
 	const handleLogoutUser = () => {
 		trigger();

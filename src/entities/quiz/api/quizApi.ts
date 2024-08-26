@@ -1,7 +1,9 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import { getFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Response } from '@/shared/types/types';
 
+import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
 import { setActiveQuizQuestions, setStartDate } from '../model/slices/activeQuizSlice';
 import {
 	ActiveQuizWithDate,
@@ -44,8 +46,12 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(setStartDate(new Date().toISOString()));
-					dispatch(setActiveQuizQuestions(getActiveQuizQuestions(result.data?.data[0])));
+					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
+					const localActiveQuiz = getFromLS(LS_ACTIVE_QUIZ_KEY);
+					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
+					dispatch(
+						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
+					);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -74,6 +80,8 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(arg, { queryFulfilled, extra }) {
 				try {
 					await queryFulfilled;
+					removeFromLS(LS_ACTIVE_QUIZ_KEY);
+					removeFromLS(LS_START_DATE_QUIZ_KEY);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(`/interview/quiz/${arg.id}`);
 				} catch (error) {

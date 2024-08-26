@@ -36,7 +36,7 @@ const InterviewPage = () => {
 			<Block>
 				<div className={styles.preparation}>
 					<InterviewPreparationHeader title={t('preparation.title')} />
-					<LinkWithArrowRight link="interview" linkTitle={t('preparation.linkText')} />
+					<LinkWithArrowRight link="quiz" linkTitle={t('preparation.linkText')} />
 					<div className={styles['preparation-wrapper']}>
 						<QuestionProgressBarBlock />
 						<QuestionSlider />
@@ -64,7 +64,10 @@ const InterviewPage = () => {
 			<Block>
 				<div className={styles.history}>
 					<InterviewHistoryHeader title={t('history_preparation.title')} />
-					<LinkWithArrowRight link="quiz" linkTitle={t('history_preparation.linkText')} />
+					<LinkWithArrowRight
+						link="/interviewHistory"
+						linkTitle={t('history_preparation.linkText')}
+					/>
 					<InterviewHistoryList />
 				</div>
 			</Block>

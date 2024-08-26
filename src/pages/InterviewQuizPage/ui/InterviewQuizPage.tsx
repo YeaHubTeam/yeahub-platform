@@ -29,7 +29,7 @@ const InterviewQuizPage = () => {
 			limit: 1,
 		},
 	});
-	const [saveResult] = useSaveQuizResultMutation();
+	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
 	const activeQuizStartDate = useSelector(getQuizStartDate);
@@ -96,7 +96,7 @@ const InterviewQuizPage = () => {
 					/>
 					<Button
 						className={styles['end-button']}
-						disabled={currentCount !== totalCount}
+						disabled={currentCount !== totalCount || isLoadingAfterSave}
 						onClick={handleSubmitQuiz}
 					>
 						{t('completeQuizButton')}

@@ -1,5 +1,7 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
+import { LS_ACCESS_TOKEN_KEY } from '../model/constants/authConstants';
 import {
 	Auth,
 	ExtraArgument,
@@ -19,7 +21,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/');
 				} catch (error) {
@@ -37,7 +39,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/');
 				} catch (error) {
@@ -54,8 +56,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					await queryFulfilled;
-					localStorage.removeItem('accessToken');
-
+					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate('/auth/login');
 				} catch (error) {
@@ -69,7 +70,7 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					localStorage.setItem('accessToken', result.data.access_token);
+					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
