@@ -10,6 +10,12 @@
   gap: 40px;
 }
 
+.popup {
+  position: relative;
+  top: 30px;
+  left: 15px;
+}
+
 .button {
   justify-content: flex-start;
 }

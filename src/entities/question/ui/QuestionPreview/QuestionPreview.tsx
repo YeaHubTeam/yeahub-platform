@@ -16,14 +16,14 @@ type QuestionProps = {
 export const QuestionPreview = ({ question }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
 
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
 	const togglePopup = () => {
-		setIsOpen((prev) => !prev);
+		setIsOpenQuestionActions((prev) => !prev);
 	};
 
 	const closePopup = () => {
-		setIsOpen(false);
+		setIsOpenQuestionActions(false);
 	};
 
 	return (
@@ -36,20 +36,22 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 				<div>
 					<Popover
 						body={
-							<div className={styles.popup}>
-								<Button
-									className={styles.button}
-									theme="tertiary"
-									preffix={<Icon icon="gearSix" size={20} />}
-								>
-									<NavLink className={styles.link} to={`/interview/questions/${id}`}>
+							<div>
+								<NavLink className={styles.link} to={`/interview/questions/${id}`}>
+									<Button
+										className={styles.button}
+										theme="tertiary"
+										preffix={<Icon icon="gearSix" size={20} />}
+										size="small"
+									>
 										Подробнее
-									</NavLink>
-								</Button>
+									</Button>
+								</NavLink>
 								<Button
 									className={styles.button}
 									theme="tertiary"
 									preffix={<Icon icon="student" size={20} />}
+									size="small"
 								>
 									Изучать
 								</Button>
@@ -57,14 +59,16 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 									className={styles.button}
 									theme="tertiary"
 									preffix={<Icon icon="thumbsUp" size={20} />}
+									size="small"
 								>
 									Уже знаю
 								</Button>
 							</div>
 						}
-						isOpen={isOpen}
+						className={styles.popup}
+						isOpen={isOpenQuestionActions}
 						onClickOutside={closePopup}
-						placement="left"
+						placement="left-start"
 					>
 						<IconButton
 							type="button"
@@ -73,7 +77,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 							icon={<Icon icon="dotsThreeVertical" />}
 							theme="link"
 							onClick={togglePopup}
-							aria-expanded={isOpen}
+							aria-expanded={isOpenQuestionActions}
 						/>
 					</Popover>
 				</div>

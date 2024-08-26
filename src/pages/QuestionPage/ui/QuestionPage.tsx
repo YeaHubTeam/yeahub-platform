@@ -62,7 +62,11 @@ export const QuestionPage = () => {
 			</div>
 			<div className={styles.additional}>
 				<ProgressBlock />
-				<AdditionalInfo rate={question?.rate} questionSkills={question?.questionSkills} />
+				<AdditionalInfo
+					rate={question?.rate}
+					complexity={question?.complexity}
+					questionSkills={question?.questionSkills}
+				/>
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
