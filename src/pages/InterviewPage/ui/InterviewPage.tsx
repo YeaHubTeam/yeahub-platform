@@ -5,7 +5,7 @@ import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { LS_ACTIVE_QUIZ_KEY } from '@/entities/quiz';
+import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
@@ -34,7 +34,7 @@ const InterviewPage = () => {
 		},
 	];
 
-	const isActiveQuizExist = !!getFromLS(LS_ACTIVE_QUIZ_KEY);
+	const isActiveQuizExist = !!getFromLS(LS_START_DATE_QUIZ_KEY);
 
 	return (
 		<div className={styles.container}>
