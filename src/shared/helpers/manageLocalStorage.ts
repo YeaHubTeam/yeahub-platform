@@ -4,8 +4,12 @@ export const setToLS = (key: string, value: unknown) => {
 };
 
 export const getFromLS = (key: string) => {
+	return localStorage.getItem(key);
+};
+
+export const getJSONFromLS = (key: string) => {
 	const item = localStorage.getItem(key);
-	return item ? JSON.parse(JSON.stringify(item)) : null;
+	return item ? JSON.parse(item) : null;
 };
 
 export const removeFromLS = (key: string) => {

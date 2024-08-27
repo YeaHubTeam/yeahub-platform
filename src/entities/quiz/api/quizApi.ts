@@ -1,6 +1,6 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { getFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Response } from '@/shared/types/types';
 
 import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
@@ -47,7 +47,7 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					const result = await queryFulfilled;
 					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
-					const localActiveQuiz = getFromLS(LS_ACTIVE_QUIZ_KEY);
+					const localActiveQuiz = getJSONFromLS(LS_ACTIVE_QUIZ_KEY);
 					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
 					dispatch(
 						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
