@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
-import type { ProfileSkill } from '@/entities/profileSkill';
+import { Skill } from '@/entities/skill';
 
 import styles from './SkillsBlockItem.module.css';
 
 interface Props {
-	skill: ProfileSkill;
+	skill: Skill;
 }
 
 export const SkillsBlockItem: FC<Props> = ({ skill }) => {
-	const { name, iconName } = skill;
+	const { title } = skill;
 
 	return (
 		<div className={styles['skills-item']}>
-			<Icon icon={iconName} height={20} width={20} className={styles['skills-icon']} />
-			<span className={styles['skills-name']}>{name}</span>
+			<Icon icon={'boundingBox'} height={20} width={20} className={styles['skills-icon']} />
+			<span className={styles['skills-name']}>{title}</span>
 		</div>
 	);
 };

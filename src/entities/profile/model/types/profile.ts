@@ -1,5 +1,3 @@
-// import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
-
 interface Skill {
 	id: number;
 	title: string;
@@ -7,6 +5,29 @@ interface Skill {
 	imageSrc: string;
 	createdAt: string;
 	updatedAt: string;
+}
+
+export interface socialNetwork {
+	code: string;
+	title: string;
+}
+
+export interface User {
+	address: string;
+	avatarUrl: string;
+	birthday: string;
+	city: string;
+	country: string;
+	createdAt: string;
+	email: string;
+	firstName: string;
+	id: string;
+	lastName: string;
+	passwordHash: string;
+	phone: string;
+	refreshToken: string;
+	updatedAt: string;
+	userRoles: string[];
 }
 
 export interface Profile {
@@ -19,59 +40,6 @@ export interface Profile {
 	links: string[];
 	image_src: string;
 	profileSkills: Skill[];
+	socialNetwork: socialNetwork[];
+	user: User;
 }
-
-// export interface ProfileInfo {
-// 	id: string;
-// 	first_name: string;
-// 	last_name: string;
-// 	status: string;
-// 	age: number;
-// 	position: string;
-// 	schedule: string;
-// 	experience: number;
-// 	location: string;
-// 	phone: string;
-// 	email: string;
-// 	img: string;
-// }
-
-// export interface ProfileLink {
-// 	id: string;
-// 	name: string;
-// }
-
-// export interface ProfileSkill {
-// 	id: string;
-// 	name: string;
-// 	iconName: IconsName;
-// }
-
-// export interface ProfileProject {
-// 	id: string;
-// 	name: string;
-// 	imgUrl: string;
-// }
-
-// export interface ProfileExperience {
-// 	id: string;
-// 	name: string;
-// 	imgUrl: string;
-// 	company: string;
-// 	schedule: string;
-// 	seniority: string;
-// 	location: string;
-// }
-
-// export interface ProfileEducation {
-// 	id: number;
-// 	university: string;
-// 	name: string;
-// 	rank: string;
-// 	time: string;
-// }
-
-// export interface ProfileAchievment {
-// 	id: number;
-// 	img: string;
-// }

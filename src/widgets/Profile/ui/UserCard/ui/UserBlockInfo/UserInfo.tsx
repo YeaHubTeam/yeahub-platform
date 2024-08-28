@@ -2,21 +2,32 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
-import { USER_INFO, USER_LINK } from '@/entities/profileUser';
+import { Profile, USER_LINK } from '@/entities/profile';
 
 import styles from './UserInfo.module.css';
 
-export const UserInfo = () => {
+interface props {
+	profile: Profile;
+}
+
+export const UserInfo = ({ profile }: props) => {
 	const navigate = useNavigate();
 
-	const { first_name, last_name, status, age, position, experience, location, phone, email } =
-		USER_INFO;
+	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
+
+	function calculateAge(birthdateStr: string | undefined): string {
+		if (!birthdateStr) return '-';
+		const birthdate = new Date(birthdateStr);
+		const now = new Date();
+
+		return String(now.getFullYear() - birthdate.getFullYear());
+	}
 
 	return (
 		<div className={styles['card-right']}>
 			<div className={styles['card-header']}>
-				<h2 className={styles['card-name']}>{`${first_name} ${last_name}`}</h2>
-				<div className={styles['card-status']}>{status}</div>
+				<h2 className={styles['card-name']}>{`${firstName} ${lastName}`}</h2>
+				<div className={styles['card-status']}>{'Кандидат'}</div>
 				<Button
 					theme="link"
 					tagName="button"
@@ -27,27 +38,31 @@ export const UserInfo = () => {
 				</Button>
 			</div>
 			<ul className={styles['card-info']}>
-				<li>{`${age} лет`}</li>
-				<li>{position}</li>
-				<li>{`Опыт: ${experience} лет`}</li>
-				<li>{location}</li>
+				<li>{`${calculateAge(birthday)} лет`}</li>
+				<li>{'UX/UI дизайнер в Яндекс'}</li>
+				<li>{`Опыт: ${23} лет`}</li>
+				<li>
+					{country}, {city}
+				</li>
 			</ul>
 			<div className={styles['card-contacts']}>
 				<h4 className={styles['card-phone']}>{phone}</h4>
 				<h4 className={styles['card-mail']}>{email}</h4>
-				<div className={styles['card-link']}>
-					{USER_LINK.map((link) => (
-						<IconButton
-							key={link.id}
-							type="submit"
-							aria-label="primary large"
-							form="round"
-							icon={<Icon icon={link.name as IconsName} size={20} />}
-							size="small"
-							theme="primary"
-						/>
-					))}
-				</div>
+				{USER_LINK && (
+					<div className={styles['card-link']}>
+						{USER_LINK.map((link) => (
+							<IconButton
+								key={link.code}
+								type="submit"
+								aria-label="primary large"
+								form="round"
+								icon={<Icon icon={link.title as IconsName} size={20} />}
+								size="small"
+								theme="primary"
+							/>
+						))}
+					</div>
+				)}
 			</div>
 		</div>
 	);

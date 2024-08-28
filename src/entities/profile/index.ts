@@ -1,2 +1,3 @@
 export { useGetProfileByIdQuery } from './api/profileApi';
-export type { Profile } from './model/types/profile';
+export { USER_LINK } from './model/data/userLinks';
+export type { Profile, User, socialNetwork } from './model/types/profile';

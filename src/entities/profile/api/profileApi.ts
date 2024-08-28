@@ -9,7 +9,7 @@ const profileApi = baseApi.injectEndpoints({
 			query: (profileId) => ({
 				url: `/profiles/${profileId}`,
 			}),
-			providesTags: [ApiTags.PROFILE],
+			providesTags: [ApiTags.PROFILE_DETAIL],
 		}),
 	}),
 });
