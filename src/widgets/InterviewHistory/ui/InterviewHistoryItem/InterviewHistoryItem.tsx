@@ -11,10 +11,9 @@ import styles from './InterviewHistoryItem.module.css';
 
 interface Props {
 	interview: QuizHistoryResponse;
-	interviewNumber: number;
 }
 
-export const InterviewHistoryItem: FC<Props> = ({ interview, interviewNumber }) => {
+export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
 	const { id, successCount, fullCount } = interview;
 	const incorrectAnswersCount = fullCount - successCount;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
@@ -25,7 +24,7 @@ export const InterviewHistoryItem: FC<Props> = ({ interview, interviewNumber }) 
 			<Link to={`/interview/${id}`} className={styles.link}>
 				<time>{formattedDate}</time>
 				<div className={styles.info}>
-					<h4 className={styles.title}>{t('title', null, { number: interviewNumber })}</h4>
+					<h4 className={styles.title}>{t('title', null, { number: interview.quizNumber })}</h4>
 					<ul className={styles.params}>
 						<InterviewResults
 							label={t('resultTitle')}

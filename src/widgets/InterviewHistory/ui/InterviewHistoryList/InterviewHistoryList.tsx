@@ -31,12 +31,8 @@ export const InterviewHistoryList = () => {
 	return (
 		<ul className={styles.list}>
 			{!isEmptyData ? (
-				data?.data.map((interview, idx) => (
-					<InterviewHistoryItem
-						key={interview.id}
-						interviewNumber={idx + 1}
-						interview={interview}
-					/>
+				data?.data.map((interview) => (
+					<InterviewHistoryItem key={interview.id} interview={interview} />
 				))
 			) : (
 				<p>Данных нет</p>
