@@ -56,8 +56,8 @@ export const PersonalInformationForm = () => {
 								render={({ field: { onChange, value } }) => (
 									<InputMask
 										className={style.phone}
-										mask={'+7 - (999) - 999 - 9999'}
-										placeholder={'+7 - (987) - 654 - 3210'}
+										mask={'+7-(999)-999-99-99'}
+										placeholder={'+7-(XXX)-XXX-XX-XX'}
 										onChange={onChange}
 										value={value}
 									/>
