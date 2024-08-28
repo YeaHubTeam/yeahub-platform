@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { RootState } from '@/app/providers/store';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
 import { ApiTags } from './apiTags';
 
@@ -11,8 +10,11 @@ export const baseApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.API_URL,
 		credentials: 'include',
-		prepareHeaders: (headers, { getState }) => {
-			const accessToken = (getState() as RootState).auth.accessToken;
+		prepareHeaders: (headers) => {
+			/*
+				TODO: надо 'accessToken' заменить на константу LS_ACCESS_TOKEN_KEY и пофиксить циркулярку
+			*/
+			const accessToken = getFromLS('accessToken');
 
 			if (accessToken) {
 				headers.set('Authorization', `Bearer ${accessToken}`);

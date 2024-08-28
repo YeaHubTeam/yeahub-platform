@@ -60,7 +60,7 @@
   }
 
   .response-buttons {
-    display: none;
+    justify-content: center;
   }
 }
 

@@ -21,7 +21,7 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
 					<Button
-						textClassName={styles['action-btn']}
+						className={styles['action-btn']}
 						theme="tertiary"
 						size="small"
 						preffix={<Icon key={icon} icon={icon} size={24} />}

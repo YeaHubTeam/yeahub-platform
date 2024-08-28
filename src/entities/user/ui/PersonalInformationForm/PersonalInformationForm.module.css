@@ -30,7 +30,7 @@
   max-width: 320px;
 }
 
-.label span {
+.label > span {
   display: inline-block;
   margin-bottom: 8px;
   color: var(--color-black-700);
@@ -49,5 +49,11 @@
   font-size: var(--font-size-m);
 }
 
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 36px;
+} 
 
 

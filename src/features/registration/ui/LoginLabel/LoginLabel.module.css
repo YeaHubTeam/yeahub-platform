@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:70px;
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 408px;
+  border-radius: 20px;
+  background-color: var(--color-label-bg);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.btn {
+  cursor: pointer;
+}
+
+@media (width <= 480px) {
+  .wrapper {
+    margin-bottom: 20px;
+  }
+}

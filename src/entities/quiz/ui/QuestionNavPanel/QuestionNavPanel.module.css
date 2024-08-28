@@ -13,15 +13,10 @@
   width: 28px;
 }
 
-@media (width >= 1024px) {
-  .action-btns {
-    display: none;
-  }
-}
-
 @media (width <= 1024px) {
   .panel {
+    bottom: 67px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
+    width: 100%;
   }
 }

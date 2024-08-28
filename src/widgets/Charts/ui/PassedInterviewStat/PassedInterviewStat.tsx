@@ -9,16 +9,9 @@ import styles from './PassedInterviewStat.module.css';
 interface Props {
 	totalAttempt: number;
 	attemptData: AttemptData[];
-	width?: string;
-	height?: string;
 }
 
-export const PassedInterviewStat = ({
-	totalAttempt,
-	attemptData,
-	width = '307px',
-	height = '307px',
-}: Props) => {
+export const PassedInterviewStat = ({ totalAttempt, attemptData }: Props) => {
 	const pieOption = options.pie;
 	pieOption.series[0].label.formatter = `{a}\n ${totalAttempt}`;
 	pieOption.series[0].data = attemptData;
@@ -29,11 +22,10 @@ export const PassedInterviewStat = ({
 				option={pieOption}
 				opts={{ locale: 'RU' }}
 				style={{
-					width,
-					height,
 					backgroundColor: '#FDF4FF',
 					borderRadius: '50%',
-					flexShrink: 0,
+					width: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
+					height: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
 				}}
 			/>
 

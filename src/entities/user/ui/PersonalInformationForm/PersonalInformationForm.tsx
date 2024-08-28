@@ -1,12 +1,25 @@
-import { Input, Label } from 'yeahub-ui-kit';
+import { Controller, useFormContext } from 'react-hook-form';
+import { Button, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
-import { HorizontalContainer, NextBtn, VerticalContainer } from '../CommonElements';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
+
+import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './PersonalInformationForm.module.css';
 
+//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+
 export const PersonalInformationForm = () => {
+	const {
+		register,
+		control,
+		//formState: { errors },
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	} = useFormContext<any>();
+
 	return (
 		<>
 			<VerticalContainer>
@@ -24,22 +37,32 @@ export const PersonalInformationForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} required text="Имя и фамилия">
-							<Input className={style.input} />
+							<Input {...register('name')} className={style.input} />
 						</Label>
 						<Label className={style.label} required text="IT Специальность">
-							<Input className={style.input} placeholder="Граф. дизайнер" />
+							<Controller
+								name="specialization"
+								control={control}
+								render={({ field: { onChange, value } }) => (
+									<SpecializationSelect onChange={onChange} value={value} />
+								)}
+							/>
 						</Label>
 						<Label className={style.label} text="Номер для связи">
-							<Input className={style.input} />
+							<Input {...register('phone')} className={style.input} />
 						</Label>
 						<Label className={style.label} text="Email для связи">
-							<Input className={style.input} />
+							<Input {...register('email')} className={style.input} />
 						</Label>
 						<Label className={style.label} text="Локация">
-							<Input className={style.input} placeholder="Напр. Санкт-Петербург, Россия" />
+							<Input
+								{...register('location')}
+								className={style.input}
+								placeholder="Напр. Санкт-Петербург, Россия"
+							/>
 						</Label>
 						<Label className={style.label} text="Уровень специалиста">
-							<Input className={style.input} placeholder="Junior" />
+							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
 						</Label>
 					</div>
 				</HorizontalContainer>
@@ -50,13 +73,15 @@ export const PersonalInformationForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} text="Платформа">
-							<Input className={style.input} />
+							<Input {...register('socialLinks')} className={style.input} />
 						</Label>
 						{/* ToDo сдесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
 					</div>
 				</HorizontalContainer>
 			</VerticalContainer>
-			<NextBtn />
+			<div className={style['btn-container']}>
+				<Button type="submit">Сохранить</Button>
+			</div>
 		</>
 	);
 };

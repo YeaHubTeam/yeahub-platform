@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import type { ProfileProject } from '@/entities/profileProject';
+import type { ProfileProject } from '@/entities/project';
 
 import styles from './ProjectsBlockItem.module.css';
 

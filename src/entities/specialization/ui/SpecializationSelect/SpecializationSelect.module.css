@@ -1,0 +1,8 @@
+.select {
+  width: 100%;
+  max-width: 320px;
+}
+
+.select select {
+  height: 46px;
+}

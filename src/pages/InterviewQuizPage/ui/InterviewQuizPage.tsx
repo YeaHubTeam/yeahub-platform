@@ -1,58 +1,66 @@
+import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
-import { useGetProfileQuery } from '@/entities/auth';
+import { useProfileQuery } from '@/entities/auth';
 import {
 	QuestionProgressBar,
 	QuestionNavPanel,
 	InterviewSlider,
 	useSlideSwitcher,
-	useGetActiveQuizzesQuery,
+	useGetActiveQuizQuery,
+	useSaveQuizResultMutation,
+	getActiveQuizQuestions,
+	getQuizStartDate,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
-	const { data: userProfile } = useGetProfileQuery();
-	const { data: quizData } = useGetActiveQuizzesQuery({
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { data: userProfile } = useProfileQuery();
+	const { data: activeQuiz } = useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
 			limit: 1,
 		},
 	});
+	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
 
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
-
-	const getQuizzes = () => {
-		const answers = quizData?.data[0].response.answers;
-		const questions = quizData?.data[0].questions;
-		const quizzes = answers?.map((item) => {
-			const matchedQuestion = questions?.find((question) => question.id === item.questionId);
-			return {
-				...item,
-				imageSrc: matchedQuestion?.imageSrc,
-				shortAnswer: matchedQuestion?.shortAnswer,
-			};
-		});
-		return quizzes;
-	};
-
-	const quizzes = getQuizzes();
+	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
+	const activeQuizStartDate = useSelector(getQuizStartDate);
 
 	const {
 		questionId,
 		questionTitle,
 		imageSrc,
-		longAnswer,
+		shortAnswer,
 		currentCount,
+		activeQuestion,
 		totalCount,
+		answer,
+		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(quizzes ?? []);
+	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	const handleSubmitQuiz = () => {
+		if (activeQuiz) {
+			const quizToSave = {
+				...activeQuiz.data[0],
+				startDate: activeQuizStartDate,
+				response: {
+					answers: activeQuizQuestions,
+				},
+			};
+
+			saveResult(quizToSave);
+		}
+	};
 
 	return (
 		<div className={styles.container}>
@@ -60,9 +68,13 @@ const InterviewQuizPage = () => {
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>
-						{currentCount}/{totalCount}
+						{activeQuestion}/{totalCount}
 					</span>
-					<QuestionProgressBar className={styles['progress-component']} />
+					<QuestionProgressBar
+						className={styles['progress-component']}
+						currentCount={currentCount}
+						totalCount={totalCount}
+					/>
 				</div>
 			</Block>
 			<Block>
@@ -71,14 +83,24 @@ const InterviewQuizPage = () => {
 						className={styles['slider-navigation']}
 						goToNextSlide={goToNextSlide}
 						goToPrevSlide={goToPrevSlide}
+						answer={answer}
+						changeAnswer={changeAnswer}
 					/>
 					<InterviewSlider
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						longAnswer={longAnswer ?? ''}
+						shortAnswer={shortAnswer ?? ''}
+						answer={answer}
+						changeAnswer={changeAnswer}
 					/>
-					<Button className={styles['end-button']}>{t('completeQuizButton')}</Button>
+					<Button
+						className={styles['end-button']}
+						disabled={currentCount !== totalCount || isLoadingAfterSave}
+						onClick={handleSubmitQuiz}
+					>
+						{t('completeQuizButton')}
+					</Button>
 				</div>
 			</Block>
 		</div>

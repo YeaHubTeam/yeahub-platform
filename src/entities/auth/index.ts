@@ -1,10 +1,9 @@
+export { LS_ACCESS_TOKEN_KEY } from './model/constants/authConstants';
+export type { Auth, SignUp, GetProfileResponse, ExtraArgument } from './model/types/auth';
 export {
-	authApi,
-	useGetProfileQuery,
-	useRefreshTokenQuery,
 	useLoginMutation,
-	useLogoutMutation,
+	useRegisterMutation,
+	useProfileQuery,
+	useLazyLogoutQuery,
+	useLazyRefreshQuery,
 } from './api/authApi';
-export { type GetProfileApiResponse, type AuthState } from './model/types/authTypes';
-export { authSlice, setProfile } from './model/slices/authSlice';
-export { getAutProfile } from './model/selectors/authSelectors';

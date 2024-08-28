@@ -7,15 +7,20 @@ export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
 export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
 export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';
 
-export { useLazyCreateNewQuizQuery, useGetActiveQuizzesQuery } from './api/quizApi';
+export {
+	useLazyCreateNewQuizQuery,
+	useGetActiveQuizQuery,
+	useGetHistoryQuizQuery,
+	useSaveQuizResultMutation,
+} from './api/quizApi';
 
 export type {
-	QuestionModeType,
 	Answers,
 	ExtraArgument,
 	Interview,
 	InterviewQuestion,
 	InterviewQuestionBtn,
+	ActiveQuizState,
 } from './model/types/quiz';
 
 export {
@@ -24,3 +29,16 @@ export {
 	MOCK_QUIZ,
 	INTERVIEW_BTNS_DATA,
 } from './model/data/interviewQuestions';
+
+export type {
+	QuestionModeType,
+	QuizQuestionAnswerType,
+	QuizHistoryParams,
+	QuizHistoryResponse,
+} from './model/types/quiz';
+
+export { getActiveQuizQuestions, getQuizStartDate } from './model/selectors/quizSelectors';
+
+export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
+
+export { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from './model/constants/quizConstants';

@@ -1,0 +1,14 @@
+.text-wrapper {
+  display: flex;
+  list-style-type: none;
+}
+
+.text-wrapper:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+.icon-wrapper {
+  display: block;
+  margin-right: 12px;
+  max-width: 18px;
+}

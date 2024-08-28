@@ -46,8 +46,10 @@
   --color-black-200: #BABABA;
   --color-black-100: #D1D1D1;
   --color-black-50: #E8E8E8;
+  --color-black-30: #F8F8F8;
   --color-black-25: #F4F4F4;
   --color-white-900: #FFF;
+  --color-label-bg: rgb(209 209 209 / 27%);
   
 
   /* light theme colors */
@@ -78,6 +80,7 @@
   --font-size-h-xs: 20px;
   --font-size-h-s: 24px;
   --font-size-h-m: 36px;
+  --font-size-h-l: 40px;
   --font-size-h-xxl: 60px;
   --font-family: "Manrope", sans-serif;
   --font-weight-400: 400;

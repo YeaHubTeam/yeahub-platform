@@ -4,7 +4,7 @@ import { Button, Icon } from 'yeahub-ui-kit';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Block } from '@/shared/ui/Block';
 
-import { useGetProfileQuery } from '@/entities/auth';
+import { useProfileQuery } from '@/entities/auth';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionCount,
@@ -23,7 +23,7 @@ const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
-	const { data: userProfile } = useGetProfileQuery();
+	const { data: userProfile } = useProfileQuery();
 
 	const createQuizData = useSelector(getCreateQuizPageState);
 

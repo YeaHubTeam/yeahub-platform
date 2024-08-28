@@ -1,4 +1,4 @@
-import { EDUCATION_LIST } from '@/entities/profileEducation';
+import { EDUCATION_LIST } from '@/entities/education';
 
 import { EducationBlockItem } from '../EducationBlockItem/EducationBlockItem';
 
