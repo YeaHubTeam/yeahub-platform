@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
-import { useGetProfileQuery } from '@/entities/auth';
+import { useProfileQuery } from '@/entities/auth';
 import { useGetProfileByIdQuery } from '@/entities/profile';
 
 import {
@@ -22,7 +22,7 @@ import { profilePageActions } from '../model/slices/ProfilePageSlice';
 import styles from './ProfilePage.module.css';
 
 const ProfilePage: FC = () => {
-	const { data } = useGetProfileQuery();
+	const { data } = useProfileQuery();
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
