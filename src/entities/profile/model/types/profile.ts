@@ -1,13 +1,7 @@
-interface Skill {
-	id: number;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
-}
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Skill } from '@/entities/skill';
 
-export interface socialNetwork {
+export interface SocialNetwork {
 	code: string;
 	title: string;
 }
@@ -40,6 +34,6 @@ export interface Profile {
 	links: string[];
 	image_src: string;
 	profileSkills: Skill[];
-	socialNetwork: socialNetwork[];
+	socialNetwork: SocialNetwork[];
 	user: User;
 }

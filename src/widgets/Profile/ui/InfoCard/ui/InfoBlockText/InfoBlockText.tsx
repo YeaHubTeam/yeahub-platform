@@ -1,10 +1,10 @@
 import styles from './InfoBlockText.module.css';
 
-interface props {
+interface InfoBlockTextProps {
 	description: string | undefined;
 }
 
-export const InfoBlockText = ({ description }: props) => {
+export const InfoBlockText = ({ description }: InfoBlockTextProps) => {
 	return (
 		<div className={styles['info-textarea']}>
 			{description ? description : 'Описание отсутствует'}

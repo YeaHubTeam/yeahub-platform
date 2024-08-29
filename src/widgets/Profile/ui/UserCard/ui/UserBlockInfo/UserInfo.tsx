@@ -1,3 +1,4 @@
+import { differenceInYears } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon, IconButton } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
@@ -6,22 +7,14 @@ import { Profile, USER_LINK } from '@/entities/profile';
 
 import styles from './UserInfo.module.css';
 
-interface props {
+interface UserInfoProps {
 	profile: Profile;
 }
 
-export const UserInfo = ({ profile }: props) => {
+export const UserInfo = ({ profile }: UserInfoProps) => {
 	const navigate = useNavigate();
 
 	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
-
-	function calculateAge(birthdateStr: string | undefined): string {
-		if (!birthdateStr) return '-';
-		const birthdate = new Date(birthdateStr);
-		const now = new Date();
-
-		return String(now.getFullYear() - birthdate.getFullYear());
-	}
 
 	return (
 		<div className={styles['card-right']}>
@@ -38,7 +31,7 @@ export const UserInfo = ({ profile }: props) => {
 				</Button>
 			</div>
 			<ul className={styles['card-info']}>
-				<li>{`${calculateAge(birthday)} лет`}</li>
+				<li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>
 				<li>{'UX/UI дизайнер в Яндекс'}</li>
 				<li>{`Опыт: ${23} лет`}</li>
 				<li>

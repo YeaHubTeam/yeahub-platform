@@ -5,11 +5,11 @@ import { InfoBlockText } from '../InfoBlockText/InfoBlockText';
 
 import styles from './InfoBlock.module.css';
 
-interface props {
+interface InfoBlockProps {
 	description: string | undefined;
 }
 
-export const InfoBlock = ({ description }: props) => {
+export const InfoBlock = ({ description }: InfoBlockProps) => {
 	return (
 		<Block expandable>
 			<div className={styles['info']}>

@@ -7,16 +7,16 @@ import { UserLeftBlock } from '../UserBlockLeft/UserLeftBlock';
 
 import styles from './UserBlock.module.css';
 
-interface props {
+interface UserBlockProps {
 	profile: Profile;
 }
 
-export const UserBlock = ({ profile }: props) => {
+export const UserBlock = ({ profile }: UserBlockProps) => {
 	return (
 		<Block>
 			<div className={styles.card}>
 				<UserLeftBlock info={profile?.user} />
-				<UserInfo profile={profile!} />
+				<UserInfo profile={profile} />
 			</div>
 		</Block>
 	);

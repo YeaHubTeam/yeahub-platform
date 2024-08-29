@@ -7,16 +7,19 @@ import { SkillsBlockList } from '../SkillsBlockList/SkillsBlockList';
 
 import styles from './SkillsBlock.module.css';
 
-interface props {
+interface SkillsBlockProps {
 	skillsList: Skill[];
 }
-export const SkillsBlock = ({ skillsList }: props) => {
+export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 	return (
 		<Block>
 			<div className={styles['skills']}>
 				<SkillsBlockHeader />
-				<div>Список навыков пуст</div>
-				{!!skillsList && <SkillsBlockList skillsList={skillsList} />}
+				{skillsList.length ? (
+					<SkillsBlockList skillsList={skillsList} />
+				) : (
+					<div>Список навыков пуст</div>
+				)}
 			</div>
 		</Block>
 	);

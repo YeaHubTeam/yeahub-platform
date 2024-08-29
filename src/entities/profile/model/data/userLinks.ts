@@ -1,7 +1,7 @@
-import type { socialNetwork } from '../types/profile';
+import type { SocialNetwork } from '../types/profile';
 
 // Временные данные
-export const USER_LINK: socialNetwork[] = [
+export const USER_LINK: SocialNetwork[] = [
 	{
 		code: '1',
 		title: 'dribbbleLogo',

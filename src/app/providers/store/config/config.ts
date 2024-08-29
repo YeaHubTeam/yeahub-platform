@@ -6,7 +6,6 @@ import { State } from '@/shared/config/store/State';
 import { activeQuizSlice } from '@/entities/quiz';
 
 import { createQuizPageReducer } from '@/pages/CreateQuizPage';
-import { profilePageReducer } from '@/pages/ProfilePage';
 import { questionsPageReducer } from '@/pages/QuestionsPage';
 
 import { router } from '../../router';
@@ -16,7 +15,6 @@ export const createReduxStore = (initialState?: State) => {
 		reducer: {
 			questionsPage: questionsPageReducer,
 			createQuizPage: createQuizPageReducer,
-			profilePage: profilePageReducer,
 			activeQuiz: activeQuizSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
 		},

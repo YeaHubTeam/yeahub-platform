@@ -4,15 +4,15 @@ import { SkillsBlockItem } from '../SkillsBlockItem/SkillsBlockItem';
 
 import styles from './SkillsBlockList.module.css';
 
-interface props {
+interface SkillsBlockListProps {
 	skillsList: Skill[];
 }
 
-export const SkillsBlockList = ({ skillsList }: props) => {
+export const SkillsBlockList = ({ skillsList }: SkillsBlockListProps) => {
 	return (
 		<div className={styles['skills-list']}>
 			{skillsList.map((skill) => (
-				<SkillsBlockItem key={skill.id} skill={skill as Skill} />
+				<SkillsBlockItem key={skill.id} skill={skill} />
 			))}
 		</div>
 	);

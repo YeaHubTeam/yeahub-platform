@@ -1,7 +1,4 @@
-import { FC, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { FC } from 'react';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetProfileByIdQuery } from '@/entities/profile';
@@ -16,26 +13,12 @@ import {
 	UserBlock,
 } from '@/widgets/Profile';
 
-import { getProfilePageState } from '../model/selector/profilePageSelector';
-import { profilePageActions } from '../model/slices/ProfilePageSlice';
-
 import styles from './ProfilePage.module.css';
 
 const ProfilePage: FC = () => {
 	const { data } = useProfileQuery();
-	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		if (data) {
-			dispatch(profilePageActions.setProfileId(data.profiles[0].profileId as string));
-		}
-	}, [data, dispatch]);
-
-	const { profileId } = useSelector(getProfilePageState);
-
-	const { data: profile } = useGetProfileByIdQuery(profileId as string, {
-		skip: !profileId,
-	});
+	const { data: profile } = useGetProfileByIdQuery(data?.profiles[0].profileId as string);
 
 	return (
 		profile && (

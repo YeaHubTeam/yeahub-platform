@@ -2,11 +2,11 @@ import { User } from '@/entities/profile';
 
 import styles from './UserLeftBlock.module.css';
 
-interface props {
+interface UserLeftBlockProps {
 	info: User;
 }
 
-export const UserLeftBlock = ({ info }: props) => {
+export const UserLeftBlock = ({ info }: UserLeftBlockProps) => {
 	return (
 		<div className={styles['card-left']}>
 			<div className={styles['card-avatar']}>
