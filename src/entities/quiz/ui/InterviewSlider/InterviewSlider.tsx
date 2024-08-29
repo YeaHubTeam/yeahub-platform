@@ -7,7 +7,7 @@ import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
 import styles from './InterviewSlider.module.css';
 
-interface Props {
+interface InterviewSliderProps {
 	id: number;
 	title: string;
 	imageSrc?: string;
@@ -23,7 +23,7 @@ export const InterviewSlider = ({
 	answer,
 	shortAnswer,
 	changeAnswer,
-}: Props) => {
+}: InterviewSliderProps) => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
 	const toggleAnswerVisibility = () => {

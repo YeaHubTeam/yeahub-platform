@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import styles from './QuestionParam.module.css';
 
 interface QuestionParamProps {
@@ -7,7 +5,7 @@ interface QuestionParamProps {
 	value: number;
 }
 
-export const QuestionParam: FC<QuestionParamProps> = ({ label, value }) => {
+export const QuestionParam = ({ label, value }: QuestionParamProps) => {
 	return (
 		<li className={styles.param}>
 			<span>{label}:</span>

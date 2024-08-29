@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
 import type { ProfileAchievment } from '@/entities/achievement';
 
 import styles from './AchievmentsBlockItem.module.css';
 
-interface Props {
+interface AchievmentsBlockItemProps {
 	achievement: ProfileAchievment;
 }
 
-export const AchievmentsBlockItem: FC<Props> = ({ achievement }) => {
+export const AchievmentsBlockItem = ({ achievement }: AchievmentsBlockItemProps) => {
 	const { img } = achievement;
 
 	return (

@@ -3,7 +3,7 @@ import { Block } from '@/shared/ui/Block';
 
 import styles from './QuestionHeader.module.css';
 
-interface Props {
+interface QuestionHeaderProps {
 	title?: string;
 	description?: string;
 	status?: string;
@@ -11,7 +11,7 @@ interface Props {
 
 //todo доработать проброс картинки вопроса.
 
-export const QuestionHeader = ({ title, description, status }: Props) => {
+export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
 	return (
 		<Block className={styles.wrapper}>
 			<div className={styles['question-header-wrapper']}>

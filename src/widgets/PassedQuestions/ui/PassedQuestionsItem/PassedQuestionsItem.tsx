@@ -6,11 +6,11 @@ import { INTERVIEW_BTNS_DATA, InterviewQuestion } from '@/entities/quiz';
 
 import styles from './PassedQuestionsItem.module.css';
 
-interface Props {
+interface PassedQuestionsItemProps {
 	question: InterviewQuestion;
 }
 
-export const PassedQuestionsItem = ({ question }: Props) => {
+export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const { img, result, title } = question;
 	const { label, icon } = INTERVIEW_BTNS_DATA.find((item) => item.result === result)!;
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
@@ -18,10 +18,10 @@ interface NavItemProps {
 }
 
 interface CategoryImages {
-	[key: string]: React.FC<React.SVGProps<SVGSVGElement>>;
+	[key: string]: FC<React.SVGProps<SVGSVGElement>>;
 }
 
-interface Props {
+interface NavSidebarItemProps {
 	isOpen: boolean;
 }
 
@@ -32,7 +32,7 @@ const categoryImages: CategoryImages = {
 	default: Menu,
 };
 
-const NavItem: FC<NavItemProps> = ({ title, name = '', isOpen }) => {
+const NavItem = ({ title, name = '', isOpen }: NavItemProps) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
@@ -51,7 +51,7 @@ const NavItem: FC<NavItemProps> = ({ title, name = '', isOpen }) => {
 	);
 };
 
-export const NavSidebarItem: FC<Props> = ({ isOpen }) => {
+export const NavSidebarItem = ({ isOpen }: NavSidebarItemProps) => {
 	return (
 		<nav className={styles.nav}>
 			{Object.entries(categoryTitles).map(([name, title]) => {

@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
 import type { ProfileProject } from '@/entities/project';
 
 import styles from './ProjectsBlockItem.module.css';
 
-interface Props {
+interface ProjectsBlockItemProps {
 	project: ProfileProject;
 }
 
-export const ProjectsBlockItem: FC<Props> = ({ project }) => {
+export const ProjectsBlockItem = ({ project }: ProjectsBlockItemProps) => {
 	const { name, imgUrl } = project;
 
 	return (

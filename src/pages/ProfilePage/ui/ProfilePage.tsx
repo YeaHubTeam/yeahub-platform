@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { AchievmentsBlock } from '@/widgets/ProfileAchievementCard';
 import { EducationBlock } from '@/widgets/ProfileEducationCard';
 import { ExperienceBlock } from '@/widgets/ProfileExperienceCard';
@@ -10,7 +8,7 @@ import { UserCard } from '@/widgets/ProfileUserCard';
 
 import styles from './ProfilePage.module.css';
 
-const ProfilePage: FC = () => {
+const ProfilePage = () => {
 	// const { data, isSuccess, isLoading, isError, error } = useGetProfileQuery();
 
 	return (

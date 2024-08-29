@@ -4,11 +4,11 @@ import { PassedQuestionsItem } from '../PassedQuestionsItem/PassedQuestionsItem'
 
 import styles from './PassedQuestionsList.module.css';
 
-interface Props {
+interface PassedQuestionsListProps {
 	questions: InterviewQuestion[];
 }
 
-export const PassedQuestionsList = ({ questions }: Props) => {
+export const PassedQuestionsList = ({ questions }: PassedQuestionsListProps) => {
 	return (
 		<ul className={styles.list}>
 			{questions.map((question) => (

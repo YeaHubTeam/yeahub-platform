@@ -6,12 +6,12 @@ import { options } from '../../model/constants/options';
 
 import styles from './PassedInterviewStat.module.css';
 
-interface Props {
+interface PassedInterviewStatProps {
 	totalAttempt: number;
 	attemptData: AttemptData[];
 }
 
-export const PassedInterviewStat = ({ totalAttempt, attemptData }: Props) => {
+export const PassedInterviewStat = ({ totalAttempt, attemptData }: PassedInterviewStatProps) => {
 	const pieOption = options.pie;
 	pieOption.series[0].label.formatter = `{a}\n ${totalAttempt}`;
 	pieOption.series[0].data = attemptData;
