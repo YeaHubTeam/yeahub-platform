@@ -1,11 +1,11 @@
 import styles from './StatInfoItem.module.css';
 
-interface Props {
+interface StatInfoItemProps {
 	title: string;
 	value: string;
 }
 
-export const StatInfoItem = ({ title, value }: Props) => {
+export const StatInfoItem = ({ title, value }: StatInfoItemProps) => {
 	return (
 		<div className={styles.stat}>
 			<h4 className={styles.title}>{title}</h4>

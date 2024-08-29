@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
 import { ThemeMods } from '../model/types/themeProvider';
 import { applyTheme, getSavedTheme, getSystemTheme, removeSavedTheme } from '../utils/themeUtils';
@@ -11,7 +11,7 @@ import styles from './ThemeSwitcher.module.css';
 
 const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
-export const ThemeSwitcher: FC = () => {
+export const ThemeSwitcher = () => {
 	const [currentTheme, setCurrentTheme] = useState<ThemeMods>(getSavedTheme() || 'auto');
 
 	/** Change theme */

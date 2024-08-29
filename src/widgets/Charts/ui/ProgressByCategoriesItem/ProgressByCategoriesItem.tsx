@@ -11,11 +11,11 @@ export interface ProgressByCategoriesData {
 	value: number;
 }
 
-interface Props {
+interface ProgressByCategoriesItemProps {
 	progressData: ProgressByCategoriesData;
 }
 
-export const ProgressByCategoriesItem = ({ progressData }: Props) => {
+export const ProgressByCategoriesItem = ({ progressData }: ProgressByCategoriesItemProps) => {
 	const { category, total, passed } = progressData;
 
 	const barOption = structuredClone(options.bar);

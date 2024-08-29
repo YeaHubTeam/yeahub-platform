@@ -1,10 +1,10 @@
-import { FC, ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
 import styles from './Block.module.css';
 
-interface Props {
+interface BlockProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
@@ -49,7 +49,7 @@ const ExpandIcon = () => {
 	);
 };
 
-export const Block: FC<Props> = ({ children, expandable = false, className = '' }) => {
+export const Block = ({ children, expandable = false, className = '' }: BlockProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);

@@ -6,7 +6,7 @@ import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
 import styles from './QuestionNavPanel.module.css';
 
-interface Props {
+interface QuestionNavPanelProps {
 	answer: QuizQuestionAnswerType;
 	goToNextSlide: () => void;
 	goToPrevSlide: () => void;
@@ -22,7 +22,7 @@ export const QuestionNavPanel = ({
 	changeAnswer,
 	showResponseButtons = false,
 	className,
-}: Props) => {
+}: QuestionNavPanelProps) => {
 	return (
 		<div className={classNames(styles.panel, className)}>
 			<button className={styles.button} onClick={goToPrevSlide}>

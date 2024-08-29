@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
 import type { ProfileExperience } from '@/entities/experience';
 
 import styles from './ExperienceBlockItem.module.css';
 
-interface Props {
+interface ExperienceBlockItemProps {
 	experience: ProfileExperience;
 }
 
-export const ExperienceBlockItem: FC<Props> = ({ experience }) => {
+export const ExperienceBlockItem = ({ experience }: ExperienceBlockItemProps) => {
 	const { name, imgUrl, company, schedule, seniority, location } = experience;
 
 	return (

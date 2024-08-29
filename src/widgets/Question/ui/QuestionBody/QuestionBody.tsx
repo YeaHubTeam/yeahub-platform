@@ -3,12 +3,12 @@ import { Block } from '@/shared/ui/Block';
 
 import styles from './QuestionBody.module.css';
 
-interface Props {
+interface QuestionBodyProps {
 	shortAnswer?: string;
 	longAnswer?: string;
 }
 
-export const QuestionBody = ({ shortAnswer, longAnswer }: Props) => {
+export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => {
 	return (
 		<>
 			<Block className={styles.wrapper}>

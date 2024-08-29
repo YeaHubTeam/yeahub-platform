@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import styles from './ImageWithWrapper.module.css';
 
 interface ImageWithWrapperProps {
@@ -8,7 +6,7 @@ interface ImageWithWrapperProps {
 	alt?: string;
 }
 
-export const ImageWithWrapper: FC<ImageWithWrapperProps> = ({ className, src, alt = '' }) => {
+export const ImageWithWrapper = ({ className, src, alt = '' }: ImageWithWrapperProps) => {
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
 			{src ? <img className={styles.image} src={src} alt={alt} /> : null}
