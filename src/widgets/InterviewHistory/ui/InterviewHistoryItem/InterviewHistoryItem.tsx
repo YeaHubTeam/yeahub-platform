@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -9,11 +8,11 @@ import { InterviewResults, QuizHistoryResponse } from '@/entities/quiz';
 
 import styles from './InterviewHistoryItem.module.css';
 
-interface Props {
+interface InterviewHistoryItemProps {
 	interview: QuizHistoryResponse;
 }
 
-export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
+export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) => {
 	const { id, successCount, fullCount } = interview;
 	const incorrectAnswersCount = fullCount - successCount;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);

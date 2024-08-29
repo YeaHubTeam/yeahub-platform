@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
 import { Block } from '@/shared/ui/Block';
@@ -7,7 +7,7 @@ import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
 import styles from './MainPage.module.css';
 
-const MainPage: FC = () => {
+const MainPage = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
 	const { data: profile } = useProfileQuery();

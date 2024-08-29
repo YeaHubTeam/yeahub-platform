@@ -13,14 +13,14 @@ interface EditTab {
 	Component: () => JSX.Element;
 }
 
-interface TabProps {
+interface TabsProps {
 	tabs: EditTab[];
 	title: string;
 	tabToggle: number;
 	setTabToggle: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabProps) => {
+export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 	const lineRef = useRef<HTMLDivElement>(null);
 	const navigate = useNavigate();
 

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,11 +9,11 @@ import { Question } from '@/entities/question';
 
 import styles from './InterviewQuestionsItem.module.css';
 
-interface Props {
+interface InterviewQuestionsItemProps {
 	question: Question;
 }
 
-export const InterviewQuestionsItem: FC<Props> = ({ question }) => {
+export const InterviewQuestionsItem = ({ question }: InterviewQuestionsItemProps) => {
 	const { id, imageSrc, title, rate, rating } = question;
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (

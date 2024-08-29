@@ -4,13 +4,13 @@ import { Icon } from 'yeahub-ui-kit';
 
 import styles from './LinkWithArrowRight.module.css';
 
-interface Props
+interface LinkWithArrowRightProps
 	extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
 	link: string;
 	linkTitle?: string;
 }
 
-export const LinkWithArrowRight = ({ link, linkTitle, ...props }: Props) => {
+export const LinkWithArrowRight = ({ link, linkTitle, ...props }: LinkWithArrowRightProps) => {
 	return (
 		<Link to={link} className={styles.link} {...props}>
 			<span>{linkTitle}</span>

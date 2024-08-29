@@ -1,4 +1,4 @@
-import { FC, ReactNode, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
@@ -9,7 +9,7 @@ interface AccordionProps {
 	children?: ReactNode;
 }
 
-export const Accordion: FC<AccordionProps> = ({ title, children }) => {
+export const Accordion = ({ title, children }: AccordionProps) => {
 	const [isOpen, setisOpen] = useState(false);
 	const contentRef = useRef<HTMLDivElement>(null);
 

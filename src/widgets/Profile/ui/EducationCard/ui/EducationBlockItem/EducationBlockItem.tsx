@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
 import type { ProfileEducation } from '@/entities/education';
 
 import styles from './EducationBlockItem.module.css';
 
-interface Props {
+interface EducationBlockItemProps {
 	education: ProfileEducation;
 }
 
-export const EducationBlockItem: FC<Props> = ({ education }) => {
+export const EducationBlockItem = ({ education }: EducationBlockItemProps) => {
 	const { university, name, rank, time } = education;
 
 	return (

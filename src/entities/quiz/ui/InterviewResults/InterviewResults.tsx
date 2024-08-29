@@ -1,21 +1,19 @@
-import { FC } from 'react';
-
 import ArrowDown from '@/shared/assets/icons/arrowDown.svg';
 import ArrowUp from '@/shared/assets/icons/arrowUp.svg';
 
 import styles from './InterviewResults.module.css';
 
-interface Props {
+interface InterviewResultsProps {
 	label: string;
 	correctAnswersCount: number;
 	incorrectAnswersCount: number;
 }
 
-export const InterviewResults: FC<Props> = ({
+export const InterviewResults = ({
 	label,
 	correctAnswersCount,
 	incorrectAnswersCount,
-}) => {
+}: InterviewResultsProps) => {
 	return (
 		<div className={styles.param}>
 			<span>{label}</span>

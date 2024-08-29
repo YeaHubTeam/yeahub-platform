@@ -2,11 +2,11 @@ import { Icon } from 'yeahub-ui-kit';
 
 import styles from './InterviewHeader.module.css';
 
-type Props = {
+type InterviewHeaderProps = {
 	title: string;
 };
 
-export const InterviewHeader = ({ title }: Props) => {
+export const InterviewHeader = ({ title }: InterviewHeaderProps) => {
 	return (
 		<div className={styles.header}>
 			<h3>{title}</h3>
