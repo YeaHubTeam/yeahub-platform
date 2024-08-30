@@ -22,3 +22,19 @@
 .button {
   margin-left: auto;
 }
+
+@media (width <= 480px) {
+  .title {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-h-xs);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .additional-wrapper {
+    row-gap: 16px;
+  }
+}
