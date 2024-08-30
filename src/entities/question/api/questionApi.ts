@@ -16,7 +16,9 @@ const questionApi = baseApi.injectEndpoints({
 		getQuestionById: build.query<Question, QuestionByIdParams>({
 			query: ({ questionId, profileId }) => ({
 				url: `/questions/${questionId}`,
-				profileId,
+				params: {
+					profileId,
+				},
 			}),
 			providesTags: [ApiTags.QUESTION_DETAIL],
 		}),
