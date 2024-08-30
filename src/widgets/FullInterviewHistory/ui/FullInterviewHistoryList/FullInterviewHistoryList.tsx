@@ -6,22 +6,22 @@ import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterv
 
 import styles from './FullInterviewHistoryList.module.css';
 
-interface FullInterviewHistoryListProps {
-	data?: QuizHistoryResponse[];
+interface InterviewHistoryProps {
+	quizzesHistory?: QuizHistoryResponse[];
 }
 
-export const FullInterviewHistoryList = ({ data }: FullInterviewHistoryListProps) => {
-	if (!data) {
+export const FullInterviewHistoryList = ({ quizzesHistory }: InterviewHistoryProps) => {
+	if (!quizzesHistory) {
 		return <Loader />;
 	}
 
-	const isEmptyData = data.length === 0;
+	const isEmptyData = quizzesHistory.length === 0;
 
 	return (
 		<>
 			{!isEmptyData ? (
 				<ul className={styles.list}>
-					{data.map((interview) => (
+					{quizzesHistory.map((interview) => (
 						<FullInterviewHistoryItem key={interview.id} interview={interview} />
 					))}
 				</ul>

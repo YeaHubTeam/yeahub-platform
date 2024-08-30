@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/query/react';
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { EventCalendar } from '@/shared/ui/Calendar/EventCalendar';
 
@@ -8,15 +8,19 @@ import { useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { FullInterviewHistoryList } from '@/widgets/FullInterviewHistory';
 
+import { getInterviewHistoryPageFilter } from '../model/selectors/InterviewHistoryPageSelectors';
+import { interviewHistoryPageActions } from '../model/slices/InterviewHistoryPageSlice';
+
 import styles from './InterviewHistoryPage.module.css';
 
 const InterviewHistoryPage = () => {
-	const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
+	const dispatch = useDispatch();
+	const dateRange = useSelector(getInterviewHistoryPageFilter);
 
 	const profile = useProfileQuery();
 	const profileId = profile.data?.profiles[0].profileId;
 
-	const { data: historyData, refetch } = useGetHistoryQuizQuery(
+	const { data: historyData } = useGetHistoryQuizQuery(
 		profileId
 			? {
 					profileID: profileId,
@@ -29,18 +33,12 @@ const InterviewHistoryPage = () => {
 	);
 
 	const handleDateChange = (dates: [Date | null, Date | null]) => {
-		setDateRange(dates);
+		dispatch(interviewHistoryPageActions.setDateRange(dates));
 	};
-
-	useEffect(() => {
-		if (dateRange[0] && dateRange[1]) {
-			refetch();
-		}
-	}, [dateRange, refetch]);
 
 	return (
 		<div className={styles.container}>
-			<FullInterviewHistoryList data={historyData?.data} />
+			<FullInterviewHistoryList quizzesHistory={historyData?.data} />
 			<EventCalendar onDateChange={handleDateChange} />
 		</div>
 	);
