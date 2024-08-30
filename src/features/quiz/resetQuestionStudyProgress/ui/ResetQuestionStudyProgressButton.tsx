@@ -1,14 +1,18 @@
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
-import { ResetQuestionStudyProgressParams } from '../model/types/resetQuestionStudyProgressTypes';
 
 import styles from './ResetQuestionStudyProgressButton.module.css';
+
+interface ResetQuestionStudyProgressProps {
+	profileId: number | string;
+	questionId: number | string;
+}
 
 export const ResetQuestionStudyProgressButton = ({
 	profileId,
 	questionId,
-}: ResetQuestionStudyProgressParams) => {
+}: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 
 	const handleClick = async () => {

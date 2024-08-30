@@ -2,6 +2,8 @@ import { Button, Icon } from 'yeahub-ui-kit';
 
 import { Block } from '@/shared/ui/Block';
 
+import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
+
 import styles from './QuestionActions.module.css';
 
 export const QuestionActions = () => {
@@ -15,19 +17,7 @@ export const QuestionActions = () => {
 				>
 					Учить
 				</Button>
-				<Button
-					className={styles.btn}
-					preffix={
-						<Icon
-							className={styles.icon}
-							icon="clockCounterClockwise"
-							key={'clockCounterClockwise'}
-						/>
-					}
-					theme="tertiary"
-				>
-					Повторить
-				</Button>
+				<ResetQuestionStudyProgressButton profileId={1} questionId={1} />
 				<Button
 					className={styles.btn}
 					preffix={<Icon className={styles.icon} icon="skipForward" key={'skipForward'} />}
