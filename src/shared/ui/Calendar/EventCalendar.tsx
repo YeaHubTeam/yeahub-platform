@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Calendar } from 'react-calendar';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -18,21 +17,18 @@ interface EventCalendarProps {
 }
 
 export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
-	const [date, setDate] = useState<Value>(new Date());
-
-	useEffect(() => {
-		if (Array.isArray(date)) {
-			onDateChange(date);
+	const handleDateChange = (dates: Value) => {
+		if (Array.isArray(dates)) {
+			onDateChange(dates);
 		} else {
-			onDateChange([date, date]);
+			onDateChange([dates, dates]);
 		}
-	}, [date, onDateChange]);
+	};
 
 	return (
 		<Block className="calendar-block">
 			<Calendar
-				onChange={setDate}
-				value={date}
+				onChange={handleDateChange}
 				showNeighboringMonth={false}
 				prevLabel={PREV_LABEL}
 				nextLabel={NEXT_LABEL}
