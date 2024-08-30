@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar } from 'react-calendar';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -13,8 +13,20 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 const PREV_LABEL = <Icon icon="caretLeft" size={24} color="--palette-ui-black-600" />;
 const NEXT_LABEL = <Icon icon="caretRight" size={24} color="--palette-ui-black-600" />;
 
-export const EventCalendar = () => {
+interface EventCalendarProps {
+	onDateChange: (dates: [Date | null, Date | null]) => void;
+}
+
+export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
 	const [date, setDate] = useState<Value>(new Date());
+
+	useEffect(() => {
+		if (Array.isArray(date)) {
+			onDateChange(date);
+		} else {
+			onDateChange([date, date]);
+		}
+	}, [date, onDateChange]);
 
 	return (
 		<Block className="calendar-block">
