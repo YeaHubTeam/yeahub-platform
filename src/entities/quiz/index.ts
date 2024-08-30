@@ -23,12 +23,7 @@ export type {
 	ActiveQuizState,
 } from './model/types/quiz';
 
-export {
-	QUIZ_QUESTIONS,
-	INTERVIEW_QUESTIONS,
-	MOCK_QUIZ,
-	INTERVIEW_BTNS_DATA,
-} from './model/data/interviewQuestions';
+export { QUIZ_QUESTIONS, MOCK_QUIZ, INTERVIEW_BTNS_DATA } from './model/data/interviewQuestions';
 
 export type {
 	QuestionModeType,
