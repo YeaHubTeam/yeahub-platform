@@ -28,8 +28,8 @@ const InterviewHistoryPage = () => {
 			? {
 					profileID: profileId,
 					params: {
-						startAfter: dateRange ? startAfter.toISOString() : undefined,
-						startBefore: dateRange ? startBefore.toISOString() : undefined,
+						startAfter: startAfter ? startAfter.toISOString() : undefined,
+						startBefore: startBefore ? startBefore.toISOString() : undefined,
 					},
 				}
 			: skipToken,

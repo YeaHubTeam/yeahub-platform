@@ -1,5 +1,5 @@
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
 
-export interface InterviewHistoryPage {
+export interface InterviewHistoryState {
 	dateRange: Value;
 }

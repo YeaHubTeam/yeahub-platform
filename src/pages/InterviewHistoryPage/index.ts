@@ -3,4 +3,4 @@ export {
 	interviewHistoryPageReducer,
 	interviewHistoryPageActions,
 } from './model/slices/InterviewHistoryPageSlice';
-export type { InterviewHistoryPageState } from './model/types/InterviewHistoryPageType';
+export type { InterviewHistoryState } from './model/types/InterviewHistoryPageType';

@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
 
-import { InterviewHistoryPage } from '../types/InterviewHistoryPageType';
+import { InterviewHistoryState } from '../types/InterviewHistoryPageType';
 
-const initialState: InterviewHistoryPage = {
+const initialState: InterviewHistoryState = {
 	dateRange: null,
 };
 
