@@ -22,7 +22,7 @@ export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const methods = useForm<ProfileSchema>({
 		resolver: yupResolver(profileSchema),
-		mode: 'onTouched',
+		mode: 'onBlur',
 	});
 	const tabs = [
 		{

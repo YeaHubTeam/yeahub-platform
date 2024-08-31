@@ -11,15 +11,22 @@ import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './PersonalInformationForm.module.css';
 
-//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+interface PersonalInformationInputs {
+	name: string;
+	specialization: number;
+	phone: string;
+	email: string;
+	location: string;
+	skillLevel: string;
+	socials: string;
+}
 
 export const PersonalInformationForm = () => {
 	const {
 		register,
 		control,
-		//formState: { errors },
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	} = useFormContext<any>();
+		formState: { errors },
+	} = useFormContext<PersonalInformationInputs>();
 
 	return (
 		<>
@@ -39,33 +46,41 @@ export const PersonalInformationForm = () => {
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} required text="Имя и фамилия">
 							<Input {...register('name')} className={style.input} />
+							<div className={style.error}>{errors.name?.message}</div>
 						</Label>
 						<Label className={style.label} required text="IT Специальность">
 							<Controller
+								{...register('specialization')}
 								name="specialization"
 								control={control}
 								render={({ field: { onChange, value } }) => (
 									<SpecializationSelect onChange={onChange} value={value} />
 								)}
 							/>
+							<div className={style.error}>{errors.specialization?.message}</div>
 						</Label>
 						<Label className={style.label} text="Номер для связи">
 							<Controller
 								name="phone"
 								control={control}
 								render={({ field: { onChange, value } }) => (
-									<InputMask
-										className={style.phone}
-										mask={'+7-(999)-999-99-99'}
-										placeholder={'+7-(XXX)-XXX-XX-XX'}
-										onChange={onChange}
-										value={value}
-									/>
+									<>
+										<InputMask
+											{...register('phone')}
+											className={style.phone}
+											mask={'+7-(999)-999-99-99'}
+											placeholder={'+7-(XXX)-XXX-XX-XX'}
+											onChange={onChange}
+											value={value}
+										/>
+										<div className={style.error}>{errors.phone?.message}</div>
+									</>
 								)}
 							/>
 						</Label>
 						<Label className={style.label} text="Email для связи">
 							<Input {...register('email')} className={style.input} />
+							<div className={style.error}>{errors.email?.message}</div>
 						</Label>
 						<Label className={style.label} text="Локация">
 							<Input
@@ -73,9 +88,11 @@ export const PersonalInformationForm = () => {
 								className={style.input}
 								placeholder="Напр. Санкт-Петербург, Россия"
 							/>
+							<div className={style.error}>{errors.location?.message}</div>
 						</Label>
 						<Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
+							<div className={style.error}>{errors.skillLevel?.message}</div>
 						</Label>
 					</div>
 				</HorizontalContainer>
@@ -86,7 +103,8 @@ export const PersonalInformationForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} text="Платформа">
-							<Input {...register('socialLinks')} className={style.input} />
+							<Input {...register('socials')} className={style.input} />
+							<div className={style.error}>{errors.socials?.message}</div>
 						</Label>
 						{/* ToDo сдесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
 					</div>

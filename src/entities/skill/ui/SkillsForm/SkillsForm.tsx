@@ -9,16 +9,17 @@ import { SkillSelect } from '../SkillSelect/SkillSelect';
 
 import style from './SkillsForm.module.css';
 
-//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+interface SkillsFormInputs {
+	skills: number[];
+}
 
 export const SkillsForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-
 	const {
 		control,
-		//formState: { errors },
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	} = useFormContext<any>();
+		register,
+		formState: { errors },
+	} = useFormContext<SkillsFormInputs>();
 
 	return (
 		<>
@@ -29,12 +30,14 @@ export const SkillsForm = () => {
 						<p>{t('skillForm.yourSkillsText')}</p>
 					</div>
 					<Controller
+						{...register('skills')}
 						name="skills"
 						control={control}
 						render={({ field: { onChange, value } }) => (
 							<SkillSelect onChange={onChange} value={value} />
 						)}
 					/>
+					<div className={style.error}>{errors.skills?.message}</div>
 				</HorizontalContainer>
 			</VerticalContainer>
 			<div className={style['btn-container']}>

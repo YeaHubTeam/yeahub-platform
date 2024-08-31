@@ -5,14 +5,16 @@ import { HorizontalContainer } from '../CommonElements';
 
 import style from './AboutMeForm.module.css';
 
-//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
+interface AboutMeFormInputs {
+	aboutMe: string;
+}
 
 export const AboutMeForm = () => {
 	const {
 		control,
-		//formState: { errors },
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	} = useFormContext<any>();
+		register,
+		formState: { errors },
+	} = useFormContext<AboutMeFormInputs>();
 
 	return (
 		<>
@@ -30,9 +32,15 @@ export const AboutMeForm = () => {
 						name="aboutMe"
 						control={control}
 						render={({ field: { onChange, value } }) => (
-							<TextArea placeholder="Placeholder" onChange={onChange} value={value} />
+							<TextArea
+								{...register('aboutMe')}
+								placeholder="Placeholder"
+								onChange={onChange}
+								value={value}
+							/>
 						)}
 					/>
+					<div className={style.error}>{errors.aboutMe?.message}</div>
 				</div>
 			</HorizontalContainer>
 			<div className={style['btn-container']}>

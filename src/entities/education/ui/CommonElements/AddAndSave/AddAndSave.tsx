@@ -13,7 +13,9 @@ export const AddAndSave = ({ textFirst, textSecond = 'Сохранить' }: Add
 			<Button className={cls['btn-add']} theme="tertiary" textClassName={cls['btn-add']}>
 				{textFirst}
 			</Button>
-			<Button theme="primary">{textSecond}</Button>
+			<Button theme="primary" type="submit">
+				{textSecond}
+			</Button>
 		</div>
 	);
 };
