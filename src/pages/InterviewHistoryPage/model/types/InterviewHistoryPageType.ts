@@ -1,3 +1,5 @@
-export interface InterviewHistoryPageState {
-	dateRange: [Date | null, Date | null];
+import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+
+export interface InterviewHistoryPage {
+	dateRange: Value;
 }

@@ -1,16 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { InterviewHistoryPageState } from '../types/InterviewHistoryPageType';
+import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
 
-const initialState: InterviewHistoryPageState = {
-	dateRange: [null, null],
+import { InterviewHistoryPage } from '../types/InterviewHistoryPageType';
+
+const initialState: InterviewHistoryPage = {
+	dateRange: null,
 };
 
 const interviewHistoryPageSlice = createSlice({
 	name: 'filterDate',
 	initialState,
 	reducers: {
-		setDateRange(state, action: PayloadAction<[Date | null, Date | null]>) {
+		setDateRange(state, action: PayloadAction<Value>) {
 			state.dateRange = action.payload;
 		},
 	},
