@@ -8,12 +8,12 @@ import styles from './InterviewQuestionsList.module.css';
 export const InterviewQuestionsList = () => {
 	const { data: profile } = useProfileQuery();
 
-	const id = profile?.profiles[0].specializationId;
+	const specializationId = profile?.profiles[0].specializationId;
 
 	const params = {
 		random: true,
 		limit: 3,
-		specialization: id !== undefined ? [id] : [],
+		specializationId: specializationId,
 	};
 
 	const { data: response } = useGetQuestionsListQuery(params);
