@@ -1,11 +1,12 @@
+import experience_1 from '@/shared/assets/images/experience/experience_1.jpg';
+
 import type { ProfileExperience } from '../types/profileExperience';
 
 // Временные данные
 export const EXPERIENCE_LIST: ProfileExperience[] = [
 	{
 		id: '1',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: experience_1,
 		name: 'UX/UI дизайнер',
 		company: 'Яндекс',
 		schedule: 'Full-time',
@@ -14,8 +15,7 @@ export const EXPERIENCE_LIST: ProfileExperience[] = [
 	},
 	{
 		id: '2',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: experience_1,
 		name: 'UX/UI дизайнер',
 		company: 'Яндекс',
 		schedule: 'Full-time',
@@ -24,8 +24,7 @@ export const EXPERIENCE_LIST: ProfileExperience[] = [
 	},
 	{
 		id: '3',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: experience_1,
 		name: 'UX/UI дизайнер',
 		company: 'Яндекс',
 		schedule: 'Full-time',

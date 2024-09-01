@@ -1,21 +1,26 @@
+import achievment_1 from '@/shared/assets/images/achievment/achievment_1.png';
+import achievment_2 from '@/shared/assets/images/achievment/achievment_2.png';
+import achievment_3 from '@/shared/assets/images/achievment/achievment_3.png';
+import achievment_4 from '@/shared/assets/images/achievment/achievment_4.png';
+
 import type { ProfileAchievment } from '../types/profileAchievment';
 
-// Временные данные
+// Временные данные @/shared/assets/images/achievment/21dd4589e758c1c6db5804f79c8e5870.png
 export const ACHIEVMENT_LIST: ProfileAchievment[] = [
 	{
 		id: 1,
-		img: 'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		img: achievment_1,
 	},
 	{
 		id: 2,
-		img: 'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		img: achievment_2,
 	},
 	{
 		id: 3,
-		img: 'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		img: achievment_3,
 	},
 	{
 		id: 4,
-		img: 'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		img: achievment_4,
 	},
 ];

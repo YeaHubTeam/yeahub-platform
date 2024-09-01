@@ -1,3 +1,9 @@
+import project_1 from '@/shared/assets/images/project/project_1.png';
+import project_2 from '@/shared/assets/images/project/project_2.png';
+import project_3 from '@/shared/assets/images/project/project_3.png';
+import project_4 from '@/shared/assets/images/project/project_4.png';
+import project_5 from '@/shared/assets/images/project/project_5.jpg';
+
 import type { ProfileProject } from '../types/profileProject';
 
 // Временные данные
@@ -5,31 +11,26 @@ export const PROJECT_LIST: ProfileProject[] = [
 	{
 		id: '1',
 		name: 'Clinically — clinic & health care website',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: project_1,
 	},
 	{
 		id: '2',
 		name: 'Clinically — clinic & health care website',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: project_2,
 	},
 	{
 		id: '3',
 		name: 'Clinically — clinic & health care website',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: project_3,
 	},
 	{
 		id: '4',
 		name: 'Clinically — clinic & health care website',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: project_4,
 	},
 	{
 		id: '5',
 		name: 'Clinically — clinic & health care website',
-		imgUrl:
-			'https://s3-alpha-sig.figma.com/img/eae3/13a4/8883a46e7a2a60ee806e73a8052191be?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K3te7aowP8zcQRVl2gYKAO0DLnNeiA~PXn3yZ8V0gD6hCR3iptAQts7xqdCl23bHR0qpdgF3svL5FeKJGAk29ek43CajHgDJJMLcucQMl2B8bZA7AEqFNIpV8ckaxZdR~1bjNDAM1mTdJLK2hZ20mC4syGqijclcvYFf3kxDARBVKQiy0oturv5KcHGOQw6yW5E2zN9aSacx6Hm~n~snFsROX160tRKghs9Ocd8z-iT12Usb3eCgN0z3ToEOW8nYwlx4OviGsImjZyTQi6ETLEWGfdr4WdsYkLjQFW3U7F5SK7PpvRbaDC8UXapFamh-KuQ5BAkCe3Vyy9iDEoAWcA__',
+		imgUrl: project_5,
 	},
 ];
