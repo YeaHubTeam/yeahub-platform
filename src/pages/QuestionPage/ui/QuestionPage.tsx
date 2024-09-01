@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
 import { NavLink, useParams } from 'react-router-dom';
 
+import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import {
@@ -18,6 +19,7 @@ import styles from './QuestionPage.module.css';
 export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 	const { data: question } = useGetQuestionByIdQuery(questionId as string);
+	const { data: userProfile } = useProfileQuery();
 
 	const authorFullName = useMemo(() => {
 		if (question?.createdBy) {
@@ -43,7 +45,10 @@ export const QuestionPage = () => {
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
-				<QuestionActions />
+				<QuestionActions
+					profileId={userProfile ? userProfile.id : ''}
+					questionId={questionId ? questionId : ''}
+				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		);
@@ -57,7 +62,10 @@ export const QuestionPage = () => {
 					status={question?.status}
 					title={question?.title}
 				/>
-				<QuestionActions />
+				<QuestionActions
+					profileId={userProfile ? userProfile.id : ''}
+					questionId={questionId ? questionId : ''}
+				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</div>
 			<div className={styles.additional}>

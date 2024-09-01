@@ -6,7 +6,12 @@ import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionS
 
 import styles from './QuestionActions.module.css';
 
-export const QuestionActions = () => {
+interface QuestionActionsProps {
+	profileId: number | string;
+	questionId: number | string;
+}
+
+export const QuestionActions = ({ profileId, questionId }: QuestionActionsProps) => {
 	return (
 		<Block className={styles['question-actions']}>
 			<div className={styles.wrapper}>
@@ -17,7 +22,7 @@ export const QuestionActions = () => {
 				>
 					Учить
 				</Button>
-				<ResetQuestionStudyProgressButton profileId={1} questionId={1} />
+				<ResetQuestionStudyProgressButton profileId={profileId} questionId={questionId} />
 				<Button
 					className={styles.btn}
 					preffix={<Icon className={styles.icon} icon="skipForward" key={'skipForward'} />}
