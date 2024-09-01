@@ -13,7 +13,7 @@ export const InterviewQuestionsList = () => {
 	const params = {
 		random: true,
 		limit: 3,
-		specializationId: specializationId,
+		specialization: specializationId,
 	};
 
 	const { data: response } = useGetQuestionsListQuery(params);
