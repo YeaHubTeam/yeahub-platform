@@ -11,7 +11,7 @@ export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConf
     historyApiFallback: true,
     hot: true,
     server: {
-      type: 'http',
+      type: 'https',
       options: {
         cert: readFileSync(paths.httpsCert),
         key: readFileSync(paths.httpsKey),
