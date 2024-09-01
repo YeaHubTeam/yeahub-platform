@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
@@ -37,7 +38,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 					<Popover
 						body={
 							<div>
-								<NavLink className={styles.link} to={`/interview/questions/${id}`}>
+								<NavLink className={styles.link} to={`${ROUTES.interview.questions.page}/${id}`}>
 									<Button
 										className={styles.button}
 										theme="tertiary"

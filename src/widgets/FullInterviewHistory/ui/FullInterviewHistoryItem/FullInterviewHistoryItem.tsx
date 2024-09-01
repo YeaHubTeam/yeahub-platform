@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
@@ -22,7 +23,7 @@ export const FullInterviewHistoryItem = ({ interview }: FullInterviewHistoryItem
 
 	return (
 		<li>
-			<Link to={`/interview/${id}`}>
+			<Link to={`${ROUTES.interview.history.page}/${id}`}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />

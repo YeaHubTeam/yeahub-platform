@@ -1,2 +1,1 @@
-export { AttemptInfoItem } from './ui/AttemptInfoItem';
-export type { AttemptData } from './ui/AttemptInfoItem';
+export { AttemptInfoItem, type AttemptInfoItemProps } from './ui/AttemptInfoItem';

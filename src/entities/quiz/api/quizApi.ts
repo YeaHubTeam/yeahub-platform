@@ -1,5 +1,6 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import { ROUTES } from '@/shared/config/router/routes';
 import { getFromLS, getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Response } from '@/shared/types/types';
 
@@ -30,7 +31,7 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('interviewQuiz');
+					typedExtra.navigate(ROUTES.interview.quiz.new.page);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -83,7 +84,7 @@ const quizApi = baseApi.injectEndpoints({
 					removeFromLS(LS_ACTIVE_QUIZ_KEY);
 					removeFromLS(LS_START_DATE_QUIZ_KEY);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(`/interview/quiz/${arg.id}`);
+					typedExtra.navigate(`${ROUTES.interview.history.page}/${arg.id}`);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

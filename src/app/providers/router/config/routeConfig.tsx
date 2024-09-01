@@ -1,5 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
+
 import { CreateQuizPage } from '@/pages/CreateQuizPage';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -24,11 +26,11 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 
 export const router = createBrowserRouter([
 	{
-		path: '/',
+		path: ROUTES.appRoute,
 		element: <App />,
 		children: [
 			{
-				path: '/',
+				path: ROUTES.appRoute,
 				element: (
 					<AuthRoute>
 						<MainLayout />
@@ -40,7 +42,7 @@ export const router = createBrowserRouter([
 						element: <MainPage />,
 					},
 					{
-						path: 'profile',
+						path: ROUTES.profile.route,
 						element: <Outlet />,
 						handle: {
 							crumb: 'Профиль',
@@ -51,7 +53,7 @@ export const router = createBrowserRouter([
 								element: <ProfilePage />,
 							},
 							{
-								path: 'edit',
+								path: ROUTES.profile.edit.route,
 								element: <EditProfilePage />,
 								handle: {
 									crumb: 'Редактирование профиля',
@@ -60,7 +62,7 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
-						path: 'interview',
+						path: ROUTES.interview.route,
 						element: <Outlet />,
 						handle: {
 							crumb: 'Обучение',
@@ -71,14 +73,15 @@ export const router = createBrowserRouter([
 								element: <InterviewPage />,
 							},
 							{
-								path: 'quiz',
+								path: ROUTES.interview.history.route,
 								element: <Outlet />,
-								handle: { crumb: 'Собеседование' },
+								handle: {
+									crumb: 'История собеседований',
+								},
 								children: [
-									{ index: true, element: <CreateQuizPage /> },
 									{
-										path: 'interviewQuiz',
-										element: <InterviewQuizPage />,
+										index: true,
+										element: <InterviewHistoryPage />,
 									},
 									{
 										path: ':quizId',
@@ -90,21 +93,14 @@ export const router = createBrowserRouter([
 								],
 							},
 							{
-								path: 'interview-statistics',
+								path: ROUTES.interview.statistic.route,
 								element: <InterviewStatisticsPage />,
 								handle: {
 									crumb: 'Статистика собеседований',
 								},
 							},
 							{
-								path: 'interviewQuizResult',
-								element: <InterviewQuizResultPage />,
-								handle: {
-									crumb: 'Результат викторины',
-								},
-							},
-							{
-								path: 'questions',
+								path: ROUTES.interview.questions.route,
 								element: <Outlet />,
 								handle: {
 									crumb: 'Список вопросов',
@@ -123,11 +119,23 @@ export const router = createBrowserRouter([
 									},
 								],
 							},
+							{
+								path: ROUTES.interview.quiz.route,
+								element: <Outlet />,
+								handle: { crumb: 'Собеседование' },
+								children: [
+									{ index: true, element: <CreateQuizPage /> },
+
+									{
+										path: ROUTES.interview.quiz.new.route,
+										element: <InterviewQuizPage />,
+										handle: {
+											crumb: 'Викторина',
+										},
+									},
+								],
+							},
 						],
-					},
-					{
-						path: 'interviewHistory',
-						element: <InterviewHistoryPage />,
 					},
 					{
 						path: '*',
@@ -136,7 +144,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: '/auth',
+				path: ROUTES.auth.route,
 				element: (
 					<UnAuthRoute>
 						<AuthLayout />
@@ -144,11 +152,11 @@ export const router = createBrowserRouter([
 				),
 				children: [
 					{
-						path: 'login',
+						path: ROUTES.auth.login.route,
 						element: <LoginPage />,
 					},
 					{
-						path: 'registration',
+						path: ROUTES.auth.register.route,
 						element: <RegistrationPage />,
 					},
 				],
