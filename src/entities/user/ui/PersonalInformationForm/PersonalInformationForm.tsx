@@ -1,4 +1,5 @@
 import { Controller, useFormContext } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 import { Button, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -49,7 +50,19 @@ export const PersonalInformationForm = () => {
 							/>
 						</Label>
 						<Label className={style.label} text="Номер для связи">
-							<Input {...register('phone')} className={style.input} />
+							<Controller
+								name="phone"
+								control={control}
+								render={({ field: { onChange, value } }) => (
+									<InputMask
+										className={style.phone}
+										mask={'+7-(999)-999-99-99'}
+										placeholder={'+7-(XXX)-XXX-XX-XX'}
+										onChange={onChange}
+										value={value}
+									/>
+								)}
+							/>
 						</Label>
 						<Label className={style.label} text="Email для связи">
 							<Input {...register('email')} className={style.input} />
@@ -61,9 +74,9 @@ export const PersonalInformationForm = () => {
 								placeholder="Напр. Санкт-Петербург, Россия"
 							/>
 						</Label>
-						<Label className={style.label} text="Уровень специалиста">
+						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-						</Label>
+						</Label> */}
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>

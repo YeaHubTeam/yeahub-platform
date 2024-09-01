@@ -7,8 +7,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Tabs } from '@/shared/ui/Tabs';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { EducationFrom } from '@/entities/education';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ExperienceForm } from '@/entities/experience';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ProjectForm } from '@/entities/project';
 import { SkillsForm } from '@/entities/skill';
 import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
@@ -43,24 +46,24 @@ export const EditProfileForm = () => {
 			label: t('tabs.items.skills'),
 			Component: SkillsForm,
 		},
-		{
-			id: 3,
-			title: 'projects',
-			label: t('tabs.items.projects'),
-			Component: ProjectForm,
-		},
-		{
-			id: 4,
-			title: 'experience',
-			label: t('tabs.items.experience'),
-			Component: ExperienceForm,
-		},
-		{
-			id: 5,
-			title: 'education',
-			label: t('tabs.items.education'),
-			Component: EducationFrom,
-		},
+		// {
+		// 	id: 3,
+		// 	title: 'projects',
+		// 	label: t('tabs.items.projects'),
+		// 	Component: ProjectForm,
+		// },
+		// {
+		// 	id: 4,
+		// 	title: 'experience',
+		// 	label: t('tabs.items.experience'),
+		// 	Component: ExperienceForm,
+		// },
+		// {
+		// 	id: 5,
+		// 	title: 'education',
+		// 	label: t('tabs.items.education'),
+		// 	Component: EducationFrom,
+		// },
 	];
 
 	const { hash } = useLocation();

@@ -1,19 +1,33 @@
+import classNames from 'classnames';
+
 import { Block } from '@/shared/ui/Block';
 
 import styles from './ProgressBlock.module.css';
 
-export const ProgressBlock = () => {
+interface ProgressBlockProps {
+	checksCount?: number;
+}
+
+export const ProgressBlock = ({ checksCount }: ProgressBlockProps) => {
+	// create bars - hardcoded length by 3?
+	const bars = Array.from({ length: 3 }, (_, i) => i + 1);
+
+	const classNamesRow = (bar: number) =>
+		classNames(styles['progress-bar-item'], {
+			// large to current question?
+			[styles['progress-bar-item-large']]: bar === checksCount,
+			[styles['progress-bar-item-checked']]: bar <= (checksCount ?? 0),
+		});
+
 	return (
 		<Block className={styles.wrapper}>
 			<h3 className={styles.title}>Прогресс</h3>
 			<div>
-				<p className={styles.info}>Пройдено 3 из 3 вопрос изучен!</p>
+				<p className={styles.info}>Пройдено {checksCount ?? 0} из 3 вопрос изучен!</p>
 				<div className={styles['progress-bar-wrapper']}>
-					<span className={styles['progress-bar-item']}></span>
-					<span
-						className={`${styles['progress-bar-item']} ${styles['progress-bar-item-large']}`}
-					></span>
-					<span className={styles['progress-bar-item']}></span>
+					{bars.map((bar) => (
+						<span key={bar} className={classNamesRow(bar)}></span>
+					))}
 				</div>
 			</div>
 		</Block>

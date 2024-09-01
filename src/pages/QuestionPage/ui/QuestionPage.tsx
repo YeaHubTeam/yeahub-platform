@@ -3,6 +3,8 @@ import { useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
 import { NavLink, useParams } from 'react-router-dom';
 
+import { Loader } from '@/shared/ui/Loader';
+
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -17,9 +19,17 @@ import {
 import styles from './QuestionPage.module.css';
 
 export const QuestionPage = () => {
-	const { questionId } = useParams<{ questionId: string }>();
-	const { data: question } = useGetQuestionByIdQuery(questionId as string);
-	const { data: userProfile } = useProfileQuery();
+	const { questionId } = useParams();
+
+	const { data: profile } = useProfileQuery();
+	const {
+		data: question,
+		isFetching,
+		isLoading,
+	} = useGetQuestionByIdQuery({
+		questionId,
+		profileId: profile?.id,
+	});
 
 	const authorFullName = useMemo(() => {
 		if (question?.createdBy) {
@@ -27,6 +37,10 @@ export const QuestionPage = () => {
 			return `${author.firstName} ${author.lastName}`;
 		}
 	}, [question]);
+
+	if (isLoading || isFetching) {
+		return <Loader />;
+	}
 
 	if (isMobile) {
 		return (
@@ -36,7 +50,7 @@ export const QuestionPage = () => {
 					status={question?.status}
 					title={question?.title}
 				/>
-				<ProgressBlock />
+				<ProgressBlock checksCount={question?.checksCount} />
 				<AdditionalInfo
 					rate={question?.rate}
 					complexity={question?.complexity}
@@ -46,7 +60,7 @@ export const QuestionPage = () => {
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 				<QuestionActions
-					profileId={userProfile ? userProfile.profiles[0].profileId : ''}
+					profileId={profile ? profile.profiles[0].profileId : ''}
 					questionId={questionId ? questionId : ''}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
@@ -63,13 +77,13 @@ export const QuestionPage = () => {
 					title={question?.title}
 				/>
 				<QuestionActions
-					profileId={userProfile ? userProfile.profiles[0].profileId : ''}
+					profileId={profile ? profile.profiles[0].profileId : ''}
 					questionId={questionId ? questionId : ''}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</div>
 			<div className={styles.additional}>
-				<ProgressBlock />
+				<ProgressBlock checksCount={question?.checksCount} />
 				<AdditionalInfo
 					rate={question?.rate}
 					complexity={question?.complexity}
