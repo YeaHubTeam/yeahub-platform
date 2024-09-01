@@ -8,13 +8,13 @@ import { Skill } from '@/entities/skill';
 import styles from './AdditionalInfo.module.css';
 
 //todo после обновления рейтинга и сложности скорректировать рендер компонента
-interface Props {
+interface AdditionalInfoProps {
 	rate?: number;
 	complexity?: number;
 	questionSkills?: Skill[];
 }
 
-export const AdditionalInfo = ({ rate, complexity, questionSkills }: Props) => {
+export const AdditionalInfo = ({ rate, complexity, questionSkills }: AdditionalInfoProps) => {
 	return (
 		<Block className={styles['normal-hight']}>
 			<div className={styles.wrapper}>

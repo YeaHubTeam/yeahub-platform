@@ -1,15 +1,14 @@
-import { FC } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import type { ProfileSkill } from '@/entities/skill';
 
 import styles from './SkillsBlockItem.module.css';
 
-interface Props {
+interface SkillsBlockItemProps {
 	skill: ProfileSkill;
 }
 
-export const SkillsBlockItem: FC<Props> = ({ skill }) => {
+export const SkillsBlockItem = ({ skill }: SkillsBlockItemProps) => {
 	const { name, iconName } = skill;
 
 	return (

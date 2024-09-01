@@ -10,12 +10,11 @@ import styles from './FullInterviewHistoryItem.module.css';
 import { InterviewHeader } from './InterviewHeader/InterviewHeader';
 import { InterviewParameters } from './InterviewParameters/InterviewParameters';
 
-interface Props {
+interface FullInterviewHistoryItemProps {
 	interview: QuizHistoryResponse;
-	interviewNumber: number;
 }
 
-export const FullInterviewHistoryItem = ({ interview, interviewNumber }: Props) => {
+export const FullInterviewHistoryItem = ({ interview }: FullInterviewHistoryItemProps) => {
 	const { id, skills } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 
@@ -25,7 +24,7 @@ export const FullInterviewHistoryItem = ({ interview, interviewNumber }: Props) 
 		<li>
 			<Link to={`/interview/${id}`}>
 				<Block className={styles.container}>
-					<InterviewHeader title={t('title', null, { number: interviewNumber })} />
+					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />
 					{notEmptySkills && <QuestionCategories questionCategories={skills} />}
 				</Block>

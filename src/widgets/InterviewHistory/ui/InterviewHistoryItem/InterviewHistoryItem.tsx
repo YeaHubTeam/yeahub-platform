@@ -1,34 +1,33 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { Interview, InterviewResults } from '@/entities/quiz';
+import { InterviewResults, QuizHistoryResponse } from '@/entities/quiz';
 
 import styles from './InterviewHistoryItem.module.css';
 
-interface Props {
-	interview: Interview;
+interface InterviewHistoryItemProps {
+	interview: QuizHistoryResponse;
 }
 
-export const InterviewHistoryItem: FC<Props> = ({ interview }) => {
-	const { t } = useI18nHelpers(i18Namespace.interview);
-	const { id, title, date, correctAnswersCount, incorrectAnswersCount } = interview;
-
-	const formattedDate = formatDate(date);
+export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) => {
+	const { id, successCount, fullCount } = interview;
+	const incorrectAnswersCount = fullCount - successCount;
+	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
+	const formattedDate = formatDate(new Date(interview.endDate));
 
 	return (
 		<li className={styles.item}>
 			<Link to={`/interview/${id}`} className={styles.link}>
 				<time>{formattedDate}</time>
 				<div className={styles.info}>
-					<h4 className={styles.title}>{title}</h4>
+					<h4 className={styles.title}>{t('title', null, { number: interview.quizNumber })}</h4>
 					<ul className={styles.params}>
 						<InterviewResults
-							label={t('history_preparation.resultText')}
-							correctAnswersCount={correctAnswersCount}
+							label={t('resultTitle')}
+							correctAnswersCount={successCount}
 							incorrectAnswersCount={incorrectAnswersCount}
 						/>
 					</ul>

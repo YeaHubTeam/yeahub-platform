@@ -1,4 +1,4 @@
-import { FC, useState, KeyboardEvent } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { Icon, Popover } from 'yeahub-ui-kit';
 
 import styles from './BurgerMenu.module.css';
@@ -8,7 +8,7 @@ interface BurgerMenuProps {
 	className?: string;
 }
 
-export const BurgerMenu: FC<BurgerMenuProps> = ({ menuItems, className = '' }) => {
+export const BurgerMenu = ({ menuItems, className = '' }: BurgerMenuProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleMenu = () => {

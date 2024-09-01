@@ -5,11 +5,11 @@ import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
 import { LS_ACCESS_TOKEN_KEY } from '@/entities/auth';
 
-type Props = {
+interface UnAuthRouteProps {
 	children: React.ReactNode;
-};
+}
 
-export const UnAuthRoute = ({ children }: Props) => {
+export const UnAuthRoute = ({ children }: UnAuthRouteProps) => {
 	const isAuth = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const replaceUrl = '/';
 

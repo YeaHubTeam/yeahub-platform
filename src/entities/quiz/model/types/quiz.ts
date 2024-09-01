@@ -57,6 +57,7 @@ export interface QuizHistoryParams {
  
  * @property {string} id - Unique identifier of the interview history.
  * @property {string} profileId - Identifier of the user profile.
+ * @property {number} quizNumber - Quiz serial number
  * @property {string} startDate - Start date and time of the interview.
  * @property {string} endDate - End date and time of the interview.
  * @property {number} fullCount - Total number of questions in the interview.
@@ -68,6 +69,7 @@ export interface QuizHistoryParams {
 export interface QuizHistoryResponse {
 	id: string;
 	profileId: string;
+	quizNumber: number;
 	endDate: string;
 	startDate: string;
 	fullCount: number;
