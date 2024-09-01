@@ -59,7 +59,6 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-
 		getHistoryQuiz: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
 			query: ({ profileID, params }) => {
 				return {
@@ -69,7 +68,6 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-
 		saveQuizResult: build.mutation<boolean, ActiveQuizWithDate>({
 			query: (data) => {
 				return {
@@ -78,6 +76,7 @@ const quizApi = baseApi.injectEndpoints({
 					body: data,
 				};
 			},
+			invalidatesTags: [ApiTags.HISTORY_QUIZ],
 			async onQueryStarted(arg, { queryFulfilled, extra }) {
 				try {
 					await queryFulfilled;
