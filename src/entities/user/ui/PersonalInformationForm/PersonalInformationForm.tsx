@@ -74,9 +74,9 @@ export const PersonalInformationForm = () => {
 								placeholder="Напр. Санкт-Петербург, Россия"
 							/>
 						</Label>
-						<Label className={style.label} text="Уровень специалиста">
+						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-						</Label>
+						</Label> */}
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>
