@@ -9,3 +9,15 @@
 .button:hover {
   cursor: pointer;
 }
+
+@media (width <= 800px) {
+  .wrapper {
+    margin-bottom: 24px;
+  } 
+}
+
+@media (width <= 480px) {
+  .wrapper {
+    margin-bottom: 16px;
+  } 
+}

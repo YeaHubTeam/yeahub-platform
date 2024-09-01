@@ -3,3 +3,10 @@
   color: var(--text-color-light);
   font-size: var(--font-size-p-m);
 }
+
+@media (width <= 480px) {
+  .title {
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-s);
+  }
+}
