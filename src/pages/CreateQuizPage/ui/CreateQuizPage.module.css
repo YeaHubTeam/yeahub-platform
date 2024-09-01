@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   column-gap: 43px;
+  margin-bottom: 48px;
 }
 
 .additional-wrapper {
@@ -20,5 +21,26 @@
 }
 
 .button {
+  display: flex;
+  margin-top: auto;
   margin-left: auto;
+}
+
+@media (width <= 800px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+}
+
+@media (width <= 480px) {
+  .title {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-h-xs);
+  }
+
+  .additional-wrapper {
+    row-gap: 16px;
+  }
 }

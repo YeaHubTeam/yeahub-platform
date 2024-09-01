@@ -1,12 +1,16 @@
-.title {
-  margin-bottom: 16px;
-  color: var(--text-color-light);
-  font-size: var(--font-size-p-m);
+.btn {
+  display: flex;
+  justify-content: start;
 }
 
 @media (width <= 480px) {
-  .title {
+  .btn {
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-s);
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 }
