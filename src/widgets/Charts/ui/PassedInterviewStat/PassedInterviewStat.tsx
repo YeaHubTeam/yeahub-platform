@@ -1,6 +1,6 @@
 import ReactECharts from 'echarts-for-react';
 
-import { AttemptInfoItemProps, AttemptInfoItem } from '@/shared/ui/AttemptInfoItem';
+import { AttemptData, AttemptInfoItem } from '@/shared/ui/AttemptInfoItem';
 
 import { options } from '../../model/constants/options';
 
@@ -8,7 +8,7 @@ import styles from './PassedInterviewStat.module.css';
 
 interface PassedInterviewStatProps {
 	totalAttempt: number;
-	attemptData: AttemptInfoItemProps[];
+	attemptData: AttemptData[];
 }
 
 export const PassedInterviewStat = ({ totalAttempt, attemptData }: PassedInterviewStatProps) => {
