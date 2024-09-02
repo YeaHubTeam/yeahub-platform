@@ -3,8 +3,8 @@
 }
 
 .content {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
 }
 
@@ -13,13 +13,10 @@
   flex-direction: column;
   gap: 20px;
   min-width: 740px;
-  max-width: 1000px;
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  min-width: 360px;
 }
 
 .separator {
@@ -27,6 +24,13 @@
   width: 100%;
   height: 1px;
   background-color: var(--color-black-50);
+}
+
+@media (width < 1440px) {
+  .content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 

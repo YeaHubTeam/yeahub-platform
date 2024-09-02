@@ -1,8 +1,0 @@
-import styles from './InfoBlockText.module.css';
-
-export const InfoBlockText = () => {
-	const text =
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas eu lectus eu varius. Nam pretium turpis nec nisl convallis ultrices. Quisque vitae nisi placerat, maximus neque vestibulum, scelerisque erat. Suspendisse a volutpat urna, vel finibus risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc diam sapien, sodales ut justo vitae, convallis convallis justo. Vivamus pellentesque tempus nisi et rutrum. Integer egestas, leo nec varius luctus, eros turpis mattis nisi, a condimentum mi libero in neque. Vestibulum commodo eget erat et ullamcorper. Curabitur elementum condimentum est, ut porta metus auctor ac. Nunc vulputate tincidunt tempus. Sed varius, nulla sit amet molestie ultricies, enim eros pulvinar nisi, sit amet bibendum urna lectus ac risus. Nulla sed aliquet quam, vitae suscipit libero. In hac habitasse platea dictumst. Proin varius nisl vel nisl bibendum rutrum. Duis placerat sapien ac tortor semper, sed congue sapien accumsan. Sed viverra eleifend purus id congue. Nunc eget massa tincidunt nulla vestibulum pellentesque. Ut scelerisque ante feugiat elit porta, sed maximus arcu pellentesque. Phasellus venenatis sapien sed arcu sagittis consectetur. Phasellus ac neque vitae ante finibus varius. Phasellus volutpat euismod maximus. Fusce finibus arcu urna, in finibus justo ultrices ac. Quisque quis venenatis sapien. Ut turpis felis, porta a semper suscipit, scelerisque finibus velit. Curabitur at nisl tortor. Morbi consequat iaculis odio eget ullamcorper. Nam pharetra euismod ultrices.';
-
-	return <div className={styles['info-textarea']}>{text}</div>;
-};

@@ -14,7 +14,8 @@ interface InterviewQuestionsItemProps {
 }
 
 export const InterviewQuestionsItem = ({ question }: InterviewQuestionsItemProps) => {
-	const { id, imageSrc, title, rate, rating } = question;
+	const { id, imageSrc, title, rate, complexity = 0 } = question;
+
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (
 		<li className={styles.item}>
@@ -23,8 +24,8 @@ export const InterviewQuestionsItem = ({ question }: InterviewQuestionsItemProps
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
 					<ul className={styles.params}>
-						<QuestionParam label={t('questions.rating')} value={rating} />
-						<QuestionParam label={t('questions.complexity')} value={rate} />
+						<QuestionParam label={t('questions.rating')} value={rate} />
+						<QuestionParam label={t('questions.complexity')} value={complexity} />
 					</ul>
 				</div>
 			</Link>
