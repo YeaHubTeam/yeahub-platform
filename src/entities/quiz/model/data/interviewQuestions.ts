@@ -1,63 +1,6 @@
 import { Answers, InterviewQuestionBtn } from '../types/quiz';
 
 // временные данные
-export const INTERVIEW_QUESTIONS = [
-	{
-		id: 1,
-		title: 'Что такое Virtual DOM, и как он работает?',
-		description: 'What is a Virtual DOM and how it works?',
-		imageSrc: 'https://goo.su/T2RuWf',
-		keywords: ['javascript'],
-		shortAnswer: '2+2=4',
-		longAnswer: '2+2=4',
-		status: 'draft',
-		rate: 8,
-		rating: 10,
-		specializations: [1, 3],
-		skills: [10, 23],
-		createdAt: '',
-		updatedAt: '',
-		createdBy: null,
-		updatedBy: null,
-	},
-	{
-		id: 2,
-		title: 'Что такое Virtual DOM, и как он работает?',
-		description: 'What is a Virtual DOM and how it works?',
-		imageSrc: 'https://goo.su/T2RuWf',
-		keywords: ['javascript'],
-		shortAnswer: '2+2=4',
-		longAnswer: '2+2=4',
-		status: 'draft',
-		rate: 8,
-		rating: 10,
-		specializations: [1, 3],
-		skills: [10, 23],
-		createdAt: '',
-		updatedAt: '',
-		createdBy: null,
-		updatedBy: null,
-	},
-	{
-		id: 3,
-		title: 'Что такое Virtual DOM, и как он работает?',
-		description: 'What is a Virtual DOM and how it works?',
-		imageSrc: 'https://goo.su/T2RuWf',
-		keywords: ['javascript'],
-		shortAnswer: '2+2=4',
-		longAnswer: '2+2=4',
-		status: 'draft',
-		rate: 8,
-		rating: 10,
-		specializations: [1, 3],
-		skills: [10, 23],
-		createdAt: '',
-		updatedAt: '',
-		createdBy: null,
-		updatedBy: null,
-	},
-];
-
 export const QUIZ_QUESTIONS: Answers[] = [
 	{
 		answer: 'UNKNOWN',

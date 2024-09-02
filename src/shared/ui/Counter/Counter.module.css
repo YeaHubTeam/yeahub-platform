@@ -18,3 +18,9 @@
 .count {
   user-select: none;
 }
+
+@media (width <= 480px) {
+  .count {
+    font-size: var(--font-size-p-s);
+  }
+}

@@ -5,7 +5,7 @@
   gap: 20px;
 }
 
-.container>div {
+.container > div {
   height: auto;
 }
 
@@ -23,10 +23,26 @@
   height: auto;
 }
 
-.questions > * + *, .category-progress > * + * {
+.questions > * + *,
+.category-progress > * + * {
   margin-top: 20px;
 }
 
 .attempt > * + * {
   margin-top: 50px;
+}
+
+@media (width <= 1280px) {
+  .container {
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: 1fr;
+  }
+
+  .attempt {
+    display: grid;
+  }
+
+  .attempt > :nth-child(2) {
+    place-self: center center;
+  }
 }

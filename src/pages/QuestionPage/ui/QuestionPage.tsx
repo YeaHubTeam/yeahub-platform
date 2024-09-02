@@ -59,7 +59,10 @@ export const QuestionPage = () => {
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
-				<QuestionActions />
+				<QuestionActions
+					profileId={profile ? profile.profiles[0].profileId : ''}
+					questionId={questionId ? questionId : ''}
+				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		);
@@ -73,7 +76,10 @@ export const QuestionPage = () => {
 					status={question?.status}
 					title={question?.title}
 				/>
-				<QuestionActions />
+				<QuestionActions
+					profileId={profile ? profile.profiles[0].profileId : ''}
+					questionId={questionId ? questionId : ''}
+				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</div>
 			<div className={styles.additional}>

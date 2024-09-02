@@ -3,6 +3,7 @@ import { USER_INFO } from '@/entities/user';
 import styles from './UserLeftBlock.module.css';
 
 export const UserLeftBlock = () => {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { img, schedule } = USER_INFO;
 
 	return (
@@ -10,7 +11,7 @@ export const UserLeftBlock = () => {
 			<div className={styles['card-avatar']}>
 				<img src={img} alt="" />
 			</div>
-			<span className={styles['card-schedule']}>{schedule}</span>
+			{/* <span className={styles['card-schedule']}>{schedule}</span> */}
 		</div>
 	);
 };
