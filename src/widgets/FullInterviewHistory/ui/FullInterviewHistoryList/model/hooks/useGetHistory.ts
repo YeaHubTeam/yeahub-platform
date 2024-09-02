@@ -9,7 +9,10 @@ TODO: refresh запрос срабатывает какждый раз, при 
 interviewHistory, запрос скипнется на получение данных,надо между роутами походить
 */
 
-export const useGetHistory = (params?: QuizHistoryParams) => {
+export const useGetHistory = (
+	params?: QuizHistoryParams,
+	uniqueKey: string = 'interviewHistory',
+) => {
 	const profile = useProfileQuery();
 
 	const profileId = profile.data?.profiles[0].profileId;
@@ -19,7 +22,8 @@ export const useGetHistory = (params?: QuizHistoryParams) => {
 			? {
 					profileID: profileId,
 					params: { ...params },
-					uniqueKey: 'interviewHistory',
+					//have to pass uniqueKey to force query to refetch data after merging
+					uniqueKey,
 				}
 			: skipToken,
 	);

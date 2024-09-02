@@ -1,4 +1,4 @@
-import { MutableRefObject, useCallback, useRef, useState } from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
@@ -15,15 +15,19 @@ interface InterviewHistoryProps {
 
 export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) => {
 	const [page, setPage] = useState(1);
+	const [uniqueKey, setUniqueKey] = useState(Date.now().toString());
 
 	const startAfter = Array.isArray(dateRange) ? dateRange[0] : dateRange;
 	const startBefore = Array.isArray(dateRange) ? dateRange[1] : dateRange;
 
-	const { data, total, isLoading, isFetching, isSuccess } = useGetHistory({
-		page,
-		startAfter: startAfter ? startAfter.toISOString() : undefined,
-		startBefore: startBefore ? startBefore.toISOString() : undefined,
-	});
+	const { data, total, isLoading, isFetching, isSuccess } = useGetHistory(
+		{
+			page,
+			startAfter: startAfter ? startAfter.toISOString() : undefined,
+			startBefore: startBefore ? startBefore.toISOString() : undefined,
+		},
+		uniqueKey,
+	);
 
 	const lastItemRef = useRef() as MutableRefObject<HTMLElement>;
 
@@ -36,6 +40,15 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 	useInfiniteScroll({ callback: onLoadNext, lastItemRef });
 
 	const isEmptyData = isSuccess && data.length === 0;
+
+	const refreshParams = useCallback(() => {
+		setUniqueKey(Date.now().toString());
+		setPage(1);
+	}, []);
+
+	useEffect(() => {
+		refreshParams;
+	}, [dateRange, refreshParams]);
 
 	return (
 		<>
