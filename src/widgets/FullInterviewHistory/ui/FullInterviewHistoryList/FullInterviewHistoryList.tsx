@@ -1,24 +1,27 @@
 import { Loader } from '@/shared/ui/Loader';
 
+import { QuizHistoryResponse } from '@/entities/quiz';
+
 import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterviewHistoryItem';
 
 import styles from './FullInterviewHistoryList.module.css';
-import { useGetHistory } from './model/hooks/useGetHistory';
 
-export const FullInterviewHistoryList = () => {
-	const { data, isLoading, isFetching, isSuccess } = useGetHistory();
+interface InterviewHistoryProps {
+	quizzesHistory?: QuizHistoryResponse[];
+}
 
-	if (isLoading || isFetching) {
+export const FullInterviewHistoryList = ({ quizzesHistory }: InterviewHistoryProps) => {
+	if (!quizzesHistory) {
 		return <Loader />;
 	}
 
-	const isEmptyData = isSuccess && data.length === 0;
+	const isEmptyData = quizzesHistory.length === 0;
 
 	return (
 		<>
 			{!isEmptyData ? (
 				<ul className={styles.list}>
-					{data.map((interview) => (
+					{quizzesHistory.map((interview) => (
 						<FullInterviewHistoryItem key={interview.id} interview={interview} />
 					))}
 				</ul>
