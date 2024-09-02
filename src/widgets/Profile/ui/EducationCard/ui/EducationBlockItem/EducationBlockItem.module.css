@@ -1,0 +1,36 @@
+.education-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.education-name-university {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-h-xs);
+}
+
+.education-info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-size: var(--font-size-p-s);
+
+}
+
+.education-name {
+  list-style-type: none;
+  font-weight: var(--font-weight-600);
+
+}
+
+.education-rank, .education-time {
+  margin-left: 8px;
+  color: var(--color-black-600);
+}
+
+.separator {
+  margin: 16px 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-black-50);
+}

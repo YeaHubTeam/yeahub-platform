@@ -1,0 +1,15 @@
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projects-title {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-h-xs);
+}
+
+.projects-edit {
+  cursor: pointer;
+  font-size: var(--font-size-p-s);
+}

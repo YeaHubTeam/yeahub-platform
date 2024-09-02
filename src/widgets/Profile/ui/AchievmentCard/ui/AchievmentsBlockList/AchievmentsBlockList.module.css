@@ -1,0 +1,5 @@
+.achievement-list {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
