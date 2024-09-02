@@ -19,13 +19,18 @@
   display: block;
   flex-basis: 33%;
   height: 8px;
-  background-color: var(--color-green-900);
+  background-color: var(--color-black-50);
 }
 
 .progress-bar-item:not(:last-of-type) {
   margin-right: 1px;
 }
 
+
 .progress-bar-item-large {
   height: 12px;
+}
+
+.progress-bar-item-checked {
+  background-color: var(--color-green-900);
 }

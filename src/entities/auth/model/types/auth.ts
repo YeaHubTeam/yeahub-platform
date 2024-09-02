@@ -30,7 +30,7 @@ export interface GetAuthResponse {
 
 export interface Profile {
 	profileId: string;
-	specializationID: number;
+	specializationId: number;
 }
 
 export interface ExtraArgument {

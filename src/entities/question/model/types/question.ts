@@ -17,6 +17,7 @@ export interface Question {
 	updatedAt: string;
 	createdBy: null | string;
 	updatedBy: null;
+	checksCount?: number;
 	//todo убрать specializations, skills и rating так как это замоканные данные
 	questionSpecializations?: Skill[];
 	questionSkills?: Skill[];
@@ -33,7 +34,12 @@ export interface QuestionsListParams {
 	titleOrDescription?: string;
 	rate?: number[]; //complexity
 	rating?: number[]; //rate
-	specialization?: number[];
+	specialization?: number | number[];
 	progressStatus?: number[]; //not implemented
 	complexity?: number[]; //not implemented
+}
+
+export interface QuestionByIdParams {
+	questionId?: string;
+	profileId?: string;
 }

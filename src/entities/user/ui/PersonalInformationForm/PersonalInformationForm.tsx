@@ -90,10 +90,9 @@ export const PersonalInformationForm = () => {
 							/>
 							<div className={style.error}>{errors.location?.message}</div>
 						</Label>
-						<Label className={style.label} text="Уровень специалиста">
+						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-							<div className={style.error}>{errors.skillLevel?.message}</div>
-						</Label>
+						</Label> */}
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>
