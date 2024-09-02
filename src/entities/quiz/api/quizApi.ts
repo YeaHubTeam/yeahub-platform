@@ -1,10 +1,14 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { getFromLS, getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Response } from '@/shared/types/types';
 
 import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
-import { setActiveQuizQuestions, setStartDate } from '../model/slices/activeQuizSlice';
+import {
+	clearActiveQuizState,
+	setActiveQuizQuestions,
+	setStartDate,
+} from '../model/slices/activeQuizSlice';
 import {
 	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
@@ -42,12 +46,16 @@ const quizApi = baseApi.injectEndpoints({
 				url: `/interview-preparation/quizzes/active/${profileId}`,
 				params,
 			}),
+			forceRefetch() {
+				return true;
+			},
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
 					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
 					const localActiveQuiz = getJSONFromLS(LS_ACTIVE_QUIZ_KEY);
+
 					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
 					dispatch(
 						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
@@ -77,11 +85,11 @@ const quizApi = baseApi.injectEndpoints({
 					body: data,
 				};
 			},
-			async onQueryStarted(arg, { queryFulfilled, extra }) {
+			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					removeFromLS(LS_ACTIVE_QUIZ_KEY);
-					removeFromLS(LS_START_DATE_QUIZ_KEY);
+					dispatch(clearActiveQuizState());
+
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(`/interview/quiz/${arg.id}`);
 				} catch (error) {
