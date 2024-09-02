@@ -19,6 +19,7 @@ export const useGetHistory = (params?: QuizHistoryParams) => {
 			? {
 					profileID: profileId,
 					params: { ...params },
+					uniqueKey: 'interviewHistory',
 				}
 			: skipToken,
 	);
@@ -26,5 +27,6 @@ export const useGetHistory = (params?: QuizHistoryParams) => {
 	return {
 		...historyQuiz,
 		data: historyQuiz.data?.data || [],
+		total: historyQuiz.data?.total || 0,
 	};
 };
