@@ -10,8 +10,20 @@ const root = document.getElementById('root');
 
 const container = createRoot(root as HTMLElement);
 
-container.render(
-	<StoreProvider>
-		<RouterProvider router={router} />
-	</StoreProvider>,
-);
+async function deferRender() {
+	return;
+	if (process.env.NODE_ENV != 'development') {
+		return;
+	}
+
+	const { worker } = await import('./app/msw/browser');
+	return worker.start();
+}
+
+deferRender().then(() => {
+	container.render(
+		<StoreProvider>
+			<RouterProvider router={router} />
+		</StoreProvider>,
+	);
+});
