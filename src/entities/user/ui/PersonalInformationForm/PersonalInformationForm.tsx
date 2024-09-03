@@ -8,6 +8,7 @@ import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { SpecializationSelect } from '@/entities/specialization';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
+import { SocialNetWorksList } from '../SocialNetWorksList/SocialNetWorksList';
 
 import style from './PersonalInformationForm.module.css';
 
@@ -86,9 +87,12 @@ export const PersonalInformationForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<Label className={style.label} text="Платформа">
-							<Input {...register('socialLinks')} className={style.input} />
+							<Input {...register('socialPlatforms')} className={style.input} />
 						</Label>
-						{/* ToDo сдесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
+						{/* ToDo здесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
+						<div className={style['inputs-wrapper']}>
+							<SocialNetWorksList />
+						</div>
 					</div>
 				</HorizontalContainer>
 			</VerticalContainer>
