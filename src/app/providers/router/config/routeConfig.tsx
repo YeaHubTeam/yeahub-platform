@@ -69,9 +69,6 @@ export const router = createBrowserRouter([
 							{
 								index: true,
 								element: <InterviewPage />,
-								handle: {
-									crumb: 'Викторина',
-								},
 							},
 							{
 								path: 'quiz',
@@ -82,6 +79,9 @@ export const router = createBrowserRouter([
 									{
 										path: 'interviewQuiz',
 										element: <InterviewQuizPage />,
+										handle: {
+											crumb: 'Викторина',
+										},
 									},
 									{
 										path: ':quizId',
