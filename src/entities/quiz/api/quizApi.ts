@@ -46,9 +46,6 @@ const quizApi = baseApi.injectEndpoints({
 				url: `/interview-preparation/quizzes/active/${profileId}`,
 				params,
 			}),
-			forceRefetch() {
-				return true;
-			},
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
@@ -97,6 +94,7 @@ const quizApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
+			invalidatesTags: [ApiTags.INTERVIEW_QUIZ],
 		}),
 	}),
 	overrideExisting: true,

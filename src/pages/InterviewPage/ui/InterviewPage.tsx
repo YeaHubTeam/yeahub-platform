@@ -1,23 +1,22 @@
 import { i18Namespace } from '@/shared/config/i18n';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { getQuizStartDate } from '@/entities/quiz';
+import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
-import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
 
 const InterviewPage = () => {
-	const startDate = useAppSelector(getQuizStartDate);
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
 	const questionStats = [
@@ -35,7 +34,7 @@ const InterviewPage = () => {
 		},
 	];
 
-	const isActiveQuizExist = !!startDate;
+	const isActiveQuizExist = !!getFromLS(LS_START_DATE_QUIZ_KEY);
 
 	return (
 		<div className={styles.container}>
@@ -43,7 +42,7 @@ const InterviewPage = () => {
 				<div className={styles.preparation}>
 					<InterviewPreparationHeader title={t('preparation.title')} />
 					<LinkWithArrowRight
-						link={!isActiveQuizExist ? 'quiz/interviewQuiz' : 'quiz'}
+						link={isActiveQuizExist ? 'quiz/interviewQuiz' : 'quiz'}
 						linkTitle={t('preparation.linkText')}
 					/>
 					<div className={styles['preparation-wrapper']}>
