@@ -6,12 +6,11 @@ import styles from './styles.module.css';
 
 export const ToastOptions: DefaultToastOptions = {
 	custom: {
-		duration: 50000,
-		position: 'top-right',
+		position: 'bottom-right',
 	},
 };
 
-const DURATION_TOAST = 5000;
+const DURATION_TOAST = 3000;
 
 const TOAST_TITLE = {
 	success: 'Success',
