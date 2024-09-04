@@ -4,7 +4,7 @@
   "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
   "rules": {
     "scale-unlimited/declaration-strict-value": [
-      ["color", "background-color", "font-size", "font-weight", "font-family", "filter"],
+      ["color", "background-color", "font-family", "filter"],
       {
         "ignoreValues": ["currentColor", "unset", "inherit", "initial", "transparent"]
       }
