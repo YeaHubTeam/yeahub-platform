@@ -79,7 +79,10 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 			forceRefetch({ currentArg, previousArg }) {
-				return currentArg !== previousArg;
+				return (
+					currentArg?.uniqueKey !== previousArg?.uniqueKey ||
+					JSON.stringify(currentArg?.params) !== JSON.stringify(previousArg?.params)
+				);
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),

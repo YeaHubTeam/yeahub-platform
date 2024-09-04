@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EventCalendar } from '@/shared/ui/Calendar';
@@ -18,6 +19,12 @@ const InterviewHistoryPage = () => {
 	const handleDateChange = (dates: Value) => {
 		dispatch(interviewHistoryPageActions.setDateRange(dates));
 	};
+
+	useEffect(() => {
+		return () => {
+			dispatch(interviewHistoryPageActions.setDateRange(null));
+		};
+	}, []);
 
 	return (
 		<div className={styles.container}>

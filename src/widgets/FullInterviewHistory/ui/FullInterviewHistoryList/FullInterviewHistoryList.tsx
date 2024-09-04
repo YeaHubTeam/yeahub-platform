@@ -47,7 +47,7 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 	}, []);
 
 	useEffect(() => {
-		refreshParams;
+		if (dateRange) refreshParams();
 	}, [dateRange, refreshParams]);
 
 	return (
