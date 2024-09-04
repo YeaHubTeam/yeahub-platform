@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
+import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -21,8 +22,9 @@ import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+
 	const { data: userProfile } = useProfileQuery();
-	const { data: activeQuiz } = useGetActiveQuizQuery({
+	const { data: activeQuiz, isLoading } = useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].profileId || '',
 		params: {
 			page: 1,
@@ -31,8 +33,8 @@ const InterviewQuizPage = () => {
 	});
 	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
 
-	const activeQuizQuestions = useSelector(getActiveQuizQuestions);
-	const activeQuizStartDate = useSelector(getQuizStartDate);
+	const activeQuizStartDate = useAppSelector(getQuizStartDate);
+	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
 	const {
 		questionId,
@@ -47,6 +49,10 @@ const InterviewQuizPage = () => {
 		goToNextSlide,
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
@@ -77,6 +83,7 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Block>
+
 			<Block>
 				<div className={styles.question}>
 					<QuestionNavPanel
