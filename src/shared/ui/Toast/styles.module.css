@@ -57,6 +57,7 @@
   border: none;
   background: transparent;
   color: var(--color-black-800);
+  cursor: pointer;
 }
 
 .fade-in {
