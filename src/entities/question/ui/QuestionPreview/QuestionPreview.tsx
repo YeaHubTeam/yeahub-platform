@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
 import { TextHtml } from '@/shared/TextHtml/TextHtml';
+import { LearnButton } from '@/shared/ui/LearnButton';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
 import { Question } from '../../model/types/question';
@@ -47,14 +48,14 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 										Подробнее
 									</Button>
 								</NavLink>
-								<Button
+								<LearnButton
 									className={styles.button}
 									theme="tertiary"
 									preffix={<Icon icon="student" size={20} />}
 									size="small"
 								>
 									Изучать
-								</Button>
+								</LearnButton>
 								<Button
 									className={styles.button}
 									theme="tertiary"
