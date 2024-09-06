@@ -2,9 +2,9 @@ import { Icon } from 'yeahub-ui-kit';
 
 import styles from './InterviewHeader.module.css';
 
-type InterviewHeaderProps = {
+interface InterviewHeaderProps {
 	title: string;
-};
+}
 
 export const InterviewHeader = ({ title }: InterviewHeaderProps) => {
 	return (

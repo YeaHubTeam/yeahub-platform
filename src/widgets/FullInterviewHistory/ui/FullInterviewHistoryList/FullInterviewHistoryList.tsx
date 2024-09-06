@@ -1,10 +1,12 @@
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FixedSizeList as ReactWindowFullHistoryList } from 'react-window';
 
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
 import { Loader } from '@/shared/ui/Loader';
 
-import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterviewHistoryItem';
+import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem';
 
 import styles from './FullInterviewHistoryList.module.css';
 import { useGetHistory } from './model/hooks/useGetHistory';
@@ -12,6 +14,21 @@ import { useGetHistory } from './model/hooks/useGetHistory';
 interface InterviewHistoryProps {
 	dateRange?: Value;
 }
+
+interface ReactWindowRowProps {
+	index: number;
+	style: React.CSSProperties;
+}
+
+// We need to change this values to other sizes of screens
+const ITEM_HEIGHT = 290;
+const CALENDAR_GAP = 20;
+const CALENDAR_WIDTH = 360;
+
+const calcListWidth = (width: number) => {
+	return width - CALENDAR_WIDTH - CALENDAR_GAP;
+};
+//
 
 export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) => {
 	const [page, setPage] = useState(1);
@@ -29,7 +46,7 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 		uniqueKey,
 	);
 
-	const lastItemRef = useRef() as MutableRefObject<HTMLElement>;
+	const lastItemRef = useRef<HTMLLIElement | null>(null);
 
 	const onLoadNext = useCallback(() => {
 		if (!isLoading && !isFetching && data.length < total) {
@@ -39,7 +56,7 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 
 	useInfiniteScroll({ callback: onLoadNext, lastItemRef });
 
-	const isEmptyData = isSuccess && data.length === 0;
+	const isDataEmpty = isSuccess && data.length === 0;
 
 	const refreshParams = useCallback(() => {
 		setUniqueKey(Date.now().toString());
@@ -50,21 +67,30 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 		if (dateRange) refreshParams();
 	}, [dateRange, refreshParams]);
 
+	const { width: windowWidth, height: windowHeight } = useWindowSize();
+
 	return (
 		<>
 			{isLoading || isFetching ? <Loader /> : null}
-			{!isEmptyData ? (
-				<ul className={styles.list}>
-					{data.map((interview, index) => (
-						<FullInterviewHistoryItem
-							key={interview.id}
-							interview={interview}
-							itemRef={data.length === index + 1 ? lastItemRef : null}
-						/>
-					))}
-				</ul>
+			{isDataEmpty ? (
+				<p>Нет данных</p>
 			) : (
-				<p>Данных нет</p>
+				<ReactWindowFullHistoryList
+					className={styles.list}
+					itemSize={ITEM_HEIGHT}
+					itemCount={data.length}
+					height={windowHeight}
+					width={calcListWidth(windowWidth)}
+				>
+					{({ index, style }: ReactWindowRowProps) => (
+						<FullInterviewHistoryItem
+							key={data[index].id}
+							style={style}
+							interview={data[index]}
+							ref={data.length === index + 1 && lastItemRef?.current ? lastItemRef : null}
+						/>
+					)}
+				</ReactWindowFullHistoryList>
 			)}
 		</>
 	);
