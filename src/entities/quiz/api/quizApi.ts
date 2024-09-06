@@ -64,12 +64,30 @@ const quizApi = baseApi.injectEndpoints({
 			},
 		}),
 
-		getHistoryQuiz: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
+		getHistoryQuiz: build.query<
+			Response<QuizHistoryResponse[]>,
+			QuizHistoryRequest & { uniqueKey: string }
+		>({
 			query: ({ profileID, params }) => {
 				return {
 					url: `/interview-preparation/quizzes/history/${profileID}`,
 					params,
 				};
+			},
+			serializeQueryArgs: ({ endpointName, queryArgs }) => {
+				return endpointName + queryArgs.uniqueKey;
+			},
+			merge: (currentCache, newItems) => {
+				return {
+					...currentCache,
+					data: [...(currentCache.data ?? []), ...newItems.data],
+				};
+			},
+			forceRefetch({ currentArg, previousArg }) {
+				return (
+					currentArg?.uniqueKey !== previousArg?.uniqueKey ||
+					JSON.stringify(currentArg?.params) !== JSON.stringify(previousArg?.params)
+				);
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
