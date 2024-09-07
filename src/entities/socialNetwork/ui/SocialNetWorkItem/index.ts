@@ -1,1 +1,0 @@
-export { SocialNetWorkItem } from './SocialNetWorksItem';

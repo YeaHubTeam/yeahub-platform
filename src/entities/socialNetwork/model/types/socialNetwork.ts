@@ -11,7 +11,3 @@ export interface SocialNetwork {
 	code: SocialNetworkCode;
 	title: string;
 }
-
-export interface SocialFormValues {
-	socialNetwork: SocialNetwork[];
-}

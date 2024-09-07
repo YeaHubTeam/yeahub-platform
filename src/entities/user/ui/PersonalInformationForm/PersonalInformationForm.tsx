@@ -87,7 +87,6 @@ export const PersonalInformationForm = () => {
 						<p>Поделитесь своими профилями в других соц. сетях</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						{/* ToDo здесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
 						<SocialNetWorkList />
 					</div>
 				</HorizontalContainer>
