@@ -10,9 +10,9 @@ import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
-import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';

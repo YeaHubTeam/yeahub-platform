@@ -1,3 +1,4 @@
+import { MutableRefObject, LegacyRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -14,16 +15,17 @@ import { InterviewParameters } from './InterviewParameters/InterviewParameters';
 
 interface FullInterviewHistoryItemProps {
 	interview: QuizHistoryResponse;
+	itemRef: MutableRefObject<HTMLElement> | null;
 }
 
-export const FullInterviewHistoryItem = ({ interview }: FullInterviewHistoryItemProps) => {
+export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHistoryItemProps) => {
 	const { id, skills } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 
 	const notEmptySkills = skills.length > 0;
 
 	return (
-		<li>
+		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />

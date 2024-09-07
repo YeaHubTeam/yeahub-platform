@@ -18,6 +18,7 @@ export const InterviewHistoryList = () => {
 			? {
 					profileID: profileId,
 					params: { limit: 3 },
+					uniqueKey: 'interviewPreviewHistory',
 				}
 			: skipToken,
 	);
