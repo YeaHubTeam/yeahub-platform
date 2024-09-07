@@ -13,7 +13,6 @@ import { InterviewParameters } from './InterviewParameters';
 interface FullInterviewHistoryItemProps {
 	style?: React.CSSProperties;
 	interview: QuizHistoryResponse;
-	itemRef: MutableRefObject<HTMLElement> | null;
 }
 
 export const FullInterviewHistoryItem = ({ style, interview }: FullInterviewHistoryItemProps) => {
