@@ -47,7 +47,7 @@ export const options = {
 	pie: {
 		series: [
 			{
-				name: 'Всего попыток',
+				name: 'Всего вопросов',
 				type: 'pie',
 				startAngle: 0,
 				endAngle: 360,

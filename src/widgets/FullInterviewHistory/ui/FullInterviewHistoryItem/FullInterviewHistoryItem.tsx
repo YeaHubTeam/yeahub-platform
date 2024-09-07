@@ -22,7 +22,7 @@ export const FullInterviewHistoryItem = ({ interview }: FullInterviewHistoryItem
 
 	return (
 		<li>
-			<Link to={`/interview/${id}`}>
+			<Link to={`/interview/quiz/${id}`}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />

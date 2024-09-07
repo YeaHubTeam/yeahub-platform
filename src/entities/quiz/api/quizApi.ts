@@ -15,6 +15,8 @@ import {
 	ExtraArgument,
 	InterviewQuizGetRequest,
 	NewQuizResponse,
+	Quiz,
+	QuizByIdRequestParams,
 	QuizHistoryRequest,
 	QuizHistoryResponse,
 } from '../model/types/quiz';
@@ -96,6 +98,14 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			invalidatesTags: [ApiTags.INTERVIEW_QUIZ],
 		}),
+		getQuizById: build.query<Quiz, QuizByIdRequestParams>({
+			query: (params) => {
+				const { profileId, quizId } = params ?? {};
+				return {
+					url: `interview-preparation/quizzes/history/${profileId}/${quizId}`,
+				};
+			},
+		}),
 	}),
 	overrideExisting: true,
 });
@@ -105,4 +115,5 @@ export const {
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
+	useGetQuizByIdQuery,
 } = quizApi;
