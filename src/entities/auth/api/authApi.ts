@@ -1,4 +1,5 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { ROUTES } from '@/shared/config/router/routes';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
 import { LS_ACCESS_TOKEN_KEY } from '../model/constants/authConstants';
@@ -58,7 +59,7 @@ export const authApi = baseApi.injectEndpoints({
 					await queryFulfilled;
 					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('/auth/login');
+					typedExtra.navigate(ROUTES.auth.login.page);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

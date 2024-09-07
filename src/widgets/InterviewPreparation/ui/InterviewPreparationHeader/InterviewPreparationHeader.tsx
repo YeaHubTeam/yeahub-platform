@@ -1,3 +1,4 @@
+import { ROUTES } from '@/shared/config/router/routes';
 import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 
 import styles from './InterviewPreparationHeader.module.css';
@@ -14,7 +15,9 @@ export const InterviewPreparationHeader = ({
 	return (
 		<div className={styles.header}>
 			<h3 className={styles['header-title']}>{title}</h3>
-			{!!linkTitle && <LinkWithArrowRight link="quiz" linkTitle={linkTitle} />}
+			{!!linkTitle && (
+				<LinkWithArrowRight link={ROUTES.interview.quiz.page} linkTitle={linkTitle} />
+			)}
 		</div>
 	);
 };
