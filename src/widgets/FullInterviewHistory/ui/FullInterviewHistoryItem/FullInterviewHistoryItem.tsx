@@ -1,36 +1,33 @@
-import { MutableRefObject, LegacyRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
 import { QuestionCategories, type QuizHistoryResponse } from '@/entities/quiz';
 
 import styles from './FullInterviewHistoryItem.module.css';
-import { InterviewHeader } from './InterviewHeader/InterviewHeader';
-import { InterviewParameters } from './InterviewParameters/InterviewParameters';
+import { InterviewHeader } from './InterviewHeader';
+import { InterviewParameters } from './InterviewParameters';
 
 interface FullInterviewHistoryItemProps {
+	style?: React.CSSProperties;
 	interview: QuizHistoryResponse;
-	itemRef: MutableRefObject<HTMLElement> | null;
 }
 
-export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHistoryItemProps) => {
+export const FullInterviewHistoryItem = ({ style, interview }: FullInterviewHistoryItemProps) => {
 	const { id, skills } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 
-	const notEmptySkills = skills.length > 0;
+	const isSkillsNotEmpty = skills.length !== 0;
 
 	return (
-		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
-			<Link to={route(ROUTES.interview.history.result.page, id)}>
+		<li style={style}>
+			<Link to={`/interview/${id}`}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />
-					{notEmptySkills && <QuestionCategories questionCategories={skills} />}
+					{isSkillsNotEmpty && <QuestionCategories questionCategories={skills} />}
 				</Block>
 			</Link>
 		</li>
