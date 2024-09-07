@@ -82,6 +82,7 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 				>
 					{({ onItemsRendered, ref }) => (
 						<ReactWindowFullHistoryList
+							innerTagName="ul"
 							ref={ref}
 							onItemsRendered={onItemsRendered}
 							className={styles.list}
