@@ -1,4 +1,4 @@
-import { SocialNetwork, UserInfo, UserLink } from '../types/userInfo';
+import { UserInfo, UserLink } from '../types/userInfo';
 
 // Временные данные
 export const USER_INFO: UserInfo = {
@@ -37,14 +37,4 @@ export const USER_LINK: UserLink[] = [
 		id: '5',
 		name: 'linkedinLogo',
 	},
-];
-
-export const SOCIAL_NETWORKS: SocialNetwork[] = [
-	{ title: 'Instagram', code: 'instagram' },
-	{ title: 'Linkedin', code: 'linkedin' },
-	{ title: 'Twitter', code: 'twitter' },
-	{ title: 'GitHub', code: 'github' },
-	{ title: 'Behance', code: 'behance' },
-	{ title: 'WhatsApp', code: 'whatsapp' },
-	{ title: 'Telegram', code: 'telegram' },
 ];

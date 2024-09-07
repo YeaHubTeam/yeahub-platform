@@ -1,3 +1,6 @@
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SocialNetwork } from '@/entities/socialNetwork';
+
 export interface UserInfo {
 	id: string;
 	first_name: string;
@@ -28,7 +31,7 @@ export interface UserLink {
  * @param email        - Required. The user's email address.
  * @param location     - Optional. The user's location, e.g., "Moscow, Russia." (optional)
  * @param skillLevel   - Optional. The user's skill level, e.g., "Junior," "Mid," "Senior." (optional)
- * @param socialPlatforms  - Optional. Links to the user's social media profiles. (optional)
+ * @param socialNerworks  - Optional. Links to the user's social media profiles. (optional)
  *  @param aboutMe      - Optional. A short biography or information about the user. (optional)
  * @param skills       - Optional. A list of the user's skills. (optional)
  */
@@ -41,27 +44,7 @@ export interface UserInfoProfile {
 	email: string;
 	location?: string;
 	skillLevel?: string;
-	socialPlatforms?: string;
 	socialNetworks?: SocialNetwork[];
 	aboutMe?: string;
 	skills?: string[];
 }
-
-export type SocialNetworkCode =
-	| 'instagram'
-	| 'linkedin'
-	| 'twitter'
-	| 'github'
-	| 'behance'
-	| 'whatsapp'
-	| 'telegram';
-
-export interface SocialNetwork {
-	code: SocialNetworkCode;
-	title: string;
-}
-
-// DELETE?
-export type FieldsForIterate = {
-	id: string;
-} & Partial<SocialNetwork>;

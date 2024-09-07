@@ -30,7 +30,6 @@ export const profileSchema = yup.object().shape({
 		.required('Электронная почта обязательна'),
 	location: yup.string().optional(),
 	skillLevel: yup.string().optional(),
-	socialPlatforms: yup.string().optional(),
 	socialNetworks: yup
 		.array()
 		.of(

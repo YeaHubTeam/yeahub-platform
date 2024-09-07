@@ -9,14 +9,8 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { useProfileQuery } from '@/entities/auth';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { EducationFrom } from '@/entities/education';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ExperienceForm } from '@/entities/experience';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ProjectForm } from '@/entities/project';
 import { SkillsForm } from '@/entities/skill';
-import { AboutMeForm, PersonalInformationForm, UserInfoProfile } from '@/entities/user';
+import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
 import { useUpdateProfileMutation } from '@/entities/user';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
