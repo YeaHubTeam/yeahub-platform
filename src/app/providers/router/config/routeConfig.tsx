@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
 										element: <InterviewHistoryPage />,
 									},
 									{
-										path: ':quizId',
+										path: ROUTES.interview.history.result.route,
 										element: <InterviewQuizResultPage />,
 										handle: {
 											crumb: 'Результат викторины',
@@ -111,7 +111,7 @@ export const router = createBrowserRouter([
 										element: <QuestionsPage />,
 									},
 									{
-										path: ':questionId',
+										path: ROUTES.interview.questions.detail.route,
 										element: <QuestionPage />,
 										handle: {
 											crumb: 'Подробнее',

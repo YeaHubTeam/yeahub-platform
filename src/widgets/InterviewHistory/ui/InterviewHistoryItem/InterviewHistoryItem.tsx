@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { InterviewResults, QuizHistoryResponse } from '@/entities/quiz';
@@ -21,7 +22,7 @@ export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) =
 
 	return (
 		<li className={styles.item}>
-			<Link to={`${ROUTES.interview.history.page}/${id}`} className={styles.link}>
+			<Link to={route(ROUTES.interview.history.result.page, id)} className={styles.link}>
 				<time>{formattedDate}</time>
 				<div className={styles.info}>
 					<h4 className={styles.title}>{t('title', null, { number: interview.quizNumber })}</h4>

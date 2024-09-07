@@ -25,6 +25,10 @@ export const ROUTES = {
 		history: {
 			route: 'history',
 			page: '/interview/history',
+			result: {
+				route: ':quizId',
+				page: '/interview/history/:quizId',
+			},
 		},
 		statistic: {
 			route: 'statistic',
@@ -33,6 +37,10 @@ export const ROUTES = {
 		questions: {
 			route: 'questions',
 			page: '/interview/questions',
+			detail: {
+				route: ':questionId',
+				page: '/interview/questions/:questionId',
+			},
 		},
 		quiz: {
 			route: 'quiz',

@@ -2,6 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { ROUTES } from '@/shared/config/router/routes';
 import { getFromLS, getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 
 import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
@@ -83,7 +84,7 @@ const quizApi = baseApi.injectEndpoints({
 					removeFromLS(LS_ACTIVE_QUIZ_KEY);
 					removeFromLS(LS_START_DATE_QUIZ_KEY);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(`${ROUTES.interview.history.page}/${arg.id}`);
+					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

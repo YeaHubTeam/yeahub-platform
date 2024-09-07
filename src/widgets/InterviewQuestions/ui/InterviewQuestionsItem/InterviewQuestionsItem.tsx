@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
@@ -19,7 +20,7 @@ export const InterviewQuestionsItem = ({ question }: InterviewQuestionsItemProps
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (
 		<li className={styles.item}>
-			<Link to={`${ROUTES.interview.questions.page}/${id}`} className={styles.link}>
+			<Link to={route(ROUTES.interview.questions.detail.page, id)} className={styles.link}>
 				<ImageWithWrapper src={imageSrc} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{title}</h4>
