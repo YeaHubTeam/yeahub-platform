@@ -1,39 +1,15 @@
 {
-  "extends": [
-    "stylelint-config-standard"
-  ],
-  "ignoreFiles": [
-    "coverage/**/*.css",
-    "build/**/*.css",
-    "src/app/styles/normalize.css"
-  ],
-  "plugins": [
-    "stylelint-order",
-    "stylelint-declaration-strict-value"
-  ],
+  "extends": ["stylelint-config-standard"],
+  "ignoreFiles": ["coverage/**/*.css", "build/**/*.css", "src/app/styles/normalize.css"],
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
   "rules": {
     "scale-unlimited/declaration-strict-value": [
-      [
-        "color",
-        "background-color",
-        "font-size",
-        "font-weight",
-        "font-family",
-        "filter"
-      ],
+      ["color", "background-color", "font-size", "font-weight", "font-family", "filter"],
       {
-        "ignoreValues": [
-          "currentColor",
-          "unset",
-          "inherit",
-          "initial",
-          "transparent"
-        ]
+        "ignoreValues": ["currentColor", "unset", "inherit", "initial", "transparent"]
       }
     ],
-    "indentation": [
-      2
-    ],
+    "indentation": [2],
     "order/properties-order": [
       "all",
       "position",
