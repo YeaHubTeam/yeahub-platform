@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FixedSizeList as ReactWindowFullHistoryList } from 'react-window';
+import InfiniteLoader from 'react-window-infinite-loader';
 
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
 import { Loader } from '@/shared/ui/Loader';
@@ -21,7 +21,7 @@ interface ReactWindowRowProps {
 }
 
 // We need to change this values to other sizes of screens
-const ITEM_HEIGHT = 290;
+const ITEM_HEIGHT = 280;
 const CALENDAR_GAP = 20;
 const CALENDAR_WIDTH = 360;
 
@@ -46,17 +46,13 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 		uniqueKey,
 	);
 
-	const lastItemRef = useRef<HTMLLIElement | null>(null);
+	const isDataEmpty = isSuccess && data.length === 0;
 
 	const onLoadNext = useCallback(() => {
 		if (!isLoading && !isFetching && data.length < total) {
 			setPage(page + 1);
 		}
 	}, [isLoading, isFetching, page, total, data.length]);
-
-	useInfiniteScroll({ callback: onLoadNext, lastItemRef });
-
-	const isDataEmpty = isSuccess && data.length === 0;
 
 	const refreshParams = useCallback(() => {
 		setUniqueKey(Date.now().toString());
@@ -67,6 +63,10 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 		if (dateRange) refreshParams();
 	}, [dateRange, refreshParams]);
 
+	useEffect(() => {
+		if (dateRange) refreshParams();
+	}, []);
+
 	const { width: windowWidth, height: windowHeight } = useWindowSize();
 
 	return (
@@ -75,22 +75,34 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 			{isDataEmpty ? (
 				<p>Нет данных</p>
 			) : (
-				<ReactWindowFullHistoryList
-					className={styles.list}
-					itemSize={ITEM_HEIGHT}
+				<InfiniteLoader
+					isItemLoaded={(index: number) => index < data.length - 1}
 					itemCount={data.length}
-					height={windowHeight}
-					width={calcListWidth(windowWidth)}
+					loadMoreItems={onLoadNext}
 				>
-					{({ index, style }: ReactWindowRowProps) => (
-						<FullInterviewHistoryItem
-							key={data[index].id}
-							style={style}
-							interview={data[index]}
-							ref={data.length === index + 1 && lastItemRef?.current ? lastItemRef : null}
-						/>
+					{({ onItemsRendered, ref }) => (
+						<ReactWindowFullHistoryList
+							ref={ref}
+							onItemsRendered={onItemsRendered}
+							className={styles.list}
+							itemSize={ITEM_HEIGHT}
+							itemCount={data.length}
+							height={windowHeight}
+							width={calcListWidth(windowWidth)}
+							itemData={data}
+						>
+							{({ index, style }: ReactWindowRowProps) => {
+								return (
+									<FullInterviewHistoryItem
+										key={data[index].id}
+										style={style}
+										interview={data[index]}
+									/>
+								);
+							}}
+						</ReactWindowFullHistoryList>
 					)}
-				</ReactWindowFullHistoryList>
+				</InfiniteLoader>
 			)}
 		</>
 	);

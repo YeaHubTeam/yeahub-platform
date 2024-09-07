@@ -1,4 +1,3 @@
-import { MutableRefObject } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -12,23 +11,18 @@ import { InterviewHeader } from './InterviewHeader';
 import { InterviewParameters } from './InterviewParameters';
 
 interface FullInterviewHistoryItemProps {
-	ref: MutableRefObject<HTMLLIElement | null> | null;
 	style?: React.CSSProperties;
 	interview: QuizHistoryResponse;
 }
 
-export const FullInterviewHistoryItem = ({
-	ref,
-	style,
-	interview,
-}: FullInterviewHistoryItemProps) => {
+export const FullInterviewHistoryItem = ({ style, interview }: FullInterviewHistoryItemProps) => {
 	const { id, skills } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 
 	const isSkillsNotEmpty = skills.length !== 0;
 
 	return (
-		<li style={style} ref={ref}>
+		<li style={style}>
 			<Link to={`/interview/${id}`}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
