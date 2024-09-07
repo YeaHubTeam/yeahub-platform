@@ -9,7 +9,7 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 export type UseInfinityScrollOptions = {
 	callback: () => void;
 	containerRef?: MutableRefObject<HTMLElement>;
-	lastItemRef: MutableRefObject<HTMLLIElement | null>;
+	lastItemRef: MutableRefObject<HTMLElement>;
 };
 
 export const useInfiniteScroll = ({
@@ -21,7 +21,7 @@ export const useInfiniteScroll = ({
 
 	useEffect(() => {
 		const containerElement = containerRef ? containerRef.current : null;
-		const lastItemElement = lastItemRef?.current;
+		const lastItemElement = lastItemRef.current;
 
 		if (!lastItemElement) {
 			return;
