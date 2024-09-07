@@ -7,7 +7,7 @@ import '@/shared/config/i18n/i18n';
 import { router } from '@/app/providers/router';
 import { StoreProvider } from '@/app/providers/store';
 
-import { ToastOptions } from './shared/config/reactHotToast/reactHotToast';
+import { ToastOptions } from './shared/config/reactHotToast';
 
 const root = document.getElementById('root');
 

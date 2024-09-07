@@ -1,1 +1,1 @@
-export { toast } from './reactHotToast';
+export { ToastOptions } from './reactHotToast';

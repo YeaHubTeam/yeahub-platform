@@ -2,6 +2,8 @@ import { MutableRefObject, LegacyRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
 
@@ -24,7 +26,7 @@ export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHi
 
 	return (
 		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
-			<Link to={`/interview/${id}`}>
+			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Block className={styles.container}>
 					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />
