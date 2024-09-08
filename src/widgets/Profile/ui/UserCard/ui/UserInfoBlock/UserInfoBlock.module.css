@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-.card-right {
+.card-info {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -38,22 +38,22 @@
   font-size: var(--font-size-p-s);
 }
 
-.card-info {
+.card-list {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.card-info > li {
+.card-list > li {
   list-style-type:  none;
 }
 
-.card-info > li:nth-last-child(n + 2){
+.card-list > li:nth-last-child(n + 2){
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
 }
 
-.card-info > li:nth-last-child(-n + 2){
+.card-list > li:nth-last-child(-n + 2){
   color: var(--color-black-500);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
