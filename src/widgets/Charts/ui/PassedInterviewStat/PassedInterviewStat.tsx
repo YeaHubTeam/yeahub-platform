@@ -9,9 +9,14 @@ import styles from './PassedInterviewStat.module.css';
 interface PassedInterviewStatProps {
 	totalAttempt: number;
 	attemptData: AttemptInfoItemProps[];
+	isLoading?: boolean;
 }
 
-export const PassedInterviewStat = ({ totalAttempt, attemptData }: PassedInterviewStatProps) => {
+export const PassedInterviewStat = ({
+	isLoading,
+	totalAttempt,
+	attemptData,
+}: PassedInterviewStatProps) => {
 	const pieOption = options.pie;
 	pieOption.series[0].label.formatter = `{a}\n ${totalAttempt}`;
 	pieOption.series[0].data = attemptData;
@@ -19,6 +24,7 @@ export const PassedInterviewStat = ({ totalAttempt, attemptData }: PassedIntervi
 	return (
 		<div className={styles.wrapper}>
 			<ReactECharts
+				showLoading={isLoading}
 				option={pieOption}
 				opts={{ locale: 'RU' }}
 				style={{
@@ -28,7 +34,6 @@ export const PassedInterviewStat = ({ totalAttempt, attemptData }: PassedIntervi
 					height: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
 				}}
 			/>
-
 			<ul className={styles.list}>
 				{attemptData.map((item) => (
 					<AttemptInfoItem key={item.name} {...item} />
