@@ -16,13 +16,11 @@ export const LearnQuestionButton = ({ profileId, questionId, preffix }: LearnQue
 
 	const handleLearnQuestion = async () => {
 		try {
-			console.log('Отправка запроса на изучение вопроса...');
-			const result = await learnQuestion({
+			await learnQuestion({
 				profileId: String(profileId),
 				questionId: Number(questionId),
 				isLearned: true,
 			});
-			console.log('Запрос выполнен успешно:', result);
 		} catch (error) {
 			console.error('Ошибка при добавлении вопроса в изучаемые:', error);
 		}
