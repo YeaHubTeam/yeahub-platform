@@ -1,6 +1,7 @@
 export enum ApiTags {
 	PROFILE_DETAIL = 'profile_detail',
 	QUESTION_DETAIL = 'question_detail',
+	QUESTIONS_LEARNED = 'question_learned',
 	QUESTIONS = 'questions',
 	SKILLS = 'skills',
 	NEW_QUIZ = 'newQuiz',

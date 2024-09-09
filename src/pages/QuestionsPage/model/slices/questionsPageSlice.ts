@@ -4,11 +4,11 @@ import { QuestionsPageState } from '../types/questionsPageType';
 
 const initialState: QuestionsPageState = {
 	page: 1,
-	title: '',
-	skill: [],
-	rate: [], // complexity
-	rating: [], // rate
-	progressStatus: [], //not implemented on BE side
+	title: undefined,
+	skills: undefined,
+	rate: undefined,
+	complexity: undefined,
+	status: undefined,
 };
 
 const questionsPageSlice = createSlice({
@@ -22,16 +22,16 @@ const questionsPageSlice = createSlice({
 			state.title = action.payload;
 		},
 		setSkills: (state, action: PayloadAction<number[]>) => {
-			state.skill = action.payload;
+			state.skills = action.payload;
 		},
 		setComplexity: (state, action: PayloadAction<number[]>) => {
-			state.rate = action.payload;
+			state.complexity = action.payload;
 		},
 		setRate: (state, action: PayloadAction<number[]>) => {
-			state.rating = action.payload;
+			state.rate = action.payload;
 		},
 		setStatus: (state, action: PayloadAction<number[]>) => {
-			state.progressStatus = action.payload;
+			state.status = action.payload;
 		},
 	},
 });

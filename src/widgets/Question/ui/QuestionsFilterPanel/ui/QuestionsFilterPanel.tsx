@@ -26,7 +26,7 @@ export const QuestionsFilterPanel = ({
 	onChangeRate,
 	onChangeStatus,
 }: QuestionsFilterPanelProps) => {
-	const { skill, rate, rating, progressStatus } = filter;
+	const { skills, rate, complexity, status } = filter;
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -36,10 +36,13 @@ export const QuestionsFilterPanel = ({
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput placeholder="Введите запрос" onSearch={debouncedSearch} />
-			<ChooseQuestionsCategories selectedSkills={skill} onChangeSkills={onChangeSkills} />
-			<ChooseQuestionComplexity onChangeComplexity={onChangeComplexity} selectedComplexity={rate} />
-			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rating} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatuses={progressStatus} />
+			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+			<ChooseQuestionComplexity
+				onChangeComplexity={onChangeComplexity}
+				selectedComplexity={complexity}
+			/>
+			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
+			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatuses={status} />
 		</div>
 	);
 };

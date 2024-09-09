@@ -31,9 +31,19 @@ export interface QuestionsListParams {
 	limit?: number;
 	title?: string;
 	titleOrDescription?: string;
-	rate?: number[]; //complexity
-	rating?: number[]; //rate
+	skills?: number[];
+	complexity?: number[];
+	keywords?: number[];
 	specialization?: number[];
-	progressStatus?: number[]; //not implemented
-	complexity?: number[]; //not implemented
+	order?: string;
+	orderBy?: string;
+	random?: boolean;
+	// minComplexity?: number;
+	// maxComplexity?: number;
+}
+
+export interface QuestionsLearnedParams
+	extends Omit<QuestionsListParams, 'keywords' | 'order' | 'orderBy' | 'random'> {
+	profileId?: string;
+	isLearned?: boolean;
 }
