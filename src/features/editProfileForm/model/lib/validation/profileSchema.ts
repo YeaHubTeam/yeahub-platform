@@ -4,7 +4,7 @@ export const profileSchema = yup.object().shape({
 	image: yup
 		.mixed<FileList>()
 		.optional()
-		.test('fileSize', 'Файл слишком велик', (value) => {
+		.test('fileSize', 'Большой размер файла', (value) => {
 			if (value && value.length > 0) {
 				return value[0].size <= 2000000; // 2MB
 			}
@@ -17,7 +17,11 @@ export const profileSchema = yup.object().shape({
 			return true;
 		}),
 
-	name: yup.string().required('Имя обязательно'),
+	name: yup
+		.string()
+		.required('Имя обязательно')
+		.min(4, 'Должно быть больше 4 символов')
+		.max(30, 'Должно быть меньше 30 символов'),
 	specialization: yup.string().required('Специализация обязательна'),
 	phone: yup.string().required('Телефон обязателен'),
 	email: yup
@@ -26,7 +30,17 @@ export const profileSchema = yup.object().shape({
 		.required('Электронная почта обязательна'),
 	location: yup.string().optional(),
 	skillLevel: yup.string().optional(),
-	socialLinks: yup.string().optional(),
+	socialNetworks: yup
+		.array()
+		.of(
+			yup.object().shape({
+				code: yup
+					.string()
+					.oneOf(['instagram', 'linkedin', 'twitter', 'github', 'behance', 'whatsapp', 'telegram']),
+				title: yup.string(),
+			}),
+		)
+		.optional(),
 	aboutMe: yup.string().optional(),
 	skills: yup.array().optional(),
 });
