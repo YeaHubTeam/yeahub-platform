@@ -1,4 +1,5 @@
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
@@ -9,9 +10,9 @@ import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
-import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
@@ -42,7 +43,7 @@ const InterviewPage = () => {
 				<div className={styles.preparation}>
 					<InterviewPreparationHeader title={t('preparation.title')} />
 					<LinkWithArrowRight
-						link={isActiveQuizExist ? 'quiz/interviewQuiz' : 'quiz'}
+						link={isActiveQuizExist ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page}
 						linkTitle={t('preparation.linkText')}
 					/>
 					<div className={styles['preparation-wrapper']}>
@@ -56,7 +57,10 @@ const InterviewPage = () => {
 					<InterviewQuestionHeader title={t('stats.title')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight link="interview-statistics" linkTitle={t('stats.linkText')} />
+					<LinkWithArrowRight
+						link={ROUTES.interview.statistic.page}
+						linkTitle={t('stats.linkText')}
+					/>
 				</div>
 			</Block>
 			<Block>
@@ -65,7 +69,10 @@ const InterviewPage = () => {
 						title={t('questions.title')}
 						linkTitle={t('questions.studied', 'Изучить')}
 					/>
-					<LinkWithArrowRight link="questions" linkTitle={t('questions.studied')} />
+					<LinkWithArrowRight
+						link={ROUTES.interview.questions.page}
+						linkTitle={t('questions.studied')}
+					/>
 					<InterviewQuestionsList />
 				</div>
 			</Block>
@@ -73,7 +80,7 @@ const InterviewPage = () => {
 				<div className={styles.history}>
 					<InterviewHistoryHeader title={t('history_preparation.title')} />
 					<LinkWithArrowRight
-						link="/interviewHistory"
+						link={ROUTES.interview.history.page}
 						linkTitle={t('history_preparation.linkText')}
 					/>
 					<InterviewHistoryList />

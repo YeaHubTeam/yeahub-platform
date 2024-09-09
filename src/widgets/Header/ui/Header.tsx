@@ -3,6 +3,7 @@ import { isMobile } from 'react-device-detect';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import Logo from '@/shared/assets/icons/logo.svg';
+import { ROUTES } from '@/shared/config/router/routes';
 import { BurgerMenu } from '@/shared/ui/BurgerMenu';
 
 import { UserPreferences } from '@/features/common/user-preferences';
@@ -14,10 +15,10 @@ const MemoHeader = () => {
 	const navigate = useNavigate();
 
 	const menuItems = [
-		{ id: '1', label: 'Home', path: '/' },
-		{ id: '2', label: 'Profile', path: '/profile' },
-		{ id: '3', label: 'Interview', path: '/interview' },
-		{ id: '4', label: 'Edit', path: '/edit' },
+		{ id: '1', label: 'Home', path: ROUTES.appRoute },
+		{ id: '2', label: 'Profile', path: ROUTES.profile.page },
+		{ id: '3', label: 'Interview', path: ROUTES.interview.page },
+		{ id: '4', label: 'Edit', path: ROUTES.profile.edit.page },
 	];
 
 	const handleMenuClick = (path: string) => {
@@ -27,7 +28,7 @@ const MemoHeader = () => {
 	return (
 		<header className={styles.header}>
 			{isMobile && (
-				<NavLink to="/" className={styles.logo}>
+				<NavLink to={ROUTES.appRoute} className={styles.logo}>
 					<Logo className={styles.name} />
 				</NavLink>
 			)}

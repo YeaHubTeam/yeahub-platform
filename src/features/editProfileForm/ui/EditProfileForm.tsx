@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
@@ -9,16 +9,12 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { useProfileQuery } from '@/entities/auth';
-import { EducationFrom } from '@/entities/education';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ExperienceForm } from '@/entities/experience';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ProjectForm } from '@/entities/project';
 import { SkillsForm } from '@/entities/skill';
 import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
 import { useUpdateProfileMutation } from '@/entities/user';
 
-// import { profileSchema } from '../model/lib/validation/profileSchema';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { profileSchema } from '../model/lib/validation/profileSchema';
 import { ProfileSchema } from '../model/types/profileTypes';
 
 import style from './EditProfileForm.module.css';
@@ -26,10 +22,11 @@ import style from './EditProfileForm.module.css';
 export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const methods = useForm<ProfileSchema>({
-		//TODO: Заккоментировал, так как надо валидацию доделать, а тестировать запросы и ручку  нужно
+		//TODO: Заккоментировал, так как надо валидацию доделать, а тестировать запросы и ручку нужно
 		// resolver: yupResolver(profileSchema),
 		mode: 'onTouched',
 	});
+
 	const tabs = [
 		{
 			id: 0,
@@ -88,6 +85,9 @@ export const EditProfileForm = () => {
 			...data,
 			id: profileId ?? '',
 		});
+
+		// Раскомментировать при необходимости стирать поля
+		// methods.reset();
 	};
 
 	return (

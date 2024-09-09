@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { ROUTES } from '@/shared/config/router/routes';
+
 import styles from './LoginLabel.module.css';
 
 export const LoginLabel = () => {
 	const navigate = useNavigate();
 	const handleClickNavigation = () => {
-		navigate('/auth/login');
+		navigate(ROUTES.auth.login.page);
 	};
 	return (
 		<div className={styles.wrapper}>
