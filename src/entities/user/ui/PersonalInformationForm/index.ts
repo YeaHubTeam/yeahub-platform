@@ -1,0 +1,1 @@
+export { PersonalInformationForm } from './PersonalInformationForm';

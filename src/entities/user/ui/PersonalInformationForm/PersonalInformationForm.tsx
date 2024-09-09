@@ -5,6 +5,8 @@ import { Button, Input, Label } from 'yeahub-ui-kit';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SocialNetWorkList } from '@/entities/socialNetwork';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
@@ -85,10 +87,7 @@ export const PersonalInformationForm = () => {
 						<p>Поделитесь своими профилями в других соц. сетях</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<Label className={style.label} text="Платформа">
-							<Input {...register('socialLinks')} className={style.input} />
-						</Label>
-						{/* ToDo сдесь позже будут проставляться инпуты в зависимости от того какие платформы выбирает пользователь */}
+						<SocialNetWorkList />
 					</div>
 				</HorizontalContainer>
 			</VerticalContainer>
