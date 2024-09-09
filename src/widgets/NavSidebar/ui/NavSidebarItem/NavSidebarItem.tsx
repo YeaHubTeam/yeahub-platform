@@ -5,6 +5,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import Main from '@/shared/assets/icons/main.svg';
 import Menu from '@/shared/assets/icons/menu.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import { ROUTES } from '@/shared/config/router/routes';
 import { Badge } from '@/shared/ui/Badge';
 
 import { categoryCounts, categoryTitles } from '../../../NavSidebar/model/category';
@@ -26,9 +27,9 @@ interface NavSidebarItemProps {
 }
 
 const categoryImages: CategoryImages = {
-	'': Main,
-	profile: ProfileIcon,
-	interview: InterviewIcon,
+	[ROUTES.appRoute]: Main,
+	[ROUTES.profile.page]: ProfileIcon,
+	[ROUTES.interview.page]: InterviewIcon,
 	default: Menu,
 };
 
@@ -39,7 +40,7 @@ const NavItem = ({ title, name = '', isOpen }: NavItemProps) => {
 	// TODO: wait ui-kit
 	return (
 		<NavLink
-			to={`/${name}`}
+			to={name}
 			className={({ isActive }) => `${styles.item} ${isActive ? styles['item-active'] : ''}`}
 		>
 			<div className={styles.wrap}>

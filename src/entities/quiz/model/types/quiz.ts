@@ -5,6 +5,48 @@ import { Question } from '@/entities/question';
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN' | 'REPEAT';
 
+export interface Quiz {
+	id: string;
+	profileId: string;
+	quizNumber: number;
+	startDate: string;
+	endDate: string;
+	fullCount: number;
+	successCount: number;
+	skills: string[];
+	response: Response;
+	questions: QuizQuestion[];
+}
+
+export type QuizByIdRequestParams = Record<string, string>;
+
+export interface QuizQuestion {
+	code: string;
+	complexity: number;
+	createdAt: Date;
+	createdBy: string;
+	description: string;
+	id: number;
+	imageSrc: string | null;
+	keywords: string[];
+	longAnswer: string;
+	questionsSkills: QuestionsSkills;
+	rate: number;
+	shortAnswer: string;
+	status: string;
+	title: string;
+	updatedAt: Date;
+	updatedBy: Date;
+}
+
+export interface QuestionsSkills {
+	createdAt: Date;
+	description: string;
+	id: number;
+	imageSrc: string | null;
+	updatedAt: Date;
+}
+
 export interface CreateNewQuizGetRequest {
 	profileId?: string;
 	params?: CreateNewQuizParams;
@@ -54,7 +96,7 @@ export interface QuizHistoryParams {
 
 /**
  * Model for retrieving interview history
- 
+
  * @property {string} id - Unique identifier of the interview history.
  * @property {string} profileId - Identifier of the user profile.
  * @property {number} quizNumber - Quiz serial number
@@ -66,17 +108,7 @@ export interface QuizHistoryParams {
  * @property {Answers} response - Object containing the interview response.
  */
 
-export interface QuizHistoryResponse {
-	id: string;
-	profileId: string;
-	quizNumber: number;
-	endDate: string;
-	startDate: string;
-	fullCount: number;
-	skills: string[];
-	response: Answers;
-	successCount: number;
-}
+export type QuizHistoryResponse = Omit<Quiz, 'questions'>;
 
 export interface Response {
 	answers: Answers[];
