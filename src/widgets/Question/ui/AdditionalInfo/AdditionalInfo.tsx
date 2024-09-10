@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
 import { Block } from '@/shared/ui/Block';
@@ -11,10 +12,16 @@ import styles from './AdditionalInfo.module.css';
 interface AdditionalInfoProps {
 	rate?: number;
 	complexity?: number;
+	keywords?: string[];
 	questionSkills?: Skill[];
 }
 
-export const AdditionalInfo = ({ rate, complexity, questionSkills }: AdditionalInfoProps) => {
+export const AdditionalInfo = ({
+	rate,
+	complexity,
+	questionSkills,
+	keywords,
+}: AdditionalInfoProps) => {
 	return (
 		<Block className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
@@ -24,7 +31,7 @@ export const AdditionalInfo = ({ rate, complexity, questionSkills }: AdditionalI
 					<QuestionParam label="Рейтинг" value={rate ?? 0} />
 				</ul>
 			</div>
-			<div>
+			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Навыки:</h4>
 				<ul className={styles['param-wrapper']}>
 					{questionSkills?.length
@@ -43,6 +50,21 @@ export const AdditionalInfo = ({ rate, complexity, questionSkills }: AdditionalI
 						: 'автор так и не понял к какой технологии относится данный вопрос'}
 				</ul>
 			</div>
+			{keywords && !!keywords.length && (
+				<div>
+					<h4 className={styles.title}>Ключевые слова:</h4>
+					<div className={styles['keywords-wrapper']}>
+						{keywords.map((keyword) => {
+							return (
+								<Link
+									key={keyword}
+									to={'/interview/questions?keyword=' + encodeURIComponent(keyword)}
+								>{`#${keyword}`}</Link>
+							);
+						})}
+					</div>
+				</div>
+			)}
 		</Block>
 	);
 };
