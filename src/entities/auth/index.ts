@@ -7,3 +7,4 @@ export {
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
 } from './api/authApi';
+export { authHandlers } from './api/__mocks__/index';
