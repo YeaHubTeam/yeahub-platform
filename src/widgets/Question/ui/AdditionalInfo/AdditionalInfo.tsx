@@ -58,7 +58,7 @@ export const AdditionalInfo = ({
 							return (
 								<Link
 									key={keyword}
-									to={'/interview/questions?keyword=' + encodeURIComponent(keyword)}
+									to={'/interview/questions?keywords=' + encodeURIComponent(keyword)}
 								>{`#${keyword}`}</Link>
 							);
 						})}
