@@ -29,3 +29,13 @@
 .chip:not(:last-of-type) {
   margin-right: 10px;
 }
+
+.keywords-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.keywords-wrapper a {
+  color: var(--color-purple-700);
+}

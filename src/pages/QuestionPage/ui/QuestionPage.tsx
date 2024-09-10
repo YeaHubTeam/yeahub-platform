@@ -53,6 +53,7 @@ export const QuestionPage = () => {
 				<ProgressBlock checksCount={question?.checksCount} />
 				<AdditionalInfo
 					rate={question?.rate}
+					keywords={question?.keywords}
 					complexity={question?.complexity}
 					questionSkills={question?.questionSkills}
 				/>
@@ -86,6 +87,7 @@ export const QuestionPage = () => {
 				<ProgressBlock checksCount={question?.checksCount} />
 				<AdditionalInfo
 					rate={question?.rate}
+					keywords={question?.keywords}
 					complexity={question?.complexity}
 					questionSkills={question?.questionSkills}
 				/>
