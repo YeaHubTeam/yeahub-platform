@@ -28,7 +28,7 @@ export const QuestionPage = () => {
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.id,
+		profileId: profile?.profiles[0].profileId,
 	});
 
 	const authorFullName = useMemo(() => {
