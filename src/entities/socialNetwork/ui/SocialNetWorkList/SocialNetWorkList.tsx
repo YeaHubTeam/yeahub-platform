@@ -1,44 +1,30 @@
-import { ChangeEvent } from 'react';
-import { useFieldArray } from 'react-hook-form';
-import { Input, Label } from 'yeahub-ui-kit';
+import { Link } from 'react-router-dom';
+import { IconButton, Icon } from 'yeahub-ui-kit';
+import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
-import { SOCIAL_NETWORKS } from '../../model/data/socialNetwork';
-import { SocialNetwork, SocialNetworkCode } from '../../model/types/socialNetwork';
+import { SocialNetwork } from '../../model/types/socialNetwork';
 
-import style from './SocialNetWorkList.module.css';
+import styles from './SocialNetWorkList.module.css';
 
-export const SocialNetWorkList = () => {
-	const { fields, update, append, remove } = useFieldArray<{ socialNetwork: SocialNetwork[] }>({
-		name: 'socialNetwork',
-	});
+interface SocialNetWorkListProps {
+	socialNetwork: SocialNetwork[];
+}
 
-	const onChangeHandler =
-		(socialNetworkCode: SocialNetworkCode) => (e: ChangeEvent<HTMLInputElement>) => {
-			const value = e.target.value;
-			if (!socialNetworkCode) return;
-
-			const index =
-				fields.length > 0 && fields.findIndex((field) => field?.code === socialNetworkCode);
-
-			if (typeof index === 'number' && index > -1) {
-				if (value) {
-					update(index, { title: value, code: socialNetworkCode });
-				} else {
-					remove(index);
-				}
-				return;
-			}
-
-			append({ title: value, code: socialNetworkCode });
-		};
-
+export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => {
 	return (
-		<>
-			{SOCIAL_NETWORKS.map((socialNetwork) => (
-				<Label key={socialNetwork.code} className={style.label} required text={socialNetwork.title}>
-					<Input onChange={onChangeHandler(socialNetwork.code)} className={style.input} />
-				</Label>
+		<div className={styles['card-link']}>
+			{socialNetwork.map((link) => (
+				<Link key={link.code} to={link.code}>
+					<IconButton
+						type="submit"
+						aria-label="primary large"
+						form="round"
+						icon={<Icon icon={`${link.title}Logo` as IconsName} size={20} />}
+						size="small"
+						theme="primary"
+					/>
+				</Link>
 			))}
-		</>
+		</div>
 	);
 };

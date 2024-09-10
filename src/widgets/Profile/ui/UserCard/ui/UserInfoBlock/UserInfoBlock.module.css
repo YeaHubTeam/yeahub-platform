@@ -67,13 +67,3 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
-
-.card-link {
-  display: flex;
-  gap: 4px;
-  margin-top: 8px;
-}
-
-.card-link > * {
-  cursor: pointer;
-}

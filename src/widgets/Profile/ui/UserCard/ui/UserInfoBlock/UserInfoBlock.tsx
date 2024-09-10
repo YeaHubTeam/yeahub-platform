@@ -1,9 +1,9 @@
 import { differenceInYears } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon, IconButton } from 'yeahub-ui-kit';
-import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
+import { Button } from 'yeahub-ui-kit';
 
 import { Profile } from '@/entities/profile';
+import { SocialNetWorkList } from '@/entities/socialNetwork';
 
 import styles from './UserInfoBlock.module.css';
 
@@ -40,19 +40,7 @@ export const UserInfoBlock = ({ profile }: UserInfoProps) => {
 				<h4 className={styles['card-phone']}>{phone}</h4>
 				<h4 className={styles['card-mail']}>{email}</h4>
 				{profile.socialNetwork.length > 0 ? (
-					<div className={styles['card-link']}>
-						{profile.socialNetwork.map((link) => (
-							<IconButton
-								key={link.code}
-								type="submit"
-								aria-label="primary large"
-								form="round"
-								icon={<Icon icon={`${link.title}Logo` as IconsName} size={20} />}
-								size="small"
-								theme="primary"
-							/>
-						))}
-					</div>
+					<SocialNetWorkList socialNetwork={profile?.socialNetwork} />
 				) : null}
 			</div>
 		</div>
