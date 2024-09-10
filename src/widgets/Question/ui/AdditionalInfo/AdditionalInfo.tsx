@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { Block } from '@/shared/ui/Block';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
@@ -58,7 +59,7 @@ export const AdditionalInfo = ({
 							return (
 								<Link
 									key={keyword}
-									to={'/interview/questions?keywords=' + encodeURIComponent(keyword)}
+									to={`${ROUTES.interview.questions.page}?keywords=` + encodeURIComponent(keyword)}
 								>{`#${keyword}`}</Link>
 							);
 						})}
