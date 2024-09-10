@@ -1,3 +1,4 @@
+export { SocialNetWorkInputs } from './ui/SocialNetWorkInputs';
 export { SocialNetWorkList } from './ui/SocialNetWorkList';
 
 export { SOCIAL_NETWORKS } from './model/data/socialNetwork';
