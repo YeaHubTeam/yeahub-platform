@@ -24,7 +24,7 @@ const InterviewHistoryPage = () => {
 		return () => {
 			dispatch(interviewHistoryPageActions.setDateRange(null));
 		};
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className={styles.container}>

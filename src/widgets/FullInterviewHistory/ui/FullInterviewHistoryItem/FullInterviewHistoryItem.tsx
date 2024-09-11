@@ -25,7 +25,6 @@ export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHi
 	const notEmptySkills = skills.length > 0;
 
 	return (
-
 		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Block className={styles.container}>

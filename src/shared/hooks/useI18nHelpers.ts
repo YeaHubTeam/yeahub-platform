@@ -9,8 +9,8 @@ export const useI18nHelpers = (ns?: string | string[]) => {
 		defaultValue?: string | null,
 		options?: Omit<TOptions, 'defaultValue'>,
 	) => {
-		const keyWithNs = ns ? `${ns}.${key}` : key;
-		return t(keyWithNs, { ...options, defaultValue });
+		console.log(ns, key);
+		return t(key, { ...options, defaultValue });
 	};
 
 	const tWithPlural = (

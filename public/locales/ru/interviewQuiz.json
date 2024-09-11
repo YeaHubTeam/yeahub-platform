@@ -1,6 +1,4 @@
 {
-  "interviewQuiz": {
-    "progressBarTitle": "Вопросы собеседования",
-    "completeQuizButton": "Завершить"
-  }
+  "progressBarTitle": "Вопросы собеседования",
+  "completeQuizButton": "Завершить"
 }

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Select, Chip, Text } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
@@ -58,7 +59,9 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 				onChange={handleChange}
 				options={options}
 				type="default"
-				placeholder={options.length ? t('skillForm.skillSelect') : t('skillForm.emptySkillSelect')}
+				placeholder={
+					options.length ? t(Profile.SKILLFORM_SKILLSELECT) : t(Profile.SKILLFORM_EMPTYSKILLSELECT)
+				}
 				className={styles.select}
 			/>
 			{Boolean(selectedSkills?.length) && (
