@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -13,7 +12,6 @@ import { SkillsForm } from '@/entities/skill';
 import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
 import { useUpdateProfileMutation } from '@/entities/user';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { profileSchema } from '../model/lib/validation/profileSchema';
 import { ProfileSchema } from '../model/types/profileTypes';
 
@@ -22,9 +20,8 @@ import style from './EditProfileForm.module.css';
 export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const methods = useForm<ProfileSchema>({
-		//TODO: Заккоментировал, так как надо валидацию доделать, а тестировать запросы и ручку нужно
-		// resolver: yupResolver(profileSchema),
-		mode: 'onTouched',
+		resolver: yupResolver(profileSchema),
+		mode: 'onBlur',
 	});
 
 	const tabs = [

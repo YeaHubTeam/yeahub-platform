@@ -17,7 +17,6 @@ export const SkillsForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const {
 		control,
-		register,
 		formState: { errors },
 	} = useFormContext<SkillsFormInputs>();
 
@@ -30,7 +29,6 @@ export const SkillsForm = () => {
 						<p>{t('skillForm.yourSkillsText')}</p>
 					</div>
 					<Controller
-						{...register('skills')}
 						name="skills"
 						control={control}
 						render={({ field: { onChange, value } }) => (

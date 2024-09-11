@@ -1,5 +1,7 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { Button, TextArea } from 'yeahub-ui-kit';
+
+import { FormControl } from '@/shared/ui/FormControl';
 
 import { HorizontalContainer } from '../CommonElements';
 
@@ -12,7 +14,6 @@ interface AboutMeFormInputs {
 export const AboutMeForm = () => {
 	const {
 		control,
-		register,
 		formState: { errors },
 	} = useFormContext<AboutMeFormInputs>();
 
@@ -28,19 +29,9 @@ export const AboutMeForm = () => {
 				</div>
 				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
-					<Controller
-						name="aboutMe"
-						control={control}
-						render={({ field: { onChange, value } }) => (
-							<TextArea
-								{...register('aboutMe')}
-								placeholder="Placeholder"
-								onChange={onChange}
-								value={value}
-							/>
-						)}
-					/>
-					<div className={style.error}>{errors.aboutMe?.message}</div>
+					<FormControl name="aboutMe" control={control} error={errors.aboutMe?.message}>
+						<TextArea placeholder="Placeholder" />
+					</FormControl>
 				</div>
 			</HorizontalContainer>
 			<div className={style['btn-container']}>

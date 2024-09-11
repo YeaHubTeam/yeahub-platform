@@ -2,6 +2,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { Button, Input, Label } from 'yeahub-ui-kit';
 
+import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -20,12 +21,10 @@ interface PersonalInformationInputs {
 	email: string;
 	location: string;
 	skillLevel: string;
-	socials: string;
 }
 
 export const PersonalInformationForm = () => {
 	const {
-		register,
 		control,
 		formState: { errors },
 	} = useFormContext<PersonalInformationInputs>();
@@ -46,13 +45,11 @@ export const PersonalInformationForm = () => {
 						<p>Сюда мы тоже что-нибудь классное придумаем</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<Label className={style.label} required text="Имя и фамилия">
-							<Input {...register('name')} className={style.input} />
-							<div className={style.error}>{errors.name?.message}</div>
-						</Label>
+						<FormControl name="name" label="Имя и фамилия" error={errors.name?.message}>
+							<Input className={style.input} />
+						</FormControl>
 						<Label className={style.label} required text="IT Специальность">
 							<Controller
-								{...register('specialization')}
 								name="specialization"
 								control={control}
 								render={({ field: { onChange, value } }) => (
@@ -61,37 +58,24 @@ export const PersonalInformationForm = () => {
 							/>
 							<div className={style.error}>{errors.specialization?.message}</div>
 						</Label>
-						<Label className={style.label} text="Номер для связи">
-							<Controller
-								name="phone"
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<>
-										<InputMask
-											{...register('phone')}
-											className={style.phone}
-											mask={'+7-(999)-999-99-99'}
-											placeholder={'+7-(XXX)-XXX-XX-XX'}
-											onChange={onChange}
-											value={value}
-										/>
-										<div className={style.error}>{errors.phone?.message}</div>
-									</>
-								)}
+						<FormControl
+							name="phone"
+							control={control}
+							label="Номер для связи"
+							error={errors.phone?.message}
+						>
+							<InputMask
+								className={style.phone}
+								mask={'+7-(999)-999-99-99'}
+								placeholder={'+7-(XXX)-XXX-XX-XX'}
 							/>
-						</Label>
-						<Label className={style.label} text="Email для связи">
-							<Input {...register('email')} className={style.input} />
-							<div className={style.error}>{errors.email?.message}</div>
-						</Label>
-						<Label className={style.label} text="Локация">
-							<Input
-								{...register('location')}
-								className={style.input}
-								placeholder="Напр. Санкт-Петербург, Россия"
-							/>
-							<div className={style.error}>{errors.location?.message}</div>
-						</Label>
+						</FormControl>
+						<FormControl name="email" label="Email для связи" error={errors.email?.message}>
+							<Input className={style.input} />
+						</FormControl>
+						<FormControl name="location" label="Локация" error={errors.location?.message}>
+							<Input className={style.input} placeholder="Напр. Санкт-Петербург, Россия" />
+						</FormControl>
 						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
 						</Label> */}

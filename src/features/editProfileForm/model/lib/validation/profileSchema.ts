@@ -22,7 +22,7 @@ export const profileSchema = yup.object().shape({
 		.required('Имя обязательно')
 		.min(4, 'Должно быть больше 4 символов')
 		.max(30, 'Должно быть меньше 30 символов'),
-	specialization: yup.string().required('Специализация обязательна'),
+	specialization: yup.string().required('Выбор специализации обязателен'),
 	phone: yup
 		.string()
 		.optional()
@@ -38,8 +38,29 @@ export const profileSchema = yup.object().shape({
 		.string()
 		.email('Неверный формат электронной почты')
 		.required('Электронная почта обязательна'),
-	location: yup.string().optional(),
-	skillLevel: yup.string().optional(),
+	location: yup
+		.string()
+		.optional()
+		.transform((value, originalValue) => {
+			if (value === '') {
+				return null;
+			}
+			return originalValue;
+		})
+		.nullable()
+		.min(5, 'Локация должна состоять как минимум из 5 символов')
+		.max(255, 'Локация не может превышать 255 символов'),
+
+	skillLevel: yup
+		.string()
+		.optional()
+		.transform((value, originalValue) => {
+			if (value === '') {
+				return null;
+			}
+			return originalValue;
+		})
+		.nullable(),
 	socialNetworks: yup
 		.array()
 		.of(
@@ -50,31 +71,32 @@ export const profileSchema = yup.object().shape({
 				title: yup.string(),
 			}),
 		)
-		.optional(),
-	aboutMe: yup.string().optional(),
-	skills: yup.array().optional(),
-});
-
-/* //todo сделать нормальную валидацию необязательных полей по примеру ниже
-address: yup.string().when("address", (value) => {
-			if (value) {
-				return yup
-					.string()
-					.min(5, "Address must be more than 5 characters long")
-					.max(255, "Address must be less than 255 characters long");
-			} else {
-				return yup
-					.string()
-					.transform((value, originalValue) => {
-						// Convert empty values to null
-						if (!value) {
-							return null;
-						}
-						return originalValue;
-					})
-					.nullable()
-					.optional();
+		.optional()
+		.transform((value, originalValue) => {
+			if (value === '') {
+				return null;
 			}
-		}),
-
-*/
+			return originalValue;
+		})
+		.nullable(),
+	aboutMe: yup
+		.string()
+		.optional()
+		.transform((value, originalValue) => {
+			if (value === '') {
+				return null;
+			}
+			return originalValue;
+		})
+		.nullable(),
+	skills: yup
+		.array()
+		.optional()
+		.transform((value, originalValue) => {
+			if (value === '') {
+				return null;
+			}
+			return originalValue;
+		})
+		.nullable(),
+});
