@@ -1,10 +1,7 @@
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
-
-export interface SocialNetwork {
-	code: string;
-	title: string;
-}
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SocialNetwork } from '@/entities/socialNetwork';
 
 export interface User {
 	address: string;

@@ -3,19 +3,11 @@ import { FC } from 'react';
 import { useProfileQuery } from '@/entities/auth';
 import { useGetProfileByIdQuery } from '@/entities/profile';
 
-import {
-	AchievmentsBlock,
-	EducationBlock,
-	ExperienceBlock,
-	InfoBlock,
-	ProjectsBlock,
-	SkillsBlock,
-	UserBlock,
-} from '@/widgets/Profile';
+import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
 
 import styles from './ProfilePage.module.css';
 
-const ProfilePage: FC = () => {
+export const ProfilePage = () => {
 	const { data } = useProfileQuery();
 
 	const { data: profile } = useGetProfileByIdQuery(data?.profiles[0].profileId as string);
@@ -23,20 +15,14 @@ const ProfilePage: FC = () => {
 	return (
 		profile && (
 			<div className={styles.content}>
-				<div className={styles.left}>
+				<div className={styles.container}>
 					<UserBlock profile={profile} />
 					<InfoBlock description={profile?.description} />
 					<SkillsBlock skillsList={profile?.profileSkills} />
-					<ProjectsBlock />
-					<ExperienceBlock />
-					<EducationBlock />
-				</div>
-				<div className={styles.right}>
-					<AchievmentsBlock />
 				</div>
 			</div>
 		)
 	);
 };
 
-export default ProfilePage;
+export default ProfilePage as FC;

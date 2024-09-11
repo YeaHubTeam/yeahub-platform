@@ -7,9 +7,11 @@ interface PassedQuestionChartProps {
 	learned: number;
 	width?: string;
 	height?: string;
+	isLoading?: boolean;
 }
 
 export const PassedQuestionChart = ({
+	isLoading,
 	total,
 	learned,
 	width = '241px',
@@ -33,6 +35,7 @@ export const PassedQuestionChart = ({
 
 	return (
 		<ReactECharts
+			showLoading={isLoading}
 			option={gaugeOption}
 			opts={{ locale: 'RU' }}
 			style={{

@@ -18,6 +18,7 @@
   display: list-item;
   grid-area: question;
   margin-left: 22px;
+  min-height: 50px;
   list-style: disc;
   font-size: var(--font-size-h-xs);
 }

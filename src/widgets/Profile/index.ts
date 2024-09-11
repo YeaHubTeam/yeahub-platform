@@ -24,4 +24,4 @@ export {
 	ProjectsBlockItem,
 } from './ui/ProjectsCard';
 export { SkillsBlock, SkillsBlockList, SkillsBlockItem, SkillsBlockHeader } from './ui/SkillsCard';
-export { UserBlock, UserInfo, UserLeftBlock } from './ui/UserCard';
+export { UserBlock, UserInfoBlock, UserImageBlock } from './ui/UserCard';

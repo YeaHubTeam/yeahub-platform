@@ -19,6 +19,7 @@ export const ResetQuestionStudyProgressButton = ({
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.error('Не удалось сбросить прогресс вопроса:', error);
 		}
 	};
