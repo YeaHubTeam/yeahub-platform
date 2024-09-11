@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
 import Avatar from '@/shared/assets/images/MockAvatar.png';
+import { ROUTES } from '@/shared/config/router/routes';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -26,7 +27,7 @@ export const UserPreferences = () => {
 		return (
 			<div key="settingpopemvcdf" className={styles.settings}>
 				<NavLink
-					to="/profile"
+					to={ROUTES.profile.page}
 					className={({ isActive }) => cn({ [styles['btn-active']]: isActive })}
 				>
 					<Button

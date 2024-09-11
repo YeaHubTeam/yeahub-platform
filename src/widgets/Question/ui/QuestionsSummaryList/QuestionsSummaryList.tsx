@@ -1,14 +1,17 @@
 import { Accordion } from '@/shared/ui/Accordion';
 
-import { Question, QuestionPreview } from '@/entities/question';
+import { Question } from '@/entities/question';
 
 interface QuestionsListProps {
 	questions?: Question[];
+	profileId: string;
 }
+
+import { QuestionPreview } from '../QuestionPreview/QuestionPreview';
 
 import styles from './QuestionsSummaryList.module.css';
 
-export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
+export const QuestionsSummaryList = ({ questions, profileId }: QuestionsListProps) => {
 	return (
 		<>
 			<h1 className={styles.title}>Вопросы React, JS555</h1>
@@ -17,7 +20,7 @@ export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
 				questions.map((question) => {
 					return (
 						<Accordion key={question.id} title={question.title}>
-							<QuestionPreview question={question} />
+							<QuestionPreview question={question} profileId={profileId} />
 						</Accordion>
 					);
 				})}

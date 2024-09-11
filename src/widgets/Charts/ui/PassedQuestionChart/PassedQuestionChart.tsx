@@ -2,19 +2,21 @@ import ReactECharts from 'echarts-for-react';
 
 import { options } from '../../model/constants/options';
 
-interface Props {
+interface PassedQuestionChartProps {
 	total: number;
 	learned: number;
 	width?: string;
 	height?: string;
+	isLoading?: boolean;
 }
 
 export const PassedQuestionChart = ({
+	isLoading,
 	total,
 	learned,
 	width = '241px',
 	height = '241px',
-}: Props) => {
+}: PassedQuestionChartProps) => {
 	const passedQuestionsPercent = Math.round((learned / total) * 100);
 
 	const gaugeData = [
@@ -33,6 +35,7 @@ export const PassedQuestionChart = ({
 
 	return (
 		<ReactECharts
+			showLoading={isLoading}
 			option={gaugeOption}
 			opts={{ locale: 'RU' }}
 			style={{

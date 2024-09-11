@@ -1,6 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
@@ -8,12 +7,15 @@ import { Block } from '@/shared/ui/Block';
 
 import styles from './ErrorElement.module.css';
 
-interface Props {
+interface ErrorElementProps {
 	fetchError?: FetchBaseQueryError | SerializedError;
 	errorMsg?: string;
 }
 
-export const ErrorElement: FC<Props> = ({ fetchError, errorMsg = 'Неизвестная ошибка' }) => {
+export const ErrorElement = ({
+	fetchError,
+	errorMsg = 'Неизвестная ошибка',
+}: ErrorElementProps) => {
 	const navigate = useNavigate();
 
 	const handleBackBtnClick = () => navigate(-1);

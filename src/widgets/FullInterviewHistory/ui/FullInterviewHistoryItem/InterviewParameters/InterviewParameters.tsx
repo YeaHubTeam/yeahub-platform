@@ -10,11 +10,11 @@ import { InterviewResults, type QuizHistoryResponse } from '@/entities/quiz';
 
 import styles from './InterviewParameters.module.css';
 
-interface Props {
+interface InterviewParametersProps {
 	interview: QuizHistoryResponse;
 }
 
-export const InterviewParameters = ({ interview }: Props) => {
+export const InterviewParameters = ({ interview }: InterviewParametersProps) => {
 	const { endDate, startDate, fullCount, successCount } = interview;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
 

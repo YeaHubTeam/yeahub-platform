@@ -65,6 +65,9 @@ const QuestionsPage = () => {
 		dispatch(questionsPageActions.setStatus(status));
 	};
 
+	const { data: profile } = useProfileQuery();
+	const profileId = profile?.profiles[0]?.profileId || '';
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
 		return <Loader />;
 	}
@@ -77,7 +80,7 @@ const QuestionsPage = () => {
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Block className={styles.content}>
-					<QuestionsSummaryList questions={questions.data} />
+					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
 					{questions.total > questions.limit && (
 						<QuestionPagePagination questionsResponse={questions} />
 					)}

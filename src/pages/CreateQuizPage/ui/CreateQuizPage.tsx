@@ -77,15 +77,15 @@ const CreateQuizPage = () => {
 						/>
 						<QuizQuestionMode onChangeMode={onChangeMode} />
 						<ChooseQuestionCount onChangeLimit={onChangeLimit} />
-						<Button
-							className={styles.button}
-							onClick={handleCreateNewQuiz}
-							suffix={<Icon icon="arrowRight" size={24} />}
-						>
-							Начать
-						</Button>
 					</div>
 				</div>
+				<Button
+					className={styles.button}
+					onClick={handleCreateNewQuiz}
+					suffix={<Icon icon="arrowRight" size={24} />}
+				>
+					Начать
+				</Button>
 			</Block>
 		</section>
 	);

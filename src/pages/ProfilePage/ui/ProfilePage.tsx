@@ -1,33 +1,28 @@
 import { FC } from 'react';
 
-import { AchievmentsBlock } from '@/widgets/ProfileAchievementCard';
-import { EducationBlock } from '@/widgets/ProfileEducationCard';
-import { ExperienceBlock } from '@/widgets/ProfileExperienceCard';
-import { InfoBlock } from '@/widgets/ProfileInfoCard';
-import { ProjectsBlock } from '@/widgets/ProfileProjectsCard';
-import { SkillsBlock } from '@/widgets/ProfileSkillsCard';
-import { UserCard } from '@/widgets/ProfileUserCard';
+import { useProfileQuery } from '@/entities/auth';
+import { useGetProfileByIdQuery } from '@/entities/profile';
+
+import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
 
 import styles from './ProfilePage.module.css';
 
-const ProfilePage: FC = () => {
-	// const { data, isSuccess, isLoading, isError, error } = useGetProfileQuery();
+export const ProfilePage = () => {
+	const { data } = useProfileQuery();
+
+	const { data: profile } = useGetProfileByIdQuery(data?.profiles[0].profileId as string);
 
 	return (
-		<div className={styles.content}>
-			<div className={styles.left}>
-				<UserCard />
-				<InfoBlock />
-				<SkillsBlock />
-				<ProjectsBlock />
-				<ExperienceBlock />
-				<EducationBlock />
+		profile && (
+			<div className={styles.content}>
+				<div className={styles.container}>
+					<UserBlock profile={profile} />
+					<InfoBlock description={profile?.description} />
+					<SkillsBlock skillsList={profile?.profileSkills} />
+				</div>
 			</div>
-			<div className={styles.right}>
-				<AchievmentsBlock />
-			</div>
-		</div>
+		)
 	);
 };
 
-export default ProfilePage;
+export default ProfilePage as FC;

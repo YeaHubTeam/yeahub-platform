@@ -1,0 +1,30 @@
+.card-image {
+  display: flex;  
+  flex-direction: column;
+  gap: 8px;
+  width: 170px;
+}
+
+.card-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 170px;
+  height: 188px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--color-purple-100);
+
+}
+
+.card-avatar > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-schedule{
+  font-weight: var(--font-weight-400);
+}

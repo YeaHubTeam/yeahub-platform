@@ -17,6 +17,7 @@ export interface Question {
 	updatedAt: string;
 	createdBy: null | string;
 	updatedBy: null;
+	checksCount?: number;
 	//todo убрать specializations, skills и rating так как это замоканные данные
 	questionSpecializations?: Skill[];
 	questionSkills?: Skill[];
@@ -34,7 +35,7 @@ export interface QuestionsListParams {
 	skills?: number[];
 	complexity?: number[];
 	keywords?: number[];
-	specialization?: number[];
+	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
@@ -46,4 +47,9 @@ export interface QuestionsLearnedParams
 	extends Omit<QuestionsListParams, 'keywords' | 'order' | 'orderBy' | 'random'> {
 	profileId?: string;
 	isLearned?: boolean;
+}
+
+export interface QuestionByIdParams {
+	questionId?: string;
+	profileId?: string;
 }

@@ -1,6 +1,6 @@
 import styles from './AttemptInfoItem.module.css';
 
-export interface AttemptData {
+export interface AttemptInfoItemProps {
 	value: number;
 	name: string;
 	itemStyle?: {
@@ -8,7 +8,7 @@ export interface AttemptData {
 	};
 }
 
-export const AttemptInfoItem = ({ value, name, itemStyle }: AttemptData) => {
+export const AttemptInfoItem = ({ value, name, itemStyle }: AttemptInfoItemProps) => {
 	return (
 		<li className={styles.item}>
 			<div className={styles.divide} style={{ backgroundColor: itemStyle?.color || 'none' }}></div>

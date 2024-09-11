@@ -1,16 +1,24 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { getFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { ROUTES } from '@/shared/config/router/routes';
+import { getFromLS, getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 
 import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
-import { setActiveQuizQuestions, setStartDate } from '../model/slices/activeQuizSlice';
+import {
+	clearActiveQuizState,
+	setActiveQuizQuestions,
+	setStartDate,
+} from '../model/slices/activeQuizSlice';
 import {
 	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
 	ExtraArgument,
 	InterviewQuizGetRequest,
 	NewQuizResponse,
+	Quiz,
+	QuizByIdRequestParams,
 	QuizHistoryRequest,
 	QuizHistoryResponse,
 } from '../model/types/quiz';
@@ -30,7 +38,7 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('interviewQuiz');
+					typedExtra.navigate(ROUTES.interview.quiz.new.page);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -47,7 +55,8 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					const result = await queryFulfilled;
 					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
-					const localActiveQuiz = getFromLS(LS_ACTIVE_QUIZ_KEY);
+					const localActiveQuiz = getJSONFromLS(LS_ACTIVE_QUIZ_KEY);
+
 					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
 					dispatch(
 						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
@@ -59,16 +68,33 @@ const quizApi = baseApi.injectEndpoints({
 			},
 		}),
 
-		getHistoryQuiz: build.query<Response<QuizHistoryResponse[]>, QuizHistoryRequest>({
+		getHistoryQuiz: build.query<
+			Response<QuizHistoryResponse[]>,
+			QuizHistoryRequest & { uniqueKey: string }
+		>({
 			query: ({ profileID, params }) => {
 				return {
 					url: `/interview-preparation/quizzes/history/${profileID}`,
 					params,
 				};
 			},
+			serializeQueryArgs: ({ endpointName, queryArgs }) => {
+				return endpointName + queryArgs.uniqueKey;
+			},
+			merge: (currentCache, newItems) => {
+				return {
+					...currentCache,
+					data: [...(currentCache.data ?? []), ...newItems.data],
+				};
+			},
+			forceRefetch({ currentArg, previousArg }) {
+				return (
+					currentArg?.uniqueKey !== previousArg?.uniqueKey ||
+					JSON.stringify(currentArg?.params) !== JSON.stringify(previousArg?.params)
+				);
+			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-
 		saveQuizResult: build.mutation<boolean, ActiveQuizWithDate>({
 			query: (data) => {
 				return {
@@ -77,17 +103,26 @@ const quizApi = baseApi.injectEndpoints({
 					body: data,
 				};
 			},
-			async onQueryStarted(arg, { queryFulfilled, extra }) {
+			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ],
+			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					removeFromLS(LS_ACTIVE_QUIZ_KEY);
-					removeFromLS(LS_START_DATE_QUIZ_KEY);
+					dispatch(clearActiveQuizState());
+
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(`/interview/quiz/${arg.id}`);
+					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
+			},
+		}),
+		getQuizById: build.query<Quiz, QuizByIdRequestParams>({
+			query: (params) => {
+				const { profileId, quizId } = params ?? {};
+				return {
+					url: `interview-preparation/quizzes/history/${profileId}/${quizId}`,
+				};
 			},
 		}),
 	}),
@@ -99,4 +134,5 @@ export const {
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
+	useGetQuizByIdQuery,
 } = quizApi;

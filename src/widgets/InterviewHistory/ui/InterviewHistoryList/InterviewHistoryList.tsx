@@ -1,44 +1,43 @@
+import { skipToken } from '@reduxjs/toolkit/query';
+
+import { Loader } from '@/shared/ui/Loader';
+
+import { useProfileQuery } from '@/entities/auth';
+import { useGetHistoryQuizQuery } from '@/entities/quiz';
+
 import { InterviewHistoryItem } from '../InterviewHistoryItem/InterviewHistoryItem';
 
 import styles from './InterviewHistoryList.module.css';
 
-// временные данные
-const interviewHistoryData = [
-	{
-		id: 1,
-		title: 'Собеседование № 1',
-		description: 'Interview № 1',
-		keywords: ['javascript'],
-		date: new Date(2024, 3, 15),
-		correctAnswersCount: 45,
-		incorrectAnswersCount: 15,
-	},
-	{
-		id: 2,
-		title: 'Собеседование № 2',
-		description: 'Interview № 2',
-		keywords: ['javascript'],
-		date: new Date(2024, 3, 18),
-		correctAnswersCount: 45,
-		incorrectAnswersCount: 15,
-	},
-	{
-		id: 3,
-		title: 'Собеседование № 3',
-		description: 'Interview № 3',
-		keywords: ['javascript'],
-		date: new Date(15, 3, 2024),
-		correctAnswersCount: 45,
-		incorrectAnswersCount: 15,
-	},
-];
-
 export const InterviewHistoryList = () => {
+	const profile = useProfileQuery();
+	const profileId = profile.data?.profiles[0].profileId;
+
+	const { data, isLoading, isFetching, isSuccess } = useGetHistoryQuizQuery(
+		profileId
+			? {
+					profileID: profileId,
+					params: { limit: 3 },
+					uniqueKey: 'interviewPreviewHistory',
+				}
+			: skipToken,
+	);
+
+	if (isLoading || isFetching) {
+		return <Loader />;
+	}
+
+	const isEmptyData = isSuccess && data.data.length === 0;
+
 	return (
 		<ul className={styles.list}>
-			{interviewHistoryData.map((interview) => (
-				<InterviewHistoryItem key={interview.id} interview={interview} />
-			))}
+			{!isEmptyData ? (
+				data?.data.map((interview) => (
+					<InterviewHistoryItem key={interview.id} interview={interview} />
+				))
+			) : (
+				<p>Данных нет</p>
+			)}
 		</ul>
 	);
 };

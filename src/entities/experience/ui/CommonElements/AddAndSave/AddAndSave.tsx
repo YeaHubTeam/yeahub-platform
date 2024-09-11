@@ -7,8 +7,7 @@ interface AddAndSaveProps {
 	textSecond?: string;
 }
 
-export const AddAndSave = (props: AddAndSaveProps) => {
-	const { textFirst, textSecond = 'Сохранить' } = props;
+export const AddAndSave = ({ textFirst, textSecond = 'Сохранить' }: AddAndSaveProps) => {
 	return (
 		<div className={cls['add-container']}>
 			<Button className={cls['btn-add']} theme="tertiary" textClassName={cls['btn-add']}>

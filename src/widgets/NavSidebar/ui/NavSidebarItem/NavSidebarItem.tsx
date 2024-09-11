@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import Main from '@/shared/assets/icons/main.svg';
 import Menu from '@/shared/assets/icons/menu.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import { ROUTES } from '@/shared/config/router/routes';
 import { Badge } from '@/shared/ui/Badge';
 
 import { categoryCounts, categoryTitles } from '../../../NavSidebar/model/category';
@@ -18,28 +19,28 @@ interface NavItemProps {
 }
 
 interface CategoryImages {
-	[key: string]: React.FC<React.SVGProps<SVGSVGElement>>;
+	[key: string]: FC<React.SVGProps<SVGSVGElement>>;
 }
 
-interface Props {
+interface NavSidebarItemProps {
 	isOpen: boolean;
 }
 
 const categoryImages: CategoryImages = {
-	'': Main,
-	profile: ProfileIcon,
-	interview: InterviewIcon,
+	[ROUTES.appRoute]: Main,
+	[ROUTES.profile.page]: ProfileIcon,
+	[ROUTES.interview.page]: InterviewIcon,
 	default: Menu,
 };
 
-const NavItem: FC<NavItemProps> = ({ title, name = '', isOpen }) => {
+const NavItem = ({ title, name = '', isOpen }: NavItemProps) => {
 	const ImageComponent = categoryImages[name] || categoryImages.default;
 	const count = categoryCounts[name] || 0;
 
 	// TODO: wait ui-kit
 	return (
 		<NavLink
-			to={`/${name}`}
+			to={name}
 			className={({ isActive }) => `${styles.item} ${isActive ? styles['item-active'] : ''}`}
 		>
 			<div className={styles.wrap}>
@@ -51,7 +52,7 @@ const NavItem: FC<NavItemProps> = ({ title, name = '', isOpen }) => {
 	);
 };
 
-export const NavSidebarItem: FC<Props> = ({ isOpen }) => {
+export const NavSidebarItem = ({ isOpen }: NavSidebarItemProps) => {
 	return (
 		<nav className={styles.nav}>
 			{Object.entries(categoryTitles).map(([name, title]) => {

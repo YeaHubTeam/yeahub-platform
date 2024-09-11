@@ -2,7 +2,12 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
-import { Question, QuestionsListParams, QuestionsLearnedParams } from '../model/types/question';
+import {
+	Question,
+	QuestionsListParams,
+	QuestionsLearnedParams,
+	QuestionByIdParams,
+} from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -13,9 +18,12 @@ const questionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),
-		getQuestionById: build.query<Question, string>({
-			query: (questionId) => ({
+		getQuestionById: build.query<Question, QuestionByIdParams>({
+			query: ({ questionId, profileId }) => ({
 				url: `/questions/${questionId}`,
+				params: {
+					profileId,
+				},
 			}),
 			providesTags: [ApiTags.QUESTION_DETAIL],
 		}),

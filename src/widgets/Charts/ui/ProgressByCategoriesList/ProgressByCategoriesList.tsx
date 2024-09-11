@@ -5,11 +5,11 @@ import {
 
 import styles from './ProgressByCategoriesList.module.css';
 
-interface Props {
+interface ProgressByCategoriesListProps {
 	optionData: ProgressByCategoriesData[];
 }
 
-export const ProgressByCategoriesList = ({ optionData }: Props) => {
+export const ProgressByCategoriesList = ({ optionData }: ProgressByCategoriesListProps) => {
 	return (
 		<div className={styles.list}>
 			{optionData.map((data) => (
