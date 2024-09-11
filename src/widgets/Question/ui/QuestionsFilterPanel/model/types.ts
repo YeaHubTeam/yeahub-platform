@@ -4,5 +4,12 @@ export interface FilterParams {
 	skills?: number[];
 	rate?: number[];
 	complexity?: number[];
-	status?: number[];
+	status: QuestionFilterStatus;
+}
+
+export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
+
+export interface QuestionFilterStatusItem {
+	id: QuestionFilterStatus;
+	title: string;
 }

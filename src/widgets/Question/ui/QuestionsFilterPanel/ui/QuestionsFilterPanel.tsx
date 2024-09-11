@@ -4,7 +4,7 @@ import { ChooseQuestionComplexity, ChooseQuestionsCategories } from '@/entities/
 
 import { SearchInput } from '@/features/common/search-input';
 
-import { FilterParams } from '../model/types';
+import { FilterParams, QuestionFilterStatus } from '../model/types';
 
 import styles from './QuestionsFilterPanel.module.css';
 import { RateFilterSection } from './RateFilterSection/RateFilterSection';
@@ -16,7 +16,7 @@ interface QuestionsFilterPanelProps {
 	onChangeSkills: (skills: number[]) => void;
 	onChangeComplexity: (complexity: number[]) => void;
 	onChangeRate: (rate: number[]) => void;
-	onChangeStatus: (status: number[]) => void;
+	onChangeStatus: (status: QuestionFilterStatus) => void;
 }
 export const QuestionsFilterPanel = ({
 	filter,
@@ -42,7 +42,7 @@ export const QuestionsFilterPanel = ({
 				selectedComplexity={complexity}
 			/>
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatuses={status} />
+			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</div>
 	);
 };

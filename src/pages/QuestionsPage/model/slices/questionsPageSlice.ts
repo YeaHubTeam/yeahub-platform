@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { QuestionFilterStatus } from '@/widgets/Question';
+
 import { QuestionsPageState } from '../types/questionsPageType';
 
 const initialState: QuestionsPageState = {
@@ -8,7 +10,7 @@ const initialState: QuestionsPageState = {
 	skills: undefined,
 	rate: undefined,
 	complexity: undefined,
-	status: undefined,
+	status: 'all',
 };
 
 const questionsPageSlice = createSlice({
@@ -30,7 +32,7 @@ const questionsPageSlice = createSlice({
 		setRate: (state, action: PayloadAction<number[]>) => {
 			state.rate = action.payload;
 		},
-		setStatus: (state, action: PayloadAction<number[]>) => {
+		setStatus: (state, action: PayloadAction<QuestionFilterStatus>) => {
 			state.status = action.payload;
 		},
 	},
