@@ -1,20 +1,15 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
+import { LearnQuestionParams, LearnQuestionResponse } from '../model/types/learnQuestionTypes';
+
 const learnQuestionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		learnQuestion: build.mutation<
-			boolean,
-			{ profileId: string; questionId: number; isLearned: boolean }
-		>({
-			query: ({ profileId, questionId, isLearned }) => ({
+		learnQuestion: build.mutation<LearnQuestionResponse, LearnQuestionParams>({
+			query: (body) => ({
 				url: `/interview-preparation`,
 				method: 'PUT',
-				body: {
-					profileId,
-					questionId,
-					isLearned,
-				},
+				body,
 			}),
 			invalidatesTags: [ApiTags.INTERVIEW_QUIZ],
 		}),

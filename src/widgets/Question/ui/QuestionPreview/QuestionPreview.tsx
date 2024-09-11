@@ -55,11 +55,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 										Подробнее
 									</Button>
 								</NavLink>
-								<LearnQuestionButton
-									profileId={profileId}
-									questionId={id}
-									preffix={<Icon icon="student" size={20} />}
-								/>
+								<LearnQuestionButton profileId={profileId} questionId={id} />
 								<Button
 									className={styles.button}
 									theme="tertiary"

@@ -16,11 +16,7 @@ export const QuestionActions = ({ profileId, questionId }: QuestionActionsProps)
 	return (
 		<Block className={styles['question-actions']}>
 			<div className={styles.wrapper}>
-				<LearnQuestionButton
-					profileId={profileId}
-					questionId={questionId}
-					preffix={<Icon icon="student" />}
-				/>
+				<LearnQuestionButton profileId={profileId} questionId={questionId} />
 				<ResetQuestionStudyProgressButton profileId={profileId} questionId={questionId} />
 				<Button
 					className={styles.btn}
