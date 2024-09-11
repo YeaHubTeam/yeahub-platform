@@ -14,6 +14,7 @@ interface AboutMeFormInputs {
 export const AboutMeForm = () => {
 	const {
 		control,
+		register,
 		formState: { errors },
 	} = useFormContext<AboutMeFormInputs>();
 
@@ -30,7 +31,7 @@ export const AboutMeForm = () => {
 				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
 					<FormControl name="aboutMe" control={control} error={errors.aboutMe?.message}>
-						<TextArea placeholder="Placeholder" />
+						<TextArea {...register('aboutMe')} placeholder="Placeholder" />
 					</FormControl>
 				</div>
 			</HorizontalContainer>

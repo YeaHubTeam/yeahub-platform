@@ -26,6 +26,7 @@ interface PersonalInformationInputs {
 export const PersonalInformationForm = () => {
 	const {
 		control,
+		register,
 		formState: { errors },
 	} = useFormContext<PersonalInformationInputs>();
 
@@ -46,10 +47,11 @@ export const PersonalInformationForm = () => {
 					</div>
 					<div className={style['inputs-wrapper']}>
 						<FormControl name="name" label="Имя и фамилия" error={errors.name?.message}>
-							<Input className={style.input} />
+							<Input {...register('name')} className={style.input} />
 						</FormControl>
 						<Label className={style.label} required text="IT Специальность">
 							<Controller
+								{...register('specialization')}
 								name="specialization"
 								control={control}
 								render={({ field: { onChange, value } }) => (
@@ -65,16 +67,21 @@ export const PersonalInformationForm = () => {
 							error={errors.phone?.message}
 						>
 							<InputMask
+								{...register('phone')}
 								className={style.phone}
 								mask={'+7-(999)-999-99-99'}
 								placeholder={'+7-(XXX)-XXX-XX-XX'}
 							/>
 						</FormControl>
 						<FormControl name="email" label="Email для связи" error={errors.email?.message}>
-							<Input className={style.input} />
+							<Input {...register('email')} className={style.input} />
 						</FormControl>
 						<FormControl name="location" label="Локация" error={errors.location?.message}>
-							<Input className={style.input} placeholder="Напр. Санкт-Петербург, Россия" />
+							<Input
+								{...register('location')}
+								className={style.input}
+								placeholder="Напр. Санкт-Петербург, Россия"
+							/>
 						</FormControl>
 						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
