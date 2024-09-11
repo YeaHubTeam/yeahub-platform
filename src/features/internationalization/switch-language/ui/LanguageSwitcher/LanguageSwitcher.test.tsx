@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
 
-import { Translations } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import i18n from '@/shared/config/jest/jestI18n';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -16,7 +16,7 @@ describe('LanguageSwitcher', () => {
 	});
 
 	test('render', () => {
-		expect(screen.getByText(Translations.LANGUAGE)).toBeInTheDocument();
+		expect(screen.getByText(Translation.LANGUAGE)).toBeInTheDocument();
 	});
 
 	test('changeLanguage', () => {

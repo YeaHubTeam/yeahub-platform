@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -31,22 +32,22 @@ const InterviewQuizResultPage = () => {
 	const interviewStats = getInterviewStats(questions);
 	const questionStats = [
 		{
-			title: t('questionStats.passed'),
+			title: t(InterviewQuizResult.QUESTIONSTATS_PASSED),
 			value: `${data?.successCount}/${data?.fullCount}`,
 		},
 		{
-			title: t('questionStats.timeSpent'),
+			title: t(InterviewQuizResult.QUESTIONSTATS_TIMESPENT),
 			value: formatTime(new Date((data?.startDate as string) ?? new Date().toDateString())),
 		},
 		{
-			title: t('questionStats.date'),
+			title: t(InterviewQuizResult.QUESTIONSTATS_DATE),
 			value: formatDate(
 				new Date((data?.startDate as string) ?? new Date().toDateString()),
 				'dd.MM.yyyy',
 			),
 		},
 		{
-			title: t('questionStats.duration'),
+			title: t(InterviewQuizResult.QUESTIONSTATS_DURATION),
 			value: getTimeDifference(data?.startDate ?? '', data?.endDate ?? ''),
 		},
 	];
