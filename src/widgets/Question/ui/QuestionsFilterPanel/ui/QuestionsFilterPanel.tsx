@@ -13,7 +13,7 @@ import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
 interface QuestionsFilterPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
-	onChangeSkills: (skills: number[]) => void;
+	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[]) => void;
 	onChangeRate: (rate: number[]) => void;
 	onChangeStatus: (status: QuestionFilterStatus) => void;

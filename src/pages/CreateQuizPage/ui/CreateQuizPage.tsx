@@ -31,7 +31,7 @@ const CreateQuizPage = () => {
 
 	const [trigger] = useLazyCreateNewQuizQuery();
 
-	const onChangeSkills = (skills: number[]) => {
+	const onChangeSkills = (skills: number[] | undefined) => {
 		dispatch(createQuizPageActions.setSkills(skills));
 	};
 

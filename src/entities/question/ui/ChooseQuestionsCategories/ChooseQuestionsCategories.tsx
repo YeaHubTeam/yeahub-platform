@@ -12,7 +12,7 @@ const MAX_LIMIT = 5;
 
 interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
-	onChangeSkills: (skills: number[]) => void;
+	onChangeSkills: (skills: number[] | undefined) => void;
 	skillsLimit?: number;
 }
 
@@ -39,7 +39,8 @@ export const ChooseQuestionsCategories = ({
 
 	const handleChooseSkill = (id: number) => {
 		if (selectedSkills?.includes(id)) {
-			onChangeSkills(selectedSkills.filter((skill) => skill !== id));
+			const filtredSkills = selectedSkills.filter((skill) => skill !== id);
+			onChangeSkills(filtredSkills.length > 0 ? filtredSkills : undefined);
 		} else {
 			onChangeSkills([...(selectedSkills || []), id]);
 		}

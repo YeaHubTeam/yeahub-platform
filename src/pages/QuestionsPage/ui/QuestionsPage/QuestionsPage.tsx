@@ -49,7 +49,7 @@ const QuestionsPage = () => {
 		dispatch(questionsPageActions.setTitle(value));
 	};
 
-	const onChangeSkills = (skills: number[]) => {
+	const onChangeSkills = (skills: number[] | undefined) => {
 		dispatch(questionsPageActions.setSkills(skills));
 	};
 
