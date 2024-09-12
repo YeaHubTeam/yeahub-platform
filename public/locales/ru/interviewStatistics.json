@@ -1,20 +1,18 @@
 {
-  "interviewStatistics": {
-    "progress": {
-      "title": "Прогресс"
-    },
-    "questionStats": {
-      "title": "Статистика пройденных вопросов по всем категориям",
-      "passedQuestions": "Пройдено вопросов",
-      "notStudied": "Не изучено",
-      "saved": "Сохранено",
-      "studied": "Изучено"
-    },
-    "attemptStats": {
-      "title": "Статистика пройденных собеседований",
-      "bestResult": "Лучший результат",
-      "worstResult": "Худший результат",
-      "avgResult": "Средний результат"
-    }
+  "progress": {
+    "title": "Прогресс"
+  },
+  "questionStats": {
+    "title": "Статистика пройденных вопросов по всем категориям",
+    "passedQuestions": "Пройдено вопросов",
+    "notStudied": "Не изучено",
+    "saved": "Сохранено",
+    "studied": "Изучено"
+  },
+  "attemptStats": {
+    "title": "Статистика пройденных собеседований",
+    "bestResult": "Лучший результат",
+    "worstResult": "Худший результат",
+    "avgResult": "Средний результат"
   }
 }

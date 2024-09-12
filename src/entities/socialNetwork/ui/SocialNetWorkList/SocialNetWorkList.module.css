@@ -1,17 +1,9 @@
-.label {
-  width: 100%;
-  max-width: 320px;
+.card-link {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
 }
 
-.label > span {
-  display: inline-block;
-  margin-bottom: 8px;
-  color: var(--color-black-700);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-s);
-}
-
-.input {
-  min-height: 48px;
-  border-radius: 68px;
+.card-link > * {
+  cursor: pointer;
 }

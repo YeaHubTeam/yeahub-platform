@@ -1,0 +1,1 @@
+export { UserImageBlock } from './UserImageBlock';
