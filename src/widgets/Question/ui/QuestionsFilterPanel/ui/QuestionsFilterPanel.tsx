@@ -4,7 +4,7 @@ import { ChooseQuestionComplexity, ChooseQuestionsCategories } from '@/entities/
 
 import { SearchInput } from '@/features/common/search-input';
 
-import { FilterParams } from '../model/types';
+import { FilterParams, QuestionFilterStatus } from '../model/types';
 
 import styles from './QuestionsFilterPanel.module.css';
 import { RateFilterSection } from './RateFilterSection/RateFilterSection';
@@ -13,10 +13,10 @@ import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
 interface QuestionsFilterPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
-	onChangeSkills: (skills: number[]) => void;
+	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[]) => void;
 	onChangeRate: (rate: number[]) => void;
-	onChangeStatus: (status: number[]) => void;
+	onChangeStatus: (status: QuestionFilterStatus) => void;
 }
 export const QuestionsFilterPanel = ({
 	filter,
@@ -26,7 +26,7 @@ export const QuestionsFilterPanel = ({
 	onChangeRate,
 	onChangeStatus,
 }: QuestionsFilterPanelProps) => {
-	const { skill, rate, rating, progressStatus } = filter;
+	const { skills, rate, complexity, status } = filter;
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -36,10 +36,13 @@ export const QuestionsFilterPanel = ({
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput placeholder="Введите запрос" onSearch={debouncedSearch} />
-			<ChooseQuestionsCategories selectedSkills={skill} onChangeSkills={onChangeSkills} />
-			<ChooseQuestionComplexity onChangeComplexity={onChangeComplexity} selectedComplexity={rate} />
-			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rating} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatuses={progressStatus} />
+			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+			<ChooseQuestionComplexity
+				onChangeComplexity={onChangeComplexity}
+				selectedComplexity={complexity}
+			/>
+			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
+			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</div>
 	);
 };
