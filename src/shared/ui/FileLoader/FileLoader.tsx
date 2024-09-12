@@ -4,15 +4,18 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 
 import Gallery from '@/shared/assets/images/Gallery.png';
+import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension, FileType } from './model/types/types';
 
 interface FileLoaderProps {
 	accept: Accept;
+	multyple?: boolean;
 	maxFileMBSize: number;
 	fileTypeText: FileType;
 	extensionsText: Extension;
+	onChange: (files: globalThis.File[]) => void;
 }
 
 export const FileLoader = ({
@@ -20,101 +23,72 @@ export const FileLoader = ({
 	fileTypeText,
 	maxFileMBSize,
 	extensionsText,
+	multyple = false,
+	onChange,
 }: FileLoaderProps) => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
 
-	const [files, setFiles] = useState<File[]>([]);
-	const [isDragActive, setIsDragActive] = useState<boolean>(false);
+	const [files, setFiles] = useState<globalThis.File[]>([]);
 
-	const handleUploader = () => {
-		if (uploaderRef.current) {
-			uploaderRef.current.click();
-		}
-	};
+	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
+		useDragAndDrop(uploaderRef);
 
 	const handleChange = () => {
 		if (uploaderRef.current) {
-			const fs = uploaderRef?.current.files;
+			const refFiles = uploaderRef?.current.files;
 
-			if (fs && fs.length > 0) {
-				setFiles((state) => [...state, ...Array.from(fs)]);
+			if (refFiles && refFiles.length > 0) {
+				const file = Array.from(refFiles);
+				const updatedList = [...files, ...file];
+				setFiles(updatedList);
+				onChange(updatedList);
 			}
 		}
 	};
 
 	const onDrop = (e: DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
-		const fs = e.dataTransfer.files;
-		setIsDragActive(false);
+		const transferFiles = e.dataTransfer.files;
+		handleIsDragActive(false);
 
-		if (fs && fs.length > 0) {
-			setFiles((state) => [...state, ...Array.from(fs)]);
+		if (transferFiles && transferFiles.length > 0) {
+			const file = Array.from(transferFiles);
+			const updatedList = [...files, ...file];
+			setFiles(updatedList);
+			onChange(updatedList);
 		}
 	};
 
-	const onDragLeave = (e: DragEvent<HTMLDivElement>) => {
-		e.preventDefault();
-		setIsDragActive(false);
-	};
-
-	const onDragOverAndEnter = (e: DragEvent<HTMLDivElement>) => {
-		e.preventDefault();
-		setIsDragActive(true);
-	};
-
-	// FOR TESTING
-	const deletePreview = (name: string) => {
-		setFiles((state) => state.filter((el) => el.name !== name));
-	};
-	// console.log(files);
-	//
-
 	return (
-		<>
-			{/* FOR TESTING */}
-			{files.length > 0 ? (
-				<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-					{files.map((file, i) => (
-						<div key={i}>
-							{file?.name}
-							<div tabIndex={0} role="button" onClick={() => deletePreview(file.name)}>
-								X
-							</div>
-						</div>
-					))}
-				</div>
-			) : null}
-			{/* // */}
-
-			<div
-				tabIndex={0}
-				role={'button'}
-				onDrop={onDrop}
-				onClick={handleUploader}
-				onDragLeave={onDragLeave}
-				onDragOver={onDragOverAndEnter}
-				onDragEnter={onDragOverAndEnter}
-				className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
-			>
-				<div className={style['svg-wrapper']}>
-					<img src={Gallery} alt="gallery-icon" />
-				</div>
-
-				<p>
-					<span>Кликни для изменения</span> или перетащи сюда {fileTypeText}
-				</p>
-				<p className={style['extension-descriptions']}>
-					{extensionsText} (не более {maxFileMBSize}мб)
-				</p>
-
-				<input
-					type="file"
-					accept={accept}
-					ref={uploaderRef}
-					onChange={handleChange}
-					className={style['file-input']}
-				/>
+		<div
+			tabIndex={0}
+			role={'button'}
+			onDrop={onDrop}
+			onClick={handleUploader}
+			onDragLeave={onDragLeave}
+			onDragOver={onDragOverAndEnter}
+			onDragEnter={onDragOverAndEnter}
+			className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
+		>
+			<div className={style['svg-wrapper']}>
+				<img src={Gallery} alt="gallery-icon" />
 			</div>
-		</>
+
+			<p>
+				<span>Кликни для изменения</span> или перетащи сюда {fileTypeText}
+			</p>
+			<p className={style['extension-descriptions']}>
+				{extensionsText} (не более {maxFileMBSize}мб)
+			</p>
+
+			<input
+				type="file"
+				accept={accept}
+				ref={uploaderRef}
+				onChange={handleChange}
+				multiple={multyple}
+				className={style['file-input']}
+			/>
+		</div>
 	);
 };

@@ -17,6 +17,7 @@ export const ImageLoader = () => {
 					accept={Accept.IMAGE}
 					fileTypeText={'фотографию'}
 					extensionsText={Extension.IMAGE}
+					onChange={(_: globalThis.File[]) => {}}
 				/>
 			</div>
 			<button type="button" className={style['delete-avatar-btn']}>
