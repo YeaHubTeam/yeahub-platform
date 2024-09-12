@@ -39,6 +39,13 @@ export const FileLoader = ({
 
 			if (refFiles && refFiles.length > 0) {
 				const file = Array.from(refFiles);
+
+				if (!multyple) {
+					setFiles([file[0]]);
+					onChange([file[0]]);
+					return;
+				}
+
 				const updatedList = [...files, ...file];
 				setFiles(updatedList);
 				onChange(updatedList);
@@ -53,6 +60,13 @@ export const FileLoader = ({
 
 		if (transferFiles && transferFiles.length > 0) {
 			const file = Array.from(transferFiles);
+
+			if (!multyple) {
+				setFiles([file[0]]);
+				onChange([file[0]]);
+				return;
+			}
+
 			const updatedList = [...files, ...file];
 			setFiles(updatedList);
 			onChange(updatedList);
