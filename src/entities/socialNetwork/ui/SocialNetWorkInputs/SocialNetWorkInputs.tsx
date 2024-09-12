@@ -13,11 +13,7 @@ export const SocialNetWorkInputs = () => {
 	const { fields, update, append, remove } = useFieldArray<{ socialNetwork: SocialNetwork[] }>({
 		name: 'socialNetwork',
 	});
-
-	const {
-		register,
-		formState: { errors },
-	} = useFormContext<{ socialNetworks: string[] }>();
+	const { control } = useFormContext();
 
 	const onChangeHandler =
 		(socialNetworkCode: SocialNetworkCode) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,14 +41,11 @@ export const SocialNetWorkInputs = () => {
 				<FormControl
 					key={socialNetwork.code}
 					name={socialNetwork.title}
+					control={control}
 					label={socialNetwork.title}
-					error={errors.socialNetworks?.message}
+					className={style.form}
 				>
-					<Input
-						{...register('socialNetworks')}
-						onChange={onChangeHandler(socialNetwork.code)}
-						className={style.input}
-					/>
+					{() => <Input onChange={onChangeHandler(socialNetwork.code)} className={style.input} />}
 				</FormControl>
 			))}
 		</>

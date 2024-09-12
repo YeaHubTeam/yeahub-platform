@@ -8,3 +8,16 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-m);
 }
+
+.form {
+  width: 100%;
+  max-width: 320px;
+}
+
+.form > span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--color-black-700);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-s);
+}

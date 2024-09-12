@@ -22,6 +22,7 @@ export const EditProfileForm = () => {
 	const methods = useForm<ProfileSchema>({
 		resolver: yupResolver(profileSchema),
 		mode: 'onBlur',
+		reValidateMode: 'onBlur',
 	});
 
 	const tabs = [

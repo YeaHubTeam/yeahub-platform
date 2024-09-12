@@ -1,6 +1,6 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import { Button, Input, Label } from 'yeahub-ui-kit';
+import { Button, Input } from 'yeahub-ui-kit';
 
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -14,21 +14,8 @@ import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './PersonalInformationForm.module.css';
 
-interface PersonalInformationInputs {
-	name: string;
-	specialization: number;
-	phone: string;
-	email: string;
-	location: string;
-	skillLevel: string;
-}
-
 export const PersonalInformationForm = () => {
-	const {
-		control,
-		register,
-		formState: { errors },
-	} = useFormContext<PersonalInformationInputs>();
+	const { control, register } = useFormContext();
 
 	return (
 		<>
@@ -46,42 +33,50 @@ export const PersonalInformationForm = () => {
 						<p>Сюда мы тоже что-нибудь классное придумаем</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<FormControl name="name" label="Имя и фамилия" error={errors.name?.message}>
-							<Input {...register('name')} className={style.input} />
+						<FormControl name="name" control={control} label="Имя и фамилия" className={style.form}>
+							{() => <Input {...register('name')} className={style.input} />}
 						</FormControl>
-						<Label className={style.label} required text="IT Специальность">
-							<Controller
-								{...register('specialization')}
-								name="specialization"
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<SpecializationSelect onChange={onChange} value={value} />
-								)}
-							/>
-							<div className={style.error}>{errors.specialization?.message}</div>
-						</Label>
+						<FormControl
+							name="specialization"
+							control={control}
+							label="IT Специальность"
+							className={style.form}
+						>
+							{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
+						</FormControl>
 						<FormControl
 							name="phone"
 							control={control}
 							label="Номер для связи"
-							error={errors.phone?.message}
+							className={style.form}
 						>
-							<InputMask
-								{...register('phone')}
-								className={style.phone}
-								mask={'+7-(999)-999-99-99'}
-								placeholder={'+7-(XXX)-XXX-XX-XX'}
-							/>
+							{({ onChange, value }) => (
+								<InputMask
+									{...register('phone')}
+									className={style.phone}
+									mask={'+7-(999)-999-99-99'}
+									placeholder={'+7-(XXX)-XXX-XX-XX'}
+									onChange={onChange}
+									value={value}
+								/>
+							)}
 						</FormControl>
-						<FormControl name="email" label="Email для связи" error={errors.email?.message}>
-							<Input {...register('email')} className={style.input} />
+						<FormControl
+							name="email"
+							control={control}
+							label="Email для связи"
+							className={style.form}
+						>
+							{() => <Input {...register('email')} className={style.input} />}
 						</FormControl>
-						<FormControl name="location" label="Локация" error={errors.location?.message}>
-							<Input
-								{...register('location')}
-								className={style.input}
-								placeholder="Напр. Санкт-Петербург, Россия"
-							/>
+						<FormControl name="location" control={control} label="Локация" className={style.form}>
+							{() => (
+								<Input
+									{...register('location')}
+									className={style.input}
+									placeholder="Напр. Санкт-Петербург, Россия"
+								/>
+							)}
 						</FormControl>
 						{/* <Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />

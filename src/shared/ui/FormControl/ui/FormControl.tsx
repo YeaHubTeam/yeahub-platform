@@ -1,28 +1,31 @@
-import React from 'react';
-import { Control, Controller } from 'react-hook-form';
-import { FormControl as FormControlKit } from 'yeahub-ui-kit';
+import { ReactNode, useMemo } from 'react';
+import { useController, Control, ControllerRenderProps, FieldValues } from 'react-hook-form';
+import { FormControl as CustomControl } from 'yeahub-ui-kit';
 
-import styles from './FormControl.module.css';
+type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
 
-interface FormControlProps {
+interface contrProps {
 	name: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	control?: Control<any>;
+	control: Control;
 	label?: string;
-	error?: string;
-	children: React.ReactElement;
+	className?: string;
+	children: (field: ChildrenProps, error: boolean) => ReactNode;
 }
 
-export const FormControl = ({ name, control, label, error, children }: FormControlProps) => {
+export const FormControl = ({ children, name, control, label, className }: contrProps) => {
+	const {
+		field: { ref, ...fieldProps },
+		fieldState: { error },
+	} = useController({
+		name,
+		control,
+	});
+
+	const errorText = useMemo(() => error?.message?.toString(), [error]);
+
 	return (
-		<Controller
-			name={name}
-			control={control}
-			render={({ field: { onChange, value } }) => (
-				<FormControlKit label={label} error={error} className={styles.kit}>
-					{React.cloneElement(children, { onChange, value })}
-				</FormControlKit>
-			)}
-		/>
+		<CustomControl htmlFor={name} label={label} error={errorText} className={className}>
+			{children(fieldProps, !!errorText)}
+		</CustomControl>
 	);
 };

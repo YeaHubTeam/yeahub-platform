@@ -7,16 +7,8 @@ import { HorizontalContainer } from '../CommonElements';
 
 import style from './AboutMeForm.module.css';
 
-interface AboutMeFormInputs {
-	aboutMe: string;
-}
-
 export const AboutMeForm = () => {
-	const {
-		control,
-		register,
-		formState: { errors },
-	} = useFormContext<AboutMeFormInputs>();
+	const { control, register } = useFormContext();
 
 	return (
 		<>
@@ -30,8 +22,15 @@ export const AboutMeForm = () => {
 				</div>
 				{/* todo: заменить на текст из кита */}
 				<div className={style['textarea-container']}>
-					<FormControl name="aboutMe" control={control} error={errors.aboutMe?.message}>
-						<TextArea {...register('aboutMe')} placeholder="Placeholder" />
+					<FormControl name="aboutMe" control={control}>
+						{(field) => (
+							<TextArea
+								{...register('aboutMe')}
+								placeholder="Placeholder"
+								{...field}
+								className={style.textarea}
+							/>
+						)}
 					</FormControl>
 				</div>
 			</HorizontalContainer>
