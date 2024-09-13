@@ -1,33 +1,27 @@
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-const progressStatus = [
-	{ id: 1, title: 'Изученные' },
-	{ id: 2, title: 'Неизученные' },
-	{ id: 3, title: 'Сохраненные' },
-	{ id: 4, title: 'Все' },
+import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
+
+const progressStatus: QuestionFilterStatusItem[] = [
+	{ id: 'not-learned', title: 'Изученные' },
+	{ id: 'learned', title: 'Неизученные' },
+	// { id: 'saved', title: 'Сохраненные' },
+	{ id: 'all', title: 'Все' },
 ];
 
 interface StatusFilterSectionProps {
-	selectedStatuses?: number[];
-	onChangeStatus: (status: number[]) => void;
+	selectedStatus?: QuestionFilterStatus;
+	onChangeStatus: (status: QuestionFilterStatus) => void;
 }
 
 export const StatusFilterSection = ({
 	onChangeStatus,
-	selectedStatuses,
+	selectedStatus,
 }: StatusFilterSectionProps) => {
-	const onClick = (id: number) => {
-		const isDataExist = selectedStatuses?.some((item) => item === id);
-		const updates = isDataExist
-			? (selectedStatuses || []).filter((item) => item !== id)
-			: [...(selectedStatuses || []), id];
-		onChangeStatus(updates);
-	};
-
 	const preparedData = progressStatus.map((item) => ({
 		...item,
-		active: selectedStatuses?.some((selectedItem) => item.id === selectedItem),
+		active: item.id === selectedStatus,
 	}));
 
-	return <BaseFilterSection data={preparedData} title="Статус" onClick={onClick} />;
+	return <BaseFilterSection data={preparedData} title="Статус" onClick={onChangeStatus} />;
 };

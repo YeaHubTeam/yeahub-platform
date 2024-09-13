@@ -1,8 +1,10 @@
+import { QuestionFilterStatus } from '@/widgets/Question';
+
 export interface QuestionsPageState {
 	page?: number;
 	title?: string;
-	skill?: number[];
+	skills?: number[];
 	rate?: number[];
-	rating?: number[]; //comlexity
-	progressStatus?: number[];
+	complexity?: number[];
+	status: QuestionFilterStatus;
 }

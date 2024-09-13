@@ -1,34 +1,35 @@
+import { Key } from 'react';
 import { Chip, Icon } from 'yeahub-ui-kit';
-type DateType = {
-	id: number;
+
+import styles from './BaseFilterSection.module.css';
+
+type DateType<T> = {
+	id: T;
 	title: string;
 	imageSrc?: string;
 	active?: boolean;
 };
 
-interface BaseFilterSectionProps {
+interface BaseFilterSectionProps<T> {
 	title: string;
-	data: DateType[];
-	onClick: (id: number) => void;
+	data: DateType<T>[];
+	onClick: (id: T) => void;
 }
 
-import styles from './BaseFilterSection.module.css';
-
-export const BaseFilterSection = ({ title, data, onClick }: BaseFilterSectionProps) => {
-	const onHandleClick = (id: number) => () => {
+export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectionProps<T>) => {
+	const onHandleClick = (id: T) => () => {
 		onClick(id);
 	};
 
 	return (
-		<div className={styles.section}>
+		<div>
 			<h4 className={styles.title}>{title}</h4>
 			<div className={styles['category-wrapper']}>
 				{data &&
 					data.map((item) => {
 						return (
 							<Chip
-								key={item?.id}
-								className={styles.chip}
+								key={item?.id as Key}
 								label={item.title}
 								theme="primary"
 								preffix={item.imageSrc ? <Icon icon="fileHtml" /> : null}
