@@ -5,6 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Tabs } from '@/shared/ui/Tabs';
 
@@ -31,19 +32,19 @@ export const EditProfileForm = () => {
 		{
 			id: 0,
 			title: 'personal-information',
-			label: t('tabs.items.personalInformation'),
+			label: t(Profile.TABS_ITEMS_PERSONALINFORMATION),
 			Component: PersonalInformationForm,
 		},
 		{
 			id: 1,
 			title: 'about-me',
-			label: t('tabs.items.aboutMe'),
+			label: t(Profile.TABS_ITEMS_ABOUTME),
 			Component: AboutMeForm,
 		},
 		{
 			id: 2,
 			title: 'skills',
-			label: t('tabs.items.skills'),
+			label: t(Profile.TABS_ITEMS_SKILLS),
 			Component: SkillsForm,
 		},
 		// {

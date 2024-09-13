@@ -7,15 +7,18 @@ import { route } from '@/shared/helpers/route';
 import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
-import { Question } from '../../model/types/question';
+import { Question } from '@/entities/question';
+
+import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 
 import styles from './QuestionPreview.module.css';
 
 type QuestionProps = {
 	question: Question;
+	profileId: string;
 };
 
-export const QuestionPreview = ({ question }: QuestionProps) => {
+export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
 
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
@@ -52,14 +55,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 										Подробнее
 									</Button>
 								</NavLink>
-								<Button
-									className={styles.button}
-									theme="tertiary"
-									preffix={<Icon icon="student" size={20} />}
-									size="small"
-								>
-									Изучать
-								</Button>
+								<LearnQuestionButton profileId={profileId} questionId={id} />
 								<Button
 									className={styles.button}
 									theme="tertiary"

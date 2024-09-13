@@ -1,25 +1,23 @@
 {
-  "profile": {
-    "tabs": {
-      "title": "Редактирование профиля",
-      "items": {
-        "personalInformation": "Личная информация",
-        "aboutMe": "Обо мне",
-        "skills": "Навыки",
-        "projects": "Проекты",
-        "experience": "Опыт работы",
-        "education": "Образование"
-      }
-    },
-    "skillForm": {
-      "specializationSelect": "Выберите специализацию",
-      "emptySpecializationSelect": "Нет доступных опций",
-      "skillSelect": "Выберите навык из списка",
-      "emptySkillSelect": "Нет доступных опций",
-      "selectedSkills": "Выбранные навыки",
-      "yourSkills": "Твои навыки",
-      "yourSkillsText": "Покажи, что ты умеешь и в чём ты действительно хорош",
-      "submitButtonText": "Сохранить"
+  "tabs": {
+    "title": "Редактирование профиля",
+    "items": {
+      "personalInformation": "Личная информация",
+      "aboutMe": "Обо мне",
+      "skills": "Навыки",
+      "projects": "Проекты",
+      "experience": "Опыт работы",
+      "education": "Образование"
     }
+  },
+  "skillForm": {
+    "specializationSelect": "Выберите специализацию",
+    "emptySpecializationSelect": "Нет доступных опций",
+    "skillSelect": "Выберите навык из списка",
+    "emptySkillSelect": "Нет доступных опций",
+    "selectedSkills": "Выбранные навыки",
+    "yourSkills": "Твои навыки",
+    "yourSkillsText": "Покажи, что ты умеешь и в чём ты действительно хорош",
+    "submitButtonText": "Сохранить"
   }
 }

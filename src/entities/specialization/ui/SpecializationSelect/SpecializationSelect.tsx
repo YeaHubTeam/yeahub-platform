@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Specialization } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
@@ -40,8 +41,8 @@ export const SpecializationSelect = ({ onChange, value }: SpecializationSelectPr
 			value={value || value === 0 ? `${value}` : undefined}
 			placeholder={
 				options.length
-					? t('skillForm.specializationSelect')
-					: t('skillForm.emptySpecializationSelect')
+					? t(Specialization.SKILLFORM_SPECIALIZATIONSELECT)
+					: t(Specialization.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
 			}
 			className={styles.select}
 		/>

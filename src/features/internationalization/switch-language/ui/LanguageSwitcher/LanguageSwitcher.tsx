@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Translations } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
 import { Languages } from '../../model/types/changingLanguage';
 
@@ -17,7 +17,7 @@ export const LanguageSwitcher = memo(() => {
 
 	return (
 		<button onClick={onChangeLanguage} data-testid="LanguageSwitcher_Button">
-			{t(Translations.LANGUAGE)}
+			{t(Translation.LANGUAGE)}
 		</button>
 	);
 });

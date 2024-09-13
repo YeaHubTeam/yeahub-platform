@@ -19,7 +19,7 @@ const createQuizPageSlice = createSlice({
 		setProfileId: (state, action: PayloadAction<string>) => {
 			state.profileId = action.payload;
 		},
-		setSkills: (state, action: PayloadAction<number[]>) => {
+		setSkills: (state, action: PayloadAction<number[] | undefined>) => {
 			state.skills = action.payload;
 		},
 		setComplexity: (state, action: PayloadAction<number[]>) => {
