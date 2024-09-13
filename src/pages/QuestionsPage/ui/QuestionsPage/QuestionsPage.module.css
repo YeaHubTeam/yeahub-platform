@@ -29,3 +29,27 @@
     flex-direction: column-reverse;
   }
 }
+
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-100);
+}
+
+.question-skeleton {
+  margin-top: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-skeleton-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

@@ -12,6 +12,7 @@ import { questionsPageActions } from '../../model/slices/questionsPageSlice';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
+import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
 	const params = useSelector(getQuestionsPageFilter);
@@ -20,7 +21,7 @@ const QuestionsPage = () => {
 	//TODO: add all params when BE is ready
 	const { progressStatus, rate, ...getParams } = params;
 	const dispatch = useAppDispatch();
-	const { data: questions } = useGetQuestionsListQuery(getParams);
+	const { data: questions, isLoading, isFetching } = useGetQuestionsListQuery(getParams);
 
 	const onChangeSearchParams = (value: string) => {
 		dispatch(questionsPageActions.setTitle(value));
@@ -41,6 +42,10 @@ const QuestionsPage = () => {
 	const onChangeStatus = (status: number[]) => {
 		dispatch(questionsPageActions.setStatus(status));
 	};
+
+	if (isLoading || isFetching) {
+		return <QuestionsPageSkeleton />;
+	}
 
 	return (
 		<section className={styles.wrapper}>
