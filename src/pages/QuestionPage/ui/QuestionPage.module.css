@@ -20,6 +20,11 @@
   flex-direction: column;
   gap: 20px;
   width: 360px;
+  height: auto;
+}
+
+:is(.additional, .mobile) > div {
+  height: auto;
 }
 
 .author {
@@ -27,4 +32,48 @@
   margin: 0 auto;
   width: auto;
   text-align: center;
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.actions-wrapper {
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
+.mobile .actions {
+  justify-content: flex-start;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
