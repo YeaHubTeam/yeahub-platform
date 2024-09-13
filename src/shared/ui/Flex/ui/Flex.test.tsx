@@ -1,6 +1,8 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '../../../libs/jest';
+// import { renderComponent } from '../../../libs/jest';
+
+import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
 import { Flex, FlexProps } from './Flex';
 

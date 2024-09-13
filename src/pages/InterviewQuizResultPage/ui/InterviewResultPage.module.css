@@ -9,25 +9,8 @@
   }
 }
 
-.progress,
-.result,
-.stats {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .result {
   gap: clamp(24px, 4vw + 10px, 50px);
-}
-
-.progress {
-  gap: 20px;
-}
-
-.stats {
-  justify-content: space-between;
-  gap: 12px;
 }
 
 .block {
@@ -39,12 +22,6 @@
   grid-column: span 2;
   justify-content: center;
   margin-top: 20px;
-}
-
-.passed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 @media (width <=1280px) {

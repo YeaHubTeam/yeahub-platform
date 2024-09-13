@@ -6,11 +6,11 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Block } from '@/shared/ui/Block';
+import { Flex } from '@/shared/ui/Flex';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
-import { useGetQuizByIdQuery } from '@/entities/quiz';
-import { QuizByIdRequestParams } from '@/entities/quiz';
+import { QuizByIdRequestParams, useGetQuizByIdQuery } from '@/entities/quiz';
 
 import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
@@ -18,7 +18,7 @@ import { PassedQuestionsList } from '@/widgets/PassedQuestions';
 
 import { getInterviewStats } from '../model/getInterviewStast';
 
-import { InterviewQuizResultPageWithSkeleton } from './InterviewQuizResultPageWithSkeleton';
+import { InterviewQuizResultPageSkeleton } from './InterviewQuizResultPage.skeleton';
 import styles from './InterviewResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
@@ -53,12 +53,12 @@ const InterviewQuizResultPage = () => {
 		},
 	];
 
-	if (isLoading) return <InterviewQuizResultPageWithSkeleton />;
+	if (isLoading) return <InterviewQuizResultPageSkeleton />;
 
 	return (
 		<div className={styles.container}>
 			<Block>
-				<div className={styles.result}>
+				<Flex direction="column" align="center" className={styles.result}>
 					<InterviewQuestionHeader
 						title={t('resultInterview.resultTitle', null, { title: data?.quizNumber })}
 						centered
@@ -68,26 +68,26 @@ const InterviewQuizResultPage = () => {
 						totalAttempt={interviewStats?.questionsTotalCount ?? 0}
 						attemptData={interviewStats?.stats ?? []}
 					/>
-				</div>
+				</Flex>
 			</Block>
-			<div className={styles.stats}>
+			<Flex direction="column" align="center" gap="12" justify="between">
 				<Block className={styles.block}>
-					<div className={styles.progress}>
+					<Flex gap="20" direction="column" align="center">
 						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart
 							isLoading={isLoading}
 							total={data?.fullCount ?? 1}
 							learned={data?.successCount ?? 0}
 						/>
-					</div>
+					</Flex>
 				</Block>
 				<PassedQuestionStatInfo stats={questionStats} />
-			</div>
+			</Flex>
 			<Block className={styles.passed}>
-				<div className={styles['passed-list']}>
+				<Flex direction="column" gap="24">
 					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
 					<PassedQuestionsList questions={questions ?? []} />
-				</div>
+				</Flex>
 			</Block>
 		</div>
 	);
