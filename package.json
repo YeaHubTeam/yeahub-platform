@@ -20,6 +20,8 @@
     "storybook:build": "storybook build -c ./config/storybook",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
+    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:unit:coverage": "jest --coverage  --config ./config/jest/jest.config.ts --collectCoverageFrom='src/**/*.{ts,tsx}' --collectCoverageFrom=!src/**/*.stories.*"
   },
@@ -104,6 +106,7 @@
     "react-hook-form": "^7.52.2",
     "react-refresh": "^0.14.0",
     "react-refresh-typescript": "^2.0.9",
+    "reg-cli": "0.18.7",
     "regenerator-runtime": "^0.14.1",
     "storybook": "^7.6.17",
     "style-loader": "^3.3.4",
