@@ -16,20 +16,24 @@ export const profileSchema = yup.object().shape({
 			}
 			return true;
 		}),
-
-	name: yup
+	firstName: yup
 		.string()
 		.required('Имя обязательно')
 		.min(4, 'Должно быть больше 4 символов')
 		.max(30, 'Должно быть меньше 30 символов'),
-	specialization: yup.string().required('Специализация обязательна'),
+	lastName: yup
+		.string()
+		.required('Имя обязательно')
+		.min(4, 'Должно быть больше 4 символов')
+		.max(30, 'Должно быть меньше 30 символов'),
+	specialization: yup.number().required('Специализация обязательна'),
 	phone: yup.string().required('Телефон обязателен'),
 	email: yup
 		.string()
 		.email('Неверный формат электронной почты')
 		.required('Электронная почта обязательна'),
 	location: yup.string().optional(),
-	skillLevel: yup.string().optional(),
+	skillLevel: yup.number().optional(),
 	socialNetworks: yup
 		.array()
 		.of(

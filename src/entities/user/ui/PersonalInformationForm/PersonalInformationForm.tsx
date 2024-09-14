@@ -39,9 +39,14 @@ export const PersonalInformationForm = () => {
 						<p>Сюда мы тоже что-нибудь классное придумаем</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<Label className={style.label} required text="Имя и фамилия">
-							<Input {...register('name')} className={style.input} />
-						</Label>
+						<div className={style['info-section']}>
+							<Label className={style.label} required text="Имя">
+								<Input {...register('firstName')} className={style.input} />
+							</Label>
+							<Label className={style.label} required text="Фамилия">
+								<Input {...register('lastName')} className={style.input} />
+							</Label>
+						</div>
 						<Label className={style.label} required text="IT Специальность">
 							<Controller
 								name="specialization"
@@ -51,24 +56,26 @@ export const PersonalInformationForm = () => {
 								)}
 							/>
 						</Label>
-						<Label className={style.label} text="Номер для связи">
-							<Controller
-								name="phone"
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<InputMask
-										className={style.phone}
-										mask={'+7-(999)-999-99-99'}
-										placeholder={'+7-(XXX)-XXX-XX-XX'}
-										onChange={onChange}
-										value={value}
-									/>
-								)}
-							/>
-						</Label>
-						<Label className={style.label} text="Email для связи">
-							<Input {...register('email')} className={style.input} />
-						</Label>
+						<div className={style['info-section']}>
+							<Label className={style.label} text="Номер для связи">
+								<Controller
+									name="phone"
+									control={control}
+									render={({ field: { onChange, value } }) => (
+										<InputMask
+											className={style.phone}
+											mask={'+7-(999)-999-99-99'}
+											placeholder={'+7-(XXX)-XXX-XX-XX'}
+											onChange={onChange}
+											value={value}
+										/>
+									)}
+								/>
+							</Label>
+							<Label className={style.label} text="Email для связи">
+								<Input {...register('email')} className={style.input} />
+							</Label>
+						</div>
 						<Label className={style.label} text="Локация">
 							<Input
 								{...register('location')}
@@ -76,9 +83,9 @@ export const PersonalInformationForm = () => {
 								placeholder="Напр. Санкт-Петербург, Россия"
 							/>
 						</Label>
-						{/* <Label className={style.label} text="Уровень специалиста">
+						<Label className={style.label} text="Уровень специалиста">
 							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-						</Label> */}
+						</Label>
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>
