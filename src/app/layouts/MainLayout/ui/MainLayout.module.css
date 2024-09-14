@@ -1,7 +1,8 @@
 .layout {
   display: grid;
   grid-template-rows: 76px 1fr;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: auto 1fr;
+  overflow: hidden;
   background-color: var(--background-app);
   color: var(--text-color-primary);
   transition:
@@ -21,7 +22,7 @@
   align-items: center;
   gap: 24px;
   padding: 24px 20px;
-  height: calc(100vh - 125px);
+  height: calc(100vh - 76px);
   max-height: 100%;
   overflow-y: auto;
 }
@@ -31,23 +32,7 @@
   max-width: 1600px;
 }
 
-.closing {
-  grid-template-columns: 88px 1fr;
-}
-
-
-@media (width <= 768px) {
-  .layout {
-    grid-template-columns: 80px 1fr;
-  }
-}
-
-
 @media (width <= 480px) {
-  .layout {
-    grid-template-columns: 0 1fr;
-  }
-
   .main {
     padding: 16px;
   }

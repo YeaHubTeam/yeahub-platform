@@ -14,8 +14,11 @@ const config: Config = {
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
+  // The paths to modules that run some code to configure or set up the testing environment before each test
+  setupFiles: ['<rootDir>config/jest/jest.polyfill.ts'],
+
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
+  testEnvironment: '@happy-dom/jest-environment',
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -135,9 +138,6 @@ const config: Config = {
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
-
-  // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
