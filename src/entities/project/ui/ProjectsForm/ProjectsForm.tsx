@@ -1,3 +1,4 @@
+import { useFormContext } from 'react-hook-form';
 import { Button, Icon, Input, Label } from 'yeahub-ui-kit';
 
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -6,7 +7,18 @@ import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './ProjectForm.module.css';
 
+interface ProjectFormInputs {
+	projectName: string;
+	projectLink: string;
+	projectDescription: string;
+}
+
 export const ProjectForm = () => {
+	const {
+		register,
+		formState: { errors },
+	} = useFormContext<ProjectFormInputs>();
+
 	return (
 		<>
 			<div className={style['container-top']}>
@@ -41,18 +53,21 @@ export const ProjectForm = () => {
 						<ImageLoader />
 						<div className={style['inputs-wrapper']}>
 							<Label className={style.label} text="Название проекта" required>
-								<Input className={style.input} />
+								<Input {...register('projectName')} className={style.input} />
+								<div className={style.error}>{errors.projectName?.message}</div>
 							</Label>
 							<Label className={style.label} text="Ссылка на проект" required>
-								<Input className={style.input} />
+								<Input {...register('projectLink')} className={style.input} />
+								<div className={style.error}>{errors.projectLink?.message}</div>
 							</Label>
 							<Label className={style['label-textarea']} text="Описание проекта" required>
 								<textarea
+									{...register('projectDescription')}
+									name="projectDescription"
 									className={style.textarea}
 									placeholder="Расскажи чуть подробнее о проекте"
-									name=""
-									id=""
-								></textarea>
+								/>
+								<div className={style.error}>{errors.projectDescription?.message}</div>
 							</Label>
 						</div>
 						<div className={style['container-bottom-btn']}>
