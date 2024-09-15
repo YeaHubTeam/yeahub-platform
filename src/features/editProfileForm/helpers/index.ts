@@ -52,7 +52,6 @@ export const mapProfileToForm = (profile: Profile): ProfileSchema => ({
 	phone: profile.user.phone,
 	email: profile.user.email,
 	location: profile.user.city,
-	skillLevel: profile.markingWeight, //??
 	socialNetworks: profile.socialNetwork,
 	aboutMe: profile.description,
 	skills: profile.profileSkills,

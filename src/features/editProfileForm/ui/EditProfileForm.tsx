@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
@@ -38,6 +38,12 @@ export const EditProfileForm = () => {
 		mode: 'onTouched',
 		defaultValues: userProfile ? mapProfileToForm(userProfile) : {},
 	});
+
+	useEffect(() => {
+		if (userProfile) {
+			methods.reset(mapProfileToForm(userProfile));
+		}
+	}, [methods, userProfile]);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const onSubmit = (data: any) => {
