@@ -31,7 +31,7 @@ export const EditProfileForm = () => {
 		({ currentLocation, nextLocation }) =>
 			methods.formState.isDirty && currentLocation.pathname !== nextLocation.pathname,
 	);
-	console.log(methods.formState.isDirty);
+
 	const tabs = [
 		{
 			id: 0,

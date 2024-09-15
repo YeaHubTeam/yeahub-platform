@@ -1,4 +1,8 @@
+import classNames from 'classnames';
 import { Button, Modal, ModalContent, ModalDescription, ModalHeading } from 'yeahub-ui-kit';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import styles from './BlockerDialogModal.module.css';
 
@@ -7,6 +11,7 @@ interface BlockerDialogModalProps {
 	children?: React.ReactNode;
 	onOk?: () => void;
 	onCancel?: () => void;
+	containerClassName?: string;
 }
 
 export const BlockerDialog = ({
@@ -14,23 +19,28 @@ export const BlockerDialog = ({
 	children,
 	onCancel,
 	onOk,
+	containerClassName = '',
 }: BlockerDialogModalProps) => {
+	const { t } = useI18nHelpers(i18Namespace.translation);
+
 	const handleOk = () => onOk && onOk();
 	const handleCancel = () => onCancel && onCancel();
+
+	const containerStyle = classNames(styles.content, containerClassName);
 	return (
 		<Modal open>
 			{asChild && children ? (
-				<ModalContent className={styles.content}>{children}</ModalContent>
+				<ModalContent className={containerStyle}>{children}</ModalContent>
 			) : (
-				<ModalContent className={styles.content}>
-					<ModalHeading className={styles.title}>Подтвердить действие</ModalHeading>
+				<ModalContent className={containerStyle}>
+					<ModalHeading className={styles.title}>{t('blockModal.confirmTitle')}</ModalHeading>
 					<ModalDescription className={styles.description}>
-						У вас есть несохраненные данные. Вы хотите продолжить?
+						{t('blockModal.confirmDescription')}
 					</ModalDescription>
 					<div className={styles['buttons-wrapper']}>
-						<Button onClick={handleOk}>Да</Button>
+						<Button onClick={handleOk}>{t('blockModal.action.ok')}</Button>
 						<Button theme="outline" onClick={handleCancel}>
-							Нет
+							{t('blockModal.action.cancel')}
 						</Button>
 					</div>
 				</ModalContent>
