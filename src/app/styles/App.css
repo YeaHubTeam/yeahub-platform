@@ -115,7 +115,6 @@
 
 body {
   min-height: 100vh;
-  overflow: hidden;
   background-color: var(--background-app);
   line-height: 140%;
   font-weight: var(--font-weight-500);

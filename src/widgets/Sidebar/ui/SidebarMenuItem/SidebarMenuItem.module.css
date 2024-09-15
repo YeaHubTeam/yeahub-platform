@@ -1,13 +1,4 @@
-.nav {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.item {
+.link {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,49 +8,51 @@
   color: var(--text-color-primary);
   text-decoration: none;
   transition:
-    background-color 0.3s ease-in-out,
-    color 0.3s ease-in-out;
+		all 0.3s ease-in-out;
 }
 
-.item:hover {
+.link:hover {
   background-color: var(--background-nav-item-hover);
 }
 
-.item-active,
-.item-active:hover {
+.active,
+.active:hover {
   background-color: var(--background-nav-item);
 }
 
 .wrap {
+  position: relative;
   display: flex;
   flex-shrink: 0;
   align-items: center;
   gap: 8px;
 }
 
-.span {
-  transition: opacity 0.7s ease-in-out;
+.link-title {
+  transition: all 0.3s ease-in-out;
 }
 
-.image {
+.link-icon {
   width: 24px;
   height: 24px;
   color: var(--text-color-primary);
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .closing {
   opacity: 0;
+  position: absolute;
+  left: 32px;
   pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 @media (width <= 768px) {
-  .span {
+  .link-title {
     display: none;
   }
 
-  .item {
+  .link {
     justify-content: center;
     padding: 10px 12px;
   }
