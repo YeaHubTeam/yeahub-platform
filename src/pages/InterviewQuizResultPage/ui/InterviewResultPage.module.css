@@ -9,6 +9,10 @@
   }
 }
 
+.stats {
+  flex-grow: 1;
+}
+
 .result {
   gap: clamp(24px, 4vw + 10px, 50px);
 }
