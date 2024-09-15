@@ -28,8 +28,18 @@
   margin-top: 20px;
 }
 
+.question-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 16px;
+  width: 100%;
+  place-items: center start;
+}
+
 @media (width <=1280px) {
-  .container {
+  .container,
+  .question-list {
     grid-template-columns: 1fr;
   }
 
