@@ -1,18 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { useBlocker, useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { useProfileQuery } from '@/entities/auth';
 import { SkillsForm } from '@/entities/skill';
-import { AboutMeForm, PersonalInformationForm } from '@/entities/user';
-import { useUpdateProfileMutation } from '@/entities/user';
+import { AboutMeForm, PersonalInformationForm, useUpdateProfileMutation } from '@/entities/user';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { profileSchema } from '../model/lib/validation/profileSchema';
 import { ProfileSchema } from '../model/types/profileTypes';
 
@@ -25,6 +27,11 @@ export const EditProfileForm = () => {
 		mode: 'onBlur',
 	});
 
+	const blocker = useBlocker(
+		({ currentLocation, nextLocation }) =>
+			methods.formState.isDirty && currentLocation.pathname !== nextLocation.pathname,
+	);
+	console.log(methods.formState.isDirty);
 	const tabs = [
 		{
 			id: 0,
@@ -99,6 +106,9 @@ export const EditProfileForm = () => {
 			<FormProvider {...methods}>
 				<form onSubmit={methods.handleSubmit(onSubmit)}>
 					{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+					{blocker.state === 'blocked' ? (
+						<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+					) : null}
 				</form>
 			</FormProvider>
 		</section>

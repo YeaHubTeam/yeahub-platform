@@ -1,3 +1,11 @@
 {
-  "language": "English"
+  "language": "English",
+  "blockModal": {
+    "confirmTitle": "Подтвердить действие",
+    "confirmDescription": "У вас есть несохраненные данные. Вы хотите продолжить?",
+    "action": {
+      "ok": "Да",
+      "cancel": "Нет"
+    }
+  }
 }
