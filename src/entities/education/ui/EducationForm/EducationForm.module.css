@@ -55,6 +55,14 @@
   font-size: var(--font-size-m);
 }
 
+.error {
+  margin-top: 0.25rem;
+  height: 1.25rem;
+  color: var(--color-red-600);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
 .container-btn{
   display: flex;
   justify-content: flex-end;

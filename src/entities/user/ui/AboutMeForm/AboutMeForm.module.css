@@ -21,7 +21,7 @@
   max-width: 706px;
 }
   
-textarea {
+.textarea {
   padding: 16px;
   width: 100%;
   max-width: 706px;
@@ -30,7 +30,7 @@ textarea {
   resize: vertical;
 }
   
-textarea:focus {
+.textarea:focus {
   outline: none;
 }
 
