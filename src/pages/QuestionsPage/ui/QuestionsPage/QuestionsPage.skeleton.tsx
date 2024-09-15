@@ -10,24 +10,11 @@ export const QuestionsPageSkeleton = () => {
 				<Block className={styles.content}>
 					<Skeleton style={{ margin: '0.67em 0' }} height={33} />
 					<hr className={styles.divider} />
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
-					<div className={styles['question-skeleton']}>
-						<Skeleton height={24} />
-					</div>
+					{[...Array(6)].map((_, i) => (
+						<div key={i} className={styles['question-skeleton']}>
+							<Skeleton height={24} />
+						</div>
+					))}
 				</Block>
 			</div>
 			<div className={styles['additional-info-wrapper']}>
@@ -35,53 +22,16 @@ export const QuestionsPageSkeleton = () => {
 					<div className={styles['filter-skeleton-wrapper']}>
 						<Skeleton height={44} />
 
-						<div>
-							<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
-							<div className={styles['filter-skeleton-list']}>
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
+						{[...Array(4)].map((_, i) => (
+							<div key={i}>
+								<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
+								<div className={styles['filter-skeleton-list']}>
+									{[...Array(4)].map((_, i) => (
+										<Skeleton key={i} height={42} width={80} borderRadius="12px" />
+									))}
+								</div>
 							</div>
-						</div>
-
-						<div>
-							<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
-							<div className={styles['filter-skeleton-list']}>
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-							</div>
-						</div>
-
-						<div>
-							<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
-							<div className={styles['filter-skeleton-list']}>
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-							</div>
-						</div>
-
-						<div>
-							<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
-							<div className={styles['filter-skeleton-list']}>
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-								<Skeleton height={42} width={128} borderRadius="12px" />
-								<Skeleton height={42} width={132} borderRadius="12px" />
-								<Skeleton height={42} width={126} borderRadius="12px" />
-							</div>
-						</div>
+						))}
 					</div>
 				</Block>
 			</div>
