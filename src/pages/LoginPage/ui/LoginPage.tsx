@@ -1,8 +1,9 @@
 import { Button } from 'yeahub-ui-kit';
 
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_ACCESS_TOKEN_KEY, useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
+import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
 import { LoginCreateForm } from '@/widgets/authentication/login';
 
