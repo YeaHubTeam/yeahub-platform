@@ -33,9 +33,15 @@ export const PersonalInformationForm = () => {
 						<p>Сюда мы тоже что-нибудь классное придумаем</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<FormControl name="name" control={control} label="Имя и фамилия" className={style.form}>
-							{() => <Input {...register('name')} className={style.input} />}
-						</FormControl>
+						<div className={style['info-section']}>
+							<FormControl name="firstName" control={control} label="Имя" className={style.form}>
+								{() => <Input {...register('firstName')} className={style.input} />}
+							</FormControl>
+							<FormControl name="lastName" control={control} label="Фамилия" className={style.form}>
+								{() => <Input {...register('lastName')} className={style.input} />}
+							</FormControl>
+						</div>
+
 						<FormControl
 							name="specialization"
 							control={control}
@@ -44,31 +50,34 @@ export const PersonalInformationForm = () => {
 						>
 							{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
 						</FormControl>
-						<FormControl
-							name="phone"
-							control={control}
-							label="Номер для связи"
-							className={style.form}
-						>
-							{({ onChange, value }) => (
-								<InputMask
-									{...register('phone')}
-									className={style.phone}
-									mask={'+7-(999)-999-99-99'}
-									placeholder={'+7-(XXX)-XXX-XX-XX'}
-									onChange={onChange}
-									value={value}
-								/>
-							)}
-						</FormControl>
-						<FormControl
-							name="email"
-							control={control}
-							label="Email для связи"
-							className={style.form}
-						>
-							{() => <Input {...register('email')} className={style.input} />}
-						</FormControl>
+						<div className={style['info-section']}>
+							<FormControl
+								name="phone"
+								control={control}
+								label="Номер для связи"
+								className={style.form}
+							>
+								{({ onChange, value }) => (
+									<InputMask
+										{...register('phone')}
+										className={style.phone}
+										mask={'+7-(999)-999-99-99'}
+										placeholder={'+7-(XXX)-XXX-XX-XX'}
+										onChange={onChange}
+										value={value}
+									/>
+								)}
+							</FormControl>
+							<FormControl
+								name="email"
+								control={control}
+								label="Email для связи"
+								className={style.form}
+							>
+								{() => <Input {...register('email')} className={style.input} />}
+							</FormControl>
+						</div>
+
 						<FormControl name="location" control={control} label="Локация" className={style.form}>
 							{() => (
 								<Input
@@ -78,9 +87,11 @@ export const PersonalInformationForm = () => {
 								/>
 							)}
 						</FormControl>
-						{/* <Label className={style.label} text="Уровень специалиста">
-							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-						</Label> */}
+						<FormControl name="skillLevel" control={control} label="Уровень специалиста">
+							{() => (
+								<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
+							)}
+						</FormControl>
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>
