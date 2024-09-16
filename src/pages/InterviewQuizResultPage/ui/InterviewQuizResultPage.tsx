@@ -5,7 +5,7 @@ import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -54,7 +54,7 @@ const InterviewQuizResultPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Block>
+			<Card>
 				<div className={styles.result}>
 					<InterviewQuestionHeader
 						title={t('resultInterview.resultTitle', null, { title: data?.quizNumber })}
@@ -66,9 +66,9 @@ const InterviewQuizResultPage = () => {
 						attemptData={interviewStats?.stats ?? []}
 					/>
 				</div>
-			</Block>
+			</Card>
 			<div className={styles.stats}>
-				<Block className={styles.block}>
+				<Card className={styles.block}>
 					<div className={styles.progress}>
 						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart
@@ -77,15 +77,15 @@ const InterviewQuizResultPage = () => {
 							learned={data?.successCount ?? 0}
 						/>
 					</div>
-				</Block>
+				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />
 			</div>
-			<Block className={styles.passed}>
+			<Card className={styles.passed}>
 				<div className={styles['passed-list']}>
 					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
 					<PassedQuestionsList questions={questions ?? []} />
 				</div>
-			</Block>
+			</Card>
 		</div>
 	);
 };

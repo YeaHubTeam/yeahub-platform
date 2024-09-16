@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -62,7 +62,7 @@ const CreateQuizPage = () => {
 
 	return (
 		<section>
-			<Block className={styles.container}>
+			<Card className={styles.container}>
 				<h2 className={styles.title}>Собеседование</h2>
 				<div className={styles.wrapper}>
 					<ChooseQuestionsCategories
@@ -86,7 +86,7 @@ const CreateQuizPage = () => {
 				>
 					Начать
 				</Button>
-			</Block>
+			</Card>
 		</section>
 	);
 };

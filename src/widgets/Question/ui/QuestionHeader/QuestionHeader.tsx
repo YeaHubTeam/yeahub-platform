@@ -1,5 +1,5 @@
 import QuestionImg from '@/shared/assets/images/question_img.png';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import styles from './QuestionHeader.module.css';
 
@@ -13,7 +13,7 @@ interface QuestionHeaderProps {
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
 	return (
-		<Block className={styles.wrapper}>
+		<Card className={styles.wrapper}>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
 					<img className={styles.img} src={QuestionImg} alt="Question" />
@@ -26,6 +26,6 @@ export const QuestionHeader = ({ title, description, status }: QuestionHeaderPro
 					<p className={styles.label}>{status}</p>
 				</div>
 			</div>
-		</Block>
+		</Card>
 	);
 };

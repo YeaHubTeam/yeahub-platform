@@ -1,13 +1,21 @@
+import classNames from 'classnames';
 import { ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
-import styles from './Block.module.css';
+import { LinkWithArrowRight } from '../../LinkWithArrowRight';
 
-interface BlockProps {
+import styles from './Card.module.css';
+import { InterviewPreparationHeader } from './InterviewPreparationHeader/InterviewPreparationHeader';
+
+interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
+	title?: string;
+	actionRoute?: string;
+	actionTitle?: string;
+	withShadow?: boolean;
 }
 
 /**
@@ -20,7 +28,7 @@ interface BlockProps {
 const ExpandIcon = () => {
 	return (
 		<svg
-			className={`${styles['block-expand-svg']}`}
+			className={`${styles['card-expand-svg']}`}
 			width="100%"
 			height="90"
 			viewBox="0 0 740 90"
@@ -49,7 +57,15 @@ const ExpandIcon = () => {
 	);
 };
 
-export const Block = ({ children, expandable = false, className = '' }: BlockProps) => {
+export const Card = ({
+	children,
+	className = '',
+	withShadow = false,
+	expandable = false,
+	title = '',
+	actionTitle = '',
+	actionRoute = '',
+}: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
@@ -57,11 +73,13 @@ export const Block = ({ children, expandable = false, className = '' }: BlockPro
 	useLayoutEffect(() => {
 		if (expandable) {
 			const changeContentHeight = () => {
-				const height = (contentRef.current?.getClientRects()[0].height as number)!;
-				if (height < 250) {
-					setIsExpand(false);
+				if (contentRef?.current) {
+					const height = contentRef.current?.getClientRects()[0].height;
+					if (height < 250) {
+						setIsExpand(false);
+					}
+					setContentHeight(height);
 				}
-				setContentHeight(height);
 			};
 
 			window.addEventListener('resize', changeContentHeight);
@@ -72,29 +90,51 @@ export const Block = ({ children, expandable = false, className = '' }: BlockPro
 	}, [expandable]);
 
 	useLayoutEffect(() => {
-		setContentHeight((contentRef.current?.getClientRects()[0].height as number)!);
+		if (contentRef?.current) {
+			setContentHeight(contentRef.current?.getClientRects()[0].height);
+		}
 	}, [expandable]);
 
+	// This function with useCallback isn't needed because setIsExpand is memoized
+	// Can we pass setIsExpand to the button?
 	const expandHandler = useCallback(() => {
 		setIsExpand((prev) => !prev);
 	}, []);
+	//
 
 	const isHeightForExpand = contentHeight >= 250;
 
+	const cardClasses = classNames(styles.card, className, {
+		[styles['card-expandable']]: isHeightForExpand,
+	});
+
 	return (
 		<div
-			className={`${styles.block} ${className} ${isHeightForExpand ? styles['block-expandable'] : ''}`}
+			className={cardClasses}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}
 		>
-			<div ref={contentRef}>{children}</div>
+			<div className={styles['card-header']}>
+				{title ? <InterviewPreparationHeader title={title} /> : null}
+				{actionRoute ? <LinkWithArrowRight link={actionRoute} linkTitle={actionTitle} /> : null}
+			</div>
+
+			<div
+				className={classNames({
+					[styles['children-shadow']]: withShadow,
+				})}
+				ref={contentRef}
+			>
+				{children}
+			</div>
+
 			{expandable && isHeightForExpand && (
 				<>
 					{!isExpand ? <ExpandIcon /> : null}
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
-						<Arrow className={`${isExpand ? styles['block-arrow-expanded'] : ''}`} />
+						<Arrow className={`${isExpand ? styles['card-arrow-expanded'] : ''}`} />
 					</button>
 				</>
 			)}

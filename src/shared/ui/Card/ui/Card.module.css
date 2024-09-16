@@ -1,26 +1,36 @@
-.block {
+.card {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 24px;
   overflow: hidden;
-  box-shadow: 0 4px 10px 0 #6A63761A;
   border-radius: 24px;
   background-color: var(--background-block);
   transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
 }
 
-.block-expandable {
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.children-shadow {
+  box-shadow: 0 4px 10px 0 #6A63761A;
+}
+
+.card-expandable {
   height: 250px;
 }
 
-.block-expand {
+.card-expand {
   position: absolute;
   bottom: 0;
 }
 
-.block-expand-svg {
+.card-expand-svg {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -28,8 +38,8 @@
   height: 90px;
 }
 
-.block-expand-svg defs linearGradient stop {
-  stop-color: var(--background-block);
+.card-expand-svg defs linearGradient stop {
+  stop-color: var(--background-card);
   transition: stop-color 300ms ease-in-out;
 }
 
@@ -54,6 +64,6 @@
   transition: transform 800ms ease-in-out;
 }
 
-.block-arrow-expanded {
+.card-arrow-expanded {
   transform: rotate(-180deg);
 }

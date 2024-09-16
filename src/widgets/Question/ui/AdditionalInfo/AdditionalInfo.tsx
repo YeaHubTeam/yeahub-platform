@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
 import { Skill } from '@/entities/skill';
@@ -24,7 +24,7 @@ export const AdditionalInfo = ({
 	keywords,
 }: AdditionalInfoProps) => {
 	return (
-		<Block className={styles['normal-hight']}>
+		<Card className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Уровень:</h4>
 				<ul className={styles['param-wrapper']}>
@@ -66,6 +66,6 @@ export const AdditionalInfo = ({
 					</div>
 				</div>
 			)}
-		</Block>
+		</Card>
 	);
 };

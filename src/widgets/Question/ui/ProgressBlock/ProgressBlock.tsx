@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import styles from './ProgressBlock.module.css';
 
@@ -20,7 +20,7 @@ export const ProgressBlock = ({ checksCount }: ProgressBlockProps) => {
 		});
 
 	return (
-		<Block className={styles.wrapper}>
+		<Card className={styles.wrapper}>
 			<h3 className={styles.title}>Прогресс</h3>
 			<div>
 				<p className={styles.info}>Пройдено {checksCount ?? 0} из 3 вопрос изучен!</p>
@@ -30,6 +30,6 @@ export const ProgressBlock = ({ checksCount }: ProgressBlockProps) => {
 					))}
 				</div>
 			</div>
-		</Block>
+		</Card>
 	);
 };

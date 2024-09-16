@@ -3,7 +3,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import styles from './ErrorElement.module.css';
 
@@ -21,7 +21,7 @@ export const ErrorElement = ({
 	const handleBackBtnClick = () => navigate(-1);
 
 	return (
-		<Block className={styles.block}>
+		<Card className={styles.card}>
 			<div className={styles.wrapper}>
 				<div className={styles.content}>
 					<h2 className={styles.title}>УПС!</h2>
@@ -34,6 +34,6 @@ export const ErrorElement = ({
 					Вернуться назад
 				</Button>
 			</div>
-		</Block>
+		</Card>
 	);
 };
