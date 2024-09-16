@@ -1,7 +1,8 @@
 .sidebar {
+  width: 280px;
   height: 100vh;
   background: var(--background-block);
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
 .header {
@@ -41,8 +42,12 @@
   transform: rotate(-180deg);
 }
 
-.content {
+.menu {
   padding: 36px 20px 20px;
+}
+
+.closing {
+  width: 88px;
 }
 
 @media (width <= 768px) {
@@ -50,12 +55,16 @@
     display: none;
   }
 
-  .content {
+  .menu {
     padding: 36px 10px 20px;
   }
 
   .header {
     justify-content: center;
+  }
+
+  .sidebar {
+    width: 80px;
   }
 }
 

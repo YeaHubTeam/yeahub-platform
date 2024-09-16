@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -18,6 +17,7 @@ import { questionsPageActions } from '../../model/slices/questionsPageSlice';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
+import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
 	const params = useSelector(getQuestionsPageFilter);
@@ -69,7 +69,7 @@ const QuestionsPage = () => {
 	const profileId = profile?.profiles[0]?.profileId || '';
 
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
-		return <Loader />;
+		return <QuestionsPageSkeleton />;
 	}
 
 	if (!questions) {

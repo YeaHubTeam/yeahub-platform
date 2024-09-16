@@ -6,7 +6,17 @@
   max-width: 660px;
 }
 
-.btn {
+.profile-picture-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-avatar-btn {
   max-width: 170px;
   border: none;
   background-color: transparent;
@@ -16,46 +26,8 @@
   cursor: pointer;
 }
 
-.profile-picture-wrapper {
-  display: flex;
-  gap: 16px;
-}
-
-.avatar-wrapper {
-  display: flex;
-  flex-direction: column;
-    
-}
-  
-.image-upload-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 0 40px;
-  width: 100%;
-  min-height: 188px;
-  border: 2px dashed var(--color-black-200);
-  border-radius: 16px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.image-upload-container:nth-child(2) {
-  color: var(--color-black-500);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-s);
-}
-
-.image-upload-container p span {
-  color: var(--color-purple-700);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-s);
-}
-
-.size-descriptions {
-  color: var(--color-black-300);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-xs);
+@media (width <= 360px) {
+  .profile-picture-wrapper {
+    flex-wrap: wrap;
+  }
 }

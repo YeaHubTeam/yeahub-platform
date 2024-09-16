@@ -9,7 +9,6 @@ export const useI18nHelpers = (ns?: string | string[]) => {
 		defaultValue?: string | null,
 		options?: Omit<TOptions, 'defaultValue'>,
 	) => {
-		console.log(ns, key);
 		return t(key, { ...options, defaultValue });
 	};
 
