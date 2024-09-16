@@ -1,8 +1,8 @@
 import { baseApi } from '@/shared/config/api/baseApi';
 import { ROUTES } from '@/shared/config/router/routes';
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_ACCESS_TOKEN_KEY } from '../model/constants/authConstants';
 import {
 	Auth,
 	ExtraArgument,
@@ -68,13 +68,14 @@ export const authApi = baseApi.injectEndpoints({
 		}),
 		refresh: build.query<GetAuthResponse, void>({
 			query: () => 'auth/refresh',
-			async onQueryStarted(_, { queryFulfilled }) {
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
+					await dispatch(authApi.endpoints.logout.initiate());
 				}
 			},
 		}),

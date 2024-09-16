@@ -1,4 +1,5 @@
-import { Suspense, useEffect } from 'react';
+
+import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
@@ -7,8 +8,6 @@ import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Loader } from '@/shared/ui/Loader';
-
-import { useLazyRefreshQuery, useProfileQuery } from '@/entities/auth';
 
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
@@ -34,15 +33,6 @@ const mainLayoutMenuItems: MenuItem[] = [
 ];
 
 export const MainLayout = () => {
-	const { error } = useProfileQuery();
-	const [trigger] = useLazyRefreshQuery();
-
-	useEffect(() => {
-		if (error) {
-			trigger();
-		}
-	}, [error, trigger]);
-
 	return (
 		<section className={styles.layout}>
 			<div className={styles.sidebar}>

@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { State } from '@/shared/config/store/State';
 
+import { refreshMiddleware } from '@/entities/auth';
 import { activeQuizSlice } from '@/entities/quiz';
 
 import { createQuizPageReducer } from '@/pages/CreateQuizPage';
@@ -28,7 +29,7 @@ export const createReduxStore = (initialState?: State) => {
 						navigate: router.navigate,
 					},
 				},
-			}).concat(baseApi.middleware),
+			}).concat(baseApi.middleware, refreshMiddleware.middleware),
 	});
 };
 
