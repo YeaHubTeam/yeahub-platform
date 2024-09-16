@@ -16,13 +16,17 @@ export const profileSchema = yup.object().shape({
 			}
 			return true;
 		}),
-
-	name: yup
+	firstName: yup
 		.string()
 		.required('Имя обязательно')
 		.min(4, 'Должно быть больше 4 символов')
 		.max(30, 'Должно быть меньше 30 символов'),
-	specialization: yup.string().required('Выбор специализации обязателен'),
+	lastName: yup
+		.string()
+		.required('Имя обязательно')
+		.min(4, 'Должно быть больше 4 символов')
+		.max(30, 'Должно быть меньше 30 символов'),
+	specialization: yup.number().required('Выбор специализации обязателен'),
 	phone: yup
 		.string()
 		.optional()

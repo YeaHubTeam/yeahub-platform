@@ -3,8 +3,6 @@ import { useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
 import { NavLink, useParams } from 'react-router-dom';
 
-import { Loader } from '@/shared/ui/Loader';
-
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -17,6 +15,7 @@ import {
 } from '@/widgets/Question';
 
 import styles from './QuestionPage.module.css';
+import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
 export const QuestionPage = () => {
 	const { questionId } = useParams();
@@ -39,7 +38,7 @@ export const QuestionPage = () => {
 	}, [question]);
 
 	if (isLoading || isFetching) {
-		return <Loader />;
+		return <QuestionPageSkeleton />;
 	}
 
 	if (isMobile) {

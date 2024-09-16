@@ -1,21 +1,42 @@
+
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import InterviewIcon from '@/shared/assets/icons/interview.svg';
+import MainIcon from '@/shared/assets/icons/main.svg';
+import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Loader } from '@/shared/ui/Loader';
 
 import { Header } from '@/widgets/Header';
-import { NavSidebarList } from '@/widgets/NavSidebar';
+import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
 import styles from './MainLayout.module.css';
 
-export const MainLayout = () => {
-	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
+const mainLayoutMenuItems: MenuItem[] = [
+	{
+		route: ROUTES.appRoute,
+		title: 'Главная',
+		icon: MainIcon,
+	},
+	{
+		route: ROUTES.profile.route,
+		title: 'Мой профиль',
+		icon: ProfileIcon,
+	},
+	{
+		route: ROUTES.interview.route,
+		title: 'Собеседование',
+		icon: InterviewIcon,
+	},
+];
 
+export const MainLayout = () => {
 	return (
-		<section className={`${styles.layout} ${isOpenNavSidebar ? styles['closing'] : ''}`}>
+		<section className={styles.layout}>
 			<div className={styles.sidebar}>
-				<NavSidebarList isOpen={isOpenNavSidebar} setOpen={setIsOpenNavSidebar} />
+				<Sidebar menuItems={mainLayoutMenuItems} />
 			</div>
 
 			<Header />
