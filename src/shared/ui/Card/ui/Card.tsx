@@ -121,8 +121,8 @@ export const Card = ({
 			</div>
 
 			<div
-				className={classNames({
-					[styles['children-shadow']]: withShadow,
+				className={classNames(styles.content, {
+					[styles['content-shadow']]: withShadow,
 				})}
 				ref={contentRef}
 			>

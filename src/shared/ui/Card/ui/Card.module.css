@@ -5,7 +5,7 @@
   gap: 20px;
   padding: 24px;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 16px;
   background-color: var(--background-block);
   transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
 }
@@ -17,7 +17,11 @@
   gap: 20px;
 }
 
-.children-shadow {
+.content {
+  border-radius: 12px;
+}
+
+.content-shadow {
   box-shadow: 0 4px 10px 0 #6A63761A;
 }
 

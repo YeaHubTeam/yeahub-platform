@@ -3,7 +3,6 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
-import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
@@ -12,7 +11,7 @@ import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
-import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
+import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
 
@@ -59,13 +58,8 @@ const InterviewPage = () => {
 				actionRoute={ROUTES.interview.statistic.page}
 			>
 				<div className={styles.statistics}>
-					<InterviewQuestionHeader title={t('stats.title')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight
-						link={ROUTES.interview.statistic.page}
-						linkTitle={t('stats.linkText')}
-					/>
 				</div>
 			</Card>
 			<Card
