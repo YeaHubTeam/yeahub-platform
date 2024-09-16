@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { isMobile } from 'react-device-detect';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 import styles from './QuestionPage.module.css';
@@ -10,7 +10,7 @@ export const QuestionPageSkeleton = () => {
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
-				<Block>
+				<Card>
 					<div className={styles.header}>
 						<Skeleton width={54} height={56} borderRadius={16} style={{ flexShrink: 0 }} />
 						<div className={styles['title-wrapper']}>
@@ -19,13 +19,13 @@ export const QuestionPageSkeleton = () => {
 						</div>
 						<Skeleton width={54} height={19} borderRadius={30} style={{ marginLeft: 'auto' }} />
 					</div>
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<Skeleton width={120} height={22} style={{ marginBottom: '16px' }} />
 					<Skeleton width="60%" height={22} style={{ marginBottom: '10px' }} />
 					<Skeleton height={16} />
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<div className={styles.info}>
 						<Skeleton width={50} height={22} />
 						<div className={styles.params}>
@@ -49,23 +49,23 @@ export const QuestionPageSkeleton = () => {
 							<Skeleton width={110} height={22} />
 						</div>
 					</div>
-				</Block>
+				</Card>
 				<Skeleton width={150} height={22} style={{ marginInline: 'auto' }} />
-				<Block className={styles['actions-wrapper']}>
+				<Card className={styles['actions-wrapper']}>
 					<div className={styles.actions}>
 						<Skeleton width={130} height={48} borderRadius={16} />
 						<Skeleton width={130} height={48} borderRadius={16} />
 						<Skeleton width={130} height={48} borderRadius={16} />
 					</div>
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
 					<Skeleton height={200} />
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
 					<Skeleton height={200} />
-				</Block>
+				</Card>
 			</section>
 		);
 	}
@@ -73,7 +73,7 @@ export const QuestionPageSkeleton = () => {
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles.main}>
-				<Block>
+				<Card>
 					<div className={styles.header}>
 						<Skeleton width={170} height={114} borderRadius={24} style={{ flexShrink: 0 }} />
 						<div className={styles['title-wrapper']}>
@@ -82,30 +82,30 @@ export const QuestionPageSkeleton = () => {
 						</div>
 						<Skeleton style={{ marginLeft: 'auto' }} width={78} height={19} borderRadius={30} />
 					</div>
-				</Block>
-				<Block className={styles['actions-wrapper']}>
+				</Card>
+				<Card className={styles['actions-wrapper']}>
 					<div className={styles.actions}>
 						<Skeleton width={130} height={48} borderRadius={16} />
 						<Skeleton width={130} height={48} borderRadius={16} />
 						<Skeleton width={130} height={48} borderRadius={16} />
 					</div>
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
 					<Skeleton height={200} />
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<Skeleton width={170} height={22} style={{ marginBottom: '20px' }} />
 					<Skeleton height={350} />
-				</Block>
+				</Card>
 			</div>
 			<div className={styles.additional}>
-				<Block>
+				<Card>
 					<Skeleton width={120} height={22} style={{ marginBottom: '16px' }} />
 					<Skeleton width="60%" height={22} style={{ marginBottom: '10px' }} />
 					<Skeleton height={16} />
-				</Block>
-				<Block>
+				</Card>
+				<Card>
 					<div className={styles.info}>
 						<Skeleton width={50} height={22} />
 						<div className={styles.params}>
@@ -129,7 +129,7 @@ export const QuestionPageSkeleton = () => {
 							<Skeleton width={110} height={22} />
 						</div>
 					</div>
-				</Block>
+				</Card>
 				<Skeleton width={150} height={22} style={{ marginInline: 'auto' }} />
 			</div>
 		</section>

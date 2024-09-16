@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 import styles from './QuestionsPage.module.css';
@@ -7,7 +7,7 @@ export const QuestionsPageSkeleton = () => {
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
-				<Block className={styles.content}>
+				<Card className={styles.content}>
 					<Skeleton style={{ margin: '0.67em 0' }} height={33} />
 					<hr className={styles.divider} />
 					{[...Array(6)].map((_, i) => (
@@ -15,10 +15,10 @@ export const QuestionsPageSkeleton = () => {
 							<Skeleton height={24} />
 						</div>
 					))}
-				</Block>
+				</Card>
 			</div>
 			<div className={styles['additional-info-wrapper']}>
-				<Block className={styles.search}>
+				<Card className={styles.search}>
 					<div className={styles['filter-skeleton-wrapper']}>
 						<Skeleton height={44} />
 
@@ -33,7 +33,7 @@ export const QuestionsPageSkeleton = () => {
 							</div>
 						))}
 					</div>
-				</Block>
+				</Card>
 			</div>
 		</section>
 	);
