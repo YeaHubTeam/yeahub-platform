@@ -2,10 +2,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { useBlocker, useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -20,7 +21,10 @@ import style from './EditProfileForm.module.css';
 
 export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-
+	const blocker = useBlocker(
+		({ currentLocation, nextLocation }) =>
+			methods.formState.isDirty && currentLocation.pathname !== nextLocation.pathname,
+	);
 	const { hash } = useLocation();
 	const { data: profile } = useProfileQuery();
 	const [updateProfile] = useUpdateProfileMutation();
@@ -68,6 +72,9 @@ export const EditProfileForm = () => {
 			<FormProvider {...methods}>
 				<form onSubmit={methods.handleSubmit(onSubmit)}>
 					{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+					{blocker.state === 'blocked' ? (
+						<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+					) : null}
 				</form>
 			</FormProvider>
 		</section>

@@ -1,6 +1,8 @@
 import { ChangeEvent } from 'react';
-import { useFieldArray } from 'react-hook-form';
-import { Input, Label } from 'yeahub-ui-kit';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import { Input } from 'yeahub-ui-kit';
+
+import { FormControl } from '@/shared/ui/FormControl';
 
 import { SOCIAL_NETWORKS } from '../../model/data/socialNetwork';
 import { SocialNetwork, SocialNetworkCode } from '../../model/types/socialNetwork';
@@ -11,6 +13,7 @@ export const SocialNetWorkInputs = () => {
 	const { fields, update, append, remove } = useFieldArray<{ socialNetwork: SocialNetwork[] }>({
 		name: 'socialNetwork',
 	});
+	const { control } = useFormContext();
 
 	const onChangeHandler =
 		(socialNetworkCode: SocialNetworkCode) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,9 +38,15 @@ export const SocialNetWorkInputs = () => {
 	return (
 		<>
 			{SOCIAL_NETWORKS.map((socialNetwork) => (
-				<Label key={socialNetwork.code} className={style.label} required text={socialNetwork.title}>
-					<Input onChange={onChangeHandler(socialNetwork.code)} className={style.input} />
-				</Label>
+				<FormControl
+					key={socialNetwork.code}
+					name={socialNetwork.title}
+					control={control}
+					label={socialNetwork.title}
+					className={style.form}
+				>
+					{() => <Input onChange={onChangeHandler(socialNetwork.code)} className={style.input} />}
+				</FormControl>
 			))}
 		</>
 	);

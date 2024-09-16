@@ -12,7 +12,9 @@ const config: StorybookConfig = {
     '@storybook/addon-styling-webpack',
     '@storybook/icons',
     'storybook-react-i18next',
+    '@storybook/addon-webpack5-compiler-swc',
   ],
+  staticDirs: ['../../public'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {

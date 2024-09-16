@@ -1,24 +1,18 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { FormControl } from '@/shared/ui/FormControl';
 
 import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 import { SkillSelect } from '../SkillSelect/SkillSelect';
 
 import style from './SkillsForm.module.css';
 
-//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
-
 export const SkillsForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-
-	const {
-		control,
-		//formState: { errors },
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	} = useFormContext<any>();
+	const { control } = useFormContext();
 
 	return (
 		<>
@@ -28,13 +22,9 @@ export const SkillsForm = () => {
 						<h3>{t('skillForm.yourSkills')}</h3>
 						<p>{t('skillForm.yourSkillsText')}</p>
 					</div>
-					<Controller
-						name="skills"
-						control={control}
-						render={({ field: { onChange, value } }) => (
-							<SkillSelect onChange={onChange} value={value} />
-						)}
-					/>
+					<FormControl name="skills" control={control}>
+						{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
+					</FormControl>
 				</HorizontalContainer>
 			</VerticalContainer>
 			<div className={style['btn-container']}>
