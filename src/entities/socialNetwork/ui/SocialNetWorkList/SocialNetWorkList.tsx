@@ -13,18 +13,20 @@ interface SocialNetWorkListProps {
 export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => {
 	return (
 		<div className={styles['card-link']}>
-			{socialNetwork.map((link) => (
-				<Link key={link.code} to={link.code}>
-					<IconButton
-						type="submit"
-						aria-label="primary large"
-						form="round"
-						icon={<Icon icon={`${link.title}Logo` as IconsName} size={20} />}
-						size="small"
-						theme="primary"
-					/>
-				</Link>
-			))}
+			{socialNetwork.map((link) =>
+				link?.code && link?.title ? (
+					<Link key={link.code} to={link.code}>
+						<IconButton
+							type="submit"
+							aria-label="primary large"
+							form="round"
+							icon={<Icon icon={`${link.title}Logo` as IconsName} size={20} />}
+							size="small"
+							theme="primary"
+						/>
+					</Link>
+				) : null,
+			)}
 		</div>
 	);
 };
