@@ -34,7 +34,7 @@ export interface QuestionsListParams {
 	titleOrDescription?: string;
 	skills?: number[];
 	complexity?: number[];
-	keywords?: number[];
+	keywords?: string[];
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
@@ -44,7 +44,7 @@ export interface QuestionsListParams {
 }
 
 export interface QuestionsLearnedParams
-	extends Omit<QuestionsListParams, 'keywords' | 'order' | 'orderBy' | 'random'> {
+	extends Omit<QuestionsListParams, 'order' | 'orderBy' | 'random'> {
 	profileId?: string;
 	isLearned?: boolean;
 }
