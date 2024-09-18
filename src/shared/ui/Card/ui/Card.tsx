@@ -1,12 +1,11 @@
 import classNames from 'classnames';
-import { ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
-import { LinkWithArrowRight } from '../../LinkWithArrowRight';
-
 import styles from './Card.module.css';
-import { InterviewPreparationHeader } from './InterviewPreparationHeader/InterviewPreparationHeader';
 
 interface CardProps {
 	children?: ReactNode;
@@ -16,6 +15,7 @@ interface CardProps {
 	actionRoute?: string;
 	actionTitle?: string;
 	withShadow?: boolean;
+	isActionPositionBottom?: boolean;
 }
 
 /**
@@ -65,6 +65,7 @@ export const Card = ({
 	title = '',
 	actionTitle = '',
 	actionRoute = '',
+	isActionPositionBottom = false,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -74,7 +75,8 @@ export const Card = ({
 		if (expandable) {
 			const changeContentHeight = () => {
 				if (contentRef?.current) {
-					const height = contentRef.current?.getClientRects()[0].height;
+					const height = contentRef.current?.getBoundingClientRect().height;
+
 					if (height < 250) {
 						setIsExpand(false);
 					}
@@ -91,33 +93,43 @@ export const Card = ({
 
 	useLayoutEffect(() => {
 		if (contentRef?.current) {
-			setContentHeight(contentRef.current?.getClientRects()[0].height);
+			setContentHeight(contentRef.current?.getBoundingClientRect().height);
 		}
 	}, [expandable]);
 
-	// This function with useCallback isn't needed because setIsExpand is memoized
-	// Can we pass setIsExpand to the button?
-	const expandHandler = useCallback(() => {
+	const expandHandler = () => {
 		setIsExpand((prev) => !prev);
-	}, []);
-	//
+	};
 
 	const isHeightForExpand = contentHeight >= 250;
 
-	const cardClasses = classNames(styles.card, className, {
-		[styles['card-expandable']]: isHeightForExpand,
-	});
-
 	return (
 		<div
-			className={cardClasses}
+			className={classNames(styles.card, className, {
+				[styles['card-expandable']]: isHeightForExpand,
+			})}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}
 		>
 			<div className={styles['card-header']}>
-				{title ? <InterviewPreparationHeader title={title} /> : null}
-				{actionRoute ? <LinkWithArrowRight link={actionRoute} linkTitle={actionTitle} /> : null}
+				{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
+				{actionRoute ? (
+					<Link
+						to={actionRoute}
+						className={classNames(styles.link, {
+							[styles['link-bottom']]: isActionPositionBottom,
+						})}
+					>
+						<span>{actionTitle}</span>
+						<Icon
+							icon="arrowRight"
+							color="--palette-ui-purple-700"
+							size={24}
+							className={styles.icon}
+						/>
+					</Link>
+				) : null}
 			</div>
 
 			<div
@@ -134,7 +146,7 @@ export const Card = ({
 					{!isExpand ? <ExpandIcon /> : null}
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
-						<Arrow className={`${isExpand ? styles['card-arrow-expanded'] : ''}`} />
+						<Arrow className={classNames({ [styles['card-arrow-expanded']]: isExpand })} />
 					</button>
 				</>
 			)}

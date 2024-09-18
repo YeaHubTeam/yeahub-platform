@@ -53,6 +53,7 @@ const InterviewPage = () => {
 				</div>
 			</Card>
 			<Card
+				isActionPositionBottom
 				title={t('stats.title')}
 				actionTitle={t('stats.linkText')}
 				actionRoute={ROUTES.interview.statistic.page}
