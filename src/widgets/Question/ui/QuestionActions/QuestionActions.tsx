@@ -1,6 +1,6 @@
 import { Button, Icon } from 'yeahub-ui-kit';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
@@ -14,7 +14,7 @@ interface QuestionActionsProps {
 
 export const QuestionActions = ({ profileId, questionId }: QuestionActionsProps) => {
 	return (
-		<Block className={styles['question-actions']}>
+		<Card className={styles['question-actions']}>
 			<div className={styles.wrapper}>
 				<LearnQuestionButton profileId={profileId} questionId={questionId} />
 				<ResetQuestionStudyProgressButton profileId={profileId} questionId={questionId} />
@@ -26,6 +26,6 @@ export const QuestionActions = ({ profileId, questionId }: QuestionActionsProps)
 					Пропустить
 				</Button>
 			</div>
-		</Block>
+		</Card>
 	);
 };

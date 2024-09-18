@@ -1,13 +1,21 @@
-import { ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
+import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
-import styles from './Block.module.css';
+import styles from './Card.module.css';
 
-interface BlockProps {
+interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
+	title?: string;
+	actionRoute?: string;
+	actionTitle?: string;
+	withShadow?: boolean;
+	isActionPositionBottom?: boolean;
 }
 
 /**
@@ -20,7 +28,7 @@ interface BlockProps {
 const ExpandIcon = () => {
 	return (
 		<svg
-			className={`${styles['block-expand-svg']}`}
+			className={`${styles['card-expand-svg']}`}
 			width="100%"
 			height="90"
 			viewBox="0 0 740 90"
@@ -49,7 +57,16 @@ const ExpandIcon = () => {
 	);
 };
 
-export const Block = ({ children, expandable = false, className = '' }: BlockProps) => {
+export const Card = ({
+	children,
+	className = '',
+	withShadow = false,
+	expandable = false,
+	title = '',
+	actionTitle = '',
+	actionRoute = '',
+	isActionPositionBottom = false,
+}: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
@@ -57,11 +74,14 @@ export const Block = ({ children, expandable = false, className = '' }: BlockPro
 	useLayoutEffect(() => {
 		if (expandable) {
 			const changeContentHeight = () => {
-				const height = (contentRef.current?.getClientRects()[0].height as number)!;
-				if (height < 250) {
-					setIsExpand(false);
+				if (contentRef?.current) {
+					const height = contentRef.current?.getBoundingClientRect().height;
+
+					if (height < 250) {
+						setIsExpand(false);
+					}
+					setContentHeight(height);
 				}
-				setContentHeight(height);
 			};
 
 			window.addEventListener('resize', changeContentHeight);
@@ -72,29 +92,61 @@ export const Block = ({ children, expandable = false, className = '' }: BlockPro
 	}, [expandable]);
 
 	useLayoutEffect(() => {
-		setContentHeight((contentRef.current?.getClientRects()[0].height as number)!);
+		if (contentRef?.current) {
+			setContentHeight(contentRef.current?.getBoundingClientRect().height);
+		}
 	}, [expandable]);
 
-	const expandHandler = useCallback(() => {
+	const expandHandler = () => {
 		setIsExpand((prev) => !prev);
-	}, []);
+	};
 
 	const isHeightForExpand = contentHeight >= 250;
 
 	return (
 		<div
-			className={`${styles.block} ${className} ${isHeightForExpand ? styles['block-expandable'] : ''}`}
+			className={classNames(styles.card, className, {
+				[styles['card-expandable']]: isHeightForExpand,
+			})}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}
 		>
-			<div ref={contentRef}>{children}</div>
+			<div className={styles['card-header']}>
+				{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
+				{actionRoute ? (
+					<Link
+						to={actionRoute}
+						className={classNames(styles.link, {
+							[styles['link-bottom']]: isActionPositionBottom,
+						})}
+					>
+						<span>{actionTitle}</span>
+						<Icon
+							icon="arrowRight"
+							color="--palette-ui-purple-700"
+							size={24}
+							className={styles.icon}
+						/>
+					</Link>
+				) : null}
+			</div>
+
+			<div
+				className={classNames(styles.content, {
+					[styles['content-shadow']]: withShadow,
+				})}
+				ref={contentRef}
+			>
+				{children}
+			</div>
+
 			{expandable && isHeightForExpand && (
 				<>
 					{!isExpand ? <ExpandIcon /> : null}
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
-						<Arrow className={`${isExpand ? styles['block-arrow-expanded'] : ''}`} />
+						<Arrow className={classNames({ [styles['card-arrow-expanded']]: isExpand })} />
 					</button>
 				</>
 			)}

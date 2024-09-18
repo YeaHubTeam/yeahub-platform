@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { Skill } from '@/entities/skill';
 
@@ -12,7 +12,7 @@ interface SkillsBlockProps {
 }
 export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 	return (
-		<Block>
+		<Card>
 			<div className={styles['skills']}>
 				<SkillsBlockHeader />
 				{skillsList.length ? (
@@ -21,6 +21,6 @@ export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 					<div>Список навыков пуст</div>
 				)}
 			</div>
-		</Block>
+		</Card>
 	);
 };

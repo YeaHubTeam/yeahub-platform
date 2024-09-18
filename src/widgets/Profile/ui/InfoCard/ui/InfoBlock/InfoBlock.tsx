@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { InfoBlockHeader } from '../InfoBlockHeader/InfoBlockHeader';
 import { InfoBlockText } from '../InfoBlockText/InfoBlockText';
@@ -11,11 +11,11 @@ interface InfoBlockProps {
 
 export const InfoBlock = ({ description }: InfoBlockProps) => {
 	return (
-		<Block expandable>
+		<Card expandable>
 			<div className={styles['info']}>
 				<InfoBlockHeader />
 				<InfoBlockText description={description} />
 			</div>
-		</Block>
+		</Card>
 	);
 };

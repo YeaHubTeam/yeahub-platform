@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -66,7 +66,7 @@ const CreateQuizPage = () => {
 
 	return (
 		<section>
-			<Block className={styles.container}>
+			<Card className={styles.container}>
 				<h2 className={styles.title}>Собеседование</h2>
 				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
@@ -90,7 +90,7 @@ const CreateQuizPage = () => {
 				>
 					Начать
 				</Button>
-			</Block>
+			</Card>
 		</section>
 	);
 };

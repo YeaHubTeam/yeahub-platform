@@ -3,7 +3,7 @@ import { Button } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -70,7 +70,7 @@ const InterviewQuizPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Block>
+			<Card>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
 					<span className={styles['progress-num']}>
@@ -82,9 +82,9 @@ const InterviewQuizPage = () => {
 						totalCount={totalCount}
 					/>
 				</div>
-			</Block>
+			</Card>
 
-			<Block>
+			<Card>
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}
@@ -109,7 +109,7 @@ const InterviewQuizPage = () => {
 						{t('completeQuizButton')}
 					</Button>
 				</div>
-			</Block>
+			</Card>
 		</div>
 	);
 };

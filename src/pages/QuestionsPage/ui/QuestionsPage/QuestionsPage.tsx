@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -79,15 +79,15 @@ const QuestionsPage = () => {
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
-				<Block className={styles.content}>
+				<Card className={styles.content}>
 					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
 					{questions.total > questions.limit && (
 						<QuestionPagePagination questionsResponse={questions} />
 					)}
-				</Block>
+				</Card>
 			</div>
 			<div className={styles['additional-info-wrapper']}>
-				<Block className={styles.search}>
+				<Card className={styles.search}>
 					<QuestionsFilterPanel
 						onChangeSearch={onChangeSearchParams}
 						onChangeSkills={onChangeSkills}
@@ -96,7 +96,7 @@ const QuestionsPage = () => {
 						onChangeStatus={onChangeStatus}
 						filter={params}
 					/>
-				</Block>
+				</Card>
 			</div>
 		</section>
 	);
