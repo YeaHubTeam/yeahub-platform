@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
@@ -6,7 +6,7 @@ import styles from './InterviewResultPage.module.css';
 export const InterviewQuizResultPageSkeleton = () => {
 	return (
 		<div className={styles.container}>
-			<Block className={styles.block}>
+			<Card className={styles.block}>
 				<Flex direction="column" align="center" className={styles.result}>
 					<Skeleton width="calc(100% - 200px)" height={30} />
 					<Flex direction="row" gap="16" align="center">
@@ -28,9 +28,9 @@ export const InterviewQuizResultPageSkeleton = () => {
 						</Flex>
 					</Flex>
 				</Flex>
-			</Block>
+			</Card>
 			<Flex direction="column" gap="16">
-				<Block className={styles.block}>
+				<Card className={styles.block}>
 					<Flex direction="column" gap="16" align="center">
 						<Skeleton width={'calc(100% - 200px)'} height={30} />
 						<Flex>
@@ -41,17 +41,17 @@ export const InterviewQuizResultPageSkeleton = () => {
 							/>
 						</Flex>
 					</Flex>
-				</Block>
+				</Card>
 				<Flex justify="between" gap="12">
 					{[...Array(4)].map((_, i) => (
-						<Block key={i} className={styles.stats}>
+						<Card key={i} className={styles.stats}>
 							<Skeleton width="88%" height={17} style={{ marginBottom: 12, flexGrow: 1 }} />
 							<Skeleton width="88%" height={17} />
-						</Block>
+						</Card>
 					))}
 				</Flex>
 			</Flex>
-			<Block className={styles.passed}>
+			<Card className={styles.passed}>
 				<Flex direction="column" gap="16" align="center">
 					<Skeleton width={'clamp(350px, 5vw, 600px)'} height={30} />
 					<div className={styles['question-list']}>
@@ -69,7 +69,7 @@ export const InterviewQuizResultPageSkeleton = () => {
 						))}
 					</div>
 				</Flex>
-			</Block>
+			</Card>
 		</div>
 	);
 };

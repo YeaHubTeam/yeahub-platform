@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
@@ -7,7 +7,7 @@ import styles from './CreateQuizPage.module.css';
 export const CreateQuizPageSkeleton = () => {
 	return (
 		<section>
-			<Block className={styles.container}>
+			<Card className={styles.container}>
 				<Skeleton width={200} height={33} className={styles.title} />
 				<Flex
 					direction="row"
@@ -52,7 +52,7 @@ export const CreateQuizPageSkeleton = () => {
 					</Flex>
 				</Flex>
 				<Skeleton width={170} height={48} borderRadius={40} className={styles.button} />
-			</Block>
+			</Card>
 		</section>
 	);
 };
