@@ -1,5 +1,4 @@
-import withoutPhoto from '@/shared/assets/images/Photo_Profile.png';
-
+import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
 import { Accept, Extension } from '../FileLoader/model/types/types';
 
@@ -9,9 +8,7 @@ export const ImageLoader = () => {
 	return (
 		<div className={style.container}>
 			<div className={style['profile-picture-wrapper']}>
-				<div className={style['avatar-wrapper']}>
-					<img src={withoutPhoto} alt="Avatar" />
-				</div>
+				<AvatarWithoutPhoto />
 				<FileLoader
 					maxFileMBSize={5}
 					accept={Accept.IMAGE}

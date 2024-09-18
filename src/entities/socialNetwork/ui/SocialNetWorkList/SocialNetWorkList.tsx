@@ -14,7 +14,7 @@ export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => 
 	return (
 		<div className={styles['card-link']}>
 			{socialNetwork.map((link) => (
-				<Link key={link.title} to={link.title}>
+				<Link className={styles.link} key={link.title} to={link.title}>
 					<IconButton
 						type="submit"
 						aria-label="primary large"

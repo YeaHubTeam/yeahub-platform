@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
-import Avatar from '@/shared/assets/images/MockAvatar.png';
 import { ROUTES } from '@/shared/config/router/routes';
+import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -73,7 +73,11 @@ export const UserPreferences = () => {
 				<>
 					<Text text={profile.firstName} />
 					<div className={styles.avatar}>
-						<img className={styles.img} src={profile.avatarUrl || Avatar} alt="avatar" />
+						{profile.avatarUrl ? (
+							<img className={styles.img} src={profile.avatarUrl} alt="avatar" />
+						) : (
+							<AvatarWithoutPhoto />
+						)}
 					</div>
 				</>
 			)}

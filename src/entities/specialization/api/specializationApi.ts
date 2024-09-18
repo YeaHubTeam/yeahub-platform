@@ -13,7 +13,7 @@ const specializationApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.SPECIALIZATIONS],
 		}),
-		getSpecializationById: build.query<Specialization, string>({
+		getSpecializationById: build.query<Specialization, number>({
 			query: (specializationId) => ({
 				url: `/specializations/${specializationId}`,
 			}),
