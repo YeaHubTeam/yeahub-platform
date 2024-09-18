@@ -3,6 +3,7 @@ import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -18,12 +19,13 @@ import { getCreateQuizPageState } from '../model/selectors/createQuizPageSelecto
 import { createQuizPageActions } from '../model/slices/CreateQuizPageSlice';
 
 import styles from './CreateQuizPage.module.css';
+import { CreateQuizPageSkeleton } from './CreateQuizPage.skeleton';
 
 const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
-	const { data: userProfile } = useProfileQuery();
+	const { data: userProfile, isLoading } = useProfileQuery();
 
 	const createQuizData = useSelector(getCreateQuizPageState);
 
@@ -60,25 +62,27 @@ const CreateQuizPage = () => {
 		});
 	};
 
+	if (isLoading) return <CreateQuizPageSkeleton />;
+
 	return (
 		<section>
 			<Card className={styles.container}>
 				<h2 className={styles.title}>Собеседование</h2>
-				<div className={styles.wrapper}>
+				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
 						selectedSkills={skills}
 						onChangeSkills={onChangeSkills}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
 					/>
-					<div className={styles['additional-wrapper']}>
+					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity
 							selectedComplexity={complexity}
 							onChangeComplexity={onChangeComplexity}
 						/>
 						<QuizQuestionMode onChangeMode={onChangeMode} />
 						<ChooseQuestionCount onChangeLimit={onChangeLimit} />
-					</div>
-				</div>
+					</Flex>
+				</Flex>
 				<Button
 					className={styles.button}
 					onClick={handleCreateNewQuiz}
