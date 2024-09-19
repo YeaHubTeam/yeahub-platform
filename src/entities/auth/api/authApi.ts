@@ -54,12 +54,13 @@ export const authApi = baseApi.injectEndpoints({
 		}),
 		logout: build.query<void, void>({
 			query: () => 'auth/logout',
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
 					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.auth.login.page);
+					dispatch(baseApi.util.resetApiState());
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
