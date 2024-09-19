@@ -14,12 +14,12 @@ export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => 
 	return (
 		<div className={styles['card-link']}>
 			{socialNetwork.map((link) => (
-				<Link key={link.code} to={link.code}>
+				<Link className={styles.link} key={link.title} to={link.title}>
 					<IconButton
 						type="submit"
 						aria-label="primary large"
 						form="round"
-						icon={<Icon icon={`${link.title}Logo` as IconsName} size={20} />}
+						icon={<Icon icon={`${link.code}Logo` as IconsName} size={20} />}
 						size="small"
 						theme="primary"
 					/>

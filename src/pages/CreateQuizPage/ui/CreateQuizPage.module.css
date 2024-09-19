@@ -7,17 +7,11 @@
 }
 
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 43px;
   margin-bottom: 48px;
 }
 
 .additional-wrapper {
-  display: flex;
   flex-basis: 40%;
-  flex-direction: column;
-  row-gap: 24px;
 }
 
 .button {
@@ -26,7 +20,7 @@
   margin-left: auto;
 }
 
-@media (width <= 800px) {
+@media (width <=920px) {
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -34,7 +28,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <=480px) {
   .title {
     font-weight: var(--font-weight-500);
     font-size: var(--font-size-h-xs);

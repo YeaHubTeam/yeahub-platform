@@ -13,6 +13,15 @@ const preview: Preview = {
     },
   },
   parameters: {
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#F4F4F4',
+        },
+      ],
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

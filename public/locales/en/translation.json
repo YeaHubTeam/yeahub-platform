@@ -1,3 +1,11 @@
 {
-  "language": "English"
+  "language": "English",
+  "blockModal": {
+    "confirmTitle": "Confirm action",
+    "confirmDescription": "You have unsaved data. Do you want to continue?",
+    "action": {
+      "ok": "Yes",
+      "cancel": "No"
+    }
+  }
 }

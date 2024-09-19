@@ -1,7 +1,7 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import {
@@ -99,28 +99,28 @@ const InterviewStatisticsPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Block>
+			<Card>
 				<div className={styles.attempt}>
 					<InterviewQuestionHeader title={t('attemptStats.title')} centered />
 					<PassedInterviewStat totalAttempt={40} attemptData={attemptStats} />
 				</div>
-			</Block>
+			</Card>
 			<div className={styles.progress}>
-				<Block className={styles.block}>
+				<Card className={styles.block}>
 					<div className={styles.questions}>
 						<InterviewQuestionHeader title={t('questionStats.title')} centered />
 						<PassedQuestionChart total={120} learned={20} />
 					</div>
-				</Block>
+				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />
 			</div>
-			<Block></Block>
-			<Block className={styles.category} expandable>
+			<Card></Card>
+			<Card className={styles.category} expandable>
 				<div className={styles['category-progress']}>
 					<InterviewQuestionHeader title={t('progress.title')} />
 					<ProgressByCategoriesList optionData={progressData} />
 				</div>
-			</Block>
+			</Card>
 		</div>
 	);
 };

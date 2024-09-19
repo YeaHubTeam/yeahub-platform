@@ -9,25 +9,12 @@
   }
 }
 
-.progress,
-.result,
 .stats {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-grow: 1;
 }
 
 .result {
   gap: clamp(24px, 4vw + 10px, 50px);
-}
-
-.progress {
-  gap: 20px;
-}
-
-.stats {
-  justify-content: space-between;
-  gap: 12px;
 }
 
 .block {
@@ -41,14 +28,18 @@
   margin-top: 20px;
 }
 
-.passed-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.question-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 16px;
+  width: 100%;
+  place-items: center start;
 }
 
 @media (width <=1280px) {
-  .container {
+  .container,
+  .question-list {
     grid-template-columns: 1fr;
   }
 

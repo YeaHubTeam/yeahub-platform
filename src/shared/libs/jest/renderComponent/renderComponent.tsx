@@ -26,7 +26,7 @@ interface RenderComponentOptions {
  * @param options
  */
 export const renderComponent = (component: ReactNode, options: RenderComponentOptions = {}) => {
-	const { route = '/', initialState } = options;
+	const { route = '/', initialState = {} } = options;
 
 	return render(
 		<StoreProvider initialState={initialState}>

@@ -1,4 +1,3 @@
-export { InterviewPreparationHeader } from './ui/InterviewPreparationHeader/InterviewPreparationHeader';
-export { QuestionSlider } from './ui/QuestionSlider/QuestionSlider';
+export { QuestionLargePreview as QuestionSlider } from './ui/QuestionSlider/QuestionLargePreview';
 export { QuestionProgressBarBlock } from './ui/QuestionProgressBarBlock/QuestionProgressBarBlock';
 export { QuestionLargePreview } from './ui/QuestionLargePreview/QuestionLargePreview';

@@ -1,7 +1,8 @@
 import { Calendar } from 'react-calendar';
 import { Icon } from 'yeahub-ui-kit';
 
-import { Block } from '../../Block';
+import { Card } from '../../Card';
+
 import './EventCalendar.css';
 import 'react-calendar/dist/Calendar.css';
 
@@ -17,7 +18,7 @@ interface EventCalendarProps {
 
 export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
 	return (
-		<Block className="calendar-block">
+		<Card className="calendar-block">
 			<Calendar
 				onChange={onDateChange}
 				showNeighboringMonth={false}
@@ -27,6 +28,6 @@ export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
 				next2Label={null}
 				selectRange={true}
 			/>
-		</Block>
+		</Card>
 	);
 };

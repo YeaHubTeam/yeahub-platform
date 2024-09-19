@@ -1,7 +1,8 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import { Button, Input, Label } from 'yeahub-ui-kit';
+import { Button, Input } from 'yeahub-ui-kit';
 
+import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -13,15 +14,8 @@ import { HorizontalContainer, VerticalContainer } from '../CommonElements';
 
 import style from './PersonalInformationForm.module.css';
 
-//todo добавить рендер ошибок при валидации, добавить интерфейс для формы
-
 export const PersonalInformationForm = () => {
-	const {
-		register,
-		control,
-		//formState: { errors },
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	} = useFormContext<any>();
+	const { control, register } = useFormContext();
 
 	return (
 		<>
@@ -39,24 +33,33 @@ export const PersonalInformationForm = () => {
 						<p>Сюда мы тоже что-нибудь классное придумаем</p>
 					</div>
 					<div className={style['inputs-wrapper']}>
-						<Label className={style.label} required text="Имя и фамилия">
-							<Input {...register('name')} className={style.input} />
-						</Label>
-						<Label className={style.label} required text="IT Специальность">
-							<Controller
-								name="specialization"
-								control={control}
-								render={({ field: { onChange, value } }) => (
-									<SpecializationSelect onChange={onChange} value={value} />
-								)}
-							/>
-						</Label>
-						<Label className={style.label} text="Номер для связи">
-							<Controller
+						<div className={style['info-section']}>
+							<FormControl name="firstName" control={control} label="Имя" className={style.form}>
+								{() => <Input {...register('firstName')} className={style.input} />}
+							</FormControl>
+							<FormControl name="lastName" control={control} label="Фамилия" className={style.form}>
+								{() => <Input {...register('lastName')} className={style.input} />}
+							</FormControl>
+						</div>
+
+						<FormControl
+							name="specialization"
+							control={control}
+							label="IT Специальность"
+							className={style.form}
+						>
+							{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
+						</FormControl>
+						<div className={style['info-section']}>
+							<FormControl
 								name="phone"
 								control={control}
-								render={({ field: { onChange, value } }) => (
+								label="Номер для связи"
+								className={style.form}
+							>
+								{({ onChange, value }) => (
 									<InputMask
+										{...register('phone')}
 										className={style.phone}
 										mask={'+7-(999)-999-99-99'}
 										placeholder={'+7-(XXX)-XXX-XX-XX'}
@@ -64,21 +67,31 @@ export const PersonalInformationForm = () => {
 										value={value}
 									/>
 								)}
-							/>
-						</Label>
-						<Label className={style.label} text="Email для связи">
-							<Input {...register('email')} className={style.input} />
-						</Label>
-						<Label className={style.label} text="Локация">
-							<Input
-								{...register('location')}
-								className={style.input}
-								placeholder="Напр. Санкт-Петербург, Россия"
-							/>
-						</Label>
-						{/* <Label className={style.label} text="Уровень специалиста">
-							<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
-						</Label> */}
+							</FormControl>
+							<FormControl
+								name="email"
+								control={control}
+								label="Email для связи"
+								className={style.form}
+							>
+								{() => <Input {...register('email')} className={style.input} />}
+							</FormControl>
+						</div>
+
+						<FormControl name="location" control={control} label="Локация" className={style.form}>
+							{() => (
+								<Input
+									{...register('location')}
+									className={style.input}
+									placeholder="Напр. Санкт-Петербург, Россия"
+								/>
+							)}
+						</FormControl>
+						<FormControl name="skillLevel" control={control} label="Уровень специалиста">
+							{() => (
+								<Input {...register('skillLevel')} className={style.input} placeholder="Junior" />
+							)}
+						</FormControl>
 					</div>
 				</HorizontalContainer>
 				<HorizontalContainer>

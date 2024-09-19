@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { ExperienceBlockHeader } from '../ExperienceBlockHeader/ExperienceBlockHeader';
 import { ExperienceBlockList } from '../ExperienceBlockList/ExperienceBlockList';
@@ -7,11 +7,11 @@ import styles from './ExperienceBlock.module.css';
 
 export const ExperienceBlock = () => {
 	return (
-		<Block expandable>
+		<Card expandable>
 			<div className={styles['experience']}>
 				<ExperienceBlockHeader />
 				<ExperienceBlockList />
 			</div>
-		</Block>
+		</Card>
 	);
 };

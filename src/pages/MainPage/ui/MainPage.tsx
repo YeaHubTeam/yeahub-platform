@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
@@ -36,7 +36,7 @@ const MainPage = () => {
 				<div className={styles.wrapper}>
 					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
 					{isIncompleteProfile && (
-						<Block className={styles.block}>
+						<Card className={styles.block}>
 							<div className={styles['block-wrapper']}>
 								<div className={styles['block-content']}>
 									<h3 className={styles['block-title']}>
@@ -51,7 +51,7 @@ const MainPage = () => {
 									Заполнить профиль
 								</Button>
 							</div>
-						</Block>
+						</Card>
 					)}
 				</div>
 			)}
