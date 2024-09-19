@@ -5,7 +5,7 @@ import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
@@ -57,7 +57,7 @@ const InterviewQuizResultPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Block>
+			<Card>
 				<Flex direction="column" align="center" className={styles.result}>
 					<InterviewQuestionHeader
 						title={t('resultInterview.resultTitle', null, { title: data?.quizNumber })}
@@ -69,9 +69,9 @@ const InterviewQuizResultPage = () => {
 						attemptData={interviewStats?.stats ?? []}
 					/>
 				</Flex>
-			</Block>
+			</Card>
 			<Flex direction="column" align="center" gap="12" justify="between">
-				<Block className={styles.block}>
+				<Card className={styles.block}>
 					<Flex gap="20" direction="column" align="center">
 						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart
@@ -80,15 +80,15 @@ const InterviewQuizResultPage = () => {
 							learned={data?.successCount ?? 0}
 						/>
 					</Flex>
-				</Block>
+				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />
 			</Flex>
-			<Block className={styles.passed}>
+			<Card className={styles.passed}>
 				<Flex direction="column" gap="24">
 					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
 					<PassedQuestionsList questions={questions ?? []} />
 				</Flex>
-			</Block>
+			</Card>
 		</div>
 	);
 };

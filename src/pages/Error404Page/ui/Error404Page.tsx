@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import styles from './Error404Page.module.css';
 
@@ -11,7 +11,7 @@ const Error404Page = () => {
 	const handleBackBtnClick = () => navigate(-1);
 
 	return (
-		<Block>
+		<Card>
 			<div className={styles.wrapper}>
 				<img src="/images/404.png" alt="Ошибка 404" className={styles.img} />
 				<div className={styles.content}>
@@ -21,7 +21,7 @@ const Error404Page = () => {
 					</Button>
 				</div>
 			</div>
-		</Block>
+		</Card>
 	);
 };
 

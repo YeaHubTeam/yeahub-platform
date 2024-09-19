@@ -2,18 +2,16 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Block } from '@/shared/ui/Block';
-import { LinkWithArrowRight } from '@/shared/ui/LinkWithArrowRight';
+import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { LS_START_DATE_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
-import { InterviewHistoryHeader, InterviewHistoryList } from '@/widgets/InterviewHistory';
+import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { QuestionSlider } from '@/widgets/InterviewPreparation';
 import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
-import { InterviewPreparationHeader } from '@/widgets/InterviewPreparation';
-import { InterviewQuestionHeader, InterviewQuestionsList } from '@/widgets/InterviewQuestions';
+import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
 
@@ -39,53 +37,52 @@ const InterviewPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Block>
+			<Card
+				title={t('preparation.title')}
+				actionTitle={t('preparation.linkText')}
+				actionRoute={
+					isActiveQuizExist ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
+				}
+				withShadow
+			>
 				<div className={styles.preparation}>
-					<InterviewPreparationHeader title={t('preparation.title')} />
-					<LinkWithArrowRight
-						link={isActiveQuizExist ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page}
-						linkTitle={t('preparation.linkText')}
-					/>
 					<div className={styles['preparation-wrapper']}>
 						<QuestionProgressBarBlock />
 						<QuestionSlider />
 					</div>
 				</div>
-			</Block>
-			<Block>
+			</Card>
+			<Card
+				isActionPositionBottom
+				title={t('stats.title')}
+				actionTitle={t('stats.linkText')}
+				actionRoute={ROUTES.interview.statistic.page}
+			>
 				<div className={styles.statistics}>
-					<InterviewQuestionHeader title={t('stats.title')} />
 					<PassedQuestionChart total={120} learned={20} />
 					<PassedQuestionStatInfo stats={questionStats} />
-					<LinkWithArrowRight
-						link={ROUTES.interview.statistic.page}
-						linkTitle={t('stats.linkText')}
-					/>
 				</div>
-			</Block>
-			<Block>
+			</Card>
+			<Card
+				title={t('questions.title')}
+				actionTitle={t('questions.studied')}
+				actionRoute={ROUTES.interview.questions.page}
+				withShadow
+			>
 				<div className={styles.questions}>
-					<InterviewQuestionHeader
-						title={t('questions.title')}
-						linkTitle={t('questions.studied', 'Изучить')}
-					/>
-					<LinkWithArrowRight
-						link={ROUTES.interview.questions.page}
-						linkTitle={t('questions.studied')}
-					/>
 					<InterviewQuestionsList />
 				</div>
-			</Block>
-			<Block>
+			</Card>
+			<Card
+				actionRoute={ROUTES.interview.history.page}
+				actionTitle={t('history_preparation.linkText')}
+				title={t('history_preparation.title')}
+				withShadow
+			>
 				<div className={styles.history}>
-					<InterviewHistoryHeader title={t('history_preparation.title')} />
-					<LinkWithArrowRight
-						link={ROUTES.interview.history.page}
-						linkTitle={t('history_preparation.linkText')}
-					/>
 					<InterviewHistoryList />
 				</div>
-			</Block>
+			</Card>
 		</div>
 	);
 };

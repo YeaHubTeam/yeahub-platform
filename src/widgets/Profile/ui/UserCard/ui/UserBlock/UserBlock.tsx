@@ -1,4 +1,4 @@
-import { Block } from '@/shared/ui/Block';
+import { Card } from '@/shared/ui/Card';
 
 import { Profile } from '@/entities/profile';
 
@@ -13,11 +13,11 @@ interface UserBlockProps {
 
 export const UserBlock = ({ profile }: UserBlockProps) => {
 	return (
-		<Block>
+		<Card>
 			<div className={styles.card}>
 				<UserImageBlock user={profile?.user} />
 				<UserInfoBlock profile={profile} />
 			</div>
-		</Block>
+		</Card>
 	);
 };

@@ -39,8 +39,8 @@ export const UserInfoBlock = ({ profile }: UserInfoProps) => {
 			<div className={styles['card-contacts']}>
 				<h4 className={styles['card-phone']}>{phone}</h4>
 				<h4 className={styles['card-mail']}>{email}</h4>
-				{profile.socialNetwork.length > 0 ? (
-					<SocialNetWorkList socialNetwork={profile?.socialNetwork} />
+				{profile.socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.socialNetwork} />
 				) : null}
 			</div>
 		</div>
