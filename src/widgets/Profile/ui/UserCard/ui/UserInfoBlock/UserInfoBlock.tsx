@@ -2,16 +2,20 @@ import { differenceInYears } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { formatAddress } from '@/shared/helpers/formatAddress';
+
 import { Profile } from '@/entities/profile';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
+import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
 
 interface UserInfoProps {
 	profile: Profile;
+	profileSpecialization: Specialization | undefined;
 }
 
-export const UserInfoBlock = ({ profile }: UserInfoProps) => {
+export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const navigate = useNavigate();
 
 	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
@@ -30,11 +34,9 @@ export const UserInfoBlock = ({ profile }: UserInfoProps) => {
 				</Button>
 			</div>
 			<ul className={styles['card-list']}>
-				<li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>
-				<li>{'UX/UI дизайнер'}</li>
-				<li>
-					{country}, {city}
-				</li>
+				{!!birthday && <li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>}
+				{!!profileSpecialization?.title && <li>{profileSpecialization?.title}</li>}
+				{formatAddress(country, city)}
 			</ul>
 			<div className={styles['card-contacts']}>
 				<h4 className={styles['card-phone']}>{phone}</h4>

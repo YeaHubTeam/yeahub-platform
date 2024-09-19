@@ -4,6 +4,6 @@
   margin-top: 8px;
 }
 
-.card-link > * {
+.link > button {
   cursor: pointer;
 }
