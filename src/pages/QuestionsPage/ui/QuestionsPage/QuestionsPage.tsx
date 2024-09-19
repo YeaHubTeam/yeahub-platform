@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
@@ -22,11 +23,16 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 const QuestionsPage = () => {
 	const params = useSelector(getQuestionsPageFilter);
 	const dispatch = useAppDispatch();
+	const [queryParams] = useSearchParams();
+	const keywords = queryParams.get('keywords');
 
 	const { status, ...getParams } = params;
 	const { data: userProfile } = useProfileQuery();
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
-		getParams,
+		{
+			...getParams,
+			keywords: keywords ? [keywords] : undefined,
+		},
 		{
 			skip: status !== 'all',
 		},
@@ -37,6 +43,7 @@ const QuestionsPage = () => {
 				...getParams,
 				profileId: userProfile?.profiles[0].profileId || '',
 				isLearned: status === 'learned',
+				keywords: keywords ? [keywords] : undefined,
 			},
 			{
 				skip: status === 'all',

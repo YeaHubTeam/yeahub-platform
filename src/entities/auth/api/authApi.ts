@@ -68,14 +68,16 @@ export const authApi = baseApi.injectEndpoints({
 		}),
 		refresh: build.query<GetAuthResponse, void>({
 			query: () => 'auth/refresh',
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
-					await dispatch(authApi.endpoints.logout.initiate());
+					removeFromLS(LS_ACCESS_TOKEN_KEY);
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate(ROUTES.auth.login.page);
 				}
 			},
 		}),
