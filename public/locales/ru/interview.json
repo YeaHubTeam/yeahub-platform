@@ -1,7 +1,8 @@
 {
   "preparation": {
     "title": "Подготовка к собеседованиям",
-    "linkText": "Пройти собеседование",
+    "activeLinkText": "Продолжить собеседование",
+    "noActiveLinkText": "Пройти собеседование",
     "progressBarTitle": "Вопрос викторины {{fromQuestionNumber}} из {{toQuestionNumber}}"
   },
   "stats": {

@@ -4,17 +4,20 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { QuestionProgressBar } from '@/entities/quiz';
 
 import styles from './QuestionProgressBarBlock.module.css';
-
-export const QuestionProgressBarBlock = () => {
+interface QuestionProgressBarBlockProps {
+	fromQuestionNumber: number;
+	toQuestionNumber: number;
+}
+export const QuestionProgressBarBlock = ({
+	fromQuestionNumber,
+	toQuestionNumber,
+}: QuestionProgressBarBlockProps) => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	return (
 		<div>
-			<QuestionProgressBar currentCount={10} totalCount={45} />
+			<QuestionProgressBar currentCount={fromQuestionNumber} totalCount={toQuestionNumber} />
 			<p className={styles.question}>
-				{t('preparation.progressBarTitle', null, {
-					fromQuestionNumber: 10,
-					toQuestionNumber: 45,
-				})}
+				{t('preparation.progressBarTitle', null, { fromQuestionNumber, toQuestionNumber })}
 			</p>
 		</div>
 	);
