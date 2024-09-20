@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Установить зависимости
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # Скопировать все файлы проекта в рабочую директорию
 COPY . .
