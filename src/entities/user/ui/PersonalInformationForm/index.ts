@@ -1,1 +1,0 @@
-export { PersonalInformationForm } from './PersonalInformationForm';

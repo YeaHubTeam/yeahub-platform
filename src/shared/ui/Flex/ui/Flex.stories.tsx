@@ -147,3 +147,10 @@ export const Gap40: Story = {
 		children,
 	},
 };
+
+export const Gap120: Story = {
+	args: {
+		gap: '120',
+		children,
+	},
+};
