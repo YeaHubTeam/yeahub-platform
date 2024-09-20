@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
 import { ThemeMods } from '../model/types/themeProvider';
-import { applyTheme, getSavedTheme, getSystemTheme, removeSavedTheme } from '../utils/themeUtils';
+import { applyTheme, getSavedTheme, getSystemTheme } from '../utils/themeUtils';
 
 import styles from './ThemeSwitcher.module.css';
 
@@ -16,14 +16,15 @@ export const ThemeSwitcher = () => {
 
 	/** Change theme */
 	useLayoutEffect(() => {
-		if (currentTheme === 'auto') {
-			// For removing 'light' or 'dark' theme from localStorage on reloading the page in 'auto' mode
-			removeSavedTheme();
+		// if (currentTheme === 'auto') {
+		// 	// For removing 'light' or 'dark' theme from localStorage on reloading the page in 'auto' mode
+		// 	removeSavedTheme();
 
-			applyTheme(getSystemTheme());
-		} else {
-			applyTheme(currentTheme, true);
-		}
+		// 	applyTheme(getSystemTheme());
+		// } else {
+		// 	applyTheme(currentTheme, true);
+		// }
+		applyTheme('light', true);
 	}, [currentTheme]);
 
 	/** Changing the theme when changing the system theme */
