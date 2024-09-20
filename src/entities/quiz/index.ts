@@ -38,6 +38,6 @@ export { getActiveQuizQuestions, getQuizStartDate } from './model/selectors/quiz
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 
-export { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from './model/constants/quizConstants';
+export { LS_ACTIVE_QUIZ_KEY } from './model/constants/quizConstants';
 
 export { interviewHandlers } from './api/__mocks__/index';

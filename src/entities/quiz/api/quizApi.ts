@@ -1,16 +1,12 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { ROUTES } from '@/shared/config/router/routes';
-import { getFromLS, getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 
-import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
-import {
-	clearActiveQuizState,
-	setActiveQuizQuestions,
-	setStartDate,
-} from '../model/slices/activeQuizSlice';
+import { LS_ACTIVE_QUIZ_KEY } from '../model/constants/quizConstants';
+import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
@@ -54,10 +50,8 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
 					const localActiveQuiz = getJSONFromLS(LS_ACTIVE_QUIZ_KEY);
 
-					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
 					dispatch(
 						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
 					);
