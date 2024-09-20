@@ -1,9 +1,12 @@
-import { useCallback, useEffect } from 'react';
+import { useMemo } from 'react';
 
+import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
+import { Loader } from '@/shared/ui/Loader';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -36,12 +39,12 @@ const InterviewPage = () => {
 	];
 
 	const { data: profile } = useProfileQuery();
-	const { data: activeQuiz } = useGetActiveQuizQuery({
+	const { data: activeQuiz, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId: profile?.profiles[0].profileId,
 		params: { limit: 1, page: 1 },
 	});
 
-	const findPreparationWidgetQuestion = useCallback(() => {
+	const preparationWidgetQuestion = useMemo(() => {
 		if (!activeQuiz) return null;
 
 		const lastActiveQuiz = activeQuiz.data[0];
@@ -60,47 +63,44 @@ const InterviewPage = () => {
 		};
 	}, [activeQuiz]);
 
-	const preparationWidgetQuestion = findPreparationWidgetQuestion();
-
-	useEffect(() => {
-		console.log(findPreparationWidgetQuestion());
-	}, [activeQuiz]);
-
 	return (
 		<div className={styles.container}>
 			<Card
-				title={t('preparation.title')}
-				actionTitle={t('preparation.linkText')}
+				title={t(Interview.PREPARATION_TITLE)}
+				actionTitle={t(
+					preparationWidgetQuestion
+						? Interview.PREPARATION_ACTIVELINKTEXT
+						: Interview.PREPARATION_NOACTIVELINKTEXT,
+				)}
 				actionRoute={
-					preparationWidgetQuestion ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
+					preparationWidgetQuestion ? ROUTES.interview.quiz.page : ROUTES.interview.quiz.new.page
 				}
 				withShadow
 			>
-				{/* {preparationWidgetQuestion && (
-					<div className={styles.preparation}>
-						<InterviewPreparationHeader
-							link={activeQuiz ? ROUTES.interview.quiz.page : ROUTES.interview.quiz.new.page}
-							active={!!preparationWidgetQuestion}
-							title={t(Interview.PREPARATION_TITLE)}
-						/>
-
-						<div className={styles['preparation-wrapper']}>
-							<QuestionProgressBarBlock
-								fromQuestionNumber={preparationWidgetQuestion.fromQuestionNumber}
-								toQuestionNumber={preparationWidgetQuestion.toQuestionNumber}
-							/>
-							<QuestionLargePreview question={preparationWidgetQuestion.question} />
-						</div>
-					</div>
-				)} */}
-				{preparationWidgetQuestion && (
+				{isActiveQuizLoading ? (
+					<Loader />
+				) : (
 					<div className={styles.preparation}>
 						<div className={styles['preparation-wrapper']}>
-							<QuestionProgressBarBlock
-								fromQuestionNumber={preparationWidgetQuestion.fromQuestionNumber}
-								toQuestionNumber={preparationWidgetQuestion.toQuestionNumber}
-							/>
-							<QuestionLargePreview question={preparationWidgetQuestion.question} />
+							{preparationWidgetQuestion ? (
+								<>
+									<QuestionProgressBarBlock
+										fromQuestionNumber={preparationWidgetQuestion.fromQuestionNumber}
+										toQuestionNumber={preparationWidgetQuestion.toQuestionNumber}
+									/>
+									<QuestionLargePreview question={preparationWidgetQuestion.question} />
+								</>
+							) : (
+								<>
+									<h2>{t(Interview.PREPARATION_NOACTIVETITLE)}</h2>
+									<p>{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}</p>
+									<img
+										className={styles['preparation-noactiveimage']}
+										src={NoActiveQuizPlaceholder}
+										alt="no active quiz"
+									/>
+								</>
+							)}
 						</div>
 					</div>
 				)}

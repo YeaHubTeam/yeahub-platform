@@ -5,6 +5,12 @@
   border-bottom: thin solid var(--border-color);
 }
 
+.questiontitle {
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;  
+}
+
 .image-wrapper {
   margin: 16px 0;
   width: 100%;

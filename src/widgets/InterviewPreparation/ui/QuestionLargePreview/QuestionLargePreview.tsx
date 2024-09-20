@@ -12,7 +12,7 @@ export const QuestionLargePreview = ({ question }: QuestionLargePreviewProps) =>
 	return (
 		<>
 			<div className={styles.question}>
-				<h2>{question.title}</h2>
+				<h2 className={styles.questiontitle}>{question.title}</h2>
 				<ImageWithWrapper
 					src={question.imageSrc}
 					alt={question.title}
