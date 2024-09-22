@@ -28,7 +28,10 @@ export enum Specialization {
 }
 export enum Interview {
 	PREPARATION_TITLE = 'preparation.title',
-	PREPARATION_LINKTEXT = 'preparation.linkText',
+	PREPARATION_ACTIVELINKTEXT = 'preparation.activeLinkText',
+	PREPARATION_NOACTIVELINKTEXT = 'preparation.noActiveLinkText',
+	PREPARATION_NOACTIVETITLE = 'preparation.noActiveTitle',
+	PREPARATION_NOACTIVEDESCRIPTION = 'preparation.noActiveDescription',
 	PREPARATION_PROGRESSBARTITLE = 'preparation.progressBarTitle',
 	STATS_TITLE = 'stats.title',
 	STATS_LINKTEXT = 'stats.linkText',

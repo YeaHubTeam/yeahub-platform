@@ -34,8 +34,10 @@ export type {
 	QuizHistoryResponse,
 } from './model/types/quiz';
 
-export { getActiveQuizQuestions, getQuizStartDate } from './model/selectors/quizSelectors';
+export { getActiveQuizQuestions } from './model/selectors/quizSelectors';
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 
-export { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from './model/constants/quizConstants';
+export { LS_ACTIVE_QUIZ_KEY } from './model/constants/quizConstants';
+
+export { interviewHandlers } from './api/__mocks__/index';

@@ -15,7 +15,6 @@ import {
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
 	getActiveQuizQuestions,
-	getQuizStartDate,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -33,7 +32,6 @@ const InterviewQuizPage = () => {
 	});
 	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
 
-	const activeQuizStartDate = useAppSelector(getQuizStartDate);
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
 	const {
@@ -58,7 +56,6 @@ const InterviewQuizPage = () => {
 		if (activeQuiz) {
 			const quizToSave = {
 				...activeQuiz.data[0],
-				startDate: activeQuizStartDate,
 				response: {
 					answers: activeQuizQuestions,
 				},

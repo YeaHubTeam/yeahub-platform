@@ -1,18 +1,13 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { ROUTES } from '@/shared/config/router/routes';
-import { getFromLS, getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 
-import { LS_ACTIVE_QUIZ_KEY, LS_START_DATE_QUIZ_KEY } from '../model/constants/quizConstants';
+import { LS_ACTIVE_QUIZ_KEY } from '../model/constants/quizConstants';
+import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
-	clearActiveQuizState,
-	setActiveQuizQuestions,
-	setStartDate,
-} from '../model/slices/activeQuizSlice';
-import {
-	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
 	ExtraArgument,
 	InterviewQuizGetRequest,
@@ -34,11 +29,12 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.interview.quiz.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -54,10 +50,8 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					const localStartDate = getFromLS(LS_START_DATE_QUIZ_KEY);
 					const localActiveQuiz = getJSONFromLS(LS_ACTIVE_QUIZ_KEY);
 
-					dispatch(setStartDate(localStartDate ?? new Date().toISOString()));
 					dispatch(
 						setActiveQuizQuestions(localActiveQuiz ?? getActiveQuizQuestions(result.data?.data[0])),
 					);
@@ -95,7 +89,7 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-		saveQuizResult: build.mutation<boolean, ActiveQuizWithDate>({
+		saveQuizResult: build.mutation<boolean, NewQuizResponse>({
 			query: (data) => {
 				return {
 					url: '/interview-preparation/quizzes',
