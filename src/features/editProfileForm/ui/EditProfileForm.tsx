@@ -8,6 +8,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Tabs } from '@/shared/ui/Tabs';
+import { toast } from '@/shared/ui/Toast';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetProfileByIdQuery } from '@/entities/profile';
@@ -27,7 +28,7 @@ export const EditProfileForm = () => {
 	);
 	const { hash } = useLocation();
 	const { data: profile } = useProfileQuery();
-	const [updateProfile] = useUpdateProfileMutation();
+	const [updateProfile, { isUninitialized, status }] = useUpdateProfileMutation();
 	const profileId = profile?.profiles[0].profileId;
 
 	const { data: userProfile } = useGetProfileByIdQuery(profileId as string);
@@ -77,6 +78,9 @@ export const EditProfileForm = () => {
 					) : null}
 				</form>
 			</FormProvider>
+
+			{!isUninitialized && status === 'fulfilled' ? toast.success('Форма успешно изменена') : null}
+			{!isUninitialized && status === 'rejected' ? toast.error('Форма не изменена') : null}
 		</section>
 	);
 };
