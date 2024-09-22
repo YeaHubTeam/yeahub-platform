@@ -48,3 +48,7 @@ export interface UserInfoProfile {
 	aboutMe?: string;
 	skills?: string[];
 }
+
+export interface ExtraArgument {
+	navigate: (path: string) => void;
+}
