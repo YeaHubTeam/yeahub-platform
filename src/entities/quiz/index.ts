@@ -34,7 +34,7 @@ export type {
 	QuizHistoryResponse,
 } from './model/types/quiz';
 
-export { getActiveQuizQuestions, getQuizStartDate } from './model/selectors/quizSelectors';
+export { getActiveQuizQuestions } from './model/selectors/quizSelectors';
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 

@@ -8,7 +8,6 @@ import { Response } from '@/shared/types/types';
 import { LS_ACTIVE_QUIZ_KEY } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
-	ActiveQuizWithDate,
 	CreateNewQuizGetRequest,
 	ExtraArgument,
 	InterviewQuizGetRequest,
@@ -30,11 +29,12 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.interview.quiz.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -89,7 +89,7 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-		saveQuizResult: build.mutation<boolean, ActiveQuizWithDate>({
+		saveQuizResult: build.mutation<boolean, NewQuizResponse>({
 			query: (data) => {
 				return {
 					url: '/interview-preparation/quizzes',

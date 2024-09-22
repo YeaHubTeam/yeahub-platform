@@ -1,21 +1,21 @@
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
-import { Question } from '@/entities/question';
+import { Answers } from '@/entities/quiz';
 
 import styles from './QuestionLargePreview.module.css';
 
 interface QuestionLargePreviewProps {
-	question: Question;
+	question: Answers;
 }
 
 export const QuestionLargePreview = ({ question }: QuestionLargePreviewProps) => {
 	return (
 		<>
 			<div className={styles.question}>
-				<h2 className={styles.questiontitle}>{question.title}</h2>
+				<h2 className={styles.questiontitle}>{question.questionTitle}</h2>
 				<ImageWithWrapper
 					src={question.imageSrc}
-					alt={question.title}
+					alt={question.questionTitle}
 					className={styles['image-wrapper']}
 				/>
 			</div>

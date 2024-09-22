@@ -125,7 +125,13 @@
   grid-column: 1/4;
 }
 
+.inactive-title {
+  font-size: var(--font-size-h-xs);
+}
 
+.inactive-description {
+  font-size: var(--font-size-p-s);
+}
 
 @media (width <= 1280px) {
   .container {

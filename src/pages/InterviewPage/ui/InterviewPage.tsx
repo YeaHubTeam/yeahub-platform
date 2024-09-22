@@ -4,13 +4,14 @@ import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlacehol
 import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Loader } from '@/shared/ui/Loader';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
-import { useGetActiveQuizQuery } from '@/entities/quiz';
+import { getActiveQuizQuestions, useGetActiveQuizQuery } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
@@ -39,29 +40,27 @@ const InterviewPage = () => {
 	];
 
 	const { data: profile } = useProfileQuery();
-	const { data: activeQuiz, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
+	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId: profile?.profiles[0].profileId,
 		params: { limit: 1, page: 1 },
 	});
 
+	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
+
 	const preparationWidgetQuestion = useMemo(() => {
-		if (!activeQuiz) return null;
+		if (!activeQuizQuestions || !activeQuizQuestions.length) return null;
 
-		const lastActiveQuiz = activeQuiz.data[0];
-		if (!lastActiveQuiz) return null;
-
+		const questionWithoutAnswer =
+			activeQuizQuestions.find((question) => !question.answer) ?? activeQuizQuestions[0];
+		const questionIndexWithoutAnswer = activeQuizQuestions.findIndex(
+			(question) => !question.answer,
+		);
 		return {
-			question:
-				lastActiveQuiz.response.answers.length >= lastActiveQuiz.questions.length
-					? lastActiveQuiz.questions[lastActiveQuiz.questions.length - 1]
-					: lastActiveQuiz.questions[lastActiveQuiz.response.answers.length - 1],
-			toQuestionNumber: lastActiveQuiz.questions.length,
-			fromQuestionNumber:
-				lastActiveQuiz.questions.length - lastActiveQuiz.response.answers.length > 0
-					? lastActiveQuiz.response.answers.length
-					: lastActiveQuiz.questions.length,
+			question: questionWithoutAnswer,
+			fromQuestionNumber: questionIndexWithoutAnswer >= 0 ? questionIndexWithoutAnswer + 1 : 1,
+			toQuestionNumber: activeQuizQuestions.length,
 		};
-	}, [activeQuiz]);
+	}, [activeQuizQuestions]);
 
 	return (
 		<div className={styles.container}>
@@ -73,7 +72,7 @@ const InterviewPage = () => {
 						: Interview.PREPARATION_NOACTIVELINKTEXT,
 				)}
 				actionRoute={
-					preparationWidgetQuestion ? ROUTES.interview.quiz.page : ROUTES.interview.quiz.new.page
+					preparationWidgetQuestion ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
 				}
 				withShadow
 			>
@@ -92,8 +91,12 @@ const InterviewPage = () => {
 								</>
 							) : (
 								<>
-									<h2>{t(Interview.PREPARATION_NOACTIVETITLE)}</h2>
-									<p>{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}</p>
+									<h2 className={styles['inactive-title']}>
+										{t(Interview.PREPARATION_NOACTIVETITLE)}
+									</h2>
+									<p className={styles['inactive-description']}>
+										{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
+									</p>
 									<img
 										className={styles['preparation-noactiveimage']}
 										src={NoActiveQuizPlaceholder}

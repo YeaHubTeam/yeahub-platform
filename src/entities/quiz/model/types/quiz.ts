@@ -66,11 +66,8 @@ export interface NewQuizResponse {
 	skills: string[];
 	questions: Question[];
 	response: Response;
-	id: string;
-}
-
-export interface ActiveQuizWithDate extends NewQuizResponse {
 	startDate: string;
+	id: string;
 }
 
 /**
@@ -123,7 +120,6 @@ export interface Answers {
 }
 
 export interface ActiveQuizState {
-	startDate: string;
 	questions: Answers[];
 }
 

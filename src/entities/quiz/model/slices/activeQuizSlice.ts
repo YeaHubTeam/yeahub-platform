@@ -6,7 +6,6 @@ import { LS_ACTIVE_QUIZ_KEY } from '../constants/quizConstants';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
 const initialState: ActiveQuizState = {
-	startDate: '',
 	questions: [],
 };
 
@@ -29,7 +28,6 @@ export const activeQuizSlice = createSlice({
 		},
 		clearActiveQuizState: (state) => {
 			state.questions = [];
-			state.startDate = '';
 			removeFromLS(LS_ACTIVE_QUIZ_KEY);
 		},
 	},
