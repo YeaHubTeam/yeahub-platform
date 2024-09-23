@@ -88,6 +88,9 @@
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
+  --focus-shadow: 0 0 0 3px var(--color-purple-100);
+  --focus-shadow-error: 0 0 0 3px var(--color-red-100);
+  --focus-shadow-valid: 0 0 0 3px var(--color-green-200);
 }
 
 

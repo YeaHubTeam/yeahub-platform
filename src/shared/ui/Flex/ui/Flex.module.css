@@ -78,6 +78,10 @@
   gap: 40px;
 }
 
+.gap120 {
+  gap: 120px;
+}
+
 .max-width {
   width: 100%;
 }

@@ -91,6 +91,10 @@ describe('Flex', () => {
 		test('40', () => {
 			render({ gap: '40' }, 'gap40');
 		});
+
+		test('120', () => {
+			render({ gap: '120' }, 'gap120');
+		});
 	});
 
 	test('maxWidth', () => {
