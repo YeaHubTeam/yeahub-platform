@@ -32,6 +32,9 @@ export const PassedQuestionChart = ({
 
 	const gaugeOption = options.gauge;
 	gaugeOption.series[0].data = gaugeData;
+	gaugeOption.series[0].detail.formatter = total
+		? '{value}%\nпройдено'
+		: 'Скоро здесь\nпоявится статистика';
 
 	return (
 		<ReactECharts

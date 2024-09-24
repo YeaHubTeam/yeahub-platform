@@ -27,6 +27,8 @@
 .container>div:nth-child(4) {
   grid-row: 2 / 3;
   grid-column: 7 / 13;
+  height: min-content;
+  max-height: 344px;
 }
 
 .preparation-wrapper {
@@ -110,6 +112,13 @@
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(3, 1fr);
+}
+
+.no-history {
+  padding: 24px;
+  text-align: center;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
 }
 
 .history>:nth-child(1) {

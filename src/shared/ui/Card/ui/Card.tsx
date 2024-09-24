@@ -14,6 +14,7 @@ interface CardProps {
 	title?: string;
 	actionRoute?: string;
 	actionTitle?: string;
+	actionDisabled?: boolean;
 	withShadow?: boolean;
 	isActionPositionBottom?: boolean;
 }
@@ -65,6 +66,7 @@ export const Card = ({
 	title = '',
 	actionTitle = '',
 	actionRoute = '',
+	actionDisabled = false,
 	isActionPositionBottom = false,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
@@ -116,15 +118,19 @@ export const Card = ({
 				{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
 				{actionRoute ? (
 					<Link
-						to={actionRoute}
-						className={classNames(styles.link, {
-							[styles['link-bottom']]: isActionPositionBottom,
-						})}
+						to={actionDisabled ? '#' : actionRoute}
+						className={classNames(
+							actionDisabled ? styles['link-disabled'] : styles['link-active'],
+							styles.link,
+							{
+								[styles['link-bottom']]: isActionPositionBottom,
+							},
+						)}
 					>
 						<span>{actionTitle}</span>
 						<Icon
 							icon="arrowRight"
-							color="--palette-ui-purple-700"
+							color={actionDisabled ? '--palette-ui-purple-300' : '--palette-ui-purple-700'}
 							size={24}
 							className={styles.icon}
 						/>
