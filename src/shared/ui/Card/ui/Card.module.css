@@ -81,17 +81,14 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--text-color-link-active);
   text-decoration: none;
   font-weight: var(--font-weight-600);
 }
 
 .link-disabled {
+  pointer-events: none;
   color: var(--text-color-link-disabled);
-}
-
-.link-active {
-  color: var(--text-color-link-active);
-  
 }
 
 .icon {

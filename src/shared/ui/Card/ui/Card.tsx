@@ -118,14 +118,11 @@ export const Card = ({
 				{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
 				{actionRoute ? (
 					<Link
-						to={actionDisabled ? '#' : actionRoute}
-						className={classNames(
-							actionDisabled ? styles['link-disabled'] : styles['link-active'],
-							styles.link,
-							{
-								[styles['link-bottom']]: isActionPositionBottom,
-							},
-						)}
+						to={actionRoute}
+						className={classNames(styles.link, {
+							[styles['link-bottom']]: isActionPositionBottom,
+							[styles['link-disabled']]: actionDisabled,
+						})}
 					>
 						<span>{actionTitle}</span>
 						<Icon

@@ -130,21 +130,7 @@ const InterviewPage = () => {
 					<InterviewQuestionsList />
 				</div>
 			</Card>
-			<Card
-				actionRoute={ROUTES.interview.history.page}
-				actionTitle={t(Interview.HISTORY_PREPARATION_LINKTEXT)}
-				title={t(Interview.HISTORY_PREPARATION_TITLE)}
-				withShadow
-				actionDisabled={!lastActiveQuizInfo}
-			>
-				{!lastActiveQuizInfo ? (
-					<h3 className={styles['no-history']}>{t(Interview.HISTORY_PREPARATION_EMPTY)}</h3>
-				) : (
-					<div className={styles.history}>
-						<InterviewHistoryList />
-					</div>
-				)}
-			</Card>
+			<InterviewHistoryList />
 		</div>
 	);
 };
