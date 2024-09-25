@@ -10,44 +10,39 @@ import { SocialNetwork, SocialNetworkCode } from '../../model/types/socialNetwor
 import style from './SocialNetWorkInputs.module.css';
 
 export const SocialNetWorkInputs = () => {
-	const { fields, update, append, remove } = useFieldArray<{ socialNetwork: SocialNetwork[] }>({
-		name: 'socialNetwork',
+	const { fields, update } = useFieldArray<{ socialNetworks: SocialNetwork[] }>({
+		name: 'socialNetworks',
 	});
 	const { control } = useFormContext();
-
 	const onChangeHandler =
-		(socialNetworkCode: SocialNetworkCode) => (e: ChangeEvent<HTMLInputElement>) => {
+		(socialNetworkCode: SocialNetworkCode, onChange: (e: ChangeEvent<HTMLInputElement>) => void) =>
+		(e: ChangeEvent<HTMLInputElement>) => {
+			onChange(e);
 			const value = e.target.value;
 			if (!socialNetworkCode) return;
 
 			const index =
 				fields.length > 0 && fields.findIndex((field) => field?.code === socialNetworkCode);
-
 			if (typeof index === 'number' && index > -1) {
-				if (value) {
-					update(index, { title: value, code: socialNetworkCode });
-				} else {
-					remove(index);
-				}
-				return;
+				update(index, { code: socialNetworkCode, title: value });
 			}
-
-			append({ title: value, code: socialNetworkCode });
 		};
 
-	return (
-		<>
-			{SOCIAL_NETWORKS.map((socialNetwork) => (
-				<FormControl
-					key={socialNetwork.code}
-					name={socialNetwork.title}
-					control={control}
-					label={socialNetwork.title}
-					className={style.form}
-				>
-					{() => <Input onChange={onChangeHandler(socialNetwork.code)} className={style.input} />}
-				</FormControl>
-			))}
-		</>
-	);
+	return SOCIAL_NETWORKS.map((socialNetwork, index) => (
+		<FormControl
+			key={socialNetwork.code}
+			name={`socialNetworks.${index}.title`}
+			control={control}
+			label={socialNetwork.title}
+			className={style.form}
+		>
+			{(field) => (
+				<Input
+					{...field}
+					onChange={onChangeHandler(socialNetwork.code, field.onChange)}
+					className={style.input}
+				/>
+			)}
+		</FormControl>
+	));
 };

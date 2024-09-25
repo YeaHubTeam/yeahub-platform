@@ -30,7 +30,7 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 
 		setTabToggle(id);
 
-		navigate(`#${pathname}`);
+		navigate(`#${pathname}`, { replace: true });
 
 		if (lineRef.current) {
 			lineRef.current.style.width = tabElement.offsetWidth + 'px';
