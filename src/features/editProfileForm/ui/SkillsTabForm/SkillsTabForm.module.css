@@ -30,6 +30,11 @@
   font-size: var(--font-size-p-s);
 }
   
+.select {
+  flex: 1;
+  width: 100%;
+}
+
 .input {
   min-height: 48px;
   border-radius: 68px;
