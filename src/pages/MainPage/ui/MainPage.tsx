@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { Card } from '@/shared/ui/Card';
@@ -11,6 +12,8 @@ const MainPage = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
 	const { data: profile } = useProfileQuery();
+
+	const navigate = useNavigate();
 
 	const getPercentProfileFullness = useCallback((profile: GetProfileResponse) => {
 		const allFileldsCount = Object.keys(profile).length - 1;
@@ -47,7 +50,13 @@ const MainPage = () => {
 										вашими достижениями. Каждая деталь добавляет картины вашей истории успеха
 									</p>
 								</div>
-								<Button className={styles.button} size="large">
+								<Button
+									onClick={() => {
+										navigate('/profile/edit#personal-information');
+									}}
+									className={styles.button}
+									size="large"
+								>
 									Заполнить профиль
 								</Button>
 							</div>
