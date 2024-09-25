@@ -24,6 +24,10 @@ const MainPage = () => {
 		return percentFullness;
 	}, []);
 
+	const redirectToProfileEditing = () => {
+		navigate('/profile/edit#personal-information');
+	};
+
 	useEffect(() => {
 		if (profile) {
 			const percentFullness = getPercentProfileFullness(profile);
@@ -50,13 +54,7 @@ const MainPage = () => {
 										вашими достижениями. Каждая деталь добавляет картины вашей истории успеха
 									</p>
 								</div>
-								<Button
-									onClick={() => {
-										navigate('/profile/edit#personal-information');
-									}}
-									className={styles.button}
-									size="large"
-								>
+								<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
 									Заполнить профиль
 								</Button>
 							</div>
