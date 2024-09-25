@@ -86,6 +86,11 @@
   font-weight: var(--font-weight-600);
 }
 
+.link-disabled {
+  pointer-events: none;
+  color: var(--text-color-link-disabled);
+}
+
 .icon {
   width: 24px;
   height: 24px;

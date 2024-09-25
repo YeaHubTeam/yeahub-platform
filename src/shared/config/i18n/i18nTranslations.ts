@@ -45,6 +45,7 @@ export enum Interview {
 	HISTORY_PREPARATION_TITLE = 'history_preparation.title',
 	HISTORY_PREPARATION_LINKTEXT = 'history_preparation.linkText',
 	HISTORY_PREPARATION_RESULTTEXT = 'history_preparation.resultText',
+	HISTORY_PREPARATION_EMPTY = 'history_preparation.empty',
 }
 
 export enum InterviewHistory {

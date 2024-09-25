@@ -27,15 +27,15 @@ const InterviewPage = () => {
 	const questionStats = [
 		{
 			title: 'Всего вопросов',
-			value: '120',
+			value: '0',
 		},
 		{
 			title: 'Не изучено',
-			value: '40',
+			value: '0',
 		},
 		{
 			title: 'Изучено',
-			value: '20',
+			value: '0',
 		},
 	];
 
@@ -47,7 +47,7 @@ const InterviewPage = () => {
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
-	const preparationWidgetQuestion = useMemo(() => {
+	const lastActiveQuizInfo = useMemo(() => {
 		if (!activeQuizQuestions || !activeQuizQuestions.length) return null;
 
 		const questionWithoutAnswer =
@@ -67,12 +67,12 @@ const InterviewPage = () => {
 			<Card
 				title={t(Interview.PREPARATION_TITLE)}
 				actionTitle={t(
-					preparationWidgetQuestion
+					lastActiveQuizInfo
 						? Interview.PREPARATION_ACTIVELINKTEXT
 						: Interview.PREPARATION_NOACTIVELINKTEXT,
 				)}
 				actionRoute={
-					preparationWidgetQuestion ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
+					lastActiveQuizInfo ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
 				}
 				withShadow
 			>
@@ -81,13 +81,13 @@ const InterviewPage = () => {
 				) : (
 					<div className={styles.preparation}>
 						<div className={styles['preparation-wrapper']}>
-							{preparationWidgetQuestion ? (
+							{lastActiveQuizInfo ? (
 								<>
 									<QuestionProgressBarBlock
-										fromQuestionNumber={preparationWidgetQuestion.fromQuestionNumber}
-										toQuestionNumber={preparationWidgetQuestion.toQuestionNumber}
+										fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
+										toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
 									/>
-									<QuestionLargePreview question={preparationWidgetQuestion.question} />
+									<QuestionLargePreview question={lastActiveQuizInfo.question} />
 								</>
 							) : (
 								<>
@@ -113,9 +113,10 @@ const InterviewPage = () => {
 				title={t('stats.title')}
 				actionTitle={t('stats.linkText')}
 				actionRoute={ROUTES.interview.statistic.page}
+				actionDisabled={!lastActiveQuizInfo}
 			>
 				<div className={styles.statistics}>
-					<PassedQuestionChart total={120} learned={20} />
+					<PassedQuestionChart total={0} learned={0} />
 					<PassedQuestionStatInfo stats={questionStats} />
 				</div>
 			</Card>
@@ -129,16 +130,7 @@ const InterviewPage = () => {
 					<InterviewQuestionsList />
 				</div>
 			</Card>
-			<Card
-				actionRoute={ROUTES.interview.history.page}
-				actionTitle={t('history_preparation.linkText')}
-				title={t('history_preparation.title')}
-				withShadow
-			>
-				<div className={styles.history}>
-					<InterviewHistoryList />
-				</div>
-			</Card>
+			<InterviewHistoryList />
 		</div>
 	);
 };

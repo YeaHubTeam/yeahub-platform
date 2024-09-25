@@ -61,6 +61,7 @@
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
   --text-color-link-active: var(--color-purple-700);
+  --text-color-link-disabled: var(--color-purple-300);
   --text-color-light: var(--color-black-700);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
@@ -103,6 +104,7 @@
   --text-color-primary: var(--color-white-900);
   --text-color-bright: var(--color-white-900);
   --text-color-link-active: var(--color-purple-700);
+  --text-color-link-disabled: var(--color-purple-300);
   --text-color-light: var(--color-white-900);
   --text-color-lighter: var(--color-black-600);
   --text-color-lightest: var(--color-black-500);
