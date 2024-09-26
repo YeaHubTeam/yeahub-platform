@@ -34,23 +34,12 @@ const InterviewQuizResultPage = () => {
 	const questions = data?.response.answers;
 	const interviewStats = getInterviewStats(questions);
 
-	const isLeanedQuestionsCount = () => {
-		let count = 0;
-
-		for (const question of data?.questions || []) {
-			if (question.isLearned) {
-				count++;
-			}
-		}
-		return count;
-	};
-
-	const isLeanedQuestion = isLeanedQuestionsCount();
+	const learnedQuestions = (data?.questions || []).filter((question) => question.isLearned).length;
 
 	const questionStats = [
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_PASSED),
-			value: `${isLeanedQuestion}/${data?.fullCount}`,
+			value: `${learnedQuestions}/${data?.fullCount}`,
 		},
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_TIMESPENT),
