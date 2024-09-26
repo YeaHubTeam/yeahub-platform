@@ -21,6 +21,7 @@ export interface Quiz {
 export type QuizByIdRequestParams = Record<string, string>;
 
 export interface QuizQuestion {
+	isLearned: boolean;
 	code: string;
 	complexity: number;
 	createdAt: Date;
