@@ -33,6 +33,8 @@ export enum Interview {
 	PREPARATION_NOACTIVETITLE = 'preparation.noActiveTitle',
 	PREPARATION_NOACTIVEDESCRIPTION = 'preparation.noActiveDescription',
 	PREPARATION_PROGRESSBARTITLE = 'preparation.progressBarTitle',
+	PREPARATION_STUB_TITLE = 'preparation.stubTitle',
+	PREPARATION_STUB_DESCRIPTION = 'preparation.stubDescription',
 	STATS_TITLE = 'stats.title',
 	STATS_LINKTEXT = 'stats.linkText',
 	STATS_STATSSTUDIED_ALLQUESTIONS = 'stats.statsStudied.allQuestions',
