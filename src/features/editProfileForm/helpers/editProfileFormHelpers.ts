@@ -1,8 +1,9 @@
 import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 
 import { Profile } from '@/entities/profile';
+import { SOCIAL_NETWORKS, SocialNetwork } from '@/entities/socialNetwork';
 
-import { ProfileSchema } from '../model/types/editProfileTypes';
+import { EditProfileRequestData, ProfileSchema } from '../model/types/editProfileTypes';
 import { AboutMeTabForm } from '../ui/AboutMeTabForm/AboutMeTabForm';
 import { PersonalInformationTabForm } from '../ui/PersonalInformationTabForm/PersonalInformationTabForm';
 import { SkillsTabForm } from '../ui/SkillsTabForm/SkillsTabForm';
@@ -54,7 +55,35 @@ export const mapProfileToForm = (profile: Profile): ProfileSchema => ({
 	phone: profile.user.phone,
 	email: profile.user.email,
 	location: profile.user.city,
-	socialNetworks: profile.socialNetwork,
+	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
+		const currentSocialNetwork = profile.socialNetwork.find(
+			({ code }) => code === socialNetwork.code,
+		);
+		result.push({
+			code: socialNetwork.code,
+			title: currentSocialNetwork?.title || '',
+		});
+		return result;
+	}, []),
 	aboutMe: profile.description,
-	skills: profile.profileSkills,
+	skills: profile.profileSkills.map((skill) => skill.id),
+});
+
+export const mapFormToProfile = (
+	profile: Profile,
+	values: ProfileSchema,
+): EditProfileRequestData => ({
+	...profile,
+	id: profile.id,
+	description: values.aboutMe || '',
+	socialNetwork: values.socialNetworks || [],
+	specializationId: values.specialization,
+	profileSkills: values.skills || [],
+	user: {
+		...profile.user,
+		email: values.email,
+		firstName: values.firstName,
+		lastName: values.lastName,
+		phone: values.phone,
+	},
 });
