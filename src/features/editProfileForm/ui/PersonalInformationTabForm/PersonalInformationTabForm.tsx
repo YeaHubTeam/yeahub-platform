@@ -1,3 +1,4 @@
+import { ClipboardEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { Button, Input } from 'yeahub-ui-kit';
@@ -13,6 +14,20 @@ import styles from './PersonalInformationTabForm.module.css';
 
 export const PersonalInformationTabForm = () => {
 	const { control } = useFormContext();
+
+	const onPastePhoneValue =
+		(onChange: (value: string) => void) => (e: ClipboardEvent<HTMLInputElement>) => {
+			e.preventDefault();
+
+			const pastedValue = e.clipboardData
+				?.getData('text')
+				.replace(/\D/g, '')
+				.replace(/^(7|8)/, '');
+
+			if (!pastedValue) return;
+
+			onChange(pastedValue);
+		};
 
 	return (
 		<>
@@ -62,6 +77,7 @@ export const PersonalInformationTabForm = () => {
 								{(field) => (
 									<InputMask
 										{...field}
+										onPaste={onPastePhoneValue(field.onChange)}
 										className={styles.phone}
 										mask={'+7-(999)-999-99-99'}
 										placeholder={'+7-(XXX)-XXX-XX-XX'}
