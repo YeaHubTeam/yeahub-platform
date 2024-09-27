@@ -7,11 +7,12 @@ import { Card } from '@/shared/ui/Card';
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
 import styles from './MainPage.module.css';
+import MainPageSkeleton from './MainPage.skeleton';
 
 const MainPage = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
-	const { data: profile } = useProfileQuery();
+	const { data: profile, isLoading } = useProfileQuery();
 
 	const navigate = useNavigate();
 
@@ -36,6 +37,8 @@ const MainPage = () => {
 	}, [getPercentProfileFullness, profile]);
 
 	const isIncompleteProfile = percentProfileFullness < 100;
+
+	if (isLoading) return <MainPageSkeleton />;
 
 	return (
 		<>
