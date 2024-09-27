@@ -37,7 +37,7 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setSkills(skills));
 	};
 
-	const onChangeComplexity = (complexity: number[]) => {
+	const onChangeComplexity = (complexity: number[] | undefined) => {
 		dispatch(createQuizPageActions.setComplexity(complexity));
 	};
 

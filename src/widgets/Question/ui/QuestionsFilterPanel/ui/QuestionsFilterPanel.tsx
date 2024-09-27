@@ -14,7 +14,7 @@ interface QuestionsFilterPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
-	onChangeComplexity: (complexity: number[]) => void;
+	onChangeComplexity: (complexity: number[] | undefined) => void;
 	onChangeRate: (rate: number[]) => void;
 	onChangeStatus: (status: QuestionFilterStatus) => void;
 }
@@ -35,7 +35,7 @@ export const QuestionsFilterPanel = ({
 
 	return (
 		<div className={styles.wrapper}>
-			<SearchInput placeholder="Введите запрос" onSearch={debouncedSearch} />
+			<SearchInput placeholder="Введите запрос..." onSearch={debouncedSearch} />
 			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

@@ -26,7 +26,7 @@
 
 .title {
   position: relative;
-  padding-left: 10px;
+  padding-left: 16px;
   text-align: initial;
   transition: color 0.3s ease-in-out;
 }
@@ -36,8 +36,8 @@
   top: 50%;
   left: 0;
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
   transform: translateY(-50%);

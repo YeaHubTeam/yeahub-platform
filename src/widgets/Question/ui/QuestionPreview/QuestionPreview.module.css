@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,11 +26,14 @@
 }
 
 .details-button {
+  position: absolute;
+  top: -8px;
+  right: -40px;
   cursor: pointer;
+}
 
-  svg {
-    color: var(--text-color-primary);
-  }
+.details-button svg {
+  color: var(--text-color-primary);
 }
 
 .image {

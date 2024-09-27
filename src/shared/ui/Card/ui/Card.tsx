@@ -114,26 +114,28 @@ export const Card = ({
 				height: isExpand ? `${contentHeight + 90}px` : '',
 			}}
 		>
-			<div className={styles['card-header']}>
-				{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
-				{actionRoute ? (
-					<Link
-						to={actionRoute}
-						className={classNames(styles.link, {
-							[styles['link-bottom']]: isActionPositionBottom,
-							[styles['link-disabled']]: actionDisabled,
-						})}
-					>
-						<span>{actionTitle}</span>
-						<Icon
-							icon="arrowRight"
-							color={actionDisabled ? '--palette-ui-purple-300' : '--palette-ui-purple-700'}
-							size={24}
-							className={styles.icon}
-						/>
-					</Link>
-				) : null}
-			</div>
+			{(title || actionRoute) && (
+				<div className={styles['card-header']}>
+					{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
+					{actionRoute ? (
+						<Link
+							to={actionRoute}
+							className={classNames(styles.link, {
+								[styles['link-bottom']]: isActionPositionBottom,
+								[styles['link-disabled']]: actionDisabled,
+							})}
+						>
+							<span>{actionTitle}</span>
+							<Icon
+								icon="arrowRight"
+								color={actionDisabled ? '--palette-ui-purple-300' : '--palette-ui-purple-700'}
+								size={24}
+								className={styles.icon}
+							/>
+						</Link>
+					) : null}
+				</div>
+			)}
 
 			<div
 				className={classNames(styles.content, {

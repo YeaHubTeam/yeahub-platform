@@ -26,7 +26,7 @@ const questionsPageSlice = createSlice({
 		setSkills: (state, action: PayloadAction<number[] | undefined>) => {
 			state.skills = action.payload;
 		},
-		setComplexity: (state, action: PayloadAction<number[]>) => {
+		setComplexity: (state, action: PayloadAction<number[] | undefined>) => {
 			state.complexity = action.payload;
 		},
 		setRate: (state, action: PayloadAction<number[]>) => {
