@@ -21,10 +21,8 @@ export const ChooseQuestionComplexity = ({
 		const updates = isDataExist
 			? (selectedComplexity || []).filter((item) => !newValues.includes(item))
 			: [...(selectedComplexity || []), ...newValues];
-		console.log(updates);
 		onChangeComplexity(updates.length === 0 ? undefined : updates);
 	};
-	console.log(selectedComplexity);
 
 	const preparedData = complexity.map((item) => ({
 		...item,
