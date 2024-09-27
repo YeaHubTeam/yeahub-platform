@@ -29,78 +29,15 @@ export const editProfileSchema = yup.object().shape({
 	specialization: yup.number().required('Выбор специализации обязателен'),
 	phone: yup
 		.string()
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable()
+		.required()
 		.matches(/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/, 'Неверный формат телефона'),
 	email: yup
 		.string()
 		.email('Неверный формат электронной почты')
 		.required('Электронная почта обязательна'),
-	location: yup
-		.string()
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable()
-		.min(5, 'Локация должна состоять как минимум из 5 символов')
-		.max(255, 'Локация не может превышать 255 символов'),
-
-	skillLevel: yup
-		.string()
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable(),
-	socialNetworks: yup
-		.array()
-		.of(
-			yup.object().shape({
-				code: yup
-					.string()
-					.oneOf(['instagram', 'linkedin', 'twitter', 'github', 'behance', 'whatsapp', 'telegram']),
-				title: yup.string(),
-			}),
-		)
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable(),
-	aboutMe: yup
-		.string()
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable(),
-	skills: yup
-		.array()
-		.optional()
-		.transform((value, originalValue) => {
-			if (value === '') {
-				return null;
-			}
-			return originalValue;
-		})
-		.nullable(),
+	location: yup.string().nullable(),
+	skillLevel: yup.string(),
+	socialNetworks: yup.array(),
+	aboutMe: yup.string().nullable(),
+	skills: yup.array(yup.number().required()),
 });

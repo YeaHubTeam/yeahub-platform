@@ -1,11 +1,12 @@
 import * as yup from 'yup';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SocialNetwork } from '@/entities/socialNetwork';
-
 import { editProfileSchema } from '../lib/validation/editProfileSchema';
 
 export type ProfileSchema = yup.InferType<typeof editProfileSchema>;
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SocialNetwork } from '@/entities/socialNetwork';
+import { Profile } from '@/entities/profile';
 
 /**
  * Interface representing personal information of a user.
@@ -38,3 +39,7 @@ export interface EditProfileValues {
 export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
+
+export type EditProfileRequestData = Omit<Profile, 'profileSkills'> & {
+	profileSkills: number[];
+};
