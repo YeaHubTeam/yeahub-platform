@@ -4,7 +4,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -18,6 +17,7 @@ import {
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
+import { InterviewQuizPageSkeleton } from './InterviewQuizPage.skeleton';
 
 const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
@@ -48,10 +48,6 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
-	if (isLoading) {
-		return <Loader />;
-	}
-
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
 			const quizToSave = {
@@ -64,6 +60,8 @@ const InterviewQuizPage = () => {
 			saveResult(quizToSave);
 		}
 	};
+
+	if (isLoading) return <InterviewQuizPageSkeleton hasImage={!!imageSrc} />;
 
 	return (
 		<div className={styles.container}>
