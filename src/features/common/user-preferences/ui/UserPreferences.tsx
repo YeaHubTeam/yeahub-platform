@@ -9,9 +9,10 @@ import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferences.module.css';
+import { UserPreferencesSkeleton } from './UserPreferences.skeleton';
 
 export const UserPreferences = () => {
-	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
+	const { data: profile, isSuccess: isSuccessGetProfile, isLoading } = useProfileQuery();
 
 	const [isOpenSettingsPopover, setIsOpenSettingsPopover] = useState<boolean>(false);
 
@@ -22,6 +23,8 @@ export const UserPreferences = () => {
 	};
 
 	const handleOpenSettingsPopover = () => setIsOpenSettingsPopover((prev) => !prev);
+
+	if (isLoading) return <UserPreferencesSkeleton />;
 
 	const SettingsPopover = () => {
 		return (
@@ -52,26 +55,24 @@ export const UserPreferences = () => {
 
 	return (
 		<div className={styles.preferences}>
-			<div>
-				<Popover
-					isOpen={isOpenSettingsPopover}
-					body={<SettingsPopover />}
-					onClickOutside={handleOpenSettingsPopover}
-				>
-					<IconButton
-						aria-label="go to preferences"
-						form="square"
-						icon={<Icon key="userPreferenceGearSixIcon" icon="gearSix" size={20} />}
-						size="small"
-						theme="tertiary"
-						onClick={handleOpenSettingsPopover}
-						isActive={isOpenSettingsPopover}
-					/>
-				</Popover>
-			</div>
+			<Popover
+				isOpen={isOpenSettingsPopover}
+				body={<SettingsPopover />}
+				onClickOutside={handleOpenSettingsPopover}
+			>
+				<IconButton
+					aria-label="go to preferences"
+					form="square"
+					icon={<Icon key="userPreferenceGearSixIcon" icon="gearSix" size={20} />}
+					size="small"
+					theme="tertiary"
+					onClick={handleOpenSettingsPopover}
+					isActive={isOpenSettingsPopover}
+				/>
+			</Popover>
 			{isSuccessGetProfile && (
 				<>
-					<Text text={profile.firstName} />
+					<Text text={profile?.firstName} />
 					<div className={styles.avatar}>
 						{profile.avatarUrl ? (
 							<img className={styles.img} src={profile.avatarUrl} alt="avatar" />
