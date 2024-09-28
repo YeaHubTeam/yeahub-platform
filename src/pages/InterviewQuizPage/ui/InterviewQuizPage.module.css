@@ -42,7 +42,7 @@
 }
 
 .slider-card-skeleton{
-  padding: 76px 24px 96px;
+  padding: 24px;
 }
 
 .slider-skeleton {
@@ -64,7 +64,7 @@
 .question-skeleton {
   display: list-item;
   grid-area: question;
-  list-style: disc;
+  list-style: none;
 }
 
 .response-buttons-skeleton {
