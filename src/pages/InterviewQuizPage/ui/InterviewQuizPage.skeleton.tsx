@@ -8,10 +8,13 @@ export const InterviewQuizPageSkeleton = () => {
 	return (
 		<div className={styles.container}>
 			<Card>
-				<div className={styles['progress-bar']}>
-					<Skeleton width={200} height={40} />
-					<Skeleton width={30} height={40} />
-				</div>
+				<Flex gap="16" direction="column">
+					<div className={styles['progress-bar']}>
+						<Skeleton width={200} height={40} />
+						<Skeleton width={30} height={40} />
+					</div>
+					<Skeleton width="100%" height={3} borderRadius={50}></Skeleton>
+				</Flex>
 			</Card>
 			<Card className={styles['slider-card-skeleton']}>
 				<Flex direction="column" gap="24">
@@ -34,6 +37,7 @@ export const InterviewQuizPageSkeleton = () => {
 						</Flex>
 						<Skeleton height={303} borderRadius={24} className={styles['image-skeleton']} />
 					</div>
+
 					<Flex align="center" justify="end" className={styles['end-button']}>
 						<Skeleton height={48} width={178}></Skeleton>
 					</Flex>

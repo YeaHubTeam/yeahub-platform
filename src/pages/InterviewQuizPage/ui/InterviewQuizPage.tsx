@@ -62,7 +62,6 @@ const InterviewQuizPage = () => {
 	};
 
 	if (isLoading) return <InterviewQuizPageSkeleton />;
-	// return <InterviewQuizPageSkeleton/>
 
 	return (
 		<div className={styles.container}>
