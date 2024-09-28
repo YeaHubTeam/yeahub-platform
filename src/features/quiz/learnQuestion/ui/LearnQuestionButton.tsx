@@ -17,6 +17,7 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 		return learnQuestion({
 			profileId: String(profileId),
 			questionId: Number(questionId),
+			isLearned: true,
 		});
 	};
 
@@ -25,12 +26,12 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 	return (
 		<Button
 			className={styles.btn}
-			preffix={<Icon icon="student" size={iconSize} />}
+			preffix={<Icon icon="thumbsUp" size={iconSize} />}
 			theme="tertiary"
 			onClick={handleLearnQuestion}
 			disabled={isLoading}
 		>
-			Учить
+			Уже знаю
 		</Button>
 	);
 };

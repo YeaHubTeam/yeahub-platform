@@ -3,8 +3,8 @@ import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
 
 const progressStatus: QuestionFilterStatusItem[] = [
-	{ id: 'not-learned', title: 'Изученные' },
-	{ id: 'learned', title: 'Неизученные' },
+	{ id: 'not-learned', title: 'Неизученные' },
+	{ id: 'learned', title: 'Изученные' },
 	// { id: 'saved', title: 'Сохраненные' },
 	{ id: 'all', title: 'Все' },
 ];
