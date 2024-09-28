@@ -9,10 +9,9 @@ import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferences.module.css';
-import { UserPreferencesSkeleton } from './UserPreferences.skeleton';
 
 export const UserPreferences = () => {
-	const { data: profile, isSuccess: isSuccessGetProfile, isLoading } = useProfileQuery();
+	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
 	const [isOpenSettingsPopover, setIsOpenSettingsPopover] = useState<boolean>(false);
 
@@ -23,8 +22,6 @@ export const UserPreferences = () => {
 	};
 
 	const handleOpenSettingsPopover = () => setIsOpenSettingsPopover((prev) => !prev);
-
-	if (isLoading) return <UserPreferencesSkeleton />;
 
 	const SettingsPopover = () => {
 		return (

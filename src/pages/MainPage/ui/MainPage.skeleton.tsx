@@ -4,27 +4,23 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './MainPage.module.css';
 
-const MainPageSkeleton = () => {
-	return (
-		<>
-			<div className={styles.wrapper}>
-				<Skeleton width={'250px'} height={30} />
-				<Card className={styles.block}>
-					<div className={styles['block-wrapper']}>
-						<div className={styles['block-content']}>
-							<Skeleton width={'250px'} height={22} />
-							<Skeleton width={'100%'} height={42} />
-						</div>
-						<Flex justify={'end'}>
-							<Skeleton width={240} height={50} />
-						</Flex>
+export const MainPageSkeleton = () => (
+	<>
+		<div className={styles.wrapper}>
+			<Skeleton width={'250px'} height={'30px'} />
+			<Card className={styles.card}>
+				<div className={styles['card-wrapper']}>
+					<div className={styles['card-content']}>
+						<Skeleton width={'250px'} height={'22px'} />
+						<Skeleton width={'100%'} height={'42px'} />
 					</div>
-				</Card>
-			</div>
+					<Flex justify={'end'}>
+						<Skeleton width={'240px'} height={'50px'} />
+					</Flex>
+				</div>
+			</Card>
+		</div>
 
-			<Skeleton width={480} height={45} className={styles.text} />
-		</>
-	);
-};
-
-export default MainPageSkeleton;
+		<Skeleton width={'480px'} height={'45px'} className={styles.text} />
+	</>
+);

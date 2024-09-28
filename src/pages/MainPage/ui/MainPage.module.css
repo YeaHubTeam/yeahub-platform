@@ -4,30 +4,30 @@
   gap: 24px;
 }
 
-.block {
+.card {
   max-width: 740px;
 }
 
-.block-wrapper {
+.card-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.block-content {
+.card-content {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.block-title {
+.card-title {
   margin: 0;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
 
-.block-text {
+.card-text {
   margin: 0;
   color: var(--text-color-lighter);
   font-weight: var(--font-weight-500);
@@ -53,4 +53,11 @@
   color: var(--text-color-more-lightest);
   text-align: center;
   transform: translate3d(-50%, -50%, 0);
+}
+
+
+@media (width < 768px) {
+  .text {
+    top: 60%;
+  }   
 }

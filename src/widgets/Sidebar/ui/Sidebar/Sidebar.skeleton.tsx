@@ -1,40 +1,24 @@
-import classNames from 'classnames';
-
-import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
-import { AppLogo } from '@/shared/ui/AppLogo';
+import { AppLogoSkeleton } from '@/shared/ui/AppLogo/AppLogo.skeleton';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './Sidebar.module.css';
 
-export const SidebarSkeleton = ({
-	menuLength,
-	isOpenNavSidebar,
-}: {
-	menuLength: number;
-	isOpenNavSidebar: boolean;
-}) => {
-	return (
-		<aside
-			className={classNames(styles.sidebar, { [styles.closing]: isOpenNavSidebar })}
-			data-testid="Sidebar"
-		>
-			<div className={styles.header}>
-				<AppLogo isOpen={isOpenNavSidebar} />
-				<button
-					className={classNames(styles['close-icon'], { [styles['left']]: isOpenNavSidebar })}
-					data-testid="Sidebar_CloseButton"
-				>
-					<LeftChevron className={styles.arrow} />
-				</button>
-			</div>
-			<div className={styles.menu}>
-				<Flex gap={'8'} direction={'column'}>
-					{[...Array(menuLength)].map((_, i) => (
-						<Skeleton key={i} width={isOpenNavSidebar ? '48px' : '100%'} height={'44px'} />
-					))}
-				</Flex>
-			</div>
-		</aside>
-	);
-};
+export const SidebarSkeleton = () => (
+	<aside className={styles.sidebar}>
+		<div className={styles.header}>
+			<AppLogoSkeleton />
+			<button className={styles['close-icon']}>
+				<Skeleton className={styles.arrow} width={'25px'} height={'25px'} borderRadius={'50%'} />
+			</button>
+		</div>
+
+		<div className={styles.menu}>
+			<Flex gap={'8'} direction={'column'}>
+				{[...Array(3)].map((_, i) => (
+					<Skeleton key={i} width={'100%'} height={'44px'} />
+				))}
+			</Flex>
+		</div>
+	</aside>
+);
