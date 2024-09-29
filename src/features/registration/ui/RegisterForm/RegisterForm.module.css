@@ -82,4 +82,28 @@
   border-color: var(--color-purple-500)
 }
 
+.phone {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 68px;
+  background-color: var(--background-app);
+  color: var(--text-color-primary);
+  font-size: var(--font-size-p-xs);
+  transition: 0.2s;
+  cursor: text;
+}
 
+.phone:focus {
+  caret-color: var(--color-purple-500);
+  box-shadow: var(--focus-shadow);
+  border-color: var(--color-purple-500);
+}
+
+.phone::placeholder {
+  color: var(--text-color-more-lightest);
+  font-size: var(--font-size-p-xs);
+}

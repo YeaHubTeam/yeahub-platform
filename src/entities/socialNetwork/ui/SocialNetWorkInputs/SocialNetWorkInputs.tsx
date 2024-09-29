@@ -28,21 +28,25 @@ export const SocialNetWorkInputs = () => {
 			}
 		};
 
-	return SOCIAL_NETWORKS.map((socialNetwork, index) => (
-		<FormControl
-			key={socialNetwork.code}
-			name={`socialNetworks.${index}.title`}
-			control={control}
-			label={socialNetwork.title}
-			className={style.form}
-		>
-			{(field) => (
-				<Input
-					{...field}
-					onChange={onChangeHandler(socialNetwork.code, field.onChange)}
-					className={style.input}
-				/>
-			)}
-		</FormControl>
-	));
+	return (
+		<>
+			{SOCIAL_NETWORKS.map((socialNetwork, index) => (
+				<FormControl
+					key={socialNetwork.code}
+					name={`socialNetworks.${index}.title`}
+					control={control}
+					label={socialNetwork.title}
+					className={style.form}
+				>
+					{(field) => (
+						<Input
+							{...field}
+							onChange={onChangeHandler(socialNetwork.code, field.onChange)}
+							className={style.input}
+						/>
+					)}
+				</FormControl>
+			))}
+		</>
+	);
 };
