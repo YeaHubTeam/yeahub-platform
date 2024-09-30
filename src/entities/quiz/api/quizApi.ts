@@ -16,6 +16,8 @@ import {
 	QuizByIdRequestParams,
 	QuizHistoryRequest,
 	QuizHistoryResponse,
+	ProfileStats,
+	ProfileStatsGetRequest,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
@@ -119,6 +121,14 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 		}),
+		getProfileStats: build.query<ProfileStats, ProfileStatsGetRequest>({
+			query: (params) => {
+				const { profileId } = params ?? {};
+				return {
+					url: `interview-preparation/stat/${profileId}`,
+				};
+			},
+		}),
 	}),
 	overrideExisting: true,
 });
@@ -129,4 +139,5 @@ export const {
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
 	useGetQuizByIdQuery,
+	useGetProfileStatsQuery,
 } = quizApi;

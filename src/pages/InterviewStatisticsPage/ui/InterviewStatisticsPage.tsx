@@ -4,6 +4,9 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
+import { useProfileQuery } from '@/entities/auth';
+import { useGetProfileStatsQuery } from '@/entities/quiz';
+
 import {
 	PassedInterviewStat,
 	PassedQuestionChart,
@@ -11,89 +14,52 @@ import {
 } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
+import { transformSkillsArray } from '../model/transformSkillsArray';
+
 import styles from './InterviewStatisticsPage.module.css';
 
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
+	const { data: profileId } = useProfileQuery();
+	const { data: profileStats, isLoading } = useGetProfileStatsQuery({
+		profileId: profileId?.profiles[0].profileId ?? '',
+	});
+
 	const questionStats = [
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_PASSEDQUESTIONS),
-			value: '20/120',
+			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0} / ${profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}`,
 		},
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_NOTSTUDIED),
-			value: '50',
+			value: `${profileStats?.questionsStat?.unlearnedQuestionsCount ?? 0}`,
 		},
-		{
-			title: t(InterviewStatistics.QUESTIONSTATS_SAVED),
-			value: '60',
-		},
+		// {
+		// 	title: t(InterviewStatistics.QUESTIONSTATS_SAVED),
+		// 	value: '60',
+		// },
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_STUDIED),
-			value: '20',
+			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0}`,
 		},
 	];
 
+	const totalAttempt = profileStats?.quizzesStat?.quizzesCount ?? 0;
 	const attemptStats = [
 		{
-			value: 60,
+			value: profileStats?.quizzesStat?.maxQuizResult ?? 0,
 			name: t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT),
 			itemStyle: { color: '#400799' },
 		},
 		{
-			value: 40,
+			value: profileStats?.quizzesStat?.minQuizResult ?? 0,
 			name: t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT),
 			itemStyle: { color: '#E1CEFF' },
 		},
 		{
-			value: 55,
+			value: profileStats?.quizzesStat?.avgQuizResult ?? 0,
 			name: t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT),
 			itemStyle: { color: '#6A0BFF' },
-		},
-	];
-
-	const progressData = [
-		{
-			category: 'React',
-			passed: 80,
-			total: 120,
-			value: (80 / 120) * 100,
-		},
-		{
-			category: 'Javascript',
-			passed: 90,
-			total: 200,
-			value: (90 / 200) * 100,
-		},
-		{
-			category: 'PHP',
-			passed: 50,
-			total: 150,
-			value: (50 / 150) * 100,
-		},
-		{
-			category: 'Redux',
-			passed: 100,
-			total: 150,
-			value: (100 / 150) * 100,
-		},
-		{
-			category: 'Typescript',
-			passed: 90,
-			total: 200,
-			value: (90 / 200) * 100,
-		},
-		{
-			category: 'CSS',
-			passed: 50,
-			total: 150,
-			value: (50 / 150) * 100,
-		},
-		{
-			category: 'HTML',
-			passed: 80,
-			total: 120,
-			value: (80 / 120) * 100,
 		},
 	];
 
@@ -102,14 +68,22 @@ const InterviewStatisticsPage = () => {
 			<Card>
 				<div className={styles.attempt}>
 					<InterviewQuestionHeader title={t('attemptStats.title')} centered />
-					<PassedInterviewStat totalAttempt={40} attemptData={attemptStats} />
+					<PassedInterviewStat
+						totalAttempt={totalAttempt}
+						attemptData={attemptStats}
+						isLoading={isLoading}
+					/>
 				</div>
 			</Card>
 			<div className={styles.progress}>
 				<Card className={styles.block}>
 					<div className={styles.questions}>
 						<InterviewQuestionHeader title={t('questionStats.title')} centered />
-						<PassedQuestionChart total={120} learned={20} />
+						<PassedQuestionChart
+							total={profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}
+							learned={profileStats?.questionsStat?.learnedQuestionsCount ?? 0}
+							isLoading={isLoading}
+						/>
 					</div>
 				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />
@@ -118,7 +92,9 @@ const InterviewStatisticsPage = () => {
 			<Card className={styles.category} expandable>
 				<div className={styles['category-progress']}>
 					<InterviewQuestionHeader title={t('progress.title')} />
-					<ProgressByCategoriesList optionData={progressData} />
+					<ProgressByCategoriesList
+						optionData={profileStats ? transformSkillsArray(profileStats) : []}
+					/>
 				</div>
 			</Card>
 		</div>
