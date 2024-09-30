@@ -1,6 +1,6 @@
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './InterviewResultPage.module.css';
 export const InterviewQuizResultPageSkeleton = () => {

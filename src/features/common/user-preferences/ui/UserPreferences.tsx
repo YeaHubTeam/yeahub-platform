@@ -52,26 +52,24 @@ export const UserPreferences = () => {
 
 	return (
 		<div className={styles.preferences}>
-			<div>
-				<Popover
-					isOpen={isOpenSettingsPopover}
-					body={<SettingsPopover />}
-					onClickOutside={handleOpenSettingsPopover}
-				>
-					<IconButton
-						aria-label="go to preferences"
-						form="square"
-						icon={<Icon key="userPreferenceGearSixIcon" icon="gearSix" size={20} />}
-						size="small"
-						theme="tertiary"
-						onClick={handleOpenSettingsPopover}
-						isActive={isOpenSettingsPopover}
-					/>
-				</Popover>
-			</div>
+			<Popover
+				isOpen={isOpenSettingsPopover}
+				body={<SettingsPopover />}
+				onClickOutside={handleOpenSettingsPopover}
+			>
+				<IconButton
+					aria-label="go to preferences"
+					form="square"
+					icon={<Icon key="userPreferenceGearSixIcon" icon="gearSix" size={20} />}
+					size="small"
+					theme="tertiary"
+					onClick={handleOpenSettingsPopover}
+					isActive={isOpenSettingsPopover}
+				/>
+			</Popover>
 			{isSuccessGetProfile && (
 				<>
-					<Text text={profile.firstName} />
+					<Text text={profile?.firstName} />
 					<div className={styles.avatar}>
 						{profile.avatarUrl ? (
 							<img className={styles.img} src={profile.avatarUrl} alt="avatar" />

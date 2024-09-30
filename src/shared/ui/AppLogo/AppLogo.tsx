@@ -12,11 +12,12 @@ interface AppLogoProps {
 	fill?: 'white' | 'black';
 }
 
-export const AppLogo = ({ isOpen, fill = 'black' }: AppLogoProps) => {
-	return (
-		<NavLink to={ROUTES.appRoute} className={`${styles.logo} ${isOpen ? styles['one'] : ''}`}>
-			<img className={`${styles['logo-image']}`} src={LogoImg} alt="LogoImg" />
-			<Logo className={classNames(styles.name, styles[fill], { [styles['closing']]: isOpen })} />
-		</NavLink>
-	);
-};
+export const AppLogo = ({ isOpen, fill = 'black' }: AppLogoProps) => (
+	<NavLink
+		to={ROUTES.appRoute}
+		className={classNames(styles['home-link'], { [styles.center]: isOpen })}
+	>
+		<img src={LogoImg} alt="Yeahub logo" width={'30px'} height={'30px'} />
+		<Logo className={classNames(styles.name, styles[fill], { [styles.close]: isOpen })} />
+	</NavLink>
+);

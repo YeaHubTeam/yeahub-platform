@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { isMobile } from 'react-device-detect';
 
 import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './QuestionPage.module.css';
 
