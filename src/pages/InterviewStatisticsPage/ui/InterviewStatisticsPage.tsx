@@ -14,16 +14,16 @@ import {
 } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
-import { transformSkillsArray } from '../model/transformSkillsArray';
+import { transformSkillsArray } from '../model/helpers/transformSkillsArray';
 
 import styles from './InterviewStatisticsPage.module.css';
 
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 	const { data: profileId } = useProfileQuery();
-	const { data: profileStats, isLoading } = useGetProfileStatsQuery({
-		profileId: profileId?.profiles[0].profileId ?? '',
-	});
+	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
+		profileId?.profiles[0].profileId ?? '',
+	);
 
 	const questionStats = [
 		{

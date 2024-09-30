@@ -193,10 +193,6 @@ export interface ProfileStats {
 	};
 }
 
-export interface ProfileStatsGetRequest {
-	profileId: string;
-}
-
 export interface ProgressByCategoriesData {
 	category: string;
 	passed: number;
