@@ -20,7 +20,17 @@ section * {
 
 .btn-container {
   margin-top: 36px;
-} 
+}
 
+.card-wrap {
+  height: auto !important;
+}
 
+.flex-wrap {
+  gap: 120px;
+  max-width: 1034px;
+}
 
+.button {
+  margin-left: auto;
+}

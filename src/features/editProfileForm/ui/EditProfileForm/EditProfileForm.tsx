@@ -21,6 +21,7 @@ import { editProfileSchema } from '../../model/lib/validation/editProfileSchema'
 import { ProfileSchema } from '../../model/types/editProfileTypes';
 
 import styles from './EditProfileForm.module.css';
+import { EditProfileFormSkeleton } from './EditProfileForm.skeleton';
 
 export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
@@ -56,14 +57,12 @@ export const EditProfileForm = () => {
 		}
 	}, [methods, userProfile]);
 
-	if (isLoading) {
-		return <Loader />;
-	}
-
 	const onSubmit = (data: ProfileSchema) => {
 		methods.reset();
 		updateProfile(mapFormToProfile(userProfile as Profile, data));
 	};
+
+	if (isLoading) return <EditProfileFormSkeleton />;
 
 	return (
 		<section className={styles.section}>
