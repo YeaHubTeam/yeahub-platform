@@ -6,12 +6,16 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
-import { Loader } from '@/shared/ui/Loader';
+
+import { useProfileQuery } from '@/entities/auth';
 
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
+import { MainPageSkeleton } from '@/pages/MainPage';
+
 import styles from './MainLayout.module.css';
+import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -32,6 +36,10 @@ const mainLayoutMenuItems: MenuItem[] = [
 ];
 
 export const MainLayout = () => {
+	const { isLoading } = useProfileQuery();
+
+	if (isLoading) return <MainLayoutSkeleton />;
+
 	return (
 		<section className={styles.layout}>
 			<div className={styles.sidebar}>
@@ -39,9 +47,10 @@ export const MainLayout = () => {
 			</div>
 
 			<Header />
+
 			<main className={styles.main}>
 				<div className={styles.container}>
-					<Suspense fallback={<Loader />}>
+					<Suspense fallback={<MainPageSkeleton />}>
 						<Breadcrumbs />
 						<Outlet />
 					</Suspense>

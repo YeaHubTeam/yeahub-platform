@@ -5,7 +5,7 @@
     "allPassedQuestionTitle": "Список пройденных вопросов собеседования"
   },
   "questionStats": {
-    "passed": "Пройдено вопросов",
+    "passed": "Пройдено",
     "timeSpent": "Время",
     "date": "Дата",
     "duration": "Длительность"

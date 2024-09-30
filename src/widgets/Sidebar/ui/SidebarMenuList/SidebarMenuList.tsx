@@ -23,9 +23,9 @@ interface SidebarMenuListProps {
 export const SidebarMenuList = ({ fullWidth, menuItems }: SidebarMenuListProps) => {
 	return (
 		<nav className={styles.nav} data-testid="SidebarMenuList">
-			{menuItems.map((menuItem) => {
-				return <SidebarMenuItem key={menuItem.title} menuItem={menuItem} fullWidth={fullWidth} />;
-			})}
+			{menuItems.map((menuItem) => (
+				<SidebarMenuItem key={menuItem.title} menuItem={menuItem} fullWidth={fullWidth} />
+			))}
 		</nav>
 	);
 };

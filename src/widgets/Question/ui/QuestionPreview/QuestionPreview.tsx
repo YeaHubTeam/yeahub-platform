@@ -10,6 +10,7 @@ import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
+import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 
 import styles from './QuestionPreview.module.css';
 
@@ -38,50 +39,41 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					<QuestionParam label="Рейтинг" value={rate} />
 					<QuestionParam label="Сложность" value={complexity} />
 				</div>
-				<div>
-					<Popover
-						body={
-							<div>
-								<NavLink
-									className={styles.link}
-									to={route(ROUTES.interview.questions.detail.page, id)}
-								>
-									<Button
-										className={styles.button}
-										theme="tertiary"
-										preffix={<Icon icon="gearSix" size={20} />}
-										size="small"
-									>
-										Подробнее
-									</Button>
-								</NavLink>
-								<LearnQuestionButton profileId={profileId} questionId={id} />
+				<Popover
+					body={
+						<>
+							<NavLink
+								className={styles.link}
+								to={route(ROUTES.interview.questions.detail.page, id)}
+							>
 								<Button
 									className={styles.button}
 									theme="tertiary"
-									preffix={<Icon icon="thumbsUp" size={20} />}
-									size="small"
+									preffix={<Icon icon="gearSix" size={20} />}
+									size="medium"
 								>
-									Уже знаю
+									Подробнее
 								</Button>
-							</div>
-						}
-						className={styles.popup}
-						isOpen={isOpenQuestionActions}
-						onClickOutside={closePopup}
-						placement="left-start"
-					>
-						<IconButton
-							type="button"
-							aria-label="details"
-							className={styles['details-button']}
-							icon={<Icon icon="dotsThreeVertical" />}
-							theme="link"
-							onClick={togglePopup}
-							aria-expanded={isOpenQuestionActions}
-						/>
-					</Popover>
-				</div>
+							</NavLink>
+							<LearnQuestionButton profileId={profileId} questionId={id} />
+							<ResetQuestionStudyProgressButton profileId={profileId} questionId={id} />
+						</>
+					}
+					className={styles.popup}
+					isOpen={isOpenQuestionActions}
+					onClickOutside={closePopup}
+					placement="left-start"
+				>
+					<IconButton
+						type="button"
+						aria-label="details"
+						className={styles['details-button']}
+						icon={<Icon icon="dotsThreeVertical" />}
+						theme="link"
+						onClick={togglePopup}
+						aria-expanded={isOpenQuestionActions}
+					/>
+				</Popover>
 			</div>
 			{imageSrc && <img className={styles.image} alt={'asdasd'} src={imageSrc} />}
 			<div className={styles.content}>

@@ -5,7 +5,9 @@ export type SocialNetworkCode =
 	| 'github'
 	| 'behance'
 	| 'whatsapp'
-	| 'telegram';
+	| 'telegram'
+	| 'facebook'
+	| 'youtube';
 
 export interface SocialNetwork {
 	code: SocialNetworkCode;

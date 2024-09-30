@@ -5,7 +5,8 @@
 }
 
 .title {
-  font-size: var(--font-size-h-s)
+  margin-top: 0;
+  font-size: var(--font-size-h-s);
 }
 
 @media (width <= 420px) {

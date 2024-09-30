@@ -58,10 +58,6 @@
   font-size: var(--font-size-p-s);
 }
 
-.btn-container {
-  margin-top: 36px;
-} 
-
 .phone {
   display: flex;
   align-items: center;

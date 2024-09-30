@@ -7,14 +7,21 @@ import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
 
 import styles from './ProfilePage.module.css';
+import { ProfilePageSkeleton } from './ProfilePage.skeleton';
 
 export const ProfilePage = () => {
 	const { data } = useProfileQuery();
 
-	const { data: profile } = useGetProfileByIdQuery(data?.profiles[0].profileId as string);
+	const { data: profile, isLoading: profileLoading } = useGetProfileByIdQuery(
+		data?.profiles[0].profileId as string,
+	);
 	const { data: profileSpecialization } = useGetSpecializationByIdQuery(
 		data?.profiles[0].specializationId as number,
 	);
+
+	if (profileLoading) {
+		return <ProfilePageSkeleton />;
+	}
 
 	return (
 		profile && (

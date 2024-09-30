@@ -1,13 +1,9 @@
-.logo {
+.home-link {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   transition: padding-left .5s ease-in-out;
-}
-
-.logo-image {
-  padding-right: 5px;   
-  
 }
 
 .name {
@@ -25,13 +21,13 @@
   color: var(--color-black-800);
 }
 
-.closing {
+.close {
   opacity: 0;
   transition: opacity .3s ease-in-out;
 }
 
-.one {
-  padding-left: 12px;
+.center {
+  padding-left: 8px;
   transition: padding-left .4s ease-in-out;
 }
 
