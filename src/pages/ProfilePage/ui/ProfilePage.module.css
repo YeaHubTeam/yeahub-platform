@@ -21,29 +21,30 @@
   background-color: var(--color-black-50);
 }
 
-.profile-card-skeleton, .card-skeleton{
+.profile-card-skeleton, 
+.card-skeleton {
   gap: 0;
   height: auto;
 } 
 
-.profile-card-skeleton{
+.profile-card-skeleton {
   padding: 16px;
 }
 
-.flex-profile-skeleton{
+.flex-profile-skeleton {
   display: flex;
   gap: 16px;
 }
 
-.card-skeleton{
+.card-skeleton {
   padding: 24px;
 }
 
-.header-card-skeleton{
+.header-card-skeleton {
   margin-bottom: 20px;
 }
 
-.sleleton-link{
+.sleleton-link {
   margin-left: auto;
   width: 100px;
   height: 20px;
@@ -57,17 +58,17 @@
 }
 
 @media (width <= 1280px) {
-  .sleleton-link{
+  .sleleton-link {
     width: 20px;
   }
 }
 
 @media (width <= 720px) {
-  .flex-profile-skeleton{
+  .flex-profile-skeleton {
     flex-direction: column;
   }
 
-  .sleleton-link-profile{
+  .sleleton-link-profile {
     order: -1;
   } 
 }
