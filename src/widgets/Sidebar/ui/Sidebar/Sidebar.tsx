@@ -36,7 +36,7 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 			<div className={styles.header}>
 				<AppLogo isOpen={isOpenNavSidebar} />
 				<button
-					className={classNames(styles['close-icon'], { [styles['left']]: isOpenNavSidebar })}
+					className={classNames(styles['close-icon'], { [styles.left]: isOpenNavSidebar })}
 					onClick={handleToggleSidebar}
 					data-testid="Sidebar_CloseButton"
 				>

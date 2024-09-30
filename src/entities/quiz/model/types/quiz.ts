@@ -21,6 +21,7 @@ export interface Quiz {
 export type QuizByIdRequestParams = Record<string, string>;
 
 export interface QuizQuestion {
+	isLearned: boolean;
 	code: string;
 	complexity: number;
 	createdAt: Date;
@@ -166,4 +167,35 @@ export interface InterviewQuestionBtn {
 	result: string;
 	label: string;
 	icon: IconsName;
+}
+
+export interface ProfileStats {
+	quizzesStat: {
+		quizzesCount: number;
+		maxQuizResult: number;
+		minQuizResult: number;
+		avgQuizResult: number;
+	};
+	questionsStat: {
+		uniqueQuestionsCount: number;
+		learnedQuestionsCount: number;
+		unlearnedQuestionsCount: number;
+	};
+	skillsStat: {
+		fullSkillsQuestionsMap: {
+			skill: string;
+			count: number;
+		}[];
+		learnedSkillsQuestionsMap: {
+			skill: string;
+			count: number;
+		}[];
+	};
+}
+
+export interface ProgressByCategoriesData {
+	category: string;
+	passed: number;
+	total: number;
+	value: number;
 }

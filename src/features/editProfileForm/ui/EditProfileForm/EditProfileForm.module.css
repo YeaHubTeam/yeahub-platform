@@ -18,5 +18,20 @@ section * {
   max-width: 1026px;
 }
 
+.btn-container {
+  margin-top: 36px;
+}
 
+.card-wrap {
+  padding-top: 0;
+  height: auto !important;
+}
 
+.flex-wrap {
+  gap: 120px;
+  max-width: 1034px;
+}
+
+.button {
+  margin-left: auto;
+}

@@ -25,16 +25,21 @@ const InterviewQuizResultPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
 	const { data: profileId } = useProfileQuery();
 	const { quizId } = useParams<QuizByIdRequestParams>();
+
 	const { data, isLoading } = useGetQuizByIdQuery({
 		quizId: quizId ?? '',
 		profileId: profileId?.profiles[0].profileId ?? '',
 	});
+
 	const questions = data?.response.answers;
 	const interviewStats = getInterviewStats(questions);
+
+	const learnedQuestions = (data?.questions || []).filter((question) => question.isLearned).length;
+
 	const questionStats = [
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_PASSED),
-			value: `${data?.successCount}/${data?.fullCount}`,
+			value: `${learnedQuestions}/${data?.fullCount}`,
 		},
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_TIMESPENT),

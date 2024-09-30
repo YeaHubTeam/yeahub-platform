@@ -31,7 +31,7 @@ const MainPage = () => {
 	useEffect(() => {
 		if (profile) {
 			const percentFullness = getPercentProfileFullness(profile);
-			setPercentProfileFullness(percentFullness as number);
+			setPercentProfileFullness(percentFullness);
 		}
 	}, [getPercentProfileFullness, profile]);
 
@@ -43,13 +43,13 @@ const MainPage = () => {
 				<div className={styles.wrapper}>
 					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
 					{isIncompleteProfile && (
-						<Card className={styles.block}>
-							<div className={styles['block-wrapper']}>
-								<div className={styles['block-content']}>
-									<h3 className={styles['block-title']}>
+						<Card className={styles.card}>
+							<div className={styles['card-wrapper']}>
+								<div className={styles['card-content']}>
+									<h3 className={styles['card-title']}>
 										Профиль заполнен на {percentProfileFullness}%
 									</h3>
-									<p className={styles['block-text']}>
+									<p className={styles['card-text']}>
 										Заполните свой профиль, чтобы мир мог увидеть вашу уникальность и вдохновиться
 										вашими достижениями. Каждая деталь добавляет картины вашей истории успеха
 									</p>

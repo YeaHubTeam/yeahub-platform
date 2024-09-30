@@ -55,7 +55,9 @@
   height: 100%;
 }
 
-
+.button {
+  align-self: end;
+}
 
 
 .statistics {

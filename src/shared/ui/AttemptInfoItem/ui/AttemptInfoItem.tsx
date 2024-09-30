@@ -14,7 +14,7 @@ export const AttemptInfoItem = ({ value, name, itemStyle }: AttemptInfoItemProps
 			<div className={styles.divide} style={{ backgroundColor: itemStyle?.color || 'none' }}></div>
 			<div className={styles.info}>
 				<span className={styles.title}>{name}</span>
-				<span className={styles.value}>{value}%</span>
+				<span className={styles.value}>{Math.trunc(value)}%</span>
 			</div>
 		</li>
 	);
