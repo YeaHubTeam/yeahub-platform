@@ -56,7 +56,7 @@ export const mapProfileToForm = (profile: Profile): ProfileSchema => ({
 	email: profile.user.email,
 	location: profile.user.city,
 	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
-		const currentSocialNetwork = profile.socialNetwork.find(
+		const currentSocialNetwork = profile.socialNetwork?.find(
 			({ code }) => code === socialNetwork.code,
 		);
 		result.push({

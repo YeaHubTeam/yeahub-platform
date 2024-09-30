@@ -23,6 +23,7 @@ section * {
 }
 
 .card-wrap {
+  padding-top: 0;
   height: auto !important;
 }
 

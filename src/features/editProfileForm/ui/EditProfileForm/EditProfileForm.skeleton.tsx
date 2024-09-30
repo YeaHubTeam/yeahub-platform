@@ -6,9 +6,18 @@ import styles from './EditProfileForm.module.css';
 export const EditProfileFormSkeleton = () => {
 	return (
 		<Card className={styles['card-wrap']}>
+			<Skeleton width={255} height={40} style={{ marginBottom: 30 }} />
+			<Flex gap="16" style={{ marginBottom: 36 }}>
+				{[...Array(6)].map((_, i) => (
+					<Skeleton key={i} width={170} height={42} />
+				))}
+			</Flex>
 			<Flex direction="column" className={styles['flex-wrap']}>
 				<Flex style={{ flexWrap: 'wrap', columnGap: 120, rowGap: 16 }}>
-					<Skeleton width={246} height={76} />
+					<Flex direction="column" gap="8">
+						<Skeleton width={160} height={36} />
+						<Skeleton width={246} height={65} />
+					</Flex>
 					<Flex gap="16" style={{ flexWrap: 'wrap' }}>
 						<Flex gap="8" direction="column" align="center">
 							<Skeleton width={170} height={170} />
@@ -18,7 +27,10 @@ export const EditProfileFormSkeleton = () => {
 					</Flex>
 				</Flex>
 				<Flex style={{ flexWrap: 'wrap', columnGap: 120, rowGap: 16 }}>
-					<Skeleton width={246} height={76} />
+					<Flex direction="column" gap="8">
+						<Skeleton width={160} height={36} />
+						<Skeleton width={246} height={65} />
+					</Flex>
 					<Flex direction="column">
 						<Flex gap="12" style={{ flexWrap: 'wrap', maxWidth: 668 }}>
 							{[...Array(2)].map((_, i) => (
@@ -40,7 +52,10 @@ export const EditProfileFormSkeleton = () => {
 				</Flex>
 				<Flex style={{ flexWrap: 'wrap', columnGap: 120, rowGap: 16 }}>
 					<Flex>
-						<Skeleton width={246} height={76} />
+						<Flex direction="column" gap="8">
+							<Skeleton width={160} height={36} />
+							<Skeleton width={246} height={65} />
+						</Flex>
 					</Flex>
 					<Flex direction="column" gap="24">
 						<Flex direction="column" gap="8">
