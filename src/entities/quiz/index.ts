@@ -13,6 +13,7 @@ export {
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
 	useGetQuizByIdQuery,
+	useGetProfileStatsQuery,
 } from './api/quizApi';
 
 export type {
@@ -23,6 +24,8 @@ export type {
 	InterviewQuestionBtn,
 	ActiveQuizState,
 	QuizByIdRequestParams,
+	ProfileStats,
+	ProgressByCategoriesData,
 } from './model/types/quiz';
 
 export { QUIZ_QUESTIONS, MOCK_QUIZ, INTERVIEW_BTNS_DATA } from './model/data/interviewQuestions';

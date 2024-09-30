@@ -16,6 +16,7 @@ import {
 	QuizByIdRequestParams,
 	QuizHistoryRequest,
 	QuizHistoryResponse,
+	ProfileStats,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
@@ -97,7 +98,7 @@ const quizApi = baseApi.injectEndpoints({
 					body: data,
 				};
 			},
-			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ],
+			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ, ApiTags.INTERVIEW_STATISTICS],
 			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
@@ -119,6 +120,14 @@ const quizApi = baseApi.injectEndpoints({
 				};
 			},
 		}),
+		getProfileStats: build.query<ProfileStats, string>({
+			query: (profileId) => {
+				return {
+					url: `interview-preparation/stat/${profileId}`,
+				};
+			},
+			providesTags: [ApiTags.INTERVIEW_STATISTICS],
+		}),
 	}),
 	overrideExisting: true,
 });
@@ -129,4 +138,5 @@ export const {
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
 	useGetQuizByIdQuery,
+	useGetProfileStatsQuery,
 } = quizApi;
