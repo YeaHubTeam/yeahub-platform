@@ -19,12 +19,12 @@ export const editProfileSchema = yup.object().shape({
 	firstName: yup
 		.string()
 		.required('Имя обязательно')
-		.min(4, 'Должно быть больше 4 символов')
+		.min(2, 'Должно быть больше 2 символов')
 		.max(30, 'Должно быть меньше 30 символов'),
 	lastName: yup
 		.string()
 		.required('Имя обязательно')
-		.min(4, 'Должно быть больше 4 символов')
+		.min(2, 'Должно быть больше 2 символов')
 		.max(30, 'Должно быть меньше 30 символов'),
 	specialization: yup.number().required('Выбор специализации обязателен'),
 	phone: yup

@@ -15,7 +15,7 @@ export const registerSchema = yup.object().shape({
 		.required('Поле обязательно для заполнения'),
 	phone: yup
 		.string()
-		.min(2, 'Введите корректный номер телефона (не менее 2 символов)')
+		.matches(/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/, 'Неверный формат телефона')
 		.required('Поле обязательно для заполнения'),
 	email: yup.string().email('Введите корректный email').required('Поле обязательно для заполнения'),
 	password: yup

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { Button, Icon, Input } from 'yeahub-ui-kit';
+
+import { InputPhone } from '@/shared/ui/InputPhone';
 
 import { SignUp, useRegisterMutation } from '@/entities/auth';
 
@@ -18,6 +20,7 @@ export const RegisterForm = () => {
 	const {
 		handleSubmit,
 		register,
+		control,
 		formState: { errors },
 	} = useFormContext<RegistrationValidation>();
 
@@ -60,11 +63,12 @@ export const RegisterForm = () => {
 					<label className={styles.label} htmlFor="phone">
 						Номер телефона
 					</label>
-					<Input
-						className={styles.input}
-						{...register('phone')}
-						placeholder="Введите номер телефона"
-						hasError={!!errors.phone?.message}
+					<Controller
+						name={'phone'}
+						control={control}
+						render={({ field }) => (
+							<InputPhone fields={field} className={'registration'} hasError={!!errors.phone} />
+						)}
 					/>
 					{errors.phone ? <div className={styles.error}>{errors.phone.message}</div> : null}
 				</div>
