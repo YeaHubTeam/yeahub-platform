@@ -1,10 +1,10 @@
 import { useFormContext } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 import { Input } from 'yeahub-ui-kit';
 
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
+import { InputPhone } from '@/shared/ui/InputPhone';
 
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
@@ -53,14 +53,7 @@ export const PersonalInformationTabForm = () => {
 							label="Номер для связи"
 							className={styles.form}
 						>
-							{(field) => (
-								<InputMask
-									{...field}
-									className={styles.phone}
-									mask={'+7-(999)-999-99-99'}
-									placeholder={'+7-(XXX)-XXX-XX-XX'}
-								/>
-							)}
+							{(field) => <InputPhone fields={field} className={'edit'} />}
 						</FormControl>
 						<FormControl
 							name="email"
