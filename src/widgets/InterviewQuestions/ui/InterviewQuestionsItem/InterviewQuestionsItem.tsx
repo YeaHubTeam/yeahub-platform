@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -24,7 +25,9 @@ export const InterviewQuestionsItem = ({ question }: InterviewQuestionsItemProps
 			<Link to={route(ROUTES.interview.questions.detail.page, id)} className={styles.link}>
 				<ImageWithWrapper src={imageSrc} />
 				<div className={styles.info}>
-					<h4 className={styles.title}>{title}</h4>
+					<Tooltip title={title}>
+						<h4 className={styles.title}>{title}</h4>
+					</Tooltip>
 					<ul className={styles.params}>
 						<QuestionParam label={t('questions.rating')} value={rate} />
 						<QuestionParam label={t('questions.complexity')} value={complexity} />

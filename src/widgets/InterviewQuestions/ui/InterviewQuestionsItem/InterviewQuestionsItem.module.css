@@ -27,7 +27,11 @@
   position: relative;
   margin: 0;
   padding-left: 10px;
+  width: 300px;
+  overflow: hidden;
   transition: color 0.3s ease-in-out;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .title::before {
@@ -42,7 +46,61 @@
   transform: translateY(-50%);
 }
 
-@media(width <= 480px) {
+@media (width <= 1740px) {
+  .title {
+    width: 200px;
+  }
+}
+
+@media (width <= 1410px) {
+  .title {
+    width: 160px;
+  }
+}
+
+@media (width <= 1280px) {
+  .title {
+    width: 400px;
+  }
+}
+
+@media (width <= 1180px) {
+  .title {
+    width: 300px;
+  }
+}
+
+@media (width <= 1024px) {
+  .title {
+    width: 200px;
+  }
+}
+
+@media (width <= 860px) {
+  .title {
+    width: 150px;
+  }
+}
+
+@media (width <= 768px) {
+  .title {
+    width: 200px;
+  }
+}
+
+@media (width <= 640px) {
+  .title {
+    width: 150px;
+  }
+}
+
+
+
+
+
+
+
+@media (width <= 480px) {
   .link {
     flex-direction: column;
     justify-content: center;
