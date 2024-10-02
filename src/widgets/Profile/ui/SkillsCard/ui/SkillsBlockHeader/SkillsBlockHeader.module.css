@@ -5,11 +5,27 @@
 }
 
 .skills-title {
-  font-weight: var(--font-weight-400);
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
 
 .skills-edit {
   cursor: pointer;
   font-size: var(--font-size-p-s);
+}
+
+.skills-edit-icon {
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .skills-edit-icon {
+    display: block;
+  }
+
+  .skills-edit {
+    display: none;
+  }
 }

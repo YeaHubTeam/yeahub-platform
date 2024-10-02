@@ -1,0 +1,27 @@
+.card-edit {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: var(--font-size-p-s);
+}
+
+.card-edit-icon {
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .card-edit-icon {
+    display: block;
+  }
+
+  .card-edit {
+    display: none;
+  }
+}
+
+@media (width <= 360px) {
+  .card-edit-block {
+    order: -1;
+  }
+}

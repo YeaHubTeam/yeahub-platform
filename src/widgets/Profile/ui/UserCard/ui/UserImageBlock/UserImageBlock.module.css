@@ -28,3 +28,13 @@
 .card-schedule{
   font-weight: var(--font-weight-400);
 }
+
+@media (width <= 360px) {
+  .card-image {
+    width: 100%;
+  }
+
+  .card-avatar {
+    width: 100%;
+  }
+}

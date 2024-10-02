@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
+import { Button, Icon } from 'yeahub-ui-kit';
 
 import styles from './InfoBlockHeader.module.css';
 
@@ -17,6 +17,13 @@ export const InfoBlockHeader = () => {
 			>
 				Редактировать
 			</Button>
+			<Icon
+				icon="pencilSimpleLine"
+				size={20}
+				color="--palette-ui-purple-700"
+				onClick={() => navigate('edit#personal-information')}
+				className={styles['info-edit-icon']}
+			/>
 		</div>
 	);
 };

@@ -13,14 +13,13 @@
 .card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
   margin-bottom: 8px;
   width: 100%;
 }
 
 .card-name {
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
+  font-size: var(--font-size-h-s);
 }
 
 .card-status {
@@ -36,6 +35,12 @@
   cursor: pointer;
   margin-left: auto;
   font-size: var(--font-size-p-s);
+}
+
+.card-edit-icon {
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .card-list {
@@ -66,4 +71,14 @@
 .card-contacts > h4 {
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
+}
+
+@media (width <= 768px) {
+  .card-edit-icon {
+    display: block;
+  }
+
+  .card-edit {
+    display: none;
+  }
 }

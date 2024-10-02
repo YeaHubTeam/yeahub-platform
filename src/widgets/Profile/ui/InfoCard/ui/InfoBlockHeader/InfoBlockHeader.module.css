@@ -6,11 +6,27 @@
 }
 
 .info-title {
-  font-weight: var(--font-weight-400);
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
 
 .info-edit {
   cursor: pointer;
   font-size: var(--font-size-p-s);
+}
+
+.info-edit-icon {
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .info-edit-icon {
+    display: block;
+  }
+
+  .info-edit {
+    display: none;
+  }
 }

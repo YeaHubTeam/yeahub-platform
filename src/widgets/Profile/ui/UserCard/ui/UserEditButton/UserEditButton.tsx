@@ -1,19 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
-import styles from './SkillsBlockHeader.module.css';
+import styles from './UserEditButton.module.css';
 
-export const SkillsBlockHeader = () => {
+export const UserEditButton = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className={styles['skills-header']}>
-			<h3 className={styles['skills-title']}>Навыки</h3>
+		<div className={styles['card-edit-block']}>
 			<Button
 				theme="link"
 				tagName="button"
-				className={styles['skills-edit']}
-				onClick={() => navigate('edit#skills')}
+				className={styles['card-edit']}
+				onClick={() => navigate('edit#personal-information')}
 			>
 				Редактировать
 			</Button>
@@ -22,7 +21,7 @@ export const SkillsBlockHeader = () => {
 				size={20}
 				color="--palette-ui-purple-700"
 				onClick={() => navigate('edit#personal-information')}
-				className={styles['skills-edit-icon']}
+				className={styles['card-edit-icon']}
 			/>
 		</div>
 	);
