@@ -28,7 +28,7 @@
   position: relative;
   margin: 0;
   padding-left: 10px;
-  width: clamp(180px, 20vw - 20px, 100% - 140px);
+  width: calc(100% - 70px);
   overflow: hidden;
   transition: color 0.3s ease-in-out;
   white-space: nowrap;
@@ -49,7 +49,7 @@
 
 @media (width <= 1280px) {
   .title {
-    width: clamp(150px, 45vw - 15px, 100% - 140px);
+    width: clamp(150px, 100% - 70px, 100% - 50px);
   }
 }
 
