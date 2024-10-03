@@ -78,7 +78,6 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Card>
-
 			<Card>
 				<div className={styles.question}>
 					<QuestionNavPanel

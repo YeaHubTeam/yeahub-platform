@@ -1,29 +1,26 @@
-.slider {
-  display: grid;
-  grid-template: auto 1fr auto / auto minmax(300px, 526px);
-  grid-template-areas: 
-    'question image'
-    'wrapper image'
-    'buttons image';
-  gap: 16px 12px;
+.slider-tmp {
+  display: flex;
+  gap: 20px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-color);
 }
 
-.wrapper {
-  grid-area: wrapper;
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
 }
 
-.question {
+.question-tmp {
   display: list-item;
-  grid-area: question;
   margin-left: 22px;
-  min-height: 50px;
   list-style: disc;
   font-size: var(--font-size-h-xs);
 }
 
-.question::marker {
+.question-tmp::marker {
   color: var(--text-color-link-active);
 }
 
@@ -35,23 +32,33 @@
   font-size: var(--font-size-p-s);
 }
 
-.response-buttons {
-  grid-area: buttons;
+.response-buttons-tmp {
   margin-top: auto;
 }
 
-.image {
-  grid-area: image;
-  flex-grow: 1;
+.image-wrapper {
+  display: flex;
+  flex : 1;
+  align-items: center;
   width: 100%;
   height: clamp(170px, 30vw, 303px);
+}
+
+.image-tmp {
+  width: 100%;
+  height: 100%;
   border-radius: 24px;
 }
+
+/* 
+@media (width <= 1160px) {
+
+} */
 
 @media (width <= 1024px) {
   .slider {
     grid-template-columns: auto;
-    grid-template-areas: 
+    grid-template-areas:
       'question'
       'image'
       'wrapper'
@@ -67,6 +74,6 @@
 
 @media (width <= 480px) {
   .question {
-    font-size: var(--font-size-p-l)
+    font-size: var(--font-size-p-l);
   }
 }
