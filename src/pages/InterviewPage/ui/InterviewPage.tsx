@@ -23,23 +23,23 @@ import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
 
+const questionStats = [
+	{
+		title: 'Всего вопросов',
+		value: '0',
+	},
+	{
+		title: 'Не изучено',
+		value: '0',
+	},
+	{
+		title: 'Изучено',
+		value: '0',
+	},
+];
+
 const InterviewPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
-
-	const questionStats = [
-		{
-			title: 'Всего вопросов',
-			value: '0',
-		},
-		{
-			title: 'Не изучено',
-			value: '0',
-		},
-		{
-			title: 'Изучено',
-			value: '0',
-		},
-	];
 
 	const { data: profile } = useProfileQuery();
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
@@ -75,6 +75,7 @@ const InterviewPage = () => {
 	return (
 		<div className={styles.container}>
 			<Card
+				className={styles.interview}
 				actionDisabled={isSpecializationEmpty}
 				title={t(Interview.PREPARATION_TITLE)}
 				actionTitle={t(
@@ -87,9 +88,7 @@ const InterviewPage = () => {
 				}
 				withShadow
 			>
-				{isActiveQuizLoading ? (
-					<Loader />
-				) : (
+				{!isActiveQuizLoading ? (
 					<div className={styles.preparation}>
 						<div className={styles['preparation-wrapper']}>
 							{isSpecializationEmpty ? (
@@ -133,31 +132,35 @@ const InterviewPage = () => {
 							)}
 						</div>
 					</div>
+				) : (
+					<Loader />
 				)}
 			</Card>
+
+			{!isSpecializationEmpty && (
+				<Card
+					className={styles.statistics}
+					isActionPositionBottom
+					title={t('stats.title')}
+					actionTitle={t('stats.linkText')}
+					actionRoute={ROUTES.interview.statistic.page}
+					actionDisabled={!lastActiveQuizInfo}
+				>
+					<PassedQuestionChart total={0} learned={0} />
+					<PassedQuestionStatInfo stats={questionStats} />
+				</Card>
+			)}
+
 			{!isSpecializationEmpty && (
 				<>
 					<Card
-						isActionPositionBottom
-						title={t('stats.title')}
-						actionTitle={t('stats.linkText')}
-						actionRoute={ROUTES.interview.statistic.page}
-						actionDisabled={!lastActiveQuizInfo}
-					>
-						<div className={styles.statistics}>
-							<PassedQuestionChart total={0} learned={0} />
-							<PassedQuestionStatInfo stats={questionStats} />
-						</div>
-					</Card>
-					<Card
+						className={styles.questions}
 						title={t('questions.title')}
 						actionTitle={t('questions.studied')}
 						actionRoute={ROUTES.interview.questions.page}
 						withShadow
 					>
-						<div className={styles.questions}>
-							<InterviewQuestionsList />
-						</div>
+						<InterviewQuestionsList />
 					</Card>
 					<InterviewHistoryList />
 				</>

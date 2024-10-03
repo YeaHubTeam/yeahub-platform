@@ -25,21 +25,26 @@
 
 .title {
   position: relative;
+  display: flex;
+  align-items: baseline;
   margin: 0;
-  padding-left: 10px;
   transition: color 0.3s ease-in-out;
 }
 
 .title::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  content: '';
+  margin-right: 12px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
   transform: translateY(-50%);
+  content: '';
+}
+
+@media(width <= 768px) {
+  .params {
+    gap: 12px;
+  }
 }
 
 @media(width <= 480px) {

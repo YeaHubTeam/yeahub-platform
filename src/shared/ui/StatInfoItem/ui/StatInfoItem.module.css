@@ -15,7 +15,12 @@
 
 @media (width <= 1280px) {
   .stat {
-    padding: 10px 8px;
-    font-size: var(--font-size-p-xs);
+    padding: 8px;
+  }
+}
+
+@media (width <= 768px) {
+  .stat {
+    padding: 4px;
   }
 }

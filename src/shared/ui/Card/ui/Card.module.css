@@ -31,7 +31,7 @@
 }
 
 .card-expandable {
-  height: 250px;
+  min-height: 250px;
 }
 
 .card-expand {
@@ -79,6 +79,7 @@
 
 .link {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 8px;
   color: var(--text-color-link-active);
@@ -104,10 +105,14 @@
 .link-bottom {
   position: absolute;
   right: 24px;
-  bottom: 24px;
+  bottom: 12px;
 }
 
 @media (width <= 1313px) {
+  .card {
+    padding-bottom: 42px;
+  }
+
   .link-bottom {
     bottom: 16px;
   }
@@ -117,7 +122,17 @@
   }
 }
 
+@media (width <= 1198px) {
+  .card {
+    padding-bottom: 52px;
+  }
+}
+
 @media (width <= 768px) {
+  .card {
+    padding-bottom: 24px;
+  }
+
   .header {
     position: relative;
     flex-direction: column;
