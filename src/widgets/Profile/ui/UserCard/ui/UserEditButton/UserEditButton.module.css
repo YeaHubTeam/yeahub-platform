@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-@media (width <= 768px) {
+@media  (width <= 1280px) {
   .card-edit-icon {
     display: block;
   }
@@ -20,8 +20,3 @@
   }
 }
 
-@media (width <= 360px) {
-  .card-edit-block {
-    order: -1;
-  }
-}

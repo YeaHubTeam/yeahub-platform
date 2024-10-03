@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-@media (width <= 768px) {
+@media (width <= 1280px) {
   .info-edit-icon {
     display: block;
   }

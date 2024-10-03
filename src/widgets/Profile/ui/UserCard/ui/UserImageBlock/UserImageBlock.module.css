@@ -13,7 +13,6 @@
   overflow: hidden;
   border-radius: 20px;
   background-color: var(--color-purple-100);
-
 }
 
 .card-avatar > img {
@@ -29,12 +28,47 @@
   font-weight: var(--font-weight-400);
 }
 
-@media (width <= 360px) {
+@media (width <= 920px) {
   .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
 
   .card-avatar {
+    width: 170px;
+  }
+}
+
+@media (width <= 768px) {
+  .card-image {
+    display: flex;  
+    flex-direction: column;
+    gap: 8px;
+    width: 170px;
+  }
+  
+  .card-avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 170px;
+    height: 188px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--color-purple-100);
+  }
+}
+
+@media (width <= 480px) {
+  .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+  }
+
+  .card-avatar {
+    width: 170px;
   }
 }

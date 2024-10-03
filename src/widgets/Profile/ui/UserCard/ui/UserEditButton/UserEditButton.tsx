@@ -5,6 +5,7 @@ import styles from './UserEditButton.module.css';
 
 export const UserEditButton = () => {
 	const navigate = useNavigate();
+	const navigateToEdit = () => navigate('edit#personal-information');
 
 	return (
 		<div className={styles['card-edit-block']}>
@@ -12,7 +13,7 @@ export const UserEditButton = () => {
 				theme="link"
 				tagName="button"
 				className={styles['card-edit']}
-				onClick={() => navigate('edit#personal-information')}
+				onClick={navigateToEdit}
 			>
 				Редактировать
 			</Button>
@@ -20,7 +21,7 @@ export const UserEditButton = () => {
 				icon="pencilSimpleLine"
 				size={20}
 				color="--palette-ui-purple-700"
-				onClick={() => navigate('edit#personal-information')}
+				onClick={navigateToEdit}
 				className={styles['card-edit-icon']}
 			/>
 		</div>

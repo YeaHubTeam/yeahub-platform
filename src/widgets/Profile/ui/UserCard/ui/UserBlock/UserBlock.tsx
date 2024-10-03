@@ -16,10 +16,12 @@ interface UserBlockProps {
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
 	return (
-		<Card>
+		<Card className={styles.container}>
 			<div className={styles.card}>
-				<UserImageBlock user={profile?.user} />
-				<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
+				<div className={styles['user-data']}>
+					<UserImageBlock user={profile?.user} />
+					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
+				</div>
 				<UserEditButton />
 			</div>
 		</Card>

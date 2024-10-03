@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-@media (width <= 768px) {
+@media (width <= 1280px) {
   .skills-edit-icon {
     display: block;
   }
