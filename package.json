@@ -39,6 +39,8 @@
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
     "@feature-sliced/eslint-config": "^0.1.0-beta.6",
     "@happy-dom/jest-environment": "15.7.4",
