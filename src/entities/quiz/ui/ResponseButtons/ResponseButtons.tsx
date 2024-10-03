@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Icon, Button } from 'yeahub-ui-kit';
+import { Button, Icon } from 'yeahub-ui-kit';
 
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
@@ -42,12 +42,42 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
 				onClick={() => changeAnswer('KNOWN')}
 				textClassName={styles['action-button']}
-				theme="tertiary"
 				size="small"
+				theme="tertiary"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
 			>
 				{t('quizButtons.IKnow')}
 			</Button>
+			<Button
+				className={classNames(styles['btn-full-width'], {
+					[styles['active-btn']]: answer === 'UNKNOWN',
+				})}
+				onClick={() => changeAnswer('UNKNOWN')}
+				textClassName={styles['action-button']}
+				fullWidth={true}
+				theme="tertiary"
+				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
+			/>
+			<Button
+				className={classNames(styles['btn-full-width'], {
+					[styles['active-btn']]: answer === 'REPEAT',
+				})}
+				onClick={() => changeAnswer('REPEAT')}
+				textClassName={styles['action-button']}
+				theme="tertiary"
+				fullWidth={true}
+				preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
+			/>
+			<Button
+				className={classNames(styles['btn-full-width'], {
+					[styles['active-btn']]: answer === 'KNOWN',
+				})}
+				onClick={() => changeAnswer('KNOWN')}
+				textClassName={styles['action-button']}
+				theme="tertiary"
+				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
+				fullWidth={true}
+			/>
 		</div>
 	);
 };

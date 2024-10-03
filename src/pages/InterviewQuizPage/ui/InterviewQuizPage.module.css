@@ -10,6 +10,10 @@
   }
 }
 
+.slider-navigation {
+  min-width: 170px;
+}
+
 .progress-bar {
   display: grid;
   grid-template-rows: repeat(2, auto);

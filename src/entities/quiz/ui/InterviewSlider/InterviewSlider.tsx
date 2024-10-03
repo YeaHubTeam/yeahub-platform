@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
@@ -31,29 +32,23 @@ export const InterviewSlider = ({
 	};
 
 	return (
-		<article key={id} className={styles['slider-tmp']}>
-			<div className={styles['content-wrapper']}>
-				<p className={styles['question-tmp']}>{title}</p>
-				<div className={styles.wrapper}>
-					{!isAnswerVisible ? (
-						<button className={styles.answer} onClick={toggleAnswerVisibility}>
-							Посмотреть ответ
-						</button>
-					) : (
-						shortAnswer
-					)}
-				</div>
-				<ResponseButtons
-					className={styles['response-buttons-tmp']}
-					answer={answer}
-					changeAnswer={changeAnswer}
-				/>
-			</div>
-			<div className={styles['image-wrapper']}>
-				{imageSrc && (
-					<ImageWithWrapper src={imageSrc} alt={title} className={styles['image-tmp']} />
+		<article key={id} className={styles.slider}>
+			<p className={styles.question}>{title}</p>
+			<div className={styles.wrapper}>
+				{!isAnswerVisible ? (
+					<button className={styles.answer} onClick={toggleAnswerVisibility}>
+						Посмотреть ответ
+					</button>
+				) : (
+					<TextHtml html={shortAnswer}></TextHtml>
 				)}
 			</div>
+			<ResponseButtons
+				className={styles['response-buttons']}
+				answer={answer}
+				changeAnswer={changeAnswer}
+			/>
+			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>
 	);
 };

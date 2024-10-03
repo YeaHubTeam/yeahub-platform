@@ -1,10 +1,18 @@
 .wrapper {
   display: flex;
   gap: 8px;
-  height: 44px;
+  height: 48px;
 }
 
 .btn {
+  flex-shrink: 0;
+  width: auto;
+  border-radius: 12px;
+  color: var(--text-color-bright);
+}
+
+.btn-full-width {
+  display: none;
   flex-shrink: 0;
   width: auto;
   border-radius: 12px;
@@ -34,8 +42,53 @@
   color: var(--text-color-link-active);
 }
 
-@media (width <= 768px) {
-  .action-button {
+@media (width <= 1200px) {
+  .btn-full-width {
+    display: block;
+  }
+
+  .btn {
     display: none;
   }
 }
+
+@media (width <= 1024px) {
+  .btn-full-width {
+    display: none;
+  }
+
+  .btn {
+    display: block;
+  }
+}
+
+@media (width <= 842px) {
+  .btn-full-width {
+    display: block;
+  }
+
+  .btn {
+    display: none;
+  }
+}
+
+@media (width <= 768px) {
+  .btn-full-width {
+    display: none;
+  }
+
+  .btn {
+    display: block;
+  }
+}
+
+@media (width <= 642px) {
+  .btn-full-width {
+    display: block;
+  }
+
+  .btn {
+    display: none;
+  }
+}
+
