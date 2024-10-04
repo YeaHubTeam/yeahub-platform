@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
@@ -39,26 +39,22 @@ const InterviewPage = () => {
 		params: { limit: 1, page: 1 },
 	});
 
-	const questionStats = useCallback(
-		() =>
-			profileStats
-				? [
-						{
-							title: 'Всего вопросов',
-							value: String(profileStats.questionsStat.uniqueQuestionsCount),
-						},
-						{
-							title: 'Не изучено',
-							value: String(profileStats.questionsStat.unlearnedQuestionsCount),
-						},
-						{
-							title: 'Изучено',
-							value: String(profileStats.questionsStat.learnedQuestionsCount),
-						},
-					]
-				: [],
-		[profileStats],
-	);
+	const questionStats = profileStats
+		? [
+				{
+					title: 'Всего вопросов',
+					value: String(profileStats.questionsStat.uniqueQuestionsCount),
+				},
+				{
+					title: 'Не изучено',
+					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
+				},
+				{
+					title: 'Изучено',
+					value: String(profileStats.questionsStat.learnedQuestionsCount),
+				},
+			]
+		: [];
 
 	const navigate = useNavigate();
 
@@ -162,7 +158,7 @@ const InterviewPage = () => {
 								total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
 								learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
 							/>
-							<PassedQuestionStatInfo stats={questionStats()} />
+							<PassedQuestionStatInfo stats={questionStats} />
 						</div>
 					</Card>
 					<Card
