@@ -8,7 +8,11 @@
     "progressBarTitle": "Вопрос викторины {{fromQuestionNumber}} из {{toQuestionNumber}}",
     "stubTitle": "Специальность ещё не выбрана",
     "stubDescription": "Вы не выбрали специальность которую хотите изучать, перейдите в свой профиль и заполните его, чтобы начать подготовку к собеседованиям",
-    "fillProfileButton": "Заполнить профиль"
+    "fillProfileButton": "Заполнить профиль",
+    "toast": {
+      "successStart": "Новое собеседование создано",
+      "errorStart": "Не удалось создать новое собеседование"
+    }
   },
   "stats": {
     "title": "Статистика собеседований",
@@ -23,7 +27,15 @@
     "title": "Список вопросов",
     "studied": "Изучить",
     "rating": "Рейтинг",
-    "complexity": "Сложность"
+    "complexity": "Сложность",
+    "toast": {
+      "successFinish": "Собеседование завершено",
+      "errorFinish": "Не удалось завершить собеседование",
+      "questionIsLearned": "Вопрос полностью изучен",
+      "questionIsNotLearned": "Не удалось полностью изучить вопрос",
+      "progressIsReset": "Прогресс изучения вопроса сброшен",
+      "progressIsNotReset": "Не удалось сбросить прогресс изучения вопроса"
+    }
   },
   "history_preparation": {
     "title": "История собеседований",

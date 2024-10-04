@@ -1,4 +1,4 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon, Chip } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -34,20 +34,19 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 			icon: 'thumbsUp',
 		},
 	};
+
 	return (
 		<li>
 			<article className={styles.item}>
 				<ImageWithWrapper src={imageSrc} className={styles.img} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{questionTitle}</h4>
-					<Button
-						className={styles['action-btn']}
-						theme="tertiary"
-						size="small"
+					<Chip
+						theme="outlined"
+						className={styles['action-btn-tmp']}
 						preffix={<Icon key={mapping[answer].icon} icon={mapping[answer].icon} size={24} />}
-					>
-						{mapping[answer].label}
-					</Button>
+						label={mapping[answer].label}
+					/>
 				</div>
 			</article>
 		</li>
