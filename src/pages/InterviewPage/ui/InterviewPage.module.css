@@ -257,10 +257,6 @@
 }
 
 @media (width <= 480px) {
-  .questions {
-    width: 100%;
-  } 
-
   .container {
     grid-template-rows: repeat(2, auto);
     grid-template-columns: 1fr;

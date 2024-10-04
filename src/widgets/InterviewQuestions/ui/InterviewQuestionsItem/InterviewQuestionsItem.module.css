@@ -1,3 +1,8 @@
+.item {
+  padding-right: 8px;
+  min-width: 320px;
+}
+
 .item:not(:last-child) {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
@@ -59,18 +64,22 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <= 540px) {
   .link {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
+  .item {
+    min-width: 220px;
+  }
+  
   .params {
     justify-content: center;
   }
 
   .title {
-    width: clamp(120px, 75vw - 20px, 100%);
+    width: clamp(100px, 72vw - 20px, 100%);
   }
 }
