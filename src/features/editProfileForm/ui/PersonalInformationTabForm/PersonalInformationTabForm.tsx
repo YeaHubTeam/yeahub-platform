@@ -12,7 +12,7 @@ import { SpecializationSelect } from '@/entities/specialization';
 import styles from './PersonalInformationTabForm.module.css';
 
 export const PersonalInformationTabForm = () => {
-	const { control } = useFormContext();
+	const { control, setValue, watch } = useFormContext();
 
 	return (
 		<Flex direction="column" gap="120">
@@ -21,7 +21,7 @@ export const PersonalInformationTabForm = () => {
 					<h3>Фото профиля</h3>
 					<p>Ваше фото будет видно всем членам сообщества Yeahub</p>
 				</div>
-				<ImageLoader />
+				<ImageLoader watch={watch} setValue={setValue} />
 			</Flex>
 			<Flex gap="120">
 				<div className={styles.description}>
