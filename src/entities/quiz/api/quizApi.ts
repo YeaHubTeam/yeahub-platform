@@ -1,5 +1,7 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import i18n from '@/shared/config/i18n/i18n';
+import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
@@ -35,11 +37,11 @@ const quizApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					toast.success('Новое собество создано');
+					toast.success(i18n.t(Interview.SUCCESS_START_INTERVIEW));
 					typedExtra.navigate(ROUTES.interview.quiz.new.page);
 					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
-					toast.error('Не удалось создать новое собеседование');
+					toast.error(i18n.t(Interview.ERROR_START_INTERVIEW));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
@@ -108,11 +110,11 @@ const quizApi = baseApi.injectEndpoints({
 					dispatch(clearActiveQuizState());
 
 					const typedExtra = extra as ExtraArgument;
-					toast.success('Собеседование завершено');
+					toast.success(i18n.t(Interview.QUESTIONS_TOAST_SUCCESSFINISH));
 					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
 				} catch (error) {
 					// eslint-disable-next-line no-console
-					toast.error('Не удалось завершить собеседование');
+					toast.error(i18n.t(Interview.QUESTIONS_TOAST_ERRORFINISH));
 					console.error(error);
 				}
 			},
