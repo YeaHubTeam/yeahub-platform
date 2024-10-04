@@ -1,4 +1,7 @@
 .container {
+  --statistics-w-l: 360px;
+  --statistics-w-m: 280px;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -6,16 +9,11 @@
 }
 
 .interview {
-  width: calc(100% - 360px - 20px);
+  width: calc(100% - var(--statistics-w-l) - 20px);
 }
 
 .statistics {
-  width: 360px;
-}
-
-/* 3 */
-.questions {
-  width: calc(50% - 10px);
+  width: var(--statistics-w-l);
 }
 
 .inactive-title {
@@ -28,30 +26,17 @@
 
 
 @media (width <= 1198px) {
-  /* 1 */
   .interview {
     width: 100%;
   }
 
-  /* 2 */
   .statistics {
-    width: 280px;
-  }
-
-  /* 3 */
-  .questions {
-    width: calc(100% - 280px - 20px);
+    width: var(--statistics-w-m);
   }
 }
 
 @media (width <= 1000px) {
-  /* 2 */
   .statistics {
-    width: 100%;
-  }
-
-  /* 3 */
-  .questions {
     width: 100%;
   }
 }

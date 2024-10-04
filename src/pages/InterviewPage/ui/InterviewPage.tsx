@@ -153,15 +153,7 @@ const InterviewPage = () => {
 
 			{!isSpecializationEmpty && (
 				<>
-					<Card
-						className={styles.questions}
-						title={t('questions.title')}
-						actionTitle={t('questions.studied')}
-						actionRoute={ROUTES.interview.questions.page}
-						withShadow
-					>
-						<InterviewQuestionsList />
-					</Card>
+					<InterviewQuestionsList />
 					<InterviewHistoryList />
 				</>
 			)}

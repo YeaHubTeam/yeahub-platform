@@ -1,8 +1,5 @@
 .card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   padding: 24px;
   overflow: hidden;
   border-radius: 16px;
@@ -151,11 +148,6 @@
 }
 
 @media (width <= 480px) {
-  .header {
-    flex-direction: column;
-    align-items: start;
-  }
-  
   .link {
     left: 24px;
   }

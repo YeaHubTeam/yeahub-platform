@@ -15,6 +15,7 @@
 }
 
 .card-history {
+  align-self: start;
   width: calc(50% - 10px);
 }
 
