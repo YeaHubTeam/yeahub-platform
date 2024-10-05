@@ -14,6 +14,7 @@
 
 .statistics {
   width: var(--statistics-w-l);
+  min-height: 487px;
 }
 
 .inactive-title {
@@ -29,14 +30,15 @@
   .interview {
     width: 100%;
   }
-
+  
   .statistics {
     width: var(--statistics-w-m);
   }
 }
 
-@media (width <= 1000px) {
+@media (width <= 1024px) {
   .statistics {
     width: 100%;
+    min-height: 430px;
   }
 }

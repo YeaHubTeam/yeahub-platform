@@ -148,6 +148,11 @@
 }
 
 @media (width <= 480px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+  }
+  
   .link {
     left: 24px;
   }
