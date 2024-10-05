@@ -1,5 +1,24 @@
-.container {
+.container,
+.skeleton-wrapper {
   display: grid;
   grid-template-columns: auto 360px;
   gap: 20px;
+}
+
+.skeleton-card {
+  margin-bottom: 20px;
+  height: auto;
+}
+
+.skeleton-calendar {
+  height: 324px;
+}
+
+@media (width <= 768px) {
+  .skeleton-card,
+  .skeleton-calendar {
+    > div {
+      margin: 0;
+    }
+  }
 }
