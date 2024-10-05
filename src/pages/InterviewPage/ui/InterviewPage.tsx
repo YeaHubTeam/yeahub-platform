@@ -13,7 +13,11 @@ import { Loader } from '@/shared/ui/Loader';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
-import { getActiveQuizQuestions, useGetActiveQuizQuery } from '@/entities/quiz';
+import {
+	getActiveQuizQuestions,
+	useGetActiveQuizQuery,
+	useGetProfileStatsQuery,
+} from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
@@ -23,29 +27,34 @@ import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
 
-const questionStats = [
-	{
-		title: 'Всего вопросов',
-		value: '0',
-	},
-	{
-		title: 'Не изучено',
-		value: '0',
-	},
-	{
-		title: 'Изучено',
-		value: '0',
-	},
-];
-
 const InterviewPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
 	const { data: profile } = useProfileQuery();
+
+	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].profileId ?? '');
+
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId: profile?.profiles[0].profileId,
 		params: { limit: 1, page: 1 },
 	});
+
+	const questionStats = profileStats
+		? [
+				{
+					title: 'Всего вопросов',
+					value: String(profileStats.questionsStat.uniqueQuestionsCount),
+				},
+				{
+					title: 'Не изучено',
+					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
+				},
+				{
+					title: 'Изучено',
+					value: String(profileStats.questionsStat.learnedQuestionsCount),
+				},
+			]
+		: [];
 
 	const navigate = useNavigate();
 
@@ -146,7 +155,10 @@ const InterviewPage = () => {
 					actionRoute={ROUTES.interview.statistic.page}
 					actionDisabled={!lastActiveQuizInfo}
 				>
-					<PassedQuestionChart total={0} learned={0} />
+					<PassedQuestionChart
+						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
+						learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
+					/>
 					<PassedQuestionStatInfo stats={questionStats} />
 				</Card>
 			)}
