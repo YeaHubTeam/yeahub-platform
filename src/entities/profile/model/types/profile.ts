@@ -19,6 +19,7 @@ export interface User {
 	refreshToken: string;
 	updatedAt: string;
 	userRoles: string[];
+	avatarImage?: FileList;
 }
 
 export interface Profile {
