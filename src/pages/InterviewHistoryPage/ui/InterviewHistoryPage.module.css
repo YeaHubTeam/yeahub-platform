@@ -14,8 +14,6 @@
 }
 
 .skeleton-card {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(1fr));
   margin-bottom: 20px;
   height: auto;
 }
