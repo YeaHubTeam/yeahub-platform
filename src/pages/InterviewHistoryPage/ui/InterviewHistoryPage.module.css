@@ -5,7 +5,17 @@
   gap: 20px;
 }
 
+.skeleton-card-block {
+  position: relative;
+}
+
+.skeleton-mobile-calendar {
+  display: none;
+}
+
 .skeleton-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
   margin-bottom: 20px;
   height: auto;
 }
@@ -14,9 +24,25 @@
   height: 324px;
 }
 
+@media (width <= 1024px){
+  .skeleton-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .skeleton-mobile-calendar {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    display: block;
+  }
+
+  .skeleton-calendar{
+    display: none;
+  }
+}
+
 @media (width <= 768px) {
-  .skeleton-card,
-  .skeleton-calendar {
+  .skeleton-card {
     > div {
       margin: 0;
     }
