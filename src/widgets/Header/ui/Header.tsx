@@ -1,9 +1,9 @@
 import React from 'react';
-import { isMobile } from 'react-device-detect';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import Logo from '@/shared/assets/icons/logo.svg';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BurgerMenu } from '@/shared/ui/BurgerMenu';
 
 import { UserPreferences } from '@/features/common/user-preferences';
@@ -13,6 +13,7 @@ import styles from './Header.module.css';
 
 const MemoHeader = () => {
 	const navigate = useNavigate();
+	const { isMobile } = useScreenSize();
 
 	const menuItems = [
 		{ id: '1', label: 'Home', path: ROUTES.appRoute },
