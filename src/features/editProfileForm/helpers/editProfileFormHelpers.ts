@@ -88,7 +88,7 @@ export const mapFormToProfile = (
 		lastName: values.lastName,
 		phone: values.phone,
 		city: values.location || profile.user.city || '',
-		birthday: profile.user.birthday || '',
+		birthday: profile.user.birthday || null,
 		address: profile.user.address || '',
 		avatarUrl: profile.user.avatarUrl || '',
 		avatarImage: values.image,

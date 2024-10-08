@@ -6,7 +6,7 @@ import { SocialNetwork } from '@/entities/socialNetwork';
 export interface User {
 	address: string;
 	avatarUrl: string;
-	birthday: string;
+	birthday: string | null;
 	city: string;
 	country: string;
 	createdAt: string;

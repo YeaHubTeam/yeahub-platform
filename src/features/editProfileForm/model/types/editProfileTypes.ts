@@ -42,7 +42,7 @@ export interface EditUserValue {
 	country: string;
 	phone: string;
 	city: string;
-	birthday: string;
+	birthday: string | null;
 	address: string;
 	avatarUrl: string;
 	avatarImage?: FileList;
