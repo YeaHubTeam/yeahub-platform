@@ -8,11 +8,16 @@ interface LearnQuestionProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	checksCount?: number;
 }
 
-export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: LearnQuestionProps) => {
+export const LearnQuestionButton = ({
+	profileId,
+	questionId,
+	isSmallIcon,
+	checksCount = 0,
+}: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
-
 	const handleLearnQuestion = () => {
 		return learnQuestion({
 			profileId: String(profileId),
@@ -28,8 +33,9 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 			className={styles.btn}
 			preffix={<Icon icon="thumbsUp" size={iconSize} />}
 			theme="tertiary"
+			size="small"
 			onClick={handleLearnQuestion}
-			disabled={isLoading}
+			disabled={isLoading || checksCount >= 3}
 		>
 			Уже знаю
 		</Button>

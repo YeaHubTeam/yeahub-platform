@@ -8,14 +8,23 @@ import styles from './QuestionActions.module.css';
 interface QuestionActionsProps {
 	profileId: number | string;
 	questionId: number | string;
+	checksCount?: number;
 }
 
-export const QuestionActions = ({ profileId, questionId }: QuestionActionsProps) => {
+export const QuestionActions = ({ profileId, questionId, checksCount }: QuestionActionsProps) => {
 	return (
 		<Card className={styles['question-actions']}>
 			<div className={styles.wrapper}>
-				<LearnQuestionButton profileId={profileId} questionId={questionId} />
-				<ResetQuestionStudyProgressButton profileId={profileId} questionId={questionId} />
+				<LearnQuestionButton
+					profileId={profileId}
+					questionId={questionId}
+					checksCount={checksCount}
+				/>
+				<ResetQuestionStudyProgressButton
+					profileId={profileId}
+					questionId={questionId}
+					checksCount={checksCount}
+				/>
 			</div>
 		</Card>
 	);

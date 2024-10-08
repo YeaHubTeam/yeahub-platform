@@ -64,6 +64,7 @@ export const QuestionPage = () => {
 				<QuestionActions
 					profileId={profile ? profile.profiles[0].profileId : ''}
 					questionId={questionId ? questionId : ''}
+					checksCount={question?.checksCount}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
@@ -81,6 +82,7 @@ export const QuestionPage = () => {
 				<QuestionActions
 					profileId={profile ? profile.profiles[0].profileId : ''}
 					questionId={questionId ? questionId : ''}
+					checksCount={question?.checksCount}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</div>
