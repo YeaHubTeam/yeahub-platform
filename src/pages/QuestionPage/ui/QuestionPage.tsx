@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
-import { isMobile } from 'react-device-detect';
 import { NavLink, useParams } from 'react-router-dom';
+
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -19,6 +20,7 @@ import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
 export const QuestionPage = () => {
 	const { questionId } = useParams();
+	const { isMobile } = useScreenSize();
 
 	const { data: profile } = useProfileQuery();
 	const {
