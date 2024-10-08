@@ -2,7 +2,6 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
-import { Loader } from '@/shared/ui/Loader';
 
 import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterviewHistoryItem';
 
@@ -52,7 +51,6 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 
 	return (
 		<>
-			{isLoading || isFetching ? <Loader /> : null}
 			{!isEmptyData ? (
 				<ul className={styles.list}>
 					{data.map((interview, index) => (
