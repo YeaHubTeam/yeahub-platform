@@ -25,7 +25,7 @@ export const editProfileApi = baseApi.injectEndpoints({
 					console.log(err);
 				}
 			},
-			invalidatesTags: [ApiTags.PROFILE_DETAIL],
+			invalidatesTags: [ApiTags.PROFILE_DETAIL, ApiTags.PROFILE],
 		}),
 	}),
 });
