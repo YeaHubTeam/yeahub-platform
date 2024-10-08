@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import EducationIcon from '@/shared/assets/icons/education.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
@@ -19,19 +20,53 @@ import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
+		type: 'single',
 		route: ROUTES.appRoute,
 		title: 'Главная',
 		icon: MainIcon,
 	},
 	{
+		type: 'single',
 		route: ROUTES.profile.route,
 		title: 'Мой профиль',
 		icon: ProfileIcon,
 	},
 	{
+		type: 'single',
 		route: ROUTES.interview.route,
 		title: 'Собеседование',
 		icon: InterviewIcon,
+		notifications: 3,
+	},
+	{
+		type: 'category',
+		title: 'Обучение',
+		icon: EducationIcon,
+		elements: [
+			{
+				route: ROUTES.interview.route,
+				title: 'Собеседование',
+				icon: InterviewIcon,
+			},
+		],
+	},
+	{
+		type: 'category',
+		title: 'Привет всем',
+		icon: EducationIcon,
+		notifications: 12,
+		elements: [
+			{
+				route: ROUTES.interview.route,
+				title: 'Собеседование',
+				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.interview.route,
+				title: 'Собеседование',
+				icon: InterviewIcon,
+			},
+		],
 	},
 ];
 

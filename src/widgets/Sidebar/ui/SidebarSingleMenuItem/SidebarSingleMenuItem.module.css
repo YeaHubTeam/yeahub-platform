@@ -1,4 +1,5 @@
 .link {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,11 +9,11 @@
   color: var(--text-color-primary);
   text-decoration: none;
   transition:
-		all 0.3s ease-in-out;
+        all 0.3s ease-in-out;
 }
 
 .link:hover {
-  background-color: var(--background-nav-item-hover);
+  background-color: var(--color-black-30);
 }
 
 .active,
@@ -22,7 +23,6 @@
 }
 
 .wrap {
-  position: relative;
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .notifications {
-  justify-self: end;
+  align-self: end;
   padding: 4px 8px;
   border-radius: 8px;
   background-color: var(--color-purple-100);
@@ -39,6 +39,7 @@
 }
 
 .notifications-smaller {
+  right: -8px;
   font-size: var(--font-size-p-xs);
 }
 
@@ -51,6 +52,8 @@
   height: 24px;
   transition: all 0.3s ease-in-out;
 }
+
+
 
 .closing {
   opacity: 0;
@@ -68,5 +71,10 @@
   .link {
     justify-content: center;
     padding: 10px 12px;
+  }
+
+  .notifications {
+    right: -8px;
+    font-size: var(--font-size-p-xs);
   }
 }
