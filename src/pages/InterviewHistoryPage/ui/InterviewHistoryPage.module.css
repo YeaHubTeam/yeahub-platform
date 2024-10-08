@@ -1,5 +1,10 @@
 .container {
-  display: grid;
-  grid-template-columns: auto 360px;
+  display: flex;
   gap: 20px;
+}
+
+@media(width <=1024px) {
+  .container {
+    flex-direction: column-reverse;
+  }
 }
