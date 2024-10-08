@@ -14,19 +14,3 @@
   cursor: pointer;
   font-size: var(--font-size-p-s);
 }
-
-.info-edit-icon {
-  display: none;
-  margin-left: auto;
-  cursor: pointer;
-}
-
-@media (width <= 1280px) {
-  .info-edit-icon {
-    display: block;
-  }
-
-  .info-edit {
-    display: none;
-  }
-}

@@ -1,29 +1,34 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+
 import styles from './UserEditButton.module.css';
 
 export const UserEditButton = () => {
 	const navigate = useNavigate();
-	const navigateToEdit = () => navigate('edit#personal-information');
+	const { isMobile, isTablet } = useScreenSize();
+
+	const handleNavigate = () => {
+		navigate('edit#personal-information');
+	};
 
 	return (
 		<div className={styles['card-edit-block']}>
 			<Button
 				theme="link"
-				tagName="button"
+				fullWidth={true}
 				className={styles['card-edit']}
-				onClick={navigateToEdit}
+				onClick={handleNavigate}
+				size="small"
+				preffix={
+					isMobile || isTablet ? (
+						<Icon icon="pencilSimpleLine" size={20} color="--palette-ui-purple-700" />
+					) : undefined
+				}
 			>
-				Редактировать
+				{!(isMobile || isTablet) ? 'Редактировать' : ''}
 			</Button>
-			<Icon
-				icon="pencilSimpleLine"
-				size={20}
-				color="--palette-ui-purple-700"
-				onClick={navigateToEdit}
-				className={styles['card-edit-icon']}
-			/>
 		</div>
 	);
 };

@@ -10,13 +10,14 @@
 
 .main-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 20px;
   width: 66%;
 }
 
 .side-content-tmp {
-  width: calc(100% - 66% - 20px);
+  width: 360px;
 }
 
 .separator {
@@ -55,20 +56,17 @@
   height: 20px;
 }
 
-@media (width < 1440px) {
-  .content {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-}
-
 @media (width <= 1280px) {
   .sleleton-link {
     width: 20px;
   }
 }
 
-@media (width <= 768px) {
+@media (width <= 1024px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
   .side-content-tmp {
     flex: -1;
     width: 100%;
@@ -87,4 +85,8 @@
   .sleleton-link-profile {
     order: -1;
   } 
+
+  .card {
+    min-height: 100%;
+  }
 }

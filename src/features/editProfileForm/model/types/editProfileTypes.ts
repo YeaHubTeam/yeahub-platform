@@ -36,10 +36,27 @@ export interface EditProfileValues {
 	skills?: string[];
 }
 
+export interface EditUserValue {
+	firstName: string;
+	lastName: string;
+	country: string;
+	phone: string;
+	city: string;
+	birthday: string | null;
+	address: string;
+	avatarUrl: string;
+	avatarImage?: FileList;
+}
+
 export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
 
 export type EditProfileRequestData = Omit<Profile, 'profileSkills'> & {
 	profileSkills: number[];
+};
+
+export type EditUserRequestData = {
+	id: string;
+	userInfo: EditUserValue;
 };

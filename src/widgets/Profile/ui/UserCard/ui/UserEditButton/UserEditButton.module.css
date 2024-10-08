@@ -3,20 +3,3 @@
   margin-left: auto;
   font-size: var(--font-size-p-s);
 }
-
-.card-edit-icon {
-  display: none;
-  margin-left: auto;
-  cursor: pointer;
-}
-
-@media  (width <= 1280px) {
-  .card-edit-icon {
-    display: block;
-  }
-
-  .card-edit {
-    display: none;
-  }
-}
-

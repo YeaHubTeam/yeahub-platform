@@ -13,19 +13,3 @@
   cursor: pointer;
   font-size: var(--font-size-p-s);
 }
-
-.skills-edit-icon {
-  display: none;
-  margin-left: auto;
-  cursor: pointer;
-}
-
-@media (width <= 1280px) {
-  .skills-edit-icon {
-    display: block;
-  }
-
-  .skills-edit {
-    display: none;
-  }
-}
