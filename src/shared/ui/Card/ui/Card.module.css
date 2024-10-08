@@ -123,10 +123,6 @@
     flex-direction: column;
     align-items: start;	
   }
-  
-  .content {
-    margin-bottom: 32px;
-  }
 
   .link {
     position: absolute;

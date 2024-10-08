@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Icon } from 'yeahub-ui-kit';
+import { Icon, Button } from 'yeahub-ui-kit';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
@@ -25,9 +25,18 @@ export const QuestionNavPanel = ({
 }: QuestionNavPanelProps) => {
 	return (
 		<div className={classNames(styles.panel, className)}>
-			<button className={styles.button} onClick={goToPrevSlide}>
-				<Icon icon="caretCircleLeft" className={styles.arrow} color="--palette-ui-purple-700" />
-			</button>
+			<div className={styles['button-wrapper']}>
+				<Button
+					className={styles.button}
+					onClick={goToPrevSlide}
+					size="small"
+					fullWidth={true}
+					suffix={
+						<Icon icon="caretLeft" size={20} color="--palette-ui-purple-700" key="caretLeft" />
+					}
+					theme="outline"
+				/>
+			</div>
 			{showResponseButtons && (
 				<ResponseButtons
 					className={styles['action-btns']}
@@ -35,9 +44,17 @@ export const QuestionNavPanel = ({
 					changeAnswer={changeAnswer}
 				/>
 			)}
-			<button className={styles.button} onClick={goToNextSlide}>
-				<Icon icon="caretCircleRight" className={styles.arrow} color="--palette-ui-purple-700" />
-			</button>
+			<div className={styles['button-wrapper']}>
+				<Button
+					className={styles.button}
+					onClick={goToNextSlide}
+					preffix={
+						<Icon color="--palette-ui-purple-700" icon="caretRight" size={20} key="caretRight" />
+					}
+					fullWidth={true}
+					theme="outline"
+				/>
+			</div>
 		</div>
 	);
 };
