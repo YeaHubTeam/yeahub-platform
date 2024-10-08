@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { LoginLabel, RegisterForm } from '@/features/registration';
+import { LoginLabel, RegisterForm } from '@/features/authentication/registration';
 
 import { registerSchema } from '../model/lib/validation/registerSchema';
 import { UserSchema } from '../model/types/userTypes';

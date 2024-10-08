@@ -1,0 +1,108 @@
+.wrapper {
+  margin-top: 20px;
+  max-width: 408px;
+}
+
+.form-wrapper {
+  margin-bottom: 40px;
+}
+
+.submit-button {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.input-wrapper:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+/* LABEL */
+.input-wrapper label span { 
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--color-black-900);
+  line-height: 21px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+/* INPUT */
+.input {
+  padding-left: 20px;
+  height: 48px;
+  border-radius: 68px;
+  background-color: var(--background-app);
+}
+
+.input::placeholder {
+  color: var(--text-color-more-lightest);
+  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+
+/* CHECKBOX */
+.checkbox {
+  flex-shrink: 0;
+}
+
+.consent-wrapper span:last-child {
+  line-height: 1.36;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
+}
+
+.consent-wrapper label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.consent-wrapper label > div {
+  height: 48px;
+}
+
+.consent-wrapper input[type="checkbox"]:checked .checkbox {
+  position: relative;
+  background-color: var(--text-color-link-active);
+}
+
+.consent-wrapper input[type="checkbox"]:checked + .checkbox::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--color-white-900);
+  font-size: var(--font-size-p-l);
+  transform: translate(-50%, -50%);
+  content: "\2714";
+}
+
+.consent-wrapper input[type="checkbox"]:not(:checked):hover {
+  border-color: var(--color-purple-500)
+}
+  
+/* ERROR */
+.input-wrapper label div {
+  position: relative;
+}
+
+.input-wrapper label div p {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 16px;
+  color: var(--color-red-700) !important;
+  line-height: 1.36;
+  font-weight: var(--font-weight-400) !important;
+  font-size: var(--font-size-p-xs) !important;
+  user-select: none; 
+}
+
+.input-wrapper div:has(+ div),
+.input-wrapper div:first-child:focus-within:has(+ div) {
+  border-color: var(--color-red-700);
+  caret-color: var(--color-red-400);
+  background-color: var(--background-block);
+}

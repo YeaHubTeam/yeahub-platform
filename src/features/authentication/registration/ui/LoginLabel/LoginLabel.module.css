@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom:70px;
+  margin-top: max(50px, 11%);
+  margin-bottom: 70px;
   padding: 16px;
-  box-sizing: border-box;
   width: 100%;
   max-width: 408px;
   border-radius: 20px;
@@ -15,6 +15,12 @@
 
 .btn {
   cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .wrapper {
+    margin-bottom: 40px;
+  }
 }
 
 @media (width <= 480px) {
