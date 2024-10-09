@@ -51,7 +51,7 @@ const ExpandIcon = () => {
 					gradientUnits="userSpaceOnUse"
 				>
 					<stop stopColor="white" stopOpacity="0" />
-					<stop offset="0.491518" stopColor="white" />
+					<stop offset="0.456" stopColor="white" />
 				</linearGradient>
 			</defs>
 		</svg>
