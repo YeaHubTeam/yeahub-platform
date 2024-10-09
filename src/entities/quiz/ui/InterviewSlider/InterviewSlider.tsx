@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
@@ -14,6 +12,8 @@ interface InterviewSliderProps {
 	shortAnswer: string;
 	answer: string;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
+	isAnswerVisible: boolean;
+	setIsAnswerVisible: (value: boolean) => void;
 }
 
 export const InterviewSlider = ({
@@ -23,11 +23,11 @@ export const InterviewSlider = ({
 	answer,
 	shortAnswer,
 	changeAnswer,
+	isAnswerVisible,
+	setIsAnswerVisible,
 }: InterviewSliderProps) => {
-	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-
 	const toggleAnswerVisibility = () => {
-		setIsAnswerVisible((prev) => !prev);
+		setIsAnswerVisible(!isAnswerVisible);
 	};
 
 	return (

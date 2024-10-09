@@ -1,4 +1,5 @@
 import { i18Namespace } from '@/shared/config/i18n';
+import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
@@ -22,8 +23,15 @@ export const InterviewQuestionsList = () => {
 		specialization: specializationId,
 	};
 
-	const { data: response } = useGetQuestionsListQuery(params);
-	const questions = response?.data;
+	const { data: response, isSuccess } = useGetQuestionsListQuery(params);
+
+	const questions = response?.data ?? [];
+
+	const isEmptyData = isSuccess && questions.length === 0;
+
+	if (isEmptyData) {
+		return <h3 className={styles['no-questions']}>{t(Interview.QUESTIONS_EMPTY)}</h3>;
+	}
 
 	return (
 		<Card
@@ -34,7 +42,7 @@ export const InterviewQuestionsList = () => {
 			withShadow
 		>
 			<ul className={styles.list}>
-				{questions?.map((question) => (
+				{questions.map((question) => (
 					<InterviewQuestionsItem key={question.id} question={question} />
 				))}
 			</ul>

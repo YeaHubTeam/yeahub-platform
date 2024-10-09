@@ -13,6 +13,7 @@ interface QuestionNavPanelProps {
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	showResponseButtons?: boolean;
 	className?: string;
+	setIsAnswerVisible: (value: boolean) => void;
 }
 
 export const QuestionNavPanel = ({
@@ -22,10 +23,21 @@ export const QuestionNavPanel = ({
 	changeAnswer,
 	showResponseButtons = false,
 	className,
+	setIsAnswerVisible,
 }: QuestionNavPanelProps) => {
+	const handlePrevSlide = () => {
+		goToPrevSlide();
+		setIsAnswerVisible(false);
+	};
+
+	const handleRightSlide = () => {
+		goToNextSlide();
+		setIsAnswerVisible(false);
+	};
+
 	return (
 		<div className={classNames(styles.panel, className)}>
-			<button className={styles.button} onClick={goToPrevSlide}>
+			<button className={styles.button} onClick={handlePrevSlide}>
 				<Icon icon="caretCircleLeft" className={styles.arrow} color="--palette-ui-purple-700" />
 			</button>
 			{showResponseButtons && (
@@ -35,7 +47,7 @@ export const QuestionNavPanel = ({
 					changeAnswer={changeAnswer}
 				/>
 			)}
-			<button className={styles.button} onClick={goToNextSlide}>
+			<button className={styles.button} onClick={handleRightSlide}>
 				<Icon icon="caretCircleRight" className={styles.arrow} color="--palette-ui-purple-700" />
 			</button>
 		</div>
