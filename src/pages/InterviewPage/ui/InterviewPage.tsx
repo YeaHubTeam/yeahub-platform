@@ -91,9 +91,7 @@ const InterviewPage = () => {
 						? Interview.PREPARATION_ACTIVELINKTEXT
 						: Interview.PREPARATION_NOACTIVELINKTEXT,
 				)}
-				actionRoute={
-					lastActiveQuizInfo ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
-				}
+				actionRoute={lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page}
 				withShadow
 			>
 				{isActiveQuizLoading ? (
