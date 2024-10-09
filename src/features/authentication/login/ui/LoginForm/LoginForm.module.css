@@ -17,9 +17,9 @@
   font-size: var(--font-size-p-s);
 }
 
-.forgot-password-link span {
+.form-wrapper .forgot-password-link span {
   margin: 0;
-  margin-left: auto !important;
+  margin-left: auto;
 }
 
 .submit-button {
@@ -51,7 +51,7 @@
 }
 
 /* LABEL */
-.input-wrapper label span { 
+.form-wrapper .input-wrapper label span { 
   display: inline-block;
   margin-bottom: 8px;
   color: var(--color-black-900);
@@ -66,15 +66,15 @@
   position: relative;
 }
 
-.input-wrapper label div p {
+.wrapper .form-wrapper .input-wrapper label div p {
   position: absolute;
   top: 2px;
   left: 0;
   height: 16px;
-  color: var(--color-red-700) !important;
+  color: var(--color-red-700);
   line-height: 1.36;
-  font-weight: var(--font-weight-400) !important;
-  font-size: var(--font-size-p-xs) !important;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
   user-select: none; 
 }
 

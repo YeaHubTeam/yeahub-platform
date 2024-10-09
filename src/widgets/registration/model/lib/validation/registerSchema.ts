@@ -2,6 +2,8 @@ import * as yup from 'yup';
 import YupPassword from 'yup-password';
 YupPassword(yup);
 
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
 export const registerSchema = yup.object().shape({
 	firstName: yup
 		.string()
@@ -25,6 +27,9 @@ export const registerSchema = yup.object().shape({
 	passwordConfirmation: yup
 		.string()
 		.oneOf([yup.ref('password')], 'Пароль должен совпадать')
+		.matches(passwordRules, {
+			message: 'Пароль должен содержать заглавные и строчные буквы, цифры и специальные символы',
+		})
 		.required('Поле обязательно для заполнения'),
 	isChecked: yup
 		.boolean()
