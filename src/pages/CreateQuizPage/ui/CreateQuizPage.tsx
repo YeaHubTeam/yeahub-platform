@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
@@ -42,11 +41,9 @@ const CreateQuizPage = () => {
 		},
 	);
 
-	useEffect(() => {
-		if (activeQuizData && activeQuizData.data[0].questions.length > 0) {
-			navigate(ROUTES.interview.new.page);
-		}
-	}, [activeQuizData, navigate]);
+	if (activeQuizData?.data[0].questions) {
+		navigate(ROUTES.interview.new.page);
+	}
 
 	const createQuizData = useSelector(getCreateQuizPageState);
 
