@@ -28,7 +28,7 @@ export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
 	return (
 		<>
 			<button className="mobile-calendar" onClick={handleClick}>
-				<Icon icon="calendar" />
+				<Icon icon="calendar" color="--palette-ui-black-700" />
 			</button>
 			<Card className={isOpenCalendar ? 'calendar-block  active' : 'calendar-block '}>
 				<Calendar

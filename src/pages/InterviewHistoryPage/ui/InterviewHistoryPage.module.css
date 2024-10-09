@@ -1,5 +1,8 @@
+.container {
+  display: flex;
+  gap: 20px;
+}
 
-.container,
 .skeleton-wrapper {
   display: grid;
   grid-template-columns: auto 360px;
@@ -23,7 +26,11 @@
   height: 324px;
 }
 
-@media (width <= 1024px){
+@media (width <=1024px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
   .skeleton-wrapper {
     grid-template-columns: 1fr;
   }
@@ -35,16 +42,15 @@
     display: block;
   }
 
-  .skeleton-calendar{
+  .skeleton-calendar {
     display: none;
   }
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .skeleton-card {
-    > div {
+    >div {
       margin: 0;
     }
   }
 }
-
