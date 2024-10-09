@@ -8,6 +8,10 @@
   gap: 20px;
 }
 
+.preparation {
+  padding: 4px 24px 16px;
+}
+
 .interview {
   width: calc(100% - var(--statistics-w-l) - 20px);
 }
