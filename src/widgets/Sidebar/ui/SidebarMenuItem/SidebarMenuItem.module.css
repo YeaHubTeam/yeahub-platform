@@ -19,12 +19,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   border-width: 0;
   background-color: transparent;
   color: var(--text-color-primary);
   text-decoration: none;
   transition:
         all 0.3s ease-out;
+  cursor: pointer;
 }
 
 .wrap {
@@ -56,6 +58,8 @@
 
 .title {
   transition: all 0.3s ease-in-out;
+  text-overflow: clip;
+  white-space: nowrap;
 }
 
 .icon {
