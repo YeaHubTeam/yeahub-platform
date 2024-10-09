@@ -16,14 +16,21 @@ export const InterviewQuestionsList = () => {
 		specialization: specializationId,
 	};
 
-	const { data: response } = useGetQuestionsListQuery(params);
-	const questions = response?.data;
+	const { data: response, isSuccess } = useGetQuestionsListQuery(params);
 
-	return (
-		<ul className={styles.list}>
-			{questions?.map((question) => (
-				<InterviewQuestionsItem key={question.id} question={question} />
-			))}
-		</ul>
+	const questions = response?.data ?? [];
+
+	const isEmptyData = isSuccess && questions.length === 0;
+
+	return isEmptyData ? (
+		<h3 className={styles['no-questions']}>Вопросы для выбранной специализации скоро появятся</h3>
+	) : (
+		<div className={styles.questions}>
+			<ul className={styles.list}>
+				{questions.map((question) => (
+					<InterviewQuestionsItem key={question.id} question={question} />
+				))}
+			</ul>
+		</div>
 	);
 };
