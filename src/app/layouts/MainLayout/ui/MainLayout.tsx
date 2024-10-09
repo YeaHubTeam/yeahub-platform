@@ -32,35 +32,10 @@ const mainLayoutMenuItems: MenuItem[] = [
 		icon: ProfileIcon,
 	},
 	{
-		type: 'single',
-		route: ROUTES.interview.route,
-		title: 'Собеседование',
-		icon: InterviewIcon,
-		notifications: 3,
-	},
-	{
 		type: 'category',
 		title: 'Обучение',
 		icon: EducationIcon,
 		elements: [
-			{
-				route: ROUTES.interview.route,
-				title: 'Собеседование',
-				icon: InterviewIcon,
-			},
-		],
-	},
-	{
-		type: 'category',
-		title: 'Привет всем',
-		icon: EducationIcon,
-		notifications: 12,
-		elements: [
-			{
-				route: ROUTES.interview.route,
-				title: 'Собеседование',
-				icon: InterviewIcon,
-			},
 			{
 				route: ROUTES.interview.route,
 				title: 'Собеседование',

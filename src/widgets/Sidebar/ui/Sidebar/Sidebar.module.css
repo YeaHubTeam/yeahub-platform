@@ -54,18 +54,6 @@
   .close-icon {
     display: none;
   }
-
-  .menu {
-    padding: 36px 10px 20px;
-  }
-
-  .header {
-    justify-content: center;
-  }
-
-  .sidebar {
-    width: 80px;
-  }
 }
 
 @media (width <= 480px) {
