@@ -59,15 +59,9 @@ export const ChooseQuestionsCategories = ({
 				title="Категории вопросов"
 				onClick={handleChooseSkill}
 			/>
-			{!showAll ? (
-				<Button className={styles.button} theme="link" onClick={toggleShowAll}>
-					Показать все
-				</Button>
-			) : (
-				<Button className={styles.button} theme="link" onClick={toggleShowAll}>
-					Скрыть
-				</Button>
-			)}
+			<Button className={styles.button} theme="link" onClick={toggleShowAll}>
+				{!showAll ? 'Показать все' : 'Скрыть'}
+			</Button>
 		</div>
 	);
 };
