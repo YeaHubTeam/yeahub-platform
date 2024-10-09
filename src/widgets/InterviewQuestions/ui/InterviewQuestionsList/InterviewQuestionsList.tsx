@@ -1,3 +1,7 @@
+import { i18Namespace } from '@/shared/config/i18n';
+import { Interview } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
@@ -6,6 +10,8 @@ import { InterviewQuestionsItem } from '../InterviewQuestionsItem/InterviewQuest
 import styles from './InterviewQuestionsList.module.css';
 
 export const InterviewQuestionsList = () => {
+	const { t } = useI18nHelpers(i18Namespace.interview);
+
 	const { data: profile } = useProfileQuery();
 
 	const specializationId = profile?.profiles[0].specializationId;
@@ -16,14 +22,21 @@ export const InterviewQuestionsList = () => {
 		specialization: specializationId,
 	};
 
-	const { data: response } = useGetQuestionsListQuery(params);
-	const questions = response?.data;
+	const { data: response, isSuccess } = useGetQuestionsListQuery(params);
 
-	return (
-		<ul className={styles.list}>
-			{questions?.map((question) => (
-				<InterviewQuestionsItem key={question.id} question={question} />
-			))}
-		</ul>
+	const questions = response?.data ?? [];
+
+	const isEmptyData = isSuccess && questions.length === 0;
+
+	return isEmptyData ? (
+		<h3 className={styles['no-questions']}>{t(Interview.QUESTIONS_EMPTY)}</h3>
+	) : (
+		<div className={styles.questions}>
+			<ul className={styles.list}>
+				{questions.map((question) => (
+					<InterviewQuestionsItem key={question.id} question={question} />
+				))}
+			</ul>
+		</div>
 	);
 };

@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   padding-bottom: 16px;
   height: auto;
   color: var(--text-color-bright);

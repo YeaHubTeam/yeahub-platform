@@ -38,7 +38,7 @@ const quizApi = baseApi.injectEndpoints({
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Interview.SUCCESS_START_INTERVIEW));
-					typedExtra.navigate(ROUTES.interview.quiz.new.page);
+					typedExtra.navigate(ROUTES.interview.new.page);
 					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					toast.error(i18n.t(Interview.ERROR_START_INTERVIEW));
