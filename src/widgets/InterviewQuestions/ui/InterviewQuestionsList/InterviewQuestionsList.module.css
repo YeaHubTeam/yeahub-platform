@@ -28,12 +28,6 @@
 
 @media (width <= 1198px) {
   .questions {
-    width: calc(100% - 280px - 20px);
-  }
-}
-
-@media (width <= 1000px) {
-  .questions {
     width: 100%;
   }
 }

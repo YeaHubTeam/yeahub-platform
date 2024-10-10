@@ -96,49 +96,45 @@ const InterviewPage = () => {
 				withShadow
 			>
 				{!isActiveQuizLoading ? (
-					<div className={styles.preparation}>
-						<div className={styles['preparation-wrapper']}>
-							{isSpecializationEmpty ? (
-								<>
-									<h2 className={styles['inactive-title']}>
-										{t(Interview.PREPARATION_STUB_TITLE)}
-									</h2>
-									<p className={styles['inactive-description']}>
-										{t(Interview.PREPARATION_STUB_DESCRIPTION)}
-									</p>
-									<Button onClick={handleProfileRedirect} className={styles.button} size="large">
-										{t(Interview.FILLPROFILE_BUTTON)}
-									</Button>
-								</>
-							) : (
-								<>
-									{lastActiveQuizInfo ? (
-										<>
-											<QuestionProgressBarBlock
-												fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
-												toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
-											/>
-											<QuestionLargePreview question={lastActiveQuizInfo.question} />
-										</>
-									) : (
-										<>
-											<h2 className={styles['inactive-title']}>
-												{t(Interview.PREPARATION_NOACTIVETITLE)}
-											</h2>
-											<p className={styles['inactive-description']}>
-												{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
-											</p>
-											<img
-												className={styles['preparation-noactiveimage']}
-												src={NoActiveQuizPlaceholder}
-												alt="no active quiz"
-											/>
-										</>
-									)}
-								</>
-							)}
-						</div>
-					</div>
+					<>
+						{isSpecializationEmpty ? (
+							<div className={styles['preparation-wrapper']}>
+								<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
+								<p className={styles['inactive-description']}>
+									{t(Interview.PREPARATION_STUB_DESCRIPTION)}
+								</p>
+								<Button onClick={handleProfileRedirect} className={styles.button} size="large">
+									{t(Interview.FILLPROFILE_BUTTON)}
+								</Button>
+							</div>
+						) : (
+							<>
+								{lastActiveQuizInfo ? (
+									<div className={styles.preparation}>
+										<QuestionProgressBarBlock
+											fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
+											toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
+										/>
+										<QuestionLargePreview question={lastActiveQuizInfo.question} />
+									</div>
+								) : (
+									<div className={styles['preparation-empty']}>
+										<h2 className={styles['inactive-title']}>
+											{t(Interview.PREPARATION_NOACTIVETITLE)}
+										</h2>
+										<p className={styles['inactive-description']}>
+											{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
+										</p>
+										<img
+											className={styles['preparation-noactiveimage']}
+											src={NoActiveQuizPlaceholder}
+											alt="no active quiz"
+										/>
+									</div>
+								)}
+							</>
+						)}
+					</>
 				) : (
 					<Loader />
 				)}
