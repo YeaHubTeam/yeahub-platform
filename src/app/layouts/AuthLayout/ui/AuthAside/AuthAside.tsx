@@ -3,8 +3,6 @@ import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
-import { LanguageSwitcher } from '@/features/internationalization/switch-language';
-
 import { BenefitsList } from '../BenefitsList/BenefitsList';
 
 import styles from './AuthAside.module.css';
@@ -19,7 +17,6 @@ export const AuthAside = () => {
 					<AppLogo isOpen={false} fill="white" />
 				</div>
 				<p className={styles['logo-text']}>{t(Auth.LOGO_TEXT)}</p>
-				<LanguageSwitcher />
 			</div>
 			<BenefitsList />
 		</aside>

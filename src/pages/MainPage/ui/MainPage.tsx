@@ -9,8 +9,6 @@ import { Card } from '@/shared/ui/Card';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
-import { LanguageSwitcher } from '@/features/internationalization/switch-language';
-
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
@@ -69,7 +67,6 @@ const MainPage = () => {
 				</div>
 			)}
 			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
-			<LanguageSwitcher />
 		</>
 	);
 };
