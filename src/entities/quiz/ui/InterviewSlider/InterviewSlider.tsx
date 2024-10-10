@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Interview } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { Flex } from '@/shared/ui/Flex';
@@ -56,7 +56,7 @@ export const InterviewSlider = ({
 					<Flex direction="column" gap="16" className={styles['answer-wrapper']}>
 						<TextHtml html={shortAnswer} />
 						<button className={styles.answer} onClick={toggleAnswerVisibility}>
-							{t(Interview.QUESTIONS_HIDEANSWER)}
+							{t(InterviewQuiz.QUESTIONS_HIDEANSWER)}
 						</button>
 					</Flex>
 				)}

@@ -27,7 +27,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				theme="tertiary"
 				size="small"
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
-				fullWidth={isMobile ? true : false}
+				fullWidth={isMobile}
 			>
 				{!isMobile && t('quizButtons.doNotKnow')}
 			</Button>
@@ -38,7 +38,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				size="small"
 				theme="tertiary"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
-				fullWidth={isMobile ? true : false}
+				fullWidth={isMobile}
 			>
 				{!isMobile && t('quizButtons.IKnow')}
 			</Button>

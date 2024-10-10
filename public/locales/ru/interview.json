@@ -28,7 +28,6 @@
     "studied": "Изучить",
     "rating": "Рейтинг",
     "complexity": "Сложность",
-    "hideAnswer": "Скрыть ответ",
     "toast": {
       "successFinish": "Собеседование завершено",
       "errorFinish": "Не удалось завершить собеседование",

@@ -47,7 +47,6 @@ export enum Interview {
 	QUESTIONS_STUDIED = 'questions.studied',
 	QUESTIONS_RATING = 'questions.rating',
 	QUESTIONS_COMPLEXITY = 'questions.complexity',
-	QUESTIONS_HIDEANSWER = 'questions.hideAnswer',
 	QUESTIONS_TOAST_SUCCESSFINISH = 'questions.toast.successFinish',
 	QUESTIONS_TOAST_ERRORFINISH = 'questions.toast.errorFinish',
 	QUESTIONS_TOAST_QUESTIONISLEARNED = 'questions.toast.questionIsLearned',
@@ -70,6 +69,7 @@ export enum InterviewHistory {
 export enum InterviewQuiz {
 	PROGRESSBARTITLE = 'progressBarTitle',
 	COMPLETEQUIZBUTTON = 'completeQuizButton',
+	QUESTIONS_HIDEANSWER = 'hideAnswer',
 }
 
 export enum InterviewQuizResult {

@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   gap: 8px;
+  min-width: auto;
   height: 48px;
 }
 
