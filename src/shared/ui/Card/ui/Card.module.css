@@ -47,6 +47,11 @@
   height: 90px;
 }
 
+.card-expand-svg-visibility {
+  transition: visibility 600ms;
+  visibility: hidden;
+}
+
 .card-expand-svg defs linearGradient stop {
   stop-color: var(--background-block);
   transition: stop-color 300ms ease-in-out;
