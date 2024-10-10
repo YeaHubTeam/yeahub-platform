@@ -165,9 +165,7 @@ const InterviewPage = () => {
 						actionRoute={ROUTES.interview.questions.page}
 						withShadow
 					>
-						<div className={styles.questions}>
-							<InterviewQuestionsList />
-						</div>
+						<InterviewQuestionsList />
 					</Card>
 					<InterviewHistoryList />
 				</>

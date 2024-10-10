@@ -33,6 +33,7 @@
   background: none;
   color: var(--text-color-link-active);
   font-size: var(--font-size-p-s);
+  cursor: pointer;
 }
 
 .response-buttons {
