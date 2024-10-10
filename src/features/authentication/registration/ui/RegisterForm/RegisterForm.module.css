@@ -113,10 +113,10 @@
 }
 
 .input-wrapper .consent-wrapper label + div { 
-  color: var(--color-red-700) ;
+  color: var(--color-red-700);
   line-height: 1.36;
-  font-weight: var(--font-weight-400) ;
-  font-size: var(--font-size-p-xs) ;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
   user-select: none; 
 }
 
