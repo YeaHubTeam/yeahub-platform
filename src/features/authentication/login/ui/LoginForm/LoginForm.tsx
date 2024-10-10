@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Input, Icon, Button } from 'yeahub-ui-kit';
 
+import { FormControl } from '@/shared/ui/FormControl';
+
 import { useLoginMutation } from '@/entities/auth';
 import { Auth } from '@/entities/auth';
 
@@ -12,7 +14,7 @@ export const LoginForm = () => {
 	const [loginMutation, { isLoading }] = useLoginMutation();
 	const {
 		handleSubmit,
-		register,
+		control,
 		formState: { errors },
 	} = useFormContext<Auth>();
 
@@ -28,39 +30,38 @@ export const LoginForm = () => {
 		<div className={styles.wrapper}>
 			<div className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="email">
-						Электронная почта
-					</label>
-					<Input
-						className={styles.input}
-						{...register('username')}
-						placeholder="Введите электронную почту"
-						hasError={!!errors.username?.message}
-					/>
-					{errors.username ? <div className={styles.error}>{errors.username.message}</div> : null}
+					<FormControl name="email" control={control} label={'Электронная почта'}>
+						{(field) => (
+							<Input {...field} className={styles.input} placeholder="Введите электронную почту" />
+						)}
+					</FormControl>
 				</div>
+
 				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="password">
-						Пароль
-					</label>
-					<Input
-						className={styles.input}
-						{...register('password')}
-						placeholder="Введите пароль"
-						type={isPasswordHidden ? 'text' : 'password'}
-						hasError={!!errors.password?.message}
-						suffix={
-							<Icon
-								className={styles.icon}
-								onClick={handleShowPassword}
-								icon="password"
-								arg={isPasswordHidden}
-								color="--palette-ui-black-300"
+					<FormControl name="password" control={control} label={'Пароль'}>
+						{(field) => (
+							<Input
+								{...field}
+								className={styles.input}
+								placeholder="Введите пароль"
+								type={isPasswordHidden ? 'text' : 'password'}
+								suffix={
+									<Icon
+										className={styles.icon}
+										onClick={handleShowPassword}
+										icon="password"
+										arg={isPasswordHidden}
+										color={
+											errors.password?.message ? '--palette-ui-red-700' : '--palette-ui-black-300'
+										}
+										size={24}
+									/>
+								}
 							/>
-						}
-					/>
-					{errors.password ? <div className={styles.error}>{errors.password.message}</div> : null}
-					<div className={styles.link}>
+						)}
+					</FormControl>
+
+					<div className={styles['forgot-password-link']}>
 						<Button tagName="a" theme="link">
 							Забыли пароль?
 						</Button>
