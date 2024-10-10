@@ -1,5 +1,3 @@
-import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
@@ -19,7 +17,6 @@ interface InterviewSliderProps {
 export const InterviewSlider = ({
 	id,
 	title,
-	imageSrc,
 	answer,
 	shortAnswer,
 	changeAnswer,
@@ -47,7 +44,6 @@ export const InterviewSlider = ({
 				answer={answer}
 				changeAnswer={changeAnswer}
 			/>
-			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>
 	);
 };
