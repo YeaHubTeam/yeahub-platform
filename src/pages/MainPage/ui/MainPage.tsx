@@ -2,9 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
+
+import { LanguageSwitcher } from '@/features/internationalization/switch-language';
 
 import styles from './MainPage.module.css';
 
@@ -14,6 +19,8 @@ const MainPage = () => {
 	const { data: profile } = useProfileQuery();
 
 	const navigate = useNavigate();
+	const { t } = useI18nHelpers();
+	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
 
 	const getPercentProfileFullness = useCallback((profile: GetProfileResponse) => {
 		const allFileldsCount = Object.keys(profile).length - 1;
@@ -41,31 +48,28 @@ const MainPage = () => {
 		<>
 			{profile && (
 				<div className={styles.wrapper}>
-					<h2 className={styles.title}>Привет, {profile.firstName}!</h2>
+					<h2 className={styles.title}>
+						{t(Translation.HELLO)}, {profile.firstName}!
+					</h2>
 					{isIncompleteProfile && (
 						<Card className={styles.card}>
 							<div className={styles['card-wrapper']}>
 								<div className={styles['card-content']}>
 									<h3 className={styles['card-title']}>
-										Профиль заполнен на {percentProfileFullness}%
+										{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
 									</h3>
-									<p className={styles['card-text']}>
-										Заполните свой профиль, чтобы мир мог увидеть вашу уникальность и вдохновиться
-										вашими достижениями. Каждая деталь добавляет картины вашей истории успеха
-									</p>
+									<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
 								</div>
 								<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
-									Заполнить профиль
+									{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
 								</Button>
 							</div>
 						</Card>
 					)}
 				</div>
 			)}
-			<span className={styles.text}>
-				Скоро здесь будут отображаться мероприятия сообщества, популярные статьи и многое ещё чего
-				интересного.
-			</span>
+			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
+			<LanguageSwitcher />
 		</>
 	);
 };

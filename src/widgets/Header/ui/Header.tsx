@@ -9,6 +9,8 @@ import { BurgerMenu } from '@/shared/ui/BurgerMenu';
 import { UserPreferences } from '@/features/common/user-preferences';
 // import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
+import { LanguageSwitcher } from '@/features/internationalization/switch-language';
+
 import styles from './Header.module.css';
 
 const MemoHeader = () => {
@@ -36,6 +38,7 @@ const MemoHeader = () => {
 
 			{/* <ThemeSwitcher /> */}
 			<UserPreferences />
+			<LanguageSwitcher />
 
 			{isMobile && (
 				<BurgerMenu

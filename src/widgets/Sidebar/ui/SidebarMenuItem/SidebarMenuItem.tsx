@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { MenuItem } from '../../model/types/sidebar';
 
 import styles from './SidebarMenuItem.module.css';
@@ -25,6 +27,7 @@ interface SidebarMenuItemProps {
 
 export const SidebarMenuItem = ({ menuItem, fullWidth }: SidebarMenuItemProps) => {
 	const ImageComponent = menuItem.icon;
+	const { t } = useI18nHelpers();
 
 	return (
 		<NavLink
@@ -38,7 +41,7 @@ export const SidebarMenuItem = ({ menuItem, fullWidth }: SidebarMenuItemProps) =
 					className={classNames(styles['link-title'], { [styles.closing]: fullWidth })}
 					data-testid="SidebarMenuItem_Link_Text"
 				>
-					{menuItem.title}
+					{t(menuItem.title)}
 				</span>
 			</div>
 		</NavLink>

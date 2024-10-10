@@ -1,3 +1,6 @@
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { Skill } from '@/entities/skill';
@@ -11,6 +14,8 @@ interface SkillsBlockProps {
 	skillsList: Skill[];
 }
 export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
+	const { t } = useI18nHelpers(i18Namespace.profile);
+
 	return (
 		<Card>
 			<div className={styles['skills']}>
@@ -18,7 +23,7 @@ export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 				{skillsList.length ? (
 					<SkillsBlockList skillsList={skillsList} />
 				) : (
-					<div>Список навыков пуст</div>
+					<div>{t(Profile.PROFILEPAGE_SKILLS_NOSKILLS)}</div>
 				)}
 			</div>
 		</Card>

@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Input, Icon, Button } from 'yeahub-ui-kit';
+import { Button, Icon, Input } from 'yeahub-ui-kit';
 
-import { useLoginMutation } from '@/entities/auth';
-import { Auth } from '@/entities/auth';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
+import { Auth, useLoginMutation } from '@/entities/auth';
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [loginMutation, { isLoading }] = useLoginMutation();
+	const { t } = useI18nHelpers('auth');
 	const {
 		handleSubmit,
 		register,
@@ -29,24 +31,24 @@ export const LoginForm = () => {
 			<div className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
 					<label className={styles.label} htmlFor="email">
-						Электронная почта
+						{t('login.email')}
 					</label>
 					<Input
 						className={styles.input}
 						{...register('username')}
-						placeholder="Введите электронную почту"
+						placeholder={t('login.emailPlaceholder')}
 						hasError={!!errors.username?.message}
 					/>
 					{errors.username ? <div className={styles.error}>{errors.username.message}</div> : null}
 				</div>
 				<div className={styles['input-wrapper']}>
 					<label className={styles.label} htmlFor="password">
-						Пароль
+						{t('login.password')}
 					</label>
 					<Input
 						className={styles.input}
 						{...register('password')}
-						placeholder="Введите пароль"
+						placeholder={t('login.passwordPlaceholder')}
 						type={isPasswordHidden ? 'text' : 'password'}
 						hasError={!!errors.password?.message}
 						suffix={
@@ -62,7 +64,7 @@ export const LoginForm = () => {
 					{errors.password ? <div className={styles.error}>{errors.password.message}</div> : null}
 					<div className={styles.link}>
 						<Button tagName="a" theme="link">
-							Забыли пароль?
+							{t('login.forgotPassword')}
 						</Button>
 					</div>
 				</div>
@@ -73,7 +75,7 @@ export const LoginForm = () => {
 				className={styles['submit-button']}
 				onClick={handleSubmit(onLogin)}
 			>
-				Вход
+				{t('buttons.login')}
 			</Button>
 		</div>
 	);

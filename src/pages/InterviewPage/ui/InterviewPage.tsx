@@ -21,8 +21,7 @@ import {
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
-import { QuestionLargePreview } from '@/widgets/InterviewPreparation';
-import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
+import { QuestionLargePreview, QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
@@ -42,15 +41,15 @@ const InterviewPage = () => {
 	const questionStats = profileStats
 		? [
 				{
-					title: 'Всего вопросов',
+					title: t(Interview.STATS_STATSSTUDIED_ALLQUESTIONS),
 					value: String(profileStats.questionsStat.uniqueQuestionsCount),
 				},
 				{
-					title: 'Не изучено',
+					title: t(Interview.STATS_STATSSTUDIED_NOTSTUDIED),
 					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
 				},
 				{
-					title: 'Изучено',
+					title: t(Interview.STATS_STATSSTUDIED_STUDIED),
 					value: String(profileStats.questionsStat.learnedQuestionsCount),
 				},
 			]
@@ -160,8 +159,8 @@ const InterviewPage = () => {
 						</div>
 					</Card>
 					<Card
-						title={t('questions.title')}
-						actionTitle={t('questions.studied')}
+						title={t(Interview.QUESTIONS_TITLE)}
+						actionTitle={t(Interview.QUESTIONS_STUDIED)}
 						actionRoute={ROUTES.interview.questions.page}
 						withShadow
 					>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -24,6 +25,7 @@ export const ChooseQuestionsCategories = ({
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
 	const { data: skills } = useGetSkillsListQuery({ limit });
+	const { t } = useI18nHelpers('quiz');
 
 	const toggleShowAll = () => {
 		setShowAll(!showAll);
@@ -56,7 +58,7 @@ export const ChooseQuestionsCategories = ({
 		<div className={styles.wrapper}>
 			<BaseFilterSection
 				data={prepareData}
-				title="Категории вопросов"
+				title={t('questionCategories')}
 				onClick={handleChooseSkill}
 			/>
 			<Button className={styles.button} theme="link" onClick={toggleShowAll}>

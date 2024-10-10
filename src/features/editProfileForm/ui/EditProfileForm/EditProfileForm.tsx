@@ -6,10 +6,10 @@ import { useBlocker, useLocation } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Flex } from '@/shared/ui/Flex';
-import { Loader } from '@/shared/ui/Loader';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -67,7 +67,7 @@ export const EditProfileForm = () => {
 	return (
 		<section className={styles.section}>
 			<Tabs
-				title={t('tabs.title')}
+				title={t(ProfileI18.TABS_TITLE)}
 				tabs={tabs}
 				tabToggle={currentActiveTab}
 				setTabToggle={setCurrentActiveTab}
@@ -80,7 +80,7 @@ export const EditProfileForm = () => {
 					) : null}
 					<Flex direction="column" align="end" className={styles['btn-container']}>
 						<Button type="submit" disabled={isUpdateProfileLoading}>
-							Сохранить
+							{t(ProfileI18.BUTTONS_SAVE)}
 						</Button>
 					</Flex>
 				</form>

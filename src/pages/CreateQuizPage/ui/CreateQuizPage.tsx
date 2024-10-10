@@ -4,6 +4,7 @@ import { Button, Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -27,6 +28,7 @@ const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
+	const { t } = useI18nHelpers('quiz');
 	const { data: userProfile, isLoading } = useProfileQuery();
 
 	const navigate = useNavigate();
@@ -85,7 +87,7 @@ const CreateQuizPage = () => {
 	return (
 		<section>
 			<Card className={styles.container}>
-				<h2 className={styles.title}>Собеседование</h2>
+				<h2 className={styles.title}>{t('createQuizTitle')}</h2>
 				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
 						selectedSkills={skills}
@@ -106,7 +108,7 @@ const CreateQuizPage = () => {
 					onClick={handleCreateNewQuiz}
 					suffix={<Icon icon="arrowRight" size={24} />}
 				>
-					Начать
+					{t('buttons.start')}
 				</Button>
 			</Card>
 		</section>

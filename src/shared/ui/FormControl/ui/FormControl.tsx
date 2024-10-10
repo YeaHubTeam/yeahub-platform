@@ -1,6 +1,8 @@
 import { ReactNode, useMemo } from 'react';
-import { useController, Control, ControllerRenderProps, FieldValues } from 'react-hook-form';
+import { Control, ControllerRenderProps, FieldValues, useController } from 'react-hook-form';
 import { FormControl as CustomControl } from 'yeahub-ui-kit';
+
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
 
@@ -21,7 +23,9 @@ export const FormControl = ({ children, name, control, label, className }: contr
 		control,
 	});
 
-	const errorText = useMemo(() => error?.message?.toString(), [error]);
+	const { t } = useI18nHelpers();
+
+	const errorText = useMemo(() => error?.message && t(error?.message), [error, t]);
 
 	return (
 		<CustomControl htmlFor={name} label={label} error={errorText} className={className}>

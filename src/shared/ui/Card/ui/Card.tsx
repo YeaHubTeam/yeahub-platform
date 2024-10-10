@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import styles from './Card.module.css';
 
@@ -72,6 +74,7 @@ export const Card = ({
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
+	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 
 	useLayoutEffect(() => {
 		if (expandable) {
@@ -150,7 +153,7 @@ export const Card = ({
 				<>
 					{!isExpand ? <ExpandIcon /> : null}
 					<button onClick={expandHandler} className={`${styles.button}`}>
-						{!isExpand ? 'Развернуть' : 'Свернуть'}
+						{!isExpand ? t('expand') : t('collapse')}
 						<Arrow className={classNames({ [styles['card-arrow-expanded']]: isExpand })} />
 					</button>
 				</>
