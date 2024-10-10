@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: max(50px, 11%);
-  margin-bottom: 70px;
+  margin-top: 48px;
   padding: 16px;
   width: 100%;
   max-width: 408px;
@@ -15,6 +14,10 @@
 
 .btn {
   cursor: pointer;
+}
+
+.btn span {
+  margin-left: auto;
 }
 
 @media (width <= 768px) {
