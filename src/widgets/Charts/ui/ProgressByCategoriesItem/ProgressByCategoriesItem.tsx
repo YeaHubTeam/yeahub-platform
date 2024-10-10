@@ -1,15 +1,10 @@
 import ReactECharts from 'echarts-for-react';
 
+import { ProgressByCategoriesData } from '@/entities/quiz';
+
 import { options } from '../../model/constants/options';
 
 import styles from './ProgressByCategoriesItem.module.css';
-
-export interface ProgressByCategoriesData {
-	category: string;
-	passed: number;
-	total: number;
-	value: number;
-}
 
 interface ProgressByCategoriesItemProps {
 	progressData: ProgressByCategoriesData;

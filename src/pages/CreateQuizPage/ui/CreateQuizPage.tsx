@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -11,7 +13,7 @@ import {
 	ChooseQuestionCount,
 	ChooseQuestionsCategories,
 } from '@/entities/question';
-import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
+import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
 import { QuestionModeType } from '@/entities/quiz';
 import { QuizQuestionMode } from '@/entities/quiz';
 
@@ -27,6 +29,22 @@ const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
 	const { data: userProfile, isLoading } = useProfileQuery();
 
+	const navigate = useNavigate();
+
+	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+		{
+			profileId: userProfile?.profiles[0].profileId,
+			params: { limit: 1, page: 1 },
+		},
+		{
+			skip: !userProfile?.id,
+		},
+	);
+
+	if (activeQuizData?.data[0].questions) {
+		navigate(ROUTES.interview.new.page);
+	}
+
 	const createQuizData = useSelector(getCreateQuizPageState);
 
 	const { skills, complexity, mode, limit } = createQuizData;
@@ -37,7 +55,7 @@ const CreateQuizPage = () => {
 		dispatch(createQuizPageActions.setSkills(skills));
 	};
 
-	const onChangeComplexity = (complexity: number[]) => {
+	const onChangeComplexity = (complexity: number[] | undefined) => {
 		dispatch(createQuizPageActions.setComplexity(complexity));
 	};
 
@@ -62,7 +80,7 @@ const CreateQuizPage = () => {
 		});
 	};
 
-	if (isLoading) return <CreateQuizPageSkeleton />;
+	if (isLoading || isActiveQuizLoading) return <CreateQuizPageSkeleton />;
 
 	return (
 		<section>

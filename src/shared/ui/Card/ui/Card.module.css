@@ -111,6 +111,10 @@
   .link-bottom {
     bottom: 16px;
   }
+
+  .link-disabled {
+    display: none;
+  }
 }
 
 @media (width <= 768px) {

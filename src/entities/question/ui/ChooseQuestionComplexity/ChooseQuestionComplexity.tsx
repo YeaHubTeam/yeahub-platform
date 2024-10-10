@@ -2,7 +2,7 @@ import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface ChooseQuestionComplexityProps {
 	selectedComplexity?: number[];
-	onChangeComplexity: (complexity: number[]) => void;
+	onChangeComplexity: (complexity?: number[]) => void;
 }
 
 const complexity = [
@@ -21,7 +21,7 @@ export const ChooseQuestionComplexity = ({
 		const updates = isDataExist
 			? (selectedComplexity || []).filter((item) => !newValues.includes(item))
 			: [...(selectedComplexity || []), ...newValues];
-		onChangeComplexity(updates);
+		onChangeComplexity(updates.length === 0 ? undefined : updates);
 	};
 
 	const preparedData = complexity.map((item) => ({

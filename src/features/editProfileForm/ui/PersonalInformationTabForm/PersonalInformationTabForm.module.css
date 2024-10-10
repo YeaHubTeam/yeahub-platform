@@ -57,33 +57,3 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
-
-.phone {
-  display: flex;
-  align-items: center;
-  padding: 0 8px 0 12px;
-  width: 100%;
-  min-height: 48px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
-  border-radius: 68px;
-  background-color: var(--background-block);
-  color: var(--text-color-primary);
-  line-height: 140%;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
-  transition: 0.2s;
-  cursor: text;
-}
-
-.phone:focus {
-  caret-color: var(--color-purple-500);
-  box-shadow: var(--focus-shadow);
-  border-color: var(--color-purple-500);
-}
-
-.phone::placeholder {
-  color: var(--text-color-more-lightest);
-}

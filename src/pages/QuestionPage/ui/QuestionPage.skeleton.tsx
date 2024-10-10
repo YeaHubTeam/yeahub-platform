@@ -1,12 +1,14 @@
 import classNames from 'classnames';
-import { isMobile } from 'react-device-detect';
 
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './QuestionPage.module.css';
 
 export const QuestionPageSkeleton = () => {
+	const { isMobile } = useScreenSize();
+
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>

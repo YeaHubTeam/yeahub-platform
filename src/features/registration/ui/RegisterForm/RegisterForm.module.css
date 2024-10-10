@@ -81,5 +81,3 @@
 .consent-wrapper input[type="checkbox"]:not(:checked):hover {
   border-color: var(--color-purple-500)
 }
-
-

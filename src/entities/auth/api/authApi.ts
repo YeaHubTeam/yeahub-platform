@@ -1,3 +1,4 @@
+import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
@@ -51,6 +52,7 @@ export const authApi = baseApi.injectEndpoints({
 		}),
 		profile: build.query<GetProfileResponse, void>({
 			query: () => 'auth/profile',
+			providesTags: [ApiTags.PROFILE],
 		}),
 		logout: build.query<void, void>({
 			query: () => 'auth/logout',

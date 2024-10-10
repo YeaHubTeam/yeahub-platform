@@ -3,7 +3,12 @@
 }
 
 .button {
+  justify-content: flex-start;
   margin-top: 16px;
+  
+  span {
+    margin-left: 0;
+  }
 }
 
 .button:hover {

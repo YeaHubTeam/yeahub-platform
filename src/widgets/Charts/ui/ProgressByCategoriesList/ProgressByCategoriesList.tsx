@@ -1,7 +1,6 @@
-import {
-	ProgressByCategoriesData,
-	ProgressByCategoriesItem,
-} from '../ProgressByCategoriesItem/ProgressByCategoriesItem';
+import { ProgressByCategoriesData } from '@/entities/quiz';
+
+import { ProgressByCategoriesItem } from '../ProgressByCategoriesItem/ProgressByCategoriesItem';
 
 import styles from './ProgressByCategoriesList.module.css';
 

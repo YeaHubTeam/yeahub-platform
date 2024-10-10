@@ -28,9 +28,13 @@ const QuestionsPage = () => {
 
 	const { status, ...getParams } = params;
 	const { data: userProfile } = useProfileQuery();
+	const profileId = userProfile?.profiles[0]?.profileId || '';
+	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
+
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
 			...getParams,
+			specialization: specializationId,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
@@ -41,7 +45,7 @@ const QuestionsPage = () => {
 		useGetLearnedQuestionsQuery(
 			{
 				...getParams,
-				profileId: userProfile?.profiles[0].profileId || '',
+				profileId,
 				isLearned: status === 'learned',
 				keywords: keywords ? [keywords] : undefined,
 			},
@@ -60,7 +64,7 @@ const QuestionsPage = () => {
 		dispatch(questionsPageActions.setSkills(skills));
 	};
 
-	const onChangeComplexity = (complexity: number[]) => {
+	const onChangeComplexity = (complexity?: number[]) => {
 		dispatch(questionsPageActions.setComplexity(complexity));
 	};
 
@@ -71,9 +75,6 @@ const QuestionsPage = () => {
 	const onChangeStatus = (status: QuestionFilterStatus) => {
 		dispatch(questionsPageActions.setStatus(status));
 	};
-
-	const { data: profile } = useProfileQuery();
-	const profileId = profile?.profiles[0]?.profileId || '';
 
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
 		return <QuestionsPageSkeleton />;

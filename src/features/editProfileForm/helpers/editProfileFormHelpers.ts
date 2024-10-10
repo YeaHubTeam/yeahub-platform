@@ -56,7 +56,7 @@ export const mapProfileToForm = (profile: Profile): ProfileSchema => ({
 	email: profile.user.email,
 	location: profile.user.city,
 	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
-		const currentSocialNetwork = profile.socialNetwork.find(
+		const currentSocialNetwork = profile.socialNetwork?.find(
 			({ code }) => code === socialNetwork.code,
 		);
 		result.push({
@@ -76,7 +76,9 @@ export const mapFormToProfile = (
 	...profile,
 	id: profile.id,
 	description: values.aboutMe || '',
-	socialNetwork: values.socialNetworks || [],
+	socialNetwork: values.socialNetworks
+		? values.socialNetworks.filter((socialNetwork) => socialNetwork.title)
+		: [],
 	specializationId: values.specialization,
 	profileSkills: values.skills || [],
 	user: {
@@ -85,5 +87,10 @@ export const mapFormToProfile = (
 		firstName: values.firstName,
 		lastName: values.lastName,
 		phone: values.phone,
+		city: values.location || profile.user.city || '',
+		birthday: profile.user.birthday || null,
+		address: profile.user.address || '',
+		avatarUrl: profile.user.avatarUrl || '',
+		avatarImage: values.image,
 	},
 });

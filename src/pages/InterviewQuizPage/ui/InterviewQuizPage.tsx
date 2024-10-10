@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -18,8 +18,11 @@ import {
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
+import { InterviewQuizPageSkeleton } from './InterviewQuizPage.skeleton';
 
 const InterviewQuizPage = () => {
+	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const { data: userProfile } = useProfileQuery();
@@ -48,10 +51,6 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
-	if (isLoading) {
-		return <Loader />;
-	}
-
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
 			const quizToSave = {
@@ -64,6 +63,8 @@ const InterviewQuizPage = () => {
 			saveResult(quizToSave);
 		}
 	};
+
+	if (isLoading) return <InterviewQuizPageSkeleton />;
 
 	return (
 		<div className={styles.container}>
@@ -89,6 +90,7 @@ const InterviewQuizPage = () => {
 						goToPrevSlide={goToPrevSlide}
 						answer={answer}
 						changeAnswer={changeAnswer}
+						setIsAnswerVisible={setIsAnswerVisible}
 					/>
 					<InterviewSlider
 						id={questionId}
@@ -97,6 +99,8 @@ const InterviewQuizPage = () => {
 						shortAnswer={shortAnswer ?? ''}
 						answer={answer}
 						changeAnswer={changeAnswer}
+						isAnswerVisible={isAnswerVisible}
+						setIsAnswerVisible={setIsAnswerVisible}
 					/>
 					<Button
 						className={styles['end-button']}

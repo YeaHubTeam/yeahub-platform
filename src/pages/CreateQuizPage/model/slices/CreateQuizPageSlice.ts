@@ -22,7 +22,7 @@ const createQuizPageSlice = createSlice({
 		setSkills: (state, action: PayloadAction<number[] | undefined>) => {
 			state.skills = action.payload;
 		},
-		setComplexity: (state, action: PayloadAction<number[]>) => {
+		setComplexity: (state, action: PayloadAction<number[] | undefined>) => {
 			state.complexity = action.payload;
 		},
 		setLimit: (state, action: PayloadAction<number>) => {

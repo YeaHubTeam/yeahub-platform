@@ -1,6 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+if ! echo "$branch_name" | grep -qE "^(feature|fix|release)/YH-[0-9]+$"; then
+  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/'"
+  exit 1
+fi
+
 export FORCE_COLOR=1
 
 echo '🔍🎨 Formating and checking staged files before committing!'
