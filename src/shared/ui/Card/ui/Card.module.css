@@ -48,7 +48,7 @@
 }
 
 .card-expand-svg defs linearGradient stop {
-  stop-color: var(--background-card);
+  stop-color: var(--background-block);
   transition: stop-color 300ms ease-in-out;
 }
 
