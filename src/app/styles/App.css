@@ -67,6 +67,7 @@
   --text-color-lightest: var(--color-black-500);
   --text-color-the-lightest: var(--color-black-400);
   --text-color-more-lightest: var(--color-black-300);
+  --text-color-even-more-lightest: var(--color-black-30);
   --background-skeleton: var(--color-black-150);
   --text-color-red: var(--color-red-800);
   --background-nav-item: var(--color-purple-100);
@@ -110,6 +111,7 @@
   --text-color-lightest: var(--color-black-500);
   --text-color-the-lightest: var(--color-black-400);
   --text-color-more-lightest: var(--color-black-300);
+  --text-color-even-more-lightest: var(--color-black-30);
   --text-color-red: var(--color-red-800);
   --background-skeleton: var(--color-black-150);
   --background-nav-item: var(--color-purple-500);

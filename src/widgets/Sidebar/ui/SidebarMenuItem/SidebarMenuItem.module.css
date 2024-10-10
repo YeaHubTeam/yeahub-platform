@@ -11,7 +11,7 @@
 }
 
 .item:hover {
-  background-color: var(--color-black-25);
+  background-color: var(--background-app);
 }
 
 
@@ -41,8 +41,8 @@
   align-self: end;
   padding: 4px 8px;
   border-radius: 8px;
-  background-color: var(--color-purple-100);
-  color: var(--color-purple-700);
+  background-color: var(--background-nav-item);
+  color: var(--background-primary);
   font-size: var(--font-size-p-s);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .category:hover {
-  background-color: var(--color-black-30);
+  background-color: var(--text-color-even-more-lightest);
 }
 
 .category.fullwidth {
@@ -128,7 +128,7 @@
 }
 
 .expanded {
-  background-color: var(--color-black-30);
+  background-color: var(--text-color-even-more-lightest);
 }
 
 .fullwidth .nested {
@@ -136,21 +136,21 @@
 }
 
 .nested:active {
-  border-left: solid 2px var(--color-purple-700);
+  border-left: solid 2px var(--background-primary);
 }
 
 .item.active {
-  background-color: var(--color-black-30);
+  background-color: var(--text-color-even-more-lightest);
 }
 
 .item.active .container {
-  color: var(--color-purple-700);
+  color: var(--background-primary);
 }
 
 .category .item.active {
-  background-color: var(--color-purple-100);
+  background-color: var(--background-nav-item);
 }
 
 .category .item.active svg {
-  color: var(--color-purple-700);
+  color: var(--background-primary);
 }
