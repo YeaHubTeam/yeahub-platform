@@ -10,26 +10,6 @@
   gap: 16px;
 }
 
-@media (width <= 1440px) {
-  .card {
-    flex-direction: column;
-  }
-
-  .card > .card-edit-block {
-    order: 1;
-  }
-
-  .user-data {
-    order: 2;
-  }
-}
-
-@media (width <= 1024px) {
-  .card {
-    flex-direction: row-reverse;
-  }
-}
-
 @media (width <= 768px) {
   .user-data {
     flex-direction: row;
