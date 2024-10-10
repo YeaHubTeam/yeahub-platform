@@ -41,16 +41,18 @@
   margin-top: 12px;
   width: 100%;  
   height: 200px;
+  border-radius: 12px;
   object-fit: cover;
   object-position: right;
 }
 
-@media (width <= 1198px) {
+@media (width <= 1440px) {
   .interview {
     width: 100%;
   }
   
   .statistics {
     width: 100%;
+    min-height: auto;
   }
 }

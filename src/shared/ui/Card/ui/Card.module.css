@@ -105,9 +105,9 @@
   bottom: 24px;
 }
 
-@media (width <= 1313px) {
-  .link-disabled {
-    display: none;
+@media (width <= 1440px) {
+  .content {
+    margin-bottom: 48px;
   }
 }
 
@@ -117,15 +117,15 @@
     flex-direction: column;
     align-items: start;	
   }
-  
-  .content {
-    margin-bottom: 32px;
-  }
 
   .link {
     position: absolute;
     right: 20px;
     bottom: 20px;
+  }
+
+  .content {
+    margin-bottom: 36px;
   }
 }
 
