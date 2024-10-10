@@ -41,7 +41,7 @@ const CreateQuizPage = () => {
 		},
 	);
 
-	if (activeQuizData?.data[0].questions) {
+	if (activeQuizData?.data[0]?.questions) {
 		navigate(ROUTES.interview.new.page);
 	}
 
