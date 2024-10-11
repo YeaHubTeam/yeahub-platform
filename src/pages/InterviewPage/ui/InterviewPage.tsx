@@ -84,6 +84,7 @@ const InterviewPage = () => {
 	return (
 		<div className={styles.container}>
 			<Card
+				className={styles.interview}
 				actionDisabled={isSpecializationEmpty}
 				title={t(Interview.PREPARATION_TITLE)}
 				actionTitle={t(
@@ -94,79 +95,71 @@ const InterviewPage = () => {
 				actionRoute={lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page}
 				withShadow
 			>
-				{isActiveQuizLoading ? (
-					<Loader />
+				{!isActiveQuizLoading ? (
+					<>
+						{isSpecializationEmpty ? (
+							<div className={styles['preparation-wrapper']}>
+								<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
+								<p className={styles['inactive-description']}>
+									{t(Interview.PREPARATION_STUB_DESCRIPTION)}
+								</p>
+								<Button onClick={handleProfileRedirect} className={styles.button} size="large">
+									{t(Interview.FILLPROFILE_BUTTON)}
+								</Button>
+							</div>
+						) : (
+							<>
+								{lastActiveQuizInfo ? (
+									<div className={styles.preparation}>
+										<QuestionProgressBarBlock
+											fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
+											toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
+										/>
+										<QuestionLargePreview question={lastActiveQuizInfo.question} />
+									</div>
+								) : (
+									<div className={styles['preparation-empty']}>
+										<h2 className={styles['inactive-title']}>
+											{t(Interview.PREPARATION_NOACTIVETITLE)}
+										</h2>
+										<p className={styles['inactive-description']}>
+											{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
+										</p>
+										<img
+											className={styles['preparation-noactiveimage']}
+											src={NoActiveQuizPlaceholder}
+											alt="no active quiz"
+										/>
+									</div>
+								)}
+							</>
+						)}
+					</>
 				) : (
-					<div className={styles.preparation}>
-						<div className={styles['preparation-wrapper']}>
-							{isSpecializationEmpty ? (
-								<>
-									<h2 className={styles['inactive-title']}>
-										{t(Interview.PREPARATION_STUB_TITLE)}
-									</h2>
-									<p className={styles['inactive-description']}>
-										{t(Interview.PREPARATION_STUB_DESCRIPTION)}
-									</p>
-									<Button onClick={handleProfileRedirect} className={styles.button} size="large">
-										{t(Interview.FILLPROFILE_BUTTON)}
-									</Button>
-								</>
-							) : (
-								<>
-									{lastActiveQuizInfo ? (
-										<>
-											<QuestionProgressBarBlock
-												fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
-												toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
-											/>
-											<QuestionLargePreview question={lastActiveQuizInfo.question} />
-										</>
-									) : (
-										<>
-											<h2 className={styles['inactive-title']}>
-												{t(Interview.PREPARATION_NOACTIVETITLE)}
-											</h2>
-											<p className={styles['inactive-description']}>
-												{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
-											</p>
-											<img
-												className={styles['preparation-noactiveimage']}
-												src={NoActiveQuizPlaceholder}
-												alt="no active quiz"
-											/>
-										</>
-									)}
-								</>
-							)}
-						</div>
-					</div>
+					<Loader />
 				)}
 			</Card>
+
+			{!isSpecializationEmpty && (
+				<Card
+					className={styles.statistics}
+					isActionPositionBottom
+					title={t('stats.title')}
+					actionTitle={t('stats.linkText')}
+					actionRoute={ROUTES.interview.statistic.page}
+					actionDisabled={!lastActiveQuizInfo}
+				>
+					<PassedQuestionChart
+						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
+						learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
+					/>
+					<PassedQuestionStatInfo stats={questionStats} />
+				</Card>
+			)}
+
 			{!isSpecializationEmpty && (
 				<>
-					<Card
-						isActionPositionBottom
-						title={t('stats.title')}
-						actionTitle={t('stats.linkText')}
-						actionRoute={ROUTES.interview.statistic.page}
-						actionDisabled={!lastActiveQuizInfo}
-					>
-						<div className={styles.statistics}>
-							<PassedQuestionChart
-								total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
-								learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
-							/>
-							<PassedQuestionStatInfo stats={questionStats} />
-						</div>
-					</Card>
-					<Card
-						title={t('questions.title')}
-						actionTitle={t('questions.studied')}
-						actionRoute={ROUTES.interview.questions.page}
-						withShadow
-					>
-						<InterviewQuestionsList />
-					</Card>
+					<InterviewQuestionsList />
 					<InterviewHistoryList />
 				</>
 			)}

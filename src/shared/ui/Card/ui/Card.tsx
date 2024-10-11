@@ -5,6 +5,8 @@ import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 
+import { Flex } from '../../Flex';
+
 import styles from './Card.module.css';
 
 interface CardProps {
@@ -112,7 +114,9 @@ export const Card = ({
 	const isHeightForExpand = contentHeight >= 250;
 
 	return (
-		<div
+		<Flex
+			gap={'20'}
+			direction={'column'}
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
 			})}
@@ -161,6 +165,6 @@ export const Card = ({
 					</button>
 				</>
 			)}
-		</div>
+		</Flex>
 	);
 };

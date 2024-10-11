@@ -36,6 +36,7 @@ export const InterviewHistoryList = () => {
 
 	return (
 		<Card
+			className={styles['card-history']}
 			actionRoute={ROUTES.interview.history.page}
 			actionTitle={t(Interview.HISTORY_PREPARATION_LINKTEXT)}
 			title={t(Interview.HISTORY_PREPARATION_TITLE)}

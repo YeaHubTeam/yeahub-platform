@@ -1,8 +1,5 @@
 .card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   padding: 24px;
   overflow: hidden;
   border-radius: 16px;
@@ -31,7 +28,7 @@
 }
 
 .card-expandable {
-  height: 250px;
+  min-height: 250px;
 }
 
 .card-expand {
@@ -84,6 +81,7 @@
 
 .link {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 8px;
   color: var(--text-color-link-active);
@@ -112,13 +110,9 @@
   bottom: 24px;
 }
 
-@media (width <= 1313px) {
-  .link-bottom {
-    bottom: 16px;
-  }
-
-  .link-disabled {
-    display: none;
+@media (width <= 1440px) {
+  .content {
+    margin-bottom: 48px;
   }
 }
 
@@ -128,15 +122,15 @@
     flex-direction: column;
     align-items: start;	
   }
-  
-  .content {
-    margin-bottom: 32px;
-  }
 
   .link {
     position: absolute;
-    right: 24px;
-    bottom: 16px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .content {
+    margin-bottom: 36px;
   }
 }
 
@@ -147,6 +141,7 @@
   }
   
   .link {
-    left: 24px;
+    bottom: 16px;
+    left: 16px;
   }
 }
