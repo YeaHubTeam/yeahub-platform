@@ -14,16 +14,14 @@ export const SkillsTabForm = () => {
 	const { control } = useFormContext();
 
 	return (
-		<Flex direction="column" gap="120">
-			<Flex gap="120">
-				<div className={styles.description}>
-					<h3>{t('skillForm.yourSkills')}</h3>
-					<p>{t('skillForm.yourSkillsText')}</p>
-				</div>
-				<FormControl className={styles.select} name="skills" control={control}>
-					{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
-				</FormControl>
-			</Flex>
+		<Flex className={styles.container} gap="20">
+			<div className={styles.description}>
+				<h3>{t('skillForm.yourSkills')}</h3>
+				<p>{t('skillForm.yourSkillsText')}</p>
+			</div>
+			<FormControl className={styles.select} name="skills" control={control} label="Навык">
+				{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
+			</FormControl>
 		</Flex>
 	);
 };

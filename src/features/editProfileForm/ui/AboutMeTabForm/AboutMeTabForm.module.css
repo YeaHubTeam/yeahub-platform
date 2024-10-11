@@ -1,5 +1,5 @@
 .description {
-  max-width: 246px;
+  flex: 1 0 350px;
 }
   
 .description h3 {
@@ -32,4 +32,16 @@
   
 .textarea:focus {
   outline: none;
+}
+
+@media (width <= 1200px) {
+  .description {
+    flex-basis: 230px;
+  }
+}
+
+@media (width <= 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
 }

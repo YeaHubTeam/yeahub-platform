@@ -10,7 +10,7 @@ export const AboutMeTabForm = () => {
 	const { control } = useFormContext();
 
 	return (
-		<Flex gap="120">
+		<Flex className={styles.container} gap="20">
 			<div className={styles.description}>
 				<h3>О себе любимом(-ой)</h3>
 				<p>

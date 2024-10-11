@@ -15,25 +15,25 @@ export const PersonalInformationTabForm = () => {
 	const { control } = useFormContext();
 
 	return (
-		<Flex direction="column" gap="120">
-			<Flex gap="120">
+		<Flex direction="column" gap="120" className={styles.wrapper}>
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>Фото профиля</h3>
 					<p>Ваше фото будет видно всем членам сообщества Yeahub</p>
 				</div>
 				<ImageLoader />
 			</Flex>
-			<Flex gap="120">
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>Персональная информация</h3>
 					<p>Сюда мы тоже что-нибудь классное придумаем</p>
 				</div>
 				<Flex gap="20" className={styles['inputs-wrapper']}>
-					<Flex maxWidth gap="20">
-						<FormControl name="firstName" control={control} label="Имя" className={styles.form}>
+					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
+						<FormControl name="firstName" control={control} label="Имя*" className={styles.form}>
 							{(field) => <Input {...field} className={styles.input} />}
 						</FormControl>
-						<FormControl name="lastName" control={control} label="Фамилия" className={styles.form}>
+						<FormControl name="lastName" control={control} label="Фамилия*" className={styles.form}>
 							{(field) => <Input {...field} className={styles.input} />}
 						</FormControl>
 					</Flex>
@@ -41,12 +41,12 @@ export const PersonalInformationTabForm = () => {
 					<FormControl
 						name="specialization"
 						control={control}
-						label="IT Специальность"
+						label="IT Специальность*"
 						className={styles.form}
 					>
 						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
 					</FormControl>
-					<Flex maxWidth gap="20">
+					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
 							name="phone"
 							control={control}
@@ -74,12 +74,17 @@ export const PersonalInformationTabForm = () => {
 							/>
 						)}
 					</FormControl>
-					<FormControl name="skillLevel" control={control} label="Уровень специалиста">
+					<FormControl
+						name="skillLevel"
+						control={control}
+						label="Уровень специалиста"
+						className={styles.form}
+					>
 						{(field) => <Input {...field} className={styles.input} placeholder="Junior" />}
 					</FormControl>
 				</Flex>
 			</Flex>
-			<Flex gap="120">
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>Личные ссылки</h3>
 					<p>Поделитесь своими профилями в других соц. сетях</p>

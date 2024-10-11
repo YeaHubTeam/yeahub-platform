@@ -1,14 +1,20 @@
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
 import { Accept, Extension } from '../FileLoader/model/types/types';
+import { Flex } from '../Flex';
 
 import style from './ImageLoader.module.css';
 
 export const ImageLoader = () => {
 	return (
 		<div className={style.container}>
-			<div className={style['profile-picture-wrapper']}>
-				<AvatarWithoutPhoto />
+			<Flex className={style['profile-picture-wrapper']} gap="16">
+				<Flex gap="8" direction="column">
+					<AvatarWithoutPhoto />
+					<button type="button" className={style['delete-avatar-btn']}>
+						Удалить фото
+					</button>
+				</Flex>
 				<FileLoader
 					maxFileMBSize={5}
 					accept={Accept.IMAGE}
@@ -16,10 +22,7 @@ export const ImageLoader = () => {
 					extensionsText={Extension.IMAGE}
 					onChange={(_: globalThis.File[]) => {}}
 				/>
-			</div>
-			<button type="button" className={style['delete-avatar-btn']}>
-				Удалить фото
-			</button>
+			</Flex>
 		</div>
 	);
 };

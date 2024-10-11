@@ -113,8 +113,8 @@ const quizApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Interview.QUESTIONS_TOAST_SUCCESSFINISH));
 					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
 				} catch (error) {
-					// eslint-disable-next-line no-console
 					toast.error(i18n.t(Interview.QUESTIONS_TOAST_ERRORFINISH));
+					// eslint-disable-next-line no-console
 					console.error(error);
 				}
 			},

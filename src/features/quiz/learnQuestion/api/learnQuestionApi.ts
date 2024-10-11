@@ -20,6 +20,7 @@ const learnQuestionApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Interview.QUESTIONS_TOAST_QUESTIONISLEARNED));
 				} catch (error) {
 					toast.error(i18n.t(Interview.QUESTIONS_TOAST_QUESTIONISNOTLEARNED));
+					// eslint-disable-next-line no-console
 					console.log(error);
 				}
 			},
