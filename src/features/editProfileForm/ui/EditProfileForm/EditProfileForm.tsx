@@ -12,8 +12,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Loader } from '@/shared/ui/Loader';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { useProfileQuery } from '@/entities/auth';
-import { Profile, useGetProfileByIdQuery } from '@/entities/profile';
+import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
 import { getTabs, mapFormToProfile, mapProfileToForm } from '../../helpers/editProfileFormHelpers';
@@ -27,11 +26,8 @@ export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const { hash } = useLocation();
-	const { data: profile } = useProfileQuery();
+	const { data: userProfile, isLoading } = useProfileQuery();
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
-	const profileId = profile?.profiles[0].profileId;
-
-	const { data: userProfile, isLoading } = useGetProfileByIdQuery(profileId as string);
 
 	const tabs = getTabs(t);
 	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
@@ -59,7 +55,7 @@ export const EditProfileForm = () => {
 
 	const onSubmit = (data: ProfileSchema) => {
 		methods.reset();
-		updateProfile(mapFormToProfile(userProfile as Profile, data));
+		updateProfile(mapFormToProfile(userProfile as GetProfileResponse, data));
 	};
 
 	if (isLoading) return <EditProfileFormSkeleton />;

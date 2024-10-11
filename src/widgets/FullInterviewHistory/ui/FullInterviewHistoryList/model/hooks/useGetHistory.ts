@@ -15,7 +15,7 @@ export const useGetHistory = (
 ) => {
 	const profile = useProfileQuery();
 
-	const profileId = profile.data?.profiles[0].profileId;
+	const profileId = profile.data?.profiles[0].id;
 
 	const historyQuiz = useGetHistoryQuizQuery(
 		profileId

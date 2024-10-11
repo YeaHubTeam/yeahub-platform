@@ -1,19 +1,19 @@
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
-import { User } from '@/entities/profile';
+import { GetProfileResponse } from '@/entities/auth';
 
 import styles from './UserImageBlock.module.css';
 
 interface UserImageBlockProps {
-	user: User;
+	profile: GetProfileResponse;
 }
 
-export const UserImageBlock = ({ user }: UserImageBlockProps) => {
+export const UserImageBlock = ({ profile }: UserImageBlockProps) => {
 	return (
 		<div className={styles['card-image']}>
-			{user.avatarUrl ? (
+			{profile.avatarUrl ? (
 				<div className={styles['card-avatar']}>
-					<img src={user.avatarUrl} alt="avatar" />
+					<img src={profile.avatarUrl} alt="avatar" />
 				</div>
 			) : (
 				<AvatarWithoutPhoto />
