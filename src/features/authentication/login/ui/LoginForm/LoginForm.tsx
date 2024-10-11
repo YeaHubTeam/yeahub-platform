@@ -30,7 +30,7 @@ export const LoginForm = () => {
 		<div className={styles.wrapper}>
 			<div className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
-					<FormControl name="email" control={control} label={'Электронная почта'}>
+					<FormControl name="username" control={control} label={'Электронная почта'}>
 						{(field) => (
 							<Input {...field} className={styles.input} placeholder="Введите электронную почту" />
 						)}
