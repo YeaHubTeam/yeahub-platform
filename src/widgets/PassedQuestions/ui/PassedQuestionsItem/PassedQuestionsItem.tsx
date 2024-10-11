@@ -1,8 +1,6 @@
 import { Icon, Chip } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
-import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-
 import { Answers, QuizQuestionAnswerType } from '@/entities/quiz';
 
 import styles from './PassedQuestionsItem.module.css';
@@ -19,7 +17,7 @@ interface MappingItem {
 }
 
 export const PassedQuestionsItem = ({ question }: Props) => {
-	const { imageSrc, answer, questionTitle } = question;
+	const { answer, questionTitle } = question;
 	const mapping: Record<QuizQuestionAnswerType, MappingItem> = {
 		REPEAT: {
 			label: 'Повторить',
@@ -38,7 +36,6 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 	return (
 		<li>
 			<article className={styles.item}>
-				<ImageWithWrapper src={imageSrc} className={styles.img} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{questionTitle}</h4>
 					<Chip
