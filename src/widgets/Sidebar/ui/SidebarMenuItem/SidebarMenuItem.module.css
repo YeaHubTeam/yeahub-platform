@@ -88,7 +88,7 @@
 }
 
 .category:hover {
-  background-color: var(--text-color-even-more-lightest);
+  background-color: var(--background-light-hover);
 }
 
 .category.fullwidth {
@@ -128,7 +128,7 @@
 }
 
 .expanded {
-  background-color: var(--text-color-even-more-lightest);
+  background-color: var(--background-light-hover);
 }
 
 .fullwidth .nested {
@@ -140,7 +140,7 @@
 }
 
 .item.active {
-  background-color: var(--text-color-even-more-lightest);
+  background-color: var(--background-light-hover);
 }
 
 .item.active .container {
