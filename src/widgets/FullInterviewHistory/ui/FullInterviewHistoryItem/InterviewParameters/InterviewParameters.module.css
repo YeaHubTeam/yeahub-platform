@@ -1,5 +1,6 @@
 .param {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   margin-bottom: 34px;
 }

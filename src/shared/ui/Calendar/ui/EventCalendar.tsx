@@ -6,6 +6,8 @@ import { Card } from '../../Card';
 import './EventCalendar.css';
 import 'react-calendar/dist/Calendar.css';
 
+import { useState } from 'react';
+
 type ValuePiece = Date | null;
 export type Value = ValuePiece | [ValuePiece, ValuePiece];
 
@@ -17,17 +19,28 @@ interface EventCalendarProps {
 }
 
 export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
+	const [isOpenCalendar, setOpenCalendar] = useState<boolean>(false);
+
+	const handleClick = (): void => {
+		setOpenCalendar((prev) => !prev);
+	};
+
 	return (
-		<Card className="calendar-block">
-			<Calendar
-				onChange={onDateChange}
-				showNeighboringMonth={false}
-				prevLabel={PREV_LABEL}
-				nextLabel={NEXT_LABEL}
-				prev2Label={null}
-				next2Label={null}
-				selectRange={true}
-			/>
-		</Card>
+		<>
+			<button className="mobile-calendar" onClick={handleClick}>
+				<Icon icon="calendar" color="--palette-ui-black-700" />
+			</button>
+			<Card className={isOpenCalendar ? 'calendar-block  active' : 'calendar-block '}>
+				<Calendar
+					onChange={onDateChange}
+					showNeighboringMonth={false}
+					prevLabel={PREV_LABEL}
+					nextLabel={NEXT_LABEL}
+					prev2Label={null}
+					next2Label={null}
+					selectRange={true}
+				/>
+			</Card>
+		</>
 	);
 };

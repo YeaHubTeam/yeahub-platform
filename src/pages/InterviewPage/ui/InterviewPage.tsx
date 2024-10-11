@@ -91,9 +91,7 @@ const InterviewPage = () => {
 						? Interview.PREPARATION_ACTIVELINKTEXT
 						: Interview.PREPARATION_NOACTIVELINKTEXT,
 				)}
-				actionRoute={
-					lastActiveQuizInfo ? ROUTES.interview.quiz.new.page : ROUTES.interview.quiz.page
-				}
+				actionRoute={lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page}
 				withShadow
 			>
 				{isActiveQuizLoading ? (
@@ -167,9 +165,7 @@ const InterviewPage = () => {
 						actionRoute={ROUTES.interview.questions.page}
 						withShadow
 					>
-						<div className={styles.questions}>
-							<InterviewQuestionsList />
-						</div>
+						<InterviewQuestionsList />
 					</Card>
 					<InterviewHistoryList />
 				</>

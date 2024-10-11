@@ -19,6 +19,10 @@ interface CardProps {
 	isActionPositionBottom?: boolean;
 }
 
+interface ExpandIconProps {
+	isExpand: boolean;
+}
+
 /**
  * Reusable block component
  * @param { string | ReactNode } children block content
@@ -26,10 +30,12 @@ interface CardProps {
  * @param { string } className className string for custom styles
  */
 
-const ExpandIcon = () => {
+const ExpandIcon = ({ isExpand }: ExpandIconProps) => {
 	return (
 		<svg
-			className={`${styles['card-expand-svg']}`}
+			className={classNames(styles['card-expand-svg'], {
+				[styles['card-expand-svg-visibility']]: isExpand,
+			})}
 			width="100%"
 			height="90"
 			viewBox="0 0 740 90"
@@ -51,7 +57,7 @@ const ExpandIcon = () => {
 					gradientUnits="userSpaceOnUse"
 				>
 					<stop stopColor="white" stopOpacity="0" />
-					<stop offset="0.491518" stopColor="white" />
+					<stop offset="0.456" stopColor="white" />
 				</linearGradient>
 			</defs>
 		</svg>
@@ -148,7 +154,7 @@ export const Card = ({
 
 			{expandable && isHeightForExpand && (
 				<>
-					{!isExpand ? <ExpandIcon /> : null}
+					<ExpandIcon isExpand={isExpand} />
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? 'Развернуть' : 'Свернуть'}
 						<Arrow className={classNames({ [styles['card-arrow-expanded']]: isExpand })} />

@@ -45,10 +45,10 @@ export const ROUTES = {
 		quiz: {
 			route: 'quiz',
 			page: '/interview/quiz',
-			new: {
-				route: 'new',
-				page: '/interview/quiz/new',
-			},
+		},
+		new: {
+			route: 'new',
+			page: '/interview/new',
 		},
 	},
 };
