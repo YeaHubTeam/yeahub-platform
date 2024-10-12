@@ -51,7 +51,7 @@ export const InterviewSlider = ({
 			<div className={styles.wrapper}>
 				{!isAnswerVisible ? (
 					<button className={styles.answer} onClick={toggleAnswerVisibility}>
-						Посмотреть ответ
+						{t('showAnswer')}
 					</button>
 				) : (
 					<Flex direction="column" gap="16" className={styles['answer-wrapper']}>

@@ -15,7 +15,7 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers('quiz');
 	const { isMobile } = useScreenSize();
 
 	return (
@@ -29,7 +29,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && t('quizButtons.doNotKnow')}
+				{!isMobile && t('buttons.doNotKnow')}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
@@ -40,7 +40,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && t('quizButtons.IKnow')}
+				{!isMobile && t('buttons.iKnow')}
 			</Button>
 		</div>
 	);

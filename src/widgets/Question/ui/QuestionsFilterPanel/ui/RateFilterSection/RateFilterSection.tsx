@@ -1,3 +1,4 @@
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 const rate = [
@@ -14,6 +15,7 @@ interface RateFilterSectionProps {
 }
 
 export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSectionProps) => {
+	const { t } = useI18nHelpers('questions');
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);
 		const updates = isDataExist
@@ -27,5 +29,5 @@ export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSect
 		active: selectedRate?.some((selectedItem) => item.id === selectedItem),
 	}));
 
-	return <BaseFilterSection data={preparedData} title="Рейтинг вопросов" onClick={onClick} />;
+	return <BaseFilterSection data={preparedData} title={t('rate.title')} onClick={onClick} />;
 };

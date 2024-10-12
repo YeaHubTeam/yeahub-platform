@@ -2,6 +2,7 @@ import { Button } from 'yeahub-ui-kit';
 
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -13,19 +14,21 @@ const LoginPage = () => {
 	const { data: profile } = useProfileQuery();
 	const [trigger] = useLazyLogoutQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
+	const { t } = useI18nHelpers();
+	const { t: tAuth } = useI18nHelpers('auth');
 
 	const handleLogoutUser = () => {
 		trigger();
 	};
 
-	const loginTitle = accessToken ? `Привет, ${profile?.firstName}` : 'Вход в личный кабинет';
+	const loginTitle = accessToken ? `${t('hello')} ${profile?.firstName}` : tAuth('login.title');
 
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{loginTitle}</h1>
 			{accessToken ? (
 				<Button onClick={handleLogoutUser} size="large">
-					Выйти из профиля
+					{t('buttons.logout')}
 				</Button>
 			) : (
 				<LoginCreateForm />

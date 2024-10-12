@@ -1,0 +1,49 @@
+{
+  "preparation": {
+    "title": "Interview preparation",
+    "activeLinkText": "Continue interview",
+    "noActiveLinkText": "Pass interview",
+    "noActiveTitle": "Explore a new profession and become part of our friendly team, interview and improve your knowledge in practice.",
+    "noActiveDescription": "With us you can learn a new IT profession that will allow you to become part of our large community and find your dream profession, with us you can fully immerse yourself in the profession and become a full-fledged specialist.",
+    "progressBarTitle": "Quiz question {{fromQuestionNumber}} of {{toQuestionNumber}}",
+    "stubTitle": "Specialty not yet selected.",
+    "stubDescription": "You have not selected the major you want to study, go to your profile and fill it out to start preparing for interviews",
+    "fillProfileButton": "Fill Profile",
+    "toast": {
+      "successStart": "A new interview has been created",
+      "errorStart": "Failed to create a new interview"
+    }
+  },
+  "stats": {
+    "title": "Interview statistics",
+    "passed": "passed",
+    "soon": "Statistics will \n appear here soon",
+    "statsStudied": {
+      "allQuestions": "Questions overall",
+      "notStudied": "Not studied",
+      "studied": "Studied"
+    },
+    "linkText": "View full"
+  },
+  "questions": {
+    "title": "Questions list",
+    "studied": "Study",
+    "rating": "Rating",
+    "complexity": "Complexity",
+    "empty": "Questions for the selected specialization will appear soon",
+    "toast": {
+      "successFinish": "The interview is completed",
+      "errorFinish": "Failed to complete the interview",
+      "questionIsLearned": "The question is fully learned",
+      "questionIsNotLearned": "Failed to fully learn the question",
+      "progressIsReset": "The question learning progress has been reset",
+      "progressIsNotReset": "Failed to reset the question learning progress"
+    }
+  },
+  "history_preparation": {
+    "title": "Interview history",
+    "linkText": "Details",
+    "resultText": "Result",
+    "empty": "Your interview history will appear here soon"
+  }
+}

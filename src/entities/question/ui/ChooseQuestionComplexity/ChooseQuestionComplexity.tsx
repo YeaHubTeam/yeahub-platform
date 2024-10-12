@@ -1,3 +1,6 @@
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface ChooseQuestionComplexityProps {
@@ -24,6 +27,8 @@ export const ChooseQuestionComplexity = ({
 		onChangeComplexity(updates.length === 0 ? undefined : updates);
 	};
 
+	const { t } = useI18nHelpers(i18Namespace.questions);
+
 	const preparedData = complexity.map((item) => ({
 		...item,
 		active: selectedComplexity?.some((selectedItem) => item.value.includes(selectedItem)),
@@ -31,7 +36,7 @@ export const ChooseQuestionComplexity = ({
 	return (
 		<BaseFilterSection
 			data={preparedData}
-			title="Сложность вопросов"
+			title={t(Questions.DIFFICULTY_TITLE)}
 			onClick={handleChooseComplexity}
 		/>
 	);
