@@ -32,10 +32,10 @@ const InterviewPage = () => {
 
 	const { data: profile } = useProfileQuery();
 
-	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].profileId ?? '');
+	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].id ?? '');
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId: profile?.profiles[0].profileId,
+		profileId: profile?.profiles[0].id,
 		params: { limit: 1, page: 1 },
 	});
 

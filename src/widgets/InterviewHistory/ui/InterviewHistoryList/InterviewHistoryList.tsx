@@ -16,7 +16,7 @@ import styles from './InterviewHistoryList.module.css';
 
 export const InterviewHistoryList = () => {
 	const profile = useProfileQuery();
-	const profileId = profile.data?.profiles[0].profileId;
+	const profileId = profile.data?.profiles[0].id;
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	const { data, isLoading, isFetching, isSuccess } = useGetHistoryQuizQuery(
 		profileId

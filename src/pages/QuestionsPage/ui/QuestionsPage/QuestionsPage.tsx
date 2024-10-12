@@ -30,7 +30,7 @@ const QuestionsPage = () => {
 
 	const { status, ...getParams } = params;
 	const { data: userProfile } = useProfileQuery();
-	const profileId = userProfile?.profiles[0]?.profileId || '';
+	const profileId = userProfile?.profiles[0].id || '';
 	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
