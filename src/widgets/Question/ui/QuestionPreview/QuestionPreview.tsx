@@ -4,8 +4,8 @@ import { Button, Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
+import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { Question } from '@/entities/question';
 
