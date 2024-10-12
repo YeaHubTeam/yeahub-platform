@@ -1,9 +1,15 @@
 {
   "language": "Русский",
-  "quizButtons": {
-    "doNotKnow": "Не знаю",
-    "repeat": "Повторить",
-    "IKnow": "Знаю"
+  "loading": "Идёт загрузка...",
+  "hello": "Привет",
+  "userPreferences": {
+    "myProfile": "Мой профиль",
+    "logout": "Выйти"
+  },
+  "tabs": {
+    "main": "Главная",
+    "profile": "Мой профиль",
+    "interview": "Собеседованиe"
   },
   "blockModal": {
     "confirmTitle": "Подтвердить действие",
@@ -12,5 +18,101 @@
       "ok": "Да",
       "cancel": "Нет"
     }
+  },
+  "fileLoader": {
+    "linkText": "Кликни для изменения",
+    "text": "или перетащи сюда",
+    "fileTypes": {
+      "photo": "фото"
+    },
+    "limit": "не более {{maxFileMBSize}}мб"
+  },
+  "quizButtons": {
+    "doNotKnow": "Не знаю",
+    "repeat": "Повторить",
+    "IKnow": "Знаю"
+  },
+  "profileFullness": "Профиль заполнен на",
+  "blockText": "Заполните свой профиль, чтобы мир мог увидеть вашу уникальность и вдохновиться вашими достижениями. Каждая деталь добавляет картины вашей истории успеха",
+  "text": "Скоро здесь будут отображаться мероприятия сообщества, популярные статьи и многое ещё чего интересного.",
+  "years": "лет",
+  "aboutMe": "Обо мне",
+  "noDescription": "Описание отсутствует",
+  "skills": "Навыки",
+  "noSkills": "Список навыков пуст",
+  "passed": "пройдено",
+  "buttons": {
+    "fillProfile": "Заполнить профиль",
+    "edit": "Редактировать"
+  },
+  "questionsCategories": "Категории вопросов",
+  "details": "Подробнее",
+  "validation": {
+    "passwordConfirmation": {
+      "oneOf": "Passwords must match"
+    },
+    "checkbox": {
+      "oneOf": "You must agree to the terms and conditions"
+    },
+    "required": "Поле обязательно",
+    "password": {
+      "min": "Please enter a valid password (at least {{count}} characters)"
+    },
+    "image": {
+      "fileSize": "Большой размер файла",
+      "fileType": "Неверный формат файла"
+    },
+    "firstName": {
+      "required": "Имя обязательно",
+      "min": "Должно быть больше 2 символов",
+      "max": "Должно быть меньше 30 символов"
+    },
+    "lastName": {
+      "required": "Фамилия обязательна",
+      "min": "Должно быть больше 2 символов",
+      "max": "Должно быть меньше 30 символов"
+    },
+    "specialization": {
+      "required": "Выбор специализации обязателен"
+    },
+    "phone": {
+      "required": "Телефон обязателен",
+      "format": "Неверный формат телефона"
+    },
+    "email": {
+      "required": "Электронная почта обязательна",
+      "invalid": "Неверный формат электронной почты"
+    },
+    "location": {
+      "nullable": "Локация может быть пустой"
+    },
+    "skillLevel": {
+      "nullable": "Уровень навыков может быть пустым"
+    },
+    "socialNetworks": {
+      "nullable": "Социальные сети могут быть пустыми"
+    },
+    "aboutMe": {
+      "nullable": "Описание может быть пустым"
+    },
+    "skills": {
+      "required": "Навык обязателен"
+    }
+  },
+  "crumbs": {
+    "profile": "Профиль",
+    "profileEditing": "Редактирование профиля",
+    "interview": "Обучение",
+    "interviewHistory": "История собеседований",
+    "interviewResult": "Результат викторины",
+    "interviewStatistic": "Статистика собеседований",
+    "questionsList": "Список вопросов",
+    "questionDetail": "Подробнее",
+    "quiz": "Собеседование",
+    "newQuiz": "Викторина",
+    "mainPage": "Главная",
+    "error404": "Страница не найдена",
+    "login": "Вход",
+    "register": "Регистрация"
   }
 }

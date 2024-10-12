@@ -55,6 +55,10 @@ export type EditProfileRequestData = Omit<ProfileUpdate, 'profileSkills'> & {
 	profileSkills: number[];
 };
 
+export type EditProfileRequestData = Omit<GetProfileResponse, 'profiles'> & {
+	profiles: GetProfileResponseWithoutSkills[];
+};
+
 export type EditUserRequestData = {
 	id: string;
 	userInfo: EditUserValue;

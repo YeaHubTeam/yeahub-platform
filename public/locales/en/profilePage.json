@@ -1,0 +1,12 @@
+{
+  "years": "years",
+  "aboutMe": {
+    "title": "About me",
+    "noDescription": "No description yet"
+  },
+  "skills": {
+    "title": "Skills",
+    "noSkills": "The list of skills is empty"
+  },
+  "editButton": "Edit"
+}

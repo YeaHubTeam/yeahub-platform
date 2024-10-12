@@ -1,5 +1,9 @@
 import { Chip, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import styles from './QuestionCategories.module.css';
 
 interface QuestionCategoriesProps {
@@ -7,9 +11,11 @@ interface QuestionCategoriesProps {
 }
 
 export const QuestionCategories = ({ questionCategories }: QuestionCategoriesProps) => {
+	const { t } = useI18nHelpers(i18Namespace.questions);
+
 	return (
 		<ul>
-			<p className={styles.title}>Категории вопросов</p>
+			<p className={styles.title}>{t(Questions.CATEGORIES_TITLE)}</p>
 			{questionCategories?.map((category) => {
 				return (
 					<li key={category} className={styles.category}>
