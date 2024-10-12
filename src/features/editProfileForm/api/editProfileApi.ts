@@ -11,8 +11,8 @@ import {
 export const editProfileApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		updateProfile: build.mutation<void, EditProfileRequestData>({
-			query: ({ userId, ...profileInfo }) => ({
-				url: `profiles/${userId}`,
+			query: ({ id, ...profileInfo }) => ({
+				url: `profiles/${id}`,
 				body: profileInfo,
 				method: 'PUT',
 			}),

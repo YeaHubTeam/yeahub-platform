@@ -63,7 +63,7 @@ export interface ExtraArgument {
 }
 
 export interface ProfileUpdate {
-	userId: string;
+	id: string;
 	profileType: number;
 	specializationId: number;
 	markingWeight: number;

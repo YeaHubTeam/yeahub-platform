@@ -74,7 +74,7 @@ export const mapFormToProfile = (
 	values: ProfileSchema,
 ): EditProfileRequestData => ({
 	...profile.profiles[0],
-	userId: profile.profiles[0].id,
+	id: profile.profiles[0].id,
 	specializationId: values.specialization,
 	description: values.aboutMe || '',
 	socialNetwork: values.socialNetworks

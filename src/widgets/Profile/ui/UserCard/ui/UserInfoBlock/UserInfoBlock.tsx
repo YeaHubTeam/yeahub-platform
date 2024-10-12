@@ -2,7 +2,10 @@ import { differenceInYears } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { formatAddress } from '@/shared/helpers/formatAddress';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
@@ -17,6 +20,7 @@ interface UserInfoProps {
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const navigate = useNavigate();
+	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const { firstName, lastName, birthday, phone, email, country, city } = profile;
 
@@ -30,11 +34,13 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					className={styles['card-edit']}
 					onClick={() => navigate('edit#personal-information')}
 				>
-					Редактировать
+					{t(ProfileI18.PROFILEPAGE_EDITBUTTON)}
 				</Button>
 			</div>
 			<ul className={styles['card-list']}>
-				{!!birthday && <li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>}
+				{!!birthday && (
+					<li>{`${differenceInYears(new Date(), new Date(birthday))} ${t(ProfileI18.PROFILEPAGE_YEARS)}`}</li>
+				)}
 				{!!profileSpecialization?.title && <li>{profileSpecialization?.title}</li>}
 				{formatAddress(country, city)}
 			</ul>

@@ -20,17 +20,17 @@ import { MainLayoutSkeleton } from './MainLayout.skeleton';
 const mainLayoutMenuItems: MenuItem[] = [
 	{
 		route: ROUTES.appRoute,
-		title: 'Главная',
+		title: 'tabs.main',
 		icon: MainIcon,
 	},
 	{
 		route: ROUTES.profile.route,
-		title: 'Мой профиль',
+		title: 'tabs.profile',
 		icon: ProfileIcon,
 	},
 	{
 		route: ROUTES.interview.route,
-		title: 'Собеседование',
+		title: 'tabs.interview',
 		icon: InterviewIcon,
 	},
 ];
