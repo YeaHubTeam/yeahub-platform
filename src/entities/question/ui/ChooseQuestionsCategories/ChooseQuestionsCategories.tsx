@@ -60,7 +60,7 @@ export const ChooseQuestionsCategories = ({
 				onClick={handleChooseSkill}
 			/>
 			<Button className={styles.button} theme="link" onClick={toggleShowAll}>
-				Показать все
+				{!showAll ? 'Показать все' : 'Скрыть'}
 			</Button>
 		</div>
 	);

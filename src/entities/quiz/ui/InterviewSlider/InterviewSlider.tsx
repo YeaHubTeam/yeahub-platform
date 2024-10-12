@@ -1,12 +1,11 @@
 import classNames from 'classnames';
-import { useState } from 'react';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
@@ -20,6 +19,8 @@ interface InterviewSliderProps {
 	shortAnswer: string;
 	answer: string;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
+	isAnswerVisible: boolean;
+	setIsAnswerVisible: (value: boolean) => void;
 }
 
 export const InterviewSlider = ({
@@ -29,13 +30,13 @@ export const InterviewSlider = ({
 	answer,
 	shortAnswer,
 	changeAnswer,
+	isAnswerVisible,
+	setIsAnswerVisible,
 }: InterviewSliderProps) => {
-	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const toggleAnswerVisibility = () => {
-		setIsAnswerVisible((prev) => !prev);
+		setIsAnswerVisible(!isAnswerVisible);
 	};
 
 	return (

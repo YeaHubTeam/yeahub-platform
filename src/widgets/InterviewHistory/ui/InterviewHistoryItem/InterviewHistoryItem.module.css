@@ -23,13 +23,11 @@
 .params {
   display: flex;
   gap: 24px;
-  margin: 0;
-  padding: 0;
 }
 
 .title {
-  margin: 0;
   padding: 8px 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-l);
+  
 }

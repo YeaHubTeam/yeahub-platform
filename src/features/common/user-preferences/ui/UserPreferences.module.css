@@ -29,8 +29,8 @@
 }
 
 .button {
-  justify-content: start;
-  height: 40px;
+  justify-content: start !important;
+  height: 40px !important;
 }
 
 .btn-active > .button {
