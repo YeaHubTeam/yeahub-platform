@@ -4,13 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { useProfileQuery } from '@/entities/auth';
-import {
-	QuestionsNotFound,
-	useGetLearnedQuestionsQuery,
-	useGetQuestionsListQuery,
-} from '@/entities/question';
+import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
 
 import {
 	QuestionFilterStatus,
@@ -104,11 +101,10 @@ const QuestionsPage = () => {
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
 					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
-					{questions.total > questions.limit ? (
+					{questions.total > questions.limit && (
 						<QuestionPagePagination questionsResponse={questions} />
-					) : (
-						<QuestionsNotFound resetFilters={resetFilters} />
 					)}
+					{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
 				</Card>
 			</div>
 			<div className={styles['additional-info-wrapper']}>

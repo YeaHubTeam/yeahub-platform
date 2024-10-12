@@ -7,5 +7,9 @@
       "ok": "Yes",
       "cancel": "No"
     }
+  },
+  "emptyStub": {
+    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "resetFilter": "Reset filter"
   }
 }
