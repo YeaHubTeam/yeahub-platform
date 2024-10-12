@@ -35,7 +35,7 @@ const CreateQuizPage = () => {
 
 	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
 		{
-			profileId: userProfile?.profiles[0].profileId,
+			profileId: userProfile?.profiles[0].id,
 			params: { limit: 1, page: 1 },
 		},
 		{
@@ -71,7 +71,7 @@ const CreateQuizPage = () => {
 
 	const handleCreateNewQuiz = () => {
 		trigger({
-			profileId: userProfile?.profiles[0].profileId || '',
+			profileId: userProfile?.profiles[0].id || '',
 			params: {
 				skills,
 				minComplexity: complexity?.[0],

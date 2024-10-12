@@ -7,14 +7,14 @@ import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { Profile } from '@/entities/profile';
+import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
 
 interface UserInfoProps {
-	profile: Profile;
+	profile: GetProfileResponse;
 	profileSpecialization: Specialization | undefined;
 }
 
@@ -22,7 +22,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 	const navigate = useNavigate();
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
-	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
+	const { firstName, lastName, birthday, phone, email, country, city } = profile;
 
 	return (
 		<div className={styles['card-info']}>
@@ -47,8 +47,8 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 			<div className={styles['card-contacts']}>
 				<h4 className={styles['card-phone']}>{phone}</h4>
 				<h4 className={styles['card-mail']}>{email}</h4>
-				{profile.socialNetwork?.length > 0 ? (
-					<SocialNetWorkList socialNetwork={profile.socialNetwork} />
+				{profile.profiles[0].socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
 				) : null}
 			</div>
 		</div>

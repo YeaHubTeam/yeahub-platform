@@ -7,6 +7,8 @@ import Arrow from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
+import { Flex } from '../../Flex';
+
 import styles from './Card.module.css';
 
 interface CardProps {
@@ -21,6 +23,10 @@ interface CardProps {
 	isActionPositionBottom?: boolean;
 }
 
+interface ExpandIconProps {
+	isExpand: boolean;
+}
+
 /**
  * Reusable block component
  * @param { string | ReactNode } children block content
@@ -28,10 +34,12 @@ interface CardProps {
  * @param { string } className className string for custom styles
  */
 
-const ExpandIcon = () => {
+const ExpandIcon = ({ isExpand }: ExpandIconProps) => {
 	return (
 		<svg
-			className={`${styles['card-expand-svg']}`}
+			className={classNames(styles['card-expand-svg'], {
+				[styles['card-expand-svg-visibility']]: isExpand,
+			})}
 			width="100%"
 			height="90"
 			viewBox="0 0 740 90"
@@ -109,7 +117,9 @@ export const Card = ({
 	const isHeightForExpand = contentHeight >= 250;
 
 	return (
-		<div
+		<Flex
+			gap={'20'}
+			direction={'column'}
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
 			})}
@@ -151,13 +161,13 @@ export const Card = ({
 
 			{expandable && isHeightForExpand && (
 				<>
-					{!isExpand ? <ExpandIcon /> : null}
+					<ExpandIcon isExpand={isExpand} />
 					<button onClick={expandHandler} className={`${styles.button}`}>
 						{!isExpand ? t('expand') : t('collapse')}
 						<Arrow className={classNames({ [styles['card-arrow-expanded']]: isExpand })} />
 					</button>
 				</>
 			)}
-		</div>
+		</Flex>
 	);
 };

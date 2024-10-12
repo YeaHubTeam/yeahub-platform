@@ -38,6 +38,7 @@ export const PassedQuestionChart = ({
 
 	const gaugeOption = options.gauge;
 	gaugeOption.series[0].data = gaugeData;
+	gaugeOption.series[0].progress.show = !!passedQuestionsPercent;
 	gaugeOption.series[0].detail.formatter = total
 		? `{value}%\n${t(Interview.STATS_PASSED)}`
 		: t(Interview.STATS_SOON);

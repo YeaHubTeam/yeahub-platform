@@ -27,7 +27,7 @@ const InterviewQuizPage = () => {
 
 	const { data: userProfile } = useProfileQuery();
 	const { data: activeQuiz, isLoading } = useGetActiveQuizQuery({
-		profileId: userProfile?.profiles[0].profileId || '',
+		profileId: userProfile?.profiles[0].id || '',
 		params: {
 			page: 1,
 			limit: 1,

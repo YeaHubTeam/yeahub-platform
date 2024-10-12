@@ -14,10 +14,9 @@
   font-size: var(--font-size-h-xs);
 }
 
-.history {
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-template-columns: repeat(3, 1fr);
+.card-history {
+  align-self: start;
+  width: calc(50% - 10px);
 }
 
 .history>:nth-child(1) {
@@ -31,4 +30,11 @@
 
 .history>:nth-child(3) {
   grid-column: 1/4;
+}
+
+
+@media (width <= 1198px) {
+  .card-history {
+    flex-grow: 1;
+  }
 }

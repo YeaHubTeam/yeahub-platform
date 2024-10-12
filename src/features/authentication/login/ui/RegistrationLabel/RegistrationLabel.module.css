@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  margin-bottom: 70px;
+  margin-top: 48px;
   padding: 16px;
   width: 100%;
   max-width: 408px;
@@ -15,16 +14,4 @@
 
 .btn {
   cursor: pointer;
-}
-
-@media (width <= 768px) {
-  .wrapper {
-    margin-bottom: 40px;
-  }
-}
-
-@media (width <= 480px) {
-  .wrapper {
-    margin-bottom: 20px;
-  }
 }

@@ -5,6 +5,8 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 YupPassword(yup);
 
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
 export const registerSchema = yup.object().shape({
 	firstName: yup
 		.string()
@@ -31,6 +33,9 @@ export const registerSchema = yup.object().shape({
 	passwordConfirmation: yup
 		.string()
 		.oneOf([yup.ref('password')], i18n.t(Translation.VALIDATION_PASSWORD_CONFIRMATION))
+		.matches(passwordRules, {
+			message: 'Пароль должен содержать заглавные и строчные буквы, цифры и специальные символы',
+		})
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	isChecked: yup
 		.boolean()

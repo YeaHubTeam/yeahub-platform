@@ -36,6 +36,7 @@ export const options = {
 					distance: 50,
 				},
 				data: {},
+				silent: true,
 				detail: {
 					fontSize: 18,
 					fontFamily: 'Manrope',
@@ -75,6 +76,7 @@ export const options = {
 					borderRadius: 10,
 				},
 				data: {},
+				silent: true,
 			},
 		],
 	},

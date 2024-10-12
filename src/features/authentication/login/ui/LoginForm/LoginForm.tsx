@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { Button, Icon, Input } from 'yeahub-ui-kit';
 
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { FormControl } from '@/shared/ui/FormControl';
 
 import { Auth, useLoginMutation } from '@/entities/auth';
 
@@ -14,7 +15,7 @@ export const LoginForm = () => {
 	const { t } = useI18nHelpers('auth');
 	const {
 		handleSubmit,
-		register,
+		control,
 		formState: { errors },
 	} = useFormContext<Auth>();
 
@@ -30,39 +31,42 @@ export const LoginForm = () => {
 		<div className={styles.wrapper}>
 			<div className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="email">
-						{t('login.email')}
-					</label>
-					<Input
-						className={styles.input}
-						{...register('username')}
-						placeholder={t('login.emailPlaceholder')}
-						hasError={!!errors.username?.message}
-					/>
-					{errors.username ? <div className={styles.error}>{errors.username.message}</div> : null}
-				</div>
-				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="password">
-						{t('login.password')}
-					</label>
-					<Input
-						className={styles.input}
-						{...register('password')}
-						placeholder={t('login.passwordPlaceholder')}
-						type={isPasswordHidden ? 'text' : 'password'}
-						hasError={!!errors.password?.message}
-						suffix={
-							<Icon
-								className={styles.icon}
-								onClick={handleShowPassword}
-								icon="password"
-								arg={isPasswordHidden}
-								color="--palette-ui-black-300"
+					<FormControl name="username" control={control} label={t('login.email')}>
+						{(field) => (
+							<Input
+								{...field}
+								className={styles.input}
+								placeholder={t('login.emailPlaceholder')}
 							/>
-						}
-					/>
-					{errors.password ? <div className={styles.error}>{errors.password.message}</div> : null}
-					<div className={styles.link}>
+						)}
+					</FormControl>
+				</div>
+
+				<div className={styles['input-wrapper']}>
+					<FormControl name="password" control={control} label={t('login.password')}>
+						{(field) => (
+							<Input
+								{...field}
+								className={styles.input}
+								placeholder={t('login.passwordPlaceholder')}
+								type={isPasswordHidden ? 'text' : 'password'}
+								suffix={
+									<Icon
+										className={styles.icon}
+										onClick={handleShowPassword}
+										icon="password"
+										arg={isPasswordHidden}
+										color={
+											errors.password?.message ? '--palette-ui-red-700' : '--palette-ui-black-300'
+										}
+										size={24}
+									/>
+								}
+							/>
+						)}
+					</FormControl>
+
+					<div className={styles['forgot-password-link']}>
 						<Button tagName="a" theme="link">
 							{t('login.forgotPassword')}
 						</Button>

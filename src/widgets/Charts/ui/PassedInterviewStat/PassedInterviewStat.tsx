@@ -19,6 +19,7 @@ export const PassedInterviewStat = ({
 }: PassedInterviewStatProps) => {
 	const pieOption = options.pie;
 	pieOption.series[0].label.formatter = `{a}\n ${totalAttempt}`;
+	pieOption.series[0].padAngle = attemptData.some((item) => item.value === 100) ? 0 : 15;
 	pieOption.series[0].data = attemptData;
 
 	return (
