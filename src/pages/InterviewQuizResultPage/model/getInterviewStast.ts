@@ -1,3 +1,6 @@
+import i18n from '@/shared/config/i18n/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+
 import { Answers } from '@/entities/quiz';
 
 export const getInterviewStats = (questions: Answers[] = []) => {
@@ -15,9 +18,21 @@ export const getInterviewStats = (questions: Answers[] = []) => {
 				return acc;
 			},
 			[
-				{ name: 'Знаю', value: 0, itemStyle: { color: '#400799' } },
-				{ name: 'Не знаю', value: 0, itemStyle: { color: '#E1CEFF' } },
-				{ name: 'Повторить', value: 0, itemStyle: { color: '#6A0BFF' } },
+				{
+					name: i18n.t(Translation.INTERVIEWRESULT_KNOWN),
+					value: 0,
+					itemStyle: { color: '#400799' },
+				},
+				{
+					name: i18n.t(Translation.INTERVIEWRESULT_UNKNOWN),
+					value: 0,
+					itemStyle: { color: '#E1CEFF' },
+				},
+				{
+					name: i18n.t(Translation.INTERVIEWRESULT_REPEAT),
+					value: 0,
+					itemStyle: { color: '#6A0BFF' },
+				},
 			],
 		);
 	const stats = countResults(questions).map((item) => {

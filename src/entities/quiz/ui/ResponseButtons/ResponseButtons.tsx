@@ -14,7 +14,7 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers('quiz');
 
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
@@ -26,7 +26,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				size="small"
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
 			>
-				{t('quizButtons.doNotKnow')}
+				{t('buttons.doNotKnow')}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'REPEAT' })}
@@ -36,7 +36,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				size="small"
 				preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
 			>
-				{t('quizButtons.repeat')}
+				{t('buttons.repeat')}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
@@ -46,7 +46,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				size="small"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
 			>
-				{t('quizButtons.IKnow')}
+				{t('buttons.iKnow')}
 			</Button>
 		</div>
 	);
