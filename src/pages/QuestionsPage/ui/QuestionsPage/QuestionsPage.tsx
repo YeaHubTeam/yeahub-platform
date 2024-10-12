@@ -6,7 +6,11 @@ import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
-import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
+import {
+	QuestionsNotFound,
+	useGetLearnedQuestionsQuery,
+	useGetQuestionsListQuery,
+} from '@/entities/question';
 
 import {
 	QuestionFilterStatus,
@@ -83,6 +87,10 @@ const QuestionsPage = () => {
 		setQueryParams({ page: 1 });
 	};
 
+	const resetFilters = () => {
+		dispatch(questionsPageActions.resetFilters());
+	};
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
 		return <QuestionsPageSkeleton />;
 	}
@@ -96,8 +104,10 @@ const QuestionsPage = () => {
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
 					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
-					{questions.total > questions.limit && (
+					{questions.total > questions.limit ? (
 						<QuestionPagePagination questionsResponse={questions} />
+					) : (
+						<QuestionsNotFound resetFilters={resetFilters} />
 					)}
 				</Card>
 			</div>
