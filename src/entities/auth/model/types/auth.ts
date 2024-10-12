@@ -37,7 +37,7 @@ export interface GetProfileResponse extends Omit<SignUp, 'password'> {
 	profiles: Profile[];
 	refreshToken: string;
 	passwordHash: string;
-	userRoles: [];
+	userRoles: string[];
 	avatarImage?: FileList;
 }
 
@@ -52,7 +52,6 @@ export interface Profile {
 	image_src: string;
 	links: string[];
 	markingWeight: number;
-	userId: string;
 	profileSkills: Skill[];
 	profileType: number;
 	socialNetwork: SocialNetwork[];
@@ -61,4 +60,36 @@ export interface Profile {
 
 export interface ExtraArgument {
 	navigate: (path: string) => void;
+}
+
+export interface ProfileUpdate {
+	userId: string;
+	profileType: number;
+	specializationId: number;
+	markingWeight: number;
+	description: string;
+	socialNetwork: SocialNetwork[];
+	image_src: string;
+	profileSkills: Skill[];
+	links: string[];
+	user: UserUpdate;
+}
+
+export interface UserUpdate {
+	address: string;
+	avatarUrl: string;
+	birthday: string | null;
+	city: string;
+	country: string;
+	createdAt: string;
+	email: string;
+	firstName: string;
+	id: string;
+	lastName: string;
+	passwordHash: string;
+	phone: string;
+	refreshToken: string;
+	updatedAt: string;
+	userRoles: string[];
+	avatarImage?: FileList;
 }
