@@ -1,5 +1,40 @@
 .card {
   display: flex;
+  justify-content: space-between;
   gap: 16px;
   height: 100%;
+}
+
+.user-data {
+  display: flex;
+  gap: 16px;
+}
+
+@media (width <= 768px) {
+  .user-data {
+    flex-direction: row;
+    order: 2;
+    width: 100%;
+  }
+
+  .card {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card > .card-edit-block {
+    order: 1;
+  }
+}
+
+@media (width <= 480px) {
+  .card {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .user-data {
+    flex-direction: column;
+    width: 100%;
+  }
 }

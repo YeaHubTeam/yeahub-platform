@@ -21,12 +21,13 @@ export const ProfilePage = () => {
 
 	return (
 		profile && (
-			<div className={styles.content}>
-				<div className={styles.container}>
+			<div className={styles['content']}>
+				<div className={styles['main-content']}>
 					<UserBlock profile={profile} profileSpecialization={profileSpecialization} />
 					<InfoBlock description={profile?.profiles[0].description} />
 					<SkillsBlock skillsList={profile?.profiles[0].profileSkills} />
 				</div>
+				<div className={styles['side-content-tmp']}></div>
 			</div>
 		)
 	);

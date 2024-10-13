@@ -1,11 +1,6 @@
 import { differenceInYears } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { formatAddress } from '@/shared/helpers/formatAddress';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
@@ -19,34 +14,50 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const navigate = useNavigate();
-	const { t } = useI18nHelpers(i18Namespace.profile);
-
 	const { firstName, lastName, birthday, phone, email, country, city } = profile;
+
+	// return (
+	// 	<div className={styles['card-info']}>
+	// 		<div className={styles['card-header']}>
+	// 			<h2 className={styles['card-name']}>{`${firstName} ${lastName}`}</h2>
+	// 		</div>
+	// 		<ul className={styles['card-list']}>
+	// 			{!!birthday && <li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>}
+	// 			{!!profileSpecialization?.title && <li>{profileSpecialization?.title}</li>}
+	// 			{formatAddress(country, city)}
+	// 		</ul>
+	// 		<div className={styles['card-contacts']}>
+	// 			<h4>{phone}</h4>
+	// 			<h4>{email}</h4>
+	// 			{profile.socialNetwork?.length > 0 ? (
+	// 				<SocialNetWorkList socialNetwork={profile.socialNetwork} />
+	// 			) : null}
+	// 		</div>
+	// 	</div>
+	// );
 
 	return (
 		<div className={styles['card-info']}>
 			<div className={styles['card-header']}>
 				<h2 className={styles['card-name']}>{`${firstName} ${lastName}`}</h2>
-				<Button
-					theme="link"
-					tagName="button"
-					className={styles['card-edit']}
-					onClick={() => navigate('edit#personal-information')}
-				>
-					{t(ProfileI18.PROFILEPAGE_EDITBUTTON)}
-				</Button>
-			</div>
-			<ul className={styles['card-list']}>
 				{!!birthday && (
-					<li>{`${differenceInYears(new Date(), new Date(birthday))} ${t(ProfileI18.PROFILEPAGE_YEARS)}`}</li>
+					<p
+						className={styles['card-age']}
+					>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</p>
 				)}
-				{!!profileSpecialization?.title && <li>{profileSpecialization?.title}</li>}
-				{formatAddress(country, city)}
+			</div>
+			{!!profileSpecialization?.title && (
+				<p className={styles['card-specialization']}>{profileSpecialization?.title}</p>
+			)}
+			<ul className={styles['card-list']}>
+				<li className={styles['card-address']}>{formatAddress(country, city)}</li>
 			</ul>
 			<div className={styles['card-contacts']}>
-				<h4 className={styles['card-phone']}>{phone}</h4>
-				<h4 className={styles['card-mail']}>{email}</h4>
+				<h4>
+					{phone}
+					{', '}{' '}
+				</h4>
+				<h4>{email}</h4>
 				{profile.profiles[0].socialNetwork?.length > 0 ? (
 					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
 				) : null}

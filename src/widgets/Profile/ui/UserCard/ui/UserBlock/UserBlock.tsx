@@ -3,6 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { GetProfileResponse } from '@/entities/auth';
 import { Specialization } from '@/entities/specialization';
 
+import { UserEditButton } from '../UserEditButton';
 import { UserImageBlock } from '../UserImageBlock';
 import { UserInfoBlock } from '../UserInfoBlock';
 
@@ -15,10 +16,13 @@ interface UserBlockProps {
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
 	return (
-		<Card>
+		<Card className={styles.container}>
 			<div className={styles.card}>
-				<UserImageBlock profile={profile} />
-				<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
+				<div className={styles['user-data']}>
+					<UserImageBlock profile={profile} />
+					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
+				</div>
+				<UserEditButton />
 			</div>
 		</Card>
 	);
