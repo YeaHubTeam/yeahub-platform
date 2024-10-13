@@ -1,3 +1,4 @@
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
@@ -30,7 +31,7 @@ export const InterviewSlider = ({
 	const toggleAnswerVisibility = () => {
 		setIsAnswerVisible(!isAnswerVisible);
 	};
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	return (
 		<article key={id} className={styles.slider}>

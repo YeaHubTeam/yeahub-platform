@@ -1,4 +1,22 @@
 {
-  "progressBarTitle": "Вопросы собеседования",
-  "completeQuizButton": "Завершить"
+  "create": {
+    "title": "Собеседование",
+    "questions_categories": "Категории вопросов",
+    "questions_difficulty": "Уровень сложности",
+    "modeSelection": "Выберите режим",
+    "repeat": "Повторение",
+    "newOnly": "Только новые",
+    "random": "Случайные",
+    "questionsCount": "Количество вопросов"
+  },
+  "title": "Вопросы собеседования",
+  "showAnswer": "Посмотреть ответ",
+  "buttons": {
+    "start": "Начать",
+    "doNotKnow": "Не знаю",
+    "repeat": "Повторить",
+    "iKnow": "Знаю",
+    "complete": "Завершить",
+    "next": "Далее"
+  }
 }

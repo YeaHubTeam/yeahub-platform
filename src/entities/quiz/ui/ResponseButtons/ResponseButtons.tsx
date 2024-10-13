@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Icon, Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
@@ -14,7 +15,7 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers('quiz');
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
