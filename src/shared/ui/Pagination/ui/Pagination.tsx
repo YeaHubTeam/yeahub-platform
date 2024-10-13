@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { Icon, IconButton } from 'yeahub-ui-kit';
 
+import { getArrayFromTwoNumbers } from '@/shared/helpers/getArrayFromTwoNumbers';
+
 import styles from './Pagination.module.css';
 
 interface PaginationProps {
@@ -42,9 +44,16 @@ export const Pagination = ({
 	page,
 	totalPages,
 }: PaginationProps) => {
+	if (totalPages <= 1) return null;
+
 	const handleChangePage = (newPage: number) => () => {
-		onChangePage(newPage);
+		if (page != newPage) onChangePage(newPage);
 	};
+
+	const endPage = Math.min(totalPages, Math.max(1, page - 3) + 5);
+	const startPage = Math.max(1, endPage - 5);
+
+	const buttonsValues = getArrayFromTwoNumbers(startPage, endPage);
 
 	return (
 		<div className={styles.wrapper}>
@@ -58,15 +67,48 @@ export const Pagination = ({
 				className={styles['arrow-button']}
 				icon={<Icon icon="arrowLeft" size={20} />}
 			/>
-			{Array.from({ length: totalPages }).map((_, index) => (
-				<button
-					onClick={handleChangePage(index + 1)}
-					className={classNames(styles['page-button'], { [styles.active]: index + 1 === page })}
-					key={index + 1}
-				>
-					{index + 1}
-				</button>
-			))}
+			{startPage > 1 && (
+				<>
+					<button
+						onClick={handleChangePage(1)}
+						className={classNames(styles['page-button'], {
+							[styles['page-button-active']]: 1 === page,
+						})}
+					>
+						1
+					</button>
+					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} />
+				</>
+			)}
+
+			{buttonsValues.map((value) =>
+				value ? (
+					<button
+						onClick={handleChangePage(value)}
+						className={classNames(styles['page-button'], {
+							[styles['page-button-active']]: value === page,
+						})}
+						key={value}
+					>
+						{value}
+					</button>
+				) : null,
+			)}
+
+			{endPage < totalPages && (
+				<>
+					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} />
+					<button
+						onClick={handleChangePage(totalPages)}
+						className={classNames(styles['page-button'], {
+							[styles['page-button-active']]: totalPages === page,
+						})}
+					>
+						{totalPages}
+					</button>
+				</>
+			)}
+
 			<IconButton
 				disabled={page === totalPages}
 				size="small"
