@@ -2,23 +2,27 @@ import { differenceInYears } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { formatAddress } from '@/shared/helpers/formatAddress';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { Profile } from '@/entities/profile';
+import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
 
 interface UserInfoProps {
-	profile: Profile;
+	profile: GetProfileResponse;
 	profileSpecialization: Specialization | undefined;
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const navigate = useNavigate();
+	const { t } = useI18nHelpers(i18Namespace.profile);
 
-	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
+	const { firstName, lastName, birthday, phone, email, country, city } = profile;
 
 	return (
 		<div className={styles['card-info']}>
@@ -30,19 +34,21 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					className={styles['card-edit']}
 					onClick={() => navigate('edit#personal-information')}
 				>
-					Редактировать
+					{t(ProfileI18.PROFILEPAGE_EDITBUTTON)}
 				</Button>
 			</div>
 			<ul className={styles['card-list']}>
-				{!!birthday && <li>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</li>}
+				{!!birthday && (
+					<li>{`${differenceInYears(new Date(), new Date(birthday))} ${t(ProfileI18.PROFILEPAGE_YEARS)}`}</li>
+				)}
 				{!!profileSpecialization?.title && <li>{profileSpecialization?.title}</li>}
 				{formatAddress(country, city)}
 			</ul>
 			<div className={styles['card-contacts']}>
 				<h4 className={styles['card-phone']}>{phone}</h4>
 				<h4 className={styles['card-mail']}>{email}</h4>
-				{profile.socialNetwork?.length > 0 ? (
-					<SocialNetWorkList socialNetwork={profile.socialNetwork} />
+				{profile.profiles[0].socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
 				) : null}
 			</div>
 		</div>

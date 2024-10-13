@@ -1,5 +1,5 @@
-import { TextHtml } from '@/shared/TextHtml/TextHtml';
 import { Card } from '@/shared/ui/Card';
+import { TextHtml } from '@/shared/ui/TextHtml';
 
 import styles from './QuestionBody.module.css';
 

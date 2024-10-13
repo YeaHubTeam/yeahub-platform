@@ -1,3 +1,6 @@
+import i18n from '@/shared/config/i18n/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+
 export const options = {
 	gauge: {
 		series: [
@@ -33,6 +36,7 @@ export const options = {
 					distance: 50,
 				},
 				data: {},
+				silent: true,
 				detail: {
 					fontSize: 18,
 					fontFamily: 'Manrope',
@@ -47,7 +51,7 @@ export const options = {
 	pie: {
 		series: [
 			{
-				name: 'Всего вопросов',
+				name: i18n.t(Translation.INTERVIEWRESULT_TOTAL),
 				type: 'pie',
 				startAngle: 0,
 				endAngle: 360,
@@ -72,6 +76,7 @@ export const options = {
 					borderRadius: 10,
 				},
 				data: {},
+				silent: true,
 			},
 		],
 	},

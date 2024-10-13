@@ -1,5 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import i18n from '@/shared/config/i18n/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
 import { CreateQuizPage } from '@/pages/CreateQuizPage';
@@ -45,7 +47,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.profile.route,
 						element: <Outlet />,
 						handle: {
-							crumb: 'Профиль',
+							crumb: Translation.CRUMBS_PROFILE,
 						},
 						children: [
 							{
@@ -56,7 +58,7 @@ export const router = createBrowserRouter([
 								path: ROUTES.profile.edit.route,
 								element: <EditProfilePage />,
 								handle: {
-									crumb: 'Редактирование профиля',
+									crumb: Translation.CRUMBS_PROFILE_EDITING,
 								},
 							},
 						],
@@ -65,8 +67,9 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.route,
 						element: <Outlet />,
 						handle: {
-							crumb: 'Обучение',
+							crumb: Translation.CRUMBS_INTERVIEW,
 						},
+
 						children: [
 							{
 								index: true,
@@ -76,7 +79,7 @@ export const router = createBrowserRouter([
 								path: ROUTES.interview.history.route,
 								element: <Outlet />,
 								handle: {
-									crumb: 'История собеседований',
+									crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
 								},
 								children: [
 									{
@@ -87,7 +90,7 @@ export const router = createBrowserRouter([
 										path: ROUTES.interview.history.result.route,
 										element: <InterviewQuizResultPage />,
 										handle: {
-											crumb: 'Результат викторины',
+											crumb: Translation.CRUMBS_INTERVIEW_RESULT,
 										},
 									},
 								],
@@ -96,14 +99,14 @@ export const router = createBrowserRouter([
 								path: ROUTES.interview.statistic.route,
 								element: <InterviewStatisticsPage />,
 								handle: {
-									crumb: 'Статистика собеседований',
+									crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
 								},
 							},
 							{
 								path: ROUTES.interview.questions.route,
 								element: <Outlet />,
 								handle: {
-									crumb: 'Список вопросов',
+									crumb: Translation.CRUMBS_QUESTIONS_LIST,
 								},
 								children: [
 									{
@@ -114,7 +117,7 @@ export const router = createBrowserRouter([
 										path: ROUTES.interview.questions.detail.route,
 										element: <QuestionPage />,
 										handle: {
-											crumb: 'Подробнее',
+											crumb: Translation.CRUMBS_QUESTION_DETAIL,
 										},
 									},
 								],
@@ -122,14 +125,14 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.interview.quiz.route,
 								element: <Outlet />,
-								handle: { crumb: 'Создание собеседования' },
+								handle: { crumb: Translation.CRUMBS_INTERVIEWCREATION },
 								children: [{ index: true, element: <CreateQuizPage /> }],
 							},
 							{
 								path: ROUTES.interview.new.route,
 								element: <InterviewQuizPage />,
 								handle: {
-									crumb: 'Собеседование',
+									crumb: Translation.CRUMBS_INTERVIEW,
 								},
 							},
 						],

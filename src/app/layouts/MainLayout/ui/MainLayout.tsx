@@ -22,13 +22,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.appRoute,
-		title: 'Главная',
+		title: 'tabs.main',
 		icon: MainIcon,
 	},
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
-		title: 'Мой профиль',
+		title: 'tabs.profile',
 		icon: ProfileIcon,
 	},
 	{

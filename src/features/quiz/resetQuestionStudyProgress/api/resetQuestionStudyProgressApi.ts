@@ -25,6 +25,7 @@ const resetQuestionProgressApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Interview.QUESTIONS_TOAST_PROGRESSISRESET));
 				} catch (error) {
 					toast.error(i18n.t(Interview.QUESTIONS_TOAST_PROGRESSISNOTRESET));
+					// eslint-disable-next-line no-console
 					console.log(error);
 				}
 			},

@@ -9,13 +9,17 @@ const supportedLngs: Langs[] = ['en', 'ru'];
 
 export const i18Namespace = {
 	translation: 'translation',
+	auth: 'auth',
 	interview: 'interview',
 	interviewQuiz: 'interviewQuiz',
 	interviewQuizResult: 'interviewQuizResult',
 	interviewStatistics: 'interviewStatistics',
+	mainPage: 'mainPage',
 	profile: 'profile',
+	questions: 'questions',
 	interviewHistory: 'interviewHistory',
 	specialization: 'specialization',
+	validation: 'validation',
 };
 
 i18n

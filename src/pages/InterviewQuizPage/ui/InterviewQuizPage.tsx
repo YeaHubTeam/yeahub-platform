@@ -8,13 +8,13 @@ import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
-	QuestionProgressBar,
-	QuestionNavPanel,
 	InterviewSlider,
-	useSlideSwitcher,
+	QuestionNavPanel,
+	QuestionProgressBar,
+	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
-	getActiveQuizQuestions,
+	useSlideSwitcher,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -27,7 +27,7 @@ const InterviewQuizPage = () => {
 
 	const { data: userProfile } = useProfileQuery();
 	const { data: activeQuiz, isLoading } = useGetActiveQuizQuery({
-		profileId: userProfile?.profiles[0].profileId || '',
+		profileId: userProfile?.profiles[0].id || '',
 		params: {
 			page: 1,
 			limit: 1,
@@ -70,7 +70,7 @@ const InterviewQuizPage = () => {
 		<div className={styles.container}>
 			<Card>
 				<div className={styles['progress-bar']}>
-					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
+					<p className={styles['progress-bar-title']}>{t('title')}</p>
 					<span className={styles['progress-num']}>
 						{activeQuestion}/{totalCount}
 					</span>
@@ -107,7 +107,7 @@ const InterviewQuizPage = () => {
 						disabled={currentCount !== totalCount || isLoadingAfterSave}
 						onClick={handleSubmitQuiz}
 					>
-						{t('completeQuizButton')}
+						{t('buttons.complete')}
 					</Button>
 				</div>
 			</Card>

@@ -28,7 +28,7 @@ const InterviewQuizResultPage = () => {
 
 	const { data, isLoading } = useGetQuizByIdQuery({
 		quizId: quizId ?? '',
-		profileId: profileId?.profiles[0].profileId ?? '',
+		profileId: profileId?.profiles[0].id ?? '',
 	});
 
 	const questions = data?.response.answers;
