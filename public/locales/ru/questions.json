@@ -1,0 +1,20 @@
+{
+  "title": "Вопросы",
+  "searchPlaceholder": "Введите запрос...",
+  "categories": {
+    "title": "Категории вопросов",
+    "showAll": "Показать все"
+  },
+  "difficulty": {
+    "title": "Сложность вопросов"
+  },
+  "rate": {
+    "title": "Рейтинг вопросов"
+  },
+  "status": {
+    "title": "Статус",
+    "unlearned": "Не изучено",
+    "learned": "Изучено",
+    "all": "Все"
+  }
+}

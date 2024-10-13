@@ -22,19 +22,25 @@ const questionsPageSlice = createSlice({
 		},
 		setTitle: (state, action: PayloadAction<string>) => {
 			state.title = action.payload;
+			state.page = 1;
 		},
 		setSkills: (state, action: PayloadAction<number[] | undefined>) => {
 			state.skills = action.payload;
+			state.page = 1;
 		},
 		setComplexity: (state, action: PayloadAction<number[] | undefined>) => {
 			state.complexity = action.payload;
+			state.page = 1;
 		},
 		setRate: (state, action: PayloadAction<number[]>) => {
 			state.rate = action.payload;
+			state.page = 1;
 		},
 		setStatus: (state, action: PayloadAction<QuestionFilterStatus>) => {
 			state.status = action.payload;
+			state.page = 1;
 		},
+		resetFilters: () => initialState,
 	},
 });
 

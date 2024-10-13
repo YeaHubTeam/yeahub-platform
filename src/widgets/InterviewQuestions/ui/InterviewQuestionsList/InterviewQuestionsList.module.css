@@ -12,3 +12,22 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.questions {
+  align-self: start;
+  width: calc(50% - 10px);
+}
+
+.no-questions {
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}
+
+@media (width <= 1198px) {
+  .questions {
+    width: 100%;
+  }
+}

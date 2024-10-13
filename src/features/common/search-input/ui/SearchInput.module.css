@@ -7,3 +7,7 @@
 .yeahub-input-preffix {
   margin: 0;
 }
+
+.button {
+  pointer-events: none;
+}

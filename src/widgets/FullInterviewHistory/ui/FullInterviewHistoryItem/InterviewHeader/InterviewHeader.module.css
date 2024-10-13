@@ -24,3 +24,11 @@
 .link:hover .icon {
   transform: translateX(5px);
 }
+
+@media (width < 768px) {
+  .link {
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+  }
+}

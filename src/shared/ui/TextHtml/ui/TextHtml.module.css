@@ -1,0 +1,9 @@
+.text {
+  white-space: pre-wrap;
+}
+
+.text code {
+  padding: 5px;
+  border-radius: 12px;
+  background-color: var(--background-nav-item);	
+}

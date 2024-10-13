@@ -2,19 +2,19 @@ import { differenceInYears } from 'date-fns';
 
 import { formatAddress } from '@/shared/helpers/formatAddress';
 
-import { Profile } from '@/entities/profile';
+import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
 
 interface UserInfoProps {
-	profile: Profile;
+	profile: GetProfileResponse;
 	profileSpecialization: Specialization | undefined;
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { firstName, lastName, birthday, phone, email, country, city } = profile.user;
+	const { firstName, lastName, birthday, phone, email, country, city } = profile;
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -58,10 +58,10 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					{', '}{' '}
 				</h4>
 				<h4>{email}</h4>
+				{profile.profiles[0].socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
+				) : null}
 			</div>
-			{profile.socialNetwork?.length > 0 ? (
-				<SocialNetWorkList socialNetwork={profile.socialNetwork} />
-			) : null}
 		</div>
 	);
 };

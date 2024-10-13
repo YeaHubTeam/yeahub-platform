@@ -6,14 +6,13 @@ import { useBlocker, useLocation } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Flex } from '@/shared/ui/Flex';
-import { Loader } from '@/shared/ui/Loader';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { useProfileQuery } from '@/entities/auth';
-import { Profile, useGetProfileByIdQuery } from '@/entities/profile';
+import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
 import { getTabs, mapFormToProfile, mapProfileToForm } from '../../helpers/editProfileFormHelpers';
@@ -27,11 +26,8 @@ export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const { hash } = useLocation();
-	const { data: profile } = useProfileQuery();
+	const { data: userProfile, isLoading } = useProfileQuery();
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
-	const profileId = profile?.profiles[0].profileId;
-
-	const { data: userProfile, isLoading } = useGetProfileByIdQuery(profileId as string);
 
 	const tabs = getTabs(t);
 	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
@@ -59,7 +55,7 @@ export const EditProfileForm = () => {
 
 	const onSubmit = (data: ProfileSchema) => {
 		methods.reset();
-		updateProfile(mapFormToProfile(userProfile as Profile, data));
+		updateProfile(mapFormToProfile(userProfile as GetProfileResponse, data));
 	};
 
 	if (isLoading) return <EditProfileFormSkeleton />;
@@ -67,7 +63,7 @@ export const EditProfileForm = () => {
 	return (
 		<section className={styles.section}>
 			<Tabs
-				title={t('tabs.title')}
+				title={t(ProfileI18.TABS_TITLE)}
 				tabs={tabs}
 				tabToggle={currentActiveTab}
 				setTabToggle={setCurrentActiveTab}
@@ -80,7 +76,7 @@ export const EditProfileForm = () => {
 					) : null}
 					<Flex direction="column" align="end" className={styles['btn-container']}>
 						<Button type="submit" disabled={isUpdateProfileLoading}>
-							Сохранить
+							{t(ProfileI18.BUTTONS_SAVE)}
 						</Button>
 					</Flex>
 				</form>

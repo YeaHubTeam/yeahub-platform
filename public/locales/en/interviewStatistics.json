@@ -1,0 +1,20 @@
+{
+  "progress": {
+    "title": "Progress"
+  },
+  "questionStats": {
+    "title": "Completed questions statistics for all categories",
+    "passedQuestions": "Questions passed",
+    "notStudied": "Not studied",
+    "saved": "Saved",
+    "studied": "Studied"
+  },
+  "attemptStats": {
+    "title": "Statistics of completed interviews",
+    "bestResult": "Best result",
+    "worstResult": "Worst result",
+    "avgResult": "Average result"
+  },
+  "expand": "Expand",
+  "collapse": "Collapse"
+}
