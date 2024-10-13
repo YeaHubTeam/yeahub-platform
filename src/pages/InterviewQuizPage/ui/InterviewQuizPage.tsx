@@ -33,7 +33,7 @@ const InterviewQuizPage = () => {
 			limit: 1,
 		},
 	});
-	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
+	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
@@ -50,6 +50,8 @@ const InterviewQuizPage = () => {
 		goToNextSlide,
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	const isShowLoadingButton = activeQuestion !== totalCount;
 
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
@@ -102,13 +104,15 @@ const InterviewQuizPage = () => {
 						isAnswerVisible={isAnswerVisible}
 						setIsAnswerVisible={setIsAnswerVisible}
 					/>
-					<Button
-						className={styles['end-button']}
-						disabled={currentCount !== totalCount || isLoadingAfterSave}
-						onClick={handleSubmitQuiz}
-					>
-						{t('buttons.complete')}
-					</Button>
+					{isShowLoadingButton ? (
+						<Button className={styles['end-button']} onClick={goToNextSlide} disabled={!answer}>
+							{t('buttons.next')}
+						</Button>
+					) : (
+						<Button className={styles['end-button']} onClick={handleSubmitQuiz} disabled={!answer}>
+							{t('buttons.complete')}
+						</Button>
+					)}
 				</div>
 			</Card>
 		</div>
