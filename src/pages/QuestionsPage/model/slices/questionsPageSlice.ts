@@ -40,6 +40,7 @@ const questionsPageSlice = createSlice({
 			state.status = action.payload;
 			state.page = 1;
 		},
+		resetFilters: () => initialState,
 	},
 });
 

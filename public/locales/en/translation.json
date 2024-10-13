@@ -19,6 +19,10 @@
       "cancel": "No"
     }
   },
+  "emptyStub": {
+    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "resetFilter": "Reset filter"
+  },
   "questions": {
     "notLearned": "Home",
     "learned": "My Profile",
