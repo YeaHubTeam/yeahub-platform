@@ -91,12 +91,22 @@
   background-color: var(--background-light-hover);
 }
 
+.fullwidth.category:hover {
+  background-color: transparent;
+}
+
 .category.fullwidth {
   padding: 0;
 }
 
+.expanded .container {
+  background-color: var(--background-light-hover);
+}
+
 .category.fullwidth .container {
   padding: 10px 12px;
+  height: 100%;
+  border-radius: 12px;
 }
 
 .category.fullwidth .item {
@@ -111,7 +121,7 @@
 .items {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin-top: 0;
   max-height: 0;
   overflow: hidden;
@@ -127,8 +137,15 @@
   rotate: 180deg;
 }
 
+
+
+
 .expanded {
   background-color: var(--background-light-hover);
+}
+
+.fullwidth.expanded {
+  background-color: transparent;
 }
 
 .fullwidth .nested {

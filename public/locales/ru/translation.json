@@ -9,7 +9,10 @@
   "tabs": {
     "main": "Главная",
     "profile": "Мой профиль",
-    "interview": "Собеседованиe"
+    "education": {
+      "title": "Обучение",
+      "interview": "Собеседование"
+    }
   },
   "blockModal": {
     "confirmTitle": "Подтвердить действие",

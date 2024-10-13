@@ -33,12 +33,12 @@ const mainLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'category',
-		title: 'Обучение',
+		title: 'tabs.education.title',
 		icon: EducationIcon,
 		elements: [
 			{
 				route: ROUTES.interview.route,
-				title: 'Собеседование',
+				title: 'tabs.education.interview',
 				icon: InterviewIcon,
 			},
 		],
