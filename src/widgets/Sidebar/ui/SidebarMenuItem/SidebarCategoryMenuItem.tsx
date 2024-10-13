@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -20,11 +20,22 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
+	const location = useLocation();
+
 	const handleExpand = () => {
 		setExpanded(!expanded);
 	};
 
 	const ImageComponent = menuItem.icon;
+
+	useEffect(() => {
+		for (const el of menuItem.elements) {
+			if (location.pathname.endsWith(el.route)) {
+				setExpanded(true);
+			}
+			break;
+		}
+	}, [location.pathname]);
 
 	return (
 		<div
