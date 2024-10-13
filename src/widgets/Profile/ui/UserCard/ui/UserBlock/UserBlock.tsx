@@ -24,7 +24,6 @@ export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) =>
 				</div>
 				<UserEditButton />
 			</div>
-			<UserEditButton />
 		</Card>
 	);
 };
