@@ -219,6 +219,7 @@ export enum InterviewHistoryPage {
 export enum InterviewQuiz {
 	PROGRESSBARTITLE = 'progressBarTitle',
 	COMPLETEQUIZBUTTON = 'completeQuizButton',
+	QUESTIONS_HIDEANSWER = 'hideAnswer',
 }
 
 export enum InterviewQuizResult {
