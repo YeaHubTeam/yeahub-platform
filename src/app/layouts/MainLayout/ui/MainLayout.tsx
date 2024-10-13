@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import EducationIcon from '@/shared/assets/icons/education.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
@@ -19,19 +20,28 @@ import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
+		type: 'single',
 		route: ROUTES.appRoute,
 		title: 'tabs.main',
 		icon: MainIcon,
 	},
 	{
+		type: 'single',
 		route: ROUTES.profile.route,
 		title: 'tabs.profile',
 		icon: ProfileIcon,
 	},
 	{
-		route: ROUTES.interview.route,
-		title: 'tabs.interview',
-		icon: InterviewIcon,
+		type: 'category',
+		title: 'tabs.education.title',
+		icon: EducationIcon,
+		elements: [
+			{
+				route: ROUTES.interview.route,
+				title: 'tabs.education.interview',
+				icon: InterviewIcon,
+			},
+		],
 	},
 ];
 

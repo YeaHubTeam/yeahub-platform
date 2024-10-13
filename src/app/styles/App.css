@@ -58,6 +58,7 @@
   --background-app: var(--color-black-25);
   --background-button: var(--color-black-50);
   --background-block: var(--color-white-900);
+  --background-light-hover: var(--color-black-30);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
   --text-color-link-active: var(--color-purple-700);
@@ -104,6 +105,7 @@
   --background-app: var(--color-black-800);
   --background-button: var(--color-black-50);
   --background-block: var(--color-black-900);
+  --background-light-hover: var(--color-black-30);
   --text-color-primary: var(--color-white-900);
   --text-color-bright: var(--color-white-900);
   --text-color-link-active: var(--color-purple-700);

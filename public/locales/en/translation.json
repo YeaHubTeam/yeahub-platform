@@ -9,7 +9,10 @@
   "tabs": {
     "main": "Home",
     "profile": "My Profile",
-    "interview": "Interview"
+    "education": {
+      "title": "Education",
+      "interview": "Interview"
+    }
   },
   "blockModal": {
     "confirmTitle": "Confirm action",
