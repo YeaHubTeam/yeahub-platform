@@ -1,3 +1,4 @@
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
@@ -29,6 +30,7 @@ export const InterviewSlider = ({
 	const toggleAnswerVisibility = () => {
 		setIsAnswerVisible(!isAnswerVisible);
 	};
+	const { t } = useI18nHelpers();
 
 	return (
 		<article key={id} className={styles.slider}>
@@ -36,7 +38,7 @@ export const InterviewSlider = ({
 			<div className={styles.wrapper}>
 				{!isAnswerVisible ? (
 					<button className={styles.answer} onClick={toggleAnswerVisibility}>
-						Посмотреть ответ
+						{t('showAnswer')}
 					</button>
 				) : (
 					shortAnswer

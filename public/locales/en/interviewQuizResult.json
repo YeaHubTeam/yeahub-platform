@@ -1,0 +1,13 @@
+{
+  "resultInterview": {
+    "resultTitle": "Interview result {{title}}",
+    "questionTitle": "Statistics of passed questions for all categories",
+    "allPassedQuestionTitle": "Passed interview questions lits"
+  },
+  "questionStats": {
+    "passed": "Passed",
+    "timeSpent": "Time spent",
+    "date": "Date",
+    "duration": "Duration"
+  }
+}

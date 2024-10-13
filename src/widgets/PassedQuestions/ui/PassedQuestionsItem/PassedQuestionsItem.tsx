@@ -1,20 +1,20 @@
-import { Icon, Chip } from 'yeahub-ui-kit';
+import { Chip, Icon } from 'yeahub-ui-kit';
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
 import { Answers, QuizQuestionAnswerType } from '@/entities/quiz';
 
 import styles from './PassedQuestionsItem.module.css';
 
-type Label = 'Повторить' | 'Не знаю' | 'Знаю';
-
 interface Props {
 	question: Answers;
 }
 
 interface MappingItem {
-	label: Label;
+	label: string;
 	icon: IconsName;
 }
 
@@ -22,18 +22,19 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 	const { imageSrc, answer, questionTitle } = question;
 	const mapping: Record<QuizQuestionAnswerType, MappingItem> = {
 		REPEAT: {
-			label: 'Повторить',
+			label: Translation.PASSEDQUESTIONS_REPEAT,
 			icon: 'clockCounterClockwise',
 		},
 		UNKNOWN: {
-			label: 'Не знаю',
+			label: Translation.PASSEDQUESTIONS_DONTKNOW,
 			icon: 'thumbsDown',
 		},
 		KNOWN: {
-			label: 'Знаю',
+			label: Translation.PASSEDQUESTIONS_IKNOW,
 			icon: 'thumbsUp',
 		},
 	};
+	const { t } = useI18nHelpers();
 
 	return (
 		<li>
@@ -45,7 +46,7 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 						theme="outlined"
 						className={styles['action-btn-tmp']}
 						preffix={<Icon key={mapping[answer].icon} icon={mapping[answer].icon} size={24} />}
-						label={mapping[answer].label}
+						label={t(mapping[answer].label)}
 					/>
 				</div>
 			</article>

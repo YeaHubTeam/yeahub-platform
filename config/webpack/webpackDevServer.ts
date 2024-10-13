@@ -7,7 +7,13 @@ import { WebpackOptions } from './types/types';
 export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConfiguration => {
   return {
     port: port ?? 3001,
-    open: true,
+    open: process.env.BROWSER
+      ? {
+          app: {
+            name: process.env.BROWSER,
+          },
+        }
+      : true,
     historyApiFallback: true,
     hot: true,
     server: {
