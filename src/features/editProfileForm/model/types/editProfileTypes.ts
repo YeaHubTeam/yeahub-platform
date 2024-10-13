@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { GetProfileResponse, Profile } from '@/entities/auth';
+import { ProfileUpdate } from '@/entities/auth';
 import { SocialNetwork } from '@/entities/socialNetwork';
 
 import { editProfileSchema } from '../lib/validation/editProfileSchema';
@@ -51,12 +51,8 @@ export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
 
-export type GetProfileResponseWithoutSkills = Omit<Profile, 'profileSkills'> & {
+export type EditProfileRequestData = Omit<ProfileUpdate, 'profileSkills'> & {
 	profileSkills: number[];
-};
-
-export type EditProfileRequestData = Omit<GetProfileResponse, 'profiles'> & {
-	profiles: GetProfileResponseWithoutSkills[];
 };
 
 export type EditUserRequestData = {

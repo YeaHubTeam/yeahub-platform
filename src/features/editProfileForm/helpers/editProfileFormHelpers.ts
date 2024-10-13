@@ -73,26 +73,25 @@ export const mapFormToProfile = (
 	profile: GetProfileResponse,
 	values: ProfileSchema,
 ): EditProfileRequestData => ({
-	...profile,
-	email: values.email,
-	firstName: values.firstName,
-	lastName: values.lastName,
-	phone: values.phone,
-	city: values.location || profile.city || '',
-	birthday: profile.birthday || null,
-	address: profile.address || '',
-	avatarUrl: profile.avatarUrl || '',
-	avatarImage: values.image,
-	profiles: [
-		{
-			...profile.profiles[0],
-			id: profile.profiles[0].id,
-			description: values.aboutMe || '',
-			socialNetwork: values.socialNetworks
-				? values.socialNetworks.filter((socialNetwork) => socialNetwork.title)
-				: [],
-			specializationId: values.specialization,
-			profileSkills: values.skills || [],
-		},
-	],
+	...profile.profiles[0],
+	id: profile.profiles[0].id,
+	specializationId: values.specialization,
+	description: values.aboutMe || '',
+	socialNetwork: values.socialNetworks
+		? values.socialNetworks.filter((socialNetwork) => socialNetwork.title)
+		: [],
+	profileSkills: values.skills || [],
+	user: {
+		...profile,
+		id: profile.id,
+		email: values.email,
+		firstName: values.firstName,
+		lastName: values.lastName,
+		phone: values.phone,
+		city: values.location || profile.city || '',
+		birthday: profile.birthday || null,
+		address: profile.address || '',
+		avatarUrl: profile.avatarUrl || '',
+		avatarImage: values.image,
+	},
 });
