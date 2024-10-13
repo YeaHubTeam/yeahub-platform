@@ -9,7 +9,10 @@
   "tabs": {
     "main": "Home",
     "profile": "My Profile",
-    "interview": "Interview"
+    "education": {
+      "title": "Education",
+      "interview": "Interview"
+    }
   },
   "blockModal": {
     "confirmTitle": "Confirm action",
@@ -18,6 +21,10 @@
       "ok": "Yes",
       "cancel": "No"
     }
+  },
+  "emptyStub": {
+    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "resetFilter": "Reset filter"
   },
   "questions": {
     "notLearned": "Home",

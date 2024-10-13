@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -83,6 +84,10 @@ const QuestionsPage = () => {
 		setQueryParams({ page: 1 });
 	};
 
+	const resetFilters = () => {
+		dispatch(questionsPageActions.resetFilters());
+	};
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
 		return <QuestionsPageSkeleton />;
 	}
@@ -99,6 +104,7 @@ const QuestionsPage = () => {
 					{questions.total > questions.limit && (
 						<QuestionPagePagination questionsResponse={questions} />
 					)}
+					{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
 				</Card>
 			</div>
 			<div className={styles['additional-info-wrapper']}>

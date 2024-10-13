@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
@@ -15,7 +16,7 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers('quiz');
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();
 
 	return (
