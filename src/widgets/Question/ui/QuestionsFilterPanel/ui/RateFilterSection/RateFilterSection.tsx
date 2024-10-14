@@ -1,3 +1,4 @@
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
@@ -15,7 +16,7 @@ interface RateFilterSectionProps {
 }
 
 export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSectionProps) => {
-	const { t } = useI18nHelpers('questions');
+	const { t } = useI18nHelpers(i18Namespace.questions);
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);
 		const updates = isDataExist

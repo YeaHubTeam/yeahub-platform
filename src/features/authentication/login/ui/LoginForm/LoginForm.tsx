@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button, Icon, Input } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { FormControl } from '@/shared/ui/FormControl';
 
@@ -12,7 +13,7 @@ import styles from './LoginForm.module.css';
 export const LoginForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [loginMutation, { isLoading }] = useLoginMutation();
-	const { t } = useI18nHelpers('auth');
+	const { t } = useI18nHelpers(i18Namespace.auth);
 	const {
 		handleSubmit,
 		control,

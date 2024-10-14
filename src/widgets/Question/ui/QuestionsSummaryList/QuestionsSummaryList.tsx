@@ -1,3 +1,5 @@
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Accordion } from '@/shared/ui/Accordion';
 
 import { Question } from '@/entities/question';
@@ -11,10 +13,8 @@ import { QuestionPreview } from '../QuestionPreview/QuestionPreview';
 
 import styles from './QuestionsSummaryList.module.css';
 
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-
 export const QuestionsSummaryList = ({ questions, profileId }: QuestionsListProps) => {
-	const { t } = useI18nHelpers('questions');
+	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	return (
 		<>

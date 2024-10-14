@@ -12,6 +12,9 @@
     "title": "Questions Rating"
   },
   "status": {
-    "title": "Status"
+    "title": "Status",
+    "unlearned": "Unlearned",
+    "learned": "Learned",
+    "all": "All"
   }
 }

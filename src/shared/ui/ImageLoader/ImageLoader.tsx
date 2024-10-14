@@ -1,3 +1,4 @@
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
@@ -8,7 +9,7 @@ import style from './ImageLoader.module.css';
 
 export const ImageLoader = () => {
 	const { t } = useI18nHelpers();
-	const { t: tProfile } = useI18nHelpers('profile');
+	const { t: tProfile } = useI18nHelpers(i18Namespace.profile);
 
 	return (
 		<div className={style.container}>

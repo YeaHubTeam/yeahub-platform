@@ -26,11 +26,6 @@
     "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
     "resetFilter": "Reset filter"
   },
-  "questions": {
-    "notLearned": "Home",
-    "learned": "My Profile",
-    "all": "Interview"
-  },
   "fileLoader": {
     "linkText": "Click here",
     "text": "or drag to change your",
@@ -118,5 +113,33 @@
     "error404": "Page Not Found",
     "login": "Login",
     "register": "Register"
+  },
+  "toast": {
+    "questions": {
+      "learned": {
+        "success": "he issue has been fully studied",
+        "failed": "It was not possible to fully study the issue"
+      },
+      "reset.progress": {
+        "success": "The progress of studying the issue has been reset",
+        "failed": "Failed to reset the progress of studying the issue"
+      }
+    },
+    "profile": {
+      "update": {
+        "success": "The profile has been successfully changed",
+        "failed": "The profile could not be changed"
+      }
+    },
+    "interview": {
+      "new": {
+        "success": "A new interview has been created",
+        "failed": "Failed to create a new interview"
+      },
+      "finish": {
+        "success": "The interview is completed",
+        "failed": "Failed to complete the interview"
+      }
+    }
   }
 }
