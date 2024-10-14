@@ -2,6 +2,7 @@ import { ReactNode, useMemo } from 'react';
 import { useController, Control, ControllerRenderProps, FieldValues, Path } from 'react-hook-form';
 import { FormControl as CustomControl } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
@@ -29,7 +30,7 @@ export const FormControl = <T extends FieldValues>({
 		control,
 	});
 
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers(i18Namespace.validation);
 
 	const errorText = useMemo(() => error?.message && t(error?.message), [error, t]);
 
