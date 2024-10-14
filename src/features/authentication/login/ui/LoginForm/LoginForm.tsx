@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Input, Icon, Button } from 'yeahub-ui-kit';
+import { Button, Icon, Input } from 'yeahub-ui-kit';
 
-import { useLoginMutation } from '@/entities/auth';
-import { Auth } from '@/entities/auth';
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { FormControl } from '@/shared/ui/FormControl';
+
+import { Auth, useLoginMutation } from '@/entities/auth';
 
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [loginMutation, { isLoading }] = useLoginMutation();
+	const { t } = useI18nHelpers(i18Namespace.auth);
 	const {
 		handleSubmit,
-		register,
+		control,
 		formState: { errors },
 	} = useFormContext<Auth>();
 
@@ -28,41 +32,44 @@ export const LoginForm = () => {
 		<div className={styles.wrapper}>
 			<div className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="email">
-						Электронная почта
-					</label>
-					<Input
-						className={styles.input}
-						{...register('username')}
-						placeholder="Введите электронную почту"
-						hasError={!!errors.username?.message}
-					/>
-					{errors.username ? <div className={styles.error}>{errors.username.message}</div> : null}
-				</div>
-				<div className={styles['input-wrapper']}>
-					<label className={styles.label} htmlFor="password">
-						Пароль
-					</label>
-					<Input
-						className={styles.input}
-						{...register('password')}
-						placeholder="Введите пароль"
-						type={isPasswordHidden ? 'text' : 'password'}
-						hasError={!!errors.password?.message}
-						suffix={
-							<Icon
-								className={styles.icon}
-								onClick={handleShowPassword}
-								icon="password"
-								arg={isPasswordHidden}
-								color="--palette-ui-black-300"
+					<FormControl name="username" control={control} label={t('login.email')}>
+						{(field) => (
+							<Input
+								{...field}
+								className={styles.input}
+								placeholder={t('login.emailPlaceholder')}
 							/>
-						}
-					/>
-					{errors.password ? <div className={styles.error}>{errors.password.message}</div> : null}
-					<div className={styles.link}>
+						)}
+					</FormControl>
+				</div>
+
+				<div className={styles['input-wrapper']}>
+					<FormControl name="password" control={control} label={t('login.password')}>
+						{(field) => (
+							<Input
+								{...field}
+								className={styles.input}
+								placeholder={t('login.passwordPlaceholder')}
+								type={isPasswordHidden ? 'text' : 'password'}
+								suffix={
+									<Icon
+										className={styles.icon}
+										onClick={handleShowPassword}
+										icon="password"
+										arg={isPasswordHidden}
+										color={
+											errors.password?.message ? '--palette-ui-red-700' : '--palette-ui-black-300'
+										}
+										size={24}
+									/>
+								}
+							/>
+						)}
+					</FormControl>
+
+					<div className={styles['forgot-password-link']}>
 						<Button tagName="a" theme="link">
-							Забыли пароль?
+							{t('login.forgotPassword')}
 						</Button>
 					</div>
 				</div>
@@ -73,7 +80,7 @@ export const LoginForm = () => {
 				className={styles['submit-button']}
 				onClick={handleSubmit(onLogin)}
 			>
-				Вход
+				{t('buttons.login')}
 			</Button>
 		</div>
 	);

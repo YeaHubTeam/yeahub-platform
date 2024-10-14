@@ -1,7 +1,8 @@
 .wrapper {
   display: flex;
   gap: 8px;
-  height: 44px;
+  min-width: auto;
+  height: 48px;
 }
 
 .btn {
@@ -34,8 +35,3 @@
   color: var(--text-color-link-active);
 }
 
-@media (width <= 768px) {
-  .action-button {
-    display: none;
-  }
-}

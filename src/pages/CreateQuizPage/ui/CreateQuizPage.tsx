@@ -1,5 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -9,7 +13,7 @@ import {
 	ChooseQuestionCount,
 	ChooseQuestionsCategories,
 } from '@/entities/question';
-import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
+import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
 import { QuestionModeType } from '@/entities/quiz';
 import { QuizQuestionMode } from '@/entities/quiz';
 
@@ -23,6 +27,23 @@ const MAX_LIMIT_CATEGORIES = 20;
 const CreateQuizPage = () => {
 	const { data: userProfile, isLoading } = useProfileQuery();
 	const { filter, handleFilterChange } = useQueryFilter();
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+
+	const navigate = useNavigate();
+
+	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+		{
+			profileId: userProfile?.profiles[0].id,
+			params: { limit: 1, page: 1 },
+		},
+		{
+			skip: !userProfile?.id,
+		},
+	);
+
+	if (activeQuizData?.data[0]?.questions) {
+		navigate(ROUTES.interview.new.page);
+	}
 
 	const [trigger] = useLazyCreateNewQuizQuery();
 
@@ -44,7 +65,7 @@ const CreateQuizPage = () => {
 
 	const handleCreateNewQuiz = () => {
 		trigger({
-			profileId: userProfile?.profiles[0].profileId || '',
+			profileId: userProfile?.profiles[0].id || '',
 			params: {
 				skills: filter.category,
 				minComplexity: filter.complexity ? Math.min(...filter.complexity) : undefined,
@@ -55,12 +76,12 @@ const CreateQuizPage = () => {
 		});
 	};
 
-	if (isLoading) return <CreateQuizPageSkeleton />;
+	if (isLoading || isActiveQuizLoading) return <CreateQuizPageSkeleton />;
 
 	return (
 		<section>
 			<Card className={styles.container}>
-				<h2 className={styles.title}>Собеседование</h2>
+				<h2 className={styles.title}>{t('create.title')}</h2>
 				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
 						selectedSkills={filter.category}
@@ -81,7 +102,7 @@ const CreateQuizPage = () => {
 					onClick={handleCreateNewQuiz}
 					suffix={<Icon icon="arrowRight" size={24} />}
 				>
-					Начать
+					{t('buttons.start')}
 				</Button>
 			</Card>
 		</section>

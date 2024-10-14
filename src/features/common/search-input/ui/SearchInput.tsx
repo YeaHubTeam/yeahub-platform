@@ -30,6 +30,7 @@ export const SearchInput = ({
 			onChange={handleChange}
 			preffix={
 				<IconButton
+					className={styles.button}
 					type="submit"
 					aria-label="perform a search"
 					form="square"

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -7,30 +8,32 @@ import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
-	QuestionProgressBar,
-	QuestionNavPanel,
 	InterviewSlider,
-	useSlideSwitcher,
+	QuestionNavPanel,
+	QuestionProgressBar,
+	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
-	getActiveQuizQuestions,
+	useSlideSwitcher,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
 import { InterviewQuizPageSkeleton } from './InterviewQuizPage.skeleton';
 
 const InterviewQuizPage = () => {
+	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const { data: userProfile } = useProfileQuery();
 	const { data: activeQuiz, isLoading } = useGetActiveQuizQuery({
-		profileId: userProfile?.profiles[0].profileId || '',
+		profileId: userProfile?.profiles[0].id || '',
 		params: {
 			page: 1,
 			limit: 1,
 		},
 	});
-	const [saveResult, { isLoading: isLoadingAfterSave }] = useSaveQuizResultMutation();
+	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
@@ -47,6 +50,8 @@ const InterviewQuizPage = () => {
 		goToNextSlide,
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
+
+	const isShowLoadingButton = activeQuestion !== totalCount;
 
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
@@ -67,7 +72,7 @@ const InterviewQuizPage = () => {
 		<div className={styles.container}>
 			<Card>
 				<div className={styles['progress-bar']}>
-					<p className={styles['progress-bar-title']}>{t('progressBarTitle')}</p>
+					<p className={styles['progress-bar-title']}>{t('title')}</p>
 					<span className={styles['progress-num']}>
 						{activeQuestion}/{totalCount}
 					</span>
@@ -78,8 +83,7 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Card>
-
-			<Card>
+			<Card className={styles['question-card']}>
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}
@@ -87,6 +91,7 @@ const InterviewQuizPage = () => {
 						goToPrevSlide={goToPrevSlide}
 						answer={answer}
 						changeAnswer={changeAnswer}
+						setIsAnswerVisible={setIsAnswerVisible}
 					/>
 					<InterviewSlider
 						id={questionId}
@@ -95,14 +100,18 @@ const InterviewQuizPage = () => {
 						shortAnswer={shortAnswer ?? ''}
 						answer={answer}
 						changeAnswer={changeAnswer}
+						isAnswerVisible={isAnswerVisible}
+						setIsAnswerVisible={setIsAnswerVisible}
 					/>
-					<Button
-						className={styles['end-button']}
-						disabled={currentCount !== totalCount || isLoadingAfterSave}
-						onClick={handleSubmitQuiz}
-					>
-						{t('completeQuizButton')}
-					</Button>
+					{isShowLoadingButton ? (
+						<Button className={styles['end-button']} onClick={goToNextSlide} disabled={!answer}>
+							{t('buttons.next')}
+						</Button>
+					) : (
+						<Button className={styles['end-button']} onClick={handleSubmitQuiz} disabled={!answer}>
+							{t('buttons.complete')}
+						</Button>
+					)}
 				</div>
 			</Card>
 		</div>

@@ -1,6 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -12,6 +14,7 @@ import {
 } from '@/widgets/Question';
 
 import { useQueryFilter } from '../../model/hooks/useQueryFilter';
+import { questionsPageActions } from '../../model/slices/questionsPageSlice';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
@@ -19,12 +22,13 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
 	const { filter, handleFilterChange } = useQueryFilter();
+	const dispatch = useAppDispatch();
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
 	const { status: tmpStatus, ...tmpGetParams } = filter;
 	const { data: userProfile } = useProfileQuery();
-	const profileId = userProfile?.profiles[0]?.profileId || '';
+	const profileId = userProfile?.profiles[0].id || '';
 	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
@@ -72,6 +76,10 @@ const QuestionsPage = () => {
 		handleFilterChange({ status });
 	};
 
+	const resetFilters = () => {
+		dispatch(questionsPageActions.resetFilters());
+	};
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
 		return <QuestionsPageSkeleton />;
 	}
@@ -92,6 +100,7 @@ const QuestionsPage = () => {
 							// onPageChange={onPageChange}
 						/>
 					)}
+					{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
 				</Card>
 			</div>
 			<div className={styles['additional-info-wrapper']}>

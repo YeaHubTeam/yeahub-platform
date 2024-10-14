@@ -1,9 +1,7 @@
-import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
-
 import { MenuItem } from '../../model/types/sidebar';
 
-import styles from './SidebarMenuItem.module.css';
+import SidebarCategoryMenuItem from './SidebarCategoryMenuItem';
+import SidebarSingleMenuItem from './SidebarSingleMenuItem';
 
 interface SidebarMenuItemProps {
 	/**
@@ -24,23 +22,10 @@ interface SidebarMenuItemProps {
  */
 
 export const SidebarMenuItem = ({ menuItem, fullWidth }: SidebarMenuItemProps) => {
-	const ImageComponent = menuItem.icon;
-
-	return (
-		<NavLink
-			to={menuItem.route}
-			className={({ isActive }) => classNames(styles.link, { [styles.active]: isActive })}
-			data-testid="SidebarMenuItem_Link"
-		>
-			<div className={styles.wrap}>
-				<ImageComponent className={styles['link-icon']} />
-				<span
-					className={classNames(styles['link-title'], { [styles.closing]: fullWidth })}
-					data-testid="SidebarMenuItem_Link_Text"
-				>
-					{menuItem.title}
-				</span>
-			</div>
-		</NavLink>
-	);
+	switch (menuItem.type) {
+		case 'category':
+			return <SidebarCategoryMenuItem fullWidth={fullWidth} menuItem={menuItem} />;
+		case 'single':
+			return <SidebarSingleMenuItem fullWidth={fullWidth} menuItem={menuItem} />;
+	}
 };

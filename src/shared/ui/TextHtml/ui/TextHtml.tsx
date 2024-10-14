@@ -1,5 +1,7 @@
 import DOMPurify from 'dompurify';
 
+import styles from './TextHtml.module.css';
+
 interface TextHtmlProps {
 	html: string;
 }
@@ -7,5 +9,9 @@ interface TextHtmlProps {
 export const TextHtml = ({ html }: TextHtmlProps) => {
 	const sanitizedHtmlContent = DOMPurify.sanitize(html);
 
-	return <div dangerouslySetInnerHTML={{ __html: sanitizedHtmlContent }} />;
+	return (
+		<pre className={styles.text}>
+			<div dangerouslySetInnerHTML={{ __html: sanitizedHtmlContent }} />
+		</pre>
+	);
 };

@@ -1,0 +1,11 @@
+.text {
+  margin-bottom: var(--font-size-h-s);
+  font-size: var(--font-size-h-xs);
+}
+
+@media (width <= 480px) {
+  .text {
+    margin-bottom: var(--font-size-p-m);
+    font-size: var(--font-size-p-s);
+  } 
+} 
