@@ -13,9 +13,19 @@
   cursor: pointer;
 }
 
-@media (width <= 570px) {
+@media (width <= 768px) {
   .profile-picture-wrapper {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+@media (width <= 480px) {
+  .profile-picture-block {
+    width: 100%;
+  }
+
+  .delete-avatar-btn {
+    align-self: center;
   }
 }

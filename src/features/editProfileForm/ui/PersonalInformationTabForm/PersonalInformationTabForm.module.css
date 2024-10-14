@@ -58,7 +58,7 @@
   font-size: var(--font-size-p-s);
 }
 
-@media (width <= 1200px) {
+@media (width <= 1440px) {
   .column {
     flex-direction: column;
   }
@@ -69,12 +69,6 @@
 }
 
 @media (width <= 768px) {
-  .wrapper {
-    gap: 40px;
-  }
-}
-
-@media (width <= 570px) {
   .wrapper {
     gap: 24px;
   }

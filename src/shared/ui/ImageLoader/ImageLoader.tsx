@@ -9,7 +9,7 @@ export const ImageLoader = () => {
 	return (
 		<div className={style.container}>
 			<Flex className={style['profile-picture-wrapper']} gap="16">
-				<Flex gap="8" direction="column">
+				<Flex className={style['profile-picture-block']} gap="8" direction="column">
 					<AvatarWithoutPhoto />
 					<button type="button" className={style['delete-avatar-btn']}>
 						Удалить фото
