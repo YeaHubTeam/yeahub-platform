@@ -35,6 +35,17 @@
     },
     "limit": "не более {{maxFileMBSize}}мб"
   },
+  "interviewResult": {
+    "total": "Всего вопросов",
+    "known": "Знаю",
+    "unknown": "Не знаю",
+    "repeat": "Повторить"
+  },
+  "passedQuestions": {
+    "iKnow": "Знаю",
+    "dontKnow": "Не знаю",
+    "repeat": "Повторить"
+  },
   "quizButtons": {
     "doNotKnow": "Не знаю",
     "repeat": "Повторить",
@@ -111,6 +122,7 @@
     "profile": "Профиль",
     "profileEditing": "Редактирование профиля",
     "interview": "Обучение",
+    "interviewCreation": "Собеседование",
     "interviewHistory": "История собеседований",
     "interviewResult": "Результат викторины",
     "interviewStatistic": "Статистика собеседований",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
@@ -25,7 +26,7 @@ export const ChooseQuestionsCategories = ({
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
 	const { data: skills } = useGetSkillsListQuery({ limit });
-	const { t } = useI18nHelpers('quiz');
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const toggleShowAll = () => {
 		setShowAll(!showAll);
@@ -58,7 +59,7 @@ export const ChooseQuestionsCategories = ({
 		<div className={styles.wrapper}>
 			<BaseFilterSection
 				data={prepareData}
-				title={t('questionCategories')}
+				title={t('create.questions_categories')}
 				onClick={handleChooseSkill}
 			/>
 			<Button className={styles.button} theme="link" onClick={toggleShowAll}>

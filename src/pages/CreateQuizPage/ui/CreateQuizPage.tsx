@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -28,7 +29,7 @@ const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const dispatch = useAppDispatch();
-	const { t } = useI18nHelpers('quiz');
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile, isLoading } = useProfileQuery();
 
 	const navigate = useNavigate();
@@ -87,7 +88,7 @@ const CreateQuizPage = () => {
 	return (
 		<section>
 			<Card className={styles.container}>
-				<h2 className={styles.title}>{t('createQuizTitle')}</h2>
+				<h2 className={styles.title}>{t('create.title')}</h2>
 				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
 						selectedSkills={skills}
