@@ -55,8 +55,7 @@ export interface CreateNewQuizGetRequest {
 
 export interface CreateNewQuizParams {
 	skills?: number[];
-	minComplexity?: number;
-	maxComplexity?: number;
+	complexity?: number[];
 	limit?: number;
 	mode?: QuestionModeType;
 }

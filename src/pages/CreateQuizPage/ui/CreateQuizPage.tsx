@@ -75,8 +75,7 @@ const CreateQuizPage = () => {
 			profileId: userProfile?.profiles[0].id || '',
 			params: {
 				skills,
-				minComplexity: complexity?.[0],
-				maxComplexity: complexity?.[complexity.length - 1],
+				complexity: complexity,
 				limit,
 				mode,
 			},
