@@ -21,6 +21,8 @@ interface FilterFromUser {
 	page?: number;
 }
 
+const initialState = '?page=1&status=all';
+
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
 
@@ -30,7 +32,7 @@ export const useQueryFilter = () => {
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
 		if (!params.get('page') && !params.get('status')) {
-			navigate(`?page=1&status=all`);
+			navigate(initialState);
 		}
 	}, []);
 
@@ -65,6 +67,16 @@ export const useQueryFilter = () => {
 			const curFilter = newFilters[key as keyof FilterFromUser];
 
 			if (curFilter !== undefined && curFilter !== null) {
+				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
+					params.set(key, '1');
+					return;
+				}
+
+				if (key === 'status' && newFilters.status === params.get('page')) {
+					params.set(key, 'all');
+					return;
+				}
+
 				if (Array.isArray(curFilter)) {
 					params.set(key, curFilter.join(','));
 				} else {
@@ -90,5 +102,10 @@ export const useQueryFilter = () => {
 		});
 	};
 
-	return { filter, handleFilterChange };
+	const resetFilters = () => {
+		setFilters({} as FilterFromUser);
+		navigate(initialState);
+	};
+
+	return { filter, handleFilterChange, resetFilters };
 };

@@ -1,6 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 
@@ -14,47 +13,45 @@ import {
 } from '@/widgets/Question';
 
 import { useQueryFilter } from '../../model/hooks/useQueryFilter';
-import { questionsPageActions } from '../../model/slices/questionsPageSlice';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
-	const { filter, handleFilterChange } = useQueryFilter();
-	const dispatch = useAppDispatch();
+	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
-	const { status: tmpStatus, ...tmpGetParams } = filter;
+	const { status, ...getParams } = filter;
 	const { data: userProfile } = useProfileQuery();
 	const profileId = userProfile?.profiles[0].id || '';
 	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
-			...tmpGetParams,
+			...getParams,
 			specialization: specializationId,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: tmpStatus !== 'all',
+			skip: status !== 'all',
 		},
 	);
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
 		useGetLearnedQuestionsQuery(
 			{
-				...tmpGetParams,
+				...getParams,
 				profileId,
-				isLearned: tmpStatus === 'learned',
+				isLearned: status === 'learned',
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: tmpStatus === 'all',
+				skip: status === 'all',
 			},
 		);
 
-	const questions = tmpStatus === 'all' ? allQuestions : learnedQuestions;
+	const questions = status === 'all' ? allQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
 		handleFilterChange({ title: value });
@@ -76,8 +73,8 @@ const QuestionsPage = () => {
 		handleFilterChange({ status });
 	};
 
-	const resetFilters = () => {
-		dispatch(questionsPageActions.resetFilters());
+	const onPageChange = (page: number) => {
+		handleFilterChange({ page });
 	};
 
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
@@ -96,8 +93,8 @@ const QuestionsPage = () => {
 					{questions.total > questions.limit && (
 						<QuestionPagePagination
 							questionsResponse={questions}
-							// currentPage={filter.page}
-							// onPageChange={onPageChange}
+							currentPage={filter.page || 1}
+							onPageChange={onPageChange}
 						/>
 					)}
 					{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
