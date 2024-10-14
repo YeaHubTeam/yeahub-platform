@@ -6,10 +6,15 @@ import styles from './SearchInput.module.css';
 interface SearchInputProps {
 	onSearch: (query: string) => void;
 	placeholder?: string;
+	currentValue?: string;
 }
 
-export const SearchInput = ({ onSearch, placeholder = 'Найти...' }: SearchInputProps) => {
-	const [query, setQuery] = useState('');
+export const SearchInput = ({
+	onSearch,
+	placeholder = 'Найти...',
+	currentValue,
+}: SearchInputProps) => {
+	const [query, setQuery] = useState(currentValue || '');
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;

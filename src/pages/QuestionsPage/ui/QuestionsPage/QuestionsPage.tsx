@@ -1,7 +1,5 @@
-import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -13,67 +11,65 @@ import {
 	QuestionsSummaryList,
 } from '@/widgets/Question';
 
-import { getQuestionsPageFilter } from '../../model/selectors/questionsPageSelectors';
-import { questionsPageActions } from '../../model/slices/questionsPageSlice';
+import { useQueryFilter } from '../../model/hooks/useQueryFilter';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
-	const params = useSelector(getQuestionsPageFilter);
-	const dispatch = useAppDispatch();
+	const { filter, handleFilterChange } = useQueryFilter();
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
-	const { status, ...getParams } = params;
+	const { status: tmpStatus, ...tmpGetParams } = filter;
 	const { data: userProfile } = useProfileQuery();
 	const profileId = userProfile?.profiles[0]?.profileId || '';
 	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
-			...getParams,
+			...tmpGetParams,
 			specialization: specializationId,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: status !== 'all',
+			skip: tmpStatus !== 'all',
 		},
 	);
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
 		useGetLearnedQuestionsQuery(
 			{
-				...getParams,
+				...tmpGetParams,
 				profileId,
-				isLearned: status === 'learned',
+				isLearned: tmpStatus === 'learned',
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: status === 'all',
+				skip: tmpStatus === 'all',
 			},
 		);
 
-	const questions = status === 'all' ? allQuestions : learnedQuestions;
+	const questions = tmpStatus === 'all' ? allQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
-		dispatch(questionsPageActions.setTitle(value));
+		handleFilterChange({ title: value });
 	};
 
 	const onChangeSkills = (skills: number[] | undefined) => {
-		dispatch(questionsPageActions.setSkills(skills));
+		handleFilterChange({ skills });
 	};
 
 	const onChangeComplexity = (complexity?: number[]) => {
-		dispatch(questionsPageActions.setComplexity(complexity));
+		handleFilterChange({ complexity });
 	};
 
 	const onChangeRate = (rate: number[]) => {
-		dispatch(questionsPageActions.setRate(rate));
+		handleFilterChange({ rate });
 	};
 
 	const onChangeStatus = (status: QuestionFilterStatus) => {
-		dispatch(questionsPageActions.setStatus(status));
+		handleFilterChange({ status });
 	};
 
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
@@ -90,7 +86,11 @@ const QuestionsPage = () => {
 				<Card className={styles.content}>
 					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
 					{questions.total > questions.limit && (
-						<QuestionPagePagination questionsResponse={questions} />
+						<QuestionPagePagination
+							questionsResponse={questions}
+							// currentPage={filter.page}
+							// onPageChange={onPageChange}
+						/>
 					)}
 				</Card>
 			</div>
@@ -102,7 +102,13 @@ const QuestionsPage = () => {
 						onChangeComplexity={onChangeComplexity}
 						onChangeRate={onChangeRate}
 						onChangeStatus={onChangeStatus}
-						filter={params}
+						filter={{
+							skills: filter.skills,
+							rate: filter.rate,
+							complexity: filter.complexity,
+							status: filter.status,
+							title: filter.title,
+						}}
 					/>
 				</Card>
 			</div>
