@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar } from 'react-calendar';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -15,14 +15,21 @@ const NEXT_LABEL = <Icon icon="caretRight" size={24} color="--palette-ui-black-6
 
 interface EventCalendarProps {
 	onDateChange: (dates: Value) => void;
+	selectedDates: Value;
 }
 
-export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
+export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProps) => {
 	const [isOpenCalendar, setOpenCalendar] = useState<boolean>(false);
 
 	const handleClick = (): void => {
 		setOpenCalendar((prev) => !prev);
 	};
+
+	useEffect(() => {
+		if (selectedDates) {
+			setOpenCalendar((prev) => !prev);
+		}
+	}, [selectedDates]);
 
 	return (
 		<>
@@ -38,6 +45,7 @@ export const EventCalendar = ({ onDateChange }: EventCalendarProps) => {
 					prev2Label={null}
 					next2Label={null}
 					selectRange={true}
+					value={selectedDates}
 				/>
 			</Card>
 		</>
