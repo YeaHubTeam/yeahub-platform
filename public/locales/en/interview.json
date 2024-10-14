@@ -8,11 +8,7 @@
     "progressBarTitle": "Quiz question {{fromQuestionNumber}} of {{toQuestionNumber}}",
     "stubTitle": "Specialty not yet selected.",
     "stubDescription": "You have not selected the major you want to study, go to your profile and fill it out to start preparing for interviews",
-    "fillProfileButton": "Fill Profile",
-    "toast": {
-      "successStart": "A new interview has been created",
-      "errorStart": "Failed to create a new interview"
-    }
+    "fillProfileButton": "Fill Profile"
   },
   "stats": {
     "title": "Interview statistics",
