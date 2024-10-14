@@ -53,3 +53,40 @@ export interface QuestionByIdParams {
 	questionId?: string;
 	profileId?: string;
 }
+
+export interface QuestionAdminTestOption {
+	id: number;
+	answer: string;
+}
+export interface QuestionAdminSkill {
+	id: string;
+	title: string;
+	description: string;
+	imageSrc: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export interface QuestionAdmin {
+	complexity: number;
+	createdBy: string;
+	id: string;
+	title: string;
+	description: string;
+	imgSrc?: string;
+	keywords?: string[];
+	shortAnswer?: string;
+	status?: string;
+	rate: number;
+	longAnswer?: string;
+	resources?: string[];
+	author?: string;
+	type?: QuestionType;
+	criteria?: string;
+	options?: QuestionAdminTestOption[];
+	correctOptionId?: number;
+	explanation?: string;
+	time?: string;
+	questionSkills?: QuestionAdminSkill[];
+	questionSpecializations?: QuestionAdminSkill[];
+}

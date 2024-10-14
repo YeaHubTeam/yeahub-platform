@@ -1,4 +1,4 @@
-export type { Question } from './model/types/question';
+export type { Question, QuestionAdmin } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,
