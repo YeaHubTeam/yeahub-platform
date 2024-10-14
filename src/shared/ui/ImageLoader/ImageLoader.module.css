@@ -3,6 +3,10 @@
   max-width: 660px;
 }
 
+.img {
+  width: 170px;
+}
+
 .delete-avatar-btn {
   max-width: 170px;
   border: none;
@@ -22,6 +26,10 @@
 
 @media (width <= 480px) {
   .profile-picture-block {
+    width: 100%;
+  }
+
+  .img {
     width: 100%;
   }
 

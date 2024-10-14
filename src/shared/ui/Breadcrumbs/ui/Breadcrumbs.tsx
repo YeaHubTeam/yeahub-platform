@@ -1,6 +1,8 @@
 import { useLocation, useMatches } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { BreadcrumbItem } from '../../BreadcrumbItem';
 
 import styles from './Breadcrumbs.module.css';
@@ -8,11 +10,12 @@ import styles from './Breadcrumbs.module.css';
 export const Breadcrumbs = () => {
 	const matches = useMatches();
 	const { pathname } = useLocation();
+	const { t } = useI18nHelpers();
 
 	const crumbs = matches
 		.filter((match) => Boolean(match.handle as { crumb: string }))
 		.map((match) => ({
-			crumb: (match.handle as { crumb: string }).crumb,
+			crumb: t((match.handle as { crumb: string }).crumb),
 			pathname: match.pathname,
 		}));
 

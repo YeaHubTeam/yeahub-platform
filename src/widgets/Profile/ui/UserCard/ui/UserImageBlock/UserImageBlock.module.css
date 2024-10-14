@@ -9,11 +9,10 @@
   position: relative;
   flex-shrink: 0;
   width: 170px;
-  height: 188px;
+  height: 188px; 
   overflow: hidden;
   border-radius: 20px;
   background-color: var(--color-purple-100);
-
 }
 
 .card-avatar > img {
@@ -25,6 +24,21 @@
   object-fit: cover;
 }
 
-.card-schedule{
+.card-schedule {
   font-weight: var(--font-weight-400);
+}
+
+@media (width <= 480px) {
+  .card-image {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .card-avatar { 
+    aspect-ratio: 296 / 263;
+    width: 100%; 
+    height: auto; 
+  }
 }

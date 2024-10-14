@@ -1,7 +1,9 @@
 import classNames from 'classnames';
-import { Icon, Button } from 'yeahub-ui-kit';
+import { Button, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 
@@ -14,7 +16,8 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { isMobile } = useScreenSize();
 
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
@@ -24,29 +27,21 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				textClassName={styles['action-button']}
 				theme="tertiary"
 				size="small"
-				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={24} />}
+				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
+				fullWidth={isMobile}
 			>
-				{t('quizButtons.doNotKnow')}
-			</Button>
-			<Button
-				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'REPEAT' })}
-				onClick={() => changeAnswer('REPEAT')}
-				textClassName={styles['action-button']}
-				theme="tertiary"
-				size="small"
-				preffix={<Icon key="clockCounterClockwise" icon="clockCounterClockwise" size={24} />}
-			>
-				{t('quizButtons.repeat')}
+				{!isMobile && t('buttons.doNotKnow')}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
 				onClick={() => changeAnswer('KNOWN')}
 				textClassName={styles['action-button']}
-				theme="tertiary"
 				size="small"
-				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={24} />}
+				theme="tertiary"
+				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
+				fullWidth={isMobile}
 			>
-				{t('quizButtons.IKnow')}
+				{!isMobile && t('buttons.iKnow')}
 			</Button>
 		</div>
 	);

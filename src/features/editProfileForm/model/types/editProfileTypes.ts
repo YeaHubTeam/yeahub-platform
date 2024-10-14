@@ -1,7 +1,6 @@
 import * as yup from 'yup';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Profile } from '@/entities/profile';
+import { ProfileUpdate } from '@/entities/auth';
 import { SocialNetwork } from '@/entities/socialNetwork';
 
 import { editProfileSchema } from '../lib/validation/editProfileSchema';
@@ -52,7 +51,7 @@ export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
 
-export type EditProfileRequestData = Omit<Profile, 'profileSkills'> & {
+export type EditProfileRequestData = Omit<ProfileUpdate, 'profileSkills'> & {
 	profileSkills: number[];
 };
 

@@ -1,11 +1,15 @@
 import { useFormContext } from 'react-hook-form';
 import { Input } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
+import { useProfileQuery } from '@/entities/auth';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
@@ -13,27 +17,39 @@ import styles from './PersonalInformationTabForm.module.css';
 
 export const PersonalInformationTabForm = () => {
 	const { control } = useFormContext();
+	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
 	return (
 		<Flex direction="column" gap="120" className={styles.wrapper}>
 			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
-					<h3>Фото профиля</h3>
-					<p>Ваше фото будет видно всем членам сообщества Yeahub</p>
+					<h3>{t(Profile.PHOTO_TITLE)}</h3>
+					<p>{t(Profile.PHOTO_DESCRIPTION)}</p>
 				</div>
-				<ImageLoader />
+				<ImageLoader imgSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
 			</Flex>
 			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
-					<h3>Персональная информация</h3>
-					<p>Сюда мы тоже что-нибудь классное придумаем</p>
+					<h3>{t(Profile.PERSONALINFORMATIONFORM_TITLE)}</h3>
+					<p>{t(Profile.PERSONALINFORMATIONFORM_DESCRIPTION)}</p>
 				</div>
 				<Flex gap="20" className={styles['inputs-wrapper']}>
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
-						<FormControl name="firstName" control={control} label="Имя*" className={styles.form}>
+						<FormControl
+							name="firstName"
+							control={control}
+							label={t(Profile.PERSONALINFORMATIONFORM_FIRSTNAME)}
+							className={styles.form}
+						>
 							{(field) => <Input {...field} className={styles.input} />}
 						</FormControl>
-						<FormControl name="lastName" control={control} label="Фамилия*" className={styles.form}>
+						<FormControl
+							name="lastName"
+							control={control}
+							label={t(Profile.PERSONALINFORMATIONFORM_LASTNAME)}
+							className={styles.form}
+						>
 							{(field) => <Input {...field} className={styles.input} />}
 						</FormControl>
 					</Flex>
@@ -41,7 +57,7 @@ export const PersonalInformationTabForm = () => {
 					<FormControl
 						name="specialization"
 						control={control}
-						label="IT Специальность*"
+						label={t(Profile.PERSONALINFORMATIONFORM_SPECIALIZATION)}
 						className={styles.form}
 					>
 						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
@@ -50,7 +66,7 @@ export const PersonalInformationTabForm = () => {
 						<FormControl
 							name="phone"
 							control={control}
-							label="Номер для связи"
+							label={t(Profile.PERSONALINFORMATIONFORM_CONTACTNUMBER)}
 							className={styles.form}
 						>
 							{(field) => <InputPhone fields={field} className={'edit'} />}
@@ -58,27 +74,32 @@ export const PersonalInformationTabForm = () => {
 						<FormControl
 							name="email"
 							control={control}
-							label="Email для связи"
+							label={t(Profile.PERSONALINFORMATIONFORM_EMAIL)}
 							className={styles.form}
 						>
 							{(field) => <Input {...field} className={styles.input} />}
 						</FormControl>
 					</Flex>
 
-					<FormControl name="location" control={control} label="Локация" className={styles.form}>
+					<FormControl
+						name="location"
+						control={control}
+						label={t(Profile.PERSONALINFORMATIONFORM_LOCATION)}
+						className={styles.form}
+					>
 						{(field) => (
 							<Input
 								{...field}
 								className={styles.input}
-								placeholder="Напр. Санкт-Петербург, Россия"
+								placeholder={t(Profile.PERSONALINFORMATIONFORM_LOCATIONPLACEHOLDER)}
 							/>
 						)}
 					</FormControl>
 					<FormControl
+						className={styles.form}
 						name="skillLevel"
 						control={control}
-						label="Уровень специалиста"
-						className={styles.form}
+						label={t(Profile.PERSONALINFORMATIONFORM_GRADE)}
 					>
 						{(field) => <Input {...field} className={styles.input} placeholder="Junior" />}
 					</FormControl>
@@ -86,8 +107,8 @@ export const PersonalInformationTabForm = () => {
 			</Flex>
 			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
-					<h3>Личные ссылки</h3>
-					<p>Поделитесь своими профилями в других соц. сетях</p>
+					<h3>{t(Profile.PERSONALINFORMATIONFORM_PERSONALLINKS)}</h3>
+					<p>{t(Profile.PERSONALINFORMATIONFORM_PERSONALLINKSTEXT)}</p>
 				</div>
 				<Flex gap="20" maxWidth className={styles['inputs-wrapper']}>
 					<SocialNetWorkInputs />

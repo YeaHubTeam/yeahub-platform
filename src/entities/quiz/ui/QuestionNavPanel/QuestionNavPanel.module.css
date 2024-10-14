@@ -3,20 +3,22 @@
   justify-content: space-between;
 }
 
-.button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
+.button-wrapper {
+  display: flex;
+  aspect-ratio: 1;
+  height: 28px;
 }
 
-.arrow {
-  width: 28px;
+.button {
+  padding: 0;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 @media (width <= 1024px) {
   .panel {
     bottom: 67px;
-    padding-bottom: 16px;
     width: 100%;
   }
 }

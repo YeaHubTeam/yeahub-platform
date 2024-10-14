@@ -29,7 +29,7 @@ export const QuestionPage = () => {
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.profiles[0].profileId,
+		profileId: profile?.profiles[0].id,
 	});
 
 	const authorFullName = useMemo(() => {
@@ -62,7 +62,7 @@ export const QuestionPage = () => {
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 				<QuestionActions
-					profileId={profile ? profile.profiles[0].profileId : ''}
+					profileId={profile ? profile.profiles[0].id : ''}
 					questionId={questionId ? questionId : ''}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
@@ -79,7 +79,7 @@ export const QuestionPage = () => {
 					title={question?.title}
 				/>
 				<QuestionActions
-					profileId={profile ? profile.profiles[0].profileId : ''}
+					profileId={profile ? profile.profiles[0].id : ''}
 					questionId={questionId ? questionId : ''}
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />

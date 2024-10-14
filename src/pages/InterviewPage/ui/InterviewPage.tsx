@@ -21,8 +21,7 @@ import {
 
 import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
-import { QuestionLargePreview } from '@/widgets/InterviewPreparation';
-import { QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
+import { QuestionLargePreview, QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
@@ -32,25 +31,25 @@ const InterviewPage = () => {
 
 	const { data: profile } = useProfileQuery();
 
-	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].profileId ?? '');
+	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].id ?? '');
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId: profile?.profiles[0].profileId,
+		profileId: profile?.profiles[0].id,
 		params: { limit: 1, page: 1 },
 	});
 
 	const questionStats = profileStats
 		? [
 				{
-					title: 'Всего вопросов',
+					title: t(Interview.STATS_STATSSTUDIED_ALLQUESTIONS),
 					value: String(profileStats.questionsStat.uniqueQuestionsCount),
 				},
 				{
-					title: 'Не изучено',
+					title: t(Interview.STATS_STATSSTUDIED_NOTSTUDIED),
 					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
 				},
 				{
-					title: 'Изучено',
+					title: t(Interview.STATS_STATSSTUDIED_STUDIED),
 					value: String(profileStats.questionsStat.learnedQuestionsCount),
 				},
 			]

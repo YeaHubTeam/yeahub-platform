@@ -5,14 +5,18 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { useProfileQuery } from '@/entities/auth';
+
 import styles from './EducationFormField.module.css';
 
 export const EducationFormField = () => {
 	const { control } = useFormContext();
+	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
 	return (
 		<div className={styles['right-wrapper']}>
-			<ImageLoader />
+			<ImageLoader imgSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
 			<Flex gap="20" maxWidth className={styles['inputs-wrapper']}>
 				<FormControl name="educationalInstitution" label="Учебное заведение" control={control}>
 					{(field) => <Input {...field} className={styles.input} />}

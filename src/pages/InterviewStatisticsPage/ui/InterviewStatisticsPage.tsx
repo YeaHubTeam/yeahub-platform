@@ -22,7 +22,7 @@ const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 	const { data: profileId } = useProfileQuery();
 	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
-		profileId?.profiles[0].profileId ?? '',
+		profileId?.profiles[0].id ?? '',
 	);
 
 	const questionStats = [
