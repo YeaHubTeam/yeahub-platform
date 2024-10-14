@@ -1,12 +1,11 @@
+import { useState } from 'react';
 import { Calendar } from 'react-calendar';
 import { Icon } from 'yeahub-ui-kit';
 
 import { Card } from '../../Card';
-
 import './EventCalendar.css';
-import 'react-calendar/dist/Calendar.css';
 
-import { useState } from 'react';
+import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 export type Value = ValuePiece | [ValuePiece, ValuePiece];

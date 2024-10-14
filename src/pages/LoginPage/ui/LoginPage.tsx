@@ -1,5 +1,6 @@
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -15,7 +16,7 @@ const LoginPage = () => {
 	const [trigger] = useLazyLogoutQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const { t } = useI18nHelpers();
-	const { t: tAuth } = useI18nHelpers('auth');
+	const { t: tAuth } = useI18nHelpers(i18Namespace.auth);
 
 	const handleLogoutUser = () => {
 		trigger();

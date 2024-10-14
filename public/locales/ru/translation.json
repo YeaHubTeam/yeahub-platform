@@ -68,14 +68,14 @@
   "details": "Подробнее",
   "validation": {
     "passwordConfirmation": {
-      "oneOf": "Passwords must match"
+      "oneOf": "Пароли должны совпадать"
     },
     "checkbox": {
-      "oneOf": "You must agree to the terms and conditions"
+      "oneOf": "Вы должны согласиться с настоящими правилами и условиями"
     },
     "required": "Поле обязательно",
     "password": {
-      "min": "Please enter a valid password (at least {{count}} characters)"
+      "min": "Введите корректный пароль (минимум {{count}} символов)"
     },
     "image": {
       "fileSize": "Большой размер файла",
@@ -134,5 +134,33 @@
     "error404": "Страница не найдена",
     "login": "Вход",
     "register": "Регистрация"
+  },
+  "toast": {
+    "questions": {
+      "learned": {
+        "success": "Вопрос полностью изучен",
+        "failed": "Не удалось полностью изучить вопро"
+      },
+      "reset.progress": {
+        "success": "Прогресс изучения вопроса сброшен",
+        "failed": "Не удалось сбросить прогресс изучения вопроса"
+      }
+    },
+    "profile": {
+      "update": {
+        "success": "Профиль был успешно изменен",
+        "failed": "Профиль не удалось изменить"
+      }
+    },
+    "interview": {
+      "new": {
+        "success": "Новое собеседование создано",
+        "failed": "Не удалось создать новое собеседование"
+      },
+      "finish": {
+        "success": "Собеседование завершено",
+        "failed": "Не удалось завершить собеседование"
+      }
+    }
   }
 }
