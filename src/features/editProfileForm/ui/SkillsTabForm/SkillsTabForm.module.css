@@ -37,7 +37,7 @@
 .select > span {
   display: inline-block;
   margin-bottom: 8px;
-  color: var(--color-black-700);
+  color: var(--text-color-light);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
