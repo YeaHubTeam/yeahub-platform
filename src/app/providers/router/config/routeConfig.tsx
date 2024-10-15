@@ -7,6 +7,7 @@ import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -27,6 +28,7 @@ import { MainPage } from '@/pages/MainPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { QuestionPage } from '@/pages/QuestionPage';
 import { QuestionsPage } from '@/pages/QuestionsPage';
+import { QuestionsTablePage } from '@/pages/QuestionsTablePage';
 import { RegistrationPage } from '@/pages/RegistrationPage';
 
 import { App } from '@/app/App';
@@ -85,6 +87,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: 'tabs.main',
 		icon: Home,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.questions.route,
+		title: 'tabs.questions',
+		icon: QuestionsIcon,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -105,6 +113,10 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <AdminMainPage />,
+					},
+					{
+						path: ROUTES.admin.questions.route,
+						element: <QuestionsTablePage />,
 					},
 				],
 			},

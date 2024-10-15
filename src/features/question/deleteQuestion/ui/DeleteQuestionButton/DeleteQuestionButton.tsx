@@ -1,7 +1,8 @@
-import { useTranslation } from 'react-i18next';
 import { Button, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { QuestionAdmin } from '@/entities/question';
 
@@ -13,7 +14,9 @@ interface DeleteQuestionButtonProps {
 
 export const DeleteQuestionButton = ({ questionId }: DeleteQuestionButtonProps) => {
 	const [deleteQuestionMutation] = useDeleteQuestionMutation();
-	const { t } = useTranslation('question');
+
+	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
+
 	const onDeleteQuestion = async () => {
 		await deleteQuestionMutation(questionId);
 	};

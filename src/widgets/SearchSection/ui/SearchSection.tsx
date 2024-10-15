@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { Button, Input, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './SearchSection.module.css';
@@ -21,9 +22,9 @@ export const SearchSection = ({
 	showRemoveButton,
 	onSearch,
 }: SearchSectionProps) => {
-	const { t } = useTranslation();
-
 	const [value] = useState('');
+
+	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		onSearch?.(e.target.value);

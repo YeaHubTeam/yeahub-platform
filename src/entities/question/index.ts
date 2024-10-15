@@ -3,6 +3,8 @@ export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,
 	useGetLearnedQuestionsQuery,
+	useGetAdminQuestionByIdQuery,
+	useGetAdminQuestionsListQuery,
 } from './api/questionApi';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';

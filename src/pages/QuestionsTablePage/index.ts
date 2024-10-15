@@ -1,3 +1,3 @@
-export { QuestionsPage } from './ui/QuestionsPage/QuestionsPage.lazy';
-export type { QuestionsPageState } from './model/types/questionsPageTypes';
-export { questionsPageReducer } from './model/slices/questionsPageSlice';
+export { QuestionsTablePage } from './ui/QuestionsTablePage/QuestionsTablePage.lazy';
+export type { QuestionsTablePageState } from './model/types/questionsTablePageTypes';
+export { questionsTablePageReducer } from './model/slices/questionsTablePageSlice';

@@ -313,9 +313,6 @@ export enum Validation {
 }
 
 export enum TranslationsAdmin {
-	/**
-	 * Common
-	 */
 	LANGUAGE = 'language',
 	ACTIONS = 'actions',
 	CANCEL = 'cancel',
@@ -324,10 +321,6 @@ export enum TranslationsAdmin {
 	EDIT = 'edit',
 	REMOVE_SELECTED = 'remove.selected',
 	DELETE = 'delete',
-
-	/**
-	 * Question
-	 */
 	QUESTION_TITLE = 'question.title',
 	QUESTION_DELETE = 'question.delete',
 	QUESTION_SHOW = 'question.show',
@@ -356,22 +349,12 @@ export enum TranslationsAdmin {
 	QUESTION_SELECT_STATUS = 'question.select.status',
 	QUESTION_ADD_SHORT_ANSWER = 'question.add.short.answer',
 	QUESTION_ADD_LONG_ANSWER = 'question.add.long.answer',
-
-	/**
-	 * Specialization
-	 */
-
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SPECIALIZATION_DESCRIPTION = 'specialization.description',
 	SPECIALIZATION_IMAGE_SRC = 'specialization.image.src',
 	SPECIALIZATIONS_NOT_ITEMS = 'specialization.not.items',
 	SPECIALIZATION_CREATE_PAGE_TITLE = 'specialization.create.page.title',
 	SPECIALIZATION_EDIT_PAGE_TITLE = 'specialization.edit.page.title',
-
-	/**
-	 * Skill
-	 */
-
 	SKILL_TITLE = 'skill.title',
 	SKILL_DESCRIPTION = 'skill.description',
 	SKILL_IMAGE_SRC = 'skill.image.src',

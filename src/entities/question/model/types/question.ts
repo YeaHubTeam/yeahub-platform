@@ -90,3 +90,8 @@ export interface QuestionAdmin {
 	questionSkills?: QuestionAdminSkill[];
 	questionSpecializations?: QuestionAdminSkill[];
 }
+
+export interface QuestionsAdminListParams {
+	page?: number;
+	title?: string;
+}

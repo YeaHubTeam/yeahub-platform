@@ -1,19 +1,19 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { useQueryParams } from '@/shared/hooks/useQueryParams/useQueryParams';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { Question } from '@/entities/question';
+import { QuestionAdmin } from '@/entities/question';
 
-import { getQuestionsPageNum } from '../../model/selectors/questionsPageSelectors';
-import { questionsPageActions } from '../../model/slices/questionsPageSlice';
+import { getQuestionsPageNum } from '../../model/selectors/questionsTablePageSelectors';
+import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
 
-import styles from './QuestionPagePagination.module.css';
+import styles from './QuestionTablePagePagination.module.css';
 
 interface QuestionPagePaginationProps {
-	questionsResponse?: Response<Question[]>;
+	questionsResponse?: Response<QuestionAdmin[]>;
 }
 
 export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePaginationProps) => {
@@ -23,17 +23,17 @@ export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePagina
 	const { setQueryParams } = useQueryParams();
 
 	const onPrevPageClick = () => {
-		dispatch(questionsPageActions.setPage(page - 1));
+		dispatch(questionsTablePageActions.setPage(page - 1));
 		setQueryParams({ page: page - 1 });
 	};
 
 	const onNextPageClick = () => {
-		dispatch(questionsPageActions.setPage(page + 1));
+		dispatch(questionsTablePageActions.setPage(page + 1));
 		setQueryParams({ page: page + 1 });
 	};
 
 	const onChangePage = (newPage: number) => {
-		dispatch(questionsPageActions.setPage(newPage));
+		dispatch(questionsTablePageActions.setPage(newPage));
 		setQueryParams({ page: newPage });
 	};
 

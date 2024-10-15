@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { QuestionsPageState } from '../types/questionsPageTypes';
+import { QuestionsTablePageState } from '../types/questionsTablePageTypes';
 
-const initialState: QuestionsPageState = {
+const initialState: QuestionsTablePageState = {
 	page: 1,
 	selectedQuestions: [],
 	search: '',
 };
 
-const questionsPageSlice = createSlice({
+const questionsTablePageSlice = createSlice({
 	name: 'questionsPage',
 	initialState,
 	reducers: {
@@ -24,4 +24,5 @@ const questionsPageSlice = createSlice({
 	},
 });
 
-export const { reducer: questionsPageReducer, actions: questionsPageActions } = questionsPageSlice;
+export const { reducer: questionsTablePageReducer, actions: questionsTablePageActions } =
+	questionsTablePageSlice;

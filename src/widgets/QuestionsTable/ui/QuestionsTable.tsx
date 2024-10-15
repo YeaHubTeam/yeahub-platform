@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { Icon, Button, Popover, IconButton } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
@@ -24,7 +25,7 @@ export const QuestionsTable = ({
 }: QuestionsTableProps) => {
 	const [openPopovers, setOpenPopovers] = useState<string | null>(null);
 
-	const { t } = useTranslation('question');
+	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
 
 	const renderTableHeader = () => {
 		const columns = {

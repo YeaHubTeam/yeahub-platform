@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import styles from './Table.module.css';
 
@@ -42,7 +43,7 @@ export const Table = <T extends { id: string }>({
 	selectedItems,
 	onSelectItems,
 }: TableProps<T>) => {
-	const { t } = useTranslation();
+	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
 
 	const hasActions = !!renderActions;
 

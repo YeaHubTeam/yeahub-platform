@@ -9,6 +9,7 @@ import { activeQuizSlice } from '@/entities/quiz';
 import { createQuizPageReducer } from '@/pages/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/InterviewHistoryPage';
 import { questionsPageReducer } from '@/pages/QuestionsPage';
+import { questionsTablePageReducer } from '@/pages/QuestionsTablePage';
 
 import { router } from '../../router';
 
@@ -20,6 +21,7 @@ export const createReduxStore = (initialState?: State) => {
 			activeQuiz: activeQuizSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
 			interviewHistoryPage: interviewHistoryPageReducer,
+			questionsTablePage: questionsTablePageReducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>
