@@ -13,6 +13,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { AdminMainPage } from '@/pages/AdminMainPage';
 import { CreateQuizPage } from '@/pages/CreateQuizPage';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -32,6 +33,7 @@ import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
+import { AdminRoute } from '../ui/AdminRoute';
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 
@@ -41,7 +43,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.adminRoute,
 		title: 'tabs.admin',
 		icon: Crown,
-		condition: 'user',
+		isAdmin: true,
 	},
 	{
 		type: 'single',
@@ -75,7 +77,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.appRoute,
 		title: 'tabs.platform',
 		icon: CursorSquare,
-		condition: 'admin',
+		isAdmin: true,
 	},
 	{
 		type: 'single',
@@ -94,13 +96,15 @@ export const router = createBrowserRouter([
 				path: ROUTES.adminRoute,
 				element: (
 					<AuthRoute>
-						<MainLayout adminSideBar={adminLayoutMenuItems} />
+						<AdminRoute>
+							<MainLayout sidebarItems={adminLayoutMenuItems} />
+						</AdminRoute>
 					</AuthRoute>
 				),
 				children: [
 					{
 						index: true,
-						element: <MainPage />,
+						element: <AdminMainPage />,
 					},
 				],
 			},
@@ -108,7 +112,7 @@ export const router = createBrowserRouter([
 				path: ROUTES.appRoute,
 				element: (
 					<AuthRoute>
-						<MainLayout adminSideBar={mainLayoutMenuItems} />
+						<MainLayout sidebarItems={mainLayoutMenuItems} />
 					</AuthRoute>
 				),
 				children: [

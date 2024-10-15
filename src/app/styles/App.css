@@ -78,7 +78,8 @@
   --caret-color-red: var(--color-red-400);
   --error-color-red: var(--color-red-700);
   --border-focus-purple: var(--color-purple-500);
-  --background-sidebar-item: var(--color-yellow-800);
+  --background-admin-sidebar-item: var(--color-yellow-800);
+  --background-admin-sidebar-item-active: var(--color-yellow-600);
 
   /* dimensions */
   --font-size-p-xss: 10px;

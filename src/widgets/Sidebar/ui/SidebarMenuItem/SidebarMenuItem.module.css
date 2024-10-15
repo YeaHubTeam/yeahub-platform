@@ -15,10 +15,10 @@
 }
 
 .admin-active {
-  background-color: var(--background-sidebar-item);
+  background-color: var(--background-admin-sidebar-item);
 
   &:hover{
-    background-color: var(--background-sidebar-item);
+    background-color: var(--background-admin-sidebar-item-active);
   }
 }
 

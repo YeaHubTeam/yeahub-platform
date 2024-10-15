@@ -13,16 +13,18 @@ import { MainPageSkeleton } from '@/pages/MainPage';
 import styles from './MainLayout.module.css';
 import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
-interface AdminSideBarProps {
-	adminSideBar: MenuItem[];
+interface MainLayoutProps {
+	sidebarItems: MenuItem[];
 }
 
-export const MainLayout = ({ adminSideBar }: AdminSideBarProps) => {
+export const MainLayout = ({ sidebarItems }: MainLayoutProps) => {
 	const { data: profile, isLoading } = useProfileQuery();
 
-	const isUser = profile?.userRoles[0]?.name === 'user' || !profile?.userRoles[0]?.name;
+	const isAdmin = profile?.userRoles[0]?.name === 'admin';
 
-	const filteredMenuItems = isUser ? adminSideBar.filter((_, index) => index !== 0) : adminSideBar;
+	const filteredMenuItems = !isAdmin
+		? sidebarItems.filter((_, index) => index !== 0)
+		: sidebarItems;
 
 	if (isLoading) return <MainLayoutSkeleton />;
 	return (
