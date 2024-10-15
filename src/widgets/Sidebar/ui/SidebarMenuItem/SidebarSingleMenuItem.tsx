@@ -22,6 +22,7 @@ const SidebarSingleMenuItem = ({ fullWidth, menuItem }: SidebarSingleMenuItemPro
 		<NavLink
 			className={({ isActive }) =>
 				classNames(styles.item, {
+					[styles['admin-active']]: menuItem?.condition,
 					[styles.active]: isActive,
 					[styles.fullwidth]: fullWidth,
 				})

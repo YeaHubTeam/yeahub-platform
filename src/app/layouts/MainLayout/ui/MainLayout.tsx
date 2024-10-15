@@ -1,11 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import EducationIcon from '@/shared/assets/icons/education.svg';
-import InterviewIcon from '@/shared/assets/icons/interview.svg';
-import MainIcon from '@/shared/assets/icons/main.svg';
-import ProfileIcon from '@/shared/assets/icons/profile.svg';
-import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -18,42 +13,22 @@ import { MainPageSkeleton } from '@/pages/MainPage';
 import styles from './MainLayout.module.css';
 import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
-const mainLayoutMenuItems: MenuItem[] = [
-	{
-		type: 'single',
-		route: ROUTES.appRoute,
-		title: 'tabs.main',
-		icon: MainIcon,
-	},
-	{
-		type: 'single',
-		route: ROUTES.profile.route,
-		title: 'tabs.profile',
-		icon: ProfileIcon,
-	},
-	{
-		type: 'category',
-		title: 'tabs.education.title',
-		icon: EducationIcon,
-		elements: [
-			{
-				route: ROUTES.interview.route,
-				title: 'tabs.education.interview',
-				icon: InterviewIcon,
-			},
-		],
-	},
-];
+interface AdminSideBarProps {
+	adminSideBar: MenuItem[];
+}
 
-export const MainLayout = () => {
-	const { isLoading } = useProfileQuery();
+export const MainLayout = ({ adminSideBar }: AdminSideBarProps) => {
+	const { data: profile, isLoading } = useProfileQuery();
+
+	const isUser = profile?.userRoles[0]?.name === 'user' || !profile?.userRoles[0]?.name;
+
+	const filteredMenuItems = isUser ? adminSideBar.filter((_, index) => index !== 0) : adminSideBar;
 
 	if (isLoading) return <MainLayoutSkeleton />;
-
 	return (
 		<section className={styles.layout}>
 			<div className={styles.sidebar}>
-				<Sidebar menuItems={mainLayoutMenuItems} />
+				<Sidebar menuItems={filteredMenuItems} />
 			</div>
 
 			<Header />

@@ -14,6 +14,13 @@
   background-color: var(--background-app);
 }
 
+.admin-active {
+  background-color: var(--background-sidebar-item);
+
+  &:hover{
+    background-color: var(--background-sidebar-item);
+  }
+}
 
 .container {
   display: flex;

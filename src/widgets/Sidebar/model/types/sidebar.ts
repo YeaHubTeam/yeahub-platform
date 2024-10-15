@@ -7,6 +7,7 @@ export interface SingleMenuItem {
 	title: string;
 	icon: FC<SVGProps<SVGSVGElement>>;
 	notifications?: number;
+	condition?: 'admin' | 'user';
 }
 
 export interface CategoryMenuItem {
