@@ -8,6 +8,8 @@
   },
   "tabs": {
     "main": "Home",
+    "platform": "Platform",
+    "admin": "Editor",
     "profile": "My Profile",
     "education": {
       "title": "Education",

@@ -51,7 +51,6 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 
 	return (
 		<div className={style['tab-container']}>
-			<div className={style.line} ref={lineRef}></div>
 			<h2>{title}</h2>
 			<ul className={style['tab-list']}>
 				{tabs.map((tab, index) => (
