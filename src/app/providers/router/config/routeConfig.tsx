@@ -1,9 +1,19 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Crown from '@/shared/assets/icons/crown.svg';
+import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
+import EducationIcon from '@/shared/assets/icons/education.svg';
+import Home from '@/shared/assets/icons/home.svg';
+import InterviewIcon from '@/shared/assets/icons/interview.svg';
+import MainIcon from '@/shared/assets/icons/main.svg';
+import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
+import { MenuItem } from '@/widgets/Sidebar';
+
+import { AdminMainPage } from '@/pages/AdminMainPage';
 import { CreateQuizPage } from '@/pages/CreateQuizPage';
 import { EditProfilePage } from '@/pages/EditProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -23,8 +33,59 @@ import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
+import { AdminRoute } from '../ui/AdminRoute';
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
+
+const mainLayoutMenuItems: MenuItem[] = [
+	{
+		type: 'single',
+		route: ROUTES.adminRoute,
+		title: 'tabs.admin',
+		icon: Crown,
+		isAdmin: true,
+	},
+	{
+		type: 'single',
+		route: ROUTES.appRoute,
+		title: 'tabs.main',
+		icon: MainIcon,
+	},
+	{
+		type: 'single',
+		route: ROUTES.profile.route,
+		title: 'tabs.profile',
+		icon: ProfileIcon,
+	},
+	{
+		type: 'category',
+		title: 'tabs.education.title',
+		icon: EducationIcon,
+		elements: [
+			{
+				route: ROUTES.interview.route,
+				title: 'tabs.education.interview',
+				icon: InterviewIcon,
+			},
+		],
+	},
+];
+
+const adminLayoutMenuItems: MenuItem[] = [
+	{
+		type: 'single',
+		route: ROUTES.appRoute,
+		title: 'tabs.platform',
+		icon: CursorSquare,
+		isAdmin: true,
+	},
+	{
+		type: 'single',
+		route: ROUTES.adminRoute,
+		title: 'tabs.main',
+		icon: Home,
+	},
+];
 
 export const router = createBrowserRouter([
 	{
@@ -32,10 +93,26 @@ export const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
+				path: ROUTES.adminRoute,
+				element: (
+					<AuthRoute>
+						<AdminRoute>
+							<MainLayout sidebarItems={adminLayoutMenuItems} />
+						</AdminRoute>
+					</AuthRoute>
+				),
+				children: [
+					{
+						index: true,
+						element: <AdminMainPage />,
+					},
+				],
+			},
+			{
 				path: ROUTES.appRoute,
 				element: (
 					<AuthRoute>
-						<MainLayout />
+						<MainLayout sidebarItems={mainLayoutMenuItems} />
 					</AuthRoute>
 				),
 				children: [

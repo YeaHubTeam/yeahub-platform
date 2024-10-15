@@ -8,6 +8,8 @@
   },
   "tabs": {
     "main": "Главная",
+    "platform": "Платформа",
+    "admin": "Редактор",
     "profile": "Мой профиль",
     "education": {
       "title": "Обучение",
