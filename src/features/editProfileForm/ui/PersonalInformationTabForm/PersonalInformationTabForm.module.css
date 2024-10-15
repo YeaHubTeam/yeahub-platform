@@ -1,5 +1,5 @@
 .description {
-  max-width: 246px;
+  flex: 1 0 350px;
 }
   
 .description h3 {
@@ -56,4 +56,24 @@
   color: var(--color-black-700);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
+}
+
+@media (width <= 1440px) {
+  .column {
+    flex-direction: column;
+  }
+
+  .description {
+    flex-basis: auto;
+  }
+}
+
+@media (width <= 768px) {
+  .wrapper {
+    gap: 24px;
+  }
+
+  .form-control-wrapper {
+    flex-wrap: wrap;
+  }
 }
