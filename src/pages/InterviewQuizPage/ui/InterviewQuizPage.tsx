@@ -53,6 +53,8 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
+	const isLastQuestion = activeQuestion === totalCount;
+
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
 			const quizToSave = {
@@ -105,15 +107,13 @@ const InterviewQuizPage = () => {
 						isAnswerVisible={isAnswerVisible}
 						setIsAnswerVisible={setIsAnswerVisible}
 					/>
-					{!isAllQuestionsAnswered ? (
-						<Button className={styles['end-button']} onClick={goToNextSlide} disabled={!answer}>
-							{t('buttons.next')}
-						</Button>
-					) : (
-						<Button className={styles['end-button']} onClick={handleSubmitQuiz} disabled={!answer}>
-							{t('buttons.complete')}
-						</Button>
-					)}
+					<Button
+						className={styles['end-button']}
+						onClick={!isLastQuestion && !isAllQuestionsAnswered ? goToNextSlide : handleSubmitQuiz}
+						disabled={(isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer)}
+					>
+						{!isLastQuestion && !isAllQuestionsAnswered ? t('buttons.next') : t('buttons.complete')}
+					</Button>
 				</div>
 			</Card>
 		</div>
