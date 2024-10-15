@@ -96,12 +96,11 @@ export interface UserUpdate {
 
 export interface Role {
 	id: number;
+	name: 'guest' | 'candidate' | 'member' | 'admin' | 'hr';
+	permissions: Permissions[];
+}
+
+export interface Permissions {
+	id: number;
 	name: string;
-	permissions: [
-		{ id: 1; name: 'guest' },
-		{ id: 2; name: 'candidate' },
-		{ id: 3; name: 'member' },
-		{ id: 4; name: 'admin' },
-		{ id: 5; name: 'HR' },
-	];
 }
