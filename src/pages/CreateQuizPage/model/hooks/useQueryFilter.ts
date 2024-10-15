@@ -17,11 +17,20 @@ interface FilterFromUser {
 	mode?: QuestionModeType;
 }
 
+const initialState = '?mode=RANDOM&count=10';
+
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({});
 
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	useEffect(() => {
+		const params = new URLSearchParams(location.search);
+		if (!params.get('mode') && !params.get('count')) {
+			navigate(initialState);
+		}
+	}, []);
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
