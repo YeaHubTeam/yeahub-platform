@@ -1,26 +1,41 @@
-.wrapper{
+.wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  color: var(--text-color-light);
+  line-height: 21px;
 }
 
 .arrow-button {
   cursor: pointer;
+  max-width: 28px;
+  max-height: 28px;
 }
 
 .page-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 30px;
   border: none;
-  border-radius: 3px;
-  background: var(--light-gray);
+  background: none;
+  color: var(--text-color-light);
+  font-size: var(--font-size-p-s);
   cursor: pointer;
+
 }
 
-.active {
+.page-button-active {
+  padding: 2px 6px;
+  min-width: 21px;
+  min-height: 25px;
+  border-radius: 3px;
   background: var(--background-primary);
-  color: var(--background-block)
+  color: var(--text-color-white);
+}
+
+.dots-icon {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  width: 14px;
 }

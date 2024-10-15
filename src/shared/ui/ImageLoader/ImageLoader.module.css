@@ -1,14 +1,10 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   width: 100%;
   max-width: 660px;
 }
 
-.profile-picture-wrapper {
-  display: flex;
-  gap: 16px;
+.img {
+  width: 170px;
 }
 
 .profile-picture-wrapper > img {
@@ -28,9 +24,24 @@
   cursor: pointer;
 }
 
-@media (width <= 360px) {
+@media (width <= 768px) {
   .profile-picture-wrapper {
     flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (width <= 480px) {
+  .profile-picture-block {
+    width: 100%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .delete-avatar-btn {
+    align-self: center;
   }
 }
 

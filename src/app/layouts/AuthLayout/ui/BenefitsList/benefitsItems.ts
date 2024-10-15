@@ -1,7 +1,7 @@
 export const benefitsItems: string[] = [
-	'Пошаговый план обучения',
-	'Карьерный рост',
-	'Большое сообщество специалистов',
-	'Обучение с ментором',
-	'Возможность прохождения стажировки',
+	'benefits.stepPlan',
+	'benefits.careerGrowth',
+	'benefits.bigCommunity',
+	'benefits.mentorTraining',
+	'benefits.internshipOpportunities',
 ];

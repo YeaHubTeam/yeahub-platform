@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
 import { MenuItem } from '../../model/types/sidebar';
@@ -22,7 +23,12 @@ interface SidebarProps {
  */
 
 export const Sidebar = ({ menuItems }: SidebarProps) => {
+	const { isMobile } = useScreenSize();
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
+
+	useEffect(() => {
+		isMobile && setIsOpenNavSidebar(true);
+	}, [isMobile]);
 
 	const handleToggleSidebar = () => {
 		setIsOpenNavSidebar((prev) => !prev);
@@ -36,7 +42,9 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 			<div className={styles.header}>
 				<AppLogo isOpen={isOpenNavSidebar} />
 				<button
-					className={classNames(styles['close-icon'], { [styles.left]: isOpenNavSidebar })}
+					className={classNames(styles['close-icon'], {
+						[styles.left]: isOpenNavSidebar,
+					})}
 					onClick={handleToggleSidebar}
 					data-testid="Sidebar_CloseButton"
 				>

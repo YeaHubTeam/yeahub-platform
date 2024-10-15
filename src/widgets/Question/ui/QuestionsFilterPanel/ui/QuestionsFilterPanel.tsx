@@ -1,4 +1,6 @@
+import { i18Namespace } from '@/shared/config/i18n';
 import { useDebounce } from '@/shared/hooks/useDebounced';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { ChooseQuestionComplexity, ChooseQuestionsCategories } from '@/entities/question';
 
@@ -27,6 +29,7 @@ export const QuestionsFilterPanel = ({
 	onChangeStatus,
 }: QuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, status } = filter;
+	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -35,7 +38,7 @@ export const QuestionsFilterPanel = ({
 
 	return (
 		<div className={styles.wrapper}>
-			<SearchInput placeholder="Введите запрос..." onSearch={debouncedSearch} />
+			<SearchInput placeholder={t('searchPlaceholder')} onSearch={debouncedSearch} />
 			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

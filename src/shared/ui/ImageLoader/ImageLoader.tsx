@@ -3,6 +3,9 @@ import { Cropper, ReactCropperElement } from 'react-cropper';
 import { FieldValues, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import { Button, Modal, ModalContent, ModalHeading } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
 import { Accept, Extension } from '../FileLoader/model/types/types';
@@ -14,8 +17,10 @@ import 'cropperjs/dist/cropper.css';
 interface ImageLoaderProps {
 	setValue?: UseFormSetValue<FieldValues>;
 	watch?: UseFormWatch<FieldValues>;
+	imgSrc: string | null;
 }
-export const ImageLoader = ({ setValue, watch }: ImageLoaderProps) => {
+
+export const ImageLoader = ({ setValue, watch, imgSrc }: ImageLoaderProps) => {
 	const [file, setFile] = useState<string | ArrayBuffer | null>(null);
 	const [croppedArea, setCroppedArea] = useState<undefined | string>(undefined);
 	const cropperRef = useRef<ReactCropperElement>(null);
@@ -24,15 +29,26 @@ export const ImageLoader = ({ setValue, watch }: ImageLoaderProps) => {
 		cropper && setCroppedArea(cropper.getCroppedCanvas().toDataURL());
 	};
 
-	return (
-		<div className={styles.container}>
-			<div className={styles['profile-picture-wrapper']}>
-				{croppedArea ? <img src={croppedArea} alt="" /> : <AvatarWithoutPhoto />}
+	const { t } = useI18nHelpers();
+	const { t: tProfile } = useI18nHelpers(i18Namespace.profile);
 
+	return (
+		<Flex className={styles.container}>
+			<Flex className={styles['profile-picture-wrapper']} gap="16">
+				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
+					{imgSrc ? (
+						<img className={styles.img} src={imgSrc} alt="avatar" />
+					) : (
+						<AvatarWithoutPhoto />
+					)}
+					<button type="button" className={styles['delete-avatar-btn']}>
+						{tProfile('photo.deletePhotoButton')}
+					</button>
+				</Flex>
 				<FileLoader
 					maxFileMBSize={5}
 					accept={Accept.IMAGE}
-					fileTypeText={'фотографию'}
+					fileTypeText={t('fileLoader.fileTypes.photo')}
 					extensionsText={Extension.IMAGE}
 					onChange={(_: File[]) => {
 						const reader = new FileReader();
@@ -41,7 +57,7 @@ export const ImageLoader = ({ setValue, watch }: ImageLoaderProps) => {
 						};
 					}}
 				/>
-			</div>
+			</Flex>
 			{watch && watch('avatarImage') && (
 				<button
 					type="button"
@@ -94,6 +110,6 @@ export const ImageLoader = ({ setValue, watch }: ImageLoaderProps) => {
 					</Flex>
 				</ModalContent>
 			</Modal>
-		</div>
+		</Flex>
 	);
 };

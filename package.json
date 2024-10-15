@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.tsx",
   "scripts": {
-    "dev": "webpack serve --mode development --env mode=development --open",
+    "dev": "webpack serve --mode development --env mode=development",
     "start": "serve -s build",
     "build": "webpack --mode production --env mode=production",
     "docker:dev": "docker-compose --env-file .env.development -f docker-compose.dev.yml up",

@@ -8,33 +8,38 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: 4px;
 }
 
 .card-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  gap: 8px;
   width: 100%;
 }
 
 .card-name {
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
+  font-size: var(--font-size-h-s);
 }
 
-.card-status {
-  padding: 2px 8px;
-  border-radius: 30px;
-  background-color: var(--color-green-100);
-  color: var(--color-green-900);
-  font-size: var(--font-size-p-xs);
-  user-select: none;
+.card-age {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  white-space: nowrap;
 }
 
-.card-edit {
-  cursor: pointer;
-  margin-left: auto;
+.card-specialization {
+  color: var(--color-black-800);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m)
+}
+
+.card-address {
+  color: var(--color-black-500);
+  font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
 
@@ -48,22 +53,51 @@
   list-style-type:  none;
 }
 
-.card-list > li:nth-last-child(n + 2){
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m);
-}
-
-.card-list > li:nth-last-child(-n + 2){
-  color: var(--color-black-500);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
 .card-contacts {
   margin-top: auto;
+
 }
 
 .card-contacts > h4 {
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
+}
+
+@media (width <= 768px) {
+  .card-edit-icon {
+    display: block;
+  }
+
+  .card-edit {
+    display: none;
+  }
+}
+
+@media (width <= 480px) {
+  .card-name {
+    font-size: var(--font-size-h-xs);
+  }
+
+  .card-age {
+    font-size: var(--font-size-p-s);
+  }
+
+  .card-specialization {
+    font-size: var(--font-size-p-s);
+  }
+  
+  .card-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .card-address {
+    font-size: var(--font-size-p-xs);
+  }
+
+  .card-contacts > h4 {
+    display: inline;
+  }
 }
