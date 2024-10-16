@@ -1,6 +1,12 @@
 export const ROUTES = {
 	appRoute: '/',
 	adminRoute: '/admin/',
+	admin: {
+		questions: {
+			route: 'questions',
+			page: '/admin/questions',
+		},
+	},
 	auth: {
 		route: 'auth',
 		login: {

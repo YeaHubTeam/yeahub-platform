@@ -25,7 +25,7 @@ export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) =
 			<Link to={route(ROUTES.interview.history.result.page, id)} className={styles.link}>
 				<time>{formattedDate}</time>
 				<div className={styles.info}>
-					<h4 className={styles.title}>{t('title', null, { number: interview.quizNumber })}</h4>
+					<h4 className={styles.title}>{t('title', { number: interview.quizNumber })}</h4>
 					<ul className={styles.params}>
 						<InterviewResults
 							label={t('resultTitle')}
