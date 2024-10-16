@@ -2,6 +2,7 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterviewHistoryItem';
@@ -64,9 +65,9 @@ export const FullInterviewHistoryList = ({ dateRange, resetFilters }: InterviewH
 					))}
 				</ul>
 			) : (
-				<div className={styles['empty-container']}>
+				<Card className={styles['empty-container']}>
 					<EmptyStub resetFilters={resetFilters} />
-				</div>
+				</Card>
 			)}
 		</>
 	);
