@@ -1,5 +1,5 @@
 export interface QuestionsTablePageState {
 	page: number;
-	selectedQuestions?: string[];
+	selectedQuestions?: number[];
 	search?: string;
 }

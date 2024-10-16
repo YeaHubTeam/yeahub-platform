@@ -1,9 +1,9 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Input, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
@@ -22,9 +22,7 @@ export const SearchSection = ({
 	showRemoveButton,
 	onSearch,
 }: SearchSectionProps) => {
-	const [value] = useState('');
-
-	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
+	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		onSearch?.(e.target.value);
@@ -36,16 +34,16 @@ export const SearchSection = ({
 				<Input
 					onChange={handleSearch}
 					className={styles.input}
-					preffix={<Icon icon={'search'} values={value} />}
+					preffix={<Icon icon={'search'} />}
 				/>
 				{showRemoveButton && (
 					<Button onClick={onRemove} theme="destructive-tertiary">
-						{t(TranslationsAdmin.REMOVE_SELECTED)}
+						{t(Translation.REMOVE_SELECTED)}
 					</Button>
 				)}
 				<Button size="small" textClassName={styles.navigate}>
 					<NavLink className={styles.link} to={to}>
-						{t(TranslationsAdmin.CREATE)}
+						{t(Translation.CREATE)}
 					</NavLink>
 				</Button>
 			</section>

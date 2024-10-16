@@ -18,7 +18,7 @@ const questionsTablePageSlice = createSlice({
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
 		},
-		setSelectedQuestions: (state, action: PayloadAction<string[]>) => {
+		setSelectedQuestions: (state, action: PayloadAction<number[]>) => {
 			state.selectedQuestions = action.payload;
 		},
 	},

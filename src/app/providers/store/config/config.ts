@@ -6,10 +6,10 @@ import { State } from '@/shared/config/store/State';
 import { refreshMiddleware } from '@/entities/auth';
 import { activeQuizSlice } from '@/entities/quiz';
 
-import { createQuizPageReducer } from '@/pages/CreateQuizPage';
-import { interviewHistoryPageReducer } from '@/pages/InterviewHistoryPage';
-import { questionsPageReducer } from '@/pages/QuestionsPage';
-import { questionsTablePageReducer } from '@/pages/QuestionsTablePage';
+import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
+import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
+import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
+import { questionsPageReducer } from '@/pages/interview/QuestionsPage';
 
 import { router } from '../../router';
 

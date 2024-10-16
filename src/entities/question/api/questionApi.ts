@@ -3,12 +3,10 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
 import {
-	QuestionAdmin,
 	Question,
 	QuestionsListParams,
 	QuestionsLearnedParams,
 	QuestionByIdParams,
-	QuestionsAdminListParams,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -41,23 +39,3 @@ const questionApi = baseApi.injectEndpoints({
 
 export const { useGetQuestionsListQuery, useGetQuestionByIdQuery, useGetLearnedQuestionsQuery } =
 	questionApi;
-
-const questionAdminApi = baseApi.injectEndpoints({
-	endpoints: (build) => ({
-		getAdminQuestionsList: build.query<Response<QuestionAdmin[]>, QuestionsAdminListParams>({
-			query: (params) => ({
-				url: '/questions',
-				params,
-			}),
-			providesTags: [ApiTags.QUESTIONS],
-		}),
-		getAdminQuestionById: build.query<Question, string>({
-			query: (questionId) => ({
-				url: `/questions/${questionId}`,
-			}),
-			providesTags: [ApiTags.QUESTION_DETAIL],
-		}),
-	}),
-});
-
-export const { useGetAdminQuestionsListQuery, useGetAdminQuestionByIdQuery } = questionAdminApi;

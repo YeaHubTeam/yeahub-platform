@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import styles from './Table.module.css';
@@ -23,8 +23,8 @@ interface TableProps<T> {
 	 * Render function for displaying the table actions in the last column
 	 */
 	renderActions?: (item: T) => ReactNode;
-	selectedItems?: string[];
-	onSelectItems?: (ids: string[]) => void;
+	selectedItems?: number[];
+	onSelectItems?: (ids: number[]) => void;
 }
 
 /**
@@ -35,7 +35,7 @@ interface TableProps<T> {
  * @param renderActions
  * @constructor
  */
-export const Table = <T extends { id: string }>({
+export const Table = <T extends { id: number }>({
 	items,
 	renderTableHeader,
 	renderTableBody,
@@ -43,7 +43,7 @@ export const Table = <T extends { id: string }>({
 	selectedItems,
 	onSelectItems,
 }: TableProps<T>) => {
-	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
+	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const hasActions = !!renderActions;
 
@@ -54,10 +54,10 @@ export const Table = <T extends { id: string }>({
 		onSelectItems?.(isAllSelected ? [] : itemsIds);
 	};
 
-	const onSelectItem = (id: string) => () => {
+	const onSelectItem = (id: number) => () => {
 		if (selectedItems) {
 			const isSelected = selectedItems?.includes(id);
-			const itemsIds: string[] = isSelected
+			const itemsIds: number[] = isSelected
 				? selectedItems?.filter((selectedItem) => selectedItem !== id)
 				: [...selectedItems, id];
 			onSelectItems?.(itemsIds);
@@ -72,7 +72,7 @@ export const Table = <T extends { id: string }>({
 						<input type="checkbox" checked={isAllSelected} onChange={onSelectAllItems} />
 					</td>
 					{renderTableHeader()}
-					{hasActions && <td>{t(TranslationsAdmin.ACTIONS)}</td>}
+					{hasActions && <td>{t(Translation.ACTIONS)}</td>}
 				</tr>
 			</thead>
 			<tbody>

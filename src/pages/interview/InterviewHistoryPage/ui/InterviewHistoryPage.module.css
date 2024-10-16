@@ -48,9 +48,7 @@
 }
 
 @media (width <=768px) {
-  .skeleton-card {
-    >div {
-      margin: 0;
-    }
+  .skeleton-card > div {
+    margin: 0;
   }
 }

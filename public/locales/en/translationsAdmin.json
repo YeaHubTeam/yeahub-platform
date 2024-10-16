@@ -1,17 +1,12 @@
 {
     "language": "English",
-    "actions": "Actions",
     "save": "Save",
     "cancel": "Cancel",
-    "create": "Create",
-    "remove.selected": "Remove selected",
+
     "delete": "Delete",
     "edit": "Edit",
     "question": {
-        "title": "Title",
-        "delete": "Delete",
-        "show": "Show",
-        "edit": "Edit",
+
         "description": "Description",
         "short.answer": "Short answer",
         "long.answer": "Long answer",
@@ -25,7 +20,6 @@
         "type": "Type",
         "create.page.title": "Creating new question",
         "edit.page.title": "Edit question",
-        "skills": "Skills",
         "select.skills": "Select skills",
         "add.question": "Add question",
         "add.description": "Add description",

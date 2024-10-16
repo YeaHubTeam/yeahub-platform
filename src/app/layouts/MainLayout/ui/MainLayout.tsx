@@ -1,6 +1,7 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -8,16 +9,17 @@ import { useProfileQuery } from '@/entities/auth';
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
-import { MainPageSkeleton } from '@/pages/MainPage';
+import { MainPageSkeleton } from '@/pages/interview/MainPage';
 
 import styles from './MainLayout.module.css';
 import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
 interface MainLayoutProps {
 	sidebarItems: MenuItem[];
+	onlyAdmin?: boolean;
 }
 
-export const MainLayout = ({ sidebarItems }: MainLayoutProps) => {
+export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const { data: profile, isLoading } = useProfileQuery();
 
 	const isAdmin = profile?.userRoles[0]?.name === 'admin';
@@ -27,6 +29,11 @@ export const MainLayout = ({ sidebarItems }: MainLayoutProps) => {
 		: sidebarItems;
 
 	if (isLoading) return <MainLayoutSkeleton />;
+
+	if (onlyAdmin && !isAdmin) {
+		return <Navigate to={ROUTES.appRoute} />;
+	}
+
 	return (
 		<section className={styles.layout}>
 			<div className={styles.sidebar}>

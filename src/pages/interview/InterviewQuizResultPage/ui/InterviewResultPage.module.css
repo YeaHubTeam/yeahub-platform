@@ -3,10 +3,10 @@
   grid-template-rows: auto auto;
   grid-template-columns: 1.5fr 1fr;
   gap: 20px;
+}
 
-  >div {
-    height: auto;
-  }
+.container > div {
+  height: auto;
 }
 
 .stats {

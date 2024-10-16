@@ -1,17 +1,11 @@
 {
   "language": "Русский",
-  "actions": "Действия",
   "save": "Сохранить",
   "cancel": "Отменить",
-  "create": "Создать",
-  "remove.selected": "Удалить выбранное",
   "delete": "Удалить",
   "edit": "Редактировать",
   "question": {
-    "delete": "Удалить",
-    "show": "Посмотреть",
-    "edit": "Редактировать",
-    "title": "Название",
+
     "description": "Описание",
     "short.answer": "Короткий ответ",
     "long.answer": "Длинный ответ",
@@ -25,9 +19,7 @@
     "type": "Тип",
     "create.page.title": "Добавление нового вопроса",
     "edit.page.title": "Изменение вопроса",
-    "skills": "Скилы",
     "select.skills": "Выберите соотвествующие скилы",
-    "specialization": "Специализация",
     "select.specialization": "Выберите соотвествующую специализацию",
     "add.question": "Добавьте вопрос",
     "add.description": "Добавьте описание",

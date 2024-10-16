@@ -5,7 +5,7 @@ import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { QuestionAdmin } from '@/entities/question';
+import { Question } from '@/entities/question';
 
 import { getQuestionsPageNum } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
@@ -13,7 +13,7 @@ import { questionsTablePageActions } from '../../model/slices/questionsTablePage
 import styles from './QuestionTablePagePagination.module.css';
 
 interface QuestionPagePaginationProps {
-	questionsResponse?: Response<QuestionAdmin[]>;
+	questionsResponse?: Response<Question[]>;
 }
 
 export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePaginationProps) => {

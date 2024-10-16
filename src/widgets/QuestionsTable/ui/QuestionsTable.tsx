@@ -3,19 +3,19 @@ import { NavLink } from 'react-router-dom';
 import { Icon, Button, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { TranslationsAdmin } from '@/shared/config/i18n/i18nTranslations';
+import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
-import { QuestionAdmin } from '@/entities/question';
+import { Question } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
 interface QuestionsTableProps {
-	questions?: QuestionAdmin[];
-	selectedQuestions?: string[];
-	onSelectQuestions?: (ids: string[]) => void;
+	questions?: Question[];
+	selectedQuestions?: number[];
+	onSelectQuestions?: (ids: number[]) => void;
 }
 
 export const QuestionsTable = ({
@@ -23,21 +23,21 @@ export const QuestionsTable = ({
 	selectedQuestions,
 	onSelectQuestions,
 }: QuestionsTableProps) => {
-	const [openPopovers, setOpenPopovers] = useState<string | null>(null);
+	const [openPopovers, setOpenPopovers] = useState<number | null>(null);
 
-	const { t } = useI18nHelpers(i18Namespace.translationsAdmin);
+	const { t } = useI18nHelpers([i18Namespace.questions, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(TranslationsAdmin.QUESTION_TITLE),
-			specialization: t(TranslationsAdmin.QUESTION_SPECIALIZATION),
-			skills: t(TranslationsAdmin.QUESTION_SKILLS),
+			title: t(Questions.NAME),
+			specialization: t(Questions.SPECIALIZATION),
+			skills: t(Questions.SKILLS),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
-	const renderTableBody = (question: QuestionAdmin) => {
+	const renderTableBody = (question: Question) => {
 		const columns = {
 			title: question.title,
 			specialization: question.questionSpecializations?.length
@@ -51,7 +51,7 @@ export const QuestionsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
-	const renderActions = (question: QuestionAdmin) => {
+	const renderActions = (question: Question) => {
 		const openActions = () => {
 			setOpenPopovers(question.id);
 		};
@@ -74,7 +74,7 @@ export const QuestionsTable = ({
 										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
 										theme="tertiary"
 									>
-										{t(TranslationsAdmin.QUESTION_SHOW)}
+										{t(Translation.SHOW, { ns: i18Namespace.translation })}
 									</Button>
 								</Flex>
 							</NavLink>
@@ -86,7 +86,7 @@ export const QuestionsTable = ({
 										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
 										theme="tertiary"
 									>
-										{t(TranslationsAdmin.QUESTION_EDIT)}
+										{t(Translation.EDIT, { ns: i18Namespace.translation })}
 									</Button>
 								</Flex>
 							</NavLink>

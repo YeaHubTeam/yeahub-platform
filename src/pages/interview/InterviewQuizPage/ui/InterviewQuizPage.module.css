@@ -4,10 +4,10 @@
   gap: 30px;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
+}
 
-  >div {
-    height: auto;
-  }
+.container > div {
+  height: auto;
 }
 
 .slider-navigation {

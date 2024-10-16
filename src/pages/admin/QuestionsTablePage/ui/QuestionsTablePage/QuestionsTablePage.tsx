@@ -4,7 +4,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useGetAdminQuestionsListQuery } from '@/entities/question';
+import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { QuestionsTable } from '@/widgets/QuestionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -29,9 +29,9 @@ const QuestionsPage = () => {
 	const page = useSelector(getQuestionsPageNum);
 	const search = useSelector(getQuestionsSearch);
 	const selectedQuestions = useSelector(getSelectedQuestions);
-	const { data: questions } = useGetAdminQuestionsListQuery({ page, title: search });
+	const { data: questions } = useGetQuestionsListQuery({ page, title: search });
 
-	const onSelectQuestions = (ids: string[]) => {
+	const onSelectQuestions = (ids: number[]) => {
 		dispatch(questionsTablePageActions.setSelectedQuestions(ids));
 	};
 	const onChangeSearch = (value: string) => {

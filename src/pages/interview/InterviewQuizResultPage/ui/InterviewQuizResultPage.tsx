@@ -65,7 +65,7 @@ const InterviewQuizResultPage = () => {
 			<Card>
 				<Flex direction="column" align="center" className={styles.result}>
 					<InterviewQuestionHeader
-						title={t('resultInterview.resultTitle', null, { title: data?.quizNumber })}
+						title={t('resultInterview.resultTitle', { title: data?.quizNumber })}
 						centered
 					/>
 					<PassedInterviewStat

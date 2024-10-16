@@ -1,7 +1,7 @@
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
-
-export type QuestionType = 'task' | 'question' | 'test';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
 
 export interface Question {
 	id: number;
@@ -18,8 +18,7 @@ export interface Question {
 	createdBy: null | string;
 	updatedBy: null;
 	checksCount?: number;
-	//todo убрать specializations, skills и rating так как это замоканные данные
-	questionSpecializations?: Skill[];
+	questionSpecializations?: Specialization[];
 	questionSkills?: Skill[];
 	complexity?: number;
 	specializations: number[];
@@ -34,13 +33,12 @@ export interface QuestionsListParams {
 	titleOrDescription?: string;
 	skills?: number[];
 	complexity?: number[];
+	rate?: number[];
 	keywords?: string[];
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
-	// minComplexity?: number;
-	// maxComplexity?: number;
 }
 
 export interface QuestionsLearnedParams
@@ -52,46 +50,4 @@ export interface QuestionsLearnedParams
 export interface QuestionByIdParams {
 	questionId?: string;
 	profileId?: string;
-}
-
-export interface QuestionAdminTestOption {
-	id: number;
-	answer: string;
-}
-export interface QuestionAdminSkill {
-	id: string;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
-}
-
-export interface QuestionAdmin {
-	complexity: number;
-	createdBy: string;
-	id: string;
-	title: string;
-	description: string;
-	imgSrc?: string;
-	keywords?: string[];
-	shortAnswer?: string;
-	status?: string;
-	rate: number;
-	longAnswer?: string;
-	resources?: string[];
-	author?: string;
-	type?: QuestionType;
-	criteria?: string;
-	options?: QuestionAdminTestOption[];
-	correctOptionId?: number;
-	explanation?: string;
-	time?: string;
-	questionSkills?: QuestionAdminSkill[];
-	questionSpecializations?: QuestionAdminSkill[];
-}
-
-export interface QuestionsAdminListParams {
-	page?: number;
-	title?: string;
 }
