@@ -54,6 +54,8 @@ const InterviewQuizPage = () => {
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
 	const isLastQuestion = activeQuestion === totalCount;
+	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
+	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
@@ -109,10 +111,10 @@ const InterviewQuizPage = () => {
 					/>
 					<Button
 						className={styles['end-button']}
-						onClick={!isLastQuestion && !isAllQuestionsAnswered ? goToNextSlide : handleSubmitQuiz}
-						disabled={(isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer)}
+						onClick={isNextButton ? goToNextSlide : handleSubmitQuiz}
+						disabled={isDisabled}
 					>
-						{!isLastQuestion && !isAllQuestionsAnswered ? t('buttons.next') : t('buttons.complete')}
+						{isNextButton ? t('buttons.next') : t('buttons.complete')}
 					</Button>
 				</div>
 			</Card>
