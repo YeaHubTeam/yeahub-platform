@@ -14,7 +14,7 @@ export const AboutMeTabForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	return (
-		<Flex gap="120">
+		<Flex className={styles.container} gap="20">
 			<div className={styles.description}>
 				<h3>{t(Profile.ABOUTMEFORM_TITLE)}</h3>
 				<p>{t(Profile.ABOUTMEFORM_DESCRIPTION)}</p>

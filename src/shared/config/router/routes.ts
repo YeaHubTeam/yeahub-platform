@@ -1,5 +1,6 @@
 export const ROUTES = {
 	appRoute: '/',
+	adminRoute: '/admin/',
 	auth: {
 		route: 'auth',
 		login: {

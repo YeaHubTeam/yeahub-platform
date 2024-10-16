@@ -9,6 +9,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
+import { useProfileQuery } from '@/entities/auth';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
@@ -17,23 +18,24 @@ import styles from './PersonalInformationTabForm.module.css';
 export const PersonalInformationTabForm = () => {
 	const { control } = useFormContext();
 	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
 	return (
-		<Flex direction="column" gap="120">
-			<Flex gap="120">
+		<Flex direction="column" gap="120" className={styles.wrapper}>
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>{t(Profile.PHOTO_TITLE)}</h3>
 					<p>{t(Profile.PHOTO_DESCRIPTION)}</p>
 				</div>
-				<ImageLoader />
+				<ImageLoader imgSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
 			</Flex>
-			<Flex gap="120">
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>{t(Profile.PERSONALINFORMATIONFORM_TITLE)}</h3>
 					<p>{t(Profile.PERSONALINFORMATIONFORM_DESCRIPTION)}</p>
 				</div>
 				<Flex gap="20" className={styles['inputs-wrapper']}>
-					<Flex maxWidth gap="20">
+					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
 							name="firstName"
 							control={control}
@@ -60,7 +62,7 @@ export const PersonalInformationTabForm = () => {
 					>
 						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
 					</FormControl>
-					<Flex maxWidth gap="20">
+					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
 							name="phone"
 							control={control}
@@ -94,6 +96,7 @@ export const PersonalInformationTabForm = () => {
 						)}
 					</FormControl>
 					<FormControl
+						className={styles.form}
 						name="skillLevel"
 						control={control}
 						label={t(Profile.PERSONALINFORMATIONFORM_GRADE)}
@@ -102,7 +105,7 @@ export const PersonalInformationTabForm = () => {
 					</FormControl>
 				</Flex>
 			</Flex>
-			<Flex gap="120">
+			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>{t(Profile.PERSONALINFORMATIONFORM_PERSONALLINKS)}</h3>
 					<p>{t(Profile.PERSONALINFORMATIONFORM_PERSONALLINKSTEXT)}</p>

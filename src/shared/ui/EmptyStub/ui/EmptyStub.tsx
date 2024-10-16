@@ -6,7 +6,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import styles from './EmptyStub.module.css';
 
 interface EmptyStubProps {
-	resetFilters: () => void;
+	resetFilters?: () => void;
 }
 
 export const EmptyStub = ({ resetFilters }: EmptyStubProps) => {
