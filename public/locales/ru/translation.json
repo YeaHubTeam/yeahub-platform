@@ -1,5 +1,11 @@
 {
   "language": "Русский",
+  "create": "Создать",
+  "remove.selected": "Удалить выбранное",
+  "actions": "Действия",
+  "show": "Посмотреть",
+  "edit": "Редактировать",
+  "delete": "Удалить",
   "loading": "Идёт загрузка...",
   "hello": "Привет",
   "userPreferences": {
@@ -14,7 +20,8 @@
     "education": {
       "title": "Обучение",
       "interview": "Собеседование"
-    }
+    },
+    "questions": "Вопросы"
   },
   "blockModal": {
     "confirmTitle": "Подтвердить действие",

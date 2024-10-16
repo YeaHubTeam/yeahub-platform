@@ -28,7 +28,7 @@ export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHi
 		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Card className={styles.container}>
-					<InterviewHeader title={t('title', null, { number: interview.quizNumber })} />
+					<InterviewHeader title={t('title', { number: interview.quizNumber })} />
 					<InterviewParameters interview={interview} />
 					{notEmptySkills && <QuestionCategories questionCategories={skills} />}
 				</Card>

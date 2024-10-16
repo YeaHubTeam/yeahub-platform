@@ -17,7 +17,7 @@ export const QuestionProgressBarBlock = ({
 		<div>
 			<QuestionProgressBar currentCount={fromQuestionNumber} totalCount={toQuestionNumber} />
 			<p className={styles.question}>
-				{t('preparation.progressBarTitle', null, { fromQuestionNumber, toQuestionNumber })}
+				{t('preparation.progressBarTitle', { fromQuestionNumber, toQuestionNumber })}
 			</p>
 		</div>
 	);
