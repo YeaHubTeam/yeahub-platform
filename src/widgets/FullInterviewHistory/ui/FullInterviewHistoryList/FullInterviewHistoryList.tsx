@@ -2,6 +2,8 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { FullInterviewHistoryItem } from '../FullInterviewHistoryItem/FullInterviewHistoryItem';
 
@@ -10,9 +12,10 @@ import { useGetHistory } from './model/hooks/useGetHistory';
 
 interface InterviewHistoryProps {
 	dateRange?: Value;
+	resetFilters?: () => void;
 }
 
-export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) => {
+export const FullInterviewHistoryList = ({ dateRange, resetFilters }: InterviewHistoryProps) => {
 	const [page, setPage] = useState(1);
 	const [uniqueKey, setUniqueKey] = useState(Date.now().toString());
 
@@ -62,7 +65,9 @@ export const FullInterviewHistoryList = ({ dateRange }: InterviewHistoryProps) =
 					))}
 				</ul>
 			) : (
-				<p>Данных нет</p>
+				<Card className={styles['empty-container']}>
+					<EmptyStub resetFilters={resetFilters} />
+				</Card>
 			)}
 		</>
 	);
