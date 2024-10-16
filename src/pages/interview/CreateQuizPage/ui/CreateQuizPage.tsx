@@ -68,8 +68,7 @@ const CreateQuizPage = () => {
 			profileId: userProfile?.profiles[0].id || '',
 			params: {
 				skills: filter.category,
-				minComplexity: filter.complexity ? Math.min(...filter.complexity) : undefined,
-				maxComplexity: filter.complexity ? Math.max(...filter.complexity) : undefined,
+				complexity: filter.complexity,
 				limit: filter.count,
 				mode: filter.mode,
 			},
