@@ -13,6 +13,7 @@ import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
+import { useGetQuestionsListQuery } from '@/entities/question';
 import {
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
@@ -31,12 +32,14 @@ import { InterviewPageSkeleton } from './InterviewPage.skeleton';
 const InterviewPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
-	const { data: profile } = useProfileQuery();
+	const { data: profile, isLoading: isProfileLoading } = useProfileQuery();
 	const profileId = profile?.profiles[0]?.id;
 
-	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].id ?? '');
+	const { data: profileStats, isLoading: isProfileStatsLoading } = useGetProfileStatsQuery(
+		profile?.profiles[0].id ?? '',
+	);
 
-	const { isLoading: isHistoryLoading, isFetching } = useGetHistoryQuizQuery(
+	const { isLoading: isHistoryLoading } = useGetHistoryQuizQuery(
 		profileId
 			? {
 					profileID: profileId,
@@ -45,6 +48,16 @@ const InterviewPage = () => {
 				}
 			: skipToken,
 	);
+
+	const specializationId = profile?.profiles[0].specializationId;
+
+	const params = {
+		random: true,
+		limit: 3,
+		specialization: specializationId,
+	};
+
+	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery(params);
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId: profile?.profiles[0].id,
@@ -89,7 +102,13 @@ const InterviewPage = () => {
 		};
 	}, [activeQuizQuestions]);
 
-	if (isActiveQuizLoading || isHistoryLoading || isFetching) {
+	if (
+		isProfileLoading ||
+		isProfileStatsLoading ||
+		isActiveQuizLoading ||
+		isHistoryLoading ||
+		isQuestionsListLoading
+	) {
 		return <InterviewPageSkeleton />;
 	}
 
