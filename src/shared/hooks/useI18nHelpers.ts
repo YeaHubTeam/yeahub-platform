@@ -6,8 +6,8 @@ export const useI18nHelpers = (ns?: string | string[]) => {
 
 	const tWithNs = (
 		key: string,
-		defaultValue?: string | null,
 		options?: Omit<TOptions, 'defaultValue'>,
+		defaultValue?: string | null,
 	) => {
 		return t(key, { ...options, defaultValue });
 	};

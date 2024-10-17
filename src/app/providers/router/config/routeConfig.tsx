@@ -7,33 +7,34 @@ import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
+import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
-import { AdminMainPage } from '@/pages/AdminMainPage';
-import { CreateQuizPage } from '@/pages/CreateQuizPage';
-import { EditProfilePage } from '@/pages/EditProfilePage';
+import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
+import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { LoginPage } from '@/pages/auth/LoginPage';
+import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
-import { InterviewHistoryPage } from '@/pages/InterviewHistoryPage';
-import { InterviewPage } from '@/pages/InterviewPage';
-import { InterviewQuizPage } from '@/pages/InterviewQuizPage';
-import { InterviewQuizResultPage } from '@/pages/InterviewQuizResultPage';
-import { InterviewStatisticsPage } from '@/pages/InterviewStatisticsPage';
-import { LoginPage } from '@/pages/LoginPage';
-import { MainPage } from '@/pages/MainPage';
-import { ProfilePage } from '@/pages/ProfilePage';
-import { QuestionPage } from '@/pages/QuestionPage';
-import { QuestionsPage } from '@/pages/QuestionsPage';
-import { RegistrationPage } from '@/pages/RegistrationPage';
+import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
+import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
+import { InterviewPage } from '@/pages/interview/InterviewPage';
+import { InterviewQuizPage } from '@/pages/interview/InterviewQuizPage';
+import { InterviewQuizResultPage } from '@/pages/interview/InterviewQuizResultPage';
+import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPage';
+import { MainPage } from '@/pages/interview/MainPage';
+import { QuestionPage } from '@/pages/interview/QuestionPage';
+import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { EditProfilePage } from '@/pages/profile/EditProfilePage';
+import { ProfilePage } from '@/pages/profile/ProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
-import { AdminRoute } from '../ui/AdminRoute';
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 
@@ -85,6 +86,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: 'tabs.main',
 		icon: Home,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.questions.route,
+		title: 'tabs.questions',
+		icon: QuestionsIcon,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -96,15 +103,17 @@ export const router = createBrowserRouter([
 				path: ROUTES.adminRoute,
 				element: (
 					<AuthRoute>
-						<AdminRoute>
-							<MainLayout sidebarItems={adminLayoutMenuItems} />
-						</AdminRoute>
+						<MainLayout sidebarItems={adminLayoutMenuItems} onlyAdmin />
 					</AuthRoute>
 				),
 				children: [
 					{
 						index: true,
 						element: <AdminMainPage />,
+					},
+					{
+						path: ROUTES.admin.questions.route,
+						element: <QuestionsTablePage />,
 					},
 				],
 			},

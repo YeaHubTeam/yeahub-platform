@@ -1,5 +1,11 @@
 export enum Translation {
 	LANGUAGE = 'language',
+	REMOVE_SELECTED = 'remove.selected',
+	CREATE = 'create',
+	SHOW = 'show',
+	EDIT = 'edit',
+	DELETE = 'delete',
+	ACTIONS = 'actions',
 	LOADING = 'loading',
 	HELLO = 'hello',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
@@ -250,6 +256,10 @@ export enum InterviewStatistics {
 
 export enum Questions {
 	TITLE = 'title',
+	NAME = 'name',
+	SPECIALIZATION = 'specialization',
+	SKILLS = 'skills',
+
 	SEARCH_PLACEHOLDER = 'searchPlaceholder',
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOWALL = 'categories.showAll',

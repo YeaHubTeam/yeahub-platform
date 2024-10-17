@@ -1,5 +1,11 @@
 {
   "language": "English",
+  "create": "Create",
+  "remove.selected": "Remove selected",
+  "actions": "Actions",
+  "show": "Show",
+  "edit": "Edit",
+  "delete": "Delete",
   "loading": "Loading...",
   "hello": "Hello",
   "userPreferences": {

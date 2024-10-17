@@ -1,5 +1,8 @@
 {
   "title": "Вопросы",
+  "name": "Название",
+  "specialization": "Специализация",
+  "skills": "Навыки",
   "searchPlaceholder": "Введите запрос...",
   "categories": {
     "title": "Категории вопросов",
