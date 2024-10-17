@@ -1,3 +1,4 @@
+import { skipToken } from '@reduxjs/toolkit/query';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
@@ -9,13 +10,14 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
-import { Loader } from '@/shared/ui/Loader';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { useProfileQuery } from '@/entities/auth';
+import { useGetQuestionsListQuery } from '@/entities/question';
 import {
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
+	useGetHistoryQuizQuery,
 	useGetProfileStatsQuery,
 } from '@/entities/quiz';
 
@@ -25,13 +27,37 @@ import { QuestionLargePreview, QuestionProgressBarBlock } from '@/widgets/Interv
 import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
 
 import styles from './InterviewPage.module.css';
+import { InterviewPageSkeleton } from './InterviewPage.skeleton';
 
 const InterviewPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
-	const { data: profile } = useProfileQuery();
+	const { data: profile, isLoading: isProfileLoading } = useProfileQuery();
+	const profileId = profile?.profiles[0]?.id;
 
-	const { data: profileStats } = useGetProfileStatsQuery(profile?.profiles[0].id ?? '');
+	const { data: profileStats, isLoading: isProfileStatsLoading } = useGetProfileStatsQuery(
+		profile?.profiles[0].id ?? '',
+	);
+
+	const { isLoading: isHistoryLoading } = useGetHistoryQuizQuery(
+		profileId
+			? {
+					profileID: profileId,
+					params: { limit: 3 },
+					uniqueKey: 'interviewPreviewHistory',
+				}
+			: skipToken,
+	);
+
+	const specializationId = profile?.profiles[0].specializationId;
+
+	const params = {
+		random: true,
+		limit: 3,
+		specialization: specializationId,
+	};
+
+	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery(params);
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId: profile?.profiles[0].id,
@@ -76,6 +102,16 @@ const InterviewPage = () => {
 		};
 	}, [activeQuizQuestions]);
 
+	if (
+		isProfileLoading ||
+		isProfileStatsLoading ||
+		isActiveQuizLoading ||
+		isHistoryLoading ||
+		isQuestionsListLoading
+	) {
+		return <InterviewPageSkeleton />;
+	}
+
 	const handleProfileRedirect = () => {
 		navigate(ROUTES.profile.edit.page);
 	};
@@ -94,48 +130,42 @@ const InterviewPage = () => {
 				actionRoute={lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page}
 				withShadow
 			>
-				{!isActiveQuizLoading ? (
+				{isSpecializationEmpty ? (
+					<div className={styles['preparation-wrapper']}>
+						<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
+						<p className={styles['inactive-description']}>
+							{t(Interview.PREPARATION_STUB_DESCRIPTION)}
+						</p>
+						<Button onClick={handleProfileRedirect} className={styles.button} size="large">
+							{t(Interview.FILLPROFILE_BUTTON)}
+						</Button>
+					</div>
+				) : (
 					<>
-						{isSpecializationEmpty ? (
-							<div className={styles['preparation-wrapper']}>
-								<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
-								<p className={styles['inactive-description']}>
-									{t(Interview.PREPARATION_STUB_DESCRIPTION)}
-								</p>
-								<Button onClick={handleProfileRedirect} className={styles.button} size="large">
-									{t(Interview.FILLPROFILE_BUTTON)}
-								</Button>
+						{lastActiveQuizInfo ? (
+							<div className={styles.preparation}>
+								<QuestionProgressBarBlock
+									fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
+									toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
+								/>
+								<QuestionLargePreview question={lastActiveQuizInfo.question} />
 							</div>
 						) : (
-							<>
-								{lastActiveQuizInfo ? (
-									<div className={styles.preparation}>
-										<QuestionProgressBarBlock
-											fromQuestionNumber={lastActiveQuizInfo.fromQuestionNumber}
-											toQuestionNumber={lastActiveQuizInfo.toQuestionNumber}
-										/>
-										<QuestionLargePreview question={lastActiveQuizInfo.question} />
-									</div>
-								) : (
-									<div className={styles['preparation-empty']}>
-										<h2 className={styles['inactive-title']}>
-											{t(Interview.PREPARATION_NOACTIVETITLE)}
-										</h2>
-										<p className={styles['inactive-description']}>
-											{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
-										</p>
-										<img
-											className={styles['preparation-noactiveimage']}
-											src={NoActiveQuizPlaceholder}
-											alt="no active quiz"
-										/>
-									</div>
-								)}
-							</>
+							<div className={styles['preparation-empty']}>
+								<h2 className={styles['inactive-title']}>
+									{t(Interview.PREPARATION_NOACTIVETITLE)}
+								</h2>
+								<p className={styles['inactive-description']}>
+									{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
+								</p>
+								<img
+									className={styles['preparation-noactiveimage']}
+									src={NoActiveQuizPlaceholder}
+									alt="no active quiz"
+								/>
+							</div>
 						)}
 					</>
-				) : (
-					<Loader />
 				)}
 			</Card>
 
