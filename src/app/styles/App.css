@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 
 :root {
   /* сolor palette */
@@ -52,7 +54,7 @@
   --color-white-900: #FFF;
   --color-label-bg: rgb(209 209 209 / 27%);
   --color-code-gradient-end: #E8DAFF;
-  
+
 
   /* light theme colors */
   --background-progress-bar: var(--color-purple-200);
@@ -93,13 +95,16 @@
   --font-size-p-l: 18px;
   --font-size-h-xs: 20px;
   --font-size-h-s: 24px;
+  --font-size-h-sm: 30px;
   --font-size-h-m: 36px;
   --font-size-h-l: 40px;
   --font-size-h-xxl: 60px;
   --font-family: "Manrope", sans-serif;
+  --font-logo: "Inter", sans-serif;
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
+  --font-weight-700: 700;
   --focus-shadow: 0 0 0 3px var(--color-purple-100);
   --focus-shadow-error: 0 0 0 3px var(--color-red-100);
   --focus-shadow-valid: 0 0 0 3px var(--color-green-200);
