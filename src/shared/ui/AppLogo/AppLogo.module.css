@@ -13,6 +13,13 @@
   transition: opacity .7s ease-in-out;
 }
 
+.logo-symbol {
+  color: var(--color-black-900);
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-h-sm);
+  font-family: var(--font-logo);
+}
+
 .white {
   color: var(--color-white-900);
 }
@@ -31,13 +38,13 @@
   transition: padding-left .4s ease-in-out;
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .name {
     display: none;
   }
 
   .logo-image {
-    padding-right: 0;  
-    
+    padding-right: 0;
+
   }
 }
