@@ -1,10 +1,8 @@
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -19,8 +17,7 @@ import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/qui
 import { QuestionModeType } from '@/entities/quiz';
 import { QuizQuestionMode } from '@/entities/quiz';
 
-import { getCreateQuizPageState } from '../model/selectors/createQuizPageSelectors';
-import { createQuizPageActions } from '../model/slices/CreateQuizPageSlice';
+import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
 import styles from './CreateQuizPage.module.css';
 import { CreateQuizPageSkeleton } from './CreateQuizPage.skeleton';
@@ -28,9 +25,9 @@ import { CreateQuizPageSkeleton } from './CreateQuizPage.skeleton';
 const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
-	const dispatch = useAppDispatch();
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { data: userProfile, isLoading } = useProfileQuery();
+	const { filter, handleFilterChange } = useQueryFilter();
+	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const navigate = useNavigate();
 
@@ -48,36 +45,32 @@ const CreateQuizPage = () => {
 		navigate(ROUTES.interview.new.page);
 	}
 
-	const createQuizData = useSelector(getCreateQuizPageState);
-
-	const { skills, complexity, mode, limit } = createQuizData;
-
 	const [trigger] = useLazyCreateNewQuizQuery();
 
 	const onChangeSkills = (skills: number[] | undefined) => {
-		dispatch(createQuizPageActions.setSkills(skills));
+		handleFilterChange({ category: skills });
 	};
 
 	const onChangeComplexity = (complexity: number[] | undefined) => {
-		dispatch(createQuizPageActions.setComplexity(complexity));
+		handleFilterChange({ complexity });
 	};
 
 	const onChangeMode = (mode: QuestionModeType) => {
-		dispatch(createQuizPageActions.setMode(mode));
+		handleFilterChange({ mode });
 	};
 
 	const onChangeLimit = (limit: number) => {
-		dispatch(createQuizPageActions.setLimit(limit));
+		handleFilterChange({ count: limit });
 	};
 
 	const handleCreateNewQuiz = () => {
 		trigger({
 			profileId: userProfile?.profiles[0].id || '',
 			params: {
-				skills,
-				complexity: complexity,
-				limit,
-				mode,
+				skills: filter.category,
+				complexity: filter.complexity,
+				limit: filter.count,
+				mode: filter.mode,
 			},
 		});
 	};
@@ -90,17 +83,17 @@ const CreateQuizPage = () => {
 				<h2 className={styles.title}>{t('create.title')}</h2>
 				<Flex justify="between" gap="40" className={styles.wrapper}>
 					<ChooseQuestionsCategories
-						selectedSkills={skills}
+						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
 					/>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity
-							selectedComplexity={complexity}
+							selectedComplexity={filter.complexity}
 							onChangeComplexity={onChangeComplexity}
 						/>
-						<QuizQuestionMode onChangeMode={onChangeMode} />
-						<ChooseQuestionCount onChangeLimit={onChangeLimit} />
+						<QuizQuestionMode onChangeMode={onChangeMode} modeFromURL={filter.mode} />
+						<ChooseQuestionCount onChangeLimit={onChangeLimit} count={filter.count || 1} />
 					</Flex>
 				</Flex>
 				<Button
