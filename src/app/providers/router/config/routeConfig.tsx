@@ -8,6 +8,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -16,6 +17,7 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -92,6 +94,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: 'tabs.questions',
 		icon: QuestionsIcon,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.skills.route,
+		title: 'tabs.skills',
+		icon: SkillsIcon,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -114,6 +122,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.questions.route,
 						element: <QuestionsTablePage />,
+					},
+					{
+						path: ROUTES.admin.skills.route,
+						element: <SkillsPage />,
 					},
 				],
 			},
