@@ -7,9 +7,9 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 
-import styles from './SpecializationSelect.module.css';
+import styles from './SingleSpecializationSelect.module.css';
 
-type SpecializationSelectProps = Omit<
+type SingleSpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Select>,
 	'options' | 'type' | 'value'
 > & {
@@ -17,7 +17,10 @@ type SpecializationSelectProps = Omit<
 	onChange: (value: number) => void;
 };
 
-export const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) => {
+export const SingleSpecializationSelect = ({
+	onChange,
+	value,
+}: SingleSpecializationSelectProps) => {
 	const { t } = useI18nHelpers(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({});
 

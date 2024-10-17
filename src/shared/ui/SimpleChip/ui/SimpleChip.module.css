@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.text {
+  color: var(--color-purple-700);
+  line-height: 25.6px;
+}
+
+.button {
+  position: absolute;
+  top: -3px;
+  right: -15px;
+  padding-inline: 5px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-red-600);
+  cursor: pointer;
+}
