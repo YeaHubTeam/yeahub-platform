@@ -8,6 +8,7 @@
   "delete": "Удалить",
   "loading": "Идёт загрузка...",
   "hello": "Привет",
+  "save": "Сохранить",
   "userPreferences": {
     "myProfile": "Мой профиль",
     "logout": "Выйти"

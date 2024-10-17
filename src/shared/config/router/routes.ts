@@ -5,6 +5,10 @@ export const ROUTES = {
 		questions: {
 			route: 'questions',
 			page: '/admin/questions',
+			create: {
+				route: 'create',
+				page: '/admin/questions/create',
+			},
 		},
 	},
 	auth: {

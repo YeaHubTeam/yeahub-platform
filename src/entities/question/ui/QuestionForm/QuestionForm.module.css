@@ -1,0 +1,32 @@
+.input {
+  flex: 1;
+}
+
+.select {
+  width: 360px;
+}
+
+.rate {
+  position: relative;
+  top: -15px;
+  width: 360px;
+}
+
+.titles {
+  width: 135px;
+}
+
+.label {
+  color: var(--color-black-400);
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-xsmall);
+  font-style: normal;
+} 
+
+.description {
+  display: block;
+  width: 100%;
+  height: 200px;
+  resize: vertical;
+}
+
