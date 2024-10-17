@@ -1,7 +1,7 @@
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
-
-export type QuestionType = 'task' | 'question' | 'test';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
 
 export interface Question {
 	id: number;
@@ -18,8 +18,7 @@ export interface Question {
 	createdBy: null | string;
 	updatedBy: null;
 	checksCount?: number;
-	//todo убрать specializations, skills и rating так как это замоканные данные
-	questionSpecializations?: Skill[];
+	questionSpecializations?: Specialization[];
 	questionSkills?: Skill[];
 	complexity?: number;
 	specializations: number[];
@@ -34,13 +33,12 @@ export interface QuestionsListParams {
 	titleOrDescription?: string;
 	skills?: number[];
 	complexity?: number[];
+	rate?: number[];
 	keywords?: string[];
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
-	// minComplexity?: number;
-	// maxComplexity?: number;
 }
 
 export interface QuestionsLearnedParams
