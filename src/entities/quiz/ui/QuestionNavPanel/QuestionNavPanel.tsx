@@ -14,6 +14,8 @@ interface QuestionNavPanelProps {
 	showResponseButtons?: boolean;
 	className?: string;
 	setIsAnswerVisible: (value: boolean) => void;
+	questionNumber: number;
+	totalCount: number;
 }
 
 export const QuestionNavPanel = ({
@@ -24,6 +26,8 @@ export const QuestionNavPanel = ({
 	showResponseButtons = false,
 	className,
 	setIsAnswerVisible,
+	questionNumber,
+	totalCount,
 }: QuestionNavPanelProps) => {
 	const handlePrevSlide = () => {
 		goToPrevSlide();
@@ -47,6 +51,7 @@ export const QuestionNavPanel = ({
 						<Icon icon="caretLeft" size={20} color="--palette-ui-purple-700" key="caretLeft" />
 					}
 					theme="outline"
+					disabled={questionNumber === 1}
 				/>
 			</div>
 			{showResponseButtons && (
@@ -65,6 +70,7 @@ export const QuestionNavPanel = ({
 					}
 					fullWidth={true}
 					theme="outline"
+					disabled={questionNumber === totalCount || !answer}
 				/>
 			</div>
 		</div>

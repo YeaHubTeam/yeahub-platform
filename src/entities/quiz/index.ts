@@ -37,7 +37,7 @@ export type {
 	QuizHistoryResponse,
 } from './model/types/quiz';
 
-export { getActiveQuizQuestions } from './model/selectors/quizSelectors';
+export { getActiveQuizQuestions, getIsAllQuestionsAnswered } from './model/selectors/quizSelectors';
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 
