@@ -36,7 +36,7 @@ export const ChooseQuestionComplexity = ({
 	return (
 		<BaseFilterSection
 			data={preparedData}
-			title={t(Questions.DIFFICULTY_TITLE)}
+			title={t(Questions.COMPLEXITY_TITLE)}
 			onClick={handleChooseComplexity}
 		/>
 	);
