@@ -21,7 +21,7 @@
   --color-red-200: #FBB1C4;
   --color-red-100: #FDD8E1;
   --color-yellow-900: #FAAF00;
-  --color-yellow-800: #FFC233;
+  --color-yellow-800: #FFC234;
   --color-yellow-700: #FFCE5C;
   --color-yellow-600: #FFDA85;
   --color-yellow-500: #FFE7AD;
@@ -78,6 +78,8 @@
   --caret-color-red: var(--color-red-400);
   --error-color-red: var(--color-red-700);
   --border-focus-purple: var(--color-purple-500);
+  --background-admin-sidebar-item: var(--color-yellow-800);
+  --background-admin-sidebar-item-active: var(--color-yellow-600);
 
   /* dimensions */
   --font-size-none: 0;

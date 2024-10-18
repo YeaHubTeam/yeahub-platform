@@ -99,7 +99,7 @@ export const FileLoader = ({
 
 			<p className={style['extension-descriptions']}>
 				{extensionsText}
-				{maxFileMBSize && ` (${t(Translation.FILELOADER_LIMIT, null, { maxFileMBSize })})`}
+				{maxFileMBSize && ` (${t(Translation.FILELOADER_LIMIT, { maxFileMBSize })})`}
 			</p>
 
 			<input

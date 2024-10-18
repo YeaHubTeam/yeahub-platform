@@ -92,7 +92,7 @@ export const ImageLoader = ({
 					(imageReader.width < minResolution.width || imageReader.height < minResolution.height)
 				) {
 					toast(
-						t(Translation.IMAGELOADER_MINRES, null, {
+						t(Translation.IMAGELOADER_MINRES, {
 							minRes: `${minResolution.width}x${minResolution.height}`,
 						}),
 					);
@@ -104,7 +104,7 @@ export const ImageLoader = ({
 					(imageReader.width > maxResolution.width || imageReader.height > maxResolution.height)
 				) {
 					toast(
-						t(Translation.IMAGELOADER_MAXRES, null, {
+						t(Translation.IMAGELOADER_MAXRES, {
 							maxRes: `${maxResolution.width}x${maxResolution.height}`,
 						}),
 					);

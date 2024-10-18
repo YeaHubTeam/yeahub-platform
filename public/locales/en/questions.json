@@ -1,5 +1,8 @@
 {
   "title": "Questions",
+  "name": "Title",
+  "specialization": "Specialization",
+  "skills": "Skills",
   "searchPlaceholder": "Enter a query...",
   "categories": {
     "title": "Questions Categories",

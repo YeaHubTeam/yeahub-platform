@@ -1,7 +1,7 @@
 import { HeaderSkeleton } from '@/widgets/Header';
 import { SidebarSkeleton } from '@/widgets/Sidebar';
 
-import { MainPageSkeleton } from '@/pages/MainPage';
+import { MainPageSkeleton } from '@/pages/interview/MainPage';
 
 import styles from './MainLayout.module.css';
 

@@ -37,7 +37,7 @@ export interface GetProfileResponse extends Omit<SignUp, 'password'> {
 	profiles: Profile[];
 	refreshToken: string;
 	passwordHash: string;
-	userRoles: string[];
+	userRoles: Role[];
 	avatarImage?: FileList;
 }
 
@@ -90,6 +90,17 @@ export interface UserUpdate {
 	phone: string;
 	refreshToken: string;
 	updatedAt: string;
-	userRoles: string[];
+	userRoles: Role[];
 	avatarImage?: string | null;
+}
+
+export interface Role {
+	id: number;
+	name: 'guest' | 'candidate' | 'member' | 'admin' | 'hr';
+	permissions: Permissions[];
+}
+
+export interface Permissions {
+	id: number;
+	name: string;
 }
