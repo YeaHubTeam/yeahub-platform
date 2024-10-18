@@ -73,7 +73,7 @@ export const QuestionForm = () => {
 								type="default"
 								onChange={onChange}
 								value={value}
-								placeholder={'Select status'}
+								placeholder={t(Questions.STATUS_SELECT)}
 								options={STATUSES}
 							/>
 						</div>
