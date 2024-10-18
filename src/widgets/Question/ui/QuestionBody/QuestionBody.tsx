@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Card } from '@/shared/ui/Card';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
@@ -9,6 +11,7 @@ interface QuestionBodyProps {
 }
 
 export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => {
+	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<>
 			<Card className={styles.wrapper}>
@@ -17,7 +20,11 @@ export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => 
 					<TextHtml html={shortAnswer ?? 'Краткий ответ отсутствует'} />
 				</p>
 			</Card>
-			<Card expandable>
+			<Card
+				expandable
+				className={isExpanded ? styles['collapse expand'] : styles.collapse}
+				onExpandChange={setIsExpanded}
+			>
 				<h3 className={styles.title}>Развёрнутый ответ</h3>
 				<p className={styles.text}>
 					<TextHtml html={longAnswer ?? 'Ответ отсутствует'} />
