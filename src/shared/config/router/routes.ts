@@ -6,6 +6,10 @@ export const ROUTES = {
 			route: 'questions',
 			page: '/admin/questions',
 		},
+		specialization: {
+			route: 'specialization',
+			page: '/admin/specialization',
+		},
 	},
 	auth: {
 		route: 'auth',

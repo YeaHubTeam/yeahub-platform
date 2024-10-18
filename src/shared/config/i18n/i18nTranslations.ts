@@ -1,7 +1,9 @@
 export enum Translation {
 	LANGUAGE = 'language',
 	REMOVE_SELECTED = 'remove.selected',
+	CANCEL = 'cancel',
 	CREATE = 'create',
+	SAVE = 'save',
 	SHOW = 'show',
 	EDIT = 'edit',
 	DELETE = 'delete',
@@ -40,6 +42,7 @@ export enum Translation {
 	TABS_MAIN = 'tabs.main',
 	TABS_PROFILE = 'tabs.profile',
 	TABS_INTERVIEW = 'tabs.interview',
+	TABS_SPECIALIZATION = 'tabs.specialization',
 
 	BLOCKMODAL_CONFIRM_TITLE = 'blockModal.confirmTitle',
 	BLOCKMODAL_CONFIRM_DESCRIPTION = 'blockModal.confirmDescription',
@@ -189,6 +192,12 @@ export enum Auth {
 export enum Specialization {
 	SKILLFORM_SPECIALIZATIONSELECT = 'skillForm.specializationSelect',
 	SKILLFORM_EMPTYSPECIALIZATIONSELECT = 'skillForm.emptySpecializationSelect',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SPECIALIZATION_DESCRIPTION = 'specialization.description',
+	SPECIALIZATION_IMAGE_SRC = 'specialization.image.src',
+	SPECIALIZATIONS_NOT_ITEMS = 'specialization.not.items',
+	SPECIALIZATION_CREATE_PAGE_TITLE = 'specialization.create.page.title',
+	SPECIALIZATION_EDIT_PAGE_TITLE = 'specialization.edit.page.title',
 }
 export enum Interview {
 	PREPARATION_TITLE = 'preparation.title',

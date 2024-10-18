@@ -17,6 +17,7 @@
     "platform": "Platform",
     "admin": "Editor",
     "profile": "My Profile",
+    "specialization": "Specialization",
     "education": {
       "title": "Education",
       "interview": "Interview"
