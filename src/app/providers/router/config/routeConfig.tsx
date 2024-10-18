@@ -17,6 +17,7 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
@@ -125,7 +126,17 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.skills.route,
-						element: <SkillsPage />,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <SkillsPage />,
+							},
+							{
+								path: ROUTES.admin.skills.create.route,
+								element: <SkillCreatePage />,
+							},
+						],
 					},
 				],
 			},
