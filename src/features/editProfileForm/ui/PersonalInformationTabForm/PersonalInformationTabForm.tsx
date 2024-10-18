@@ -11,7 +11,7 @@ import { InputPhone } from '@/shared/ui/InputPhone';
 
 import { useProfileQuery } from '@/entities/auth';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
-import { SingleSpecializationSelect } from '@/entities/specialization';
+import { SpecializationSelect } from '@/entities/specialization';
 
 import styles from './PersonalInformationTabForm.module.css';
 
@@ -60,9 +60,7 @@ export const PersonalInformationTabForm = () => {
 						label={t(Profile.PERSONALINFORMATIONFORM_SPECIALIZATION)}
 						className={styles.form}
 					>
-						{({ onChange, value }) => (
-							<SingleSpecializationSelect onChange={onChange} value={value} />
-						)}
+						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
 					</FormControl>
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl

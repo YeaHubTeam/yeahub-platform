@@ -11,7 +11,7 @@ import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SkillSelect } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { MultipleSpecializationSelect } from '@/entities/specialization';
+import { SpecializationSelect } from '@/entities/specialization';
 
 import { STATUSES } from '../../model/constants/question';
 
@@ -88,7 +88,7 @@ export const QuestionForm = () => {
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
 						<div className={styles.select}>
-							<MultipleSpecializationSelect onChange={onChange} value={value} />
+							<SpecializationSelect onChange={(value: number) => onChange([value])} value={value} />
 						</div>
 					)}
 				</FormControl>

@@ -7,20 +7,17 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 
-import styles from './SingleSpecializationSelect.module.css';
+import styles from './SpecializationSelect.module.css';
 
-type SingleSpecializationSelectProps = Omit<
+type SpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Select>,
-	'options' | 'type' | 'value'
+	'options' | 'type' | 'value' | 'onChange'
 > & {
 	value?: number;
 	onChange: (value: number) => void;
 };
 
-export const SingleSpecializationSelect = ({
-	onChange,
-	value,
-}: SingleSpecializationSelectProps) => {
+export const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) => {
 	const { t } = useI18nHelpers(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({});
 
@@ -33,6 +30,7 @@ export const SingleSpecializationSelect = ({
 		return (specializations?.data || []).map((specialization) => ({
 			label: specialization.title,
 			value: specialization.id.toString(),
+			limit: 100,
 		}));
 	}, [specializations?.data]);
 

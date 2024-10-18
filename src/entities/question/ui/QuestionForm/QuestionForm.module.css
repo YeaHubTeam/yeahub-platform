@@ -17,7 +17,7 @@
 }
 
 .label {
-  color: var(--color-black-400);
+  color: var(--text-color-the-lightest);
   font-weight: var(--font-weight-700);
   font-size: var(--font-size-xsmall);
   font-style: normal;

@@ -4,5 +4,4 @@ export {
 	useGetSpecializationByIdQuery,
 } from './api/specializationApi';
 
-export { SingleSpecializationSelect } from './ui/SingleSpecializationSelect/SingleSpecializationSelect';
-export { MultipleSpecializationSelect } from './ui/MultipleSpecializationSelect/MultipleSpecializationSelect';
+export { SpecializationSelect } from './ui/SpecializationSelect/SpecializationSelect';
