@@ -31,6 +31,6 @@
 
 .active-btn {
   border: none !important;
-  background-color: var(--palette-ui-black-50) !important;
+  background-color: var(--text-color-lightest) !important;
   color: var(--text-color-link-active) !important;
 }
