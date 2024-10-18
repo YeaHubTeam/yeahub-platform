@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
 :root {
@@ -94,7 +93,6 @@
   --font-size-h-l: 40px;
   --font-size-h-xxl: 60px;
   --font-family: "Manrope", sans-serif;
-  --font-logo: "Inter", sans-serif;
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
