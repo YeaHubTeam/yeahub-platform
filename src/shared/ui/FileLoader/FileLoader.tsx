@@ -14,7 +14,7 @@ import { Accept, Extension } from './model/types/types';
 interface FileLoaderProps {
 	accept: Accept;
 	multyple?: boolean;
-	maxFileMBSize: number;
+	maxFileMBSize?: number;
 	fileTypeText: string;
 	extensionsText: Extension;
 	onChange: (files: globalThis.File[]) => void;
@@ -98,7 +98,8 @@ export const FileLoader = ({
 			</p>
 
 			<p className={style['extension-descriptions']}>
-				{extensionsText} ({t(Translation.FILELOADER_LIMIT, null, { maxFileMBSize })})
+				{extensionsText}
+				{maxFileMBSize && ` (${t(Translation.FILELOADER_LIMIT, null, { maxFileMBSize })})`}
 			</p>
 
 			<input

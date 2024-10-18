@@ -91,5 +91,5 @@ export interface UserUpdate {
 	refreshToken: string;
 	updatedAt: string;
 	userRoles: string[];
-	avatarImage?: FileList;
+	avatarImage?: string | null;
 }

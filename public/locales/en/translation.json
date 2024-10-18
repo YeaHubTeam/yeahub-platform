@@ -34,6 +34,14 @@
     },
     "limit": "max {{maxFileMBSize}} MB"
   },
+  "imageLoader": {
+    "minRes": "Minimum image resolution: {{minRes}}",
+    "maxRes": "Maximum image resolution: {{maxRes}}",
+    "save": "Save changes",
+    "change": "Change photo",
+    "delete": "Delete photo",
+    "cropperTitle": "Crop the image"
+  },
   "interviewResult": {
     "total": "Total",
     "known": "Known",

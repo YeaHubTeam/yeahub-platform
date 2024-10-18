@@ -46,26 +46,22 @@
 }
 
 .content {
-  padding: 0;
-  padding-top: 40px;
+  display: flex;
+  flex-direction: column;;
+  gap:30px;
+  padding: 40px;
   border-radius: 20px;
   color: var(--color-black-900);
 }
 
-.title,
-.description, .modal {
-  padding: 0 40px;
-}
-
 .cropper {
-  aspect-ratio: 1;
-  width: 400px;
-  height: 400px;
+  max-width: 500px;
+  max-height: 500px;
   border-radius: 24px;
 }
 
-.description {
-  margin-top: 19px;
+.description-title {
+  text-align: center;
 }
 
 .buttons-wrapper {
@@ -77,4 +73,18 @@
   padding: 30px 40px;
   border-radius: inherit;
   background: var(--color-black-25);
+}
+
+.avatar-preview {
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.large-preview {
+  width: 76px;
+  height: 76px;
+}
+
+.small-preview {
+  width: 26px;
 }

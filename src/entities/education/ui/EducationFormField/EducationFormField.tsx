@@ -16,7 +16,7 @@ export const EducationFormField = () => {
 
 	return (
 		<div className={styles['right-wrapper']}>
-			<ImageLoader imgSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
+			<ImageLoader initialSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
 			<Flex gap="20" maxWidth className={styles['inputs-wrapper']}>
 				<FormControl name="educationalInstitution" label="Учебное заведение" control={control}>
 					{(field) => <Input {...field} className={styles.input} />}

@@ -16,7 +16,7 @@ import { SpecializationSelect } from '@/entities/specialization';
 import styles from './PersonalInformationTabForm.module.css';
 
 export const PersonalInformationTabForm = () => {
-	const { control, setValue, watch } = useFormContext();
+	const { control, setValue } = useFormContext();
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
@@ -27,10 +27,18 @@ export const PersonalInformationTabForm = () => {
 					<h3>{t(Profile.PHOTO_TITLE)}</h3>
 					<p>{t(Profile.PHOTO_DESCRIPTION)}</p>
 				</div>
+
 				<ImageLoader
-					watch={watch}
+					cropper={{
+						aspectRatio: 1,
+						title: t(Profile.PHOTO_CROPPERTITLE),
+						description: t(Profile.PHOTO_CROPPERDESCRIPTION),
+					}}
+					minResolution={{ width: 128, height: 128 }}
+					maxResolution={{ width: 2048, height: 2048 }}
+					maxMBSize={5}
 					setValue={setValue}
-					imgSrc={isSuccessGetProfile ? profile.avatarUrl : null}
+					initialSrc={isSuccessGetProfile ? profile.avatarUrl : null}
 				/>
 			</Flex>
 			<Flex gap="16" className={styles.column}>
