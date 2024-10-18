@@ -230,7 +230,7 @@ export const router = createBrowserRouter([
 								path: ROUTES.interview.new.route,
 								element: <InterviewQuizPage />,
 								handle: {
-									crumb: Translation.CRUMBS_INTERVIEW,
+									crumb: Translation.CRUMBS_QUIZ,
 								},
 							},
 						],

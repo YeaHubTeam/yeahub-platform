@@ -15,6 +15,7 @@ import {
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
 	useSlideSwitcher,
+	getIsAllQuestionsAnswered,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -36,6 +37,7 @@ const InterviewQuizPage = () => {
 	const [saveResult] = useSaveQuizResultMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
+	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
 
 	const {
 		questionId,
@@ -51,7 +53,9 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
-	const isShowLoadingButton = activeQuestion !== totalCount;
+	const isLastQuestion = activeQuestion === totalCount;
+	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
+	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
 	const handleSubmitQuiz = () => {
 		if (activeQuiz) {
@@ -92,6 +96,8 @@ const InterviewQuizPage = () => {
 						answer={answer}
 						changeAnswer={changeAnswer}
 						setIsAnswerVisible={setIsAnswerVisible}
+						questionNumber={activeQuestion}
+						totalCount={totalCount}
 					/>
 					<InterviewSlider
 						id={questionId}
@@ -103,15 +109,13 @@ const InterviewQuizPage = () => {
 						isAnswerVisible={isAnswerVisible}
 						setIsAnswerVisible={setIsAnswerVisible}
 					/>
-					{isShowLoadingButton ? (
-						<Button className={styles['end-button']} onClick={goToNextSlide} disabled={!answer}>
-							{t('buttons.next')}
-						</Button>
-					) : (
-						<Button className={styles['end-button']} onClick={handleSubmitQuiz} disabled={!answer}>
-							{t('buttons.complete')}
-						</Button>
-					)}
+					<Button
+						className={styles['end-button']}
+						onClick={isNextButton ? goToNextSlide : handleSubmitQuiz}
+						disabled={isDisabled}
+					>
+						{isNextButton ? t('buttons.next') : t('buttons.complete')}
+					</Button>
 				</div>
 			</Card>
 		</div>
