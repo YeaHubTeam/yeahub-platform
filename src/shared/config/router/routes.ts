@@ -10,6 +10,10 @@ export const ROUTES = {
 				page: '/admin/questions/create',
 			},
 		},
+		skills: {
+			route: 'skills',
+			page: '/admin/skills',
+		},
 	},
 	auth: {
 		route: 'auth',

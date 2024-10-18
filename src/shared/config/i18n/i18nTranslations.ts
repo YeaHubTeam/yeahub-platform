@@ -2,13 +2,14 @@ export enum Translation {
 	LANGUAGE = 'language',
 	REMOVE_SELECTED = 'remove.selected',
 	CREATE = 'create',
+	CANCEL = 'cancel',
+	SAVE = 'save',
 	SHOW = 'show',
 	EDIT = 'edit',
 	DELETE = 'delete',
 	ACTIONS = 'actions',
 	LOADING = 'loading',
 	HELLO = 'hello',
-	SAVE = 'save',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 
@@ -345,4 +346,13 @@ export enum Validation {
 	ABOUT_ME_NULLABLE = 'aboutMe.nullable',
 
 	SKILLS_REQUIRED = 'skills.required',
+}
+
+export enum Skills {
+	TITLE = 'skill.title',
+	DESCRIPTION = 'skill.description',
+	NOT_ITEMS = 'skill.not.items',
+	EDIT_PAGE_TITLE = 'skill.edit.page.title',
+	CREATE_PAGE_TITLE = 'skill.create.page.title',
+	IMAGE_SRC = 'skill.image.src',
 }

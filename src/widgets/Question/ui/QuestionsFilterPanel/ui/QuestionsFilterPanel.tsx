@@ -28,7 +28,7 @@ export const QuestionsFilterPanel = ({
 	onChangeRate,
 	onChangeStatus,
 }: QuestionsFilterPanelProps) => {
-	const { skills, rate, complexity, status } = filter;
+	const { skills, rate, complexity, status, title } = filter;
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const handleSearch = (value: string) => {
@@ -38,7 +38,11 @@ export const QuestionsFilterPanel = ({
 
 	return (
 		<div className={styles.wrapper}>
-			<SearchInput placeholder={t('searchPlaceholder')} onSearch={debouncedSearch} />
+			<SearchInput
+				placeholder={t('searchPlaceholder')}
+				onSearch={debouncedSearch}
+				currentValue={title}
+			/>
 			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
