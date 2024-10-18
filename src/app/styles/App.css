@@ -82,6 +82,7 @@
   --background-admin-sidebar-item-active: var(--color-yellow-600);
 
   /* dimensions */
+  --font-size-none: 0;
   --font-size-p-xss: 10px;
   --font-size-p-xs: 12px;
   --font-size-p-s: 14px;
