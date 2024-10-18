@@ -126,7 +126,7 @@
   --border-color: var(--color-black-500);
   --background-primary: var(--color-purple-700);
   --caret-color-red: var(--color-red-400);
-  --delete-color-red: var(--color-red-600);
+  --icon-color-red: var(--color-red-600);
   --error-color-red: var(--color-red-700);
   --border-focus-purple: var(--color-purple-500);
 }
