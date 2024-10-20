@@ -330,3 +330,12 @@ export enum Validation {
 
 	SKILLS_REQUIRED = 'skills.required',
 }
+
+export enum Skills {
+	TITLE = 'skill.title',
+	DESCRIPTION = 'skill.description',
+	NOT_ITEMS = 'skill.not.items',
+	EDIT_PAGE_TITLE = 'skill.edit.page.title',
+	CREATE_PAGE_TITLE = 'skill.create.page.title',
+	IMAGE_SRC = 'skill.image.src',
+}

@@ -22,7 +22,8 @@
       "title": "Обучение",
       "interview": "Собеседование"
     },
-    "questions": "Вопросы"
+    "questions": "Вопросы",
+    "skills": "Навыки"
   },
   "blockModal": {
     "confirmTitle": "Подтвердить действие",

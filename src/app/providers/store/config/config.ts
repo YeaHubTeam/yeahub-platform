@@ -7,6 +7,7 @@ import { refreshMiddleware } from '@/entities/auth';
 import { activeQuizSlice } from '@/entities/quiz';
 
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
+import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
 import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
@@ -18,6 +19,7 @@ export const createReduxStore = (initialState?: State) => {
 	return configureStore({
 		reducer: {
 			questionsPage: questionsPageReducer,
+			skillsPage: skillsPageReducer,
 			createQuizPage: createQuizPageReducer,
 			activeQuiz: activeQuizSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,

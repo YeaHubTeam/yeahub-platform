@@ -10,6 +10,10 @@ export const ROUTES = {
 			route: 'specialization',
 			page: '/admin/specialization',
 		},
+		skills: {
+			route: 'skills',
+			page: '/admin/skills',
+		},
 	},
 	auth: {
 		route: 'auth',
