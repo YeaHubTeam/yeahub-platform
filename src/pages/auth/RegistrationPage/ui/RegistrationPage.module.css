@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-basis: 58%;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 16px 40px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-y: auto;
+  color: var(--text-color-primary);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 31px;
+  max-width: 408px;
+  text-align: center;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-l);
+}
+
+@media (width <= 768px) {
+  .wrapper {
+    flex-basis: 100%;
+  }
+}

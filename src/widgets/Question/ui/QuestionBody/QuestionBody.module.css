@@ -1,0 +1,26 @@
+.wrapper {
+  margin-bottom: 4px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--text-color-primary);
+  font-size: var(--font-size-h-xs);
+}
+
+.text {
+  color: var(--text-color-light);
+  font-size: var(--font-size-p-m);
+}
+
+@media (width <= 480px) {
+  .text {
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-s);
+    
+  }
+
+  .title {
+    font-weight: var(--font-weight-500);
+  }
+}

@@ -1,0 +1,59 @@
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.container > div {
+  height: auto;
+}
+
+.stats {
+  flex-grow: 1;
+}
+
+.result {
+  gap: clamp(24px, 4vw + 10px, 50px);
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+}
+
+.passed {
+  grid-column: span 2;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.question-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 16px;
+  width: 100%;
+  place-items: center start;
+}
+
+@media (width <=1280px) {
+  .container,
+  .question-list {
+    grid-template-columns: 1fr;
+  }
+
+  .passed {
+    grid-column: span 1;
+  }
+}
+
+@media (width <=480px) {
+  .container>div:not(:nth-child(2)) {
+    padding: 16px;
+  }
+
+  .block {
+    padding: 16px;
+  }
+}

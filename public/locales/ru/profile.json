@@ -1,0 +1,63 @@
+{
+  "profilePage": {
+    "years": "лет",
+    "aboutMe": {
+      "title": "Обо мне",
+      "noDescription": "Описание отсутствует"
+    },
+    "skills": {
+      "title": "Навыки",
+      "noSkills": "Список навыков пуст"
+    },
+    "editButton": "Редактировать"
+  },
+  "tabs": {
+    "title": "Редактирование профиля",
+    "items": {
+      "personalInformation": "Личная информация",
+      "aboutMe": "Обо мне",
+      "skills": "Навыки",
+      "projects": "Проекты",
+      "experience": "Опыт работы",
+      "education": "Образование"
+    }
+  },
+  "photo": {
+    "title": "Фото профиля",
+    "description": "Ваше фото будет видно всем членам сообщества YeaHub",
+    "deletePhotoButton": "Удалить фото"
+  },
+  "personalInformationForm": {
+    "title": "Личная информация",
+    "description": "Сюда мы тоже что-нибудь классное придумаем",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "specialization": "IT специальность",
+    "contactNumber": "Номер для связи",
+    "email": "Email для связи",
+    "location": "Локация",
+    "locationPlaceholder": "Напр. Санкт-Петербург, Россия",
+    "grade": "Уровень специалиста",
+    "personalLinks": "Личные ссылки",
+    "personalLinksText": "Поделитесь своими профилями в других соц. сетях"
+  },
+  "aboutMeForm": {
+    "title": "О себе любимом(-ой)",
+    "description": "Расскажи о себе всему сообществу. Мы ценим человека не за его профессиональные качества,поэтому пиши всё чем хочешь поделиться",
+    "placeholder": "Напиши что-нибудь здесь..."
+  },
+  "skillForm": {
+    "title": "Твои навыки",
+    "description": "Покажи, что ты умеешь и в чём ты действительно хорош",
+    "specializationSelect": "Выберите специализацию",
+    "emptySpecializationSelect": "Нет доступных опций",
+    "skillSelect": "Выберите навык из списка",
+    "emptySkillSelect": "Нет доступных опций",
+    "selectedSkills": "Выбранные навыки",
+    "submitButtonText": "Сохранить"
+  },
+  "buttons": {
+    "edit": "Редактировать",
+    "save": "Сохранить"
+  }
+}

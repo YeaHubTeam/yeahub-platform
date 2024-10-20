@@ -1,0 +1,74 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "plugin:@conarti/feature-sliced/recommended",
+    "plugin:jsx-a11y/recommended",
+    "@feature-sliced",
+    "@feature-sliced/eslint-config/rules/import-order/experimental"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier", "jsx-a11y"],
+  "settings": {
+    "react": {
+      "version": "999.999.999"
+    }
+  },
+  "globals": {
+    "__IS_DEV__": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "@typescript-eslint/no-shadow": 0,
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-absolute-path": 0,
+    "no-console": 1,
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/ban-ts-comment": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "padding-line-between-statements": "error",
+    "@conarti/feature-sliced/absolute-relative": "off",
+    "import/order": "warn"
+  }
+}

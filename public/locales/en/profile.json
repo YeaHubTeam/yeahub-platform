@@ -1,0 +1,63 @@
+{
+  "profilePage": {
+    "years": "years",
+    "aboutMe": {
+      "title": "About me",
+      "noDescription": "No description yet"
+    },
+    "skills": {
+      "title": "Skills",
+      "noSkills": "The list of skills is empty"
+    },
+    "editButton": "Edit"
+  },
+  "tabs": {
+    "title": "Profile editing",
+    "items": {
+      "personalInformation": "Personal information",
+      "aboutMe": "About me",
+      "skills": "Skills",
+      "projects": "Projects",
+      "experience": "Experience",
+      "education": "Education"
+    }
+  },
+  "photo": {
+    "title": "Profile photo",
+    "description": "Your photo will be visible to all members of Yeahub community",
+    "deletePhotoButton": "Delete photo"
+  },
+  "personalInformationForm": {
+    "title": "Personal information",
+    "description": "We'll come up with something cool here too",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "specialization": "IT specialization",
+    "contactNumber": "Contact number",
+    "email": "Contact email",
+    "location": "Location",
+    "locationPlaceholder": "E.g. New York, USA",
+    "grade": "Grade",
+    "personalLinks": "Personal links",
+    "personalLinksText": "Share your profiles on other social networks"
+  },
+  "aboutMeForm": {
+    "title": "About yourself",
+    "description": "Tell everyone about yourself. We value people not for their professional qualities, so share whatever you want",
+    "placeholder": "Write something here..."
+  },
+  "skillForm": {
+    "title": "Your skills",
+    "description": "Show what you can do and what you are really good at",
+    "specializationSelect": "Choose your specialization",
+    "emptySpecializationSelect": "No options available",
+    "skillSelect": "Select skill from the list",
+    "emptySkillSelect": "No options available",
+    "selectedSkills": "Selected skills",
+    "submitButtonText": "Save"
+  },
+  "buttons": {
+    "edit": "Edit",
+    "save": "Save"
+  }
+}

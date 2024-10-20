@@ -1,0 +1,16 @@
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.button-wrapper:hover {
+  background-color: var(--color-black-30);
+  color: var(--color-purple-800);
+}
+
+.icon {
+  margin-right: 15px;
+  max-width: 24px;
+}

@@ -1,0 +1,6 @@
+{
+  "skillForm": {
+    "specializationSelect": "Выберите специализацию",
+    "emptySpecializationSelect": "Нет доступных опций"
+  }
+}

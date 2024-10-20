@@ -1,0 +1,16 @@
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-100);
+}
+
+.title {
+  margin-top: 0;
+  font-size: var(--font-size-h-s);
+}
+
+@media (width <= 420px) {
+  .title {
+    font-size: var(--font-size-h-xs)
+  }
+}

@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.list>*+* {
+  margin-top: clamp(16px, calc(16px + 6.67vw - 80px), 24px);
+}
+
+@media (width <= 480px) {
+  .wrapper {
+    gap: 16px;
+  }
+}

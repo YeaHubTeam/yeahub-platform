@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  gap: 8px;
+  min-width: auto;
+  height: 48px;
+}
+
+.btn {
+  flex-shrink: 0 !important;
+  width: auto !important;
+  border-radius: 12px !important;
+  color: var(--text-color-bright) !important;
+}
+
+.btn svg {
+  color: var(--text-color-bright) !important;
+}
+
+.btn:is(:hover, :focus, :active) {
+  border: none !important;
+  color: var(--text-color-link-active) !important;
+}
+
+.active-btn svg {
+  color: var(--text-color-link-active) !important;
+}
+
+.btn:is(:hover, :focus, :active) svg {
+  color: var(--text-color-link-active) !important;
+}
+
+.active-btn {
+  border: none !important;
+  background-color: var(--text-color-lightest) !important;
+  color: var(--text-color-link-active) !important;
+}

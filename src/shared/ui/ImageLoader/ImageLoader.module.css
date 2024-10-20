@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  max-width: 660px;
+}
+
+.img {
+  width: 170px;
+}
+
+.delete-avatar-btn {
+  max-width: 170px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-red-600);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-s);
+  cursor: pointer;
+}
+
+@media (width <= 768px) {
+  .profile-picture-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (width <= 480px) {
+  .profile-picture-block {
+    width: 100%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .delete-avatar-btn {
+    align-self: center;
+  }
+}

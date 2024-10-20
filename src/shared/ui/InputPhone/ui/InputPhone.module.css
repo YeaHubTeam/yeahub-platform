@@ -1,0 +1,47 @@
+.phone {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--color-black-100);
+  border-radius: 68px;
+  font-family: var(--font-family);
+  transition: 0.2s;
+  cursor: text;
+}
+
+.registration {
+  padding-left: 20px;
+  background-color: var(--background-app);
+  color: var(--text-color-primary);
+  font-size: var(--font-size-p-s);
+}
+
+.edit {  
+  padding-left: 12px;
+  min-height: 48px;
+  background-color: var(--background-block);
+  color: var(--text-color-primary);
+}
+
+.phone::placeholder {
+  color: var(--text-color-more-lightest);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.phone.error {
+  border-color: var(--color-red-700);
+  background-color: var(--background-block);
+}
+
+.phone:hover {
+  border-color: var(--palette-ui-purple-300);
+}
+
+.phone:focus-within.error {
+  caret-color: var(--color-red-400);
+  box-shadow: var(--focus-shadow);
+  border-color: var(--color-purple-500);
+}

@@ -1,0 +1,43 @@
+.home-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: padding-left .5s ease-in-out;
+}
+
+.name {
+  width: 100px;
+  height: 32px;
+  color: var(--text-color-primary);
+  transition: opacity .7s ease-in-out;
+}
+
+.white {
+  color: var(--color-white-900);
+}
+
+.black {
+  color: var(--color-black-800);
+}
+
+.close {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.center {
+  padding-left: 8px;
+  transition: padding-left .4s ease-in-out;
+}
+
+@media (width <= 768px) {
+  .name {
+    display: none;
+  }
+
+  .logo-image {
+    padding-right: 0;  
+    
+  }
+}

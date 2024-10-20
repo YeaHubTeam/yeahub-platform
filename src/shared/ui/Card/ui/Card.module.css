@@ -1,0 +1,147 @@
+.card {
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: var(--background-block);
+  transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-header-title {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}
+
+.content {
+  border-radius: 12px;
+}
+
+.content-shadow {
+  box-shadow: 0 4px 10px 0 #6A63761A;
+}
+
+.card-expandable {
+  min-height: 250px;
+}
+
+.card-expand {
+  position: absolute;
+  bottom: 0;
+}
+
+.card-expand-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+}
+
+.card-expand-svg-visibility {
+  transition: visibility 600ms;
+  visibility: hidden;
+}
+
+.card-expand-svg defs linearGradient stop {
+  stop-color: var(--background-block);
+  transition: stop-color 300ms ease-in-out;
+}
+
+.button {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-color-link-active);
+  transform: translate(-50%);
+  cursor: pointer
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 800ms ease-in-out;
+}
+
+.card-arrow-expanded {
+  transform: rotate(-180deg);
+}
+
+.link {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color-link-active);
+  text-decoration: none;
+  font-weight: var(--font-weight-600);
+}
+
+.link-disabled {
+  pointer-events: none;
+  color: var(--text-color-link-disabled);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: .3s ease-in-out;
+}
+
+.link:hover .icon {
+  transform: translateX(5px);
+}
+
+.link-bottom {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+}
+
+@media (width <= 1440px) {
+  .content {
+    margin-bottom: 48px;
+  }
+}
+
+@media (width <= 768px) {
+  .header {
+    position: relative;
+    flex-direction: column;
+    align-items: start;	
+  }
+
+  .link {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .content {
+    margin-bottom: 36px;
+  }
+}
+
+@media (width <= 480px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .link {
+    bottom: 16px;
+    left: 16px;
+  }
+}

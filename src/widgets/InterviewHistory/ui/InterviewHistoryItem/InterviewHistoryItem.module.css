@@ -1,0 +1,33 @@
+.item:not(:last-child) {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.link {
+  color: var(--text-color-bright);
+  text-decoration: none;
+}
+
+.date {
+  color: var(--text-color-lightest);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m)
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.params {
+  display: flex;
+  gap: 24px;
+}
+
+.title {
+  padding: 8px 0;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-l);
+  
+}

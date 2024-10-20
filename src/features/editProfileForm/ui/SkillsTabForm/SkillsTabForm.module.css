@@ -1,0 +1,71 @@
+.description {
+  flex: 1 0 350px;
+}
+
+.description h3 {
+  margin-bottom: 8px;
+  color: var(--color-black-800);
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-l);
+}
+    
+.description p {
+  margin-bottom: 8px;
+  color: var(--color-black-800);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s)
+}
+  
+.label {
+  width: 100%;
+  max-width: 320px;
+}
+  
+.label span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--color-black-700);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+  
+.select {
+  width: 100%;
+  max-width: 706px;
+}
+
+.select > span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--text-color-light);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.input {
+  min-height: 48px;
+  border-radius: 68px;
+}
+  
+.input input {
+  color: var(--color-black-900);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.subtitle {
+  font-weight: var(--font-weight-500);
+  font-size: var(--color-black-800);
+}
+
+@media (width <= 1200px) {
+  .description {
+    flex-basis: 230px;
+  }
+}
+
+@media (width <= 992px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}

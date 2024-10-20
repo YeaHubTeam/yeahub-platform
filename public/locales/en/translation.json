@@ -1,0 +1,153 @@
+{
+  "language": "English",
+  "create": "Create",
+  "remove.selected": "Remove selected",
+  "actions": "Actions",
+  "show": "Show",
+  "edit": "Edit",
+  "delete": "Delete",
+  "loading": "Loading...",
+  "hello": "Hello",
+  "userPreferences": {
+    "myProfile": "My profile",
+    "logout": "Sign out"
+  },
+  "tabs": {
+    "main": "Home",
+    "platform": "Platform",
+    "admin": "Editor",
+    "profile": "My Profile",
+    "education": {
+      "title": "Education",
+      "interview": "Interview"
+    }
+  },
+  "blockModal": {
+    "confirmTitle": "Confirm action",
+    "confirmDescription": "You have unsaved data. Do you want to continue?",
+    "action": {
+      "ok": "Yes",
+      "cancel": "No"
+    }
+  },
+  "emptyStub": {
+    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "resetFilter": "Reset filter"
+  },
+  "fileLoader": {
+    "linkText": "Click here",
+    "text": "or drag to change your",
+    "fileTypes": {
+      "photo": "photo"
+    },
+    "limit": "max {{maxFileMBSize}} MB"
+  },
+  "interviewResult": {
+    "total": "Total",
+    "known": "Known",
+    "unknown": "Unknown",
+    "repeat": "Repeat"
+  },
+  "passedQuestions": {
+    "iKnow": "I known",
+    "dontKnow": "Don't know",
+    "repeat": "Repeat"
+  },
+  "validation": {
+    "passwordConfirmation": {
+      "oneOf": "Passwords must match"
+    },
+    "checkbox": {
+      "oneOf": "You must agree to the terms and conditions"
+    },
+    "required": "This field is required",
+    "password": {
+      "min": "Please enter a valid password (at least {{count}} characters)"
+    },
+    "image": {
+      "fileSize": "Большой размер файла",
+      "fileType": "Неверный формат файла"
+    },
+    "firstName": {
+      "required": "Имя обязательно",
+      "min": "Должно быть больше 2 символов",
+      "max": "Должно быть меньше 30 символов"
+    },
+    "lastName": {
+      "required": "Фамилия обязательна",
+      "min": "Должно быть больше 2 символов",
+      "max": "Должно быть меньше 30 символов"
+    },
+    "specialization": {
+      "required": "Выбор специализации обязателен"
+    },
+    "phone": {
+      "required": "Телефон обязателен",
+      "format": "Неверный формат телефона"
+    },
+    "email": {
+      "required": "Электронная почта обязательна",
+      "invalid": "Неверный формат электронной почты"
+    },
+    "location": {
+      "nullable": "Локация может быть пустой"
+    },
+    "skillLevel": {
+      "nullable": "Уровень навыков может быть пустым"
+    },
+    "socialNetworks": {
+      "nullable": "Социальные сети могут быть пустыми"
+    },
+    "aboutMe": {
+      "nullable": "Описание может быть пустым"
+    },
+    "skills": {
+      "required": "Навык обязателен"
+    }
+  },
+  "crumbs": {
+    "profile": "Profile",
+    "profileEditing": "Profile Editing",
+    "interviewCreation": "Interview Creation",
+    "interviewPreparation": "Interview Preparation",
+    "interviewHistory": "Interview History",
+    "interviewResult": "Quiz Result",
+    "interviewStatistic": "Interview Statistics",
+    "questionsList": "Questions List",
+    "questionDetail": "Question Details",
+    "quiz": "Interview",
+    "newQuiz": "Quiz",
+    "mainPage": "Main",
+    "error404": "Page Not Found",
+    "login": "Login",
+    "register": "Register"
+  },
+  "toast": {
+    "questions": {
+      "learned": {
+        "success": "he issue has been fully studied",
+        "failed": "It was not possible to fully study the issue"
+      },
+      "reset.progress": {
+        "success": "The progress of studying the issue has been reset",
+        "failed": "Failed to reset the progress of studying the issue"
+      }
+    },
+    "profile": {
+      "update": {
+        "success": "The profile has been successfully changed",
+        "failed": "The profile could not be changed"
+      }
+    },
+    "interview": {
+      "new": {
+        "success": "A new interview has been created",
+        "failed": "Failed to create a new interview"
+      },
+      "finish": {
+        "success": "The interview is completed",
+        "failed": "Failed to complete the interview"
+      }
+    }
+  }
+}

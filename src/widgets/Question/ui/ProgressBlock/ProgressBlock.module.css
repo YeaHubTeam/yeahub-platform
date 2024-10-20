@@ -1,0 +1,36 @@
+.title {
+  margin-bottom: 16px;
+  color: var(--text-color-primary);
+  font-size: var(--font-size-h-xs);
+}
+
+.info {
+  margin-bottom: 10px;
+  color: var(--text-color-the-lightest);
+  font-size: var(--font-size-p-xs);
+}
+
+.progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar-item {
+  display: block;
+  flex-basis: 33%;
+  height: 8px;
+  background-color: var(--color-black-50);
+}
+
+.progress-bar-item:not(:last-of-type) {
+  margin-right: 1px;
+}
+
+
+.progress-bar-item-large {
+  height: 12px;
+}
+
+.progress-bar-item-checked {
+  background-color: var(--color-green-900);
+}

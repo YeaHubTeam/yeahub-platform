@@ -1,0 +1,63 @@
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: var(--background-block);
+  transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 76px;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.close-icon {
+  position: absolute;
+  right: -12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--background-nav-item);
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.arrow {
+  padding-left: 2px;
+  width: 20px;
+  height: 12px;
+  transform: rotate(180deg);
+}
+
+.left {
+  transform: rotate(-180deg);
+}
+
+.menu {
+  padding: 36px 20px 20px;
+}
+
+.closing {
+  width: 88px;
+}
+
+@media (width <=768px) {
+  .close-icon {
+    display: none;
+  }
+}
+
+@media (width <=480px) {
+  .sidebar {
+    display: none;
+  }
+}

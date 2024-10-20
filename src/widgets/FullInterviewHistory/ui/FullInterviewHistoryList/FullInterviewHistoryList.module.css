@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.empty-container {
+  height: 100%;
+}

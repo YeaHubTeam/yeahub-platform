@@ -1,0 +1,7 @@
+{
+  "title": "Собеседование № {{number}}",
+  "startDateInterviewTitle": "Дата: ",
+  "totalQuestionsTitle": "Количество вопросов: ",
+  "resultTitle": "Результат: ",
+  "linkText": "Подробнее"
+}

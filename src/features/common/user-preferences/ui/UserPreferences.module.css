@@ -1,0 +1,50 @@
+.preferences {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.auth-btns {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.auth-btn {
+  cursor: pointer;
+}
+
+.settings {
+  padding: 12px;
+}
+
+.button {
+  justify-content: start !important;
+  height: 40px !important;
+}
+
+.btn-active > .button {
+  background-color: var(--palette-ui-black-25);
+}
+
+@media (width <= 480px) {
+  .auth-btns {
+    display: none;
+  }
+  
+  .preferences {
+    display: none;
+  }
+}

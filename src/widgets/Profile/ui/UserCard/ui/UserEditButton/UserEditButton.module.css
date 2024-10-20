@@ -1,0 +1,5 @@
+.card-edit {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: var(--font-size-p-s);
+}

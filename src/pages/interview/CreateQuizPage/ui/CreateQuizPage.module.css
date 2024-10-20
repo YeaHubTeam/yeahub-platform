@@ -1,0 +1,40 @@
+.container {
+  height: 100%;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  margin-bottom: 48px;
+}
+
+.additional-wrapper {
+  flex-basis: 40%;
+}
+
+.button {
+  display: flex;
+  margin-top: auto;
+  margin-left: auto;
+}
+
+@media (width <=920px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+}
+
+@media (width <=480px) {
+  .title {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-h-xs);
+  }
+
+  .additional-wrapper {
+    row-gap: 16px;
+  }
+}
