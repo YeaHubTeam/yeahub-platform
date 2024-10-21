@@ -10,6 +10,7 @@ export enum Translation {
 	ACTIONS = 'actions',
 	LOADING = 'loading',
 	HELLO = 'hello',
+	SAVE = 'save',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 
@@ -266,15 +267,39 @@ export enum InterviewStatistics {
 export enum Questions {
 	TITLE = 'title',
 	NAME = 'name',
-	SPECIALIZATION = 'specialization',
-	SKILLS = 'skills',
-
+	ADD_QUESTION = 'addQuestion',
 	SEARCH_PLACEHOLDER = 'searchPlaceholder',
+	QUESTION_KEYWORDS = 'keywords',
+
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOWALL = 'categories.showAll',
-	DIFFICULTY_TITLE = 'difficulty.title',
+
+	COMPLEXITY_TITLE = 'complexity.title',
+	COMPLEXITY_SELECT = 'complexity.select',
+
 	RATE_TITLE = 'rate.title',
+	RATE_SELECT = 'rate.select',
+
 	STATUS_TITLE = 'status.title',
+	STATUS_UNLEARNED = 'status.unlearned',
+	STATUS_LEARNED = 'status.learned',
+	STATUS_ALL = 'status.all',
+	STATUS_SELECT = 'status.select',
+
+	SKILLS_TITLE = 'skills.title',
+	SKILLS_ADD = 'skills.addSkills',
+
+	LONG_ANSWER_TITLE = 'longAnswer.title',
+	LONG_ANSWER_ADD = 'longAnswer.add',
+
+	SHORT_ANSWER_TITLE = 'shortAnswer.title',
+	SHORT_ANSWER_ADD = 'shortAnswer.add',
+
+	DESCRIPTION_TITLE = 'description.title',
+	DESCRIPTION_ADD = 'description.add',
+
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SPECIALIZATION_SELECT = 'specialization.select',
 }
 
 export enum InterviewHistory {
