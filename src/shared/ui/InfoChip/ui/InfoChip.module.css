@@ -1,0 +1,17 @@
+.info-chip-wrapper{
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: var(--color-black-50);
+}
+
+.info-chip-label {
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-small);
+}
+
+.info-chip-value{
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: var(--color-purple-700);
+  color: var(--constant-white);
+}

@@ -1,6 +1,8 @@
 {
   "title": "Questions",
   "name": "Title",
+  "level": "Level",
+  "author": "Author",
   "addName": "Add question",
   "searchPlaceholder": "Enter a query...",
   "categories": {
@@ -8,11 +10,13 @@
     "showAll": "Show all"
   },
   "complexity": {
-    "title": "Questions Difficulty",
+    "longTitle": "Questions Difficulty",
+    "shortTitle": "Complexity",
     "select": "Select questions difficulty"
   },
   "rate": {
-    "title": "Questions Rating",
+    "longTitle": "Questions Rating",
+    "shortTitle": "Rating",
     "select": "Select rate"
   },
   "status": {

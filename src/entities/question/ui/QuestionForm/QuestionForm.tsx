@@ -45,7 +45,7 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text title={t(Questions.RATE_TITLE)} />
+					<Text title={t(Questions.RATE_LONG_TITLE)} />
 					<Text text={t(Questions.RATE_SELECT)} className={styles.label} />
 				</Flex>
 				<FormControl name="rate" control={control} className={styles.rate}>
@@ -54,8 +54,8 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text title={t(Questions.COMPLEXITY_TITLE)} />
-					<Text text={t(Questions.COMPLEXITY_TITLE)} className={styles.label} />
+					<Text title={t(Questions.COMPLEXITY_LONG_TITLE)} />
+					<Text text={t(Questions.COMPLEXITY_LONG_TITLE)} className={styles.label} />
 				</Flex>
 				<FormControl name="complexity" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={10} step={1} hasScale {...field} />}

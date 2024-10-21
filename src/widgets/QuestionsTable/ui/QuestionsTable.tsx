@@ -66,7 +66,7 @@ export const QuestionsTable = ({
 					placement="bottom-start"
 					body={
 						<div>
-							<NavLink to={`/questions/${question.id}`}>
+							<NavLink to={`/admin/questions/${question.id}`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}
