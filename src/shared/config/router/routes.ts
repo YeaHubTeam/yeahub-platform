@@ -10,6 +10,10 @@ export const ROUTES = {
 				page: '/admin/questions/create',
 			},
 		},
+		specialization: {
+			route: 'specialization',
+			page: '/admin/specialization',
+		},
 		skills: {
 			route: 'skills',
 			page: '/admin/skills',

@@ -1,0 +1,27 @@
+.title-img-block {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  min-width: 170px;
+  max-height: 114px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--color-black-400);
+}
+
+.title-img-block-image {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title-block-title,
+.title-description {
+  margin: 0 0 8px;
+  line-height: 32.78px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-x-large);
+  font-family: var(--font-family-primary);
+}
