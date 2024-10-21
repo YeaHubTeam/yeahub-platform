@@ -126,10 +126,6 @@
     right: 20px;
     bottom: 20px;
   }
-
-  .content {
-    margin-bottom: 36px;
-  }
 }
 
 @media (width <= 480px) {
