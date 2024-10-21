@@ -1,7 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
 
+import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { RedirectToProfile } from '@/shared/ui/RedirectToProfile';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -22,9 +24,11 @@ const QuestionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
+	// const navigate = useNavigate();
 
 	const { status, ...getParams } = filter;
 	const { data: userProfile } = useProfileQuery();
+	const isSpecializationEmpty = useCheckSpecialization(userProfile);
 	const profileId = userProfile?.profiles[0].id || '';
 	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
 
@@ -88,36 +92,42 @@ const QuestionsPage = () => {
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
-				<Card className={styles.content}>
-					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
-					{questions.total > questions.limit && (
-						<QuestionPagePagination
-							questionsResponse={questions}
-							currentPage={filter.page || 1}
-							onPageChange={onPageChange}
+				{isSpecializationEmpty ? (
+					<RedirectToProfile />
+				) : (
+					<Card className={styles.content}>
+						<QuestionsSummaryList questions={questions.data} profileId={profileId} />
+						{questions.total > questions.limit && (
+							<QuestionPagePagination
+								questionsResponse={questions}
+								currentPage={filter.page || 1}
+								onPageChange={onPageChange}
+							/>
+						)}
+						{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
+					</Card>
+				)}
+			</div>
+			{!isSpecializationEmpty && (
+				<div className={styles['additional-info-wrapper']}>
+					<Card className={styles.search}>
+						<QuestionsFilterPanel
+							onChangeSearch={onChangeSearchParams}
+							onChangeSkills={onChangeSkills}
+							onChangeComplexity={onChangeComplexity}
+							onChangeRate={onChangeRate}
+							onChangeStatus={onChangeStatus}
+							filter={{
+								skills: filter.skills,
+								rate: filter.rate,
+								complexity: filter.complexity,
+								status: filter.status,
+								title: filter.title,
+							}}
 						/>
-					)}
-					{questions.data.length === 0 && <EmptyStub resetFilters={resetFilters} />}
-				</Card>
-			</div>
-			<div className={styles['additional-info-wrapper']}>
-				<Card className={styles.search}>
-					<QuestionsFilterPanel
-						onChangeSearch={onChangeSearchParams}
-						onChangeSkills={onChangeSkills}
-						onChangeComplexity={onChangeComplexity}
-						onChangeRate={onChangeRate}
-						onChangeStatus={onChangeStatus}
-						filter={{
-							skills: filter.skills,
-							rate: filter.rate,
-							complexity: filter.complexity,
-							status: filter.status,
-							title: filter.title,
-						}}
-					/>
-				</Card>
-			</div>
+					</Card>
+				</div>
+			)}
 		</section>
 	);
 };
