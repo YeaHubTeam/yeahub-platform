@@ -2,15 +2,26 @@ name: Deploy Platform
 
 on:
   push:
+<<<<<<< HEAD
     branches: [develop]
 
 env:
   SERVICE_NAME: platform
+=======
+    branches:
+      - develop
+      - main
+
+env:
+  SERVICE_NAME_TEST: platform
+  SERVICE_NAME_PRODUCTION: platform
+>>>>>>> c37dbcae9f716409ed361d3215fe1e4deed84e69
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
@@ -19,4 +30,25 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             docker-compose --env-file .env.test up -d --build ${{ env.SERVICE_NAME }}
+=======
+      - name: Deploy to VPS for test
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST_TEST }}
+          username: ${{ secrets.VPS_USERNAME_TEST }}
+          key: ${{ secrets.VPS_SSH_KEY_TEST }}
+          script: |
+            docker-compose --env-file .env.test up -d --build ${{ env.SERVICE_NAME_TEST }}
+            docker image prune -f
+
+      - name: Deploy to VPS for production
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST_PRODUCTION }}
+          username: ${{ secrets.VPS_USERNAME_PRODUCTION }}
+          key: ${{ secrets.VPS_SSH_KEY_PRODUCTION }}
+          script: |
+            docker-compose --env-file .env.production up -d --build ${{ env.SERVICE_NAME_PRODUCTION }}
+>>>>>>> c37dbcae9f716409ed361d3215fe1e4deed84e69
             docker image prune -f
