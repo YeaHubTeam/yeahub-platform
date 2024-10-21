@@ -16,6 +16,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
+import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -122,6 +123,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.questions.route,
 						element: <QuestionsTablePage />,
+					},
+					{
+						path: ROUTES.admin.questions.create.page,
+						element: <QuestionCreatePage />,
 					},
 					{
 						path: ROUTES.admin.skills.route,
