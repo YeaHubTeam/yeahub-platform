@@ -19,7 +19,7 @@ interface MappingItem {
 }
 
 export const PassedQuestionsItem = ({ question }: Props) => {
-	const { imageSrc, answer, questionTitle } = question;
+	const { answer, questionTitle } = question;
 	const mapping: Record<QuizQuestionAnswerType, MappingItem> = {
 		REPEAT: {
 			label: Translation.PASSEDQUESTIONS_REPEAT,
@@ -39,7 +39,6 @@ export const PassedQuestionsItem = ({ question }: Props) => {
 	return (
 		<li>
 			<article className={styles.item}>
-				<ImageWithWrapper src={imageSrc} className={styles.img} />
 				<div className={styles.info}>
 					<h4 className={styles.title}>{questionTitle}</h4>
 					<Chip
