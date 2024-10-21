@@ -1,16 +1,16 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
+import { RedirectToProfile } from '@/shared/ui/RedirectToProfile';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionsListQuery } from '@/entities/question';
@@ -81,11 +81,9 @@ const InterviewPage = () => {
 			]
 		: [];
 
-	const navigate = useNavigate();
-
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
-	const isSpecializationEmpty = profile?.profiles[0].specializationId === 0;
+	const isSpecializationEmpty = useCheckSpecialization(profile);
 
 	const lastActiveQuizInfo = useMemo(() => {
 		if (!activeQuizQuestions || !activeQuizQuestions.length) return null;
@@ -112,10 +110,6 @@ const InterviewPage = () => {
 		return <InterviewPageSkeleton />;
 	}
 
-	const handleProfileRedirect = () => {
-		navigate(ROUTES.profile.edit.page);
-	};
-
 	return (
 		<div className={styles.container}>
 			<Card
@@ -131,15 +125,7 @@ const InterviewPage = () => {
 				withShadow
 			>
 				{isSpecializationEmpty ? (
-					<div className={styles['preparation-wrapper']}>
-						<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
-						<p className={styles['inactive-description']}>
-							{t(Interview.PREPARATION_STUB_DESCRIPTION)}
-						</p>
-						<Button onClick={handleProfileRedirect} className={styles.button} size="large">
-							{t(Interview.FILLPROFILE_BUTTON)}
-						</Button>
-					</div>
+					<RedirectToProfile />
 				) : (
 					<>
 						{lastActiveQuizInfo ? (

@@ -1,0 +1,1 @@
+export { RedirectToProfile } from './RedirectToProfile';
