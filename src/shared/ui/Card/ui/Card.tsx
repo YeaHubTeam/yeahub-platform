@@ -153,6 +153,7 @@ export const Card = ({
 			<div
 				className={classNames(styles.content, {
 					[styles['content-shadow']]: withShadow,
+					[styles['content-bottom']]: isActionPositionBottom,
 				})}
 				ref={contentRef}
 			>

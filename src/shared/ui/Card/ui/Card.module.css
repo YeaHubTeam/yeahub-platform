@@ -27,6 +27,10 @@
   box-shadow: 0 4px 10px 0 #6A63761A;
 }
 
+.content-bottom {
+  margin-bottom: 48px;
+}
+
 .card-expandable {
   min-height: 250px;
 }
@@ -108,12 +112,6 @@
   position: absolute;
   right: 24px;
   bottom: 24px;
-}
-
-@media (width <= 1440px) {
-  .content {
-    margin-bottom: 48px;
-  }
 }
 
 @media (width <= 768px) {
