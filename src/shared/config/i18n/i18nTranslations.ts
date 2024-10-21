@@ -10,7 +10,6 @@ export enum Translation {
 	ACTIONS = 'actions',
 	LOADING = 'loading',
 	HELLO = 'hello',
-	SAVE = 'save',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 
@@ -265,6 +264,9 @@ export enum InterviewStatistics {
 }
 
 export enum Questions {
+	QUESTION_AUTHOR = 'author',
+	LEVEL = 'level',
+	RATING = 'rating',
 	TITLE = 'title',
 	NAME = 'name',
 	ADD_QUESTION = 'addQuestion',
@@ -274,10 +276,12 @@ export enum Questions {
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOWALL = 'categories.showAll',
 
-	COMPLEXITY_TITLE = 'complexity.title',
+	COMPLEXITY_LONG_TITLE = 'complexity.longTitle',
+	COMPLEXITY = 'complexity.shortTitle',
 	COMPLEXITY_SELECT = 'complexity.select',
 
-	RATE_TITLE = 'rate.title',
+	RATE_LONG_TITLE = 'rate.longTitle',
+	RATE = 'rate.shortTitle',
 	RATE_SELECT = 'rate.select',
 
 	STATUS_TITLE = 'status.title',
