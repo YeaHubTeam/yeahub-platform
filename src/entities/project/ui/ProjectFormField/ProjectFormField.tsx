@@ -16,7 +16,7 @@ export const ProjectFormField = () => {
 
 	return (
 		<div>
-			<ImageLoader imgSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
+			<ImageLoader initialSrc={isSuccessGetProfile ? profile.avatarUrl : null} />
 			<Flex gap="20" maxWidth className={styles['inputs-wrapper']}>
 				<FormControl name="projectName" label="Название проекта" control={control}>
 					{(field) => <Input {...field} className={styles.input} />}
