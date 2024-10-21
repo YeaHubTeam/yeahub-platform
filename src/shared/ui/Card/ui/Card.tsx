@@ -21,6 +21,7 @@ interface CardProps {
 	actionDisabled?: boolean;
 	withShadow?: boolean;
 	isActionPositionBottom?: boolean;
+	onExpandChange?: (isExpand: boolean) => void;
 }
 
 interface ExpandIconProps {
@@ -78,6 +79,7 @@ export const Card = ({
 	actionRoute = '',
 	actionDisabled = false,
 	isActionPositionBottom = false,
+	onExpandChange,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -111,7 +113,13 @@ export const Card = ({
 	}, [expandable]);
 
 	const expandHandler = () => {
-		setIsExpand((prev) => !prev);
+		setIsExpand((prev) => {
+			const newState = !prev;
+			if (onExpandChange) {
+				onExpandChange(newState);
+			}
+			return newState;
+		});
 	};
 
 	const isHeightForExpand = contentHeight >= 250;
