@@ -5,7 +5,6 @@ import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetHistoryQuizQuery } from '@/entities/quiz';
@@ -16,9 +15,9 @@ import styles from './InterviewHistoryList.module.css';
 
 export const InterviewHistoryList = () => {
 	const profile = useProfileQuery();
-	const profileId = profile.data?.profiles[0].profileId;
+	const profileId = profile.data?.profiles[0].id;
 	const { t } = useI18nHelpers(i18Namespace.interview);
-	const { data, isLoading, isFetching, isSuccess } = useGetHistoryQuizQuery(
+	const { data, isSuccess } = useGetHistoryQuizQuery(
 		profileId
 			? {
 					profileID: profileId,
@@ -28,14 +27,11 @@ export const InterviewHistoryList = () => {
 			: skipToken,
 	);
 
-	if (isLoading || isFetching) {
-		return <Loader />;
-	}
-
 	const isEmptyData = isSuccess && data.data.length === 0;
 
 	return (
 		<Card
+			className={styles['card-history']}
 			actionRoute={ROUTES.interview.history.page}
 			actionTitle={t(Interview.HISTORY_PREPARATION_LINKTEXT)}
 			title={t(Interview.HISTORY_PREPARATION_TITLE)}

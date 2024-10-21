@@ -1,24 +1,35 @@
 .slider {
   display: grid;
-  grid-template: auto 1fr auto / auto minmax(300px, 526px);
-  grid-template-areas: 
-    'question image'
-    'wrapper image'
-    'buttons image';
-  gap: 16px 12px;
+  gap: 16px 20px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-color);
 }
 
+.slider-with-image {
+  grid-template: auto 1fr auto / minmax(50%, auto) minmax(300px, 526px);
+  grid-template-areas:
+    'question image'
+    'wrapper image'
+    'buttons image';
+}
+
+.slider-without-image {
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'question'
+    'wrapper'
+    'buttons';
+}
+
 .wrapper {
   grid-area: wrapper;
+  padding-bottom: 8px;
 }
 
 .question {
   display: list-item;
   grid-area: question;
   margin-left: 22px;
-  min-height: 50px;
   list-style: disc;
   font-size: var(--font-size-h-xs);
 }
@@ -37,37 +48,61 @@
 }
 
 .response-buttons {
+  display: flex;
   grid-area: buttons;
+  align-items: start;
   margin-top: auto;
+  width: 100%;
 }
 
 .image {
-  grid-area: image;
-  flex-grow: 1;
+  grid-area: image; 
+  aspect-ratio: 526 / 303;
   width: 100%;
-  height: clamp(170px, 30vw, 303px);
+  min-width: 300px;
+  max-width: 526px; 
+  height: auto; 
   border-radius: 24px;
+}
+
+.answer-wrapper {
+  font-size: var(--font-size-p-m);
 }
 
 @media (width <= 1024px) {
   .slider {
     grid-template-columns: auto;
-    grid-template-areas: 
+  }
+
+  .image {
+    width: 100%;
+    min-width: none;
+    max-width: none;
+  }
+
+  .slider-with-image {
+    grid-template-areas:
       'question'
       'image'
       'wrapper'
       'buttons';
-    padding-bottom: 0;
-    border-bottom: none;
   }
 
-  .response-buttons {
-    justify-content: center;
+  .slider-without-image {
+    grid-template-areas:
+      'question'
+      'wrapper'
+      'buttons';
   }
 }
 
 @media (width <= 480px) {
   .question {
-    font-size: var(--font-size-p-l)
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-p-l);
+  }
+
+  .answer-wrapper {
+    font-size: var(--font-size-p-s);
   }
 }

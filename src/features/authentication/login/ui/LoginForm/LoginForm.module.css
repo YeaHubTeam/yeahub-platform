@@ -1,4 +1,5 @@
 .wrapper {
+  margin-top: 20px;
   width: 100%;
   max-width: 408px;
 }
@@ -7,43 +8,18 @@
   margin-bottom: 40px;
 }
 
-.input-wrapper {
-  position: relative;
-
-}
-
-.input-wrapper:not(:last-of-type) {
-  margin-bottom: 36px;
-}
-
-.label {
-  display: block;
-  margin-bottom: 8px;
+.forgot-password-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+  line-height: 21px;
+  font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
 
-.input {
-  position: relative;
-  margin-bottom: 6px;
-  padding-left: 20px;
-  border-radius: 68px;
-  background-color: var(--background-app);
-}
-
-.input input {
-  color: var(--text-color-primary)
-}
-
-.error {
-  position: absolute;
-  user-select: none;
-  color: var(--color-red-600);
-  font-size: var(--font-size-medium-small);
-}
-
-.link {
-  display: flex;
-  justify-content: flex-end;
+.form-wrapper .forgot-password-link span {
+  margin: 0;
+  margin-left: auto;
 }
 
 .submit-button {
@@ -51,11 +27,65 @@
   width: 100%;
 }
 
-.server-error-message {
-  margin-bottom: 20px;
-  color: var(--color-red-600);
-  text-align: center;
-  line-height: normal;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-h-xs);
+.input-wrapper:not(:last-of-type) {
+  margin-bottom: 36px;
+}
+
+.input {
+  padding-left: 20px;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 68px;
+  background-color: var(--background-app);
+}
+
+.input::placeholder {
+  color: var(--text-color-more-lightest);
+  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.input-wrapper:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+/* LABEL */
+.form-wrapper .input-wrapper label span { 
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--text-color-primary);
+  line-height: 21px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+
+}
+
+/* ERROR */
+.input-wrapper label div {
+  position: relative;
+}
+
+.wrapper .form-wrapper .input-wrapper label div p {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 16px;
+  color: var(--error-color-red);
+  line-height: 1.36;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
+  user-select: none; 
+}
+
+.input-wrapper div:has(+ div),
+.input-wrapper div:first-child:focus-within:has(+ div) {
+  border-color: var(--error-color-red);
+  caret-color: var(--caret-color-red);
+  background-color: var(--background-block);
+}
+
+.input-wrapper div:first-child:focus-within:has(+ div) {
+  box-shadow: var(--focus-shadow);
+  border-color: var(--border-focus-purple);
 }

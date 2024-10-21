@@ -1,0 +1,10 @@
+{
+  "skill": {
+    "title": "Title",
+    "description": "Description",
+    "not.items": "No skills",
+    "image.src": "Image url",
+    "create.page.title": "Creating new skill",
+    "edit.page.title": "Edit skill"
+  }
+}

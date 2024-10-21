@@ -1,0 +1,23 @@
+table {
+  border-collapse: collapse;
+}
+
+.head {
+  height: 48px;
+  background-color: var(--color-black-25);
+} 
+
+.cell {
+  width: 48px;
+
+  & input {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.row {
+  height: 48px;
+  border-bottom: 1px solid var(--color-black-25);
+
+}

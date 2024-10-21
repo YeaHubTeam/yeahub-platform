@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
@@ -24,6 +26,8 @@ export const UserPreferences = () => {
 	const handleOpenSettingsPopover = () => setIsOpenSettingsPopover((prev) => !prev);
 
 	const SettingsPopover = () => {
+		const { t } = useI18nHelpers();
+
 		return (
 			<div key="settingpopemvcdf" className={styles.settings}>
 				<NavLink
@@ -35,7 +39,7 @@ export const UserPreferences = () => {
 						theme="tertiary"
 						preffix={<Icon key="userPreferenceUserIcon" icon="user" size={24} />}
 					>
-						Мой профиль
+						{t(Translation.USERPREFERENCES_MYPROFILE)}
 					</Button>
 				</NavLink>
 				<Button
@@ -44,7 +48,7 @@ export const UserPreferences = () => {
 					preffix={<Icon key="userPreferenceSignOutIcon" icon="signOut" size={24} />}
 					onClick={handleLogoutUser}
 				>
-					Выйти
+					{t(Translation.USERPREFERENCES_LOGOUT)}
 				</Button>
 			</div>
 		);

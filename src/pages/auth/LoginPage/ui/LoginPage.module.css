@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-basis: 58%;
+  flex-direction: column;
+  align-items: center;
+  padding: 180px 16px 40px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  color: var(--text-color-primary);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-l);
+}
+
+@media (width <= 768px) {
+  .wrapper {
+    flex-basis: 100%;
+    margin-top: 90px;
+    padding-top: 0;
+  }
+}
+
+@media (width <= 480px) {
+  .wrapper {
+    padding-inline: 16px;
+  }
+
+  .title {
+    font-size: var(--font-size-h-s);
+  }
+}
