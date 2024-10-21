@@ -1,10 +1,6 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-import EducationIcon from '@/shared/assets/icons/education.svg';
-import InterviewIcon from '@/shared/assets/icons/interview.svg';
-import MainIcon from '@/shared/assets/icons/main.svg';
-import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 
@@ -13,47 +9,35 @@ import { useProfileQuery } from '@/entities/auth';
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
-import { MainPageSkeleton } from '@/pages/MainPage';
+import { MainPageSkeleton } from '@/pages/interview/MainPage';
 
 import styles from './MainLayout.module.css';
 import { MainLayoutSkeleton } from './MainLayout.skeleton';
 
-const mainLayoutMenuItems: MenuItem[] = [
-	{
-		type: 'single',
-		route: ROUTES.appRoute,
-		title: 'tabs.main',
-		icon: MainIcon,
-	},
-	{
-		type: 'single',
-		route: ROUTES.profile.route,
-		title: 'tabs.profile',
-		icon: ProfileIcon,
-	},
-	{
-		type: 'category',
-		title: 'tabs.education.title',
-		icon: EducationIcon,
-		elements: [
-			{
-				route: ROUTES.interview.route,
-				title: 'tabs.education.interview',
-				icon: InterviewIcon,
-			},
-		],
-	},
-];
+interface MainLayoutProps {
+	sidebarItems: MenuItem[];
+	onlyAdmin?: boolean;
+}
 
-export const MainLayout = () => {
-	const { isLoading } = useProfileQuery();
+export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
+	const { data: profile, isLoading } = useProfileQuery();
+
+	const isAdmin = profile?.userRoles[0]?.name === 'admin';
+
+	const filteredMenuItems = !isAdmin
+		? sidebarItems.filter((_, index) => index !== 0)
+		: sidebarItems;
 
 	if (isLoading) return <MainLayoutSkeleton />;
+
+	if (onlyAdmin && !isAdmin) {
+		return <Navigate to={ROUTES.appRoute} />;
+	}
 
 	return (
 		<section className={styles.layout}>
 			<div className={styles.sidebar}>
-				<Sidebar menuItems={mainLayoutMenuItems} />
+				<Sidebar menuItems={filteredMenuItems} />
 			</div>
 
 			<Header />

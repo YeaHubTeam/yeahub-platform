@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
@@ -6,6 +6,7 @@ import { QuestionModeType } from '../../model/types/quiz';
 
 interface QuizQuestionModeProps {
 	onChangeMode: (complexity: QuestionModeType) => void;
+	modeFromURL?: QuestionModeType;
 }
 
 interface QuizQuestionModeData {
@@ -21,17 +22,25 @@ const quizQuestionModeData: QuizQuestionModeData[] = [
 	{ id: 3, value: 'RANDOM', title: 'Случайные', active: false },
 ];
 
-export const QuizQuestionMode = ({ onChangeMode }: QuizQuestionModeProps) => {
+export const QuizQuestionMode = ({ onChangeMode, modeFromURL }: QuizQuestionModeProps) => {
 	const [quizQuestionMode, setQuizQuestionMode] = useState(quizQuestionModeData);
+
+	useEffect(() => {
+		if (modeFromURL) {
+			const updatedModeData = quizQuestionMode.map((mode) => ({
+				...mode,
+				active: mode.value === modeFromURL,
+			}));
+			setQuizQuestionMode(updatedModeData);
+		}
+	}, [modeFromURL]);
 
 	const handleChooseMode = (id: number) => {
 		const newValue = quizQuestionMode.find((mode) => mode.id === id);
-		const updatedModeData = quizQuestionMode.map((mode) => {
-			return {
-				...mode,
-				active: mode.id === id,
-			};
-		});
+		const updatedModeData = quizQuestionMode.map((mode) => ({
+			...mode,
+			active: mode.id === id,
+		}));
 		setQuizQuestionMode(updatedModeData);
 		if (newValue) {
 			const value = newValue.value;

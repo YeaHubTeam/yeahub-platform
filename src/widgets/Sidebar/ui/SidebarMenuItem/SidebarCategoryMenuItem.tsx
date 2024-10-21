@@ -61,6 +61,7 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 						<NavLink
 							key={index}
 							to={item.route}
+							end
 							className={({ isActive }) =>
 								classNames(styles.item, styles.nested, { [styles.active]: isActive })
 							}

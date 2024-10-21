@@ -1,10 +1,9 @@
 export interface FilterParams {
-	page?: number;
-	title?: string;
 	skills?: number[];
-	rate?: number[];
 	complexity?: number[];
-	status: QuestionFilterStatus;
+	rate?: number[];
+	status?: QuestionFilterStatus;
+	title?: string;
 }
 
 export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
