@@ -17,6 +17,7 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
+import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
@@ -128,6 +129,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.questions.create.page,
 						element: <QuestionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.questions.edit.page,
+						element: <QuestionEditPage />,
 					},
 					{
 						path: ROUTES.admin.skills.route,
