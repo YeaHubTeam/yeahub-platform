@@ -11,7 +11,7 @@ import styles from './SpecializationSelect.module.css';
 
 type SpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Select>,
-	'options' | 'type' | 'value'
+	'options' | 'type' | 'value' | 'onChange'
 > & {
 	value?: number;
 	onChange: (value: number) => void;
@@ -30,6 +30,7 @@ export const SpecializationSelect = ({ onChange, value }: SpecializationSelectPr
 		return (specializations?.data || []).map((specialization) => ({
 			label: specialization.title,
 			value: specialization.id.toString(),
+			limit: 100,
 		}));
 	}, [specializations?.data]);
 

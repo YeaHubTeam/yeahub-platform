@@ -30,8 +30,8 @@ export const QuestionsTable = ({
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Questions.NAME),
-			specialization: t(Questions.SPECIALIZATION),
-			skills: t(Questions.SKILLS),
+			specialization: t(Questions.SPECIALIZATION_TITLE),
+			skills: t(Questions.SKILLS_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);

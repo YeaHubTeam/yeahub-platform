@@ -9,6 +9,7 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
+import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -16,8 +17,11 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
+import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
+import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -96,6 +100,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.specialization.route,
+		title: 'tabs.specialization',
+		icon: SpecializationIcon,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.skills.route,
 		title: 'tabs.skills',
 		icon: SkillsIcon,
@@ -124,8 +134,26 @@ export const router = createBrowserRouter([
 						element: <QuestionsTablePage />,
 					},
 					{
+						path: ROUTES.admin.questions.create.page,
+						element: <QuestionCreatePage />,
+					},
+					{
 						path: ROUTES.admin.skills.route,
-						element: <SkillsPage />,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <SkillsPage />,
+							},
+							{
+								path: ROUTES.admin.skills.create.route,
+								element: <SkillCreatePage />,
+							},
+						],
+					},
+					{
+						path: ROUTES.admin.specialization.route,
+						element: <SpecializationsPage />,
 					},
 				],
 			},

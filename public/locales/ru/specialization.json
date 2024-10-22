@@ -2,5 +2,13 @@
   "skillForm": {
     "specializationSelect": "Выберите специализацию",
     "emptySpecializationSelect": "Нет доступных опций"
+  },
+  "specialization": {
+    "title": "Название",
+    "description": "Описание специализации",
+    "not.items": "Нет специализаций",
+    "image.src": "Ссылка на картинку",
+    "create.page.title": "Добавление новой специализации",
+    "edit.page.title": "Изменение специализации"
   }
 }
