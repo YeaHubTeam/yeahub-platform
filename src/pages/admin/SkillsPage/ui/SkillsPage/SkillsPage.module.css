@@ -1,5 +1,9 @@
 .content {
   position: relative;
-  flex: 1;
-  width: 728px;
+  flex: 1 1 728px;
+}
+
+.search-section {
+  flex-basis: 80%;
+  border: 3px solid red
 }

@@ -13,7 +13,8 @@
     "plugin:@conarti/feature-sliced/recommended",
     "plugin:jsx-a11y/recommended",
     "@feature-sliced",
-    "@feature-sliced/eslint-config/rules/import-order/experimental"
+    "@feature-sliced/eslint-config/rules/import-order/experimental",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

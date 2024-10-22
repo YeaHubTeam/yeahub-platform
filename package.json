@@ -16,14 +16,15 @@
     "lint:css": "npx stylelint \"**/*.css\"",
     "lint:css:fix": "npx stylelint \"**/*.css\" --fix",
     "prepare": "husky",
-    "storybook": "storybook dev -p 6006 -c ./config/storybook",
+    "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -c ./config/storybook",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:unit:coverage": "jest --coverage  --config ./config/jest/jest.config.ts --collectCoverageFrom='src/**/*.{ts,tsx}' --collectCoverageFrom=!src/**/*.stories.*"
+    "test:unit:coverage": "jest --coverage  --config ./config/jest/jest.config.ts --collectCoverageFrom='src/**/*.{ts,tsx}' --collectCoverageFrom=!src/**/*.stories.*",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@chromatic-com/storybook": "^1.9.0",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
@@ -88,6 +90,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.9.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "happy-dom": "15.7.4",
     "html-inline-script-webpack-plugin": "^3.2.1",

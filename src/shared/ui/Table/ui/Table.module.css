@@ -21,3 +21,7 @@ table {
   border-bottom: 1px solid var(--color-black-25);
 
 }
+
+.actions-column {
+  width: 50px;
+}
