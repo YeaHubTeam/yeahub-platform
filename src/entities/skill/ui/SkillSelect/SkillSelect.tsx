@@ -17,7 +17,7 @@ type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 't
 
 export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-	const { data: skills } = useGetSkillsListQuery({});
+	const { data: skills } = useGetSkillsListQuery({ limit: 100 });
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
 
@@ -40,8 +40,7 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 				label: skill.title,
 				value: skill.id.toString(),
 			}))
-			.filter((skill) => !selectedSkills?.includes(+skill.value))
-			.slice(0, 10);
+			.filter((skill) => !selectedSkills?.includes(+skill.value));
 	}, [skills?.data, selectedSkills]);
 
 	const skillsDictionary = useMemo(() => {
