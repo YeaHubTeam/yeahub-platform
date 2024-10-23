@@ -13,6 +13,7 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
@@ -44,7 +45,6 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
-import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
