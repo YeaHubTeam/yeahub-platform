@@ -13,6 +13,7 @@
 .title {
   margin-top: 0;
   margin-bottom: 30px;
+  line-height: normal;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-l);
 }
