@@ -136,6 +136,10 @@ export const router = sentryCreateBrowserRouter([
 						element: <QuestionsTablePage />,
 					},
 					{
+						path: ROUTES.admin.questions.details.page,
+						element: <QuestionPage isAdmin />,
+					},
+					{
 						path: ROUTES.admin.questions.create.page,
 						element: <QuestionCreatePage />,
 					},
