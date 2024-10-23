@@ -5,6 +5,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { RedirectToProfile } from '@/shared/ui/RedirectToProfile';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -41,7 +42,6 @@ export const QuestionPage = () => {
 			return `${author.firstName} ${author.lastName}`;
 		}
 	}, [question]);
-
 	const isSpecializationEmpty = useCheckSpecialization(profile);
 
 	if (isLoading || isFetching) {
@@ -53,56 +53,68 @@ export const QuestionPage = () => {
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
-				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
-				/>
-				<ProgressBlock checksCount={question?.checksCount} />
-				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
-				/>
-				<p className={styles.author}>
-					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-				</p>
-				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
-					questionId={questionId ? questionId : ''}
-				/>
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				{isSpecializationEmpty ? (
+					<RedirectToProfile />
+				) : (
+					<>
+						<QuestionHeader
+							description={question?.description}
+							status={question?.status}
+							title={question?.title}
+						/>
+						<ProgressBlock checksCount={question?.checksCount} />
+						<AdditionalInfo
+							rate={question?.rate}
+							keywords={question?.keywords}
+							complexity={question?.complexity}
+							questionSkills={question?.questionSkills}
+						/>
+						<p className={styles.author}>
+							Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
+						</p>
+						<QuestionActions
+							profileId={profile ? profile.profiles[0].id : ''}
+							questionId={questionId ? questionId : ''}
+						/>
+						<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+					</>
+				)}
 			</section>
 		);
 	}
 
 	return (
 		<section className={styles.wrapper}>
-			<div className={styles.main}>
-				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
-				/>
-				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
-					questionId={questionId ? questionId : ''}
-				/>
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
-			</div>
-			<div className={styles.additional}>
-				<ProgressBlock checksCount={question?.checksCount} />
-				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
-				/>
-				<p className={styles.author}>
-					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-				</p>
-			</div>
+			{isSpecializationEmpty ? (
+				<RedirectToProfile />
+			) : (
+				<>
+					<div className={styles.main}>
+						<QuestionHeader
+							description={question?.description}
+							status={question?.status}
+							title={question?.title}
+						/>
+						<QuestionActions
+							profileId={profile ? profile.profiles[0].id : ''}
+							questionId={questionId ? questionId : ''}
+						/>
+						<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+					</div>
+					<div className={styles.additional}>
+						<ProgressBlock checksCount={question?.checksCount} />
+						<AdditionalInfo
+							rate={question?.rate}
+							keywords={question?.keywords}
+							complexity={question?.complexity}
+							questionSkills={question?.questionSkills}
+						/>
+						<p className={styles.author}>
+							Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
+						</p>
+					</div>
+				</>
+			)}
 		</section>
 	);
 };

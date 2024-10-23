@@ -8,6 +8,7 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
+import { RedirectToProfile } from '@/shared/ui/RedirectToProfile';
 
 import { useProfileQuery } from '@/entities/auth';
 import {
@@ -76,56 +77,64 @@ const InterviewQuizPage = () => {
 		}
 	};
 
+	const isSpecializationEmpty = useCheckSpecialization(userProfile);
+
 	if (isLoading) return <InterviewQuizPageSkeleton />;
 
 	if (isSpecializationEmpty) navigate(ROUTES.interview.page);
 
 	return (
 		<div className={styles.container}>
-			<Card>
-				<div className={styles['progress-bar']}>
-					<p className={styles['progress-bar-title']}>{t('title')}</p>
-					<span className={styles['progress-num']}>
-						{activeQuestion}/{totalCount}
-					</span>
-					<QuestionProgressBar
-						className={styles['progress-component']}
-						currentCount={currentCount}
-						totalCount={totalCount}
-					/>
-				</div>
-			</Card>
-			<Card className={styles['question-card']}>
-				<div className={styles.question}>
-					<QuestionNavPanel
-						className={styles['slider-navigation']}
-						goToNextSlide={goToNextSlide}
-						goToPrevSlide={goToPrevSlide}
-						answer={answer}
-						changeAnswer={changeAnswer}
-						setIsAnswerVisible={setIsAnswerVisible}
-						questionNumber={activeQuestion}
-						totalCount={totalCount}
-					/>
-					<InterviewSlider
-						id={questionId}
-						title={questionTitle}
-						imageSrc={imageSrc}
-						shortAnswer={shortAnswer ?? ''}
-						answer={answer}
-						changeAnswer={changeAnswer}
-						isAnswerVisible={isAnswerVisible}
-						setIsAnswerVisible={setIsAnswerVisible}
-					/>
-					<Button
-						className={styles['end-button']}
-						onClick={isNextButton ? goToNextSlide : handleSubmitQuiz}
-						disabled={isDisabled}
-					>
-						{isNextButton ? t('buttons.next') : t('buttons.complete')}
-					</Button>
-				</div>
-			</Card>
+			{isSpecializationEmpty ? (
+				<RedirectToProfile />
+			) : (
+				<>
+					<Card>
+						<div className={styles['progress-bar']}>
+							<p className={styles['progress-bar-title']}>{t('title')}</p>
+							<span className={styles['progress-num']}>
+								{activeQuestion}/{totalCount}
+							</span>
+							<QuestionProgressBar
+								className={styles['progress-component']}
+								currentCount={currentCount}
+								totalCount={totalCount}
+							/>
+						</div>
+					</Card>
+					<Card className={styles['question-card']}>
+						<div className={styles.question}>
+							<QuestionNavPanel
+								className={styles['slider-navigation']}
+								goToNextSlide={goToNextSlide}
+								goToPrevSlide={goToPrevSlide}
+								answer={answer}
+								changeAnswer={changeAnswer}
+								setIsAnswerVisible={setIsAnswerVisible}
+								questionNumber={activeQuestion}
+								totalCount={totalCount}
+							/>
+							<InterviewSlider
+								id={questionId}
+								title={questionTitle}
+								imageSrc={imageSrc}
+								shortAnswer={shortAnswer ?? ''}
+								answer={answer}
+								changeAnswer={changeAnswer}
+								isAnswerVisible={isAnswerVisible}
+								setIsAnswerVisible={setIsAnswerVisible}
+							/>
+							<Button
+								className={styles['end-button']}
+								onClick={isNextButton ? goToNextSlide : handleSubmitQuiz}
+								disabled={isDisabled}
+							>
+								{isNextButton ? t('buttons.next') : t('buttons.complete')}
+							</Button>
+						</div>
+					</Card>
+				</>
+			)}
 		</div>
 	);
 };
