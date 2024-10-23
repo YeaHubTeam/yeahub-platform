@@ -13,6 +13,10 @@ export const ROUTES = {
 				route: ':questionId',
 				page: '/admin/questions/:questionId',
 			},
+			edit: {
+				route: ':questionId/edit',
+				page: '/admin/questions/:questionId/edit',
+			},
 		},
 		specialization: {
 			route: 'specialization',

@@ -9,6 +9,7 @@
   "loading": "Loading...",
   "hello": "Hello",
   "save": "Save",
+  "cancel": "Cancel",
   "userPreferences": {
     "myProfile": "My profile",
     "logout": "Sign out"
