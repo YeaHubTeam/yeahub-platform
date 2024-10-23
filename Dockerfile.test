@@ -19,18 +19,21 @@ ARG API_URL
 ARG LANDING_URL
 ARG PORT
 ARG NODE_ENV
+ARG SENTRY_DSN
 
 # Установить переменные окружения
 ENV API_URL=$API_URL
 ENV LANDING_URL=$LANDING_URL
 ENV PORT=$PORT
 ENV NODE_ENV=$NODE_ENV
+ENV SENTRY_DSN=$SENTRY_DSN
 
 # Вывести переменные окружения для отладки
 RUN echo "API_URL: $API_URL"
 RUN echo "LANDING_URL: $LANDING_URL"
 RUN echo "PORT: $PORT"
 RUN echo "NODE_ENV: $NODE_ENV"
+RUN echo "SENTRY_DSN: $SENTRY_DSN"
 
 # Собрать приложение
 RUN npm run build
