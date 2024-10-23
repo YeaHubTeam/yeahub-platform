@@ -40,10 +40,10 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 	const renderActions = (skill: Skill) => {
 		return (
 			<Flex gap="4">
-				<NavLink to={`/skills/${skill.id}`}>
+				<NavLink to={`/admin/skills/${skill.id}`}>
 					<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />
 				</NavLink>
-				<NavLink to={`/skills/${skill.id}/edit`}>
+				<NavLink to={`/admin/skills/${skill.id}/edit`}>
 					<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />
 				</NavLink>
 				<DeleteSkillButton skillId={skill.id} />
