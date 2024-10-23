@@ -1,0 +1,185 @@
+.cropper-container {
+  position: relative;
+  direction: ltr;
+  line-height: 0;
+  font-size: var(--font-size-none);
+  touch-action: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.cropper-container img {
+  display: block;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 100%;
+  min-height: 0 !important;
+  max-height: none !important;
+  backface-visibility: hidden;
+  image-orientation: 0deg;
+}
+
+.cropper-wrap-box,
+.cropper-canvas,
+.cropper-drag-box,
+.cropper-crop-box,
+.cropper-modal {
+  position: absolute;
+  inset: 0;
+}
+
+.cropper-wrap-box,
+.cropper-canvas {
+  overflow: hidden;
+}
+
+.cropper-drag-box {
+  background-color: var(--color-white-900);
+  opacity: 0;
+}
+
+.cropper-modal {
+  background-color: var(--color-black-900);;
+  opacity: 0.5;
+}
+
+.cropper-view-box {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+
+.cropper-face,
+.cropper-line,
+.cropper-point {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
+
+.cropper-face {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white-900);
+}
+
+.cropper-line {
+  background-color: var(--color-purple-700);;
+  opacity: 1;
+}
+
+.cropper-line.line-e {
+  top: 0;
+  right: 0;
+  width: 1px;
+  cursor: ew-resize;
+}
+
+.cropper-line.line-n {
+  top: 0;
+  left: 0;
+  height: 1px;
+  cursor: ns-resize;
+}
+
+.cropper-line.line-w {
+  top: 0;
+  left: 0;
+  width: 1px;
+  cursor: ew-resize;
+}
+
+.cropper-line.line-s {
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  cursor: ns-resize;
+}
+
+.cropper-point {
+  width: 5px;;
+  height: 5px;
+  background-color: var(--color-purple-700);
+  opacity: 1;
+}
+
+
+.cropper-point.point-ne {
+  top: -3px;
+  right: -3px;
+  cursor: nesw-resize;
+}
+
+.cropper-point.point-n, .cropper-point.point-w, .cropper-point.point-e, .cropper-point.point-s {
+  display: none;
+}
+
+.cropper-point.point-nw {
+  top: -3px;
+  left: -3px;
+  cursor: nwse-resize;
+}
+
+.cropper-point.point-sw {
+  bottom: -3px;
+  cursor: nesw-resize;
+  left: -3px;
+}
+
+.cropper-point.point-se {
+  right: -3px;
+  bottom: -3px;
+  cursor: nwse-resize;
+}
+
+.cropper-point.point-se::before {
+  position: absolute;
+  right: -50%;
+  bottom: -50%;
+  display: block;
+  width: 200%;
+  height: 200%;
+  background-color: var(--color-purple-700);
+  content: ' ';
+  opacity: 0;
+}
+
+.cropper-invisible {
+  opacity: 0;
+}
+
+.cropper-bg {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC');
+}
+
+.cropper-hide {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.cropper-hidden {
+  display: none !important;
+}
+
+.cropper-move {
+  cursor: move;
+}
+
+.cropper-crop {
+  cursor: crosshair;
+}
+
+.cropper-disabled .cropper-drag-box,
+.cropper-disabled .cropper-face,
+.cropper-disabled .cropper-line,
+.cropper-disabled .cropper-point {
+  cursor: not-allowed;
+}

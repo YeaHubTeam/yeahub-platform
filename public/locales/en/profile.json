@@ -25,7 +25,8 @@
   "photo": {
     "title": "Profile photo",
     "description": "Your photo will be visible to all members of Yeahub community",
-    "deletePhotoButton": "Delete photo"
+    "cropperTitle": "Select an area for your profile photos.",
+    "cropperDescription": "The thumbnail you choose will be used in the article, private messages, and comments."
   },
   "personalInformationForm": {
     "title": "Personal information",

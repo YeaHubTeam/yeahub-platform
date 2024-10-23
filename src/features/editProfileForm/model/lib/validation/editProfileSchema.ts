@@ -4,29 +4,7 @@ import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Validation } from '@/shared/config/i18n/i18nTranslations';
 
 export const editProfileSchema = yup.object().shape({
-	image: yup
-		.mixed<FileList>()
-		.optional()
-		.test(
-			'fileSize',
-			i18n.t(Validation.IMAGE_FILE_SIZE, { ns: i18Namespace.validation }),
-			(value) => {
-				if (value && value.length > 0) {
-					return value[0].size <= 2000000; // 2MB
-				}
-				return true;
-			},
-		)
-		.test(
-			'fileType',
-			i18n.t(Validation.IMAGE_FILE_TYPE, { ns: i18Namespace.validation }),
-			(value) => {
-				if (value && value.length > 0) {
-					return ['image/jpeg', 'image/png', 'image/gif'].includes(value[0].type);
-				}
-				return true;
-			},
-		),
+	image: yup.string().nullable().optional(),
 	firstName: yup
 		.string()
 		.required(i18n.t(Validation.FIRST_NAME_REQUIRED, { ns: i18Namespace.validation }))
