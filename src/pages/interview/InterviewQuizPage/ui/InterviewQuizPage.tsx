@@ -77,8 +77,6 @@ const InterviewQuizPage = () => {
 		}
 	};
 
-	const isSpecializationEmpty = useCheckSpecialization(userProfile);
-
 	if (isLoading) return <InterviewQuizPageSkeleton />;
 
 	if (isSpecializationEmpty) navigate(ROUTES.interview.page);
