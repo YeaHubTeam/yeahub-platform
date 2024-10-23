@@ -5,6 +5,18 @@ export const ROUTES = {
 		questions: {
 			route: 'questions',
 			page: '/admin/questions',
+			create: {
+				route: 'create',
+				page: '/admin/questions/create',
+			},
+			edit: {
+				route: ':questionId/edit',
+				page: '/admin/questions/:questionId/edit',
+			},
+		},
+		specialization: {
+			route: 'specialization',
+			page: '/admin/specialization',
 		},
 		skills: {
 			route: 'skills',

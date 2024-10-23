@@ -51,6 +51,7 @@
   --color-black-25: #F4F4F4;
   --color-white-900: #FFF;
   --color-label-bg: rgb(209 209 209 / 27%);
+  --color-code-gradient-end: #E8DAFF;
   
 
   /* light theme colors */
@@ -80,6 +81,8 @@
   --border-focus-purple: var(--color-purple-500);
   --background-admin-sidebar-item: var(--color-yellow-800);
   --background-admin-sidebar-item-active: var(--color-yellow-600);
+  --background-gradient-code-start: var(--color-white-900);
+  --background-gradient-code-end: var(--color-code-gradient-end);
 
   /* dimensions */
   --font-size-p-xss: 10px;

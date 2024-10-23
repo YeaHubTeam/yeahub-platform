@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
@@ -16,6 +16,8 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
+import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
+import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -39,6 +41,7 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
+import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -102,7 +105,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 ];
 
-export const router = createBrowserRouter([
+export const router = sentryCreateBrowserRouter([
 	{
 		path: ROUTES.appRoute,
 		element: <App />,
@@ -122,6 +125,14 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.questions.route,
 						element: <QuestionsTablePage />,
+					},
+					{
+						path: ROUTES.admin.questions.create.page,
+						element: <QuestionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.questions.edit.page,
+						element: <QuestionEditPage />,
 					},
 					{
 						path: ROUTES.admin.skills.route,
