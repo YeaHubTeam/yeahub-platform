@@ -34,6 +34,11 @@
   text-align: center;
 }
 
+.author a {
+  pointer-events: none;
+  color: var(--text-color-link-disabled);
+}
+
 .header {
   display: flex;
   gap: 10px;
