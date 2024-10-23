@@ -3,6 +3,7 @@ import { Button, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -13,9 +14,12 @@ import {
 	ChooseQuestionCount,
 	ChooseQuestionsCategories,
 } from '@/entities/question';
-import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
-import { QuestionModeType } from '@/entities/quiz';
-import { QuizQuestionMode } from '@/entities/quiz';
+import {
+	QuestionModeType,
+	QuizQuestionMode,
+	useGetActiveQuizQuery,
+	useLazyCreateNewQuizQuery,
+} from '@/entities/quiz';
 
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
@@ -28,7 +32,7 @@ const CreateQuizPage = () => {
 	const { data: userProfile, isLoading } = useProfileQuery();
 	const { filter, handleFilterChange } = useQueryFilter();
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
-
+	const isSpecializationEmpty = useCheckSpecialization(userProfile);
 	const navigate = useNavigate();
 
 	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
@@ -76,6 +80,8 @@ const CreateQuizPage = () => {
 	};
 
 	if (isLoading || isActiveQuizLoading) return <CreateQuizPageSkeleton />;
+
+	if (isSpecializationEmpty) navigate(ROUTES.interview.page);
 
 	return (
 		<section>
