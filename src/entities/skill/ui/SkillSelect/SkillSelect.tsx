@@ -40,7 +40,8 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 				label: skill.title,
 				value: skill.id.toString(),
 			}))
-			.filter((skill) => !selectedSkills?.includes(+skill.value));
+			.filter((skill) => !selectedSkills?.includes(+skill.value))
+			.slice(0, 10);
 	}, [skills?.data, selectedSkills]);
 
 	const skillsDictionary = useMemo(() => {
