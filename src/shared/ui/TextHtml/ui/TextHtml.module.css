@@ -3,7 +3,8 @@
 }
 
 .text code {
-  padding: 5px;
+  padding: 1.5px 5px;
   border-radius: 12px;
-  background-color: var(--background-nav-item);	
+  background: linear-gradient(180deg, var(--background-gradient-code-start) 0%, var(--background-gradient-code-end) 100%);
 }
+

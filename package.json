@@ -153,7 +153,7 @@
     "react-router-dom": "^6.22.1",
     "storybook-react-i18next": "^3.0.1",
     "undici": "6.19.8",
-    "yeahub-ui-kit": "^1.0.19",
+    "yeahub-ui-kit": "^1.0.22",
     "yup": "^1.4.0",
     "yup-password": "^0.4.0"
   },
