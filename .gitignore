@@ -23,5 +23,3 @@ npm-debug.log*
 *.sln
 *.sw?
 *.local
-
-*storybook.log
