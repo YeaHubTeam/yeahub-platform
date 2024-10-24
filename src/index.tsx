@@ -8,6 +8,7 @@ import { router } from '@/app/providers/router';
 import { StoreProvider } from '@/app/providers/store';
 
 import { ToastOptions } from './shared/config/reactHotToast';
+import { initSentry } from './shared/config/sentry/sentry';
 
 const root = document.getElementById('root');
 
@@ -21,6 +22,8 @@ async function deferRender() {
 	// const { worker } = await import('./app/msw/browser');
 	// return worker.start();
 }
+
+initSentry();
 
 deferRender().then(() => {
 	container.render(
