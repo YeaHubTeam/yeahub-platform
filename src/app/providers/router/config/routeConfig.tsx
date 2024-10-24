@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
@@ -13,7 +13,6 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
@@ -115,7 +114,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 ];
 
-export const router = sentryCreateBrowserRouter([
+export const router = createBrowserRouter([
 	{
 		path: ROUTES.appRoute,
 		element: <App />,
