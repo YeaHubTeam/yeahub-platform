@@ -1,0 +1,11 @@
+{
+  "buttons": {
+    "backButton": "Вернуться на прошлую страницу",
+    "closeSidebar": "Закрыть боковое меню",
+    "openSidebar": "Открыть боковое меню",
+    "prevMonth": "Предыдущий месяц",
+    "nextMonth": "Следующий месяц",
+    "prevInterviewQuestion": "Предыдущий вопрос собеседования",
+    "nextInterviewQuestion": "Следующий вопрос собеседования"
+  }
+}

@@ -36,9 +36,11 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	return (
 		<section className={styles.layout}>
-			<div className={styles.sidebar}>
-				<Sidebar menuItems={filteredMenuItems} />
-			</div>
+			<Suspense>
+				<div className={styles.sidebar}>
+					<Sidebar menuItems={filteredMenuItems} />
+				</div>
+			</Suspense>
 
 			<Header />
 

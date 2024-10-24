@@ -1,0 +1,11 @@
+{
+  "buttons": {
+    "backButton": "Back on previous page",
+    "closeSidebar": "Close sidebar",
+    "openSidebar": "Open sidebar",
+    "prevMonth": "Change month on previous",
+    "nextMonth": "Change month on next",
+    "prevInterviewQuestion": "Change interview question on previous",
+    "nextInterviewQuestion": "Change interview question on next"
+  }
+}

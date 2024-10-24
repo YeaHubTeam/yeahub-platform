@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import { Icon, Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { A11y } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
 
@@ -29,6 +33,8 @@ export const QuestionNavPanel = ({
 	questionNumber,
 	totalCount,
 }: QuestionNavPanelProps) => {
+	const { t } = useI18nHelpers(i18Namespace.a11y);
+
 	const handlePrevSlide = () => {
 		goToPrevSlide();
 		setIsAnswerVisible(false);
@@ -46,6 +52,7 @@ export const QuestionNavPanel = ({
 					className={styles.button}
 					onClick={handlePrevSlide}
 					size="small"
+					aria-label={t(A11y.PREV_INTERVIEW_QUESTION)}
 					fullWidth={true}
 					suffix={
 						<Icon icon="caretLeft" size={20} color="--palette-ui-purple-700" key="caretLeft" />
@@ -70,6 +77,7 @@ export const QuestionNavPanel = ({
 					}
 					fullWidth={true}
 					theme="outline"
+					aria-label={t(A11y.NEXT_INTERVIEW_QUESTION)}
 					disabled={questionNumber === totalCount || !answer}
 				/>
 			</div>

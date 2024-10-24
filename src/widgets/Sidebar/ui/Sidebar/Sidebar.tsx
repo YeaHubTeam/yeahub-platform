@@ -2,6 +2,9 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
 import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { A11y } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
@@ -24,6 +27,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ menuItems }: SidebarProps) => {
 	const { isMobile } = useScreenSize();
+	const { t } = useI18nHelpers(i18Namespace.a11y);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -47,6 +51,7 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 					})}
 					onClick={handleToggleSidebar}
 					data-testid="Sidebar_CloseButton"
+					aria-label={t(!isOpenNavSidebar ? A11y.CLOSE_SIDEBAR : A11y.OPEN_SIDEBAR)}
 				>
 					<LeftChevron className={styles.arrow} />
 				</button>
