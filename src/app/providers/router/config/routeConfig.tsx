@@ -13,6 +13,7 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
@@ -21,6 +22,7 @@ import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
+import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -44,7 +46,6 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
-import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -158,6 +159,10 @@ export const router = sentryCreateBrowserRouter([
 							{
 								path: ROUTES.admin.skills.create.route,
 								element: <SkillCreatePage />,
+							},
+							{
+								path: ROUTES.admin.skills.detail.route,
+								element: <SkillDetailPage />,
 							},
 						],
 					},

@@ -29,6 +29,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/skills/create',
 			},
+			detail: {
+				route: ':skillId',
+				page: '/admin/skills/:skillId',
+			},
 		},
 	},
 	auth: {
