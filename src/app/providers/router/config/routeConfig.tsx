@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
@@ -43,7 +43,6 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
-import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -113,7 +112,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 ];
 
-export const router = sentryCreateBrowserRouter([
+export const router = createBrowserRouter([
 	{
 		path: ROUTES.appRoute,
 		element: <App />,

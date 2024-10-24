@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import * as Sentry from '@sentry/browser';
 
 import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
@@ -52,14 +51,6 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 					<LeftChevron className={styles.arrow} />
 				</button>
 			</div>
-			<button
-				onClick={() => {
-					Sentry.captureException('hello');
-					throw new Error('hello');
-				}}
-			>
-				Не жми
-			</button>
 			<div className={styles.menu}>
 				<SidebarMenuList fullWidth={isOpenNavSidebar} menuItems={menuItems} />
 			</div>
