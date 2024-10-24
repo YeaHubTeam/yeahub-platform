@@ -118,7 +118,7 @@ export const Card = ({
 
 	return (
 		<Flex
-			gap={'20'}
+			gap={'24'}
 			direction={'column'}
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
@@ -153,6 +153,7 @@ export const Card = ({
 			<div
 				className={classNames(styles.content, {
 					[styles['content-shadow']]: withShadow,
+					[styles['content-bottom']]: isActionPositionBottom,
 				})}
 				ref={contentRef}
 			>

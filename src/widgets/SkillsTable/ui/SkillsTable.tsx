@@ -55,7 +55,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 					placement="bottom-start"
 					body={
 						<div>
-							<NavLink to={`/skills/${skill.id}`}>
+							<NavLink to={`/admin/skills/${skill.id}`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}
@@ -67,7 +67,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/skills/${skill.id}/edit`}>
+							<NavLink to={`/admin/skills/${skill.id}/edit`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}

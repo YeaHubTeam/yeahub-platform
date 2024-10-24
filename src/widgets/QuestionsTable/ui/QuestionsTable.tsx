@@ -30,8 +30,8 @@ export const QuestionsTable = ({
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Questions.NAME),
-			specialization: t(Questions.SPECIALIZATION),
-			skills: t(Questions.SKILLS),
+			specialization: t(Questions.SPECIALIZATION_TITLE),
+			skills: t(Questions.SKILLS_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -66,7 +66,7 @@ export const QuestionsTable = ({
 					placement="bottom-start"
 					body={
 						<div>
-							<NavLink to={`/questions/${question.id}`}>
+							<NavLink to={`/admin/questions/${question.id}`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}
@@ -78,7 +78,7 @@ export const QuestionsTable = ({
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/questions/${question.id}/edit`}>
+							<NavLink to={`/admin/questions/${question.id}/edit`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}

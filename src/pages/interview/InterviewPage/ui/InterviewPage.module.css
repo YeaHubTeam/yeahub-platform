@@ -8,7 +8,7 @@
 }
 
 .preparation {
-  padding: 4px 24px 16px;
+  padding: 4px 24px 21px;
 }
 
 .preparation-empty {
@@ -46,6 +46,11 @@
   object-position: right;
 }
 
+.skeleton-card-questions,
+.skeleton-card-history {
+  width: calc(50% - 10px);
+}
+
 @media (width <= 1440px) {
   .interview {
     width: 100%;
@@ -54,5 +59,18 @@
   .statistics {
     width: 100%;
     min-height: auto;
+  }
+}
+
+@media (width <= 1198px) {
+  .skeleton-card-questions,
+  .skeleton-card-history {
+    width: 100%;
+  }
+}
+
+@media (width <= 480px) {
+  .preparation {
+    padding: 0;
   }
 }
