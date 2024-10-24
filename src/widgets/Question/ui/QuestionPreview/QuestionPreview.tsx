@@ -35,10 +35,10 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
-				<div className={styles['header-params']}>
+				<ul className={styles['header-params']}>
 					<QuestionParam label="Рейтинг" value={rate} />
 					<QuestionParam label="Сложность" value={complexity} />
-				</div>
+				</ul>
 				<Popover
 					body={
 						<>

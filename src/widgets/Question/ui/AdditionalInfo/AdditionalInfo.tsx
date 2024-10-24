@@ -40,20 +40,21 @@ export const AdditionalInfo = ({
 					{questionSkills?.length
 						? questionSkills.map((skill) => {
 								return (
-									<Chip
-										key={skill.id}
-										className={styles.chip}
-										label={skill.title}
-										theme="primary"
-										active
-										preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
-										onClick={() =>
-											navigate(
-												`${ROUTES.interview.questions.page}?page=1&status=all&skills=` +
-													encodeURIComponent(skill.id),
-											)
-										}
-									/>
+									<li key={skill.id}>
+										<Chip
+											className={styles.chip}
+											label={skill.title}
+											theme="primary"
+											active
+											preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
+											onClick={() =>
+												navigate(
+													`${ROUTES.interview.questions.page}?page=1&status=all&skills=` +
+														encodeURIComponent(skill.id),
+												)
+											}
+										/>
+									</li>
 								);
 							})
 						: 'автор так и не понял к какой технологии относится данный вопрос'}
