@@ -9,6 +9,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			details: {
+				route: ':questionId',
+				page: '/admin/questions/:questionId',
+			},
 			edit: {
 				route: ':questionId/edit',
 				page: '/admin/questions/:questionId/edit',
@@ -21,6 +25,14 @@ export const ROUTES = {
 		skills: {
 			route: 'skills',
 			page: '/admin/skills',
+			create: {
+				route: 'create',
+				page: '/admin/skills/create',
+			},
+			detail: {
+				route: ':skillId',
+				page: '/admin/skills/:skillId',
+			},
 		},
 	},
 	auth: {

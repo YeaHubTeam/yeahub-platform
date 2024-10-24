@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/react';
+import React from 'react';
 import {
 	createBrowserRouter,
 	createRoutesFromChildren,
@@ -5,8 +7,6 @@ import {
 	useLocation,
 	useNavigationType,
 } from 'react-router-dom';
-import React from 'react';
-import * as Sentry from '@sentry/react';
 
 Sentry.init({
 	dsn: process.env.SENTRY_DSN,

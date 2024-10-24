@@ -1,6 +1,6 @@
+import * as Sentry from '@sentry/browser';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import * as Sentry from '@sentry/browser';
 
 import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';

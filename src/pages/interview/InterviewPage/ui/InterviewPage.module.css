@@ -8,7 +8,7 @@
 }
 
 .preparation {
-  padding: 4px 24px 16px;
+  padding: 4px 24px 21px;
 }
 
 .preparation-empty {
@@ -54,5 +54,18 @@
   .statistics {
     width: 100%;
     min-height: auto;
+  }
+}
+
+@media (width <= 1198px) {
+  .skeleton-card-questions,
+  .skeleton-card-history {
+    width: 100%;
+  }
+}
+
+@media (width <= 480px) {
+  .preparation {
+    padding: 0;
   }
 }
