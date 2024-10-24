@@ -1,8 +1,8 @@
 export enum Translation {
 	LANGUAGE = 'language',
 	REMOVE_SELECTED = 'remove.selected',
-	CANCEL = 'cancel',
 	CREATE = 'create',
+	CANCEL = 'cancel',
 	SAVE = 'save',
 	SHOW = 'show',
 	EDIT = 'edit',
@@ -42,7 +42,6 @@ export enum Translation {
 	TABS_MAIN = 'tabs.main',
 	TABS_PROFILE = 'tabs.profile',
 	TABS_INTERVIEW = 'tabs.interview',
-	TABS_SPECIALIZATION = 'tabs.specialization',
 
 	BLOCKMODAL_CONFIRM_TITLE = 'blockModal.confirmTitle',
 	BLOCKMODAL_CONFIRM_DESCRIPTION = 'blockModal.confirmDescription',
@@ -192,12 +191,6 @@ export enum Auth {
 export enum Specialization {
 	SKILLFORM_SPECIALIZATIONSELECT = 'skillForm.specializationSelect',
 	SKILLFORM_EMPTYSPECIALIZATIONSELECT = 'skillForm.emptySpecializationSelect',
-	SPECIALIZATION_TITLE = 'specialization.title',
-	SPECIALIZATION_DESCRIPTION = 'specialization.description',
-	SPECIALIZATION_IMAGE_SRC = 'specialization.image.src',
-	SPECIALIZATIONS_NOT_ITEMS = 'specialization.not.items',
-	SPECIALIZATION_CREATE_PAGE_TITLE = 'specialization.create.page.title',
-	SPECIALIZATION_EDIT_PAGE_TITLE = 'specialization.edit.page.title',
 }
 export enum Interview {
 	PREPARATION_TITLE = 'preparation.title',
@@ -266,39 +259,15 @@ export enum InterviewStatistics {
 export enum Questions {
 	TITLE = 'title',
 	NAME = 'name',
-	ADD_QUESTION = 'addQuestion',
-	SEARCH_PLACEHOLDER = 'searchPlaceholder',
-	QUESTION_KEYWORDS = 'keywords',
+	SPECIALIZATION = 'specialization',
+	SKILLS = 'skills',
 
+	SEARCH_PLACEHOLDER = 'searchPlaceholder',
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOWALL = 'categories.showAll',
-
-	COMPLEXITY_TITLE = 'complexity.title',
-	COMPLEXITY_SELECT = 'complexity.select',
-
+	DIFFICULTY_TITLE = 'difficulty.title',
 	RATE_TITLE = 'rate.title',
-	RATE_SELECT = 'rate.select',
-
 	STATUS_TITLE = 'status.title',
-	STATUS_UNLEARNED = 'status.unlearned',
-	STATUS_LEARNED = 'status.learned',
-	STATUS_ALL = 'status.all',
-	STATUS_SELECT = 'status.select',
-
-	SKILLS_TITLE = 'skills.title',
-	SKILLS_ADD = 'skills.addSkills',
-
-	LONG_ANSWER_TITLE = 'longAnswer.title',
-	LONG_ANSWER_ADD = 'longAnswer.add',
-
-	SHORT_ANSWER_TITLE = 'shortAnswer.title',
-	SHORT_ANSWER_ADD = 'shortAnswer.add',
-
-	DESCRIPTION_TITLE = 'description.title',
-	DESCRIPTION_ADD = 'description.add',
-
-	SPECIALIZATION_TITLE = 'specialization.title',
-	SPECIALIZATION_SELECT = 'specialization.select',
 }
 
 export enum InterviewHistory {

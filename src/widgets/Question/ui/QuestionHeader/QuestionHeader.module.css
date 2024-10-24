@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: center;
   margin-left: auto;
-  width: 100%;
+  min-width: 79px;
   max-width: 79px;
   max-height: 20px;
   border-radius: 30px;
@@ -59,6 +59,6 @@
   }
 
   .label-wrapper {
-    width: 54px;
+    min-width: 54px;
   }
 }

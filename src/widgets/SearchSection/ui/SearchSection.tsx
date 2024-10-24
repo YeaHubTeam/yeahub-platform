@@ -29,7 +29,7 @@ export const SearchSection = ({
 	};
 
 	return (
-		<Card className={styles.card}>
+		<Card>
 			<section className={styles.section}>
 				<Input
 					onChange={handleSearch}

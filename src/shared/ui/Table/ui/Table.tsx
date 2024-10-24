@@ -59,7 +59,7 @@ export const Table = <T extends { id: number }>({
 	};
 
 	return (
-		<table className={styles.table}>
+		<table style={{ width: '100%' }}>
 			<thead className={styles.head}>
 				<tr>
 					<td className={styles.cell}>

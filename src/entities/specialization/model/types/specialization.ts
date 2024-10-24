@@ -1,8 +1,8 @@
 export interface Specialization {
-	id: number;
+	id: string;
 	title: string;
 	description: string;
-	imageSrc?: string;
+	imageSrc: string;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -12,5 +12,4 @@ export type SpecializationFormValues = Omit<Specialization, 'id' | 'createdAt' |
 export interface SpecializationsListParams {
 	page?: number;
 	title?: string;
-	limit?: number;
 }

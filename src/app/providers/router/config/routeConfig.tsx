@@ -9,7 +9,6 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
-import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -23,7 +22,6 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
-import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -99,12 +97,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.questions.route,
 		title: 'tabs.questions',
 		icon: QuestionsIcon,
-	},
-	{
-		type: 'single',
-		route: ROUTES.admin.specialization.route,
-		title: 'tabs.specialization',
-		icon: SpecializationIcon,
 	},
 	{
 		type: 'single',

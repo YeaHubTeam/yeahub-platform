@@ -46,11 +46,6 @@
   object-position: right;
 }
 
-.skeleton-card-questions,
-.skeleton-card-history {
-  width: calc(50% - 10px);
-}
-
 @media (width <= 1440px) {
   .interview {
     width: 100%;
