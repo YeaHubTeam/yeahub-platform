@@ -1,18 +1,29 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import {
+	// useCallback,
+	useEffect,
+	useLayoutEffect,
+	useState,
+} from 'react';
 
 import { ThemeMods } from '../model/types/themeProvider';
-import { applyTheme, getSavedTheme, getSystemTheme } from '../utils/themeUtils';
+import {
+	applyTheme,
+	getSavedTheme,
+	// getSystemTheme
+} from '../utils/themeUtils';
 
-import styles from './ThemeSwitcher.module.css';
+// import styles from './ThemeSwitcher.module.css';
 
 /**
  * Theme switcher component.
  */
 
-const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+// const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+const matchMedia = window.matchMedia('(prefers-color-scheme: light)');
 
 export const ThemeSwitcher = () => {
-	const [currentTheme, setCurrentTheme] = useState<ThemeMods>(getSavedTheme() || 'auto');
+	// const [currentTheme, setCurrentTheme] = useState<ThemeMods>(getSavedTheme() || 'light');
+	const [currentTheme] = useState<ThemeMods>(getSavedTheme() || 'light');
 
 	/** Change theme */
 	useLayoutEffect(() => {
@@ -30,7 +41,7 @@ export const ThemeSwitcher = () => {
 	/** Changing the theme when changing the system theme */
 	useEffect(() => {
 		const changeSystemTheme = () => {
-			currentTheme === 'auto' && applyTheme(getSystemTheme());
+			// currentTheme === 'auto' && applyTheme(getSystemTheme());
 		};
 
 		matchMedia.addEventListener('change', changeSystemTheme);
@@ -40,14 +51,14 @@ export const ThemeSwitcher = () => {
 	}, [currentTheme]);
 
 	/** Caching function for repeated clicks */
-	const handleChangeMode = useCallback(
-		(themeName: ThemeMods) => () => setCurrentTheme(themeName),
-		[],
-	);
+	// const handleChangeMode = useCallback(
+	// 	(themeName: ThemeMods) => () => setCurrentTheme(themeName),
+	// 	[],
+	// );
 
 	return (
 		<div>
-			<button
+			{/* <button
 				onClick={handleChangeMode('auto')}
 				disabled={currentTheme === 'auto'}
 				className={styles.btn}
@@ -67,7 +78,7 @@ export const ThemeSwitcher = () => {
 				className={styles.btn}
 			>
 				dark
-			</button>
+			</button> */}
 		</div>
 	);
 };
