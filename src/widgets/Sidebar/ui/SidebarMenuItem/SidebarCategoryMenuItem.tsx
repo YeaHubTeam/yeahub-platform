@@ -18,11 +18,17 @@ interface SidebarMenuCategoryItemProps {
 const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryItemProps) => {
 	const location = useLocation();
 
-	const [expanded, setExpanded] = useState(
-		menuItem.elements.some((el) => location.pathname.endsWith(el.route)),
-	);
+	const [expanded, setExpanded] = useState(() => {
+		const savedValue = localStorage.getItem('savedExpanded');
+		return savedValue
+			? JSON.parse(savedValue)
+			: menuItem.elements.some((el) => location.pathname.endsWith(el.route));
+	});
+
 	const handleExpand = () => {
-		setExpanded(!expanded);
+		const newExpanded = !expanded;
+		setExpanded(newExpanded);
+		localStorage.setItem('savedExpanded', JSON.stringify(newExpanded));
 	};
 
 	const { t } = useI18nHelpers(i18Namespace.translation);

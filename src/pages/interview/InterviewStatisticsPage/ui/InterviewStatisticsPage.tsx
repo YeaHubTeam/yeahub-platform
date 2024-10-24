@@ -1,5 +1,9 @@
+import { useNavigate } from 'react-router-dom';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
@@ -21,6 +25,8 @@ import styles from './InterviewStatisticsPage.module.css';
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 	const { data: profileId } = useProfileQuery();
+	const navigate = useNavigate();
+	const isSpecializationEmpty = useCheckSpecialization(profileId);
 	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
 		profileId?.profiles[0].id ?? '',
 	);
@@ -62,6 +68,8 @@ const InterviewStatisticsPage = () => {
 			itemStyle: { color: '#6A0BFF' },
 		},
 	];
+
+	if (isSpecializationEmpty) navigate(ROUTES.interview.page);
 
 	return (
 		<div className={styles.container}>

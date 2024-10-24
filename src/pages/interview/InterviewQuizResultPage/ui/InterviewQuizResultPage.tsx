@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
+import { useCheckSpecialization } from '@/shared/hooks/useCheckSpecialization';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -25,6 +27,9 @@ const InterviewQuizResultPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
 	const { data: profileId } = useProfileQuery();
 	const { quizId } = useParams<QuizByIdRequestParams>();
+
+	const isSpecializationEmpty = useCheckSpecialization(profileId);
+	const navigate = useNavigate();
 
 	const { data, isLoading } = useGetQuizByIdQuery({
 		quizId: quizId ?? '',
@@ -59,6 +64,8 @@ const InterviewQuizResultPage = () => {
 	];
 
 	if (isLoading) return <InterviewQuizResultPageSkeleton />;
+
+	if (isSpecializationEmpty) navigate(ROUTES.interview.page);
 
 	return (
 		<div className={styles.container}>
