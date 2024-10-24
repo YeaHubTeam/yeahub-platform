@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { useState } from 'react';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import styles from './styles.module.css';
@@ -23,6 +25,7 @@ export const Modal = ({
 	buttonOutlineClick,
 	children,
 }: ModalProps) => {
+	const [focusedXCircle, setFocusedXCircle] = useState(false);
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const target = e.target as HTMLDivElement;
 		if (target && target.id === 'modal-overlay') {
@@ -30,8 +33,14 @@ export const Modal = ({
 		}
 	};
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+	const handleKeyDownOverlay = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
 		if (e.key === 'Escape') {
+			onClose();
+		}
+	};
+
+	const handleKeyDownXCircle = (e: React.KeyboardEvent<SVGElement>) => {
+		if (e.key === 'Enter') {
 			onClose();
 		}
 	};
@@ -43,9 +52,9 @@ export const Modal = ({
 			id="modal-overlay"
 			role="button"
 			tabIndex={0}
-			className={`${styles.overlay} ${isOpen ? styles['modal-open'] : ''}`}
-			onKeyDown={(e) => handleKeyDown(e)}
-			onClick={(e) => handleOverlayClick(e)}
+			className={classNames(styles.overlay, { [styles['modal-open']]: isOpen })}
+			onKeyDown={handleKeyDownOverlay}
+			onClick={handleOverlayClick}
 		>
 			<div className={styles.modal}>
 				<Icon
@@ -54,6 +63,11 @@ export const Modal = ({
 					className={styles['x-circle']}
 					color="--palette-ui-black-25"
 					onClick={onClose}
+					tabIndex={0}
+					aria-label="Close"
+					onFocus={() => setFocusedXCircle(true)}
+					onBlur={() => setFocusedXCircle(false)}
+					onKeyDown={focusedXCircle ? handleKeyDownXCircle : undefined}
 				/>
 				<h3 className={styles.title}>{title}</h3>
 				<div className={styles.content}>{children}</div>
