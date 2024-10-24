@@ -16,3 +16,10 @@
   object-fit: fill;
   border-radius: inherit;
 }
+
+@media (width <= 480px){
+  .wrapper {
+    width: 268px;
+    height: 193px;
+  }
+}

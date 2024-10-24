@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
@@ -23,6 +23,8 @@ export const AdditionalInfo = ({
 	questionSkills,
 	keywords,
 }: AdditionalInfoProps) => {
+	const navigate = useNavigate();
+
 	return (
 		<Card className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
@@ -45,6 +47,12 @@ export const AdditionalInfo = ({
 										theme="primary"
 										active
 										preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
+										onClick={() =>
+											navigate(
+												`${ROUTES.interview.questions.page}?page=1&status=all&skills=` +
+													encodeURIComponent(skill.id),
+											)
+										}
 									/>
 								);
 							})
@@ -59,7 +67,10 @@ export const AdditionalInfo = ({
 							return (
 								<Link
 									key={keyword}
-									to={`${ROUTES.interview.questions.page}?keywords=` + encodeURIComponent(keyword)}
+									to={
+										`${ROUTES.interview.questions.page}?page=1&status=all&keywords=` +
+										encodeURIComponent(keyword)
+									}
 								>{`#${keyword}`}</Link>
 							);
 						})}

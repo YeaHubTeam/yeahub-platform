@@ -17,7 +17,7 @@ type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 't
 
 export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-	const { data: skills } = useGetSkillsListQuery({});
+	const { data: skills } = useGetSkillsListQuery({ limit: 100 });
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
 

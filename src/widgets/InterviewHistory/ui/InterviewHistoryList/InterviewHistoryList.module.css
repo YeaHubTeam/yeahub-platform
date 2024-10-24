@@ -38,3 +38,10 @@
     flex-grow: 1;
   }
 }
+
+@media (width <= 480px) {
+  .list {
+    padding: 14px;
+  }
+	
+}

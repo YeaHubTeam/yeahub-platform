@@ -9,6 +9,14 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			details: {
+				route: ':questionId',
+				page: '/admin/questions/:questionId',
+			},
+			edit: {
+				route: ':questionId/edit',
+				page: '/admin/questions/:questionId/edit',
+			},
 		},
 		specialization: {
 			route: 'specialization',
@@ -20,6 +28,10 @@ export const ROUTES = {
 			create: {
 				route: 'create',
 				page: '/admin/skills/create',
+			},
+			detail: {
+				route: ':skillId',
+				page: '/admin/skills/:skillId',
 			},
 		},
 	},

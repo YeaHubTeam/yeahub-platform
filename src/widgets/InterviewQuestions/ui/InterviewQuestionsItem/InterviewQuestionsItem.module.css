@@ -32,22 +32,23 @@
 }
 
 .title::before {
-  margin-right: 12px;
+  flex-shrink: 0;
+  margin-right: 6px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
   transform: translateY(-50%);
-  content: '';
+  content: ''
 }
 
-@media(width <= 768px) {
+@media (width <= 768px) {
   .params {
     gap: 12px;
   }
 }
 
-@media(width <= 480px) {
+@media (width <= 480px) {
   .link {
     flex-direction: column;
     justify-content: center;
@@ -55,6 +56,11 @@
   }
 
   .params {
-    justify-content: center;
+    justify-content: start;
   }
+
+  .info {
+    width:100%;
+  }
+	
 }

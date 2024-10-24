@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
@@ -13,13 +13,16 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import sentryCreateBrowserRouter from '@/shared/config/sentry/sentry';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
+import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
+import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -112,7 +115,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 ];
 
-export const router = createBrowserRouter([
+export const router = sentryCreateBrowserRouter([
 	{
 		path: ROUTES.appRoute,
 		element: <App />,
@@ -134,8 +137,16 @@ export const router = createBrowserRouter([
 						element: <QuestionsTablePage />,
 					},
 					{
+						path: ROUTES.admin.questions.details.page,
+						element: <QuestionPage isAdmin />,
+					},
+					{
 						path: ROUTES.admin.questions.create.page,
 						element: <QuestionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.questions.edit.page,
+						element: <QuestionEditPage />,
 					},
 					{
 						path: ROUTES.admin.skills.route,
@@ -148,6 +159,10 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.skills.create.route,
 								element: <SkillCreatePage />,
+							},
+							{
+								path: ROUTES.admin.skills.detail.route,
+								element: <SkillDetailPage />,
 							},
 						],
 					},

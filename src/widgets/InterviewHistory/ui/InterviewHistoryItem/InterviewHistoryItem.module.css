@@ -26,8 +26,19 @@
 }
 
 .title {
-  padding: 8px 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-l);
   
+}
+
+.time {
+  display: inline-block;
+  margin-bottom: 8px;
+  color:var(--text-color-lightest);
+}
+
+@media (width <= 480px){
+  .title {
+    margin-bottom: 14px;
+  }
 }
