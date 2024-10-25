@@ -1,23 +1,46 @@
 {
   "title": "Questions",
   "name": "Title",
-  "specialization": "Specialization",
-  "skills": "Skills",
+  "addName": "Add question",
   "searchPlaceholder": "Enter a query...",
   "categories": {
     "title": "Questions Categories",
     "showAll": "Show all"
   },
-  "difficulty": {
-    "title": "Questions Difficulty"
+  "complexity": {
+    "title": "Questions Difficulty",
+    "select": "Select questions difficulty"
   },
   "rate": {
-    "title": "Questions Rating"
+    "title": "Questions Rating",
+    "select": "Select rate"
   },
   "status": {
     "title": "Status",
     "unlearned": "Unlearned",
     "learned": "Learned",
-    "all": "All"
-  }
+    "all": "All",
+    "select": "Select status"
+  },
+  "skills": {
+    "title": "Skills",
+    "addSkills": "add skills"
+  },
+  "longAnswer": {
+    "title": "long answer",
+    "add": "Add long answer"
+  },
+  "shortAnswer": {
+    "title": "Short answer",
+    "add": "Add short answer"
+  },
+  "description": {
+    "title": "Description",
+    "add": "Add description"
+  },
+  "specialization": {
+    "title": "Specialization",
+    "select": "Select specialization"
+  },
+  "keywords": "Keywords"
 }

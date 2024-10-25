@@ -1,9 +1,5 @@
 import { ReactNode } from 'react';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-
 import styles from './Table.module.css';
 
 interface TableProps<T> {
@@ -43,8 +39,6 @@ export const Table = <T extends { id: number }>({
 	selectedItems,
 	onSelectItems,
 }: TableProps<T>) => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
-
 	const hasActions = !!renderActions;
 
 	const isAllSelected = selectedItems?.length === items.length;
@@ -65,14 +59,14 @@ export const Table = <T extends { id: number }>({
 	};
 
 	return (
-		<table style={{ width: '100%' }}>
+		<table className={styles.table}>
 			<thead className={styles.head}>
 				<tr>
 					<td className={styles.cell}>
 						<input type="checkbox" checked={isAllSelected} onChange={onSelectAllItems} />
 					</td>
 					{renderTableHeader()}
-					{hasActions && <td>{t(Translation.ACTIONS)}</td>}
+					{hasActions && <td className={styles.actionsColumn}></td>}
 				</tr>
 			</thead>
 			<tbody>

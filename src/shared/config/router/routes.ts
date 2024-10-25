@@ -5,6 +5,34 @@ export const ROUTES = {
 		questions: {
 			route: 'questions',
 			page: '/admin/questions',
+			create: {
+				route: 'create',
+				page: '/admin/questions/create',
+			},
+			details: {
+				route: ':questionId',
+				page: '/admin/questions/:questionId',
+			},
+			edit: {
+				route: ':questionId/edit',
+				page: '/admin/questions/:questionId/edit',
+			},
+		},
+		specialization: {
+			route: 'specialization',
+			page: '/admin/specialization',
+		},
+		skills: {
+			route: 'skills',
+			page: '/admin/skills',
+			create: {
+				route: 'create',
+				page: '/admin/skills/create',
+			},
+			detail: {
+				route: ':skillId',
+				page: '/admin/skills/:skillId',
+			},
 		},
 	},
 	auth: {

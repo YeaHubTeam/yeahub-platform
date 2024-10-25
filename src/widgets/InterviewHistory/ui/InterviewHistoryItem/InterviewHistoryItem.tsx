@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -18,12 +19,12 @@ export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) =
 	const { id, successCount, fullCount } = interview;
 	const incorrectAnswersCount = fullCount - successCount;
 	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
-	const formattedDate = formatDate(new Date(interview.endDate));
+	const formattedDate = formatDate(parseISO(interview.endDate), 'dd/MM/yyyy');
 
 	return (
 		<li className={styles.item}>
 			<Link to={route(ROUTES.interview.history.result.page, id)} className={styles.link}>
-				<time>{formattedDate}</time>
+				<time className={styles.time}>{formattedDate}</time>
 				<div className={styles.info}>
 					<h4 className={styles.title}>{t('title', { number: interview.quizNumber })}</h4>
 					<ul className={styles.params}>

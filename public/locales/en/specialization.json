@@ -2,5 +2,13 @@
   "skillForm": {
     "skillSelect": "Select skill from the list",
     "emptySkillSelect": "No options available"
+  },
+  "specialization": {
+    "title": "Title",
+    "description": "Specializations description",
+    "not.items": "No specializations",
+    "image.src": "Image url",
+    "create.page.title": "Creating new specialization",
+    "edit.page.title": "Edit specialization"
   }
 }

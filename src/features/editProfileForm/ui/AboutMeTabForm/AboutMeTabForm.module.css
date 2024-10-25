@@ -25,11 +25,21 @@
   padding: 16px;
   width: 100%;
   max-width: 706px;
-  border: 1px solid var(--color-black-50); 
-  border-radius: 24px;
-  resize: vertical;
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid var(--color-black-50);
+  border-radius: 14px;
+  resize: none;
 }
-  
+ 
+.textarea::-webkit-scrollbar {
+  width: 3px; 
+}
+ 
+.textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(0 0 0 / 0%);
+}
+
 .textarea:focus {
   outline: none;
 }

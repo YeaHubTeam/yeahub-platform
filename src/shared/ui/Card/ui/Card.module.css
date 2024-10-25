@@ -15,8 +15,9 @@
 }
 
 .card-header-title {
+  color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
+  font-size: var(--font-size-h-xs)
 }
 
 .content {
@@ -25,6 +26,10 @@
 
 .content-shadow {
   box-shadow: 0 4px 10px 0 #6A63761A;
+}
+
+.content-bottom {
+  margin-bottom: 48px;
 }
 
 .card-expandable {
@@ -110,12 +115,6 @@
   bottom: 24px;
 }
 
-@media (width <= 1440px) {
-  .content {
-    margin-bottom: 48px;
-  }
-}
-
 @media (width <= 768px) {
   .header {
     position: relative;
@@ -144,4 +143,12 @@
     bottom: 16px;
     left: 16px;
   }
+
+  .card {
+    padding:16px;
+  }
+	
+  .content {
+    margin-bottom:40px;
+  } 
 }

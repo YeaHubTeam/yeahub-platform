@@ -8,6 +8,8 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
+import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -15,7 +17,13 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
+import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
+import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
+import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
+import { SkillsPage } from '@/pages/admin/SkillsPage';
+import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -92,6 +100,18 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: 'tabs.questions',
 		icon: QuestionsIcon,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.specialization.route,
+		title: 'tabs.specialization',
+		icon: SpecializationIcon,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.skills.route,
+		title: 'tabs.skills',
+		icon: SkillsIcon,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -114,6 +134,40 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.questions.route,
 						element: <QuestionsTablePage />,
+					},
+					{
+						path: ROUTES.admin.questions.details.page,
+						element: <QuestionPage isAdmin />,
+					},
+					{
+						path: ROUTES.admin.questions.create.page,
+						element: <QuestionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.questions.edit.page,
+						element: <QuestionEditPage />,
+					},
+					{
+						path: ROUTES.admin.skills.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <SkillsPage />,
+							},
+							{
+								path: ROUTES.admin.skills.create.route,
+								element: <SkillCreatePage />,
+							},
+							{
+								path: ROUTES.admin.skills.detail.route,
+								element: <SkillDetailPage />,
+							},
+						],
+					},
+					{
+						path: ROUTES.admin.specialization.route,
+						element: <SpecializationsPage />,
 					},
 				],
 			},
@@ -218,7 +272,7 @@ export const router = createBrowserRouter([
 								path: ROUTES.interview.new.route,
 								element: <InterviewQuizPage />,
 								handle: {
-									crumb: Translation.CRUMBS_INTERVIEW,
+									crumb: Translation.CRUMBS_QUIZ,
 								},
 							},
 						],
