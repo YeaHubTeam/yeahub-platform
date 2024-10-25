@@ -42,12 +42,16 @@
   font-size: var(--font-size-p-xs);
 }
 
+.svg {
+  width: 170px;
+  height: 114px;
+  fill: var(--color-purple-900);
+}
+
 @media (width <= 480px) {
-  .img {
+  .svg {
     width: 54px;
     height: 56px;
-    object-fit: cover;
-    border-radius: 12px;
   }
 
   .title {

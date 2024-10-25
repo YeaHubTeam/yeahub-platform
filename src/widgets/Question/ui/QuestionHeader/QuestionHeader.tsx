@@ -1,4 +1,4 @@
-import QuestionImg from '@/shared/assets/images/question_img.png';
+import EmptyStub from '@/shared/assets/icons/EmptyStub.svg';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './QuestionHeader.module.css';
@@ -16,7 +16,7 @@ export const QuestionHeader = ({ title, description, status }: QuestionHeaderPro
 		<Card className={styles.wrapper}>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
-					<img className={styles.img} src={QuestionImg} alt="Question" />
+					<EmptyStub className={styles.svg} />
 				</div>
 				<div className={styles['title-wrapper']}>
 					<h2 className={styles.title}>{title}</h2>
