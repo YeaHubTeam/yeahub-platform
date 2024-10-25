@@ -109,7 +109,7 @@
 }
 
 
-
+/* 
 [theme="dark"] {
   --background-progress-bar: var(--color-purple-200);
   --background-app: var(--color-black-800);
@@ -135,7 +135,7 @@
   --icon-color-red: var(--color-red-600);
   --error-color-red: var(--color-red-700);
   --border-focus-purple: var(--color-purple-500);
-}
+} */
 
 body {
   min-height: 100vh;
