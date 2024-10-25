@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
+import { Skill } from '@/entities/skill';
+import { Specialization } from '@/entities/specialization';
 
 import { QuestionEditForm } from '@/features/question/editQuestion';
 
@@ -17,7 +19,21 @@ const QuestionEditPage = () => {
 		return null;
 	}
 
-	return <QuestionEditForm question={question} />;
+	const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
+		return arg ? arg.map((el) => el.id) : [];
+	};
+
+	const { questionSkills, questionSpecializations, ...formattedQuestion } = question;
+
+	return (
+		<QuestionEditForm
+			question={{
+				...formattedQuestion,
+				skills: formatToFormField<Skill[]>(questionSkills),
+				specializations: formatToFormField<Specialization[]>(questionSpecializations),
+			}}
+		/>
+	);
 };
 
 export default QuestionEditPage;
