@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Button, Icon } from 'yeahub-ui-kit';
 
 import styles from './styles.module.css';
@@ -25,22 +25,22 @@ export const Modal = ({
 	buttonOutlineClick,
 	children,
 }: ModalProps) => {
-	const [focusedXCircle, setFocusedXCircle] = useState(false);
+	const modalRef = useRef<HTMLDivElement>(null);
+
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		const target = e.target as HTMLDivElement;
-		if (target && target.id === 'modal-overlay') {
+		const target = e.target as Node;
+		if (modalRef.current && !modalRef.current.contains(target)) {
 			onClose();
 		}
 	};
 
-	const handleKeyDownOverlay = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
+	const handleClickXCircle = () => {
+		onClose();
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
+		e.stopPropagation();
 		if (e.key === 'Escape') {
-			onClose();
-		}
-	};
-
-	const handleKeyDownXCircle = (e: React.KeyboardEvent<SVGElement>) => {
-		if (e.key === 'Enter') {
 			onClose();
 		}
 	};
@@ -49,11 +49,11 @@ export const Modal = ({
 
 	return (
 		<div
-			id="modal-overlay"
 			role="button"
+			aria-labelledby="У вас открыто модальное окно"
 			tabIndex={0}
 			className={classNames(styles.overlay, { [styles['modal-open']]: isOpen })}
-			onKeyDown={handleKeyDownOverlay}
+			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
 			<div className={styles.modal}>
@@ -62,12 +62,10 @@ export const Modal = ({
 					type="button"
 					className={styles['x-circle']}
 					color="--palette-ui-black-25"
-					onClick={onClose}
+					onClick={handleClickXCircle}
 					tabIndex={0}
-					aria-label="Close"
-					onFocus={() => setFocusedXCircle(true)}
-					onBlur={() => setFocusedXCircle(false)}
-					onKeyDown={focusedXCircle ? handleKeyDownXCircle : undefined}
+					aria-label="Закрыть модальное окно"
+					onKeyDown={handleKeyDown}
 				/>
 				<h3 className={styles.title}>{title}</h3>
 				<div className={styles.content}>{children}</div>
