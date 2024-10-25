@@ -6,6 +6,11 @@
   margin-right: 10px;
 }
 
+.image {
+  width: 170px;
+  height: 114px;
+}
+
 .title-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,18 +47,8 @@
   font-size: var(--font-size-p-xs);
 }
 
-.svg {
-  width: 170px;
-  height: 114px;
-  fill: var(--color-purple-900);
-}
 
 @media (width <= 480px) {
-  .svg {
-    width: 54px;
-    height: 56px;
-  }
-
   .title {
     font-size: var(--font-size-p-s);
   }
@@ -64,5 +59,10 @@
 
   .label-wrapper {
     width: 54px;
+  }
+
+  .image {
+    width: 54px;
+    height: 56px;
   }
 }
