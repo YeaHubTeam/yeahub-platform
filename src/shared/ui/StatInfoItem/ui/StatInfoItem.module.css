@@ -1,17 +1,25 @@
 .stat {
-  gap: 4px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   width: 100%;
   box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
-  border-radius: 16px;
+  border-radius: 5px;
   background-color: var(--background-block);
   font-size: var(--font-size-p-s);
 }
 
 .title {
-  color: var(--text-color-more-lightest);
+  color: var(--text-color-the-lightest);
+  line-height: 120%;
   font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-xs);
+  white-space: nowrap;
 }
+
+.value {
+  color: var(--text-color-primary);
+}
+
+
 
 @media (width <= 1280px) {
   .stat {

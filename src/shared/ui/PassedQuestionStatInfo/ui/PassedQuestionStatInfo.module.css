@@ -1,8 +1,8 @@
 .info {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  margin-top: 8px;
-  width: 100%;
+  margin-top: var(--font-size-h-s);
   font-size: var(--font-size-p-s);
 }
 

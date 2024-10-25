@@ -15,8 +15,9 @@
     "passed": "пройдено",
     "soon": "Скоро здесь \n появится статистика",
     "statsStudied": {
-      "allQuestions": "Всего вопросов",
-      "notStudied": "Не изучено",
+      "allQuestions": "Всего",
+      "newQuestions": "Новые",
+      "inProcess": "В процессе",
       "studied": "Изучено"
     },
     "linkText": "Посмотреть полностью"

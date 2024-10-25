@@ -179,6 +179,7 @@ export interface ProfileStats {
 		uniqueQuestionsCount: number;
 		learnedQuestionsCount: number;
 		unlearnedQuestionsCount: number;
+		inProgressQuestionsCount: number;
 	};
 	skillsStat: {
 		fullSkillsQuestionsMap: {

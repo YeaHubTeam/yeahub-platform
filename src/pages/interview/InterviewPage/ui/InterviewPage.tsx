@@ -69,17 +69,29 @@ const InterviewPage = () => {
 				{
 					title: t(Interview.STATS_STATSSTUDIED_ALLQUESTIONS),
 					value: String(profileStats.questionsStat.uniqueQuestionsCount),
+					route: `${ROUTES.interview.questions.page}?page=1&status=all`,
 				},
 				{
-					title: t(Interview.STATS_STATSSTUDIED_NOTSTUDIED),
+					title: t(Interview.STATS_STATSSTUDIED_NEWQUESTIONS),
 					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
+					route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
+				},
+				{
+					title: t(Interview.STATS_STATSSTUDIED_INPROCESS),
+					value: String(profileStats.questionsStat.inProgressQuestionsCount),
+					route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 				},
 				{
 					title: t(Interview.STATS_STATSSTUDIED_STUDIED),
 					value: String(profileStats.questionsStat.learnedQuestionsCount),
+					route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 				},
 			]
 		: [];
+
+	const allQuestion = profileStats?.questionsStat.uniqueQuestionsCount;
+	const newQuestion = profileStats?.questionsStat.unlearnedQuestionsCount;
+	const newUser = allQuestion === newQuestion;
 
 	const navigate = useNavigate();
 
@@ -176,7 +188,7 @@ const InterviewPage = () => {
 					title={t('stats.title')}
 					actionTitle={t('stats.linkText')}
 					actionRoute={ROUTES.interview.statistic.page}
-					actionDisabled={!lastActiveQuizInfo}
+					actionDisabled={newUser}
 				>
 					<PassedQuestionChart
 						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}

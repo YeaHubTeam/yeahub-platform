@@ -26,30 +26,27 @@ const InterviewStatisticsPage = () => {
 	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
 		profileId?.profiles[0].id ?? '',
 	);
+
 	const questionStats = [
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_ALLQUESTIONS),
 			value: `${profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}`,
-			route: ROUTES.interview.questions.page,
-			filter: 'all' as const,
+			route: `${ROUTES.interview.questions.page}?page=1&status=all`,
 		},
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_NEWQUESTIONS),
 			value: `${profileStats?.questionsStat?.unlearnedQuestionsCount ?? 0}`,
-			route: ROUTES.interview.questions.page,
-			filter: 'not-learned' as const,
+			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 		},
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_INPROCESS),
 			value: `${profileStats?.questionsStat?.inProgressQuestionsCount ?? 0}`,
-			route: ROUTES.interview.questions.page,
-			filter: 'all' as const,
+			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 		},
 		{
 			title: t(InterviewStatistics.QUESTIONSTATS_LEARNED),
 			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0}`,
-			route: ROUTES.interview.questions.page,
-			filter: 'learned' as const,
+			route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 		},
 	];
 
@@ -71,10 +68,6 @@ const InterviewStatisticsPage = () => {
 			itemStyle: { color: '#6A0BFF' },
 		},
 	];
-
-	if (!profileStats || isLoading) {
-		return <div>Loading...</div>;
-	}
 
 	return (
 		<div className={styles.container}>
