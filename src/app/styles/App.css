@@ -52,7 +52,6 @@
   --color-white-900: #FFF;
   --color-label-bg: rgb(209 209 209 / 27%);
   --color-code-gradient-end: #E8DAFF;
-  
 
   /* light theme colors */
   --background-progress-bar: var(--color-purple-200);
@@ -84,6 +83,7 @@
   --background-admin-sidebar-item-active: var(--color-yellow-600);
   --background-gradient-code-start: var(--color-white-900);
   --background-gradient-code-end: var(--color-code-gradient-end);
+  --background-modal-overlay: rgb(72 72 72 / 50%);
 
   /* dimensions */
   --font-size-p-xss: 10px;
@@ -103,6 +103,9 @@
   --focus-shadow: 0 0 0 3px var(--color-purple-100);
   --focus-shadow-error: 0 0 0 3px var(--color-red-100);
   --focus-shadow-valid: 0 0 0 3px var(--color-green-200);
+
+  /* z-index */
+  --z-index-modal: 1000;
 }
 
 
