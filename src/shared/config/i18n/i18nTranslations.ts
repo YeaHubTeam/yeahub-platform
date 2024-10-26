@@ -363,3 +363,13 @@ export enum Skills {
 	CREATE_PAGE_TITLE = 'skill.create.page.title',
 	IMAGE_SRC = 'skill.image.src',
 }
+
+export enum A11y {
+	BACK_BUTTON = 'buttons.backButton',
+	CLOSE_SIDEBAR = 'buttons.closeSidebar',
+	OPEN_SIDEBAR = 'buttons.openSidebar',
+	PREV_MONTH = 'buttons.prevMonth',
+	NEXT_MONTH = 'buttons.nextMonth',
+	PREV_INTERVIEW_QUESTION = 'buttons.prevInterviewQuestion',
+	NEXT_INTERVIEW_QUESTION = 'buttons.nextInterviewQuestion',
+}
