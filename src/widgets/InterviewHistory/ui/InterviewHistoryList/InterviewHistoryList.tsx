@@ -14,10 +14,10 @@ import { InterviewHistoryItem } from '../InterviewHistoryItem/InterviewHistoryIt
 import styles from './InterviewHistoryList.module.css';
 
 interface InterviewHistoryListProps {
-	width?: boolean;
+	className?: string;
 }
 
-export const InterviewHistoryList = ({ width = false }: InterviewHistoryListProps) => {
+export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListProps) => {
 	const profile = useProfileQuery();
 	const profileId = profile.data?.profiles[0].id;
 	const { t } = useI18nHelpers(i18Namespace.interview);
@@ -35,7 +35,7 @@ export const InterviewHistoryList = ({ width = false }: InterviewHistoryListProp
 
 	return (
 		<Card
-			className={width ? '' : styles['card-history']}
+			className={`${styles['card-history']} ${className}`}
 			actionRoute={ROUTES.interview.history.page}
 			actionTitle={t(Interview.HISTORY_PREPARATION_LINKTEXT)}
 			title={t(Interview.HISTORY_PREPARATION_TITLE)}

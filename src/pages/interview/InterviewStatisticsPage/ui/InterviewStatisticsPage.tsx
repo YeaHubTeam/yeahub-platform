@@ -95,7 +95,7 @@ const InterviewStatisticsPage = () => {
 				<PassedQuestionStatInfo stats={questionStats} />
 			</div>
 			<Card>
-				<InterviewHistoryList width={true} />
+				<InterviewHistoryList className={styles.history} />
 			</Card>
 			<Card className={styles.category} expandable>
 				<div className={styles['category-progress']}>

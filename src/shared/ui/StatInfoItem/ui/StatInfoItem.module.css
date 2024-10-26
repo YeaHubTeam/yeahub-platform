@@ -7,6 +7,10 @@
   font-size: var(--font-size-p-s);
 }
 
+.border {
+  border-radius: 16px;
+}
+
 .title {
   color: var(--text-color-the-lightest);
   line-height: 120%;
@@ -30,5 +34,9 @@
 @media (width <= 768px) {
   .stat {
     padding: 4px;
+  }
+
+  .border {
+    border-radius: 8px;
   }
 }

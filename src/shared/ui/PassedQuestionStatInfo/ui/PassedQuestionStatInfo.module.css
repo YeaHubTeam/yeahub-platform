@@ -1,9 +1,14 @@
 .info {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-top: var(--font-size-h-s);
+  width: 100%;
   font-size: var(--font-size-p-s);
+}
+
+.stat {
+  border-radius: 16px;
 }
 
 @media (width <= 996px) {
@@ -12,3 +17,14 @@
     margin-top: 16px;
   }
 }
+
+@media (width <= 768px) {
+  .stat {
+    border-radius: 8px;
+  }
+}
+
+
+
+
+

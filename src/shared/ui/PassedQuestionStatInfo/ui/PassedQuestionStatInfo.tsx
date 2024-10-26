@@ -21,7 +21,7 @@ export const PassedQuestionStatInfo = ({ stats }: PassedQuestionStatInfoProps) =
 						<StatInfoItem {...stat} />
 					</Link>
 				) : (
-					<StatInfoItem {...stat} key={index} />
+					<StatInfoItem {...stat} key={index} className={styles.stat} />
 				),
 			)}
 		</div>
