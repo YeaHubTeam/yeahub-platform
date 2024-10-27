@@ -1,15 +1,27 @@
 .section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
   border-radius: 24px;
-  background: var(--background-primary);
 }
 
 .input {
+  margin-right: auto;
+  padding: 12px 24px;
   width: 328px;
+  height: 48px;
+  border: 1px solid var(--color-black-50);
+  border-radius: 68px;
+
+  span {
+    margin: 0;
+  }
+
+  input::placeholder {
+    color: var(--color-black-900);
+    font-size: var(--font-size-p-m);
+  }
 }
 
 .navigate {
@@ -25,4 +37,18 @@
   width: 100%;
   height: 100%;
   color: var(--button-foreground);
+}
+
+.plus-svg {
+  margin-left: 8px;
+  width: 18px;
+  height: 18px;
+  stroke-width: 0;
+  fill: var(--color-white-900);
+}
+
+.search-svg {
+  width: 18px;
+  height: 18px;
+  fill:  var(--color-black-300);
 }

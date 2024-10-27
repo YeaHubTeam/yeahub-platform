@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
@@ -42,12 +43,24 @@ const QuestionsPage = () => {
 		//TODO implement removing selected questions
 	};
 
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth < 907);
+
+	useEffect(() => {
+		const handleResize = () => setWindowWidth(window.innerWidth < 907);
+
+		window.addEventListener('resize', handleResize);
+
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	const showRemoveButton = (windowWidth && selectedQuestions.length > 0) || !windowWidth;
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<Card className={styles.content}>
 				<SearchSection
 					to="create"
-					showRemoveButton={selectedQuestions.length > 0}
+					showRemoveButton={showRemoveButton}
 					onRemove={onRemoveQuestions}
 					onSearch={onChangeSearch}
 				/>
