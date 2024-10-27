@@ -1,11 +1,6 @@
 .wrapper {
-  margin: 90px auto 0;
+  margin: 24px auto 0;
 }
 
 
 
-@media (width <= 992px) {
-  .wrapper {
-    margin: 30px auto 0;
-  }
-}
