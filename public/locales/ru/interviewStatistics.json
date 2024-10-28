@@ -4,10 +4,10 @@
   },
   "questionStats": {
     "title": "Статистика пройденных вопросов по всем категориям",
-    "passedQuestions": "Пройдено вопросов",
-    "notStudied": "Не изучено",
-    "saved": "Сохранено",
-    "studied": "Изучено"
+    "learnedQuestions": "Изучено",
+    "inProcess": "В процессе",
+    "newQuestions": "Новые",
+    "allQuestions": "Всего"
   },
   "attemptStats": {
     "title": "Статистика пройденных собеседований",
