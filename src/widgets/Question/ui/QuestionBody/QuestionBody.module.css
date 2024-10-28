@@ -13,15 +13,6 @@
   font-size: var(--font-size-p-m);
 }
 
-.collapse {
-  height: 250px;
-  transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
-
-  &.expand {
-    height: 100%;
-  }
-}
-
 @media (width <=480px) {
   .text {
     font-weight: var(--font-weight-400);

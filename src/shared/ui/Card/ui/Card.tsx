@@ -79,7 +79,6 @@ export const Card = ({
 	actionRoute = '',
 	actionDisabled = false,
 	isActionPositionBottom = false,
-	onExpandChange,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -113,13 +112,7 @@ export const Card = ({
 	}, [expandable]);
 
 	const expandHandler = () => {
-		setIsExpand((prev) => {
-			const newState = !prev;
-			if (onExpandChange) {
-				onExpandChange(newState);
-			}
-			return newState;
-		});
+		setIsExpand((prev) => (prev = !prev));
 	};
 
 	const isHeightForExpand = contentHeight >= 250;

@@ -16,16 +16,16 @@
 }
 
 .additional {
-  display: flex;           
+  display: flex;
   flex-direction: column;
   gap: 20px;
   width: 360px;
   height: auto;
 }
 
-:is(.additional, .mobile) > div {
+/* :is(.additional, .mobile)>div {
   height: auto;
-}
+} */
 
 .author {
   grid-area: author;

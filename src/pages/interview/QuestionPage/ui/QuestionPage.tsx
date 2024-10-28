@@ -61,7 +61,6 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				{isAdmin && (
 					<Flex justify="between" className={styles['admin-nav']}>
 						<BackButton />
-
 						<NavLink style={{ marginLeft: 'auto' }} to="edit">
 							<Button>{t(Translation.EDIT)}</Button>
 						</NavLink>

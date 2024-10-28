@@ -35,7 +35,7 @@
 }
 
 .card-expandable {
-  min-height: 250px;
+  height: 250px;
 }
 
 .card-expand {
@@ -117,11 +117,11 @@
   bottom: 24px;
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .header {
     position: relative;
     flex-direction: column;
-    align-items: start;	
+    align-items: start;
   }
 
   .link {
@@ -135,22 +135,22 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <=480px) {
   .header {
     flex-direction: column;
     align-items: start;
   }
-  
+
   .link {
     bottom: 16px;
     left: 16px;
   }
 
   .card {
-    padding:16px;
+    padding: 16px;
   }
-	
+
   .content {
-    margin-bottom:40px;
-  } 
+    margin-bottom: 40px;
+  }
 }
