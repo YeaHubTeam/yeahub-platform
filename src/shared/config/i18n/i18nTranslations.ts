@@ -10,6 +10,7 @@ export enum Translation {
 	ACTIONS = 'actions',
 	LOADING = 'loading',
 	HELLO = 'hello',
+	SEARCH = 'search',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 
