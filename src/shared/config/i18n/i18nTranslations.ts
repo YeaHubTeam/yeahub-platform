@@ -59,6 +59,13 @@ export enum Translation {
 	FILELOADER_FILETYPES_PHOTO = 'fileLoader.fileTypes.photo',
 	FILELOADER_LIMIT = 'fileLoader.limit',
 
+	IMAGELOADER_MINRES = 'imageLoader.minRes',
+	IMAGELOADER_MAXRES = 'imageLoader.maxRes',
+	IMAGELOADER_SAVE = 'imageLoader.save',
+	IMAGELOADER_CHANGE = 'imageLoader.change',
+	IMAGELOADER_DELETE = 'imageLoader.delete',
+	IMAGELOADER_CROPPERTITLE = 'imageLoader.cropperTitle',
+
 	VALIDATION_REQUIRED = 'validation.required',
 
 	VALIDATION_PASSWORD_MIN = 'validation.password.min',
@@ -124,7 +131,8 @@ export enum Profile {
 	EDITING_TITLE = 'editingTitle',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
-	PHOTO_DELETEBUTTON = 'photo.deletePhotoButton',
+	PHOTO_CROPPERTITLE = 'photo.cropperTitle',
+	PHOTO_CROPPERDESCRIPTION = 'photo.cropperDescription',
 	PERSONALINFORMATIONFORM_TITLE = 'personalInformationForm.title',
 	PERSONALINFORMATIONFORM_DESCRIPTION = 'personalInformationForm.description',
 	PERSONALINFORMATIONFORM_FIRSTNAME = 'personalInformationForm.firstName',

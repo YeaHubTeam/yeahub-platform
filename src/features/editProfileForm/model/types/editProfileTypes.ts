@@ -44,7 +44,7 @@ export interface EditUserValue {
 	birthday: string | null;
 	address: string;
 	avatarUrl: string;
-	avatarImage?: FileList;
+	avatarImage?: string | null;
 }
 
 export interface ExtraArgument {
