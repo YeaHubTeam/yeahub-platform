@@ -6,31 +6,33 @@
 }
 
 .btn {
-  flex-shrink: 0 !important;
-  width: auto !important;
-  border-radius: 12px !important;
-  color: var(--text-color-bright) !important;
+  flex-shrink: 0 ;
+  width: auto ;
+  border-radius: 12px;
+  background-color: var(--color-white-900);
+  color: var(--text-color-light);
 }
 
 .btn svg {
-  color: var(--text-color-bright) !important;
+  color: var(--text-color-light);
 }
 
 .btn:is(:hover, :focus, :active) {
-  border: none !important;
-  color: var(--text-color-link-active) !important;
+  border: none;
+  background-color: var(--background-light-hover) ;
+  color: var(--text-color-link-active);
 }
 
 .active-btn svg {
-  color: var(--text-color-link-active) !important;
+  color: var(--text-color-link-active);
 }
 
 .btn:is(:hover, :focus, :active) svg {
-  color: var(--text-color-link-active) !important;
+  color: var(--text-color-link-active);
 }
 
 .active-btn {
-  border: none !important;
-  background-color: var(--text-color-lightest) !important;
-  color: var(--text-color-link-active) !important;
+  border: none ;
+  background-color: var(--background-light-hover);
+  color: var(--text-color-link-active);
 }

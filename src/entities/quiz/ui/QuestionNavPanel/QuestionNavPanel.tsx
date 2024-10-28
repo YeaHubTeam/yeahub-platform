@@ -38,7 +38,7 @@ export const QuestionNavPanel = ({
 			<div className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
-					onClick={goToNextSlide}
+					onClick={goToPrevSlide}
 					size="small"
 					aria-label={t(A11y.PREV_INTERVIEW_QUESTION)}
 					fullWidth={true}
@@ -59,7 +59,7 @@ export const QuestionNavPanel = ({
 			<div className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
-					onClick={goToPrevSlide}
+					onClick={goToNextSlide}
 					preffix={
 						<Icon color="--palette-ui-purple-700" icon="caretRight" size={20} key="caretRight" />
 					}
