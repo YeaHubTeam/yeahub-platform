@@ -12,45 +12,33 @@ import styles from './QuestionNavPanel.module.css';
 
 interface QuestionNavPanelProps {
 	answer: QuizQuestionAnswerType;
-	goToNextSlide: () => void;
-	goToPrevSlide: () => void;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	showResponseButtons?: boolean;
 	className?: string;
-	setIsAnswerVisible: (value: boolean) => void;
 	questionNumber: number;
 	totalCount: number;
+	goToNextSlide: () => void;
+	goToPrevSlide: () => void;
 }
 
 export const QuestionNavPanel = ({
-	goToNextSlide,
-	goToPrevSlide,
 	answer,
 	changeAnswer,
 	showResponseButtons = false,
 	className,
-	setIsAnswerVisible,
 	questionNumber,
 	totalCount,
+	goToNextSlide,
+	goToPrevSlide,
 }: QuestionNavPanelProps) => {
 	const { t } = useI18nHelpers(i18Namespace.a11y);
-
-	const handlePrevSlide = () => {
-		goToPrevSlide();
-		setIsAnswerVisible(false);
-	};
-
-	const handleRightSlide = () => {
-		goToNextSlide();
-		setIsAnswerVisible(false);
-	};
 
 	return (
 		<div className={classNames(styles.panel, className)}>
 			<div className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
-					onClick={handlePrevSlide}
+					onClick={goToNextSlide}
 					size="small"
 					aria-label={t(A11y.PREV_INTERVIEW_QUESTION)}
 					fullWidth={true}
@@ -71,7 +59,7 @@ export const QuestionNavPanel = ({
 			<div className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
-					onClick={handleRightSlide}
+					onClick={goToPrevSlide}
 					preffix={
 						<Icon color="--palette-ui-purple-700" icon="caretRight" size={20} key="caretRight" />
 					}

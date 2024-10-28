@@ -53,6 +53,16 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
+	const handlePrevSlide = () => {
+		setIsAnswerVisible(false);
+		goToPrevSlide();
+	};
+
+	const handleRightSlide = () => {
+		setIsAnswerVisible(false);
+		goToNextSlide();
+	};
+
 	const isLastQuestion = activeQuestion === totalCount;
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
@@ -91,11 +101,10 @@ const InterviewQuizPage = () => {
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}
-						goToNextSlide={goToNextSlide}
-						goToPrevSlide={goToPrevSlide}
+						goToNextSlide={handleRightSlide}
+						goToPrevSlide={handlePrevSlide}
 						answer={answer}
 						changeAnswer={changeAnswer}
-						setIsAnswerVisible={setIsAnswerVisible}
 						questionNumber={activeQuestion}
 						totalCount={totalCount}
 					/>
@@ -111,7 +120,7 @@ const InterviewQuizPage = () => {
 					/>
 					<Button
 						className={styles['end-button']}
-						onClick={isNextButton ? goToNextSlide : handleSubmitQuiz}
+						onClick={isNextButton ? handleRightSlide : handleSubmitQuiz}
 						disabled={isDisabled}
 					>
 						{isNextButton ? t('buttons.next') : t('buttons.complete')}
