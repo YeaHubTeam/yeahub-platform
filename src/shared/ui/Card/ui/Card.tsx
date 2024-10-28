@@ -21,7 +21,6 @@ interface CardProps {
 	actionDisabled?: boolean;
 	withShadow?: boolean;
 	isActionPositionBottom?: boolean;
-	onExpandChange?: (isExpand: boolean) => void;
 }
 
 interface ExpandIconProps {
