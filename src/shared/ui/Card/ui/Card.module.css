@@ -117,7 +117,7 @@
   bottom: 24px;
 }
 
-@media (width <=768px) {
+@media (width <= 768px) {
   .header {
     position: relative;
     flex-direction: column;
@@ -135,7 +135,7 @@
   }
 }
 
-@media (width <=480px) {
+@media (width <= 480px) {
   .header {
     flex-direction: column;
     align-items: start;
