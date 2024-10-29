@@ -4,6 +4,7 @@ import { Chip, Icon } from 'yeahub-ui-kit';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
+import { getIconSkillImage } from '@/shared/utils/getIconSkillImage';
 
 import { Skill } from '@/entities/skill';
 
@@ -46,7 +47,17 @@ export const AdditionalInfo = ({
 											label={skill.title}
 											theme="primary"
 											active
-											preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
+											preffix={
+												skill.imageSrc ? (
+													<img
+														style={{ width: 20, height: 20 }}
+														src={skill.imageSrc}
+														alt={skill.title}
+													/>
+												) : (
+													<Icon icon={getIconSkillImage(skill)} />
+												)
+											}
 											onClick={() =>
 												navigate(
 													`${ROUTES.interview.questions.page}?page=1&status=all&skills=` +

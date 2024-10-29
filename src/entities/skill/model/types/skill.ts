@@ -1,10 +1,11 @@
 export interface Skill {
 	id: number;
 	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
+	description?: string;
+	imageSrc?: string;
+	createdAt?: string;
+	updatedAt?: string;
+	active?: boolean;
 }
 
 export type SkillFormValues = Omit<Skill, 'id' | 'createdAt' | 'updatedAt'>;

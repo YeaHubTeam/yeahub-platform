@@ -49,6 +49,11 @@ export const QuizQuestionMode = ({ onChangeMode, modeFromURL }: QuizQuestionMode
 	};
 
 	return (
-		<BaseFilterSection data={quizQuestionMode} title="Выберите режим" onClick={handleChooseMode} />
+		<BaseFilterSection
+			data={quizQuestionMode}
+			title="Выберите режим"
+			onClick={handleChooseMode}
+			showIcon={false}
+		/>
 	);
 };

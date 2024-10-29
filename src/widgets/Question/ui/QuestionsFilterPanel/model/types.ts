@@ -9,6 +9,6 @@ export interface FilterParams {
 export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
 export interface QuestionFilterStatusItem {
-	id: QuestionFilterStatus;
+	id: number;
 	title: string;
 }

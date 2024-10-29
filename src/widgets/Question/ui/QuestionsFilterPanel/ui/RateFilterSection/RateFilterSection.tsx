@@ -30,5 +30,12 @@ export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSect
 		active: selectedRate?.some((selectedItem) => item.id === selectedItem),
 	}));
 
-	return <BaseFilterSection data={preparedData} title={t('rate.title')} onClick={onClick} />;
+	return (
+		<BaseFilterSection
+			data={preparedData}
+			title={t('rate.title')}
+			onClick={onClick}
+			showIcon={false}
+		/>
+	);
 };

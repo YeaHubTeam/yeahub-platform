@@ -38,6 +38,7 @@ export const ChooseQuestionComplexity = ({
 			data={preparedData}
 			title={t(Questions.COMPLEXITY_TITLE)}
 			onClick={handleChooseComplexity}
+			showIcon={false}
 		/>
 	);
 };
