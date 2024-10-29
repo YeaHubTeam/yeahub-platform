@@ -19,6 +19,7 @@ import { MenuItem } from '@/widgets/Sidebar';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
+import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
@@ -34,7 +35,7 @@ import { InterviewQuizPage } from '@/pages/interview/InterviewQuizPage';
 import { InterviewQuizResultPage } from '@/pages/interview/InterviewQuizResultPage';
 import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPage';
 import { MainPage } from '@/pages/interview/MainPage';
-import { QuestionPage } from '@/pages/interview/QuestionPage';
+import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
@@ -137,7 +138,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.questions.details.page,
-						element: <QuestionPage isAdmin />,
+						element: <AdminQuestionPage />,
 					},
 					{
 						path: ROUTES.admin.questions.create.page,
@@ -255,7 +256,7 @@ export const router = createBrowserRouter([
 									},
 									{
 										path: ROUTES.interview.questions.detail.route,
-										element: <QuestionPage />,
+										element: <InterviewQuestionPage />,
 										handle: {
 											crumb: Translation.CRUMBS_QUESTION_DETAIL,
 										},
