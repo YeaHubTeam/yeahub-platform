@@ -15,9 +15,10 @@
     "passed": "passed",
     "soon": "Statistics will \n appear here soon",
     "statsStudied": {
-      "allQuestions": "Questions overall",
-      "notStudied": "Not studied",
-      "studied": "Studied"
+      "allQuestions": "All questions",
+      "newQuestions": "New questions",
+      "inProcess": "In process",
+      "studied": "Fully studied"
     },
     "linkText": "View full"
   },

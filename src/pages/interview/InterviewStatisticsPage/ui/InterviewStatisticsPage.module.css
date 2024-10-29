@@ -32,6 +32,10 @@
   margin-top: 50px;
 }
 
+.history {
+  width: 100%
+}
+
 @media (width <= 1280px) {
   .container {
     grid-template-rows: repeat(4, auto);

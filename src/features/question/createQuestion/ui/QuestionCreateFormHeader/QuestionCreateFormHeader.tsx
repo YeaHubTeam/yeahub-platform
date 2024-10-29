@@ -27,7 +27,7 @@ export const QuestionCreateFormHeader = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			navigate('/questions');
+			navigate('/admin/questions');
 		}
 	}, [isSuccess, navigate]);
 
