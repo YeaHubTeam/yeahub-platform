@@ -32,7 +32,6 @@
 <body>
 <div id="root"></div>
   <script defer>
-
 document.addEventListener('keydown', function (e) {
   if (
     (e.ctrlKey && e.key.toLowerCase() === 'c') ||
@@ -45,12 +44,22 @@ document.addEventListener('keydown', function (e) {
 
 document.addEventListener('copy', function (e) {
   const selectedText = window.getSelection().toString();
-  if (selectedText) {
-    const copyText = `${selectedText}\n\nSource: https://localhost`;
+
+  const targetElement = e.target;
+
+  if (
+    targetElement.tagName.toLowerCase() === 'input' ||
+    targetElement.tagName.toLowerCase() === 'textarea'
+  ) {
+    e.clipboardData.setData('text/plain', selectedText);
+  } else if (selectedText) {
+    const copyText = 'https://yeahub.ru/';
     e.clipboardData.setData('text/plain', copyText);
-    e.preventDefault();
-  } 
+  }
+
+  e.preventDefault();
 });
+
   </script>
 </body>
 
