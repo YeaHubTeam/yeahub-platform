@@ -10,6 +10,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension } from './model/types/types';
+import { i18Namespace } from '@/shared/config/i18n';
 
 interface FileLoaderProps {
 	accept: Accept;
@@ -32,7 +33,7 @@ export const FileLoader = ({
 
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
@@ -89,7 +90,7 @@ export const FileLoader = ({
 			className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
 		>
 			<div className={style['svg-wrapper']}>
-				<img src={Gallery} alt="gallery-icon" />
+				<img src={Gallery} alt={t(Translation.FILELOADER_FILETYPES_PHOTO)} />
 			</div>
 
 			<p>

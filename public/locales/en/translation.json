@@ -11,6 +11,8 @@
   "hello": "Hello",
   "save": "Save",
   "cancel": "Cancel",
+  "logo": "Logo",
+  "avatar": "Avatar",
   "userPreferences": {
     "myProfile": "My profile",
     "logout": "Sign out"
@@ -161,5 +163,8 @@
         "failed": "Failed to complete the interview"
       }
     }
+  },
+  "error": {
+    "alt": "Лупа"
   }
 }

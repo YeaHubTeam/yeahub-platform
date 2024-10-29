@@ -6,13 +6,15 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
-
+import { i18Namespace } from '@/shared/config/i18n';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 
 import styles from './QuestionPreview.module.css';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 
 type QuestionProps = {
 	question: Question;
@@ -21,6 +23,7 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
+	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
@@ -75,7 +78,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					/>
 				</Popover>
 			</div>
-			{imageSrc && <img className={styles.image} alt={'asdasd'} src={imageSrc} />}
+			{imageSrc && <img className={styles.image} alt={t(Questions.IMAGE_ALT)} src={imageSrc} />}
 			<div className={styles.content}>
 				<TextHtml html={shortAnswer} />
 			</div>
