@@ -144,7 +144,9 @@ body {
   line-height: 140%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
+  user-select: none;
+  user-select: none;
+  user-select: none;
   user-select: none;
 }
 
