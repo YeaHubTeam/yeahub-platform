@@ -5,6 +5,8 @@ import { Icon, Popover, Button, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
@@ -55,7 +57,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 					placement="bottom-start"
 					body={
 						<div>
-							<NavLink to={`/admin/skills/${skill.id}`}>
+							<NavLink to={route(ROUTES.admin.skills.detail.page, skill.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto' }}

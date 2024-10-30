@@ -4,6 +4,8 @@ import { Icon, Button, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -66,7 +68,7 @@ export const QuestionsTable = ({
 					placement="bottom-start"
 					body={
 						<>
-							<NavLink to={`/admin/questions/${question.id}`}>
+							<NavLink to={route(ROUTES.admin.questions.details.route, question.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
@@ -78,7 +80,7 @@ export const QuestionsTable = ({
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/admin/questions/${question.id}/edit`}>
+							<NavLink to={route(ROUTES.admin.questions.edit.route, question.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}

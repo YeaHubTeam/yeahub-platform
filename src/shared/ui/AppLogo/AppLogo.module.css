@@ -3,14 +3,14 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: padding-left .5s ease-in-out;
+  transition: padding-left 0.5s ease-in-out;
 }
 
 .name {
   width: 100px;
   height: 32px;
   color: var(--text-color-primary);
-  transition: opacity .7s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
 }
 
 .white {
@@ -23,12 +23,24 @@
 
 .close {
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .center {
   padding-left: 8px;
-  transition: padding-left .4s ease-in-out;
+  transition: padding-left 0.4s ease-in-out;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  transition: padding-left 0.5s ease-in-out;
+}
+
+.landing-name {
+  width: 100px;
+  height: 32px;
+  transition: opacity 0.7s ease-in-out;
 }
 
 @media (width <= 768px) {
@@ -37,7 +49,6 @@
   }
 
   .logo-image {
-    padding-right: 0;  
-    
+    padding-right: 0;
   }
 }

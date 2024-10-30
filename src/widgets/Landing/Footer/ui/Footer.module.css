@@ -1,0 +1,142 @@
+.footer * {
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  padding: 64px 112px 18px;
+  border-radius: 20px 20px 0 0;
+  background: #18003E;
+  color: var(--text-color-white);
+}
+
+.container {
+  margin: 0 auto;  
+  width: 100%;
+  max-width: 1216px;
+}
+
+.container-logo {
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 130px;
+  height: 32px;
+}
+
+.container-logo a img{
+  padding-right: 5px;
+}
+
+.subtitle {
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.container-social {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 64px;
+  width: 100%;
+  max-width: 174px;
+  height: 28px;
+}
+
+.container-social svg  {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+.about {
+  margin-bottom: 35px;
+  color: var(--text-color-the-lightest);
+  line-height: 15px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
+}
+
+.footer hr {
+  margin-bottom: 20px;
+}
+
+.container-copyright {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 58px;
+  height: 28px;
+}
+
+.company-name {
+  color: var(--text-color-the-lightest);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.social-media-icon-wrapper {
+  aspect-ratio: 1 / 1;
+  height: 30px;
+}
+
+.figma {
+  aspect-ratio: 1 / 1;
+  width: 18px;
+}
+
+.github-icon, .figma{
+  width: auto;
+  height: 20px;
+}
+
+.copyright-icons svg {
+  fill: white;
+}
+
+.figma :nth-child(1) {
+  fill:#00BCFF;
+}
+
+.figma :nth-child(2) {
+  fill:#00CF7F;
+}
+
+.figma :nth-child(3) {
+  fill:#FF7361;
+}
+
+.figma :nth-child(4) {
+  fill:#FF4D12;
+}
+
+.figma :nth-child(5) {
+  fill:#B659FF;
+}
+
+@media (width <= 768px) {
+  .container-social {
+    margin-bottom: 50px;
+  }
+}
+
+@media  (width <= 360px) {
+  .github-icon, .figma{
+    width: auto;
+    height: 24px;
+  }
+
+  .container-social {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: var(--font-size-p-s);
+  }
+}

@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 4px;
+}
+
+.register-button a {
+  color: var(--text-color-white);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-l);
+}
+
+.login-button a {
+  color: var(--text-color-link-active);
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+}
