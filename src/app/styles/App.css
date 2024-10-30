@@ -174,3 +174,8 @@ input, textarea {
 ::-webkit-scrollbar-thumb:active {
   background: var(--color-purple-400);
 }
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
