@@ -40,12 +40,5 @@ export const StatusFilterSection = ({
 		}
 	};
 
-	return (
-		<BaseFilterSection
-			data={preparedData}
-			title={t('status.title')}
-			onClick={handleClick}
-			showIcon={false}
-		/>
-	);
+	return <BaseFilterSection data={preparedData} title={t('status.title')} onClick={handleClick} />;
 };

@@ -4,9 +4,9 @@ import { Chip, Icon } from 'yeahub-ui-kit';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
-import { getIconSkillImage } from '@/shared/utils/getIconSkillImage';
 
 import { Skill } from '@/entities/skill';
+import { getSkillDefaultIcon } from '@/entities/skill/utils/getSkillDefaultIcon';
 
 import styles from './AdditionalInfo.module.css';
 
@@ -55,7 +55,7 @@ export const AdditionalInfo = ({
 														alt={skill.title}
 													/>
 												) : (
-													<Icon icon={getIconSkillImage(skill)} />
+													<Icon icon={getSkillDefaultIcon(skill)} />
 												)
 											}
 											onClick={() =>

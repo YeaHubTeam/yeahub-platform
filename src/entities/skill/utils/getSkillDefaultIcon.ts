@@ -1,8 +1,8 @@
 import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
 
-import { DateType } from '../ui/BaseFilterSection/BaseFilterSection';
+import { Skill } from '../model/types/skill';
 
-export function getIconSkillImage<T>(skill: DateType<T>): IconsName {
+export function getSkillDefaultIcon(skill: Skill): IconsName {
 	switch (skill.title) {
 		case 'Python':
 			return 'file'; //нет подходящей иконки

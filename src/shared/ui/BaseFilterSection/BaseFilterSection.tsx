@@ -1,11 +1,9 @@
-import { Key } from 'react';
-import { Chip, Icon } from 'yeahub-ui-kit';
-
-import { getIconSkillImage } from '@/shared/utils/getIconSkillImage';
+import { Key, ReactNode } from 'react';
+import { Chip } from 'yeahub-ui-kit';
 
 import styles from './BaseFilterSection.module.css';
 
-export type DateType<T> = {
+type DateType<T> = {
 	id: T;
 	title: string;
 	imageSrc?: string;
@@ -16,14 +14,14 @@ interface BaseFilterSectionProps<T> {
 	title: string;
 	data: DateType<T>[];
 	onClick: (id: T) => void;
-	showIcon?: boolean;
+	getDefaultIcon?: (item: DateType<T>) => ReactNode;
 }
 
 export const BaseFilterSection = <T,>({
 	title,
 	data,
 	onClick,
-	showIcon = true,
+	getDefaultIcon,
 }: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
 		onClick(id);
@@ -34,21 +32,21 @@ export const BaseFilterSection = <T,>({
 			<h4 className={styles.title}>{title}</h4>
 			<div className={styles['category-wrapper']}>
 				{data &&
-					data.map((skill) => {
+					data.map((item) => {
 						return (
 							<Chip
-								key={skill?.id as Key}
-								label={skill.title}
+								key={item?.id as Key}
+								label={item.title}
 								theme="primary"
 								preffix={
-									skill.imageSrc ? (
-										<img style={{ width: 20, height: 20 }} src={skill.imageSrc} alt={skill.title} />
+									item.imageSrc ? (
+										<img style={{ width: 20, height: 20 }} src={item.imageSrc} alt={item.title} />
 									) : (
-										showIcon && <Icon icon={getIconSkillImage(skill)} />
+										getDefaultIcon && getDefaultIcon(item)
 									)
 								}
-								onClick={onHandleClick(skill.id)}
-								active={skill.active}
+								onClick={onHandleClick(item.id)}
+								active={item.active}
 							/>
 						);
 					})}
