@@ -114,7 +114,7 @@ export const Card = ({
 		setIsExpand((prev) => !prev);
 	};
 
-	const isHeightForExpand = contentHeight >= 250;
+	const isHeightForExpand = expandable && contentHeight >= 250;
 
 	return (
 		<Flex
