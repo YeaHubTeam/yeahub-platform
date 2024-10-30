@@ -6,9 +6,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill, useGetSkillsListQuery } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getSkillDefaultIcon } from '@/entities/skill/utils/getSkillDefaultIcon';
+import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
 
