@@ -27,8 +27,9 @@ export const DeleteSpecializationButton = ({
 		<Button
 			aria-label="Large"
 			style={{ width: 'auto', justifyContent: 'flex-start' }}
-			preffix={<Icon onClick={onDelete} icon="trash" size={20} color="--palette-ui-red-600" />}
+			preffix={<Icon icon="trash" size={20} color="--palette-ui-red-600" />}
 			theme="tertiary"
+			onClick={onDelete}
 		>
 			{t(Translation.DELETE)}
 		</Button>
