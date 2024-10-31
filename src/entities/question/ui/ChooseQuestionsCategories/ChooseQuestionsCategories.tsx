@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Button } from 'yeahub-ui-kit';
+import { Button, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { useGetSkillsListQuery } from '@/entities/skill';
+import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
 
@@ -55,12 +55,16 @@ export const ChooseQuestionsCategories = ({
 	}));
 
 	if (!prepareData) return null;
+
+	const skillIcon = (skill: Skill) => <Icon icon={getSkillDefaultIcon(skill)} />;
+
 	return (
 		<div className={styles.wrapper}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t('create.questions_categories')}
 				onClick={handleChooseSkill}
+				getDefaultIcon={skillIcon}
 			/>
 			<Button className={styles.button} theme="link" onClick={toggleShowAll}>
 				{!showAll ? 'Показать все' : 'Скрыть'}

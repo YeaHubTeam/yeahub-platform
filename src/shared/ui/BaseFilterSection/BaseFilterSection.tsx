@@ -1,5 +1,5 @@
-import { Key } from 'react';
-import { Chip, Icon } from 'yeahub-ui-kit';
+import { Key, ReactNode } from 'react';
+import { Chip } from 'yeahub-ui-kit';
 
 import styles from './BaseFilterSection.module.css';
 
@@ -14,9 +14,15 @@ interface BaseFilterSectionProps<T> {
 	title: string;
 	data: DateType<T>[];
 	onClick: (id: T) => void;
+	getDefaultIcon?: (item: DateType<T>) => ReactNode;
 }
 
-export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectionProps<T>) => {
+export const BaseFilterSection = <T,>({
+	title,
+	data,
+	onClick,
+	getDefaultIcon,
+}: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
 		onClick(id);
 	};
@@ -32,7 +38,13 @@ export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectio
 								key={item?.id as Key}
 								label={item.title}
 								theme="primary"
-								preffix={item.imageSrc ? <Icon icon="fileHtml" /> : null}
+								preffix={
+									item.imageSrc ? (
+										<img style={{ width: 20, height: 20 }} src={item.imageSrc} alt={item.title} />
+									) : (
+										getDefaultIcon && getDefaultIcon(item)
+									)
+								}
 								onClick={onHandleClick(item.id)}
 								active={item.active}
 							/>
