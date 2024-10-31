@@ -10,6 +10,7 @@ interface DrawerProps {
 	onClose: () => void;
 	children: React.ReactNode;
 	className?: string;
+	rootName?: 'mainLayout' | 'body';
 }
 
 const createPortalRoot = () => {
@@ -25,26 +26,20 @@ export const Drawer = ({
 	position = 'right',
 	onClose,
 	className,
+	rootName = 'mainLayout',
 }: DrawerProps) => {
 	const portalRootRef = useRef(document.getElementById('drawer-root') || createPortalRoot());
-	const bodyRef = useRef(document.querySelector('body')!);
+	const documentRootName = rootName === 'mainLayout' ? 'main' : 'body';
+	const renderRootRef = useRef(document.querySelector(documentRootName)!);
 
 	useEffect(() => {
-		const updatePageScroll = () => {
-			if (isOpen) {
-				bodyRef.current.style.overflow = 'hidden';
-			} else {
-				bodyRef.current.style.overflow = '';
-			}
-		};
-
-		updatePageScroll();
+		renderRootRef.current.style.overflow = isOpen ? 'hidden' : '';
 	}, [isOpen]);
 
 	useEffect(() => {
-		bodyRef.current.appendChild(portalRootRef.current);
+		renderRootRef.current.appendChild(portalRootRef.current);
 		const portal = portalRootRef.current;
-		const bodyEl = bodyRef.current;
+		const bodyEl = renderRootRef.current;
 
 		return () => {
 			portal.remove();
@@ -52,7 +47,7 @@ export const Drawer = ({
 		};
 	}, []);
 
-	const handleKetDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
 		if (event.key === 'Escape') {
 			onClose();
 		}
@@ -60,19 +55,20 @@ export const Drawer = ({
 
 	return createPortal(
 		<div
-			aria-hidden={isOpen ? 'false' : 'true'}
+			aria-hidden={isOpen}
 			className={classNames(styles['drawer-container'], className, {
 				[styles['open']]: isOpen,
 			})}
 		>
-			<div className={classNames(styles['drawer'], styles[position])} role="dialog">
+			<div
+				className={classNames(styles['drawer'], styles[position], {
+					[styles['absolute']]: rootName === 'mainLayout',
+				})}
+				role="dialog"
+			>
 				{children}
 			</div>
-			<button
-				className={styles['backdrop']}
-				onClick={onClose}
-				onKeyDown={(event) => handleKetDown(event)}
-			/>
+			<button className={styles['backdrop']} onClick={onClose} onKeyDown={handleKeyDown} />
 		</div>,
 		portalRootRef.current,
 	);
