@@ -24,6 +24,7 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
+import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
@@ -103,7 +104,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.specialization.route,
+		route: ROUTES.admin.specializations.route,
 		title: 'tabs.specialization',
 		icon: SpecializationIcon,
 	},
@@ -149,6 +150,14 @@ export const router = createBrowserRouter([
 						element: <QuestionEditPage />,
 					},
 					{
+						path: ROUTES.admin.specializations.page,
+						element: <SpecializationsPage />,
+					},
+					{
+						path: ROUTES.admin.specializations.edit.page,
+						element: <SpecializationEditPage />,
+					},
+					{
 						path: ROUTES.admin.skills.route,
 						element: <Outlet />,
 						children: [
@@ -165,10 +174,6 @@ export const router = createBrowserRouter([
 								element: <SkillDetailPage />,
 							},
 						],
-					},
-					{
-						path: ROUTES.admin.specialization.route,
-						element: <SpecializationsPage />,
 					},
 				],
 			},
