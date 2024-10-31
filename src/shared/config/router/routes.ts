@@ -21,10 +21,10 @@ export const ROUTES = {
 		specializations: {
 			route: 'specializations',
 			page: '/admin/specializations',
-			// details: {
-			// 	route: ':specializationId',
-			// 	page: '/admin/specializations/:specializationId',
-			// },
+			details: {
+				route: ':specializationId',
+				page: '/admin/specializations/:specializationId',
+			},
 			edit: {
 				route: ':specializationId/edit',
 				page: '/admin/specializations/:specializationId/edit',

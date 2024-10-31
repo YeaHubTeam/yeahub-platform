@@ -25,6 +25,7 @@ import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage';
+import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -161,6 +162,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.specializations.create.page,
 						element: <SpecializationCreatePage />,
+					},
+					{
+						path: ROUTES.admin.specializations.details.page,
+						element: <SpecializationDetailPage />,
 					},
 					{
 						path: ROUTES.admin.skills.route,
