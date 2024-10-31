@@ -1,5 +1,5 @@
-import { AppLogo } from '@/shared/ui/AppLogo';
 import { ROUTES } from '@/shared/config/router/routes';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 import { useProfileQuery } from '@/entities/auth';
 
