@@ -18,9 +18,21 @@ export const ROUTES = {
 				page: '/admin/questions/:questionId/edit',
 			},
 		},
-		specialization: {
-			route: 'specialization',
-			page: '/admin/specialization',
+		specializations: {
+			route: 'specializations',
+			page: '/admin/specializations',
+			details: {
+				route: ':specializationId',
+				page: '/admin/specializations/:specializationId',
+			},
+			edit: {
+				route: ':specializationId/edit',
+				page: '/admin/specializations/:specializationId/edit',
+			},
+			create: {
+				route: 'create',
+				page: '/admin/specializations/create',
+			},
 		},
 		skills: {
 			route: 'skills',

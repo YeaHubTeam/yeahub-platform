@@ -11,9 +11,9 @@ import { ProfilePageSkeleton } from './ProfilePage.skeleton';
 export const ProfilePage = () => {
 	const { data: profile, isLoading: profileLoading } = useProfileQuery();
 
-	const { data: profileSpecialization } = useGetSpecializationByIdQuery(
-		profile?.profiles[0].specializationId as number,
-	);
+	const { data: profileSpecialization } = useGetSpecializationByIdQuery({
+		specializationId: String(profile?.profiles[0].specializationId),
+	});
 
 	if (profileLoading) {
 		return <ProfilePageSkeleton />;

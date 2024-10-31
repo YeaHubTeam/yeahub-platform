@@ -44,10 +44,10 @@ export const SpecializationsTable = ({
 	const renderActions = (specialization: Specialization) => {
 		return (
 			<Flex gap="4">
-				<NavLink to={`/specializations/${specialization.id}`}>
+				<NavLink to={`/admin/specializations/${specialization.id}`}>
 					<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />
 				</NavLink>
-				<NavLink to={`/specializations/${specialization.id}/edit`}>
+				<NavLink to={`/admin/specializations/${specialization.id}/edit`}>
 					<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />
 				</NavLink>
 				<DeleteSpecializationButton specializationId={specialization.id} />
