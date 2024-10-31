@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
