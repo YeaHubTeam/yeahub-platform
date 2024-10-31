@@ -29,6 +29,10 @@ export const ROUTES = {
 				route: ':specializationId/edit',
 				page: '/admin/specializations/:specializationId/edit',
 			},
+			create: {
+				route: 'create',
+				page: '/admin/specializations/create',
+			},
 		},
 		skills: {
 			route: 'skills',
