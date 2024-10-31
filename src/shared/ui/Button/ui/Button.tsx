@@ -3,9 +3,9 @@ import React, { forwardRef } from 'react';
 
 import { ButtonProps } from '../types';
 
-import css from './UiButton.module.css';
+import styles from './Button.module.css';
 
-export const UiButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
 	(
 		{
 			size = 'M',
@@ -27,20 +27,20 @@ export const UiButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
 			<Component
 				ref={ref}
 				className={classnames(
-					css[tagName],
-					fullWidth ? css['button-full'] : css[`button-${size.toLowerCase()}`],
-					css[`${tagName}-${variant}`],
+					styles[tagName],
+					fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
+					styles[`${tagName}-${variant}`],
 					className,
 				)}
 				{...props}
 			>
 				{preffix}
-				{children && <span className={css['button-children']}>{children}</span>}
+				{children}
 				{suffix}
-				{(badge || badge === 0) && <div className={css['button-badge']}>{badge}</div>}
+				{badge && badge !== '0' ? <div className={styles['button-badge']}>{badge}</div> : null}
 			</Component>
 		);
 	},
 );
 
-UiButton.displayName = 'UiButton';
+Button.displayName = 'Button';

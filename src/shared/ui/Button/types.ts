@@ -1,4 +1,4 @@
-export type IconTheme =
+export type VariantType =
 	| 'primary'
 	| 'secondary'
 	| 'outline'
@@ -10,7 +10,7 @@ export type IconTheme =
 	| 'link';
 
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
-	variant?: IconTheme;
+	variant?: VariantType;
 	preffix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	fullWidth?: boolean;
