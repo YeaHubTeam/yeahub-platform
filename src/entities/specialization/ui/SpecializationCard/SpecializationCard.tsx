@@ -8,13 +8,14 @@ import { Flex } from '@/shared/ui/Flex';
 import { Specialization } from '../../model/types/specialization';
 
 import styles from './SpecializationCard.module.css';
+import { i18Namespace } from '@/shared/config/i18n';
 
 interface SpecializationCardProps {
 	specialization: Specialization;
 }
 
 export const SpecializationCard = ({ specialization }: SpecializationCardProps) => {
-	const { t } = useTranslation('specialization');
+	const { t } = useTranslation(i18Namespace.specialization);
 
 	return (
 		<Flex>
@@ -26,7 +27,7 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 								<img
 									className={classNames(styles['title-img-block-image'])}
 									src={specialization.imageSrc}
-									alt="img"
+									alt={t(SpecializationI18.SPECIALIZATION_IMAGE_ALT)}
 								/>
 							)}
 						</div>
