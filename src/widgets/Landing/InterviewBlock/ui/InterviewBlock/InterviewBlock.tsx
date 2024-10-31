@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import interviewImg from '@/shared/assets/images/landing/interviewImg.png';
@@ -5,6 +6,7 @@ import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobil
 import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { AdvantagesList } from '../AdvantagesList/AdvantagesList';
@@ -14,7 +16,12 @@ import { Skills } from '../Skills/Skills';
 import cls from './InterviewBlock.module.css';
 
 export const InterviewBlock = () => {
+	const navigate = useNavigate();
 	const { t } = useI18nHelpers(i18Namespace.landing);
+
+	const handleNavigate = () => {
+		navigate(ROUTES.platformRoute);
+	};
 
 	return (
 		<section className={cls['interview-block']}>
@@ -23,7 +30,12 @@ export const InterviewBlock = () => {
 					<span>{t(Landing.QUESTIONS_TOP)}</span>
 					<h2 className={cls.article}>{t(Landing.HEADER)}</h2>
 					<p className={cls['article-description']}>{t(Landing.HEADER_DESCRIPTION)}</p>
-					<Button tagName="button" theme="primary" className={cls['join-button']}>
+					<Button
+						tagName="button"
+						theme="primary"
+						className={cls['join-button']}
+						onClick={handleNavigate}
+					>
 						{t(Landing.JOIN)}
 					</Button>
 				</div>

@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { FilterIcon } from '@/shared/ui/_Icons/FilterIcon';
 import { LoopIcon } from '@/shared/ui/_Icons/LoopIcon';
@@ -12,7 +14,12 @@ import { FiltersList } from '../FiltersList/FiltersList';
 import cls from './CategoriesBlock.module.css';
 
 export const CategoriesBlock = () => {
+	const navigate = useNavigate();
 	const { t } = useI18nHelpers(i18Namespace.landing);
+
+	const handleNavigate = () => {
+		navigate(ROUTES.interview.quiz.page);
+	};
 
 	return (
 		<div className={cls['categories-block']}>
@@ -32,7 +39,9 @@ export const CategoriesBlock = () => {
 					<p>{t(Landing.DESCRIPTION_FILTER)}</p>
 				</div>
 			</div>
-			<Button className={cls['start-interview-button']}>{t(Landing.START_INTERVIEW)}</Button>
+			<Button className={cls['start-interview-button']} onClick={handleNavigate}>
+				{t(Landing.START_INTERVIEW)}
+			</Button>
 		</div>
 	);
 };
