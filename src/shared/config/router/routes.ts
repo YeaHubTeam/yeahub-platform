@@ -41,6 +41,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/skills/create',
 			},
+			edit: {
+				route: ':skillId/edit',
+				page: '/admin/skills/:skillId/edit',
+			},
 			detail: {
 				route: ':skillId',
 				page: '/admin/skills/:skillId',
