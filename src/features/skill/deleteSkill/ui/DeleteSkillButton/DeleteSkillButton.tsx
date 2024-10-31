@@ -24,7 +24,7 @@ export const DeleteSkillButton = ({ skillId }: DeleteSkillButtonProps) => {
 	return (
 		<Button
 			aria-label="Large"
-			style={{ width: 'auto' }}
+			style={{ width: 'auto', justifyContent: 'flex-start' }}
 			preffix={<Icon onClick={onDeleteSkill} icon="trash" size={20} color="--palette-ui-red-600" />}
 			theme="tertiary"
 		>
