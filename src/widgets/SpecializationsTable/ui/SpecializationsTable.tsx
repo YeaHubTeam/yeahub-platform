@@ -63,7 +63,7 @@ export const SpecializationsTable = ({
 					placement="bottom-start"
 					body={
 						<>
-							<NavLink to={`/specializations/${specialization.id}`}>
+							<NavLink to={`/admin/specializations/${specialization.id}`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
@@ -75,7 +75,7 @@ export const SpecializationsTable = ({
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/specializations/${specialization.id}/edit`}>
+							<NavLink to={`/admin/specializations/${specialization.id}/edit`}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
