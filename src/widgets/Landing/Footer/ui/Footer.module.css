@@ -18,9 +18,10 @@
 
 .container-logo {
   margin-bottom: 16px;
-  width: 100%;
-  max-width: 130px;
   height: 32px;
+  width: 100%;
+  display: flex;
+  align-items: start;
 }
 
 .container-logo a img{
@@ -70,7 +71,6 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  max-width: 58px;
   height: 28px;
 }
 
@@ -86,13 +86,13 @@
 }
 
 .figma {
-  aspect-ratio: 1 / 1;
-  width: 18px;
+  height: 20px;
+  width: 20px;
 }
 
-.github-icon, .figma{
-  width: auto;
-  height: 20px;
+.github-icon {
+  height: 28px;
+  width: 29px;
 }
 
 .copyright-icons svg {

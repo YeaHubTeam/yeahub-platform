@@ -2,8 +2,8 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useResize } from '@/shared/hooks/useResize';
-import { FigmaIcon } from '@/shared/ui/_Icons/FigmaIcon';
-import { SkillIcon } from '@/shared/ui/_Icons/SkillIcon';
+import { FigmaIcon } from '@/shared/ui/Icons/FigmaIcon';
+import { SkillIcon } from '@/shared/ui/Icons/SkillIcon';
 
 import cls from './CategoriesList.module.css';
 

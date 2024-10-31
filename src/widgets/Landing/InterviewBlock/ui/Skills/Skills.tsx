@@ -1,5 +1,5 @@
-import { FigmaIcon } from '@/shared/ui/_Icons/FigmaIcon';
-import { SkillIcon } from '@/shared/ui/_Icons/SkillIcon';
+import { FigmaIcon } from '@/shared/ui/Icons/FigmaIcon';
+import { SkillIcon } from '@/shared/ui/Icons/SkillIcon';
 
 import cls from './Skills.module.css';
 

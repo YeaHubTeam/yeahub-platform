@@ -2,7 +2,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useResize } from '@/shared/hooks/useResize';
-import { PencilIcon } from '@/shared/ui/_Icons/PencilIcon';
+import { PencilIcon } from '@/shared/ui/Icons/PencilIcon';
 
 import { Buttons } from '../Buttons/Buttons';
 

@@ -23,7 +23,7 @@ export const Footer = () => {
 		<footer className={cls.footer}>
 			<div className={cls.container}>
 				<div className={cls['container-logo']}>
-					<AppLogo isLanding isOpen={false} fill="white" />
+					<AppLogo isOpen={false} fill="white" navigateTo="#" />
 				</div>
 				{isMobile ? (
 					<p className={cls.subtitle}>{t(Landing.FOOTER_SLOGAN_MOBILE)}</p>
@@ -53,9 +53,7 @@ export const Footer = () => {
 							<FigmaLogo className={cls.figma} />
 						</NavLink>
 						<NavLink to="/">
-							<div>
-								<GithubLogo className={cls['github-icon']} />
-							</div>
+							<GithubLogo className={cls['github-icon']} />
 						</NavLink>
 					</div>
 				</div>

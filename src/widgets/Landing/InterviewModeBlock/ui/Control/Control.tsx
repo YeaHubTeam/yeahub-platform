@@ -1,11 +1,11 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { DislikeIcon } from '@/shared/ui/_Icons/DislikeIcon';
-import { LikeIcon } from '@/shared/ui/_Icons/LikeIcon';
-import { NextIcon } from '@/shared/ui/_Icons/NextIcon';
-import { PreviousIcon } from '@/shared/ui/_Icons/PreviousIcon';
-import { ReplayIcon } from '@/shared/ui/_Icons/ReplayIcon';
+import { DislikeIcon } from '@/shared/ui/Icons/DislikeIcon';
+import { LikeIcon } from '@/shared/ui/Icons/LikeIcon';
+import { NextIcon } from '@/shared/ui/Icons/NextIcon';
+import { PreviousIcon } from '@/shared/ui/Icons/PreviousIcon';
+import { ReplayIcon } from '@/shared/ui/Icons/ReplayIcon';
 
 import cls from './Control.module.css';
 

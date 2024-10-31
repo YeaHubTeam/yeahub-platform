@@ -5,8 +5,8 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { FilterIcon } from '@/shared/ui/_Icons/FilterIcon';
-import { LoopIcon } from '@/shared/ui/_Icons/LoopIcon';
+import { FilterIcon } from '@/shared/ui/Icons/FilterIcon';
+import { LoopIcon } from '@/shared/ui/Icons/LoopIcon';
 
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import { FiltersList } from '../FiltersList/FiltersList';

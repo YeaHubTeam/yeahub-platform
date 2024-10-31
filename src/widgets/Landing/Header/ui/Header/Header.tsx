@@ -1,4 +1,5 @@
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { ROUTES } from '@/shared/config/router/routes';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -13,7 +14,7 @@ export const Header = () => {
 	return (
 		<header className={cls.header}>
 			<div className={cls.container}>
-				<AppLogo isOpen={false} isLanding />
+				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 			</div>
 			{profile?.firstName ? (
 				<AuthorizedBlock firstName={profile.firstName} avatarURL={profile.avatarUrl} />

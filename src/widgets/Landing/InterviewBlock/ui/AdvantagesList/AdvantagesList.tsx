@@ -1,9 +1,9 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { KnowledgebaseIcon } from '@/shared/ui/_Icons/KnowledgebaseIcon';
-import { ProgressIcon } from '@/shared/ui/_Icons/ProgressIcon';
-import { TrainingIcon } from '@/shared/ui/_Icons/TrainingIcon';
+import { KnowledgebaseIcon } from '@/shared/ui/Icons/KnowledgebaseIcon';
+import { ProgressIcon } from '@/shared/ui/Icons/ProgressIcon';
+import { TrainingIcon } from '@/shared/ui/Icons/TrainingIcon';
 
 import cls from './AdvantagesList.module.css';
 

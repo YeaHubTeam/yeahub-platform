@@ -43,6 +43,10 @@
   transition: opacity 0.7s ease-in-out;
 }
 
+.pointer-event-none {
+  pointer-events: none;
+}
+
 @media (width <= 768px) {
   .name {
     display: none;
