@@ -23,6 +23,7 @@ import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
+import { SkillEditPage } from '@/pages/admin/SkillEditPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -159,6 +160,10 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.skills.create.route,
 								element: <SkillCreatePage />,
+							},
+							{
+								path: ROUTES.admin.skills.edit.route,
+								element: <SkillEditPage />,
 							},
 							{
 								path: ROUTES.admin.skills.detail.route,
