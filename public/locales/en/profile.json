@@ -24,6 +24,8 @@
   },
   "photo": {
     "title": "Profile photo",
+    "largePreview":"Large size avatar preview",
+    "smallPreview":"Small size avatar preview",
     "description": "Your photo will be visible to all members of Yeahub community",
     "cropperTitle": "Select an area for your profile photos.",
     "cropperDescription": "The thumbnail you choose will be used in the article, private messages, and comments."
@@ -55,7 +57,17 @@
     "skillSelect": "Select skill from the list",
     "emptySkillSelect": "No options available",
     "selectedSkills": "Selected skills",
-    "submitButtonText": "Save"
+    "submitButtonText": "Save",
+    "imageAlt":"Skill logo"
+  },
+  "projectsList": {
+    "imageAlt": "Project image"
+  },
+  "experienceList":{
+    "imageAlt": "Organization logo"
+  },
+  "achievmentsList":{
+    "imageAlt": "Achievement icon"
   },
   "buttons": {
     "edit": "Edit",
