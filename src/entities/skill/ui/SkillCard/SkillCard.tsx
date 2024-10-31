@@ -6,7 +6,6 @@ import { Flex } from '@/shared/ui/Flex';
 import { Skill } from '../../model/types/skill';
 
 import styles from './SkillCard.module.css';
-import { i18Namespace } from '@/shared/config/i18n';
 
 interface SkillCardProps {
 	skill: Skill;
