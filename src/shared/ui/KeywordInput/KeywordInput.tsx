@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Input, Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleChip } from '@/shared/ui/SimpleChip';
@@ -57,7 +57,7 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 			<Flex gap="8">
 				<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
 				<Button className={styles.button} onClick={handleClick}>
-					Добавить
+					{t(Translation.CREATE)}
 				</Button>
 			</Flex>
 			<Flex gap="16" direction="column">
