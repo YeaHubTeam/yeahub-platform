@@ -63,6 +63,12 @@
   font-size: var(--font-size-p-s);
 }
 
+.card-verify {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
 @media (width <= 768px) {
   .card-edit-icon {
     display: block;

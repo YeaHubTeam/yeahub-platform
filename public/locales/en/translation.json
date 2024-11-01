@@ -165,6 +165,7 @@
     }
   },
   "error": {
-    "alt": "Лупа"
-  }
+    "alt": "Loupe"
+  },
+  "settings": "Settings"
 }

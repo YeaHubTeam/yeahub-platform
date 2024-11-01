@@ -1,6 +1,13 @@
 import { differenceInYears } from 'date-fns';
+import { Link } from 'react-router-dom';
 
+import DoubleCheck from '@/shared/assets/icons/DoubleCheck.svg';
+import Time from '@/shared/assets/icons/Time.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
@@ -14,7 +21,11 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { firstName, lastName, birthday, phone, email, country, city } = profile;
+	const { firstName, lastName, birthday, phone, email, country, city, isEmailVerified } = profile;
+	const { t } = useI18nHelpers(i18Namespace.profile);
+	const upperCaseFirstLetter =
+		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).charAt(0).toUpperCase() +
+		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).slice(1);
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -57,7 +68,19 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					{phone}
 					{', '}{' '}
 				</h4>
-				<h4>{email}</h4>
+
+				{isEmailVerified ? (
+					<div className={styles['card-verify']}>
+						<DoubleCheck width={16} height={16} fill="#008616" /> {email}
+					</div>
+				) : (
+					<Link to={ROUTES.profile.settings.route}>
+						<div className={styles['card-verify']}>
+							<Time width={16} height={16} fill="#5E5E5E" /> <p> {upperCaseFirstLetter} </p>
+						</div>
+					</Link>
+				)}
+
 				{profile.profiles[0].socialNetwork?.length > 0 ? (
 					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
 				) : null}

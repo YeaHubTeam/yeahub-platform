@@ -39,6 +39,8 @@ export interface GetProfileResponse extends Omit<SignUp, 'password'> {
 	passwordHash: string;
 	userRoles: Role[];
 	avatarImage?: FileList;
+	emailVerificationToken: string | null;
+	isEmailVerified: boolean;
 }
 
 export interface GetAuthResponse {

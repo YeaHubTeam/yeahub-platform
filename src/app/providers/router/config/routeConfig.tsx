@@ -43,6 +43,7 @@ import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/Questio
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
+import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -221,6 +222,10 @@ export const router = createBrowserRouter([
 								handle: {
 									crumb: Translation.CRUMBS_PROFILE_EDITING,
 								},
+							},
+							{
+								path: ROUTES.profile.settings.route,
+								element: <SettingsProfilePage />,
 							},
 						],
 					},

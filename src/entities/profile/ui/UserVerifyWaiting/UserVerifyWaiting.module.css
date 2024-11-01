@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-title {
+  margin: 0;;
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-sm);
+}
+
+.card-text {
+  margin: 0;
+  width: 476px;
+  color: var(--text-black);
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.svg {
+  width: var(--font-size-h-s);
+  height: var(--font-size-h-s);
+  stroke: var(--background-primary);
+  fill: var(--background-primary);
+}
+
+.card-email {
+  line-height: 150%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+
+

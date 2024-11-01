@@ -13,6 +13,7 @@ export enum Translation {
 	SEARCH = 'search',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
+	SETTINGS = 'settings',
 	LOGO = 'logo',
 	AVATAR = 'avatar',
 	CRUMBS_PROFILE = 'crumbs.profile',
@@ -167,6 +168,13 @@ export enum Profile {
 	ACHIEVMENTSLIST_IMAGE_ALT = 'achievmentsList.imageAlt',
 	EXPERIENCELIST_IMAGE_ALT = 'experienceList.imageAlt',
 	PROJECTLIST_IMAGE_ALT = 'projectsList.imageAlt',
+	PROFILE_EMAIL_VERIFICATION_TITLE = 'emailVerification.title',
+	PROFILE_EMAIL_VERIFICATION_DESCRIPTION = 'emailVerification.description',
+	PROFILE_EMAIL_VERIFICATION_BUTTON = 'emailVerification.buttonText',
+	PROFILE_EMAIL_VERIFICATION_TEXT = 'emailVerification.verifyEmailText',
+	PROFILE_EMAIL_VERIFICATION_LETTER_SENT = 'emailVerification.letterSent',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_SUCCESS = 'emailVerification.verifySuccess',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_TEXT = 'emailVerification.verifyText',
 }
 
 export enum Auth {

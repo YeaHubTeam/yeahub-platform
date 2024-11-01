@@ -25,3 +25,5 @@ export {
 } from './ui/ProjectsCard';
 export { SkillsBlock, SkillsBlockList, SkillsBlockItem, SkillsBlockHeader } from './ui/SkillsCard';
 export { UserBlock, UserInfoBlock, UserImageBlock } from './ui/UserCard';
+
+export { SettingsProfile } from './ui/SettingsProfile';

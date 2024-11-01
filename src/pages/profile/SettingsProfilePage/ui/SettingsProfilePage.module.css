@@ -1,0 +1,13 @@
+.list {
+  margin-left: 20px;
+}
+
+.route {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--text-color-link-active);
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);
+  cursor: pointer;
+}

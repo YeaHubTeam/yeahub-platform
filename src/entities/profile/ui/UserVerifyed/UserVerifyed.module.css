@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-title {
+  margin: 0;
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-sm);
+}
+
+.card-text {
+  margin: 0;
+  width: 476px;
+  color: var(--text-black);
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--background-primary);
+  fill: var(--background-primary);
+}

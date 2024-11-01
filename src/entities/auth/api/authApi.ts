@@ -84,6 +84,19 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		verifyEmail: build.mutation<void, { token: string }>({
+			query: ({ token }) => ({
+				url: `auth/verify-email?token=${token}`,
+				method: 'POST',
+			}),
+			async onQueryStarted(_, { queryFulfilled }) {
+				try {
+					await queryFulfilled;
+				} catch (error) {
+					console.log(error);
+				}
+			},
+		}),
 	}),
 });
 
@@ -93,4 +106,5 @@ export const {
 	useProfileQuery,
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
+	useVerifyEmailMutation,
 } = authApi;

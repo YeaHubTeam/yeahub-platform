@@ -69,6 +69,10 @@ export const ROUTES = {
 			route: 'edit',
 			page: '/profile/edit',
 		},
+		settings: {
+			route: 'settings/email-verify',
+			page: '/profile/settings/email-verify',
+		},
 	},
 	interview: {
 		route: 'interview',

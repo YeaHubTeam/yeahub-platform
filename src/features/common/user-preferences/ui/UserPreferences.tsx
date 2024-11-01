@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover, Text } from 'yeahub-ui-kit';
 
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import Settings from '@/shared/assets/icons/Settings.svg';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
@@ -19,6 +20,8 @@ export const UserPreferences = () => {
 
 	const [trigger] = useLazyLogoutQuery();
 
+	const location = useLocation();
+
 	const handleLogoutUser = () => {
 		trigger();
 	};
@@ -30,7 +33,9 @@ export const UserPreferences = () => {
 			<div key="settingpopemvcdf" className={styles.settings}>
 				<NavLink
 					to={ROUTES.profile.page}
-					className={({ isActive }) => cn({ [styles['btn-active']]: isActive })}
+					className={({ isActive }) =>
+						cn({ [styles['btn-active']]: isActive && location.pathname === ROUTES.profile.page })
+					}
 				>
 					<Button
 						className={styles.button}
@@ -38,6 +43,24 @@ export const UserPreferences = () => {
 						preffix={<Icon key="userPreferenceUserIcon" icon="user" size={24} />}
 					>
 						{t(Translation.USERPREFERENCES_MYPROFILE)}
+					</Button>
+				</NavLink>
+
+				<NavLink
+					to={ROUTES.profile.settings.page}
+					className={({ isActive }) =>
+						cn({
+							[styles['btn-active']]:
+								isActive && location.pathname === ROUTES.profile.settings.page,
+						})
+					}
+				>
+					<Button
+						className={styles.button}
+						theme="tertiary"
+						preffix={<Settings key="userPreferenceSettings" width={24} height={24} />}
+					>
+						{t(Translation.SETTINGS)}
 					</Button>
 				</NavLink>
 				<Button
