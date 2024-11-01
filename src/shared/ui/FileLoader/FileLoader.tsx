@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 
 import Gallery from '@/shared/assets/images/Gallery.png';
+import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension } from './model/types/types';
-import { i18Namespace } from '@/shared/config/i18n';
 
 interface FileLoaderProps {
 	accept: Accept;
