@@ -37,7 +37,7 @@
 
 .left-block {
   margin-top: 20px;
-  width: 50.33%;
+  width: auto;
 }
 
 .left-block > span {
@@ -56,7 +56,7 @@
 }
 
 .wallpaper {
-  width: 100%;
+  width: 498px;
 }
 
 .right-block {
