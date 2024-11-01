@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Checkbox } from 'yeahub-ui-kit';
 
 import styles from './Table.module.css';
 
@@ -63,7 +64,7 @@ export const Table = <T extends { id: number }>({
 			<thead className={styles.head}>
 				<tr>
 					<td className={styles.cell}>
-						<input type="checkbox" checked={isAllSelected} onChange={onSelectAllItems} />
+						<Checkbox checked={isAllSelected} onChange={onSelectAllItems} />
 					</td>
 					{renderTableHeader()}
 					{hasActions && <td className={styles.actionsColumn}></td>}
@@ -73,8 +74,7 @@ export const Table = <T extends { id: number }>({
 				{items.map((item) => (
 					<tr key={item.id} className={styles.row}>
 						<td className={styles.cell}>
-							<input
-								type="checkbox"
+							<Checkbox
 								checked={selectedItems?.includes(item.id)}
 								onChange={onSelectItem(item.id)}
 							/>

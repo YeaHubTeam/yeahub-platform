@@ -6,8 +6,7 @@ import { Button } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Flex } from '@/shared/ui/Flex';
+import { BackHeader } from '@/shared/ui/BackHeader';
 
 import { useEditQuestionMutation } from '../../api/editQuestionApi';
 import { QuestionEditFormValues } from '../../model/types/questionEditPageTypes';
@@ -33,16 +32,13 @@ export const QuestionEditFormHeader = () => {
 	}, [navigate, isSuccess]);
 
 	return (
-		<Flex align="center" gap="8" justify={'between'}>
-			<BackButton />
-			<Flex gap="8">
-				<Button size="small" onClick={onResetFormValues} theme="secondary">
-					{t(Translation.CANCEL)}
-				</Button>
-				<Button size="small" disabled={isLoading} onClick={handleSubmit(onEditQuestion)}>
-					{t(Translation.SAVE)}
-				</Button>
-			</Flex>
-		</Flex>
+		<BackHeader>
+			<Button size="small" onClick={onResetFormValues} theme="secondary">
+				{t(Translation.CANCEL)}
+			</Button>
+			<Button size="small" disabled={isLoading} onClick={handleSubmit(onEditQuestion)}>
+				{t(Translation.SAVE)}
+			</Button>
+		</BackHeader>
 	);
 };

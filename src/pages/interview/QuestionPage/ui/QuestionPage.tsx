@@ -1,14 +1,8 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -29,8 +23,6 @@ interface QuestionPageProps {
 }
 
 export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
-
 	const { questionId } = useParams();
 	const { isMobile } = useScreenSize();
 
@@ -58,21 +50,12 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
-				{isAdmin && (
-					<Flex justify="between" className={styles['admin-nav']}>
-						<BackButton />
-
-						<NavLink style={{ marginLeft: 'auto' }} to="edit">
-							<Button>{t(Translation.EDIT)}</Button>
-						</NavLink>
-					</Flex>
-				)}
 				<QuestionHeader
 					description={question?.description}
 					status={question?.status}
 					title={question?.title}
 				/>
-				{!isAdmin && <ProgressBlock checksCount={question?.checksCount} />}
+				<ProgressBlock checksCount={question?.checksCount} />
 				<AdditionalInfo
 					rate={question?.rate}
 					keywords={question?.keywords}
@@ -82,12 +65,12 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
-				{!isAdmin && (
-					<QuestionActions
-						profileId={profile ? profile.profiles[0].id : ''}
-						questionId={questionId ? questionId : ''}
-					/>
-				)}
+
+				<QuestionActions
+					profileId={profile ? profile.profiles[0].id : ''}
+					questionId={questionId ? questionId : ''}
+				/>
+
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		);
@@ -95,15 +78,6 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 
 	return (
 		<>
-			{isAdmin && (
-				<Flex justify="between" className={styles['admin-nav']}>
-					<BackButton />
-
-					<NavLink style={{ marginLeft: 'auto' }} to="edit">
-						<Button>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</Flex>
-			)}
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					<QuestionHeader

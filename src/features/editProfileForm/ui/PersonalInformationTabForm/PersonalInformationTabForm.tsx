@@ -107,14 +107,6 @@ export const PersonalInformationTabForm = () => {
 							/>
 						)}
 					</FormControl>
-					<FormControl
-						className={styles.form}
-						name="skillLevel"
-						control={control}
-						label={t(Profile.PERSONALINFORMATIONFORM_GRADE)}
-					>
-						{(field) => <Input {...field} className={styles.input} placeholder="Junior" />}
-					</FormControl>
 				</Flex>
 			</Flex>
 			<Flex gap="16" className={styles.column}>

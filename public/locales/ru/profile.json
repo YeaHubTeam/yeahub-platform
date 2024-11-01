@@ -24,6 +24,8 @@
   },
   "photo": {
     "title": "Фото профиля",
+    "largePreview":"Большой размер превью аватара",
+    "smallPreview":"Маленький размер превью аватара",
     "description": "Ваше фото будет видно всем членам сообщества YeaHub",
     "cropperTitle": "Выберите область для фотографий профиля.",
     "cropperDescription": "Выбранная миниатюра будет использоваться в статьях, личных сообщениях и комментариях."
@@ -55,7 +57,17 @@
     "skillSelect": "Выберите навык из списка",
     "emptySkillSelect": "Нет доступных опций",
     "selectedSkills": "Выбранные навыки",
-    "submitButtonText": "Сохранить"
+    "submitButtonText": "Сохранить",
+    "imageAlt":"Логотип навыка"
+  },
+  "projectsList": {
+    "imageAlt": "Изображение проекта"
+  },
+  "experienceList":{
+    "imageAlt": "Логотип организации"
+  },
+  "achievmentsList":{
+    "imageAlt": "Иконка достижения"
   },
   "buttons": {
     "edit": "Редактировать",

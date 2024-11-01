@@ -14,3 +14,7 @@ export interface SpecializationsListParams {
 	title?: string;
 	limit?: number;
 }
+
+export interface SpecializationByIdParams {
+	specializationId?: string;
+}

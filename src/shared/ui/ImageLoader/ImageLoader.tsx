@@ -4,7 +4,7 @@ import { Cropper, ReactCropperElement } from 'react-cropper';
 import { FieldValues, UseFormSetValue } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Modal } from '@/shared/ui/Modal';
 
@@ -131,7 +131,7 @@ export const ImageLoader = ({
 					{!deleted && src ? (
 						<img
 							src={(croppedArea && 'data:image/png;base64,' + croppedArea) || src}
-							alt="avatar"
+							alt={t(Profile.PHOTO_TITLE)}
 							className={styles.img}
 						/>
 					) : (
@@ -185,12 +185,12 @@ export const ImageLoader = ({
 							<img
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['large-preview'])}
-								alt="Large avatar preview"
+								alt={t(Profile.PHOTO_PREVIEW_LARGE)}
 							/>
 							<img
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['small-preview'])}
-								alt="Small avatar preview"
+								alt={t(Profile.PHOTO_PREVIEW_SMALL)}
 							/>
 						</Flex>
 					</Flex>

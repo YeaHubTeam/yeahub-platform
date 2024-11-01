@@ -84,6 +84,7 @@
   --background-gradient-code-start: var(--color-white-900);
   --background-gradient-code-end: var(--color-code-gradient-end);
   --background-modal-overlay: rgb(72 72 72 / 50%);
+  --drawer-transition-speed: 0.3s;
 
   /* dimensions */
   --font-size-none: 0;
@@ -145,6 +146,11 @@ body {
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
   font-family: var(--font-family);
+  user-select: none;
+}
+
+input, textarea {
+  user-select: text;
 }
 
 .container {
@@ -168,4 +174,9 @@ body {
 
 ::-webkit-scrollbar-thumb:active {
   background: var(--color-purple-400);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
