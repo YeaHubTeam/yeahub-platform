@@ -16,7 +16,9 @@ export const UserImageBlock = ({ profile }: UserImageBlockProps) => {
 					<img src={profile.avatarUrl} alt="avatar" />
 				</div>
 			) : (
-				<AvatarWithoutPhoto />
+				<div className={styles['card-placeholder']}>
+					<AvatarWithoutPhoto />
+				</div>
 			)}
 		</div>
 	);
