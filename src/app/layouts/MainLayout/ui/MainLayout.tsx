@@ -21,8 +21,7 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const { data: profile, isLoading } = useProfileQuery();
-
-	const isAdmin = profile?.userRoles[0]?.name === 'admin';
+	const isAdmin = profile?.userRoles.some((role) => role.name === 'admin');
 
 	const filteredMenuItems = !isAdmin
 		? sidebarItems.filter((_, index) => index !== 0)
