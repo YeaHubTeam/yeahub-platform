@@ -7,7 +7,8 @@ export type VariantType =
 	| 'destructive-secondary'
 	| 'destructive-outline'
 	| 'destructive-tertiary'
-	| 'link';
+	| 'link'
+	| 'link-gray';
 
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	variant?: VariantType;
@@ -15,6 +16,6 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	suffix?: React.ReactNode;
 	fullWidth?: boolean;
 	size?: 'M' | 'L';
-	tagName?: 'a' | 'button';
 	badge?: string | number;
+	destructive?: boolean;
 }

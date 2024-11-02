@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 
-import { ButtonProps } from '../types';
-
 import styles from './Button.module.css';
+import { getTagName } from './model/helpers';
+import { ButtonProps } from './model/types';
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
 	(
@@ -12,15 +12,17 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 			variant = 'primary',
 			className = '',
 			fullWidth = false,
+			destructive = false,
 			children,
 			preffix,
 			suffix,
-			tagName = 'button',
 			badge,
 			...props
 		},
 		ref,
 	): JSX.Element => {
+		const tagName = getTagName(variant);
+
 		const Component = tagName as React.ElementType;
 
 		return (
@@ -29,7 +31,9 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 				className={classnames(
 					styles[tagName],
 					fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
-					styles[`${tagName}-${variant}`],
+					destructive && tagName === 'a'
+						? styles['a-link-destructive']
+						: styles[`${tagName}-${variant}`],
 					className,
 				)}
 				{...props}

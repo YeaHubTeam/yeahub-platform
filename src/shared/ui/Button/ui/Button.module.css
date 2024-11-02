@@ -361,6 +361,10 @@
     cursor: pointer;  
     text-decoration: underline;
   }
+  
+  &:active {
+    text-decoration: underline;
+  }
 
   svg {
     color: inherit;
@@ -376,7 +380,7 @@
 }
 
 /* link variants */
-.a-primary {
+.a-link {
   color: var(--link-text-color-primary);
 
   &:hover {
@@ -396,7 +400,7 @@
   }
 }
 
-.a-secondary {
+.a-link-gray {
   color: var(--link-text-color-secondary);
 
   &:hover {
@@ -416,7 +420,7 @@
   }
 }
 
-.a-destructive {  
+.a-link-destructive {  
   color: var(--link-text-color-destructive);
 
   &:hover {
