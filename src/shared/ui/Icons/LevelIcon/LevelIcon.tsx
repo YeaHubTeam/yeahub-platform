@@ -1,8 +1,8 @@
-import cls from './LevelIcon.module.css';
+import styles from './LevelIcon.module.css';
 
 export const LevelIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

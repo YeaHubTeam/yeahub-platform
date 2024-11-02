@@ -1,8 +1,8 @@
-import cls from './FilterIcon.module.css';
+import styles from './FilterIcon.module.css';
 
 export const FilterIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

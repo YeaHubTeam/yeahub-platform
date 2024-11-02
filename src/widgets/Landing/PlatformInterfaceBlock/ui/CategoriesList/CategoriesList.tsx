@@ -1,21 +1,20 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { useResize } from '@/shared/hooks/useResize';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { FigmaIcon } from '@/shared/ui/Icons/FigmaIcon';
 import { SkillIcon } from '@/shared/ui/Icons/SkillIcon';
 
-import cls from './CategoriesList.module.css';
+import styles from './CategoriesList.module.css';
 
 export const CategoriesList = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
-	const size = useResize();
-	const isTablet = size < 1440 && size >= 768;
+	const { isTablet, isLaptop } = useScreenSize();
 
 	return (
-		<div className={cls.container}>
-			<p className={cls.title}>{t(Landing.ANSWERS_CATEGORY)}</p>
-			<ul className={cls['categories-list']}>
+		<div className={styles.container}>
+			<p className={styles.title}>{t(Landing.ANSWERS_CATEGORY)}</p>
+			<ul className={styles['categories-list']}>
 				<li>
 					<FigmaIcon />
 					<p>Figma</p>
@@ -28,11 +27,11 @@ export const CategoriesList = () => {
 					<SkillIcon />
 					<p>Wireframing</p>
 				</li>
-				<li className={cls.css}>
+				<li className={styles.css}>
 					<FigmaIcon />
 					<p>CSS</p>
 				</li>
-				{isTablet ? (
+				{isTablet || isLaptop ? (
 					<li>
 						<FigmaIcon />
 						<p> Figma</p>
@@ -41,7 +40,7 @@ export const CategoriesList = () => {
 					''
 				)}
 			</ul>
-			<p className={cls.more}>{t(Landing.VIEW_MORE)}</p>
+			<p className={styles.more}>{t(Landing.VIEW_MORE)}</p>
 		</div>
 	);
 };

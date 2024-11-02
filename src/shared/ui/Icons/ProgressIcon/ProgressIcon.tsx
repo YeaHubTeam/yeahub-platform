@@ -1,8 +1,8 @@
-import cls from './ProgressIcon.module.css';
+import styles from './ProgressIcon.module.css';
 
 export const ProgressIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

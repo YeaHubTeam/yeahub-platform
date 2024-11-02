@@ -5,14 +5,14 @@ import { KnowledgebaseIcon } from '@/shared/ui/Icons/KnowledgebaseIcon';
 import { ProgressIcon } from '@/shared/ui/Icons/ProgressIcon';
 import { TrainingIcon } from '@/shared/ui/Icons/TrainingIcon';
 
-import cls from './AdvantagesList.module.css';
+import styles from './AdvantagesList.module.css';
 
 export const AdvantagesList = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	return (
-		<div className={cls.advantages}>
-			<ul className={cls['advantages-list']}>
+		<div className={styles.advantages}>
+			<ul className={styles['advantages-list']}>
 				<li>
 					<KnowledgebaseIcon />
 					<h3>{t(Landing.KNOWLEDGE_BASE_TITLE)}</h3>

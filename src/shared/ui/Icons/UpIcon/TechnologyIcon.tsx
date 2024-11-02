@@ -1,8 +1,8 @@
-import cls from './TechnologyIcon.module.css';
+import styles from './TechnologyIcon.module.css';
 
 export const TechnologyIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="46"

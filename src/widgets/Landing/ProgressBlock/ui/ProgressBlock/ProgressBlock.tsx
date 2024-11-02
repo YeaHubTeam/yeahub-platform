@@ -6,20 +6,20 @@ import { ProgressProfileIcon } from '@/shared/ui/Icons/ProgressProfileIcon';
 
 import { Statistics } from '../Statistics/Statistics';
 
-import cls from './ProgressBlock.module.css';
+import styles from './ProgressBlock.module.css';
 
 export const ProgressBlock = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	return (
-		<section className={cls['progress-block']}>
-			<div className={cls['left-block']}>
-				<div className={cls.caption}>
+		<section className={styles['progress-block']}>
+			<div className={styles['left-block']}>
+				<div className={styles.caption}>
 					<h2>{t(Landing.PROGRESS_BLOCK_TITLE)}</h2>
 					<p>{t(Landing.PROGRESS_BLOCK_SUBTITLE)}</p>
 				</div>
 
-				<ul className={cls['progress-list']}>
+				<ul className={styles['progress-list']}>
 					<li>
 						<ProgressProfileIcon />
 						{t(Landing.PROGRESS_BLOCK_ADVANTAGES_FIRST)}
@@ -31,7 +31,7 @@ export const ProgressBlock = () => {
 				</ul>
 			</div>
 
-			<div className={cls['right-block']}>
+			<div className={styles['right-block']}>
 				<Statistics />
 			</div>
 		</section>

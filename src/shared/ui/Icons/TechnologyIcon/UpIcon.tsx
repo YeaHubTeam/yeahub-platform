@@ -1,8 +1,8 @@
-import cls from './UpIcon.module.css';
+import styles from './UpIcon.module.css';
 
 export const UpIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="45"
 				height="46"

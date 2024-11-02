@@ -13,12 +13,14 @@ export const UnauthorizedBlock = () => {
 
 	return (
 		<nav className={styles.navigation}>
-			<Button theme="tertiary" className={styles['login-button']}>
-				<Link to={ROUTES.auth.login.page}>{t(Landing.LOGIN)}</Link>
-			</Button>
-			<Button className={styles['register-button']}>
-				<Link to={ROUTES.auth.register.page}>{t(Landing.REGISTER)}</Link>
-			</Button>
+			<Link to={ROUTES.auth.login.page}>
+				<Button theme="tertiary" className={styles['login-button']}>
+					{t(Landing.LOGIN)}
+				</Button>
+			</Link>
+			<Link to={ROUTES.auth.register.page}>
+				<Button className={styles['register-button']}>{t(Landing.REGISTER)}</Button>
+			</Link>
 		</nav>
 	);
 };

@@ -1,8 +1,8 @@
-import cls from './PencilIcon.module.css';
+import styles from './PencilIcon.module.css';
 
 export const PencilIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

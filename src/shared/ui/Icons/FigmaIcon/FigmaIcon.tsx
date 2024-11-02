@@ -1,8 +1,8 @@
-import cls from './FigmaIcon.module.css';
+import styles from './FigmaIcon.module.css';
 
 export const FigmaIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="20"
 				height="20"

@@ -1,8 +1,8 @@
-import cls from './NextIcon.module.css';
+import styles from './NextIcon.module.css';
 
 export const NextIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="28"
 				height="28"

@@ -1,8 +1,8 @@
-import cls from './DislikeIcon.module.css';
+import styles from './DislikeIcon.module.css';
 
 export const DislikeIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="22"
 				height="20"

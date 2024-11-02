@@ -444,7 +444,6 @@ export enum Landing {
 	PROGRESS_BLOCK_UNLEARNED = 'progressBlock.unlearned',
 	PROGRESS_BLOCK_ALL_QUESTIONS = 'progressBlock.allQuestions',
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
-	FOOTER_SLOGAN_MOBILE = 'footer.slogan.mobile',
-	FOOTER_SLOGAN_DEFAULT = 'footer.slogan.default',
+	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 }

@@ -1,8 +1,8 @@
-import cls from './LikeIcon.module.css';
+import styles from './LikeIcon.module.css';
 
 export const LikeIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="22"
 				height="20"

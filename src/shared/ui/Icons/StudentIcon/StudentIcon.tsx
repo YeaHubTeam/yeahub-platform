@@ -1,8 +1,8 @@
-import cls from './StudentIcon.module.css';
+import styles from './StudentIcon.module.css';
 
 export const StudentIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

@@ -1,8 +1,8 @@
-import cls from './DecorationItem.module.css';
+import styles from './DecorationItem.module.css';
 
 export const DecorationItemIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="108"
 				height="86"

@@ -13,7 +13,7 @@ import { LoopIcon } from '@/shared/ui/Icons/LoopIcon';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import { FiltersList } from '../FiltersList/FiltersList';
 
-import cls from './CategoriesBlock.module.css';
+import styles from './CategoriesBlock.module.css';
 
 export const CategoriesBlock = () => {
 	const navigate = useNavigate();
@@ -27,11 +27,11 @@ export const CategoriesBlock = () => {
 	};
 
 	return (
-		<div className={cls['categories-block']}>
-			<div className={cls['content-container']}>
-				<div className={cls.content}>
-					<div className={cls.categories}>
-						<div className={cls['categories-input']}>
+		<div className={styles['categories-block']}>
+			<div className={styles['content-container']}>
+				<div className={styles.content}>
+					<div className={styles.categories}>
+						<div className={styles['categories-input']}>
 							<LoopIcon />
 							<input placeholder={t(Landing.SEARCH_INPUT_PLACEHOLDER)} disabled />
 						</div>
@@ -39,12 +39,12 @@ export const CategoriesBlock = () => {
 					</div>
 					<FiltersList />
 				</div>
-				<div className={cls['caption-block']}>
+				<div className={styles['caption-block']}>
 					<FilterIcon />
 					<p>{t(Landing.DESCRIPTION_FILTER)}</p>
 				</div>
 			</div>
-			<Button className={cls['start-interview-button']} onClick={handleNavigate}>
+			<Button className={styles['start-interview-button']} onClick={handleNavigate}>
 				{t(Landing.START_INTERVIEW)}
 			</Button>
 		</div>

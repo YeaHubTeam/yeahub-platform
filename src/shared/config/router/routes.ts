@@ -1,38 +1,38 @@
 export const ROUTES = {
 	appRoute: '/',
 	platformRoute: '/dashboard',
-	adminRoute: '/dashboard/admin/',
+	adminRoute: '/admin',
 	admin: {
 		questions: {
 			route: 'questions',
-			page: '/dashboard/admin/questions',
+			page: '/admin/questions',
 			create: {
 				route: 'create',
-				page: '/dashboard/admin/questions/create',
+				page: '/admin/questions/create',
 			},
 			details: {
 				route: ':questionId',
-				page: '/dashboard/admin/questions/:questionId',
+				page: '/admin/questions/:questionId',
 			},
 			edit: {
 				route: ':questionId/edit',
-				page: '/dashboard/admin/questions/:questionId/edit',
+				page: '/admin/questions/:questionId/edit',
 			},
 		},
 		specialization: {
 			route: 'specialization',
-			page: '/dashboard/admin/specialization',
+			page: '/admin/specialization',
 		},
 		skills: {
 			route: 'skills',
-			page: '/dashboard/admin/skills',
+			page: '/admin/skills',
 			create: {
 				route: 'create',
-				page: '/dashboard/admin/skills/create',
+				page: '/admin/skills/create',
 			},
 			detail: {
 				route: ':skillId',
-				page: '/dashboard/admin/skills/:skillId',
+				page: '/admin/skills/:skillId',
 			},
 		},
 	},

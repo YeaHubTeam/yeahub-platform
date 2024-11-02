@@ -7,17 +7,17 @@ import { NextIcon } from '@/shared/ui/Icons/NextIcon';
 import { PreviousIcon } from '@/shared/ui/Icons/PreviousIcon';
 import { ReplayIcon } from '@/shared/ui/Icons/ReplayIcon';
 
-import cls from './Control.module.css';
+import styles from './Control.module.css';
 
 export const Control = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	return (
-		<div className={cls.control}>
+		<div className={styles.control}>
 			<PreviousIcon />
 			<NextIcon />
 
-			<ul className={cls['control-list']}>
+			<ul className={styles['control-list']}>
 				<li>
 					<DislikeIcon />
 					<span>{t(Landing.DON_NOT_KNOW)}</span>

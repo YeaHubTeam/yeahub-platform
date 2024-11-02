@@ -1,8 +1,8 @@
-import cls from './SkillIcon.module.css';
+import styles from './SkillIcon.module.css';
 
 export const SkillIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="20"
 				height="20"

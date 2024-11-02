@@ -1,8 +1,8 @@
-import cls from './LoopIcon.module.css';
+import styles from './LoopIcon.module.css';
 
 export const LoopIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="15"
 				height="16"

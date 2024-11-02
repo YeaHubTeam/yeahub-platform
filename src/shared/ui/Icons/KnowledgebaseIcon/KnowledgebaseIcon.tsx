@@ -1,8 +1,8 @@
-import cls from './KnowledgebaseIcon.module.css';
+import styles from './KnowledgebaseIcon.module.css';
 
 export const KnowledgebaseIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="43"
 				height="45"

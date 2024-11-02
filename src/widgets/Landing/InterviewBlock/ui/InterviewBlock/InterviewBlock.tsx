@@ -15,7 +15,7 @@ import { AdvantagesList } from '../AdvantagesList/AdvantagesList';
 import { Progress } from '../Progress/Progress';
 import { Skills } from '../Skills/Skills';
 
-import cls from './InterviewBlock.module.css';
+import styles from './InterviewBlock.module.css';
 
 export const InterviewBlock = () => {
 	const navigate = useNavigate();
@@ -27,28 +27,28 @@ export const InterviewBlock = () => {
 	};
 
 	return (
-		<section className={cls['interview-block']}>
-			<div className={cls.container}>
-				<div className={cls['left-block']}>
+		<section className={styles['interview-block']}>
+			<div className={styles.container}>
+				<div className={styles['left-block']}>
 					<span>{t(Landing.QUESTIONS_TOP)}</span>
-					<h2 className={cls.article}>{t(Landing.HEADER)}</h2>
-					<p className={cls['article-description']}>{t(Landing.HEADER_DESCRIPTION)}</p>
+					<h2 className={styles.article}>{t(Landing.HEADER)}</h2>
+					<p className={styles['article-description']}>{t(Landing.HEADER_DESCRIPTION)}</p>
 					<Button
 						tagName="button"
 						theme="primary"
-						className={cls['join-button']}
+						className={styles['join-button']}
 						onClick={handleNavigate}
 					>
 						{t(Landing.JOIN)}
 					</Button>
 				</div>
-				<div className={cls['right-block']}>
+				<div className={styles['right-block']}>
 					<Skills />
 
 					<picture>
 						<source media="(max-width: 767px)" srcSet={interviewImgMobile} />
 						<source media="(max-width: 1439px)" srcSet={interviewImgTablet} />
-						<img className={cls.wallpaper} src={interviewImg} alt="wallpaper" />
+						<img className={styles.wallpaper} src={interviewImg} alt="wallpaper" />
 					</picture>
 
 					<Progress />

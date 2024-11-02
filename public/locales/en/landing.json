@@ -70,10 +70,7 @@
     "diagramLabel": "complete"
   },
   "footer": {
-    "slogan": {
-      "mobile": "Choose how IT will be tomorrow with us",
-      "default": "Choose how IT will be tomorrow \nwith us"
-    },
+    "slogan": "Choose how IT will be tomorrow \nwith us",
     "about": "YeaHub is fully open source project, which allows you to learn a new profession and become part of our friendly team, interview and improve your knowledge in practice."
   }
 }

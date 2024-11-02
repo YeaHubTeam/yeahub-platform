@@ -1,8 +1,8 @@
-import cls from './PreviousIcon.module.css';
+import styles from './PreviousIcon.module.css';
 
 export const PreviousIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="28"
 				height="28"

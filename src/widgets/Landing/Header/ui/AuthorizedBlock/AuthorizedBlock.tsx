@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AuthAvatarFrame } from '@/shared/ui/AuthAvatarFrame';
 
-import { Logout } from '@/features/authentication/logout/Logout';
-
 import styles from './AuthorizedBlock.module.css';
 
 interface UserProfileProps {
@@ -27,7 +25,6 @@ export const AuthorizedBlock = ({ firstName, avatarURL }: UserProfileProps) => {
 				<p className={styles['user-name']}>{firstName}</p>
 				<AuthAvatarFrame link={avatarURL || ''} />
 			</div>
-			<Logout></Logout>
 		</div>
 	);
 };

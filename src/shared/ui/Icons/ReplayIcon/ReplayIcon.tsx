@@ -1,8 +1,8 @@
-import cls from './ReplayIcon.module.css';
+import styles from './ReplayIcon.module.css';
 
 export const ReplayIcon = () => {
 	return (
-		<div className={cls.container}>
+		<div className={styles.container}>
 			<svg
 				width="19"
 				height="18"

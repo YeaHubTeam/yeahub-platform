@@ -5,14 +5,14 @@ import { DecorationItemIcon } from '@/shared/ui/Icons/DecorationItemIcon';
 import { StudentIcon } from '@/shared/ui/Icons/StudentIcon';
 import { TrainingIcon } from '@/shared/ui/Icons/TrainingIcon';
 
-import cls from './Advantages.module.css';
+import styles from './Advantages.module.css';
 
 export const Advantages = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	return (
-		<div className={cls.advantages}>
-			<ul className={cls['advantages-list']}>
+		<div className={styles.advantages}>
+			<ul className={styles['advantages-list']}>
 				<li>
 					<StudentIcon />
 					{t(Landing.SERVICE_ABILITY_FIRST)}
@@ -23,7 +23,7 @@ export const Advantages = () => {
 				</li>
 			</ul>
 
-			<div className={cls.decoration}>
+			<div className={styles.decoration}>
 				<DecorationItemIcon />
 				<DecorationItemIcon />
 			</div>
