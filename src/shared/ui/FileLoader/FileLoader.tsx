@@ -38,22 +38,31 @@ export const FileLoader = ({
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
 
+	const clearInputState = (input: HTMLInputElement) => {
+		input.value = '';
+	};
+
 	const handleChange = () => {
 		if (uploaderRef.current) {
 			const refFiles = uploaderRef?.current.files;
-
 			if (refFiles && refFiles.length > 0) {
 				const file = Array.from(refFiles);
 
 				if (!multyple) {
 					setFiles([file[0]]);
 					onChange([file[0]]);
+
+					clearInputState(uploaderRef.current);
+
 					return;
 				}
 
 				const updatedList = [...files, ...file];
+
 				setFiles(updatedList);
 				onChange(updatedList);
+
+				clearInputState(uploaderRef.current);
 			}
 		}
 	};
