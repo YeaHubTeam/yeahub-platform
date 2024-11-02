@@ -4,6 +4,8 @@ import { Button } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useResize } from '@/shared/hooks/useResize';
 
@@ -20,7 +22,8 @@ export const TrainingBlock = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	const handleNavigate = () => {
-		navigate(ROUTES.interview.page);
+		const path = getFromLS(LS_ACCESS_TOKEN_KEY) ? ROUTES.interview.page : ROUTES.auth.login.page;
+		navigate(path);
 	};
 
 	return (

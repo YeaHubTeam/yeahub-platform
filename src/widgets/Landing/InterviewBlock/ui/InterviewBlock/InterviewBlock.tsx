@@ -7,6 +7,8 @@ import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTable
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { AdvantagesList } from '../AdvantagesList/AdvantagesList';
@@ -20,7 +22,8 @@ export const InterviewBlock = () => {
 	const { t } = useI18nHelpers(i18Namespace.landing);
 
 	const handleNavigate = () => {
-		navigate(ROUTES.platformRoute);
+		const path = getFromLS(LS_ACCESS_TOKEN_KEY) ? ROUTES.platformRoute : ROUTES.auth.login.page;
+		navigate(path);
 	};
 
 	return (

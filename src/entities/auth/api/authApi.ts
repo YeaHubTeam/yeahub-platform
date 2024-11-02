@@ -25,7 +25,7 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('/');
+					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -43,7 +43,7 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('/');
+					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
