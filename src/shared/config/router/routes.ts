@@ -1,6 +1,7 @@
 export const ROUTES = {
 	appRoute: '/',
-	adminRoute: '/admin/',
+	platformRoute: '/dashboard',
+	adminRoute: '/admin',
 	admin: {
 		questions: {
 			route: 'questions',
@@ -64,42 +65,42 @@ export const ROUTES = {
 	},
 	profile: {
 		route: 'profile',
-		page: '/profile',
+		page: '/dashboard/profile',
 		edit: {
 			route: 'edit',
-			page: '/profile/edit',
+			page: '/dashboard/profile/edit',
 		},
 	},
 	interview: {
 		route: 'interview',
-		page: '/interview',
+		page: '/dashboard/interview',
 		history: {
 			route: 'history',
-			page: '/interview/history',
+			page: '/dashboard/interview/history',
 			result: {
 				route: ':quizId',
-				page: '/interview/history/:quizId',
+				page: '/dashboard/interview/history/:quizId',
 			},
 		},
 		statistic: {
 			route: 'statistic',
-			page: '/interview/statistic',
+			page: '/dashboard/interview/statistic',
 		},
 		questions: {
 			route: 'questions',
-			page: '/interview/questions',
+			page: '/dashboard/interview/questions',
 			detail: {
 				route: ':questionId',
-				page: '/interview/questions/:questionId',
+				page: '/dashboard/interview/questions/:questionId',
 			},
 		},
 		quiz: {
 			route: 'quiz',
-			page: '/interview/quiz',
+			page: '/dashboard/interview/quiz',
 		},
 		new: {
 			route: 'new',
-			page: '/interview/new',
+			page: '/dashboard/interview/new',
 		},
 	},
 };

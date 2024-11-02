@@ -1,0 +1,150 @@
+.advantages {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.advantages p {
+  color: var(--color-black-700);
+  line-height: 27px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}
+
+.advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  line-height: 22px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.advantages-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.advantages-list li:first-child {
+  background-color: var(--background-nav-item);
+}
+
+.advantages-list li:last-child {
+  background-color: var(--background-first-step);
+}
+
+.decoration > div {
+  position: absolute;
+  top: 85px;
+  left: -115px;
+  width: 107px;
+  height: 84px;
+}
+
+.advantages-list li div {
+  width: 43px;
+  height: 45px;
+}
+
+.decoration > div svg {
+  width: 100%;
+  height: 100%;
+}
+
+.advantages-list li div svg {
+  width: 100%;
+  height: 100%;
+}
+
+.advantages-list li:last-child rect {
+  fill: var(--color-yellow-700);
+}
+
+.decoration > div:last-child {
+  top: 260px;
+}
+
+@media screen and (width <= 1439px) {
+  .advantages p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48%;
+    font-size: var(--font-size-p-l);
+  }
+
+  .advantages-list {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .advantages-list li {
+    position: relative;
+    gap: 24px;
+    padding: 16px;
+    min-width: 344px;
+    height: fit-content;
+  }
+
+  .advantages-list li::before {
+    position: absolute;
+    top: -80px;
+    left: calc(50% - 1px);
+    z-index: -1;
+    width: 2px;
+    height: 80px;
+    background-color: var(--border-right-color);
+    content: '';
+  }
+
+  .advantages-list li:last-child {
+    margin-top: 40px;
+  }
+
+  .decoration > div {
+    display: none;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .advantages {
+    gap: 16px;
+  }
+
+  .advantages p {
+    position: relative;
+    width: 100%;
+    line-height: 22px;
+    font-size: var(--font-size-p-m);
+  }
+
+  .advantages-list {
+    flex-direction: column;
+    gap: 16px;
+    line-height: 19px;
+    font-size: var(--font-size-p-s);
+  }
+
+  .advantages-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    width: 100%;
+    min-width: 328px;
+    border-radius: 12px;
+  }
+
+  .advantages-list li::before {
+    content: none;
+  }
+
+  .advantages-list li:last-child {
+    margin-top: 0;
+  }
+}

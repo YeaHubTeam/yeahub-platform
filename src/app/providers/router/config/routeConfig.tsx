@@ -41,11 +41,13 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
+import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
@@ -61,7 +63,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.appRoute,
+		route: ROUTES.platformRoute,
 		title: 'tabs.main',
 		icon: MainIcon,
 	},
@@ -88,7 +90,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 const adminLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.appRoute,
+		route: ROUTES.platformRoute,
 		title: 'tabs.platform',
 		icon: CursorSquare,
 		isAdmin: true,
@@ -124,6 +126,15 @@ export const router = createBrowserRouter([
 		path: ROUTES.appRoute,
 		element: <App />,
 		children: [
+			{
+				element: <LandingLayout />,
+				children: [
+					{
+						index: true,
+						element: <LandingMainPage />,
+					},
+				],
+			},
 			{
 				path: ROUTES.adminRoute,
 				element: (
@@ -193,7 +204,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.appRoute,
+				path: ROUTES.platformRoute,
 				element: (
 					<AuthRoute>
 						<MainLayout sidebarItems={mainLayoutMenuItems} />

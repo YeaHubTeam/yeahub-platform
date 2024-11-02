@@ -1,0 +1,1 @@
+export { AuthAvatarFrame } from './AuthAvatarFrame';

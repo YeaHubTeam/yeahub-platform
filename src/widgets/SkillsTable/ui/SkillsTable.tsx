@@ -4,6 +4,8 @@ import { Icon, Popover, Button, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -55,8 +57,8 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 				<Popover
 					placement="bottom-start"
 					body={
-						<>
-							<NavLink to={`/admin/skills/${skill.id}`}>
+						<div>
+							<NavLink to={route(ROUTES.admin.skills.detail.page, skill.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
@@ -81,7 +83,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 								</Flex>
 							</NavLink>
 							<DeleteSkillButton skillId={skill.id} />
-						</>
+						</div>
 					}
 					isOpen={openPopovers === skill.id}
 					onClickOutside={closeActions}
