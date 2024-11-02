@@ -47,11 +47,10 @@ export const UserPreferences = () => {
 				</NavLink>
 
 				<NavLink
-					to={ROUTES.profile.settings.page}
+					to={ROUTES.settings.page}
 					className={({ isActive }) =>
 						cn({
-							[styles['btn-active']]:
-								isActive && location.pathname === ROUTES.profile.settings.page,
+							[styles['btn-active']]: isActive && location.pathname === ROUTES.settings.page,
 						})
 					}
 				>

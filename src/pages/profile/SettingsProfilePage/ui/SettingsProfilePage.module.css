@@ -1,5 +1,7 @@
 .list {
-  margin-left: 20px;
+  display: flex;
+  gap: var(--font-size-h-xs);
+  margin-left: var(--font-size-h-xs);
 }
 
 .route {

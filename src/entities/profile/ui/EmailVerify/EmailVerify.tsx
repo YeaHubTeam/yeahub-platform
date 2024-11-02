@@ -19,7 +19,7 @@ export const EmailVerifyPage = ({ firstName }: EmailVerifyProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const redirectToSettings = () => {
-		navigate('/profile/settings/email-verify');
+		navigate('/settings/email-verify');
 	};
 
 	return (

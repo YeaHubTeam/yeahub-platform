@@ -115,7 +115,10 @@ export enum Translation {
 	TOAST_INTERVIEW_NEW_QUIZ_FAILED = 'toast.interview.new.quiz.failed',
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
+
 	ERROR404_IMAGE_ALT = 'error.alt',
+
+	EMAIL_VERIFY = 'emailVerification.emailSettings',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',

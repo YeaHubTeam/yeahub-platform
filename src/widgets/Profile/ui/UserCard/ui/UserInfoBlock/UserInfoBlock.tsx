@@ -74,7 +74,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						<DoubleCheck width={16} height={16} fill="#008616" /> {email}
 					</div>
 				) : (
-					<Link to={ROUTES.profile.settings.route}>
+					<Link to={ROUTES.settings.page}>
 						<div className={styles['card-verify']}>
 							<Time width={16} height={16} fill="#5E5E5E" /> <p> {upperCaseFirstLetter} </p>
 						</div>

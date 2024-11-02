@@ -80,6 +80,7 @@
     "verifyEmailText": "Confirm your email to activate your account, after activation you will have access to our platform",
     "letterSent": "Письмо успешно отправлено на почту",
     "verifySuccess": " Email successfully confirmed",
-    "verifyText": "Thank you for confirming your email, now more services are available to you on the platform"
+    "verifyText": "Thank you for confirming your email, now more services are available to you on the platform",
+    "emailSettings": "Подтверждение e-mail"
   }
 }
