@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 
 import Gallery from '@/shared/assets/images/Gallery.png';
+import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -32,27 +33,36 @@ export const FileLoader = ({
 
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 
-	const { t } = useI18nHelpers();
+	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
 
+	const clearInputState = (input: HTMLInputElement) => {
+		input.value = '';
+	};
+
 	const handleChange = () => {
 		if (uploaderRef.current) {
 			const refFiles = uploaderRef?.current.files;
-
 			if (refFiles && refFiles.length > 0) {
 				const file = Array.from(refFiles);
 
 				if (!multyple) {
 					setFiles([file[0]]);
 					onChange([file[0]]);
+
+					clearInputState(uploaderRef.current);
+
 					return;
 				}
 
 				const updatedList = [...files, ...file];
+
 				setFiles(updatedList);
 				onChange(updatedList);
+
+				clearInputState(uploaderRef.current);
 			}
 		}
 	};
@@ -89,7 +99,7 @@ export const FileLoader = ({
 			className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
 		>
 			<div className={style['svg-wrapper']}>
-				<img src={Gallery} alt="gallery-icon" />
+				<img src={Gallery} alt={t(Translation.FILELOADER_FILETYPES_PHOTO)} />
 			</div>
 
 			<p>

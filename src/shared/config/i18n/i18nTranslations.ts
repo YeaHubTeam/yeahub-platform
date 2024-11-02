@@ -13,7 +13,8 @@ export enum Translation {
 	SEARCH = 'search',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
-
+	LOGO = 'logo',
+	AVATAR = 'avatar',
 	CRUMBS_PROFILE = 'crumbs.profile',
 	CRUMBS_PROFILE_EDITING = 'crumbs.profileEditing',
 	CRUMBS_INTERVIEW = 'crumbs.interview',
@@ -113,6 +114,7 @@ export enum Translation {
 	TOAST_INTERVIEW_NEW_QUIZ_FAILED = 'toast.interview.new.quiz.failed',
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
+	ERROR404_IMAGE_ALT = 'error.alt',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
@@ -132,6 +134,8 @@ export enum Profile {
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
 	PHOTO_CROPPERTITLE = 'photo.cropperTitle',
+	PHOTO_PREVIEW_LARGE = 'photo.largePreview',
+	PHOTO_PREVIEW_SMALL = 'photo.smallPreview',
 	PHOTO_CROPPERDESCRIPTION = 'photo.cropperDescription',
 	PERSONALINFORMATIONFORM_TITLE = 'personalInformationForm.title',
 	PERSONALINFORMATIONFORM_DESCRIPTION = 'personalInformationForm.description',
@@ -159,6 +163,10 @@ export enum Profile {
 	SKILLFORM_TITLE = 'skillForm.title',
 	SKILLFORM_DESCRIPTION = 'skillForm.description',
 	SKILLFORM_SUBMITBUTTONTEXT = 'skillForm.submitButtonText',
+	SKILLFORM_IMAGE_ALT = 'skillForm.imageAlt',
+	ACHIEVMENTSLIST_IMAGE_ALT = 'achievmentsList.imageAlt',
+	EXPERIENCELIST_IMAGE_ALT = 'experienceList.imageAlt',
+	PROJECTLIST_IMAGE_ALT = 'projectsList.imageAlt',
 }
 
 export enum Auth {
@@ -207,6 +215,7 @@ export enum Specialization {
 	SPECIALIZATIONS_NOT_ITEMS = 'specialization.not.items',
 	SPECIALIZATION_CREATE_PAGE_TITLE = 'specialization.create.page.title',
 	SPECIALIZATION_EDIT_PAGE_TITLE = 'specialization.edit.page.title',
+	SPECIALIZATION_IMAGE_ALT = 'specialization.image.alt',
 }
 export enum Interview {
 	PREPARATION_TITLE = 'preparation.title',
@@ -310,6 +319,7 @@ export enum Questions {
 
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SPECIALIZATION_SELECT = 'specialization.select',
+	IMAGE_ALT = 'image.alt',
 }
 
 export enum InterviewHistory {

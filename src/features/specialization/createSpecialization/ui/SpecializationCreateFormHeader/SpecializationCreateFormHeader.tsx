@@ -23,7 +23,7 @@ export const SpecializationCreateFormHeader = () => {
 		await createSpecializationMutation(data)
 			.unwrap()
 			.then(() => {
-				navigate(ROUTES.admin.specialization.page);
+				navigate(ROUTES.admin.specializations.page);
 			})
 			.catch((e) => {
 				console.error(e);

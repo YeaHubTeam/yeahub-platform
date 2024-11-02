@@ -42,5 +42,6 @@
     "title": "Specialization",
     "select": "Select specialization"
   },
-  "keywords": "Keywords"
+  "keywords": "Keywords",
+  "image.alt":"Image code for question"
 }

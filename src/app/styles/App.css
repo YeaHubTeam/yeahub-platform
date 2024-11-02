@@ -11,6 +11,7 @@
   --color-purple-300: #D2B6FF;
   --color-purple-200: #E1CEFF;
   --color-purple-100: #F0E7FF;
+  --color-purple-50: rgb(240 231 255 / 50%);
   --color-red-900: #880727;
   --color-red-800: #AF0932;
   --color-red-700: #D50B3E;
@@ -20,6 +21,7 @@
   --color-red-300: #F98BA6;
   --color-red-200: #FBB1C4;
   --color-red-100: #FDD8E1;
+  --color-red-25: rgb(253 216 225 / 25%);
   --color-yellow-900: #FAAF00;
   --color-yellow-800: #FFC234;
   --color-yellow-700: #FFCE5C;
@@ -100,6 +102,7 @@
   --container-width-mobile: 100%;
   --grid-template-columns: 332px 244px 244px;
   --container-padding: 0;
+  --drawer-transition-speed: 0.3s;
 
   /* dimensions */
   --font-size-none: 0;

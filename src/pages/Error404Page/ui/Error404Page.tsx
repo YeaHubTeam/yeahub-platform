@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './Error404Page.module.css';
@@ -9,11 +12,11 @@ const Error404Page = () => {
 	const navigate = useNavigate();
 
 	const handleBackBtnClick = () => navigate(-1);
-
+	const { t } = useI18nHelpers(i18Namespace.translation);
 	return (
 		<Card>
 			<div className={styles.wrapper}>
-				<img src="/images/404.png" alt="Ошибка 404" className={styles.img} />
+				<img src="/images/404.png" alt={t(Translation.ERROR404_IMAGE_ALT)} className={styles.img} />
 				<div className={styles.content}>
 					<h2 className={styles.title}>Произошла ошибка</h2>
 					<Button size="large" onClick={handleBackBtnClick}>
