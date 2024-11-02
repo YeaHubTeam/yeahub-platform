@@ -21,7 +21,7 @@ export const PassedQuestionChart = ({
 	width = '241px',
 	height = '241px',
 }: PassedQuestionChartProps) => {
-	const passedQuestionsPercent = Math.round((learned / total) * 100);
+	const passedQuestionsPercent = total > 0 ? Math.round((learned / total) * 100) : 0;
 
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
