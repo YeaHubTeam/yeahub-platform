@@ -2,7 +2,7 @@ export interface Skill {
 	id: number;
 	title: string;
 	description?: string;
-	imageSrc?: string;
+	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
 	active?: boolean;
