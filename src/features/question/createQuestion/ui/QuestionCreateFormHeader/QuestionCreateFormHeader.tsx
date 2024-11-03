@@ -5,6 +5,7 @@ import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Flex } from '@/shared/ui/Flex';
@@ -27,7 +28,7 @@ export const QuestionCreateFormHeader = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			navigate('/admin/questions');
+			navigate(ROUTES.admin.questions.page);
 		}
 	}, [isSuccess, navigate]);
 

@@ -4,6 +4,7 @@ import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
@@ -31,7 +32,7 @@ const MainPage = () => {
 	}, []);
 
 	const redirectToProfileEditing = () => {
-		navigate('/profile/edit#personal-information');
+		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 
 	useEffect(() => {

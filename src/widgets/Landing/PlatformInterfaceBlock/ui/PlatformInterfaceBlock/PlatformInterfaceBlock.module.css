@@ -1,0 +1,105 @@
+.platform-interface-block {
+  margin: 0 -92px;
+  margin-bottom: 130px;
+  padding: 40px 92px;
+  border-radius: 24px;
+  background-color: var(--background-nav-item);
+}
+
+.platform-interface-block ul {
+  list-style: none;
+}
+
+.caption-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  font-weight: var(--font-weight-500);
+}
+
+.caption-block h2 {
+  min-width: 40.71%;
+  color: var(--text-color-black-landing);
+  line-height: 51px;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-l);
+  white-space: pre-wrap;
+}
+
+.caption-block p {
+  align-self: flex-end;
+  padding-left: 325px;
+  color: var(--text-color-light);
+  line-height: 26px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (width <= 1439px) {
+  .platform-interface-block {
+    margin: 0;
+    margin-bottom: 80px;
+    padding: 40px;
+    border-radius: 24px;
+    background-color: var(--background-nav-item);
+  }
+
+  .caption-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .caption-block h2 {
+    margin-bottom: 16px;
+    line-height: 43px;
+    font-size: var(--font-size-h-m);
+  }
+
+  .caption-block p {
+    align-self: center;
+    padding: 0 51px;
+    line-height: 20px;
+    font-weight: var(--font-weight-400);
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .platform-interface-block {
+    margin-bottom: 40px;
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .caption-block h2 {
+    line-height: 27px;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .caption-block p {
+    align-self: center;
+    padding: 0;
+    padding: 0 10px;
+    line-height: 19px;
+    font-size: var(--font-size-p-s);
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

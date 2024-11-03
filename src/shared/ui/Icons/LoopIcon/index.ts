@@ -1,0 +1,1 @@
+export { LoopIcon } from './LoopIcon';

@@ -6,7 +6,7 @@ import styles from './BaseFilterSection.module.css';
 type DateType<T> = {
 	id: T;
 	title: string;
-	imageSrc?: string;
+	imageSrc?: string | null;
 	active?: boolean;
 };
 

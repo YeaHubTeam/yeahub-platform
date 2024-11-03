@@ -6,10 +6,10 @@
 
 .card-title {
   margin: 0;
-  color: var(--text-color-darkest);;
+  color: var(--text-color-black-landing);
   line-height: 127%;
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-sm);
+  font-size: var(--font-size-large-34);
 }
 
 .card-email {
@@ -42,7 +42,7 @@
 .card-text {
   margin: 0;
   width: 476px;
-  color: var(--text-color-darkest);
+  color: var(--text-color-black-landing);
   line-height: 120%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);

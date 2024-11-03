@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { Specialization, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -22,7 +23,7 @@ export const SpecializationCreateFormHeader = () => {
 		await createSpecializationMutation(data)
 			.unwrap()
 			.then(() => {
-				navigate('/admin/specializations');
+				navigate(ROUTES.admin.specializations.page);
 			})
 			.catch((e) => {
 				console.error(e);

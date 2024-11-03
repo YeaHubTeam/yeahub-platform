@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -8,7 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 import { Specialization } from '../../model/types/specialization';
 
 import styles from './SpecializationCard.module.css';
-import { i18Namespace } from '@/shared/config/i18n';
 
 interface SpecializationCardProps {
 	specialization: Specialization;

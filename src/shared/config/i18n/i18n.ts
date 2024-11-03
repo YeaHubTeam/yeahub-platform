@@ -22,6 +22,7 @@ export const i18Namespace = {
 	validation: 'validation',
 	skill: 'skill',
 	a11y: 'a11y',
+	landing: 'landing',
 };
 
 i18n

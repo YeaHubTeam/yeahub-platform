@@ -1,11 +1,16 @@
-import withoutPhoto from '@/shared/assets/images/Photo_Profile.png';
+import WithoutPhotoIcon from '@/shared/assets/icons/withoutPhotoIcon.svg';
 
 import styles from './AvatarWithoutPhoto.module.css';
 
 export const AvatarWithoutPhoto = () => {
 	return (
 		<div className={styles['avatar-wrapper']}>
-			<img src={withoutPhoto} alt="Avatar" />
+			<WithoutPhotoIcon
+				role="img"
+				aria-label="Аватар пользователя"
+				focusable="false"
+				className={styles['avatar-icon']}
+			/>
 		</div>
 	);
 };
