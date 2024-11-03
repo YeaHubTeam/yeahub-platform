@@ -1,3 +1,3 @@
-import { SettingsProfilePage } from './ui/SettingsProfilePage';
+import { SettingsProfilePage } from './ui/SettingsProfilePage.lazy';
 
 export { SettingsProfilePage };

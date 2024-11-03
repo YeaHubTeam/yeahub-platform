@@ -36,6 +36,7 @@
   --color-green-200: #DFF8EA;
   --color-green-100: #EEFBF4;
   --color-green-007: #EDF7EF;
+  --color-black-950: #141414;
   --color-black-900: #191919;
   --color-black-800: #303030;
   --color-black-700: #474747;
@@ -59,6 +60,7 @@
   --background-button: var(--color-black-50);
   --background-block: var(--color-white-900);
   --background-light-hover: var(--color-black-30);
+  --text-color-darkest: var(--color-black-950);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
   --text-color-link-active: var(--color-purple-700);

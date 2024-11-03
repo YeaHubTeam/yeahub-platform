@@ -1,23 +1,22 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 .card-title {
-  margin: 0;;
+  margin: 0;
+  color: var(--text-color-darkest);;
   line-height: 127%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-sm);
 }
 
-.card-text {
-  margin: 0;
-  width: 476px;
-  color: var(--text-black);
-  line-height: 120%;
+.card-email {
+  margin-bottom: -4px;
+  line-height: 150%;
   font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
+  font-size: var(--font-size-p-s); 
 }
 
 .card {
@@ -40,11 +39,38 @@
   fill: var(--background-primary);
 }
 
-.card-email {
-  line-height: 150%;
+.card-text {
+  margin: 0;
+  width: 476px;
+  color: var(--text-color-darkest);
+  line-height: 120%;
   font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
+  font-size: var(--font-size-p-m);
 }
+
+.card-text-email {
+  margin: 0;
+  width: 476px;
+  color: var(--background-primary);
+  line-height: 120%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+}
+
+.card-input-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+
+
+
+
+
+
+
+
 
 
 

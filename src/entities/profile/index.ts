@@ -1,6 +1,12 @@
-import { EmailVerifyPage } from './ui/EmailVerify/EmailVerify';
+import { EmailVerify } from './ui/EmailVerify/EmailVerify';
 import { UserVerifyed } from './ui/UserVerifyed/UserVerifyed';
-import { UserVerifySending } from './ui/UserVerifySending/UserVerifySending';
-import { UserVerifyWaiting } from './ui/UserVerifyWaiting/UserVerifyWaiting';
 
-export { UserVerifyed, UserVerifySending, UserVerifyWaiting, EmailVerifyPage };
+export type { UserState } from './model/types/user';
+
+export { userSlice } from './model/slices/userSlice';
+
+export { userReducer, userActions } from './model/slices/userSlice';
+
+export { getUserIsEmailSent } from './model/selectors/userSelectors';
+
+export { UserVerifyed, EmailVerify };

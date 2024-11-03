@@ -13,7 +13,7 @@ interface EmailVerifyProps {
 	firstName: string;
 }
 
-export const EmailVerifyPage = ({ firstName }: EmailVerifyProps) => {
+export const EmailVerify = ({ firstName }: EmailVerifyProps) => {
 	const navigate = useNavigate();
 
 	const { t } = useI18nHelpers(i18Namespace.profile);

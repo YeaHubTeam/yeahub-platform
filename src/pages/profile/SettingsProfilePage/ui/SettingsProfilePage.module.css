@@ -12,4 +12,8 @@
   font-size: var(--font-size-p-m);
   font-family: var(--font-family);
   cursor: pointer;
+
+  span {
+    color: var(--text-color-primary);
+  }
 }

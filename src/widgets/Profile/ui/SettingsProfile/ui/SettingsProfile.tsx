@@ -2,16 +2,21 @@ import { useEffect } from 'react';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
-import { UserVerifyed, UserVerifySending, UserVerifyWaiting } from '@/entities/profile';
+import { getUserIsEmailSent, UserVerifyed } from '@/entities/profile';
+
+import { EmailFormValidation } from '@/features/settings/emailFormValidation';
 
 import styles from './SettingsProfile.module.css';
 
 export const SettingsProfile = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
+
+	const isLetterSended = useAppSelector(getUserIsEmailSent);
 
 	const upperCaseFirstLetter =
 		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).charAt(0).toUpperCase() +
@@ -19,12 +24,12 @@ export const SettingsProfile = () => {
 
 	const { data: profile, refetch } = useProfileQuery();
 
-	const verifyedUser = profile?.isEmailVerified;
+	const isEmailVerified = profile?.isEmailVerified;
 
-	const email = profile?.email || '';
+	const email = profile?.email ?? '';
 
 	useEffect(() => {
-		if (profile && !profile.isEmailVerified) {
+		if (isLetterSended && !isEmailVerified) {
 			const interval = setInterval(() => refetch(), 5000);
 
 			return () => clearInterval(interval);
@@ -36,12 +41,14 @@ export const SettingsProfile = () => {
 			<Card className={styles.card}>
 				<div className={styles['card-wrapper']}>
 					<div className={styles['card-content']}>
-						{verifyedUser && profile?.emailVerificationToken !== null ? (
+						{isEmailVerified ? (
 							<UserVerifyed />
-						) : profile?.emailVerificationToken !== null ? (
-							<UserVerifyWaiting upperCaseFirstLetter={upperCaseFirstLetter} email={email} />
 						) : (
-							<UserVerifySending upperCaseFirstLetter={upperCaseFirstLetter} {...profile} />
+							<EmailFormValidation
+								upperCaseFirstLetter={upperCaseFirstLetter}
+								email={email}
+								isLetterSended={isLetterSended}
+							/>
 						)}
 					</div>
 				</div>

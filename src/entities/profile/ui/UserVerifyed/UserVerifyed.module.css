@@ -1,11 +1,12 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .card-title {
   margin: 0;
+  color: var(--text-color-darkest);
   line-height: 127%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-sm);
@@ -14,15 +15,15 @@
 .card-text {
   margin: 0;
   width: 476px;
-  color: var(--text-black);
+  color: var(--text-color-darkest);
   line-height: 120%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 }
 
 .svg {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   stroke: var(--background-primary);
   fill: var(--background-primary);
 }

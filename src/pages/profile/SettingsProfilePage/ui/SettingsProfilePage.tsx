@@ -4,7 +4,7 @@ import { BreadcrumbItem } from '@/shared/ui/BreadcrumbItem';
 
 import style from './SettingsProfilePage.module.css';
 
-export const SettingsProfilePage = () => {
+const SettingsProfilePage = () => {
 	const location = useLocation();
 	return (
 		<>
@@ -22,3 +22,5 @@ export const SettingsProfilePage = () => {
 		</>
 	);
 };
+
+export default SettingsProfilePage;

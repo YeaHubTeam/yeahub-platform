@@ -13,7 +13,6 @@ export {
 	useProfileQuery,
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
-	useVerifyEmailMutation,
 } from './api/authApi';
 export { authHandlers } from './api/__mocks__/index';
 export { refreshMiddleware } from './api/refreshMiddleware';

@@ -4,6 +4,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { State } from '@/shared/config/store/State';
 
 import { refreshMiddleware } from '@/entities/auth';
+import { userReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
 
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
@@ -26,6 +27,7 @@ export const createReduxStore = (initialState?: State) => {
 			interviewHistoryPage: interviewHistoryPageReducer,
 			questionsTablePage: questionsTablePageReducer,
 			specializationsPage: specializationsPageReducer,
+			userVerify: userReducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>

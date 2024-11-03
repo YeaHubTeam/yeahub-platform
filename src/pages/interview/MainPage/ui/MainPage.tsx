@@ -8,7 +8,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
-import { EmailVerifyPage } from '@/entities/profile';
+import { EmailVerify } from '@/entities/profile';
 
 import styles from './MainPage.module.css';
 
@@ -51,7 +51,7 @@ const MainPage = () => {
 						{t(Translation.HELLO)}, {profile.firstName}!
 					</h2>
 					{!profile.isEmailVerified ? (
-						<EmailVerifyPage {...profile} />
+						<EmailVerify firstName={profile.firstName} />
 					) : (
 						isIncompleteProfile && (
 							<Card className={styles.card}>
