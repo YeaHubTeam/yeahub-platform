@@ -18,11 +18,13 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 		<Flex direction="column" gap="24" className={styles.wrap}>
 			<Card>
 				<Flex gap="16">
-					<img
-						src={skill.imageSrc}
-						alt={`${t(Translation.LOGO)} ${skill.title}`}
-						className={styles['card-image']}
-					/>
+					{skill.imageSrc && (
+						<img
+							src={skill.imageSrc}
+							alt={`${t(Translation.LOGO)} ${skill.title}`}
+							className={styles['card-image']}
+						/>
+					)}
 					<h2>{skill.title}</h2>
 				</Flex>
 			</Card>

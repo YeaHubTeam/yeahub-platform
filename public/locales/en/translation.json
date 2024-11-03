@@ -153,6 +153,20 @@
         "failed": "The profile could not be changed"
       }
     },
+    "avatar": {
+      "update": {
+        "success": "The avatar has been successfully updated",
+        "failed": "Failed to update the avatar"
+      },
+      "create": {
+        "success": "The avatar has been successfully created",
+        "failed": "Failed to create the avatar"
+      },
+      "delete": {
+        "success": "The avatar has been successfully deleted",
+        "failed": "Failed to delete the avatar"
+      }
+    },
     "interview": {
       "new": {
         "success": "A new interview has been created",
