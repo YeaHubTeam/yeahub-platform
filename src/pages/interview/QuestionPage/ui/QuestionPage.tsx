@@ -18,7 +18,11 @@ import {
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
-export const QuestionPage = () => {
+interface QuestionPageProps {
+	isAdmin?: boolean;
+}
+
+export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	const { questionId } = useParams();
 	const { isMobile } = useScreenSize();
 
@@ -61,41 +65,47 @@ export const QuestionPage = () => {
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
+
 				<QuestionActions
 					profileId={profile ? profile.profiles[0].id : ''}
 					questionId={questionId ? questionId : ''}
 				/>
+
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		);
 	}
 
 	return (
-		<section className={styles.wrapper}>
-			<div className={styles.main}>
-				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
-				/>
-				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
-					questionId={questionId ? questionId : ''}
-				/>
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
-			</div>
-			<div className={styles.additional}>
-				<ProgressBlock checksCount={question?.checksCount} />
-				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
-				/>
-				<p className={styles.author}>
-					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-				</p>
-			</div>
-		</section>
+		<>
+			<section className={styles.wrapper}>
+				<div className={styles.main}>
+					<QuestionHeader
+						description={question?.description}
+						status={question?.status}
+						title={question?.title}
+					/>
+					{!isAdmin && (
+						<QuestionActions
+							profileId={profile ? profile.profiles[0].id : ''}
+							questionId={questionId ? questionId : ''}
+						/>
+					)}
+					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				</div>
+				<div className={styles.additional}>
+					{!isAdmin && <ProgressBlock checksCount={question?.checksCount} />}
+					<AdditionalInfo
+						rate={question?.rate}
+						keywords={question?.keywords}
+						complexity={question?.complexity}
+						questionSkills={question?.questionSkills}
+					/>
+					<p className={styles.author}>
+						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
+					</p>
+				</div>
+			</section>
+		</>
 	);
 };

@@ -2,7 +2,7 @@ export interface Specialization {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc?: string;
+	imageSrc?: string | null;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -13,4 +13,8 @@ export interface SpecializationsListParams {
 	page?: number;
 	title?: string;
 	limit?: number;
+}
+
+export interface SpecializationByIdParams {
+	specializationId?: string;
 }

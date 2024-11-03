@@ -4,6 +4,8 @@ import { Icon, Button, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -65,11 +67,11 @@ export const QuestionsTable = ({
 				<Popover
 					placement="bottom-start"
 					body={
-						<div>
-							<NavLink to={`/questions/${question.id}`}>
+						<>
+							<NavLink to={route(ROUTES.admin.questions.details.route, question.id)}>
 								<Flex align="center" gap="4">
 									<Button
-										style={{ width: 'auto' }}
+										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
 										theme="tertiary"
@@ -78,10 +80,10 @@ export const QuestionsTable = ({
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/questions/${question.id}/edit`}>
+							<NavLink to={route(ROUTES.admin.questions.edit.route, question.id)}>
 								<Flex align="center" gap="4">
 									<Button
-										style={{ width: 'auto' }}
+										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
 										theme="tertiary"
@@ -91,13 +93,14 @@ export const QuestionsTable = ({
 								</Flex>
 							</NavLink>
 							<DeleteQuestionButton questionId={question.id} />
-						</div>
+						</>
 					}
 					isOpen={openPopovers === question.id}
 					onClickOutside={closeActions}
 				>
 					<div>
 						<IconButton
+							style={{ cursor: 'pointer' }}
 							theme="tertiary"
 							onClick={openActions}
 							aria-label="Large"

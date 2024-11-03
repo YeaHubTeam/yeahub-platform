@@ -31,3 +31,9 @@
     width: 100%;
   }
 }
+
+@media (width <= 480px) {
+  .list {	
+    padding: 14px;
+  }
+}

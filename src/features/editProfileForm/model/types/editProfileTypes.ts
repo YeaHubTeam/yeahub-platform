@@ -44,7 +44,7 @@ export interface EditUserValue {
 	birthday: string | null;
 	address: string;
 	avatarUrl: string;
-	avatarImage?: FileList;
+	avatarImage?: string | null;
 }
 
 export interface ExtraArgument {
@@ -58,4 +58,10 @@ export type EditProfileRequestData = Omit<ProfileUpdate, 'profileSkills'> & {
 export type EditUserRequestData = {
 	id: string;
 	userInfo: EditUserValue;
+};
+
+export type EditAvatarRequestData = {
+	id: string;
+	image: string | null;
+	oldImage: string;
 };

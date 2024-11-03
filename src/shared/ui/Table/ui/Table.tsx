@@ -1,8 +1,5 @@
 import { ReactNode } from 'react';
-
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Checkbox } from 'yeahub-ui-kit';
 
 import styles from './Table.module.css';
 
@@ -43,8 +40,6 @@ export const Table = <T extends { id: number }>({
 	selectedItems,
 	onSelectItems,
 }: TableProps<T>) => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
-
 	const hasActions = !!renderActions;
 
 	const isAllSelected = selectedItems?.length === items.length;
@@ -69,18 +64,17 @@ export const Table = <T extends { id: number }>({
 			<thead className={styles.head}>
 				<tr>
 					<td className={styles.cell}>
-						<input type="checkbox" checked={isAllSelected} onChange={onSelectAllItems} />
+						<Checkbox checked={isAllSelected} onChange={onSelectAllItems} />
 					</td>
 					{renderTableHeader()}
-					{hasActions && <td>{t(Translation.ACTIONS)}</td>}
+					{hasActions && <td className={styles.actionsColumn}></td>}
 				</tr>
 			</thead>
 			<tbody>
 				{items.map((item) => (
 					<tr key={item.id} className={styles.row}>
 						<td className={styles.cell}>
-							<input
-								type="checkbox"
+							<Checkbox
 								checked={selectedItems?.includes(item.id)}
 								onChange={onSelectItem(item.id)}
 							/>

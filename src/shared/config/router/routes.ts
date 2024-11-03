@@ -1,6 +1,7 @@
 export const ROUTES = {
 	appRoute: '/',
-	adminRoute: '/admin/',
+	platformRoute: '/dashboard',
+	adminRoute: '/admin',
 	admin: {
 		questions: {
 			route: 'questions',
@@ -9,10 +10,30 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			details: {
+				route: ':questionId',
+				page: '/admin/questions/:questionId',
+			},
+			edit: {
+				route: ':questionId/edit',
+				page: '/admin/questions/:questionId/edit',
+			},
 		},
-		specialization: {
-			route: 'specialization',
-			page: '/admin/specialization',
+		specializations: {
+			route: 'specializations',
+			page: '/admin/specializations',
+			details: {
+				route: ':specializationId',
+				page: '/admin/specializations/:specializationId',
+			},
+			edit: {
+				route: ':specializationId/edit',
+				page: '/admin/specializations/:specializationId/edit',
+			},
+			create: {
+				route: 'create',
+				page: '/admin/specializations/create',
+			},
 		},
 		skills: {
 			route: 'skills',
@@ -20,6 +41,14 @@ export const ROUTES = {
 			create: {
 				route: 'create',
 				page: '/admin/skills/create',
+			},
+			edit: {
+				route: ':skillId/edit',
+				page: '/admin/skills/:skillId/edit',
+			},
+			detail: {
+				route: ':skillId',
+				page: '/admin/skills/:skillId',
 			},
 		},
 	},
@@ -36,42 +65,42 @@ export const ROUTES = {
 	},
 	profile: {
 		route: 'profile',
-		page: '/profile',
+		page: '/dashboard/profile',
 		edit: {
 			route: 'edit',
-			page: '/profile/edit',
+			page: '/dashboard/profile/edit',
 		},
 	},
 	interview: {
 		route: 'interview',
-		page: '/interview',
+		page: '/dashboard/interview',
 		history: {
 			route: 'history',
-			page: '/interview/history',
+			page: '/dashboard/interview/history',
 			result: {
 				route: ':quizId',
-				page: '/interview/history/:quizId',
+				page: '/dashboard/interview/history/:quizId',
 			},
 		},
 		statistic: {
 			route: 'statistic',
-			page: '/interview/statistic',
+			page: '/dashboard/interview/statistic',
 		},
 		questions: {
 			route: 'questions',
-			page: '/interview/questions',
+			page: '/dashboard/interview/questions',
 			detail: {
 				route: ':questionId',
-				page: '/interview/questions/:questionId',
+				page: '/dashboard/interview/questions/:questionId',
 			},
 		},
 		quiz: {
 			route: 'quiz',
-			page: '/interview/quiz',
+			page: '/dashboard/interview/quiz',
 		},
 		new: {
 			route: 'new',
-			page: '/interview/new',
+			page: '/dashboard/interview/new',
 		},
 	},
 };

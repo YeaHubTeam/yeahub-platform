@@ -3,7 +3,6 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
-
 interface StatusFilterSectionProps {
 	selectedStatus?: QuestionFilterStatus;
 	onChangeStatus: (status: QuestionFilterStatus) => void;

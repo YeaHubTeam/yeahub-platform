@@ -33,6 +33,7 @@ export const ChooseQuestionComplexity = ({
 		...item,
 		active: selectedComplexity?.some((selectedItem) => item.value.includes(selectedItem)),
 	}));
+
 	return (
 		<BaseFilterSection
 			data={preparedData}

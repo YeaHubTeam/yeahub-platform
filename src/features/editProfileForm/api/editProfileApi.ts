@@ -8,6 +8,7 @@ import {
 	EditProfileRequestData,
 	EditUserRequestData,
 	ExtraArgument,
+	EditAvatarRequestData,
 } from '../model/types/editProfileTypes';
 
 export const editProfileApi = baseApi.injectEndpoints({
@@ -66,7 +67,40 @@ export const editProfileApi = baseApi.injectEndpoints({
 			},
 			invalidatesTags: [ApiTags.PROFILE_DETAIL, ApiTags.PROFILE],
 		}),
+		updateAvatar: build.mutation<void, EditAvatarRequestData>({
+			query: ({ id, image }) => {
+				const body = image ? { avatarImage: image } : { avatarUrl: '' };
+				return {
+					url: `/users/${id}`,
+					body,
+					method: 'PATCH',
+				};
+			},
+			async onQueryStarted({ image, oldImage }, { queryFulfilled }) {
+				try {
+					await queryFulfilled;
+					if (oldImage) {
+						image
+							? toast.success(i18n.t(Translation.TOAST_AVATAR_UPDATE_SUCCESS))
+							: toast.success(i18n.t(Translation.TOAST_AVATAR_DELETE_SUCCESS));
+					} else {
+						toast.success(i18n.t(Translation.TOAST_AVATAR_CREATE_SUCCESS));
+					}
+				} catch (err) {
+					if (oldImage) {
+						image
+							? toast.error(i18n.t(Translation.TOAST_AVATAR_UPDATE_FAILED))
+							: toast.error(i18n.t(Translation.TOAST_AVATAR_DELETE_FAILED));
+					} else {
+						toast.error(i18n.t(Translation.TOAST_AVATAR_CREATE_FAILED));
+					}
+					// eslint-disable-next-line no-console
+					console.log(err);
+				}
+			},
+			invalidatesTags: [ApiTags.PROFILE_DETAIL, ApiTags.PROFILE],
+		}),
 	}),
 });
 
-export const { useUpdateProfileMutation } = editProfileApi;
+export const { useUpdateProfileMutation, useUpdateAvatarMutation } = editProfileApi;

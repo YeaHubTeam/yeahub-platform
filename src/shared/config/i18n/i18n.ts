@@ -20,6 +20,9 @@ export const i18Namespace = {
 	interviewHistory: 'interviewHistory',
 	specialization: 'specialization',
 	validation: 'validation',
+	skill: 'skill',
+	a11y: 'a11y',
+	landing: 'landing',
 };
 
 i18n

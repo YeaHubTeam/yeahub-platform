@@ -44,13 +44,13 @@ const QuestionsPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection
+				to="create"
+				showRemoveButton={selectedQuestions.length > 0}
+				onRemove={onRemoveQuestions}
+				onSearch={onChangeSearch}
+			/>
 			<Card className={styles.content}>
-				<SearchSection
-					to="create"
-					showRemoveButton={selectedQuestions.length > 0}
-					onRemove={onRemoveQuestions}
-					onSearch={onChangeSearch}
-				/>
 				<QuestionsTable
 					questions={questions?.data}
 					selectedQuestions={selectedQuestions}

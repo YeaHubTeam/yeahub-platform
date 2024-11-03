@@ -14,19 +14,21 @@ export const QuestionCategories = ({ questionCategories }: QuestionCategoriesPro
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	return (
-		<ul>
+		<>
 			<p className={styles.title}>{t(Questions.CATEGORIES_TITLE)}</p>
-			{questionCategories?.map((category) => {
-				return (
-					<li key={category} className={styles.category}>
-						<Chip
-							label={category}
-							preffix={<Icon icon="figmaLogo" className={styles.icon} />}
-							theme="primary"
-						/>
-					</li>
-				);
-			})}
-		</ul>
+			<ul>
+				{questionCategories?.map((category) => {
+					return (
+						<li key={category} className={styles.category}>
+							<Chip
+								label={category}
+								preffix={<Icon icon="figmaLogo" className={styles.icon} />}
+								theme="primary"
+							/>
+						</li>
+					);
+				})}
+			</ul>
+		</>
 	);
 };

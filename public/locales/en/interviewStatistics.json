@@ -4,10 +4,10 @@
   },
   "questionStats": {
     "title": "Completed questions statistics for all categories",
-    "passedQuestions": "Questions passed",
-    "notStudied": "Not studied",
-    "saved": "Saved",
-    "studied": "Studied"
+    "learnedQuestions": "Learned questions",
+    "inProcess": "In process",
+    "newQuestions": "New questions",
+    "allQuestions": "All questions"
   },
   "attemptStats": {
     "title": "Statistics of completed interviews",

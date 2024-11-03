@@ -91,7 +91,7 @@ export interface UserUpdate {
 	refreshToken: string;
 	updatedAt: string;
 	userRoles: Role[];
-	avatarImage?: FileList;
+	avatarImage?: string | null;
 }
 
 export interface Role {

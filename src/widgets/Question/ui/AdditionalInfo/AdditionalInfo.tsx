@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
 import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
-import { Skill } from '@/entities/skill';
+import { getSkillDefaultIcon, Skill } from '@/entities/skill';
 
 import styles from './AdditionalInfo.module.css';
 
@@ -23,6 +23,8 @@ export const AdditionalInfo = ({
 	questionSkills,
 	keywords,
 }: AdditionalInfoProps) => {
+	const navigate = useNavigate();
+
 	return (
 		<Card className={styles['normal-hight']}>
 			<div className={styles.wrapper}>
@@ -38,14 +40,31 @@ export const AdditionalInfo = ({
 					{questionSkills?.length
 						? questionSkills.map((skill) => {
 								return (
-									<Chip
-										key={skill.id}
-										className={styles.chip}
-										label={skill.title}
-										theme="primary"
-										active
-										preffix={skill.imageSrc ? skill.imageSrc : <Icon icon="atom" />}
-									/>
+									<li key={skill.id}>
+										<Chip
+											className={styles.chip}
+											label={skill.title}
+											theme="primary"
+											active
+											preffix={
+												skill.imageSrc ? (
+													<img
+														style={{ width: 20, height: 20 }}
+														src={skill.imageSrc}
+														alt={skill.title}
+													/>
+												) : (
+													<Icon icon={getSkillDefaultIcon(skill)} />
+												)
+											}
+											onClick={() =>
+												navigate(
+													`${ROUTES.interview.questions.page}?page=1&status=all&skills=` +
+														encodeURIComponent(skill.id),
+												)
+											}
+										/>
+									</li>
 								);
 							})
 						: 'автор так и не понял к какой технологии относится данный вопрос'}
@@ -59,7 +78,10 @@ export const AdditionalInfo = ({
 							return (
 								<Link
 									key={keyword}
-									to={`${ROUTES.interview.questions.page}?keywords=` + encodeURIComponent(keyword)}
+									to={
+										`${ROUTES.interview.questions.page}?page=1&status=all&keywords=` +
+										encodeURIComponent(keyword)
+									}
 								>{`#${keyword}`}</Link>
 							);
 						})}

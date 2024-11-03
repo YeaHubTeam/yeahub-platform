@@ -2,7 +2,11 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
-import { SpecializationsListParams, Specialization } from '../model/types/specialization';
+import {
+	SpecializationsListParams,
+	Specialization,
+	SpecializationByIdParams,
+} from '../model/types/specialization';
 
 const specializationApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -13,10 +17,8 @@ const specializationApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.SPECIALIZATIONS],
 		}),
-		getSpecializationById: build.query<Specialization, number>({
-			query: (specializationId) => ({
-				url: `/specializations/${specializationId}`,
-			}),
+		getSpecializationById: build.query<Specialization, SpecializationByIdParams>({
+			query: ({ specializationId }) => ({ url: `/specializations/${specializationId}` }),
 			providesTags: [ApiTags.SPECIALIZATION_DETAIL],
 		}),
 	}),

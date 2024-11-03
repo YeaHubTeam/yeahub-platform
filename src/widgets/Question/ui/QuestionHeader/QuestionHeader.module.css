@@ -6,6 +6,11 @@
   margin-right: 10px;
 }
 
+.image {
+  width: 170px;
+  height: 114px;
+}
+
 .title-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,14 +47,8 @@
   font-size: var(--font-size-p-xs);
 }
 
-@media (width <= 480px) {
-  .img {
-    width: 54px;
-    height: 56px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
 
+@media (width <= 480px) {
   .title {
     font-size: var(--font-size-p-s);
   }
@@ -60,5 +59,10 @@
 
   .label-wrapper {
     width: 54px;
+  }
+
+  .image {
+    width: 54px;
+    height: 56px;
   }
 }

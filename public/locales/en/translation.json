@@ -1,6 +1,7 @@
 {
   "language": "English",
   "create": "Create",
+  "search": "Search",
   "remove.selected": "Remove selected",
   "actions": "Actions",
   "show": "Show",
@@ -9,6 +10,9 @@
   "loading": "Loading...",
   "hello": "Hello",
   "save": "Save",
+  "cancel": "Cancel",
+  "logo": "Logo",
+  "avatar": "Avatar",
   "userPreferences": {
     "myProfile": "My profile",
     "logout": "Sign out"
@@ -43,6 +47,14 @@
       "photo": "photo"
     },
     "limit": "max {{maxFileMBSize}} MB"
+  },
+  "imageLoader": {
+    "minRes": "Minimum image resolution: {{minRes}}",
+    "maxRes": "Maximum image resolution: {{maxRes}}",
+    "save": "Save changes",
+    "change": "Change photo",
+    "delete": "Delete photo",
+    "cropperTitle": "Crop the image"
   },
   "interviewResult": {
     "total": "Total",
@@ -141,6 +153,20 @@
         "failed": "The profile could not be changed"
       }
     },
+    "avatar": {
+      "update": {
+        "success": "The avatar has been successfully updated",
+        "failed": "Failed to update the avatar"
+      },
+      "create": {
+        "success": "The avatar has been successfully created",
+        "failed": "Failed to create the avatar"
+      },
+      "delete": {
+        "success": "The avatar has been successfully deleted",
+        "failed": "Failed to delete the avatar"
+      }
+    },
     "interview": {
       "new": {
         "success": "A new interview has been created",
@@ -151,5 +177,8 @@
         "failed": "Failed to complete the interview"
       }
     }
+  },
+  "error": {
+    "alt": "Лупа"
   }
 }

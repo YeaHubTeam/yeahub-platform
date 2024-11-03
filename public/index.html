@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="color-scheme" content="dark light">
+    <!-- <meta name="color-scheme" content="light dark"> -->
+    <meta name="color-scheme" content="light">
     <title>YeaHub</title>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" defer >
@@ -23,9 +24,41 @@
     </script>
  <noscript><div><img src="https://mc.yandex.ru/watch/98674748" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
  <!-- /Yandex.Metrika counter -->
+
  
 </head>
 <body>
 <div id="root"></div>
+  <script defer>
+document.addEventListener('keydown', function (e) {
+  if (
+    (e.ctrlKey && e.key.toLowerCase() === 'c') ||
+    (e.ctrlKey && e.key.toLowerCase() === 'u') ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i')
+  ) {
+    e.preventDefault();
+  }
+});
+
+document.addEventListener('copy', function (e) {
+  const selectedText = window.getSelection().toString();
+
+  const targetElement = e.target;
+
+  if (
+    targetElement.tagName.toLowerCase() === 'input' ||
+    targetElement.tagName.toLowerCase() === 'textarea'
+  ) {
+    e.clipboardData.setData('text/plain', selectedText);
+  } else if (selectedText) {
+    const copyText = 'https://yeahub.ru/';
+    e.clipboardData.setData('text/plain', copyText);
+  }
+
+  e.preventDefault();
+});
+
+  </script>
 </body>
+
 </html>

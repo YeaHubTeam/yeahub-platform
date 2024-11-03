@@ -1,5 +1,6 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
@@ -12,6 +13,7 @@ import {
 	PassedQuestionChart,
 	ProgressByCategoriesList,
 } from '@/widgets/Charts';
+import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
 import { transformSkillsArray } from '../model/helpers/transformSkillsArray';
@@ -27,20 +29,24 @@ const InterviewStatisticsPage = () => {
 
 	const questionStats = [
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_PASSEDQUESTIONS),
-			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0} / ${profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}`,
+			title: t(InterviewStatistics.QUESTIONSTATS_ALLQUESTIONS),
+			value: `${profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}`,
+			route: `${ROUTES.interview.questions.page}?page=1&status=all`,
 		},
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_NOTSTUDIED),
+			title: t(InterviewStatistics.QUESTIONSTATS_NEWQUESTIONS),
 			value: `${profileStats?.questionsStat?.unlearnedQuestionsCount ?? 0}`,
+			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 		},
-		// {
-		// 	title: t(InterviewStatistics.QUESTIONSTATS_SAVED),
-		// 	value: '60',
-		// },
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_STUDIED),
+			title: t(InterviewStatistics.QUESTIONSTATS_INPROCESS),
+			value: `${profileStats?.questionsStat?.inProgressQuestionsCount ?? 0}`,
+			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
+		},
+		{
+			title: t(InterviewStatistics.QUESTIONSTATS_LEARNED),
 			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0}`,
+			route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 		},
 	];
 
@@ -79,16 +85,20 @@ const InterviewStatisticsPage = () => {
 				<Card className={styles.block}>
 					<div className={styles.questions}>
 						<InterviewQuestionHeader title={t('questionStats.title')} centered />
-						<PassedQuestionChart
-							total={profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}
-							learned={profileStats?.questionsStat?.learnedQuestionsCount ?? 0}
-							isLoading={isLoading}
-						/>
+						{profileStats && (
+							<PassedQuestionChart
+								total={profileStats.questionsStat.uniqueQuestionsCount}
+								learned={profileStats.questionsStat.learnedQuestionsCount}
+								isLoading={isLoading}
+							/>
+						)}
 					</div>
 				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />
 			</div>
-			<Card></Card>
+			<Card>
+				<InterviewHistoryList className={styles.history} />
+			</Card>
 			<Card className={styles.category} expandable>
 				<div className={styles['category-progress']}>
 					<InterviewQuestionHeader title={t('progress.title')} />
