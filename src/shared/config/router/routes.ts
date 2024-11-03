@@ -73,7 +73,7 @@ export const ROUTES = {
 	},
 	settings: {
 		route: 'settings',
-		page: '/settings/email-verify',
+		page: '/dashboard/settings/email-verify',
 	},
 	interview: {
 		route: 'interview',

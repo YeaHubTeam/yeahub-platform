@@ -4,6 +4,7 @@ import { Button } from 'yeahub-ui-kit';
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
@@ -19,7 +20,7 @@ export const EmailVerify = ({ firstName }: EmailVerifyProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const redirectToSettings = () => {
-		navigate('/settings/email-verify');
+		navigate(ROUTES.settings.page);
 	};
 
 	return (
