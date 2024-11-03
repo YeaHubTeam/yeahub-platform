@@ -78,9 +78,11 @@
     "description": "Become part of our team! Confirm your email address to gain access to additional platform features and start expanding your horizons among communities of motivated professionals just like you. Join us on the path to new heights!",
     "buttonText": "Verify e-mail",
     "verifyEmailText": "Confirm your email to activate your account, after activation you will have access to our platform",
-    "letterSent": "Письмо успешно отправлено на почту",
-    "verifySuccess": " Email successfully confirmed",
+    "letterSent": "The letter was successfully sent by email",
+    "verifySuccess": "E-mail successfully confirmed",
     "verifyText": "Thank you for confirming your email, now more services are available to you on the platform",
-    "emailSettings": "Подтверждение e-mail"
+    "emailSettings": "E-mail confirmation",
+    "verifyLink": "Confirm e-mail",
+    "writeEmail": "Enter e-mail"
   }
 }

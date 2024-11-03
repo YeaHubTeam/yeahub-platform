@@ -19,10 +19,6 @@ export const EmailVerify = ({ firstName }: EmailVerifyProps) => {
 
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
-	const upperCaseFirstLetter =
-		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).charAt(0).toUpperCase() +
-		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).slice(1);
-
 	const redirectToSettings = () => {
 		navigate(ROUTES.settings.page);
 	};
@@ -45,7 +41,7 @@ export const EmailVerify = ({ firstName }: EmailVerifyProps) => {
 						theme="link"
 						suffix={<ArrowRight />}
 					>
-						{upperCaseFirstLetter}
+						{t(Profile.PROFILE_EMAIL_VERIFICATION_VERIFY_LINK)}
 					</Button>
 				</div>
 			</Card>

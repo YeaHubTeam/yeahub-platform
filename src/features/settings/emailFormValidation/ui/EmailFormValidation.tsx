@@ -27,7 +27,7 @@ export const EmailFormValidation = ({
 				<p className={styles['card-text']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_TEXT)}</p>
 			</div>
 
-			<p className={styles['card-email']}>Введите e-mail</p>
+			<p className={styles['card-email']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL)}</p>
 			{isLetterSended ? (
 				<div className={styles.card}>
 					<Input placeholder="E-mail" value={email} disabled className={styles.input} />

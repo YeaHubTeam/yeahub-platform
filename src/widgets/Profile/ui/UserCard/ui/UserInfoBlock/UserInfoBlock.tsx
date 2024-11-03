@@ -23,9 +23,6 @@ interface UserInfoProps {
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const { firstName, lastName, birthday, phone, email, country, city, isEmailVerified } = profile;
 	const { t } = useI18nHelpers(i18Namespace.profile);
-	const upperCaseFirstLetter =
-		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).charAt(0).toUpperCase() +
-		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).slice(1);
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -76,7 +73,8 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 				) : (
 					<Link to={ROUTES.settings.page}>
 						<div className={styles['card-verify']}>
-							<Time width={16} height={16} fill="#5E5E5E" /> <p> {upperCaseFirstLetter} </p>
+							<Time width={16} height={16} fill="#5E5E5E" />
+							<p>{t(Profile.PROFILE_EMAIL_VERIFICATION_VERIFY_LINK)}</p>
 						</div>
 					</Link>
 				)}

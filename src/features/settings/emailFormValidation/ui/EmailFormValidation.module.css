@@ -68,9 +68,11 @@
   width: 328px;
   border: 1px solid var(--border-input);
   border-radius: 68px;
+  background-color: transparent !important;
   
 
   input {
+    background-color: transparent !important;
     color: var(--text-color-bright) !important;
     line-height: 127%;
     font-size: var(--font-size-p-m);

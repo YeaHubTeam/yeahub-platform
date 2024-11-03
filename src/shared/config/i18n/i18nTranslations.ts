@@ -178,6 +178,8 @@ export enum Profile {
 	PROFILE_EMAIL_VERIFICATION_LETTER_SENT = 'emailVerification.letterSent',
 	PROFILE_EMAIL_VERIFICATION_VERIFY_SUCCESS = 'emailVerification.verifySuccess',
 	PROFILE_EMAIL_VERIFICATION_VERIFY_TEXT = 'emailVerification.verifyText',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_LINK = 'emailVerification.verifyLink',
+	PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL = 'emailVerification.writeEmail',
 }
 
 export enum Auth {
