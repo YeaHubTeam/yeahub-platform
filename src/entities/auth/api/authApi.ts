@@ -28,7 +28,7 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate('/');
+					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -49,7 +49,7 @@ export const authApi = baseApi.injectEndpoints({
 
 					dispatch(userActions.setEmailSent(true));
 
-					typedExtra.navigate('/');
+					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -77,7 +77,7 @@ export const authApi = baseApi.injectEndpoints({
 		}),
 		refresh: build.query<GetAuthResponse, void>({
 			query: () => 'auth/refresh',
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
@@ -85,8 +85,8 @@ export const authApi = baseApi.injectEndpoints({
 					// eslint-disable-next-line no-console
 					console.error(error);
 					removeFromLS(LS_ACCESS_TOKEN_KEY);
-					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.auth.login.page);
+					// const typedExtra = extra as ExtraArgument;
+					// typedExtra.navigate(ROUTES.auth.login.page);
 				}
 			},
 		}),

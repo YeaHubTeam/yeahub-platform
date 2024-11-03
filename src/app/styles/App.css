@@ -11,6 +11,7 @@
   --color-purple-300: #D2B6FF;
   --color-purple-200: #E1CEFF;
   --color-purple-100: #F0E7FF;
+  --color-purple-50: rgb(240 231 255 / 50%);
   --color-red-900: #880727;
   --color-red-800: #AF0932;
   --color-red-700: #D50B3E;
@@ -20,12 +21,14 @@
   --color-red-300: #F98BA6;
   --color-red-200: #FBB1C4;
   --color-red-100: #FDD8E1;
+  --color-red-25: rgb(253 216 225 / 25%);
   --color-yellow-900: #FAAF00;
   --color-yellow-800: #FFC234;
   --color-yellow-700: #FFCE5C;
   --color-yellow-600: #FFDA85;
   --color-yellow-500: #FFE7AD;
   --color-yellow-400: #FFF3D6;
+  --color-yellow-300: #FFFCF2;
   --color-green-900: #17663A;
   --color-green-800: #1E874C;
   --color-green-700: #26A95F;
@@ -36,7 +39,7 @@
   --color-green-200: #DFF8EA;
   --color-green-100: #EEFBF4;
   --color-green-007: #EDF7EF;
-  --color-black-950: #141414;
+  --color-black-1000: #141414;
   --color-black-900: #191919;
   --color-black-800: #303030;
   --color-black-700: #474747;
@@ -60,9 +63,10 @@
   --background-button: var(--color-black-50);
   --background-block: var(--color-white-900);
   --background-light-hover: var(--color-black-30);
-  --text-color-darkest: var(--color-black-950);
+  --background-light-chip: var(--color-purple-100);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
+  --text-color-black-landing: var(--color-black-1000);
   --text-color-link-active: var(--color-purple-700);
   --text-color-link-disabled: var(--color-purple-300);
   --text-color-light: var(--color-black-700);
@@ -76,6 +80,9 @@
   --background-nav-item: var(--color-purple-100);
   --background-nav-item-hover: var(--color-black-25);
   --border-color: var(--color-black-100);
+  --border-right-color: var(--color-black-200);
+  --border-image-hover: var(--color-purple-800);
+  --border-input: var(--color-black-50);
   --background-primary: var(--color-purple-700);
   --caret-color-red: var(--color-red-400);
   --icon-color-red: var(--color-red-600);
@@ -86,10 +93,21 @@
   --background-gradient-code-start: var(--color-white-900);
   --background-gradient-code-end: var(--color-code-gradient-end);
   --background-modal-overlay: rgb(72 72 72 / 50%);
+  --color-filter-border: rgb(28 28 28 / 20%);
+  --background-demo-progress-bar: var(--color-green-800);
+  --background-first-step: var(--color-yellow-300);
+  --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+  --container-width: 1216px;
+  --container-width-tablet: 708px;
+  --container-width-mobile: 100%;
+  --grid-template-columns: 332px 244px 244px;
+  --container-padding: 0;
   --drawer-transition-speed: 0.3s;
 
   /* dimensions */
   --font-size-none: 0;
+  --font-size-p-xxxs: 6px;
+  --font-size-p-xxs: 8px;
   --font-size-p-xss: 10px;
   --font-size-p-xs: 12px;
   --font-size-p-s: 14px;
@@ -97,7 +115,7 @@
   --font-size-p-l: 18px;
   --font-size-h-xs: 20px;
   --font-size-h-s: 24px;
-  --font-size-h-sm: 34px;
+  --font-size-large-34: 34px;
   --font-size-h-m: 36px;
   --font-size-h-l: 40px;
   --font-size-h-xxl: 60px;
