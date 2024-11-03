@@ -45,4 +45,8 @@
 .button {
   align-self: end;
   cursor: pointer;
+  color: var(--background-primary);
+  line-height: 120%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
 }

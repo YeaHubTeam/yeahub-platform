@@ -30,7 +30,7 @@ export const EmailFormValidation = ({
 			<p className={styles['card-email']}>Введите e-mail</p>
 			{isLetterSended ? (
 				<div className={styles.card}>
-					<Input placeholder="E-mail" value={email} disabled />
+					<Input placeholder="E-mail" value={email} disabled className={styles.input} />
 					<div className={styles['card-content']}>
 						{isLetterSended ? (
 							<>
@@ -41,17 +41,17 @@ export const EmailFormValidation = ({
 							</>
 						) : (
 							<>
-								<Input placeholder="E-mail" disabled value={email} />
+								<Input placeholder="E-mail" disabled value={email} className={styles.input} />
 								<Button theme="primary" onClick={() => {}}>
 									{t(Profile.PROFILE_EMAIL_VERIFICATION_BUTTON)}
-								</Button>{' '}
+								</Button>
 							</>
 						)}
 					</div>
 				</div>
 			) : (
 				<div className={styles['card-input-wrapper']}>
-					<Input placeholder="E-mail" disabled value={email} />
+					<Input placeholder="E-mail" disabled value={email} className={styles.input} />
 					<Button theme="primary" onClick={() => {}}>
 						{t(Profile.PROFILE_EMAIL_VERIFICATION_BUTTON)}
 					</Button>

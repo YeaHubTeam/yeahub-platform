@@ -63,6 +63,19 @@
   gap: 20px;
 }
 
+.input {
+  padding: 4px 16px;
+  width: 328px;
+  border: 1px solid var(--border-input);
+  border-radius: 68px;
+  
+
+  input {
+    color: var(--text-color-bright) !important;
+    line-height: 127%;
+    font-size: var(--font-size-p-m);
+  }
+}
 
 
 
