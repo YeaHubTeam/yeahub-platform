@@ -18,11 +18,15 @@ interface SidebarMenuCategoryItemProps {
 const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryItemProps) => {
 	const location = useLocation();
 
-	const [expanded, setExpanded] = useState(
-		menuItem.elements.some((el) => location.pathname.endsWith(el.route)),
-	);
+	const [expanded, setExpanded] = useState(location.pathname.includes(menuItem.elements[0].route));
+
 	const handleExpand = () => {
-		setExpanded(!expanded);
+		setExpanded((prev) => !prev);
+	};
+
+	const setIsActiveItem = (route: string): boolean => {
+		const path = '/' + route;
+		return location.pathname.startsWith(path);
 	};
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -51,14 +55,13 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 			<div className={styles.items}>
 				{menuItem.elements.map((item, index) => {
 					const ImageComponent = item.icon;
+					const isActiveItem = setIsActiveItem(item.route);
 					return (
 						<NavLink
 							key={index}
 							to={item.route}
 							end
-							className={({ isActive }) =>
-								classNames(styles.item, styles.nested, { [styles.active]: isActive })
-							}
+							className={classNames(styles.item, styles.nested, { [styles.active]: isActiveItem })}
 						>
 							<div className={styles.wrap}>
 								<ImageComponent className={styles.icon} />
