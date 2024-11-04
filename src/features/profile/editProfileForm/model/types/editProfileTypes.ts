@@ -59,3 +59,9 @@ export type EditUserRequestData = {
 	id: string;
 	userInfo: EditUserValue;
 };
+
+export type EditAvatarRequestData = {
+	id: string;
+	image: string | null;
+	oldImage: string;
+};
