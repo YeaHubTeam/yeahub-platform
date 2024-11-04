@@ -1,0 +1,1 @@
+export { KnowledgebaseIcon } from './KnowledgebaseIcon';

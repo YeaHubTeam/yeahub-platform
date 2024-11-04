@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -14,7 +15,7 @@ interface SpecializationCardProps {
 }
 
 export const SpecializationCard = ({ specialization }: SpecializationCardProps) => {
-	const { t } = useTranslation('specialization');
+	const { t } = useTranslation(i18Namespace.specialization);
 
 	return (
 		<Flex>
@@ -26,7 +27,7 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 								<img
 									className={classNames(styles['title-img-block-image'])}
 									src={specialization.imageSrc}
-									alt="img"
+									alt={t(SpecializationI18.SPECIALIZATION_IMAGE_ALT)}
 								/>
 							)}
 						</div>

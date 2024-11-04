@@ -35,7 +35,7 @@
 }
 
 .card-expandable {
-  min-height: 250px;
+  height: 250px;
 }
 
 .card-expand {
@@ -121,7 +121,7 @@
   .header {
     position: relative;
     flex-direction: column;
-    align-items: start;	
+    align-items: start;
   }
 
   .link {
@@ -140,17 +140,17 @@
     flex-direction: column;
     align-items: start;
   }
-  
+
   .link {
     bottom: 16px;
     left: 16px;
   }
 
   .card {
-    padding:16px;
+    padding: 16px;
   }
-	
+
   .content {
-    margin-bottom:40px;
-  } 
+    margin-bottom: 40px;
+  }
 }

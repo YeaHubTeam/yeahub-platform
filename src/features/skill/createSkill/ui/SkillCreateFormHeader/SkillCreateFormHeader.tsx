@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -21,7 +22,7 @@ export const SkillCreateFormHeader = () => {
 		await createSkillMutation(data)
 			.unwrap()
 			.then(() => {
-				navigate('/skills');
+				navigate(ROUTES.admin.skills.page);
 			})
 			.catch((e) => {
 				// eslint-disable-next-line no-console

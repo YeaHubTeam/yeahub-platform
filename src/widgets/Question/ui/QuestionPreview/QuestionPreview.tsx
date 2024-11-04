@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
@@ -21,6 +24,7 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
+	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
@@ -75,7 +79,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					/>
 				</Popover>
 			</div>
-			{imageSrc && <img className={styles.image} alt={'asdasd'} src={imageSrc} />}
+			{imageSrc && <img className={styles.image} alt={t(Questions.IMAGE_ALT)} src={imageSrc} />}
 			<div className={styles.content}>
 				<TextHtml html={shortAnswer} />
 			</div>

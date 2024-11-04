@@ -1,0 +1,245 @@
+.question-interface {
+  padding: 24px 45.04px 0 24px;
+  max-width: 701px;
+  max-height: 489px;
+  border-radius: 12px;
+  background-color: var(--background-block);
+}
+
+.caption {
+  display: flex;
+  gap: 36px;
+  line-height: 22px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.caption svg {
+  min-width: 43px;
+  height: 45px;
+}
+
+.caption p {
+  padding-right: 160px;
+  color: var(--text-color-light);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20.81px;
+  margin-top: 40px;
+  padding: calc(16px + 20.81px);
+  padding-top: 16px;
+  padding-bottom: 0;
+  box-shadow: var(--main-shadow);
+  border-bottom: none;
+  border-radius: 12px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.container h3 {
+  position: relative;
+  color: var(--text-color-black-landing);
+  line-height: 23.69px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  text-wrap: nowrap;
+}
+
+.rating, .difficulty {
+  color: var(--text-color-primary);
+}
+
+.container h3::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -13.88px;
+  width: 6.94px;
+  height: 6.94px;
+  border-radius: 50%;
+  background-color: var(--text-color-link-active);
+  transform: translateY(-50%);
+}
+
+.container > div {
+  display: flex;
+  gap: 30.68px;
+}
+
+.container > div p {
+  padding: 5.2px 8.67px;
+  border-radius: 6.94px;
+  background-color: var(--background-light-hover);
+  line-height: 16.58px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-xs);
+}
+
+.container p span {
+  margin-left: 10.4px;
+  padding: 0 4.34px;
+  border-radius: 3.47px;
+  background-color: var(--background-primary);
+  color: var(--text-color-white);
+}
+
+.img-container {
+  width: 478px;
+  height: 157px;
+  border-radius: 12px;
+  background: url('/src/shared/assets/images/landing/question-interface-bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.answer {
+  line-height: 22.2px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-s);
+}
+
+@media screen and (width <= 1439px) {
+  .question-interface {
+    padding: 24px 24.12px 0 24px;
+  }
+
+  .caption {
+    gap: 24px;
+    line-height: 20px;
+  }
+
+  .caption p {
+    padding-right: 118px;
+  }
+
+  .container {
+    gap: 19.07px;
+    margin-top: 24px;
+    padding: 33.73px;
+    padding-top: 14.66px;
+    padding-bottom: 0;
+    border-radius: 11px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .container h3 {
+    line-height: 22px;
+  }
+
+  .container h3::before {
+    left: -12.71px;
+    width: 6.36px;
+    height: 6.36px;
+  }
+
+  .container > div {
+    gap: 31.78px;
+  }
+
+  .container > div p {
+    padding: 4.77px 7.94px;
+    border-radius: 6.36px;
+    line-height: 15px;
+    font-size: var(--font-size-p-xss);
+  }
+
+  .container p span {
+    margin-left: 9.53px;
+    padding: 0 3.97px;
+    border-radius: 3.18px;
+  }
+
+  .img-container {
+    width: 437.99px;
+    height: 143.86px;
+    border-radius: 11px;
+  }
+
+  .answer {
+    padding-bottom: 20px;
+    color: var(--text-color-light);
+    line-height: 20px;
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-p-s);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .question-interface {
+    padding: 16px;
+  }
+
+  .caption {
+    gap: 16px;
+    line-height: 19px;
+    font-size: var(--font-size-p-s);
+  }
+
+  .caption p {
+    padding-right: 0;
+  }
+
+  .caption > div {
+    width: 45px;
+    height: 40px;
+  }
+
+  .caption > div svg {
+    width: 45px;
+    height: 40px;
+  }
+
+  .container {
+    gap: 9.68px;
+    margin-top: 16px;
+    padding: 17.13px;
+    padding-top: 7.44px;
+    padding-bottom: 0;
+    border-radius: 5.58px;
+  }
+
+  .container h3 {
+    line-height: 11px;
+    font-size: var(--font-size-p-xxs);
+  }
+
+  .container h3::before {
+    left: -6.46px;
+    width: 3.23px;
+    height: 3.23px;
+  }
+
+  .container > div {
+    gap: 16.14px;
+  }
+
+  .container > div p {
+    padding: 2.42px 4.03px;
+    border-radius: 3.23px;
+    line-height: 8px;
+    font-size: var(--font-size-6);
+  }
+
+  .container p span {
+    margin-left: 4.84px;
+    padding: 0 2.02px;
+    border-radius: 1.61px;
+  }
+
+  .img-container {
+    width: 222.4px;
+    height: 73.05px;
+    border-radius: 5.58px;
+  }
+
+  .answer {
+    padding-bottom: 10px;
+    line-height: 10px;
+    font-size: var(--font-size-7);
+  }
+}

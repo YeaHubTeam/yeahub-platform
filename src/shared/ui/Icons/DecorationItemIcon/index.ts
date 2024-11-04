@@ -1,0 +1,1 @@
+export { DecorationItemIcon } from './DecorationItem';

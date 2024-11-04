@@ -24,10 +24,8 @@ export const UserPreferences = () => {
 	};
 
 	const handleOpenSettingsPopover = () => setIsOpenSettingsPopover((prev) => !prev);
-
+	const { t } = useI18nHelpers();
 	const SettingsPopover = () => {
-		const { t } = useI18nHelpers();
-
 		return (
 			<div key="settingpopemvcdf" className={styles.settings}>
 				<NavLink
@@ -76,7 +74,7 @@ export const UserPreferences = () => {
 					<Text text={profile?.firstName} />
 					<div className={styles.avatar}>
 						{profile.avatarUrl ? (
-							<img className={styles.img} src={profile.avatarUrl} alt="avatar" />
+							<img className={styles.img} src={profile.avatarUrl} alt={t(Translation.AVATAR)} />
 						) : (
 							<AvatarWithoutPhoto />
 						)}

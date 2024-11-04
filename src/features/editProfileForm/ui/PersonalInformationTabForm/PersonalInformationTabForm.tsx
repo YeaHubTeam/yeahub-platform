@@ -13,12 +13,22 @@ import { useProfileQuery } from '@/entities/auth';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
+import { useUpdateAvatarMutation } from '@/features/editProfileForm/api/editProfileApi';
+
 import styles from './PersonalInformationTabForm.module.css';
 
 export const PersonalInformationTabForm = () => {
 	const { control, setValue } = useFormContext();
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
+	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
+
+	const onImageChange = (image: string | null) => {
+		setValue('image', image);
+		if (profile) {
+			updateAvatar({ id: profile.id, image, oldImage: profile.avatarUrl });
+		}
+	};
 
 	return (
 		<Flex direction="column" gap="120" className={styles.wrapper}>
@@ -37,8 +47,9 @@ export const PersonalInformationTabForm = () => {
 					minResolution={{ width: 128, height: 128 }}
 					maxResolution={{ width: 2048, height: 2048 }}
 					maxMBSize={5}
-					setValue={setValue}
+					setValue={onImageChange}
 					initialSrc={isSuccessGetProfile ? profile.avatarUrl : null}
+					isLoading={isAvatarLoading}
 				/>
 			</Flex>
 			<Flex gap="16" className={styles.column}>
@@ -106,14 +117,6 @@ export const PersonalInformationTabForm = () => {
 								placeholder={t(Profile.PERSONALINFORMATIONFORM_LOCATIONPLACEHOLDER)}
 							/>
 						)}
-					</FormControl>
-					<FormControl
-						className={styles.form}
-						name="skillLevel"
-						control={control}
-						label={t(Profile.PERSONALINFORMATIONFORM_GRADE)}
-					>
-						{(field) => <Input {...field} className={styles.input} placeholder="Junior" />}
 					</FormControl>
 				</Flex>
 			</Flex>
