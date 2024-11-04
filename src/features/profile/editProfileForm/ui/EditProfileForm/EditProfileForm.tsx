@@ -23,7 +23,7 @@ import styles from './EditProfileForm.module.css';
 import { EditProfileFormSkeleton } from './EditProfileForm.skeleton';
 
 export const EditProfileForm = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const { hash } = useLocation();
 	const { data: userProfile, isLoading } = useProfileQuery();

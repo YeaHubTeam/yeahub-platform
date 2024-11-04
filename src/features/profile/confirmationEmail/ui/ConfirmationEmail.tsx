@@ -23,10 +23,10 @@ export const ConfirmationEmail = ({
 
 	return (
 		<>
-			<div className={styles.wrapper}>
+			<Flex direction="column" gap="12">
 				<h3 className={styles['card-title']}>{upperCaseFirstLetter}</h3>
 				<p className={styles['card-text']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_TEXT)}</p>
-			</div>
+			</Flex>
 
 			<p className={styles['card-email']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL)}</p>
 
