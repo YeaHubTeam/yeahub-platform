@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import { Cropper, ReactCropperElement } from 'react-cropper';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Loader } from '@/shared/ui/Loader';
 import { Modal } from '@/shared/ui/Modal';
 
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
@@ -17,7 +17,7 @@ import styles from './ImageLoader.module.css';
 import './ImageLoaderCropper.css';
 
 interface ImageLoaderProps {
-	setValue?: UseFormSetValue<FieldValues>;
+	setValue?: (image: string | null) => void;
 	cropper?: {
 		aspectRatio: number;
 		title: string;
@@ -33,6 +33,7 @@ interface ImageLoaderProps {
 		height: number;
 	};
 	initialSrc: string | null;
+	isLoading?: boolean;
 }
 
 export const ImageLoader = ({
@@ -42,10 +43,11 @@ export const ImageLoader = ({
 	minResolution,
 	maxMBSize,
 	initialSrc: src,
+	isLoading,
 }: ImageLoaderProps) => {
 	const [file, setFile] = useState<string | ArrayBuffer | null>(null);
 	const [deleted, setDeleted] = useState(false);
-	const [croppedArea, setCroppedArea] = useState<undefined | string>(undefined);
+	const [croppedArea, setCroppedArea] = useState<null | string>(null);
 
 	const cropperRef = useRef<ReactCropperElement>(null);
 
@@ -64,15 +66,15 @@ export const ImageLoader = ({
 	const uploaderRef = useRef<HTMLDivElement>(null);
 
 	const submitImage = () => {
-		setValue && setValue('image', croppedArea);
+		setValue && setValue(croppedArea);
 		setDeleted(false);
 		setFile(null);
 	};
 
 	const removeImage = () => {
-		setValue && setValue('image', null);
+		setValue && setValue(null);
 		setDeleted(true);
-		setCroppedArea(undefined);
+		setCroppedArea(null);
 		setFile(null);
 	};
 
@@ -117,8 +119,7 @@ export const ImageLoader = ({
 					setFile(reader.result);
 				} else {
 					setCroppedArea(String(reader.result).replace('data:image/png;base64,', ''));
-					setValue &&
-						setValue('image', String(reader.result).replace('data:image/png;base64,', ''));
+					setValue && setValue(String(reader.result).replace('data:image/png;base64,', ''));
 				}
 			};
 		};
@@ -128,6 +129,12 @@ export const ImageLoader = ({
 		<div className={styles.container}>
 			<Flex className={styles['profile-picture-wrapper']} gap="16">
 				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
+					{isLoading && (
+						<Loader
+							hasText={false}
+							style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+						/>
+					)}
 					{!deleted && src ? (
 						<img
 							src={(croppedArea && 'data:image/png;base64,' + croppedArea) || src}
