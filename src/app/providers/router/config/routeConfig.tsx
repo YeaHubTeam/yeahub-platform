@@ -14,7 +14,6 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
-import { SettingsProfile } from '@/widgets/Profile';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
@@ -240,16 +239,6 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.settings.route,
 						element: <SettingsProfilePage />,
-						handle: {
-							crumb: Translation.EMAIL_VERIFY,
-						},
-						children: [
-							{
-								index: true,
-								path: ROUTES.settings.page,
-								element: <SettingsProfile />,
-							},
-						],
 					},
 					{
 						path: ROUTES.interview.route,

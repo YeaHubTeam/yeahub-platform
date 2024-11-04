@@ -4,19 +4,19 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
-import { getUserIsEmailSent, UserVerifyed } from '@/entities/profile';
+import { getProfileIsEmailSent, UserVerifyed } from '@/entities/profile';
 
-import { EmailFormValidation } from '@/features/settings/emailFormValidation';
+import { ConfirmationEmail } from '@/features/profile/confirmationEmail';
 
-import styles from './SettingsProfile.module.css';
+import styles from './EmailConfirmationTab.module.css';
 
-export const SettingsProfile = () => {
+export const EmailConfirmationTab = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
-	const isLetterSended = useAppSelector(getUserIsEmailSent);
+	const isLetterSended = useAppSelector(getProfileIsEmailSent);
 
 	const upperCaseFirstLetter =
 		t(Profile.PROFILE_EMAIL_VERIFICATION_TITLE).charAt(0).toUpperCase() +
@@ -37,22 +37,16 @@ export const SettingsProfile = () => {
 	}, [profile, refetch]);
 
 	return (
-		<div className={styles.wrapper}>
-			<Card className={styles.card}>
-				<div className={styles['card-wrapper']}>
-					<div className={styles['card-content']}>
-						{isEmailVerified ? (
-							<UserVerifyed />
-						) : (
-							<EmailFormValidation
-								upperCaseFirstLetter={upperCaseFirstLetter}
-								email={email}
-								isLetterSended={isLetterSended}
-							/>
-						)}
-					</div>
-				</div>
-			</Card>
-		</div>
+		<Flex direction="column" className={styles.wrapper}>
+			{isEmailVerified ? (
+				<UserVerifyed />
+			) : (
+				<ConfirmationEmail
+					upperCaseFirstLetter={upperCaseFirstLetter}
+					email={email}
+					isLetterSended={isLetterSended}
+				/>
+			)}
+		</Flex>
 	);
 };

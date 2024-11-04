@@ -7,6 +7,7 @@ import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
 import { EmailVerify } from '@/entities/profile';
@@ -47,7 +48,11 @@ const MainPage = () => {
 	return (
 		<>
 			{profile && (
-				<div className={styles.wrapper}>
+				<Flex
+					direction="column"
+					gap="24"
+					className={!profile.isEmailVerified ? styles.wrapper : ''}
+				>
 					<h2 className={styles.title}>
 						{t(Translation.HELLO)}, {profile.firstName}!
 					</h2>
@@ -70,7 +75,7 @@ const MainPage = () => {
 							</Card>
 						)
 					)}
-				</div>
+				</Flex>
 			)}
 			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
 		</>

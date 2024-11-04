@@ -5,7 +5,7 @@ import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { userActions } from '@/entities/profile';
+import { profileActions } from '@/entities/profile';
 
 import {
 	Auth,
@@ -47,7 +47,7 @@ export const authApi = baseApi.injectEndpoints({
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 
-					dispatch(userActions.setEmailSent(true));
+					dispatch(profileActions.setEmailSent(true));
 
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {

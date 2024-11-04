@@ -1,12 +1,11 @@
-import { EmailVerify } from './ui/EmailVerify/EmailVerify';
-import { UserVerifyed } from './ui/UserVerifyed/UserVerifyed';
+export type { ProfileState } from './model/types/profile';
 
-export type { UserState } from './model/types/user';
+export { profileSlice } from './model/slices/profileSlice';
 
-export { userSlice } from './model/slices/userSlice';
+export { profileReducer, profileActions } from './model/slices/profileSlice';
 
-export { userReducer, userActions } from './model/slices/userSlice';
+export { getProfileIsEmailSent } from './model/selectors/profileSelectors';
 
-export { getUserIsEmailSent } from './model/selectors/userSelectors';
+export { EmailVerify } from './ui/EmailVerify/EmailVerify';
 
-export { UserVerifyed, EmailVerify };
+export { UserVerifyed } from './ui/UserVerifyed/UserVerifyed';

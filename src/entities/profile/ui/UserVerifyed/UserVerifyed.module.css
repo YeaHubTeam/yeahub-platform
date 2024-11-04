@@ -13,7 +13,7 @@
 }
 
 .card-text {
-  margin: 0;
+  margin-top: 12px;
   width: 476px;
   color: var(--text-color-black-landing);
   line-height: 120%;
@@ -22,8 +22,7 @@
 }
 
 .svg {
-  width: 36px;
-  height: 36px;
-  stroke: var(--background-primary);
+  width: 32px;
+  height: 33px;
   fill: var(--background-primary);
 }

@@ -12,72 +12,65 @@
   font-size: var(--font-size-large-34);
 }
 
-.card-email {
-  margin-bottom: -4px;
-  line-height: 150%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s); 
-}
-
-.card {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.card-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  gap: 8px;
-}
-
-.svg {
-  width: var(--font-size-h-s);
-  height: var(--font-size-h-s);
-  stroke: var(--background-primary);
-  fill: var(--background-primary);
-}
-
 .card-text {
   margin: 0;
-  width: 476px;
+  width: 100%;
   color: var(--text-color-black-landing);
   line-height: 120%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 }
 
-.card-text-email {
-  margin: 0;
-  width: 476px;
-  color: var(--background-primary);
-  line-height: 120%;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-m);
+.card-email { 
+  margin: 30px 0 8px; 
+  color: var(--text-color-black);
+  line-height: 150%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s)
 }
 
-.card-input-wrapper {
+.card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
+.flex {
+  gap: 10px;
+}
+
 .input {
-  padding: 4px 16px;
   width: 328px;
+  height: 48px;
   border: 1px solid var(--border-input);
   border-radius: 68px;
   background-color: transparent !important;
   
 
   input {
+    padding: 14px 16px;
     background-color: transparent !important;
     color: var(--text-color-bright) !important;
     line-height: 127%;
+    font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-m);
   }
 }
+
+.svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--background-primary);
+}
+
+.card-text-email {
+  color: var(--background-primary);
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+  white-space: nowrap;
+}
+
+
 
 
 

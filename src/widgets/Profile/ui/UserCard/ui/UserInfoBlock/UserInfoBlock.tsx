@@ -8,6 +8,7 @@ import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Flex } from '@/shared/ui/Flex';
 
 import { GetProfileResponse } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
@@ -67,15 +68,18 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 				</h4>
 
 				{isEmailVerified ? (
-					<div className={styles['card-verify']}>
-						<DoubleCheck width={16} height={16} fill="#008616" /> {email}
-					</div>
+					<Flex align="center" gap="4">
+						<DoubleCheck className={styles['svg-check']} />
+						<span className={styles['card-verify-span']}>{email}</span>
+					</Flex>
 				) : (
 					<Link to={ROUTES.settings.page}>
-						<div className={styles['card-verify']}>
-							<Time width={16} height={16} fill="#5E5E5E" />
-							<p>{t(Profile.PROFILE_EMAIL_VERIFICATION_VERIFY_LINK)}</p>
-						</div>
+						<Flex align="center" gap="4">
+							<Time className={styles['svg-time']} />
+							<span className={styles['card-verify-link']}>
+								{t(Profile.PROFILE_EMAIL_VERIFICATION_VERIFY_LINK)}
+							</span>
+						</Flex>
 					</Link>
 				)}
 
