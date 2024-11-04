@@ -1,0 +1,42 @@
+:root {
+  /* widths */
+  --container-width: 1216px;
+  --container-width-tablet: 708px;
+  --container-width-mobile: 100%;
+  --grid-template-columns: 332px 244px 244px;
+
+  /* paddings */
+  --container-padding: 0;
+  
+  /* transitions */
+  --drawer-transition-speed: 0.3s;
+  
+  /* dimensions */
+  --font-size-none: 0;
+  --font-size-p-xxxs: 6px;
+  --font-size-p-xxs: 8px;
+  --font-size-p-xss: 10px;
+  --font-size-p-xs: 12px;
+  --font-size-p-s: 14px;
+  --font-size-p-m: 16px;
+  --font-size-p-l: 18px;
+  --font-size-h-xs: 20px;
+  --font-size-h-s: 24px;
+  --font-size-large-34: 34px;
+  --font-size-h-m: 36px;
+  --font-size-h-l: 40px;
+  --font-size-h-xxl: 60px;
+  --font-family: "Manrope", sans-serif;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  
+  /* shadows */
+  --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+  --focus-shadow: 0 0 0 3px var(--color-purple-100);
+  --focus-shadow-error: 0 0 0 3px var(--color-red-100);
+  --focus-shadow-valid: 0 0 0 3px var(--color-green-200);
+
+  /* z-index */
+  --z-index-modal: 1000;
+}
