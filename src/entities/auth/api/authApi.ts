@@ -4,6 +4,9 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { profileActions } from '@/entities/profile';
+
 import {
 	Auth,
 	ExtraArgument,
@@ -38,11 +41,14 @@ export const authApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body: registration,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
+
+					dispatch(profileActions.setEmailSent(true));
+
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console

@@ -44,6 +44,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
+import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -234,6 +235,10 @@ export const router = createBrowserRouter([
 								},
 							},
 						],
+					},
+					{
+						path: ROUTES.settings.route,
+						element: <SettingsProfilePage />,
 					},
 					{
 						path: ROUTES.interview.route,
