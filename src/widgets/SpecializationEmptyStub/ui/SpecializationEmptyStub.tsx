@@ -18,9 +18,8 @@ export const SpecializationEmptyStub = () => {
 	};
 
 	return (
-		<Card className={styles.card}>
+		<Card className={styles.card} title={t(Interview.PREPARATION_STUB_TITLE)}>
 			<div className={styles['card-content']}>
-				<h2 className={styles['card-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
 				<p className={styles['card-text']}>{t(Interview.PREPARATION_STUB_DESCRIPTION)}</p>
 				<Button onClick={handleProfileRedirect} className={styles.button} size="large">
 					{t(Interview.FILLPROFILE_BUTTON)}
