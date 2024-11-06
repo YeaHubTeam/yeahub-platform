@@ -4,7 +4,7 @@
 }
 
 .card-image {
-  width: 170px !important;
+  width: 170px;
   min-height: 114px;
   border-radius: 12px;
   background-color: var(--color-black-500);

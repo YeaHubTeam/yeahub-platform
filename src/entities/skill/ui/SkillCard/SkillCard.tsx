@@ -30,7 +30,7 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 				</Flex>
 			</Card>
 
-			<Card withOutsideShadow={true} expandable={true}>
+			<Card withOutsideShadow expandable>
 				<Flex direction="column" gap="20">
 					<h3>{skill.title}</h3>
 					<p>{skill.description}</p>
