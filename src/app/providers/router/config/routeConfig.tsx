@@ -52,6 +52,7 @@ import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
+import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 
 const mainLayoutMenuItems: MenuItem[] = [
@@ -242,7 +243,11 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.interview.route,
-						element: <Outlet />,
+						element: (
+							<InterviewRoute>
+								<Outlet />
+							</InterviewRoute>
+						),
 						handle: {
 							crumb: Translation.CRUMBS_INTERVIEW,
 						},
