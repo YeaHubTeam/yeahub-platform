@@ -30,10 +30,7 @@ const SkillDetailPage = () => {
 				<BackButton />
 
 				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-					<NavLink to="delete">
-						<DeleteSkillButton skillId={skill.id} isDetailPage />
-					</NavLink>
-
+					<DeleteSkillButton skillId={skill.id} isDetailPage />
 					<NavLink to="edit">
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
