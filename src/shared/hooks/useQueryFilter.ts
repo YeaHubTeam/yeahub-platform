@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { QuestionFilterStatus } from '@/widgets/Question';
+type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
 interface FilterFromURL {
 	skills: string | null;
@@ -10,6 +10,8 @@ interface FilterFromURL {
 	status: string | null;
 	title: string | null;
 	page: string | null;
+	orderBy?: string | null;
+	order?: string | null;
 }
 
 interface FilterFromUser {
@@ -19,6 +21,8 @@ interface FilterFromUser {
 	title?: string;
 	status?: QuestionFilterStatus;
 	page?: number;
+	orderBy?: string;
+	order?: string;
 }
 
 const initialState = '?page=1&status=all';
@@ -46,6 +50,8 @@ export const useQueryFilter = () => {
 			complexity: params.get('complexity'),
 			status: params.get('status'),
 			title: params.get('title'),
+			orderBy: params.get('orderBy'),
+			order: params.get('order'),
 		};
 	};
 
@@ -57,6 +63,8 @@ export const useQueryFilter = () => {
 			title: params.title ? params.title : undefined,
 			status: params.status ? (params.status as QuestionFilterStatus) : 'all',
 			page: params.page ? Number(params.page) : undefined,
+			orderBy: params.orderBy ? params.orderBy : undefined,
+			order: params.order ? params.order : undefined,
 		};
 	};
 

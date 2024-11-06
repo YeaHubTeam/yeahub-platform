@@ -2,14 +2,17 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { ChooseQuestionComplexity, ChooseQuestionsCategories } from '@/entities/question';
+import {
+	ChooseQuestionComplexity,
+	ChooseQuestionsCategories,
+	RateFilterSection,
+} from '@/entities/question';
 
 import { SearchInput } from '@/features/common/search-input';
 
 import { FilterParams, QuestionFilterStatus } from '../model/types';
 
 import styles from './QuestionsFilterPanel.module.css';
-import { RateFilterSection } from './RateFilterSection/RateFilterSection';
 import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
 
 interface QuestionsFilterPanelProps {
@@ -34,6 +37,7 @@ export const QuestionsFilterPanel = ({
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
 	};
+
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
 	return (

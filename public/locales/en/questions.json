@@ -15,6 +15,16 @@
     "title": "Questions Rating",
     "select": "Select rate"
   },
+  "field": {
+    "title": "Sort by field",
+    "rate": "Rate",
+    "complexity": "Complexity"
+  },
+  "sort": {
+    "title": "Sort by",
+    "ascending": "Ascending",
+    "descending": "Descending"
+  },
   "status": {
     "title": "Status",
     "unlearned": "Unlearned",
