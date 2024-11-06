@@ -20,6 +20,7 @@ interface InterviewHistoryListProps {
 export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListProps) => {
 	const profile = useProfileQuery();
 	const profileId = profile.data?.profiles[0].id;
+	const isVerified = profile.data?.isEmailVerified;
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	const { data, isSuccess } = useGetHistoryQuizQuery(
 		profileId
@@ -31,18 +32,25 @@ export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListPro
 			: skipToken,
 	);
 
-	const isEmptyData = !isSuccess || data.data.length === 0;
+	const isEmptyData = isSuccess && data.data.length === 0;
+
+	const actionRoute = isVerified ? ROUTES.interview.history.page : ROUTES.platformRoute;
+	const actionTitle = isVerified
+		? t(Interview.HISTORY_PREPARATION_LINKTEXT)
+		: t(Interview.HISTORY_PREPARATION_LINKTEXT_UNVERIFIED);
 
 	return (
 		<Card
 			className={`${styles['card-history']} ${className}`}
-			actionRoute={ROUTES.interview.history.page}
-			actionTitle={t(Interview.HISTORY_PREPARATION_LINKTEXT)}
+			actionRoute={actionRoute}
+			actionTitle={actionTitle}
 			title={t(Interview.HISTORY_PREPARATION_TITLE)}
 			withShadow
 			actionDisabled={isEmptyData}
 		>
-			{!isEmptyData ? (
+			{!isVerified ? (
+				<h3 className={styles['no-history']}>{t(Interview.HISTORY_PREPARATION_UNVERIFIED)}</h3>
+			) : !isEmptyData ? (
 				<div className={styles.history}>
 					<ul className={styles.list}>
 						{data?.data.map((interview) => (
