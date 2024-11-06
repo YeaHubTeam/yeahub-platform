@@ -1,4 +1,5 @@
 /* eslint-disable @conarti/feature-sliced/layers-slices */
+import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
@@ -19,4 +20,5 @@ export interface State {
 	questionsTablePage: QuestionsTablePageState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
+	profile: ProfileState;
 }

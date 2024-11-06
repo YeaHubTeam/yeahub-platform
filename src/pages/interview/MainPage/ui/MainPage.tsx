@@ -7,8 +7,10 @@ import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
+import { EmailVerify } from '@/entities/profile';
 
 import styles from './MainPage.module.css';
 
@@ -46,26 +48,34 @@ const MainPage = () => {
 	return (
 		<>
 			{profile && (
-				<div className={styles.wrapper}>
+				<Flex
+					direction="column"
+					gap="24"
+					className={!profile.isEmailVerified ? styles.wrapper : ''}
+				>
 					<h2 className={styles.title}>
 						{t(Translation.HELLO)}, {profile.firstName}!
 					</h2>
-					{isIncompleteProfile && (
-						<Card className={styles.card}>
-							<div className={styles['card-wrapper']}>
-								<div className={styles['card-content']}>
-									<h3 className={styles['card-title']}>
-										{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
-									</h3>
-									<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
+					{!profile.isEmailVerified ? (
+						<EmailVerify firstName={profile.firstName} />
+					) : (
+						isIncompleteProfile && (
+							<Card className={styles.card}>
+								<div className={styles['card-wrapper']}>
+									<div className={styles['card-content']}>
+										<h3 className={styles['card-title']}>
+											{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
+										</h3>
+										<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
+									</div>
+									<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
+										{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
+									</Button>
 								</div>
-								<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
-									{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
-								</Button>
-							</div>
-						</Card>
+							</Card>
+						)
 					)}
-				</div>
+				</Flex>
 			)}
 			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
 		</>

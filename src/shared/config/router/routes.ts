@@ -71,6 +71,10 @@ export const ROUTES = {
 			page: '/dashboard/profile/edit',
 		},
 	},
+	settings: {
+		route: 'settings',
+		page: '/dashboard/settings',
+	},
 	interview: {
 		route: 'interview',
 		page: '/dashboard/interview',

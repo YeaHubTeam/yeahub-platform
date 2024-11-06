@@ -1,0 +1,19 @@
+.card {
+  max-width: 692px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-text {
+  color: var(--text-color-lighter);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-s);
+}
+
+.button {
+  align-self: end;
+}

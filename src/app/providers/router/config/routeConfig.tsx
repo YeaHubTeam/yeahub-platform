@@ -44,6 +44,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
+import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -51,6 +52,7 @@ import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
+import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 
 const mainLayoutMenuItems: MenuItem[] = [
@@ -236,8 +238,16 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
+						path: ROUTES.settings.route,
+						element: <SettingsProfilePage />,
+					},
+					{
 						path: ROUTES.interview.route,
-						element: <Outlet />,
+						element: (
+							<InterviewRoute>
+								<Outlet />
+							</InterviewRoute>
+						),
 						handle: {
 							crumb: Translation.CRUMBS_INTERVIEW,
 						},

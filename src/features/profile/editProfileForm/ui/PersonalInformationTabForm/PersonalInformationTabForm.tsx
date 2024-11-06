@@ -13,7 +13,7 @@ import { useProfileQuery } from '@/entities/auth';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
-import { useUpdateAvatarMutation } from '@/features/editProfileForm/api/editProfileApi';
+import { useUpdateAvatarMutation } from '@/features/profile/editProfileForm/api/editProfileApi';
 
 import styles from './PersonalInformationTabForm.module.css';
 
