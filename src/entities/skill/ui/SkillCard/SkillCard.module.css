@@ -4,9 +4,17 @@
 }
 
 .card-image {
-  width: 170px;
+  width: 170px !important;
   min-height: 114px;
   border-radius: 12px;
   background-color: var(--color-black-500);
   object-fit: cover;
+}
+
+.card-image-wrapper {
+  width: 170px;
+  min-height: 114px; 
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--color-black-500); 
 }

@@ -1,7 +1,8 @@
-import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
 import { Skill } from '../../model/types/skill';
 
@@ -16,22 +17,22 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 
 	return (
 		<Flex direction="column" gap="24" className={styles.wrap}>
-			<Card>
+			<Card withOutsideShadow={true}>
 				<Flex gap="16">
-					{skill.imageSrc && (
-						<img
+					<div className={styles['card-image-wrapper']}>
+						<ImageWithWrapper
 							src={skill.imageSrc}
 							alt={`${t(Translation.LOGO)} ${skill.title}`}
 							className={styles['card-image']}
 						/>
-					)}
+					</div>
 					<h2>{skill.title}</h2>
 				</Flex>
 			</Card>
 
-			<Card>
+			<Card withOutsideShadow={true} expandable={true}>
 				<Flex direction="column" gap="20">
-					<h3>{t(Skills.DESCRIPTION)}</h3>
+					<h3>{skill.title}</h3>
 					<p>{skill.description}</p>
 				</Flex>
 			</Card>

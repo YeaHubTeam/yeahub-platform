@@ -24,11 +24,18 @@ const SkillDetailPage = () => {
 
 	return (
 		<main>
-			<Flex align="center" gap="8" style={{ marginBottom: 34 }}>
+			<Flex align="center" gap="8" style={{ marginBottom: 34, justifyContent: 'space-between' }}>
 				<BackButton />
-				<NavLink style={{ marginLeft: 'auto' }} to="edit">
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+
+				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<NavLink to="delete">
+						<Button theme="destructive">{t(Translation.DELETE)}</Button>
+					</NavLink>
+
+					<NavLink to="edit">
+						<Button>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Flex>
 			</Flex>
 			<SkillCard skill={skill} />
 		</main>
