@@ -31,7 +31,7 @@ export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListPro
 			: skipToken,
 	);
 
-	const isEmptyData = isSuccess && data.data.length === 0;
+	const isEmptyData = !isSuccess || data.data.length === 0;
 
 	return (
 		<Card
