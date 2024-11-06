@@ -109,6 +109,8 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
+	TOAST_QUESTIONS_DELETE_SUCCESS = 'toast.questions.delete.success',
+	TOAST_QUESTIONS_DELETE_FAILED = 'toast.questions.delete.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',

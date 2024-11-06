@@ -78,7 +78,7 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				{question && <DeleteQuestionButton questionId={question.id} onDetailPage={true} />}
+				{question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
 				<NavLink style={{ marginLeft: 'auto' }} to="edit">
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
