@@ -17,7 +17,7 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 
 	return (
 		<Flex direction="column" gap="24" className={styles.wrap}>
-			<Card withOutsideShadow={true}>
+			<Card withOutsideShadow>
 				<Flex gap="16">
 					<div className={styles['card-image-wrapper']}>
 						<ImageWithWrapper
