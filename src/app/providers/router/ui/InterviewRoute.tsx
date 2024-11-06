@@ -12,7 +12,8 @@ export const InterviewRoute = ({ children }: InterviewRouteProps) => {
 	const { data: profile } = useProfileQuery();
 	const location = useLocation();
 
-	if (location.pathname === '/' + ROUTES.interview.route) return <>{children}</>;
+	if (location.pathname === ROUTES.platformRoute + '/' + ROUTES.interview.route)
+		return <>{children}</>;
 
 	return profile?.profiles?.[0]?.specializationId === 0 ? (
 		<Navigate to={ROUTES.interview.page} />

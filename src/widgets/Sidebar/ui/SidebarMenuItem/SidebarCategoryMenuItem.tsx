@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { CategoryMenuItem } from '../../model/types/sidebar';
@@ -25,7 +26,7 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 	};
 
 	const setIsActiveItem = (route: string): boolean => {
-		const path = '/' + route;
+		const path = ROUTES.platformRoute + '/' + route;
 		return location.pathname.startsWith(path);
 	};
 
