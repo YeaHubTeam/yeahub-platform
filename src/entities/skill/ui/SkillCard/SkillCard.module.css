@@ -10,3 +10,10 @@
   background-color: var(--color-black-500);
   object-fit: cover;
 }
+
+.card-image-wrapper {
+  width: 170px;
+  min-height: 114px; 
+  overflow: hidden;
+  border-radius: 12px;
+}
