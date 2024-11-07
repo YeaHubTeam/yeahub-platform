@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin-top: var(--font-size-h-s);
+  margin-top: 6px;
   width: 100%;
   font-size: var(--font-size-p-s);
 }
@@ -14,13 +14,18 @@
 @media (width <= 996px) {
   .info {
     gap: 4px;
-    margin-top: 16px;
   }
 }
 
 @media (width <= 768px) {
   .stat {
     border-radius: 8px;
+  }
+}
+
+@media (width <= 360px) {
+  .info {
+    margin-top: 10px;
   }
 }
 
