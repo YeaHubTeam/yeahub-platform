@@ -1,14 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './Error404Page.module.css';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { i18Namespace } from '@/shared/config/i18n';
-
-
 
 const Error404Page = () => {
 	const navigate = useNavigate();

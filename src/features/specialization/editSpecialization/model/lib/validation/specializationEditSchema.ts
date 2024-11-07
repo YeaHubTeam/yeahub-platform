@@ -4,7 +4,7 @@ export const specializationEditSchema = yup.object().shape({
 	id: yup.number().required(),
 	title: yup.string().required(),
 	description: yup.string().required(),
-	imageSrc: yup.string(),
+	imageSrc: yup.string().nullable(),
 	createdAt: yup.string().required(),
 	updatedAt: yup.string().required(),
 });

@@ -1,0 +1,1 @@
+export { TechnologyIcon } from './TechnologyIcon';

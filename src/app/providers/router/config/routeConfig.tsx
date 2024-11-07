@@ -23,6 +23,7 @@ import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
+import { SkillEditPage } from '@/pages/admin/SkillEditPage';
 import { SkillsPage } from '@/pages/admin/SkillsPage';
 import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage';
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
@@ -40,14 +41,18 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
+import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 
 import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
+import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from '../ui/AuthRoute';
+import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 
 const mainLayoutMenuItems: MenuItem[] = [
@@ -60,7 +65,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.appRoute,
+		route: ROUTES.platformRoute,
 		title: 'tabs.main',
 		icon: MainIcon,
 	},
@@ -87,7 +92,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 const adminLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.appRoute,
+		route: ROUTES.platformRoute,
 		title: 'tabs.platform',
 		icon: CursorSquare,
 		isAdmin: true,
@@ -123,6 +128,15 @@ export const router = createBrowserRouter([
 		path: ROUTES.appRoute,
 		element: <App />,
 		children: [
+			{
+				element: <LandingLayout />,
+				children: [
+					{
+						index: true,
+						element: <LandingMainPage />,
+					},
+				],
+			},
 			{
 				path: ROUTES.adminRoute,
 				element: (
@@ -180,6 +194,10 @@ export const router = createBrowserRouter([
 								element: <SkillCreatePage />,
 							},
 							{
+								path: ROUTES.admin.skills.edit.route,
+								element: <SkillEditPage />,
+							},
+							{
 								path: ROUTES.admin.skills.detail.route,
 								element: <SkillDetailPage />,
 							},
@@ -188,7 +206,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.appRoute,
+				path: ROUTES.platformRoute,
 				element: (
 					<AuthRoute>
 						<MainLayout sidebarItems={mainLayoutMenuItems} />
@@ -220,8 +238,16 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
+						path: ROUTES.settings.route,
+						element: <SettingsProfilePage />,
+					},
+					{
 						path: ROUTES.interview.route,
-						element: <Outlet />,
+						element: (
+							<InterviewRoute>
+								<Outlet />
+							</InterviewRoute>
+						),
 						handle: {
 							crumb: Translation.CRUMBS_INTERVIEW,
 						},

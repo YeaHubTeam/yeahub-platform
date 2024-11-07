@@ -25,10 +25,9 @@ export const DeleteQuestionButton = ({ questionId }: DeleteQuestionButtonProps) 
 		<Button
 			aria-label="Large"
 			style={{ width: 'auto', justifyContent: 'flex-start' }}
-			preffix={
-				<Icon onClick={onDeleteQuestion} icon="trash" size={20} color="--palette-ui-red-600" />
-			}
+			preffix={<Icon icon="trash" size={20} color="--palette-ui-red-600" />}
 			theme="tertiary"
+			onClick={onDeleteQuestion}
 		>
 			{t(Translation.DELETE)}
 		</Button>

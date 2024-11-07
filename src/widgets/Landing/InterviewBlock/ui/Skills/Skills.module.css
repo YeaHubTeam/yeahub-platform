@@ -1,0 +1,61 @@
+.container {
+  position: absolute;
+  top: 22px;
+  left: -14%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  width: 152px;
+  height: 144px;
+  border-radius: 12px;
+  background-color: var(--background-block);
+  transform: rotate(-5deg);
+}
+
+.top-block,
+.bottom-block {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-container {
+  padding: 10px 12px;
+  width: 60px;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--background-app);
+}
+
+.icon-container svg {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (width <= 1439px) {
+  .container {
+    top: 22.2px;
+    left: 0;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .container {
+    top: 17px;
+    padding: 6px;
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+  }
+
+  .icon-container {
+    padding: 6.5px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon-container > svg {
+    width: 20px;
+    height: 20px;
+  }
+}

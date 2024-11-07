@@ -1,8 +1,10 @@
-import type { ProfileAchievment } from '@/entities/achievement';
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import styles from './AchievmentsBlockItem.module.css';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
+import type { ProfileAchievment } from '@/entities/achievement';
+
+import styles from './AchievmentsBlockItem.module.css';
 
 interface AchievmentsBlockItemProps {
 	achievement: ProfileAchievment;

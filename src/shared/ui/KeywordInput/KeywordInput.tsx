@@ -1,11 +1,13 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { Input } from 'yeahub-ui-kit';
+import { Input, Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleChip } from '@/shared/ui/SimpleChip';
+
+import styles from './KeywordInput.module.css';
 
 type KeywordInputProps = {
 	value: string[];
@@ -18,16 +20,26 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 
 	const { t } = useI18nHelpers([i18Namespace.questions, i18Namespace.translation]);
 
-	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+	const handleInput = () => {
 		const enteredKeywords = keywords.toLocaleLowerCase().trim();
-		if (event.key === 'Enter' && enteredKeywords) {
-			if (!keywordsArray.includes(keywords)) {
+		if (enteredKeywords) {
+			if (!keywordsArray.includes(enteredKeywords)) {
 				const newKeywordsArray = [...keywordsArray, enteredKeywords];
 				setKeywordsArray(newKeywordsArray);
 				onChange(newKeywordsArray);
 				setKeywords('');
 			}
 		}
+	};
+
+	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === 'Enter') {
+			handleInput();
+		}
+	};
+
+	const handleClick = () => {
+		handleInput();
 	};
 
 	const handleDeleteKeywords = (selectedKeyword: string) => {
@@ -42,7 +54,12 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 
 	return (
 		<Flex gap="24" direction="column">
-			<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
+			<Flex gap="8">
+				<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
+				<Button className={styles.button} onClick={handleClick}>
+					{t(Translation.CREATE)}
+				</Button>
+			</Flex>
 			<Flex gap="16" direction="column">
 				{keywordsArray?.length > 0 && (
 					<>

@@ -3,40 +3,44 @@
   max-width: 660px;
 }
 
-.img {
+.profile-picture-block {
+  position: relative;
   width: 170px;
+  min-height: 188px;
 }
 
-.profile-picture-wrapper > img {
-  width: 170px;
-  height: 188px;
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
   object-fit: cover;
-  border-radius: 16px;
 }
 
 .delete-avatar-btn {
+  position: absolute;
+  right: 50%;
+  bottom: -25px;
+  width: max-content;
   max-width: 170px;
   border: none;
   background-color: transparent;
   color: var(--color-red-600);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-s);
+  transform: translateX(50%);
   cursor: pointer;
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .profile-picture-wrapper {
     flex-wrap: wrap;
     justify-content: center;
   }
 }
 
-@media (width <= 480px) {
+@media (width <=480px) {
   .profile-picture-block {
-    width: 100%;
-  }
-
-  .img {
     width: 100%;
   }
 
@@ -47,11 +51,14 @@
 
 .content {
   display: flex;
-  flex-direction: column;;
-  gap:30px;
+  flex-direction: column;
+  gap: 30px;
   padding: 40px;
-  border-radius: 20px;
   color: var(--text-color-light);
+}
+
+.cropper-info {
+  margin-bottom: 25px;
 }
 
 .cropper {
@@ -60,9 +67,6 @@
   border-radius: 24px;
 }
 
-.description-title {
-  text-align: center;
-}
 
 .buttons-wrapper {
   display: flex;

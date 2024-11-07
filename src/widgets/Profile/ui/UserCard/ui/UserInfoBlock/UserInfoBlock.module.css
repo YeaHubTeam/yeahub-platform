@@ -63,6 +63,33 @@
   font-size: var(--font-size-p-s);
 }
 
+.card-verify-span {
+  color: var(--text-color-light); 
+  line-height: 130%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.card-verify-link {
+  color: var(--text-color-lighter);
+  line-height: 120%;
+  font-weight: var(--font-weight-500);
+}
+
+.svg-time {
+  width: 16px;
+  height: 16px;
+  fill:var(--text-color-lighter)
+}
+
+.svg-check {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-green-750);
+}
+
+
+
 @media (width <= 768px) {
   .card-edit-icon {
     display: block;
