@@ -3,7 +3,6 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  transition: padding-left .5s ease-in-out;
   transition: padding-left 0.5s ease-in-out;
 }
 
@@ -21,6 +20,7 @@
 .short path:not(:first-child) {
   opacity: 0;
 }
+
 
 .white {
   color: var(--color-white-900);
