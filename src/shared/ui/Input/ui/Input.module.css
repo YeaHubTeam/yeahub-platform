@@ -3,23 +3,40 @@
   display: inline-flex;
   align-items: center;
   width: 100%; 
-  height: auto;
+  height: 48px;
   border: 1px solid var(--background-button);
   border-radius: 68px;
   background-color: var(--background-block);
   color: var(--border-color); 
   transition: 0.2s; 
   cursor: text;
+
+  --icon-fill: var(--text-color-more-lightest);
   
-  &:hover,
-  &:focus-within,
-  &:active {
+
+  &:hover {
     border: 1px solid var(--text-color-link-disabled); 
+
+    --icon-fill: var(--text-color-lighter); 
+  }
+
+  &:active {
+    border: 1px solid var(--border-focus-purple); 
+
+    --icon-fill: var(--text-color-more-lightest);
+  }
+
+  &:focus-within {
+    border: 1px solid var(--background-primary);
+
+    --icon-fill: var(--text-color-bright); 
   }
 }
 
+
 .input {
   flex-grow: 1;
+  align-self: center;
   padding: var(--font-size-p-xs) var(--font-size-h-s); 
   box-sizing: border-box; 
   outline: none;
@@ -43,12 +60,16 @@
   background: var(--background-app);
   cursor: not-allowed; 
   opacity: 0.6; 
+  color: var(--text-color-lighter);
 
   &:hover,
   &:focus-within,
   &:active {
-    border: 1px solid var(--background-button); 
+    border: 1px solid var(--background-button);
+
+    --icon-fill: var(--text-color-more-lightest);
   }
+
 }
 
 .wrapper-error {
@@ -62,10 +83,28 @@
 }
 
 
-.input-prefix,
-.input-suffix {
+.input-prefix {
+  display: flex;
   flex-shrink: 0;
-  margin: 0 8px; 
+  margin: auto 9px auto 24px;
+  padding: 0; 
+  fill: var(--icon-fill); 
+  pointer-events: none;
+}
+
+.input-suffix {
+  display: flex;
+  flex-shrink: 0;
+  margin: auto 24px auto 9px;
+  padding: 0;
+  fill: var(--icon-fill); 
+  pointer-events: none;
 }
 
 
+.prefix {
+  width: 18px;
+  height: 18px;
+  fill: var(--icon-fill); 
+  pointer-events: none;
+}
