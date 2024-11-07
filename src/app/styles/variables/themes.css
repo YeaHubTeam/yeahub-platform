@@ -1,5 +1,6 @@
 :root {
   /* light theme colors */
+  --svg-color-green: var(--color-green-750);
   --background-progress-bar: var(--color-purple-200);
   --background-app: var(--color-black-25);
   --background-button: var(--color-black-50);
@@ -8,6 +9,7 @@
   --background-light-chip: var(--color-purple-100);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
+  --text-color-black-email: var(--color-black-850);
   --text-color-black-landing: var(--color-black-1000);
   --text-color-link-active: var(--color-purple-700);
   --text-color-link-disabled: var(--color-purple-300);
