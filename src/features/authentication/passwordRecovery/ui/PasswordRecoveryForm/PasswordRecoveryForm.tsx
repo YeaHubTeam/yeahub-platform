@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Input, Icon } from 'yeahub-ui-kit';
+import { Input, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 
 import { PasswordRecovery } from '@/entities/auth';
@@ -89,9 +90,7 @@ export const PasswordRecoveryForm = () => {
 					)}
 				</FormControl>
 			</div>
-			<Button theme="primary" className={styles['submit-button']}>
-				{t(Auth.PASSWORD_RECOVERY_SAVE)}
-			</Button>
+			<Button className={styles['submit-button']}>{t(Auth.PASSWORD_RECOVERY_SAVE)}</Button>
 		</div>
 	);
 };
