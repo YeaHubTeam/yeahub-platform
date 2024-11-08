@@ -84,5 +84,14 @@
     "emailSettings": "E-mail confirmation",
     "verifyLink": "Confirm e-mail",
     "writeEmail": "Enter e-mail"
+  },
+  "changePassword": {
+    "title": "Change your password",
+    "description": "For security reasons, or if you notice suspicious activity, change your password",
+    "passwordSettings": "Change password",
+    "enterNewPassword": "Enter a new password",
+    "repeatPassword": "Repeat the password",
+    "placeholderInput": "Password",
+    "buttonText": "Save"
   }
 }
