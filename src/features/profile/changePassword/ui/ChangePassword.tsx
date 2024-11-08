@@ -42,7 +42,7 @@ export const ChangePassword = () => {
 				}}
 				className={styles.form}
 			>
-				<Flex gap="20">
+				<Flex className={styles['flex-form']}>
 					<div className={styles['input-wrapper']}>
 						<FormControl
 							name="newPassword"
@@ -78,7 +78,7 @@ export const ChangePassword = () => {
 						<FormControl
 							name="confirmPassword"
 							control={control}
-							label={t(Profile.PROFILE_CHANGE_PASSWORD_ENTER_NEW_PASSWORD)}
+							label={t(Profile.PROFILE_CHANGE_PASSWORD_REPEAT_PASSWORD)}
 						>
 							{(field) => (
 								<Input
