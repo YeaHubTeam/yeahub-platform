@@ -84,5 +84,14 @@
     "emailSettings": "Подтверждение e-mail",
     "verifyLink": "Подтвердить e-mail",
     "writeEmail": "Введите e-mail"
+  },
+  "changePassword": {
+    "title": "Сменить пароль",
+    "description": "В целях безопасности или если вы заметили подозрительную активность смените пароль",
+    "passwordSettings": "Смена пароля",
+    "enterNewPassword": "Введите новый пароль",
+    "repeatPassword": "Повторите пароль",
+    "placeholderInput": "Пароль",
+    "buttonText": "Сохранить"
   }
 }
