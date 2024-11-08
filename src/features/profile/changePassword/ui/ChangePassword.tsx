@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Icon, Input } from 'yeahub-ui-kit';
+import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
@@ -22,7 +23,7 @@ export const ChangePassword = () => {
 
 	const {
 		control,
-		formState: { errors },
+		formState: { errors, isValid },
 	} = useFormContext<ChangePasswordFormProps>();
 
 	const handleShowPassword = () => {
@@ -105,7 +106,7 @@ export const ChangePassword = () => {
 						</FormControl>
 					</div>
 
-					<Button theme="primary" type="submit" className={styles['submit-button']}>
+					<Button type="submit" className={styles['submit-button']} disabled={!isValid}>
 						{t(Profile.PROFILE_CHANGE_PASSWORD_BUTTON)}
 					</Button>
 				</Flex>
