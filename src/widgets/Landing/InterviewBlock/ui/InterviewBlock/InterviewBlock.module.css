@@ -1,5 +1,5 @@
 .interview-block {
-  margin-bottom: 130px;
+  margin-bottom: 121px;
 }
 
 .article {
@@ -50,7 +50,7 @@
 }
 
 .left-block p { 
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   width: 86%;
   line-height: 21.86px;
 }
@@ -92,7 +92,7 @@
 
 @media screen and (width <= 1439px) {
   .interview-block {
-    margin-bottom: 80px;
+    margin-bottom: 57px;
   }
 
   .container {
@@ -163,12 +163,12 @@
 
 @media screen and (width <= 767px) {
   .interview-block {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     padding: 0 8px;
   }
 
   .container {
-    gap: 24px;
+    gap: 35px;
   }
 
   .article {
@@ -179,6 +179,7 @@
   .left-block {
     padding: 0;
   }
+
 
   .left-block p {
     line-height: 19px;
@@ -192,5 +193,11 @@
   .right-block::before,
   .right-block::after {
     content: none;
+  }
+
+  .join-button {
+    padding: 0;
+    width: 170px;
+    font-size: var(--font-size-p-l);
   }
 }

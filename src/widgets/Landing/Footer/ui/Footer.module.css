@@ -51,7 +51,7 @@
 }
 
 .about {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   color: var(--text-color-the-lightest);
   line-height: 15px;
   font-weight: var(--font-weight-400);
@@ -119,7 +119,29 @@
   fill:#B659FF;
 }
 
-@media (width <= 768px) {
+@media screen and (width <= 1439px) {
+  .footer {
+    padding: 37px 0 18px;
+  }
+
+  .container {
+    max-width: 711px;
+  }
+
+  .about {
+    margin-bottom: 16px;
+  }
+
+  .footer hr {
+    margin-bottom: 15px;
+  }
+}
+
+@media (width <= 767px) {
+  .footer {
+    padding: 19px 16px 18px;
+  }
+
   .container-social {
     margin-bottom: 50px;
   }

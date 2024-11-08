@@ -1,5 +1,5 @@
 .advantages {
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
 .advantages-list {
@@ -44,13 +44,30 @@
 }
 
 .advantages-list p {
+  color: var(--color-black-700);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 }
 
+@media screen and (width <= 1439px) {
+  .advantages-list li {
+    padding: 16px;
+  }
+       
+  .advantages-list h3 {
+    margin-top: 24px;
+    font-size: var(--font-size-p-l);
+  }
+
+  .advantages-list p {
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-s);
+  }
+}
+
 @media screen and (width <= 767px) {
   .advantages {
-    margin-top: 24px;
+    margin-top: 19px;
     padding: 0 8px;
   }
 
@@ -58,7 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 11px;
   }
 
   .advantages-list li {
@@ -78,7 +95,7 @@
   }
 
   .advantages-list h3 {
-    margin-top: 24px;
+    margin-top: 18px;
     font-weight: var(--font-weight-500);
     font-size: var(--font-size-p-m);
   }

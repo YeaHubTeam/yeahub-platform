@@ -61,7 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px 16px;
+  padding: 8px 13px;
   box-shadow: var(--main-shadow);
   color: var(--text-color-the-lightest);
   line-height: 15px;
@@ -114,11 +114,9 @@
     margin-top: 19.68px;
   }
 
-  .statistics-list li {
-    display: flex;
-    flex-direction: column;
+  .statistics-list li {    
     gap: 3.28px;
-    padding: 6.56px 13.12px;
-    line-height: 12px;
+    padding: 3.56px 5px;
+    line-height: 12px;    
   }
 }

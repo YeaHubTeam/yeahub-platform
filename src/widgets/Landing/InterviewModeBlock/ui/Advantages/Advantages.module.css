@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between;  
+  justify-self: end;
 }
 
 .advantages p {
@@ -133,8 +134,8 @@
   .advantages-list li {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 24px;
+    gap: 18px;
+    padding: 16px;
     width: 100%;
     min-width: 328px;
     border-radius: 12px;

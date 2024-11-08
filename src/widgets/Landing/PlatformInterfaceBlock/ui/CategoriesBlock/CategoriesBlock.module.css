@@ -96,7 +96,7 @@
   }
 
   .content-container {
-    padding: 24px;
+    padding: 24px 24px 15px;
   }
 
   .content {
@@ -135,6 +135,11 @@
 @media screen and (width <= 767px) {
   .content-container {
     padding: 16px;
+  }
+
+  .categories-block {
+    align-items: center;
+    gap: 20px;
   }
 
   .content {

@@ -1,7 +1,7 @@
 .platform-interface-block {
   margin: 0 -92px;
   margin-bottom: 130px;
-  padding: 40px 92px;
+  padding: 40px 92px 49px;
   border-radius: 24px;
   background-color: var(--background-nav-item);
 }
@@ -80,12 +80,13 @@
 
 @media screen and (width <= 767px) {
   .platform-interface-block {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     padding: 24px 16px;
     border-radius: 12px;
   }
 
   .caption-block h2 {
+    margin-bottom: 10px;
     line-height: 27px;
     font-size: var(--font-size-h-xs);
   }
@@ -94,7 +95,7 @@
     align-self: center;
     padding: 0;
     padding: 0 10px;
-    line-height: 19px;
+    line-height: 18px;
     font-size: var(--font-size-p-s);
   }
 
