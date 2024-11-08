@@ -1,6 +1,5 @@
-import { Button } from 'yeahub-ui-kit';
-
 import LogoutIcon from '@/shared/assets/icons/logout-icon.svg';
+import { Button } from '@/shared/ui/Button';
 
 import { useLazyLogoutQuery } from '@/entities/auth';
 
@@ -14,7 +13,7 @@ export const Logout = () => {
 	return (
 		<div className={styles['button-wrapper']}>
 			<LogoutIcon className={styles.icon} />
-			<Button tagName="a" theme="link" className={styles.button} onClick={onLogout}>
+			<Button variant="link" className={styles.button} onClick={onLogout}>
 				Выйти
 			</Button>
 		</div>

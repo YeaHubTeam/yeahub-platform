@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { useRef } from 'react';
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
+
+import { Button } from '@/shared/ui/Button';
 
 import styles from './styles.module.css';
 
@@ -72,12 +74,12 @@ export const Modal = ({
 				{isButtons && (
 					<div className={styles.buttons}>
 						{buttonPrimaryText && (
-							<Button theme="primary" onClick={buttonPrimaryClick}>
+							<Button variant="primary" onClick={buttonPrimaryClick}>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
-							<Button theme="outline" onClick={buttonOutlineClick}>
+							<Button variant="outline" onClick={buttonOutlineClick}>
 								{buttonOutlineText}
 							</Button>
 						)}

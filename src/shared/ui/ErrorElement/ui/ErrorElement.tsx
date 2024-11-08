@@ -1,8 +1,8 @@
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './ErrorElement.module.css';
@@ -30,7 +30,7 @@ export const ErrorElement = ({
 						Ошибка: {fetchError && 'status' in fetchError ? fetchError.status : errorMsg}
 					</span>
 				</div>
-				<Button size="large" onClick={handleBackBtnClick}>
+				<Button size="L" onClick={handleBackBtnClick}>
 					Вернуться назад
 				</Button>
 			</div>

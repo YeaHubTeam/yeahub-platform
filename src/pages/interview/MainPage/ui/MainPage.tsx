@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -68,7 +68,7 @@ const MainPage = () => {
 										</h3>
 										<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
 									</div>
-									<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
+									<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
 										{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
 									</Button>
 								</div>
