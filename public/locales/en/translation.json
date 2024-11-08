@@ -145,6 +145,10 @@
       "reset.progress": {
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
+      },
+      "delete":{
+        "success": "The question has been successfully deleted.",
+        "failed": "Failed to delete question"
       }
     },
     "profile": {

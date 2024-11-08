@@ -109,6 +109,8 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
+	TOAST_QUESTIONS_DELETE_SUCCESS = 'toast.questions.delete.success',
+	TOAST_QUESTIONS_DELETE_FAILED = 'toast.questions.delete.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',
@@ -125,6 +127,7 @@ export enum Translation {
 	ERROR404_IMAGE_ALT = 'error.alt',
 
 	EMAIL_VERIFY = 'emailVerification.emailSettings',
+	CHANGE_PASSWORD = 'changePassword.passwordSettings',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
@@ -186,6 +189,12 @@ export enum Profile {
 	PROFILE_EMAIL_VERIFICATION_VERIFY_TEXT = 'emailVerification.verifyText',
 	PROFILE_EMAIL_VERIFICATION_VERIFY_LINK = 'emailVerification.verifyLink',
 	PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL = 'emailVerification.writeEmail',
+	PROFILE_CHANGE_PASSWORD_TITLE = 'changePassword.title',
+	PROFILE_CHANGE_PASSWORD_DESCRIPTION = 'changePassword.description',
+	PROFILE_CHANGE_PASSWORD_ENTER_NEW_PASSWORD = 'changePassword.enterNewPassword',
+	PROFILE_CHANGE_PASSWORD_REPEAT_PASSWORD = 'changePassword.repeatPassword',
+	PROFILE_CHANGE_PASSWORD_PLACEHOLDERT = 'changePassword.placeholderInput',
+	PROFILE_CHANGE_PASSWORD_BUTTON = 'changePassword.buttonText',
 }
 
 export enum Auth {
