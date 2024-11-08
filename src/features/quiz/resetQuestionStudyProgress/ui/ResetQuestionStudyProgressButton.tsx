@@ -1,4 +1,6 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
+
+import { Button } from '@/shared/ui/Button';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
@@ -39,7 +41,7 @@ export const ResetQuestionStudyProgressButton = ({
 					size={iconSize}
 				/>
 			}
-			theme="tertiary"
+			variant="tertiary"
 			onClick={handleClick}
 			disabled={isLoading}
 		>

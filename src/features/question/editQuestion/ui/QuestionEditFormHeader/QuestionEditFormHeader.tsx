@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackHeader } from '@/shared/ui/BackHeader';
+import { Button } from '@/shared/ui/Button';
 
 import { useEditQuestionMutation } from '../../api/editQuestionApi';
 import { QuestionEditFormValues } from '../../model/types/questionEditPageTypes';
@@ -33,10 +33,10 @@ export const QuestionEditFormHeader = () => {
 
 	return (
 		<BackHeader>
-			<Button size="small" onClick={onResetFormValues} theme="secondary">
+			<Button onClick={onResetFormValues} variant="secondary">
 				{t(Translation.CANCEL)}
 			</Button>
-			<Button size="small" disabled={isLoading} onClick={handleSubmit(onEditQuestion)}>
+			<Button disabled={isLoading} onClick={handleSubmit(onEditQuestion)}>
 				{t(Translation.SAVE)}
 			</Button>
 		</BackHeader>

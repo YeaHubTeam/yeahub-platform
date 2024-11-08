@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
@@ -7,6 +6,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { FilterIcon } from '@/shared/ui/Icons/FilterIcon';
 import { LoopIcon } from '@/shared/ui/Icons/LoopIcon';
 

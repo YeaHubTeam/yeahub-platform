@@ -1,10 +1,10 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackButton } from '@/shared/ui/BackButton';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
