@@ -1,8 +1,9 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 
 import { Question } from '@/entities/question';
 
@@ -29,7 +30,7 @@ export const DeleteQuestionButton = ({
 			aria-label="Large"
 			style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
 			preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
-			theme={isDetailPage ? 'destructive' : 'tertiary'}
+			variant={isDetailPage ? 'destructive' : 'tertiary'}
 			onClick={onDeleteQuestion}
 		>
 			{t(Translation.DELETE)}
