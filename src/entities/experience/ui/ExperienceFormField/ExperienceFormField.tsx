@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Checkbox, Input } from 'yeahub-ui-kit';
+import { Checkbox, Input } from 'yeahub-ui-kit';
 
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
@@ -56,7 +57,7 @@ export const ExperienceFormField = () => {
 					checked={isCurrentlyWorking}
 					label="По настоящее время"
 				/>
-				<Button size="large" theme="tertiary" textClassName={styles['btn-text']}>
+				<Button size="L" variant="tertiary" textClassName={styles['btn-text']}>
 					Удалить место работы
 				</Button>
 			</Flex>

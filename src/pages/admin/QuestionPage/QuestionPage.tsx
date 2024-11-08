@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
+import { Button } from '@/shared/ui/Button';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';

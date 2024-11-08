@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Button } from '@/shared/ui/Button';
 
 import styles from './SkillsBlockHeader.module.css';
 
@@ -21,8 +22,7 @@ export const SkillsBlockHeader = () => {
 		<div className={styles['skills-header']}>
 			<h3 className={styles['skills-title']}>{t(Profile.PROFILEPAGE_SKILLS_TITLE)}</h3>
 			<Button
-				theme="link"
-				fullWidth={true}
+				variant="link"
 				className={styles['skills-edit']}
 				onClick={handleNavigate}
 				preffix={

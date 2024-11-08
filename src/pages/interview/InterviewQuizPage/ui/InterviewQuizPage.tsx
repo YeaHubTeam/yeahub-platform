@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';

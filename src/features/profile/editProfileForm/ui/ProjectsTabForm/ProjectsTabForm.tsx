@@ -1,5 +1,6 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { ProjectFormField } from '@/entities/project';
@@ -16,12 +17,16 @@ export const ProjectsTabForm = () => {
 				</div>
 
 				<Flex gap="4">
-					<Button className={styles['btn-add']} theme="tertiary" textClassName={styles['btn-add']}>
+					<Button
+						className={styles['btn-add']}
+						variant="tertiary"
+						textClassName={styles['btn-add']}
+					>
 						Изменить порядок
 					</Button>
 					<Button
 						preffix={<Icon icon="plusCircle" color="--palette-ui-purple-700" />}
-						theme="outline"
+						variant="outline"
 					>
 						Добавить
 					</Button>
@@ -40,7 +45,7 @@ export const ProjectsTabForm = () => {
 					<Flex direction="column" gap="32">
 						<ProjectFormField />
 						<div className={styles['container-bottom-btn']}>
-							<Button size="medium" theme="tertiary" textClassName={styles['btn-text']}>
+							<Button variant="tertiary" textClassName={styles['btn-text']}>
 								Удалить
 							</Button>
 							<Button>Сохранить</Button>

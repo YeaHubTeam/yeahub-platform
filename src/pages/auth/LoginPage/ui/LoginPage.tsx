@@ -1,9 +1,8 @@
-import { Button } from 'yeahub-ui-kit';
-
 import { i18Namespace } from '@/shared/config/i18n';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -28,7 +27,7 @@ const LoginPage = () => {
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{loginTitle}</h1>
 			{accessToken ? (
-				<Button onClick={handleLogoutUser} size="large">
+				<Button onClick={handleLogoutUser} size="L">
 					{t('buttons.logout')}
 				</Button>
 			) : (

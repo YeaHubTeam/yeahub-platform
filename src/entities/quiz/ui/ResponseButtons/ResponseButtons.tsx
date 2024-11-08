@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Button } from '@/shared/ui/Button';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 
@@ -25,8 +26,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'UNKNOWN' })}
 				onClick={() => changeAnswer('UNKNOWN')}
 				textClassName={styles['action-button']}
-				theme="tertiary"
-				size="small"
+				variant="tertiary"
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
@@ -36,8 +36,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
 				onClick={() => changeAnswer('KNOWN')}
 				textClassName={styles['action-button']}
-				size="small"
-				theme="tertiary"
+				variant="tertiary"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>

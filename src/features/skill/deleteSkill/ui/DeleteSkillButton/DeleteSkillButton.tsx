@@ -1,8 +1,9 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 
 import { Skill } from '@/entities/skill';
 
@@ -29,7 +30,7 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 				width: isDetailPage ? 'auto' : '100%',
 				justifyContent: isDetailPage ? 'center' : 'flex-start',
 			}}
-			theme={isDetailPage ? 'destructive' : 'tertiary'}
+			variant={isDetailPage ? 'destructive' : 'tertiary'}
 			onClick={onDeleteSkill}
 			preffix={
 				isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
