@@ -9,9 +9,9 @@ type Props = { children: ReactNode };
 
 export const BackHeader = ({ children }: Props) => {
 	return (
-		<Flex justify="between" className={styles['backheader']}>
+		<Flex justify="between" align="center" className={styles['backheader']}>
 			<BackButton />
-			<Flex gap="8">{children}</Flex>
+			<Flex gap="16">{children}</Flex>
 		</Flex>
 	);
 };

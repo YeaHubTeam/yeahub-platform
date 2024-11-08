@@ -12,6 +12,8 @@ import { Button } from '@/shared/ui/Button';
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
+import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+
 import { QuestionHeader, QuestionBody, AdditionalInfo } from '@/widgets/Question';
 
 import styles from './QuestionPage.module.css';
@@ -76,6 +78,7 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
+				{question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
 				<NavLink style={{ marginLeft: 'auto' }} to="edit">
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
