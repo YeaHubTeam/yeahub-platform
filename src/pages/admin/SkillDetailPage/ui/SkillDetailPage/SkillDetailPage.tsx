@@ -9,6 +9,8 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
 
+import { DeleteSkillButton } from '@/features/skill/deleteSkill';
+
 /**
  * Page showing detail info about a single skill
  * @constructor
@@ -24,11 +26,15 @@ const SkillDetailPage = () => {
 
 	return (
 		<main>
-			<Flex align="center" gap="8" style={{ marginBottom: 34 }}>
+			<Flex align="center" gap="8" style={{ marginBottom: 34, justifyContent: 'space-between' }}>
 				<BackButton />
-				<NavLink style={{ marginLeft: 'auto' }} to="edit">
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+
+				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<DeleteSkillButton skillId={skill.id} isDetailPage />
+					<NavLink to="edit">
+						<Button>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Flex>
 			</Flex>
 			<SkillCard skill={skill} />
 		</main>

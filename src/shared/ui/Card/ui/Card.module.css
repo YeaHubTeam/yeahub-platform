@@ -30,6 +30,10 @@
   box-shadow: 0 4px 10px 0 #6A63761A;
 }
 
+.card-outside-shadow{
+  box-shadow: 0 4px 10px 0 #6A63761A
+}
+
 .content-bottom {
   margin-bottom: 48px;
 }
