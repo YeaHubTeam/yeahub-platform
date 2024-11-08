@@ -105,3 +105,12 @@ export interface Permissions {
 	id: number;
 	name: string;
 }
+
+export interface ForgotPassword {
+	username: string;
+}
+
+export interface PasswordRecovery {
+	password: string;
+	confirmPassword: string;
+}
