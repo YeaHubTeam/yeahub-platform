@@ -25,22 +25,20 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'UNKNOWN' })}
 				onClick={() => changeAnswer('UNKNOWN')}
-				textClassName={styles['action-button']}
 				variant="tertiary"
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && t('buttons.doNotKnow')}
+				{!isMobile && <span className={styles['action-button']}>{t('buttons.doNotKnow')}</span>}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
 				onClick={() => changeAnswer('KNOWN')}
-				textClassName={styles['action-button']}
 				variant="tertiary"
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && t('buttons.iKnow')}
+				{!isMobile && <span className={styles['action-button']}>{t('buttons.iKnow')}</span>}
 			</Button>
 		</div>
 	);

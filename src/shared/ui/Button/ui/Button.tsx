@@ -12,7 +12,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 			size = 'M',
 			variant = 'primary',
 			className = '',
-			textClassName = '',
 			fullWidth = false,
 			destructive = false,
 			children,
@@ -41,7 +40,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 				{...props}
 			>
 				{preffix}
-				{children && <span className={textClassName}>{children}</span>}
+				{children}
 				{suffix}
 				{badge && badge !== '0' ? <div className={styles['button-badge']}>{badge}</div> : null}
 			</Component>

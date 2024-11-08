@@ -17,12 +17,8 @@ export const ProjectsTabForm = () => {
 				</div>
 
 				<Flex gap="4">
-					<Button
-						className={styles['btn-add']}
-						variant="tertiary"
-						textClassName={styles['btn-add']}
-					>
-						Изменить порядок
+					<Button className={styles['btn-add']} variant="tertiary">
+						<span className={styles['btn-add']}>Изменить порядок</span>
 					</Button>
 					<Button
 						preffix={<Icon icon="plusCircle" color="--palette-ui-purple-700" />}
@@ -45,8 +41,8 @@ export const ProjectsTabForm = () => {
 					<Flex direction="column" gap="32">
 						<ProjectFormField />
 						<div className={styles['container-bottom-btn']}>
-							<Button variant="tertiary" textClassName={styles['btn-text']}>
-								Удалить
+							<Button variant="tertiary">
+								<span className={styles['btn-text']}>Удалить</span>
 							</Button>
 							<Button>Сохранить</Button>
 						</div>

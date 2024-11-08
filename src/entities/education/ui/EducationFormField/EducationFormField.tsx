@@ -40,8 +40,8 @@ export const EducationFormField = () => {
 					)}
 				</FormControl>
 				<Flex justify="end" align="center" maxWidth className={styles['container-btn']}>
-					<Button size="L" variant="tertiary" textClassName={styles['btn-text']}>
-						Удалить место учебы
+					<Button size="L" variant="tertiary">
+						<span className={styles['btn-text']}>Удалить место учебы</span>
 					</Button>
 				</Flex>
 			</Flex>

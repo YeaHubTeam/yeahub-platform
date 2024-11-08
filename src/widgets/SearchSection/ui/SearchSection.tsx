@@ -46,7 +46,7 @@ export const SearchSection = ({
 					</Button>
 				)}
 
-				<Button textClassName={styles.navigate}>
+				<Button>
 					<NavLink className={styles.link} to={to}>
 						{t(Translation.CREATE)}
 						<PlusSvg className={styles['plus-svg']} />

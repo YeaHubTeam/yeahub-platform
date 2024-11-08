@@ -57,8 +57,8 @@ export const ExperienceFormField = () => {
 					checked={isCurrentlyWorking}
 					label="По настоящее время"
 				/>
-				<Button size="L" variant="tertiary" textClassName={styles['btn-text']}>
-					Удалить место работы
+				<Button size="L" variant="tertiary">
+					<span className={styles['btn-text']}>Удалить место работы</span>
 				</Button>
 			</Flex>
 		</Flex>
