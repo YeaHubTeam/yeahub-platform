@@ -3,6 +3,7 @@ import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
@@ -15,7 +16,7 @@ export const InfoBlockHeader = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const handleNavigate = () => {
-		navigate('edit#about-me');
+		navigate(`${ROUTES.profile.edit.page}#about-me`);
 	};
 
 	return (

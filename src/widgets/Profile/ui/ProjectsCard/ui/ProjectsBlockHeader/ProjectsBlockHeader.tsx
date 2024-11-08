@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
 
 import styles from './ProjectsBlockHeader.module.css';
@@ -13,7 +14,7 @@ export const ProjectsBlockHeader = () => {
 			<Button
 				variant="link"
 				className={styles['projects-edit']}
-				onClick={() => navigate('edit#projects')}
+				onClick={() => navigate(`${ROUTES.profile.edit.page}#projects`)}
 			>
 				Редактировать
 			</Button>

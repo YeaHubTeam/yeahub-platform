@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
 
 import styles from './EducationBlockHeader.module.css';
@@ -13,7 +14,7 @@ export const EducationBlockHeader = () => {
 			<Button
 				variant="link"
 				className={styles['education-edit']}
-				onClick={() => navigate('edit#education')}
+				onClick={() => navigate(`${ROUTES.profile.edit.page}#education`)}
 			>
 				Редактировать
 			</Button>
