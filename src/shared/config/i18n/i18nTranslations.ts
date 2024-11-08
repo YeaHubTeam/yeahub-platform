@@ -222,7 +222,22 @@ export enum Auth {
 	REGISTRATION_HAVE_ACCOUNT = 'registration.haveAccount',
 	REGISTRATION_LOGIN = 'registration.login',
 	BUTTONS_LOGIN = 'buttons.login',
+	BUTTONS_REGISTER = 'buttons.register',
 	BUTTONS_LOGOUT = 'buttons.logout',
+	FORGOT_PASSWORD_TITLE = 'forgotPassword.title',
+	FORGOT_PASSWORD_SUBTITLE = 'forgotPassword.subtitle',
+	FORGOT_PASSWORD_EMAIL = 'forgotPassword.email',
+	FORGOT_PASSWORD_EMAIL_PLACEHOLDER = 'forgotPassword.emailPlaceholder',
+	FORGOT_PASSWORD_SEND = 'forgotPassword.send',
+	FORGOT_PASSWORD_MODAL_TITLE = 'forgotPassword.modal.title',
+	FORGOT_PASSWORD_MODAL_SUBTITLE = 'forgotPassword.modal.subtitle',
+	FORGOT_PASSWORD_MODAL_BUTTON = 'forgotPassword.modal.button',
+	PASSWORD_RECOVERY_TITLE = 'passwordRecovery.title',
+	PASSWORD_RECOVERY_SUBTITLE = 'passwordRecovery.subtitle',
+	PASSWORD_RECOVERY_ENTER_PASSWORD = 'passwordRecovery.enterPassword',
+	PASSWORD_RECOVERY_REPEAT_PASSWORD = 'passwordRecovery.repeatPassword',
+	PASSWORD_RECOVERY_SAVE = 'passwordRecovery.save',
+	PASSWORD_RECOVERY_PLACEHOLDER = 'passwordRecovery.placeholder',
 }
 
 export enum Specialization {
@@ -365,6 +380,11 @@ export enum Validation {
 	REQUIRED = 'required',
 
 	PASSWORD_MIN = 'password.min',
+	PASSWORD_WEAK = 'password.weak',
+	PASSWORD_STRONG = 'password.strong',
+	PASSWORD_MATCH = 'password.match',
+	PASSWORD_DOES_NOT_MATCH = 'password.doesNotMatch',
+	PASSWORD_REQUIRED = 'password.required',
 
 	IMAGE_FILE_SIZE = 'image.fileSize',
 	IMAGE_FILE_TYPE = 'image.fileType',

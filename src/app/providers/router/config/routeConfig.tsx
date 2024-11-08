@@ -29,7 +29,9 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
+import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
@@ -336,7 +338,15 @@ export const router = createBrowserRouter([
 						path: ROUTES.auth.register.route,
 						element: <RegistrationPage />,
 					},
+					{
+						path: ROUTES.auth['forgot-password'].route,
+						element: <ForgotPasswordPage />,
+					},
 				],
+			},
+			{
+				path: ROUTES.auth['password-recovery'].page,
+				element: <PasswordRecoveryPage />,
 			},
 		],
 	},
