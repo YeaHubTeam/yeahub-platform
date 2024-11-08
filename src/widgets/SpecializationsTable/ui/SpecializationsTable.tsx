@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Icon, Popover, IconButton, Button } from 'yeahub-ui-kit';
+import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import {
 	Specialization as SpecializationI18,
 	Translation,
 } from '@/shared/config/i18n/i18nTranslations';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
@@ -69,7 +70,7 @@ export const SpecializationsTable = ({
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.SHOW, { ns: i18Namespace.translation })}
 									</Button>
@@ -81,7 +82,7 @@ export const SpecializationsTable = ({
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.EDIT, { ns: i18Namespace.translation })}
 									</Button>

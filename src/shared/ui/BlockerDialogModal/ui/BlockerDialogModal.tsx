@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import { Button, Modal, ModalContent, ModalDescription, ModalHeading } from 'yeahub-ui-kit';
+import { Modal, ModalContent, ModalDescription, ModalHeading } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 
 import styles from './BlockerDialogModal.module.css';
 
@@ -39,7 +40,7 @@ export const BlockerDialog = ({
 					</ModalDescription>
 					<div className={styles['buttons-wrapper']}>
 						<Button onClick={handleOk}>{t('blockModal.action.ok')}</Button>
-						<Button theme="outline" onClick={handleCancel}>
+						<Button variant="outline" onClick={handleCancel}>
 							{t('blockModal.action.cancel')}
 						</Button>
 					</div>

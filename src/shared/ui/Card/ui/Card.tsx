@@ -20,6 +20,7 @@ interface CardProps {
 	actionTitle?: string;
 	actionDisabled?: boolean;
 	withShadow?: boolean;
+	withOutsideShadow?: boolean;
 	isActionPositionBottom?: boolean;
 }
 
@@ -72,6 +73,7 @@ export const Card = ({
 	children,
 	className = '',
 	withShadow = false,
+	withOutsideShadow = false,
 	expandable = false,
 	title = '',
 	actionTitle = '',
@@ -122,6 +124,7 @@ export const Card = ({
 			direction={'column'}
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
+				[styles['card-outside-shadow']]: withOutsideShadow,
 			})}
 			style={{
 				height: isExpand ? `${contentHeight + 90}px` : '',

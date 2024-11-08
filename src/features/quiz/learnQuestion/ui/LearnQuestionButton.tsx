@@ -1,4 +1,6 @@
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
+
+import { Button } from '@/shared/ui/Button';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
@@ -27,7 +29,7 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 		<Button
 			className={styles.btn}
 			preffix={<Icon icon="thumbsUp" size={iconSize} />}
-			theme="tertiary"
+			variant="tertiary"
 			onClick={handleLearnQuestion}
 			disabled={isLoading}
 		>

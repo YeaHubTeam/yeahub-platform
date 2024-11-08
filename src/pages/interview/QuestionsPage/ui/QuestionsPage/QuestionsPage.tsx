@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
+import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 
@@ -12,7 +13,6 @@ import {
 	QuestionsSummaryList,
 } from '@/widgets/Question';
 
-import { useQueryFilter } from '../../model/hooks/useQueryFilter';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';

@@ -265,6 +265,8 @@ export enum Interview {
 	HISTORY_PREPARATION_LINKTEXT = 'history_preparation.linkText',
 	HISTORY_PREPARATION_RESULTTEXT = 'history_preparation.resultText',
 	HISTORY_PREPARATION_EMPTY = 'history_preparation.empty',
+	HISTORY_PREPARATION_UNVERIFIED = 'history_preparation.unverified',
+	HISTORY_PREPARATION_LINKTEXT_UNVERIFIED = 'history_preparation.unverifiedLinkText',
 }
 
 export enum InterviewHistoryPage {

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Checkbox, Icon, Input } from 'yeahub-ui-kit';
+import { Checkbox, Icon, Input } from 'yeahub-ui-kit';
 
+import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
@@ -114,7 +115,7 @@ export const RegisterForm = () => {
 			<Button
 				disabled={isLoading}
 				onClick={handleSubmit(onRegistration)}
-				theme="primary"
+				variant="primary"
 				className={styles['submit-button']}
 			>
 				Зарегистрироваться
