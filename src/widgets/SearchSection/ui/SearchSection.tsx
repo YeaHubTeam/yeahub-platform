@@ -7,6 +7,9 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer/ui/FiltersDrawer';
+
+import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
 
 import styles from './SearchSection.module.css';
 
@@ -32,6 +35,9 @@ export const SearchSection = ({
 	return (
 		<Card className={styles.card}>
 			<section className={styles.section}>
+				<FiltersDrawer>
+					<QuestionsFilterSet />
+				</FiltersDrawer>
 				<Input
 					onChange={handleSearch}
 					className={styles.input}

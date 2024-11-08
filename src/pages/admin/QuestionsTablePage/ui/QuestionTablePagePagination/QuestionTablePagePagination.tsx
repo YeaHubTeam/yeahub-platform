@@ -1,40 +1,31 @@
-import { useSelector } from 'react-redux';
-
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
 import { Question } from '@/entities/question';
 
-import { getQuestionsPageNum } from '../../model/selectors/questionsTablePageSelectors';
-import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
-
 import styles from './QuestionTablePagePagination.module.css';
 
 interface QuestionPagePaginationProps {
 	questionsResponse?: Response<Question[]>;
+	currentPage: number;
+	onPageChange: (page: number) => void;
 }
 
-export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePaginationProps) => {
-	const dispatch = useAppDispatch();
-	const page = useSelector(getQuestionsPageNum);
-
-	const { setQueryParams } = useQueryParams();
-
+export const QuestionPagePagination = ({
+	questionsResponse,
+	currentPage,
+	onPageChange,
+}: QuestionPagePaginationProps) => {
 	const onPrevPageClick = () => {
-		dispatch(questionsTablePageActions.setPage(page - 1));
-		setQueryParams({ page: page - 1 });
+		onPageChange(currentPage - 1);
 	};
 
 	const onNextPageClick = () => {
-		dispatch(questionsTablePageActions.setPage(page + 1));
-		setQueryParams({ page: page + 1 });
+		onPageChange(currentPage + 1);
 	};
 
-	const onChangePage = (newPage: number) => {
-		dispatch(questionsTablePageActions.setPage(newPage));
-		setQueryParams({ page: newPage });
+	const onPaginationButtonClick = (newPage: number) => {
+		onPageChange(newPage);
 	};
 
 	if (!questionsResponse?.data) {
@@ -46,8 +37,8 @@ export const QuestionPagePagination = ({ questionsResponse }: QuestionPagePagina
 			<Pagination
 				onPrevPageClick={onPrevPageClick}
 				onNextPageClick={onNextPageClick}
-				onChangePage={onChangePage}
-				page={page}
+				onChangePage={onPaginationButtonClick}
+				page={currentPage}
 				totalPages={Math.ceil(questionsResponse?.total / questionsResponse?.limit)}
 			/>
 		</div>
