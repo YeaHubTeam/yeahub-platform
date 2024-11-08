@@ -7,6 +7,7 @@ import TelegramLogo from '@/shared/assets/icons/telegram.svg';
 import YoutubeLogo from '@/shared/assets/icons/youtube.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
@@ -24,16 +25,16 @@ export const Footer = () => {
 
 				<p className={styles.subtitle}>{t(Landing.FOOTER_SLOGAN)} </p>
 				<div className={styles['container-social']}>
-					<NavLink to="/">
+					<NavLink to={ROUTES.appRoute}>
 						<YoutubeLogo />
 					</NavLink>
-					<NavLink to="/">
+					<NavLink to={ROUTES.appRoute}>
 						<GithubLogo />
 					</NavLink>
-					<NavLink to="/">
+					<NavLink to={ROUTES.appRoute}>
 						<InstagramLogo className={styles.test} />
 					</NavLink>
-					<NavLink to="/">
+					<NavLink to={ROUTES.appRoute}>
 						<TelegramLogo />
 					</NavLink>
 				</div>
@@ -42,10 +43,10 @@ export const Footer = () => {
 				<div className={styles['container-copyright']}>
 					<p className={styles['company-name']}>© 2024 YeaHub</p>
 					<div className={styles['copyright-icons']}>
-						<NavLink to="/">
+						<NavLink to={ROUTES.appRoute}>
 							<FigmaLogo className={styles.figma} />
 						</NavLink>
-						<NavLink to="/">
+						<NavLink to={ROUTES.appRoute}>
 							<GithubLogo className={styles['github-icon']} />
 						</NavLink>
 					</div>

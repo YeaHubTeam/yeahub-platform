@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
 
 import styles from './ExperienceBlockHeader.module.css';
@@ -14,7 +15,7 @@ export const ExperienceBlockHeader = () => {
 			<Button
 				variant="link"
 				className={styles['experience-edit']}
-				onClick={() => navigate('edit#experience')}
+				onClick={() => navigate(`${ROUTES.profile.edit.page}#experience`)}
 			>
 				Редактировать
 			</Button>
