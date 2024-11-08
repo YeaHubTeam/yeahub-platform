@@ -4,6 +4,8 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
@@ -48,7 +50,10 @@ export const QuestionPage = () => {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
 				<BackHeader>
-					<NavLink style={{ marginLeft: 'auto' }} to="edit">
+					<NavLink
+						style={{ marginLeft: 'auto' }}
+						to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
 				</BackHeader>
@@ -76,7 +81,10 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				<NavLink style={{ marginLeft: 'auto' }} to="edit">
+				<NavLink
+					style={{ marginLeft: 'auto' }}
+					to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+				>
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
 			</BackHeader>

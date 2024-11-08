@@ -71,7 +71,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/admin/skills/${skill.id}/edit`}>
+							<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}

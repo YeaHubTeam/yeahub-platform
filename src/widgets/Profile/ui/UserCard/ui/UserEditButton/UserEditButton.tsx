@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 
@@ -11,7 +12,7 @@ export const UserEditButton = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const handleNavigate = () => {
-		navigate('edit#personal-information');
+		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 
 	return (
