@@ -1,8 +1,8 @@
 .home-link {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
-  width: 100%;
   transition: padding-left 0.5s ease-in-out;
 }
 
@@ -10,17 +10,8 @@
   width: 100px;
   height: 32px;
   color: var(--text-color-primary);
-  transition: all .7s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
 }
-
-.name path {
-  opacity: 1;
-}
-
-.short path:not(:first-child) {
-  opacity: 0;
-}
-
 
 .white {
   color: var(--color-white-900);
@@ -56,7 +47,7 @@
   pointer-events: none;
 }
 
-@media (width <=768px) {
+@media (width <= 768px) {
   .name {
     display: none;
   }

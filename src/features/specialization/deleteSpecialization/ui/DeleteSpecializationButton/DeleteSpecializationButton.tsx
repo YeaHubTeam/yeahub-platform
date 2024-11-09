@@ -20,6 +20,8 @@ export const DeleteSpecializationButton = ({
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
+	const { t } = useI18nHelpers(i18Namespace.translation);
+
 	const onDelete = async () => {
 		await deleteSpecializationMutation(specializationId);
 	};
