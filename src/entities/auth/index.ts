@@ -5,6 +5,8 @@ export type {
 	ExtraArgument,
 	Profile,
 	ProfileUpdate,
+	ForgotPassword,
+	PasswordRecovery,
 } from './model/types/auth';
 export { authApi } from './api/authApi';
 export {
@@ -16,3 +18,4 @@ export {
 } from './api/authApi';
 export { authHandlers } from './api/__mocks__/index';
 export { refreshMiddleware } from './api/refreshMiddleware';
+export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';

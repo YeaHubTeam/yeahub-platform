@@ -83,7 +83,7 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				{question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
+        {question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
 				<NavLink
 					style={{ marginLeft: 'auto' }}
 					to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
