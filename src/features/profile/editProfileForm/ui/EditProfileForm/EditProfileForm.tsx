@@ -58,8 +58,6 @@ export const EditProfileForm = () => {
 		updateProfile(mapFormToProfile(userProfile as GetProfileResponse, data));
 	};
 
-	if (isLoading) return <EditProfileFormSkeleton />;
-
 	return (
 		<section className={styles.section}>
 			<Tabs

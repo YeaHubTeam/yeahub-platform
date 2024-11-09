@@ -6,18 +6,13 @@ import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
 
 import styles from './ProfilePage.module.css';
-import { ProfilePageSkeleton } from './ProfilePage.skeleton';
 
 export const ProfilePage = () => {
-	const { data: profile, isLoading: profileLoading } = useProfileQuery();
+	const { data: profile } = useProfileQuery();
 
 	const { data: profileSpecialization } = useGetSpecializationByIdQuery({
 		specializationId: String(profile?.profiles[0].specializationId),
 	});
-
-	if (profileLoading) {
-		return <ProfilePageSkeleton />;
-	}
 
 	return (
 		profile && (
