@@ -10,7 +10,6 @@ import { getInterviewHistoryPageDateRange } from '../model/selectors/InterviewHi
 import { interviewHistoryPageActions } from '../model/slices/InterviewHistoryPageSlice';
 
 import styles from './InterviewHistoryPage.module.css';
-import { InterviewHistoryPageSkeleton } from './InterviewHistoryPage.skeleton';
 
 const InterviewHistoryPage = () => {
 	const [selectedDates, setSelectedDates] = useState<Value>(null);
@@ -50,8 +49,6 @@ const InterviewHistoryPage = () => {
 					<EventCalendar onDateChange={handleDateChange} selectedDates={selectedDates} />
 				)}
 			</div>
-
-			{!listLoaded && <InterviewHistoryPageSkeleton />}
 		</>
 	);
 };

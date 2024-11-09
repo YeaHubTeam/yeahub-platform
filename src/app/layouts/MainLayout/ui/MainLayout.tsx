@@ -9,7 +9,7 @@ import { useProfileQuery } from '@/entities/auth';
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
-import { MainPageSkeleton } from '@/pages/interview/MainPage';
+import SkeletonGenerator from '../model/helper/SkeletonGenerator';
 
 import styles from './MainLayout.module.css';
 import { MainLayoutSkeleton } from './MainLayout.skeleton';
@@ -45,7 +45,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 			<main className={styles.main}>
 				<div className={styles.container}>
-					<Suspense fallback={<MainPageSkeleton />}>
+					<Suspense fallback={<SkeletonGenerator />}>
 						<Breadcrumbs />
 						<Outlet />
 					</Suspense>

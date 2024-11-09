@@ -18,7 +18,6 @@ import { PassedQuestionsList } from '@/widgets/PassedQuestions';
 
 import { getInterviewStats } from '../model/getInterviewStast';
 
-import { InterviewQuizResultPageSkeleton } from './InterviewQuizResultPage.skeleton';
 import styles from './InterviewResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
@@ -57,8 +56,6 @@ const InterviewQuizResultPage = () => {
 			value: getTimeDifference(data?.startDate ?? '', data?.endDate ?? ''),
 		},
 	];
-
-	if (isLoading) return <InterviewQuizResultPageSkeleton />;
 
 	return (
 		<div className={styles.container}>
