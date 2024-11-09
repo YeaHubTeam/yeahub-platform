@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useRef } from 'react';
+import React, { useRef, forwardRef } from 'react';
 
 import Magnifer from '@/shared/assets/icons/Magnifer.svg';
 import { Size } from '@/shared/ui/Input/model/types/InputTypes';
@@ -17,64 +17,79 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 }
 
-export const Input = ({
-	customPrefix,
-	suffix,
-	customSize = 'L',
-	disabled = false,
-	className,
-	placeholder = '',
-	error = false,
-	label = '',
-	...props
-}: InputProps) => {
-	const inputRef = useRef<HTMLInputElement>(null);
-
-	const wrapperClasses = classNames(
-		styles.wrapper,
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+	(
 		{
-			[styles['wrapper-disabled']]: disabled,
-			[styles['wrapper-error']]: error,
-			[styles[`wrapper-${customSize.toLowerCase()}`]]: customSize,
+			customPrefix,
+			suffix,
+			customSize = 'L',
+			disabled = false,
+			className,
+			placeholder = '',
+			error = false,
+			label = '',
+			...props
 		},
-		className,
-	);
+		ref,
+	) => {
+		const inputRef = useRef<HTMLInputElement | null>(null);
 
-	const handleClick = () => {
-		if (inputRef.current) inputRef.current.focus();
-	};
-
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-		if (e.key === 'Enter' || e.key === ' ') {
-			handleClick();
-		}
-	};
-
-	return (
-		<div
-			className={wrapperClasses}
-			onClick={handleClick}
-			onFocus={handleClick}
-			onKeyDown={handleKeyDown}
-			role="button"
-			tabIndex={disabled ? -1 : 0}
-		>
+		const wrapperClasses = classNames(
+			styles.wrapper,
 			{
+				[styles['wrapper-disabled']]: disabled,
+				[styles['wrapper-error']]: error,
+				[styles[`wrapper-${customSize.toLowerCase()}`]]: customSize,
+			},
+			className,
+		);
+
+		const handleClick = () => {
+			if (inputRef.current) inputRef.current.focus();
+		};
+
+		const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				handleClick();
+			}
+		};
+
+		const setRef = (element: HTMLInputElement) => {
+			inputRef.current = element;
+			if (typeof ref === 'function') {
+				ref(element);
+			} else if (ref) {
+				(ref as React.MutableRefObject<HTMLInputElement | null>).current = element;
+			}
+		};
+
+		return (
+			<div
+				className={wrapperClasses}
+				onClick={handleClick}
+				onFocus={handleClick}
+				onKeyDown={handleKeyDown}
+				role="button"
+				tabIndex={disabled ? -1 : 0}
+			>
 				<span className={styles['input-prefix']}>
 					{customPrefix || <Magnifer className={styles.prefix} />}
 				</span>
-			}
-			<input
-				ref={inputRef}
-				placeholder={placeholder}
-				type="text"
-				className={styles.input}
-				disabled={disabled}
-				aria-invalid={error}
-				aria-labelledby={label}
-				{...props}
-			/>
-			{suffix && <span className={styles['input-suffix']}>{suffix}</span>}
-		</div>
-	);
-};
+				<input
+					ref={setRef}
+					placeholder={placeholder}
+					type="text"
+					className={styles.input}
+					disabled={disabled}
+					aria-invalid={error}
+					aria-labelledby={label}
+					aria-label={label}
+					{...props}
+				/>
+				{suffix && <span className={styles['input-suffix']}>{suffix}</span>}
+			</div>
+		);
+	},
+);
+
+Input.displayName = 'Input';

@@ -145,12 +145,30 @@
       "reset.progress": {
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
+      },
+      "delete": {
+        "success": "The question has been successfully deleted.",
+        "failed": "Failed to delete question"
       }
     },
     "profile": {
       "update": {
         "success": "The profile has been successfully changed",
         "failed": "The profile could not be changed"
+      }
+    },
+    "avatar": {
+      "update": {
+        "success": "The avatar has been successfully updated",
+        "failed": "Failed to update the avatar"
+      },
+      "create": {
+        "success": "The avatar has been successfully created",
+        "failed": "Failed to create the avatar"
+      },
+      "delete": {
+        "success": "The avatar has been successfully deleted",
+        "failed": "Failed to delete the avatar"
       }
     },
     "interview": {
@@ -165,6 +183,7 @@
     }
   },
   "error": {
-    "alt": "Лупа"
-  }
+    "alt": "Loupe"
+  },
+  "settings": "Settings"
 }

@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackButton } from '@/shared/ui/BackButton';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useCreateQuestionMutation } from '../../api/createQuestionApi';
@@ -27,7 +28,7 @@ export const QuestionCreateFormHeader = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			navigate('/admin/questions');
+			navigate(ROUTES.admin.questions.page);
 		}
 	}, [isSuccess, navigate]);
 

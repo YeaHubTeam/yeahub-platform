@@ -1,8 +1,10 @@
-import type { ProfileProject } from '@/entities/project';
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import styles from './ProjectsBlockItem.module.css';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
+import type { ProfileProject } from '@/entities/project';
+
+import styles from './ProjectsBlockItem.module.css';
 
 interface ProjectsBlockItemProps {
 	project: ProfileProject;

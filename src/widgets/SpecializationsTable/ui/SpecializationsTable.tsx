@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Text, Icon } from 'yeahub-ui-kit';
+import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
 
-import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config/i18n';
+import {
+	Specialization as SpecializationI18,
+	Translation,
+} from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
@@ -23,6 +31,8 @@ export const SpecializationsTable = ({
 }: SpecializationsTableProps) => {
 	const { t } = useTranslation('specialization');
 
+	const [openPopovers, setOpenPopovers] = useState<number | null>(null);
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(SpecializationI18.SPECIALIZATION_TITLE),
@@ -42,25 +52,66 @@ export const SpecializationsTable = ({
 	};
 
 	const renderActions = (specialization: Specialization) => {
+		const openActions = () => {
+			setOpenPopovers(specialization.id);
+		};
+
+		const closeActions = () => {
+			setOpenPopovers(null);
+		};
+
 		return (
 			<Flex gap="4">
-				<NavLink to={`/admin/specializations/${specialization.id}`}>
-					<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />
-				</NavLink>
-				<NavLink to={`/admin/specializations/${specialization.id}/edit`}>
-					<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />
-				</NavLink>
-				<DeleteSpecializationButton specializationId={specialization.id} />
+				<Popover
+					placement="bottom-start"
+					body={
+						<>
+							<NavLink to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
+								<Flex align="center" gap="4">
+									<Button
+										style={{ width: 'auto', justifyContent: 'flex-start' }}
+										aria-label="Large"
+										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
+										variant="tertiary"
+									>
+										{t(Translation.SHOW, { ns: i18Namespace.translation })}
+									</Button>
+								</Flex>
+							</NavLink>
+							<NavLink to={route(ROUTES.admin.specializations.edit.page, specialization.id)}>
+								<Flex align="center" gap="4">
+									<Button
+										style={{ width: 'auto', justifyContent: 'flex-start' }}
+										aria-label="Large"
+										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
+										variant="tertiary"
+									>
+										{t(Translation.EDIT, { ns: i18Namespace.translation })}
+									</Button>
+								</Flex>
+							</NavLink>
+							<DeleteSpecializationButton specializationId={specialization.id} />
+						</>
+					}
+					isOpen={openPopovers === specialization.id}
+					onClickOutside={closeActions}
+				>
+					<div>
+						<IconButton
+							style={{ cursor: 'pointer' }}
+							theme="tertiary"
+							onClick={openActions}
+							aria-label="Large"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
+						/>
+					</div>
+				</Popover>
 			</Flex>
 		);
 	};
 
 	if (!specializations) {
-		return (
-			<Flex maxHeight align="center" justify="center">
-				<Text title={t(SpecializationI18.SPECIALIZATIONS_NOT_ITEMS)} />
-			</Flex>
-		);
+		return null;
 	}
 
 	return (

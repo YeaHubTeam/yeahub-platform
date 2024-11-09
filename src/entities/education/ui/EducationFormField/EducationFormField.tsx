@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
-import { Button, Input } from 'yeahub-ui-kit';
+import { Input } from 'yeahub-ui-kit';
 
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -39,8 +40,8 @@ export const EducationFormField = () => {
 					)}
 				</FormControl>
 				<Flex justify="end" align="center" maxWidth className={styles['container-btn']}>
-					<Button size="large" theme="tertiary" textClassName={styles['btn-text']}>
-						Удалить место учебы
+					<Button size="L" variant="tertiary">
+						<span className={styles['btn-text']}>Удалить место учебы</span>
 					</Button>
 				</Flex>
 			</Flex>

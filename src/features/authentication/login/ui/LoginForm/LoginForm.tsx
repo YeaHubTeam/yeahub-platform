@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Icon, Input } from 'yeahub-ui-kit';
+import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 
 import { Auth, useLoginMutation } from '@/entities/auth';
@@ -68,14 +69,12 @@ export const LoginForm = () => {
 					</FormControl>
 
 					<div className={styles['forgot-password-link']}>
-						<Button tagName="a" theme="link">
-							{t('login.forgotPassword')}
-						</Button>
+						<Button variant="link">{t('login.forgotPassword')}</Button>
 					</div>
 				</div>
 			</div>
 			<Button
-				theme="primary"
+				variant="primary"
 				disabled={isLoading}
 				className={styles['submit-button']}
 				onClick={handleSubmit(onLogin)}

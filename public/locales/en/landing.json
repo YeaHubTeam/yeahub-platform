@@ -1,0 +1,76 @@
+{
+  "myProfile": "My profile",
+  "register": "Sign up",
+  "login": "Log in",
+  "questionsTop": "Top questions",
+  "header": "YEAHUB \nhelps grow\nand achieve goals",
+  "headerDescription": "Learn and improve your skills on one platform: learn new, prepare for interviews, dive into the nuances or update knowledge - YeaHub will help you get it done",
+  "join": "Join",
+  "progress": "Progress",
+  "progressDescription": "Done 3 of 3 questions studied",
+  "knowledgeBase": {
+    "title": "Big question bank",
+    "description": "Study technologies according to actual theoretical questions"
+  },
+  "studyingProgress": {
+    "title": "Learning progress",
+    "description": "Watch analytics on completed topics, repeat studied"
+  },
+  "convenienceTrainer": {
+    "title": "Convenient trainer",
+    "description": "Improve your skills in our trainer by memorizing questions"
+  },
+  "questionsList": "Questions list",
+  "rating": "Rating",
+  "complexity": "Complexity",
+  "slogan": "Practice new skills in our trainer",
+  "sloganTablet": "At YeaHub, everyone can find new learning opportunities",
+  "offer1": "Our trainer provides an unique chance to deepen your knowledge and raise your level",
+  "offer2": "Learning about technology has never been more accessible and effective",
+  "startTraining": "Start training",
+  "sampleQuestion": "What is Virtual DOM, and how does it work?",
+  "platformInterfaceTitle": "Prepare\nfor interviews in IT",
+  "platformInterfaceSubtitle": "With YeaHub, preparing for interviews is a simple and captivating process.",
+  "platformInterfaceDescription": "Our platform offers an extensive database of relevant questions on a wide range of topics and skills, which is regularly updated.",
+  "sampleAnswerTablet": "Virtual DOM is a software concept used in web application development to improve the efficiency of interface updates. It is an in-memory representation of the real DOM (the structure of the document displayed in the browser), which allows optimizing changes to the...",
+  "sampleAnswerDefault": "Virtual DOM is a software concept used in web application development to improve the efficiency of interface updates. It is a representation of the real DOM (document structure,",
+  "searchInputPlaceholder": "Enter your request...",
+  "answersCategory": "Category answers",
+  "viewMore": "View more",
+  "complexityLevel": "Complexity level",
+  "status": "Status",
+  "learned": "Learned",
+  "unlearned": "Unlearned",
+  "saved": "Saved",
+  "all": "All",
+  "filterDescription": "Use the filters to find questions according to your interests and difficulty level.",
+  "startInterview": "Start interview",
+  "interviewMode": "Interview mode",
+  "interviewProgress": "Question 10 of 45",
+  "viewAnswer": "View answers",
+  "donNotKnow": "Don't know",
+  "repeat": "Repeat",
+  "know": "Know",
+  "serviceAbility": {
+    "first": "Practice learned topics in the interview mode.",
+    "second": "Use the card library to remember and save material for later use."
+  },
+  "abilitiesConclusion": "This is the perfect way to prepare for real interviews.",
+  "progressBlock": {
+    "title": "Track your progress",
+    "subtitle": "YeaHub provides advanced tools\nfor tracking your progress",
+    "advantages": {
+      "first": "In your personal profile, you can see a detailed statistics, including the number of completed questions and topics.",
+      "second": "Determine your current level and analyze the gaps in knowledge for more targeted learning or preparation for job search."
+    },
+    "interviewStatistics": "Interview statistics",
+    "learned": "Learned",
+    "unlearned": "Unlearned",
+    "allQuestions": "All questions",
+    "diagramLabel": "complete"
+  },
+  "footer": {
+    "slogan": "Choose how IT will be tomorrow \nwith us",
+    "about": "YeaHub is fully open source project, which allows you to learn a new profession and become part of our friendly team, interview and improve your knowledge in practice."
+  }
+}

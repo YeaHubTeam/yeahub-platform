@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 

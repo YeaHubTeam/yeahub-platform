@@ -1,0 +1,1 @@
+export { FigmaIcon } from './FigmaIcon';

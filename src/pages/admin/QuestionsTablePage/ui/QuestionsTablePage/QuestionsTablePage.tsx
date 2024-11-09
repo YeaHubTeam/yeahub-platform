@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -10,7 +11,6 @@ import { QuestionsTable } from '@/widgets/QuestionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import {
-	getQuestionsPageNum,
 	getQuestionsSearch,
 	getSelectedQuestions,
 } from '../../model/selectors/questionsTablePageSelectors';
@@ -26,16 +26,26 @@ import styles from './QuestionsTablePage.module.css';
 
 const QuestionsPage = () => {
 	const dispatch = useAppDispatch();
-	const page = useSelector(getQuestionsPageNum);
 	const search = useSelector(getQuestionsSearch);
 	const selectedQuestions = useSelector(getSelectedQuestions);
-	const { data: questions } = useGetQuestionsListQuery({ page, title: search });
+
+	const { filter, handleFilterChange } = useQueryFilter();
+
+	const { data: questions } = useGetQuestionsListQuery({
+		...filter,
+		title: search,
+	});
 
 	const onSelectQuestions = (ids: number[]) => {
 		dispatch(questionsTablePageActions.setSelectedQuestions(ids));
 	};
+
 	const onChangeSearch = (value: string) => {
 		dispatch(questionsTablePageActions.setSearch(value));
+	};
+
+	const onPageChange = (page: number) => {
+		handleFilterChange({ page });
 	};
 
 	const onRemoveQuestions = () => {
@@ -56,7 +66,11 @@ const QuestionsPage = () => {
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
 				/>
-				<QuestionPagePagination questionsResponse={questions} />
+				<QuestionPagePagination
+					questionsResponse={questions}
+					currentPage={filter.page || 1}
+					onPageChange={onPageChange}
+				/>
 			</Card>
 		</Flex>
 	);

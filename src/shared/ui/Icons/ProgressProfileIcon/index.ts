@@ -1,0 +1,1 @@
+export { ProgressProfileIcon } from './ProgressProfileIcon';

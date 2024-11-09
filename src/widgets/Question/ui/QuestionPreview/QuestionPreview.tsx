@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon, IconButton, Popover } from 'yeahub-ui-kit';
+import { Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
-import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 
 import styles from './QuestionPreview.module.css';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
 
 type QuestionProps = {
 	question: Question;
@@ -51,9 +53,8 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 							>
 								<Button
 									className={styles.button}
-									theme="tertiary"
+									variant="tertiary"
 									preffix={<Icon icon="gearSix" size={20} />}
-									size="medium"
 								>
 									Подробнее
 								</Button>

@@ -37,7 +37,7 @@
 .input {
   flex-grow: 1;
   align-self: center;
-  padding: var(--font-size-p-xs) var(--font-size-h-s); 
+  padding: 12px 24px 12px 0; 
   box-sizing: border-box; 
   outline: none;
   border: none; 
@@ -86,7 +86,7 @@
 .input-prefix {
   display: flex;
   flex-shrink: 0;
-  margin: auto 9px auto 24px;
+  margin: auto 8px auto 24px;
   padding: 0; 
   fill: var(--icon-fill); 
   pointer-events: none;
@@ -95,7 +95,7 @@
 .input-suffix {
   display: flex;
   flex-shrink: 0;
-  margin: auto 24px auto 9px;
+  margin: auto 24px auto 8px;
   padding: 0;
   fill: var(--icon-fill); 
   pointer-events: none;

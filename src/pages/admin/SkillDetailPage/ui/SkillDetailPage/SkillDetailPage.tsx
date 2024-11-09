@@ -1,13 +1,17 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackButton } from '@/shared/ui/BackButton';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
+
+import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 
 /**
  * Page showing detail info about a single skill
@@ -24,11 +28,15 @@ const SkillDetailPage = () => {
 
 	return (
 		<main>
-			<Flex align="center" gap="8" style={{ marginBottom: 34 }}>
+			<Flex align="center" gap="8" style={{ marginBottom: 34, justifyContent: 'space-between' }}>
 				<BackButton />
-				<NavLink style={{ marginLeft: 'auto' }} to="edit">
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+
+				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<DeleteSkillButton skillId={skill.id} isDetailPage />
+					<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
+						<Button>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Flex>
 			</Flex>
 			<SkillCard skill={skill} />
 		</main>

@@ -85,11 +85,13 @@ const InterviewStatisticsPage = () => {
 				<Card className={styles.block}>
 					<div className={styles.questions}>
 						<InterviewQuestionHeader title={t('questionStats.title')} centered />
-						<PassedQuestionChart
-							total={profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}
-							learned={profileStats?.questionsStat?.learnedQuestionsCount ?? 0}
-							isLoading={isLoading}
-						/>
+						{profileStats && (
+							<PassedQuestionChart
+								total={profileStats.questionsStat.uniqueQuestionsCount}
+								learned={profileStats.questionsStat.learnedQuestionsCount}
+								isLoading={isLoading}
+							/>
+						)}
 					</div>
 				</Card>
 				<PassedQuestionStatInfo stats={questionStats} />

@@ -25,3 +25,5 @@ export {
 } from './ui/ProjectsCard';
 export { SkillsBlock, SkillsBlockList, SkillsBlockItem, SkillsBlockHeader } from './ui/SkillsCard';
 export { UserBlock, UserInfoBlock, UserImageBlock } from './ui/UserCard';
+export { EmailConfirmationTab } from './ui/EmailConfirmationTab';
+export { ChangePasswordTab } from './ui/ChangePasswordTab';

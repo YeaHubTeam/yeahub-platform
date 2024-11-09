@@ -24,8 +24,8 @@
   },
   "photo": {
     "title": "Profile photo",
-    "largePreview":"Large size avatar preview",
-    "smallPreview":"Small size avatar preview",
+    "largePreview": "Large size avatar preview",
+    "smallPreview": "Small size avatar preview",
     "description": "Your photo will be visible to all members of Yeahub community",
     "cropperTitle": "Select an area for your profile photos.",
     "cropperDescription": "The thumbnail you choose will be used in the article, private messages, and comments."
@@ -58,19 +58,40 @@
     "emptySkillSelect": "No options available",
     "selectedSkills": "Selected skills",
     "submitButtonText": "Save",
-    "imageAlt":"Skill logo"
+    "imageAlt": "Skill logo"
   },
   "projectsList": {
     "imageAlt": "Project image"
   },
-  "experienceList":{
+  "experienceList": {
     "imageAlt": "Organization logo"
   },
-  "achievmentsList":{
+  "achievmentsList": {
     "imageAlt": "Achievement icon"
   },
   "buttons": {
     "edit": "Edit",
     "save": "Save"
+  },
+  "emailVerification": {
+    "title": "verify your e-mail",
+    "description": "Become part of our team! Confirm your email address to gain access to additional platform features and start expanding your horizons among communities of motivated professionals just like you. Join us on the path to new heights!",
+    "buttonText": "Verify e-mail",
+    "verifyEmailText": "Confirm your email to activate your account, after activation you will have access to our platform",
+    "letterSent": "The letter was successfully sent by email",
+    "verifySuccess": "E-mail successfully confirmed",
+    "verifyText": "Thank you for confirming your email, now more services are available to you on the platform",
+    "emailSettings": "E-mail confirmation",
+    "verifyLink": "Confirm e-mail",
+    "writeEmail": "Enter e-mail"
+  },
+  "changePassword": {
+    "title": "Change your password",
+    "description": "For security reasons, or if you notice suspicious activity, change your password",
+    "passwordSettings": "Change password",
+    "enterNewPassword": "Enter a new password",
+    "repeatPassword": "Repeat the password",
+    "placeholderInput": "Password",
+    "buttonText": "Save"
   }
 }

@@ -1,13 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import {
 	Specialization as SpecializationI18,
 	Translation,
 } from '@/shared/config/i18n/i18nTranslations';
 import { BackButton } from '@/shared/ui/BackButton';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { Specialization } from '@/entities/specialization';

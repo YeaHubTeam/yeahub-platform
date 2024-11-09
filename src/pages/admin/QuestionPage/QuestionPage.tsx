@@ -1,16 +1,20 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
+import { Button } from '@/shared/ui/Button';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
+
+import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
 import { QuestionHeader, QuestionBody, AdditionalInfo } from '@/widgets/Question';
 
@@ -48,7 +52,10 @@ export const QuestionPage = () => {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
 				<BackHeader>
-					<NavLink style={{ marginLeft: 'auto' }} to="edit">
+					<NavLink
+						style={{ marginLeft: 'auto' }}
+						to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
 				</BackHeader>
@@ -76,7 +83,11 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				<NavLink style={{ marginLeft: 'auto' }} to="edit">
+				{question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
+				<NavLink
+					style={{ marginLeft: 'auto' }}
+					to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+				>
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
 			</BackHeader>

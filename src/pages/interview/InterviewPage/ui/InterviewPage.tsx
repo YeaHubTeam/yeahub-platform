@@ -1,7 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -25,6 +23,7 @@ import { PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { QuestionLargePreview, QuestionProgressBarBlock } from '@/widgets/InterviewPreparation';
 import { InterviewQuestionsList } from '@/widgets/InterviewQuestions';
+import { SpecializationEmptyStub } from '@/widgets/SpecializationEmptyStub';
 
 import styles from './InterviewPage.module.css';
 import { InterviewPageSkeleton } from './InterviewPage.skeleton';
@@ -93,11 +92,9 @@ const InterviewPage = () => {
 	const newQuestion = profileStats?.questionsStat.unlearnedQuestionsCount;
 	const newUser = allQuestion === newQuestion;
 
-	const navigate = useNavigate();
-
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 
-	const isSpecializationEmpty = profile?.profiles[0].specializationId === 0;
+	const isSpecializationEmpty = specializationId === 0;
 
 	const lastActiveQuizInfo = useMemo(() => {
 		if (!activeQuizQuestions || !activeQuizQuestions.length) return null;
@@ -124,10 +121,6 @@ const InterviewPage = () => {
 		return <InterviewPageSkeleton />;
 	}
 
-	const handleProfileRedirect = () => {
-		navigate(ROUTES.profile.edit.page);
-	};
-
 	return (
 		<div className={styles.container}>
 			<Card
@@ -143,15 +136,7 @@ const InterviewPage = () => {
 				withShadow
 			>
 				{isSpecializationEmpty ? (
-					<div className={styles['preparation-wrapper']}>
-						<h2 className={styles['inactive-title']}>{t(Interview.PREPARATION_STUB_TITLE)}</h2>
-						<p className={styles['inactive-description']}>
-							{t(Interview.PREPARATION_STUB_DESCRIPTION)}
-						</p>
-						<Button onClick={handleProfileRedirect} className={styles.button} size="large">
-							{t(Interview.FILLPROFILE_BUTTON)}
-						</Button>
-					</div>
+					<SpecializationEmptyStub />
 				) : (
 					<>
 						{lastActiveQuizInfo ? (

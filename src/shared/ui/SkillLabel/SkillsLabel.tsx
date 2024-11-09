@@ -1,8 +1,9 @@
 import FigmaIcon from '@/shared/assets/icons/figma.png';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import styles from './SkillLabel.module.css';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+
+import styles from './SkillLabel.module.css';
 
 interface SkillLabelProps {
 	img: string | undefined | null;
