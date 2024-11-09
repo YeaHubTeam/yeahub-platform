@@ -4,15 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Flex } from '@/shared/ui/Flex';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
-import { EmailVerify } from '@/entities/profile';
 import { EmailVerify } from '@/entities/profile';
 
 import styles from './MainPage.module.css';
@@ -37,7 +34,6 @@ const MainPage = () => {
 
 	const redirectToProfileEditing = () => {
 		navigate(`${ROUTES.profile.edit.page}#personal-information`);
-		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 
 	useEffect(() => {
@@ -57,34 +53,28 @@ const MainPage = () => {
 					gap="24"
 					className={!profile.isEmailVerified ? styles.wrapper : ''}
 				>
-					<Flex
-						direction="column"
-						gap="24"
-						className={!profile.isEmailVerified ? styles.wrapper : ''}
-					>
-						<h2 className={styles.title}>
-							{t(Translation.HELLO)}, {profile.firstName}!
-						</h2>
-						{!profile.isEmailVerified ? (
-							<EmailVerify firstName={profile.firstName} />
-						) : (
-							isIncompleteProfile && (
-								<Card className={styles.card}>
-									<div className={styles['card-wrapper']}>
-										<div className={styles['card-content']}>
-											<h3 className={styles['card-title']}>
-												{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
-											</h3>
-											<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
-										</div>
-										<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
-											{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
-										</Button>
+					<h2 className={styles.title}>
+						{t(Translation.HELLO)}, {profile.firstName}!
+					</h2>
+					{!profile.isEmailVerified ? (
+						<EmailVerify firstName={profile.firstName} />
+					) : (
+						isIncompleteProfile && (
+							<Card className={styles.card}>
+								<div className={styles['card-wrapper']}>
+									<div className={styles['card-content']}>
+										<h3 className={styles['card-title']}>
+											{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
+										</h3>
+										<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
 									</div>
-								</Card>
-							)
-						)}
-					</Flex>
+									<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
+										{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
+									</Button>
+								</div>
+							</Card>
+						)
+					)}
 				</Flex>
 			)}
 			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
