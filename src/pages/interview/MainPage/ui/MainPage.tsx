@@ -81,10 +81,13 @@ const MainPage = () => {
 											{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
 										</Button>
 									</div>
-								</Card>
-							)
-						)}
-					</Flex>
+									<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
+										{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
+									</Button>
+								</div>
+							</Card>
+						)
+					)}
 				</Flex>
 			)}
 			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
