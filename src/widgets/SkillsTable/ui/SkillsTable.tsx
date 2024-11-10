@@ -14,6 +14,7 @@ import { Skill } from '@/entities/skill';
 
 import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 
+import styles from './SkillTable.module.css';
 interface SkillsTableProps {
 	skills?: Skill[];
 	selectedSkills?: number[];
@@ -40,7 +41,11 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			description: skill.description,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k} className={k === 'description' ? styles.description : undefined}>
+				{v}
+			</td>
+		));
 	};
 
 	const renderActions = (skill: Skill) => {
