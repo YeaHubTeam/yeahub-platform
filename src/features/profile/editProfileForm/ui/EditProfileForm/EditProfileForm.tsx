@@ -13,6 +13,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
 import { getTabs, mapFormToProfile, mapProfileToForm } from '../../helpers/editProfileFormHelpers';
@@ -26,7 +27,8 @@ export const EditProfileForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 
 	const { hash } = useLocation();
-	const { data: userProfile, isLoading } = useProfileQuery();
+	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
+	const { isLoading: isLoadingSlilsList } = useGetSkillsListQuery({ limit: 100 });
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
 
 	const tabs = getTabs(t);
@@ -58,6 +60,7 @@ export const EditProfileForm = () => {
 		updateProfile(mapFormToProfile(userProfile as GetProfileResponse, data));
 	};
 
+	if (isLoadingProfile || isLoadingSlilsList) return <EditProfileFormSkeleton />;
 	return (
 		<section className={styles.section}>
 			<Tabs

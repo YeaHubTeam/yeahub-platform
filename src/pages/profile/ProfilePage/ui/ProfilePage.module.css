@@ -46,6 +46,11 @@
   padding: 24px;
 }
 
+.profile-card-skeleton, 
+.card-skeleton:not(:last-child) {
+  margin-bottom: 24px;
+}
+
 .header-card-skeleton {
   margin-bottom: 20px;
 }
