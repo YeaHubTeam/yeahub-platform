@@ -9,7 +9,7 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
+import { FullProfile, useProfileQuery } from '@/entities/auth';
 import { EmailVerify } from '@/entities/profile';
 
 import styles from './MainPage.module.css';
@@ -23,7 +23,7 @@ const MainPage = () => {
 	const { t } = useI18nHelpers();
 	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
 
-	const getPercentProfileFullness = useCallback((profile: GetProfileResponse) => {
+	const getPercentProfileFullness = useCallback((profile: FullProfile) => {
 		const allFileldsCount = Object.keys(profile).length - 1;
 		const fullnessCount =
 			Object.values(profile).filter((item) => item && item.length > 0).length - 1;

@@ -3,114 +3,85 @@ import { Skill } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SocialNetwork } from '@/entities/socialNetwork';
 
-export interface Auth {
+export interface LoginFormValues {
 	username: string;
 	password: string;
 }
 
-export interface SignUp {
-	firstName: string;
-	lastName: string;
+export type SignUpFormValues = Pick<User, 'firstName' | 'lastName' | 'phone' | 'email'> & {
 	password: string;
-	phone: string;
-	email: string;
-	country: string | null;
-	city: string | null;
-	birthday: string | null;
-	address: string | null;
-	avatarUrl: string | null;
-}
+	passwordConfirmation: string;
+	isChecked: boolean;
+};
 
-export interface GetProfileResponse extends Omit<SignUp, 'password'> {
-	id: string;
-	updatedAt: string;
-	createdAt: string;
-	address: string;
-	avatarUrl: string;
-	birthday: string | null;
-	city: string;
-	country: string;
-	email: string;
-	firstName: string;
-	lastName: string;
-	phone: string;
+export interface FullProfile extends User {
 	profiles: Profile[];
-	refreshToken: string;
-	passwordHash: string;
-	userRoles: Role[];
-	avatarImage?: FileList;
-	isEmailVerified: boolean;
 }
 
-export interface GetAuthResponse {
+export interface AuthResponse {
 	access_token: string;
-	user: GetProfileResponse;
+	user: User;
 }
 
 export interface Profile {
-	description: string;
 	id: string;
-	image_src: string;
-	links: string[];
-	markingWeight: number;
-	profileSkills: Skill[];
 	profileType: number;
-	socialNetwork: SocialNetwork[];
 	specializationId: number;
+	markingWeight: number;
+	description: string;
+	links: string[];
+	socialNetwork: SocialNetwork[];
+	image_src: string;
+	profileSkills: Skill[];
 }
 
 export interface ExtraArgument {
 	navigate: (path: string) => void;
 }
 
-export interface ProfileUpdate {
+export interface User {
 	id: string;
-	profileType: number;
-	specializationId: number;
-	markingWeight: number;
-	description: string;
-	socialNetwork: SocialNetwork[];
-	image_src: string;
-	profileSkills: Skill[];
-	links: string[];
+	firstName: string;
+	lastName: string;
+	phone: string;
+	country: string;
+	city: string;
+	email: string;
+	birthday: string | null;
+	address: string;
+	avatarUrl: string;
+	createdAt: string;
+	updatedAt: string;
+	isEmailVerified: boolean;
+	userRoles: Role[];
+}
+
+export interface ProfileUpdate extends Profile {
 	user: UserUpdate;
 }
 
-export interface UserUpdate {
-	address: string;
-	avatarUrl: string;
-	birthday: string | null;
-	city: string;
-	country: string;
-	createdAt: string;
-	email: string;
-	firstName: string;
-	id: string;
-	lastName: string;
-	passwordHash: string;
-	phone: string;
-	refreshToken: string;
-	updatedAt: string;
-	userRoles: Role[];
+export interface UserUpdate extends User {
 	avatarImage?: string | null;
 }
 
+export type RoleName = 'guest' | 'candidate' | 'member' | 'admin' | 'hr';
+
 export interface Role {
 	id: number;
-	name: 'guest' | 'candidate' | 'member' | 'admin' | 'hr';
-	permissions: Permissions[];
+	name: RoleName;
+	permissions: RolePermission[];
 }
 
-export interface Permissions {
+export interface RolePermission {
 	id: number;
 	name: string;
 }
 
-export interface ForgotPassword {
-	username: string;
-}
+export type LoginBodyRequest = LoginFormValues;
+export type LoginResponse = AuthResponse;
 
-export interface PasswordRecovery {
-	password: string;
-	confirmPassword: string;
-}
+export type SignUpBodyRequest = Omit<SignUpFormValues, 'isChecked'>;
+export type SignUpResponse = AuthResponse;
+
+export type RefreshResponse = AuthResponse;
+export type ProfileResponse = FullProfile;

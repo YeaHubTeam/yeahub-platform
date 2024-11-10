@@ -7,7 +7,7 @@ import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { PasswordRecovery } from '@/entities/auth';
+import { PasswordRecoveryFormValues } from '../../model/types/passwordRecoveryTypes';
 
 import styles from './PasswordRecoveryForm.module.css';
 
@@ -19,7 +19,7 @@ export const PasswordRecoveryForm = () => {
 	const {
 		control,
 		formState: { errors },
-	} = useFormContext<PasswordRecovery>();
+	} = useFormContext<PasswordRecoveryFormValues>();
 
 	const handleShowPassword = () => {
 		setIsPasswordHidden((prev) => !prev);
@@ -45,7 +45,6 @@ export const PasswordRecoveryForm = () => {
 							type={isPasswordHidden ? 'text' : 'password'}
 							suffix={
 								<Icon
-									className={styles.icon}
 									onClick={handleShowPassword}
 									icon="password"
 									arg={isPasswordHidden}
@@ -73,7 +72,6 @@ export const PasswordRecoveryForm = () => {
 							type={isConfirmPasswordHidden ? 'text' : 'password'}
 							suffix={
 								<Icon
-									className={styles.icon}
 									onClick={handleShowConfirmPassword}
 									icon="password"
 									arg={isConfirmPasswordHidden}

@@ -8,7 +8,7 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { ForgotPassword } from '@/entities/auth';
+import { ForgotPasswordFormValues } from '../../model/types/forgotPasswordTypes';
 
 import styles from './ForgotPasswordForm.module.css';
 
@@ -18,7 +18,7 @@ interface ForgotPasswordFormProps {
 
 export const ForgotPasswordForm = ({ onSubmit: onSubmitProps }: ForgotPasswordFormProps) => {
 	const { t } = useI18nHelpers(i18Namespace.auth);
-	const { control } = useFormContext<ForgotPassword>();
+	const { control } = useFormContext<ForgotPasswordFormValues>();
 
 	const onSubmit = () => {
 		onSubmitProps();
