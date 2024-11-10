@@ -17,6 +17,7 @@ import {
 import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
 import { QuestionModeType } from '@/entities/quiz';
 import { QuizQuestionMode } from '@/entities/quiz';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
@@ -26,8 +27,9 @@ import { CreateQuizPageSkeleton } from './CreateQuizPage.skeleton';
 const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
-	const { data: userProfile, isLoading } = useProfileQuery();
+	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
 	const { filter, handleFilterChange } = useQueryFilter();
+	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const navigate = useNavigate();
@@ -76,7 +78,8 @@ const CreateQuizPage = () => {
 		});
 	};
 
-	if (isLoading || isActiveQuizLoading) return <CreateQuizPageSkeleton />;
+	if (isLoadingProfile || isActiveQuizLoading || isLoadingCategories)
+		return <CreateQuizPageSkeleton />;
 
 	return (
 		<section>

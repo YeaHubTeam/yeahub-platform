@@ -34,23 +34,23 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	}
 
 	return (
-		<section className={styles.layout}>
-			<Suspense>
+		<Suspense fallback={<MainLayoutSkeleton />}>
+			<section className={styles.layout}>
 				<div className={styles.sidebar}>
 					<Sidebar menuItems={filteredMenuItems} />
 				</div>
-			</Suspense>
 
-			<Header />
+				<Header />
 
-			<main className={styles.main}>
-				<div className={styles.container}>
-					<Suspense fallback={<SkeletonGenerator />}>
-						<Breadcrumbs />
-						<Outlet />
-					</Suspense>
-				</div>
-			</main>
-		</section>
+				<main className={styles.main}>
+					<div className={styles.container}>
+						<Suspense fallback={<SkeletonGenerator />}>
+							<Breadcrumbs />
+							<Outlet />
+						</Suspense>
+					</div>
+				</main>
+			</section>
+		</Suspense>
 	);
 };

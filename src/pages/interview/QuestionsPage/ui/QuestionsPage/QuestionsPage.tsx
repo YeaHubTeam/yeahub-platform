@@ -6,6 +6,7 @@ import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import {
 	QuestionFilterStatus,
@@ -19,7 +20,9 @@ import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
+	const MAX_LIMIT_CATEGORIES = 5;
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
+	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
@@ -77,7 +80,7 @@ const QuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
-	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
+	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
 		return <QuestionsPageSkeleton />;
 	}
 
@@ -115,6 +118,7 @@ const QuestionsPage = () => {
 							status: filter.status,
 							title: filter.title,
 						}}
+						skillsLimit={MAX_LIMIT_CATEGORIES}
 					/>
 				</Card>
 			</div>
