@@ -6,10 +6,10 @@ import { Size } from '@/shared/ui/Input/model/types/InputTypes';
 
 import styles from './Input.module.css';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	customPrefix?: React.ReactNode;
+interface InputProps extends Omit<React.ComponentPropsWithRef<'input'>, 'size' | 'prefix'> {
+	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
-	customSize?: Size;
+	size?: Size;
 	className?: string;
 	disabled?: boolean;
 	placeholder?: string;
@@ -20,9 +20,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
-			customPrefix,
+			prefix,
 			suffix,
-			customSize = 'L',
+			size = 'L',
 			disabled = false,
 			className,
 			placeholder = '',
@@ -39,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			{
 				[styles['wrapper-disabled']]: disabled,
 				[styles['wrapper-error']]: error,
-				[styles[`wrapper-${customSize.toLowerCase()}`]]: customSize,
+				[styles[`wrapper-${size.toLowerCase()}`]]: size,
 			},
 			className,
 		);
@@ -73,7 +73,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				tabIndex={disabled ? -1 : 0}
 			>
 				<span className={styles['input-prefix']}>
-					{customPrefix || <Magnifer className={styles.prefix} />}
+					{prefix || <Magnifer className={styles.prefix} />}
 				</span>
 				<input
 					ref={setRef}
