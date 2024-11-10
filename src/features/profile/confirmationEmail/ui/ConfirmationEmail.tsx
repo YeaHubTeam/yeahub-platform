@@ -6,6 +6,10 @@ import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
+import { useProfileQuery } from '@/entities/auth';
+
+import { useSendVerificationEmailMutation } from '../api/confirmEmailApi';
+
 import styles from './ConfirmationEmail.module.css';
 
 interface ConfirmationEmailProps {
@@ -20,6 +24,17 @@ export const ConfirmationEmail = ({
 	isLetterSended,
 }: ConfirmationEmailProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
+	const profile = useProfileQuery();
+	const userId = profile.data?.id;
+
+	const [sendVerificationEmail, { isLoading: isSendingVerificationEmail }] =
+		useSendVerificationEmailMutation();
+
+	const onClickVerificationButton = () => {
+		if (userId) {
+			sendVerificationEmail({ id: userId });
+		}
+	};
 
 	return (
 		<>
@@ -41,7 +56,11 @@ export const ConfirmationEmail = ({
 						</p>
 					</Flex>
 				) : (
-					<Button theme="primary" onClick={() => {}}>
+					<Button
+						theme="primary"
+						onClick={onClickVerificationButton}
+						disabled={isSendingVerificationEmail}
+					>
 						{t(Profile.PROFILE_EMAIL_VERIFICATION_BUTTON)}
 					</Button>
 				)}

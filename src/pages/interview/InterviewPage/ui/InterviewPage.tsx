@@ -5,6 +5,7 @@ import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlacehol
 import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
@@ -121,18 +122,34 @@ const InterviewPage = () => {
 		return <InterviewPageSkeleton />;
 	}
 
+	const interviewPreparationActionTitleKey = !profile?.isEmailVerified
+		? Interview.VERIFY_EMAIL_LINK
+		: lastActiveQuizInfo
+			? Interview.PREPARATION_ACTIVELINKTEXT
+			: Interview.PREPARATION_NOACTIVELINKTEXT;
+
+	const interviewPreparationActionRoute = !profile?.isEmailVerified
+		? EMAIL_VERIFY_SETTINGS_TAB
+		: lastActiveQuizInfo
+			? ROUTES.interview.new.page
+			: ROUTES.interview.quiz.page;
+
+	const statsActionTitleKey = !profile?.isEmailVerified
+		? Interview.VERIFY_EMAIL_LINK
+		: Interview.STATS_LINKTEXT;
+
+	const statsActionRoute = !profile?.isEmailVerified
+		? EMAIL_VERIFY_SETTINGS_TAB
+		: ROUTES.interview.statistic.page;
+
 	return (
 		<div className={styles.container}>
 			<Card
 				className={styles.interview}
 				actionDisabled={isSpecializationEmpty}
 				title={t(Interview.PREPARATION_TITLE)}
-				actionTitle={t(
-					lastActiveQuizInfo
-						? Interview.PREPARATION_ACTIVELINKTEXT
-						: Interview.PREPARATION_NOACTIVELINKTEXT,
-				)}
-				actionRoute={lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page}
+				actionTitle={t(interviewPreparationActionTitleKey)}
+				actionRoute={interviewPreparationActionRoute}
 				withShadow
 			>
 				{isSpecializationEmpty ? (
@@ -171,9 +188,9 @@ const InterviewPage = () => {
 					className={styles.statistics}
 					isActionPositionBottom
 					title={t('stats.title')}
-					actionTitle={t('stats.linkText')}
-					actionRoute={ROUTES.interview.statistic.page}
-					actionDisabled={newUser}
+					actionTitle={t(statsActionTitleKey)}
+					actionRoute={statsActionRoute}
+					actionDisabled={profile?.isEmailVerified && newUser}
 				>
 					<PassedQuestionChart
 						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}

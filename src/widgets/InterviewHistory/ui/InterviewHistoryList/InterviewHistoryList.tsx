@@ -3,6 +3,7 @@ import { skipToken } from '@reduxjs/toolkit/query';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
@@ -34,10 +35,10 @@ export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListPro
 
 	const isEmptyData = isSuccess && data.data.length === 0;
 
-	const actionRoute = isVerified ? ROUTES.interview.history.page : ROUTES.platformRoute;
+	const actionRoute = isVerified ? ROUTES.interview.history.page : EMAIL_VERIFY_SETTINGS_TAB;
 	const actionTitle = isVerified
 		? t(Interview.HISTORY_PREPARATION_LINKTEXT)
-		: t(Interview.HISTORY_PREPARATION_LINKTEXT_UNVERIFIED);
+		: t(Interview.VERIFY_EMAIL_LINK);
 
 	return (
 		<Card
