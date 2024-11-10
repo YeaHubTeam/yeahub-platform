@@ -25,7 +25,9 @@ export const PassedQuestionChart = ({
 
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
-	const gaugeData = [
+	const gaugeOption = structuredClone(options.gauge);
+
+	gaugeOption.series[0].data = [
 		{
 			value: passedQuestionsPercent,
 			detail: {
@@ -35,9 +37,6 @@ export const PassedQuestionChart = ({
 			itemStyle: { color: '#400799' },
 		},
 	];
-
-	const gaugeOption = options.gauge;
-	gaugeOption.series[0].data = gaugeData;
 	gaugeOption.series[0].progress.show = !!passedQuestionsPercent;
 	gaugeOption.series[0].detail.formatter = total
 		? `{value}%\n${t(Interview.STATS_PASSED)}`
