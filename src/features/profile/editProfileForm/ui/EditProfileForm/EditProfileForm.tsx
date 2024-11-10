@@ -12,7 +12,7 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { GetProfileResponse, useProfileQuery } from '@/entities/auth';
+import { FullProfile, useProfileQuery } from '@/entities/auth';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
@@ -57,7 +57,7 @@ export const EditProfileForm = () => {
 
 	const onSubmit = (data: ProfileSchema) => {
 		methods.reset();
-		updateProfile(mapFormToProfile(userProfile as GetProfileResponse, data));
+		updateProfile(mapFormToProfile(userProfile as FullProfile, data));
 	};
 
 	if (isLoadingProfile || isLoadingSlilsList) return <EditProfileFormSkeleton />;

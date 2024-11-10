@@ -1,13 +1,13 @@
-import authLoginHandler from './authLoginHandler';
-import authLogoutHandler from './authLogoutHandler';
-import authProfileHandler from './authProfileHandler';
-import authRefreshHandler from './authRefreshHandler';
-import authSignupHandler from './authSignupHandler';
+import { authLoginMutationMock } from './authLoginMutationMock';
+import { authLogoutQueryMock } from './authLogoutQueryMock';
+import { authProfileQueryMock } from './authProfileQueryMock';
+import { authRefreshQueryMock } from './authRefreshQueryMock';
+import { authSignupMutationMock } from './authSignupMutationMock';
 
 export const authHandlers = [
-	authLoginHandler,
-	authLogoutHandler,
-	authProfileHandler,
-	authRefreshHandler,
-	authSignupHandler,
+	authLoginMutationMock(),
+	authLogoutQueryMock(),
+	authProfileQueryMock(),
+	authRefreshQueryMock(),
+	authSignupMutationMock(),
 ];

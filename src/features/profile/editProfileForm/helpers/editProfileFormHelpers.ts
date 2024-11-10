@@ -1,6 +1,6 @@
 import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 
-import { GetProfileResponse } from '@/entities/auth';
+import { FullProfile } from '@/entities/auth';
 import { SOCIAL_NETWORKS, SocialNetwork } from '@/entities/socialNetwork';
 
 import { EditProfileRequestData, ProfileSchema } from '../model/types/editProfileTypes';
@@ -47,7 +47,7 @@ export const getTabs = (t: (arg: string) => string) => [
 	// },
 ];
 
-export const mapProfileToForm = (profile: GetProfileResponse): ProfileSchema => ({
+export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
 	//image: profile.image_src,
 	firstName: profile.firstName,
 	lastName: profile.lastName,
@@ -70,7 +70,7 @@ export const mapProfileToForm = (profile: GetProfileResponse): ProfileSchema => 
 });
 
 export const mapFormToProfile = (
-	profile: GetProfileResponse,
+	profile: FullProfile,
 	values: ProfileSchema,
 ): EditProfileRequestData => ({
 	...profile.profiles[0],

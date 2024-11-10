@@ -10,14 +10,14 @@ import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
-import { GetProfileResponse } from '@/entities/auth';
+import { FullProfile } from '@/entities/auth';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
 
 interface UserInfoProps {
-	profile: GetProfileResponse;
+	profile: FullProfile;
 	profileSpecialization: Specialization | undefined;
 }
 

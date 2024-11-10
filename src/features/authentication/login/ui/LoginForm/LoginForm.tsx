@@ -7,7 +7,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { Auth, useLoginMutation } from '@/entities/auth';
+import { LoginFormValues, useLoginMutation } from '@/entities/auth';
 
 import styles from './LoginForm.module.css';
 
@@ -19,13 +19,13 @@ export const LoginForm = () => {
 		handleSubmit,
 		control,
 		formState: { errors },
-	} = useFormContext<Auth>();
+	} = useFormContext<LoginFormValues>();
 
 	const handleShowPassword = () => {
 		setIsPasswordHidden((prev) => !prev);
 	};
 
-	const onLogin = async (data: Auth) => {
+	const onLogin = async (data: LoginFormValues) => {
 		await loginMutation(data);
 	};
 
@@ -54,7 +54,6 @@ export const LoginForm = () => {
 								type={isPasswordHidden ? 'text' : 'password'}
 								suffix={
 									<Icon
-										className={styles.icon}
 										onClick={handleShowPassword}
 										icon="password"
 										arg={isPasswordHidden}

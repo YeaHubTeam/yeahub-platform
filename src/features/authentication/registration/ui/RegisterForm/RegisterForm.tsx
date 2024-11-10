@@ -6,14 +6,9 @@ import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
-import { SignUp, useRegisterMutation } from '@/entities/auth';
+import { SignUpFormValues, useRegisterMutation } from '@/entities/auth';
 
 import styles from './RegisterForm.module.css';
-
-interface RegistrationValidation extends SignUp {
-	isChecked: boolean;
-	passwordConfirmation: string;
-}
 
 export const RegisterForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
@@ -23,13 +18,13 @@ export const RegisterForm = () => {
 		handleSubmit,
 		control,
 		formState: { errors },
-	} = useFormContext<RegistrationValidation>();
+	} = useFormContext<SignUpFormValues>();
 
 	const handleShowPassword = () => {
 		setIsPasswordHidden((prev) => !prev);
 	};
 
-	const onRegistration = async (data: SignUp) => {
+	const onRegistration = async (data: SignUpFormValues) => {
 		await registrationMutation(data);
 	};
 
@@ -70,7 +65,6 @@ export const RegisterForm = () => {
 								type={isPasswordHidden ? 'text' : 'password'}
 								suffix={
 									<Icon
-										className={styles.icon}
 										onClick={handleShowPassword}
 										icon="password"
 										arg={isPasswordHidden}
@@ -95,7 +89,6 @@ export const RegisterForm = () => {
 								type={isPasswordHidden ? 'text' : 'password'}
 								suffix={
 									<Icon
-										className={styles.icon}
 										onClick={handleShowPassword}
 										icon="password"
 										arg={isPasswordHidden}
