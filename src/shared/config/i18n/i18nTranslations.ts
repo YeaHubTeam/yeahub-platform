@@ -123,6 +123,7 @@ export enum Translation {
 	TOAST_INTERVIEW_NEW_QUIZ_FAILED = 'toast.interview.new.quiz.failed',
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
+	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
 
 	ERROR404_IMAGE_ALT = 'error.alt',
 
@@ -288,7 +289,7 @@ export enum Interview {
 	HISTORY_PREPARATION_RESULTTEXT = 'history_preparation.resultText',
 	HISTORY_PREPARATION_EMPTY = 'history_preparation.empty',
 	HISTORY_PREPARATION_UNVERIFIED = 'history_preparation.unverified',
-	HISTORY_PREPARATION_LINKTEXT_UNVERIFIED = 'history_preparation.unverifiedLinkText',
+	VERIFY_EMAIL_LINK = 'verify_email_link',
 }
 
 export enum InterviewHistoryPage {

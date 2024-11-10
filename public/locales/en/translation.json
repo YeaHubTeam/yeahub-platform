@@ -180,6 +180,11 @@
         "success": "The interview is completed",
         "failed": "Failed to complete the interview"
       }
+    },
+    "settings": {
+      "sendVerificationEmail": {
+          "failed": "Sending verification message failed"
+      }
     }
   },
   "error": {

@@ -56,6 +56,7 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
+import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -261,7 +262,11 @@ export const router = createBrowserRouter([
 							},
 							{
 								path: ROUTES.interview.history.route,
-								element: <Outlet />,
+								element: (
+									<VerifiedEmailRoute>
+										<Outlet />
+									</VerifiedEmailRoute>
+								),
 								handle: {
 									crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
 								},
@@ -281,7 +286,11 @@ export const router = createBrowserRouter([
 							},
 							{
 								path: ROUTES.interview.statistic.route,
-								element: <InterviewStatisticsPage />,
+								element: (
+									<VerifiedEmailRoute>
+										<InterviewStatisticsPage />
+									</VerifiedEmailRoute>
+								),
 								handle: {
 									crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
 								},
@@ -308,13 +317,21 @@ export const router = createBrowserRouter([
 							},
 							{
 								path: ROUTES.interview.quiz.route,
-								element: <Outlet />,
+								element: (
+									<VerifiedEmailRoute>
+										<Outlet />
+									</VerifiedEmailRoute>
+								),
 								handle: { crumb: Translation.CRUMBS_INTERVIEWCREATION },
 								children: [{ index: true, element: <CreateQuizPage /> }],
 							},
 							{
 								path: ROUTES.interview.new.route,
-								element: <InterviewQuizPage />,
+								element: (
+									<VerifiedEmailRoute>
+										<InterviewQuizPage />
+									</VerifiedEmailRoute>
+								),
 								handle: {
 									crumb: Translation.CRUMBS_QUIZ,
 								},
