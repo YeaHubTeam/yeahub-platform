@@ -3,9 +3,9 @@ import YupPassword from 'yup-password';
 
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-YupPassword(yup);
+import { passwordRules } from '@/shared/constants/regexp';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+YupPassword(yup);
 
 export const changePasswordSchema = yup.object().shape({
 	newPassword: yup

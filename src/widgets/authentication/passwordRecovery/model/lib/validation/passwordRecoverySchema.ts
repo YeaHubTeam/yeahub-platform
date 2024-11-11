@@ -1,8 +1,7 @@
 import * as yup from 'yup';
 
 import { Validation } from '@/shared/config/i18n/i18nTranslations';
-
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+import { passwordRules } from '@/shared/constants/regexp';
 
 export const passwordRecoverySchema = yup.object().shape({
 	password: yup
