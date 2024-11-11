@@ -145,6 +145,10 @@
       "reset.progress": {
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
+      },
+      "delete": {
+        "success": "The question has been successfully deleted.",
+        "failed": "Failed to delete question"
       }
     },
     "profile": {
@@ -176,9 +180,15 @@
         "success": "The interview is completed",
         "failed": "Failed to complete the interview"
       }
+    },
+    "settings": {
+      "sendVerificationEmail": {
+        "failed": "Sending verification message failed"
+      }
     }
   },
   "error": {
-    "alt": "Лупа"
-  }
+    "alt": "Loupe"
+  },
+  "settings": "Settings"
 }

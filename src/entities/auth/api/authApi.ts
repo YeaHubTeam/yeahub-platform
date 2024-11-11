@@ -4,21 +4,27 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { profileActions } from '@/entities/profile';
+
+import { authApiUrls } from '../model/constants/authConstants';
 import {
-	Auth,
 	ExtraArgument,
-	GetAuthResponse,
-	GetProfileResponse,
-	SignUp,
+	LoginBodyRequest,
+	LoginResponse,
+	ProfileResponse,
+	RefreshResponse,
+	SignUpBodyRequest,
+	SignUpResponse,
 } from '../model/types/auth';
 
 export const authApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		login: build.mutation<GetAuthResponse, Auth>({
-			query: (auth) => ({
-				url: 'auth/login',
+		login: build.mutation<LoginResponse, LoginBodyRequest>({
+			query: (body) => ({
+				url: authApiUrls.login,
 				method: 'POST',
-				body: auth,
+				body,
 			}),
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
@@ -32,17 +38,20 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		register: build.mutation<GetAuthResponse, SignUp>({
-			query: (registration) => ({
-				url: 'auth/signUp',
+		register: build.mutation<SignUpResponse, SignUpBodyRequest>({
+			query: (body) => ({
+				url: authApiUrls.register,
 				method: 'POST',
-				body: registration,
+				body,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
+
+					dispatch(profileActions.setEmailSent(true));
+
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
 					// eslint-disable-next-line no-console
@@ -50,12 +59,12 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		profile: build.query<GetProfileResponse, void>({
-			query: () => 'auth/profile',
+		profile: build.query<ProfileResponse, void>({
+			query: () => authApiUrls.profile,
 			providesTags: [ApiTags.PROFILE],
 		}),
 		logout: build.query<void, void>({
-			query: () => 'auth/logout',
+			query: () => authApiUrls.logout,
 			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
@@ -69,8 +78,8 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		refresh: build.query<GetAuthResponse, void>({
-			query: () => 'auth/refresh',
+		refresh: build.query<RefreshResponse, void>({
+			query: () => authApiUrls.refresh,
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;

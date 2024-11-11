@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Button, Icon, Input } from 'yeahub-ui-kit';
+import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { Auth, useLoginMutation } from '@/entities/auth';
+import { LoginFormValues, useLoginMutation } from '@/entities/auth';
 
 import styles from './LoginForm.module.css';
 
@@ -18,13 +19,13 @@ export const LoginForm = () => {
 		handleSubmit,
 		control,
 		formState: { errors },
-	} = useFormContext<Auth>();
+	} = useFormContext<LoginFormValues>();
 
 	const handleShowPassword = () => {
 		setIsPasswordHidden((prev) => !prev);
 	};
 
-	const onLogin = async (data: Auth) => {
+	const onLogin = async (data: LoginFormValues) => {
 		await loginMutation(data);
 	};
 
@@ -53,7 +54,6 @@ export const LoginForm = () => {
 								type={isPasswordHidden ? 'text' : 'password'}
 								suffix={
 									<Icon
-										className={styles.icon}
 										onClick={handleShowPassword}
 										icon="password"
 										arg={isPasswordHidden}
@@ -68,14 +68,12 @@ export const LoginForm = () => {
 					</FormControl>
 
 					<div className={styles['forgot-password-link']}>
-						<Button tagName="a" theme="link">
-							{t('login.forgotPassword')}
-						</Button>
+						<Button variant="link">{t('login.forgotPassword')}</Button>
 					</div>
 				</div>
 			</div>
 			<Button
-				theme="primary"
+				variant="primary"
 				disabled={isLoading}
 				className={styles['submit-button']}
 				onClick={handleSubmit(onLogin)}

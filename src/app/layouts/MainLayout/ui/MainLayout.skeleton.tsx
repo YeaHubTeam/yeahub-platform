@@ -1,7 +1,7 @@
 import { HeaderSkeleton } from '@/widgets/Header';
 import { SidebarSkeleton } from '@/widgets/Sidebar';
 
-import { MainPageSkeleton } from '@/pages/interview/MainPage';
+import SkeletonGenerator from '../model/helper/SkeletonGenerator';
 
 import styles from './MainLayout.module.css';
 
@@ -15,7 +15,7 @@ export const MainLayoutSkeleton = () => (
 
 		<main className={styles.main}>
 			<div className={styles.container}>
-				<MainPageSkeleton />
+				<SkeletonGenerator />
 			</div>
 		</main>
 	</section>

@@ -1,12 +1,16 @@
 import { ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Input, Icon } from 'yeahub-ui-kit';
+import { Input, Icon } from 'yeahub-ui-kit';
 
 import PlusSvg from '@/shared/assets/icons/Plus.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer/ui/FiltersDrawer';
+
+import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
 
 import styles from './SearchSection.module.css';
 
@@ -32,6 +36,9 @@ export const SearchSection = ({
 	return (
 		<Card className={styles.card}>
 			<section className={styles.section}>
+				<FiltersDrawer>
+					<QuestionsFilterSet />
+				</FiltersDrawer>
 				<Input
 					onChange={handleSearch}
 					className={styles.input}
@@ -40,12 +47,12 @@ export const SearchSection = ({
 				/>
 
 				{showRemoveButton && (
-					<Button onClick={onRemove} theme="destructive-tertiary">
+					<Button onClick={onRemove} variant="destructive-tertiary">
 						{t(Translation.REMOVE_SELECTED)}
 					</Button>
 				)}
 
-				<Button size="small" textClassName={styles.navigate}>
+				<Button>
 					<NavLink className={styles.link} to={to}>
 						{t(Translation.CREATE)}
 						<PlusSvg className={styles['plus-svg']} />

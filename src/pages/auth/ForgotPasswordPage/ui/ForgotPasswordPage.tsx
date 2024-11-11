@@ -1,0 +1,59 @@
+import { useState } from 'react';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Flex } from '@/shared/ui/Flex';
+
+import { RegistrationLabel } from '@/entities/auth';
+
+import {
+	EmailSendModal,
+	IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY,
+} from '@/features/authentication/forgotPassword';
+
+import { ForgotPassword } from '@/widgets/authentication/forgotPassword';
+
+import styles from './ForgotPasswordPage.module.css';
+
+const ForgotPasswordPage = () => {
+	const [isOpen, setIsOpen] = useState(!!getFromLS(IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY));
+	const [isTimerStarted, setIsTimerStarted] = useState(false);
+
+	const { t } = useI18nHelpers(i18Namespace.auth);
+
+	const onModalClose = () => {
+		setIsOpen(false);
+	};
+
+	const onForgotPasswordSubmit = () => {
+		setIsOpen(true);
+		setIsTimerStarted(true);
+	};
+
+	return (
+		<>
+			<Flex className={styles['wrapper']} justify="center" align="start">
+				<Flex className={styles['content']} direction="column" justify="between">
+					<div>
+						<h1 className={styles['title']}>{t(Auth.FORGOT_PASSWORD_TITLE)}</h1>
+						<p className={styles['subtitle']}>{t(Auth.FORGOT_PASSWORD_SUBTITLE)}</p>
+						<ForgotPassword onSubmit={onForgotPasswordSubmit} />
+					</div>
+					<div className={styles['registration-label-wrapper']}>
+						<RegistrationLabel />
+					</div>
+				</Flex>
+			</Flex>
+			<EmailSendModal
+				isOpen={isOpen}
+				onModalClose={onModalClose}
+				isTimerStarted={isTimerStarted}
+				setIsTimerStarted={setIsTimerStarted}
+			/>
+		</>
+	);
+};
+
+export default ForgotPasswordPage;

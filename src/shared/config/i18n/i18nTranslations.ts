@@ -13,6 +13,7 @@ export enum Translation {
 	SEARCH = 'search',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
+	SETTINGS = 'settings',
 	LOGO = 'logo',
 	AVATAR = 'avatar',
 	CRUMBS_PROFILE = 'crumbs.profile',
@@ -108,6 +109,8 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
+	TOAST_QUESTIONS_DELETE_SUCCESS = 'toast.questions.delete.success',
+	TOAST_QUESTIONS_DELETE_FAILED = 'toast.questions.delete.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',
@@ -120,7 +123,12 @@ export enum Translation {
 	TOAST_INTERVIEW_NEW_QUIZ_FAILED = 'toast.interview.new.quiz.failed',
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
+	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
+
 	ERROR404_IMAGE_ALT = 'error.alt',
+
+	EMAIL_VERIFY = 'emailVerification.emailSettings',
+	CHANGE_PASSWORD = 'changePassword.passwordSettings',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
@@ -173,6 +181,21 @@ export enum Profile {
 	ACHIEVMENTSLIST_IMAGE_ALT = 'achievmentsList.imageAlt',
 	EXPERIENCELIST_IMAGE_ALT = 'experienceList.imageAlt',
 	PROJECTLIST_IMAGE_ALT = 'projectsList.imageAlt',
+	PROFILE_EMAIL_VERIFICATION_TITLE = 'emailVerification.title',
+	PROFILE_EMAIL_VERIFICATION_DESCRIPTION = 'emailVerification.description',
+	PROFILE_EMAIL_VERIFICATION_BUTTON = 'emailVerification.buttonText',
+	PROFILE_EMAIL_VERIFICATION_TEXT = 'emailVerification.verifyEmailText',
+	PROFILE_EMAIL_VERIFICATION_LETTER_SENT = 'emailVerification.letterSent',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_SUCCESS = 'emailVerification.verifySuccess',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_TEXT = 'emailVerification.verifyText',
+	PROFILE_EMAIL_VERIFICATION_VERIFY_LINK = 'emailVerification.verifyLink',
+	PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL = 'emailVerification.writeEmail',
+	PROFILE_CHANGE_PASSWORD_TITLE = 'changePassword.title',
+	PROFILE_CHANGE_PASSWORD_DESCRIPTION = 'changePassword.description',
+	PROFILE_CHANGE_PASSWORD_ENTER_NEW_PASSWORD = 'changePassword.enterNewPassword',
+	PROFILE_CHANGE_PASSWORD_REPEAT_PASSWORD = 'changePassword.repeatPassword',
+	PROFILE_CHANGE_PASSWORD_PLACEHOLDERT = 'changePassword.placeholderInput',
+	PROFILE_CHANGE_PASSWORD_BUTTON = 'changePassword.buttonText',
 }
 
 export enum Auth {
@@ -209,7 +232,22 @@ export enum Auth {
 	REGISTRATION_HAVE_ACCOUNT = 'registration.haveAccount',
 	REGISTRATION_LOGIN = 'registration.login',
 	BUTTONS_LOGIN = 'buttons.login',
+	BUTTONS_REGISTER = 'buttons.register',
 	BUTTONS_LOGOUT = 'buttons.logout',
+	FORGOT_PASSWORD_TITLE = 'forgotPassword.title',
+	FORGOT_PASSWORD_SUBTITLE = 'forgotPassword.subtitle',
+	FORGOT_PASSWORD_EMAIL = 'forgotPassword.email',
+	FORGOT_PASSWORD_EMAIL_PLACEHOLDER = 'forgotPassword.emailPlaceholder',
+	FORGOT_PASSWORD_SEND = 'forgotPassword.send',
+	FORGOT_PASSWORD_MODAL_TITLE = 'forgotPassword.modal.title',
+	FORGOT_PASSWORD_MODAL_SUBTITLE = 'forgotPassword.modal.subtitle',
+	FORGOT_PASSWORD_MODAL_BUTTON = 'forgotPassword.modal.button',
+	PASSWORD_RECOVERY_TITLE = 'passwordRecovery.title',
+	PASSWORD_RECOVERY_SUBTITLE = 'passwordRecovery.subtitle',
+	PASSWORD_RECOVERY_ENTER_PASSWORD = 'passwordRecovery.enterPassword',
+	PASSWORD_RECOVERY_REPEAT_PASSWORD = 'passwordRecovery.repeatPassword',
+	PASSWORD_RECOVERY_SAVE = 'passwordRecovery.save',
+	PASSWORD_RECOVERY_PLACEHOLDER = 'passwordRecovery.placeholder',
 }
 
 export enum Specialization {
@@ -250,6 +288,8 @@ export enum Interview {
 	HISTORY_PREPARATION_LINKTEXT = 'history_preparation.linkText',
 	HISTORY_PREPARATION_RESULTTEXT = 'history_preparation.resultText',
 	HISTORY_PREPARATION_EMPTY = 'history_preparation.empty',
+	HISTORY_PREPARATION_UNVERIFIED = 'history_preparation.unverified',
+	VERIFY_EMAIL_LINK = 'verify_email_link',
 }
 
 export enum InterviewHistoryPage {
@@ -352,6 +392,11 @@ export enum Validation {
 	REQUIRED = 'required',
 
 	PASSWORD_MIN = 'password.min',
+	PASSWORD_WEAK = 'password.weak',
+	PASSWORD_STRONG = 'password.strong',
+	PASSWORD_MATCH = 'password.match',
+	PASSWORD_DOES_NOT_MATCH = 'password.doesNotMatch',
+	PASSWORD_REQUIRED = 'password.required',
 
 	IMAGE_FILE_SIZE = 'image.fileSize',
 	IMAGE_FILE_TYPE = 'image.fileType',

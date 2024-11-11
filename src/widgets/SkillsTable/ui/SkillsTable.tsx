@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Icon, Popover, Button, IconButton } from 'yeahub-ui-kit';
+import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
 import { Skill } from '@/entities/skill';
 
 import { DeleteSkillButton } from '@/features/skill/deleteSkill';
+
+import styles from './SkillsTable.module.css';
 
 interface SkillsTableProps {
 	skills?: Skill[];
@@ -40,7 +43,11 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			description: skill.description,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k} className={k === 'description' ? styles.description : undefined}>
+				{v}
+			</td>
+		));
 	};
 
 	const renderActions = (skill: Skill) => {
@@ -64,19 +71,19 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.SHOW, { ns: i18Namespace.translation })}
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/admin/skills/${skill.id}/edit`}>
+							<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.EDIT, { ns: i18Namespace.translation })}
 									</Button>

@@ -17,7 +17,7 @@
 .admin-active {
   background-color: var(--background-admin-sidebar-item);
 
-  &:hover{
+  &:hover {
     background-color: var(--background-admin-sidebar-item-active);
   }
 }
@@ -32,7 +32,7 @@
   color: var(--text-color-primary);
   text-decoration: none;
   transition:
-        all 0.3s ease-out;
+    all 0.3s ease-out;
   cursor: pointer;
 }
 
@@ -91,7 +91,7 @@
   padding: 10px 12px;
   border-radius: 12px;
   transition:
-        all 0.3s ease-out;
+    all 0.3s ease-out;
 }
 
 .category:hover {
@@ -157,10 +157,6 @@
 
 .fullwidth .nested {
   padding: 10px 0
-}
-
-.nested:active {
-  border-left: solid 2px var(--background-primary);
 }
 
 .item.active {

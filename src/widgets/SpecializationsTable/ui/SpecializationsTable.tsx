@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Icon, Popover, IconButton, Button } from 'yeahub-ui-kit';
+import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import {
 	Specialization as SpecializationI18,
 	Translation,
 } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
 
@@ -63,25 +66,25 @@ export const SpecializationsTable = ({
 					placement="bottom-start"
 					body={
 						<>
-							<NavLink to={`/admin/specializations/${specialization.id}`}>
+							<NavLink to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.SHOW, { ns: i18Namespace.translation })}
 									</Button>
 								</Flex>
 							</NavLink>
-							<NavLink to={`/admin/specializations/${specialization.id}/edit`}>
+							<NavLink to={route(ROUTES.admin.specializations.edit.page, specialization.id)}>
 								<Flex align="center" gap="4">
 									<Button
 										style={{ width: 'auto', justifyContent: 'flex-start' }}
 										aria-label="Large"
 										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
-										theme="tertiary"
+										variant="tertiary"
 									>
 										{t(Translation.EDIT, { ns: i18Namespace.translation })}
 									</Button>

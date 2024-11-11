@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -19,7 +19,6 @@ import {
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
-import { InterviewQuizPageSkeleton } from './InterviewQuizPage.skeleton';
 
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
@@ -27,7 +26,7 @@ const InterviewQuizPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const { data: userProfile } = useProfileQuery();
-	const { data: activeQuiz, isLoading } = useGetActiveQuizQuery({
+	const { data: activeQuiz } = useGetActiveQuizQuery({
 		profileId: userProfile?.profiles[0].id || '',
 		params: {
 			page: 1,
@@ -79,8 +78,6 @@ const InterviewQuizPage = () => {
 			saveResult(quizToSave);
 		}
 	};
-
-	if (isLoading) return <InterviewQuizPageSkeleton />;
 
 	return (
 		<div className={styles.container}>

@@ -1,10 +1,11 @@
 export type {
-	Auth,
-	SignUp,
-	GetProfileResponse,
+	LoginFormValues,
+	SignUpFormValues,
+	FullProfile,
 	ExtraArgument,
 	Profile,
 	ProfileUpdate,
+	User,
 } from './model/types/auth';
 export { authApi } from './api/authApi';
 export {
@@ -14,5 +15,6 @@ export {
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
 } from './api/authApi';
-export { authHandlers } from './api/__mocks__/index';
+export { authHandlers } from './api/__mocks__';
 export { refreshMiddleware } from './api/refreshMiddleware';
+export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';

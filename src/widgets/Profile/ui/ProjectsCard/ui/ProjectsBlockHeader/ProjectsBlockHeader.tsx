@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
+
+import { ROUTES } from '@/shared/config/router/routes';
+import { Button } from '@/shared/ui/Button';
 
 import styles from './ProjectsBlockHeader.module.css';
 
@@ -10,10 +12,9 @@ export const ProjectsBlockHeader = () => {
 		<div className={styles['projects-header']}>
 			<h3 className={styles['projects-title']}>Проекты</h3>
 			<Button
-				theme="link"
-				tagName="button"
+				variant="link"
 				className={styles['projects-edit']}
-				onClick={() => navigate('edit#projects')}
+				onClick={() => navigate(`${ROUTES.profile.edit.page}#projects`)}
 			>
 				Редактировать
 			</Button>

@@ -1,10 +1,12 @@
 import { useSearchParams } from 'react-router-dom';
 
+import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import {
 	QuestionFilterStatus,
@@ -12,14 +14,15 @@ import {
 	QuestionsSummaryList,
 } from '@/widgets/Question';
 
-import { useQueryFilter } from '../../model/hooks/useQueryFilter';
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
+	const MAX_LIMIT_CATEGORIES = 5;
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
+	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
@@ -77,7 +80,7 @@ const QuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
-	if (isLoadingAllQuestions || isLoadingLearnedQuestions) {
+	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
 		return <QuestionsPageSkeleton />;
 	}
 
@@ -115,6 +118,7 @@ const QuestionsPage = () => {
 							status: filter.status,
 							title: filter.title,
 						}}
+						skillsLimit={MAX_LIMIT_CATEGORIES}
 					/>
 				</Card>
 			</div>

@@ -1,0 +1,73 @@
+:root {
+  /* light theme colors */
+  --svg-color-green: var(--color-green-750);
+  --background-progress-bar: var(--color-purple-200);
+  --background-app: var(--color-black-25);
+  --background-button: var(--color-black-50);
+  --background-block: var(--color-white-900);
+  --background-light-hover: var(--color-black-30);
+  --background-light-chip: var(--color-purple-100);
+  --text-color-primary: var(--color-black-800);
+  --text-color-bright: var(--color-black-900);
+  --text-color-black-email: var(--color-black-850);
+  --text-color-black-landing: var(--color-black-1000);
+  --text-color-link-active: var(--color-purple-700);
+  --text-color-link-disabled: var(--color-purple-300);
+  --text-color-light: var(--color-black-700);
+  --text-color-lighter: var(--color-black-600);
+  --text-color-lightest: var(--color-black-500);
+  --text-color-the-lightest: var(--color-black-400);
+  --text-color-more-lightest: var(--color-black-300);
+  --text-color-white: var(--color-white-900);
+  --background-skeleton: var(--color-black-150);
+  --text-color-red: var(--color-red-800);
+  --background-nav-item: var(--color-purple-100);
+  --background-nav-item-hover: var(--color-black-25);
+  --border-color: var(--color-black-100);
+  --border-right-color: var(--color-black-200);
+  --border-image-hover: var(--color-purple-800);
+  --border-input: var(--color-black-50);
+  --background-primary: var(--color-purple-700);
+  --caret-color-red: var(--color-red-400);
+  --icon-color-red: var(--color-red-600);
+  --error-color-red: var(--color-red-700);
+  --border-focus-purple: var(--color-purple-500);
+  --background-admin-sidebar-item: var(--color-yellow-800);
+  --background-admin-sidebar-item-active: var(--color-yellow-600);
+  --background-gradient-code-start: var(--color-white-900);
+  --background-gradient-code-end: var(--color-code-gradient-end);
+  --background-modal-overlay: rgb(72 72 72 / 50%);
+  --color-filter-border: rgb(28 28 28 / 20%);
+  --background-demo-progress-bar: var(--color-green-800);
+  --background-first-step: var(--color-yellow-300);
+  --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+
+  /* 
+[theme="dark"] {
+  --background-progress-bar: var(--color-purple-200);
+  --background-app: var(--color-black-800);
+  --background-button: var(--color-black-50);
+  --background-block: var(--color-black-900);
+  --background-light-hover: var(--color-black-30);
+  --text-color-primary: var(--color-white-900);
+  --text-color-bright: var(--color-white-900);
+  --text-color-link-active: var(--color-purple-700);
+  --text-color-link-disabled: var(--color-purple-300);
+  --text-color-light: var(--color-white-900);
+  --text-color-lighter: var(--color-black-600);
+  --text-color-lightest: var(--color-black-500);
+  --text-color-the-lightest: var(--color-black-400);
+  --text-color-more-lightest: var(--color-black-300);
+  --text-color-red: var(--color-red-800);
+  --background-skeleton: var(--color-black-150);
+  --background-nav-item: var(--color-purple-500);
+  --background-nav-item-hover: var(--color-black-800);
+  --border-color: var(--color-black-500);
+  --background-primary: var(--color-purple-700);
+  --caret-color-red: var(--color-red-400);
+  --icon-color-red: var(--color-red-600);
+  --error-color-red: var(--color-red-700);
+  --border-focus-purple: var(--color-purple-500);
+} */
+
+}

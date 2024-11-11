@@ -62,6 +62,14 @@ export const ROUTES = {
 			route: 'register',
 			page: '/auth/register',
 		},
+		'forgot-password': {
+			route: 'forgot-password',
+			page: '/auth/forgot-password',
+		},
+		'password-recovery': {
+			route: 'password-recovery',
+			page: '/auth/password-recovery',
+		},
 	},
 	profile: {
 		route: 'profile',
@@ -70,6 +78,10 @@ export const ROUTES = {
 			route: 'edit',
 			page: '/dashboard/profile/edit',
 		},
+	},
+	settings: {
+		route: 'settings',
+		page: '/dashboard/settings',
 	},
 	interview: {
 		route: 'interview',

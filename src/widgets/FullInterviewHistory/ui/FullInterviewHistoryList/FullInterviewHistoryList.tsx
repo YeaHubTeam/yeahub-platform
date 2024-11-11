@@ -13,9 +13,14 @@ import { useGetHistory } from './model/hooks/useGetHistory';
 interface InterviewHistoryProps {
 	dateRange?: Value;
 	resetFilters?: () => void;
+	onLoaded?: () => void;
 }
 
-export const FullInterviewHistoryList = ({ dateRange, resetFilters }: InterviewHistoryProps) => {
+export const FullInterviewHistoryList = ({
+	dateRange,
+	resetFilters,
+	onLoaded,
+}: InterviewHistoryProps) => {
 	const [page, setPage] = useState(1);
 	const [uniqueKey, setUniqueKey] = useState(Date.now().toString());
 
@@ -52,23 +57,23 @@ export const FullInterviewHistoryList = ({ dateRange, resetFilters }: InterviewH
 		if (dateRange) refreshParams();
 	}, [dateRange, refreshParams]);
 
-	return (
-		<>
-			{!isEmptyData ? (
-				<ul className={styles.list}>
-					{data.map((interview, index) => (
-						<FullInterviewHistoryItem
-							key={interview.id}
-							interview={interview}
-							itemRef={data.length === index + 1 ? lastItemRef : null}
-						/>
-					))}
-				</ul>
-			) : (
-				<Card className={styles['empty-container']}>
-					<EmptyStub resetFilters={resetFilters} />
-				</Card>
-			)}
-		</>
+	useEffect(() => {
+		isSuccess && onLoaded && onLoaded();
+	}, [isSuccess]);
+
+	return !isEmptyData ? (
+		<ul className={styles.list}>
+			{data.map((interview, index) => (
+				<FullInterviewHistoryItem
+					key={interview.id}
+					interview={interview}
+					itemRef={data.length === index + 1 ? lastItemRef : null}
+				/>
+			))}
+		</ul>
+	) : (
+		<Card className={styles['empty-container']}>
+			<EmptyStub resetFilters={resetFilters} />
+		</Card>
 	);
 };

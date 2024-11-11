@@ -15,7 +15,7 @@ interface EditTab {
 
 interface TabsProps {
 	tabs: EditTab[];
-	title: string;
+	title?: string;
 	tabToggle: number;
 	setTabToggle: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -51,7 +51,7 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 
 	return (
 		<div className={style['tab-container']}>
-			<h2>{title}</h2>
+			{title && <h2>{title}</h2>}
 			<ul className={style['tab-list']}>
 				{tabs.map((tab, index) => (
 					<li

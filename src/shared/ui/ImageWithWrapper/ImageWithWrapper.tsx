@@ -4,7 +4,7 @@ import styles from './ImageWithWrapper.module.css';
 
 interface ImageWithWrapperProps {
 	className?: string;
-	src?: string;
+	src?: string | null;
 	alt?: string;
 }
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Button, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Button } from '@/shared/ui/Button';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
@@ -66,7 +67,7 @@ export const ChooseQuestionsCategories = ({
 				onClick={handleChooseSkill}
 				getDefaultIcon={skillIcon}
 			/>
-			<Button className={styles.button} theme="link" onClick={toggleShowAll}>
+			<Button className={styles.button} variant="link" onClick={toggleShowAll}>
 				{!showAll ? 'Показать все' : 'Скрыть'}
 			</Button>
 		</div>
