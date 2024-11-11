@@ -10,7 +10,7 @@ export const options = {
 				endAngle: 360,
 				radius: '100%',
 				pointer: {
-					show: false,
+					width: 0,
 				},
 				progress: {
 					show: true,
