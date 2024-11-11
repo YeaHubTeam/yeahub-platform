@@ -7,13 +7,12 @@ import styles from './Timer.module.css';
 interface TimerProps {
 	duration: number;
 	setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
-	isTimerStartedKey: string;
 	setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+	isTimerStartedKey: string;
+	timerStartTimeKey: string;
 	isVisible?: boolean;
 	className?: string;
 }
-
-const startTimeKey = 'startTime';
 
 export const Timer = ({
 	duration,
@@ -22,21 +21,22 @@ export const Timer = ({
 	isTimerStartedKey,
 	isVisible,
 	setIsVisible,
+	timerStartTimeKey,
 }: TimerProps) => {
 	const [timeLeft, setTimeLeft] = useState(duration);
 
+	const isTimerStarted = getFromLS(timerStartTimeKey);
+
 	useEffect(() => {
-		if (isVisible && getFromLS(isTimerStartedKey) === null) {
-			setToLS(startTimeKey, Date.now());
+		if (isVisible && !getFromLS(isTimerStartedKey)) {
+			setToLS(timerStartTimeKey, Date.now());
 			setToLS(isTimerStartedKey, true);
 			setIsDisabled(true);
 			setTimeLeft(duration);
 		}
 
-		const initialTime = getFromLS(startTimeKey);
-
-		if (initialTime !== null) {
-			const elapsed = Math.floor((Date.now() - parseFloat(initialTime)) / 1000);
+		if (isTimerStarted !== null) {
+			const elapsed = Math.floor((Date.now() - parseFloat(isTimerStarted)) / 1000);
 			setTimeLeft(Math.max(0, duration - elapsed));
 		}
 
@@ -49,7 +49,7 @@ export const Timer = ({
 		}
 
 		if (timeLeft === 0) {
-			removeFromLS(startTimeKey);
+			removeFromLS(timerStartTimeKey);
 			removeFromLS(isTimerStartedKey);
 			setIsDisabled(false);
 		}
@@ -65,13 +65,9 @@ export const Timer = ({
 		}
 	}, [timeLeft]);
 
-	return (
-		<>
-			{timeLeft > 0 && getFromLS(isTimerStartedKey) ? (
-				<div className={className}>{timeLeft}</div>
-			) : (
-				<div className={styles['timer-plug']}></div>
-			)}
-		</>
+	return timeLeft > 0 && isTimerStarted ? (
+		<div className={className}>{timeLeft}</div>
+	) : (
+		<div className={styles['timer-plug']} />
 	);
 };
