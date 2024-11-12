@@ -16,7 +16,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 124px;
-  padding: 20px 0;
+  padding: 28px 0 24px;
   line-height: 22px;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
@@ -30,7 +30,7 @@ ul {
 .caption h2 {
   margin-bottom: 16px;
   color: var(--text-color-black-landing);
-  line-height: 50.8px;
+  line-height: 123%;
   text-transform: uppercase;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-l);
@@ -72,12 +72,33 @@ ul {
 @media screen and (width <= 1439px) {
   .progress-block {
     position: relative;
+    padding-top: 171px;
+  }
+
+  .caption {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    padding: 0 40px;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .progress-list {
+    grid-template-rows: repeat(2, auto);    
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+}
+
+@media screen and (width <= 992px) {
+  .progress-block {
     flex-direction: column-reverse;
     gap: 0;
     margin-bottom: 80px;
-    padding: 40px;
-    padding-top: 161px;
-    padding-bottom: 28px;
+    padding: 161px 40px 6px;
   }
 
   .left-block {
@@ -114,7 +135,7 @@ ul {
   }
 
   .right-block {
-    padding: 55px 151px 0 119px;
+    padding: 55px 135px 0 134px;
     border-radius: 16px;
   }
 }
@@ -123,7 +144,7 @@ ul {
   .progress-block {
     margin-bottom: 40px;
     padding: 16px;
-    padding-top: 131px;
+    padding-top: 179px;
   }
 
   .left-block {
@@ -142,10 +163,7 @@ ul {
 
   }
 
-  .caption h2 {
-    line-height: 27px;
-    font-size: var(--font-size-h-xs);
-  }
+
 
   .progress-list {
     display: flex;
@@ -166,5 +184,16 @@ ul {
   .right-block {
     padding: 63px 31px 0;
     border-radius: 24px;
+  }
+}
+
+@media screen and (width <= 576px) {
+  .progress-block {
+    padding-top: 131px;
+  }
+
+  .caption h2 {
+    line-height: 27px;
+    font-size: var(--font-size-h-xs);
   }
 }

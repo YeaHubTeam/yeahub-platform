@@ -6,14 +6,14 @@
 .footer {
   padding: 64px 112px 18px;
   border-radius: 20px 20px 0 0;
-  background: #18003E;
+  background: var(--background-footer);
   color: var(--text-color-white);
 }
 
 .container {
   margin: 0 auto;  
   width: 100%;
-  max-width: 1216px;
+  max-width: var(--container-width);
 }
 
 .container-logo {
@@ -125,7 +125,7 @@
   }
 
   .container {
-    max-width: 711px;
+    max-width: var(--container-width-lg);
   }
 
   .about {
@@ -137,9 +137,19 @@
   }
 }
 
+@media (width <= 992px) {
+  .container {
+    max-width: var(--container-width-tablet);
+  }
+}
+
 @media (width <= 767px) {
   .footer {
     padding: 19px 16px 18px;
+  }
+
+  .container {
+    max-width: var(--container-width-sm);
   }
 
   .container-social {

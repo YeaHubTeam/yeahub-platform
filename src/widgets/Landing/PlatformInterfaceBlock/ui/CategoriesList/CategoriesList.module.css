@@ -68,7 +68,7 @@
   }
 }
 
-@media screen and (width <= 767px) {
+@media screen and (width <= 576px) {
   .container {
     gap: 3.77px;
     width: 137.74px;

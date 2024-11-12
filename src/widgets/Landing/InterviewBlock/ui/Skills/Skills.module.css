@@ -35,6 +35,13 @@
 @media screen and (width <= 1439px) {
   .container {
     top: 22.2px;
+    left: -89px;
+  }
+}
+
+@media screen and (width <=992px) {
+  .container {
+    top: 22.2px;
     left: 0;
   }
 }

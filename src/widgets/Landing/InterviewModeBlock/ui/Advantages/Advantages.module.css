@@ -70,6 +70,12 @@
 }
 
 @media screen and (width <= 1439px) {
+  .decoration {
+    display: none;
+  }
+}
+
+@media screen and (width <= 992px) {
   .advantages p {
     position: absolute;
     bottom: 0;
@@ -95,12 +101,18 @@
   .advantages-list li::before {
     position: absolute;
     top: -80px;
-    left: calc(50% - 1px);
+    left: calc(50% - 9px);
     z-index: -1;
     width: 2px;
     height: 80px;
     background-color: var(--border-right-color);
     content: '';
+  }
+
+  .advantages-list li:last-child::before {
+    top: -119px;
+    left: calc(50% - 29px);
+    height: 119px;
   }
 
   .advantages-list li:last-child {

@@ -6,7 +6,7 @@
   margin-top: 4px;
   margin-bottom: 16px;
   text-align: left;
-  line-height: 75px;
+  line-height: 118%;
   text-transform: uppercase;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xxl);
@@ -36,7 +36,7 @@
 }
 
 .left-block {
-  margin-top: 20px;
+  margin-top: 15px;
   width: auto;
 }
 
@@ -91,6 +91,18 @@
 }
 
 @media screen and (width <= 1439px) {
+  .article {
+    line-height: 51px;
+    font-size: var(--font-size-h-l);
+  }
+  
+  .wallpaper {
+    width: 445px;
+  }
+
+}
+
+@media screen and (width <= 992px) {
   .interview-block {
     margin-bottom: 57px;
   }
@@ -119,15 +131,13 @@
   .article {
     margin-bottom: 8px;
     text-align: center;
-    line-height: 51px;
-    font-size: var(--font-size-h-l);
   }
 
   .article .enter {
     display: inline-block;
   }
 
-  .left-block p {
+  .article-description {
     width: 100%;
     text-align: center;
     line-height: 20px;
@@ -171,19 +181,9 @@
     gap: 35px;
   }
 
-  .article {
-    line-height: 27px;
-    font-size: var(--font-size-h-xs);
-  }
 
   .left-block {
     padding: 0;
-  }
-
-
-  .left-block p {
-    line-height: 19px;
-    font-size: var(--font-size-p-s);
   }
 
   .right-block {
@@ -199,5 +199,21 @@
     padding: 0;
     width: 170px;
     font-size: var(--font-size-p-l);
+  }
+}
+
+@media screen and (width <= 576px) {
+  .container {
+    gap: 42px;
+  }
+
+  .article {
+    line-height: 27px;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .article-description{
+    line-height: 19px;
+    font-size: var(--font-size-p-s);
   }
 }

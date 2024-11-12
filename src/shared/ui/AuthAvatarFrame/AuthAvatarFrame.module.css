@@ -7,3 +7,10 @@
   height: 40px;
   border-radius: 10px;
 }
+
+.border {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--background-primary);
+  border-radius: 10px;
+}

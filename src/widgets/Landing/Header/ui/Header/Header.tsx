@@ -4,6 +4,7 @@ import { AppLogo } from '@/shared/ui/AppLogo';
 import { useProfileQuery } from '@/entities/auth';
 
 import { AuthorizedBlock } from '../AuthorizedBlock/AuthorizedBlock';
+import { HeaderSkeleton } from '../HeaderSkeleton/HeaderSkeleton';
 import { UnauthorizedBlock } from '../UnauthorizedBlock/UnauthorizedBlock';
 
 import styles from './Header.module.css';
@@ -13,19 +14,23 @@ interface HeaderProps {
 }
 
 export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
-	const { data: profile } = useProfileQuery();
+	const { data: profile, isLoading } = useProfileQuery();
 
 	return (
 		<header className={styles.header}>
 			<div className={styles.container}>
 				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 			</div>
-			{!hasOnlyLogo &&
+			{isLoading ? (
+				<HeaderSkeleton />
+			) : (
+				!hasOnlyLogo &&
 				(profile?.firstName ? (
 					<AuthorizedBlock firstName={profile.firstName} avatarURL={profile.avatarUrl} />
 				) : (
 					<UnauthorizedBlock />
-				))}
+				))
+			)}
 		</header>
 	);
 };

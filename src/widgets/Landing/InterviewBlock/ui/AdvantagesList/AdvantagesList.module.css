@@ -10,10 +10,12 @@
   list-style: none;
 }
 
-.advantages-list li {
+.advantage-card {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 42px;
   padding: 24px;
   min-height: 212px;
   border-radius: 12px;
@@ -21,47 +23,61 @@
   line-height: 21.86px;
 }
 
-.advantages-list li:nth-child(2) {
+.advantage-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.advantage-card:nth-child(2) {
   margin-top: 40px;
   background-color: var(--background-light-chip);
 }
 
-.advantages-list div:has(svg) {
+.advantage-card div:has(svg) {
   width: 43px;
   height: 45px;
 }
 
-.advantages-list svg {
+.advantage-card svg {
   width: 100%;
   height: 100%;
 }
 
-.advantages-list h3 {
-  margin-top: 40px;
-  margin-bottom: 8px;
+.advantage-card-body h3 {
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
 
-.advantages-list p {
+.advantage-card-body p {
   color: var(--color-black-700);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 }
 
 @media screen and (width <= 1439px) {
-  .advantages-list li {
+  .advantage-card {
+    gap: 30px;
     padding: 16px;
   }
        
-  .advantages-list h3 {
-    margin-top: 24px;
+  .advantage-card-body h3 {
     font-size: var(--font-size-p-l);
   }
 
-  .advantages-list p {
+  .advantage-card-body p {
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-s);
+  }
+}
+
+@media screen and (width <= 992px) {
+  .advantage-card {
+    gap: 26px;
+  }
+
+  .advantage-card-body p {
+    line-height: 110%;
   }
 }
 
@@ -78,29 +94,39 @@
     gap: 11px;
   }
 
-  .advantages-list li {
+  .advantage-card {
     padding: 16px;
     min-height: 164px;
     border-radius: 12px;
     line-height: 19px;
   }
 
-  .advantages-list li:nth-child(2) {
+  .advantage-card:nth-child(2) {
     margin-top: 0;
   }
 
-  .advantages-list div:has(svg) {
+  .advantage-card div:has(svg) {
     width: 43px;
     height: 45px;
   }
 
-  .advantages-list h3 {
-    margin-top: 18px;
+  .advantage-card-body h3 {
     font-weight: var(--font-weight-500);
     font-size: var(--font-size-p-m);
   }
 
-  .advantages-list p {
+  .advantage-card-body p {
     font-size: var(--font-size-p-s);
   }
+}
+
+@media screen and (width <= 576px) {
+  .advantage-card {
+    gap: 19px;
+  }
+
+  .advantage-card-body p {
+    line-height: 134%;
+  }
+
 }

@@ -8,7 +8,12 @@ interface AvatarProps {
 }
 
 export const AuthAvatarFrame = ({ link }: AvatarProps) => {
-	if (!link) return <AvatarWithoutPhoto />;
+	if (!link)
+		return (
+			<div className={styles.border}>
+				<AvatarWithoutPhoto />
+			</div>
+		);
 	return (
 		<div className={styles.wrapper}>
 			<img src={link} className={styles.avatar} alt="User Avatar" />

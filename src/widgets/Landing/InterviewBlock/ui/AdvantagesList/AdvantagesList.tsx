@@ -13,20 +13,26 @@ export const AdvantagesList = () => {
 	return (
 		<div className={styles.advantages}>
 			<ul className={styles['advantages-list']}>
-				<li>
+				<li className={styles['advantage-card']}>
 					<KnowledgebaseIcon />
-					<h3>{t(Landing.KNOWLEDGE_BASE_TITLE)}</h3>
-					<p>{t(Landing.KNOWLEDGE_BASE_DESCRIPTION)}</p>
+					<div className={styles['advantage-card-body']}>
+						<h3>{t(Landing.KNOWLEDGE_BASE_TITLE)}</h3>
+						<p>{t(Landing.KNOWLEDGE_BASE_DESCRIPTION)}</p>
+					</div>
 				</li>
-				<li>
+				<li className={styles['advantage-card']}>
 					<ProgressIcon />
-					<h3>{t(Landing.STUDYING_PROGRESS_TITLE)}</h3>
-					<p>{t(Landing.STUDYING_PROGRESS_DESCRIPTION)}</p>
+					<div className={styles['advantage-card-body']}>
+						<h3>{t(Landing.STUDYING_PROGRESS_TITLE)}</h3>
+						<p>{t(Landing.STUDYING_PROGRESS_DESCRIPTION)}</p>
+					</div>
 				</li>
-				<li>
+				<li className={styles['advantage-card']}>
 					<TrainingIcon />
-					<h3>{t(Landing.CONVENIENCE_TRAINER_TITLE)}</h3>
-					<p>{t(Landing.CONVENIENCE_TRAINER_DESCRIPTION)}</p>
+					<div className={styles['advantage-card-body']}>
+						<h3>{t(Landing.CONVENIENCE_TRAINER_TITLE)}</h3>
+						<p>{t(Landing.CONVENIENCE_TRAINER_DESCRIPTION)}</p>
+					</div>
 				</li>
 			</ul>
 		</div>

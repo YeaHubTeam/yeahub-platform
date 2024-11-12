@@ -116,17 +116,22 @@ ul {
   font-size: var(--font-size-p-s);
 }
 
-.img-container {
+.image {
   margin-bottom: 14px;
   width: 100%;
   height: 189px;
   border-radius: 24px;
-  background: url('/src/shared/assets/images/landing/question-interface-bg-big.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  object-fit: contain;
 }
 
 @media screen and (width <= 1439px) {
+  .interface-caption {
+    font-size: var(--font-size-p-m);
+  }
+
+}
+
+@media screen and (width <= 992px) {
   .container {
     display: flex;
     flex-direction: column;
@@ -147,6 +152,10 @@ ul {
     box-shadow: var(--main-shadow);
   }
 
+  .interface-caption {
+    font-size: var(--font-size-h-xs);
+  }
+
   .progress-bar {
     margin-bottom: 12px;
   }
@@ -163,15 +172,12 @@ ul {
     margin-bottom: 0;
   }
 
-  .title {
-    margin-bottom: 16px;
-    padding: 0;
-    line-height: 23px;
-    font-size: var(--font-size-h-xs);
-  }
-
   .interface-header {
     margin-bottom: 0;
+  }
+
+  .title {
+    font-size: var(--font-size-large-34);
   }
 
   .interface {
@@ -234,11 +240,20 @@ ul {
     line-height: 9px;
   }
 
-  .img-container {
+
+}
+
+@media screen and (width <= 576px) {
+  .title {
+    margin-bottom: 16px;
+    padding: 0;
+    line-height: 23px;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .image {
     height: 87px;
     border-radius: 11.12px;
-    background: url('/src/shared/assets/images/landing/interview-example-mobile.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
   }
+
 }

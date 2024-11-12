@@ -145,3 +145,13 @@
     border-radius: 2.09px;
   }
 }
+
+@media screen and (width <= 576px) {
+  .question-item {
+    grid-template-columns: 1fr;
+  }
+
+  .question-item img {
+    display: none;
+  }
+}

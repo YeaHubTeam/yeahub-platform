@@ -1,3 +1,4 @@
+import QuestionInterfaceImg from '@/shared/assets/images/landing/question-interface-bg.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -16,7 +17,14 @@ export const QuestionInterface = () => {
 					{t(Landing.PLATFORM_INTERFACE_DESCRIPTION)} <br />
 				</p>
 			</div>
-			<div className={styles['img-container']}></div>
+			<img
+				className={styles.img}
+				src={QuestionInterfaceImg}
+				alt="question interface"
+				loading="lazy"
+				width={653}
+				height={332}
+			/>
 		</div>
 	);
 };

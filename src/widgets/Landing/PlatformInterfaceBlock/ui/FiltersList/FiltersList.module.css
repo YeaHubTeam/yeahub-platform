@@ -25,7 +25,7 @@
 .sub-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 5.69px;
+  gap: 2.8px;
   width: fit-content;
   line-height: 16px;
   font-weight: var(--font-weight-500);
@@ -48,7 +48,6 @@ li.active {
 }
 
 .filters-list li:last-child .sub-list {
-  width: 178.82px;
   text-wrap: nowrap;
 }
 
@@ -67,6 +66,13 @@ li.active {
     max-width: 120px;
   }
 }
+
+@media screen and (width <= 992px) {
+  .filters-list {
+    max-width: 240px;
+  }
+}
+
 
 @media screen and (width <= 767px) {
   .filters-list {
@@ -94,11 +100,14 @@ li.active {
     max-width: 81px;
   }
 
-  .filters-list li:last-child .sub-list {
-    width: 122px;
-  }
-
   li.active {
     border-color: var(--border-image-hover);
   }
+}
+
+@media screen and (width <= 576px) {
+  .filters-list li:last-child .sub-list {
+    width: 100%;
+  }
+
 }

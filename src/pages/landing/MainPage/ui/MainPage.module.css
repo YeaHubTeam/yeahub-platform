@@ -7,11 +7,23 @@
 
 @media screen and (width <= 1439px) {
   .container {
+    max-width: var(--container-width-lg);
+  }
+}
+
+@media screen and (width <= 992px) {
+  .container {
     max-width: var(--container-width-tablet);
   }
 }
 
 @media screen and (width <= 767px) {
+  .container {
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (width <= 576px) {
   .container {
     max-width: var(--container-width-mobile);
   }
