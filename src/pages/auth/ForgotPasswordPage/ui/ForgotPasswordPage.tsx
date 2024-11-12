@@ -10,8 +10,11 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal } from '@/shared/ui/Modal';
 import { Timer } from '@/shared/ui/Timer/Timer';
+import { toast } from '@/shared/ui/Toast';
 
 import { RegistrationLabel } from '@/entities/auth';
+
+import { useSendEmailRecoveryPasswordMutation } from '@/features/authentication/forgotPassword';
 
 import { ForgotPassword as ForgotPasswordForm } from '@/widgets/authentication/forgotPassword';
 
@@ -20,19 +23,36 @@ import styles from './ForgotPasswordPage.module.css';
 const isTimerStartedKey = 'isTimerStarted';
 
 const ForgotPassword = () => {
+	const [sendEmailRecoveryPassword] = useSendEmailRecoveryPasswordMutation();
 	const [isOpen, setIsOpen] = useState(getFromLS(isTimerStartedKey) === 'true');
-	const [isDisabled, setIsDisabled] = useState(false);
-	const [isTimerStarted, setIsTimerStarted] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(getFromLS(isTimerStartedKey) === 'true');
+	const [isTimerStarted, setIsTimerStarted] = useState(getFromLS(isTimerStartedKey) === 'true');
+	const [email, setEmail] = useState('');
 
 	const { t } = useI18nHelpers(i18Namespace.auth);
 
-	const handleSendAgain = () => {
+	const handleSendAgain = async () => {
+		try {
+			setIsTimerStarted(true);
+			setIsDisabled(true);
+			sendEmailRecoveryPassword({ email });
+		} catch (error) {
+			toast.error(t(Auth.FORGOT_PASSWORD_ENTERED_INCORRECT_EMAIL));
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
+	};
+
+	const onSubmit = (email: string) => {
+		setEmail(email);
+		setIsOpen(true);
 		setIsTimerStarted(true);
 	};
 
-	const onSubmit = () => {
-		setIsOpen(true);
-		setIsTimerStarted(true);
+	const handleModalClose = () => {
+		if (!isTimerStarted) {
+			setIsOpen(false);
+		}
 	};
 
 	return (
@@ -49,16 +69,12 @@ const ForgotPassword = () => {
 					</div>
 				</Flex>
 			</div>
-			<Modal
-				title={t(Auth.FORGOT_PASSWORD_MODAL_TITLE)}
-				isOpen={isOpen}
-				onClose={() => setIsOpen(false)}
-			>
+			<Modal title={t(Auth.FORGOT_PASSWORD_MODAL_TITLE)} isOpen={isOpen} onClose={handleModalClose}>
 				<Flex justify="center" align="center" direction="column" className={styles['modal']}>
 					<img src={EmailModal} alt="email icon" />
 					<p className={styles['modal-subtitle']}>{t(Auth.FORGOT_PASSWORD_MODAL_SUBTITLE)}</p>
 					<Timer
-						duration={10}
+						duration={60}
 						setIsDisabled={setIsDisabled}
 						isTimerStartedKey={isTimerStartedKey}
 						isVisible={isTimerStarted}

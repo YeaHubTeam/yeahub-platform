@@ -160,6 +160,12 @@
     "register": "Регистрация"
   },
   "toast": {
+    "auth": {
+      "resetPassword": {
+        "success": "Пароль успешно изменен",
+        "failed": "Ошибка при изменении пароля"
+      }
+    },
     "questions": {
       "learned": {
         "success": "Вопрос полностью изучен",
