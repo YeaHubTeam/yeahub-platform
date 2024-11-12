@@ -137,6 +137,12 @@
     "register": "Register"
   },
   "toast": {
+    "auth": {
+      "resetPassword": {
+        "success": "The password has been successfully changed",
+        "failed": "Error when changing the password"
+      }
+    },
     "questions": {
       "learned": {
         "success": "he issue has been fully studied",

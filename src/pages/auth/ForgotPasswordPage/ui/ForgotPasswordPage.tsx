@@ -18,19 +18,27 @@ import { ForgotPassword } from '@/widgets/authentication/forgotPassword';
 import styles from './ForgotPasswordPage.module.css';
 
 const ForgotPasswordPage = () => {
-	const [isOpen, setIsOpen] = useState(!!getFromLS(IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY));
-	const [isTimerStarted, setIsTimerStarted] = useState(false);
+	const [isOpen, setIsOpen] = useState(!!getFromLS(IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY) === true);
+	const [isTimerStarted, setIsTimerStarted] = useState(
+		!!getFromLS(IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY) === true,
+	);
+	const [email, setEmail] = useState('');
 
 	const { t } = useI18nHelpers(i18Namespace.auth);
 
 	const onModalClose = () => {
-		setIsOpen(false);
+		if (!isTimerStarted) {
+			setIsOpen(false);
+		}
 	};
 
-	const onForgotPasswordSubmit = () => {
+	const onForgotPasswordSubmit = (email: string) => {
+		setEmail(email);
 		setIsOpen(true);
 		setIsTimerStarted(true);
 	};
+
+	console.log('Email', email);
 
 	return (
 		<>
@@ -47,6 +55,7 @@ const ForgotPasswordPage = () => {
 				</Flex>
 			</Flex>
 			<EmailSendModal
+				email={email}
 				isOpen={isOpen}
 				onModalClose={onModalClose}
 				isTimerStarted={isTimerStarted}

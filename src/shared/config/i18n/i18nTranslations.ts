@@ -124,6 +124,8 @@ export enum Translation {
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
 	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
+	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
+	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 
 	ERROR404_IMAGE_ALT = 'error.alt',
 
@@ -242,6 +244,7 @@ export enum Auth {
 	FORGOT_PASSWORD_MODAL_TITLE = 'forgotPassword.modal.title',
 	FORGOT_PASSWORD_MODAL_SUBTITLE = 'forgotPassword.modal.subtitle',
 	FORGOT_PASSWORD_MODAL_BUTTON = 'forgotPassword.modal.button',
+	FORGOT_PASSWORD_ENTERED_INCORRECT_EMAIL = 'forgotPassword.incorrectEmail',
 	PASSWORD_RECOVERY_TITLE = 'passwordRecovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'passwordRecovery.subtitle',
 	PASSWORD_RECOVERY_ENTER_PASSWORD = 'passwordRecovery.enterPassword',
