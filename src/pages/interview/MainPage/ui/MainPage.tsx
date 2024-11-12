@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -14,6 +14,31 @@ import { EmailVerify } from '@/entities/profile';
 
 import styles from './MainPage.module.css';
 
+const getPercentProfileFullness = (user: FullProfile) => {
+	let filledCount = 0;
+
+	const fieldsToCheck = [
+		user.avatarUrl,
+		user.firstName,
+		user.lastName,
+		user.phone,
+		user.email,
+		user.city,
+		user.profiles[0].description,
+		user.profiles[0].specializationId !== 0 ? user.profiles[0].specializationId.toString() : null,
+		user.profiles[0].profileSkills.length > 0 ? user.profiles[0].profileSkills : null,
+	];
+
+	filledCount += fieldsToCheck.filter((field) => field && field.length > 0).length;
+
+	const socialLength = user.profiles[0].socialNetwork?.length || 0;
+	filledCount += socialLength > 2 ? 2 : socialLength;
+
+	const allFileldsCount = fieldsToCheck.length + 2;
+
+	return Math.round((filledCount / allFileldsCount) * 100);
+};
+
 const MainPage = () => {
 	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
 
@@ -22,15 +47,6 @@ const MainPage = () => {
 	const navigate = useNavigate();
 	const { t } = useI18nHelpers();
 	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
-
-	const getPercentProfileFullness = useCallback((profile: FullProfile) => {
-		const allFileldsCount = Object.keys(profile).length - 1;
-		const fullnessCount =
-			Object.values(profile).filter((item) => item && item.length > 0).length - 1;
-
-		const percentFullness = Math.round((fullnessCount / allFileldsCount) * 100);
-		return percentFullness;
-	}, []);
 
 	const redirectToProfileEditing = () => {
 		navigate(`${ROUTES.profile.edit.page}#personal-information`);
@@ -41,7 +57,7 @@ const MainPage = () => {
 			const percentFullness = getPercentProfileFullness(profile);
 			setPercentProfileFullness(percentFullness);
 		}
-	}, [getPercentProfileFullness, profile]);
+	}, [profile]);
 
 	const isIncompleteProfile = percentProfileFullness < 100;
 
