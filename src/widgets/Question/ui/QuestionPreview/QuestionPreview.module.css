@@ -13,13 +13,28 @@
 
 .popup {
   position: relative;
-  top: 30px;
+  top: 8px;
   left: 15px;
+  padding: 6px;
+  border-radius: 20px;
 }
 
 .button {
   justify-content: flex-start;
+  align-items: center;
+  padding: 6px 20px;
+
+
+  & svg {
+    aspect-ratio: 1;
+    width: 24px
+  }
+
+  &:hover {
+    color: var(--color-purple-700);
+  }
 }
+
 
 .link {
   color: inherit;

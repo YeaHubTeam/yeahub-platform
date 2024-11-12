@@ -508,3 +508,8 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 }
+export enum ActionsButton {
+	MORE = 'buttons.more',
+	LEARN = 'buttons.learn',
+	REPEAT = 'buttons.repeat',
+}

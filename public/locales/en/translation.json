@@ -17,6 +17,13 @@
     "myProfile": "My profile",
     "logout": "Sign out"
   },
+  "buttons": {
+    "fillProfile": "Fill Profile",
+    "edit": "Edit",
+    "more": "More",
+    "repeat": "Repeat",
+    "learn": "Learn"
+  },
   "tabs": {
     "main": "Home",
     "platform": "Platform",
