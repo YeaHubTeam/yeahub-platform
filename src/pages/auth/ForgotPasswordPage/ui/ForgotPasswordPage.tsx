@@ -22,6 +22,7 @@ const ForgotPasswordPage = () => {
 	const [isTimerStarted, setIsTimerStarted] = useState(
 		!!getFromLS(IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY) === true,
 	);
+
 	const [email, setEmail] = useState('');
 
 	const { t } = useI18nHelpers(i18Namespace.auth);
