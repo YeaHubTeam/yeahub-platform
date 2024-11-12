@@ -1,0 +1,1 @@
+export { ProfileIcon } from './ProfileIcon';
