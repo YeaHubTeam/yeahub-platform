@@ -10,9 +10,15 @@ interface LearnQuestionProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	isDisabled: boolean;
 }
 
-export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: LearnQuestionProps) => {
+export const LearnQuestionButton = ({
+	profileId,
+	questionId,
+	isSmallIcon,
+	isDisabled,
+}: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
 
 	const handleLearnQuestion = () => {
@@ -31,7 +37,7 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 			preffix={<Icon icon="thumbsUp" size={iconSize} />}
 			variant="tertiary"
 			onClick={handleLearnQuestion}
-			disabled={isLoading}
+			disabled={isLoading || isDisabled}
 		>
 			Уже знаю
 		</Button>
