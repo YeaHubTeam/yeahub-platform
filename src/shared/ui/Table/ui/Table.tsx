@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { Checkbox } from 'yeahub-ui-kit';
 
+import { SelectedAdminEntities, SelectedAdminEntity } from '@/shared/types/types';
+
 import styles from './Table.module.css';
 
 interface TableProps<T> {
@@ -20,8 +22,8 @@ interface TableProps<T> {
 	 * Render function for displaying the table actions in the last column
 	 */
 	renderActions?: (item: T) => ReactNode;
-	selectedItems?: number[];
-	onSelectItems?: (ids: number[]) => void;
+	selectedItems?: SelectedAdminEntities;
+	onSelectItems?: (ids: SelectedAdminEntities) => void;
 }
 
 /**
@@ -32,7 +34,7 @@ interface TableProps<T> {
  * @param renderActions
  * @constructor
  */
-export const Table = <T extends { id: number }>({
+export const Table = <T extends SelectedAdminEntity>({
 	items,
 	renderTableHeader,
 	renderTableBody,
@@ -43,18 +45,18 @@ export const Table = <T extends { id: number }>({
 	const hasActions = !!renderActions;
 
 	const isAllSelected = selectedItems?.length === items.length;
+	const selectedItemsIds = selectedItems?.map(({ id }) => id) || [];
 
 	const onSelectAllItems = () => {
-		const itemsIds = items.map(({ id }) => id);
-		onSelectItems?.(isAllSelected ? [] : itemsIds);
+		onSelectItems?.(isAllSelected ? [] : items.map((item) => ({ id: item.id, title: item.title })));
 	};
 
-	const onSelectItem = (id: number) => () => {
+	const onSelectItem = (item: SelectedAdminEntity) => () => {
 		if (selectedItems) {
-			const isSelected = selectedItems?.includes(id);
-			const itemsIds: number[] = isSelected
-				? selectedItems?.filter((selectedItem) => selectedItem !== id)
-				: [...selectedItems, id];
+			const isSelected = selectedItemsIds?.includes(item.id);
+			const itemsIds: SelectedAdminEntities = isSelected
+				? selectedItems?.filter((selectedItem) => selectedItem.id !== item.id)
+				: [...selectedItems, item];
 			onSelectItems?.(itemsIds);
 		}
 	};
@@ -75,8 +77,8 @@ export const Table = <T extends { id: number }>({
 					<tr key={item.id} className={styles.row}>
 						<td className={styles.cell}>
 							<Checkbox
-								checked={selectedItems?.includes(item.id)}
-								onChange={onSelectItem(item.id)}
+								checked={selectedItemsIds?.includes(item.id)}
+								onChange={onSelectItem({ id: item.id, title: item.title })}
 							/>
 						</td>
 						{renderTableBody(item)}

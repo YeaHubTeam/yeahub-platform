@@ -1,5 +1,7 @@
+import { SelectedAdminEntities } from '@/shared/types/types';
+
 export interface QuestionsTablePageState {
 	page: number;
-	selectedQuestions?: number[];
+	selectedQuestions?: SelectedAdminEntities;
 	search?: string;
 }
