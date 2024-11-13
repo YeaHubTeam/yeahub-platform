@@ -24,10 +24,9 @@
   align-items: center;
   padding: 6px 20px;
 
-
   & svg {
-    aspect-ratio: 1;
-    width: 24px
+    width: 24px;
+    height: 24px;
   }
 
   &:hover {
