@@ -1,3 +1,4 @@
+export { useSendEmailRecoveryPasswordMutation } from '@/features/authentication/forgotPassword/api/forgotPasswordApi';
 export { ForgotPasswordForm } from './ui/ForgotPasswordForm/ForgotPasswordForm';
 export { EmailSendModal } from './ui/EmailSendModal/EmailSendModal';
 export {
