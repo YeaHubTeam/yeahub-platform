@@ -50,9 +50,9 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 			<div className={styles['card-header']}>
 				<h2 className={styles['card-name']}>{`${firstName} ${lastName}`}</h2>
 				{!!birthday && (
-					<p
-						className={styles['card-age']}
-					>{`${differenceInYears(new Date(), new Date(birthday))} лет`}</p>
+					<p className={styles['card-age']}>
+						{`${differenceInYears(new Date(), new Date(birthday))} лет`}
+					</p>
 				)}
 			</div>
 			{!!profileSpecialization?.title && (
