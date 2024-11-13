@@ -2,40 +2,6 @@
   gap: 19px;
 }
 
-.card {
-  max-width: 740px;
-}
-
-.card-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.card-title {
-  margin: 0;
-  color: var(--text-color-bright);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
-}
-
-.card-text {
-  margin: 0;
-  color: var(--text-color-lighter);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-s);
-}
-
-.button {
-  align-self: end;
-}
-
 .title {
   margin: 0;
   color: var(--text-color-bright);
