@@ -1,5 +1,9 @@
 .card {
-  max-width: 692px;
+  gap: 7px;
+  
+  h3 {
+    font-weight: var(--font-weight-600);
+  }
 }
 
 .card-content {
@@ -9,6 +13,7 @@
 }
 
 .card-text {
+  max-width: 644px;
   color: var(--text-color-lighter);
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-s);
