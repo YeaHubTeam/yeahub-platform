@@ -21,10 +21,10 @@ const deleteQuestionApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_QUESTIONS_DELETE_SUCCESS));
+					toast.success(i18n.t(Translation.TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS));
 					typedExtra.navigate(ROUTES.admin.questions.page);
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_QUESTIONS_DELETE_FAILED));
+					toast.error(i18n.t(Translation.TOAST_QUESTIONS_DELETE_SINGLE_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
