@@ -4,9 +4,9 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Button } from '@/shared/ui/Button';
 
 import styles from './RegistrationLabel.module.css';
-import { Button } from '@/shared/ui/Button';
 
 export const RegistrationLabel = () => {
 	const navigate = useNavigate();
