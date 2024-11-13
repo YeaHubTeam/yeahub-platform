@@ -8,7 +8,7 @@ import { passwordRules } from '@/shared/constants/regexp';
 YupPassword(yup);
 
 export const changePasswordSchema = yup.object().shape({
-	newPassword: yup
+	password: yup
 		.string()
 		.min(8, i18n.t(Translation.VALIDATION_PASSWORD_MIN, { count: 8 }))
 		.matches(passwordRules, {
@@ -17,8 +17,8 @@ export const changePasswordSchema = yup.object().shape({
 			),
 		})
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	confirmPassword: yup
+	passwordConfirm: yup
 		.string()
-		.oneOf([yup.ref('newPassword')], i18n.t(Translation.VALIDATION_PASSWORD_CONFIRMATION))
+		.oneOf([yup.ref('password')], i18n.t(Translation.VALIDATION_PASSWORD_CONFIRMATION))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });

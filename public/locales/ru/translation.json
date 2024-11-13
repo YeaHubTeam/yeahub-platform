@@ -208,6 +208,12 @@
       "sendVerificationEmail": {
         "failed": "Произошла ошибка при отправке e-mail для подтверждения"
       }
+    },
+    "password": {
+      "change": {
+        "success": "Пароль успешно изменен",
+        "failed": "Не удалось изменить пароль"
+      }
     }
   },
   "error": {
