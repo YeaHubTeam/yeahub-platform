@@ -39,8 +39,6 @@ const ForgotPasswordPage = () => {
 		setIsTimerStarted(true);
 	};
 
-	console.log('Email', email);
-
 	return (
 		<>
 			<Flex className={styles['wrapper']} justify="center" align="start">
