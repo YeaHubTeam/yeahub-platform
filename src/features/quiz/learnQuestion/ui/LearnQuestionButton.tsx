@@ -1,5 +1,8 @@
 import { Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { ActionsButton } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
@@ -14,7 +17,7 @@ interface LearnQuestionProps {
 
 export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
-
+	const { t } = useI18nHelpers(i18Namespace.translation);
 	const handleLearnQuestion = () => {
 		return learnQuestion({
 			profileId: String(profileId),
@@ -28,12 +31,12 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 	return (
 		<Button
 			className={styles.btn}
-			preffix={<Icon icon="thumbsUp" size={iconSize} />}
+			preffix={<Icon icon="student" size={iconSize} />}
 			variant="tertiary"
 			onClick={handleLearnQuestion}
 			disabled={isLoading}
 		>
-			Уже знаю
+			{t(ActionsButton.LEARN)}
 		</Button>
 	);
 };
