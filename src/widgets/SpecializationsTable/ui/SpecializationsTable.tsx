@@ -10,6 +10,7 @@ import {
 } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -20,8 +21,8 @@ import { DeleteSpecializationButton } from '@/features/specialization/deleteSpec
 
 interface SpecializationsTableProps {
 	specializations?: Specialization[];
-	selectedSpecializations?: number[];
-	onSelectSpecializations?: (ids: number[]) => void;
+	selectedSpecializations?: SelectedAdminEntities;
+	onSelectSpecializations?: (ids: SelectedAdminEntities) => void;
 }
 
 export const SpecializationsTable = ({
