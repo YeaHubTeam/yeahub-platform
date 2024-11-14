@@ -58,7 +58,7 @@ export const Modal = ({
 			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
-			<div className={styles.modal}>
+			<div className={styles.modal} ref={modalRef}>
 				<Icon
 					icon="xCircle"
 					type="button"
@@ -74,12 +74,12 @@ export const Modal = ({
 				{isButtons && (
 					<div className={styles.buttons}>
 						{buttonPrimaryText && (
-							<Button variant="primary" onClick={buttonPrimaryClick}>
+							<Button variant="primary" size="L" onClick={buttonPrimaryClick}>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
-							<Button variant="outline" onClick={buttonOutlineClick}>
+							<Button variant="outline" size="L" onClick={buttonOutlineClick}>
 								{buttonOutlineText}
 							</Button>
 						)}
