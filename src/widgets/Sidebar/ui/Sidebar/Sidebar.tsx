@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { A11y } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { Button } from '@/shared/ui/Button';
 
 import { MenuItem } from '../../model/types/sidebar';
 import { SidebarMenuList } from '../SidebarMenuList/SidebarMenuList';
@@ -27,7 +29,8 @@ interface SidebarProps {
 
 export const Sidebar = ({ menuItems }: SidebarProps) => {
 	const { isMobile } = useScreenSize();
-	const { t } = useI18nHelpers(i18Namespace.a11y);
+	const { t: tA11y } = useI18nHelpers(i18Namespace.a11y);
+	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -51,7 +54,7 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 					})}
 					onClick={handleToggleSidebar}
 					data-testid="Sidebar_CloseButton"
-					aria-label={t(!isOpenNavSidebar ? A11y.CLOSE_SIDEBAR : A11y.OPEN_SIDEBAR)}
+					aria-label={tA11y(!isOpenNavSidebar ? A11y.CLOSE_SIDEBAR : A11y.OPEN_SIDEBAR)}
 				>
 					<LeftChevron className={styles.arrow} />
 				</button>
@@ -59,6 +62,15 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 			<div className={styles.menu}>
 				<SidebarMenuList fullWidth={isOpenNavSidebar} menuItems={menuItems} />
 			</div>
+			<Button
+				className={classNames(styles['support-button'], {
+					[styles['support-button-hide']]: isOpenNavSidebar,
+				})}
+				size="L"
+				onClick={() => window.open('https://t.me/yeahub_support', '_blank')}
+			>
+				{tTranslation(Translation.SUPPORT)}
+			</Button>
 		</aside>
 	);
 };
