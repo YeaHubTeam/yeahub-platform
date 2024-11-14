@@ -131,6 +131,8 @@ export enum Translation {
 
 	EMAIL_VERIFY = 'emailVerification.emailSettings',
 	CHANGE_PASSWORD = 'changePassword.passwordSettings',
+
+	SUPPORT = 'buttons.support',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
