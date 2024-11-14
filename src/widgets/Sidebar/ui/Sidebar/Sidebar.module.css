@@ -50,6 +50,19 @@
   width: 88px;
 }
 
+.support-button {
+  margin: auto 20px 20px;
+  transition: all 0.4s;
+}
+
+.support-button-hide {
+  min-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+  transition: opacity 0.3s;
+}
+
 @media (width <=768px) {
   .close-icon {
     display: none;

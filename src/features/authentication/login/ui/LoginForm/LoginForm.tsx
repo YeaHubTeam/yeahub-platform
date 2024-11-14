@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -12,6 +14,7 @@ import { LoginFormValues, useLoginMutation } from '@/entities/auth';
 import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
+	const navigate = useNavigate();
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [loginMutation, { isLoading }] = useLoginMutation();
 	const { t } = useI18nHelpers(i18Namespace.auth);
@@ -27,6 +30,10 @@ export const LoginForm = () => {
 
 	const onLogin = async (data: LoginFormValues) => {
 		await loginMutation(data);
+	};
+
+	const handeleForgotPassword = () => {
+		navigate(ROUTES.auth['forgot-password'].page);
 	};
 
 	return (
@@ -68,7 +75,9 @@ export const LoginForm = () => {
 					</FormControl>
 
 					<div className={styles['forgot-password-link']}>
-						<Button variant="link">{t('login.forgotPassword')}</Button>
+						<Button variant="link" onClick={handeleForgotPassword}>
+							{t('login.forgotPassword')}
+						</Button>
 					</div>
 				</div>
 			</div>

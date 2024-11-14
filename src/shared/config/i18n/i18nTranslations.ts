@@ -126,11 +126,15 @@ export enum Translation {
 	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
 	TOAST_CHANGE_PASSWORD_SUCCESS = 'toast.password.change.success',
 	TOAST_CHANGE_PASSWORD_FAILED = 'toast.password.change.failed',
+	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
+	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 
 	ERROR404_IMAGE_ALT = 'error.alt',
 
 	EMAIL_VERIFY = 'emailVerification.emailSettings',
 	CHANGE_PASSWORD = 'changePassword.passwordSettings',
+
+	SUPPORT = 'buttons.support',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
@@ -244,6 +248,7 @@ export enum Auth {
 	FORGOT_PASSWORD_MODAL_TITLE = 'forgotPassword.modal.title',
 	FORGOT_PASSWORD_MODAL_SUBTITLE = 'forgotPassword.modal.subtitle',
 	FORGOT_PASSWORD_MODAL_BUTTON = 'forgotPassword.modal.button',
+	FORGOT_PASSWORD_ENTERED_INCORRECT_EMAIL = 'forgotPassword.incorrectEmail',
 	PASSWORD_RECOVERY_TITLE = 'passwordRecovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'passwordRecovery.subtitle',
 	PASSWORD_RECOVERY_ENTER_PASSWORD = 'passwordRecovery.enterPassword',
@@ -509,4 +514,9 @@ export enum Landing {
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
+}
+export enum ActionsButton {
+	MORE = 'buttons.more',
+	LEARN = 'buttons.learn',
+	REPEAT = 'buttons.repeat',
 }

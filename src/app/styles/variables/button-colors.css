@@ -41,7 +41,7 @@
   --button-border-tertiary-focus: var(--color-black-700);
   --button-text-color-tertiary-focus: var(--color-black-700);
   --button-background-tertiary-focus: var(--color-black-25);
-  --button-text-color-tertiary-disabled: var(--color-black-700);
+  --button-text-color-tertiary-disabled: var(--color-black-200);
   
   /* destructive */
   --button-text-color-destructive: var(--color-white-900);

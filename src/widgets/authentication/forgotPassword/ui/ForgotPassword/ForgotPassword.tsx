@@ -7,7 +7,7 @@ import { forgotPasswordSchema } from '../../model/lib/validation/forgotPasswordS
 import { ForgotPasswordSchema } from '../../model/types/forgotPasswordTypes';
 
 interface ForgotPasswordProps {
-	onSubmit: () => void;
+	onSubmit: (email: string) => void;
 }
 
 export const ForgotPassword = ({ onSubmit }: ForgotPasswordProps) => {

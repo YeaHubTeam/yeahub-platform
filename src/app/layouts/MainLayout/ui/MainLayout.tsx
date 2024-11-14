@@ -1,8 +1,10 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
+import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
+import { ErrorElement } from '@/shared/ui/ErrorElement';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -42,14 +44,16 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 				<Header />
 
-				<main className={styles.main}>
-					<div className={styles.container}>
-						<Suspense fallback={<SkeletonGenerator />}>
-							<Breadcrumbs />
-							<Outlet />
-						</Suspense>
-					</div>
-				</main>
+				<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
+					<main className={styles.main}>
+						<div className={styles.container}>
+							<Suspense fallback={<SkeletonGenerator />}>
+								<Breadcrumbs />
+								<Outlet />
+							</Suspense>
+						</div>
+					</main>
+				</ErrorBoundary>
 			</section>
 		</Suspense>
 	);

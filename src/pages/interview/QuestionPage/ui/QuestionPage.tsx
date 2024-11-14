@@ -69,6 +69,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				<QuestionActions
 					profileId={profile ? profile.profiles[0].id : ''}
 					questionId={questionId ? questionId : ''}
+					checksCount={question?.checksCount}
 				/>
 
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
@@ -89,6 +90,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 						<QuestionActions
 							profileId={profile ? profile.profiles[0].id : ''}
 							questionId={questionId ? questionId : ''}
+							checksCount={question?.checksCount}
 						/>
 					)}
 					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
