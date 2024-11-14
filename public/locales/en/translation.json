@@ -199,6 +199,12 @@
       "sendVerificationEmail": {
         "failed": "Sending verification message failed"
       }
+    },
+    "password": {
+      "change": {
+        "success": "Password changed successfully",
+        "failed": "Failed to change password"
+      }
     }
   },
   "error": {

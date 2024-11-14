@@ -71,7 +71,7 @@ export enum Translation {
 	VALIDATION_REQUIRED = 'validation.required',
 
 	VALIDATION_PASSWORD_MIN = 'validation.password.min',
-	VALIDATION_PASSWORD_CONFIRMATION = 'validation.passwordConfirmation',
+	VALIDATION_PASSWORD_CONFIRMATION = 'validation.passwordConfirmation.oneOf',
 
 	VALIDATION_IMAGE_FILESIZE = 'validation.image.fileSize',
 	VALIDATION_IMAGE_FILETYPE = 'validation.image.fileType',
@@ -124,6 +124,8 @@ export enum Translation {
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
 	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
+	TOAST_CHANGE_PASSWORD_SUCCESS = 'toast.password.change.success',
+	TOAST_CHANGE_PASSWORD_FAILED = 'toast.password.change.failed',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 
