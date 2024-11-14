@@ -1,5 +1,7 @@
 .card {
   padding: 80px;
+  border-radius: 0;
+  background-color: var(--background-light-hover);
 }
 
 .wrapper {
@@ -19,8 +21,9 @@
 
 .title {
   margin: 0;
-  color: var(--text-color-bright);
+  color: var(--text-color-black-landing);
   line-height: 75px;
+  text-transform: uppercase;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xxl);
 }
@@ -28,13 +31,13 @@
 .text {
   margin: 0;
   color: var(--text-color-light);
-  font-weight: var(--font-weight-500);
+  font-weight: var(--font-weight-400);
   font-size: var(--font-size-h-xs);
 }
 	
 .error-msg {
   margin: 0;
   color: var(--text-color-light);
-  font-weight: var(--font-weight-500);
+  font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }

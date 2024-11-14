@@ -1,7 +1,10 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
+import { ErrorElement } from '@/shared/ui/ErrorElement';
 import { Loader } from '@/shared/ui/Loader';
 
 import { AuthAside } from '../AuthAside/AuthAside';
@@ -13,10 +16,12 @@ export const AuthLayout = () => {
 		<div className={styles.container}>
 			<Suspense fallback={<Loader />}>
 				<AuthAside />
-				<div className={styles['logo-wrapper']}>
-					<AppLogo isOpen={false} fill="black" />
-				</div>
-				<Outlet />
+				<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
+					<div className={styles['logo-wrapper']}>
+						<AppLogo isOpen={false} fill="black" />
+					</div>
+					<Outlet />
+				</ErrorBoundary>
 			</Suspense>
 		</div>
 	);

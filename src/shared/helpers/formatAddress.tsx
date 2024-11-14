@@ -1,15 +1,7 @@
 export const formatAddress = (country: string, city: string) => {
-	if (country && city) {
-		return (
-			<li>
-				{country}, {city}
-			</li>
-		);
-	} else if (country) {
-		return <li>{country}</li>;
-	} else if (city) {
-		return <li>{city}</li>;
-	} else {
-		return null;
-	}
+	if (country && city) return `${country}, ${city}`;
+	if (country) return country;
+	if (city) return city;
+
+	return null;
 };

@@ -9,6 +9,8 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Button } from '@/shared/ui/Button';
+import { ProfileIcon } from '@/shared/ui/Icons/ProfileIcon';
+import { SignOutIcon } from '@/shared/ui/Icons/SignOutIcon';
 
 import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
 
@@ -38,11 +40,7 @@ export const UserPreferences = () => {
 						cn({ [styles['btn-active']]: isActive && location.pathname === ROUTES.profile.page })
 					}
 				>
-					<Button
-						className={styles.button}
-						variant="tertiary"
-						preffix={<Icon key="userPreferenceUserIcon" icon="user" size={24} />}
-					>
+					<Button className={styles.button} variant="tertiary" preffix={<ProfileIcon />}>
 						{t(Translation.USERPREFERENCES_MYPROFILE)}
 					</Button>
 				</NavLink>
@@ -66,7 +64,7 @@ export const UserPreferences = () => {
 				<Button
 					className={styles.button}
 					variant="tertiary"
-					preffix={<Icon key="userPreferenceSignOutIcon" icon="signOut" size={24} />}
+					preffix={<SignOutIcon />}
 					onClick={handleLogoutUser}
 				>
 					{t(Translation.USERPREFERENCES_LOGOUT)}

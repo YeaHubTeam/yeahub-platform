@@ -10,15 +10,24 @@ import styles from './ErrorElement.module.css';
 interface ErrorElementProps {
 	fetchError?: FetchBaseQueryError | SerializedError;
 	errorMsg?: string;
+	path?: string | number;
 }
 
 export const ErrorElement = ({
 	fetchError,
 	errorMsg = 'Неизвестная ошибка',
+	path = -1,
 }: ErrorElementProps) => {
 	const navigate = useNavigate();
 
-	const handleBackBtnClick = () => navigate(-1);
+	const handleBackBtnClick = () => {
+		if (typeof path === 'number') {
+			navigate(path);
+			return;
+		}
+
+		navigate(path);
+	};
 
 	return (
 		<Card className={styles.card}>
@@ -26,9 +35,11 @@ export const ErrorElement = ({
 				<div className={styles.content}>
 					<h2 className={styles.title}>УПС!</h2>
 					<span className={styles.text}>Что-то пошло не так</span>
-					<span className={styles['error-msg']}>
-						Ошибка: {fetchError && 'status' in fetchError ? fetchError.status : errorMsg}
-					</span>
+					{fetchError ? (
+						<span className={styles['error-msg']}>
+							Ошибка: {fetchError && 'status' in fetchError ? fetchError.status : errorMsg}
+						</span>
+					) : null}
 				</div>
 				<Button size="L" onClick={handleBackBtnClick}>
 					Вернуться назад
