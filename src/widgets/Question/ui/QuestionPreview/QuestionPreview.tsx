@@ -25,7 +25,7 @@ type QuestionProps = {
 };
 
 export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
-	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
+	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
 	const { t: tQuestions } = useI18nHelpers(i18Namespace.questions);
 	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
 
@@ -57,8 +57,16 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 									{tTranslation(ActionsButton.MORE)}
 								</Button>
 							</NavLink>
-							<ResetQuestionStudyProgressButton profileId={profileId} questionId={id} />
-							<LearnQuestionButton profileId={profileId} questionId={id} />
+							<LearnQuestionButton
+								profileId={profileId}
+								questionId={id}
+								isDisabled={checksCount !== undefined && checksCount >= 3}
+							/>
+							<ResetQuestionStudyProgressButton
+								profileId={profileId}
+								questionId={id}
+								isDisabled={checksCount !== undefined && checksCount === 0}
+							/>
 						</>
 					}
 					className={styles.popup}

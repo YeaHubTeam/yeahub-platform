@@ -13,12 +13,14 @@ interface ResetQuestionStudyProgressProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	isDisabled: boolean;
 }
 
 export const ResetQuestionStudyProgressButton = ({
 	profileId,
 	questionId,
 	isSmallIcon,
+	isDisabled,
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -47,7 +49,7 @@ export const ResetQuestionStudyProgressButton = ({
 			}
 			variant="tertiary"
 			onClick={handleClick}
-			disabled={isLoading}
+			disabled={isLoading || isDisabled}
 		>
 			{t(ActionsButton.REPEAT)}
 		</Button>

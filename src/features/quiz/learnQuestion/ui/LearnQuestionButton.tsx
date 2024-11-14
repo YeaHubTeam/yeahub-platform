@@ -13,9 +13,15 @@ interface LearnQuestionProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	isDisabled: boolean;
 }
 
-export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: LearnQuestionProps) => {
+export const LearnQuestionButton = ({
+	profileId,
+	questionId,
+	isSmallIcon,
+	isDisabled,
+}: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
 	const handleLearnQuestion = () => {
@@ -34,7 +40,7 @@ export const LearnQuestionButton = ({ profileId, questionId, isSmallIcon }: Lear
 			preffix={<Icon icon="student" size={iconSize} />}
 			variant="tertiary"
 			onClick={handleLearnQuestion}
-			disabled={isLoading}
+			disabled={isLoading || isDisabled}
 		>
 			{t(ActionsButton.LEARN)}
 		</Button>
