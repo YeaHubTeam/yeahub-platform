@@ -1,9 +1,11 @@
-interface ChangePasswordDataProps {
+export interface ChangePasswordFormValues {
 	password: string;
 	passwordConfirm: string;
+}
+export interface ChangePasswordBodyRequest extends ChangePasswordFormValues {
 	token: string;
 }
-export interface ChangePasswordParams {
+export interface ChangePasswordRequest {
 	id: string;
-	passwordObject: ChangePasswordDataProps;
+	passwordObject: ChangePasswordBodyRequest;
 }
