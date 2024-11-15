@@ -17,7 +17,7 @@ export const Footer = () => {
 		<footer className={styles.footer}>
 			<div className={styles.container}>
 				<div className={styles['container-logo']}>
-					<AppLogo isOpen={false} fill="white" navigateTo="#" />
+					<AppLogo isOpen={false} fill="white" navigateTo="#" hideOnMobile={false} />
 				</div>
 
 				<p className={styles.subtitle}>{t(Landing.FOOTER_SLOGAN)} </p>

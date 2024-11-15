@@ -19,7 +19,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.container}>
-				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
+				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} hideOnMobile={false} />
 			</div>
 			{isLoading ? (
 				<HeaderSkeleton />

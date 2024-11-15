@@ -1,6 +1,6 @@
 .container {
   position: absolute;
-  top: 22px;
+  top: 29px;
   left: -14%;
   display: flex;
   flex-direction: column;
@@ -41,14 +41,15 @@
 
 @media screen and (width <=992px) {
   .container {
-    top: 22.2px;
-    left: 0;
+    top: 29.2px;
+    left: 6px;
   }
 }
 
 @media screen and (width <= 767px) {
   .container {
-    top: 17px;
+    top: 20px;
+    left: -4px;
     padding: 6px;
     width: 84px;
     height: 84px;

@@ -2,8 +2,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { CSSIcon } from '@/shared/ui/Icons/CSSIcon';
 import { FigmaIcon } from '@/shared/ui/Icons/FigmaIcon';
-import { SkillIcon } from '@/shared/ui/Icons/SkillIcon';
+import { HTMLIcon } from '@/shared/ui/Icons/HTMLIcon';
+import { JSIcon } from '@/shared/ui/Icons/JSIcon';
+import { ReactIcon } from '@/shared/ui/Icons/ReactIcon';
 
 import styles from './CategoriesList.module.css';
 
@@ -16,25 +19,25 @@ export const CategoriesList = () => {
 			<p className={styles.title}>{t(Landing.ANSWERS_CATEGORY)}</p>
 			<ul className={styles['categories-list']}>
 				<li>
+					<ReactIcon />
+					<p>React</p>
+				</li>
+				<li>
 					<FigmaIcon />
 					<p>Figma</p>
 				</li>
 				<li>
-					<SkillIcon />
-					<p>Wireframing</p>
-				</li>
-				<li>
-					<SkillIcon />
-					<p>Wireframing</p>
+					<HTMLIcon />
+					<p>HTML</p>
 				</li>
 				<li className={styles.css}>
-					<FigmaIcon />
+					<CSSIcon />
 					<p>CSS</p>
 				</li>
 				{isTablet || isLaptop ? (
 					<li>
-						<FigmaIcon />
-						<p> Figma</p>
+						<JSIcon />
+						<p>JS</p>
 					</li>
 				) : (
 					''

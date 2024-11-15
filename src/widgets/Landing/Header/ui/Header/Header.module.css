@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.container{
+.container {
   margin: 16px 0 ;
   width: 100%;
   max-width: 135px;
@@ -24,16 +24,18 @@
 
 @media screen and (width <=1439px) {
   .header {
-    margin-bottom: 64px;
+    margin-bottom: 68px;
     padding: 0;
   }
 }
 
-@media screen and (width <= 767px) {
+@media screen and (width <= 576px) {
   .header {
     margin-top: 0;
-    margin-bottom: 3px;
-    padding: 0 19px;
+    margin-bottom: 7px;
+    padding: 0 16px;
   }
 }
+
+
 

@@ -1,25 +1,14 @@
 .interview-block {
-  margin-bottom: 121px;
-}
-
-.article {
-  margin-top: 4px;
-  margin-bottom: 16px;
-  text-align: left;
-  line-height: 118%;
-  text-transform: uppercase;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xxl);
-  white-space: pre-wrap;
-}
-
-.article .enter {
-  display: block;
+  margin-bottom: 124px;
 }
 
 .article-description {
+  margin-bottom: 41px;
+  width: 86%;
+  line-height: 118%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
+
 }
 
 .join-button {
@@ -36,23 +25,20 @@
 }
 
 .left-block {
-  margin-top: 15px;
+  margin-top: 10px;
   width: auto;
 }
 
 .left-block > span {
+  display: block;
+  margin-bottom: 2px;
   padding: 6px 12px;
+  width: max-content;
   border-radius: 37px;
   background-color: var(--background-light-chip);
   color: var(--text-color-link-active);
   line-height: 21.86px;
   font-size: var(--font-size-p-m);
-}
-
-.left-block p { 
-  margin-bottom: 32px;
-  width: 86%;
-  line-height: 21.86px;
 }
 
 .wallpaper {
@@ -91,11 +77,6 @@
 }
 
 @media screen and (width <= 1439px) {
-  .article {
-    line-height: 51px;
-    font-size: var(--font-size-h-l);
-  }
-  
   .wallpaper {
     width: 445px;
   }
@@ -104,7 +85,7 @@
 
 @media screen and (width <= 992px) {
   .interview-block {
-    margin-bottom: 57px;
+    margin-bottom: 87px;
   }
 
   .container {
@@ -112,7 +93,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 20px;
+    gap: 24px;
   }
 
   .left-block {
@@ -128,16 +109,8 @@
     display: none;
   }
 
-  .article {
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  .article .enter {
-    display: inline-block;
-  }
-
   .article-description {
+    margin-bottom: 39px;
     width: 100%;
     text-align: center;
     line-height: 20px;
@@ -173,8 +146,7 @@
 
 @media screen and (width <= 767px) {
   .interview-block {
-    margin-bottom: 50px;
-    padding: 0 8px;
+    margin-bottom: 50px;    
   }
 
   .container {
@@ -187,7 +159,7 @@
   }
 
   .right-block {
-    padding: 0 8px;
+    padding: 0;
   }
 
   .right-block::before,
@@ -203,17 +175,17 @@
 }
 
 @media screen and (width <= 576px) {
+  .interview-block {
+    padding: 0 16px;
+  }
+
   .container {
     gap: 42px;
   }
 
-  .article {
-    line-height: 27px;
-    font-size: var(--font-size-h-xs);
-  }
-
-  .article-description{
-    line-height: 19px;
+  .article-description {
+    margin-bottom: 24px;
+    line-height: 122%;
     font-size: var(--font-size-p-s);
   }
 }

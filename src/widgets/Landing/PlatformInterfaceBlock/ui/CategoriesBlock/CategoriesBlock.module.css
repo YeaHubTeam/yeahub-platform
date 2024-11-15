@@ -202,4 +202,13 @@
   .categories-block {
     gap: 22px;
   }
+
+  .content {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .caption-block p {
+    line-height: 122%;
+  }
 }

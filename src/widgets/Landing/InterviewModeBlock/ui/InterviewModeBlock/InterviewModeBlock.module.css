@@ -252,6 +252,7 @@ ul {
   }
 
   .image {
+    margin-bottom: 5px;
     height: 87px;
     border-radius: 11.12px;
   }

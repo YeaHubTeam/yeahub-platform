@@ -17,7 +17,6 @@
   flex-direction: column;
   gap: 42px;
   padding: 24px;
-  min-height: 212px;
   border-radius: 12px;
   background-color: var(--text-color-white);
   line-height: 21.86px;
@@ -84,7 +83,7 @@
 @media screen and (width <= 767px) {
   .advantages {
     margin-top: 19px;
-    padding: 0 8px;
+    padding: 0;
   }
 
   .advantages-list {

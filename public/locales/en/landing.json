@@ -4,6 +4,8 @@
   "login": "Log in",
   "questionsTop": "Top questions",
   "header": "YEAHUB \nhelps grow\nand achieve goals",
+  "headerTablet": "YEAHUB helps grow and achieve goals",
+  "headerMobile": "YEAHUB helps grow\nand achieve goals",
   "headerDescription": "Learn and improve your skills on one platform: learn new, prepare for interviews, dive into the nuances or update knowledge - YeaHub will help you get it done",
   "join": "Join",
   "progress": "Progress",
@@ -60,7 +62,7 @@
   "abilitiesConclusion": "This is the perfect way to prepare for real interviews.",
   "progressBlock": {
     "title": "Track your progress",
-    "subtitle": "YeaHub provides advanced tools\nfor tracking your progress",
+    "subtitle": "YeaHub provides advanced tools for tracking your progress",
     "advantages": {
       "first": "In your personal profile, you can see a detailed statistics, including the number of completed questions and topics.",
       "second": "Determine your current level and analyze the gaps in knowledge for more targeted learning or preparation for job search."
@@ -73,7 +75,7 @@
     "diagramLabel": "complete"
   },
   "footer": {
-    "slogan": "Choose how IT will be tomorrow \nwith us",
+    "slogan": "Choose how IT will be tomorrow with us",
     "about": "YeaHub is fully open source project, which allows you to learn a new profession and become part of our friendly team, interview and improve your knowledge in practice."
   }
 }

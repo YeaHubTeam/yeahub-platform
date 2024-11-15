@@ -451,6 +451,8 @@ export enum Landing {
 	REGISTER = 'register',
 	QUESTIONS_TOP = 'questionsTop',
 	HEADER = 'header',
+	HEADER_TABLET = 'headerTablet',
+	HEADER_MOBILE = 'headerMobile',
 	HEADER_DESCRIPTION = 'headerDescription',
 	JOIN = 'join',
 	PROGRESS = 'progress',

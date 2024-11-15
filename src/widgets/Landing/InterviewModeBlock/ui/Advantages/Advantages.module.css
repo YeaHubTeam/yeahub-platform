@@ -161,3 +161,9 @@
     margin-top: 0;
   }
 }
+
+@media screen and (width <= 576px) {
+  .advantages {
+    gap: 29px;
+  }
+}
