@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import styles from './Faq.module.css';
 import { FaqItem } from './FaqItem';
 
@@ -8,15 +10,20 @@ interface FaqItem {
 }
 
 interface FaqListProps {
-	faqList: FaqItem[];
+	title: string;
+	faqList: {
+		questions: FaqItem[];
+	};
 }
 
-export const Faq = ({ faqList }: FaqListProps) => {
+export const Faq = ({ faqList, title }: FaqListProps) => {
+	const { t } = useTranslation();
+
 	return (
 		<div>
-			<h1 className={styles['faq-title']}>Часто задаваемые вопросы</h1>
+			<h1 className={styles['faq-title']}>{t(title)}</h1>
 			<ul className={styles['faq-items']}>
-				{faqList.map((item: FaqItem) => (
+				{faqList.questions.map((item: FaqItem) => (
 					<FaqItem key={item.id} item={item} />
 				))}
 			</ul>

@@ -16,8 +16,8 @@ export const FaqItem = ({ item }: FaqItemProps) => {
 	const [showHidden, setShowHidden] = useState(false);
 
 	return (
-		<li key={item.id} className={styles['faq-item']}>
-			<button onClick={() => setShowHidden(!showHidden)} className={styles['faq-header']}>
+		<li className={styles['faq-item']}>
+			<button onClick={() => setShowHidden((prev) => !prev)} className={styles['faq-header']}>
 				<p>{item.question}</p>
 				<div
 					className={`${styles['faq-show']} ${showHidden ? styles['faq-show-active'] : ''}`}

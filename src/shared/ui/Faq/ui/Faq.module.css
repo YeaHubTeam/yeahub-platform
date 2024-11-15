@@ -6,7 +6,7 @@
 
 .faq-title {
   color: var(--text-black);
-  line-height: 127%;
+  line-height: 43px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-large-34);
   font-family: var(--font-family);
@@ -26,7 +26,7 @@
   border: none;
   background-color: var(--color-white-900);
   color: var(--text-black);
-  line-height: 120%;
+  line-height: 24px;
   font-weight: var(--font-weight-500);
   font-size: var( --font-size-h-xs);
   font-family: var(--font-family);
@@ -82,7 +82,7 @@
 .faq-body {
   margin-top: 12px;
   color: var(--text-black);
-  line-height: 120%;
+  line-height: 19px;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
   font-family: var(--font-family);
