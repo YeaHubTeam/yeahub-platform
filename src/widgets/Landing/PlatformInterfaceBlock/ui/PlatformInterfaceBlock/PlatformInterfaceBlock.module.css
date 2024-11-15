@@ -1,7 +1,7 @@
 .platform-interface-block {
   margin: 0 -92px;
-  margin-bottom: 130px;
-  padding: 40px 92px;
+  margin-bottom: 124px;
+  padding: 40px 92px 49px;
   border-radius: 24px;
   background-color: var(--background-nav-item);
 }
@@ -80,26 +80,42 @@
 
 @media screen and (width <= 767px) {
   .platform-interface-block {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     padding: 24px 16px;
     border-radius: 12px;
   }
 
   .caption-block h2 {
-    line-height: 27px;
-    font-size: var(--font-size-h-xs);
+    margin-bottom: 10px;
+    line-height: 41px;
+    font-size: var(--font-size-large-34);
   }
 
   .caption-block p {
     align-self: center;
-    padding: 0;
     padding: 0 10px;
-    line-height: 19px;
-    font-size: var(--font-size-p-s);
+    line-height: 23px;
+    font-size: var(--font-size-p-m);
   }
 
   .container {
     flex-direction: column;
     gap: 16px;
+  }
+}
+
+@media screen and (width <= 576px) {
+  .platform-interface-block {
+    padding: 24px 16px 42px;
+  }
+
+  .caption-block h2 {      
+    line-height: 27px;
+    font-size: var(--font-size-h-xs);
+  }
+  
+  .caption-block p {
+    line-height: 18px;
+    font-size: var(--font-size-p-s);
   }
 }

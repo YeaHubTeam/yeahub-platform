@@ -10,15 +10,17 @@ import styles from './MainPage.module.css';
 
 const MainPage = () => {
 	return (
-		<div className={styles.container}>
-			<Header />
-			<InterviewBlock />
-			<TrainingBlock />
-			<PlatformInterfaceBlock />
-			<InterviewModeBlock />
-			<ProgressBlock />
+		<>
+			<div className={styles.container}>
+				<Header />
+				<InterviewBlock />
+				<TrainingBlock />
+				<PlatformInterfaceBlock />
+				<InterviewModeBlock />
+				<ProgressBlock />
+			</div>
 			<Footer />
-		</div>
+		</>
 	);
 };
 

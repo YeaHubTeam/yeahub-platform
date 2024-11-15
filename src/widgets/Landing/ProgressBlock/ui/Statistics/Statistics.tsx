@@ -28,11 +28,15 @@ export const Statistics = () => {
 					<span>120</span>
 				</li>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_LEARNED)}
+					{t(Landing.PROGRESS_BLOCK_NEW_QUESTIONS)}
 					<span>50</span>
 				</li>
 				<li>
 					{t(Landing.PROGRESS_BLOCK_UNLEARNED)}
+					<span>60</span>
+				</li>
+				<li>
+					{t(Landing.PROGRESS_BLOCK_LEARNED)}
 					<span>20</span>
 				</li>
 			</ul>

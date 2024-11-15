@@ -41,6 +41,7 @@
   --background-demo-progress-bar: var(--color-green-800);
   --background-first-step: var(--color-yellow-300);
   --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+  --background-footer: rgb(24 0 62)
 
   /* 
 [theme="dark"] {

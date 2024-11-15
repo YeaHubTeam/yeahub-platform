@@ -1,0 +1,1 @@
+export { JSIcon } from './JSIcon';
