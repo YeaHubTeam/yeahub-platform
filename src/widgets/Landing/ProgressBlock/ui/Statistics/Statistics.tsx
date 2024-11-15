@@ -25,19 +25,19 @@ export const Statistics = () => {
 			<ul className={styles['statistics-list']}>
 				<li>
 					{t(Landing.PROGRESS_BLOCK_ALL_QUESTIONS)}
-					<span>20</span>
-				</li>
-				<li>
-					{t(Landing.PROGRESS_BLOCK_NEW_QUESTIONS)}
 					<span>120</span>
 				</li>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_UNLEARNED)}
+					{t(Landing.PROGRESS_BLOCK_NEW_QUESTIONS)}
 					<span>50</span>
 				</li>
 				<li>
+					{t(Landing.PROGRESS_BLOCK_UNLEARNED)}
+					<span>60</span>
+				</li>
+				<li>
 					{t(Landing.PROGRESS_BLOCK_LEARNED)}
-					<span>12</span>
+					<span>20</span>
 				</li>
 			</ul>
 		</div>

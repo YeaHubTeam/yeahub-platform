@@ -128,4 +128,9 @@
     line-height: 134%;
   }
 
+  .advantage-card div:has(svg) {
+    width: 40px;
+    height: 40px;
+  }
+
 }

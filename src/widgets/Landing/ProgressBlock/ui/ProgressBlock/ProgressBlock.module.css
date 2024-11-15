@@ -55,6 +55,11 @@ ul {
   color: var(--text-color-light);
 }
 
+.progress-list li svg {
+  width: 100%;
+  height: 100%;
+}
+
 .progress-list li:last-child::before {
   position: absolute;
   top: 0;

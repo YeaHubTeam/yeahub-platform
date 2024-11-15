@@ -1,7 +1,7 @@
-import image1 from '@/shared/assets/images/landing/train-image1.jpg';
-import image2 from '@/shared/assets/images/landing/train-image2.jpg';
-import image3 from '@/shared/assets/images/landing/train-image3.jpg';
-import image4 from '@/shared/assets/images/landing/train-image4.jpg';
+import image1 from '@/shared/assets/images/landing/train-image1.png';
+import image2 from '@/shared/assets/images/landing/train-image2.png';
+import image3 from '@/shared/assets/images/landing/train-image3.png';
+import image4 from '@/shared/assets/images/landing/train-image4.png';
 
 export interface MockTraining {
 	id: string;
