@@ -21,26 +21,20 @@ export const QuestionInterface = () => {
 			<div className={styles['question-example']}>
 				<DotsVertical className={styles['dots-icon']} />
 				<ChevronUp className={styles['chevron-icon']} />
-				<h3 className={styles.question}>Какие типы данных есть в JS?</h3>
+				<h3 className={styles.question}>{t(Landing.PLATFORM_INTERFACE_QUESTION)}</h3>
 				<div className={styles['question-body']}>
 					<div className={styles['question-info']}>
 						<div className={styles['question-tag']}>
-							Рейтинг: <span>4</span>
+							{t(Landing.PLATFORM_INTERFACE_RATING)}: <span>4</span>
 						</div>
 						<div className={styles['question-tag']}>
-							Сложность: <span>10</span>
+							{t(Landing.PLATFORM_INTERFACE_COMPLEXITY)}: <span>10</span>
 						</div>
 					</div>
-					<div className={styles.answer}>
-						<p>
-							Значение в JavaScript всегда относиться к данным определенного типа. Например, это
-							может быть строка или число. Есть восемь основных типов данных в JavaScript. В этой
-							главе мы рассмотрим их в общем, а в следующих главах поговорим подробнее о каждом.
-						</p>
-						<p>
-							Переменная в JavaSctipt может содержать любые данные. В один момент там может быть
-						</p>
-					</div>
+					<div
+						className={styles.answer}
+						dangerouslySetInnerHTML={{ __html: t(Landing.PLATFORM_INTERFACE_ANSWER) }}
+					></div>
 				</div>
 			</div>
 		</div>
