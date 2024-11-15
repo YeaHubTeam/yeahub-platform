@@ -1,7 +1,9 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-  margin: 8px 4px;
+  align-items: center;
+  gap: 20px;
+  
 }
 
 .register-button {
@@ -10,8 +12,23 @@
   font-size: var(--font-size-p-l);
 }
 
-.login-button {
+.login {
   color: var(--text-color-link-active);
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-m);
+  transition: color 0.3s ease;
+}
+
+.login:hover {
+  color: var(--color-purple-800)
+}
+
+@media screen and (width <= 767px) {
+  .register-button {
+    padding: 0 0.15rem;
+    min-width: 150px;
+    height: 2rem;
+  }
+
+  .navigation {
+    gap: 10px;  
+  }
 }

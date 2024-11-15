@@ -17,6 +17,14 @@
     "myProfile": "My profile",
     "logout": "Sign out"
   },
+  "buttons": {
+    "fillProfile": "Fill Profile",
+    "edit": "Edit",
+    "more": "More",
+    "repeat": "Repeat",
+    "learn": "Learn",
+    "support": "Support"
+  },
   "tabs": {
     "main": "Home",
     "platform": "Platform",
@@ -137,6 +145,12 @@
     "register": "Register"
   },
   "toast": {
+    "auth": {
+      "resetPassword": {
+        "success": "The password has been successfully changed",
+        "failed": "Error when changing the password"
+      }
+    },
     "questions": {
       "learned": {
         "success": "he issue has been fully studied",
@@ -184,6 +198,12 @@
     "settings": {
       "sendVerificationEmail": {
         "failed": "Sending verification message failed"
+      }
+    },
+    "password": {
+      "change": {
+        "success": "Password changed successfully",
+        "failed": "Failed to change password"
       }
     }
   },

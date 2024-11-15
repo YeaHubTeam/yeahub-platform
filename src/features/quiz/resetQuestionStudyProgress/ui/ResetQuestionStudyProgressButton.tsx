@@ -1,5 +1,8 @@
 import { Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { ActionsButton } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
@@ -10,14 +13,17 @@ interface ResetQuestionStudyProgressProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	isDisabled: boolean;
 }
 
 export const ResetQuestionStudyProgressButton = ({
 	profileId,
 	questionId,
 	isSmallIcon,
+	isDisabled,
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
+	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const handleClick = async () => {
 		try {
@@ -43,9 +49,9 @@ export const ResetQuestionStudyProgressButton = ({
 			}
 			variant="tertiary"
 			onClick={handleClick}
-			disabled={isLoading}
+			disabled={isLoading || isDisabled}
 		>
-			Повторить
+			{t(ActionsButton.REPEAT)}
 		</Button>
 	);
 };

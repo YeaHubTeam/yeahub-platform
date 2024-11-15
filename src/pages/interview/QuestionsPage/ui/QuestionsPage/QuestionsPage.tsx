@@ -34,6 +34,7 @@ const QuestionsPage = () => {
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
 			...getParams,
+			profileId,
 			specialization: specializationId,
 			keywords: keywords ? [keywords] : undefined,
 		},

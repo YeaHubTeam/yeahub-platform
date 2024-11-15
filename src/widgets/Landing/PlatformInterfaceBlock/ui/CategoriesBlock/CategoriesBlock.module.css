@@ -84,25 +84,40 @@
   font-size: var(--font-size-p-l);
 }
 
-@media screen and (width <= 1439px) {
-  .categories-block {
-    align-items: center;
-    gap: 24px;
+@media screen and (width <=1439px) {
+  .content {
+    padding: 20px;
+    max-height: none;
   }
 
   .categories {
     padding: 0;
+  }
+
+  .categories-block {
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media screen and (width <= 992px) {
+  .categories-block {
+    align-items: center;
+    gap: 69px;
+  }
+
+  .categories {
     max-width: 260px;
   }
 
   .content-container {
-    padding: 24px;
+    padding: 24px 24px 15px;
   }
 
   .content {
     display: flex;
     justify-content: space-between;
-    gap: 0;
+    gap: 88px;
     margin-bottom: 24px;
     padding: 20px 19.09px;
     max-height: none;
@@ -138,6 +153,9 @@
   }
 
   .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     margin-bottom: 16px;
     padding: 10.83px 12.95px;
     border-radius: 10.83px;
@@ -145,7 +163,6 @@
 
   .categories {
     gap: 11.26px;
-    max-width: 121.84px;
   }
 
   .categories-input {
@@ -178,5 +195,20 @@
   .caption-block svg {
     width: 45px;
     height: 40px;
+  }
+}
+
+@media screen and (width <= 576px) {
+  .categories-block {
+    gap: 22px;
+  }
+
+  .content {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .caption-block p {
+    line-height: 122%;
   }
 }

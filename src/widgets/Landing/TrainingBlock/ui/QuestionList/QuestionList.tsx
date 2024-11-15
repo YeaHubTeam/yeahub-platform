@@ -1,4 +1,3 @@
-import ScreenImg from '@/shared/assets/images/landing/screen.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -15,7 +14,7 @@ export const QuestionList = () => {
 		<ul className={styles['question-list']}>
 			{mockQuestionList.map((training) => (
 				<li className={styles['question-item']} key={training.id}>
-					<img src={ScreenImg} alt="question" />
+					<img src={training.image} alt="question" width={71} height={51} loading="lazy" />
 					<p>{training.title}</p>
 					<div>
 						<p>

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
+import OpenSideBarIcon from '@/shared/assets/icons/openSideBar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { ActionsButton, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
@@ -24,8 +25,9 @@ type QuestionProps = {
 };
 
 export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
-	const { id, imageSrc, complexity = 0, rate, shortAnswer } = question;
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
+	const { t: tQuestions } = useI18nHelpers(i18Namespace.questions);
+	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
 
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
@@ -51,16 +53,20 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 								className={styles.link}
 								to={route(ROUTES.interview.questions.detail.page, id)}
 							>
-								<Button
-									className={styles.button}
-									variant="tertiary"
-									preffix={<Icon icon="gearSix" size={20} />}
-								>
-									Подробнее
+								<Button className={styles.button} variant="tertiary" preffix={<OpenSideBarIcon />}>
+									{tTranslation(ActionsButton.MORE)}
 								</Button>
 							</NavLink>
-							<LearnQuestionButton profileId={profileId} questionId={id} />
-							<ResetQuestionStudyProgressButton profileId={profileId} questionId={id} />
+							<LearnQuestionButton
+								profileId={profileId}
+								questionId={id}
+								isDisabled={checksCount !== undefined && checksCount >= 3}
+							/>
+							<ResetQuestionStudyProgressButton
+								profileId={profileId}
+								questionId={id}
+								isDisabled={checksCount !== undefined && checksCount === 0}
+							/>
 						</>
 					}
 					className={styles.popup}
@@ -79,7 +85,9 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					/>
 				</Popover>
 			</div>
-			{imageSrc && <img className={styles.image} alt={t(Questions.IMAGE_ALT)} src={imageSrc} />}
+			{imageSrc && (
+				<img className={styles.image} alt={tQuestions(Questions.IMAGE_ALT)} src={imageSrc} />
+			)}
 			<div className={styles.content}>
 				<TextHtml html={shortAnswer} />
 			</div>

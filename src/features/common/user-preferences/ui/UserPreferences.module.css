@@ -27,16 +27,27 @@
 }
 
 .settings {
-  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding:6px 6px 14px;
 }
 
 .button {
-  justify-content: start !important;
-  height: 40px !important;
+  justify-content: start;
+  gap:15px;
+  padding: 6px 10px;
+  min-width: 192px;
+  border-radius: 12px;	
 }
 
 .btn-active > .button {
   background-color: var(--palette-ui-black-25);
+  color:var(--button-text-color-secondary-active)
+}
+
+.btn-active svg {
+  fill: var(--button-text-color-secondary-active)
 }
 
 @media (width <= 480px) {

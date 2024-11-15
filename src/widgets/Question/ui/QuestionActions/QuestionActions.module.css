@@ -6,13 +6,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
+  button {
+    justify-content: center;
+  }
 }
-
-.btn {
-  display: flex;
-  justify-content: start;
-}
-
 
 @media (width <= 480px) {
   .wrapper {

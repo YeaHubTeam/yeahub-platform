@@ -23,7 +23,7 @@ export const AuthorizedBlock = ({ firstName, avatarURL }: UserProfileProps) => {
 		<div className={styles.wrapper}>
 			<div role="banner" className={styles['user-wrapper']} onClick={handleClick}>
 				<p className={styles['user-name']}>{firstName}</p>
-				<AuthAvatarFrame link={avatarURL || ''} />
+				<AuthAvatarFrame link={avatarURL || null} />
 			</div>
 		</div>
 	);

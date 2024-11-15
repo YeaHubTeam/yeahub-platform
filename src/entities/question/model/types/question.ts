@@ -39,6 +39,7 @@ export interface QuestionsListParams {
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
+	profileId?: string;
 }
 
 export interface QuestionsLearnedParams

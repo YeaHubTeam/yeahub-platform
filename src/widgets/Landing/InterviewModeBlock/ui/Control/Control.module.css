@@ -23,7 +23,6 @@
 .control-list {
   display: flex;
   gap: 8px;
-  padding: 0 112px;
 }
 
 .control-list li {
@@ -65,7 +64,7 @@
     padding-top: 7.41px;
     border-top: 0.23px solid var(--text-color-the-lightest);
     line-height: 10px;
-    font-weight: var(--font-weight-500);
+    font-weight: var(--font-weight-500);    
   }
 
   .control > div {
@@ -81,7 +80,7 @@
   .control-list {
     display: flex;
     gap: 3.71px;
-    padding: 0 53.28px;
+    padding: 0;
   }
 
   .control-list li {
@@ -92,6 +91,7 @@
 
   .control-list span {
     margin-left: 3.71px;
+    font-size: var(--font-size-p-xss);
   }
 
   .control-list li > div {
