@@ -18,7 +18,7 @@ const resetQuestionProgressApi = baseApi.injectEndpoints({
 				url: `/interview-preparation/learn/${profileId}/reset/${questionId}`,
 				method: 'PUT',
 			}),
-			invalidatesTags: [ApiTags.QUESTION_DETAIL, ApiTags.QUESTIONS],
+			invalidatesTags: [ApiTags.QUESTION_DETAIL, ApiTags.QUESTIONS, ApiTags.QUESTIONS_LEARNED],
 			async onQueryStarted() {
 				handleRequestToast({
 					successMessage: Translation.TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS,
