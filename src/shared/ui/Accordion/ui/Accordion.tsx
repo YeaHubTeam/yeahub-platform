@@ -12,7 +12,7 @@ interface AccordionProps {
 	/**
 	 *The part of content that appear when open
 	 */
-	children?: ReactNode;
+	children: ReactNode;
 }
 
 /**

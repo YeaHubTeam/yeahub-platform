@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion } from './Accordion';
 
 const meta = {
-	title: 'shared/ui/Accordion',
+	title: 'shared/Accordion',
 	component: Accordion,
 	parameters: {
 		layout: 'centered',
@@ -19,11 +19,5 @@ export const WithChildren: Story = {
 	args: {
 		title: 'Как выглядит базовая структура HTML страницы?',
 		children: <div>Базовая структура состоит из DOCTYPE, html, head, body</div>,
-	},
-};
-
-export const WithoutChildren: Story = {
-	args: {
-		title: 'Как выглядит базовая структура HTML страницы?',
 	},
 };
