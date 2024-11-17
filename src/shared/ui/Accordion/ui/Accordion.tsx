@@ -6,7 +6,7 @@ import styles from './Accordion.module.css';
 
 interface AccordionProps {
 	title: string;
-	children?: ReactNode;
+	children: ReactNode;
 }
 
 export const Accordion = ({ title, children }: AccordionProps) => {
@@ -22,7 +22,12 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			<h3 className={styles.heading}>
 				<button className={styles.button} onClick={onAccordionOpen}>
 					<span className={styles.title}>{title}</span>
-					<Arrow className={`${isOpen ? styles['icon-opened'] : ''} ${styles.icon}`}></Arrow>
+					<div
+						className={`${isOpen ? styles['icon-opened'] : ''} ${styles.icon}`}
+						data-testid="Arrow"
+					>
+						<Arrow />
+					</div>
 				</button>
 			</h3>
 			<div
