@@ -13,7 +13,7 @@ const learnQuestionApi = baseApi.injectEndpoints({
 				method: 'PUT',
 				body,
 			}),
-			invalidatesTags: [ApiTags.QUESTION_DETAIL, ApiTags.QUESTIONS],
+			invalidatesTags: [ApiTags.QUESTION_DETAIL, ApiTags.QUESTIONS, ApiTags.QUESTIONS_LEARNED],
 			async onQueryStarted() {
 				handleRequestToast({
 					successMessage: Translation.TOAST_QUESTIONS_LEARNED_SUCCESS,

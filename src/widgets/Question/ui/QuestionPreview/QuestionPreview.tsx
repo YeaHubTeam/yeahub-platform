@@ -39,6 +39,18 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 		setIsOpenQuestionActions(false);
 	};
 
+	const handleClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (e.target && (e.target as HTMLElement).tagName === 'BUTTON') {
+			closePopup();
+		}
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		if (e.key === 'Escape') {
+			closePopup();
+		}
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
@@ -48,7 +60,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 				</ul>
 				<Popover
 					body={
-						<>
+						<div role="button" onClick={handleClickButton} onKeyDown={handleKeyDown} tabIndex={0}>
 							<NavLink
 								className={styles.link}
 								to={route(ROUTES.interview.questions.detail.page, id)}
@@ -67,7 +79,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 								questionId={id}
 								isDisabled={checksCount !== undefined && checksCount === 0}
 							/>
-						</>
+						</div>
 					}
 					className={styles.popup}
 					isOpen={isOpenQuestionActions}
