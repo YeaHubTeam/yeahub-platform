@@ -12,6 +12,7 @@ import { Button } from '@/shared/ui/Button';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
+import { useProfileQuery } from '@/entities/auth';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
@@ -28,6 +29,9 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
 	const { t: tQuestions } = useI18nHelpers(i18Namespace.questions);
 	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
+
+	const { data: profile } = useProfileQuery();
+	const isEmailVerified = profile?.isEmailVerified;
 
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
@@ -60,12 +64,12 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 							<LearnQuestionButton
 								profileId={profileId}
 								questionId={id}
-								isDisabled={checksCount !== undefined && checksCount >= 3}
+								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
 							/>
 							<ResetQuestionStudyProgressButton
 								profileId={profileId}
 								questionId={id}
-								isDisabled={checksCount !== undefined && checksCount === 0}
+								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
 							/>
 						</>
 					}
