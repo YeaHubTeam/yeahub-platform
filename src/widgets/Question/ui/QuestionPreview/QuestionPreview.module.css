@@ -32,6 +32,10 @@
   &:hover {
     color: var(--color-purple-700);
   }
+
+  &:disabled:hover {
+    color: var(--button-text-color-tertiary-disabled)
+  }
 }
 
 

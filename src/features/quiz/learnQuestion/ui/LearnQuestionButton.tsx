@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,6 +11,7 @@ import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 import styles from './LearnQuestionButton.module.css';
 
 interface LearnQuestionProps {
+	className?: string;
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
@@ -17,6 +19,7 @@ interface LearnQuestionProps {
 }
 
 export const LearnQuestionButton = ({
+	className = '',
 	profileId,
 	questionId,
 	isSmallIcon,
@@ -36,7 +39,7 @@ export const LearnQuestionButton = ({
 
 	return (
 		<Button
-			className={styles.btn}
+			className={classNames(styles.btn, className)}
 			preffix={<Icon icon="student" size={iconSize} />}
 			variant="tertiary"
 			onClick={handleLearnQuestion}

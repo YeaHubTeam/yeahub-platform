@@ -58,11 +58,13 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 								</Button>
 							</NavLink>
 							<LearnQuestionButton
+								className={styles.button}
 								profileId={profileId}
 								questionId={id}
 								isDisabled={checksCount !== undefined && checksCount >= 3}
 							/>
 							<ResetQuestionStudyProgressButton
+								className={styles.button}
 								profileId={profileId}
 								questionId={id}
 								isDisabled={checksCount !== undefined && checksCount === 0}

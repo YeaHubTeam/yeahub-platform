@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,6 +11,7 @@ import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgr
 import styles from './ResetQuestionStudyProgressButton.module.css';
 
 interface ResetQuestionStudyProgressProps {
+	className?: string;
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
@@ -17,6 +19,7 @@ interface ResetQuestionStudyProgressProps {
 }
 
 export const ResetQuestionStudyProgressButton = ({
+	className = '',
 	profileId,
 	questionId,
 	isSmallIcon,
@@ -38,7 +41,7 @@ export const ResetQuestionStudyProgressButton = ({
 
 	return (
 		<Button
-			className={styles.btn}
+			className={classNames(styles.btn, className)}
 			preffix={
 				<Icon
 					className={styles.icon}

@@ -1,13 +1,3 @@
-.btn {
-  display: flex;
-  justify-content: start;
-  padding: 6px 20px;
-
-  &:hover {
-    color: var(--color-purple-700)
-  }
-}
-
 @media (width <= 480px) {
   .btn {
     font-weight: var(--font-weight-400);
