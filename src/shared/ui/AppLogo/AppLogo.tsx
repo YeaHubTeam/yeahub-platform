@@ -10,12 +10,14 @@ interface AppLogoProps {
 	isOpen: boolean;
 	fill?: 'white' | 'black';
 	navigateTo?: string;
+	hideOnMobile?: boolean;
 }
 
 export const AppLogo = ({
 	isOpen,
 	fill = 'black',
 	navigateTo = ROUTES.platformRoute,
+	hideOnMobile = true,
 }: AppLogoProps) => {
 	return (
 		<NavLink
@@ -29,6 +31,7 @@ export const AppLogo = ({
 			<Logo
 				className={classNames(styles.name, styles[fill], {
 					[styles.short]: isOpen,
+					[styles.hide]: hideOnMobile,
 				})}
 				preserveAspectRatio="xMinYMin"
 			/>

@@ -13,24 +13,20 @@ export const ProgressBlock = () => {
 
 	return (
 		<section className={styles['progress-block']}>
-			<div className={styles['left-block']}>
-				<div className={styles.caption}>
-					<h2>{t(Landing.PROGRESS_BLOCK_TITLE)}</h2>
-					<p>{t(Landing.PROGRESS_BLOCK_SUBTITLE)}</p>
-				</div>
-
-				<ul className={styles['progress-list']}>
-					<li>
-						<ProgressProfileIcon />
-						{t(Landing.PROGRESS_BLOCK_ADVANTAGES_FIRST)}
-					</li>
-					<li>
-						<LevelIcon />
-						{t(Landing.PROGRESS_BLOCK_ADVANTAGES_SECOND)}
-					</li>
-				</ul>
+			<div className={styles.caption}>
+				<h2>{t(Landing.PROGRESS_BLOCK_TITLE)}</h2>
+				<p>{t(Landing.PROGRESS_BLOCK_SUBTITLE)}</p>
 			</div>
-
+			<ul className={styles['progress-list']}>
+				<li>
+					<ProgressProfileIcon />
+					{t(Landing.PROGRESS_BLOCK_ADVANTAGES_FIRST)}
+				</li>
+				<li>
+					<LevelIcon />
+					{t(Landing.PROGRESS_BLOCK_ADVANTAGES_SECOND)}
+				</li>
+			</ul>
 			<div className={styles['right-block']}>
 				<Statistics />
 			</div>

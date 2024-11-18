@@ -71,7 +71,7 @@ export enum Translation {
 	VALIDATION_REQUIRED = 'validation.required',
 
 	VALIDATION_PASSWORD_MIN = 'validation.password.min',
-	VALIDATION_PASSWORD_CONFIRMATION = 'validation.passwordConfirmation',
+	VALIDATION_PASSWORD_CONFIRMATION = 'validation.passwordConfirmation.oneOf',
 
 	VALIDATION_IMAGE_FILESIZE = 'validation.image.fileSize',
 	VALIDATION_IMAGE_FILETYPE = 'validation.image.fileType',
@@ -134,6 +134,8 @@ export enum Translation {
 	TOAST_INTERVIEW_FINISH_SUCCESS = 'toast.interview.finish.success',
 	TOAST_INTERVIEW_FINISH_FAILED = 'toast.interview.finish.failed',
 	TOAST_SETTINGS_SEND_VERIFICATION_EMAIL_FAILED = 'toast.settings.sendVerificationEmail.failed',
+	TOAST_CHANGE_PASSWORD_SUCCESS = 'toast.password.change.success',
+	TOAST_CHANGE_PASSWORD_FAILED = 'toast.password.change.failed',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 
@@ -141,6 +143,8 @@ export enum Translation {
 
 	EMAIL_VERIFY = 'emailVerification.emailSettings',
 	CHANGE_PASSWORD = 'changePassword.passwordSettings',
+
+	SUPPORT = 'buttons.support',
 }
 export enum Profile {
 	TABS_TITLE = 'tabs.title',
@@ -465,6 +469,8 @@ export enum Landing {
 	REGISTER = 'register',
 	QUESTIONS_TOP = 'questionsTop',
 	HEADER = 'header',
+	HEADER_TABLET = 'headerTablet',
+	HEADER_MOBILE = 'headerMobile',
 	HEADER_DESCRIPTION = 'headerDescription',
 	JOIN = 'join',
 	PROGRESS = 'progress',
@@ -487,6 +493,10 @@ export enum Landing {
 	PLATFORM_INTERFACE_TITLE = 'platformInterfaceTitle',
 	PLATFORM_INTERFACE_SUBTITLE = 'platformInterfaceSubtitle',
 	PLATFORM_INTERFACE_DESCRIPTION = 'platformInterfaceDescription',
+	PLATFORM_INTERFACE_QUESTION = 'platformInterfaceQuestion',
+	PLATFORM_INTERFACE_ANSWER = 'platformInterfaceAnswer',
+	PLATFORM_INTERFACE_RATING = 'platformInterfaceRating',
+	PLATFORM_INTERFACE_COMPLEXITY = 'platformInterfaceComplexity',
 	SAMPLE_ANSWER_TABLET = 'sampleAnswerTablet',
 	SAMPLE_ANSWER_DEFAULT = 'sampleAnswerDefault',
 	SEARCH_INPUT_PLACEHOLDER = 'searchInputPlaceholder',
@@ -502,6 +512,8 @@ export enum Landing {
 	START_INTERVIEW = 'startInterview',
 	INTERVIEW_MODE = 'interviewMode',
 	INTERVIEW_PROGRESS = 'interviewProgress',
+	PREPARATION_TITLE = 'preparationTitle',
+	PREPARATION_LINK = 'preparationLink',
 	VIEW_ANSWER = 'viewAnswer',
 	DON_NOT_KNOW = 'donNotKnow',
 	REPEAT = 'repeat',
@@ -517,6 +529,7 @@ export enum Landing {
 	PROGRESS_BLOCK_LEARNED = 'progressBlock.learned',
 	PROGRESS_BLOCK_UNLEARNED = 'progressBlock.unlearned',
 	PROGRESS_BLOCK_ALL_QUESTIONS = 'progressBlock.allQuestions',
+	PROGRESS_BLOCK_NEW_QUESTIONS = 'progressBlock.newQuestions',
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',

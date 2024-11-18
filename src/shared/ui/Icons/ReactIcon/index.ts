@@ -1,0 +1,1 @@
+export { ReactIcon } from './ReactIcon';

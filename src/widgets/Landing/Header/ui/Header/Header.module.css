@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0 60px;
+  margin: 16px 0 76px;
+  padding: 10px 0;
   width: 100%;
 }
 
-.container{
+.container {
   margin: 16px 0 ;
   width: 100%;
   max-width: 135px;
@@ -20,4 +21,21 @@
   width: 100%;
   max-width: 276px;
 }
+
+@media screen and (width <=1439px) {
+  .header {
+    margin-bottom: 68px;
+    padding: 0;
+  }
+}
+
+@media screen and (width <= 576px) {
+  .header {
+    margin-top: 0;
+    margin-bottom: 7px;
+    padding: 0 16px;
+  }
+}
+
+
 

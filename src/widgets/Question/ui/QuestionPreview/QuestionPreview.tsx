@@ -12,6 +12,7 @@ import { Button } from '@/shared/ui/Button';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
+import { useProfileQuery } from '@/entities/auth';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
@@ -29,6 +30,9 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { t: tQuestions } = useI18nHelpers(i18Namespace.questions);
 	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
 
+	const { data: profile } = useProfileQuery();
+	const isEmailVerified = profile?.isEmailVerified;
+
 	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
 
 	const togglePopup = () => {
@@ -37,6 +41,18 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 
 	const closePopup = () => {
 		setIsOpenQuestionActions(false);
+	};
+
+	const handleClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (e.target && (e.target as HTMLElement).tagName === 'BUTTON') {
+			closePopup();
+		}
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		if (e.key === 'Escape') {
+			closePopup();
+		}
 	};
 
 	return (
@@ -48,7 +64,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 				</ul>
 				<Popover
 					body={
-						<>
+						<div role="button" onClick={handleClickButton} onKeyDown={handleKeyDown} tabIndex={0}>
 							<NavLink
 								className={styles.link}
 								to={route(ROUTES.interview.questions.detail.page, id)}
@@ -60,14 +76,14 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 							<LearnQuestionButton
 								profileId={profileId}
 								questionId={id}
-								isDisabled={checksCount !== undefined && checksCount >= 3}
+								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
 							/>
 							<ResetQuestionStudyProgressButton
 								profileId={profileId}
 								questionId={id}
-								isDisabled={checksCount !== undefined && checksCount === 0}
+								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
 							/>
-						</>
+						</div>
 					}
 					className={styles.popup}
 					isOpen={isOpenQuestionActions}

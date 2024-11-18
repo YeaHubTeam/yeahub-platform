@@ -22,7 +22,8 @@
     "edit": "Edit",
     "more": "More",
     "repeat": "Repeat",
-    "learn": "Learn"
+    "learn": "Learn",
+    "support": "Support"
   },
   "tabs": {
     "main": "Home",
@@ -225,6 +226,12 @@
     "settings": {
       "sendVerificationEmail": {
         "failed": "Sending verification message failed"
+      }
+    },
+    "password": {
+      "change": {
+        "success": "Password changed successfully",
+        "failed": "Failed to change password"
       }
     }
   },
