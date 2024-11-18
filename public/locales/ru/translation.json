@@ -167,6 +167,9 @@
       "resetPassword": {
         "success": "Пароль успешно изменен",
         "failed": "Ошибка при изменении пароля"
+      },
+      "login": {
+        "failed": "Неверный email или пароль."
       }
     },
     "questions": {
