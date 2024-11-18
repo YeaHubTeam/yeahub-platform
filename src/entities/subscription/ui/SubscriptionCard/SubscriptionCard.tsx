@@ -5,14 +5,14 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { Subscribe } from '@/features/subscription/subscribe/ui/Subcribe';
 
-import { SubscriptionProps } from '../../model/types/subscription';
+import { Subscription } from '../../model/types/subscription';
 
-import styles from './Subscription.module.css';
+import styles from './SubscriptionCard.module.css';
 
-export const Subscription: FC<{ item: SubscriptionProps }> = ({ item }) => {
+export const SubscriptionCard: FC<{ item: Subscription }> = ({ item }) => {
 	return (
 		<div className={styles['subscription']}>
-			<Flex gap="8" className={styles['subscription-wrapper']}>
+			<Flex gap="8" className={styles['subscription-header']}>
 				<item.icon style={{ width: '39px', height: '39px' }} />
 				<p className={styles['subscription-name']}>{item.name}</p>
 			</Flex>

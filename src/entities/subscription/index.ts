@@ -1,2 +1,2 @@
-export { Subscription } from './ui/Subscription/Subscription';
-export type { SubscriptionProps } from './model/types/subscription';
+export { SubscriptionCard } from './ui/SubscriptionCard/SubscriptionCard';
+export type { Subscription } from './model/types/subscription';

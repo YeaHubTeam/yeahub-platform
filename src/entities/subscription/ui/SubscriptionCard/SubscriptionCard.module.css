@@ -1,9 +1,3 @@
-.subscriptions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
 .subscription {
   padding: 24px;
   width: 360px;
@@ -19,7 +13,7 @@
   transition: border 0.5s ease-in-out;
 }
 
-.subscription-wrapper {
+.subscription-header {
   margin-bottom: 8px;
 }
 

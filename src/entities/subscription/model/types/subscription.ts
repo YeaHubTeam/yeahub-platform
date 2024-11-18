@@ -1,6 +1,6 @@
 import { FC, SVGProps } from 'react';
 
-export interface SubscriptionProps {
+export interface Subscription {
 	id: number;
 	icon: string | FC<SVGProps<SVGSVGElement>>;
 	name: string;

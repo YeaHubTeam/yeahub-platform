@@ -1,3 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Subscription as SubscriptionI18 } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
 interface SubscribeProps {
@@ -5,5 +9,7 @@ interface SubscribeProps {
 }
 
 export const Subscribe = ({ className }: SubscribeProps) => {
-	return <Button className={className}>Подписаться</Button>;
+	const { t } = useTranslation(i18Namespace.subscription);
+
+	return <Button className={className}>{t(SubscriptionI18.SUBSCRIBE_ACTION)}</Button>;
 };
