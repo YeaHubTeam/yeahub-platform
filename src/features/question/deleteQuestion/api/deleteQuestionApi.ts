@@ -22,10 +22,11 @@ const deleteQuestionApi = baseApi.injectEndpoints({
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.admin.questions.page);
 				};
+
 				handleRequestToast({
 					onSuccess,
-					successMessage: Translation.TOAST_QUESTIONS_DELETE_SUCCESS,
-					failedMessage: Translation.TOAST_QUESTIONS_DELETE_FAILED,
+					successMessage: Translation.TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS,
+					failedMessage: Translation.TOAST_QUESTIONS_DELETE_SINGLE_FAILED,
 				});
 			},
 		}),

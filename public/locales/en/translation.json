@@ -160,9 +160,37 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
+      "delete":{
+        "single": {
+          "success": "The question has been successfully deleted.",
+          "failed": "Failed to delete question"
+        },
+        "multiple": {
+          "success": "Successfully deleted questions:",
+          "failed": "Failed to delete the question:"
+        }
+      }
+    },
+    "skills": {
       "delete": {
-        "success": "The question has been successfully deleted.",
-        "failed": "Failed to delete question"
+        "single": {
+          "success": "The skill has been successfully deleted",
+          "failed": "Failed to delete the skill"
+        },
+        "multiple": {
+          "success": "Successfully deleted skills:",
+          "failed": "Failed to delete the skill:"
+        }
+      }
+    },
+    "specializations": {
+      "single": {
+        "success": "The specialization has been successfully deleted",
+        "failed": "Failed to delete the specialization"
+      },
+      "multiple": {
+        "success": "Successfully deleted specializations:",
+        "failed": "Failed to delete the specialization:"
       }
     },
     "profile": {

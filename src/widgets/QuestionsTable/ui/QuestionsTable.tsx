@@ -7,6 +7,7 @@ import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -17,8 +18,8 @@ import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
 interface QuestionsTableProps {
 	questions?: Question[];
-	selectedQuestions?: number[];
-	onSelectQuestions?: (ids: number[]) => void;
+	selectedQuestions?: SelectedAdminEntities;
+	onSelectQuestions?: (ids: SelectedAdminEntities) => void;
 }
 
 export const QuestionsTable = ({
