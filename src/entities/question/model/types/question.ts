@@ -7,7 +7,7 @@ export interface Question {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc: string;
+	imageSrc: string | null;
 	keywords: string[];
 	longAnswer: string;
 	shortAnswer: string;
@@ -16,14 +16,18 @@ export interface Question {
 	createdAt: string;
 	updatedAt: string;
 	createdBy: null | string;
-	updatedBy: null;
+	updatedBy: null | string;
 	checksCount?: number;
 	questionSpecializations?: Specialization[];
 	questionSkills?: Skill[];
 	complexity?: number;
-	specializations: number[];
-	skills: number[];
-	rating: number;
+	specializations?: number[];
+	skills?: number[];
+	code: null | string;
+	profileId?: string;
+	questionId?: number;
+	isLearned?: boolean;
+	lastUpdate?: string;
 }
 
 export interface QuestionsListParams {

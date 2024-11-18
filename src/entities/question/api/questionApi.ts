@@ -2,6 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { Response } from '@/shared/types/types';
 
+import { questionApiUrls } from '../model/constants/question';
 import {
 	Question,
 	QuestionsListParams,
@@ -13,14 +14,14 @@ const questionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		getQuestionsList: build.query<Response<Question[]>, QuestionsListParams>({
 			query: (params) => ({
-				url: '/questions',
-				params,
+				url: questionApiUrls.questions,
+				params: { ...params, limit: 10 },
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),
 		getQuestionById: build.query<Question, QuestionByIdParams>({
 			query: ({ questionId, profileId }) => ({
-				url: `/questions/${questionId}`,
+				url: `${questionApiUrls.questions}/${questionId}`,
 				params: {
 					profileId,
 				},
@@ -29,7 +30,7 @@ const questionApi = baseApi.injectEndpoints({
 		}),
 		getLearnedQuestions: build.query<Response<Question[]>, QuestionsLearnedParams>({
 			query: (params) => ({
-				url: `/interview-preparation/learn/${params.profileId}`,
+				url: `interview-preparation/learn/${params.profileId}`,
 				params,
 			}),
 			providesTags: [ApiTags.QUESTIONS_LEARNED],
