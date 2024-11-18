@@ -16,13 +16,6 @@
   display: none; 
 }
 
-.name {
-  width: 100px;
-  height: 32px;
-  color: var(--text-color-primary);
-  transition: opacity 0.7s ease-in-out;
-}
-
 
 @media (width <= 480px) {
   .header {
