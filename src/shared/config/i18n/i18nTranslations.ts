@@ -138,6 +138,7 @@ export enum Translation {
 	TOAST_CHANGE_PASSWORD_FAILED = 'toast.password.change.failed',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
+	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 
 	ERROR404_IMAGE_ALT = 'error.alt',
 
