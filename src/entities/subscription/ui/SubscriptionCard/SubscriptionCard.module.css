@@ -1,9 +1,3 @@
-.subscriptions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
 .subscription {
   padding: 24px;
   width: 360px;
@@ -19,12 +13,12 @@
   transition: border 0.5s ease-in-out;
 }
 
-.subscription-wrapper {
+.subscription-header {
   margin-bottom: 8px;
 }
 
 .subscription-name {
-  color: var(--text-black);
+  color: var(--text-color-primary);
   line-height: 38px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-large-30);
@@ -35,7 +29,7 @@
   margin-bottom: 14px;
   height: 36px;
   overflow: hidden;
-  color: var(--text-black);
+  color: var(--text-color-primary);
   line-height: 18px;
   font-weight: var(--font-weight-400);
   font-size: var( --font-size-p-s);
@@ -45,7 +39,7 @@
 
 .subscription-price {
   margin-bottom: 20px;
-  color: var(--text-black);
+  color: var(--text-color-primary);
   line-height: 19px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
@@ -55,18 +49,6 @@
 .subscription-button {
   margin-bottom: 24px;
   width: 100%;
-}
-
-.subscription-items {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.subscription-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .subscription-check {

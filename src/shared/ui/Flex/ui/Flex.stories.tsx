@@ -120,6 +120,13 @@ export const Gap12: Story = {
 	},
 };
 
+export const Gap14: Story = {
+	args: {
+		gap: '14',
+		children,
+	},
+};
+
 export const Gap16: Story = {
 	args: {
 		gap: '16',

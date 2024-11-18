@@ -508,3 +508,12 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 }
+
+export enum Subscription {
+	SUBSCRIBE_ACTION = 'subscribeAction',
+}
+
+export enum SubscriptionCard {
+	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+}
