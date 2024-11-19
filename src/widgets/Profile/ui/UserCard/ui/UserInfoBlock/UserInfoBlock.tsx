@@ -15,6 +15,7 @@ import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 
 interface UserInfoProps {
 	profile: FullProfile;
@@ -73,7 +74,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						<span className={styles['card-verify-span']}>{email}</span>
 					</Flex>
 				) : (
-					<Link to={ROUTES.settings.page}>
+					<Link to={EMAIL_VERIFY_SETTINGS_TAB}>
 						<Flex align="center" gap="4">
 							<Time className={styles['svg-time']} />
 							<span className={styles['card-verify-link']}>
