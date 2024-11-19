@@ -1,12 +1,16 @@
 import styles from './ProfileIcon.module.css';
-export const ProfileIcon = () => {
+
+interface ProfileIconProps {
+	isCurrentColor?: boolean;
+}
+export const ProfileIcon = ({ isCurrentColor }: ProfileIconProps) => {
 	return (
 		<div className={styles.container}>
 			<svg
 				width="16"
 				height="21"
 				viewBox="0 0 16 21"
-				fill="#303030"
+				fill={isCurrentColor ? 'currentColor' : '#303030'}
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path

@@ -1,13 +1,14 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Icon, IconButton, Popover } from 'yeahub-ui-kit';
+import { useNavigate } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ActionsButton, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Button } from '@/shared/ui/Button';
+import { IconButton } from '@/shared/ui/IconButton';
+import { OpenIcon } from '@/shared/ui/Icons/OpenIcon';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
@@ -26,81 +27,73 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
-	const { t: tQuestions } = useI18nHelpers(i18Namespace.questions);
-	const { t: tTranslation } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useI18nHelpers([i18Namespace.translation, i18Namespace.questions]);
+	const navigate = useNavigate();
 
 	const { data: profile } = useProfileQuery();
 	const isEmailVerified = profile?.isEmailVerified;
 
-	const [isOpenQuestionActions, setIsOpenQuestionActions] = useState(false);
-
-	const togglePopup = () => {
-		setIsOpenQuestionActions((prev) => !prev);
-	};
-
-	const closePopup = () => {
-		setIsOpenQuestionActions(false);
-	};
-
-	const handleClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (e.target && (e.target as HTMLElement).tagName === 'BUTTON') {
-			closePopup();
-		}
-	};
-
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-		if (e.key === 'Escape') {
-			closePopup();
-		}
-	};
+	const settingsMenuItems: PopoverMenuItem[] = [
+		{
+			icon: <OpenIcon isCurrentColor />,
+			title: t(ActionsButton.MORE),
+			onClick: () => {
+				navigate(route(ROUTES.interview.questions.detail.page, id));
+			},
+		},
+		{
+			renderComponent: (onToggleOpenPopover) => (
+				<LearnQuestionButton
+					profileId={profileId}
+					questionId={id}
+					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
+					onSuccess={onToggleOpenPopover}
+					isPopover
+				/>
+			),
+		},
+		{
+			renderComponent: (onToggleOpenPopover) => (
+				<ResetQuestionStudyProgressButton
+					profileId={profileId}
+					questionId={id}
+					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
+					onSuccess={onToggleOpenPopover}
+					isPopover
+				/>
+			),
+		},
+	];
 
 	return (
-		<div className={styles.wrapper}>
+		<div>
 			<div className={styles.header}>
 				<ul className={styles['header-params']}>
 					<QuestionParam label="Рейтинг" value={rate} />
 					<QuestionParam label="Сложность" value={complexity} />
 				</ul>
-				<Popover
-					body={
-						<div role="button" onClick={handleClickButton} onKeyDown={handleKeyDown} tabIndex={0}>
-							<NavLink to={route(ROUTES.interview.questions.detail.page, id)}>
-								<Button variant="tertiary" preffix={<Icon icon="sidebarSimple" size={24} />}>
-									{tTranslation(ActionsButton.MORE)}
-								</Button>
-							</NavLink>
-							<LearnQuestionButton
-								profileId={profileId}
-								questionId={id}
-								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
-							/>
-							<ResetQuestionStudyProgressButton
-								profileId={profileId}
-								questionId={id}
-								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
-							/>
-						</div>
-					}
-					className={styles.popup}
-					isOpen={isOpenQuestionActions}
-					onClickOutside={closePopup}
-					placement="left-start"
-				>
-					<IconButton
-						type="button"
-						aria-label="details"
-						className={styles['details-button']}
-						icon={<Icon icon="dotsThreeVertical" />}
-						theme="link"
-						onClick={togglePopup}
-						aria-expanded={isOpenQuestionActions}
-					/>
+				<Popover menuItems={settingsMenuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="go to preferences"
+							className={styles['details-button']}
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" />}
+							size="S"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
 				</Popover>
 			</div>
 			{imageSrc && (
-				<img className={styles.image} alt={tQuestions(Questions.IMAGE_ALT)} src={imageSrc} />
+				<img
+					className={styles.image}
+					alt={t(Questions.IMAGE_ALT, { ns: i18Namespace.questions })}
+					src={imageSrc}
+				/>
 			)}
-			<div className={styles.content}>
+			<div>
 				<TextHtml html={shortAnswer} />
 			</div>
 		</div>

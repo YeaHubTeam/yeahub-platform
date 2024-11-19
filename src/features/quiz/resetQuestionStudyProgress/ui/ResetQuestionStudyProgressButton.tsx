@@ -7,12 +7,16 @@ import { Button } from '@/shared/ui/Button';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
+import styles from './ResetQuestionStudyProgressButton.module.css';
+
 interface ResetQuestionStudyProgressProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
 	isDisabled: boolean;
+	isPopover?: boolean;
 	variant?: 'tertiary' | 'link-gray';
+	onSuccess?: () => void;
 }
 
 export const ResetQuestionStudyProgressButton = ({
@@ -20,7 +24,9 @@ export const ResetQuestionStudyProgressButton = ({
 	questionId,
 	isSmallIcon,
 	isDisabled,
+	isPopover = false,
 	variant = 'tertiary',
+	onSuccess,
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -28,6 +34,7 @@ export const ResetQuestionStudyProgressButton = ({
 	const handleClick = async () => {
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
+			onSuccess?.();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error('Не удалось сбросить прогресс вопроса:', error);
@@ -38,6 +45,7 @@ export const ResetQuestionStudyProgressButton = ({
 
 	return (
 		<Button
+			className={isPopover ? styles.button : ''}
 			preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} size={iconSize} />}
 			variant={variant}
 			onClick={handleClick}

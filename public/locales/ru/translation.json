@@ -15,7 +15,8 @@
   "avatar": "Аватар",
   "userPreferences": {
     "myProfile": "Мой профиль",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "menu": "Меню"
   },
   "tabs": {
     "main": "Главная",
