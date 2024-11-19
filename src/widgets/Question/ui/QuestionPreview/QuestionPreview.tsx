@@ -48,6 +48,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					questionId={id}
 					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
 					onSuccess={onToggleOpenPopover}
+					isPopover
 				/>
 			),
 		},
@@ -58,6 +59,7 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 					questionId={id}
 					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
 					onSuccess={onToggleOpenPopover}
+					isPopover
 				/>
 			),
 		},

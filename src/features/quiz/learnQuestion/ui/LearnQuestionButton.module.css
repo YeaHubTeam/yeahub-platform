@@ -1,22 +1,9 @@
-.btn {
-  display: flex;
-  justify-content: start;
+.button {
+  justify-content: flex-start;
   padding: 6px 10px;
   border-radius: 12px;
-
-  &:hover {
-    color: var(--color-purple-800)
-  }
 }
 
-@media (width <= 480px) {
-  .btn {
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-p-s);
-  }
-
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
+.button:focus {
+  border: 1px solid transparent;
 }

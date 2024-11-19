@@ -5,10 +5,5 @@
 }
 
 .button:focus {
-  border: none;
-}
-
-.button:hover,
-.button:focus {
-  color: var(--color-purple-800);
+  border: 1px solid transparent;
 }

@@ -1,11 +1,11 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
-
-import styles from './QuestionActions.module.css';
 
 interface QuestionActionsProps {
 	profileId: number | string;
@@ -14,23 +14,28 @@ interface QuestionActionsProps {
 }
 
 export const QuestionActions = ({ profileId, questionId, checksCount }: QuestionActionsProps) => {
+	const { isMobile } = useScreenSize();
 	const { data: profile } = useProfileQuery();
+
+	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
 	const isEmailVerified = profile?.isEmailVerified;
 
 	return (
-		<Card className={styles['question-actions']}>
-			<div className={styles.wrapper}>
+		<Card>
+			<Flex justify="center" gap="12" align="center">
 				<LearnQuestionButton
 					profileId={profileId}
 					questionId={questionId}
 					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
+					variant={buttonVariant}
 				/>
 				<ResetQuestionStudyProgressButton
 					profileId={profileId}
 					questionId={questionId}
 					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
+					variant={buttonVariant}
 				/>
-			</div>
+			</Flex>
 		</Card>
 	);
 };

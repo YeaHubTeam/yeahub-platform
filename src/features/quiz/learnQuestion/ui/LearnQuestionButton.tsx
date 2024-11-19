@@ -14,6 +14,8 @@ interface LearnQuestionProps {
 	questionId: number | string;
 	isSmallIcon?: boolean;
 	isDisabled: boolean;
+	isPopover?: boolean;
+	variant?: 'tertiary' | 'link-gray';
 	onSuccess?: () => void;
 }
 
@@ -22,6 +24,8 @@ export const LearnQuestionButton = ({
 	questionId,
 	isSmallIcon,
 	isDisabled,
+	isPopover = false,
+	variant = 'tertiary',
 	onSuccess,
 }: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
@@ -44,9 +48,9 @@ export const LearnQuestionButton = ({
 
 	return (
 		<Button
-			className={styles.btn}
+			className={isPopover ? styles.button : ''}
 			preffix={<Icon icon="student" size={iconSize} />}
-			variant="tertiary"
+			variant={variant}
 			onClick={handleLearnQuestion}
 			disabled={isLoading || isDisabled}
 		>
