@@ -56,12 +56,12 @@ export const Drawer = ({
 	return createPortal(
 		<div
 			aria-hidden={isOpen}
-			className={classNames(styles['drawer-container'], className, {
+			className={classNames(styles['drawer-container'], {
 				[styles['open']]: isOpen,
 			})}
 		>
 			<div
-				className={classNames(styles['drawer'], styles[position], {
+				className={classNames(styles['drawer'], styles[position], className, {
 					[styles['absolute']]: rootName === 'mainLayout',
 				})}
 				role="dialog"

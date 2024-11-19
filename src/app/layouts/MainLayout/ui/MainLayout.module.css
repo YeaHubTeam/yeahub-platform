@@ -32,6 +32,14 @@
   max-width: 1600px;
 }
 
+.sidebar-wrapper {
+  padding: 16px;
+}
+
+.drawer {
+  width: 280px;
+}
+
 @media (width <= 480px) {
   .main {
     padding: 16px;

@@ -21,6 +21,10 @@ interface SidebarProps {
 	 * Sidebar menu items list
 	 */
 	menuItems: MenuItem[];
+	/**
+	 * Is a mobile option
+	 */
+	isMobileSidebar?: boolean;
 }
 
 /**
@@ -28,14 +32,16 @@ interface SidebarProps {
  * @param props
  */
 
-export const Sidebar = ({ menuItems }: SidebarProps) => {
+export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) => {
 	const { isMobile } = useScreenSize();
 	const { t } = useI18nHelpers([i18Namespace.translation, i18Namespace.a11y]);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 
 	useEffect(() => {
-		isMobile && setIsOpenNavSidebar(true);
-	}, [isMobile]);
+		if (!isMobileSidebar) {
+			isMobile && setIsOpenNavSidebar(true);
+		}
+	}, [isMobile, isMobileSidebar]);
 
 	const handleToggleSidebar = () => {
 		setIsOpenNavSidebar((prev) => !prev);
@@ -45,7 +51,10 @@ export const Sidebar = ({ menuItems }: SidebarProps) => {
 
 	return (
 		<aside
-			className={classNames(styles.sidebar, { [styles.closing]: isOpenNavSidebar })}
+			className={classNames(styles.sidebar, {
+				[styles.closing]: isOpenNavSidebar,
+				[styles['desktop-sidebar']]: !isMobileSidebar,
+			})}
 			data-testid="Sidebar"
 		>
 			<Flex direction="column" maxHeight>

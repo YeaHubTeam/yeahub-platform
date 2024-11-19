@@ -11,6 +11,7 @@ export enum Translation {
 	LOADING = 'loading',
 	HELLO = 'hello',
 	SEARCH = 'search',
+	USERPREFERENCES_MENU = 'userPreferences.menu',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 	SETTINGS = 'settings',
