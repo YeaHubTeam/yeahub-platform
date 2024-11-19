@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,22 +7,20 @@ import { Button } from '@/shared/ui/Button';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
-import styles from './ResetQuestionStudyProgressButton.module.css';
-
 interface ResetQuestionStudyProgressProps {
-	className?: string;
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
 	isDisabled: boolean;
+	variant?: 'tertiary' | 'link-gray';
 }
 
 export const ResetQuestionStudyProgressButton = ({
-	className = '',
 	profileId,
 	questionId,
 	isSmallIcon,
 	isDisabled,
+	variant = 'tertiary',
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -41,16 +38,8 @@ export const ResetQuestionStudyProgressButton = ({
 
 	return (
 		<Button
-			className={classNames(styles.btn, className)}
-			preffix={
-				<Icon
-					className={styles.icon}
-					icon="clockCounterClockwise"
-					key={'clockCounterClockwise'}
-					size={iconSize}
-				/>
-			}
-			variant="tertiary"
+			preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} size={iconSize} />}
+			variant={variant}
 			onClick={handleClick}
 			disabled={isLoading || isDisabled}
 		>

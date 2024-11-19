@@ -19,30 +19,6 @@
   border-radius: 20px;
 }
 
-.button {
-  justify-content: flex-start;
-  align-items: center;
-  padding: 6px 20px;
-
-  & svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  &:hover {
-    color: var(--color-purple-700);
-  }
-
-  &:disabled:hover {
-    color: var(--button-text-color-tertiary-disabled)
-  }
-}
-
-
-.link {
-  color: inherit;
-}
-
 .details-button {
   position: absolute;
   top: -8px;

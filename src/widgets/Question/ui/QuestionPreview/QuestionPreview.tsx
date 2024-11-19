@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon, IconButton, Popover } from 'yeahub-ui-kit';
 
-import OpenSideBarIcon from '@/shared/assets/icons/openSideBar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { ActionsButton, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -65,22 +64,17 @@ export const QuestionPreview = ({ question, profileId }: QuestionProps) => {
 				<Popover
 					body={
 						<div role="button" onClick={handleClickButton} onKeyDown={handleKeyDown} tabIndex={0}>
-							<NavLink
-								className={styles.link}
-								to={route(ROUTES.interview.questions.detail.page, id)}
-							>
-								<Button className={styles.button} variant="tertiary" preffix={<OpenSideBarIcon />}>
+							<NavLink to={route(ROUTES.interview.questions.detail.page, id)}>
+								<Button variant="tertiary" preffix={<Icon icon="sidebarSimple" size={24} />}>
 									{tTranslation(ActionsButton.MORE)}
 								</Button>
 							</NavLink>
 							<LearnQuestionButton
-								className={styles.button}
 								profileId={profileId}
 								questionId={id}
 								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
 							/>
 							<ResetQuestionStudyProgressButton
-								className={styles.button}
 								profileId={profileId}
 								questionId={id}
 								isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
