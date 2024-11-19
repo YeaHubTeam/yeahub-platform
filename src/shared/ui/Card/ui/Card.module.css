@@ -26,6 +26,10 @@
   border-radius: 12px;
 }
 
+.card-title-centered {
+  justify-content: center;
+}
+
 .content-shadow {
   box-shadow: 0 4px 10px 0 #6A63761A;
 }

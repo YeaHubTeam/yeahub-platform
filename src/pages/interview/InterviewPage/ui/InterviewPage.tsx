@@ -191,6 +191,7 @@ const InterviewPage = () => {
 					actionTitle={t(statsActionTitleKey)}
 					actionRoute={statsActionRoute}
 					actionDisabled={profile?.isEmailVerified && newUser}
+					titleCentered={true}
 				>
 					<PassedQuestionChart
 						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
