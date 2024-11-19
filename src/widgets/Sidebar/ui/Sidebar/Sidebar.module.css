@@ -70,7 +70,7 @@
 }
 
 @media (width <=480px) {
-  .sidebar {
+  .desktop-sidebar {
     display: none;
   }
 }

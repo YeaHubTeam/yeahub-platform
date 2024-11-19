@@ -15,7 +15,8 @@
   "avatar": "Avatar",
   "userPreferences": {
     "myProfile": "My profile",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "menu": "Menu"
   },
   "buttons": {
     "fillProfile": "Fill Profile",

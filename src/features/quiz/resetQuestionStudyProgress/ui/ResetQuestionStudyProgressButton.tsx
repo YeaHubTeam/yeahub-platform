@@ -14,6 +14,7 @@ interface ResetQuestionStudyProgressProps {
 	questionId: number | string;
 	isSmallIcon?: boolean;
 	isDisabled: boolean;
+	onSuccess?: () => void;
 }
 
 export const ResetQuestionStudyProgressButton = ({
@@ -21,6 +22,7 @@ export const ResetQuestionStudyProgressButton = ({
 	questionId,
 	isSmallIcon,
 	isDisabled,
+	onSuccess,
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -28,6 +30,7 @@ export const ResetQuestionStudyProgressButton = ({
 	const handleClick = async () => {
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
+			onSuccess?.();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error('Не удалось сбросить прогресс вопроса:', error);
