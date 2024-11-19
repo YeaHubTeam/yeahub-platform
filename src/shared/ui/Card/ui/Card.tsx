@@ -22,7 +22,6 @@ interface CardProps {
 	withShadow?: boolean;
 	withOutsideShadow?: boolean;
 	isActionPositionBottom?: boolean;
-	titleCentered?: boolean;
 }
 
 interface ExpandIconProps {
@@ -81,7 +80,6 @@ export const Card = ({
 	actionRoute = '',
 	actionDisabled = false,
 	isActionPositionBottom = false,
-	titleCentered = false,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -133,11 +131,7 @@ export const Card = ({
 			}}
 		>
 			{(title || actionRoute) && (
-				<div
-					className={classNames(styles['card-header'], {
-						[styles['card-title-centered']]: titleCentered,
-					})}
-				>
+				<div className={classNames(styles['card-header'])}>
 					{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
 					{actionRoute ? (
 						<Link
