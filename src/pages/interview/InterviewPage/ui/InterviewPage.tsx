@@ -122,17 +122,19 @@ const InterviewPage = () => {
 		return <InterviewPageSkeleton />;
 	}
 
-	const interviewPreparationActionTitleKey = !profile?.isEmailVerified
-		? Interview.VERIFY_EMAIL_LINK
-		: lastActiveQuizInfo
-			? Interview.PREPARATION_ACTIVELINKTEXT
-			: Interview.PREPARATION_NOACTIVELINKTEXT;
+	const interviewPreparationActionTitleKey =
+		!profile?.isEmailVerified && !isSpecializationEmpty
+			? Interview.VERIFY_EMAIL_LINK
+			: lastActiveQuizInfo
+				? Interview.PREPARATION_ACTIVELINKTEXT
+				: Interview.PREPARATION_NOACTIVELINKTEXT;
 
-	const interviewPreparationActionRoute = !profile?.isEmailVerified
-		? EMAIL_VERIFY_SETTINGS_TAB
-		: lastActiveQuizInfo
-			? ROUTES.interview.new.page
-			: ROUTES.interview.quiz.page;
+	const interviewPreparationActionRoute =
+		!profile?.isEmailVerified && !isSpecializationEmpty
+			? EMAIL_VERIFY_SETTINGS_TAB
+			: lastActiveQuizInfo
+				? ROUTES.interview.new.page
+				: ROUTES.interview.quiz.page;
 
 	const statsActionTitleKey = !profile?.isEmailVerified
 		? Interview.VERIFY_EMAIL_LINK
