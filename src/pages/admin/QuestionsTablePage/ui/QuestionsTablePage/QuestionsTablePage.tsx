@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
+import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
 
 import { QuestionsTable } from '@/widgets/QuestionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -58,7 +59,8 @@ const QuestionsPage = () => {
 				to="create"
 				showRemoveButton={selectedQuestions.length > 0}
 				onSearch={onChangeSearch}
-				renderAction={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
+				renderRemoveButton={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
+				renderFilter={() => <QuestionsFilterSet />}
 			/>
 			<Card className={styles.content}>
 				<QuestionsTable

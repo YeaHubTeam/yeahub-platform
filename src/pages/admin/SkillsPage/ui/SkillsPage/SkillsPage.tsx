@@ -48,7 +48,7 @@ const SkillsPage = () => {
 					to="create"
 					showRemoveButton={selectedSkills.length > 0}
 					onSearch={onChangeSearch}
-					renderAction={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
+					renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
 				/>
 				<SkillsTable
 					skills={skills?.data}
