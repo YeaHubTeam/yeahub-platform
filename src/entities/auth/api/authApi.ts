@@ -1,8 +1,11 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import i18n from '@/shared/config/i18n/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { toast } from '@/shared/ui/Toast';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { profileActions } from '@/entities/profile';
@@ -33,6 +36,7 @@ export const authApi = baseApi.injectEndpoints({
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_AUTH_LOGIN_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

@@ -24,3 +24,10 @@ export interface GetLoginError {
 		};
 	};
 }
+
+export interface SelectedAdminEntity {
+	id: number;
+	title: string;
+}
+
+export type SelectedAdminEntities = SelectedAdminEntity[];

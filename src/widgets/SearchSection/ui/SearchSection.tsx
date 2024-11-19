@@ -16,16 +16,16 @@ import styles from './SearchSection.module.css';
 
 interface SearchSectionProps {
 	to?: string;
-	onRemove?: () => void;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
+	renderAction: () => React.ReactNode;
 }
 
 export const SearchSection = ({
 	to = '/',
-	onRemove,
 	onSearch,
 	showRemoveButton,
+	renderAction,
 }: SearchSectionProps) => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
@@ -45,13 +45,7 @@ export const SearchSection = ({
 					preffix={<Icon icon={'search'} className={styles['search-svg']} />}
 					placeholder={t(Translation.SEARCH)}
 				/>
-
-				{showRemoveButton && (
-					<Button onClick={onRemove} variant="destructive-tertiary">
-						{t(Translation.REMOVE_SELECTED)}
-					</Button>
-				)}
-
+				{showRemoveButton && renderAction()}
 				<Button>
 					<NavLink className={styles.link} to={to}>
 						{t(Translation.CREATE)}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import Logo from '@/shared/assets/icons/logo.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { AppLogo } from '@/shared/ui/AppLogo';
 import { BurgerMenu } from '@/shared/ui/BurgerMenu';
 
 import { UserPreferences } from '@/features/common/user-preferences';
@@ -30,7 +30,7 @@ const MemoHeader = () => {
 		<header className={styles.header}>
 			{isMobile && (
 				<NavLink to={ROUTES.appRoute} className={styles.logo}>
-					<Logo className={styles.name} />
+					<AppLogo isOpen />
 				</NavLink>
 			)}
 

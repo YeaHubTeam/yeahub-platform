@@ -1,9 +1,8 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { toast } from '@/shared/ui/Toast';
+import { handleRequestToast } from '@/shared/helpers/handleRequestToast';
 
 import { Question } from '@/entities/question';
 
@@ -18,16 +17,17 @@ const deleteQuestionApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],
 			async onQueryStarted(_, { queryFulfilled, extra }) {
-				try {
+				const onSuccess = async () => {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_QUESTIONS_DELETE_SUCCESS));
 					typedExtra.navigate(ROUTES.admin.questions.page);
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_QUESTIONS_DELETE_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
+				};
+
+				handleRequestToast({
+					onSuccess,
+					successMessage: Translation.TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS,
+					failedMessage: Translation.TOAST_QUESTIONS_DELETE_SINGLE_FAILED,
+				});
 			},
 		}),
 	}),
