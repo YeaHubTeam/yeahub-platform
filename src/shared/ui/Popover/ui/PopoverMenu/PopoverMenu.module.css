@@ -8,14 +8,6 @@
   border: none;
 }
 
-/* .button:hover path, */
-
-/* .button:focus path { */
-
-/*	fill: var(--color-purple-800); */
-
-/* } */
-
 .button:hover,
 .button:focus {
   color: var(--color-purple-800);

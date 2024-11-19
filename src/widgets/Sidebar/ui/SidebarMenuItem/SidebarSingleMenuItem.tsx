@@ -17,7 +17,7 @@ const SidebarSingleMenuItem = ({ fullWidth, menuItem }: SidebarSingleMenuItemPro
 	const ImageComponent = menuItem.icon;
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
-	console.log(fullWidth);
+
 	return (
 		<NavLink
 			end
