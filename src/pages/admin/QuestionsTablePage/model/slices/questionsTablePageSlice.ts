@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { SelectedAdminEntities } from '@/shared/types/types';
+
+import { deleteMultipleQuestions } from '@/features/question/deleteQuestions';
+
 import { QuestionsTablePageState } from '../types/questionsTablePageTypes';
 
 const initialState: QuestionsTablePageState = {
@@ -14,13 +18,19 @@ const questionsTablePageSlice = createSlice({
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
+			state.selectedQuestions = [];
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
 		},
-		setSelectedQuestions: (state, action: PayloadAction<number[]>) => {
+		setSelectedQuestions: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedQuestions = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(deleteMultipleQuestions.fulfilled, (state) => {
+			state.selectedQuestions = [];
+		});
 	},
 });
 

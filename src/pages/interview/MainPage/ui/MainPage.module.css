@@ -25,18 +25,10 @@
 }
 
 .text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 480px;
-  color: var(--text-color-more-lightest);
+  display: flex;
+  margin: 0 auto;
+  margin-top: 60px; 
+  max-width: 480px; 
+  color: var(--text-color-more-lightest); 
   text-align: center;
-  transform: translate3d(-50%, -50%, 0);
-}
-
-
-@media (width < 768px) {
-  .text {
-    top: 60%;
-  }   
 }

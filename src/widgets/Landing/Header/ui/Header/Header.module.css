@@ -7,13 +7,6 @@
   width: 100%;
 }
 
-.container {
-  margin: 16px 0 ;
-  width: 100%;
-  max-width: 135px;
-  height: 32px;
-}
-
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -32,8 +25,8 @@
 @media screen and (width <= 576px) {
   .header {
     margin-top: 0;
-    margin-bottom: 7px;
-    padding: 0 16px;
+    margin-bottom: 32px;
+    padding: 16px 16px 0;
   }
 }
 

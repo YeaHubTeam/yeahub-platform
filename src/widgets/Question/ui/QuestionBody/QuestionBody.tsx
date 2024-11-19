@@ -13,15 +13,11 @@ export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => 
 		<>
 			<Card className={styles.wrapper}>
 				<h3 className={styles.title}>Краткий ответ</h3>
-				<p className={styles.text}>
-					<TextHtml html={shortAnswer ?? 'Краткий ответ отсутствует'} />
-				</p>
+				<TextHtml className={styles.text} html={shortAnswer ?? 'Краткий ответ отсутствует'} />
 			</Card>
 			<Card expandable>
 				<h3 className={styles.title}>Развёрнутый ответ</h3>
-				<p className={styles.text}>
-					<TextHtml html={longAnswer ?? 'Ответ отсутствует'} />
-				</p>
+				<TextHtml className={styles.text} html={longAnswer ?? 'Ответ отсутствует'} />
 			</Card>
 		</>
 	);

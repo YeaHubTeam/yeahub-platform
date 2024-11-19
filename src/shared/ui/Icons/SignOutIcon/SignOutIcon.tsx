@@ -1,12 +1,17 @@
 import styles from './SignOutIcon.module.css';
-export const SignOutIcon = () => {
+
+interface SignOutIconProps {
+	isCurrentColor?: boolean;
+}
+
+export const SignOutIcon = ({ isCurrentColor }: SignOutIconProps) => {
 	return (
 		<div className={styles.container}>
 			<svg
 				width="22"
 				height="22"
 				viewBox="0 0 22 22"
-				fill="#303030"
+				fill={isCurrentColor ? 'currentColor' : '#303030'}
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path

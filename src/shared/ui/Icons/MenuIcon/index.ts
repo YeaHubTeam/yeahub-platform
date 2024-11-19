@@ -1,0 +1,1 @@
+export { MenuIcon } from './MenuIcon';

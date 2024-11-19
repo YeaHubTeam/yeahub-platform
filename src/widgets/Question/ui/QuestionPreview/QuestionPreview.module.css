@@ -19,31 +19,15 @@
   border-radius: 20px;
 }
 
-.button {
-  justify-content: flex-start;
-  align-items: center;
-  padding: 6px 20px;
-
-  & svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  &:hover {
-    color: var(--color-purple-700);
-  }
-}
-
-
-.link {
-  color: inherit;
-}
-
 .details-button {
   position: absolute;
   top: -8px;
-  right: -40px;
+  right: -20px;
   cursor: pointer;
+
+  &:focus {
+    border: 1px solid transparent;
+  }
 }
 
 .details-button svg {
