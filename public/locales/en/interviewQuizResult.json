@@ -1,6 +1,6 @@
 {
   "resultInterview": {
-    "resultTitle": "Interview result {{title}}",
+    "resultTitle": "Interview result № {{title}}",
     "questionTitle": "Statistics of passed questions for all categories",
     "allPassedQuestionTitle": "Passed interview questions lits"
   },
