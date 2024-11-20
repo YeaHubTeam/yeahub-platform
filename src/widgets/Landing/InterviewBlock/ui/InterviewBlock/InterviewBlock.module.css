@@ -11,12 +11,6 @@
 
 }
 
-.join-button {
-  width: 240px;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-l);
-}
-
 .container {
   display: flex;
   justify-content: flex-start;
@@ -165,12 +159,6 @@
   .right-block::before,
   .right-block::after {
     content: none;
-  }
-
-  .join-button {
-    padding: 0;
-    width: 170px;
-    font-size: var(--font-size-p-l);
   }
 }
 
