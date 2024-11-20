@@ -3,8 +3,8 @@
 
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
-if ! echo "$branch_name" | grep -qE "^(feature|fix|release)/YH-[0-9]+$"; then
-  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/'"
+if ! echo "$branch_name" | grep -qE "^(((feature|fix)\/YH-[0-9]+)|(release\/\d+.\d+.\d+))+$"; then
+  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/X.X.X'"
   exit 1
 fi
 

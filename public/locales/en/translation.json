@@ -30,6 +30,7 @@
     "main": "Home",
     "platform": "Platform",
     "admin": "Editor",
+    "settings": "Settings",
     "profile": "My Profile",
     "specialization": "Specialization",
     "education": {

@@ -13,13 +13,13 @@
 }
 
 .text pre {
-  overflow-x: auto;
-  max-width: 100%;
-  white-space: pre;
   padding: 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
   border-radius: 8px;
   background-color: var(--color-black-30);
-  box-sizing: border-box;
+  white-space: pre;
 }
 
 .text pre::-webkit-scrollbar {
@@ -27,12 +27,12 @@
 }
 
 .text pre::-webkit-scrollbar-thumb {
-  background-color: var(--color-black-200);
   border-radius: 3px;
+  background-color: var(--color-black-200);
 }
 
 .text pre::-webkit-scrollbar-track {
-  background-color: var(--color-black-50);
   border-radius: 3px;
+  background-color: var(--color-black-50);
 }
 
