@@ -34,7 +34,7 @@ export const InterviewBlock = () => {
 					<span>{t(Landing.QUESTIONS_TOP)}</span>
 					<InterviewTitle />
 					<p className={styles['article-description']}>{t(Landing.HEADER_DESCRIPTION)}</p>
-					<Button variant="primary" className={styles['join-button']} onClick={handleNavigate}>
+					<Button variant="primary" size="L" onClick={handleNavigate}>
 						{t(Landing.JOIN)}
 					</Button>
 				</div>
