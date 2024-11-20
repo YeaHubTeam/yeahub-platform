@@ -5,7 +5,7 @@ import DoubleCheck from '@/shared/assets/icons/DoubleCheck.svg';
 import Time from '@/shared/assets/icons/Time.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
@@ -15,7 +15,6 @@ import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 
 import styles from './UserInfoBlock.module.css';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 
 interface UserInfoProps {
 	profile: FullProfile;

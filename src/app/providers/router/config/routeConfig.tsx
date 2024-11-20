@@ -8,6 +8,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SettingsIcon from '@/shared/assets/icons/Settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
@@ -77,6 +78,12 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.profile.route,
 		title: 'tabs.profile',
 		icon: ProfileIcon,
+	},
+	{
+		type: 'single',
+		route: ROUTES.settings.page,
+		title: 'tabs.settings',
+		icon: SettingsIcon,
 	},
 	{
 		type: 'category',

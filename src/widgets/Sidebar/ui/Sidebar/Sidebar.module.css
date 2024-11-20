@@ -50,17 +50,30 @@
   width: 88px;
 }
 
-.support-button {
-  margin: auto 20px 20px;
+.bottom-actions {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.sidebar-bottom-button {
+  min-width: auto;
+  height: 48px;
   transition: all 0.4s;
 }
 
-.support-button-hide {
+.sidebar-bottom-button > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-bottom-button-hide > span {
+  position: absolute;
+  z-index: -1;
+  margin: 0;
   min-width: 0;
+  transition: all 0.3s;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.4s;
-  transition: opacity 0.3s;
 }
 
 @media (width <=768px) {
