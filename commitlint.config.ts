@@ -13,6 +13,10 @@ module.exports = {
         'header-match-team-pattern': (parsed) => {
           const { header } = parsed;
 
+          if (header.includes('Release')) {
+            return [true, ''];
+          }
+
           if (!matchOptionalTicketNumberWithSpaceAfter.test(header)) {
             return [false, 'Коммит должен начинаться с YH-XXX: '];
           }
