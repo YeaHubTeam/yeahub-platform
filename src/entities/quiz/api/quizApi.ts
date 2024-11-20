@@ -1,11 +1,12 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { handleRequestToast } from '@/shared/helpers/handleRequestToast';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
+import { toast } from '@/shared/ui/Toast';
 
 import { LS_ACTIVE_QUIZ_KEY } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
@@ -33,17 +34,17 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.NEW_QUIZ],
 			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
-				const onSuccess = async () => {
+				try {
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.interview.new.page);
 					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
-				};
-				handleRequestToast({
-					onSuccess,
-					successMessage: Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS,
-					failedMessage: Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED,
-				});
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
 			},
 		}),
 		getActiveQuiz: build.query<Response<NewQuizResponse[]>, InterviewQuizGetRequest>({
@@ -104,17 +105,18 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ, ApiTags.INTERVIEW_STATISTICS],
 			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
-				const onSuccess = async () => {
+				try {
 					await queryFulfilled;
-					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
 					dispatch(clearActiveQuizState());
-				};
-				handleRequestToast({
-					onSuccess,
-					successMessage: Translation.TOAST_INTERVIEW_FINISH_SUCCESS,
-					failedMessage: Translation.TOAST_INTERVIEW_FINISH_FAILED,
-				});
+
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
+					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_FINISH_FAILED));
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
 			},
 		}),
 		getQuizById: build.query<Quiz, QuizByIdRequestParams>({
