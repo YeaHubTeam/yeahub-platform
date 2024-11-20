@@ -449,10 +449,13 @@ export enum Validation {
 export enum Skills {
 	TITLE = 'skill.title',
 	DESCRIPTION = 'skill.description',
+	DESCRIPTION_SPECIALIZATION = 'skill.description.specialization',
+	DETAILED_DESCRIPTION_SPECIALIZATION = 'skill.detailed.description.specialization',
 	NOT_ITEMS = 'skill.not.items',
 	EDIT_PAGE_TITLE = 'skill.edit.page.title',
 	CREATE_PAGE_TITLE = 'skill.create.page.title',
 	IMAGE_SRC = 'skill.image.src',
+	SKILLS_TITLE = 'skill.name',
 }
 
 export enum A11y {
