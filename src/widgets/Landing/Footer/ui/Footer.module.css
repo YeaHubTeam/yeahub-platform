@@ -25,7 +25,7 @@
 }
 
 .container-logo a img{
-  padding-right: 5px;
+  margin-right: 5px;
 }
 
 .subtitle {
@@ -61,11 +61,6 @@
 
 .footer hr {
   margin-bottom: 20px;
-}
-
-.container-copyright {
-  display: flex;
-  justify-content: space-between;
 }
 
 .copyright-icons {
