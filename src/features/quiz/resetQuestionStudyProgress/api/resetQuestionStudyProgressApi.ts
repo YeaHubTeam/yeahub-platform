@@ -1,7 +1,8 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { handleRequestToast } from '@/shared/helpers/handleRequestToast';
+import { toast } from '@/shared/ui/Toast';
 
 import {
 	ResetQuestionStudyProgressParams,
@@ -20,10 +21,13 @@ const resetQuestionProgressApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: [ApiTags.QUESTION_DETAIL, ApiTags.QUESTIONS, ApiTags.QUESTIONS_LEARNED],
 			async onQueryStarted() {
-				handleRequestToast({
-					successMessage: Translation.TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS,
-					failedMessage: Translation.TOAST_QUESTIONS_RESET_PROGRESS_FAILED,
-				});
+				try {
+					toast.success(i18n.t(Translation.TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_QUESTIONS_RESET_PROGRESS_FAILED));
+					// eslint-disable-next-line no-console
+					console.log(error);
+				}
 			},
 		}),
 	}),
