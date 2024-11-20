@@ -165,7 +165,7 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
-      "delete":{
+      "delete": {
         "single": {
           "success": "The question has been successfully deleted.",
           "failed": "Failed to delete question"
@@ -220,8 +220,10 @@
     },
     "interview": {
       "new": {
-        "success": "A new interview has been created",
-        "failed": "Failed to create a new interview"
+        "quiz": {
+          "success": "A new interview has been created",
+          "failed": "Failed to create a new interview"
+        }
       },
       "finish": {
         "success": "The interview is completed",
