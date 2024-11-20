@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 
-import { useProfileQuery } from '@/entities/auth';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
@@ -9,10 +11,10 @@ import { QuestionEditForm } from '@/features/question/editQuestion';
 
 const QuestionEditPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
-	const { data: profile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const { data: question } = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.profiles[0].id,
+		profileId: profileId,
 	});
 
 	if (!question) {

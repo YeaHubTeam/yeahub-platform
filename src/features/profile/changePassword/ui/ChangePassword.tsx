@@ -6,12 +6,13 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { useChangePasswordMutation } from '../api/changePasswordApi';
 import { ChangePasswordFormValues } from '../model/types/changePasswordTypes';
@@ -22,7 +23,8 @@ export const ChangePassword = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
 	const token = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
-	const { data: profile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
+	const profileId = profile?.id;
 	const {
 		control,
 		formState: { errors, isValid },
@@ -35,9 +37,9 @@ export const ChangePassword = () => {
 	};
 	const handleChangePassword = async (values: ChangePasswordFormValues) => {
 		const fetchPasswordData = { ...values, token: token as string };
-		if (profile) {
+		if (profileId) {
 			await changePassword({
-				id: profile.id,
+				id: profileId,
 				passwordObject: fetchPasswordData,
 			}).then(() =>
 				reset({

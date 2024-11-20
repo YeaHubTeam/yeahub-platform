@@ -4,12 +4,13 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import { QuizByIdRequestParams, useGetQuizByIdQuery } from '@/entities/quiz';
 
 import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
@@ -22,12 +23,12 @@ import styles from './InterviewResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
-	const { data: profileId } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const { quizId } = useParams<QuizByIdRequestParams>();
 
 	const { data, isLoading } = useGetQuizByIdQuery({
 		quizId: quizId ?? '',
-		profileId: profileId?.profiles[0].id ?? '',
+		profileId: profileId ?? '',
 	});
 
 	const questions = data?.response.answers;

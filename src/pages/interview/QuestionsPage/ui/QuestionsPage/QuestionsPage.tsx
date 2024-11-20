@@ -1,10 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
@@ -27,9 +28,8 @@ const QuestionsPage = () => {
 	const keywords = queryParams.get('keywords');
 
 	const { status, ...getParams } = filter;
-	const { data: userProfile } = useProfileQuery();
-	const profileId = userProfile?.profiles[0].id || '';
-	const specializationId = userProfile?.profiles[0]?.specializationId || undefined;
+	const profileId = useAppSelector(getProfileId) || '';
+	const specializationId = useAppSelector(getSpecializationId) || undefined;
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
