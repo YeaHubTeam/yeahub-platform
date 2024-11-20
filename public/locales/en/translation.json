@@ -223,11 +223,11 @@
         "quiz": {
           "success": "A new interview has been created",
           "failed": "Failed to create a new interview"
-        },
-        "finish": {
-          "success": "The interview is completed",
-          "failed": "Failed to complete the interview"
         }
+      },
+      "finish": {
+        "success": "The interview is completed",
+        "failed": "Failed to complete the interview"
       }
     },
     "settings": {
