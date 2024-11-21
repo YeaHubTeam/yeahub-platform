@@ -13,7 +13,7 @@ interface QuestionHeaderProps {
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
 	return (
-		<Card className={styles.wrapper}>
+		<Card className={styles.wrapper} withOutsideShadow>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
 					<ImageWithWrapper className={styles.image} />

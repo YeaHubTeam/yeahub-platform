@@ -9,6 +9,7 @@
 .image {
   width: 170px;
   height: 114px;
+  border-radius: 12px;
 }
 
 .title-wrapper {
