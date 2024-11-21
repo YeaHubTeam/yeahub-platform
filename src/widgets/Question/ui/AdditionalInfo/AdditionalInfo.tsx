@@ -26,7 +26,7 @@ export const AdditionalInfo = ({
 	const navigate = useNavigate();
 
 	return (
-		<Card className={styles['normal-hight']}>
+		<Card className={styles['normal-hight']} withOutsideShadow>
 			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Уровень:</h4>
 				<ul className={styles['param-wrapper']}>
