@@ -2,9 +2,10 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import {
@@ -26,14 +27,14 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	const { questionId } = useParams();
 	const { isMobile } = useScreenSize();
 
-	const { data: profile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const {
 		data: question,
 		isFetching,
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.profiles[0].id,
+		profileId: profileId,
 	});
 
 	const authorFullName = useMemo(() => {
@@ -66,7 +67,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
+					profileId={profileId}
 					questionId={questionId ? questionId : ''}
 					checksCount={question?.checksCount}
 				/>
@@ -86,7 +87,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					/>
 					{!isAdmin && (
 						<QuestionActions
-							profileId={profile ? profile.profiles[0].id : ''}
+							profileId={profileId}
 							questionId={questionId ? questionId : ''}
 							checksCount={question?.checksCount}
 						/>

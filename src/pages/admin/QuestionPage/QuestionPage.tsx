@@ -6,12 +6,13 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
@@ -26,15 +27,15 @@ export const QuestionPage = () => {
 
 	const { questionId } = useParams();
 	const { isMobile } = useScreenSize();
+	const profileId = useAppSelector(getProfileId);
 
-	const { data: profile } = useProfileQuery();
 	const {
 		data: question,
 		isFetching,
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.profiles[0].id,
+		profileId: profileId,
 	});
 
 	const authorFullName = useMemo(() => {

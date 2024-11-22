@@ -1,6 +1,8 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 
-import { useProfileQuery } from '@/entities/auth';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { getProfileId } from '@/entities/profile';
 import { useGetHistoryQuizQuery, type QuizHistoryParams } from '@/entities/quiz';
 
 /*
@@ -13,9 +15,7 @@ export const useGetHistory = (
 	params?: QuizHistoryParams,
 	uniqueKey: string = 'interviewHistory',
 ) => {
-	const profile = useProfileQuery();
-
-	const profileId = profile.data?.profiles[0].id;
+	const profileId = useAppSelector(getProfileId);
 
 	const historyQuiz = useGetHistoryQuizQuery(
 		profileId

@@ -66,6 +66,15 @@ export const authApi = baseApi.injectEndpoints({
 		profile: build.query<ProfileResponse, void>({
 			query: () => authApiUrls.profile,
 			providesTags: [ApiTags.PROFILE],
+			async onQueryStarted(_, { queryFulfilled, dispatch }) {
+				try {
+					const result = await queryFulfilled;
+					dispatch(profileActions.setProfile(result.data));
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
 		}),
 		logout: build.query<void, void>({
 			query: () => authApiUrls.logout,
