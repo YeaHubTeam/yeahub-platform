@@ -1,7 +1,7 @@
-// eslint-disable-next-line @conarti/feature-sliced/public-api, @conarti/feature-sliced/layers-slices
-import { ProfileResponse } from '@/entities/auth/model/types/auth';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices, prettier/prettier
+import { FullProfile } from '@/entities/auth';
 
 export interface ProfileState {
 	isEmailSent: boolean;
-	fullProfile: ProfileResponse | null;
+	fullProfile: FullProfile | null;
 }

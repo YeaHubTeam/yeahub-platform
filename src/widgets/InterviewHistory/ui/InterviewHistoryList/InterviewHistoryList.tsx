@@ -8,7 +8,7 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
-import { getFullProfile } from '@/entities/profile';
+import { getFullProfile, getProfileId } from '@/entities/profile';
 import { useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { InterviewHistoryItem } from '../InterviewHistoryItem/InterviewHistoryItem';
@@ -21,7 +21,7 @@ interface InterviewHistoryListProps {
 
 export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListProps) => {
 	const fullProfile = useAppSelector(getFullProfile);
-	const profileId = fullProfile?.profiles[0].id;
+	const profileId = useAppSelector(getProfileId);
 	const isVerified = fullProfile?.isEmailVerified;
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	const { data, isSuccess } = useGetHistoryQuizQuery(

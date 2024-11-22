@@ -24,7 +24,7 @@ export const ChangePassword = () => {
 	const token = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const profile = useAppSelector(getFullProfile);
-	const profileId = profile?.id;
+	const userId = profile?.id;
 	const {
 		control,
 		formState: { errors, isValid },
@@ -37,9 +37,9 @@ export const ChangePassword = () => {
 	};
 	const handleChangePassword = async (values: ChangePasswordFormValues) => {
 		const fetchPasswordData = { ...values, token: token as string };
-		if (profileId) {
+		if (userId) {
 			await changePassword({
-				id: profileId,
+				id: userId,
 				passwordObject: fetchPasswordData,
 			}).then(() =>
 				reset({

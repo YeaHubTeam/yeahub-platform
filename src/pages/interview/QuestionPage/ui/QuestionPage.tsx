@@ -67,7 +67,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 				<QuestionActions
-					profileId={profileId ? profileId : ''}
+					profileId={profileId}
 					questionId={questionId ? questionId : ''}
 					checksCount={question?.checksCount}
 				/>
@@ -87,7 +87,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					/>
 					{!isAdmin && (
 						<QuestionActions
-							profileId={profileId ? profileId : ''}
+							profileId={profileId}
 							questionId={questionId ? questionId : ''}
 							checksCount={question?.checksCount}
 						/>

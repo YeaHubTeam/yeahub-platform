@@ -9,6 +9,7 @@ export {
 	getFullProfile,
 	getProfileId,
 	getSpecializationId,
+	isEmptySpecialization,
 } from './model/selectors/profileSelectors';
 
 export { EmailVerify } from './ui/EmailVerify/EmailVerify';

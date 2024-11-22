@@ -27,7 +27,7 @@ const InterviewQuizPage = () => {
 
 	const profileId = useAppSelector(getProfileId);
 	const { data: activeQuiz } = useGetActiveQuizQuery({
-		profileId: profileId || '',
+		profileId: profileId,
 		params: {
 			page: 1,
 			limit: 1,

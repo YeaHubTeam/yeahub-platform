@@ -28,8 +28,8 @@ const QuestionsPage = () => {
 	const keywords = queryParams.get('keywords');
 
 	const { status, ...getParams } = filter;
-	const profileId = useAppSelector(getProfileId) || '';
-	const specializationId = useAppSelector(getSpecializationId) || undefined;
+	const profileId = useAppSelector(getProfileId);
+	const specializationId = useAppSelector(getSpecializationId);
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
