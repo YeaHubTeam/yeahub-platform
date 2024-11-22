@@ -27,25 +27,37 @@ export const SkillForm = () => {
 					title={t(Skills.SKILLS_TITLE)}
 					className={`${styles['title-base']} ${styles.title1}`}
 				/>
-				<FormControl name="title" control={control} label={t(Skills.CREATE_PAGE_TITLE)}>
-					{(register, hasError) => <Input {...register} hasError={hasError} />}
-				</FormControl>
+				<Flex direction="row" className={`${styles['skills-input']}`} gap="120">
+					<Flex direction="column" gap="8">
+						<Text
+							title={t(Skills.TITLE_SKILL)}
+							className={`${styles['title-base']} ${styles.title2}`}
+						/>
+						<Text
+							title={t(Skills.CREATE_PAGE_TITLE)}
+							className={`${styles['title-base']} ${styles.title3}`}
+						/>
+					</Flex>
+					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
+						{(register, hasError) => <Input {...register} hasError={hasError} />}
+					</FormControl>
+				</Flex>
 			</Flex>
-			<Flex direction="column">
+			<Flex direction="column" style={{ marginTop: '60' }} gap="8">
 				<Text
 					title={t(Skills.DESCRIPTION_SPECIALIZATION)}
-					className={`${styles.titleBase} ${styles.title2}`}
+					className={`${styles['title-base']} ${styles.title2}`}
 				/>
-				<FormControl
-					name="description"
-					control={control}
-					label={t(Skills.DETAILED_DESCRIPTION_SPECIALIZATION)}
-				>
+				<Text
+					title={t(Skills.DETAILED_DESCRIPTION_SKILL)}
+					className={`${styles['title-base']} ${styles.title3}`}
+				/>
+				<FormControl name="description" control={control}>
 					{(field, hasError) => (
 						<TextArea
 							id="description"
 							className={styles.description}
-							placeholder="Развёрнутое описание для специализации"
+							placeholder={t(Skills.DETAILED_DESCRIPTION_TEXTAREA)}
 							state={hasError ? 'error' : 'default'}
 							{...field}
 						/>

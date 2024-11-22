@@ -450,12 +450,14 @@ export enum Skills {
 	TITLE = 'skill.title',
 	DESCRIPTION = 'skill.description',
 	DESCRIPTION_SPECIALIZATION = 'skill.description.specialization',
-	DETAILED_DESCRIPTION_SPECIALIZATION = 'skill.detailed.description.specialization',
+	DETAILED_DESCRIPTION_SKILL = 'skill.detailed.description.skill',
+	DETAILED_DESCRIPTION_TEXTAREA = 'skill.detailed.description.textarea',
 	NOT_ITEMS = 'skill.not.items',
 	EDIT_PAGE_TITLE = 'skill.edit.page.title',
 	CREATE_PAGE_TITLE = 'skill.create.page.title',
 	IMAGE_SRC = 'skill.image.src',
 	SKILLS_TITLE = 'skill.name',
+	TITLE_SKILL = 'skill.title.skill',
 }
 
 export enum A11y {

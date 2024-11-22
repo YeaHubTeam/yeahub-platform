@@ -2,12 +2,14 @@
   "skill": {
     "title": "Название",
     "description": "Описание",
-    "description.specialization": "Описание специализации",
-    "detailed.description.specialization": "Добавьте развёрнутое описание специализации",
+    "description.specialization": "Описание навыка",
+    "detailed.description.skill": "Добавьте развёрнутое описание навыка",
+    "detailed.description.textarea": "Развёрнутое описание навыка",
     "not.items": "Нет навыков",
     "image.src": "Ссылка на картинку",
     "create.page.title": "Добавьте название навыка",
     "edit.page.title": "Изменение навыка",
-	 "name": "Навыки"
+    "name": "Навыки",
+    "title.skill": "Название навыка"
   }
 }
