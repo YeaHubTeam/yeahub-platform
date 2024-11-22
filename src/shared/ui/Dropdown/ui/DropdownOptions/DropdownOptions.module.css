@@ -1,0 +1,23 @@
+.dropdown-option {
+  display: flex;
+  justify-content: end;
+  padding: 12px 24px; 
+  color: var(--text-color-bright); 
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+
+
+  &:hover{
+    background-color: var(--background-app);
+    color: var(--background-primary);
+  }
+
+  &:active{
+    background-color: var(--background-app);
+  }
+
+  &:focus-within{
+    background-color: var(--background-app);
+    color: var(--background-primary);
+  }
+}
