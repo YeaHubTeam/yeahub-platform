@@ -20,4 +20,9 @@ export const questionCreateSchema = yup.object().shape({
 		.required(),
 	skills: yup.array().required(i18n.t(Translation.VALIDATION_SKILLS_REQUIRED)),
 	specializations: yup.array().required(i18n.t(Translation.VALIDATION_SPECIALIZATION_REQUIRED)),
+	keywords: yup
+		.array()
+		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
+		.min(1, i18n.t(Translation.VALIDATION_REQUIRED))
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });
