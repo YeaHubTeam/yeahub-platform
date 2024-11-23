@@ -8,14 +8,14 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 import styles from './Dropdown.module.css';
 
-interface DropdownProps {
+interface DropdownProps
+	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onChange'> {
 	label: string;
 	disabled?: boolean;
 	options: DropdownOption[];
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	size?: Size;
-	className?: string;
 	error?: boolean;
 	onChange?: (value: string | number) => void;
 }
@@ -29,6 +29,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 	size = 'L',
 	error = false,
 	onChange,
+	...props
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const inputRef = useRef<HTMLInputElement | null>(null);
@@ -61,6 +62,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 				role="button"
 				onClick={toggleDropdown}
 				onKeyDown={handleKeyDown}
+				{...props}
 			>
 				<Input
 					ref={inputRef}
