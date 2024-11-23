@@ -18,6 +18,7 @@ export const BackButton = memo(() => {
 
 	return (
 		<IconButton
+			data-testid="BackButton"
 			onClick={onReturnBack}
 			aria-label={t(A11y.BACK_BUTTON)}
 			icon={<Icon icon="arrowLeft" size={20} />}
