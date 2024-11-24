@@ -14,7 +14,7 @@ import { useCreateSkillMutation } from '../../api/createSkillApi';
 
 export const SkillCreateFormHeader = () => {
 	const [createSkillMutation, { isLoading }] = useCreateSkillMutation();
-	const { handleSubmit, reset } = useFormContext<SkillFormValues>();
+	const { handleSubmit } = useFormContext<SkillFormValues>();
 	const navigate = useNavigate();
 	const { t } = useTranslation(['skill', 'translation']);
 
@@ -30,22 +30,12 @@ export const SkillCreateFormHeader = () => {
 			});
 	};
 
-	const onDelete = () => {
-		reset();
-		navigate(-1);
-	};
-
 	return (
 		<Flex align="center" gap="8" justify={'between'}>
 			<BackButton />
-			<Flex gap="8" style={{ marginLeft: 'auto' }}>
-				<Button disabled={isLoading} variant="destructive-tertiary" onClick={onDelete}>
-					{t(Translation.DELETE, { ns: 'translation' })}
-				</Button>
-				<Button disabled={isLoading} onClick={handleSubmit(onCreateSkill)}>
-					{t(Translation.SAVE, { ns: 'translation' })}
-				</Button>
-			</Flex>
+			<Button disabled={isLoading} onClick={handleSubmit(onCreateSkill)}>
+				{t(Translation.SAVE, { ns: 'translation' })}
+			</Button>
 		</Flex>
 	);
 };

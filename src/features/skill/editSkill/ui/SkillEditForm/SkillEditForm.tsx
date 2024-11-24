@@ -11,7 +11,11 @@ import { SkillEditFormHeader } from '../SkillEditFormHeader/SkillEditFormHeader'
 
 import styles from './SkillEditForm.module.css';
 
-export const SkillEditForm = ({ skill }: { skill: Skill }) => {
+interface SkillEditFormProps {
+	skill: Skill;
+}
+
+export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
 	const methods = useForm<SkillFormValues>({
 		resolver: yupResolver(skillEditSchema),
 		mode: 'onTouched',
@@ -21,8 +25,8 @@ export const SkillEditForm = ({ skill }: { skill: Skill }) => {
 	return (
 		<FormProvider {...methods}>
 			<Flex componentType="main" direction="column" gap="24">
+				<SkillEditFormHeader />
 				<Card className={styles.content}>
-					<SkillEditFormHeader />
 					<SkillForm />
 				</Card>
 			</Flex>
