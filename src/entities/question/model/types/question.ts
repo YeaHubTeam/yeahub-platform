@@ -24,6 +24,8 @@ export interface Question {
 	specializations: number[];
 	skills: number[];
 	rating: number;
+	isLearned?: boolean;
+	profileId?: string;
 }
 
 export interface QuestionsListParams {

@@ -6,12 +6,12 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { getTimeDifference } from '@/shared/helpers/formatTime';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { InterviewResults, type QuizHistoryResponse } from '@/entities/quiz';
+import { InterviewResults, type QuizWithoutQuestions } from '@/entities/quiz';
 
 import styles from './InterviewParameters.module.css';
 
 interface InterviewParametersProps {
-	interview: QuizHistoryResponse;
+	interview: QuizWithoutQuestions;
 }
 
 export const InterviewParameters = ({ interview }: InterviewParametersProps) => {
