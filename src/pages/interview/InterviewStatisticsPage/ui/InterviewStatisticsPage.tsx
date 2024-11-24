@@ -7,7 +7,7 @@ import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { getProfileId } from '@/entities/profile';
-import { useGetProfileStatsQuery } from '@/entities/quiz';
+import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import {
 	PassedInterviewStat,
@@ -24,7 +24,7 @@ import styles from './InterviewStatisticsPage.module.css';
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
 	const profileId = useAppSelector(getProfileId);
-	const { data: profileStats, isLoading } = useGetProfileStatsQuery(profileId ?? '');
+	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId ?? '');
 
 	const questionStats = [
 		{

@@ -7,12 +7,12 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
-import { InterviewResults, QuizHistoryResponse } from '@/entities/quiz';
+import { InterviewResults, QuizWithoutQuestions } from '@/entities/quiz';
 
 import styles from './InterviewHistoryItem.module.css';
 
 interface InterviewHistoryItemProps {
-	interview: QuizHistoryResponse;
+	interview: QuizWithoutQuestions;
 }
 
 export const InterviewHistoryItem = ({ interview }: InterviewHistoryItemProps) => {
