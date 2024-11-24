@@ -55,6 +55,8 @@ export const EditProfileForm = () => {
 		}
 	}, [methods, userProfile]);
 
+	useEffect(() => {}, [methods.formState.isDirty, methods.formState.isSubmitted]);
+
 	const onSubmit = (data: ProfileSchema) => {
 		methods.reset();
 		updateProfile(mapFormToProfile(userProfile as FullProfile, data));
