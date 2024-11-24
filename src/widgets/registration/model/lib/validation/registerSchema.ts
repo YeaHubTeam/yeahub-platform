@@ -18,10 +18,6 @@ export const registerSchema = yup.object().shape({
 		.trim()
 		.min(2, i18n.t(Translation.VALIDATION_LASTNAME_MIN, { count: 2 }))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	phone: yup
-		.string()
-		.matches(/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/, i18n.t(Translation.VALIDATION_PHONE_FORMAT))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	email: yup
 		.string()
 		.email(i18n.t(Translation.VALIDATION_EMAIL_FORMAT))

@@ -2,21 +2,16 @@
   display: flex;
   flex-basis: 58%;
   flex-direction: column;
-  align-items: center;
-  padding: 70px 16px 40px;
-  box-sizing: border-box;
-  width: 100%;
-  overflow-y: auto;
-  color: var(--text-color-primary);
+  align-items:center;
+  overflow-x: hidden;
 }
 
-.title {
-  margin-top: 0;
-  margin-bottom: 31px;
+.content{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  box-sizing: border-box;
   max-width: 408px;
-  text-align: center;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-l);
+  color: var(--text-color-primary);
 }
 
 @media (width <= 768px) {

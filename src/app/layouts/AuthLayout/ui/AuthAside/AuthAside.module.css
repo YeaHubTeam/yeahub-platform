@@ -6,13 +6,14 @@
   padding: 70px clamp(40px, 6vw, 112px) 0;
   box-sizing: border-box;
   min-height: 100vh;
+  overflow: hidden;
   background-color: var(--background-primary);
   color: var(--color-white-900);
 }
 
 .logo-wrapper {
   margin-bottom: 8px;
-  max-width: 136px;
+  max-width: 189px;
 }
 
 .logo-wrapper > a > svg {
@@ -20,7 +21,10 @@
 }
 
 .logo-text {
+  line-height: 127%;
   font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+  font-style: normal;
 }
 
 @media (width <= 768px) {

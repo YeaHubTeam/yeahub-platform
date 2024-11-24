@@ -15,7 +15,7 @@ export const AuthAside = () => {
 		<aside className={styles.wrapper}>
 			<div className={styles['heading-wrapper']}>
 				<div className={styles['logo-wrapper']}>
-					<AppLogo isOpen={false} fill="white" navigateTo={ROUTES.appRoute} />
+					<AppLogo isOpen={false} fill="white" navigateTo={ROUTES.appRoute} logoType="light" />
 				</div>
 				<p className={styles['logo-text']}>{t(Auth.LOGO_TEXT)}</p>
 			</div>
