@@ -45,10 +45,13 @@
 
 .icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
   color: var(--text-color-link-active);
   transition: transform 400ms ease-in-out;
+}
+
+.icon > svg {
+  width: 24px;
+  height: 24px;
 }
 
 .icon-opened {
