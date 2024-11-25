@@ -54,6 +54,9 @@ export const PassedQuestionChart = ({
 				marginInline: 'auto',
 				backgroundColor: '#FDF4FF',
 				borderRadius: '50%',
+				fontSize: 'var(--font-size-p-l)',
+				fontWeight: 'var(--font-weight-600)',
+				color: 'var(--text-color-light)',
 			}}
 		/>
 	);

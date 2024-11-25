@@ -198,7 +198,7 @@ const InterviewPage = () => {
 						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
 						learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
 					/>
-					<PassedQuestionStatInfo stats={questionStats} />
+					<PassedQuestionStatInfo stats={questionStats} hasShadow />
 				</Card>
 			)}
 

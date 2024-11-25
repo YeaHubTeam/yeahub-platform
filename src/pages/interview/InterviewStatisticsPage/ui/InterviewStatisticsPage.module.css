@@ -1,8 +1,18 @@
 .container {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1.5fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+}
+
+.interview-statistics {
+  flex-basis: calc(59% - 10px);
+  padding: 16px;
+}
+
+.history-list {
+  flex-basis: calc(50% - 10px);
+  align-self: flex-start;
+  padding: 0;
 }
 
 .container > div {
@@ -10,17 +20,21 @@
 }
 
 .container > .category {
-  height: 471px;
+  flex-basis: calc(50% - 10px);
+  align-self: flex-start;
+  padding: 16px;
+  max-height: 478px;
 }
 
 .progress {
   display: flex;
+  flex-basis: calc(41% - 10px);
   flex-direction: column;
   gap: 12px;
 }
 
 .block {
-  height: auto;
+  padding: 16px;
 }
 
 .questions > * + *,
@@ -33,20 +47,43 @@
 }
 
 .history {
-  width: 100%
+  width: 100%;
 }
 
-@media (width <= 1280px) {
+@media (width <= 1024px) {
   .container {
-    grid-template-rows: repeat(4, auto);
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .attempt {
-    display: grid;
+  .history-list {
+    width: 100%;
   }
 
-  .attempt > :nth-child(2) {
-    place-self: center center;
+  .category {
+    width: 100%;
+  } 
+
+  .container .card {
+    padding: 16px;
+  }
+}
+
+@media (width <= 768px) {
+  .container {
+    gap: 16px;
+  }
+
+  .category-progress > * + *,
+  .questions > * + * {
+    margin-top: 24px;
+  }
+
+  .attempt > * + * {
+    margin-top: 24px;
+  }
+
+  .history-list {
+    gap: 16px;
   }
 }
