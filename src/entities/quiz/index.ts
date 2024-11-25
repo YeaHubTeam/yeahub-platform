@@ -18,7 +18,6 @@ export {
 
 export type {
 	Answers,
-	ExtraArgument,
 	ActiveQuizState,
 	GetProfileQuizStatsResponse,
 	ProgressByCategoriesData,

@@ -3,6 +3,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { ExtraArgument } from '@/shared/config/store/types';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
@@ -13,7 +14,6 @@ import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/ac
 import {
 	CreateNewQuizParamsRequest,
 	CreateNewQuizResponse,
-	ExtraArgument,
 	GetActiveQuizParamsRequest,
 	GetActiveQuizResponse,
 	GetProfileQuizStatsResponse,

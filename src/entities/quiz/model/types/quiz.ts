@@ -42,10 +42,6 @@ export interface ChangeQuestionAnswerParams {
 	answer: QuizQuestionAnswerType;
 }
 
-export interface ExtraArgument {
-	navigate: (path: string) => void;
-}
-
 export interface ProgressByCategoriesData {
 	category: string;
 	passed: number;
