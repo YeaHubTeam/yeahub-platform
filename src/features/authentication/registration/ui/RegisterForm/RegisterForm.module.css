@@ -65,7 +65,7 @@ h1{
   color: var(--color-purple-300); 
 }
 
-.consent-wrapper .consent-checkboxes > :nth-child(2) {
+.consent-wrapper .form-control:nth-child(2) {
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -112,7 +112,7 @@ h1{
   background-color: var(--background-block);
 }
 
-.wrapper .consent-wrapper > div > div > p {
+.form-wrapper .consent-wrapper > div > div > p {
   color: var(--error-color-red);
   line-height: 1.36;
   font-weight: var(--font-weight-400);

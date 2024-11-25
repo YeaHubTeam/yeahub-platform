@@ -1,6 +1,5 @@
-.checkbox-wrapper input[type="checkbox"] { 
-  appearance: none; 
-  appearance: none;
+.checkbox-wrapper input[type="checkbox"] {
+  position: relative; 
   appearance: none; 
   outline: none;
   cursor: pointer;
@@ -29,7 +28,7 @@
   background-color: var(--color-purple-700);
 }
 
-.checkbox:checked::before { 
+.checkbox:checked::after { 
   position: absolute;
   top: 50%;
   left: 50%;

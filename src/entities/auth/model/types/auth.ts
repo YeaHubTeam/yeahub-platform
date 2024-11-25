@@ -12,6 +12,9 @@ export type SignUpFormValues = Pick<User, 'firstName' | 'lastName' | 'phone' | '
 	password: string;
 	passwordConfirmation: string;
 	isChecked: boolean;
+	privacyConsent: boolean;
+	offerConsent: boolean;
+	adConsent: boolean;
 };
 
 export interface FullProfile extends User {

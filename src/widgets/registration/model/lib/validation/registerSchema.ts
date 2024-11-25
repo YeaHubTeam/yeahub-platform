@@ -33,7 +33,15 @@ export const registerSchema = yup.object().shape({
 			message: 'Пароль должен содержать заглавные и строчные буквы, цифры и специальные символы',
 		})
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	isChecked: yup
+	privacyConsent: yup
+		.boolean()
+		.oneOf([true], i18n.t(Translation.VALIDATION_CHECKBOX_ONEOF))
+		.required(i18n.t(Translation.VALIDATION_CHECKBOX_REQUIRED)),
+	offerConsent: yup
+		.boolean()
+		.oneOf([true], i18n.t(Translation.VALIDATION_CHECKBOX_ONEOF))
+		.required(i18n.t(Translation.VALIDATION_CHECKBOX_REQUIRED)),
+	adConsent: yup
 		.boolean()
 		.oneOf([true], i18n.t(Translation.VALIDATION_CHECKBOX_ONEOF))
 		.required(i18n.t(Translation.VALIDATION_CHECKBOX_REQUIRED)),
