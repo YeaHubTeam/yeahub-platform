@@ -1,0 +1,6 @@
+{
+  "subscription": {
+    "free": "Free/month",
+    "price": "{{price}}₽/month"
+  }
+}
