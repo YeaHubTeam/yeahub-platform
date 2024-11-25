@@ -8,7 +8,8 @@ export type VariantType =
 	| 'destructive-outline'
 	| 'destructive-tertiary'
 	| 'link'
-	| 'link-gray';
+	| 'link-gray'
+	| 'link-purple';
 
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	variant?: VariantType;

@@ -29,10 +29,6 @@
 }
 
 @media (width <= 469px) {
-  .docs-item {
-    flex-direction: column;
-  }
-
   .docs-items {
     padding: 16px;
   }

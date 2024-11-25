@@ -550,4 +550,5 @@ export enum Docs {
 	DOC4 = 'docs.doc4',
 	DOC5 = 'docs.doc5',
 	DOC6 = 'docs.doc6',
+	DOC_FOOTER = 'docs.docFooter',
 }
