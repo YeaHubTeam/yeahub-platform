@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import { Input } from '@/shared/ui/Input';
 
-import { DropdownOption, Size } from '../../model/DropdownTypes';
+import { DropdownOptionType, Size } from '../../model/DropdownTypes';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 import styles from './Dropdown.module.css';
@@ -12,12 +12,14 @@ interface DropdownProps
 	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onChange'> {
 	label: string;
 	disabled?: boolean;
-	options: DropdownOption[];
+	options: DropdownOptionType[];
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	size?: Size;
 	error?: boolean;
 	onChange?: (value: string | number) => void;
+	selectedOption?: DropdownOptionType | null;
+	setSelectedOption?: (option: DropdownOptionType) => void;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -29,6 +31,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
 	size = 'L',
 	error = false,
 	onChange,
+	selectedOption,
+	setSelectedOption,
 	...props
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +49,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, []);
 
-	const toggleDropdown = () => setIsOpen((prev) => !prev);
+	const toggleDropdown = () => {
+		setIsOpen((prev) => !prev);
+	};
 
 	const handleKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === 'Escape') {
@@ -53,8 +59,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
 		}
 	};
 
+	const handleSelectOption = (option: DropdownOptionType) => {
+		if (setSelectedOption) {
+			setSelectedOption(option);
+		}
+		if (onChange) {
+			onChange(option.value);
+		}
+
+		setIsOpen(false);
+	};
+
 	return (
-		<div>
+		<div {...props}>
 			<div
 				className={styles.dropdown}
 				ref={dropdownRef}
@@ -62,7 +79,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
 				role="button"
 				onClick={toggleDropdown}
 				onKeyDown={handleKeyDown}
-				{...props}
 			>
 				<Input
 					ref={inputRef}
@@ -84,10 +100,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
 				{isOpen && (
 					<DropdownMenu
 						size={size}
-						setIsOpen={setIsOpen}
-						onChange={onChange}
 						options={options}
 						inputRef={inputRef}
+						selectedOption={selectedOption}
+						onSelect={handleSelectOption}
 					/>
 				)}
 			</div>

@@ -27,12 +27,12 @@
 
 .option-s {
   width: 328px;
-  height: 184px;
+  max-height: 184px;
 }
 
 .option-l {
   width: 408px;
-  height: 276px;
+  max-height: 276px;
 }
 
 .dropdown-position-bottom {

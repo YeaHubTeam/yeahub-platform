@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { DropdownOption } from '../../model/DropdownTypes';
+import { DropdownOptionType } from '../../model/DropdownTypes';
 
-import styles from './DropdownOptions.module.css';
+import styles from './DropdownOption.module.css';
 
-interface DropdownOptionsProps {
-	option: DropdownOption;
-	onClick: (value: DropdownOption) => void;
+interface DropdownOptionProps {
+	option: DropdownOptionType;
+	onClick: (value: DropdownOptionType) => void;
 	isSelected: boolean;
 }
 
-const DropdownOptions: React.FC<DropdownOptionsProps> = ({ option, onClick, isSelected }) => {
+const DropdownOption: React.FC<DropdownOptionProps> = ({ option, onClick, isSelected }) => {
 	const handleKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === 'Enter' || event.key === ' ') {
 			onClick(option);
@@ -32,4 +32,4 @@ const DropdownOptions: React.FC<DropdownOptionsProps> = ({ option, onClick, isSe
 	);
 };
 
-export default DropdownOptions;
+export default DropdownOption;
