@@ -35,10 +35,6 @@ export interface Profile {
 	profileSkills: Skill[];
 }
 
-export interface ExtraArgument {
-	navigate: (path: string) => void;
-}
-
 export interface User {
 	id: string;
 	firstName: string;

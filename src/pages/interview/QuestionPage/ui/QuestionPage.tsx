@@ -48,20 +48,24 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		return <QuestionPageSkeleton />;
 	}
 
+	if (!question) {
+		return null;
+	}
+
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
 				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
+					description={question.description}
+					status={question.status}
+					title={question.title}
 				/>
-				<ProgressBlock checksCount={question?.checksCount} />
+				<ProgressBlock checksCount={question.checksCount} />
 				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
+					rate={question.rate}
+					keywords={question.keywords}
+					complexity={question.complexity}
+					questionSkills={question.questionSkills}
 				/>
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
@@ -69,9 +73,9 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				<QuestionActions
 					profileId={profileId}
 					questionId={questionId ? questionId : ''}
-					checksCount={question?.checksCount}
+					checksCount={question.checksCount}
 				/>
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 			</section>
 		);
 	}
@@ -81,26 +85,26 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					<QuestionHeader
-						description={question?.description}
-						status={question?.status}
-						title={question?.title}
+						description={question.description}
+						status={question.status}
+						title={question.title}
 					/>
 					{!isAdmin && (
 						<QuestionActions
 							profileId={profileId}
 							questionId={questionId ? questionId : ''}
-							checksCount={question?.checksCount}
+							checksCount={question.checksCount}
 						/>
 					)}
-					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+					<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 				</div>
 				<div className={styles.additional}>
-					{!isAdmin && <ProgressBlock checksCount={question?.checksCount} />}
+					{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
 					<AdditionalInfo
-						rate={question?.rate}
-						keywords={question?.keywords}
-						complexity={question?.complexity}
-						questionSkills={question?.questionSkills}
+						rate={question.rate}
+						keywords={question.keywords}
+						complexity={question.complexity}
+						questionSkills={question.questionSkills}
 					/>
 					<p className={styles.author}>
 						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
