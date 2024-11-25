@@ -20,8 +20,8 @@ export const SkillCreateForm = () => {
 	return (
 		<FormProvider {...methods}>
 			<Flex componentType="main" direction="column" gap="24">
+				<SkillCreateFormHeader />
 				<Card className={styles.content}>
-					<SkillCreateFormHeader />
 					<SkillForm />
 				</Card>
 			</Flex>
