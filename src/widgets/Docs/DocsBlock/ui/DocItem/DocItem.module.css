@@ -1,0 +1,23 @@
+.doc-item-name {
+  max-width: 392px;
+  color: var(--primary-brand);
+  line-height: 19px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);   
+}
+
+@media (width <= 469px) {
+  .doc-item {
+    flex-direction: column;
+  }
+
+  .doc-item-name {
+    margin-bottom: 16px;
+  }
+
+  .doc-link {
+    justify-content: end;
+    align-self: flex-end;
+  }
+}

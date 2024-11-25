@@ -541,3 +541,13 @@ export enum ActionsButton {
 	LEARN = 'buttons.learn',
 	REPEAT = 'buttons.repeat',
 }
+
+export enum Docs {
+	TITLE = 'docs.title',
+	DOC1 = 'docs.doc1',
+	DOC2 = 'docs.doc2',
+	DOC3 = 'docs.doc3',
+	DOC4 = 'docs.doc4',
+	DOC5 = 'docs.doc5',
+	DOC6 = 'docs.doc6',
+}

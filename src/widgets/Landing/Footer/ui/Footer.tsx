@@ -35,6 +35,9 @@ export const Footer = () => {
 				<Flex justify="between">
 					<p className={styles['company-name']}>© 2024 YeaHub</p>
 					<div className={styles['copyright-icons']}>
+						<NavLink className={styles['docs']} to="/docs">
+							<p>Документы</p>
+						</NavLink>
 						<NavLink to="https://www.figma.com/community/file/1438482355619792777/yeahub-public">
 							<FigmaLogo className={styles.figma} />
 						</NavLink>

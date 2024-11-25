@@ -23,6 +23,7 @@ export const i18Namespace = {
 	skill: 'skill',
 	a11y: 'a11y',
 	landing: 'landing',
+	docs: 'docs',
 };
 
 i18n

@@ -34,6 +34,7 @@ import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
+import { DocsPage } from '@/pages/docs/DocsPage';
 import { Error404Page } from '@/pages/Error404Page';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
@@ -149,6 +150,10 @@ export const router = createBrowserRouter([
 					{
 						path: '*',
 						element: <Error404Page />,
+					},
+					{
+						path: ROUTES.docs.page,
+						element: <DocsPage />,
 					},
 				],
 			},
