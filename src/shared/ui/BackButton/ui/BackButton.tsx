@@ -8,6 +8,10 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import styles from './BackButton.module.css';
 
+/**
+ * Button to return to the previous page
+ */
+
 export const BackButton = memo(() => {
 	const navigate = useNavigate();
 	const { t } = useI18nHelpers(i18Namespace.a11y);
