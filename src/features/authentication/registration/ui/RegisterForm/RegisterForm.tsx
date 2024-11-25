@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Icon, Input } from 'yeahub-ui-kit';
 
@@ -17,13 +17,11 @@ import styles from './RegisterForm.module.css';
 export const RegisterForm = () => {
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [registrationMutation] = useRegisterMutation();
-	const [checkDocuments, setCheckDocuments] = useState(false);
 
 	const {
 		handleSubmit,
 		control,
-		getValues,
-		formState: { errors },
+		formState: { errors, isValid },
 	} = useFormContext<SignUpFormValues>();
 
 	const handleShowPassword = () => {
@@ -41,19 +39,6 @@ export const RegisterForm = () => {
 	const privacyPolicyParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_POLICY_TEXT));
 	const offerAgreementParts = parseI18nText(t(Auth.REGISTRATION_OFFER_AGREEMENT_TEXT));
 	const adConsentParts = parseI18nText(t(Auth.REGISTRATION_AD_CONSENT_TEXT));
-
-	const handleCheckboxChange = () => {
-		const { privacyConsent, offerConsent, adConsent } = getValues();
-		const allConsentsChecked = privacyConsent && offerConsent && adConsent;
-		setCheckDocuments(allConsentsChecked);
-	};
-
-	const handleFieldChange =
-		(fieldOnChange: (e: ChangeEvent<HTMLInputElement>) => void) =>
-		(e: ChangeEvent<HTMLInputElement>) => {
-			fieldOnChange(e);
-			handleCheckboxChange();
-		};
 
 	return (
 		<form className={styles['form-wrapper']} onSubmit={handleSubmit(onRegistration)}>
@@ -147,7 +132,7 @@ export const RegisterForm = () => {
 
 			<Button
 				type="submit"
-				disabled={!checkDocuments}
+				disabled={!isValid}
 				variant="primary"
 				className={styles['submit-button']}
 			>
@@ -173,7 +158,6 @@ export const RegisterForm = () => {
 									{privacyPolicyParts[2]}
 								</p>
 							}
-							onChange={handleFieldChange(field.onChange)}
 						/>
 					)}
 				</FormControl>
@@ -196,7 +180,6 @@ export const RegisterForm = () => {
 									{offerAgreementParts[2]}
 								</p>
 							}
-							onChange={handleFieldChange(field.onChange)}
 						/>
 					)}
 				</FormControl>
@@ -219,7 +202,6 @@ export const RegisterForm = () => {
 									{adConsentParts[2]}
 								</p>
 							}
-							onChange={handleFieldChange(field.onChange)}
 						/>
 					)}
 				</FormControl>
