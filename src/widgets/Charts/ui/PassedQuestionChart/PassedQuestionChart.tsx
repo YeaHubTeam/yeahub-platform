@@ -48,6 +48,7 @@ export const PassedQuestionChart = ({
 			option={gaugeOption}
 			opts={{ locale: 'RU' }}
 			style={{
+				marginBottom: '24px',
 				width,
 				height,
 				marginInline: 'auto',

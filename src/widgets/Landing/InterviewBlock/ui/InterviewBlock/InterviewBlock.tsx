@@ -12,6 +12,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 
 import { AdvantagesList } from '../AdvantagesList/AdvantagesList';
+import { InterviewTitle } from '../InterviewTitle/InterviewTitle';
 import { Progress } from '../Progress/Progress';
 import { Skills } from '../Skills/Skills';
 
@@ -31,9 +32,9 @@ export const InterviewBlock = () => {
 			<div className={styles.container}>
 				<div className={styles['left-block']}>
 					<span>{t(Landing.QUESTIONS_TOP)}</span>
-					<h2 className={styles.article}>{t(Landing.HEADER)}</h2>
+					<InterviewTitle />
 					<p className={styles['article-description']}>{t(Landing.HEADER_DESCRIPTION)}</p>
-					<Button variant="primary" className={styles['join-button']} onClick={handleNavigate}>
+					<Button variant="primary" size="L" onClick={handleNavigate}>
 						{t(Landing.JOIN)}
 					</Button>
 				</div>

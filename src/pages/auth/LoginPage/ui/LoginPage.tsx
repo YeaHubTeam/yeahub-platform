@@ -1,17 +1,19 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 
-import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
+import { useLazyLogoutQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { LoginCreateForm } from '@/widgets/authentication/login';
 
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
-	const { data: profile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
 	const [trigger] = useLazyLogoutQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const { t } = useI18nHelpers();

@@ -131,7 +131,7 @@ export const Card = ({
 			}}
 		>
 			{(title || actionRoute) && (
-				<div className={styles['card-header']}>
+				<div className={classNames(styles['card-header'])}>
 					{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
 					{actionRoute ? (
 						<Link
@@ -157,6 +157,7 @@ export const Card = ({
 				className={classNames(styles.content, {
 					[styles['content-shadow']]: withShadow,
 					[styles['content-bottom']]: isActionPositionBottom,
+					[styles['content-height']]: !actionRoute,
 				})}
 				ref={contentRef}
 			>

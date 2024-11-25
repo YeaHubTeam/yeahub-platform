@@ -4,30 +4,50 @@ import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import styles from './ChangePassword.module.css';
+import { getFullProfile } from '@/entities/profile';
 
-export interface ChangePasswordFormProps {
-	newPassword: string;
-	confirmPassword: string;
-}
+import { useChangePasswordMutation } from '../api/changePasswordApi';
+import { ChangePasswordFormValues } from '../model/types/changePasswordTypes';
+
+import styles from './ChangePassword.module.css';
 
 export const ChangePassword = () => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-
+	const token = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
-
+	const profile = useAppSelector(getFullProfile);
+	const userId = profile?.id;
 	const {
 		control,
 		formState: { errors, isValid },
-	} = useFormContext<ChangePasswordFormProps>();
-
+		handleSubmit,
+		reset,
+	} = useFormContext<ChangePasswordFormValues>();
+	const [changePassword, { isLoading: isChangePasswordLoading }] = useChangePasswordMutation();
 	const handleShowPassword = () => {
 		setIsPasswordHidden((prev) => !prev);
+	};
+	const handleChangePassword = async (values: ChangePasswordFormValues) => {
+		const fetchPasswordData = { ...values, token: token as string };
+		if (userId) {
+			await changePassword({
+				id: userId,
+				passwordObject: fetchPasswordData,
+			}).then(() =>
+				reset({
+					password: '',
+					passwordConfirm: '',
+				}),
+			);
+		}
 	};
 
 	return (
@@ -37,16 +57,11 @@ export const ChangePassword = () => {
 				<p className={styles['description']}>{t(Profile.PROFILE_CHANGE_PASSWORD_DESCRIPTION)}</p>
 			</Flex>
 
-			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-				}}
-				className={styles.form}
-			>
+			<form className={styles.form} onSubmit={handleSubmit(handleChangePassword)}>
 				<Flex className={styles['flex-form']}>
 					<div className={styles['input-wrapper']}>
 						<FormControl
-							name="newPassword"
+							name="password"
 							control={control}
 							label={t(Profile.PROFILE_CHANGE_PASSWORD_ENTER_NEW_PASSWORD)}
 						>
@@ -63,9 +78,7 @@ export const ChangePassword = () => {
 											icon="password"
 											arg={isPasswordHidden}
 											color={
-												errors.newPassword?.message
-													? '--palette-ui-red-700'
-													: '--palette-ui-black-300'
+												errors.password?.message ? '--palette-ui-red-700' : '--palette-ui-black-300'
 											}
 											size={24}
 										/>
@@ -77,7 +90,7 @@ export const ChangePassword = () => {
 
 					<div className={styles['input-wrapper']}>
 						<FormControl
-							name="confirmPassword"
+							name="passwordConfirm"
 							control={control}
 							label={t(Profile.PROFILE_CHANGE_PASSWORD_REPEAT_PASSWORD)}
 						>
@@ -95,7 +108,7 @@ export const ChangePassword = () => {
 											arg={isPasswordHidden}
 											size={24}
 											color={
-												errors.confirmPassword?.message
+												errors.passwordConfirm?.message
 													? '--palette-ui-red-700'
 													: '--palette-ui-black-300'
 											}
@@ -106,7 +119,11 @@ export const ChangePassword = () => {
 						</FormControl>
 					</div>
 
-					<Button type="submit" className={styles['submit-button']} disabled={!isValid}>
+					<Button
+						type="submit"
+						className={styles['submit-button']}
+						disabled={!isValid || isChangePasswordLoading}
+					>
 						{t(Profile.PROFILE_CHANGE_PASSWORD_BUTTON)}
 					</Button>
 				</Flex>

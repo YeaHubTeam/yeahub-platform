@@ -1,6 +1,8 @@
-import { ProfileStats, ProgressByCategoriesData } from '@/entities/quiz';
+import { GetProfileQuizStatsResponse, ProgressByCategoriesData } from '@/entities/quiz';
 
-export const transformSkillsArray = (data: ProfileStats): ProgressByCategoriesData[] => {
+export const transformSkillsArray = (
+	data: GetProfileQuizStatsResponse,
+): ProgressByCategoriesData[] => {
 	return data.skillsStat.fullSkillsQuestionsMap.map((fullSkill) => {
 		const learnedSkill = data.skillsStat.learnedSkillsQuestionsMap.find(
 			(learned) => learned.skill === fullSkill.skill,

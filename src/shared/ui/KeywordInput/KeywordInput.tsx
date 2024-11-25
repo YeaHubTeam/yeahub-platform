@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { Input, Button } from 'yeahub-ui-kit';
+import { Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';

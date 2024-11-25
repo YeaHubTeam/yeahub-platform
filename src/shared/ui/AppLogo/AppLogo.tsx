@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
-import Logo from '@/shared/assets/icons/logo.svg';
+import logo from '@/shared/assets/icons/logo.png';
+import LogoText from '@/shared/assets/icons/logoText.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 
 import styles from './AppLogo.module.css';
@@ -26,12 +27,8 @@ export const AppLogo = ({
 				{ [styles['pointer-event-none']]: navigateTo === '#' },
 			)}
 		>
-			<Logo
-				className={classNames(styles.name, styles[fill], {
-					[styles.short]: isOpen,
-				})}
-				preserveAspectRatio="xMinYMin"
-			/>
+			<img className={styles.logo} src={logo} alt="" />
+			{!isOpen && <LogoText className={classNames(styles['logo-text'], styles[fill])} />}
 		</NavLink>
 	);
 };

@@ -4,6 +4,8 @@
   "login": "Log in",
   "questionsTop": "Top questions",
   "header": "YEAHUB \nhelps grow\nand achieve goals",
+  "headerTablet": "YEAHUB helps grow and achieve goals",
+  "headerMobile": "YEAHUB helps grow\nand achieve goals",
   "headerDescription": "Learn and improve your skills on one platform: learn new, prepare for interviews, dive into the nuances or update knowledge - YeaHub will help you get it done",
   "join": "Join",
   "progress": "Progress",
@@ -28,10 +30,14 @@
   "offer1": "Our trainer provides an unique chance to deepen your knowledge and raise your level",
   "offer2": "Learning about technology has never been more accessible and effective",
   "startTraining": "Start training",
-  "sampleQuestion": "What is Virtual DOM, and how does it work?",
+  "sampleQuestion": "What is Virtual DOM?",
   "platformInterfaceTitle": "Prepare\nfor interviews in IT",
   "platformInterfaceSubtitle": "With YeaHub, preparing for interviews is a simple and captivating process.",
   "platformInterfaceDescription": "Our platform offers an extensive database of relevant questions on a wide range of topics and skills, which is regularly updated.",
+  "platformInterfaceQuestion": "What data types are there in JS?",
+  "platformInterfaceAnswer": "<p>A value in JavaScript always refers to data of a specific type. For example, it can be a string or a number. There are eight basic data types in JavaScript. In this chapter, we'll cover them in general, and in the following chapters we'll talk more about each one.</p><p>A variable in JavaScriptSctipt can contain any kind of data. At one point, it can contain</p>",
+  "platformInterfaceRating": "Rating",
+  "platformInterfaceComplexity": "Complexity",
   "sampleAnswerTablet": "Virtual DOM is a software concept used in web application development to improve the efficiency of interface updates. It is an in-memory representation of the real DOM (the structure of the document displayed in the browser), which allows optimizing changes to the...",
   "sampleAnswerDefault": "Virtual DOM is a software concept used in web application development to improve the efficiency of interface updates. It is a representation of the real DOM (document structure,",
   "searchInputPlaceholder": "Enter your request...",
@@ -47,6 +53,8 @@
   "startInterview": "Start interview",
   "interviewMode": "Interview mode",
   "interviewProgress": "Question 10 of 45",
+  "preparationTitle": "Preparing for interviews",
+  "preparationLink": "Start interview",
   "viewAnswer": "View answers",
   "donNotKnow": "Don't know",
   "repeat": "Repeat",
@@ -58,19 +66,20 @@
   "abilitiesConclusion": "This is the perfect way to prepare for real interviews.",
   "progressBlock": {
     "title": "Track your progress",
-    "subtitle": "YeaHub provides advanced tools\nfor tracking your progress",
+    "subtitle": "YeaHub provides advanced tools for tracking your progress",
     "advantages": {
       "first": "In your personal profile, you can see a detailed statistics, including the number of completed questions and topics.",
       "second": "Determine your current level and analyze the gaps in knowledge for more targeted learning or preparation for job search."
     },
     "interviewStatistics": "Interview statistics",
     "learned": "Learned",
-    "unlearned": "Unlearned",
-    "allQuestions": "All questions",
+    "unlearned": "In proccess",
+    "allQuestions": "All",
+    "newQuestions": "New",
     "diagramLabel": "complete"
   },
   "footer": {
-    "slogan": "Choose how IT will be tomorrow \nwith us",
+    "slogan": "Choose how IT will be tomorrow with us",
     "about": "YeaHub is fully open source project, which allows you to learn a new profession and become part of our friendly team, interview and improve your knowledge in practice."
   }
 }

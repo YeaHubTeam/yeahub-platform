@@ -4,10 +4,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile, getProfileId } from '@/entities/profile';
 import { useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { InterviewHistoryItem } from '../InterviewHistoryItem/InterviewHistoryItem';
@@ -19,15 +20,15 @@ interface InterviewHistoryListProps {
 }
 
 export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListProps) => {
-	const profile = useProfileQuery();
-	const profileId = profile.data?.profiles[0].id;
-	const isVerified = profile.data?.isEmailVerified;
+	const fullProfile = useAppSelector(getFullProfile);
+	const profileId = useAppSelector(getProfileId);
+	const isVerified = fullProfile?.isEmailVerified;
 	const { t } = useI18nHelpers(i18Namespace.interview);
 	const { data, isSuccess } = useGetHistoryQuizQuery(
 		profileId
 			? {
-					profileID: profileId,
-					params: { limit: 3 },
+					profileId,
+					limit: 3,
 					uniqueKey: 'interviewPreviewHistory',
 				}
 			: skipToken,

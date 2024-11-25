@@ -1,49 +1,20 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { FullProfile, useProfileQuery } from '@/entities/auth';
-import { EmailVerify } from '@/entities/profile';
+import { EmailVerify, getFullProfile } from '@/entities/profile';
+
+import { IncompleteProfileStub } from '@/widgets/IncompleteProfileStub';
 
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
-	const [percentProfileFullness, setPercentProfileFullness] = useState<number>(0);
+	const profile = useAppSelector(getFullProfile);
 
-	const { data: profile } = useProfileQuery();
-
-	const navigate = useNavigate();
 	const { t } = useI18nHelpers();
 	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
-
-	const getPercentProfileFullness = useCallback((profile: FullProfile) => {
-		const allFileldsCount = Object.keys(profile).length - 1;
-		const fullnessCount =
-			Object.values(profile).filter((item) => item && item.length > 0).length - 1;
-
-		const percentFullness = Math.round((fullnessCount / allFileldsCount) * 100);
-		return percentFullness;
-	}, []);
-
-	const redirectToProfileEditing = () => {
-		navigate(`${ROUTES.profile.edit.page}#personal-information`);
-	};
-
-	useEffect(() => {
-		if (profile) {
-			const percentFullness = getPercentProfileFullness(profile);
-			setPercentProfileFullness(percentFullness);
-		}
-	}, [getPercentProfileFullness, profile]);
-
-	const isIncompleteProfile = percentProfileFullness < 100;
 
 	return (
 		<>
@@ -59,21 +30,7 @@ const MainPage = () => {
 					{!profile.isEmailVerified ? (
 						<EmailVerify firstName={profile.firstName} />
 					) : (
-						isIncompleteProfile && (
-							<Card className={styles.card}>
-								<div className={styles['card-wrapper']}>
-									<div className={styles['card-content']}>
-										<h3 className={styles['card-title']}>
-											{tMainPage(mainPage.PROFILE_FULLNESS)} {percentProfileFullness}%
-										</h3>
-										<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
-									</div>
-									<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
-										{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
-									</Button>
-								</div>
-							</Card>
-						)
+						<IncompleteProfileStub />
 					)}
 				</Flex>
 			)}

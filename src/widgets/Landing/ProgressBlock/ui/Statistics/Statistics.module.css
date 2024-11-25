@@ -9,6 +9,7 @@
 .statistics h3 {
   margin-bottom: 33px;
   color: var(--text-color-bright);
+  text-align: center;
   line-height: 27px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
@@ -61,8 +62,9 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px 16px;
+  padding: 8px 13px;
   box-shadow: var(--main-shadow);
+  border-radius: 5px;
   color: var(--text-color-the-lightest);
   line-height: 15px;
   font-weight: var(--font-weight-500);
@@ -114,11 +116,46 @@
     margin-top: 19.68px;
   }
 
-  .statistics-list li {
-    display: flex;
-    flex-direction: column;
+  .statistics-list li {    
     gap: 3.28px;
-    padding: 6.56px 13.12px;
-    line-height: 12px;
+    padding: 3.56px 5px;
+    line-height: 12px;    
   }
+}
+
+@media screen and (width <= 576px) {
+  .statistics {
+    padding: 13px 16px 12.21px 23.59px;
+    max-width: 266px;
+  }
+
+  .statistics h3 {
+    margin-bottom: 21px;
+  }
+
+  .statistics-pie {
+    width: 180px;
+    height: 180px;
+  }
+
+  .progress-icon {
+    width: 180px;
+    height: 149px;
+  }
+
+  .label {
+    line-height: 121%;
+    font-size: var(--font-size-p-s);
+    transform: translate(-38px, -19px);
+  }
+
+  .statistics-list {
+    gap: 5px;
+  }
+
+  .statistics-list li {
+    padding: 3px 10px;
+    font-size: var(--font-size-p-xxs);
+  }
+
 }

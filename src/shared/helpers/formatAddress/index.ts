@@ -1,0 +1,1 @@
+export { formatAddress } from './formatAddress';

@@ -1,6 +1,6 @@
 .sidebar {
   width: 280px;
-  height: 100vh;
+  height: 100%;
   background: var(--background-block);
   transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
 }
@@ -50,6 +50,32 @@
   width: 88px;
 }
 
+.bottom-actions {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.sidebar-bottom-button {
+  min-width: auto;
+  height: 48px;
+  transition: all 0.4s;
+}
+
+.sidebar-bottom-button > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-bottom-button-hide > span {
+  position: absolute;
+  z-index: -1;
+  margin: 0;
+  min-width: 0;
+  transition: all 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (width <=768px) {
   .close-icon {
     display: none;
@@ -57,7 +83,7 @@
 }
 
 @media (width <=480px) {
-  .sidebar {
+  .desktop-sidebar {
     display: none;
   }
 }

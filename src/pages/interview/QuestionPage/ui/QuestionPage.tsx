@@ -2,9 +2,10 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import {
@@ -26,14 +27,14 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	const { questionId } = useParams();
 	const { isMobile } = useScreenSize();
 
-	const { data: profile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const {
 		data: question,
 		isFetching,
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profile?.profiles[0].id,
+		profileId: profileId,
 	});
 
 	const authorFullName = useMemo(() => {
@@ -47,31 +48,34 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		return <QuestionPageSkeleton />;
 	}
 
+	if (!question) {
+		return null;
+	}
+
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
 				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
+					description={question.description}
+					status={question.status}
+					title={question.title}
 				/>
-				<ProgressBlock checksCount={question?.checksCount} />
+				<ProgressBlock checksCount={question.checksCount} />
 				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
+					rate={question.rate}
+					keywords={question.keywords}
+					complexity={question.complexity}
+					questionSkills={question.questionSkills}
 				/>
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
-
 				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
+					profileId={profileId}
 					questionId={questionId ? questionId : ''}
+					checksCount={question.checksCount}
 				/>
-
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 			</section>
 		);
 	}
@@ -81,25 +85,26 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					<QuestionHeader
-						description={question?.description}
-						status={question?.status}
-						title={question?.title}
+						description={question.description}
+						status={question.status}
+						title={question.title}
 					/>
 					{!isAdmin && (
 						<QuestionActions
-							profileId={profile ? profile.profiles[0].id : ''}
+							profileId={profileId}
 							questionId={questionId ? questionId : ''}
+							checksCount={question.checksCount}
 						/>
 					)}
-					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+					<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 				</div>
 				<div className={styles.additional}>
-					{!isAdmin && <ProgressBlock checksCount={question?.checksCount} />}
+					{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
 					<AdditionalInfo
-						rate={question?.rate}
-						keywords={question?.keywords}
-						complexity={question?.complexity}
-						questionSkills={question?.questionSkills}
+						rate={question.rate}
+						keywords={question.keywords}
+						complexity={question.complexity}
+						questionSkills={question.questionSkills}
 					/>
 					<p className={styles.author}>
 						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>

@@ -13,23 +13,21 @@
 
 .popup {
   position: relative;
-  top: 30px;
+  top: 8px;
   left: 15px;
-}
-
-.button {
-  justify-content: flex-start;
-}
-
-.link {
-  color: inherit;
+  padding: 6px;
+  border-radius: 20px;
 }
 
 .details-button {
   position: absolute;
   top: -8px;
-  right: -40px;
+  right: -20px;
   cursor: pointer;
+
+  &:focus {
+    border: 1px solid transparent;
+  }
 }
 
 .details-button svg {

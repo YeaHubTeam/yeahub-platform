@@ -1,7 +1,9 @@
 :root {
   /* widths */
   --container-width: 1216px;
+  --container-width-lg: 960px; 
   --container-width-tablet: 708px;
+  --container-width-sm: 540px;
   --container-width-mobile: 100%;
   --grid-template-columns: 332px 244px 244px;
 

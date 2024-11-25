@@ -13,9 +13,10 @@ const Error404Page = () => {
 
 	const handleBackBtnClick = () => navigate(-1);
 	const { t } = useI18nHelpers(i18Namespace.translation);
+
 	return (
-		<Card>
-			<div className={styles.wrapper}>
+		<Card className={styles.wrapper}>
+			<div>
 				<img src="/images/404.png" alt={t(Translation.ERROR404_IMAGE_ALT)} className={styles.img} />
 				<div className={styles.content}>
 					<h2 className={styles.title}>Произошла ошибка</h2>

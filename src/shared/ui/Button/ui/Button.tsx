@@ -36,6 +36,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 						? styles['a-link-destructive']
 						: styles[`${tagName}-${variant}`],
 					className,
+					tagName === 'a' && props.disabled ? styles['disabled'] : '',
 				)}
 				{...props}
 			>

@@ -15,12 +15,22 @@
   "avatar": "Avatar",
   "userPreferences": {
     "myProfile": "My profile",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "menu": "Menu"
+  },
+  "buttons": {
+    "fillProfile": "Fill Profile",
+    "edit": "Edit",
+    "more": "More",
+    "repeat": "Repeat",
+    "learn": "Learn",
+    "support": "Support"
   },
   "tabs": {
     "main": "Home",
     "platform": "Platform",
     "admin": "Editor",
+    "settings": "Settings",
     "profile": "My Profile",
     "specialization": "Specialization",
     "education": {
@@ -66,6 +76,12 @@
     "iKnow": "I known",
     "dontKnow": "Don't know",
     "repeat": "Repeat"
+  },
+  "questions": {
+    "status": {
+      "public": "Public",
+      "draft": "Draft"
+    }
   },
   "validation": {
     "passwordConfirmation": {
@@ -137,6 +153,15 @@
     "register": "Register"
   },
   "toast": {
+    "auth": {
+      "resetPassword": {
+        "success": "The password has been successfully changed",
+        "failed": "Error when changing the password"
+      },
+      "login": {
+        "failed": "Invalid email or password."
+      }
+    },
     "questions": {
       "learned": {
         "success": "he issue has been fully studied",
@@ -146,9 +171,45 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
+      "create": {
+        "success": "The question has been successfully created",
+        "failed": "The question could not be created"
+      },
+      "edit": {
+        "success": "The question has been successfully changed",
+        "failed": "The question could not be changed"
+      },
       "delete": {
-        "success": "The question has been successfully deleted.",
-        "failed": "Failed to delete question"
+        "single": {
+          "success": "The question has been successfully deleted",
+          "failed": "Failed to delete question"
+        },
+        "multiple": {
+          "success": "Successfully deleted questions:",
+          "failed": "Failed to delete the question:"
+        }
+      }
+    },
+    "skills": {
+      "delete": {
+        "single": {
+          "success": "The skill has been successfully deleted",
+          "failed": "Failed to delete the skill"
+        },
+        "multiple": {
+          "success": "Successfully deleted skills:",
+          "failed": "Failed to delete the skill:"
+        }
+      }
+    },
+    "specializations": {
+      "single": {
+        "success": "The specialization has been successfully deleted",
+        "failed": "Failed to delete the specialization"
+      },
+      "multiple": {
+        "success": "Successfully deleted specializations:",
+        "failed": "Failed to delete the specialization:"
       }
     },
     "profile": {
@@ -173,8 +234,10 @@
     },
     "interview": {
       "new": {
-        "success": "A new interview has been created",
-        "failed": "Failed to create a new interview"
+        "quiz": {
+          "success": "A new interview has been created",
+          "failed": "Failed to create a new interview"
+        }
       },
       "finish": {
         "success": "The interview is completed",
@@ -184,6 +247,12 @@
     "settings": {
       "sendVerificationEmail": {
         "failed": "Sending verification message failed"
+      }
+    },
+    "password": {
+      "change": {
+        "success": "Password changed successfully",
+        "failed": "Failed to change password"
       }
     }
   },

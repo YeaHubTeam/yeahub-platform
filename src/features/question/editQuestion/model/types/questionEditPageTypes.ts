@@ -1,8 +1,6 @@
-import * as yup from 'yup';
+import { CreateOrEditQuestionFormValues, Question } from '@/entities/question';
 
-import { Question } from '@/entities/question';
+export type EditQuestionFormValues = CreateOrEditQuestionFormValues;
 
-import { questionEditSchema } from '../lib/validation/questionEditSchema';
-
-export type QuestionEditFormValues = Question;
-export type QuestionEditSchema = yup.InferType<typeof questionEditSchema>;
+export type EditQuestionBodyRequest = EditQuestionFormValues;
+export type EditQuestionResponse = Question;
