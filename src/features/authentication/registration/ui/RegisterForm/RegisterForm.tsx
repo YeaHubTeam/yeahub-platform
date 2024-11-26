@@ -5,11 +5,11 @@ import { Icon, Input } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import {
-	REGISTRATION_AD_CONSENT_LINK,
-	REGISTRATION_CONSENT_PROCESSING_LINK,
-	REGISTRATION_OFFER_AGREEMENT_LINK,
-	REGISTRATION_PRIVACY_POLICY_LINK,
-} from '@/shared/constants/consentAndTermsLinks';
+	AD_CONSENT_LINK,
+	CONSENT_PROCESSING_LINK,
+	OFFER_AGREEMENT_LINK,
+	PRIVACY_POLICY_LINK,
+} from '@/shared/constants/documents';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
@@ -154,7 +154,7 @@ export const RegisterForm = () => {
 								<p>
 									{privacyPolicyParts[0]}
 									<a
-										href={REGISTRATION_CONSENT_PROCESSING_LINK}
+										href={CONSENT_PROCESSING_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -163,7 +163,7 @@ export const RegisterForm = () => {
 									</a>
 									{privacyPolicyParts[2]}
 									<a
-										href={REGISTRATION_PRIVACY_POLICY_LINK}
+										href={PRIVACY_POLICY_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -184,7 +184,7 @@ export const RegisterForm = () => {
 								<p>
 									{offerAgreementParts[0]}
 									<a
-										href={REGISTRATION_OFFER_AGREEMENT_LINK}
+										href={OFFER_AGREEMENT_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -206,7 +206,7 @@ export const RegisterForm = () => {
 								<p>
 									{adConsentParts[0]}
 									<a
-										href={REGISTRATION_AD_CONSENT_LINK}
+										href={AD_CONSENT_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
