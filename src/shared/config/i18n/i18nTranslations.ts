@@ -535,6 +535,7 @@ export enum Landing {
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
+	DOC_FOOTER = 'docs.docFooter',
 }
 export enum ActionsButton {
 	MORE = 'buttons.more',
@@ -550,5 +551,4 @@ export enum Docs {
 	DOC4 = 'docs.doc4',
 	DOC5 = 'docs.doc5',
 	DOC6 = 'docs.doc6',
-	DOC_FOOTER = 'docs.docFooter',
 }
