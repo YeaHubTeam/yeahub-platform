@@ -5,7 +5,6 @@
   margin-top: 48px;
   padding: 16px;
   width: 100%;
-  max-width: 408px;
   border-radius: 20px;
   background-color: var(--color-label-bg);
   font-weight: var(--font-weight-400);
@@ -20,7 +19,7 @@
   margin-left: auto;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .wrapper {
     margin-bottom: 40px;
   }

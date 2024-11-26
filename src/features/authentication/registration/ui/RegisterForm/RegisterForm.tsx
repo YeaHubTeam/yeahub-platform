@@ -4,7 +4,12 @@ import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
-import { REGISTRATION_CONSENT_LINK } from '@/shared/constants/consentAndTermsLinks';
+import {
+	REGISTRATION_AD_CONSENT_LINK,
+	REGISTRATION_CONSENT_PROCESSING_LINK,
+	REGISTRATION_OFFER_AGREEMENT_LINK,
+	REGISTRATION_PRIVACY_POLICY_LINK,
+} from '@/shared/constants/consentAndTermsLinks';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
@@ -139,6 +144,7 @@ export const RegisterForm = () => {
 				{t(Auth.REGISTRATION_REGISTER_BUTTON)}
 			</Button>
 			<div className={styles['consent-wrapper']}>
+				<p>{t(Auth.REGISTRATION_CONSENT_TEXT)}</p>
 				<FormControl name="privacyConsent" control={control}>
 					{(field) => (
 						<Checkbox
@@ -148,7 +154,7 @@ export const RegisterForm = () => {
 								<p>
 									{privacyPolicyParts[0]}
 									<a
-										href={REGISTRATION_CONSENT_LINK}
+										href={REGISTRATION_CONSENT_PROCESSING_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -156,6 +162,14 @@ export const RegisterForm = () => {
 										{privacyPolicyParts[1]}
 									</a>
 									{privacyPolicyParts[2]}
+									<a
+										href={REGISTRATION_PRIVACY_POLICY_LINK}
+										className={styles.link}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{privacyPolicyParts[3]}
+									</a>
 								</p>
 							}
 						/>
@@ -170,7 +184,7 @@ export const RegisterForm = () => {
 								<p>
 									{offerAgreementParts[0]}
 									<a
-										href={REGISTRATION_CONSENT_LINK}
+										href={REGISTRATION_OFFER_AGREEMENT_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -192,7 +206,7 @@ export const RegisterForm = () => {
 								<p>
 									{adConsentParts[0]}
 									<a
-										href={REGISTRATION_CONSENT_LINK}
+										href={REGISTRATION_AD_CONSENT_LINK}
 										className={styles.link}
 										target="_blank"
 										rel="noopener noreferrer"

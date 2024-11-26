@@ -65,7 +65,7 @@ h1{
   color: var(--color-purple-300); 
 }
 
-.consent-wrapper .form-control:nth-child(2) {
+.consent-wrapper .form-control {
   margin-top: 8px;
   margin-bottom: 8px;
 }

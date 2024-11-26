@@ -14,8 +14,25 @@
   color: var(--text-color-primary);
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .wrapper {
     flex-basis: 100%;
+    padding: 0;
+  }
+}
+
+@media ( width >= 768px){
+  .content{
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: none;
+  }
+}
+
+@media ( width >= 270px){
+  .content{
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: none;
   }
 }
