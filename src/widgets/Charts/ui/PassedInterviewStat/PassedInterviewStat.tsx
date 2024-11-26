@@ -33,6 +33,9 @@ export const PassedInterviewStat = ({
 					borderRadius: '50%',
 					width: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
 					height: 'clamp(192px, calc(192px + 9.98vw - 57.6px), 307px)',
+					fontSize: 'var(--font-size-p-l)',
+					fontWeight: 'var(--font-weight-600)',
+					color: 'var(--text-color-light)',
 				}}
 			/>
 			<ul className={styles.list}>

@@ -48,12 +48,14 @@ export const PassedQuestionChart = ({
 			option={gaugeOption}
 			opts={{ locale: 'RU' }}
 			style={{
-				marginBottom: '24px',
 				width,
 				height,
 				marginInline: 'auto',
 				backgroundColor: '#FDF4FF',
 				borderRadius: '50%',
+				fontSize: 'var(--font-size-p-l)',
+				fontWeight: 'var(--font-weight-600)',
+				color: 'var(--text-color-light)',
 			}}
 		/>
 	);
