@@ -2,12 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  width: 100%;
+  width: 312px;
   font-size: var(--font-size-p-s);
-}
-
-.margin-top {
-  margin-top: 6px;
 }
 
 .stat {
@@ -16,9 +12,7 @@
 
 @media (width <= 1024px) {
   .info {
-    grid-template-columns: repeat(4, auto);
-    align-self: center;
-    width: 451px;
+    width: auto;
   }
 }
 
@@ -26,7 +20,7 @@
   .info {
     align-self: auto;
     gap: 6px;
-    width: 100%;
+    width: 296px;
   }
 
   .stat {

@@ -28,7 +28,7 @@ const InterviewStatisticsPage = () => {
 		profileId?.profiles[0].id ?? '',
 	);
 
-	const { isTablet, isMobile } = useScreenSize();
+	const { isMobile } = useScreenSize();
 
 	const questionStats = [
 		{
@@ -90,22 +90,19 @@ const InterviewStatisticsPage = () => {
 					/>
 				</div>
 			</Card>
-			<div className={styles.progress}>
-				<Card className={styles.block}>
-					<div className={styles.questions}>
-						<InterviewQuestionHeader title={t('questionStats.title')} centered />
-						{profileStats && (
-							<PassedQuestionChart
-								total={profileStats.questionsStat.uniqueQuestionsCount}
-								learned={profileStats.questionsStat.learnedQuestionsCount}
-								isLoading={isLoading}
-							/>
-						)}
-					</div>
-					{isTablet && <PassedQuestionStatInfo stats={questionStats} hasShadow />}
-				</Card>
-				{!isTablet && <PassedQuestionStatInfo stats={questionStats} />}
-			</div>
+			<Card className={styles.block}>
+				<div className={styles.questions}>
+					<InterviewQuestionHeader title={t('questionStats.title')} centered />
+					{profileStats && (
+						<PassedQuestionChart
+							total={profileStats.questionsStat.uniqueQuestionsCount}
+							learned={profileStats.questionsStat.learnedQuestionsCount}
+							isLoading={isLoading}
+						/>
+					)}
+					<PassedQuestionStatInfo stats={questionStats} />
+				</div>
+			</Card>
 			<Card className={styles['history-list']}>
 				<InterviewHistoryList className={styles.history} />
 			</Card>

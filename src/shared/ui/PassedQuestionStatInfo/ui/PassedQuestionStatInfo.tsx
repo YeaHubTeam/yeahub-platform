@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { StatInfoItem } from '../../StatInfoItem';
@@ -11,19 +10,18 @@ interface PassedQuestionStatInfoProps {
 		value: string;
 		route?: string;
 	}[];
-	hasShadow?: boolean;
 }
 
-export const PassedQuestionStatInfo = ({ stats, hasShadow }: PassedQuestionStatInfoProps) => {
+export const PassedQuestionStatInfo = ({ stats }: PassedQuestionStatInfoProps) => {
 	return (
-		<div className={classNames(styles.info, { [styles['margin-top']]: !!hasShadow })}>
+		<div className={styles.info}>
 			{stats.map((stat, index) =>
 				stat.route ? (
 					<Link to={stat.route} key={index}>
-						<StatInfoItem {...stat} hasShadow={hasShadow} />
+						<StatInfoItem {...stat} />
 					</Link>
 				) : (
-					<StatInfoItem {...stat} key={index} className={styles.stat} hasShadow={hasShadow} />
+					<StatInfoItem {...stat} key={index} className={styles.stat} />
 				),
 			)}
 		</div>

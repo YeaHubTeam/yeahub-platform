@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 16px;
+  padding: 24px;
   list-style: none;
 }
 
@@ -37,15 +37,20 @@
 }
 
 
-@media (width <= 1280px) {
+@media (width <= 1024px) {
   .card-history {
     flex-grow: 1;
+    padding: 16px;
+  }
+
+  .list {
     padding: 16px;
   }
 }
 
 @media (width <= 768px) {
   .list {
+    padding: 14px 14px 42px;
     padding-bottom: 42px;
   }
 }

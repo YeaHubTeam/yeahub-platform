@@ -194,11 +194,13 @@ const InterviewPage = () => {
 					actionRoute={statsActionRoute}
 					actionDisabled={profile?.isEmailVerified && newUser}
 				>
-					<PassedQuestionChart
-						total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
-						learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
-					/>
-					<PassedQuestionStatInfo stats={questionStats} hasShadow />
+					<div className={styles['statistics-wrapper']}>
+						<PassedQuestionChart
+							total={profileStats ? profileStats.questionsStat.uniqueQuestionsCount : 0}
+							learned={profileStats ? profileStats.questionsStat.learnedQuestionsCount : 0}
+						/>
+						<PassedQuestionStatInfo stats={questionStats} />
+					</div>
 				</Card>
 			)}
 

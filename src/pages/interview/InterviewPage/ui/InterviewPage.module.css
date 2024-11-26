@@ -24,6 +24,17 @@
   min-height: 488px;
 }
 
+.statistics-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistics-wrapper > :nth-child(2) {
+  margin-top: 24px;
+}
+
 .inactive-title {
   line-height: 27px;
   font-weight: var(--font-weight-600);
@@ -67,6 +78,13 @@
   .skeleton-card-history {
     width: 100%;
   }
+}
+
+@media (width <= 728px) {
+  .statistics-wrapper > :nth-child(2) {
+    margin-top: 12px;
+  }
+  
 }
 
 @media (width <= 480px) {
