@@ -36,7 +36,7 @@ export const Footer = () => {
 					<p className={styles['company-name']}>© 2024 YeaHub</p>
 					<div className={styles['copyright-icons']}>
 						<NavLink className={styles['docs']} to="/docs">
-							<p>{t(Landing.DOC_FOOTER)}</p>
+							<p>{t(Landing.FOOTER_DOCS)}</p>
 						</NavLink>
 						<NavLink to="https://www.figma.com/community/file/1438482355619792777/yeahub-public">
 							<FigmaLogo className={styles.figma} />
