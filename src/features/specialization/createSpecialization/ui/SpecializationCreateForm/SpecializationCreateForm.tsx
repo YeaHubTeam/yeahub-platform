@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useBlocker } from 'react-router-dom';
 
@@ -21,13 +20,11 @@ export const SpecializationCreateForm = () => {
 		mode: 'onTouched',
 	});
 
-	useEffect(() => {}, [methods.formState.isDirty, methods.formState.isSubmitted]);
+	const { isDirty, isSubmitted } = methods.formState;
 
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			methods.formState.isDirty &&
-			!methods.formState.isSubmitted &&
-			currentLocation.pathname !== nextLocation.pathname,
+			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
 	);
 
 	return (

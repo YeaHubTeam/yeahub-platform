@@ -34,7 +34,7 @@
   },
   "blockModal": {
     "confirmTitle": "Подтвердить действие",
-    "confirmDescription": "Вы действительно хотите удалить описание?",
+    "confirmDescription": "У вас есть несохраненные данные. Вы хотите продолжить?",
     "action": {
       "ok": "Да",
       "cancel": "Нет"
