@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 var(--container-padding);
   max-width: var(--container-width);
 }
   
@@ -18,9 +18,13 @@
   
 @media screen and (width <= 767px) {
   .container {
-    padding: 0 15px;
     max-width: var(--container-width-sm);
   }
 }
   
+@media screen and (width <= 576px) {
+  .container {
+    max-width: var(--container-width-mobile);
+  }
+}
   

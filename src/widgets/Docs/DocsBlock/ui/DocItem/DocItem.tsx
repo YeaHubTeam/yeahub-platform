@@ -7,18 +7,22 @@ import { Docs as DocsI18n } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button/ui/Button';
 import { Flex } from '@/shared/ui/Flex/ui/Flex';
 
-import { DockProps } from '../../model/types/types';
+import { DockItem } from '../../model/types/types';
 
 import styles from './DocItem.module.css';
 
-export const DocItem = ({ name, link }: DockProps) => {
+interface DocItemProps {
+	doc: DockItem;
+}
+
+export const DocItem = ({ doc }: DocItemProps) => {
 	const { t } = useTranslation(i18Namespace.docs);
 
 	return (
 		<Flex className={styles['doc-item']} justify="between" align="center">
-			<p className={styles['doc-item-name']}>{name}</p>
+			<p className={styles['doc-item-name']}>{t(doc.name)}</p>
 			<div className={styles['doc-link']}>
-				<NavLink to={link} target="_blank">
+				<NavLink to={doc.link} target="_blank">
 					<Button style={{ borderRadius: '12px' }} variant="link-purple">
 						{t(DocsI18n.TITLE)}
 						<ArrowRight style={{ width: '20px', height: '20px' }} />

@@ -1,6 +1,8 @@
 import { Docs as DocsI18n } from '@/shared/config/i18n/i18nTranslations';
 
-export const docs = [
+import { DockItem } from './types/types';
+
+export const docs: DockItem[] = [
 	{
 		name: DocsI18n.DOC1,
 		link: 'https://docs.google.com/document/d/1tU9lgOu_W21DAoHOH0kQmTWq5hG3rvxv_Q_jzRi8Gh4/edit?tab=t.0',

@@ -1,4 +1,4 @@
-export interface DockProps {
+export interface DockItem {
 	name: string;
 	link: string;
 }
