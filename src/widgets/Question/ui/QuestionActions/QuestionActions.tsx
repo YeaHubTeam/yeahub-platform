@@ -22,7 +22,7 @@ export const QuestionActions = ({ profileId, questionId, checksCount }: Question
 
 	return (
 		<Card>
-			<Flex justify="center" gap="12" align="center">
+			<Flex justify="center" gap="40" align="center">
 				<LearnQuestionButton
 					profileId={profileId}
 					questionId={questionId}

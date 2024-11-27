@@ -76,7 +76,7 @@
   }
 }
  
-@media (width <= 480px) {
+@media (width <=564px) {
   .question-header-wrapper {
     display: grid;
     grid-template-columns: 1fr auto;
