@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.tablet{
+  flex-direction: column;
+}
+
 .main {
   display: flex;
   flex: 1;
@@ -23,7 +27,7 @@
   height: auto;
 }
 
-:is(.additional, .mobile) > div {
+:is(.additional, .mobile, .tablet) > div {
   height: auto;
 }
 
@@ -64,6 +68,10 @@
 }
 
 .mobile .actions {
+  justify-content: flex-start;
+}
+
+.tablet .actions {
   justify-content: flex-start;
 }
 

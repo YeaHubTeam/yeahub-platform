@@ -24,7 +24,7 @@ interface QuestionPageProps {
 
 export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	const { questionId } = useParams();
-	const { isMobile } = useScreenSize();
+	const { isMobile, isTablet } = useScreenSize();
 
 	const { data: profile } = useProfileQuery();
 	const {
@@ -55,16 +55,24 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					status={question?.status}
 					title={question?.title}
 				/>
-				<ProgressBlock checksCount={question?.checksCount} />
-				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
+				<QuestionActions
+					profileId={profile ? profile.profiles[0].id : ''}
+					questionId={questionId ? questionId : ''}
+					checksCount={question?.checksCount}
 				/>
-				<p className={styles.author}>
-					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-				</p>
+				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+			</section>
+		);
+	}
+
+	if (isTablet) {
+		return (
+			<section className={classNames(styles.wrapper, styles.tablet)}>
+				<QuestionHeader
+					description={question?.description}
+					status={question?.status}
+					title={question?.title}
+				/>
 				<QuestionActions
 					profileId={profile ? profile.profiles[0].id : ''}
 					questionId={questionId ? questionId : ''}

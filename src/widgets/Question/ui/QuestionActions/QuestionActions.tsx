@@ -14,10 +14,10 @@ interface QuestionActionsProps {
 }
 
 export const QuestionActions = ({ profileId, questionId, checksCount }: QuestionActionsProps) => {
-	const { isMobile } = useScreenSize();
+	const { isMobile, isTablet } = useScreenSize();
 	const { data: profile } = useProfileQuery();
 
-	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
+	const buttonVariant = isMobile || isTablet ? 'link-gray' : 'tertiary';
 	const isEmailVerified = profile?.isEmailVerified;
 
 	return (
