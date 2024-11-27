@@ -54,3 +54,9 @@
     padding-bottom: 42px;
   }
 }
+
+@media (width <= 480px) {
+  .card-history {
+    gap: 16px;
+  }
+}
