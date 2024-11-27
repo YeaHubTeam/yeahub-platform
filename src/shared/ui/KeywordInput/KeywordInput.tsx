@@ -7,6 +7,8 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleChip } from '@/shared/ui/SimpleChip';
 
+import { Button } from '../Button';
+
 import styles from './KeywordInput.module.css';
 
 type KeywordInputProps = {

@@ -1,0 +1,31 @@
+.wrapper{
+  margin-bottom: 27px;
+}
+
+.card-title {
+  margin: 0;
+  color: var(--text-color-black-landing);
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-large-34);
+}
+
+.svg {
+  width: 32px;
+  height: 33px;
+  fill: var( --color-green-750);
+}
+
+.text{
+  color: var(--color-black-1000);
+}
+
+.actions-button{
+  margin-bottom: 60px;
+}
+
+.arrow-down-icon{
+  width: 12px;
+  height: 16px;
+  fill: var(--color-black-1000);
+}
