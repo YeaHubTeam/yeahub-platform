@@ -6,9 +6,21 @@ interface ImageWithWrapperProps {
 	className?: string;
 	src?: string | null;
 	alt?: string;
+	isMobile?: boolean;
+	isTablet?: boolean;
 }
 
-export const ImageWithWrapper = ({ className, src, alt = '' }: ImageWithWrapperProps) => {
+export const ImageWithWrapper = ({
+	className,
+	src,
+	alt = '',
+	isMobile,
+	isTablet,
+}: ImageWithWrapperProps) => {
+	if ((isMobile || isTablet) && !src) {
+		return null;
+	}
+
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
 			{src ? (

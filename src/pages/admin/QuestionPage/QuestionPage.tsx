@@ -25,7 +25,7 @@ export const QuestionPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const { questionId } = useParams();
-	const { isMobile } = useScreenSize();
+	const { isMobile,isTablet } = useScreenSize();
 
 	const { data: profile } = useProfileQuery();
 	const {
@@ -64,6 +64,8 @@ export const QuestionPage = () => {
 					description={question?.description}
 					status={question?.status}
 					title={question?.title}
+					isMobile={isMobile}
+					isTablet={isTablet}
 				/>
 				<AdditionalInfo
 					rate={question?.rate}
@@ -98,6 +100,8 @@ export const QuestionPage = () => {
 						description={question?.description}
 						status={question?.status}
 						title={question?.title}
+						isMobile={isMobile}
+						isTablet={isTablet}
 					/>
 					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 				</div>

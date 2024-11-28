@@ -3,14 +3,20 @@
 }
 
 .title {
+	font: var( --font-family);
   margin-bottom: 20px;
   color: var(--text-color-primary);
   font-size: var(--font-size-h-xs);
+  font-weight: var(--font-weight-500);
+  line-height: 24px;
 }
 
 .text {
+	font: var( --font-family);
   color: var(--text-color-light);
   font-size: var(--font-size-p-m);
+  font-weight: var(--font-weight-500);
+  line-height: 20.8px;
 }
 
 @media (width <= 480px) {
@@ -21,6 +27,8 @@
   }
 
   .title {
+	margin-bottom: 5px;
+	font-size: var(--font-size-p-m);
     font-weight: var(--font-weight-500);
   }
 }

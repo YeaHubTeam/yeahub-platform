@@ -33,11 +33,16 @@
 
 .author {
   grid-area: author;
-  margin: 0 auto;
+  margin: 10px auto;
   margin-bottom: 10px;
+  align-content: center;
   width: auto;
   text-align: center;
 }
+
+.render-component {
+	margin: -6px;
+ }
 
 .author a {
   pointer-events: none;
@@ -95,16 +100,15 @@
 
 .popover-additional {
   position: absolute;
-  top: 25px;
-  right: 20px;
+  top: 23px;
+  right: 18px;
   display: none;
   padding: 8px;
   aspect-ratio: 1;
   width: 36px;
+  box-sizing: border-box;
   border: 1px solid var(--color-black-200);
   border-radius: 8px;
-  background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
  
   & svg {
