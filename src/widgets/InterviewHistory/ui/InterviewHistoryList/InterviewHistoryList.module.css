@@ -37,10 +37,9 @@
 }
 
 
-@media (width <= 1024px) {
+@media (width <= 1198px) {
   .card-history {
     flex-grow: 1;
-    padding: 16px;
   }
 
   .list {
