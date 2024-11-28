@@ -547,6 +547,7 @@ export enum Landing {
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
+	FOOTER_DOCS = 'footer.docs',
 }
 
 export enum Subscription {
@@ -561,4 +562,14 @@ export enum ActionsButton {
 	MORE = 'buttons.more',
 	LEARN = 'buttons.learn',
 	REPEAT = 'buttons.repeat',
+}
+
+export enum Docs {
+	TITLE = 'docs.title',
+	DOC1 = 'docs.doc1',
+	DOC2 = 'docs.doc2',
+	DOC3 = 'docs.doc3',
+	DOC4 = 'docs.doc4',
+	DOC5 = 'docs.doc5',
+	DOC6 = 'docs.doc6',
 }

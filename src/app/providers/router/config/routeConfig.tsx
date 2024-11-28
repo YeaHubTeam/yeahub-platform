@@ -44,6 +44,7 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
@@ -149,6 +150,10 @@ export const router = createBrowserRouter([
 					{
 						path: '*',
 						element: <Error404Page />,
+					},
+					{
+						path: ROUTES.docs.page,
+						element: <DocsPage />,
 					},
 				],
 			},
