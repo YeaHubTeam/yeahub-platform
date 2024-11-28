@@ -37,10 +37,9 @@
 }
 
 
-@media (width <= 1024px) {
+@media (width <= 1198px) {
   .card-history {
     flex-grow: 1;
-    padding: 16px;
   }
 
   .list {
@@ -52,5 +51,11 @@
   .list {
     padding: 14px 14px 42px;
     padding-bottom: 42px;
+  }
+}
+
+@media (width <= 480px) {
+  .card-history {
+    gap: 16px;
   }
 }

@@ -30,10 +30,18 @@
   .questions {
     width: 100%;
   }
+
+  .list {	
+    padding: 16px;
+  }
 }
 
 @media (width <= 480px) {
   .list {	
     padding: 14px;
+  }
+
+  .questions {
+    gap: 16px;
   }
 }
