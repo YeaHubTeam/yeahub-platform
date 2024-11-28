@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -21,16 +20,15 @@ interface ChooseQuestionsCategoriesProps {
 export const ChooseQuestionsCategories = ({
 	selectedSkills,
 	onChangeSkills,
-	skillsLimit,
+	skillsLimit = MAX_LIMIT,
 }: ChooseQuestionsCategoriesProps) => {
-	const [limit, _] = useState(skillsLimit || MAX_LIMIT);
-	const { data: skills } = useGetSkillsListQuery({ limit });
+	const { data: skills } = useGetSkillsListQuery({ limit: skillsLimit });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const handleChooseSkill = (id: number) => {
 		if (selectedSkills?.includes(id)) {
-			const filtredSkills = selectedSkills.filter((skill) => skill !== id);
-			onChangeSkills(filtredSkills.length > 0 ? filtredSkills : undefined);
+			const filteredSkills = selectedSkills.filter((skill) => skill !== id);
+			onChangeSkills(filteredSkills.length > 0 ? filteredSkills : undefined);
 		} else {
 			onChangeSkills([...(selectedSkills || []), id]);
 		}
