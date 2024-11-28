@@ -26,6 +26,10 @@
   color: var(--text-color-light);
 }
 
+.link {
+  color: inherit;
+}
+
 @media (width<= 480px) {
   .item {
     display: flex;
