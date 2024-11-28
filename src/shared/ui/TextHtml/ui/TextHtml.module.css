@@ -1,5 +1,6 @@
 .text {
   white-space: pre-wrap;
+  font-family: var(--font-family);
 }
 
 .text code {
