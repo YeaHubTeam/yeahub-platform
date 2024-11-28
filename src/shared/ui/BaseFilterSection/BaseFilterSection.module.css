@@ -1,7 +1,9 @@
 .title {
   margin-bottom: 8px;
   color: var(--text-color-light);
-  font-size: var(--font-size-p-m);
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
 }
 
 .category-wrapper {
@@ -20,12 +22,9 @@
 }
 
 @media (width <= 480px) {
-  .title {
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-p-s);
-  }
-
   .chip {
     font-size: var(--font-size-p-s);
   }
 }
+
+
