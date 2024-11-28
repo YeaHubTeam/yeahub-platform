@@ -5,6 +5,8 @@
   "remove.selected": "Remove selected",
   "actions": "Actions",
   "show": "Show",
+  "showAll": "Show all",
+  "hide": "Hide",
   "edit": "Edit",
   "delete": "Delete",
   "loading": "Loading...",
@@ -47,7 +49,7 @@
     }
   },
   "emptyStub": {
-    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "message": "Unfortunately, no results were found for your query “{{text}}”. Try modifying your search or use our categories.",
     "resetFilter": "Reset filter"
   },
   "fileLoader": {

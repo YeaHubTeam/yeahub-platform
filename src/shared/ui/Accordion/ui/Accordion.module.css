@@ -1,9 +1,13 @@
 .accordion {
-  padding-bottom: 16px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--border-color);
 }
 
-.accordion+.accordion {
+.accordion.accordion-opened {
+  padding: 0;
+}
+
+.accordion + .accordion {
   margin-top: 24px;
 }
 
@@ -15,7 +19,7 @@
 .button {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 0;
   width: 100%;
   border: none;
@@ -26,22 +30,33 @@
 
 .title {
   position: relative;
+  display: flex;
+  align-items:normal;
   padding-left: 16px;
   text-align: initial;
-  transition: color 0.3s ease-in-out;
+  line-height: 120%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+  transition: 
+    color 0.3s ease-in-out,
+    margin-bottom 0.3s ease-in-out;
 }
 
 .title::before {
   position: absolute;
-  top: 50%;
+  top: 7px;
   left: 0;
   content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
-  transform: translateY(-50%);
 }
+
+.title.accordion-opened {
+  margin-bottom: 24px;
+}
+
 
 .icon {
   flex-shrink: 0;
@@ -51,16 +66,43 @@
   transition: transform 400ms ease-in-out;
 }
 
-.icon-opened {
+.icon.accordion-opened {
   transform: rotate(-180deg);
 }
 
 .content {
-  padding: 24px 24px 0;
+  padding: 0 0 16px 24px;
   color: var(--text-color-light);
 }
 
 .collapsed {
   overflow: hidden;
   transition: height .3s ease-in-out;
+}
+
+@media (width <= 768px) { 
+  .content {
+    padding-left: 16px;
+  }
+}
+
+@media (width <= 360px) { 
+  .accordion {
+    padding-bottom: 8px;
+  }
+
+  .accordion + .accordion {
+    margin-top: 16px;
+  }
+
+  .content {
+    padding-bottom: 8px;
+    padding-left: 0;
+  }
+
+  .title { 
+    line-height: 120%;
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-h-xxs);
+  }
 }

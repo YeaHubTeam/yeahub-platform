@@ -68,7 +68,7 @@ export const ChooseQuestionsCategories = ({
 				getDefaultIcon={skillIcon}
 			/>
 			<Button className={styles.button} variant="link" onClick={toggleShowAll}>
-				{!showAll ? 'Показать все' : 'Скрыть'}
+				{!showAll ? 'Посмотреть все' : 'Скрыть'}
 			</Button>
 		</div>
 	);

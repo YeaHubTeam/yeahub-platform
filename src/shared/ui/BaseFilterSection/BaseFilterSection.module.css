@@ -1,14 +1,22 @@
 .title {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   color: var(--text-color-light);
   font-size: var(--font-size-p-m);
 }
 
-
 .category-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+}
+
+.chip {
+  span {
+    padding: 0;
+    line-height: 120%;
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-p-m);
+  }
 }
 
 @media (width <= 480px) {

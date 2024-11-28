@@ -122,6 +122,10 @@
 }
 
 @media (width <= 768px) {
+  .card {
+    padding: 16px;
+  }
+
   .header {
     position: relative;
     flex-direction: column;
@@ -148,10 +152,6 @@
   .link {
     bottom: 16px;
     left: 16px;
-  }
-
-  .card {
-    padding: 16px;
   }
 
   .content {
