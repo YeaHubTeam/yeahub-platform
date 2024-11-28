@@ -1,8 +1,11 @@
 import classNames from 'classnames';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover } from '@/shared/ui/Popover';
 
 import { useProfileQuery } from '@/entities/auth';
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -17,9 +20,6 @@ import {
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
-import { Popover } from '@/shared/ui/Popover';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Icon } from 'yeahub-ui-kit';
 
 interface QuestionPageProps {
 	isAdmin?: boolean;
@@ -63,38 +63,20 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				</div>
 			}
 		>
-			{({ onToggle }) => {
-				const [isOpen, setIsOpen] = useState(false);
-
-				useEffect(() => {
-					const main = document.querySelector('main');
-					const onClose = () => {
-						setIsOpen(false);
-					};
-
-					main?.addEventListener('scroll', onClose);
-
-					return () => {
-						main?.removeEventListener('scroll', onClose);
-					};
-				}, []);
-
-				return (
-					<div>
-						<IconButton
-							className={classNames(styles['popover-additional'])}
-							onClick={() => {
-								console.log('Popover button clicked');
-								setIsOpen(!isOpen);
-								onToggle();
-							}}
-							aria-label="Popover"
-							variant="tertiary"
-							icon={<Icon icon="certificate" size={32} color="--palette-ui-black-700" />}
-						/>
-					</div>
-				);
-			}}
+			{({ onToggle }) => (
+				<div>
+					<IconButton
+						className={classNames(styles['popover-additional'])}
+						onClick={() => {
+							console.log('Popover button clicked');
+							onToggle();
+						}}
+						aria-label="Popover"
+						variant="tertiary"
+						icon={<Icon icon="certificate" size={32} color="--palette-ui-black-700" />}
+					/>
+				</div>
+			)}
 		</Popover>
 	);
 

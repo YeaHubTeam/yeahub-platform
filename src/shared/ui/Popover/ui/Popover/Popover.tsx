@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { Popover as PopoverKit } from 'yeahub-ui-kit';
 
 import { PopoverMenuItem } from '../../model/types/types';
@@ -20,7 +20,9 @@ interface PopoverProps {
 export const Popover = ({ children, menuItems, body }: PopoverProps) => {
 	const [isOpenPopover, setIsOpenPopover] = useState<boolean>(false);
 
-	const onToggleOpenPopover = () => setIsOpenPopover((prev) => !prev);
+	const onToggleOpenPopover = () => {
+		setIsOpenPopover((prev) => !prev);
+	};
 
 	const renderBody = useMemo(() => {
 		if (menuItems) {
@@ -30,7 +32,22 @@ export const Popover = ({ children, menuItems, body }: PopoverProps) => {
 		if (body) {
 			return body;
 		}
+
+		return null;
 	}, [menuItems, body]);
+
+	useEffect(() => {
+		const main = document.querySelector('main');
+		const onClose = () => {
+			setIsOpenPopover(false);
+		};
+
+		main?.addEventListener('scroll', onClose);
+
+		return () => {
+			main?.removeEventListener('scroll', onClose);
+		};
+	}, []);
 
 	if (!renderBody) {
 		return null;
