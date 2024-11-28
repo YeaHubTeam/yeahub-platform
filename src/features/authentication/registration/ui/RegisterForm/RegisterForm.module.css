@@ -1,6 +1,9 @@
-.wrapper {
-  margin-top: 20px;
-  max-width: 408px;
+h1{
+  margin: 0 0 20px;
+  text-align: center;
+  line-height: 115%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-l);
 }
 
 .submit-button {
@@ -24,9 +27,9 @@
 
 /* INPUT */
 .input {
-  padding-left: 20px;
-  min-height: 48px;
-  border-radius: 68px;
+  padding: 12px;
+  height: 48px;
+  border-radius: 12px;
   background-color: var(--background-app);
 }
 
@@ -38,19 +41,39 @@
 }
 
 /* CHECKBOX */
-.checkbox {
-  flex-shrink: 0;
+.consent-wrapper {
+  margin-top: 16px;
+  max-width: 100%;
+  word-break: break-word;
 }
 
-.consent-wrapper {
-  margin-top: 12px;
+.consent-wrapper > p {
+  justify-content: center;
+  padding-bottom: 16px;
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-xs);
+}
+
+.consent-wrapper p a {
+  color: var(--color-purple-700);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.consent-wrapper p a:hover {
+  color: var(--color-purple-300); 
+}
+
+.consent-wrapper .form-control {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .consent-wrapper label {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .consent-wrapper span:last-child {
@@ -59,34 +82,6 @@
   font-size: var(--font-size-p-xs);
 }
 
-.consent-wrapper label > div {
-  min-height: 48px;
-}
-
-.consent-wrapper input[type="checkbox"]:checked .checkbox {
-  position: relative;
-  background-color: var(--background-primary);
-}
-
-.consent-wrapper input[type="checkbox"]:checked + .checkbox::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: var(--text-color-primary);
-  font-size: var(--font-size-p-l);
-  transform: translate(-50%, -50%);
-  content: "\2714";
-}
-
-.consent-wrapper input[type="checkbox"]:not(:checked):hover {
-  border-color: var(--border-focus-purple)
-}
-
-.form-wrapper .input-wrapper input[type="checkbox"]:focus + span {
-  box-shadow: var(--focus-shadow);
-  border: 2px solid var(--border-focus-purple);
-}
-  
 /* ERROR */
 .input-wrapper label div {
   position: relative;
@@ -117,7 +112,7 @@
   background-color: var(--background-block);
 }
 
-.wrapper .consent-wrapper > div > div > p {
+.form-wrapper .consent-wrapper > div > div > p {
   color: var(--error-color-red);
   line-height: 1.36;
   font-weight: var(--font-weight-400);

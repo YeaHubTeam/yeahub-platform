@@ -1,6 +1,6 @@
-import { NewQuizResponse } from '../model/types/quiz';
+import { CreateNewQuizResponse } from '../model/types/quiz';
 
-export const getActiveQuizQuestions = (data: NewQuizResponse) => {
+export const getActiveQuizQuestions = (data: CreateNewQuizResponse) => {
 	const answers = data.response.answers;
 	const questions = data.questions;
 	const quizQuestions = answers?.map((item) => {

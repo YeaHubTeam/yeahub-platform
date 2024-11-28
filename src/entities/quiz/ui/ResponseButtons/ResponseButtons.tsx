@@ -29,7 +29,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && <span className={styles['action-button']}>{t('buttons.doNotKnow')}</span>}
+				{!isMobile && <span>{t('buttons.doNotKnow')}</span>}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
@@ -38,7 +38,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && <span className={styles['action-button']}>{t('buttons.iKnow')}</span>}
+				{!isMobile && <span>{t('buttons.iKnow')}</span>}
 			</Button>
 		</div>
 	);

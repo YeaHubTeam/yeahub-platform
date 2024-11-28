@@ -56,6 +56,8 @@ export enum Translation {
 	QUESTIONS_NOTLEARNED = 'questions.notLearned',
 	QUESTIONS_LEARNED = 'questions.learned',
 	QUESTIONS_ALL = 'questions.all',
+	QUESTION_STATUS_PUBLIC = 'questions.status.public',
+	QUESTION_STATUS_DRAFT = 'questions.status.draft',
 
 	FILELOADER_LINKTEXT = 'fileLoader.linkText',
 	FILELOADER_TEXT = 'fileLoader.text',
@@ -124,6 +126,10 @@ export enum Translation {
 	TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_FAILED = 'toast.specializations.delete.multiple.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
+	TOAST_QUESTION_CREATE_SUCCESS = 'toast.questions.create.success',
+	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
+	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
+	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',
 	TOAST_AVATAR_UPDATE_FAILED = 'toast.avatar.update.failed',
 	TOAST_AVATAR_CREATE_SUCCESS = 'toast.avatar.create.success',
@@ -237,8 +243,6 @@ export enum Auth {
 	REGISTRATION_FIRST_NAME_PLACEHOLDER = 'registration.firstNamePlaceholder',
 	REGISTRATION_LAST_NAME = 'registration.lastName',
 	REGISTRATION_LAST_NAME_PLACEHOLDER = 'registration.lastNamePlaceholder',
-	REGISTRATION_PHONE = 'registration.phone',
-	REGISTRATION_PHONE_PLACEHOLDER = 'registration.phonePlaceholder',
 	REGISTRATION_EMAIL = 'registration.email',
 	REGISTRATION_EMAIL_PLACEHOLDER = 'registration.emailPlaceholder',
 	REGISTRATION_PASSWORD = 'registration.password',
@@ -246,9 +250,12 @@ export enum Auth {
 	REGISTRATION_REPEAT_PASSWORD = 'registration.repeatPassword',
 	REGISTRATION_REPEAT_PASSWORD_PLACEHOLDER = 'registration.repeatPasswordPlaceholder',
 	REGISTRATION_REGISTER_BUTTON = 'registration.registerButton',
-	REGISTRATION_CONSENT_TEXT = 'registration.consentText',
 	REGISTRATION_HAVE_ACCOUNT = 'registration.haveAccount',
 	REGISTRATION_LOGIN = 'registration.login',
+	REGISTRATION_CONSENT_TEXT = 'registration.consentText',
+	REGISTRATION_PRIVACY_POLICY_TEXT = 'registration.privacyPolicy',
+	REGISTRATION_OFFER_AGREEMENT_TEXT = 'registration.offerAgreement',
+	REGISTRATION_AD_CONSENT_TEXT = 'registration.adConsent',
 	BUTTONS_LOGIN = 'buttons.login',
 	BUTTONS_REGISTER = 'buttons.register',
 	BUTTONS_LOGOUT = 'buttons.logout',
@@ -449,10 +456,15 @@ export enum Validation {
 export enum Skills {
 	TITLE = 'skill.title',
 	DESCRIPTION = 'skill.description',
+	DESCRIPTION_SPECIALIZATION = 'skill.description.specialization',
+	DETAILED_DESCRIPTION_SKILL = 'skill.detailed.description.skill',
+	DETAILED_DESCRIPTION_TEXTAREA = 'skill.detailed.description.textarea',
 	NOT_ITEMS = 'skill.not.items',
 	EDIT_PAGE_TITLE = 'skill.edit.page.title',
 	CREATE_PAGE_TITLE = 'skill.create.page.title',
 	IMAGE_SRC = 'skill.image.src',
+	SKILLS_TITLE = 'skill.name',
+	TITLE_SKILL = 'skill.title.skill',
 }
 
 export enum A11y {
@@ -537,6 +549,15 @@ export enum Landing {
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
 }
+
+export enum Subscription {
+	SUBSCRIBE_ACTION = 'subscribeAction',
+}
+
+export enum SubscriptionCard {
+	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+
 export enum ActionsButton {
 	MORE = 'buttons.more',
 	LEARN = 'buttons.learn',

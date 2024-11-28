@@ -1,9 +1,7 @@
-import { skipToken } from '@reduxjs/toolkit/query';
-
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { getProfileId } from '@/entities/profile';
-import { useGetHistoryQuizQuery, type QuizHistoryParams } from '@/entities/quiz';
+import { useGetHistoryQuizQuery, type GetQuizHistoryParamsRequest } from '@/entities/quiz';
 
 /*
 TODO: refresh запрос срабатывает какждый раз, при обновлении страницы,
@@ -12,21 +10,16 @@ interviewHistory, запрос скипнется на получение дан
 */
 
 export const useGetHistory = (
-	params?: QuizHistoryParams,
+	params?: Omit<GetQuizHistoryParamsRequest, 'profileId'>,
 	uniqueKey: string = 'interviewHistory',
 ) => {
 	const profileId = useAppSelector(getProfileId);
 
-	const historyQuiz = useGetHistoryQuizQuery(
-		profileId
-			? {
-					profileID: profileId,
-					params: { ...params },
-					//have to pass uniqueKey to force query to refetch data after merging
-					uniqueKey,
-				}
-			: skipToken,
-	);
+	const historyQuiz = useGetHistoryQuizQuery({
+		profileId,
+		...params,
+		uniqueKey,
+	});
 
 	return {
 		...historyQuiz,

@@ -3,20 +3,24 @@ import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionCount,
 	ChooseQuestionsCategories,
 } from '@/entities/question';
-import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
-import { QuestionModeType } from '@/entities/quiz';
-import { QuizQuestionMode } from '@/entities/quiz';
+import {
+	QuestionModeType,
+	QuizQuestionMode,
+	useGetActiveQuizQuery,
+	useLazyCreateNewQuizQuery,
+} from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -27,22 +31,19 @@ import { CreateQuizPageSkeleton } from './CreateQuizPage.skeleton';
 const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
-	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
+
 	const { filter, handleFilterChange } = useQueryFilter();
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
 	const navigate = useNavigate();
 
-	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
-		{
-			profileId: userProfile?.profiles[0].id,
-			params: { limit: 1, page: 1 },
-		},
-		{
-			skip: !userProfile?.id,
-		},
-	);
+	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
+		profileId,
+		limit: 1,
+		page: 1,
+	});
 
 	if (activeQuizData?.data[0]?.questions) {
 		navigate(ROUTES.interview.new.page);
@@ -68,18 +69,15 @@ const CreateQuizPage = () => {
 
 	const handleCreateNewQuiz = () => {
 		trigger({
-			profileId: userProfile?.profiles[0].id || '',
-			params: {
-				skills: filter.category,
-				complexity: filter.complexity,
-				limit: filter.count,
-				mode: filter.mode,
-			},
+			profileId,
+			skills: filter.category,
+			complexity: filter.complexity,
+			limit: filter.count,
+			mode: filter.mode,
 		});
 	};
 
-	if (isLoadingProfile || isActiveQuizLoading || isLoadingCategories)
-		return <CreateQuizPageSkeleton />;
+	if (isActiveQuizLoading || isLoadingCategories) return <CreateQuizPageSkeleton />;
 
 	return (
 		<section>

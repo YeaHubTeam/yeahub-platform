@@ -11,7 +11,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
 import { getProfileId } from '@/entities/profile';
-import { QuizByIdRequestParams, useGetQuizByIdQuery } from '@/entities/quiz';
+import { useGetQuizByProfileIdQuery } from '@/entities/quiz';
 
 import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
@@ -24,9 +24,9 @@ import styles from './InterviewResultPage.module.css';
 const InterviewQuizResultPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
 	const profileId = useAppSelector(getProfileId);
-	const { quizId } = useParams<QuizByIdRequestParams>();
+	const { quizId } = useParams<{ quizId?: string }>();
 
-	const { data, isLoading } = useGetQuizByIdQuery({
+	const { data, isLoading } = useGetQuizByProfileIdQuery({
 		quizId: quizId ?? '',
 		profileId: profileId ?? '',
 	});

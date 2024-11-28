@@ -27,8 +27,8 @@ export const InterviewHistoryList = ({ className = '' }: InterviewHistoryListPro
 	const { data, isSuccess } = useGetHistoryQuizQuery(
 		profileId
 			? {
-					profileID: profileId,
-					params: { limit: 3 },
+					profileId,
+					limit: 3,
 					uniqueKey: 'interviewPreviewHistory',
 				}
 			: skipToken,

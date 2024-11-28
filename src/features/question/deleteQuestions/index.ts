@@ -1,2 +1,2 @@
-export { deleteMultipleQuestions } from './slice/deleteQuestionsSlice';
+export { deleteMultipleQuestionsThunk } from './model/thunks/deleteMultipleQuestionsThunk';
 export { DeleteQuestionsButton } from './ui/DeleteQuestionsButton/DeleteQuestionsButton';

@@ -27,11 +27,9 @@ const InterviewQuizPage = () => {
 
 	const profileId = useAppSelector(getProfileId);
 	const { data: activeQuiz } = useGetActiveQuizQuery({
-		profileId: profileId,
-		params: {
-			page: 1,
-			limit: 1,
-		},
+		profileId,
+		page: 1,
+		limit: 1,
 	});
 	const [saveResult] = useSaveQuizResultMutation();
 
@@ -94,7 +92,7 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Card>
-			<Card className={styles['question-card']}>
+			<Card>
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}

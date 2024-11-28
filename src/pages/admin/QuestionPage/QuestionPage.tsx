@@ -49,34 +49,38 @@ export const QuestionPage = () => {
 		return <QuestionPageSkeleton />;
 	}
 
+	if (!question) {
+		return null;
+	}
+
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
 				<BackHeader>
 					<NavLink
 						style={{ marginLeft: 'auto' }}
-						to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+						to={route(ROUTES.admin.questions.edit.page, question.id)}
 					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
 				</BackHeader>
 
 				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
+					description={question.description}
+					status={question.status}
+					title={question.title}
 				/>
 				<AdditionalInfo
-					rate={question?.rate}
-					keywords={question?.keywords}
-					complexity={question?.complexity}
-					questionSkills={question?.questionSkills}
+					rate={question.rate}
+					keywords={question.keywords}
+					complexity={question.complexity}
+					questionSkills={question.questionSkills}
 				/>
 				<p className={styles.author}>
 					Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
 				</p>
 
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+				<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 			</section>
 		);
 	}
@@ -84,10 +88,10 @@ export const QuestionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				{question && <DeleteQuestionButton questionId={question.id} isDetailPage={true} />}
+				<DeleteQuestionButton questionId={question.id} isDetailPage />
 				<NavLink
 					style={{ marginLeft: 'auto' }}
-					to={route(ROUTES.admin.questions.edit.page, question?.id as number)}
+					to={route(ROUTES.admin.questions.edit.page, question.id)}
 				>
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
@@ -96,18 +100,18 @@ export const QuestionPage = () => {
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					<QuestionHeader
-						description={question?.description}
-						status={question?.status}
-						title={question?.title}
+						description={question.description}
+						status={question.status}
+						title={question.title}
 					/>
-					<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
+					<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question.longAnswer} />
 				</div>
 				<div className={styles.additional}>
 					<AdditionalInfo
-						rate={question?.rate}
-						keywords={question?.keywords}
-						complexity={question?.complexity}
-						questionSkills={question?.questionSkills}
+						rate={question.rate}
+						keywords={question.keywords}
+						complexity={question.complexity}
+						questionSkills={question.questionSkills}
 					/>
 					<p className={styles.author}>
 						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
