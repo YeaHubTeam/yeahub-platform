@@ -1,0 +1,57 @@
+.subscription {
+  padding: 24px;
+  width: 360px;
+  height: 344px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: var(--color-white-900);
+  cursor: pointer;
+} 
+
+.subscription:hover {
+  border: 1px solid var(--color-purple-900);
+  transition: border 0.5s ease-in-out;
+}
+
+.subscription-header {
+  margin-bottom: 8px;
+}
+
+.subscription-name {
+  color: var(--text-color-primary);
+  line-height: 38px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-large-30);
+  font-family: var(--font-family);
+}
+
+.subscription-description{
+  margin-bottom: 14px;
+  height: 36px;
+  overflow: hidden;
+  color: var(--text-color-primary);
+  line-height: 18px;
+  font-weight: var(--font-weight-400);
+  font-size: var( --font-size-p-s);
+  font-family: var(--font-family);
+  text-overflow: ellipsis;
+}
+
+.subscription-price {
+  margin-bottom: 20px;
+  color: var(--text-color-primary);
+  line-height: 19px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);
+}
+
+.subscription-button {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.subscription-check {
+  stroke: var(--color-purple-700);
+  fill: var(--color-purple-700);
+}

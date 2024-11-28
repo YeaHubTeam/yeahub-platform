@@ -1,12 +1,13 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { useProfileQuery } from '@/entities/auth';
-import { useGetProfileStatsQuery } from '@/entities/quiz';
+import { getProfileId } from '@/entities/profile';
+import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import {
 	PassedInterviewStat,
@@ -22,10 +23,8 @@ import styles from './InterviewStatisticsPage.module.css';
 
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
-	const { data: profileId } = useProfileQuery();
-	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
-		profileId?.profiles[0].id ?? '',
-	);
+	const profileId = useAppSelector(getProfileId);
+	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId ?? '');
 
 	const questionStats = [
 		{

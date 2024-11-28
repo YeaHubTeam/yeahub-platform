@@ -79,6 +79,12 @@
     "dontKnow": "Don't know",
     "repeat": "Repeat"
   },
+  "questions": {
+    "status": {
+      "public": "Public",
+      "draft": "Draft"
+    }
+  },
   "validation": {
     "passwordConfirmation": {
       "oneOf": "Passwords must match"
@@ -167,9 +173,17 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
+      "create": {
+        "success": "The question has been successfully created",
+        "failed": "The question could not be created"
+      },
+      "edit": {
+        "success": "The question has been successfully changed",
+        "failed": "The question could not be changed"
+      },
       "delete": {
         "single": {
-          "success": "The question has been successfully deleted.",
+          "success": "The question has been successfully deleted",
           "failed": "Failed to delete question"
         },
         "multiple": {

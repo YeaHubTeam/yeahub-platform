@@ -1,4 +1,4 @@
-import { Icon } from 'yeahub-ui-kit';
+import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 
 import styles from './BenefitItem.module.css';
 
@@ -10,7 +10,7 @@ export const BenefitItem = ({ text }: BenefitItemProps) => {
 	return (
 		<li className={styles['text-wrapper']}>
 			<span className={styles['icon-wrapper']}>
-				<Icon key="checkCircle" icon="checkCircle" size={20} color="--palette-ui-purple-200" />
+				<CheckCircle width={18} height={18} />
 			</span>
 			{text}
 		</li>

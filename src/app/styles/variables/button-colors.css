@@ -103,4 +103,11 @@
   --link-text-color-destructive-active: var(--color-red-700);
   --link-text-color-destructive-focus: var(--color-red-700);
   --link-text-color-destructive-disabled: var(--color-red-200);
+
+  /* link purple  */
+  --link-text-color-purple: var(--color-purple-700);
+  --link-text-color-purple-hover: var(--color-purple-900);
+  --link-text-color-purple-active: var(--color-purple-900);
+  --link-text-color-purple-focus: var(--color-purple-900);
+  --link-text-color-purple-disabled: var(--color-purple-200);
 }

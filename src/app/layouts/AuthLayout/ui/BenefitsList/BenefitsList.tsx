@@ -13,7 +13,7 @@ export const BenefitsList = () => {
 	const { t } = useI18nHelpers(i18Namespace.auth);
 
 	return (
-		<div>
+		<div className={styles['benefit-list-wrapper']}>
 			<h4 className={styles.title}>
 				<Trans i18nKey={Auth.BENEFITS_TITLE} ns="auth" />
 			</h4>

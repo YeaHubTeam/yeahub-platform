@@ -1,10 +1,11 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { Interview } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { InterviewQuestionsItem } from '../InterviewQuestionsItem/InterviewQuestionsItem';
@@ -13,9 +14,8 @@ import styles from './InterviewQuestionsList.module.css';
 
 export const InterviewQuestionsList = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
-	const { data: profile } = useProfileQuery();
 
-	const specializationId = profile?.profiles[0].specializationId;
+	const specializationId = useAppSelector(getSpecializationId);
 
 	const params = {
 		random: true,

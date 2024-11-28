@@ -3,32 +3,33 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { ExtraArgument } from '@/shared/config/store/types';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import { LS_ACTIVE_QUIZ_KEY } from '../model/constants/quizConstants';
+import { LS_ACTIVE_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
-	CreateNewQuizGetRequest,
-	ExtraArgument,
-	InterviewQuizGetRequest,
-	NewQuizResponse,
-	ProfileStats,
-	Quiz,
-	QuizByIdRequestParams,
-	QuizHistoryRequest,
-	QuizHistoryResponse,
+	CreateNewQuizParamsRequest,
+	CreateNewQuizResponse,
+	GetActiveQuizParamsRequest,
+	GetActiveQuizResponse,
+	GetProfileQuizStatsResponse,
+	GetQuizByProfileIdParamsRequest,
+	GetQuizByProfileIdResponse,
+	GetQuizHistoryParamsRequest,
+	GetQuizHistoryResponse,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
 const quizApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		createNewQuiz: build.query<Response<NewQuizResponse>, CreateNewQuizGetRequest>({
-			query: ({ profileId, params }) => {
+		createNewQuiz: build.query<Response<CreateNewQuizResponse>, CreateNewQuizParamsRequest>({
+			query: ({ profileId, ...params }) => {
 				return {
-					url: `/interview-preparation/quizzes/new/${profileId}`,
+					url: route(quizApiUrls.createNewQuiz, profileId),
 					params,
 				};
 			},
@@ -47,9 +48,9 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getActiveQuiz: build.query<Response<NewQuizResponse[]>, InterviewQuizGetRequest>({
-			query: ({ profileId, params }) => ({
-				url: `/interview-preparation/quizzes/active/${profileId}`,
+		getActiveQuiz: build.query<GetActiveQuizResponse, GetActiveQuizParamsRequest>({
+			query: ({ profileId, ...params }) => ({
+				url: route(quizApiUrls.getActiveQuiz, profileId),
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
@@ -67,14 +68,13 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-
 		getHistoryQuiz: build.query<
-			Response<QuizHistoryResponse[]>,
-			QuizHistoryRequest & { uniqueKey: string }
+			GetQuizHistoryResponse,
+			GetQuizHistoryParamsRequest & { uniqueKey: string }
 		>({
-			query: ({ profileID, params }) => {
+			query: ({ profileId, ...params }) => {
 				return {
-					url: `/interview-preparation/quizzes/history/${profileID}`,
+					url: route(quizApiUrls.getHistoryQuiz, profileId),
 					params,
 				};
 			},
@@ -90,15 +90,15 @@ const quizApi = baseApi.injectEndpoints({
 			forceRefetch({ currentArg, previousArg }) {
 				return (
 					currentArg?.uniqueKey !== previousArg?.uniqueKey ||
-					JSON.stringify(currentArg?.params) !== JSON.stringify(previousArg?.params)
+					JSON.stringify(currentArg) !== JSON.stringify(previousArg)
 				);
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-		saveQuizResult: build.mutation<boolean, NewQuizResponse>({
+		saveQuizResult: build.mutation<boolean, CreateNewQuizResponse>({
 			query: (data) => {
 				return {
-					url: '/interview-preparation/quizzes',
+					url: quizApiUrls.saveQuizResult,
 					method: 'POST',
 					body: data,
 				};
@@ -119,18 +119,17 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getQuizById: build.query<Quiz, QuizByIdRequestParams>({
-			query: (params) => {
-				const { profileId, quizId } = params ?? {};
+		getQuizByProfileId: build.query<GetQuizByProfileIdResponse, GetQuizByProfileIdParamsRequest>({
+			query: ({ profileId, quizId }) => {
 				return {
-					url: `interview-preparation/quizzes/history/${profileId}/${quizId}`,
+					url: route(quizApiUrls.getQuizByProfileId, profileId, quizId),
 				};
 			},
 		}),
-		getProfileStats: build.query<ProfileStats, string>({
+		getProfileQuizStats: build.query<GetProfileQuizStatsResponse, string>({
 			query: (profileId) => {
 				return {
-					url: `interview-preparation/stat/${profileId}`,
+					url: route(quizApiUrls.getProfileQuizStats, profileId),
 				};
 			},
 			providesTags: [ApiTags.INTERVIEW_STATISTICS],
@@ -144,6 +143,6 @@ export const {
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
-	useGetQuizByIdQuery,
-	useGetProfileStatsQuery,
+	useGetQuizByProfileIdQuery,
+	useGetProfileQuizStatsQuery,
 } = quizApi;
