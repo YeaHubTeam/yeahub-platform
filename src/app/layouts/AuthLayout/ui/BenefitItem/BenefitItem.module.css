@@ -1,5 +1,6 @@
 .text-wrapper {
   display: flex;
+  align-items: center;
   list-style-type: none;
 }
 
@@ -11,4 +12,5 @@
   display: block;
   margin-right: 12px;
   max-width: 18px;
+  max-height: 18px;
 }

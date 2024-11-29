@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SelectedAdminEntities } from '@/shared/types/types';
 
-import { deleteMultipleQuestions } from '@/features/question/deleteQuestions';
+import { deleteMultipleQuestionsThunk } from '@/features/question/deleteQuestions';
 
 import { QuestionsTablePageState } from '../types/questionsTablePageTypes';
 
@@ -28,7 +28,7 @@ const questionsTablePageSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(deleteMultipleQuestions.fulfilled, (state) => {
+		builder.addCase(deleteMultipleQuestionsThunk.fulfilled, (state) => {
 			state.selectedQuestions = [];
 		});
 	},

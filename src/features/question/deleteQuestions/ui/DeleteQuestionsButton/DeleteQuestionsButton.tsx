@@ -5,7 +5,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 
-import { deleteMultipleQuestions } from '../../slice/deleteQuestionsSlice';
+import { deleteMultipleQuestionsThunk } from '../../model/thunks/deleteMultipleQuestionsThunk';
 
 interface DeleteQuestionsButtonProps {
 	questionsToRemove: SelectedAdminEntities;
@@ -16,7 +16,7 @@ export const DeleteQuestionsButton = ({ questionsToRemove }: DeleteQuestionsButt
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const onRemoveQuestions = async () => {
-		await dispatch(deleteMultipleQuestions(questionsToRemove));
+		await dispatch(deleteMultipleQuestionsThunk(questionsToRemove));
 	};
 
 	return (

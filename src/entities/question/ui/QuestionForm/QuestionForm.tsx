@@ -13,7 +13,7 @@ import { SkillSelect } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
-import { STATUSES } from '../../model/constants/question';
+import { questionStatusesItems } from '../../model/constants/question';
 
 import styles from './QuestionForm.module.css';
 
@@ -74,7 +74,7 @@ export const QuestionForm = () => {
 								onChange={onChange}
 								value={value}
 								placeholder={t(Questions.STATUS_SELECT)}
-								options={STATUSES}
+								options={questionStatusesItems}
 							/>
 						</div>
 					)}

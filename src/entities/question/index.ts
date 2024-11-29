@@ -1,4 +1,8 @@
-export type { Question } from './model/types/question';
+export type {
+	Question,
+	QuestionStatus,
+	CreateOrEditQuestionFormValues,
+} from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,
@@ -11,3 +15,4 @@ export { ChooseQuestionsCategories } from './ui/ChooseQuestionsCategories/Choose
 export { SortQuestionsByField } from './ui/SortQuestions/SortQuestionsByField/SortQuestionsByField';
 export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSorter';
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';
+export { questionStatuses } from './model/constants/question';

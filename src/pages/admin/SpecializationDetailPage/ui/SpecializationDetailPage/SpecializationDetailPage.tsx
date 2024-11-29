@@ -11,6 +11,8 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/specialization';
 
+import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
+
 /**
  * Page showing detail info about specialization
  * @constructor
@@ -28,12 +30,15 @@ const SpecializationDetailPage = () => {
 		<main>
 			<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
 				<BackButton />
-				<NavLink
-					style={{ marginLeft: 'auto' }}
-					to={route(ROUTES.admin.specializations.edit.page, specialization.id)}
-				>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<DeleteSpecializationButton specializationId={specialization.id} isDetailPage />
+					<NavLink
+						style={{ marginLeft: 'auto' }}
+						to={route(ROUTES.admin.specializations.edit.page, specialization.id)}
+					>
+						<Button>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Flex>
 			</Flex>
 			<SpecializationCard specialization={specialization} />
 		</main>

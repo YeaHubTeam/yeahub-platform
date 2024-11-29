@@ -6,7 +6,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import {
 	InterviewSlider,
 	QuestionNavPanel,
@@ -25,13 +25,11 @@ const InterviewQuizPage = () => {
 
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 
-	const { data: userProfile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const { data: activeQuiz } = useGetActiveQuizQuery({
-		profileId: userProfile?.profiles[0].id || '',
-		params: {
-			page: 1,
-			limit: 1,
-		},
+		profileId,
+		page: 1,
+		limit: 1,
 	});
 	const [saveResult] = useSaveQuizResultMutation();
 
@@ -81,7 +79,7 @@ const InterviewQuizPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Card>
+			<Card withOutsideShadow>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('title')}</p>
 					<span className={styles['progress-num']}>
@@ -94,7 +92,7 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Card>
-			<Card className={styles['question-card']}>
+			<Card withOutsideShadow>
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}

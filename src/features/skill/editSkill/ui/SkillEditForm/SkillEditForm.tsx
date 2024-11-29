@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { Skill, SkillForm } from '@/entities/skill';
+import { Skill, SkillForm, SkillFormValues } from '@/entities/skill';
 
 import { skillEditSchema } from '../../model/lib/validation/skillEditSchema';
 import { SkillEditFormHeader } from '../SkillEditFormHeader/SkillEditFormHeader';
@@ -16,7 +16,7 @@ interface SkillEditFormProps {
 }
 
 export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
-	const methods = useForm<Skill>({
+	const methods = useForm<SkillFormValues>({
 		resolver: yupResolver(skillEditSchema),
 		mode: 'onTouched',
 		defaultValues: { ...skill },
@@ -25,8 +25,8 @@ export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
 	return (
 		<FormProvider {...methods}>
 			<Flex componentType="main" direction="column" gap="24">
+				<SkillEditFormHeader />
 				<Card className={styles.content}>
-					<SkillEditFormHeader />
 					<SkillForm />
 				</Card>
 			</Flex>
