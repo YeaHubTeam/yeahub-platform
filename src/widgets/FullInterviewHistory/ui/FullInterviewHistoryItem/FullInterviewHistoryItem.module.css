@@ -4,3 +4,9 @@
   height: auto;
   color: var(--text-color-bright);
 }
+
+@media (width <= 1024px) {
+  .container {
+    padding: 16px;
+  }
+}
