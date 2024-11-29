@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px 20px;
+  max-height: 800px;
+  overflow: scroll;
 }
 
 @media (width <= 1024px) {
@@ -9,5 +11,12 @@
     grid-template-columns: 1fr;
     align-items: center;
     gap: 16px;
+    max-height: 1600px;
+  }
+}
+
+@media (width <= 768px) {
+  .list {
+    max-height: 1450px;
   }
 }
