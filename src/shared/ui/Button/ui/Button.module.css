@@ -34,7 +34,6 @@
 }
 
 .button span {
-  /* margin: 0 0.5rem; */
   overflow: hidden;
   background: transparent;
   text-overflow: ellipsis;
