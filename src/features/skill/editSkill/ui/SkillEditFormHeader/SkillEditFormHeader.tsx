@@ -2,11 +2,10 @@ import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
-import { Flex } from '@/shared/ui/Flex';
 
 import { Skill } from '@/entities/skill';
 
@@ -21,6 +20,7 @@ export const SkillEditFormHeader = () => {
 	const [editSkillMutation, { isLoading }] = useEditSkillMutation();
 	const onResetFormValues = () => {
 		reset();
+		navigate(-1);
 	};
 
 	const onEditSkill = async (data: Skill) => {
@@ -33,15 +33,13 @@ export const SkillEditFormHeader = () => {
 	};
 
 	return (
-		<Flex align="center" gap="8">
-			<BackButton />
-			<h1>{t(Skills.EDIT_PAGE_TITLE, { ns: i18Namespace.skill })}</h1>
-			<Button onClick={onResetFormValues}>
-				{t(Translation.CANCEL, { ns: i18Namespace.translation })}
+		<BackHeader>
+			<Button disabled={isLoading} onClick={onResetFormValues} variant="secondary">
+				{t(Translation.CANCEL)}
 			</Button>
 			<Button disabled={isLoading} onClick={handleSubmit(onEditSkill)}>
 				{t(Translation.SAVE, { ns: i18Namespace.translation })}
 			</Button>
-		</Flex>
+		</BackHeader>
 	);
 };

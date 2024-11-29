@@ -4,15 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { mainPage } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
-import { FullProfile, useProfileQuery } from '@/entities/auth';
+import { FullProfile } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import styles from './IncompleteProfileStub.module.css';
 
-const getPercentProfileFullness = (user: FullProfile | undefined) => {
+const getPercentProfileFullness = (user: FullProfile | null) => {
 	if (!user) return 0;
 
 	let filledCount = 0;
@@ -43,14 +45,13 @@ export const IncompleteProfileStub = () => {
 	const navigate = useNavigate();
 
 	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
-
-	const { data: profile } = useProfileQuery();
+	const fullProfile = useAppSelector(getFullProfile);
 
 	const redirectToProfileEditing = () => {
 		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 
-	const percentFullness = useMemo(() => getPercentProfileFullness(profile), [profile]);
+	const percentFullness = useMemo(() => getPercentProfileFullness(fullProfile), [fullProfile]);
 
 	const isIncompleteProfile = percentFullness < 100;
 

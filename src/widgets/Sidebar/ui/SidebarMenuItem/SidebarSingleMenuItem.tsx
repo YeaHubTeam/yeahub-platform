@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { SingleMenuItem } from '../../model/types/sidebar';
 
@@ -16,7 +17,10 @@ interface SidebarSingleMenuItemProps {
 const SidebarSingleMenuItem = ({ fullWidth, menuItem }: SidebarSingleMenuItemProps) => {
 	const ImageComponent = menuItem.icon;
 
+	const location = useLocation();
 	const { t } = useI18nHelpers(i18Namespace.translation);
+
+	const isActiveItem = isPathMatch(menuItem.route, location.pathname);
 
 	return (
 		<NavLink
@@ -24,7 +28,7 @@ const SidebarSingleMenuItem = ({ fullWidth, menuItem }: SidebarSingleMenuItemPro
 			className={({ isActive }) =>
 				classNames(styles.item, {
 					[styles['admin-active']]: menuItem?.isAdmin,
-					[styles.active]: isActive,
+					[styles.active]: isActive || isActiveItem,
 					[styles.fullwidth]: fullWidth,
 				})
 			}

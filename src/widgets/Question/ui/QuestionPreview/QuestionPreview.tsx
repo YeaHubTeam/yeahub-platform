@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { ActionsButton, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { IconButton } from '@/shared/ui/IconButton';
 import { OpenIcon } from '@/shared/ui/Icons/OpenIcon';
@@ -12,7 +13,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
@@ -30,8 +31,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 	const { t } = useI18nHelpers([i18Namespace.translation, i18Namespace.questions]);
 	const navigate = useNavigate();
 
-	const { data: profile } = useProfileQuery();
-
+	const profile = useAppSelector(getFullProfile);
 	const isEmailVerified = profile?.isEmailVerified;
 	const profileId = profile?.profiles[0].id || '';
 

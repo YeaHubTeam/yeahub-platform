@@ -58,6 +58,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+// import { Conditional404Route } from '../ui/Conditional404Route';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -145,6 +146,10 @@ export const router = createBrowserRouter([
 						index: true,
 						element: <LandingMainPage />,
 					},
+					{
+						path: '*',
+						element: <Error404Page />,
+					},
 				],
 			},
 			{
@@ -212,6 +217,10 @@ export const router = createBrowserRouter([
 								element: <SkillDetailPage />,
 							},
 						],
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
 					},
 				],
 			},

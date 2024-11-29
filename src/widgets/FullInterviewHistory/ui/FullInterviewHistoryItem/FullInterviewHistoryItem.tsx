@@ -7,14 +7,14 @@ import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
-import { QuestionCategories, type QuizHistoryResponse } from '@/entities/quiz';
+import { QuestionCategories, type QuizWithoutQuestions } from '@/entities/quiz';
 
 import styles from './FullInterviewHistoryItem.module.css';
 import { InterviewHeader } from './InterviewHeader/InterviewHeader';
 import { InterviewParameters } from './InterviewParameters/InterviewParameters';
 
 interface FullInterviewHistoryItemProps {
-	interview: QuizHistoryResponse;
+	interview: QuizWithoutQuestions;
 	itemRef: MutableRefObject<HTMLElement> | null;
 }
 

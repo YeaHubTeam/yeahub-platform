@@ -3,17 +3,19 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { ExtraArgument } from '@/shared/config/store/types';
+import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
 import { Question } from '@/entities/question';
 
-import { ExtraArgument } from '../model/types/questionDeleteTypes';
+import { deleteQuestionApiUrls } from '../model/constants/deleteQuestionConstants';
 
 const deleteQuestionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteQuestion: build.mutation<Question, Question['id']>({
+		deleteQuestion: build.mutation<void, Question['id']>({
 			query: (questionId) => ({
-				url: `/questions/${questionId}`,
+				url: route(deleteQuestionApiUrls.deleteQuestion, questionId),
 				method: 'DELETE',
 			}),
 			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],

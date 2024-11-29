@@ -4,8 +4,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { CategoryMenuItem } from '../../model/types/sidebar';
 
@@ -23,11 +23,6 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 
 	const handleExpand = () => {
 		setExpanded((prev) => !prev);
-	};
-
-	const setIsActiveItem = (route: string): boolean => {
-		const path = ROUTES.platformRoute + '/' + route;
-		return location.pathname.startsWith(path);
 	};
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
@@ -56,7 +51,7 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 			<div className={styles.items}>
 				{menuItem.elements.map((item, index) => {
 					const ImageComponent = item.icon;
-					const isActiveItem = setIsActiveItem(item.route);
+					const isActiveItem = isPathMatch(item.route, location.pathname);
 					return (
 						<NavLink
 							key={index}

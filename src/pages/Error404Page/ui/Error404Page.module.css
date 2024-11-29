@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 80px;
+  height: 393px;
 }
 
 .content {
@@ -17,4 +19,12 @@
   color: var(--text-color-light);
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
+}
+
+@media (width <= 768px) {
+  .wrapper { margin-top: 60px; }
+}
+
+@media (width <= 360px) {  
+  .wrapper { margin-top: 41.5px; } 
 }

@@ -49,13 +49,7 @@ export const QuestionNavPanel = ({
 					disabled={questionNumber === 1}
 				/>
 			</div>
-			{showResponseButtons && (
-				<ResponseButtons
-					className={styles['action-btns']}
-					answer={answer}
-					changeAnswer={changeAnswer}
-				/>
-			)}
+			{showResponseButtons && <ResponseButtons answer={answer} changeAnswer={changeAnswer} />}
 			<div className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}

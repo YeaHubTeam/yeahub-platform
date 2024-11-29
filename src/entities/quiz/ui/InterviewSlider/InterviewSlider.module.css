@@ -52,7 +52,8 @@
   grid-area: buttons;
   align-items: start;
   margin-top: auto;
-  width: 100%;
+  width: fit-content;
+  height: fit-content;
 }
 
 .image {
@@ -62,7 +63,7 @@
   min-width: 300px;
   max-width: 526px; 
   height: auto; 
-  border-radius: 24px;
+  border-radius: 16px;
 }
 
 .answer-wrapper {
@@ -97,6 +98,14 @@
 }
 
 @media (width <= 480px) {
+  .slider {
+    padding-bottom: 16px;
+  }
+
+  .response-buttons{
+    gap: 16px;
+  }
+
   .question {
     font-weight: var(--font-weight-600);
     font-size: var(--font-size-p-l);

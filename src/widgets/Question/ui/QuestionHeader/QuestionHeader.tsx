@@ -1,19 +1,19 @@
 import { Card } from '@/shared/ui/Card';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
+import { QuestionStatus, questionStatuses } from '@/entities/question';
+
 import styles from './QuestionHeader.module.css';
 
 interface QuestionHeaderProps {
-	title?: string;
-	description?: string;
-	status?: string;
+	title: string;
+	description: string;
+	status: QuestionStatus;
 }
-
-//todo доработать проброс картинки вопроса.
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
 	return (
-		<Card className={styles.wrapper} withOutsideShadow>
+		<Card withOutsideShadow>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
 					<ImageWithWrapper className={styles.image} />
@@ -23,7 +23,7 @@ export const QuestionHeader = ({ title, description, status }: QuestionHeaderPro
 					<p className={styles.description}>{description}</p>
 				</div>
 				<div className={styles['label-wrapper']}>
-					<p className={styles.label}>{status}</p>
+					<p className={styles.label}>{questionStatuses[status]}</p>
 				</div>
 			</div>
 		</Card>

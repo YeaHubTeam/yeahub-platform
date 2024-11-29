@@ -25,7 +25,7 @@ export const InterviewModeBlock = () => {
 					<div className={styles['interface-header']}>
 						<h3 className={styles['interface-caption']}>{t(Landing.PREPARATION_TITLE)}</h3>
 						<div>
-							<Link to={ROUTES.interview.route} className={styles['interface-link']}>
+							<Link to={ROUTES.interview.page} className={styles['interface-link']}>
 								<span>{t(Landing.PREPARATION_LINK)}</span>
 								<Icon
 									icon="arrowRight"

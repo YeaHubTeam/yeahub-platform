@@ -7,18 +7,16 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import { deleteQuestionsApi } from '../api/deleteQuestionsApi';
+import { deleteQuestionsApi } from '../../api/deleteQuestionsApi';
 
-export const deleteMultipleQuestions = createAsyncThunk<void, SelectedAdminEntities>(
+export const deleteMultipleQuestionsThunk = createAsyncThunk<void, SelectedAdminEntities>(
 	'questions/deleteMultiple',
 	async (questions, { rejectWithValue, dispatch }) => {
 		try {
 			const responses = await Promise.allSettled(
 				questions.map(
 					async (question) =>
-						await dispatch(
-							deleteQuestionsApi.endpoints.deleteQuestionWithoutErrorHandler.initiate(question.id),
-						),
+						await dispatch(deleteQuestionsApi.endpoints.deleteQuestion.initiate(question.id)),
 				),
 			);
 
