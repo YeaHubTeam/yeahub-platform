@@ -1,6 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useBlocker } from 'react-router-dom';
 
+import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -22,8 +24,19 @@ export const QuestionCreateForm = () => {
 		resolver: yupResolver(questionCreateSchema),
 		mode: 'onTouched',
 	});
+
+	const { isDirty, isSubmitted } = methods.formState;
+
+	const blocker = useBlocker(
+		({ currentLocation, nextLocation }) =>
+			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
+	);
+
 	return (
 		<FormProvider {...methods}>
+			{blocker.state === 'blocked' ? (
+				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+			) : null}
 			<Flex componentType="main" direction="column" gap="24">
 				<QuestionCreateFormHeader />
 				<Card className={styles.content}>
