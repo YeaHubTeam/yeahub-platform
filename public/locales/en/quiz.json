@@ -18,6 +18,8 @@
     "doNotKnow": "Don't know",
     "repeat": "Repeat",
     "iKnow": "I know",
-    "complete": "Complete"
+    "complete": "Complete",
+    "showAll": "Show all",
+    "hide": "Hide"
   }
 }

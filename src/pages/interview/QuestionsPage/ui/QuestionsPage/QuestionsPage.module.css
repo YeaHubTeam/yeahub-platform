@@ -82,12 +82,6 @@
   }
 }
 
-@media (width <= 768px) {
-  .popover-additional {
-    top: 16px;
-  }
-}
-
 @media (width <= 480px) {
   .popover-additional {
     top: 10px;
