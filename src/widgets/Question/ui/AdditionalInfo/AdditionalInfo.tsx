@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
@@ -15,6 +16,7 @@ interface AdditionalInfoProps {
 	complexity?: number;
 	keywords?: string[];
 	questionSkills?: Skill[];
+	children?: React.ReactNode;
 }
 
 export const AdditionalInfo = ({
@@ -22,6 +24,7 @@ export const AdditionalInfo = ({
 	complexity,
 	questionSkills,
 	keywords,
+	children,
 }: AdditionalInfoProps) => {
 	const navigate = useNavigate();
 
@@ -88,6 +91,7 @@ export const AdditionalInfo = ({
 					</div>
 				</div>
 			)}
+			{children && <div>{children}</div>}
 		</Card>
 	);
 };

@@ -32,17 +32,9 @@
 }
 
 .author {
-  grid-area: author;
-  margin: 10px auto;
-  margin-bottom: 10px;
-  align-content: center;
-  width: auto;
-  text-align: center;
+  margin-top: 20px;
 }
 
-.render-component {
-	margin: -6px;
- }
 
 .author a {
   pointer-events: none;
@@ -97,16 +89,15 @@
   gap: 10px;
 }
 
-
 .popover-additional {
   position: absolute;
   top: 23px;
   right: 18px;
   display: none;
   padding: 8px;
+  box-sizing: border-box;
   aspect-ratio: 1;
   width: 36px;
-  box-sizing: border-box;
   border: 1px solid var(--color-black-200);
   border-radius: 8px;
   cursor: pointer;
@@ -118,6 +109,14 @@
 }
  
 @media (width <= 1023px) {
+  .render-component {
+    display: flex;
+    flex-direction: column;
+    margin: -6px;
+    max-width: 360px;
+    max-height: 570px;
+  }
+
   .popover-additional {
     display: block; 
   }

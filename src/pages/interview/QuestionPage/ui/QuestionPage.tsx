@@ -56,10 +56,11 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 						keywords={question?.keywords}
 						complexity={question?.complexity}
 						questionSkills={question?.questionSkills}
-					/>
-					<p className={styles.author}>
-						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-					</p>
+					>
+						<p className={styles.author} style={{ justifyContent: 'start' }}>
+							Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
+						</p>
+					</AdditionalInfo>
 				</div>
 			}
 		>
