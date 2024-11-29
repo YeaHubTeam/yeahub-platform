@@ -47,7 +47,7 @@
     }
   },
   "emptyStub": {
-    "message": "Unfortunately, no results were found for your query “{{text}}”. Try modifying your search or use our categories.",
+    "message": "Unfortunately, no results were found for your query {{text}}. Try modifying your search or use our categories.",
     "resetFilter": "Reset filter"
   },
   "fileLoader": {

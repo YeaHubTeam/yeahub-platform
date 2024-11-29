@@ -119,8 +119,9 @@ const QuestionsPage = () => {
 						</div>
 					}
 				>
-					{({ onToggle }) => (
+					{({ isOpen, onToggle }) => (
 						<IconButton
+							className={isOpen ? styles.active : ''}
 							aria-label="go to filters"
 							form="square"
 							icon={<Icon icon="slidersHorizontal" />}

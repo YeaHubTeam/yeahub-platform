@@ -1,15 +1,19 @@
 .popover-additional {
   position: absolute;
-  top: 20px;
+  top: 16px;
   right: 20px;
   display: none;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--color-black-200);
+  border: 1px solid var(--border-right-color);
   border-radius: 8px;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+}
+
+.popover-additional:has(button.active) {
+  border: 1px solid var(--button-border-secondary-focus);
 }
 
 .popover-additional button:focus {

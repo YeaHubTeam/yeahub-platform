@@ -14,7 +14,9 @@ export const EmptyStub = ({ resetFilters, text }: EmptyStubProps) => {
 
 	return (
 		<>
-			<p className={styles.text}>{t('emptyStub.message', { text: text })}</p>
+			<p className={styles.text}>
+				{t('emptyStub.message', { text: text ? `“${text}”` : undefined })}
+			</p>
 			<Button size="L" variant="outline" onClick={resetFilters} className={styles.button}>
 				{t('emptyStub.resetFilter')}
 			</Button>
