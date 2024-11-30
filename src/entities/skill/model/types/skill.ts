@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 export interface Skill {
 	id: number;
 	title: string;
@@ -5,17 +7,20 @@ export interface Skill {
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
-	active?: boolean;
 }
 
-export type SkillFormValues = Omit<Skill, 'id' | 'createdAt' | 'updatedAt'>;
-
-export interface SkillsListParams {
+export type GetSkillsListParamsRequest = {
 	page?: number;
 	title?: string;
 	limit?: number;
-}
+};
+export type GetSkillsListResponse = Response<Skill[]>;
 
-export interface SkillForForm {
-	skills: Skill[];
-}
+export type GetSkillByIdResponse = Skill;
+
+export type CreateOrEditSkillFormValues = Pick<
+	Skill,
+	'id' | 'title' | 'description' | 'imageSrc'
+> & {
+	skillImage?: string;
+};

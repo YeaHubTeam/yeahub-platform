@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SelectedAdminEntities } from '@/shared/types/types';
 
-import { deleteMultipleSpecializations } from '@/features/specialization/deleteSpecializations';
+import { deleteMultipleSpecializationsThunk } from '@/features/specialization/deleteSpecializations';
 
 import { SpecializationsPageState } from '../types/specializationsPageTypes';
 
@@ -28,7 +28,7 @@ const specializationsPageSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(deleteMultipleSpecializations.fulfilled, (state) => {
+		builder.addCase(deleteMultipleSpecializationsThunk.fulfilled, (state) => {
 			state.selectedSpecializations = [];
 		});
 	},

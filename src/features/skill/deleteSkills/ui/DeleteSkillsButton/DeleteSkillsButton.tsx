@@ -5,7 +5,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 
-import { deleteMultipleSkills } from '../../slice/deleteSkillsSlice';
+import { deleteMultipleSkillsThunk } from '../../model/thunks/deleteMultipleSkillsThunk';
 
 interface DeleteSkillsButtonProps {
 	skillsToRemove: SelectedAdminEntities;
@@ -16,7 +16,7 @@ export const DeleteSkillsButton = ({ skillsToRemove }: DeleteSkillsButtonProps) 
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const onRemoveSkills = async () => {
-		await dispatch(deleteMultipleSkills(skillsToRemove));
+		await dispatch(deleteMultipleSkillsThunk(skillsToRemove));
 	};
 
 	return (

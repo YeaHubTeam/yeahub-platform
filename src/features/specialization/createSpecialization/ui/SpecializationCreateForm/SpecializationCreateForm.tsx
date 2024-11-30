@@ -9,22 +9,25 @@ import { Flex } from '@/shared/ui/Flex';
 import { SpecializationForm } from '@/entities/specialization';
 
 import { specializationCreateSchema } from '../../model/lib/validation/specializationCreateSchema';
-import { SpecializationCreateSchema } from '../../model/types/specializationCreateTypes';
+import { CreateSpecializationFormValues } from '../../model/types/specializationCreateTypes';
 import { SpecializationCreateFormHeader } from '../SpecializationCreateFormHeader/SpecializationCreateFormHeader';
 
 import styles from './SpecializationCreateForm.module.css';
 
 export const SpecializationCreateForm = () => {
-	const methods = useForm<SpecializationCreateSchema>({
+	const methods = useForm<CreateSpecializationFormValues>({
 		resolver: yupResolver(specializationCreateSchema),
 		mode: 'onTouched',
 	});
 
-	const { isDirty, isSubmitted } = methods.formState;
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
+			isDirty &&
+			!isSubmitted &&
+			!isSubmitting &&
+			currentLocation.pathname !== nextLocation.pathname,
 	);
 
 	return (

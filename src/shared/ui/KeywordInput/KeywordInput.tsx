@@ -58,7 +58,7 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 			<Flex gap="8">
 				<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
 				<Button className={styles.button} onClick={handleClick}>
-					{t(Translation.CREATE)}
+					{t(Translation.CREATE, { ns: i18Namespace.translation })}
 				</Button>
 			</Flex>
 			<Flex gap="16" direction="column">

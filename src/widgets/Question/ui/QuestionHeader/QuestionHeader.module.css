@@ -35,7 +35,7 @@
   align-items: center;
   margin-left: auto;
   padding: 2px 8px;
-  width: 100%;
+  width: auto;
   max-height: 20px;
   border-radius: 30px;
   background-color: var(--color-green-007);

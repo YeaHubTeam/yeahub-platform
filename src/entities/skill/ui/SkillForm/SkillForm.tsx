@@ -6,15 +6,13 @@ import { Skills } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
-import { SkillFormValues } from '../../model/types/skill';
-
 import styles from './SkillForm.module.css';
 
 export const SkillForm = () => {
 	const { t } = useTranslation('skill');
 	const {
 		formState: { errors },
-	} = useFormContext<SkillFormValues>();
+	} = useFormContext();
 	// eslint-disable-next-line no-console
 	console.log(errors);
 

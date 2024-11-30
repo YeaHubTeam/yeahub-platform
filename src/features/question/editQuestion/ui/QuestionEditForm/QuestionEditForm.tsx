@@ -36,11 +36,14 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 		},
 	});
 
-	const { isDirty, isSubmitted } = methods.formState;
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
+			isDirty &&
+			!isSubmitted &&
+			!isSubmitting &&
+			currentLocation.pathname !== nextLocation.pathname,
 	);
 
 	return (

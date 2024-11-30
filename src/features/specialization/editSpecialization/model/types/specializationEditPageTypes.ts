@@ -1,5 +1,6 @@
-import * as yup from 'yup';
+import { CreateOrEditSpecializationFormValues, Specialization } from '@/entities/specialization';
 
-import { specializationEditSchema } from '../lib/validation/specializationEditSchema';
+export type EditSpecializationFormValues = CreateOrEditSpecializationFormValues;
 
-export type SpecializationEditSchema = yup.InferType<typeof specializationEditSchema>;
+export type EditSpecializationBodyRequest = EditSpecializationFormValues;
+export type EditSpecializationResponse = Specialization;
