@@ -2,17 +2,25 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 4px 6px;
+  padding: 6px 10px;
   border-radius: 4px;
   background-color: var(--background-light-hover);
   color: var(--text-color-primary);
-  font-weight: var(--font-weight-400);
+  line-height: 120%;
+  font-weight: var(font-weight 600);
   font-size: var(--font-size-p-xs);
 }
 
 .value {
-  padding-inline: 5px;
+  padding: 2px 4px;
   border-radius: 4px;
   background-color: var(--text-color-link-active);
   color: var(--background-block);
+}
+
+@media (width <= 360px) {
+  .param {
+    line-height: 14px;
+    font-size: var(--font-size-p-xs);
+  }
 }

@@ -6,17 +6,20 @@
   font-size: var(--font-size-p-s);
 }
 
-
 .category-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-
-  span {
-    padding: 0;
-  }
 }
 
+.chip {
+  span {
+    padding: 0;
+    line-height: 120%;
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-p-m);
+  }
+}
 
 @media (width <= 480px) {
   .chip {

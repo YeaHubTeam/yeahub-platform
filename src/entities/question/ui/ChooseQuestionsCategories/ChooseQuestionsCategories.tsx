@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Button } from '@/shared/ui/Button';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
@@ -20,15 +22,29 @@ interface ChooseQuestionsCategoriesProps {
 export const ChooseQuestionsCategories = ({
 	selectedSkills,
 	onChangeSkills,
-	skillsLimit = MAX_LIMIT,
+	skillsLimit,
 }: ChooseQuestionsCategoriesProps) => {
-	const { data: skills } = useGetSkillsListQuery({ limit: skillsLimit });
+	const [showAll, setShowAll] = useState(false);
+	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
+	const { data: skills } = useGetSkillsListQuery({ limit });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+
+	const toggleShowAll = () => {
+		setShowAll(!showAll);
+	};
+
+	useEffect(() => {
+		if (showAll) {
+			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT));
+		} else {
+			setLimit(skillsLimit || MAX_LIMIT);
+		}
+	}, [skills?.total, showAll, skillsLimit]);
 
 	const handleChooseSkill = (id: number) => {
 		if (selectedSkills?.includes(id)) {
-			const filteredSkills = selectedSkills.filter((skill) => skill !== id);
-			onChangeSkills(filteredSkills.length > 0 ? filteredSkills : undefined);
+			const filtredSkills = selectedSkills.filter((skill) => skill !== id);
+			onChangeSkills(filtredSkills.length > 0 ? filtredSkills : undefined);
 		} else {
 			onChangeSkills([...(selectedSkills || []), id]);
 		}
@@ -51,6 +67,9 @@ export const ChooseQuestionsCategories = ({
 				onClick={handleChooseSkill}
 				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
+			<Button className={styles.button} variant="link" onClick={toggleShowAll}>
+				{!showAll ? t('buttons.showAll') : t('buttons.hide')}
+			</Button>
 		</div>
 	);
 };

@@ -4,14 +4,9 @@
 
 .button {
   justify-content: flex-start;
-  margin-top: 16px;
+  margin-top: 8px;
   
   span {
     margin-left: 0;
   }
 }
-
-.button:hover {
-  cursor: pointer;
-}
-
