@@ -7,15 +7,14 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
-import { Skill } from '@/entities/skill';
-
 import { useEditSkillMutation } from '../../api/editSkillApi';
+import { EditSkillFormValues } from '../../model/types/skillEditPageTypes';
 
 export const SkillEditFormHeader = () => {
 	const { t } = useI18nHelpers();
 	const navigate = useNavigate();
 
-	const { handleSubmit, reset } = useFormContext<Skill>();
+	const { handleSubmit, reset } = useFormContext<EditSkillFormValues>();
 
 	const [editSkillMutation, { isLoading }] = useEditSkillMutation();
 	const onResetFormValues = () => {
@@ -23,13 +22,8 @@ export const SkillEditFormHeader = () => {
 		navigate(-1);
 	};
 
-	const onEditSkill = async (data: Skill) => {
-		await editSkillMutation(data)
-			.unwrap()
-			.then(() => {
-				navigate(-1);
-			})
-			.catch((e) => console.error(e));
+	const onEditSkill = async (data: EditSkillFormValues) => {
+		await editSkillMutation(data);
 	};
 
 	return (

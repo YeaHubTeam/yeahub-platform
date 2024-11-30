@@ -19,8 +19,8 @@ import { DeleteSpecializationButton } from '@/features/specialization/deleteSpec
  */
 const SpecializationDetailPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
-	const specializationId = useParams<{ specializationId: string }>();
-	const { data: specialization } = useGetSpecializationByIdQuery(specializationId);
+	const { specializationId } = useParams<{ specializationId: string }>();
+	const { data: specialization } = useGetSpecializationByIdQuery(String(specializationId));
 
 	if (!specialization) {
 		return null;

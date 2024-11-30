@@ -1,2 +1,2 @@
 export { DeleteSkillsButton } from './ui/DeleteSkillsButton/DeleteSkillsButton';
-export { deleteMultipleSkills } from './slice/deleteSkillsSlice';
+export { deleteMultipleSkillsThunk } from './model/thunks/deleteMultipleSkillsThunk';

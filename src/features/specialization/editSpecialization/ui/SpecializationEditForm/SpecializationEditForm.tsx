@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Specialization, SpecializationForm } from '@/entities/specialization';
 
 import { specializationEditSchema } from '../../model/lib/validation/specializationEditSchema';
+import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
 import { SpecializationEditFormHeader } from '../SpecializationEditFormHeader/SpecializationEditFormHeader';
 
 import styles from './SpecializationEditForm.module.css';
@@ -18,17 +19,20 @@ interface SpecializationEditFormProps {
 }
 
 export const SpecializationEditForm = ({ specialization }: SpecializationEditFormProps) => {
-	const methods = useForm<Specialization>({
+	const methods = useForm<EditSpecializationFormValues>({
 		resolver: yupResolver(specializationEditSchema),
 		mode: 'onTouched',
 		defaultValues: { ...specialization },
 	});
 
-	const { isDirty, isSubmitted } = methods.formState;
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
+			isDirty &&
+			!isSubmitted &&
+			!isSubmitting &&
+			currentLocation.pathname !== nextLocation.pathname,
 	);
 
 	return (

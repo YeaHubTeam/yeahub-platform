@@ -9,22 +9,25 @@ import { Flex } from '@/shared/ui/Flex';
 import { SkillForm } from '@/entities/skill';
 
 import { skillCreateSchema } from '../../model/lib/validation/skillCreateSchema';
-import { SkillCreateSchema } from '../../model/types/skillCreateTypes';
+import { CreateSkillFormValues } from '../../model/types/skillCreateTypes';
 import { SkillCreateFormHeader } from '../SkillCreateFormHeader/SkillCreateFormHeader';
 
 import styles from './SkillCreateForm.module.css';
 
 export const SkillCreateForm = () => {
-	const methods = useForm<SkillCreateSchema>({
+	const methods = useForm<CreateSkillFormValues>({
 		resolver: yupResolver(skillCreateSchema),
 		mode: 'onTouched',
 	});
 
-	const { isDirty, isSubmitted } = methods.formState;
+	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
 
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			isDirty && !isSubmitted && currentLocation.pathname !== nextLocation.pathname,
+			isDirty &&
+			!isSubmitting &&
+			!isSubmitted &&
+			currentLocation.pathname !== nextLocation.pathname,
 	);
 
 	return (
