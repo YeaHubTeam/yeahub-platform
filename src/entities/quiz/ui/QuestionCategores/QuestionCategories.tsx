@@ -16,7 +16,7 @@ export const QuestionCategories = ({ questionCategories }: QuestionCategoriesPro
 	return (
 		<>
 			<p className={styles.title}>{t(Questions.CATEGORIES_TITLE)}</p>
-			<ul>
+			<ul className={styles.list}>
 				{questionCategories?.map((category) => {
 					return (
 						<li key={category} className={styles.category}>

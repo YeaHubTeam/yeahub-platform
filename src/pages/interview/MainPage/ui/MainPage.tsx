@@ -1,17 +1,17 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useProfileQuery } from '@/entities/auth';
-import { EmailVerify } from '@/entities/profile';
+import { EmailVerify, getFullProfile } from '@/entities/profile';
 
 import { IncompleteProfileStub } from '@/widgets/IncompleteProfileStub';
 
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
-	const { data: profile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
 
 	const { t } = useI18nHelpers();
 	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);

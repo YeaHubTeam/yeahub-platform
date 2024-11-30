@@ -1,0 +1,13 @@
+.faq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-title {
+  color: var(--text-color-primary);
+  line-height: 43px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-large-34);
+  font-family: var(--font-family);
+}

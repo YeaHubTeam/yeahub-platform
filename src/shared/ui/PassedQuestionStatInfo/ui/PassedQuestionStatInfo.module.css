@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  width: 312px;
   font-size: var(--font-size-p-s);
 }
 
@@ -10,17 +9,12 @@
   border-radius: 16px;
 }
 
-@media (width <= 1024px) {
-  .info {
-    width: auto;
-  }
-}
+
 
 @media (width <= 768px) {
   .info {
     align-self: auto;
     gap: 6px;
-    width: 296px;
   }
 
   .stat {

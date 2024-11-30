@@ -20,24 +20,9 @@ interface PopoverProps {
 export const Popover = ({ children, menuItems, body }: PopoverProps) => {
 	const [isOpenPopover, setIsOpenPopover] = useState<boolean>(false);
 
-	const onToggleOpenPopover = () => {
-		setIsOpenPopover((prev) => !prev);
-	};
-
-	const renderBody = useMemo(() => {
-		if (menuItems) {
-			return <PopoverMenu menuItems={menuItems} onToggleOpenPopover={onToggleOpenPopover} />;
-		}
-
-		if (body) {
-			return body;
-		}
-
-		return null;
-	}, [menuItems, body]);
-
 	useEffect(() => {
 		const main = document.querySelector('main');
+
 		const onClose = () => {
 			setIsOpenPopover(false);
 		};
@@ -48,6 +33,18 @@ export const Popover = ({ children, menuItems, body }: PopoverProps) => {
 			main?.removeEventListener('scroll', onClose);
 		};
 	}, []);
+
+	const onToggleOpenPopover = () => setIsOpenPopover((prev) => !prev);
+
+	const renderBody = useMemo(() => {
+		if (menuItems) {
+			return <PopoverMenu menuItems={menuItems} onToggleOpenPopover={onToggleOpenPopover} />;
+		}
+
+		if (body) {
+			return body;
+		}
+	}, [menuItems, body]);
 
 	if (!renderBody) {
 		return null;

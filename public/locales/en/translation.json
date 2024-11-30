@@ -47,7 +47,7 @@
     }
   },
   "emptyStub": {
-    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "message": "Unfortunately, no results were found for your query {{text}}. Try modifying your search or use our categories.",
     "resetFilter": "Reset filter"
   },
   "fileLoader": {
@@ -76,6 +76,12 @@
     "iKnow": "I known",
     "dontKnow": "Don't know",
     "repeat": "Repeat"
+  },
+  "questions": {
+    "status": {
+      "public": "Public",
+      "draft": "Draft"
+    }
   },
   "validation": {
     "passwordConfirmation": {
@@ -165,9 +171,17 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
+      "create": {
+        "success": "The question has been successfully created",
+        "failed": "The question could not be created"
+      },
+      "edit": {
+        "success": "The question has been successfully changed",
+        "failed": "The question could not be changed"
+      },
       "delete": {
         "single": {
-          "success": "The question has been successfully deleted.",
+          "success": "The question has been successfully deleted",
           "failed": "Failed to delete question"
         },
         "multiple": {

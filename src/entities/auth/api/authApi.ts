@@ -3,6 +3,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { ExtraArgument } from '@/shared/config/store/types';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 import { toast } from '@/shared/ui/Toast';
@@ -12,7 +13,6 @@ import { profileActions } from '@/entities/profile';
 
 import { authApiUrls } from '../model/constants/authConstants';
 import {
-	ExtraArgument,
 	LoginBodyRequest,
 	LoginResponse,
 	ProfileResponse,
@@ -66,6 +66,15 @@ export const authApi = baseApi.injectEndpoints({
 		profile: build.query<ProfileResponse, void>({
 			query: () => authApiUrls.profile,
 			providesTags: [ApiTags.PROFILE],
+			async onQueryStarted(_, { queryFulfilled, dispatch }) {
+				try {
+					const result = await queryFulfilled;
+					dispatch(profileActions.setProfile(result.data));
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
 		}),
 		logout: build.query<void, void>({
 			query: () => authApiUrls.logout,

@@ -7,13 +7,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { QuestionForm } from '@/entities/question';
 
 import { questionCreateSchema } from '../../model/lib/validation/questionCreateSchema';
-import { QuestionCreateSchema } from '../../model/types/questionCreatePageTypes';
+import { CreateQuestionFormValues } from '../../model/types/questionCreateTypes';
 import { QuestionCreateFormHeader } from '../QuestionCreateFormHeader/QuestionCreateFormHeader';
 
 import styles from './QuestionCreateForm.module.css';
 
 export const QuestionCreateForm = () => {
-	const methods = useForm<QuestionCreateSchema>({
+	const methods = useForm<CreateQuestionFormValues>({
 		defaultValues: {
 			status: 'public',
 			rate: 5,

@@ -1,6 +1,9 @@
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
+const screenWidth = window.innerWidth;
+const isMobile = screenWidth < 768;
+
 export const options = {
 	gauge: {
 		series: [
@@ -63,7 +66,7 @@ export const options = {
 					position: 'center',
 					formatter: '',
 					color: '#474747',
-					fontSize: 20,
+					fontSize: isMobile ? 14 : 18,
 					fontFamily: 'Manrope',
 					fontWeight: 600,
 					lineHeight: 27,
