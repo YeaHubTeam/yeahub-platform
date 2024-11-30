@@ -1,3 +1,14 @@
 {
-  "subscribeAction": "Subscribe"
+  "subscribeAction": "Subscribe",
+  "changeTariffPlan": "Change tariff plan",
+  "cancelSubscription": "Cancel subscription",
+  "payHistory": "Pay History",
+  "tariff": {
+    "free": "Free",
+    "base": "Base",
+    "premium": "Premium"
+  },
+  "daysLeft": " {{count}} Days Left",
+  "greeting": "Excellent choice, now you have access to all the functions of the service",
+  "renewal": "Payment will be renewed automatically on {{Date}}"
 }

@@ -152,6 +152,8 @@ export enum Translation {
 	EMAIL_VERIFY = 'emailVerification.emailSettings',
 	CHANGE_PASSWORD = 'changePassword.passwordSettings',
 
+	SELECT_TARIFF = 'selectTariff',
+
 	SUPPORT = 'buttons.support',
 }
 export enum Profile {
@@ -551,6 +553,15 @@ export enum Landing {
 
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
+	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
+	CANCEL_SUBSCRIPTION = 'cancelSubscription',
+	PAY_HISTORY = 'payHistory',
+	TARIFF_FREE = 'tariff.free',
+	TARIFF_BASE = 'tariff.base',
+	TARIFF_PREMIUM = 'tariff.premium',
+	DAYS_LEFT = 'daysLeft',
+	SUBSCRIPTION_GREETING = 'greeting',
+	SUBSCRIPTION_RENEWAL = 'renewal',
 }
 
 export enum SubscriptionCard {

@@ -14,10 +14,11 @@ export const useI18nHelpers = (ns?: string | string[]) => {
 
 	const tWithPlural = (
 		key: string,
-		count: number,
+		count?: number,
+		Date?: string,
 		defaultValue?: string,
 		options?: Omit<TOptions, 'defaultValue' | 'count'>,
-	) => t(key, { ...options, count, defaultValue });
+	) => t(key, { ...options, count, Date, defaultValue });
 
 	const tWithContext = (key: string) => {
 		const [context, ...rest] = key.split('.');

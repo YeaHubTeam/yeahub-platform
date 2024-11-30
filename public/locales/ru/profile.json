@@ -93,5 +93,6 @@
     "repeatPassword": "Повторите пароль",
     "placeholderInput": "Пароль",
     "buttonText": "Сохранить"
-  }
+  },
+  "selectTariff": "Выбрать тариф"
 }

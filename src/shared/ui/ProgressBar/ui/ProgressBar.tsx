@@ -1,15 +1,15 @@
 import styles from './ProgressBar.module.css';
-interface Props {
-	daysLeft: number;
-	totalDays: number;
-}
-export const ProgressBar = ({ daysLeft, totalDays }: Props) => {
-	const progress = ((totalDays - daysLeft) / totalDays) * 100;
 
+interface ProgressBarProps {
+	progress: number;
+	progressLabel?: string;
+}
+
+export const ProgressBar = ({ progress, progressLabel }: ProgressBarProps) => {
 	return (
 		<div className={styles['progress-container']}>
 			<div className={styles['progress-bar']} style={{ width: `${progress}%` }}>
-				<span className={styles['progress-label']}>Осталось {daysLeft} дней</span>
+				{progressLabel && <span className={styles['progress-label']}>{progressLabel}</span>}
 			</div>
 		</div>
 	);

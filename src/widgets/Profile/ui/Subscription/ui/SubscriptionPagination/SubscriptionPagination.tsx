@@ -1,18 +1,18 @@
 import { Pagination } from '@/shared/ui/Pagination';
 
-import styles from './SubscribePagination.module.css';
+import styles from './SubscriptionPagination.module.css';
 
-interface SubscribePaginationProps {
+interface SubscriptionPaginationProps {
 	// subscribeResponse?: Response<unknown>;
 	currentPage: number;
 	onPageChange: (page: number) => void;
 }
 
-export const SubscribePagination = ({
+export const SubscriptionPagination = ({
 	// subscribeResponse,
 	currentPage = 1,
 	onPageChange,
-}: SubscribePaginationProps) => {
+}: SubscriptionPaginationProps) => {
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};

@@ -27,4 +27,5 @@ export { SkillsBlock, SkillsBlockList, SkillsBlockItem, SkillsBlockHeader } from
 export { UserBlock, UserInfoBlock, UserImageBlock } from './ui/UserCard';
 export { EmailConfirmationTab } from './ui/EmailConfirmationTab';
 export { ChangePasswordTab } from './ui/ChangePasswordTab';
-export { Subscribe } from './ui/Subscription';
+export { SubscriptionTab } from './ui/Subscription/index';
+export { SubscriptionPagination } from './ui/Subscription';
