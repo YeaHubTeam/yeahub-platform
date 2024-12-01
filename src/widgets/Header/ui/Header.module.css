@@ -17,14 +17,16 @@
   display: none; 
 }
 
+@media (width <= 768px) {
+  .burger {
+    display: block;
+  }
+}
 
 @media (width <= 480px) {
   .header {
     justify-content: space-between;
-  }
-
-  .burger {
-    display: block;
+    border-bottom: 1px solid transparent;
   }
 
   .logo {
