@@ -21,11 +21,15 @@
 .title {
   margin-bottom: 8px;
   color: var(--text-color-primary);
+  line-height: 28.8px;
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-s);
 }
 
 .description {
   color: var(--text-color-light);
+  line-height: 20.8px;
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
 }
 

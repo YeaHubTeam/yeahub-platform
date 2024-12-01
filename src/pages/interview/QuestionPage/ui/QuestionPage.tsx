@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
+import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
@@ -55,88 +56,80 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		return null;
 	}
 
-	const renderPopover = (
-		<Popover
-			body={
-				<div className={styles['render-component']}>
-					{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
-					<AdditionalInfo
-						rate={question.rate}
-						keywords={question.keywords}
-						complexity={question.complexity}
-						questionSkills={question.questionSkills}
-					>
-						<p className={styles.author} style={{ justifyContent: 'start' }}>
-							Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-						</p>
-					</AdditionalInfo>
-				</div>
-			}
-		>
-			{({ onToggle }) => (
-				<div>
-					<IconButton
-						className={classNames(styles['popover-additional'])}
-						onClick={() => {
-							console.log('Popover button clicked');
-							onToggle();
-						}}
-						aria-label="Popover"
-						variant="tertiary"
-						icon={<Icon icon="certificate" size={32} color="--palette-ui-black-700" />}
-					/>
-				</div>
+	const renderAdditionalInfo = (
+		<div className={styles['popover-additional']}>
+			<Popover
+				body={
+					<div className={styles['popover-additional-wrapper']}>
+						<Card>
+							{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
+							<AdditionalInfo
+								className={styles['additional-info-wrapper']}
+								rate={question.rate}
+								keywords={question.keywords}
+								complexity={question.complexity}
+								questionSkills={question.questionSkills}
+								authorFullName={authorFullName}
+							/>
+						</Card>
+					</div>
+				}
+			>
+				{({ onToggle, isOpen }) => (
+					<div>
+						<IconButton
+							className={isOpen ? styles.active : ''}
+							aria-label="go to additional info"
+							form="square"
+							icon={<PopoverIcon />}
+							size="S"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					</div>
+				)}
+			</Popover>
+		</div>
+	);
+
+	const renderHeaderAndActions = () => (
+		<>
+			<QuestionHeader
+				description={question.description}
+				status={question.status}
+				title={question.title}
+			/>
+			{!isAdmin && (
+				<QuestionActions
+					profileId={profileId}
+					questionId={questionId || ''}
+					checksCount={question.checksCount}
+				/>
 			)}
-		</Popover>
+		</>
 	);
 
 	const renderMobileOrTablet = (isMobile || isTablet) && (
 		<>
-			{renderPopover}
+			{renderAdditionalInfo}
 			<section
 				className={classNames(styles.wrapper, {
 					[styles.mobile]: isMobile,
 					[styles.tablet]: isTablet,
 				})}
 			>
-				<QuestionHeader
-					description={question?.description}
-					status={question?.status}
-					title={question?.title}
-					isMobile={isMobile}
-					isTablet={isTablet}
-				/>
-				<QuestionActions
-					profileId={profile ? profile.profiles[0].id : ''}
-					questionId={questionId ? questionId : ''}
-					checksCount={question?.checksCount}
-				/>
+				{renderHeaderAndActions()}
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		</>
 	);
-
-	if (isLoading || isFetching) {
-		return <QuestionPageSkeleton />;
-	}
 
 	return (
 		<>
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>
 					<div className={styles.main}>
-						<QuestionHeader
-							description={question.description}
-							status={question.status}
-							title={question.title}
-						/>
-						{!isAdmin && (
-							<QuestionActions
-								profileId={profileId}
-								questionId={questionId ? questionId : ''}
-								checksCount={question.checksCount}
-							/>
-						)}
+						{renderHeaderAndActions()}
 						<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
 					</div>
 					<div className={styles.additional}>

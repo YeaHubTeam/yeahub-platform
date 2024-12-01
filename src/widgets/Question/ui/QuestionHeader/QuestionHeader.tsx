@@ -1,3 +1,4 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
@@ -9,28 +10,22 @@ interface QuestionHeaderProps {
 	title: string;
 	description: string;
 	status: QuestionStatus;
-	isMobile?: boolean;
-	isTablet?: boolean;
 }
 
-export const QuestionHeader = ({
-	title,
-	description,
-	status,
-	isMobile,
-	isTablet,
-}: QuestionHeaderProps) => {
+export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
+	const { isDesktop } = useScreenSize();
+
 	return (
 		<Card withOutsideShadow>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
-					<ImageWithWrapper className={styles.image} isMobile={isMobile} isTablet={isTablet} />
+					<ImageWithWrapper className={styles.image} />
 				</div>
 				<div className={styles['title-wrapper']}>
 					<h2 className={styles.title}>{title}</h2>
 					<p className={styles.description}>{description}</p>
 				</div>
-				{!(isMobile || isTablet) && (
+				{isDesktop && (
 					<div className={styles['label-wrapper']}>
 						<p className={styles.label}>{questionStatuses[status]}</p>
 					</div>
