@@ -84,11 +84,11 @@
  
   .title {
     line-height: 120%;
-    font-size: var(--font-size-p-s);
+    font-size: var(--font-size-p-m);
   }
  
   .description {
     line-height: 136%;
-    font-size: var(--font-size-p-xss);
+    font-size: var(--font-size-p-s);
   }
 }

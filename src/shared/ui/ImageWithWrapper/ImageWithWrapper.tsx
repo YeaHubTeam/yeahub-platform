@@ -1,5 +1,4 @@
 import EmptyStub from '@/shared/assets/icons/EmptyStub.svg';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import styles from './ImageWithWrapper.module.css';
 
@@ -10,11 +9,6 @@ interface ImageWithWrapperProps {
 }
 
 export const ImageWithWrapper = ({ className, src, alt = '' }: ImageWithWrapperProps) => {
-	const { isDesktop } = useScreenSize();
-	if (!src && !isDesktop) {
-		return null;
-	}
-
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
 			{src ? (

@@ -19,7 +19,7 @@ export const QuestionHeader = ({ title, description, status }: QuestionHeaderPro
 		<Card withOutsideShadow>
 			<div className={styles['question-header-wrapper']}>
 				<div className={styles['image-wrapper']}>
-					<ImageWithWrapper className={styles.image} />
+					{isDesktop ? <ImageWithWrapper src={''} /> : null}
 				</div>
 				<div className={styles['title-wrapper']}>
 					<h2 className={styles.title}>{title}</h2>
