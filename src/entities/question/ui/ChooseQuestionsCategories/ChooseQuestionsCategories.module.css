@@ -2,6 +2,11 @@
   flex-basis: 60%;
 }
 
+.mobile {
+  max-height: 170px;
+  overflow-y: scroll;
+}
+
 .button {
   justify-content: flex-start;
   margin-top: 8px;

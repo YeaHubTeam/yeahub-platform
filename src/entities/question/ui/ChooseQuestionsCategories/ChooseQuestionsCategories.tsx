@@ -1,8 +1,10 @@
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
@@ -17,6 +19,7 @@ interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
 	onChangeSkills: (skills: number[] | undefined) => void;
 	skillsLimit?: number;
+	shouldShowScroll?: boolean;
 }
 
 export const ChooseQuestionsCategories = ({
@@ -28,13 +31,14 @@ export const ChooseQuestionsCategories = ({
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
 	const { data: skills } = useGetSkillsListQuery({ limit });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { isMobile } = useScreenSize();
 
 	const toggleShowAll = () => {
 		setShowAll(!showAll);
 	};
 
 	useEffect(() => {
-		if (showAll) {
+		if (isMobile || showAll) {
 			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT));
 		} else {
 			setLimit(skillsLimit || MAX_LIMIT);
@@ -60,16 +64,18 @@ export const ChooseQuestionsCategories = ({
 	const skillIcon = (skill: Skill) => <Icon icon={getSkillDefaultIcon(skill)} />;
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t('create.questions_categories')}
 				onClick={handleChooseSkill}
 				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
-			<Button className={styles.button} variant="link" onClick={toggleShowAll}>
-				{!showAll ? t('buttons.showAll') : t('buttons.hide')}
-			</Button>
+			{!isMobile && (
+				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
+					{!showAll ? t('buttons.showAll') : t('buttons.hide')}
+				</Button>
+			)}
 		</div>
 	);
 };
