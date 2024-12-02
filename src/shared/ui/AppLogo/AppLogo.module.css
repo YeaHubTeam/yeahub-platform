@@ -26,7 +26,6 @@
 }
 
 .center {
-  padding-left: 8px;
   transition: padding-left 0.4s ease-in-out;
 }
 
