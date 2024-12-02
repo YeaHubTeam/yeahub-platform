@@ -21,15 +21,18 @@
   .burger {
     display: block;
   }
+
+  .header {
+    justify-content: space-between;
+  }
+	
+  .logo {
+    display: block;
+  }
 }
 
 @media (width <= 480px) {
   .header {
-    justify-content: space-between;
     border-bottom: 1px solid transparent;
-  }
-
-  .logo {
-    display: block;
   }
 }

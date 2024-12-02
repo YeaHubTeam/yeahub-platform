@@ -79,13 +79,11 @@
   pointer-events: none;
 }
 
-@media (width <=768px) {
+@media (width <= 768px) {
   .close-icon {
     display: none;
   }
-}
 
-@media (width <=480px) {
   .desktop-sidebar {
     display: none;
   }
