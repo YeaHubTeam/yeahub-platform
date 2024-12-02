@@ -26,3 +26,10 @@
   object-fit: fill;
   fill: var(--color-purple-900);
 }
+
+@media (width <=480px) {
+  .wrapper {
+    width: 268px;
+    height: 193px;
+  }
+}
