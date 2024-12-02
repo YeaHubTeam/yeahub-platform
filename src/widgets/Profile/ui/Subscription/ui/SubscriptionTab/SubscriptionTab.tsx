@@ -50,9 +50,9 @@ export const SubscriptionTab = () => {
 	];
 
 	/**
-	 *  `30`-Общее кол-во дней
+	 *  `30` - Общее кол-во дней
 	 *
-	 *  `20`- осташиеся дни
+	 *  `20` - оставшиеся дни
 	 */
 	const progress = ((30 - 20) / 30) * 100;
 
@@ -66,7 +66,7 @@ export const SubscriptionTab = () => {
 					</Flex>
 					<p className={styles.text}>{t(Subscription.SUBSCRIPTION_GREETING)}</p>
 				</Flex>
-				<ProgressBar progress={progress} progressLabel={tWithPlural(Subscription.DAYS_LEFT, 20)} />
+				<ProgressBar progress={progress} progressLabel={tWithPlural(Subscription.DAYS_LEFT, 22)} />
 				<p className={styles.text}>
 					{tWithPlural(
 						Subscription.SUBSCRIPTION_RENEWAL,
