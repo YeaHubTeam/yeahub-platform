@@ -8,8 +8,6 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleChip } from '@/shared/ui/SimpleChip';
 
-import { Button } from '../Button';
-
 import styles from './KeywordInput.module.css';
 
 type KeywordInputProps = {
