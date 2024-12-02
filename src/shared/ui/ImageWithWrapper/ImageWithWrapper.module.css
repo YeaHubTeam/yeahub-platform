@@ -1,8 +1,8 @@
 .wrapper {
   position: relative;
   flex-shrink: 0;
-  width: 70px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   background-color: var(--background-nav-item);
 }
@@ -27,9 +27,14 @@
   fill: var(--color-purple-900);
 }
 
-@media (width <=480px) {
-  .wrapper {
-    width: 268px;
-    height: 193px;
-  }
-}
+/* @media (width <=480px) { */
+
+/*  .wrapper { */
+
+/*    width: 268px; */
+
+/*    height: 193px; */
+
+/*  } */
+
+/* } */

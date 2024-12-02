@@ -13,14 +13,22 @@ interface QuestionHeaderProps {
 }
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
-	const { isDesktop } = useScreenSize();
+	const { isDesktop, isMobile } = useScreenSize();
+
+	const imageClassName = isMobile ? styles['image-mobile'] : styles['image-default'];
 
 	return (
 		<Card withOutsideShadow>
 			<div className={styles['question-header-wrapper']}>
-				<div className={styles['image-wrapper']}>
-					{isDesktop ? <ImageWithWrapper src={''} /> : null}
-				</div>
+				{isDesktop ? (
+					<div
+						className={`${styles['image-wrapper']} ${
+							isMobile ? styles['image-wrapper-mobile'] : ''
+						}`}
+					>
+						<ImageWithWrapper className={imageClassName} src={''} />
+					</div>
+				) : null}
 				<div className={styles['title-wrapper']}>
 					<h2 className={styles.title}>{title}</h2>
 					<p className={styles.description}>{description}</p>
