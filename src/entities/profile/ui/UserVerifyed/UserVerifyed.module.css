@@ -14,7 +14,8 @@
 
 .card-text {
   margin-top: 12px;
-  width: 476px;
+  width: 100%;
+  max-width: 476px;
   color: var(--text-color-black-landing);
   line-height: 120%;
   font-weight: var(--font-weight-400);

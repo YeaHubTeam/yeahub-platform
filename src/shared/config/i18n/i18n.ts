@@ -26,7 +26,6 @@ export const i18Namespace = {
 	docs: 'docs',
 	subscription: 'subscription',
 	subscriptionCard: 'subscriptionCard',
-
 };
 
 i18n
