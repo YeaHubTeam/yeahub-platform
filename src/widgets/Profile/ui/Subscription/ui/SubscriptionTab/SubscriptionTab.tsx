@@ -3,6 +3,7 @@ import { parseISO } from 'date-fns';
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { DATE_FORMATS } from '@/shared/constants/dateFormats';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
@@ -56,6 +57,8 @@ export const SubscriptionTab = () => {
 	 */
 	const progress = ((30 - 20) / 30) * 100;
 
+	const { D_MM_YYYY } = DATE_FORMATS;
+
 	return (
 		<>
 			<Flex gap="20" direction="column" className={styles.wrapper}>
@@ -71,7 +74,7 @@ export const SubscriptionTab = () => {
 					{tWithPlural(
 						Subscription.SUBSCRIPTION_RENEWAL,
 						undefined,
-						formatDate(parseISO(payHistories[0].payDate), 'd MMMM yyyy'),
+						formatDate(parseISO(payHistories[0].payDate), D_MM_YYYY),
 					)}
 				</p>
 			</Flex>
