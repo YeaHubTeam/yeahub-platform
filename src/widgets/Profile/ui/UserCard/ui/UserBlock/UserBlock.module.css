@@ -1,6 +1,7 @@
 .card {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 16px;
   height: 100%;
 }

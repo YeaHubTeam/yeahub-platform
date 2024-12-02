@@ -20,7 +20,7 @@
 .delete-avatar-btn {
   position: absolute;
   right: 50%;
-  bottom: -25px;
+  bottom: -28px;
   width: max-content;
   max-width: 170px;
   border: none;
@@ -32,14 +32,14 @@
   cursor: pointer;
 }
 
-@media (width <=768px) {
+@media (width <= 768px) {
   .profile-picture-wrapper {
     flex-wrap: wrap;
     justify-content: center;
   }
 }
 
-@media (width <=480px) {
+@media (width <= 480px) {
   .profile-picture-block {
     width: 100%;
   }
