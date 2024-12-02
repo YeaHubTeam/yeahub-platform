@@ -1,3 +1,1 @@
-import { questionMockResponse } from './questonMockResponse';
-
-export { questionMockResponse };
+export { questionMockResponse } from './questionsMock';
