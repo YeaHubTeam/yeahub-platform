@@ -7,7 +7,7 @@ import { deleteQuestionsApiUrls } from '../model/constants/deleteQuestionsConsta
 
 export const deleteQuestionsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteQuestion: build.mutation<void, Question['id']>({
+		deleteQuestionOfMultiply: build.mutation<void, Question['id']>({
 			query: (questionId) => ({
 				url: route(deleteQuestionsApiUrls.deleteQuestion, questionId),
 				method: 'DELETE',

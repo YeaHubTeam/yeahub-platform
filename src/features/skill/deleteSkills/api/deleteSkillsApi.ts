@@ -1,12 +1,13 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { route } from '@/shared/helpers/route';
 
-import { Skill } from '@/entities/skill';
+import { deleteSkillsApiUrls } from '../model/constants/deleteSkillsConstants';
 
 export const deleteSkillsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteSkillWithoutErrorHandler: build.mutation<Skill, Skill['id']>({
+		deleteSkillOfMultiply: build.mutation<void, number>({
 			query: (skillId) => ({
-				url: `/skills/${skillId}`,
+				url: route(deleteSkillsApiUrls.deleteSkill, skillId),
 				method: 'DELETE',
 			}),
 		}),

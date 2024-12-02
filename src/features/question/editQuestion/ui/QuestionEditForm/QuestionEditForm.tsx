@@ -1,6 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useBlocker } from 'react-router-dom';
 
+import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -34,8 +36,21 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 		},
 	});
 
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
+
+	const blocker = useBlocker(
+		({ currentLocation, nextLocation }) =>
+			isDirty &&
+			!isSubmitted &&
+			!isSubmitting &&
+			currentLocation.pathname !== nextLocation.pathname,
+	);
+
 	return (
 		<FormProvider {...methods}>
+			{blocker.state === 'blocked' ? (
+				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+			) : null}
 			<Flex componentType="main" direction="column" gap="24">
 				<QuestionEditFormHeader />
 				<Card className={styles.content}>
