@@ -25,6 +25,12 @@
   transform: translateX(5px);
 }
 
+@media (width <= 1024px) {
+  .header {
+    padding-bottom: 15px;
+  }
+}
+
 @media (width < 768px) {
   .link {
     position: absolute;

@@ -10,13 +10,13 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .result {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .count {

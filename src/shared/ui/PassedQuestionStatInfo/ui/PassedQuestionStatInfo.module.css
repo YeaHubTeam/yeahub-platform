@@ -1,9 +1,7 @@
 .info {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 6px;
-  width: 100%;
+  gap: 18px;
   font-size: var(--font-size-p-s);
 }
 
@@ -11,25 +9,15 @@
   border-radius: 16px;
 }
 
-@media (width <= 996px) {
-  .info {
-    gap: 4px;
-  }
-}
+
 
 @media (width <= 768px) {
+  .info {
+    align-self: auto;
+    gap: 6px;
+  }
+
   .stat {
     border-radius: 8px;
-  }
+  }  
 }
-
-@media (width <= 360px) {
-  .info {
-    margin-top: 10px;
-  }
-}
-
-
-
-
-

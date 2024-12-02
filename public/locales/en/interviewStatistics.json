@@ -11,9 +11,18 @@
   },
   "attemptStats": {
     "title": "Statistics of completed interviews",
-    "bestResult": "Best result",
-    "worstResult": "Worst result",
-    "avgResult": "Average result"
+    "bestResult": {
+      "default": "Best result",
+      "mobile": "Best"
+    },
+    "worstResult": {
+      "default": "Worst result",
+      "mobile": "Worst"
+    },
+    "avgResult": {
+      "default": "Average result",
+      "mobile": "Average"
+    }
   },
   "expand": "Expand",
   "collapse": "Collapse"

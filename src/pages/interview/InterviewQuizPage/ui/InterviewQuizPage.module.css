@@ -95,6 +95,10 @@
 }
 
 @media (width <= 768px) {
+  .container > div {
+    padding: 16px;
+  }
+
   .question {
     gap: 16px;
   }

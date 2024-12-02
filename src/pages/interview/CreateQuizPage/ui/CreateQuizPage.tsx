@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -36,6 +37,8 @@ const CreateQuizPage = () => {
 	const { filter, handleFilterChange } = useQueryFilter();
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+
+	const { isMobile, isTablet } = useScreenSize();
 
 	const navigate = useNavigate();
 
@@ -83,7 +86,12 @@ const CreateQuizPage = () => {
 		<section>
 			<Card className={styles.container}>
 				<h2 className={styles.title}>{t('create.title')}</h2>
-				<Flex justify="between" gap="40" className={styles.wrapper}>
+				<Flex
+					justify="between"
+					gap={isMobile ? '16' : '40'}
+					direction={isTablet ? 'column' : 'row'}
+					className={styles.wrapper}
+				>
 					<ChooseQuestionsCategories
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}

@@ -14,3 +14,15 @@
   align-items: center;
   gap: 4px;
 }
+
+@media (width <= 1024px) {
+  .param {
+    gap: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  .param {
+    margin-bottom: 24px;
+  }
+}

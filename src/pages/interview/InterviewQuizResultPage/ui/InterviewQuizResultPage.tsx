@@ -60,32 +60,32 @@ const InterviewQuizResultPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Card>
-				<Flex direction="column" align="center" className={styles.result}>
-					<InterviewQuestionHeader
-						title={t('resultInterview.resultTitle', { title: data?.quizNumber })}
-						centered
-					/>
-					<PassedInterviewStat
-						isLoading={isLoading}
-						totalAttempt={interviewStats?.questionsTotalCount ?? 0}
-						attemptData={interviewStats?.stats ?? []}
-					/>
-				</Flex>
-			</Card>
-			<Flex direction="column" align="center" gap="12" justify="between">
+			<div className={styles.wrapper}>
+				<Card className={styles.results}>
+					<Flex direction="column" align="center" className={styles.result}>
+						<InterviewQuestionHeader
+							title={t('resultInterview.resultTitle', { title: data?.quizNumber })}
+							centered
+						/>
+						<PassedInterviewStat
+							isLoading={isLoading}
+							totalAttempt={interviewStats?.questionsTotalCount ?? 0}
+							attemptData={interviewStats?.stats ?? []}
+						/>
+					</Flex>
+				</Card>
 				<Card className={styles.block}>
-					<Flex gap="20" direction="column" align="center">
+					<Flex gap="20" direction="column" align="center" justify="center">
 						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart
 							isLoading={isLoading}
 							total={data?.fullCount ?? 1}
 							learned={data?.successCount ?? 0}
 						/>
+						<PassedQuestionStatInfo stats={questionStats} />
 					</Flex>
 				</Card>
-				<PassedQuestionStatInfo stats={questionStats} />
-			</Flex>
+			</div>
 			<Card className={styles.passed}>
 				<Flex direction="column" gap="24">
 					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />

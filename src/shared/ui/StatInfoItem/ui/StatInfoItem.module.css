@@ -1,10 +1,10 @@
 .stat {
-  padding: 8px 12px;
+  padding: 12px 10px;
   width: 100%;
   box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
   border-radius: 5px;
   background-color: var(--background-block);
-  font-size: var(--font-size-p-s);
+  font-size: var(--font-size-p-xs);
 }
 
 .border {
@@ -15,25 +15,24 @@
   color: var(--text-color-the-lightest);
   line-height: 120%;
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-xs);
   white-space: nowrap;
 }
 
 .value {
+  margin-top: 6px;
   color: var(--text-color-primary);
 }
 
-
-
-@media (width <= 1280px) {
+@media (width <= 1024px) {
   .stat {
-    padding: 8px;
+    font-size: var(--font-size-p-s);
   }
 }
 
 @media (width <= 768px) {
   .stat {
-    padding: 4px;
+    padding: 10px 8px;
+    font-size: var(--font-size-p-xs);
   }
 
   .border {

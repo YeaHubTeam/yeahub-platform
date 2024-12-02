@@ -79,7 +79,7 @@ const InterviewQuizPage = () => {
 
 	return (
 		<div className={styles.container}>
-			<Card>
+			<Card withOutsideShadow>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t('title')}</p>
 					<span className={styles['progress-num']}>
@@ -92,7 +92,7 @@ const InterviewQuizPage = () => {
 					/>
 				</div>
 			</Card>
-			<Card>
+			<Card withOutsideShadow>
 				<div className={styles.question}>
 					<QuestionNavPanel
 						className={styles['slider-navigation']}

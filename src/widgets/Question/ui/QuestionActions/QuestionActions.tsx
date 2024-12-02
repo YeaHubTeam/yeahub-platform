@@ -15,15 +15,15 @@ interface QuestionActionsProps {
 }
 
 export const QuestionActions = ({ profileId, questionId, checksCount }: QuestionActionsProps) => {
-	const { isMobile } = useScreenSize();
+	const { isMobile, isTablet } = useScreenSize();
 	const profile = useAppSelector(getFullProfile);
 
-	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
+	const buttonVariant = isMobile || isTablet ? 'link-gray' : 'tertiary';
 	const isEmailVerified = profile?.isEmailVerified;
 
 	return (
 		<Card>
-			<Flex justify="center" gap="12" align="center">
+			<Flex justify="center" gap="40" align="center">
 				<LearnQuestionButton
 					profileId={profileId}
 					questionId={questionId}
