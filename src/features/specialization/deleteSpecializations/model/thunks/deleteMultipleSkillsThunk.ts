@@ -7,40 +7,45 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import { deleteSkillsApi } from '../api/deleteSkillsApi';
+import { deleteSpecializationsApi } from '../../api/deleteSpecializationsApi';
 
-export const deleteMultipleSkills = createAsyncThunk<void, SelectedAdminEntities>(
-	'skills/deleteMultiple',
-	async (skills, { rejectWithValue, dispatch }) => {
+export const deleteMultipleSpecializationsThunk = createAsyncThunk<void, SelectedAdminEntities>(
+	'specializations/deleteMultiple',
+	async (specializations, { rejectWithValue, dispatch }) => {
 		try {
 			const responses = await Promise.allSettled(
-				skills.map(
-					async (skill) =>
+				specializations.map(
+					async (specialization) =>
 						await dispatch(
-							deleteSkillsApi.endpoints.deleteSkillWithoutErrorHandler.initiate(skill.id),
+							deleteSpecializationsApi.endpoints.deleteSpecializationOfMultiply.initiate(
+								specialization.id,
+							),
 						),
 				),
 			);
 
-			dispatch(baseApi.util.invalidateTags([ApiTags.SKILLS, ApiTags.SKILL_DETAIL]));
+			dispatch(
+				baseApi.util.invalidateTags([ApiTags.SPECIALIZATIONS, ApiTags.SPECIALIZATION_DETAIL]),
+			);
+
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const successfulDeletions = responses.filter((response: any) => !response.value.error);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const failedDeletions = responses.filter((response: any) => !!response.value.error);
 
 			if (failedDeletions.length === 1 && successfulDeletions.length === 0) {
-				toast.error(i18n.t(Translation.TOAST_SKILLS_DELETE_SINGLE_FAILED));
+				toast.error(i18n.t(Translation.TOAST_SPECIALIZATIONS_DELETE_SINGLE_FAILED));
 				return;
 			}
 
 			if (successfulDeletions.length === 1 && failedDeletions.length === 0) {
-				toast.success(`${i18n.t(Translation.TOAST_SKILLS_DELETE_SINGLE_SUCCESS)}`);
+				toast.success(`${i18n.t(Translation.TOAST_SPECIALIZATIONS_DELETE_SINGLE_SUCCESS)}`);
 				return;
 			}
 
 			if (successfulDeletions.length >= 1) {
 				toast.success(
-					`${i18n.t(Translation.TOAST_SKILLS_DELETE_MULTIPLE_SUCCESS)} ${successfulDeletions.length}`,
+					`${i18n.t(Translation.TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_SUCCESS)} ${successfulDeletions.length}`,
 				);
 			}
 
@@ -48,7 +53,7 @@ export const deleteMultipleSkills = createAsyncThunk<void, SelectedAdminEntities
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				failedDeletions.forEach((_: any, index: number) => {
 					toast.error(
-						`${i18n.t(Translation.TOAST_SKILLS_DELETE_MULTIPLE_FAILED)} ${skills[index].title}`,
+						`${i18n.t(Translation.TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_FAILED)} ${specializations[index].title}`,
 					);
 				});
 			}

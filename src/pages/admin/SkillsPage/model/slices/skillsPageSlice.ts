@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SelectedAdminEntities } from '@/shared/types/types';
 
-import { deleteMultipleSkills } from '@/features/skill/deleteSkills';
+import { deleteMultipleSkillsThunk } from '@/features/skill/deleteSkills';
 
 import { SkillsPageState } from '../types/skillsPageTypes';
 
@@ -28,7 +28,7 @@ const skillsPageSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(deleteMultipleSkills.fulfilled, (state) => {
+		builder.addCase(deleteMultipleSkillsThunk.fulfilled, (state) => {
 			state.selectedSkills = [];
 		});
 	},

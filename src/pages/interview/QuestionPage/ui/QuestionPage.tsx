@@ -28,8 +28,8 @@ interface QuestionPageProps {
 }
 
 export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
-	const { questionId } = useParams();
 	const { isMobile, isTablet } = useScreenSize();
+	const { questionId } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
 	const {

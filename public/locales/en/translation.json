@@ -77,12 +77,6 @@
     "dontKnow": "Don't know",
     "repeat": "Repeat"
   },
-  "questions": {
-    "status": {
-      "public": "Public",
-      "draft": "Draft"
-    }
-  },
   "validation": {
     "passwordConfirmation": {
       "oneOf": "Passwords must match"
@@ -191,6 +185,14 @@
       }
     },
     "skills": {
+      "create": {
+        "success": "The skill has been successfully created",
+        "failed": "The skill could not be created"
+      },
+      "edit": {
+        "success": "The skill has been successfully changed",
+        "failed": "The skill could not be changed"
+      },
       "delete": {
         "single": {
           "success": "The skill has been successfully deleted",
@@ -203,13 +205,23 @@
       }
     },
     "specializations": {
-      "single": {
-        "success": "The specialization has been successfully deleted",
-        "failed": "Failed to delete the specialization"
+      "create": {
+        "success": "The skill has been successfully created",
+        "failed": "The skill could not be created"
       },
-      "multiple": {
-        "success": "Successfully deleted specializations:",
-        "failed": "Failed to delete the specialization:"
+      "edit": {
+        "success": "The skill has been successfully changed",
+        "failed": "The skill could not be changed"
+      },
+      "delete": {
+        "single": {
+          "success": "The specialization has been successfully deleted",
+          "failed": "Failed to delete the specialization"
+        },
+        "multiple": {
+          "success": "Successfully deleted specializations:",
+          "failed": "Failed to delete the specialization:"
+        }
       }
     },
     "profile": {

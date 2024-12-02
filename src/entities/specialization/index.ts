@@ -1,4 +1,7 @@
-export type { Specialization, SpecializationFormValues } from './model/types/specialization';
+export type {
+	Specialization,
+	CreateOrEditSpecializationFormValues,
+} from './model/types/specialization';
 export {
 	useGetSpecializationsListQuery,
 	useGetSpecializationByIdQuery,

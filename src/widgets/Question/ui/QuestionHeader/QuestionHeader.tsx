@@ -1,8 +1,11 @@
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { i18Namespace } from '@/shared/config/i18n/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 
-import { QuestionStatus, questionStatuses } from '@/entities/question';
+import { QuestionStatus } from '@/entities/question';
 
 import styles from './QuestionHeader.module.css';
 
@@ -13,9 +16,15 @@ interface QuestionHeaderProps {
 }
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
+  const { t } = useI18nHelpers(i18Namespace.questions);
 	const { isDesktop, isMobile } = useScreenSize();
 
 	const imageClassName = isMobile ? styles['image-mobile'] : styles['image-default'];
+
+	const questionStatuses: Record<QuestionStatus, string> = {
+		public: t(Questions.STATUS_PUBLIC),
+		draft: t(Questions.STATUS_DRAFT),
+	};
 
 	return (
 		<Card withOutsideShadow>

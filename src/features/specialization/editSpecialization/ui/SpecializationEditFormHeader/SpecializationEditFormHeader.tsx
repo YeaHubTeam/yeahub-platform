@@ -1,6 +1,5 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import {
 	Specialization as SpecializationI18,
@@ -10,28 +9,21 @@ import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import { Specialization } from '@/entities/specialization';
-
 import { useEditSpecializationMutation } from '../../api/editSpecializationApi';
+import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
 
 export const SpecializationEditFormHeader = () => {
 	const { t } = useTranslation(['specialization', 'translation']);
-	const navigate = useNavigate();
 
-	const { handleSubmit, reset } = useFormContext<Specialization>();
+	const { handleSubmit, reset } = useFormContext<EditSpecializationFormValues>();
 
 	const [editSpecializationMutation, { isLoading }] = useEditSpecializationMutation();
 	const onResetFormValues = () => {
 		reset();
 	};
 
-	const onEditSpecialization = async (data: Specialization) => {
-		await editSpecializationMutation(data)
-			.unwrap()
-			.then(() => {
-				navigate(-1);
-			})
-			.catch((e) => console.error(e));
+	const onEditSpecialization = async (data: EditSpecializationFormValues) => {
+		await editSpecializationMutation(data);
 	};
 
 	return (

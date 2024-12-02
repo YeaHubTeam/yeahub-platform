@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -45,7 +47,8 @@ export type CreateOrEditQuestionFormValues = Pick<
 	specializations: number[];
 	skills: number[];
 };
-export interface QuestionsListParams {
+
+export interface GetQuestionsListParamsRequest {
 	page?: number;
 	limit?: number;
 	title?: string;
@@ -61,13 +64,17 @@ export interface QuestionsListParams {
 	profileId?: string;
 }
 
-export interface QuestionsLearnedParams
-	extends Omit<QuestionsListParams, 'order' | 'orderBy' | 'random'> {
-	profileId?: string;
+export type GetQuestionsListResponse = Response<Question[]>;
+
+export type GetQuestionByIdParamsRequest = {
+	questionId?: string;
+	profileId: string;
+};
+export type GetQuestionByIdResponse = Question;
+
+export interface GetLearnedQuestionsParamsRequest
+	extends Omit<GetQuestionsListParamsRequest, 'order' | 'orderBy' | 'random'> {
+	profileId: string;
 	isLearned?: boolean;
 }
-
-export interface QuestionByIdParams {
-	questionId?: string;
-	profileId?: string;
-}
+export type GetLearnedQuestionsResponse = Response<Question[]>;

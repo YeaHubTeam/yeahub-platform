@@ -115,4 +115,8 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
+	docs: {
+		route: 'docs',
+		page: '/docs',
+	},
 };

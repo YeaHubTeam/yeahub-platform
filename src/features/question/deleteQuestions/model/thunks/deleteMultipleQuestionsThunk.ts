@@ -16,7 +16,9 @@ export const deleteMultipleQuestionsThunk = createAsyncThunk<void, SelectedAdmin
 			const responses = await Promise.allSettled(
 				questions.map(
 					async (question) =>
-						await dispatch(deleteQuestionsApi.endpoints.deleteQuestion.initiate(question.id)),
+						await dispatch(
+							deleteQuestionsApi.endpoints.deleteQuestionOfMultiply.initiate(question.id),
+						),
 				),
 			);
 

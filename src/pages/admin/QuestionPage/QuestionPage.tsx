@@ -29,8 +29,9 @@ import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 export const QuestionPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
-	const { questionId } = useParams();
 	const { isMobile, isTablet } = useScreenSize();
+	const { questionId } = useParams<{ questionId: string }>();
+
 	const profileId = useAppSelector(getProfileId);
 
 	const {

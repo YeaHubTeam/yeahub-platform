@@ -362,6 +362,22 @@
   }
 }
 
+.a-link-purple {
+  color: var(--link-text-color-purple);
+
+  &:hover {
+    color: var(--link-text-color-purple-hover);
+  }
+
+  &:focus {
+    color: var(--link-text-color-purple-focus);
+  }
+
+  &:active {
+    color: var(--link-text-color-purple-active);
+  }
+}
+
 .a-link-destructive {  
   color: var(--link-text-color-destructive);
 
