@@ -1,5 +1,6 @@
-import * as yup from 'yup';
+import { CreateOrEditSkillFormValues, Skill } from '@/entities/skill';
 
-import { skillCreateSchema } from '../lib/validation/skillCreateSchema';
+export type CreateSkillFormValues = Omit<CreateOrEditSkillFormValues, 'id'>;
 
-export type SkillCreateSchema = yup.InferType<typeof skillCreateSchema>;
+export type CreateSkillBodyRequest = CreateSkillFormValues;
+export type CreateSkillResponse = Skill;

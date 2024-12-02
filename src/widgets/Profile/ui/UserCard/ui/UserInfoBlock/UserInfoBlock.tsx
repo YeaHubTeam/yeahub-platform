@@ -5,7 +5,7 @@ import DoubleCheck from '@/shared/assets/icons/DoubleCheck.svg';
 import Time from '@/shared/assets/icons/Time.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
@@ -73,7 +73,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						<span className={styles['card-verify-span']}>{email}</span>
 					</Flex>
 				) : (
-					<Link to={ROUTES.settings.page}>
+					<Link to={EMAIL_VERIFY_SETTINGS_TAB}>
 						<Flex align="center" gap="4">
 							<Time className={styles['svg-time']} />
 							<span className={styles['card-verify-link']}>

@@ -12,29 +12,20 @@ export {
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
-	useGetQuizByIdQuery,
-	useGetProfileStatsQuery,
+	useGetQuizByProfileIdQuery,
+	useGetProfileQuizStatsQuery,
 } from './api/quizApi';
 
 export type {
 	Answers,
-	ExtraArgument,
-	Interview,
-	InterviewQuestion,
-	InterviewQuestionBtn,
 	ActiveQuizState,
-	QuizByIdRequestParams,
-	ProfileStats,
+	GetProfileQuizStatsResponse,
 	ProgressByCategoriesData,
-} from './model/types/quiz';
-
-export { QUIZ_QUESTIONS, MOCK_QUIZ, INTERVIEW_BTNS_DATA } from './model/data/interviewQuestions';
-
-export type {
 	QuestionModeType,
 	QuizQuestionAnswerType,
-	QuizHistoryParams,
-	QuizHistoryResponse,
+	Quiz,
+	QuizWithoutQuestions,
+	GetQuizHistoryParamsRequest,
 } from './model/types/quiz';
 
 export { getActiveQuizQuestions, getIsAllQuestionsAnswered } from './model/selectors/quizSelectors';

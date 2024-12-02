@@ -3,10 +3,11 @@ import { Button, Input } from 'yeahub-ui-kit';
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { useSendVerificationEmailMutation } from '../api/confirmEmailApi';
 
@@ -24,8 +25,8 @@ export const ConfirmationEmail = ({
 	isLetterSended,
 }: ConfirmationEmailProps) => {
 	const { t } = useI18nHelpers(i18Namespace.profile);
-	const profile = useProfileQuery();
-	const userId = profile.data?.id;
+	const profile = useAppSelector(getFullProfile);
+	const userId = profile?.id;
 
 	const [sendVerificationEmail, { isLoading: isSendingVerificationEmail }] =
 		useSendVerificationEmailMutation();

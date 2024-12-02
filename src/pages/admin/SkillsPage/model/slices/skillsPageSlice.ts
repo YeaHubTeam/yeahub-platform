@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { SelectedAdminEntities } from '@/shared/types/types';
+
+import { deleteMultipleSkillsThunk } from '@/features/skill/deleteSkills';
+
 import { SkillsPageState } from '../types/skillsPageTypes';
 
 const initialState: SkillsPageState = {
@@ -14,13 +18,19 @@ const skillsPageSlice = createSlice({
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
+			state.selectedSkills = [];
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
 		},
-		setSelectedSkills: (state, action: PayloadAction<number[]>) => {
+		setSelectedSkills: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedSkills = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(deleteMultipleSkillsThunk.fulfilled, (state) => {
+			state.selectedSkills = [];
+		});
 	},
 });
 

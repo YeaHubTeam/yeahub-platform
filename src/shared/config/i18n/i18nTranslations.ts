@@ -11,6 +11,7 @@ export enum Translation {
 	LOADING = 'loading',
 	HELLO = 'hello',
 	SEARCH = 'search',
+	USERPREFERENCES_MENU = 'userPreferences.menu',
 	USERPREFERENCES_MYPROFILE = 'userPreferences.myProfile',
 	USERPREFERENCES_LOGOUT = 'userPreferences.logout',
 	SETTINGS = 'settings',
@@ -109,10 +110,32 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
-	TOAST_QUESTIONS_DELETE_SUCCESS = 'toast.questions.delete.success',
-	TOAST_QUESTIONS_DELETE_FAILED = 'toast.questions.delete.failed',
+	TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS = 'toast.questions.delete.single.success',
+	TOAST_QUESTIONS_DELETE_SINGLE_FAILED = 'toast.questions.delete.single.failed',
+	TOAST_QUESTIONS_DELETE_MULTIPLE_SUCCESS = 'toast.questions.delete.multiple.success',
+	TOAST_QUESTIONS_DELETE_MULTIPLE_FAILED = 'toast.questions.delete.multiple.failed',
+	TOAST_SKILLS_DELETE_SINGLE_SUCCESS = 'toast.skills.delete.single.success',
+	TOAST_SKILLS_DELETE_SINGLE_FAILED = 'toast.skills.delete.single.failed',
+	TOAST_SKILLS_DELETE_MULTIPLE_SUCCESS = 'toast.skills.delete.multiple.success',
+	TOAST_SKILLS_DELETE_MULTIPLE_FAILED = 'toast.skills.delete.multiple.failed',
+	TOAST_SPECIALIZATIONS_DELETE_SINGLE_SUCCESS = 'toast.specializations.delete.single.success',
+	TOAST_SPECIALIZATIONS_DELETE_SINGLE_FAILED = 'toast.specializations.delete.single.failed',
+	TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_SUCCESS = 'toast.specializations.delete.multiple.success',
+	TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_FAILED = 'toast.specializations.delete.multiple.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
+	TOAST_QUESTION_CREATE_SUCCESS = 'toast.questions.create.success',
+	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
+	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
+	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
+	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
+	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
+	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
+	TOAST_SKILL_EDIT_FAILED = 'toast.skills.edit.failed',
+	TOAST_SPECIALIZATION_CREATE_SUCCESS = 'toast.specializations.create.success',
+	TOAST_SPECIALIZATION_CREATE_FAILED = 'toast.specializations.create.failed',
+	TOAST_SPECIALIZATION_EDIT_SUCCESS = 'toast.specializations.edit.success',
+	TOAST_SPECIALIZATION_EDIT_FAILED = 'toast.specializations.edit.failed',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',
 	TOAST_AVATAR_UPDATE_FAILED = 'toast.avatar.update.failed',
 	TOAST_AVATAR_CREATE_SUCCESS = 'toast.avatar.create.success',
@@ -128,6 +151,7 @@ export enum Translation {
 	TOAST_CHANGE_PASSWORD_FAILED = 'toast.password.change.failed',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
+	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 
 	ERROR404_IMAGE_ALT = 'error.alt',
 
@@ -225,8 +249,6 @@ export enum Auth {
 	REGISTRATION_FIRST_NAME_PLACEHOLDER = 'registration.firstNamePlaceholder',
 	REGISTRATION_LAST_NAME = 'registration.lastName',
 	REGISTRATION_LAST_NAME_PLACEHOLDER = 'registration.lastNamePlaceholder',
-	REGISTRATION_PHONE = 'registration.phone',
-	REGISTRATION_PHONE_PLACEHOLDER = 'registration.phonePlaceholder',
 	REGISTRATION_EMAIL = 'registration.email',
 	REGISTRATION_EMAIL_PLACEHOLDER = 'registration.emailPlaceholder',
 	REGISTRATION_PASSWORD = 'registration.password',
@@ -234,9 +256,12 @@ export enum Auth {
 	REGISTRATION_REPEAT_PASSWORD = 'registration.repeatPassword',
 	REGISTRATION_REPEAT_PASSWORD_PLACEHOLDER = 'registration.repeatPasswordPlaceholder',
 	REGISTRATION_REGISTER_BUTTON = 'registration.registerButton',
-	REGISTRATION_CONSENT_TEXT = 'registration.consentText',
 	REGISTRATION_HAVE_ACCOUNT = 'registration.haveAccount',
 	REGISTRATION_LOGIN = 'registration.login',
+	REGISTRATION_CONSENT_TEXT = 'registration.consentText',
+	REGISTRATION_PRIVACY_POLICY_TEXT = 'registration.privacyPolicy',
+	REGISTRATION_OFFER_AGREEMENT_TEXT = 'registration.offerAgreement',
+	REGISTRATION_AD_CONSENT_TEXT = 'registration.adConsent',
 	BUTTONS_LOGIN = 'buttons.login',
 	BUTTONS_REGISTER = 'buttons.register',
 	BUTTONS_LOGOUT = 'buttons.logout',
@@ -357,6 +382,8 @@ export enum Questions {
 	STATUS_LEARNED = 'status.learned',
 	STATUS_ALL = 'status.all',
 	STATUS_SELECT = 'status.select',
+	STATUS_PUBLIC = 'status.public',
+	STATUS_DRAFT = 'status.draft',
 
 	SKILLS_TITLE = 'skills.title',
 	SKILLS_ADD = 'skills.addSkills',
@@ -437,10 +464,15 @@ export enum Validation {
 export enum Skills {
 	TITLE = 'skill.title',
 	DESCRIPTION = 'skill.description',
+	DESCRIPTION_SPECIALIZATION = 'skill.description.specialization',
+	DETAILED_DESCRIPTION_SKILL = 'skill.detailed.description.skill',
+	DETAILED_DESCRIPTION_TEXTAREA = 'skill.detailed.description.textarea',
 	NOT_ITEMS = 'skill.not.items',
 	EDIT_PAGE_TITLE = 'skill.edit.page.title',
 	CREATE_PAGE_TITLE = 'skill.create.page.title',
 	IMAGE_SRC = 'skill.image.src',
+	SKILLS_TITLE = 'skill.name',
+	TITLE_SKILL = 'skill.title.skill',
 }
 
 export enum A11y {
@@ -523,9 +555,30 @@ export enum Landing {
 	PROGRESS_BLOCK_DIAGRAM_LABEL = 'progressBlock.diagramLabel',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
+	FOOTER_DOCS = 'footer.docs',
 }
+
+export enum Subscription {
+	SUBSCRIBE_ACTION = 'subscribeAction',
+}
+
+export enum SubscriptionCard {
+	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+}
+
 export enum ActionsButton {
 	MORE = 'buttons.more',
 	LEARN = 'buttons.learn',
 	REPEAT = 'buttons.repeat',
+}
+
+export enum Docs {
+	TITLE = 'docs.title',
+	DOC1 = 'docs.doc1',
+	DOC2 = 'docs.doc2',
+	DOC3 = 'docs.doc3',
+	DOC4 = 'docs.doc4',
+	DOC5 = 'docs.doc5',
+	DOC6 = 'docs.doc6',
 }

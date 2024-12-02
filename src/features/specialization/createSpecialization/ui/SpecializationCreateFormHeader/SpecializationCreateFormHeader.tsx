@@ -1,33 +1,21 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { Specialization, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import { SpecializationFormValues } from '@/entities/specialization';
-
 import { useCreateSpecializationMutation } from '../../api/createSpecializationApi';
-import { SpecializationCreateSchema } from '../../model/types/specializationCreateTypes';
+import { CreateSpecializationFormValues } from '../../model/types/specializationCreateTypes';
 
 export const SpecializationCreateFormHeader = () => {
 	const [createSpecializationMutation, { isLoading }] = useCreateSpecializationMutation();
-	const { handleSubmit } = useFormContext<SpecializationCreateSchema>();
-	const navigate = useNavigate();
+	const { handleSubmit } = useFormContext<CreateSpecializationFormValues>();
 	const { t } = useTranslation(['specialization', 'translation']);
 
-	const onCreateSpecialization = async (data: SpecializationFormValues) => {
-		await createSpecializationMutation(data)
-			.unwrap()
-			.then(() => {
-				navigate(ROUTES.admin.specializations.page);
-			})
-			.catch((e) => {
-				console.error(e);
-			});
+	const onCreateSpecialization = async (data: CreateSpecializationFormValues) => {
+		await createSpecializationMutation(data);
 	};
 
 	return (

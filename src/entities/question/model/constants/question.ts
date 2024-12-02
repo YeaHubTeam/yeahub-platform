@@ -1,8 +1,5 @@
-export const STATUSES = [
-	{ label: 'draft', value: 'draft' },
-	{ label: 'public', value: 'public' },
-];
-
 export const questionApiUrls = {
-	questions: 'questions',
+	getQuestionsList: 'questions',
+	getQuestionById: 'questions/:questionId',
+	getLearnedQuestions: 'interview-preparation/learn/:profileId',
 };

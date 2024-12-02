@@ -1,4 +1,3 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import { useMemo } from 'react';
 
 import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
@@ -11,13 +10,13 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile, getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 import {
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
-	useGetProfileStatsQuery,
+	useGetProfileQuizStatsQuery,
 } from '@/entities/quiz';
 
 import { PassedQuestionChart } from '@/widgets/Charts';
@@ -32,24 +31,18 @@ import { InterviewPageSkeleton } from './InterviewPage.skeleton';
 const InterviewPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interview);
 
-	const { data: profile, isLoading: isProfileLoading } = useProfileQuery();
-	const profileId = profile?.profiles[0]?.id;
+	const profileId = useAppSelector(getProfileId);
+	const specializationId = useAppSelector(getSpecializationId);
+	const profile = useAppSelector(getFullProfile);
 
-	const { data: profileStats, isLoading: isProfileStatsLoading } = useGetProfileStatsQuery(
-		profile?.profiles[0].id ?? '',
-	);
+	const { data: profileStats, isLoading: isProfileStatsLoading } =
+		useGetProfileQuizStatsQuery(profileId);
 
-	const { isLoading: isHistoryLoading } = useGetHistoryQuizQuery(
-		profileId
-			? {
-					profileID: profileId,
-					params: { limit: 3 },
-					uniqueKey: 'interviewPreviewHistory',
-				}
-			: skipToken,
-	);
-
-	const specializationId = profile?.profiles[0].specializationId;
+	const { isLoading: isHistoryLoading } = useGetHistoryQuizQuery({
+		profileId,
+		limit: 3,
+		uniqueKey: 'interviewPreviewHistory',
+	});
 
 	const params = {
 		random: true,
@@ -60,8 +53,9 @@ const InterviewPage = () => {
 	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery(params);
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId: profile?.profiles[0].id,
-		params: { limit: 1, page: 1 },
+		profileId,
+		limit: 1,
+		page: 1,
 	});
 
 	const questionStats = profileStats
@@ -112,27 +106,23 @@ const InterviewPage = () => {
 		};
 	}, [activeQuizQuestions]);
 
-	if (
-		isProfileLoading ||
-		isProfileStatsLoading ||
-		isActiveQuizLoading ||
-		isHistoryLoading ||
-		isQuestionsListLoading
-	) {
+	if (isProfileStatsLoading || isActiveQuizLoading || isHistoryLoading || isQuestionsListLoading) {
 		return <InterviewPageSkeleton />;
 	}
 
-	const interviewPreparationActionTitleKey = !profile?.isEmailVerified
-		? Interview.VERIFY_EMAIL_LINK
-		: lastActiveQuizInfo
-			? Interview.PREPARATION_ACTIVELINKTEXT
-			: Interview.PREPARATION_NOACTIVELINKTEXT;
+	const interviewPreparationActionTitleKey =
+		!profile?.isEmailVerified && !isSpecializationEmpty
+			? Interview.VERIFY_EMAIL_LINK
+			: lastActiveQuizInfo
+				? Interview.PREPARATION_ACTIVELINKTEXT
+				: Interview.PREPARATION_NOACTIVELINKTEXT;
 
-	const interviewPreparationActionRoute = !profile?.isEmailVerified
-		? EMAIL_VERIFY_SETTINGS_TAB
-		: lastActiveQuizInfo
-			? ROUTES.interview.new.page
-			: ROUTES.interview.quiz.page;
+	const interviewPreparationActionRoute =
+		!profile?.isEmailVerified && !isSpecializationEmpty
+			? EMAIL_VERIFY_SETTINGS_TAB
+			: lastActiveQuizInfo
+				? ROUTES.interview.new.page
+				: ROUTES.interview.quiz.page;
 
 	const statsActionTitleKey = !profile?.isEmailVerified
 		? Interview.VERIFY_EMAIL_LINK

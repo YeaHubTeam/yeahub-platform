@@ -7,6 +7,7 @@ import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Table } from '@/shared/ui/Table';
@@ -19,8 +20,8 @@ import styles from './SkillsTable.module.css';
 
 interface SkillsTableProps {
 	skills?: Skill[];
-	selectedSkills?: number[];
-	onSelectSkills?: (ids: number[]) => void;
+	selectedSkills?: SelectedAdminEntities;
+	onSelectSkills?: (ids: SelectedAdminEntities) => void;
 }
 
 export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTableProps) => {

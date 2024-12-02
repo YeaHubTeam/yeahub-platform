@@ -2,6 +2,7 @@ import { useLocation, useMatches } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import { BreadcrumbItem } from '../../BreadcrumbItem';
 
@@ -11,6 +12,7 @@ export const Breadcrumbs = () => {
 	const matches = useMatches();
 	const { pathname } = useLocation();
 	const { t } = useI18nHelpers();
+	const { isMobile } = useScreenSize();
 
 	const crumbs = matches
 		.filter((match) => Boolean(match.handle as { crumb: string }))
@@ -25,7 +27,7 @@ export const Breadcrumbs = () => {
 				<ul className={styles.list}>
 					{crumbs.map((crumbItem, index, arr) => (
 						<li className={styles.item} key={index}>
-							{index !== 0 && (
+							{(index !== 0 || isMobile) && (
 								<Icon
 									className={styles.icon}
 									icon="caretRight"

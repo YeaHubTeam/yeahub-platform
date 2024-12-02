@@ -30,7 +30,9 @@
     "unlearned": "Unlearned",
     "learned": "Learned",
     "all": "All",
-    "select": "Select status"
+    "select": "Select status",
+    "public": "Public",
+    "draft": "Draft"
   },
   "skills": {
     "title": "Skills",

@@ -65,7 +65,7 @@ export const ChooseQuestionsCategories = ({
 				data={prepareData}
 				title={t('create.questions_categories')}
 				onClick={handleChooseSkill}
-				getDefaultIcon={skillIcon}
+				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
 			<Button className={styles.button} variant="link" onClick={toggleShowAll}>
 				{!showAll ? 'Показать все' : 'Скрыть'}

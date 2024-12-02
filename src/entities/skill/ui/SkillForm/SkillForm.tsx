@@ -1,33 +1,67 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { Input, Text, TextArea } from 'yeahub-ui-kit';
 
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
-
-import { SkillFormValues } from '../../model/types/skill';
+import { FormControl } from '@/shared/ui/FormControl';
 
 import styles from './SkillForm.module.css';
 
 export const SkillForm = () => {
 	const { t } = useTranslation('skill');
 	const {
-		register,
 		formState: { errors },
-	} = useFormContext<SkillFormValues>();
+	} = useFormContext();
 	// eslint-disable-next-line no-console
 	console.log(errors);
+
+	const { control } = useFormContext();
+
 	return (
-		<Flex direction="column" gap="8">
-			<Flex align="center" gap="8">
-				<label htmlFor="title">{t(Skills.TITLE)}</label>
-				<input className={styles.input} {...register('title')} />
+		<Flex direction="column" gap="40">
+			<Flex direction="column">
+				<Text
+					title={t(Skills.SKILLS_TITLE)}
+					className={`${styles['title-base']} ${styles.title1}`}
+				/>
+				<Flex direction="row" className={`${styles['skills-input']}`} gap="120">
+					<Flex direction="column" gap="8">
+						<Text
+							title={t(Skills.TITLE_SKILL)}
+							className={`${styles['title-base']} ${styles.title2}`}
+						/>
+						<Text
+							title={t(Skills.CREATE_PAGE_TITLE)}
+							className={`${styles['title-base']} ${styles.title3}`}
+						/>
+					</Flex>
+					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
+						{(register, hasError) => <Input {...register} hasError={hasError} />}
+					</FormControl>
+				</Flex>
 			</Flex>
-			{errors.title ? <div>{errors.title.message}</div> : null}
-			<Flex align="center" gap="8">
-				<label htmlFor="description">{t(Skills.DESCRIPTION)}</label>
-				<input className={styles.input} {...register('description')} />
+			<Flex direction="column" style={{ marginTop: '60' }} gap="8">
+				<Text
+					title={t(Skills.DESCRIPTION_SPECIALIZATION)}
+					className={`${styles['title-base']} ${styles.title2}`}
+				/>
+				<Text
+					title={t(Skills.DETAILED_DESCRIPTION_SKILL)}
+					className={`${styles['title-base']} ${styles.title3}`}
+				/>
+				<FormControl name="description" control={control}>
+					{(field, hasError) => (
+						<TextArea
+							id="description"
+							className={styles.description}
+							placeholder={t(Skills.DETAILED_DESCRIPTION_TEXTAREA)}
+							state={hasError ? 'error' : 'default'}
+							{...field}
+						/>
+					)}
+				</FormControl>
 			</Flex>
-			{errors.description ? <div>{errors.description.message}</div> : null}
 		</Flex>
 	);
 };

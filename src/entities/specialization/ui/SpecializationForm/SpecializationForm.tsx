@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 
-import { SpecializationFormValues } from '../../model/types/specialization';
+import { CreateOrEditSpecializationFormValues } from '../../model/types/specialization';
 
 import styles from './SpecializationForm.module.css';
 
@@ -13,7 +13,7 @@ export const SpecializationForm = () => {
 	const {
 		register,
 		formState: { errors },
-	} = useFormContext<SpecializationFormValues>();
+	} = useFormContext<CreateOrEditSpecializationFormValues>();
 
 	return (
 		<Flex direction="column" gap="8">

@@ -1,40 +1,44 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { Response } from '@/shared/types/types';
+import { route } from '@/shared/helpers/route';
 
 import { questionApiUrls } from '../model/constants/question';
 import {
-	Question,
-	QuestionsListParams,
-	QuestionsLearnedParams,
-	QuestionByIdParams,
+	GetLearnedQuestionsParamsRequest,
+	GetLearnedQuestionsResponse,
+	GetQuestionByIdParamsRequest,
+	GetQuestionByIdResponse,
+	GetQuestionsListParamsRequest,
+	GetQuestionsListResponse,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getQuestionsList: build.query<Response<Question[]>, QuestionsListParams>({
+		getQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
 			query: (params) => ({
-				url: questionApiUrls.questions,
-				params: { ...params, limit: 10 },
+				url: questionApiUrls.getQuestionsList,
+				params,
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),
-		getQuestionById: build.query<Question, QuestionByIdParams>({
+		getQuestionById: build.query<GetQuestionByIdResponse, GetQuestionByIdParamsRequest>({
 			query: ({ questionId, profileId }) => ({
-				url: `${questionApiUrls.questions}/${questionId}`,
+				url: route(questionApiUrls.getQuestionById, questionId || ''),
 				params: {
 					profileId,
 				},
 			}),
 			providesTags: [ApiTags.QUESTION_DETAIL],
 		}),
-		getLearnedQuestions: build.query<Response<Question[]>, QuestionsLearnedParams>({
-			query: (params) => ({
-				url: `interview-preparation/learn/${params.profileId}`,
-				params,
-			}),
-			providesTags: [ApiTags.QUESTIONS_LEARNED],
-		}),
+		getLearnedQuestions: build.query<GetLearnedQuestionsResponse, GetLearnedQuestionsParamsRequest>(
+			{
+				query: (params) => ({
+					url: route(questionApiUrls.getLearnedQuestions, params.profileId),
+					params,
+				}),
+				providesTags: [ApiTags.QUESTIONS_LEARNED],
+			},
+		),
 	}),
 });
 

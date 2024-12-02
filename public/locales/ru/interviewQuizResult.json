@@ -1,6 +1,6 @@
 {
   "resultInterview": {
-    "resultTitle": "Результат собеседования {{title}}",
+    "resultTitle": "Результат собеседования № {{title}}",
     "questionTitle": "Статистика пройденных вопросов по всем категориям",
     "allPassedQuestionTitle": "Список пройденных вопросов собеседования"
   },

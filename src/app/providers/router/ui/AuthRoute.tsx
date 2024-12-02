@@ -9,6 +9,7 @@ interface AuthRouteProps {
 	children: React.ReactNode;
 }
 
+// TODO добавить replace в Navigate
 export const AuthRoute = ({ children }: AuthRouteProps) => {
 	const isAuth = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const replaceUrl = ROUTES.auth.login.page;

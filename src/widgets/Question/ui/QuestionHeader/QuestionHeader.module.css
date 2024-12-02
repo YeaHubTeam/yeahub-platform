@@ -9,6 +9,7 @@
 .image {
   width: 170px;
   height: 114px;
+  border-radius: 12px;
 }
 
 .title-wrapper {
@@ -33,12 +34,11 @@
   justify-content: center;
   align-items: center;
   margin-left: auto;
-  width: 100%;
-  max-width: 79px;
+  padding: 2px 8px;
+  width: auto;
   max-height: 20px;
   border-radius: 30px;
   background-color: var(--color-green-007);
-  text-transform: capitalize;
 }
 
 .label {

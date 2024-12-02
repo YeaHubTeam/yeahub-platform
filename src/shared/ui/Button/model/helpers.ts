@@ -11,6 +11,7 @@ const tagNameByVariants: Record<VariantType, 'button' | 'a'> = {
 	'destructive-tertiary': 'button',
 	link: 'a',
 	'link-gray': 'a',
+	'link-purple': 'a',
 };
 
 export const getTagName = (variant: keyof typeof tagNameByVariants): 'button' | 'a' =>

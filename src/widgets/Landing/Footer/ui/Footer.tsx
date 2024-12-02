@@ -7,6 +7,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { Flex } from '@/shared/ui/Flex';
 
 import styles from './Footer.module.css';
 
@@ -17,7 +18,7 @@ export const Footer = () => {
 		<footer className={styles.footer}>
 			<div className={styles.container}>
 				<div className={styles['container-logo']}>
-					<AppLogo isOpen={false} fill="white" navigateTo="#" hideOnMobile={false} />
+					<AppLogo isOpen={false} fill="white" navigateTo="#" />
 				</div>
 
 				<p className={styles.subtitle}>{t(Landing.FOOTER_SLOGAN)} </p>
@@ -31,9 +32,12 @@ export const Footer = () => {
 				</div>
 				<p className={styles.about}>{t(Landing.FOOTER_ABOUT)}</p>
 				<hr />
-				<div className={styles['container-copyright']}>
+				<Flex justify="between">
 					<p className={styles['company-name']}>© 2024 YeaHub</p>
 					<div className={styles['copyright-icons']}>
+						<NavLink className={styles['docs']} to="/docs">
+							<p>{t(Landing.FOOTER_DOCS)}</p>
+						</NavLink>
 						<NavLink to="https://www.figma.com/community/file/1438482355619792777/yeahub-public">
 							<FigmaLogo className={styles.figma} />
 						</NavLink>
@@ -41,7 +45,7 @@ export const Footer = () => {
 							<GithubLogo className={styles['github-icon']} />
 						</NavLink>
 					</div>
-				</div>
+				</Flex>
 			</div>
 		</footer>
 	);

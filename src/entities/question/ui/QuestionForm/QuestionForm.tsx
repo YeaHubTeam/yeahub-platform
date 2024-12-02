@@ -13,7 +13,7 @@ import { SkillSelect } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
-import { STATUSES } from '../../model/constants/question';
+import { QuestionStatus } from '../../model/types/question';
 
 import styles from './QuestionForm.module.css';
 
@@ -21,6 +21,17 @@ export const QuestionForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const { control } = useFormContext();
+
+	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
+		{
+			label: t(Questions.STATUS_PUBLIC),
+			value: 'public',
+		},
+		{
+			label: t(Questions.STATUS_DRAFT),
+			value: 'draft',
+		},
+	];
 
 	return (
 		<Flex direction="column" gap="40">
@@ -74,7 +85,7 @@ export const QuestionForm = () => {
 								onChange={onChange}
 								value={value}
 								placeholder={t(Questions.STATUS_SELECT)}
-								options={STATUSES}
+								options={questionStatusesItems}
 							/>
 						</div>
 					)}

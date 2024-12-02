@@ -7,7 +7,7 @@ import { SpecializationEditForm } from '@/features/specialization/editSpecializa
 const SpecializationEditPage = () => {
 	const { specializationId } = useParams<{ specializationId: string }>();
 
-	const { data: specialization } = useGetSpecializationByIdQuery({ specializationId });
+	const { data: specialization } = useGetSpecializationByIdQuery(String(specializationId));
 
 	if (!specialization) {
 		return null;

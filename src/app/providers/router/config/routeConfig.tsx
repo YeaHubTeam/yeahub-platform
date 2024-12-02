@@ -8,6 +8,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SettingsIcon from '@/shared/assets/icons/Settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import i18n from '@/shared/config/i18n/i18n';
@@ -43,6 +44,7 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
@@ -57,6 +59,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+// import { Conditional404Route } from '../ui/Conditional404Route';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -77,6 +80,12 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.profile.route,
 		title: 'tabs.profile',
 		icon: ProfileIcon,
+	},
+	{
+		type: 'single',
+		route: ROUTES.settings.page,
+		title: 'tabs.settings',
+		icon: SettingsIcon,
 	},
 	{
 		type: 'category',
@@ -137,6 +146,14 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <LandingMainPage />,
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
+					},
+					{
+						path: ROUTES.docs.page,
+						element: <DocsPage />,
 					},
 				],
 			},
@@ -205,6 +222,10 @@ export const router = createBrowserRouter([
 								element: <SkillDetailPage />,
 							},
 						],
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
 					},
 				],
 			},
