@@ -1,12 +1,14 @@
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
-import { useProfileQuery } from '@/entities/auth';
-import { useGetProfileStatsQuery } from '@/entities/quiz';
+import { getProfileId } from '@/entities/profile';
+import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import {
 	PassedInterviewStat,
@@ -16,16 +18,22 @@ import {
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
+import { InterviewStatisticsPageSkeleton } from '@/pages/interview/InterviewStatisticsPage/ui/InterviewStatisticsPage.skeleton';
+
 import { transformSkillsArray } from '../model/helpers/transformSkillsArray';
 
 import styles from './InterviewStatisticsPage.module.css';
 
 const InterviewStatisticsPage = () => {
 	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
-	const { data: profileId } = useProfileQuery();
-	const { data: profileStats, isLoading } = useGetProfileStatsQuery(
-		profileId?.profiles[0].id ?? '',
-	);
+	const profileId = useAppSelector(getProfileId);
+	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId ?? '');
+
+	const { isMobile } = useScreenSize();
+
+	if (isLoading) {
+		return <InterviewStatisticsPageSkeleton />;
+	}
 
 	const questionStats = [
 		{
@@ -54,24 +62,30 @@ const InterviewStatisticsPage = () => {
 	const attemptStats = [
 		{
 			value: profileStats?.quizzesStat?.maxQuizResult ?? 0,
-			name: t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT),
+			name: isMobile
+				? t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT_MOBILE)
+				: t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT),
 			itemStyle: { color: '#400799' },
 		},
 		{
 			value: profileStats?.quizzesStat?.minQuizResult ?? 0,
-			name: t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT),
+			name: isMobile
+				? t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT_MOBILE)
+				: t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT),
 			itemStyle: { color: '#E1CEFF' },
 		},
 		{
 			value: profileStats?.quizzesStat?.avgQuizResult ?? 0,
-			name: t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT),
+			name: isMobile
+				? t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT_MOBILE)
+				: t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT),
 			itemStyle: { color: '#6A0BFF' },
 		},
 	];
 
 	return (
 		<div className={styles.container}>
-			<Card>
+			<Card className={styles['interview-statistics']}>
 				<div className={styles.attempt}>
 					<InterviewQuestionHeader title={t('attemptStats.title')} centered />
 					<PassedInterviewStat
@@ -81,25 +95,23 @@ const InterviewStatisticsPage = () => {
 					/>
 				</div>
 			</Card>
-			<div className={styles.progress}>
-				<Card className={styles.block}>
-					<div className={styles.questions}>
-						<InterviewQuestionHeader title={t('questionStats.title')} centered />
-						{profileStats && (
-							<PassedQuestionChart
-								total={profileStats.questionsStat.uniqueQuestionsCount}
-								learned={profileStats.questionsStat.learnedQuestionsCount}
-								isLoading={isLoading}
-							/>
-						)}
-					</div>
-				</Card>
-				<PassedQuestionStatInfo stats={questionStats} />
-			</div>
-			<Card>
+			<Card className={styles.block}>
+				<div className={styles.questions}>
+					<InterviewQuestionHeader title={t('questionStats.title')} centered />
+					{profileStats && (
+						<PassedQuestionChart
+							total={profileStats.questionsStat.uniqueQuestionsCount}
+							learned={profileStats.questionsStat.learnedQuestionsCount}
+							isLoading={isLoading}
+						/>
+					)}
+					<PassedQuestionStatInfo stats={questionStats} />
+				</div>
+			</Card>
+			<Card className={styles['history-list']}>
 				<InterviewHistoryList className={styles.history} />
 			</Card>
-			<Card className={styles.category} expandable>
+			<Card className={styles.category}>
 				<div className={styles['category-progress']}>
 					<InterviewQuestionHeader title={t('progress.title')} />
 					<ProgressByCategoriesList

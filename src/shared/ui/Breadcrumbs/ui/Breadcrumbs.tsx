@@ -2,11 +2,11 @@ import { useLocation, useMatches } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import { BreadcrumbItem } from '../../BreadcrumbItem';
 
 import styles from './Breadcrumbs.module.css';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 export const Breadcrumbs = () => {
 	const matches = useMatches();

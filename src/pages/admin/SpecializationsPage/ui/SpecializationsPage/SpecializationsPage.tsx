@@ -47,7 +47,7 @@ const SpecializationsPage = () => {
 				to="create"
 				showRemoveButton={selectedSpecializations.length > 0}
 				onSearch={onChangeSearch}
-				renderAction={() => (
+				renderRemoveButton={() => (
 					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
 				)}
 			/>

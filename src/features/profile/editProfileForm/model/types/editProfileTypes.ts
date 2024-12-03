@@ -47,10 +47,6 @@ export interface EditUserValue {
 	avatarImage?: string | null;
 }
 
-export interface ExtraArgument {
-	navigate: (path: string) => void;
-}
-
 export type EditProfileRequestData = Omit<ProfileUpdate, 'profileSkills'> & {
 	profileSkills: number[];
 };

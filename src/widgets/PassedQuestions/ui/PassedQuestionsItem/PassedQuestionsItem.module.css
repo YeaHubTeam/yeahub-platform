@@ -1,12 +1,14 @@
 .item {
   display: flex;
   gap: 20px;
+  padding: 10px 13px 12px 12px;
+  border-bottom: 0.5px solid var(--border-input);
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .img {
@@ -16,8 +18,14 @@
 }
 
 .title {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-l);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
 }
 
 .action-btn {
@@ -26,18 +34,21 @@
   color: var(--text-color-light);
 }
 
-@media (width<= 480px) {
-  .item {
-    display: flex;
-    gap: 16px;
-  }
+.link {
+  color: inherit;
+}
 
-  .info {
-    gap: 8px;
+@media (width <= 768px) {
+  .item {
+    gap: 16px;
+    padding: 0 0 8px;
   }
 
   .title {
-    line-height: 19px;
     font-size: var(--font-size-p-s);
+  }
+
+  .img {
+    border-radius: 8px;
   }
 }

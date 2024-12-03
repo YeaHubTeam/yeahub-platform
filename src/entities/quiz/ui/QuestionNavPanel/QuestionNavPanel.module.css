@@ -21,3 +21,9 @@
     width: 100%;
   }
 }
+
+@media (width <= 480px) {
+  .panel {
+    display: none;
+  }
+}

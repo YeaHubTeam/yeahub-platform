@@ -13,11 +13,14 @@
   "showAnswer": "Посмотреть ответ",
   "buttons": {
     "start": "Начать",
-    "doNotKnow": "Не знаю",
+    "doNotKnow": "Не знаю",
     "repeat": "Повторить",
     "iKnow": "Знаю",
     "complete": "Завершить",
-    "next": "Далее"
+    "next": "Далее",
+    "hideAll": "Посмотреть все",
+    "hide": "Скрыть",
+    "showAll": "Показать все"
   },
   "hideAnswer": "Скрыть ответ"
 }

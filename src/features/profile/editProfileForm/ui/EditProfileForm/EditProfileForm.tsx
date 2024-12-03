@@ -42,13 +42,15 @@ export const EditProfileForm = () => {
 		defaultValues: userProfile ? mapProfileToForm(userProfile) : {},
 	});
 
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
+
 	const blocker = useBlocker(
 		({ currentLocation, nextLocation }) =>
-			methods.formState.isDirty &&
-			!methods.formState.isSubmitted &&
+			isDirty &&
+			!isSubmitted &&
+			!isSubmitting &&
 			currentLocation.pathname !== nextLocation.pathname,
 	);
-
 	useEffect(() => {
 		if (userProfile) {
 			methods.reset(mapProfileToForm(userProfile));

@@ -38,6 +38,7 @@
   height: 5px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
+  font-size: var(--font-size-p-s);
   transform: translateY(-50%);
   content: ''
 }
@@ -45,6 +46,10 @@
 @media (width <= 768px) {
   .params {
     gap: 12px;
+  }
+	
+  .item:not(:last-child) {
+    border-bottom: none;
   }
 }
 

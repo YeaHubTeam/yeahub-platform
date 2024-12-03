@@ -1,12 +1,13 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { route } from '@/shared/helpers/route';
 
-import { Specialization } from '@/entities/specialization';
+import { deleteSpecializationsApiUrls } from '../model/constants/deleteSpecializationsConstants';
 
 export const deleteSpecializationsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteSpecializationWithoutErrorHandler: build.mutation<Specialization, Specialization['id']>({
+		deleteSpecializationOfMultiply: build.mutation<void, number>({
 			query: (specializationId) => ({
-				url: `/specializations/${specializationId}`,
+				url: route(deleteSpecializationsApiUrls.deleteSpecialization, specializationId),
 				method: 'DELETE',
 			}),
 		}),

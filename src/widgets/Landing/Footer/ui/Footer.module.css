@@ -81,6 +81,15 @@
   height: 30px;
 }
 
+.docs {
+  margin-right: 20px;
+  color: var(--color-black-400);
+  line-height: 18px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+  font-family: var(--font-family);
+}
+
 .figma {
   width: 20px;
   height: 20px;
@@ -181,5 +190,9 @@
 
   .subtitle {
     font-size: var(--font-size-p-s);
+  }
+
+  .docs {
+    margin-right: 14px;
   }
 }

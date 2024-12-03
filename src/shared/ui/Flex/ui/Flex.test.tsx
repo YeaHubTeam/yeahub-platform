@@ -76,6 +76,10 @@ describe('Flex', () => {
 			render({ gap: '12' }, 'gap12');
 		});
 
+		test('14', () => {
+			render({ gap: '14' }, 'gap14');
+		});
+
 		test('16', () => {
 			render({ gap: '16' }, 'gap16');
 		});

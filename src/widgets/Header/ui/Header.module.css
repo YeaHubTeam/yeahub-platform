@@ -17,17 +17,22 @@
   display: none; 
 }
 
-
-@media (width <= 480px) {
-  .header {
-    justify-content: space-between;
-  }
-
+@media (width <= 768px) {
   .burger {
     display: block;
   }
 
+  .header {
+    justify-content: space-between;
+  }
+	
   .logo {
     display: block;
+  }
+}
+
+@media (width <= 480px) {
+  .header {
+    border-bottom: 1px solid transparent;
   }
 }

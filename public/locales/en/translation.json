@@ -47,7 +47,7 @@
     }
   },
   "emptyStub": {
-    "message": "Unfortunately, nothing was found. Try changing your query or use our categories.",
+    "message": "Unfortunately, no results were found for your query {{text}}. Try modifying your search or use our categories.",
     "resetFilter": "Reset filter"
   },
   "fileLoader": {
@@ -165,9 +165,17 @@
         "success": "The progress of studying the issue has been reset",
         "failed": "Failed to reset the progress of studying the issue"
       },
+      "create": {
+        "success": "The question has been successfully created",
+        "failed": "The question could not be created"
+      },
+      "edit": {
+        "success": "The question has been successfully changed",
+        "failed": "The question could not be changed"
+      },
       "delete": {
         "single": {
-          "success": "The question has been successfully deleted.",
+          "success": "The question has been successfully deleted",
           "failed": "Failed to delete question"
         },
         "multiple": {
@@ -177,6 +185,14 @@
       }
     },
     "skills": {
+      "create": {
+        "success": "The skill has been successfully created",
+        "failed": "The skill could not be created"
+      },
+      "edit": {
+        "success": "The skill has been successfully changed",
+        "failed": "The skill could not be changed"
+      },
       "delete": {
         "single": {
           "success": "The skill has been successfully deleted",
@@ -189,13 +205,23 @@
       }
     },
     "specializations": {
-      "single": {
-        "success": "The specialization has been successfully deleted",
-        "failed": "Failed to delete the specialization"
+      "create": {
+        "success": "The skill has been successfully created",
+        "failed": "The skill could not be created"
       },
-      "multiple": {
-        "success": "Successfully deleted specializations:",
-        "failed": "Failed to delete the specialization:"
+      "edit": {
+        "success": "The skill has been successfully changed",
+        "failed": "The skill could not be changed"
+      },
+      "delete": {
+        "single": {
+          "success": "The specialization has been successfully deleted",
+          "failed": "Failed to delete the specialization"
+        },
+        "multiple": {
+          "success": "Successfully deleted specializations:",
+          "failed": "Failed to delete the specialization:"
+        }
       }
     },
     "profile": {

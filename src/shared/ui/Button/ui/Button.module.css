@@ -7,7 +7,7 @@
   padding: 13px 0;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 40px;
+  border-radius: 12px;
   background-color: transparent;
   color: var(--text-color-white);
   font-size: var(--font-size-p-m);
@@ -34,7 +34,6 @@
 }
 
 .button span {
-  margin: 0 0.5rem;
   overflow: hidden;
   background: transparent;
   text-overflow: ellipsis;
@@ -360,6 +359,22 @@
 
   &:active {
     color: var(--link-text-color-secondary-active);
+  }
+}
+
+.a-link-purple {
+  color: var(--link-text-color-purple);
+
+  &:hover {
+    color: var(--link-text-color-purple-hover);
+  }
+
+  &:focus {
+    color: var(--link-text-color-purple-focus);
+  }
+
+  &:active {
+    color: var(--link-text-color-purple-active);
   }
 }
 

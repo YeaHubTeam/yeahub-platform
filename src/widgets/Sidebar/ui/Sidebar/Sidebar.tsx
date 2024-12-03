@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 
 import ChatIcon from '@/shared/assets/icons/chat.svg';
-import LeftChevron from '@/shared/assets/icons/leftChevron.svg';
+import ToogleSidebar from '@/shared/assets/icons/toggleSidebar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { A11y } from '@/shared/config/i18n/i18nTranslations';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -77,7 +77,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 							ns: i18Namespace.a11y,
 						})}
 					>
-						<LeftChevron className={styles.arrow} />
+						<ToogleSidebar className={styles.arrow} />
 					</button>
 				</div>
 				<div className={styles.menu}>

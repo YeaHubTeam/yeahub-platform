@@ -4,7 +4,13 @@ export { profileSlice } from './model/slices/profileSlice';
 
 export { profileReducer, profileActions } from './model/slices/profileSlice';
 
-export { getProfileIsEmailSent } from './model/selectors/profileSelectors';
+export {
+	getProfileIsEmailSent,
+	getFullProfile,
+	getProfileId,
+	getSpecializationId,
+	isEmptySpecialization,
+} from './model/selectors/profileSelectors';
 
 export { EmailVerify } from './ui/EmailVerify/EmailVerify';
 

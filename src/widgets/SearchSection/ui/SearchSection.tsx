@@ -10,22 +10,22 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer/ui/FiltersDrawer';
 
-import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
-
 import styles from './SearchSection.module.css';
 
 interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
-	renderAction: () => React.ReactNode;
+	renderRemoveButton: () => React.ReactNode;
+	renderFilter?: () => React.ReactNode;
 }
 
 export const SearchSection = ({
 	to = '/',
 	onSearch,
 	showRemoveButton,
-	renderAction,
+	renderRemoveButton,
+	renderFilter,
 }: SearchSectionProps) => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
@@ -36,16 +36,14 @@ export const SearchSection = ({
 	return (
 		<Card className={styles.card}>
 			<section className={styles.section}>
-				<FiltersDrawer>
-					<QuestionsFilterSet />
-				</FiltersDrawer>
+				{!!renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 				<Input
 					onChange={handleSearch}
 					className={styles.input}
 					preffix={<Icon icon={'search'} className={styles['search-svg']} />}
 					placeholder={t(Translation.SEARCH)}
 				/>
-				{showRemoveButton && renderAction()}
+				{showRemoveButton && renderRemoveButton()}
 				<Button>
 					<NavLink className={styles.link} to={to}>
 						{t(Translation.CREATE)}

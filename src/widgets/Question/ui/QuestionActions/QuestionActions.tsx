@@ -1,8 +1,9 @@
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
@@ -14,15 +15,15 @@ interface QuestionActionsProps {
 }
 
 export const QuestionActions = ({ profileId, questionId, checksCount }: QuestionActionsProps) => {
-	const { isMobile } = useScreenSize();
-	const { data: profile } = useProfileQuery();
+	const { isMobile, isTablet } = useScreenSize();
+	const profile = useAppSelector(getFullProfile);
 
-	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
+	const buttonVariant = isMobile || isTablet ? 'link-gray' : 'tertiary';
 	const isEmailVerified = profile?.isEmailVerified;
 
 	return (
 		<Card>
-			<Flex justify="center" gap="12" align="center">
+			<Flex justify="center" gap="40" align="center">
 				<LearnQuestionButton
 					profileId={profileId}
 					questionId={questionId}

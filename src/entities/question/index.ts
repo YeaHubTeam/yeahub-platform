@@ -1,4 +1,8 @@
-export type { Question } from './model/types/question';
+export type {
+	Question,
+	QuestionStatus,
+	CreateOrEditQuestionFormValues,
+} from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,

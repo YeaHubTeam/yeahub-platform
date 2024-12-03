@@ -1,12 +1,15 @@
 import { baseApi } from '@/shared/config/api/baseApi';
+import { route } from '@/shared/helpers/route';
 
 import { Question } from '@/entities/question';
 
+import { deleteQuestionsApiUrls } from '../model/constants/deleteQuestionsConstants';
+
 export const deleteQuestionsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteQuestionWithoutErrorHandler: build.mutation<Question, Question['id']>({
+		deleteQuestionOfMultiply: build.mutation<void, Question['id']>({
 			query: (questionId) => ({
-				url: `/questions/${questionId}`,
+				url: route(deleteQuestionsApiUrls.deleteQuestion, questionId),
 				method: 'DELETE',
 			}),
 		}),

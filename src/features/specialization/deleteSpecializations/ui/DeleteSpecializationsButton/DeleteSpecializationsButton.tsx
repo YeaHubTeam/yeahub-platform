@@ -5,7 +5,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 
-import { deleteMultipleSpecializations } from '../../slice/deleteSpecializationsSlice';
+import { deleteMultipleSpecializationsThunk } from '../../model/thunks/deleteMultipleSkillsThunk';
 
 interface DeleteSpecializationsButtonProps {
 	specializationsToRemove: SelectedAdminEntities;
@@ -18,7 +18,7 @@ export const DeleteSpecializationsButton = ({
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
 	const onRemoveSpecializations = async () => {
-		await dispatch(deleteMultipleSpecializations(specializationsToRemove));
+		await dispatch(deleteMultipleSpecializationsThunk(specializationsToRemove));
 	};
 
 	return (

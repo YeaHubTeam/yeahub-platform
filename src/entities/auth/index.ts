@@ -2,7 +2,6 @@ export type {
 	LoginFormValues,
 	SignUpFormValues,
 	FullProfile,
-	ExtraArgument,
 	Profile,
 	ProfileUpdate,
 	User,

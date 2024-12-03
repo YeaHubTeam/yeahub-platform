@@ -1,0 +1,35 @@
+.docs {
+  padding-bottom: 130px;
+}
+
+.docs-items {
+  padding: 52px 103px;
+  border-radius: 24px;
+  background: var(--color-white-900);
+}
+
+@media (width <= 992px){
+  .docs {
+    padding-bottom: 80px;
+  }
+
+  .docs-items {
+    padding: 30px;
+  }
+}
+
+@media (width <= 571px){
+  .docs {
+    padding-bottom: 40px;
+  }
+
+  .docs-items {
+    padding: 16px;
+  }
+}
+
+@media (width <= 469px) {
+  .docs-items {
+    padding: 16px;
+  }
+}
