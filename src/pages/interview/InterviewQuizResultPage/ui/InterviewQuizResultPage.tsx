@@ -17,6 +17,8 @@ import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 import { PassedQuestionsList } from '@/widgets/PassedQuestions';
 
+import { InterviewQuizResultPageSkeleton } from '@/pages/interview/InterviewQuizResultPage';
+
 import { getInterviewStats } from '../model/getInterviewStast';
 
 import styles from './InterviewResultPage.module.css';
@@ -30,6 +32,10 @@ const InterviewQuizResultPage = () => {
 		quizId: quizId ?? '',
 		profileId: profileId ?? '',
 	});
+
+	if (isLoading) {
+		return <InterviewQuizResultPageSkeleton />;
+	}
 
 	const questions = data?.response.answers;
 	const interviewStats = getInterviewStats(questions);
