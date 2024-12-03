@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { WrapperBlockerDialogModal } from '@/shared/ui/WrapperBlockerDialogModal';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { SpecializationForm } from '@/entities/specialization';
 
@@ -23,14 +23,14 @@ export const SpecializationCreateForm = () => {
 
 	return (
 		<FormProvider {...methods}>
-			<WrapperBlockerDialogModal isDirty={isDirty && !isSubmitted && !isSubmitting}>
+			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
 					<Card className={styles.content}>
 						<SpecializationCreateFormHeader />
 						<SpecializationForm />
 					</Card>
 				</Flex>
-			</WrapperBlockerDialogModal>
+			</LeavingPageBlocker>
 		</FormProvider>
 	);
 };

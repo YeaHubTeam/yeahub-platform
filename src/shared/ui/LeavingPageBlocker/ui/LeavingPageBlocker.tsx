@@ -3,14 +3,14 @@ import { useBlocker } from 'react-router-dom';
 
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 
-interface BlockerWrapperProps {
-	isDirty: boolean;
+interface LeavingPageBlockerProps {
+	isBlocked: boolean;
 	children: ReactNode;
 }
 
-export const WrapperBlockerDialogModal: React.FC<BlockerWrapperProps> = ({ isDirty, children }) => {
+export const LeavingPageBlocker: React.FC<LeavingPageBlockerProps> = ({ isBlocked, children }) => {
 	const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-		return isDirty && currentLocation.pathname !== nextLocation.pathname;
+		return isBlocked && currentLocation.pathname !== nextLocation.pathname;
 	});
 
 	return (

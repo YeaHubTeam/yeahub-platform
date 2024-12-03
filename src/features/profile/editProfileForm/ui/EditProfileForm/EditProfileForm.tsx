@@ -9,8 +9,8 @@ import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Tabs } from '@/shared/ui/Tabs';
-import { WrapperBlockerDialogModal } from '@/shared/ui/WrapperBlockerDialogModal';
 
 import { FullProfile, useProfileQuery } from '@/entities/auth';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -65,7 +65,7 @@ export const EditProfileForm = () => {
 				setTabToggle={setCurrentActiveTab}
 			/>
 			<FormProvider {...methods}>
-				<WrapperBlockerDialogModal isDirty={isDirty && !isSubmitted && !isSubmitting}>
+				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>
 						{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
 
@@ -75,7 +75,7 @@ export const EditProfileForm = () => {
 							</Button>
 						</Flex>
 					</form>
-				</WrapperBlockerDialogModal>
+				</LeavingPageBlocker>
 			</FormProvider>
 		</section>
 	);

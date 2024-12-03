@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { WrapperBlockerDialogModal } from '@/shared/ui/WrapperBlockerDialogModal';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { QuestionForm } from '@/entities/question';
 
@@ -28,14 +28,14 @@ export const QuestionCreateForm = () => {
 
 	return (
 		<FormProvider {...methods}>
-			<WrapperBlockerDialogModal isDirty={isDirty && !isSubmitted && !isSubmitting}>
+			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
 					<QuestionCreateFormHeader />
 					<Card className={styles.content}>
 						<QuestionForm />
 					</Card>
 				</Flex>
-			</WrapperBlockerDialogModal>
+			</LeavingPageBlocker>
 		</FormProvider>
 	);
 };
