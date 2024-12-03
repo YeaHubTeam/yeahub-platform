@@ -46,3 +46,9 @@
   height: 0;
   line-height: 0;
 }
+
+@media (width <= 360px) {
+  .file-upload-container {
+    padding: 8px 24px;
+  }
+}
