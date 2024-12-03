@@ -6,7 +6,7 @@ import { Answers } from '@/entities/quiz';
 export const getInterviewStats = (questions: Answers[] = []) => {
 	const totalQuestions = questions.length;
 	const countPercents = (total: number, success: number) => {
-		if (total === 0) return 0;
+		if (total === 0 || success === 0) return 0;
 		return Math.round((success / total) * 100);
 	};
 
