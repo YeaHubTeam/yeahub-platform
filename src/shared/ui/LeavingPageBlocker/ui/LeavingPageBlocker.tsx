@@ -8,7 +8,7 @@ interface LeavingPageBlockerProps {
 	children: ReactNode;
 }
 
-export const LeavingPageBlocker: React.FC<LeavingPageBlockerProps> = ({ isBlocked, children }) => {
+export const LeavingPageBlocker = ({ isBlocked, children }: LeavingPageBlockerProps) => {
 	const blocker = useBlocker(({ currentLocation, nextLocation }) => {
 		return isBlocked && currentLocation.pathname !== nextLocation.pathname;
 	});
