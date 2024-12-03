@@ -18,6 +18,8 @@ import {
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
 import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
+import { InterviewStatisticsPageSkeleton } from '@/pages/interview/InterviewStatisticsPage/ui/InterviewStatisticsPage.skeleton';
+
 import { transformSkillsArray } from '../model/helpers/transformSkillsArray';
 
 import styles from './InterviewStatisticsPage.module.css';
@@ -28,6 +30,10 @@ const InterviewStatisticsPage = () => {
 	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId ?? '');
 
 	const { isMobile } = useScreenSize();
+
+	if (isLoading) {
+		return <InterviewStatisticsPageSkeleton />;
+	}
 
 	const questionStats = [
 		{

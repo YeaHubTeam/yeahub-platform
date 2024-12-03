@@ -18,6 +18,10 @@
   height: auto;
 }
 
+.stats {
+  flex-grow: 1;
+}
+
 .category {
   flex-basis: calc(50% - 10px);
   align-self: flex-start;
