@@ -39,7 +39,7 @@ const InterviewQuizResultPage = () => {
 	const questionStats = [
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_PASSED),
-			value: `${learnedQuestions}/${data?.fullCount}`,
+			value: `${learnedQuestions ?? 0}/${data?.fullCount ?? 0}`,
 		},
 		{
 			title: t(InterviewQuizResult.QUESTIONSTATS_TIMESPENT),
