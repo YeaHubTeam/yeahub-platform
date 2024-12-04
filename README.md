@@ -1,18 +1,59 @@
-# **YeahHub Platform**
+# 🌐 **YeaHub Platform**
 
-**YeaHub** is a platform for IT professionals, bringing together learning, career growth, personal development, and a community of like-minded individuals. Built with **React**, integrated with **Storybook**, and equipped with advanced developer tooling, this platform provides a robust environment for continuous learning and professional growth.
+**YeaHub** is a platform dedicated to the professional growth, learning, and collaboration of IT specialists.  
+Our goal is to create a central hub where individuals can develop their skills, build their careers, share knowledge, and connect with like-minded professionals.
+
+We aim to cover all aspects of an IT specialist's journey:  
+from **learning and development** to **career growth** and **personal branding**.
 
 ---
 
-## 🖥️ **About the Platform**
+## 🖥️ **What's Already Available?**
 
-YeaHub serves as an all-in-one solution for IT professionals, where users can access:
+Currently, YeaHub offers the following service:
 
-- 📚 **Learning Resources**: Tutorials, hands-on coding examples, and courses.
-- 🚀 **Career Growth Tools**: Resources and tools to advance technical skills.
-- 🤝 **Community**: A place for like-minded individuals to collaborate and share knowledge.
+### **Interview Preparation Service**
 
-This platform is structured around **Feature-Sliced Design (FSD)**, ensuring a modular, scalable approach to development. It is designed for ease of use and to follow best practices in modern web development.
+- Helps students and junior specialists identify weak areas in their knowledge, improve skills, and receive expert feedback.
+
+---
+
+## 🔮 **What’s Coming Next?**
+
+We are actively developing the platform and plan to launch over 20 new services, including:
+
+### **Knowledge Assessment and Interview Preparation**
+
+- Advanced tools for simulating real interviews with detailed analysis and feedback.
+
+### **Article Publishing and Reading**
+
+- A platform for writing professional materials and sharing expertise.
+
+### **IT Events Service**
+
+- A convenient tool for discovering, announcing, and participating in conferences, hackathons, and competitions.
+
+### **Roadmaps for IT Careers**
+
+- Detailed skill development plans for roles like frontend, backend, DevOps, data science, and more.
+
+### **Social Network for IT Specialists**
+
+- User profiles showcasing skills, written articles, event participation, and platform activity.
+
+And much more!
+
+---
+
+## 🎯 **Our Mission**
+
+We strive to create a unified entry point into the world of IT,  
+where everyone can find resources for learning, career growth, collaboration, and self-realization.
+
+**YeaHub** is more than just a platform:  
+It’s a community of professionals who grow together, support one another,  
+and thrive in the ever-evolving world of technology.
 
 ---
 
@@ -86,4 +127,15 @@ This project is licensed under the **Non-Commercial Use License**. Please refer 
 
 ---
 
-Feel free to contribute, explore, and learn with **YeaHub**! 🚀
+## 🤝 Join the Project!
+
+YeaHub thrives on community support. If you'd like to contribute, share ideas, suggest improvements, or help with development, we’d love to hear from you!
+
+We welcome collaboration with passionate individuals eager to be part of building a unique platform for IT professionals.
+
+### How to Reach Out?
+
+📧 **Email**: [yeahub@yeahub.ru](mailto:yeahub@yeahub.ru)  
+💬 **Telegram**: [https://t.me/yeahub](https://t.me/yeahub)
+
+Let’s make YeaHub the best place for the IT community together! 🚀
