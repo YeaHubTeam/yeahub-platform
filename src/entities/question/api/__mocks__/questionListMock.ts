@@ -6,7 +6,7 @@ import {
 	GetQuestionsListParamsRequest,
 } from '../../model/types/question';
 
-import { questionMockResponse } from './data';
+import { questionsMock } from './data';
 
 export const questionListMock = http.get<
 	Record<keyof GetQuestionsListParamsRequest, string>,
@@ -22,7 +22,7 @@ export const questionListMock = http.get<
 	const skills = url.searchParams.get('skills');
 	const specialization = url.searchParams.get('specialization');
 
-	const data = questionMockResponse.data.filter((question) => {
+	const data = questionsMock.data.filter((question) => {
 		const hasTitle = title ? question.title.toLowerCase().includes(title.toLowerCase()) : true;
 		const hasComplexity = complexity
 			? complexity.split(',').includes(String(question.complexity))
@@ -57,7 +57,7 @@ export const questionListMock = http.get<
 	return HttpResponse.json({
 		data: paginationDate,
 		page: Number(page),
-		total: questionMockResponse.total,
-		limit: questionMockResponse.limit,
+		total: questionsMock.total,
+		limit: questionsMock.limit,
 	});
 });
