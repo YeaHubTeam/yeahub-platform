@@ -33,7 +33,11 @@ export const SkillCreateForm = () => {
 	return (
 		<FormProvider {...methods}>
 			{blocker.state === 'blocked' ? (
-				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+				<BlockerDialog
+					onCancel={blocker.reset}
+					onOk={blocker.proceed}
+					message={'blockModal.confirmDescription'}
+				/>
 			) : null}
 			<Flex componentType="main" direction="column" gap="24">
 				<SkillCreateFormHeader />

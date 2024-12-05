@@ -50,6 +50,7 @@ export enum Translation {
 
 	BLOCKMODAL_CONFIRM_TITLE = 'blockModal.confirmTitle',
 	BLOCKMODAL_CONFIRM_DESCRIPTION = 'blockModal.confirmDescription',
+	BLOCKMODAL_CONFIRM_DELETE = 'blockModal.confirmDelete',
 	BLOCKMODAL_ACTION_OK = 'blockModal.action.ok',
 	BLOCKMODAL_ACTION_CANCEL = 'blockModal.action.cancel',
 

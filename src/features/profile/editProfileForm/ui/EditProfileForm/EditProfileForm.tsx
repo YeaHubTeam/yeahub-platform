@@ -75,7 +75,11 @@ export const EditProfileForm = () => {
 				<form onSubmit={methods.handleSubmit(onSubmit)}>
 					{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
 					{blocker.state === 'blocked' ? (
-						<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+						<BlockerDialog
+							onCancel={blocker.reset}
+							onOk={blocker.proceed}
+							message={'blockModal.confirmDescription'}
+						/>
 					) : null}
 					<Flex direction="column" align="end" className={styles['btn-container']}>
 						<Button type="submit" disabled={isUpdateProfileLoading}>
