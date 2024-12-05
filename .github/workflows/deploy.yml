@@ -22,7 +22,6 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY_TEST }}
           script: |
             docker-compose --env-file .env.test up -d --build ${{ env.SERVICE_NAME_TEST }}
-            docker image prune -f
 
       - name: Deploy to VPS for production
         if: github.ref == 'refs/heads/main'
@@ -33,4 +32,3 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY_PRODUCTION }}
           script: |
             docker-compose --env-file .env.production up -d --build ${{ env.SERVICE_NAME_PRODUCTION }}
-            docker image prune -f
