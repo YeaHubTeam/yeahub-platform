@@ -13,11 +13,11 @@ export const authProfileQueryMockResponse: FullProfile = {
 	avatarUrl: 'https://cdn.fastcup.net/logos/teams/20989_7n1la213o.png',
 	createdAt: '2024-05-19T13:38:35.481Z',
 	updatedAt: '2024-09-09T04:01:39.385Z',
-	userRoles: [],
+	userRoles: [{ id: 4, name: 'admin', permissions: [] }],
 	profiles: [
 		{
 			id: '03499949-5ba6-44fd-8600-3edd5cf88f68',
-			specializationId: 1,
+			specializationId: 11,
 			profileType: 1,
 			profileSkills: [],
 			description: '',
@@ -27,5 +27,5 @@ export const authProfileQueryMockResponse: FullProfile = {
 			socialNetwork: [],
 		},
 	],
-	isEmailVerified: false,
+	isEmailVerified: true,
 };
