@@ -1,7 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import classnames from 'classnames';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 
@@ -15,6 +17,8 @@ interface AdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
+	authorFullName?: string;
+	className?: string;
 }
 
 export const AdditionalInfo = ({
@@ -22,11 +26,14 @@ export const AdditionalInfo = ({
 	complexity,
 	questionSkills,
 	keywords,
+	authorFullName,
+	className,
 }: AdditionalInfoProps) => {
 	const navigate = useNavigate();
+	const { isMobile, isTablet } = useScreenSize();
 
 	return (
-		<Card className={styles['normal-hight']} withOutsideShadow>
+		<Card className={classnames(styles['normal-hight'], className)} withOutsideShadow>
 			<div className={styles.wrapper}>
 				<h4 className={styles.title}>Уровень:</h4>
 				<ul className={styles['param-wrapper']}>
@@ -84,6 +91,13 @@ export const AdditionalInfo = ({
 					})}
 				</div>
 			</div>
+			{(isMobile || isTablet) && (
+				<div>
+					<p className={styles.author}>
+						Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
+					</p>
+				</div>
+			)}
 		</Card>
 	);
 };

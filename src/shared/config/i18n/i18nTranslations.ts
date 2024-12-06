@@ -358,9 +358,12 @@ export enum InterviewStatistics {
 	QUESTIONSTATS_LEARNED = 'questionStats.learnedQuestions',
 	///asdasdasdas
 	ATTEMPTSTATS_TITLE = 'attemptStats.title',
-	ATTEMPTSTATS_BESTRESULT = 'attemptStats.bestResult',
-	ATTEMPTSTATS_WORSTRESULT = 'attemptStats.worstResult',
-	ATTEMPTSTATS_AVGRESULT = 'attemptStats.avgResult',
+	ATTEMPTSTATS_BESTRESULT = 'attemptStats.bestResult.default',
+	ATTEMPTSTATS_WORSTRESULT = 'attemptStats.worstResult.default',
+	ATTEMPTSTATS_AVGRESULT = 'attemptStats.avgResult.default',
+	ATTEMPTSTATS_BESTRESULT_MOBILE = 'attemptStats.bestResult.mobile',
+	ATTEMPTSTATS_WORSTRESULT_MOBILE = 'attemptStats.worstResult.mobile',
+	ATTEMPTSTATS_AVGRESULT_MOBILE = 'attemptStats.avgResult.mobile',
 }
 
 export enum Questions {

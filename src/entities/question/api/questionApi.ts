@@ -17,7 +17,7 @@ const questionApi = baseApi.injectEndpoints({
 		getQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
 			query: (params) => ({
 				url: questionApiUrls.getQuestionsList,
-				params,
+				params: { page: 1, limit: 10, ...params },
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),

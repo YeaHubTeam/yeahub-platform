@@ -53,6 +53,7 @@ export const QuestionsFilterPanel = ({
 				skillsLimit={skillsLimit}
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
+				shouldShowScroll
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

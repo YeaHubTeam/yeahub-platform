@@ -7,7 +7,9 @@
 
 .btn {
   flex-shrink: 0 ;
+  padding: 12px 10px;
   width: auto ;
+  min-width: auto;
   border-radius: 12px;
   background-color: var(--color-white-900);
   color: var(--text-color-light);
@@ -35,4 +37,10 @@
   border: none ;
   background-color: var(--background-light-hover);
   color: var(--text-color-link-active);
+}
+
+@media (width <= 768px) {
+  .btn {
+    padding: 14px;
+  }
 }

@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   padding: 24px;
   list-style: none;
 }
@@ -17,6 +17,10 @@
 .card-history {
   align-self: start;
   width: calc(50% - 10px);
+}
+
+.card-history .link-bottom {
+  left: 24px;
 }
 
 .history>:nth-child(1) {
@@ -37,11 +41,21 @@
   .card-history {
     flex-grow: 1;
   }
+
+  .list {
+    padding: 16px;
+  }
+}
+
+@media (width <= 768px) {
+  .list {
+    padding: 14px 14px 42px;
+    padding-bottom: 42px;
+  }
 }
 
 @media (width <= 480px) {
-  .list {
-    padding: 14px;
+  .card-history {
+    gap: 16px;
   }
-	
 }

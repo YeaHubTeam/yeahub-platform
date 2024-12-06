@@ -11,9 +11,18 @@
   },
   "attemptStats": {
     "title": "Статистика пройденных собеседований",
-    "bestResult": "Лучший результат",
-    "worstResult": "Худший результат",
-    "avgResult": "Средний результат"
+    "bestResult": {
+      "default": "Лучший результат",
+      "mobile": "Лучший"
+    },
+    "worstResult": {
+      "default": "Худший результат",
+      "mobile": "Худший"
+    },
+    "avgResult": {
+      "default": "Средний результат",
+      "mobile": "Средний"
+    }
   },
   "expand": "Развернуть",
   "collapse": "Свернуть"

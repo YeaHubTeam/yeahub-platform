@@ -2,27 +2,16 @@
   flex-basis: 60%;
 }
 
+.mobile {
+  max-height: 170px;
+  overflow-y: scroll;
+}
+
 .button {
   justify-content: flex-start;
-  margin-top: 16px;
+  margin-top: 8px;
   
   span {
     margin-left: 0;
   }
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-@media (width <= 800px) {
-  .wrapper {
-    margin-bottom: 24px;
-  } 
-}
-
-@media (width <= 480px) {
-  .wrapper {
-    margin-bottom: 16px;
-  } 
 }
