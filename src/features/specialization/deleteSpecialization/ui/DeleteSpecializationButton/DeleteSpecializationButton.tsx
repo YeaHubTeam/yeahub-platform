@@ -10,7 +10,6 @@ import { Button } from '@/shared/ui/Button';
 import { Specialization } from '@/entities/specialization';
 
 import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationApi';
-import { deleteSpecializationModal } from '../../model/constants/deleteSpecializationConstants';
 
 interface DeleteSpecializationButtonProps {
 	specializationId: Specialization['id'];
@@ -54,7 +53,7 @@ export const DeleteSpecializationButton = ({
 				<BlockerDialog
 					onOk={onDelete}
 					onCancel={() => setIsModalOpen(false)}
-					message={deleteSpecializationModal}
+					message={Translation.BLOCKMODAL_CONFIRM_DELETE}
 				/>
 			)}
 		</>

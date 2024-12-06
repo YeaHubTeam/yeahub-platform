@@ -10,7 +10,6 @@ import { Button } from '@/shared/ui/Button';
 import { Skill } from '@/entities/skill';
 
 import { useDeleteSkillMutation } from '../../api/deleteSkillApi';
-import { deleteSkillModal } from '../../model/constants/deleteSkillConstants';
 
 interface DeleteSkillButtonProps {
 	skillId: Skill['id'];
@@ -51,7 +50,7 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 				<BlockerDialog
 					onOk={onDeleteSkill}
 					onCancel={() => setIsModalOpen(false)}
-					message={deleteSkillModal}
+					message={Translation.BLOCKMODAL_CONFIRM_DELETE}
 				/>
 			)}
 		</>

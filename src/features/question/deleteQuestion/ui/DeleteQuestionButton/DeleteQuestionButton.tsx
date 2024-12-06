@@ -10,7 +10,6 @@ import { Button } from '@/shared/ui/Button';
 import { Question } from '@/entities/question';
 
 import { useDeleteQuestionMutation } from '../../api/deleteQuestionApi';
-import { deleteQuestionModal } from '../../model/constants/deleteQuestionConstants';
 
 interface DeleteQuestionButtonProps {
 	questionId: Question['id'];
@@ -48,7 +47,7 @@ export const DeleteQuestionButton = ({
 				<BlockerDialog
 					onOk={onDeleteQuestion}
 					onCancel={() => setIsModalOpen(false)}
-					message={deleteQuestionModal}
+					message={Translation.BLOCKMODAL_CONFIRM_DELETE}
 				/>
 			)}
 		</>
