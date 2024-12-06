@@ -14,7 +14,7 @@ export const questionListMock = http.get<
 	GetQuestionsListResponse
 >(process.env.API_URL + questionApiUrls.getQuestionsList, ({ request }) => {
 	const url = new URL(request.url);
-	const page = url.searchParams.get('page');
+	const page = url.searchParams.get('page') ?? 1;
 	const limit = url.searchParams.get('limit');
 	const title = url.searchParams.get('title');
 	const complexity = url.searchParams.get('complexity');
