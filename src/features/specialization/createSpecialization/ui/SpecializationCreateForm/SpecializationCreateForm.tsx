@@ -1,10 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useBlocker } from 'react-router-dom';
 
-import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { SpecializationForm } from '@/entities/specialization';
 
@@ -22,25 +21,16 @@ export const SpecializationCreateForm = () => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
-	const blocker = useBlocker(
-		({ currentLocation, nextLocation }) =>
-			isDirty &&
-			!isSubmitted &&
-			!isSubmitting &&
-			currentLocation.pathname !== nextLocation.pathname,
-	);
-
 	return (
 		<FormProvider {...methods}>
-			{blocker.state === 'blocked' ? (
-				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
-			) : null}
-			<Flex componentType="main" direction="column" gap="24">
-				<Card className={styles.content}>
-					<SpecializationCreateFormHeader />
-					<SpecializationForm />
-				</Card>
-			</Flex>
+			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
+				<Flex componentType="main" direction="column" gap="24">
+					<Card className={styles.content}>
+						<SpecializationCreateFormHeader />
+						<SpecializationForm />
+					</Card>
+				</Flex>
+			</LeavingPageBlocker>
 		</FormProvider>
 	);
 };
