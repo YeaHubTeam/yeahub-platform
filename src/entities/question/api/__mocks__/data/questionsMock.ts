@@ -2,7 +2,7 @@ import { Response } from '@/shared/types/types';
 
 import { Question } from '@/entities/question/model/types/question';
 
-export const questionMockResponse: Response<Question[]> = {
+export const questionsMock: Response<Question[]> = {
 	data: [
 		{
 			id: 113,
