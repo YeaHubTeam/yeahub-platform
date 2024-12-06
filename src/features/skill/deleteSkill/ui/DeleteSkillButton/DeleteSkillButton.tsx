@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Skill } from '@/entities/skill';
 
 import { useDeleteSkillMutation } from '../../api/deleteSkillApi';
+import { deleteSkillModal } from '../../model/constants/deleteSkillConstants';
 
 interface DeleteSkillButtonProps {
 	skillId: Skill['id'];
@@ -18,9 +19,13 @@ interface DeleteSkillButtonProps {
 
 export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
+
+	const onCloseDeleteModal = () => {
+		setIsModalOpen((prev) => !prev);
+	};
 
 	const onDeleteSkill = async () => {
 		await deleteSkillMutation(skillId);
@@ -35,18 +40,18 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={() => setIsModalOpen(!isModalOpen)}
+				onClick={onCloseDeleteModal}
 				preffix={
 					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
 				}
 			>
 				{t(Translation.DELETE)}
 			</Button>
-			{isModalOpen && (
+			{isDeleteModalOpen && (
 				<BlockerDialog
 					onOk={onDeleteSkill}
-					onCancel={() => setIsModalOpen(!isModalOpen)}
-					message={'blockModal.confirmDelete'}
+					onCancel={() => setIsModalOpen(false)}
+					message={deleteSkillModal}
 				/>
 			)}
 		</>

@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Specialization } from '@/entities/specialization';
 
 import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationApi';
+import { deleteSpecializationModal } from '../../model/constants/deleteSpecializationConstants';
 
 interface DeleteSpecializationButtonProps {
 	specializationId: Specialization['id'];
@@ -23,7 +24,11 @@ export const DeleteSpecializationButton = ({
 	const [deleteSpecializationMutation] = useDeleteSpecializationMutation();
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
+
+	const onCloseDeleteModal = () => {
+		setIsModalOpen((prev) => !prev);
+	};
 
 	const onDelete = async () => {
 		await deleteSpecializationMutation(specializationId);
@@ -41,15 +46,15 @@ export const DeleteSpecializationButton = ({
 					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
 				}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={() => setIsModalOpen(!isModalOpen)}
+				onClick={onCloseDeleteModal}
 			>
 				{t(Translation.DELETE)}
 			</Button>
-			{isModalOpen && (
+			{isDeleteModalOpen && (
 				<BlockerDialog
 					onOk={onDelete}
-					onCancel={() => setIsModalOpen(!isModalOpen)}
-					message={'blockModal.confirmDelete'}
+					onCancel={() => setIsModalOpen(false)}
+					message={deleteSpecializationModal}
 				/>
 			)}
 		</>

@@ -33,11 +33,7 @@ export const SpecializationCreateForm = () => {
 	return (
 		<FormProvider {...methods}>
 			{blocker.state === 'blocked' ? (
-				<BlockerDialog
-					onCancel={blocker.reset}
-					onOk={blocker.proceed}
-					message={'blockModal.confirmDescription'}
-				/>
+				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
 			) : null}
 			<Flex componentType="main" direction="column" gap="24">
 				<Card className={styles.content}>
