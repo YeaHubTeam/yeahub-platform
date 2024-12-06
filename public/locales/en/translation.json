@@ -41,6 +41,7 @@
   "blockModal": {
     "confirmTitle": "Confirm action",
     "confirmDescription": "You have unsaved data. Do you want to continue?",
+    "confirmDelete": "Are you sure you want to delete?",
     "action": {
       "ok": "Yes",
       "cancel": "No"
