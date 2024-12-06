@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,6 +9,8 @@ import { Button } from '@/shared/ui/Button';
 import { Question } from '@/entities/question';
 
 import { useDeleteQuestionMutation } from '../../api/deleteQuestionApi';
+
+import styles from './DeleteQuestionButton.module.css';
 
 interface DeleteQuestionButtonProps {
 	questionId: Question['id'];
@@ -27,9 +30,9 @@ export const DeleteQuestionButton = ({
 
 	return (
 		<Button
-			aria-label="Large"
-			style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
-			preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
+			aria-label="Delete"
+			className={classNames({ [styles['detail-button']]: !isDetailPage })}
+			preffix={!isDetailPage && <Icon icon="trash" size={24} color="--palette-ui-red-600" />}
 			variant={isDetailPage ? 'destructive' : 'tertiary'}
 			onClick={onDeleteQuestion}
 		>

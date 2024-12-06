@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,6 +9,8 @@ import { Button } from '@/shared/ui/Button';
 import { Skill } from '@/entities/skill';
 
 import { useDeleteSkillMutation } from '../../api/deleteSkillApi';
+
+import styles from './DeleteSkillButton.module.css';
 
 interface DeleteSkillButtonProps {
 	skillId: Skill['id'];
@@ -25,16 +28,13 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 
 	return (
 		<Button
-			aria-label="Large"
-			style={{
-				width: isDetailPage ? 'auto' : '100%',
-				justifyContent: isDetailPage ? 'center' : 'flex-start',
-			}}
+			aria-label="Delete"
+			className={classNames({ [styles['detail-button']]: !isDetailPage })}
+			preffix={
+				!isDetailPage ? <Icon icon="trash" size={24} color="--palette-ui-red-600" /> : undefined
+			}
 			variant={isDetailPage ? 'destructive' : 'tertiary'}
 			onClick={onDeleteSkill}
-			preffix={
-				isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
-			}
 		>
 			{t(Translation.DELETE)}
 		</Button>

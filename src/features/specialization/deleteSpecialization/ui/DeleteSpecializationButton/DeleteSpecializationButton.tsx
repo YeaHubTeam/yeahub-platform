@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,6 +9,8 @@ import { Button } from '@/shared/ui/Button';
 import { Specialization } from '@/entities/specialization';
 
 import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationApi';
+
+import styles from './DeleteSpecializationButton.module.css';
 
 interface DeleteSpecializationButtonProps {
 	specializationId: Specialization['id'];
@@ -28,13 +31,10 @@ export const DeleteSpecializationButton = ({
 
 	return (
 		<Button
-			aria-label="Large"
-			style={{
-				width: 'auto',
-				justifyContent: isDetailPage ? 'center' : 'flex-start',
-			}}
+			aria-label="Delete"
+			className={classNames({ [styles['detail-button']]: !isDetailPage })}
 			preffix={
-				isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
+				!isDetailPage ? <Icon icon="trash" size={24} color="--palette-ui-red-600" /> : undefined
 			}
 			variant={isDetailPage ? 'destructive' : 'tertiary'}
 			onClick={onDelete}
