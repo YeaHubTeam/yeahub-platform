@@ -1,3 +1,16 @@
 {
-  "subscribeAction": "Подписаться"
+  "subscribeAction": "Подписаться",
+  "changeTariffPlan": "Изменить тариф",
+  "cancelSubscription": "Отменить подписку",
+  "payHistory": "Ваши предыдущие платежи ",
+  "tariff": {
+    "free": "Бесплатный",
+    "base": "Базовый",
+    "premium": "Премиум"
+  },
+  "daysLeft_one": "Осталось {{count}} день",
+  "daysLeft_few": "Осталось {{count}} дня",
+  "daysLeft_many": "Осталось {{count}} дней",
+  "greeting": "Отличный выбор, теперь вам доступны все функции сервиса",
+  "renewal": "Платеж будет продлен автоматически {{Date}}"
 }

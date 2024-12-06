@@ -93,5 +93,6 @@
     "repeatPassword": "Repeat the password",
     "placeholderInput": "Password",
     "buttonText": "Save"
-  }
+  },
+  "selectTariff": "Select Tariff"
 }
