@@ -83,7 +83,7 @@ export const PersonalInformationTabForm = () => {
 						label={t(Profile.PERSONALINFORMATIONFORM_SPECIALIZATION)}
 						className={styles.form}
 					>
-						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
+						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={[value]} />}
 					</FormControl>
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
