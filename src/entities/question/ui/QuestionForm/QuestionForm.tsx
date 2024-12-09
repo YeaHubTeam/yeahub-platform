@@ -99,7 +99,7 @@ export const QuestionForm = () => {
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
 						<div className={styles.select}>
-							<SpecializationSelect onChange={(value: number) => onChange([value])} value={value} />
+							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
 						</div>
 					)}
 				</FormControl>
