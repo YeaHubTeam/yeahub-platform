@@ -10,6 +10,7 @@
   padding: 12px 10px;
   width: auto ;
   min-width: auto;
+  border: none;
   border-radius: 12px;
   background-color: var(--color-white-900);
   color: var(--text-color-light);
@@ -30,6 +31,7 @@
 }
 
 .btn:is(:hover, :focus, :active) svg {
+  border: none;
   color: var(--text-color-link-active);
 }
 
