@@ -62,7 +62,7 @@ export const Table = <T extends SelectedAdminEntity>({
 	};
 
 	return (
-		<table className={styles.table}>
+		<table className={styles.table} data-testid="table">
 			<thead className={styles.head}>
 				<tr>
 					<td className={styles.cell}>
@@ -74,7 +74,7 @@ export const Table = <T extends SelectedAdminEntity>({
 			</thead>
 			<tbody>
 				{items.map((item) => (
-					<tr key={item.id} className={styles.row}>
+					<tr key={item.id} className={styles.row} data-testid="table-row">
 						<td className={styles.cell}>
 							<Checkbox
 								checked={selectedItemsIds?.includes(item.id)}
