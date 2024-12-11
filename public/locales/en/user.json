@@ -1,8 +1,7 @@
 {
-    "user": {
-      "name": "Name",
-      "role": "Role",
-      "email": "E-mail"
-    }
+  "user": {
+    "name": "Name",
+    "role": "Role",
+    "email": "E-mail"
   }
-  
+}
