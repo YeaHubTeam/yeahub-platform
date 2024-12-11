@@ -2,6 +2,11 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Tabs } from './Tabs';
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useNavigate: () => mockNavigate,
+}));
 
 const mockTabs = [
 	{ id: 1, title: 'Tab 1', label: 'Tab 1', Component: () => <div>Tab 1 Content</div> },
@@ -10,13 +15,24 @@ const mockTabs = [
 
 const setTabToggle = jest.fn();
 
+const renderComponent = (props = {}) => {
+	const defaultProps = {
+		tabs: mockTabs,
+		title: 'Test Tabs',
+		tabToggle: 0,
+		setTabToggle: setTabToggle,
+	};
+
+	return render(
+		<MemoryRouter>
+			<Tabs {...defaultProps} {...props} />
+		</MemoryRouter>,
+	);
+};
+
 describe('Tabs Component', () => {
 	test('sets the active tab and line position correctly on initial render', () => {
-		render(
-			<MemoryRouter>
-				<Tabs tabs={mockTabs} title="Test Tabs" tabToggle={0} setTabToggle={setTabToggle} />
-			</MemoryRouter>,
-		);
+		renderComponent();
 
 		const tab1 = screen.getByTestId('tab-item-0');
 		const lineRef = screen.getByTestId('line-indicator');
@@ -26,11 +42,7 @@ describe('Tabs Component', () => {
 	});
 
 	test('updates line position and active tab on tab click', async () => {
-		render(
-			<MemoryRouter>
-				<Tabs tabs={mockTabs} title="Test Tabs" tabToggle={0} setTabToggle={setTabToggle} />
-			</MemoryRouter>,
-		);
+		renderComponent();
 
 		const tab2 = screen.getByTestId('tab-item-1');
 		const lineRef = screen.getByTestId('line-indicator');
@@ -46,12 +58,7 @@ describe('Tabs Component', () => {
 	});
 
 	test('navigates to correct tab when clicked', () => {
-		const mockNavigate = jest.fn();
-		render(
-			<MemoryRouter>
-				<Tabs tabs={mockTabs} title="Test Tabs" tabToggle={0} setTabToggle={setTabToggle} />
-			</MemoryRouter>,
-		);
+		renderComponent();
 
 		fireEvent.click(screen.getByTestId('tab-item-1'));
 
@@ -59,21 +66,13 @@ describe('Tabs Component', () => {
 	});
 
 	test('renders title if provided', () => {
-		render(
-			<MemoryRouter>
-				<Tabs tabs={mockTabs} title="Test Tabs" tabToggle={0} setTabToggle={setTabToggle} />
-			</MemoryRouter>,
-		);
+		renderComponent();
 
 		expect(screen.getByTestId('tabs-title')).toHaveTextContent('Test Tabs');
 	});
 
 	test('handles empty tabs array gracefully', () => {
-		render(
-			<MemoryRouter>
-				<Tabs tabs={[]} title="Test Tabs" tabToggle={0} setTabToggle={setTabToggle} />
-			</MemoryRouter>,
-		);
+		renderComponent({ tabs: [] });
 
 		expect(screen.queryByRole('tab')).toBeNull();
 	});
