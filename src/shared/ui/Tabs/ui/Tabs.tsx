@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-//ToDo заменить на UIKit
+// ToDo заменить на UIKit
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -66,7 +66,6 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 		const tabRect = tabElement.offsetLeft;
 
 		setTabToggle(id);
-
 		navigate(`#${pathname}`, { replace: true });
 
 		if (lineRef.current) {
@@ -84,22 +83,26 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 			lineRef.current.style.width = `${tabElement.offsetWidth}px`;
 			lineRef.current.style.left = `${tabRect}px`;
 		}
-	}, []);
+	}, [tabToggle]);
 
 	return (
-		<div className={style['tab-container']}>
-			{title && <h2>{title}</h2>}
-			<ul className={style['tab-list']}>
+		<div className={style['tab-container']} data-testid="tabs-container">
+			{title && <h2 data-testid="tabs-title">{title}</h2>}
+			<ul className={style['tab-list']} role="tablist" data-testid="tabs-list">
 				{tabs.map((tab, index) => (
 					<li
 						key={index}
 						className={`${style['tab-item']} ${tabToggle === index ? style.active : ''}`}
 						onClick={(e) => handleTabToggle(e, index, tab.title)}
+						role="tab"
+						tabIndex={0}
+						data-testid={`tab-item-${index}`}
 					>
 						{tab.label}
 					</li>
 				))}
 			</ul>
+			<div ref={lineRef} className={style['line-indicator']} data-testid="line-indicator" />
 		</div>
 	);
 };
