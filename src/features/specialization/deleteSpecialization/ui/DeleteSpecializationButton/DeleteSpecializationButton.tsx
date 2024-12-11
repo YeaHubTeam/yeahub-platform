@@ -29,7 +29,7 @@ export const DeleteSpecializationButton = ({
 		setIsModalOpen((prev) => !prev);
 	};
 
-	const onDelete = async () => {
+	const onDeleteSpecialization = async () => {
 		await deleteSpecializationMutation(specializationId);
 	};
 
@@ -51,7 +51,7 @@ export const DeleteSpecializationButton = ({
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
-					onOk={onDelete}
+					onOk={onDeleteSpecialization}
 					onCancel={() => setIsModalOpen(false)}
 					message={Translation.BLOCKMODAL_CONFIRM_DELETE}
 				/>

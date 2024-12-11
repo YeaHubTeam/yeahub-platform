@@ -127,7 +127,7 @@ export const ImageLoader = ({
 
 	return (
 		<div className={styles.container}>
-			<Flex className={styles['profile-picture-wrapper']} gap="16">
+			<Flex className={styles['profile-picture-wrapper']} gap="40">
 				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
 					{isLoading && (
 						<Loader
