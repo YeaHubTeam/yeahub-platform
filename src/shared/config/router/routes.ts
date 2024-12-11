@@ -51,6 +51,10 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
+		user: {
+			route: 'user',
+			page: 'admin/user',
+		},
 	},
 	auth: {
 		route: 'auth',

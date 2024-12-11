@@ -1,0 +1,18 @@
+.roles-container {
+  display: flex; 
+  gap: 8px; 
+}
+
+.admin {
+  padding: 2px 8px;
+  border-radius: 30px;
+  background-color: var(--color-green-007);
+  color: var(--color-green-750);
+}
+
+.candidate {
+  padding: 2px 8px;
+  border-radius: 30px;
+  background-color: var(--color-yellow-200);
+  color: var(--color-yellow-800);
+}

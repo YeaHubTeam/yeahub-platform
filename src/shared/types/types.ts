@@ -30,4 +30,9 @@ export interface SelectedAdminEntity {
 	title: string;
 }
 
+export interface SelectedAdminEntityOther {
+	id: string;
+	firstName: string;
+}
+
 export type SelectedAdminEntities = SelectedAdminEntity[];

@@ -478,6 +478,12 @@ export enum Skills {
 	TITLE_SKILL = 'skill.title.skill',
 }
 
+export enum Users {
+	NAME = 'user.name',
+	ROLE = 'user.role',
+	EMAIL = 'user.email',
+}
+
 export enum A11y {
 	BACK_BUTTON = 'buttons.backButton',
 	CLOSE_SIDEBAR = 'buttons.closeSidebar',
