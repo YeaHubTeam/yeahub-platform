@@ -5,9 +5,18 @@ export interface Permission {
 	name: string;
 }
 
+export type RoleName =
+	| 'guest'
+	| 'candidate'
+	| 'member'
+	| 'admin'
+	| 'HR'
+	| 'candidate-free'
+	| 'candidate-premium';
+
 export interface UserRole {
 	id: number;
-	name: string;
+	name: RoleName;
 	permissions: Permission[];
 }
 
@@ -30,7 +39,7 @@ export interface User {
 
 export type GetUsersListParamsRequest = {
 	page?: number;
-	firstName?: string;
+	search?: string;
 	limit?: number;
 };
 

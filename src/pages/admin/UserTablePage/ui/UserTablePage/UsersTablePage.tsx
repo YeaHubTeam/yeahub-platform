@@ -13,33 +13,27 @@ import { getUsersPageNum, getUsersSearch } from '../../model/selectors/usersPage
 import { usersPageActions } from '../../model/slices/usersPageSlice';
 import { UserTablePagePagination } from '../UserTablePagePagination/UserTablePagePagination';
 
-import styles from './UserTablePage.module.css';
+import styles from './UsersTablePage.module.css';
 
 /**
- * Page showing info about all the created skills
+ * Page showing info about all the created users
  * @constructor
  */
 
-export const UserTablePage = () => {
+export const UsersTablePage = () => {
 	const dispatch = useAppDispatch();
 	const page = useSelector(getUsersPageNum);
 	const search = useSelector(getUsersSearch);
 
-	const { data: users } = useGetUsersListQuery({ page, limit: 10, firstName: search });
+	const { data: users } = useGetUsersListQuery({ page, limit: 10, search });
 
 	const onChangeSearch = (value: string) => {
 		dispatch(usersPageActions.setSearch(value));
 	};
 	return (
 		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection onSearch={onChangeSearch} />
 			<Card className={styles.content}>
-				<SearchSection
-					to="create"
-					onSearch={onChangeSearch}
-					renderRemoveButton={function (): React.ReactNode {
-						throw new Error('Function not implemented.');
-					}}
-				/>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
 			</Card>
@@ -47,4 +41,4 @@ export const UserTablePage = () => {
 	);
 };
 
-export default UserTablePage;
+export default UsersTablePage;

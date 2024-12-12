@@ -1,7 +1,14 @@
 {
-  "user": {
-    "name": "Name",
-    "role": "Role",
-    "email": "E-mail"
+  "name": "Name",
+  "role": "Role",
+  "email": "E-mail",
+  "roles": {
+    "guest": "Guest",
+    "candidate": "Candidate",
+    "candidate-free": "CandidateFree",
+    "candidate-premium": "CandidatePremium",
+    "HR": "HR",
+    "admin": "Admin",
+    "member": "Member"
   }
 }

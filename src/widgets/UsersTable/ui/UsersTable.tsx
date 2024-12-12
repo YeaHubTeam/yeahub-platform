@@ -1,7 +1,7 @@
 import { i18Namespace } from '@/shared/config/i18n';
-import { Users } from '@/shared/config/i18n/i18nTranslations';
+import { User as Users } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { TableUser } from '@/shared/ui/TableUser';
+import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
 
@@ -16,7 +16,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableHeader = () => {
 		const columns = {
-			firstName: t(Users.NAME),
+			title: t(Users.NAME),
 			roles: t(Users.ROLE),
 			email: t(Users.EMAIL),
 		};
@@ -24,16 +24,22 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
+		return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof Users;
+	};
+
 	const renderTableBody = (user: User) => {
 		const columns = {
-			firstName: user.firstName,
+			title: `${user.firstName} ${user.lastName}`,
 			roles: (
 				<div className={styles['roles-container']}>
-					{user.userRoles.map((role) => (
-						<span key={role.id} className={styles[role.name.toLowerCase()]}>
-							{role.name}
-						</span>
-					))}
+					{user.userRoles.map((role) => {
+						return (
+							<span key={role.id} className={styles[role.name]}>
+								{t(Users[convertRoleNameToEnumKey(role.name)])}
+							</span>
+						);
+					})}
 				</div>
 			),
 			email: user.email,
@@ -47,10 +53,6 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 	}
 
 	return (
-		<TableUser
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			items={users}
-		/>
+		<Table renderTableHeader={renderTableHeader} renderTableBody={renderTableBody} items={users} />
 	);
 };

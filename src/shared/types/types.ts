@@ -25,14 +25,12 @@ export interface GetLoginError {
 	};
 }
 
-export interface SelectedAdminEntity {
-	id: number;
-	title: string;
-}
+export type SelectedAdminEntity = SelectedEntity<number>;
 
-export interface SelectedAdminEntityOther {
-	id: string;
-	firstName: string;
+export interface SelectedEntity<Id extends string | number> {
+	id: Id;
+	title?: string;
 }
 
 export type SelectedAdminEntities = SelectedAdminEntity[];
+export type SelectedEntities<Id extends string | number> = SelectedEntity<Id>[];

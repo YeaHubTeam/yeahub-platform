@@ -31,7 +31,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
-import { UserTablePage } from '@/pages/admin/UserTablePage';
+import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
@@ -137,8 +137,8 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.user.route,
-		title: 'tabs.user',
+		route: ROUTES.admin.users.route,
+		title: 'tabs.users',
 		icon: User,
 	},
 ];
@@ -232,8 +232,8 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
-						path: ROUTES.admin.user.route,
-						element: <UserTablePage />,
+						path: ROUTES.admin.users.route,
+						element: <UsersTablePage />,
 					},
 					{
 						path: '*',
