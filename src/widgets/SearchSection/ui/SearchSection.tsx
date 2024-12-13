@@ -16,12 +16,12 @@ interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
-	renderRemoveButton: () => React.ReactNode;
+	renderRemoveButton?: () => React.ReactNode;
 	renderFilter?: () => React.ReactNode;
 }
 
 export const SearchSection = ({
-	to = '/',
+	to,
 	onSearch,
 	showRemoveButton,
 	renderRemoveButton,
@@ -43,13 +43,15 @@ export const SearchSection = ({
 					preffix={<Icon icon={'search'} className={styles['search-svg']} />}
 					placeholder={t(Translation.SEARCH)}
 				/>
-				{showRemoveButton && renderRemoveButton()}
-				<Button>
-					<NavLink className={styles.link} to={to}>
-						{t(Translation.CREATE)}
-						<PlusSvg className={styles['plus-svg']} />
-					</NavLink>
-				</Button>
+				{showRemoveButton && renderRemoveButton && renderRemoveButton()}
+				{to && (
+					<Button>
+						<NavLink className={styles.link} to={to}>
+							{t(Translation.CREATE)}
+							<PlusSvg className={styles['plus-svg']} />
+						</NavLink>
+					</Button>
+				)}
 			</section>
 		</Card>
 	);

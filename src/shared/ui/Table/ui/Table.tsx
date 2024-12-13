@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { Checkbox } from 'yeahub-ui-kit';
 
-import { SelectedAdminEntities, SelectedAdminEntity } from '@/shared/types/types';
+import { SelectedEntities, SelectedEntity } from '@/shared/types/types';
 
 import styles from './Table.module.css';
 
-interface TableProps<T> {
+interface TableProps<Id extends string | number, T> {
 	/**
 	 * Array of elements displayed in the table
 	 */
@@ -22,8 +22,8 @@ interface TableProps<T> {
 	 * Render function for displaying the table actions in the last column
 	 */
 	renderActions?: (item: T) => ReactNode;
-	selectedItems?: SelectedAdminEntities;
-	onSelectItems?: (ids: SelectedAdminEntities) => void;
+	selectedItems?: SelectedEntities<Id>;
+	onSelectItems?: (ids: SelectedEntities<Id>) => void;
 }
 
 /**
@@ -34,14 +34,14 @@ interface TableProps<T> {
  * @param renderActions
  * @constructor
  */
-export const Table = <T extends SelectedAdminEntity>({
+export const Table = <Id extends string | number, T extends SelectedEntity<Id>>({
 	items,
 	renderTableHeader,
 	renderTableBody,
 	renderActions,
 	selectedItems,
 	onSelectItems,
-}: TableProps<T>) => {
+}: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
 	const isAllSelected = selectedItems?.length === items.length;
@@ -51,10 +51,10 @@ export const Table = <T extends SelectedAdminEntity>({
 		onSelectItems?.(isAllSelected ? [] : items.map((item) => ({ id: item.id, title: item.title })));
 	};
 
-	const onSelectItem = (item: SelectedAdminEntity) => () => {
+	const onSelectItem = (item: SelectedEntity<Id>) => () => {
 		if (selectedItems) {
 			const isSelected = selectedItemsIds?.includes(item.id);
-			const itemsIds: SelectedAdminEntities = isSelected
+			const itemsIds: SelectedEntities<Id> = isSelected
 				? selectedItems?.filter((selectedItem) => selectedItem.id !== item.id)
 				: [...selectedItems, item];
 			onSelectItems?.(itemsIds);
@@ -65,9 +65,11 @@ export const Table = <T extends SelectedAdminEntity>({
 		<table className={styles.table}>
 			<thead className={styles.head}>
 				<tr>
-					<td className={styles.cell}>
-						<Checkbox checked={isAllSelected} onChange={onSelectAllItems} />
-					</td>
+					{selectedItems && (
+						<td className={styles.cell}>
+							<Checkbox checked={isAllSelected} onChange={onSelectAllItems} />
+						</td>
+					)}
 					{renderTableHeader()}
 					{hasActions && <td className={styles.actionsColumn}></td>}
 				</tr>
@@ -75,12 +77,14 @@ export const Table = <T extends SelectedAdminEntity>({
 			<tbody>
 				{items.map((item) => (
 					<tr key={item.id} className={styles.row}>
-						<td className={styles.cell}>
-							<Checkbox
-								checked={selectedItemsIds?.includes(item.id)}
-								onChange={onSelectItem({ id: item.id, title: item.title })}
-							/>
-						</td>
+						{selectedItems && (
+							<td className={styles.cell}>
+								<Checkbox
+									checked={selectedItemsIds?.includes(item.id)}
+									onChange={onSelectItem({ id: item.id, title: item.title })}
+								/>
+							</td>
+						)}
 						{renderTableBody(item)}
 						{hasActions && <td>{renderActions?.(item)}</td>}
 					</tr>

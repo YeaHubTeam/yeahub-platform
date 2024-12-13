@@ -479,6 +479,19 @@ export enum Skills {
 	TITLE_SKILL = 'skill.title.skill',
 }
 
+export enum User {
+	NAME = 'name',
+	ROLE = 'role',
+	EMAIL = 'email',
+	GUEST = 'roles.guest',
+	CANDIDATE = 'roles.candidate',
+	CANDIDATE_FREE = 'roles.candidateFree',
+	CANDIDATE_PREMIUM = 'roles.candidatePremium',
+	HR = 'roles.HR',
+	ADMIN = 'roles.admin',
+	MEMBER = 'roles.member',
+}
+
 export enum A11y {
 	BACK_BUTTON = 'buttons.backButton',
 	CLOSE_SIDEBAR = 'buttons.closeSidebar',
