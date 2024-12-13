@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import { Button, Input, Icon } from 'yeahub-ui-kit';
+import { Button, Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 
 import { useResetPasswordMutation } from '../../api/passwordRecoveryApi';
 import { PasswordRecoveryFormValues } from '../../model/types/passwordRecoveryTypes';

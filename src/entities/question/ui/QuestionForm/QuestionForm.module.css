@@ -6,6 +6,10 @@
   width: 360px;
 }
 
+.border-radius > div > div {
+  border-radius: 12px;
+}
+
 .rate {
   position: relative;
   top: -15px;
@@ -28,5 +32,6 @@
   width: 100%;
   height: 200px;
   resize: vertical;
+  border-radius: 16px;
 }
 

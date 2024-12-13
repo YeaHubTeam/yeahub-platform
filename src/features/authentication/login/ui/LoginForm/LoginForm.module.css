@@ -32,10 +32,8 @@
 }
 
 .input {
-  padding-left: 20px;
   width: 100%;
   min-height: 48px;
-  border-radius: 68px;
   background-color: var(--background-app);
 }
 

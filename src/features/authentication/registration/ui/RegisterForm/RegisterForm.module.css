@@ -27,9 +27,8 @@ h1{
 
 /* INPUT */
 .input {
-  padding: 12px;
+  width: 100%;
   height: 48px;
-  border-radius: 12px;
   background-color: var(--background-app);
 }
 

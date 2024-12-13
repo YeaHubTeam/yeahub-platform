@@ -1,4 +1,4 @@
-import { Button, Input } from 'yeahub-ui-kit';
+import { Button } from 'yeahub-ui-kit';
 
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -6,6 +6,7 @@ import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
+import { Input } from '@/shared/ui/Input';
 
 import { getFullProfile } from '@/entities/profile';
 

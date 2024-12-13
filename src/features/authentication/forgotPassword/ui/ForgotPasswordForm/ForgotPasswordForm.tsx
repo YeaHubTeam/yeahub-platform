@@ -1,5 +1,4 @@
 import { useFormContext } from 'react-hook-form';
-import { Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
@@ -7,6 +6,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 import { toast } from '@/shared/ui/Toast';
 
 import { useSendEmailRecoveryPasswordMutation } from '../../api/forgotPasswordApi';
