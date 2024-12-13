@@ -11,6 +11,10 @@ interface UsersTableProps {
 	users?: User[];
 }
 
+const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
+	return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof Users;
+};
+
 export const UsersTable = ({ users }: UsersTableProps) => {
 	const { t } = useI18nHelpers([i18Namespace.user, i18Namespace.translation]);
 
@@ -22,10 +26,6 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
-		return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof Users;
 	};
 
 	const renderTableBody = (user: User) => {
