@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Icon, Input } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 
 import { LoginFormValues, useLoginMutation } from '@/entities/auth';
 

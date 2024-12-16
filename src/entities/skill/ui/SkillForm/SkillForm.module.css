@@ -25,6 +25,7 @@
   height: 200px;
   min-height: 80px;
   resize: vertical;
+  border-radius: 16px;
 }
 
 .skills-input{

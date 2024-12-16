@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Icon, Input } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
@@ -14,6 +14,7 @@ import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 
 import { SignUpFormValues, useRegisterMutation } from '@/entities/auth';
 

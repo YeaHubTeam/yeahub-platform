@@ -14,6 +14,10 @@
   height: 46px;
 }
 
+.select > div > div {
+  border-radius: 12px;
+}
+
 .selection {
   display: flex;
   flex-wrap: wrap;

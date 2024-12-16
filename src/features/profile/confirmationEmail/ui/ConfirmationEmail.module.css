@@ -24,9 +24,13 @@
 }
 
 .card {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+}
+
+.button {
+  width: 328px;
 }
 
 .flex {
@@ -37,14 +41,12 @@
   width: 328px;
   height: 48px;
   border: 1px solid var(--border-input);
-  border-radius: 68px;
-  background-color: transparent !important;
+  background-color: transparent;
   
 
   input {
-    padding: 14px 16px;
-    background-color: transparent !important;
-    color: var(--text-color-bright) !important;
+    background-color: transparent;
+    color: var(--text-color-bright);
     line-height: 127%;
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-m);

@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Input } from 'yeahub-ui-kit';
 
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 
 import { SOCIAL_NETWORKS } from '../../model/data/socialNetwork';
 import { SocialNetwork, SocialNetworkCode } from '../../model/types/socialNetwork';
@@ -43,6 +43,7 @@ export const SocialNetWorkInputs = () => {
 							{...field}
 							onChange={onChangeHandler(socialNetwork.code, field.onChange)}
 							className={style.input}
+							size="S"
 						/>
 					)}
 				</FormControl>

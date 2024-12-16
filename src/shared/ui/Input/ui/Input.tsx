@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import React, { useRef, forwardRef } from 'react';
 
-import Magnifer from '@/shared/assets/icons/Magnifer.svg';
 import { Size } from '@/shared/ui/Input/model/types/InputTypes';
 
 import styles from './Input.module.css';
@@ -72,8 +71,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				role="button"
 				tabIndex={disabled ? -1 : 0}
 			>
-				<span className={styles['input-prefix']}>
-					{prefix || <Magnifer className={styles.prefix} />}
+				<span
+					className={classNames({
+						[styles['without-prefix']]: !prefix,
+						[styles['input-prefix']]: !!prefix,
+					})}
+				>
+					{prefix}
 				</span>
 				<input
 					ref={setRef}
