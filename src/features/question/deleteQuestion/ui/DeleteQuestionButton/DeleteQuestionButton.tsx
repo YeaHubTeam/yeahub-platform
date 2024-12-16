@@ -21,7 +21,7 @@ export const DeleteQuestionButton = ({
 	isDetailPage = false,
 }: DeleteQuestionButtonProps) => {
 	const [deleteQuestionMutation] = useDeleteQuestionMutation();
-
+  
 	const { t } = useI18nHelpers(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
