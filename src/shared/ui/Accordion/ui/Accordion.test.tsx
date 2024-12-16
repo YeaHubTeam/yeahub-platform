@@ -7,23 +7,24 @@ import { Accordion } from './Accordion';
 import styles from './Accordion.module.css';
 
 describe('Accordion', () => {
-	test('render', () => {
+	const title = 'Как выглядит базовая структура HTML страницы?';
+	const content = 'content';
+
+	beforeEach(() => {
 		renderComponent(
-			<Accordion title="Как выглядит базовая структура HTML страницы?">
-				<div>content</div>
+			<Accordion title={title}>
+				<div>{content}</div>
 			</Accordion>,
 		);
+	});
+
+	test('render', () => {
 		const content = screen.getByText('content');
 		const title = screen.getByText('Как выглядит базовая структура HTML страницы?');
 		expect(content).toBeInTheDocument();
 		expect(title).toBeInTheDocument();
 	}),
 		test('content is visible after button click', async () => {
-			renderComponent(
-				<Accordion title="Как выглядит базовая структура HTML страницы?">
-					<div>content</div>
-				</Accordion>,
-			);
 			const content = screen.getByText('content');
 			const collapsed = content.parentElement?.parentElement;
 			expect(collapsed).toHaveStyle('height: 0');
@@ -32,11 +33,6 @@ describe('Accordion', () => {
 			expect(collapsed).toHaveStyle(`height: ${content.scrollHeight}px`);
 		}),
 		test('arrow styles are changed after button click', async () => {
-			renderComponent(
-				<Accordion title="Как выглядит базовая структура HTML страницы?">
-					<div>content</div>
-				</Accordion>,
-			);
 			const arrow = screen.getByTestId('Arrow');
 			expect(arrow).not.toHaveClass(styles['icon-opened']);
 			expect(arrow).toHaveClass(styles['icon']);
