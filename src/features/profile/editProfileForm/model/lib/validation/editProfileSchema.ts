@@ -18,13 +18,7 @@ export const editProfileSchema = yup.object().shape({
 	specialization: yup
 		.number()
 		.required(i18n.t(Validation.SPECIALIZATION_REQUIRED, { ns: i18Namespace.validation })),
-	phone: yup
-		.string()
-		.required(i18n.t(Validation.REQUIRED, { ns: i18Namespace.validation }))
-		.matches(
-			/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/,
-			i18n.t(Validation.PHONE, { ns: i18Namespace.validation }),
-		),
+	phone: yup.string().nullable(),
 	email: yup
 		.string()
 		.email(i18n.t(Validation.EMAIL, { ns: i18Namespace.validation }))

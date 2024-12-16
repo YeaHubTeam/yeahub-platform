@@ -87,7 +87,7 @@ export const mapFormToProfile = (
 		email: values.email,
 		firstName: values.firstName,
 		lastName: values.lastName,
-		phone: values.phone,
+		phone: values.phone || '',
 		city: values.location || profile.city || '',
 		birthday: profile.birthday || null,
 		address: profile.address || '',
