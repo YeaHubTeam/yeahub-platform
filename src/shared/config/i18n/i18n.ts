@@ -21,6 +21,7 @@ export const i18Namespace = {
 	specialization: 'specialization',
 	validation: 'validation',
 	skill: 'skill',
+	user: 'user',
 	a11y: 'a11y',
 	landing: 'landing',
 	docs: 'docs',

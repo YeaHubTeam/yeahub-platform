@@ -25,6 +25,7 @@
     "settings": "Настройки",
     "profile": "Мой профиль",
     "specialization": "Специализации",
+    "users": "Пользователи",
     "education": {
       "title": "Обучение",
       "interview": "Собеседование"
@@ -35,6 +36,7 @@
   "blockModal": {
     "confirmTitle": "Подтвердить действие",
     "confirmDescription": "У вас есть несохраненные данные. Вы хотите продолжить?",
+    "confirmDelete": "Вы действительно хотите удалить?",
     "action": {
       "ok": "Да",
       "cancel": "Нет"
