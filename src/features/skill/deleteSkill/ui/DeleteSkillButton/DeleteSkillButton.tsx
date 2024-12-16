@@ -16,9 +16,9 @@ interface DeleteSkillButtonProps {
 	isDetailPage?: boolean;
 }
 
-export const DeleteSkillButton = ({ 
-	skillId, 
-	isDetailPage = false 
+export const DeleteSkillButton = ({
+  skillId,
+  isDetailPage = false,
 }: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
 
