@@ -33,6 +33,7 @@
     "settings": "Settings",
     "profile": "My Profile",
     "specialization": "Specialization",
+    "users": "Users",
     "education": {
       "title": "Education",
       "interview": "Interview"
@@ -41,6 +42,7 @@
   "blockModal": {
     "confirmTitle": "Confirm action",
     "confirmDescription": "You have unsaved data. Do you want to continue?",
+    "confirmDelete": "Are you sure you want to delete?",
     "action": {
       "ok": "Yes",
       "cancel": "No"

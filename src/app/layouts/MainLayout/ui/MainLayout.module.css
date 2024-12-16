@@ -24,7 +24,7 @@
   padding: 24px 20px;
   height: calc(100vh - 76px);
   max-height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .container {
