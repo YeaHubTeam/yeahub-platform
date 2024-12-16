@@ -6,7 +6,11 @@
   width: 360px;
 }
 
-.border-radius > div > div {
+.status-select select {
+  height: 46px;
+}
+
+.status-select > div > div {
   border-radius: 12px;
 }
 
@@ -35,3 +39,10 @@
   border-radius: 16px;
 }
 
+.title {
+  display: block;
+  width: 100%;
+  height: 180px;
+  resize: vertical;
+  border-radius: 16px;
+}

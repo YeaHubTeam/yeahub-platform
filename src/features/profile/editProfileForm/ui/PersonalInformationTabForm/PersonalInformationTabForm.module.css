@@ -35,6 +35,7 @@
 }
 
 .input {
+  display: flex;
   width: auto;
   max-width: 328px;
   min-height: 48px;

@@ -6,7 +6,6 @@ import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
-import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -39,7 +38,9 @@ export const QuestionForm = () => {
 			<Flex direction="column">
 				<Text title={t(Questions.TITLE)} />
 				<FormControl name="title" control={control} label={t(Questions.ADD_QUESTION)}>
-					{(field, hasError) => <Input {...field} error={hasError} />}
+					{(field, hasError) => (
+						<TextArea {...field} state={hasError ? 'error' : 'default'} className={styles.title} />
+					)}
 				</FormControl>
 			</Flex>
 			<Flex direction="column">
@@ -87,7 +88,7 @@ export const QuestionForm = () => {
 								value={value}
 								placeholder={t(Questions.STATUS_SELECT)}
 								options={questionStatusesItems}
-								className={styles['border-radius']}
+								className={styles['status-select']}
 							/>
 						</div>
 					)}

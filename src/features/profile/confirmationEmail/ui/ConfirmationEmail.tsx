@@ -62,6 +62,7 @@ export const ConfirmationEmail = ({
 						theme="primary"
 						onClick={onClickVerificationButton}
 						disabled={isSendingVerificationEmail}
+						className={styles.button}
 					>
 						{t(Profile.PROFILE_EMAIL_VERIFICATION_BUTTON)}
 					</Button>

@@ -51,7 +51,6 @@
 /* LABEL */
 .form-wrapper .input-wrapper label span { 
   display: inline-block;
-  margin-bottom: 8px;
   color: var(--text-color-primary);
   line-height: 21px;
   font-weight: var(--font-weight-400);
