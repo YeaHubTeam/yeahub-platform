@@ -6,17 +6,3 @@
 .select select {
   height: 46px;
 }
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 740px;
-}
-
-.selection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}

@@ -92,7 +92,7 @@ export const QuestionForm = () => {
 				</FormControl>
 			</Flex>
 			<Flex gap={'32'}>
-				<Flex direction="column" justify="center" className={styles.titles}>
+				<Flex direction="column" className={styles.titles}>
 					<Text title={t(Questions.SPECIALIZATION_TITLE)} />
 					<Text text={t(Questions.SPECIALIZATION_SELECT)} className={styles.label} />
 				</Flex>

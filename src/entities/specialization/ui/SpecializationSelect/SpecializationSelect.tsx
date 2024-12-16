@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
-import { Select, Chip, Text } from 'yeahub-ui-kit';
+import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 import { Specialization } from '../../model/types/specialization';
@@ -95,33 +96,18 @@ export const SpecializationSelect = ({
 	}
 
 	return (
-		<div className={styles.wrapper}>
-			<Select
-				onChange={handleChange}
-				options={options}
-				type="default"
-				placeholder={
-					options.length
-						? t(SpecializationI18.SKILLFORM_SPECIALIZATIONSELECT)
-						: t(SpecializationI18.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
-				}
-				className={styles.select}
-			/>
-			{Boolean(selectedSpecializations?.length) && (
-				<>
-					<Text title={t(SpecializationI18.SKILLFORM_SELECTED_SPECIALIZATIONS)} />
-					<div className={styles.selection}>
-						{selectedSpecializations.map((id) => (
-							<Chip
-								key={id}
-								label={specializationsDictionary?.[id]?.title}
-								theme="primary"
-								onDelete={handleDeleteSpecialization(id)}
-							/>
-						))}
-					</div>
-				</>
-			)}
-		</div>
+		<SelectWithChips
+			title={t(SpecializationI18.SKILLFORM_SELECTED_SPECIALIZATIONS)}
+			options={options}
+			onChange={handleChange}
+			selectedItems={selectedSpecializations}
+			handleDeleteItem={handleDeleteSpecialization}
+			itemsDictionary={specializationsDictionary}
+			placeholder={
+				options.length
+					? t(SpecializationI18.SKILLFORM_SPECIALIZATIONSELECT)
+					: t(SpecializationI18.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
+			}
+		/>
 	);
 };
