@@ -1,4 +1,6 @@
 .input {
+  display: flex;
+  width: auto;
   min-height: 48px;
 }
 
