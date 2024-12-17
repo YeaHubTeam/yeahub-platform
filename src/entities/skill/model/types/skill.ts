@@ -24,3 +24,8 @@ export type CreateOrEditSkillFormValues = Pick<
 > & {
 	skillImage?: string;
 };
+
+export type UpdateSkillIconParamsRequest = {
+	id: string;
+	image?: string | null;
+};

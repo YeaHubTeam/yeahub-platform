@@ -477,6 +477,8 @@ export enum Skills {
 	IMAGE_SRC = 'skill.image.src',
 	SKILLS_TITLE = 'skill.name',
 	TITLE_SKILL = 'skill.title.skill',
+	SKILL_ICON = 'skill.icon',
+	ADD_SKILL_ICON = 'skill.addSkillIcon',
 }
 
 export enum User {
