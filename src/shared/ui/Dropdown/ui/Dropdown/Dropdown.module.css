@@ -1,0 +1,18 @@
+.dropdown {
+  position: relative;
+  display: inline-flex; 
+}
+
+.suffix { 
+  flex-shrink: 0;
+  width: 20px; 
+  height: 20px;
+  fill: var(--icon-fill); 
+  transition: transform 0.3s ease; 
+  pointer-events: none;
+}
+
+.suffix.active {
+  background-color: transparent;
+  transform: rotate(180deg); 
+}
