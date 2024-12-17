@@ -1,5 +1,4 @@
 import { useFormContext } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -12,14 +11,13 @@ import { EditSkillFormValues } from '../../model/types/skillEditPageTypes';
 
 export const SkillEditFormHeader = () => {
 	const { t } = useI18nHelpers();
-	const navigate = useNavigate();
 
 	const { handleSubmit, reset } = useFormContext<EditSkillFormValues>();
 
 	const [editSkillMutation, { isLoading }] = useEditSkillMutation();
+
 	const onResetFormValues = () => {
 		reset();
-		navigate(-1);
 	};
 
 	const onEditSkill = async (data: EditSkillFormValues) => {

@@ -28,10 +28,10 @@ const SkillDetailPage = () => {
 
 	return (
 		<main>
-			<Flex align="center" gap="8" style={{ marginBottom: 34, justifyContent: 'space-between' }}>
+			<Flex align={'center'} justify={'between'} gap={'8'} style={{ marginBottom: 34 }}>
 				<BackButton />
 
-				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+				<Flex gap={'16'}>
 					<DeleteSkillButton skillId={skill.id} isDetailPage />
 					<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
 						<Button>{t(Translation.EDIT)}</Button>

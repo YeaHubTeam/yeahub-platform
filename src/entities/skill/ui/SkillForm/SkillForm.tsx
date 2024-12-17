@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
-import { useGetSkillByIdQuery, useUpdateSkillIconMutation } from '../../api/skillApi';
+import { useGetSkillByIdQuery } from '../../api/skillApi';
 
 import styles from './SkillForm.module.css';
 
@@ -25,31 +25,21 @@ export const SkillForm = () => {
 	// eslint-disable-next-line no-console
 	console.log(errors);
 
-	const [previewImg, setPreviewImg] = useState<string | null>(null);
-
 	const params = useParams();
-	const { data, isSuccess } = useGetSkillByIdQuery(params.skillId || '');
-	const [updateSkillIconMutation, { isLoading: isLoadingUpdateIcon }] =
-		useUpdateSkillIconMutation();
+	const { data: skill, isLoading: isSkillLoading } = useGetSkillByIdQuery(params.skillId || '');
+
+	const [previewImg, setPreviewImg] = useState<string | null>(skill?.imageSrc || null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
 		setValue('skillImage', image);
-
-		if (params.skillId) {
-			updateSkillIconMutation({ id: params.skillId, image });
-		}
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
-		setValue('imageSrc', undefined);
-
-		if (params.skillId) {
-			updateSkillIconMutation({ id: params.skillId, image: null });
-		}
+		setValue('imageSrc', null);
 	};
 
 	return (
@@ -71,11 +61,10 @@ export const SkillForm = () => {
 						<Text title={t(Skills.ADD_SKILL_ICON)} className={styles.description} />
 					</Flex>
 					<ImageLoaderWithoutCropper
-						isLoading={isLoadingUpdateIcon}
-						previewImg={previewImg}
+						isFileLoading={isSkillLoading}
 						removeImage={removeImage}
 						changeImage={changeImage}
-						initialSrc={isSuccess && data.imageSrc ? data.imageSrc : null}
+						initialSrc={previewImg}
 					/>
 				</Flex>
 
