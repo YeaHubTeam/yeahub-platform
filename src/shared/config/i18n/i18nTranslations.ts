@@ -286,6 +286,7 @@ export enum Auth {
 export enum Specialization {
 	SKILLFORM_SPECIALIZATIONSELECT = 'skillForm.specializationSelect',
 	SKILLFORM_EMPTYSPECIALIZATIONSELECT = 'skillForm.emptySpecializationSelect',
+	SKILLFORM_SELECTED_SPECIALIZATIONS = 'skillForm.selectedSpecializations',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SPECIALIZATION_DESCRIPTION = 'specialization.description',
 	SPECIALIZATION_IMAGE_SRC = 'specialization.image.src',

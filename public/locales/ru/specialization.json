@@ -1,7 +1,8 @@
 {
   "skillForm": {
     "specializationSelect": "Выберите специализацию",
-    "emptySpecializationSelect": "Нет доступных опций"
+    "emptySpecializationSelect": "Нет доступных опций",
+    "selectedSpecializations": "Выбранные специализации"
   },
   "specialization": {
     "title": "Название",
