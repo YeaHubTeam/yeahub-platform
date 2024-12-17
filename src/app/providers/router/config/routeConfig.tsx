@@ -11,6 +11,7 @@ import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/Settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import User from '@/shared/assets/icons/user.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -30,6 +31,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
@@ -133,6 +135,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: 'tabs.skills',
 		icon: SkillsIcon,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.users.route,
+		title: 'tabs.users',
+		icon: User,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -222,6 +230,10 @@ export const router = createBrowserRouter([
 								element: <SkillDetailPage />,
 							},
 						],
+					},
+					{
+						path: ROUTES.admin.users.route,
+						element: <UsersTablePage />,
 					},
 					{
 						path: '*',

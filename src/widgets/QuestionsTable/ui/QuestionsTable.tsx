@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
+import { useNavigate } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -8,8 +7,9 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 
 import { Question } from '@/entities/question';
@@ -27,7 +27,7 @@ export const QuestionsTable = ({
 	selectedQuestions,
 	onSelectQuestions,
 }: QuestionsTableProps) => {
-	const [openPopovers, setOpenPopovers] = useState<number | null>(null);
+	const navigate = useNavigate();
 
 	const { t } = useI18nHelpers([i18Namespace.questions, i18Namespace.translation]);
 
@@ -56,59 +56,39 @@ export const QuestionsTable = ({
 	};
 
 	const renderActions = (question: Question) => {
-		const openActions = () => {
-			setOpenPopovers(question.id);
-		};
-
-		const closeActions = () => {
-			setOpenPopovers(null);
-		};
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.questions.details.route, question.id));
+				},
+			},
+			{
+				icon: <Icon icon="pencil" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.questions.edit.route, question.id));
+				},
+			},
+			{
+				renderComponent: () => <DeleteQuestionButton questionId={question.id} />,
+			},
+		];
 
 		return (
 			<Flex gap="4">
-				<Popover
-					placement="bottom-start"
-					body={
-						<>
-							<NavLink to={route(ROUTES.admin.questions.details.route, question.id)}>
-								<Flex align="center" gap="4">
-									<Button
-										style={{ width: 'auto', justifyContent: 'flex-start' }}
-										aria-label="Large"
-										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
-										variant="tertiary"
-									>
-										{t(Translation.SHOW, { ns: i18Namespace.translation })}
-									</Button>
-								</Flex>
-							</NavLink>
-							<NavLink to={route(ROUTES.admin.questions.edit.route, question.id)}>
-								<Flex align="center" gap="4">
-									<Button
-										style={{ width: 'auto', justifyContent: 'flex-start' }}
-										aria-label="Large"
-										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
-										variant="tertiary"
-									>
-										{t(Translation.EDIT, { ns: i18Namespace.translation })}
-									</Button>
-								</Flex>
-							</NavLink>
-							<DeleteQuestionButton questionId={question.id} />
-						</>
-					}
-					isOpen={openPopovers === question.id}
-					onClickOutside={closeActions}
-				>
-					<div>
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
 						<IconButton
-							style={{ cursor: 'pointer' }}
-							theme="tertiary"
-							onClick={openActions}
-							aria-label="Large"
+							aria-label="go to details"
+							form="square"
 							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							size="M"
+							variant="tertiary"
+							onClick={onToggle}
 						/>
-					</div>
+					)}
 				</Popover>
 			</Flex>
 		);

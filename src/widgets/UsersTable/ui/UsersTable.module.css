@@ -1,0 +1,53 @@
+.roles-container {
+  display: flex;
+  gap: 8px;
+}
+
+.candidate {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-yellow-200);
+  color: var(--color-yellow-800);
+}
+
+.guest {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-800);
+}
+
+.candidate-premium {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-yellow-200);
+  color: var(--color-yellow-800);
+}
+
+.candidate-free {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-yellow-200);
+  color: var(--color-yellow-800);
+}
+
+.hr {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-red-100);
+  color: var(--color-red-800);
+}
+
+.admin {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-green-007);
+  color: var(--color-green-750);
+}
+
+.member {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-800);
+}

@@ -13,6 +13,7 @@ interface BlockerDialogModalProps {
 	onOk?: () => void;
 	onCancel?: () => void;
 	containerClassName?: string;
+	message?: string;
 }
 
 export const BlockerDialog = ({
@@ -21,6 +22,7 @@ export const BlockerDialog = ({
 	onCancel,
 	onOk,
 	containerClassName = '',
+	message = 'blockModal.confirmDescription',
 }: BlockerDialogModalProps) => {
 	const { t } = useI18nHelpers(i18Namespace.translation);
 
@@ -35,9 +37,7 @@ export const BlockerDialog = ({
 			) : (
 				<ModalContent className={containerStyle}>
 					<ModalHeading className={styles.title}>{t('blockModal.confirmTitle')}</ModalHeading>
-					<ModalDescription className={styles.description}>
-						{t('blockModal.confirmDescription')}
-					</ModalDescription>
+					<ModalDescription className={styles.description}>{t(message)}</ModalDescription>
 					<div className={styles['buttons-wrapper']}>
 						<Button onClick={handleOk}>{t('blockModal.action.ok')}</Button>
 						<Button variant="outline" onClick={handleCancel}>

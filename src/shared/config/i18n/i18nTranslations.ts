@@ -50,6 +50,7 @@ export enum Translation {
 
 	BLOCKMODAL_CONFIRM_TITLE = 'blockModal.confirmTitle',
 	BLOCKMODAL_CONFIRM_DESCRIPTION = 'blockModal.confirmDescription',
+	BLOCKMODAL_CONFIRM_DELETE = 'blockModal.confirmDelete',
 	BLOCKMODAL_ACTION_OK = 'blockModal.action.ok',
 	BLOCKMODAL_ACTION_CANCEL = 'blockModal.action.cancel',
 
@@ -285,6 +286,7 @@ export enum Auth {
 export enum Specialization {
 	SKILLFORM_SPECIALIZATIONSELECT = 'skillForm.specializationSelect',
 	SKILLFORM_EMPTYSPECIALIZATIONSELECT = 'skillForm.emptySpecializationSelect',
+	SKILLFORM_SELECTED_SPECIALIZATIONS = 'skillForm.selectedSpecializations',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SPECIALIZATION_DESCRIPTION = 'specialization.description',
 	SPECIALIZATION_IMAGE_SRC = 'specialization.image.src',
@@ -476,6 +478,19 @@ export enum Skills {
 	IMAGE_SRC = 'skill.image.src',
 	SKILLS_TITLE = 'skill.name',
 	TITLE_SKILL = 'skill.title.skill',
+}
+
+export enum User {
+	NAME = 'name',
+	ROLE = 'role',
+	EMAIL = 'email',
+	GUEST = 'roles.guest',
+	CANDIDATE = 'roles.candidate',
+	CANDIDATE_FREE = 'roles.candidateFree',
+	CANDIDATE_PREMIUM = 'roles.candidatePremium',
+	HR = 'roles.HR',
+	ADMIN = 'roles.admin',
+	MEMBER = 'roles.member',
 }
 
 export enum A11y {
