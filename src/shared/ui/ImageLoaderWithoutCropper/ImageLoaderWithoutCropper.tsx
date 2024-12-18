@@ -23,7 +23,6 @@ interface ImageLoaderWithoutCropperProps {
 		width: number;
 		height: number;
 	};
-	isFileLoading: boolean;
 	initialSrc: string | null;
 }
 
@@ -31,11 +30,10 @@ export const ImageLoaderWithoutCropper = ({
 	changeImage,
 	removeImage,
 	maxMBSize,
-	isFileLoading,
 	initialSrc: src,
 }: ImageLoaderWithoutCropperProps) => {
 	const { t } = useTranslation('translation');
-	const [isLoading, setIsLoading] = useState(isFileLoading || false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const uploaderRef = useRef<HTMLDivElement | null>(null);
 

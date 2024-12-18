@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { Input, Text, TextArea } from 'yeahub-ui-kit';
 
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
@@ -10,11 +9,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
-import { useGetSkillByIdQuery } from '../../api/skillApi';
-
 import styles from './SkillForm.module.css';
 
-export const SkillForm = () => {
+interface SkillFormProps {
+	imageSrc?: string | null;
+}
+
+export const SkillForm = ({ imageSrc }: SkillFormProps) => {
 	const { t } = useTranslation('skill');
 
 	const {
@@ -25,10 +26,7 @@ export const SkillForm = () => {
 	// eslint-disable-next-line no-console
 	console.log(errors);
 
-	const params = useParams();
-	const { data: skill, isLoading: isSkillLoading } = useGetSkillByIdQuery(params.skillId || '');
-
-	const [previewImg, setPreviewImg] = useState<string | null>(skill?.imageSrc || null);
+	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
@@ -61,7 +59,6 @@ export const SkillForm = () => {
 						<Text title={t(Skills.ADD_SKILL_ICON)} className={styles.description} />
 					</Flex>
 					<ImageLoaderWithoutCropper
-						isFileLoading={isSkillLoading}
 						removeImage={removeImage}
 						changeImage={changeImage}
 						initialSrc={previewImg}
