@@ -1,2 +1,2 @@
 export { useEditSkillMutation } from './api/editSkillApi';
-export { SkillEditForm } from './ui/SkillEditForm/SkillEditForm';
+export { SkillEditForm } from './ui/SkillEditForm';
