@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { Input, Range, Select, Text, TextArea, TextEditor } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -21,6 +21,11 @@ export const QuestionForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const { control } = useFormContext();
+
+	const selectedSpecializations = useWatch({
+		control,
+		name: 'specializations',
+	});
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -113,7 +118,11 @@ export const QuestionForm = () => {
 					{({ onChange, value }) => {
 						return (
 							<div className={styles.select}>
-								<SkillSelect onChange={onChange} value={value} />
+								<SkillSelect
+									onChange={onChange}
+									value={value}
+									selectedSPecializations={selectedSpecializations}
+								/>
 							</div>
 						);
 					}}
