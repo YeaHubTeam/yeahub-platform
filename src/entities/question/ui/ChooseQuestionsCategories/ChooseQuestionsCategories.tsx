@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { getSpecializationId } from '@/entities/profile';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
 
@@ -29,7 +32,12 @@ export const ChooseQuestionsCategories = ({
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
-	const { data: skills } = useGetSkillsListQuery({ limit });
+	const profileSpecialization = useAppSelector(getSpecializationId);
+
+	const { data: skills } = useGetSkillsListQuery({
+		limit,
+		specializations: [profileSpecialization].join(','),
+	});
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();
 
