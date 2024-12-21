@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import {
-	Specialization as SpecializationI18,
-	Translation,
-} from '@/shared/config/i18n/i18nTranslations';
+import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
@@ -35,8 +32,8 @@ export const SpecializationsTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(SpecializationI18.SPECIALIZATION_TITLE),
-			description: t(SpecializationI18.SPECIALIZATION_DESCRIPTION),
+			title: t(Specializations.TITLE_SHORT),
+			description: t(Specializations.DESCRIPTION_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);

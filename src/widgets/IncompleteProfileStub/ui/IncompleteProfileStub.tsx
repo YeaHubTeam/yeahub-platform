@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { mainPage } from '@/shared/config/i18n/i18nTranslations';
+import { Main } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
@@ -44,7 +44,7 @@ const getPercentProfileFullness = (user: FullProfile | null) => {
 export const IncompleteProfileStub = () => {
 	const navigate = useNavigate();
 
-	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
+	const { t } = useTranslation(i18Namespace.main);
 	const fullProfile = useAppSelector(getFullProfile);
 
 	const redirectToProfileEditing = () => {
@@ -62,12 +62,12 @@ export const IncompleteProfileStub = () => {
 			<div className={styles['card-wrapper']}>
 				<div className={styles['card-content']}>
 					<h3 className={styles['card-title']}>
-						{tMainPage(mainPage.PROFILE_FULLNESS)} {percentFullness}%
+						{t(Main.FILL_PROFILE_TITLE, { percent: percentFullness })}
 					</h3>
-					<p className={styles['card-text']}>{tMainPage(mainPage.COMPLETION_PROMPT)}</p>
+					<p className={styles['card-text']}>{t(Main.FILL_PROFILE_DESCRIPTION)}</p>
 				</div>
 				<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
-					{tMainPage(mainPage.COMPLETE_PROFILE_BUTTON)}
+					{t(Main.FILL_PROFILE_LINK)}
 				</Button>
 			</div>
 		</Card>

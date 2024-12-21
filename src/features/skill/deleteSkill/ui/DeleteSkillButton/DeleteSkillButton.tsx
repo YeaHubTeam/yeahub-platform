@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 
@@ -16,14 +16,11 @@ interface DeleteSkillButtonProps {
 	isDetailPage?: boolean;
 }
 
-export const DeleteSkillButton = ({ 
-  skillId, 
-  isDetailPage = false, 
-}: DeleteSkillButtonProps) => {
+export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
 
-	const { t } = useI18nHelpers(i18Namespace.translation);
-  const [isDeleteModalOpen, setIsModalOpen] = useState(false);
+	const { t } = useTranslation(i18Namespace.translation);
+	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
 	const onCloseDeleteModal = () => {
 		setIsModalOpen((prev) => !prev);
@@ -53,7 +50,7 @@ export const DeleteSkillButton = ({
 				<BlockerDialog
 					onOk={onDeleteSkill}
 					onCancel={() => setIsModalOpen(false)}
-					message={Translation.BLOCKMODAL_CONFIRM_DELETE}
+					message={Translation.MODAL_DELETE_TITLE}
 				/>
 			)}
 		</>

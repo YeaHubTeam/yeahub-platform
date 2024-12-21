@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
 import { RegistrationLabel } from '@/entities/auth';
@@ -25,7 +25,7 @@ const ForgotPasswordPage = () => {
 
 	const [email, setEmail] = useState('');
 
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation(i18Namespace.auth);
 
 	const onModalClose = () => {
 		if (!isTimerStarted) {

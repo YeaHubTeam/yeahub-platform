@@ -5,8 +5,8 @@
   "roles": {
     "guest": "Guest",
     "candidate": "Candidate",
-    "candidate-free": "CandidateFree",
-    "candidate-premium": "CandidatePremium",
+    "candidate-free": "Candidate-Free",
+    "candidate-premium": "Candidate-Premium",
     "HR": "HR",
     "admin": "Admin",
     "member": "Member"
