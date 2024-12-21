@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
@@ -38,7 +39,7 @@ export const ChooseQuestionsCategories = ({
 		limit,
 		specializations: [profileSpecialization],
 	});
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
 
 	const toggleShowAll = () => {
@@ -53,7 +54,7 @@ export const ChooseQuestionsCategories = ({
 		}
 	}, [skills?.total, showAll, skillsLimit]);
 
-	const handleChooseSkill = (id: number) => {
+	const onChooseSkill = (id: number) => {
 		if (selectedSkills?.includes(id)) {
 			const filtredSkills = selectedSkills.filter((skill) => skill !== id);
 			onChangeSkills(filtredSkills.length > 0 ? filtredSkills : undefined);
@@ -75,13 +76,13 @@ export const ChooseQuestionsCategories = ({
 		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
 			<BaseFilterSection
 				data={prepareData}
-				title={t('create.questions_categories')}
-				onClick={handleChooseSkill}
+				title={t(Questions.CATEGORIES_TITLE)}
+				onClick={onChooseSkill}
 				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
 			{!isMobile && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
-					{!showAll ? t('buttons.showAll') : t('buttons.hide')}
+					{!showAll ? t(Questions.CATEGORIES_SHOW_ALL) : t(Questions.CATEGORIES_HIDE)}
 				</Button>
 			)}
 		</div>

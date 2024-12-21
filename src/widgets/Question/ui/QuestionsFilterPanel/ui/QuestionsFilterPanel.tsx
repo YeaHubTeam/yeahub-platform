@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useDebounce } from '@/shared/hooks/useDebounced';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import {
 	ChooseQuestionComplexity,
@@ -34,7 +36,7 @@ export const QuestionsFilterPanel = ({
 	skillsLimit,
 }: QuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, status, title } = filter;
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -45,7 +47,7 @@ export const QuestionsFilterPanel = ({
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput
-				placeholder={t('searchPlaceholder')}
+				placeholder={t(Questions.SEARCH_PLACEHOLDER)}
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>

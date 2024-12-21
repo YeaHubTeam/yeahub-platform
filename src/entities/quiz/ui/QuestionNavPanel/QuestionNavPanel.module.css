@@ -1,29 +1,10 @@
-.panel {
-  display: flex;
-  justify-content: space-between;
-}
-
 .button-wrapper {
-  display: flex;
   aspect-ratio: 1;
   height: 28px;
 }
 
 .button {
-  padding: 0 !important;
-  height: 100% !important;
-  border-radius: 50% !important;
-}
-
-@media (width <= 1024px) {
-  .panel {
-    bottom: 67px;
-    width: 100%;
-  }
-}
-
-@media (width <= 480px) {
-  .panel {
-    display: none;
-  }
+  padding: 0;
+  height: 100%;
+  border-radius: 50%;
 }

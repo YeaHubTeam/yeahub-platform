@@ -1,10 +1,11 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -41,7 +42,7 @@ const CreateQuizPage = () => {
 		limit: MAX_LIMIT_CATEGORIES,
 		specializations: [profileSpecialization],
 	});
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 
 	const { isMobile, isTablet } = useScreenSize();
 
@@ -57,13 +58,13 @@ const CreateQuizPage = () => {
 		navigate(ROUTES.interview.new.page);
 	}
 
-	const [trigger] = useLazyCreateNewQuizQuery();
+	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
 
-	const onChangeSkills = (skills: number[] | undefined) => {
+	const onChangeSkills = (skills?: number[]) => {
 		handleFilterChange({ category: skills });
 	};
 
-	const onChangeComplexity = (complexity: number[] | undefined) => {
+	const onChangeComplexity = (complexity?: number[]) => {
 		handleFilterChange({ complexity });
 	};
 
@@ -75,8 +76,8 @@ const CreateQuizPage = () => {
 		handleFilterChange({ count: limit });
 	};
 
-	const handleCreateNewQuiz = () => {
-		trigger({
+	const onCreateNewQuiz = () => {
+		createNewQuiz({
 			profileId,
 			skills: filter.category,
 			complexity: filter.complexity,
@@ -90,7 +91,7 @@ const CreateQuizPage = () => {
 	return (
 		<section>
 			<Card className={styles.container}>
-				<h2 className={styles.title}>{t('create.title')}</h2>
+				<h2 className={styles.title}>{t(InterviewQuizCreate.TITLE)}</h2>
 				<Flex
 					justify="between"
 					gap={isMobile ? '16' : '40'}
@@ -113,10 +114,11 @@ const CreateQuizPage = () => {
 				</Flex>
 				<Button
 					className={styles.button}
-					onClick={handleCreateNewQuiz}
+					onClick={onCreateNewQuiz}
 					suffix={<Icon icon="arrowRight" size={24} />}
+					disabled={isCreateNewQuizLoading}
 				>
-					{t('buttons.start')}
+					{t(InterviewQuizCreate.CREATE_BUTTON)}
 				</Button>
 			</Card>
 		</section>

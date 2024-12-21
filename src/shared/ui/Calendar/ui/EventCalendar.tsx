@@ -5,8 +5,10 @@ import './EventCalendar.css';
 
 import 'react-calendar/dist/Calendar.css';
 import { i18Namespace } from '@/shared/config/i18n';
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
+
+import { useTranslation } from 'react-i18next';
+
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
@@ -21,14 +23,14 @@ interface EventCalendarProps {
 }
 
 export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProps) => {
-	const { t } = useI18nHelpers(i18Namespace.a11y);
+	const { t } = useTranslation(i18Namespace.interviewHistory);
 
 	const PREV_LABEL = (
 		<Icon
 			icon="caretLeft"
 			size={24}
 			color="--palette-ui-black-600"
-			aria-label={t(A11y.PREV_MONTH)}
+			aria-label={t(InterviewHistory.PREV_MONTH)}
 		/>
 	);
 	const NEXT_LABEL = (
@@ -36,7 +38,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 			icon="caretRight"
 			size={24}
 			color="--palette-ui-black-600"
-			aria-label={t(A11y.NEXT_MONTH)}
+			aria-label={t(InterviewHistory.NEXT_MONTH)}
 		/>
 	);
 

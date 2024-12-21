@@ -54,7 +54,7 @@ export const options = {
 	pie: {
 		series: [
 			{
-				name: i18n.t(Translation.INTERVIEWRESULT_TOTAL),
+				name: i18n.t(Translation.TOTAL_QUESTIONS),
 				type: 'pie',
 				startAngle: 0,
 				endAngle: 360,

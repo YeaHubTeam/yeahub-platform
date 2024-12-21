@@ -2,6 +2,8 @@ import image1 from '@/shared/assets/images/landing/train-image1.png';
 import image2 from '@/shared/assets/images/landing/train-image2.png';
 import image3 from '@/shared/assets/images/landing/train-image3.png';
 import image4 from '@/shared/assets/images/landing/train-image4.png';
+import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
+import { Landing } from '@/shared/config/i18n/i18nTranslations';
 
 export interface MockTraining {
 	id: string;
@@ -14,28 +16,28 @@ export interface MockTraining {
 export const mockTraining: Array<MockTraining> = [
 	{
 		id: '1',
-		title: 'Что такое Virtual DOM, и как он работает?',
+		title: i18n.t(Landing.QUESTIONS_FIRST, { ns: i18Namespace.landing }),
 		rating: '4',
 		difficulty: '10',
 		image: image1,
 	},
 	{
 		id: '2',
-		title: 'Какие типы данных есть в JS?',
+		title: i18n.t(Landing.QUESTIONS_SECOND_TITLE, { ns: i18Namespace.landing }),
 		rating: '3',
 		difficulty: '2',
 		image: image2,
 	},
 	{
 		id: '3',
-		title: 'Что такое this?',
+		title: i18n.t(Landing.QUESTIONS_THIRD, { ns: i18Namespace.landing }),
 		rating: '4',
 		difficulty: '5',
 		image: image3,
 	},
 	{
 		id: '4',
-		title: 'Что такое замыкание в JavaScript?',
+		title: i18n.t(Landing.QUESTIONS_FOURTH, { ns: i18Namespace.landing }),
 		rating: '4',
 		difficulty: '4',
 		image: image4,

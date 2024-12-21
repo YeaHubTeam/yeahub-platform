@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Skills } from '@/shared/config/i18n/i18nTranslations';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
@@ -16,7 +16,7 @@ type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 't
 };
 
 export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation(i18Namespace.skill);
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit: 100,
@@ -59,12 +59,10 @@ export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillS
 
 	return (
 		<SelectWithChips
-			title={t('skillForm.selectedSkills')}
+			title={t(t(Skills.SELECT_SELECTED))}
 			options={options}
 			onChange={handleChange}
-			placeholder={
-				options.length ? t(Profile.SKILLFORM_SKILLSELECT) : t(Profile.SKILLFORM_EMPTYSKILLSELECT)
-			}
+			placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
 			selectedItems={selectedSkills}
 			handleDeleteItem={handleDeleteSkill}
 			itemsDictionary={skillsDictionary}

@@ -1,16 +1,23 @@
 import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { BenefitItem } from '../BenefitItem/BenefitItem';
 
-import { benefitsItems } from './benefitsItems';
 import styles from './BenefitsList.module.css';
 
 export const BenefitsList = () => {
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation(i18Namespace.auth);
+
+	const benefitsItems: string[] = [
+		Auth.BENEFITS_STEP_PLAN,
+		Auth.BENEFITS_CAREER_GROWTH,
+		Auth.BENEFITS_BIG_COMMUNITY,
+		Auth.BENEFITS_MENTOR_TRAINING,
+		Auth.BENEFITS_INTERNSHIP_OPPORTUNITIES,
+	];
 
 	return (
 		<div className={styles['benefit-list-wrapper']}>

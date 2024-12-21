@@ -1,11 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -16,7 +16,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import styles from './UnauthorizedBlock.module.css';
 
 export const UnauthorizedBlock = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.landing);
 	const { isMobile } = useScreenSize();
 	const navigate = useNavigate();
 

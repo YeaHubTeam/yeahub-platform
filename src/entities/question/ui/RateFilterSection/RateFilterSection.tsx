@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 const rate = [
@@ -16,7 +18,7 @@ interface RateFilterSectionProps {
 }
 
 export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSectionProps) => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);
 		const updates = isDataExist
@@ -30,5 +32,7 @@ export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSect
 		active: selectedRate?.some((selectedItem) => item.id === selectedItem),
 	}));
 
-	return <BaseFilterSection data={preparedData} title={t('rate.title')} onClick={onClick} />;
+	return (
+		<BaseFilterSection data={preparedData} title={t(Questions.RATE_TITLE)} onClick={onClick} />
+	);
 };

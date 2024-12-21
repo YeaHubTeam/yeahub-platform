@@ -102,7 +102,7 @@ const QuestionsPage = () => {
 				<Popover
 					body={
 						<div className={styles['popover-additional-info-wrapper']}>
-							<Card className={styles['popover-additional-search']}>
+							<Card>
 								<QuestionsFilterPanel
 									onChangeSearch={onChangeSearchParams}
 									onChangeSkills={onChangeSkills}

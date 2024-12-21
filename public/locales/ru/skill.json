@@ -1,15 +1,22 @@
 {
-  "skill": {
-    "title": "Название",
-    "description": "Описание",
-    "description.specialization": "Описание навыка",
-    "detailed.description.skill": "Добавьте развёрнутое описание навыка",
-    "detailed.description.textarea": "Развёрнутое описание навыка",
-    "not.items": "Нет навыков",
-    "image.src": "Ссылка на картинку",
-    "create.page.title": "Добавьте название навыка",
-    "edit.page.title": "Изменение навыка",
-    "name": "Навыки",
-    "title.skill": "Название навыка"
-  }
+  "title": {
+    "full": "Название навыка",
+    "short": "Название",
+    "label": "Добавьте название навыка"
+  },
+  "description": {
+    "full": "Описание навыка",
+    "short": "Описание",
+    "label": "Добавьте развёрнутое описание навыка",
+    "placeholder": "Развернутое описание для навыка"
+  },
+  "select": {
+    "choose": "Выберите навыки",
+    "empty": "Нет доступных опций",
+    "selected": "Выбранные навыки"
+  },
+  "empty": "Нет навыков",
+  "image.src": "Ссылка на картинку",
+  "create.page.title": "Создание навыка",
+  "edit.page.title": "Изменение навыка"
 }
