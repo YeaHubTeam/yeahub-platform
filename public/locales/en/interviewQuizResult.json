@@ -1,13 +1,11 @@
 {
-  "resultInterview": {
-    "resultTitle": "Interview result № {{title}}",
-    "questionTitle": "Statistics of passed questions for all categories",
-    "allPassedQuestionTitle": "Passed interview questions lits"
+  "title": {
+    "questions.answers": "Interview result № {{title}}",
+    "stat": "Statistics of passed questions for all categories",
+    "questions.list": "Passed interview questions lits"
   },
-  "questionStats": {
-    "passed": "Passed",
-    "timeSpent": "Time spent",
-    "date": "Date",
-    "duration": "Duration"
-  }
+  "passed.question": "Passed",
+  "time": "Time spent",
+  "date": "Date",
+  "duration": "Duration"
 }

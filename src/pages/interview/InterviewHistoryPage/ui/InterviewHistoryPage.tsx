@@ -36,20 +36,18 @@ const InterviewHistoryPage = () => {
 	}, [dispatch]);
 
 	return (
-		<>
-			<div className={styles.container}>
-				<FullInterviewHistoryList
-					dateRange={dateRange}
-					onLoaded={() => {
-						setListLoaded(true);
-					}}
-					resetFilters={handleResetFilters}
-				/>
-				{listLoaded && (
-					<EventCalendar onDateChange={handleDateChange} selectedDates={selectedDates} />
-				)}
-			</div>
-		</>
+		<div className={styles.container}>
+			<FullInterviewHistoryList
+				dateRange={dateRange}
+				onLoaded={() => {
+					setListLoaded(true);
+				}}
+				resetFilters={handleResetFilters}
+			/>
+			{listLoaded && (
+				<EventCalendar onDateChange={handleDateChange} selectedDates={selectedDates} />
+			)}
+		</div>
 	);
 };
 

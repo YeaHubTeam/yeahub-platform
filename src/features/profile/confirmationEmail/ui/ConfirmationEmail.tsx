@@ -1,10 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from 'yeahub-ui-kit';
 
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { Input } from '@/shared/ui/Input';
 
@@ -16,16 +16,11 @@ import styles from './ConfirmationEmail.module.css';
 
 interface ConfirmationEmailProps {
 	email: string;
-	upperCaseFirstLetter: string;
 	isLetterSended: boolean;
 }
 
-export const ConfirmationEmail = ({
-	email,
-	upperCaseFirstLetter,
-	isLetterSended,
-}: ConfirmationEmailProps) => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailProps) => {
+	const { t } = useTranslation(i18Namespace.profile);
 	const profile = useAppSelector(getFullProfile);
 	const userId = profile?.id;
 
@@ -41,11 +36,11 @@ export const ConfirmationEmail = ({
 	return (
 		<>
 			<Flex direction="column" gap="12">
-				<h3 className={styles['card-title']}>{upperCaseFirstLetter}</h3>
-				<p className={styles['card-text']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_TEXT)}</p>
+				<h3 className={styles['card-title']}>{t(Profile.EMAIL_VERIFICATION_TITLE)}</h3>
+				<p className={styles['card-text']}>{t(Profile.EMAIL_VERIFICATION_DESCRIPTION)}</p>
 			</Flex>
 
-			<p className={styles['card-email']}>{t(Profile.PROFILE_EMAIL_VERIFICATION_WRITE_EMAIL)}</p>
+			<p className={styles['card-email']}>{t(Profile.EMAIL_VERIFICATION_EMAIL)}</p>
 
 			<div className={styles.card}>
 				<Input placeholder="E-mail" value={email} disabled className={styles.input} />
@@ -54,7 +49,7 @@ export const ConfirmationEmail = ({
 					<Flex align="center" className={styles.flex}>
 						<Checkmark className={styles.svg} />
 						<p className={styles['card-text-email']}>
-							{t(Profile.PROFILE_EMAIL_VERIFICATION_LETTER_SENT)}
+							{t(Profile.EMAIL_VERIFICATION_SENT_SUCCESS)}
 						</p>
 					</Flex>
 				) : (
@@ -64,7 +59,7 @@ export const ConfirmationEmail = ({
 						disabled={isSendingVerificationEmail}
 						className={styles.button}
 					>
-						{t(Profile.PROFILE_EMAIL_VERIFICATION_BUTTON)}
+						{t(Profile.EMAIL_VERIFICATION_SUBMIT)}
 					</Button>
 				)}
 			</div>

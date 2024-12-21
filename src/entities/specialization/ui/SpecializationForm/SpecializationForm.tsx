@@ -1,7 +1,8 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 
 import { CreateOrEditSpecializationFormValues } from '../../model/types/specialization';
@@ -9,7 +10,7 @@ import { CreateOrEditSpecializationFormValues } from '../../model/types/speciali
 import styles from './SpecializationForm.module.css';
 
 export const SpecializationForm = () => {
-	const { t } = useTranslation('specialization');
+	const { t } = useTranslation(i18Namespace.specialization);
 	const {
 		register,
 		formState: { errors },
@@ -18,12 +19,12 @@ export const SpecializationForm = () => {
 	return (
 		<Flex direction="column" gap="8">
 			<Flex align="center" gap="8">
-				<label htmlFor="title">{t(SpecializationI18.SPECIALIZATION_TITLE)}</label>
+				<label htmlFor="title">{t(Specializations.TITLE_FULL)}</label>
 				<input className={styles.input} {...register('title')} />
 			</Flex>
 			{errors.title ? <div>{errors.title.message}</div> : null}
 			<Flex align="center" gap="8">
-				<label htmlFor="description">{t(SpecializationI18.SPECIALIZATION_DESCRIPTION)}</label>
+				<label htmlFor="description">{t(Specializations.DESCRIPTION_FULL)}</label>
 				<input className={styles.input} {...register('description')} />
 			</Flex>
 			{errors.description ? <div>{errors.description.message}</div> : null}

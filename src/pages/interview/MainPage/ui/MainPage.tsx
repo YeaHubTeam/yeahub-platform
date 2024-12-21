@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { Translation, mainPage } from '@/shared/config/i18n/i18nTranslations';
+import { Translation, Main } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
 import { EmailVerify, getFullProfile } from '@/entities/profile';
@@ -13,8 +14,7 @@ import styles from './MainPage.module.css';
 const MainPage = () => {
 	const profile = useAppSelector(getFullProfile);
 
-	const { t } = useI18nHelpers();
-	const { t: tMainPage } = useI18nHelpers(i18Namespace.mainPage);
+	const { t } = useTranslation([i18Namespace.translation, i18Namespace.main]);
 
 	return (
 		<>
@@ -24,9 +24,7 @@ const MainPage = () => {
 					gap="24"
 					className={!profile.isEmailVerified ? styles.wrapper : ''}
 				>
-					<h2 className={styles.title}>
-						{t(Translation.HELLO)}, {profile.firstName}!
-					</h2>
+					<h2 className={styles.title}>{t(Translation.HELLO, { name: profile.firstName })}</h2>
 					{!profile.isEmailVerified ? (
 						<EmailVerify firstName={profile.firstName} />
 					) : (
@@ -34,7 +32,7 @@ const MainPage = () => {
 					)}
 				</Flex>
 			)}
-			<span className={styles.text}>{tMainPage(mainPage.UPCOMING)}</span>
+			<span className={styles.text}>{t(Main.PLACEHOLDER, { ns: i18Namespace.main })}</span>
 		</>
 	);
 };

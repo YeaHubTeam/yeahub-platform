@@ -1,8 +1,8 @@
 import ReactECharts from 'echarts-for-react';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Interview } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 
 import { options } from '../../model/constants/options';
 
@@ -23,7 +23,7 @@ export const PassedQuestionChart = ({
 }: PassedQuestionChartProps) => {
 	const passedQuestionsPercent = Math.round((learned / total) * 100);
 
-	const { t } = useI18nHelpers(i18Namespace.interview);
+	const { t } = useTranslation(i18Namespace.interviewStatistics);
 
 	const gaugeOption = structuredClone(options.gauge);
 
@@ -39,8 +39,8 @@ export const PassedQuestionChart = ({
 	];
 	gaugeOption.series[0].progress.show = !!passedQuestionsPercent;
 	gaugeOption.series[0].detail.formatter = total
-		? `{value}%\n${t(Interview.STATS_PASSED)}`
-		: t(Interview.STATS_SOON);
+		? `{value}%\n${t(InterviewStatistics.PASSED)}`
+		: t(InterviewStatistics.SOON);
 
 	return (
 		<ReactECharts

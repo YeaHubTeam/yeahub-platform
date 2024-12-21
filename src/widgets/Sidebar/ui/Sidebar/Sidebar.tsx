@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ChatIcon from '@/shared/assets/icons/chat.svg';
 import ToogleSidebar from '@/shared/assets/icons/toggleSidebar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Button } from '@/shared/ui/Button';
@@ -38,7 +37,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) => {
 	const { isMobile } = useScreenSize();
-	const { t } = useI18nHelpers([i18Namespace.translation, i18Namespace.a11y]);
+	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
 
@@ -73,9 +72,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 						})}
 						onClick={handleToggleSidebar}
 						data-testid="Sidebar_CloseButton"
-						aria-label={t(!isOpenNavSidebar ? A11y.CLOSE_SIDEBAR : A11y.OPEN_SIDEBAR, {
-							ns: i18Namespace.a11y,
-						})}
+						aria-label={t(!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN)}
 					>
 						<ToogleSidebar className={styles.arrow} />
 					</button>
@@ -103,7 +100,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 						preffix={<SignOutIcon isCurrentColor />}
 						variant="destructive"
 					>
-						<span>{t(Translation.USERPREFERENCES_LOGOUT, { ns: i18Namespace.translation })}</span>
+						<span>{t(Translation.LOGOUT, { ns: i18Namespace.translation })}</span>
 					</Button>
 				</Flex>
 			</Flex>

@@ -9,12 +9,6 @@
   color: var(--text-color-lightest);
 }
 
-.time {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 @media (width <= 1024px) {
   .param {
     gap: 16px;

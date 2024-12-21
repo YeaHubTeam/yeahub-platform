@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -20,13 +20,13 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 	return (
 		<Flex>
 			<Flex direction="column" gap="24" style={{ flex: '0 1 740px' }}>
-				<Card withOutsideShadow className={classNames(styles['title-block'])}>
+				<Card withOutsideShadow>
 					<Flex gap="16">
 						<div className={classNames(styles['title-img-block'])}>
 							<ImageWithWrapper
 								className={classNames(styles['title-img-block-image'])}
 								src={specialization.imageSrc}
-								alt={t(SpecializationI18.SPECIALIZATION_IMAGE_ALT)}
+								alt={t(Specializations.IMAGE_ALT)}
 							/>
 						</div>
 						<Flex maxWidth direction="column">
@@ -36,7 +36,7 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 				</Card>
 				<Card withOutsideShadow>
 					<h2 className={classNames(styles['title-description'])}>
-						{t(SpecializationI18.SPECIALIZATION_DESCRIPTION)}
+						{t(Specializations.DESCRIPTION_FULL)}
 					</h2>
 					<p>{specialization.description}</p>
 				</Card>

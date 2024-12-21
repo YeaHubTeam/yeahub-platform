@@ -1,8 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { Interview } from '@/shared/config/i18n/i18nTranslations';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { getSpecializationId } from '@/entities/profile';
@@ -13,31 +14,29 @@ import { InterviewQuestionsItem } from '../InterviewQuestionsItem/InterviewQuest
 import styles from './InterviewQuestionsList.module.css';
 
 export const InterviewQuestionsList = () => {
-	const { t } = useI18nHelpers(i18Namespace.interview);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const params = {
+	const { data: response, isSuccess } = useGetQuestionsListQuery({
 		random: true,
 		limit: 3,
 		specialization: specializationId,
-	};
-
-	const { data: response, isSuccess } = useGetQuestionsListQuery(params);
+	});
 
 	const questions = response?.data ?? [];
 
 	const isEmptyData = isSuccess && questions.length === 0;
 
 	if (isEmptyData) {
-		return <h3 className={styles['no-questions']}>{t(Interview.QUESTIONS_EMPTY)}</h3>;
+		return <h3 className={styles['no-questions']}>{t(Questions.PREVIEW_EMPTY)}</h3>;
 	}
 
 	return (
 		<Card
 			className={styles.questions}
-			title={t('questions.title')}
-			actionTitle={t('questions.studied')}
+			title={t(Questions.PREVIEW_TITLE)}
+			actionTitle={t(Questions.PREVIEW_LINK)}
 			actionRoute={ROUTES.interview.questions.page}
 			withShadow
 		>

@@ -1,8 +1,8 @@
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Auth } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Auth, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -19,7 +19,7 @@ interface ForgotPasswordFormProps {
 }
 
 export const ForgotPasswordForm = ({ onSubmit: onSubmitProps }: ForgotPasswordFormProps) => {
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation([i18Namespace.auth, i18Namespace.translation]);
 	const {
 		control,
 		formState: { isValid },
@@ -32,7 +32,9 @@ export const ForgotPasswordForm = ({ onSubmit: onSubmitProps }: ForgotPasswordFo
 			await sendEmailRecoveryPassword({ email }).unwrap();
 			onSubmitProps(email);
 		} catch (error) {
-			toast.error(t(Auth.FORGOT_PASSWORD_ENTERED_INCORRECT_EMAIL));
+			toast.error(
+				t(Translation.TOAST_CHANGE_PASSWORD_FAILED_EMAIL, { ns: i18Namespace.translation }),
+			);
 			// eslint-disable-next-line no-console
 			console.error(error);
 		}
@@ -46,18 +48,18 @@ export const ForgotPasswordForm = ({ onSubmit: onSubmitProps }: ForgotPasswordFo
 	return (
 		<Flex direction="column">
 			<div className={styles['input-wrapper']}>
-				<FormControl name="username" control={control} label={t(Auth.FORGOT_PASSWORD_EMAIL)}>
+				<FormControl name="username" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.FORGOT_PASSWORD_EMAIL_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_EMAIL_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>
 			</div>
 			<Button onClick={handleSubmit(onSubmit)} disabled={!isValid}>
-				{t(Auth.FORGOT_PASSWORD_SEND)}
+				{t(Auth.FORGOT_PASSWORD_SUBMIT)}
 			</Button>
 		</Flex>
 	);

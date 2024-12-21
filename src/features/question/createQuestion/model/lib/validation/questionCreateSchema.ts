@@ -29,7 +29,7 @@ export const questionCreateSchema: yup.ObjectSchema<CreateQuestionFormValues> = 
 	keywords: yup
 		.array()
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
-		.min(1, i18n.t(Translation.VALIDATION_REQUIRED))
+		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	status: yup.string<QuestionStatus>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });

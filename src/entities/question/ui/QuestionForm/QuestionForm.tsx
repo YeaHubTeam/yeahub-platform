@@ -1,9 +1,9 @@
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Range, Select, Text, TextArea, TextEditor } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
@@ -18,7 +18,7 @@ import { QuestionStatus } from '../../model/types/question';
 import styles from './QuestionForm.module.css';
 
 export const QuestionForm = () => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const { control } = useFormContext();
 
@@ -36,8 +36,8 @@ export const QuestionForm = () => {
 	return (
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
-				<Text title={t(Questions.TITLE)} />
-				<FormControl name="title" control={control} label={t(Questions.ADD_QUESTION)}>
+				<Text title={t(Questions.TITLE_SHORT)} />
+				<FormControl name="title" control={control} label={t(Questions.TITLE_LABEL)}>
 					{(field, hasError) => (
 						<TextArea {...field} state={hasError ? 'error' : 'default'} className={styles.title} />
 					)}
@@ -45,7 +45,7 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex direction="column">
 				<Text title={t(Questions.DESCRIPTION_TITLE)} />
-				<FormControl name="description" control={control} label={t(Questions.DESCRIPTION_ADD)}>
+				<FormControl name="description" control={control} label={t(Questions.DESCRIPTION_LABEL)}>
 					{(field, hasError) => (
 						<TextArea
 							id="description"
@@ -59,7 +59,7 @@ export const QuestionForm = () => {
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
 					<Text title={t(Questions.RATE_TITLE)} />
-					<Text text={t(Questions.RATE_SELECT)} className={styles.label} />
+					<Text text={t(Questions.RATE_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="rate" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
@@ -68,7 +68,7 @@ export const QuestionForm = () => {
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
 					<Text title={t(Questions.COMPLEXITY_TITLE)} />
-					<Text text={t(Questions.COMPLEXITY_TITLE)} className={styles.label} />
+					<Text text={t(Questions.COMPLEXITY_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="complexity" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={10} step={1} hasScale {...field} />}
@@ -77,7 +77,7 @@ export const QuestionForm = () => {
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
 					<Text title={t(Questions.STATUS_TITLE)} />
-					<Text text={t(Questions.STATUS_SELECT)} className={styles.label} />
+					<Text text={t(Questions.STATUS_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="status" control={control}>
 					{({ onChange, value }) => (
@@ -86,7 +86,7 @@ export const QuestionForm = () => {
 								type="default"
 								onChange={onChange}
 								value={value}
-								placeholder={t(Questions.STATUS_SELECT)}
+								placeholder={t(Questions.STATUS_LABEL)}
 								options={questionStatusesItems}
 								className={styles['status-select']}
 							/>
@@ -97,7 +97,7 @@ export const QuestionForm = () => {
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
 					<Text title={t(Questions.SPECIALIZATION_TITLE)} />
-					<Text text={t(Questions.SPECIALIZATION_SELECT)} className={styles.label} />
+					<Text text={t(Questions.SPECIALIZATION_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
@@ -110,7 +110,7 @@ export const QuestionForm = () => {
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
 					<Text title={t(Questions.SKILLS_TITLE)} />
-					<Text text={t(Questions.SKILLS_ADD)} className={styles.label} />
+					<Text text={t(Questions.SKILLS_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="skills" control={control}>
 					{({ onChange, value }) => {
@@ -124,8 +124,8 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
-					<Text title={t(Questions.QUESTION_KEYWORDS)} />
-					<Text text={t(Questions.QUESTION_KEYWORDS)} className={styles.label} />
+					<Text title={t(Questions.KEYWORDS_TITLE)} />
+					<Text text={t(Questions.KEYWORDS_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value }) => {
@@ -139,7 +139,7 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex direction="column">
 				<Text title={t(Questions.SHORT_ANSWER_TITLE)} />
-				<FormControl name="shortAnswer" control={control} label={t(Questions.SHORT_ANSWER_ADD)}>
+				<FormControl name="shortAnswer" control={control} label={t(Questions.SHORT_ANSWER_LABEL)}>
 					{(field) => (
 						<TextEditor
 							id="shortAnswer"
@@ -153,7 +153,7 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex direction="column">
 				<Text title={t(Questions.LONG_ANSWER_TITLE)} />
-				<FormControl name="longAnswer" control={control} label={t(Questions.LONG_ANSWER_ADD)}>
+				<FormControl name="longAnswer" control={control} label={t(Questions.LONG_ANSWER_LABEL)}>
 					{(field) => (
 						<TextEditor
 							id="longAnswer"
