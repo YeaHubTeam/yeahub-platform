@@ -1,4 +1,5 @@
 import { differenceInYears } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import DoubleCheck from '@/shared/assets/icons/DoubleCheck.svg';
@@ -7,7 +8,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FullProfile } from '@/entities/auth';
@@ -23,7 +23,7 @@ interface UserInfoProps {
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const { firstName, lastName, birthday, phone, email, country, city, isEmailVerified } = profile;
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation(i18Namespace.profile);
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -77,7 +77,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						<Flex align="center" gap="4">
 							<Time className={styles['svg-time']} />
 							<span className={styles['card-verify-link']}>
-								{t(Profile.PROFILE_EMAIL_VERIFICATION_VERIFY_LINK)}
+								{t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK)}
 							</span>
 						</Flex>
 					</Link>

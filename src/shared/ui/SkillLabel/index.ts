@@ -1,1 +1,0 @@
-export { SkillLabel } from './SkillsLabel';

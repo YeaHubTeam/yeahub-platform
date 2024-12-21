@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -5,7 +6,6 @@ import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { formatTime, getTimeDifference } from '@/shared/helpers/formatTime';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
@@ -14,23 +14,22 @@ import { getProfileId } from '@/entities/profile';
 import { useGetQuizByProfileIdQuery } from '@/entities/quiz';
 
 import { PassedInterviewStat, PassedQuestionChart } from '@/widgets/Charts';
-import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 import { PassedQuestionsList } from '@/widgets/PassedQuestions';
 
 import { InterviewQuizResultPageSkeleton } from '@/pages/interview/InterviewQuizResultPage';
 
 import { getInterviewStats } from '../model/getInterviewStast';
 
-import styles from './InterviewResultPage.module.css';
+import styles from './InterviewQuizResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
-	const { t } = useI18nHelpers(i18Namespace.interviewQuizResult);
+	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 	const profileId = useAppSelector(getProfileId);
 	const { quizId } = useParams<{ quizId?: string }>();
 
 	const { data, isLoading } = useGetQuizByProfileIdQuery({
 		quizId: quizId ?? '',
-		profileId: profileId ?? '',
+		profileId,
 	});
 
 	if (isLoading) {
@@ -44,22 +43,22 @@ const InterviewQuizResultPage = () => {
 
 	const questionStats = [
 		{
-			title: t(InterviewQuizResult.QUESTIONSTATS_PASSED),
+			title: t(InterviewQuizResult.PASSED_QUESTION),
 			value: `${learnedQuestions ?? 0}/${data?.fullCount ?? 0}`,
 		},
 		{
-			title: t(InterviewQuizResult.QUESTIONSTATS_TIMESPENT),
+			title: t(InterviewQuizResult.TIME),
 			value: formatTime(new Date((data?.startDate as string) ?? new Date().toDateString())),
 		},
 		{
-			title: t(InterviewQuizResult.QUESTIONSTATS_DATE),
+			title: t(InterviewQuizResult.DATE),
 			value: formatDate(
 				new Date((data?.startDate as string) ?? new Date().toDateString()),
 				'dd.MM.yyyy',
 			),
 		},
 		{
-			title: t(InterviewQuizResult.QUESTIONSTATS_DURATION),
+			title: t(InterviewQuizResult.DURATION),
 			value: getTimeDifference(data?.startDate ?? '', data?.endDate ?? ''),
 		},
 	];
@@ -67,22 +66,19 @@ const InterviewQuizResultPage = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.wrapper}>
-				<Card className={styles.results}>
-					<Flex direction="column" align="center" className={styles.result}>
-						<InterviewQuestionHeader
-							title={t('resultInterview.resultTitle', { title: data?.quizNumber })}
-							centered
-						/>
-						<PassedInterviewStat
-							isLoading={isLoading}
-							totalAttempt={interviewStats?.questionsTotalCount ?? 0}
-							attemptData={interviewStats?.stats ?? []}
-						/>
-					</Flex>
+				<Card
+					className={styles.results}
+					isTitleCenter
+					title={t(InterviewQuizResult.TITLE_QUESTIONS_ANSWERS, { title: data?.quizNumber })}
+				>
+					<PassedInterviewStat
+						isLoading={isLoading}
+						totalAttempt={interviewStats?.questionsTotalCount ?? 0}
+						attemptData={interviewStats?.stats ?? []}
+					/>
 				</Card>
-				<Card className={styles.block}>
+				<Card className={styles.block} isTitleCenter title={t(InterviewQuizResult.TITLE_STAT)}>
 					<Flex gap="20" direction="column" align="center" justify="center">
-						<InterviewQuestionHeader title={t('resultInterview.questionTitle')} centered />
 						<PassedQuestionChart
 							isLoading={isLoading}
 							total={data?.fullCount ?? 1}
@@ -92,11 +88,12 @@ const InterviewQuizResultPage = () => {
 					</Flex>
 				</Card>
 			</div>
-			<Card className={styles.passed}>
-				<Flex direction="column" gap="24">
-					<InterviewQuestionHeader title={t('resultInterview.allPassedQuestionTitle')} centered />
-					<PassedQuestionsList questions={questions ?? []} />
-				</Flex>
+			<Card
+				className={styles.passed}
+				isTitleCenter
+				title={t(InterviewQuizResult.TITLE_QUESTIONS_LIST)}
+			>
+				<PassedQuestionsList questions={questions ?? []} />
 			</Card>
 		</div>
 	);

@@ -2,19 +2,19 @@ import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Input, Text, TextArea } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
 import styles from './SkillForm.module.css';
 
-export const SkillForm = () => {
-	const { t } = useTranslation('skill');
-	const {
-		formState: { errors },
-	} = useFormContext();
-	// eslint-disable-next-line no-console
-	console.log(errors);
+interface SkillFormProps {
+	isEdit?: boolean;
+}
+
+export const SkillForm = ({ isEdit }: SkillFormProps) => {
+	const { t } = useTranslation(i18Namespace.skill);
 
 	const { control } = useFormContext();
 
@@ -22,17 +22,17 @@ export const SkillForm = () => {
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
 				<Text
-					title={t(Skills.SKILLS_TITLE)}
+					title={isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
 					className={`${styles['title-base']} ${styles.title1}`}
 				/>
 				<Flex direction="row" className={`${styles['skills-input']}`} gap="120">
 					<Flex direction="column" gap="8">
 						<Text
-							title={t(Skills.TITLE_SKILL)}
+							title={t(Skills.TITLE_FULL)}
 							className={`${styles['title-base']} ${styles.title2}`}
 						/>
 						<Text
-							title={t(Skills.CREATE_PAGE_TITLE)}
+							title={t(Skills.TITLE_LABEL)}
 							className={`${styles['title-base']} ${styles.title3}`}
 						/>
 					</Flex>
@@ -43,11 +43,11 @@ export const SkillForm = () => {
 			</Flex>
 			<Flex direction="column" style={{ marginTop: '60' }} gap="8">
 				<Text
-					title={t(Skills.DESCRIPTION_SPECIALIZATION)}
+					title={t(Skills.DESCRIPTION_FULL)}
 					className={`${styles['title-base']} ${styles.title2}`}
 				/>
 				<Text
-					title={t(Skills.DETAILED_DESCRIPTION_SKILL)}
+					title={t(Skills.DESCRIPTION_LABEL)}
 					className={`${styles['title-base']} ${styles.title3}`}
 				/>
 				<FormControl name="description" control={control}>
@@ -55,7 +55,7 @@ export const SkillForm = () => {
 						<TextArea
 							id="description"
 							className={styles.description}
-							placeholder={t(Skills.DETAILED_DESCRIPTION_TEXTAREA)}
+							placeholder={t(Skills.DESCRIPTION_PLACEHOLDER)}
 							state={hasError ? 'error' : 'default'}
 							{...field}
 						/>

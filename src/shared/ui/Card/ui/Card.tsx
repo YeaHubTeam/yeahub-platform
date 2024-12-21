@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import { Flex } from '../../Flex';
 
@@ -22,6 +22,7 @@ interface CardProps {
 	withShadow?: boolean;
 	withOutsideShadow?: boolean;
 	isActionPositionBottom?: boolean;
+	isTitleCenter?: boolean;
 }
 
 interface ExpandIconProps {
@@ -80,11 +81,12 @@ export const Card = ({
 	actionRoute = '',
 	actionDisabled = false,
 	isActionPositionBottom = false,
+	isTitleCenter = false,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
-	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
+	const { t } = useTranslation(i18Namespace.interviewStatistics);
 
 	useLayoutEffect(() => {
 		if (expandable) {
@@ -132,7 +134,15 @@ export const Card = ({
 		>
 			{(title || actionRoute) && (
 				<div className={classNames(styles['card-header'])}>
-					{title ? <h3 className={styles['card-header-title']}>{title}</h3> : null}
+					{title ? (
+						<h3
+							className={classNames(styles['card-header-title'], {
+								[styles['card-header-title-center']]: isTitleCenter,
+							})}
+						>
+							{title}
+						</h3>
+					) : null}
 					{actionRoute ? (
 						<Link
 							to={actionRoute}

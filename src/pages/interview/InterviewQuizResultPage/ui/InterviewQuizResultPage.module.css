@@ -21,10 +21,6 @@
   flex-grow: 1;
 }
 
-.result {
-  gap: 50px;
-}
-
 .block {
   width: 410px;
 }
@@ -32,21 +28,7 @@
 .passed {
   display: flex;
   flex: 1;
-  flex-grow: 1;
   justify-content: center;
-}
-
-.title {
-  margin-bottom: 16px;
-}
-
-.question-list {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(400px, 1fr));
-  gap: 16px;
-  width: 100%;
-  place-items: center start;
 }
 
 @media (width <= 1024px) {

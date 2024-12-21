@@ -2,12 +2,12 @@
 
 import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Gallery from '@/shared/assets/images/Gallery.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension } from './model/types/types';
@@ -33,7 +33,7 @@ export const FileLoader = ({
 
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
@@ -98,18 +98,18 @@ export const FileLoader = ({
 			onDragEnter={onDragOverAndEnter}
 			className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
 		>
-			<div className={style['svg-wrapper']}>
-				<img src={Gallery} alt={t(Translation.FILELOADER_FILETYPES_PHOTO)} />
+			<div>
+				<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} />
 			</div>
 
 			<p>
-				<span>{t(Translation.FILELOADER_LINKTEXT)}</span> {t(Translation.FILELOADER_TEXT)}{' '}
+				<span>{t(Translation.FILE_LOADER_LINK)}</span> {t(Translation.FILE_LOADER_TEXT)}{' '}
 				{fileTypeText}
 			</p>
 
 			<p className={style['extension-descriptions']}>
 				{extensionsText}
-				{maxFileMBSize && ` (${t(Translation.FILELOADER_LIMIT, { maxFileMBSize })})`}
+				{maxFileMBSize && ` (${t(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`}
 			</p>
 
 			<input

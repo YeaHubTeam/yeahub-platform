@@ -33,7 +33,7 @@ export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<SkillEditFormHeader />
 					<Card className={styles.content}>
-						<SkillForm />
+						<SkillForm isEdit />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -20,7 +20,7 @@ import { ChangePasswordFormValues } from '../model/types/changePasswordTypes';
 import styles from './ChangePassword.module.css';
 
 export const ChangePassword = () => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 	const token = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const profile = useAppSelector(getFullProfile);
@@ -53,23 +53,19 @@ export const ChangePassword = () => {
 	return (
 		<>
 			<Flex direction="column" gap="12" className={styles['header-section']}>
-				<h3 className={styles['title']}>{t(Profile.PROFILE_CHANGE_PASSWORD_TITLE)}</h3>
-				<p className={styles['description']}>{t(Profile.PROFILE_CHANGE_PASSWORD_DESCRIPTION)}</p>
+				<h3 className={styles['title']}>{t(Profile.CHANGE_PASSWORD_TITLE)}</h3>
+				<p className={styles['description']}>{t(Profile.CHANGE_PASSWORD_DESCRIPTION)}</p>
 			</Flex>
 
 			<form className={styles.form} onSubmit={handleSubmit(handleChangePassword)}>
 				<Flex className={styles['flex-form']}>
 					<div className={styles['input-wrapper']}>
-						<FormControl
-							name="password"
-							control={control}
-							label={t(Profile.PROFILE_CHANGE_PASSWORD_ENTER_NEW_PASSWORD)}
-						>
+						<FormControl name="password" control={control} label={t(Profile.CHANGE_PASSWORD_LABEL)}>
 							{(field) => (
 								<Input
 									{...field}
 									className={styles.input}
-									placeholder={t(Profile.PROFILE_CHANGE_PASSWORD_PLACEHOLDERT)}
+									placeholder={t(Profile.CHANGE_PASSWORD_PLACEHOLDER)}
 									type={isPasswordHidden ? 'text' : 'password'}
 									suffix={
 										<Icon
@@ -92,13 +88,13 @@ export const ChangePassword = () => {
 						<FormControl
 							name="passwordConfirm"
 							control={control}
-							label={t(Profile.PROFILE_CHANGE_PASSWORD_REPEAT_PASSWORD)}
+							label={t(Profile.CHANGE_PASSWORD_REPEAT_LABEL)}
 						>
 							{(field) => (
 								<Input
 									{...field}
 									className={styles.input}
-									placeholder={t(Profile.PROFILE_CHANGE_PASSWORD_PLACEHOLDERT)}
+									placeholder={t(Profile.CHANGE_PASSWORD_PLACEHOLDER)}
 									type={isPasswordHidden ? 'text' : 'password'}
 									suffix={
 										<Icon
@@ -124,7 +120,7 @@ export const ChangePassword = () => {
 						className={styles['submit-button']}
 						disabled={!isValid || isChangePasswordLoading}
 					>
-						{t(Profile.PROFILE_CHANGE_PASSWORD_BUTTON)}
+						{t(Translation.SAVE, { ns: i18Namespace.translation })}
 					</Button>
 				</Flex>
 			</form>

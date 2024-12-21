@@ -1,16 +1,16 @@
 import { MutableRefObject, LegacyRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 
 import { QuestionCategories, type QuizWithoutQuestions } from '@/entities/quiz';
 
 import styles from './FullInterviewHistoryItem.module.css';
-import { InterviewHeader } from './InterviewHeader/InterviewHeader';
 import { InterviewParameters } from './InterviewParameters/InterviewParameters';
 
 interface FullInterviewHistoryItemProps {
@@ -20,15 +20,19 @@ interface FullInterviewHistoryItemProps {
 
 export const FullInterviewHistoryItem = ({ interview, itemRef }: FullInterviewHistoryItemProps) => {
 	const { id, skills } = interview;
-	const { t } = useI18nHelpers(i18Namespace.interviewHistory);
+	const { t } = useTranslation(i18Namespace.interviewHistory);
 
 	const notEmptySkills = skills.length > 0;
 
 	return (
 		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
-				<Card className={styles.container}>
-					<InterviewHeader title={t('title', { number: interview.quizNumber })} />
+				<Card
+					className={styles.container}
+					title={t(InterviewHistory.TITLE, { number: interview.quizNumber })}
+					actionTitle={t(InterviewHistory.LINK)}
+					actionRoute={route(ROUTES.interview.history.result.page, id)}
+				>
 					<InterviewParameters interview={interview} />
 					{notEmptySkills && <QuestionCategories questionCategories={skills} />}
 				</Card>

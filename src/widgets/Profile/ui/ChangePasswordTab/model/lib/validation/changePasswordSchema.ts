@@ -10,15 +10,11 @@ YupPassword(yup);
 export const changePasswordSchema = yup.object().shape({
 	password: yup
 		.string()
-		.min(8, i18n.t(Translation.VALIDATION_PASSWORD_MIN, { count: 8 }))
-		.matches(passwordRules, {
-			message: i18n.t(
-				'Пароль должен содержать заглавные и строчные буквы, цифры и специальные символы',
-			),
-		})
+		.min(8, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
+		.matches(passwordRules, () => i18n.t(Translation.VALIDATION_PASSWORD_WEAK))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	passwordConfirm: yup
 		.string()
-		.oneOf([yup.ref('password')], i18n.t(Translation.VALIDATION_PASSWORD_CONFIRMATION))
+		.oneOf([yup.ref('password')], () => i18n.t(Translation.VALIDATION_PASSWORD_SIMILAR))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });

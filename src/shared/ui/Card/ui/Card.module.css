@@ -20,6 +20,11 @@
   font-size: var(--font-size-h-xs)
 }
 
+.card-header-title-center {
+  width: 100%;
+  text-align: center;
+}
+
 .content {
   display: flex;
   flex-direction: column;

@@ -1,17 +1,18 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 
 import styles from './FiltersList.module.css';
 
 export const FiltersList = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
 		<div className={styles.filters}>
 			<ul className={styles['filters-list']}>
 				<li>
-					<p>{t(Landing.COMPLEXITY_LEVEL)}</p>
+					<p>{t(Questions.COMPLEXITY_TITLE)}</p>
 					<ul className={styles['sub-list']}>
 						<li>1-3</li>
 						<li>4-6</li>
@@ -20,7 +21,7 @@ export const FiltersList = () => {
 					</ul>
 				</li>
 				<li>
-					<p>{t(Landing.RATING)}</p>
+					<p>{t(Questions.RATE_TITLE)}</p>
 					<ul className={styles['sub-list']}>
 						<li>1</li>
 						<li>2</li>
@@ -30,12 +31,11 @@ export const FiltersList = () => {
 					</ul>
 				</li>
 				<li>
-					<p>{t(Landing.STATUS)}</p>
+					<p>{t(Questions.STATUS_TITLE)}</p>
 					<ul className={styles['sub-list']}>
-						<li>{t(Landing.LEARNED)}</li>
-						<li>{t(Landing.UNLEARNED)}</li>
-						<li>{t(Landing.SAVED)}</li>
-						<li className={styles.active}>{t(Landing.ALL)}</li>
+						<li>{t(Questions.STATUS_UNLEARNED)}</li>
+						<li>{t(Questions.STATUS_LEARNED)}</li>
+						<li className={styles.active}>{t(Questions.STATUS_ALL)}</li>
 					</ul>
 				</li>
 			</ul>
