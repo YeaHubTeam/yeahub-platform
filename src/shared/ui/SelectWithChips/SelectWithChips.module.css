@@ -1,13 +1,12 @@
-.wrapper {
+.selection {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 740px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .select {
   width: 100%;
+  max-width: 320px;
 }
 
 .select select {
@@ -18,8 +17,10 @@
   border-radius: 12px;
 }
 
-.selection {
+.wrapper {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 740px;
 }
