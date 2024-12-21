@@ -20,7 +20,7 @@ export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillS
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit: 100,
-		specializations: selectedSPecializations?.join(','),
+		specializations: selectedSPecializations,
 	});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);

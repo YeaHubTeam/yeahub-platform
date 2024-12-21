@@ -36,7 +36,7 @@ export const ChooseQuestionsCategories = ({
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
-		specializations: [profileSpecialization].join(','),
+		specializations: [profileSpecialization],
 	});
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();

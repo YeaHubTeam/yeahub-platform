@@ -39,7 +39,7 @@ const CreateQuizPage = () => {
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
-		specializations: [profileSpecialization].join(','),
+		specializations: [profileSpecialization],
 	});
 	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
 

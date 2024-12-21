@@ -1,4 +1,4 @@
-import { useFormContext, useWatch } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { Input, Range, Select, Text, TextArea, TextEditor } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -20,12 +20,9 @@ import styles from './QuestionForm.module.css';
 export const QuestionForm = () => {
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
-	const { control } = useFormContext();
+	const { control, watch } = useFormContext();
 
-	const selectedSpecializations = useWatch({
-		control,
-		name: 'specializations',
-	});
+	const selectedSpecializations = watch('specializations');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
