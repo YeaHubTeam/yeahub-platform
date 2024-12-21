@@ -51,12 +51,7 @@ export const RegisterForm = () => {
 			<h1>{t(Auth.REGISTRATION_TITLE)}</h1>
 
 			<div className={styles['input-wrapper']}>
-				<FormControl
-					name="firstName"
-					control={control}
-					label={t(Auth.FORM_FIRSTNAME_LABEL)}
-					errorOptions={{ min: 2, max: 30 }}
-				>
+				<FormControl name="firstName" control={control} label={t(Auth.FORM_FIRSTNAME_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
