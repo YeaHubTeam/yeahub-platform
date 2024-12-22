@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface QuestionsSorterProps {
@@ -8,11 +10,11 @@ interface QuestionsSorterProps {
 }
 
 export const QuestionsSorter = ({ changeTheOrder, selectedOrder }: QuestionsSorterProps) => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const field = [
-		{ id: 'ASC', title: t('sort.ascending') },
-		{ id: 'DESC', title: t('sort.descending') },
+		{ id: 'ASC', title: t(Questions.SORT_ASCENDING) },
+		{ id: 'DESC', title: t(Questions.SORT_DESCENDING) },
 	];
 
 	const handleSort = (id: string) => {
@@ -25,5 +27,7 @@ export const QuestionsSorter = ({ changeTheOrder, selectedOrder }: QuestionsSort
 		active: selectedOrder === item.id,
 	}));
 
-	return <BaseFilterSection data={preparedData} title={t('sort.title')} onClick={handleSort} />;
+	return (
+		<BaseFilterSection data={preparedData} title={t(Questions.SORT_TITLE)} onClick={handleSort} />
+	);
 };

@@ -1,13 +1,11 @@
 {
-  "resultInterview": {
-    "resultTitle": "Результат собеседования № {{title}}",
-    "questionTitle": "Статистика пройденных вопросов по всем категориям",
-    "allPassedQuestionTitle": "Список пройденных вопросов собеседования"
+  "title": {
+    "questions.answers": "Результат собеседования № {{title}}",
+    "stat": "Статистика пройденных вопросов по всем категориям",
+    "questions.list": "Список пройденных вопросов собеседования"
   },
-  "questionStats": {
-    "passed": "Пройдено",
-    "timeSpent": "Время",
-    "date": "Дата",
-    "duration": "Длительность"
-  }
+  "passed.question": "Пройдено",
+  "time": "Время",
+  "date": "Дата",
+  "duration": "Длительность"
 }

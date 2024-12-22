@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Docs as DocsI18n } from '@/shared/config/i18n/i18nTranslations';
+import { Docs } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button/ui/Button';
 import { Flex } from '@/shared/ui/Flex/ui/Flex';
 
@@ -24,7 +24,7 @@ export const DocItem = ({ doc }: DocItemProps) => {
 			<div className={styles['doc-link']}>
 				<NavLink to={doc.link} target="_blank">
 					<Button style={{ borderRadius: '12px' }} variant="link-purple">
-						{t(DocsI18n.TITLE)}
+						{t(Docs.LINK)}
 						<ArrowRight style={{ width: '20px', height: '20px' }} />
 					</Button>
 				</NavLink>

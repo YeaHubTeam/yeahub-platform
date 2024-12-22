@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Icon, Popover, IconButton } from 'yeahub-ui-kit';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 
 import { Skill } from '@/entities/skill';
@@ -25,14 +25,13 @@ interface SkillsTableProps {
 }
 
 export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTableProps) => {
-	const [openPopovers, setOpenPopovers] = useState<number | null>(null);
-
-	const { t } = useI18nHelpers([i18Namespace.skill, i18Namespace.translation]);
+	const navigate = useNavigate();
+	const { t } = useTranslation([i18Namespace.skill, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(Skills.TITLE),
-			description: t(Skills.DESCRIPTION),
+			title: t(Skills.TITLE_SHORT),
+			description: t(Skills.DESCRIPTION_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -52,59 +51,39 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 	};
 
 	const renderActions = (skill: Skill) => {
-		const openActions = () => {
-			setOpenPopovers(skill.id);
-		};
-
-		const closeActions = () => {
-			setOpenPopovers(null);
-		};
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.skills.detail.page, skill.id));
+				},
+			},
+			{
+				icon: <Icon icon="pencil" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.skills.edit.page, skill.id));
+				},
+			},
+			{
+				renderComponent: () => <DeleteSkillButton skillId={skill.id} />,
+			},
+		];
 
 		return (
 			<Flex gap="4">
-				<Popover
-					placement="bottom-start"
-					body={
-						<div>
-							<NavLink to={route(ROUTES.admin.skills.detail.page, skill.id)}>
-								<Flex align="center" gap="4">
-									<Button
-										style={{ width: 'auto', justifyContent: 'flex-start' }}
-										aria-label="Large"
-										preffix={<Icon icon="eye" size={20} color={'--palette-ui-purple-700'} />}
-										variant="tertiary"
-									>
-										{t(Translation.SHOW, { ns: i18Namespace.translation })}
-									</Button>
-								</Flex>
-							</NavLink>
-							<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
-								<Flex align="center" gap="4">
-									<Button
-										style={{ width: 'auto', justifyContent: 'flex-start' }}
-										aria-label="Large"
-										preffix={<Icon icon="pencil" size={20} color={'--palette-ui-purple-700'} />}
-										variant="tertiary"
-									>
-										{t(Translation.EDIT, { ns: i18Namespace.translation })}
-									</Button>
-								</Flex>
-							</NavLink>
-							<DeleteSkillButton skillId={skill.id} />
-						</div>
-					}
-					isOpen={openPopovers === skill.id}
-					onClickOutside={closeActions}
-				>
-					<div>
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
 						<IconButton
-							style={{ cursor: 'pointer' }}
-							theme="tertiary"
-							onClick={openActions}
-							aria-label="Large"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							aria-label="go to details"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" />}
+							size="M"
+							variant="tertiary"
+							onClick={onToggle}
 						/>
-					</div>
+					)}
 				</Popover>
 			</Flex>
 		);

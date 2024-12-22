@@ -1,5 +1,5 @@
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
+import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 
 import { Answers } from '@/entities/quiz';
 
@@ -15,24 +15,18 @@ export const getInterviewStats = (questions: Answers[] = []) => {
 			(acc, curr) => {
 				if (curr.answer === 'KNOWN') acc[0].value = acc[0].value + 1;
 				if (curr.answer === 'UNKNOWN') acc[1].value = acc[1].value + 1;
-				if (curr.answer === 'REPEAT') acc[2].value = acc[2].value + 1;
 				return acc;
 			},
 			[
 				{
-					name: i18n.t(Translation.INTERVIEWRESULT_KNOWN),
+					name: i18n.t(InterviewQuiz.ANSWER_KNOW, { ns: i18Namespace.interviewQuiz }),
 					value: 0,
 					itemStyle: { color: '#400799' },
 				},
 				{
-					name: i18n.t(Translation.INTERVIEWRESULT_UNKNOWN),
+					name: i18n.t(InterviewQuiz.ANSWER_DO_NOT_KNOW, { ns: i18Namespace.interviewQuiz }),
 					value: 0,
 					itemStyle: { color: '#E1CEFF' },
-				},
-				{
-					name: i18n.t(Translation.INTERVIEWRESULT_REPEAT),
-					value: 0,
-					itemStyle: { color: '#6A0BFF' },
 				},
 			],
 		);

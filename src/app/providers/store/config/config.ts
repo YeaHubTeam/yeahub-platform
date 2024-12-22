@@ -10,6 +10,7 @@ import { activeQuizSlice } from '@/entities/quiz';
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
+import { usersPageReducer } from '@/pages/admin/UserTablePage';
 import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
 import { questionsPageReducer } from '@/pages/interview/QuestionsPage';
@@ -27,6 +28,7 @@ export const createReduxStore = (initialState?: State) => {
 			interviewHistoryPage: interviewHistoryPageReducer,
 			questionsTablePage: questionsTablePageReducer,
 			specializationsPage: specializationsPageReducer,
+			usersPage: usersPageReducer,
 			profile: profileReducer,
 		},
 		preloadedState: initialState,

@@ -17,3 +17,5 @@ export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSor
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';
 
 export { questionHandlers } from './api/__mocks__/index';
+
+export { questionsMock } from './api/__mocks__/data';

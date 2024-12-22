@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Interview } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuiz, InterviewStatistics, Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
 
@@ -29,7 +29,11 @@ import styles from './InterviewPage.module.css';
 import { InterviewPageSkeleton } from './InterviewPage.skeleton';
 
 const InterviewPage = () => {
-	const { t } = useI18nHelpers(i18Namespace.interview);
+	const { t } = useTranslation([
+		i18Namespace.interviewQuiz,
+		i18Namespace.interviewStatistics,
+		i18Namespace.profile,
+	]);
 
 	const profileId = useAppSelector(getProfileId);
 	const specializationId = useAppSelector(getSpecializationId);
@@ -44,13 +48,11 @@ const InterviewPage = () => {
 		uniqueKey: 'interviewPreviewHistory',
 	});
 
-	const params = {
+	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery({
 		random: true,
 		limit: 3,
 		specialization: specializationId,
-	};
-
-	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery(params);
+	});
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId,
@@ -61,22 +63,30 @@ const InterviewPage = () => {
 	const questionStats = profileStats
 		? [
 				{
-					title: t(Interview.STATS_STATSSTUDIED_ALLQUESTIONS),
+					title: t(InterviewStatistics.QUESTION_STATS_ALL, {
+						ns: i18Namespace.interviewStatistics,
+					}),
 					value: String(profileStats.questionsStat.uniqueQuestionsCount),
 					route: `${ROUTES.interview.questions.page}?page=1&status=all`,
 				},
 				{
-					title: t(Interview.STATS_STATSSTUDIED_NEWQUESTIONS),
+					title: t(InterviewStatistics.QUESTION_STATS_NEW, {
+						ns: i18Namespace.interviewStatistics,
+					}),
 					value: String(profileStats.questionsStat.unlearnedQuestionsCount),
 					route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 				},
 				{
-					title: t(Interview.STATS_STATSSTUDIED_INPROCESS),
+					title: t(InterviewStatistics.QUESTION_STATS_IN_PROCESS, {
+						ns: i18Namespace.interviewStatistics,
+					}),
 					value: String(profileStats.questionsStat.inProgressQuestionsCount),
 					route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 				},
 				{
-					title: t(Interview.STATS_STATSSTUDIED_STUDIED),
+					title: t(InterviewStatistics.QUESTION_STATS_LEARNED, {
+						ns: i18Namespace.interviewStatistics,
+					}),
 					value: String(profileStats.questionsStat.learnedQuestionsCount),
 					route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 				},
@@ -112,10 +122,10 @@ const InterviewPage = () => {
 
 	const interviewPreparationActionTitleKey =
 		!profile?.isEmailVerified && !isSpecializationEmpty
-			? Interview.VERIFY_EMAIL_LINK
+			? t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile })
 			: lastActiveQuizInfo
-				? Interview.PREPARATION_ACTIVELINKTEXT
-				: Interview.PREPARATION_NOACTIVELINKTEXT;
+				? t(InterviewQuiz.CONTINUE_QUIZ, { ns: i18Namespace.interviewQuiz })
+				: t(InterviewQuiz.START_QUIZ_LINK, { ns: i18Namespace.interviewQuiz });
 
 	const interviewPreparationActionRoute =
 		!profile?.isEmailVerified && !isSpecializationEmpty
@@ -125,8 +135,8 @@ const InterviewPage = () => {
 				: ROUTES.interview.quiz.page;
 
 	const statsActionTitleKey = !profile?.isEmailVerified
-		? Interview.VERIFY_EMAIL_LINK
-		: Interview.STATS_LINKTEXT;
+		? t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile })
+		: t(InterviewStatistics.LINK, { ns: i18Namespace.interviewStatistics });
 
 	const statsActionRoute = !profile?.isEmailVerified
 		? EMAIL_VERIFY_SETTINGS_TAB
@@ -137,8 +147,8 @@ const InterviewPage = () => {
 			<Card
 				className={styles.interview}
 				actionDisabled={isSpecializationEmpty}
-				title={t(Interview.PREPARATION_TITLE)}
-				actionTitle={t(interviewPreparationActionTitleKey)}
+				title={t(InterviewQuiz.PREVIEW_TITLE, { ns: i18Namespace.interviewQuiz })}
+				actionTitle={interviewPreparationActionTitleKey}
 				actionRoute={interviewPreparationActionRoute}
 				withShadow
 			>
@@ -157,10 +167,10 @@ const InterviewPage = () => {
 						) : (
 							<div className={styles['preparation-empty']}>
 								<h2 className={styles['inactive-title']}>
-									{t(Interview.PREPARATION_NOACTIVETITLE)}
+									{t(InterviewQuiz.START_QUIZ_TITLE, { ns: i18Namespace.interviewQuiz })}
 								</h2>
 								<p className={styles['inactive-description']}>
-									{t(Interview.PREPARATION_NOACTIVEDESCRIPTION)}
+									{t(InterviewQuiz.START_QUIZ_DESCRIPTION, { ns: i18Namespace.interviewQuiz })}
 								</p>
 								<img
 									className={styles['preparation-noactiveimage']}
@@ -177,8 +187,10 @@ const InterviewPage = () => {
 				<Card
 					className={styles.statistics}
 					isActionPositionBottom
-					title={t('stats.title')}
-					actionTitle={t(statsActionTitleKey)}
+					title={t(InterviewStatistics.QUESTION_STATS_TITLE_SHORT, {
+						ns: i18Namespace.interviewStatistics,
+					})}
+					actionTitle={statsActionTitleKey}
 					actionRoute={statsActionRoute}
 					actionDisabled={profile?.isEmailVerified && newUser}
 				>

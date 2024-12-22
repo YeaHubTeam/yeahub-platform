@@ -1,9 +1,9 @@
 import { ReactNode, useMemo } from 'react';
 import { useController, Control, ControllerRenderProps, FieldValues, Path } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormControl as CustomControl } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
 
@@ -30,9 +30,10 @@ export const FormControl = <T extends FieldValues>({
 		control,
 	});
 
-	const { t } = useI18nHelpers(i18Namespace.validation);
+	const { t } = useTranslation(i18Namespace.translation);
 
-	const errorText = useMemo(() => error?.message && t(error?.message), [error, t]);
+	const errorText = useMemo(() => error?.message, [error, t]);
+	// const errorText = useMemo(() => error?.message && t(error?.message, errorOptions), [error, t]);
 
 	return (
 		<CustomControl htmlFor={name} label={label} error={errorText} className={className}>

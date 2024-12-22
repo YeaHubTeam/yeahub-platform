@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { Input, Icon } from 'yeahub-ui-kit';
 
 import PlusSvg from '@/shared/assets/icons/Plus.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer/ui/FiltersDrawer';
@@ -16,18 +16,18 @@ interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
-	renderRemoveButton: () => React.ReactNode;
+	renderRemoveButton?: () => React.ReactNode;
 	renderFilter?: () => React.ReactNode;
 }
 
 export const SearchSection = ({
-	to = '/',
+	to,
 	onSearch,
 	showRemoveButton,
 	renderRemoveButton,
 	renderFilter,
 }: SearchSectionProps) => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		onSearch?.(e.target.value);
@@ -43,13 +43,15 @@ export const SearchSection = ({
 					preffix={<Icon icon={'search'} className={styles['search-svg']} />}
 					placeholder={t(Translation.SEARCH)}
 				/>
-				{showRemoveButton && renderRemoveButton()}
-				<Button>
-					<NavLink className={styles.link} to={to}>
-						{t(Translation.CREATE)}
-						<PlusSvg className={styles['plus-svg']} />
-					</NavLink>
-				</Button>
+				{showRemoveButton && renderRemoveButton && renderRemoveButton()}
+				{to && (
+					<Button>
+						<NavLink className={styles.link} to={to}>
+							{t(Translation.CREATE)}
+							<PlusSvg className={styles['plus-svg']} />
+						</NavLink>
+					</Button>
+				)}
 			</section>
 		</Card>
 	);

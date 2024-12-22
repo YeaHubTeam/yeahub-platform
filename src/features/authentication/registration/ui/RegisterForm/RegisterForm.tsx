@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Icon, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,7 +11,6 @@ import {
 	OFFER_AGREEMENT_LINK,
 	PRIVACY_POLICY_LINK,
 } from '@/shared/constants/documents';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -37,58 +37,63 @@ export const RegisterForm = () => {
 		await registrationMutation(data);
 	};
 
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation(i18Namespace.auth);
 
 	const parseI18nText = (text: string) => text.split(/<processingLink>|<\/processingLink>/);
 
-	const privacyPolicyParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_POLICY_TEXT));
-	const offerAgreementParts = parseI18nText(t(Auth.REGISTRATION_OFFER_AGREEMENT_TEXT));
-	const adConsentParts = parseI18nText(t(Auth.REGISTRATION_AD_CONSENT_TEXT));
+	const privacyPolicyParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_POLICY));
+	const offerAgreementParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_OFFER_AGREEMENT));
+	const adConsentParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_ADD_CONSENT));
 
 	return (
 		<form className={styles['form-wrapper']} onSubmit={handleSubmit(onRegistration)}>
-			<h1 className={styles.title}>{t('registration.title')}</h1>
+			<h1>{t(Auth.REGISTRATION_TITLE)}</h1>
 
 			<div className={styles['input-wrapper']}>
-				<FormControl name="firstName" control={control} label={t(Auth.REGISTRATION_FIRST_NAME)}>
+				<FormControl
+					name="firstName"
+					control={control}
+					label={t(Auth.FORM_FIRSTNAME_LABEL)}
+					errorOptions={{ min: 2, max: 30 }}
+				>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.REGISTRATION_FIRST_NAME_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_FIRSTNAME_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControl name="lastName" control={control} label={t(Auth.REGISTRATION_LAST_NAME)}>
+				<FormControl name="lastName" control={control} label={t(Auth.FORM_LASTNAME_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.REGISTRATION_LAST_NAME_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_LASTNAME_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControl name="email" control={control} label={t(Auth.REGISTRATION_EMAIL)}>
+				<FormControl name="email" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.REGISTRATION_EMAIL_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_EMAIL_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControl name="password" control={control} label={t(Auth.REGISTRATION_PASSWORD)}>
+				<FormControl name="password" control={control} label={t(Auth.FORM_PASSWORD_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.REGISTRATION_PASSWORD_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
 							type={isPasswordHidden ? 'text' : 'password'}
 							suffix={
 								<Icon
@@ -109,13 +114,13 @@ export const RegisterForm = () => {
 				<FormControl
 					name="passwordConfirmation"
 					control={control}
-					label={t(Auth.REGISTRATION_REPEAT_PASSWORD)}
+					label={t(Auth.FORM_PASSWORD_REPEAT_LABEL)}
 				>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.REGISTRATION_REPEAT_PASSWORD_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
 							type={isPasswordHidden ? 'text' : 'password'}
 							suffix={
 								<Icon
@@ -141,33 +146,22 @@ export const RegisterForm = () => {
 				variant="primary"
 				className={styles['submit-button']}
 			>
-				{t(Auth.REGISTRATION_REGISTER_BUTTON)}
+				{t(Auth.REGISTRATION_SUBMIT)}
 			</Button>
 			<div className={styles['consent-wrapper']}>
-				<p>{t(Auth.REGISTRATION_CONSENT_TEXT)}</p>
+				<p>{t(Auth.REGISTRATION_PRIVACY_TITLE)}</p>
 				<FormControl name="privacyConsent" control={control}>
 					{(field) => (
 						<Checkbox
 							{...field}
-							className={styles.checkbox}
 							label={
 								<p>
 									{privacyPolicyParts[0]}
-									<a
-										href={CONSENT_PROCESSING_LINK}
-										className={styles.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={CONSENT_PROCESSING_LINK} target="_blank" rel="noopener noreferrer">
 										{privacyPolicyParts[1]}
 									</a>
 									{privacyPolicyParts[2]}
-									<a
-										href={PRIVACY_POLICY_LINK}
-										className={styles.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={PRIVACY_POLICY_LINK} target="_blank" rel="noopener noreferrer">
 										{privacyPolicyParts[3]}
 									</a>
 								</p>
@@ -179,16 +173,10 @@ export const RegisterForm = () => {
 					{(field) => (
 						<Checkbox
 							{...field}
-							className={styles.checkbox}
 							label={
 								<p>
 									{offerAgreementParts[0]}
-									<a
-										href={OFFER_AGREEMENT_LINK}
-										className={styles.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={OFFER_AGREEMENT_LINK} target="_blank" rel="noopener noreferrer">
 										{offerAgreementParts[1]}
 									</a>
 									{offerAgreementParts[2]}
@@ -201,16 +189,10 @@ export const RegisterForm = () => {
 					{(field) => (
 						<Checkbox
 							{...field}
-							className={styles.checkbox}
 							label={
 								<p>
 									{adConsentParts[0]}
-									<a
-										href={AD_CONSENT_LINK}
-										className={styles.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
+									<a href={AD_CONSENT_LINK} target="_blank" rel="noopener noreferrer">
 										{adConsentParts[1]}
 									</a>
 									{adConsentParts[2]}

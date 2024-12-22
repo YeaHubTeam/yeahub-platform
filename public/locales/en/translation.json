@@ -1,156 +1,111 @@
 {
-  "language": "English",
-  "create": "Create",
+  "language": "Russian",
+  "create": "Add",
   "search": "Search",
-  "remove.selected": "Remove selected",
-  "actions": "Actions",
-  "show": "Show",
+  "remove.selected": "Delete selected",
+  "loading": "Loading is underway...",
+  "show": "View",
   "edit": "Edit",
   "delete": "Delete",
-  "loading": "Loading...",
-  "hello": "Hello",
+  "hello": "Hello {{name}}!",
   "save": "Save",
   "cancel": "Cancel",
   "logo": "Logo",
   "avatar": "Avatar",
-  "userPreferences": {
-    "myProfile": "My profile",
-    "logout": "Sign out",
-    "menu": "Menu"
-  },
-  "buttons": {
-    "fillProfile": "Fill Profile",
-    "edit": "Edit",
-    "more": "More",
-    "repeat": "Repeat",
-    "learn": "Learn",
-    "support": "Support"
-  },
-  "tabs": {
-    "main": "Home",
-    "platform": "Platform",
-    "admin": "Editor",
-    "settings": "Settings",
-    "profile": "My Profile",
-    "specialization": "Specialization",
-    "education": {
-      "title": "Education",
-      "interview": "Interview"
+  "logout": "Log out",
+  "support": "Support",
+  "total.questions": "Total questions",
+  "back.button": "Go back to the previous page",
+  "sidebar": {
+    "close": "Close side menu",
+    "open": "Open side menu",
+    "menu": {
+      "main": "Home",
+      "platform": "Platform",
+      "admin": "Editor",
+      "settings": "Settings",
+      "profile": "My profile",
+      "specializations": "Specializations",
+      "users": "Users",
+      "education": {
+        "title": "Training",
+        "interview": "Interview"
+      },
+      "questions": "Questions",
+      "skills": "Skills"
     }
   },
-  "blockModal": {
-    "confirmTitle": "Confirm action",
-    "confirmDescription": "You have unsaved data. Do you want to continue?",
-    "action": {
+  "stub": {
+    "filter": {
+      "text": "Unfortunately, nothing was found for the query {{text}}. Try to change the query or use our categories",
+      "submit": "Reset filter"
+    }
+  },
+  "modal": {
+    "block": {
+      "title": "Confirm action",
+      "description": "You have unsaved data. Do you want to continue?"
+    },
+    "delete": {
+      "title": "Do you really want to delete?"
+    },
+    "actions": {
       "ok": "Yes",
       "cancel": "No"
     }
   },
-  "emptyStub": {
-    "message": "Unfortunately, no results were found for your query {{text}}. Try modifying your search or use our categories.",
-    "resetFilter": "Reset filter"
-  },
-  "fileLoader": {
-    "linkText": "Click here",
-    "text": "or drag to change your",
-    "fileTypes": {
+  "file.loader": {
+    "link": "Click to change",
+    "text": "or drag here",
+    "types": {
       "photo": "photo"
     },
-    "limit": "max {{maxFileMBSize}} MB"
-  },
-  "imageLoader": {
-    "minRes": "Minimum image resolution: {{minRes}}",
-    "maxRes": "Maximum image resolution: {{maxRes}}",
-    "save": "Save changes",
-    "change": "Change photo",
-    "delete": "Delete photo",
-    "cropperTitle": "Crop the image"
-  },
-  "interviewResult": {
-    "total": "Total",
-    "known": "Known",
-    "unknown": "Unknown",
-    "repeat": "Repeat"
-  },
-  "passedQuestions": {
-    "iKnow": "I known",
-    "dontKnow": "Don't know",
-    "repeat": "Repeat"
+    "limit": "no more than {{maxFileMBSize}}mb"
   },
   "validation": {
-    "passwordConfirmation": {
-      "oneOf": "Passwords must match"
-    },
-    "checkbox": {
-      "oneOf": "You must agree to the terms and conditions"
-    },
     "required": "This field is required",
+    "email": "Invalid email format",
+    "phone": "Invalid phone format",
+    "length": {
+      "min_one": "Minimum length {{count}} character",
+      "min_few": "Minimum length {{count}} character",
+      "min_many": "Minimum length of {{count}} characters",
+      "max_one": "Maximum length of {{count}} characters",
+      "max_few": "Maximum length of {{count}} characters",
+      "max_many": "Maximum length of {{count}} characters"
+    },
     "password": {
-      "min": "Please enter a valid password (at least {{count}} characters)"
+      "weak": "Password must contain uppercase and lowercase letters, numbers, and special characters",
+      "similar": "Passwords must match"
     },
-    "image": {
-      "fileSize": "Большой размер файла",
-      "fileType": "Неверный формат файла"
-    },
-    "firstName": {
-      "required": "Имя обязательно",
-      "min": "Должно быть больше 2 символов",
-      "max": "Должно быть меньше 30 символов"
-    },
-    "lastName": {
-      "required": "Фамилия обязательна",
-      "min": "Должно быть больше 2 символов",
-      "max": "Должно быть меньше 30 символов"
-    },
-    "specialization": {
-      "required": "Выбор специализации обязателен"
-    },
-    "phone": {
-      "required": "Телефон обязателен",
-      "format": "Неверный формат телефона"
-    },
-    "email": {
-      "required": "Электронная почта обязательна",
-      "invalid": "Неверный формат электронной почты"
-    },
-    "location": {
-      "nullable": "Локация может быть пустой"
-    },
-    "skillLevel": {
-      "nullable": "Уровень навыков может быть пустым"
-    },
-    "socialNetworks": {
-      "nullable": "Социальные сети могут быть пустыми"
-    },
-    "aboutMe": {
-      "nullable": "Описание может быть пустым"
-    },
-    "skills": {
-      "required": "Навык обязателен"
+    "privacy": "You must agree to these terms and conditions",
+    "file": {
+      "size": "Large file size",
+      "type": "Invalid file format"
     }
   },
   "crumbs": {
     "profile": "Profile",
-    "profileEditing": "Profile Editing",
-    "interviewCreation": "Interview Creation",
-    "interviewPreparation": "Interview Preparation",
-    "interviewHistory": "Interview History",
-    "interviewResult": "Quiz Result",
-    "interviewStatistic": "Interview Statistics",
-    "questionsList": "Questions List",
-    "questionDetail": "Question Details",
+    "profile.editing": "Profile editing",
+    "interview": "Training",
+    "interview.creation": "Interview",
+    "interview.history": "Interview history",
+    "interview.result": "Quiz result",
+    "interview.statistical": "Interview statistics",
+    "questions.list": "List of questions",
+    "question.detail": "More details",
     "quiz": "Interview",
-    "newQuiz": "Quiz",
-    "mainPage": "Main",
-    "error404": "Page Not Found",
+    "new.quiz": "Quiz",
+    "main.page": "Home",
+    "error.404": "Page not found",
     "login": "Login",
-    "register": "Register"
+    "register": "Registration"
   },
   "toast": {
     "auth": {
       "resetPassword": {
-        "success": "The password has been successfully changed",
-        "failed": "Error when changing the password"
+        "success": "Password successfully changed",
+        "failed": "Error when changing password"
       },
       "login": {
         "failed": "Invalid email or password."
@@ -158,118 +113,115 @@
     },
     "questions": {
       "learned": {
-        "success": "he issue has been fully studied",
-        "failed": "It was not possible to fully study the issue"
+        "success": "The question has been fully studied",
+        "failed": "Failed to fully explore the issue"
       },
       "reset.progress": {
-        "success": "The progress of studying the issue has been reset",
-        "failed": "Failed to reset the progress of studying the issue"
+        "success": "Progress on the issue has been reset",
+        "failed": "Failed to reset the progress of the issue"
       },
       "create": {
-        "success": "The question has been successfully created",
-        "failed": "The question could not be created"
+        "success": "The question was created successfully",
+        "failed": "Failed to create a question"
       },
       "edit": {
-        "success": "The question has been successfully changed",
-        "failed": "The question could not be changed"
+        "success": "The question was successfully changed",
+        "failed": "Couldn't edit the question"
       },
       "delete": {
         "single": {
-          "success": "The question has been successfully deleted",
-          "failed": "Failed to delete question"
+          "success": "The question was successfully deleted",
+          "failed": "The issue could not be deleted"
         },
         "multiple": {
           "success": "Successfully deleted questions:",
-          "failed": "Failed to delete the question:"
+          "failed": "The issue could not be deleted:"
         }
       }
     },
     "skills": {
       "create": {
-        "success": "The skill has been successfully created",
-        "failed": "The skill could not be created"
+        "success": "Skill created successfully",
+        "failed": "Failed to create Skill"
       },
       "edit": {
-        "success": "The skill has been successfully changed",
-        "failed": "The skill could not be changed"
+        "success": "Skill changed successfully",
+        "failed": "The Skill could not be changed"
       },
       "delete": {
         "single": {
-          "success": "The skill has been successfully deleted",
-          "failed": "Failed to delete the skill"
+          "success": "Skill successfully deleted",
+          "failed": "The skill could not be deleted"
         },
         "multiple": {
           "success": "Successfully deleted skills:",
-          "failed": "Failed to delete the skill:"
+          "failed": "Failed to delete skill:"
         }
       }
     },
     "specializations": {
       "create": {
-        "success": "The skill has been successfully created",
-        "failed": "The skill could not be created"
+        "success": "Specialization successfully created",
+        "failed": "Specialization could not be created"
       },
       "edit": {
-        "success": "The skill has been successfully changed",
-        "failed": "The skill could not be changed"
+        "success": "Specialization successfully changed",
+        "failed": "Specialization could not be changed"
       },
       "delete": {
         "single": {
-          "success": "The specialization has been successfully deleted",
-          "failed": "Failed to delete the specialization"
+          "success": "Specialization successfully deleted",
+          "failed": "Specialization could not be deleted"
         },
         "multiple": {
           "success": "Successfully deleted specializations:",
-          "failed": "Failed to delete the specialization:"
+          "failed": "Specialization could not be deleted:"
         }
       }
     },
     "profile": {
       "update": {
-        "success": "The profile has been successfully changed",
-        "failed": "The profile could not be changed"
+        "success": "Profile has been successfully changed",
+        "failed": "Profile could not be changed"
       }
     },
     "avatar": {
       "update": {
-        "success": "The avatar has been successfully updated",
-        "failed": "Failed to update the avatar"
+        "success": "Profile photo changed",
+        "failed": "Profile photo could not be changed"
       },
       "create": {
-        "success": "The avatar has been successfully created",
-        "failed": "Failed to create the avatar"
+        "success": "Profile photo added",
+        "failed": "Profile photo could not be added"
       },
       "delete": {
-        "success": "The avatar has been successfully deleted",
-        "failed": "Failed to delete the avatar"
+        "success": "Profile photo deleted",
+        "failed": "Profile photo could not be deleted"
       }
     },
     "interview": {
       "new": {
         "quiz": {
-          "success": "A new interview has been created",
-          "failed": "Failed to create a new interview"
+          "success": "New interview created",
+          "failed": "Failed to create new interview"
         }
       },
       "finish": {
-        "success": "The interview is completed",
-        "failed": "Failed to complete the interview"
+        "success": "Interview completed",
+        "failed": "Failed to complete interview"
       }
     },
     "settings": {
       "sendVerificationEmail": {
-        "failed": "Sending verification message failed"
+        "failed": "An error occurred while sending an e-mail for confirmation"
       }
     },
     "password": {
       "change": {
-        "success": "Password changed successfully",
-        "failed": "Failed to change password"
+        "success": "Password successfully changed",
+        "failed": "Password could not be changed",
+        "failed.email": "Invalid email"
       }
     }
-  },
-  "error": {
-    "alt": "Loupe"
-  },
-  "settings": "Settings"
+  }
 }
