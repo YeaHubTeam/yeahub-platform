@@ -38,6 +38,11 @@
     "description": "Show what you can do and what you're really good at",
     "empty": "Skills not selected"
   },
+    "specializations": {
+   "title": "Your Specializations",
+    "description": "Show what you can do and what you're really good at",
+    "empty": "Specializations not selected"
+  },
   "form": {
     "firstname": "Name",
     "lastName": "Last name",

@@ -7,6 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
 import { SkillSelect } from '@/entities/skill';
+import { SpecializationSelect } from '@/entities/specialization';
 
 import styles from './SkillsTabForm.module.css';
 
@@ -15,19 +16,37 @@ export const SkillsTabForm = () => {
 	const { control } = useFormContext();
 
 	return (
-		<Flex className={styles.container} gap="20">
-			<div className={styles.description}>
-				<h3>{t(Profile.SKILLS_TITLE)}</h3>
-				<p>{t(Profile.SKILLS_DESCRIPTION)}</p>
-			</div>
-			<FormControl
-				className={styles.select}
-				name="skills"
-				control={control}
-				label={t(Profile.FORM_SKILLS)}
-			>
-				{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
-			</FormControl>
+		<Flex direction="column" gap="40">
+			<Flex className={styles.container} gap="20">
+				<div className={styles.description}>
+					<h3>{t(Profile.SPECIALIZATION_TITLE)}</h3>
+					<p>{t(Profile.SPECIALIZATION_DESCRIPTION)}</p>
+				</div>
+				<FormControl
+					className={styles.select}
+					name="specializations"
+					control={control}
+					label={t(Profile.FORM_SPECIALIZATION)}
+				>
+					{({ onChange, value }) => (
+						<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+					)}
+				</FormControl>
+			</Flex>
+			<Flex className={styles.container} gap="20">
+				<div className={styles.description}>
+					<h3>{t(Profile.SKILLS_TITLE)}</h3>
+					<p>{t(Profile.SKILLS_DESCRIPTION)}</p>
+				</div>
+				<FormControl
+					className={styles.select}
+					name="skills"
+					control={control}
+					label={t(Profile.FORM_SKILLS)}
+				>
+					{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
+				</FormControl>
+			</Flex>
 		</Flex>
 	);
 };
