@@ -12,3 +12,5 @@ export interface QuestionFilterStatusItem {
 	id: QuestionFilterStatus;
 	title: string;
 }
+
+export type DisplayMode = 'popover' | 'link';
