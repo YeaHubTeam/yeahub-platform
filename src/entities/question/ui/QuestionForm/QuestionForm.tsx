@@ -20,7 +20,9 @@ import styles from './QuestionForm.module.css';
 export const QuestionForm = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 
-	const { control } = useFormContext();
+	const { control, watch } = useFormContext();
+
+	const selectedSpecializations = watch('specializations');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -113,7 +115,11 @@ export const QuestionForm = () => {
 					{({ onChange, value }) => {
 						return (
 							<div className={styles.select}>
-								<SkillSelect onChange={onChange} value={value} />
+								<SkillSelect
+									onChange={onChange}
+									value={value}
+									selectedSPecializations={selectedSpecializations}
+								/>
 							</div>
 						);
 					}}

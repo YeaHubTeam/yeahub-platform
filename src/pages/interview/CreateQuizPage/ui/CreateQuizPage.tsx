@@ -11,7 +11,7 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getProfileId } from '@/entities/profile';
+import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionCount,
@@ -34,10 +34,13 @@ const MAX_LIMIT_CATEGORIES = 20;
 
 const CreateQuizPage = () => {
 	const profileId = useAppSelector(getProfileId);
+	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const { filter, handleFilterChange } = useQueryFilter();
+
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
+		specializations: [profileSpecialization],
 	});
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 
