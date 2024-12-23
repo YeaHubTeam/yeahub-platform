@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Input, Range, Select, Text, TextArea, TextEditor } from 'yeahub-ui-kit';
+import { Range, Select, Text, TextArea, TextEditor } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
@@ -40,7 +40,9 @@ export const QuestionForm = () => {
 			<Flex direction="column">
 				<Text title={t(Questions.TITLE_SHORT)} />
 				<FormControl name="title" control={control} label={t(Questions.TITLE_LABEL)}>
-					{(field, hasError) => <Input {...field} hasError={hasError} />}
+					{(field, hasError) => (
+						<TextArea {...field} state={hasError ? 'error' : 'default'} className={styles.title} />
+					)}
 				</FormControl>
 			</Flex>
 			<Flex direction="column">
@@ -88,6 +90,7 @@ export const QuestionForm = () => {
 								value={value}
 								placeholder={t(Questions.STATUS_LABEL)}
 								options={questionStatusesItems}
+								className={styles['status-select']}
 							/>
 						</div>
 					)}

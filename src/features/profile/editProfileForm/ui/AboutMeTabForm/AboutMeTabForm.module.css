@@ -28,7 +28,7 @@
   height: 150px;
   overflow-y: auto;
   border: 1px solid var(--color-black-50);
-  border-radius: 14px;
+  border-radius: 16px;
   resize: none;
 }
  

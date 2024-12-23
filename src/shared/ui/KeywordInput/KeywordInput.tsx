@@ -1,11 +1,11 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { Input } from '@/shared/ui/Input';
 import { SimpleChip } from '@/shared/ui/SimpleChip';
 
 import styles from './KeywordInput.module.css';

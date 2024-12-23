@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Icon, Input } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -11,6 +11,7 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 
 import { getFullProfile } from '@/entities/profile';
 
