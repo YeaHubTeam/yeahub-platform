@@ -1,12 +1,26 @@
 {
-  "skill": {
-    "title": "Title",
-    "description": "Description",
-    "not.items": "No skills",
-    "image.src": "Image url",
-    "create.page.title": "Creating new skill",
-    "edit.page.title": "Edit skill",
-    "icon": "Skill icon",
-    "addSkillIcon": "Add skill icon"
-  }
+  "title": {
+    "full": "Skill title",
+    "short": "Title",
+    "label": "Add skill title"
+  },
+  "description": {
+    "full": "Skill description",
+    "short": "Description",
+    "label": "Add skill description",
+    "placeholder": "Skill description"
+  },
+  "icon": {
+    "title": "Skill icon",
+    "label": "Add skill icon"
+  },
+  "select": {
+    "choose": "Select skills from the list",
+    "empty": "No options available",
+    "selected": "Selected skills"
+  },
+  "empty": "No skills",
+  "image.src": "Image url",
+  "create.page.title": "Creating new skill",
+  "edit.page.title": "Edit skill"
 }

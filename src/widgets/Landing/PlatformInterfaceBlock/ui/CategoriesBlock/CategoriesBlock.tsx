@@ -1,11 +1,11 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuiz, Landing, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { FilterIcon } from '@/shared/ui/Icons/FilterIcon';
 import { LoopIcon } from '@/shared/ui/Icons/LoopIcon';
@@ -17,7 +17,11 @@ import styles from './CategoriesBlock.module.css';
 
 export const CategoriesBlock = () => {
 	const navigate = useNavigate();
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation([
+		i18Namespace.landing,
+		i18Namespace.interviewQuiz,
+		i18Namespace.questions,
+	]);
 
 	const handleNavigate = () => {
 		const path = getFromLS(LS_ACCESS_TOKEN_KEY)
@@ -33,7 +37,10 @@ export const CategoriesBlock = () => {
 					<div className={styles.categories}>
 						<div className={styles['categories-input']}>
 							<LoopIcon />
-							<input placeholder={t(Landing.SEARCH_INPUT_PLACEHOLDER)} disabled />
+							<input
+								placeholder={t(Questions.SEARCH_PLACEHOLDER, { ns: i18Namespace.questions })}
+								disabled
+							/>
 						</div>
 						<CategoriesList />
 					</div>
@@ -41,11 +48,11 @@ export const CategoriesBlock = () => {
 				</div>
 				<div className={styles['caption-block']}>
 					<FilterIcon />
-					<p>{t(Landing.DESCRIPTION_FILTER)}</p>
+					<p>{t(Landing.READY_INTERVIEW_ADVANTAGES_SECOND)}</p>
 				</div>
 			</div>
 			<Button className={styles['start-interview-button']} onClick={handleNavigate}>
-				{t(Landing.START_INTERVIEW)}
+				{t(InterviewQuiz.START_QUIZ_LINK, { ns: i18Namespace.interviewQuiz })}
 			</Button>
 		</div>
 	);

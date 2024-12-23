@@ -1,8 +1,8 @@
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
@@ -10,7 +10,7 @@ import { useEditSkillMutation } from '../../api/editSkillApi';
 import { EditSkillFormValues } from '../../model/types/skillEditPageTypes';
 
 export const SkillEditFormHeader = () => {
-	const { t } = useI18nHelpers();
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const { handleSubmit, reset } = useFormContext<EditSkillFormValues>();
 
@@ -30,7 +30,7 @@ export const SkillEditFormHeader = () => {
 				{t(Translation.CANCEL)}
 			</Button>
 			<Button disabled={isLoading} onClick={handleSubmit(onEditSkill)}>
-				{t(Translation.SAVE, { ns: i18Namespace.translation })}
+				{t(Translation.SAVE)}
 			</Button>
 		</BackHeader>
 	);

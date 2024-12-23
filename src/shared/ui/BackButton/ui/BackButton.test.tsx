@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
 import { BackButton } from './BackButton';
@@ -30,7 +30,7 @@ describe('BackButton', () => {
 
 	test('should have aria-label from i18n', () => {
 		const component = screen.getByTestId('BackButton');
-		expect(component).toHaveAttribute('aria-label', A11y.BACK_BUTTON);
+		expect(component).toHaveAttribute('aria-label', Translation.BACK_BUTTON);
 	});
 
 	test('should navigate back when clicked', () => {

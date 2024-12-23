@@ -1,11 +1,13 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Specialization } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
+import { Specialization } from '../../model/types/specialization';
 
 import styles from './SpecializationSelect.module.css';
 
@@ -13,39 +15,93 @@ type SpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Select>,
 	'options' | 'type' | 'value' | 'onChange'
 > & {
-	value?: number;
-	onChange: (value: number) => void;
+	value: number[];
+	onChange: (value: number[] | number) => void;
+	hasMultiple?: boolean;
 };
 
-export const SpecializationSelect = ({ onChange, value }: SpecializationSelectProps) => {
-	const { t } = useI18nHelpers(i18Namespace.specialization);
+export const SpecializationSelect = ({
+	onChange,
+	value,
+	hasMultiple,
+}: SpecializationSelectProps) => {
+	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({});
+
+	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(value);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
-		onChange(+newValue);
+
+		if (hasMultiple) {
+			const updates = [...(selectedSpecializations || []), +newValue];
+			setSelectedSpecializations(updates);
+			onChange(updates);
+		} else {
+			onChange(+newValue);
+		}
+	};
+
+	const handleDeleteSpecialization = (id: number) => () => {
+		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
+		setSelectedSpecializations(updates);
+		onChange(updates);
 	};
 
 	const options = useMemo(() => {
-		return (specializations?.data || []).map((specialization) => ({
-			label: specialization.title,
-			value: specialization.id.toString(),
-			limit: 100,
-		}));
-	}, [specializations?.data]);
+		if (hasMultiple) {
+			return (specializations?.data || [])
+				.map((specialization) => ({
+					label: specialization.title,
+					value: specialization.id.toString(),
+					limit: 100,
+				}))
+				.filter((specialization) => !selectedSpecializations?.includes(+specialization.value));
+		} else {
+			return (specializations?.data || []).map((specialization) => ({
+				label: specialization.title,
+				value: specialization.id.toString(),
+				limit: 100,
+			}));
+		}
+	}, [selectedSpecializations, specializations]);
+
+	const specializationsDictionary = useMemo(() => {
+		return specializations?.data?.reduce(
+			(acc, specialization) => {
+				acc[specialization.id] = specialization;
+				return acc;
+			},
+			{} as Record<number, Specialization>,
+		);
+	}, [specializations]);
+
+	if (!hasMultiple) {
+		return (
+			<Select
+				onChange={handleChange}
+				options={options}
+				value={value || value === 0 ? `${value}` : undefined}
+				type="default"
+				placeholder={
+					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
+				}
+				className={styles.select}
+			/>
+		);
+	}
 
 	return (
-		<Select
-			onChange={handleChange}
+		<SelectWithChips
+			title={t(Specializations.SELECT_SELECTED)}
 			options={options}
-			type="default"
-			value={value || value === 0 ? `${value}` : undefined}
+			onChange={handleChange}
+			selectedItems={selectedSpecializations}
+			handleDeleteItem={handleDeleteSpecialization}
+			itemsDictionary={specializationsDictionary}
 			placeholder={
-				options.length
-					? t(Specialization.SKILLFORM_SPECIALIZATIONSELECT)
-					: t(Specialization.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
+				options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 			}
-			className={styles.select}
 		/>
 	);
 };

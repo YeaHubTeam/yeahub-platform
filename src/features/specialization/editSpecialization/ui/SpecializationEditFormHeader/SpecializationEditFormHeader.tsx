@@ -1,10 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import {
-	Specialization as SpecializationI18,
-	Translation,
-} from '@/shared/config/i18n/i18nTranslations';
+import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -29,7 +26,7 @@ export const SpecializationEditFormHeader = () => {
 	return (
 		<Flex align="center" gap="8">
 			<BackButton />
-			<h1>{t(SpecializationI18.SPECIALIZATION_EDIT_PAGE_TITLE)}</h1>
+			<h1>{t(Specializations.EDIT_PAGE_TITLE)}</h1>
 			<Button onClick={onResetFormValues}>{t(Translation.CANCEL, { ns: 'translation' })}</Button>
 			<Button disabled={isLoading} onClick={handleSubmit(onEditSpecialization)}>
 				{t(Translation.SAVE, { ns: 'translation' })}

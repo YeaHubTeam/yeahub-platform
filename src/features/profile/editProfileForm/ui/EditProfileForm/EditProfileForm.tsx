@@ -2,11 +2,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -24,7 +24,7 @@ import styles from './EditProfileForm.module.css';
 import { EditProfileFormSkeleton } from './EditProfileForm.skeleton';
 
 export const EditProfileForm = () => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 
 	const { hash } = useLocation();
 	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
@@ -59,7 +59,7 @@ export const EditProfileForm = () => {
 	return (
 		<section className={styles.section}>
 			<Tabs
-				title={t(ProfileI18.TABS_TITLE)}
+				title={t(Profile.EDIT_PAGE_TITLE)}
 				tabs={tabs}
 				tabToggle={currentActiveTab}
 				setTabToggle={setCurrentActiveTab}
@@ -71,7 +71,7 @@ export const EditProfileForm = () => {
 
 						<Flex direction="column" align="end" className={styles['btn-container']}>
 							<Button type="submit" disabled={isUpdateProfileLoading}>
-								{t(ProfileI18.BUTTONS_SAVE)}
+								{t(Translation.SAVE, { ns: i18Namespace.translation })}
 							</Button>
 						</Flex>
 					</form>

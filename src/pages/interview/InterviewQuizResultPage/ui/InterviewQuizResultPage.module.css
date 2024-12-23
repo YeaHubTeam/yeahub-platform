@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.results {
+  flex-grow: 1;
+}
+
+.container > div {
+  height: auto;
+}
+
+.stats {
+  flex-grow: 1;
+}
+
+.block {
+  width: 410px;
+}
+
+.passed {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (width <= 1024px) {
+  .results,
+  .block,
+  .passed {
+    padding: 16px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .block {
+    width: 100%;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (width <= 768px) {
+  .result {
+    gap: 24px;
+  }
+
+  .container,
+  .wrapper {
+    gap: 16px;
+  }
+}

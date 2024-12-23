@@ -10,7 +10,7 @@ export const getProfileId = (state: State) => {
 	return state.profile.fullProfile?.profiles[0].id ?? '';
 };
 export const getSpecializationId = (state: State) => {
-	return state.profile.fullProfile?.profiles[0].specializationId;
+	return state.profile.fullProfile?.profiles[0].specializationId || 0;
 };
 export const isEmptySpecialization = (state: State) => {
 	return getSpecializationId(state) === 0;

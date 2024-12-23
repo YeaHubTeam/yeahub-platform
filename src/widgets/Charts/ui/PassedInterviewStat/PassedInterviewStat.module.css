@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   gap: 48px;
+  margin-top: 24px;
 }
 
 .list>*+* {

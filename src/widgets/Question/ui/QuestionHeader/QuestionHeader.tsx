@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -16,7 +17,7 @@ interface QuestionHeaderProps {
 }
 
 export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 	const { isDesktop, isMobile } = useScreenSize();
 
 	const imageClassName = isMobile ? styles['image-mobile'] : styles['image-default'];

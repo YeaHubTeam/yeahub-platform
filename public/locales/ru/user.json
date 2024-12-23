@@ -4,11 +4,11 @@
   "email": "E-mail",
   "roles": {
     "guest": "Гость",
-    "candidate": "Пользователь - Базовый",
-    "candidatePremium": "Пользователь - Премиум",
-    "candidateFree": "Пользователь - Бесплатный",
+    "candidate": "Пользователь-Базовый",
+    "candidatePremium": "Пользователь-Премиум",
+    "candidateFree": "Пользователь-Бесплатный",
     "HR": "HR",
     "admin": "Админ",
     "member": "Пользователь"
   }
-}  
+}

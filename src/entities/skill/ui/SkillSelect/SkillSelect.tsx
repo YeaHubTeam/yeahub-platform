@@ -1,23 +1,27 @@
 import { useMemo, useState } from 'react';
-import { Select, Chip, Text } from 'yeahub-ui-kit';
+import { useTranslation } from 'react-i18next';
+import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Skills } from '@/shared/config/i18n/i18nTranslations';
+import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
 
-import styles from './SkillSelect.module.css';
-
 type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 'type' | 'value'> & {
 	value: number[];
 	onChange: (value: number[]) => void;
+	selectedSPecializations?: number[];
 };
 
-export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
-	const { data: skills } = useGetSkillsListQuery({ limit: 100 });
+export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
+	const { t } = useTranslation(i18Namespace.skill);
+
+	const { data: skills } = useGetSkillsListQuery({
+		limit: 100,
+		specializations: selectedSPecializations,
+	});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
 
@@ -54,33 +58,14 @@ export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
 	}, [skills]);
 
 	return (
-		<div className={styles.wrapper}>
-			<Select
-				onChange={handleChange}
-				options={options}
-				type="default"
-				placeholder={
-					options.length ? t(Profile.SKILLFORM_SKILLSELECT) : t(Profile.SKILLFORM_EMPTYSKILLSELECT)
-				}
-				className={styles.select}
-			/>
-			{Boolean(selectedSkills?.length) && (
-				<>
-					<Text text={t('skillForm.selectedSkills')} className={styles.title} />
-					<div className={styles.selection}>
-						{selectedSkills?.map((skillId) => {
-							return (
-								<Chip
-									theme="primary"
-									onDelete={handleDeleteSkill(skillId)}
-									key={skillId}
-									label={skillsDictionary?.[skillId].title}
-								/>
-							);
-						})}
-					</div>
-				</>
-			)}
-		</div>
+		<SelectWithChips
+			title={t(t(Skills.SELECT_SELECTED))}
+			options={options}
+			onChange={handleChange}
+			placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
+			selectedItems={selectedSkills}
+			handleDeleteItem={handleDeleteSkill}
+			itemsDictionary={skillsDictionary}
+		/>
 	);
 };

@@ -1,5 +1,6 @@
 import ArrowDown from '@/shared/assets/icons/arrowDown.svg';
 import ArrowUp from '@/shared/assets/icons/arrowUp.svg';
+import { Flex } from '@/shared/ui/Flex';
 
 import styles from './InterviewResults.module.css';
 
@@ -15,18 +16,18 @@ export const InterviewResults = ({
 	incorrectAnswersCount,
 }: InterviewResultsProps) => {
 	return (
-		<div className={styles.param}>
+		<Flex align="center" gap="8" className={styles.param}>
 			<span>{label}</span>
-			<div className={styles.wrapper}>
-				<div className={styles.result}>
+			<Flex align="center" gap="8">
+				<Flex align="center" gap="4">
 					<ArrowUp className={styles.icon} />
 					<span className={styles.count}>{correctAnswersCount}</span>
-				</div>
-				<div className={styles.result}>
+				</Flex>
+				<Flex align="center" gap="4">
 					<ArrowDown className={styles.icon} />
 					<span className={styles.count}>{incorrectAnswersCount}</span>
-				</div>
-			</div>
-		</div>
+				</Flex>
+			</Flex>
+		</Flex>
 	);
 };
