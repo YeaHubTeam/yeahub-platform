@@ -17,11 +17,13 @@ interface FileLoaderProps {
 	multyple?: boolean;
 	maxFileMBSize?: number;
 	fileTypeText: string;
+	className?: string;
 	extensionsText: Extension;
 	onChange: (files: globalThis.File[]) => void;
 }
 
 export const FileLoader = ({
+	className,
 	accept,
 	fileTypeText,
 	maxFileMBSize,
@@ -96,7 +98,11 @@ export const FileLoader = ({
 			onDragLeave={onDragLeave}
 			onDragOver={onDragOverAndEnter}
 			onDragEnter={onDragOverAndEnter}
-			className={classNames(style['file-upload-container'], { [style.active]: isDragActive })}
+			className={classNames(
+				style['file-upload-container'],
+				{ [style.active]: isDragActive },
+				className,
+			)}
 		>
 			<div>
 				<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} />

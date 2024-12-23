@@ -10,6 +10,10 @@
     "label": "Add skill description",
     "placeholder": "Skill description"
   },
+  "icon": {
+    "title": "Skill icon",
+    "label": "Add skill icon"
+  },
   "select": {
     "choose": "Select skills from the list",
     "empty": "No options available",

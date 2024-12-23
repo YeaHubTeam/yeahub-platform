@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,13 +11,14 @@ import styles from './Loader.module.css';
 interface LoaderProps {
 	hasText?: boolean;
 	style?: CSSProperties;
+	className?: string;
 }
 
-export const Loader = ({ hasText = true, style }: LoaderProps) => {
+export const Loader = ({ hasText = true, style, className }: LoaderProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	return (
-		<div className={styles.wrapper} style={style}>
+		<div className={classNames(styles.wrapper, className)} style={style}>
 			<Card>
 				<div className={styles.content}>
 					<span className={styles.loader}></span>
