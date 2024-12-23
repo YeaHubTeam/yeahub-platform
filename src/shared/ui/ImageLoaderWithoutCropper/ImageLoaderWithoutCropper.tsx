@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { FileLoader } from '@/shared/ui/FileLoader';
 import { Accept, Extension } from '@/shared/ui/FileLoader/model/types/types';
 import { Flex } from '@/shared/ui/Flex';
@@ -32,7 +33,7 @@ export const ImageLoaderWithoutCropper = ({
 	maxMBSize,
 	initialSrc: src,
 }: ImageLoaderWithoutCropperProps) => {
-	const { t } = useTranslation('translation');
+	const { t } = useTranslation([i18Namespace.translation, i18Namespace.profile]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const uploaderRef = useRef<HTMLDivElement | null>(null);
@@ -62,7 +63,7 @@ export const ImageLoaderWithoutCropper = ({
 
 				{!isLoading && src && (
 					<button type="button" className={styles['delete-btn']} onClick={removeImage}>
-						{t(Translation.IMAGELOADER_DELETE)}
+						{t(Profile.PHOTO_DELETE, { ns: i18Namespace.profile })}
 					</button>
 				)}
 			</Flex>
@@ -72,7 +73,7 @@ export const ImageLoaderWithoutCropper = ({
 					className={styles['file-loader']}
 					maxFileMBSize={maxMBSize}
 					accept={Accept.IMAGE}
-					fileTypeText={t(Translation.FILELOADER_FILETYPES_PHOTO)}
+					fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO)}
 					extensionsText={Extension.IMAGE}
 					onChange={handleUpload}
 				/>
