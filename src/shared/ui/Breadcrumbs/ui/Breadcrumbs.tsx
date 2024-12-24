@@ -1,7 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { useLocation, useMatches } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 import { BreadcrumbItem } from '../../BreadcrumbItem';
@@ -11,7 +11,7 @@ import styles from './Breadcrumbs.module.css';
 export const Breadcrumbs = () => {
 	const matches = useMatches();
 	const { pathname } = useLocation();
-	const { t } = useI18nHelpers();
+	const { t } = useTranslation();
 	const { isMobile } = useScreenSize();
 
 	const crumbs = matches

@@ -1,13 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { ActionsButton, Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { IconButton } from '@/shared/ui/IconButton';
 import { OpenIcon } from '@/shared/ui/Icons/OpenIcon';
@@ -33,7 +33,7 @@ type QuestionProps = {
 
 export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
-	const { t } = useI18nHelpers([i18Namespace.translation, i18Namespace.questions]);
+	const { t } = useTranslation([i18Namespace.translation, i18Namespace.questions]);
 	const navigate = useNavigate();
 
 	const profile = useAppSelector(getFullProfile);
@@ -43,7 +43,7 @@ export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionP
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
 			icon: <OpenIcon isCurrentColor />,
-			title: t(ActionsButton.MORE),
+			title: t(Questions.MORE, { ns: i18Namespace.questions }),
 			onClick: () => {
 				navigate(route(ROUTES.interview.questions.detail.page, id));
 			},
@@ -76,8 +76,14 @@ export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionP
 		<div>
 			<div className={styles.header}>
 				<ul className={styles['header-params']}>
-					<QuestionParam label="Рейтинг" value={rate} />
-					<QuestionParam label="Сложность" value={complexity} />
+					<QuestionParam
+						label={t(Questions.RATE_TITLE_SHORT, { ns: i18Namespace.questions })}
+						value={rate}
+					/>
+					<QuestionParam
+						label={t(Questions.COMPLEXITY_TITLE_SHORT, { ns: i18Namespace.questions })}
+						value={complexity}
+					/>
 				</ul>
 				{displayMode === 'popover' && (
 					<Popover menuItems={settingsMenuItems}>
@@ -116,7 +122,7 @@ export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionP
 						navigate(route(ROUTES.questions.detail.page, id));
 					}}
 				>
-					{t('buttons.more')}
+					{t(Questions.MORE, { ns: i18Namespace.questions })}
 				</Button>
 			)}
 		</div>

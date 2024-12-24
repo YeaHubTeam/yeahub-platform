@@ -4,7 +4,7 @@ import { Response } from '@/shared/types/types';
 import { Question } from '@/entities/question';
 
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
-export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN' | 'REPEAT';
+export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN';
 
 export interface Quiz {
 	id: string;
@@ -30,7 +30,7 @@ export interface Answers {
 	questionTitle: string;
 	answer: QuizQuestionAnswerType;
 	imageSrc?: string;
-	shortAnswer?: string;
+	shortAnswer: string;
 }
 
 export interface ActiveQuizState {

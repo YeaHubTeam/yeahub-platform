@@ -11,7 +11,6 @@
 .history-list {
   flex-basis: calc(50% - 10px);
   align-self: flex-start;
-  padding: 0;
 }
 
 .container > div {
@@ -47,17 +46,8 @@
   margin-top: 24px;
 }
 
-.category-progress > * + * {
-  margin-top: 20px;
-}
-
 .attempt > * + * {
   margin-top: 50px;
-}
-
-.history {
-  padding: 24px;
-  width: 100%;
 }
 
 @media (width <= 1024px) {
@@ -99,11 +89,6 @@
     min-width: 328px;
   }
 
-  .history {
-    gap: 16px;
-    padding: 16px;
-  }
-
   .questions > :nth-child(1) {
     margin-bottom: 24px;
   }
@@ -114,10 +99,6 @@
 
   .container {
     gap: 16px;
-  }
-
-  .category-progress > * + * {
-    margin-top: 24px;
   }
 
   .attempt > * + * {

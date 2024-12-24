@@ -74,6 +74,15 @@
   gap: 10px;
 }
 
+.drawer-content {
+  padding: 8px 16px 16px;
+}
+
+.drawer {
+  width: 328px;
+}
+
+
 @media (width <= 1198px) {
   .wrapper {
     flex-direction: column;
@@ -96,5 +105,7 @@
     margin: 0 16px;
   } 
 
-
+  .drawer {
+    width: 360px;
+  }
 }

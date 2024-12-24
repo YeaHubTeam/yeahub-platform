@@ -4,7 +4,7 @@ export interface FilterParams {
 	rate?: number[];
 	status?: QuestionFilterStatus;
 	title?: string;
-	specialization?: number[];
+	specialization?: number | number[];
 }
 
 export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';

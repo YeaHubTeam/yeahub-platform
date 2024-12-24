@@ -16,4 +16,8 @@
   min-height: 114px; 
   overflow: hidden;
   border-radius: 12px;
+  
+  img {
+    object-fit: cover;
+  }
 }

@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import { Input, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
+
+import { Input } from '@/shared/ui/Input';
 
 import styles from './SearchInput.module.css';
 
@@ -28,7 +30,7 @@ export const SearchInput = ({
 			placeholder={placeholder}
 			value={query}
 			onChange={handleChange}
-			preffix={<Icon aria-label="perform a search" icon="search" size={20} />}
+			prefix={<Icon aria-label="perform a search" icon="search" size={20} />}
 		/>
 	);
 };

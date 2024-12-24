@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Accordion } from '@/shared/ui/Accordion';
 
 import { Question } from '@/entities/question';
@@ -19,11 +21,11 @@ export const QuestionsSummaryList = ({
 	questions,
 	displayMode = 'popover',
 }: QuestionsListProps) => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
 		<>
-			<h1 className={styles.title}>{t('title')}</h1>
+			<h1 className={styles.title}>{t(Questions.TITLE_SHORT)}</h1>
 			<hr className={styles.divider} />
 
 			{questions &&

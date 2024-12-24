@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -25,6 +26,7 @@ const PublicQuestionsPage = () => {
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
+	const [isDrawerOpen, setDrawerOpen] = useState(false);
 
 	const { status, ...getParams } = filter;
 
@@ -38,7 +40,7 @@ const PublicQuestionsPage = () => {
 		},
 	);
 
-	const onChangeSpecialization = (value: number[] | undefined) => {
+	const onChangeSpecialization = (value: number | number[]) => {
 		handleFilterChange({ specialization: value });
 	};
 
@@ -70,44 +72,48 @@ const PublicQuestionsPage = () => {
 		return null;
 	}
 
+	const toggleDrawer = () => {
+		setDrawerOpen((prev) => !prev);
+	};
+
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['popover-additional']}>
-				<Popover
-					body={
-						<div className={styles['popover-additional-info-wrapper']}>
-							<Card className={styles['popover-additional-search']}>
-								<PublicQuestionsFilterPanel
-									onChangeSearch={onChangeSearchParams}
-									onChangeSkills={onChangeSkills}
-									onChangeComplexity={onChangeComplexity}
-									onChangeRate={onChangeRate}
-									onChangeSpecialization={onChangeSpecialization}
-									filter={{
-										skills: filter.skills,
-										rate: filter.rate,
-										complexity: filter.complexity,
-										title: filter.title,
-										specialization: filter.specialization,
-									}}
-									skillsLimit={MAX_LIMIT_CATEGORIES}
-								/>
-							</Card>
-						</div>
-					}
-				>
-					{({ isOpen, onToggle }) => (
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to filters"
-							form="square"
-							icon={<Icon icon="slidersHorizontal" />}
-							size="S"
-							variant={'tertiary'}
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
+				<IconButton
+					className={isDrawerOpen ? styles.active : ''}
+					aria-label="go to filters"
+					form="square"
+					icon={<Icon icon="slidersHorizontal" />}
+					size="S"
+					variant={'tertiary'}
+					onClick={toggleDrawer}
+				/>
+				{isDrawerOpen && (
+					<Drawer
+						rootName="body"
+						isOpen={isDrawerOpen}
+						onClose={toggleDrawer}
+						className={styles.drawer}
+					>
+						<Card className={styles['drawer-content']}>
+							<PublicQuestionsFilterPanel
+								onChangeSearch={onChangeSearchParams}
+								onChangeSkills={onChangeSkills}
+								onChangeComplexity={onChangeComplexity}
+								onChangeRate={onChangeRate}
+								onChangeSpecialization={onChangeSpecialization}
+								filter={{
+									skills: filter.skills,
+									rate: filter.rate,
+									complexity: filter.complexity,
+									title: filter.title,
+									specialization: filter.specialization,
+								}}
+								skillsLimit={MAX_LIMIT_CATEGORIES}
+							/>
+						</Card>
+					</Drawer>
+				)}
 			</div>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>

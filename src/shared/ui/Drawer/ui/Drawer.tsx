@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
+import CloseIcon from '@/shared/assets/icons/CloseCircle.svg';
+
 import styles from './Drawer.module.css';
 
 interface DrawerProps {
@@ -66,6 +68,10 @@ export const Drawer = ({
 				})}
 				role="dialog"
 			>
+				<div className={styles['drawer-header']}>
+					<CloseIcon className={styles['close-icon']} onClick={onClose} />
+				</div>
+
 				{children}
 			</div>
 			<button className={styles['backdrop']} onClick={onClose} onKeyDown={handleKeyDown} />

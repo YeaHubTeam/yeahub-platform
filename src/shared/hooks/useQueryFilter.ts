@@ -24,7 +24,7 @@ interface FilterFromUser {
 	page?: number;
 	orderBy?: string;
 	order?: string;
-	specialization?: number[];
+	specialization?: number | number[];
 }
 
 const initialState = '?page=1&status=all';

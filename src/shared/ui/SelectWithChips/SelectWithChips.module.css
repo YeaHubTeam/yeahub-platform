@@ -13,6 +13,10 @@
   height: 46px;
 }
 
+.select > div > div {
+  border-radius: 12px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

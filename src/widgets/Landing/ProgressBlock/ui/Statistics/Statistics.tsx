@@ -1,21 +1,22 @@
+import { useTranslation } from 'react-i18next';
+
 import Progress from '@/shared/assets/icons/progress.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 
 import styles from './Statistics.module.css';
 
 export const Statistics = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.interviewStatistics);
 
 	return (
 		<div className={styles.statistics}>
-			<h3>{t(Landing.PROGRESS_BLOCK_INTERVIEW_STATISTICS)}</h3>
+			<h3>{t(InterviewStatistics.QUESTION_STATS_TITLE_SHORT)}</h3>
 
 			<div className={styles['statistics-pie']}>
 				<div className={styles.pie}>
 					<p className={styles.label}>
-						75%<span>{t(Landing.PROGRESS_BLOCK_DIAGRAM_LABEL)}</span>
+						75%<span>{t(InterviewStatistics.PASSED)}</span>
 					</p>
 
 					<Progress className={styles['progress-icon']} />
@@ -24,19 +25,19 @@ export const Statistics = () => {
 
 			<ul className={styles['statistics-list']}>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_ALL_QUESTIONS)}
+					{t(InterviewStatistics.QUESTION_STATS_ALL)}
 					<span>120</span>
 				</li>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_NEW_QUESTIONS)}
+					{t(InterviewStatistics.QUESTION_STATS_NEW)}
 					<span>50</span>
 				</li>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_UNLEARNED)}
+					{t(InterviewStatistics.QUESTION_STATS_IN_PROCESS)}
 					<span>60</span>
 				</li>
 				<li>
-					{t(Landing.PROGRESS_BLOCK_LEARNED)}
+					{t(InterviewStatistics.QUESTION_STATS_LEARNED)}
 					<span>20</span>
 				</li>
 			</ul>

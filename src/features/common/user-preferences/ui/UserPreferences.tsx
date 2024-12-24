@@ -1,7 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { Text } from 'yeahub-ui-kit';
 
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -11,7 +11,7 @@ import styles from './UserPreferences.module.css';
 export const UserPreferences = () => {
 	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 
-	const { t } = useI18nHelpers();
+	const { t } = useTranslation();
 
 	return (
 		<div className={styles.preferences}>
