@@ -7,6 +7,7 @@ import {
 	ChooseQuestionsCategories,
 	RateFilterSection,
 } from '@/entities/question';
+import { ChooseSpecialization } from '@/entities/question';
 
 import { SearchInput } from '@/features/common/search-input';
 
@@ -21,6 +22,7 @@ interface PublicQuestionsFilterPanelProps {
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
 	onChangeRate: (rate: number[]) => void;
+	onChangeSpecialization: (value: number[] | undefined) => void;
 }
 export const PublicQuestionsFilterPanel = ({
 	filter,
@@ -28,9 +30,10 @@ export const PublicQuestionsFilterPanel = ({
 	onChangeSkills,
 	onChangeComplexity,
 	onChangeRate,
+	onChangeSpecialization,
 	skillsLimit,
 }: PublicQuestionsFilterPanelProps) => {
-	const { skills, rate, complexity, title } = filter;
+	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const handleSearch = (value: string) => {
@@ -51,6 +54,10 @@ export const PublicQuestionsFilterPanel = ({
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
 				shouldShowScroll
+			/>
+			<ChooseSpecialization
+				selectedSpecialization={specialization}
+				onChangeSpecialization={onChangeSpecialization}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

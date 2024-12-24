@@ -1,0 +1,8 @@
+.wrapper {
+  flex-basis: 60%;
+}
+
+.mobile {
+  max-height: 170px;
+  overflow-y: scroll;
+}
