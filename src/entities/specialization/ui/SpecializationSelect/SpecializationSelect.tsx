@@ -26,7 +26,7 @@ export const SpecializationSelect = ({
 	hasMultiple,
 }: SpecializationSelectProps) => {
 	const { t } = useTranslation(i18Namespace.specialization);
-	const { data: specializations } = useGetSpecializationsListQuery({});
+	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
 	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(value);
 
