@@ -5,8 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Button } from '@/shared/ui/Button';
 
 import {
 	Specialization,
@@ -17,24 +19,29 @@ import {
 import styles from './ChooseSpecialization.module.css';
 
 const MAX_LIMIT = 5;
+const DEFAULT_SPECIALIZATION = 11;
 
 interface ChooseSpecializationProps {
-	selectedSpecialization?: number[];
-	onChangeSpecialization: (specialization: number[] | undefined) => void;
+	selectedSpecialization?: number;
+	onChangeSpecialization: (specialization: number | undefined) => void;
 	specializationLimit?: number;
 	shouldShowScroll?: boolean;
 }
 
 export const ChooseSpecialization = ({
-	selectedSpecialization,
+	selectedSpecialization = DEFAULT_SPECIALIZATION,
 	onChangeSpecialization,
 	specializationLimit,
 }: ChooseSpecializationProps) => {
-	const [showAll, _] = useState(false);
+	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT);
 	const { data: specialization } = useGetSpecializationsListQuery({ limit });
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
+
+	const toggleShowAll = () => {
+		setShowAll(!showAll);
+	};
 
 	useEffect(() => {
 		if (isMobile || showAll) {
@@ -45,21 +52,12 @@ export const ChooseSpecialization = ({
 	}, [specialization?.total, showAll, specializationLimit, isMobile]);
 
 	const handleChooseSpecialization = (id: number) => {
-		if (selectedSpecialization?.includes(id)) {
-			const filteredSpecializations = selectedSpecialization.filter(
-				(specialization) => specialization !== id,
-			);
-			onChangeSpecialization(
-				filteredSpecializations.length > 0 ? filteredSpecializations : undefined,
-			);
-		} else {
-			onChangeSpecialization([...(selectedSpecialization || []), id]);
-		}
+		onChangeSpecialization(id);
 	};
 
 	const prepareData = specialization?.data.map((spec) => ({
 		...spec,
-		active: selectedSpecialization?.includes(spec.id),
+		active: selectedSpecialization === spec.id,
 	}));
 
 	if (!prepareData) return null;
@@ -76,6 +74,11 @@ export const ChooseSpecialization = ({
 				onClick={handleChooseSpecialization}
 				getDefaultIcon={(item) => specializationIcon(item as Specialization)}
 			/>
+			{!isMobile && (
+				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
+					{!showAll ? t(Questions.CATEGORIES_SHOW_ALL) : t(Questions.CATEGORIES_HIDE)}
+				</Button>
+			)}
 		</div>
 	);
 };

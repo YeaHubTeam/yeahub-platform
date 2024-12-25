@@ -6,9 +6,9 @@ import { useDebounce } from '@/shared/hooks/useDebounced';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
+	ChooseSpecialization,
 	RateFilterSection,
 } from '@/entities/question';
-import { SpecializationSelect } from '@/entities/specialization';
 
 import { SearchInput } from '@/features/common/search-input';
 
@@ -16,16 +16,14 @@ import { FilterParams } from '@/widgets/Question';
 
 import styles from './PublicQuestionsFilterPanel.module.css';
 
-const DEFAULT_SPECIALIZATION = 11;
-
 interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
-	skillsLimit?: number;
+	specializationLimit?: number;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
 	onChangeRate: (rate: number[]) => void;
-	onChangeSpecialization: (value: number[] | number) => void;
+	onChangeSpecialization: (value: number | undefined) => void;
 }
 export const PublicQuestionsFilterPanel = ({
 	filter,
@@ -34,7 +32,7 @@ export const PublicQuestionsFilterPanel = ({
 	onChangeComplexity,
 	onChangeRate,
 	onChangeSpecialization,
-	skillsLimit,
+	specializationLimit,
 }: PublicQuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
@@ -45,9 +43,7 @@ export const PublicQuestionsFilterPanel = ({
 
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
-	const specializationArray = Array.isArray(specialization)
-		? specialization
-		: [specialization ?? DEFAULT_SPECIALIZATION];
+	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
 
 	return (
 		<div className={styles.wrapper}>
@@ -56,13 +52,16 @@ export const PublicQuestionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
+			<ChooseSpecialization
+				selectedSpecialization={selectedSpecialization}
+				onChangeSpecialization={onChangeSpecialization}
+				specializationLimit={specializationLimit}
+			/>
 			<ChooseQuestionsCategories
-				skillsLimit={skillsLimit}
+				skillsLimit={specializationLimit}
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				shouldShowScroll
 			/>
-			<SpecializationSelect value={specializationArray} onChange={onChangeSpecialization} />
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
 				selectedComplexity={complexity}

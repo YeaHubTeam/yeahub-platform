@@ -40,7 +40,7 @@ const PublicQuestionsPage = () => {
 		},
 	);
 
-	const onChangeSpecialization = (value: number | number[]) => {
+	const onChangeSpecialization = (value: number | undefined) => {
 		handleFilterChange({ specialization: value });
 	};
 
@@ -109,7 +109,7 @@ const PublicQuestionsPage = () => {
 									title: filter.title,
 									specialization: filter.specialization,
 								}}
-								skillsLimit={MAX_LIMIT_CATEGORIES}
+								specializationLimit={MAX_LIMIT_CATEGORIES}
 							/>
 						</Card>
 					</Drawer>
@@ -145,7 +145,7 @@ const PublicQuestionsPage = () => {
 							title: filter.title,
 							specialization: filter.specialization,
 						}}
-						skillsLimit={MAX_LIMIT_CATEGORIES}
+						specializationLimit={MAX_LIMIT_CATEGORIES}
 					/>
 				</Card>
 			</div>
