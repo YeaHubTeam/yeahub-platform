@@ -1,12 +1,12 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
+import { Input } from '@/shared/ui/Input';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -65,7 +65,7 @@ export const PersonalInformationTabForm = () => {
 							label={t(Profile.FORM_FIRSTNAME)}
 							className={styles.form}
 						>
-							{(field) => <Input {...field} className={styles.input} />}
+							{(field) => <Input {...field} className={styles.input} size="S" />}
 						</FormControl>
 						<FormControl
 							name="lastName"
@@ -73,7 +73,7 @@ export const PersonalInformationTabForm = () => {
 							label={t(Profile.FORM_LASTNAME)}
 							className={styles.form}
 						>
-							{(field) => <Input {...field} className={styles.input} />}
+							{(field) => <Input {...field} className={styles.input} size="S" />}
 						</FormControl>
 					</Flex>
 

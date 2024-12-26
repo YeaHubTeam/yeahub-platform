@@ -8,11 +8,10 @@
 
 .input {
   margin-right: auto;
-  padding: 12px 24px;
+  padding: 12px 16px;
   width: 328px;
   height: 48px;
   border: 1px solid var(--color-black-50);
-  border-radius: 68px;
 
   span {
     margin: 0;
@@ -48,6 +47,7 @@
 }
 
 .search-svg {
+  margin-right: 8px;
   width: 18px;
   height: 18px;
   fill:  var(--color-black-300);

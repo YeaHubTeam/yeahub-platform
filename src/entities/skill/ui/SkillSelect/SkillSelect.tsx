@@ -12,11 +12,16 @@ import { Skill } from '../../model/types/skill';
 type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 'type' | 'value'> & {
 	value: number[];
 	onChange: (value: number[]) => void;
+	selectedSPecializations?: number[];
 };
 
-export const SkillSelect = ({ onChange, value }: SkillSelectProps) => {
+export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
-	const { data: skills } = useGetSkillsListQuery({ limit: 100 });
+
+	const { data: skills } = useGetSkillsListQuery({
+		limit: 100,
+		specializations: selectedSPecializations,
+	});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
 

@@ -367,6 +367,8 @@ export enum Skills {
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	ICON_TITLE = 'icon.title',
+	ICON_LABEL = 'icon.label',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',

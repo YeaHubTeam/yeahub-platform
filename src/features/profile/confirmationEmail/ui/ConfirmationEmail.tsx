@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { Button, Input } from 'yeahub-ui-kit';
+import { Button } from 'yeahub-ui-kit';
 
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
+import { Input } from '@/shared/ui/Input';
 
 import { getFullProfile } from '@/entities/profile';
 
@@ -56,6 +57,7 @@ export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailPr
 						theme="primary"
 						onClick={onClickVerificationButton}
 						disabled={isSendingVerificationEmail}
+						className={styles.button}
 					>
 						{t(Profile.EMAIL_VERIFICATION_SUBMIT)}
 					</Button>
