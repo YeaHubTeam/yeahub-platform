@@ -1,8 +1,8 @@
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 
@@ -11,7 +11,7 @@ import { SkillSelect } from '@/entities/skill';
 import styles from './SkillsTabForm.module.css';
 
 export const SkillsTabForm = () => {
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation(i18Namespace.profile);
 	const { control } = useFormContext();
 
 	return (
