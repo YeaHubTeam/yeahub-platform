@@ -3,9 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Input, Text, TextArea } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Skills } from '@/shared/config/i18n/i18nTranslations';
+import { Skills, Specializations } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
 
 import styles from './SkillForm.module.css';
 
@@ -14,7 +17,7 @@ interface SkillFormProps {
 }
 
 export const SkillForm = ({ isEdit }: SkillFormProps) => {
-	const { t } = useTranslation(i18Namespace.skill);
+	const { t } = useTranslation([i18Namespace.skill, i18Namespace.specialization]);
 
 	const { control } = useFormContext();
 
@@ -25,7 +28,12 @@ export const SkillForm = ({ isEdit }: SkillFormProps) => {
 					title={isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
 					className={`${styles['title-base']} ${styles.title1}`}
 				/>
-				<Flex direction="row" className={`${styles['skills-input']}`} gap="120">
+				<Flex
+					direction="row"
+					style={{ marginTop: '60' }}
+					className={`${styles['skills-input']}`}
+					gap="120"
+				>
 					<Flex direction="column" gap="8">
 						<Text
 							title={t(Skills.TITLE_FULL)}
@@ -40,6 +48,23 @@ export const SkillForm = ({ isEdit }: SkillFormProps) => {
 						{(register, hasError) => <Input {...register} hasError={hasError} />}
 					</FormControl>
 				</Flex>
+			</Flex>
+			<Flex direction="row" className={`${styles['skills-select']}`} gap="120">
+				<Flex direction="column" gap="8">
+					<Text
+						title={t(Specializations.TITLE_FULL, { ns: i18Namespace.specialization })}
+						className={`${styles['title-base']} ${styles.title2}`}
+					/>
+					<Text
+						title={t(Specializations.TITLE_LABEL, { ns: i18Namespace.specialization })}
+						className={`${styles['title-base']} ${styles.title3}`}
+					/>
+				</Flex>
+				<FormControl className={styles.select} name="specializations" control={control}>
+					{({ onChange, value }) => (
+						<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+					)}
+				</FormControl>
 			</Flex>
 			<Flex direction="column" style={{ marginTop: '60' }} gap="8">
 				<Text

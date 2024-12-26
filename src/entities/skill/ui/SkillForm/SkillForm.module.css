@@ -32,8 +32,27 @@
   height: 48px;
 }
 
+.skills-select{
+  align-items: flex-start;
+  margin-bottom: 100px;
+  height: 48px;
+}
+
 .input-form{
   width: 100%;
   min-width: 100px;
   max-width: 408px;
+}
+
+.select {
+  width: 100%;
+  max-width: 706px;
+}
+
+.select > span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--text-color-light);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
 }
