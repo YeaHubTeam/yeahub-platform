@@ -146,8 +146,6 @@ export enum Profile {
 	ABOUT_ME_EMPTY = 'about.me.empty',
 	SKILLS_TITLE = 'skills.title',
 	SKILLS_DESCRIPTION = 'skills.description',
-	SPECIALIZATION_TITLE = 'specializations.title',
-	SPECIALIZATION_DESCRIPTION = 'specializations.description',
 	SKILLS_EMPTY = 'skills.empty',
 	FORM_FIRSTNAME = 'form.firstname',
 	FORM_LASTNAME = 'form.lastname',
