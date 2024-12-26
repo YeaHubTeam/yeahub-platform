@@ -5,35 +5,34 @@ import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getSpecializationId } from '@/entities/profile';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
 
 const MAX_LIMIT = 5;
+export const DEFAULT_SPECIALIZATION = 11;
 
 interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
 	onChangeSkills: (skills: number[] | undefined) => void;
 	skillsLimit?: number;
 	shouldShowScroll?: boolean;
+	profileSpecialization?: number;
 }
 
 export const ChooseQuestionsCategories = ({
 	selectedSkills,
 	onChangeSkills,
 	skillsLimit,
+	profileSpecialization = DEFAULT_SPECIALIZATION,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
-	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
