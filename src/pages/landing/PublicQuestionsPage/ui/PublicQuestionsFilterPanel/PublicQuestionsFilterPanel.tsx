@@ -1,10 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 
-import { getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
@@ -17,6 +15,8 @@ import { SearchInput } from '@/features/common/search-input';
 import { FilterParams } from '@/widgets/Question';
 
 import styles from './PublicQuestionsFilterPanel.module.css';
+
+const DEFAULT_SPECIALIZATION = 11;
 
 interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
@@ -38,7 +38,6 @@ export const PublicQuestionsFilterPanel = ({
 }: PublicQuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
-	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -64,7 +63,7 @@ export const PublicQuestionsFilterPanel = ({
 				skillsLimit={specializationLimit}
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				profileSpecialization={profileSpecialization}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

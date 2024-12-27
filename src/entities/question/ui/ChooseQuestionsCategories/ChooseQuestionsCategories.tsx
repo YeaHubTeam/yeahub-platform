@@ -22,21 +22,21 @@ interface ChooseQuestionsCategoriesProps {
 	onChangeSkills: (skills: number[] | undefined) => void;
 	skillsLimit?: number;
 	shouldShowScroll?: boolean;
-	profileSpecialization?: number;
+	selectedSpecialization: number;
 }
 
 export const ChooseQuestionsCategories = ({
 	selectedSkills,
 	onChangeSkills,
 	skillsLimit,
-	profileSpecialization = DEFAULT_SPECIALIZATION,
+	selectedSpecialization,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
-		specializations: [profileSpecialization],
+		specializations: [selectedSpecialization],
 	});
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.skill]);
 	const { isMobile } = useScreenSize();
