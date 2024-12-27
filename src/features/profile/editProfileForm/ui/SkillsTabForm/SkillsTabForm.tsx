@@ -20,7 +20,12 @@ export const SkillsTabForm = () => {
 				<h3>{t(Profile.SKILLS_TITLE)}</h3>
 				<p>{t(Profile.SKILLS_DESCRIPTION)}</p>
 			</div>
-			<FormControl className={styles.select} name="skills" control={control} label="Навык">
+			<FormControl
+				className={styles.select}
+				name="skills"
+				control={control}
+				label={t(Profile.FORM_SKILLS)}
+			>
 				{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
 			</FormControl>
 		</Flex>
