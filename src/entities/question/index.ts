@@ -7,6 +7,7 @@ export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPublicQuestionsListQuery,
 } from './api/questionApi';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
@@ -15,6 +16,7 @@ export { ChooseQuestionsCategories } from './ui/ChooseQuestionsCategories/Choose
 export { SortQuestionsByField } from './ui/SortQuestions/SortQuestionsByField/SortQuestionsByField';
 export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSorter';
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';
+export { ChooseSpecialization } from './ui/ChooseSpecialization/ChooseSpecialization';
 
 export { questionHandlers } from './api/__mocks__/index';
 

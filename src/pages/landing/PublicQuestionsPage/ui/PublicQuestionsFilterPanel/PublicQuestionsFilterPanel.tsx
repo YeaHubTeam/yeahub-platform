@@ -1,45 +1,43 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 
-import { getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
+	ChooseSpecialization,
 	RateFilterSection,
 } from '@/entities/question';
 
 import { SearchInput } from '@/features/common/search-input';
 
-import { FilterParams, QuestionFilterStatus } from '../model/types';
+import { FilterParams } from '@/widgets/Question';
 
-import styles from './QuestionsFilterPanel.module.css';
-import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
+import styles from './PublicQuestionsFilterPanel.module.css';
 
-interface QuestionsFilterPanelProps {
+const DEFAULT_SPECIALIZATION = 11;
+
+interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
-	skillsLimit?: number;
+	specializationLimit?: number;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
 	onChangeRate: (rate: number[]) => void;
-	onChangeStatus: (status: QuestionFilterStatus) => void;
+	onChangeSpecialization: (value: number | undefined) => void;
 }
-export const QuestionsFilterPanel = ({
+export const PublicQuestionsFilterPanel = ({
 	filter,
 	onChangeSearch,
 	onChangeSkills,
 	onChangeComplexity,
 	onChangeRate,
-	onChangeStatus,
-	skillsLimit,
-}: QuestionsFilterPanelProps) => {
-	const { skills, rate, complexity, status, title } = filter;
+	onChangeSpecialization,
+	specializationLimit,
+}: PublicQuestionsFilterPanelProps) => {
+	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
-	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -47,26 +45,31 @@ export const QuestionsFilterPanel = ({
 
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
+	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
+
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput
-				placeholder={t(Questions.SEARCH_PLACEHOLDER)}
+				placeholder={t('search.placeholder')}
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
+			<ChooseSpecialization
+				selectedSpecialization={selectedSpecialization}
+				onChangeSpecialization={onChangeSpecialization}
+				specializationLimit={specializationLimit}
+			/>
 			<ChooseQuestionsCategories
-				skillsLimit={skillsLimit}
+				skillsLimit={specializationLimit}
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				shouldShowScroll
-				selectedSpecialization={profileSpecialization}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
 				selectedComplexity={complexity}
 			/>
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</div>
 	);
 };

@@ -32,7 +32,7 @@ export enum Translation {
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 
 	/* Stub */
-	STUB_FILTER_TITLE = 'stub.filter.title',
+	STUB_FILTER_TITLE = 'stub.filter.text',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
 
 	/* Modal */

@@ -99,6 +99,7 @@ const CreateQuizPage = () => {
 					className={styles.wrapper}
 				>
 					<ChooseQuestionsCategories
+						selectedSpecialization={profileSpecialization}
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
