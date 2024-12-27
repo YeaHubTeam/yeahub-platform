@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Input, Text, TextArea } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Skills, Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
 import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -21,7 +21,7 @@ interface SkillFormProps {
 }
 
 export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
-	const { t } = useTranslation([i18Namespace.skill, i18Namespace.specialization]);
+	const { t } = useTranslation([i18Namespace.skill, i18Namespace.questions]);
 
 	const { control, setValue } = useFormContext();
 
@@ -67,13 +67,13 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					/>
 				</Flex>
 				<Flex direction="row" className={`${styles['skills-select']}`} gap="120">
-					<Flex direction="column" gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text
-							title={t(Specializations.TITLE_FULL, { ns: i18Namespace.specialization })}
+							title={t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
 							className={styles.title}
 						/>
 						<Text
-							title={t(Specializations.TITLE_LABEL, { ns: i18Namespace.specialization })}
+							title={t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
 							className={styles.description}
 						/>
 					</Flex>
