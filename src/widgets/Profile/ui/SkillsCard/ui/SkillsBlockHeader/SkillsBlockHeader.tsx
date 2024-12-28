@@ -1,10 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 
@@ -17,11 +17,11 @@ export const SkillsBlockHeader = () => {
 	const handleNavigate = () => {
 		navigate(`${ROUTES.profile.edit.page}#skills`);
 	};
-	const { t } = useI18nHelpers(i18Namespace.profile);
+	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 
 	return (
 		<div className={styles['skills-header']}>
-			<h3 className={styles['skills-title']}>{t(Profile.PROFILEPAGE_SKILLS_TITLE)}</h3>
+			<h3 className={styles['skills-title']}>{t(Profile.TABS_SKILLS)}</h3>
 			<Button
 				variant="link"
 				className={styles['skills-edit']}
@@ -32,7 +32,7 @@ export const SkillsBlockHeader = () => {
 					) : undefined
 				}
 			>
-				{!(isMobile || isTablet) ? t(Profile.PROFILEPAGE_EDITBUTTON) : ''}
+				{!(isMobile || isTablet) ? t(Translation.EDIT, { ns: i18Namespace.translation }) : ''}
 			</Button>
 		</div>
 	);

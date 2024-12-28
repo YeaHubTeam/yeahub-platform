@@ -41,6 +41,13 @@ const questionApi = baseApi.injectEndpoints({
 				providesTags: [ApiTags.QUESTIONS_LEARNED],
 			},
 		),
+		getPublicQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
+			query: (params) => ({
+				url: questionApiUrls.getPublicQuestionsList,
+				params: { page: 1, limit: 10, ...params },
+			}),
+			providesTags: [ApiTags.QUESTIONS],
+		}),
 		getPublicQuestionById: build.query<
 			GetPublicQuestionByIdResponse,
 			GetPublicQuestionByIdParamsRequest
@@ -57,5 +64,6 @@ export const {
 	useGetQuestionsListQuery,
 	useGetQuestionByIdQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
 } = questionApi;

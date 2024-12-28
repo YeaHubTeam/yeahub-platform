@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { CategoryMenuItem } from '../../model/types/sidebar';
@@ -25,7 +25,7 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 		setExpanded((prev) => !prev);
 	};
 
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const ImageComponent = menuItem.icon;
 

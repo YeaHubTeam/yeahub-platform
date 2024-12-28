@@ -60,7 +60,7 @@ export const InterviewStatisticsPageSkeleton = () => {
 			</Card>
 
 			<Card className={styles.category}>
-				<div className={styles['category-progress']}>
+				<div>
 					<Skeleton width="30%" height={30} style={{ marginBottom: 16 }} />
 					{[...Array(6)].map((_, i) => (
 						<Flex key={i} gap="16" align="center">

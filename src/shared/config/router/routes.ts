@@ -123,12 +123,12 @@ export const ROUTES = {
 		route: 'docs',
 		page: '/docs',
 	},
-	publicQuestions: {
+	questions: {
 		route: 'questions',
 		page: '/questions',
-		publicQuestion: {
+		detail: {
 			route: ':questionId',
-			page: '/question/:questionId',
+			page: '/questions/:questionId',
 		},
 	},
 };

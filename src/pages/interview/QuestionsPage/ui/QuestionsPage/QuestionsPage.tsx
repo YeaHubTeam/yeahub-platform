@@ -27,13 +27,16 @@ const MAX_LIMIT_CATEGORIES = 5;
 
 const QuestionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
+	const specializationId = useAppSelector(getSpecializationId);
+	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
+		limit: MAX_LIMIT_CATEGORIES,
+		specializations: [specializationId],
+	});
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
 
 	const { status, ...getParams } = filter;
 	const profileId = useAppSelector(getProfileId);
-	const specializationId = useAppSelector(getSpecializationId);
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
 		{
@@ -99,7 +102,7 @@ const QuestionsPage = () => {
 				<Popover
 					body={
 						<div className={styles['popover-additional-info-wrapper']}>
-							<Card className={styles['popover-additional-search']}>
+							<Card>
 								<QuestionsFilterPanel
 									onChangeSearch={onChangeSearchParams}
 									onChangeSkills={onChangeSkills}

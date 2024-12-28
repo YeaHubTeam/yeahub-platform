@@ -1,6 +1,6 @@
 import { http, HttpResponse, PathParams } from 'msw';
 
-import { questionsMock as questionMockResponse } from '@/entities/question/api/__mocks__/data';
+import { questionsMock } from '@/entities/question/api/__mocks__/data';
 
 import { createQuestionApiUrls } from '../../model/constants/createQuestionConstants';
 import {
@@ -17,10 +17,10 @@ export const createQuestionMock = http.post<
 >(process.env.API_URL + createQuestionApiUrls.createQuestion, async ({ request }) => {
 	const formData = await request.json();
 
-	const lastElement = questionMockResponse.data.at(-1);
+	const lastElement = questionsMock.data.at(-1);
 	const newId = lastElement ? lastElement.id + 1 : 1;
 	const newQuestion = newQuestionMock(formData, newId);
 
-	questionMockResponse.data.push(newQuestion);
+	questionsMock.data.push(newQuestion);
 	return HttpResponse.json(newQuestion);
 });

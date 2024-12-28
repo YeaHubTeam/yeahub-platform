@@ -1,97 +1,77 @@
 {
-  "profilePage": {
-    "years": "years",
-    "aboutMe": {
-      "title": "About me",
-      "noDescription": "No description yet"
-    },
-    "skills": {
-      "title": "Skills",
-      "noSkills": "The list of skills is empty"
-    },
-    "editButton": "Edit"
-  },
+  "edit.page.title": "Profile editing",
   "tabs": {
-    "title": "Profile editing",
-    "items": {
-      "personalInformation": "Personal information",
-      "aboutMe": "About me",
-      "skills": "Skills",
-      "projects": "Projects",
-      "experience": "Experience",
-      "education": "Education"
-    }
+    "personal": "Personal info",
+    "about.me": "About me",
+    "skills": "Skills"
   },
   "photo": {
     "title": "Profile photo",
-    "largePreview": "Large size avatar preview",
-    "smallPreview": "Small size avatar preview",
-    "description": "Your photo will be visible to all members of Yeahub community",
-    "cropperTitle": "Select an area for your profile photos.",
-    "cropperDescription": "The thumbnail you choose will be used in the article, private messages, and comments."
+    "description": "Your photo will be visible to all members of the YeaHub community",
+    "delete": "Delete photo",
+    "modal": {
+      "title": "Select an area for profile photos",
+      "description": "The selected thumbnail will be used in articles, personal messages and comments.",
+      "submit": "Save the changes",
+      "click.secondary": "Change the photo",
+      "large.preview": "Large size of the avatar preview",
+      "small.preview": "Small size of the avatar preview",
+      "min.res": "Minimum image resolution: {{minRes}}",
+      "max.res": "Maximum resolution for an image: {{maxRes}}"
+    }
   },
-  "personalInformationForm": {
+  "personal": {
     "title": "Personal information",
-    "description": "We'll come up with something cool here too",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "specialization": "IT specialization",
-    "contactNumber": "Contact number",
-    "email": "Contact email",
-    "location": "Location",
-    "locationPlaceholder": "E.g. New York, USA",
-    "grade": "Grade",
-    "personalLinks": "Personal links",
-    "personalLinksText": "Share your profiles on other social networks"
+    "description": "Your detailed information"
   },
-  "aboutMeForm": {
-    "title": "About yourself",
-    "description": "Tell everyone about yourself. We value people not for their professional qualities, so share whatever you want",
-    "placeholder": "Write something here..."
+  "links": {
+    "title": "Personal links",
+    "description": "Share your profiles on other social networks. networks"
   },
-  "skillForm": {
+  "about.me": {
+    "title": "About your beloved",
+    "description": "Tell the whole community about yourself. We value a person not for his professional qualities, so write whatever you want to share.",
+    "empty": "Description is empty"
+  },
+  "skills": {
     "title": "Your skills",
-    "description": "Show what you can do and what you are really good at",
-    "specializationSelect": "Choose your specialization",
-    "emptySpecializationSelect": "No options available",
-    "skillSelect": "Select skill from the list",
-    "emptySkillSelect": "No options available",
-    "selectedSkills": "Selected skills",
-    "submitButtonText": "Save",
-    "imageAlt": "Skill logo"
+    "description": "Show what you can do and what you're really good at",
+    "empty": "Skills not selected"
   },
-  "projectsList": {
-    "imageAlt": "Project image"
+  "form": {
+    "firstname": "Name",
+    "lastName": "Last name",
+    "specialization": "IT specialty",
+    "phone": "Contact number",
+    "email": "Email for communication",
+    "location": "Location",
+    "skills": "Skills"
   },
-  "experienceList": {
-    "imageAlt": "Organization logo"
+  "setting.tabs": {
+    "change.password": "E-mail confirmation",
+    "verify.email": "Password change"
   },
-  "achievmentsList": {
-    "imageAlt": "Achievement icon"
+  "email.verification": {
+    "title": "Confirm your e-mail",
+    "description": "Confirm your e-mail to activate your account, after activation you will get access to our platform",
+    "email": "Enter e-mail",
+    "submit": "Confirm",
+    "sent.success": "The email was successfully sent to the mail",
+    "verify.stub": {
+      "title": "{{firstName}}, confirm your e-mail",
+      "description": "Become a part of our team! Confirm your e-mail to get access to additional features of the platform and start expanding your horizons in a community of dedicated professionals like you. Join us on the way to new heights!",
+      "link": "Confirm e-mail"
+    },
+    "success.verify.stub": {
+      "title": "Mail has been successfully confirmed",
+      "description": "Thank you for confirming your mail, now more services are available on the platform"
+    }
   },
-  "buttons": {
-    "edit": "Edit",
-    "save": "Save"
-  },
-  "emailVerification": {
-    "title": "verify your e-mail",
-    "description": "Become part of our team! Confirm your email address to gain access to additional platform features and start expanding your horizons among communities of motivated professionals just like you. Join us on the path to new heights!",
-    "buttonText": "Verify e-mail",
-    "verifyEmailText": "Confirm your email to activate your account, after activation you will have access to our platform",
-    "letterSent": "The letter was successfully sent by email",
-    "verifySuccess": "E-mail successfully confirmed",
-    "verifyText": "Thank you for confirming your email, now more services are available to you on the platform",
-    "emailSettings": "E-mail confirmation",
-    "verifyLink": "Confirm e-mail",
-    "writeEmail": "Enter e-mail"
-  },
-  "changePassword": {
+  "change.password": {
     "title": "Change your password",
     "description": "For security reasons, or if you notice suspicious activity, change your password",
-    "passwordSettings": "Change password",
-    "enterNewPassword": "Enter a new password",
-    "repeatPassword": "Repeat the password",
-    "placeholderInput": "Password",
-    "buttonText": "Save"
+    "label": "Enter a new password",
+    "repeat.label": "Repeat the password",
+    "placeholder": "Password"
   }
 }

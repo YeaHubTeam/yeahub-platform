@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 
 import { mockTraining } from './mockTraining';
 import styles from './QuestionList.module.css';
@@ -8,7 +9,7 @@ import styles from './QuestionList.module.css';
 const mockQuestionList = mockTraining.slice(0, 4);
 
 export const QuestionList = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
 		<ul className={styles['question-list']}>
@@ -18,10 +19,10 @@ export const QuestionList = () => {
 					<p>{training.title}</p>
 					<div>
 						<p>
-							{t(Landing.RATING)}:<span>{training.rating}</span>
+							{t(Questions.RATE_TITLE_SHORT)}:<span>{training.rating}</span>
 						</p>
 						<p className={styles.difficulty}>
-							{t(Landing.COMPLEXITY)}:<span>{training.difficulty}</span>
+							{t(Questions.COMPLEXITY_TITLE_SHORT)}:<span>{training.difficulty}</span>
 						</p>
 					</div>
 				</li>

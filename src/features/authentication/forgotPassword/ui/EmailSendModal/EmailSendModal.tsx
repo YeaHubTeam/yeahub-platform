@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import EmailModal from '@/shared/assets/images/emailModal.png';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { Auth, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal } from '@/shared/ui/Modal';
@@ -40,7 +40,7 @@ export const EmailSendModal = ({
 	);
 	const [sendEmailRecoveryPassword] = useSendEmailRecoveryPasswordMutation();
 
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation([i18Namespace.auth, i18Namespace.translation]);
 
 	const onSendAgain = async () => {
 		try {
@@ -50,7 +50,9 @@ export const EmailSendModal = ({
 				sendEmailRecoveryPassword({ email });
 			}
 		} catch (error) {
-			toast.error(t(Auth.FORGOT_PASSWORD_ENTERED_INCORRECT_EMAIL));
+			toast.error(
+				t(Translation.TOAST_CHANGE_PASSWORD_FAILED_EMAIL, { ns: i18Namespace.translation }),
+			);
 			// eslint-disable-next-line no-console
 			console.error(error);
 		}
@@ -78,7 +80,7 @@ export const EmailSendModal = ({
 					disabled={isSendAgainButtonDisabled}
 					onClick={onSendAgain}
 				>
-					{t(Auth.FORGOT_PASSWORD_MODAL_BUTTON)}
+					{t(Auth.FORGOT_PASSWORD_MODAL_SUBMIT)}
 				</Button>
 			</Flex>
 		</Modal>

@@ -1,5 +1,7 @@
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 
+import { getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
@@ -9,6 +11,8 @@ import {
 } from '@/entities/question';
 
 export const QuestionsFilterSet = () => {
+	const profileSpecialization = useAppSelector(getSpecializationId);
+
 	const {
 		filter: { skills, complexity, rate, orderBy, order },
 		handleFilterChange,
@@ -36,7 +40,11 @@ export const QuestionsFilterSet = () => {
 
 	return (
 		<>
-			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+			<ChooseQuestionsCategories
+				selectedSkills={skills}
+				onChangeSkills={onChangeSkills}
+				selectedSpecialization={profileSpecialization}
+			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
 				selectedComplexity={complexity}

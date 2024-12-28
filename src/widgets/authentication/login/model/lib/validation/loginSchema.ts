@@ -8,7 +8,7 @@ YupPassword(yup);
 export const loginSchema = yup.object().shape({
 	username: yup
 		.string()
-		.email(i18n.t(Translation.VALIDATION_EMAIL_FORMAT))
+		.email(i18n.t(Translation.VALIDATION_EMAIL))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	password: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });
