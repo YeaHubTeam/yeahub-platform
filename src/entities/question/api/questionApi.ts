@@ -10,6 +10,8 @@ import {
 	GetQuestionByIdResponse,
 	GetQuestionsListParamsRequest,
 	GetQuestionsListResponse,
+	GetPublicQuestionByIdResponse,
+	GetPublicQuestionByIdParamsRequest,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -39,8 +41,21 @@ const questionApi = baseApi.injectEndpoints({
 				providesTags: [ApiTags.QUESTIONS_LEARNED],
 			},
 		),
+		getPublicQuestionById: build.query<
+			GetPublicQuestionByIdResponse,
+			GetPublicQuestionByIdParamsRequest
+		>({
+			query: ({ questionId }) => ({
+				url: route(questionApiUrls.getPublicQuestionById, questionId || ''),
+			}),
+			providesTags: [ApiTags.PUBLIC_QUESTION_DETAIL],
+		}),
 	}),
 });
 
-export const { useGetQuestionsListQuery, useGetQuestionByIdQuery, useGetLearnedQuestionsQuery } =
-	questionApi;
+export const {
+	useGetQuestionsListQuery,
+	useGetQuestionByIdQuery,
+	useGetLearnedQuestionsQuery,
+	useGetPublicQuestionByIdQuery,
+} = questionApi;

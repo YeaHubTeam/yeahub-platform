@@ -40,7 +40,7 @@ export const QuestionPreview = ({ question }: QuestionProps) => {
 			icon: <OpenIcon isCurrentColor />,
 			title: t(ActionsButton.MORE),
 			onClick: () => {
-				navigate(route(ROUTES.interview.questions.detail.page, id));
+				navigate(route(ROUTES.publicQuestions.publicQuestion.page, id));
 			},
 		},
 		{

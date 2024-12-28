@@ -1,0 +1,152 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 0 80px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  gap: 24px;
+}
+
+.mobile,
+.tablet {
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.back-header {
+  margin-bottom: 24px;
+}
+
+.popover-additional-wrapper {
+  width: 100%;
+  max-width: 314px;
+}
+
+.additional {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  height: auto;
+}
+
+.additional-info-wrapper {
+  padding: 8px;
+  box-shadow: none;
+}
+
+.additional h4 {
+  color: var(--text-color-light);
+}
+
+:is(.additional, .mobile, .tablet) > div {
+  height: auto;
+}
+
+.author {
+  margin: 0 auto;
+  text-align: center;
+  font-size: var(--font-size-p-s);
+}
+
+.author p {
+  justify-content: center;
+}
+
+.author a {
+  pointer-events: none;
+  color: var(--text-color-link-active);
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.actions-wrapper {
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
+.mobile .actions {
+  justify-content: flex-start;
+}
+
+.tablet .actions {
+  justify-content: flex-start;
+}
+
+.params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.popover-additional {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  border: 1px solid var(--border-right-color);
+  border-radius: 8px;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.popover-additional:has(button.active) {
+  border: 1px solid var(--button-border-secondary-focus);
+}
+
+@media (width <= 1023px) {
+  .popover-open {
+    border: 1px solid var(--text-color-link-active);
+  }
+
+  .additional {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+    width: 360px;
+    height: auto;
+  }
+}
+
+@media (width <= 767px) {
+  .back-header {
+    margin-bottom: 14px;
+  }
+}
+
+
+@media (width <= 576px) {
+  .wrapper > div,
+  .back-header {
+    margin-inline: 16px;
+  }
+}

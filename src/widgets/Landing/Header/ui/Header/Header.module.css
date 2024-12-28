@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0 76px;
+  margin: 16px 0;
   padding: 10px 0;
   width: 100%;
 }
@@ -17,7 +17,6 @@
 
 @media screen and (width <=1439px) {
   .header {
-    margin-bottom: 68px;
     padding: 0;
   }
 }
@@ -25,7 +24,6 @@
 @media screen and (width <= 576px) {
   .header {
     margin-top: 0;
-    margin-bottom: 32px;
     padding: 16px 16px 0;
   }
 }

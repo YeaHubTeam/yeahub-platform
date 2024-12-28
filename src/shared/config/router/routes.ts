@@ -123,4 +123,12 @@ export const ROUTES = {
 		route: 'docs',
 		page: '/docs',
 	},
+	publicQuestions: {
+		route: 'questions',
+		page: '/questions',
+		publicQuestion: {
+			route: ':questionId',
+			page: '/question/:questionId',
+		},
+	},
 };

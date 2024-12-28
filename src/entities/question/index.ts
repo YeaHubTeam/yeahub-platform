@@ -7,6 +7,7 @@ export {
 	useGetQuestionByIdQuery,
 	useGetQuestionsListQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPublicQuestionByIdQuery,
 } from './api/questionApi';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';

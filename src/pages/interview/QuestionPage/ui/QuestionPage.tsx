@@ -27,7 +27,7 @@ interface QuestionPageProps {
 	isAdmin?: boolean;
 }
 
-export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
+const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId } = useParams<{ questionId: string }>();
 
@@ -149,3 +149,5 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		</>
 	);
 };
+
+export default QuestionPage;
