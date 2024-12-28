@@ -14,9 +14,10 @@ interface QuestionHeaderProps {
 	title: string;
 	description: string;
 	status: QuestionStatus;
+	isPublic?: boolean;
 }
 
-export const QuestionHeader = ({ title, description, status }: QuestionHeaderProps) => {
+export const QuestionHeader = ({ title, description, status, isPublic }: QuestionHeaderProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isDesktop, isMobile } = useScreenSize();
 
@@ -27,28 +28,39 @@ export const QuestionHeader = ({ title, description, status }: QuestionHeaderPro
 		draft: t(Questions.STATUS_DRAFT),
 	};
 
+	const StatusLabel = () =>
+		(isPublic || isDesktop) && (
+			<div className={styles['label-wrapper']}>
+				<p className={styles.label}>{questionStatuses[status]}</p>
+			</div>
+		);
+
 	return (
 		<Card withOutsideShadow>
-			<div className={styles['question-header-wrapper']}>
-				{isDesktop ? (
-					<div
-						className={`${styles['image-wrapper']} ${
-							isMobile ? styles['image-wrapper-mobile'] : ''
-						}`}
-					>
-						<ImageWithWrapper className={imageClassName} src={''} />
+			{isMobile ? (
+				<div className={styles['question-header-wrapper']}>
+					<div className={styles['title-wrapper']}>
+						<h2 className={styles.title}>{title}</h2>
+						{isPublic && <StatusLabel />}
 					</div>
-				) : null}
-				<div className={styles['title-wrapper']}>
-					<h2 className={styles.title}>{title}</h2>
-					<p className={styles.description}>{description}</p>
+					<div className={styles['description-wrapper']}>
+						<p className={styles.description}>{description}</p>
+					</div>
 				</div>
-				{isDesktop && (
-					<div className={styles['label-wrapper']}>
-						<p className={styles.label}>{questionStatuses[status]}</p>
+			) : (
+				<div className={styles['question-header-wrapper']}>
+					{isDesktop && (
+						<div className={styles['image-wrapper']}>
+							<ImageWithWrapper className={imageClassName} src={''} />
+						</div>
+					)}
+					<div className={styles['title-wrapper']}>
+						<h2 className={styles.title}>{title}</h2>
+						<p className={styles.description}>{description}</p>
 					</div>
-				)}
-			</div>
+					<StatusLabel />
+				</div>
+			)}
 		</Card>
 	);
 };

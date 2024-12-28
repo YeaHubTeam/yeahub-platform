@@ -10,6 +10,8 @@
   "hello": "Hello {{name}}!",
   "save": "Save",
   "cancel": "Cancel",
+  "expand": "expand",
+  "collapse": "collapse",
   "logo": "Logo",
   "avatar": "Avatar",
   "logout": "Log out",
