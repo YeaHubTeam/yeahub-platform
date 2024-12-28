@@ -86,7 +86,7 @@ export const Card = ({
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
 	const [contentHeight, setContentHeight] = useState(0);
-	const { t } = useTranslation(i18Namespace.interviewStatistics);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	useLayoutEffect(() => {
 		if (expandable) {

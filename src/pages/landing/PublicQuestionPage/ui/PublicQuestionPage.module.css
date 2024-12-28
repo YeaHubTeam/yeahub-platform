@@ -8,7 +8,7 @@
 
 .content {
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
 
 .mobile,
@@ -20,11 +20,11 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .back-header {
-  margin-bottom: 24px;
+  margin: 24px 0;
 }
 
 .popover-additional-wrapper {
@@ -81,6 +81,10 @@
   width: 100%;
 }
 
+.back-button-wrapper {
+  margin-top: 24px;
+}
+
 .actions-wrapper {
   margin-bottom: 20px;
 }
@@ -107,7 +111,6 @@
 }
 
 .popover-additional {
-  display: block;
   justify-content: center;
   align-items: center;
   width: auto;
@@ -139,7 +142,7 @@
 
 @media (width <= 767px) {
   .back-header {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 }
 

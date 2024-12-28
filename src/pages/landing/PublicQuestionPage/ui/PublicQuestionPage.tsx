@@ -95,6 +95,7 @@ const PublicQuestionPage = () => {
 					description={question.description}
 					status={question.status}
 					title={question.title}
+					isPublic
 				/>
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
@@ -105,13 +106,16 @@ const PublicQuestionPage = () => {
 		<>
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>
-					<BackButton />
+					<div className={styles['back-button-wrapper']}>
+						<BackButton />
+					</div>
 					<div className={styles.content}>
 						<div className={styles.main}>
 							<QuestionHeader
 								description={question.description}
 								status={question.status}
 								title={question.title}
+								isPublic
 							/>
 							<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
 						</div>
