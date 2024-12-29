@@ -8,6 +8,7 @@
   flex: 1 1 auto;
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  width: 100%;
   max-width: var(--container-width);
 }
 

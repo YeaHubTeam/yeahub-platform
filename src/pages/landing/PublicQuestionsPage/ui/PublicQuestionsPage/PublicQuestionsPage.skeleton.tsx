@@ -6,6 +6,9 @@ import styles from './PublicQuestionsPage.module.css';
 export const PublicQuestionsPageSkeleton = () => {
 	return (
 		<section className={styles.wrapper}>
+			<div className={styles['popover-additional']}>
+				<Skeleton width={37} height={37} borderRadius={8} />
+			</div>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
 					<Skeleton style={{ margin: '0.67em 0' }} height={33} />
