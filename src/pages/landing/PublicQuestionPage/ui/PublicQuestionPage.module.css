@@ -152,4 +152,8 @@
   .back-header {
     margin-inline: 16px;
   }
+
+  .back-header {
+    margin-top: 0;
+  }
 }

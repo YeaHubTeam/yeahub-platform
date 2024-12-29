@@ -13,7 +13,7 @@ export const PublicQuestionPageSkeleton = () => {
 	if (isMobile) {
 		return (
 			<section className={classNames(styles.wrapper, styles.mobile)}>
-				<Flex gap="20" justify="between">
+				<Flex gap="20" justify="between" className={styles['back-header']}>
 					<Skeleton height={40} width={40} borderRadius={'50%'} />
 					<Skeleton height={40} width={40} borderRadius={'8px'} />{' '}
 				</Flex>
@@ -40,7 +40,7 @@ export const PublicQuestionPageSkeleton = () => {
 	if (isTablet) {
 		return (
 			<section className={classNames(styles.wrapper, styles.tablet)}>
-				<Flex gap="20" justify="between">
+				<Flex gap="20" justify="between" className={styles['back-header']}>
 					<Skeleton height={40} width={40} borderRadius={'50%'} />
 					<Skeleton height={40} width={40} borderRadius={'8px'} />
 				</Flex>
@@ -66,7 +66,7 @@ export const PublicQuestionPageSkeleton = () => {
 
 	return (
 		<section className={styles.wrapper}>
-			<Flex gap="20" justify="between">
+			<Flex gap="20" justify="between" className={styles['back-button-wrapper']}>
 				<Skeleton height={40} width={40} borderRadius={'50%'} />
 			</Flex>
 			<div className={styles.content}>
