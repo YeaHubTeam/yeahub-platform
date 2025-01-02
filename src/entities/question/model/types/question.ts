@@ -30,6 +30,8 @@ export interface Question {
 	profileId?: string;
 }
 
+export type PublicQuestion = Omit<Question, 'isLearned' | 'profileId' | 'checksCount'>;
+
 export type CreateOrEditQuestionFormValues = Pick<
 	Question,
 	| 'id'
@@ -78,3 +80,9 @@ export interface GetLearnedQuestionsParamsRequest
 	isLearned?: boolean;
 }
 export type GetLearnedQuestionsResponse = Response<Question[]>;
+
+export type GetPublicQuestionByIdResponse = PublicQuestion;
+
+export type GetPublicQuestionByIdParamsRequest = {
+	questionId?: string;
+};

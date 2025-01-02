@@ -3,7 +3,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { skillApiUrls } from '../model/constants/skillConstants';
-import {
+import type {
 	GetSkillByIdResponse,
 	GetSkillsListParamsRequest,
 	GetSkillsListResponse,

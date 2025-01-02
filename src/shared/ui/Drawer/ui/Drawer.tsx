@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Icon } from 'yeahub-ui-kit';
+
+import CloseIcon from '@/shared/assets/icons/CloseCircle.svg';
 
 import styles from './Drawer.module.css';
 
@@ -72,17 +73,10 @@ export const Drawer = ({
 				role="dialog"
 			>
 				{hasCloseButton && (
-					<div className={styles['close-button-wrapper']}>
-						<Icon
-							aria-label="close button"
-							onClick={onClose}
-							className={styles['close-button']}
-							icon="plusCircle"
-							color={'--palette-ui-red-600'}
-						/>
+					<div className={styles['drawer-header']}>
+						<CloseIcon className={styles['close-icon']} onClick={onClose} />
 					</div>
 				)}
-
 				{children}
 			</div>
 			<button className={styles['backdrop']} onClick={onClose} onKeyDown={handleKeyDown} />

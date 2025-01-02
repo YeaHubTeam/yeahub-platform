@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -24,7 +24,7 @@ interface EventCalendarProps {
 }
 
 export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProps) => {
-	const { t } = useI18nHelpers(i18Namespace.a11y);
+	const { t } = useTranslation(i18Namespace.interviewHistory);
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobileS } = useScreenSize();
 
@@ -33,7 +33,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 			icon="caretLeft"
 			size={24}
 			color="--palette-ui-black-600"
-			aria-label={t(A11y.PREV_MONTH)}
+			aria-label={t(InterviewHistory.PREV_MONTH)}
 		/>
 	);
 	const NEXT_LABEL = (
@@ -41,7 +41,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 			icon="caretRight"
 			size={24}
 			color="--palette-ui-black-600"
-			aria-label={t(A11y.NEXT_MONTH)}
+			aria-label={t(InterviewHistory.NEXT_MONTH)}
 		/>
 	);
 

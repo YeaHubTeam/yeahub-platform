@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -5,7 +6,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -29,11 +29,11 @@ export const QuestionsTable = ({
 }: QuestionsTableProps) => {
 	const navigate = useNavigate();
 
-	const { t } = useI18nHelpers([i18Namespace.questions, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(Questions.NAME),
+			title: t(Questions.TITLE_SHORT),
 			specialization: t(Questions.SPECIALIZATION_TITLE),
 			skills: t(Questions.SKILLS_TITLE),
 		};

@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AppLogo } from '@/shared/ui/AppLogo';
 
 import { BenefitsList } from '../BenefitsList/BenefitsList';
@@ -9,7 +10,7 @@ import { BenefitsList } from '../BenefitsList/BenefitsList';
 import styles from './AuthAside.module.css';
 
 export const AuthAside = () => {
-	const { t } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation(i18Namespace.auth);
 
 	return (
 		<aside className={styles.wrapper}>

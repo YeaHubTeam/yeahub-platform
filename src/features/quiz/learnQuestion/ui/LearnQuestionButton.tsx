@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { ActionsButton } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
@@ -29,7 +29,7 @@ export const LearnQuestionButton = ({
 	onSuccess,
 }: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.questions);
 	const handleLearnQuestion = async () => {
 		try {
 			await learnQuestion({
@@ -54,7 +54,7 @@ export const LearnQuestionButton = ({
 			onClick={handleLearnQuestion}
 			disabled={isLoading || isDisabled}
 		>
-			{t(ActionsButton.LEARN)}
+			{t(Questions.LEARN)}
 		</Button>
 	);
 };

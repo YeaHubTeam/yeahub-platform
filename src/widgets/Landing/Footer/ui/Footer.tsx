@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import FigmaLogo from '@/shared/assets/icons/figma.svg';
@@ -5,14 +6,13 @@ import GithubLogo from '@/shared/assets/icons/github.svg';
 import TelegramLogo from '@/shared/assets/icons/telegram.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
 
 import styles from './Footer.module.css';
 
 export const Footer = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.landing);
 
 	return (
 		<footer className={styles.footer}>

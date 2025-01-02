@@ -40,7 +40,6 @@ export const InterviewQuizPageSkeleton = () => {
 										height={44}
 										borderRadius={12}
 										width={isMobile ? '60px' : '100px'}
-										className={styles['response-button-skeleton']}
 									/>
 								))}
 						</Flex>

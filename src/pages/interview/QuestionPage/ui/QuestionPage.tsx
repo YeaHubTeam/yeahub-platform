@@ -150,3 +150,5 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		</>
 	);
 };
+
+export default QuestionPage;

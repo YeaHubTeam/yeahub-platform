@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Specialization as SpecializationI18 } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
@@ -25,10 +25,8 @@ export const SpecializationSelect = ({
 	value,
 	hasMultiple,
 }: SpecializationSelectProps) => {
-	console.log(value);
-
-	const { t } = useI18nHelpers(i18Namespace.specialization);
-	const { data: specializations } = useGetSpecializationsListQuery({});
+	const { t } = useTranslation(i18Namespace.specialization);
+	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
 	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(value);
 
@@ -86,9 +84,7 @@ export const SpecializationSelect = ({
 				value={value || value === 0 ? `${value}` : undefined}
 				type="default"
 				placeholder={
-					options.length
-						? t(SpecializationI18.SKILLFORM_SPECIALIZATIONSELECT)
-						: t(SpecializationI18.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
+					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 				}
 				className={styles.select}
 			/>
@@ -97,16 +93,14 @@ export const SpecializationSelect = ({
 
 	return (
 		<SelectWithChips
-			title={t(SpecializationI18.SKILLFORM_SELECTED_SPECIALIZATIONS)}
+			title={t(Specializations.SELECT_SELECTED)}
 			options={options}
 			onChange={handleChange}
 			selectedItems={selectedSpecializations}
 			handleDeleteItem={handleDeleteSpecialization}
 			itemsDictionary={specializationsDictionary}
 			placeholder={
-				options.length
-					? t(SpecializationI18.SKILLFORM_SPECIALIZATIONSELECT)
-					: t(SpecializationI18.SKILLFORM_EMPTYSPECIALIZATIONSELECT)
+				options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 			}
 		/>
 	);

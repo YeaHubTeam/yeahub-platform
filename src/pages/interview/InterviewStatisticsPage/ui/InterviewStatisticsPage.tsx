@@ -1,8 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { PassedQuestionStatInfo } from '@/shared/ui/PassedQuestionStatInfo';
@@ -16,7 +17,6 @@ import {
 	ProgressByCategoriesList,
 } from '@/widgets/Charts';
 import { InterviewHistoryList } from '@/widgets/InterviewHistory';
-import { InterviewQuestionHeader } from '@/widgets/InterviewQuestions';
 
 import { InterviewStatisticsPageSkeleton } from '@/pages/interview/InterviewStatisticsPage/ui/InterviewStatisticsPage.skeleton';
 
@@ -25,7 +25,7 @@ import { transformSkillsArray } from '../model/helpers/transformSkillsArray';
 import styles from './InterviewStatisticsPage.module.css';
 
 const InterviewStatisticsPage = () => {
-	const { t } = useI18nHelpers(i18Namespace.interviewStatistics);
+	const { t } = useTranslation(i18Namespace.interviewStatistics);
 	const profileId = useAppSelector(getProfileId);
 	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId ?? '');
 
@@ -37,22 +37,22 @@ const InterviewStatisticsPage = () => {
 
 	const questionStats = [
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_ALLQUESTIONS),
+			title: t(InterviewStatistics.QUESTION_STATS_ALL),
 			value: `${profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}`,
 			route: `${ROUTES.interview.questions.page}?page=1&status=all`,
 		},
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_NEWQUESTIONS),
+			title: t(InterviewStatistics.QUESTION_STATS_NEW),
 			value: `${profileStats?.questionsStat?.unlearnedQuestionsCount ?? 0}`,
 			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 		},
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_INPROCESS),
+			title: t(InterviewStatistics.QUESTION_STATS_IN_PROCESS),
 			value: `${profileStats?.questionsStat?.inProgressQuestionsCount ?? 0}`,
 			route: `${ROUTES.interview.questions.page}?page=1&status=not-learned`,
 		},
 		{
-			title: t(InterviewStatistics.QUESTIONSTATS_LEARNED),
+			title: t(InterviewStatistics.QUESTION_STATS_LEARNED),
 			value: `${profileStats?.questionsStat?.learnedQuestionsCount ?? 0}`,
 			route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 		},
@@ -63,41 +63,45 @@ const InterviewStatisticsPage = () => {
 		{
 			value: profileStats?.quizzesStat?.maxQuizResult ?? 0,
 			name: isMobile
-				? t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT_MOBILE)
-				: t(InterviewStatistics.ATTEMPTSTATS_BESTRESULT),
+				? t(InterviewStatistics.ATTEMPT_STATS_BEST_MOBILE)
+				: t(InterviewStatistics.ATTEMPT_STATS_BEST),
 			itemStyle: { color: '#400799' },
 		},
 		{
 			value: profileStats?.quizzesStat?.minQuizResult ?? 0,
 			name: isMobile
-				? t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT_MOBILE)
-				: t(InterviewStatistics.ATTEMPTSTATS_WORSTRESULT),
+				? t(InterviewStatistics.ATTEMPT_STATS_WORST_MOBILE)
+				: t(InterviewStatistics.ATTEMPT_STATS_WORST),
 			itemStyle: { color: '#E1CEFF' },
 		},
 		{
 			value: profileStats?.quizzesStat?.avgQuizResult ?? 0,
 			name: isMobile
-				? t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT_MOBILE)
-				: t(InterviewStatistics.ATTEMPTSTATS_AVGRESULT),
+				? t(InterviewStatistics.ATTEMPT_STATS_AVG_MOBILE)
+				: t(InterviewStatistics.ATTEMPT_STATS_AVG),
 			itemStyle: { color: '#6A0BFF' },
 		},
 	];
 
 	return (
 		<div className={styles.container}>
-			<Card className={styles['interview-statistics']}>
-				<div className={styles.attempt}>
-					<InterviewQuestionHeader title={t('attemptStats.title')} centered />
-					<PassedInterviewStat
-						totalAttempt={totalAttempt}
-						attemptData={attemptStats}
-						isLoading={isLoading}
-					/>
-				</div>
+			<Card
+				className={styles['interview-statistics']}
+				isTitleCenter
+				title={t(InterviewStatistics.ATTEMPT_STATS_TITLE)}
+			>
+				<PassedInterviewStat
+					totalAttempt={totalAttempt}
+					attemptData={attemptStats}
+					isLoading={isLoading}
+				/>
 			</Card>
-			<Card className={styles.block}>
+			<Card
+				className={styles.block}
+				isTitleCenter
+				title={t(InterviewStatistics.QUESTION_STATS_TITLE)}
+			>
 				<div className={styles.questions}>
-					<InterviewQuestionHeader title={t('questionStats.title')} centered />
 					{profileStats && (
 						<PassedQuestionChart
 							total={profileStats.questionsStat.uniqueQuestionsCount}
@@ -108,16 +112,11 @@ const InterviewStatisticsPage = () => {
 					<PassedQuestionStatInfo stats={questionStats} />
 				</div>
 			</Card>
-			<Card className={styles['history-list']}>
-				<InterviewHistoryList className={styles.history} />
-			</Card>
-			<Card className={styles.category}>
-				<div className={styles['category-progress']}>
-					<InterviewQuestionHeader title={t('progress.title')} />
-					<ProgressByCategoriesList
-						optionData={profileStats ? transformSkillsArray(profileStats) : []}
-					/>
-				</div>
+			<InterviewHistoryList className={styles['history-list']} />
+			<Card className={styles.category} title={t(InterviewStatistics.PROGRESS_TITLE)}>
+				<ProgressByCategoriesList
+					optionData={profileStats ? transformSkillsArray(profileStats) : []}
+				/>
 			</Card>
 		</div>
 	);

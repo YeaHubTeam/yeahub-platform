@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -5,7 +6,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -26,12 +26,12 @@ interface SkillsTableProps {
 
 export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTableProps) => {
 	const navigate = useNavigate();
-	const { t } = useI18nHelpers([i18Namespace.skill, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.skill, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(Skills.TITLE),
-			description: t(Skills.DESCRIPTION),
+			title: t(Skills.TITLE_SHORT),
+			description: t(Skills.DESCRIPTION_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);

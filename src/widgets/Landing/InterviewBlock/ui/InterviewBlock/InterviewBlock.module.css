@@ -1,5 +1,5 @@
 .interview-block {
-  margin-bottom: 124px;
+  margin: 76px 0 124px;
 }
 
 .article-description {
@@ -75,6 +75,9 @@
     width: 445px;
   }
 
+  .interview-block {
+    margin-top: 68px;
+  }
 }
 
 @media screen and (width <= 992px) {
@@ -164,6 +167,7 @@
 
 @media screen and (width <= 576px) {
   .interview-block {
+    margin-top: 32px;
     padding: 0 16px;
   }
 

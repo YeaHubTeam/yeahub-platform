@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { User as Users } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
@@ -16,7 +17,7 @@ const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
 };
 
 export const UsersTable = ({ users }: UsersTableProps) => {
-	const { t } = useI18nHelpers([i18Namespace.user, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
