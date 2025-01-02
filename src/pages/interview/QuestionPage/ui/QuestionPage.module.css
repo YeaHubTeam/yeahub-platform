@@ -1,3 +1,14 @@
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+
+
+  &.drawer-mobile {
+    top: var(--header-height);
+    width: 100%;
+  }
+}
+
 .wrapper {
   display: flex;
   gap: 20px;
@@ -13,11 +24,6 @@
   flex: 1;
   flex-direction: column;
   gap: 20px;
-}
-
-.popover-additional-wrapper {
-  width: 100%;
-  max-width: 314px;
 }
 
 .additional {

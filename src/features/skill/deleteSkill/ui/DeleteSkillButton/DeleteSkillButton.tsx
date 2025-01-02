@@ -16,14 +16,11 @@ interface DeleteSkillButtonProps {
 	isDetailPage?: boolean;
 }
 
-export const DeleteSkillButton = ({ 
-  skillId, 
-  isDetailPage = false, 
-}: DeleteSkillButtonProps) => {
+export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
 
 	const { t } = useI18nHelpers(i18Namespace.translation);
-  const [isDeleteModalOpen, setIsModalOpen] = useState(false);
+	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
 	const onCloseDeleteModal = () => {
 		setIsModalOpen((prev) => !prev);

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import styles from './Drawer.module.css';
 
@@ -11,6 +12,7 @@ interface DrawerProps {
 	children: React.ReactNode;
 	className?: string;
 	rootName?: 'mainLayout' | 'body';
+	hasCloseButton?: boolean;
 }
 
 const createPortalRoot = () => {
@@ -27,6 +29,7 @@ export const Drawer = ({
 	onClose,
 	className,
 	rootName = 'mainLayout',
+	hasCloseButton = false,
 }: DrawerProps) => {
 	const portalRootRef = useRef(document.getElementById('drawer-root') || createPortalRoot());
 	const documentRootName = rootName === 'mainLayout' ? 'main' : 'body';
@@ -37,15 +40,17 @@ export const Drawer = ({
 	}, [isOpen]);
 
 	useEffect(() => {
-		renderRootRef.current.appendChild(portalRootRef.current);
-		const portal = portalRootRef.current;
-		const bodyEl = renderRootRef.current;
+		if (isOpen) {
+			renderRootRef.current.appendChild(portalRootRef.current);
+			const portal = portalRootRef.current;
+			const bodyEl = renderRootRef.current;
 
-		return () => {
-			portal.remove();
-			bodyEl.style.overflow = '';
-		};
-	}, []);
+			return () => {
+				portal.remove();
+				bodyEl.style.overflow = '';
+			};
+		}
+	}, [isOpen]);
 
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
 		if (event.key === 'Escape') {
@@ -66,6 +71,18 @@ export const Drawer = ({
 				})}
 				role="dialog"
 			>
+				{hasCloseButton && (
+					<div className={styles['close-button-wrapper']}>
+						<Icon
+							aria-label="close button"
+							onClick={onClose}
+							className={styles['close-button']}
+							icon="plusCircle"
+							color={'--palette-ui-red-600'}
+						/>
+					</div>
+				)}
+
 				{children}
 			</div>
 			<button className={styles['backdrop']} onClick={onClose} onKeyDown={handleKeyDown} />

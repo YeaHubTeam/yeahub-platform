@@ -1,3 +1,13 @@
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+
+  &.drawer-mobile {
+    top: var(--header-height);
+    width: 100%;
+  }
+}
+
 .popover-additional {
   position: absolute;
   top: 16px;
@@ -33,23 +43,18 @@
   flex-grow: 1;
 }
 
+
 .additional-info-wrapper {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
   gap: 20px;
-  width: 360px;
 }
 
 .search {
   position: sticky;
   top: 0;
   height: auto;
-}
-
-.popover-additional-info-wrapper {
-  width: 100%;
-  max-width: 314px;
 }
 
 .divider {
