@@ -10,4 +10,5 @@ export const skillCreateSchema: yup.ObjectSchema<CreateSkillFormValues> = yup.ob
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	imageSrc: yup.string(),
 	skillImage: yup.string(),
+	specializations: yup.array().of(yup.number().required()).optional(),
 });

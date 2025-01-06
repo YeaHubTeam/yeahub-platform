@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
@@ -19,10 +20,15 @@ interface SkillEditFormProps {
 }
 
 export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
+	const specializationsIds = useMemo(
+		() => skill.specializations?.map((specialization) => specialization.id),
+		[skill],
+	);
+
 	const methods = useForm<EditSkillFormValues>({
 		resolver: yupResolver(skillEditSchema),
 		mode: 'onTouched',
-		defaultValues: { ...skill },
+		defaultValues: { ...skill, specializations: specializationsIds },
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
