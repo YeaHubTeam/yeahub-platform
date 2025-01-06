@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  width: 100%;
+  width: auto;
   transition: padding-left 0.5s ease-in-out;
 }
 
