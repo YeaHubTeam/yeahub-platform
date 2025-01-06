@@ -11,4 +11,5 @@ export const skillEditSchema: yup.ObjectSchema<EditSkillFormValues> = yup.object
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	imageSrc: yup.string().notRequired(),
 	skillImage: yup.string(),
+	specializations: yup.array().of(yup.number().required()).optional(),
 });
