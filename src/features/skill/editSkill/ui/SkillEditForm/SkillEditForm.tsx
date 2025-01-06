@@ -20,7 +20,10 @@ interface SkillEditFormProps {
 }
 
 export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
-	const specializationsIds = useMemo(() => skill.specializations?.map((s) => s.id), [skill]);
+	const specializationsIds = useMemo(
+		() => skill.specializations?.map((specialization) => specialization.id),
+		[skill],
+	);
 
 	const methods = useForm<EditSkillFormValues>({
 		resolver: yupResolver(skillEditSchema),
