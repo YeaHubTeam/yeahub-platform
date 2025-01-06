@@ -79,7 +79,7 @@
   pointer-events: none;
 }
 
-@media (width <= 768px) {
+@media (width < 1024px) {
   .close-icon {
     display: none;
   }

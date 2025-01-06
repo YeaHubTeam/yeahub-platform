@@ -36,16 +36,16 @@ interface SidebarProps {
  */
 
 export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) => {
-	const { isMobile } = useScreenSize();
+	const { isMobile, isTablet } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
-			isMobile && setIsOpenNavSidebar(true);
+			(isMobile || isTablet) && setIsOpenNavSidebar(true);
 		}
-	}, [isMobile, isMobileSidebar]);
+	}, [isMobile, isTablet, isMobileSidebar]);
 
 	const handleToggleSidebar = () => {
 		setIsOpenNavSidebar((prev) => !prev);

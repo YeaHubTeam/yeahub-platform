@@ -1,11 +1,8 @@
 export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
-export { InterviewResults } from './ui/InterviewResults/InterviewResults';
-export { QuestionProgressBar } from './ui/QuestionProgressBar/QuestionProgressBar';
 export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
 export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
-export { QuestionCategories } from './ui/QuestionCategores/QuestionCategories';
 
 export {
 	useLazyCreateNewQuizQuery,
@@ -26,9 +23,16 @@ export type {
 	Quiz,
 	QuizWithoutQuestions,
 	GetQuizHistoryParamsRequest,
+	ProfileSkillsStat,
+	ProfileQuizzesStat,
+	ProfileQuestionsStat,
 } from './model/types/quiz';
 
-export { getActiveQuizQuestions, getIsAllQuestionsAnswered } from './model/selectors/quizSelectors';
+export {
+	getActiveQuizQuestions,
+	getIsAllQuestionsAnswered,
+	getLastActiveQuizInfo,
+} from './model/selectors/quizSelectors';
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 

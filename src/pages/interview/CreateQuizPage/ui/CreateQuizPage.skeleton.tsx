@@ -21,7 +21,7 @@ export const CreateQuizPageSkeleton = () => {
 						<Flex gap="8" style={{ flexWrap: 'wrap' }}>
 							{[...Array(4)].map(() =>
 								[...Array(5)].map((_, j) => (
-									<Skeleton key={j} height={40} style={{ flex: '0 1 130px' }} />
+									<Skeleton key={j} width="100%" height={40} style={{ flex: '0 1 130px' }} />
 								)),
 							)}
 						</Flex>

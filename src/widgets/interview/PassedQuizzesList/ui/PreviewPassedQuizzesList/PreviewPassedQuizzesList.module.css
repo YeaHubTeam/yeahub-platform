@@ -1,0 +1,22 @@
+.list {
+  padding: 24px;
+  list-style: none;
+}
+
+.no-history {
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+}
+
+@media (width < 1280px) {
+  .list {
+    padding: 16px;
+  }
+}
+
+@media (width < 768px) {
+  .list {
+    padding: 12px;
+  }
+}

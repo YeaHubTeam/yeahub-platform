@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { EventCalendar } from '@/shared/ui/Calendar';
 import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Flex } from '@/shared/ui/Flex';
 
-import { FullInterviewHistoryList } from '@/widgets/FullInterviewHistory';
+import { FullPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
 
 import { getInterviewHistoryPageDateRange } from '../model/selectors/InterviewHistoryPageSelectors';
 import { interviewHistoryPageActions } from '../model/slices/InterviewHistoryPageSlice';
-
-import styles from './InterviewHistoryPage.module.css';
 
 const InterviewHistoryPage = () => {
 	const [selectedDates, setSelectedDates] = useState<Value>(null);
@@ -19,12 +18,12 @@ const InterviewHistoryPage = () => {
 
 	const dateRange = useSelector(getInterviewHistoryPageDateRange);
 
-	const handleDateChange = (dates: Value) => {
+	const onDateChange = (dates: Value) => {
 		setSelectedDates(dates);
 		dispatch(interviewHistoryPageActions.setDateRange(dates));
 	};
 
-	const handleResetFilters = () => {
+	const onResetFilters = () => {
 		setSelectedDates(null);
 		dispatch(interviewHistoryPageActions.setDateRange(null));
 	};
@@ -36,18 +35,16 @@ const InterviewHistoryPage = () => {
 	}, [dispatch]);
 
 	return (
-		<div className={styles.container}>
-			<FullInterviewHistoryList
+		<Flex gap="20">
+			<FullPassedQuizzesList
 				dateRange={dateRange}
 				onLoaded={() => {
 					setListLoaded(true);
 				}}
-				resetFilters={handleResetFilters}
+				resetFilters={onResetFilters}
 			/>
-			{listLoaded && (
-				<EventCalendar onDateChange={handleDateChange} selectedDates={selectedDates} />
-			)}
-		</div>
+			{listLoaded && <EventCalendar onDateChange={onDateChange} selectedDates={selectedDates} />}
+		</Flex>
 	);
 };
 
