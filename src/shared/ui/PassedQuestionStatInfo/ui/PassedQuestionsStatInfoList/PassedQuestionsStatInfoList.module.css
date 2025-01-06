@@ -1,0 +1,9 @@
+.info {
+  font-size: var(--font-size-p-s);
+}
+
+@media (width <= 768px) {
+  .info {
+    gap: 6px;
+  }
+}

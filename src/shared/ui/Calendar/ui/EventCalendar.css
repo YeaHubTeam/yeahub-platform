@@ -146,7 +146,7 @@
   max-width: 314px;
 }
 
-@media (width <= 1198px) {
+@media (width < 1280px) {
   .popover-additional {
     display: flex;
   }
@@ -156,7 +156,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width < 480px) {
   .popover-additional {
     top: 10px;
   }

@@ -1,0 +1,12 @@
+.category {
+  display: inline-block;
+  margin: 0 8px 8px 0;
+}
+
+@media (width < 768px) {
+  .list {
+    margin-bottom: 44px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #BABABA;
+  }
+}

@@ -29,7 +29,7 @@ export const InterviewQuizPageSkeleton = () => {
 							))}
 					</Flex>
 					<div className={styles['slider-skeleton']}>
-						<Skeleton height={40} className={styles['question-skeleton']} />
+						<Skeleton width="100%" height={40} className={styles['question-skeleton']} />
 						<Skeleton width={137} height={14} className={styles['wrapper-skeleton']} />
 						<Flex gap="8" className={styles['response-buttons-skeleton']}>
 							{Array(2)

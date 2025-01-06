@@ -1,1 +1,2 @@
-export { PassedQuestionStatInfo } from './ui/PassedQuestionStatInfo';
+export { PassedQuestionsStatInfoList } from './ui/PassedQuestionsStatInfoList/PassedQuestionsStatInfoList';
+export { PassedQuestionsStatInfoListSkeleton } from './ui/PassedQuestionsStatInfoList/PassedQuestionsStatInfoList.skeleton';

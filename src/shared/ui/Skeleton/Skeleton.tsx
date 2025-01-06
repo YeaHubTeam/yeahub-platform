@@ -9,8 +9,8 @@ interface SkeletonBlockProps {
 }
 
 export const Skeleton = ({
-	width = '100%',
-	height = '100px',
+	width,
+	height,
 	borderRadius = '8px',
 	style = {},
 	className = '',

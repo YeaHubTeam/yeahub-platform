@@ -8,6 +8,8 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { FullProfile } from '@/entities/auth';
 import { getFullProfile } from '@/entities/profile';
@@ -58,18 +60,15 @@ export const IncompleteProfileStub = () => {
 	if (!isIncompleteProfile) return null;
 
 	return (
-		<Card className={styles.card}>
-			<div className={styles['card-wrapper']}>
-				<div className={styles['card-content']}>
-					<h3 className={styles['card-title']}>
-						{t(Main.FILL_PROFILE_TITLE, { percent: percentFullness })}
-					</h3>
-					<p className={styles['card-text']}>{t(Main.FILL_PROFILE_DESCRIPTION)}</p>
-				</div>
+		<Card className={styles.card} title={t(Main.FILL_PROFILE_TITLE, { percent: percentFullness })}>
+			<Flex direction="column" gap="16">
+				<Text variant="body2-accent" color="black-600">
+					{t(Main.FILL_PROFILE_DESCRIPTION)}
+				</Text>
 				<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
 					{t(Main.FILL_PROFILE_LINK)}
 				</Button>
-			</div>
+			</Flex>
 		</Card>
 	);
 };

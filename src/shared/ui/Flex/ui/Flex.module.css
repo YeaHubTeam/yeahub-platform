@@ -46,6 +46,14 @@
   align-items: normal;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
 .gap4 {
   gap: 4px;
 }
@@ -80,6 +88,10 @@
 
 .gap40 {
   gap: 40px;
+}
+
+.gap48 {
+  gap: 48px;
 }
 
 .gap60 {

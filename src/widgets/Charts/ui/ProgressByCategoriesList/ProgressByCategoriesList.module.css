@@ -1,8 +1,0 @@
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-right: 4px;
-  max-height: calc(430px - 40px);
-  overflow: auto;
-}

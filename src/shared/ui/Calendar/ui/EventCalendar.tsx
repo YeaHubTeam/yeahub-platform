@@ -1,14 +1,13 @@
 import { Calendar } from 'react-calendar';
-import { Icon } from 'yeahub-ui-kit';
 
 import './EventCalendar.css';
 
 import 'react-calendar/dist/Calendar.css';
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
-
 import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
@@ -27,17 +26,17 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 
 	const PREV_LABEL = (
 		<Icon
-			icon="caretLeft"
+			icon="altArrowLeft"
 			size={24}
-			color="--palette-ui-black-600"
+			color="black-600"
 			aria-label={t(InterviewHistory.PREV_MONTH)}
 		/>
 	);
 	const NEXT_LABEL = (
 		<Icon
-			icon="caretRight"
+			icon="altArrowRight"
 			size={24}
-			color="--palette-ui-black-600"
+			color="black-600"
 			aria-label={t(InterviewHistory.NEXT_MONTH)}
 		/>
 	);
@@ -66,7 +65,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 							className={isOpen ? 'active' : ''}
 							aria-label="go to filters"
 							form="square"
-							icon={<Icon icon="calendar" />}
+							icon={<Icon icon="calendar" color="black-600" size={20} />}
 							size="S"
 							variant={'tertiary'}
 							onClick={onToggle}

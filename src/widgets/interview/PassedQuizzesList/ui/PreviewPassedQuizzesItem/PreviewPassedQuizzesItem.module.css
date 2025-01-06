@@ -1,0 +1,21 @@
+.item:not(:last-child) {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.date {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+@media (width < 480px){
+  .info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+}
