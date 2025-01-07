@@ -2,7 +2,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
@@ -10,11 +9,7 @@ import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
-import {
-	Specialization,
-	useGetSpecializationsListQuery,
-	getSpecializationDefaultIcon,
-} from '@/entities/specialization';
+import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
 import styles from './ChooseSpecialization.module.css';
 
@@ -62,17 +57,12 @@ export const ChooseSpecialization = ({
 
 	if (!prepareData) return null;
 
-	const specializationIcon = (specialization: Specialization) => (
-		<Icon icon={getSpecializationDefaultIcon(specialization)} />
-	);
-
 	return (
 		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t('specialization.title')}
 				onClick={handleChooseSpecialization}
-				getDefaultIcon={(item) => specializationIcon(item as Specialization)}
 			/>
 			{!isMobile && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
