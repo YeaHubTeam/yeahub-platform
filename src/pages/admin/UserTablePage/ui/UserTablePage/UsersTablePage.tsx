@@ -7,6 +7,8 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
+import { UsersFilterSet } from '@/features/admin/UsersFilterSet';
+
 import { SearchSection } from '@/widgets/SearchSection';
 import { UsersTable } from '@/widgets/UsersTable';
 
@@ -34,7 +36,7 @@ export const UsersTablePage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection onSearch={onChangeSearch} />
+			<SearchSection onSearch={onChangeSearch} renderFilter={() => <UsersFilterSet />} />
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />

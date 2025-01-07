@@ -10,5 +10,9 @@
     "HR": "HR",
     "admin": "Admin",
     "member": "Member"
+  },
+  "filter": {
+    "role": { "title": "User Roles", "select": "Select user roles" },
+    "email": { "title": "Is Email Confirmed" }
   }
 }
