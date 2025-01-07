@@ -2,16 +2,17 @@ import classNames from 'classnames';
 import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import Arrow from '@/shared/assets/icons/arrow.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Icon } from '@/shared/ui/Icon/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import { Flex } from '../../Flex';
 
 import styles from './Card.module.css';
 
-interface CardProps {
+export interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
@@ -122,8 +123,8 @@ export const Card = ({
 
 	return (
 		<Flex
-			gap={'24'}
-			direction={'column'}
+			gap="24"
+			direction="column"
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
 				[styles['card-outside-shadow']]: withOutsideShadow,
@@ -133,16 +134,12 @@ export const Card = ({
 			}}
 		>
 			{(title || actionRoute) && (
-				<div className={classNames(styles['card-header'])}>
-					{title ? (
-						<h3
-							className={classNames(styles['card-header-title'], {
-								[styles['card-header-title-center']]: isTitleCenter,
-							})}
-						>
-							{title}
-						</h3>
-					) : null}
+				<div
+					className={classNames(styles['card-header'], {
+						[styles['card-header-title-center']]: isTitleCenter,
+					})}
+				>
+					{title ? <Text variant="body5-accent">{title}</Text> : null}
 					{actionRoute ? (
 						<Link
 							to={actionRoute}
@@ -151,11 +148,13 @@ export const Card = ({
 								[styles['link-disabled']]: actionDisabled,
 							})}
 						>
-							<span>{actionTitle}</span>
+							<Text variant="body3-strong" color="purple-700">
+								{actionTitle}
+							</Text>
 							<Icon
 								icon="arrowRight"
-								color={actionDisabled ? '--palette-ui-purple-300' : '--palette-ui-purple-700'}
 								size={24}
+								color={actionDisabled ? 'purple-300' : 'purple-700'}
 								className={styles.icon}
 							/>
 						</Link>

@@ -17,7 +17,7 @@
   display: none; 
 }
 
-@media (width <= 768px) {
+@media (width < 1024px) {
   .burger {
     display: block;
   }
@@ -31,7 +31,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width < 768px) {
   .header {
     border-bottom: 1px solid transparent;
   }

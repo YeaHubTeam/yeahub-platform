@@ -12,6 +12,10 @@ export const getProfileId = (state: State) => {
 export const getSpecializationId = (state: State) => {
 	return state.profile.fullProfile?.profiles[0].specializationId || 0;
 };
-export const isEmptySpecialization = (state: State) => {
+export const getIsEmptySpecialization = (state: State) => {
 	return getSpecializationId(state) === 0;
+};
+
+export const getIsEmailVerified = (state: State) => {
+	return state.profile.fullProfile?.isEmailVerified ?? false;
 };

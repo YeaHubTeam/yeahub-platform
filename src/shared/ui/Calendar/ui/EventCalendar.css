@@ -1,4 +1,3 @@
-
 /* stylelint-disable selector-class-pattern */
 .popover-calendar button:focus {
   border: none;
@@ -158,7 +157,7 @@
   max-width: 314px;
 }
 
-@media (width <= 1198px) {
+@media (width < 1280px) {
   .popover-calendar {
     display: flex;
   }
@@ -168,7 +167,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width < 480px) {
   .popover-calendar {
     top: 10px;
   }

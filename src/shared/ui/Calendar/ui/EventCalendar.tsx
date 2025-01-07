@@ -1,13 +1,16 @@
 import classNames from 'classnames';
 import { Calendar } from 'react-calendar';
+
+import './EventCalendar.css';
+
 import 'react-calendar/dist/Calendar.css';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { Card } from '../../Card';
@@ -30,34 +33,33 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 
 	const PREV_LABEL = (
 		<Icon
-			icon="caretLeft"
+			icon="altArrowLeft"
 			size={24}
-			color="--palette-ui-black-600"
+			color="black-600"
 			aria-label={t(InterviewHistory.PREV_MONTH)}
 		/>
 	);
 	const NEXT_LABEL = (
 		<Icon
-			icon="caretRight"
+			icon="altArrowRight"
 			size={24}
-			color="--palette-ui-black-600"
+			color="black-600"
 			aria-label={t(InterviewHistory.NEXT_MONTH)}
 		/>
 	);
 
 	return (
 		<>
-			<div className={'popover-calendar'}>
+			<div className="popover-calendar">
 				<IconButton
 					className={classNames({ active: isOpen })}
 					aria-label="go to filters"
 					form="square"
-					icon={<Icon icon="calendar" />}
+					icon={<Icon icon="calendar" color="black-600" size={20} />}
 					size="S"
 					variant={'tertiary'}
 					onClick={onToggle}
 				/>
-
 				<Drawer
 					isOpen={isOpen}
 					onClose={onClose}
@@ -81,7 +83,6 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					</Card>
 				</Drawer>
 			</div>
-
 			<div className={'additional-info-wrapper'}>
 				<Card className={'calendar-block'}>
 					<Calendar

@@ -5,6 +5,7 @@
   align-items: center;
   gap: 8px;
   padding: 13px 0;
+  height: 48px;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 12px;

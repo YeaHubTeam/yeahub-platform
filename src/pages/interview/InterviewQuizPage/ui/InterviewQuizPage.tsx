@@ -7,12 +7,12 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { ProgressBar } from '@/shared/ui/ProgressBar';
 
 import { getProfileId } from '@/entities/profile';
 import {
 	InterviewSlider,
 	QuestionNavPanel,
-	QuestionProgressBar,
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
@@ -87,7 +87,7 @@ const InterviewQuizPage = () => {
 					<span className={styles['progress-num']}>
 						{activeQuestion}/{totalCount}
 					</span>
-					<QuestionProgressBar
+					<ProgressBar
 						className={styles['progress-component']}
 						currentCount={currentCount}
 						totalCount={totalCount}

@@ -1,0 +1,27 @@
+.item {
+  display: flex;
+  gap: 20px;
+  padding: 12px;
+  border-bottom: thin solid var(--border-input);
+}
+
+.img {
+  width: clamp(101px, 5.52vw + 74.8px, 154px);
+  height:clamp(90px, 2.08vw + 60px, 110px);
+  border-radius: 12px;
+}
+
+.link {
+  color: inherit;
+}
+
+@media (width < 768px) {
+  .item {
+    gap: 16px;
+    padding: 0 0 8px;
+  }
+
+  .img {
+    border-radius: 8px;
+  }
+}

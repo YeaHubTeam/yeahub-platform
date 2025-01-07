@@ -1,18 +1,20 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 
-import { ColorVariant, TextVarian } from '../model/types/types';
+import { Pallete } from '@/shared/types/types';
+
+import { TextVariant } from '../model/types/types';
 
 import styles from './Text.module.css';
 
-interface TextProps {
-	variant: TextVarian;
-	children: string;
-	color?: ColorVariant;
+export interface TextProps {
+	variant: TextVariant;
+	children: ReactNode;
+	color?: Pallete;
 	maxRows?: 1 | 2 | 3 | 4;
-	textAlign?: 'left' | 'center' | 'right';
 	className?: string;
 }
-const variantToTagMapping: Record<TextVarian, keyof JSX.IntrinsicElements> = {
+const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
 	head2: 'h2',
 	head3: 'h3',
@@ -34,21 +36,13 @@ const variantToTagMapping: Record<TextVarian, keyof JSX.IntrinsicElements> = {
 	body6: 'p',
 };
 
-export const Text = ({
-	variant,
-	color = 'black900',
-	textAlign = 'left',
-	maxRows,
-	children,
-	className,
-}: TextProps) => {
+export const Text = ({ variant, color = 'black-900', maxRows, children, className }: TextProps) => {
 	const Tag = variantToTagMapping[variant];
 	return (
 		<Tag
 			className={classNames(
 				styles[variant],
 				styles[`text-${color}`],
-				styles[`text-${textAlign}`],
 				maxRows && styles[`text-rows-${maxRows}`],
 				className,
 			)}

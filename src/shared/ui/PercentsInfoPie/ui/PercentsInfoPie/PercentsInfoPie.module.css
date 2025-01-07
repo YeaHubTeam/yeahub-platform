@@ -1,0 +1,10 @@
+.wrapper {
+  margin-top: 24px;
+}
+
+@media (width < 768px) {
+  .wrapper,
+  .list {
+    gap: 16px;
+  }
+}
