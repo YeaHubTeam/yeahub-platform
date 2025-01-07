@@ -1,12 +1,15 @@
+import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -34,6 +37,8 @@ const QuestionsPage = () => {
 	});
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
+	const { isMobileS } = useScreenSize();
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const { status, ...getParams } = filter;
 	const profileId = useAppSelector(getProfileId);
@@ -99,41 +104,42 @@ const QuestionsPage = () => {
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['popover-additional']}>
-				<Popover
-					body={
-						<div className={styles['popover-additional-info-wrapper']}>
-							<Card>
-								<QuestionsFilterPanel
-									onChangeSearch={onChangeSearchParams}
-									onChangeSkills={onChangeSkills}
-									onChangeComplexity={onChangeComplexity}
-									onChangeRate={onChangeRate}
-									onChangeStatus={onChangeStatus}
-									filter={{
-										skills: filter.skills,
-										rate: filter.rate,
-										complexity: filter.complexity,
-										status: filter.status,
-										title: filter.title,
-									}}
-									skillsLimit={MAX_LIMIT_CATEGORIES}
-								/>
-							</Card>
-						</div>
-					}
+				<IconButton
+					className={classNames({ [styles.active]: isOpen })}
+					aria-label="go to filters"
+					form="square"
+					icon={<Icon icon="slidersHorizontal" />}
+					size="S"
+					variant={'tertiary'}
+					onClick={onToggle}
+				/>
+				<Drawer
+					rootName={isMobileS ? 'body' : 'mainLayout'}
+					className={classNames(styles.drawer, {
+						[styles['drawer-mobile']]: isMobileS,
+					})}
+					isOpen={isOpen}
+					onClose={onClose}
+					hasCloseButton
 				>
-					{({ isOpen, onToggle }) => (
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to filters"
-							form="square"
-							icon={<Icon icon="slidersHorizontal" />}
-							size="S"
-							variant={'tertiary'}
-							onClick={onToggle}
+					<Card className={styles['popover-additional-search']}>
+						<QuestionsFilterPanel
+							onChangeSearch={onChangeSearchParams}
+							onChangeSkills={onChangeSkills}
+							onChangeComplexity={onChangeComplexity}
+							onChangeRate={onChangeRate}
+							onChangeStatus={onChangeStatus}
+							filter={{
+								skills: filter.skills,
+								rate: filter.rate,
+								complexity: filter.complexity,
+								status: filter.status,
+								title: filter.title,
+							}}
+							skillsLimit={MAX_LIMIT_CATEGORIES}
 						/>
-					)}
-				</Popover>
+					</Card>
+				</Drawer>
 			</div>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
