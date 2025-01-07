@@ -40,8 +40,13 @@
   width: 280px;
 }
 
-@media (width <= 480px) {
+@media (width < 1024px) { 
   .main {
     padding: 16px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
   }
 }

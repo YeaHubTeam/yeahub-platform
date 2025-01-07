@@ -3,22 +3,31 @@ import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './Sidebar.module.css';
+import classNames from 'classnames';
 
-export const SidebarSkeleton = () => (
-	<aside className={styles.sidebar}>
-		<div className={styles.header}>
-			<AppLogoSkeleton />
-			<button className={styles['close-icon']}>
-				<Skeleton className={styles.arrow} width={'25px'} height={'25px'} borderRadius={'50%'} />
-			</button>
-		</div>
+export const SidebarSkeleton = () => {
+	return (
+		<aside className={classNames(styles.sidebar)}>
+			<div className={styles.header}>
+				<AppLogoSkeleton />
+				<button className={styles['close-icon']}>
+					<Skeleton className={styles.arrow} width={'25px'} height={'25px'} borderRadius={'50%'} />
+				</button>
+			</div>
 
-		<div className={styles.menu}>
-			<Flex gap={'8'} direction={'column'}>
-				{[...Array(3)].map((_, i) => (
-					<Skeleton key={i} width={'100%'} height={'44px'} />
+			<div className={styles.menu}>
+				<Flex gap={'8'} direction={'column'}>
+					{[...Array(4)].map((_, i) => (
+						<Skeleton key={i} width="100%" height={44} />
+					))}
+				</Flex>
+			</div>
+
+			<Flex gap={'8'} direction={'column'} className={styles['bottom-buttons']}>
+				{[...Array(2)].map((_, i) => (
+					<Skeleton key={i} width="100%" height={44} />
 				))}
 			</Flex>
-		</div>
-	</aside>
-);
+		</aside>
+	);
+};

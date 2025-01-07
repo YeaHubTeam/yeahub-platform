@@ -58,6 +58,13 @@
   padding: 20px;
 }
 
+.bottom-buttons {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  width: inherit;
+}
+
 .sidebar-bottom-button {
   min-width: auto;
   height: 48px;
