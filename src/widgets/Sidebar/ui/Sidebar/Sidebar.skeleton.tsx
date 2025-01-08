@@ -3,11 +3,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './Sidebar.module.css';
-import classNames from 'classnames';
 
 export const SidebarSkeleton = () => {
 	return (
-		<aside className={classNames(styles.sidebar)}>
+		<aside className={styles.sidebar}>
 			<div className={styles.header}>
 				<AppLogoSkeleton />
 				<button className={styles['close-icon']}>
@@ -23,7 +22,7 @@ export const SidebarSkeleton = () => {
 				</Flex>
 			</div>
 
-			<Flex gap={'8'} direction={'column'} className={styles['bottom-buttons']}>
+			<Flex gap={'8'} direction={'column'} className={styles['bottom-actions-skeleton']}>
 				{[...Array(2)].map((_, i) => (
 					<Skeleton key={i} width="100%" height={44} />
 				))}
