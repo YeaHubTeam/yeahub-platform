@@ -17,7 +17,7 @@ export const SubscribeToMedia = () => {
 		<Card className={styles.card} withOutsideShadow title={t(Main.SUBSCRIBE_MEDIA_TITLE)}>
 			<Flex direction="column" gap="16">
 				<Flex direction="column" gap="8">
-					<Text variant="body3" color="black-700">
+					<Text variant="body2-accent" color="black-700">
 						{t(Main.SUBSCRIBE_MEDIA_DESCRIPTION)}
 					</Text>
 				</Flex>
@@ -26,11 +26,11 @@ export const SubscribeToMedia = () => {
 						<Megaphone className={styles.icon} />
 						<span className={styles['media-wrapper']}>
 							<a href="https://t.me/yeahub" target="_blank" rel="noreferrer">
-								<Text color="purple-700" variant="body3">
+								<Text color="purple-700" variant="body2">
 									{t(Main.SUBSCRIBE_MEDIA_YEAHUB_TITLE)}:{' '}
 								</Text>
 							</a>
-							<Text variant="body3" color="black-700">
+							<Text variant="body2" color="black-700">
 								{t(Main.SUBSCRIBE_MEDIA_YEAHUB_DESCRIPTION)}
 							</Text>
 						</span>
@@ -39,11 +39,11 @@ export const SubscribeToMedia = () => {
 						<YeaHubCommunity className={styles.icon} />
 						<span className={styles['media-wrapper']}>
 							<a href="https://t.me/yeahub_community" target="_blank" rel="noreferrer">
-								<Text color="purple-700" variant="body3">
+								<Text color="purple-700" variant="body2">
 									{t(Main.SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE)}:{' '}
 								</Text>
 							</a>
-							<Text variant="body3" color="black-700">
+							<Text variant="body2" color="black-700">
 								{t(Main.SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION)}
 							</Text>
 						</span>

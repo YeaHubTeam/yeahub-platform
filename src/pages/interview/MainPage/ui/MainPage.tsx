@@ -29,12 +29,14 @@ const MainPage = () => {
 					<Text variant="head2" className={styles.title}>
 						{t(Translation.HELLO, { name: profile.firstName })}
 					</Text>
-					{!profile.isEmailVerified ? (
-						<EmailVerifyStub firstName={profile.firstName} />
-					) : (
-						<IncompleteProfileStub />
-					)}
-					<SubscribeToMedia />
+					<Flex gap="20" className={styles['banners-container']}>
+						{!profile.isEmailVerified ? (
+							<EmailVerifyStub firstName={profile.firstName} />
+						) : (
+							<IncompleteProfileStub />
+						)}
+						<SubscribeToMedia />
+					</Flex>
 				</Flex>
 			)}
 		</>
