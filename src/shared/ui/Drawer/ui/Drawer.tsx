@@ -37,7 +37,9 @@ export const Drawer = ({
 	const renderRootRef = useRef(document.querySelector(documentRootName)!);
 
 	useEffect(() => {
+		const mainContainer = document.querySelector('#main-container') as HTMLElement;
 		renderRootRef.current.style.overflow = isOpen ? 'hidden' : '';
+		mainContainer.style.paddingRight = isOpen ? '8px' : ''; // 8px = scrollbar width
 	}, [isOpen]);
 
 	useEffect(() => {
