@@ -1,0 +1,14 @@
+.icon {
+  margin-right: 8px;
+  min-width: 20px;
+  min-height: 20px;
+  color: var(--color-purple-700)
+}
+
+.media-wrapper > * {
+  display: inline;
+}
+
+.card {
+  max-width: 645px;
+}

@@ -4,5 +4,16 @@
     "description": "Complete your profile so the world can see your uniqueness and be inspired by your accomplishments. Every detail adds to the pictures of your success story.",
     "link": "Complete profile"
   },
-  "placeholder": "Soon, community events, popular articles and more will be displayed here."
+  "subscribe.media": {
+    "title": "YeaHub unites IT specialists",
+    "description": "Subscribe to our channel and become a part of the IT community, which grows together with you.",
+    "yeahub": {
+      "title": "YeaHub",
+      "description": "Main news and platform updates"
+    },
+    "yeahub.community": {
+      "title": "YeaHub Community",
+      "description": "Communication, experience exchange and support of like-minded people"
+    }
+  }
 }

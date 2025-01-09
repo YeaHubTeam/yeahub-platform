@@ -4,7 +4,7 @@ import { TextSkeleton } from '@/shared/ui/Text';
 
 import { EmailVerifyStubSkeleton, getFullProfile } from '@/entities/profile';
 
-import { IncompleteProfileStubSkeleton } from '@/widgets/IncompleteProfileStub';
+import { IncompleteProfileStubSkeleton } from '@/widgets/Main/IncompleteProfileStub';
 
 import styles from './MainPage.module.css';
 

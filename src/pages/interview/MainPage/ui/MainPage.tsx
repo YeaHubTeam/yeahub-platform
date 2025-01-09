@@ -1,21 +1,22 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Main, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { EmailVerifyStub, getFullProfile } from '@/entities/profile';
 
-import { IncompleteProfileStub } from '@/widgets/IncompleteProfileStub';
+import { IncompleteProfileStub } from '@/widgets/Main/IncompleteProfileStub';
+import { SubscribeToMedia } from '@/widgets/Main/SubscribeToMedia';
 
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
 	const profile = useAppSelector(getFullProfile);
 
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.main]);
+	const { t } = useTranslation([i18Namespace.translation]);
 
 	return (
 		<>
@@ -33,11 +34,9 @@ const MainPage = () => {
 					) : (
 						<IncompleteProfileStub />
 					)}
+					<SubscribeToMedia />
 				</Flex>
 			)}
-			<Text variant="body3-accent" color="black-300" className={styles.text}>
-				{t(Main.PLACEHOLDER, { ns: i18Namespace.main })}
-			</Text>
 		</>
 	);
 };
