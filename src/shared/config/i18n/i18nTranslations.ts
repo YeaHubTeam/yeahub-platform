@@ -356,7 +356,12 @@ export enum Main {
 	FILL_PROFILE_TITLE = 'fill.profile.title',
 	FILL_PROFILE_DESCRIPTION = 'fill.profile.description',
 	FILL_PROFILE_LINK = 'fill.profile.link',
-	PLACEHOLDER = 'placeholder',
+	SUBSCRIBE_MEDIA_TITLE = 'subscribe.media.title',
+	SUBSCRIBE_MEDIA_DESCRIPTION = 'subscribe.media.description',
+	SUBSCRIBE_MEDIA_YEAHUB_TITLE = 'subscribe.media.yeahub.title',
+	SUBSCRIBE_MEDIA_YEAHUB_DESCRIPTION = 'subscribe.media.yeahub.description',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE = 'subscribe.media.community.yeahub.title',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION = 'subscribe.media.community.yeahub.description',
 }
 
 export enum Skills {

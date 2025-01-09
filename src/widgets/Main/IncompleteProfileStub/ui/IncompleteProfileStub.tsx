@@ -60,7 +60,11 @@ export const IncompleteProfileStub = () => {
 	if (!isIncompleteProfile) return null;
 
 	return (
-		<Card className={styles.card} title={t(Main.FILL_PROFILE_TITLE, { percent: percentFullness })}>
+		<Card
+			className={styles.card}
+			title={t(Main.FILL_PROFILE_TITLE, { percent: percentFullness })}
+			withOutsideShadow
+		>
 			<Flex direction="column" gap="16">
 				<Text variant="body2-accent" color="black-600">
 					{t(Main.FILL_PROFILE_DESCRIPTION)}

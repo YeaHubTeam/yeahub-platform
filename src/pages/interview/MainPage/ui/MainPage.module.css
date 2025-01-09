@@ -5,6 +5,10 @@
   max-width: 740px;
 }
 
+.banners-container {
+  align-items: flex-start;
+}
+
 .title {
   margin: 0;
 }
@@ -14,4 +18,10 @@
   margin-top: 60px; 
   max-width: 480px; 
   text-align: center;
+}
+
+@media (width < 768px) {
+  .banners-container {
+    flex-direction: column;
+  }
 }
