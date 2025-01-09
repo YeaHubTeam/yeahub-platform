@@ -392,8 +392,9 @@ export enum User {
 }
 
 export enum Landing {
-	LOGIN = 'login',
-	REGISTER = 'register',
+	LOGIN = 'header.actions.login',
+	REGISTER = 'header.actions.register',
+	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',

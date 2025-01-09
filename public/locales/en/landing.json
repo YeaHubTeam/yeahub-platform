@@ -8,7 +8,8 @@
       "answer": "<p>A value in JavaScript always refers to data of a certain type. For example, it can be a string or a number. There are eight main types of data in JavaScript. In this chapter we will look at them in general, and in the following chapters we will talk in more detail about each one.</p><p>A variable in JavaSctipt can contain any data. At one point there may be </p>"
     },
     "third": "What is this?",
-    "fourth": "What is closure in JavaScript?"
+    "fourth": "What is closure in JavaScript?",
+    "list": "Questions list"
   },
   "main": {
     "title": {

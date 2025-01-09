@@ -1,6 +1,13 @@
 {
-  "register": "Регистрация",
-  "login": "Вход",
+  "header": {
+    "actions":   {
+      "register": "Регистрация",
+      "login": "Вход"
+    },
+    "links": {
+      "questions.list": "Список вопросов"
+    }
+  },
   "questions": {
     "first": "Что такое Virtual DOM, и как он работает?",
     "second": {
