@@ -399,6 +399,7 @@ export enum Landing {
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
 	QUESTIONS_THIRD = 'questions.third',
 	QUESTIONS_FOURTH = 'questions.fourth',
+	QUESTIONS_LIST = 'questions.list',
 	MAIN_TITLE_MOBILE = 'main.title.mobile',
 	MAIN_TITLE_TABLET = 'main.title.tablet',
 	MAIN_TITLE_DESKTOP = 'main.title.desktop',

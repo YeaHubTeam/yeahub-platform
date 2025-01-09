@@ -1,5 +1,11 @@
+import { useTranslation } from 'react-i18next';
+import { useLocation, Link } from 'react-router-dom';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -14,11 +20,21 @@ interface HeaderProps {
 }
 
 export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
+	const { t } = useTranslation(i18Namespace.landing);
+	const location = useLocation();
+
 	const { data: profile, isLoading } = useProfileQuery();
 
 	return (
 		<header className={styles.header}>
-			<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
+			<Flex align="center">
+				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
+				{location.pathname === ROUTES.appRoute && (
+					<Link className={styles['public-questions-link']} to={ROUTES.questions.page}>
+						{t(Landing.QUESTIONS_LIST)}
+					</Link>
+				)}
+			</Flex>
 			{isLoading ? (
 				<HeaderSkeleton />
 			) : (

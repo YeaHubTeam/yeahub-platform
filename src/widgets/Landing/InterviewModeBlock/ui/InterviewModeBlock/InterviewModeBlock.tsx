@@ -13,7 +13,7 @@ import { Control } from '../Control/Control';
 import styles from './InterviewModeBlock.module.css';
 
 export const InterviewModeBlock = () => {
-	const { t } = useTranslation([i18Namespace.interviewQuiz, i18Namespace.landing]);
+	const { t } = useTranslation([i18Namespace.interviewQuiz]);
 
 	return (
 		<section className={styles['interview-mode-block']}>
