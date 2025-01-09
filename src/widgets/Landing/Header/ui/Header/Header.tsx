@@ -6,6 +6,7 @@ import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -30,9 +31,11 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 			<Flex align="center">
 				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 				{location.pathname === ROUTES.appRoute && (
-					<Link className={styles['public-questions-link']} to={ROUTES.questions.page}>
-						{t(Landing.QUESTIONS_LIST)}
-					</Link>
+					<Flex className={styles.links}>
+						<Link to={ROUTES.questions.page}>
+							<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
+						</Link>
+					</Flex>
 				)}
 			</Flex>
 			{isLoading ? (

@@ -392,14 +392,14 @@ export enum User {
 }
 
 export enum Landing {
-	LOGIN = 'login',
-	REGISTER = 'register',
+	LOGIN = 'header.actions.login',
+	REGISTER = 'header.actions.register',
+	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
 	QUESTIONS_THIRD = 'questions.third',
 	QUESTIONS_FOURTH = 'questions.fourth',
-	QUESTIONS_LIST = 'questions.list',
 	MAIN_TITLE_MOBILE = 'main.title.mobile',
 	MAIN_TITLE_TABLET = 'main.title.tablet',
 	MAIN_TITLE_DESKTOP = 'main.title.desktop',
