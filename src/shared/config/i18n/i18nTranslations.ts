@@ -403,6 +403,27 @@ export enum Collections {
 	QUESTIONS_TITLE = 'questions.title',
 }
 
+export enum Collections {
+	TITLE_FULL = 'title.full',
+	TITLE_SHORT = 'title.short',
+	TITLE_LABEL = 'title.label',
+	DESCRIPTION_FULL = 'description.full',
+	DESCRIPTION_SHORT = 'description.short',
+	DESCRIPTION_LABEL = 'description.label',
+	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	ICON_TITLE = 'icon.title',
+	ICON_LABEL = 'icon.label',
+	SELECT_CHOOSE = 'select.chooseCollections',
+	SELECT_LABEL = 'select.label',
+	SELECT_PAID = 'select.paid',
+	SELECT_FREE = 'select.free',
+	SELECT_SELECTED = 'select.selected',
+	EMPTY = 'empty',
+	IMAGE_SRC = 'image.src',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
+}
+
 export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',
