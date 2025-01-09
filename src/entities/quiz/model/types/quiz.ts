@@ -4,7 +4,7 @@ import { Response } from '@/shared/types/types';
 import { Question } from '@/entities/question';
 
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
-export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN' | 'REPEAT';
+export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN';
 
 export interface Quiz {
 	id: string;
@@ -30,7 +30,7 @@ export interface Answers {
 	questionTitle: string;
 	answer: QuizQuestionAnswerType;
 	imageSrc?: string;
-	shortAnswer?: string;
+	shortAnswer: string;
 }
 
 export interface ActiveQuizState {
@@ -47,6 +47,30 @@ export interface ProgressByCategoriesData {
 	passed: number;
 	total: number;
 	value: number;
+}
+
+export interface ProfileQuizzesStat {
+	quizzesCount: number;
+	maxQuizResult: number;
+	minQuizResult: number;
+	avgQuizResult: number;
+}
+export interface ProfileQuestionsStat {
+	uniqueQuestionsCount: number;
+	learnedQuestionsCount: number;
+	unlearnedQuestionsCount: number;
+	inProgressQuestionsCount: number;
+}
+
+export interface ProfileSkillsStat {
+	fullSkillsQuestionsMap: {
+		skill: string;
+		count: number;
+	}[];
+	learnedSkillsQuestionsMap: {
+		skill: string;
+		count: number;
+	}[];
 }
 
 export interface CreateNewQuizParamsRequest {
@@ -84,26 +108,7 @@ export interface GetQuizByProfileIdParamsRequest {
 }
 
 export interface GetProfileQuizStatsResponse {
-	quizzesStat: {
-		quizzesCount: number;
-		maxQuizResult: number;
-		minQuizResult: number;
-		avgQuizResult: number;
-	};
-	questionsStat: {
-		uniqueQuestionsCount: number;
-		learnedQuestionsCount: number;
-		unlearnedQuestionsCount: number;
-		inProgressQuestionsCount: number;
-	};
-	skillsStat: {
-		fullSkillsQuestionsMap: {
-			skill: string;
-			count: number;
-		}[];
-		learnedSkillsQuestionsMap: {
-			skill: string;
-			count: number;
-		}[];
-	};
+	quizzesStat: ProfileQuizzesStat;
+	questionsStat: ProfileQuestionsStat;
+	skillsStat: ProfileSkillsStat;
 }

@@ -1,4 +1,4 @@
-import { Profile as ProfileI18 } from '@/shared/config/i18n/i18nTranslations';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
 
 import { FullProfile } from '@/entities/auth';
 import { SOCIAL_NETWORKS, SocialNetwork } from '@/entities/socialNetwork';
@@ -12,39 +12,21 @@ export const getTabs = (t: (arg: string) => string) => [
 	{
 		id: 0,
 		title: 'personal-information',
-		label: t(ProfileI18.TABS_ITEMS_PERSONALINFORMATION),
+		label: t(Profile.TABS_PERSONAL),
 		Component: PersonalInformationTabForm,
 	},
 	{
 		id: 1,
 		title: 'about-me',
-		label: t(ProfileI18.TABS_ITEMS_ABOUTME),
+		label: t(Profile.TABS_ABOUT_ME),
 		Component: AboutMeTabForm,
 	},
 	{
 		id: 2,
 		title: 'skills',
-		label: t(ProfileI18.TABS_ITEMS_SKILLS),
+		label: t(Profile.TABS_SKILLS),
 		Component: SkillsTabForm,
 	},
-	// {
-	// 	id: 3,
-	// 	title: 'projects',
-	// 	label: t('tabs.items.projects'),
-	// 	Component: ProjectsTabForm,
-	// },
-	// {
-	// 	id: 4,
-	// 	title: 'experience',
-	// 	label: t('tabs.items.experience'),
-	// 	Component: ExperienceTabForm,
-	// },
-	// {
-	// 	id: 5,
-	// 	title: 'education',
-	// 	label: t('tabs.items.education'),
-	// 	Component: EducationTabFrom,
-	// },
 ];
 
 export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
@@ -87,7 +69,7 @@ export const mapFormToProfile = (
 		email: values.email,
 		firstName: values.firstName,
 		lastName: values.lastName,
-		phone: values.phone,
+		phone: values.phone || '',
 		city: values.location || profile.city || '',
 		birthday: profile.birthday || null,
 		address: profile.address || '',

@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface ChooseQuestionComplexityProps {
@@ -18,7 +19,9 @@ export const ChooseQuestionComplexity = ({
 	selectedComplexity,
 	onChangeComplexity,
 }: ChooseQuestionComplexityProps) => {
-	const handleChooseComplexity = (id: number) => {
+	const { t } = useTranslation(i18Namespace.questions);
+
+	const onChooseComplexity = (id: number) => {
 		const newValues = complexity.find((item) => item.id === id)?.value || [];
 		const isDataExist = selectedComplexity?.some((item) => newValues.includes(item));
 		const updates = isDataExist
@@ -26,8 +29,6 @@ export const ChooseQuestionComplexity = ({
 			: [...(selectedComplexity || []), ...newValues];
 		onChangeComplexity(updates.length === 0 ? undefined : updates);
 	};
-
-	const { t } = useI18nHelpers(i18Namespace.questions);
 
 	const preparedData = complexity.map((item) => ({
 		...item,
@@ -38,7 +39,7 @@ export const ChooseQuestionComplexity = ({
 		<BaseFilterSection
 			data={preparedData}
 			title={t(Questions.COMPLEXITY_TITLE)}
-			onClick={handleChooseComplexity}
+			onClick={onChooseComplexity}
 		/>
 	);
 };

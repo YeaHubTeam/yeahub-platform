@@ -12,6 +12,7 @@ interface FilterFromURL {
 	page: string | null;
 	orderBy?: string | null;
 	order?: string | null;
+	specialization?: string | null;
 }
 
 interface FilterFromUser {
@@ -23,6 +24,7 @@ interface FilterFromUser {
 	page?: number;
 	orderBy?: string;
 	order?: string;
+	specialization?: number | number[];
 }
 
 const initialState = '?page=1&status=all';
@@ -52,6 +54,7 @@ export const useQueryFilter = () => {
 			title: params.get('title'),
 			orderBy: params.get('orderBy'),
 			order: params.get('order'),
+			specialization: params.get('specialization'),
 		};
 	};
 
@@ -65,6 +68,9 @@ export const useQueryFilter = () => {
 			page: params.page ? Number(params.page) : undefined,
 			orderBy: params.orderBy ? params.orderBy : undefined,
 			order: params.order ? params.order : undefined,
+			specialization: params.specialization
+				? params.specialization.split(',').map(Number)
+				: undefined,
 		};
 	};
 

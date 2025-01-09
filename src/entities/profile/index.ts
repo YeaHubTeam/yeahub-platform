@@ -9,9 +9,11 @@ export {
 	getFullProfile,
 	getProfileId,
 	getSpecializationId,
-	isEmptySpecialization,
+	getIsEmptySpecialization,
+	getIsEmailVerified,
 } from './model/selectors/profileSelectors';
 
-export { EmailVerify } from './ui/EmailVerify/EmailVerify';
+export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';
+export { EmailVerifyStubSkeleton } from './ui/EmailVerifyStub/EmailVerifyStub.skeleton';
 
 export { UserVerifyed } from './ui/UserVerifyed/UserVerifyed';

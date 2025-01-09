@@ -46,3 +46,8 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+div[data-floating-ui-portal] > div > div {
+  max-height: 380px;
+  overflow-y: scroll;
+}

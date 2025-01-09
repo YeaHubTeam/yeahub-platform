@@ -1,16 +1,22 @@
+import classNames from 'classnames';
 import { Calendar } from 'react-calendar';
-import { Icon } from 'yeahub-ui-kit';
 
 import './EventCalendar.css';
 
 import 'react-calendar/dist/Calendar.css';
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
+import { useModal } from '@/shared/hooks/useModal';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { Card } from '../../Card';
+import { Drawer } from '../../Drawer';
+
+import './EventCalendar.css';
 
 type ValuePiece = Date | null;
 export type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -21,56 +27,61 @@ interface EventCalendarProps {
 }
 
 export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProps) => {
-	const { t } = useI18nHelpers(i18Namespace.a11y);
+	const { t } = useTranslation(i18Namespace.interviewHistory);
+	const { isOpen, onToggle, onClose } = useModal();
+	const { isMobileS } = useScreenSize();
 
 	const PREV_LABEL = (
 		<Icon
-			icon="caretLeft"
+			icon="altArrowLeft"
 			size={24}
-			color="--palette-ui-black-600"
-			aria-label={t(A11y.PREV_MONTH)}
+			color="black-600"
+			aria-label={t(InterviewHistory.PREV_MONTH)}
 		/>
 	);
 	const NEXT_LABEL = (
 		<Icon
-			icon="caretRight"
+			icon="altArrowRight"
 			size={24}
-			color="--palette-ui-black-600"
-			aria-label={t(A11y.NEXT_MONTH)}
+			color="black-600"
+			aria-label={t(InterviewHistory.NEXT_MONTH)}
 		/>
 	);
 
 	return (
 		<>
-			<div className="popover-additional">
-				<Popover
-					body={
-						<Card className={'calendar-block '}>
-							<Calendar
-								onChange={onDateChange}
-								showNeighboringMonth={false}
-								prevLabel={PREV_LABEL}
-								nextLabel={NEXT_LABEL}
-								prev2Label={null}
-								next2Label={null}
-								selectRange={true}
-								value={selectedDates}
-							/>
-						</Card>
-					}
+			<div className="popover-calendar">
+				<IconButton
+					className={classNames({ active: isOpen })}
+					aria-label="go to filters"
+					form="square"
+					icon={<Icon icon="calendar" color="black-600" size={20} />}
+					size="S"
+					variant={'tertiary'}
+					onClick={onToggle}
+				/>
+				<Drawer
+					isOpen={isOpen}
+					onClose={onClose}
+					rootName={isMobileS ? 'body' : 'mainLayout'}
+					className={classNames('drawer', {
+						['drawer-mobile']: isMobileS,
+					})}
+					hasCloseButton
 				>
-					{({ isOpen, onToggle }) => (
-						<IconButton
-							className={isOpen ? 'active' : ''}
-							aria-label="go to filters"
-							form="square"
-							icon={<Icon icon="calendar" />}
-							size="S"
-							variant={'tertiary'}
-							onClick={onToggle}
+					<Card className={'calendar-block'}>
+						<Calendar
+							onChange={onDateChange}
+							showNeighboringMonth={false}
+							prevLabel={PREV_LABEL}
+							nextLabel={NEXT_LABEL}
+							prev2Label={null}
+							next2Label={null}
+							selectRange={true}
+							value={selectedDates}
 						/>
-					)}
-				</Popover>
+					</Card>
+				</Drawer>
 			</div>
 			<div className={'additional-info-wrapper'}>
 				<Card className={'calendar-block'}>

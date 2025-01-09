@@ -4,19 +4,26 @@ import { SidebarSkeleton } from '@/widgets/Sidebar';
 import SkeletonGenerator from '../model/helper/SkeletonGenerator';
 
 import styles from './MainLayout.module.css';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
-export const MainLayoutSkeleton = () => (
-	<section className={styles.layout}>
-		<div className={styles.sidebar}>
-			<SidebarSkeleton />
-		</div>
+export const MainLayoutSkeleton = () => {
+	const { isDesktop, isLaptop } = useScreenSize();
 
-		<HeaderSkeleton />
+	return (
+		<section className={styles.layout}>
+			{(isDesktop || isLaptop) && (
+				<div className={styles.sidebar}>
+					<SidebarSkeleton />
+				</div>
+			)}
 
-		<main className={styles.main}>
-			<div className={styles.container}>
-				<SkeletonGenerator />
-			</div>
-		</main>
-	</section>
-);
+			<HeaderSkeleton />
+
+			<main className={styles.main}>
+				<div className={styles.container}>
+					<SkeletonGenerator />
+				</div>
+			</main>
+		</section>
+	);
+};

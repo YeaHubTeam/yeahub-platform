@@ -1,0 +1,27 @@
+.preparation {
+  padding: 16px 24px;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 276px;
+  border-radius: 12px;
+}
+
+
+@media (width <= 1198px) {
+  .preparation {
+    padding: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  .preparation {
+    padding: 0;
+  }
+	
+  .image-wrapper {
+    height: 170px;
+    border-radius: 16px;
+  }
+}

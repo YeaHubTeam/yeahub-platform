@@ -1,8 +1,8 @@
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
@@ -10,7 +10,7 @@ import { useEditQuestionMutation } from '../../api/editQuestionApi';
 import { EditQuestionFormValues } from '../../model/types/questionEditPageTypes';
 
 export const QuestionEditFormHeader = () => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.translation);
 	const { handleSubmit, reset } = useFormContext<EditQuestionFormValues>();
 
 	const [editQuestionMutation, { isLoading }] = useEditQuestionMutation();

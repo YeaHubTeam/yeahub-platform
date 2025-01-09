@@ -58,6 +58,13 @@
   padding: 20px;
 }
 
+.bottom-actions-skeleton {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  width: inherit;
+}
+
 .sidebar-bottom-button {
   min-width: auto;
   height: 48px;
@@ -79,7 +86,7 @@
   pointer-events: none;
 }
 
-@media (width <= 768px) {
+@media (width < 1024px) {
   .close-icon {
     display: none;
   }

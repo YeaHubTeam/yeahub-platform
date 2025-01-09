@@ -1,26 +1,20 @@
-import { Card } from '@/shared/ui/Card';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { TextSkeleton } from '@/shared/ui/Text';
+
+import { EmailVerifyStubSkeleton, getFullProfile } from '@/entities/profile';
+
+import { IncompleteProfileStubSkeleton } from '@/widgets/Main/IncompleteProfileStub';
 
 import styles from './MainPage.module.css';
 
-export const MainPageSkeleton = () => (
-	<>
-		<div className={styles.wrapper}>
-			<Skeleton width={'250px'} height={'30px'} />
-			<Card className={styles.card}>
-				<div className={styles['card-wrapper']}>
-					<div className={styles['card-content']}>
-						<Skeleton width={'250px'} height={'22px'} />
-						<Skeleton width={'100%'} height={'42px'} />
-					</div>
-					<Flex justify={'end'}>
-						<Skeleton width={'240px'} height={'50px'} />
-					</Flex>
-				</div>
-			</Card>
-		</div>
+export const MainPageSkeleton = () => {
+	const profile = useAppSelector(getFullProfile);
 
-		<Skeleton width={'480px'} height={'45px'} className={styles.text} />
-	</>
-);
+	return (
+		<Flex direction="column" gap="24" className={!profile?.isEmailVerified ? styles.wrapper : ''}>
+			<TextSkeleton variant="head2" width={200} className={styles.title} />
+			{!profile?.isEmailVerified ? <EmailVerifyStubSkeleton /> : <IncompleteProfileStubSkeleton />}
+		</Flex>
+	);
+};

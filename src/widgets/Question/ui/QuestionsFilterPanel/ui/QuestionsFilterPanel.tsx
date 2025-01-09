@@ -1,7 +1,11 @@
-import { i18Namespace } from '@/shared/config/i18n';
-import { useDebounce } from '@/shared/hooks/useDebounced';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useDebounce } from '@/shared/hooks/useDebounced';
+
+import { getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
@@ -34,7 +38,8 @@ export const QuestionsFilterPanel = ({
 	skillsLimit,
 }: QuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, status, title } = filter;
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
+	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -45,7 +50,7 @@ export const QuestionsFilterPanel = ({
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput
-				placeholder={t('searchPlaceholder')}
+				placeholder={t(Questions.SEARCH_PLACEHOLDER)}
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
@@ -54,6 +59,7 @@ export const QuestionsFilterPanel = ({
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
 				shouldShowScroll
+				selectedSpecialization={profileSpecialization}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

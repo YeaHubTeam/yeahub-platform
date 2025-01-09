@@ -25,11 +25,11 @@ export const QuestionPageSkeleton = () => {
 				</Card>
 				<Card>
 					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={200} />
+					<Skeleton height={200} width="100%" />
 				</Card>
 				<Card>
 					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={200} />
+					<Skeleton height={200} width="100%" />
 				</Card>
 			</section>
 		);

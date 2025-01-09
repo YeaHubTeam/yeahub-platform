@@ -1,6 +1,9 @@
+import classNames from 'classnames';
 import { CSSProperties } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './Loader.module.css';
@@ -8,17 +11,18 @@ import styles from './Loader.module.css';
 interface LoaderProps {
 	hasText?: boolean;
 	style?: CSSProperties;
+	className?: string;
 }
 
-export const Loader = ({ hasText = true, style }: LoaderProps) => {
-	const { t } = useI18nHelpers();
+export const Loader = ({ hasText = true, style, className }: LoaderProps) => {
+	const { t } = useTranslation(i18Namespace.translation);
 
 	return (
-		<div className={styles.wrapper} style={style}>
-			<Card className={styles.block}>
+		<div className={classNames(styles.wrapper, className)} style={style}>
+			<Card>
 				<div className={styles.content}>
 					<span className={styles.loader}></span>
-					{hasText && <span className={styles.text}>{t('loading')}</span>}
+					{hasText && <span className={styles.text}>{t(Translation.LOADING)}</span>}
 				</div>
 			</Card>
 		</div>

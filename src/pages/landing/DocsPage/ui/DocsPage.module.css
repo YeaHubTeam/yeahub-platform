@@ -1,5 +1,16 @@
+.container {
+  margin-top: 76px;
+}
+
+@media screen and (width <= 1439px) {
+  .container {
+    margin-top: 68px;
+  }
+}
+
 @media screen and (width <= 576px) {
   .container {
+    margin-top: 32px;
     padding: 0 15px;
   }
 }

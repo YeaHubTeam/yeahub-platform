@@ -1,1 +1,1 @@
-export { questionMockResponse } from './questionsMock';
+export { questionsMock } from './questionsMock';
