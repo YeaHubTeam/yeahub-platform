@@ -1,3 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .icon {
   margin-right: 8px;
   min-width: 20px;
@@ -5,10 +12,22 @@
   color: var(--color-purple-700)
 }
 
-.media-wrapper > * {
+.yeahub-container,
+.yeahub-community-container {
+  flex: 1 1 253px;
+}
+
+.media-wrapper p{
   display: inline;
 }
 
 .card {
-  max-width: 645px;
+  max-width: 600px;
+}
+
+@media (width <= 400px) {
+  .yeahub-container,
+  .yeahub-community-container {
+    max-width: none;
+  }
 }

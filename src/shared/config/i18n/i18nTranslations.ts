@@ -360,8 +360,8 @@ export enum Main {
 	SUBSCRIBE_MEDIA_DESCRIPTION = 'subscribe.media.description',
 	SUBSCRIBE_MEDIA_YEAHUB_TITLE = 'subscribe.media.yeahub.title',
 	SUBSCRIBE_MEDIA_YEAHUB_DESCRIPTION = 'subscribe.media.yeahub.description',
-	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE = 'subscribe.media.yeahub.community.title',
-	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION = 'subscribe.media.yeahub.community.description',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE = 'subscribe.media.community.yeahub.title',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION = 'subscribe.media.community.yeahub.description',
 }
 
 export enum Skills {

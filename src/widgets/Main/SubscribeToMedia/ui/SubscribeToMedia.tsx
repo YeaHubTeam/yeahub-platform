@@ -14,18 +14,15 @@ export const SubscribeToMedia = () => {
 	const { t } = useTranslation([i18Namespace.main]);
 
 	return (
-		<Card className={styles.card}>
+		<Card className={styles.card} withOutsideShadow title={t(Main.SUBSCRIBE_MEDIA_TITLE)}>
 			<Flex direction="column" gap="16">
 				<Flex direction="column" gap="8">
-					<Text variant="body5-strong" color="black-900">
-						{t(Main.SUBSCRIBE_MEDIA_TITLE)}
-					</Text>
 					<Text variant="body3" color="black-700">
 						{t(Main.SUBSCRIBE_MEDIA_DESCRIPTION)}
 					</Text>
 				</Flex>
-				<Flex gap="16" justify="between">
-					<Flex gap="8">
+				<div className={styles.wrapper}>
+					<Flex gap="8" className={styles['yeahub-container']}>
 						<Megaphone className={styles.icon} />
 						<span className={styles['media-wrapper']}>
 							<a href="https://t.me/yeahub" target="_blank" rel="noreferrer">
@@ -38,20 +35,20 @@ export const SubscribeToMedia = () => {
 							</Text>
 						</span>
 					</Flex>
-					<Flex gap="8">
+					<Flex gap="8" className={styles['yeahub-community-container']}>
 						<YeaHubCommunity className={styles.icon} />
 						<span className={styles['media-wrapper']}>
 							<a href="https://t.me/yeahub_community" target="_blank" rel="noreferrer">
 								<Text color="purple-700" variant="body3">
-									YeaHub Community:{' '}
+									{t(Main.SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE)}:{' '}
 								</Text>
 							</a>
 							<Text variant="body3" color="black-700">
-								Общение, обмен опытом и поддержка единомышленников
+								{t(Main.SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION)}
 							</Text>
 						</span>
 					</Flex>
-				</Flex>
+				</div>
 			</Flex>
 		</Card>
 	);
