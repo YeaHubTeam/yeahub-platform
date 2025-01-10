@@ -1,6 +1,6 @@
-import { useUserFilter } from '@/shared/hooks/useUserFilter';
-
 import { ChooseUsersRole, VerifiedEmail } from '@/entities/user';
+
+import { useUserFilter } from '../hooks/useUserFilter';
 
 export const UsersFilterSet = () => {
 	const {
@@ -12,7 +12,7 @@ export const UsersFilterSet = () => {
 		handleFilterChange({ roles });
 	};
 
-	const onChangeVerifiEmail = (isEmailVerified: boolean | undefined) => {
+	const onChangeVerifyEmail = (isEmailVerified: boolean | undefined) => {
 		handleFilterChange({ isEmailVerified });
 	};
 
@@ -21,7 +21,7 @@ export const UsersFilterSet = () => {
 			<ChooseUsersRole selectedRoles={roles} onChangeRoles={onChangeRoles} />
 			<VerifiedEmail
 				selectedVerifiedEmail={isEmailVerified}
-				onChangeVerifiedEmail={onChangeVerifiEmail}
+				onChangeVerifiedEmail={onChangeVerifyEmail}
 			/>
 		</>
 	);

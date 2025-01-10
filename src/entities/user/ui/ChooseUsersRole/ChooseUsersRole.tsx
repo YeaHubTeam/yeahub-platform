@@ -1,16 +1,9 @@
-// import { useState } from 'react';
-
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-const roles = [
-	{ id: 1, title: '1' },
-	{ id: 2, title: '2' },
-	{ id: 3, title: '3' },
-	{ id: 4, title: '4' },
-	{ id: 5, title: '5' },
-];
+import { useGetRolesListQuery } from '../../api/userRoleApi';
+import { UserRole } from '../../model/types/user';
 
 interface ChooseUsersRoleProps {
 	selectedRoles?: number[];
@@ -19,7 +12,8 @@ interface ChooseUsersRoleProps {
 
 export const ChooseUsersRole = ({ onChangeRoles, selectedRoles }: ChooseUsersRoleProps) => {
 	const { t } = useI18nHelpers(i18Namespace.user);
-	// const [roles, setRoles] = useState<Role[]>([]);
+
+	const { data } = useGetRolesListQuery();
 
 	const onClick = (roleId: number) => {
 		const isDataExist = selectedRoles?.some((item) => item === roleId);
@@ -29,8 +23,11 @@ export const ChooseUsersRole = ({ onChangeRoles, selectedRoles }: ChooseUsersRol
 		onChangeRoles(updates);
 	};
 
-	const preparedData = roles.map((role) => ({
-		...role,
+	if (!data) return null;
+
+	const preparedData = (data || []).map((role: UserRole) => ({
+		id: role.id,
+		title: t(`roles.${role.name}`, { defaultValue: role.name }),
 		active: selectedRoles?.some((selectedRole) => role.id === selectedRole),
 	}));
 

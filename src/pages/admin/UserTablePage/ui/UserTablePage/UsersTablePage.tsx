@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
-import { UsersFilterSet } from '@/features/admin/UsersFilterSet';
+import { UsersFilterSet, useUserFilter } from '@/features/admin/UsersFilterSet';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { UsersTable } from '@/widgets/UsersTable';
@@ -27,8 +27,9 @@ export const UsersTablePage = () => {
 	const dispatch = useAppDispatch();
 	const page = useSelector(getUsersPageNum);
 	const search = useSelector(getUsersSearch);
+	const { filter } = useUserFilter();
 
-	const { data: users } = useGetUsersListQuery({ page, limit: 10, search });
+	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
 
 	const onChangeSearch = useDebounce((value: string) => {
 		dispatch(usersPageActions.setSearch(value));

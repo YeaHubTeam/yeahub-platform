@@ -13,7 +13,7 @@ interface FilterFromUser {
 	page?: number;
 }
 
-const initialState = '?page=1&status=all';
+const initialState = '?page=1&limit=10&search=';
 
 export const useUserFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
@@ -39,16 +39,23 @@ export const useUserFilter = () => {
 	};
 
 	const parseFilters = (params: FilterFromURL): FilterFromUser => {
-		return {
-			isEmailVerified:
-				params.isEmailVerified === 'true'
-					? true
-					: params.isEmailVerified === 'false'
-						? false
-						: null,
-			roles: params.roles ? params.roles.split(',').map(Number) : undefined,
-			page: params.page ? Number(params.page) : undefined,
-		};
+		const filters: FilterFromUser = {};
+
+		if (params.isEmailVerified === 'true') {
+			filters.isEmailVerified = true;
+		} else if (params.isEmailVerified === 'false') {
+			filters.isEmailVerified = false;
+		}
+
+		if (params.roles) {
+			filters.roles = params.roles.split(',').map(Number);
+		}
+
+		if (params.page) {
+			filters.page = Number(params.page);
+		}
+
+		return filters;
 	};
 
 	const updateQueryParams = (newFilters: FilterFromUser) => {
@@ -83,6 +90,6 @@ export const useUserFilter = () => {
 		setFilters({} as FilterFromUser);
 		navigate(initialState);
 	};
-
+	console.log(filter);
 	return { filter, handleFilterChange, resetFilters };
 };
