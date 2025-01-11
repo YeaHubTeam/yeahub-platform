@@ -30,6 +30,7 @@ export enum Translation {
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
+	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -389,6 +390,12 @@ export enum User {
 	HR = 'roles.HR',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
+}
+export enum Collections {
+	TITLE_SHORT = 'title.short',
+	DESCRIPTION_SHORT = 'description.short',
+	ICON_TITLE = 'icon.title',
+	QUESTIONS_TITLE = 'questions.title',
 }
 
 export enum Landing {

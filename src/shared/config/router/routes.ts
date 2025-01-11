@@ -55,6 +55,10 @@ export const ROUTES = {
 			route: 'users',
 			page: 'admin/user',
 		},
+		collections: {
+			route: 'collections',
+			page: 'admin/collections',
+		},
 	},
 	auth: {
 		route: 'auth',
