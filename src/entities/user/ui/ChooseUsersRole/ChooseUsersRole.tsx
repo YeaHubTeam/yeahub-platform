@@ -1,5 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 import { useGetRolesListQuery } from '../../api/userRoleApi';
@@ -18,7 +19,7 @@ const toCamelCase = (str: string): string => {
 };
 
 export const ChooseUsersRole = ({ onChangeRoles, selectedRoleIds }: ChooseUsersRoleProps) => {
-	const { t } = useI18nHelpers(i18Namespace.user);
+	const { t } = useTranslation(i18Namespace.user);
 
 	const { data } = useGetRolesListQuery();
 
