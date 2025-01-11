@@ -3,6 +3,8 @@ import { Switch } from 'yeahub-ui-kit';
 import { i18Namespace } from '@/shared/config/i18n';
 import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 
+import styles from './VerifiedEmail.module.css';
+
 interface VerifiedEmailProps {
 	selectedVerifiedEmail?: boolean | null;
 	onChangeVerifiedEmail: (isVerified: boolean) => void;
@@ -18,12 +20,11 @@ export const VerifiedEmail = ({
 	};
 
 	return (
-		<>
-			<Switch
-				checked={selectedVerifiedEmail ?? false}
-				onChange={handleSwitchChange}
-				label={t('filter.email.title')}
-			/>
-		</>
+		<Switch
+			className={styles.switch}
+			checked={selectedVerifiedEmail ?? false}
+			onChange={handleSwitchChange}
+			label={t('filter.email.title')}
+		/>
 	);
 };

@@ -18,7 +18,7 @@ export const UsersFilterSet = () => {
 
 	return (
 		<>
-			<ChooseUsersRole selectedRoles={roles} onChangeRoles={onChangeRoles} />
+			<ChooseUsersRole selectedRoleIds={roles} onChangeRoles={onChangeRoles} />
 			<VerifiedEmail
 				selectedVerifiedEmail={isEmailVerified}
 				onChangeVerifiedEmail={onChangeVerifyEmail}

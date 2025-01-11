@@ -13,7 +13,7 @@ interface FilterFromUser {
 	page?: number;
 }
 
-const initialState = '?page=1&limit=10&search=';
+const initialState = '?page=1&limit=10';
 
 export const useUserFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
@@ -86,10 +86,5 @@ export const useUserFilter = () => {
 		});
 	};
 
-	const resetFilters = () => {
-		setFilters({} as FilterFromUser);
-		navigate(initialState);
-	};
-	console.log(filter);
-	return { filter, handleFilterChange, resetFilters };
+	return { filter, handleFilterChange };
 };
