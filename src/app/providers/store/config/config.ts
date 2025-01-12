@@ -7,6 +7,7 @@ import { refreshMiddleware } from '@/entities/auth';
 import { profileReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
 
+import { collectionsPageReducer } from '@/pages/admin/CollectionsPage';
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
@@ -30,6 +31,7 @@ export const createReduxStore = (initialState?: State) => {
 			specializationsPage: specializationsPageReducer,
 			usersPage: usersPageReducer,
 			profile: profileReducer,
+			collectionsPage: collectionsPageReducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>
