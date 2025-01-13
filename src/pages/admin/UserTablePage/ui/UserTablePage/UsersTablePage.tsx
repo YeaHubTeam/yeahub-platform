@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
-import { UsersFilterSet, useUserFilter } from '@/features/admin/UsersFilterSet';
+import { UsersFilterSet, useUserFilter } from '@/features/user/UsersFilterSet';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { UsersTable } from '@/widgets/UsersTable';

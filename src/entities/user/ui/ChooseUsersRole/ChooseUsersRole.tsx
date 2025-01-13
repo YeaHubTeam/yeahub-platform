@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { toCamelCase } from '@/shared/helpers/toCamelCase';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { useGetRolesListQuery } from '../../api/userRoleApi';
+import { useGetUserRolesListQuery } from '../../api/userApi';
 import { UserRole } from '../../model/types/user';
 
 interface ChooseUsersRoleProps {
@@ -11,17 +12,10 @@ interface ChooseUsersRoleProps {
 	onChangeRoles: (roles: number[]) => void;
 }
 
-const toCamelCase = (str: string): string => {
-	return str
-		.split('-')
-		.map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
-		.join('');
-};
-
 export const ChooseUsersRole = ({ onChangeRoles, selectedRoleIds }: ChooseUsersRoleProps) => {
 	const { t } = useTranslation(i18Namespace.user);
 
-	const { data } = useGetRolesListQuery();
+	const { data } = useGetUserRolesListQuery();
 
 	const onClick = (roleId: number) => {
 		const isDataExist = selectedRoleIds?.some((item) => item === roleId);
