@@ -1,10 +1,11 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+
 import { HeaderSkeleton } from '@/widgets/Header';
 import { SidebarSkeleton } from '@/widgets/Sidebar';
 
 import SkeletonGenerator from '../model/helper/SkeletonGenerator';
 
 import styles from './MainLayout.module.css';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 
 export const MainLayoutSkeleton = () => {
 	const { isDesktop, isLaptop } = useScreenSize();

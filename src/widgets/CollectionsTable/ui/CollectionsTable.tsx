@@ -25,7 +25,7 @@ export const CollectionsTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			imageSrc: t(Collections.ICON_TITLE),
+			imageSrc: t(Collections.ICON_TITLE_SHORT),
 			title: t(Collections.TITLE_SHORT),
 			description: t(Collections.DESCRIPTION_SHORT),
 			questionsQuantity: t(Collections.QUESTIONS_TITLE),

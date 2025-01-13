@@ -396,12 +396,6 @@ export enum User {
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
 }
-export enum Collections {
-	TITLE_SHORT = 'title.short',
-	DESCRIPTION_SHORT = 'description.short',
-	ICON_TITLE = 'icon.title',
-	QUESTIONS_TITLE = 'questions.title',
-}
 
 export enum Collections {
 	TITLE_FULL = 'title.full',
@@ -412,6 +406,7 @@ export enum Collections {
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
 	ICON_TITLE = 'icon.title',
+	ICON_TITLE_SHORT = 'icon.title-short',
 	ICON_LABEL = 'icon.label',
 	SELECT_CHOOSE = 'select.chooseCollections',
 	SELECT_LABEL = 'select.label',
@@ -422,6 +417,7 @@ export enum Collections {
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	QUESTIONS_TITLE = 'questions.title',
 }
 
 export enum Landing {

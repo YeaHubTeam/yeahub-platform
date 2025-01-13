@@ -1,40 +1,41 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Text, TextArea, Input, Label } from 'yeahub-ui-kit';
+import { Text, TextArea, Input, Label, Radio } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
-import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
-import { CollectionFormProps } from '../../model/types/collectionFormProps';
-
 import styles from './CollectionForm.module.css';
 
+export interface CollectionFormProps {
+	imageSrc?: string | null;
+	isEdit?: boolean;
+}
+
 export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
-	const { t } = useTranslation([i18Namespace.collections]);
-	const { control, setValue, register, watch } = useFormContext();
+	const { t } = useTranslation([i18Namespace.collection]);
+	const { control, setValue, watch } = useFormContext();
 
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+
+	const watchPaidOrFree = watch('paidOrFree', '');
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('collectionImage', image);
+		setValue('imageSrc', image);
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
 		setValue('imageSrc', null);
 	};
-
-	const watchPaid = watch('isPaid', false);
-	const watchFree = watch('isFree', false);
 
 	return (
 		<>
@@ -85,23 +86,16 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 					</Flex>
 					<Flex gap="60">
 						<Label className={styles['paid-label']}>
-							<Checkbox
-								{...register('isPaid')}
-								checked={watchPaid}
-								onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-									setValue('isPaid', e.target.checked)
-								}
+							<Radio
+								checked={watchPaidOrFree === 'paid'}
+								onChange={() => setValue('paidOrFree', 'paid')}
 							/>
 							{t(Collections.SELECT_PAID)}
 						</Label>
-
 						<Label className={styles['paid-label']}>
-							<Checkbox
-								{...register('isFree')}
-								checked={watchFree}
-								onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-									setValue('isFree', e.target.checked)
-								}
+							<Radio
+								checked={watchPaidOrFree === 'free'}
+								onChange={() => setValue('paidOrFree', 'free')}
 							/>
 							{t(Collections.SELECT_FREE)}
 						</Label>

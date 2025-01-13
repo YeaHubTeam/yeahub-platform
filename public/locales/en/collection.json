@@ -1,14 +1,29 @@
 {
   "title": {
-    "short": "Name"
+    "full": "Collection Title",
+    "short": "Title",
+    "label": "Add collection title"
   },
   "description": {
-    "short": "Description"
+    "full": "Collection Description",
+    "short": "Description",
+    "label": "Add description",
+    "placeholder": "Collection description"
   },
   "icon": {
-    "title": "Picture"
+    "title": "Collection Image",
+    "title-short": "Image",
+    "label": "Add collection image"
+  },
+  "select": {
+    "chooseCollections": "Collections",
+    "label": "Select option",
+    "paid": "Paid",
+    "free": "Free"
   },
   "questions": {
     "title": "Questions"
-  }
+  },
+  "image.src": "Image URL",
+  "create.page.title": "Collection"
 }

@@ -1,7 +1,6 @@
-export interface CollectionCreateFormValues {
-	title: string;
-	description: string;
-	collectionImage?: string | null;
-	isPaid?: boolean;
-	isFree?: boolean;
+import { Collection } from '@/entities/collection';
+
+export interface CollectionCreateFormValues
+	extends Pick<Collection, 'title' | 'description' | 'imageSrc'> {
+	paidOrFree: 'paid' | 'free';
 }

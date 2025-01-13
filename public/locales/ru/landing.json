@@ -1,6 +1,6 @@
 {
   "header": {
-    "actions":   {
+    "actions": {
       "register": "Регистрация",
       "login": "Вход"
     },
