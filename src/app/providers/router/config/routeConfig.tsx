@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Collection from '@/shared/assets/icons/collection.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -18,6 +19,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -142,6 +144,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.collections.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+		icon: Collection,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -249,6 +257,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.users.route,
 						element: <UsersTablePage />,
+					},
+					{
+						path: ROUTES.admin.collections.route,
+						element: <CollectionsPage />,
 					},
 					{
 						path: '*',

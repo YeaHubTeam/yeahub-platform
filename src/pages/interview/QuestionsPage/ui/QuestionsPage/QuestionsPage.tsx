@@ -122,7 +122,7 @@ const QuestionsPage = () => {
 					onClose={onClose}
 					hasCloseButton
 				>
-					<Card className={styles['popover-additional-search']}>
+					<Card className={styles.search}>
 						<QuestionsFilterPanel
 							onChangeSearch={onChangeSearchParams}
 							onChangeSkills={onChangeSkills}
