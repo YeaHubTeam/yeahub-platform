@@ -12,9 +12,14 @@
   gap: 8px;
 }
 
+.chip svg{
+  width: 20px;
+  height: 20px;
+}
+
 .chip {
   span {
-    padding: 0;
+    padding-left: 10px;
     line-height: 120%;
     font-weight: var(--font-weight-500);
     font-size: var(--font-size-p-m);

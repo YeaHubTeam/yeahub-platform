@@ -25,6 +25,7 @@ export const i18Namespace = {
 	subscriptionCard: 'subscriptionCard',
 	translation: 'translation',
 	user: 'user',
+	collection: 'collection',
 };
 
 i18n

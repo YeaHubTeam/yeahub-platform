@@ -1,0 +1,14 @@
+{
+  "title": {
+    "short": "Название"
+  },
+  "description": {
+    "short": "Описание"
+  },
+  "icon": {
+    "title": "Картинка"
+  },
+  "questions": {
+    "title": "Вопросы"
+  }
+}
