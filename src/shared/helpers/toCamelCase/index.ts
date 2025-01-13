@@ -1,1 +1,0 @@
-export { toCamelCase } from './toCamelCase';

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Switch } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { User } from '@/shared/config/i18n/i18nTranslations';
 
 import styles from './VerifiedEmail.module.css';
 
@@ -24,7 +25,7 @@ export const VerifiedEmail = ({
 			className={styles.switch}
 			checked={selectedVerifiedEmail ?? false}
 			onChange={handleSwitchChange}
-			label={t('filter.email.title')}
+			label={t(User.FILTER_EMAIL)}
 		/>
 	);
 };

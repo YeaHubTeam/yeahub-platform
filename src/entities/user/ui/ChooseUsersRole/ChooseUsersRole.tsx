@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { toCamelCase } from '@/shared/helpers/toCamelCase';
+import { User } from '@/shared/config/i18n/i18nTranslations';
+import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 import { useGetUserRolesListQuery } from '../../api/userApi';
@@ -29,9 +30,9 @@ export const ChooseUsersRole = ({ onChangeRoles, selectedRoleIds }: ChooseUsersR
 
 	const preparedData = data.map((role: UserRole) => ({
 		id: role.id,
-		title: t(`roles.${toCamelCase(role.name)}`, { defaultValue: toCamelCase(role.name) }),
+		title: t(User[convertRoleNameToEnumKey(role.name)]),
 		active: selectedRoleIds?.some((selectedRoleIds) => role.id === selectedRoleIds),
 	}));
 
-	return <BaseFilterSection data={preparedData} title={t('filter.role.title')} onClick={onClick} />;
+	return <BaseFilterSection data={preparedData} title={t(User.FILTER_ROLE)} onClick={onClick} />;
 };
