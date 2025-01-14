@@ -395,6 +395,8 @@ export enum User {
 	HR = 'roles.HR',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
+	FILTER_ROLE = 'filter.role',
+	FILTER_EMAIL = 'filter.email',
 }
 
 export enum Collections {
