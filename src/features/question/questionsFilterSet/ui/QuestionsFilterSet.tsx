@@ -1,22 +1,24 @@
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 
-import { getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
+	ChooseSpecialization,
 	QuestionsSorter,
 	RateFilterSection,
 	SortQuestionsByField,
 } from '@/entities/question';
 
-export const QuestionsFilterSet = () => {
-	const profileSpecialization = useAppSelector(getSpecializationId);
+const MAX_LIMIT_CATEGORIES = 5;
+const DEFAULT_SPECIALIZATION = 11;
 
+export const QuestionsFilterSet = () => {
 	const {
-		filter: { skills, complexity, rate, orderBy, order },
+		filter: { skills, complexity, rate, orderBy, order, specialization },
 		handleFilterChange,
 	} = useQueryFilter();
+
+	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
 
 	const onChangeSkills = (skills: number[] | undefined) => {
 		handleFilterChange({ skills });
@@ -30,6 +32,10 @@ export const QuestionsFilterSet = () => {
 		handleFilterChange({ rate });
 	};
 
+	const onChangeSpecialization = (value: number | undefined) => {
+		handleFilterChange({ specialization: value, skills: undefined });
+	};
+
 	const changeSortBy = (orderBy: string) => {
 		handleFilterChange({ orderBy });
 	};
@@ -40,10 +46,15 @@ export const QuestionsFilterSet = () => {
 
 	return (
 		<>
+			<ChooseSpecialization
+				selectedSpecialization={selectedSpecialization}
+				onChangeSpecialization={onChangeSpecialization}
+				specializationLimit={MAX_LIMIT_CATEGORIES}
+			/>
 			<ChooseQuestionsCategories
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={profileSpecialization}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
