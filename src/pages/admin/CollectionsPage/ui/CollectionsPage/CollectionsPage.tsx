@@ -8,6 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { collectionsMock } from '@/entities/collection';
 
 import { CollectionsTable } from '@/widgets/CollectionsTable';
+import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
@@ -28,6 +29,7 @@ const CollectionsPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection to="create" showRemoveButton={true} />
 			<Card className={styles.content}>
 				<CollectionsTable
 					collections={collectionsMock}
