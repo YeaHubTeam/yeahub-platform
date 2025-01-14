@@ -8,6 +8,12 @@
   gap: 20px;
 }
 
+.container { 
+  display: flex; 
+  flex-direction:column; 
+  gap: 20px 
+}
+
 .main-content {
   display: flex;
   flex: 1;

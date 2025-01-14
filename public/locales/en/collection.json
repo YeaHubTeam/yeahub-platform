@@ -1,0 +1,14 @@
+{
+  "title": {
+    "short": "Name"
+  },
+  "description": {
+    "short": "Description"
+  },
+  "icon": {
+    "title": "Picture"
+  },
+  "questions": {
+    "title": "Questions"
+  }
+}
