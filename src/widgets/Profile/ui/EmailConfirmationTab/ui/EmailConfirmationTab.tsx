@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -28,12 +29,14 @@ export const EmailConfirmationTab = () => {
 	}, [profile, refetch]);
 
 	return (
-		<Flex direction="column" className={styles.wrapper}>
-			{isEmailVerified ? (
-				<UserVerifyed />
-			) : (
-				<ConfirmationEmail email={email} isLetterSended={isLetterSended} />
-			)}
-		</Flex>
+		<Card>
+			<Flex direction="column" className={styles.wrapper}>
+				{isEmailVerified ? (
+					<UserVerifyed />
+				) : (
+					<ConfirmationEmail email={email} isLetterSended={isLetterSended} />
+				)}
+			</Flex>
+		</Card>
 	);
 };
