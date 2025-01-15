@@ -155,6 +155,7 @@ export enum Profile {
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
 	FORM_SKILLS = 'form.skills',
+	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',
 	EMAIL_VERIFICATION_TITLE = 'email.verification.title',
@@ -470,6 +471,15 @@ export enum Landing {
 
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
+	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
+	CANCEL_SUBSCRIPTION = 'cancelSubscription',
+	PAY_HISTORY = 'payHistory',
+	TARIFF_FREE = 'tariff.free',
+	TARIFF_BASE = 'tariff.base',
+	TARIFF_PREMIUM = 'tariff.premium',
+	DAYS_LEFT = 'daysLeft',
+	SUBSCRIPTION_GREETING = 'greeting',
+	SUBSCRIPTION_RENEWAL = 'renewal',
 }
 
 export enum SubscriptionCard {
