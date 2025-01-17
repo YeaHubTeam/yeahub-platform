@@ -35,20 +35,24 @@ export const Drawer = ({
 	const portalRootRef = useRef(document.getElementById('drawer-root') || createPortalRoot());
 	const documentRootName = rootName === 'mainLayout' ? 'main' : 'body';
 	const renderRootRef = useRef(document.querySelector(documentRootName)!);
+	const rootEl = renderRootRef.current;
 
 	useEffect(() => {
-		renderRootRef.current.style.overflow = isOpen ? 'hidden' : '';
+		rootEl.style.overflow = isOpen ? 'hidden' : '';
+
+		return () => {
+			rootEl.style.overflow = '';
+		};
 	}, [isOpen]);
 
 	useEffect(() => {
 		if (isOpen) {
-			renderRootRef.current.appendChild(portalRootRef.current);
+			rootEl.appendChild(portalRootRef.current);
 			const portal = portalRootRef.current;
-			const bodyEl = renderRootRef.current;
 
 			return () => {
 				portal.remove();
-				bodyEl.style.overflow = '';
+				rootEl.style.overflow = '';
 			};
 		}
 	}, [isOpen]);

@@ -30,6 +30,7 @@ export enum Translation {
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
+	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -154,6 +155,7 @@ export enum Profile {
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
 	FORM_SKILLS = 'form.skills',
+	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',
 	EMAIL_VERIFICATION_TITLE = 'email.verification.title',
@@ -356,7 +358,12 @@ export enum Main {
 	FILL_PROFILE_TITLE = 'fill.profile.title',
 	FILL_PROFILE_DESCRIPTION = 'fill.profile.description',
 	FILL_PROFILE_LINK = 'fill.profile.link',
-	PLACEHOLDER = 'placeholder',
+	SUBSCRIBE_MEDIA_TITLE = 'subscribe.media.title',
+	SUBSCRIBE_MEDIA_DESCRIPTION = 'subscribe.media.description',
+	SUBSCRIBE_MEDIA_YEAHUB_TITLE = 'subscribe.media.yeahub.title',
+	SUBSCRIBE_MEDIA_YEAHUB_DESCRIPTION = 'subscribe.media.yeahub.description',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE = 'subscribe.media.community.yeahub.title',
+	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION = 'subscribe.media.community.yeahub.description',
 }
 
 export enum Skills {
@@ -389,11 +396,37 @@ export enum User {
 	HR = 'roles.HR',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
+	FILTER_ROLE = 'filter.role',
+	FILTER_EMAIL = 'filter.email',
+}
+
+export enum Collections {
+	TITLE_FULL = 'title.full',
+	TITLE_SHORT = 'title.short',
+	TITLE_LABEL = 'title.label',
+	DESCRIPTION_FULL = 'description.full',
+	DESCRIPTION_SHORT = 'description.short',
+	DESCRIPTION_LABEL = 'description.label',
+	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	ICON_TITLE = 'icon.title',
+	ICON_TITLE_SHORT = 'icon.title-short',
+	ICON_LABEL = 'icon.label',
+	SELECT_CHOOSE = 'select.chooseCollections',
+	SELECT_LABEL = 'select.label',
+	SELECT_PAID = 'select.paid',
+	SELECT_FREE = 'select.free',
+	SELECT_SELECTED = 'select.selected',
+	EMPTY = 'empty',
+	IMAGE_SRC = 'image.src',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
+	QUESTIONS_TITLE = 'questions.title',
 }
 
 export enum Landing {
-	LOGIN = 'login',
-	REGISTER = 'register',
+	LOGIN = 'header.actions.login',
+	REGISTER = 'header.actions.register',
+	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
@@ -438,6 +471,15 @@ export enum Landing {
 
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
+	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
+	CANCEL_SUBSCRIPTION = 'cancelSubscription',
+	PAY_HISTORY = 'payHistory',
+	TARIFF_FREE = 'tariff.free',
+	TARIFF_BASE = 'tariff.base',
+	TARIFF_PREMIUM = 'tariff.premium',
+	DAYS_LEFT = 'daysLeft',
+	SUBSCRIPTION_GREETING = 'greeting',
+	SUBSCRIPTION_RENEWAL = 'renewal',
 }
 
 export enum SubscriptionCard {

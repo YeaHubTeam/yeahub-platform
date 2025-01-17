@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { User as Users } from '@/shared/config/i18n/i18nTranslations';
+import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
@@ -11,10 +12,6 @@ import styles from './UsersTable.module.css';
 interface UsersTableProps {
 	users?: User[];
 }
-
-const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
-	return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof Users;
-};
 
 export const UsersTable = ({ users }: UsersTableProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);

@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -10,6 +10,7 @@
   padding: 0 var(--container-padding);
   width: 100%;
   max-width: var(--container-width);
+  min-height: 100vh;
 }
 
 @media screen and (width <= 1439px) {

@@ -1,9 +1,9 @@
 export interface Collection {
 	id: number;
-	questions: number[];
-}
-
-export interface CollectionFormValues {
-	id: number;
-	questions: number[];
+	title: string;
+	description: string;
+	imageSrc?: string | null;
+	createdAt?: string;
+	updatedAt?: string;
+	questionsQuantity?: number;
 }

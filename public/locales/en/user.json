@@ -5,10 +5,14 @@
   "roles": {
     "guest": "Guest",
     "candidate": "Candidate",
-    "candidate-free": "Candidate-Free",
-    "candidate-premium": "Candidate-Premium",
+    "candidateFree": "Candidate-Free",
+    "candidatePremium": "Candidate-Premium",
     "HR": "HR",
     "admin": "Admin",
     "member": "Member"
+  },
+  "filter": {
+    "role": { "title": "User Roles" },
+    "email": { "title": "Is Email Confirmed" }
   }
 }

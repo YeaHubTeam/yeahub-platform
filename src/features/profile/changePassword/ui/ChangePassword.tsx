@@ -9,6 +9,7 @@ import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
@@ -52,7 +53,7 @@ export const ChangePassword = () => {
 	};
 
 	return (
-		<>
+		<Card>
 			<Flex direction="column" gap="12" className={styles['header-section']}>
 				<h3 className={styles['title']}>{t(Profile.CHANGE_PASSWORD_TITLE)}</h3>
 				<p className={styles['description']}>{t(Profile.CHANGE_PASSWORD_DESCRIPTION)}</p>
@@ -125,6 +126,6 @@ export const ChangePassword = () => {
 					</Button>
 				</Flex>
 			</form>
-		</>
+		</Card>
 	);
 };
