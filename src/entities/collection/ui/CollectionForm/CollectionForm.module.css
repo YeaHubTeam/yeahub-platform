@@ -29,6 +29,11 @@
   border-radius: 16px;
 }
 
+.text-wrapper {
+  width: 100%;
+  max-width: 246px;
+}
+
 .paid-label {
   display: flex;
   align-items: center;

@@ -18,8 +18,13 @@
   "select": {
     "chooseCollections": "Подборки",
     "label": "Выберите вариант",
-    "paid": "Платно",
-    "free": "Бесплатно"
+    "paid": "Для участников",
+    "free": "Для всех"
+  },
+  "additionalInfo": {
+    "access": "Доступ:",
+    "specialization": "Специализация:",
+    "keywords": "Ключевые слова:"
   },
   "questions": {
     "title": "Вопросы"

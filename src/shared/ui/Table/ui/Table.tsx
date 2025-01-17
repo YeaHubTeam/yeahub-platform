@@ -71,7 +71,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						</td>
 					)}
 					{renderTableHeader()}
-					{hasActions && <td className={styles.actionsColumn}></td>}
+					{hasActions && <td className={styles['actions-column']}></td>}
 				</tr>
 			</thead>
 			<tbody>

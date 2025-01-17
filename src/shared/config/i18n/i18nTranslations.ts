@@ -339,6 +339,11 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+
+	ADDITIONAL_INFO_LEVEL = 'additionalInfo.level',
+	ADDITIONAL_INFO_SKILLS = 'additionalInfo.skills',
+	ADDITIONAL_INFO_KEYWORDS = 'additionalInfo.keywords',
+	ADDITIONAL_INFO_AUTHOR = 'additionalInfo.author',
 }
 
 export enum InterviewHistory {
@@ -421,6 +426,9 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	QUESTIONS_TITLE = 'questions.title',
+	ADDITIONAL_INFO_ACCESS = 'additionalInfo.access',
+	ADDITIONAL_INFO_SPECIALIZATION = 'additionalInfo.specialization',
+	ADDITIONAL_INFO_KEYWORDS = 'additionalInfo.keywords',
 }
 
 export enum Landing {
