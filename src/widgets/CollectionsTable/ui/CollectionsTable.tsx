@@ -73,13 +73,6 @@ export const CollectionsTable = ({
 					navigate(route(ROUTES.admin.collections.details.route, collection.id));
 				},
 			},
-			{
-				icon: <Icon icon="pencil" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.collections.edit.route, collection.id));
-				},
-			},
 		];
 
 		return (

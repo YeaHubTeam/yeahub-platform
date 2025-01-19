@@ -1,11 +1,15 @@
 import classnames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Chip, Icon } from 'yeahub-ui-kit';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
+import { Text } from '@/shared/ui/Text';
 
 import { getSkillDefaultIcon, Skill } from '@/entities/skill';
 
@@ -32,17 +36,23 @@ export const AdditionalInfo = ({
 	const navigate = useNavigate();
 	const { isMobile, isTablet } = useScreenSize();
 
+	const { t } = useTranslation(i18Namespace.questions);
+
 	return (
 		<Card className={classnames(styles['normal-hight'], className)} withOutsideShadow>
 			<div className={styles.wrapper}>
-				<h4 className={styles.title}>Уровень:</h4>
+				<Text variant="body3" color="black-700" className={styles.title}>
+					{t(Questions.ADDITIONAL_INFO_LEVEL)}
+				</Text>
 				<ul className={styles['param-wrapper']}>
 					<QuestionParam label="Сложность" value={complexity} />
 					<QuestionParam label="Рейтинг" value={rate} />
 				</ul>
 			</div>
 			<div className={styles.wrapper}>
-				<h4 className={styles.title}>Навыки:</h4>
+				<Text variant="body3" color="black-700" className={styles.title}>
+					{t(Questions.ADDITIONAL_INFO_SKILLS)}
+				</Text>
 				<ul className={styles['param-wrapper']}>
 					{questionSkills.map((skill) => {
 						return (
@@ -76,7 +86,9 @@ export const AdditionalInfo = ({
 				</ul>
 			</div>
 			<div>
-				<h4 className={styles.title}>Ключевые слова:</h4>
+				<Text variant="body3" color="black-700" className={styles.title}>
+					{t(Questions.ADDITIONAL_INFO_KEYWORDS)}
+				</Text>
 				<div className={styles['keywords-wrapper']}>
 					{keywords.map((keyword) => {
 						return (

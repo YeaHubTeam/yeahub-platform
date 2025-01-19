@@ -21,6 +21,9 @@
     "paid": "Paid",
     "free": "Free"
   },
+  "access": "Access:",
+  "specialization": "Specialization:",
+  "keywords": "Keywords:",
   "questions": {
     "title": "Questions"
   },

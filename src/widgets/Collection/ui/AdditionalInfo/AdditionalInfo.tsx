@@ -61,13 +61,13 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					{t(Collections.ADDITIONAL_INFO_KEYWORDS)}
 				</Text>
 				<div className={styles['keywords-wrapper']}>
-					{collection.questions.map((question) => {
-						return question.keywords.map((keyword, index) => (
+					{collection.keywordsCollection?.map((keyword) => {
+						return (
 							<Link
-								key={`${question.id}-${index}`}
+								key={keyword}
 								to={`${ROUTES.interview.questions.page}?page=1&status=all&keywords=${keyword}`}
 							>{`#${keyword}`}</Link>
-						));
+						);
 					})}
 				</div>
 			</div>
