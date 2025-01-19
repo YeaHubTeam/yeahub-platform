@@ -47,9 +47,7 @@ export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElement
  * @param maxRows - Limits the text to a maximum number of lines (from 1 to 4).
  * @param children - The text content to display.
  * @param className - Additional CSS classes for customization.
- * @constructor
  */
-
 export const Text = ({ variant, color = 'black-900', maxRows, children, className }: TextProps) => {
 	const Tag = variantToTagMapping[variant];
 	return (
