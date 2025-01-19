@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Text, textMaxRows, type TextProps, variantToTagMapping } from './Text';
 
 const meta: Meta<typeof Text> = {
