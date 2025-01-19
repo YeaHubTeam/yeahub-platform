@@ -5,8 +5,9 @@ import styles from './Flex.module.css';
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexAlign = 'start' | 'center' | 'end' | 'normal';
+type FlexWrap = 'wrap' | 'nowrap';
 type FlexDirection = 'row' | 'column';
-type FlexGap = '4' | '8' | '12' | '16' | '20' | '24' | '32' | '40' | '120';
+type FlexGap = '4' | '8' | '12' | '14' | '16' | '20' | '24' | '32' | '40' | '48' | '60' | '120';
 
 const justifyClasses: Record<FlexJustify, string> = {
 	around: styles['justify-around'],
@@ -28,15 +29,23 @@ const alignClasses: Record<FlexAlign, string> = {
 	normal: styles['align-normal'],
 };
 
+const wrapClasses: Record<FlexWrap, string> = {
+	wrap: styles['wrap'],
+	nowrap: styles['nowrap'],
+};
+
 const gapClasses: Record<FlexGap, string> = {
 	'4': styles.gap4,
 	'8': styles.gap8,
 	'12': styles.gap12,
+	'14': styles.gap14,
 	'16': styles.gap16,
 	'20': styles.gap20,
 	'24': styles.gap24,
 	'32': styles.gap32,
 	'40': styles.gap40,
+	'48': styles.gap48,
+	'60': styles.gap60,
 	'120': styles.gap120,
 };
 
@@ -54,6 +63,10 @@ export interface FlexProps extends DivProps {
 	 * A property indicating the vertical position of the elements
 	 */
 	align?: FlexAlign;
+	/**
+	 * A property indicating the transfer of elements
+	 */
+	wrap?: FlexWrap;
 	/**
 	 * A property that indicates the direction of the elements
 	 */
@@ -85,6 +98,7 @@ export interface FlexProps extends DivProps {
  * @param children
  * @param justify
  * @param align
+ * @param wrap
  * @param direction
  * @param gap
  * @param className
@@ -99,6 +113,7 @@ export const Flex = ({
 	children,
 	justify,
 	align,
+	wrap,
 	direction,
 	gap,
 	className = '',
@@ -116,6 +131,7 @@ export const Flex = ({
 				styles.flex,
 				justify && justifyClasses[justify],
 				align && alignClasses[align],
+				wrap && wrapClasses[wrap],
 				direction && directionClasses[direction],
 				gap && gapClasses[gap],
 				maxWidth && styles['max-width'],

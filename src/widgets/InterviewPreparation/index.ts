@@ -1,2 +1,2 @@
-export { QuestionProgressBarBlock } from './ui/QuestionProgressBarBlock/QuestionProgressBarBlock';
-export { QuestionLargePreview } from './ui/QuestionLargePreview/QuestionLargePreview';
+export { InterviewPreparation } from './ui/InterviewPreparation/InterviewPreparation';
+export { InterviewPreparationSkeleton } from './ui/InterviewPreparation/InterviewPreparation.skeleton';

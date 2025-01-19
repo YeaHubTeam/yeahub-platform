@@ -68,7 +68,7 @@
   }
 }
 
-@media screen and (width <= 767px) {
+@media screen and (width <= 576px) {
   .container {
     gap: 3.77px;
     width: 137.74px;
@@ -86,10 +86,13 @@
     align-items: center;
     gap: 3.77px;
     padding: 3.77px 5.18px;
-    border: 0.47px solid var(--color-border);
+    border: 0.5px solid var(--color-filter-border);
     border-radius: 5.65px;
-    line-height: 10px;
-    font-size: var(--font-size-p-xxs);
+    line-height: 10px;    
+  }
+
+  .categories-list li p {
+    font-size: var(--font-size-p-xss);
   }
 
   .categories-list .css {

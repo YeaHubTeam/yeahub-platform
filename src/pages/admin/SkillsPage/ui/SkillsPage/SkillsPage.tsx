@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSkillsListQuery } from '@/entities/skill';
+
+import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { SkillsTable } from '@/widgets/SkillsTable';
@@ -31,15 +34,12 @@ const SkillsPage = () => {
 
 	const { data: skills } = useGetSkillsListQuery({ page, title: search });
 
-	const onSelectSkills = (ids: number[]) => {
+	const onSelectSkills = (ids: SelectedAdminEntities) => {
 		dispatch(skillsPageActions.setSelectedSkills(ids));
 	};
 	const onChangeSearch = (value: string) => {
 		dispatch(skillsPageActions.setSearch(value));
 	};
-
-	//TODO implement removing selected questions
-	const onRemoveSkills = () => {};
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
@@ -47,10 +47,9 @@ const SkillsPage = () => {
 				<SearchSection
 					to="create"
 					showRemoveButton={selectedSkills.length > 0}
-					onRemove={onRemoveSkills}
 					onSearch={onChangeSearch}
+					renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
 				/>
-
 				<SkillsTable
 					skills={skills?.data}
 					selectedSkills={selectedSkills}

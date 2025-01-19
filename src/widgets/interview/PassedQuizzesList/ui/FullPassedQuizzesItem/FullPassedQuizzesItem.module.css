@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+  padding-bottom: 16px;
+  height: auto;
+  color: var(--text-color-bright);
+}
+
+.container > div:first-child {
+  padding-bottom: 24px;
+  border-bottom: thin solid var(--border-color);
+}
+
+@media (width <= 1024px) {
+  .container {
+    padding: 16px;
+  }
+}

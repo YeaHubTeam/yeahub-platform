@@ -1,46 +1,42 @@
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { PencilIcon } from '@/shared/ui/Icons/PencilIcon';
+import { useTranslation } from 'react-i18next';
 
-import { Buttons } from '../Buttons/Buttons';
+import DotsVertical from '@/shared/assets/icons/DotsVertical.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Landing, Questions } from '@/shared/config/i18n/i18nTranslations';
+import { ChevronUp } from '@/shared/ui/Icons/ChevronUp';
+import { PencilIcon } from '@/shared/ui/Icons/PencilIcon';
 
 import styles from './QuestionInterface.module.css';
 
 export const QuestionInterface = () => {
-	const { t } = useI18nHelpers(i18Namespace.landing);
-	const { isDesktop } = useScreenSize();
+	const { t } = useTranslation([i18Namespace.landing, i18Namespace.questions]);
 
 	return (
 		<div className={styles['question-interface']}>
 			<div className={styles.caption}>
 				<PencilIcon />
 				<p>
-					{t(Landing.PLATFORM_INTERFACE_DESCRIPTION)} <br />
+					{t(Landing.READY_INTERVIEW_ADVANTAGES_FIRST)} <br />
 				</p>
 			</div>
-
-			<div className={styles.container}>
-				<Buttons />
-
-				<h3>{t(Landing.SAMPLE_QUESTION)}</h3>
-				<div>
-					<p className={styles.rating}>
-						{t(Landing.RATING)}:<span>4</span>
-					</p>
-					<p className={styles.difficulty}>
-						{t(Landing.COMPLEXITY)}:<span>10</span>
-					</p>
+			<div className={styles['question-example']}>
+				<DotsVertical className={styles['dots-icon']} />
+				<ChevronUp className={styles['chevron-icon']} />
+				<h3 className={styles.question}>{t(Landing.QUESTIONS_SECOND_TITLE)}</h3>
+				<div className={styles['question-body']}>
+					<div className={styles['question-info']}>
+						<div className={styles['question-tag']}>
+							{t(Questions.RATE_TITLE_SHORT, { ns: i18Namespace.questions })}: <span>4</span>
+						</div>
+						<div className={styles['question-tag']}>
+							{t(Questions.COMPLEXITY_TITLE_SHORT, { ns: i18Namespace.questions })}: <span>10</span>
+						</div>
+					</div>
+					<div
+						className={styles.answer}
+						dangerouslySetInnerHTML={{ __html: t(Landing.QUESTIONS_SECOND_ANSWER) }}
+					></div>
 				</div>
-
-				<div className={styles['img-container']}></div>
-
-				{!isDesktop ? (
-					<p className={styles.answer}>{t(Landing.SAMPLE_ANSWER_TABLET)}</p>
-				) : (
-					<p className={styles.answer}>{t(Landing.SAMPLE_ANSWER_DEFAULT)}</p>
-				)}
 			</div>
 		</div>
 	);

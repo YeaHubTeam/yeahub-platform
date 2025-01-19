@@ -1,8 +1,12 @@
 {
   "name": "yeahub-platform",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.5",
+  "description": "YeaHub is a platform for IT professionals, bringing together learning, career growth, personal development, and a community of like-minded individuals. A React-based platform with integrated Storybook and advanced developer tooling.",
   "main": "src/index.tsx",
+  "homepage": "https://github.com/YeaHubTeam/yeahub-platform",
+  "bugs": {
+    "url": "https://github.com/YeaHubTeam/yeahub-platform/issues"
+  },
   "scripts": {
     "dev": "webpack serve --mode development --env mode=development",
     "start": "serve -s build",
@@ -29,10 +33,7 @@
     "type": "git",
     "url": "https://github.com/YeaHubTeam/yeahub-platform"
   },
-  "authors": [
-    "Ruslan Kuyanets <ruslan.kuyanets@yandex.ru>",
-    "Alexander Kazakov <alexandkazakov@ya.ru>"
-  ],
+  "authors": "YeaHubTeam <yeahub@yeahub.ru>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.9",

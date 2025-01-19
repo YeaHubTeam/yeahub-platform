@@ -1,55 +1,32 @@
 .home-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: 100%;
+  gap: 4px;
+  width: auto;
   transition: padding-left 0.5s ease-in-out;
-}
-
-.name {
-  width: 100px;
-  height: 32px;
-  color: var(--text-color-primary);
-  transition: all .7s ease-in-out;
-}
-
-.name path {
-  opacity: 1;
-}
-
-.short path:not(:first-child) {
-  opacity: 0;
-}
-
-
-.white {
-  color: var(--color-white-900);
-}
-
-.black {
-  color: var(--color-black-800);
-}
-
-.close {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.center {
-  padding-left: 8px;
-  transition: padding-left 0.4s ease-in-out;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  transition: padding-left 0.5s ease-in-out;
+  width: 45px;
+  height: 45px;
 }
 
-.landing-name {
-  width: 100px;
-  height: 32px;
-  transition: opacity 0.7s ease-in-out;
+.logo-text {
+  display: block;
+  width: 139px;
+  height: 45px;
+}
+
+.white > path {
+  fill: var(--color-white-900);
+}
+
+.black > path {
+  fill: var(--color-black-800);
+}
+
+.center {
+  transition: padding-left 0.4s ease-in-out;
 }
 
 .pointer-event-none {
@@ -57,11 +34,7 @@
 }
 
 @media (width <=768px) {
-  .name {
+  .logo-text {
     display: none;
-  }
-
-  .logo-image {
-    padding-right: 0;
   }
 }

@@ -1,0 +1,1 @@
+export { questionsMock } from './questionsMock';

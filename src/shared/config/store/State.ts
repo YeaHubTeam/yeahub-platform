@@ -2,9 +2,11 @@
 import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 
+import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
+import { UsersPageState } from '@/pages/admin/UserTablePage';
 import { CreateQuizPageState } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
 import { QuestionsPageState } from '@/pages/interview/QuestionsPage';
@@ -20,5 +22,7 @@ export interface State {
 	questionsTablePage: QuestionsTablePageState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
+	usersPage: UsersPageState;
 	profile: ProfileState;
+	collectionsPage: CollectionsPageState;
 }

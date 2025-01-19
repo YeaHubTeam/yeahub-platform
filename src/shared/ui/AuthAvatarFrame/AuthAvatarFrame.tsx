@@ -1,5 +1,5 @@
 /* eslint-disable import/no-internal-modules */
-import AvatarPlaceholder from '../../assets/images/landing/avatar-placeholder.jpg';
+import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
 import styles from './AuthAvatarFrame.module.css';
 
@@ -8,9 +8,15 @@ interface AvatarProps {
 }
 
 export const AuthAvatarFrame = ({ link }: AvatarProps) => {
+	if (!link)
+		return (
+			<div className={styles.border}>
+				<AvatarWithoutPhoto />
+			</div>
+		);
 	return (
 		<div className={styles.wrapper}>
-			<img src={link || AvatarPlaceholder} className={styles.avatar} alt="User Avatar" />
+			<img src={link} className={styles.avatar} alt="User Avatar" />
 		</div>
 	);
 };

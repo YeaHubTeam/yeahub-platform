@@ -1,34 +1,39 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
+import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 
-import { useLazyLogoutQuery, useProfileQuery } from '@/entities/auth';
+import { useLazyLogoutQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { LoginCreateForm } from '@/widgets/authentication/login';
 
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
-	const { data: profile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
 	const [trigger] = useLazyLogoutQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
-	const { t } = useI18nHelpers();
-	const { t: tAuth } = useI18nHelpers(i18Namespace.auth);
+	const { t } = useTranslation(i18Namespace.auth);
 
 	const handleLogoutUser = () => {
 		trigger();
 	};
 
-	const loginTitle = accessToken ? `${t('hello')} ${profile?.firstName}` : tAuth('login.title');
+	const loginTitle = accessToken
+		? `${t(Auth.LOGIN_HELLO)} ${profile?.firstName}`
+		: t(Auth.LOGIN_TITLE);
 
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{loginTitle}</h1>
 			{accessToken ? (
 				<Button onClick={handleLogoutUser} size="L">
-					{t('buttons.logout')}
+					{t(Auth.LOGOUT)}
 				</Button>
 			) : (
 				<LoginCreateForm />

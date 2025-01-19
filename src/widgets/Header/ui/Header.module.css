@@ -10,30 +10,37 @@
 
 .burger {
   display: none; 
+  padding: 0;
 }
 
 .logo {
   display: none; 
 }
 
-.name {
-  width: 100px;
-  height: 32px;
-  color: var(--text-color-primary);
-  transition: opacity 0.7s ease-in-out;
-}
-
-
-@media (width <= 480px) {
-  .header {
-    justify-content: space-between;
-  }
-
+@media (width < 1024px) {
   .burger {
     display: block;
   }
 
+  .header {
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+	
   .logo {
     display: block;
+  }
+}
+
+@media (width <= 768px) {
+  .header {
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+}
+
+@media (width < 480px) {
+  .header {
+    border-bottom: 1px solid transparent;
   }
 }

@@ -1,26 +1,38 @@
 {
-  "title": "Questions",
-  "name": "Title",
-  "addName": "Add question",
-  "searchPlaceholder": "Enter a query...",
+  "count": "Questions count",
+  "preview": {
+    "title": "Questions list",
+    "link": "Study",
+    "empty": "Questions for the selected specialization will appear soon"
+  },
+  "title": {
+    "short": "Question",
+    "label": "Add question",
+    "placeholder": "Add question"
+  },
+  "description": {
+    "title": "Description",
+    "label": "Add description",
+    "placeholder": "Add description"
+  },
+  "search.placeholder": "Enter a query...",
   "categories": {
-    "title": "Questions Categories",
-    "showAll": "Show all"
+    "title": "Question Categories",
+    "show.all": "Show all",
+    "hide": "Hide"
   },
   "complexity": {
-    "title": "Questions Difficulty",
-    "select": "Select questions difficulty"
+    "title": "Question Difficulty",
+    "title.short": "Complexity",
+    "label": "Select questions difficulty"
   },
   "rate": {
-    "title": "Questions Rating",
-    "select": "Select rate"
-  },
-  "field": {
-    "title": "Sort by field",
-    "rate": "Rate",
-    "complexity": "Complexity"
+    "title": "Question Rating",
+    "title.short": "Rating",
+    "label": "Select rate"
   },
   "sort": {
+    "field": "Sort by field",
     "title": "Sort by",
     "ascending": "Ascending",
     "descending": "Descending"
@@ -30,28 +42,34 @@
     "unlearned": "Unlearned",
     "learned": "Learned",
     "all": "All",
-    "select": "Select status"
+    "label": "Select status",
+    "public": "Public",
+    "draft": "Draft"
   },
   "skills": {
     "title": "Skills",
-    "addSkills": "add skills"
+    "label": "add skills"
   },
-  "longAnswer": {
+  "long.answer": {
     "title": "long answer",
-    "add": "Add long answer"
+    "label": "Add long answer",
+    "placeholder": "Add long answer"
   },
-  "shortAnswer": {
+  "short.answer": {
     "title": "Short answer",
-    "add": "Add short answer"
-  },
-  "description": {
-    "title": "Description",
-    "add": "Add description"
+    "label": "Add short answer",
+    "placeholder": "Add short answer"
   },
   "specialization": {
     "title": "Specialization",
     "select": "Select specialization"
   },
-  "keywords": "Keywords",
-  "image.alt": "Image code for question"
+  "keywords": {
+    "title": "Keywords",
+    "label": "Add keywords"
+  },
+  "image.alt": "Image code for question",
+  "more": "More",
+  "learn": "Learn",
+  "repeat": "Repeat"
 }

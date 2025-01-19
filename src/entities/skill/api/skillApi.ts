@@ -1,21 +1,26 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { Response } from '@/shared/types/types';
+import { route } from '@/shared/helpers/route';
 
-import { SkillsListParams, Skill } from '../model/types/skill';
+import { skillApiUrls } from '../model/constants/skillConstants';
+import type {
+	GetSkillByIdResponse,
+	GetSkillsListParamsRequest,
+	GetSkillsListResponse,
+} from '../model/types/skill';
 
 const skillApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getSkillsList: build.query<Response<Skill[]>, SkillsListParams>({
+		getSkillsList: build.query<GetSkillsListResponse, GetSkillsListParamsRequest>({
 			query: (params) => ({
-				url: '/skills',
+				url: skillApiUrls.getSkillsList,
 				params,
 			}),
 			providesTags: [ApiTags.SKILLS],
 		}),
-		getSkillById: build.query<Skill, string>({
+		getSkillById: build.query<GetSkillByIdResponse, string>({
 			query: (skillId) => ({
-				url: `/skills/${skillId}`,
+				url: route(skillApiUrls.getSkillById, skillId),
 			}),
 			providesTags: [ApiTags.SKILL_DETAIL],
 		}),

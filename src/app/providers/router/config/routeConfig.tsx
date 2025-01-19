@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Collection from '@/shared/assets/icons/collection.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -8,14 +9,18 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SettingsIcon from '@/shared/assets/icons/Settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import User from '@/shared/assets/icons/user.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
+import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -29,6 +34,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
@@ -43,7 +49,10 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
+import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
+import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -62,30 +71,36 @@ const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.adminRoute,
-		title: 'tabs.admin',
+		title: i18n.t(Translation.SIDEBAR_MENU_ADMIN),
 		icon: Crown,
 		isAdmin: true,
 	},
 	{
 		type: 'single',
 		route: ROUTES.platformRoute,
-		title: 'tabs.main',
+		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
 	},
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
-		title: 'tabs.profile',
+		title: i18n.t(Translation.SIDEBAR_MENU_PROFILE),
 		icon: ProfileIcon,
 	},
 	{
+		type: 'single',
+		route: ROUTES.settings.page,
+		title: i18n.t(Translation.SIDEBAR_MENU_SETTINGS),
+		icon: SettingsIcon,
+	},
+	{
 		type: 'category',
-		title: 'tabs.education.title',
+		title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_TITLE),
 		icon: EducationIcon,
 		elements: [
 			{
 				route: ROUTES.interview.route,
-				title: 'tabs.education.interview',
+				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
 			},
 		],
@@ -96,33 +111,45 @@ const adminLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.platformRoute,
-		title: 'tabs.platform',
+		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
 		isAdmin: true,
 	},
 	{
 		type: 'single',
 		route: ROUTES.adminRoute,
-		title: 'tabs.main',
+		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: Home,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.questions.route,
-		title: 'tabs.questions',
+		title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
 		icon: QuestionsIcon,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.specializations.route,
-		title: 'tabs.specialization',
+		title: i18n.t(Translation.SIDEBAR_MENU_SPECIALIZATIONS),
 		icon: SpecializationIcon,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.skills.route,
-		title: 'tabs.skills',
+		title: i18n.t(Translation.SIDEBAR_MENU_SKILLS),
 		icon: SkillsIcon,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.users.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
+		icon: User,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.collections.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+		icon: Collection,
 	},
 ];
 
@@ -137,6 +164,28 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <LandingMainPage />,
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
+					},
+					{
+						path: ROUTES.docs.page,
+						element: <DocsPage />,
+					},
+					{
+						path: ROUTES.questions.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <PublicQuestionsPage />,
+							},
+							{
+								path: ROUTES.questions.detail.route,
+								element: <PublicQuestionPage />,
+							},
+						],
 					},
 				],
 			},
@@ -205,6 +254,28 @@ export const router = createBrowserRouter([
 								element: <SkillDetailPage />,
 							},
 						],
+					},
+					{
+						path: ROUTES.admin.users.route,
+						element: <UsersTablePage />,
+					},
+					{
+						path: ROUTES.admin.collections.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <CollectionsPage />,
+							},
+							{
+								path: ROUTES.admin.collections.create.route,
+								element: <CollectionCreatePage />,
+							},
+						],
+					},
+					{
+						path: '*',
+						element: <Error404Page />,
 					},
 				],
 			},
@@ -322,7 +393,7 @@ export const router = createBrowserRouter([
 										<Outlet />
 									</VerifiedEmailRoute>
 								),
-								handle: { crumb: Translation.CRUMBS_INTERVIEWCREATION },
+								handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
 								children: [{ index: true, element: <CreateQuizPage /> }],
 							},
 							{

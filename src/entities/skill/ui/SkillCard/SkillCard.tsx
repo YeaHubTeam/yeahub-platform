@@ -1,5 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -13,7 +14,7 @@ interface SkillCardProps {
 }
 
 export const SkillCard = ({ skill }: SkillCardProps) => {
-	const { t } = useI18nHelpers();
+	const { t } = useTranslation();
 
 	return (
 		<Flex direction="column" gap="24" className={styles.wrap}>

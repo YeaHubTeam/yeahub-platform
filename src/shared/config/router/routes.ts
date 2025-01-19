@@ -51,6 +51,19 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
+		users: {
+			route: 'users',
+			page: 'admin/user',
+		},
+
+		collections: {
+			route: 'collections',
+			page: '/admin/collections',
+			create: {
+				route: 'create',
+				page: '/admin/collections/create',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',
@@ -113,6 +126,18 @@ export const ROUTES = {
 		new: {
 			route: 'new',
 			page: '/dashboard/interview/new',
+		},
+	},
+	docs: {
+		route: 'docs',
+		page: '/docs',
+	},
+	questions: {
+		route: 'questions',
+		page: '/questions',
+		detail: {
+			route: ':questionId',
+			page: '/questions/:questionId',
 		},
 	},
 };

@@ -2,15 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0 60px;
+  margin: 16px 0 0;
+  padding: 10px 0;
   width: 100%;
 }
 
-.container{
-  margin: 16px 0 ;
-  width: 100%;
-  max-width: 135px;
-  height: 32px;
+.links {
+  margin-left: 42px;
 }
 
 .navigation {
@@ -20,4 +18,26 @@
   width: 100%;
   max-width: 276px;
 }
+
+@media screen and (width <=1439px) {
+  .header {
+    padding: 0;
+  }
+}
+
+@media (width <= 767px) {
+  .links {
+    margin-left: 16px;
+  }
+}
+
+@media screen and (width <= 576px) {
+  .header {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding: 16px 16px 0;
+  }
+}
+
+
 

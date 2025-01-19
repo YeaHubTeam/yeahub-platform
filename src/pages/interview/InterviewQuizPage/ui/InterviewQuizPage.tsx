@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
+import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getProfileId } from '@/entities/profile';
 import {
 	InterviewSlider,
 	QuestionNavPanel,
-	QuestionProgressBar,
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
 	useSaveQuizResultMutation,
@@ -23,15 +25,13 @@ import styles from './InterviewQuizPage.module.css';
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
-	const { data: userProfile } = useProfileQuery();
+	const profileId = useAppSelector(getProfileId);
 	const { data: activeQuiz } = useGetActiveQuizQuery({
-		profileId: userProfile?.profiles[0].id || '',
-		params: {
-			page: 1,
-			limit: 1,
-		},
+		profileId,
+		page: 1,
+		limit: 1,
 	});
 	const [saveResult] = useSaveQuizResultMutation();
 
@@ -52,12 +52,12 @@ const InterviewQuizPage = () => {
 		goToPrevSlide,
 	} = useSlideSwitcher(activeQuizQuestions ?? []);
 
-	const handlePrevSlide = () => {
+	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
 		goToPrevSlide();
 	};
 
-	const handleRightSlide = () => {
+	const onRightSlide = () => {
 		setIsAnswerVisible(false);
 		goToNextSlide();
 	};
@@ -66,7 +66,7 @@ const InterviewQuizPage = () => {
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
-	const handleSubmitQuiz = () => {
+	const onSubmitQuiz = () => {
 		if (activeQuiz) {
 			const quizToSave = {
 				...activeQuiz.data[0],
@@ -80,26 +80,25 @@ const InterviewQuizPage = () => {
 	};
 
 	return (
-		<div className={styles.container}>
-			<Card>
+		<Flex direction="column" gap="24" className={styles.container}>
+			<Card withOutsideShadow>
 				<div className={styles['progress-bar']}>
-					<p className={styles['progress-bar-title']}>{t('title')}</p>
+					<p className={styles['progress-bar-title']}>{t(InterviewQuiz.TITLE)}</p>
 					<span className={styles['progress-num']}>
 						{activeQuestion}/{totalCount}
 					</span>
-					<QuestionProgressBar
+					<ProgressBar
 						className={styles['progress-component']}
 						currentCount={currentCount}
 						totalCount={totalCount}
 					/>
 				</div>
 			</Card>
-			<Card className={styles['question-card']}>
-				<div className={styles.question}>
+			<Card withOutsideShadow>
+				<Flex direction="column" gap="24" className={styles.question}>
 					<QuestionNavPanel
-						className={styles['slider-navigation']}
-						goToNextSlide={handleRightSlide}
-						goToPrevSlide={handlePrevSlide}
+						goToNextSlide={onRightSlide}
+						goToPrevSlide={onPrevSlide}
 						answer={answer}
 						changeAnswer={changeAnswer}
 						questionNumber={activeQuestion}
@@ -109,7 +108,7 @@ const InterviewQuizPage = () => {
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						shortAnswer={shortAnswer ?? ''}
+						shortAnswer={shortAnswer}
 						answer={answer}
 						changeAnswer={changeAnswer}
 						isAnswerVisible={isAnswerVisible}
@@ -117,14 +116,14 @@ const InterviewQuizPage = () => {
 					/>
 					<Button
 						className={styles['end-button']}
-						onClick={isNextButton ? handleRightSlide : handleSubmitQuiz}
+						onClick={isNextButton ? onRightSlide : onSubmitQuiz}
 						disabled={isDisabled}
 					>
-						{isNextButton ? t('buttons.next') : t('buttons.complete')}
+						{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.COMPLETE)}
 					</Button>
-				</div>
+				</Flex>
 			</Card>
-		</div>
+		</Flex>
 	);
 };
 

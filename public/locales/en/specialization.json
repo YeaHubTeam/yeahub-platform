@@ -1,15 +1,29 @@
 {
-  "skillForm": {
-    "skillSelect": "Select skill from the list",
-    "emptySkillSelect": "No options available"
+  "title": {
+    "full": "Specialization title",
+    "short": "Title",
+    "label": "Add specialization title"
   },
-  "specialization": {
-    "title": "Title",
-    "description": "Specializations description",
-    "not.items": "No specializations",
-    "image.src": "Image url",
-    "create.page.title": "Creating new specialization",
-    "edit.page.title": "Edit specialization",
-    "image.alt": "Image of specialization"
-  }
+  "description": {
+    "full": "Specialization description",
+    "short": "Description",
+    "label": "Add specialization description",
+    "placeholder": "Specialization description"
+  },
+  "stub.empty": {
+    "title": "Specialty not yet selected.",
+    "description": "You have not selected the major you want to study, go to your profile and fill it out to start preparing for interviews"
+  },
+  "select": {
+    "choose": "Select specialization from the list",
+    "empty": "No options available",
+    "selected": "Selected specializations"
+  },
+  "empty": "No specializations",
+  "image": {
+    "src": "Image url",
+    "alt": "Image of specialization"
+  },
+  "create.page.title": "Creating new specialization",
+  "edit.page.title": "Edit specialization"
 }

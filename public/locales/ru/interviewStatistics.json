@@ -1,20 +1,31 @@
 {
+  "passed": "пройдено",
+  "soon": "Скоро здесь \n появится статистика",
+  "link": "Посмотреть полностью",
   "progress": {
     "title": "Прогресс"
   },
-  "questionStats": {
+  "question.stats": {
     "title": "Статистика пройденных вопросов по всем категориям",
-    "learnedQuestions": "Изучено",
-    "inProcess": "В процессе",
-    "newQuestions": "Новые",
-    "allQuestions": "Всего"
+    "title.short": "Статистика собеседований",
+    "learned": "Изучено",
+    "in.process": "В процессе",
+    "new": "Новые",
+    "all": "Всего"
   },
-  "attemptStats": {
+  "attempt.stats": {
     "title": "Статистика пройденных собеседований",
-    "bestResult": "Лучший результат",
-    "worstResult": "Худший результат",
-    "avgResult": "Средний результат"
-  },
-  "expand": "Развернуть",
-  "collapse": "Свернуть"
+    "best": {
+      "default": "Лучший результат",
+      "mobile": "Лучший"
+    },
+    "worst": {
+      "default": "Худший результат",
+      "mobile": "Худший"
+    },
+    "avg": {
+      "default": "Средний результат",
+      "mobile": "Средний"
+    }
+  }
 }

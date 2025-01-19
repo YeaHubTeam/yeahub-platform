@@ -1,0 +1,1 @@
+export { HTMLIcon } from './HTMLIcon';

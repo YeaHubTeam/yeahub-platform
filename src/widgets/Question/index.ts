@@ -11,4 +11,4 @@ export { QuestionsFilterPanel } from './ui/QuestionsFilterPanel/ui/QuestionsFilt
 export { QuestionsSummaryList } from './ui/QuestionsSummaryList/QuestionsSummaryList';
 export { QuestionPreview } from './ui/QuestionPreview/QuestionPreview';
 
-export type { QuestionFilterStatus } from './ui/QuestionsFilterPanel/model/types';
+export type { QuestionFilterStatus, FilterParams } from './ui/QuestionsFilterPanel/model/types';

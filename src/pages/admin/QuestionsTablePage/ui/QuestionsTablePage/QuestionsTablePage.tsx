@@ -2,10 +2,14 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetQuestionsListQuery } from '@/entities/question';
+
+import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
+import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
 
 import { QuestionsTable } from '@/widgets/QuestionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -36,7 +40,7 @@ const QuestionsPage = () => {
 		title: search,
 	});
 
-	const onSelectQuestions = (ids: number[]) => {
+	const onSelectQuestions = (ids: SelectedAdminEntities) => {
 		dispatch(questionsTablePageActions.setSelectedQuestions(ids));
 	};
 
@@ -46,10 +50,7 @@ const QuestionsPage = () => {
 
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
-	};
-
-	const onRemoveQuestions = () => {
-		//TODO implement removing selected questions
+		dispatch(questionsTablePageActions.setPage(page));
 	};
 
 	return (
@@ -57,8 +58,9 @@ const QuestionsPage = () => {
 			<SearchSection
 				to="create"
 				showRemoveButton={selectedQuestions.length > 0}
-				onRemove={onRemoveQuestions}
 				onSearch={onChangeSearch}
+				renderRemoveButton={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
+				renderFilter={() => <QuestionsFilterSet />}
 			/>
 			<Card className={styles.content}>
 				<QuestionsTable

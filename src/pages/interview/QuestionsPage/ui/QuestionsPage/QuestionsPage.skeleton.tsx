@@ -8,11 +8,11 @@ export const QuestionsPageSkeleton = () => {
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
-					<Skeleton style={{ margin: '0.67em 0' }} height={33} />
+					<Skeleton style={{ margin: '0.67em 0' }} height={33} width="100%" />
 					<hr className={styles.divider} />
 					{[...Array(6)].map((_, i) => (
 						<div key={i} className={styles['question-skeleton']}>
-							<Skeleton height={24} />
+							<Skeleton height={24} width="100%" />
 						</div>
 					))}
 				</Card>
@@ -20,7 +20,7 @@ export const QuestionsPageSkeleton = () => {
 			<div className={styles['additional-info-wrapper']}>
 				<Card className={styles.search}>
 					<div className={styles['filter-skeleton-wrapper']}>
-						<Skeleton height={44} />
+						<Skeleton height={44} width="100%" />
 
 						{[...Array(4)].map((_, i) => (
 							<div key={i}>

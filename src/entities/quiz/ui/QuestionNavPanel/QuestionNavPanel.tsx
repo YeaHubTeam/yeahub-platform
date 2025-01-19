@@ -1,10 +1,10 @@
-import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { A11y } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
@@ -15,7 +15,6 @@ interface QuestionNavPanelProps {
 	answer: QuizQuestionAnswerType;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	showResponseButtons?: boolean;
-	className?: string;
 	questionNumber: number;
 	totalCount: number;
 	goToNextSlide: () => void;
@@ -26,49 +25,42 @@ export const QuestionNavPanel = ({
 	answer,
 	changeAnswer,
 	showResponseButtons = false,
-	className,
 	questionNumber,
 	totalCount,
 	goToNextSlide,
 	goToPrevSlide,
 }: QuestionNavPanelProps) => {
-	const { t } = useI18nHelpers(i18Namespace.a11y);
+	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
 	return (
-		<div className={classNames(styles.panel, className)}>
-			<div className={styles['button-wrapper']}>
+		<Flex justify="between">
+			<Flex className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
 					onClick={goToPrevSlide}
-					aria-label={t(A11y.PREV_INTERVIEW_QUESTION)}
-					fullWidth={true}
+					aria-label={t(InterviewQuiz.A11Y_PREV)}
+					fullWidth
 					suffix={
 						<Icon icon="caretLeft" size={20} color="--palette-ui-purple-700" key="caretLeft" />
 					}
 					variant="outline"
 					disabled={questionNumber === 1}
 				/>
-			</div>
-			{showResponseButtons && (
-				<ResponseButtons
-					className={styles['action-btns']}
-					answer={answer}
-					changeAnswer={changeAnswer}
-				/>
-			)}
-			<div className={styles['button-wrapper']}>
+			</Flex>
+			{showResponseButtons && <ResponseButtons answer={answer} changeAnswer={changeAnswer} />}
+			<Flex className={styles['button-wrapper']}>
 				<Button
 					className={styles.button}
 					onClick={goToNextSlide}
 					preffix={
 						<Icon color="--palette-ui-purple-700" icon="caretRight" size={20} key="caretRight" />
 					}
-					fullWidth={true}
+					fullWidth
 					variant="outline"
-					aria-label={t(A11y.NEXT_INTERVIEW_QUESTION)}
+					aria-label={t(InterviewQuiz.A11Y_NEXT)}
 					disabled={questionNumber === totalCount || !answer}
 				/>
-			</div>
-		</div>
+			</Flex>
+		</Flex>
 	);
 };

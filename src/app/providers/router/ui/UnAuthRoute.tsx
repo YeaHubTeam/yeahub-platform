@@ -8,7 +8,7 @@ import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 interface UnAuthRouteProps {
 	children: React.ReactNode;
 }
-
+// TODO добавить replace в Navigate
 export const UnAuthRoute = ({ children }: UnAuthRouteProps) => {
 	const isAuth = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const replaceUrl = ROUTES.appRoute;

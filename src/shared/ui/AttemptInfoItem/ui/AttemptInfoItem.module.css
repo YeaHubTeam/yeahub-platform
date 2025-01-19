@@ -23,9 +23,10 @@
 .value {
   color: var(--text-color-light);
   font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-s);
 }
 
-@media (width <=480px) {
+@media (width <= 768px) {
   .item {
     gap: 8px;
   }

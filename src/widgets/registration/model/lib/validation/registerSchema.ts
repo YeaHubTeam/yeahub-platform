@@ -11,34 +11,38 @@ export const registerSchema = yup.object().shape({
 	firstName: yup
 		.string()
 		.trim()
-		.min(2, i18n.t(Translation.VALIDATION_FIRSTNAME_MIN, { count: 2 }))
+		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
+		.max(30, ({ max }) => i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: max }))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	lastName: yup
 		.string()
 		.trim()
-		.min(2, i18n.t(Translation.VALIDATION_LASTNAME_MIN, { count: 2 }))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	phone: yup
-		.string()
-		.matches(/^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/, i18n.t(Translation.VALIDATION_PHONE_FORMAT))
+		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
+		.max(30, ({ max }) => i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: max }))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	email: yup
 		.string()
-		.email(i18n.t(Translation.VALIDATION_EMAIL_FORMAT))
+		.email(i18n.t(Translation.VALIDATION_EMAIL))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	password: yup
 		.string()
-		.min(8, i18n.t(Translation.VALIDATION_PASSWORD_MIN, { count: 8 }))
+		.min(8, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
+		.matches(passwordRules, () => i18n.t(Translation.VALIDATION_PASSWORD_WEAK))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	passwordConfirmation: yup
 		.string()
-		.oneOf([yup.ref('password')], i18n.t(Translation.VALIDATION_PASSWORD_CONFIRMATION))
-		.matches(passwordRules, {
-			message: 'Пароль должен содержать заглавные и строчные буквы, цифры и специальные символы',
-		})
+		.oneOf([yup.ref('password')], () => i18n.t(Translation.VALIDATION_PASSWORD_SIMILAR))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	isChecked: yup
+	privacyConsent: yup
 		.boolean()
-		.oneOf([true], i18n.t(Translation.VALIDATION_CHECKBOX_ONEOF))
-		.required(i18n.t(Translation.VALIDATION_CHECKBOX_REQUIRED)),
+		.oneOf([true], () => i18n.t(Translation.VALIDATION_PRIVACY))
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	offerConsent: yup
+		.boolean()
+		.oneOf([true], () => i18n.t(Translation.VALIDATION_PRIVACY))
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	adConsent: yup
+		.boolean()
+		.oneOf([true], () => i18n.t(Translation.VALIDATION_PRIVACY))
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });

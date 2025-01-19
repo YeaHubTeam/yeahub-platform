@@ -1,10 +1,39 @@
 .text {
   white-space: pre-wrap;
+  font-family: var(--font-family);
 }
 
 .text code {
   padding: 1.5px 5px;
   border-radius: 12px;
-  background: linear-gradient(180deg, var(--background-gradient-code-start) 0%, var(--background-gradient-code-end) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--background-gradient-code-start) 0%,
+    var(--background-gradient-code-end) 100%
+  );
+}
+
+.text pre {
+  padding: 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background-color: var(--color-black-30);
+  white-space: pre;
+}
+
+.text pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.text pre::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: var(--color-black-200);
+}
+
+.text pre::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background-color: var(--color-black-50);
 }
 

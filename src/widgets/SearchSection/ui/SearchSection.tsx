@@ -1,33 +1,34 @@
 import { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Input, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import PlusSvg from '@/shared/assets/icons/Plus.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer/ui/FiltersDrawer';
-
-import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
+import { Input } from '@/shared/ui/Input';
 
 import styles from './SearchSection.module.css';
 
 interface SearchSectionProps {
 	to?: string;
-	onRemove?: () => void;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
+	renderRemoveButton?: () => React.ReactNode;
+	renderFilter?: () => React.ReactNode;
 }
 
 export const SearchSection = ({
-	to = '/',
-	onRemove,
+	to,
 	onSearch,
 	showRemoveButton,
+	renderRemoveButton,
+	renderFilter,
 }: SearchSectionProps) => {
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		onSearch?.(e.target.value);
@@ -36,28 +37,22 @@ export const SearchSection = ({
 	return (
 		<Card className={styles.card}>
 			<section className={styles.section}>
-				<FiltersDrawer>
-					<QuestionsFilterSet />
-				</FiltersDrawer>
+				{!!renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 				<Input
 					onChange={handleSearch}
 					className={styles.input}
-					preffix={<Icon icon={'search'} className={styles['search-svg']} />}
+					prefix={<Icon icon={'search'} className={styles['search-svg']} />}
 					placeholder={t(Translation.SEARCH)}
 				/>
-
-				{showRemoveButton && (
-					<Button onClick={onRemove} variant="destructive-tertiary">
-						{t(Translation.REMOVE_SELECTED)}
+				{showRemoveButton && renderRemoveButton && renderRemoveButton()}
+				{to && (
+					<Button>
+						<NavLink className={styles.link} to={to}>
+							{t(Translation.CREATE)}
+							<PlusSvg className={styles['plus-svg']} />
+						</NavLink>
 					</Button>
 				)}
-
-				<Button>
-					<NavLink className={styles.link} to={to}>
-						{t(Translation.CREATE)}
-						<PlusSvg className={styles['plus-svg']} />
-					</NavLink>
-				</Button>
 			</section>
 		</Card>
 	);

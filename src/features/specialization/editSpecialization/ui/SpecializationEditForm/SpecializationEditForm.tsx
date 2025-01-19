@@ -3,10 +3,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Specialization, SpecializationForm } from '@/entities/specialization';
 
 import { specializationEditSchema } from '../../model/lib/validation/specializationEditSchema';
+import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
 import { SpecializationEditFormHeader } from '../SpecializationEditFormHeader/SpecializationEditFormHeader';
 
 import styles from './SpecializationEditForm.module.css';
@@ -16,20 +18,24 @@ interface SpecializationEditFormProps {
 }
 
 export const SpecializationEditForm = ({ specialization }: SpecializationEditFormProps) => {
-	const methods = useForm<Specialization>({
+	const methods = useForm<EditSpecializationFormValues>({
 		resolver: yupResolver(specializationEditSchema),
 		mode: 'onTouched',
 		defaultValues: { ...specialization },
 	});
 
+	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
+
 	return (
 		<FormProvider {...methods}>
-			<Flex componentType="main" direction="column" gap="24">
-				<Card className={styles.content}>
-					<SpecializationEditFormHeader />
-					<SpecializationForm />
-				</Card>
-			</Flex>
+			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
+				<Flex componentType="main" direction="column" gap="24">
+					<Card className={styles.content}>
+						<SpecializationEditFormHeader />
+						<SpecializationForm />
+					</Card>
+				</Flex>
+			</LeavingPageBlocker>
 		</FormProvider>
 	);
 };

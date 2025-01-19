@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { ActionsButton } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
@@ -13,19 +13,28 @@ interface ResetQuestionStudyProgressProps {
 	profileId: number | string;
 	questionId: number | string;
 	isSmallIcon?: boolean;
+	isDisabled: boolean;
+	isPopover?: boolean;
+	variant?: 'tertiary' | 'link-gray';
+	onSuccess?: () => void;
 }
 
 export const ResetQuestionStudyProgressButton = ({
 	profileId,
 	questionId,
 	isSmallIcon,
+	isDisabled,
+	isPopover = false,
+	variant = 'tertiary',
+	onSuccess,
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
-	const { t } = useI18nHelpers(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const handleClick = async () => {
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
+			onSuccess?.();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error('Не удалось сбросить прогресс вопроса:', error);
@@ -36,20 +45,13 @@ export const ResetQuestionStudyProgressButton = ({
 
 	return (
 		<Button
-			className={styles.btn}
-			preffix={
-				<Icon
-					className={styles.icon}
-					icon="clockCounterClockwise"
-					key={'clockCounterClockwise'}
-					size={iconSize}
-				/>
-			}
-			variant="tertiary"
+			className={isPopover ? styles.button : ''}
+			preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} size={iconSize} />}
+			variant={variant}
 			onClick={handleClick}
-			disabled={isLoading}
+			disabled={isLoading || isDisabled}
 		>
-			{t(ActionsButton.REPEAT)}
+			{t(Questions.REPEAT)}
 		</Button>
 	);
 };

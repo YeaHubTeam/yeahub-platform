@@ -3,28 +3,34 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { SkillForm } from '@/entities/skill';
 
 import { skillCreateSchema } from '../../model/lib/validation/skillCreateSchema';
-import { SkillCreateSchema } from '../../model/types/skillCreateTypes';
+import { CreateSkillFormValues } from '../../model/types/skillCreateTypes';
 import { SkillCreateFormHeader } from '../SkillCreateFormHeader/SkillCreateFormHeader';
 
 import styles from './SkillCreateForm.module.css';
 
 export const SkillCreateForm = () => {
-	const methods = useForm<SkillCreateSchema>({
+	const methods = useForm<CreateSkillFormValues>({
 		resolver: yupResolver(skillCreateSchema),
 		mode: 'onTouched',
 	});
+
+	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
+
 	return (
 		<FormProvider {...methods}>
-			<Flex componentType="main" direction="column" gap="24">
-				<Card className={styles.content}>
+			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
+				<Flex componentType="main" direction="column" gap="24">
 					<SkillCreateFormHeader />
-					<SkillForm />
-				</Card>
-			</Flex>
+					<Card className={styles.content}>
+						<SkillForm />
+					</Card>
+				</Flex>
+			</LeavingPageBlocker>
 		</FormProvider>
 	);
 };

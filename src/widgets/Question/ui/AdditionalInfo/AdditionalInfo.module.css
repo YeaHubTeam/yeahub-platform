@@ -9,6 +9,8 @@
 .title {
   margin-bottom: 16px;
   color: var(--text-color-light);
+  line-height: 19px;
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
 }
 
@@ -16,6 +18,7 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: 10px;
+  list-style-type: none;
 }
 
 .param-wrapper > li:first-child {
@@ -37,5 +40,21 @@
 }
 
 .keywords-wrapper a {
-  color: var(--color-purple-700);
+  color: var(--text-color-link-active);
+}
+
+.author {
+  margin-top: 15px;
+  margin-bottom: -10px;
+  font-size: var(--font-size-p-s);
+}
+
+.author p {
+  justify-content: end;
+}
+
+
+.author a {
+  pointer-events: none;
+  color: var(--text-color-link-active);
 }

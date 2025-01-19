@@ -1,7 +1,8 @@
 .list {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  height: 27px;
 }
 
 .item {
@@ -11,11 +12,11 @@
 }
 
 @media (width <= 768px) {
-  .item:not(:last-child) {
+  .item:not(:nth-last-child(2)) {
     display: none;
   }
 
-  .item:last-child .icon {
+  .item:nth-last-child(2) .icon {
     transform: rotate(180deg);
   }
 }

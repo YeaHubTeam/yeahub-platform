@@ -1,17 +1,10 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
 }
 
 .container > div {
   height: auto;
-}
-
-.slider-navigation {
-  min-width: 170px;
 }
 
 .progress-bar {
@@ -35,9 +28,6 @@
 
 .question {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .end-button {
@@ -95,6 +85,10 @@
 }
 
 @media (width <= 768px) {
+  .container > div {
+    padding: 16px;
+  }
+
   .question {
     gap: 16px;
   }

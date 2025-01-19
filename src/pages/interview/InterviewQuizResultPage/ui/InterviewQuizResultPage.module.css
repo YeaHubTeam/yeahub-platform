@@ -1,0 +1,34 @@
+.questions {
+  width: calc(100% - 20px - 455px);;
+}
+
+.quiz {
+  width: 455px;
+}
+
+.questions-list {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (width < 1024px) {
+  .questions,
+  .quiz,
+  .questions-list {
+    padding: 16px;
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (width < 768px) {
+  .container {
+    gap: 16px;
+  }
+}

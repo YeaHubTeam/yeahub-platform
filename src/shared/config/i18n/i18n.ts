@@ -8,21 +8,24 @@ type Langs = 'en' | 'ru';
 const supportedLngs: Langs[] = ['en', 'ru'];
 
 export const i18Namespace = {
-	translation: 'translation',
 	auth: 'auth',
-	interview: 'interview',
+	docs: 'docs',
+	interviewHistory: 'interviewHistory',
 	interviewQuiz: 'interviewQuiz',
+	interviewQuizCreate: 'interviewQuizCreate',
 	interviewQuizResult: 'interviewQuizResult',
 	interviewStatistics: 'interviewStatistics',
-	mainPage: 'mainPage',
+	landing: 'landing',
+	main: 'main',
 	profile: 'profile',
 	questions: 'questions',
-	interviewHistory: 'interviewHistory',
-	specialization: 'specialization',
-	validation: 'validation',
 	skill: 'skill',
-	a11y: 'a11y',
-	landing: 'landing',
+	specialization: 'specialization',
+	subscription: 'subscription',
+	subscriptionCard: 'subscriptionCard',
+	translation: 'translation',
+	user: 'user',
+	collection: 'collection',
 };
 
 i18n

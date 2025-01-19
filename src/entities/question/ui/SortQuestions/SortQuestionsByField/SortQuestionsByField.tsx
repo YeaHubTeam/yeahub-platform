@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface SortQuestionsByFieldProps {
@@ -11,14 +13,14 @@ export const SortQuestionsByField = ({
 	changeSortBy,
 	selectedOrderBy,
 }: SortQuestionsByFieldProps) => {
-	const { t } = useI18nHelpers(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const field = [
-		{ id: 'title', title: t('name') },
-		{ id: 'description', title: t('description.title') },
-		{ id: 'complexity', title: t('field.complexity') },
-		{ id: 'rate', title: t('field.rate') },
-		{ id: 'keywords', title: t('keywords') },
+		{ id: 'title', title: t(Questions.TITLE_SHORT) },
+		{ id: 'description', title: t(Questions.DESCRIPTION_TITLE) },
+		{ id: 'complexity', title: t(Questions.COMPLEXITY_TITLE) },
+		{ id: 'rate', title: t(Questions.RATE_TITLE) },
+		{ id: 'keywords', title: t(Questions.KEYWORDS_TITLE) },
 	];
 
 	const handleSort = (id: string) => {
@@ -31,5 +33,7 @@ export const SortQuestionsByField = ({
 		active: selectedOrderBy === item.id,
 	}));
 
-	return <BaseFilterSection data={preparedData} title={t('field.title')} onClick={handleSort} />;
+	return (
+		<BaseFilterSection data={preparedData} title={t(Questions.SORT_FIELD)} onClick={handleSort} />
+	);
 };

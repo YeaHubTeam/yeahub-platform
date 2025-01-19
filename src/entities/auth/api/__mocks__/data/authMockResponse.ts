@@ -17,6 +17,6 @@ export const authMockResponse: AuthResponse = {
 		createdAt: '',
 		updatedAt: '',
 		userRoles: [{ id: 4, name: 'admin', permissions: [] }],
-		isEmailVerified: false,
+		isEmailVerified: true,
 	},
 };

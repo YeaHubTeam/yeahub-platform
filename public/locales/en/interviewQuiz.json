@@ -1,0 +1,21 @@
+{
+  "title": "Interview questions",
+  "preview.title": "Interview preparation",
+  "continue.quiz": "Continue interview",
+  "progress.bar.title": "Quiz question {{fromQuestionNumber}} of {{toQuestionNumber}}",
+  "start.quiz": {
+    "title": "Explore a new profession and become part of our friendly team, interview and improve your knowledge in practice.",
+    "description": "With us you can learn a new IT profession that will allow you to become part of our large community and find your dream profession, with us you can fully immerse yourself in the profession and become a full-fledged specialist.",
+    "link": "Start interview"
+  },
+  "complete": "Complete",
+  "next": "Next",
+  "a11y.next": "Next interview question",
+  "a11y.prev": "Previous interview question",
+  "answer": {
+    "hide": "Hide answer",
+    "show": "Show answer",
+    "do.not.know": "Do not know",
+    "know": "Know"
+  }
+}

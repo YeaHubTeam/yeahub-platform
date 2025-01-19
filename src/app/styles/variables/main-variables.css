@@ -1,9 +1,12 @@
 :root {
   /* widths */
   --container-width: 1216px;
+  --container-width-lg: 960px; 
   --container-width-tablet: 708px;
+  --container-width-sm: 540px;
   --container-width-mobile: 100%;
   --grid-template-columns: 332px 244px 244px;
+  --header-height: 76px;
 
   /* paddings */
   --container-padding: 0;
@@ -20,8 +23,10 @@
   --font-size-p-s: 14px;
   --font-size-p-m: 16px;
   --font-size-p-l: 18px;
+  --font-size-h-xxs: 14px;
   --font-size-h-xs: 20px;
   --font-size-h-s: 24px;
+  --font-size-large-30: 30px;
   --font-size-large-34: 34px;
   --font-size-h-m: 36px;
   --font-size-h-l: 40px;

@@ -1,26 +1,28 @@
 /* stylelint-disable selector-class-pattern */
+.popover-calendar button:focus {
+  border: none;
+}
+
 .calendar-block {
   margin-bottom: auto;
-  width: 360px;
-  min-width: 360px;
   height: auto;
-
+  
   .react-calendar {
     margin: auto;
     border: none;
     font-family: var(--font-family);
   }
-
+  
   .react-calendar__navigation {
     margin-bottom: 8px;
     height: 56px;
     border-bottom: 1px solid var(--border-color);
-
+    
     button {
       padding-bottom: 23px;
       color: var(--text-color-bright);
       font-size: var(--font-size-p-l);
-
+      
       &::first-letter {
         text-transform: capitalize;
       }
@@ -28,7 +30,7 @@
       &:disabled {
         background-color: var(--background-block);
       }
-
+      
       &:enabled:hover,
       &:enabled:focus {
         background-color: var(--background-block);
@@ -36,6 +38,19 @@
     }
   }
 
+  .drawer {
+    width: 328px;
+  
+    &.drawer-mobile {
+      top: var(--header-height);
+      width: 100%;
+      
+      .calendar-block {
+        width: 100%;
+      }
+    }
+  }
+  
   .react-calendar__month-view__weekdays {
     color: var(--text-color-lightest);
     text-transform: none;
@@ -118,53 +133,47 @@
   }
 }
 
-.mobile-calendar {
+.popover-calendar {
   position: absolute;
-  top: 17px;
+  top: 16px;
   right: 20px;
   display: none;
-  padding: 8px;
-  aspect-ratio: 1;
-  width: 36px;
-  border: 1px solid var(--color-black-200);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-right-color);
   border-radius: 8px;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-
-  & svg {
-    width: 100%;
-    height: 100%;
-  }
 }
 
-@media (width < 1024px) {
-  .calendar-block {
-    display: none;
+.popover-calendar:has(button.active) {
+  border: 1px solid var(--button-border-secondary-focus);
+}
 
-    &.active {
-      display: flex;
-    }
-  }
 
-  .mobile-calendar {
+.popover-calendar-info-wrapper {
+  width: 100%;
+  max-width: 314px;
+}
+
+@media (width < 1280px) {
+  .popover-calendar {
     display: flex;
+  }
+  
+  .additional-info-wrapper {
+    display: none;
   }
 }
 
 @media (width < 480px) {
+  .popover-calendar {
+    top: 10px;
+  }
+
   .calendar-block {
-    display: none;
-    justify-content: center;
-    width: 100%;
-
-    &.active {
-      display: flex;
-    }
+    width: 320px;
+    min-width: 320px;
   }
-
-  .mobile-calendar {
-    top: 9px;
-  }
-
 }

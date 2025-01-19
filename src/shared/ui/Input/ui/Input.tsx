@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import React, { useRef, forwardRef } from 'react';
 
-import Magnifier from '@/shared/assets/icons/Magnifer.svg';
-import { Size, Variant } from '@/shared/ui/Input/model/types/InputTypes';
+import { Size } from '@/shared/ui/Input/model/types/InputTypes';
 
 import styles from './Input.module.css';
 
@@ -15,7 +14,6 @@ interface InputProps extends Omit<React.ComponentPropsWithRef<'input'>, 'size' |
 	placeholder?: string;
 	error?: boolean;
 	label?: string;
-	variant?: Variant;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -29,7 +27,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			placeholder = '',
 			error = false,
 			label = '',
-			variant = 'input',
 			...props
 		},
 		ref,
@@ -42,7 +39,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				[styles['wrapper-disabled']]: disabled,
 				[styles['wrapper-error']]: error,
 				[styles[`wrapper-${size.toLowerCase()}`]]: size,
-				[styles['dropdown']]: variant === 'dropdown',
 			},
 			className,
 		);
@@ -75,23 +71,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				role="button"
 				tabIndex={disabled ? -1 : 0}
 			>
-				<span className={styles['input-prefix']}>
-					{prefix || <Magnifier className={styles.prefix} />}
+				<span
+					className={classNames({
+						[styles['without-prefix']]: !prefix,
+						[styles['input-prefix']]: !!prefix,
+					})}
+				>
+					{prefix}
 				</span>
-
 				<input
 					ref={setRef}
 					placeholder={placeholder}
-					className={variant === 'input' ? styles.input : `${styles.input} ${styles['dropdown']}`}
 					type="text"
+					className={styles.input}
 					disabled={disabled}
 					aria-invalid={error}
 					aria-labelledby={label}
 					aria-label={label}
-					readOnly={variant === 'dropdown'}
 					{...props}
 				/>
-
 				{suffix && <span className={styles['input-suffix']}>{suffix}</span>}
 			</div>
 		);

@@ -2,9 +2,10 @@ import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import { Cropper, ReactCropperElement } from 'react-cropper';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
 import { Loader } from '@/shared/ui/Loader';
 import { Modal } from '@/shared/ui/Modal';
 
@@ -45,6 +46,8 @@ export const ImageLoader = ({
 	initialSrc: src,
 	isLoading,
 }: ImageLoaderProps) => {
+	const { t } = useTranslation(i18Namespace.profile);
+
 	const [file, setFile] = useState<string | ArrayBuffer | null>(null);
 	const [deleted, setDeleted] = useState(false);
 	const [croppedArea, setCroppedArea] = useState<null | string>(null);
@@ -60,8 +63,6 @@ export const ImageLoader = ({
 					.replace('data:image/png;base64,', ''),
 			);
 	};
-
-	const { t } = useI18nHelpers();
 
 	const uploaderRef = useRef<HTMLDivElement>(null);
 
@@ -96,7 +97,7 @@ export const ImageLoader = ({
 					(imageReader.width < minResolution.width || imageReader.height < minResolution.height)
 				) {
 					toast(
-						t(Translation.IMAGELOADER_MINRES, {
+						t(Profile.PHOTO_MODAL_MIN_RES, {
 							minRes: `${minResolution.width}x${minResolution.height}`,
 						}),
 					);
@@ -108,7 +109,7 @@ export const ImageLoader = ({
 					(imageReader.width > maxResolution.width || imageReader.height > maxResolution.height)
 				) {
 					toast(
-						t(Translation.IMAGELOADER_MAXRES, {
+						t(Profile.PHOTO_MODAL_MAX_RES, {
 							maxRes: `${maxResolution.width}x${maxResolution.height}`,
 						}),
 					);
@@ -127,7 +128,7 @@ export const ImageLoader = ({
 
 	return (
 		<div className={styles.container}>
-			<Flex className={styles['profile-picture-wrapper']} gap="16">
+			<Flex className={styles['profile-picture-wrapper']} gap="40">
 				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
 					{isLoading && (
 						<Loader
@@ -146,7 +147,7 @@ export const ImageLoader = ({
 					)}
 					{!deleted && src && (
 						<button type="button" className={styles['delete-avatar-btn']} onClick={removeImage}>
-							{t(Translation.IMAGELOADER_DELETE)}
+							{t(Profile.PHOTO_DELETE)}
 						</button>
 					)}
 				</Flex>
@@ -154,7 +155,7 @@ export const ImageLoader = ({
 					<FileLoader
 						maxFileMBSize={maxMBSize}
 						accept={Accept.IMAGE}
-						fileTypeText={t('fileLoader.fileTypes.photo')}
+						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, { ns: i18Namespace.translation })}
 						extensionsText={Extension.IMAGE}
 						onChange={handleUpload}
 					/>
@@ -163,18 +164,18 @@ export const ImageLoader = ({
 
 			<Modal
 				isOpen={Boolean(cropper && file)}
-				title={t(Translation.IMAGELOADER_CROPPERTITLE)}
+				title={t(Profile.PHOTO_MODAL_TITLE)}
 				onClose={closeModal}
-				buttonPrimaryText={t(Translation.IMAGELOADER_SAVE)}
-				buttonOutlineText={t(Translation.IMAGELOADER_CHANGE)}
+				buttonPrimaryText={t(Profile.PHOTO_MODAL_SUBMIT)}
+				buttonOutlineText={t(Profile.PHOTO_MODAL_CLICK_SECONDARY)}
 				buttonPrimaryClick={submitImage}
 				buttonOutlineClick={replaceImage}
 			>
-				<Flex direction="column" gap="8" className={styles.modal}>
+				<Flex direction="column" gap="8">
 					{!!cropper && (
 						<Flex direction="column" gap="8" className={styles['cropper-info']}>
-							<p className={styles['description-title']}>{cropper?.title}</p>
-							<p className={styles['description']}>{cropper?.description}</p>
+							<p>{cropper?.title}</p>
+							<p>{cropper?.description}</p>
 						</Flex>
 					)}
 					<Flex gap="16" justify="center">
@@ -192,12 +193,12 @@ export const ImageLoader = ({
 							<img
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['large-preview'])}
-								alt={t(Profile.PHOTO_PREVIEW_LARGE)}
+								alt={t(Profile.PHOTO_MODAL_LARGE_PREVIEW)}
 							/>
 							<img
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['small-preview'])}
-								alt={t(Profile.PHOTO_PREVIEW_SMALL)}
+								alt={t(Profile.PHOTO_MODAL_SMALL_PREVIEW)}
 							/>
 						</Flex>
 					</Flex>

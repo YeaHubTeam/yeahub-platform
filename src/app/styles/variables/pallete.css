@@ -27,6 +27,7 @@
   --color-yellow-500: #FFE7AD;
   --color-yellow-400: #FFF3D6;
   --color-yellow-300: #FFFCF2;
+  --color-yellow-200: #FFF6E2;
   --color-green-900: #17663A;
   --color-green-800: #1E874C;
   --color-green-750: #008616;
@@ -56,4 +57,5 @@
   --color-white-900: #FFF;
   --color-label-bg: rgb(209 209 209 / 27%);
   --color-code-gradient-end: #E8DAFF;
+  --color-border:  rgb(227 227 227 / 75%);
 }

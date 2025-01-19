@@ -50,7 +50,7 @@
   fill: var(--button-text-color-secondary-active)
 }
 
-@media (width <= 480px) {
+@media (width < 1024px) {
   .auth-btns {
     display: none;
   }

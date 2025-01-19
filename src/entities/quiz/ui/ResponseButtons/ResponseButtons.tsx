@@ -1,10 +1,12 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { useI18nHelpers } from '@/shared/hooks/useI18nHelpers';
+import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 
@@ -17,11 +19,11 @@ interface ResponseButtonsProps {
 }
 
 export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
-	const { t } = useI18nHelpers(i18Namespace.interviewQuiz);
+	const { t } = useTranslation(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();
 
 	return (
-		<div className={`${styles.wrapper} ${className}`}>
+		<Flex gap="8" className={classNames(styles.wrapper, className)}>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'UNKNOWN' })}
 				onClick={() => changeAnswer('UNKNOWN')}
@@ -29,7 +31,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsDown" icon="thumbsDown" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && <span className={styles['action-button']}>{t('buttons.doNotKnow')}</span>}
+				{!isMobile && <span>{t(InterviewQuiz.ANSWER_DO_NOT_KNOW)}</span>}
 			</Button>
 			<Button
 				className={classNames(styles.btn, { [styles['active-btn']]: answer === 'KNOWN' })}
@@ -38,8 +40,8 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 				preffix={<Icon key="thumbsUp" icon="thumbsUp" size={isMobile ? 32 : 24} />}
 				fullWidth={isMobile}
 			>
-				{!isMobile && <span className={styles['action-button']}>{t('buttons.iKnow')}</span>}
+				{!isMobile && <span>{t(InterviewQuiz.ANSWER_KNOW)}</span>}
 			</Button>
-		</div>
+		</Flex>
 	);
 };

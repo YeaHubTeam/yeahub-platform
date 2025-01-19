@@ -38,6 +38,11 @@
   font-size: var(--font-size-xs);
 }
 
+.svg-wrapper {
+  width: 32px;
+  height: 32px;
+}
+
 .file-input {
   opacity: 0;
   position: relative;
@@ -45,4 +50,10 @@
   width: 0;
   height: 0;
   line-height: 0;
+}
+
+@media (width <= 360px) {
+  .file-upload-container {
+    padding: 8px 24px;
+  }
 }
