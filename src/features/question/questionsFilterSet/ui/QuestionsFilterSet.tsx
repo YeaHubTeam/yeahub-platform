@@ -3,16 +3,22 @@ import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
+	ChooseSpecialization,
 	QuestionsSorter,
 	RateFilterSection,
 	SortQuestionsByField,
 } from '@/entities/question';
 
+const MAX_LIMIT_CATEGORIES = 5;
+const DEFAULT_SPECIALIZATION = 11;
+
 export const QuestionsFilterSet = () => {
 	const {
-		filter: { skills, complexity, rate, orderBy, order },
+		filter: { skills, complexity, rate, orderBy, order, specialization },
 		handleFilterChange,
 	} = useQueryFilter();
+
+	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
 
 	const onChangeSkills = (skills: number[] | undefined) => {
 		handleFilterChange({ skills });
@@ -26,6 +32,10 @@ export const QuestionsFilterSet = () => {
 		handleFilterChange({ rate });
 	};
 
+	const onChangeSpecialization = (value: number | undefined) => {
+		handleFilterChange({ specialization: value, skills: undefined });
+	};
+
 	const changeSortBy = (orderBy: string) => {
 		handleFilterChange({ orderBy });
 	};
@@ -36,7 +46,16 @@ export const QuestionsFilterSet = () => {
 
 	return (
 		<>
-			<ChooseQuestionsCategories selectedSkills={skills} onChangeSkills={onChangeSkills} />
+			<ChooseSpecialization
+				selectedSpecialization={selectedSpecialization}
+				onChangeSpecialization={onChangeSpecialization}
+				specializationLimit={MAX_LIMIT_CATEGORIES}
+			/>
+			<ChooseQuestionsCategories
+				selectedSkills={skills}
+				onChangeSkills={onChangeSkills}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
+			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
 				selectedComplexity={complexity}

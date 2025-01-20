@@ -42,6 +42,10 @@
   font-family: var(--font-family);
 }
 
+.link {
+  justify-content: end;
+}
+
 @media (width <= 360px) {
   .header {
     margin-bottom: 16px;

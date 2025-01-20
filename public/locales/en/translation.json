@@ -10,6 +10,8 @@
   "hello": "Hello {{name}}!",
   "save": "Save",
   "cancel": "Cancel",
+  "expand": "expand",
+  "collapse": "collapse",
   "logo": "Logo",
   "avatar": "Avatar",
   "logout": "Log out",
@@ -27,6 +29,7 @@
       "profile": "My profile",
       "specializations": "Specializations",
       "users": "Users",
+      "collections": "Collections",
       "education": {
         "title": "Training",
         "interview": "Interview"

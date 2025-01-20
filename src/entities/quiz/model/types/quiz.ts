@@ -49,6 +49,30 @@ export interface ProgressByCategoriesData {
 	value: number;
 }
 
+export interface ProfileQuizzesStat {
+	quizzesCount: number;
+	maxQuizResult: number;
+	minQuizResult: number;
+	avgQuizResult: number;
+}
+export interface ProfileQuestionsStat {
+	uniqueQuestionsCount: number;
+	learnedQuestionsCount: number;
+	unlearnedQuestionsCount: number;
+	inProgressQuestionsCount: number;
+}
+
+export interface ProfileSkillsStat {
+	fullSkillsQuestionsMap: {
+		skill: string;
+		count: number;
+	}[];
+	learnedSkillsQuestionsMap: {
+		skill: string;
+		count: number;
+	}[];
+}
+
 export interface CreateNewQuizParamsRequest {
 	profileId: string;
 	skills?: number[];
@@ -84,26 +108,7 @@ export interface GetQuizByProfileIdParamsRequest {
 }
 
 export interface GetProfileQuizStatsResponse {
-	quizzesStat: {
-		quizzesCount: number;
-		maxQuizResult: number;
-		minQuizResult: number;
-		avgQuizResult: number;
-	};
-	questionsStat: {
-		uniqueQuestionsCount: number;
-		learnedQuestionsCount: number;
-		unlearnedQuestionsCount: number;
-		inProgressQuestionsCount: number;
-	};
-	skillsStat: {
-		fullSkillsQuestionsMap: {
-			skill: string;
-			count: number;
-		}[];
-		learnedSkillsQuestionsMap: {
-			skill: string;
-			count: number;
-		}[];
-	};
+	quizzesStat: ProfileQuizzesStat;
+	questionsStat: ProfileQuestionsStat;
+	skillsStat: ProfileSkillsStat;
 }

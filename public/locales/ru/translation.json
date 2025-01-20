@@ -10,6 +10,8 @@
   "hello": "Привет {{name}}!",
   "save": "Сохранить",
   "cancel": "Отменить",
+  "expand": "Развернуть",
+  "collapse": "Свернуть",
   "logo": "Логотип",
   "avatar": "Аватар",
   "logout": "Выйти",
@@ -27,6 +29,7 @@
       "profile": "Мой профиль",
       "specializations": "Специализации",
       "users": "Пользователи",
+      "collections": "Коллекции",
       "education": {
         "title": "Обучение",
         "interview": "Собеседование"

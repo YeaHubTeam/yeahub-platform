@@ -1,65 +1,34 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.questions {
+  width: calc(100% - 20px - 455px);;
 }
 
-.wrapper {
-  display: flex;
-  gap: 20px;
+.quiz {
+  width: 455px;
 }
 
-.results {
-  flex-grow: 1;
-}
-
-.container > div {
-  height: auto;
-}
-
-.stats {
-  flex-grow: 1;
-}
-
-.block {
-  width: 410px;
-}
-
-.passed {
+.questions-list {
   display: flex;
   flex: 1;
   justify-content: center;
+  width: 100%;
 }
 
-@media (width <= 1024px) {
-  .results,
-  .block,
-  .passed {
+@media (width < 1024px) {
+  .questions,
+  .quiz,
+  .questions-list {
     padding: 16px;
+    width: 100%;
   }
 
   .container {
     flex-direction: column;
     gap: 24px;
   }
-
-  .block {
-    width: 100%;
-  }
-
-  .wrapper {
-    flex-direction: column;
-    gap: 24px;
-  }
 }
 
-@media (width <= 768px) {
-  .result {
-    gap: 24px;
-  }
-
-  .container,
-  .wrapper {
+@media (width < 768px) {
+  .container {
     gap: 16px;
   }
 }

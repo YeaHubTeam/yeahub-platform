@@ -1,0 +1,43 @@
+.normal-hight {
+  height: auto;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 16px;
+  line-height: 19px;
+  font-size: var(--font-size-p-m);
+}
+
+.param-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  list-style-type: none;
+}
+
+.param-wrapper > li:first-child {
+  margin-right: 16px;
+}
+
+.chip {
+  cursor: pointer;
+  padding: 12px 10px;
+}
+
+.chip:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+.keywords-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.keywords-wrapper a {
+  color: var(--text-color-link-active);
+}

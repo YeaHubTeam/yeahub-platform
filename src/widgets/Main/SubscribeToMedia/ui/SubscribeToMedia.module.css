@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.yeahub-container {
+  max-width: 210px;
+}
+
+.yeahub-community-container {
+  max-width: 330px;
+}
+
+.icon {
+  min-width: 20px;
+  min-height: 20px;
+  color: var(--color-purple-700)
+}
+
+.media-wrapper p {
+  display: inline;
+}
+
+.card {
+  width: 100%;
+  min-width: 380px;
+  max-width: 455px;
+}
+
+@media (width < 768px) {
+  .yeahub-container,
+  .yeahub-community-container {
+    max-width: none;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 328px;
+    max-width: none;
+  }
+}

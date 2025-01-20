@@ -2,6 +2,7 @@
 import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 
+import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
@@ -23,4 +24,5 @@ export interface State {
 	skillsPage: SkillsPageState;
 	usersPage: UsersPageState;
 	profile: ProfileState;
+	collectionsPage: CollectionsPageState;
 }

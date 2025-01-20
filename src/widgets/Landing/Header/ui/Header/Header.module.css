@@ -2,9 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0 76px;
+  margin: 16px 0 0;
   padding: 10px 0;
   width: 100%;
+}
+
+.links {
+  margin-left: 42px;
 }
 
 .navigation {
@@ -17,15 +21,20 @@
 
 @media screen and (width <=1439px) {
   .header {
-    margin-bottom: 68px;
     padding: 0;
+  }
+}
+
+@media (width <= 767px) {
+  .links {
+    margin-left: 16px;
   }
 }
 
 @media screen and (width <= 576px) {
   .header {
     margin-top: 0;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     padding: 16px 16px 0;
   }
 }

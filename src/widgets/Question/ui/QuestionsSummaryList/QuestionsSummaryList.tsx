@@ -7,15 +7,20 @@ import { Accordion } from '@/shared/ui/Accordion';
 import { Question } from '@/entities/question';
 
 import { QuestionPreview } from '../QuestionPreview/QuestionPreview';
+import { DisplayMode } from '../QuestionsFilterPanel/model/types';
 
 import styles from './QuestionsSummaryList.module.css';
 
 interface QuestionsListProps {
 	questions?: Question[];
 	profileId?: string;
+	displayMode?: DisplayMode;
 }
 
-export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
+export const QuestionsSummaryList = ({
+	questions,
+	displayMode = 'popover',
+}: QuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
@@ -26,7 +31,7 @@ export const QuestionsSummaryList = ({ questions }: QuestionsListProps) => {
 			{questions &&
 				questions.map((question) => (
 					<Accordion key={question.id} title={question.title}>
-						<QuestionPreview question={question} />
+						<QuestionPreview question={question} displayMode={displayMode} />
 					</Accordion>
 				))}
 		</>

@@ -2,7 +2,11 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
 import { userApiUrls } from '../model/constants/userConstants';
-import { GetUsersListParamsRequest, GetUsersListResponse } from '../model/types/user';
+import {
+	GetUserRolesListResponse,
+	GetUsersListParamsRequest,
+	GetUsersListResponse,
+} from '../model/types/user';
 
 const userApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -13,7 +17,13 @@ const userApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.USERS],
 		}),
+		getUserRolesList: build.query<GetUserRolesListResponse, void>({
+			query: () => ({
+				url: userApiUrls.getUserRolesList,
+			}),
+			providesTags: [ApiTags.ROLES],
+		}),
 	}),
 });
 
-export const { useGetUsersListQuery } = userApi;
+export const { useGetUsersListQuery, useGetUserRolesListQuery } = userApi;

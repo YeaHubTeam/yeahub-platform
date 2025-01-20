@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-  grid-template-rows: 76px 1fr;
+  grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: auto 1fr;
   overflow: hidden;
   background-color: var(--background-app);
@@ -22,7 +22,7 @@
   align-items: center;
   gap: 24px;
   padding: 24px 20px;
-  height: calc(100vh - 76px);
+  height: calc(100vh - var(--header-height));
   max-height: 100%;
   overflow-y: scroll;
 }
@@ -40,8 +40,13 @@
   width: 280px;
 }
 
-@media (width <= 480px) {
+@media (width < 1024px) { 
   .main {
     padding: 16px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
   }
 }

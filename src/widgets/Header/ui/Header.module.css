@@ -17,13 +17,14 @@
   display: none; 
 }
 
-@media (width <= 768px) {
+@media (width < 1024px) {
   .burger {
     display: block;
   }
 
   .header {
     justify-content: space-between;
+    padding: 15px 20px;
   }
 	
   .logo {
@@ -31,7 +32,14 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <= 768px) {
+  .header {
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+}
+
+@media (width < 480px) {
   .header {
     border-bottom: 1px solid transparent;
   }

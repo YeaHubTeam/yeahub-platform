@@ -1,0 +1,38 @@
+.questions {
+  align-self: start;
+  width: calc(50% - 10px);
+}
+
+.list {
+  margin: 0;
+  padding: 24px;
+  list-style: none;
+}
+
+.no-questions {
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+}
+
+@media (width < 1280px) {
+  .questions {
+    width: 100%;
+  }
+
+  .list {
+    gap: 8px;	
+    padding: 16px;
+  }
+}
+
+@media (width < 480px) {
+  .questions {
+    gap: 16px;
+  }
+
+  .list {
+    gap: 20px;	
+    padding: 14px;
+  }
+}

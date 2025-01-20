@@ -3,7 +3,6 @@
   grid-template-rows: repeat(2, auto);
   grid-template-columns: 1fr 562px;
   gap: 25px;
-  margin-bottom: 130px;
   padding: 40px 0 31px 40px;
   border-radius: 24px;
   background-color: var(--background-block);
@@ -120,7 +119,6 @@ ul {
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr;
     gap: 21px 0;
-    margin-bottom: 80px;
     padding: 40px 40px 8px;
   }
 
@@ -166,7 +164,6 @@ ul {
 
 @media screen and (width <= 767px) {
   .progress-block {
-    margin-bottom: 40px;
     padding: 16px;
   }
 
@@ -195,7 +192,6 @@ ul {
 @media screen and (width <= 576px) {
   .progress-block {
     row-gap: 17px;
-    margin-bottom: 37px;
     padding-top: 23px;
   }
 

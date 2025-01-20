@@ -4,10 +4,11 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
@@ -28,8 +29,9 @@ interface QuestionPageProps {
 }
 
 export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
-	const { isMobile, isTablet } = useScreenSize();
+	const { isMobile, isTablet, isMobileS } = useScreenSize();
 	const { questionId } = useParams<{ questionId: string }>();
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const profileId = useAppSelector(getProfileId);
 	const {
@@ -58,37 +60,36 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
-			<Popover
-				body={
-					<div className={styles['popover-additional-wrapper']}>
-						<Card>
-							{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
-							<AdditionalInfo
-								className={styles['additional-info-wrapper']}
-								rate={question.rate}
-								keywords={question.keywords}
-								complexity={question.complexity}
-								questionSkills={question.questionSkills}
-								authorFullName={authorFullName}
-							/>
-						</Card>
-					</div>
-				}
+			<IconButton
+				className={classNames({ active: isOpen })}
+				aria-label="go to additional info"
+				form="square"
+				icon={<PopoverIcon />}
+				size="S"
+				variant="tertiary"
+				onClick={onToggle}
+			/>
+			<Drawer
+				isOpen={isOpen}
+				onClose={onClose}
+				rootName={isMobileS ? 'body' : 'mainLayout'}
+				className={classNames(styles.drawer, {
+					[styles['drawer-mobile']]: isMobileS,
+				})}
+				hasCloseButton
 			>
-				{({ onToggle, isOpen }) => (
-					<div>
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to additional info"
-							form="square"
-							icon={<PopoverIcon />}
-							size="S"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					</div>
-				)}
-			</Popover>
+				<Card>
+					{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
+					<AdditionalInfo
+						className={styles['additional-info-wrapper']}
+						rate={question.rate}
+						keywords={question.keywords}
+						complexity={question.complexity}
+						questionSkills={question.questionSkills}
+						authorFullName={authorFullName}
+					/>
+				</Card>
+			</Drawer>
 		</div>
 	);
 
@@ -149,3 +150,5 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		</>
 	);
 };
+
+export default QuestionPage;

@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Collection from '@/shared/assets/icons/collection.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -18,6 +19,9 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
+import { CollectionPage } from '@/pages/admin/CollectionPage';
+import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -48,6 +52,8 @@ import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/Questio
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
+import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
+import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -140,6 +146,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.collections.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+		icon: Collection,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -161,6 +173,20 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.docs.page,
 						element: <DocsPage />,
+					},
+					{
+						path: ROUTES.questions.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <PublicQuestionsPage />,
+							},
+							{
+								path: ROUTES.questions.detail.route,
+								element: <PublicQuestionPage />,
+							},
+						],
 					},
 				],
 			},
@@ -233,6 +259,24 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.users.route,
 						element: <UsersTablePage />,
+					},
+					{
+						path: ROUTES.admin.collections.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <CollectionsPage />,
+							},
+							{
+								path: ROUTES.admin.collections.create.route,
+								element: <CollectionCreatePage />,
+							},
+							{
+								path: ROUTES.admin.collections.details.route,
+								element: <CollectionPage />,
+							},
+						],
 					},
 					{
 						path: '*',

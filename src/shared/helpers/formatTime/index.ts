@@ -1,1 +1,1 @@
-export { formatTime, getTimeDifference } from './formatTime';
+export { formatTime } from './formatTime';
