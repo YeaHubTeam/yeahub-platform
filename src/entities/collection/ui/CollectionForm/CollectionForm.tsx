@@ -108,14 +108,14 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 								checked={watchPaidOrFree === 'paid'}
 								onChange={() => setValue('paidOrFree', 'paid')}
 							/>
-							{t(Collections.SELECT_PAID)}
+							{t(Collections.TARIFF_PAID)}
 						</Label>
 						<Label className={styles['paid-label']}>
 							<Radio
 								checked={watchPaidOrFree === 'free'}
 								onChange={() => setValue('paidOrFree', 'free')}
 							/>
-							{t(Collections.SELECT_FREE)}
+							{t(Collections.TARIFF_FREE)}
 						</Label>
 					</Flex>
 				</Flex>

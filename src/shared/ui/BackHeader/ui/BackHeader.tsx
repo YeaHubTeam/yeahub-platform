@@ -5,7 +5,7 @@ import { Flex } from '../../Flex';
 
 import styles from './BackHeader.module.css';
 
-type Props = { children: ReactNode };
+type Props = { children?: ReactNode };
 
 export const BackHeader = ({ children }: Props) => {
 	return (

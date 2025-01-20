@@ -1,29 +1,20 @@
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
 import { collectionsMock } from '@/entities/collection';
 
-import { CollectionHeader, CollectionBody, AdditionalInfo } from '@/widgets/Collection';
+import { AdditionalInfo, CollectionBody, CollectionHeader } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
 // import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
-	const { t } = useTranslation(i18Namespace.translation);
-
 	const { isMobile, isTablet } = useScreenSize();
 
 	const collection = collectionsMock[0];
@@ -90,14 +81,7 @@ export const CollectionPage = () => {
 
 	return (
 		<>
-			<BackHeader>
-				<NavLink
-					style={{ marginLeft: 'auto' }}
-					to={route(ROUTES.admin.collections.edit.page, collection.id)}
-				>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
-			</BackHeader>
+			<BackHeader />
 
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>

@@ -22,8 +22,8 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 	const { t } = useTranslation(i18Namespace.collection);
 
 	const collectionTariffs: Record<CollectionTariff, string> = {
-		premium: t(Collections.SELECT_PAID),
-		free: t(Collections.SELECT_FREE),
+		premium: t(Collections.TARIFF_PAID),
+		free: t(Collections.TARIFF_FREE),
 	};
 
 	return (
