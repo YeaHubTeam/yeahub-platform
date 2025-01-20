@@ -1,21 +1,20 @@
-import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
-import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { Select } from '@/shared/ui/Select';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
-import { Skill } from '../../model/types/skill';
 
-type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 'type' | 'value'> & {
-	value: number[];
-	onChange: (value: number[]) => void;
+type SkillSelectProps = Omit<
+	React.ComponentProps<typeof Select>,
+	'options' | 'type' | 'value ' | 'variant' | 'onChange'
+> & {
+	onChange: (value: number[] | number) => void;
 	selectedSPecializations?: number[];
 };
 
-export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
+export const SkillSelect = ({ onChange, selectedSPecializations }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
 	const { data: skills } = useGetSkillsListQuery({
@@ -23,49 +22,13 @@ export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillS
 		specializations: selectedSPecializations,
 	});
 
-	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
-
-	const handleChange = (newValue: string | undefined) => {
-		if (!newValue) return;
-		const updates = [...(selectedSkills || []), +newValue];
-		setSelectedSkills(updates);
-		onChange(updates);
-	};
-
-	const handleDeleteSkill = (id: number) => () => {
-		const updates = selectedSkills.filter((skillId) => skillId !== id);
-		setSelectedSkills(updates);
-		onChange(updates);
-	};
-
-	const options = useMemo(() => {
-		return (skills?.data || [])
-			.map((skill) => ({
-				label: skill.title,
-				value: skill.id.toString(),
-			}))
-			.filter((skill) => !selectedSkills?.includes(+skill.value));
-	}, [skills?.data, selectedSkills]);
-
-	const skillsDictionary = useMemo(() => {
-		return skills?.data?.reduce(
-			(acc, skill) => {
-				acc[skill.id] = skill;
-				return acc;
-			},
-			{} as Record<string, Skill>,
-		);
-	}, [skills]);
-
 	return (
-		<SelectWithChips
-			title={t(t(Skills.SELECT_SELECTED))}
-			options={options}
-			onChange={handleChange}
-			placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
-			selectedItems={selectedSkills}
-			handleDeleteItem={handleDeleteSkill}
-			itemsDictionary={skillsDictionary}
+		<Select
+			title={t(Skills.SELECT_SELECTED)}
+			onChange={onChange}
+			variant="multiple-with-chips"
+			placeholder={skills?.data.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
+			data={skills?.data}
 		/>
 	);
 };

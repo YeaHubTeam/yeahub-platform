@@ -102,9 +102,9 @@ export const QuestionForm = () => {
 					<Text text={t(Questions.SPECIALIZATION_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="specializations" control={control}>
-					{({ onChange, value }) => (
+					{({ onChange }) => (
 						<div className={styles.select}>
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							<SpecializationSelect onChange={onChange} hasMultiple />
 						</div>
 					)}
 				</FormControl>
@@ -115,12 +115,11 @@ export const QuestionForm = () => {
 					<Text text={t(Questions.SKILLS_LABEL)} className={styles.label} />
 				</Flex>
 				<FormControl name="skills" control={control}>
-					{({ onChange, value }) => {
+					{({ onChange }) => {
 						return (
 							<div className={styles.select}>
 								<SkillSelect
 									onChange={onChange}
-									value={value}
 									selectedSPecializations={selectedSpecializations}
 								/>
 							</div>
