@@ -10,6 +10,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { ChooseQuestionsDrawer } from '@/entities/question';
+
 import styles from './CollectionForm.module.css';
 
 export interface CollectionFormProps {
@@ -22,8 +25,10 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 	const { control, setValue, watch } = useFormContext();
 
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 
 	const watchPaidOrFree = watch('paidOrFree', '');
+	const watchQuestions = watch('questions', []);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
@@ -35,6 +40,19 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 	const removeImage = () => {
 		setPreviewImg(null);
 		setValue('imageSrc', null);
+	};
+
+	const handleSelectQuestion = (question: { title: string; id: number }) => {
+		setSelectedQuestions((prev) => [...prev, question]);
+		setValue('questions', [...watchQuestions, question.id]);
+	};
+
+	const handleUnselectQuestion = (id: number) => {
+		setSelectedQuestions((prev) => prev.filter((item) => item.id !== id));
+		setValue(
+			'questions',
+			watchQuestions.filter((questionId: number) => questionId !== id),
+		);
 	};
 
 	return (
@@ -101,6 +119,11 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						</Label>
 					</Flex>
 				</Flex>
+				<ChooseQuestionsDrawer
+					selectedQuestions={selectedQuestions}
+					handleSelectQuestion={handleSelectQuestion}
+					handleUnselectQuestion={handleUnselectQuestion}
+				/>
 			</Flex>
 		</>
 	);
