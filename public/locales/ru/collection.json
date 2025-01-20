@@ -21,9 +21,9 @@
     "paid": "Для участников",
     "free": "Для всех"
   },
-    "access": "Доступ:",
-    "specialization": "Специализация:",
-    "keywords": "Ключевые слова:",
+  "access": "Доступ:",
+  "specialization": "Специализация:",
+  "keywords": "Ключевые слова:",
   "questions": {
     "title": "Вопросы"
   },

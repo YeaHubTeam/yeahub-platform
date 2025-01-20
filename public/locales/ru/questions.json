@@ -68,9 +68,9 @@
     "title": "Ключевые слова",
     "label": "Добавьте ключевые слова в текст"
   },
-    "level": "Уровень:",
-    "skillsAdditional": "Навыки:",
-    "keywordsAdditional": "Ключевые слова:",
+  "level": "Уровень:",
+  "skillsAdditional": "Навыки:",
+  "keywordsAdditional": "Ключевые слова:",
   "image.alt": "Изображение кода для вопроса",
   "more": "Подробнее",
   "learn": "Изучить",
