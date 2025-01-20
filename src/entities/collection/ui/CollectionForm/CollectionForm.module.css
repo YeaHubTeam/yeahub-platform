@@ -1,3 +1,7 @@
+.form {
+  margin-top: 300px;
+}
+
 .main-title {
   margin-bottom: 28px;
   line-height: 120%;
@@ -16,6 +20,31 @@
   color: var(--text-color-primary);
   line-height: 120%;
   font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+
+.selected-questions-title {
+  color: var(--text-color-primary);
+  line-height: 120%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+.text-wrapper {
+  width: 100%;
+  max-width: 246px;
+}
+
+.button {
+  align-self: end;
+}
+
+.chip {
+  justify-content: space-between;
+  width: 100%;
+  max-width: 610px;
+  color: var(--color-black-1000);
   font-size: var(--font-size-p-s);
 }
 
@@ -73,3 +102,4 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
+

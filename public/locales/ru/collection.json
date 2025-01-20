@@ -25,7 +25,9 @@
   "specialization": "Специализация:",
   "keywords": "Ключевые слова:",
   "questions": {
-    "title": "Вопросы"
+    "short": "Вопросы", 
+    "label": "Добавьте вопросы",
+    "selected": "Выбранные вопросы: {{count}}"
   },
   "image.src": "Ссылка на картинку",
   "create.page.title": "Коллекция"

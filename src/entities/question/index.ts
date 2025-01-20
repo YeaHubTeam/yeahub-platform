@@ -18,6 +18,7 @@ export { SortQuestionsByField } from './ui/SortQuestions/SortQuestionsByField/So
 export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSorter';
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';
 export { ChooseSpecialization } from './ui/ChooseSpecialization/ChooseSpecialization';
+export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
 
 export { questionHandlers } from './api/__mocks__/index';
 
