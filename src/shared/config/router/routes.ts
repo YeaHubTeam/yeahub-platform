@@ -53,7 +53,11 @@ export const ROUTES = {
 		},
 		users: {
 			route: 'users',
-			page: 'admin/user',
+			page: 'admin/users',
+			detail: {
+				route: ':userId',
+				page: '/admin/users/:userId',
+			},
 		},
 	},
 	auth: {

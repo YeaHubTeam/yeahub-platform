@@ -6,11 +6,12 @@ type SelectWithChipsProps<T> = Omit<
 	React.ComponentProps<typeof Select>,
 	'options' | 'type' | 'value' | 'onChange'
 > & {
-	title: string;
+	title?: string;
 	placeholder?: string;
 	itemsDictionary?: Record<number, T>;
 	options: { label: string; value: string }[];
 	selectedItems?: number[];
+	disabled?: boolean;
 	handleDeleteItem: (id: number) => () => void;
 	onChange: (value?: string) => void;
 };
@@ -23,6 +24,7 @@ export const SelectWithChips = <T extends { id: number; title: string }>({
 	selectedItems,
 	handleDeleteItem,
 	itemsDictionary,
+	disabled,
 }: SelectWithChipsProps<T>) => {
 	return (
 		<div className={styles.wrapper}>
@@ -32,6 +34,7 @@ export const SelectWithChips = <T extends { id: number; title: string }>({
 				type="default"
 				placeholder={placeholder}
 				className={styles.select}
+				disabled={disabled}
 			/>
 			{!!selectedItems?.length && (
 				<>

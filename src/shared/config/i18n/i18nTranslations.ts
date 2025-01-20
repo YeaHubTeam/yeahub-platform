@@ -394,6 +394,20 @@ export enum User {
 	HR = 'roles.HR',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
+	USERNAME = 'userName',
+	FULL_NAME = 'fullName',
+	PROFILE_PHOTO = 'profilePhoto',
+	SELECT_ROLE = 'selectRole',
+	SELECT_TAGS_BY_ROLE = 'selectTagsByRole',
+	CONFIRM_EMAIL = 'confirmEmail',
+	EMAIL_VERIFICATION = 'emailVerification',
+	IS_EMAIL_VERIFIED_TRUE = 'isEmailVerifiedTrue',
+	IS_EMAIL_VERIFIED_FALSE = 'isEmailVerifiedFALSE',
+	USER_EMAIL = 'userEmail',
+	ADDRESS = 'address',
+	BIRTH_DATE = 'birthDate',
+	REGISTRATION_DATE = 'registrationDate',
+	SELECT_CHOOSE = 'selectShoose',
 }
 
 export enum Landing {

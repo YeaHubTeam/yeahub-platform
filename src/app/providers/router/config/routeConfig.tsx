@@ -31,6 +31,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { UserTableDetailPage } from '@/pages/admin/UserTableDetailPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -248,7 +249,17 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.users.route,
-						element: <UsersTablePage />,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <UsersTablePage />,
+							},
+							{
+								path: ROUTES.admin.users.detail.route,
+								element: <UserTableDetailPage />,
+							},
+						],
 					},
 					{
 						path: '*',
