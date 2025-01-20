@@ -63,6 +63,14 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/collections/create',
 			},
+			details: {
+				route: ':collectionId',
+				page: '/admin/collections/:collectionId',
+			},
+			edit: {
+				route: ':collectionId/edit',
+				page: '/admin/collections/:collectionId/edit',
+			},
 		},
 	},
 	auth: {
@@ -138,6 +146,14 @@ export const ROUTES = {
 		detail: {
 			route: ':questionId',
 			page: '/questions/:questionId',
+		},
+	},
+	collections: {
+		route: 'collections',
+		page: '/collections',
+		detail: {
+			route: ':collectionsId',
+			page: '/collections/:collectionId',
 		},
 	},
 };

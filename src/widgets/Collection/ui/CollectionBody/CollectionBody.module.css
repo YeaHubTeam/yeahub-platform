@@ -1,5 +1,15 @@
 .wrapper{
-  display: flex;	
+  display: flex;
+  padding: 16px;
+  width: 100%;
+}
+
+.list {
+  margin: 0;
+  padding: 16px;
+  box-shadow: var(--main-shadow);
+  border-radius: 10px;
+  list-style: none;
 }
 
 .title {
@@ -23,7 +33,7 @@
   .text {
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-s);
-    
+
   }
 
   .title {
@@ -31,4 +41,9 @@
     font-weight: var(--font-weight-500);
     font-size: var(--font-size-p-m);
   }
+}
+
+.questions {
+  align-self: start;
+  width: 100%;
 }

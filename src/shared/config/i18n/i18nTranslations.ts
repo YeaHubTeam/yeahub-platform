@@ -339,6 +339,10 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+
+	ADDITIONAL_INFO_LEVEL = 'level',
+	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
+	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 }
 
 export enum InterviewHistory {
@@ -413,13 +417,16 @@ export enum Collections {
 	ICON_LABEL = 'icon.label',
 	SELECT_CHOOSE = 'select.chooseCollections',
 	SELECT_LABEL = 'select.label',
-	SELECT_PAID = 'select.paid',
-	SELECT_FREE = 'select.free',
+	TARIFF_PAID = 'tariff.paid',
+	TARIFF_FREE = 'tariff.free',
 	SELECT_SELECTED = 'select.selected',
 	EMPTY = 'empty',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_SPECIALIZATION = 'specialization',
+	ADDITIONAL_INFO_KEYWORDS = 'keywords',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',

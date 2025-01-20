@@ -1,5 +1,6 @@
-.question-header-wrapper {
+.collection-header-wrapper {
   display: flex;
+  margin-right: 16px;
 }
 
 .image-wrapper {
@@ -42,6 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 16px;
 }
 
 .title {
@@ -82,35 +84,35 @@
 }
 
 @media (width <= 767px) {
-  .question-header-wrapper {
+  .collection-header-wrapper {
     display: flex;
     flex-direction: column;
     align-items: start;
   }
-	
+
   .title-wrapper {
     display: flex;
     flex-direction: row;
     margin-left: 0;
     max-width: 100%;
   }
- 
+
   .label-wrapper {
     display: flex;
   }
 }
- 
+
 @media (width <=564px) {
   .title-wrapper {
     display: flex;
     margin-left: 0;
   }
- 
+
   .title {
     line-height: 120%;
     font-size: var(--font-size-p-m);
   }
- 
+
   .description {
     line-height: 136%;
     font-size: var(--font-size-p-s);

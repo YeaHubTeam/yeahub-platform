@@ -20,6 +20,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
+import { CollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
@@ -270,6 +271,10 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.collections.create.route,
 								element: <CollectionCreatePage />,
+							},
+							{
+								path: ROUTES.admin.collections.details.route,
+								element: <CollectionPage />,
 							},
 						],
 					},
