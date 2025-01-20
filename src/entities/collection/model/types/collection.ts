@@ -6,4 +6,5 @@ export interface Collection {
 	createdAt?: string;
 	updatedAt?: string;
 	questionsQuantity?: number;
+	questions?: number[];
 }

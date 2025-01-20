@@ -31,37 +31,9 @@
   font-size: var(--font-size-p-m);
 }
 
-.plus-svg {
-  margin-left: 8px;
-  width: 18px;
-  height: 18px;
-  stroke-width: 0;
-  fill: var(--color-white-900);
-}
-
-.search-svg {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-  fill:  var(--color-black-300);
-}
-
-.drawer {
-  padding: 24px;
-  min-width: 708px;
-}
-
-.question-card {
-  cursor: pointer;
-}
-
 .text-wrapper {
   width: 100%;
   max-width: 246px;
-}
-
-.selected-questions {
-  flex: 1;
 }
 
 .button {

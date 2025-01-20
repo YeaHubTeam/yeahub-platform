@@ -22,7 +22,9 @@
     "free": "Free"
   },
   "questions": {
-    "title": "Questions"
+    "short": "Questions",
+    "label": "Add questions",
+    "selected": "Selected questions: {{count}}"
   },
   "image.src": "Image URL",
   "create.page.title": "Collection"

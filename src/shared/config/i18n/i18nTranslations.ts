@@ -420,7 +420,9 @@ export enum Collections {
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
-	QUESTIONS_TITLE = 'questions.title',
+	QUESTIONS_SHORT = 'questions.short',
+	QUESTIONS_LABEL = 'questions.label',
+	QUESTIONS_SELECTED = 'questions.selected',
 }
 
 export enum Landing {
