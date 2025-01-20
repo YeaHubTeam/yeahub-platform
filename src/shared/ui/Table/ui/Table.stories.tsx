@@ -1,7 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Table } from './Table';
 import { useState } from 'react';
+
 import { SelectedEntities } from '@/shared/types/types';
+
+import { Table } from './Table';
 
 const meta: Meta<typeof Table> = {
 	title: 'shared/Table',
@@ -37,17 +39,19 @@ const renderTableBody = (item: (typeof sampleItems)[number]) => (
 
 export const Default: Story = {
 	render: () => {
-		const [selectedItems, setSelectedItems] = useState<SelectedEntities<string | number>>([]);
-
-		return (
-			<Table
-				items={sampleItems}
-				renderTableHeader={renderTableHeader}
-				renderTableBody={renderTableBody}
-				selectedItems={selectedItems}
-				onSelectItems={setSelectedItems}
-			/>
-		);
+		const TableWithState = () => {
+			const [selectedItems, setSelectedItems] = useState<SelectedEntities<string | number>>([]);
+			return (
+				<Table
+					items={sampleItems}
+					renderTableHeader={renderTableHeader}
+					renderTableBody={renderTableBody}
+					selectedItems={selectedItems}
+					onSelectItems={setSelectedItems}
+				/>
+			);
+		};
+		return <TableWithState />;
 	},
 };
 
