@@ -1,3 +1,3 @@
 import { questionListMock } from './questionListMock';
-
-export const questionHandlers = [questionListMock];
+import { questionByIdMock } from './questionMock';
+export const questionHandlers = [questionListMock, questionByIdMock];
