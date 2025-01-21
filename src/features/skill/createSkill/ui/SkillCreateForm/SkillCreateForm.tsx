@@ -14,23 +14,25 @@ import { SkillCreateFormHeader } from '../SkillCreateFormHeader/SkillCreateFormH
 import styles from './SkillCreateForm.module.css';
 
 export const SkillCreateForm = () => {
-	const methods = useForm<CreateSkillFormValues>({
+	const skillMethods = useForm<CreateSkillFormValues>({
 		resolver: yupResolver(skillCreateSchema),
 		mode: 'onTouched',
 	});
 
-	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
+	const { isDirty, isSubmitting, isSubmitted } = skillMethods.formState;
 
 	return (
-		<FormProvider {...methods}>
-			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
-				<Flex componentType="main" direction="column" gap="24">
-					<SkillCreateFormHeader />
-					<Card className={styles.content}>
-						<SkillForm />
-					</Card>
-				</Flex>
-			</LeavingPageBlocker>
-		</FormProvider>
+		<>
+			<FormProvider {...skillMethods}>
+				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
+					<Flex componentType="main" direction="column" gap="24">
+						<SkillCreateFormHeader />
+						<Card className={styles.content}>
+							<SkillForm />
+						</Card>
+					</Flex>
+				</LeavingPageBlocker>
+			</FormProvider>
+		</>
 	);
 };

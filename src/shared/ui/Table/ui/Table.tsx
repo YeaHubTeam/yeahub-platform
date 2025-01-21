@@ -27,12 +27,14 @@ interface TableProps<Id extends string | number, T> {
 }
 
 /**
- * Component that is used to display data in a tabular structure
- * @param items
- * @param renderTableHeader
- * @param renderTableBody
- * @param renderActions
- * @constructor
+ * Component that is used to display data in a tabular structure.
+ *
+ * @param items - Array of elements displayed in the table.
+ * @param renderTableHeader - Render function for displaying the table header.
+ * @param renderTableBody - Render function for displaying the table body.
+ * @param renderActions - Render function for displaying the table actions in the last column.
+ * @param selectedItems - Array of currently selected entities.
+ * @param onSelectItems - Callback function triggered when selection changes.
  */
 export const Table = <Id extends string | number, T extends SelectedEntity<Id>>({
 	items,
@@ -71,7 +73,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						</td>
 					)}
 					{renderTableHeader()}
-					{hasActions && <td className={styles.actionsColumn}></td>}
+					{hasActions && <td className={styles['actions-column']}></td>}
 				</tr>
 			</thead>
 			<tbody>

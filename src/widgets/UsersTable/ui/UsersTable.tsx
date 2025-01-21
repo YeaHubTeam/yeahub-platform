@@ -10,6 +10,9 @@ import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+
+import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
@@ -19,10 +22,6 @@ import styles from './UsersTable.module.css';
 interface UsersTableProps {
 	users?: User[];
 }
-
-const convertRoleNameToEnumKey = (roleName: string): keyof typeof Users => {
-	return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof Users;
-};
 
 export const UsersTable = ({ users }: UsersTableProps) => {
 	const navigate = useNavigate();

@@ -1,8 +1,21 @@
-.label {
+.label-small {
   margin-top: 4px;
 }
 
+.label-large {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background-color: var(--background-progress-bar);
+}
+
 .progress-bar {
+  position: relative;
+}
+
+.progress-bar-small {
   width: 100%;
   height: 3px;
   border-radius: 50px;
@@ -17,3 +30,100 @@
     background-color: var(--background-progress-bar);
   }
 }
+
+.progress-bar-large {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  &::-webkit-progress-value {
+    border-radius: 8px;
+    background-color: var(--text-color-link-active);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 8px;
+    background-color: transparent;
+
+    /* border: 1px solid var(--color-border); */
+  }
+}
+
+/* .progress-bar-large { */
+
+/*	width: 100%; */
+
+/*	height: 42px; */
+
+/*	&::-webkit-progress-value { */
+
+/*		border-radius: 8px; */
+
+/*		background-color: var(--color-purple-700); */
+
+/*		height: 42px; */
+
+/*	} */
+
+/*	&::-webkit-progress-bar { */
+
+/*		 border: 1px solid var(--color-border); */
+
+/*		 border-radius: 8px; */
+
+/*		 height: 42px; */
+
+/*	} */
+
+/* } */
+
+/* .progress-container { */
+
+/*	position: relative; */
+
+/*	width: 100%; */
+
+/*	height: 42px; */
+
+/*	overflow: hidden; */
+
+/*	border: 1px solid var(--color-border); */
+
+/*	border-radius: 8px; */
+
+/* } */
+
+/* .progress-bar { */
+
+/*	display: flex; */
+
+/*	align-items: center; */
+
+/*	padding: 9px 12px ; */
+
+/*	height: 100%; */
+
+/*	background-color: var(--color-purple-700); */
+
+/* } */
+
+/* .progress-label { */
+
+/*	position: absolute; */
+
+/*	left: 10px; */
+
+/*	padding: 3px 12px; */
+
+/*	border-radius: 6px; */
+
+/*	background-color: var(--background-progress-bar); */
+
+/*	color: var(--color-black-1000); */
+
+/*	font-weight: var(--font-weight-600); */
+
+/*	font-size: var(--font-size-p-xs); */
+
+/* } */

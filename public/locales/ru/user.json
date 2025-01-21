@@ -24,5 +24,9 @@
   "address": "Страна, город, улица",
   "birthDate": "Дата рождения",
   "registrationDate": "Дата регистрации",
-  "selectShoose": "Выберите роль"
+  "selectShoose": "Выберите роль",
+  "filter": {
+    "role": "Роли пользователей",
+    "email": "Подтверждён ли Email"
+  }
 }

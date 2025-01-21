@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
+import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -26,7 +27,7 @@ const PublicQuestionsPage = () => {
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
-	const [isDrawerOpen, setDrawerOpen] = useState(false);
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const { status, ...getParams } = filter;
 
@@ -72,28 +73,25 @@ const PublicQuestionsPage = () => {
 		return null;
 	}
 
-	const toggleDrawer = () => {
-		setDrawerOpen((prev) => !prev);
-	};
-
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['popover-additional']}>
 				<IconButton
-					className={isDrawerOpen ? styles.active : ''}
+					className={classNames({ [styles.active]: isOpen })}
 					aria-label="go to filters"
 					form="square"
 					icon={<Icon icon="slidersHorizontal" />}
 					size="S"
 					variant={'tertiary'}
-					onClick={toggleDrawer}
+					onClick={onToggle}
 				/>
-				{isDrawerOpen && (
+				{isOpen && (
 					<Drawer
 						rootName="body"
-						isOpen={isDrawerOpen}
-						onClose={toggleDrawer}
+						isOpen={isOpen}
+						onClose={onClose}
 						className={styles.drawer}
+						hasCloseButton
 					>
 						<Card className={styles['drawer-content']}>
 							<PublicQuestionsFilterPanel

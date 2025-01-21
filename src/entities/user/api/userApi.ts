@@ -5,6 +5,7 @@ import { route } from '@/shared/helpers/route';
 import { userApiUrls } from '../model/constants/userConstants';
 import {
 	GetUserByIdResponse,
+	GetUserRolesListResponse,
 	GetUsersListParamsRequest,
 	GetUsersListResponse,
 } from '../model/types/user';
@@ -28,3 +29,13 @@ const userApi = baseApi.injectEndpoints({
 });
 
 export const { useGetUsersListQuery, useGetUserByIdQuery } = userApi;
+		getUserRolesList: build.query<GetUserRolesListResponse, void>({
+			query: () => ({
+				url: userApiUrls.getUserRolesList,
+			}),
+			providesTags: [ApiTags.ROLES],
+		}),
+	}),
+});
+
+export const { useGetUsersListQuery, useGetUserRolesListQuery } = userApi;

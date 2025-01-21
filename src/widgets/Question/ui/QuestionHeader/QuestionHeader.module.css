@@ -59,6 +59,10 @@
   font-size: var(--font-size-p-m);
 }
 
+.description-wrapper {
+  display: flex;
+}
+
 .label-wrapper {
   display: flex;
   justify-content: center;

@@ -48,8 +48,9 @@
     "skills": "Skills"
   },
   "setting.tabs": {
-    "change.password": "E-mail confirmation",
-    "verify.email": "Password change"
+    "select.tariff": "Select tariff",
+    "change.password": "Password change",
+    "verify.email": "E-mail confirmation"
   },
   "email.verification": {
     "title": "Confirm your e-mail",

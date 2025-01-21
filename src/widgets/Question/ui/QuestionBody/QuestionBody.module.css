@@ -1,3 +1,6 @@
+.wrapper{
+  display: flex;	
+}
 
 .title {
   margin-bottom: 20px;

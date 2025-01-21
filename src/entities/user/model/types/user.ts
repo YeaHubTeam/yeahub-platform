@@ -22,6 +22,8 @@ export interface UserRole {
 	permissions: Permission[];
 }
 
+export type GetUserRolesListResponse = UserRole[];
+
 export interface User {
 	id: string;
 	firstName: string;

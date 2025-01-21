@@ -8,7 +8,7 @@
   "title": {
     "short": "Question",
     "label": "Add question",
-    "placeholder": "Add question"
+    "placeholder": "Detailed question on a specific topic"
   },
   "description": {
     "title": "Description",
@@ -48,26 +48,29 @@
   },
   "skills": {
     "title": "Skills",
-    "label": "add skills"
+    "label": "Select relevant skills"
   },
   "long.answer": {
-    "title": "long answer",
+    "title": "Long answer",
     "label": "Add long answer",
-    "placeholder": "Add long answer"
+    "placeholder": "Full answer to the question"
   },
   "short.answer": {
     "title": "Short answer",
     "label": "Add short answer",
-    "placeholder": "Add short answer"
+    "placeholder": "Short answer to the question"
   },
   "specialization": {
     "title": "Specialization",
-    "select": "Select specialization"
+    "label": "Select relevant specialization"
   },
   "keywords": {
     "title": "Keywords",
-    "label": "Add keywords"
+    "label": "Add keywords to the text"
   },
+  "level": "Level:",
+  "skillsAdditional": "Skills:",
+  "keywordsAdditional": "Keywords:",
   "image.alt": "Image code for question",
   "more": "More",
   "learn": "Learn",

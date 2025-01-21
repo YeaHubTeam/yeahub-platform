@@ -1,0 +1,15 @@
+.description {
+  display: -webkit-box;
+  max-height: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-image {
+  width: 92px;
+  height: 62px;
+  border-radius: 12px;
+}
