@@ -5,6 +5,7 @@ import { Switch } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
+import { formatDate } from '@/shared/helpers/formatDate/formatDate';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -25,17 +26,6 @@ export const UserCard = ({ user }: UserCardProps) => {
 
 	const { control } = useFormContext();
 
-	function formatDate(dateString: string) {
-		if (dateString === null) return '';
-
-		const date = new Date(dateString);
-
-		const day = date.getDate().toString().padStart(2, '0');
-		const month = (date.getMonth() + 1).toString().padStart(2, '0');
-		const year = date.getFullYear();
-
-		return `${day}.${month}.${year}`;
-	}
 	const userRoleIds = user.userRoles.map((role) => role.id);
 
 	return (
@@ -91,13 +81,13 @@ export const UserCard = ({ user }: UserCardProps) => {
 							<Flex align="center" gap="10">
 								<Switch
 									switchClassName={classNames(styles['switch'])}
-									checked
+									checked={user.isEmailVerified ?? false}
 									onChange={() => {}}
 								/>
 								<p>
 									{user.isEmailVerified
 										? t(Users.IS_EMAIL_VERIFIED_TRUE)
-										: t(Users.IS_EMAIL_VERIFIED_TRUE)}
+										: t(Users.IS_EMAIL_VERIFIED_FALSE)}
 								</p>
 							</Flex>
 						</Flex>
@@ -116,11 +106,19 @@ export const UserCard = ({ user }: UserCardProps) => {
 					</Flex>
 					<Flex align="center" gap="120">
 						<p className={classNames(styles['description'])}>{t(Users.BIRTH_DATE)}</p>
-						<Input disabled type="text" placeholder={formatDate(user.birthday)} />
+						<Input
+							disabled
+							type="text"
+							placeholder={user.birthday ? formatDate(new Date(user.birthday), 'dd.MM.yyyy') : ''}
+						/>
 					</Flex>
 					<Flex align="center" gap="120">
 						<p className={classNames(styles['description'])}>{t(Users.REGISTRATION_DATE)}</p>
-						<Input disabled type="text" placeholder={formatDate(user.createdAt)} />
+						<Input
+							disabled
+							type="text"
+							placeholder={user.createdAt ? formatDate(new Date(user.createdAt), 'dd.MM.yyyy') : ''}
+						/>
 					</Flex>
 				</Flex>
 			</Card>

@@ -47,8 +47,6 @@ export type CreateOrEditUserFormValues = Pick<
 > & {
 	userRoles: number[];
 	status?: UserStatus;
-	rate?: number;
-	complexity?: number;
 };
 
 export type GetUsersListParamsRequest = {

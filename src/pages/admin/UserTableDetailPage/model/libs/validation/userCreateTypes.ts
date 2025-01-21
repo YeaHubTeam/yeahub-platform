@@ -21,6 +21,4 @@ export const userCreateSchema: yup.ObjectSchema<CreateUserFormValues> = yup.obje
 		.of(yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	status: yup.string<UserStatus>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	rate: yup.number().min(1).max(10, 'Rate must be between 1 and 10'),
-	complexity: yup.number().min(1).max(5, 'Complexity must be between 1 and 5'),
 });

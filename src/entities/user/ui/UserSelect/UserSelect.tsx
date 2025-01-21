@@ -1,11 +1,10 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { i18Namespace } from '@/shared/config/i18n';
 import { User } from '@/shared/config/i18n/i18nTranslations';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
-
 import { UserRole } from '../../model/types/user';
+import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 
 import styles from './UserSelect.module.css';
 
@@ -15,10 +14,6 @@ type UserSelectProps = {
 	availableRoles: UserRole[];
 	disabled?: boolean;
 	hasMultiple?: boolean;
-};
-
-const convertRoleNameToEnumKey = (roleName: string): keyof typeof User => {
-	return roleName.replace(/-/g, '_').toUpperCase() as keyof typeof User;
 };
 
 export const UserSelect = ({

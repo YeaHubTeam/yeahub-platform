@@ -408,7 +408,7 @@ export enum User {
 	CONFIRM_EMAIL = 'confirmEmail',
 	EMAIL_VERIFICATION = 'emailVerification',
 	IS_EMAIL_VERIFIED_TRUE = 'isEmailVerifiedTrue',
-	IS_EMAIL_VERIFIED_FALSE = 'isEmailVerifiedFALSE',
+	IS_EMAIL_VERIFIED_FALSE = 'isEmailVerifiedFalse',
 	USER_EMAIL = 'userEmail',
 	ADDRESS = 'address',
 	BIRTH_DATE = 'birthDate',

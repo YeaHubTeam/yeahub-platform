@@ -46,6 +46,7 @@ export const SelectWithChips = <T extends { id: number; title: string }>({
 								label={itemsDictionary?.[id]?.title}
 								theme="primary"
 								onDelete={handleDeleteItem(id)}
+								disabled
 							/>
 						))}
 					</div>

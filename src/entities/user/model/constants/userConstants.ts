@@ -1,5 +1,5 @@
 export const userApiUrls = {
 	getUsersList: 'users',
-	getsById: 'users/:userId',
+	getById: 'users/:userId',
 	getUserRolesList: 'users/roles',
 };

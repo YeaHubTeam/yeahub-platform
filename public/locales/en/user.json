@@ -11,6 +11,20 @@
     "admin": "Admin",
     "member": "Member"
   },
+  "userName": "User",
+  "fullName": "First Name Last Name",
+  "profilePhoto": "Profile Photo",
+  "selectRole": "Select User Role",
+  "selectTagsByRole": "Select Tags by Role",
+  "confirmEmail": "Confirm E-mail",
+  "emailVerification": "Ability to verify e-mail",
+  "userEmail": "E-mail",
+  "isEmailVerifiedTrue": "E-mail verified",
+  "isEmailVerifiedFalse": "E-mail not verified",
+  "address": "Country, City, Street",
+  "birthDate": "Date of Birth",
+  "registrationDate": "Registration Date",
+  "selectShoose": "Select Role",
   "filter": {
     "role": { "title": "User Roles" },
     "email": { "title": "Is Email Confirmed" }

@@ -22,8 +22,6 @@ const UserTableDetailPage = () => {
 		defaultValues: {
 			userRoles: user?.userRoles.map((role) => role.id),
 			status: 'public',
-			rate: 5,
-			complexity: 1,
 		},
 		resolver: yupResolver(userCreateSchema),
 		mode: 'onTouched',

@@ -21,14 +21,10 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		getUserById: build.query<GetUserByIdResponse, string>({
 			query: (userId) => ({
-				url: route(userApiUrls.getsById, userId),
+				url: route(userApiUrls.getById, userId),
 			}),
 			providesTags: [ApiTags.USER_DETAIL],
 		}),
-	}),
-});
-
-export const { useGetUsersListQuery, useGetUserByIdQuery } = userApi;
 		getUserRolesList: build.query<GetUserRolesListResponse, void>({
 			query: () => ({
 				url: userApiUrls.getUserRolesList,
@@ -38,4 +34,8 @@ export const { useGetUsersListQuery, useGetUserByIdQuery } = userApi;
 	}),
 });
 
-export const { useGetUsersListQuery, useGetUserRolesListQuery } = userApi;
+export const {
+    useGetUsersListQuery,
+    useGetUserByIdQuery,
+    useGetUserRolesListQuery,
+} = userApi;
