@@ -40,7 +40,7 @@
   },
   "form": {
     "firstname": "Имя",
-    "lastName": "Фамилия",
+    "lastname": "Фамилия",
     "specialization": "IT специальность",
     "phone": "Номер для связи",
     "email": "Email для связи",
