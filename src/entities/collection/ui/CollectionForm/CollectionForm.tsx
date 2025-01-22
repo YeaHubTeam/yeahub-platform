@@ -99,8 +99,8 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 				</Flex>
 				<Flex gap="120" align="center">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.SELECT_CHOOSE)} className={styles.title} />
-						<Text title={t(Collections.SELECT_LABEL)} className={styles.description} />
+						<Text title={t(Collections.TARIFF_CHOOSE)} className={styles.title} />
+						<Text title={t(Collections.TARIFF_LABEL)} className={styles.description} />
 					</Flex>
 					<Flex gap="60">
 						<Label className={styles['paid-label']}>
