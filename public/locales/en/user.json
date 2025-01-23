@@ -5,26 +5,29 @@
   "roles": {
     "guest": "Guest",
     "candidate": "Candidate",
-    "candidateFree": "Candidate-Free",
-    "candidatePremium": "Candidate-Premium",
+    "candidate.free": "Candidate-Free",
+    "candidate.premium": "Candidate-Premium",
     "HR": "HR",
     "admin": "Admin",
     "member": "Member"
   },
-  "userName": "User",
-  "fullName": "First Name Last Name",
-  "profilePhoto": "Profile Photo",
-  "selectRole": "Select User Role",
-  "selectTagsByRole": "Select Tags by Role",
-  "confirmEmail": "Confirm E-mail",
-  "emailVerification": "Ability to verify e-mail",
-  "userEmail": "E-mail",
-  "isEmailVerifiedTrue": "E-mail verified",
-  "isEmailVerifiedFalse": "E-mail not verified",
+  "user.name": "User",
+  "full.name": "First Name Last Name",
+  "avatar": "Profile Photo",
+  "select.role": {
+    "title": "Select User Role",
+    "label": "Select Tags by Role"
+  },
+  "confirm.email": {
+    "title": "Confirm E-mail",
+    "label": "Ability to verify e-mail",
+    "confirm": "E-mail verified",
+    "unconfirm": "E-mail not verified"
+  },
   "address": "Country, City, Street",
-  "birthDate": "Date of Birth",
-  "registrationDate": "Registration Date",
-  "selectShoose": "Select Role",
+  "birth.date": "Date of Birth",
+  "registration.date": "Registration Date",
+  "select.shoose": "Select Role",
   "filter": {
     "role": { "title": "User Roles" },
     "email": { "title": "Is Email Confirmed" }

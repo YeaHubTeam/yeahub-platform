@@ -5,26 +5,29 @@
   "roles": {
     "guest": "Гость",
     "candidate": "Пользователь-Базовый",
-    "candidatePremium": "Пользователь-Премиум",
-    "candidateFree": "Пользователь-Бесплатный",
+    "candidate.premium": "Пользователь-Премиум",
+    "candidate.free": "Пользователь-Бесплатный",
     "HR": "HR",
     "admin": "Админ",
     "member": "Пользователь"
   },
-  "userName": "Пользователь",
-  "fullName": "Имя Фамилия",
-  "profilePhoto": "Фото профиля",
-  "selectRole": "Выбрать роль пользователя",
-  "selectTagsByRole": "Выберите теги по роли",
-  "confirmEmail": "Подтверждение e-mail",
-  "emailVerification": "Возможность подтвердить e-mail",
-  "userEmail": "E-mail",
-  "isEmailVerifiedTrue": "E-mail подтвержден",
-  "isEmailVerifiedFalse": "E-mail не подтвержден",
+  "user.name": "Пользователь",
+  "full.name": "Имя Фамилия",
+  "avatar": "Фото профиля",
+  "select.role": {
+    "title": "Выбрать роль пользователя",
+    "label": "Выберите теги по роли"
+  },
+  "confirm.email": {
+    "title": "Подтверждение e-mail",
+    "label": "Возможность подтвердить e-mail",
+    "confirm": "E-mail подтвержден",
+    "unconfirm": "E-mail не подтвержден"
+  },
   "address": "Страна, город, улица",
-  "birthDate": "Дата рождения",
-  "registrationDate": "Дата регистрации",
-  "selectShoose": "Выберите роль",
+  "birth.date": "Дата рождения",
+  "registration.date": "Дата регистрации",
+  "select.shoose": "Выберите роль",
   "filter": {
     "role": "Роли пользователей",
     "email": "Подтверждён ли Email"

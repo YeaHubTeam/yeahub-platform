@@ -6,9 +6,9 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { UserRole } from '../../model/types/user';
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 
-import styles from './UserSelect.module.css';
+import styles from './RoleSelect.module.css';
 
-type UserSelectProps = {
+type RoleSelectProps = {
 	value: number[];
 	onChange: (value: number[]) => void;
 	availableRoles: UserRole[];
@@ -16,12 +16,12 @@ type UserSelectProps = {
 	hasMultiple?: boolean;
 };
 
-export const UserSelect = ({
+export const RoleSelect = ({
 	value,
 	onChange,
 	availableRoles,
 	disabled,
-}: UserSelectProps): JSX.Element => {
+}: RoleSelectProps): JSX.Element => {
 	const { t } = useTranslation([i18Namespace.user]);
 
 	const handleChange = (selectedValue?: string) => {

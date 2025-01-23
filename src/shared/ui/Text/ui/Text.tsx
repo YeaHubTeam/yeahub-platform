@@ -15,6 +15,7 @@ export interface TextProps {
 	color?: Pallete;
 	maxRows?: (typeof textMaxRows)[number];
 	className?: string;
+	width?: string | number
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -48,7 +49,7 @@ export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElement
  * @param children - The text content to display.
  * @param className - Additional CSS classes for customization.
  */
-export const Text = ({ variant, color = 'black-900', maxRows, children, className }: TextProps) => {
+export const Text = ({ variant, color = 'black-900', maxRows, children, className, width }: TextProps) => {
 	const Tag = variantToTagMapping[variant];
 	return (
 		<Tag
@@ -58,6 +59,7 @@ export const Text = ({ variant, color = 'black-900', maxRows, children, classNam
 				maxRows && styles[`text-rows-${maxRows}`],
 				className,
 			)}
+			style={{width}}
 		>
 			{children}
 		</Tag>

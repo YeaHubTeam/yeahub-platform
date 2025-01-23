@@ -13,9 +13,10 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 
 import { User } from '../../model/types/user';
-import { UserSelect } from '../UserSelect/UserSelect';
+import { RoleSelect } from '../RoleSelect/RoleSelect';
 
 import styles from './UserCard.module.css';
+import { Text } from '@/shared/ui/Text';
 
 interface UserCardProps {
 	user: User;
@@ -32,14 +33,14 @@ export const UserCard = ({ user }: UserCardProps) => {
 		<Flex direction="column" maxWidth>
 			<Card withOutsideShadow>
 				<Flex direction="column" gap="28">
-					<h1 className={classNames(styles['title'])}>{t(Users.USERNAME)}</h1>
+					<Text variant='body5-strong'>{t(Users.USER_NAME)}</Text>
 					<Flex direction="column" gap="60">
 						<Flex align="center" gap="120">
-							<p className={classNames(styles['description'])}>{t(Users.FULL_NAME)}</p>
+							<Text variant='body4' color="black-800" width={246}>{t(Users.FULL_NAME)}</Text>
 							<Input disabled type="text" placeholder={`${user.firstName} ${user.lastName}`} />
 						</Flex>
 						<Flex gap="120">
-							<p className={classNames(styles['description'])}>{t(Users.PROFILE_PHOTO)}</p>
+							<Text variant='body4' color="black-800" width={246}>{t(Users.AVATAR)}</Text>
 							{user.avatarUrl ? (
 								<img className={styles['image']} src={user.avatarUrl} alt={t(Translation.AVATAR)} />
 							) : (
@@ -50,16 +51,16 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 						<Flex gap="120">
 							<Flex direction="column" gap="8">
-								<p className={classNames(styles['description'])}>{t(Users.SELECT_ROLE)}</p>
-								<p className={classNames(styles['description-secondary'])}>
-									{t(Users.SELECT_TAGS_BY_ROLE)}
-								</p>
+								<Text variant='body4' color="black-800" width={246}>{t(Users.SELECT_ROLE_TITLE)}</Text>
+								<Text variant='body2' color="black-800" width={246}>
+									{t(Users.SELECT_ROLE_LABEL)}
+								</Text>
 							</Flex>
 							<Flex direction="column" gap="20" maxWidth>
 								<FormControl name="userRoles" control={control}>
 									{({ onChange, value }) => (
 										<div className={styles.select}>
-											<UserSelect
+											<RoleSelect
 												availableRoles={user.userRoles}
 												value={value || userRoleIds}
 												onChange={onChange}
@@ -73,10 +74,8 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 						<Flex align="center" gap="120">
 							<Flex direction="column" gap="8">
-								<p className={classNames(styles['description'])}>{t(Users.CONFIRM_EMAIL)}</p>
-								<p className={classNames(styles['description-secondary'])}>
-									{t(Users.EMAIL_VERIFICATION)}
-								</p>
+								<Text variant='body4' color="black-800" width={246}>{t(Users.CONFIRM_EMAIL_TITLE)}</Text>
+								<Text variant='body2' color="black-800" width={246}>{t(Users.CONFIRM_EMAIL_LABEL)}</Text>
 							</Flex>
 							<Flex align="center" gap="10">
 								<Switch
@@ -84,19 +83,19 @@ export const UserCard = ({ user }: UserCardProps) => {
 									checked={user.isEmailVerified ?? false}
 									onChange={() => {}}
 								/>
-								<p>
+								<Text variant='body2' color="black-800" width={246}>
 									{user.isEmailVerified
-										? t(Users.IS_EMAIL_VERIFIED_TRUE)
-										: t(Users.IS_EMAIL_VERIFIED_FALSE)}
-								</p>
+										? t(Users.CONFIRM_EMAIL_CONFIRM)
+										: t(Users.CONFIRM_EMAIL_UNCONFIRM)}
+								</Text>
 							</Flex>
 						</Flex>
 						<Flex align="center" gap="120">
-							<p className={classNames(styles['description'])}>{t(Users.USER_EMAIL)}</p>
+							<Text variant='body4' color="black-800" width={246}>{t(Users.EMAIL)}</Text>
 							<Input disabled type="text" placeholder={user.email} />
 						</Flex>
 						<Flex gap="120">
-							<p className={classNames(styles['description'])}>{t(Users.ADDRESS)}</p>
+							<Text variant='body4' color="black-800" width={246}>{t(Users.ADDRESS)}</Text>
 							<Flex direction="column" gap="20">
 								<Input disabled type="text" placeholder={user.country} />
 								<Input disabled type="text" placeholder={user.city} />
@@ -105,7 +104,7 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 					</Flex>
 					<Flex align="center" gap="120">
-						<p className={classNames(styles['description'])}>{t(Users.BIRTH_DATE)}</p>
+						<Text variant='body4' color="black-800" width={246}>{t(Users.BIRTH_DATE)}</Text>
 						<Input
 							disabled
 							type="text"
@@ -113,7 +112,7 @@ export const UserCard = ({ user }: UserCardProps) => {
 						/>
 					</Flex>
 					<Flex align="center" gap="120">
-						<p className={classNames(styles['description'])}>{t(Users.REGISTRATION_DATE)}</p>
+						<Text variant='body4' color="black-800" width={246}>{t(Users.REGISTRATION_DATE)}</Text>
 						<Input
 							disabled
 							type="text"

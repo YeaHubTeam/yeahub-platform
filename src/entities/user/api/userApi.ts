@@ -21,7 +21,7 @@ const userApi = baseApi.injectEndpoints({
 		}),
 		getUserById: build.query<GetUserByIdResponse, string>({
 			query: (userId) => ({
-				url: route(userApiUrls.getById, userId),
+				url: route(userApiUrls.getUserById, userId),
 			}),
 			providesTags: [ApiTags.USER_DETAIL],
 		}),

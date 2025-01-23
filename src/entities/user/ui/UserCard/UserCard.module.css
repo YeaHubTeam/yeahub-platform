@@ -1,28 +1,3 @@
-.title {
-  color: var(--color-black-900);
-  line-height: 22px;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-h-xs);
-  font-style: normal;
-}
-
-.description {
-  width: 246px;
-  color: var(--color-black-800);
-  line-height: 22px;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-l);
-  font-style: normal;
-}
-
-.description-secondary {
-  color: var(--color-black-800);
-  line-height: 17px;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-  font-style: normal;
-}
-
 .image {
   width: 170px;
   height: 188px;
