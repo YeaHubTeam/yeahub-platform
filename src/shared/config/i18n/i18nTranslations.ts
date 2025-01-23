@@ -8,6 +8,7 @@ export enum Translation {
 	EDIT = 'edit',
 	DELETE = 'delete',
 	HELLO = 'hello',
+	PROFILE = 'profile',
 	SAVE = 'save',
 	CANCEL = 'cancel',
 	LOGO = 'logo',
@@ -16,6 +17,8 @@ export enum Translation {
 	SUPPORT = 'support',
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
+	/* Header*/
+	HEADER_MENU_CHANGE_PASSWORD = 'header.menu.password',
 	/* Sidebar */
 	SIDEBAR_CLOSE = 'sidebar.close',
 	SIDEBAR_OPEN = 'sidebar.open',
@@ -23,7 +26,6 @@ export enum Translation {
 	SIDEBAR_MENU_PLATFORM = 'sidebar.menu.platform',
 	SIDEBAR_MENU_ADMIN = 'sidebar.menu.admin',
 	SIDEBAR_MENU_SETTINGS = 'sidebar.menu.settings',
-	SIDEBAR_MENU_PROFILE = 'sidebar.menu.profile',
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',

@@ -2,6 +2,13 @@
   justify-content: flex-start;
   padding: 6px 10px;
   border-radius: 12px;
+  color: var(--color-black-1000);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+.button:hover {
+  color: var(--color-purple-800);
 }
 
 .button:focus {

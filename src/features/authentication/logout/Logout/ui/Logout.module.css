@@ -12,5 +12,13 @@
 
 .icon {
   margin-right: 15px;
-  max-width: 24px;
+  width: 21.5px;
+  height: 21.5px;
+}
+
+.button {
+  height: 36px;
+  color: var(--color-black-1000);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
 }

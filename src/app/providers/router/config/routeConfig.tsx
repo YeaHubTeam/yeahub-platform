@@ -84,7 +84,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_PROFILE),
+		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
 	},
 	{

@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import LogoutIcon from '@/shared/assets/icons/logout-icon.svg';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
 import { useLazyLogoutQuery } from '@/entities/auth';
@@ -10,11 +13,12 @@ export const Logout = () => {
 	const onLogout = () => {
 		trigger();
 	};
+	const { t } = useTranslation();
 	return (
 		<div className={styles['button-wrapper']}>
 			<LogoutIcon className={styles.icon} />
 			<Button variant="link" className={styles.button} onClick={onLogout}>
-				Выйти
+				{t(Translation.LOGOUT)}
 			</Button>
 		</div>
 	);

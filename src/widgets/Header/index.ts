@@ -1,2 +1,2 @@
-export { Header } from './ui/Header';
-export { HeaderSkeleton } from './ui/Header.skeleton';
+export { Header } from './ui/HeaderLayout/HeaderLayout';
+export { HeaderSkeleton } from './ui/HeaderLayout/HeaderLayout.skeleton';
