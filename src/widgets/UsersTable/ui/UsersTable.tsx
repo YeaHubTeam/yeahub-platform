@@ -1,8 +1,18 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { User as Users } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
+import { Flex } from '@/shared/ui/Flex';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
@@ -14,6 +24,7 @@ interface UsersTableProps {
 }
 
 export const UsersTable = ({ users }: UsersTableProps) => {
+	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
@@ -46,11 +57,45 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	const renderActions = (user: User) => {
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.users.detail.page, user.id));
+				},
+			},
+		];
+
+		return (
+			<Flex gap="4">
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="go to details"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" />}
+							size="M"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
+				</Popover>
+			</Flex>
+		);
+	};
+
 	if (!users) {
 		return null;
 	}
 
 	return (
-		<Table renderTableHeader={renderTableHeader} renderTableBody={renderTableBody} items={users} />
+		<Table
+			renderTableHeader={renderTableHeader}
+			renderTableBody={renderTableBody}
+			renderActions={renderActions}
+			items={users}
+		/>
 	);
 };
