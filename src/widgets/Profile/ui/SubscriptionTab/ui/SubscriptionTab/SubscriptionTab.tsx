@@ -6,11 +6,18 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { DATE_FORMATS } from '@/shared/constants/dateFormats';
 import { formatDate } from '@/shared/helpers/formatDate';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-import { UnsubscribeButton } from '@/features/subscription/UnsubscribeButton';
+import { useProfileQuery } from '@/entities/auth';
+
+import { AgreementForm } from '@/features/subscription';
+import { UnsubscribeButton } from '@/features/subscription';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { FaqList } from '@/widgets/FaqList';
 
 import { PayHistory } from '../../types/types';
 import { PayHistoryList } from '../PayHistoryList/PayHistoryList';
@@ -19,6 +26,10 @@ import styles from './SubscriptionTab.module.css';
 
 export const SubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
+	const roles = useProfileQuery();
+	const { isMobile } = useScreenSize();
+
+	const hasPremium = roles.data?.userRoles.some((role) => role.name === 'candidate-premium');
 
 	const payHistories: PayHistory[] = [
 		{
@@ -48,6 +59,29 @@ export const SubscriptionTab = () => {
 		},
 	];
 
+	const faqList = [
+		{
+			id: 1,
+			question: t(Subscription.SUBSCRIPTION_FAQ_FIRST_QUESTION),
+			answer: t(Subscription.SUBSCRIPTION_FAQ_FIRST_ANSWER),
+		},
+		{
+			id: 2,
+			question: t(Subscription.SUBSCRIPTION_FAQ_SECOND_QUESTION),
+			answer: t(Subscription.SUBSCRIPTION_FAQ_SECOND_ANSWER),
+		},
+		{
+			id: 3,
+			question: t(Subscription.SUBSCRIPTION_FAQ_THIRD_QUESTION),
+			answer: t(Subscription.SUBSCRIPTION_FAQ_THIRD_ANSWER),
+		},
+		{
+			id: 4,
+			question: t(Subscription.SUBSCRIPTION_FAQ_FOURTH_QUESTION),
+			answer: t(Subscription.SUBSCRIPTION_FAQ_FOURTH_ANSWER),
+		},
+	];
+
 	/**
 	 *  `30` - Общее кол-во дней
 	 *
@@ -59,35 +93,44 @@ export const SubscriptionTab = () => {
 
 	return (
 		<>
-			<Flex gap="20" direction="column" className={styles.wrapper}>
-				<Flex gap="12" direction="column">
-					<Flex gap="12" align="center">
-						<SealCheck className={styles.svg} />
-						<h3 className={styles['card-title']}>{t(Subscription.TARIFF_PREMIUM)}</h3>
+			{hasPremium ? (
+				<>
+					<Flex gap="20" direction="column" className={styles.wrapper}>
+						<Flex gap="12" direction="column">
+							<Flex gap="12" align="center">
+								<SealCheck className={styles.svg} />
+								<h3 className={styles['card-title']}>{t(Subscription.TARIFF_PREMIUM)}</h3>
+							</Flex>
+							<p className={styles.text}>{t(Subscription.SUBSCRIPTION_GREETING)}</p>
+						</Flex>
+						<ProgressBar
+							currentCount={progress}
+							totalCount={30}
+							label={t(Subscription.DAYS_LEFT, { count: 22 })}
+							variant="large"
+						/>
+						<p className={styles.text}>
+							{t(Subscription.SUBSCRIPTION_RENEWAL, {
+								Date: formatDate(parseISO(payHistories[0].payDate), D_MM_YYYY),
+							})}
+						</p>
 					</Flex>
-					<p className={styles.text}>{t(Subscription.SUBSCRIPTION_GREETING)}</p>
+					<div className={styles['actions-button']}>
+						<Flex direction="row" gap="8">
+							<Button variant="outline" size="L" aria-label="Change tariff plan">
+								{t(Subscription.CHANGE_TARIFF_PLAN)}
+							</Button>
+							<UnsubscribeButton />
+						</Flex>
+					</div>
+					<PayHistoryList payHistories={payHistories} />
+				</>
+			) : (
+				<Flex direction="column" gap={isMobile ? '40' : '60'}>
+					<AgreementForm />
+					<FaqList faqList={faqList} />
 				</Flex>
-				<ProgressBar
-					currentCount={progress}
-					totalCount={30}
-					label={t(Subscription.DAYS_LEFT, { count: 22 })}
-					variant="large"
-				/>
-				<p className={styles.text}>
-					{t(Subscription.SUBSCRIPTION_RENEWAL, {
-						Date: formatDate(parseISO(payHistories[0].payDate), D_MM_YYYY),
-					})}
-				</p>
-			</Flex>
-			<div className={styles['actions-button']}>
-				<Flex direction="row" gap="8">
-					<Button variant="outline" size="L" aria-label="Change tariff plan">
-						{t(Subscription.CHANGE_TARIFF_PLAN)}
-					</Button>
-					<UnsubscribeButton />
-				</Flex>
-			</div>
-			<PayHistoryList payHistories={payHistories} />
+			)}
 		</>
 	);
 };
