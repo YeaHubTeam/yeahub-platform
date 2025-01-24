@@ -41,8 +41,4 @@ export const registerSchema = yup.object().shape({
 		.boolean()
 		.oneOf([true], () => i18n.t(Translation.VALIDATION_PRIVACY))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	adConsent: yup
-		.boolean()
-		.oneOf([true], () => i18n.t(Translation.VALIDATION_PRIVACY))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });
