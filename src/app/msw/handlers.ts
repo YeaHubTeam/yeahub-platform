@@ -4,6 +4,7 @@ import { interviewHandlers } from '@/entities/quiz';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
+import { questionEditHandlers } from '@/features/question/editQuestion';
 
 export const handlers = [
 	...authHandlers,
@@ -11,4 +12,5 @@ export const handlers = [
 	...questionHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
+	...questionEditHandlers
 ];
