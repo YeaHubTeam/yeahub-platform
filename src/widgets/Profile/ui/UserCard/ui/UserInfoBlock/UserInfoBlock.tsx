@@ -62,10 +62,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 				<li className={styles['card-address']}>{formatAddress(country, city)}</li>
 			</ul>
 			<div className={styles['card-contacts']}>
-				<h4>
-					{phone}
-					{', '}{' '}
-				</h4>
+				<h4>{phone ? `${phone}, ` : ''}</h4>
 
 				{isEmailVerified ? (
 					<Flex align="center" gap="4">

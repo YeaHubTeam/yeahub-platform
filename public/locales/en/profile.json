@@ -40,7 +40,7 @@
   },
   "form": {
     "firstname": "Name",
-    "lastName": "Last name",
+    "lastname": "Last name",
     "specialization": "IT specialty",
     "phone": "Contact number",
     "email": "Email for communication",
