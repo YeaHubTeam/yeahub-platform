@@ -15,11 +15,13 @@ export const Logout = () => {
 	};
 	const { t } = useTranslation();
 	return (
-		<div className={styles['button-wrapper']}>
-			<LogoutIcon className={styles.icon} />
-			<Button variant="link" className={styles.button} onClick={onLogout}>
-				{t(Translation.LOGOUT)}
-			</Button>
-		</div>
+		<Button
+			variant="link"
+			className={styles.button}
+			onClick={onLogout}
+			preffix={<LogoutIcon className={styles.icon} />}
+		>
+			{t(Translation.LOGOUT)}
+		</Button>
 	);
 };

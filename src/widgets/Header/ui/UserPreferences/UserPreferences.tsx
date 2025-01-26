@@ -1,14 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Text } from 'yeahub-ui-kit';
 
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+import { Popover, PopoverMenu, PopoverMenuItem } from '@/shared/ui/Popover';
+import { Text } from '@/shared/ui/Text';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import { Logout } from '@/features/authentication/logout/Logout';
 
@@ -17,14 +18,11 @@ import { UserPreferencesHeader } from '../UserPreferencesHeader/UserPreferencesH
 import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
-	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
 	const navigate = useNavigate();
 
 	const { t } = useTranslation();
 	const userMenuItems: PopoverMenuItem[] = [
-		{
-			renderComponent: () => <UserPreferencesHeader />,
-		},
 		{
 			title: i18n.t(Translation.PROFILE),
 			onClick: () => {
@@ -44,25 +42,24 @@ export const UserPreferences = () => {
 
 	return (
 		<div className={styles['popover-additional']}>
-			<Popover menuItems={userMenuItems}>
+			<Popover
+				body={({ onToggle }) => (
+					<>
+						<UserPreferencesHeader />
+						<PopoverMenu menuItems={userMenuItems} onToggleOpenPopover={onToggle} />
+					</>
+				)}
+			>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
-						{isSuccessGetProfile && (
-							<>
-								<Text text={profile?.firstName} />
-								<div className={styles.avatar}>
-									{profile.avatarUrl ? (
-										<img
-											className={styles.img}
-											src={profile.avatarUrl}
-											alt={t(Translation.AVATAR)}
-										/>
-									) : (
-										<AvatarWithoutPhoto />
-									)}
-								</div>
-							</>
-						)}
+						<Text variant={'body2'}>{profile?.firstName}</Text>
+						<div className={styles.avatar}>
+							{profile.avatarUrl ? (
+								<img className={styles.img} src={profile.avatarUrl} alt={t(Translation.AVATAR)} />
+							) : (
+								<AvatarWithoutPhoto />
+							)}
+						</div>
 					</button>
 				)}
 			</Popover>

@@ -1,6 +1,7 @@
 .button {
   justify-content: flex-start;
   padding: 6px 10px;
+  height: 38px;
   border-radius: 12px;
   color: var(--color-black-1000);
   font-weight: var(--font-weight-500);
