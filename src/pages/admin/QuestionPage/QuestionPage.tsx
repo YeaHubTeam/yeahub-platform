@@ -61,7 +61,7 @@ export const QuestionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={
+				body={() => (
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
@@ -74,7 +74,7 @@ export const QuestionPage = () => {
 							/>
 						</Card>
 					</div>
-				}
+				)}
 			>
 				{({ onToggle, isOpen }) => (
 					<div>
