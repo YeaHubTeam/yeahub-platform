@@ -18,3 +18,8 @@ export interface Collection {
 	specializations: Specialization[];
 	tariff: CollectionTariff;
 }
+
+export type CreateOrEditCollectionFormValues = Pick<
+	Collection,
+	'id' | 'title' | 'description' | 'imageSrc'
+> & { paidOrFree: 'paid' | 'free'; questions: number[] };
