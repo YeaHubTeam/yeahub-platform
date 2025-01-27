@@ -91,17 +91,19 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 					>
 						<span>{t(Translation.SUPPORT, { ns: i18Namespace.translation })}</span>
 					</Button>
-					<Button
-						className={classNames(styles['sidebar-bottom-button'], {
-							[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
-						})}
-						size="L"
-						onClick={onLogout}
-						preffix={<SignOutIcon isCurrentColor />}
-						variant="destructive"
-					>
-						<span>{t(Translation.LOGOUT, { ns: i18Namespace.translation })}</span>
-					</Button>
+					{(isMobile || isTablet) && (
+						<Button
+							className={classNames(styles['sidebar-bottom-button'], {
+								[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
+							})}
+							size="L"
+							onClick={onLogout}
+							preffix={<SignOutIcon isCurrentColor />}
+							variant="destructive"
+						>
+							<span>{t(Translation.LOGOUT, { ns: i18Namespace.translation })}</span>
+						</Button>
+					)}
 				</Flex>
 			</Flex>
 		</aside>

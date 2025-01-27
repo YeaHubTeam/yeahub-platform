@@ -1,9 +1,9 @@
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import { UserPreferencesSkeleton } from '@/features/common/user-preferences';
+import { UserPreferencesSkeleton } from '../UserPreferences/UserPreferences.skeleton';
 
-import styles from './Header.module.css';
+import styles from './HeaderLayout.module.css';
 
 export const HeaderSkeleton = () => {
 	const { isMobile, isTablet } = useScreenSize();

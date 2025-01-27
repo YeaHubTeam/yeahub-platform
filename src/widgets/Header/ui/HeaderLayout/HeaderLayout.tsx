@@ -7,9 +7,9 @@ import { AppLogo } from '@/shared/ui/AppLogo';
 // import { ThemeSwitcher } from '@/features/theme/switch-theme';
 import { IconButton } from '@/shared/ui/IconButton';
 
-import { UserPreferences } from '@/features/common/user-preferences';
+import { UserPreferences } from '../UserPreferences/UserPreferences';
 
-import styles from './Header.module.css';
+import styles from './HeaderLayout.module.css';
 
 interface HeaderProps {
 	onOpenSidebarDrawer: () => void;
