@@ -9,8 +9,6 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { SubscribeButton } from '@/features/subscription/ui/SubscribeButton';
-
 import { Subscription } from '../../model/types/subscription';
 
 import styles from './SubscriptionCard.module.css';
@@ -18,9 +16,14 @@ import styles from './SubscriptionCard.module.css';
 interface SubscriptionCardProps {
 	subscription: Subscription;
 	className?: string;
+	renderSubscribeButton: () => React.ReactNode;
 }
 
-export const SubscriptionCard = ({ subscription, className }: SubscriptionCardProps) => {
+export const SubscriptionCard = ({
+	subscription,
+	className,
+	renderSubscribeButton,
+}: SubscriptionCardProps) => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);
 	const { isMobile, isTablet } = useScreenSize();
 
@@ -77,9 +80,7 @@ export const SubscriptionCard = ({ subscription, className }: SubscriptionCardPr
 						</Flex>
 					))}
 				</Flex>
-				{subscription.hasSubscribeButton && (
-					<SubscribeButton id={subscription.id} className={styles['subscription-button']} />
-				)}
+				{subscription.hasSubscribeButton && renderSubscribeButton()}
 			</Flex>
 		</Card>
 	);

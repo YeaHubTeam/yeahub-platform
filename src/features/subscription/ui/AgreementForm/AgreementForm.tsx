@@ -18,6 +18,7 @@ import { SubscriptionCard } from '@/entities/subscription';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
+import { SubscribeButton } from '../SubscribeButton';
 
 import styles from './AgreementForm.module.css';
 
@@ -109,8 +110,20 @@ export const AgreementForm = () => {
 					</Text>
 				</Flex>
 				<Flex gap="20" className={styles['subscription-cards']}>
-					<SubscriptionCard subscription={subscriptions[0]} className={styles.free} />
-					<SubscriptionCard subscription={subscriptions[1]} className={styles.premium} />
+					<SubscriptionCard
+						subscription={subscriptions[0]}
+						renderSubscribeButton={() => (
+							<SubscribeButton id={subscriptions[0].id} className={styles['subscription-button']} />
+						)}
+						className={styles.free}
+					/>
+					<SubscriptionCard
+						subscription={subscriptions[1]}
+						renderSubscribeButton={() => (
+							<SubscribeButton id={subscriptions[1].id} className={styles['subscription-button']} />
+						)}
+						className={styles.premium}
+					/>
 				</Flex>
 				<Flex direction="column" gap="16">
 					<Text variant="body1" color="black-600">

@@ -7,12 +7,12 @@ import { Button } from '@/shared/ui/Button';
 
 import { SubscriptionAgreeFormValues } from '../../../model/types/subscriptionAgreeTypes';
 
-interface SubscribeProps {
+interface SubscribeButtonProps {
 	className?: string;
 	id: number;
 }
 
-export const SubscribeButton = ({ className, id }: SubscribeProps) => {
+export const SubscribeButton = ({ className, id }: SubscribeButtonProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 
 	const { handleSubmit, reset } = useFormContext<SubscriptionAgreeFormValues>();

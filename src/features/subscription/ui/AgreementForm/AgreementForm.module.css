@@ -65,6 +65,11 @@
   background-color: var(--color-white-900);
 }
 
+.subscription-button {
+  margin-top: 24px;
+}
+
+
 @media (width <= 1024px) {
   .free {
     min-width: 222px;
@@ -76,6 +81,11 @@
 
   .subscription-cards {
     margin: 20px 0;
+  }
+
+  
+  .subscription-button {
+    margin-top: 37px;
   }
 }
 
@@ -90,5 +100,10 @@
     width: 100%;
     min-width: 328px;
     max-width: none;
+  }
+
+  
+  .subscription-button {
+    margin-top: 20px;
   }
 }

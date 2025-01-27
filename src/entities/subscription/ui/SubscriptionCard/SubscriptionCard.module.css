@@ -52,10 +52,6 @@
   margin-top: 24px;
 }
 
-.subscription-button {
-  margin-top: 24px;
-}
-
 .advantages-and-button-container {
   flex-direction: column;
 }
@@ -69,18 +65,10 @@
   .subscription {
     min-width: 222px;
   }
-
-  .subscription-button {
-    margin-top: 37px;
-  }
 }
 
 @media (width <= 768px) {
   .advantages-and-button-container {
     flex-direction: column-reverse;
-  }
-
-  .subscription-button {
-    margin-top: 20px;
   }
 }
