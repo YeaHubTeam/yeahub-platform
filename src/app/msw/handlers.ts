@@ -7,6 +7,7 @@ import { specializationHandlers } from '@/entities/specialization';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
+import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 
 export const handlers = [
@@ -20,4 +21,5 @@ export const handlers = [
 	...skillHandlers,
 	...questionEditHandlers,
 	...specializationDeleteHandlers,
+	...specializationCreateHandlers,
 ];
