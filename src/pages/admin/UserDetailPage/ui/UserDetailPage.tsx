@@ -5,6 +5,7 @@ import { BackButton } from '@/shared/ui/BackButton';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUserByIdQuery, UserCard } from '@/entities/user';
+
 import { UserFormValues } from '../model/types/userCreateTypes';
 
 /**

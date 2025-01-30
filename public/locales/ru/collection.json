@@ -21,9 +21,17 @@
     "paid": "Для участников",
     "free": "Для всех"
   },
+  "specialization": {
+    "title": "Специализация",
+    "label": "Выберите соответствующую специализацию"
+  },
+  "keywords": {
+    "title": "Ключевые слова",
+    "label": "Добавьте ключевые слова в текст"
+  },
   "access": "Доступ:",
-  "specialization": "Специализация:",
-  "keywords": "Ключевые слова:",
+  "specializationAdditional": "Специализация:",
+  "keywordsAdditional": "Ключевые слова:",
   "questions": {
     "short": "Вопросы", 
     "label": "Добавьте вопросы",

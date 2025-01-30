@@ -48,6 +48,17 @@
   font-size: var(--font-size-p-s);
 }
 
+.label {
+  color: var(--text-color-the-lightest);
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-xsmall);
+  font-style: normal;
+}
+
+.titles {
+  width: 135px;
+}
+
 .textarea {
   display: block;
   margin-top: 20px;

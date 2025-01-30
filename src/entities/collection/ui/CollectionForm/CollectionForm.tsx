@@ -11,7 +11,13 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
 
 import styles from './CollectionForm.module.css';
 
@@ -117,6 +123,36 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 							/>
 							{t(Collections.TARIFF_FREE)}
 						</Label>
+					</Flex>
+				</Flex>
+				<Flex gap={'32'}>
+					<Flex direction="column" className={styles.titles}>
+						<Text title={t(Collections.SPECIALIZATION_TITLE)} />
+						<Text text={t(Collections.SPECIALIZATION_LABEL)} className={styles.label} />
+					</Flex>
+					<FormControl name="specializations" control={control}>
+						{({ onChange, value }) => (
+							<div className={styles.select}>
+								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							</div>
+						)}
+					</FormControl>
+				</Flex>
+				<Flex gap={'32'}>
+					<Flex gap={'32'}>
+						<Flex direction="column" className={styles.titles}>
+							<Text title={t(Collections.KEYWORDS_TITLE)} />
+							<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.label} />
+						</Flex>
+						<FormControl name="keywords" control={control}>
+							{({ onChange, value }) => {
+								return (
+									<div className={styles.select}>
+										<KeywordInput value={value} onChange={onChange} />
+									</div>
+								);
+							}}
+						</FormControl>
 					</Flex>
 				</Flex>
 				<ChooseQuestionsDrawer
