@@ -3,43 +3,38 @@ import { useTranslation } from 'react-i18next';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { DATE_FORMATS } from '@/shared/constants/dateFormats';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { getFullProfile } from '@/entities/profile';
+import { calculatingRemainingSubscription } from '@/shared/utils/calculatingRemainingSubscription';
+
+import { useGetUserSubscriptionQuery } from '@/entities/subscription';
 
 import { UnsubscribeButton } from '@/features/subscription/UnsubscribeButton';
 
 import { PayHistory } from '../../types/types';
+import type { PremiumSubscriptionTabProps } from '../../types/types';
 import { PayHistoryList } from '../PayHistoryList/PayHistoryList';
 
 import styles from './PremiumSubscriptionTab.module.css';
-import { useGetUserSubscriptionQuery } from '@/entities/subscription/api/subscriptionApi';
-import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 
 const progress = 20;
 
 const { D_MM_YYYY } = DATE_FORMATS;
 
-export const PremiumSubscriptionTab = ({}) => {
+export const PremiumSubscriptionTab = ({ userId }: PremiumSubscriptionTabProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const profile = useAppSelector(getFullProfile);
+	const totalCount = 30;
 
-	const userId = profile?.id;
-	const { data } = useGetUserSubscriptionQuery(userId!);
-	const subscriptionCreateDate: string | undefined = data?.[0]?.createDate;
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const responseUserSubscription = userId ? useGetUserSubscriptionQuery(userId) : undefined;
 
-	const beenDays = new Date().getTime() - new Date(subscriptionCreateDate!).getTime();
-	const thirtyDaysInMilliseconds = 2592000000;
-
-	const timeDifference =
-		thirtyDaysInMilliseconds - beenDays === 0
-			? thirtyDaysInMilliseconds
-			: thirtyDaysInMilliseconds - beenDays;
-	const remainingSubscriptionDays = Math.round(timeDifference / (1000 * 3600 * 24));
+	const remainingSubscriptionDays = responseUserSubscription?.data
+		? calculatingRemainingSubscription(responseUserSubscription?.data)
+		: null;
 
 	const payHistories: PayHistory[] = [
 		{
@@ -69,7 +64,7 @@ export const PremiumSubscriptionTab = ({}) => {
 		},
 	];
 
-	return (
+	return remainingSubscriptionDays ? (
 		<>
 			<Flex gap="20" direction="column" className={styles.wrapper}>
 				<Flex gap="12" direction="column">
@@ -81,7 +76,7 @@ export const PremiumSubscriptionTab = ({}) => {
 				</Flex>
 				<ProgressBar
 					currentCount={progress}
-					totalCount={30}
+					totalCount={totalCount}
 					label={t(Subscription.DAYS_LEFT, { count: remainingSubscriptionDays })}
 					variant="large"
 				/>
@@ -101,5 +96,7 @@ export const PremiumSubscriptionTab = ({}) => {
 			</div>
 			<PayHistoryList payHistories={payHistories} />
 		</>
+	) : (
+		<></>
 	);
 };

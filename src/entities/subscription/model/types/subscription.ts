@@ -14,25 +14,27 @@ export type SubscriptionPermissions = {
 	name: string;
 };
 
+export type SubscriptionRoles = {
+	id: number;
+	name: string;
+	permissions: SubscriptionPermissions[];
+};
+
+export type RootSubscriptionAUserSubscription = {
+	id: number;
+	name: string;
+	pricePerMonth: number;
+	description: boolean;
+	roles: SubscriptionRoles[];
+};
+
 export interface UserSubscription {
 	id: string;
-	createDate?: string | undefined;
+	createDate?: string;
 	endDate?: string;
 	subscriptionId: number;
 	userId: string;
-	subscription: {
-		id: number;
-		name: string;
-		pricePerMonth: number;
-		description: boolean;
-		roles: [
-			{
-				id: number;
-				name: string;
-				permissions: SubscriptionPermissions[];
-			},
-		];
-	};
+	subscription: RootSubscriptionAUserSubscription;
 }
 
-export type GetUserSubscriptionRespons = UserSubscription[] | undefined;
+export type GetUserSubscriptionResponse = UserSubscription[];

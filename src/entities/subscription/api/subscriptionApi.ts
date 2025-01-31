@@ -1,16 +1,17 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { subscriptionApiUrls } from '../model/constants/subscriptionConstants';
-import type { GetUserSubscriptionRespons } from '../model/types/subscription';
 import { route } from '@/shared/helpers/route';
+
+import type { GetUserSubscriptionResponse } from '../';
+import { subscriptionApiUrls } from '../model/constants/subscriptionConstants';
 
 export const subscriptionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getUserSubscription: build.query<GetUserSubscriptionRespons, string>({
+		getUserSubscription: build.query<GetUserSubscriptionResponse, string>({
 			query: (userId) => ({
-				url: route(subscriptionApiUrls.getUserSubstriction, userId),
+				url: route(subscriptionApiUrls.getUserSubscription, userId),
 			}),
-			providesTags: [ApiTags.SUBSTRICTIONS],
+			providesTags: [ApiTags.SUBSCRIPTIONS],
 		}),
 	}),
 });

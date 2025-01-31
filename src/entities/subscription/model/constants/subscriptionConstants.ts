@@ -1,3 +1,3 @@
 export const subscriptionApiUrls = {
-	getUserSubstriction: '/subscriptions/users/:userId',
+	getUserSubscription: '/subscriptions/users/:userId',
 };

@@ -1,2 +1,8 @@
 export { SubscriptionCard } from './ui/SubscriptionCard/SubscriptionCard';
-export type { Subscription } from './model/types/subscription';
+export { useGetUserSubscriptionQuery } from './api/subscriptionApi';
+export { subscriptionApiUrls } from './model/constants/subscriptionConstants';
+export type {
+	Subscription,
+	GetUserSubscriptionResponse,
+	UserSubscription,
+} from './model/types/subscription';
