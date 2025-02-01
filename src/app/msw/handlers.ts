@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { questionHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
+import { skillHandlers } from '@/entities/skill';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
@@ -12,5 +13,6 @@ export const handlers = [
 	...questionHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
-	...questionEditHandlers
+	...questionEditHandlers,
+	...skillHandlers,
 ];
