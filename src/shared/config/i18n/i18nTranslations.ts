@@ -506,11 +506,33 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
+	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
+	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
+	SUBSCRIPTION_FAQ_SECOND_QUESTION = 'faq.second.question',
+	SUBSCRIPTION_FAQ_SECOND_ANSWER = 'faq.second.answer',
+	SUBSCRIPTION_FAQ_THIRD_QUESTION = 'faq.third.question',
+	SUBSCRIPTION_FAQ_THIRD_ANSWER = 'faq.third.answer',
+	SUBSCRIPTION_FAQ_FOURTH_QUESTION = 'faq.fourth.question',
+	SUBSCRIPTION_FAQ_FOURTH_ANSWER = 'faq.fourth.answer',
 }
 
 export enum SubscriptionCard {
-	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_TITLE = 'subscription.title',
+	SUBSCRIPTION_DESCRIPTION = 'subscription.description',
 	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+	SUBSCRIPTION_CARD_ADVANTAGES_FIRST = 'subscription.advantages.first',
+	SUBSCRIPTION_CARD_ADVANTAGES_SECOND = 'subscription.advantages.second',
+	SUBSCRIPTION_CARD_ADVANTAGES_THIRD = 'subscription.advantages.third',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_FREE = 'subscription.advantages.fourth.free',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_PAID = 'subscription.advantages.fourth.paid',
+	SUBSCRIPTION_CARD_FREE_TITLE = 'subscription.free.title',
+	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
+	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
+	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
+	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
+	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
 }
 
 export enum Docs {

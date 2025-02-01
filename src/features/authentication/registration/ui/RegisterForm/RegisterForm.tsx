@@ -15,6 +15,7 @@ import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
+import { parseI18nText } from '@/shared/utils/parseI18nText';
 
 import { SignUpFormValues, useRegisterMutation } from '@/entities/auth';
 
@@ -39,8 +40,6 @@ export const RegisterForm = () => {
 	};
 
 	const { t } = useTranslation(i18Namespace.auth);
-
-	const parseI18nText = (text: string) => text.split(/<processingLink>|<\/processingLink>/);
 
 	const privacyPolicyParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_POLICY));
 	const offerAgreementParts = parseI18nText(t(Auth.REGISTRATION_PRIVACY_OFFER_AGREEMENT));
