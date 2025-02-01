@@ -63,6 +63,6 @@ export const specializationsMock: Response<Specialization[]> = {
 		},
 	],
 	page: 1,
-	limit: 10,
-	total: 30,
+	limit: 5,
+	total: 7,
 };
