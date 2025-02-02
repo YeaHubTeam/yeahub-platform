@@ -6,13 +6,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { User as Users } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-
-import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
-
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';

@@ -1,6 +1,6 @@
 import { collectionsMock } from '@/entities/collection';
 
-import { CollectionEditForm } from '@/features/collections/editCollection/ui/CollectionEditForm/CollectionEditForm';
+import { CollectionEditForm } from '@/features/collections/editCollection';
 
 const CollectionEditPage = () => {
 	// const { questionId } = useParams<{ questionId: string }>();

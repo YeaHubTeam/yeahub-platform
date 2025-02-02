@@ -1,12 +1,13 @@
 import { authHandlers } from '@/entities/auth';
 import { questionHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
-import { specializationHandlers } from '@/entities/specialization';
 import { skillHandlers } from '@/entities/skill';
+import { specializationHandlers } from '@/entities/specialization';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
+import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 
 export const handlers = [
 	...authHandlers,
@@ -17,4 +18,6 @@ export const handlers = [
 	...questionDeleteHandlers,
 	...questionEditHandlers,
 	...skillHandlers,
+	...questionEditHandlers,
+	...specializationDeleteHandlers,
 ];

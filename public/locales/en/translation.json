@@ -19,8 +19,8 @@
   "support": "Support",
   "total.questions": "Total questions",
   "back.button": "Go back to the previous page",
-  "header":{
-    "menu":{
+  "header": {
+    "menu": {
       "password": "Change password"
     }
   },
