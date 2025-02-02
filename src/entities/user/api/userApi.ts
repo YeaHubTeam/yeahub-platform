@@ -31,11 +31,29 @@ const userApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.ROLES],
 		}),
+		addUserRoles: build.mutation<void, { userId: string; roles: number[] }>({
+			query: ({ userId, roles }) => ({
+				url: route(userApiUrls.addUserRoles, userId),
+				method: 'POST',
+				body: { roles },
+			}),
+			invalidatesTags: [ApiTags.USER_DETAIL],
+		}),
+		removeUserRoles: build.mutation<void, { userId: string; roles: number[] }>({
+			query: ({ userId, roles }) => ({
+				url: route(userApiUrls.removeUserRoles, userId),
+				method: 'DELETE',
+				body: { roles },
+			}),
+			invalidatesTags: [ApiTags.USER_DETAIL],
+		}),
 	}),
 });
 
 export const {
-    useGetUsersListQuery,
-    useGetUserByIdQuery,
-    useGetUserRolesListQuery,
+	useGetUsersListQuery,
+	useGetUserByIdQuery,
+	useGetUserRolesListQuery,
+	useAddUserRolesMutation,
+	useRemoveUserRolesMutation,
 } = userApi;
