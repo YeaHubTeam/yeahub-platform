@@ -15,6 +15,7 @@ export const deleteSpecializationMock = http.delete(
 
 		if (index !== 1) {
 			specializationsMock.data.splice(index, 1);
+			specializationsMock.total = specializationsMock.total - 1;
 		}
 
 		return new Response();
