@@ -20,6 +20,9 @@ export type GetSkillsListParamsRequest = {
 };
 export type GetSkillsListResponse = Response<Skill[]>;
 
+export type GetSkillByIdParamsRequest = {
+	skillId: string;
+};
 export type GetSkillByIdResponse = Skill;
 
 export type CreateOrEditSkillFormValues = Pick<

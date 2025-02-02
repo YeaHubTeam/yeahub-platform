@@ -20,7 +20,7 @@ import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 const SkillDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { skillId } = useParams<{ skillId: string }>();
-	const { data: skill } = useGetSkillByIdQuery(skillId as string);
+	const { data: skill } = useGetSkillByIdQuery({ skillId: skillId! });
 
 	if (!skill) {
 		return null;

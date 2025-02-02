@@ -26,7 +26,7 @@ export const CollectionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={({}) => (
+				body={() => (
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
