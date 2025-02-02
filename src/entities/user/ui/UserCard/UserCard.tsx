@@ -11,21 +11,25 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
+import { Text } from '@/shared/ui/Text';
 
+import { useGetUserRolesListQuery } from '../../api/userApi';
 import { User } from '../../model/types/user';
 import { RoleSelect } from '../RoleSelect/RoleSelect';
 
 import styles from './UserCard.module.css';
-import { Text } from '@/shared/ui/Text';
 
 interface UserCardProps {
 	user: User;
+	disabledEditRole?: boolean;
 }
 
-export const UserCard = ({ user }: UserCardProps) => {
+export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const { control } = useFormContext();
+
+	const { data: availableRoles = [] } = useGetUserRolesListQuery();
 
 	const userRoleIds = user.userRoles.map((role) => role.id);
 
@@ -33,14 +37,18 @@ export const UserCard = ({ user }: UserCardProps) => {
 		<Flex direction="column" maxWidth>
 			<Card withOutsideShadow>
 				<Flex direction="column" gap="28">
-					<Text variant='body5-strong'>{t(Users.USER_NAME)}</Text>
+					<Text variant="body5-strong">{t(Users.USER_NAME)}</Text>
 					<Flex direction="column" gap="60">
 						<Flex align="center" gap="120">
-							<Text variant='body4' color="black-800" width={246}>{t(Users.FULL_NAME)}</Text>
+							<Text variant="body4" color="black-800" width={246}>
+								{t(Users.FULL_NAME)}
+							</Text>
 							<Input disabled type="text" placeholder={`${user.firstName} ${user.lastName}`} />
 						</Flex>
 						<Flex gap="120">
-							<Text variant='body4' color="black-800" width={246}>{t(Users.AVATAR)}</Text>
+							<Text variant="body4" color="black-800" width={246}>
+								{t(Users.AVATAR)}
+							</Text>
 							{user.avatarUrl ? (
 								<img className={styles['image']} src={user.avatarUrl} alt={t(Translation.AVATAR)} />
 							) : (
@@ -51,8 +59,10 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 						<Flex gap="120">
 							<Flex direction="column" gap="8">
-								<Text variant='body4' color="black-800" width={246}>{t(Users.SELECT_ROLE_TITLE)}</Text>
-								<Text variant='body2' color="black-800" width={246}>
+								<Text variant="body4" color="black-800" width={246}>
+									{t(Users.SELECT_ROLE_TITLE)}
+								</Text>
+								<Text variant="body2" color="black-800" width={246}>
 									{t(Users.SELECT_ROLE_LABEL)}
 								</Text>
 							</Flex>
@@ -61,10 +71,10 @@ export const UserCard = ({ user }: UserCardProps) => {
 									{({ onChange, value }) => (
 										<div className={styles.select}>
 											<RoleSelect
-												availableRoles={user.userRoles}
+												availableRoles={availableRoles}
 												value={value || userRoleIds}
 												onChange={onChange}
-												disabled={true}
+												disabled={disabledEditRole}
 												hasMultiple
 											/>
 										</div>
@@ -74,8 +84,12 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 						<Flex align="center" gap="120">
 							<Flex direction="column" gap="8">
-								<Text variant='body4' color="black-800" width={246}>{t(Users.CONFIRM_EMAIL_TITLE)}</Text>
-								<Text variant='body2' color="black-800" width={246}>{t(Users.CONFIRM_EMAIL_LABEL)}</Text>
+								<Text variant="body4" color="black-800" width={246}>
+									{t(Users.CONFIRM_EMAIL_TITLE)}
+								</Text>
+								<Text variant="body2" color="black-800" width={246}>
+									{t(Users.CONFIRM_EMAIL_LABEL)}
+								</Text>
 							</Flex>
 							<Flex align="center" gap="10">
 								<Switch
@@ -83,7 +97,7 @@ export const UserCard = ({ user }: UserCardProps) => {
 									checked={user.isEmailVerified ?? false}
 									onChange={() => {}}
 								/>
-								<Text variant='body2' color="black-800" width={246}>
+								<Text variant="body2" color="black-800" width={246}>
 									{user.isEmailVerified
 										? t(Users.CONFIRM_EMAIL_CONFIRM)
 										: t(Users.CONFIRM_EMAIL_UNCONFIRM)}
@@ -91,11 +105,15 @@ export const UserCard = ({ user }: UserCardProps) => {
 							</Flex>
 						</Flex>
 						<Flex align="center" gap="120">
-							<Text variant='body4' color="black-800" width={246}>{t(Users.EMAIL)}</Text>
+							<Text variant="body4" color="black-800" width={246}>
+								{t(Users.EMAIL)}
+							</Text>
 							<Input disabled type="text" placeholder={user.email} />
 						</Flex>
 						<Flex gap="120">
-							<Text variant='body4' color="black-800" width={246}>{t(Users.ADDRESS)}</Text>
+							<Text variant="body4" color="black-800" width={246}>
+								{t(Users.ADDRESS)}
+							</Text>
 							<Flex direction="column" gap="20">
 								<Input disabled type="text" placeholder={user.country} />
 								<Input disabled type="text" placeholder={user.city} />
@@ -104,7 +122,9 @@ export const UserCard = ({ user }: UserCardProps) => {
 						</Flex>
 					</Flex>
 					<Flex align="center" gap="120">
-						<Text variant='body4' color="black-800" width={246}>{t(Users.BIRTH_DATE)}</Text>
+						<Text variant="body4" color="black-800" width={246}>
+							{t(Users.BIRTH_DATE)}
+						</Text>
 						<Input
 							disabled
 							type="text"
@@ -112,7 +132,9 @@ export const UserCard = ({ user }: UserCardProps) => {
 						/>
 					</Flex>
 					<Flex align="center" gap="120">
-						<Text variant='body4' color="black-800" width={246}>{t(Users.REGISTRATION_DATE)}</Text>
+						<Text variant="body4" color="black-800" width={246}>
+							{t(Users.REGISTRATION_DATE)}
+						</Text>
 						<Input
 							disabled
 							type="text"

@@ -36,6 +36,7 @@ import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { UserDetailPage } from '@/pages/admin/UserDetailPage';
+import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -268,6 +269,10 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.users.detail.route,
 								element: <UserDetailPage />,
+							},
+							{
+								path: ROUTES.admin.users.edit.route,
+								element: <UserEditPage />,
 							},
 						],
 					},

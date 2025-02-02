@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { i18Namespace } from '@/shared/config/i18n';
 import { User } from '@/shared/config/i18n/i18nTranslations';
-import { SelectWithChips } from '@/shared/ui/SelectWithChips';
-import { UserRole } from '../../model/types/user';
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+
+import { UserRole } from '../../model/types/user';
 
 import styles from './RoleSelect.module.css';
 
@@ -34,13 +36,17 @@ export const RoleSelect = ({
 		const updatedRoles = [...value, Number(roleId)];
 		onChange(updatedRoles);
 	};
+	const handleDeleteItem = (roleId: number) => () => {
+		const updatedRoles = value.filter((id) => id !== roleId);
+		onChange(updatedRoles);
+	};
 
 	const roleOptions = useMemo(
 		() =>
 			availableRoles
 				.filter((role) => !value.includes(role.id))
 				.map((role) => ({
-					label: role.name,
+					label: t(User[convertRoleNameToEnumKey(role.name)]),
 					value: role.id.toString(),
 				})),
 		[availableRoles, value],
@@ -64,7 +70,7 @@ export const RoleSelect = ({
 				options={roleOptions}
 				onChange={handleChange}
 				selectedItems={value}
-				handleDeleteItem={() => () => {}}
+				handleDeleteItem={handleDeleteItem}
 				itemsDictionary={rolesDictionary}
 				placeholder={t(User.SELECT_CHOOSE)}
 				disabled={disabled}
