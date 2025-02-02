@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -20,11 +20,10 @@ export const SpecializationCreateFormHeader = () => {
 	};
 
 	return (
-		<Flex align="center" gap="8">
+		<Flex align="center" gap="8" justify={'between'}>
 			<BackButton />
-			<h1>{t(Specializations.CREATE_PAGE_TITLE)}</h1>
 			<Button disabled={isLoading} onClick={handleSubmit(onCreateSpecialization)}>
-				{t(Translation.CREATE, { ns: i18Namespace.translation })}
+				{t(Translation.SAVE, { ns: 'translation' })}
 			</Button>
 		</Flex>
 	);
