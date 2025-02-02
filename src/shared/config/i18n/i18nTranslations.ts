@@ -440,8 +440,6 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
-	ADDITIONAL_INFO_SPECIALIZATION = 'specializationAdditional',
-	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',

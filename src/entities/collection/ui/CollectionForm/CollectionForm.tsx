@@ -144,7 +144,7 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 							<Text title={t(Collections.KEYWORDS_TITLE)} />
 							<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.label} />
 						</Flex>
-						<FormControl name="keywords" control={control}>
+						<FormControl name="keywordsCollection" control={control}>
 							{({ onChange, value }) => {
 								return (
 									<div className={styles.select}>

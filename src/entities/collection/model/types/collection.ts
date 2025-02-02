@@ -21,5 +21,9 @@ export interface Collection {
 
 export type CreateOrEditCollectionFormValues = Pick<
 	Collection,
-	'id' | 'title' | 'description' | 'imageSrc'
-> & { paidOrFree: 'paid' | 'free'; questions: number[] };
+	'id' | 'title' | 'description' | 'imageSrc' | 'keywordsCollection'
+> & {
+	paidOrFree: 'paid' | 'free';
+	questions: number[];
+	specializations: number[];
+};

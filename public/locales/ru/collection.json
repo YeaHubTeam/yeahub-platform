@@ -30,10 +30,8 @@
     "label": "Добавьте ключевые слова в текст"
   },
   "access": "Доступ:",
-  "specializationAdditional": "Специализация:",
-  "keywordsAdditional": "Ключевые слова:",
   "questions": {
-    "short": "Вопросы", 
+    "short": "Вопросы",
     "label": "Добавьте вопросы",
     "selected": "Выбранные вопросы: {{count}}"
   },
