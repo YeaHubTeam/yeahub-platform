@@ -34,8 +34,4 @@ const userApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const {
-    useGetUsersListQuery,
-    useGetUserByIdQuery,
-    useGetUserRolesListQuery,
-} = userApi;
+export const { useGetUsersListQuery, useGetUserByIdQuery, useGetUserRolesListQuery } = userApi;

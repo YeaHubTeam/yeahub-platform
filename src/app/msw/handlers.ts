@@ -15,6 +15,6 @@ export const handlers = [
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
 	...questionEditHandlers,
-	
+
 	...specializationDeleteHandlers,
 ];

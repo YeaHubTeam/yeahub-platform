@@ -1,1 +1,1 @@
-export { specializationsMock } from "./specializationsMock";
+export { specializationsMock } from './specializationsMock';
