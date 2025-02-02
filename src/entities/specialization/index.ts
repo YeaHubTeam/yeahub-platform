@@ -11,4 +11,6 @@ export { SpecializationForm } from './ui/SpecializationForm/SpecializationForm';
 export { SpecializationSelect } from './ui/SpecializationSelect/SpecializationSelect';
 export { getSpecializationDefaultIcon } from './utils/getSpecializationDefaultIcon';
 
+export { specializationHandlers } from './api/__mocks__';
+
 export { specializationsMock } from './api/__mocks__/data';
