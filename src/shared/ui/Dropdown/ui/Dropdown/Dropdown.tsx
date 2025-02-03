@@ -1,112 +1,89 @@
+import classNames from 'classnames';
 import React, { useState, useRef, useEffect } from 'react';
 
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
-import { Input } from '@/shared/ui/Input';
+import Lens from '@/shared/assets/icons/Magnifer.svg';
 
-import { DropdownOptionType, Size } from '../../model/DropdownTypes';
-import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import { DropdownSize } from '../../model/DropdownTypes';
+import { OptionProps } from '../Option/Option';
+import { Select } from '../Select/Select';
 
 import styles from './Dropdown.module.css';
 
 interface DropdownProps
-	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onChange'> {
-	label: string;
-	disabled?: boolean;
-	options: DropdownOptionType[];
+	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
-	size?: Size;
-	error?: boolean;
-	onChange?: (value: string | number) => void;
-	selectedOption?: DropdownOptionType | null;
-	setSelectedOption?: (option: DropdownOptionType) => void;
+	size?: DropdownSize;
+	children: React.ReactNode;
+	className?: string;
+	onSelect?: (value: string | number) => void;
+	multiple?: boolean;
+	selectedValues?: (string | number)[];
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({
-	label,
+export const Dropdown = ({
+	label = '',
 	disabled = false,
-	options,
 	prefix,
 	suffix,
 	size = 'L',
-	error = false,
-	onChange,
-	selectedOption,
-	setSelectedOption,
-	...props
-}) => {
+	className,
+	children,
+	onSelect,
+	multiple = false,
+	selectedValues = [],
+}: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const inputRef = useRef<HTMLInputElement | null>(null);
 	const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-	useEffect(() => {
-		const handleClickOutside = (e: MouseEvent) => {
-			if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-				setIsOpen(false);
-			}
-		};
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, []);
+	const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-	const toggleDropdown = () => {
-		setIsOpen((prev) => !prev);
-	};
-
-	const handleKeyDown = (event: React.KeyboardEvent) => {
-		if (event.key === 'Escape') {
+	const handleOutsideClick = (e: MouseEvent) => {
+		if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
 			setIsOpen(false);
 		}
 	};
 
-	const handleSelectOption = (option: DropdownOptionType) => {
-		if (setSelectedOption) {
-			setSelectedOption(option);
-		}
-		if (onChange) {
-			onChange(option.value);
-		}
+	useEffect(() => {
+		document.addEventListener('mousedown', handleOutsideClick);
+		return () => document.removeEventListener('mousedown', handleOutsideClick);
+	}, []);
 
-		setIsOpen(false);
+	const handleOptionClick = (value: string | number) => {
+		if (onSelect) onSelect(value);
+
+		if (!multiple) setIsOpen(false);
 	};
-
 	return (
-		<div {...props}>
-			<div
-				className={styles.dropdown}
-				ref={dropdownRef}
-				tabIndex={0}
-				role="button"
+		<div className={classNames(styles.dropdown, className)} ref={dropdownRef}>
+			<Select
+				size={size}
+				prefix={prefix || <Lens className={styles.suffix} />}
+				suffix={
+					suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />
+				}
+				disabled={disabled}
 				onClick={toggleDropdown}
-				onKeyDown={handleKeyDown}
-			>
-				<Input
-					ref={inputRef}
-					variant="dropdown"
-					size={size}
-					placeholder={label}
-					prefix={prefix}
-					suffix={
-						suffix || (
-							<Arrow
-								className={`${isOpen ? `${styles.suffix} ${styles.active}` : styles.suffix}`}
-							/>
-						)
-					}
-					error={error}
-					disabled={disabled}
-				/>
-
-				{isOpen && (
-					<DropdownMenu
-						size={size}
-						options={options}
-						inputRef={inputRef}
-						selectedOption={selectedOption}
-						onSelect={handleSelectOption}
-					/>
-				)}
-			</div>
+				isOpen={isOpen}
+				label={label}
+			/>
+			{isOpen && (
+				<div
+					role="listbox"
+					className={classNames(styles.list, styles[`list-${size.toLowerCase()}`])}
+				>
+					{React.Children.map(children, (child) =>
+						React.cloneElement(child as React.ReactElement<OptionProps>, {
+							onClick: () =>
+								handleOptionClick((child as React.ReactElement<OptionProps>).props.value),
+							isSelected: selectedValues.includes(
+								(child as React.ReactElement<OptionProps>).props.value,
+							),
+						}),
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
