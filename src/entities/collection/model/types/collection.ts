@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -27,3 +29,10 @@ export type CreateOrEditCollectionFormValues = Pick<
 	questions: number[];
 	specializations: number[];
 };
+
+export interface GetCollectionsListParamsRequest {
+	page?: number;
+	limit?: number;
+}
+
+export type GetCollectionsListResponse = Response<Collection[]>;
