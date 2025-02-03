@@ -31,11 +31,6 @@
   font-size: var(--font-size-p-m);
 }
 
-.text-wrapper {
-  width: 100%;
-  max-width: 246px;
-}
-
 .button {
   align-self: end;
 }

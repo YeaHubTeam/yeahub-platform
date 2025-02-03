@@ -501,8 +501,21 @@ export enum Subscription {
 }
 
 export enum SubscriptionCard {
-	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_TITLE = 'subscription.title',
+	SUBSCRIPTION_DESCRIPTION = 'subscription.description',
 	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+	SUBSCRIPTION_CARD_ADVANTAGES_FIRST = 'subscription.advantages.first',
+	SUBSCRIPTION_CARD_ADVANTAGES_SECOND = 'subscription.advantages.second',
+	SUBSCRIPTION_CARD_ADVANTAGES_THIRD = 'subscription.advantages.third',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_FREE = 'subscription.advantages.fourth.free',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_PAID = 'subscription.advantages.fourth.paid',
+	SUBSCRIPTION_CARD_FREE_TITLE = 'subscription.free.title',
+	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
+	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
+	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
+	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
+	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
 }
 
 export enum Docs {

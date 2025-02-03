@@ -1,12 +1,13 @@
-import { FC, SVGProps } from 'react';
-
+//TODO: change name
 export interface Subscription {
 	id: number;
-	icon: string | FC<SVGProps<SVGSVGElement>>;
+	icon: React.ReactNode;
 	name: string;
 	description: string;
 	price: number;
-	advantages: string[];
+	hasSubscribeButton: boolean;
+	discountedPrice?: number;
+	advantages: { title: string; isActive: boolean }[];
 }
 
 export type SubscriptionPermissions = {
