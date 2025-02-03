@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+import { specializationsMock } from '@/entities/specialization';
+
 import { createSpecializationApiUrls } from '../../model/constants/createSpecializationConstants';
 import {
 	CreateSpecializationBodyRequest,
@@ -14,13 +16,16 @@ export const createSpecializationMock = http.post<
 	const body = await request.json();
 
 	const newSpecialization: CreateSpecializationResponse = {
-		id: 1,
+		id: Date.now() + Math.floor(Math.random() * 1000),
 		title: body.title,
 		description: body.description,
 		imageSrc: body.imageSrc,
 		createdAt: new Date().toISOString(),
 		updatedAt: new Date().toISOString(),
 	};
+
+	specializationsMock.data.push(newSpecialization);
+	specializationsMock.total++;
 
 	return HttpResponse.json<CreateSpecializationResponse>(newSpecialization, { status: 201 });
 });
