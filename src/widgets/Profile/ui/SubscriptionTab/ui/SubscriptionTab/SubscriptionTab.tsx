@@ -1,4 +1,4 @@
-import { add, differenceInDays } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
@@ -6,14 +6,12 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { DATE_FORMATS } from '@/shared/constants/dateFormats';
 import { formatDate } from '@/shared/helpers/formatDate';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
 import { useProfileQuery } from '@/entities/auth';
-import { getFullProfile } from '@/entities/profile';
-import { useGetUserSubscriptionQuery } from '@/entities/subscription';
 
 import { AgreementForm } from '@/features/subscription';
 import { UnsubscribeButton } from '@/features/subscription';
@@ -30,13 +28,6 @@ export const SubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	const roles = useProfileQuery();
 	const { isMobile } = useScreenSize();
-	const userId = useAppSelector(getFullProfile)?.id;
-	const { data } = useGetUserSubscriptionQuery(userId ?? '');
-
-	const createDate = data?.[0]?.createDate || '';
-	const endDate = new Date(add(createDate, { days: 31 }));
-
-	const restDays = differenceInDays(endDate, new Date());
 
 	const hasPremium = roles.data?.userRoles.some((role) => role.name === 'candidate-premium');
 
@@ -91,6 +82,12 @@ export const SubscriptionTab = () => {
 		},
 	];
 
+	/**
+	 *  `30` - Общее кол-во дней
+	 *
+	 *  `20` - оставшиеся дни
+	 */
+
 	const progress = 20;
 
 	const { D_MM_YYYY } = DATE_FORMATS;
@@ -110,17 +107,20 @@ export const SubscriptionTab = () => {
 						<ProgressBar
 							currentCount={progress}
 							totalCount={30}
-							label={t(Subscription.DAYS_LEFT, { count: restDays })}
+							label={t(Subscription.DAYS_LEFT, { count: 22 })}
 							variant="large"
 						/>
 						<p className={styles.text}>
 							{t(Subscription.SUBSCRIPTION_RENEWAL, {
-								Date: formatDate(endDate, D_MM_YYYY),
+								Date: formatDate(parseISO(payHistories[0].payDate), D_MM_YYYY),
 							})}
 						</p>
 					</Flex>
 					<div className={styles['actions-button']}>
 						<Flex direction="row" gap="8">
+							<Button variant="outline" size="L" aria-label="Change tariff plan">
+								{t(Subscription.CHANGE_TARIFF_PLAN)}
+							</Button>
 							<UnsubscribeButton />
 						</Flex>
 					</div>
