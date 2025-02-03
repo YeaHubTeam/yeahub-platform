@@ -489,6 +489,15 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
+	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
+	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
+	SUBSCRIPTION_FAQ_SECOND_QUESTION = 'faq.second.question',
+	SUBSCRIPTION_FAQ_SECOND_ANSWER = 'faq.second.answer',
+	SUBSCRIPTION_FAQ_THIRD_QUESTION = 'faq.third.question',
+	SUBSCRIPTION_FAQ_THIRD_ANSWER = 'faq.third.answer',
+	SUBSCRIPTION_FAQ_FOURTH_QUESTION = 'faq.fourth.question',
+	SUBSCRIPTION_FAQ_FOURTH_ANSWER = 'faq.fourth.answer',
 }
 
 export enum SubscriptionCard {

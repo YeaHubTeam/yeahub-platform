@@ -3,7 +3,3 @@ export interface PayHistory {
 	status: string;
 	payDate: string;
 }
-
-export interface PremiumSubscriptionTabProps {
-	userId?: string;
-}

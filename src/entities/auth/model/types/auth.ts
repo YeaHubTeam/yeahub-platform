@@ -63,7 +63,7 @@ export interface UserUpdate extends User {
 	avatarImage?: string | null;
 }
 
-export type RoleName = 'guest' | 'candidate' | 'member' | 'admin' | 'hr';
+export type RoleName = 'guest' | 'candidate' | 'member' | 'admin' | 'hr' | 'candidate-premium';
 
 export interface Role {
 	id: number;
