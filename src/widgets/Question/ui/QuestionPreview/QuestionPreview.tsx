@@ -38,7 +38,7 @@ export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionP
 
 	const profile = useAppSelector(getFullProfile);
 	const isEmailVerified = profile?.isEmailVerified;
-	const profileId = profile?.profiles[0].id || '';
+	const profileId = profile?.profiles?.[0].id || '';
 
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
