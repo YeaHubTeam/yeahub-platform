@@ -125,10 +125,10 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						</Label>
 					</Flex>
 				</Flex>
-				<Flex gap={'32'}>
-					<Flex direction="column" className={styles.titles}>
-						<Text title={t(Collections.SPECIALIZATION_TITLE)} />
-						<Text text={t(Collections.SPECIALIZATION_LABEL)} className={styles.label} />
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.SPECIALIZATION_TITLE)} className={styles.title} />
+						<Text text={t(Collections.SPECIALIZATION_LABEL)} className={styles.description} />
 					</Flex>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
@@ -138,22 +138,20 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						)}
 					</FormControl>
 				</Flex>
-				<Flex gap={'32'}>
-					<Flex gap={'32'}>
-						<Flex direction="column" className={styles.titles}>
-							<Text title={t(Collections.KEYWORDS_TITLE)} />
-							<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.label} />
-						</Flex>
-						<FormControl name="keywordsCollection" control={control}>
-							{({ onChange, value }) => {
-								return (
-									<div className={styles.select}>
-										<KeywordInput value={value} onChange={onChange} />
-									</div>
-								);
-							}}
-						</FormControl>
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
+						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
 					</Flex>
+					<FormControl name="keywordsCollection" control={control}>
+						{({ onChange, value }) => {
+							return (
+								<div className={styles.select}>
+									<KeywordInput value={value} onChange={onChange} />
+								</div>
+							);
+						}}
+					</FormControl>
 				</Flex>
 				<ChooseQuestionsDrawer
 					selectedQuestions={selectedQuestions}
