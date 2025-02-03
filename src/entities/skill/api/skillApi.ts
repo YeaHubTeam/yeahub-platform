@@ -4,6 +4,7 @@ import { route } from '@/shared/helpers/route';
 
 import { skillApiUrls } from '../model/constants/skillConstants';
 import type {
+	GetSkillByIdParamsRequest,
 	GetSkillByIdResponse,
 	GetSkillsListParamsRequest,
 	GetSkillsListResponse,
@@ -18,8 +19,8 @@ const skillApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.SKILLS],
 		}),
-		getSkillById: build.query<GetSkillByIdResponse, string>({
-			query: (skillId) => ({
+		getSkillById: build.query<GetSkillByIdResponse, GetSkillByIdParamsRequest>({
+			query: ({ skillId }) => ({
 				url: route(skillApiUrls.getSkillById, skillId),
 			}),
 			providesTags: [ApiTags.SKILL_DETAIL],

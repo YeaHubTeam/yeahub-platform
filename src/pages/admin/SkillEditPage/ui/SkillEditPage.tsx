@@ -6,7 +6,7 @@ import { SkillEditForm } from '@/features/skill/editSkill';
 
 const SkillEditPage = () => {
 	const { skillId } = useParams<{ skillId: string }>();
-	const { data: skill } = useGetSkillByIdQuery(skillId as string);
+	const { data: skill } = useGetSkillByIdQuery({ skillId: skillId! });
 
 	if (!skill) {
 		return null;

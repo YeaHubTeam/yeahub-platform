@@ -1,0 +1,1 @@
+export { skillsMock } from './skillsMock';
