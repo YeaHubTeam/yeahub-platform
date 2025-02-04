@@ -10,32 +10,32 @@ export interface Subscription {
 	advantages: { title: string; isActive: boolean }[];
 }
 
-export type SubscriptionPermissions = {
+export type SubscriptionPermission = {
 	id: number;
 	name: string;
 };
 
-export type SubscriptionRoles = {
+export type SubscriptionRole = {
 	id: number;
 	name: string;
-	permissions: SubscriptionPermissions[];
+	permissions: SubscriptionPermission[];
 };
 
-export type RootSubscriptionAUserSubscription = {
+export type SubscriptionRoot = {
 	id: number;
 	name: string;
 	pricePerMonth: number;
 	description: boolean;
-	roles: SubscriptionRoles[];
+	roles: SubscriptionRole[];
 };
 
 export interface UserSubscription {
 	id: string;
-	createDate?: string;
-	endDate?: string;
+	createDate: string;
+	endDate: string;
 	subscriptionId: number;
 	userId: string;
-	subscription: RootSubscriptionAUserSubscription;
+	subscription: SubscriptionRoot;
 }
 
 export type GetUserSubscriptionResponse = UserSubscription[];

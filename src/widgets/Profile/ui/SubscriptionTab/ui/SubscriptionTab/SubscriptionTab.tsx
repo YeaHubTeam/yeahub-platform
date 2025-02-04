@@ -1,4 +1,4 @@
-import { add, differenceInDays } from 'date-fns';
+import { differenceInDays, parseISO } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
@@ -33,9 +33,7 @@ export const SubscriptionTab = () => {
 	const userId = useAppSelector(getFullProfile)?.id;
 	const { data } = useGetUserSubscriptionQuery(userId ?? '');
 
-	const createDate = data?.[0]?.createDate || '';
-	const endDate = new Date(add(createDate, { days: 31 }));
-
+	const endDate = data?.[0]?.endDate || '';
 	const restDays = differenceInDays(endDate, new Date());
 
 	const hasPremium = roles.data?.userRoles.some((role) => role.name === 'candidate-premium');
@@ -113,7 +111,7 @@ export const SubscriptionTab = () => {
 						/>
 						<p className={styles.text}>
 							{t(Subscription.SUBSCRIPTION_RENEWAL, {
-								Date: formatDate(endDate, D_MM_YYYY),
+								Date: formatDate(parseISO(endDate), D_MM_YYYY),
 							})}
 						</p>
 					</Flex>
