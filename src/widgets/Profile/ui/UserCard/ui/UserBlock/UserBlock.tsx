@@ -16,7 +16,7 @@ interface UserBlockProps {
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
 	return (
-		<Card>
+		<Card withOutsideShadow>
 			<div className={styles.card}>
 				<div className={styles['user-data']}>
 					<UserImageBlock avatar={profile.avatarUrl} />
