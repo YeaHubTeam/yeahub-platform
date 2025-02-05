@@ -115,7 +115,11 @@ const PublicQuestionsPage = () => {
 			</div>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
-					<QuestionsSummaryList questions={allQuestions.data} displayMode="link" />
+					<QuestionsSummaryList
+						questions={allQuestions.data}
+						displayMode="link"
+						showSkillOrSpecializationName
+					/>
 					{allQuestions.total > allQuestions.limit && (
 						<PublicQuestionPagePagination
 							questionsResponse={allQuestions}

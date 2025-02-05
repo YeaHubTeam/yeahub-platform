@@ -6,11 +6,14 @@
 
 .title {
   margin-top: 0;
+  overflow: hidden;
   color: var(--text-color-bright);
   line-height: 120%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-s);
   font-family: var(--font-family);
+  white-space: nowrap;  
+  text-overflow: ellipsis;
 }
 
 @media (width <= 360px) {
