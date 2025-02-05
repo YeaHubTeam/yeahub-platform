@@ -1,7 +1,7 @@
 .card {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 16px;
   height: 100%;
 }
@@ -20,6 +20,7 @@
 
   .card {
     flex-direction: column;
+    align-items: flex-end;
     height: 100%;
   }
 
