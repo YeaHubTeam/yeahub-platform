@@ -14,6 +14,7 @@ import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { QuestionsSummaryList } from '@/widgets/Question';
 
+import { useTitleFromQuery } from '../../hooks/useTitleFromQuery';
 import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
 import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
@@ -30,6 +31,7 @@ const PublicQuestionsPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 
 	const { status, ...getParams } = filter;
+	const additionalTitle = useTitleFromQuery();
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetPublicQuestionsListQuery(
 		{
@@ -118,7 +120,7 @@ const PublicQuestionsPage = () => {
 					<QuestionsSummaryList
 						questions={allQuestions.data}
 						displayMode="link"
-						showSkillOrSpecializationName
+						additionalTitle={additionalTitle}
 					/>
 					{allQuestions.total > allQuestions.limit && (
 						<PublicQuestionPagePagination
