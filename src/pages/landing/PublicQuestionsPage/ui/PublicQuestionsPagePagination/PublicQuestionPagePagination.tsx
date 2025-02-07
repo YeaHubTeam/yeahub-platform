@@ -1,4 +1,5 @@
 import { Response } from '@/shared/types/types';
+import { Flex } from '@/shared/ui/Flex';
 import { Pagination } from '@/shared/ui/Pagination';
 
 import { Question } from '@/entities/question';
@@ -33,7 +34,7 @@ export const PublicQuestionPagePagination = ({
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<Flex justify="center" className={styles.wrapper}>
 			<Pagination
 				onPrevPageClick={onPrevPageClick}
 				onNextPageClick={onNextPageClick}
@@ -41,6 +42,6 @@ export const PublicQuestionPagePagination = ({
 				page={currentPage}
 				totalPages={Math.ceil(questionsResponse?.total / questionsResponse?.limit)}
 			/>
-		</div>
+		</Flex>
 	);
 };

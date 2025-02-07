@@ -24,8 +24,9 @@ export const IconButtonSkeleton = ({
 				className,
 			)}
 			{...otherProps}
+			style={{ border: 'none' }}
 		>
-			<Skeleton width="100%" height="100%" />
+			<Skeleton width="100%" height="100%" borderRadius={form === 'round' ? '50%' : '8px'} />
 		</button>
 	);
 };
