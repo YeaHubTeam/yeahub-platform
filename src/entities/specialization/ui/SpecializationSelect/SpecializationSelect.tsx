@@ -81,7 +81,7 @@ export const SpecializationSelect = ({
 			<Select
 				onChange={handleChange}
 				options={options}
-				value={value || value === 0 ? `${value}` : undefined}
+				value={value[0] === 0 ? undefined : `${value}`}
 				type="default"
 				placeholder={
 					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
