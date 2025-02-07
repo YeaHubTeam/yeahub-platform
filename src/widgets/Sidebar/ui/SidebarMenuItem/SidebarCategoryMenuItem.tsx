@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import ArrowIcon from '@/shared/assets/icons/arrow.svg';
+import ArrowIcon from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { isPathMatch } from '@/shared/utils/isPathMatch';
 
@@ -61,9 +61,7 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 						>
 							<div className={styles.wrap}>
 								<ImageComponent className={styles.icon} />
-								<span className={classNames(styles.title, { [styles.closing]: fullWidth })}>
-									{t(item.title)}
-								</span>
+								<span className={classNames(styles.title)}>{t(item.title)}</span>
 							</div>
 						</NavLink>
 					);

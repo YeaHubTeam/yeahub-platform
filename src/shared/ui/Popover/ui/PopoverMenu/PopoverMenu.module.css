@@ -15,3 +15,7 @@
 .button:focus {
   border: 1px solid transparent;
 }
+
+.button:not([disabled]):hover {
+  color: var(--color-purple-700);
+}

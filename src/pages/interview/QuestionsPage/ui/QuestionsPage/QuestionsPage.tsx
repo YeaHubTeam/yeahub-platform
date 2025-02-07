@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useModal } from '@/shared/hooks/useModal';
@@ -9,6 +8,8 @@ import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
@@ -18,8 +19,8 @@ import { useGetSkillsListQuery } from '@/entities/skill';
 import {
 	QuestionFilterStatus,
 	QuestionsFilterPanel,
-	QuestionsSummaryList,
-} from '@/widgets/Question';
+} from '@/widgets/question/QuestionsFilterPanel';
+import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
@@ -93,6 +94,24 @@ const QuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
+	const renderFilters = () => (
+		<QuestionsFilterPanel
+			onChangeSearch={onChangeSearchParams}
+			onChangeSkills={onChangeSkills}
+			onChangeComplexity={onChangeComplexity}
+			onChangeRate={onChangeRate}
+			onChangeStatus={onChangeStatus}
+			filter={{
+				skills: filter.skills,
+				rate: filter.rate,
+				complexity: filter.complexity,
+				status: filter.status,
+				title: filter.title,
+			}}
+			skillsLimit={MAX_LIMIT_CATEGORIES}
+		/>
+	);
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
 		return <QuestionsPageSkeleton />;
 	}
@@ -102,15 +121,15 @@ const QuestionsPage = () => {
 	}
 
 	return (
-		<section className={styles.wrapper}>
-			<div className={styles['popover-additional']}>
+		<Flex gap="20" align="start">
+			<div className={styles['filters-mobile']}>
 				<IconButton
 					className={classNames({ [styles.active]: isOpen })}
 					aria-label="go to filters"
 					form="square"
-					icon={<Icon icon="slidersHorizontal" />}
+					icon={<Icon icon="slidersHorizontal" color="black-700" />}
 					size="S"
-					variant={'tertiary'}
+					variant="tertiary"
 					onClick={onToggle}
 				/>
 				<Drawer
@@ -122,60 +141,25 @@ const QuestionsPage = () => {
 					onClose={onClose}
 					hasCloseButton
 				>
-					<Card className={styles.search}>
-						<QuestionsFilterPanel
-							onChangeSearch={onChangeSearchParams}
-							onChangeSkills={onChangeSkills}
-							onChangeComplexity={onChangeComplexity}
-							onChangeRate={onChangeRate}
-							onChangeStatus={onChangeStatus}
-							filter={{
-								skills: filter.skills,
-								rate: filter.rate,
-								complexity: filter.complexity,
-								status: filter.status,
-								title: filter.title,
-							}}
-							skillsLimit={MAX_LIMIT_CATEGORIES}
-						/>
-					</Card>
+					<Card>{renderFilters()}</Card>
 				</Drawer>
 			</div>
-			<div className={styles['main-info-wrapper']}>
-				<Card className={styles.content}>
-					<QuestionsSummaryList questions={questions.data} profileId={profileId} />
-					{questions.total > questions.limit && (
-						<QuestionPagePagination
-							questionsResponse={questions}
-							currentPage={filter.page || 1}
-							onPageChange={onPageChange}
-						/>
-					)}
-					{questions.data.length === 0 && (
-						<EmptyStub text={getParams.title} resetFilters={resetFilters} />
-					)}
-				</Card>
-			</div>
-			<div className={styles['additional-info-wrapper']}>
-				<Card className={styles.search}>
-					<QuestionsFilterPanel
-						onChangeSearch={onChangeSearchParams}
-						onChangeSkills={onChangeSkills}
-						onChangeComplexity={onChangeComplexity}
-						onChangeRate={onChangeRate}
-						onChangeStatus={onChangeStatus}
-						filter={{
-							skills: filter.skills,
-							rate: filter.rate,
-							complexity: filter.complexity,
-							status: filter.status,
-							title: filter.title,
-						}}
-						skillsLimit={MAX_LIMIT_CATEGORIES}
+			<Card className={styles.main}>
+				<FullQuestionsList questions={questions.data} />
+				{questions.total > questions.limit && (
+					// TODO Дубляжи в пагинации на других страницах
+					<QuestionPagePagination
+						questionsResponse={questions}
+						currentPage={filter.page || 1}
+						onPageChange={onPageChange}
 					/>
-				</Card>
-			</div>
-		</section>
+				)}
+				{questions.data.length === 0 && (
+					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
+				)}
+			</Card>
+			<Card className={styles.filters}>{renderFilters()}</Card>
+		</Flex>
 	);
 };
 
