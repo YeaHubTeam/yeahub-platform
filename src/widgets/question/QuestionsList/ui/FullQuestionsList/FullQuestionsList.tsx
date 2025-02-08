@@ -15,15 +15,26 @@ import styles from './FullQuestionsList.module.css';
 interface FullQuestionsListProps {
 	questions: Question[];
 	isPublic?: boolean;
+	additionalTitle?: string;
 }
 
-export const FullQuestionsList = ({ questions, isPublic }: FullQuestionsListProps) => {
+export const FullQuestionsList = ({
+	questions,
+	isPublic,
+	additionalTitle,
+}: FullQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobileS } = useScreenSize();
 
+	const title = additionalTitle
+		? `${t(Questions.TITLE_SHORT)} ${additionalTitle}`
+		: t(Questions.TITLE_SHORT);
+
 	return (
 		<>
-			<Text variant={isMobileS ? 'body5-accent' : 'body6'}>{t(Questions.TITLE_SHORT)}</Text>
+			<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
+				{title}
+			</Text>
 			<hr className={styles.divider} />
 			{questions.map((question) => (
 				<Accordion key={question.id} title={question.title}>
