@@ -15,7 +15,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { getFullProfile } from '@/entities/profile';
+import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
@@ -36,9 +36,8 @@ export const QuestionPreview = ({ question, displayMode = 'popover' }: QuestionP
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.questions]);
 	const navigate = useNavigate();
 
-	const profile = useAppSelector(getFullProfile);
-	const isEmailVerified = profile?.isEmailVerified;
-	const profileId = profile?.profiles?.[0].id || '';
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const profileId = useAppSelector(getProfileId);
 
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
