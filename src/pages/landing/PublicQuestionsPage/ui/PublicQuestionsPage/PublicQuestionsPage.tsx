@@ -15,6 +15,7 @@ import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
+import { useTitleFromQuery } from '../../hooks/useTitleFromQuery';
 import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
 import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
@@ -31,6 +32,7 @@ const PublicQuestionsPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 
 	const { status, ...getParams } = filter;
+	const additionalTitle = useTitleFromQuery();
 
 	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetPublicQuestionsListQuery(
 		{
@@ -117,7 +119,11 @@ const PublicQuestionsPage = () => {
 				)}
 			</div>
 			<Card className={styles.main}>
-				<FullQuestionsList questions={allQuestions.data} isPublic />
+				<FullQuestionsList
+					questions={allQuestions.data}
+					isPublic
+					additionalTitle={additionalTitle}
+				/>
 				{allQuestions.total > allQuestions.limit && (
 					<PublicQuestionPagePagination
 						questionsResponse={allQuestions}
