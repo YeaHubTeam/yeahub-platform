@@ -440,11 +440,13 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
-	ADDITIONAL_INFO_SPECIALIZATION = 'specialization',
-	ADDITIONAL_INFO_KEYWORDS = 'keywords',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SPECIALIZATION_LABEL = 'specialization.label',
+	KEYWORDS_TITLE = 'keywords.title',
+	KEYWORDS_LABEL = 'keywords.label',
 }
 
 export enum Landing {
