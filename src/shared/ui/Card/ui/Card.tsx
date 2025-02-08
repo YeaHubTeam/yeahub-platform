@@ -3,7 +3,7 @@ import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import Arrow from '@/shared/assets/icons/arrow.svg';
+import Arrow from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Icon } from '@/shared/ui/Icon/ui/Icon';
 import { Text } from '@/shared/ui/Text';

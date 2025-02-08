@@ -12,7 +12,9 @@ import { Popover } from '@/shared/ui/Popover';
 
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
-import { QuestionHeader, QuestionBody, AdditionalInfo } from '@/widgets/Question';
+import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
+import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader/QuestionHeader';
 
 import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';

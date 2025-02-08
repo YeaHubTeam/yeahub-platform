@@ -1,11 +1,11 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
+import { collectionApiUrls } from '../model/constants/collection';
 import {
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
 } from '../model/types/collection';
-import { collectionApiUrls } from '../model/constants/collection';
 
 const collectionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
