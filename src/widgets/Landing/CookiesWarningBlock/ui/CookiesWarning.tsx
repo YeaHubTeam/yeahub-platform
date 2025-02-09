@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './CookiesWarning.module.css';
 
@@ -39,16 +40,18 @@ export const CookiesWarning = () => {
 	return createPortal(
 		<div role="alert" className={styles.wrapper}>
 			<div className={styles['cookie-wrapper']}>
-				<p className={styles['cookie-text']}>
+				<Text className={styles.text} variant="body3" color="black-700">
 					{t(Landing.COOKIES_TEXT)}{' '}
 					<a
 						rel="noopener noreferrer"
 						href="https://docs.google.com/document/d/19JvySToaMm3pkohGkHwqhJjGl3IzldIc3qnQpAoVFVc/edit?tab=t.0#heading=h.gjdgxs"
 						target="_blank"
 					>
-						{t(Landing.COOKIES_LINK)}
+						<Text className={styles.link} variant="body3" color="purple-700">
+							{t(Landing.COOKIES_LINK)}
+						</Text>
 					</a>
-				</p>
+				</Text>
 				<Button className={styles.btn} variant="primary" onClick={handleClick}>
 					{t(Landing.COOKIES_AGREE)}
 				</Button>
