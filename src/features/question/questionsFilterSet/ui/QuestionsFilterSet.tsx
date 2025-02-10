@@ -33,7 +33,8 @@ export const QuestionsFilterSet = () => {
 	};
 
 	const onChangeSpecialization = (value: number | undefined) => {
-		handleFilterChange({ specialization: value, skills: undefined });
+		const specialization = value ? [value] : undefined;
+		handleFilterChange({ specialization: specialization, skills: undefined });
 	};
 
 	const changeSortBy = (orderBy: string) => {

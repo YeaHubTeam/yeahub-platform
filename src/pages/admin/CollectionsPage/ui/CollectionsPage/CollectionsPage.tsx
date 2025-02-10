@@ -4,8 +4,8 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
-import { Flex } from '@/shared/ui/Flex';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 
@@ -14,10 +14,9 @@ import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
+import { CollectionsPagePagination } from '../CollectionsPagePagination/CollectionsPagePagination';
 
 import styles from './CollectionsPage.module.css';
-
-import { CollectionsPagePagination } from '../CollectionsPagePagination/CollectionsPagePagination';
 
 /**
  * Page showing info about all the created collections

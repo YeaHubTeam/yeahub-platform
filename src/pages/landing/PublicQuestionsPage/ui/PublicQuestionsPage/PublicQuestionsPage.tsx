@@ -42,7 +42,8 @@ const PublicQuestionsPage = () => {
 	);
 
 	const onChangeSpecialization = (value: number | undefined) => {
-		handleFilterChange({ specialization: value, skills: undefined });
+		const specialization = value ? [value] : undefined;
+		handleFilterChange({ specialization: specialization, skills: undefined });
 	};
 
 	const onChangeSearchParams = (value: string) => {

@@ -21,7 +21,12 @@
     "paid": "Для участников",
     "free": "Для всех"
   },
-  "access": "Доступ:",
+  "specializations": {
+    "show.all": "Показать все",
+    "hide": "Скрыть"
+  },
+  "search.placeholder": "Введите запрос...",
+  "access": "Доступ",
   "specialization": "Специализация:",
   "keywords": "Ключевые слова:",
   "questions": {
@@ -30,5 +35,10 @@
     "selected": "Выбранные вопросы: {{count}}"
   },
   "image.src": "Ссылка на картинку",
-  "create.page.title": "Коллекция"
+  "create.page.title": "Коллекция",
+  "image.alt": "Изображение кода для вопроса",
+  "collections": {
+    "title":  "Коллекции",
+    "detail": "Подробнее"
+  }
 }

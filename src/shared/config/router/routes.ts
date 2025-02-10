@@ -59,7 +59,6 @@ export const ROUTES = {
 				page: '/admin/users/:userId',
 			},
 		},
-
 		collections: {
 			route: 'collections',
 			page: '/admin/collections',
@@ -130,6 +129,10 @@ export const ROUTES = {
 				route: ':questionId',
 				page: '/dashboard/interview/questions/:questionId',
 			},
+		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/interview/collections',
 		},
 		quiz: {
 			route: 'quiz',

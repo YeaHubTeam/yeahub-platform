@@ -19,6 +19,7 @@ export interface Collection {
 	questions: Question[];
 	specializations: Specialization[];
 	tariff: CollectionTariff;
+	isFree?: boolean;
 }
 
 export type CreateOrEditCollectionFormValues = Pick<
