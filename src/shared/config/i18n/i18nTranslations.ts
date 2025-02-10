@@ -61,6 +61,8 @@ export enum Translation {
 	CRUMBS_INTERVIEW_STATISTIC = 'crumbs.interview.statistic',
 	CRUMBS_QUESTIONS_LIST = 'crumbs.questions.list',
 	CRUMBS_QUESTION_DETAIL = 'crumbs.question.detail',
+	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
+	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
 
 	/* Validation */
@@ -445,6 +447,12 @@ export enum Collections {
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
+	IMAGE_ALT = 'image.alt',
+	SEARCH_PLACEHOLDER = 'search.placeholder',
+	COLLECTIONS_TITLE = 'collections.title',
+	COLLECTIONS_DETAIL = 'collections.detail',
+	SPECIALIZATIONS_SHOW_ALL = 'specializations.show.all',
+	SPECIALIZATIONS_HIDE = 'specializations.hide',
 }
 
 export enum Landing {

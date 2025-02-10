@@ -21,8 +21,8 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
-import { CollectionPage } from '@/pages/admin/CollectionPage';
-import { CollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
+import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -43,6 +43,7 @@ import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
+import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
@@ -221,6 +222,22 @@ export const router = createBrowserRouter([
 						element: <QuestionEditPage />,
 					},
 					{
+						path: ROUTES.admin.collections.route,
+						element: <AdminCollectionsPage />,
+					},
+					{
+						path: ROUTES.admin.collections.details.page,
+						element: <AdminCollectionPage />,
+					},
+					{
+						path: ROUTES.admin.collections.create.page,
+						element: <CollectionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.collections.edit.page,
+						element: <CollectionEditPage />,
+					},
+					{
 						path: ROUTES.admin.specializations.page,
 						element: <SpecializationsPage />,
 					},
@@ -269,28 +286,6 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.users.detail.route,
 								element: <UserDetailPage />,
-							},
-						],
-					},
-					{
-						path: ROUTES.admin.collections.route,
-						element: <Outlet />,
-						children: [
-							{
-								index: true,
-								element: <CollectionsPage />,
-							},
-							{
-								path: ROUTES.admin.collections.create.route,
-								element: <CollectionCreatePage />,
-							},
-							{
-								path: ROUTES.admin.collections.edit.route,
-								element: <CollectionEditPage />,
-							},
-							{
-								path: ROUTES.admin.collections.details.route,
-								element: <CollectionPage />,
 							},
 						],
 					},
@@ -404,6 +399,19 @@ export const router = createBrowserRouter([
 										handle: {
 											crumb: Translation.CRUMBS_QUESTION_DETAIL,
 										},
+									},
+								],
+							},
+							{
+								path: ROUTES.interview.collections.route,
+								element: <Outlet />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+								},
+								children: [
+									{
+										index: true,
+										element: <InterviewCollectionsPage />,
 									},
 								],
 							},

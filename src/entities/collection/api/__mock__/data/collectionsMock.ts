@@ -11,7 +11,7 @@ export const collectionsMock: Collection[] = [
 		title: 'Сбер',
 		updatedAt: '2024-12-28T17:14:21.662Z',
 		questionsQuantity: 6,
-		tariff: 'free',
+		tariff: 'premium',
 		keywordsCollection: ['async', 'defer', 'script'],
 		specializations: [
 			{
