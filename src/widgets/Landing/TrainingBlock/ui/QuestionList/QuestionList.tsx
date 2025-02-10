@@ -15,7 +15,7 @@ export const QuestionList = () => {
 		<ul className={styles['question-list']}>
 			{mockQuestionList.map((training) => (
 				<li className={styles['question-item']} key={training.id}>
-					<img src={training.image} alt="question" width={71} height={51} loading="lazy" />
+					<img src={training.image} alt={training.alt} width={71} height={51} loading="lazy" />
 					<p>{training.title}</p>
 					<div>
 						<p>
