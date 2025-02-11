@@ -13,7 +13,6 @@ export type GetSpecializationsListParamsRequest = {
 	page?: number;
 	title?: string;
 	limit?: number;
-	specializations?: number[];
 };
 export type GetSpecializationsListResponse = Response<Specialization[]>;
 

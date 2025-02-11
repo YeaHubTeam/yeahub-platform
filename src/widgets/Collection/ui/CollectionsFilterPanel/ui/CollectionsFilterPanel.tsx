@@ -3,11 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 
-import { ChooseCollectionAccess, ChooseCollectionSpecialization } from '@/entities/collection';
-import { getSpecializationId } from '@/entities/profile';
+import { ChooseCollectionAccess } from '@/entities/collection';
+import { ChooseSpecialization } from '@/entities/question';
 
 import { SearchInput } from '@/features/common/search-input';
 
@@ -18,7 +17,7 @@ import styles from './CollectionsFilterPanel.module.css';
 interface CollectionsFilterPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
-	onChangeSpecialization: (specialization: number[] | undefined) => void;
+	onChangeSpecialization: (specialization: number[] | number) => void;
 	onChangeIsFree: (isFree: boolean) => void;
 }
 
@@ -28,12 +27,14 @@ export const CollectionsFilterPanel = ({
 	onChangeIsFree,
 	onChangeSpecialization,
 }: CollectionsFilterPanelProps) => {
-	const { title, specialization, tariff: filterIsFree } = filter;
+	const { title, specialization: filterSpecialization, tariff: filterIsFree } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
-	const profileSpecialization = useAppSelector(getSpecializationId);
 
 	const [localIsFree, setLocalIsFree] = useState<boolean>(
 		filterIsFree !== undefined ? filterIsFree : false,
+	);
+	const [localSpecialization, setLocalSpecialization] = useState<number | undefined>(
+		Array.isArray(filterSpecialization) ? filterSpecialization[0] : filterSpecialization,
 	);
 
 	const handleSearch = (value: string) => {
@@ -45,6 +46,13 @@ export const CollectionsFilterPanel = ({
 		onChangeIsFree(newIsFree);
 	};
 
+	const handleSpecializationChange = (newSpecialization: number | undefined) => {
+		setLocalSpecialization(newSpecialization);
+		if (newSpecialization) {
+			onChangeSpecialization([newSpecialization]);
+		}
+	};
+
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
 	return (
@@ -54,10 +62,9 @@ export const CollectionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
-			<ChooseCollectionSpecialization
-				selectedSpecializations={specialization}
-				onChangeSpecialization={onChangeSpecialization}
-				selectedSpecialization={profileSpecialization}
+			<ChooseSpecialization
+				selectedSpecialization={localSpecialization}
+				onChangeSpecialization={handleSpecializationChange}
 			/>
 			<ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} />
 		</div>

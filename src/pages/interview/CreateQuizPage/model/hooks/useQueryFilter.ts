@@ -20,7 +20,7 @@ interface FilterFromUser {
 const initialState = '?mode=RANDOM&count=10';
 
 export const useQueryFilter = () => {
-	const [filter, setFilters] = useState<FilterFromUser>({ tariff: true } as FilterFromUser);
+	const [filter, setFilters] = useState<FilterFromUser>({});
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -84,10 +84,5 @@ export const useQueryFilter = () => {
 		});
 	};
 
-	const resetFilters = () => {
-		setFilters({ tariff: true } as FilterFromUser);
-		navigate(initialState);
-	};
-
-	return { filter, handleFilterChange, resetFilters };
+	return { filter, handleFilterChange };
 };
