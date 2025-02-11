@@ -1,6 +1,7 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 
+import { collectionApiUrls } from '../model/constants/collection';
 import {
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
