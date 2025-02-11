@@ -1,6 +1,7 @@
 .wrapper {
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
+  left: 50%;
   z-index: 1000;
   gap: 10px;
   margin: 20px;
@@ -8,9 +9,10 @@
   width: 90%; 
   max-width: 1120px; 
   min-height: 96px;
-  box-shadow: 0 4px 10px 0 rgba(106 99 118 0.10);
+  box-shadow: var(--main-shadow);
   border-radius: 24px;
   background-color: var(--color-white-900);
+  transform: translateX(-50%);
 }
 
 .cookie-wrapper{
@@ -48,9 +50,6 @@
 
 @media (width <= 768px) {
   .wrapper {
-    right: 0;
-    left: 0;
-    margin: 20px auto;
     max-width: 328px;
     min-height: auto;
   }

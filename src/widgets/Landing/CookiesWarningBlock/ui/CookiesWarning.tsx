@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { getJSONFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
 
@@ -20,7 +21,7 @@ export const CookiesWarning = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	const portalRootRef = useRef(document.getElementById('cookie-root') || createPortalRoot());
-	const [isAgreed, setIsAgreed] = useState(false);
+	const [isAgreed, setIsAgreed] = useState(getJSONFromLS('YH-cookie-modal'));
 
 	useEffect(() => {
 		if (!isAgreed) {
@@ -35,6 +36,7 @@ export const CookiesWarning = () => {
 
 	const handleClick = () => {
 		setIsAgreed(true);
+		setToLS('YH-cookie-modal', 'true');
 	};
 
 	return createPortal(
