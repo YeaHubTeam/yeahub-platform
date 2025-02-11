@@ -141,6 +141,13 @@ export const Gap24: Story = {
 	},
 };
 
+export const Gap28: Story = {
+	args: {
+		gap: '28',
+		children,
+	},
+};
+
 export const Gap32: Story = {
 	args: {
 		gap: '32',

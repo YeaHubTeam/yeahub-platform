@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
@@ -49,7 +49,7 @@ export const LearnQuestionButton = ({
 	return (
 		<Button
 			className={isPopover ? styles.button : ''}
-			preffix={<Icon icon="student" size={iconSize} />}
+			preffix={<Icon icon="student" color="black-600" size={iconSize} />}
 			variant={variant}
 			onClick={handleLearnQuestion}
 			disabled={isLoading || isDisabled}

@@ -1,0 +1,14 @@
+.image {
+  width: 170px;
+  height: 188px;
+  border-radius: 20px;
+}
+
+.roles-container {
+  display: flex;
+  gap: 8px;
+}
+
+.switch {
+  display: flex;
+}

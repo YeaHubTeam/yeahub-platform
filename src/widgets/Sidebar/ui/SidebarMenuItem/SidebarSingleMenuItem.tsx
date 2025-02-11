@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { ROUTES } from '@/shared/config/router/routes';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { SingleMenuItem } from '../../model/types/sidebar';
@@ -16,12 +18,15 @@ interface SidebarSingleMenuItemProps {
 
 const SidebarSingleMenuItem = ({ fullWidth, menuItem }: SidebarSingleMenuItemProps) => {
 	const ImageComponent = menuItem.icon;
-
+	const { isMobile, isTablet } = useScreenSize();
 	const location = useLocation();
 	const { t } = useTranslation(i18Namespace.translation);
+	const isProfileItem = menuItem.route === ROUTES.profile.route;
 
 	const isActiveItem = isPathMatch(menuItem.route, location.pathname);
-
+	if (isProfileItem && !(isMobile || isTablet)) {
+		return null;
+	}
 	return (
 		<NavLink
 			end

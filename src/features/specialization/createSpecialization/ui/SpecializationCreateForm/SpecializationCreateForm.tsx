@@ -25,8 +25,8 @@ export const SpecializationCreateForm = () => {
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
+					<SpecializationCreateFormHeader />
 					<Card className={styles.content}>
-						<SpecializationCreateFormHeader />
 						<SpecializationForm />
 					</Card>
 				</Flex>

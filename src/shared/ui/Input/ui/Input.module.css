@@ -98,6 +98,10 @@
   padding: 0;
   fill: var(--icon-fill); 
   pointer-events: none;
+
+  &:has([class*="yeahub-icon_clickable"]) {
+    pointer-events: auto;
+  }
 }
 
 .prefix {

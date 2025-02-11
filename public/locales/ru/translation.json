@@ -8,6 +8,7 @@
   "edit": "Редактировать",
   "delete": "Удалить",
   "hello": "Привет {{name}}!",
+  "profile": "Мой профиль",
   "save": "Сохранить",
   "cancel": "Отменить",
   "expand": "Развернуть",
@@ -18,6 +19,11 @@
   "support": "Поддержка",
   "total.questions": "Всего вопросов",
   "back.button": "Вернуться на прошлую страницу",
+  "header": {
+    "menu": {
+      "password": "Сменить пароль"
+    }
+  },
   "sidebar": {
     "close": "Закрыть боковое меню",
     "open": "Открыть боковое меню",
@@ -26,16 +32,15 @@
       "platform": "Платформа",
       "admin": "Редактор",
       "settings": "Настройки",
-      "profile": "Мой профиль",
       "specializations": "Специализации",
       "users": "Пользователи",
+      "collections": "Коллекции",
       "education": {
         "title": "Обучение",
         "interview": "Собеседование"
       },
       "questions": "Вопросы",
-      "skills": "Навыки",
-      "collections": "Коллекции"
+      "skills": "Навыки"
     }
   },
   "stub": {

@@ -53,11 +53,28 @@ export const ROUTES = {
 		},
 		users: {
 			route: 'users',
-			page: 'admin/user',
+			page: 'admin/users',
+			detail: {
+				route: ':userId',
+				page: '/admin/users/:userId',
+			},
 		},
+
 		collections: {
 			route: 'collections',
-			page: 'admin/collections',
+			page: '/admin/collections',
+			create: {
+				route: 'create',
+				page: '/admin/collections/create',
+			},
+			details: {
+				route: ':collectionId',
+				page: '/admin/collections/:collectionId',
+			},
+			edit: {
+				route: ':collectionId/edit',
+				page: '/admin/collections/:collectionId/edit',
+			},
 		},
 	},
 	auth: {
@@ -133,6 +150,14 @@ export const ROUTES = {
 		detail: {
 			route: ':questionId',
 			page: '/questions/:questionId',
+		},
+	},
+	collections: {
+		route: 'collections',
+		page: '/collections',
+		detail: {
+			route: ':collectionsId',
+			page: '/collections/:collectionId',
 		},
 	},
 };

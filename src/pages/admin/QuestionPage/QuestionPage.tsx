@@ -21,7 +21,10 @@ import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
-import { QuestionHeader, QuestionBody, AdditionalInfo, QuestionActions } from '@/widgets/Question';
+import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
+import { QuestionActions } from '@/widgets/question/QuestionActions/QuestionActions';
+import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader/QuestionHeader';
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
@@ -61,7 +64,7 @@ export const QuestionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={
+				body={() => (
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
@@ -74,7 +77,7 @@ export const QuestionPage = () => {
 							/>
 						</Card>
 					</div>
-				}
+				)}
 			>
 				{({ onToggle, isOpen }) => (
 					<div>

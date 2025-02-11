@@ -19,6 +19,9 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
+import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
+import { CollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
@@ -33,6 +36,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -83,7 +87,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_PROFILE),
+		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
 	},
 	{
@@ -256,11 +260,39 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.users.route,
-						element: <UsersTablePage />,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <UsersTablePage />,
+							},
+							{
+								path: ROUTES.admin.users.detail.route,
+								element: <UserDetailPage />,
+							},
+						],
 					},
 					{
 						path: ROUTES.admin.collections.route,
-						element: <CollectionsPage />,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <CollectionsPage />,
+							},
+							{
+								path: ROUTES.admin.collections.create.route,
+								element: <CollectionCreatePage />,
+							},
+							{
+								path: ROUTES.admin.collections.edit.route,
+								element: <CollectionEditPage />,
+							},
+							{
+								path: ROUTES.admin.collections.details.route,
+								element: <CollectionPage />,
+							},
+						],
 					},
 					{
 						path: '*',

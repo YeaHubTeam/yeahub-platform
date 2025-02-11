@@ -40,7 +40,7 @@
   },
   "form": {
     "firstname": "Имя",
-    "lastName": "Фамилия",
+    "lastname": "Фамилия",
     "specialization": "IT специальность",
     "phone": "Номер для связи",
     "email": "Email для связи",
@@ -48,8 +48,9 @@
     "skills": "Навыки"
   },
   "settings.tabs": {
-    "change.password": "Подтверждение e-mail",
-    "verify.email": "Смена пароля"
+    "select.tariff": "Выбрать тариф",
+    "change.password": "Смена пароля",
+    "verify.email": "Подтверждение e-mail"
   },
   "email.verification": {
     "title": "Подтвердите ваш e-mail",

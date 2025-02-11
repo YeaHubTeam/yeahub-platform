@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { Text } from '@/shared/ui/Text';
 
 import styles from './ProgressBar.module.css';
@@ -7,6 +9,7 @@ export interface ProgressBarProps {
 	totalCount: number;
 	className?: string;
 	label?: string;
+	variant?: 'small' | 'large';
 }
 
 export const ProgressBar = ({
@@ -14,12 +17,17 @@ export const ProgressBar = ({
 	currentCount,
 	totalCount,
 	label,
+	variant = 'small',
 }: ProgressBarProps) => {
 	return (
-		<div className={className}>
-			<progress className={styles['progress-bar']} value={currentCount} max={totalCount}></progress>
+		<div className={classNames(styles['progress-bar'], className)}>
+			<progress
+				className={styles[`progress-bar-${variant}`]}
+				value={currentCount}
+				max={totalCount}
+			/>
 			{label && (
-				<Text variant="body2-accent" color="black-500" className={styles.label}>
+				<Text variant="body1-accent" className={styles[`label-${variant}`]}>
 					{label}
 				</Text>
 			)}

@@ -1,9 +1,9 @@
 import { Flex } from '@/shared/ui/Flex';
 
+import { InterviewPreparationSkeleton } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesListSkeleton } from '@/widgets/interview/PassedQuizzesList';
-import { PreviewQuestionsListSkeleton } from '@/widgets/interview/QuestionsList';
 import { PreviewQuestionsStatisticsSkeleton } from '@/widgets/interview/QuestionsStatistic';
-import { InterviewPreparationSkeleton } from '@/widgets/InterviewPreparation';
+import { PreviewQuestionsListSkeleton } from '@/widgets/question/QuestionsList';
 
 import styles from './InterviewPage.module.css';
 

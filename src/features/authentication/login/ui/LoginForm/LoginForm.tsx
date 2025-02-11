@@ -40,7 +40,7 @@ export const LoginForm = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles['form-wrapper']}>
+			<form onSubmit={handleSubmit(onLogin)} className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
 					<FormControl name="username" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
 						{(field) => (
@@ -82,15 +82,15 @@ export const LoginForm = () => {
 						</Button>
 					</div>
 				</div>
-			</div>
-			<Button
-				variant="primary"
-				disabled={isLoading}
-				className={styles['submit-button']}
-				onClick={handleSubmit(onLogin)}
-			>
-				{t(Auth.LOGIN_SUBMIT)}
-			</Button>
+				<Button
+					type="submit"
+					variant="primary"
+					disabled={isLoading}
+					className={styles['submit-button']}
+				>
+					{t(Auth.LOGIN_SUBMIT)}
+				</Button>
+			</form>
 		</div>
 	);
 };

@@ -32,7 +32,11 @@ export const AppLogo = ({
 				{ [styles['pointer-event-none']]: navigateTo === '#' },
 			)}
 		>
-			<img className={styles.logo} src={logoSrc} alt="Logo" />
+			<img
+				className={styles.logo}
+				src={logoSrc}
+				alt="Тренажер собеседований и вопросы собеседований в IT"
+			/>
 			{!isOpen && <LogoText className={classNames(styles['logo-text'], styles[fill])} />}
 		</NavLink>
 	);

@@ -10,14 +10,20 @@ import { EmailConfirmationTab } from '@/widgets/Profile';
 import { ChangePasswordTab } from '@/widgets/Profile';
 
 const getTabs = (t: (arg: string) => string) => [
+	// {
+	// 	id: 0,
+	// 	title: 'select-tariff',
+	// 	label: t(Profile.SETTINGS_TABS_SELECT_TARIFF),
+	// 	Component: SubscriptionTab,
+	// },
 	{
-		id: 0,
+		id: 1,
 		title: 'change-password',
 		label: t(Profile.SETTINGS_TABS_CHANGE_PASSWORD),
 		Component: ChangePasswordTab,
 	},
 	{
-		id: 1,
+		id: 2,
 		title: 'email-verify',
 		label: t(Profile.SETTINGS_TABS_VERIFY_EMAIL),
 		Component: EmailConfirmationTab,

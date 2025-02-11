@@ -1,10 +1,13 @@
 import { State } from '@/shared/config/store/State';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { FullProfile } from '@/entities/auth';
+
 export const getProfileIsEmailSent = (state: State) => {
 	return state.profile.isEmailSent;
 };
 export const getFullProfile = (state: State) => {
-	return state.profile.fullProfile;
+	return state.profile.fullProfile || ({} as FullProfile);
 };
 export const getProfileId = (state: State) => {
 	return state.profile.fullProfile?.profiles[0].id ?? '';

@@ -11,7 +11,7 @@ interface InfoBlockProps {
 
 export const InfoBlock = ({ description }: InfoBlockProps) => {
 	return (
-		<Card expandable className={styles.container}>
+		<Card expandable withOutsideShadow className={styles.container}>
 			<div className={styles['info']}>
 				<InfoBlockHeader />
 				<InfoBlockText description={description} />

@@ -7,7 +7,21 @@ type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexAlign = 'start' | 'center' | 'end' | 'normal';
 type FlexWrap = 'wrap' | 'nowrap';
 type FlexDirection = 'row' | 'column';
-type FlexGap = '4' | '8' | '12' | '14' | '16' | '20' | '24' | '32' | '40' | '48' | '60' | '120';
+type FlexGap =
+	| '4'
+	| '8'
+	| '10'
+	| '12'
+	| '14'
+	| '16'
+	| '20'
+	| '24'
+	| '28'
+	| '32'
+	| '40'
+	| '48'
+	| '60'
+	| '120';
 
 const justifyClasses: Record<FlexJustify, string> = {
 	around: styles['justify-around'],
@@ -37,11 +51,13 @@ const wrapClasses: Record<FlexWrap, string> = {
 const gapClasses: Record<FlexGap, string> = {
 	'4': styles.gap4,
 	'8': styles.gap8,
+	'10': styles.gap10,
 	'12': styles.gap12,
 	'14': styles.gap14,
 	'16': styles.gap16,
 	'20': styles.gap20,
 	'24': styles.gap24,
+	'28': styles.gap28,
 	'32': styles.gap32,
 	'40': styles.gap40,
 	'48': styles.gap48,

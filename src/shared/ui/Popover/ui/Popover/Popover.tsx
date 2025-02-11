@@ -14,7 +14,7 @@ interface PopoverChildrenProps {
 interface PopoverProps {
 	children: ({ onToggle, isOpen }: PopoverChildrenProps) => ReactNode;
 	menuItems?: PopoverMenuItem[];
-	body?: JSX.Element;
+	body?: ({ onToggle, isOpen }: PopoverChildrenProps) => JSX.Element;
 }
 
 export const Popover = ({ children, menuItems, body }: PopoverProps) => {
@@ -42,7 +42,7 @@ export const Popover = ({ children, menuItems, body }: PopoverProps) => {
 		}
 
 		if (body) {
-			return body;
+			return body({ onToggle: onToggleOpenPopover, isOpen: isOpenPopover });
 		}
 	}, [menuItems, body]);
 

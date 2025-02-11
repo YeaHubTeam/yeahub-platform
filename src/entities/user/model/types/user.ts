@@ -1,5 +1,7 @@
 import { Response } from '@/shared/types/types';
 
+export type UserStatus = 'public' | 'draft';
+
 export interface Permission {
 	id: number;
 	name: string;
@@ -20,6 +22,8 @@ export interface UserRole {
 	permissions: Permission[];
 }
 
+export type GetUserRolesListResponse = UserRole[];
+
 export interface User {
 	id: string;
 	firstName: string;
@@ -34,8 +38,16 @@ export interface User {
 	updatedAt: string;
 	createdAt: string;
 	userRoles: UserRole[];
-	isEmailVerified: boolean;
+	isEmailVerified?: boolean;
 }
+
+export type CreateOrEditUserFormValues = Pick<
+	User,
+	'id' | 'firstName' | 'lastName' | 'phone' | 'email' | 'country' | 'city' | 'address' | 'birthday'
+> & {
+	userRoles: number[];
+	status?: UserStatus;
+};
 
 export type GetUsersListParamsRequest = {
 	page?: number;
