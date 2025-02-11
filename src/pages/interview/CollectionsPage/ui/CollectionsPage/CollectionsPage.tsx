@@ -34,8 +34,11 @@ const CollectionsPage = () => {
 		handleFilterChange({ title: value });
 	};
 
-	const onChangeSpecialization = (specialization: number[] | undefined) => {
-		handleFilterChange({ specialization, page: 1 });
+	const onChangeSpecialization = (specialization: number | number[]) => {
+		handleFilterChange({
+			specialization: Array.isArray(specialization) ? specialization : [specialization],
+			page: 1,
+		});
 	};
 
 	const onChangeIsFree = (isFree: boolean) => {

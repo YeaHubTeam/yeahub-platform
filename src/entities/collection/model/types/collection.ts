@@ -30,6 +30,9 @@ export type CreateOrEditCollectionFormValues = Pick<
 export interface GetCollectionsListParamsRequest {
 	page?: number;
 	limit?: number;
+	search?: string;
+	specialization?: number[] | number;
+	isFree?: boolean;
 }
 
 export type GetCollectionsListResponse = Response<Collection[]>;

@@ -7,28 +7,15 @@ import {
 	GetCollectionsListResponse,
 } from '../model/types/collection';
 
-interface CustomGetCollectionsListParamsRequest extends GetCollectionsListParamsRequest {
-	isFree?: boolean;
-}
-
 const collectionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getCollectionsList: build.query<
-			GetCollectionsListResponse,
-			CustomGetCollectionsListParamsRequest
-		>({
-			query: (params) => {
-				const queryParams: GetCollectionsListParamsRequest & { isFree?: boolean } = { ...params };
-				console.log('QueryParams перед отправкой запроса:', queryParams);
-
-				return {
-					url: collectionApiUrls.getCollectionsList,
-					params: queryParams,
-				};
-			},
+		getCollectionsList: build.query<GetCollectionsListResponse, GetCollectionsListParamsRequest>({
+			query: (params) => ({
+				url: collectionApiUrls.getCollectionsList,
+				params: { page: 1, limit: 10, ...params },
+			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
 	}),
 });
-
 export const { useGetCollectionsListQuery } = collectionApi;

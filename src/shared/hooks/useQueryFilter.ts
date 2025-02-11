@@ -25,14 +25,14 @@ interface FilterFromUser {
 	page?: number;
 	orderBy?: string;
 	order?: string;
-	specialization?: number[];
+	specialization?: number | number[];
 	isFree?: boolean;
 }
 
 const initialState = '?page=1&status=all';
 
 export const useQueryFilter = () => {
-	const [filter, setFilters] = useState<FilterFromUser>({ tariff: true } as FilterFromUser);
+	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
 
 	const navigate = useNavigate();
 	const location = useLocation();

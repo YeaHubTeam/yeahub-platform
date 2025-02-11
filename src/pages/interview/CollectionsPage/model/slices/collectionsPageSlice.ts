@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { CollectionTariff } from '@/entities/collection';
+
 import { CollectionsPageState } from '../types/collectionsPageType';
+
+type SpecializationType = string[] | undefined;
 
 const initialState: CollectionsPageState = {
 	page: 1,
@@ -20,11 +24,11 @@ const collectionsPageSlice = createSlice({
 			state.title = action.payload;
 			state.page = 1;
 		},
-		setSkills: (state, action: PayloadAction<string[] | undefined>) => {
+		setSkills: (state, action: PayloadAction<SpecializationType>) => {
 			state.specialization = action.payload;
 			state.page = 1;
 		},
-		setStatus: (state, action: PayloadAction<'free' | 'premium'>) => {
+		setStatus: (state, action: PayloadAction<CollectionTariff>) => {
 			state.access = action.payload;
 			state.page = 1;
 		},

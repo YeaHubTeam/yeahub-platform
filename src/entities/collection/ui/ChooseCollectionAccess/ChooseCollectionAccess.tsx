@@ -5,8 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { CollectionAccess } from '@/widgets/Collection';
+import { CollectionTariff } from '@/entities/collection';
 
 import styles from './ChooseCollectionAccess.module.css';
 
@@ -16,7 +15,7 @@ interface ChooseCollectionAccessProps {
 }
 
 interface AccessItem {
-	id: CollectionAccess;
+	id: CollectionTariff;
 	title: string;
 	active?: boolean;
 }
@@ -31,7 +30,7 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 		{ id: 'free', title: t(Collections.TARIFF_FREE) },
 	];
 
-	const onChooseAccess = (id: CollectionAccess) => {
+	const onChooseAccess = (id: CollectionTariff) => {
 		const isFreeValue = id === 'free';
 		onChangeIsFree(isFreeValue);
 	};
