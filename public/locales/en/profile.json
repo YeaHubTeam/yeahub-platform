@@ -8,6 +8,7 @@
   "photo": {
     "title": "Profile photo",
     "description": "Your photo will be visible to all members of the YeaHub community",
+    "update": "Update photo",
     "delete": "Delete photo",
     "modal": {
       "title": "Select an area for profile photos",

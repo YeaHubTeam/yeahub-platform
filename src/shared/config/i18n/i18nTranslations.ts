@@ -131,6 +131,7 @@ export enum Profile {
 	TABS_SKILLS = 'tabs.skills',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
+	PHOTO_UPDATE = 'photo.update',
 	PHOTO_DELETE = 'photo.delete',
 	PHOTO_MODAL_TITLE = 'photo.modal.title',
 	PHOTO_MODAL_DESCRIPTION = 'photo.modal.description',
