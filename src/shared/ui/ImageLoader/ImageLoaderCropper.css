@@ -26,6 +26,7 @@
 .cropper-crop-box,
 .cropper-modal {
   position: absolute;
+  object-fit: contain;
   inset: 0;
 }
 

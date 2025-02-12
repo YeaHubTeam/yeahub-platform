@@ -35,6 +35,8 @@ interface ImageLoaderProps {
 	};
 	initialSrc: string | null;
 	isLoading?: boolean;
+	isPopover?: boolean;
+	avatar?: string;
 }
 
 export const ImageLoader = ({
@@ -45,23 +47,24 @@ export const ImageLoader = ({
 	maxMBSize,
 	initialSrc: src,
 	isLoading,
+	isPopover = false,
 }: ImageLoaderProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
-
-	const [file, setFile] = useState<string | ArrayBuffer | null>(null);
+	const [file, setFile] = useState<string | ArrayBuffer | null>(isPopover ? src : null);
 	const [deleted, setDeleted] = useState(false);
 	const [croppedArea, setCroppedArea] = useState<null | string>(null);
 
 	const cropperRef = useRef<ReactCropperElement>(null);
 
 	const onCrop = () => {
-		cropperRef.current?.cropper &&
+		if (cropperRef.current?.cropper) {
 			setCroppedArea(
-				cropperRef.current?.cropper
+				cropperRef.current.cropper
 					.getCroppedCanvas()
 					.toDataURL()
 					.replace('data:image/png;base64,', ''),
 			);
+		}
 	};
 
 	const uploaderRef = useRef<HTMLDivElement>(null);
@@ -83,8 +86,6 @@ export const ImageLoader = ({
 		uploaderRef.current?.getElementsByTagName('input')[0].click();
 	};
 
-	const closeModal = () => setFile(null);
-
 	const handleUpload = ([file]: File[]) => {
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
@@ -96,26 +97,24 @@ export const ImageLoader = ({
 					minResolution &&
 					(imageReader.width < minResolution.width || imageReader.height < minResolution.height)
 				) {
-					toast(
+					toast.error(
 						t(Profile.PHOTO_MODAL_MIN_RES, {
 							minRes: `${minResolution.width}x${minResolution.height}`,
 						}),
 					);
 					return;
 				}
-
 				if (
 					maxResolution &&
 					(imageReader.width > maxResolution.width || imageReader.height > maxResolution.height)
 				) {
-					toast(
+					toast.error(
 						t(Profile.PHOTO_MODAL_MAX_RES, {
 							maxRes: `${maxResolution.width}x${maxResolution.height}`,
 						}),
 					);
 					return;
 				}
-
 				if (cropper) {
 					setFile(reader.result);
 				} else {
@@ -136,14 +135,14 @@ export const ImageLoader = ({
 							style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
 						/>
 					)}
-					{!deleted && src ? (
+					{!deleted && src && !isPopover ? (
 						<img
 							src={(croppedArea && 'data:image/png;base64,' + croppedArea) || src}
 							alt={t(Profile.PHOTO_TITLE)}
 							className={styles.img}
 						/>
 					) : (
-						<AvatarWithoutPhoto />
+						!isPopover && <AvatarWithoutPhoto />
 					)}
 					{!deleted && src && (
 						<button type="button" className={styles['delete-avatar-btn']} onClick={removeImage}>
@@ -151,21 +150,25 @@ export const ImageLoader = ({
 						</button>
 					)}
 				</Flex>
-				<div ref={uploaderRef}>
-					<FileLoader
-						maxFileMBSize={maxMBSize}
-						accept={Accept.IMAGE}
-						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, { ns: i18Namespace.translation })}
-						extensionsText={Extension.IMAGE}
-						onChange={handleUpload}
-					/>
-				</div>
+				{!isPopover && (
+					<div ref={uploaderRef}>
+						<FileLoader
+							maxFileMBSize={maxMBSize}
+							accept={Accept.IMAGE}
+							fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, {
+								ns: i18Namespace.translation,
+							})}
+							extensionsText={Extension.IMAGE}
+							onChange={handleUpload}
+						/>
+					</div>
+				)}
 			</Flex>
 
 			<Modal
 				isOpen={Boolean(cropper && file)}
 				title={t(Profile.PHOTO_MODAL_TITLE)}
-				onClose={closeModal}
+				onClose={() => setFile(null)}
 				buttonPrimaryText={t(Profile.PHOTO_MODAL_SUBMIT)}
 				buttonOutlineText={t(Profile.PHOTO_MODAL_CLICK_SECONDARY)}
 				buttonPrimaryClick={submitImage}
@@ -204,6 +207,18 @@ export const ImageLoader = ({
 					</Flex>
 				</Flex>
 			</Modal>
+
+			{isPopover && (
+				<div ref={uploaderRef}>
+					<FileLoader
+						maxFileMBSize={maxMBSize}
+						accept={Accept.IMAGE}
+						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, { ns: i18Namespace.translation })}
+						extensionsText={Extension.IMAGE}
+						onChange={handleUpload}
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

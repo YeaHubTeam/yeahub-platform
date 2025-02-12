@@ -4,6 +4,7 @@
   gap: 8px;
   width: 170px;
   height: 188px;
+  position: relative;
 }
 
 .card-avatar {
@@ -32,6 +33,19 @@
 
 .card-schedule {
   font-weight: var(--font-weight-400);
+}
+
+.button {
+  justify-content: flex-start;
+  padding: 6px 10px;
+  border-radius: 12px;
+  svg {
+    color: var(--palette-ui-red-700);
+  }
+}
+
+.button:focus {
+  border: 1px solid transparent;
 }
 
 @media (width <=480px) {
