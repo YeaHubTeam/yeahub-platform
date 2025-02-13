@@ -86,6 +86,10 @@ export const ImageLoader = ({
 		uploaderRef.current?.getElementsByTagName('input')[0].click();
 	};
 
+	const closeModal = () => {
+		setFile(null);
+	};
+
 	const handleUpload = ([file]: File[]) => {
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
@@ -168,7 +172,7 @@ export const ImageLoader = ({
 			<Modal
 				isOpen={Boolean(cropper && file)}
 				title={t(Profile.PHOTO_MODAL_TITLE)}
-				onClose={() => setFile(null)}
+				onClose={closeModal}
 				buttonPrimaryText={t(Profile.PHOTO_MODAL_SUBMIT)}
 				buttonOutlineText={t(Profile.PHOTO_MODAL_CLICK_SECONDARY)}
 				buttonPrimaryClick={submitImage}

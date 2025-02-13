@@ -1,19 +1,22 @@
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
-
-import styles from './UserImageBlock.module.css';
-import { useProfileQuery } from '@/entities/auth';
-import { useUpdateAvatarMutation } from '@/features/profile/editProfileForm/api/editProfileApi';
-import { useEffect, useRef, useState } from 'react';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Icon } from 'yeahub-ui-kit';
-import { Loader } from '@/shared/ui/Loader';
-import { Text } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
+import { Loader } from '@/shared/ui/Loader';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+import { Text } from '@/shared/ui/Text';
+
+import { useProfileQuery } from '@/entities/auth';
+
+import { useUpdateAvatarMutation } from '@/features/profile/editProfileForm';
+
+import styles from './UserImageBlock.module.css';
 
 interface UserImageBlockProps {
 	avatar?: string;
@@ -26,19 +29,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const popoverRef = useRef<HTMLDivElement | null>(null);
 
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
-				setIsModalOpen(false);
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, []);
+	useClickOutside(popoverRef, () => setIsModalOpen(false));
 
 	const onImageChange = (image: string | null) => {
 		if (profile) {
@@ -50,19 +41,21 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
 			icon: <Icon icon="imagesSquare" size={20} />,
-			title: t(Profile.PHOTO_UPDATE),
+			title: t(Profile.PHOTO_UPDATE_FULL),
 			onClick: () => setIsModalOpen(true),
 		},
 		{
 			renderComponent: () => (
 				<Button
-					onClick={() => onImageChange(null)}
+					onClick={() => {
+						onImageChange(null);
+					}}
 					className={styles.button}
 					variant="tertiary"
 					preffix={<Icon icon="trashSimple" size={20} color="--palette-ui-red-700" />}
 				>
 					<Text color="red-700" variant="body3">
-						{t(Profile.PHOTO_DELETE)}{' '}
+						{t(Profile.PHOTO_DELETE_FULL)}
 					</Text>
 				</Button>
 			),
@@ -75,21 +68,11 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 				{({ onToggle }) => (
 					<div className={styles['card-avatar']}>
 						{isAvatarLoading ? (
-							<Loader
-								hasText={false}
-								style={{
-									top: '50%',
-									left: '50%',
-									transform: 'translate(-50%, -50%)',
-								}}
-							/>
+							<Loader hasText={false} className={styles.loader} />
 						) : avatar ? (
-							<img
-								src={avatar}
-								alt={t(Profile.PHOTO_TITLE)}
-								onClick={onToggle}
-								className={styles['avatar-img']}
-							/>
+							<button className={styles['image-button']} onClick={onToggle}>
+								<img src={avatar} alt={t(Profile.PHOTO_TITLE)} className={styles['avatar-img']} />
+							</button>
 						) : (
 							<AvatarWithoutPhoto />
 						)}

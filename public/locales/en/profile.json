@@ -10,6 +10,8 @@
     "description": "Your photo will be visible to all members of the YeaHub community",
     "update": "Update photo",
     "delete": "Delete photo",
+    "update.full": "Update photograph",
+    "delete.full": "Delete photograph",
     "modal": {
       "title": "Select an area for profile photos",
       "description": "The selected thumbnail will be used in articles, personal messages and comments.",
