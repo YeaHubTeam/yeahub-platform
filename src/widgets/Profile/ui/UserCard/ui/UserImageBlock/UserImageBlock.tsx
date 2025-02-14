@@ -1,14 +1,11 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useClickOutside } from '@/shared/hooks/useClickOutside';
-import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Button } from '@/shared/ui/Button';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
-import { Loader } from '@/shared/ui/Loader';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
@@ -27,9 +24,6 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 	const { data: profile } = useProfileQuery();
 	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const popoverRef = useRef<HTMLDivElement | null>(null);
-
-	useClickOutside(popoverRef, () => setIsModalOpen(false));
 
 	const onImageChange = (image: string | null) => {
 		if (profile) {
@@ -42,7 +36,9 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 		{
 			icon: <Icon icon="imagesSquare" size={20} />,
 			title: t(Profile.PHOTO_UPDATE_FULL),
-			onClick: () => setIsModalOpen(true),
+			onClick: () => {
+				setIsModalOpen(true);
+			},
 		},
 		{
 			renderComponent: () => (
@@ -67,36 +63,35 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 			<Popover key={avatar} menuItems={settingsMenuItems}>
 				{({ onToggle }) => (
 					<div className={styles['card-avatar']}>
-						{isAvatarLoading ? (
-							<Loader hasText={false} className={styles.loader} />
-						) : avatar ? (
-							<button className={styles['image-button']} onClick={onToggle}>
-								<img src={avatar} alt={t(Profile.PHOTO_TITLE)} className={styles['avatar-img']} />
-							</button>
-						) : (
-							<AvatarWithoutPhoto />
-						)}
+						<button
+							className={styles['image-button']}
+							onClick={profile?.avatarUrl ? onToggle : undefined}
+						>
+							<div>
+								<ImageLoader
+									cropper={{
+										aspectRatio: 1,
+										title: t(Profile.PHOTO_MODAL_TITLE),
+										description: t(Profile.PHOTO_MODAL_DESCRIPTION),
+									}}
+									minResolution={{ width: 128, height: 128 }}
+									maxResolution={{ width: 2048, height: 2048 }}
+									maxMBSize={5}
+									setValue={onImageChange}
+									initialSrc={profile?.avatarUrl || null}
+									isLoading={isAvatarLoading}
+									isPopover={true}
+									isOpenProp={isModalOpen}
+									onClose={() => {
+										setIsModalOpen(false);
+										onToggle();
+									}}
+								/>
+							</div>
+						</button>
 					</div>
 				)}
 			</Popover>
-			{isModalOpen && (
-				<div ref={popoverRef}>
-					<ImageLoader
-						cropper={{
-							aspectRatio: 1,
-							title: t(Profile.PHOTO_MODAL_TITLE),
-							description: t(Profile.PHOTO_MODAL_DESCRIPTION),
-						}}
-						minResolution={{ width: 128, height: 128 }}
-						maxResolution={{ width: 2048, height: 2048 }}
-						maxMBSize={5}
-						setValue={onImageChange}
-						initialSrc={profile?.avatarUrl || null}
-						isLoading={isAvatarLoading}
-						isPopover
-					/>
-				</div>
-			)}
 		</div>
 	);
 };

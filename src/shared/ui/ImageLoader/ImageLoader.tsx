@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Cropper, ReactCropperElement } from 'react-cropper';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +36,8 @@ interface ImageLoaderProps {
 	initialSrc: string | null;
 	isLoading?: boolean;
 	isPopover?: boolean;
-	avatar?: string;
+	isOpenProp?: boolean;
+	onClose?: () => void;
 }
 
 export const ImageLoader = ({
@@ -48,11 +49,19 @@ export const ImageLoader = ({
 	initialSrc: src,
 	isLoading,
 	isPopover = false,
+	isOpenProp = false,
+	onClose,
 }: ImageLoaderProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
-	const [file, setFile] = useState<string | ArrayBuffer | null>(isPopover ? src : null);
+	const [file, setFile] = useState<string | ArrayBuffer | null>(isOpenProp ? src : null);
 	const [deleted, setDeleted] = useState(false);
 	const [croppedArea, setCroppedArea] = useState<null | string>(null);
+
+	useEffect(() => {
+		if (isOpenProp) {
+			setFile(src);
+		}
+	}, [isOpenProp, src]);
 
 	const cropperRef = useRef<ReactCropperElement>(null);
 
@@ -88,6 +97,8 @@ export const ImageLoader = ({
 
 	const closeModal = () => {
 		setFile(null);
+		setCroppedArea(null);
+		onClose && onClose();
 	};
 
 	const handleUpload = ([file]: File[]) => {
@@ -139,14 +150,14 @@ export const ImageLoader = ({
 							style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
 						/>
 					)}
-					{!deleted && src && !isPopover ? (
+					{!deleted && src ? (
 						<img
 							src={(croppedArea && 'data:image/png;base64,' + croppedArea) || src}
 							alt={t(Profile.PHOTO_TITLE)}
 							className={styles.img}
 						/>
 					) : (
-						!isPopover && <AvatarWithoutPhoto />
+						<AvatarWithoutPhoto />
 					)}
 					{!deleted && src && (
 						<button type="button" className={styles['delete-avatar-btn']} onClick={removeImage}>
@@ -154,23 +165,22 @@ export const ImageLoader = ({
 						</button>
 					)}
 				</Flex>
-				{!isPopover && (
-					<div ref={uploaderRef}>
-						<FileLoader
-							maxFileMBSize={maxMBSize}
-							accept={Accept.IMAGE}
-							fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, {
-								ns: i18Namespace.translation,
-							})}
-							extensionsText={Extension.IMAGE}
-							onChange={handleUpload}
-						/>
-					</div>
-				)}
+				<div ref={uploaderRef}>
+					<FileLoader
+						maxFileMBSize={maxMBSize}
+						accept={Accept.IMAGE}
+						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, {
+							ns: i18Namespace.translation,
+						})}
+						extensionsText={Extension.IMAGE}
+						onChange={handleUpload}
+						isDragDropEnabled={isPopover ? false : true}
+					/>
+				</div>
 			</Flex>
 
 			<Modal
-				isOpen={Boolean(cropper && file)}
+				isOpen={isOpenProp || Boolean(cropper && file)}
 				title={t(Profile.PHOTO_MODAL_TITLE)}
 				onClose={closeModal}
 				buttonPrimaryText={t(Profile.PHOTO_MODAL_SUBMIT)}
@@ -211,18 +221,6 @@ export const ImageLoader = ({
 					</Flex>
 				</Flex>
 			</Modal>
-
-			{isPopover && (
-				<div ref={uploaderRef}>
-					<FileLoader
-						maxFileMBSize={maxMBSize}
-						accept={Accept.IMAGE}
-						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, { ns: i18Namespace.translation })}
-						extensionsText={Extension.IMAGE}
-						onChange={handleUpload}
-					/>
-				</div>
-			)}
 		</div>
 	);
 };
