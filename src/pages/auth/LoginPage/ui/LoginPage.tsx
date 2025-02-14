@@ -32,7 +32,7 @@ const LoginPage = () => {
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{loginTitle}</h1>
 			{accessToken ? (
-				<Button onClick={handleLogoutUser} size="L">
+				<Button onClick={handleLogoutUser} size="large">
 					{t(Auth.LOGOUT)}
 				</Button>
 			) : (

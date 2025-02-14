@@ -85,7 +85,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 						className={classNames(styles['sidebar-bottom-button'], {
 							[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
 						})}
-						size="L"
+						size="large"
 						onClick={openSupportTab}
 						preffix={<ChatIcon />}
 					>
@@ -96,7 +96,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 							className={classNames(styles['sidebar-bottom-button'], {
 								[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
 							})}
-							size="L"
+							size="large"
 							onClick={onLogout}
 							preffix={<SignOutIcon isCurrentColor />}
 							variant="destructive"

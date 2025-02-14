@@ -9,7 +9,7 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
 			variant = 'primary',
-			size = 'M',
+			size = 'medium',
 			form = 'square',
 			destructive = false,
 			className,
@@ -24,7 +24,7 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(
 				className={classnames(
 					styles['icon-button'],
 					styles[`icon-button-${form}`],
-					styles[`icon-button-${size.toLowerCase()}`],
+					styles[`icon-button-${size}`],
 					destructive ? styles[`icon-button-destructive`] : styles[`icon-button-${variant}`],
 					className,
 				)}

@@ -22,7 +22,7 @@ export const EmptyStub = ({ resetFilters, text }: EmptyStubProps) => {
 			<Text variant={isMobileS ? 'body2-accent' : 'body5-accent'} className={styles.text}>
 				{t(Translation.STUB_FILTER_TITLE, { text: text ? `“${text}”` : undefined })}
 			</Text>
-			<Button size="L" variant="outline" onClick={resetFilters} className={styles.button}>
+			<Button size="large" variant="outline" onClick={resetFilters} className={styles.button}>
 				{t(Translation.STUB_FILTER_SUBMIT)}
 			</Button>
 		</>

@@ -41,7 +41,7 @@ export const ErrorElement = ({
 						</span>
 					) : null}
 				</div>
-				<Button size="L" onClick={handleBackBtnClick}>
+				<Button size="large" onClick={handleBackBtnClick}>
 					Вернуться назад
 				</Button>
 			</div>

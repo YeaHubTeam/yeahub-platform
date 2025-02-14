@@ -16,7 +16,7 @@ const Error404Page = () => {
 				<img src="/images/404.png" alt="" />
 				<div className={styles.content}>
 					<h2 className={styles.title}>Произошла ошибка</h2>
-					<Button size="L" onClick={handleBackBtnClick}>
+					<Button size="large" onClick={handleBackBtnClick}>
 						Вернуться назад
 					</Button>
 				</div>

@@ -7,7 +7,7 @@ export const PaginationSkeleton = () => {
 	return (
 		<Flex gap="10" align="center">
 			<IconButtonSkeleton
-				size="S"
+				size="small"
 				aria-label="back button"
 				form="round"
 				variant="outline"
@@ -17,7 +17,7 @@ export const PaginationSkeleton = () => {
 				<TextSkeleton key={i} variant="body2-accent" width={12} />
 			))}
 			<IconButtonSkeleton
-				size="S"
+				size="small"
 				aria-label="back button"
 				form="round"
 				variant="outline"

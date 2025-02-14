@@ -74,7 +74,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

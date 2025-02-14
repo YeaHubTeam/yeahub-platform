@@ -34,7 +34,7 @@ export const InterviewBlock = () => {
 					<span>{t(Landing.MAIN_BADGE)}</span>
 					<InterviewTitle />
 					<p className={styles['article-description']}>{t(Landing.MAIN_SUBTITLE)}</p>
-					<Button variant="primary" size="L" onClick={handleNavigate}>
+					<Button variant="primary" size="large" onClick={handleNavigate}>
 						{t(Landing.MAIN_LINK)}
 					</Button>
 				</div>

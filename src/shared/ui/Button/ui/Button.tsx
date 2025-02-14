@@ -9,7 +9,7 @@ import styles from './Button.module.css';
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
 	(
 		{
-			size = 'M',
+			size = 'medium',
 			variant = 'primary',
 			className = '',
 			fullWidth = false,
@@ -31,7 +31,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 				ref={ref}
 				className={classnames(
 					styles[tagName],
-					fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
+					styles[`${tagName}-${size}`],
+					fullWidth && styles[`${tagName}-full`],
 					destructive && tagName === 'a'
 						? styles['a-link-destructive']
 						: styles[`${tagName}-${variant}`],
