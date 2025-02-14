@@ -31,7 +31,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 				ref={ref}
 				className={classnames(
 					styles[tagName],
-					fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
+					styles[`${tagName}-${size.toLowerCase()}`],
+					fullWidth && styles[`${tagName}-full`],
 					destructive && tagName === 'a'
 						? styles['a-link-destructive']
 						: styles[`${tagName}-${variant}`],
