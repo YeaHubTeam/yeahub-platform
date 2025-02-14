@@ -415,6 +415,8 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	EDIT_SUCCESS = 'edit.success',
+	EDIT_ERROR = 'edit.error',
 }
 
 export enum Collections {

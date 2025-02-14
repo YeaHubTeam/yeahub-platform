@@ -1,4 +1,10 @@
-export type { User, UserStatus, CreateOrEditUserFormValues, UserRole } from './model/types/user';
+export type {
+	User,
+	UserStatus,
+	CreateOrEditUserFormValues,
+	UserRole,
+	UserFormValues,
+} from './model/types/user';
 export {
 	useGetUsersListQuery,
 	useGetUserByIdQuery,

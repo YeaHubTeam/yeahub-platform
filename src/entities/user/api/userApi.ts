@@ -8,6 +8,7 @@ import {
 	GetUserRolesListResponse,
 	GetUsersListParamsRequest,
 	GetUsersListResponse,
+	UserRolesMutationRequest,
 } from '../model/types/user';
 
 const userApi = baseApi.injectEndpoints({
@@ -31,21 +32,21 @@ const userApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.ROLES],
 		}),
-		addUserRoles: build.mutation<void, { userId: string; roles: number[] }>({
+		addUserRoles: build.mutation<void, UserRolesMutationRequest>({
 			query: ({ userId, roles }) => ({
 				url: route(userApiUrls.addUserRoles, userId),
 				method: 'POST',
 				body: { roles },
 			}),
-			invalidatesTags: [ApiTags.USER_DETAIL],
+			invalidatesTags: [ApiTags.USER_DETAIL, ApiTags.USERS],
 		}),
-		removeUserRoles: build.mutation<void, { userId: string; roles: number[] }>({
+		removeUserRoles: build.mutation<void, UserRolesMutationRequest>({
 			query: ({ userId, roles }) => ({
 				url: route(userApiUrls.removeUserRoles, userId),
 				method: 'DELETE',
 				body: { roles },
 			}),
-			invalidatesTags: [ApiTags.USER_DETAIL],
+			invalidatesTags: [ApiTags.USER_DETAIL, ApiTags.USERS],
 		}),
 	}),
 });

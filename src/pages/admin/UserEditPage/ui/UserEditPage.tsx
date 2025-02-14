@@ -1,9 +1,12 @@
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -13,41 +16,47 @@ import {
 	useGetUserByIdQuery,
 	UserCard,
 	useRemoveUserRolesMutation,
+	UserFormValues,
 } from '@/entities/user';
-
-import { UserFormValues } from '../../UserDetailPage/model/types/userCreateTypes';
 
 const UserEditPage = () => {
 	const { userId } = useParams<{ userId: string }>();
 	const { data: user } = useGetUserByIdQuery(String(userId));
 	const { t } = useTranslation(i18Namespace.translation);
+	const navigate = useNavigate();
+
 	const methods = useForm<UserFormValues>({
 		defaultValues: {
 			userRoles: user?.userRoles.map((role) => role.id),
-			status: 'public',
 		},
 		mode: 'onTouched',
 	});
 
-	const userRoles = useWatch({ control: methods.control, name: 'userRoles' });
-
 	const [addUserRole] = useAddUserRolesMutation();
 	const [removeUserRole] = useRemoveUserRolesMutation();
 
-	const handleSave = async () => {
+	const handleSave = async (values: UserFormValues) => {
 		const initialRoles = user?.userRoles.map((role) => role.id) || [];
-		const addedRoles = userRoles.filter((role) => !initialRoles.includes(role));
-		const removedRoles = initialRoles.filter((role) => !userRoles.includes(role));
+		const addedRoles = values.userRoles.filter((role) => !initialRoles.includes(role));
+		const removedRoles = initialRoles.filter((role) => !values.userRoles.includes(role));
 		if (!user?.id) return;
 
-		await Promise.all([
-			...addedRoles.map((roleId) => addUserRole({ userId: user.id, roles: [roleId] })),
-			...removedRoles.map((roleId) => removeUserRole({ userId: user.id, roles: [roleId] })),
-		]);
+		try {
+			await Promise.all([
+				...addedRoles.map((roleId) => addUserRole({ userId: user.id, roles: [roleId] })),
+				...removedRoles.map((roleId) => removeUserRole({ userId: user.id, roles: [roleId] })),
+			]);
+
+			toast.success(t(User.EDIT_SUCCESS, { ns: i18Namespace.user }));
+			methods.reset();
+			navigate(route(ROUTES.admin.users.detail.page, user.id));
+		} catch (_) {
+			toast.error(t(User.EDIT_ERROR, { ns: i18Namespace.user }));
+		}
 	};
 
 	const handleCancel = () => {
-		methods.setValue('userRoles', user?.userRoles.map((role) => role.id) || []);
+		methods.reset();
 	};
 
 	if (!user) {
@@ -55,16 +64,18 @@ const UserEditPage = () => {
 	}
 	return (
 		<FormProvider {...methods}>
-			<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-				<BackButton />
-				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-					<Button variant="secondary" onClick={handleCancel}>
-						{t(Translation.CANCEL)}
-					</Button>
-					<Button onClick={handleSave}>{t(Translation.SAVE)}</Button>
+			<form onSubmit={methods.handleSubmit(handleSave)}>
+				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
+					<BackButton />
+					<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+						<Button variant="secondary" type="button" onClick={handleCancel}>
+							{t(Translation.CANCEL)}
+						</Button>
+						<Button type="submit">{t(Translation.SAVE)}</Button>
+					</Flex>
 				</Flex>
-			</Flex>
-			<UserCard user={user} disabledEditRole={false} />
+				<UserCard user={user} disabledEditRole={false} />
+			</form>
 		</FormProvider>
 	);
 };

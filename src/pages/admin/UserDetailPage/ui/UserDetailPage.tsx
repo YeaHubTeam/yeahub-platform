@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
@@ -10,9 +11,7 @@ import { route } from '@/shared/helpers/route';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useGetUserByIdQuery, UserCard } from '@/entities/user';
-
-import { UserFormValues } from '../model/types/userCreateTypes';
+import { useGetUserByIdQuery, UserCard, UserFormValues } from '@/entities/user';
 
 /**
  * Page showing detail info about specialization
@@ -26,10 +25,17 @@ const UserDetailPage = () => {
 	const methods = useForm<UserFormValues>({
 		defaultValues: {
 			userRoles: user?.userRoles.map((role) => role.id),
-			status: 'public',
 		},
 		mode: 'onTouched',
 	});
+
+	useEffect(() => {
+		if (user) {
+			methods.reset({
+				userRoles: user.userRoles.map((role) => role.id),
+			});
+		}
+	}, [user, methods]);
 
 	if (!user) {
 		return null;
@@ -37,9 +43,9 @@ const UserDetailPage = () => {
 
 	return (
 		<FormProvider {...methods}>
-			<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
+			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
 				<BackButton />
-				<NavLink style={{ marginLeft: 'auto' }} to={route(ROUTES.admin.users.edit.page, user.id)}>
+				<NavLink to={route(ROUTES.admin.users.edit.page, user.id)}>
 					<Button>{t(Translation.EDIT)}</Button>
 				</NavLink>
 			</Flex>
