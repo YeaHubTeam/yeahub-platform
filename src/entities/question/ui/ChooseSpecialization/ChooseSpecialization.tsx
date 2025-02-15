@@ -58,7 +58,7 @@ export const ChooseSpecialization = ({
 	if (!prepareData) return null;
 
 	return (
-		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
+		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t('specialization.title')}
