@@ -11,6 +11,7 @@ export interface MockTraining {
 	rating: string;
 	difficulty: string;
 	image: string;
+	alt: string;
 }
 
 export const mockTraining: Array<MockTraining> = [
@@ -20,6 +21,7 @@ export const mockTraining: Array<MockTraining> = [
 		rating: '4',
 		difficulty: '10',
 		image: image1,
+		alt: 'Backend: Node.js, PHP, Python, Golang, Java, Rust',
 	},
 	{
 		id: '2',
@@ -27,6 +29,7 @@ export const mockTraining: Array<MockTraining> = [
 		rating: '3',
 		difficulty: '2',
 		image: image2,
+		alt: 'DevOps: Docker, Kubernetes, CI/CD, GitHub',
 	},
 	{
 		id: '3',
@@ -34,6 +37,7 @@ export const mockTraining: Array<MockTraining> = [
 		rating: '4',
 		difficulty: '5',
 		image: image3,
+		alt: 'Frontend: HTML, CSS, JavaScript, React',
 	},
 	{
 		id: '4',
@@ -41,5 +45,6 @@ export const mockTraining: Array<MockTraining> = [
 		rating: '4',
 		difficulty: '4',
 		image: image4,
+		alt: 'Вопросы и собеседования для Junior',
 	},
 ];

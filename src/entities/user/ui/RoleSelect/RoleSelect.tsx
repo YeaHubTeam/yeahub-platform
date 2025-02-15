@@ -36,13 +36,17 @@ export const RoleSelect = ({
 		const updatedRoles = [...value, Number(roleId)];
 		onChange(updatedRoles);
 	};
+	const handleDeleteItem = (roleId: number) => () => {
+		const updatedRoles = value.filter((id) => id !== roleId);
+		onChange(updatedRoles);
+	};
 
 	const roleOptions = useMemo(
 		() =>
 			availableRoles
 				.filter((role) => !value.includes(role.id))
 				.map((role) => ({
-					label: role.name,
+					label: t(User[convertRoleNameToEnumKey(role.name)]),
 					value: role.id.toString(),
 				})),
 		[availableRoles, value],
@@ -66,7 +70,7 @@ export const RoleSelect = ({
 				options={roleOptions}
 				onChange={handleChange}
 				selectedItems={value}
-				handleDeleteItem={() => () => {}}
+				handleDeleteItem={handleDeleteItem}
 				itemsDictionary={rolesDictionary}
 				placeholder={t(User.SELECT_CHOOSE)}
 				disabled={disabled}
