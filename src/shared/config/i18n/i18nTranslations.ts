@@ -131,7 +131,10 @@ export enum Profile {
 	TABS_SKILLS = 'tabs.skills',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
+	PHOTO_UPDATE = 'photo.update',
 	PHOTO_DELETE = 'photo.delete',
+	PHOTO_UPDATE_FULL = 'photo.update.full',
+	PHOTO_DELETE_FULL = 'photo.delete.full',
 	PHOTO_MODAL_TITLE = 'photo.modal.title',
 	PHOTO_MODAL_DESCRIPTION = 'photo.modal.description',
 	PHOTO_MODAL_SUBMIT = 'photo.modal.submit',
@@ -417,8 +420,11 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+
 	SUBSCRIPTION_FREE = 'subscription.free',
 	SUBSCRIPTION_PREMIUM = 'subscription.premium',
+	EDIT_SUCCESS = 'edit.success',
+	EDIT_ERROR = 'edit.error',
 }
 
 export enum Collections {
@@ -492,6 +498,9 @@ export enum Landing {
 	PROGRESS_SUBTITLE = 'progress.subtitle',
 	PROGRESS_ADVANTAGES_FIRST = 'progress.advantages.first',
 	PROGRESS_ADVANTAGES_SECOND = 'progress.advantages.second',
+	COOKIES_TEXT = 'cookies.text',
+	COOKIES_LINK = 'cookies.link',
+	COOKIES_AGREE = 'cookies.agree.button',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
