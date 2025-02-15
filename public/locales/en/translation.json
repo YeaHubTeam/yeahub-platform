@@ -8,6 +8,7 @@
   "edit": "Edit",
   "delete": "Delete",
   "hello": "Hello {{name}}!",
+  "profile": "My profile",
   "save": "Save",
   "cancel": "Cancel",
   "expand": "expand",
@@ -18,6 +19,11 @@
   "support": "Support",
   "total.questions": "Total questions",
   "back.button": "Go back to the previous page",
+  "header": {
+    "menu": {
+      "password": "Change password"
+    }
+  },
   "sidebar": {
     "close": "Close side menu",
     "open": "Open side menu",
@@ -26,7 +32,6 @@
       "platform": "Platform",
       "admin": "Editor",
       "settings": "Settings",
-      "profile": "My profile",
       "specializations": "Specializations",
       "users": "Users",
       "collections": "Collections",

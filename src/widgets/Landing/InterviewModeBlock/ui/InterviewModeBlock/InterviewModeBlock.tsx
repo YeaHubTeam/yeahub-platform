@@ -51,7 +51,7 @@ export const InterviewModeBlock = () => {
 							<img
 								className={styles.image}
 								src={QuizExample}
-								alt="quiz example"
+								alt="Топ-10 вопросов собеседований"
 								loading="lazy"
 								width={613}
 								height={189}

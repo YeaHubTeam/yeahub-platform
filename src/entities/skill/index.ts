@@ -5,3 +5,7 @@ export { SkillForm } from './ui/SkillForm/SkillForm';
 export { SkillCard } from './ui/SkillCard/SkillCard';
 export { useGetSkillsListQuery, useGetSkillByIdQuery } from './api/skillApi';
 export type { ProfileSkill } from '../skill/model/types/profileSkill';
+
+export { skillHandlers } from './api/__mocks__/index';
+
+export { skillsMock } from './api/__mocks__/data/index';

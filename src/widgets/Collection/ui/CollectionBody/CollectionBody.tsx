@@ -4,7 +4,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Collection } from '@/entities/collection';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { PreviewQuestionsItem } from '@/widgets/interview/QuestionsList';
+import { PreviewQuestionsItem } from '@/widgets/question/QuestionsList';
 
 import styles from './CollectionBody.module.css';
 

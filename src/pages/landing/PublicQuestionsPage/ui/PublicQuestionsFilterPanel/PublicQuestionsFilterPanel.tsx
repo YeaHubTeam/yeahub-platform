@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { useDebounce } from '@/shared/hooks/useDebounced';
+import { Flex } from '@/shared/ui/Flex';
+import { SearchInput } from '@/shared/ui/SearchInput';
 
 import {
 	ChooseQuestionComplexity,
@@ -10,11 +12,7 @@ import {
 	RateFilterSection,
 } from '@/entities/question';
 
-import { SearchInput } from '@/features/common/search-input';
-
-import { FilterParams } from '@/widgets/Question';
-
-import styles from './PublicQuestionsFilterPanel.module.css';
+import type { FilterParams } from '@/widgets/question/QuestionsFilterPanel';
 
 const DEFAULT_SPECIALIZATION = 11;
 
@@ -48,7 +46,7 @@ export const PublicQuestionsFilterPanel = ({
 	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
 
 	return (
-		<div className={styles.wrapper}>
+		<Flex direction="column" gap="24">
 			<SearchInput
 				placeholder={t('search.placeholder')}
 				onSearch={debouncedSearch}
@@ -70,6 +68,6 @@ export const PublicQuestionsFilterPanel = ({
 				selectedComplexity={complexity}
 			/>
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
-		</div>
+		</Flex>
 	);
 };

@@ -1,4 +1,4 @@
-import { QuestionFilterStatus } from '@/widgets/Question';
+import { QuestionFilterStatus } from '@/widgets/question/QuestionsFilterPanel';
 
 export interface QuestionsPageState {
 	page?: number;

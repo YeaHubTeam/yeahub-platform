@@ -44,7 +44,11 @@ export const InterviewBlock = () => {
 					<picture>
 						<source media="(max-width: 767px)" srcSet={interviewImgMobile} />
 						<source media="(max-width: 1439px)" srcSet={interviewImgTablet} />
-						<img className={styles.wallpaper} src={interviewImg} alt="wallpaper" />
+						<img
+							className={styles.wallpaper}
+							src={interviewImg}
+							alt="топ вопросов на собеседовании"
+						/>
 					</picture>
 
 					<Progress />

@@ -1,7 +1,3 @@
-import { Collection } from '@/entities/collection';
+import { CreateOrEditCollectionFormValues } from '@/entities/collection';
 
-export interface CollectionCreateFormValues
-	extends Pick<Collection, 'title' | 'description' | 'imageSrc'> {
-	paidOrFree: 'paid' | 'free';
-	questions: number[];
-}
+export type CollectionCreateFormValues = Omit<CreateOrEditCollectionFormValues, 'id'>;

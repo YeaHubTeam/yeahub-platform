@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -18,3 +20,19 @@ export interface Collection {
 	specializations: Specialization[];
 	tariff: CollectionTariff;
 }
+
+export type CreateOrEditCollectionFormValues = Pick<
+	Collection,
+	'id' | 'title' | 'description' | 'imageSrc' | 'keywordsCollection'
+> & {
+	paidOrFree: 'paid' | 'free';
+	questions: number[];
+	specializations: number[];
+};
+
+export interface GetCollectionsListParamsRequest {
+	page?: number;
+	limit?: number;
+}
+
+export type GetCollectionsListResponse = Response<Collection[]>;

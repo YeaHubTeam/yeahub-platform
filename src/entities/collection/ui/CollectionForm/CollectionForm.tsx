@@ -11,7 +11,13 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { SpecializationSelect } from '@/entities/specialization';
 
 import styles from './CollectionForm.module.css';
 
@@ -99,8 +105,8 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 				</Flex>
 				<Flex gap="120" align="center">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.SELECT_CHOOSE)} className={styles.title} />
-						<Text title={t(Collections.SELECT_LABEL)} className={styles.description} />
+						<Text title={t(Collections.TARIFF_CHOOSE)} className={styles.title} />
+						<Text title={t(Collections.TARIFF_LABEL)} className={styles.description} />
 					</Flex>
 					<Flex gap="60">
 						<Label className={styles['paid-label']}>
@@ -118,6 +124,34 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 							{t(Collections.TARIFF_FREE)}
 						</Label>
 					</Flex>
+				</Flex>
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.SPECIALIZATION_TITLE)} className={styles.title} />
+						<Text text={t(Collections.SPECIALIZATION_LABEL)} className={styles.description} />
+					</Flex>
+					<FormControl name="specializations" control={control}>
+						{({ onChange, value }) => (
+							<div className={styles.select}>
+								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							</div>
+						)}
+					</FormControl>
+				</Flex>
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
+						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
+					</Flex>
+					<FormControl name="keywordsCollection" control={control}>
+						{({ onChange, value }) => {
+							return (
+								<div className={styles.select}>
+									<KeywordInput value={value} onChange={onChange} />
+								</div>
+							);
+						}}
+					</FormControl>
 				</Flex>
 				<ChooseQuestionsDrawer
 					selectedQuestions={selectedQuestions}

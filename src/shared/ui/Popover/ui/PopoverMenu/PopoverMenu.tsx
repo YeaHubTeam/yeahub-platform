@@ -17,7 +17,7 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 		<Flex direction="column" gap="4">
 			{menuItems.map(({ icon, onClick, title, renderComponent }, index) => (
 				<Fragment key={index}>
-					{icon && title && onClick ? (
+					{title && onClick ? (
 						<Button
 							onClick={() => {
 								onClick();

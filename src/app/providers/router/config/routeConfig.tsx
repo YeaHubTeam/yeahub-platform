@@ -20,6 +20,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
+import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
 import { CollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
@@ -87,7 +88,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_PROFILE),
+		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
 	},
 	{
@@ -287,6 +288,10 @@ export const router = createBrowserRouter([
 							{
 								path: ROUTES.admin.collections.create.route,
 								element: <CollectionCreatePage />,
+							},
+							{
+								path: ROUTES.admin.collections.edit.route,
+								element: <CollectionEditPage />,
 							},
 							{
 								path: ROUTES.admin.collections.details.route,
