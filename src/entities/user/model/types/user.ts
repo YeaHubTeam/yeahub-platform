@@ -41,6 +41,11 @@ export interface User {
 	isEmailVerified?: boolean;
 }
 
+export interface UserRolesMutationRequest {
+	userId: string;
+	roles: number[];
+}
+
 export type CreateOrEditUserFormValues = Pick<
 	User,
 	'id' | 'firstName' | 'lastName' | 'phone' | 'email' | 'country' | 'city' | 'address' | 'birthday'
@@ -58,3 +63,5 @@ export type GetUsersListParamsRequest = {
 export type GetUsersListResponse = Response<User[]>;
 
 export type GetUserByIdResponse = User;
+
+export type UserFormValues = Omit<CreateOrEditUserFormValues, 'id'>;
