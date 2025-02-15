@@ -417,6 +417,8 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	SUBSCRIPTION_FREE = 'subscription.free',
+	SUBSCRIPTION_PREMIUM = 'subscription.premium',
 }
 
 export enum Collections {
