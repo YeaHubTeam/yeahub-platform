@@ -18,12 +18,14 @@ type SpecializationSelectProps = Omit<
 	value: number[];
 	onChange: (value: number[] | number) => void;
 	hasMultiple?: boolean;
+	disabled?: boolean;
 };
 
 export const SpecializationSelect = ({
 	onChange,
 	value,
 	hasMultiple,
+	disabled,
 }: SpecializationSelectProps) => {
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
@@ -31,8 +33,7 @@ export const SpecializationSelect = ({
 	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(value);
 
 	const handleChange = (newValue: string | undefined) => {
-		if (!newValue) return;
-
+		if (disabled || !newValue) return;
 		if (hasMultiple) {
 			const updates = [...(selectedSpecializations || []), +newValue];
 			setSelectedSpecializations(updates);
@@ -43,6 +44,7 @@ export const SpecializationSelect = ({
 	};
 
 	const handleDeleteSpecialization = (id: number) => () => {
+		if (disabled) return;
 		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
 		setSelectedSpecializations(updates);
 		onChange(updates);
@@ -81,12 +83,13 @@ export const SpecializationSelect = ({
 			<Select
 				onChange={handleChange}
 				options={options}
-				value={value || value === 0 ? `${value}` : undefined}
+				value={value[0] === 0 ? undefined : `${value}`}
 				type="default"
 				placeholder={
 					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 				}
 				className={styles.select}
+				disabled={disabled}
 			/>
 		);
 	}
@@ -102,6 +105,7 @@ export const SpecializationSelect = ({
 			placeholder={
 				options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 			}
+			disabled={disabled}
 		/>
 	);
 };

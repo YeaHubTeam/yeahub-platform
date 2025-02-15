@@ -12,7 +12,7 @@ export const webpackLoaders = ({ isDev }: WebpackOptions): ModuleOptions['rules'
         loader: 'css-loader',
         options: {
           modules: {
-            auto: true,
+            auto: (resourcePath: string) => resourcePath.endsWith('.module.css'),
             localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]',
           },
         },

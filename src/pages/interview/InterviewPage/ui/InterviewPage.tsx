@@ -9,10 +9,10 @@ import {
 	useGetProfileQuizStatsQuery,
 } from '@/entities/quiz';
 
+import { InterviewPreparation } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
-import { PreviewQuestionsList } from '@/widgets/interview/QuestionsList';
 import { PreviewQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
-import { InterviewPreparation } from '@/widgets/InterviewPreparation';
+import { PreviewQuestionsList } from '@/widgets/question/QuestionsList';
 
 import styles from './InterviewPage.module.css';
 import { InterviewPageSkeleton } from './InterviewPage.skeleton';
