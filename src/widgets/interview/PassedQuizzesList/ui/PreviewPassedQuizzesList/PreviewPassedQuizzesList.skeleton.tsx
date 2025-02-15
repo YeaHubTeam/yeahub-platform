@@ -16,7 +16,7 @@ export const PreviewPassedQuizzesListSkeleton = ({ className }: InterviewHistory
 			withShadow
 		>
 			<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
-				{[...Array(3)].map((_, index) => (
+				{[...Array(5)].map((_, index) => (
 					<PreviewPassedQuizzesItemSkeleton key={index} />
 				))}
 			</Flex>

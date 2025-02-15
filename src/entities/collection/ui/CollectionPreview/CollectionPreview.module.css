@@ -2,9 +2,10 @@
   display: flex;
   flex-flow: row wrap;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-.wrapper-content{
+.wrapper-content {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -78,18 +79,33 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
   font-family: var(--font-family);
-	
-  & svg{
+
+  & svg {
     margin-right: 4px;
     width: 20px;
     height: 20px;
   }
-	
-  & p{
+
+  & p {
     color: var(--color-purple-800);
   }
 }
 
+@media (width < 565px) {
+  .image-wrapper {
+    margin: 0;
+    max-width: 100%;
+    min-height: 300px;
+  }
+
+  .wrapper {
+    gap: 16px;
+  }
+
+  .wrapper-content {
+    gap: 16px;
+  }
+}
 
 @media (width <= 360px) {
   .header {
@@ -105,7 +121,7 @@
     max-width: 260px;
     border-radius: 12px;
   }
-  
+
   .answer p {
     line-height: 120%;
     font-weight: var(--font-weight-400);

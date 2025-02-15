@@ -1,27 +1,21 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { CollectionParam } from '@/shared/ui/CollectionParam';
 import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
 
-import { DisplayMode } from '../CollectionsFilterPanel/model/types';
-
 import styles from './CollectionPreview.module.css';
 
 type CollectionProps = {
 	collection: Collection;
-	profileId?: string;
-	displayMode?: DisplayMode;
 };
 
 export const CollectionPreview = ({ collection }: CollectionProps) => {
@@ -39,7 +33,13 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 
 	return (
 		<Card withOutsideShadow>
-			<div className={styles.wrapper}>
+			<div
+				className={styles.wrapper}
+				onClick={() => {
+					navigate(route(ROUTES.collections.detail.page, id));
+				}}
+				role="presentation"
+			>
 				<div className={styles['image-wrapper']}>
 					<img
 						className={styles.image}
@@ -66,17 +66,6 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 					</div>
 					<div className={styles['specialization-container']}>
 						<Text variant={'body3-accent'}>{title}</Text>
-						<Button
-							variant="link"
-							size="L"
-							className={styles.link}
-							suffix={<ArrowRight height={24} width={24} />}
-							onClick={() => {
-								navigate(route(ROUTES.collections.detail.page, id));
-							}}
-						>
-							{t(Collections.COLLECTIONS_DETAIL, { ns: i18Namespace.collection })}
-						</Button>
 					</div>
 				</div>
 			</div>

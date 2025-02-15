@@ -1,7 +1,6 @@
 .param {
   padding: 4px 6px;
   border-radius: 4px;
-  background-color: var(--background-light-hover);
 }
 
 .value {

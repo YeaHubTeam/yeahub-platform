@@ -1,0 +1,31 @@
+.list {
+  margin: 0;
+  list-style: none;
+}
+
+.no-collections {
+  padding: 24px;
+  text-align: center;
+}
+
+@media (width < 1280px) {
+  .collections {
+    width: 100%;
+  }
+
+  .list {
+    gap: 8px;
+    padding: 16px;
+  }
+}
+
+@media (width < 480px) {
+  .collections {
+    gap: 16px;
+  }
+
+  .list {
+    gap: 20px;
+    padding: 14px;
+  }
+}

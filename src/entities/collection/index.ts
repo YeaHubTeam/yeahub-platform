@@ -9,3 +9,4 @@ export * from './api/collectionApi';
 
 export { ChooseCollectionSpecialization } from './ui/ChooseCollectionSpecialization/ChooseCollectionSpecialization';
 export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollectionAccess';
+export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';

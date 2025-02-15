@@ -10,6 +10,7 @@ import {
 } from '@/entities/quiz';
 
 import { PreviewPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
+import { PreviewCollectionsList } from '@/widgets/interview/PriorCollectionsList';
 import { PreviewQuestionsList } from '@/widgets/interview/QuestionsList';
 import { PreviewQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
 import { InterviewPreparation } from '@/widgets/InterviewPreparation';
@@ -52,8 +53,11 @@ const InterviewPage = () => {
 			{!isSpecializationEmpty && (
 				<>
 					<PreviewQuestionsStatistic className={styles.statistics} />
-					<PreviewQuestionsList className={styles.questions} />
-					<PreviewPassedQuizzesList className={styles.history} />
+					<Flex direction="column" gap="20" className={styles.list}>
+						<PreviewQuestionsList className={styles.questions} />
+						<PreviewPassedQuizzesList className={styles.history} />
+					</Flex>
+					<PreviewCollectionsList className={styles.collections} />
 				</>
 			)}
 		</Flex>

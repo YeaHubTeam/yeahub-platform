@@ -1,0 +1,28 @@
+.wrapper {
+  box-sizing: border-box;
+}
+
+.wrapper-content {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  flex-direction: column;
+}
+
+.title-skeleton::before {
+  display: none;
+}
+
+.image-wrapper {
+  width: 149px;
+  height: 155px;
+}
+
+@media (width <= 360px) {
+  .image-wrapper {
+    max-width: 260px;
+    border-radius: 12px;
+  }
+}
