@@ -4,4 +4,4 @@ export { AdditionalInfo } from './ui/AdditionalInfo/AdditionalInfo';
 export { CollectionsList } from './ui/CollectionsList/CollectionsList';
 export { CollectionsFilterPanel } from './ui/CollectionsFilterPanel/ui/CollectionsFilterPanel';
 
-export type { CollectionAccess, FilterParams } from './ui/CollectionsFilterPanel/model/types';
+export type { FilterParams } from './ui/CollectionsFilterPanel/model/types';

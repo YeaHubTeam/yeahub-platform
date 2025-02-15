@@ -31,6 +31,11 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
 	];
 
+	const accessText = {
+		free: t(Collections.TARIFF_FREE, { ns: i18Namespace.collection }),
+		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
+	};
+
 	return (
 		<Card withOutsideShadow>
 			<div
@@ -62,7 +67,7 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 					<Text variant={'body3-accent'}>{title}</Text>
 					<div className={styles['access-container']}>
 						{!isFree && <Star />}
-						<Text variant={'body3-accent'}>{isFree ? 'Для всех' : 'Для участников'}</Text>
+						<Text variant={'body3-accent'}>{accessText[isFree ? 'free' : 'paid']}</Text>
 					</div>
 					<div className={styles['specialization-container']}>
 						<Text variant={'body3-accent'}>{title}</Text>
