@@ -3,6 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { FullProfile } from '@/entities/auth';
 import { Specialization } from '@/entities/specialization';
 
+import { StatusLabel } from '../../../StatusLabel/StatusLabel';
 import { UserEditButton } from '../UserEditButton';
 import { UserImageBlock } from '../UserImageBlock';
 import { UserInfoBlock } from '../UserInfoBlock';
@@ -21,6 +22,7 @@ export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) =>
 				<div className={styles['user-data']}>
 					<UserImageBlock avatar={profile.avatarUrl} />
 					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
+					<StatusLabel user={profile} />
 				</div>
 				<UserEditButton />
 			</div>
