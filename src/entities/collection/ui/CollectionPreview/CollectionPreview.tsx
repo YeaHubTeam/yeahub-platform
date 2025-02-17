@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -23,8 +23,6 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
-	const navigate = useNavigate();
-
 	const headerParams = [
 		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
 		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
@@ -38,13 +36,7 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 
 	return (
 		<Card withOutsideShadow>
-			<div
-				className={styles.wrapper}
-				onClick={() => {
-					navigate(route(ROUTES.collections.detail.page, id));
-				}}
-				role="presentation"
-			>
+			<Link to={route(ROUTES.collections.detail.page, id)} className={styles.wrapper}>
 				<div className={styles['image-wrapper']}>
 					<img
 						className={styles.image}
@@ -71,9 +63,10 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 					</div>
 					<div className={styles['specialization-container']}>
 						<Text variant={'body3-accent'}>{title}</Text>
+						<Text variant={'body3-accent'}>{title}</Text>
 					</div>
 				</div>
-			</div>
+			</Link>
 		</Card>
 	);
 };

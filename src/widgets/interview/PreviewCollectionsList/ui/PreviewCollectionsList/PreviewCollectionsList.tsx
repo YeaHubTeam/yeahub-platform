@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -18,14 +17,9 @@ export interface PreviewCollectionsListProps {
 }
 
 export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProps) => {
-	const { filter } = useQueryFilter();
-
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
-	const { data: allCollections, isSuccess } = useGetCollectionsListQuery({
-		...filter,
-		limit: 3,
-	});
+	const { data: allCollections, isSuccess } = useGetCollectionsListQuery({ limit: 3 });
 
 	const collections = allCollections?.data ?? [];
 
@@ -44,7 +38,7 @@ export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProp
 			className={className}
 			title={t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection })}
 			actionTitle={t(Collections.COLLECTIONS_DETAIL, { ns: i18Namespace.collection })}
-			actionRoute={ROUTES.collections.detail.page}
+			actionRoute={ROUTES.collections.route}
 		>
 			<Flex direction="column" gap="12" className={styles.list}>
 				{collections.map((collection) => (

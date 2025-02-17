@@ -1,7 +1,7 @@
 import { Flex } from '@/shared/ui/Flex';
 
 import { PreviewPassedQuizzesListSkeleton } from '@/widgets/interview/PassedQuizzesList';
-import { PreviewCollectionsListSkeleton } from '@/widgets/interview/PriorCollectionsList';
+import { PreviewCollectionsListSkeleton } from '@/widgets/interview/PreviewCollectionsList';
 import { PreviewQuestionsListSkeleton } from '@/widgets/interview/QuestionsList';
 import { PreviewQuestionsStatisticsSkeleton } from '@/widgets/interview/QuestionsStatistic';
 import { InterviewPreparationSkeleton } from '@/widgets/InterviewPreparation';
@@ -14,8 +14,8 @@ export const InterviewPageSkeleton = () => {
 			<InterviewPreparationSkeleton className={styles.interview} />
 			<PreviewQuestionsStatisticsSkeleton className={styles.statistics} />
 			<Flex direction="column" gap="20" className={styles.list}>
-				<PreviewQuestionsListSkeleton className={styles.questions} />
-				<PreviewPassedQuizzesListSkeleton className={styles.history} />
+				<PreviewQuestionsListSkeleton />
+				<PreviewPassedQuizzesListSkeleton />
 			</Flex>
 			<PreviewCollectionsListSkeleton className={styles.collections} />
 		</Flex>

@@ -8,6 +8,7 @@ export const CollectionParamSkeleton = () => {
 		<Flex align="center" gap="12" componentType="li" className={styles.param}>
 			<TextSkeleton variant="body1" width={55} />
 			<TextSkeleton variant="body1" width={55} />
+			<TextSkeleton variant="body1" width={55} />
 		</Flex>
 	);
 };

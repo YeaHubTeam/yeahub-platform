@@ -50,8 +50,8 @@
 
 .specialization-container {
   display: flex;
-  justify-content: space-between;
   align-items: center; /* Vertically center the content */
+  gap: 14px;
 }
 
 .image {

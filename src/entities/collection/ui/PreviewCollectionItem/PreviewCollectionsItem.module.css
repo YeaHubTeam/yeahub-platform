@@ -7,15 +7,13 @@
   justify-content: space-between;
 }
 
-.header {
-  flex-direction: column;
-}
 
 .title-skeleton::before {
   display: none;
 }
 
 .image-wrapper {
+  margin-right: 20px;
   width: 149px;
   height: 155px;
 }

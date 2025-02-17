@@ -1,7 +1,7 @@
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { PreviewCollectionsItemSkeleton } from '../PreviewCollectionItem/PreviewCollectionsItem.skeleton';
+import { PreviewCollectionsItemSkeleton } from '@/entities/collection';
 
 import { PreviewCollectionsListProps } from './PreviewCollectionsList';
 import styles from './PreviewCollectionsList.module.css';
