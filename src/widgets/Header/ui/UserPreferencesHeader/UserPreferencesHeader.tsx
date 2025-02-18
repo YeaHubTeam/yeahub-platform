@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { User } from '@/shared/config/i18n/i18nTranslations';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -44,15 +45,13 @@ export const UserPreferencesHeader = ({ isPremiumUser }: UserPreferencesHeaderPr
 								{profile.email}
 							</Text>
 						</div>
-						<Flex align="center" gap="8" justify="center" className={styles.status}>
-							<Text
-								variant="body3"
-								className={styles[isPremiumUser ? 'candidate-premium' : 'candidate-free']}
-							>
-								{isPremiumUser && <ProSubIcon className={styles['premium-icon']} />}
-								{t(isPremiumUser ? User.SUBSCRIPTION_PREMIUM : User.SUBSCRIPTION_FREE)}
-							</Text>
-						</Flex>
+						<Button
+							className={styles[isPremiumUser ? 'candidate-premium' : 'candidate-free']}
+							fullWidth
+							preffix={isPremiumUser && <ProSubIcon className={styles['premium-icon']} />}
+						>
+							{t(isPremiumUser ? User.SUBSCRIPTION_PREMIUM : User.SUBSCRIPTION_FREE)}
+						</Button>
 					</Flex>
 				</>
 			)}

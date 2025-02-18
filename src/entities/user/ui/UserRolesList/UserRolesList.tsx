@@ -6,20 +6,21 @@ import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnum
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { FullProfile } from '@/entities/auth';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Role } from '@/entities/auth';
 
-import styles from './StatusLabel.module.css';
+import styles from './UserRolesList.module.css';
 
-interface StatusLabelProps {
-	user: FullProfile;
+interface UserRolesListProps {
+	userRoles: Role[];
 }
 
-export const StatusLabel = ({ user }: StatusLabelProps) => {
+export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 	const { t } = useTranslation([i18Namespace.user]);
 
 	return (
 		<Flex gap="12" align="start">
-			{user?.userRoles?.map((role) => (
+			{userRoles?.map((role) => (
 				<Text variant="body3" key={role.id} className={styles[role.name]}>
 					{t(User[convertRoleNameToEnumKey(role.name)])}
 				</Text>

@@ -2,8 +2,8 @@ import { Card } from '@/shared/ui/Card';
 
 import { FullProfile } from '@/entities/auth';
 import { Specialization } from '@/entities/specialization';
+import { UserRolesList } from '@/entities/user';
 
-import { StatusLabel } from '../../../StatusLabel/StatusLabel';
 import { UserEditButton } from '../UserEditButton';
 import { UserImageBlock } from '../UserImageBlock';
 import { UserInfoBlock } from '../UserInfoBlock';
@@ -16,13 +16,14 @@ interface UserBlockProps {
 }
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
+	const userRoles = profile.userRoles;
 	return (
 		<Card withOutsideShadow>
 			<div className={styles.card}>
 				<div className={styles['user-data']}>
 					<UserImageBlock avatar={profile.avatarUrl} />
 					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
-					<StatusLabel user={profile} />
+					<UserRolesList userRoles={userRoles} />
 				</div>
 				<UserEditButton />
 			</div>
