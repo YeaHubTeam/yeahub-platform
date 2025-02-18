@@ -6,7 +6,7 @@ import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import style from './GaugeChart.module.css';
+import styles from './GaugeChart.module.css';
 
 interface GaugeChartProps {
 	total?: number;
@@ -26,7 +26,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 	const progressOffset = circumference - (passedQuestionsPercent / 100) * circumference;
 
 	return (
-		<Flex className={style['gauge-chart-container']} justify="center" align="center">
+		<Flex className={styles['gauge-chart-container']} justify="center" align="center">
 			<svg width="241" height="241" viewBox={`0 0 241 241`}>
 				<circle
 					cx={radius}
@@ -37,7 +37,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					fill="none"
 				/>
 				<circle
-					className={style['gauge-progress']}
+					className={styles['gauge-progress']}
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
@@ -52,7 +52,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					}}
 				/>
 			</svg>
-			<Text variant="body4" className={style['gauge-text']}>
+			<Text color={'black-700'} variant="body4" className={styles['gauge-text']}>
 				{passedQuestionsPercent}%
 				<br />
 				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}

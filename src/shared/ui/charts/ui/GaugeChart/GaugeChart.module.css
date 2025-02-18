@@ -1,6 +1,5 @@
 .gauge-chart-container {
   position: relative;
-  display: flex;
   width: 241px;
   height: 241px;
 }
@@ -21,11 +20,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  color: var(--color-black-700);
   text-align: center;
   font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-l);
-  transform: translate(-50%, -50%);
 }
 
 .gauge-progress {
