@@ -1,7 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
+import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
+import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { User } from '@/shared/config/i18n/i18nTranslations';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -9,9 +13,13 @@ import { useProfileQuery } from '@/entities/auth';
 
 import styles from './UserPreferencesHeader.module.css';
 
-export const UserPreferencesHeader = () => {
+interface UserPreferencesHeaderProps {
+	isPremiumUser: boolean;
+}
+
+export const UserPreferencesHeader = ({ isPremiumUser }: UserPreferencesHeaderProps) => {
 	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
-	const { t } = useTranslation();
+	const { t } = useTranslation(i18Namespace.user);
 
 	return (
 		<div className={styles.container}>
@@ -37,6 +45,13 @@ export const UserPreferencesHeader = () => {
 								{profile.email}
 							</Text>
 						</div>
+						<Button
+							className={styles[isPremiumUser ? 'candidate-premium' : 'candidate-free']}
+							fullWidth
+							preffix={isPremiumUser && <ProSubIcon className={styles['premium-icon']} />}
+						>
+							{t(isPremiumUser ? User.SUBSCRIPTION_PREMIUM : User.SUBSCRIPTION_FREE)}
+						</Button>
 					</Flex>
 				</>
 			)}

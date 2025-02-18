@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
+import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -40,18 +42,25 @@ export const UserPreferences = () => {
 		},
 	];
 
+	const isPremiumUser = profile?.userRoles.some((user) => user.name === 'candidate-premium');
+
 	return (
 		<div className={styles['popover-additional']}>
 			<Popover
 				body={({ onToggle }) => (
 					<>
-						<UserPreferencesHeader />
+						<UserPreferencesHeader isPremiumUser={isPremiumUser} />
 						<PopoverMenu menuItems={userMenuItems} onToggleOpenPopover={onToggle} />
 					</>
 				)}
 			>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
+						{isPremiumUser ? (
+							<ProSubIcon className={styles['premium-icon']} />
+						) : (
+							<FreeSubIcon className={styles['free-icon']} />
+						)}
 						<Text variant={'body2'}>{profile?.firstName}</Text>
 						<div className={styles.avatar}>
 							{profile.avatarUrl ? (

@@ -5,6 +5,7 @@ export type {
 	Profile,
 	ProfileUpdate,
 	User,
+	Role,
 } from './model/types/auth';
 export { authApi } from './api/authApi';
 export {
