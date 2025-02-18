@@ -1,0 +1,27 @@
+.gauge-chart-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gauge-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.gauge-progress {
+  transform-origin: center;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--color-black-200);
+  font-size: var(--font-size-p-m);
+  transform: translate(-50%, -50%);
+}
