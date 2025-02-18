@@ -1,13 +1,17 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Chip, Icon } from 'yeahub-ui-kit';
+import {
+	// Chip,
+	Icon,
+} from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
+import { Chip } from '@/shared/ui/Chip';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { Text } from '@/shared/ui/Text';
 
@@ -60,8 +64,7 @@ export const AdditionalInfo = ({
 									className={styles.chip}
 									label={skill.title}
 									theme="primary"
-									active
-									preffix={
+									prefix={
 										skill.imageSrc ? (
 											<img
 												style={{ width: 20, height: 20 }}

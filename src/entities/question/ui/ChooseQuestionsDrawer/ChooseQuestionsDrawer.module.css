@@ -28,6 +28,10 @@
   min-width: 708px;
 }
 
+.drawer-content{
+  display: flex;
+}
+
 .search-svg {
   margin-right: 8px;
   width: 18px;

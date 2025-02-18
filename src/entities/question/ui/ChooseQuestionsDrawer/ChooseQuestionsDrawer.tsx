@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Chip, Icon } from 'yeahub-ui-kit';
+import { Icon } from 'yeahub-ui-kit';
 
 import PlusSvg from '@/shared/assets/icons/Plus.svg';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,6 +8,7 @@ import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations'
 import { useModal } from '@/shared/hooks/useModal';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Chip } from '@/shared/ui/Chip';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Input } from '@/shared/ui/Input';
