@@ -1,27 +1,33 @@
 .gauge-chart-container {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 241px;
+  height: 241px;
+}
+
+.gauge-chart-container::before {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  z-index: -1;
+  width: 100%;
+  height: 100%; 
+  border-radius: 50%;
+  background-color: var(--color-purple-50);
+  content: '';
 }
 
 .gauge-text {
   position: absolute;
   top: 50%;
   left: 50%;
+  color: var(--color-black-700);
   text-align: center;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-l);
   transform: translate(-50%, -50%);
 }
 
 .gauge-progress {
   transform-origin: center;
-}
-
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: var(--color-black-200);
-  font-size: var(--font-size-p-m);
-  transform: translate(-50%, -50%);
 }

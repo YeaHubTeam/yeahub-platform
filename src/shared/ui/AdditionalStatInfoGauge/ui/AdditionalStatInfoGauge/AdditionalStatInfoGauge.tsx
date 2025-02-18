@@ -24,7 +24,7 @@ export const AdditionalStatInfoGauge = ({
 	return (
 		<Card {...cardProps} isTitleCenter>
 			<Flex direction="column" justify="center" align="center" gap="24" className={styles.wrapper}>
-				<GaugeChart total={total} learned={learned} isLoading={isLoading} />
+				<GaugeChart total={total} learned={learned} />
 				<AdditionalStatInfoList statsInfo={statsInfo} />
 			</Flex>
 		</Card>

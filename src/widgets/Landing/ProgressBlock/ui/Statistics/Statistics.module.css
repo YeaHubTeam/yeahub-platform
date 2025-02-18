@@ -19,6 +19,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 35.5px;
   width: 241px;
   height: 241px;
@@ -27,7 +29,7 @@
   text-align: center;
   line-height: 25px;
   font-weight: var(--font-weight-600);
-  font-size: var(--font-size-semi-large);
+  font-size: var(--font-size-large-30);
 }
 
 .pie .label {
