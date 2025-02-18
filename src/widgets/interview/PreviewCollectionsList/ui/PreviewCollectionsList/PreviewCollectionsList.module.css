@@ -14,8 +14,7 @@
   }
 
   .list {
-    gap: 8px;
-    padding: 16px;
+    gap: 16px;
   }
 }
 
@@ -25,7 +24,6 @@
   }
 
   .list {
-    gap: 20px;
-    padding: 14px;
+    gap: 8px;
   }
 }

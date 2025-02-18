@@ -40,7 +40,7 @@ export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProp
 			actionTitle={t(Collections.COLLECTIONS_DETAIL, { ns: i18Namespace.collection })}
 			actionRoute={ROUTES.collections.route}
 		>
-			<Flex direction="column" gap="12" className={styles.list}>
+			<Flex direction="column" gap="20" className={styles.list}>
 				{collections.map((collection) => (
 					<CollectionPreview key={collection.id} collection={collection} />
 				))}

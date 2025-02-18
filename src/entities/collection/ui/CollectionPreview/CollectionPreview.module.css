@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   flex-flow: row wrap;
+  gap: 16px;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -10,6 +11,8 @@
   flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
+  max-width: 100%;
 }
 
 .header {
@@ -41,7 +44,6 @@
 
 .image-wrapper {
   place-content: center center;
-  margin-right: 20px;
   max-width: 149px;
   min-height: 157px;
   overflow: hidden;
@@ -52,6 +54,13 @@
   display: flex;
   align-items: center; /* Vertically center the content */
   gap: 14px;
+
+  & p {
+    color: var(--color-black-500);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+  }
 }
 
 .image {
@@ -74,11 +83,6 @@
 
 .access-container {
   display: flex;
-  color: var(--color-purple-700);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
 
   & svg {
     margin-right: 4px;
@@ -87,7 +91,11 @@
   }
 
   & p {
-    color: var(--color-purple-800);
+    color: var(--color-purple-700);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+    font-family: var(--font-family);
   }
 }
 
@@ -97,13 +105,11 @@
     max-width: 100%;
     min-height: 300px;
   }
+}
 
-  .wrapper {
-    gap: 16px;
-  }
-
-  .wrapper-content {
-    gap: 16px;
+@media (width < 420px) {
+  .header-params {
+    gap: 6px;
   }
 }
 
