@@ -28,7 +28,7 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 				aria-label="go to preferences"
 				form="square"
 				icon={<Icon icon="list" size={32} />}
-				size="S"
+				size="small"
 				variant="tertiary"
 				onClick={onOpenSidebarDrawer}
 				className={styles.burger}

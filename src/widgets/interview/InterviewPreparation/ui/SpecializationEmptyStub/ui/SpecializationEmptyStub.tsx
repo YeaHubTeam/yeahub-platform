@@ -24,7 +24,7 @@ export const SpecializationEmptyStub = () => {
 			<Text variant="body2-accent" color="black-600" className={styles['card-text']}>
 				{t(Specializations.STUB_EMPTY_DESCRIPTION)}
 			</Text>
-			<Button onClick={onProfileRedirect} className={styles.button} size="L">
+			<Button onClick={onProfileRedirect} className={styles.button} size="large">
 				{t(Main.FILL_PROFILE_LINK, { ns: i18Namespace.main })}
 			</Button>
 		</Flex>

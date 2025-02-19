@@ -128,7 +128,7 @@ const QuestionsPage = () => {
 					aria-label="go to filters"
 					form="square"
 					icon={<Icon icon="slidersHorizontal" color="black-700" />}
-					size="S"
+					size="small"
 					variant="tertiary"
 					onClick={onToggle}
 				/>

@@ -62,7 +62,7 @@ export const Pagination = ({
 		<Flex gap="10" align="center">
 			<IconButton
 				disabled={page === 1}
-				size="S"
+				size="small"
 				onClick={onPrevPageClick}
 				aria-label="back button"
 				form="round"
@@ -120,7 +120,7 @@ export const Pagination = ({
 
 			<IconButton
 				disabled={page === totalPages}
-				size="S"
+				size="small"
 				onClick={onNextPageClick}
 				aria-label="forward button"
 				form="round"

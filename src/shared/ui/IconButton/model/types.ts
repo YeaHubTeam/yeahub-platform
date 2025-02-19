@@ -12,7 +12,7 @@ export type VariantType =
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	variant?: VariantType;
 	form?: 'square' | 'round';
-	size?: 'S' | 'M' | 'L';
+	size?: 'small' | 'medium' | 'large';
 	icon: React.ReactNode;
 	destructive?: boolean;
 	'aria-label': string;

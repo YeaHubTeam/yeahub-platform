@@ -44,7 +44,7 @@ export const CollectionPage = () => {
 							aria-label="go to additional info"
 							form="square"
 							icon={<PopoverIcon />}
-							size="S"
+							size="small"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

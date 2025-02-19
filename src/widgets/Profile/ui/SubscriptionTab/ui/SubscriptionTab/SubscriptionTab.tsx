@@ -81,7 +81,7 @@ export const SubscriptionTab = () => {
 			</Flex>
 			<div className={styles['actions-button']}>
 				<Flex direction="row" gap="8">
-					<Button variant="outline" size="L" aria-label="Change tariff plan">
+					<Button variant="outline" size="large" aria-label="Change tariff plan">
 						{t(Subscription.CHANGE_TARIFF_PLAN)}
 					</Button>
 					<UnsubscribeButton />
