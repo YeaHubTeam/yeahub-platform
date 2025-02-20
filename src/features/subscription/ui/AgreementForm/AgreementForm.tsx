@@ -113,14 +113,14 @@ export const AgreementForm = () => {
 					<SubscriptionCard
 						subscription={subscriptions[0]}
 						renderSubscribeButton={() => (
-							<SubscribeButton id={subscriptions[0].id} className={styles['subscription-button']} />
+							<SubscribeButton className={styles['subscription-button']} />
 						)}
 						className={styles.free}
 					/>
 					<SubscriptionCard
 						subscription={subscriptions[1]}
 						renderSubscribeButton={() => (
-							<SubscribeButton id={subscriptions[1].id} className={styles['subscription-button']} />
+							<SubscribeButton className={styles['subscription-button']} />
 						)}
 						className={styles.premium}
 					/>
