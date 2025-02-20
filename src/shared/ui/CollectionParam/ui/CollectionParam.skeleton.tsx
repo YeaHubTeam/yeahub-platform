@@ -6,8 +6,9 @@ import styles from './CollectionParam.module.css';
 export const CollectionParamSkeleton = () => {
 	return (
 		<Flex align="center" gap="12" componentType="li" className={styles.param}>
-			<TextSkeleton variant="body1" width={50} />
-			<TextSkeleton variant="body1" width={16} />
+			<TextSkeleton variant="body1" width={55} />
+			<TextSkeleton variant="body1" width={55} />
+			<TextSkeleton variant="body1" width={55} />
 		</Flex>
 	);
 };

@@ -1,14 +1,18 @@
 .wrapper {
   display: flex;
   flex-flow: row wrap;
+  gap: 16px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-.wrapper-content{
+.wrapper-content {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
+  max-width: 100%;
 }
 
 .header {
@@ -40,7 +44,6 @@
 
 .image-wrapper {
   place-content: center center;
-  margin-right: 20px;
   max-width: 149px;
   min-height: 157px;
   overflow: hidden;
@@ -49,8 +52,15 @@
 
 .specialization-container {
   display: flex;
-  justify-content: space-between;
   align-items: center; /* Vertically center the content */
+  gap: 14px;
+
+  & p {
+    color: var(--color-black-500);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+  }
 }
 
 .image {
@@ -73,23 +83,35 @@
 
 .access-container {
   display: flex;
-  color: var(--color-purple-700);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
-	
-  & svg{
+
+  & svg {
     margin-right: 4px;
     width: 20px;
     height: 20px;
   }
-	
-  & p{
-    color: var(--color-purple-800);
+
+  & p {
+    color: var(--color-purple-700);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+    font-family: var(--font-family);
   }
 }
 
+@media (width < 565px) {
+  .image-wrapper {
+    margin: 0;
+    max-width: 100%;
+    min-height: 300px;
+  }
+}
+
+@media (width < 420px) {
+  .header-params {
+    gap: 6px;
+  }
+}
 
 @media (width <= 360px) {
   .header {
@@ -105,7 +127,7 @@
     max-width: 260px;
     border-radius: 12px;
   }
-  
+
   .answer p {
     line-height: 120%;
     font-weight: var(--font-weight-400);
