@@ -51,7 +51,7 @@ const PublicQuestionPage = () => {
 			<BackButton />
 			<div className={styles['popover-additional']}>
 				<Popover
-					body={() => (
+					body={
 						<div className={styles['popover-additional-wrapper']}>
 							<Card>
 								<AdditionalInfo
@@ -64,7 +64,7 @@ const PublicQuestionPage = () => {
 								/>
 							</Card>
 						</div>
-					)}
+					}
 				>
 					{({ onToggle, isOpen }) => (
 						<div>
