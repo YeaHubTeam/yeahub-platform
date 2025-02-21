@@ -36,3 +36,9 @@ export interface GetCollectionsListParamsRequest {
 }
 
 export type GetCollectionsListResponse = Response<Collection[]>;
+
+export type GetCollectionByIdResponse = Collection;
+
+export type GetCollectionByIdParamsRequest = {
+	collectionId?: string;
+};

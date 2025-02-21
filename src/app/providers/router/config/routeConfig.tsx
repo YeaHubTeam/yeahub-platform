@@ -43,6 +43,7 @@ import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
+import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/CollectionPage';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
@@ -290,6 +291,28 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
+						path: ROUTES.admin.collections.route,
+						element: <Outlet />,
+						children: [
+							{
+								index: true,
+								element: <AdminCollectionsPage />,
+							},
+							{
+								path: ROUTES.admin.collections.create.route,
+								element: <CollectionCreatePage />,
+							},
+							{
+								path: ROUTES.admin.collections.edit.route,
+								element: <CollectionEditPage />,
+							},
+							{
+								path: ROUTES.admin.collections.details.route,
+								element: <AdminCollectionPage />,
+							},
+						],
+					},
+					{
 						path: '*',
 						element: <Error404Page />,
 					},
@@ -412,6 +435,13 @@ export const router = createBrowserRouter([
 									{
 										index: true,
 										element: <InterviewCollectionsPage />,
+									},
+									{
+										path: ROUTES.interview.collections.detail.route,
+										element: <InterviewCollectionPage />,
+										handle: {
+											crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+										},
 									},
 								],
 							},

@@ -3,6 +3,8 @@ import { baseApi } from '@/shared/config/api/baseApi';
 
 import { collectionApiUrls } from '../model/constants/collection';
 import {
+	GetCollectionByIdParamsRequest,
+	GetCollectionByIdResponse,
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
 } from '../model/types/collection';
@@ -16,6 +18,15 @@ const collectionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
+		getCollectionById: build.query<GetCollectionByIdResponse, GetCollectionByIdParamsRequest>({
+			query: ({ collectionId }) => ({
+				url: collectionApiUrls.getCollectionById,
+				params: {
+					collectionId,
+				},
+			}),
+			providesTags: [ApiTags.COLLECTIONS],
+		}),
 	}),
 });
-export const { useGetCollectionsListQuery } = collectionApi;
+export const { useGetCollectionsListQuery, useGetCollectionByIdQuery } = collectionApi;
