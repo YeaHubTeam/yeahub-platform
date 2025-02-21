@@ -72,7 +72,7 @@ export const ChooseQuestionsCategories = ({
 	const skillIcon = (skill: Skill) => <Icon icon={getSkillDefaultIcon(skill)} />;
 
 	return (
-		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
+		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t(Skills.SELECT_CHOOSE, { ns: i18Namespace.skill })}
