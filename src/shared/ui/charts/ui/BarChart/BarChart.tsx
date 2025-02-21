@@ -1,21 +1,26 @@
-import ReactECharts from 'echarts-for-react';
+import { useEffect, useState } from 'react';
 
-import { options } from '../../model/options';
+import styles from './BarChart.module.css';
 
-interface BarChartProps<T> {
-	progress: T;
+interface ProgressByCategoriesData {
+	value: number;
 }
 
-export const BarChart = <T,>({ progress }: BarChartProps<T>) => {
-	const barOption = structuredClone(options.bar);
+interface BarChartProps {
+	progress: ProgressByCategoriesData;
+}
 
-	barOption.dataset.source = [progress];
+export const BarChart = ({ progress }: BarChartProps) => {
+	const [barWidth, setBarWidth] = useState(0);
+	const value = Math.min(Math.max(progress.value, 0), 100);
+
+	useEffect(() => {
+		setBarWidth(value);
+	}, [value]);
 
 	return (
-		<ReactECharts
-			option={barOption}
-			opts={{ locale: 'RU' }}
-			style={{ height: '12px', width: '100%' }}
-		/>
+		<div className={styles['bar-chart-container']}>
+			<div className={styles['bar-chart']} style={{ width: `${barWidth}%` }} />
+		</div>
 	);
 };
