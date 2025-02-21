@@ -15,6 +15,7 @@ declare module '*.svg' {
 	const SVG: FC<SVGProps<SVGSVGElement>>;
 	export default SVG;
 }
+declare module '*.avif';
 
 type DeepPartial<T> = T extends object
 	? {

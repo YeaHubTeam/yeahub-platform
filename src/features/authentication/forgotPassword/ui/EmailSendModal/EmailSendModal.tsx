@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import EmailModal from '@/shared/assets/images/emailModal.png';
+import EmailModal from '@/shared/assets/images/emailModal.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';

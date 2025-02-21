@@ -1,7 +1,7 @@
-import image1 from '@/shared/assets/images/landing/train-image1.png';
-import image2 from '@/shared/assets/images/landing/train-image2.png';
-import image3 from '@/shared/assets/images/landing/train-image3.png';
-import image4 from '@/shared/assets/images/landing/train-image4.png';
+import image1 from '@/shared/assets/images/landing/train-image1.avif';
+import image2 from '@/shared/assets/images/landing/train-image2.avif';
+import image3 from '@/shared/assets/images/landing/train-image3.avif';
+import image4 from '@/shared/assets/images/landing/train-image4.avif';
 import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 

@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import interviewImg from '@/shared/assets/images/landing/interviewImg.png';
-import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobile.png';
-import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.png';
+import interviewImg from '@/shared/assets/images/landing/interviewImg.avif';
+import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobile.avif';
+import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
