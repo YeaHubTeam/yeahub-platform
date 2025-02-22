@@ -6,12 +6,13 @@ import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScrollToTop } from '@/shared/hooks/useScrollToTop';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { getProfileId } from '@/entities/profile';
-import { useGetQuestionByIdQuery } from '@/entities/question';
+import { Question, useGetQuestionByIdQuery } from '@/entities/question';
 
 import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
 import { ProgressBlock } from '@/widgets/question/ProgressBlock/ProgressBlock';
@@ -40,6 +41,8 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		questionId,
 		profileId: profileId,
 	});
+
+	const { ref } = useScrollToTop<HTMLDivElement, Question | undefined>(question);
 
 	const authorFullName = useMemo(() => {
 		if (question?.createdBy) {
@@ -124,7 +127,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 	);
 
 	return (
-		<>
+		<div ref={ref}>
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>
 					<div className={styles.main}>
@@ -145,7 +148,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 					</div>
 				</section>
 			)}
-		</>
+		</div>
 	);
 };
 
