@@ -1,5 +1,5 @@
 import { CardSkeleton } from '@/shared/ui/Card';
-import { PieChartSkeleton } from '@/shared/ui/charts';
+import { PieChartSkeleton } from '@/shared/ui/charts/PieChart';
 import { Flex } from '@/shared/ui/Flex';
 
 import { PercentsInfoPieProps } from './PercentsInfoPie';

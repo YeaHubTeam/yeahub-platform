@@ -1,5 +1,5 @@
 import { Card } from '@/shared/ui/Card';
-import { PieChart } from '@/shared/ui/charts';
+import { PieChart } from '@/shared/ui/charts/PieChart';
 import { Flex } from '@/shared/ui/Flex';
 import { AttemptInfo } from '@/shared/ui/PercentsInfoPie/model/types/types';
 
