@@ -78,7 +78,6 @@ export const QuestionPage = () => {
 						</Card>
 					</div>
 				}
-				onClickOutside={undefined}
 			>
 				{({ onToggle, isOpen }) => (
 					<IconButton

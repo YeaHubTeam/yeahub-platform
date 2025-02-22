@@ -10,7 +10,7 @@ import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnum
 import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { PopoverChildrenProps } from '@/shared/ui/Popover/model/types/types';
 import { Table } from '@/shared/ui/Table';
 
@@ -20,12 +20,6 @@ import styles from './UsersTable.module.css';
 
 interface UsersTableProps {
 	users?: User[];
-}
-
-interface PopoverMenuItem {
-	icon: React.ReactNode;
-	title: string;
-	onClick: () => void;
 }
 
 export const UsersTable = ({ users }: UsersTableProps) => {
@@ -83,6 +77,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		return (
 			<Flex gap="4">
 				<Popover
+					menuItems={menuItems}
 					body={
 						<ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
 							{menuItems.map((item, index) => (
@@ -99,7 +94,6 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 							))}
 						</ul>
 					}
-					onClickOutside={undefined}
 				>
 					{({ onToggle }: PopoverChildrenProps) => (
 						<IconButton

@@ -32,7 +32,7 @@ export const Popover = (props: PopoverProps & { isMobile?: boolean; isTablet?: b
 		children,
 		menuItems,
 		ariaLabel,
-		placement,
+		placement = 'bottom-end',
 		...rest
 	} = props;
 
@@ -148,7 +148,12 @@ export const Popover = (props: PopoverProps & { isMobile?: boolean; isTablet?: b
 
 	return (
 		<div className={isOpen ? styles['popover-is-open'] : ''}>
-			<PopoverFabric open={isOpen} onOpenChange={handleOutsideClick} {...rest}>
+			<PopoverFabric
+				open={isOpen}
+				onOpenChange={handleOutsideClick}
+				placement={placement}
+				{...rest}
+			>
 				<PopoverTrigger asChild={true}>{childrenToRender}</PopoverTrigger>
 				<PopoverContent>{contentMemo}</PopoverContent>
 			</PopoverFabric>
