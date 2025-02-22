@@ -34,7 +34,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					r={circleRadius}
 					stroke="#F0E7FF"
 					strokeWidth={strokeWidth}
-					fill="none"
+					fill="var(--color-purple-50)"
 				/>
 				<circle
 					className={styles['gauge-progress']}
@@ -52,7 +52,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					}}
 				/>
 			</svg>
-			<Text color={'black-700'} variant="body4" className={styles['gauge-text']}>
+			<Text color="black-700" variant="body4" className={styles['gauge-text']}>
 				{passedQuestionsPercent}%
 				<br />
 				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}
