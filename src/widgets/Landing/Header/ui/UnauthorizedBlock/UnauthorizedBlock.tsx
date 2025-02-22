@@ -46,7 +46,7 @@ export const UnauthorizedBlock = () => {
 							aria-label="go to preferences"
 							form="square"
 							icon={<Icon icon="list" size={32} />}
-							size="L"
+							size="large"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

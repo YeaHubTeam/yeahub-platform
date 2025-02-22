@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.png';
+import NoActiveQuizPlaceholder from '@/shared/assets/images/NoActiveQuizPlaceholder.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { Text } from '@/shared/ui/Text';

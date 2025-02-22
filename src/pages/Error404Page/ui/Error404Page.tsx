@@ -13,10 +13,10 @@ const Error404Page = () => {
 	return (
 		<Card className={styles.wrapper}>
 			<div>
-				<img src="/images/404.png" alt="" />
+				<img src="/images/404.avif" alt="Ошибка 404: страница не найдена" />
 				<div className={styles.content}>
 					<h2 className={styles.title}>Произошла ошибка</h2>
-					<Button size="L" onClick={handleBackBtnClick}>
+					<Button size="large" onClick={handleBackBtnClick}>
 						Вернуться назад
 					</Button>
 				</div>

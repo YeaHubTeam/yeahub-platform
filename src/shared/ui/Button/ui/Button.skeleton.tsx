@@ -10,7 +10,7 @@ export const ButtonSkeleton = ({
 	className,
 	variant = 'primary',
 	fullWidth,
-	size = 'M',
+	size = 'medium',
 	destructive,
 }: ButtonProps) => {
 	const tagName = getTagName(variant);
@@ -20,7 +20,8 @@ export const ButtonSkeleton = ({
 			borderRadius={12}
 			className={classnames(
 				styles[tagName],
-				fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
+				styles[`${tagName}-${size}`],
+				fullWidth && styles[`${tagName}-full`],
 				destructive && tagName === 'a'
 					? styles['a-link-destructive']
 					: styles[`${tagName}-${variant}`],

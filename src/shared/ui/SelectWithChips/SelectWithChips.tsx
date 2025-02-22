@@ -1,4 +1,6 @@
-import { Select, Chip, Text } from 'yeahub-ui-kit';
+import { Select, Text } from 'yeahub-ui-kit';
+
+import { Chip } from '@/shared/ui/Chip';
 
 import styles from './SelectWithChips.module.css';
 

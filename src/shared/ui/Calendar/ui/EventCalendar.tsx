@@ -56,7 +56,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					aria-label="go to filters"
 					form="square"
 					icon={<Icon icon="calendar" color="black-600" size={20} />}
-					size="S"
+					size="small"
 					variant={'tertiary'}
 					onClick={onToggle}
 				/>
