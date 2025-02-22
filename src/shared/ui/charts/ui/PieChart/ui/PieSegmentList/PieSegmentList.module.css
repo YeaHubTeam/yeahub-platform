@@ -1,12 +1,3 @@
-.pie-chart-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  width: 307px;
-  height: 307px;
-}
-
 .inner-circle-container {
   position: relative;
   display: flex;
@@ -17,11 +8,6 @@
   height: 307px;
   border: 10px solid var(--color-white-900);
   border-radius: 50%;
-}
-
-.pie-chart-svg {
-  width: 100%;
-  height: 100%;
 }
 
 .pie-chart-segment {
@@ -37,9 +23,7 @@
   transform: translate(-50%, -50%);
 }
 
-.legend-color {
-  margin-right: 12px;
-  width: 7px;
-  height: 38px;
-  border-radius: 24px;
+.pie-chart-svg {
+  width: 100%;
+  height: 100%;
 }

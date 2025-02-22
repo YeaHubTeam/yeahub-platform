@@ -21,7 +21,7 @@ export const PercentsInfoPie = ({
 	return (
 		<Card className={className} isTitleCenter title={title}>
 			<Flex justify="center" align="center" gap="48" className={styles.wrapper}>
-				<PieChart totalAttempt={totalAttempt} attemptData={attemptStats} />
+				<PieChart totalAttempt={totalAttempt} pieData={attemptStats} />
 			</Flex>
 		</Card>
 	);

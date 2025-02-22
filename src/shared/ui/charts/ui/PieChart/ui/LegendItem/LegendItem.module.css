@@ -1,11 +1,11 @@
-.divider {
+.legend-color {
   width: 7px;
   height: 35px;
   border-radius: 24px;
 }
 
 @media (width < 768px) {
-  .item {
+  .legend {
     gap: 8px;
   }
 }
