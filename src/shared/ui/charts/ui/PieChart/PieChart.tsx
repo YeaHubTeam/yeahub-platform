@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { AttemptInfoItemProps } from '@/shared/ui/AttemptInfoItem';
+import { PieSegmentData } from '@/shared/ui/charts/ui/PieChart/model/PieSegmentData';
+import { LegendList } from '@/shared/ui/charts/ui/PieChart/ui/LegentList';
+import { PieSegmentList } from '@/shared/ui/charts/ui/PieChart/ui/PieChart/PieSegmentList';
 import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
-
-import styles from './PieChart.module.css';
 
 interface PieChartProps {
 	totalAttempt: number;
@@ -24,101 +24,48 @@ export const PieChart = ({ totalAttempt, attemptData }: PieChartProps) => {
 
 	const innerContainerSize = 307;
 	const strokeWidth = 10;
-	const radius = innerContainerSize / 2 - strokeWidth * 2;
-	const gapAngle = 15;
-	const totalValue = attemptData.reduce((sum, item) => sum + item.value, 0);
+	const gapAngle = 10;
 
-	const circumference = 2 * Math.PI * radius;
+	const { radius, circumference, segments, availableAngle } = useMemo(() => {
+		const radius = innerContainerSize / 2 - strokeWidth * 2;
+		const circumference = 2 * Math.PI * radius;
+		const totalValue = attemptData.reduce((sum, item) => sum + item.value, 0);
 
-	const segments = attemptData.map((item) => {
-		const percentage = item.value / totalValue;
-		const segmentAngle = 360 * percentage;
-		return {
-			...item,
-			percentage,
-			segmentAngle,
-		};
-	});
+		const segments: PieSegmentData[] = attemptData.map((item) => {
+			const percentage = item.value / totalValue;
+			const segmentAngle = 360 * percentage;
+			return {
+				...item,
+				percentage,
+				segmentAngle,
+				totalValue,
+			};
+		});
 
-	const totalGapAngle = gapAngle * segments.length;
+		const totalGapAngle = gapAngle * segments.length;
+		const availableAngle = 360 - totalGapAngle;
 
-	const availableAngle = 360 - totalGapAngle;
-	const getCircleBaseOptions = () => ({
-		cx: innerContainerSize / 2,
-		cy: innerContainerSize / 2,
-		className: styles['pie-chart-segment'],
-	});
+		return { radius, circumference, segments, totalGapAngle, availableAngle };
+	}, [attemptData, innerContainerSize, strokeWidth, gapAngle]);
 
 	return (
-		<Flex className={styles['pie-chart-wrapper']}>
-			<Flex direction="column" align="center" justify="center">
-				<div className={styles['inner-circle-container']}>
-					<svg
-						className={styles['pie-chart-svg']}
-						width={innerContainerSize}
-						height={innerContainerSize}
-						viewBox={`0 0 ${innerContainerSize} ${innerContainerSize}`}
-					>
-						<circle r={radius} fill={CIRCLE_ONE_COLOR} {...getCircleBaseOptions()} />
-						<circle r={radius * 0.8} fill={CIRCLE_TWO_COLOR} {...getCircleBaseOptions()} />
-						{segments.map((item, index) => {
-							const adjustedSegmentAngle = item.percentage * availableAngle;
-
-							const arcLength = (adjustedSegmentAngle / 360) * circumference;
-							const gapLength = (gapAngle / 360) * circumference;
-
-							const strokeDasharrayValue = `${arcLength} ${circumference - arcLength}`;
-
-							const startPosition = segments.slice(0, index).reduce((acc, segment) => {
-								const prevAdjustedAngle = segment.percentage * availableAngle;
-								const prevArcLength = (prevAdjustedAngle / 360) * circumference;
-								return acc + prevArcLength + gapLength;
-							}, 0);
-
-							const strokeDashoffsetValue = circumference * 0.25 - startPosition;
-
-							return (
-								<circle
-									key={index}
-									className={styles['pie-chart-segment']}
-									cx={innerContainerSize / 2}
-									cy={innerContainerSize / 2}
-									r={radius * 1.1}
-									stroke={item.itemStyle?.color || STROKE_DEFAULT_COLOR}
-									strokeWidth={strokeWidth}
-									strokeDasharray={strokeDasharrayValue}
-									strokeDashoffset={strokeDashoffsetValue}
-									fill="none"
-								/>
-							);
-						})}
-					</svg>
-					<Text className={styles['pie-chart-label']} variant="body2">
-						{t(Translation.TOTAL_QUESTIONS)}
-						<br />
-						{totalAttempt}
-					</Text>
-				</div>
-			</Flex>
-
-			<Flex className={styles['pie-chart-legend']} direction="column">
-				{attemptData.map((item, index) => (
-					<Flex key={index} className={styles['legend-item']} align="center">
-						<div
-							className={styles['legend-color']}
-							style={{ backgroundColor: item.itemStyle?.color || DEFAULT_COLOR }}
-						></div>
-						<Text variant="body3">
-							<Text className={styles['legend-name']} variant="body3">
-								{item.name}
-							</Text>
-							<Text className={styles['legend-percent']} variant="body2-accent">
-								{((item.value / totalValue) * 100).toFixed(0)}%
-							</Text>
-						</Text>
-					</Flex>
-				))}
-			</Flex>
+		<Flex justify="between" align="center">
+			<PieSegmentList
+				innerContainerSize={innerContainerSize}
+				radius={radius}
+				strokeWidth={strokeWidth}
+				segments={segments}
+				gapAngle={gapAngle}
+				availableAngle={availableAngle}
+				circumference={circumference}
+				STROKE_DEFAULT_COLOR={STROKE_DEFAULT_COLOR}
+				CIRCLE_ONE_COLOR={CIRCLE_ONE_COLOR}
+				CIRCLE_TWO_COLOR={CIRCLE_TWO_COLOR}
+				totalAttempt={totalAttempt}
+				t={t}
+				Translation={Translation}
+			/>
+			<LegendList attemptData={segments} DEFAULT_COLOR={DEFAULT_COLOR} />
 		</Flex>
 	);
 };

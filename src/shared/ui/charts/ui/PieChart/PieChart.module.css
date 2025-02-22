@@ -1,9 +1,3 @@
-.pie-chart-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .pie-chart-container {
   position: relative;
   display: flex;
@@ -39,27 +33,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  color: var(--text-color-light);
   text-align: center;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-l);
   transform: translate(-50%, -50%);
-}
-
-.pie-chart-legend {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin: 24px 0 0;
-}
-
-.legend-item:first-child {
-  margin-top: 0;
 }
 
 .legend-color {
@@ -67,12 +42,4 @@
   width: 7px;
   height: 38px;
   border-radius: 24px;
-}
-
-.legend-name {
-  color: var(--color-black-400)
-}
-
-.legend-percent {
-  color: var(--color-black-700)
 }
