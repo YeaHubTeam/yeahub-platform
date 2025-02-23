@@ -10,10 +10,9 @@ import { ProfileQuizzesStat } from '@/entities/quiz';
 export interface QuizzesStatisticProps {
 	className?: string;
 	quizzesStat?: ProfileQuizzesStat;
-	isLoading?: boolean;
 }
 
-export const QuizzesStatistic = ({ className, quizzesStat, isLoading }: QuizzesStatisticProps) => {
+export const QuizzesStatistic = ({ className, quizzesStat }: QuizzesStatisticProps) => {
 	const { t } = useTranslation(i18Namespace.interviewStatistics);
 	const { isMobile } = useScreenSize();
 
@@ -48,7 +47,6 @@ export const QuizzesStatistic = ({ className, quizzesStat, isLoading }: QuizzesS
 			attemptStats={attemptStats}
 			totalAttempt={totalAttempt}
 			className={className}
-			isLoading={isLoading}
 		/>
 	);
 };

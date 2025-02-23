@@ -22,14 +22,9 @@ const InterviewStatisticsPage = () => {
 
 	return (
 		<Flex wrap="wrap" gap="20" className={styles.container}>
-			<QuizzesStatistic
-				isLoading={isLoading}
-				quizzesStat={profileStats?.quizzesStat}
-				className={styles.quizzes}
-			/>
+			<QuizzesStatistic quizzesStat={profileStats?.quizzesStat} className={styles.quizzes} />
 			<FullQuestionsStatistic
 				className={styles.questions}
-				isLoading={isLoading}
 				questionsStat={profileStats?.questionsStat}
 			/>
 			<PreviewPassedQuizzesList className={styles.history} />

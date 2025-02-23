@@ -102,7 +102,6 @@ The project is built using the following technologies and tools:
 ### **Other Tools**
 
 - **Docker**: For containerization of the project.
-- **ECharts**: For interactive data visualizations.
 
 ---
 

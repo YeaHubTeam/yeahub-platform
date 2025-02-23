@@ -10,17 +10,11 @@ import { getQuizQuestionsInfo } from '../../model/getQuizQuestionsInfo';
 
 export interface QuizQuestionsInfoProps {
 	className?: string;
-	isLoading?: boolean;
 	questions?: Answers[];
 	quizNumber?: number;
 }
 
-export const QuizQuestionsInfo = ({
-	className,
-	isLoading,
-	questions,
-	quizNumber,
-}: QuizQuestionsInfoProps) => {
+export const QuizQuestionsInfo = ({ className, questions, quizNumber }: QuizQuestionsInfoProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
 	const quizQuestionsStats = getQuizQuestionsInfo(questions);
@@ -31,7 +25,6 @@ export const QuizQuestionsInfo = ({
 			attemptStats={quizQuestionsStats.stats}
 			totalAttempt={quizQuestionsStats.questionsTotalCount}
 			className={className}
-			isLoading={isLoading}
 		/>
 	);
 };
