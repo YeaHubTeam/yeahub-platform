@@ -20,6 +20,7 @@ export const PreviewInactiveQuiz = () => {
 				className={styles['preparation-noactiveimage']}
 				src={NoActiveQuizPlaceholder}
 				alt="no active quiz"
+				loading="lazy"
 			/>
 		</div>
 	);

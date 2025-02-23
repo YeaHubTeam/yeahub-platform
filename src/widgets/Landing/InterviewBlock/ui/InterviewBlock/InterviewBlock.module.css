@@ -35,10 +35,6 @@
   font-size: var(--font-size-p-m);
 }
 
-.wallpaper {
-  width: 498px;
-}
-
 .right-block {
   position: relative;
   margin-top: -28px;
@@ -73,6 +69,7 @@
 @media screen and (width <= 1439px) {
   .wallpaper {
     width: 445px;
+    height: 386px;
   }
 
   .interview-block {
@@ -137,7 +134,8 @@
   }
 
   .wallpaper {
-    width: 100%;
+    width: 566px;
+    height: 491px;
   }
 }
 
@@ -163,6 +161,11 @@
   .right-block::after {
     content: none;
   }
+
+  .wallpaper {
+    width: 540px;
+    height: 625px;
+  }
 }
 
 @media screen and (width <= 576px) {
@@ -179,5 +182,10 @@
     margin-bottom: 24px;
     line-height: 122%;
     font-size: var(--font-size-p-s);
+  }
+
+  .wallpaper {
+    width: 100%;
+    height: auto;
   }
 }

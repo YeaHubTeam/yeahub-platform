@@ -61,7 +61,7 @@ export const EmailSendModal = ({
 	return (
 		<Modal title={t(Auth.FORGOT_PASSWORD_MODAL_TITLE)} isOpen={isOpen} onClose={onModalClose}>
 			<Flex justify="center" align="center" direction="column" className={styles['modal']}>
-				<img src={EmailModal} alt="email icon" />
+				<img src={EmailModal} alt="email icon" loading="lazy" />
 				<p className={styles['modal-subtitle']}>{t(Auth.FORGOT_PASSWORD_MODAL_SUBTITLE)}</p>
 				<Timer
 					duration={60}
