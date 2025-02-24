@@ -22,9 +22,6 @@ const collectionApi = baseApi.injectEndpoints({
 		getCollectionById: build.query<GetCollectionByIdResponse, GetCollectionByIdParamsRequest>({
 			query: ({ collectionId }) => ({
 				url: route(collectionApiUrls.getCollectionById, collectionId || ''),
-				params: {
-					collectionId,
-				},
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
