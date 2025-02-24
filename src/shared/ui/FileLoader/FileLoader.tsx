@@ -109,7 +109,7 @@ export const FileLoader = ({
 			{isDragDropEnabled && (
 				<>
 					<div>
-						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} />
+						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} loading="lazy" />
 					</div>
 
 					<p>

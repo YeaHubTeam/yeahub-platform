@@ -70,6 +70,7 @@ export const AdditionalInfo = ({
 												style={{ width: 20, height: 20 }}
 												src={skill.imageSrc}
 												alt={skill.title}
+												loading="lazy"
 											/>
 										) : (
 											<Icon icon={getSkillDefaultIcon(skill)} />

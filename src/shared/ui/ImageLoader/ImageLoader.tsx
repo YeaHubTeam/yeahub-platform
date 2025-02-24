@@ -155,6 +155,7 @@ export const ImageLoader = ({
 							src={(croppedArea && 'data:image/png;base64,' + croppedArea) || src}
 							alt={t(Profile.PHOTO_TITLE)}
 							className={styles.img}
+							loading="lazy"
 						/>
 					) : (
 						<AvatarWithoutPhoto />
@@ -211,11 +212,13 @@ export const ImageLoader = ({
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['large-preview'])}
 								alt={t(Profile.PHOTO_MODAL_LARGE_PREVIEW)}
+								loading="lazy"
 							/>
 							<img
 								src={'data:image/png;base64,' + croppedArea}
 								className={classNames(styles['avatar-preview'], styles['small-preview'])}
 								alt={t(Profile.PHOTO_MODAL_SMALL_PREVIEW)}
+								loading="lazy"
 							/>
 						</Flex>
 					</Flex>

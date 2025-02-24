@@ -96,7 +96,12 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 			</Flex>
 			{imageSrc && (
 				<div className={styles['image-wrapper']}>
-					<img className={styles.image} alt={t(Questions.IMAGE_ALT)} src={imageSrc} />
+					<img
+						className={styles.image}
+						alt={t(Questions.IMAGE_ALT)}
+						src={imageSrc}
+						loading="lazy"
+					/>
 				</div>
 			)}
 			<TextHtml html={shortAnswer} />
