@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import Lens from '@/shared/assets/icons/Magnifer.svg';
+import { useOutsideClick } from '@/shared/hooks/useOutsideClick';
 
 import { DropdownSize } from '../../model/DropdownTypes';
 import { OptionProps } from '../Option/Option';
@@ -19,7 +20,6 @@ interface DropdownProps
 	className?: string;
 	onSelect?: (value: string | number) => void;
 	multiple?: boolean;
-	selectedValues?: (string | number)[];
 }
 
 export const Dropdown = ({
@@ -32,29 +32,15 @@ export const Dropdown = ({
 	children,
 	onSelect,
 	multiple = false,
-	selectedValues = [],
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-	const toggleDropdown = () => setIsOpen((prev) => !prev);
+	const dropdownRef = useOutsideClick<HTMLDivElement>(() => setIsOpen(false));
 
-	const handleOutsideClick = (e: MouseEvent) => {
-		if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-			setIsOpen(false);
-		}
+	const onSelectClick = () => {
+		if (!disabled) setIsOpen((prev) => !prev);
 	};
 
-	useEffect(() => {
-		document.addEventListener('mousedown', handleOutsideClick);
-		return () => document.removeEventListener('mousedown', handleOutsideClick);
-	}, []);
-
-	const handleOptionClick = (value: string | number) => {
-		if (onSelect) onSelect(value);
-
-		if (!multiple) setIsOpen(false);
-	};
 	return (
 		<div className={classNames(styles.dropdown, className)} ref={dropdownRef}>
 			<Select
@@ -64,7 +50,7 @@ export const Dropdown = ({
 					suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />
 				}
 				disabled={disabled}
-				onClick={toggleDropdown}
+				onClick={onSelectClick}
 				isOpen={isOpen}
 				label={label}
 			/>
@@ -75,11 +61,12 @@ export const Dropdown = ({
 				>
 					{React.Children.map(children, (child) =>
 						React.cloneElement(child as React.ReactElement<OptionProps>, {
-							onClick: () =>
-								handleOptionClick((child as React.ReactElement<OptionProps>).props.value),
-							isSelected: selectedValues.includes(
-								(child as React.ReactElement<OptionProps>).props.value,
-							),
+							onClick: () => {
+								if (onSelect && 'value' in (child as React.ReactElement<OptionProps>).props) {
+									onSelect((child as React.ReactElement<OptionProps>).props.value);
+								}
+								if (!multiple) setIsOpen(false);
+							},
 						}),
 					)}
 				</div>
