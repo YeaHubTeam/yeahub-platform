@@ -8,19 +8,15 @@ import { Button } from '@/shared/ui/Button';
 import styles from './TrainCollectionButton.module.css';
 
 interface TrainCollectionProps {
-	collectionId?: number | string;
-	isSmallIcon?: boolean;
+	collectionId?: string;
 	isDisabled: boolean;
-	isPopover?: boolean;
 	variant?: 'tertiary' | 'link-gray';
 	onSuccess?: () => void;
 }
 
 export const TrainCollectionButton = ({
 	collectionId,
-	isSmallIcon,
 	isDisabled,
-	isPopover = false,
 	variant = 'tertiary',
 }: TrainCollectionProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
@@ -29,12 +25,10 @@ export const TrainCollectionButton = ({
 		console.log('Коллекция изучена успешно', collectionId);
 	};
 
-	const iconSize = isSmallIcon ? 20 : 24;
-
 	return (
 		<Button
-			className={isPopover ? styles.button : ''}
-			preffix={<Icon icon="student" size={iconSize} />}
+			className={styles.button}
+			preffix={<Icon icon="student" size={24} />}
 			variant={variant}
 			onClick={handleTrainCollection}
 			disabled={isDisabled}

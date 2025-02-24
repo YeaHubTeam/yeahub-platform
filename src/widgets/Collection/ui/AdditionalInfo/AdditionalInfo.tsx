@@ -41,7 +41,7 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					{t(Collections.ADDITIONAL_INFO_SPECIALIZATION)}
 				</Text>
 				<ul className={styles['param-wrapper']}>
-					{collection.specializations.map((spec) => {
+					{collection.specializations?.map((spec) => {
 						return (
 							<li key={spec.id}>
 								<Chip

@@ -1,5 +1,6 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import { route } from '@/shared/helpers/route';
 
 import { collectionApiUrls } from '../model/constants/collection';
 import {
@@ -20,7 +21,7 @@ const collectionApi = baseApi.injectEndpoints({
 		}),
 		getCollectionById: build.query<GetCollectionByIdResponse, GetCollectionByIdParamsRequest>({
 			query: ({ collectionId }) => ({
-				url: collectionApiUrls.getCollectionById,
+				url: route(collectionApiUrls.getCollectionById, collectionId || ''),
 				params: {
 					collectionId,
 				},
