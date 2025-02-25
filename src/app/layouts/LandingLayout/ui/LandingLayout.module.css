@@ -33,6 +33,7 @@
   
 @media screen and (width <= 576px) {
   .container {
+    padding: 0 var(--container-padding-16);
     max-width: var(--container-width-mobile);
   }
 }

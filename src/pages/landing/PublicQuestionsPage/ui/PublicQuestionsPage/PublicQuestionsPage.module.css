@@ -8,6 +8,7 @@
 
   &.drawer-mobile {
     top: var(--header-height);
+    padding-bottom: var(--header-height);
     width: 100%;
   }
 }

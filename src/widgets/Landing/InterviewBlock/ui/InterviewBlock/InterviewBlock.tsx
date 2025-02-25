@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import interviewImg from '@/shared/assets/images/landing/interviewImg.png';
-import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobile.png';
-import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.png';
+import interviewImg from '@/shared/assets/images/landing/interviewImg.avif';
+import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobile.avif';
+import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -34,7 +34,7 @@ export const InterviewBlock = () => {
 					<span>{t(Landing.MAIN_BADGE)}</span>
 					<InterviewTitle />
 					<p className={styles['article-description']}>{t(Landing.MAIN_SUBTITLE)}</p>
-					<Button variant="primary" size="L" onClick={handleNavigate}>
+					<Button variant="primary" size="large" onClick={handleNavigate}>
 						{t(Landing.MAIN_LINK)}
 					</Button>
 				</div>
@@ -47,7 +47,10 @@ export const InterviewBlock = () => {
 						<img
 							className={styles.wallpaper}
 							src={interviewImg}
-							alt="топ вопросов на собеседовании"
+							alt="Топ вопросов на собеседовании"
+							fetchPriority="high"
+							width="498"
+							height="491"
 						/>
 					</picture>
 

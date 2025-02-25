@@ -10,6 +10,7 @@
 
   /* paddings */
   --container-padding: 0;
+  --container-padding-16: 16px;
   
   /* transitions */
   --drawer-transition-speed: 0.3s;
@@ -38,6 +39,7 @@
   
   /* shadows */
   --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+  --main-shadow-15: 0px 4px 10px rgb(106 99 118 / 15%);
   --focus-shadow: 0 0 0 3px var(--color-purple-100);
   --focus-shadow-error: 0 0 0 3px var(--color-red-100);
   --focus-shadow-valid: 0 0 0 3px var(--color-green-200);

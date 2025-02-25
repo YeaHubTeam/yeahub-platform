@@ -2,7 +2,10 @@
   display: grid;
   grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: auto 1fr;
-  overflow: hidden;
+
+  /* Отключено для AutoScrollToTop */
+
+  /* overflow: hidden; */
   background-color: var(--background-app);
   color: var(--text-color-primary);
   transition:
@@ -24,7 +27,10 @@
   padding: 24px 20px;
   height: calc(100vh - var(--header-height));
   max-height: 100%;
-  overflow-y: scroll;
+
+  /* Отключено для AutoScrollToTop */
+
+  /* overflow-y: scroll; */
 }
 
 .container {

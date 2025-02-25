@@ -16,13 +16,7 @@
 
 .param-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  row-gap: 10px;
-  list-style-type: none;
-}
-
-.param-wrapper > li:first-child {
-  margin-right: 16px;
+  gap: 16px;
 }
 
 .chip {

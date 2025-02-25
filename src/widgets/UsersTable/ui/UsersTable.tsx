@@ -64,6 +64,13 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 					navigate(route(ROUTES.admin.users.detail.page, user.id));
 				},
 			},
+			{
+				icon: <Icon icon="pencil" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.users.edit.page, user.id));
+				},
+			},
 		];
 
 		return (
@@ -74,7 +81,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

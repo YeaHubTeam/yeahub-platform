@@ -35,12 +35,9 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 
 	return (
 		<div className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen })}>
-			<div className={styles.heading}>
+			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
 				<button className={styles.button} onClick={onOpenAccordion}>
-					<Text
-						variant={isMobileS ? 'body2-accent' : 'body5-accent'}
-						className={classNames(styles.title, { [styles['accordion-opened']]: isOpen })}
-					>
+					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.title}>
 						{title}
 					</Text>
 					<Icon
@@ -52,7 +49,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 				</button>
 			</div>
 			<div
-				className={styles.collapsed}
+				className={styles['content-wrapper']}
 				style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
 			>
 				<div className={styles.content} ref={contentRef}>

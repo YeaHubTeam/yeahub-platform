@@ -79,7 +79,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

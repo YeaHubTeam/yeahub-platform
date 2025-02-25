@@ -23,10 +23,10 @@ export const Footer = () => {
 
 				<p className={styles.subtitle}>{t(Landing.FOOTER_SLOGAN)} </p>
 				<div className={styles['container-social']}>
-					<NavLink to="https://github.com/YeaHubTeam/yeahub-platform">
+					<NavLink to="https://github.com/YeaHubTeam/yeahub-platform" aria-label="GitHub">
 						<GithubLogo />
 					</NavLink>
-					<NavLink to="https://t.me/yeahub">
+					<NavLink to="https://t.me/yeahub" aria-label="Telegram">
 						<TelegramLogo />
 					</NavLink>
 				</div>
@@ -38,10 +38,13 @@ export const Footer = () => {
 						<NavLink className={styles['docs']} to="/docs">
 							<p>{t(Landing.FOOTER_DOCS)}</p>
 						</NavLink>
-						<NavLink to="https://www.figma.com/community/file/1438482355619792777/yeahub-public">
+						<NavLink
+							to="https://www.figma.com/community/file/1438482355619792777/yeahub-public"
+							aria-label="Figma"
+						>
 							<FigmaLogo className={styles.figma} />
 						</NavLink>
-						<NavLink to="https://github.com/YeaHubTeam/yeahub-platform">
+						<NavLink to="https://github.com/YeaHubTeam/yeahub-platform" aria-label="GitHub">
 							<GithubLogo className={styles['github-icon']} />
 						</NavLink>
 					</div>

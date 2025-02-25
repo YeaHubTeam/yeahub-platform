@@ -69,7 +69,7 @@ export const IncompleteProfileStub = () => {
 				<Text variant="body2-accent" color="black-600">
 					{t(Main.FILL_PROFILE_DESCRIPTION)}
 				</Text>
-				<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
+				<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
 					{t(Main.FILL_PROFILE_LINK)}
 				</Button>
 			</Flex>

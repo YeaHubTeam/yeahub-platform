@@ -131,7 +131,10 @@ export enum Profile {
 	TABS_SKILLS = 'tabs.skills',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
+	PHOTO_UPDATE = 'photo.update',
 	PHOTO_DELETE = 'photo.delete',
+	PHOTO_UPDATE_FULL = 'photo.update.full',
+	PHOTO_DELETE_FULL = 'photo.delete.full',
 	PHOTO_MODAL_TITLE = 'photo.modal.title',
 	PHOTO_MODAL_DESCRIPTION = 'photo.modal.description',
 	PHOTO_MODAL_SUBMIT = 'photo.modal.submit',
@@ -417,6 +420,8 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	EDIT_SUCCESS = 'edit.success',
+	EDIT_ERROR = 'edit.error',
 }
 
 export enum Collections {

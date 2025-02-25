@@ -18,10 +18,10 @@
 }
 
 .container span {
-  margin-bottom: 5px;
-  color: var(--text-color-the-lightest);
-  line-height: 13.66px;
-  font-size: var(--font-size-p-xss);
+  margin-bottom: 8px;
+  color: var(--text-color-light);
+  line-height: 14px;
+  font-size: var(--font-size-p-xs);
 }
 
 .progress-bar {
@@ -61,9 +61,9 @@
   }
 
   .container span {
-    margin-bottom: 4.56px;
+    margin-bottom: 4px;
     line-height: 12px;
-    font-size: var(--font-size-p-xxs);
+    font-size: var(--font-size-p-xss);
   }
 
   .progress-bar {

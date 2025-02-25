@@ -1,8 +1,9 @@
 import { Key, ReactNode } from 'react';
-import { Chip } from 'yeahub-ui-kit';
 
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
+
+import { Chip } from '../Chip';
 
 import styles from './BaseFilterSection.module.css';
 
@@ -44,9 +45,14 @@ export const BaseFilterSection = <T,>({
 							key={item?.id as Key}
 							label={item.title}
 							theme="primary"
-							preffix={
+							prefix={
 								item.imageSrc ? (
-									<img style={{ width: 20, height: 20 }} src={item.imageSrc} alt={item.title} />
+									<img
+										style={{ width: 20, height: 20 }}
+										src={item.imageSrc}
+										alt={item.title}
+										loading="lazy"
+									/>
 								) : (
 									getDefaultIcon && getDefaultIcon(item)
 								)

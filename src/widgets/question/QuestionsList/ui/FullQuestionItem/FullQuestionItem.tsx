@@ -86,7 +86,7 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 								aria-label="go to preferences"
 								form="square"
 								icon={<Icon icon="dotsThreeVertical" size={20} color="black-600" />}
-								size="S"
+								size="small"
 								variant="tertiary"
 								onClick={onToggle}
 							/>
@@ -96,14 +96,19 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 			</Flex>
 			{imageSrc && (
 				<div className={styles['image-wrapper']}>
-					<img className={styles.image} alt={t(Questions.IMAGE_ALT)} src={imageSrc} />
+					<img
+						className={styles.image}
+						alt={t(Questions.IMAGE_ALT)}
+						src={imageSrc}
+						loading="lazy"
+					/>
 				</div>
 			)}
 			<TextHtml html={shortAnswer} />
 			{isPublic && (
 				<Button
 					variant="link"
-					size="L"
+					size="large"
 					className={styles.link}
 					suffix={<Icon icon="arrowRight" size={24} />}
 					onClick={onMoveDetail}

@@ -1,10 +1,11 @@
 .accordion {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-color);
+  transition: padding 0.2s ease-in-out;
 }
 
 .accordion.accordion-opened {
-  padding: 0;
+  padding-bottom: 0;
 }
 
 .accordion + .accordion {
@@ -14,13 +15,18 @@
 .heading {
   margin: 0;
   font-size: var(--font-size-h-xs);
+  transition: margin-bottom 0.3s ease-in-out;
+}
+
+.heading.accordion-opened {
+  margin-bottom: 20px;
+  transition: margin-bottom 0.3s ease-in-out;
 }
 
 .button {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0;
   width: 100%;
   border: none;
   background-color: transparent;
@@ -34,9 +40,8 @@
   align-items:normal;
   padding-left: 16px;
   text-align: initial;
-  transition: 
-    color 0.3s ease-in-out,
-    margin-bottom 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+    
 }
 
 .title::before {
@@ -54,18 +59,18 @@
   display: none;
 }
 
-.title.accordion-opened {
-  margin-bottom: 24px;
-}
-
-
 .icon {
   flex-shrink: 0;
-  transition: transform 400ms ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .icon.accordion-opened {
   transform: rotate(-180deg);
+}
+
+.content-wrapper {
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
 }
 
 .content {
@@ -73,10 +78,6 @@
   color: var(--text-color-light);
 }
 
-.collapsed {
-  overflow: hidden;
-  transition: height .3s ease-in-out;
-}
 
 @media (width < 768px) { 
   .content {

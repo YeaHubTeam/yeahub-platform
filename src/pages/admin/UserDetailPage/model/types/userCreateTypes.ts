@@ -1,5 +1,3 @@
-import { CreateOrEditUserFormValues, User } from '@/entities/user';
-
-export type UserFormValues = Omit<CreateOrEditUserFormValues, 'id'>;
+import { User } from '@/entities/user';
 
 export type CreateUserResponse = User;

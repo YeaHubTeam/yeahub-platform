@@ -10,7 +10,7 @@ export const IncompleteProfileStubSkeleton = () => {
 		<CardSkeleton className={styles.card} title="title">
 			<Flex direction="column" gap="16">
 				<TextSkeleton variant="body2-accent" width="100%" />
-				<ButtonSkeleton className={styles.button} size="L" />
+				<ButtonSkeleton className={styles.button} size="large" />
 			</Flex>
 		</CardSkeleton>
 	);
