@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import EmailModal from '@/shared/assets/images/emailModal.png';
+import EmailModal from '@/shared/assets/images/emailModal.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
@@ -61,7 +61,7 @@ export const EmailSendModal = ({
 	return (
 		<Modal title={t(Auth.FORGOT_PASSWORD_MODAL_TITLE)} isOpen={isOpen} onClose={onModalClose}>
 			<Flex justify="center" align="center" direction="column" className={styles['modal']}>
-				<img src={EmailModal} alt="email icon" />
+				<img src={EmailModal} alt="email icon" loading="lazy" />
 				<p className={styles['modal-subtitle']}>{t(Auth.FORGOT_PASSWORD_MODAL_SUBTITLE)}</p>
 				<Timer
 					duration={60}

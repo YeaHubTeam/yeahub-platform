@@ -1,0 +1,29 @@
+.inner-circle-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 49px;
+  width: 307px;
+  height: 307px;
+  border: 10px solid var(--color-white-900);
+  border-radius: 50%;
+}
+
+.pie-chart-segment {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.pie-chart-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.pie-chart-svg {
+  width: 100%;
+  height: 100%;
+}

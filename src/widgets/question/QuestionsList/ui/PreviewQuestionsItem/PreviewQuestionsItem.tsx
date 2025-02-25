@@ -28,7 +28,7 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 			<Link to={route(ROUTES.interview.questions.detail.page, id)} className={styles.link}>
 				<ImageWithWrapper src={imageSrc} className={styles.image} />
 				<Flex direction="column" gap="8">
-					<Text variant="body2-accent" maxRows={1} className={styles.title}>
+					<Text variant="body3-accent" maxRows={1} className={styles.title}>
 						{title}
 					</Text>
 					<Flex componentType="ul" gap="24" className={styles.params}>

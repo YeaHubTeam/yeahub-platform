@@ -1,9 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import interviewImg from '@/shared/assets/images/landing/interviewImg.png';
-import interviewImgMobile from '@/shared/assets/images/landing/interviewImgMobile.png';
-import interviewImgTablet from '@/shared/assets/images/landing/interviewImgTablet.png';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -42,12 +39,15 @@ export const InterviewBlock = () => {
 					<Skills />
 
 					<picture>
-						<source media="(max-width: 767px)" srcSet={interviewImgMobile} />
-						<source media="(max-width: 1439px)" srcSet={interviewImgTablet} />
+						<source media="(max-width: 767px)" srcSet="/images/interviewImgMobile.avif" />
+						<source media="(max-width: 1439px)" srcSet="/images/interviewImgTablet.avif" />
 						<img
 							className={styles.wallpaper}
-							src={interviewImg}
-							alt="топ вопросов на собеседовании"
+							src="/images/interviewImg.avif"
+							alt="Топ вопросов на собеседовании"
+							fetchPriority="high"
+							width="498"
+							height="491"
 						/>
 					</picture>
 
