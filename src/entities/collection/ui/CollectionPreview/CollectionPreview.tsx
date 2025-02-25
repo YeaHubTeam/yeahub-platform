@@ -36,7 +36,7 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 
 	return (
 		<Card withOutsideShadow>
-			<Link to={route(ROUTES.collections.detail.page, id)} className={styles.wrapper}>
+			<Link to={route(ROUTES.interview.collections.detail.page, id)} className={styles.wrapper}>
 				<div className={styles['image-wrapper']}>
 					<img
 						className={styles.image}

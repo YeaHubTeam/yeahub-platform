@@ -133,6 +133,10 @@ export const ROUTES = {
 		collections: {
 			route: 'collections',
 			page: '/dashboard/interview/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/interview/collections/:collectionId',
+			},
 		},
 		quiz: {
 			route: 'quiz',

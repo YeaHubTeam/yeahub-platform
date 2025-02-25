@@ -16,8 +16,8 @@ export interface Collection {
 	updatedAt?: string;
 	questionsQuantity?: number;
 	keywordsCollection?: string[];
-	questions: Question[];
-	specializations: Specialization[];
+	questions?: Question[];
+	specializations?: Specialization[];
 	tariff: CollectionTariff;
 	isFree?: boolean;
 }
@@ -36,3 +36,9 @@ export interface GetCollectionsListParamsRequest {
 }
 
 export type GetCollectionsListResponse = Response<Collection[]>;
+
+export type GetCollectionByIdResponse = Collection;
+
+export type GetCollectionByIdParamsRequest = {
+	collectionId?: string;
+};

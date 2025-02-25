@@ -17,7 +17,7 @@ export const CollectionBody = ({ collection }: CollectionBodyProps) => {
 		<Flex wrap="wrap" justify="between" gap="20">
 			<Card className={styles.wrapper} title="Список вопросов">
 				<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
-					{collection.questions.map((question) => {
+					{collection.questions?.map((question) => {
 						return <PreviewQuestionsItem key={question.id} question={question} />;
 					})}
 				</Flex>

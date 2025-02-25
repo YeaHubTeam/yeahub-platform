@@ -451,6 +451,7 @@ export enum Collections {
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	COLLECTIONS_TITLE = 'collections.title',
 	COLLECTIONS_DETAIL = 'collections.detail',
+	COLLECTIONS_TRAIN = 'collections.train',
 	SPECIALIZATIONS_SHOW_ALL = 'specializations.show.all',
 	SPECIALIZATIONS_HIDE = 'specializations.hide',
 }
