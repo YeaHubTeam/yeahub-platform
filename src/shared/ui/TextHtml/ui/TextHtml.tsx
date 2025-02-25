@@ -17,7 +17,7 @@ export const TextHtml = ({ className, html }: TextHtmlProps) => {
 
 	return (
 		<pre className={classNames(styles.text, className)}>
-			<Text variant={isMobileS ? 'body2' : 'body3-accent'} color="black-800">
+			<Text variant={isMobileS ? 'body3' : 'body3'} color="black-800">
 				<div dangerouslySetInnerHTML={{ __html: sanitizedHtmlContent }} />
 			</Text>
 		</pre>

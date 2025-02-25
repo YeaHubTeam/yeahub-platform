@@ -21,7 +21,7 @@ export const SpecializationEmptyStub = () => {
 	return (
 		<Flex direction="column" gap="8" className={styles.card}>
 			<Text variant="body5-strong">{t(Specializations.STUB_EMPTY_TITLE)}</Text>
-			<Text variant="body2-accent" color="black-600" className={styles['card-text']}>
+			<Text variant="body3" color="black-600" className={styles['card-text']}>
 				{t(Specializations.STUB_EMPTY_DESCRIPTION)}
 			</Text>
 			<Button onClick={onProfileRedirect} className={styles.button} size="large">

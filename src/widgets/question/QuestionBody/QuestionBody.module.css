@@ -5,15 +5,19 @@
 .title {
   margin-bottom: 20px;
   color: var(--text-color-primary);
-  line-height: 24px;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
-  font-family: var( --font-family);
+
+  /* line-height: 24px; */
+
+  /* font-weight: var(--font-weight-500); */
+
+  /* font-size: var(--font-size-h-xs); */
+
+  /* font-family: var( --font-family); */
 }
 
 .text {
   color: var(--text-color-light);
-  line-height: 20.8px;
+  line-height: 130%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
   font-family: var( --font-family);
@@ -22,13 +26,13 @@
 @media (width <= 480px) {
   .text {
     font-weight: var(--font-weight-400);
-    font-size: var(--font-size-p-s);
+    font-size: var(--font-size-p-m);
     
   }
 
   .title {
     margin-bottom: 5px;
     font-weight: var(--font-weight-500);
-    font-size: var(--font-size-p-m);
+    font-size: var(--font-size-h-xs);
   }
 }

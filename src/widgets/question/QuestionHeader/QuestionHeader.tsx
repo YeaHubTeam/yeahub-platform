@@ -5,6 +5,7 @@ import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Text } from '@/shared/ui/Text';
 
 import { QuestionStatus } from '@/entities/question';
 
@@ -40,11 +41,13 @@ export const QuestionHeader = ({ title, description, status, isPublic }: Questio
 			{isMobile ? (
 				<div className={styles['question-header-wrapper']}>
 					<div className={styles['title-wrapper']}>
-						<h2 className={styles.title}>{title}</h2>
+						<Text className={styles.title} variant="body5">
+							{title}
+						</Text>
 						{isPublic && <StatusLabel />}
 					</div>
 					<div className={styles['description-wrapper']}>
-						<p className={styles.description}>{description}</p>
+						<Text variant="body3">{description}</Text>
 					</div>
 				</div>
 			) : (
@@ -55,8 +58,8 @@ export const QuestionHeader = ({ title, description, status, isPublic }: Questio
 						</div>
 					)}
 					<div className={styles['title-wrapper']}>
-						<h2 className={styles.title}>{title}</h2>
-						<p className={styles.description}>{description}</p>
+						<Text variant="body6">{title}</Text>
+						<Text variant="body3">{description}</Text>
 					</div>
 					<StatusLabel />
 				</div>

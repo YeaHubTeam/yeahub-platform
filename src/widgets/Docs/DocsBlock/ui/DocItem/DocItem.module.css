@@ -5,10 +5,6 @@
 .doc-item-name {
   max-width: 392px;
   color: var(--text-color-primary);
-  line-height: 19px;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);   
 }
 
 @media (width <= 469px) {

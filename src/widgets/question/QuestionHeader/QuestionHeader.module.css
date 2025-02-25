@@ -42,14 +42,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 12px;
 }
 
 .title {
   margin-bottom: 8px;
   color: var(--text-color-primary);
-  line-height: 28.8px;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-s);
 }
 
 .description {
@@ -108,11 +106,9 @@
  
   .title {
     line-height: 120%;
-    font-size: var(--font-size-p-m);
   }
  
   .description {
     line-height: 136%;
-    font-size: var(--font-size-p-s);
   }
 }
