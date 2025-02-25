@@ -4,14 +4,13 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { useScrollToTop } from '@/shared/hooks/useScrollToTop';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
-import { Question, useGetPublicQuestionByIdQuery } from '@/entities/question';
+import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
 import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
 import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
@@ -31,8 +30,6 @@ const PublicQuestionPage = () => {
 	} = useGetPublicQuestionByIdQuery({
 		questionId,
 	});
-
-	const { ref } = useScrollToTop<HTMLDivElement, Question | undefined>(question);
 
 	const authorFullName = useMemo(() => {
 		if (question?.createdBy) {
@@ -108,7 +105,7 @@ const PublicQuestionPage = () => {
 	);
 
 	return (
-		<div ref={ref}>
+		<>
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>
 					<div className={styles['back-button-wrapper']}>
@@ -138,7 +135,7 @@ const PublicQuestionPage = () => {
 					</div>
 				</section>
 			)}
-		</div>
+		</>
 	);
 };
 
