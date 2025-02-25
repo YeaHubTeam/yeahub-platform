@@ -124,7 +124,7 @@
 
 @media (width <= 768px) {   
   .card {
-    width: 100%; 
+    max-width: 100%; 
   }
 
   .header {

@@ -152,11 +152,6 @@
 
 
 @media (width <= 576px) {
-  .wrapper > div,
-  .back-header {
-    margin-inline: 16px;
-  }
-
   .back-header {
     margin-top: 0;
   }
