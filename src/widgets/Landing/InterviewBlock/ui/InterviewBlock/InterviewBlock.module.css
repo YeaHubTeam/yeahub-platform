@@ -163,15 +163,14 @@
   }
 
   .wallpaper {
-    width: 540px;
-    height: 625px;
+    width: 100%;
+    height: auto;
   }
 }
 
 @media screen and (width <= 576px) {
   .interview-block {
     margin-top: 32px;
-    padding: 0 16px;
   }
 
   .container {
@@ -182,10 +181,5 @@
     margin-bottom: 24px;
     line-height: 122%;
     font-size: var(--font-size-p-s);
-  }
-
-  .wallpaper {
-    width: 100%;
-    height: auto;
   }
 }
