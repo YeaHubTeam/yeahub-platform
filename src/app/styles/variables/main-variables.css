@@ -10,6 +10,7 @@
 
   /* paddings */
   --container-padding: 0;
+  --container-padding-16: 16px;
   
   /* transitions */
   --drawer-transition-speed: 0.3s;
