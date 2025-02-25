@@ -133,7 +133,7 @@
   .additional {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end; 
     gap: 20px;
     width: 360px;
     height: auto;
