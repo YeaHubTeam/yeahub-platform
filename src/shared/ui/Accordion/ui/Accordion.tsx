@@ -38,7 +38,7 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 			<div className={styles.heading}>
 				<button className={styles.button} onClick={onOpenAccordion}>
 					<Text
-						variant={isMobileS ? 'body2-accent' : 'body5-accent'}
+						variant={isMobileS ? 'body3-accent' : 'body5-accent'}
 						className={classNames(styles.title, { [styles['accordion-opened']]: isOpen })}
 					>
 						{title}

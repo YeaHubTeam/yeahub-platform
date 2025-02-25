@@ -133,6 +133,15 @@
   .popover-open {
     border: 1px solid var(--text-color-link-active);
   }
+
+  .additional {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    gap: 20px;
+    width: 360px;
+    height: auto;
+  }
 }
 
 @media (width <= 767px) {

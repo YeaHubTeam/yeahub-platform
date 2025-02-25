@@ -13,7 +13,7 @@ export const PreviewInactiveQuiz = () => {
 	return (
 		<div className={styles['preparation-empty']}>
 			<Text variant="body4">{t(InterviewQuiz.START_QUIZ_TITLE)}</Text>
-			<Text variant="body2-accent" color="black-600" className={styles['inactive-description']}>
+			<Text variant="body3" color="black-600" className={styles['inactive-description']}>
 				{t(InterviewQuiz.START_QUIZ_DESCRIPTION)}
 			</Text>
 			<img

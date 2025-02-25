@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Arrow from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Icon } from '@/shared/ui/Icon/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
@@ -89,6 +90,8 @@ export const Card = ({
 	const [contentHeight, setContentHeight] = useState(0);
 	const { t } = useTranslation(i18Namespace.translation);
 
+	const { isMobile } = useScreenSize();
+
 	useLayoutEffect(() => {
 		if (expandable) {
 			const changeContentHeight = () => {
@@ -123,7 +126,7 @@ export const Card = ({
 
 	return (
 		<Flex
-			gap="24"
+			gap="16"
 			direction="column"
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
@@ -139,7 +142,7 @@ export const Card = ({
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
 				>
-					{title ? <Text variant="body5-accent">{title}</Text> : null}
+					{title && <Text variant={isMobile ? 'body4' : 'body5'}>{title}</Text>}
 					{actionRoute ? (
 						<Link
 							to={actionRoute}
