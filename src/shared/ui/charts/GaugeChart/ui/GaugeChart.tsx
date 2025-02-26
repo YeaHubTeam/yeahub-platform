@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -19,7 +20,17 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 	const passedQuestionsPercent =
 		percent !== undefined ? percent : Math.round((learned! / total!) * 100);
 
-	const radius = 120;
+	const { isMobile, isMobileS } = useScreenSize();
+
+	let size = 240;
+
+	if (isMobile) {
+		size = 198;
+	} else if (isMobileS) {
+		size = 190;
+	}
+
+	const radius = size / 2;
 	const strokeWidth = 24;
 	const circleRadius = radius - strokeWidth / 2;
 	const circumference = 2 * Math.PI * circleRadius;
@@ -27,7 +38,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 
 	return (
 		<Flex className={styles['gauge-chart-container']} justify="center" align="center">
-			<svg width="241" height="241" viewBox={`0 0 241 241`}>
+			<svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
 				<circle
 					cx={radius}
 					cy={radius}
