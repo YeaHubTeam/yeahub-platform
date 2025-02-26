@@ -1,7 +1,5 @@
 .gauge-chart-container {
   position: relative;
-  width: 241px;
-  height: 241px;
 }
 
 .gauge-chart-container::before {
