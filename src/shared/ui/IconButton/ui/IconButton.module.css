@@ -231,17 +231,17 @@
   }
 }
 
-.icon-button-l {
+.icon-button-large {
   width: 3rem;
   height: 3rem;
 }
 
-.icon-button-m {
+.icon-button-medium {
   width: 2.5rem;
   height: 2.5rem;
 }
 
-.icon-button-s {
+.icon-button-small {
   width: 2.25rem;
   height: 2.25rem;
 }
