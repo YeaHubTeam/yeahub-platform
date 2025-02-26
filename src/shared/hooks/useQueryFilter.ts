@@ -27,11 +27,11 @@ interface FilterFromUser {
 	specialization?: number | number[];
 }
 
-const initialState = '?page=1&status=all';
+const specializationNumber = 11;
+const initialState = `?page=1&status=all&specialization=${specializationNumber}`;
 
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
-
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -40,11 +40,14 @@ export const useQueryFilter = () => {
 		if (!params.get('page') && !params.get('status')) {
 			navigate(initialState);
 		}
-	}, []);
+
+		if (!params.get('specialization')) {
+			navigate(`?page=1&status=all&specialization=${specializationNumber}`);
+		}
+	}, [location.search, navigate]);
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
-
 		return {
 			page: params.get('page'),
 			skills: params.get('skills'),
@@ -86,7 +89,7 @@ export const useQueryFilter = () => {
 					return;
 				}
 
-				if (key === 'status' && newFilters.status === params.get('page')) {
+				if (key === 'status' && newFilters.status === params.get('status')) {
 					params.set(key, 'all');
 					return;
 				}
