@@ -1,3 +1,15 @@
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+
+
+  &.drawer-mobile {
+    top: var(--header-height);
+    padding-bottom: var(--header-height);
+    width: 100%;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

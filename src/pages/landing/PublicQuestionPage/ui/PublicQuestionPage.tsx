@@ -3,12 +3,14 @@ import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
+//import { Popover } from '@/shared/ui/Popover';
 
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
@@ -22,6 +24,7 @@ import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
 const PublicQuestionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId } = useParams<{ questionId: string }>();
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const {
 		data: question,
@@ -50,36 +53,35 @@ const PublicQuestionPage = () => {
 		<Flex gap="20" justify="between" className={styles['back-header']}>
 			<BackButton />
 			<div className={styles['popover-additional']}>
-				<Popover
-					body={() => (
-						<div className={styles['popover-additional-wrapper']}>
-							<Card>
-								<AdditionalInfo
-									className={styles['additional-info-wrapper']}
-									rate={question.rate}
-									keywords={question.keywords}
-									complexity={question.complexity}
-									questionSkills={question.questionSkills}
-									authorFullName={authorFullName}
-								/>
-							</Card>
-						</div>
-					)}
+				<IconButton
+					className={classNames({ active: isOpen })}
+					aria-label="go to additional info"
+					form="square"
+					icon={<PopoverIcon />}
+					size="small"
+					variant="tertiary"
+					onClick={onToggle}
+				/>
+				<Drawer
+					isOpen={isOpen}
+					onClose={onClose}
+					rootName={isMobile ? 'body' : 'mainLayout'}
+					className={classNames(styles.drawer, {
+						[styles['drawer-mobile']]: isMobile,
+					})}
+					hasCloseButton
 				>
-					{({ onToggle, isOpen }) => (
-						<div>
-							<IconButton
-								className={isOpen ? styles.active : ''}
-								aria-label="go to additional info"
-								form="square"
-								icon={<PopoverIcon />}
-								size="small"
-								variant="tertiary"
-								onClick={onToggle}
-							/>
-						</div>
-					)}
-				</Popover>
+					<Card>
+						<AdditionalInfo
+							className={styles['additional-info-wrapper']}
+							rate={question.rate}
+							keywords={question.keywords}
+							complexity={question.complexity}
+							questionSkills={question.questionSkills}
+							authorFullName={authorFullName}
+						/>
+					</Card>
+				</Drawer>
 			</div>
 		</Flex>
 	);
