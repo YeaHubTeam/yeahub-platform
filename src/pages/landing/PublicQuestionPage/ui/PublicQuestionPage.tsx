@@ -10,7 +10,6 @@ import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
-//import { Popover } from '@/shared/ui/Popover';
 
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
@@ -50,7 +49,7 @@ const PublicQuestionPage = () => {
 	}
 
 	const renderAdditionalInfo = (
-		<Flex gap="20" justify="between" className={styles['back-header']}>
+		<Flex gap="20" justify="between" align="center" className={styles['back-header']}>
 			<BackButton />
 			<div className={styles['popover-additional']}>
 				<IconButton
