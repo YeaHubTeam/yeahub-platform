@@ -98,8 +98,8 @@
     flex-direction: column;
     align-self: center;
     margin: 0 29.38px;
-    width: 197.64px;
-    height: 197.64px;
+    width: 198px;
+    height: 198px;
     border: 20px solid var(--background-nav-item);
     line-height: 20px;
   }
@@ -109,8 +109,8 @@
     top: auto;
     right: -20px;
     bottom: -21px;
-    width: 197.64px;
-    height: 164.36px;
+    width: 198px;
+    height: 164px;
   }
 
   .statistics-list {
@@ -136,8 +136,8 @@
   }
 
   .statistics-pie {
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
   }
 
   .progress-icon {
