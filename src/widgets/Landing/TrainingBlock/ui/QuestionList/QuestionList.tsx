@@ -21,7 +21,7 @@ export const QuestionList = () => {
 						<p>
 							{t(Questions.RATE_TITLE_SHORT)}:<span>{training.rating}</span>
 						</p>
-						<p className={styles.difficulty}>
+						<p>
 							{t(Questions.COMPLEXITY_TITLE_SHORT)}:<span>{training.difficulty}</span>
 						</p>
 					</div>
