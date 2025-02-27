@@ -18,7 +18,8 @@
 }
 
 .question-item:nth-child(1),
-.question-item:nth-child(2) {
+.question-item:nth-child(2),
+.question-item:nth-child(3) {
   padding-bottom: 7.5px;
   border-bottom: 0.5px solid var(--text-color-more-lightest);
 }
