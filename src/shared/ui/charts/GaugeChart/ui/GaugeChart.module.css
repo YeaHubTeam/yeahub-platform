@@ -1,7 +1,5 @@
 .gauge-chart-container {
   position: relative;
-  width: 241px;
-  height: 241px;
 }
 
 .gauge-chart-container::before {
@@ -18,8 +16,6 @@
 
 .gauge-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
   text-align: center;
   font-weight: var(--font-weight-600);
 }
