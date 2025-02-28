@@ -1,7 +1,8 @@
-import { Suspense, useEffect, useState, useLayoutEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Drawer } from '@/shared/ui/Drawer';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
@@ -21,20 +22,6 @@ interface MainLayoutProps {
 	sidebarItems: MenuItem[];
 	onlyAdmin?: boolean;
 }
-
-export const AutoScrollToTop = ({ children }: { children: React.ReactNode }) => {
-	const location = useLocation();
-
-	useLayoutEffect(() => {
-		const main = document.querySelector('main');
-		if (main) {
-			main.scrollTo(0, 0);
-		}
-		window.scrollTo(0, 0);
-	}, [location.pathname]);
-
-	return <>{children}</>;
-};
 
 export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const [isOpenSidebarDrawer, setIsOpenSidebarDrawer] = useState(false);
