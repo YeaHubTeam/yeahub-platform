@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
@@ -20,7 +21,9 @@ export const AuthLayout = () => {
 					<div className={styles['logo-wrapper']}>
 						<AppLogo isOpen={false} fill="black" />
 					</div>
-					<Outlet />
+					<AutoScrollToTop>
+						<Outlet />
+					</AutoScrollToTop>
 				</ErrorBoundary>
 			</Suspense>
 		</div>

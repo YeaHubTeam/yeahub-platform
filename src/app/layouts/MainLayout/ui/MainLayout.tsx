@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -63,7 +64,9 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 						<div className={styles.container}>
 							<Suspense fallback={<SkeletonGenerator />}>
 								<Breadcrumbs />
-								<Outlet />
+								<AutoScrollToTop>
+									<Outlet />
+								</AutoScrollToTop>
 							</Suspense>
 						</div>
 					</main>
