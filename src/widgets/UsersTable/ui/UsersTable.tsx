@@ -76,25 +76,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 		return (
 			<Flex gap="4">
-				<Popover
-					menuItems={menuItems}
-					body={
-						<ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
-							{menuItems.map((item, index) => (
-								<button
-									key={index}
-									style={{ padding: '0.5rem', cursor: 'pointer' }}
-									onClick={item.onClick}
-								>
-									<Flex gap="8" align="center">
-										{item.icon}
-										<span>{item.title}</span>
-									</Flex>
-								</button>
-							))}
-						</ul>
-					}
-				>
+				<Popover menuItems={menuItems}>
 					{({ onToggle }: PopoverChildrenProps) => (
 						<IconButton
 							aria-label="go to details"

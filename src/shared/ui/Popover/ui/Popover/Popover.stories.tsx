@@ -14,7 +14,7 @@ import {
 import { Popover } from './Popover';
 
 export default {
-	title: 'Shared/Popover',
+	title: 'shared/Popover',
 	component: Popover,
 	tags: ['autodocs'],
 	parameters: {
