@@ -5,7 +5,7 @@
       "login": "Вход"
     },
     "links": {
-      "questions.list": "Список вопросов"
+      "questions.list": "База вопросов"
     }
   },
   "questions": {

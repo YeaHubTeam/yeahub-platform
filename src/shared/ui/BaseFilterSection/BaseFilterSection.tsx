@@ -47,7 +47,12 @@ export const BaseFilterSection = <T,>({
 							theme="primary"
 							prefix={
 								item.imageSrc ? (
-									<img style={{ width: 20, height: 20 }} src={item.imageSrc} alt={item.title} />
+									<img
+										style={{ width: 20, height: 20 }}
+										src={item.imageSrc}
+										alt={item.title}
+										loading="lazy"
+									/>
 								) : (
 									getDefaultIcon && getDefaultIcon(item)
 								)

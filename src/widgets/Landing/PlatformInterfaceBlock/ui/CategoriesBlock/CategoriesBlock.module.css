@@ -80,6 +80,7 @@
 }
 
 .start-interview-button {
+  height: 48px;
   font-size: var(--font-size-p-l);
 }
 

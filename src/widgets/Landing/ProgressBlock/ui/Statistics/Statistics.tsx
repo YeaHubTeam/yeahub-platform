@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
-import { GaugeChart } from '@/shared/ui/charts';
+import { GaugeChart } from '@/shared/ui/charts/GaugeChart';
 
 import styles from './Statistics.module.css';
 
