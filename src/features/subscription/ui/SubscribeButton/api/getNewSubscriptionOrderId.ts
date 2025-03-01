@@ -5,11 +5,11 @@ import { subscribeApiUrls } from '../model/constants/subscribeButtonConstants';
 
 const getNewSubscriptionOrderId = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getOrderId: build.query<string, string>({
+		getOrderBySubscriptionId: build.query<string, string>({
 			query: (subscribeId) => ({
 				url: route(subscribeApiUrls.getOrderBySubscriptionId, subscribeId || ''),
 			}),
 		}),
 	}),
 });
-export const { useLazyGetOrderIdQuery } = getNewSubscriptionOrderId;
+export const { useLazyGetOrderBySubscriptionIdQuery } = getNewSubscriptionOrderId;

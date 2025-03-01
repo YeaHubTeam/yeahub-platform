@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { getFullProfile } from '@/entities/profile';
 
-import { useLazyGetOrderIdQuery } from '../api/getNewSubscriptionOrderId';
+import { useLazyGetOrderBySubscriptionIdQuery } from '../api/getNewSubscriptionOrderId';
 
 import styles from './SubscribeButton.module.css';
 interface SubscribeButtonProps {
@@ -13,10 +14,12 @@ interface SubscribeButtonProps {
 }
 
 export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
+	const { trigger } = useFormContext();
 	const [orderId, setOrderId] = useState('');
 	const [formEvent, setFormEvent] = useState<EventTarget | null>(null);
 	const profile = useAppSelector(getFullProfile);
-	const [fetchOrderId] = useLazyGetOrderIdQuery();
+	const [fetchOrderId] = useLazyGetOrderBySubscriptionIdQuery();
+
 	useEffect(() => {
 		if (orderId && formEvent) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -28,11 +31,14 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 	}, [formEvent, orderId]);
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		const isValid = await trigger();
 		event.preventDefault();
 		try {
-			const response = await fetchOrderId('3').unwrap();
-			setOrderId(response);
-			setFormEvent(event.target);
+			if (isValid) {
+				const response = await fetchOrderId('3').unwrap();
+				setOrderId(response);
+				setFormEvent(event.target);
+			}
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error('Ошибка при получении orderId', error);
