@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { getFullProfile } from '@/entities/profile';
 
-import { useLazyGetOrderIdQuery } from '../api/subscribeButtonApi';
+import { useLazyGetOrderIdQuery } from '../api/getNewSubscriptionOrderId';
 
 import styles from './SubscribeButton.module.css';
 interface SubscribeButtonProps {
@@ -13,18 +14,27 @@ interface SubscribeButtonProps {
 
 export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 	const [orderId, setOrderId] = useState('');
+	const [formEvent, setFormEvent] = useState<EventTarget | null>(null);
 	const profile = useAppSelector(getFullProfile);
 	const [fetchOrderId] = useLazyGetOrderIdQuery();
-
-	const handleSubmit = async (event: React.FormEvent) => {
-		event.preventDefault();
-		try {
-			const response = await fetchOrderId({ id: '3' }).unwrap();
-			setOrderId(response.orderId);
+	useEffect(() => {
+		if (orderId && formEvent) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
-			window.pay(event.target);
+			window.pay(formEvent);
+			setOrderId('');
+			setFormEvent(null);
+		}
+	}, [formEvent, orderId]);
+
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		try {
+			const response = await fetchOrderId('3').unwrap();
+			setOrderId(response);
+			setFormEvent(event.target);
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.error('Ошибка при получении orderId', error);
 		}
 	};
@@ -79,7 +89,12 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 			<input className="payform-tbank-row" type="hidden" name="reccurentPayment" value="true" />
 			<input className="payform-tbank-row" type="hidden" name="customerKey" value={profile.id} />
 			<input
-				className={`payform-tbank-row payform-tbank-btn ${styles.subscribe} ${className}`}
+				className={classNames(
+					'payform-tbank-row',
+					'payform-tbank-btn',
+					styles.subscribe,
+					className,
+				)}
 				type="submit"
 				value="Подписаться"
 			/>
