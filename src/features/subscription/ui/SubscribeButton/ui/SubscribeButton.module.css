@@ -1,0 +1,10 @@
+.subscribe {
+  width: 274px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-purple-700); 
+  color: var(--color-white-900);
+  cursor: pointer;
+}
+
