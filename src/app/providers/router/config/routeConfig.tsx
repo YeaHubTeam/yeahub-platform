@@ -300,6 +300,21 @@ export const router = createBrowserRouter([
 						],
 					},
 					{
+						path: ROUTES.settings.route,
+						element: <SettingsProfilePage />,
+					},
+					{
+						path: ROUTES.profile.route,
+						element: <ProfilePage />,
+					},
+					{
+						path: ROUTES.admin.profile.edit.page,
+						element: <EditProfilePage />,
+						handle: {
+							crumb: Translation.CRUMBS_PROFILE_EDITING,
+						},
+					},
+					{
 						path: '*',
 						element: <Error404Page />,
 					},

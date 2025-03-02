@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { ROUTES } from '@/shared/config/router/routes';
@@ -9,9 +9,14 @@ import styles from './UserEditButton.module.css';
 
 export const UserEditButton = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const { isMobile, isTablet } = useScreenSize();
 
 	const handleNavigate = () => {
+		if (location.pathname.startsWith('/admin')) {
+			navigate(`${ROUTES.admin.profile.edit.page}#personal-information`);
+			return;
+		}
 		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 

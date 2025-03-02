@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DurationUntilRemoval</key>
+	<integer>7776000</integer>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadCertificateFileName</key>
+			<string>root_ca.crt</string>
+			<key>PayloadContent</key>
+			<data>
+			LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZRENDQWtn
+			Q0NRRHBvbEpzV0cyNzh6QU5CZ2txaGtpRzl3MEJBUXNGQURCeU1R
+			c3dDUVlEVlFRR0V3SkIKY2pFTE1Ba0dBMVVFQ0F3Q1UwZ3hDekFK
+			QmdOVkJBY01Ba2RaTVFzd0NRWURWUVFLREFKQmJqRUxNQWtHQTFV
+			RQpDd3dDUVc0eEVEQU9CZ05WQkFNTUIxSnZiM1FnUTBFeEhUQWJC
+			Z2txaGtpRzl3MEJDUUVXRG1GelpHWkFaMjFoCmFXd3VZMjl0TUI0
+			WERUSTFNREl5TkRBM05ERXdNVm9YRFRJM01USXhOVEEzTkRFd01W
+			b3djakVMTUFrR0ExVUUKQmhNQ1FYSXhDekFKQmdOVkJBZ01BbE5J
+			TVFzd0NRWURWUVFIREFKSFdURUxNQWtHQTFVRUNnd0NRVzR4Q3pB
+			SgpCZ05WQkFzTUFrRnVNUkF3RGdZRFZRUUREQWRTYjI5MElFTkJN
+			UjB3R3dZSktvWklodmNOQVFrQkZnNWhjMlJtClFHZHRZV2xzTG1O
+			dmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FR
+			b0NnZ0VCQUxvb05QM08KNXpDVk91UGtGdjR3akZCTTZDQWNXdXJj
+			K1Q0VzJJckxCMFB3QjRENkl0ZnoyN29TRnlXUVdPR3NYNDlpaTlu
+			QQo2TlcrQW1EUWh2UGpEVXh2L2VCN0tZdUZsSy9ML3B3QVk4Zy9W
+			dHRJVmRMa29FbEIyNTNzM2w4ZUdidVBjQ2RTCmR2Nitkbm41YXVJ
+			T0pHb0J5alRqcFc4REZlWDVONFg0OTAvcmUrSnY4SWJVejBsUDA0
+			VVRXbjlxZmgrcEZWa0MKOHIyajloUWZMUGxNSmRiaFNkSGpLcGFV
+			MlZTeVV3VzVhbmh6bXdWQlJVMktkQ2pXdDRsUExMdkdCb1JkR0ZX
+			cwpoNktRamZ6aDIyTWJrelYvU3VEZlFwN2Q3RXhSL3FzMlNlS0cz
+			Y084QVZvM0NnOGdkcVl2WFhBREZuWVp5NXBYClNmeVBZeHlJVnNF
+			MVBtVUNBd0VBQVRBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUFV
+			S2VaR2cyRXI4ZU9rVW4KbG44ZitLMlNNL0N4eis5NzkxNit5Nzc4
+			Mkh4NXF6MXdTRGYxU2dXd3ZtMHUzK1dCVU12Qkt5cGZTQWVqS2h5
+			bgpqa3N6SDZKbW10dnBqdTd0aVBsUURQUmF3SXcrMXk3Y1JXWWJB
+			QXI2dkYrSFlaQUVuTDBHbDdnNTNQdEdCZmVFCjlPcW14V0FYQjVR
+			VEpVaUM0MXZBRDUvY1M5T0ZnTDBXVFNXS3l3bGR5VllhdnRiQ3ln
+			ZzdCSmxsTE5YeTR6OTcKTFd6eTJodEJrUWZ3UUpXaHd5NnlLM0Ns
+			ZENkQjdZMlIySThPMG0rNWhlRURRMDdabFQxMTRqY2M3dkNMVTkr
+			NApVV2kyeWgwY0hEdGN5L3l0MzAzWjlGS0ZOblpHdFJoYWJGcXlO
+			R1l4ZTdPY3JTUjJNRE1waU1lOUVjZDVmbkFKCi8rVEc3UT09Ci0t
+			LS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+			</data>
+			<key>PayloadDescription</key>
+			<string>Adds a CA root certificate</string>
+			<key>PayloadDisplayName</key>
+			<string>Root CA</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.security.root.E987F246-BFC8-4E8E-8A00-291B88F9E3DE</string>
+			<key>PayloadType</key>
+			<string>com.apple.security.root</string>
+			<key>PayloadUUID</key>
+			<string>E987F246-BFC8-4E8E-8A00-291B88F9E3DE</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDisplayName</key>
+	<string>Мой ROOT CA</string>
+	<key>PayloadIdentifier</key>
+	<string>MacBook-Air-Anushavan.967F19C6-05BD-48B5-88DD-7B70BC0F2FAC</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>A816BDE9-0E63-4FFD-8DA0-A0AB7CF1D617</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

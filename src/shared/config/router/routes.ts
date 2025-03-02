@@ -80,6 +80,14 @@ export const ROUTES = {
 				page: '/admin/collections/:collectionId/edit',
 			},
 		},
+		profile: {
+			route: 'profile',
+			page: '/admin/profile',
+			edit: {
+				route: 'edit',
+				page: '/admin/profile/edit',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',

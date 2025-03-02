@@ -1,0 +1,10 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+subjectAltName=@alt_names
+[alt_names]
+DNS.1=localhost
+DNS.2=backend
+DNS.3=dev.local
+DNS.4=backend.local
+IP.1=127.0.0.1
+IP.2=192.168.0.10
