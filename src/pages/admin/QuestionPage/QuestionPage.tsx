@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
@@ -64,7 +64,7 @@ export const QuestionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={() => (
+				body={
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
@@ -77,20 +77,18 @@ export const QuestionPage = () => {
 							/>
 						</Card>
 					</div>
-				)}
+				}
 			>
 				{({ onToggle, isOpen }) => (
-					<div>
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to additional info"
-							form="square"
-							icon={<PopoverIcon />}
-							size="small"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					</div>
+					<IconButton
+						className={isOpen ? styles.active : ''}
+						aria-label="go to additional info"
+						form="square"
+						icon={<PopoverIcon />}
+						size="small"
+						variant="tertiary"
+						onClick={onToggle}
+					/>
 				)}
 			</Popover>
 		</div>

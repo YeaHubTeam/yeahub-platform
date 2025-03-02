@@ -14,6 +14,7 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(
 			destructive = false,
 			className,
 			icon,
+			onClick,
 			...otherProps
 		},
 		ref,
@@ -28,6 +29,7 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(
 					destructive ? styles[`icon-button-destructive`] : styles[`icon-button-${variant}`],
 					className,
 				)}
+				onClick={onClick}
 				{...otherProps}
 			>
 				{icon}
