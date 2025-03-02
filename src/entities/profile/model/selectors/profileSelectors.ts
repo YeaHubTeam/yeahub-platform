@@ -22,3 +22,9 @@ export const getIsEmptySpecialization = (state: State) => {
 export const getIsEmailVerified = (state: State) => {
 	return state.profile.fullProfile?.isEmailVerified ?? false;
 };
+
+export const getHasPremiumAccess = (state: State) => {
+	return (
+		state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false
+	);
+};

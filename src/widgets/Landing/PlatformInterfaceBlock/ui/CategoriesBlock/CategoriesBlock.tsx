@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Landing, Questions } from '@/shared/config/i18n/i18nTranslations';
@@ -17,6 +17,7 @@ import styles from './CategoriesBlock.module.css';
 
 export const CategoriesBlock = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const { t } = useTranslation([
 		i18Namespace.landing,
 		i18Namespace.interviewQuiz,
@@ -27,7 +28,7 @@ export const CategoriesBlock = () => {
 		const path = getFromLS(LS_ACCESS_TOKEN_KEY)
 			? ROUTES.interview.quiz.page
 			: ROUTES.auth.login.page;
-		navigate(path);
+		navigate(path, { state: { from: location.pathname } });
 	};
 
 	return (
