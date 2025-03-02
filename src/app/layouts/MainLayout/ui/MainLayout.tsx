@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
