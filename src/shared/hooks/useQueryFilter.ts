@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import {
+	DEFAULT_PAGE,
+	DEFAULT_SPECIALIZATION_NUMBER,
+	DEFAULT_STATUS,
+} from '../constants/queryConstants';
+
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
 interface FilterFromURL {
@@ -27,8 +33,7 @@ interface FilterFromUser {
 	specialization?: number | number[];
 }
 
-const specializationNumber = 11;
-const initialState = `?page=1&status=all&specialization=${specializationNumber}`;
+const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
@@ -42,7 +47,7 @@ export const useQueryFilter = () => {
 		}
 
 		if (!params.get('specialization')) {
-			navigate(`?page=1&status=all&specialization=${specializationNumber}`);
+			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
 		}
 	}, [location.search, navigate]);
 
@@ -85,12 +90,12 @@ export const useQueryFilter = () => {
 
 			if (curFilter !== undefined && curFilter !== null) {
 				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, '1');
+					params.set(key, DEFAULT_PAGE);
 					return;
 				}
 
 				if (key === 'status' && newFilters.status === params.get('status')) {
-					params.set(key, 'all');
+					params.set(key, DEFAULT_STATUS);
 					return;
 				}
 

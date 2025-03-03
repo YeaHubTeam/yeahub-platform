@@ -1,6 +1,8 @@
 import classNames from 'classnames';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
@@ -12,29 +14,47 @@ import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery } from '@/entities/skill';
+import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
-import { useTitleFromQuery } from '../../hooks/useTitleFromQuery';
+import {
+	getSkillTitles,
+	getSpecializationTitle,
+	transformSpecializationToGetSkills,
+} from '../../model/helpers/getTitleFromQuery';
 import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
 import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
 import styles from './PublicQuestionsPage.module.css';
 import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 
-const MAX_LIMIT_CATEGORIES = 5;
-
 const PublicQuestionsPage = () => {
+	const { isOpen, onToggle, onClose } = useModal();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
-	const { isOpen, onToggle, onClose } = useModal();
-
 	const { status, ...getParams } = filter;
-	const additionalTitle = useTitleFromQuery();
 
-	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetPublicQuestionsListQuery(
+	const { data: specializations } = useGetSpecializationsListQuery({});
+
+	const preparedSpecializationsIds = useMemo(() => {
+		return transformSpecializationToGetSkills(filter.specialization);
+	}, [filter.specialization]);
+
+	const { data: skills, isLoading: isLoadingCategories } = useGetSkillsListQuery(
+		{
+			limit: MAX_LIMIT_CATEGORIES,
+			specializations: preparedSpecializationsIds,
+		},
+		{ skip: !filter.specialization },
+	);
+
+	const specializationName = getSpecializationTitle(filter.specialization, specializations?.data);
+	const skillNames = getSkillTitles(skills?.data, filter.skills);
+	const additionalTitle = skillNames || specializationName || '';
+
+	const { data: questions, isLoading: isLoadingQuestions } = useGetPublicQuestionsListQuery(
 		{
 			...getParams,
 			keywords: keywords ? [keywords] : undefined,
@@ -44,8 +64,16 @@ const PublicQuestionsPage = () => {
 		},
 	);
 
+	if (isLoadingQuestions || isLoadingCategories) {
+		return <PublicQuestionsPageSkeleton />;
+	}
+
+	if (!questions) {
+		return null;
+	}
+
 	const onChangeSpecialization = (value: number | undefined) => {
-		handleFilterChange({ specialization: value, skills: undefined });
+		handleFilterChange({ specialization: value ? [value] : undefined, skills: undefined });
 	};
 
 	const onChangeSearchParams = (value: string) => {
@@ -86,14 +114,6 @@ const PublicQuestionsPage = () => {
 		/>
 	);
 
-	if (isLoadingAllQuestions || isLoadingCategories) {
-		return <PublicQuestionsPageSkeleton />;
-	}
-
-	if (!allQuestions) {
-		return null;
-	}
-
 	return (
 		<Flex gap="20" align="start" className={styles.wrapper}>
 			<div className={styles['filters-mobile']}>
@@ -119,19 +139,15 @@ const PublicQuestionsPage = () => {
 				)}
 			</div>
 			<Card className={styles.main}>
-				<FullQuestionsList
-					questions={allQuestions.data}
-					isPublic
-					additionalTitle={additionalTitle}
-				/>
-				{allQuestions.total > allQuestions.limit && (
+				<FullQuestionsList questions={questions.data} isPublic additionalTitle={additionalTitle} />
+				{questions.total > questions.limit && (
 					<PublicQuestionPagePagination
-						questionsResponse={allQuestions}
+						questionsResponse={questions}
 						currentPage={filter.page || 1}
 						onPageChange={onPageChange}
 					/>
 				)}
-				{allQuestions.data.length === 0 && (
+				{questions.data.length === 0 && (
 					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
 				)}
 			</Card>
