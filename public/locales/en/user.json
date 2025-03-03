@@ -32,8 +32,8 @@
     "role": { "title": "User Roles" },
     "email": { "title": "Is Email Confirmed" }
   },
-  "edit":{
-    "success":"User updated successfully",
+  "edit": {
+    "success": "User updated successfully",
     "error": "Failed to update user"
   }
 }

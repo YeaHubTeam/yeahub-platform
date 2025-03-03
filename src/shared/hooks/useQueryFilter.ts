@@ -49,7 +49,11 @@ export const useQueryFilter = () => {
 		if (!params.get('specialization')) {
 			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
 		}
-	}, [location.search, navigate]);
+	}, []);
+
+	useEffect(() => {
+		setFilters(parseFilters(getQueryParams()));
+	}, [location.search]);
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
@@ -111,10 +115,6 @@ export const useQueryFilter = () => {
 
 		navigate(`?${params.toString()}`);
 	};
-
-	useEffect(() => {
-		setFilters(parseFilters(getQueryParams()));
-	}, [location.search]);
 
 	const handleFilterChange = (newFilters: FilterFromUser) => {
 		setFilters((prevFilters) => {

@@ -60,7 +60,7 @@ const PublicQuestionsPage = () => {
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: status !== 'all',
+			skip: status !== 'all' || !filter.specialization,
 		},
 	);
 
