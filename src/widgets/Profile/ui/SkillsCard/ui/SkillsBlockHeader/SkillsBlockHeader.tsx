@@ -15,10 +15,6 @@ export const SkillsBlockHeader = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const handleNavigate = () => {
-		if (location.pathname.startsWith('/admin')) {
-			navigate(`${ROUTES.admin.profile.edit.page}#skills`);
-			return;
-		}
 		navigate(`${ROUTES.profile.edit.page}#skills`);
 	};
 	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);

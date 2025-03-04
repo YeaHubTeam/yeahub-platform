@@ -26,13 +26,13 @@ export const UserPreferences = () => {
 		{
 			title: i18n.t(Translation.PROFILE),
 			onClick: () => {
-				navigate(ROUTES.profile.route);
+				navigate(`${ROUTES.profile.page}`);
 			},
 		},
 		{
 			title: i18n.t(Translation.HEADER_MENU_CHANGE_PASSWORD),
 			onClick: () => {
-				navigate(`${ROUTES.settings.route}#change-password`);
+				navigate(`${ROUTES.settings.page}#change-password`);
 			},
 		},
 		{

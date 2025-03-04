@@ -16,10 +16,6 @@ export const InfoBlockHeader = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const handleNavigate = () => {
-		if (location.pathname.startsWith('/admin')) {
-			navigate(`${ROUTES.admin.profile.edit.page}#about-me`);
-			return;
-		}
 		navigate(`${ROUTES.profile.edit.page}#about-me`);
 	};
 
