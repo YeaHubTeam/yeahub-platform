@@ -30,7 +30,9 @@ export const ChooseSpecialization = ({
 }: ChooseSpecializationProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT);
-	const { data: specialization } = useGetSpecializationsListQuery({});
+	const { data: specialization } = useGetSpecializationsListQuery({
+		limit,
+	});
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
 
@@ -52,11 +54,11 @@ export const ChooseSpecialization = ({
 
 	const prepareData = useMemo(
 		() =>
-			specialization?.data?.slice(0, limit).map((spec) => ({
+			specialization?.data.map((spec) => ({
 				...spec,
 				active: selectedSpecialization === spec.id,
 			})),
-		[limit, specialization, selectedSpecialization],
+		[specialization, selectedSpecialization],
 	);
 
 	if (!prepareData) return null;

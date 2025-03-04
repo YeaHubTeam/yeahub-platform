@@ -14,13 +14,12 @@ import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery } from '@/entities/skill';
-import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import {
 	getSkillTitles,
-	getSpecializationTitle,
+	getSpecializationTitleFromSkills,
 	transformSpecializationToGetSkills,
 } from '../../model/helpers/getTitleFromQuery';
 import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
@@ -36,8 +35,6 @@ const PublicQuestionsPage = () => {
 	const keywords = queryParams.get('keywords');
 	const { status, ...getParams } = filter;
 
-	const { data: specializations } = useGetSpecializationsListQuery({});
-
 	const preparedSpecializationsIds = useMemo(() => {
 		return transformSpecializationToGetSkills(filter.specialization);
 	}, [filter.specialization]);
@@ -50,9 +47,10 @@ const PublicQuestionsPage = () => {
 		{ skip: !filter.specialization },
 	);
 
-	const specializationName = getSpecializationTitle(filter.specialization, specializations?.data);
+	const specializationName = getSpecializationTitleFromSkills(skills?.data, filter.specialization);
+
 	const skillNames = getSkillTitles(skills?.data, filter.skills);
-	const additionalTitle = skillNames || specializationName || '';
+	const additionalTitle = specializationName || skillNames || '';
 
 	const { data: questions, isLoading: isLoadingQuestions } = useGetPublicQuestionsListQuery(
 		{
