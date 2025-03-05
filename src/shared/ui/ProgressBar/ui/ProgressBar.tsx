@@ -27,7 +27,7 @@ export const ProgressBar = ({
 				max={totalCount}
 			/>
 			{label && (
-				<Text variant="body1-accent" className={styles[`label-${variant}`]}>
+				<Text variant="body2-accent" color="black-500" className={styles[`label-${variant}`]}>
 					{label}
 				</Text>
 			)}

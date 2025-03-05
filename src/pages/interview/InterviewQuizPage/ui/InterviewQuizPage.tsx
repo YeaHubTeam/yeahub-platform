@@ -80,7 +80,7 @@ const InterviewQuizPage = () => {
 	};
 
 	return (
-		<Flex direction="column" gap="24" className={styles.container}>
+		<Flex direction="column" gap="20" className={styles.container}>
 			<Card withOutsideShadow>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t(InterviewQuiz.TITLE)}</p>
@@ -95,7 +95,7 @@ const InterviewQuizPage = () => {
 				</div>
 			</Card>
 			<Card withOutsideShadow>
-				<Flex direction="column" gap="24" className={styles.question}>
+				<Flex direction="column" gap="20" className={styles.question}>
 					<QuestionNavPanel
 						goToNextSlide={onRightSlide}
 						goToPrevSlide={onPrevSlide}

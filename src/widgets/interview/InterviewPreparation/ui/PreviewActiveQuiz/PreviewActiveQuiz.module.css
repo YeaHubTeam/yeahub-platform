@@ -15,11 +15,13 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <= 767px) {
   .preparation {
     padding: 0;
   }
-	
+}
+
+@media (width <= 480px) {	
   .image-wrapper {
     height: 170px;
     border-radius: 16px;

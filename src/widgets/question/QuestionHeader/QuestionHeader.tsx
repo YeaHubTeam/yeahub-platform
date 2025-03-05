@@ -41,13 +41,15 @@ export const QuestionHeader = ({ title, description, status, isPublic }: Questio
 			{isMobile ? (
 				<div className={styles['question-header-wrapper']}>
 					<div className={styles['title-wrapper']}>
-						<Text className={styles.title} variant="body5">
+						<Text className={styles.title} variant="body6">
 							{title}
 						</Text>
 						{isPublic && <StatusLabel />}
 					</div>
 					<div className={styles['description-wrapper']}>
-						<Text variant="body3">{description}</Text>
+						<Text variant="body3-accent" color="black-700">
+							{description}
+						</Text>
 					</div>
 				</div>
 			) : (

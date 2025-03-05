@@ -1,3 +1,4 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -7,6 +8,8 @@ import { InterviewHistoryListProps } from './PreviewPassedQuizzesList';
 import styles from './PreviewPassedQuizzesList.module.css';
 
 export const PreviewPassedQuizzesListSkeleton = ({ className }: InterviewHistoryListProps) => {
+	const { isMobile } = useScreenSize();
+
 	return (
 		<CardSkeleton
 			className={className}
@@ -14,6 +17,7 @@ export const PreviewPassedQuizzesListSkeleton = ({ className }: InterviewHistory
 			actionTitle="actionTitle"
 			title="title"
 			withShadow
+			isTitleCenter={isMobile}
 		>
 			<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
 				{[...Array(3)].map((_, index) => (
