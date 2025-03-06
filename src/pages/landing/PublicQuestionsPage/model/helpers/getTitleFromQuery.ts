@@ -1,4 +1,3 @@
-// eslint-disable @conarti/feature-sliced/layers-slices
 import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
 
 import { Skill } from '@/entities/skill';
@@ -11,11 +10,7 @@ export const transformSpecializationToGetSkills = (specialization?: number | num
 	if (!specialization || (Array.isArray(specialization) && specialization.length === 0))
 		return [DEFAULT_SPECIALIZATION_NUMBER];
 
-	if (Array.isArray(specialization)) {
-		return specialization;
-	}
-
-	return [specialization];
+	return Array.isArray(specialization) ? specialization : [specialization];
 };
 
 export const getSkillTitles = (skills: Skill[] = [], filterSkills: number[] | undefined) => {
@@ -29,9 +24,7 @@ export const getSkillTitles = (skills: Skill[] = [], filterSkills: number[] | un
  * get the name of the specialization from skills to display as an additional title
  */
 
-export const getSpecializationId = (
-	specialization: number | number[] = DEFAULT_SPECIALIZATION_NUMBER,
-) => {
+const getSpecializationId = (specialization: number | number[] = DEFAULT_SPECIALIZATION_NUMBER) => {
 	return Array.isArray(specialization) ? specialization[0] : specialization;
 };
 
@@ -40,8 +33,6 @@ export const getSpecializationTitleFromSkills = (
 	filterSpecialization?: number | number[],
 ): string | undefined => {
 	return skills[0]?.specializations?.find(
-		(spec) =>
-			spec.id ===
-			(Array.isArray(filterSpecialization) ? filterSpecialization[0] : filterSpecialization),
+		(spec) => spec.id === getSpecializationId(filterSpecialization),
 	)?.title;
 };
