@@ -94,12 +94,7 @@ const PublicQuestionPage = () => {
 					[styles.tablet]: isTablet,
 				})}
 			>
-				<QuestionHeader
-					description={question.description}
-					status={question.status}
-					title={question.title}
-					isPublic
-				/>
+				<QuestionHeader description={question.description} title={question.title} />
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		</>
@@ -114,12 +109,7 @@ const PublicQuestionPage = () => {
 					</div>
 					<div className={styles.content}>
 						<div className={styles.main}>
-							<QuestionHeader
-								description={question.description}
-								status={question.status}
-								title={question.title}
-								isPublic
-							/>
+							<QuestionHeader description={question.description} title={question.title} />
 							<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
 						</div>
 						<div className={styles.additional}>
