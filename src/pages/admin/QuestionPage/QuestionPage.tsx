@@ -96,11 +96,7 @@ export const QuestionPage = () => {
 
 	const renderHeaderAndActions = () => (
 		<>
-			<QuestionHeader
-				description={question.description}
-				status={question.status}
-				title={question.title}
-			/>
+			<QuestionHeader description={question.description} title={question.title} />
 			<QuestionActions
 				profileId={profileId}
 				questionId={questionId || ''}
