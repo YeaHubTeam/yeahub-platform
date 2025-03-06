@@ -5,6 +5,7 @@ import { InterviewHistory, Profile } from '@/shared/config/i18n/i18nTranslations
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -31,6 +32,8 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 		uniqueKey: 'interviewPreviewHistory',
 	});
 
+	const { isMobile } = useScreenSize();
+
 	const isEmptyData = isSuccess && data.data.length === 0;
 
 	const actionRoute = isVerified ? ROUTES.interview.history.page : EMAIL_VERIFY_SETTINGS_TAB;
@@ -46,6 +49,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			title={t(InterviewHistory.TITLE)}
 			withShadow
 			actionDisabled={isEmptyData}
+			isTitleCenter={isMobile}
 		>
 			{!isVerified && (
 				<Text variant="body4" color="black-700" className={styles['no-history']}>

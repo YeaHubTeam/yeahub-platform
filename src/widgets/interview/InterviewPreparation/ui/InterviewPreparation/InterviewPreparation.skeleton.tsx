@@ -15,6 +15,7 @@ export const InterviewPreparationSkeleton = ({ className }: InterviewPreparation
 			actionTitle="actionTitle"
 			actionRoute="actionRoute"
 			withShadow={!isMobile}
+			isTitleCenter={isMobile}
 		>
 			<PreviewActiveQuizSkeleton />
 		</CardSkeleton>

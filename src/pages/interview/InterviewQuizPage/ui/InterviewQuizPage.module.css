@@ -84,9 +84,9 @@
   }
 }
 
-@media (width <= 768px) {
+@media (width <= 767px) {
   .container > div {
-    padding: 16px;
+    padding: 20px 10px;
   }
 
   .question {

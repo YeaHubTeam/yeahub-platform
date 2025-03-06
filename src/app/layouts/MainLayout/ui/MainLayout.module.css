@@ -50,3 +50,9 @@
     flex-direction: column;
   }
 }
+
+@media (width <= 767px) { 
+  .main {
+    padding: 20px 10px;
+  }
+}

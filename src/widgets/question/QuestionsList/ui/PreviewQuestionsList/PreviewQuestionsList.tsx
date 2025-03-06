@@ -4,6 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -30,6 +31,8 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 		specialization: specializationId,
 	});
 
+	const { isMobile } = useScreenSize();
+
 	const questions = response?.data ?? [];
 
 	const isEmptyData = isSuccess && questions.length === 0;
@@ -49,6 +52,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 			actionTitle={t(Questions.PREVIEW_LINK)}
 			actionRoute={ROUTES.interview.questions.page}
 			withShadow
+			isTitleCenter={isMobile}
 		>
 			<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 				{questions.map((question) => (
