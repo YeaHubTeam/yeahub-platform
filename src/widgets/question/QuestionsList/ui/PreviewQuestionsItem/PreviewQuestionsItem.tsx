@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
@@ -20,13 +21,13 @@ interface PreviewQuestionsItemProps {
 
 export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) => {
 	const { id, imageSrc, title, rate, complexity = 0 } = question;
-
+	const { isMobileS } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
 		<li className={styles.item}>
 			<Link to={route(ROUTES.interview.questions.detail.page, id)} className={styles.link}>
-				<ImageWithWrapper src={imageSrc} className={styles.image} />
+				{!isMobileS && <ImageWithWrapper src={imageSrc} className={styles.image} />}
 				<Flex direction="column" gap="8">
 					<Text variant="body3-accent" maxRows={1} className={styles.title}>
 						{title}

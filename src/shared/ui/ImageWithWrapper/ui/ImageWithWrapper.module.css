@@ -29,6 +29,7 @@
 
 @media (width <=480px) {
   .wrapper {
-    display: none;
+    width: 268px;
+    height: 193px;
   }
 }
