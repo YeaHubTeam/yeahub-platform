@@ -64,7 +64,7 @@ const PublicQuestionPage = () => {
 				<Drawer
 					isOpen={isOpen}
 					onClose={onClose}
-					rootName={isMobile ? 'body' : 'mainLayout'}
+					rootName="body"
 					className={classNames(styles.drawer, {
 						[styles['drawer-mobile']]: isMobile,
 					})}
