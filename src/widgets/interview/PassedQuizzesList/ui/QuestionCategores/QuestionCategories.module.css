@@ -5,7 +5,7 @@
 
 @media (width < 768px) {
   .list {
-    margin-bottom: 44px;
+    margin-bottom: 0;
     padding-bottom: 9px;
     border-bottom: 1px solid #BABABA;
   }
