@@ -27,3 +27,11 @@
   width: 100%;
   height: 100%;
 }
+
+@media (width <= 480px) {
+  .inner-circle-container {
+    margin-right: 16px;
+    width: 197px;
+    height: 197px;
+  }
+}

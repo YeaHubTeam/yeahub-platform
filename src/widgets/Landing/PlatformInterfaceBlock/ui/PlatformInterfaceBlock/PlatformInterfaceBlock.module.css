@@ -80,7 +80,7 @@
 
 @media screen and (width <= 767px) {
   .platform-interface-block {
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     padding: 24px 16px;
     border-radius: 12px;
   }

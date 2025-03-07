@@ -15,9 +15,10 @@ import styles from './PieSegmentList.module.css';
 interface PieSegmentListProps {
 	segments: PieSegment[];
 	totalAttempt: number;
+	isMobileS?: boolean;
 }
 
-export const PieSegmentList = ({ segments, totalAttempt }: PieSegmentListProps) => {
+export const PieSegmentList = ({ segments, totalAttempt, isMobileS }: PieSegmentListProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const strokeWidth = 10;
 	const gapAngle = 10;
@@ -74,7 +75,11 @@ export const PieSegmentList = ({ segments, totalAttempt }: PieSegmentListProps) 
 						);
 					})}
 				</svg>
-				<Text className={styles['pie-chart-label']} color="black-700" variant="body4">
+				<Text
+					className={styles['pie-chart-label']}
+					color="black-700"
+					variant={`${!isMobileS ? 'body4' : 'body2-strong'}`}
+				>
 					{t(Translation.TOTAL_QUESTIONS)}
 					<br />
 					{totalAttempt}

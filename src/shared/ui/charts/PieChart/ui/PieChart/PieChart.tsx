@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { AttemptInfo } from '@/shared/ui/PercentsInfoPie/model/types/types';
 
@@ -13,6 +14,7 @@ interface PieChartProps {
 }
 
 export const PieChart = ({ totalAttempt, pieData }: PieChartProps) => {
+	const { isMobileS } = useScreenSize();
 	const totalValue = pieData.reduce((sum, item) => sum + item.value, 0);
 
 	const segments: PieSegment[] = pieData.map((item) => {
@@ -27,8 +29,8 @@ export const PieChart = ({ totalAttempt, pieData }: PieChartProps) => {
 	});
 
 	return (
-		<Flex justify="between" align="center" gap="48">
-			<PieSegmentList segments={segments} totalAttempt={totalAttempt} />
+		<Flex justify="between" align="center">
+			<PieSegmentList segments={segments} totalAttempt={totalAttempt} isMobileS={isMobileS} />
 			<LegendList segments={segments} />
 		</Flex>
 	);

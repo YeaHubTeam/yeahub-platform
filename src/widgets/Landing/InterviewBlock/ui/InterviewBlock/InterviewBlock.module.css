@@ -3,9 +3,9 @@
 }
 
 .article-description {
-  margin-bottom: 41px;
+  margin-bottom: 24px;
   width: 86%;
-  line-height: 118%;
+  line-height: 130%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 
@@ -79,7 +79,7 @@
 
 @media screen and (width <= 992px) {
   .interview-block {
-    margin-bottom: 87px;
+    margin-bottom: 80px;
   }
 
   .container {
@@ -87,7 +87,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 24px;
+    gap: 16px;
   }
 
   .left-block {
@@ -104,7 +104,7 @@
   }
 
   .article-description {
-    margin-bottom: 39px;
+    margin-bottom: 20px;
     width: 100%;
     text-align: center;
     line-height: 20px;
@@ -171,10 +171,11 @@
 @media screen and (width <= 576px) {
   .interview-block {
     margin-top: 32px;
+    margin-bottom: 40px;
   }
 
   .container {
-    gap: 42px;
+    gap: 24px;
   }
 
   .article-description {
