@@ -116,7 +116,7 @@
 .popover-additional {
   position: absolute;
   top: 16px;
-  right: 20px;
+  right: 16px;
   display: none;
   justify-content: center;
   align-items: center;
@@ -147,6 +147,13 @@
     gap: 20px;
     width: 360px;
     height: auto;
+  }
+}
+
+@media (width <= 767px) {
+  .popover-additional {
+    top: 20px;
+    right: 10px;
   }
 }
  

@@ -31,7 +31,7 @@ export const ResetQuestionStudyProgressButton = ({
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useTranslation(i18Namespace.questions);
 
-	const handleClick = async () => {
+	const handleResetQuestion = async () => {
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
 			onSuccess?.();
@@ -48,7 +48,7 @@ export const ResetQuestionStudyProgressButton = ({
 			className={isPopover ? styles.button : ''}
 			preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
 			variant={variant}
-			onClick={handleClick}
+			onClick={handleResetQuestion}
 			disabled={isLoading || isDisabled}
 		>
 			{t(Questions.REPEAT)}

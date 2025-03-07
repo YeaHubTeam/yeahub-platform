@@ -11,12 +11,16 @@
   gap: 8px;
 }
 
-@media (width <= 768px) {
+@media (width <= 767px) {
   .item:not(:nth-last-child(2)) {
     display: none;
   }
 
   .item:nth-last-child(2) .icon {
     transform: rotate(180deg);
+  }
+
+  .list {
+    margin-bottom: 20px;
   }
 }
