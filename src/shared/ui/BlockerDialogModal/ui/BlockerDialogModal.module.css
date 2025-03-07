@@ -1,17 +1,12 @@
 .content {
   padding: 0;
-  padding-top: 40px;
   border-radius: 20px;
   color: var(--color-black-900);
 }
 
 .title,
 .description {
-  padding: 0 40px;
-}
-
-.description {
-  margin-top: 19px;
+  padding: 0;
 }
 
 .buttons-wrapper {

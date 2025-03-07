@@ -7,20 +7,20 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 
-import { Specialization } from '@/entities/specialization';
+import { Collection } from '@/entities/collection';
 
-import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationApi';
+import { useDeleteCollectionMutation } from '../../api/deleteCollectionApi';
 
-interface DeleteSpecializationButtonProps {
-	specializationId: Specialization['id'];
+interface DeleteCollectionButtonProps {
+	collectionId: Collection['id'];
 	isDetailPage?: boolean;
 }
 
-export const DeleteSpecializationButton = ({
-	specializationId,
+export const DeleteCollectionButton = ({
+	collectionId,
 	isDetailPage = false,
-}: DeleteSpecializationButtonProps) => {
-	const [deleteSpecializationMutation] = useDeleteSpecializationMutation();
+}: DeleteCollectionButtonProps) => {
+	const [deleteCollectionMutation] = useDeleteCollectionMutation();
 
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
@@ -33,11 +33,11 @@ export const DeleteSpecializationButton = ({
 		setIsModalOpen(false);
 	};
 
-	const onDeleteSpecialization = async () => {
+	const onDeleteCollection = async () => {
 		try {
-			await deleteSpecializationMutation(specializationId);
-			handleCloseModal();
+			await deleteCollectionMutation(collectionId);
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.error(error);
 		}
 	};
@@ -46,13 +46,8 @@ export const DeleteSpecializationButton = ({
 		<>
 			<Button
 				aria-label="Large"
-				style={{
-					width: 'auto',
-					justifyContent: isDetailPage ? 'center' : 'flex-start',
-				}}
-				preffix={
-					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
-				}
+				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
+				preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
 			>
@@ -62,7 +57,7 @@ export const DeleteSpecializationButton = ({
 				<BlockerDialog
 					isOpen={isDeleteModalOpen}
 					onClose={handleCloseModal}
-					onOk={onDeleteSpecialization}
+					onOk={onDeleteCollection}
 					onCancel={() => setIsModalOpen(false)}
 					message={Translation.MODAL_DELETE_TITLE}
 				/>
