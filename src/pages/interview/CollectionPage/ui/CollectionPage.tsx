@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -9,6 +10,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
+import { getProfileId } from '@/entities/profile';
 
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
 
@@ -21,6 +23,7 @@ export const CollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const { isMobile, isTablet } = useScreenSize();
+	const profileId = useAppSelector(getProfileId);
 
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;
@@ -70,7 +73,7 @@ export const CollectionPage = () => {
 			/>
 			<Card>
 				<Flex justify="center" align="center">
-					<TrainCollectionButton collectionId={collectionId} isDisabled={false} />
+					<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
 				</Flex>
 			</Card>
 		</>
