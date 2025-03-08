@@ -73,11 +73,7 @@ export const CollectionPage = () => {
 			/>
 			<Card>
 				<Flex justify="center" align="center">
-					<TrainCollectionButton
-						collectionId={collectionId}
-						isDisabled={false}
-						profileId={profileId}
-					/>
+					<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
 				</Flex>
 			</Card>
 		</>
