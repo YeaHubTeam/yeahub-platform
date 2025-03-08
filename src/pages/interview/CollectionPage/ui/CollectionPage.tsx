@@ -36,7 +36,7 @@ export const CollectionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={() => (
+				body={
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
@@ -45,7 +45,7 @@ export const CollectionPage = () => {
 							/>
 						</Card>
 					</div>
-				)}
+				}
 			>
 				{({ onToggle, isOpen }) => (
 					<div>
@@ -54,7 +54,7 @@ export const CollectionPage = () => {
 							aria-label="go to additional info"
 							form="square"
 							icon={<PopoverIcon />}
-							size="S"
+							size="small"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

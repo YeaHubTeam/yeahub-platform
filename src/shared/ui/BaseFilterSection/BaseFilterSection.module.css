@@ -1,12 +1,8 @@
-.chip {
-  span {
+.chip span {
   padding: 0;
-
-  & span {
-    line-height: 120%;
-    font-weight: var(--font-weight-500);
-    font-size: var(--font-size-p-m);
-  }
+  line-height: 120%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
 }
 
 @media (width <= 480px) {
