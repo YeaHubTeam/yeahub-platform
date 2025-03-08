@@ -4,6 +4,13 @@
   min-height: 100vh;
 }
 
+.header-background {
+  width: 100vw;
+  height: 77px;
+  overflow: hidden;
+  background-color: var(--color-white-900);
+}
+
 .container {
   flex: 1 1 auto;
   margin: 0 auto;
