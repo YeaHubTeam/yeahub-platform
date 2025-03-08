@@ -2,13 +2,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0 0;
-  padding: 10px 0;
+  margin-bottom: 55px;
+  padding-top: 16px;
+  box-sizing: border-box;
   width: 100%;
 }
 
 .links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   margin-left: 42px;
+}
+
+.first-link {
+  display: inline-flex;
+  align-items: start;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background-color: var(--color-black-30);	
+}
+
+.first-link > * {
+  color: var(--color-purple-800);
 }
 
 .navigation {
@@ -17,12 +33,6 @@
   margin: 8px 4px;
   width: 100%;
   max-width: 276px;
-}
-
-@media screen and (width <=1439px) {
-  .header {
-    padding: 0;
-  }
 }
 
 @media (width <= 767px) {
