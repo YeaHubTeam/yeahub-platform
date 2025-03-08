@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Chip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Card } from '@/shared/ui/Card';
+import { Chip } from '@/shared/ui/Chip';
 import { Text } from '@/shared/ui/Text';
 
 import { Collection, CollectionTariff } from '@/entities/collection';
@@ -38,7 +38,7 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 			</div>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.ADDITIONAL_INFO_SPECIALIZATION)}
+					{t(Collections.SPECIALIZATION_TITLE)}:
 				</Text>
 				<ul className={styles['param-wrapper']}>
 					{collection.specializations?.map((spec) => {
@@ -58,7 +58,7 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 			</div>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.ADDITIONAL_INFO_KEYWORDS)}
+					{t(Collections.KEYWORDS_TITLE)}:
 				</Text>
 				<div className={styles['keywords-wrapper']}>
 					{collection.keywordsCollection?.map((keyword) => {

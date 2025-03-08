@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { QuestionFilterStatus } from '@/widgets/Question';
+import { QuestionFilterStatus } from '@/widgets/question/QuestionsFilterPanel';
 
 import { QuestionsPageState } from '../types/questionsPageType';
 

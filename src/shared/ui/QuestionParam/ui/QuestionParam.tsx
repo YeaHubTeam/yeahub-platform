@@ -11,10 +11,10 @@ interface QuestionParamProps {
 export const QuestionParam = ({ label, value }: QuestionParamProps) => {
 	return (
 		<Flex align="center" gap="12" componentType="li" className={styles.param}>
-			<Text variant="body1" color="black-800">
+			<Text variant="body2" color="black-800">
 				{label}:
 			</Text>
-			<Text variant="body1" color="white-900" className={styles.value}>
+			<Text variant="body2" color="white-900" className={styles.value}>
 				{value}
 			</Text>
 		</Flex>

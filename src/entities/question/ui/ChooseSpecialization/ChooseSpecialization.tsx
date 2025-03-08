@@ -1,10 +1,11 @@
 /* eslint-disable @conarti/feature-sliced/layers-slices */
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
@@ -14,7 +15,6 @@ import { useGetSpecializationsListQuery } from '@/entities/specialization';
 import styles from './ChooseSpecialization.module.css';
 
 const MAX_LIMIT = 5;
-const DEFAULT_SPECIALIZATION = 11;
 
 interface ChooseSpecializationProps {
 	selectedSpecialization?: number;
@@ -24,13 +24,15 @@ interface ChooseSpecializationProps {
 }
 
 export const ChooseSpecialization = ({
-	selectedSpecialization = DEFAULT_SPECIALIZATION,
+	selectedSpecialization = DEFAULT_SPECIALIZATION_NUMBER,
 	onChangeSpecialization,
 	specializationLimit,
 }: ChooseSpecializationProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT);
-	const { data: specialization } = useGetSpecializationsListQuery({ limit });
+	const { data: specialization } = useGetSpecializationsListQuery({
+		limit,
+	});
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
 
@@ -40,25 +42,29 @@ export const ChooseSpecialization = ({
 
 	useEffect(() => {
 		if (isMobile || showAll) {
-			setLimit(specialization?.total ?? (specializationLimit || MAX_LIMIT));
+			setLimit((limit) => specialization?.total ?? limit);
 		} else {
 			setLimit(specializationLimit || MAX_LIMIT);
 		}
-	}, [specialization?.total, showAll, specializationLimit, isMobile]);
+	}, [limit, specialization?.total, showAll, specializationLimit, isMobile]);
 
 	const handleChooseSpecialization = (id: number) => {
 		onChangeSpecialization(id);
 	};
 
-	const prepareData = specialization?.data.map((spec) => ({
-		...spec,
-		active: selectedSpecialization === spec.id,
-	}));
+	const prepareData = useMemo(
+		() =>
+			specialization?.data.map((spec) => ({
+				...spec,
+				active: selectedSpecialization === spec.id,
+			})),
+		[specialization, selectedSpecialization],
+	);
 
 	if (!prepareData) return null;
 
 	return (
-		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
+		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t('specialization.title')}

@@ -54,6 +54,10 @@ export const ROUTES = {
 		users: {
 			route: 'users',
 			page: 'admin/users',
+			edit: {
+				route: ':userId/edit',
+				page: '/admin/users/:userId/edit',
+			},
 			detail: {
 				route: ':userId',
 				page: '/admin/users/:userId',

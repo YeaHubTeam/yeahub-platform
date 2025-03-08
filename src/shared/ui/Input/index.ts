@@ -1,3 +1,2 @@
-import { Input } from './ui/Input';
-
-export { Input };
+export { Input } from './ui/Input';
+export { InputSkeleton } from './ui/Input.skeleton';

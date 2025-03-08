@@ -1,3 +1,15 @@
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+
+
+  &.drawer-mobile {
+    top: var(--header-height);
+    padding-bottom: var(--header-height);
+    width: 100%;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -9,35 +21,22 @@
 .content {
   display: flex;
   gap: 20px;
-}
-
-.mobile,
-.tablet {
-  flex-direction: column;
+  width: 100%;
 }
 
 .main {
   display: flex;
-  flex: 1;
+  flex: 1 1 740px;
   flex-direction: column;
   gap: 24px;
-}
-
-.back-header {
-  margin: 24px 0;
-}
-
-.popover-additional-wrapper {
-  width: 100%;
-  max-width: 314px;
+  min-width: 40%;
 }
 
 .additional {
   display: flex;
+  flex: 0 1 360px;
   flex-direction: column;
   gap: 20px;
-  width: 360px;
-  height: auto;
 }
 
 .additional-info-wrapper {
@@ -48,6 +47,23 @@
 .additional h4 {
   color: var(--text-color-light);
 }
+
+.mobile,
+.tablet {
+  flex-direction: column;
+}
+
+
+.back-header {
+  margin: 24px 0;
+}
+
+.popover-additional-wrapper {
+  width: 100%;
+  max-width: 314px;
+}
+
+
 
 :is(.additional, .mobile, .tablet) > div {
   height: auto;
@@ -133,7 +149,7 @@
   .additional {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end; 
     gap: 20px;
     width: 360px;
     height: auto;
@@ -148,11 +164,6 @@
 
 
 @media (width <= 576px) {
-  .wrapper > div,
-  .back-header {
-    margin-inline: 16px;
-  }
-
   .back-header {
     margin-top: 0;
   }

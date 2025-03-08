@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
@@ -31,7 +31,7 @@ export const ResetQuestionStudyProgressButton = ({
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useTranslation(i18Namespace.questions);
 
-	const handleClick = async () => {
+	const handleResetQuestion = async () => {
 		try {
 			await resetQuestion({ profileId, questionId }).unwrap();
 			onSuccess?.();
@@ -46,9 +46,9 @@ export const ResetQuestionStudyProgressButton = ({
 	return (
 		<Button
 			className={isPopover ? styles.button : ''}
-			preffix={<Icon icon="clockCounterClockwise" key={'clockCounterClockwise'} size={iconSize} />}
+			preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
 			variant={variant}
-			onClick={handleClick}
+			onClick={handleResetQuestion}
 			disabled={isLoading || isDisabled}
 		>
 			{t(Questions.REPEAT)}

@@ -6,6 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Docs } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button/ui/Button';
 import { Flex } from '@/shared/ui/Flex/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { DockItem } from '../../model/types/types';
 
@@ -20,7 +21,7 @@ export const DocItem = ({ doc }: DocItemProps) => {
 
 	return (
 		<Flex className={styles['doc-item']} justify="between" align="center">
-			<p className={styles['doc-item-name']}>{t(doc.name)}</p>
+			<Text variant="body3-accent">{t(doc.name)}</Text>
 			<div className={styles['doc-link']}>
 				<NavLink to={doc.link} target="_blank">
 					<Button style={{ borderRadius: '12px' }} variant="link-purple">

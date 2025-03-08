@@ -5,7 +5,7 @@ import { Size } from '@/shared/ui/Input/model/types/InputTypes';
 
 import styles from './Input.module.css';
 
-interface InputProps extends Omit<React.ComponentPropsWithRef<'input'>, 'size' | 'prefix'> {
+export interface InputProps extends Omit<React.ComponentPropsWithRef<'input'>, 'size' | 'prefix'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	size?: Size;

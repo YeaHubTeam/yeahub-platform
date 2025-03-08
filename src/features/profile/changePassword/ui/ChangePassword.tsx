@@ -118,6 +118,7 @@ export const ChangePassword = () => {
 					</div>
 
 					<Button
+						size="large"
 						type="submit"
 						className={styles['submit-button']}
 						disabled={!isValid || isChangePasswordLoading}

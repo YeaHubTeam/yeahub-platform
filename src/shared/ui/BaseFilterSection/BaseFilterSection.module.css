@@ -1,24 +1,5 @@
-.title {
-  margin-bottom: 8px;
-  color: var(--text-color-light);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
-.category-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.chip svg{
-  margin-left: 12px;
-  width: 20px;
-  height: 20px;
-}
-
 .chip {
+  span {
   padding: 0;
 
   & span {

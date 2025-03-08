@@ -1,49 +1,77 @@
 import classNames from 'classnames';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
+import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
-import { QuestionsSummaryList } from '@/widgets/Question';
+import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
+import {
+	getSkillTitles,
+	getSpecializationTitleFromSkills,
+	transformSpecializationToGetSkills,
+} from '../../model/helpers/getTitleFromQuery';
 import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
 import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
 import styles from './PublicQuestionsPage.module.css';
 import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 
-const MAX_LIMIT_CATEGORIES = 5;
-
 const PublicQuestionsPage = () => {
+	const { isOpen, onToggle, onClose } = useModal();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({ limit: MAX_LIMIT_CATEGORIES });
 	const [queryParams] = useSearchParams();
 	const keywords = queryParams.get('keywords');
-	const { isOpen, onToggle, onClose } = useModal();
-
 	const { status, ...getParams } = filter;
 
-	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetPublicQuestionsListQuery(
+	const preparedSpecializationsIds = useMemo(() => {
+		return transformSpecializationToGetSkills(filter.specialization);
+	}, [filter.specialization]);
+
+	const { data: skills, isLoading: isLoadingCategories } = useGetSkillsListQuery(
+		{
+			limit: MAX_LIMIT_CATEGORIES,
+			specializations: preparedSpecializationsIds,
+		},
+		{ skip: !filter.specialization },
+	);
+
+	const specializationName = getSpecializationTitleFromSkills(skills?.data, filter.specialization);
+
+	const skillNames = getSkillTitles(skills?.data, filter.skills);
+	const additionalTitle = specializationName || skillNames || '';
+
+	const { data: questions, isLoading: isLoadingQuestions } = useGetPublicQuestionsListQuery(
 		{
 			...getParams,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: status !== 'all',
+			skip: status !== 'all' || !filter.specialization,
 		},
 	);
 
+	if (isLoadingQuestions || isLoadingCategories) {
+		return <PublicQuestionsPageSkeleton />;
+	}
+
+	if (!questions) {
+		return null;
+	}
+
 	const onChangeSpecialization = (value: number | undefined) => {
-		const specialization = value ? [value] : undefined;
-		handleFilterChange({ specialization: specialization, skills: undefined });
+		handleFilterChange({ specialization: value ? [value] : undefined, skills: undefined });
 	};
 
 	const onChangeSearchParams = (value: string) => {
@@ -66,23 +94,33 @@ const PublicQuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
-	if (isLoadingAllQuestions || isLoadingCategories) {
-		return <PublicQuestionsPageSkeleton />;
-	}
-
-	if (!allQuestions) {
-		return null;
-	}
+	const renderFilters = () => (
+		<PublicQuestionsFilterPanel
+			onChangeSearch={onChangeSearchParams}
+			onChangeSkills={onChangeSkills}
+			onChangeComplexity={onChangeComplexity}
+			onChangeRate={onChangeRate}
+			onChangeSpecialization={onChangeSpecialization}
+			filter={{
+				skills: filter.skills,
+				rate: filter.rate,
+				complexity: filter.complexity,
+				title: filter.title,
+				specialization: filter.specialization,
+			}}
+			specializationLimit={MAX_LIMIT_CATEGORIES}
+		/>
+	);
 
 	return (
-		<section className={styles.wrapper}>
-			<div className={styles['popover-additional']}>
+		<Flex gap="20" align="start" className={styles.wrapper}>
+			<div className={styles['filters-mobile']}>
 				<IconButton
 					className={classNames({ [styles.active]: isOpen })}
 					aria-label="go to filters"
 					form="square"
-					icon={<Icon icon="slidersHorizontal" />}
-					size="S"
+					icon={<Icon icon="slidersHorizontal" color="black-700" />}
+					size="small"
 					variant={'tertiary'}
 					onClick={onToggle}
 				/>
@@ -94,61 +132,25 @@ const PublicQuestionsPage = () => {
 						className={styles.drawer}
 						hasCloseButton
 					>
-						<Card className={styles['drawer-content']}>
-							<PublicQuestionsFilterPanel
-								onChangeSearch={onChangeSearchParams}
-								onChangeSkills={onChangeSkills}
-								onChangeComplexity={onChangeComplexity}
-								onChangeRate={onChangeRate}
-								onChangeSpecialization={onChangeSpecialization}
-								filter={{
-									skills: filter.skills,
-									rate: filter.rate,
-									complexity: filter.complexity,
-									title: filter.title,
-									specialization: filter.specialization,
-								}}
-								specializationLimit={MAX_LIMIT_CATEGORIES}
-							/>
-						</Card>
+						<Card className={styles['drawer-content']}>{renderFilters()}</Card>
 					</Drawer>
 				)}
 			</div>
-			<div className={styles['main-info-wrapper']}>
-				<Card className={styles.content}>
-					<QuestionsSummaryList questions={allQuestions.data} displayMode="link" />
-					{allQuestions.total > allQuestions.limit && (
-						<PublicQuestionPagePagination
-							questionsResponse={allQuestions}
-							currentPage={filter.page || 1}
-							onPageChange={onPageChange}
-						/>
-					)}
-					{allQuestions.data.length === 0 && (
-						<EmptyStub text={getParams.title} resetFilters={resetFilters} />
-					)}
-				</Card>
-			</div>
-			<div className={styles['additional-info-wrapper']}>
-				<Card className={styles.search}>
-					<PublicQuestionsFilterPanel
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeSearch={onChangeSearchParams}
-						onChangeSkills={onChangeSkills}
-						onChangeComplexity={onChangeComplexity}
-						onChangeRate={onChangeRate}
-						filter={{
-							skills: filter.skills,
-							rate: filter.rate,
-							complexity: filter.complexity,
-							title: filter.title,
-							specialization: filter.specialization,
-						}}
-						specializationLimit={MAX_LIMIT_CATEGORIES}
+			<Card className={styles.main}>
+				<FullQuestionsList questions={questions.data} isPublic additionalTitle={additionalTitle} />
+				{questions.total > questions.limit && (
+					<PublicQuestionPagePagination
+						questionsResponse={questions}
+						currentPage={filter.page || 1}
+						onPageChange={onPageChange}
 					/>
-				</Card>
-			</div>
-		</section>
+				)}
+				{questions.data.length === 0 && (
+					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
+				)}
+			</Card>
+			<Card className={styles.filters}>{renderFilters()}</Card>
+		</Flex>
 	);
 };
 

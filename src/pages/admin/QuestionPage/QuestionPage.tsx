@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
@@ -21,7 +21,10 @@ import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
-import { QuestionHeader, QuestionBody, AdditionalInfo, QuestionActions } from '@/widgets/Question';
+import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
+import { QuestionActions } from '@/widgets/question/QuestionActions/QuestionActions';
+import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader/QuestionHeader';
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
@@ -61,7 +64,7 @@ export const QuestionPage = () => {
 	const renderAdditionalInfo = (
 		<div className={styles['popover-additional']}>
 			<Popover
-				body={() => (
+				body={
 					<div className={styles['popover-additional-wrapper']}>
 						<Card>
 							<AdditionalInfo
@@ -74,20 +77,18 @@ export const QuestionPage = () => {
 							/>
 						</Card>
 					</div>
-				)}
+				}
 			>
 				{({ onToggle, isOpen }) => (
-					<div>
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to additional info"
-							form="square"
-							icon={<PopoverIcon />}
-							size="S"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					</div>
+					<IconButton
+						className={isOpen ? styles.active : ''}
+						aria-label="go to additional info"
+						form="square"
+						icon={<PopoverIcon />}
+						size="small"
+						variant="tertiary"
+						onClick={onToggle}
+					/>
 				)}
 			</Popover>
 		</div>
@@ -95,11 +96,7 @@ export const QuestionPage = () => {
 
 	const renderHeaderAndActions = () => (
 		<>
-			<QuestionHeader
-				description={question.description}
-				status={question.status}
-				title={question.title}
-			/>
+			<QuestionHeader description={question.description} title={question.title} />
 			<QuestionActions
 				profileId={profileId}
 				questionId={questionId || ''}

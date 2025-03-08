@@ -1,0 +1,8 @@
+.pie-chart-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 307px;
+  height: 307px;
+}

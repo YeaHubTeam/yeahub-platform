@@ -3,16 +3,19 @@ import { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
-import { QuestionHeader, QuestionBody, AdditionalInfo } from '@/widgets/Question';
+import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
+import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader/QuestionHeader';
 
 import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
@@ -20,6 +23,7 @@ import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
 const PublicQuestionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId } = useParams<{ questionId: string }>();
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const {
 		data: question,
@@ -45,39 +49,38 @@ const PublicQuestionPage = () => {
 	}
 
 	const renderAdditionalInfo = (
-		<Flex gap="20" justify="between" className={styles['back-header']}>
+		<Flex gap="20" justify="between" align="center" className={styles['back-header']}>
 			<BackButton />
 			<div className={styles['popover-additional']}>
-				<Popover
-					body={() => (
-						<div className={styles['popover-additional-wrapper']}>
-							<Card>
-								<AdditionalInfo
-									className={styles['additional-info-wrapper']}
-									rate={question.rate}
-									keywords={question.keywords}
-									complexity={question.complexity}
-									questionSkills={question.questionSkills}
-									authorFullName={authorFullName}
-								/>
-							</Card>
-						</div>
-					)}
+				<IconButton
+					className={classNames({ active: isOpen })}
+					aria-label="go to additional info"
+					form="square"
+					icon={<PopoverIcon />}
+					size="small"
+					variant="tertiary"
+					onClick={onToggle}
+				/>
+				<Drawer
+					isOpen={isOpen}
+					onClose={onClose}
+					rootName="body"
+					className={classNames(styles.drawer, {
+						[styles['drawer-mobile']]: isMobile,
+					})}
+					hasCloseButton
 				>
-					{({ onToggle, isOpen }) => (
-						<div>
-							<IconButton
-								className={isOpen ? styles.active : ''}
-								aria-label="go to additional info"
-								form="square"
-								icon={<PopoverIcon />}
-								size="S"
-								variant="tertiary"
-								onClick={onToggle}
-							/>
-						</div>
-					)}
-				</Popover>
+					<Card>
+						<AdditionalInfo
+							className={styles['additional-info-wrapper']}
+							rate={question.rate}
+							keywords={question.keywords}
+							complexity={question.complexity}
+							questionSkills={question.questionSkills}
+							authorFullName={authorFullName}
+						/>
+					</Card>
+				</Drawer>
 			</div>
 		</Flex>
 	);
@@ -91,12 +94,7 @@ const PublicQuestionPage = () => {
 					[styles.tablet]: isTablet,
 				})}
 			>
-				<QuestionHeader
-					description={question.description}
-					status={question.status}
-					title={question.title}
-					isPublic
-				/>
+				<QuestionHeader description={question.description} title={question.title} />
 				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
 			</section>
 		</>
@@ -111,12 +109,7 @@ const PublicQuestionPage = () => {
 					</div>
 					<div className={styles.content}>
 						<div className={styles.main}>
-							<QuestionHeader
-								description={question.description}
-								status={question.status}
-								title={question.title}
-								isPublic
-							/>
+							<QuestionHeader description={question.description} title={question.title} />
 							<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
 						</div>
 						<div className={styles.additional}>

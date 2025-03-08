@@ -13,13 +13,11 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
-import {
-	QuestionHeader,
-	QuestionBody,
-	QuestionActions,
-	ProgressBlock,
-	AdditionalInfo,
-} from '@/widgets/Question';
+import { AdditionalInfo } from '@/widgets/question/AdditionalInfo/AdditionalInfo';
+import { ProgressBlock } from '@/widgets/question/ProgressBlock/ProgressBlock';
+import { QuestionActions } from '@/widgets/question/QuestionActions/QuestionActions';
+import { QuestionBody } from '@/widgets/question/QuestionBody/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader/QuestionHeader';
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
@@ -65,7 +63,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 				aria-label="go to additional info"
 				form="square"
 				icon={<PopoverIcon />}
-				size="S"
+				size="small"
 				variant="tertiary"
 				onClick={onToggle}
 			/>
@@ -95,11 +93,7 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 
 	const renderHeaderAndActions = () => (
 		<>
-			<QuestionHeader
-				description={question.description}
-				status={question.status}
-				title={question.title}
-			/>
+			<QuestionHeader description={question.description} title={question.title} />
 			{!isAdmin && (
 				<QuestionActions
 					profileId={profileId}

@@ -77,7 +77,7 @@ export const SpecializationsTable = ({
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

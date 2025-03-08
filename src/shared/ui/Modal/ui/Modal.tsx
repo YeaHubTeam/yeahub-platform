@@ -74,12 +74,12 @@ export const Modal = ({
 				{isButtons && (
 					<div className={styles.buttons}>
 						{buttonPrimaryText && (
-							<Button variant="primary" size="L" onClick={buttonPrimaryClick}>
+							<Button variant="primary" size="large" onClick={buttonPrimaryClick}>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
-							<Button variant="outline" size="L" onClick={buttonOutlineClick}>
+							<Button variant="outline" size="large" onClick={buttonOutlineClick}>
 								{buttonOutlineText}
 							</Button>
 						)}

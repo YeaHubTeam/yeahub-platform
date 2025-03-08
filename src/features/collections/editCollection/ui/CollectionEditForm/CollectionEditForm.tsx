@@ -28,6 +28,8 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 		defaultValues: {
 			...collection,
 			questions: formatToFormField(collection.questions),
+			specializations: formatToFormField(collection.specializations),
+			keywordsCollection: collection.keywordsCollection,
 		},
 	});
 

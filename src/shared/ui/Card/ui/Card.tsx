@@ -3,7 +3,7 @@ import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import Arrow from '@/shared/assets/icons/arrow.svg';
+import Arrow from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Icon } from '@/shared/ui/Icon/ui/Icon';
 import { Text } from '@/shared/ui/Text';
@@ -123,7 +123,7 @@ export const Card = ({
 
 	return (
 		<Flex
-			gap="24"
+			gap="16"
 			direction="column"
 			className={classNames(styles.card, className, {
 				[styles['card-expandable']]: isHeightForExpand,
@@ -139,7 +139,7 @@ export const Card = ({
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
 				>
-					{title ? <Text variant="body5-accent">{title}</Text> : null}
+					{title && <Text variant="body5-accent">{title}</Text>}
 					{actionRoute ? (
 						<Link
 							to={actionRoute}
