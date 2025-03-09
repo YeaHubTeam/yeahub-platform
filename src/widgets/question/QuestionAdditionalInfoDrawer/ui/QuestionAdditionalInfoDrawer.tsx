@@ -40,7 +40,7 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 			<Drawer
 				isOpen={isOpen}
 				onClose={onClose}
-				rootName={isMobileS ? 'body' : 'mainLayout'}
+				rootName={isMobileS || project === 'landing' ? 'body' : 'mainLayout'}
 				className={classNames(styles.drawer, {
 					[styles['drawer-mobile']]: isMobileS,
 				})}
