@@ -10,18 +10,10 @@ const mockData = [
 ];
 
 const mockOnClick = jest.fn();
-const mockGetDefaultIcon = jest.fn((_item) => <span>Default Icon</span>);
 
 describe('BaseFilterSection', () => {
 	beforeEach(() => {
-		renderComponent(
-			<BaseFilterSection
-				title="Test Title"
-				data={mockData}
-				onClick={mockOnClick}
-				getDefaultIcon={mockGetDefaultIcon}
-			/>,
-		);
+		renderComponent(<BaseFilterSection title="Test Title" data={mockData} onClick={mockOnClick} />);
 	});
 
 	test('should render component with title', () => {

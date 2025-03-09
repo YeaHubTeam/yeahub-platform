@@ -1,3 +1,7 @@
+.params {
+  gap: 24px;
+}
+
 .item:not(:last-child) {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);

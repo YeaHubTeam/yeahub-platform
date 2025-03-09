@@ -18,6 +18,8 @@ export type IconName =
 	| 'clockCounterClockwise'
 	| 'arrowShortDown'
 	| 'slidersHorizontal'
-	| 'search';
+	| 'search'
+	| 'closeCircle'
+	| 'trash';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

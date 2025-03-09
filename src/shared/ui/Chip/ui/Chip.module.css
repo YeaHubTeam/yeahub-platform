@@ -16,9 +16,16 @@
   font-weight: var(--font-weight-500);
   user-select: none;
   cursor: pointer;
-  
+
   &.chip-clickable {
     cursor: pointer;
+  }
+
+  &.chip-clickable:hover,
+  &.chip-clickable:focus,
+  &.chip-clickable:active {
+    border-color: var(--color-purple-700);
+    background-color: var(--color-purple-50);
   }
 
   &.chip-disabled {
@@ -34,7 +41,7 @@
   }
 
   &.chip-active {
-    box-shadow: 0 0 0 1px var(--color-purple-700);
+    border-color: var(--color-purple-700);
   }
 
   &.chip-primary {
@@ -65,10 +72,3 @@
   }
 }
 
-@media (width > 1024px) {
-  .chip-wrapper:hover:where(.chip-clickable),
-  .chip-wrapper:focus-visible:where(.chip-clickable),
-  .chip-wrapper:active:where(.chip-clickable) {
-    box-shadow: 0 0 0 1px var(--color-purple-800);  
-  }   
-}

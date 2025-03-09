@@ -1,58 +1,54 @@
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+
+import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
 import styles from './LearnQuestionButton.module.css';
 
-interface LearnQuestionProps {
-	profileId: number | string;
+export interface LearnQuestionButtonProps {
 	questionId: number | string;
-	isSmallIcon?: boolean;
-	isDisabled: boolean;
 	isPopover?: boolean;
 	variant?: 'tertiary' | 'link-gray';
-	onSuccess?: () => void;
+	checksCount: number;
 }
 
 export const LearnQuestionButton = ({
-	profileId,
 	questionId,
-	isSmallIcon,
-	isDisabled,
 	isPopover = false,
 	variant = 'tertiary',
-	onSuccess,
-}: LearnQuestionProps) => {
+	checksCount,
+}: LearnQuestionButtonProps) => {
+	const profileId = useAppSelector(getProfileId);
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const hasQuestionMaxProgress = checksCount >= 3;
+
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
 	const { t } = useTranslation(i18Namespace.questions);
-	const handleLearnQuestion = async () => {
-		try {
-			await learnQuestion({
-				profileId: String(profileId),
-				questionId: Number(questionId),
-				isLearned: true,
-			}).unwrap();
-			onSuccess?.();
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error('Не удалось изучить вопрос:', error);
-		}
+	const onLearnQuestion = () => {
+		learnQuestion({
+			profileId: String(profileId),
+			questionId: Number(questionId),
+			isLearned: true,
+		});
 	};
 
-	const iconSize = isSmallIcon ? 20 : 24;
+	const iconSize = isPopover ? 20 : 24;
 
 	return (
 		<Button
-			className={isPopover ? styles.button : ''}
+			className={classNames({ [styles.button]: isPopover })}
 			preffix={<Icon icon="student" color="black-600" size={iconSize} />}
 			variant={variant}
-			onClick={handleLearnQuestion}
-			disabled={isLoading || isDisabled}
+			onClick={onLearnQuestion}
+			disabled={isLoading || !isEmailVerified || hasQuestionMaxProgress}
 		>
 			{t(Questions.LEARN)}
 		</Button>
