@@ -1,0 +1,21 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { CardSkeleton } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
+
+import { LearnQuestionButtonSkeleton } from '@/features/quiz/learnQuestion';
+import { ResetQuestionStudyProgressButtonSkeleton } from '@/features/quiz/resetQuestionStudyProgress';
+
+export const QuestionActionsSkeleton = () => {
+	const { isMobile } = useScreenSize();
+
+	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
+
+	return (
+		<CardSkeleton withOutsideShadow>
+			<Flex justify="center" gap="40" align="center">
+				<LearnQuestionButtonSkeleton width={120} variant={buttonVariant} />
+				<ResetQuestionStudyProgressButtonSkeleton width={120} variant={buttonVariant} />
+			</Flex>
+		</CardSkeleton>
+	);
+};
