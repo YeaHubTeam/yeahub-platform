@@ -61,7 +61,7 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					{t(Collections.KEYWORDS_TITLE)}:
 				</Text>
 				<div className={styles['keywords-wrapper']}>
-					{collection.keywordsCollection?.map((keyword) => {
+					{collection.keywords?.map((keyword) => {
 						return (
 							<Link
 								key={keyword}

@@ -187,6 +187,12 @@
         }
       }
     },
+    "collections": {
+      "edit": {
+        "success": "Collection successfully changed",
+        "failed": "Collection could not be changed"
+      }
+    },
     "profile": {
       "update": {
         "success": "Profile has been successfully changed",

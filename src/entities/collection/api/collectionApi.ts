@@ -6,6 +6,7 @@ import { collectionApiUrls } from '../model/constants/collection';
 import {
 	GetCollectionByIdParamsRequest,
 	GetCollectionByIdResponse,
+	GetCollectionQuestionsResponse,
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
 } from '../model/types/collection';
@@ -25,6 +26,19 @@ const collectionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
+		getCollectionQuestions: build.query<
+			GetCollectionQuestionsResponse,
+			GetCollectionByIdParamsRequest
+		>({
+			query: ({ collectionId }) => ({
+				url: route(collectionApiUrls.getCollectionQuestions, collectionId || ''),
+			}),
+			providesTags: [ApiTags.COLLECTIONS],
+		}),
 	}),
 });
-export const { useGetCollectionsListQuery, useGetCollectionByIdQuery } = collectionApi;
+export const {
+	useGetCollectionsListQuery,
+	useGetCollectionByIdQuery,
+	useGetCollectionQuestionsQuery,
+} = collectionApi;

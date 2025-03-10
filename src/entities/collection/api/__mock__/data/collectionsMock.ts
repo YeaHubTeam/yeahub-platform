@@ -12,7 +12,7 @@ export const collectionsMock: Collection[] = [
 		updatedAt: '2024-12-28T17:14:21.662Z',
 		questionsQuantity: 6,
 		tariff: 'premium',
-		keywordsCollection: ['async', 'defer', 'script'],
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,
@@ -206,7 +206,7 @@ export const collectionsMock: Collection[] = [
 		updatedAt: '2024-11-10T14:55:12.345Z',
 		questionsQuantity: 8,
 		tariff: 'free',
-		keywordsCollection: ['async', 'defer', 'script'],
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,
@@ -399,7 +399,7 @@ export const collectionsMock: Collection[] = [
 		updatedAt: '2024-09-25T10:30:45.678Z',
 		questionsQuantity: 5,
 		tariff: 'premium',
-		keywordsCollection: ['async', 'defer', 'script'],
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,

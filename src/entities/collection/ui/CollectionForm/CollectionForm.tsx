@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Text, TextArea, Input, Label, Radio } from 'yeahub-ui-kit';
@@ -19,6 +19,8 @@ import { ChooseQuestionsDrawer } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
+import { useGetCollectionQuestionsQuery } from '../../api/collectionApi';
+
 import styles from './CollectionForm.module.css';
 
 export interface CollectionFormProps {
@@ -29,11 +31,28 @@ export interface CollectionFormProps {
 export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, setValue, watch } = useFormContext();
-
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
+	const collectionId = watch('id');
+	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({
+		collectionId: collectionId!,
+	});
+	useEffect(() => {
+		if (collectionQuestions) {
+			setValue(
+				'questions',
+				collectionQuestions.data.map((collection) => collection.id),
+			);
+			setSelectedQuestions(
+				collectionQuestions.data.map((collection) => ({
+					id: collection.id,
+					title: collection.title,
+				})),
+			);
+		}
+	}, [collectionQuestions, setValue]);
 
-	const watchPaidOrFree = watch('paidOrFree', '');
+	const watchPaidOrFree = watch('isFree', true);
 	const watchQuestions = watch('questions', []);
 
 	const changeImage = (imageBase64: string) => {
@@ -111,16 +130,13 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 					<Flex gap="60">
 						<Label className={styles['paid-label']}>
 							<Radio
-								checked={watchPaidOrFree === 'paid'}
-								onChange={() => setValue('paidOrFree', 'paid')}
+								checked={watchPaidOrFree === false}
+								onChange={() => setValue('isFree', false)}
 							/>
 							{t(Collections.TARIFF_PAID)}
 						</Label>
 						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'free'}
-								onChange={() => setValue('paidOrFree', 'free')}
-							/>
+							<Radio checked={watchPaidOrFree === true} onChange={() => setValue('isFree', true)} />
 							{t(Collections.TARIFF_FREE)}
 						</Label>
 					</Flex>
@@ -143,7 +159,7 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
 						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
 					</Flex>
-					<FormControl name="keywordsCollection" control={control}>
+					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div className={styles.select}>
