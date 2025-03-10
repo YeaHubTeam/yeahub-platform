@@ -9,7 +9,7 @@ export const skillByIdMock = http.get<
 	Record<keyof GetSkillByIdParamsRequest, string>,
 	DefaultBodyType,
 	GetSkillByIdResponse
->(`${process.env.API_URL}${skillApiUrls.getSkillById}:skillId`, ({ params }) => {
+>(`${process.env.API_URL}${skillApiUrls.getSkillById}`, ({ params }) => {
 	const { skillId } = params;
 
 	const skill = skillsMock.data.find((skill) => String(skill.id) === skillId);
