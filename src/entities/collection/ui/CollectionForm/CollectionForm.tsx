@@ -59,7 +59,7 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('imageSrc', image);
+		setValue('collectionImage', image);
 	};
 
 	const removeImage = () => {

@@ -9,7 +9,8 @@ export const collectionEditSchema: yup.ObjectSchema<CollectionEditFormValues> = 
 	title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	id: yup.number().required(),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	imageSrc: yup.string().nullable(),
+	imageSrc: yup.string().notRequired(),
+	collectionImage: yup.string(),
 	isFree: yup.boolean().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	specializations: yup
 		.array(yup.number().required())

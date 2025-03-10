@@ -29,6 +29,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 	isFree: boolean;
 	questions: number[];
 	specializations: number[];
+	collectionImage?: string;
 };
 
 export interface GetCollectionsListParamsRequest {
