@@ -50,12 +50,13 @@ export const questionListMock = http.get<
 		return hasTitle && hasComplexity && hasRating && hasSpecialization && hasSkills;
 	});
 
-	const paginationDate = data.slice(
-		Number(page) === 1 ? 0 : (Number(page) - 1) * Number(limit),
-		Number(limit) * Number(page),
+	const paginationData = data.slice(
+		(Number(page) - 1) * Number(limit),
+		Number(page) * Number(limit),
 	);
+
 	return HttpResponse.json({
-		data: paginationDate,
+		data: paginationData,
 		page: Number(page),
 		total: questionsMock.total,
 		limit: questionsMock.limit,

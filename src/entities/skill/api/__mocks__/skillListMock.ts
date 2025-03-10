@@ -12,8 +12,7 @@ export const skillListMock = http.get<
 >(process.env.API_URL + skillApiUrls.getSkillsList, ({ request }) => {
 	const url = new URL(request.url);
 	const page = url.searchParams.get('page') ?? 1;
-	const limit = url.searchParams.get('limit');
-
+	const limit = url.searchParams.get('limit') ?? 10;
 	const data = skillsMock.data;
 
 	const paginationData = data.slice(
