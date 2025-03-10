@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import CloseIcon from '@/shared/assets/icons/CloseCircle.svg';
+import CloseIcon from '@/shared/assets/icons/closeCircle.svg';
 
 import styles from './Drawer.module.css';
 

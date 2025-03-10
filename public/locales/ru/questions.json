@@ -21,6 +21,10 @@
     "show.all": "Показать все",
     "hide": "Скрыть"
   },
+  "progress": {
+    "title": "Прогресс",
+    "description": "Вопрос изучен {{count}} из 3"
+  },
   "complexity": {
     "title": "Сложность вопросов",
     "title.short": "Сложность",
@@ -68,6 +72,7 @@
     "title": "Ключевые слова",
     "label": "Добавьте ключевые слова в текст"
   },
+  "author": "Автор:",
   "level": "Уровень:",
   "skillsAdditional": "Навыки:",
   "keywordsAdditional": "Ключевые слова:",

@@ -8,8 +8,9 @@
   }
 }
 
-@media (width < 480px) {
+@media (width < 768px) {
   .param {
+    margin-top: 20px;
     margin-bottom: 24px;
   }
 }

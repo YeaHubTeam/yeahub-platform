@@ -1,6 +1,17 @@
-.divider {
-  margin-top: 16px;
+.questions-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
+}
+
+.divider {
   border-top-width: 0;
   border-bottom-color: var(--color-black-50);
+}
+
+@media screen and (width <= 1023px) {
+  .questions-list-header {
+    margin-bottom: 20px;
+  }
 }

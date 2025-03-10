@@ -2,8 +2,9 @@ import classNames from 'classnames';
 
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
-import { QuestionParamSkeleton } from '@/shared/ui/QuestionParam';
 import { TextSkeleton } from '@/shared/ui/Text';
+
+import { QuestionGradeListSkeleton } from '@/entities/question';
 
 import styles from './PreviewQuestionsItem.module.css';
 
@@ -17,10 +18,7 @@ export const PreviewQuestionsItemSkeleton = () => {
 					width={280}
 					className={classNames(styles.title, styles['title-skeleton'])}
 				/>
-				<Flex componentType="ul" gap="24" className={styles.params}>
-					<QuestionParamSkeleton />
-					<QuestionParamSkeleton />
-				</Flex>
+				<QuestionGradeListSkeleton className={styles.params} />
 			</Flex>
 		</Flex>
 	);
