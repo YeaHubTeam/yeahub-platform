@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
@@ -7,7 +8,7 @@ import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
-import { collectionsMock } from '@/entities/collection';
+import { useGetCollectionByIdQuery } from '@/entities/collection';
 
 import { AdditionalInfo, CollectionBody, CollectionHeader } from '@/widgets/Collection';
 
@@ -15,9 +16,17 @@ import styles from './CollectionPage.module.css';
 // import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
+	const { collectionId } = useParams<{ collectionId: string }>();
 	const { isMobile, isTablet } = useScreenSize();
 
-	const collection = collectionsMock[0];
+	const { data: collection, isLoading } = useGetCollectionByIdQuery({
+		collectionId: collectionId || '',
+	});
+
+	// TO DO SKELETON
+	if (isLoading) {
+		return 'TODO SKELETON';
+	}
 
 	if (!collection) {
 		return null;
