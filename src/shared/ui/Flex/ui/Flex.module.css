@@ -110,6 +110,10 @@
   gap: 120px;
 }
 
+.flex1 {
+  flex: 1;
+}
+
 .max-width {
   width: 100%;
 }

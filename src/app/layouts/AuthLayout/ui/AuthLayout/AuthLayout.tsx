@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { ErrorElement } from '@/shared/ui/ErrorElement';
 import { Loader } from '@/shared/ui/Loader';

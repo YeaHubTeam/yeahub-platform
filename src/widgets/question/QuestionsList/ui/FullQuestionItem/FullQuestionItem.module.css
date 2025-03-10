@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.header-params {
+  gap: 40px;	
+}
+
 .popup {
   position: relative;
   top: 8px;

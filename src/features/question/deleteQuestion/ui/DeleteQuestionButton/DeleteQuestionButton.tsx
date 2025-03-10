@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Question } from '@/entities/question';
 
 import { useDeleteQuestionMutation } from '../../api/deleteQuestionApi';
 
-interface DeleteQuestionButtonProps {
+export interface DeleteQuestionButtonProps {
 	questionId: Question['id'];
 	isDetailPage?: boolean;
 }
@@ -38,7 +38,7 @@ export const DeleteQuestionButton = ({
 			<Button
 				aria-label="Large"
 				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
+				preffix={!isDetailPage && <Icon icon="trash" size={20} color="red-600" />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={onCloseDeleteModal}
 			>

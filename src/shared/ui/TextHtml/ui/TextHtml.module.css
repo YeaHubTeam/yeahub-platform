@@ -20,7 +20,7 @@
   overflow-x: auto;
   border-radius: 8px;
   background-color: var(--color-black-30);
-  white-space: pre;
+  white-space: break-spaces;
 }
 
 .text pre::-webkit-scrollbar {

@@ -125,7 +125,6 @@
 
 @media (width <= 767px) {   
   .card {
-    gap: 0; 
     padding: 20px 10px;
     max-width: 100%;
     border-radius: 12px;
