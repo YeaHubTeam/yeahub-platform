@@ -29,7 +29,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 			...collection,
 			questions: formatToFormField(collection.questions),
 			specializations: formatToFormField(collection.specializations),
-			keywordsCollection: collection.keywordsCollection,
+			keywords: collection.keywords,
 		},
 	});
 
@@ -41,7 +41,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<CollectionEditFormHeader />
 					<Card className={styles.content}>
-						<CollectionForm />
+						<CollectionForm isEdit imageSrc={collection.imageSrc} />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

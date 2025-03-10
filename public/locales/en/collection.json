@@ -30,5 +30,6 @@
     "selected": "Selected questions: {{count}}"
   },
   "image.src": "Image URL",
-  "create.page.title": "Collection"
+  "create.page.title": "Collection",
+  "edit.page.title": "Edit collection"
 }

@@ -104,6 +104,8 @@ export enum Translation {
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
 	TOAST_SKILL_EDIT_FAILED = 'toast.skills.edit.failed',
+	TOAST_COLLECTION_EDIT_SUCCESS = 'toast.collections.edit.success',
+	TOAST_COLLECTION_EDIT_FAILED = 'toast.collections.edit.failed',
 	TOAST_SPECIALIZATION_CREATE_SUCCESS = 'toast.specializations.create.success',
 	TOAST_SPECIALIZATION_CREATE_FAILED = 'toast.specializations.create.failed',
 	TOAST_SPECIALIZATION_EDIT_SUCCESS = 'toast.specializations.edit.success',
