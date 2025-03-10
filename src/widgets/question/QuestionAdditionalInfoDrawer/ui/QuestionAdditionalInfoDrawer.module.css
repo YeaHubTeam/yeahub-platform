@@ -12,6 +12,10 @@
   border: 1px solid var(--button-border-secondary-focus);
 }
 
+.popover-additional button:focus {
+  border: none;
+}
+
 .drawer {
   width: 328px;
   overflow-x: hidden;
@@ -25,8 +29,17 @@
 }
 
 .additional-info-wrapper {
-  padding: 8px;
   box-shadow: none;
+}
+
+.main {
+  padding: 0;
+}
+
+@media screen and (width <=1023px) {
+  .additional-info-wrapper {
+    padding: 8px 24px 24px; 
+  }
 }
 
 

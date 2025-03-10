@@ -31,18 +31,12 @@
   justify-content: end;
 }
 
-@media (width < 480px) {
+@media screen and (width <= 767px) {
   .item {
-    gap: 16px;
+    gap: 20px;
   }
-
+  
   .header-params {
     gap: 16px;
-  }
-
-  .image-wrapper {
-    margin-bottom: 16px;
-    max-width: 260px;
-    border-radius: 12px;
   }
 }

@@ -46,7 +46,7 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 				})}
 				hasCloseButton
 			>
-				<Card>
+				<Card className={styles.main}>
 					{project === 'platform' && (
 						<ProgressBlock
 							className={styles['additional-info-wrapper']}
