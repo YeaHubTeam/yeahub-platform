@@ -9,7 +9,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { Card } from '@/shared/ui/Card';
 import { Text } from '@/shared/ui/Text';
 
-import { Collection, CollectionTariff } from '@/entities/collection';
+import { Collection } from '@/entities/collection';
 
 import styles from './AdditionalInfo.module.css';
 
@@ -21,20 +21,21 @@ interface AdditionalInfoProps {
 export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 
-	const collectionTariffs: Record<CollectionTariff, string> = {
-		premium: t(Collections.TARIFF_PAID),
-		free: t(Collections.TARIFF_FREE),
-	};
+	const accesText = collection.isFree ? t(Collections.TARIFF_FREE) : t(Collections.TARIFF_PAID);
 
 	return (
 		<Card className={classnames(styles['normal-hight'], className)} withOutsideShadow>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.ADDITIONAL_INFO_ACCESS)}
+					{t(Collections.ADDITIONAL_INFO_ACCESS)}:
 				</Text>
-				<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
-					<Text variant="body3">{collectionTariffs[collection.tariff]}</Text>
-				</div>
+				<Chip
+					label={accesText}
+					className={styles['questions-chip']}
+					theme="primary"
+					active={false}
+					onClick={() => {}}
+				/>
 			</div>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
@@ -61,7 +62,7 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					{t(Collections.ADDITIONAL_INFO_KEYWORDS)}
 				</Text>
 				<div className={styles['keywords-wrapper']}>
-					{collection.keywordsCollection?.map((keyword) => {
+					{collection.keywords?.map((keyword) => {
 						return (
 							<Link
 								key={keyword}
@@ -70,6 +71,18 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 						);
 					})}
 				</div>
+			</div>
+			<div className={styles.wrapper}>
+				<Text variant="body3" color="black-700">
+					{t(Collections.QUESTIONS_ADDITIONAL_INFO)}
+				</Text>
+				<Chip
+					label={String(collection.questionsCount)}
+					className={styles['questions-chip']}
+					theme="primary"
+					active={false}
+					onClick={() => {}}
+				/>
 			</div>
 		</Card>
 	);

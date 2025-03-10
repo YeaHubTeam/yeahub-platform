@@ -15,7 +15,9 @@ export interface Collection {
 	createdAt?: string;
 	updatedAt?: string;
 	questionsQuantity?: number;
+	questionsCount?: number;
 	keywordsCollection?: string[];
+	keywords?: string[];
 	questions?: Question[];
 	specializations?: Specialization[];
 	tariff: CollectionTariff;

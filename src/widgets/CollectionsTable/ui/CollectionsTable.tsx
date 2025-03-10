@@ -54,11 +54,20 @@ export const CollectionsTable = ({
 			),
 			title: collection.title,
 			description: collection.description,
-			questionsQuantity: collection.questionsQuantity,
+			questionsQuantity: collection.questionsCount,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k} className={k === 'description' ? styles.description : undefined}>
+			<td
+				key={k}
+				className={
+					k === 'description'
+						? styles.description
+						: k === 'questionsQuantity'
+							? styles['questions-quantity']
+							: undefined
+				}
+			>
 				{v}
 			</td>
 		));

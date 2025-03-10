@@ -37,6 +37,7 @@
   "image.src": "Ссылка на картинку",
   "create.page.title": "Коллекция",
   "image.alt": "Изображение кода для вопроса",
+  "numberOfQuestions": "Количество вопросов",
   "collections": {
     "title": "Коллекции",
     "detail": "Подробнее",
