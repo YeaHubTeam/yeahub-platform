@@ -32,3 +32,13 @@ export type CreateOrEditSkillFormValues = Pick<
 	skillImage?: string;
 	specializations?: number[];
 };
+
+export type EditSkillParamsRequest = GetSkillByIdParamsRequest;
+
+export type ErrorResponce = {
+	message: string;
+};
+
+export type EditSkillBodyRequest = CreateOrEditSkillFormValues;
+
+export type EditSkillResponse = Skill | ErrorResponce;
