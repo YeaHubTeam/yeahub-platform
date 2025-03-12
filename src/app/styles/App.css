@@ -24,6 +24,31 @@ input, textarea {
   width: min(100% - 60px, 1760px);
 }
 
+
+.layout-container {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+.header-background {
+  width: 100vw;
+  height: 77px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-black-50);
+  background-color: var(--color-white-900)
+}
+
+.header-container {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -50,4 +75,54 @@ a {
 div[data-floating-ui-portal] > div > div {
   max-height: 380px;
   overflow-y: scroll;
+}
+
+@media screen and (width <= 1439px) {
+  .layout-container {
+    max-width: var(--container-width-lg);
+  }
+}
+
+@media screen and (width <= 992px) {
+  .layout-container {
+    max-width: var(--container-width-tablet);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .layout-container {
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (width <= 576px) {
+  .layout-container {
+    padding: 0 var(--container-padding-16);
+    max-width: var(--container-width-mobile);
+  }
+}
+
+@media screen and (width <= 1439px) {
+  .header-container {
+    max-width: var(--container-width-lg);
+  }
+}
+
+@media screen and (width <= 992px) {
+  .header-container {
+    max-width: var(--container-width-tablet);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .header-container {
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (width <= 576px) {
+  .header-container {
+    padding: 0 var(--container-padding-16);
+    max-width: var(--container-width-mobile);
+  }
 }

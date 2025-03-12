@@ -1,5 +1,6 @@
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
@@ -26,25 +27,36 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	const { data: profile, isLoading } = useProfileQuery();
 
 	return (
-		<header className={styles.header}>
-			<Flex align="center">
-				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
-				<Flex className={styles.links}>
-					<Link to={ROUTES.questions.page} className={styles['first-link']}>
-						<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
-					</Link>
-				</Flex>
-			</Flex>
-			{isLoading ? (
-				<HeaderSkeleton />
-			) : (
-				!hasOnlyLogo &&
-				(profile?.firstName ? (
-					<AuthorizedBlock firstName={profile.firstName} avatarURL={profile.avatarUrl} />
-				) : (
-					<UnauthorizedBlock />
-				))
-			)}
+		<header className="header-background">
+			<div className="header-container">
+				<div className={styles.header}>
+					<Flex align="center">
+						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
+						<Flex className={styles.links}>
+							<NavLink
+								to={ROUTES.questions.page}
+								className={({ isActive }) =>
+									classNames(styles['questions-link'], {
+										[styles.active]: isActive || location.pathname.includes('/questions/'),
+									})
+								}
+							>
+								<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
+							</NavLink>
+						</Flex>
+					</Flex>
+					{isLoading ? (
+						<HeaderSkeleton />
+					) : (
+						!hasOnlyLogo &&
+						(profile?.firstName ? (
+							<AuthorizedBlock firstName={profile.firstName} avatarURL={profile.avatarUrl} />
+						) : (
+							<UnauthorizedBlock />
+						))
+					)}
+				</div>
+			</div>
 		</header>
 	);
 };

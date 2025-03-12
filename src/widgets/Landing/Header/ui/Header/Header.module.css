@@ -15,15 +15,20 @@
   margin-left: 42px;
 }
 
-.first-link {
+.questions-link {
   display: inline-flex;
   align-items: start;
   padding: 6px 10px;
   border-radius: 12px;
-  background-color: var(--color-black-30);	
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
 
-.first-link > * {
+.questions-link.active {
+  background-color: var(--color-black-30);
+}
+
+.questions-link.active > * {
   color: var(--color-purple-800);
 }
 
