@@ -17,7 +17,13 @@ export const LeavingPageBlocker = ({ isBlocked, children }: LeavingPageBlockerPr
 		<>
 			{children}
 			{blocker.state === 'blocked' && (
-				<BlockerDialog onCancel={blocker.reset} onOk={blocker.proceed} />
+				<BlockerDialog
+					isOpen={blocker.state === 'blocked'}
+					onClose={blocker.reset}
+					message={blocker.state === 'blocked' ? 'Are you sure you want to leave?' : ''}
+					onCancel={blocker.reset}
+					onOk={blocker.proceed}
+				/>
 			)}
 		</>
 	);
