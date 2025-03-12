@@ -59,6 +59,7 @@ export interface GetQuestionsListParamsRequest {
 	complexity?: number[];
 	rate?: number[];
 	keywords?: string[];
+	skillFilterMode?: string;
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
