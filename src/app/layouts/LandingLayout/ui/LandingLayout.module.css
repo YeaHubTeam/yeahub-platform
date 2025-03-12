@@ -6,8 +6,7 @@
 
 .container {
   flex: 1 1 auto;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
+  margin: 0 auto var(--container-m-b-desktop);
   width: 100%;
   max-width: var(--container-width);
   min-height: 100vh;
@@ -15,7 +14,13 @@
 
 @media screen and (width <= 1439px) {
   .container {
-    max-width: var(--container-width-lg);
+    padding: 0 30px;
+  }
+}
+
+@media screen and (width <= 1023px) {
+  .container {
+    margin-bottom: var(--container-m-b-tablet);
   }
 }
   
@@ -27,13 +32,14 @@
   
 @media screen and (width <= 767px) {
   .container {
+    margin-bottom: var(--container-m-b-mobile);
+    padding: 0 10px;
     max-width: var(--container-width-sm);
   }
 }
   
 @media screen and (width <= 576px) {
   .container {
-    padding: 0 var(--container-padding-16);
     max-width: var(--container-width-mobile);
   }
 }

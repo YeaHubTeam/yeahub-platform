@@ -1,20 +1,21 @@
 .additional {
-  width: 360px;
+  min-width: 360px;
+  max-width: 392px;
   height: auto;
 }
 
 .back-button {
-  margin: 24px 0;
+  margin-bottom: 24px;
 }
 
-@media (width < 1024px) {
+@media screen and (width <= 1023px) {
   .back-button {
-    margin: 20px 0;
+    margin-bottom: 20px;
   }
 }
 
-@media (width < 768px) {
+@media screen and (width <= 767px) {
   .back-button {
-    margin: 16px 0;
+    margin-bottom: 16px;
   }
 }
