@@ -12,8 +12,8 @@ import styles from './LandingLayout.module.css';
 export const LandingLayout = () => {
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.container}>
-				<Header />
+			<Header />
+			<div className="layout-container">
 				<Suspense>
 					<AutoScrollToTop>
 						<Outlet />
