@@ -16,21 +16,3 @@ export const skillByIdMock = http.get<
 
 	return HttpResponse.json(skill);
 });
-
-export const deleteSkillsByIdMock = http.delete<
-	{ skillId: string },
-	DefaultBodyType,
-	{ success: boolean } | { message: string }
->(`${process.env.API_URL}${skillApiUrls.deleteSkillById}`, ({ params }) => {
-	const { skillId } = params;
-
-	const skillIndex = skillsMock.data.findIndex((skill) => String(skill.id) === skillId);
-
-	if (skillIndex === -1) {
-		return HttpResponse.json({ message: 'Навык не найден' }, { status: 404 });
-	}
-
-	skillsMock.data.splice(skillIndex, 1);
-
-	return HttpResponse.json({ success: true });
-});
