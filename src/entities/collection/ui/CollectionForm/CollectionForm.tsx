@@ -33,8 +33,8 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 
-	const watchPaidOrFree = watch('paidOrFree', '');
-	const watchQuestions = watch('questions', []);
+	const isFree = watch('isFree', false);
+	const collectionQuestions = watch('questions', []);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
@@ -50,14 +50,14 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 
 	const handleSelectQuestion = (question: { title: string; id: number }) => {
 		setSelectedQuestions((prev) => [...prev, question]);
-		setValue('questions', [...watchQuestions, question.id]);
+		setValue('questions', [...collectionQuestions, question.id]);
 	};
 
 	const handleUnselectQuestion = (id: number) => {
 		setSelectedQuestions((prev) => prev.filter((item) => item.id !== id));
 		setValue(
 			'questions',
-			watchQuestions.filter((questionId: number) => questionId !== id),
+			collectionQuestions.filter((questionId: number) => questionId !== id),
 		);
 	};
 
@@ -110,17 +110,11 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 					</Flex>
 					<Flex gap="60">
 						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'paid'}
-								onChange={() => setValue('paidOrFree', 'paid')}
-							/>
+							<Radio checked={!isFree} onChange={() => setValue('isFree', false)} />
 							{t(Collections.TARIFF_PAID)}
 						</Label>
 						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'free'}
-								onChange={() => setValue('paidOrFree', 'free')}
-							/>
+							<Radio checked={isFree} onChange={() => setValue('isFree', true)} />
 							{t(Collections.TARIFF_FREE)}
 						</Label>
 					</Flex>
@@ -143,7 +137,7 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
 						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
 					</Flex>
-					<FormControl name="keywordsCollection" control={control}>
+					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div className={styles.select}>

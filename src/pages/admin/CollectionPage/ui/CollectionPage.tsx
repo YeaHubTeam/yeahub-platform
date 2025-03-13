@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
@@ -7,17 +8,27 @@ import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
-import { collectionsMock } from '@/entities/collection';
+import { useGetCollectionByIdQuery, useGetCollectionQuestionsQuery } from '@/entities/collection';
 
 import { AdditionalInfo, CollectionBody, CollectionHeader } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
-// import { CollectionPageSkeleton } from './CollectionPage.skeleton';
+import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
+	const { collectionId } = useParams<{ collectionId: string }>();
+	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
+	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({ collectionId });
+	const questions = collectionQuestions?.data;
 
-	const collection = collectionsMock[0];
+	if (isLoading || isFetching) {
+		return <CollectionPageSkeleton />;
+	}
+
+	if (!collectionQuestions) {
+		return null;
+	}
 
 	if (!collection) {
 		return null;
@@ -87,7 +98,7 @@ export const CollectionPage = () => {
 				<section className={styles.wrapper}>
 					<div className={styles.main}>
 						{renderHeaderAndActions()}
-						<CollectionBody collection={collection} />
+						<CollectionBody collection={{ ...collection, questions }} />
 					</div>
 					<div className={styles.additional}>
 						<AdditionalInfo collection={collection} className={styles['additional-info-wrapper']} />
