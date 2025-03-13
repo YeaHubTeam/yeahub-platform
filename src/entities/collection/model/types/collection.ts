@@ -14,7 +14,7 @@ export interface Collection {
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
-	questionsQuantity?: number;
+	questionsCount?: number;
 	keywords?: string[];
 	questions?: Question[];
 	specializations?: Specialization[];

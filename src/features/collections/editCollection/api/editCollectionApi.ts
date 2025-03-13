@@ -32,7 +32,7 @@ const editCollectionApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
-			invalidatesTags: [ApiTags.COLLECTIONS, ApiTags.SKILL_DETAIL],
+			invalidatesTags: [ApiTags.COLLECTIONS],
 		}),
 	}),
 });

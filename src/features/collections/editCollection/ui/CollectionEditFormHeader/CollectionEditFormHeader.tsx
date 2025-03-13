@@ -24,29 +24,7 @@ export const CollectionEditFormHeader = () => {
 	};
 
 	const onEditCollection = async (data: CollectionEditFormValues) => {
-		const {
-			id,
-			description,
-			imageSrc,
-			isFree,
-			keywords,
-			questions,
-			specializations,
-			title,
-			collectionImage,
-		} = data;
-		const requestData = {
-			id,
-			description,
-			imageSrc,
-			isFree,
-			keywords,
-			questions,
-			specializations,
-			title,
-			collectionImage,
-		};
-		await editCollectionMutation(requestData);
+		await editCollectionMutation(data);
 	};
 
 	return (
