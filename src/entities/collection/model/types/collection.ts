@@ -15,7 +15,7 @@ export interface Collection {
 	createdAt?: string;
 	updatedAt?: string;
 	questionsQuantity?: number;
-	keywordsCollection?: string[];
+	keywords?: string[];
 	questions?: Question[];
 	specializations?: Specialization[];
 	tariff: CollectionTariff;
@@ -24,11 +24,12 @@ export interface Collection {
 
 export type CreateOrEditCollectionFormValues = Pick<
 	Collection,
-	'id' | 'title' | 'description' | 'imageSrc' | 'keywordsCollection'
+	'id' | 'title' | 'description' | 'imageSrc' | 'keywords'
 > & {
-	paidOrFree: 'paid' | 'free';
+	isFree: boolean;
 	questions: number[];
 	specializations: number[];
+	createdBy?: string;
 };
 
 export interface GetCollectionsListParamsRequest {
@@ -42,6 +43,7 @@ export interface GetCollectionsListParamsRequest {
 export type GetCollectionsListResponse = Response<Collection[]>;
 
 export type GetCollectionByIdResponse = Collection;
+export type GetCollectionQuestionsResponse = Response<Question[]>;
 
 export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;
