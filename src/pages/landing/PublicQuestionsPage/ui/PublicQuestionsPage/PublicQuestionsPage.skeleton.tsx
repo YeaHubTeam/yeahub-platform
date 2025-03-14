@@ -10,7 +10,7 @@ import styles from './PublicQuestionsPage.module.css';
 
 export const PublicQuestionsPageSkeleton = () => {
 	return (
-		<Flex gap="20" align="start">
+		<Flex gap="20" align="start" className={styles.wrapper}>
 			<Card className={styles.main}>
 				<FullQuestionsListSkeleton />
 				<PublicQuestionPagePaginationSkeleton />

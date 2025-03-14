@@ -1,7 +1,7 @@
 .training-block {
   display: grid;
   grid-template-columns: 598px 578px;
-  margin-bottom: 130px;
+  margin-bottom: var(--section-m-b-desktop);
   padding: 40px 40px 40px 0;
   border-radius: 24px;
   background-color: var(--text-color-white);
@@ -82,11 +82,16 @@
 
 }
 
+@media screen and (width <= 1023px) {
+  .training-block {
+    margin-bottom: var(--section-m-b-tablet);
+  }
+}
+
 @media screen and (width <= 992px) {
   .training-block {
     display: flex;
     flex-direction: column;
-    margin-bottom: 80px;
     padding: 40px;
     padding-top: 143px;
   }
@@ -122,9 +127,9 @@
 
 @media screen and (width <= 767px) {
   .training-block {
-    margin-bottom: 40px;
+    margin-bottom: var(--section-m-b-mobile);
     padding: 24px 16px;
-    padding-top: 121px;
+    padding-top: 120px;
     border-radius: 24px 16px;
   }
 

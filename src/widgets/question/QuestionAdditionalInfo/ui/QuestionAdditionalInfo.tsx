@@ -46,19 +46,19 @@ export const QuestionAdditionalInfo = ({
 		<>
 			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
-					<Flex direction="column" gap="16">
+					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_LEVEL)}
 						</Text>
 						<QuestionGradeList rate={rate} complexity={complexity} />
 					</Flex>
-					<Flex direction="column" gap="16">
+					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_SKILLS)}
 						</Text>
 						<SkillList skills={questionSkills} onClick={onMoveToQuestionsWithSkills} />
 					</Flex>
-					<Flex direction="column" gap="16">
+					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_KEYWORDS)}
 						</Text>

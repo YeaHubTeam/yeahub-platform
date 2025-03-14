@@ -28,7 +28,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 
 	return (
 		<header className={styles.header}>
-			<Flex align="center">
+			<Flex className={styles['header-nav']}>
 				<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 				{location.pathname === ROUTES.appRoute && (
 					<Flex className={styles.links}>

@@ -47,15 +47,17 @@ const PublicQuestionPage = () => {
 
 	return (
 		<Flex direction="column" align="start">
-			<Button
-				size="small"
-				onClick={onBack}
-				preffix={<Icon icon="altArrowLeft" color="purple-700" size={20} />}
-				variant="link-purple"
-				className={styles['back-button']}
-			>
-				{t(Translation.RETURN)}
-			</Button>
+			<Flex>
+				<Button
+					size="medium"
+					onClick={onBack}
+					preffix={<Icon icon="altArrowLeft" color="purple-700" size={20} />}
+					variant="link-purple"
+					className={styles['back-button']}
+				>
+					{t(Translation.RETURN)}
+				</Button>
+			</Flex>
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1}>
 					<QuestionHeader question={question} />
