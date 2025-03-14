@@ -37,7 +37,7 @@ export const CollectionsTable = ({
 			imageSrc: t(Collections.ICON_TITLE_SHORT),
 			title: t(Collections.TITLE_SHORT),
 			description: t(Collections.DESCRIPTION_SHORT),
-			questionsQuantity: t(Collections.QUESTIONS_SHORT),
+			questionsCount: t(Collections.QUESTIONS_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -54,7 +54,7 @@ export const CollectionsTable = ({
 			),
 			title: collection.title,
 			description: collection.description,
-			questionsQuantity: collection.questionsQuantity,
+			questionsCount: collection.questionsCount,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
