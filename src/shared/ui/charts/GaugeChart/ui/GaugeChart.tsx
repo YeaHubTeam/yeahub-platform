@@ -14,6 +14,15 @@ interface GaugeChartProps {
 	learned?: number;
 	percent?: number;
 }
+/**
+ * GaugeChart component displays progress as a circle.
+ * The fill color dynamically changes according to the progress value.
+ *
+ * @param total - Total number of questions.
+ * @param learned - Number of questions studied.
+ * @param percent - Progress percentage (0-100). If not provided, it is calculated as (learned / total) * 100.
+ * @returns JSX.Element
+ */
 
 export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 	const { t } = useTranslation(i18Namespace.interviewStatistics);
@@ -45,7 +54,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					r={circleRadius}
 					stroke="#F0E7FF"
 					strokeWidth={strokeWidth}
-					fill="none"
+					fill="#FDF4FF"
 				/>
 				<circle
 					className={styles['gauge-progress']}
