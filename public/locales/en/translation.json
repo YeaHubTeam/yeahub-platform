@@ -188,6 +188,10 @@
       }
     },
     "collections": {
+      "create": {
+        "success": "Collection successfully created",
+        "failed": "Collection could not be created"
+      },
       "edit": {
         "success": "Collection successfully changed",
         "failed": "Collection could not be changed"

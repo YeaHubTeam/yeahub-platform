@@ -9,26 +9,28 @@ import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
-import { collectionsMock } from '@/entities/collection';
+import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { AdditionalInfo, CollectionBody, CollectionHeader } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
-
-// import { CollectionPageSkeleton } from './CollectionPage.skeleton';
+import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
+	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const profileId = useAppSelector(getProfileId);
 	const { data: response } = useGetQuestionsListQuery({
 		collection: Number(collectionId),
 		profileId,
 	});
 
-	const collection = collectionsMock[0];
+	if (isLoading || isFetching) {
+		return <CollectionPageSkeleton />;
+	}
 
 	const questions = response?.data ?? [];
 

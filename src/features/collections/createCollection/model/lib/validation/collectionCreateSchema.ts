@@ -22,4 +22,5 @@ export const collectionCreateSchema: yup.ObjectSchema<CollectionCreateFormValues
 			.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 			.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		questions: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
+		createdBy: yup.string(),
 	});

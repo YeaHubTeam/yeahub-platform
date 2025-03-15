@@ -127,6 +127,8 @@ export enum Translation {
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
+	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
+	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',

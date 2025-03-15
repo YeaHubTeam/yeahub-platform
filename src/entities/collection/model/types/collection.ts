@@ -29,6 +29,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 	isFree: boolean;
 	questions: number[];
 	specializations: number[];
+	createdBy?: string;
 	collectionImage?: string;
 };
 
