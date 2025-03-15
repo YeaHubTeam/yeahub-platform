@@ -22,11 +22,12 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
+	const { questionsCount, ...restCollection } = collection;
 	const methods = useForm<CollectionEditFormValues>({
 		resolver: yupResolver(collectionEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
-			...collection,
+			...restCollection,
 			questions: formatToFormField(collection.questions),
 			specializations: formatToFormField(collection.specializations),
 			keywords: collection.keywords,
@@ -41,7 +42,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<CollectionEditFormHeader />
 					<Card className={styles.content}>
-						<CollectionForm />
+						<CollectionForm isEdit />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

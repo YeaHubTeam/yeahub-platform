@@ -14,7 +14,7 @@ export interface Collection {
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
-	questionsQuantity?: number;
+	questionsCount?: number;
 	keywords?: string[];
 	questions?: Question[];
 	specializations?: Specialization[];
@@ -30,6 +30,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 	questions: number[];
 	specializations: number[];
 	createdBy?: string;
+	collectionImage?: string;
 };
 
 export interface GetCollectionsListParamsRequest {

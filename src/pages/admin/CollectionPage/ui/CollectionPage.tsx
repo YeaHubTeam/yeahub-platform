@@ -2,13 +2,16 @@ import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
 
-import { useGetCollectionByIdQuery, useGetCollectionQuestionsQuery } from '@/entities/collection';
+import { useGetCollectionByIdQuery } from '@/entities/collection';
+import { getProfileId } from '@/entities/profile';
+import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { AdditionalInfo, CollectionBody, CollectionHeader } from '@/widgets/Collection';
 
@@ -19,16 +22,17 @@ export const CollectionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
-	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({ collectionId });
-	const questions = collectionQuestions?.data;
+	const profileId = useAppSelector(getProfileId);
+	const { data: response } = useGetQuestionsListQuery({
+		collection: Number(collectionId),
+		profileId,
+	});
 
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;
 	}
 
-	if (!collectionQuestions) {
-		return null;
-	}
+	const questions = response?.data ?? [];
 
 	if (!collection) {
 		return null;
@@ -85,7 +89,7 @@ export const CollectionPage = () => {
 				})}
 			>
 				{renderHeaderAndActions()}
-				<CollectionBody collection={collection} />
+				<CollectionBody questions={questions} />
 			</section>
 		</>
 	);
@@ -98,7 +102,7 @@ export const CollectionPage = () => {
 				<section className={styles.wrapper}>
 					<div className={styles.main}>
 						{renderHeaderAndActions()}
-						<CollectionBody collection={{ ...collection, questions }} />
+						<CollectionBody questions={questions} />
 					</div>
 					<div className={styles.additional}>
 						<AdditionalInfo collection={collection} className={styles['additional-info-wrapper']} />
