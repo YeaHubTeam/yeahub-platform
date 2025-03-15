@@ -13,7 +13,7 @@ import {
 	useTransitionStyles,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '@/shared/ui/Text';
 
@@ -62,6 +62,25 @@ export const Tooltip = ({
 
 	const isShowTooltip = isOpen && title && shouldShowTooltip;
 
+	useEffect(() => {
+		if (isShowTooltip) {
+			const element = document.querySelector(
+				'div[data-floating-ui-portal] > div > div',
+			) as HTMLElement;
+			if (element) {
+				element.style.overflowY = 'visible';
+			}
+		}
+		return () => {
+			const element = document.querySelector(
+				'div[data-floating-ui-portal] > div > div',
+			) as HTMLElement;
+			if (element) {
+				element.style.overflowY = 'scroll';
+			}
+		};
+	}, [isShowTooltip]);
+
 	return (
 		<>
 			<span ref={refs.setReference} {...getReferenceProps()}>
@@ -76,19 +95,17 @@ export const Tooltip = ({
 						style={{ ...transitionStyles, ...floatingStyles }}
 						{...getFloatingProps()}
 					>
-						<div className={styles.content}>
-							<FloatingArrow
-								tipRadius={1}
-								fill="white"
-								stroke={`var(--color-${color === 'violet' ? 'purple' : color}-${color === 'gray' ? '300' : color === 'yellow' ? '800' : '600'})`}
-								strokeWidth={1}
-								height={8}
-								width={16}
-								context={context}
-								ref={arrowRef}
-							/>
-							<Text variant="body3-accent">{title}</Text>
-						</div>
+						<FloatingArrow
+							tipRadius={1}
+							fill="white"
+							stroke={`var(--color-${color === 'violet' ? 'purple' : color}-${color === 'gray' ? '300' : color === 'yellow' ? '800' : '600'})`}
+							strokeWidth={1}
+							height={8}
+							width={16}
+							context={context}
+							ref={arrowRef}
+						/>
+						<Text variant="body3-accent">{title}</Text>
 					</div>
 				</FloatingPortal>
 			)}
