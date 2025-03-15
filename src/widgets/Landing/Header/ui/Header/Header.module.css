@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.header-background {
+  height: 77px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-black-50);
+  background-color: var(--color-white-900)
+}
+
 .links {
   display: flex;
   align-items: center;

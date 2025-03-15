@@ -13,7 +13,7 @@ export const LandingLayout = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Header />
-			<div className="layout-container">
+			<div className="container">
 				<Suspense>
 					<AutoScrollToTop>
 						<Outlet />

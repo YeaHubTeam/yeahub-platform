@@ -27,8 +27,8 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	const { data: profile, isLoading } = useProfileQuery();
 
 	return (
-		<header className="header-background">
-			<div className="header-container">
+		<header className={styles['header-background']}>
+			<div className="container">
 				<div className={styles.header}>
 					<Flex align="center">
 						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
