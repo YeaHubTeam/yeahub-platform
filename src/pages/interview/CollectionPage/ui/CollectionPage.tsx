@@ -1,16 +1,21 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover } from '@/shared/ui/Popover';
+import { Text } from '@/shared/ui/Text';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getProfileId } from '@/entities/profile';
+import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
 
@@ -20,10 +25,27 @@ import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
+	const { t } = useTranslation(i18Namespace.questions);
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
-	const { isMobile, isTablet } = useScreenSize();
 	const profileId = useAppSelector(getProfileId);
+	const { data: response, isSuccess } = useGetQuestionsListQuery({
+		collection: Number(collectionId),
+		profileId,
+	});
+	const { isMobile, isTablet } = useScreenSize();
+
+	const questions = response?.data ?? [];
+
+	const isEmptyData = isSuccess && questions.length === 0;
+
+	if (isEmptyData) {
+		return (
+			<Text variant="body4" color="black-700" className={styles['no-questions']}>
+				{t(Questions.PREVIEW_EMPTY)}
+			</Text>
+		);
+	}
 
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;
@@ -89,7 +111,7 @@ export const CollectionPage = () => {
 				})}
 			>
 				{renderHeaderAndActions()}
-				<CollectionBody collection={collection} />
+				<CollectionBody questions={questions} />
 			</section>
 		</>
 	);
@@ -100,7 +122,7 @@ export const CollectionPage = () => {
 				<section className={styles.wrapper}>
 					<div className={styles.main}>
 						{renderHeaderAndActions()}
-						<CollectionBody collection={collection} />
+						<CollectionBody questions={questions} />
 					</div>
 					<div className={styles.additional}>
 						<AdditionalInfo collection={collection} className={styles['additional-info-wrapper']} />
