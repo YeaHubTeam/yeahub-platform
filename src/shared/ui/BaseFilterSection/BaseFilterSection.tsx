@@ -1,4 +1,4 @@
-import { Key, ReactNode } from 'react';
+import { Key } from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -18,15 +18,9 @@ export interface BaseFilterSectionProps<T> {
 	title: string;
 	data: DateType<T>[];
 	onClick: (id: T) => void;
-	getDefaultIcon?: (item: DateType<T>) => ReactNode;
 }
 
-export const BaseFilterSection = <T,>({
-	title,
-	data,
-	onClick,
-	getDefaultIcon,
-}: BaseFilterSectionProps<T>) => {
+export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
 		onClick(id);
 	};
@@ -46,15 +40,13 @@ export const BaseFilterSection = <T,>({
 							label={item.title}
 							theme="primary"
 							prefix={
-								item.imageSrc ? (
+								item.imageSrc && (
 									<img
 										style={{ width: 20, height: 20 }}
 										src={item.imageSrc}
 										alt={item.title}
 										loading="lazy"
 									/>
-								) : (
-									getDefaultIcon && getDefaultIcon(item)
 								)
 							}
 							onClick={onHandleClick(item.id)}

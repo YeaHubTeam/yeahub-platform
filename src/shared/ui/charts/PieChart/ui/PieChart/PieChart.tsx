@@ -27,7 +27,7 @@ export const PieChart = ({ totalAttempt, pieData }: PieChartProps) => {
 	});
 
 	return (
-		<Flex justify="between" align="center" gap="48">
+		<Flex justify="between" align="center">
 			<PieSegmentList segments={segments} totalAttempt={totalAttempt} />
 			<LegendList segments={segments} />
 		</Flex>

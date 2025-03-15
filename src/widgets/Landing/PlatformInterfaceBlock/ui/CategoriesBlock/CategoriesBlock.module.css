@@ -85,6 +85,10 @@
 }
 
 @media screen and (width <=1439px) {
+  .content-container {
+    width: 100%;
+  }
+
   .content {
     padding: 20px;
     max-height: none;
@@ -96,14 +100,14 @@
 
   .categories-block {
     align-items: center;
-    gap: 20px;
+    gap: 24px;
   }
 }
 
 @media screen and (width <= 992px) {
   .categories-block {
     align-items: center;
-    gap: 69px;
+    gap: 30px;
   }
 
   .categories {
@@ -163,6 +167,10 @@
 
   .categories {
     gap: 11.26px;
+  }
+
+  .categories-block {
+    gap: 24px;
   }
 
   .categories-input {

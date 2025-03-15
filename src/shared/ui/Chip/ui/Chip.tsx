@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import React, { forwardRef } from 'react';
-import { Icon } from 'yeahub-ui-kit';
+
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import { ChipProps } from '../model/types';
 
@@ -40,13 +42,17 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				ref={ref}
 			>
 				{prefix && <div className={styles['chip-prefix']}>{prefix}</div>}
-				{label && <span className={styles['chip-label']}>{label}</span>}{' '}
+				{label && (
+					<Text variant="body3-accent" color="black-800" className={styles['chip-label']}>
+						{label}
+					</Text>
+				)}{' '}
 				{onDelete && (
 					<Icon
 						className={styles['chip-delete-icon']}
-						icon="xCircle"
+						icon="closeCircle"
 						size={20}
-						color={disabled ? '--palette-ui-black-100' : '--palette-ui-red-600'}
+						color={disabled ? 'black-100' : 'red-600'}
 						onClick={onDelete}
 					/>
 				)}

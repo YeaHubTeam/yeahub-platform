@@ -30,7 +30,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 		<header className={styles['header-background']}>
 			<div className="container">
 				<div className={styles.header}>
-					<Flex align="center">
+					<Flex className={styles['header-nav']}>
 						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 						<Flex className={styles.links}>
 							<NavLink

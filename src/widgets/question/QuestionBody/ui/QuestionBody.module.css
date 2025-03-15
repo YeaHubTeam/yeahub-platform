@@ -1,0 +1,11 @@
+.short-block,
+.long-block {
+  padding: 20px 16px;
+}
+
+@media screen and (width <= 767px) {
+  .short-block,
+  .long-block {
+    padding: 20px 10px;
+  }
+}

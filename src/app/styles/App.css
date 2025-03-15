@@ -15,6 +15,10 @@ body {
   user-select: none;
 }
 
+li {
+  list-style: none;
+}
+
 input, textarea {
   user-select: text;
 }

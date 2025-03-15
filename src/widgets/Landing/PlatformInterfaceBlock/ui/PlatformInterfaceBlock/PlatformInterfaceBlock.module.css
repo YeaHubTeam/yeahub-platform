@@ -1,7 +1,7 @@
 .platform-interface-block {
-  margin: 0 -92px;
-  margin-bottom: 124px;
-  padding: 40px 92px 49px;
+  margin: 0 -112px;
+  margin-bottom: var(--section-m-b-desktop);
+  padding: 40px 112px;
   border-radius: 24px;
   background-color: var(--background-nav-item);
 }
@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   font-weight: var(--font-weight-500);
 }
 
@@ -30,9 +30,10 @@
 
 .caption-block p {
   align-self: flex-end;
-  padding-left: 325px;
+  padding-right: 100px;
+  width: 495px;
   color: var(--text-color-light);
-  line-height: 26px;
+  line-height: 20px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-m);
 }
@@ -44,8 +45,8 @@
 
 @media screen and (width <= 1439px) {
   .platform-interface-block {
-    margin: 0;
-    margin-bottom: 80px;
+    margin: 0 -40px;
+    margin-bottom: var(--section-m-b-desktop);
     padding: 40px;
     border-radius: 24px;
     background-color: var(--background-nav-item);
@@ -78,10 +79,18 @@
   }
 }
 
+@media screen and (width <= 1023px) {
+  .platform-interface-block {
+    margin: 0;
+    margin-bottom: var(--section-m-b-tablet);
+    padding: 40px;
+  }
+}
+
 @media screen and (width <= 767px) {
   .platform-interface-block {
-    margin-bottom: 35px;
-    padding: 24px 16px;
+    margin-bottom: var(--section-m-b-mobile);
+    padding: 24px 16px 42px;
     border-radius: 12px;
   }
 
@@ -115,6 +124,7 @@
   }
   
   .caption-block p {
+    width: 100%;
     line-height: 18px;
     font-size: var(--font-size-p-s);
   }
