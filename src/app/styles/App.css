@@ -23,13 +23,6 @@ input, textarea {
   user-select: text;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-  width: 100%;
-  max-width: var(--container-width);
-}
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -58,9 +51,22 @@ div[data-floating-ui-portal] > div > div {
   overflow-y: scroll;
 }
 
+.container {
+  flex: 1 1 auto;
+  margin: 0 auto var(--container-m-b-desktop);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
 @media screen and (width <= 1439px) {
   .container {
-    max-width: var(--container-width-lg);
+    padding: 0 30px;
+  }
+}
+
+@media screen and (width <= 1023px) {
+  .container {
+    margin-bottom: var(--container-m-b-tablet);
   }
 }
 
@@ -72,13 +78,14 @@ div[data-floating-ui-portal] > div > div {
 
 @media screen and (width <= 767px) {
   .container {
+    margin-bottom: var(--container-m-b-mobile);
+    padding: 0 10px;
     max-width: var(--container-width-sm);
   }
 }
 
 @media screen and (width <= 576px) {
   .container {
-    padding: 0 var(--container-padding-16);
     max-width: var(--container-width-mobile);
   }
 }
