@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import { useRef } from 'react';
-import ReactDOM from 'react-dom';
 import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './styles.module.css';
+import styles from './Modal.module.css';
 
 type ModalProps = {
 	title: string;
@@ -30,18 +29,15 @@ export const Modal = ({
 	children,
 }: ModalProps) => {
 	const modalRef = useRef<HTMLDivElement>(null);
-
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const target = e.target as Node;
 		if (modalRef.current && !modalRef.current.contains(target)) {
 			onClose();
 		}
 	};
-
 	const handleClickXCircle = () => {
 		onClose();
 	};
-
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
 		e.stopPropagation();
 		if (e.key === 'Escape') {
@@ -51,7 +47,7 @@ export const Modal = ({
 
 	const isButtons = buttonOutlineText || buttonPrimaryText;
 
-	const modalContent = (
+	return (
 		<div
 			role="button"
 			aria-labelledby="У вас открыто модальное окно"
@@ -104,6 +100,4 @@ export const Modal = ({
 			</div>
 		</div>
 	);
-
-	return isOpen ? ReactDOM.createPortal(modalContent, document.body) : null;
 };

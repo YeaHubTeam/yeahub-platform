@@ -30,8 +30,8 @@ export const BlockerDialog = ({
 }: BlockerDialogModalProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
-	const handleOk = () => onOk?.();
-	const handleCancel = () => onCancel?.();
+	const handleOk = () => onOk && onOk();
+	const handleCancel = () => onCancel && onCancel();
 
 	return (
 		<Modal
