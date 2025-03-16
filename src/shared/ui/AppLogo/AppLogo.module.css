@@ -34,7 +34,7 @@
   pointer-events: none;
 }
 
-@media (width <=768px) {
+@media (width <=767px) {
   .logo-text {
     display: none;
   }

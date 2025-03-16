@@ -1,10 +1,10 @@
-import classNames from 'classnames';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
@@ -32,7 +32,9 @@ const PublicQuestionsPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const [queryParams] = useSearchParams();
+	const { isMobile, isTablet } = useScreenSize();
 	const keywords = queryParams.get('keywords');
+
 	const { status, ...getParams } = filter;
 
 	const preparedSpecializationsIds = useMemo(() => {
@@ -112,32 +114,39 @@ const PublicQuestionsPage = () => {
 		/>
 	);
 
+	const filterButton = (
+		<div className={styles['filters-mobile']}>
+			<IconButton
+				className={styles['filters-mobile-button']}
+				aria-label="go to filters"
+				form="square"
+				icon={<Icon icon="slidersHorizontal" color="black-700" />}
+				size="small"
+				variant={'tertiary'}
+				onClick={onToggle}
+			/>
+			<Drawer
+				rootName="body"
+				isOpen={isOpen}
+				onClose={onClose}
+				className={styles.drawer}
+				hasCloseButton
+			>
+				<Card className={styles['drawer-content']}>{renderFilters()}</Card>
+			</Drawer>
+		</div>
+	);
+
 	return (
 		<Flex gap="20" align="start" className={styles.wrapper}>
-			<div className={styles['filters-mobile']}>
-				<IconButton
-					className={classNames({ [styles.active]: isOpen })}
-					aria-label="go to filters"
-					form="square"
-					icon={<Icon icon="slidersHorizontal" color="black-700" />}
-					size="small"
-					variant={'tertiary'}
-					onClick={onToggle}
-				/>
-				{isOpen && (
-					<Drawer
-						rootName="body"
-						isOpen={isOpen}
-						onClose={onClose}
-						className={styles.drawer}
-						hasCloseButton
-					>
-						<Card className={styles['drawer-content']}>{renderFilters()}</Card>
-					</Drawer>
-				)}
-			</div>
 			<Card className={styles.main}>
-				<FullQuestionsList questions={questions.data} isPublic additionalTitle={additionalTitle} />
+				<FullQuestionsList
+					questions={questions.data}
+					isPublic
+					additionalTitle={additionalTitle}
+					filterButton={filterButton}
+				/>
+
 				{questions.total > questions.limit && (
 					<PublicQuestionPagePagination
 						questionsResponse={questions}
@@ -149,7 +158,7 @@ const PublicQuestionsPage = () => {
 					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
 				)}
 			</Card>
-			<Card className={styles.filters}>{renderFilters()}</Card>
+			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</Flex>
 	);
 };

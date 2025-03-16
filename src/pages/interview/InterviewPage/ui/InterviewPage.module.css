@@ -37,17 +37,3 @@
     width: 100%;
   }
 }
-
-@media (width < 480px) {
-  .interview {
-    gap: 20px;
-  }
-
-  .questions {
-    gap: 16px;
-  }
-
-  .history {
-    gap: 16px;
-  }
-}

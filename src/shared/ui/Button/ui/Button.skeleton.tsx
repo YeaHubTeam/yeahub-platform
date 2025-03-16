@@ -12,12 +12,14 @@ export const ButtonSkeleton = ({
 	fullWidth,
 	size = 'medium',
 	destructive,
-}: ButtonProps) => {
+	width,
+}: ButtonProps & { width?: number }) => {
 	const tagName = getTagName(variant);
 
 	return (
 		<Skeleton
 			borderRadius={12}
+			width={width}
 			className={classnames(
 				styles[tagName],
 				styles[`${tagName}-${size}`],

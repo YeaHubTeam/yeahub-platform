@@ -1,15 +1,11 @@
 .accordion {
-  padding-bottom: 24px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
   transition: padding 0.2s ease-in-out;
 }
 
 .accordion.accordion-opened {
   padding-bottom: 0;
-}
-
-.accordion + .accordion {
-  margin-top: 24px;
 }
 
 .heading {
@@ -79,23 +75,12 @@
 }
 
 
-@media (width < 768px) { 
+@media (width <= 767px) { 
+  .accordion {
+    padding: 20px 0;
+  }
+
   .content {
     padding-left: 16px;
-  }
-}
-
-@media (width < 480px) { 
-  .accordion {
-    padding-bottom: 8px;
-  }
-
-  .accordion + .accordion {
-    margin-top: 16px;
-  }
-
-  .content {
-    padding-bottom: 8px;
-    padding-left: 0;
   }
 }

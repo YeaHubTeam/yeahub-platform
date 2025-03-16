@@ -5,9 +5,11 @@ import { Flex } from '../../Flex';
 
 import styles from './BackHeader.module.css';
 
-type Props = { children?: ReactNode };
+export interface BackHeaderProps {
+	children?: ReactNode;
+}
 
-export const BackHeader = ({ children }: Props) => {
+export const BackHeader = ({ children }: BackHeaderProps) => {
 	return (
 		<Flex justify="between" align="center" className={styles['backheader']}>
 			<BackButton />

@@ -1,5 +1,6 @@
 export enum Translation {
 	LANGUAGE = 'language',
+	RETURN = 'return',
 	CREATE = 'create',
 	SEARCH = 'search',
 	REMOVE_SELECTED = 'remove.selected',
@@ -298,11 +299,9 @@ export enum Questions {
 	PREVIEW_TITLE = 'preview.title',
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY = 'preview.empty',
-
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
-
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
@@ -310,6 +309,8 @@ export enum Questions {
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOW_ALL = 'categories.show.all',
 	CATEGORIES_HIDE = 'categories.hide',
+	PROGRESS_TITLE = 'progress.title',
+	PROGRESS_DESCRIPTION = 'progress.description',
 	COMPLEXITY_TITLE = 'complexity.title',
 	COMPLEXITY_TITLE_SHORT = 'complexity.title.short',
 	COMPLEXITY_LABEL = 'complexity.label',
@@ -340,6 +341,7 @@ export enum Questions {
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
+	AUTHOR = 'author',
 	IMAGE_ALT = 'image.alt',
 	MORE = 'more',
 	LEARN = 'learn',

@@ -79,7 +79,6 @@ export const PersonalInformationTabForm = () => {
 							{(field) => <Input {...field} className={styles.input} size="S" />}
 						</FormControl>
 					</Flex>
-
 					<FormControl
 						name="specialization"
 						control={control}
@@ -94,7 +93,6 @@ export const PersonalInformationTabForm = () => {
 							/>
 						)}
 					</FormControl>
-
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
 							name="phone"
@@ -110,10 +108,9 @@ export const PersonalInformationTabForm = () => {
 							label={t(Profile.FORM_EMAIL)}
 							className={styles.form}
 						>
-							{(field) => <Input {...field} className={styles.input} />}
+							{(field) => <Input {...field} className={styles.input} disabled />}
 						</FormControl>
 					</Flex>
-
 					<FormControl
 						name="location"
 						control={control}

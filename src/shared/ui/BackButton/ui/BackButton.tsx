@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { IconButton, Icon } from 'yeahub-ui-kit';
@@ -12,7 +11,7 @@ import styles from './BackButton.module.css';
  * Button to return to the previous page
  */
 
-export const BackButton = memo(() => {
+export const BackButton = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.translation);
 
@@ -31,6 +30,4 @@ export const BackButton = memo(() => {
 			className={styles.button}
 		/>
 	);
-});
-
-BackButton.displayName = 'BackButton';
+};
