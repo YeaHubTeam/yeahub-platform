@@ -5,6 +5,7 @@
 
 .footer {
   padding: 64px 112px 18px;
+  max-height: 373px;
   border-radius: 20px 20px 0 0;
   background: var(--background-footer);
   color: var(--text-color-white);
@@ -149,6 +150,7 @@
 @media (width <= 767px) {
   .footer {
     padding: 19px 16px 18px;
+    max-height: 327px;
   }
 
   .container {
