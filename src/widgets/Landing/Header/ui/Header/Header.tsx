@@ -1,12 +1,15 @@
 import classNames from 'classnames';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
 import { useProfileQuery } from '@/entities/auth';
@@ -24,8 +27,28 @@ interface HeaderProps {
 export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	const { t } = useTranslation(i18Namespace.landing);
 
+	const [isPopover, setIsPopover] = useState(false);
+
 	const { data: profile, isLoading } = useProfileQuery();
 
+	const navigate = useNavigate();
+
+	const settingsMenuItems: PopoverMenuItem[] = [
+		{
+			title: t(Landing.HEADER_LINKS_QUESTIONS_LIST),
+			onClick: () => {
+				navigate(ROUTES.questions.page);
+				setIsPopover(false);
+			},
+		},
+		{
+			title: t(Landing.TRAINING_TITLE),
+			onClick: () => {
+				navigate(ROUTES.auth.login.page);
+				setIsPopover(false);
+			},
+		},
+	];
 	return (
 		<header className={styles['header-background']}>
 			<div className="container">
@@ -43,7 +66,23 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 							>
 								<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
 							</NavLink>
+							<NavLink
+								to={ROUTES.auth.login.page}
+								className={({ isActive }) =>
+									classNames(styles['questions-link'], {
+										[styles.active]: isActive || location.pathname.includes('/questions/'),
+									})
+								}
+							>
+								<Text variant="body3-accent">{t(Landing.TRAINING_TITLE)}</Text>
+							</NavLink>
 						</Flex>
+						<Popover menuItems={settingsMenuItems} isOpen={isPopover}>
+							<button className={styles.button} onClick={() => setIsPopover(!isPopover)}>
+								<p>Подготовка</p>
+								<Icon icon="arrowShortDown" size={24} className={isPopover ? styles.arrow : ''} />
+							</button>
+						</Popover>
 					</Flex>
 					{isLoading ? (
 						<HeaderSkeleton />

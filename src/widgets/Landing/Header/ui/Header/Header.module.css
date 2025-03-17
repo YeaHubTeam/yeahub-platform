@@ -25,6 +25,17 @@
   gap: 20px;
 }
 
+.button { 
+  display: none;
+  cursor: pointer;
+  border: none;
+  background-color: var(--color-white-900);
+}
+
+.arrow {
+  transform: rotate(180deg); 
+}
+
 .questions-link {
   display: inline-flex;
   align-items: start;
@@ -63,6 +74,15 @@
 @media (width <= 767px) {
   .header {
     padding: 10px 0;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    display: none;
   }
 
   .header-nav {
