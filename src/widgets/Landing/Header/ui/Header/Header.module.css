@@ -66,6 +66,15 @@
     margin-bottom: 24px;
   }
 
+  .button {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    display: none;
+  }
+
   .header-nav {
     gap: 32px;
   }
@@ -74,15 +83,6 @@
 @media (width <= 767px) {
   .header {
     padding: 10px 0;
-  }
-
-  .button {
-    display: flex;
-    align-items: center;
-  }
-
-  .links {
-    display: none;
   }
 
   .header-nav {
