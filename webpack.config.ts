@@ -38,6 +38,8 @@ export default (env: EnvVariables) => {
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
     httpsKey: path.resolve(__dirname, 'cert', 'localhost.key'),
     httpsCert: path.resolve(__dirname, 'cert', 'localhost.crt'),
+    robots: path.resolve(__dirname, 'public', 'robots.txt'),
+    sitemap: path.resolve(__dirname, 'public', 'sitemap.xml'),
   };
 
   // Пытаемся загрузить .env файл, если он существует
