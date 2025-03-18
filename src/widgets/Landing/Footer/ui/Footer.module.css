@@ -121,16 +121,13 @@
 
 @media screen and (width <= 1439px) {
   .footer {
-    padding: 37px 0 18px;
+    padding: 64px 0 18px;
   }
 
   .container {
     max-width: var(--container-width-lg);
   }
 
-  .about {
-    margin-bottom: 16px;
-  }
 
   .footer hr {
     margin-bottom: 15px;
