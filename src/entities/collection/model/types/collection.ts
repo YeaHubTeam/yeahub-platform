@@ -31,9 +31,6 @@ export interface GetCollectionsListParamsRequest {
 	page?: number;
 	limit?: number;
 	search?: string;
-	specialization?: number[] | number;
-	titleOrDescriptionSearch?: string;
-	keywords?: string[];
 	isFree?: boolean;
 }
 

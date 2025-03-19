@@ -47,7 +47,7 @@ const PublicQuestionsPage = () => {
 	};
 
 	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ title: value });
+		handleFilterChange({ titleOrDescriptionSearch: value });
 	};
 
 	const onChangeSkills = (skills: number[] | undefined) => {
@@ -105,7 +105,7 @@ const PublicQuestionsPage = () => {
 									skills: filter.skills,
 									rate: filter.rate,
 									complexity: filter.complexity,
-									title: filter.title,
+									title: filter.titleOrDescriptionSearch,
 									specialization: filter.specialization,
 								}}
 								specializationLimit={MAX_LIMIT_CATEGORIES}
@@ -125,7 +125,7 @@ const PublicQuestionsPage = () => {
 						/>
 					)}
 					{allQuestions.data.length === 0 && (
-						<EmptyStub text={getParams.title} resetFilters={resetFilters} />
+						<EmptyStub text={getParams.titleOrDescriptionSearch} resetFilters={resetFilters} />
 					)}
 				</Card>
 			</div>
@@ -141,7 +141,7 @@ const PublicQuestionsPage = () => {
 							skills: filter.skills,
 							rate: filter.rate,
 							complexity: filter.complexity,
-							title: filter.title,
+							title: filter.titleOrDescriptionSearch,
 							specialization: filter.specialization,
 						}}
 						specializationLimit={MAX_LIMIT_CATEGORIES}

@@ -8,7 +8,7 @@ interface FilterFromURL {
 	rate: string | null;
 	complexity: string | null;
 	status: string | null;
-	title: string | null;
+	titleOrDescriptionSearch: string | null;
 	page: string | null;
 	orderBy?: string | null;
 	order?: string | null;
@@ -20,7 +20,7 @@ interface FilterFromUser {
 	skills?: number[];
 	complexity?: number[];
 	rate?: number[];
-	title?: string;
+	titleOrDescriptionSearch?: string;
 	status?: QuestionFilterStatus;
 	page?: number;
 	orderBy?: string;
@@ -53,7 +53,7 @@ export const useQueryFilter = () => {
 			rate: params.get('rate'),
 			complexity: params.get('complexity'),
 			status: params.get('status'),
-			title: params.get('title'),
+			titleOrDescriptionSearch: params.get('titleOrDescriptionSearch'),
 			orderBy: params.get('orderBy'),
 			order: params.get('order'),
 			specialization: params.get('specialization'),
@@ -66,7 +66,9 @@ export const useQueryFilter = () => {
 			skills: params.skills ? params.skills.split(',').map(Number) : undefined,
 			complexity: params.complexity ? params.complexity.split(',').map(Number) : undefined,
 			rate: params.rate ? params.rate.split(',').map(Number) : undefined,
-			title: params.title ? params.title : undefined,
+			titleOrDescriptionSearch: params.titleOrDescriptionSearch
+				? params.titleOrDescriptionSearch
+				: undefined,
 			status: params.status ? (params.status as QuestionFilterStatus) : 'all',
 			page: params.page ? Number(params.page) : undefined,
 			orderBy: params.orderBy ? params.orderBy : undefined,
@@ -90,8 +92,13 @@ export const useQueryFilter = () => {
 					return;
 				}
 
-				if (key === 'status' && newFilters.status === params.get('page')) {
+				if (key === 'status' && newFilters.status === params.get('status')) {
 					params.set(key, 'all');
+					return;
+				}
+				if (key === 'titleOrDescriptionSearch') {
+					params.set('titleOrDescriptionSearch', curFilter.toString());
+					params.delete('title');
 					return;
 				}
 

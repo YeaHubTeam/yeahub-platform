@@ -31,7 +31,7 @@ const CollectionsPage = () => {
 	});
 
 	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ title: value });
+		handleFilterChange({ titleOrDescriptionSearch: value });
 	};
 
 	const onChangeSpecialization = (specialization: number | number[]) => {
@@ -72,7 +72,7 @@ const CollectionsPage = () => {
 					)}
 
 					{allCollections.data.length === 0 && (
-						<EmptyStub text={filter.title} resetFilters={resetFilters} />
+						<EmptyStub text={filter.titleOrDescriptionSearch} resetFilters={resetFilters} />
 					)}
 				</Card>
 			</div>
@@ -84,7 +84,7 @@ const CollectionsPage = () => {
 						onChangeSpecialization={onChangeSpecialization}
 						onChangeIsFree={onChangeIsFree}
 						filter={{
-							title: filter.title,
+							title: filter.titleOrDescriptionSearch,
 							specialization: filter.specialization,
 							tariff: filter.isFree,
 						}}

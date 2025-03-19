@@ -15,13 +15,7 @@ const collectionApi = baseApi.injectEndpoints({
 		getCollectionsList: build.query<GetCollectionsListResponse, GetCollectionsListParamsRequest>({
 			query: (params) => ({
 				url: collectionApiUrls.getCollectionsList,
-				params: {
-					page: params.page || 1,
-					limit: params.limit || 10,
-					titleOrDescriptionSearch: params.titleOrDescriptionSearch || '',
-					keywords: params.keywords || [],
-					specializations: params.specialization || [],
-				},
+				params: { page: 1, limit: 10, ...params },
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
