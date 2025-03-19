@@ -66,6 +66,8 @@
 }
 
 .company-name {
+  display: flex;
+  align-items: center;
   color: var(--text-color-the-lightest);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
@@ -121,7 +123,7 @@
 
 @media screen and (width <= 1439px) {
   .footer {
-    padding: 64px 0 18px;
+    padding: 60px 0 18px;
   }
 
   .container {
@@ -146,7 +148,7 @@
 
 @media (width <= 767px) {
   .footer {
-    padding: 19px 16px 18px;
+    padding: 16px 16px 18px;
     max-height: 327px;
   }
 
@@ -157,6 +159,10 @@
 }
 
 @media (width <= 576px) {
+  .footer {
+    padding: 25px 16px 18px;
+  }
+
   .container-logo {
     margin-bottom: 11px;
   }
@@ -166,7 +172,13 @@
   }
 
   .container-social {
-    margin-bottom: 12px;
+    margin-bottom: 50px;
+  }
+}
+
+@media  (width <= 404px) {
+  .container-social {
+    margin-bottom: 20px;
   }
 }
 
