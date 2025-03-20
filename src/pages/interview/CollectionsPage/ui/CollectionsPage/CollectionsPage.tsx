@@ -27,11 +27,12 @@ const CollectionsPage = () => {
 	});
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
-		...filter,
+		titleOrDescriptionSearch: filter.title,
+		specializations: filter.specialization,
 	});
 
 	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ titleOrDescriptionSearch: value });
+		handleFilterChange({ title: value });
 	};
 
 	const onChangeSpecialization = (specialization: number | number[]) => {
@@ -72,7 +73,7 @@ const CollectionsPage = () => {
 					)}
 
 					{allCollections.data.length === 0 && (
-						<EmptyStub text={filter.titleOrDescriptionSearch} resetFilters={resetFilters} />
+						<EmptyStub text={filter.title} resetFilters={resetFilters} />
 					)}
 				</Card>
 			</div>
@@ -84,7 +85,7 @@ const CollectionsPage = () => {
 						onChangeSpecialization={onChangeSpecialization}
 						onChangeIsFree={onChangeIsFree}
 						filter={{
-							title: filter.titleOrDescriptionSearch,
+							title: filter.title,
 							specialization: filter.specialization,
 							tariff: filter.isFree,
 						}}

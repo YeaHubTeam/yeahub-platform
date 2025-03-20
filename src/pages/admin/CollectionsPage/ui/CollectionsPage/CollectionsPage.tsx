@@ -30,7 +30,7 @@ const CollectionsPage = () => {
 	};
 
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { page, titleOrDescriptionSearch } = filter;
+	const { page, title } = filter;
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
 		page,
@@ -70,9 +70,7 @@ const CollectionsPage = () => {
 					/>
 				)}
 
-				{collections.data.length === 0 && (
-					<EmptyStub text={titleOrDescriptionSearch} resetFilters={resetFilters} />
-				)}
+				{collections.data.length === 0 && <EmptyStub text={title} resetFilters={resetFilters} />}
 			</Card>
 		</Flex>
 	);

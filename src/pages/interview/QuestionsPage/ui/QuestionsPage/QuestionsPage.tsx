@@ -70,7 +70,7 @@ const QuestionsPage = () => {
 	const questions = status === 'all' ? allQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ titleOrDescriptionSearch: value });
+		handleFilterChange({ title: value });
 	};
 
 	const onChangeSkills = (skills: number[] | undefined) => {
@@ -134,7 +134,7 @@ const QuestionsPage = () => {
 								rate: filter.rate,
 								complexity: filter.complexity,
 								status: filter.status,
-								title: filter.titleOrDescriptionSearch,
+								title: filter.title,
 							}}
 							skillsLimit={MAX_LIMIT_CATEGORIES}
 						/>
@@ -152,7 +152,7 @@ const QuestionsPage = () => {
 						/>
 					)}
 					{questions.data.length === 0 && (
-						<EmptyStub text={getParams.titleOrDescriptionSearch} resetFilters={resetFilters} />
+						<EmptyStub text={getParams.title} resetFilters={resetFilters} />
 					)}
 				</Card>
 			</div>
@@ -169,7 +169,7 @@ const QuestionsPage = () => {
 							rate: filter.rate,
 							complexity: filter.complexity,
 							status: filter.status,
-							title: filter.titleOrDescriptionSearch,
+							title: filter.title,
 						}}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
 					/>
