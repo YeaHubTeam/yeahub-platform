@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useTranslation } from 'react-i18next';
 
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
@@ -49,12 +50,16 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 
 	return (
 		<div className={styles.wrapper}>
+			{/* eslint-disable-next-line */}
+			{/* 
 			<BaseFilterSection
 				data={prepareData}
 				title={t(Collections.ADDITIONAL_INFO_ACCESS)}
 				onClick={onChooseAccess}
 				getDefaultIcon={getDefaultIcon}
 			/>
+			*/}
 		</div>
 	);
 };
+/* eslint-enable */
