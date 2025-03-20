@@ -52,7 +52,7 @@ export const QuestionPage = () => {
 
 	return (
 		<Flex gap="20">
-			<Flex gap="20" direction="column" flex={1}>
+			<Flex gap="20" direction="column" flex={1} maxWidth>
 				<QuestionHeader question={question} />
 				<QuestionActions questionId={questionId} checksCount={checksCount} />
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
