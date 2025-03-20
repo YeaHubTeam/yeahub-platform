@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 392px;
   gap: 20px;
-  margin-bottom: 130px;
+  margin-bottom: var(--section-m-b-desktop);
   font-weight: var(--font-weight-500);
 }
 
@@ -106,7 +106,6 @@ ul {
   line-height: 27px;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-l);
-  text-wrap: nowrap;
 }
 
 .question p {
@@ -128,7 +127,16 @@ ul {
   .interface-caption {
     font-size: var(--font-size-p-m);
   }
+}
 
+@media screen and (width <= 1023px) {
+  .container {
+    margin-bottom: var(--section-m-b-tablet);  
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
 }
 
 @media screen and (width <= 992px) {
@@ -140,7 +148,6 @@ ul {
   }
 
   .title {
-    margin-bottom: 23px;
     padding: 0 91px;
     line-height: 43px;
     font-size: var(--font-size-large-34);
@@ -162,14 +169,14 @@ ul {
 }
 
 @media screen and (width <= 767px) {
-  .interview-mode-block {
-    margin-bottom: 40px;
-    padding: 7px 16px 0;
-  }
-
   .container {
     gap: 16px;
-    margin-bottom: 0;
+    margin-bottom: var(--section-m-b-mobile);
+  }
+
+  .interview-mode-block {
+    margin-bottom: 40px;
+    padding: 0 16px;
   }
 
   .interface-header {
@@ -177,6 +184,7 @@ ul {
   }
 
   .title {
+    margin-bottom: 16px;
     font-size: var(--font-size-large-34);
   }
 
@@ -201,7 +209,6 @@ ul {
     font-size: var(--font-size-p-xss);
   }
   
-
   .interface-icon {
     width: 10px;
     height: 10px;
@@ -239,8 +246,6 @@ ul {
   .question p {
     line-height: 9px;
   }
-
-
 }
 
 @media screen and (width <= 576px) {
@@ -256,5 +261,4 @@ ul {
     height: 87px;
     border-radius: 11.12px;
   }
-
 }

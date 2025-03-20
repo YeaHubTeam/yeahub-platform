@@ -4,17 +4,10 @@
 }
 
 .footer {
-  margin-top: 130px;
   padding: 64px 112px 18px;
   border-radius: 20px 20px 0 0;
   background: var(--background-footer);
   color: var(--text-color-white);
-}
-
-.container {
-  margin: 0 auto;  
-  width: 100%;
-  max-width: var(--container-width);
 }
 
 .container-logo {
@@ -144,10 +137,6 @@
 }
 
 @media (width <= 992px) {
-  .footer {
-    margin-top: 80px;
-  }
-
   .container {
     max-width: var(--container-width-tablet);
   }
@@ -159,7 +148,6 @@
 
 @media (width <= 767px) {
   .footer {
-    margin-top: 40px;
     padding: 19px 16px 18px;
   }
 

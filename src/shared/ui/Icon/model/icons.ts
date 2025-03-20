@@ -8,6 +8,7 @@ import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
+import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import More from '@/shared/assets/icons/more.svg';
@@ -16,6 +17,7 @@ import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import ThumbsDown from '@/shared/assets/icons/thumbsDown.svg';
 import ThumbsUp from '@/shared/assets/icons/thumbsUp.svg';
+import Trash from '@/shared/assets/icons/trash.svg';
 
 import { IconComponent, IconName } from './types';
 
@@ -38,4 +40,6 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowShortDown: ArrowShortDown,
 	slidersHorizontal: SlidersHorizontal,
 	search: Search,
+	closeCircle: CloseCircle,
+	trash: Trash,
 };

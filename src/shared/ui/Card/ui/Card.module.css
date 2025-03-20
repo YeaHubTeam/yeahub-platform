@@ -117,15 +117,8 @@
   bottom: 24px;
 }
 
-@media (width <= 1024px) {
-  .card {
-    padding: 16px;
-  } 
-}
-
 @media (width <= 767px) {   
   .card {
-    gap: 0; 
     padding: 20px 10px;
     max-width: 100%;
     border-radius: 12px;
