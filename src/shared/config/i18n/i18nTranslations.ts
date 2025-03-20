@@ -99,6 +99,8 @@ export enum Translation {
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
+	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.success',
+	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.failed',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',

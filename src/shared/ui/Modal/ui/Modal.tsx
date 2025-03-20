@@ -3,8 +3,9 @@ import { useRef } from 'react';
 import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
+import { Text } from '@/shared/ui/Text';
 
-import styles from './styles.module.css';
+import styles from './Modal.module.css';
 
 type ModalProps = {
 	title: string;
@@ -28,18 +29,15 @@ export const Modal = ({
 	children,
 }: ModalProps) => {
 	const modalRef = useRef<HTMLDivElement>(null);
-
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const target = e.target as Node;
 		if (modalRef.current && !modalRef.current.contains(target)) {
 			onClose();
 		}
 	};
-
 	const handleClickXCircle = () => {
 		onClose();
 	};
-
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
 		e.stopPropagation();
 		if (e.key === 'Escape') {
@@ -69,17 +67,31 @@ export const Modal = ({
 					aria-label="Закрыть модальное окно"
 					onKeyDown={handleKeyDown}
 				/>
-				<h3 className={styles.title}>{title}</h3>
-				<div className={styles.content}>{children}</div>
+				<Text className={styles.title} variant="body6">
+					{title}
+				</Text>
+				<Text className={styles.text} variant="body3">
+					{children}
+				</Text>
 				{isButtons && (
 					<div className={styles.buttons}>
 						{buttonPrimaryText && (
-							<Button variant="primary" size="large" onClick={buttonPrimaryClick}>
+							<Button
+								style={{ width: '100%' }}
+								variant="primary"
+								size="large"
+								onClick={buttonPrimaryClick}
+							>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
-							<Button variant="outline" size="large" onClick={buttonOutlineClick}>
+							<Button
+								style={{ width: '100%' }}
+								variant="outline"
+								size="large"
+								onClick={buttonOutlineClick}
+							>
 								{buttonOutlineText}
 							</Button>
 						)}
