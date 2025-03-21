@@ -4,12 +4,14 @@ import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
 import { useProfileQuery } from '@/entities/auth';
+import { getIsEdit } from '@/entities/profile';
 
 import { useUpdateAvatarMutation } from '@/features/profile/editProfileForm';
 
@@ -22,6 +24,7 @@ interface UserImageBlockProps {
 export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
 	const { data: profile } = useProfileQuery();
+	const isEdit = useAppSelector(getIsEdit);
 	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -66,6 +69,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 						<button
 							className={styles['image-button']}
 							onClick={profile?.avatarUrl ? onToggle : undefined}
+							disabled={!isEdit}
 						>
 							<div>
 								<ImageLoader

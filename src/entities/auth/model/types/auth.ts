@@ -51,7 +51,7 @@ export interface User {
 	avatarUrl: string;
 	createdAt: string;
 	updatedAt: string;
-	isEmailVerified: boolean;
+	isEmailVerified?: boolean;
 	userRoles: Role[];
 }
 

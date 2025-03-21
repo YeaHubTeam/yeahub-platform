@@ -11,6 +11,7 @@ export {
 	getSpecializationId,
 	getIsEmptySpecialization,
 	getIsEmailVerified,
+	getIsEdit,
 } from './model/selectors/profileSelectors';
 
 export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';

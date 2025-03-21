@@ -4,4 +4,5 @@ import { FullProfile } from '@/entities/auth';
 export interface ProfileState {
 	isEmailSent: boolean;
 	fullProfile: FullProfile | null;
+	isEdit: boolean;
 }

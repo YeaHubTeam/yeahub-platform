@@ -4,6 +4,7 @@ import { route } from '@/shared/helpers/route';
 
 import { userApiUrls } from '../model/constants/userConstants';
 import {
+	GetUserProfileByIdResponse,
 	GetUserByIdResponse,
 	GetUserRolesListResponse,
 	GetUsersListParamsRequest,
@@ -23,6 +24,12 @@ const userApi = baseApi.injectEndpoints({
 		getUserById: build.query<GetUserByIdResponse, string>({
 			query: (userId) => ({
 				url: route(userApiUrls.getUserById, userId),
+			}),
+			providesTags: [ApiTags.USER_DETAIL],
+		}),
+		getUserProfileById: build.query<GetUserProfileByIdResponse, string>({
+			query: (userId) => ({
+				url: route(userApiUrls.getRelatedUserById, userId),
 			}),
 			providesTags: [ApiTags.USER_DETAIL],
 		}),
@@ -54,6 +61,7 @@ const userApi = baseApi.injectEndpoints({
 export const {
 	useGetUsersListQuery,
 	useGetUserByIdQuery,
+	useGetUserProfileByIdQuery,
 	useGetUserRolesListQuery,
 	useAddUserRolesMutation,
 	useRemoveUserRolesMutation,

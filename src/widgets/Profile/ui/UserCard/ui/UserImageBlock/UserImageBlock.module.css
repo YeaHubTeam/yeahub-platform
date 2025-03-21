@@ -60,6 +60,10 @@
   cursor: pointer;
 }
 
+.image-button:disabled {
+  cursor: default;
+}
+
 .loader{
   top: 50%;
   left: 50%;
@@ -68,8 +72,6 @@
 
 @media (width <=480px) {
   .card-image {
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: auto;
   }

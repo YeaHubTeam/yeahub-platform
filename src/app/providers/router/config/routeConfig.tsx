@@ -60,6 +60,7 @@ import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
+import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
@@ -431,6 +432,10 @@ export const router = createBrowserRouter([
 						},
 					},
 				],
+			},
+			{
+				path: ROUTES.users.route,
+				element: <UserProfilePage />,
 			},
 			{
 				path: '*',

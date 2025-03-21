@@ -108,6 +108,10 @@ export const ROUTES = {
 			page: '/dashboard/profile/edit',
 		},
 	},
+	users: {
+		route: 'users/:userId',
+		page: '/dashboard/users/:userId',
+	},
 	settings: {
 		route: 'settings',
 		page: '/dashboard/settings',

@@ -12,7 +12,7 @@ import { SkillsBlockList } from '../SkillsBlockList/SkillsBlockList';
 import styles from './SkillsBlock.module.css';
 
 interface SkillsBlockProps {
-	skillsList: Skill[];
+	skillsList: Skill[] | undefined;
 }
 export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
@@ -21,7 +21,7 @@ export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 		<Card withOutsideShadow>
 			<div className={styles['skills']}>
 				<SkillsBlockHeader />
-				{skillsList.length ? (
+				{skillsList?.length ? (
 					<SkillsBlockList skillsList={skillsList} />
 				) : (
 					<div>{t(Profile.SKILLS_EMPTY)}</div>

@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { useEffect } from 'react';
 
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { getFullProfile, getSpecializationId } from '@/entities/profile';
+import { getFullProfile, getSpecializationId, profileActions } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 
 import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
@@ -13,6 +14,11 @@ export const ProfilePage = () => {
 	const profile = useAppSelector(getFullProfile);
 	const specializationId = useAppSelector(getSpecializationId);
 	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId));
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(profileActions.setIsEdit(true));
+	}, []);
 
 	return (
 		profile && (
@@ -28,4 +34,4 @@ export const ProfilePage = () => {
 	);
 };
 
-export default ProfilePage as FC;
+export default ProfilePage;
