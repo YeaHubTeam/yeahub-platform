@@ -25,13 +25,31 @@
   gap: 20px;
 }
 
+.button { 
+  display: none;
+  cursor: pointer;
+  border: none;
+  background-color: var(--color-white-900);
+}
+
+.arrow {
+  transform: rotate(180deg); 
+}
+
 .questions-link {
   display: inline-flex;
   align-items: start;
   padding: 6px 10px;
+  width: 100%;
   border-radius: 12px;
   background-color: transparent;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.questions-link:hover{
+  width: 100%;
+  background-color:var(--color-black-30) ;
 }
 
 .questions-link.active {
@@ -53,6 +71,15 @@
 @media screen and (width <=1023px) {
   .header {
     margin-bottom: 24px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    display: none;
   }
 
   .header-nav {
