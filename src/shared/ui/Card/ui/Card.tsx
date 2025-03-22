@@ -130,7 +130,7 @@ export const Card = ({
 				[styles['card-outside-shadow']]: withOutsideShadow,
 			})}
 			style={{
-				height: isExpand ? `${contentHeight + 90}px` : '',
+				height: isExpand ? `${contentHeight + 120}px` : '',
 			}}
 		>
 			{(title || actionRoute) && (

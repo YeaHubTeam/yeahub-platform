@@ -34,7 +34,6 @@ export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
 	firstName: profile.firstName,
 	lastName: profile.lastName,
 	specialization: profile.profiles[0].specializationId,
-	phone: profile.phone,
 	email: profile.email,
 	location: profile.city,
 	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
@@ -69,7 +68,6 @@ export const mapFormToProfile = (
 		email: values.email,
 		firstName: values.firstName,
 		lastName: values.lastName,
-		phone: values.phone || '',
 		city: values.location || profile.city || '',
 		birthday: profile.birthday || null,
 		address: profile.address || '',

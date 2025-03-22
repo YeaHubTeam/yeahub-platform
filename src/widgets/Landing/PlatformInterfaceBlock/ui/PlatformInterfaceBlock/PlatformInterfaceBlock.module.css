@@ -45,7 +45,7 @@
 
 @media screen and (width <= 1439px) {
   .platform-interface-block {
-    margin: 0 -40px;
+    margin: 0 -30px;
     margin-bottom: var(--section-m-b-desktop);
     padding: 40px;
     border-radius: 24px;
