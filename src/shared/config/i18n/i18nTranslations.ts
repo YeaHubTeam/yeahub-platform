@@ -256,6 +256,7 @@ export enum InterviewQuiz {
 	START_QUIZ_LINK = 'start.quiz.link',
 	COMPLETE = 'complete',
 	NEXT = 'next',
+	CHECK = 'check.quiz',
 	A11Y_NEXT = 'a11y.next',
 	A11Y_PREV = 'a11y.prev',
 	ANSWER_SHOW = 'answer.show',
