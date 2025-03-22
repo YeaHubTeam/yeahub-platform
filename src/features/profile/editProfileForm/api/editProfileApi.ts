@@ -30,7 +30,6 @@ export const editProfileApi = baseApi.injectEndpoints({
 								firstName: profileInfo.user.firstName,
 								lastName: profileInfo.user.lastName,
 								country: profileInfo.user.country,
-								phone: profileInfo.user.phone,
 								city: profileInfo.user.city,
 								birthday: profileInfo.user.birthday,
 								address: profileInfo.user.address,

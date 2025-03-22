@@ -67,7 +67,6 @@ export enum Translation {
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
 	VALIDATION_EMAIL = 'validation.email',
-	VALIDATION_PHONE = 'validation.phone',
 	VALIDATION_LENGTH_MIN = 'validation.length.min',
 	VALIDATION_LENGTH_MAX = 'validation.length.max',
 	VALIDATION_PASSWORD_WEAK = 'validation.password.weak',
@@ -159,7 +158,6 @@ export enum Profile {
 	FORM_FIRSTNAME = 'form.firstname',
 	FORM_LASTNAME = 'form.lastname',
 	FORM_SPECIALIZATION = 'form.specialization',
-	FORM_PHONE = 'form.phone',
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
 	FORM_SKILLS = 'form.skills',

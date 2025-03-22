@@ -45,7 +45,6 @@
     "firstname": "Name",
     "lastname": "Last name",
     "specialization": "IT specialty",
-    "phone": "Contact number",
     "email": "Email for communication",
     "location": "Location",
     "skills": "Skills"

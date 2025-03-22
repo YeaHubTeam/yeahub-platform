@@ -28,7 +28,6 @@ export interface User {
 	id: string;
 	firstName: string;
 	lastName: string;
-	phone: string;
 	email: string;
 	country: string;
 	city: string;
@@ -48,7 +47,7 @@ export interface UserRolesMutationRequest {
 
 export type CreateOrEditUserFormValues = Pick<
 	User,
-	'id' | 'firstName' | 'lastName' | 'phone' | 'email' | 'country' | 'city' | 'address' | 'birthday'
+	'id' | 'firstName' | 'lastName' | 'email' | 'country' | 'city' | 'address' | 'birthday'
 > & {
 	userRoles: number[];
 	status?: UserStatus;

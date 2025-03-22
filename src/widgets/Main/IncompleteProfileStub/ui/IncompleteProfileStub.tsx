@@ -25,7 +25,6 @@ const getPercentProfileFullness = (user: FullProfile | null) => {
 		user.avatarUrl,
 		user.firstName,
 		user.lastName,
-		user.phone,
 		user.email,
 		user.city,
 		user.profiles[0].description,
