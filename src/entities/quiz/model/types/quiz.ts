@@ -82,6 +82,11 @@ export interface CreateNewQuizParamsRequest {
 }
 export type CreateNewQuizResponse = Omit<Quiz, 'endDate'>;
 
+export type interruptQuizRequest = {
+	data: CreateNewQuizResponse;
+	isInterrupted?: boolean;
+};
+
 export type GetActiveQuizResponse = Response<Omit<Quiz, 'endDate'>[]>;
 export interface GetActiveQuizParamsRequest {
 	profileId: string;

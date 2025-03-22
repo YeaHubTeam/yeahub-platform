@@ -21,6 +21,7 @@ import {
 	GetQuizByProfileIdResponse,
 	GetQuizHistoryParamsRequest,
 	GetQuizHistoryResponse,
+	interruptQuizRequest,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
@@ -119,6 +120,37 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		interruptQuiz: build.mutation<boolean, interruptQuizRequest>({
+			query: ({ data, ...params }) => {
+				return {
+					url: quizApiUrls.saveQuizResult,
+					method: 'POST',
+					body: data,
+					params,
+				};
+			},
+			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_STATISTICS],
+			async onQueryStarted({ data }, { queryFulfilled, extra, dispatch }) {
+				try {
+					await queryFulfilled;
+					await dispatch(
+						quizApi.endpoints.getActiveQuiz.initiate(
+							{ profileId: data.profileId, page: 1, limit: 1 },
+							{ forceRefetch: true },
+						),
+					).unwrap();
+					dispatch(clearActiveQuizState());
+
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
+					typedExtra.navigate(route(ROUTES.interview.quiz.page));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_FINISH_FAILED));
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
 		getQuizByProfileId: build.query<GetQuizByProfileIdResponse, GetQuizByProfileIdParamsRequest>({
 			query: ({ profileId, quizId }) => {
 				return {
@@ -145,4 +177,5 @@ export const {
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
+	useInterruptQuizMutation,
 } = quizApi;

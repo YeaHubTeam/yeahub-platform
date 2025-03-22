@@ -33,7 +33,25 @@
 .end-button {
   position: relative;
   margin-left: auto;
+  background-color: var(--button-background-destructive-secondary);
+  color: var(--button-text-color-destructive-secondary);
+  font-weight: var(--font-weight-600);
+
+  &:hover {
+    background-color: var(--button-background-destructive-secondary-hover);
+  }
+
+  &:focus {
+    border: 1px solid var(--button-border-destructive-secondary-focus);
+    background-color: var(--button-background-destructive-secondary-focus)
+  }
+
+  &:active {
+    background-color: var(--color-red-300);
+    color: var(--button-text-color-destructive-secondary-active);
+  }
 }
+
 
 .slider-card-skeleton{
   padding: 24px;
