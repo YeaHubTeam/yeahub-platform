@@ -1,0 +1,11 @@
+.param {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: var(--background-light-hover);
+}
+
+.value {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: var(--text-color-link-active);
+}

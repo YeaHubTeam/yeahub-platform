@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -19,6 +20,7 @@ interface PieSegmentListProps {
 
 export const PieSegmentList = ({ segments, totalAttempt }: PieSegmentListProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
+	const { isMobileS } = useScreenSize();
 	const strokeWidth = 10;
 	const gapAngle = 10;
 	const innerContainerSize = 307;
@@ -74,7 +76,11 @@ export const PieSegmentList = ({ segments, totalAttempt }: PieSegmentListProps) 
 						);
 					})}
 				</svg>
-				<Text className={styles['pie-chart-label']} color="black-700" variant="body4">
+				<Text
+					className={styles['pie-chart-label']}
+					color="black-700"
+					variant={isMobileS ? 'body2-strong' : 'body4'}
+				>
 					{t(Translation.TOTAL_QUESTIONS)}
 					<br />
 					{totalAttempt}

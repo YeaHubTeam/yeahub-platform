@@ -5,6 +5,14 @@ import { CheckboxProps } from '../model/types';
 
 import styles from './Checkbox.module.css';
 
+/**
+ * Checkbox component for selecting states (checked/unchecked).
+ *
+ * @param {string} label - Text label displayed next to the checkbox.
+ * @param {boolean} disabled - Disables the checkbox, making it inactive.
+ * @param {string} className - Additional CSS class.  .
+ */
+
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	({ label, className, ...props }, ref) => {
 		return (

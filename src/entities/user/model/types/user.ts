@@ -1,5 +1,8 @@
 import { Response } from '@/shared/types/types';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { FullProfile } from '@/entities/auth';
+
 export type UserStatus = 'public' | 'draft';
 
 export interface Permission {
@@ -12,7 +15,7 @@ export type RoleName =
 	| 'candidate'
 	| 'member'
 	| 'admin'
-	| 'HR'
+	| 'hr'
 	| 'candidate-free'
 	| 'candidate-premium';
 
@@ -28,7 +31,6 @@ export interface User {
 	id: string;
 	firstName: string;
 	lastName: string;
-	phone: string;
 	email: string;
 	country: string;
 	city: string;
@@ -39,6 +41,7 @@ export interface User {
 	createdAt: string;
 	userRoles: UserRole[];
 	isEmailVerified?: boolean;
+	profiles?: FullProfile;
 }
 
 export interface UserRolesMutationRequest {
@@ -48,7 +51,7 @@ export interface UserRolesMutationRequest {
 
 export type CreateOrEditUserFormValues = Pick<
 	User,
-	'id' | 'firstName' | 'lastName' | 'phone' | 'email' | 'country' | 'city' | 'address' | 'birthday'
+	'id' | 'firstName' | 'lastName' | 'email' | 'country' | 'city' | 'address' | 'birthday'
 > & {
 	userRoles: number[];
 	status?: UserStatus;
@@ -63,5 +66,7 @@ export type GetUsersListParamsRequest = {
 export type GetUsersListResponse = Response<User[]>;
 
 export type GetUserByIdResponse = User;
+
+export type GetUserProfileByIdResponse = FullProfile;
 
 export type UserFormValues = Omit<CreateOrEditUserFormValues, 'id'>;

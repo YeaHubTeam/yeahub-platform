@@ -65,6 +65,10 @@ const gapClasses: Record<FlexGap, string> = {
 	'120': styles.gap120,
 };
 
+const flexClasses: Record<number, string> = {
+	1: styles.flex1,
+};
+
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 export interface FlexProps extends DivProps {
 	/**
@@ -92,6 +96,10 @@ export interface FlexProps extends DivProps {
 	 */
 	gap?: FlexGap;
 	/**
+	 * A property that specifies how the block will be stretched relative to its neighbors
+	 */
+	flex?: number;
+	/**
 	 * A property indicating that the parent element will be stretched to its full possible width
 	 */
 	maxWidth?: boolean;
@@ -117,6 +125,7 @@ export interface FlexProps extends DivProps {
  * @param wrap
  * @param direction
  * @param gap
+ * @param flex
  * @param className
  * @param maxWidth
  * @param maxHeight
@@ -132,6 +141,7 @@ export const Flex = ({
 	wrap,
 	direction,
 	gap,
+	flex,
 	className = '',
 	maxWidth,
 	maxHeight,
@@ -150,6 +160,7 @@ export const Flex = ({
 				wrap && wrapClasses[wrap],
 				direction && directionClasses[direction],
 				gap && gapClasses[gap],
+				flex && flexClasses[flex],
 				maxWidth && styles['max-width'],
 				maxHeight && styles['max-height'],
 				className,

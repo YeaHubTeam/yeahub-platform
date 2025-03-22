@@ -10,7 +10,15 @@
 
   /* paddings */
   --container-padding: 0;
-  --container-padding-16: 16px;
+  --container-padding-mobile: 16px;
+
+  /* margins */
+  --section-m-b-mobile: 40px;
+  --section-m-b-tablet: 80px;
+  --section-m-b-desktop: 130px;
+  --container-m-b-mobile: 40px;
+  --container-m-b-tablet: 80px;
+  --container-m-b-desktop: 130px;
   
   /* transitions */
   --drawer-transition-speed: 0.3s;

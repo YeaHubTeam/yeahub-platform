@@ -17,6 +17,7 @@
 
 .card-header-title-center {
   justify-content: center;
+  margin-bottom: 24px;
 }
 
 .content {
@@ -116,15 +117,11 @@
   bottom: 24px;
 }
 
-@media (width <= 1024px) {
+@media (width <= 767px) {   
   .card {
-    padding: 16px;
-  } 
-}
-
-@media (width <= 768px) {   
-  .card {
-    max-width: 100%; 
+    padding: 20px 10px;
+    max-width: 100%;
+    border-radius: 12px;
   }
 
   .header {
@@ -135,12 +132,13 @@
 
   .link {
     position: absolute;
-    right: 20px;
+    right: 10px;
     bottom: 20px;
+    padding-top: 20px;
   }
 
   .content {
-    margin-bottom: 36px;
+    margin-bottom: 44px;
   }
 }
 
@@ -157,6 +155,12 @@
 
   .content {
     margin-bottom: 40px;
+  }
+}
+
+@media (width <= 368px) {
+  .card-header {
+    text-align: center;
   }
 }
 

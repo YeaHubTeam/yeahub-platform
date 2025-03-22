@@ -18,6 +18,7 @@ import {
 	useSaveQuizResultMutation,
 	useSlideSwitcher,
 	getIsAllQuestionsAnswered,
+	useInterruptQuizMutation,
 } from '@/entities/quiz';
 
 import styles from './InterviewQuizPage.module.css';
@@ -34,6 +35,7 @@ const InterviewQuizPage = () => {
 		limit: 1,
 	});
 	const [saveResult] = useSaveQuizResultMutation();
+	const [saveInteruptedResult] = useInterruptQuizMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
@@ -74,13 +76,27 @@ const InterviewQuizPage = () => {
 					answers: activeQuizQuestions,
 				},
 			};
-
 			saveResult(quizToSave);
 		}
 	};
 
+	const onInterruptQuiz = () => {
+		if (activeQuiz) {
+			const quizToSave = {
+				...activeQuiz.data[0],
+				response: {
+					answers: activeQuizQuestions.map((quest) => ({
+						...quest,
+						answer: quest.answer ?? 'UNKNOWN',
+					})),
+				},
+			};
+			saveInteruptedResult({ data: quizToSave, isInterrupted: true });
+		}
+	};
+
 	return (
-		<Flex direction="column" gap="24" className={styles.container}>
+		<Flex direction="column" gap="20" className={styles.container}>
 			<Card withOutsideShadow>
 				<div className={styles['progress-bar']}>
 					<p className={styles['progress-bar-title']}>{t(InterviewQuiz.TITLE)}</p>
@@ -95,7 +111,7 @@ const InterviewQuizPage = () => {
 				</div>
 			</Card>
 			<Card withOutsideShadow>
-				<Flex direction="column" gap="24" className={styles.question}>
+				<Flex direction="column" gap="20" className={styles.question}>
 					<QuestionNavPanel
 						goToNextSlide={onRightSlide}
 						goToPrevSlide={onPrevSlide}
@@ -114,13 +130,16 @@ const InterviewQuizPage = () => {
 						isAnswerVisible={isAnswerVisible}
 						setIsAnswerVisible={setIsAnswerVisible}
 					/>
-					<Button
-						className={styles['end-button']}
-						onClick={isNextButton ? onRightSlide : onSubmitQuiz}
-						disabled={isDisabled}
-					>
-						{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.COMPLETE)}
-					</Button>
+					<Flex direction="row">
+						<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>
+							{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.CHECK)}
+						</Button>
+						{isNextButton && (
+							<Button className={styles['end-button']} onClick={onInterruptQuiz}>
+								{t(InterviewQuiz.COMPLETE)}
+							</Button>
+						)}
+					</Flex>
 				</Flex>
 			</Card>
 		</Flex>

@@ -19,7 +19,7 @@ const questionApi = baseApi.injectEndpoints({
 		getQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
 			query: (params) => ({
 				url: questionApiUrls.getQuestionsList,
-				params: { page: 1, limit: 10, ...params },
+				params: { page: 1, limit: 10, skillFilterMode: 'ANY', ...params },
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),
@@ -44,7 +44,7 @@ const questionApi = baseApi.injectEndpoints({
 		getPublicQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
 			query: (params) => ({
 				url: questionApiUrls.getPublicQuestionsList,
-				params: { page: 1, limit: 10, ...params },
+				params: { page: 1, limit: 10, skillFilterMode: 'ANY', ...params },
 			}),
 			providesTags: [ApiTags.QUESTIONS],
 		}),

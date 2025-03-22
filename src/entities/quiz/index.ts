@@ -11,6 +11,7 @@ export {
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
+	useInterruptQuizMutation,
 } from './api/quizApi';
 
 export type {

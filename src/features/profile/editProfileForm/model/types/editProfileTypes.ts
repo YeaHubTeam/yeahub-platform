@@ -13,7 +13,6 @@ export type ProfileSchema = yup.InferType<typeof editProfileSchema>;
  * @param image        - Optional. URL of the user's profile image.
  * @param name         - Required. The user's name and last name, e.g., Aleksey Narodny.
  * @param specialization - Required. The user's specialization, e.g., "Web Developer" or "Graphic Designer."
- * @param phone        - Required. The user's phone number.
  * @param email        - Required. The user's email address.
  * @param location     - Optional. The user's location, e.g., "Moscow, Russia." (optional)
  * @param skillLevel   - Optional. The user's skill level, e.g., "Junior," "Mid," "Senior." (optional)
@@ -26,7 +25,6 @@ export interface EditProfileValues {
 	image?: FileList;
 	name: string;
 	specialization: string;
-	phone: string;
 	email: string;
 	location?: string;
 	skillLevel?: string;
@@ -39,7 +37,6 @@ export interface EditUserValue {
 	firstName: string;
 	lastName: string;
 	country: string;
-	phone: string;
 	city: string;
 	birthday: string | null;
 	address: string;
