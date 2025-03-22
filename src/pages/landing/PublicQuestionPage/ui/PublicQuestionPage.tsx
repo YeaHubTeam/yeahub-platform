@@ -1,25 +1,28 @@
-import classNames from 'classnames';
-import { useMemo } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Card } from '@/shared/ui/Card';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
-import { QuestionHeader, QuestionBody, AdditionalInfo } from '@/widgets/Question';
+import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
+import { QuestionBody } from '@/widgets/question/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader';
 
 import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
 
 const PublicQuestionPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
 	const { questionId } = useParams<{ questionId: string }>();
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const {
 		data: question,
@@ -29,12 +32,7 @@ const PublicQuestionPage = () => {
 		questionId,
 	});
 
-	const authorFullName = useMemo(() => {
-		if (question?.createdBy) {
-			const author = JSON.parse(question.createdBy);
-			return `${author.firstName} ${author.lastName}`;
-		}
-	}, [question]);
+	const onBack = () => navigate(ROUTES.questions.page);
 
 	if (isLoading || isFetching) {
 		return <PublicQuestionPageSkeleton />;
@@ -44,96 +42,41 @@ const PublicQuestionPage = () => {
 		return null;
 	}
 
-	const renderAdditionalInfo = (
-		<Flex gap="20" justify="between" className={styles['back-header']}>
-			<BackButton />
-			<div className={styles['popover-additional']}>
-				<Popover
-					body={() => (
-						<div className={styles['popover-additional-wrapper']}>
-							<Card>
-								<AdditionalInfo
-									className={styles['additional-info-wrapper']}
-									rate={question.rate}
-									keywords={question.keywords}
-									complexity={question.complexity}
-									questionSkills={question.questionSkills}
-									authorFullName={authorFullName}
-								/>
-							</Card>
-						</div>
-					)}
-				>
-					{({ onToggle, isOpen }) => (
-						<div>
-							<IconButton
-								className={isOpen ? styles.active : ''}
-								aria-label="go to additional info"
-								form="square"
-								icon={<PopoverIcon />}
-								size="S"
-								variant="tertiary"
-								onClick={onToggle}
-							/>
-						</div>
-					)}
-				</Popover>
-			</div>
-		</Flex>
-	);
-
-	const renderMobileOrTablet = (isMobile || isTablet) && (
-		<>
-			{renderAdditionalInfo}
-			<section
-				className={classNames(styles.wrapper, {
-					[styles.mobile]: isMobile,
-					[styles.tablet]: isTablet,
-				})}
-			>
-				<QuestionHeader
-					description={question.description}
-					status={question.status}
-					title={question.title}
-					isPublic
-				/>
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
-			</section>
-		</>
-	);
+	const { createdBy, rate, keywords, complexity, questionSkills, shortAnswer, longAnswer } =
+		question;
 
 	return (
-		<>
-			{renderMobileOrTablet || (
-				<section className={styles.wrapper}>
-					<div className={styles['back-button-wrapper']}>
-						<BackButton />
-					</div>
-					<div className={styles.content}>
-						<div className={styles.main}>
-							<QuestionHeader
-								description={question.description}
-								status={question.status}
-								title={question.title}
-								isPublic
-							/>
-							<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
-						</div>
-						<div className={styles.additional}>
-							<AdditionalInfo
-								rate={question.rate}
-								keywords={question.keywords}
-								complexity={question.complexity}
-								questionSkills={question.questionSkills}
-							/>
-							<p className={styles.author}>
-								Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-							</p>
-						</div>
-					</div>
-				</section>
-			)}
-		</>
+		<Flex direction="column" align="start">
+			<Flex>
+				<Button
+					size="medium"
+					onClick={onBack}
+					preffix={<Icon icon="altArrowLeft" color="purple-700" size={20} />}
+					variant="link-purple"
+					className={styles['back-button']}
+				>
+					{t(Translation.RETURN)}
+				</Button>
+			</Flex>
+			<Flex gap="20" maxWidth>
+				<Flex gap="20" direction="column" flex={1} maxWidth>
+					<QuestionHeader question={question} />
+					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+				</Flex>
+				{!isMobile && !isTablet && (
+					<Flex direction="column" gap="20" className={styles.additional}>
+						<QuestionAdditionalInfo
+							rate={rate}
+							createdBy={createdBy}
+							keywords={keywords}
+							complexity={complexity}
+							questionSkills={questionSkills}
+							route={ROUTES.interview.questions.page}
+						/>
+					</Flex>
+				)}
+			</Flex>
+		</Flex>
 	);
 };
 

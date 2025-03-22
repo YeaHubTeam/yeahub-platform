@@ -5,24 +5,28 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
+import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
+
 import styles from './TrainCollectionButton.module.css';
 
 interface TrainCollectionProps {
 	collectionId?: string;
-	isDisabled: boolean;
+	profileId: string;
 	variant?: 'tertiary' | 'link-gray';
 	onSuccess?: () => void;
 }
 
 export const TrainCollectionButton = ({
 	collectionId,
-	isDisabled,
+	profileId,
 	variant = 'tertiary',
 }: TrainCollectionProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
+
+	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
+
 	const handleTrainCollection = () => {
-		// eslint-disable-next-line no-console
-		console.log('Коллекция изучена успешно', collectionId);
+		createNewQuiz({ profileId, collection: Number(collectionId) });
 	};
 
 	return (
@@ -31,7 +35,7 @@ export const TrainCollectionButton = ({
 			preffix={<Icon icon="student" size={24} />}
 			variant={variant}
 			onClick={handleTrainCollection}
-			disabled={isDisabled}
+			disabled={isCreateNewQuizLoading}
 		>
 			{t(Collections.COLLECTIONS_TRAIN)}
 		</Button>

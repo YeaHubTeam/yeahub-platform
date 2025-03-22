@@ -56,7 +56,11 @@ export const webpackPlugins = ({
     // plugins.push(new BundleAnalyzerPlugin());
     plugins.push(
       new CopyPlugin({
-        patterns: [{ from: paths.locales, to: paths.buildLocales }],
+        patterns: [
+          { from: paths.locales, to: paths.buildLocales },
+          { from: paths.robots, to: paths.output },
+          { from: paths.sitemap, to: paths.output },
+        ],
       }),
     );
   }

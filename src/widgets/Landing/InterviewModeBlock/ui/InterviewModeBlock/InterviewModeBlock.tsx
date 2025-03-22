@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
 
-import QuizExample from '@/shared/assets/images/landing/quiz-example.png';
+import QuizExample from '@/shared/assets/images/landing/quiz-example.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -51,7 +51,7 @@ export const InterviewModeBlock = () => {
 							<img
 								className={styles.image}
 								src={QuizExample}
-								alt="quiz example"
+								alt="Топ-10 вопросов собеседований"
 								loading="lazy"
 								width={613}
 								height={189}

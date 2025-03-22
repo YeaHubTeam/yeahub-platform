@@ -21,14 +21,20 @@
     "paid": "Для участников",
     "free": "Для всех"
   },
+  "specialization": {
+    "title": "Специализация",
+    "label": "Выберите соответствующую специализацию"
+  },
+  "keywords": {
+    "title": "Ключевые слова",
+    "label": "Добавьте ключевые слова в текст"
+  },
+  "access": "Доступ:",
   "specializations": {
     "show.all": "Показать все",
     "hide": "Скрыть"
   },
   "search.placeholder": "Введите запрос...",
-  "access": "Доступ",
-  "specialization": "Специализация:",
-  "keywords": "Ключевые слова:",
   "questions": {
     "short": "Вопросы",
     "label": "Добавьте вопросы",
@@ -37,9 +43,11 @@
   "image.src": "Ссылка на картинку",
   "create.page.title": "Коллекция",
   "image.alt": "Изображение кода для вопроса",
+  "numberOfQuestions": "Количество вопросов",
   "collections": {
     "title": "Коллекции",
     "detail": "Подробнее",
     "train": "Тренировать"
-  }
+  },
+    "edit.page.title": "Изменение колекции"
 }

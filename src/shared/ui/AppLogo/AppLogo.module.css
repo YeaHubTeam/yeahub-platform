@@ -9,6 +9,7 @@
 .logo {
   width: 45px;
   height: 45px;
+  border-radius: 50%;
 }
 
 .logo-text {
@@ -33,7 +34,7 @@
   pointer-events: none;
 }
 
-@media (width <=768px) {
+@media (width <=767px) {
   .logo-text {
     display: none;
   }

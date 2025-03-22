@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -10,6 +11,7 @@ import { Input } from '@/shared/ui/Input';
 import { InputPhone } from '@/shared/ui/InputPhone';
 
 import { useProfileQuery } from '@/entities/auth';
+import { getIsEmptySpecialization } from '@/entities/profile';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
@@ -22,6 +24,7 @@ export const PersonalInformationTabForm = () => {
 	const { t } = useTranslation(i18Namespace.profile);
 	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
 	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
+	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 
 	const onImageChange = (image: string | null) => {
 		setValue('image', image);
@@ -76,14 +79,19 @@ export const PersonalInformationTabForm = () => {
 							{(field) => <Input {...field} className={styles.input} size="S" />}
 						</FormControl>
 					</Flex>
-
 					<FormControl
 						name="specialization"
 						control={control}
 						label={t(Profile.FORM_SPECIALIZATION)}
 						className={styles.form}
 					>
-						{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={[value]} />}
+						{({ onChange, value }) => (
+							<SpecializationSelect
+								onChange={onChange}
+								value={[value]}
+								disabled={!isSpecializationEmpty}
+							/>
+						)}
 					</FormControl>
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
@@ -100,10 +108,9 @@ export const PersonalInformationTabForm = () => {
 							label={t(Profile.FORM_EMAIL)}
 							className={styles.form}
 						>
-							{(field) => <Input {...field} className={styles.input} />}
+							{(field) => <Input {...field} className={styles.input} disabled />}
 						</FormControl>
 					</Flex>
-
 					<FormControl
 						name="location"
 						control={control}

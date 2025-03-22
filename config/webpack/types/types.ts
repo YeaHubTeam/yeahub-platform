@@ -10,6 +10,8 @@ export interface WebpackPaths {
   buildLocales: string;
   httpsKey: string;
   httpsCert: string;
+  robots: string;
+  sitemap: string;
 }
 
 export type WebpackMode = 'production' | 'development';

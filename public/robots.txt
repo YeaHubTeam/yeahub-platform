@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /dashboard/
+Allow: /
+Sitemap: https://yeahub.ru/sitemap.xml

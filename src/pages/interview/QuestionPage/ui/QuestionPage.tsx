@@ -1,37 +1,25 @@
-import classNames from 'classnames';
-import { useMemo } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useModal } from '@/shared/hooks/useModal';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { Card } from '@/shared/ui/Card';
-import { Drawer } from '@/shared/ui/Drawer';
-import { IconButton } from '@/shared/ui/IconButton';
+import { Flex } from '@/shared/ui/Flex';
 
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
-import {
-	QuestionHeader,
-	QuestionBody,
-	QuestionActions,
-	ProgressBlock,
-	AdditionalInfo,
-} from '@/widgets/Question';
+import { ProgressBlock } from '@/widgets/question/ProgressBlock';
+import { QuestionActions } from '@/widgets/question/QuestionActions';
+import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
+import { QuestionBody } from '@/widgets/question/QuestionBody';
+import { QuestionHeader } from '@/widgets/question/QuestionHeader';
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
-interface QuestionPageProps {
-	isAdmin?: boolean;
-}
-
-export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
-	const { isMobile, isTablet, isMobileS } = useScreenSize();
-	const { questionId } = useParams<{ questionId: string }>();
-	const { isOpen, onToggle, onClose } = useModal();
+export const QuestionPage = () => {
+	const { isMobile, isTablet } = useScreenSize();
+	const { questionId = '' } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
 	const {
@@ -40,15 +28,8 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		isLoading,
 	} = useGetQuestionByIdQuery({
 		questionId,
-		profileId: profileId,
+		profileId,
 	});
-
-	const authorFullName = useMemo(() => {
-		if (question?.createdBy) {
-			const author = JSON.parse(question.createdBy);
-			return `${author.firstName} ${author.lastName}`;
-		}
-	}, [question]);
 
 	if (isLoading || isFetching) {
 		return <QuestionPageSkeleton />;
@@ -58,96 +39,38 @@ export const QuestionPage = ({ isAdmin }: QuestionPageProps) => {
 		return null;
 	}
 
-	const renderAdditionalInfo = (
-		<div className={styles['popover-additional']}>
-			<IconButton
-				className={classNames({ active: isOpen })}
-				aria-label="go to additional info"
-				form="square"
-				icon={<PopoverIcon />}
-				size="S"
-				variant="tertiary"
-				onClick={onToggle}
-			/>
-			<Drawer
-				isOpen={isOpen}
-				onClose={onClose}
-				rootName={isMobileS ? 'body' : 'mainLayout'}
-				className={classNames(styles.drawer, {
-					[styles['drawer-mobile']]: isMobileS,
-				})}
-				hasCloseButton
-			>
-				<Card>
-					{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
-					<AdditionalInfo
-						className={styles['additional-info-wrapper']}
-						rate={question.rate}
-						keywords={question.keywords}
-						complexity={question.complexity}
-						questionSkills={question.questionSkills}
-						authorFullName={authorFullName}
-					/>
-				</Card>
-			</Drawer>
-		</div>
-	);
-
-	const renderHeaderAndActions = () => (
-		<>
-			<QuestionHeader
-				description={question.description}
-				status={question.status}
-				title={question.title}
-			/>
-			{!isAdmin && (
-				<QuestionActions
-					profileId={profileId}
-					questionId={questionId || ''}
-					checksCount={question.checksCount}
-				/>
-			)}
-		</>
-	);
-
-	const renderMobileOrTablet = (isMobile || isTablet) && (
-		<>
-			{renderAdditionalInfo}
-			<section
-				className={classNames(styles.wrapper, {
-					[styles.mobile]: isMobile,
-					[styles.tablet]: isTablet,
-				})}
-			>
-				{renderHeaderAndActions()}
-				<QuestionBody shortAnswer={question?.shortAnswer} longAnswer={question?.longAnswer} />
-			</section>
-		</>
-	);
+	const {
+		createdBy,
+		checksCount,
+		rate,
+		keywords,
+		complexity,
+		questionSkills,
+		shortAnswer,
+		longAnswer,
+	} = question;
 
 	return (
-		<>
-			{renderMobileOrTablet || (
-				<section className={styles.wrapper}>
-					<div className={styles.main}>
-						{renderHeaderAndActions()}
-						<QuestionBody shortAnswer={question.shortAnswer} longAnswer={question?.longAnswer} />
-					</div>
-					<div className={styles.additional}>
-						{!isAdmin && <ProgressBlock checksCount={question.checksCount} />}
-						<AdditionalInfo
-							rate={question.rate}
-							keywords={question.keywords}
-							complexity={question.complexity}
-							questionSkills={question.questionSkills}
-						/>
-						<p className={styles.author}>
-							Автор: <NavLink to={`#`}>{authorFullName}</NavLink>
-						</p>
-					</div>
-				</section>
+		<Flex gap="20">
+			<Flex gap="20" direction="column" flex={1} maxWidth>
+				<QuestionHeader question={question} />
+				<QuestionActions questionId={questionId} checksCount={checksCount} />
+				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+			</Flex>
+			{!isMobile && !isTablet && (
+				<Flex direction="column" gap="20" className={styles.additional}>
+					<ProgressBlock checksCount={checksCount} />
+					<QuestionAdditionalInfo
+						rate={rate}
+						createdBy={createdBy}
+						keywords={keywords}
+						complexity={complexity}
+						questionSkills={questionSkills}
+						route={ROUTES.interview.questions.page}
+					/>
+				</Flex>
 			)}
-		</>
+		</Flex>
 	);
 };
 

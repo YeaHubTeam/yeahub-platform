@@ -18,7 +18,7 @@ export const SkillsBlock = ({ skillsList }: SkillsBlockProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
 
 	return (
-		<Card>
+		<Card withOutsideShadow>
 			<div className={styles['skills']}>
 				<SkillsBlockHeader />
 				{skillsList.length ? (

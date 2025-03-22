@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import {
+	DEFAULT_PAGE,
+	DEFAULT_SPECIALIZATION_NUMBER,
+	DEFAULT_STATUS,
+} from '../constants/queryConstants';
+
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
 interface FilterFromURL {
@@ -29,11 +35,10 @@ interface FilterFromUser {
 	isFree?: boolean;
 }
 
-const initialState = '?page=1&status=all';
+const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
-
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -42,11 +47,18 @@ export const useQueryFilter = () => {
 		if (!params.get('page') && !params.get('status')) {
 			navigate(initialState);
 		}
+
+		if (!params.get('specialization')) {
+			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
+		}
 	}, []);
+
+	useEffect(() => {
+		setFilters(parseFilters(getQueryParams()));
+	}, [location.search]);
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
-
 		return {
 			page: params.get('page'),
 			skills: params.get('skills'),
@@ -86,12 +98,13 @@ export const useQueryFilter = () => {
 
 			if (curFilter !== undefined && curFilter !== null) {
 				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, '1');
+					params.set(key, DEFAULT_PAGE);
 					return;
 				}
 
 				if (key === 'status' && newFilters.status === params.get('status')) {
-					params.set(key, 'all');
+					params.set(key, DEFAULT_STATUS);
+>>>>>> feature/YH-732
 					return;
 				}
 
@@ -114,10 +127,6 @@ export const useQueryFilter = () => {
 
 		navigate(`?${params.toString()}`);
 	};
-
-	useEffect(() => {
-		setFilters(parseFilters(getQueryParams()));
-	}, [location.search]);
 
 	const handleFilterChange = (newFilters: FilterFromUser) => {
 		setFilters((prevFilters) => {

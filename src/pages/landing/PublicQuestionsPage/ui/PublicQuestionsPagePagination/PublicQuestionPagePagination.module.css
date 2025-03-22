@@ -1,18 +1,3 @@
 .wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0 16px;
-}
-
-@media (width <= 768px) {
-  .wrapper {
-    margin-top: 30px;
-  }
-}
-
-@media (width <= 368px) {
-  .wrapper {
-    margin-top: 40px;
-    margin-bottom: 0;
-  }
+  padding-top: 40px;
 }

@@ -16,6 +16,7 @@ export interface TextProps {
 	maxRows?: (typeof textMaxRows)[number];
 	className?: string;
 	width?: string | number;
+	isMainTitle?: boolean;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -56,8 +57,9 @@ export const Text = ({
 	children,
 	className,
 	width,
+	isMainTitle,
 }: TextProps) => {
-	const Tag = variantToTagMapping[variant];
+	const Tag = isMainTitle ? 'h1' : variantToTagMapping[variant];
 	return (
 		<Tag
 			className={classNames(

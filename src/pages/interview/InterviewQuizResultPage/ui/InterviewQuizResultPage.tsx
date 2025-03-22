@@ -33,7 +33,6 @@ const InterviewQuizResultPage = () => {
 		<Flex gap="20" wrap="wrap" className={styles.container}>
 			<QuizQuestionsInfo
 				className={styles.questions}
-				isLoading={isLoading}
 				questions={questions}
 				quizNumber={quiz?.quizNumber}
 			/>

@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { ReactNode, useRef, useState } from 'react';
 
-import Arrow from '@/shared/assets/icons/arrow.svg';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './Accordion.module.css';
 
@@ -23,25 +25,31 @@ interface AccordionProps {
  * @constructor
  */
 export const Accordion = ({ title, children }: AccordionProps) => {
-	const [isOpen, setisOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const contentRef = useRef<HTMLDivElement | null>(null);
+	const { isMobileS } = useScreenSize();
 
-	const onAccordionOpen = () => {
-		setisOpen(!isOpen);
+	const onOpenAccordion = () => {
+		setIsOpen(!isOpen);
 	};
 
 	return (
 		<div className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen })}>
-			<h3 className={styles.heading}>
-				<button className={styles.button} onClick={onAccordionOpen}>
-					<span className={classNames(styles.title, { [styles['accordion-opened']]: isOpen })}>
+			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
+				<button className={styles.button} onClick={onOpenAccordion}>
+					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.title}>
 						{title}
-					</span>
-					<Arrow className={classNames(styles.icon, { [styles['accordion-opened']]: isOpen })} />
+					</Text>
+					<Icon
+						icon="arrowShortDown"
+						size={24}
+						color="purple-700"
+						className={classNames(styles.icon, { [styles['accordion-opened']]: isOpen })}
+					/>
 				</button>
-			</h3>
+			</div>
 			<div
-				className={styles.collapsed}
+				className={styles['content-wrapper']}
 				style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
 			>
 				<div className={styles.content} ref={contentRef}>

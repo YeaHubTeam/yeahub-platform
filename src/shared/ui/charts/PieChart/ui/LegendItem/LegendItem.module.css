@@ -1,0 +1,11 @@
+.legend-color {
+  width: 7px;
+  height: 35px;
+  border-radius: 24px;
+}
+
+@media (width < 768px) {
+  .legend {
+    gap: 8px;
+  }
+}

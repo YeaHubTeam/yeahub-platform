@@ -1,7 +1,10 @@
 import classNames from 'classnames';
-import { Icon, IconButton } from 'yeahub-ui-kit';
 
 import { getArrayFromTwoNumbers } from '@/shared/helpers/getArrayFromTwoNumbers';
+import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './Pagination.module.css';
 
@@ -56,16 +59,16 @@ export const Pagination = ({
 	const buttonsValues = getArrayFromTwoNumbers(startPage, endPage);
 
 	return (
-		<div className={styles.wrapper}>
+		<Flex gap="10" align="center">
 			<IconButton
 				disabled={page === 1}
 				size="small"
 				onClick={onPrevPageClick}
 				aria-label="back button"
 				form="round"
-				theme="outline"
+				variant="outline"
 				className={styles['arrow-button']}
-				icon={<Icon icon="arrowLeft" size={20} />}
+				icon={<Icon icon="arrowLeft" size={20} color="purple-700" />}
 			/>
 			{startPage > 1 && (
 				<>
@@ -75,9 +78,11 @@ export const Pagination = ({
 							[styles['page-button-active']]: 1 === page,
 						})}
 					>
-						1
+						<Text variant="body2-accent" color={1 === page ? 'white-900' : 'black-700'}>
+							1
+						</Text>
 					</button>
-					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} />
+					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} color="black-700" />
 				</>
 			)}
 
@@ -90,21 +95,25 @@ export const Pagination = ({
 						})}
 						key={value}
 					>
-						{value}
+						<Text variant="body2-accent" color={value === page ? 'white-900' : 'black-700'}>
+							{value}
+						</Text>
 					</button>
 				) : null,
 			)}
 
 			{endPage < totalPages && (
 				<>
-					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} />
+					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} color="black-700" />
 					<button
 						onClick={handleChangePage(totalPages)}
 						className={classNames(styles['page-button'], {
 							[styles['page-button-active']]: totalPages === page,
 						})}
 					>
-						{totalPages}
+						<Text variant="body2-accent" color={totalPages === page ? 'white-900' : 'black-700'}>
+							{totalPages}
+						</Text>
 					</button>
 				</>
 			)}
@@ -115,10 +124,10 @@ export const Pagination = ({
 				onClick={onNextPageClick}
 				aria-label="forward button"
 				form="round"
-				theme="outline"
+				variant="outline"
 				className={styles['arrow-button']}
-				icon={<Icon icon="arrowRight" size={20} />}
+				icon={<Icon icon="arrowRight" size={20} color="purple-700" />}
 			/>
-		</div>
+		</Flex>
 	);
 };

@@ -2,6 +2,7 @@ export type IconSize = 20 | 24 | 28 | 32;
 
 export type IconName =
 	| 'arrowRight'
+	| 'arrowLeft'
 	| 'arrowUpSquare'
 	| 'arrowDownSquare'
 	| 'thumbsDown'
@@ -9,6 +10,16 @@ export type IconName =
 	| 'clock'
 	| 'calendar'
 	| 'altArrowRight'
-	| 'altArrowLeft';
+	| 'altArrowLeft'
+	| 'dotsThree'
+	| 'dotsThreeVertical'
+	| 'more'
+	| 'student'
+	| 'clockCounterClockwise'
+	| 'arrowShortDown'
+	| 'slidersHorizontal'
+	| 'search'
+	| 'closeCircle'
+	| 'trash';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

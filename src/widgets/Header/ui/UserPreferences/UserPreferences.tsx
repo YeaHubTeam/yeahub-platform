@@ -6,7 +6,7 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
-import { Popover, PopoverMenu, PopoverMenuItem } from '@/shared/ui/Popover';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
@@ -26,13 +26,13 @@ export const UserPreferences = () => {
 		{
 			title: i18n.t(Translation.PROFILE),
 			onClick: () => {
-				navigate(ROUTES.profile.route);
+				navigate(`${ROUTES.profile.page}`);
 			},
 		},
 		{
 			title: i18n.t(Translation.HEADER_MENU_CHANGE_PASSWORD),
 			onClick: () => {
-				navigate(`${ROUTES.settings.route}#change-password`);
+				navigate(`${ROUTES.settings.page}#change-password`);
 			},
 		},
 		{
@@ -42,14 +42,7 @@ export const UserPreferences = () => {
 
 	return (
 		<div className={styles['popover-additional']}>
-			<Popover
-				body={({ onToggle }) => (
-					<>
-						<UserPreferencesHeader />
-						<PopoverMenu menuItems={userMenuItems} onToggleOpenPopover={onToggle} />
-					</>
-				)}
-			>
+			<Popover menuItems={userMenuItems} header={<UserPreferencesHeader />}>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
 						<Text variant={'body2'}>{profile?.firstName}</Text>
