@@ -3,6 +3,10 @@
   font-family: var(--font-family);
 }
 
+.text p{
+  line-height: 140%;
+}
+
 .text code {
   padding: 1.5px 5px;
   border-radius: 12px;
@@ -37,3 +41,9 @@
   background-color: var(--color-black-50);
 }
 
+@media (width <= 767px) {
+  .text pre {
+    padding: 10px !important;
+    white-space: pre;
+  }
+}

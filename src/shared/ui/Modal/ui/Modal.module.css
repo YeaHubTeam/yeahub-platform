@@ -35,6 +35,10 @@
       font-size: var(--font-size-h-s);
     }
 
+    .text{
+      margin-bottom: 45px;
+    }
+		
     .buttons {
       display: flex;
       justify-content: center;
