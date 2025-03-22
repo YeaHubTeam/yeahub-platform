@@ -4,7 +4,6 @@ export const authProfileQueryMockResponse: FullProfile = {
 	id: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
 	firstName: 'Guse',
 	lastName: 'Kazulin',
-	phone: '+1234567890',
 	country: 'AGroba',
 	city: 'Bag-dad',
 	email: 'user@example.com',

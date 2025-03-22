@@ -22,7 +22,7 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { firstName, lastName, birthday, phone, email, country, city, isEmailVerified } = profile;
+	const { firstName, lastName, birthday, email, country, city, isEmailVerified } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
 
 	// return (
@@ -36,7 +36,6 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 	// 			{formatAddress(country, city)}
 	// 		</ul>
 	// 		<div className={styles['card-contacts']}>
-	// 			<h4>{phone}</h4>
 	// 			<h4>{email}</h4>
 	// 			{profile.socialNetwork?.length > 0 ? (
 	// 				<SocialNetWorkList socialNetwork={profile.socialNetwork} />
@@ -62,8 +61,6 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 				<li className={styles['card-address']}>{formatAddress(country, city)}</li>
 			</ul>
 			<div className={styles['card-contacts']}>
-				<h4>{phone ? `${phone}, ` : ''}</h4>
-
 				{isEmailVerified ? (
 					<Flex align="center" gap="4">
 						<DoubleCheck className={styles['svg-check']} />
