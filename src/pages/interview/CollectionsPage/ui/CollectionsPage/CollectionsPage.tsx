@@ -27,7 +27,9 @@ const CollectionsPage = () => {
 	});
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
-		...filter,
+		titleOrDescriptionSearch: filter.title,
+		specializations: filter.specialization,
+		page: filter.page,
 	});
 
 	const onChangeSearchParams = (value: string) => {

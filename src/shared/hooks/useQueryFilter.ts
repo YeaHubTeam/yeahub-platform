@@ -104,6 +104,7 @@ export const useQueryFilter = () => {
 
 				if (key === 'status' && newFilters.status === params.get('status')) {
 					params.set(key, DEFAULT_STATUS);
+>>>>>> feature/YH-732
 					return;
 				}
 

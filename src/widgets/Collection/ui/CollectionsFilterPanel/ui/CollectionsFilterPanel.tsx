@@ -6,6 +6,7 @@ import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ChooseCollectionAccess } from '@/entities/collection';
 import { ChooseSpecialization } from '@/entities/question';
 
@@ -28,7 +29,7 @@ export const CollectionsFilterPanel = ({
 }: CollectionsFilterPanelProps) => {
 	const { title, specialization: filterSpecialization, tariff: filterIsFree } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
-
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [localIsFree, setLocalIsFree] = useState<boolean>(
 		filterIsFree !== undefined ? filterIsFree : false,
 	);
@@ -39,7 +40,7 @@ export const CollectionsFilterPanel = ({
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
 	};
-
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const handleIsFreeChange = (newIsFree: boolean) => {
 		setLocalIsFree(newIsFree);
 		onChangeIsFree(newIsFree);
@@ -65,7 +66,7 @@ export const CollectionsFilterPanel = ({
 				selectedSpecialization={localSpecialization}
 				onChangeSpecialization={handleSpecializationChange}
 			/>
-			<ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} />
+			{/* <ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} /> */}
 		</div>
 	);
 };
