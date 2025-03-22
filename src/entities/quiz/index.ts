@@ -11,6 +11,7 @@ export {
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
+	useLazyCloneQuizQuery,
 } from './api/quizApi';
 
 export type {
