@@ -13,6 +13,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 
+import { useGetUserRolesListQuery } from '../../api/userApi';
 import { User } from '../../model/types/user';
 import { RoleSelect } from '../RoleSelect/RoleSelect';
 
@@ -20,12 +21,15 @@ import styles from './UserCard.module.css';
 
 interface UserCardProps {
 	user: User;
+	disabledEditRole?: boolean;
 }
 
-export const UserCard = ({ user }: UserCardProps) => {
+export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const { control } = useFormContext();
+
+	const { data: availableRoles = [] } = useGetUserRolesListQuery();
 
 	const userRoleIds = user.userRoles.map((role) => role.id);
 
@@ -67,10 +71,10 @@ export const UserCard = ({ user }: UserCardProps) => {
 									{({ onChange, value }) => (
 										<div className={styles.select}>
 											<RoleSelect
-												availableRoles={user.userRoles}
+												availableRoles={availableRoles}
 												value={value || userRoleIds}
 												onChange={onChange}
-												disabled={true}
+												disabled={disabledEditRole}
 												hasMultiple
 											/>
 										</div>

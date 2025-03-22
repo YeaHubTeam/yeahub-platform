@@ -1,5 +1,5 @@
 import { CardSkeleton } from '@/shared/ui/Card';
-import { GaugeChartSkeleton } from '@/shared/ui/charts';
+import { GaugeChartSkeleton } from '@/shared/ui/charts/GaugeChart';
 import { Flex } from '@/shared/ui/Flex';
 
 import { AdditionalStatInfoListSkeleton } from '../AdditionalStatInfoList/AdditionalStatInfoList.skeleton';

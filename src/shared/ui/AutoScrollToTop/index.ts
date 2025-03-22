@@ -1,0 +1,1 @@
+export { AutoScrollToTop } from './AutoScrollToTop';

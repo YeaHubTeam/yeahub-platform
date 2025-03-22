@@ -17,6 +17,10 @@ export type GetSpecializationsListParamsRequest = {
 };
 export type GetSpecializationsListResponse = Response<Specialization[]>;
 
+export type GetSpecializationByIdParamsRequest = {
+	specializationId: string;
+};
+
 export type GetSpecializationByIdResponse = Specialization;
 
 export type CreateOrEditSpecializationFormValues = Pick<

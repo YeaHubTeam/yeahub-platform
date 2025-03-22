@@ -4,11 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useDebounce } from '@/shared/hooks/useDebounced';
+import { SearchInput } from '@/shared/ui/SearchInput';
 
 import { ChooseCollectionAccess } from '@/entities/collection';
 import { ChooseSpecialization } from '@/entities/question';
-
-import { SearchInput } from '@/features/common/search-input';
 
 import { FilterParams } from '../model/types';
 

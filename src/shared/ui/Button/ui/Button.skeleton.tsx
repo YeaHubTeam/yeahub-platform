@@ -10,17 +10,20 @@ export const ButtonSkeleton = ({
 	className,
 	variant = 'primary',
 	fullWidth,
-	size = 'M',
+	size = 'medium',
 	destructive,
-}: ButtonProps) => {
+	width,
+}: ButtonProps & { width?: number }) => {
 	const tagName = getTagName(variant);
 
 	return (
 		<Skeleton
 			borderRadius={12}
+			width={width}
 			className={classnames(
 				styles[tagName],
-				fullWidth ? styles['button-full'] : styles[`${tagName}-${size.toLowerCase()}`],
+				styles[`${tagName}-${size}`],
+				fullWidth && styles[`${tagName}-full`],
 				destructive && tagName === 'a'
 					? styles['a-link-destructive']
 					: styles[`${tagName}-${variant}`],

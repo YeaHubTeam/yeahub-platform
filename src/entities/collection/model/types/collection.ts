@@ -24,8 +24,14 @@ export interface Collection {
 
 export type CreateOrEditCollectionFormValues = Pick<
 	Collection,
-	'id' | 'title' | 'description' | 'imageSrc'
-> & { paidOrFree: 'paid' | 'free'; questions: number[] };
+	'id' | 'title' | 'description' | 'imageSrc' | 'keywords'
+> & {
+	isFree: boolean;
+	questions: number[];
+	specializations: number[];
+	createdBy?: string;
+	collectionImage?: string;
+};
 
 export interface GetCollectionsListParamsRequest {
 	page?: number;
@@ -38,6 +44,7 @@ export interface GetCollectionsListParamsRequest {
 export type GetCollectionsListResponse = Response<Collection[]>;
 
 export type GetCollectionByIdResponse = Collection;
+export type GetCollectionQuestionsResponse = Response<Question[]>;
 
 export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;

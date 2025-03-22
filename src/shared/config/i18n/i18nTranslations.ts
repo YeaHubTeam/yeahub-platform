@@ -1,5 +1,6 @@
 export enum Translation {
 	LANGUAGE = 'language',
+	RETURN = 'return',
 	CREATE = 'create',
 	SEARCH = 'search',
 	REMOVE_SELECTED = 'remove.selected',
@@ -100,10 +101,14 @@ export enum Translation {
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
+	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.success',
+	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.failed',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
 	TOAST_SKILL_EDIT_FAILED = 'toast.skills.edit.failed',
+	TOAST_COLLECTION_EDIT_SUCCESS = 'toast.collections.edit.success',
+	TOAST_COLLECTION_EDIT_FAILED = 'toast.collections.edit.failed',
 	TOAST_SPECIALIZATION_CREATE_SUCCESS = 'toast.specializations.create.success',
 	TOAST_SPECIALIZATION_CREATE_FAILED = 'toast.specializations.create.failed',
 	TOAST_SPECIALIZATION_EDIT_SUCCESS = 'toast.specializations.edit.success',
@@ -125,6 +130,8 @@ export enum Translation {
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
+	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
+	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -133,7 +140,10 @@ export enum Profile {
 	TABS_SKILLS = 'tabs.skills',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
+	PHOTO_UPDATE = 'photo.update',
 	PHOTO_DELETE = 'photo.delete',
+	PHOTO_UPDATE_FULL = 'photo.update.full',
+	PHOTO_DELETE_FULL = 'photo.delete.full',
 	PHOTO_MODAL_TITLE = 'photo.modal.title',
 	PHOTO_MODAL_DESCRIPTION = 'photo.modal.description',
 	PHOTO_MODAL_SUBMIT = 'photo.modal.submit',
@@ -297,11 +307,9 @@ export enum Questions {
 	PREVIEW_TITLE = 'preview.title',
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY = 'preview.empty',
-
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
-
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
@@ -309,6 +317,8 @@ export enum Questions {
 	CATEGORIES_TITLE = 'categories.title',
 	CATEGORIES_SHOW_ALL = 'categories.show.all',
 	CATEGORIES_HIDE = 'categories.hide',
+	PROGRESS_TITLE = 'progress.title',
+	PROGRESS_DESCRIPTION = 'progress.description',
 	COMPLEXITY_TITLE = 'complexity.title',
 	COMPLEXITY_TITLE_SHORT = 'complexity.title.short',
 	COMPLEXITY_LABEL = 'complexity.label',
@@ -339,6 +349,7 @@ export enum Questions {
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
+	AUTHOR = 'author',
 	IMAGE_ALT = 'image.alt',
 	MORE = 'more',
 	LEARN = 'learn',
@@ -419,6 +430,8 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	EDIT_SUCCESS = 'edit.success',
+	EDIT_ERROR = 'edit.error',
 }
 
 export enum Collections {
@@ -442,8 +455,6 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
-	ADDITIONAL_INFO_SPECIALIZATION = 'specialization',
-	ADDITIONAL_INFO_KEYWORDS = 'keywords',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
@@ -455,6 +466,10 @@ export enum Collections {
 	COLLECTIONS_TRAIN = 'collections.train',
 	SPECIALIZATIONS_SHOW_ALL = 'specializations.show.all',
 	SPECIALIZATIONS_HIDE = 'specializations.hide',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SPECIALIZATION_LABEL = 'specialization.label',
+	KEYWORDS_TITLE = 'keywords.title',
+	KEYWORDS_LABEL = 'keywords.label',
 }
 
 export enum Landing {
@@ -498,6 +513,9 @@ export enum Landing {
 	PROGRESS_SUBTITLE = 'progress.subtitle',
 	PROGRESS_ADVANTAGES_FIRST = 'progress.advantages.first',
 	PROGRESS_ADVANTAGES_SECOND = 'progress.advantages.second',
+	COOKIES_TEXT = 'cookies.text',
+	COOKIES_LINK = 'cookies.link',
+	COOKIES_AGREE = 'cookies.agree.button',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',

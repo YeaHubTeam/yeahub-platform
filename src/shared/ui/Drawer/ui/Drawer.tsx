@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import CloseIcon from '@/shared/assets/icons/CloseCircle.svg';
+import CloseIcon from '@/shared/assets/icons/closeCircle.svg';
 
 import styles from './Drawer.module.css';
 
@@ -38,15 +38,17 @@ export const Drawer = ({
 	const rootEl = renderRootRef.current;
 
 	useEffect(() => {
-		rootEl.style.overflow = isOpen ? 'hidden' : '';
+		if (rootEl) {
+			rootEl.style.overflow = isOpen ? 'hidden' : '';
 
-		return () => {
-			rootEl.style.overflow = '';
-		};
+			return () => {
+				rootEl.style.overflow = '';
+			};
+		}
 	}, [isOpen]);
 
 	useEffect(() => {
-		if (isOpen) {
+		if (isOpen && rootEl) {
 			rootEl.appendChild(portalRootRef.current);
 			const portal = portalRootRef.current;
 

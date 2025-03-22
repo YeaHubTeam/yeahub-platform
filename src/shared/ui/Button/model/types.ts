@@ -16,7 +16,7 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	preffix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	fullWidth?: boolean;
-	size?: 'M' | 'L';
+	size?: 'large' | 'medium' | 'small';
 	badge?: string | number;
 	destructive?: boolean;
 }

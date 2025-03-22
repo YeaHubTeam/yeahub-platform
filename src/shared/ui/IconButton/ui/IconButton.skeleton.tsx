@@ -8,24 +8,23 @@ import styles from './IconButton.module.css';
 
 export const IconButtonSkeleton = ({
 	variant = 'primary',
-	size = 'M',
+	size = 'medium',
 	form = 'square',
 	destructive = false,
 	className,
 	...otherProps
 }: Omit<ButtonProps, 'icon'>) => {
 	return (
-		<button
+		<Skeleton
 			className={classnames(
 				styles['icon-button'],
 				styles[`icon-button-${form}`],
-				styles[`icon-button-${size.toLowerCase()}`],
+				styles[`icon-button-${size}`],
 				destructive ? styles[`icon-button-destructive`] : styles[`icon-button-${variant}`],
 				className,
 			)}
 			{...otherProps}
-		>
-			<Skeleton width="100%" height="100%" />
-		</button>
+			style={{ border: 'none' }}
+		/>
 	);
 };

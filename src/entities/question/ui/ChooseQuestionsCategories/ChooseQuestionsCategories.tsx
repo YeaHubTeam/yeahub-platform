@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
@@ -10,12 +9,11 @@ import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
 
 const MAX_LIMIT = 5;
-export const DEFAULT_SPECIALIZATION = 11;
 
 interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
@@ -69,15 +67,12 @@ export const ChooseQuestionsCategories = ({
 
 	if (!prepareData) return null;
 
-	const skillIcon = (skill: Skill) => <Icon icon={getSkillDefaultIcon(skill)} />;
-
 	return (
-		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
+		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t(Skills.SELECT_CHOOSE, { ns: i18Namespace.skill })}
 				onClick={onChooseSkill}
-				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
 
 			{!isMobile && (

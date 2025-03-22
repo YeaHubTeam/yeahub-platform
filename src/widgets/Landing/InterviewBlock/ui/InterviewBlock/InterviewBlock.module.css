@@ -1,11 +1,11 @@
 .interview-block {
-  margin: 76px 0 124px;
+  margin-bottom: var(--section-m-b-desktop);
 }
 
 .article-description {
-  margin-bottom: 41px;
+  margin-bottom: 24px;
   width: 86%;
-  line-height: 118%;
+  line-height: 130%;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
 
@@ -16,10 +16,11 @@
   justify-content: flex-start;
   align-items: stretch;
   gap: 40px;
+  margin-bottom: 40px;
 }
 
 .left-block {
-  margin-top: 10px;
+  padding-top: 36px;
   width: auto;
 }
 
@@ -35,15 +36,9 @@
   font-size: var(--font-size-p-m);
 }
 
-.wallpaper {
-  width: 498px;
-}
-
 .right-block {
   position: relative;
-  margin-top: -28px;
   padding-right: 66px;
-  width: 49.67%;
 }
 
 .right-block::before {
@@ -73,24 +68,27 @@
 @media screen and (width <= 1439px) {
   .wallpaper {
     width: 445px;
+    height: 386px;
   }
 
+  .left-block {
+    padding-top: 16px;
+  }
+}
+
+@media screen and (width <= 1023px) {
   .interview-block {
-    margin-top: 68px;
+    margin-bottom: var(--section-m-b-tablet);
   }
 }
 
 @media screen and (width <= 992px) {
-  .interview-block {
-    margin-bottom: 87px;
-  }
-
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 24px;
+    gap: 16px;
   }
 
   .left-block {
@@ -107,7 +105,7 @@
   }
 
   .article-description {
-    margin-bottom: 39px;
+    margin-bottom: 24px;
     width: 100%;
     text-align: center;
     line-height: 20px;
@@ -137,19 +135,19 @@
   }
 
   .wallpaper {
-    width: 100%;
+    width: 566px;
+    height: 491px;
   }
 }
 
 @media screen and (width <= 767px) {
   .interview-block {
-    margin-bottom: 50px;    
+    margin-bottom: var(--section-m-b-mobile);    
   }
 
   .container {
-    gap: 35px;
+    gap: 24px;
   }
-
 
   .left-block {
     padding: 0;
@@ -163,18 +161,14 @@
   .right-block::after {
     content: none;
   }
+
+  .wallpaper {
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media screen and (width <= 576px) {
-  .interview-block {
-    margin-top: 32px;
-    padding: 0 16px;
-  }
-
-  .container {
-    gap: 42px;
-  }
-
   .article-description {
     margin-bottom: 24px;
     line-height: 122%;

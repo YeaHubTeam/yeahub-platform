@@ -1,26 +1,28 @@
 .accordion {
-  padding-bottom: 24px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
+  transition: padding 0.2s ease-in-out;
 }
 
 .accordion.accordion-opened {
-  padding: 0;
-}
-
-.accordion + .accordion {
-  margin-top: 24px;
+  padding-bottom: 0;
 }
 
 .heading {
   margin: 0;
   font-size: var(--font-size-h-xs);
+  transition: margin-bottom 0.3s ease-in-out;
+}
+
+.heading.accordion-opened {
+  margin-bottom: 20px;
+  transition: margin-bottom 0.3s ease-in-out;
 }
 
 .button {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0;
   width: 100%;
   border: none;
   background-color: transparent;
@@ -34,12 +36,8 @@
   align-items:normal;
   padding-left: 16px;
   text-align: initial;
-  line-height: 120%;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
-  transition: 
-    color 0.3s ease-in-out,
-    margin-bottom 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+    
 }
 
 .title::before {
@@ -53,21 +51,22 @@
   background-color: var(--text-color-link-active);
 }
 
-.title.accordion-opened {
-  margin-bottom: 24px;
+.title.skeleton::before {
+  display: none;
 }
-
 
 .icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  color: var(--text-color-link-active);
-  transition: transform 400ms ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .icon.accordion-opened {
   transform: rotate(-180deg);
+}
+
+.content-wrapper {
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
 }
 
 .content {
@@ -75,34 +74,13 @@
   color: var(--text-color-light);
 }
 
-.collapsed {
-  overflow: hidden;
-  transition: height .3s ease-in-out;
-}
 
-@media (width <= 768px) { 
+@media (width <= 767px) { 
+  .accordion {
+    padding: 20px 0;
+  }
+
   .content {
     padding-left: 16px;
-  }
-}
-
-@media (width <= 360px) { 
-  .accordion {
-    padding-bottom: 8px;
-  }
-
-  .accordion + .accordion {
-    margin-top: 16px;
-  }
-
-  .content {
-    padding-bottom: 8px;
-    padding-left: 0;
-  }
-
-  .title { 
-    line-height: 120%;
-    font-weight: var(--font-weight-500);
-    font-size: var(--font-size-h-xxs);
   }
 }

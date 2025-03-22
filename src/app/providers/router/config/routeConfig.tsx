@@ -37,6 +37,7 @@ import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { UserDetailPage } from '@/pages/admin/UserDetailPage';
+import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -62,7 +63,6 @@ import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 
-import { App } from '@/app/App';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
@@ -71,6 +71,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+import '../../../styles/App.css';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -161,345 +162,328 @@ const adminLayoutMenuItems: MenuItem[] = [
 export const router = createBrowserRouter([
 	{
 		path: ROUTES.appRoute,
-		element: <App />,
+		element: <LandingLayout />,
 		children: [
 			{
-				element: <LandingLayout />,
+				index: true,
+				element: <LandingMainPage />,
+			},
+			{
+				path: '*',
+				element: <Error404Page />,
+			},
+			{
+				path: ROUTES.docs.page,
+				element: <DocsPage />,
+			},
+			{
+				path: ROUTES.questions.route,
+				element: <Outlet />,
 				children: [
 					{
 						index: true,
-						element: <LandingMainPage />,
+						element: <PublicQuestionsPage />,
 					},
 					{
-						path: '*',
-						element: <Error404Page />,
+						path: ROUTES.questions.detail.route,
+						element: <PublicQuestionPage />,
+					},
+				],
+			},
+		],
+	},
+	{
+		path: ROUTES.adminRoute,
+		element: (
+			<AuthRoute>
+				<MainLayout sidebarItems={adminLayoutMenuItems} onlyAdmin />
+			</AuthRoute>
+		),
+		children: [
+			{
+				index: true,
+				element: <AdminMainPage />,
+			},
+			{
+				path: ROUTES.admin.questions.route,
+				element: <QuestionsTablePage />,
+			},
+			{
+				path: ROUTES.admin.questions.details.page,
+				element: <AdminQuestionPage />,
+			},
+			{
+				path: ROUTES.admin.questions.create.page,
+				element: <QuestionCreatePage />,
+			},
+			{
+				path: ROUTES.admin.questions.edit.page,
+				element: <QuestionEditPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.page,
+				element: <SpecializationsPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.edit.page,
+				element: <SpecializationEditPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.create.page,
+				element: <SpecializationCreatePage />,
+			},
+			{
+				path: ROUTES.admin.specializations.details.page,
+				element: <SpecializationDetailPage />,
+			},
+			{
+				path: ROUTES.admin.skills.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <SkillsPage />,
 					},
 					{
-						path: ROUTES.docs.page,
-						element: <DocsPage />,
+						path: ROUTES.admin.skills.create.route,
+						element: <SkillCreatePage />,
 					},
 					{
-						path: ROUTES.questions.route,
-						element: <Outlet />,
-						children: [
-							{
-								index: true,
-								element: <PublicQuestionsPage />,
-							},
-							{
-								path: ROUTES.questions.detail.route,
-								element: <PublicQuestionPage />,
-							},
-						],
+						path: ROUTES.admin.skills.edit.route,
+						element: <SkillEditPage />,
+					},
+					{
+						path: ROUTES.admin.skills.detail.route,
+						element: <SkillDetailPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.adminRoute,
-				element: (
-					<AuthRoute>
-						<MainLayout sidebarItems={adminLayoutMenuItems} onlyAdmin />
-					</AuthRoute>
-				),
+				path: ROUTES.admin.users.route,
+				element: <Outlet />,
 				children: [
 					{
 						index: true,
-						element: <AdminMainPage />,
+						element: <UsersTablePage />,
 					},
 					{
-						path: ROUTES.admin.questions.route,
-						element: <QuestionsTablePage />,
+						path: ROUTES.admin.users.detail.route,
+						element: <UserDetailPage />,
 					},
 					{
-						path: ROUTES.admin.questions.details.page,
-						element: <AdminQuestionPage />,
+						path: ROUTES.admin.users.edit.route,
+						element: <UserEditPage />,
 					},
+				],
+			},
+			{
+				path: ROUTES.admin.collections.route,
+				element: <Outlet />,
+				children: [
 					{
-						path: ROUTES.admin.questions.create.page,
-						element: <QuestionCreatePage />,
-					},
-					{
-						path: ROUTES.admin.questions.edit.page,
-						element: <QuestionEditPage />,
-					},
-					{
-						path: ROUTES.admin.collections.route,
+						index: true,
 						element: <AdminCollectionsPage />,
 					},
 					{
-						path: ROUTES.admin.collections.details.page,
-						element: <AdminCollectionPage />,
-					},
-					{
-						path: ROUTES.admin.collections.create.page,
+						path: ROUTES.admin.collections.create.route,
 						element: <CollectionCreatePage />,
 					},
 					{
-						path: ROUTES.admin.collections.edit.page,
+						path: ROUTES.admin.collections.edit.route,
 						element: <CollectionEditPage />,
 					},
 					{
-						path: ROUTES.admin.specializations.page,
-						element: <SpecializationsPage />,
-					},
-					{
-						path: ROUTES.admin.specializations.edit.page,
-						element: <SpecializationEditPage />,
-					},
-					{
-						path: ROUTES.admin.specializations.create.page,
-						element: <SpecializationCreatePage />,
-					},
-					{
-						path: ROUTES.admin.specializations.details.page,
-						element: <SpecializationDetailPage />,
-					},
-					{
-						path: ROUTES.admin.skills.route,
-						element: <Outlet />,
-						children: [
-							{
-								index: true,
-								element: <SkillsPage />,
-							},
-							{
-								path: ROUTES.admin.skills.create.route,
-								element: <SkillCreatePage />,
-							},
-							{
-								path: ROUTES.admin.skills.edit.route,
-								element: <SkillEditPage />,
-							},
-							{
-								path: ROUTES.admin.skills.detail.route,
-								element: <SkillDetailPage />,
-							},
-						],
-					},
-					{
-						path: ROUTES.admin.users.route,
-						element: <Outlet />,
-						children: [
-							{
-								index: true,
-								element: <UsersTablePage />,
-							},
-							{
-								path: ROUTES.admin.users.detail.route,
-								element: <UserDetailPage />,
-							},
-						],
-					},
-					{
-						path: ROUTES.admin.collections.route,
-						element: <Outlet />,
-						children: [
-							{
-								index: true,
-								element: <AdminCollectionsPage />,
-							},
-							{
-								path: ROUTES.admin.collections.create.route,
-								element: <CollectionCreatePage />,
-							},
-							{
-								path: ROUTES.admin.collections.edit.route,
-								element: <CollectionEditPage />,
-							},
-							{
-								path: ROUTES.admin.collections.details.route,
-								element: <AdminCollectionPage />,
-							},
-						],
-					},
-					{
-						path: '*',
-						element: <Error404Page />,
+						path: ROUTES.admin.collections.details.route,
+						element: <AdminCollectionPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.platformRoute,
-				element: (
-					<AuthRoute>
-						<MainLayout sidebarItems={mainLayoutMenuItems} />
-					</AuthRoute>
-				),
+				path: '*',
+				element: <Error404Page />,
+			},
+		],
+	},
+	{
+		path: ROUTES.platformRoute,
+		element: (
+			<AuthRoute>
+				<MainLayout sidebarItems={mainLayoutMenuItems} />
+			</AuthRoute>
+		),
+		children: [
+			{
+				index: true,
+				element: <MainPage />,
+			},
+			{
+				path: ROUTES.profile.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_PROFILE,
+				},
 				children: [
 					{
 						index: true,
-						element: <MainPage />,
+						element: <ProfilePage />,
 					},
 					{
-						path: ROUTES.profile.route,
-						element: <Outlet />,
+						path: ROUTES.profile.edit.route,
+						element: <EditProfilePage />,
 						handle: {
-							crumb: Translation.CRUMBS_PROFILE,
+							crumb: Translation.CRUMBS_PROFILE_EDITING,
 						},
-						children: [
-							{
-								index: true,
-								element: <ProfilePage />,
-							},
-							{
-								path: ROUTES.profile.edit.route,
-								element: <EditProfilePage />,
-								handle: {
-									crumb: Translation.CRUMBS_PROFILE_EDITING,
-								},
-							},
-						],
-					},
-					{
-						path: ROUTES.settings.route,
-						element: <SettingsProfilePage />,
-					},
-					{
-						path: ROUTES.interview.route,
-						element: (
-							<InterviewRoute>
-								<Outlet />
-							</InterviewRoute>
-						),
-						handle: {
-							crumb: Translation.CRUMBS_INTERVIEW,
-						},
-
-						children: [
-							{
-								index: true,
-								element: <InterviewPage />,
-							},
-							{
-								path: ROUTES.interview.history.route,
-								element: (
-									<VerifiedEmailRoute>
-										<Outlet />
-									</VerifiedEmailRoute>
-								),
-								handle: {
-									crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
-								},
-								children: [
-									{
-										index: true,
-										element: <InterviewHistoryPage />,
-									},
-									{
-										path: ROUTES.interview.history.result.route,
-										element: <InterviewQuizResultPage />,
-										handle: {
-											crumb: Translation.CRUMBS_INTERVIEW_RESULT,
-										},
-									},
-								],
-							},
-							{
-								path: ROUTES.interview.statistic.route,
-								element: (
-									<VerifiedEmailRoute>
-										<InterviewStatisticsPage />
-									</VerifiedEmailRoute>
-								),
-								handle: {
-									crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
-								},
-							},
-							{
-								path: ROUTES.interview.questions.route,
-								element: <Outlet />,
-								handle: {
-									crumb: Translation.CRUMBS_QUESTIONS_LIST,
-								},
-								children: [
-									{
-										index: true,
-										element: <QuestionsPage />,
-									},
-									{
-										path: ROUTES.interview.questions.detail.route,
-										element: <InterviewQuestionPage />,
-										handle: {
-											crumb: Translation.CRUMBS_QUESTION_DETAIL,
-										},
-									},
-								],
-							},
-							{
-								path: ROUTES.interview.collections.route,
-								element: <Outlet />,
-								handle: {
-									crumb: Translation.CRUMBS_COLLECTIONS_LIST,
-								},
-								children: [
-									{
-										index: true,
-										element: <InterviewCollectionsPage />,
-									},
-									{
-										path: ROUTES.interview.collections.detail.route,
-										element: <InterviewCollectionPage />,
-										handle: {
-											crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
-										},
-									},
-								],
-							},
-							{
-								path: ROUTES.interview.quiz.route,
-								element: (
-									<VerifiedEmailRoute>
-										<Outlet />
-									</VerifiedEmailRoute>
-								),
-								handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
-								children: [{ index: true, element: <CreateQuizPage /> }],
-							},
-							{
-								path: ROUTES.interview.new.route,
-								element: (
-									<VerifiedEmailRoute>
-										<InterviewQuizPage />
-									</VerifiedEmailRoute>
-								),
-								handle: {
-									crumb: Translation.CRUMBS_QUIZ,
-								},
-							},
-						],
-					},
-					{
-						path: '*',
-						element: <Error404Page />,
 					},
 				],
 			},
 			{
-				path: ROUTES.auth.route,
+				path: ROUTES.settings.route,
+				element: <SettingsProfilePage />,
+			},
+			{
+				path: ROUTES.interview.route,
 				element: (
-					<UnAuthRoute>
-						<AuthLayout />
-					</UnAuthRoute>
+					<InterviewRoute>
+						<Outlet />
+					</InterviewRoute>
 				),
+				handle: {
+					crumb: Translation.CRUMBS_INTERVIEW,
+				},
+
 				children: [
 					{
-						path: ROUTES.auth.login.route,
-						element: <LoginPage />,
+						index: true,
+						element: <InterviewPage />,
 					},
 					{
-						path: ROUTES.auth.register.route,
-						element: <RegistrationPage />,
+						path: ROUTES.interview.history.route,
+						element: (
+							<VerifiedEmailRoute>
+								<Outlet />
+							</VerifiedEmailRoute>
+						),
+						handle: {
+							crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewHistoryPage />,
+							},
+							{
+								path: ROUTES.interview.history.result.route,
+								element: <InterviewQuizResultPage />,
+								handle: {
+									crumb: Translation.CRUMBS_INTERVIEW_RESULT,
+								},
+							},
+						],
 					},
 					{
-						path: ROUTES.auth['forgot-password'].route,
-						element: <ForgotPasswordPage />,
+						path: ROUTES.interview.statistic.route,
+						element: (
+							<VerifiedEmailRoute>
+								<InterviewStatisticsPage />
+							</VerifiedEmailRoute>
+						),
+						handle: {
+							crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
+						},
+					},
+					{
+						path: ROUTES.interview.questions.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_QUESTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <QuestionsPage />,
+							},
+							{
+								path: ROUTES.interview.questions.detail.route,
+								element: <InterviewQuestionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.interview.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.quiz.route,
+						element: (
+							<VerifiedEmailRoute>
+								<Outlet />
+							</VerifiedEmailRoute>
+						),
+						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
+						children: [{ index: true, element: <CreateQuizPage /> }],
+					},
+					{
+						path: ROUTES.interview.new.route,
+						element: (
+							<VerifiedEmailRoute>
+								<InterviewQuizPage />
+							</VerifiedEmailRoute>
+						),
+						handle: {
+							crumb: Translation.CRUMBS_QUIZ,
+						},
 					},
 				],
 			},
 			{
-				path: ROUTES.auth['password-recovery'].page,
-				element: <PasswordRecoveryPage />,
+				path: '*',
+				element: <Error404Page />,
 			},
 		],
+	},
+	{
+		path: ROUTES.auth.route,
+		element: (
+			<UnAuthRoute>
+				<AuthLayout />
+			</UnAuthRoute>
+		),
+		children: [
+			{
+				path: ROUTES.auth.login.route,
+				element: <LoginPage />,
+			},
+			{
+				path: ROUTES.auth.register.route,
+				element: <RegistrationPage />,
+			},
+			{
+				path: ROUTES.auth['forgot-password'].route,
+				element: <ForgotPasswordPage />,
+			},
+		],
+	},
+	{
+		path: ROUTES.auth['password-recovery'].page,
+		element: <PasswordRecoveryPage />,
 	},
 ]);

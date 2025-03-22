@@ -17,10 +17,8 @@
 }
 
 .button {
-  display: flex;
   margin-top: auto;
   margin-left: auto;
-  border-radius: 12px;
 }
 
 @media (width <=768px) {

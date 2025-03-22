@@ -71,6 +71,10 @@
   transition: all 0.4s;
 }
 
+.sidebar-bottom-button-hide {
+  padding: 0;
+}
+
 .sidebar-bottom-button > svg {
   width: 24px;
   height: 24px;

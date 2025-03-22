@@ -6,7 +6,7 @@
     "empty": "Questions for the selected specialization will appear soon"
   },
   "title": {
-    "short": "Question",
+    "short": "Questions",
     "label": "Add question",
     "placeholder": "Detailed question on a specific topic"
   },
@@ -20,6 +20,10 @@
     "title": "Question Categories",
     "show.all": "Show all",
     "hide": "Hide"
+  },
+  "progress": {
+    "title": "Прогресс",
+    "description": "Вопрос изучен {{count}} из 3"
   },
   "complexity": {
     "title": "Question Difficulty",
@@ -68,6 +72,7 @@
     "title": "Keywords",
     "label": "Add keywords to the text"
   },
+  "author": "Author:",
   "level": "Level:",
   "skillsAdditional": "Skills:",
   "keywordsAdditional": "Keywords:",

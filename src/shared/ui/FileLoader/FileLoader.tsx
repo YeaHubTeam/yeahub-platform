@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Gallery from '@/shared/assets/images/Gallery.png';
+import Gallery from '@/shared/assets/images/Gallery.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
@@ -20,6 +20,7 @@ interface FileLoaderProps {
 	className?: string;
 	extensionsText: Extension;
 	onChange: (files: globalThis.File[]) => void;
+	isDragDropEnabled?: boolean;
 }
 
 export const FileLoader = ({
@@ -30,6 +31,7 @@ export const FileLoader = ({
 	extensionsText,
 	multyple = false,
 	onChange,
+	isDragDropEnabled = true,
 }: FileLoaderProps) => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
 
@@ -104,19 +106,23 @@ export const FileLoader = ({
 				className,
 			)}
 		>
-			<div>
-				<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} />
-			</div>
+			{isDragDropEnabled && (
+				<>
+					<div>
+						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} loading="lazy" />
+					</div>
 
-			<p>
-				<span>{t(Translation.FILE_LOADER_LINK)}</span> {t(Translation.FILE_LOADER_TEXT)}{' '}
-				{fileTypeText}
-			</p>
+					<p>
+						<span>{t(Translation.FILE_LOADER_LINK)}</span> {t(Translation.FILE_LOADER_TEXT)}{' '}
+						{fileTypeText}
+					</p>
 
-			<p className={style['extension-descriptions']}>
-				{extensionsText}
-				{maxFileMBSize && ` (${t(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`}
-			</p>
+					<p className={style['extension-descriptions']}>
+						{extensionsText}
+						{maxFileMBSize && ` (${t(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`}
+					</p>
+				</>
+			)}
 
 			<input
 				type="file"

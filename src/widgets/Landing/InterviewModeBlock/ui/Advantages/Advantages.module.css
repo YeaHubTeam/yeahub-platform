@@ -146,7 +146,7 @@
   .advantages-list li {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 24px;
     padding: 16px;
     width: 100%;
     min-width: 328px;
@@ -165,5 +165,20 @@
 @media screen and (width <= 576px) {
   .advantages {
     gap: 29px;
+  }
+}
+
+@media screen and (width <= 390px) {
+  .advantages {
+    gap: 16px;
+  }
+
+  .advantages p {
+    line-height: 120%;
+    font-size: var(--font-size-p-s);
+  }
+	
+  .advantages-list li {
+    min-width: auto; 
   }
 }

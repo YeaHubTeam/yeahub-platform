@@ -25,12 +25,21 @@ export const DeleteSpecializationButton = ({
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
-	const onCloseDeleteModal = () => {
-		setIsModalOpen((prev) => !prev);
+	const handleOpenModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const onDeleteSpecialization = async () => {
-		await deleteSpecializationMutation(specializationId);
+		try {
+			await deleteSpecializationMutation(specializationId);
+			handleCloseModal();
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
@@ -45,12 +54,14 @@ export const DeleteSpecializationButton = ({
 					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
 				}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={onCloseDeleteModal}
+				onClick={handleOpenModal}
 			>
 				{t(Translation.DELETE)}
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
+					isOpen={isDeleteModalOpen}
+					onClose={handleCloseModal}
 					onOk={onDeleteSpecialization}
 					onCancel={() => setIsModalOpen(false)}
 					message={Translation.MODAL_DELETE_TITLE}

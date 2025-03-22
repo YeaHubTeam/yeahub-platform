@@ -1,0 +1,74 @@
+.chip-delete-icon {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.chip-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  width: fit-content;
+  height: 42px;
+  border: 1px solid var(--color-black-200);
+  border-radius: 12px;
+  background-color: transparent;
+  font-weight: var(--font-weight-500);
+  user-select: none;
+  cursor: pointer;
+
+  &.chip-clickable {
+    cursor: pointer;
+  }
+
+  &.chip-disabled {
+    box-shadow: none;
+    border: 1px solid var(--color-black-150);
+    background-color: transparent;
+    color: var(--color-black-150);
+    cursor: not-allowed;
+
+    .chip-delete-icon {
+      cursor: not-allowed;
+    }
+  }
+
+  &.chip-active {
+    box-shadow: 0 0 0 1px var(--color-purple-700);
+  }
+
+  &.chip-primary {
+    background-color: var(--color-white-900);
+    color: var(--color-black-900);
+  }
+
+  &.chip-outlined {
+    border: 1px solid var(--color-purple-700);
+    color: var(--color-purple-700);
+  }
+} 
+
+.chip-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chip-prefix {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+
+  img, svg { 
+    max-width: 20px;
+    max-height: 20px;
+  }
+}
+
+@media (width > 1024px) {
+  .chip-wrapper:hover:where(.chip-clickable),
+  .chip-wrapper:focus-visible:where(.chip-clickable),
+  .chip-wrapper:active:where(.chip-clickable) {
+    box-shadow: 0 0 0 1px var(--color-purple-700);
+  }   
+}
