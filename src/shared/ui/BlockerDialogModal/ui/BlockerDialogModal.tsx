@@ -1,14 +1,15 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { Modal, ModalContent, ModalDescription, ModalHeading } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { Button } from '@/shared/ui/Button';
+import { Modal } from '@/shared/ui/Modal';
 
 import styles from './BlockerDialogModal.module.css';
 
 interface BlockerDialogModalProps {
+	isOpen: boolean;
+	onClose: () => void;
 	asChild?: boolean;
 	children?: React.ReactNode;
 	onOk?: () => void;
@@ -18,6 +19,8 @@ interface BlockerDialogModalProps {
 }
 
 export const BlockerDialog = ({
+	isOpen,
+	onClose,
 	asChild = false,
 	children,
 	onCancel,
@@ -30,25 +33,23 @@ export const BlockerDialog = ({
 	const handleOk = () => onOk && onOk();
 	const handleCancel = () => onCancel && onCancel();
 
-	const containerStyle = classNames(styles.content, containerClassName);
 	return (
-		<Modal open>
-			{asChild && children ? (
-				<ModalContent className={containerStyle}>{children}</ModalContent>
-			) : (
-				<ModalContent className={containerStyle}>
-					<ModalHeading className={styles.title}>{t(Translation.MODAL_BLOCK_TITLE)}</ModalHeading>
-					<ModalDescription className={styles.description}>
-						{t(message ?? Translation.MODAL_BLOCK_DESCRIPTION)}
-					</ModalDescription>
-					<div className={styles['buttons-wrapper']}>
-						<Button onClick={handleOk}>{t(Translation.MODAL_ACTIONS_OK)}</Button>
-						<Button variant="outline" onClick={handleCancel}>
-							{t(Translation.MODAL_ACTIONS_CANCEL)}
-						</Button>
-					</div>
-				</ModalContent>
-			)}
+		<Modal
+			isOpen={isOpen}
+			onClose={onClose}
+			title={t(Translation.MODAL_BLOCK_TITLE)}
+			buttonPrimaryText={t(Translation.MODAL_ACTIONS_OK)}
+			buttonOutlineText={t(Translation.MODAL_ACTIONS_CANCEL)}
+			buttonPrimaryClick={handleOk}
+			buttonOutlineClick={handleCancel}
+		>
+			<div className={classNames(styles.content, containerClassName)}>
+				{asChild && children ? (
+					children
+				) : (
+					<div>{t(message ?? Translation.MODAL_BLOCK_DESCRIPTION)}</div>
+				)}
+			</div>
 		</Modal>
 	);
 };

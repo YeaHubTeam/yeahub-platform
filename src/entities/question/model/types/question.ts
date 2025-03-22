@@ -21,7 +21,7 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: string | null;
+	createdBy: string;
 	updatedBy: string | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
@@ -50,6 +50,8 @@ export type CreateOrEditQuestionFormValues = Pick<
 	skills: number[];
 };
 
+type skillFilterMode = 'ALL' | 'ANY';
+
 export interface GetQuestionsListParamsRequest {
 	page?: number;
 	limit?: number;
@@ -60,6 +62,7 @@ export interface GetQuestionsListParamsRequest {
 	collection?: number;
 	rate?: number[];
 	keywords?: string[];
+	skillFilterMode?: skillFilterMode;
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;

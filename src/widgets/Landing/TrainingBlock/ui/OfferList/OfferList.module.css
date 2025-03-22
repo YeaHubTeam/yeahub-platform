@@ -63,7 +63,7 @@
   .offer-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 }
 
@@ -72,7 +72,6 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 18px;
   }
 
   .offer-list li {

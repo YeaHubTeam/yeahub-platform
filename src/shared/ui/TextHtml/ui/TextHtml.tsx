@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './TextHtml.module.css';
 
-interface TextHtmlProps {
+export interface TextHtmlProps {
 	html: string;
 	className?: string;
 }

@@ -15,7 +15,7 @@ export const IconButtonSkeleton = ({
 	...otherProps
 }: Omit<ButtonProps, 'icon'>) => {
 	return (
-		<button
+		<Skeleton
 			className={classnames(
 				styles['icon-button'],
 				styles[`icon-button-${form}`],
@@ -25,8 +25,6 @@ export const IconButtonSkeleton = ({
 			)}
 			{...otherProps}
 			style={{ border: 'none' }}
-		>
-			<Skeleton width="100%" height="100%" borderRadius={form === 'round' ? '50%' : '8px'} />
-		</button>
+		/>
 	);
 };

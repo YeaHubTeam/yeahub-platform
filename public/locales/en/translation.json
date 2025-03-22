@@ -1,5 +1,6 @@
 {
   "language": "Russian",
+  "return": "Return",
   "create": "Add",
   "search": "Search",
   "remove.selected": "Delete selected",
@@ -55,7 +56,7 @@
       "description": "You have unsaved data. Do you want to continue?"
     },
     "delete": {
-      "title": "Do you really want to delete?"
+      "title": "Do you really want to delete elements?"
     },
     "actions": {
       "ok": "Yes",
@@ -99,7 +100,7 @@
     "interview.creation": "Interview",
     "interview.history": "Interview history",
     "interview.result": "Quiz result",
-    "interview.statistical": "Interview statistics",
+    "interview.statistic": "Interview statistics",
     "questions.list": "List of questions",
     "question.detail": "More details",
     "quiz": "Interview",
@@ -144,6 +145,14 @@
         "multiple": {
           "success": "Successfully deleted questions:",
           "failed": "The issue could not be deleted:"
+        }
+      }
+    },
+    "collections": {
+      "delete": {
+        "single": {
+          "success": "Collection successfully deleted",
+          "failed": "The collection could not be deleted"
         }
       }
     },

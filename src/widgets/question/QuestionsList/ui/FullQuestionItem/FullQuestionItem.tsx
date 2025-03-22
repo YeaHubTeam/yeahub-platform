@@ -5,17 +5,14 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
-import { Question } from '@/entities/question';
+import { Question, QuestionGradeList } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
@@ -28,12 +25,9 @@ interface FullQuestionItemProps {
 }
 
 export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionItemProps) => {
-	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount } = question;
+	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount = 0 } = question;
 	const { t } = useTranslation(i18Namespace.questions);
 	const navigate = useNavigate();
-
-	const profileId = useAppSelector(getProfileId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
 
 	const onMoveDetail = () => {
 		const path = isPublic ? ROUTES.questions.detail.page : ROUTES.interview.questions.detail.page;
@@ -47,27 +41,13 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 			onClick: onMoveDetail,
 		},
 		{
-			renderComponent: (onToggleOpenPopover) => (
-				<LearnQuestionButton
-					profileId={profileId}
-					questionId={id}
-					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
-					onSuccess={onToggleOpenPopover}
-					isPopover
-					isSmallIcon
-				/>
+			renderComponent: () => (
+				<LearnQuestionButton checksCount={checksCount} questionId={id} isPopover />
 			),
 		},
 		{
-			renderComponent: (onToggleOpenPopover) => (
-				<ResetQuestionStudyProgressButton
-					profileId={profileId}
-					questionId={id}
-					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
-					onSuccess={onToggleOpenPopover}
-					isPopover
-					isSmallIcon
-				/>
+			renderComponent: () => (
+				<ResetQuestionStudyProgressButton checksCount={checksCount} questionId={id} isPopover />
 			),
 		},
 	];
@@ -75,10 +55,11 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 	return (
 		<Flex direction="column" gap="24" className={styles.item}>
 			<Flex justify="between" align="center" className={styles.header}>
-				<Flex componentType="ul" gap="40" className={styles['header-params']}>
-					<QuestionParam label={t(Questions.RATE_TITLE_SHORT)} value={rate} />
-					<QuestionParam label={t(Questions.COMPLEXITY_TITLE_SHORT)} value={complexity} />
-				</Flex>
+				<QuestionGradeList
+					rate={rate}
+					complexity={complexity}
+					className={styles['header-params']}
+				/>
 				{!isPublic && (
 					<Popover menuItems={settingsMenuItems}>
 						{({ onToggle }) => (
