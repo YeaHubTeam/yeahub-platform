@@ -19,7 +19,6 @@ import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
-	const { collectionId } = useParams<{ collectionId: string }>();
 	const { isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
