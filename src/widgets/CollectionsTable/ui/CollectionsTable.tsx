@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'yeahub-ui-kit';
@@ -60,7 +61,13 @@ export const CollectionsTable = ({
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k} className={k === 'description' ? styles.description : undefined}>
+			<td
+				key={k}
+				className={classNames({
+					[styles.description]: k === 'description',
+					[styles['questions-count']]: k === 'questionsCount',
+				})}
+			>
 				{v}
 			</td>
 		));

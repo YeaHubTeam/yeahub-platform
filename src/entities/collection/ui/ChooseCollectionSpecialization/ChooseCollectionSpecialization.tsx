@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections, Specializations } from '@/shared/config/i18n/i18nTranslations';
@@ -10,11 +9,7 @@ import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
 /* eslint-disable @conarti/feature-sliced/layers-slices */
-import {
-	getSpecializationDefaultIcon,
-	Specialization,
-	useGetSpecializationsListQuery,
-} from '@/entities/specialization';
+import { useGetSpecializationsListQuery } from '@/entities/specialization';
 /* eslint-disable @conarti/feature-sliced/layers-slices */
 
 import styles from './ChooseCollectionSpecialization.module.css';
@@ -79,17 +74,12 @@ export const ChooseCollectionSpecialization = ({
 
 	if (!prepareData) return null;
 
-	const specializationIcon = (specialization: Specialization) => (
-		<Icon icon={getSpecializationDefaultIcon(specialization)} />
-	);
-
 	return (
 		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t(Specializations.SELECT_CHOOSE, { ns: i18Namespace.specialization })}
 				onClick={onChooseSpecialization}
-				getDefaultIcon={(item) => specializationIcon(item as Specialization)}
 			/>
 
 			{!isMobile && (
