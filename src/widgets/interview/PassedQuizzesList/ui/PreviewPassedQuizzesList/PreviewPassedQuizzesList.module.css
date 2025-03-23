@@ -1,5 +1,5 @@
 .list {
-  padding: 24px;
+  padding: 20px 24px;
   list-style: none;
 }
 
@@ -15,8 +15,8 @@
   }
 }
 
-@media (width < 768px) {
+@media (width <= 480px) {
   .list {
-    padding: 12px;
+    padding: 0;
   }
 }
