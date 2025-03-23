@@ -13,12 +13,10 @@ interface AppLogoProps {
 	fill?: 'white' | 'black';
 	navigateTo?: string;
 	logoType?: 'light' | 'dark';
-	navigation?: 'footer' | 'header';
 }
 
 export const AppLogo = ({
 	isOpen,
-	navigation,
 	fill = 'black',
 	navigateTo = ROUTES.platformRoute,
 	logoType = 'dark',
@@ -39,14 +37,12 @@ export const AppLogo = ({
 				src={logoSrc}
 				alt="Тренажер собеседований и вопросы собеседований в IT"
 			/>
-			{!isOpen && (
+			{!isOpen ? (
 				<LogoText
-					className={classNames(
-						styles['logo-text'],
-						navigation === 'header' ? styles['logo-text-header'] : styles['logo-text-footer'],
-						styles[fill],
-					)}
+					className={classNames(styles['logo-text'], styles['logo-text-header'], styles[fill])}
 				/>
+			) : (
+				<LogoText className={classNames(styles['logo-text'], styles[fill])} />
 			)}
 		</NavLink>
 	);
