@@ -32,11 +32,11 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 		uniqueKey: 'interviewPreviewHistory',
 	});
 
-	const { isMobileS } = useScreenSize();
+	const { isMobile } = useScreenSize();
 
 	const isEmptyData = isSuccess && data.data.length === 0;
 
-	const isShowShadow = !isMobileS || !isVerified || isEmptyData;
+	const isShowShadow = !isMobile || !isVerified;
 
 	const actionRoute = isVerified ? ROUTES.interview.history.page : EMAIL_VERIFY_SETTINGS_TAB;
 	const actionTitle = isVerified
@@ -51,6 +51,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			title={t(InterviewHistory.TITLE)}
 			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
+			isTitleCenter={isMobile}
 		>
 			{!isVerified && (
 				<Text variant="body4" color="black-700" className={styles['no-history']}>

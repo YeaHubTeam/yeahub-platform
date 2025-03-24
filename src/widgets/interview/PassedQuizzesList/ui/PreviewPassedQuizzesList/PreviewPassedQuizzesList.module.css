@@ -9,13 +9,13 @@
   text-align: center;
 }
 
-@media (width < 1280px) {
+@media (width < 1024px) {
   .list {
     padding: 16px;
   }
 }
 
-@media (width <= 480px) {
+@media (width < 768px) {
   .list {
     padding: 0;
   }
