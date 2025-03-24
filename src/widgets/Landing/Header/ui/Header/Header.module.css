@@ -36,30 +36,6 @@
   transform: rotate(180deg); 
 }
 
-.questions-link {
-  display: inline-flex;
-  align-items: start;
-  padding: 6px 10px;
-  width: 100%;
-  border-radius: 12px;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
-
-.questions-link:hover{
-  width: 100%;
-  background-color:var(--color-black-30) ;
-}
-
-.questions-link.active {
-  background-color: var(--color-black-30);
-}
-
-.questions-link.active > * {
-  color: var(--color-purple-800);
-}
-
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -76,6 +52,10 @@
   .button {
     display: flex;
     align-items: center;
+  }
+
+  .button:hover{
+    text-decoration: none;
   }
 
   .links {

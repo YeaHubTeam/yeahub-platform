@@ -1,20 +1,18 @@
-import classNames from 'classnames';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { AppLogo } from '@/shared/ui/AppLogo';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Text } from '@/shared/ui/Text';
 
 import { useProfileQuery } from '@/entities/auth';
 
 import { AuthorizedBlock } from '../AuthorizedBlock/AuthorizedBlock';
+import { HeaderLink } from '../HeaderLink/HeaderLink';
 import { HeaderSkeleton } from '../HeaderSkeleton/HeaderSkeleton';
 import { UnauthorizedBlock } from '../UnauthorizedBlock/UnauthorizedBlock';
 
@@ -27,41 +25,23 @@ interface HeaderProps {
 export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	const { t } = useTranslation(i18Namespace.landing);
 
-	const [isPopover, setIsPopover] = useState(false);
-
 	const { data: profile, isLoading } = useProfileQuery();
 
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
 			renderComponent: () => (
-				<NavLink
-					to={ROUTES.questions.page}
-					onClick={() => setIsPopover(false)}
-					className={({ isActive }) =>
-						classNames(styles['questions-link'], {
-							[styles.active]: isActive || location.pathname.includes('/questions/'),
-						})
-					}
-				>
-					<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
-				</NavLink>
+				<HeaderLink link={ROUTES.questions.page} path="/questions/">
+					{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}
+				</HeaderLink>
 			),
 		},
-		{
+		/* 		{
 			renderComponent: () => (
-				<NavLink
-					to={ROUTES.auth.login.page}
-					onClick={() => setIsPopover(false)}
-					className={({ isActive }) =>
-						classNames(styles['questions-link'], {
-							[styles.active]: isActive || location.pathname.includes('/auth/'),
-						})
-					}
-				>
-					<Text variant="body3-accent">{t(Landing.TRAINING_TITLE)}</Text>
-				</NavLink>
+				<HeaderLink link={ROUTES.auth.login.page}} path="/auth/">
+					{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+				</HeaderLink>
 			),
-		},
+		}, */
 	];
 	return (
 		<header className={styles['header-background']}>
@@ -70,32 +50,26 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 					<Flex className={styles['header-nav']}>
 						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 						<Flex className={styles.links}>
-							<NavLink
-								to={ROUTES.questions.page}
-								className={({ isActive }) =>
-									classNames(styles['questions-link'], {
-										[styles.active]: isActive || location.pathname.includes('/questions/'),
-									})
-								}
-							>
-								<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
-							</NavLink>
-							<NavLink
-								to={ROUTES.auth.login.page}
-								className={({ isActive }) =>
-									classNames(styles['questions-link'], {
-										[styles.active]: isActive || location.pathname.includes('/auth/'),
-									})
-								}
-							>
-								<Text variant="body3-accent">{t(Landing.TRAINING_TITLE)}</Text>
-							</NavLink>
+							<HeaderLink link={ROUTES.questions.page} path="/questions/">
+								{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}
+							</HeaderLink>
+							{/* <HeaderLink link={ROUTES.auth.login.page} path="/auth/">
+								    {t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+							    </HeaderLink> */}
 						</Flex>
-						<Popover menuItems={settingsMenuItems} isOpen={isPopover}>
-							<button className={styles.button} onClick={() => setIsPopover(!isPopover)}>
-								<Text variant="body3-accent">Подготовка</Text>
-								<Icon icon="arrowShortDown" size={24} className={isPopover ? styles.arrow : ''} />
-							</button>
+						<Popover menuItems={settingsMenuItems}>
+							{({ onToggle, isOpen }) => (
+								<Button
+									suffix={
+										<Icon icon="arrowShortDown" size={24} className={isOpen ? styles.arrow : ''} />
+									}
+									variant="link-gray"
+									className={styles.button}
+									onClick={onToggle}
+								>
+									Подготовка
+								</Button>
+							)}
 						</Popover>
 					</Flex>
 					{isLoading ? (
