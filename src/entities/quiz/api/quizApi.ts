@@ -134,10 +134,10 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.INTERVIEW_STATISTICS],
 		}),
-		CloneQuiz: build.query<CreateNewQuizResponse, string>({
+		cloneQuiz: build.query<CreateNewQuizResponse, string>({
 			query: (quizId) => {
 				return {
-					url: route(quizApiUrls.CloneQuiz, quizId),
+					url: route(quizApiUrls.cloneQuiz, quizId),
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],

@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -18,7 +17,6 @@ import styles from './InterviewQuizResultPage.module.css';
 const InterviewQuizResultPage = () => {
 	const profileId = useAppSelector(getProfileId);
 	const { quizId } = useParams<{ quizId?: string }>();
-	const navigate = useNavigate();
 
 	const [cloneQuiz] = useLazyCloneQuizQuery();
 
@@ -35,7 +33,6 @@ const InterviewQuizResultPage = () => {
 
 	function handleCloneQuiz() {
 		cloneQuiz(quizId ?? '');
-		navigate(ROUTES.interview.quiz.page);
 	}
 
 	return (

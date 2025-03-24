@@ -7,5 +7,5 @@ export const quizApiUrls = {
 	saveQuizResult: 'interview-preparation/quizzes',
 	getQuizByProfileId: 'interview-preparation/quizzes/history/:profileId/:quizId',
 	getProfileQuizStats: 'interview-preparation/stat/:profileId',
-	CloneQuiz: '/interview-preparation/quizzes/:quizId/clone',
+	cloneQuiz: '/interview-preparation/quizzes/:quizId/clone',
 };
