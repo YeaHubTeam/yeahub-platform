@@ -45,7 +45,6 @@
     "firstname": "Имя",
     "lastname": "Фамилия",
     "specialization": "IT специальность",
-    "phone": "Номер для связи",
     "email": "Email для связи",
     "location": "Локация",
     "skills": "Навыки"

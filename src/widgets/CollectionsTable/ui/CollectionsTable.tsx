@@ -15,6 +15,8 @@ import { Table } from '@/shared/ui/Table';
 
 import { Collection } from '@/entities/collection';
 
+import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
+
 import styles from './CollectionsTable.module.css';
 
 interface CollectionsTableProps {
@@ -79,6 +81,9 @@ export const CollectionsTable = ({
 				onClick: () => {
 					navigate(route(ROUTES.admin.questions.edit.route, collection.id));
 				},
+			},
+			{
+				renderComponent: () => <DeleteCollectionButton collectionId={collection.id} />,
 			},
 		];
 

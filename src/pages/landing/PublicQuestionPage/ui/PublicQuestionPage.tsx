@@ -59,7 +59,7 @@ const PublicQuestionPage = () => {
 				</Button>
 			</Flex>
 			<Flex gap="20" maxWidth>
-				<Flex gap="20" direction="column" flex={1}>
+				<Flex gap="20" direction="column" flex={1} maxWidth>
 					<QuestionHeader question={question} />
 					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 				</Flex>

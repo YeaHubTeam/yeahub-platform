@@ -22,12 +22,22 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
-	const onCloseDeleteModal = () => {
-		setIsModalOpen((prev) => !prev);
+	const handleOpenModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const onDeleteSkill = async () => {
-		await deleteSkillMutation(skillId);
+		try {
+			await deleteSkillMutation(skillId);
+			handleCloseModal();
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
 	};
 
 	return (
@@ -39,7 +49,7 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={onCloseDeleteModal}
+				onClick={handleOpenModal}
 				preffix={
 					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
 				}
@@ -48,6 +58,8 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
+					isOpen={isDeleteModalOpen}
+					onClose={handleCloseModal}
 					onOk={onDeleteSkill}
 					onCancel={() => setIsModalOpen(false)}
 					message={Translation.MODAL_DELETE_TITLE}

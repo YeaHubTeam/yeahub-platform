@@ -23,11 +23,6 @@ input, textarea {
   user-select: text;
 }
 
-.container {
-  margin-inline: auto;
-  width: min(100% - 60px, 1760px);
-}
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -54,4 +49,43 @@ a {
 div[data-floating-ui-portal] > div > div {
   max-height: 380px;
   overflow-y: scroll;
+}
+
+.container {
+  flex: 1 1 auto;
+  margin: 0 auto var(--container-m-b-desktop);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+@media screen and (width <= 1439px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (width <= 1023px) {
+  .container {
+    margin-bottom: var(--container-m-b-tablet);
+  }
+}
+
+@media screen and (width <= 992px) {
+  .container {
+    max-width: var(--container-width-tablet);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .container {
+    margin-bottom: var(--container-m-b-mobile);
+    padding: 0 10px;
+    max-width: var(--container-width-sm);
+  }
+}
+
+@media screen and (width <= 576px) {
+  .container {
+    max-width: var(--container-width-mobile);
+  }
 }

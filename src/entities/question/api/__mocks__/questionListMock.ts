@@ -51,9 +51,10 @@ export const questionListMock = http.get<
 	});
 
 	const paginationDate = data.slice(
-		Number(page) === 1 ? 0 : (Number(page) - 1) * Number(limit),
-		Number(limit) * Number(page),
+		(Number(page) - 1) * Number(limit),
+		Number(page) * Number(limit),
 	);
+
 	return HttpResponse.json({
 		data: paginationDate,
 		page: Number(page),

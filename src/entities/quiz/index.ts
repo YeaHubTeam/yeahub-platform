@@ -12,6 +12,7 @@ export {
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
 	useLazyCloneQuizQuery,
+	useInterruptQuizMutation,
 } from './api/quizApi';
 
 export type {
