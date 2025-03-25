@@ -4,7 +4,7 @@
 }
 
 .footer {
-  padding: 46px 112px 18px;
+  padding: 64px 0 18px;
   max-height: 373px;
   border-radius: 20px 20px 0 0;
   background: var(--background-footer);
@@ -23,10 +23,17 @@
   margin-right: 5px;
 }
 
+.container {
+  flex: 1 1 auto;
+  margin: 0 auto var(--container-m-b-desktop);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
 .subtitle {
-  margin-bottom: 18px;
-  padding-top: 16px;
+  margin-bottom: 20px;
   max-width: 290px;
+  height: 40px;
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-m);
   white-space: pre-wrap;
@@ -48,7 +55,7 @@
 }
 
 .about {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   color: var(--text-color-the-lightest);
   line-height: 15px;
   font-weight: var(--font-weight-400);
@@ -56,7 +63,7 @@
 }
 
 .footer hr {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .copyright-icons {
@@ -67,8 +74,6 @@
 }
 
 .company-name {
-  display: flex;
-  align-items: center;
   color: var(--text-color-the-lightest);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
@@ -80,7 +85,7 @@
 }
 
 .docs {
-  margin-right: 20px;
+  margin-right: 19px;
   color: var(--color-black-400);
   line-height: 18px;
   font-weight: var(--font-weight-400);
@@ -124,16 +129,17 @@
 
 @media screen and (width <= 1439px) {
   .footer {
-    padding: 46px 0 18px;
+    padding: 64px 0 18px;
   }
 
   .container {
-    max-width: var(--container-width-lg);
+    padding: 0 30px;
   }
+}
 
-
-  .footer hr {
-    margin-bottom: 15px;
+@media (width <= 1220px) {
+  .container-social {
+    margin-bottom: 55px;
   }
 }
 
@@ -149,12 +155,12 @@
 
 @media (width <= 767px) {
   .footer {
-    padding: 30px 16px 18px;
+    padding: 40px 0 18px;
     max-height: 327px;
   }
 
   .container-social {
-    margin-bottom: 16px;
+    margin-bottom: 50px;
   }
 
   .footer hr{
@@ -165,13 +171,13 @@
     margin-bottom: 20px;
   }
 
-  .container {
-    max-width: var(--container-width-sm);
-  }
+  .container{
+    padding: 0 10px;
 
+  }
 }
 
-@media (width <= 576px) {
+@media (width <= 616px) {
   .container-logo {
     margin-bottom: 11px;
   }
@@ -188,7 +194,7 @@
 
 @media  (width <= 404px) {
   .footer {
-    padding: 16px 16px 18px;
+    padding: 32px 16px 18px;
   }
 
   .container-social {
@@ -201,6 +207,15 @@
 }
 
 @media  (width <= 360px) {
+  .footer {
+    padding: 16px 16px 18px;
+    max-height: 290px;
+  }
+
+  .container{
+    padding: 0;
+  }
+
   .github-icon, .figma{
     width: auto;
     height: 24px;
@@ -217,10 +232,23 @@
   }
 
   .subtitle {
+    max-height: 17px;
     font-size: var(--font-size-p-s);
+    white-space: nowrap;
   }
 
   .docs {
     margin-right: 14px;
+  }
+}
+
+@media  (width <= 335px) {
+  .footer{
+    max-height: 310px;
+  }
+
+  .subtitle{
+    white-space: pre-wrap;
+    max-height: 40px;
   }
 }
