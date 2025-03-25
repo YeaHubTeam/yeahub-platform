@@ -63,8 +63,8 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
 						<main className={styles.main}>
 							<div className={styles.container}>
+								<Breadcrumbs />
 								<Suspense fallback={<SkeletonGenerator />}>
-									<Breadcrumbs />
 									<Outlet />
 								</Suspense>
 							</div>

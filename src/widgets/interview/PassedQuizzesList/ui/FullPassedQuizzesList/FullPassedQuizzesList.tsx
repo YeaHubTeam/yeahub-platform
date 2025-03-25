@@ -12,8 +12,6 @@ import { useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { FullPassedQuizzesItem } from '../FullPassedQuizzesItem/FullPassedQuizzesItem';
 
-import styles from './FullPassedQuizzesList.module.css';
-
 interface InterviewHistoryProps {
 	dateRange?: Value;
 	resetFilters?: () => void;
@@ -68,7 +66,7 @@ export const FullPassedQuizzesList = ({
 
 	if (isEmptyData) {
 		return (
-			<Card className={styles['empty-container']}>
+			<Card>
 				<EmptyStub resetFilters={resetFilters} />
 			</Card>
 		);
