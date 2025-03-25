@@ -36,6 +36,8 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 
 	const isEmptyData = isSuccess && data.data.length === 0;
 
+	const isShowShadow = !isMobile || !isVerified;
+
 	const actionRoute = isVerified ? ROUTES.interview.history.page : EMAIL_VERIFY_SETTINGS_TAB;
 	const actionTitle = isVerified
 		? t(InterviewHistory.LINK)
@@ -47,7 +49,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			actionRoute={actionRoute}
 			actionTitle={actionTitle}
 			title={t(InterviewHistory.TITLE)}
-			withShadow
+			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
 			isTitleCenter={isMobile}
 		>
