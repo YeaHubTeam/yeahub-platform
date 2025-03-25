@@ -166,6 +166,28 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.INTERVIEW_STATISTICS],
 		}),
+		cloneQuiz: build.query<CreateNewQuizResponse, string>({
+			query: (quizId) => {
+				return {
+					url: route(quizApiUrls.cloneQuiz, quizId),
+				};
+			},
+			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+				try {
+					await queryFulfilled;
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
+					typedExtra.navigate(ROUTES.interview.quiz.page);
+
+					dispatch(baseApi.util.invalidateTags([ApiTags.NEW_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
 	}),
 	overrideExisting: true,
 });
@@ -177,5 +199,6 @@ export const {
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
+	useLazyCloneQuizQuery,
 	useInterruptQuizMutation,
 } = quizApi;
