@@ -36,6 +36,10 @@
   transform: rotate(180deg); 
 }
 
+.popover{
+  transform: translateX(35px) translateY(18px);
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;

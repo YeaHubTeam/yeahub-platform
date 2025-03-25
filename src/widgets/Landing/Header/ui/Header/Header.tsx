@@ -57,7 +57,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 								    {t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
 							    </HeaderLink> */}
 						</Flex>
-						<Popover menuItems={settingsMenuItems}>
+						<Popover menuItems={settingsMenuItems} className={styles.popover}>
 							{({ onToggle, isOpen }) => (
 								<Button
 									suffix={
