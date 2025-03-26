@@ -8,7 +8,7 @@
   "show": "View",
   "edit": "Edit",
   "delete": "Delete",
-  "hello": "Hello {{name}}!",
+  "hello": "Hello {{username}}!",
   "profile": "My profile",
   "save": "Save",
   "cancel": "Cancel",

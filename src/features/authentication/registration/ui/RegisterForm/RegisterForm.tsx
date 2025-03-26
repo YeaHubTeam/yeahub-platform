@@ -51,23 +51,12 @@ export const RegisterForm = () => {
 			<h1>{t(Auth.REGISTRATION_TITLE)}</h1>
 
 			<div className={styles['input-wrapper']}>
-				<FormControl name="firstName" control={control} label={t(Auth.FORM_FIRSTNAME_LABEL)}>
+				<FormControl name="username" control={control} label={t(Auth.FORM_USERNAME_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.FORM_FIRSTNAME_PLACEHOLDER)}
-						/>
-					)}
-				</FormControl>
-			</div>
-			<div className={styles['input-wrapper']}>
-				<FormControl name="lastName" control={control} label={t(Auth.FORM_LASTNAME_LABEL)}>
-					{(field) => (
-						<Input
-							{...field}
-							className={styles.input}
-							placeholder={t(Auth.FORM_LASTNAME_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_USERNAME_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>

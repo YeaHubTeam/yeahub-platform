@@ -23,8 +23,7 @@ const getPercentProfileFullness = (user: FullProfile | null) => {
 
 	const fieldsToCheck = [
 		user.avatarUrl,
-		user.firstName,
-		user.lastName,
+		user.username,
 		user.email,
 		user.city,
 		user.profiles[0].description,
