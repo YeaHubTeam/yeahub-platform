@@ -1,8 +1,7 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
-import { compPrefix } from '@/shared/constants/textAreaConstants';
-
+import { textAreaClassName } from '../model/constants';
 import { TextAreaProps } from '../model/types';
 
 import styles from './TextArea.module.css';
@@ -12,10 +11,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		return (
 			<textarea
 				ref={ref}
-				className={classnames(styles[compPrefix], className, {
-					[styles[`${compPrefix}-error`]]: state === 'error',
-					[styles[`${compPrefix}-valid`]]: state === 'valid',
-					[styles[`${compPrefix}-disabled`]]: isReadonly || disabled,
+				className={classnames(styles[textAreaClassName], className, {
+					[styles[`${textAreaClassName}-error`]]: state === 'error',
+					[styles[`${textAreaClassName}-valid`]]: state === 'valid',
+					[styles[`${textAreaClassName}-disabled`]]: isReadonly || disabled,
 				})}
 				disabled={isReadonly || disabled}
 				{...otherProps}
