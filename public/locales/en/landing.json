@@ -1,6 +1,14 @@
 {
-  "register": "Registration",
-  "login": "Login",
+  "header": {
+    "actions": {
+      "register": "Registration",
+      "login": "Login"
+    },
+    "links": {
+      "questions.list": "Interview Questions",
+      "public.quiz": "Interview Trainer"
+    }
+  },
   "questions": {
     "first": "What is Virtual DOM, and how does it work?",
     "second": {

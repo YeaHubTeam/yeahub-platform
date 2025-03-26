@@ -13,7 +13,9 @@ import { LS_ACTIVE_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstant
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
+	CreateNewMockQuizParamsRequest,
 	CreateNewQuizResponse,
+	CreateNewMockQuizResponse,
 	GetActiveQuizParamsRequest,
 	GetActiveQuizResponse,
 	GetProfileQuizStatsResponse,
@@ -45,6 +47,30 @@ const quizApi = baseApi.injectEndpoints({
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
+		createNewMockQuiz: build.query<
+			Response<CreateNewMockQuizResponse>,
+			CreateNewMockQuizParamsRequest
+		>({
+			query: ({ ...params }) => {
+				return {
+					url: route(quizApiUrls.createNewMockQuiz),
+					params,
+				};
+			},
+			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+				try {
+					await queryFulfilled;
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
+					typedExtra.navigate(ROUTES.quiz.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					console.error(error);
 				}
 			},
@@ -194,6 +220,7 @@ const quizApi = baseApi.injectEndpoints({
 
 export const {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,

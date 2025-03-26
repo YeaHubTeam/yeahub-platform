@@ -5,7 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
+import {
+	DEFAULT_SPECIALIZATION_NUMBER,
+	MAX_LIMIT_SPECIALIZATIONS,
+} from '@/shared/constants/queryConstants';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
@@ -14,22 +17,22 @@ import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
 import styles from './ChooseSpecialization.module.css';
 
-const MAX_LIMIT = 5;
-
 interface ChooseSpecializationProps {
 	selectedSpecialization?: number;
 	onChangeSpecialization: (specialization: number | undefined) => void;
 	specializationLimit?: number;
 	shouldShowScroll?: boolean;
+	isAuth?: boolean;
 }
 
 export const ChooseSpecialization = ({
 	selectedSpecialization = DEFAULT_SPECIALIZATION_NUMBER,
 	onChangeSpecialization,
 	specializationLimit,
+	isAuth,
 }: ChooseSpecializationProps) => {
 	const [showAll, setShowAll] = useState(false);
-	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT);
+	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT_SPECIALIZATIONS);
 	const { data: specialization } = useGetSpecializationsListQuery({
 		limit,
 	});
@@ -44,7 +47,7 @@ export const ChooseSpecialization = ({
 		if (isMobile || showAll) {
 			setLimit((limit) => specialization?.total ?? limit);
 		} else {
-			setLimit(specializationLimit || MAX_LIMIT);
+			setLimit(specializationLimit || MAX_LIMIT_SPECIALIZATIONS);
 		}
 	}, [limit, specialization?.total, showAll, specializationLimit, isMobile]);
 
@@ -67,7 +70,11 @@ export const ChooseSpecialization = ({
 		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
-				title={t('specialization.title')}
+				title={
+					isAuth
+						? t(Questions.SPECIALIZATION_TITLE)
+						: t(Questions.SPECIALIZATION_TITLE_UNAUTHORIZED)
+				}
 				onClick={handleChooseSpecialization}
 			/>
 			{!isMobile && (

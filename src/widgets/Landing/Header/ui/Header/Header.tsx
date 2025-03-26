@@ -43,6 +43,9 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 							>
 								<Text variant="body3-accent">{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}</Text>
 							</NavLink>
+							<NavLink to={ROUTES.quiz.page}>
+								<Text variant="body3-accent">{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}</Text>
+							</NavLink>
 						</Flex>
 					</Flex>
 					{isLoading ? (

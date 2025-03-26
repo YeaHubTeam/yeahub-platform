@@ -1,5 +1,6 @@
 {
   "count": "Questions count",
+  "count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
   "preview": {
     "title": "Questions list",
     "link": "Study",
@@ -28,7 +29,8 @@
   "complexity": {
     "title": "Question Difficulty",
     "title.short": "Complexity",
-    "label": "Select questions difficulty"
+    "label": "Select questions difficulty",
+    "tooltip.unauthorized": "Difficulty levels will be available after registration"
   },
   "rate": {
     "title": "Question Rating",
@@ -66,6 +68,7 @@
   },
   "specialization": {
     "title": "Specialization",
+    "title.unauthorized": "Select a specialization",
     "label": "Select relevant specialization"
   },
   "keywords": {

@@ -1,0 +1,41 @@
+.title {
+  margin-bottom: 24px;
+  line-height: 120%;
+  font-weight: var(--font-weight-500); 
+}
+
+.content {
+  margin-bottom: 48px;
+}
+
+.skills-selection {
+  flex-basis: 60%
+}
+
+.quiz-settings {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 384px;
+}
+
+.button {
+  margin-left: auto;
+}
+
+@media screen and (width <= 1439px) {
+  .content {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .title {
+    margin-bottom: 16px;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .quiz-settings {
+    flex-shrink: 1;
+    min-width: auto;
+  }
+}
