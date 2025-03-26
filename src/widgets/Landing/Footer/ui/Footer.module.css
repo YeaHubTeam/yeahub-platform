@@ -86,6 +86,7 @@
 
 .docs {
   margin-right: 19px;
+  margin-bottom: 5px;
   color: var(--color-black-400);
   line-height: 18px;
   font-weight: var(--font-weight-400);
@@ -192,13 +193,13 @@
   }
 }
 
-@media  (width <= 404px) {
+@media  (width <= 416px) {
   .footer {
     padding: 32px 16px 18px;
   }
 
   .container-social {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .about{
