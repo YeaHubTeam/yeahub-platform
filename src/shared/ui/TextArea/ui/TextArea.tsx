@@ -1,10 +1,11 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
+import { compPrefix } from '@/shared/constants/textAreaConstants';
+
 import { TextAreaProps } from '../model/types';
 
 import styles from './TextArea.module.css';
-const compPrefix = `yeahub-textarea`;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	({ className, state = 'default', isReadonly, disabled, ...otherProps }, ref): JSX.Element => {
