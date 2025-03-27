@@ -77,8 +77,8 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 						<HeaderSkeleton />
 					) : (
 						!hasOnlyLogo &&
-						(profile?.firstName ? (
-							<AuthorizedBlock firstName={profile.firstName} avatarURL={profile.avatarUrl} />
+						(profile?.username ? (
+							<AuthorizedBlock username={profile.username} avatarURL={profile.avatarUrl} />
 						) : (
 							<UnauthorizedBlock />
 						))

@@ -8,13 +8,7 @@ import { passwordRules } from '@/shared/constants/regexp';
 YupPassword(yup);
 
 export const registerSchema = yup.object().shape({
-	firstName: yup
-		.string()
-		.trim()
-		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
-		.max(30, ({ max }) => i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: max }))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	lastName: yup
+	username: yup
 		.string()
 		.trim()
 		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))

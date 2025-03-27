@@ -5,12 +5,7 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
 export const editProfileSchema = yup.object().shape({
 	image: yup.string().nullable().optional(),
-	firstName: yup
-		.string()
-		.required(() => i18n.t(Translation.VALIDATION_REQUIRED))
-		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
-		.max(30, ({ max }) => i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: max })),
-	lastName: yup
+	username: yup
 		.string()
 		.required(() => i18n.t(Translation.VALIDATION_REQUIRED))
 		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
