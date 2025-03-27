@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Counter } from '@/shared/ui/Counter';
+import { Text } from '@/shared/ui/Text';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import styles from './ChooseQuestionCount.module.css';
 
@@ -27,18 +28,20 @@ export const ChooseQuestionCount = ({
 	};
 
 	const isTooltipVisible = disabled && maxCount !== undefined && count >= maxCount;
-	const tooltipTitle = isTooltipVisible ? t(Questions.COUNT_TOOLTIP_UNAUTHORIZED) : undefined;
 
 	return (
 		<div style={{ maxWidth: '290px' }}>
 			<Tooltip
-				title={tooltipTitle}
+				title={t(Questions.COUNT_TOOLTIP_UNAUTHORIZED)}
 				placement="top"
 				color="violet"
 				offsetTooltip={0}
 				tooltipDelay={{ open: 0, close: 150 }}
+				shouldShowTooltip={isTooltipVisible}
 			>
-				<h3 className={styles.title}>{t(Questions.COUNT)}</h3>
+				<Text className={styles.title} variant="body3">
+					{t(Questions.COUNT)}
+				</Text>
 				<Counter count={count} onChange={onChange} maxCount={maxCount} />
 			</Tooltip>
 		</div>

@@ -351,7 +351,6 @@ export enum Questions {
 	SHORT_ANSWER_LABEL = 'short.answer.label',
 	SHORT_ANSWER_PLACEHOLDER = 'short.answer.placeholder',
 	SPECIALIZATION_TITLE = 'specialization.title',
-	SPECIALIZATION_TITLE_UNAUTHORIZED = 'specialization.title.unauthorized',
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',

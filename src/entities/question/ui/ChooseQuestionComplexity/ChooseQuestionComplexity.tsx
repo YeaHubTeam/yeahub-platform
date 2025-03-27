@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { QUESTIONS_COMPLEXITY } from '@/shared/constants/queryConstants';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 interface ChooseQuestionComplexityProps {
 	selectedComplexity?: number[];
@@ -18,6 +17,12 @@ export const ChooseQuestionComplexity = ({
 	disabled,
 }: ChooseQuestionComplexityProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
+	const QUESTIONS_COMPLEXITY = [
+		{ id: 1, title: '1-3', value: [1, 2, 3] },
+		{ id: 2, title: '4-6', value: [4, 5, 6] },
+		{ id: 3, title: '7-8', value: [7, 8] },
+		{ id: 4, title: '9-10', value: [9, 10] },
+	];
 
 	const onChooseComplexity = (id: number) => {
 		const newValues = QUESTIONS_COMPLEXITY.find((item) => item.id === id)?.value || [];
@@ -36,11 +41,12 @@ export const ChooseQuestionComplexity = ({
 	return (
 		<div style={{ maxWidth: '290px' }}>
 			<Tooltip
-				title={disabled && t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED)}
+				title={t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED)}
 				placement="top"
 				color="violet"
 				offsetTooltip={0}
 				tooltipDelay={{ open: 0, close: 150 }}
+				shouldShowTooltip={disabled}
 			>
 				<BaseFilterSection
 					data={preparedData}

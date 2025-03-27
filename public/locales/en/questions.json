@@ -67,8 +67,7 @@
     "placeholder": "Short answer to the question"
   },
   "specialization": {
-    "title": "Specialization",
-    "title.unauthorized": "Select a specialization",
+    "title": "Select a specialization",
     "label": "Select relevant specialization"
   },
   "keywords": {

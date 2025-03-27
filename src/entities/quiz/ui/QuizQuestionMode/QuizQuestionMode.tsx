@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { QuestionModeType } from '../../model/types/quiz';
 
@@ -63,11 +63,12 @@ export const QuizQuestionMode = ({
 	return (
 		<div style={{ maxWidth: '384px' }}>
 			<Tooltip
-				title={disabled && t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_UNAUTHORIZED)}
+				title={t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_UNAUTHORIZED)}
 				placement="top"
 				color="violet"
 				offsetTooltip={0}
 				tooltipDelay={{ open: 0, close: 150 }}
+				shouldShowTooltip={disabled}
 			>
 				<BaseFilterSection
 					data={quizQuestionMode}

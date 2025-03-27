@@ -22,14 +22,12 @@ interface ChooseSpecializationProps {
 	onChangeSpecialization: (specialization: number | undefined) => void;
 	specializationLimit?: number;
 	shouldShowScroll?: boolean;
-	isAuth?: boolean;
 }
 
 export const ChooseSpecialization = ({
 	selectedSpecialization = DEFAULT_SPECIALIZATION_NUMBER,
 	onChangeSpecialization,
 	specializationLimit,
-	isAuth,
 }: ChooseSpecializationProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(specializationLimit || MAX_LIMIT_SPECIALIZATIONS);
@@ -70,11 +68,7 @@ export const ChooseSpecialization = ({
 		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
-				title={
-					isAuth
-						? t(Questions.SPECIALIZATION_TITLE)
-						: t(Questions.SPECIALIZATION_TITLE_UNAUTHORIZED)
-				}
+				title={t(Questions.SPECIALIZATION_TITLE)}
 				onClick={handleChooseSpecialization}
 			/>
 			{!isMobile && (

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
@@ -16,6 +15,8 @@ import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import {
 	ChooseQuestionComplexity,
@@ -97,7 +98,9 @@ const CreatePublicQuizPage = () => {
 	return (
 		<section>
 			<Card>
-				<h2 className={styles.title}>{t(InterviewQuizCreate.TITLE)}</h2>
+				<Text className={styles.title} variant="body6">
+					{t(InterviewQuizCreate.TITLE)}
+				</Text>
 
 				<Flex
 					className={styles.content}
@@ -114,7 +117,6 @@ const CreatePublicQuizPage = () => {
 							selectedSpecialization={selectedSpecialization}
 							onChangeSpecialization={onChangeSpecialization}
 							specializationLimit={MAX_LIMIT_SPECIALIZATIONS}
-							isAuth={isAuth}
 						/>
 						{selectedSpecialization !== undefined && (
 							<ChooseQuestionsCategories
