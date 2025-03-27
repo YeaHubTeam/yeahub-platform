@@ -5,12 +5,15 @@ import styles from './Counter.module.css';
 interface CounterProps {
 	count: number;
 	onChange: (count: number) => void;
+	maxCount?: number;
 }
 
-export const Counter = ({ count, onChange }: CounterProps) => {
+export const Counter = ({ count, onChange, maxCount }: CounterProps) => {
 	const handleIncreaseCount = () => {
-		const newValue = count + 1;
-		onChange(newValue);
+		if (!maxCount || count < maxCount) {
+			const newValue = count + 1;
+			onChange(newValue);
+		}
 	};
 
 	const handleDecreaseCount = () => {

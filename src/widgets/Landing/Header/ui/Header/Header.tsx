@@ -35,13 +35,13 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 				</HeaderLink>
 			),
 		},
-		/* 		{
+		{
 			renderComponent: () => (
-				<HeaderLink link={ROUTES.auth.login.page}} path="/auth/">
+				<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
 					{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
 				</HeaderLink>
 			),
-		}, */
+		},
 	];
 	return (
 		<header className={styles['header-background']}>
@@ -53,9 +53,10 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 							<HeaderLink link={ROUTES.questions.page} path="/questions/">
 								{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}
 							</HeaderLink>
-							{/* <HeaderLink link={ROUTES.auth.login.page} path="/auth/">
-								    {t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
-							    </HeaderLink> */}
+
+							<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
+								{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+							</HeaderLink>
 						</Flex>
 						<Popover menuItems={settingsMenuItems} className={styles.popover}>
 							{({ onToggle, isOpen }) => (
