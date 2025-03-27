@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Text, TextArea, Input, Label, Radio } from 'yeahub-ui-kit';
+import { Text, TextArea, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -9,13 +9,12 @@ import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { Radio } from '@/shared/ui/Radio';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
-
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
@@ -109,20 +108,18 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						<Text title={t(Collections.TARIFF_LABEL)} className={styles.description} />
 					</Flex>
 					<Flex gap="60">
-						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'paid'}
-								onChange={() => setValue('paidOrFree', 'paid')}
-							/>
-							{t(Collections.TARIFF_PAID)}
-						</Label>
-						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'free'}
-								onChange={() => setValue('paidOrFree', 'free')}
-							/>
-							{t(Collections.TARIFF_FREE)}
-						</Label>
+						<Radio
+							label={t(Collections.TARIFF_PAID)}
+							labelClassName={styles['paid-label']}
+							checked={watchPaidOrFree === 'paid'}
+							onChange={() => setValue('paidOrFree', 'paid')}
+						/>
+						<Radio
+							label={t(Collections.TARIFF_FREE)}
+							labelClassName={styles['paid-label']}
+							checked={watchPaidOrFree === 'free'}
+							onChange={() => setValue('paidOrFree', 'free')}
+						/>
 					</Flex>
 				</Flex>
 				<Flex gap={'120'}>
