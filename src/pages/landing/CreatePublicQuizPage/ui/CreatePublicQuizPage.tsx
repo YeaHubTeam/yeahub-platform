@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from 'yeahub-ui-kit';
 
@@ -43,17 +43,25 @@ const CreatePublicQuizPage = () => {
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
-		specializations: [DEFAULT_SPECIALIZATION_NUMBER],
+		specializations: selectedSpecialization ? [selectedSpecialization] : [],
 	});
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
-
 	const { isMobile, isTablet } = useScreenSize();
 	const isAuth = Boolean(getFromLS(LS_ACCESS_TOKEN_KEY));
 
+	useEffect(() => {
+		if (filter.specialization?.length && filter.specialization[0] !== selectedSpecialization) {
+			setSelectedSpecialization(filter.specialization[0]);
+		}
+	}, [filter.specialization, selectedSpecialization]);
+
 	const onChangeSpecialization = (value: number | undefined) => {
 		setSelectedSpecialization(value);
-		handleFilterChange({ specialization: value ? [value] : undefined, skills: undefined });
+		handleFilterChange({
+			specialization: value ? [value] : undefined,
+			category: undefined,
+		});
 	};
 
 	const onChangeSkills = (skills?: number[]) => {

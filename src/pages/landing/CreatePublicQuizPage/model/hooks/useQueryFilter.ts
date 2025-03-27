@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
+
 import { QuestionModeType } from '@/entities/quiz';
 
 interface FilterFromURL {
+	specialization: string | null;
 	category: string | null;
 	count: string | null;
 	complexity: string | null;
@@ -19,25 +22,20 @@ interface FilterFromUser {
 	mode?: QuestionModeType;
 }
 
-const initialState = '?mode=RANDOM&count=1';
-
 export const useQueryFilter = () => {
-	const [filter, setFilters] = useState<FilterFromUser>({});
-
+	const [filter, setFilter] = useState<FilterFromUser>({});
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	useEffect(() => {
-		const params = new URLSearchParams(location.search);
-		if (!params.get('mode') && !params.get('count')) {
-			navigate(initialState);
-		}
-	}, []);
+	const initialQuery: FilterFromUser = {
+		mode: 'RANDOM',
+		count: 1,
+		specialization: [DEFAULT_SPECIALIZATION_NUMBER],
+	};
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
-
 		return {
+			specialization: params.get('specialization'),
 			category: params.get('category'),
 			count: params.get('count'),
 			complexity: params.get('complexity'),
@@ -47,6 +45,9 @@ export const useQueryFilter = () => {
 
 	const parseFilters = (params: FilterFromURL): FilterFromUser => {
 		return {
+			specialization: params.specialization
+				? params.specialization.split(',').map(Number)
+				: undefined,
 			category: params.category ? params.category.split(',').map(Number) : undefined,
 			count: params.count ? Number(params.count) : undefined,
 			complexity: params.complexity ? params.complexity.split(',').map(Number) : undefined,
@@ -57,30 +58,39 @@ export const useQueryFilter = () => {
 	const updateQueryParams = (newFilters: FilterFromUser) => {
 		const params = new URLSearchParams(location.search);
 
-		Object.keys(newFilters).forEach((key) => {
-			const curFilter = newFilters[key as keyof FilterFromUser];
-
-			if (curFilter !== undefined && curFilter !== null) {
-				if (Array.isArray(curFilter)) {
-					params.set(key, curFilter.join(','));
-				} else {
-					params.set(key, curFilter.toString());
-				}
-			} else {
+		Object.entries(newFilters).forEach(([key, value]) => {
+			if (value === null || value === undefined) {
 				params.delete(key);
+				return;
 			}
+			const stringValue = Array.isArray(value) ? value.join(',') : value.toString();
+			params.set(key, stringValue);
 		});
 
-		navigate(`?${params.toString()}`);
+		const updatedQueryParams = `?${params.toString()}`;
+		if (location.search !== updatedQueryParams) {
+			navigate(updatedQueryParams);
+		}
 	};
 
 	useEffect(() => {
-		setFilters(parseFilters(getQueryParams()));
+		const queryParams = getQueryParams();
+		if (!queryParams.mode || !queryParams.count || !queryParams.specialization) {
+			updateQueryParams(initialQuery);
+		}
+	}, [location.search]);
+
+	useEffect(() => {
+		const queryParams = getQueryParams();
+		const parsedFilter = parseFilters(queryParams);
+		setFilter((prevFilter) =>
+			JSON.stringify(prevFilter) === JSON.stringify(parsedFilter) ? prevFilter : parsedFilter,
+		);
 	}, [location.search]);
 
 	const handleFilterChange = (newFilters: FilterFromUser) => {
-		setFilters((prevFilters) => {
-			const updatedFilters = { ...prevFilters, ...newFilters };
+		setFilter((prevFilter) => {
+			const updatedFilters = { ...prevFilter, ...newFilters };
 			updateQueryParams(updatedFilters);
 			return updatedFilters;
 		});
