@@ -155,8 +155,7 @@ export enum Profile {
 	SKILLS_TITLE = 'skills.title',
 	SKILLS_DESCRIPTION = 'skills.description',
 	SKILLS_EMPTY = 'skills.empty',
-	FORM_FIRSTNAME = 'form.firstname',
-	FORM_LASTNAME = 'form.lastname',
+	FORM_USERNAME = 'form.username',
 	FORM_SPECIALIZATION = 'form.specialization',
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
@@ -211,10 +210,8 @@ export enum Auth {
 	FORM_PASSWORD_REPEAT_LABEL = 'form.password.repeat.label',
 	FORM_PASSWORD_NEW_LABEL = 'form.password.new.label',
 	FORM_PASSWORD_NEW_REPEAT_LABEL = 'form.password.new.repeat.label',
-	FORM_FIRSTNAME_LABEL = 'form.firstname.label',
-	FORM_FIRSTNAME_PLACEHOLDER = 'form.firstname.placeholder',
-	FORM_LASTNAME_LABEL = 'form.lastname.label',
-	FORM_LASTNAME_PLACEHOLDER = 'form.lastname.placeholder',
+	FORM_USERNAME_LABEL = 'form.username.label',
+	FORM_USERNAME_PLACEHOLDER = 'form.username.placeholder',
 	FORGOT_PASSWORD_TITLE = 'forgot.password.title',
 	FORGOT_PASSWORD_SUBTITLE = 'forgot.password.subtitle',
 	FORGOT_PASSWORD_SUBMIT = 'forgot.password.submit',
@@ -265,6 +262,16 @@ export enum InterviewQuiz {
 	ANSWER_KNOW = 'answer.know',
 }
 
+export enum InterviewQuizCreate {
+	TITLE = 'title',
+	CREATE_BUTTON = 'create.button',
+	MODE_REPEAT = 'mode.repeat',
+	MODE_NEW = 'mode.new',
+	MODE_RANDOM = 'mode.random',
+	MODE_SELECT = 'mode.select',
+	MODE_SELECT_TOOLTIP_UNAUTHORIZED = 'mode.select.tooltip.unauthorized',
+}
+
 export enum InterviewQuizResult {
 	TITLE_QUESTIONS_ANSWERS = 'title.questions.answers',
 	TITLE_STAT = 'title.stat',
@@ -297,6 +304,7 @@ export enum InterviewStatistics {
 
 export enum Questions {
 	COUNT = 'count',
+	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY = 'preview.empty',
@@ -315,6 +323,7 @@ export enum Questions {
 	COMPLEXITY_TITLE = 'complexity.title',
 	COMPLEXITY_TITLE_SHORT = 'complexity.title.short',
 	COMPLEXITY_LABEL = 'complexity.label',
+	COMPLEXITY_TOOLTIP_UNAUTHORIZED = 'complexity.tooltip.unauthorized',
 	RATE_TITLE = 'rate.title',
 	RATE_TITLE_SHORT = 'rate.title.short',
 	RATE_LABEL = 'rate.label',
@@ -409,7 +418,7 @@ export enum User {
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
 	USER_NAME = 'user.name',
-	FULL_NAME = 'full.name',
+	USERNAME = 'username',
 	AVATAR = 'avatar',
 	SELECT_ROLE_TITLE = 'select.role.title',
 	SELECT_ROLE_LABEL = 'select.role.label',
@@ -461,6 +470,7 @@ export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',
 	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
+	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
@@ -532,13 +542,4 @@ export enum Docs {
 	DOC4 = 'doc4',
 	DOC5 = 'doc5',
 	DOC6 = 'doc6',
-}
-
-export enum InterviewQuizCreate {
-	TITLE = 'title',
-	CREATE_BUTTON = 'create.button',
-	MODE_REPEAT = 'mode.repeat',
-	MODE_NEW = 'mode.new',
-	MODE_RANDOM = 'mode.random',
-	MODE_SELECT = 'mode.select',
 }

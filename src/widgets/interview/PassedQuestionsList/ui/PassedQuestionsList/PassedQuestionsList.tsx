@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
 import { Answers } from '@/entities/quiz';
@@ -13,8 +14,13 @@ import styles from './PassedQuestionsList.module.css';
 export interface PassedQuestionsListProps {
 	questions: Answers[];
 	className?: string;
+	handleClone?: () => void;
 }
-export const PassedQuestionsList = ({ questions, className }: PassedQuestionsListProps) => {
+export const PassedQuestionsList = ({
+	questions,
+	className,
+	handleClone,
+}: PassedQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
 	return (
@@ -24,6 +30,9 @@ export const PassedQuestionsList = ({ questions, className }: PassedQuestionsLis
 					<PassedQuestionsItem key={question.questionId} question={question} />
 				))}
 			</ul>
+			<Button className={styles.button} size="large" onClick={handleClone}>
+				Пройти заново
+			</Button>
 		</Card>
 	);
 };

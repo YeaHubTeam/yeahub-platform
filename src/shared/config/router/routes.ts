@@ -160,6 +160,14 @@ export const ROUTES = {
 			page: '/questions/:questionId',
 		},
 	},
+	quiz: {
+		route: 'quiz',
+		page: '/quiz',
+		new: {
+			route: 'new',
+			page: '/quiz/new',
+		},
+	},
 	collections: {
 		route: 'collections',
 		page: '/collections',

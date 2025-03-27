@@ -28,7 +28,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableHeader = () => {
 		const columns = {
-			fullName: t(Users.NAME),
+			username: t(Users.NAME),
 			roles: t(Users.ROLE),
 			email: t(Users.EMAIL),
 		};
@@ -38,7 +38,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableBody = (user: User) => {
 		const columns = {
-			fullName: `${user.firstName} ${user.lastName}`,
+			username: `${user.username}`,
 			roles: (
 				<div className={styles['roles-container']}>
 					{user.userRoles.map((role) => {

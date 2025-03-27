@@ -27,11 +27,11 @@ const MainPage = () => {
 					className={!profile.isEmailVerified ? styles.wrapper : ''}
 				>
 					<Text variant="head2" className={styles.title}>
-						{t(Translation.HELLO, { name: profile.firstName })}
+						{t(Translation.HELLO, { username: profile.username })}
 					</Text>
 					<Flex gap="20" className={styles['banners-container']}>
 						{!profile.isEmailVerified ? (
-							<EmailVerifyStub firstName={profile.firstName} />
+							<EmailVerifyStub username={profile.username} />
 						) : (
 							<IncompleteProfileStub />
 						)}

@@ -53,6 +53,7 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
@@ -186,6 +187,20 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.questions.detail.route,
 						element: <PublicQuestionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.quiz.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CreatePublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.new.route,
+						element: <div>Страница в разработке</div>,
 					},
 				],
 			},

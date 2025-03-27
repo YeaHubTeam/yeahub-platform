@@ -8,7 +8,7 @@ export interface LoginFormValues {
 	password: string;
 }
 
-export type SignUpFormValues = Pick<User, 'firstName' | 'lastName' | 'email'> & {
+export type SignUpFormValues = Pick<User, 'username' | 'email'> & {
 	password: string;
 	passwordConfirmation: string;
 	isChecked: boolean;
@@ -40,8 +40,7 @@ export interface Profile {
 
 export interface User {
 	id: string;
-	firstName: string;
-	lastName: string;
+	username: string;
 	country: string;
 	city: string;
 	email: string;

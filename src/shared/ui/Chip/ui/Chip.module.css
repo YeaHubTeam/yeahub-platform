@@ -27,6 +27,8 @@
     background-color: transparent;
     color: var(--color-black-150);
     cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
 
     .chip-delete-icon {
       cursor: not-allowed;
@@ -66,9 +68,9 @@
 }
 
 @media (width > 1024px) {
-  .chip-wrapper:hover:where(.chip-clickable),
-  .chip-wrapper:focus-visible:where(.chip-clickable),
-  .chip-wrapper:active:where(.chip-clickable) {
+  .chip-wrapper:hover:where(.chip-clickable:not(.chip-disabled)),
+  .chip-wrapper:focus-visible:where(.chip-clickable:not(.chip-disabled)),
+  .chip-wrapper:active:where(.chip-clickable:not(.chip-disabled)) {
     box-shadow: 0 0 0 1px var(--color-purple-700);
   }   
 }
