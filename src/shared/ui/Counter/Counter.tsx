@@ -1,4 +1,4 @@
-import { Icon } from 'yeahub-ui-kit';
+import { Icon } from '@/shared/ui/Icon';
 
 import styles from './Counter.module.css';
 
@@ -23,9 +23,9 @@ export const Counter = ({ count, onChange, maxCount }: CounterProps) => {
 
 	return (
 		<div className={styles.wrapper}>
-			<Icon icon="minus" onClick={handleDecreaseCount} className={styles.icon} />
+			<Icon icon="minus" onClick={handleDecreaseCount} color="purple-700" size={20} />
 			<div className={styles.count}>{count}</div>
-			<Icon icon="plus" onClick={handleIncreaseCount} className={styles.icon} />
+			<Icon icon="plus" onClick={handleIncreaseCount} color="purple-700" size={20} />
 		</div>
 	);
 };

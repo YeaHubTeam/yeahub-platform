@@ -17,6 +17,10 @@
   font-size: var(--font-size-p-s);
 }
 
+.password-input span {
+  pointer-events: auto;
+}
+
 .form-wrapper .forgot-password-link span {
   margin: 0;
   margin-left: auto;

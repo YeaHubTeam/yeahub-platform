@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { isValidElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import {
 	PopoverChildrenProps,

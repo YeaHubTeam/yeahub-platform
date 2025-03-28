@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useRef } from 'react';
-import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Modal.module.css';
@@ -58,10 +58,10 @@ export const Modal = ({
 		>
 			<div className={styles.modal} ref={modalRef}>
 				<Icon
-					icon="xCircle"
+					icon="closeCircle"
 					type="button"
 					className={styles['x-circle']}
-					color="--palette-ui-black-25"
+					color="black-25"
 					onClick={handleClickXCircle}
 					tabIndex={0}
 					aria-label="Закрыть модальное окно"

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
-import { IconButton, Icon } from 'yeahub-ui-kit';
+import { IconButton } from 'yeahub-ui-kit';
 
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Drawer } from '@/shared/ui/Drawer';
+import { Icon } from '@/shared/ui/Icon';
 
 import styles from './FiltersDrawer.module.css';
 
@@ -30,7 +31,7 @@ export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
 		<>
 			<IconButton
 				aria-label="go to filter"
-				icon={<Icon icon="funnel" size={24} />}
+				icon={<Icon icon="filter" size={24} />}
 				size="large"
 				theme="tertiary"
 				onClick={toggleFilter}

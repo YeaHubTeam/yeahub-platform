@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Collection } from '@/entities/collection';
 
@@ -47,7 +47,7 @@ export const DeleteCollectionButton = ({
 			<Button
 				aria-label="Large"
 				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
+				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
 			>

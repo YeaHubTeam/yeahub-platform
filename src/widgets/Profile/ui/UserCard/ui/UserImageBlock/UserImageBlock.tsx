@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
@@ -37,7 +37,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
-			icon: <Icon icon="imagesSquare" size={20} />,
+			icon: <Icon icon="imageEdit" size={20} />,
 			title: t(Profile.PHOTO_UPDATE_FULL),
 			onClick: () => {
 				setIsModalOpen(true);
@@ -51,7 +51,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 					}}
 					className={styles.button}
 					variant="tertiary"
-					preffix={<Icon icon="trashSimple" size={20} color="--palette-ui-red-700" />}
+					preffix={<Icon icon="trash" size={20} color="red-700" />}
 				>
 					<Text color="red-700" variant="body3">
 						{t(Profile.PHOTO_DELETE_FULL)}
