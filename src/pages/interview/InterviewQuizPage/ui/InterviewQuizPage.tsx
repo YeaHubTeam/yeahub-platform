@@ -4,10 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useModal } from '@/shared/hooks/useModal';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Modal } from '@/shared/ui/Modal';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
+import { Text } from '@/shared/ui/Text';
 
 import { getProfileId } from '@/entities/profile';
 import {
@@ -25,6 +28,7 @@ import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+	const { isOpen: isOpenModal, onToggle: onToggleModal } = useModal();
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
@@ -96,53 +100,66 @@ const InterviewQuizPage = () => {
 	};
 
 	return (
-		<Flex direction="column" gap="20" className={styles.container}>
-			<Card withOutsideShadow>
-				<div className={styles['progress-bar']}>
-					<p className={styles['progress-bar-title']}>{t(InterviewQuiz.TITLE)}</p>
-					<span className={styles['progress-num']}>
-						{activeQuestion}/{totalCount}
-					</span>
-					<ProgressBar
-						className={styles['progress-component']}
-						currentCount={currentCount}
-						totalCount={totalCount}
-					/>
-				</div>
-			</Card>
-			<Card withOutsideShadow>
-				<Flex direction="column" gap="20" className={styles.question}>
-					<QuestionNavPanel
-						goToNextSlide={onRightSlide}
-						goToPrevSlide={onPrevSlide}
-						answer={answer}
-						changeAnswer={changeAnswer}
-						questionNumber={activeQuestion}
-						totalCount={totalCount}
-					/>
-					<InterviewSlider
-						id={questionId}
-						title={questionTitle}
-						imageSrc={imageSrc}
-						shortAnswer={shortAnswer}
-						answer={answer}
-						changeAnswer={changeAnswer}
-						isAnswerVisible={isAnswerVisible}
-						setIsAnswerVisible={setIsAnswerVisible}
-					/>
-					<Flex direction="row">
-						<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>
-							{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.CHECK)}
-						</Button>
-						{isNextButton && (
-							<Button className={styles['end-button']} onClick={onInterruptQuiz}>
-								{t(InterviewQuiz.COMPLETE)}
+		<>
+			<Modal
+				isOpen={isOpenModal}
+				title={t(InterviewQuiz.INTERRUPT_QUIZ_TITLE)}
+				onClose={onToggleModal}
+				buttonPrimaryText={t(InterviewQuiz.INTERRUPT_QUIZ_YES)}
+				buttonOutlineText={t(InterviewQuiz.INTERRUPT_QUIZ_NO)}
+				buttonPrimaryClick={onInterruptQuiz}
+				buttonOutlineClick={onToggleModal}
+			>
+				<Text variant="body3-accent">{t(InterviewQuiz.INTERRUPT_QUIZ_DESCRIPTION)}</Text>
+			</Modal>
+			<Flex direction="column" gap="20" className={styles.container}>
+				<Card withOutsideShadow>
+					<div className={styles['progress-bar']}>
+						<p className={styles['progress-bar-title']}>{t(InterviewQuiz.TITLE)}</p>
+						<span className={styles['progress-num']}>
+							{activeQuestion}/{totalCount}
+						</span>
+						<ProgressBar
+							className={styles['progress-component']}
+							currentCount={currentCount}
+							totalCount={totalCount}
+						/>
+					</div>
+				</Card>
+				<Card withOutsideShadow>
+					<Flex direction="column" gap="20" className={styles.question}>
+						<QuestionNavPanel
+							goToNextSlide={onRightSlide}
+							goToPrevSlide={onPrevSlide}
+							answer={answer}
+							changeAnswer={changeAnswer}
+							questionNumber={activeQuestion}
+							totalCount={totalCount}
+						/>
+						<InterviewSlider
+							id={questionId}
+							title={questionTitle}
+							imageSrc={imageSrc}
+							shortAnswer={shortAnswer}
+							answer={answer}
+							changeAnswer={changeAnswer}
+							isAnswerVisible={isAnswerVisible}
+							setIsAnswerVisible={setIsAnswerVisible}
+						/>
+						<Flex direction="row">
+							<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>
+								{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.CHECK)}
 							</Button>
-						)}
+							{isNextButton && (
+								<Button className={styles['end-button']} onClick={onToggleModal}>
+									{t(InterviewQuiz.COMPLETE)}
+								</Button>
+							)}
+						</Flex>
 					</Flex>
-				</Flex>
-			</Card>
-		</Flex>
+				</Card>
+			</Flex>
+		</>
 	);
 };
 
