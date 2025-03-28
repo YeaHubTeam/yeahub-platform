@@ -8,6 +8,12 @@
     "description": "With us you can learn a new IT profession that will allow you to become part of our large community and find your dream profession, with us you can fully immerse yourself in the profession and become a full-fledged specialist.",
     "link": "Start interview"
   },
+  "interrupt.quiz": {
+    "title": "Do you want to interrupt the interview?",
+    "description": "In this case, unanswered questions will be marked as - Do not know",
+    "yes": "Yes",
+    "no": "No"
+  },
   "complete": "Complete",
   "next": "Next",
   "check.quiz": "Check",
