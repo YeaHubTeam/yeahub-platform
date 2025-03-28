@@ -206,7 +206,7 @@ const quizApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.interview.quiz.page);
 
-					dispatch(baseApi.util.invalidateTags([ApiTags.NEW_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+					dispatch(baseApi.util.invalidateTags([ApiTags.INTERVIEW_QUIZ, ApiTags.HISTORY_QUIZ]));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					// eslint-disable-next-line no-console
