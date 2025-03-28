@@ -43,12 +43,10 @@ export const AppLogo = ({
 					alt="Тренажер собеседований и вопросы собеседований в IT"
 				/>
 			)}
-			{!isOpen ? (
+			{!isOpen && (
 				<LogoText
 					className={classNames(styles['logo-text'], styles['logo-text-header'], styles[fill])}
 				/>
-			) : (
-				<LogoText className={classNames(styles['logo-text'], styles[fill])} />
 			)}
 		</NavLink>
 	);
