@@ -18,5 +18,11 @@
     "show": "Show answer",
     "do.not.know": "Do not know",
     "know": "Know"
+  },
+  "modal.quiz": {
+    "title": "You already have an active interview.",
+    "description": "Do you really want to abandon the active interview progress and create a new one?",
+    "ok": "Yes",
+    "cancel": "No"
   }
 }
