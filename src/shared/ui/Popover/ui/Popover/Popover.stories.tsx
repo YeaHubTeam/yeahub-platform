@@ -1,8 +1,8 @@
 import { StoryFn, Meta } from '@storybook/react';
 import React, { useState, useEffect } from 'react';
-import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import {
 	PopoverProps,
@@ -144,12 +144,12 @@ WithMenuItems.args = {
 		{
 			title: 'Profile',
 			onClick: () => alert('Go to profile!'),
-			icon: <Icon icon="user" />,
+			icon: <Icon icon="student" />,
 		},
 		{
 			title: 'Settings',
 			onClick: () => alert('Go to settings!'),
-			icon: <Icon icon="star" />,
+			icon: <Icon icon="settings" />,
 		},
 		{
 			renderComponent: () => <Button onClick={() => alert('Logout!')}>Logout</Button>,

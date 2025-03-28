@@ -1,4 +1,4 @@
-import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
+import CheckCircle from '@/shared/assets/icons/checkCircle1.svg';
 
 import styles from './BenefitItem.module.css';
 

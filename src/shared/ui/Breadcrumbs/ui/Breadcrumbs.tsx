@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation, useMatches } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Icon } from '@/shared/ui/Icon';
 
 import { BreadcrumbItem } from '../../BreadcrumbItem';
 
@@ -30,10 +30,8 @@ export const Breadcrumbs = () => {
 							{(index !== 0 || isMobile) && (
 								<Icon
 									className={styles.icon}
-									icon="caretRight"
-									color={
-										index === arr.length - 1 ? '--palette-ui-purple-700' : '--palette-ui-black-700'
-									}
+									icon="altArrowRight"
+									color={index === arr.length - 1 ? 'purple-700' : 'black-700'}
 									size={20}
 								/>
 							)}

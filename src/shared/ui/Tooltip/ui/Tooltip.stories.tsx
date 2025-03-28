@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Icon } from 'yeahub-ui-kit';
 
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Tooltip } from './Tooltip';
 

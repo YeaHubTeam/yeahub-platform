@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import FigmaLogo from '@/shared/assets/icons/figma.svg';
-import GithubLogo from '@/shared/assets/icons/github.svg';
-import TelegramLogo from '@/shared/assets/icons/telegram.svg';
+import GithubLogo from '@/shared/assets/icons/github1.svg';
+import TelegramLogo from '@/shared/assets/icons/telegram1.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';

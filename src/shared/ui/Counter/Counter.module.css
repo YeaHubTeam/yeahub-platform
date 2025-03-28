@@ -9,12 +9,6 @@
   border-radius: 12px;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  color: var(--background-primary);
-}
-
 .count {
   user-select: none;
 }
