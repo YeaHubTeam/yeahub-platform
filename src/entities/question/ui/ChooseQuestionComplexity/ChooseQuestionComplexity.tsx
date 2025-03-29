@@ -46,7 +46,7 @@ export const ChooseQuestionComplexity = ({
 				color="violet"
 				offsetTooltip={0}
 				tooltipDelay={{ open: 0, close: 150 }}
-				shouldShowTooltip={disabled}
+				shouldShowTooltip={disabled || false}
 			>
 				<BaseFilterSection
 					data={preparedData}
