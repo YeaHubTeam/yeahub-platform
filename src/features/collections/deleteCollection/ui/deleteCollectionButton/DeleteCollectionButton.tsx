@@ -46,7 +46,11 @@ export const DeleteCollectionButton = ({
 		<>
 			<Button
 				aria-label="Large"
-				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
+				style={{
+					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
+					justifyContent: isDetailPage ? 'center' : 'flex-start',
+				}}
 				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}

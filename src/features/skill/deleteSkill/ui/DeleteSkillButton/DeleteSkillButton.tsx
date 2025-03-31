@@ -46,6 +46,7 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 				aria-label="Large"
 				style={{
 					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
