@@ -47,7 +47,8 @@ export const DeleteSpecializationButton = ({
 			<Button
 				aria-label="Large"
 				style={{
-					width: 'auto',
+					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
 				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
