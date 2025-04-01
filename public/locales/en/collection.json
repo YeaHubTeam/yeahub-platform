@@ -23,6 +23,10 @@
   },
   "access": "Access:",
   "specialization": "Specialization:",
+  "tooltip": {
+    "title": "There is already an active interview",
+    "aria.label": "Warning: You cannot create a new interview because there is already an active one."
+  },
   "keywords": "Keywords:",
   "questions": {
     "short": "Questions",

@@ -470,6 +470,8 @@ export enum Collections {
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
+	TOOLTIP_TITLE = 'tooltip.title',
+	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 }
 
 export enum Landing {
