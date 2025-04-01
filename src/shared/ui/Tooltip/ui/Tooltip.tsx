@@ -13,7 +13,7 @@ import {
 	useTransitionStyles,
 } from '@floating-ui/react';
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Text } from '@/shared/ui/Text';
 
@@ -61,25 +61,6 @@ export const Tooltip = ({
 	const { styles: transitionStyles } = useTransitionStyles(context);
 
 	const isShowTooltip = isOpen && title && shouldShowTooltip;
-
-	useEffect(() => {
-		if (isShowTooltip) {
-			const element = document.querySelector(
-				'div[data-floating-ui-portal] > div > div',
-			) as HTMLElement;
-			if (element) {
-				element.style.overflowY = 'visible';
-			}
-		}
-		return () => {
-			const element = document.querySelector(
-				'div[data-floating-ui-portal] > div > div',
-			) as HTMLElement;
-			if (element) {
-				element.style.overflowY = 'scroll';
-			}
-		};
-	}, [isShowTooltip]);
 
 	return (
 		<>
