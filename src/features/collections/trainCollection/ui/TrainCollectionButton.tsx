@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
+import { Icon, Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
-import { useLazyCreateNewQuizQuery } from '@/entities/quiz';
+import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
 
 import styles from './TrainCollectionButton.module.css';
 
@@ -25,19 +25,34 @@ export const TrainCollectionButton = ({
 
 	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
 
+	const { data: activeQuizResponse, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
+		profileId,
+		page: 1,
+		limit: 1,
+	});
+	const isActiveQuizDisabled = !!activeQuizResponse?.data[0] || isActiveQuizLoading;
+
 	const handleTrainCollection = () => {
 		createNewQuiz({ profileId, collection: Number(collectionId) });
 	};
 
 	return (
-		<Button
-			className={styles.button}
-			preffix={<Icon icon="student" size={24} />}
-			variant={variant}
-			onClick={handleTrainCollection}
-			disabled={isCreateNewQuizLoading}
+		<Tooltip
+			title={t(Collections.TOOLTIP_TITLE)}
+			tooltipDelay={{ open: 0, close: 150 }}
+			color="violet"
+			shouldShowTooltip={isActiveQuizDisabled}
+			ariaLabel={t(Collections.TOOLTIP_ARIA_LABEL)}
 		>
-			{t(Collections.COLLECTIONS_TRAIN)}
-		</Button>
+			<Button
+				className={styles.button}
+				preffix={<Icon icon="student" size={24} />}
+				variant={variant}
+				onClick={handleTrainCollection}
+				disabled={isCreateNewQuizLoading || isActiveQuizDisabled}
+			>
+				{t(Collections.COLLECTIONS_TRAIN)}
+			</Button>
+		</Tooltip>
 	);
 };
