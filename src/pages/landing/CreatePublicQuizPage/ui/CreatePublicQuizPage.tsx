@@ -86,8 +86,7 @@ const CreatePublicQuizPage = () => {
 			skills: filter.category,
 			complexity: filter.complexity,
 			limit: filter.count,
-			mode: filter.mode,
-			questions: [],
+			specialization: filter.specialization,
 		};
 		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newQuiz);
 		createNewMockQuiz(newQuiz);

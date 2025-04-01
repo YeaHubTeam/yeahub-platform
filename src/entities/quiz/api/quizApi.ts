@@ -161,7 +161,7 @@ const quizApi = baseApi.injectEndpoints({
 					await queryFulfilled;
 					await dispatch(
 						quizApi.endpoints.getActiveQuiz.initiate(
-							{ profileId: data.profileId, page: 1, limit: 1 },
+							{ profileId: data.profileId ?? '', page: 1, limit: 1 },
 							{ forceRefetch: true },
 						),
 					).unwrap();
