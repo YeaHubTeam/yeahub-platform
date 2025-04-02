@@ -23,9 +23,9 @@ import {
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
 
-import styles from './InterviewPublicQuizPage.module.css';
+import styles from './PublicQuizPage.module.css';
 
-const InterviewQuizPage = () => {
+const PublicQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
@@ -155,4 +155,4 @@ const InterviewQuizPage = () => {
 	);
 };
 
-export default InterviewQuizPage;
+export default PublicQuizPage;
