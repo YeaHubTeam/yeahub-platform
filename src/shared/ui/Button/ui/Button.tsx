@@ -40,6 +40,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 					tagName === 'a' && props.disabled ? styles['disabled'] : '',
 				)}
 				{...props}
+				data-testid="Button"
 			>
 				{preffix}
 				{children}
