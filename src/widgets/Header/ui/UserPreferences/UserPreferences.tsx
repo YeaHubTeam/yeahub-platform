@@ -45,7 +45,7 @@ export const UserPreferences = () => {
 			<Popover menuItems={userMenuItems} header={<UserPreferencesHeader />}>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
-						<Text variant={'body2'}>{profile?.firstName}</Text>
+						<Text variant={'body2'}>{profile?.username}</Text>
 						<div className={styles.avatar}>
 							{profile.avatarUrl ? (
 								<img className={styles.img} src={profile.avatarUrl} alt={t(Translation.AVATAR)} />

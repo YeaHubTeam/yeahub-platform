@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
@@ -15,13 +13,13 @@ import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
+import { PasswordInput } from '@/shared/ui/PasswordInput';
 
 import { SignUpFormValues, useRegisterMutation } from '@/entities/auth';
 
 import styles from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
-	const [isPasswordHidden, setIsPasswordHidden] = useState(false);
 	const [registrationMutation] = useRegisterMutation();
 
 	const {
@@ -29,10 +27,6 @@ export const RegisterForm = () => {
 		control,
 		formState: { errors, isValid },
 	} = useFormContext<SignUpFormValues>();
-
-	const handleShowPassword = () => {
-		setIsPasswordHidden((prev) => !prev);
-	};
 
 	const onRegistration = async (data: SignUpFormValues) => {
 		await registrationMutation(data);
@@ -51,23 +45,12 @@ export const RegisterForm = () => {
 			<h1>{t(Auth.REGISTRATION_TITLE)}</h1>
 
 			<div className={styles['input-wrapper']}>
-				<FormControl name="firstName" control={control} label={t(Auth.FORM_FIRSTNAME_LABEL)}>
+				<FormControl name="username" control={control} label={t(Auth.FORM_USERNAME_LABEL)}>
 					{(field) => (
 						<Input
 							{...field}
 							className={styles.input}
-							placeholder={t(Auth.FORM_FIRSTNAME_PLACEHOLDER)}
-						/>
-					)}
-				</FormControl>
-			</div>
-			<div className={styles['input-wrapper']}>
-				<FormControl name="lastName" control={control} label={t(Auth.FORM_LASTNAME_LABEL)}>
-					{(field) => (
-						<Input
-							{...field}
-							className={styles.input}
-							placeholder={t(Auth.FORM_LASTNAME_PLACEHOLDER)}
+							placeholder={t(Auth.FORM_USERNAME_PLACEHOLDER)}
 						/>
 					)}
 				</FormControl>
@@ -84,56 +67,20 @@ export const RegisterForm = () => {
 				</FormControl>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControl name="password" control={control} label={t(Auth.FORM_PASSWORD_LABEL)}>
-					{(field) => (
-						<Input
-							{...field}
-							className={styles.input}
-							placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
-							type={isPasswordHidden ? 'text' : 'password'}
-							suffix={
-								<Icon
-									onClick={handleShowPassword}
-									icon="password"
-									arg={isPasswordHidden}
-									color={
-										errors.password?.message ? '--palette-ui-red-700' : '--palette-ui-black-300'
-									}
-									size={24}
-								/>
-							}
-						/>
-					)}
-				</FormControl>
+				<PasswordInput
+					name="password"
+					error={errors.password?.message}
+					label={t(Auth.FORM_PASSWORD_LABEL)}
+					placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
+				/>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControl
+				<PasswordInput
 					name="passwordConfirmation"
-					control={control}
+					error={errors.passwordConfirmation?.message}
 					label={t(Auth.FORM_PASSWORD_REPEAT_LABEL)}
-				>
-					{(field) => (
-						<Input
-							{...field}
-							className={styles.input}
-							placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
-							type={isPasswordHidden ? 'text' : 'password'}
-							suffix={
-								<Icon
-									onClick={handleShowPassword}
-									icon="password"
-									arg={isPasswordHidden}
-									size={24}
-									color={
-										errors.passwordConfirmation?.message
-											? '--palette-ui-red-700'
-											: '--palette-ui-black-300'
-									}
-								/>
-							}
-						/>
-					)}
-				</FormControl>
+					placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
+				/>
 			</div>
 
 			<Button

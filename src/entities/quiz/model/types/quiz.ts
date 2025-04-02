@@ -87,6 +87,13 @@ export type interruptQuizRequest = {
 	isInterrupted?: boolean;
 };
 
+export interface CreateNewMockQuizParamsRequest
+	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
+	specialization?: number[];
+}
+
+export type CreateNewMockQuizResponse = Omit<CreateNewQuizResponse, 'profileId'>;
+
 export type GetActiveQuizResponse = Response<Omit<Quiz, 'endDate'>[]>;
 export interface GetActiveQuizParamsRequest {
 	profileId: string;

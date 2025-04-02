@@ -32,13 +32,6 @@
   display: flex;
 }
 
-.search-svg {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-  fill:  var(--color-black-300);
-}
-
 .question-card {
   cursor: pointer;
   padding: 16px;

@@ -32,11 +32,11 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const questionAnswers: Record<QuizQuestionAnswerType, QuestionAnswerItem> = {
 		UNKNOWN: {
 			label: InterviewQuiz.ANSWER_DO_NOT_KNOW,
-			icon: 'thumbsDown',
+			icon: 'dislike',
 		},
 		KNOWN: {
 			label: InterviewQuiz.ANSWER_KNOW,
-			icon: 'thumbsUp',
+			icon: 'like',
 		},
 	};
 

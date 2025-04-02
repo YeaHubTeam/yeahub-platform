@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import styles from './UserEditButton.module.css';
 
@@ -31,9 +31,7 @@ export const UserEditButton = ({ tab }: UserEditButtonProps) => {
 				className={styles['card-edit']}
 				onClick={handleNavigate}
 				preffix={
-					isMobile || isTablet ? (
-						<Icon icon="pencilSimpleLine" size={20} color="--palette-ui-purple-700" />
-					) : undefined
+					isMobile || isTablet ? <Icon icon="pen" size={20} color="purple-700" /> : undefined
 				}
 			>
 				{!(isMobile || isTablet) ? t(Translation.EDIT) : ''}

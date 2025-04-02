@@ -25,7 +25,7 @@ const LoginPage = () => {
 	};
 
 	const loginTitle = accessToken
-		? `${t(Auth.LOGIN_HELLO)} ${profile?.firstName}`
+		? `${t(Auth.LOGIN_HELLO)} ${profile?.username}`
 		: t(Auth.LOGIN_TITLE);
 
 	return (

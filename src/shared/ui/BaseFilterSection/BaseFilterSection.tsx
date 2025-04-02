@@ -18,22 +18,27 @@ export interface BaseFilterSectionProps<T> {
 	title: string;
 	data: DateType<T>[];
 	onClick: (id: T) => void;
+	disabled?: boolean;
 }
 
-export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectionProps<T>) => {
+export const BaseFilterSection = <T,>({
+	title,
+	data,
+	onClick,
+	disabled,
+}: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
 		onClick(id);
 	};
 
 	return (
-		<Flex direction="column" gap="8">
+		<Flex direction="column" gap="8" style={{ maxWidth: 'max-content' }}>
 			<Text variant="body2" color="black-700">
 				{title}
 			</Text>
 			<Flex wrap="wrap" gap="8">
 				{data &&
 					data.map((item) => (
-						// TODO Перенести компонент из uikit
 						<Chip
 							className={styles.chip}
 							key={item?.id as Key}
@@ -50,7 +55,8 @@ export const BaseFilterSection = <T,>({ title, data, onClick }: BaseFilterSectio
 								)
 							}
 							onClick={onHandleClick(item.id)}
-							active={item.active}
+							active={!disabled && item.active}
+							disabled={disabled}
 						/>
 					))}
 			</Flex>

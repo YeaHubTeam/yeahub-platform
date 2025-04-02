@@ -6,11 +6,13 @@ export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
 
 export {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
+	useLazyCloneQuizQuery,
 	useInterruptQuizMutation,
 } from './api/quizApi';
 
@@ -37,6 +39,6 @@ export {
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 
-export { LS_ACTIVE_QUIZ_KEY } from './model/constants/quizConstants';
+export { LS_ACTIVE_QUIZ_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
 
 export { interviewHandlers } from './api/__mocks__/index';

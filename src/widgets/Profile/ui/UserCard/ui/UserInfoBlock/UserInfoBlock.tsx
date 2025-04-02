@@ -24,7 +24,7 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { firstName, lastName, birthday, email, country, city, isEmailVerified } = profile;
+	const { username, birthday, email, country, city, isEmailVerified } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
 	const isEdit = useAppSelector(getIsEdit);
 
@@ -50,7 +50,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 	return (
 		<div className={styles['card-info']}>
 			<div className={styles['card-header']}>
-				<h2 className={styles['card-name']}>{`${firstName} ${lastName}`}</h2>
+				<h2 className={styles['card-name']}>{`${username}`}</h2>
 				{!!birthday && (
 					<p className={styles['card-age']}>
 						{`${differenceInYears(new Date(), new Date(birthday))} лет`}

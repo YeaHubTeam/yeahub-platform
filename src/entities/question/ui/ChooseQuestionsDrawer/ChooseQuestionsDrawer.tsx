@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
-import PlusSvg from '@/shared/assets/icons/Plus.svg';
+import PlusSvg from '@/shared/assets/icons/Plus1.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useModal } from '@/shared/hooks/useModal';
@@ -11,6 +10,7 @@ import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 
@@ -85,11 +85,11 @@ export const ChooseQuestionsDrawer = ({
 				</Button>
 			</Flex>
 			<Drawer isOpen={isOpen} onClose={onClose} rootName="body" className={styles['drawer']}>
-				<Flex direction="column" gap="16" className={styles['drawer-content']}>
+				<Flex direction="column" gap="24" className={styles['drawer-content']}>
 					<Input
 						onChange={handleCollectionSearch}
 						className={styles.input}
-						prefix={<Icon icon={'search'} className={styles['search-svg']} />}
+						prefix={<Icon icon="search" size={20} color="black-300" />}
 						placeholder={t(Translation.SEARCH)}
 					/>
 					<Flex direction="column" gap="16">
