@@ -71,7 +71,9 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+
 import '../../../styles/App.css';
+import { InterviewPublicQuizPage } from '@/pages/landing/InterviewPublicQuizPage';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -200,7 +202,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.quiz.new.route,
-						element: <div>Страница в разработке</div>,
+						element: <InterviewPublicQuizPage />,
 					},
 				],
 			},
