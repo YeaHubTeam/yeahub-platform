@@ -1,6 +1,5 @@
 export const LS_ACTIVE_QUIZ_KEY = 'activeQuiz';
 export const LS_ACTIVE_MOCK_QUIZ_KEY = 'activeMockQuiz';
-export const LS_ACTIVE_MOCK_QUIZ_RESULT_KEY = 'activeMockResultQuiz';
 
 export const quizApiUrls = {
 	createNewQuiz: 'interview-preparation/quizzes/new/:profileId',

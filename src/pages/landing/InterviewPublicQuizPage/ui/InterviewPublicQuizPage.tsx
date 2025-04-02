@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useReducer, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -15,47 +15,25 @@ import {
 	QuestionNavPanel,
 	useSlideSwitcher,
 	LS_ACTIVE_MOCK_QUIZ_KEY,
-	useLazyCreateNewMockQuizQuery,
 } from '@/entities/quiz';
 
-// eslint-disable-next-line @conarti/feature-sliced/public-api
-import { LS_ACTIVE_MOCK_QUIZ_RESULT_KEY } from '@/entities/quiz/model/constants/quizConstants';
 import {
-	CreateNewMockQuizResponse,
+	Answers,
 	QuizQuestionAnswerType,
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
 
 import styles from './InterviewPublicQuizPage.module.css';
-import { InterviewPublicQuizPageSkeleton } from './InterviewPublicQuizPage.skeleton';
 
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-	const [quizResult, setQuizResult] = useState<CreateNewMockQuizResponse | null>(null);
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
-	const mockParams = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+	const Mock = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
 
-	const [CreateMockQuiz, { isLoading: isLoadingQuiz }] = useLazyCreateNewMockQuizQuery();
-
-	useEffect(() => {
-		if (mockParams) {
-			CreateMockQuiz({
-				skills: mockParams.skills,
-				complexity: mockParams.complexity,
-				limit: mockParams.limit,
-				specialization: mockParams.specialization,
-			})
-				.unwrap()
-				.then((result) => {
-					setQuizResult(result as unknown as CreateNewMockQuizResponse);
-				});
-		}
-	}, []);
-
-	const isAllQuestionsAnswered = quizResult?.response.answers.every(
-		(question) => question.answer !== undefined && question.answer !== null,
+	const isAllQuestionsAnswered = Mock?.response.answers.every(
+		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
 
 	const {
@@ -70,7 +48,7 @@ const InterviewQuizPage = () => {
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(quizResult?.response.answers ?? []);
+	} = useSlideSwitcher(Mock?.response.answers ?? []);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
@@ -86,42 +64,46 @@ const InterviewQuizPage = () => {
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
-	const handleAnswerChange = (newAnswer: QuizQuestionAnswerType) => {
-		if (!quizResult) return;
+	const forceUpdate = useReducer((x) => x + 1, 0)[1];
 
-		const updatedAnswers = [...quizResult.response.answers];
+	const handleAnswerChange = (newAnswer: QuizQuestionAnswerType) => {
+		if (!Mock) return;
+
+		const updatedAnswers = [...Mock.response.answers];
 		updatedAnswers[activeQuestion - 1] = {
 			...updatedAnswers[activeQuestion - 1],
 			answer: newAnswer,
 		};
 
-		setQuizResult({
-			...quizResult,
-			response: { ...quizResult.response, answers: updatedAnswers },
-		});
+		const newMockData = {
+			...Mock,
+			response: { ...Mock.response, answers: updatedAnswers },
+		};
+
+		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newMockData);
+
+		forceUpdate();
 
 		changeAnswer(newAnswer);
 	};
 	const onSubmitQuiz = () => {
-		if (quizResult) {
-			setToLS(LS_ACTIVE_MOCK_QUIZ_RESULT_KEY, quizResult.response.answers);
+		if (Mock) {
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, Mock.response.answers);
 		}
 	};
 
 	const onInterruptQuiz = () => {
-		if (quizResult) {
-			const quizToSave = quizResult.response.answers.map((quest) => ({
+		if (Mock) {
+			const quizToSave = Mock.response.answers.map((quest: Answers) => ({
 				...quest,
 				answer: quest.answer ?? 'UNKNOWN',
 			}));
-
-			setToLS(LS_ACTIVE_MOCK_QUIZ_RESULT_KEY, quizToSave);
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
 		}
 	};
 
-	if (isLoadingQuiz) return <InterviewPublicQuizPageSkeleton />;
 	return (
 		<Flex direction="column" gap="20" className={styles.container}>
 			<Card withOutsideShadow>

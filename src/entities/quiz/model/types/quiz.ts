@@ -8,7 +8,7 @@ export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN';
 
 export interface Quiz {
 	id: string;
-	profileId?: string;
+	profileId: string;
 	quizNumber: number;
 	startDate: string;
 	endDate: string;
@@ -79,7 +79,6 @@ export interface CreateNewQuizParamsRequest {
 	complexity?: number[];
 	limit?: number;
 	mode?: QuestionModeType;
-	specialization?: number[];
 }
 export type CreateNewQuizResponse = Omit<Quiz, 'endDate'>;
 
@@ -89,7 +88,9 @@ export type interruptQuizRequest = {
 };
 
 export interface CreateNewMockQuizParamsRequest
-	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {}
+	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
+	specialization?: number[];
+}
 
 export type CreateNewMockQuizResponse = Omit<CreateNewQuizResponse, 'profileId'>;
 

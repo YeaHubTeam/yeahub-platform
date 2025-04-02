@@ -10,7 +10,7 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
-import { getFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -25,9 +25,9 @@ import {
 	ChooseSpecialization,
 } from '@/entities/question';
 import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
-import { LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
+import { InterviewPublicQuizPageSkeleton } from '../../InterviewPublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
 import styles from './CreatePublicQuizPage.module.css';
@@ -88,12 +88,11 @@ const CreatePublicQuizPage = () => {
 			limit: filter.count,
 			specialization: filter.specialization,
 		};
-		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newQuiz);
 		createNewMockQuiz(newQuiz);
 	};
 
-	if (isCreateNewMockQuizLoading || isLoadingCategories) return <CreatePublicQuizPageSkeleton />;
-
+	if (isLoadingCategories) return <CreatePublicQuizPageSkeleton />;
+	if (isCreateNewMockQuizLoading) return <InterviewPublicQuizPageSkeleton />;
 	return (
 		<section>
 			<Card>
