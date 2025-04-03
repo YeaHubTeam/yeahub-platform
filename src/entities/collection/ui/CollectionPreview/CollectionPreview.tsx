@@ -8,9 +8,12 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { Card } from '@/shared/ui/Card';
 import { CollectionParam } from '@/shared/ui/CollectionParam';
+import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
+
+import { getCorrectTitleTag } from '../../utils/helpers/getCorrectTitleTag';
 
 import styles from './CollectionPreview.module.css';
 
@@ -19,15 +22,9 @@ type CollectionProps = {
 };
 
 export const CollectionPreview = ({ collection }: CollectionProps) => {
-	const { id, title, isFree } = collection;
+	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations } = collection;
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
-
-	const headerParams = [
-		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
-		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
-		t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection }),
-	];
 
 	const accessText = {
 		free: t(Collections.TARIFF_FREE, { ns: i18Namespace.collection }),
@@ -37,22 +34,22 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 	return (
 		<Card withOutsideShadow>
 			<Link to={route(ROUTES.interview.collections.detail.page, id)} className={styles.wrapper}>
-				<div className={styles['image-wrapper']}>
-					<img
-						className={styles.image}
+				<div className={styles['image-block']}>
+					<ImageWithWrapper
+						src={imageSrc}
 						alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}
-						src={
-							'https://avatars.mds.yandex.net/i?id=1683d076e80887c04421aabf3b0879ee_l-4420695-images-thumbs&n=13'
-						}
+						className={styles['image-wrapper']}
 					/>
-					<hr />
+					{!!questionsCount && (
+						<div className={styles['image-tag']}>
+							{questionsCount} {getCorrectTitleTag(questionsCount)}
+						</div>
+					)}
 				</div>
 				<div className={styles['wrapper-content']}>
 					<div className={styles.header}>
 						<ul className={styles['header-params']}>
-							{headerParams.map((param, index) => (
-								<CollectionParam key={index} label={param} />
-							))}
+							{keywords?.map((param) => <CollectionParam key={param} label={param} />)}
 						</ul>
 					</div>
 
@@ -62,8 +59,11 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 						<Text variant={'body3-accent'}>{accessText[isFree ? 'free' : 'paid']}</Text>
 					</div>
 					<div className={styles['specialization-container']}>
-						<Text variant={'body3-accent'}>{title}</Text>
-						<Text variant={'body3-accent'}>{title}</Text>
+						{specializations?.map((spec) => (
+							<Text variant={'body3-accent'} key={spec.id}>
+								{spec.title}
+							</Text>
+						))}
 					</div>
 				</div>
 			</Link>
