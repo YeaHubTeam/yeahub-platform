@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { Icon } from '../../Icon';
-import { RangeProps } from '../model/types';
+import { Icon } from '../../../Icon';
+import { RangeProps } from '../../model/types';
 
 import { Range } from './Range';
 
 const meta = {
-	title: 'Components/Range',
+	title: 'shared/Range',
 	component: Range,
 	tags: ['autodocs'],
 	argTypes: {},

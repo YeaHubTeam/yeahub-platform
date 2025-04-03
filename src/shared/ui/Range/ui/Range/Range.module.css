@@ -35,7 +35,6 @@
   width: 22px;
   height: 22px;
   appearance: none;
-  appearance: none;
   border-radius: 50%;
   background-color: var(--color-purple-700);
   transition: 0.3s ease;
@@ -48,7 +47,6 @@
   z-index: 3;
   width: 22px;
   height: 22px;
-  appearance: none;
   appearance: none;
   border-radius: 50%;
   background-color: var(--color-purple-700);
@@ -72,52 +70,3 @@
   background-color: var(--color-purple-700);
 }
   
-.steps {
-  &.steps-scale {
-    position: relative;
-    top: 15px;
-  }
-  
-  .step {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  
-    .dot {
-      width: 3px;
-      height: 3px;
-      outline: none;
-      border-radius: 50%;
-      background-color: var(--color-purple-700);
-    }
-  }
-}
-  
-.units {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: -5px;
-  width: 100%;
-}
-  
-.label {
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: var(--color-purple-700);
-  color: var(--color-white-900);
-  text-align: center;
-  line-height: 30px;
-  transform: translateX(-50%) scale(0);
-  transform-origin: bottom;
-  transition: transform 0.3s ease-in-out;
-}
-  
-.label-active {
-  transform: translateX(-50%) scale(1);
-}

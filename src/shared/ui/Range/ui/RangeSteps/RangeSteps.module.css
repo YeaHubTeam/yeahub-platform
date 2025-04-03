@@ -1,0 +1,23 @@
+.steps {
+  &.steps-scale {
+    position: relative;
+    top: 15px;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  
+    .dot {
+      width: 3px;
+      height: 3px;
+      outline: none;
+      border-radius: 50%;
+      background-color: var(--color-purple-700);
+    }
+  }
+}
+  
