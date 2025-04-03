@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
@@ -18,6 +19,13 @@ type ModalProps = {
 	buttonOutlineClick?: () => void;
 };
 
+const createPortalRoot = () => {
+	const modalRoot = document.createElement('div');
+	modalRoot.setAttribute('id', 'modal-root');
+
+	return modalRoot;
+};
+
 export const Modal = ({
 	title,
 	isOpen,
@@ -28,10 +36,14 @@ export const Modal = ({
 	buttonOutlineClick,
 	children,
 }: ModalProps) => {
-	const modalRef = useRef<HTMLDivElement>(null);
+	const portalRootRef = useRef(document.getElementById('modal-root') || createPortalRoot());
+	const renderRootRef = useRef(document.body);
+	const rootEl = renderRootRef.current;
+	const overlayRef = useRef<HTMLDivElement>(null);
+
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const target = e.target as Node;
-		if (modalRef.current && !modalRef.current.contains(target)) {
+		if (overlayRef.current && !overlayRef.current.contains(target)) {
 			onClose();
 		}
 	};
@@ -45,9 +57,31 @@ export const Modal = ({
 		}
 	};
 
+	useEffect(() => {
+		if (rootEl) {
+			rootEl.style.overflow = isOpen ? 'hidden' : '';
+
+			return () => {
+				rootEl.style.overflow = '';
+			};
+		}
+	}, [isOpen]);
+
+	useEffect(() => {
+		if (isOpen && rootEl) {
+			rootEl.appendChild(portalRootRef.current);
+			const portal = portalRootRef.current;
+
+			return () => {
+				portal.remove();
+				rootEl.style.overflow = '';
+			};
+		}
+	}, [isOpen]);
+
 	const isButtons = buttonOutlineText || buttonPrimaryText;
 
-	return (
+	return createPortal(
 		<div
 			role="button"
 			aria-labelledby="У вас открыто модальное окно"
@@ -56,7 +90,7 @@ export const Modal = ({
 			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
-			<div className={styles.modal} ref={modalRef}>
+			<div className={styles.modal} ref={overlayRef}>
 				<Icon
 					icon="closeCircle"
 					type="button"
@@ -98,6 +132,7 @@ export const Modal = ({
 					</div>
 				)}
 			</div>
-		</div>
+		</div>,
+		portalRootRef.current,
 	);
 };
