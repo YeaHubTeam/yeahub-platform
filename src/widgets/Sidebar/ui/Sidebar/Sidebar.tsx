@@ -28,6 +28,12 @@ interface SidebarProps {
 	 * Is a mobile option
 	 */
 	isMobileSidebar?: boolean;
+
+	onOpenSidebarDrawer?: () => void;
+
+	isOpenSidebarDrawer?: boolean;
+
+	setIsOpenSidebarDrawer?: (boolean: boolean) => void;
 }
 
 /**
@@ -35,17 +41,29 @@ interface SidebarProps {
  * @param props
  */
 
-export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) => {
-	const { isMobile, isTablet } = useScreenSize();
+export const Sidebar = ({
+	menuItems,
+	isMobileSidebar = false,
+	onOpenSidebarDrawer,
+	isOpenSidebarDrawer,
+	setIsOpenSidebarDrawer,
+}: SidebarProps) => {
+	const { isMobile, isTablet, isLaptop, isDesktop } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
-			(isMobile || isTablet) && setIsOpenNavSidebar(true);
+			(isMobile || isTablet || isLaptop) && setIsOpenNavSidebar(true);
 		}
-	}, [isMobile, isTablet, isMobileSidebar]);
+	}, [isMobile, isTablet, isLaptop, isMobileSidebar]);
+
+	useEffect(() => {
+		if (isOpenSidebarDrawer && setIsOpenSidebarDrawer && isDesktop) {
+			setIsOpenSidebarDrawer(false);
+		}
+	}, [isDesktop, isOpenSidebarDrawer, setIsOpenSidebarDrawer]);
 
 	const handleToggleSidebar = () => {
 		setIsOpenNavSidebar((prev) => !prev);
@@ -66,16 +84,22 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 			<Flex direction="column" maxHeight>
 				<div className={styles.header}>
 					<AppLogo isOpen={isOpenNavSidebar} />
-					<button
-						className={classNames(styles['close-icon'], {
-							[styles.left]: isOpenNavSidebar,
-						})}
-						onClick={handleToggleSidebar}
-						data-testid="Sidebar_CloseButton"
-						aria-label={t(!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN)}
-					>
-						<ToogleSidebar className={styles.arrow} />
-					</button>
+					{(isDesktop || (isLaptop && onOpenSidebarDrawer)) && (
+						<button
+							className={classNames(styles['close-icon'], {
+								[styles.left]: isOpenNavSidebar,
+							})}
+							onClick={() => {
+								isLaptop ? onOpenSidebarDrawer?.() : handleToggleSidebar();
+							}}
+							data-testid="Sidebar_CloseButton"
+							aria-label={t(
+								!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN,
+							)}
+						>
+							<ToogleSidebar className={styles.arrow} />
+						</button>
+					)}
 				</div>
 				<div className={styles.menu}>
 					<SidebarMenuList fullWidth={isOpenNavSidebar} menuItems={menuItems} />
