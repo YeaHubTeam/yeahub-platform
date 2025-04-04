@@ -32,7 +32,11 @@
   "questions": {
     "short": "Questions",
     "label": "Add questions",
-    "selected": "Selected questions: {{count}}"
+    "selected": "Selected questions: {{count}}",
+    "length": {
+      "min_one": "{{count}} question",
+      "min_other": "{{count}} questions"
+    }
   },
   "image.src": "Image URL",
   "image.alt": "Image of company",

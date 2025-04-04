@@ -42,26 +42,13 @@
   border-radius: 20px;
 }
 
-.image-wrapper, .image-block {
-  position: relative;
+.image-wrapper {
   width: 100%;
   max-width: 149px;
   min-height: 157px;
   overflow: hidden;
   border-radius: 12px;
   place-content: center center;
-}
-
-.image-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 2px 8px;
-  border-radius: 5px;
-  background: rgb(85 51 255 / 10%);
-  color: rgb(255 255 255 / 80%);
-  font-weight: 600;
-  font-size: 12px;
 }
 
 .specialization-container {
@@ -98,6 +85,12 @@
     height: 20px;
   }
 
+  & svg path {
+    stroke-width: 0;
+    fill: var(--color-purple-700);
+  }
+
+
   & p {
     color: var(--color-purple-700);
     line-height: 120%;
@@ -107,8 +100,17 @@
   }
 }
 
+.access-item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
 @media (width < 565px) {
-  .image-wrapper, .image-block {
+  .image-wrapper {
     margin: 0;
     max-width: 100%;
     min-height: 300px;
@@ -130,7 +132,7 @@
     gap: 16px;
   }
 
-  .image-wrapper, .image-block {
+  .image-wrapper {
     margin-bottom: 16px;
     max-width: 260px;
     border-radius: 12px;
