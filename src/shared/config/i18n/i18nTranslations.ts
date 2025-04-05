@@ -288,6 +288,14 @@ export enum InterviewQuizResult {
 	TIME = 'time',
 	DATE = 'date',
 	DURATION = 'duration',
+	CLONE_BUTTON = 'clone.button',
+	JOIN_COMMUNITY_TITLE = 'join.community.title',
+	JOIN_COMMUNITY_DESCRIPTION = 'join.community.description',
+	INTERVIEW_SIMULATOR = 'join.community.interview.simulator',
+	MEMORY_MODE = 'join.community.memory.mode',
+	STATS_HISTORY = 'join.community.stats.history',
+	FULL_ACCESS = 'join.community.full.access',
+	BECOME_MEMBER = 'join.community.become.member',
 }
 
 export enum InterviewStatistics {

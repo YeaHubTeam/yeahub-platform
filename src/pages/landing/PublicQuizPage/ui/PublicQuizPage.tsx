@@ -1,8 +1,10 @@
 import { useReducer, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { getJSONFromLS, removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -27,12 +29,10 @@ import styles from './PublicQuizPage.module.css';
 
 const PublicQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
-
-	const Mock = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-
-	const isAllQuestionsAnswered = Mock?.response.answers.every(
+	const navigate = useNavigate();
+	const activeMockQuiz = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+	const isAllQuestionsAnswered = activeMockQuiz?.response.answers.every(
 		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
 
@@ -48,7 +48,7 @@ const PublicQuizPage = () => {
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(Mock?.response.answers ?? []);
+	} = useSlideSwitcher(activeMockQuiz?.response.answers ?? []);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
@@ -67,35 +67,32 @@ const PublicQuizPage = () => {
 	const forceUpdate = useReducer((x) => x + 1, 0)[1];
 
 	const handleAnswerChange = (newAnswer: QuizQuestionAnswerType) => {
-		if (!Mock) return;
-
-		const updatedAnswers = [...Mock.response.answers];
+		if (!activeMockQuiz) return;
+		const updatedAnswers = [...activeMockQuiz.response.answers];
 		updatedAnswers[activeQuestion - 1] = {
 			...updatedAnswers[activeQuestion - 1],
 			answer: newAnswer,
 		};
-
 		const newMockData = {
-			...Mock,
-			response: { ...Mock.response, answers: updatedAnswers },
+			...activeMockQuiz,
+			response: { ...activeMockQuiz.response, answers: updatedAnswers },
 		};
-
 		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newMockData);
-
 		forceUpdate();
-
 		changeAnswer(newAnswer);
 	};
-	const onSubmitQuiz = () => {
-		if (Mock) {
+
+	const onCheckQuizResult = () => {
+		if (activeMockQuiz) {
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, Mock.response.answers);
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, activeMockQuiz.response.answers);
 		}
+		navigate(ROUTES.quiz.result.page);
 	};
 
 	const onInterruptQuiz = () => {
-		if (Mock) {
-			const quizToSave = Mock.response.answers.map((quest: Answers) => ({
+		if (activeMockQuiz) {
+			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
 				...quest,
 				answer: quest.answer ?? 'UNKNOWN',
 			}));
@@ -140,7 +137,7 @@ const PublicQuizPage = () => {
 						setIsAnswerVisible={setIsAnswerVisible}
 					/>
 					<Flex direction="row">
-						<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>
+						<Button onClick={isNextButton ? onRightSlide : onCheckQuizResult} disabled={isDisabled}>
 							{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.CHECK)}
 						</Button>
 						{isNextButton && (

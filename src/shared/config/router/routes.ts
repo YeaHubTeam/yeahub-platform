@@ -167,6 +167,10 @@ export const ROUTES = {
 			route: 'new',
 			page: '/quiz/new',
 		},
+		result: {
+			route: 'result',
+			page: '/quiz/result',
+		},
 	},
 	collections: {
 		route: 'collections',

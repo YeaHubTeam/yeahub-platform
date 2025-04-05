@@ -58,6 +58,8 @@ import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
+import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
+import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -73,7 +75,6 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
-import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -203,6 +204,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.quiz.new.route,
 						element: <PublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.result.route,
+						element: <PublicQuizResultPage />,
 					},
 				],
 			},

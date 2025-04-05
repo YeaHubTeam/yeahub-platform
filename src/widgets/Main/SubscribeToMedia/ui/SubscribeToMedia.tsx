@@ -14,10 +14,11 @@ export const SubscribeToMedia = () => {
 	const { t } = useTranslation([i18Namespace.main]);
 
 	return (
-		<Card className={styles.card} withOutsideShadow title={t(Main.SUBSCRIBE_MEDIA_TITLE)}>
+		<Card className={styles.card} withOutsideShadow>
 			<Flex direction="column" gap="16">
+				<Text variant="body5-strong">{t(Main.SUBSCRIBE_MEDIA_TITLE)}</Text>
 				<Flex direction="column" gap="8">
-					<Text variant="body2-accent" color="black-700">
+					<Text variant="body2-accent" color="black-600">
 						{t(Main.SUBSCRIBE_MEDIA_DESCRIPTION)}
 					</Text>
 				</Flex>

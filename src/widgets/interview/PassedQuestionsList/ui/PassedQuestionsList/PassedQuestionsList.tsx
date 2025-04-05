@@ -15,11 +15,13 @@ export interface PassedQuestionsListProps {
 	questions: Answers[];
 	className?: string;
 	handleClone?: () => void;
+	hideCloneButton?: boolean;
 }
 export const PassedQuestionsList = ({
 	questions,
 	className,
 	handleClone,
+	hideCloneButton,
 }: PassedQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
@@ -30,9 +32,11 @@ export const PassedQuestionsList = ({
 					<PassedQuestionsItem key={question.questionId} question={question} />
 				))}
 			</ul>
-			<Button className={styles.button} size="large" onClick={handleClone}>
-				Пройти заново
-			</Button>
+			{!hideCloneButton && (
+				<Button className={styles.button} size="large" onClick={handleClone}>
+					{t(InterviewQuizResult.CLONE_BUTTON)}
+				</Button>
+			)}
 		</Card>
 	);
 };
