@@ -372,6 +372,8 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+	TOOLTIP_LEARN = 'tooltip.learn',
+	TOOLTIP_REPEAT = 'tooltip.repeat',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',

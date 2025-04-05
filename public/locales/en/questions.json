@@ -81,5 +81,9 @@
   "image.alt": "Image code for question",
   "more": "More",
   "learn": "Learn",
-  "repeat": "Repeat"
+  "repeat": "Repeat",
+  "tooltip": {
+    "learn": "The issue has already been fully studied",
+    "repeat": "The question has not yet progressed to memorization"
+  }
 }
