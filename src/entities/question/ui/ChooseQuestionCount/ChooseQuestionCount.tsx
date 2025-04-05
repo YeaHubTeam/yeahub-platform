@@ -37,7 +37,7 @@ export const ChooseQuestionCount = ({
 				color="violet"
 				offsetTooltip={0}
 				tooltipDelay={{ open: 0, close: 150 }}
-				shouldShowTooltip={isTooltipVisible}
+				shouldShowTooltip={isTooltipVisible || false}
 			>
 				<Text className={styles.title} variant="body3">
 					{t(Questions.COUNT)}
