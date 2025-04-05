@@ -1,0 +1,19 @@
+.label {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-purple-700);
+  color: var(--color-white-900);
+  text-align: center;
+  line-height: 30px;
+  transform: translateX(-50%) scale(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+}
+  
+.label-active {
+  transform: translateX(-50%) scale(1);
+}
