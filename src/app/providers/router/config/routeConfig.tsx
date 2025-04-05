@@ -9,7 +9,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import SettingsIcon from '@/shared/assets/icons/Settings.svg';
+import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
@@ -71,7 +71,9 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+
 import '../../../styles/App.css';
+import { InterviewPublicQuizPage } from '@/pages/landing/InterviewPublicQuizPage';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -200,7 +202,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.quiz.new.route,
-						element: <div>Страница в разработке</div>,
+						element: <InterviewPublicQuizPage />,
 					},
 				],
 			},

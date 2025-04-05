@@ -88,7 +88,9 @@ export type interruptQuizRequest = {
 };
 
 export interface CreateNewMockQuizParamsRequest
-	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {}
+	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
+	specialization?: number[];
+}
 
 export type CreateNewMockQuizResponse = Omit<CreateNewQuizResponse, 'profileId'>;
 

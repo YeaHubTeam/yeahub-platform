@@ -5,19 +5,40 @@ import ArrowLeft from '@/shared/assets/icons/arrowLeft.svg';
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import ArrowShortDown from '@/shared/assets/icons/arrowShortDown.svg';
 import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
+import Behance from '@/shared/assets/icons/behance.svg';
+import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
+import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
+import Dislike from '@/shared/assets/icons/dislike.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
+import Eye from '@/shared/assets/icons/eye.svg';
+import EyeClosed from '@/shared/assets/icons/eyeClosed.svg';
+import Facebook from '@/shared/assets/icons/facebook.svg';
+import Filter from '@/shared/assets/icons/filter.svg';
+import Github from '@/shared/assets/icons/github.svg';
+import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
+import Instagram from '@/shared/assets/icons/instagram.svg';
+import Like from '@/shared/assets/icons/like.svg';
+import Linkedin from '@/shared/assets/icons/linkedin.svg';
+import Minus from '@/shared/assets/icons/minus.svg';
 import More from '@/shared/assets/icons/more.svg';
+import Pen from '@/shared/assets/icons/pen.svg';
+import Plus from '@/shared/assets/icons/plus.svg';
+import PlusCircle from '@/shared/assets/icons/plusCircle.svg';
 import Search from '@/shared/assets/icons/search.svg';
+import Settings from '@/shared/assets/icons/settings.svg';
 import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
-import ThumbsDown from '@/shared/assets/icons/thumbsDown.svg';
-import ThumbsUp from '@/shared/assets/icons/thumbsUp.svg';
+import Telegram from '@/shared/assets/icons/telegram.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
+import Twitter from '@/shared/assets/icons/twitter.svg';
+import Warning from '@/shared/assets/icons/warning.svg';
+import Whatsapp from '@/shared/assets/icons/whatsapp.svg';
+import Youtube from '@/shared/assets/icons/youtube.svg';
 
 import { IconComponent, IconName } from './types';
 
@@ -26,8 +47,6 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowRight: ArrowRight,
 	arrowUpSquare: ArrowUpSquare,
 	arrowDownSquare: ArrowDownSquare,
-	thumbsDown: ThumbsDown,
-	thumbsUp: ThumbsUp,
 	clock: Clock,
 	calendar: Calendar,
 	altArrowLeft: AltArrowLeft,
@@ -42,4 +61,27 @@ export const icons: Record<IconName, IconComponent> = {
 	search: Search,
 	closeCircle: CloseCircle,
 	trash: Trash,
+	pen: Pen,
+	eye: Eye,
+	eyeClosed: EyeClosed,
+	like: Like,
+	dislike: Dislike,
+	instagram: Instagram,
+	linkedin: Linkedin,
+	twitter: Twitter,
+	facebook: Facebook,
+	github: Github,
+	behance: Behance,
+	whatsapp: Whatsapp,
+	telegram: Telegram,
+	youtube: Youtube,
+	plus: Plus,
+	minus: Minus,
+	plusCircle: PlusCircle,
+	imageEdit: ImageEdit,
+	burger: Burger,
+	checkCircle: CheckCircle,
+	warning: Warning,
+	filter: Filter,
+	settings: Settings,
 };

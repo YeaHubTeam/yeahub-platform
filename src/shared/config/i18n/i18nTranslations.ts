@@ -251,6 +251,10 @@ export enum InterviewQuiz {
 	START_QUIZ_TITLE = 'start.quiz.title',
 	START_QUIZ_DESCRIPTION = 'start.quiz.description',
 	START_QUIZ_LINK = 'start.quiz.link',
+	INTERRUPT_QUIZ_TITLE = 'interrupt.quiz.title',
+	INTERRUPT_QUIZ_DESCRIPTION = 'interrupt.quiz.description',
+	INTERRUPT_QUIZ_YES = 'interrupt.quiz.yes',
+	INTERRUPT_QUIZ_NO = 'interrupt.quiz.no',
 	COMPLETE = 'complete',
 	NEXT = 'next',
 	CHECK = 'check.quiz',
@@ -260,6 +264,10 @@ export enum InterviewQuiz {
 	ANSWER_HIDE = 'answer.hide',
 	ANSWER_DO_NOT_KNOW = 'answer.do.not.know',
 	ANSWER_KNOW = 'answer.know',
+	MODAL_QUIZ_TITLE = 'modal.quiz.title',
+	MODAL_QUIZ_DESCRIPTION = 'modal.quiz.description',
+	MODAL_QUIZ_ACTIONS_OK = 'modal.quiz.ok',
+	MODAL_QUIZ_ACTIONS_CANCEL = 'modal.quiz.cancel',
 }
 
 export enum InterviewQuizCreate {
@@ -356,6 +364,8 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+	TOOLTIP_LEARN = 'tooltip.learn',
+	TOOLTIP_REPEAT = 'tooltip.repeat',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',

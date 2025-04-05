@@ -22,11 +22,15 @@ export const QuestionActions = ({ questionId, checksCount = 0 }: QuestionActions
 					questionId={questionId}
 					checksCount={checksCount}
 					variant={buttonVariant}
+					placementTooltip="top"
+					offsetTooltip={5}
 				/>
 				<ResetQuestionStudyProgressButton
 					questionId={questionId}
 					checksCount={checksCount}
 					variant={buttonVariant}
+					placementTooltip="top"
+					offsetTooltip={5}
 				/>
 			</Flex>
 		</Card>
