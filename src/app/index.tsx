@@ -20,7 +20,7 @@ async function deferRender() {
 		return;
 	}
 
-	// const { worker } = await import('./app/msw/browser');
+	// const { worker } = await import('./msw/browser');
 	// return worker.start();
 }
 
