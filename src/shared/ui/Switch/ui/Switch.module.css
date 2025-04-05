@@ -1,4 +1,4 @@
-.yeahub-switch {
+.switch {
   position: relative;
   display: inline-block;
   width: 28px;
@@ -6,42 +6,42 @@
   height: 16px;
 }
 
-.yeahub-switch-input {
+.switch-input {
   opacity: 0;
   width: 0;
   height: 0;
 
   &:focus,
   :active {
-    + .yeahub-switch-slider {
+    + .switch-slider {
       box-shadow: 0 0 0 1px var(--palette-ui-purple-500);
     }
   }
 
   &:checked {
-    + .yeahub-switch-slider {
+    + .switch-slider {
       background-color: var(--palette-ui-purple-700);
     }
 
-    + .yeahub-switch-slider::before {
+    + .switch-slider::before {
       transform: translateX(12px);
     }
 
     &:hover:not([disabled]) {
-      + .yeahub-switch-slider {
+      + .switch-slider {
         background-color: var(--palette-ui-purple-500);
       }
     }
 
     &:disabled {
-      + .yeahub-switch-slider::before {
+      + .switch-slider::before {
         transform: translateX(10px);
       }
     }
   }
 
   &:disabled {
-    + .yeahub-switch-slider {
+    + .switch-slider {
       box-shadow: 0 0 0 1px var(--palette-ui-black-50);
       background-color: var(--palette-ui-white-900);
 
@@ -52,7 +52,7 @@
   }
 }
 
-.yeahub-switch-slider {
+.switch-slider {
   position: absolute;
   inset: 0;
   border-radius: 16px;
@@ -77,6 +77,6 @@
   }
 }
 
-.yeahub-switch-label {
+.switch-label {
   margin-left: 10px;
 }

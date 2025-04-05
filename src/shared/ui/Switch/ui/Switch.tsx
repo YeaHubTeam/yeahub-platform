@@ -1,11 +1,10 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
-import { SwitchNames } from '../model/constants';
 import { SwitchProps } from '../model/types';
 
 import styles from './Switch.module.css';
-
+// eslint-disable-next-line react/display-name
 export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 	(
 		{
@@ -23,33 +22,24 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 	): JSX.Element => {
 		return (
 			<div ref={ref} {...otherProps}>
-				<label className={classnames(styles.SwitchNames, switchClassName)}>
+				<label className={classnames(styles.switch, switchClassName)}>
 					<input
 						ref={inputRef}
 						type="checkbox"
 						checked={checked}
 						disabled={disabled}
-						className={styles[`${SwitchNames}-input`]}
+						className={styles['switch-input']}
 						onChange={onChange}
 						role="switch"
 						aria-checked={checked}
 						{...inputProps}
 					/>
-					<span className={styles[`${SwitchNames}-slider`]} />
+					<span className={styles['switch-slider']} />
 				</label>
 				{label && (
-					<span className={classnames(styles[`${SwitchNames}-label`], labelClassName)}>
-						{label}
-					</span>
+					<span className={classnames(styles['switch-label'], labelClassName)}>{label}</span>
 				)}
 			</div>
 		);
 	},
 );
-
-Switch.displayName = 'Switch';
-
-Switch.defaultProps = {
-	disabled: false,
-	inputProps: {},
-};
