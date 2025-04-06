@@ -4,7 +4,6 @@ import { forwardRef } from 'react';
 import { SwitchProps } from '../model/types';
 
 import styles from './Switch.module.css';
-// eslint-disable-next-line react/display-name
 export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 	(
 		{
@@ -43,3 +42,5 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 		);
 	},
 );
+
+Switch.displayName = 'Switch';
