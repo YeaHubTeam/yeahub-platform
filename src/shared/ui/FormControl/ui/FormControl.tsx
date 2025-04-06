@@ -38,7 +38,11 @@ export const FormControl = <T extends FieldValues>({
 	const content = (
 		<>
 			{children(fieldProps, !!errorText)}
-			{errorText && <Text variant="body2">{errorText}</Text>}
+			{errorText && (
+				<Text variant="body1" color="red-700">
+					{errorText}
+				</Text>
+			)}
 		</>
 	);
 
