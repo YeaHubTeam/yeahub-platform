@@ -176,4 +176,4 @@ export const ROUTES = {
 			page: '/collections/:collectionId',
 		},
 	},
-};
+} as const;
