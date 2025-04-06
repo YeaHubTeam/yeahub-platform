@@ -55,7 +55,7 @@ export const Sidebar = ({
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
-			(isMobile || isTablet || isLaptop) && setIsOpenNavSidebar(true);
+			!isDesktop && setIsOpenNavSidebar(true);
 		}
 	}, [isMobile, isTablet, isLaptop, isMobileSidebar]);
 
