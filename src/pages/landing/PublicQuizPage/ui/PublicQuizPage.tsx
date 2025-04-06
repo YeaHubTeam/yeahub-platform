@@ -1,6 +1,14 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+
+// eslint-disable-next-line import/order
+import {
+	InterviewSlider,
+	QuestionNavPanel,
+	useSlideSwitcher,
+	LS_ACTIVE_MOCK_QUIZ_KEY,
+} from '@/entities/quiz';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
@@ -10,14 +18,6 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
-
-// eslint-disable-next-line import/order
-import {
-	InterviewSlider,
-	QuestionNavPanel,
-	useSlideSwitcher,
-	LS_ACTIVE_MOCK_QUIZ_KEY,
-} from '@/entities/quiz';
 
 import {
 	Answers,
@@ -35,6 +35,12 @@ const PublicQuizPage = () => {
 	const isAllQuestionsAnswered = activeMockQuiz?.response.answers.every(
 		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
+
+	useEffect(() => {
+		if (!activeMockQuiz) {
+			navigate('/');
+		}
+	}, [activeMockQuiz]);
 
 	const {
 		questionId,
@@ -60,6 +66,21 @@ const PublicQuizPage = () => {
 		goToNextSlide();
 	};
 
+	const onCheckQuizResult = () => {
+		navigate(ROUTES.quiz.result.page, { replace: true });
+	};
+
+	const onInterruptQuiz = () => {
+		if (activeMockQuiz) {
+			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
+				...quest,
+				answer: quest.answer ?? 'UNKNOWN',
+			}));
+			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
+		}
+	};
+
 	const isLastQuestion = activeQuestion === totalCount;
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
@@ -80,25 +101,6 @@ const PublicQuizPage = () => {
 		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newMockData);
 		forceUpdate();
 		changeAnswer(newAnswer);
-	};
-
-	const onCheckQuizResult = () => {
-		if (activeMockQuiz) {
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, activeMockQuiz.response.answers);
-		}
-		navigate(ROUTES.quiz.result.page);
-	};
-
-	const onInterruptQuiz = () => {
-		if (activeMockQuiz) {
-			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
-				...quest,
-				answer: quest.answer ?? 'UNKNOWN',
-			}));
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
-		}
 	};
 
 	return (

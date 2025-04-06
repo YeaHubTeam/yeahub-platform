@@ -1,10 +1,5 @@
-import { useEffect, useState } from 'react';
-
-import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
-
-import { Answers, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { JoinToCommunity } from '@/widgets/Landing/JoinToCommunity';
@@ -12,19 +7,13 @@ import { SubscribeToMedia } from '@/widgets/Main/SubscribeToMedia';
 
 import { PublicQuizResultPageSkeleton } from '@/pages/landing/PublicQuizResultPage/ui/PublicQuizResultPage.skeleton';
 
+import { usePublicQuizResultData } from '../model/hooks/usePublicQuizResultData';
+
 import styles from './PublicQuizResultPage.module.css';
 
 const PublicQuizResultPage = () => {
-	const [questions, setQuestions] = useState<Answers[] | null>(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const { quizAnswers, isLoading } = usePublicQuizResultData();
 	const { isMobile, isTablet } = useScreenSize();
-
-	useEffect(() => {
-		const data = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-		setQuestions(data);
-		const timer = setTimeout(() => setIsLoading(false), 800);
-		return () => clearTimeout(timer);
-	}, []);
 
 	if (isLoading) return <PublicQuizResultPageSkeleton />;
 
@@ -34,11 +23,7 @@ const PublicQuizResultPage = () => {
 				<JoinToCommunity />
 				<SubscribeToMedia />
 			</Flex>
-			<PassedQuestionsList
-				className={styles['questions-list']}
-				questions={questions || []}
-				hideCloneButton={true}
-			/>
+			<PassedQuestionsList className={styles['questions-list']} questions={quizAnswers || []} />
 		</Flex>
 	);
 };
