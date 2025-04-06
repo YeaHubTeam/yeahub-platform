@@ -133,7 +133,7 @@ const InterviewQuizPage = () => {
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						shortAnswer={'question'}
+						shortAnswer={Mock?.questions?.[activeQuestion - 1]?.shortAnswer ?? ''}
 						answer={answer}
 						changeAnswer={handleAnswerChange}
 						isAnswerVisible={isAnswerVisible}
