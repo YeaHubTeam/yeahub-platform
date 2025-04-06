@@ -1,63 +1,63 @@
-.yeahub-radio-wrapper {
+.radio-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.yeahub-radio {
+.radio {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20px;
   height: 20px;
-  box-shadow: 0 0 0 1px var(--palette-ui-black-50);
+  box-shadow: 0 0 0 1px var(--color-black-50);
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
-.yeahub-radio-wrapper:hover .yeahub-radio,
-.yeahub-radio-wrapper:focus .yeahub-radio {
-  box-shadow: 0 0 0 1px var(--palette-ui-purple-500);
+.radio-wrapper:hover .radio,
+.radio-wrapper:focus .radio {
+  box-shadow: 0 0 0 1px var(--color-purple-500);
 }
 
-.yeahub-radio-wrapper:active .yeahub-radio {
-  box-shadow: 0 0 0 1px var(--palette-ui-purple-700);
+.radio-wrapper:active .radio {
+  box-shadow: 0 0 0 1px var(--color-purple-700);
 }
 
-.yeahub-radio-input {
+.radio-input {
   position: absolute;
   width: 0;
   height: 0;
   opacity: 0;
 }
 
-.yeahub-radio-input:disabled ~ .yeahub-radio {
-  box-shadow: 0 0 0 1px var(--palette-ui-black-25);
+.radio-input:disabled ~ .radio {
+  box-shadow: 0 0 0 1px var(--color-black-25);
   border-color: transparent;
-  background-color: var(--palette-ui-black-25);
+  background-color: var(--color-black-25);
 }
 
-.yeahub-radio-input.checked-disabled:disabled ~ .yeahub-radio {
-  box-shadow: 0 0 0 1px var(--palette-ui-black-25);
+.radio-input.checked-disabled:disabled ~ .radio {
+  box-shadow: 0 0 0 1px var(--color-black-25);
   border-color: transparent;
-  background-color: var(--palette-ui-white-900);
+  background-color: var(--color-white-900);
 }
 
-.yeahub-radio-checked::after {
+.radio-checked::after {
   content: '';
   display: block;
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: var(--palette-ui-purple-700);
+  background-color: var(--color-purple-700);
 }
 
-.yeahub-radio-input.checked-disabled:disabled ~ .yeahub-radio-checked::after {
-  background-color: var(--palette-ui-black-25);
+.radio-input.checked-disabled:disabled ~ .radio-checked::after {
+  background-color: var(--color-black-25);
 }
 
-.yeahub-radio-label {
+.radio-label {
   margin-left: 10px;
 }
