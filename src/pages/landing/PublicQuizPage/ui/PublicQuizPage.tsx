@@ -94,12 +94,7 @@ const PublicQuizPage = () => {
 
 	const onInterruptQuiz = () => {
 		if (activeMockQuiz) {
-			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
-				...quest,
-				answer: quest.answer ?? 'UNKNOWN',
-			}));
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
 			navigate(`${ROUTES.quiz.page}`);
 		}
 	};
