@@ -1,0 +1,11 @@
+@media screen and (width <= 1023px) {
+  .questions-list {
+    padding: 20px 16px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .questions-list {
+    padding: 20px 10px;
+  }
+}
