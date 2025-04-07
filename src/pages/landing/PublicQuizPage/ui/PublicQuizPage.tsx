@@ -79,17 +79,6 @@ const PublicQuizPage = () => {
 		navigate(ROUTES.quiz.result.page, { replace: true });
 	};
 
-	const onInterruptQuiz = () => {
-		if (activeMockQuiz) {
-			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
-				...quest,
-				answer: quest.answer ?? 'UNKNOWN',
-			}));
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
-		}
-	};
-
 	const isLastQuestion = activeQuestion === totalCount;
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
@@ -110,6 +99,13 @@ const PublicQuizPage = () => {
 		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newMockData);
 		forceUpdate();
 		changeAnswer(newAnswer);
+	};
+
+	const onInterruptQuiz = () => {
+		if (activeMockQuiz) {
+			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			navigate(`${ROUTES.quiz.page}`);
+		}
 	};
 
 	return (
