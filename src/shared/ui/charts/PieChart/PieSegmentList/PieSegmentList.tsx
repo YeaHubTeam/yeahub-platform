@@ -7,11 +7,11 @@ import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { PieSegment } from '../../model/types/types';
-import { calculateArcLength } from '../../model/utils/utils';
 import { PieSegmentItem } from '../PieSegmentItem/PieSegmentItem';
 
 import styles from './PieSegmentList.module.css';
+import { PieSegment } from '../types';
+import { calculateArcLength } from '../utils';
 
 interface PieSegmentListProps {
 	segments: PieSegment[];

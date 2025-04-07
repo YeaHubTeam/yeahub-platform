@@ -1,10 +1,9 @@
 import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 
-import { getTagName } from '../model/helpers';
-import { ButtonProps } from '../model/types';
-
 import styles from './Button.module.css';
+import { ButtonProps } from './types';
+import { getTagName } from './helpers';
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
 	(

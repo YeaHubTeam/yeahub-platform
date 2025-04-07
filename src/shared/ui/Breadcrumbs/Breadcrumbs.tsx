@@ -4,9 +4,8 @@ import { useLocation, useMatches } from 'react-router-dom';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Icon } from '@/shared/ui/Icon';
 
-import { BreadcrumbItem } from '../../BreadcrumbItem';
-
 import styles from './Breadcrumbs.module.css';
+import { BreadcrumbItem } from '../BreadcrumbItem';
 
 export const Breadcrumbs = () => {
 	const matches = useMatches();

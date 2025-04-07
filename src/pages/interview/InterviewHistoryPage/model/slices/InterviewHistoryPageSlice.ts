@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Value } from '@/shared/ui/Calendar/EventCalendar';
 
 import { InterviewHistoryState } from '../types/InterviewHistoryPageType';
 

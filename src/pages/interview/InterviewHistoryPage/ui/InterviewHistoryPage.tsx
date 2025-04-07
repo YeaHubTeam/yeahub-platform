@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EventCalendar } from '@/shared/ui/Calendar';
-import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Value } from '@/shared/ui/Calendar/EventCalendar';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FullPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';

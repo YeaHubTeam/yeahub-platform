@@ -1,10 +1,9 @@
 import classnames from 'classnames';
 
-import styles from '@/shared/ui/Button/ui/Button.module.css';
+import styles from '@/shared/ui/Button/Button.module.css';
 import { Skeleton } from '@/shared/ui/Skeleton';
-
-import { getTagName } from '../model/helpers';
-import { ButtonProps } from '../model/types';
+import { getTagName } from './helpers';
+import { ButtonProps } from './types';
 
 export const ButtonSkeleton = ({
 	className,

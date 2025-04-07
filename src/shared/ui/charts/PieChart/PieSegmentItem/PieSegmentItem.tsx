@@ -1,13 +1,8 @@
 import React from 'react';
 
-import { PieSegment } from '../../model/types/types';
-import {
-	calculateArcLength,
-	calculateStrokeDasharray,
-	calculateStrokeDashoffset,
-} from '../../model/utils/utils';
-
 import styles from './PieSegmentItem.module.css';
+import { PieSegment } from '../types';
+import { calculateArcLength, calculateStrokeDasharray, calculateStrokeDashoffset } from '../utils';
 
 interface PieSegmentItemProps {
 	cx: number;

@@ -13,8 +13,8 @@ import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
-import { Card } from '../../Card';
-import { Drawer } from '../../Drawer';
+import { Card } from '../Card';
+import { Drawer } from '../Drawer';
 
 import './EventCalendar.css';
 

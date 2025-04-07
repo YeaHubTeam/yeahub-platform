@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import { PieSegment } from '../../model/types/types';
+import { PieSegment } from '../types';
 import { LegendItem } from '../LegendItem/LegendItem';
 
 interface LegendListProps {

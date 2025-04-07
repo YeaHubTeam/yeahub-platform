@@ -1,9 +1,8 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
-import { CheckboxProps } from '../model/types';
-
 import styles from './Checkbox.module.css';
+import { CheckboxProps } from './types';
 
 /**
  * Checkbox component for selecting states (checked/unchecked).

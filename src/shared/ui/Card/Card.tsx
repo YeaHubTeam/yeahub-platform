@@ -8,7 +8,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Icon } from '@/shared/ui/Icon/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { Flex } from '../../Flex';
+import { Flex } from '../Flex';
 
 import styles from './Card.module.css';
 

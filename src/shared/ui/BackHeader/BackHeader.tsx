@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 
-import { BackButton } from '../../BackButton';
-import { Flex } from '../../Flex';
-
 import styles from './BackHeader.module.css';
+import { BackButton } from '../BackButton';
+import { Flex } from '../Flex';
 
 export interface BackHeaderProps {
 	children?: ReactNode;
