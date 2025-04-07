@@ -11,7 +11,7 @@ export const CollectionParam = ({ label }: CollectionParamProps) => {
 	return (
 		<Flex align="center" gap="12" componentType="li" className={styles.param}>
 			<Text variant="body1" className={styles.text}>
-				{label}:
+				{label}
 			</Text>
 		</Flex>
 	);

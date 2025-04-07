@@ -42,12 +42,17 @@
   "questions": {
     "short": "Вопросы",
     "label": "Добавьте вопросы",
-    "selected": "Выбранные вопросы: {{count}}"
+    "selected": "Выбранные вопросы: {{count}}",
+    "length": {
+      "min_one": "{{count}} вопрос",
+      "min_few": "{{count}} вопроса",
+      "min_many": "{{count}} вопросов"
+    }
   },
   "image.src": "Ссылка на картинку",
   "create.page.title": "Коллекция",
-  "image.alt": "Изображение кода для вопроса",
-  "numberOfQuestions": "Количество вопросов",
+  "image.alt": "Изображение компании",
+  "numberOfQuestions": "Количество вопросов:",
   "collections": {
     "title": "Коллекции",
     "detail": "Подробнее",

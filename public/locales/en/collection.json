@@ -23,6 +23,7 @@
   },
   "access": "Access:",
   "specialization": "Specialization:",
+  "numberOfQuestions": "Number of questions:",
   "tooltip": {
     "title": "There is already an active interview",
     "aria.label": "Warning: You cannot create a new interview because there is already an active one."
@@ -31,9 +32,14 @@
   "questions": {
     "short": "Questions",
     "label": "Add questions",
-    "selected": "Selected questions: {{count}}"
+    "selected": "Selected questions: {{count}}",
+    "length": {
+      "min_one": "{{count}} question",
+      "min_other": "{{count}} questions"
+    }
   },
   "image.src": "Image URL",
+  "image.alt": "Image of company",
   "create.page.title": "Collection",
   "edit.page.title": "Edit collection"
 }

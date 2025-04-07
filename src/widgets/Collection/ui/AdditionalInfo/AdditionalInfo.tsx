@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import Star from '@/shared/assets/icons/starsMinimalistic.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -21,21 +22,13 @@ interface AdditionalInfoProps {
 export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 
-	const accessText = collection.isFree ? t(Collections.TARIFF_FREE) : t(Collections.TARIFF_PAID);
+	const accessText = {
+		free: t(Collections.TARIFF_FREE, { ns: i18Namespace.collection }),
+		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
+	};
 
 	return (
 		<Card className={classnames(styles['normal-hight'], className)} withOutsideShadow>
-			<div className={styles.wrapper}>
-				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.ADDITIONAL_INFO_ACCESS)}:
-				</Text>
-				<Chip
-					label={accessText}
-					className={styles['questions-chip']}
-					theme="primary"
-					active={false}
-				/>
-			</div>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
 					{t(Collections.SPECIALIZATION_TITLE)}:
@@ -44,11 +37,32 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					{collection.specializations?.map((spec) => {
 						return (
 							<li key={spec.id}>
-								<Chip className={styles.chip} label={spec.title} theme="primary" active />
+								<Chip className={styles.chip} label={spec.title} theme="primary" active={false} />
 							</li>
 						);
 					})}
 				</ul>
+			</div>
+			<div className={styles.wrapper}>
+				<Text variant="body3" color="black-700" className={styles.title}>
+					{t(Collections.ADDITIONAL_INFO_ACCESS)}
+				</Text>
+				<div className={styles['access-container']}>
+					{!collection.isFree && <Star />}
+					<Text variant={'body3-accent'}>{accessText[collection.isFree ? 'free' : 'paid']}</Text>
+				</div>
+			</div>
+			<div className={styles.wrapper}>
+				<Text variant="body3" color="black-700">
+					{t(Collections.QUESTIONS_ADDITIONAL_INFO)}
+				</Text>
+				<Chip
+					label={String(collection.questionsCount)}
+					className={styles['questions-chip']}
+					theme="primary"
+					active={false}
+					onClick={() => {}}
+				/>
 			</div>
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
@@ -64,18 +78,6 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 						);
 					})}
 				</div>
-			</div>
-			<div className={styles.wrapper}>
-				<Text variant="body3" color="black-700">
-					{t(Collections.QUESTIONS_ADDITIONAL_INFO)}
-				</Text>
-				<Chip
-					label={String(collection.questionsCount)}
-					className={styles['questions-chip']}
-					theme="primary"
-					active={false}
-					onClick={() => {}}
-				/>
 			</div>
 		</Card>
 	);

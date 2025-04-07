@@ -43,11 +43,12 @@
 }
 
 .image-wrapper {
-  place-content: center center;
+  width: 100%;
   max-width: 149px;
   min-height: 157px;
   overflow: hidden;
   border-radius: 12px;
+  place-content: center center;
 }
 
 .specialization-container {
@@ -61,12 +62,6 @@
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-m);
   }
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .title p {
@@ -90,12 +85,27 @@
     height: 20px;
   }
 
+  & svg path {
+    stroke-width: 0;
+    fill: var(--color-purple-700);
+  }
+
+
   & p {
     color: var(--color-purple-700);
     line-height: 120%;
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-p-m);
     font-family: var(--font-family);
+  }
+}
+
+.access-item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 16px;
   }
 }
 

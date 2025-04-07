@@ -459,6 +459,7 @@ export enum Collections {
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
 	QUESTIONS_ADDITIONAL_INFO = 'numberOfQuestions',
+	QUESTIONS_COUNT = 'questions.length.min',
 	IMAGE_ALT = 'image.alt',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	COLLECTIONS_TITLE = 'collections.title',
