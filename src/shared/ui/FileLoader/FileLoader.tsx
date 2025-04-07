@@ -10,7 +10,7 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
 
 import style from './FileLoader.module.css';
-import { Accept, Extension } from './model/types/types';
+import { Accept, Extension } from './types';
 
 interface FileLoaderProps {
 	accept: Accept;

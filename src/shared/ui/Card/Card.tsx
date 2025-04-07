@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Arrow from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Icon } from '@/shared/ui/Icon/ui/Icon';
+import { Icon } from '@/shared/ui/Icon/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { Flex } from '../Flex';

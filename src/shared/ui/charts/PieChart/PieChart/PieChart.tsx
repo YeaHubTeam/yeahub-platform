@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
-import { AttemptInfo } from '@/shared/ui/PercentsInfoPie/model/types/types';
+import { AttemptInfo } from '@/shared/ui/PercentsInfoPie/types';
 
 import { LegendList } from '../LegendList/LegendList';
 import { PieSegmentList } from '../PieSegmentList/PieSegmentList';
