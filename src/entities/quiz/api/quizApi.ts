@@ -68,12 +68,8 @@ const quizApi = baseApi.injectEndpoints({
 			providesTags: [ApiTags.NEW_QUIZ],
 			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
-					const { data } = await queryFulfilled;
-					console.log(data);
-					const questions = data;
-					if (questions) {
-						setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, questions);
-					}
+					const { data: questions } = await queryFulfilled;
+					questions && setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, questions);
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.quiz.new.page);

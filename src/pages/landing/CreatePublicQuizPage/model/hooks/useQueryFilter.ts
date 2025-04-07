@@ -27,7 +27,6 @@ export const useQueryFilter = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const initialQuery: FilterFromUser = {
-		mode: 'RANDOM',
 		count: 1,
 		specialization: [DEFAULT_SPECIALIZATION_NUMBER],
 	};
@@ -75,7 +74,7 @@ export const useQueryFilter = () => {
 
 	useEffect(() => {
 		const queryParams = getQueryParams();
-		if (!queryParams.mode || !queryParams.count || !queryParams.specialization) {
+		if (!queryParams.count || !queryParams.specialization) {
 			updateQueryParams(initialQuery);
 		}
 	}, [location.search]);
