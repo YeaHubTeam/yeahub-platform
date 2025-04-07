@@ -1,9 +1,9 @@
-import { ReactNode, useMemo } from 'react';
+import { HTMLProps, ReactNode, useMemo } from 'react';
 import { useController, Control, ControllerRenderProps, FieldValues, Path } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { FormControl as CustomControl } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Text } from '@/shared/ui/Text';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
 
@@ -21,6 +21,7 @@ export const FormControl = <T extends FieldValues>({
 	control,
 	label,
 	className,
+	...otherProps
 }: FormControlProps<T>) => {
 	const {
 		field: { ref, ...fieldProps },
@@ -33,11 +34,31 @@ export const FormControl = <T extends FieldValues>({
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const errorText = useMemo(() => error?.message, [error, t]);
-	// const errorText = useMemo(() => error?.message && t(error?.message, errorOptions), [error, t]);
+
+	const content = (
+		<>
+			{children(fieldProps, !!errorText)}
+			{errorText && (
+				<Text variant="body1" color="red-700">
+					{errorText}
+				</Text>
+			)}
+		</>
+	);
+
+	if (label) {
+		return (
+			<label htmlFor={name} className={className} {...otherProps}>
+				{content}
+			</label>
+		);
+	}
 
 	return (
-		<CustomControl htmlFor={name} label={label} error={errorText} className={className}>
-			{children(fieldProps, !!errorText)}
-		</CustomControl>
+		<div className={className} {...(otherProps as HTMLProps<HTMLDivElement>)}>
+			{content}
+		</div>
 	);
 };
+
+FormControl.displayName = 'FormControl';

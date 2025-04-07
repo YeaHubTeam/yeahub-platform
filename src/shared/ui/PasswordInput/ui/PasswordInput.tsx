@@ -24,12 +24,13 @@ export const PasswordInput = ({ label, placeholder, error, name }: PasswordInput
 
 	return (
 		<FormControl name={name} control={control} label={label}>
-			{(field) => (
+			{(field, hasError) => (
 				<Input
 					{...field}
 					className={styles.input}
 					placeholder={placeholder}
 					type={isPasswordHidden ? 'text' : 'password'}
+					error={hasError}
 					suffix={
 						<Icon
 							onClick={onToggleShowPassword}
