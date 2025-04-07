@@ -19,6 +19,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
+import { Question } from '@/entities/question';
 import {
 	Answers,
 	QuizQuestionAnswerType,
@@ -36,6 +37,14 @@ const PublicQuizPage = () => {
 		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
 
+	const combinedQuestions =
+		activeMockQuiz?.questions.map((question: Question) => ({
+			...question,
+			questionTitle: question.title,
+			answer: activeMockQuiz.response.answers.find((a: Answers) => a.questionId === question.id)
+				?.answer,
+		})) ?? [];
+
 	useEffect(() => {
 		if (!activeMockQuiz) {
 			navigate('/');
@@ -46,7 +55,7 @@ const PublicQuizPage = () => {
 		questionId,
 		questionTitle,
 		imageSrc,
-		//	shortAnswer,
+		shortAnswer,
 		currentCount,
 		activeQuestion,
 		totalCount,
@@ -54,7 +63,7 @@ const PublicQuizPage = () => {
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(activeMockQuiz?.response.answers ?? []);
+	} = useSlideSwitcher(combinedQuestions);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
@@ -132,7 +141,7 @@ const PublicQuizPage = () => {
 						id={questionId}
 						title={questionTitle}
 						imageSrc={imageSrc}
-						shortAnswer={'question'}
+						shortAnswer={shortAnswer}
 						answer={answer}
 						changeAnswer={handleAnswerChange}
 						isAnswerVisible={isAnswerVisible}
