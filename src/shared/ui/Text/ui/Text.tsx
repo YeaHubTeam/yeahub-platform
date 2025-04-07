@@ -17,6 +17,7 @@ export interface TextProps {
 	className?: string;
 	width?: string | number;
 	isMainTitle?: boolean;
+	dataTestId?: string;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -58,6 +59,7 @@ export const Text = ({
 	className,
 	width,
 	isMainTitle,
+	dataTestId = 'Text',
 }: TextProps) => {
 	const Tag = isMainTitle ? 'h1' : variantToTagMapping[variant];
 	return (
@@ -69,6 +71,7 @@ export const Text = ({
 				className,
 			)}
 			style={{ width }}
+			data-testid={dataTestId}
 		>
 			{children}
 		</Tag>
