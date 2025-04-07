@@ -37,7 +37,11 @@ export {
 	getLastActiveQuizInfo,
 } from './model/selectors/quizSelectors';
 
-export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
+export {
+	activeQuizSlice,
+	setActiveQuizQuestions,
+	clearActiveQuizState,
+} from './model/slices/activeQuizSlice';
 
 export { LS_ACTIVE_QUIZ_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
 
