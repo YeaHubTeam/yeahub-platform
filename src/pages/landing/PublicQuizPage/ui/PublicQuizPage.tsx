@@ -14,6 +14,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { getJSONFromLS, removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -73,17 +74,6 @@ const PublicQuizPage = () => {
 		navigate(ROUTES.quiz.result.page, { replace: true });
 	};
 
-	const onInterruptQuiz = () => {
-		if (activeMockQuiz) {
-			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
-				...quest,
-				answer: quest.answer ?? 'UNKNOWN',
-			}));
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
-		}
-	};
-
 	const isLastQuestion = activeQuestion === totalCount;
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
@@ -107,7 +97,7 @@ const PublicQuizPage = () => {
 	};
 
 	const onInterruptQuiz = () => {
-		if (Mock) {
+		if (activeMockQuiz) {
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
 			dispatch(clearActiveQuizState());
 			navigate(`${ROUTES.quiz.page}`);
