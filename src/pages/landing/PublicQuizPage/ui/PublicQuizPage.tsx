@@ -14,13 +14,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { getJSONFromLS, removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-import { clearActiveQuizState } from '@/entities/quiz';
 import {
 	Answers,
 	QuizQuestionAnswerType,
@@ -37,8 +35,6 @@ const PublicQuizPage = () => {
 	const isAllQuestionsAnswered = activeMockQuiz?.response.answers.every(
 		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
-
-	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		if (!activeMockQuiz) {
@@ -98,8 +94,12 @@ const PublicQuizPage = () => {
 
 	const onInterruptQuiz = () => {
 		if (activeMockQuiz) {
+			const quizToSave = activeMockQuiz.response.answers.map((quest: Answers) => ({
+				...quest,
+				answer: quest.answer ?? 'UNKNOWN',
+			}));
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			dispatch(clearActiveQuizState());
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, quizToSave);
 			navigate(`${ROUTES.quiz.page}`);
 		}
 	};
