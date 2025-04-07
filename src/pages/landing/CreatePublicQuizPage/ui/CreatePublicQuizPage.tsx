@@ -27,7 +27,7 @@ import {
 import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
-import { InterviewPublicQuizPageSkeleton } from '../../InterviewPublicQuizPage';
+import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
 import styles from './CreatePublicQuizPage.module.css';
@@ -92,7 +92,8 @@ const CreatePublicQuizPage = () => {
 	};
 
 	if (isLoadingCategories) return <CreatePublicQuizPageSkeleton />;
-	if (isCreateNewMockQuizLoading) return <InterviewPublicQuizPageSkeleton />;
+	if (isCreateNewMockQuizLoading) return <PublicQuizPageSkeleton />;
+
 	return (
 		<section>
 			<Card>

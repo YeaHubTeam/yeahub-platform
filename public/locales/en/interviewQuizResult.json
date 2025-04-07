@@ -7,5 +7,15 @@
   "passed.question": "Passed",
   "time": "Time spent",
   "date": "Date",
-  "duration": "Duration"
+  "duration": "Duration",
+  "clone.button": "Take again",
+  "join.community": {
+    "title": "Grow with us!",
+    "description": "Become a YeaHub community member and unlock full platform access!",
+    "interview.simulator": "Interview simulator",
+    "memory.mode": "Question memorization mode",
+    "stats.history": "Learning analytics & history",
+    "full.access": "Access all collections",
+    "become.member": "Join the community"
+  }
 }

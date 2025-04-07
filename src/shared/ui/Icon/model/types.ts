@@ -41,6 +41,13 @@ export type IconName =
 	| 'checkCircle'
 	| 'warning'
 	| 'filter'
-	| 'settings';
+	| 'settings'
+	| 'sealCheck'
+	| 'userSwitch'
+	| 'trendUp'
+	| 'notePencil'
+	| 'clipboardText'
+	| 'megaphone'
+	| 'yeaHubCommunity';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
