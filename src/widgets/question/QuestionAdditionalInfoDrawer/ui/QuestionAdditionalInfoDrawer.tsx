@@ -4,7 +4,7 @@ import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useCurrentProject } from '@/shared/hooks/useCurrentProject';
 import { useModal } from '@/shared/hooks/useModal';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';

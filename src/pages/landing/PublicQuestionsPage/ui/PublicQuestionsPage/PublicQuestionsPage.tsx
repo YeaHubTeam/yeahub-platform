@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';

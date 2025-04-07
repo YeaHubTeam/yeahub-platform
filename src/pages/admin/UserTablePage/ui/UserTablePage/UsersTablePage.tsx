@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/hooks';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
