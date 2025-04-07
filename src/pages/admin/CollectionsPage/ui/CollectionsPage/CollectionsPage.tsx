@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks';
-import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';

@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 
-import { useModal } from '@/shared/hooks/useModal';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
-import { useScreenSize, useAppSelector } from '@/shared/hooks';
+import { useScreenSize, useModal, useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
