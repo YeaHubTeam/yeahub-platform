@@ -26,6 +26,7 @@ export const FullQuestionsStatistic = ({
 	return (
 		<AdditionalStatInfoGauge
 			isLoading={isLoading}
+			isTitleCentered={true}
 			className={className}
 			title={t(InterviewStatistics.QUESTION_STATS_TITLE)}
 			statsInfo={questionStats}

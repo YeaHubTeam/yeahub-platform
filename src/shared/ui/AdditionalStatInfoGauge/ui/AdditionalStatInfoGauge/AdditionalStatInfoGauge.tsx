@@ -1,3 +1,4 @@
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { StatInfoItem } from '@/shared/ui/AdditionalStatInfoGauge/model/types/types';
 import { Card, CardProps } from '@/shared/ui/Card';
 import { GaugeChart } from '@/shared/ui/charts/GaugeChart';
@@ -12,6 +13,7 @@ export type AdditionalStatInfoGaugeProps = {
 	total: number;
 	learned: number;
 	isLoading?: boolean;
+	isTitleCentered?: boolean;
 } & CardProps;
 
 export const AdditionalStatInfoGauge = ({
@@ -19,10 +21,14 @@ export const AdditionalStatInfoGauge = ({
 	learned,
 	total,
 	isLoading,
+	isTitleCentered,
 	...cardProps
 }: AdditionalStatInfoGaugeProps) => {
+	const { isDesktop, isLaptop, isTablet } = useScreenSize();
+	const shouldCenterTitle =
+		typeof isTitleCentered !== 'undefined' ? isTitleCentered : isDesktop || isLaptop || isTablet;
 	return (
-		<Card {...cardProps} isTitleCenter>
+		<Card {...cardProps} isTitleCenter={shouldCenterTitle}>
 			<Flex direction="column" justify="center" align="center" gap="24" className={styles.wrapper}>
 				<GaugeChart total={total} learned={learned} />
 				<AdditionalStatInfoList statsInfo={statsInfo} />

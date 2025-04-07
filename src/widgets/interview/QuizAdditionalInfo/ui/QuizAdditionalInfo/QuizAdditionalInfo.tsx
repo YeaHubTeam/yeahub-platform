@@ -45,6 +45,7 @@ export const QuizAdditionalInfo = ({ className, quiz, isLoading }: QuizAdditiona
 	return (
 		<AdditionalStatInfoGauge
 			isLoading={isLoading}
+			isTitleCentered={true}
 			className={className}
 			title={t(InterviewQuizResult.TITLE_STAT)}
 			statsInfo={questionStats}

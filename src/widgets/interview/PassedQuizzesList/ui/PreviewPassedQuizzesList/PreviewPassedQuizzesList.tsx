@@ -19,9 +19,13 @@ import styles from './PreviewPassedQuizzesList.module.css';
 
 export interface InterviewHistoryListProps {
 	className?: string;
+	isTitleCenter?: boolean;
 }
 
-export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProps) => {
+export const PreviewPassedQuizzesList = ({
+	className,
+	isTitleCenter,
+}: InterviewHistoryListProps) => {
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
 	const isVerified = fullProfile?.isEmailVerified;
@@ -33,6 +37,8 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	});
 
 	const { isMobile } = useScreenSize();
+
+	const finalIsTitleCenter = isTitleCenter !== undefined ? isTitleCenter : isMobile;
 
 	const isEmptyData = isSuccess && data.data.length === 0;
 
@@ -51,7 +57,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			title={t(InterviewHistory.TITLE)}
 			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
-			isTitleCenter={isMobile}
+			isTitleCenter={finalIsTitleCenter}
 		>
 			{!isVerified && (
 				<Text variant="body4" color="black-700" className={styles['no-history']}>

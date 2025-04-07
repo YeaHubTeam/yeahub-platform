@@ -53,7 +53,7 @@ const InterviewPage = () => {
 				<>
 					<PreviewQuestionsStatistic className={styles.statistics} />
 					<PreviewQuestionsList className={styles.questions} />
-					<PreviewPassedQuizzesList className={styles.history} />
+					<PreviewPassedQuizzesList className={styles.history} isTitleCenter={false} />
 				</>
 			)}
 		</Flex>
