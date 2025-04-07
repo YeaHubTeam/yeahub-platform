@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks';
-import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { useAppDispatch, useQueryParams } from '@/shared/hooks';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
