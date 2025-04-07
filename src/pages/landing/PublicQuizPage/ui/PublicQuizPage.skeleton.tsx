@@ -3,9 +3,9 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
-import styles from './InterviewPublicQuizPage.module.css';
+import styles from './PublicQuizPage.module.css';
 
-export const InterviewPublicQuizPageSkeleton = () => {
+export const PublicQuizPageSkeleton = () => {
 	const { isMobile } = useScreenSize();
 
 	return (

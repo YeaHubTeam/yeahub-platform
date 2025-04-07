@@ -9,6 +9,7 @@ import Behance from '@/shared/assets/icons/behance.svg';
 import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
+import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
@@ -24,20 +25,26 @@ import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
+import Megaphone from '@/shared/assets/icons/Megaphone.svg';
 import Minus from '@/shared/assets/icons/minus.svg';
 import More from '@/shared/assets/icons/more.svg';
+import NotePencil from '@/shared/assets/icons/NotePencil.svg';
 import Pen from '@/shared/assets/icons/pen.svg';
 import Plus from '@/shared/assets/icons/plus.svg';
 import PlusCircle from '@/shared/assets/icons/plusCircle.svg';
+import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import Search from '@/shared/assets/icons/search.svg';
 import Settings from '@/shared/assets/icons/settings.svg';
 import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
+import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
+import UserSwitch from '@/shared/assets/icons/UserSwitch.svg';
 import Warning from '@/shared/assets/icons/warning.svg';
 import Whatsapp from '@/shared/assets/icons/whatsapp.svg';
+import YeaHubCommunity from '@/shared/assets/icons/YeaHubCommunity.svg';
 import Youtube from '@/shared/assets/icons/youtube.svg';
 
 import { IconComponent, IconName } from './types';
@@ -84,4 +91,11 @@ export const icons: Record<IconName, IconComponent> = {
 	warning: Warning,
 	filter: Filter,
 	settings: Settings,
+	sealCheck: SealCheck,
+	userSwitch: UserSwitch,
+	trendUp: TrendUp,
+	notePencil: NotePencil,
+	clipboardText: ClipboardText,
+	megaphone: Megaphone,
+	yeaHubCommunity: YeaHubCommunity,
 };
