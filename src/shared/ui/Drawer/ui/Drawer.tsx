@@ -1,12 +1,12 @@
 import classNames from 'classnames';
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import CloseIcon from '@/shared/assets/icons/closeCircle.svg';
 
 import styles from './Drawer.module.css';
 
-interface DrawerProps {
+export interface DrawerProps {
 	isOpen: boolean;
 	position?: 'right' | 'left' | 'bottom';
 	onClose: () => void;
@@ -68,24 +68,31 @@ export const Drawer = ({
 	return createPortal(
 		<div
 			aria-hidden={isOpen}
+			data-testid="drawer-container"
 			className={classNames(styles['drawer-container'], {
 				[styles['open']]: isOpen,
 			})}
 		>
 			<div
+				data-testid="drawer"
 				className={classNames(styles['drawer'], styles[position], className, {
 					[styles['absolute']]: rootName === 'mainLayout',
 				})}
 				role="dialog"
 			>
 				{hasCloseButton && (
-					<div className={styles['drawer-header']}>
+					<div data-testid="drawer-header" className={styles['drawer-header']}>
 						<CloseIcon className={styles['close-icon']} onClick={onClose} />
 					</div>
 				)}
 				{children}
 			</div>
-			<button className={styles['backdrop']} onClick={onClose} onKeyDown={handleKeyDown} />
+			<button
+				data-testid="close-backdrop"
+				className={styles['backdrop']}
+				onClick={onClose}
+				onKeyDown={handleKeyDown}
+			/>
 		</div>,
 		portalRootRef.current,
 	);
