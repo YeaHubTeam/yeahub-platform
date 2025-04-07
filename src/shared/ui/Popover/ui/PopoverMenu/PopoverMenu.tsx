@@ -13,9 +13,8 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent }, index) => (
-				// eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-				<div key={index}>
+			{menuItems.map(({ icon, onClick, title, renderComponent }) => (
+				<div key={title}>
 					{title && onClick ? (
 						<Button
 							onClick={onToggleOpenPopover}
