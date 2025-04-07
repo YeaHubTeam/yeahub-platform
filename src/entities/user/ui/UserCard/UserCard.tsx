@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Switch } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
@@ -11,6 +10,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
+import { Switch } from '@/shared/ui/Switch';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetUserRolesListQuery } from '../../api/userApi';

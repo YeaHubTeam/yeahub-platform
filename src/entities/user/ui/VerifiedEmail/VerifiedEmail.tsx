@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Switch } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { User } from '@/shared/config/i18n/i18nTranslations';
+import { Switch } from '@/shared/ui/Switch';
 
 import styles from './VerifiedEmail.module.css';
 
