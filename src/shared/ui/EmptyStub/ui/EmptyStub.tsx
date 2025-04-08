@@ -8,7 +8,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './EmptyStub.module.css';
 
-interface EmptyStubProps {
+export interface EmptyStubProps {
 	text?: string;
 	resetFilters?: () => void;
 }
