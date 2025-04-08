@@ -43,9 +43,13 @@ export const AppLogo = ({
 					alt="Тренажер собеседований и вопросы собеседований в IT"
 				/>
 			)}
-			{!isOpen && (
+			{(!isOpen || navigationFooter) && (
 				<LogoText
-					className={classNames(styles['logo-text'], styles['logo-text-header'], styles[fill])}
+					className={classNames(
+						styles['logo-text'],
+						{ [styles['logo-text-header']]: !navigationFooter },
+						styles[fill],
+					)}
 				/>
 			)}
 		</NavLink>
