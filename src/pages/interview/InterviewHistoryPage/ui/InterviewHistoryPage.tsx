@@ -29,12 +29,12 @@ const InterviewHistoryPage = () => {
 
 	const onResetFilters = () => {
 		setSelectedDates(null);
-		dispatch(interviewHistoryPageActions.setDateRange(null));
+		dispatch(dispatch(interviewHistoryPageActions.resetDateRange()));
 	};
 
 	useEffect(() => {
 		return () => {
-			dispatch(interviewHistoryPageActions.setDateRange(null));
+			dispatch(dispatch(interviewHistoryPageActions.resetDateRange()));
 		};
 	}, [dispatch]);
 
