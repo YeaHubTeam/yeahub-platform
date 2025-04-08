@@ -34,7 +34,7 @@ const InterviewHistoryPage = () => {
 
 	useEffect(() => {
 		return () => {
-			dispatch(dispatch(interviewHistoryPageActions.resetDateRange()));
+			dispatch(interviewHistoryPageActions.resetDateRange());
 		};
 	}, [dispatch]);
 
