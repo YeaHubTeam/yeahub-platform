@@ -10,7 +10,7 @@ import { SimpleChip } from '@/shared/ui/SimpleChip';
 
 import styles from './KeywordInput.module.css';
 
-type KeywordInputProps = {
+export type KeywordInputProps = {
 	value: string[];
 	onChange: (value: string[]) => void;
 };
@@ -54,7 +54,7 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 	};
 
 	return (
-		<Flex gap="24" direction="column">
+		<Flex gap="24" direction="column" dataTestId="KeywordInput">
 			<Flex gap="8">
 				<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
 				<Button className={styles.button} onClick={handleClick}>
@@ -65,7 +65,7 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 				{keywordsArray?.length > 0 && (
 					<>
 						<h4>{t(Questions.KEYWORDS_TITLE)}</h4>
-						<Flex direction="row" gap="32">
+						<Flex direction="row" gap="32" dataTestId="Keywords-container">
 							{keywordsArray.map((keyword) => {
 								return (
 									<SimpleChip

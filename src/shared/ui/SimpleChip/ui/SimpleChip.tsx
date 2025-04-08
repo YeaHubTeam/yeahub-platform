@@ -10,9 +10,11 @@ interface SimpleChipProps {
 }
 export const SimpleChip = ({ children, onDelete }: SimpleChipProps) => {
 	return (
-		<Flex direction="row" className={styles.container}>
-			<span className={styles.text}>{children}</span>
-			<button onClick={onDelete} className={styles.button}>
+		<Flex direction="row" className={styles.container} dataTestId="Simple-chip">
+			<span className={styles.text} data-testid="Simple-chip-text">
+				{children}
+			</span>
+			<button onClick={onDelete} className={styles.button} data-testid="Simple-chip-delete-button">
 				x
 			</button>
 		</Flex>
