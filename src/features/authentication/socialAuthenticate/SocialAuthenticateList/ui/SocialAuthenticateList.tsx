@@ -1,4 +1,4 @@
-import GitHubIcon from '@/shared/assets/icons/github.svg';
+import GitHubIcon from '@/shared/assets/icons/github1.svg';
 
 import styles from './SocialAuthenticateList.module.css';
 

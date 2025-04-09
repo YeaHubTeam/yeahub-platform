@@ -1,10 +1,12 @@
 import classNames from 'classnames';
-import { useRef } from 'react';
-import { Icon } from 'yeahub-ui-kit';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
-import styles from './styles.module.css';
+import styles from './Modal.module.css';
 
 type ModalProps = {
 	title: string;
@@ -17,6 +19,13 @@ type ModalProps = {
 	buttonOutlineClick?: () => void;
 };
 
+const createPortalRoot = () => {
+	const modalRoot = document.createElement('div');
+	modalRoot.setAttribute('id', 'modal-root');
+
+	return modalRoot;
+};
+
 export const Modal = ({
 	title,
 	isOpen,
@@ -27,19 +36,20 @@ export const Modal = ({
 	buttonOutlineClick,
 	children,
 }: ModalProps) => {
-	const modalRef = useRef<HTMLDivElement>(null);
+	const portalRootRef = useRef(document.getElementById('modal-root') || createPortalRoot());
+	const renderRootRef = useRef(document.body);
+	const rootEl = renderRootRef.current;
+	const overlayRef = useRef<HTMLDivElement>(null);
 
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const target = e.target as Node;
-		if (modalRef.current && !modalRef.current.contains(target)) {
+		if (overlayRef.current && !overlayRef.current.contains(target)) {
 			onClose();
 		}
 	};
-
 	const handleClickXCircle = () => {
 		onClose();
 	};
-
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
 		e.stopPropagation();
 		if (e.key === 'Escape') {
@@ -47,9 +57,31 @@ export const Modal = ({
 		}
 	};
 
+	useEffect(() => {
+		if (rootEl) {
+			rootEl.style.overflow = isOpen ? 'hidden' : '';
+
+			return () => {
+				rootEl.style.overflow = '';
+			};
+		}
+	}, [isOpen]);
+
+	useEffect(() => {
+		if (isOpen && rootEl) {
+			rootEl.appendChild(portalRootRef.current);
+			const portal = portalRootRef.current;
+
+			return () => {
+				portal.remove();
+				rootEl.style.overflow = '';
+			};
+		}
+	}, [isOpen]);
+
 	const isButtons = buttonOutlineText || buttonPrimaryText;
 
-	return (
+	return createPortal(
 		<div
 			role="button"
 			aria-labelledby="У вас открыто модальное окно"
@@ -58,34 +90,49 @@ export const Modal = ({
 			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
-			<div className={styles.modal} ref={modalRef}>
+			<div className={styles.modal} ref={overlayRef}>
 				<Icon
-					icon="xCircle"
+					icon="closeCircle"
 					type="button"
 					className={styles['x-circle']}
-					color="--palette-ui-black-25"
+					color="black-25"
 					onClick={handleClickXCircle}
 					tabIndex={0}
 					aria-label="Закрыть модальное окно"
 					onKeyDown={handleKeyDown}
 				/>
-				<h3 className={styles.title}>{title}</h3>
-				<div className={styles.content}>{children}</div>
+				<Text className={styles.title} variant="body6">
+					{title}
+				</Text>
+				<Text className={styles.text} variant="body3">
+					{children}
+				</Text>
 				{isButtons && (
 					<div className={styles.buttons}>
 						{buttonPrimaryText && (
-							<Button variant="primary" size="large" onClick={buttonPrimaryClick}>
+							<Button
+								style={{ width: '100%' }}
+								variant="primary"
+								size="large"
+								onClick={buttonPrimaryClick}
+							>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
-							<Button variant="outline" size="large" onClick={buttonOutlineClick}>
+							<Button
+								style={{ width: '100%' }}
+								variant="outline"
+								size="large"
+								onClick={buttonOutlineClick}
+							>
 								{buttonOutlineText}
 							</Button>
 						)}
 					</div>
 				)}
 			</div>
-		</div>
+		</div>,
+		portalRootRef.current,
 	);
 };

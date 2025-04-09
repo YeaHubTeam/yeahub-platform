@@ -15,6 +15,7 @@ import { usersPageReducer } from '@/pages/admin/UserTablePage';
 import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
 import { questionsPageReducer } from '@/pages/interview/QuestionsPage';
+import { createPublicQuizPageReducer } from '@/pages/landing/CreatePublicQuizPage';
 
 import { router } from '../../router';
 
@@ -24,6 +25,7 @@ export const createReduxStore = (initialState?: State) => {
 			questionsPage: questionsPageReducer,
 			skillsPage: skillsPageReducer,
 			createQuizPage: createQuizPageReducer,
+			createPublicQuizPage: createPublicQuizPageReducer,
 			activeQuiz: activeQuizSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
 			interviewHistoryPage: interviewHistoryPageReducer,

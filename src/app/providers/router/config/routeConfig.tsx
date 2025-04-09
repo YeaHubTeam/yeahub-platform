@@ -9,7 +9,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import SettingsIcon from '@/shared/assets/icons/Settings.svg';
+import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
@@ -53,13 +53,17 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
+import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
+import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
+import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
@@ -69,6 +73,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+
 import '../../../styles/App.css';
 
 const mainLayoutMenuItems: MenuItem[] = [
@@ -185,6 +190,24 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.questions.detail.route,
 						element: <PublicQuestionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.quiz.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CreatePublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.new.route,
+						element: <PublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.result.route,
+						element: <PublicQuizResultPage />,
 					},
 				],
 			},
@@ -431,6 +454,10 @@ export const router = createBrowserRouter([
 						},
 					},
 				],
+			},
+			{
+				path: ROUTES.users.route,
+				element: <UserProfilePage />,
 			},
 			{
 				path: '*',

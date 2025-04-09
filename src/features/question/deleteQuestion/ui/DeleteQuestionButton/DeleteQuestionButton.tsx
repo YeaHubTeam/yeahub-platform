@@ -25,29 +25,45 @@ export const DeleteQuestionButton = ({
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
-	const onCloseDeleteModal = () => {
-		setIsModalOpen((prev) => !prev);
+	const handleOpenModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const onDeleteQuestion = async () => {
-		await deleteQuestionMutation(questionId);
+		try {
+			await deleteQuestionMutation(questionId);
+			handleCloseModal();
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
 	};
 
 	return (
 		<>
 			<Button
 				aria-label="Large"
-				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} color="red-600" />}
+				style={{
+					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
+					justifyContent: isDetailPage ? 'center' : 'flex-start',
+				}}
+				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={onCloseDeleteModal}
+				onClick={handleOpenModal}
 			>
 				{t(Translation.DELETE)}
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
+					isOpen={isDeleteModalOpen}
+					onClose={handleCloseModal}
 					onOk={onDeleteQuestion}
-					onCancel={() => setIsModalOpen(false)}
+					onCancel={handleCloseModal}
 					message={Translation.MODAL_DELETE_TITLE}
 				/>
 			)}

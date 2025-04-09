@@ -61,7 +61,7 @@ export const QuestionPage = () => {
 				</NavLink>
 			</BackHeader>
 			<Flex gap="20">
-				<Flex gap="20" direction="column" flex={1}>
+				<Flex gap="20" direction="column" flex={1} maxWidth>
 					<QuestionHeader question={question} />
 					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 				</Flex>

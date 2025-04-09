@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
+import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
@@ -12,8 +13,6 @@ import { Button } from '@/shared/ui/Button';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
-
-const MAX_LIMIT = 5;
 
 interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
@@ -30,7 +29,7 @@ export const ChooseQuestionsCategories = ({
 	selectedSpecialization,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
-	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
+	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT_CATEGORIES);
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
@@ -45,9 +44,9 @@ export const ChooseQuestionsCategories = ({
 
 	useEffect(() => {
 		if (isMobile || showAll) {
-			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT));
+			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT_CATEGORIES));
 		} else {
-			setLimit(skillsLimit || MAX_LIMIT);
+			setLimit(skillsLimit || MAX_LIMIT_CATEGORIES);
 		}
 	}, [skills?.total, showAll, skillsLimit]);
 

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { IconButton, Icon } from 'yeahub-ui-kit';
-import { IconsName } from 'yeahub-ui-kit/build/components/Icon/common';
+import { IconButton } from 'yeahub-ui-kit';
 
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Icon } from '@/shared/ui/Icon';
 
 import { SocialNetwork } from '../../model/types/socialNetwork';
 
@@ -23,7 +23,7 @@ export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => 
 						type="submit"
 						aria-label="primary large"
 						form="round"
-						icon={<Icon icon={`${link.code}Logo` as IconsName} size={isMobile ? 20 : 24} />}
+						icon={<Icon icon={link.code} size={isMobile ? 20 : 24} />}
 						size="small"
 						theme="primary"
 					/>

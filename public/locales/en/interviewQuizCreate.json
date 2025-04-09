@@ -3,6 +3,7 @@
   "create.button": "Start",
   "mode": {
     "select": "Choose mode",
+    "select.tooltip.unauthorized": "The choice of mode will be available after registration",
     "repeat": "Repeat",
     "new": "Only new",
     "random": "Random"

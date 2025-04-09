@@ -108,6 +108,10 @@ export const ROUTES = {
 			page: '/dashboard/profile/edit',
 		},
 	},
+	users: {
+		route: 'users/:userId',
+		page: '/dashboard/users/:userId',
+	},
 	settings: {
 		route: 'settings',
 		page: '/dashboard/settings',
@@ -154,6 +158,18 @@ export const ROUTES = {
 		detail: {
 			route: ':questionId',
 			page: '/questions/:questionId',
+		},
+	},
+	quiz: {
+		route: 'quiz',
+		page: '/quiz',
+		new: {
+			route: 'new',
+			page: '/quiz/new',
+		},
+		result: {
+			route: 'result',
+			page: '/quiz/result',
 		},
 	},
 	collections: {

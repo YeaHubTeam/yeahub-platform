@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { ProfileIcon } from '@/shared/ui/Icons/ProfileIcon';
 import { UserPlusIcon } from '@/shared/ui/Icons/UserPlusIcon';
@@ -45,7 +45,7 @@ export const UnauthorizedBlock = () => {
 						<IconButton
 							aria-label="go to preferences"
 							form="square"
-							icon={<Icon icon="list" size={32} />}
+							icon={<Icon icon="burger" size={32} />}
 							size="large"
 							variant="tertiary"
 							onClick={onToggle}

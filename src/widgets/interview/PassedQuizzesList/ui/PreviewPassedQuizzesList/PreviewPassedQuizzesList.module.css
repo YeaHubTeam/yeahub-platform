@@ -1,5 +1,5 @@
 .list {
-  padding: 24px;
+  padding: 20px 24px;
   list-style: none;
 }
 
@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-@media (width < 1280px) {
+@media (width < 1024px) {
   .list {
     padding: 16px;
   }
@@ -17,6 +17,6 @@
 
 @media (width < 768px) {
   .list {
-    padding: 12px;
+    padding: 0;
   }
 }
