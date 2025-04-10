@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,7 +11,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getProfileId } from '@/entities/profile';
-import { useGetHistoryQuizQuery } from '@/entities/quiz';
+import { QuizWithoutQuestions, useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { PreviewPassedQuizzesItem } from '../PreviewPassedQuizzesItem/PreviewPassedQuizzesItem';
 
@@ -21,12 +22,16 @@ export interface InterviewHistoryListProps {
 }
 
 export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProps) => {
+	const [uniqueData, setUniqueData] = useState<QuizWithoutQuestions[] | []>([]);
+	const [startTimeBefore, setStartTimeBefore] = useState<Date | undefined>(undefined);
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
 	const isVerified = fullProfile?.isEmailVerified;
 	const { t } = useTranslation([i18Namespace.interviewHistory, i18Namespace.profile]);
 	const { data, isSuccess } = useGetHistoryQuizQuery({
 		profileId,
+		startAfter: new Date(0).toISOString(),
+		startBefore: startTimeBefore?.toISOString(),
 		limit: 3,
 		uniqueKey: 'interviewPreviewHistory',
 	});
@@ -41,6 +46,22 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const actionTitle = isVerified
 		? t(InterviewHistory.LINK)
 		: t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile });
+
+	useEffect(() => {
+		setStartTimeBefore(new Date());
+	}, []);
+
+	useEffect(() => {
+		if (data?.data) {
+			const seen = new Set<string>();
+			const filtered = data.data.filter((item) => {
+				if (seen.has(item.id)) return false;
+				seen.add(item.id);
+				return true;
+			});
+			setUniqueData(filtered);
+		}
+	}, [data?.data]);
 
 	return (
 		<Card
@@ -64,7 +85,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			)}
 			{!isEmptyData && isVerified && (
 				<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
-					{data?.data.map((interview) => (
+					{uniqueData.map((interview) => (
 						<PreviewPassedQuizzesItem key={interview.id} interview={interview} />
 					))}
 				</Flex>

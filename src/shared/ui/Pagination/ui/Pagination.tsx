@@ -82,7 +82,13 @@ export const Pagination = ({
 							1
 						</Text>
 					</button>
-					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} color="black-700" />
+					<Icon
+						icon="dotsThree"
+						dataTestId="dots-icon"
+						className={styles['dots-icon']}
+						size={32}
+						color="black-700"
+					/>
 				</>
 			)}
 
@@ -104,7 +110,13 @@ export const Pagination = ({
 
 			{endPage < totalPages && (
 				<>
-					<Icon icon="dotsThree" className={styles['dots-icon']} size={32} color="black-700" />
+					<Icon
+						dataTestId="dots-icon"
+						icon="dotsThree"
+						className={styles['dots-icon']}
+						size={32}
+						color="black-700"
+					/>
 					<button
 						onClick={handleChangePage(totalPages)}
 						className={classNames(styles['page-button'], {
