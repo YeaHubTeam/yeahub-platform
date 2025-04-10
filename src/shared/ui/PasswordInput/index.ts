@@ -1,1 +1,1 @@
-export { PasswordInput } from './ui/PasswordInput';
+export { PasswordInput } from './PasswordInput';

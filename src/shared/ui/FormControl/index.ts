@@ -1,1 +1,1 @@
-export { FormControl } from './ui/FormControl';
+export { FormControl } from './FormControl';

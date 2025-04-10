@@ -1,1 +1,1 @@
-export { LeavingPageBlocker } from './ui/LeavingPageBlocker';
+export { LeavingPageBlocker } from './LeavingPageBlocker';

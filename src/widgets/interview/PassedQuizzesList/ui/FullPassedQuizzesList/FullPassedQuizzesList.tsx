@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useAppSelector, useInfiniteScroll } from '@/shared/hooks';
-import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { Value } from '@/shared/ui/Calendar/EventCalendar';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';

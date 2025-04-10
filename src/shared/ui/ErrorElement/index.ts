@@ -1,1 +1,1 @@
-export { ErrorElement } from './ui/ErrorElement';
+export { ErrorElement } from './ErrorElement';

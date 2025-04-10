@@ -1,2 +1,2 @@
-export { Text } from './ui/Text';
-export { TextSkeleton } from './ui/Text.skeleton';
+export { Text } from './Text';
+export { TextSkeleton } from './Text.skeleton';
