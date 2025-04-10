@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
 

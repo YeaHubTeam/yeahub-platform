@@ -1,4 +1,4 @@
-import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useQueryFilter } from '@/shared/hooks';
 
 import {
 	ChooseQuestionComplexity,

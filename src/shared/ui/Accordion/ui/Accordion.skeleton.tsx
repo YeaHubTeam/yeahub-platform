@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import styles from '@/shared/ui/Accordion/ui/Accordion.module.css';
 import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';

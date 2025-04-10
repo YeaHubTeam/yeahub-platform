@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
