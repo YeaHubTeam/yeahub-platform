@@ -1,3 +1,3 @@
-export { Popover } from './ui/Popover/Popover';
-export type { PopoverMenuItem } from './model/types/types';
-export { PopoverMenu } from './ui/PopoverMenu/PopoverMenu';
+export { Popover } from './Popover/Popover';
+export type { PopoverMenuItem } from './types';
+export { PopoverMenu } from './PopoverMenu/PopoverMenu';

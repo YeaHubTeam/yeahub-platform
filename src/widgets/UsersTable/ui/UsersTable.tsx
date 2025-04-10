@@ -11,7 +11,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { PopoverChildrenProps } from '@/shared/ui/Popover/model/types/types';
+import { PopoverChildrenProps } from '@/shared/ui/Popover/types';
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
