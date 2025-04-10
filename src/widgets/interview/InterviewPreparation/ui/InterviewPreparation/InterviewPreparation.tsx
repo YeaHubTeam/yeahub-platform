@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import { getIsEmailVerified, getIsEmptySpecialization } from '@/entities/profile';

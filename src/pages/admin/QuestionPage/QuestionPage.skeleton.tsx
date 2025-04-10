@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';

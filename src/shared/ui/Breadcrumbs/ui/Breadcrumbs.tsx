@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation, useMatches } from 'react-router-dom';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Icon } from '@/shared/ui/Icon';
+import { useScreenSize } from '@/shared/hooks';
 
 import { BreadcrumbItem } from '../../BreadcrumbItem';
 

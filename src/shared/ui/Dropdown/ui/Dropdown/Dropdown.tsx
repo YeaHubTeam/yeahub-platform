@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import Lens from '@/shared/assets/icons/Magnifer.svg';
-import { useOutsideClick } from '@/shared/hooks/useOutsideClick';
+import { useOutsideClick } from '@/shared/hooks';
 
 import { DropdownSize } from '../../model/DropdownTypes';
 import { OptionProps } from '../Option/Option';
