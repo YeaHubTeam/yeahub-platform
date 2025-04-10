@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import { TextHtmlProps } from './TextHtml';

@@ -14,9 +14,18 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 	color?: Pallete;
 	className?: string;
 	onClick?: () => void;
+	dataTestId?: string;
 }
 
-export const Icon = ({ size = 24, className, color, icon, onClick, ...props }: IconProps) => {
+export const Icon = ({
+	size = 24,
+	className,
+	color,
+	icon,
+	onClick,
+	dataTestId,
+	...props
+}: IconProps) => {
 	const SVG = icons[icon];
 	const svgColor = `var(--color-${color})`;
 
@@ -28,6 +37,7 @@ export const Icon = ({ size = 24, className, color, icon, onClick, ...props }: I
 			width={size}
 			height={size}
 			onClick={onClick}
+			data-testid={dataTestId}
 			// viewBox={`0 0 32 32`}
 			// preserveAspectRatio="xMidYMid meet"
 		/>

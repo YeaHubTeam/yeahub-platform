@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/hooks';
 
 import { changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';

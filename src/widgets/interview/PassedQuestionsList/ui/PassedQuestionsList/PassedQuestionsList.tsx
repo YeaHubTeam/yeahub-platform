@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { useCurrentProject } from '@/shared/hooks/useCurrentProject';
+import { useCurrentProject } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 

@@ -7,6 +7,7 @@ import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { route } from '@/shared/helpers/route';
+
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 

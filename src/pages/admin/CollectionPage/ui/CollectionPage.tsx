@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { IconButton } from '@/shared/ui/IconButton';

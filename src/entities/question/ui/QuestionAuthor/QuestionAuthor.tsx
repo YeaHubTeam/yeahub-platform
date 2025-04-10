@@ -6,7 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { useCurrentProject } from '@/shared/hooks/useCurrentProject';
+import { useCurrentProject } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 

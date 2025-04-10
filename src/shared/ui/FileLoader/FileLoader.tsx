@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Gallery from '@/shared/assets/images/Gallery.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
+import { useDragAndDrop } from '@/shared/hooks';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension } from './types';

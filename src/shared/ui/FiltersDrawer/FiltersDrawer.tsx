@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import { IconButton } from 'yeahub-ui-kit';
 
-import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useQueryFilter } from '@/shared/hooks';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 

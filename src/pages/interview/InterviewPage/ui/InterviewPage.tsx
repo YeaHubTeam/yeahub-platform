@@ -1,13 +1,9 @@
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsEmptySpecialization, getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-import {
-	useGetActiveQuizQuery,
-	useGetHistoryQuizQuery,
-	useGetProfileQuizStatsQuery,
-} from '@/entities/quiz';
+import { useGetActiveQuizQuery, useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import { InterviewPreparation } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
@@ -24,12 +20,6 @@ const InterviewPage = () => {
 
 	const { isLoading: isProfileStatsLoading } = useGetProfileQuizStatsQuery(profileId);
 
-	const { isLoading: isHistoryLoading } = useGetHistoryQuizQuery({
-		profileId,
-		limit: 3,
-		uniqueKey: 'interviewPreviewHistory',
-	});
-
 	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery({
 		random: true,
 		limit: 3,
@@ -42,7 +32,7 @@ const InterviewPage = () => {
 		page: 1,
 	});
 
-	if (isProfileStatsLoading || isActiveQuizLoading || isHistoryLoading || isQuestionsListLoading) {
+	if (isProfileStatsLoading || isActiveQuizLoading || isQuestionsListLoading) {
 		return <InterviewPageSkeleton />;
 	}
 
