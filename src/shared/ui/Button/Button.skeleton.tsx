@@ -2,6 +2,7 @@ import classnames from 'classnames';
 
 import styles from '@/shared/ui/Button/Button.module.css';
 import { Skeleton } from '@/shared/ui/Skeleton';
+
 import { getTagName } from './helpers';
 import { ButtonProps } from './types';
 

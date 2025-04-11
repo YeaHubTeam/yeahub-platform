@@ -2,9 +2,9 @@ import classnames from 'classnames';
 
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import { ButtonProps } from './';
-
 import styles from './IconButton.module.css';
+
+import { ButtonProps } from './';
 
 export const IconButtonSkeleton = ({
 	variant = 'primary',

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import { PieSegment } from '../types';
 import { LegendItem } from '../LegendItem/LegendItem';
+import { PieSegment } from '../types';
 
 interface LegendListProps {
 	segments: PieSegment[];

@@ -3,9 +3,8 @@ import { ReactNode } from 'react';
 
 import { Pallete } from '@/shared/types/types';
 
-import { TextVariant } from './types';
-
 import styles from './Text.module.css';
+import { TextVariant } from './types';
 
 export const textMaxRows = [1, 2, 3, 4] as const;
 

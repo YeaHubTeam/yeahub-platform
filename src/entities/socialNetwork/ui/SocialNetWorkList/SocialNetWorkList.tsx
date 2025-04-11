@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { IconButton } from 'yeahub-ui-kit';
 
-import { Icon } from '@/shared/ui/Icon';
 import { useScreenSize } from '@/shared/hooks';
+import { Icon } from '@/shared/ui/Icon';
 
 import { SocialNetwork } from '../../model/types/socialNetwork';
 

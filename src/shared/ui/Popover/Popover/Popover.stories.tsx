@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
-import { Popover } from './Popover';
 import { PopoverProps, PopoverHeaderConfig, PopoverFooterConfig, PopoverMenuItem } from '../types';
+
+import { Popover } from './Popover';
 
 export default {
 	title: 'shared/Popover',

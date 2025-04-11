@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { forwardRef } from 'react';
 
 import { useRangeContext } from '../useRangeContext';
+
 import styles from './RangeLabel.module.css';
 
 export const RangeLabel = forwardRef<HTMLDivElement>((_, ref) => {

@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 
-import styles from './Select.module.css';
 import { DropdownSize } from '../DropdownTypes';
+
+import styles from './Select.module.css';
 
 interface SelectProps {
 	size?: DropdownSize;

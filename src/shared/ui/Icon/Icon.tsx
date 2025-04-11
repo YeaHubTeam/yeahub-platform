@@ -3,10 +3,9 @@ import { ComponentPropsWithoutRef } from 'react';
 
 import { Pallete } from '@/shared/types/types';
 
+import styles from './Icon.module.css';
 import { icons } from './icons';
 import { IconName, IconSize } from './types';
-
-import styles from './Icon.module.css';
 
 export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 	icon: IconName;

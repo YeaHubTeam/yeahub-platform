@@ -8,6 +8,7 @@ import React, {
 	useId,
 	useLayoutEffect,
 } from 'react';
+
 import { PopoverContext } from '../context/popoverContext';
 import { usePopoverContext } from '../context/usePopoverContext';
 import { PopoverOptions, usePopover } from '../hooks/usePopover';

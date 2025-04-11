@@ -10,14 +10,14 @@ import {
 	PopoverTrigger,
 } from '../PopoverFabric/PopoverFabric';
 import { PopoverMenu } from '../PopoverMenu/PopoverMenu';
-
-import styles from './Popover.module.css';
 import {
 	PopoverChildrenProps,
 	PopoverFooterConfig,
 	PopoverHeaderConfig,
 	PopoverProps,
 } from '../types';
+
+import styles from './Popover.module.css';
 
 export const Popover = (props: PopoverProps & { isMobile?: boolean; isTablet?: boolean }) => {
 	const {

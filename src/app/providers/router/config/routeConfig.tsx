@@ -21,8 +21,8 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
-import { CollectionPage } from '@/pages/admin/CollectionPage';
-import { CollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
+import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -44,6 +44,8 @@ import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
+import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/CollectionPage';
+import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
@@ -303,7 +305,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <CollectionsPage />,
+						element: <AdminCollectionsPage />,
 					},
 					{
 						path: ROUTES.admin.collections.create.route,
@@ -315,7 +317,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.collections.details.route,
-						element: <CollectionPage />,
+						element: <AdminCollectionPage />,
 					},
 				],
 			},
@@ -428,6 +430,26 @@ export const router = createBrowserRouter([
 								element: <InterviewQuestionPage />,
 								handle: {
 									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.interview.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
 								},
 							},
 						],

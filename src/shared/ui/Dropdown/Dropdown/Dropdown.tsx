@@ -5,11 +5,11 @@ import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import Lens from '@/shared/assets/icons/Magnifer.svg';
 import { useOutsideClick } from '@/shared/hooks';
 
+import { DropdownSize } from '../DropdownTypes';
 import { OptionProps } from '../Option/Option';
 import { Select } from '../Select/Select';
 
 import styles from './Dropdown.module.css';
-import { DropdownSize } from '../DropdownTypes';
 
 interface DropdownProps
 	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect'> {

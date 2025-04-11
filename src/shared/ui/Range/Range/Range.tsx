@@ -1,14 +1,14 @@
 import cn from 'classnames';
 import { useState, useRef, useEffect, ChangeEvent } from 'react';
 
+import { RangeContext } from '../rangeContext';
 import { RangeLabel } from '../RangeLabel/RangeLabel';
 import { RangeSteps } from '../RangeSteps/RangeSteps';
 import { RangeUnits } from '../RangeUnits/RangeUnits';
 import { RangeValue } from '../RangeValue/RangeValue';
+import { RangeProps } from '../types';
 
 import styles from './Range.module.css';
-import { RangeContext } from '../rangeContext';
-import { RangeProps } from '../types';
 
 const thumbWidth = 22;
 

@@ -1,9 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { TextAreaProps } from './types';
-
 import { TextArea } from './TextArea';
+import { TextAreaProps } from './types';
 
 const meta = {
 	title: 'Data Entry/TextArea',

@@ -4,9 +4,8 @@ import React, { forwardRef } from 'react';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { ChipProps } from './types';
-
 import styles from './Chip.module.css';
+import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 	(

@@ -38,7 +38,6 @@ const CollectionsPage = () => {
 	// in case other collections appear (eg: filtered collections)
 	// as in QuestionsPage
 	const collections = allCollections;
-
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 	};
