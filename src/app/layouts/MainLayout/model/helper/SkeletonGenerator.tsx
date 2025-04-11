@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { matchPath, useLocation } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
 import { Loader } from '@/shared/ui/Loader';
@@ -11,12 +11,27 @@ import { InterviewHistoryPageSkeleton } from '@/pages/interview/InterviewHistory
 import { InterviewPageSkeleton } from '@/pages/interview/InterviewPage';
 import { InterviewQuizPageSkeleton } from '@/pages/interview/InterviewQuizPage';
 import { InterviewQuizResultPageSkeleton } from '@/pages/interview/InterviewQuizResultPage';
+import { InterviewStatisticsPageSkeleton } from '@/pages/interview/InterviewStatisticsPage';
 import { MainPageSkeleton } from '@/pages/interview/MainPage';
 import { QuestionsPageSkeleton } from '@/pages/interview/QuestionsPage';
 import { ProfilePageSkeleton } from '@/pages/profile/ProfilePage';
 
 const SkeletonGenerator = () => {
 	const location = useLocation();
+
+	const isInterviewResultPage = matchPath(ROUTES.interview.history.result.page, location.pathname);
+	const isAdminQuestionDetailsPage = matchPath(
+		ROUTES.admin.questions.details.page,
+		location.pathname,
+	);
+
+	if (isInterviewResultPage) {
+		return <InterviewQuizResultPageSkeleton />;
+	}
+
+	if (isAdminQuestionDetailsPage) {
+		return <QuestionPageSkeleton />;
+	}
 
 	switch (location.pathname) {
 		case ROUTES.platformRoute:
@@ -27,8 +42,8 @@ const SkeletonGenerator = () => {
 			return <InterviewQuizPageSkeleton />;
 		case ROUTES.interview.history.page:
 			return <InterviewHistoryPageSkeleton />;
-		case ROUTES.interview.history.result.page:
-			return <InterviewQuizResultPageSkeleton />;
+		case ROUTES.interview.statistic.page:
+			return <InterviewStatisticsPageSkeleton />;
 		case ROUTES.interview.questions.page:
 			return <QuestionsPageSkeleton />;
 		case ROUTES.interview.quiz.page:
@@ -37,8 +52,6 @@ const SkeletonGenerator = () => {
 			return <ProfilePageSkeleton />;
 		case ROUTES.profile.edit.page:
 			return <EditProfileFormSkeleton />;
-		case ROUTES.admin.questions.details.page:
-			return <QuestionPageSkeleton />;
 
 		default:
 			return <Loader />;

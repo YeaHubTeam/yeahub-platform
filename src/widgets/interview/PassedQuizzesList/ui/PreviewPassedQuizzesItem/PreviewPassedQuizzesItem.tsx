@@ -7,7 +7,6 @@ import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { route } from '@/shared/helpers/route';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -25,7 +24,6 @@ export const PreviewPassedQuizzesItem = ({ interview }: InterviewHistoryItemProp
 	const { id, successCount, fullCount } = interview;
 	const incorrectAnswersCount = fullCount - successCount;
 	const { t } = useTranslation(i18Namespace.interviewHistory);
-	const { isMobile } = useScreenSize();
 	const formattedDate = formatDate(parseISO(interview.endDate));
 
 	return (
@@ -35,7 +33,7 @@ export const PreviewPassedQuizzesItem = ({ interview }: InterviewHistoryItemProp
 					{formattedDate}
 				</Text>
 				<Flex wrap="wrap" justify="between" gap="14" className={styles.info}>
-					<Text variant={isMobile ? 'body3-accent' : 'body4'}>
+					<Text variant={'body3-accent'}>
 						{t(InterviewHistory.QUIZ_TITLE, { number: interview.quizNumber })}
 					</Text>
 					<Flex componentType="ul" gap="24">

@@ -1,8 +1,7 @@
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
-import { Value } from '@/shared/ui/Calendar/ui/EventCalendar';
+import { useAppSelector, useInfiniteScroll } from '@/shared/hooks';
+import { Value } from '@/shared/ui/Calendar/EventCalendar';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
@@ -11,8 +10,6 @@ import { getProfileId } from '@/entities/profile';
 import { useGetHistoryQuizQuery } from '@/entities/quiz';
 
 import { FullPassedQuizzesItem } from '../FullPassedQuizzesItem/FullPassedQuizzesItem';
-
-import styles from './FullPassedQuizzesList.module.css';
 
 interface InterviewHistoryProps {
 	dateRange?: Value;
@@ -68,7 +65,7 @@ export const FullPassedQuizzesList = ({
 
 	if (isEmptyData) {
 		return (
-			<Card className={styles['empty-container']}>
+			<Card>
 				<EmptyStub resetFilters={resetFilters} />
 			</Card>
 		);

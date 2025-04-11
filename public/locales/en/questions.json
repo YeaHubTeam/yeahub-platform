@@ -1,5 +1,6 @@
 {
   "count": "Questions count",
+  "count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
   "preview": {
     "title": "Questions list",
     "link": "Study",
@@ -28,7 +29,8 @@
   "complexity": {
     "title": "Question Difficulty",
     "title.short": "Complexity",
-    "label": "Select questions difficulty"
+    "label": "Select questions difficulty",
+    "tooltip.unauthorized": "Difficulty levels will be available after registration"
   },
   "rate": {
     "title": "Question Rating",
@@ -65,7 +67,7 @@
     "placeholder": "Short answer to the question"
   },
   "specialization": {
-    "title": "Specialization",
+    "title": "Select a specialization",
     "label": "Select relevant specialization"
   },
   "keywords": {
@@ -79,5 +81,9 @@
   "image.alt": "Image code for question",
   "more": "More",
   "learn": "Learn",
-  "repeat": "Repeat"
+  "repeat": "Repeat",
+  "tooltip": {
+    "learn": "The issue has already been fully studied",
+    "repeat": "The question has not yet progressed to memorization"
+  }
 }

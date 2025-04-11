@@ -1,1 +1,1 @@
-export { AvatarWithoutPhoto } from './ui/AvatarWithoutPhoto';
+export { AvatarWithoutPhoto } from './AvatarWithoutPhoto';

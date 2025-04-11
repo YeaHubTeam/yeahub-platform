@@ -1,2 +1,2 @@
-export { TextHtml } from './ui/TextHtml';
-export { TextHtmlSkeleton } from './ui/TextHtml.skeleton';
+export { TextHtml } from './TextHtml';
+export { TextHtmlSkeleton } from './TextHtml.skeleton';

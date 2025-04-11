@@ -27,10 +27,8 @@ export const editProfileApi = baseApi.injectEndpoints({
 						editProfileApi.endpoints.updateUser.initiate({
 							id: profileInfo.user.id,
 							userInfo: {
-								firstName: profileInfo.user.firstName,
-								lastName: profileInfo.user.lastName,
+								username: profileInfo.user.username,
 								country: profileInfo.user.country,
-								phone: profileInfo.user.phone,
 								city: profileInfo.user.city,
 								birthday: profileInfo.user.birthday,
 								address: profileInfo.user.address,

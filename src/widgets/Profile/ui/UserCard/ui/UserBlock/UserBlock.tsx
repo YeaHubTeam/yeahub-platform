@@ -1,9 +1,11 @@
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import { FullProfile } from '@/entities/auth';
+import { getIsEdit } from '@/entities/profile';
 import { Specialization } from '@/entities/specialization';
+import { UserEditButton } from '@/entities/user';
 
-import { UserEditButton } from '../UserEditButton';
 import { UserImageBlock } from '../UserImageBlock';
 import { UserInfoBlock } from '../UserInfoBlock';
 
@@ -15,6 +17,8 @@ interface UserBlockProps {
 }
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
+	const isEdit = useAppSelector(getIsEdit);
+
 	return (
 		<Card withOutsideShadow>
 			<div className={styles.card}>
@@ -22,7 +26,7 @@ export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) =>
 					<UserImageBlock avatar={profile.avatarUrl} />
 					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
 				</div>
-				<UserEditButton />
+				{isEdit && <UserEditButton tab={'personal-information'} />}
 			</div>
 		</Card>
 	);

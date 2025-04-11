@@ -1,0 +1,7 @@
+.container-list {
+  flex-grow: 1;
+}
+
+.container-list.hidden {
+  display: none;
+}

@@ -1,2 +1,2 @@
-export { BarChart } from './ui/BarChart';
-export { BarChartSkeleton } from './ui/BarChart.skeleton';
+export { BarChart } from './BarChart';
+export { BarChartSkeleton } from './BarChart.skeleton';

@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
@@ -46,7 +46,8 @@ export const InterviewQuizPageSkeleton = () => {
 						<Skeleton height={303} borderRadius={24} className={styles['image-skeleton']} />
 					</div>
 
-					<Flex align="center" justify="end" className={styles['end-button']}>
+					<Flex justify="between">
+						<Skeleton height={48} width={128}></Skeleton>
 						<Skeleton height={48} width={178}></Skeleton>
 					</Flex>
 				</Flex>

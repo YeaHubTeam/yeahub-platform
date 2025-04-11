@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Text, TextArea, Input, Label, Radio } from 'yeahub-ui-kit';
+import { Text, Input, Label, Radio } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -12,6 +12,7 @@ import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';

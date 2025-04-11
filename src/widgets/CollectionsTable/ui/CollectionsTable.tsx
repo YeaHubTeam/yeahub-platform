@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -9,6 +8,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
@@ -83,7 +83,7 @@ export const CollectionsTable = ({
 				},
 			},
 			{
-				icon: <Icon icon="pencil" size={24} />,
+				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
 					navigate(route(ROUTES.admin.questions.edit.route, collection.id));

@@ -41,9 +41,9 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 					<Flex direction="column" gap="60">
 						<Flex align="center" gap="120">
 							<Text variant="body4" color="black-800" width={246}>
-								{t(Users.FULL_NAME)}
+								{t(Users.USERNAME)}
 							</Text>
-							<Input disabled type="text" placeholder={`${user.firstName} ${user.lastName}`} />
+							<Input disabled type="text" placeholder={`${user.username}`} />
 						</Flex>
 						<Flex gap="120">
 							<Text variant="body4" color="black-800" width={246}>

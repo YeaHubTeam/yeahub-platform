@@ -8,11 +8,11 @@ import { AuthAvatarFrame } from '@/shared/ui/AuthAvatarFrame';
 import styles from './AuthorizedBlock.module.css';
 
 interface UserProfileProps {
-	firstName: string;
+	username: string;
 	avatarURL: string | null;
 }
 
-export const AuthorizedBlock = ({ firstName, avatarURL }: UserProfileProps) => {
+export const AuthorizedBlock = ({ username, avatarURL }: UserProfileProps) => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
@@ -22,7 +22,7 @@ export const AuthorizedBlock = ({ firstName, avatarURL }: UserProfileProps) => {
 	return (
 		<div className={styles.wrapper}>
 			<div role="banner" className={styles['user-wrapper']} onClick={handleClick}>
-				<p className={styles['user-name']}>{firstName}</p>
+				<p className={styles['user-name']}>{username}</p>
 				<AuthAvatarFrame link={avatarURL || null} />
 			</div>
 		</div>
