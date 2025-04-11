@@ -1,8 +1,9 @@
 import React from 'react';
 
-import styles from './PieSegmentItem.module.css';
 import { PieSegment } from '../types';
 import { calculateArcLength, calculateStrokeDasharray, calculateStrokeDashoffset } from '../utils';
+
+import styles from './PieSegmentItem.module.css';
 
 interface PieSegmentItemProps {
 	cx: number;

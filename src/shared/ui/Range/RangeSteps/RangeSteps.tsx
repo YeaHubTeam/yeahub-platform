@@ -1,7 +1,8 @@
 import cn from 'classnames';
 
-import styles from './RangeSteps.module.css';
 import { useRangeContext } from '../useRangeContext';
+
+import styles from './RangeSteps.module.css';
 
 export const RangeSteps = () => {
 	const { step, sliderWidth, thumbWidth, min, max, maxValueIcon, minValueIcon } = useRangeContext();

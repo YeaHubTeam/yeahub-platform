@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
-import { ButtonProps } from './';
-
 import styles from './IconButton.module.css';
+
+import { ButtonProps } from './';
 
 export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(
 	(

@@ -2,9 +2,8 @@ import classnames from 'classnames';
 import { forwardRef } from 'react';
 
 import { textAreaClassName } from './constants';
-import { TextAreaProps } from './types';
-
 import styles from './TextArea.module.css';
+import { TextAreaProps } from './types';
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	({ className, state = 'default', isReadonly, disabled, ...otherProps }, ref): JSX.Element => {

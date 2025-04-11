@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation, useMatches } from 'react-router-dom';
 
-import { Icon } from '@/shared/ui/Icon';
 import { useScreenSize } from '@/shared/hooks';
+import { Icon } from '@/shared/ui/Icon';
+
+import { BreadcrumbItem } from '../BreadcrumbItem';
 
 import styles from './Breadcrumbs.module.css';
-import { BreadcrumbItem } from '../BreadcrumbItem';
 
 export const Breadcrumbs = () => {
 	const matches = useMatches();

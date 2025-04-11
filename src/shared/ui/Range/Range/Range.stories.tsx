@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { Range } from './Range';
-import { RangeProps } from '../types';
 import { Icon } from '../../Icon';
+import { RangeProps } from '../types';
+
+import { Range } from './Range';
 
 const meta = {
 	title: 'shared/Range',

@@ -8,10 +8,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { PieSegmentItem } from '../PieSegmentItem/PieSegmentItem';
-
-import styles from './PieSegmentList.module.css';
 import { PieSegment } from '../types';
 import { calculateArcLength } from '../utils';
+
+import styles from './PieSegmentList.module.css';
 
 interface PieSegmentListProps {
 	segments: PieSegment[];

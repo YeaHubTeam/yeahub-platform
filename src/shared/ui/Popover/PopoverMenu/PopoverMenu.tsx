@@ -1,8 +1,9 @@
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import styles from './PopoverMenu.module.css';
 import { PopoverMenuItem } from '../types';
+
+import styles from './PopoverMenu.module.css';
 
 interface PopoverMenuProps {
 	menuItems: PopoverMenuItem[];

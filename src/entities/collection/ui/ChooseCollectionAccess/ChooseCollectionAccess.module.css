@@ -1,0 +1,14 @@
+.wrapper {
+  flex-basis: 60%;
+}
+
+
+.mobile {
+  max-height: 170px;
+  overflow-y: scroll;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+}

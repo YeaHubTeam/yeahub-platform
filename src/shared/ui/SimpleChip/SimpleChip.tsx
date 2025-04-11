@@ -1,7 +1,8 @@
 import React from 'react';
 
-import styles from './SimpleChip.module.css';
 import { Flex } from '../Flex';
+
+import styles from './SimpleChip.module.css';
 
 interface SimpleChipProps {
 	children: React.ReactNode;

@@ -17,9 +17,8 @@ import { useRef, useState } from 'react';
 
 import { Text } from '@/shared/ui/Text';
 
-import { TooltipProps } from './types';
-
 import styles from './Tooltip.module.css';
+import { TooltipProps } from './types';
 
 export const Tooltip = ({
 	title,
