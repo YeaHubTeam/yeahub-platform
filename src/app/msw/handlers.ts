@@ -7,6 +7,7 @@ import { specializationHandlers } from '@/entities/specialization';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
+import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
@@ -26,4 +27,5 @@ export const handlers = [
 	...specializationCreateHandlers,
 	...specializationEditHandlers,
 	...skillDeleteHandlers,
+	...resetQuestionHandlers,
 ];
