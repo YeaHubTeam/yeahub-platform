@@ -40,6 +40,7 @@ export interface ActiveQuizState {
 export interface ChangeQuestionAnswerParams {
 	questionId: number;
 	answer: QuizQuestionAnswerType;
+	shouldSaveToLS?: boolean;
 }
 
 export interface ProgressByCategoriesData {
