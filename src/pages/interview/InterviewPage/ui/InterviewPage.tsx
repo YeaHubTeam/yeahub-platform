@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsEmptySpecialization, getProfileId, getSpecializationId } from '@/entities/profile';
@@ -7,6 +7,7 @@ import { useGetActiveQuizQuery, useGetProfileQuizStatsQuery } from '@/entities/q
 
 import { InterviewPreparation } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
+import { PreviewCollectionsList } from '@/widgets/interview/PreviewCollectionsList';
 import { PreviewQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
 import { PreviewQuestionsList } from '@/widgets/question/QuestionsList';
 
@@ -42,8 +43,11 @@ const InterviewPage = () => {
 			{!isSpecializationEmpty && (
 				<>
 					<PreviewQuestionsStatistic className={styles.statistics} />
-					<PreviewQuestionsList className={styles.questions} />
-					<PreviewPassedQuizzesList className={styles.history} />
+					<Flex direction="column" gap="20" className={styles.list}>
+						<PreviewQuestionsList />
+						<PreviewPassedQuizzesList />
+					</Flex>
+					<PreviewCollectionsList className={styles.collections} />
 				</>
 			)}
 		</Flex>

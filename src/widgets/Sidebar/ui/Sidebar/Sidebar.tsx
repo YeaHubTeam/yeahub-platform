@@ -6,7 +6,7 @@ import ChatIcon from '@/shared/assets/icons/chat.svg';
 import ToogleSidebar from '@/shared/assets/icons/toggleSidebar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';

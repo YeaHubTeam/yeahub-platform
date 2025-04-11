@@ -7,14 +7,14 @@
   min-height: 480px;
 }
 
-.questions {
+.list {
   align-self: start;
   width: calc(50% - 10px);
 }
 
-.history {
+.collections {
   align-self: start;
-  width: calc(50% - 10px);
+  width: calc(50% - 15px);
 }
 
 @media (width < 1440px) {
@@ -29,11 +29,25 @@
 }
 
 @media (width < 1280px) {
-  .questions {
+  .collections {
     width: 100%;
   }
 
-  .history {
+  .list {
     width: 100%;
+  }
+}
+
+@media (width < 480px) {
+  .interview {
+    gap: 20px;
+  }
+
+  .collections {
+    gap: 16px;
+  }
+
+  .list {
+    gap: 16px;
   }
 }

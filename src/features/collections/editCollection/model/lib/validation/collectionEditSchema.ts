@@ -9,18 +9,17 @@ export const collectionEditSchema: yup.ObjectSchema<CollectionEditFormValues> = 
 	title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	id: yup.number().required(),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	imageSrc: yup.string().nullable(),
-	paidOrFree: yup
-		.string()
-		.oneOf(['paid', 'free'], i18n.t(Translation.VALIDATION_REQUIRED))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	imageSrc: yup.string().notRequired(),
+	collectionImage: yup.string(),
+	isFree: yup.boolean().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	keywordsCollection: yup
+	keywords: yup
 		.array()
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	questions: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	createdBy: yup.string(),
 });

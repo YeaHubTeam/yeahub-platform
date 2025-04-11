@@ -28,6 +28,11 @@
   padding: 12px 10px;
 }
 
+.questions-chip{
+  margin-top: 8px;
+  box-shadow: 0 0 0 1px var(--color-purple-700);
+}
+
 .chip:not(:last-of-type) {
   margin-right: 10px;
 }
@@ -40,4 +45,15 @@
 
 .keywords-wrapper a {
   color: var(--text-color-link-active);
+}
+
+.access-container {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+  }
 }
