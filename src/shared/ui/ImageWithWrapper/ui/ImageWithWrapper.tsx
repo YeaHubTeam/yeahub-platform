@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import EmptyStub from '@/shared/assets/icons/EmptyStub.svg';
+import ErrorStub from '@/shared/assets/icons/ErrorStub.svg';
 
 import styles from './ImageWithWrapper.module.css';
 
@@ -18,15 +19,17 @@ export const ImageWithWrapper = ({ className, src, alt = '' }: ImageWithWrapperP
 		setIsError(true);
 	};
 
-	const shouldShowImage = src && !isError;
+	let imageToRender;
 
-	return (
-		<div className={classNames(styles.wrapper, className)}>
-			{shouldShowImage ? (
-				<img className={styles.image} src={src} alt={alt} loading="lazy" onError={handleError} />
-			) : (
-				<EmptyStub className={styles.svg} />
-			)}
-		</div>
-	);
+	if (!src) {
+		imageToRender = <EmptyStub className={styles.svg} />;
+	} else if (isError) {
+		imageToRender = <ErrorStub className={styles.svg} />;
+	} else {
+		imageToRender = (
+			<img className={styles.image} src={src} alt={alt} loading="lazy" onError={handleError} />
+		);
+	}
+
+	return <div className={classNames(styles.wrapper, className)}>{imageToRender}</div>;
 };

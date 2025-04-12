@@ -24,6 +24,7 @@
   width: 80%;
   height: 60%;
   object-fit: fill;
+  fill: var(--color-purple-900);
   color: var(--color-purple-900);
   transform: translateX(-50%) translateY(-50%);
 }
