@@ -48,25 +48,29 @@ export const Modal = ({
 	const isButtons = buttonOutlineText || buttonPrimaryText;
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<div
-			role="button"
+			role="dialog"
 			aria-labelledby="У вас открыто модальное окно"
+			// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
 			tabIndex={0}
 			className={classNames(styles.overlay, { [styles['modal-open']]: isOpen })}
 			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
-			<div className={styles.modal} ref={modalRef}>
-				<Icon
-					icon="closeCircle"
-					type="button"
+			<div data-testid="Modal" className={styles.modal} ref={modalRef}>
+				<div
+					role="button"
 					className={styles['x-circle']}
-					color="black-25"
 					onClick={handleClickXCircle}
-					tabIndex={0}
 					aria-label="Закрыть модальное окно"
+					tabIndex={0}
 					onKeyDown={handleKeyDown}
-				/>
+					data-testid="close-button"
+				>
+					<Icon icon="closeCircle" color="black-25" />
+				</div>
+
 				<Text className={styles.title} variant="body6">
 					{title}
 				</Text>
