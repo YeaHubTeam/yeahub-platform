@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 
 import { getIsEdit } from '@/entities/profile';
 import { UserEditButton } from '@/entities/user';

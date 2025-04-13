@@ -1,2 +1,2 @@
-export { PassedQuestionsStatInfoList } from './ui/PassedQuestionsStatInfoList/PassedQuestionsStatInfoList';
-export { PassedQuestionsStatInfoListSkeleton } from './ui/PassedQuestionsStatInfoList/PassedQuestionsStatInfoList.skeleton';
+export { PassedQuestionsStatInfoList } from './PassedQuestionsStatInfoList/PassedQuestionsStatInfoList';
+export { PassedQuestionsStatInfoListSkeleton } from './PassedQuestionsStatInfoList/PassedQuestionsStatInfoList.skeleton';

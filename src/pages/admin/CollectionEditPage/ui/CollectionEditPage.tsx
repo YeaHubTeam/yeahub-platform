@@ -1,12 +1,12 @@
-import { collectionsMock } from '@/entities/collection';
+import { useParams } from 'react-router-dom';
+
+import { useGetCollectionByIdQuery } from '@/entities/collection';
 
 import { CollectionEditForm } from '@/features/collections/editCollection';
 
 const CollectionEditPage = () => {
-	// const { questionId } = useParams<{ questionId: string }>();
-	// const profileId = useAppSelector(getProfileId);
-
-	const collection = collectionsMock[0];
+	const { collectionId } = useParams<{ collectionId: string }>();
+	const { data: collection } = useGetCollectionByIdQuery({ collectionId: collectionId! });
 
 	if (!collection) {
 		return null;

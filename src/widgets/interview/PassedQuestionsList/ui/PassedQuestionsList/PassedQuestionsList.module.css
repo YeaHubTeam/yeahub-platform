@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px 20px;
   max-height: 800px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .button{
@@ -14,7 +14,7 @@
   padding: 15px 61.5px;
 }
 
-@media (width < 1024px) {
+@media screen and (width <= 1023px) {
   .list {
     grid-template-columns: 1fr;
     align-items: center;
@@ -23,7 +23,7 @@
   }
 }
 
-@media (width < 768px) {
+@media screen and (width <= 767px) {
   .list {
     max-height: 1450px;
   }

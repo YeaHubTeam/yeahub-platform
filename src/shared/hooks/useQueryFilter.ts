@@ -19,6 +19,7 @@ interface FilterFromURL {
 	orderBy?: string | null;
 	order?: string | null;
 	specialization?: string | null;
+	isFree?: string | null;
 }
 
 interface FilterFromUser {
@@ -31,6 +32,7 @@ interface FilterFromUser {
 	orderBy?: string;
 	order?: string;
 	specialization?: number | number[];
+	isFree?: boolean;
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
@@ -67,6 +69,7 @@ export const useQueryFilter = () => {
 			orderBy: params.get('orderBy'),
 			order: params.get('order'),
 			specialization: params.get('specialization'),
+			isFree: params.get('isFree'),
 		};
 	};
 
@@ -83,6 +86,7 @@ export const useQueryFilter = () => {
 			specialization: params.specialization
 				? params.specialization.split(',').map(Number)
 				: undefined,
+			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
 		};
 	};
 
@@ -101,6 +105,13 @@ export const useQueryFilter = () => {
 				if (key === 'status' && newFilters.status === params.get('status')) {
 					params.set(key, DEFAULT_STATUS);
 					return;
+				}
+
+				if (key === 'tariff') {
+					params.set('isFree', curFilter.toString());
+					return;
+				} else {
+					params.set(key, curFilter.toString());
 				}
 
 				if (Array.isArray(curFilter)) {

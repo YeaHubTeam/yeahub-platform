@@ -63,7 +63,6 @@ export const ROUTES = {
 				page: '/admin/users/:userId',
 			},
 		},
-
 		collections: {
 			route: 'collections',
 			page: '/admin/collections',
@@ -139,6 +138,14 @@ export const ROUTES = {
 				page: '/dashboard/interview/questions/:questionId',
 			},
 		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/interview/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/interview/collections/:collectionId',
+			},
+		},
 		quiz: {
 			route: 'quiz',
 			page: '/dashboard/interview/quiz',
@@ -166,6 +173,10 @@ export const ROUTES = {
 		new: {
 			route: 'new',
 			page: '/quiz/new',
+		},
+		result: {
+			route: 'result',
+			page: '/quiz/result',
 		},
 	},
 	collections: {

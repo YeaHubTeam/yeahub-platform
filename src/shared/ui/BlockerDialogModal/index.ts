@@ -1,1 +1,1 @@
-export { BlockerDialog } from './ui/BlockerDialogModal';
+export { BlockerDialog } from './BlockerDialogModal';

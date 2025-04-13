@@ -1,2 +1,2 @@
-export { ImageWithWrapper } from './ui/ImageWithWrapper';
-export { ImageWithWrapperSkeleton } from './ui/ImageWithWrapper.skeleton';
+export { ImageWithWrapper } from './ImageWithWrapper';
+export { ImageWithWrapperSkeleton } from './ImageWithWrapper.skeleton';

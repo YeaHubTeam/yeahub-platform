@@ -7,8 +7,8 @@ import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
-import { TextArea } from '@/shared/ui/TextArea';
 import { Range } from '@/shared/ui/Range';
+import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SkillSelect } from '@/entities/skill';

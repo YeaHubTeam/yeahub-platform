@@ -40,8 +40,9 @@ const config: Config = {
 
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
+		'\\.svg$': '<rootDir>/config/jest/jestSvgMock.tsx',
 		'\\.css$': 'identity-obj-proxy',
-		'\\.(jpg|svg|ico|jpeg|png|gif|avif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+		'\\.(jpg|ico|jpeg|png|gif|avif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
 			'<rootDir>config/jest/jestFileMock.ts',
 		'^@/(.*)$': '<rootDir>/src/$1',
 	},

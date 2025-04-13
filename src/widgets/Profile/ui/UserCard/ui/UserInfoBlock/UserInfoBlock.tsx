@@ -8,7 +8,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FullProfile } from '@/entities/auth';

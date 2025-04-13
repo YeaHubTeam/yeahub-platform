@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
