@@ -6,6 +6,13 @@ import CloseIcon from '@/shared/assets/icons/closeCircle.svg';
 
 import styles from './Drawer.module.css';
 
+export const drawerTestIds = {
+	container: 'drawer-container',
+	closeBtnBackdrop: 'close-backdrop',
+	drawer: 'drawer',
+	drawerHeader: 'drawer-header',
+};
+
 export interface DrawerProps {
 	isOpen: boolean;
 	position?: 'right' | 'left' | 'bottom';
@@ -68,27 +75,27 @@ export const Drawer = ({
 	return createPortal(
 		<div
 			aria-hidden={isOpen}
-			data-testid="drawer-container"
+			data-testid={drawerTestIds.container}
 			className={classNames(styles['drawer-container'], {
 				[styles['open']]: isOpen,
 			})}
 		>
 			<div
-				data-testid="drawer"
+				data-testid={drawerTestIds.drawer}
 				className={classNames(styles['drawer'], styles[position], className, {
 					[styles['absolute']]: rootName === 'mainLayout',
 				})}
 				role="dialog"
 			>
 				{hasCloseButton && (
-					<div data-testid="drawer-header" className={styles['drawer-header']}>
+					<div data-testid={drawerTestIds.drawerHeader} className={styles['drawer-header']}>
 						<CloseIcon className={styles['close-icon']} onClick={onClose} />
 					</div>
 				)}
 				{children}
 			</div>
 			<button
-				data-testid="close-backdrop"
+				data-testid={drawerTestIds.closeBtnBackdrop}
 				className={styles['backdrop']}
 				onClick={onClose}
 				onKeyDown={handleKeyDown}
