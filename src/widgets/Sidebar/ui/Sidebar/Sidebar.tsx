@@ -66,7 +66,13 @@ export const Sidebar = ({
 	}, [isDesktop, isOpenSidebarDrawer, setIsOpenSidebarDrawer]);
 
 	const handleToggleSidebar = () => {
-		setIsOpenNavSidebar((prev) => !prev);
+		if (isLaptop) {
+			if (isOpenSidebarDrawer) {
+				setIsOpenSidebarDrawer?.(false);
+			} else {
+				onOpenSidebarDrawer?.();
+			}
+		} else setIsOpenNavSidebar((prev) => !prev);
 	};
 
 	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
@@ -84,22 +90,16 @@ export const Sidebar = ({
 			<Flex direction="column" maxHeight>
 				<div className={styles.header}>
 					<AppLogo isOpen={isOpenNavSidebar} />
-					{(isDesktop || (isLaptop && onOpenSidebarDrawer)) && (
-						<button
-							className={classNames(styles['close-icon'], {
-								[styles.left]: isOpenNavSidebar,
-							})}
-							onClick={() => {
-								isLaptop ? onOpenSidebarDrawer?.() : handleToggleSidebar();
-							}}
-							data-testid="Sidebar_CloseButton"
-							aria-label={t(
-								!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN,
-							)}
-						>
-							<ToogleSidebar className={styles.arrow} />
-						</button>
-					)}
+					<button
+						className={classNames(styles['close-icon'], {
+							[styles.left]: isOpenNavSidebar,
+						})}
+						onClick={() => handleToggleSidebar()}
+						data-testid="Sidebar_CloseButton"
+						aria-label={t(!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN)}
+					>
+						<ToogleSidebar className={styles.arrow} />
+					</button>
 				</div>
 				<div className={styles.menu}>
 					<SidebarMenuList fullWidth={isOpenNavSidebar} menuItems={menuItems} />

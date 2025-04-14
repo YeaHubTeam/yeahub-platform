@@ -84,7 +84,12 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 						position="left"
 						className={styles.drawer}
 					>
-						<Sidebar isMobileSidebar menuItems={filteredMenuItems} />
+						<Sidebar
+							isMobileSidebar
+							menuItems={filteredMenuItems}
+							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
+							isOpenSidebarDrawer={isOpenSidebarDrawer}
+						/>
 					</Drawer>
 				)}
 			</AutoScrollToTop>
