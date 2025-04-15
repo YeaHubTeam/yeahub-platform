@@ -90,3 +90,5 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
+
+export type Author = { id: string; username: string };

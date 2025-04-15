@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
@@ -10,8 +9,10 @@ import { useCurrentProject } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { Author } from '../../model/types/question';
+
 export interface QuestionAuthorProps {
-	createdBy: string;
+	createdBy: Author;
 	isCenter?: boolean;
 }
 
@@ -20,28 +21,14 @@ export const QuestionAuthor = ({ createdBy, isCenter }: QuestionAuthorProps) => 
 	const project = useCurrentProject();
 	const path = project === 'admin' ? ROUTES.admin.users.detail.page : ROUTES.users.page;
 
-	const author = useMemo(() => {
-		try {
-			const { firstName, lastName, userId } = JSON.parse(createdBy);
-
-			return {
-				fullName: `${firstName || ''} ${lastName || ''}`.trim(),
-				userId,
-			};
-		} catch (error) {
-			console.error('Error parsing createdBy:', error);
-			return null;
-		}
-	}, [createdBy]);
-
 	return (
 		<Flex justify={isCenter ? 'center' : 'start'} gap="4">
 			<Text variant="body2-accent" color="black-800">
 				{t(Questions.AUTHOR)}
 			</Text>
-			<NavLink to={route(path, author?.userId)}>
+			<NavLink to={route(path, createdBy?.id)}>
 				<Text variant="body2-accent" color="purple-700">
-					{author?.fullName}
+					{createdBy?.username}
 				</Text>
 			</NavLink>
 		</Flex>

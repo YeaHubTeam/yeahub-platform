@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
-import { QuestionAuthor, QuestionGradeList } from '@/entities/question';
+import { Author, QuestionAuthor, QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
 
 import styles from './QuestionAdditionalInfo.module.css';
@@ -20,7 +20,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
-	createdBy: string;
+	createdBy: string | Author;
 	className?: string;
 	route?: string;
 }
@@ -64,10 +64,10 @@ export const QuestionAdditionalInfo = ({
 						</Text>
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
-					{(isMobile || isTablet) && <QuestionAuthor createdBy={createdBy} />}
+					{(isMobile || isTablet) && <QuestionAuthor createdBy={createdBy as Author} />}
 				</Flex>
 			</Card>
-			{!isMobile && !isTablet && <QuestionAuthor createdBy={createdBy} isCenter />}
+			{!isMobile && !isTablet && <QuestionAuthor createdBy={createdBy as Author} isCenter />}
 		</>
 	);
 };
