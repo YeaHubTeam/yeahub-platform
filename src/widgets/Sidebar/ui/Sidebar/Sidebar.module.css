@@ -99,3 +99,9 @@
     display: none;
   }
 }
+
+@media (width > 1025px) and (width < 1439px) {
+  .close-icon:not(.left) {
+    right: 6px;
+  }
+}
