@@ -48,7 +48,7 @@ const InterviewQuizPage = () => {
 		questionTitle,
 		imageSrc,
 		shortAnswer,
-		currentCount,
+		answeredCount,
 		activeQuestion,
 		totalCount,
 		answer,
@@ -120,7 +120,7 @@ const InterviewQuizPage = () => {
 						</span>
 						<ProgressBar
 							className={styles['progress-component']}
-							currentCount={currentCount}
+							currentCount={answeredCount}
 							totalCount={totalCount}
 						/>
 					</div>
