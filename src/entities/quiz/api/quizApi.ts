@@ -4,16 +4,22 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { ExtraArgument } from '@/shared/config/store/types';
-import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getJSONFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import { LS_ACTIVE_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
+import {
+	LS_ACTIVE_MOCK_QUIZ_KEY,
+	LS_ACTIVE_QUIZ_KEY,
+	quizApiUrls,
+} from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
+	CreateNewMockQuizParamsRequest,
 	CreateNewQuizResponse,
+	CreateNewMockQuizResponse,
 	GetActiveQuizParamsRequest,
 	GetActiveQuizResponse,
 	GetProfileQuizStatsResponse,
@@ -45,6 +51,31 @@ const quizApi = baseApi.injectEndpoints({
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
+		createNewMockQuiz: build.query<
+			Response<CreateNewMockQuizResponse>,
+			CreateNewMockQuizParamsRequest
+		>({
+			query: ({ ...params }) => {
+				return {
+					url: route(quizApiUrls.createNewMockQuiz),
+					params,
+				};
+			},
+			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+				try {
+					const { data: questions } = await queryFulfilled;
+					questions && setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, questions);
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
+					typedExtra.navigate(ROUTES.quiz.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					console.error(error);
 				}
 			},
@@ -180,7 +211,7 @@ const quizApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.interview.quiz.page);
 
-					dispatch(baseApi.util.invalidateTags([ApiTags.NEW_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+					dispatch(baseApi.util.invalidateTags([ApiTags.INTERVIEW_QUIZ, ApiTags.HISTORY_QUIZ]));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
 					// eslint-disable-next-line no-console
@@ -194,6 +225,7 @@ const quizApi = baseApi.injectEndpoints({
 
 export const {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
 	useSaveQuizResultMutation,

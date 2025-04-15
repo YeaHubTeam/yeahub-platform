@@ -1,2 +1,2 @@
-export { Input } from './ui/Input';
-export { InputSkeleton } from './ui/Input.skeleton';
+export { Input } from './Input';
+export { InputSkeleton } from './Input.skeleton';

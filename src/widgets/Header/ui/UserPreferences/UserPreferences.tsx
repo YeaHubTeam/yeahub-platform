@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
@@ -45,7 +45,7 @@ export const UserPreferences = () => {
 			<Popover menuItems={userMenuItems} header={<UserPreferencesHeader />}>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
-						<Text variant={'body2'}>{profile?.firstName}</Text>
+						<Text variant={'body2'}>{profile?.username}</Text>
 						<div className={styles.avatar}>
 							{profile.avatarUrl ? (
 								<img className={styles.img} src={profile.avatarUrl} alt={t(Translation.AVATAR)} />

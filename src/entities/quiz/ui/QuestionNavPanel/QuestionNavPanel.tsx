@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
@@ -40,9 +40,7 @@ export const QuestionNavPanel = ({
 					onClick={goToPrevSlide}
 					aria-label={t(InterviewQuiz.A11Y_PREV)}
 					fullWidth
-					suffix={
-						<Icon icon="caretLeft" size={20} color="--palette-ui-purple-700" key="caretLeft" />
-					}
+					suffix={<Icon icon="altArrowLeft" size={20} color="purple-700" />}
 					variant="outline"
 					disabled={questionNumber === 1}
 				/>
@@ -52,9 +50,7 @@ export const QuestionNavPanel = ({
 				<Button
 					className={styles.button}
 					onClick={goToNextSlide}
-					preffix={
-						<Icon color="--palette-ui-purple-700" icon="caretRight" size={20} key="caretRight" />
-					}
+					preffix={<Icon color="purple-700" icon="altArrowRight" size={20} />}
 					fullWidth
 					variant="outline"
 					aria-label={t(InterviewQuiz.A11Y_NEXT)}

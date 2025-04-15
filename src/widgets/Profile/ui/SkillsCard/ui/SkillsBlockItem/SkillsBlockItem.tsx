@@ -1,5 +1,3 @@
-import { Icon } from 'yeahub-ui-kit';
-
 import { Skill } from '@/entities/skill';
 
 import styles from './SkillsBlockItem.module.css';
@@ -13,7 +11,7 @@ export const SkillsBlockItem = ({ skill }: SkillsBlockItemProps) => {
 
 	return (
 		<div className={styles['skills-item']}>
-			<Icon icon={'boundingBox'} height={20} width={20} className={styles['skills-icon']} />
+			<img alt={title} src={skill.imageSrc || ''} height={20} width={20} />
 			<span className={styles['skills-name']}>{title}</span>
 		</div>
 	);

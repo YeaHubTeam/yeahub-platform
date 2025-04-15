@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 

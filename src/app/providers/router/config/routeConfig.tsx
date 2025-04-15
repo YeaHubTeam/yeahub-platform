@@ -9,7 +9,7 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import SettingsIcon from '@/shared/assets/icons/Settings.svg';
+import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
@@ -21,8 +21,8 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
-import { CollectionPage } from '@/pages/admin/CollectionPage';
-import { CollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
+import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -44,6 +44,8 @@ import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
+import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/CollectionPage';
+import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
@@ -53,10 +55,13 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
+import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
+import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -70,6 +75,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+
 import '../../../styles/App.css';
 
 const mainLayoutMenuItems: MenuItem[] = [
@@ -189,6 +195,24 @@ export const router = createBrowserRouter([
 					},
 				],
 			},
+			{
+				path: ROUTES.quiz.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CreatePublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.new.route,
+						element: <PublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.result.route,
+						element: <PublicQuizResultPage />,
+					},
+				],
+			},
 		],
 	},
 	{
@@ -281,7 +305,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <CollectionsPage />,
+						element: <AdminCollectionsPage />,
 					},
 					{
 						path: ROUTES.admin.collections.create.route,
@@ -293,7 +317,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.collections.details.route,
-						element: <CollectionPage />,
+						element: <AdminCollectionPage />,
 					},
 				],
 			},
@@ -406,6 +430,26 @@ export const router = createBrowserRouter([
 								element: <InterviewQuestionPage />,
 								handle: {
 									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.interview.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
 								},
 							},
 						],

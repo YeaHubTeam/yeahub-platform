@@ -12,10 +12,12 @@
   border-radius: 50%;
 }
 
-.logo-text {
+
+
+.logo-text{
   display: block;
-  width: 139px;
-  height: 45px;
+  width: 99px;
+  height: 32px;
 }
 
 .white > path {
@@ -35,7 +37,7 @@
 }
 
 @media (width <=767px) {
-  .logo-text {
+  .logo-text-header {
     display: none;
   }
 }

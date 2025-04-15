@@ -51,6 +51,10 @@ div[data-floating-ui-portal] > div > div {
   overflow-y: scroll;
 }
 
+div[data-floating-ui-portal] > div > div[role="tooltip"] {
+  overflow-y: inherit;
+}
+
 .container {
   flex: 1 1 auto;
   margin: 0 auto var(--container-m-b-desktop);

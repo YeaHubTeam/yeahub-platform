@@ -8,7 +8,7 @@
   "show": "View",
   "edit": "Edit",
   "delete": "Delete",
-  "hello": "Hello {{name}}!",
+  "hello": "Hello {{username}}!",
   "profile": "My profile",
   "save": "Save",
   "cancel": "Cancel",
@@ -193,6 +193,16 @@
           "success": "Successfully deleted specializations:",
           "failed": "Specialization could not be deleted:"
         }
+      }
+    },
+    "collections": {
+      "create": {
+        "success": "Collection successfully created",
+        "failed": "Collection could not be created"
+      },
+      "edit": {
+        "success": "Collection successfully changed",
+        "failed": "Collection could not be changed"
       }
     },
     "profile": {
