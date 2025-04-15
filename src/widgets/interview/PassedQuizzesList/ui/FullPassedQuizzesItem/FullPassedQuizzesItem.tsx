@@ -31,7 +31,7 @@ export const FullPassedQuizzesItem = ({ interview, itemRef }: FullInterviewHisto
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Card
 					className={styles.container}
-					title={t(InterviewHistory.TITLE, { number: interview.quizNumber })}
+					title={t(InterviewHistory.QUIZ_TITLE, { number: interview.quizNumber })}
 					actionTitle={t(InterviewHistory.LINK)}
 					actionRoute={route(ROUTES.interview.history.result.page, id)}
 				>

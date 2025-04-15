@@ -1,1 +1,1 @@
-export { SimpleChip } from './ui/SimpleChip';
+export { SimpleChip } from './SimpleChip';

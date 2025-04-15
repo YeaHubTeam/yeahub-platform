@@ -9,27 +9,32 @@ import { Button } from '@/shared/ui/Button';
 
 import { CollectionEditFormValues } from '@/features/collections/editCollection/model/types/collectionEditTypes';
 
+import { useEditCollectionMutation } from '../../api/editCollectionApi';
+
 export const CollectionEditFormHeader = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { handleSubmit, reset } = useFormContext<CollectionEditFormValues>();
 
 	const navigate = useNavigate();
+	const [editCollectionMutation, { isLoading }] = useEditCollectionMutation();
 
 	const onResetFormValues = () => {
 		reset();
 		navigate(-1);
 	};
 
-	const onEditCollection = (data: CollectionEditFormValues) => {
-		console.log('!!!!Данные успешно сохранены!!!!!', data);
+	const onEditCollection = async (data: CollectionEditFormValues) => {
+		await editCollectionMutation(data);
 	};
 
 	return (
 		<BackHeader>
-			<Button onClick={onResetFormValues} variant="secondary">
+			<Button disabled={isLoading} onClick={onResetFormValues} variant="secondary">
 				{t(Translation.CANCEL)}
 			</Button>
-			<Button onClick={handleSubmit(onEditCollection)}>{t(Translation.SAVE)}</Button>
+			<Button disabled={isLoading} onClick={handleSubmit(onEditCollection)}>
+				{t(Translation.SAVE)}
+			</Button>
 		</BackHeader>
 	);
 };

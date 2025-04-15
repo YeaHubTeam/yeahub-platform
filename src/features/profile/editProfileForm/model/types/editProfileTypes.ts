@@ -24,6 +24,7 @@ export type ProfileSchema = yup.InferType<typeof editProfileSchema>;
 export interface EditProfileValues {
 	image?: FileList;
 	name: string;
+	username: string;
 	specialization: string;
 	email: string;
 	location?: string;
@@ -34,8 +35,7 @@ export interface EditProfileValues {
 }
 
 export interface EditUserValue {
-	firstName: string;
-	lastName: string;
+	username: string;
 	country: string;
 	city: string;
 	birthday: string | null;

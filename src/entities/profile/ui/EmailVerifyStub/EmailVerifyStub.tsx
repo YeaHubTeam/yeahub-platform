@@ -9,10 +9,10 @@ import { Text } from '@/shared/ui/Text';
 import styles from './EmailVerifyStub.module.css';
 
 interface EmailVerifyStubProps {
-	firstName: string;
+	username: string;
 }
 
-export const EmailVerifyStub = ({ firstName }: EmailVerifyStubProps) => {
+export const EmailVerifyStub = ({ username }: EmailVerifyStubProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
 
 	return (
@@ -20,7 +20,7 @@ export const EmailVerifyStub = ({ firstName }: EmailVerifyStubProps) => {
 			className={styles.card}
 			isActionPositionBottom
 			withOutsideShadow
-			title={t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_TITLE, { firstName })}
+			title={t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_TITLE, { username })}
 			actionTitle={t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK)}
 			actionRoute={EMAIL_VERIFY_SETTINGS_TAB}
 		>

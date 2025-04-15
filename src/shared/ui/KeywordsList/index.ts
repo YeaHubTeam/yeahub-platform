@@ -1,2 +1,2 @@
-export { KeywordsList } from './ui/KeywordsList';
-export { KeywordsListSkeleton } from './ui/KeywordsList.skeleton';
+export { KeywordsList } from './KeywordsList';
+export { KeywordsListSkeleton } from './KeywordsList.skeleton';

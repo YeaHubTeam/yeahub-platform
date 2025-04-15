@@ -13,6 +13,7 @@ interface AppLogoProps {
 	fill?: 'white' | 'black';
 	navigateTo?: string;
 	logoType?: 'light' | 'dark';
+	navigationFooter?: boolean;
 }
 
 export const AppLogo = ({
@@ -20,6 +21,7 @@ export const AppLogo = ({
 	fill = 'black',
 	navigateTo = ROUTES.platformRoute,
 	logoType = 'dark',
+	navigationFooter = false,
 }: AppLogoProps) => {
 	const logoSrc = logoType === 'dark' ? logoDark : logoLight;
 
@@ -32,12 +34,24 @@ export const AppLogo = ({
 				{ [styles['pointer-event-none']]: navigateTo === '#' },
 			)}
 		>
-			<img
-				className={styles.logo}
-				src={logoSrc}
-				alt="Тренажер собеседований и вопросы собеседований в IT"
-			/>
-			{!isOpen && <LogoText className={classNames(styles['logo-text'], styles[fill])} />}
+			{navigationFooter ? (
+				''
+			) : (
+				<img
+					className={styles.logo}
+					src={logoSrc}
+					alt="Тренажер собеседований и вопросы собеседований в IT"
+				/>
+			)}
+			{(!isOpen || navigationFooter) && (
+				<LogoText
+					className={classNames(
+						styles['logo-text'],
+						{ [styles['logo-text-header']]: !navigationFooter },
+						styles[fill],
+					)}
+				/>
+			)}
 		</NavLink>
 	);
 };

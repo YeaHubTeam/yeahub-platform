@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -62,17 +62,9 @@ export const PersonalInformationTabForm = () => {
 				<Flex gap="20" className={styles['inputs-wrapper']}>
 					<Flex className={styles['form-control-wrapper']} maxWidth gap="20">
 						<FormControl
-							name="firstName"
+							name="username"
 							control={control}
-							label={t(Profile.FORM_FIRSTNAME)}
-							className={styles.form}
-						>
-							{(field) => <Input {...field} className={styles.input} size="S" />}
-						</FormControl>
-						<FormControl
-							name="lastName"
-							control={control}
-							label={t(Profile.FORM_LASTNAME)}
+							label={t(Profile.FORM_USERNAME)}
 							className={styles.form}
 						>
 							{(field) => <Input {...field} className={styles.input} size="S" />}

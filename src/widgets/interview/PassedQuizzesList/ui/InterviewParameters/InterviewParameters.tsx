@@ -23,8 +23,10 @@ export const InterviewParameters = ({ interview }: InterviewParametersProps) => 
 	const { endDate, startDate, fullCount, successCount } = interview;
 	const { t } = useTranslation(i18Namespace.interviewHistory);
 
-	const timer = getTimeDifference(startDate, endDate);
-	const interviewStartDate = formatDate(parseISO(startDate));
+	const hasValidDates = startDate && endDate;
+
+	const timer = hasValidDates && getTimeDifference(startDate, endDate);
+	const interviewStartDate = startDate && formatDate(parseISO(startDate));
 	const incorrectAnswersCount = fullCount - successCount;
 
 	return (

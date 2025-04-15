@@ -1,2 +1,2 @@
-export { BackHeader } from './ui/BackHeader';
-export { BackHeaderSkeleton } from './ui/BackHeader.skeleton';
+export { BackHeader } from './BackHeader';
+export { BackHeaderSkeleton } from './BackHeader.skeleton';

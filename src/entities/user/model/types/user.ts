@@ -29,8 +29,7 @@ export type GetUserRolesListResponse = UserRole[];
 
 export interface User {
 	id: string;
-	firstName: string;
-	lastName: string;
+	username: string;
 	email: string;
 	country: string;
 	city: string;
@@ -51,7 +50,7 @@ export interface UserRolesMutationRequest {
 
 export type CreateOrEditUserFormValues = Pick<
 	User,
-	'id' | 'firstName' | 'lastName' | 'email' | 'country' | 'city' | 'address' | 'birthday'
+	'id' | 'username' | 'email' | 'country' | 'city' | 'address' | 'birthday'
 > & {
 	userRoles: number[];
 	status?: UserStatus;

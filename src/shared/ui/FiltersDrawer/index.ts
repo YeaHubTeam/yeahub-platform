@@ -1,1 +1,1 @@
-export { FiltersDrawer } from './ui/FiltersDrawer';
+export { FiltersDrawer } from './FiltersDrawer';

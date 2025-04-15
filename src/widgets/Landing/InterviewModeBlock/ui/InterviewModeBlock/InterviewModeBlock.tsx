@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import QuizExample from '@/shared/assets/images/landing/quiz-example.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Landing } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Advantages } from '../Advantages/Advantages';
 import { Control } from '../Control/Control';
@@ -29,7 +29,7 @@ export const InterviewModeBlock = () => {
 								<span>{t(InterviewQuiz.START_QUIZ_LINK)}</span>
 								<Icon
 									icon="arrowRight"
-									color="--palette-ui-purple-700"
+									color="purple-700"
 									size={24}
 									className={styles['interface-icon']}
 								/>

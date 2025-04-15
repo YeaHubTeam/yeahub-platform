@@ -5,7 +5,8 @@
       "login": "Вход"
     },
     "links": {
-      "questions.list": "База вопросов"
+      "questions.list": "База вопросов",
+      "public.quiz": "Тренажер"
     }
   },
   "questions": {

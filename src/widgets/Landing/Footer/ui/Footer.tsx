@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import FigmaLogo from '@/shared/assets/icons/figma.svg';
-import GithubLogo from '@/shared/assets/icons/github.svg';
-import TelegramLogo from '@/shared/assets/icons/telegram.svg';
+import GithubLogo from '@/shared/assets/icons/github1.svg';
+import TelegramLogo from '@/shared/assets/icons/telegram1.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -13,12 +14,13 @@ import styles from './Footer.module.css';
 
 export const Footer = () => {
 	const { t } = useTranslation(i18Namespace.landing);
+	const { isMobile } = useScreenSize();
 
 	return (
 		<footer className={styles.footer}>
-			<div className="container">
+			<div className={styles.container}>
 				<div className={styles['container-logo']}>
-					<AppLogo isOpen={false} fill="white" navigateTo="#" />
+					<AppLogo isOpen={isMobile} fill="white" navigateTo="#" navigationFooter={true} />
 				</div>
 
 				<p className={styles.subtitle}>{t(Landing.FOOTER_SLOGAN)} </p>

@@ -1,5 +1,5 @@
 {
-  "name": "Name",
+  "name": "Nickname",
   "role": "Role",
   "email": "E-mail",
   "roles": {
@@ -12,7 +12,7 @@
     "member": "Member"
   },
   "user.name": "User",
-  "full.name": "First Name Last Name",
+  "username": "Nickname",
   "avatar": "Profile Photo",
   "select.role": {
     "title": "Select User Role",

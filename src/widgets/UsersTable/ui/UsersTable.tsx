@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
@@ -9,9 +8,10 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { PopoverChildrenProps } from '@/shared/ui/Popover/model/types/types';
+import { PopoverChildrenProps } from '@/shared/ui/Popover/types';
 import { Table } from '@/shared/ui/Table';
 
 import { User } from '@/entities/user';
@@ -28,7 +28,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableHeader = () => {
 		const columns = {
-			fullName: t(Users.NAME),
+			username: t(Users.NAME),
 			roles: t(Users.ROLE),
 			email: t(Users.EMAIL),
 		};
@@ -38,7 +38,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableBody = (user: User) => {
 		const columns = {
-			fullName: `${user.firstName} ${user.lastName}`,
+			username: `${user.username}`,
 			roles: (
 				<div className={styles['roles-container']}>
 					{user.userRoles.map((role) => {
@@ -66,7 +66,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 				},
 			},
 			{
-				icon: <Icon icon="pencil" size={24} />,
+				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
 					navigate(route(ROUTES.admin.users.edit.page, user.id));
