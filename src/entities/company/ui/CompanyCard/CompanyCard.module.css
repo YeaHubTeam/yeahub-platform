@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.title {
+  font-weight: var(--font-weight-500);
+}
+
 .card-image {
   width: 149px;
   min-height: 157px;
