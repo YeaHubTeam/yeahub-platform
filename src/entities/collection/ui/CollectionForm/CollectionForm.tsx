@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
 import { Text, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -12,7 +11,6 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
-
 import { Radio } from '@/shared/ui/Radio';
 import { TextArea } from '@/shared/ui/TextArea';
 
