@@ -3,11 +3,11 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { companyApiUrls } from '../model/constants/companyConstants';
-import { GetCompanyByIdReques, GetCompanyByIdResponse } from '../model/types/company';
+import { GetCompanyByIdRequest, GetCompanyByIdResponse } from '../model/types/company';
 
 const companyApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getCompanyById: build.query<GetCompanyByIdResponse, GetCompanyByIdReques>({
+		getCompanyById: build.query<GetCompanyByIdResponse, GetCompanyByIdRequest>({
 			query: ({ companyId }) => ({
 				url: route(companyApiUrls.getCompanyById, companyId),
 			}),
