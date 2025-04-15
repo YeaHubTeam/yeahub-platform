@@ -131,14 +131,14 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 						<Radio
 							label={t(Collections.TARIFF_PAID)}
 							labelClassName={styles['paid-label']}
-							checked={watchPaidOrFree === 'paid'}
-							onChange={() => setValue('paidOrFree', 'paid')}
+							checked={!isFree}
+							onChange={() => setValue('isFree', false)}
 						/>
 						<Radio
 							label={t(Collections.TARIFF_FREE)}
 							labelClassName={styles['paid-label']}
-							checked={watchPaidOrFree === 'free'}
-							onChange={() => setValue('paidOrFree', 'free')}
+							checked={isFree}
+							onChange={() => setValue('isFree', true)}
 						/>
 					</Flex>
 				</Flex>
