@@ -4,6 +4,7 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Text } from '@/shared/ui/Text';
 
 import { Company } from '../../model/types/company';
 
@@ -27,7 +28,7 @@ export const CompanyCard = ({ company }: CompanyCardProps) => {
 							className={styles['card-image']}
 						/>
 					</div>
-					<h2 className={styles.title}>{company.legalName}</h2>
+					<Text variant={'body6'}>{company.legalName}</Text>
 				</Flex>
 			</Card>
 		</Flex>
