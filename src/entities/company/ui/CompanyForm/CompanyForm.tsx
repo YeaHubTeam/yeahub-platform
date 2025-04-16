@@ -42,7 +42,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 				title={isEdit ? t(Company.EDIT_PAGE_TITLE) : t(Company.CREATE_PAGE_TITLE)}
 				className={styles['main-title']}
 			/>
-			<Flex direction="column" gap="60">
+			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
 				<Flex className={`${styles['companies-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
 						<Text title={t(Company.TITLE_FULL)} className={styles.title} />
