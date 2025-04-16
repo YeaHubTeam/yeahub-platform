@@ -26,9 +26,9 @@ export const QuestionAuthor = ({ createdBy, isCenter }: QuestionAuthorProps) => 
 			<Text variant="body2-accent" color="black-800">
 				{t(Questions.AUTHOR)}
 			</Text>
-			<NavLink to={route(path, createdBy?.id)}>
+			<NavLink to={route(path, createdBy.id)}>
 				<Text variant="body2-accent" color="purple-700">
-					{createdBy?.username}
+					{createdBy.username}
 				</Text>
 			</NavLink>
 		</Flex>

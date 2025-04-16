@@ -21,8 +21,8 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: string;
-	updatedBy: string | null;
+	createdBy: Author;
+	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;

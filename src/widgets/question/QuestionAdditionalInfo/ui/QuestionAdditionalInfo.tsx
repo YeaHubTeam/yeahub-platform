@@ -20,7 +20,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
-	createdBy: string | Author;
+	createdBy: Author;
 	className?: string;
 	route?: string;
 }
@@ -64,10 +64,10 @@ export const QuestionAdditionalInfo = ({
 						</Text>
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
-					{(isMobile || isTablet) && <QuestionAuthor createdBy={createdBy as Author} />}
+					{(isMobile || isTablet) && <QuestionAuthor createdBy={createdBy} />}
 				</Flex>
 			</Card>
-			{!isMobile && !isTablet && <QuestionAuthor createdBy={createdBy as Author} isCenter />}
+			{!isMobile && !isTablet && <QuestionAuthor createdBy={createdBy} isCenter />}
 		</>
 	);
 };
