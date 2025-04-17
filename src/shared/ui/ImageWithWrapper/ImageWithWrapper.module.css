@@ -20,12 +20,14 @@
 
 .svg {
   position: absolute;
-  top: 20%;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: 80%;
   height: 60%;
   object-fit: fill;
   fill: var(--color-purple-900);
+  color: var(--color-purple-900);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 @media (width <=480px) {
