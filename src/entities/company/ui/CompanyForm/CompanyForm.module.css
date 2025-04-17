@@ -1,0 +1,40 @@
+.text-wrapper {
+  width: 100%;
+  max-width: 246px;
+}
+
+.main-title {
+  margin-bottom: 28px;
+  line-height: 120%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-xs);
+}
+
+.form-container {
+  min-height: 300px;
+}
+
+.title {
+  color: var(--text-color-primary);
+  line-height: 120%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-l);
+}
+
+.companies-input {
+  align-items: center;
+  height: 48px;
+}
+
+.input-form {
+  width: 100%;
+  min-width: 100px;
+  max-width: 408px;
+}
+
+.description {
+  color: var(--text-color-primary);
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}

@@ -11,7 +11,14 @@ export interface Company {
 }
 
 export type GetCompanyByIdResponse = Company;
+export type ErrorResponce = {
+	message: string;
+};
 
 export type GetCompanyByIdRequest = {
 	companyId: string;
+};
+
+export type CreateOrEditCompanyFormValues = Pick<Company, 'id' | 'title' | 'imageSrc'> & {
+	companyImage?: string;
 };
