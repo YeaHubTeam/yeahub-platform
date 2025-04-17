@@ -1,3 +1,5 @@
+import { Fragment } from 'react/jsx-runtime';
+
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -13,17 +15,24 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent }, index) => (
-				// eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-				<div key={index} onClick={onToggleOpenPopover}>
+			{menuItems.map(({ icon, onClick, title, renderComponent }) => (
+				<Fragment key={title}>
 					{title && onClick ? (
-						<Button onClick={onClick} className={styles.button} variant="tertiary" preffix={icon}>
+						<Button
+							onClick={() => {
+								onClick();
+								onToggleOpenPopover();
+							}}
+							className={styles.button}
+							variant="tertiary"
+							preffix={icon}
+						>
 							{title}
 						</Button>
 					) : (
 						renderComponent?.(onToggleOpenPopover)
 					)}
-				</div>
+				</Fragment>
 			))}
 		</Flex>
 	);
