@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
-import { QuestionAuthor, QuestionGradeList } from '@/entities/question';
+import { Author, QuestionAuthor, QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
 
 import styles from './QuestionAdditionalInfo.module.css';
@@ -20,7 +20,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
-	createdBy: string;
+	createdBy: Author;
 	className?: string;
 	route?: string;
 }

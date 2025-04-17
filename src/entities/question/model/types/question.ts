@@ -21,8 +21,8 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: string;
-	updatedBy: string | null;
+	createdBy: Author;
+	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;
@@ -90,3 +90,5 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
+
+export type Author = { id: string; username: string };
