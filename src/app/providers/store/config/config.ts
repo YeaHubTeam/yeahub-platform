@@ -8,6 +8,7 @@ import { profileReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
 
 import { collectionsPageReducer } from '@/pages/admin/CollectionsPage';
+import { companiesTablePageReducer } from '@/pages/admin/CompaniesTablePage';
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
@@ -30,6 +31,7 @@ export const createReduxStore = (initialState?: State) => {
 			[baseApi.reducerPath]: baseApi.reducer,
 			interviewHistoryPage: interviewHistoryPageReducer,
 			questionsTablePage: questionsTablePageReducer,
+			companiesTablePage: companiesTablePageReducer,
 			specializationsPage: specializationsPageReducer,
 			usersPage: usersPageReducer,
 			profile: profileReducer,

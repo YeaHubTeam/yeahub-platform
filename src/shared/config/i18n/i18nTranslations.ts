@@ -34,6 +34,7 @@ export enum Translation {
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
+	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -504,8 +505,10 @@ export enum Collections {
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 }
-
-export enum Company {
+export enum Companies {
+	IMAGE = 'image',
+	SORT_FIELD = 'sort.field',
+	TITLE = 'title',
 	TITLE_FULL = 'title.full',
 	TITLE_LABEL = 'title.label',
 	ICON_TITLE = 'icon.title',

@@ -3,7 +3,12 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { companyApiUrls } from '../model/constants/companyConstants';
-import { GetCompanyByIdRequest, GetCompanyByIdResponse } from '../model/types/company';
+import {
+	GetCompanyByIdRequest,
+	GetCompanyByIdResponse,
+	GetCompaniesListParamsRequest,
+	GetCompaniesListResponse,
+} from '../model/types/companyTypes';
 
 const companyApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -13,7 +18,14 @@ const companyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COMPANY_DETAIL],
 		}),
+		getCompaniesList: build.query<GetCompaniesListResponse, GetCompaniesListParamsRequest>({
+			query: (params) => ({
+				url: companyApiUrls.getCompaniesList,
+				params,
+			}),
+			providesTags: [ApiTags.COMPANIES],
+		}),
 	}),
 });
 
-export const { useGetCompanyByIdQuery } = companyApi;
+export const { useGetCompanyByIdQuery, useGetCompaniesListQuery } = companyApi;

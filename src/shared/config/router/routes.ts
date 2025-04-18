@@ -86,6 +86,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/companies/create',
 			},
+			edit: {
+				route: ':companyId/edit',
+				page: '/admin/companies/:companyId/edit',
+			},
 			details: {
 				route: ':companyId',
 				page: '/admin/companies/:companyId',

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
@@ -28,7 +27,7 @@ const CompanyDetailPage = () => {
 				<BackButton />
 
 				<Flex gap={'16'}>
-					<DeleteCompanyButton companyId={company.id} isDetailPage />
+					<DeleteCompanyButton companyId={String(company.id)} isDetailPage />
 					<NavLink to={''}>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>

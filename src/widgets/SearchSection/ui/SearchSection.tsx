@@ -17,6 +17,7 @@ interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
 	onSearch?: (value: string) => void;
+	searchValue?: string;
 	renderRemoveButton?: () => React.ReactNode;
 	renderFilter?: () => React.ReactNode;
 }
@@ -24,6 +25,7 @@ interface SearchSectionProps {
 export const SearchSection = ({
 	to,
 	onSearch,
+	searchValue,
 	showRemoveButton,
 	renderRemoveButton,
 	renderFilter,
@@ -37,8 +39,9 @@ export const SearchSection = ({
 	return (
 		<Card className={styles.card}>
 			<section className={styles.section}>
-				{!!renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
+				{renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 				<Input
+					value={searchValue}
 					onChange={handleSearch}
 					className={styles.input}
 					prefix={<Icon className={styles.search} icon="search" size={20} color="black-300" />}

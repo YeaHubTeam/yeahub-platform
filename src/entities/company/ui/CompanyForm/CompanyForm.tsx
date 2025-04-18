@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Input, Text } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Company } from '@/shared/config/i18n/i18nTranslations';
+import { Companies } from '@/shared/config/i18n/i18nTranslations';
 import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -18,7 +18,7 @@ interface CompanyFormProps {
 }
 
 export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
-	const { t } = useTranslation([i18Namespace.company]);
+	const { t } = useTranslation([i18Namespace.companies]);
 
 	const { control, setValue } = useFormContext();
 
@@ -39,14 +39,14 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 	return (
 		<>
 			<Text
-				title={isEdit ? t(Company.EDIT_PAGE_TITLE) : t(Company.CREATE_PAGE_TITLE)}
+				title={isEdit ? t(Companies.EDIT_PAGE_TITLE) : t(Companies.CREATE_PAGE_TITLE)}
 				className={styles['main-title']}
 			/>
 			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
 				<Flex className={`${styles['companies-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text title={t(Company.TITLE_FULL)} className={styles.title} />
-						<Text title={t(Company.TITLE_LABEL)} className={styles.description} />
+						<Text title={t(Companies.TITLE_FULL)} className={styles.title} />
+						<Text title={t(Companies.TITLE_LABEL)} className={styles.description} />
 					</Flex>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} hasError={hasError} />}
@@ -54,8 +54,8 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 				</Flex>
 				<Flex gap="120">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Company.ICON_TITLE)} className={styles.title} />
-						<Text title={t(Company.ICON_LABEL)} className={styles.description} />
+						<Text title={t(Companies.ICON_TITLE)} className={styles.title} />
+						<Text title={t(Companies.ICON_LABEL)} className={styles.description} />
 					</Flex>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}

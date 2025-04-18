@@ -31,7 +31,7 @@ const CollectionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const { page, title } = filter;
 
-	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
+	const { data: allCollections } = useGetCollectionsListQuery({
 		page,
 	});
 
@@ -41,10 +41,6 @@ const CollectionsPage = () => {
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 	};
-
-	if (isLoadingAllCollections) {
-		return 'TODO SKELETON PAGE';
-	}
 
 	if (!collections) {
 		return null;
