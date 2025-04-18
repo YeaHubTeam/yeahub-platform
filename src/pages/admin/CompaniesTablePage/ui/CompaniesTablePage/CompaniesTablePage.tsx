@@ -73,7 +73,7 @@ const CompaniesTablePage = () => {
 				searchValue={localSearchValue}
 				showRemoveButton={selectedCompanies.length > 0}
 				//TODO: захардкодил айдишник, чтобы отрисовать кнопку. Функционал кнопки не относится к текущей задаче YH-903.
-				renderRemoveButton={() => <DeleteCompanyButton companyId={1} isDetailPage />}
+				renderRemoveButton={() => <DeleteCompanyButton companyId={'1'} isDetailPage />}
 				renderFilter={() => <CompaniesFilterSet />}
 			/>
 			<Card className={styles.content}>

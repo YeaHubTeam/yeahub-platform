@@ -12,8 +12,12 @@ export interface ICompany {
 
 export type GetCompanyByIdResponse = ICompany;
 
+export type ErrorResponce = {
+	message: string;
+};
+
 export type GetCompanyByIdRequest = {
-	companyId: number;
+	companyId: string;
 };
 
 export interface GetCompaniesListParamsRequest {
@@ -28,3 +32,7 @@ export interface GetCompaniesListResponse {
 	limit: number;
 	total: number;
 }
+
+export type CreateOrEditCompanyFormValues = Pick<ICompany, 'id' | 'title' | 'imageSrc'> & {
+	companyImage?: string;
+};

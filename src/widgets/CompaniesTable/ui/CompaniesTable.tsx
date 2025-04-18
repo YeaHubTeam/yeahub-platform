@@ -74,7 +74,7 @@ export const CompaniesTable = ({
 				},
 			},
 			{
-				renderComponent: () => <DeleteCompanyButton companyId={company.id} />,
+				renderComponent: () => <DeleteCompanyButton companyId={String(company.id)} />,
 			},
 		];
 

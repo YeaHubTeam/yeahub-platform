@@ -1,6 +1,6 @@
-import { CreateOrEditCompanyFormValues, Company } from '@/entities/company/model/types/company';
+import { CreateOrEditCompanyFormValues, ICompany } from '@/entities/company';
 
 export type CreateCompanyFormValues = Omit<CreateOrEditCompanyFormValues, 'id'>;
 
 export type CreateCompanyBodyRequest = CreateCompanyFormValues;
-export type CreateCompanyResponse = Company;
+export type CreateCompanyResponse = ICompany;

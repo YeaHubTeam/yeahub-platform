@@ -6,12 +6,12 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import { Company } from '../../model/types/company';
+import { ICompany } from '@/entities/company';
 
 import styles from './CompanyCard.module.css';
 
 interface CompanyCardProps {
-	company: Company;
+	company: ICompany;
 }
 
 export const CompanyCard = ({ company }: CompanyCardProps) => {
