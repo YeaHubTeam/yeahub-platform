@@ -37,21 +37,24 @@ interface FilterFromUser {
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
-export const useQueryFilter = () => {
+export const useQueryFilter = (onReset?: () => void) => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		if (!params.get('page') && !params.get('status')) {
-			navigate(initialState);
-		}
+		const page = params.get('page');
+		const status = params.get('status');
+		const specialization = params.get('specialization');
 
-		if (!params.get('specialization')) {
-			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
+		const shouldRedirect =
+			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
+
+		if (shouldRedirect) {
+			navigate(initialState, { replace: true });
 		}
-	}, []);
+	}, [location.pathname, location.search]);
 
 	useEffect(() => {
 		setFilters(parseFilters(getQueryParams()));
@@ -137,7 +140,11 @@ export const useQueryFilter = () => {
 
 	const resetFilters = () => {
 		setFilters({} as FilterFromUser);
-		navigate(initialState);
+		if (location.pathname === '/admin/companies') {
+			onReset?.();
+			return;
+		}
+		navigate(initialState, { replace: true });
 	};
 
 	return { filter, handleFilterChange, resetFilters };

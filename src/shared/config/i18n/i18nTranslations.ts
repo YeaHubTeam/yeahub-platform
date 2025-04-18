@@ -34,6 +34,7 @@ export enum Translation {
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
+	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -131,6 +132,8 @@ export enum Translation {
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
+	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
+	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -499,6 +502,12 @@ export enum Collections {
 	KEYWORDS_LABEL = 'keywords.label',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
+}
+
+export enum Companies {
+	IMAGE = 'image',
+	TITLE = 'title',
+	SORT_FIELD = 'sort.field',
 }
 
 export enum Landing {
