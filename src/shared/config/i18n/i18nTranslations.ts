@@ -135,6 +135,8 @@ export enum Translation {
 	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
 	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
+	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',

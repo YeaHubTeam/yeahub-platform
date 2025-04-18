@@ -19,6 +19,7 @@ export type GetCompanyByIdRequest = {
 	companyId: string;
 };
 
-export type CreateOrEditCompanyFormValues = Pick<Company, 'id' | 'title' | 'imageSrc'> & {
-	companyImage?: string;
-};
+export type CreateOrEditCompanyFormValues = Pick<
+	Company,
+	'id' | 'title' | 'legalName' | 'description' | 'imageSrc' | 'inn' | 'kpp'
+>;
