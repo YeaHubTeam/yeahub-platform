@@ -25,6 +25,8 @@ import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
 import { CompaniesTablePage } from '@/pages/admin/CompaniesTablePage';
+import { CompanyCreatePage } from '@/pages/admin/CompanyCreatePage';
+import { CompanyDetailPage } from '@/pages/admin/CompanyDetailPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -336,6 +338,14 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <CompaniesTablePage />,
+					},
+					{
+						path: ROUTES.admin.companies.details.route,
+						element: <CompanyDetailPage />,
+					},
+					{
+						path: ROUTES.admin.companies.create.route,
+						element: <CompanyCreatePage />,
 					},
 				],
 			},

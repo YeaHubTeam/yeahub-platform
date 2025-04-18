@@ -134,6 +134,8 @@ export enum Translation {
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
 	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
+	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
+	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -503,11 +505,16 @@ export enum Collections {
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 }
-
 export enum Companies {
 	IMAGE = 'image',
-	TITLE = 'title',
 	SORT_FIELD = 'sort.field',
+	TITLE = 'title',
+	TITLE_FULL = 'title.full',
+	TITLE_LABEL = 'title.label',
+	ICON_TITLE = 'icon.title',
+	ICON_LABEL = 'icon.label',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum Landing {

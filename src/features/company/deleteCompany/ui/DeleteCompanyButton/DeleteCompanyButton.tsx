@@ -7,17 +7,19 @@ import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
+import { Company } from '@/entities/company';
+
 import { useDeleteCompanyMutation } from '../../api/deleteCompanyApi';
 
-interface DeleteCompanyButtonProps {
-	companyId: number;
+interface DeleteSkillButtonProps {
+	companyId: Company['id'];
 	isDetailPage?: boolean;
 }
 
 export const DeleteCompanyButton = ({
 	companyId,
 	isDetailPage = false,
-}: DeleteCompanyButtonProps) => {
+}: DeleteSkillButtonProps) => {
 	const [deleteCompanyMutation] = useDeleteCompanyMutation();
 
 	const { t } = useTranslation(i18Namespace.translation);

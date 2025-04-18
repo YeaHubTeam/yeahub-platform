@@ -56,7 +56,7 @@ const PublicQuizPage = () => {
 		questionTitle,
 		imageSrc,
 		shortAnswer,
-		currentCount,
+		answeredCount,
 		activeQuestion,
 		totalCount,
 		answer,
@@ -118,7 +118,7 @@ const PublicQuizPage = () => {
 					</span>
 					<ProgressBar
 						className={styles['progress-component']}
-						currentCount={currentCount}
+						currentCount={answeredCount}
 						totalCount={totalCount}
 					/>
 				</div>
