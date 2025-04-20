@@ -32,26 +32,7 @@ const editCompanyApi = baseApi.injectEndpoints({
 			},
 			invalidatesTags: [ApiTags.COMPANIES, ApiTags.COMPANY_DETAIL],
 		}),
-		deleteCompany: build.mutation<void, string>({
-			query: (companyId) => ({
-				url: route(editCompanyApiUrls.deleteCompany, companyId),
-				method: 'DELETE',
-			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
-				try {
-					await queryFulfilled;
-					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.admin.companies.page);
-					toast.success(i18n.t(Translation.TOAST_COMPANIES_DELETE_SINGLE_SUCCESS));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COMPANIES_DELETE_SINGLE_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-			invalidatesTags: [ApiTags.COMPANIES],
-		}),
 	}),
 });
 
-export const { useEditCompanyMutation, useDeleteCompanyMutation } = editCompanyApi;
+export const { useEditCompanyMutation } = editCompanyApi;
