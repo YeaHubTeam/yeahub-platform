@@ -68,7 +68,7 @@ const CollectionsPage = () => {
 		return null;
 	}
 
-	const filtersRender = () => (
+	const renderFilters = () => (
 		<CollectionsFilterPanel
 			onChangeSearch={onChangeSearchParams}
 			onChangeSpecialization={onChangeSpecialization}
@@ -119,10 +119,10 @@ const CollectionsPage = () => {
 					onClose={onClose}
 					hasCloseButton
 				>
-					<Card className={styles['additional-info-wrapper--mobile']}>{filtersRender()}</Card>
+					<Card className={styles['additional-info-wrapper--mobile']}>{renderFilters()}</Card>
 				</Drawer>
 			</div>
-			<Card className={styles['additional-info-wrapper']}>{filtersRender()}</Card>
+			<Card className={styles['additional-info-wrapper']}>{renderFilters()}</Card>
 		</section>
 	);
 };

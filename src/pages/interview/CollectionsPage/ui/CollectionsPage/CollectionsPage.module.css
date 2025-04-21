@@ -27,6 +27,7 @@
   flex-direction: column;
   gap: 20px;
   width: 360px;
+  height: fit-content;
 }
 
 .question-skeleton {
