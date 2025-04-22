@@ -18,7 +18,7 @@ const CollectionCreateFormHeader: React.FC<CollectionCreateFormHeaderProps> = ()
 	const { t } = useTranslation([i18Namespace.collection, i18Namespace.translation]);
 	const { handleSubmit } = useFormContext<CollectionCreateFormValues>();
 	const onCreateCollection = async (data: CollectionCreateFormValues) => {
-		await createCollectionMutation({ ...data, createdBy: '' });
+		await createCollectionMutation({ ...data });
 	};
 
 	return (

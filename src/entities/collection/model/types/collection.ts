@@ -1,6 +1,8 @@
 import { Response } from '@/shared/types/types';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Company } from '@/entities/company';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Question } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Specialization } from '@/entities/specialization';
@@ -20,6 +22,8 @@ export interface Collection {
 	specializations?: Specialization[];
 	tariff: CollectionTariff;
 	isFree?: boolean;
+	company?: Company;
+	companyId?: string;
 }
 
 export type CreateOrEditCollectionFormValues = Pick<
@@ -29,7 +33,9 @@ export type CreateOrEditCollectionFormValues = Pick<
 	isFree: boolean;
 	questions: number[];
 	specializations: number[];
-	createdBy?: string;
+	companyId?: string;
+	company?: Company | null;
+	createdBy?: { id: string; username: string } | null;
 	collectionImage?: string;
 };
 

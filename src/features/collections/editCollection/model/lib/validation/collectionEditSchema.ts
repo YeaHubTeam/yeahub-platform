@@ -15,11 +15,24 @@ export const collectionEditSchema: yup.ObjectSchema<CollectionEditFormValues> = 
 	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	companyId: yup.string().required().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	keywords: yup
 		.array()
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	questions: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	createdBy: yup.string(),
+	company: yup
+		.object({
+			id: yup.string().required(),
+			title: yup.string().required(),
+		})
+		.nullable(),
+	createdBy: yup
+		.object()
+		.shape({
+			id: yup.string().required(),
+			username: yup.string().required(),
+		})
+		.notRequired(),
 });
