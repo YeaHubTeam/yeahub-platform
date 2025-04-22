@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SelectedAdminEntities } from '@/shared/types/types';
 
-import { ICompaniesTablePageState } from '../types/companiesTablePageTypes';
+import { CompaniesTablePageState } from '../types/companiesTablePageTypes';
 
-const initialState: ICompaniesTablePageState = {
+const initialState: CompaniesTablePageState = {
 	page: 1,
 	selectedCompanies: [],
 	search: '',

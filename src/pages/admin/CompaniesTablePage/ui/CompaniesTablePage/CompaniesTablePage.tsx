@@ -9,7 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
 
-import { CompaniesFilterSet } from '@/features/company/companiesFilterSet';
 import { DeleteCompanyButton } from '@/features/company/deleteCompany';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
@@ -52,6 +51,7 @@ const CompaniesTablePage = () => {
 		dispatch(companiesTablePageActions.setSearch(value));
 	}, 500);
 
+	//TODO: подумать, как уйти от локального состояния и при этом сохранить функциональность поиска и сброса фильтров
 	const handleSearchChange = (value: string) => {
 		setLocalSearchValue(value);
 		setStoreSearchValue(value);
@@ -72,9 +72,8 @@ const CompaniesTablePage = () => {
 				onSearch={handleSearchChange}
 				searchValue={localSearchValue}
 				showRemoveButton={selectedCompanies.length > 0}
-				//TODO: захардкодил айдишник, чтобы отрисовать кнопку. Функционал кнопки не относится к текущей задаче YH-903.
-				renderRemoveButton={() => <DeleteCompanyButton companyId={'1'} isDetailPage />}
-				renderFilter={() => <CompaniesFilterSet />}
+				//TODO: replace DeleteCompanyButton with DeleteCompaniesButton
+				renderRemoveButton={() => <DeleteCompanyButton companyId={1} isDetailPage />}
 			/>
 			<Card className={styles.content}>
 				<CompaniesTable

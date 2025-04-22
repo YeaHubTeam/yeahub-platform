@@ -13,14 +13,14 @@ import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 
-import { ICompany } from '@/entities/company';
+import { Company } from '@/entities/company';
 
 import { DeleteCompanyButton } from '@/features/company/deleteCompany';
 
 import styles from './CompaniesTable.module.css';
 
-interface ICompaniesTableProps {
-	companies?: ICompany[];
+interface CompaniesTableProps {
+	companies?: Company[];
 	selectedCompanies?: SelectedAdminEntities;
 	onSelectCompanies?: (ids: SelectedAdminEntities) => void;
 }
@@ -29,7 +29,7 @@ export const CompaniesTable = ({
 	companies,
 	selectedCompanies,
 	onSelectCompanies,
-}: ICompaniesTableProps) => {
+}: CompaniesTableProps) => {
 	const navigate = useNavigate();
 
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
@@ -42,7 +42,7 @@ export const CompaniesTable = ({
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};
 
-	const renderTableBody = (company: ICompany) => {
+	const renderTableBody = (company: Company) => {
 		const columns = {
 			imageSrc: (
 				<ImageWithWrapper
@@ -57,7 +57,7 @@ export const CompaniesTable = ({
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};
 
-	const renderActions = (company: ICompany) => {
+	const renderActions = (company: Company) => {
 		const menuItems: PopoverMenuItem[] = [
 			{
 				icon: <Icon icon="eye" size={24} />,
@@ -74,7 +74,7 @@ export const CompaniesTable = ({
 				},
 			},
 			{
-				renderComponent: () => <DeleteCompanyButton companyId={String(company.id)} />,
+				renderComponent: () => <DeleteCompanyButton companyId={company.id} />,
 			},
 		];
 

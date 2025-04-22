@@ -1,12 +1,12 @@
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { ICompany } from '@/entities/company';
+import { Company } from '@/entities/company';
 
 import styles from './CompaniesTablePagePagination.module.css';
 
 interface CompaniesTablePagePaginationProps {
-	companiesResponse?: Response<ICompany[]>;
+	companiesResponse?: Response<Company[]>;
 	currentPage: number;
 	onChangePage: (page: number) => void;
 }

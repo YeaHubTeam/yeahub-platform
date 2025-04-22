@@ -1,4 +1,4 @@
-export type { ICompaniesTablePageState } from './model/types/companiesTablePageTypes';
+export type { CompaniesTablePageState } from './model/types/companiesTablePageTypes';
 export {
 	companiesTablePageReducer,
 	companiesTablePageActions,

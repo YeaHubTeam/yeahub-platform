@@ -1,4 +1,4 @@
-export interface ICompany {
+export interface Company {
 	id: number;
 	title: string;
 	legalName?: string;
@@ -10,7 +10,7 @@ export interface ICompany {
 	updatedAt?: string;
 }
 
-export type GetCompanyByIdResponse = ICompany;
+export type GetCompanyByIdResponse = Company;
 
 export type ErrorResponce = {
 	message: string;
@@ -27,12 +27,12 @@ export interface GetCompaniesListParamsRequest {
 }
 
 export interface GetCompaniesListResponse {
-	data: ICompany[];
+	data: Company[];
 	page: number;
 	limit: number;
 	total: number;
 }
 
-export type CreateOrEditCompanyFormValues = Pick<ICompany, 'id' | 'title' | 'imageSrc'> & {
+export type CreateOrEditCompanyFormValues = Pick<Company, 'id' | 'title' | 'imageSrc'> & {
 	companyImage?: string;
 };

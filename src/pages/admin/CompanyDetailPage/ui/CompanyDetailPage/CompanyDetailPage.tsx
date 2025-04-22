@@ -27,7 +27,7 @@ const CompanyDetailPage = () => {
 				<BackButton />
 
 				<Flex gap={'16'}>
-					<DeleteCompanyButton companyId={String(company.id)} isDetailPage />
+					<DeleteCompanyButton companyId={company.id} isDetailPage />
 					<NavLink to={''}>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
