@@ -34,7 +34,6 @@ export type CreateOrEditCollectionFormValues = Pick<
 	questions: number[];
 	specializations: number[];
 	companyId?: string;
-	createdBy?: { id: string; username: string } | null;
 	collectionImage?: string;
 };
 
