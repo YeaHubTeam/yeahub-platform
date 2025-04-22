@@ -24,7 +24,7 @@ export const CollectionEditFormHeader = () => {
 	};
 
 	const onEditCollection = async (data: CollectionEditFormValues) => {
-		await editCollectionMutation({ ...data, company: null });
+		await editCollectionMutation(data);
 	};
 
 	return (
