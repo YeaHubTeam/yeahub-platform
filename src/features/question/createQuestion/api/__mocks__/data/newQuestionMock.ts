@@ -15,8 +15,10 @@ export const newQuestionMock = (formData: CreateQuestionBodyRequest, id: number)
 		complexity: formData.complexity,
 		createdAt: new Date().toISOString(),
 		updatedAt: new Date().toISOString(),
-		createdBy:
-			'{"userId":"1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d","firstName":"Guse","lastName":"Kazulin"}',
+		createdBy: {
+			id: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
+			username: 'gusekazulin',
+		},
 		updatedBy: null,
 		questionSpecializations: [
 			{
