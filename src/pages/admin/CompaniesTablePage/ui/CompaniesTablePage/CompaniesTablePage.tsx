@@ -9,7 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
 
-import { DeleteCompanyButton } from '@/features/company/deleteCompany';
+import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -72,8 +72,7 @@ const CompaniesTablePage = () => {
 				onSearch={handleSearchChange}
 				searchValue={localSearchValue}
 				showRemoveButton={selectedCompanies.length > 0}
-				//TODO: replace DeleteCompanyButton with DeleteCompaniesButton
-				renderRemoveButton={() => <DeleteCompanyButton companyId={1} isDetailPage />}
+				renderRemoveButton={() => <DeleteCompaniesButton companiesToRemove={selectedCompanies} />}
 			/>
 			<Card className={styles.content}>
 				<CompaniesTable

@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SelectedAdminEntities } from '@/shared/types/types';
 
+import { deleteMultipleCompaniesThunk } from '@/features/company/deleteCompanies';
+
 import { CompaniesTablePageState } from '../types/companiesTablePageTypes';
 
 const initialState: CompaniesTablePageState = {
@@ -24,6 +26,11 @@ const companiesTablePageSlice = createSlice({
 		setSelectedCompanies: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedCompanies = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(deleteMultipleCompaniesThunk.fulfilled, (state) => {
+			state.selectedCompanies = [];
+		});
 	},
 });
 
