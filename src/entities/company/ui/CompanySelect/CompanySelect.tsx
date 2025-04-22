@@ -42,7 +42,7 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 		}));
 	}, [companies]);
 
-	const itemsDictionary = useMemo(() => {
+	const companiesDictionary = useMemo(() => {
 		return companies?.data?.reduce(
 			(acc, company) => {
 				acc[company.id] = { id: company.id, title: company.title, imageSrc: company.imageSrc };
@@ -59,7 +59,7 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 			onChange={handleChange}
 			selectedItems={value ? [value] : []}
 			handleDeleteItem={handleDeleteItem}
-			itemsDictionary={itemsDictionary}
+			itemsDictionary={companiesDictionary}
 			placeholder={options.length ? t(Company.SELECT_CHOOSE) : t(Company.SELECT_EMPTY)}
 			disabled={disabled}
 			className={styles.select}
