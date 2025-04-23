@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
@@ -82,7 +82,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 									maxResolution={{ width: 2048, height: 2048 }}
 									maxMBSize={5}
 									setValue={onImageChange}
-									initialSrc={profile?.avatarUrl || null}
+									initialSrc={avatar || null}
 									isLoading={isAvatarLoading}
 									isPopover={true}
 									isOpenProp={isModalOpen}

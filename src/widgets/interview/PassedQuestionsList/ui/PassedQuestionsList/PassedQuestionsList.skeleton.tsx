@@ -10,7 +10,7 @@ export const PassedQuestionsListSkeleton = ({ className }: PassedQuestionsListPr
 	return (
 		<CardSkeleton className={className} isTitleCenter title="title">
 			<ul className={styles.list}>
-				{[...Array(8)].map((_, index) => (
+				{[...Array(6)].map((_, index) => (
 					<PassedQuestionsItemSkeleton key={index} />
 				))}
 			</ul>

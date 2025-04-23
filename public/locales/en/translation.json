@@ -147,14 +147,6 @@
         }
       }
     },
-    "collections": {
-      "delete": {
-        "single": {
-          "success": "Collection successfully deleted",
-          "failed": "The collection could not be deleted"
-        }
-      }
-    },
     "skills": {
       "create": {
         "success": "Skill created successfully",
@@ -193,6 +185,22 @@
           "success": "Successfully deleted specializations:",
           "failed": "Specialization could not be deleted:"
         }
+      }
+    },
+    "collections": {
+      "create": {
+        "success": "Collection successfully created",
+        "failed": "Collection could not be created"
+      },
+			"delete": {
+        "single": {
+          "success": "Collection successfully deleted",
+          "failed": "The collection could not be deleted"
+        }
+      },
+      "edit": {
+        "success": "Collection successfully changed",
+        "failed": "Collection could not be changed"
       }
     },
     "profile": {
@@ -238,6 +246,14 @@
         "failed": "Password could not be changed",
         "failed.email": "Invalid email"
       }
-    }
+    },
+		"companies" : {
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				}
+			}
+		}
   }
 }

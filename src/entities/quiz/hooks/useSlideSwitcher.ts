@@ -1,21 +1,27 @@
 import { useState } from 'react';
+import { matchPath, useLocation } from 'react-router-dom';
 
 // eslint-disable-next-line
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/hooks';
 
 import { changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
 
 export const useSlideSwitcher = (questions: Answers[]) => {
-	const dispatch = useAppDispatch();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const currentCount = questions.filter((question) => Boolean(question.answer)).length;
+
+	const dispatch = useAppDispatch();
+	const location = useLocation();
+
+	const answeredCount = questions.filter((question) => question.answer !== undefined).length;
+	const isAuthRoute = !!matchPath('/dashboard/interview/new', location.pathname);
 
 	const changeAnswer = (answer: QuizQuestionAnswerType) => {
 		dispatch(
 			changeQuestionAnswer({
 				questionId: questions[currentQuestion].questionId,
 				answer,
+				shouldSaveToLS: isAuthRoute,
 			}),
 		);
 	};
@@ -32,7 +38,7 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 		...questions[currentQuestion],
 		totalCount: questions.length,
 		activeQuestion: currentQuestion + 1,
-		currentCount,
+		answeredCount,
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,

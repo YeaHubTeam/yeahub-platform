@@ -1,2 +1,2 @@
-export { Pagination } from './ui/Pagination';
-export { PaginationSkeleton } from './ui/Pagination.skeleton';
+export { Pagination } from './Pagination';
+export { PaginationSkeleton } from './Pagination.skeleton';

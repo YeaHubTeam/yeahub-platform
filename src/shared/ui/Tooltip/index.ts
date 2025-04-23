@@ -1,2 +1,2 @@
-export { Tooltip } from './ui/Tooltip';
-export type { TooltipProps, TooltipColor } from './model/types';
+export { Tooltip } from './Tooltip';
+export type { TooltipProps, TooltipColor } from './types';
