@@ -24,6 +24,8 @@ export interface Collection {
 	isFree?: boolean;
 	company?: Company;
 	companyId?: string;
+	createdById?: string;
+	createdBy?: { id: string; username: string };
 }
 
 export type CreateOrEditCollectionFormValues = Pick<
