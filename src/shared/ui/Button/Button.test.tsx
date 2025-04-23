@@ -3,9 +3,8 @@ import { createRef } from 'react';
 
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
-import { ButtonProps } from '../model/types';
-
 import { Button } from './Button';
+import { ButtonProps } from './types';
 
 describe('Button', () => {
 	test('render', () => {
