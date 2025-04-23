@@ -37,11 +37,12 @@ export const LoginForm = () => {
 			<form onSubmit={handleSubmit(onLogin)} className={styles['form-wrapper']}>
 				<div className={styles['input-wrapper']}>
 					<FormControl name="username" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
-						{(field) => (
+						{(field, hasError) => (
 							<Input
 								{...field}
 								className={styles.input}
 								placeholder={t(Auth.FORM_EMAIL_PLACEHOLDER)}
+								error={hasError}
 							/>
 						)}
 					</FormControl>
