@@ -1,1 +1,1 @@
-export { EmptyStub } from './ui/EmptyStub';
+export { EmptyStub } from './EmptyStub';

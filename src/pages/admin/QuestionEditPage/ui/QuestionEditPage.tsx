@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';

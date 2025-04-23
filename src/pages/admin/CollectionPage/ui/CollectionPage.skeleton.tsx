@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import styles from './QuestionPage.module.css';
+import styles from './CollectionPage.module.css';
 
-export const QuestionPageSkeleton = () => {
+export const CollectionPageSkeleton = () => {
 	const { isMobile } = useScreenSize();
 
 	if (isMobile) {

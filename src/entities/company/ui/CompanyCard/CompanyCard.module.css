@@ -1,0 +1,27 @@
+.wrap {
+  max-width: 740px;
+  min-height: 162px;
+}
+
+.card {
+  width: 100%;
+}
+
+.card-image {
+  width: 149px;
+  min-height: 157px;
+  border-radius: 12px;
+  background-color: var(--color-black-500);
+  object-fit: cover;
+}
+
+.card-image-wrapper {
+  width: 149px;
+  min-height: 157px; 
+  overflow: hidden;
+  border-radius: 12px;
+  
+  img {
+    object-fit: cover;
+  }
+}

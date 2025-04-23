@@ -1,2 +1,3 @@
-export { Button } from './ui/Button';
-export { ButtonSkeleton } from './ui/Button.skeleton';
+export { Button } from './Button';
+export { ButtonSkeleton } from './Button.skeleton';
+export { getTagName } from './helpers';

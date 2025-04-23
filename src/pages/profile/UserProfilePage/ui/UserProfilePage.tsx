@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/hooks';
 
 import { profileActions } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';

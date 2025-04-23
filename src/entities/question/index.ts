@@ -2,6 +2,7 @@ export type {
 	Question,
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
+	Author,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
