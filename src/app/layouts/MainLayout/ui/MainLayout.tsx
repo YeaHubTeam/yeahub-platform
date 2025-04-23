@@ -55,7 +55,12 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 			<AutoScrollToTop>
 				<section className={styles.layout}>
 					<div className={styles.sidebar}>
-						<Sidebar menuItems={filteredMenuItems} />
+						<Sidebar
+							menuItems={filteredMenuItems}
+							onOpenSidebarDrawer={onToggleOpenSidebarDrawer}
+							isOpenSidebarDrawer={isOpenSidebarDrawer}
+							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
+						/>
 					</div>
 
 					<Header onOpenSidebarDrawer={onToggleOpenSidebarDrawer} />
@@ -79,7 +84,12 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 						position="left"
 						className={styles.drawer}
 					>
-						<Sidebar isMobileSidebar menuItems={filteredMenuItems} />
+						<Sidebar
+							isMobileSidebar
+							menuItems={filteredMenuItems}
+							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
+							isOpenSidebarDrawer={isOpenSidebarDrawer}
+						/>
 					</Drawer>
 				)}
 			</AutoScrollToTop>

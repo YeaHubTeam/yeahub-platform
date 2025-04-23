@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { CSSIcon } from '@/shared/ui/Icons/CSSIcon';
 import { FigmaIcon } from '@/shared/ui/Icons/FigmaIcon';
 import { HTMLIcon } from '@/shared/ui/Icons/HTMLIcon';

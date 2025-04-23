@@ -9,7 +9,7 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_LIMIT_SPECIALIZATIONS,
 } from '@/shared/constants/queryConstants';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 

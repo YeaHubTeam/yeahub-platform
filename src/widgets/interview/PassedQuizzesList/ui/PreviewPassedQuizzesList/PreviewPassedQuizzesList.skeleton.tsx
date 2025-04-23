@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -20,7 +20,7 @@ export const PreviewPassedQuizzesListSkeleton = ({ className }: InterviewHistory
 			isTitleCenter={isMobile}
 		>
 			<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
-				{[...Array(3)].map((_, index) => (
+				{[...Array(5)].map((_, index) => (
 					<PreviewPassedQuizzesItemSkeleton key={index} />
 				))}
 			</Flex>

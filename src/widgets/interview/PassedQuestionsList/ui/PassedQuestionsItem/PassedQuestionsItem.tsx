@@ -6,6 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useCurrentProject, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -26,6 +27,8 @@ interface QuestionAnswerItem {
 
 export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
+	const project = useCurrentProject();
+	const { isMobile } = useScreenSize();
 
 	const { imageSrc, answer, questionTitle, questionId } = question;
 
@@ -40,12 +43,17 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 		},
 	};
 
+	const questionLink =
+		project === 'landing'
+			? route(ROUTES.questions.detail.page, questionId)
+			: route(ROUTES.interview.questions.detail.page, questionId);
+
 	return (
-		<Link to={route(ROUTES.interview.questions.detail.page, questionId)} className={styles.link}>
+		<Link to={questionLink} className={styles.link}>
 			<li className={styles.item}>
 				<ImageWithWrapper src={imageSrc} className={styles.img} />
 				<Flex direction="column" gap="8" maxWidth>
-					<Text variant="body4" maxRows={2} color="black-800">
+					<Text variant={isMobile ? 'body3-accent' : 'body4'} maxRows={2} color="black-800">
 						{questionTitle}
 					</Text>
 					<Chip

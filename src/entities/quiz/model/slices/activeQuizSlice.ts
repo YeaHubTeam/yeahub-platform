@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
 import { LS_ACTIVE_QUIZ_KEY } from '../constants/quizConstants';
+import { updateQuestionAnswer } from '../helpers/updateQuestionAnswer';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
 const initialState: ActiveQuizState = {
@@ -13,18 +14,21 @@ export const activeQuizSlice = createSlice({
 	name: 'quiz',
 	initialState,
 	reducers: {
-		setActiveQuizQuestions: (state, action: PayloadAction<Answers[]>) => {
-			state.questions = action.payload;
+		setActiveQuizQuestions: (
+			state,
+			action: PayloadAction<{ questions: Answers[]; shouldSaveToLS?: boolean }>,
+		) => {
+			const { questions, shouldSaveToLS = true } = action.payload;
+
+			if (questions.length > 0) {
+				shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, questions);
+				state.questions = questions;
+			}
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
-			state.questions = state.questions.map((question) => {
-				if (question.questionId === action.payload.questionId) {
-					return { ...question, answer: action.payload.answer };
-				}
-				return question;
-			});
-
-			setToLS(LS_ACTIVE_QUIZ_KEY, state.questions);
+			const { shouldSaveToLS } = action.payload;
+			state.questions = updateQuestionAnswer(state.questions, action.payload);
+			shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, state.questions);
 		},
 		clearActiveQuizState: (state) => {
 			state.questions = [];

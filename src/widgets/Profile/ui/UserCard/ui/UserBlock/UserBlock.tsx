@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import { FullProfile } from '@/entities/auth';

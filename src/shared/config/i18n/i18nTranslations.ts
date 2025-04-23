@@ -62,6 +62,8 @@ export enum Translation {
 	CRUMBS_INTERVIEW_STATISTIC = 'crumbs.interview.statistic',
 	CRUMBS_QUESTIONS_LIST = 'crumbs.questions.list',
 	CRUMBS_QUESTION_DETAIL = 'crumbs.question.detail',
+	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
+	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
 
 	/* Validation */
@@ -104,6 +106,8 @@ export enum Translation {
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
 	TOAST_SKILL_EDIT_FAILED = 'toast.skills.edit.failed',
+	TOAST_COLLECTION_EDIT_SUCCESS = 'toast.collections.edit.success',
+	TOAST_COLLECTION_EDIT_FAILED = 'toast.collections.edit.failed',
 	TOAST_SPECIALIZATION_CREATE_SUCCESS = 'toast.specializations.create.success',
 	TOAST_SPECIALIZATION_CREATE_FAILED = 'toast.specializations.create.failed',
 	TOAST_SPECIALIZATION_EDIT_SUCCESS = 'toast.specializations.edit.success',
@@ -125,6 +129,14 @@ export enum Translation {
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
+	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
+	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
+	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
+	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
+	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
+	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
+	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -288,6 +300,14 @@ export enum InterviewQuizResult {
 	TIME = 'time',
 	DATE = 'date',
 	DURATION = 'duration',
+	CLONE_BUTTON = 'clone.button',
+	JOIN_COMMUNITY_TITLE = 'join.community.title',
+	JOIN_COMMUNITY_DESCRIPTION = 'join.community.description',
+	INTERVIEW_SIMULATOR = 'join.community.interview.simulator',
+	MEMORY_MODE = 'join.community.memory.mode',
+	STATS_HISTORY = 'join.community.stats.history',
+	FULL_ACCESS = 'join.community.full.access',
+	BECOME_MEMBER = 'join.community.become.member',
 }
 
 export enum InterviewStatistics {
@@ -470,10 +490,30 @@ export enum Collections {
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
+	QUESTIONS_ADDITIONAL_INFO = 'numberOfQuestions',
+	QUESTIONS_COUNT = 'questions.length.min',
+	IMAGE_ALT = 'image.alt',
+	SEARCH_PLACEHOLDER = 'search.placeholder',
+	COLLECTIONS_TITLE = 'collections.title',
+	COLLECTIONS_DETAIL = 'collections.detail',
+	COLLECTIONS_TRAIN = 'collections.train',
+	SPECIALIZATIONS_SHOW_ALL = 'specializations.show.all',
+	SPECIALIZATIONS_HIDE = 'specializations.hide',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
+	TOOLTIP_TITLE = 'tooltip.title',
+	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
+}
+
+export enum Company {
+	TITLE_FULL = 'title.full',
+	TITLE_LABEL = 'title.label',
+	ICON_TITLE = 'icon.title',
+	ICON_LABEL = 'icon.label',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum Landing {

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 
 import { getFullProfile, getSpecializationId, profileActions } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
