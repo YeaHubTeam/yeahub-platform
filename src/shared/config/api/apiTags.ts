@@ -18,4 +18,6 @@ export enum ApiTags {
 	SPECIALIZATION_DETAIL = 'specialization_detail',
 	INTERVIEW_STATISTICS = 'interview_statistics',
 	PUBLIC_QUESTION_DETAIL = 'public_question_detail',
+	COMPANIES = 'companies',
+	COMPANY_DETAIL = 'company_detail',
 }

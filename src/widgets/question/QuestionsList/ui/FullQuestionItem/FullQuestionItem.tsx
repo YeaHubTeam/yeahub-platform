@@ -42,12 +42,24 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 		},
 		{
 			renderComponent: () => (
-				<LearnQuestionButton checksCount={checksCount} questionId={id} isPopover />
+				<LearnQuestionButton
+					checksCount={checksCount}
+					questionId={id}
+					isPopover
+					placementTooltip="left"
+					offsetTooltip={20}
+				/>
 			),
 		},
 		{
 			renderComponent: () => (
-				<ResetQuestionStudyProgressButton checksCount={checksCount} questionId={id} isPopover />
+				<ResetQuestionStudyProgressButton
+					checksCount={checksCount}
+					questionId={id}
+					isPopover
+					placementTooltip="left"
+					offsetTooltip={20}
+				/>
 			),
 		},
 	];

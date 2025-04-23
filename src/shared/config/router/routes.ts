@@ -63,7 +63,6 @@ export const ROUTES = {
 				page: '/admin/users/:userId',
 			},
 		},
-
 		collections: {
 			route: 'collections',
 			page: '/admin/collections',
@@ -78,6 +77,22 @@ export const ROUTES = {
 			edit: {
 				route: ':collectionId/edit',
 				page: '/admin/collections/:collectionId/edit',
+			},
+		},
+		companies: {
+			route: 'companies',
+			page: '/admin/companies',
+			edit: {
+				route: ':companyId/edit',
+				page: '/admin/companies/:companyId/edit',
+			},
+			create: {
+				route: 'create',
+				page: '/admin/companies/create',
+			},
+			details: {
+				route: ':companyId',
+				page: '/admin/companies/:companyId',
 			},
 		},
 	},
@@ -139,6 +154,14 @@ export const ROUTES = {
 				page: '/dashboard/interview/questions/:questionId',
 			},
 		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/interview/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/interview/collections/:collectionId',
+			},
+		},
 		quiz: {
 			route: 'quiz',
 			page: '/dashboard/interview/quiz',
@@ -167,6 +190,10 @@ export const ROUTES = {
 			route: 'new',
 			page: '/quiz/new',
 		},
+		result: {
+			route: 'result',
+			page: '/quiz/result',
+		},
 	},
 	collections: {
 		route: 'collections',
@@ -176,4 +203,4 @@ export const ROUTES = {
 			page: '/collections/:collectionId',
 		},
 	},
-};
+} as const;

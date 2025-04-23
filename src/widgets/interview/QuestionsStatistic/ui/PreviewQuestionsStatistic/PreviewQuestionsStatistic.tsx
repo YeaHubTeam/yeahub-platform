@@ -4,7 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics, Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
 import { getIsEmailVerified, getProfileId } from '@/entities/profile';

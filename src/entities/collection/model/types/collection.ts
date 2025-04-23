@@ -14,25 +14,39 @@ export interface Collection {
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
-	questionsQuantity?: number;
-	keywordsCollection?: string[];
-	questions: Question[];
-	specializations: Specialization[];
+	questionsCount?: number;
+	keywords?: string[];
+	questions?: Question[];
+	specializations?: Specialization[];
 	tariff: CollectionTariff;
+	isFree?: boolean;
 }
 
 export type CreateOrEditCollectionFormValues = Pick<
 	Collection,
-	'id' | 'title' | 'description' | 'imageSrc' | 'keywordsCollection'
+	'id' | 'title' | 'description' | 'imageSrc' | 'keywords'
 > & {
-	paidOrFree: 'paid' | 'free';
+	isFree: boolean;
 	questions: number[];
 	specializations: number[];
+	createdBy?: string;
+	collectionImage?: string;
 };
 
 export interface GetCollectionsListParamsRequest {
 	page?: number;
 	limit?: number;
+	isFree?: boolean;
+	specializations?: number | number[];
+	keywords?: string[];
+	titleOrDescriptionSearch?: string;
 }
 
 export type GetCollectionsListResponse = Response<Collection[]>;
+
+export type GetCollectionByIdResponse = Collection;
+export type GetCollectionQuestionsResponse = Response<Question[]>;
+
+export type GetCollectionByIdParamsRequest = {
+	collectionId?: string;
+};

@@ -1,0 +1,1 @@
+export { getKeyboardFireEventObject } from './getKeyboardFireEventObject';

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Text, Input, Label, Radio } from 'yeahub-ui-kit';
+import { Text, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -9,39 +9,57 @@ import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { Radio } from '@/shared/ui/Radio';
 import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
-
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
+
+import { useGetCollectionQuestionsQuery } from '../../api/collectionApi';
 
 import styles from './CollectionForm.module.css';
 
 export interface CollectionFormProps {
-	imageSrc?: string | null;
 	isEdit?: boolean;
 }
 
-export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
+export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, setValue, watch } = useFormContext();
-
+	const imageSrc = watch('imageSrc');
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
+	const collectionId = watch('id');
+	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({
+		collectionId: collectionId!,
+	});
+	useEffect(() => {
+		if (collectionQuestions) {
+			setValue(
+				'questions',
+				collectionQuestions.data.map((collection) => collection.id),
+			);
+			setSelectedQuestions(
+				collectionQuestions.data.map((collection) => ({
+					id: collection.id,
+					title: collection.title,
+				})),
+			);
+		}
+	}, [collectionQuestions, setValue]);
 
-	const watchPaidOrFree = watch('paidOrFree', '');
-	const watchQuestions = watch('questions', []);
+	const isFree = watch('isFree', true);
+	const watchCollectionQuestions = watch('questions', []);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('imageSrc', image);
+		setValue('collectionImage', image);
 	};
 
 	const removeImage = () => {
@@ -51,14 +69,14 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 
 	const handleSelectQuestion = (question: { title: string; id: number }) => {
 		setSelectedQuestions((prev) => [...prev, question]);
-		setValue('questions', [...watchQuestions, question.id]);
+		setValue('questions', [...watchCollectionQuestions, question.id]);
 	};
 
 	const handleUnselectQuestion = (id: number) => {
 		setSelectedQuestions((prev) => prev.filter((item) => item.id !== id));
 		setValue(
 			'questions',
-			watchQuestions.filter((questionId: number) => questionId !== id),
+			watchCollectionQuestions.filter((questionId: number) => questionId !== id),
 		);
 	};
 
@@ -110,20 +128,18 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						<Text title={t(Collections.TARIFF_LABEL)} className={styles.description} />
 					</Flex>
 					<Flex gap="60">
-						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'paid'}
-								onChange={() => setValue('paidOrFree', 'paid')}
-							/>
-							{t(Collections.TARIFF_PAID)}
-						</Label>
-						<Label className={styles['paid-label']}>
-							<Radio
-								checked={watchPaidOrFree === 'free'}
-								onChange={() => setValue('paidOrFree', 'free')}
-							/>
-							{t(Collections.TARIFF_FREE)}
-						</Label>
+						<Radio
+							label={t(Collections.TARIFF_PAID)}
+							labelClassName={styles['paid-label']}
+							checked={!isFree}
+							onChange={() => setValue('isFree', false)}
+						/>
+						<Radio
+							label={t(Collections.TARIFF_FREE)}
+							labelClassName={styles['paid-label']}
+							checked={isFree}
+							onChange={() => setValue('isFree', true)}
+						/>
 					</Flex>
 				</Flex>
 				<Flex gap={'120'}>
@@ -144,7 +160,7 @@ export const CollectionForm = ({ isEdit, imageSrc }: CollectionFormProps) => {
 						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
 						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
 					</Flex>
-					<FormControl name="keywordsCollection" control={control}>
+					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div className={styles.select}>

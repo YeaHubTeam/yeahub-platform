@@ -1,0 +1,146 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.wrapper-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 100%;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+}
+
+.header-params {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.popup {
+  position: relative;
+  top: 8px;
+  left: 15px;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+.image-wrapper {
+  width: 100%;
+  max-width: 149px;
+  min-height: 157px;
+  overflow: hidden;
+  border-radius: 12px;
+  place-content: center center;
+}
+
+.specialization-container {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  gap: 14px;
+
+  & p {
+    color: var(--color-black-500);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+  }
+}
+
+.title p {
+  color: var(--text-color-light);
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);
+}
+
+.link {
+  justify-content: end;
+}
+
+.access-container {
+  display: flex;
+
+  & svg {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+  }
+
+  & svg path {
+    stroke-width: 0;
+    fill: var(--color-purple-700);
+  }
+
+
+  & p {
+    color: var(--color-purple-700);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+    font-family: var(--font-family);
+  }
+}
+
+.access-item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+@media (width < 565px) {
+  .image-wrapper {
+    margin: 0;
+    max-width: 100%;
+    min-height: 300px;
+  }
+}
+
+@media (width < 420px) {
+  .header-params {
+    gap: 6px;
+  }
+}
+
+@media (width <= 360px) {
+  .header {
+    margin-bottom: 16px;
+  }
+
+  .header-params {
+    gap: 16px;
+  }
+
+  .image-wrapper {
+    margin-bottom: 16px;
+    max-width: 260px;
+    border-radius: 12px;
+  }
+
+  .answer p {
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-s);
+  }
+}
