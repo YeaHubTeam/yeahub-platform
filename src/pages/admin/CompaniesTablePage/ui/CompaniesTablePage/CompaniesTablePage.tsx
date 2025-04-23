@@ -24,7 +24,7 @@ import { CompaniesTablePagePagination } from '../CompaniesTablePagePagination/Co
 import styles from './CompaniesTablePage.module.css';
 
 const CompaniesTablePage = () => {
-	const [localSearchValue, setLocalSearchValue] = useState('');
+	const [localSearchValue, setLocalSearchValue] = useState<string>('');
 	const storeSearchValue = useSelector(getCompaniesSearch);
 	const selectedCompanies = useSelector(getSelectedCompanies);
 	const dispatch = useAppDispatch();

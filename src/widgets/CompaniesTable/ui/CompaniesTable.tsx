@@ -31,7 +31,6 @@ export const CompaniesTable = ({
 	onSelectCompanies,
 }: CompaniesTableProps) => {
 	const navigate = useNavigate();
-
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
@@ -105,7 +104,7 @@ export const CompaniesTable = ({
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
-			items={companies}
+			items={companies as SelectedAdminEntities}
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
 		/>

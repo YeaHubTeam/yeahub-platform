@@ -1,6 +1,6 @@
 export interface Company {
-	id: number;
-	title: string;
+	id: string | number;
+	title?: string;
 	legalName?: string;
 	description?: string;
 	imageSrc?: string | null;
@@ -34,5 +34,5 @@ export interface GetCompaniesListResponse {
 }
 
 export type CreateOrEditCompanyFormValues = Pick<Company, 'id' | 'title' | 'imageSrc'> & {
-	companyImage?: string;
+	companyImage?: string | null;
 };

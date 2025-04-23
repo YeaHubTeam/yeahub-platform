@@ -1,5 +1,3 @@
-import toast from 'react-hot-toast';
-
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
@@ -7,12 +5,15 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { ExtraArgument } from '@/shared/config/store/types';
 import { route } from '@/shared/helpers/route';
+import { toast } from '@/shared/ui/Toast';
+
+import { Company } from '@/entities/company';
 
 import { deleteCompanyApiUrls } from '../model/constants/deleteCompanyConstants';
 
 const deleteCompanyApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		deleteCompany: builder.mutation<void, number>({
+		deleteCompany: builder.mutation<void, Company['id']>({
 			query: (companyId) => ({
 				url: route(deleteCompanyApiUrls.deleteCompany, companyId),
 				method: 'DELETE',

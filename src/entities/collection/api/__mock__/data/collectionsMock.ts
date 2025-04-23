@@ -49,8 +49,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -103,10 +105,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -158,8 +164,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -243,8 +251,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -297,10 +307,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -352,8 +366,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -436,8 +452,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -490,10 +508,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -545,8 +567,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{

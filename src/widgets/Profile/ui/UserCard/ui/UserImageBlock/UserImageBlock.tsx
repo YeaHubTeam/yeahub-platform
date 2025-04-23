@@ -82,7 +82,7 @@ export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 									maxResolution={{ width: 2048, height: 2048 }}
 									maxMBSize={5}
 									setValue={onImageChange}
-									initialSrc={profile?.avatarUrl || null}
+									initialSrc={avatar || null}
 									isLoading={isAvatarLoading}
 									isPopover={true}
 									isOpenProp={isModalOpen}
