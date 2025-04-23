@@ -1,0 +1,55 @@
+.avatar-group {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -13px;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border:1px solid var(--color-white-900);
+  border-radius: 50%;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar.count {
+  background-color: var(--color-purple-900);
+  color: var(--color-white-900);
+  font-size: var(--font-size-p-s)
+}
+
+@media screen and (width <= 1000px) {
+  .avatar-group {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 1;
+		
+  }
+}
+
+@media screen and (width <= 576px) {
+  .avatar {
+    margin-left: -9px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .avatar-group {
+    top: 20px;
+    right: 20px;
+  }
+}

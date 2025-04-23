@@ -85,5 +85,15 @@
     "slogan": "Choose what IT will be like tomorrow, together with us",
     "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
     "docs": "Documents"
-  }
+  },
+	"banner": {
+  "stiker": {
+    "skill": "YeaHub — level up your skills",
+    "candidate": "Candidate"
+  },
+  "title": "Interview Training \nPlatform and question database for successful preparation",
+  "description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
+  "button": "Join the community"
+}
+
 }

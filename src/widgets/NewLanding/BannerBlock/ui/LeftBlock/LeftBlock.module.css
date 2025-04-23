@@ -1,0 +1,37 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.left-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+@media screen and (width <= 1000px) {
+  .content-wrapper {
+    align-items: center;
+  }
+
+  .left-block {
+    align-items: center;
+  }
+
+  .sticker-skill {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 1
+  }
+}
+
+@media screen and (width <= 576px) {
+  .sticker-skill {
+    top: 20px;
+    left: 20px;
+  }
+
+}
