@@ -1,4 +1,4 @@
-.right-block {
+.img-block {
   position: relative;
 }	
 
@@ -10,11 +10,7 @@
 }
 
 .img-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: calc(414px + 57 * ((100vw - 1200px) / 240));
-  max-width: 471px;
+  width: 471px;
   height: 572px;
   border-radius: 8px;
   background-color: var(--color-black-50);
@@ -81,11 +77,11 @@
   }
 
   .img-wrapper {
-    max-width: none;
+    width: 414px;
   }
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <= 1024px) {
   .img-wrapper {
     width: 100%;
     height: 469px;
@@ -118,7 +114,7 @@
   }
 }
 
-@media screen and (width <= 576px) {
+@media screen and (width <= 480px) {
   .img-wrapper {
     height: 404px;
   }

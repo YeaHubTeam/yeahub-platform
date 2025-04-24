@@ -1,13 +1,13 @@
-import { LeftBlock } from '../LeftBlock/LeftBlock';
-import { RightBlock } from '../RightBlock/RightBlock';
+import { BannerContent } from '../BannerContent/BannerContent ';
+import { BannerImage } from '../BannerImage/BannerImage';
 
 import styles from './BannerBlock.module.css';
 
 export const BannerBlock = () => {
 	return (
 		<section className={styles['banner-block']}>
-			<LeftBlock />
-			<RightBlock />
+			<BannerContent />
+			<BannerImage />
 		</section>
 	);
 };

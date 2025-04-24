@@ -7,7 +7,7 @@
   background-color: var(--color-green-750);
 }
 
-@media screen and (width <= 576px) {
+@media screen and (width <= 480px) {
   .text {
     font-size: var(--font-size-p-xss);
   }

@@ -1,12 +1,8 @@
 .avatar-group {
-  display: flex;
   margin-bottom: 8px;
 }
 
 .avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-left: -13px;
   width: 36px;
   height: 36px;
@@ -31,7 +27,7 @@
   font-size: var(--font-size-p-s)
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <= 1024px) {
   .avatar-group {
     position: absolute;
     top: 40px;
@@ -41,7 +37,7 @@
   }
 }
 
-@media screen and (width <= 576px) {
+@media screen and (width <= 480px) {
   .avatar {
     margin-left: -9px;
     width: 24px;

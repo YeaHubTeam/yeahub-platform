@@ -10,11 +10,10 @@
 }
 
 .mobile {
-  display: none;
   font-weight: var(--font-weight-400);
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <= 1024px) {
   .description {
     margin-top: 0;
     max-width: none;
@@ -22,13 +21,8 @@
   }
 }
 
-@media screen and (width <= 576px) {
-  .desktop {
-    display: none;
-  }
-
+@media screen and (width <= 480px) {
   .mobile {
-    display: block;
     width: 92%;
   }
 
