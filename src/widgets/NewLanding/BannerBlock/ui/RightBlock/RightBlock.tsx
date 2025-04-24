@@ -26,7 +26,7 @@ export const RightBlock = () => {
 				<img className={styles.company} src={company} alt="Компания" fetchPriority="high" />
 				<img className={styles.progress} src={progress} alt="Прогресс" fetchPriority="high" />
 				<Sticker
-					text={t(Landing.BANNER_STIKER_CANDIDATE)}
+					text={t(Landing.BANNER_STICKER_CANDIDATE)}
 					classNames={styles['sticker-candidate']}
 				/>
 			</div>

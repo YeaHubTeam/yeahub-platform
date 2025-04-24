@@ -15,7 +15,7 @@ export const LeftBlock = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 	return (
 		<div className={styles['left-block']}>
-			<Sticker text={t(Landing.BANNER_STIKER_SKILL)} classNames={styles['sticker-skill']} />
+			<Sticker text={t(Landing.BANNER_STICKER_SKILL)} classNames={styles['sticker-skill']} />
 			<div className={styles['content-wrapper']}>
 				<AvatarGroup />
 				<BlockTitle />
