@@ -73,7 +73,7 @@
     "limit": "no more than {{maxFileMBSize}}mb"
   },
   "validation": {
-    "required": "This field is required",
+    "required": "This field is required to be completed",
     "email": "Invalid email format",
     "length": {
       "min_one": "Minimum length {{count}} character",

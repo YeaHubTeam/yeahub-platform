@@ -35,8 +35,8 @@ export const CompaniesTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			imageSrc: t(Companies.IMAGE),
-			title: t(Companies.TITLE),
+			imageSrc: t(Companies.ICON_TITLE),
+			title: t(Companies.TITLE_FULL),
 		};
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};

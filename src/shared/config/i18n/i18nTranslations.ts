@@ -510,10 +510,8 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 }
 export enum Companies {
-	IMAGE = 'image',
-	SORT_FIELD = 'sort.field',
-	TITLE = 'title',
 	TITLE_FULL = 'title.full',
+	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	ICON_TITLE = 'icon.title',
 	ICON_LABEL = 'icon.label',
