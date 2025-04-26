@@ -151,7 +151,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+								<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
 							</div>
 						)}
 					</FormControl>
