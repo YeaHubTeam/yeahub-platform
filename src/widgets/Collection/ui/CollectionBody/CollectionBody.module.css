@@ -29,6 +29,11 @@
   font-family: var( --font-family);
 }
 
+.no-questions {
+  flex: 0 1 358px;
+  text-align: center;
+}
+
 @media (width <= 480px) {
   .text {
     font-weight: var(--font-weight-400);
