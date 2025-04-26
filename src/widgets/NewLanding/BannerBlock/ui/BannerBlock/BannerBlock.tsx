@@ -1,13 +1,15 @@
-import { BannerContent } from '../BannerContent/BannerContent ';
+import { Flex } from '@/shared/ui/Flex';
+
+import { BannerContent } from '../BannerContent/BannerContent';
 import { BannerImage } from '../BannerImage/BannerImage';
 
 import styles from './BannerBlock.module.css';
 
 export const BannerBlock = () => {
 	return (
-		<section className={styles['banner-block']}>
+		<Flex justify="between" className={styles['banner-block']} componentType="section">
 			<BannerContent />
 			<BannerImage />
-		</section>
+		</Flex>
 	);
 };

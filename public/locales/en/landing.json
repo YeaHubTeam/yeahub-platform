@@ -93,7 +93,13 @@
   },
   "title": "Interview Training \nPlatform and question database for successful preparation",
   "description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
-  "button": "Join the community"
+  "button": "Join the community",
+	"img": {
+			"homepage": "Homepage banner",
+			"statistics": "Statistics",
+			"company": "Сompany",
+			"progress": "Progress"
+		}
 }
 
 }

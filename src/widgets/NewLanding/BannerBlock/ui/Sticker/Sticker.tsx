@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import classNames from 'classnames';
 
 import { Text } from '@/shared/ui/Text';
 
@@ -6,12 +6,12 @@ import styles from './Sticker.module.css';
 
 interface StickerProps {
 	text: string;
-	classNames?: string;
+	className?: string;
 }
 
-export const Sticker = ({ text, classNames }: StickerProps) => {
+export const Sticker = ({ text, className }: StickerProps) => {
 	return (
-		<div className={cn(styles.sticker, classNames)}>
+		<div className={classNames(styles.sticker, className)}>
 			<Text variant="body2" color="white-900" className={styles.text}>
 				{text}
 			</Text>

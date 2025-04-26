@@ -13,7 +13,7 @@
   font-weight: var(--font-weight-400);
 }
 
-@media screen and (width <= 1024px) {
+@media screen and (width < 1024px) {
   .description {
     margin-top: 0;
     max-width: none;
@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (width < 768px) {
   .mobile {
     width: 92%;
   }

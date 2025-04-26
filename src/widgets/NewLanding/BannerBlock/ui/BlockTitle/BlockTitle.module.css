@@ -16,7 +16,7 @@
   display: none;
 }
 
-@media screen and (width <= 1024px) {
+@media screen and (width < 1024px) {
   .title {
     max-width: none;
     text-align: center;
@@ -33,7 +33,7 @@
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (width < 768px) {
   .tablet {
     display: none;
   }

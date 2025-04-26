@@ -1,9 +1,4 @@
-.content-wrapper {
-  gap: 6px;
-}
-
-
-@media screen and (width <= 1024px) {
+@media screen and (width < 1024px) {
   .content-wrapper {
     align-items: center;
   }
@@ -20,10 +15,9 @@
   }
 }
 
-@media screen and (width <= 576px) {
+@media screen and (width < 768px) {
   .sticker-skill {
     top: 20px;
     left: 20px;
   }
-
 }

@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import company from '@/shared/assets/images/newLanding/company.avif';
-import personImg from '@/shared/assets/images/newLanding/personImg.avif';
-import progress from '@/shared/assets/images/newLanding/progress.avif';
-import statistics from '@/shared/assets/images/newLanding/statistics.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
+
+import company from '@/widgets/NewLanding/BannerBlock/model/assets/company.avif';
+import personImg from '@/widgets/NewLanding/BannerBlock/model/assets/personImg.avif';
+import progress from '@/widgets/NewLanding/BannerBlock/model/assets/progress.avif';
+import statistics from '@/widgets/NewLanding/BannerBlock/model/assets/statistics.avif';
 
 import { Sticker } from '../Sticker/Sticker';
 
@@ -14,21 +15,37 @@ import styles from './BannerImage.module.css';
 
 export const BannerImage = () => {
 	const { t } = useTranslation(i18Namespace.landing);
+
 	return (
 		<div className={styles['img-block']}>
 			<Flex justify="center" align="end" className={styles['img-wrapper']}>
 				<img
 					className={styles.wallpaper}
 					src={personImg}
-					alt="Улыбающийся пользователь, использующий наш продукт"
+					alt={t(Landing.BANNER_IMG_HOMEPAGE)}
 					fetchPriority="high"
 				/>
-				<img className={styles.statistics} src={statistics} alt="Статистика" fetchPriority="high" />
-				<img className={styles.company} src={company} alt="Компания" fetchPriority="high" />
-				<img className={styles.progress} src={progress} alt="Прогресс" fetchPriority="high" />
+				<img
+					className={styles.statistics}
+					src={statistics}
+					alt={t(Landing.BANNER_IMG_STATISTICS)}
+					fetchPriority="high"
+				/>
+				<img
+					className={styles.company}
+					src={company}
+					alt={t(Landing.BANNER_IMG_COMPANY)}
+					fetchPriority="high"
+				/>
+				<img
+					className={styles.progress}
+					src={progress}
+					alt={t(Landing.BANNER_IMG_PROGRESS)}
+					fetchPriority="high"
+				/>
 				<Sticker
 					text={t(Landing.BANNER_STICKER_CANDIDATE)}
-					classNames={styles['sticker-candidate']}
+					className={styles['sticker-candidate']}
 				/>
 			</Flex>
 		</div>

@@ -49,7 +49,7 @@
   object-fit: contain;
 }
 
-@media screen and (width <= 1200px) {
+@media screen and (width < 1200px) {
   .statistics {
     top: 60px;
     left: -72px;
@@ -81,7 +81,7 @@
   }
 }
 
-@media screen and (width <= 1024px) {
+@media screen and (width < 1024px) {
   .img-wrapper {
     width: 100%;
     height: 469px;
@@ -114,7 +114,7 @@
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (width < 768px) {
   .img-wrapper {
     height: 404px;
   }

@@ -9,6 +9,7 @@
   overflow: hidden;
   border:1px solid var(--color-white-900);
   border-radius: 50%;
+  background-color: var(--color-purple-900);
 }
 
 .avatar:first-child {
@@ -22,12 +23,11 @@
 }
 
 .avatar.count {
-  background-color: var(--color-purple-900);
   color: var(--color-white-900);
   font-size: var(--font-size-p-s)
 }
 
-@media screen and (width <= 1024px) {
+@media screen and (width < 1024px) {
   .avatar-group {
     position: absolute;
     top: 40px;
@@ -37,11 +37,15 @@
   }
 }
 
-@media screen and (width <= 480px) {
+@media screen and (width < 768px) {
   .avatar {
     margin-left: -9px;
     width: 24px;
     height: 24px;
+  }
+
+  .avatar.count {
+    font-size: var(--font-size-p-xs);
   }
 
   .avatar-group {
