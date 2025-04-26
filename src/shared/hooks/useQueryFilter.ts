@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import {
-	DEFAULT_PAGE,
-	DEFAULT_SPECIALIZATION_NUMBER,
-	DEFAULT_STATUS,
-} from '../constants/queryConstants';
+import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
@@ -97,21 +93,9 @@ export const useQueryFilter = () => {
 			const curFilter = newFilters[key as keyof FilterFromUser];
 
 			if (curFilter !== undefined && curFilter !== null) {
-				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, DEFAULT_PAGE);
-					return;
-				}
-
-				if (key === 'status' && newFilters.status === params.get('status')) {
-					params.set(key, DEFAULT_STATUS);
-					return;
-				}
-
 				if (key === 'tariff') {
 					params.set('isFree', curFilter.toString());
 					return;
-				} else {
-					params.set(key, curFilter.toString());
 				}
 
 				if (Array.isArray(curFilter)) {
