@@ -7,11 +7,13 @@ import { ExtraArgument } from '@/shared/config/store/types';
 import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
+import { Company } from '@/entities/company';
+
 import { deleteCompanyApiUrls } from '../model/constants/deleteCompanyConstants';
 
 const deleteCompanyApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		deleteCompany: builder.mutation<void, string>({
+		deleteCompany: builder.mutation<void, Company['id']>({
 			query: (companyId) => ({
 				url: route(deleteCompanyApiUrls.deleteCompany, companyId),
 				method: 'DELETE',

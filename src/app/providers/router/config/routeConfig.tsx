@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Collection from '@/shared/assets/icons/collection.svg';
+import Companies from '@/shared/assets/icons/Companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -23,6 +24,7 @@ import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CompaniesTablePage } from '@/pages/admin/CompaniesTablePage';
 import { CompanyCreatePage } from '@/pages/admin/CompanyCreatePage';
 import { CompanyDetailPage } from '@/pages/admin/CompanyDetailPage';
 import { CompanyEditPage } from '@/pages/admin/CompanyEditPage';
@@ -165,6 +167,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.collections.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 		icon: Collection,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.companies.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
+		icon: Companies,
 	},
 ];
 
@@ -331,16 +339,20 @@ export const router = createBrowserRouter([
 				element: <Outlet />,
 				children: [
 					{
+						index: true,
+						element: <CompaniesTablePage />,
+					},
+					{
+						path: ROUTES.admin.companies.create.route,
+						element: <CompanyCreatePage />,
+					},
+					{
 						path: ROUTES.admin.companies.edit.route,
 						element: <CompanyEditPage />,
 					},
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
-					},
-					{
-						path: ROUTES.admin.companies.create.route,
-						element: <CompanyCreatePage />,
 					},
 				],
 			},

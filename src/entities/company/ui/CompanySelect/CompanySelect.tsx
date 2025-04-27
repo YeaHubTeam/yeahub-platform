@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Company } from '@/shared/config/i18n/i18nTranslations';
+import { Companies } from '@/shared/config/i18n/i18nTranslations';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetCompaniesListQuery } from '../../api/companyApi';
@@ -20,7 +20,7 @@ type CompanySelectProps = Omit<
 };
 
 export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps) => {
-	const { t } = useTranslation(i18Namespace.company);
+	const { t } = useTranslation(i18Namespace.companies);
 	const { data: companies } = useGetCompaniesListQuery({ limit: 100 });
 
 	const handleChange = (newValue: string | undefined) => {
@@ -37,30 +37,37 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 
 	const options = useMemo(() => {
 		return (companies?.data || []).map((company) => ({
-			label: company.title,
-			value: company.id,
+			label: company.title ?? '',
+			value: String(company.id),
 		}));
 	}, [companies]);
 
 	const companiesDictionary = useMemo(() => {
 		return companies?.data?.reduce(
 			(acc, company) => {
-				acc[company.id] = { id: company.id, title: company.title, imageSrc: company.imageSrc };
+				acc[company.id] = {
+					id: company.id,
+					title: company.title ?? '',
+					imageSrc: company.imageSrc,
+				};
 				return acc;
 			},
-			{} as Record<string, { id: string; title: string; imageSrc?: string | null | undefined }>,
+			{} as Record<
+				string,
+				{ id: string | number; title: string; imageSrc?: string | null | undefined }
+			>,
 		);
 	}, [companies]);
 
 	return (
 		<SelectWithChips
-			title={t(Company.SELECT_SELECTED)}
+			title={t(Companies.SELECT_SELECTED)}
 			options={options}
 			onChange={handleChange}
 			selectedItems={value ? [value] : []}
 			handleDeleteItem={handleDeleteItem}
 			itemsDictionary={companiesDictionary}
-			placeholder={options.length ? t(Company.SELECT_CHOOSE) : t(Company.SELECT_EMPTY)}
+			placeholder={options.length ? t(Companies.SELECT_CHOOSE) : t(Companies.SELECT_EMPTY)}
 			disabled={disabled}
 			className={styles.select}
 		/>

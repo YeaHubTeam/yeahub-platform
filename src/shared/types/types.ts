@@ -25,15 +25,14 @@ export interface GetLoginError {
 	};
 }
 
-export type SelectedAdminEntity = SelectedEntity<number>;
-
 export interface SelectedEntity<Id extends string | number> {
 	id: Id;
 	title?: string;
 }
-
-export type SelectedAdminEntities = SelectedAdminEntity[];
 export type SelectedEntities<Id extends string | number> = SelectedEntity<Id>[];
+
+export type SelectedAdminEntity = SelectedEntity<number>;
+export type SelectedAdminEntities = SelectedAdminEntity[];
 
 export type Pallete =
 	| 'purple-900'

@@ -4,11 +4,11 @@ import { route } from '@/shared/helpers/route';
 
 import { companyApiUrls } from '../model/constants/companyConstants';
 import {
-	GetCompaniesListParamsRequest,
-	GetCompaniesListResponse,
 	GetCompanyByIdRequest,
 	GetCompanyByIdResponse,
-} from '../model/types/company';
+	GetCompaniesListParamsRequest,
+	GetCompaniesListResponse,
+} from '../model/types/companyTypes';
 
 const companyApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
