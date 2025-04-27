@@ -9,6 +9,7 @@ type FlexWrap = 'wrap' | 'nowrap';
 type FlexDirection = 'row' | 'column';
 type FlexGap =
 	| '4'
+	| '6'
 	| '8'
 	| '10'
 	| '12'
@@ -50,6 +51,7 @@ const wrapClasses: Record<FlexWrap, string> = {
 
 const gapClasses: Record<FlexGap, string> = {
 	'4': styles.gap4,
+	'6': styles.gap6,
 	'8': styles.gap8,
 	'10': styles.gap10,
 	'12': styles.gap12,

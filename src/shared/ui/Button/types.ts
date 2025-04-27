@@ -9,14 +9,15 @@ export type VariantType =
 	| 'destructive-tertiary'
 	| 'link'
 	| 'link-gray'
-	| 'link-purple';
+	| 'link-purple'
+	| 'primary-inverse';
 
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	variant?: VariantType;
 	preffix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	fullWidth?: boolean;
-	size?: 'large' | 'medium' | 'small';
+	size?: 'large' | 'medium' | 'small' | 'x-large';
 	badge?: string | number;
 	destructive?: boolean;
 }

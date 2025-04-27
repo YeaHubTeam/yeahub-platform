@@ -569,6 +569,16 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+	// для нового лендинга ниже
+	BANNER_STICKER_SKILL = 'banner.sticker.skill',
+	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
+	BANNER_TITLE = 'banner.title',
+	BANNER_DESCRIPTION = 'banner.description',
+	BANNER_BUTTON = 'banner.button',
+	BANNER_IMG_HOMEPAGE = 'banner.img.homepage',
+	BANNER_IMG_STATISTICS = 'banner.img.statistics',
+	BANNER_IMG_COMPANY = 'banner.img.company',
+	BANNER_IMG_PROGRESS = 'banner.img.progress',
 }
 
 export enum Subscription {
