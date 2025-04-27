@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 export interface Company {
 	id: string;
 	title: string;
@@ -23,3 +25,13 @@ export type CreateOrEditCompanyFormValues = Pick<
 	Company,
 	'id' | 'title' | 'legalName' | 'description' | 'imageSrc' | 'inn' | 'kpp'
 >;
+
+export type GetCompaniesListResponse = Response<Company[]>;
+
+export type GetCompaniesListParamsRequest = {
+	page?: number;
+	limit?: number;
+	titleOrLegalNameOrDescriptionSearch?: string;
+	inn?: string;
+	kpp?: string;
+};

@@ -43,6 +43,24 @@ export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) =
 					})}
 				</ul>
 			</div>
+			{collection.company && (
+				<div className={styles.wrapper}>
+					<Text variant="body3" color="black-700" className={styles.title}>
+						{t(Collections.COMPANY_TITLE)}:
+					</Text>
+					<Chip
+						className={styles.chip}
+						prefix={
+							collection.company.imageSrc && (
+								<img src={collection.company.imageSrc} alt={collection.company.title} />
+							)
+						}
+						label={collection.company?.title}
+						theme="primary"
+						active
+					/>
+				</div>
+			)}
 			<div className={styles.wrapper}>
 				<Text variant="body3" color="black-700" className={styles.title}>
 					{t(Collections.ADDITIONAL_INFO_ACCESS)}

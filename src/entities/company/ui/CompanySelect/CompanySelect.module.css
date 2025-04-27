@@ -1,0 +1,12 @@
+.select {
+  width: 100%;
+  max-width: 408px;
+}
+
+.select > div > div {
+  border-radius: 12px;
+}
+
+.select select {
+  height: 46px;
+}

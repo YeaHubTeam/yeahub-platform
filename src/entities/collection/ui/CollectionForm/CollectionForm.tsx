@@ -15,6 +15,8 @@ import { Radio } from '@/shared/ui/Radio';
 import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { CompanySelect } from '@/entities/company';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
@@ -94,6 +96,19 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 					</Flex>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} hasError={hasError} />}
+					</FormControl>
+				</Flex>
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.COMPANY_TITLE)} className={styles.title} />
+						<Text text={t(Collections.COMPANY_LABEL)} className={styles.description} />
+					</Flex>
+					<FormControl name="companyId" control={control}>
+						{({ onChange, value }) => (
+							<div className={styles.select}>
+								<CompanySelect onChange={onChange} value={value} />
+							</div>
+						)}
 					</FormControl>
 				</Flex>
 				<Flex direction="column" gap="8">

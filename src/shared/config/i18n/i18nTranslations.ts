@@ -505,6 +505,8 @@ export enum Collections {
 	KEYWORDS_LABEL = 'keywords.label',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
+	COMPANY_TITLE = 'company.title',
+	COMPANY_LABEL = 'company.label',
 }
 
 export enum Company {
@@ -514,6 +516,9 @@ export enum Company {
 	ICON_LABEL = 'icon.label',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
 }
 
 export enum Landing {
