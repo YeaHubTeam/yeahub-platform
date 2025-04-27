@@ -36,6 +36,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 	const collectionId = watch('id');
+	const specializations = watch('specializations');
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({
 		collectionId: collectionId!,
 	});
@@ -165,7 +166,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+								<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
 							</div>
 						)}
 					</FormControl>
@@ -189,6 +190,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 					selectedQuestions={selectedQuestions}
 					handleSelectQuestion={handleSelectQuestion}
 					handleUnselectQuestion={handleUnselectQuestion}
+					specializations={specializations}
 				/>
 			</Flex>
 		</>

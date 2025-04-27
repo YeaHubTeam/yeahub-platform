@@ -22,12 +22,14 @@ interface ChooseQuestionsDrawerProps {
 	selectedQuestions: { title: string; id: number }[];
 	handleSelectQuestion: (question: { title: string; id: number }) => void;
 	handleUnselectQuestion: (id: number) => void;
+	specializations?: number[];
 }
 
 export const ChooseQuestionsDrawer = ({
 	selectedQuestions,
 	handleSelectQuestion,
 	handleUnselectQuestion,
+	specializations,
 }: ChooseQuestionsDrawerProps) => {
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
@@ -35,7 +37,11 @@ export const ChooseQuestionsDrawer = ({
 
 	const { isOpen, onToggle, onClose } = useModal();
 
-	const questions = useGetQuestionsListQuery({ title: collectionSearch, limit: 10 });
+	const questions = useGetQuestionsListQuery({
+		title: collectionSearch,
+		limit: 10,
+		specialization: specializations?.length ? specializations : undefined,
+	});
 
 	const handleCollectionSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCollectionSearch(e.target.value);
