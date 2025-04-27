@@ -12,6 +12,7 @@ const tagNameByVariants: Record<VariantType, 'button' | 'a'> = {
 	link: 'a',
 	'link-gray': 'a',
 	'link-purple': 'a',
+	'primary-inverse': 'button',
 };
 
 export const getTagName = (variant: keyof typeof tagNameByVariants): 'button' | 'a' =>

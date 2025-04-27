@@ -26,6 +26,18 @@
 .chip {
   cursor: pointer;
   padding: 12px 10px;
+
+  &:has(>div>img){
+    padding: 6px 12px 6px 6px;
+    min-height: 47px;
+    border-radius: 12px;
+  }
+
+  img {
+    max-width: 35px;
+    max-height: 35px;
+    border-radius: 6px;
+  }
 }
 
 .questions-chip{

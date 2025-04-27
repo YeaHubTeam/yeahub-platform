@@ -338,7 +338,8 @@ export enum Questions {
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
 	PREVIEW_LINK = 'preview.link',
-	PREVIEW_EMPTY = 'preview.empty',
+	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
+	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -508,6 +509,8 @@ export enum Collections {
 	KEYWORDS_LABEL = 'keywords.label',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
+	COMPANY_TITLE = 'company.title',
+	COMPANY_LABEL = 'company.label',
 }
 export enum Companies {
 	TITLE_FULL = 'title.full',
@@ -517,6 +520,9 @@ export enum Companies {
 	ICON_LABEL = 'icon.label',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
 }
 
 export enum Landing {
@@ -567,6 +573,16 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+	// для нового лендинга ниже
+	BANNER_STICKER_SKILL = 'banner.sticker.skill',
+	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
+	BANNER_TITLE = 'banner.title',
+	BANNER_DESCRIPTION = 'banner.description',
+	BANNER_BUTTON = 'banner.button',
+	BANNER_IMG_HOMEPAGE = 'banner.img.homepage',
+	BANNER_IMG_STATISTICS = 'banner.img.statistics',
+	BANNER_IMG_COMPANY = 'banner.img.company',
+	BANNER_IMG_PROGRESS = 'banner.img.progress',
 }
 
 export enum Subscription {

@@ -63,6 +63,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
+import { NewLandingPage } from '@/pages/landing/NewLandingPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -184,6 +185,7 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <LandingMainPage />,
 			},
+			{ path: '/newLanding', element: <NewLandingPage /> },
 			{
 				path: '*',
 				element: <Error404Page />,

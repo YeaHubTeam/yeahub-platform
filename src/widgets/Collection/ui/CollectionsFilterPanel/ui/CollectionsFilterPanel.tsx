@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
+import { useCurrentProject } from '@/shared/hooks';
 import { useDebounce } from '@/shared/hooks/useDebounced';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
@@ -36,6 +37,7 @@ export const CollectionsFilterPanel = ({
 	const [localSpecialization, setLocalSpecialization] = useState<number | undefined>(
 		Array.isArray(filterSpecialization) ? filterSpecialization[0] : filterSpecialization,
 	);
+	const project = useCurrentProject();
 
 	const handleSearch = (value: string) => {
 		onChangeSearch(value);
@@ -62,10 +64,13 @@ export const CollectionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
-			<ChooseSpecialization
-				selectedSpecialization={localSpecialization}
-				onChangeSpecialization={handleSpecializationChange}
-			/>
+			{project === 'landing' && (
+				<ChooseSpecialization
+					selectedSpecialization={localSpecialization}
+					onChangeSpecialization={handleSpecializationChange}
+				/>
+			)}
+
 			{/* <ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} /> */}
 		</div>
 	);

@@ -1,3 +1,5 @@
+import { Response } from '@/shared/types/types';
+
 export interface Company {
 	id: string | number;
 	title?: string;
@@ -11,7 +13,6 @@ export interface Company {
 }
 
 export type GetCompanyByIdResponse = Company;
-
 export type ErrorResponce = {
 	message: string;
 };
@@ -20,19 +21,15 @@ export type GetCompanyByIdRequest = {
 	companyId: string;
 };
 
+export type CreateOrEditCompanyFormValues = Omit<Company, 'createdAt' | 'updatedAt'>;
+
+export type GetCompaniesListResponse = Response<Company[]>;
+
 export interface GetCompaniesListParamsRequest {
 	limit?: number;
+	page?: number;
 	titleOrLegalNameOrDescriptionSearch?: string;
 	status?: string;
+	inn?: string;
+	kpp?: string;
 }
-
-export interface GetCompaniesListResponse {
-	data: Company[];
-	page: number;
-	limit: number;
-	total: number;
-}
-
-export type CreateOrEditCompanyFormValues = Pick<Company, 'id' | 'title' | 'imageSrc'> & {
-	companyImage?: string | null;
-};
