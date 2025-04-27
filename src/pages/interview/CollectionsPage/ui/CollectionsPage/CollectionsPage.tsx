@@ -1,7 +1,13 @@
+import classNames from 'classnames';
+
+import { useModal, useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
@@ -20,6 +26,9 @@ const CollectionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 
 	const specializationId = useAppSelector(getSpecializationId);
+
+	const { isOpen, onToggle, onClose } = useModal();
+	const { isMobileS } = useScreenSize();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
@@ -59,6 +68,19 @@ const CollectionsPage = () => {
 		return null;
 	}
 
+	const renderFilters = () => (
+		<CollectionsFilterPanel
+			onChangeSearch={onChangeSearchParams}
+			onChangeSpecialization={onChangeSpecialization}
+			onChangeIsFree={onChangeIsFree}
+			filter={{
+				title: filter.title,
+				specialization: filter.specialization,
+				tariff: filter.isFree,
+			}}
+		/>
+	);
+
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
@@ -78,21 +100,29 @@ const CollectionsPage = () => {
 					)}
 				</Card>
 			</div>
-
-			<div className={styles['additional-info-wrapper']}>
-				<Card className={styles.search}>
-					<CollectionsFilterPanel
-						onChangeSearch={onChangeSearchParams}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						filter={{
-							title: filter.title,
-							specialization: filter.specialization,
-							tariff: filter.isFree,
-						}}
-					/>
-				</Card>
+			<div className={styles['filters-mobile']}>
+				<IconButton
+					className={classNames({ [styles.active]: isOpen })}
+					icon={<Icon icon="slidersHorizontal" color="black-700" />}
+					aria-label="go to filters"
+					size="small"
+					form="square"
+					variant="tertiary"
+					onClick={onToggle}
+				/>
+				<Drawer
+					rootName={isMobileS ? 'body' : 'mainLayout'}
+					className={classNames(styles.drawer, {
+						[styles['drawer-mobile']]: isMobileS,
+					})}
+					isOpen={isOpen}
+					onClose={onClose}
+					hasCloseButton
+				>
+					<Card className={styles['additional-info-wrapper--mobile']}>{renderFilters()}</Card>
+				</Drawer>
 			</div>
+			<Card className={styles['additional-info-wrapper']}>{renderFilters()}</Card>
 		</section>
 	);
 };
