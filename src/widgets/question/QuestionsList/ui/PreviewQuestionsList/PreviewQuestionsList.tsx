@@ -37,7 +37,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 	if (isEmptyData) {
 		return (
 			<Text variant="body4" color="black-700" className={styles['no-questions']}>
-				{t(Questions.PREVIEW_EMPTY)}
+				{t(Questions.PREVIEW_EMPTY_SPECIALIZATION)}
 			</Text>
 		);
 	}
