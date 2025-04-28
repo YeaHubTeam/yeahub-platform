@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { CollectionPreview } from '@/entities/collection';
+import { getSpecializationId } from '@/entities/profile';
 
 import styles from './PreviewCollectionsList.module.css';
 
@@ -18,8 +20,12 @@ export interface PreviewCollectionsListProps {
 
 export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProps) => {
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
+	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data: allCollections, isSuccess } = useGetCollectionsListQuery({ limit: 3 });
+	const { data: allCollections, isSuccess } = useGetCollectionsListQuery({
+		limit: 3,
+		specializations: specializationId,
+	});
 
 	const collections = allCollections?.data ?? [];
 
