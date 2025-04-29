@@ -39,7 +39,7 @@ const quizApi = baseApi.injectEndpoints({
 			query: ({ profileId, ...params }) => {
 				return {
 					url: route(quizApiUrls.createNewQuiz, profileId),
-					params,
+					params: { ...params, mode: 'RANDOM' },
 				};
 			},
 			providesTags: [ApiTags.NEW_QUIZ],
