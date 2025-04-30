@@ -1,11 +1,7 @@
-import { SkillsBlock } from '@/widgets/Landing/SkillsBlock';
+import { AboutQuestionsBlock } from '@/widgets/Landing/AboutQuestionsBlock';
 
 const PageTemporary = () => {
-	return (
-		<>
-			<SkillsBlock />
-		</>
-	);
+	return <AboutQuestionsBlock />;
 };
 
 export default PageTemporary;

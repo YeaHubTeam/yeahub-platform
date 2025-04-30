@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 
 import { Icon } from '@/shared/ui/Icon';
@@ -9,7 +9,19 @@ import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 	(
-		{ theme = 'primary', label, className, disabled, active, prefix, onClick, onDelete, ...props },
+		{
+			theme = 'primary',
+			label,
+			labelClassName = '',
+			className,
+			disabled,
+			active,
+			prefix,
+			prefixWrapperClassName = '',
+			onClick,
+			onDelete,
+			...props
+		},
 		ref,
 	): JSX.Element => {
 		const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -22,7 +34,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 		return (
 			<div
 				{...props}
-				className={cn(
+				className={classNames(
 					styles['chip-wrapper'],
 					{
 						[styles['chip-primary']]: theme === 'primary',
@@ -40,9 +52,15 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				tabIndex={0}
 				ref={ref}
 			>
-				{prefix && <div className={styles['chip-prefix']}>{prefix}</div>}
+				{prefix && (
+					<div className={classNames(styles['chip-prefix'], prefixWrapperClassName)}>{prefix}</div>
+				)}
 				{label && (
-					<Text variant="body3-accent" color="black-800" className={styles['chip-label']}>
+					<Text
+						variant="body3-accent"
+						color="black-800"
+						className={classNames(styles['chip-label'], labelClassName)}
+					>
 						{label}
 					</Text>
 				)}{' '}
