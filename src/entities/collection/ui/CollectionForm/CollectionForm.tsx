@@ -186,12 +186,17 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 						}}
 					</FormControl>
 				</Flex>
-				<ChooseQuestionsDrawer
-					selectedQuestions={selectedQuestions}
-					handleSelectQuestion={handleSelectQuestion}
-					handleUnselectQuestion={handleUnselectQuestion}
-					specializations={specializations}
-				/>
+
+				<FormControl name="questions" control={control}>
+					{() => (
+						<ChooseQuestionsDrawer
+							selectedQuestions={selectedQuestions}
+							handleSelectQuestion={handleSelectQuestion}
+							handleUnselectQuestion={handleUnselectQuestion}
+							specializations={specializations}
+						/>
+					)}
+				</FormControl>
 			</Flex>
 		</>
 	);

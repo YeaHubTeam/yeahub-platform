@@ -17,8 +17,14 @@ const CollectionCreateFormHeader: React.FC<CollectionCreateFormHeaderProps> = ()
 	const [createCollectionMutation, { isLoading }] = useCreateCollectionMutation();
 	const { t } = useTranslation([i18Namespace.collection, i18Namespace.translation]);
 	const { handleSubmit } = useFormContext<CollectionCreateFormValues>();
+
 	const onCreateCollection = async (data: CollectionCreateFormValues) => {
-		await createCollectionMutation({ ...data });
+		try {
+			await createCollectionMutation({ ...data }).unwrap();
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
 	};
 
 	return (
