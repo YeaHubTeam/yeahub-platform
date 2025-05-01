@@ -16,7 +16,7 @@ export const SkillChip = ({ src, alt, showLabel = false, highlighted = false }: 
 		[styles.highlighted]: highlighted,
 		[styles['chip-with-label']]: showLabel,
 	});
-	const prefixWrapperClasses = classNames(styles['chip-gap'], {
+	const prefixWrapperClass = classNames(styles['chip-gap'], {
 		[styles['chip-empty-gap']]: !showLabel,
 	});
 	const labelClass = classNames({
@@ -28,7 +28,7 @@ export const SkillChip = ({ src, alt, showLabel = false, highlighted = false }: 
 		<Chip
 			className={chipClasses}
 			label={showLabel ? alt : ''}
-			prefixWrapperClassName={prefixWrapperClasses}
+			prefixWrapperClassName={prefixWrapperClass}
 			labelClassName={labelClass}
 			prefix={<img className={iconClasses} src={src} alt={alt} loading="lazy" />}
 		/>

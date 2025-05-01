@@ -14,7 +14,8 @@
 @media screen and (width < 1024px) {
   .container {
     margin: 76px auto;
-    max-width: var(--container-width-tablet);
+    padding: 0 30px;
+    max-width: var(--container-width-mobile);
   }
 }
 

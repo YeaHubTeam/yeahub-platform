@@ -1,3 +1,26 @@
 .list {
+  padding-bottom: 5px;
   overflow: hidden;
 }
+
+.slider-container {
+  cursor: pointer;
+}
+
+/* stylelint-disable selector-pseudo-class-no-unknown */
+.slider-container :global(.slick-slide) > div {
+  margin: 0 8px;
+  width: auto;
+}
+
+.slider-container :global(.slick-list) {
+  margin-left: -8px;
+  overflow: visible;
+}
+
+.slider-container :global(.slick-track) {
+  display: flex;
+  flex-direction: row;
+}
+
+
