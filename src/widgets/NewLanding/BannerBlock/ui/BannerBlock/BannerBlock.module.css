@@ -1,0 +1,20 @@
+.banner-block {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: var(--color-purple-700);
+}
+
+@media screen and (width < 1024px) {
+  .banner-block {
+    position: relative;
+    flex-direction: column-reverse;
+    gap: 22px;
+  }
+}
+
+@media screen and (width < 767px) {
+  .banner-block {
+    gap: 17px;
+    padding: 10px;
+  }
+}

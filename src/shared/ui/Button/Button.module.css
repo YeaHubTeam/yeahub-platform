@@ -21,6 +21,12 @@
   }
 }
 
+.button-x-large {
+  height: 60px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-l);
+}
+
 .button-large {
   height: 48px;
 }
@@ -80,6 +86,21 @@
 
   &:disabled {
     background-color: var(--button-background-primary-disabled);
+  }
+}
+
+.button-primary-inverse {
+  background-color: var(--button-background-primary-inverse);
+  color: var(--button-text-color-primary-inverse);
+
+  &:hover {
+    background-color: var(--button-background-primary-inverse-hover);
+    color: var(--button-text-color-primary-inverse-hover);
+  }
+
+  &:active {
+    background-color: var(--button-background-primary-inverse-active);
+    color: var(--button-text-color-primary-inverse-active);
   }
 }
 

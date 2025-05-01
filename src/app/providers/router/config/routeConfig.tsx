@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Collection from '@/shared/assets/icons/collection.svg';
+import Companies from '@/shared/assets/icons/Companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -23,6 +24,7 @@ import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CompaniesTablePage } from '@/pages/admin/CompaniesTablePage';
 import { CompanyCreatePage } from '@/pages/admin/CompanyCreatePage';
 import { CompanyDetailPage } from '@/pages/admin/CompanyDetailPage';
 import { CompanyEditPage } from '@/pages/admin/CompanyEditPage';
@@ -61,6 +63,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
+import { NewLandingPage } from '@/pages/landing/NewLandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
@@ -166,6 +169,12 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 		icon: Collection,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.companies.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
+		icon: Companies,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -181,6 +190,7 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <LandingMainPage />,
 			},
+			{ path: '/newLanding', element: <NewLandingPage /> },
 			{
 				path: '*',
 				element: <Error404Page />,
@@ -334,16 +344,20 @@ export const router = createBrowserRouter([
 				element: <Outlet />,
 				children: [
 					{
+						index: true,
+						element: <CompaniesTablePage />,
+					},
+					{
+						path: ROUTES.admin.companies.create.route,
+						element: <CompanyCreatePage />,
+					},
+					{
 						path: ROUTES.admin.companies.edit.route,
 						element: <CompanyEditPage />,
 					},
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
-					},
-					{
-						path: ROUTES.admin.companies.create.route,
-						element: <CompanyCreatePage />,
 					},
 				],
 			},
