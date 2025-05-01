@@ -13,7 +13,7 @@ export const SkillsBlock = () => {
 			</Flex>
 			<Flex gap={'16'}>
 				<SkillChip src={skills.git.src} alt={skills.git.alt} />
-				<SkillChip src={skills.react.src} alt={skills.react.alt} highlighted />
+				<SkillChip src={skills.react.src} alt={skills.react.alt} />
 				<SkillChip src={skills.html.src} alt={skills.html.alt} />
 			</Flex>
 			<Flex gap={'16'}>

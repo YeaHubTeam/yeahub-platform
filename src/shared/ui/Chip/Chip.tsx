@@ -10,14 +10,13 @@ import { ChipProps } from './types';
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 	(
 		{
+			variant = 'small',
 			theme = 'primary',
 			label,
-			labelClassName = '',
 			className,
 			disabled,
 			active,
 			prefix,
-			prefixWrapperClassName = '',
 			onClick,
 			onDelete,
 			...props
@@ -36,8 +35,10 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				{...props}
 				className={classNames(
 					styles['chip-wrapper'],
+					styles[variant],
 					{
 						[styles['chip-primary']]: theme === 'primary',
+						[styles['chip-outlined']]: theme === 'outlined',
 						[styles['chip-clickable']]: onClick,
 						[styles['chip-disabled']]: disabled,
 						[styles['chip-active']]: active,
@@ -53,14 +54,10 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				ref={ref}
 			>
 				{prefix && (
-					<div className={classNames(styles['chip-prefix'], prefixWrapperClassName)}>{prefix}</div>
+					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
 				)}
 				{label && (
-					<Text
-						variant="body3-accent"
-						color="black-800"
-						className={classNames(styles['chip-label'], labelClassName)}
-					>
+					<Text variant="body3-accent" color="black-800" className={styles['chip-label']}>
 						{label}
 					</Text>
 				)}{' '}

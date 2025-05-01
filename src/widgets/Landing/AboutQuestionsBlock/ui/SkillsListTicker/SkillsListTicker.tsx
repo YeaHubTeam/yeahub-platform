@@ -13,7 +13,7 @@ export const SkillsListTicker = () => {
 		<div className={styles.list}>
 			<Slider {...skillsTickerSliderSettings} className={styles['slider-container']}>
 				{skillsList.map(({ src, alt }, index) => (
-					<SkillChip key={index} src={src} alt={alt} showLabel highlighted={index === 0} />
+					<SkillChip key={index} src={src} alt={alt} showLabel />
 				))}
 			</Slider>
 		</div>

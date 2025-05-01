@@ -22,7 +22,6 @@ export const SpecializationBlock = () => {
 					src={specializations.frontend.src}
 					alt={specializations.frontend.alt}
 					showLabel
-					highlighted
 				/>
 				<SkillChip
 					src={specializations.gameDevelopment.src}

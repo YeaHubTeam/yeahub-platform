@@ -1,40 +1,7 @@
 .chip {
-  padding: 7px;
-  height: 48px;
   box-shadow: var(--main-shadow);
   border: none;
   pointer-events: none;
 }
 
-.chip-with-label {
-  padding: 6px;
-  height: 47px;
-}
-
-.icon {
-  min-width: 34px;
-  min-height: 34px;
-  border-radius: 6px;
-}
-
-.icon-with-label {
-  min-width: 35px;
-  min-height: 35px;
-}
-
-.chip-gap {
-  margin-right: 6px;
-}
-
-.chip-empty-gap {
-  margin-right: 0;
-}
-
-.chip.highlighted {
-  background: var(--background-primary, #6A0BFF);
-}
-
-.highlighted-with-label-color {
-  color: var(--text-color-white, #FFF);
-}
 
