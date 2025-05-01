@@ -80,6 +80,7 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+import { InterviewTrainerBlock } from '@/widgets/Landing/InterviewTrainerBlock';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -183,6 +184,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.docs.page,
 				element: <DocsPage />,
+			},
+			{
+				path: '/test',
+				element: <InterviewTrainerBlock />,
 			},
 			{
 				path: ROUTES.questions.route,

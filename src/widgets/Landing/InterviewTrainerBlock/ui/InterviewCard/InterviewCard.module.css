@@ -1,0 +1,117 @@
+.card-image {
+  box-sizing: border-box;
+  width: 85%;
+  box-shadow: var(--main-shadow);
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 213px;
+  border-radius: 12px;
+  background-color: var(--background-light-block);
+}
+
+.card-text {
+  align-self: flex-end;
+  width: 280px;
+  height: 162px;
+}
+
+.card {
+  column-gap: 20px;
+  padding: 16px;
+  box-sizing: border-box;
+  height: 261px;
+  box-shadow: var(--main-shadow);
+  border-radius: 20px;
+  background-color: var(--background-block);
+}
+
+.text-icon {
+  position: relative;
+  left: 5px;
+  z-index: 2;
+  display: inline-block;
+}
+
+.text-icon::before {
+  position: absolute;
+  top: -4px;
+  left: -5px;
+  z-index: -1;
+  display: block;
+  width: 34px;
+  height: 32px;
+  border-radius: 8px;
+  content: '';
+}
+
+.text-icon.icon-settings::before { 
+  box-shadow: 0 2px 0 0 var(--color-yellow-900);
+  background-color: var(--icon-background-yellow)
+}
+
+.text-icon.icon-student::before { 
+  box-shadow: 0 2px 0 0 var(--svg-color-green);
+  background-color: var(--icon-background-green);
+}
+
+@media screen and (width <= 1440px) {
+  .image-wrapper {
+    width: 231px;
+    height: 198px;
+  }
+
+  .card-text {
+    width: 247px;
+    height: 178px;
+  }
+
+  .card {
+    height: 231px;
+  }
+}
+
+@media screen and (width <= 1023px) {
+  .image-wrapper {
+    width: 250px;
+    height: 213px;
+  }
+
+  .card-text {
+    width: 406px;
+    height: 144px;
+  }
+
+  .card {
+    height: auto;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .card-text {
+    width: 100%;
+    height: auto;
+  }
+
+  .image-wrapper {
+    min-width: 320px;
+    min-height: 273px;
+  }
+    
+  .card-image {
+    width: 90%;
+    height: 90%;
+  }
+
+  .card {
+    padding: 10px;
+    height: 450px;
+  }
+}
