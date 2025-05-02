@@ -10,6 +10,8 @@
     }
   },
   "questions": {
+		"title": "interview\nquestions",
+		"description": "We have collected 10,000+ questions from real IT interviews. Choose your specialization, adjust the difficulty level, and prepare for an interview in practice.",
     "first": "What is Virtual DOM, and how does it work?",
     "second": {
       "title": "What types of data are there in JS?",
@@ -81,25 +83,36 @@
       "second": "Identify your current level and identify knowledge gaps for more focused learning or job search preparation."
     }
   },
+	"specialization": {
+		"title": "Choose your\nspecialization",
+		"description": "Questions for 20+ IT-\nareas"
+	},
+	"skills": {
+		"title": "Master key\nskills",
+		"description": "50+ high-demand\ntechnologies: JavaScript, React, Python, SQL and others"
+	},
+	"filters": {
+		"title": "Flexible filtering",
+		"description": "Convenient filtering — choose questions based on complexity, popularity, and relevance"
+	},
   "footer": {
     "slogan": "Choose what IT will be like tomorrow, together with us",
     "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
     "docs": "Documents"
   },
 	"banner": {
-  "sticker": {
-    "skill": "YeaHub — level up your skills",
-    "candidate": "Candidate"
-  },
-  "title": "Interview Training \nPlatform and question database for successful preparation",
-  "description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
-  "button": "Join the community",
-	"img": {
+		"sticker": {
+			"skill": "YeaHub — level up your skills",
+			"candidate": "Candidate"
+		},
+		"title": "Interview Training \nPlatform and question database for successful preparation",
+		"description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
+		"button": "Join the community",
+		"img": {
 			"homepage": "Homepage banner",
 			"statistics": "Statistics",
 			"company": "Сompany",
 			"progress": "Progress"
 		}
-}
-
+	}
 }

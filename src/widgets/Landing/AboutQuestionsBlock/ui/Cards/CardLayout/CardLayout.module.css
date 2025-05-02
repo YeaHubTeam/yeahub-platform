@@ -1,0 +1,29 @@
+.card {
+  flex-shrink: 0;
+  width: 289px;
+  height: 371px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.offset {
+  margin-left: -118px;
+}
+
+.title {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  line-height: 105%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-xs);
+}
+
+.description {
+  line-height: 122%;
+}
+
+@media screen and (width < 768px) {
+  .card {
+    padding: 24px;
+  }
+}
