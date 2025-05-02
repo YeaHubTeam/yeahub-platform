@@ -82,7 +82,7 @@ export const CollectionPage = () => {
 	const renderHeaderAndActions = () => (
 		<>
 			<CollectionHeader
-				collection={collection}
+				imageSrc={collection.imageSrc || collection.company?.imageSrc}
 				description={collection.description}
 				title={collection.title}
 			/>

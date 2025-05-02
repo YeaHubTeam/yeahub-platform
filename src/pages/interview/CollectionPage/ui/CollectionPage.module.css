@@ -4,7 +4,8 @@
   width: 100%;
 }
 
-.mobile, .tablet {
+.mobile,
+.tablet {
   flex-direction: column;
 }
 
@@ -21,16 +22,11 @@
 }
 
 .additional {
-  display: flex;           
+  display: flex;
   flex-direction: column;
   gap: 20px;
   width: 360px;
-  height: auto;
-}
-
-.additional-info-wrapper {
-  padding: 8px;
-  box-shadow: none;
+  height: fit-content
 }
 
 .additional h4 {
@@ -38,7 +34,7 @@
 }
 
 
-:is(.additional, .mobile) > div {
+:is(.additional, .mobile)>div {
   height: auto;
 }
 
@@ -70,10 +66,6 @@
   width: 100%;
 }
 
-.actions-wrapper {
-  margin-bottom: 20px;
-}
-
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -103,7 +95,7 @@
 
 .popover-additional {
   position: absolute;
-  top: 16px;
+  top: 20px;
   right: 20px;
   display: none;
   justify-content: center;
@@ -119,7 +111,11 @@
   border: 1px solid var(--button-border-secondary-focus);
 }
 
-@media (width <= 1023px) {
+.train-button {
+  border-radius: 20px;
+}
+
+@media (width < 1280px) {
   .popover-additional {
     display: block;
   }
@@ -129,11 +125,20 @@
   }
 
   .additional {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 20px;
-    width: 360px;
-    height: auto;
+    display: none;
+  }
+}
+
+
+@media (width < 1024px) {
+  .popover-additional {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (width < 768px) {
+  .popover-additional {
+    right: 10px;
   }
 }

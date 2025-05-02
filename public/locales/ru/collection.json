@@ -29,7 +29,10 @@
 		"title": "Ключевые слова",
 		"label": "Добавьте ключевые слова в текст"
 	},
-	"access": "Доступ:",
+	"tags": {
+		"title": "Теги"
+	},
+	"access": "Доступ",
 	"specializations": {
 		"show.all": "Показать все",
 		"hide": "Скрыть"
@@ -52,7 +55,7 @@
 	"image.src": "Ссылка на картинку",
 	"create.page.title": "Коллекция",
 	"image.alt": "Изображение компании",
-	"numberOfQuestions": "Количество вопросов:",
+	"numberOfQuestions": "Количество вопросов",
 	"collections": {
 		"title": "Коллекции",
 		"detail": "Подробнее",

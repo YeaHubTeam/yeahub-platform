@@ -24,7 +24,7 @@ export const QuestionAuthor = ({ createdBy, isCenter }: QuestionAuthorProps) => 
 	return (
 		<Flex justify={isCenter ? 'center' : 'start'} gap="4">
 			<Text variant="body2-accent" color="black-800">
-				{t(Questions.AUTHOR)}
+				{t(Questions.AUTHOR)}:
 			</Text>
 			<NavLink to={route(path, createdBy.id)}>
 				<Text variant="body2-accent" color="purple-700">

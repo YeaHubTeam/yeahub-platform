@@ -21,22 +21,23 @@ export const CollectionBody = ({ questions }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
-		<Flex wrap="wrap" justify="between" gap="20">
-			<Card className={styles.wrapper} title="Список вопросов">
-				{questions.length ? (
-					<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
-						{questions?.map((question) => {
-							return <PreviewQuestionsItem key={question.id} question={question} />;
-						})}
-					</Flex>
-				) : (
-					<Flex justify="center">
-						<Text variant="body4" color="black-700" className={styles['no-questions']}>
-							{t(Questions.PREVIEW_EMPTY_COLLECTION)}
-						</Text>
-					</Flex>
-				)}
-			</Card>
-		</Flex>
+		<Card className={styles.wrapper} withOutsideShadow>
+			<Text variant="body6" className={styles.title}>
+				{t(Questions.PREVIEW_TITLE)}
+			</Text>
+			{questions.length ? (
+				<Flex componentType="ul" direction="column" gap="12">
+					{questions?.map((question) => (
+						<PreviewQuestionsItem key={question.id} question={question} />
+					))}
+				</Flex>
+			) : (
+				<Flex justify="center">
+					<Text variant="body3-accent" className={styles['no-questions']}>
+						{t(Questions.PREVIEW_EMPTY_COLLECTION)}
+					</Text>
+				</Flex>
+			)}
+		</Card>
 	);
 };

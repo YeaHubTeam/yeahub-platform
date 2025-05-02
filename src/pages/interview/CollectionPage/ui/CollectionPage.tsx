@@ -1,9 +1,8 @@
-import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -28,7 +27,8 @@ export const CollectionPage = () => {
 		collection: Number(collectionId),
 		profileId,
 	});
-	const { isMobile, isTablet } = useScreenSize();
+
+	const { isMobileS } = useScreenSize();
 
 	const questions = response?.data ?? [];
 
@@ -42,17 +42,12 @@ export const CollectionPage = () => {
 		return null;
 	}
 
-	const renderAdditionalInfo = (
+	const renderAdditionalInfoPopover = (
 		<div className={styles['popover-additional']}>
 			<Popover
 				body={
 					<div className={styles['popover-additional-wrapper']}>
-						<Card>
-							<AdditionalInfo
-								collection={collection}
-								className={styles['additional-info-wrapper']}
-							/>
-						</Card>
+						<AdditionalInfo collection={collection} />
 					</div>
 				}
 			>
@@ -76,12 +71,12 @@ export const CollectionPage = () => {
 	const renderHeaderAndActions = () => (
 		<>
 			<CollectionHeader
-				collection={collection}
+				imageSrc={collection.imageSrc || collection.company?.imageSrc}
 				description={collection.description}
 				title={collection.title}
 			/>
-			{!isEmptyData && (
-				<Card>
+			{!isEmptyData && !isMobileS && (
+				<Card withOutsideShadow className={styles['train-button']}>
 					<Flex justify="center" align="center">
 						<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
 					</Flex>
@@ -90,34 +85,16 @@ export const CollectionPage = () => {
 		</>
 	);
 
-	const renderMobileOrTablet = (isMobile || isTablet) && (
-		<>
-			{renderAdditionalInfo}
-			<section
-				className={classNames(styles.wrapper, {
-					[styles.mobile]: isMobile,
-					[styles.tablet]: isTablet,
-				})}
-			>
-				{renderHeaderAndActions()}
-				<CollectionBody questions={questions} />
-			</section>
-		</>
-	);
-
 	return (
 		<>
-			{renderMobileOrTablet || (
-				<section className={styles.wrapper}>
-					<div className={styles.main}>
-						{renderHeaderAndActions()}
-						<CollectionBody questions={questions} />
-					</div>
-					<div className={styles.additional}>
-						<AdditionalInfo collection={collection} className={styles['additional-info-wrapper']} />
-					</div>
-				</section>
-			)}
+			{renderAdditionalInfoPopover}
+			<section className={styles.wrapper}>
+				<div className={styles.main}>
+					{renderHeaderAndActions()}
+					<CollectionBody questions={questions} />
+				</div>
+				<AdditionalInfo collection={collection} className={styles.additional} />
+			</section>
 		</>
 	);
 };
