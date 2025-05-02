@@ -11,7 +11,7 @@ import { Company } from '@/entities/company';
 
 import { useDeleteCompanyMutation } from '../../api/deleteCompanyApi';
 
-interface DeleteSkillButtonProps {
+interface DeleteCompanyButtonProps {
 	companyId: Company['id'];
 	isDetailPage?: boolean;
 }
@@ -19,7 +19,7 @@ interface DeleteSkillButtonProps {
 export const DeleteCompanyButton = ({
 	companyId,
 	isDetailPage = false,
-}: DeleteSkillButtonProps) => {
+}: DeleteCompanyButtonProps) => {
 	const [deleteCompanyMutation] = useDeleteCompanyMutation();
 
 	const { t } = useTranslation(i18Namespace.translation);

@@ -22,7 +22,15 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
-	const { questionsCount, ...restCollection } = collection;
+	const {
+		questionsCount,
+		company,
+		createdAt,
+		updatedAt,
+		createdById,
+		createdBy,
+		...restCollection
+	} = collection;
 	const methods = useForm<CollectionEditFormValues>({
 		resolver: yupResolver(collectionEditSchema),
 		mode: 'onTouched',
@@ -30,6 +38,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 			...restCollection,
 			questions: formatToFormField(collection.questions),
 			specializations: formatToFormField(collection.specializations),
+			companyId: collection.companyId ?? '',
 			keywords: collection.keywords,
 		},
 	});

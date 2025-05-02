@@ -34,6 +34,7 @@ export enum Translation {
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
+	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -74,10 +75,14 @@ export enum Translation {
 	VALIDATION_PASSWORD_WEAK = 'validation.password.weak',
 	VALIDATION_PASSWORD_SIMILAR = 'validation.password.similar',
 	VALIDATION_PRIVACY = 'validation.privacy',
+	VALIDATION_PARAMETER = 'validation.parameter',
 	VALIDATION_FILE_SIZE = 'validation.file.size',
 	VALIDATION_FILE_TYPE = 'validation.file.type',
 
 	/* Toast */
+	TOAST_TITLE_SUCCESS = 'toast.title.success',
+	TOAST_TITLE_WARNING = 'toast.title.warning',
+	TOAST_TITLE_ERROR = 'toast.title.error',
 	TOAST_QUESTIONS_LEARNED_SUCCESS = 'toast.questions.learned.success',
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
@@ -100,8 +105,8 @@ export enum Translation {
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
-	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.success',
-	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.failed',
+	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
+	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
@@ -131,10 +136,12 @@ export enum Translation {
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
-	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
-	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
 	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
+	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
+	TOAST_COMPANIES_DELETE_MULTIPLE_SUCCESS = 'toast.companies.delete.multiple.success',
+	TOAST_COMPANIES_DELETE_MULTIPLE_FAILED = 'toast.companies.delete.multiple.failed',
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 }
@@ -335,7 +342,8 @@ export enum Questions {
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
 	PREVIEW_LINK = 'preview.link',
-	PREVIEW_EMPTY = 'preview.empty',
+	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
+	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -492,6 +500,8 @@ export enum Collections {
 	QUESTIONS_SELECTED = 'questions.selected',
 	QUESTIONS_ADDITIONAL_INFO = 'numberOfQuestions',
 	QUESTIONS_COUNT = 'questions.length.min',
+	// QUESTIONS_ADD: 'collections.questions.add',
+	// QUESTIONS_LABEL: 'collections.questions.label',
 	IMAGE_ALT = 'image.alt',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	COLLECTIONS_TITLE = 'collections.title',
@@ -505,15 +515,20 @@ export enum Collections {
 	KEYWORDS_LABEL = 'keywords.label',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
+	COMPANY_TITLE = 'company.title',
+	COMPANY_LABEL = 'company.label',
 }
-
-export enum Company {
+export enum Companies {
 	TITLE_FULL = 'title.full',
+	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	ICON_TITLE = 'icon.title',
 	ICON_LABEL = 'icon.label',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
 }
 
 export enum Landing {
@@ -521,6 +536,8 @@ export enum Landing {
 	REGISTER = 'header.actions.register',
 	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
 	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
+	QUESTIONS_TITLE = 'questions.title',
+	QUESTIONS_DESCRIPTION = 'questions.description',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
@@ -564,12 +581,28 @@ export enum Landing {
 	PROGRESS_SUBTITLE = 'progress.subtitle',
 	PROGRESS_ADVANTAGES_FIRST = 'progress.advantages.first',
 	PROGRESS_ADVANTAGES_SECOND = 'progress.advantages.second',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SPECIALIZATION_DESCRIPTION = 'specialization.description',
+	SKILLS_TITLE = 'skills.title',
+	SKILLS_DESCRIPTION = 'skills.description',
+	FILTERS_TITLE = 'filters.title',
+	FILTERS_DESCRIPTION = 'filters.description',
 	COOKIES_TEXT = 'cookies.text',
 	COOKIES_LINK = 'cookies.link',
 	COOKIES_AGREE = 'cookies.agree.button',
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+	// для нового лендинга ниже
+	BANNER_STICKER_SKILL = 'banner.sticker.skill',
+	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
+	BANNER_TITLE = 'banner.title',
+	BANNER_DESCRIPTION = 'banner.description',
+	BANNER_BUTTON = 'banner.button',
+	BANNER_IMG_HOMEPAGE = 'banner.img.homepage',
+	BANNER_IMG_STATISTICS = 'banner.img.statistics',
+	BANNER_IMG_COMPANY = 'banner.img.company',
+	BANNER_IMG_PROGRESS = 'banner.img.progress',
 }
 
 export enum Subscription {

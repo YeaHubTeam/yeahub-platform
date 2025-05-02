@@ -15,6 +15,8 @@ import { Radio } from '@/shared/ui/Radio';
 import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { CompanySelect } from '@/entities/company';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { ChooseQuestionsDrawer } from '@/entities/question';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
@@ -34,6 +36,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 	const collectionId = watch('id');
+	const specializations = watch('specializations');
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({
 		collectionId: collectionId!,
 	});
@@ -96,6 +99,19 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 						{(register, hasError) => <Input {...register} hasError={hasError} />}
 					</FormControl>
 				</Flex>
+				<Flex gap={'120'}>
+					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+						<Text title={t(Collections.COMPANY_TITLE)} className={styles.title} />
+						<Text text={t(Collections.COMPANY_LABEL)} className={styles.description} />
+					</Flex>
+					<FormControl name="companyId" control={control}>
+						{({ onChange, value }) => (
+							<div className={styles.select}>
+								<CompanySelect onChange={onChange} value={value} />
+							</div>
+						)}
+					</FormControl>
+				</Flex>
 				<Flex direction="column" gap="8">
 					<Text title={t(Collections.DESCRIPTION_FULL)} className={styles.title} />
 					<Text title={t(Collections.DESCRIPTION_LABEL)} className={styles.description} />
@@ -150,7 +166,7 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+								<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
 							</div>
 						)}
 					</FormControl>
@@ -170,11 +186,17 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 						}}
 					</FormControl>
 				</Flex>
-				<ChooseQuestionsDrawer
-					selectedQuestions={selectedQuestions}
-					handleSelectQuestion={handleSelectQuestion}
-					handleUnselectQuestion={handleUnselectQuestion}
-				/>
+
+				<FormControl name="questions" control={control}>
+					{() => (
+						<ChooseQuestionsDrawer
+							selectedQuestions={selectedQuestions}
+							handleSelectQuestion={handleSelectQuestion}
+							handleUnselectQuestion={handleUnselectQuestion}
+							specializations={specializations}
+						/>
+					)}
+				</FormControl>
 			</Flex>
 		</>
 	);

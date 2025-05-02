@@ -50,7 +50,6 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 			actionTitle={interviewPreparationActionTitle}
 			actionRoute={interviewPreparationActionRoute}
 			withShadow={!isMobile}
-			isTitleCenter={isMobile}
 		>
 			{isSpecializationEmpty && <SpecializationEmptyStub />}
 			{lastActiveQuizInfo && !isSpecializationEmpty && <PreviewActiveQuiz />}

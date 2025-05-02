@@ -1,4 +1,5 @@
 export { CompanyCard } from './ui/CompanyCard/CompanyCard';
-export { useGetCompanyByIdQuery } from './api/companyApi';
-export type { Company, CreateOrEditCompanyFormValues } from './model/types/company';
+export { CompanySelect } from './ui/CompanySelect/CompanySelect';
+export { useGetCompanyByIdQuery, useGetCompaniesListQuery } from './api/companyApi';
+export type { Company, CreateOrEditCompanyFormValues } from './model/types/companyTypes';
 export { CompanyForm } from './ui/CompanyForm/CompanyForm';

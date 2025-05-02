@@ -1,3 +1,1 @@
-import { DeleteCompanyButton } from './ui/DeleteCompanyButton/DeleteCompanyButton';
-
-export { DeleteCompanyButton };
+export { DeleteCompanyButton } from './ui/DeleteCompanyButton/DeleteCompanyButton';

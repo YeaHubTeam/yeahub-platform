@@ -6,7 +6,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import { Company } from '../../model/types/company';
+import { Company } from '@/entities/company';
 
 import styles from './CompanyCard.module.css';
 

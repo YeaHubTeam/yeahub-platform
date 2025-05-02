@@ -15,7 +15,7 @@ type SpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Select>,
 	'options' | 'type' | 'value' | 'onChange'
 > & {
-	value: number[];
+	value: number | number[];
 	onChange: (value: number[] | number) => void;
 	hasMultiple?: boolean;
 	disabled?: boolean;
@@ -30,16 +30,21 @@ export const SpecializationSelect = ({
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
-	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(value);
+	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(
+		Array.isArray(value) ? value : value !== undefined ? [value] : [],
+	);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
+		const numValue = +newValue;
+
 		if (hasMultiple) {
-			const updates = [...(selectedSpecializations || []), +newValue];
+			const updates = [...selectedSpecializations, numValue];
 			setSelectedSpecializations(updates);
 			onChange(updates);
 		} else {
-			onChange(+newValue);
+			setSelectedSpecializations([numValue]);
+			onChange([numValue]);
 		}
 	};
 
@@ -83,7 +88,7 @@ export const SpecializationSelect = ({
 			<Select
 				onChange={handleChange}
 				options={options}
-				value={value[0] === 0 ? undefined : `${value}`}
+				value={selectedSpecializations[0]?.toString()}
 				type="default"
 				placeholder={
 					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)

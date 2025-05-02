@@ -3,6 +3,7 @@ import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 
 import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
+import { CompaniesTablePageState } from '@/pages/admin/CompaniesTablePage';
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
@@ -22,6 +23,7 @@ export interface State {
 	interviewHistoryPage: InterviewHistoryState;
 	[baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 	questionsTablePage: QuestionsTablePageState;
+	companiesTablePage: CompaniesTablePageState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
 	usersPage: UsersPageState;

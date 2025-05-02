@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import {
-	DEFAULT_PAGE,
-	DEFAULT_SPECIALIZATION_NUMBER,
-	DEFAULT_STATUS,
-} from '../constants/queryConstants';
+import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
@@ -37,21 +33,24 @@ interface FilterFromUser {
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
-export const useQueryFilter = () => {
+export const useQueryFilter = (onReset?: () => void) => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		if (!params.get('page') && !params.get('status')) {
-			navigate(initialState);
-		}
+		const page = params.get('page');
+		const status = params.get('status');
+		const specialization = params.get('specialization');
 
-		if (!params.get('specialization')) {
-			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
+		const shouldRedirect =
+			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
+
+		if (shouldRedirect) {
+			navigate(initialState, { replace: true });
 		}
-	}, []);
+	}, [location.pathname, location.search]);
 
 	useEffect(() => {
 		setFilters(parseFilters(getQueryParams()));
@@ -97,21 +96,9 @@ export const useQueryFilter = () => {
 			const curFilter = newFilters[key as keyof FilterFromUser];
 
 			if (curFilter !== undefined && curFilter !== null) {
-				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, DEFAULT_PAGE);
-					return;
-				}
-
-				if (key === 'status' && newFilters.status === params.get('status')) {
-					params.set(key, DEFAULT_STATUS);
-					return;
-				}
-
 				if (key === 'tariff') {
 					params.set('isFree', curFilter.toString());
 					return;
-				} else {
-					params.set(key, curFilter.toString());
 				}
 
 				if (Array.isArray(curFilter)) {
@@ -137,7 +124,11 @@ export const useQueryFilter = () => {
 
 	const resetFilters = () => {
 		setFilters({} as FilterFromUser);
-		navigate(initialState);
+		if (location.pathname === '/admin/companies') {
+			onReset?.();
+			return;
+		}
+		navigate(initialState, { replace: true });
 	};
 
 	return { filter, handleFilterChange, resetFilters };
