@@ -74,6 +74,7 @@
   },
   "validation": {
     "required": "This field is required to be completed",
+		"parameter": "This section cannot be empty",
     "email": "Invalid email format",
     "length": {
       "min_one": "Minimum length {{count}} character",
@@ -111,6 +112,11 @@
     "register": "Registration"
   },
   "toast": {
+		"title": {
+			"success": "Success!",
+			"warning": "Warning!",
+			"error": "Error!"
+		},
     "auth": {
       "resetPassword": {
         "success": "Password successfully changed",
