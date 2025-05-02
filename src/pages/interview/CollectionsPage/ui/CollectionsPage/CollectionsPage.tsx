@@ -1,5 +1,8 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
@@ -23,6 +26,8 @@ import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 const MAX_LIMIT_CATEGORIES = 5;
 
 const CollectionsPage = () => {
+	const { t } = useTranslation(i18Namespace.collection);
+
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 
 	const specializationId = useAppSelector(getSpecializationId);
@@ -85,9 +90,11 @@ const CollectionsPage = () => {
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
+					<h1 className={styles.title}>{t(Collections.COLLECTIONS_TITLE)}</h1>
+
 					<CollectionsList collections={allCollections.data} />
 
-					{allCollections.total > allCollections.limit && (
+					{allCollections?.total > allCollections?.limit && (
 						<CollectionPagePagination
 							collectionsResponse={allCollections}
 							currentPage={filter.page || 1}

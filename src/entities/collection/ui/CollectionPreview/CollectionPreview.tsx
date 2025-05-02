@@ -8,6 +8,7 @@ import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
@@ -21,7 +22,8 @@ type CollectionProps = {
 };
 
 export const CollectionPreview = ({ collection }: CollectionProps) => {
-	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations } = collection;
+	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
+		collection;
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
@@ -31,48 +33,54 @@ export const CollectionPreview = ({ collection }: CollectionProps) => {
 	};
 
 	return (
-		<Card withOutsideShadow>
+		<Card withOutsideShadow className={styles.content}>
 			<Link to={route(ROUTES.interview.collections.detail.page, id)} className={styles.wrapper}>
 				<ImageWithWrapper
-					src={imageSrc}
+					src={imageSrc || company?.imageSrc}
 					alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}
 					className={styles['image-wrapper']}
 				/>
-				<div className={styles['wrapper-content']}>
+				<Flex direction="column" gap="16">
 					<div className={styles.header}>
-						<ul className={styles['header-params']}>
+						<ul className={styles.tags}>
 							{keywords?.map((keyword) => (
 								<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
 							))}
 						</ul>
 					</div>
 
-					<Text variant={'body3-accent'}>{title}</Text>
-					<div className={styles['access-container']}>
-						<div className={styles['access-item']}>
-							{!isFree && <Star />}
-							<Text variant={'body3-accent'}>{accessText[isFree ? 'free' : 'paid']}</Text>
-						</div>
-						{!!questionsCount && (
+					<Flex direction="column" gap="20">
+						<Text variant={'body3-accent'} maxRows={2}>
+							{title}
+						</Text>
+						<div className={styles['access-container']}>
 							<div className={styles['access-item']}>
-								<Question />
-								<Text variant={'body3-accent'}>
-									{t(Collections.QUESTIONS_COUNT, {
-										ns: i18Namespace.collection,
-										count: questionsCount,
-									})}
+								{!isFree && <Star />}
+								<Text variant={'body2'} color="purple-700">
+									{accessText[isFree ? 'free' : 'paid']}
 								</Text>
 							</div>
-						)}
-					</div>
-					<div className={styles['specialization-container']}>
-						{specializations?.map((spec) => (
-							<Text variant={'body3-accent'} key={spec.id}>
-								{spec.title}
-							</Text>
-						))}
-					</div>
-				</div>
+							{!!questionsCount && (
+								<div className={styles['access-item']}>
+									<Question />
+									<Text variant={'body2'} color="purple-700">
+										{t(Collections.QUESTIONS_COUNT, {
+											ns: i18Namespace.collection,
+											count: questionsCount,
+										})}
+									</Text>
+								</div>
+							)}
+						</div>
+						<div className={styles['specialization-container']}>
+							{specializations?.map((spec) => (
+								<Text variant={'body3-accent'} key={spec.id}>
+									{spec.title}
+								</Text>
+							))}
+						</div>
+					</Flex>
+				</Flex>
 			</Link>
 		</Card>
 	);

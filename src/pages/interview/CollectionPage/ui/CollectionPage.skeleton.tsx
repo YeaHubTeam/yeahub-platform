@@ -1,95 +1,32 @@
-import classNames from 'classnames';
-
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
+
+import {
+	AdditionalInfoSkeleton,
+	CollectionBodySkeleton,
+	CollectionHeaderSkeleton,
+} from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
 
 export const CollectionPageSkeleton = () => {
-	const { isMobile } = useScreenSize();
-
-	if (isMobile) {
-		return (
-			<section className={classNames(styles.wrapper, styles.mobile)}>
-				<Card>
-					<div className={styles.header}>
-						<Skeleton width={170} height={114} borderRadius={24} style={{ flexShrink: 0 }} />
-						<div className={styles['title-wrapper']}>
-							<Skeleton width="100%" height={114} />
-						</div>
-					</div>
-				</Card>
-				<Card>
-					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={200} width="100%" />
-				</Card>
-				<Card>
-					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={200} />
-				</Card>
-			</section>
-		);
-	}
+	const { isMobileS } = useScreenSize();
 
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles.main}>
-				<Card>
-					<div className={styles.header}>
-						<Skeleton width={170} height={114} borderRadius={24} style={{ flexShrink: 0 }} />
-						<div className={styles['title-wrapper']}>
-							<Skeleton width="100%" height={114} />
+				<CollectionHeaderSkeleton />
+				{!isMobileS && (
+					<Card className={styles['train-button']} withOutsideShadow>
+						<div className={styles.actions}>
+							<Skeleton width={160} height={40} borderRadius={12} />
 						</div>
-					</div>
-				</Card>
-				<Card className={styles['actions-wrapper']}>
-					<div className={styles.actions}>
-						<Skeleton width={130} height={48} borderRadius={16} />
-					</div>
-				</Card>
-				<Card>
-					<Skeleton width={140} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={200} />
-				</Card>
-				<Card>
-					<Skeleton width={170} height={22} style={{ marginBottom: '20px' }} />
-					<Skeleton height={350} />
-				</Card>
+					</Card>
+				)}
+				<CollectionBodySkeleton />
 			</div>
-			<div className={styles.additional}>
-				<Card>
-					<Skeleton width={120} height={22} style={{ marginBottom: '16px' }} />
-					<Skeleton width="60%" height={22} style={{ marginBottom: '10px' }} />
-					<Skeleton height={16} />
-				</Card>
-				<Card>
-					<div className={styles.info}>
-						<Skeleton width={50} height={22} />
-						<div className={styles.params}>
-							<Skeleton width={100} height={30} />
-							<Skeleton width={150} height={30} />
-						</div>
-					</div>
-					<div className={styles.info}>
-						<Skeleton width={50} height={22} />
-						<div className={styles.params}>
-							<Skeleton width={100} height={42} />
-							<Skeleton width={140} height={42} />
-							<Skeleton width={90} height={42} />
-						</div>
-					</div>
-					<div className={styles.info}>
-						<Skeleton width={50} height={22} />
-						<div className={styles.params}>
-							<Skeleton width={100} height={22} />
-							<Skeleton width={160} height={22} />
-							<Skeleton width={110} height={22} />
-						</div>
-					</div>
-				</Card>
-				<Skeleton width={150} height={22} style={{ marginInline: 'auto' }} />
-			</div>
+			<AdditionalInfoSkeleton className={styles.additional} />
 		</section>
 	);
 };
