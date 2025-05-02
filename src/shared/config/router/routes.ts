@@ -82,13 +82,13 @@ export const ROUTES = {
 		companies: {
 			route: 'companies',
 			page: '/admin/companies',
-			edit: {
-				route: ':companyId/edit',
-				page: '/admin/companies/:companyId/edit',
-			},
 			create: {
 				route: 'create',
 				page: '/admin/companies/create',
+			},
+			edit: {
+				route: ':companyId/edit',
+				page: '/admin/companies/:companyId/edit',
 			},
 			details: {
 				route: ':companyId',

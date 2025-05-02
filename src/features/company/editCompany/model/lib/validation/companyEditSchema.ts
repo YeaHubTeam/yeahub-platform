@@ -10,7 +10,7 @@ export const companyEditSchema: yup.ObjectSchema<CompanyEditFormValues> = yup.ob
 	title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	legalName: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	imageSrc: yup.string().notRequired(),
+	imageSrc: yup.string().nullable().notRequired(),
 	companyImage: yup.string().notRequired(),
 	inn: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	kpp: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),

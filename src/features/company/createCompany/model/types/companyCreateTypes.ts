@@ -1,4 +1,4 @@
-import { CreateOrEditCompanyFormValues, Company } from '@/entities/company/model/types/company';
+import { CreateOrEditCompanyFormValues, Company } from '@/entities/company';
 
 export type CreateCompanyFormValues = Omit<CreateOrEditCompanyFormValues, 'id'>;
 

@@ -1,9 +1,10 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -29,7 +30,7 @@ const CompanyDetailPage = () => {
 
 				<Flex gap={'16'}>
 					<DeleteCompanyButton companyId={company.id} isDetailPage />
-					<NavLink to={''}>
+					<NavLink to={route(ROUTES.admin.companies.edit.page, company.id)}>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
 				</Flex>

@@ -8,7 +8,11 @@
 		"title": "Company image",
 		"label": "Add company image"
 	},
-	"image.src": "Image url",
 	"create.page.title": "Creating new company",
-	"edit.page.title": "Edit company"
+	"edit.page.title": "Edit company",
+	"select": {
+		"choose": "Choose company name",
+		"empty": "No companies available",
+		"selected": "Selected company"
+	}
 }

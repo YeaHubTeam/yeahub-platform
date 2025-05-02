@@ -71,7 +71,6 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			title={t(InterviewHistory.TITLE)}
 			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
-			isTitleCenter={isMobile}
 		>
 			{!isVerified && (
 				<Text variant="body4" color="black-700" className={styles['no-history']}>
