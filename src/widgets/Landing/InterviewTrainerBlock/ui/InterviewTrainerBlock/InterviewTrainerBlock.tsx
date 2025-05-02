@@ -7,6 +7,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { InterviewCard } from '../InterviewCard/InterviewCard';
 
@@ -25,9 +26,13 @@ export const InterviewTrainerBlock = () => {
 					className={styles['interview-trainer-wrapper']}
 					align="center"
 				>
-					<div className={styles.title}>
-						<h2>{t(Landing.TRAINING_INTERVIEW_TITLE).toUpperCase()}</h2>
-						<h3>{t(Landing.TRAINING_INTERVIEW_SUBTITLE)}</h3>
+					<div className={styles['title-block']}>
+						<Text variant="head2" className={styles.title}>
+							{t(Landing.TRAINING_INTERVIEW_TITLE).toUpperCase()}
+						</Text>
+						<Text variant="body3" className={styles.subtitle}>
+							{t(Landing.TRAINING_INTERVIEW_SUBTITLE)}
+						</Text>
 					</div>
 					<Flex gap="20" direction="column" className={styles['left-block']}>
 						<div className={styles['image-wrapper']}>
@@ -37,13 +42,13 @@ export const InterviewTrainerBlock = () => {
 					</Flex>
 					<Flex direction="column" className={styles['right-block']}>
 						<InterviewCard
-							iconType="interview"
-							exampleImg={quizImg2}
+							iconType="student"
+							img={quizImg2}
 							text={t(Landing.TRAINING_INTERVIEW_ADVANTAGES_FIRST)}
 						/>
 						<InterviewCard
 							iconType="settings"
-							exampleImg={trainerImg}
+							img={trainerImg}
 							text={t(Landing.TRAINING_INTERVIEW_ADVANTAGES_SECOND)}
 						/>
 					</Flex>

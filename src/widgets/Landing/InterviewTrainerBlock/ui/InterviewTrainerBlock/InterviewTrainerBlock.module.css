@@ -8,25 +8,20 @@
 }
 
 
-.title > h2 {
+.title {
   margin-bottom: 10px;
-  color: var(--text-color-bright);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
 }
 
-.title > h3 {
+.subtitle {
   margin-bottom: 0;
-  color: var(--text-color-bright);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
 }
 
 .left-block {
-  padding: 10px;
+  padding: clamp(10px, 1.5vw, 24px);
   box-sizing: border-box;
-  width: clamp(340px, 80vw, 708px);
-  height: 408px;
+  width: 100%;
+  max-width: 708px;
+  height: 428px;
   box-shadow: var(--main-shadow);
   border-radius: 20px;
   background-color: var(--background-purple-block);
@@ -38,7 +33,6 @@
 
 .right-block {
   row-gap: 20px;
-  width: clamp(340px, 80vw, 708px);
 }
 
 .image {
@@ -63,47 +57,40 @@
   gap: 20px;
 }
 
-.title {
+.title-block {
   align-self: baseline;
 }
 
 @media (width >= 768px) {
   .left-block {
-    padding: 16px;
-    width: 708px;
     height: 521px;
   }
 
   .right-block {
-    width: 708px;
+    width: 100%;
   }
 
-  .title > h2 {
+  .title {
     margin-bottom: 20px;
     font-size: var(--font-size-large-34);
   }
 
-  .title > h3 {
+  .subtitle {
     margin-bottom: 20px;
   }
     
 }
 
-@media (width >= 1023px) {
+@media (width >= 1024px) {
   .left-block {
-    width: 530px;
     height: 480px;
-  }
-
-  .right-block {
-    width: 530px;
   }
 
   .interview-trainer {
     margin-top: 120px;
   }
 
-  .title {
+  .title-block {
     position: absolute;
     top: 90px;
   }
@@ -112,11 +99,6 @@
 @media (width >= 1440px) {
   .left-block {
     padding: 24px;
-    width: 598px;
     height: 543px;
-  }
-
-  .right-block {
-    width: 598px;
   }
 }
