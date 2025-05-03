@@ -1,6 +1,6 @@
 .card-image {
   box-sizing: border-box;
-  width: 85%;
+  width: 80%;
   box-shadow: var(--main-shadow);
   border-radius: 16px;
   object-fit: contain;
@@ -11,13 +11,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 50%;
   border-radius: 12px;
   background-color: var(--background-light-block);
 }
 
 .card-text {
   place-self: flex-end flex-end;
+  width: 50%;
 }
 
 .card {
@@ -74,13 +75,16 @@
 
 @media screen and (width < 1024px) {
   .image-wrapper {
-    min-width: 250px;
-    height: 213px;
+    min-width: 40%;
+    height: auto;
+  }
+
+  .card-image {
+    height: 90%;
   }
 
   .card-text {
     width: 406px;
-    height: 144px;
   }
 
   .card {
