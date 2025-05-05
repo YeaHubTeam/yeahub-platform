@@ -19,7 +19,7 @@ export interface PreviewCollectionsListProps {
 }
 
 export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProps) => {
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
+	const { t } = useTranslation(i18Namespace.collection);
 	const specializationId = useAppSelector(getSpecializationId);
 
 	const { data: allCollections, isSuccess } = useGetCollectionsListQuery({
@@ -31,26 +31,25 @@ export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProp
 
 	const isEmptyCollections = isSuccess && collections.length === 0;
 
-	if (isEmptyCollections) {
-		return (
-			<Text variant="body4" color="black-700" className={styles['no-collections']}>
-				{t(Collections.EMPTY)}
-			</Text>
-		);
-	}
-
 	return (
 		<Card
 			className={className}
-			title={t(Collections.COLLECTIONS_TITLE, { ns: i18Namespace.collection })}
-			actionTitle={t(Collections.COLLECTIONS_DETAIL, { ns: i18Namespace.collection })}
+			title={t(Collections.COLLECTIONS_TITLE)}
+			actionTitle={t(Collections.COLLECTIONS_DETAIL)}
+			actionDisabled={isEmptyCollections}
 			actionRoute={ROUTES.collections.route}
 		>
-			<Flex direction="column" gap="20" className={styles.list}>
-				{collections.map((collection) => (
-					<CollectionPreview key={collection.id} collection={collection} />
-				))}
-			</Flex>
+			{isEmptyCollections ? (
+				<Text variant="body4" color="black-700" className={styles['no-collections']}>
+					{t(Collections.EMPTY)}
+				</Text>
+			) : (
+				<Flex direction="column" gap="20" className={styles.list}>
+					{collections.map((collection) => (
+						<CollectionPreview key={collection.id} collection={collection} />
+					))}
+				</Flex>
+			)}
 		</Card>
 	);
 };
