@@ -48,5 +48,6 @@
 	"company": {
 		"title": "Company",
 		"label": "Add company to this collection"
-	}
+	},
+	"empty": "Collections will appear soon"
 }
