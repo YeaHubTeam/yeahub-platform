@@ -8,22 +8,22 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { mockSpeciality } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecialityBlock/mockSpeciality';
-import { SpecialityCard } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecialityCard/SpecialityCard';
+import { mockSpecialization } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecializationBlock/mockSpecialization';
+import { SpecializationCard } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecializationCard/SpecializationCard';
 
-import styles from './SpecialityBlock.module.css';
+import styles from './SpecializationBlock.module.css';
 
-export const SpecialityBlock = () => {
+export const SpecializationBlock = () => {
 	const isLaptop = useMediaQuery({ query: '(min-width: 1200px) and (max-width: 1439px)' });
 	const { isMobile } = useScreenSize();
 	const [seeAll, setSeeAll] = useState<boolean>(false);
 
 	const displayedItems =
 		isLaptop && !seeAll
-			? mockSpeciality.slice(0, 6)
+			? mockSpecialization.slice(0, 6)
 			: isMobile && !seeAll
-				? mockSpeciality.slice(0, 4)
-				: mockSpeciality;
+				? mockSpecialization.slice(0, 4)
+				: mockSpecialization;
 
 	return (
 		<Flex direction={'column'} className={styles.container}>
@@ -33,7 +33,7 @@ export const SpecialityBlock = () => {
 			<ul className={styles['cards-list']}>
 				{displayedItems.map((item) => (
 					<li key={item.id}>
-						<SpecialityCard
+						<SpecializationCard
 							title={item.title}
 							description={item.description}
 							image={item.image}

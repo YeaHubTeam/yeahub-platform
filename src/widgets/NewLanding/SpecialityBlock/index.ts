@@ -1,1 +1,1 @@
-export { SpecialityBlock } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecialityBlock/SpecialityBlock';
+export { SpecializationBlock } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecializationBlock/SpecializationBlock';

@@ -1,14 +1,14 @@
 import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 
-import androidImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Android Dev.png';
-import backImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Backend.png';
-import dsImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Data Science.png';
-import frontImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Frontend.png';
-import gameImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Game Dev.png';
-import iosImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/iOS Dev.png';
-import mlImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Machine Learning.png';
-import testingImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Testing.png';
+import androidImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Android Dev.avif';
+import backImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Backend.avif';
+import dsImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Data Science.avif';
+import frontImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Frontend.avif';
+import gameImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Game Dev.avif';
+import iosImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/iOS Dev.avif';
+import mlImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Machine Learning.avif';
+import testingImg from '@/widgets/NewLanding/SpecialityBlock/model/assets/Testing.avif';
 
 export interface IMockSpeciality {
 	id?: number;
@@ -18,7 +18,7 @@ export interface IMockSpeciality {
 	alt?: string;
 }
 
-export const mockSpeciality: Array<IMockSpeciality> = [
+export const mockSpecialization: Array<IMockSpeciality> = [
 	{
 		id: 1,
 		title: 'Frontend',

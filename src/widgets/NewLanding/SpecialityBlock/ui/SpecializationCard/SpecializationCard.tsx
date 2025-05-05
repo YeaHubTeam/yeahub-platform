@@ -4,11 +4,11 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { IMockSpeciality } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecialityBlock/mockSpeciality';
+import { IMockSpeciality } from '@/widgets/NewLanding/SpecialityBlock/ui/SpecializationBlock/mockSpecialization';
 
-import styles from './SpecialityCard.module.css';
+import styles from './SpecializationCard.module.css';
 
-export const SpecialityCard = ({ title, description, image, alt }: IMockSpeciality) => {
+export const SpecializationCard = ({ title, description, image, alt }: IMockSpeciality) => {
 	return (
 		<Flex direction={'column'} justify={'between'} className={styles.card}>
 			<Flex direction={'row'} justify={'between'} align={'start'} className={styles['card-title']}>
