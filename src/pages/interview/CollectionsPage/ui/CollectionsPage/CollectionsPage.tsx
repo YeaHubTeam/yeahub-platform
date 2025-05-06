@@ -42,7 +42,7 @@ const CollectionsPage = () => {
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filter.title,
-		specializations: filter.specialization,
+		specializations: specializationId,
 		page: filter.page,
 	});
 
