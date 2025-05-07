@@ -10,9 +10,9 @@ export const collectionsMock: Collection[] = [
 
 		title: 'Сбер',
 		updatedAt: '2024-12-28T17:14:21.662Z',
-		questionsQuantity: 6,
-		tariff: 'free',
-		keywordsCollection: ['async', 'defer', 'script'],
+		questionsCount: 6,
+		tariff: 'premium',
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,
@@ -49,8 +49,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -103,10 +105,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -158,8 +164,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -204,9 +212,9 @@ export const collectionsMock: Collection[] = [
 			'https://avatars.mds.yandex.net/i?id=17dd12b49e0cdf3506978885f761225687d566f2-8497452-images-thumbs&n=13',
 		title: 'Яндекс',
 		updatedAt: '2024-11-10T14:55:12.345Z',
-		questionsQuantity: 8,
+		questionsCount: 8,
 		tariff: 'free',
-		keywordsCollection: ['async', 'defer', 'script'],
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,
@@ -243,8 +251,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -297,10 +307,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -352,8 +366,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -397,9 +413,9 @@ export const collectionsMock: Collection[] = [
 		imageSrc: 'https://goldenpark.su/upload/iblock/1b9/out_t_bank.jpg',
 		title: 'Т-Банк',
 		updatedAt: '2024-09-25T10:30:45.678Z',
-		questionsQuantity: 5,
+		questionsCount: 5,
 		tariff: 'premium',
-		keywordsCollection: ['async', 'defer', 'script'],
+		keywords: ['async', 'defer', 'script'],
 		specializations: [
 			{
 				id: 11,
@@ -436,8 +452,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-10T16:46:51.672Z',
 				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{
@@ -490,10 +508,14 @@ export const collectionsMock: Collection[] = [
 				complexity: 6,
 				createdAt: '2024-10-11T15:59:35.247Z',
 				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-				updatedBy:
-					'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
+				updatedBy: {
+					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+					username: 'daryakrutova',
+				},
 				questionSpecializations: [
 					{
 						id: 11,
@@ -545,8 +567,10 @@ export const collectionsMock: Collection[] = [
 				complexity: 5,
 				createdAt: '2024-10-11T16:09:09.969Z',
 				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy:
-					'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+				createdBy: {
+					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+					username: 'ruslankuyanets',
+				},
 				updatedBy: null,
 				questionSpecializations: [
 					{

@@ -41,7 +41,8 @@
         "interview": "Interview"
       },
       "questions": "Questions",
-      "skills": "Skills"
+      "skills": "Skills",
+      "companies": "Companies"
     }
   },
   "stub": {
@@ -72,7 +73,8 @@
     "limit": "no more than {{maxFileMBSize}}mb"
   },
   "validation": {
-    "required": "This field is required",
+    "required": "This field is required to be completed",
+		"parameter": "This section cannot be empty",
     "email": "Invalid email format",
     "length": {
       "min_one": "Minimum length {{count}} character",
@@ -110,6 +112,11 @@
     "register": "Registration"
   },
   "toast": {
+		"title": {
+			"success": "Success!",
+			"warning": "Warning!",
+			"error": "Error!"
+		},
     "auth": {
       "resetPassword": {
         "success": "Password successfully changed",
@@ -144,14 +151,6 @@
         "multiple": {
           "success": "Successfully deleted questions:",
           "failed": "The issue could not be deleted:"
-        }
-      }
-    },
-    "collections": {
-      "delete": {
-        "single": {
-          "success": "Collection successfully deleted",
-          "failed": "The collection could not be deleted"
         }
       }
     },
@@ -193,6 +192,22 @@
           "success": "Successfully deleted specializations:",
           "failed": "Specialization could not be deleted:"
         }
+      }
+    },
+    "collections": {
+      "create": {
+        "success": "Collection successfully created",
+        "failed": "Collection could not be created"
+      },
+			"delete": {
+        "single": {
+          "success": "Collection successfully deleted",
+          "failed": "The collection could not be deleted"
+        }
+      },
+      "edit": {
+        "success": "Collection successfully changed",
+        "failed": "Collection could not be changed"
       }
     },
     "profile": {
@@ -238,6 +253,14 @@
         "failed": "Password could not be changed",
         "failed.email": "Invalid email"
       }
-    }
+    },
+		"companies" : {
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				}
+			}
+		}
   }
 }

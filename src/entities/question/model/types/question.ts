@@ -21,8 +21,8 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: string;
-	updatedBy: string | null;
+	createdBy: Author;
+	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;
@@ -59,6 +59,7 @@ export interface GetQuestionsListParamsRequest {
 	titleOrDescription?: string;
 	skills?: number[];
 	complexity?: number[];
+	collection?: number;
 	rate?: number[];
 	keywords?: string[];
 	skillFilterMode?: skillFilterMode;
@@ -89,3 +90,5 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
+
+export type Author = { id: string; username: string };

@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 
 import { HeaderSkeleton } from '@/widgets/Header';
 import { SidebarSkeleton } from '@/widgets/Sidebar';

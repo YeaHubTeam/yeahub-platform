@@ -2,6 +2,7 @@
   /* сolor palette */
   --color-purple-900: #400799;
   --color-purple-800: #5509CC;
+  --color-purple-750: #4600E9;
   --color-purple-700: #6A0BFF;
   --color-purple-600: #883CFF;
   --color-purple-500: #A66DFF;
@@ -25,6 +26,7 @@
   --color-yellow-700: #FFCE5C;
   --color-yellow-600: #FFDA85;
   --color-yellow-500: #FFE7AD;
+  --color-yellow-450: #FFF1D0;
   --color-yellow-400: #FFF3D6;
   --color-yellow-300: #FFFCF2;
   --color-yellow-200: #FFF6E2;
@@ -54,9 +56,11 @@
   --color-black-50: #E8E8E8;
   --color-black-30: #F8F8F8;
   --color-black-25: #F4F4F4;
+  --color-black-10: #F0F0F0;
   --color-white-900: #FFF;
   --color-white-500: #CCC;
   --color-label-bg: rgb(209 209 209 / 27%);
   --color-code-gradient-end: #E8DAFF;
   --color-border:  rgb(227 227 227 / 75%);
+  --color-sticky-shadow: #00550E;
 }

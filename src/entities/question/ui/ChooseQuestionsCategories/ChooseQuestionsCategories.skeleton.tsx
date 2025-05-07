@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { BaseFilterSectionSkeleton } from '@/shared/ui/BaseFilterSection';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 

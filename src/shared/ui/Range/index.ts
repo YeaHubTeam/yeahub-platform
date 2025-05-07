@@ -1,3 +1,3 @@
-import { Range } from './ui/Range/Range';
+import { Range } from './Range/Range';
 
 export { Range };

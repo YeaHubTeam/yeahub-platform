@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ReactNode, useRef, useState } from 'react';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 

@@ -21,8 +21,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-10T16:46:51.672Z',
 			updatedAt: '2024-10-10T16:46:51.672Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -74,10 +76,14 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-11T15:59:35.247Z',
 			updatedAt: '2024-10-28T15:44:05.373Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-			updatedBy:
-				'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
+			updatedBy: {
+				id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+				username: 'daryakrutova',
+			},
 			questionSpecializations: [
 				{
 					id: 11,
@@ -129,8 +135,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 5,
 			createdAt: '2024-10-11T16:09:09.969Z',
 			updatedAt: '2024-10-11T16:09:09.969Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -183,8 +191,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 5,
 			createdAt: '2024-10-11T17:29:24.847Z',
 			updatedAt: '2024-10-11T17:29:24.847Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -235,8 +245,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 3,
 			createdAt: '2024-10-06T07:05:18.745Z',
 			updatedAt: '2024-10-06T07:05:18.745Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -278,8 +290,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 3,
 			createdAt: '2024-10-06T07:07:03.035Z',
 			updatedAt: '2024-10-06T07:07:03.035Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -321,8 +335,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-06T07:07:55.413Z',
 			updatedAt: '2024-10-06T07:07:55.413Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -364,8 +380,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-06T07:10:27.109Z',
 			updatedAt: '2024-10-06T07:10:27.109Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -407,8 +425,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 7,
 			createdAt: '2024-10-06T07:11:18.592Z',
 			updatedAt: '2024-10-06T07:11:18.592Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -450,8 +470,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-06T07:12:34.157Z',
 			updatedAt: '2024-10-06T07:12:34.157Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -495,10 +517,14 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-11T17:51:13.918Z',
 			updatedAt: '2024-10-28T18:00:49.752Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-			updatedBy:
-				'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
+			updatedBy: {
+				id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+				username: 'daryakrutova',
+			},
 			questionSpecializations: [
 				{
 					id: 11,
@@ -550,10 +576,14 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 3,
 			createdAt: '2024-10-11T17:53:14.473Z',
 			updatedAt: '2024-10-28T18:03:03.762Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-			updatedBy:
-				'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
+			updatedBy: {
+				id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+				username: 'daryakrutova',
+			},
 			questionSpecializations: [
 				{
 					id: 11,
@@ -605,8 +635,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-11T18:04:00.141Z',
 			updatedAt: '2024-10-11T18:04:00.141Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -659,8 +691,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 7,
 			createdAt: '2024-10-11T18:44:05.659Z',
 			updatedAt: '2024-10-11T18:44:05.659Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -713,8 +747,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 5,
 			createdAt: '2024-10-11T18:48:03.030Z',
 			updatedAt: '2024-10-11T18:48:03.030Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -767,8 +803,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 7,
 			createdAt: '2024-10-11T18:49:47.890Z',
 			updatedAt: '2024-10-11T18:49:47.890Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -821,8 +859,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 6,
 			createdAt: '2024-10-11T18:52:15.029Z',
 			updatedAt: '2024-10-11T18:52:15.029Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -875,8 +915,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 5,
 			createdAt: '2024-10-11T18:53:45.710Z',
 			updatedAt: '2024-10-11T18:53:45.710Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -929,8 +971,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 8,
 			createdAt: '2024-10-11T18:56:37.564Z',
 			updatedAt: '2024-10-11T18:56:37.564Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -983,8 +1027,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 4,
 			createdAt: '2024-10-11T19:05:23.266Z',
 			updatedAt: '2024-10-11T19:05:23.266Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1045,8 +1091,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 1,
 			createdAt: '2024-10-12T16:50:52.478Z',
 			updatedAt: '2024-10-12T16:50:52.478Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1089,8 +1137,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-12T16:52:32.814Z',
 			updatedAt: '2024-10-12T16:52:32.814Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1133,10 +1183,14 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-12T16:53:45.873Z',
 			updatedAt: '2024-10-29T18:12:00.703Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
-			updatedBy:
-				'{"userId":"bc475b16-8d73-4dd1-9cb9-5214feca6eae","firstName":"Дарья","lastName":"Крутова"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
+			updatedBy: {
+				id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
+				username: 'daryakrutova',
+			},
 			questionSpecializations: [
 				{
 					id: 11,
@@ -1178,8 +1232,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 4,
 			createdAt: '2024-10-12T16:56:12.906Z',
 			updatedAt: '2024-10-12T16:56:12.906Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1223,8 +1279,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 4,
 			createdAt: '2024-10-12T16:57:22.135Z',
 			updatedAt: '2024-10-12T16:57:22.135Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1267,8 +1325,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-12T16:59:00.457Z',
 			updatedAt: '2024-10-12T16:59:00.457Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1311,8 +1371,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-12T17:55:57.423Z',
 			updatedAt: '2024-10-12T17:55:57.423Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1355,8 +1417,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 1,
 			createdAt: '2024-10-12T17:57:24.153Z',
 			updatedAt: '2024-10-12T17:57:24.153Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1399,8 +1463,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 2,
 			createdAt: '2024-10-12T17:58:33.504Z',
 			updatedAt: '2024-10-12T17:58:33.504Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{
@@ -1443,8 +1509,10 @@ export const questionsMock: Response<Question[]> = {
 			complexity: 1,
 			createdAt: '2024-10-12T18:00:45.693Z',
 			updatedAt: '2024-10-12T18:00:45.693Z',
-			createdBy:
-				'{"userId":"0a1438a3-1776-43b4-9a95-e60ee6573903","firstName":"Руслан","lastName":"Куянец"}',
+			createdBy: {
+				id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
+				username: 'ruslankuyanets',
+			},
 			updatedBy: null,
 			questionSpecializations: [
 				{

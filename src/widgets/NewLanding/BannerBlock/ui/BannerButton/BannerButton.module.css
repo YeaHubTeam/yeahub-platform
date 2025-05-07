@@ -1,0 +1,11 @@
+.banner-button {
+  width: 337px;
+}
+
+
+@media screen and (width < 480px) {
+  .banner-button {
+    width: 100%;
+  }
+}
+

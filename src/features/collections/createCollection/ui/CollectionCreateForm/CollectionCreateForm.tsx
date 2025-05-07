@@ -20,6 +20,7 @@ export const CollectionCreateForm = () => {
 		defaultValues: {
 			title: '',
 			description: '',
+			isFree: false,
 		},
 	});
 

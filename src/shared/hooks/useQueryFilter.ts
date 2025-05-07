@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import {
-	DEFAULT_PAGE,
-	DEFAULT_SPECIALIZATION_NUMBER,
-	DEFAULT_STATUS,
-} from '../constants/queryConstants';
+import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
@@ -19,6 +15,7 @@ interface FilterFromURL {
 	orderBy?: string | null;
 	order?: string | null;
 	specialization?: string | null;
+	isFree?: string | null;
 }
 
 interface FilterFromUser {
@@ -31,25 +28,29 @@ interface FilterFromUser {
 	orderBy?: string;
 	order?: string;
 	specialization?: number | number[];
+	isFree?: boolean;
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
-export const useQueryFilter = () => {
+export const useQueryFilter = (onReset?: () => void) => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		if (!params.get('page') && !params.get('status')) {
-			navigate(initialState);
-		}
+		const page = params.get('page');
+		const status = params.get('status');
+		const specialization = params.get('specialization');
 
-		if (!params.get('specialization')) {
-			navigate(`?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`);
+		const shouldRedirect =
+			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
+
+		if (shouldRedirect) {
+			navigate(initialState, { replace: true });
 		}
-	}, []);
+	}, [location.pathname, location.search]);
 
 	useEffect(() => {
 		setFilters(parseFilters(getQueryParams()));
@@ -67,6 +68,7 @@ export const useQueryFilter = () => {
 			orderBy: params.get('orderBy'),
 			order: params.get('order'),
 			specialization: params.get('specialization'),
+			isFree: params.get('isFree'),
 		};
 	};
 
@@ -83,6 +85,7 @@ export const useQueryFilter = () => {
 			specialization: params.specialization
 				? params.specialization.split(',').map(Number)
 				: undefined,
+			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
 		};
 	};
 
@@ -93,13 +96,8 @@ export const useQueryFilter = () => {
 			const curFilter = newFilters[key as keyof FilterFromUser];
 
 			if (curFilter !== undefined && curFilter !== null) {
-				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, DEFAULT_PAGE);
-					return;
-				}
-
-				if (key === 'status' && newFilters.status === params.get('status')) {
-					params.set(key, DEFAULT_STATUS);
+				if (key === 'tariff') {
+					params.set('isFree', curFilter.toString());
 					return;
 				}
 
@@ -126,7 +124,11 @@ export const useQueryFilter = () => {
 
 	const resetFilters = () => {
 		setFilters({} as FilterFromUser);
-		navigate(initialState);
+		if (location.pathname === '/admin/companies') {
+			onReset?.();
+			return;
+		}
+		navigate(initialState, { replace: true });
 	};
 
 	return { filter, handleFilterChange, resetFilters };

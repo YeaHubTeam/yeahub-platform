@@ -1,0 +1,9 @@
+.additional-block {
+  row-gap: 20px;
+}
+
+@media (width >= 768px) {
+  .additional-block {
+    width: 100%;
+  }
+}

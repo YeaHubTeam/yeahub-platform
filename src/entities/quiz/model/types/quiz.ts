@@ -40,6 +40,7 @@ export interface ActiveQuizState {
 export interface ChangeQuestionAnswerParams {
 	questionId: number;
 	answer: QuizQuestionAnswerType;
+	shouldSaveToLS?: boolean;
 }
 
 export interface ProgressByCategoriesData {
@@ -77,6 +78,7 @@ export interface CreateNewQuizParamsRequest {
 	profileId: string;
 	skills?: number[];
 	complexity?: number[];
+	collection?: number;
 	limit?: number;
 	mode?: QuestionModeType;
 }

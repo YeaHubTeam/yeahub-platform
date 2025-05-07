@@ -11,7 +11,7 @@ import { Modal } from '@/shared/ui/Modal';
 
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
-import { Accept, Extension } from '../FileLoader/model/types/types';
+import { Accept, Extension } from '../FileLoader/types';
 import { Flex } from '../Flex';
 
 import styles from './ImageLoader.module.css';
