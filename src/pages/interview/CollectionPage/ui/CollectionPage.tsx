@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
 import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
@@ -26,6 +27,7 @@ export const CollectionPage = () => {
 	const { data: response, isSuccess } = useGetQuestionsListQuery({
 		collection: Number(collectionId),
 		profileId,
+		limit: COLLECTION_QUESTIONS_LIMIT,
 	});
 
 	const { isMobileS } = useScreenSize();
