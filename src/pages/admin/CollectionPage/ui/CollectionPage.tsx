@@ -7,7 +7,6 @@ import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
 import { route } from '@/shared/helpers/route';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
@@ -34,11 +33,14 @@ export const CollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const profileId = useAppSelector(getProfileId);
-	const { data: response } = useGetQuestionsListQuery({
-		collection: Number(collectionId),
-		profileId,
-		limit: COLLECTION_QUESTIONS_LIMIT,
-	});
+	const { data: response } = useGetQuestionsListQuery(
+		{
+			collection: Number(collectionId),
+			profileId,
+			limit: collection?.questionsCount,
+		},
+		{ skip: collection?.questionsCount === undefined },
+	);
 
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;

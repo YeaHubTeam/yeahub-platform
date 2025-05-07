@@ -1,6 +1,5 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
-import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
 import { route } from '@/shared/helpers/route';
 
 import { collectionApiUrls } from '../model/constants/collection';
@@ -31,9 +30,9 @@ const collectionApi = baseApi.injectEndpoints({
 			GetCollectionQuestionsResponse,
 			GetCollectionByIdParamsRequest
 		>({
-			query: ({ collectionId }) => ({
-				url: route(collectionApiUrls.getCollectionQuestions, collectionId || ''),
-				params: { limit: COLLECTION_QUESTIONS_LIMIT },
+			query: (params) => ({
+				url: route(collectionApiUrls.getCollectionQuestions, params.collectionId || ''),
+				params: { limit: params.limit },
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),

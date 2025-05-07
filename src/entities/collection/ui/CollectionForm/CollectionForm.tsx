@@ -27,9 +27,10 @@ import styles from './CollectionForm.module.css';
 
 export interface CollectionFormProps {
 	isEdit?: boolean;
+	questionsCount?: number;
 }
 
-export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
+export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, setValue, watch } = useFormContext();
 	const imageSrc = watch('imageSrc');
@@ -37,9 +38,13 @@ export const CollectionForm = ({ isEdit }: CollectionFormProps) => {
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 	const collectionId = watch('id');
 	const specializations = watch('specializations');
-	const { data: collectionQuestions } = useGetCollectionQuestionsQuery({
-		collectionId: collectionId!,
-	});
+	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
+		{
+			collectionId: collectionId!,
+			limit: questionsCount,
+		},
+		{ skip: questionsCount === undefined },
+	);
 	useEffect(() => {
 		if (collectionQuestions) {
 			setValue(

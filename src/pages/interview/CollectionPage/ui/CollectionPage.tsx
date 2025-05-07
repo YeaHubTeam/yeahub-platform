@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
 import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
@@ -24,11 +23,14 @@ export const CollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const profileId = useAppSelector(getProfileId);
-	const { data: response, isSuccess } = useGetQuestionsListQuery({
-		collection: Number(collectionId),
-		profileId,
-		limit: COLLECTION_QUESTIONS_LIMIT,
-	});
+	const { data: response, isSuccess } = useGetQuestionsListQuery(
+		{
+			collection: Number(collectionId),
+			profileId,
+			limit: collection?.questionsCount,
+		},
+		{ skip: collection?.questionsCount === undefined },
+	);
 
 	const { isMobileS } = useScreenSize();
 
