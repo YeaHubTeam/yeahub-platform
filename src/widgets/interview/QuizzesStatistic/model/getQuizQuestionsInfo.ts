@@ -21,12 +21,12 @@ export const getQuizQuestionsInfo = (questions: Answers[] = []) => {
 				{
 					name: i18n.t(InterviewQuiz.ANSWER_KNOW, { ns: i18Namespace.interviewQuiz }),
 					value: 0,
-					itemStyle: { color: '#400799' },
+					itemStyle: { color: '#008616' },
 				},
 				{
 					name: i18n.t(InterviewQuiz.ANSWER_DO_NOT_KNOW, { ns: i18Namespace.interviewQuiz }),
 					value: 0,
-					itemStyle: { color: '#E1CEFF' },
+					itemStyle: { color: '#af0932' },
 				},
 			],
 		);

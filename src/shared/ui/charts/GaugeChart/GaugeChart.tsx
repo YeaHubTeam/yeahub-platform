@@ -52,16 +52,16 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
-					stroke="#F0E7FF"
+					stroke="#FFE7AE"
 					strokeWidth={strokeWidth}
-					fill="#FDF4FF"
+					fill="#fffaec"
 				/>
 				<circle
 					className={styles['gauge-progress']}
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
-					stroke="#400799"
+					stroke="#008616"
 					strokeWidth={strokeWidth}
 					fill="none"
 					strokeLinecap="round"

@@ -40,14 +40,14 @@ export const PieSegmentList = ({ segments, totalAttempt }: PieSegmentListProps) 
 				>
 					<circle
 						r={radius}
-						fill="#F8F8F8"
+						fill="#ffe7ae"
 						cx={innerContainerSize / 2}
 						cy={innerContainerSize / 2}
 						className={styles['pie-chart-segment']}
 					/>
 					<circle
 						r={radius * 0.8}
-						fill="#FDF4FF"
+						fill="#FFFAEC"
 						cx={innerContainerSize / 2}
 						cy={innerContainerSize / 2}
 						className={styles['pie-chart-segment']}
