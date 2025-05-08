@@ -44,7 +44,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		);
 
 		const handleClick = () => {
-			if (inputRef.current) inputRef.current.focus();
+			if (inputRef.current && !disabled) {
+				inputRef.current.focus();
+			}
 		};
 
 		const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -70,8 +72,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				onKeyDown={handleKeyDown}
 				role="button"
 				tabIndex={disabled ? -1 : 0}
+				data-testid="Input_Wrapper"
 			>
 				<span
+					data-testid="Input_Prefix"
 					className={classNames({
 						[styles['without-prefix']]: !prefix,
 						[styles['input-prefix']]: !!prefix,
@@ -88,9 +92,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					aria-invalid={error}
 					aria-labelledby={label}
 					aria-label={label}
+					data-testid="Input_Field"
 					{...props}
 				/>
-				{suffix && <span className={styles['input-suffix']}>{suffix}</span>}
+				{suffix && (
+					<span data-testid="Input_Suffix" className={styles['input-suffix']}>
+						{suffix}
+					</span>
+				)}
 			</div>
 		);
 	},
