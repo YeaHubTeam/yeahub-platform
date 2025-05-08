@@ -604,6 +604,11 @@ export enum Landing {
 	BANNER_IMG_STATISTICS = 'banner.img.statistics',
 	BANNER_IMG_COMPANY = 'banner.img.company',
 	BANNER_IMG_PROGRESS = 'banner.img.progress',
+	HISTORY_TITLE = 'history.title',
+	HISTORY_SUBTITLE = 'history.subtitle',
+	HISTORY_SLIDES_FIRST = 'history.slides.first',
+	HISTORY_SLIDES_SECOND = 'history.slides.second',
+	HISTORY_SLIDES_THIRD = 'history.slides.third',
 }
 
 export enum Subscription {

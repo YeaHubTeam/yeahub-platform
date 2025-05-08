@@ -110,5 +110,14 @@
 			"company": "Сompany",
 			"progress": "Progress"
 		}
+	},
+	"history": {
+		"title": "Your progress is your success",
+		"subtitle": "Every interview is a step forward! We track your progress to help improve weak points and reinforce what you've learned.",
+		"slides": {
+			"first": "How many questions have you mastered already?",
+			"second": "Study only the necessary questions",
+			"third": "Which skills require more attention?"
+		}
 	}
 }
