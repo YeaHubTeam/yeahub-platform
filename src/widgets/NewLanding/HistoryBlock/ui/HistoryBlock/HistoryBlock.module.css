@@ -1,0 +1,19 @@
+.history-block {
+  margin-top: 120px;
+  border-radius: 20px;
+  background-color: var(--background-block);
+}
+
+@media screen and (width < 1024px) {
+  .history-block {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (width < 768px) {
+  .history-block {
+    flex-direction: column-reverse;
+    margin-top: 40px;
+    background-color: var(--color-purple-700);
+  }
+}
