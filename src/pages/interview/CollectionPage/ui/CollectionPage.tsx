@@ -1,12 +1,13 @@
+import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { useScreenSize } from '@/shared/hooks';
+import { useModal, useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
+import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover } from '@/shared/ui/Popover';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getProfileId } from '@/entities/profile';
@@ -33,6 +34,7 @@ export const CollectionPage = () => {
 	);
 
 	const { isMobileS } = useScreenSize();
+	const { isOpen, onToggle, onClose } = useModal();
 
 	const questions = response?.data ?? [];
 
@@ -46,29 +48,30 @@ export const CollectionPage = () => {
 		return null;
 	}
 
-	const renderAdditionalInfoPopover = (
+	const renderAdditionalInfoDrawer = (
 		<div className={styles['popover-additional']}>
-			<Popover
-				body={
-					<div className={styles['popover-additional-wrapper']}>
-						<AdditionalInfo collection={collection} />
-					</div>
-				}
+			<IconButton
+				className={classNames({ active: isOpen })}
+				aria-label="go to additional info"
+				form="square"
+				icon={<PopoverIcon />}
+				size="small"
+				variant="tertiary"
+				onClick={onToggle}
+			/>
+			<Drawer
+				isOpen={isOpen}
+				onClose={onClose}
+				rootName={isMobileS ? 'body' : 'mainLayout'}
+				className={classNames(styles.drawer, {
+					[styles['drawer-mobile']]: isMobileS,
+				})}
+				hasCloseButton
 			>
-				{({ onToggle, isOpen }) => (
-					<div>
-						<IconButton
-							className={isOpen ? styles.active : ''}
-							aria-label="go to additional info"
-							form="square"
-							icon={<PopoverIcon />}
-							size="small"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					</div>
-				)}
-			</Popover>
+				<div className={styles['popover-additional-wrapper']}>
+					<AdditionalInfo collection={collection} />
+				</div>
+			</Drawer>
 		</div>
 	);
 
@@ -91,7 +94,7 @@ export const CollectionPage = () => {
 
 	return (
 		<>
-			{renderAdditionalInfoPopover}
+			{renderAdditionalInfoDrawer}
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					{renderHeaderAndActions()}
