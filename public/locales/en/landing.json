@@ -1,14 +1,26 @@
 {
+  "app": {
+    "logo": {
+      "aria.label": "IT Job Interview Trainer"
+    }
+  },
   "header": {
     "actions": {
       "register": "Registration",
       "login": "Login"
     },
-    "links": {
-      "questions.list": "Interview Questions",
-      "public.quiz": "Interview Trainer"
+    "nav": {
+			"questions.list": "Interview Questions",
+			"public.quiz": "Interview Trainer",
+			"popover.title": "Preparation",
+			"aria.label": "User"
+		},
+    "auth": {
+      "iconbutton": {
+        "aria.label": "Authorization"
+      }
     }
-  },
+	},
   "questions": {
     "first": "What is Virtual DOM, and how does it work?",
     "second": {
@@ -82,9 +94,16 @@
     }
   },
   "footer": {
-    "slogan": "Choose what IT will be like tomorrow, together with us",
+    "slogan": "Choose what IT will look like tomorrow — join us!",
+    "title": "Choose what IT will look like tomorrow — join us!",
     "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
-    "docs": "Documents"
+    "description": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
+    "docs": "Documents",
+    "links": {
+			"link": {
+				"aria-label": "Will open in a new tab"
+			}
+		}
   },
 	"banner": {
   "sticker": {

@@ -1,0 +1,27 @@
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { Button } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex';
+
+import styles from './HeaderAuthDesktop.module.css';
+
+export const HeaderAuthDesktop = () => {
+	const { t } = useTranslation(i18Namespace.landing);
+
+	return (
+		<Flex justify="between" align="center" gap="26">
+			<Link className={styles['login-link']} to={ROUTES.auth.login.page}>
+				{t(Landing.LOGIN)}
+			</Link>
+			<Link to={ROUTES.auth.register.page}>
+				<Button size="large" className={styles['register-button']}>
+					{t(Landing.REGISTER)}
+				</Button>
+			</Link>
+		</Flex>
+	);
+};

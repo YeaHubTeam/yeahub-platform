@@ -1,0 +1,14 @@
+.login-link { 
+  color: var(--text-color-link-active);
+  line-height: 110%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+  transition: color 0.2s ease;
+}
+
+.register-button {
+  color: var(--text-color-white);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-l);
+  transition: background-color 0.2s ease;
+}

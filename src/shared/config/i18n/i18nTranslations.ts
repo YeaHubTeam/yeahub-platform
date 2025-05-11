@@ -528,8 +528,6 @@ export enum Companies {
 export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',
-	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
-	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
 	QUESTIONS_FIRST = 'questions.first',
 	QUESTIONS_SECOND_TITLE = 'questions.second.title',
 	QUESTIONS_SECOND_ANSWER = 'questions.second.answer',
@@ -573,6 +571,7 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+
 	// для нового лендинга ниже
 	BANNER_STICKER_SKILL = 'banner.sticker.skill',
 	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
@@ -583,6 +582,15 @@ export enum Landing {
 	BANNER_IMG_STATISTICS = 'banner.img.statistics',
 	BANNER_IMG_COMPANY = 'banner.img.company',
 	BANNER_IMG_PROGRESS = 'banner.img.progress',
+	HEADER_NAV_QUESTIONS_LIST = 'header.nav.questions.list',
+	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
+	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
+	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
+	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
+	FOOTER_LINKS_LINK_ARIA_LABEL = 'footer.links.link.aria.label',
+	FOOTER_TITLE = 'footer.title',
+	FOOTER_DESCRIPTION = 'footer.description',
+	APP_LOGO_ARIA_LABEL = 'app.logo.aria.label',
 }
 
 export enum Subscription {

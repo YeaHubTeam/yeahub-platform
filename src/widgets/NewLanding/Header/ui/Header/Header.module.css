@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: var(--color-white-900);
+}
+
+.header-content {
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+.header-main {
+  align-items: center;
+  gap: 42px;
+}
+
+/* для макета на 1200рх */
+@media screen and (width < 1440px) {
+  .header {
+    margin-bottom: 30px;
+    padding: 0 60px;
+  }
+}
+
+/* для макета на 768рх */
+@media screen and (width < 1200px) {
+  .header {
+    padding: 0 30px;
+    border-bottom: 1px solid var(--color-black-50);
+  }
+  
+  .header-content {
+    padding: 15px 0;
+  }
+
+  .header-main {
+    gap: 34px;
+  }
+}
+
+/* для макета на 360рх */
+@media screen and (width < 768px) {
+  .header {
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .header-content {
+    padding: 10px 0;
+  }
+
+  .header-main {
+    gap: 20px;
+  }
+}

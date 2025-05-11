@@ -1,0 +1,24 @@
+.main-container {
+  min-height: 100vh;
+}
+
+/* для макета на 1200рх */
+@media screen and (width < 1440px) {
+  .main-container {
+    padding: 0 60px;
+  }
+}
+
+/* для макета на 768рх */
+@media screen and (width < 1200px) {
+  .main-container {
+    padding: 0 30px;
+  }
+}
+
+/* для макета на 360рх */
+@media screen and (width < 768px) {
+  .main-container {
+    padding: 0 10px;
+  }
+}

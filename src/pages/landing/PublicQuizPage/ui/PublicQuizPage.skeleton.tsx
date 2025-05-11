@@ -9,12 +9,12 @@ export const PublicQuizPageSkeleton = () => {
 	const { isMobile } = useScreenSize();
 
 	return (
-		<div className={styles.container}>
+		<Flex direction="column" className={styles.container}>
 			<Card>
 				<Flex gap="16" direction="column">
 					<div className={styles['progress-bar']}>
-						<Skeleton width={200} height={40} />
-						<Skeleton width={30} height={40} />
+						<Skeleton width={240} height={24} />
+						<Skeleton width={24} height={24} />
 					</div>
 					<Skeleton width="100%" height={3} borderRadius={50}></Skeleton>
 				</Flex>
@@ -43,15 +43,15 @@ export const PublicQuizPageSkeleton = () => {
 									/>
 								))}
 						</Flex>
-						<Skeleton height={303} borderRadius={24} className={styles['image-skeleton']} />
+						{/* <Skeleton height={303} borderRadius={24} className={styles['image-skeleton']} /> */}
 					</div>
 
 					<Flex justify="between">
 						<Skeleton height={48} width={128}></Skeleton>
-						<Skeleton height={48} width={178}></Skeleton>
+						{/* <Skeleton height={48} width={178}></Skeleton> */}
 					</Flex>
 				</Flex>
 			</Card>
-		</div>
+		</Flex>
 	);
 };

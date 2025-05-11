@@ -1,11 +1,17 @@
 :root {
   /* widths */
   --container-width: 1216px;
+  --container-width-xl: 1080px;
   --container-width-lg: 960px; 
-  --container-width-tablet: 708px;
+  --container-width-md: 708px;
   --container-width-sm: 540px;
+  --container-width-xs: 340px;
   --container-width-mobile: 100%;
+
+  /* grids */
   --grid-template-columns: 332px 244px 244px;
+
+  /* heights */
   --header-height: 76px;
 
   /* paddings */
