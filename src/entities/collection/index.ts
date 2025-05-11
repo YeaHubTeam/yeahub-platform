@@ -10,3 +10,4 @@ export * from './api/collectionApi';
 export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollectionAccess';
 export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
+export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';

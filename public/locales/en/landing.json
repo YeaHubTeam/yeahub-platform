@@ -20,7 +20,7 @@
         "aria.label": "Authorization"
       }
     }
-	},
+  },
   "questions": {
     "first": "What is Virtual DOM, and how does it work?",
     "second": {
@@ -69,6 +69,16 @@
     },
     "link": "Start learning"
   },
+  "training_interview": {
+		"title": "Interview trainer",
+		"subtitle": "Turn preparation into a game! Our interactive trainer will help you \neffectively memorize information and pass interviews\n with confidence.",
+		"subtitle.tablet": "Repeat Mode — practice with questions you’ve already tackled.",
+		"advantages": {
+			"first": "Memorization mode — learn new topics with a smart repetition algorithm",
+			"second": "Flexible customization — choose difficulty level, key skills, and IT specialties"
+		},
+		"link": "Try it"
+	},
   "ready.interview": {
     "title": "Get ready for IT interviews",
     "subtitle": "With YeaHub, preparing for an interview becomes a simple and exciting process.",
@@ -94,7 +104,7 @@
     }
   },
   "footer": {
-    "slogan": "Choose what IT will look like tomorrow — join us!",
+    "slogan": "Choose what IT will be like tomorrow, together with us",
     "title": "Choose what IT will look like tomorrow — join us!",
     "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
     "description": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
@@ -106,19 +116,18 @@
 		}
   },
 	"banner": {
-  "sticker": {
-    "skill": "YeaHub — level up your skills",
-    "candidate": "Candidate"
-  },
-  "title": "Interview Training \nPlatform and question database for successful preparation",
-  "description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
-  "button": "Join the community",
-	"img": {
+		"sticker": {
+			"skill": "YeaHub — level up your skills",
+			"candidate": "Candidate"
+		},
+		"title": "Interview Training \nPlatform and question database for successful preparation",
+		"description": "Join the YeaHub community: learn, practice, develop skills, and find a job in IT",
+		"button": "Join the community",
+		"img": {
 			"homepage": "Homepage banner",
 			"statistics": "Statistics",
 			"company": "Сompany",
 			"progress": "Progress"
 		}
-}
-
+	}
 }

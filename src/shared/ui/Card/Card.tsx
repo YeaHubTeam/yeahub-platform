@@ -148,7 +148,7 @@ export const Card = ({
 								[styles['link-disabled']]: actionDisabled,
 							})}
 						>
-							<Text variant="body3-strong" color="purple-700">
+							<Text variant="body3-strong" color={actionDisabled ? 'purple-300' : 'purple-700'}>
 								{actionTitle}
 							</Text>
 							<Icon

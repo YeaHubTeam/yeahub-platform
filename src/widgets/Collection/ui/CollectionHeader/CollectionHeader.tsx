@@ -1,51 +1,35 @@
+import classNames from 'classnames';
+
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-
-import { Collection } from '@/entities/collection';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './CollectionHeader.module.css';
 
 interface CollectionHeaderProps {
 	title: string;
 	description: string;
+	imageSrc?: string | null;
 }
 
-interface CollectionHeaderProps {
-	collection: Collection;
-}
+export const CollectionHeader = ({ title, description, imageSrc }: CollectionHeaderProps) => {
+	const { isMobileS } = useScreenSize();
 
-export const CollectionHeader = ({ title, description, collection }: CollectionHeaderProps) => {
-	const { isDesktop, isMobile } = useScreenSize();
-
-	const imageClassName = isMobile ? styles['image-mobile'] : styles['image-default'];
+	const imageClassName = isMobileS ? styles['image-mobile'] : styles['image-default'];
 
 	return (
-		<Card withOutsideShadow>
-			{isMobile ? (
-				<div className={styles['collection-header-wrapper']}>
-					<div className={styles['title-wrapper']}>
-						<h2 className={styles.title}>{title}</h2>
-					</div>
-					<div className={styles['description-wrapper']}>
-						<p className={styles.description}>{description}</p>
-					</div>
-				</div>
-			) : (
-				<div className={styles['collection-header-wrapper']}>
-					{isDesktop && (
-						<div className={styles['image-wrapper']}>
-							<ImageWithWrapper src={collection.imageSrc} className={imageClassName} />
-						</div>
-					)}
-					<div className={styles['title-wrapper']}>
-						<h2 className={styles.title}>{title}</h2>
-						<p className={styles.description}>{description}</p>
-					</div>
-
-					<div className={styles['description-wrapper']}></div>
-				</div>
-			)}
+		<Card className={styles.wrapper} withOutsideShadow>
+			<Flex gap="20" direction={isMobileS ? 'column' : 'row'}>
+				<ImageWithWrapper src={imageSrc} className={classNames(styles.image, imageClassName)} />
+				<Flex direction="column">
+					<h2 className={styles.title}>{title}</h2>
+					<Text variant="body3-accent" maxRows={!isMobileS ? 4 : undefined}>
+						{description}
+					</Text>
+				</Flex>
+			</Flex>
 		</Card>
 	);
 };

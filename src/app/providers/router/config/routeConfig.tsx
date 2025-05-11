@@ -64,6 +64,7 @@ import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { NewLandingPage } from '@/pages/landing/NewLandingPage';
+import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -177,6 +178,10 @@ const adminLayoutMenuItems: MenuItem[] = [
 ];
 
 export const router = createBrowserRouter([
+	{
+		path: 'landingQuestions',
+		element: <LandingPageTemporary />,
+	},
 	{
 		path: ROUTES.appRoute,
 		element: <LandingLayout />,

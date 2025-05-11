@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
 export interface ChipProps {
+	variant?: 'small' | 'big';
 	theme?: 'primary' | 'outlined';
 	label?: string;
 	onDelete?: () => void;

@@ -13,9 +13,6 @@ export interface Company {
 }
 
 export type GetCompanyByIdResponse = Company;
-export type ErrorResponce = {
-	message: string;
-};
 
 export type GetCompanyByIdRequest = {
 	companyId: string;

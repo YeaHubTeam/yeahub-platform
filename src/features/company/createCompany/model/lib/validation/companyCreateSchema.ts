@@ -8,10 +8,10 @@ import { CreateCompanyFormValues } from '../../types/companyCreateTypes';
 export const companyCreateSchema: yup.ObjectSchema<CreateCompanyFormValues> = yup.object().shape({
 	id: yup.string(),
 	title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	legalName: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	legalName: yup.string(),
+	description: yup.string(),
 	imageSrc: yup.string().notRequired(),
 	companyImage: yup.string().notRequired(),
-	inn: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	kpp: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	inn: yup.string(),
+	kpp: yup.string(),
 });
