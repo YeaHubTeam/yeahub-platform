@@ -110,5 +110,22 @@
 			"company": "Сompany",
 			"progress": "Progress"
 		}
+	},
+	"collections": {
+		"title": "Real Company Questions",
+		"subtitle": "Prepare for interviews with collections of questions from major \nIT companies. Discover what questions are asked at Sber, T-Bank, \nYandex, Avito, Ozon, VK, and other companies.",
+		"cards": {
+			"sber": "Middle Frontend Developer at Sber",
+			"tbank": "Senior Frontend Developer at T-Bank",
+			"vk": "Senior Backend Developer at VK"
+		},
+		"additional": {
+			"first": "Current and in-demand questions from real technical interviews",
+			"second": "Study and practice questions in the interactive YeaHub simulator",
+			"third": "Test if you can pass an interview at top IT companies!"
+		},
+		"link": "Try it",
+		"expand": "See more",
+		"star": "For participants"
 	}
 }

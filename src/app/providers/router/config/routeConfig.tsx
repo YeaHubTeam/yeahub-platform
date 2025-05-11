@@ -84,6 +84,7 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -194,6 +195,10 @@ export const router = createBrowserRouter([
 			{
 				path: '*',
 				element: <Error404Page />,
+			},
+			{
+				path: 'test',
+				element: <CollectionBlock />,
 			},
 			{
 				path: ROUTES.docs.page,

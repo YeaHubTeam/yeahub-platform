@@ -1,0 +1,17 @@
+.title {
+  margin-bottom: 12px;
+  font-weight: var(--font-weight-500);
+}
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+.title-block {
+  white-space: pre-line;
+  align-self: flex-start;
+}
+
+.collection-wrapper {
+  max-width: 100%;
+}

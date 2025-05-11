@@ -604,6 +604,17 @@ export enum Landing {
 	BANNER_IMG_STATISTICS = 'banner.img.statistics',
 	BANNER_IMG_COMPANY = 'banner.img.company',
 	BANNER_IMG_PROGRESS = 'banner.img.progress',
+	COLLECTION_CARD_SBER = 'collections.cards.sber',
+	COLLECTION_CARD_TBANK = 'collections.cards.tbank',
+	COLLECTION_CARD_VK = 'collections.cards.vk',
+	COLLECTION_TITLE = 'collections.title',
+	COLLECTION_SUBTITLE = 'collections.subtitle',
+	COLLECTION_ADDITIONAL_FIRST = 'collections.additional.first',
+	COLLECTION_ADDITIONAL_SECOND = 'collections.additional.second',
+	COLLECTION_ADDITIONAL_THIRD = 'collections.additional.third',
+	COLLECTION_LINK = 'collections.link',
+	COLLECTION_EXPAND = 'collections.expand',
+	COLLECTION_STAR = 'collections.star',
 }
 
 export enum Subscription {

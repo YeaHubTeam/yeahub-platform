@@ -1,0 +1,59 @@
+
+.tag {
+  padding: 2px 8px;
+  width: fit-content;
+  border-radius: 30px;
+  background-color: var(--color-green-007);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  margin-right: 1.5px;
+  width: 20px;
+  height: 20px;
+}
+
+.image {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.description {
+  max-width: 90%;
+}
+
+@media screen and (width < 1440px) {
+  .card {
+    padding: 16px 16px 20px;
+  }
+
+  .image {
+    height: 196px;
+  }
+}
+
+@media screen and (width < 768px) {
+  .image {
+    width: 100%;
+    min-width: 180px;
+    height: auto;
+    max-height: 222px;
+  }
+
+  .card {
+    padding: 10px 10px 20px;
+    width: 100%;
+  }
+}
