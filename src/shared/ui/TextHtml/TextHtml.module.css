@@ -1,49 +1,209 @@
-.text {
-  white-space: pre-wrap;
-  font-family: var(--font-family);
+.text-html {
+  position: relative;
 }
-
-.text p{
-  line-height: 140%;
+ 
+.content {
+  color: var(--color-black-800);
+  line-height: 1.6;
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family-arial);
 }
-
-.text code {
-  padding: 1.5px 5px;
-  border-radius: 12px;
-  background: linear-gradient(
-    180deg,
-    var(--background-gradient-code-start) 0%,
-    var(--background-gradient-code-end) 100%
-  );
+ 
+.content p {
+  margin-bottom: 16px;
 }
-
-.text pre {
-  padding: 1rem;
-  box-sizing: border-box;
-  max-width: 100%;
+ 
+.content h1 {
+  margin: 20px 0 15px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-s);
+}
+ 
+.content h2 {
+  margin: 18px 0 13px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-xs);
+}
+ 
+.content ul,
+.content ol {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  list-style-position: outside;
+}
+ 
+.content ul {
+  list-style-type: disc;
+}
+ 
+.content ol {
+  list-style-type: decimal;
+}
+ 
+.content li {
+  display: list-item;
+  margin-bottom: 5px;
+  list-style-position: outside;
+  line-height: 1.6;
+}
+ 
+.content li p {
+  margin: 0;
+}
+ 
+.content ul ul,
+.content ol ol {
+  margin-left: 18px;
+}
+ 
+.content ul ul {
+  list-style-type: circle;
+}
+ 
+.content ol ol {
+  list-style-type: lower-alpha;
+}
+ 
+.content pre {
+  position: relative;
+  margin: 15px 0;
+  padding: 12px;
   overflow-x: auto;
+  border-radius: 4px;
+  color: var(--color-white-900);
+}
+ 
+.content code {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: var(--color-black-10);
+  color: var(--color-green-700);
+  font-family: var(--font-family-courier);
+}
+ 
+.content pre code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-white-900);
+}
+ 
+.content blockquote {
+  margin: 34px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-purple-300);
+  color: var(--color-black-600);
+  font-style: italic;
+}
+ 
+.code-block-wrapper {
+  margin: 34px 0;
+  overflow: hidden;
+  border: 1px solid var(--color-black-700);
+  border-radius: 18px;
+  background: #282c34;
+}
+ 
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-black-700);
+  background: var(--color-black-800);
+}
+ 
+.code-block-language {
+  color: var(--color-black-300);
+  font-size: var(--font-size-p-s);
+}
+
+.copy-icon {
+  display: block;
+}
+
+.check-icon {
+  display: none;
+}
+
+.code-block-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 32px;
+  height: 32px;
+  border: none;
   border-radius: 8px;
-  background-color: var(--color-black-30);
-  white-space: break-spaces;
+  background: var(--color-black-600);
+  color: var(--color-black-100);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+ 
+.code-block-copy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+ 
+.copy-button-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+ 
+.code-block-copy svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: currentcolor;
+  color: inherit;
+}
+ 
+.code-block-copy:hover:not(:disabled) {
+  background: var(--color-black-500);
+}
+ 
+.code-block-copy .check-icon {
+  display: none;
+}
+ 
+.code-block-copy .copy-icon {
+  display: block;
+}
+ 
+@keyframes checkmark {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+ 
+.code-block-copy.copied {
+  background: var(--color-green-600);
+  color: var(--color-white-900);
 }
 
-.text pre::-webkit-scrollbar {
-  height: 6px;
+.code-block-copy.copied:hover {
+  background: var(--color-green-600);
+  color: var(--color-white-900);
 }
+ 
+.code-block-copy.copied .copy-icon {
+  display: none;
+}
+ 
+.code-block-copy.copied .check-icon {
+  display: block;
+  animation: checkmark 0.3s ease;
+}
+ 
 
-.text pre::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background-color: var(--color-black-200);
-}
-
-.text pre::-webkit-scrollbar-track {
-  border-radius: 3px;
-  background-color: var(--color-black-50);
-}
-
-@media (width <= 767px) {
-  .text pre {
-    padding: 10px !important;
-    white-space: pre;
-  }
-}
+ 
