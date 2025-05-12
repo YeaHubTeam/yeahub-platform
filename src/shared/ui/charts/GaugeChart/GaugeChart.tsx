@@ -31,12 +31,12 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 
 	const { isMobile, isMobileS } = useScreenSize();
 
-	let size = 240;
+	let size = 241;
 
 	if (isMobile) {
-		size = 198;
+		size = 241;
 	} else if (isMobileS) {
-		size = 190;
+		size = 241;
 	}
 
 	const radius = size / 2;
@@ -73,8 +73,8 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 				/>
 			</svg>
 			<Text color={'black-700'} variant="body4" className={styles['gauge-text']}>
-				{passedQuestionsPercent}%
-				<br />
+				{!isNaN(passedQuestionsPercent) && <span>`${passedQuestionsPercent}%`</span>}
+				{!isNaN(passedQuestionsPercent) && <br />}
 				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}
 			</Text>
 		</Flex>
