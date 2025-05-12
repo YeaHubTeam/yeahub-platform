@@ -7,9 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 12px;
+  padding: 6px;
   width: fit-content;
-  height: 42px;
   border: 1px solid var(--color-black-200);
   border-radius: 12px;
   background-color: transparent;
@@ -46,25 +45,36 @@
 
   &.chip-outlined {
     border: 1px solid var(--color-purple-700);
-    color: var(--color-purple-700);
   }
-} 
+}
+
+.small {
+  height: 42px;
+}
+
+.big {
+  height: 48px;
+}
 
 .chip-label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: inherit;
 }
 
 .chip-prefix {
   display: flex;
   align-items: center;
-  margin-right: 8px;
 
-  img, svg { 
-    max-width: 20px;
-    max-height: 20px;
+  img, svg {
+    max-width: 36px;
+    max-height: 36px;
   }
+}
+
+.gap {
+  margin-right: 6px;
 }
 
 @media (width > 1024px) {
@@ -72,5 +82,7 @@
   .chip-wrapper:focus-visible:where(.chip-clickable:not(.chip-disabled)),
   .chip-wrapper:active:where(.chip-clickable:not(.chip-disabled)) {
     border: 1px solid var(--color-purple-700);
+    background-color: var(--color-purple-700);
+    color: var(--color-white-900);
   }   
 }

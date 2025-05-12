@@ -1,0 +1,46 @@
+.interview-trainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--container-m-b-desktop);
+  line-height: 130%;
+  white-space: pre-line;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 0;
+}
+
+.interview-trainer-wrapper {
+  gap: 20px;
+}
+
+.title-block {
+  align-self: baseline;
+}
+
+@media (width >=768px) {
+  .title {
+    margin-bottom: 20px;
+    font-size: var(--font-size-large-34);
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+  }
+}
+
+@media (width >=1024px) {
+  .interview-trainer {
+    margin-top: 120px;
+  }
+
+  .title-block {
+    position: absolute;
+    top: 90px;
+  }
+}

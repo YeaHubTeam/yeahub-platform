@@ -7,6 +7,8 @@
   --background-block: var(--color-white-900);
   --background-light-hover: var(--color-black-30);
   --background-light-chip: var(--color-purple-100);
+  --background-light-block: var(--color-black-10);
+  --background-purple-block: var(--color-purple-750);
   --text-color-primary: var(--color-black-800);
   --text-color-bright: var(--color-black-900);
   --text-color-black-email: var(--color-black-850);
@@ -30,6 +32,8 @@
   --background-primary: var(--color-purple-700);
   --caret-color-red: var(--color-red-400);
   --icon-color-red: var(--color-red-600);
+  --icon-background-yellow: var(--color-yellow-450);
+  --icon-background-green: var(--color-green-007);
   --error-color-red: var(--color-red-700);
   --border-focus-purple: var(--color-purple-500);
   --background-admin-sidebar-item: var(--color-yellow-800);

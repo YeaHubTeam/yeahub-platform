@@ -51,7 +51,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<CollectionEditFormHeader />
 					<Card className={styles.content}>
-						<CollectionForm isEdit />
+						<CollectionForm isEdit questionsCount={questionsCount} />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

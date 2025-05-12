@@ -1,40 +1,31 @@
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
+
+import { CollectionsPreviewSkeleton } from '@/entities/collection';
 
 import styles from './CollectionsPage.module.css';
 
 export const CollectionsPageSkeleton = () => {
+	const { isMobileS } = useScreenSize();
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles['main-info-wrapper']}>
 				<Card className={styles.content}>
-					<Skeleton style={{ margin: '0.67em 0' }} height={33} width="100%" />
-					<hr className={styles.divider} />
-					{[...Array(6)].map((_, i) => (
-						<div key={i} className={styles['question-skeleton']}>
-							<Skeleton height={24} width="100%" />
-						</div>
-					))}
-				</Card>
-			</div>
-			<div className={styles['additional-info-wrapper']}>
-				<Card className={styles.search}>
-					<div className={styles['filter-skeleton-wrapper']}>
-						<Skeleton height={44} width="100%" />
-
-						{[...Array(4)].map((_, i) => (
-							<div key={i}>
-								<Skeleton height={24} width="38%" style={{ marginBottom: '16px' }} />
-								<div className={styles['filter-skeleton-list']}>
-									{[...Array(4)].map((_, i) => (
-										<Skeleton key={i} height={42} width={80} borderRadius="12px" />
-									))}
-								</div>
-							</div>
-						))}
+					<div className={styles.title}>
+						<Skeleton height={isMobileS ? 24 : 29} width={124} />
 					</div>
+					<Flex direction="column" gap="20">
+						{[...Array(6)].map((_, i) => (
+							<CollectionsPreviewSkeleton key={i} />
+						))}
+					</Flex>
 				</Card>
 			</div>
+			<Card className={styles['additional-info-wrapper']}>
+				<Skeleton height={48} width="100%" borderRadius={12} />
+			</Card>
 		</section>
 	);
 };

@@ -57,6 +57,16 @@
 		},
 		"link": "Start learning"
 	},
+	"training_interview": {
+		"title": "Interview trainer",
+		"subtitle": "Turn preparation into a game! Our interactive trainer will help you \neffectively memorize information and pass interviews\n with confidence.",
+		"subtitle.tablet": "Repeat Mode — practice with questions you’ve already tackled.",
+		"advantages": {
+			"first": "Memorization mode — learn new topics with a smart repetition algorithm",
+			"second": "Flexible customization — choose difficulty level, key skills, and IT specialties"
+		},
+		"link": "Try it"
+	},
 	"ready.interview": {
 		"title": "Get ready for IT interviews",
 		"subtitle": "With YeaHub, preparing for an interview becomes a simple and exciting process.",

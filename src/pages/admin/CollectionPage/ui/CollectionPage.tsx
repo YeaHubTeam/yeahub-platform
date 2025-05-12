@@ -33,10 +33,14 @@ export const CollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const profileId = useAppSelector(getProfileId);
-	const { data: response } = useGetQuestionsListQuery({
-		collection: Number(collectionId),
-		profileId,
-	});
+	const { data: response } = useGetQuestionsListQuery(
+		{
+			collection: Number(collectionId),
+			profileId,
+			limit: collection?.questionsCount,
+		},
+		{ skip: collection?.questionsCount === undefined },
+	);
 
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;
@@ -82,7 +86,7 @@ export const CollectionPage = () => {
 	const renderHeaderAndActions = () => (
 		<>
 			<CollectionHeader
-				collection={collection}
+				imageSrc={collection.imageSrc || collection.company?.imageSrc}
 				description={collection.description}
 				title={collection.title}
 			/>
