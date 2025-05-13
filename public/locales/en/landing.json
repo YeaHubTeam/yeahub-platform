@@ -107,7 +107,7 @@
 		"img": {
 			"homepage": "Homepage banner",
 			"statistics": "Statistics",
-			"company": "Сompany",
+			"company": "Company",
 			"progress": "Progress"
 		}
 	},
@@ -127,5 +127,31 @@
 		"link": "Try it",
 		"expand": "See more",
 		"star": "For participants"
-	}
+	},
+  "specialization": {
+		"title": "Choose Your Specialty",
+		"button": "See more",
+		"card": {
+			"description": {
+				"frontend": "HTML, CSS, JavaScript, and modern frameworks",
+				"backend": "Databases, APIs, architecture, and security",
+				"data": "Build predictions and automate decisions",
+				"machine": "How machine learning is transforming the world of technology",
+				"testing": "Testing fundamentals: key aspects and approaches",
+				"ios": "iOS development: tools and approaches",
+				"android": "Explore key aspects of Android development",
+				"game": "Game development fundamentals: key points"
+			},
+			"img": {
+				"frontend": "Image: Web development (HTML, CSS, JavaScript) on a laptop screen",
+				"backend": "Image: Server infrastructure with databases and a security shield",
+				"data": "Image: Graphs and algorithms for data analysis and forecasting",
+				"machine": "Image: Robot with a neural network in a digital world",
+				"testing": "Image: Checklist and software testing tools",
+				"ios": "Image: iPhone with an app development interface",
+				"android": "Image: Android smartphone with open-source application code",
+				"game": "Image: Game controller and game development elements"
+			},
+			"button": "Go to Questions"
+		}
 }

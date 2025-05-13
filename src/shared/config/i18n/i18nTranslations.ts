@@ -242,7 +242,7 @@ export enum Auth {
 	PASSWORD_RECOVERY_SUBMIT = 'passwordRecovery.submit',
 }
 
-export enum Specializations {
+export enum SPECIALIZATIONs {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -615,6 +615,25 @@ export enum Landing {
 	COLLECTION_LINK = 'collections.link',
 	COLLECTION_EXPAND = 'collections.expand',
 	COLLECTION_STAR = 'collections.star',
+	SPECIALIZATION_TITLE = 'speciality.title',
+	SPECIALIZATION_BUTTON = 'speciality.button',
+	SPECIALIZATION_CARD_DESCRIPTION_FRONTEND = 'speciality.card.description.frontend',
+	SPECIALIZATION_CARD_DESCRIPTION_BACKEND = 'speciality.card.description.backend',
+	SPECIALIZATION_CARD_DESCRIPTION_DATA = 'speciality.card.description.data',
+	SPECIALIZATION_CARD_DESCRIPTION_MACHINE = 'speciality.card.description.machine',
+	SPECIALIZATION_CARD_DESCRIPTION_TESTING = 'speciality.card.description.testing',
+	SPECIALIZATION_CARD_DESCRIPTION_IOS = 'speciality.card.description.ios',
+	SPECIALIZATION_CARD_DESCRIPTION_ANDROID = 'speciality.card.description.android',
+	SPECIALIZATION_CARD_DESCRIPTION_GAME = 'speciality.card.description.game',
+	SPECIALIZATION_CARD_IMG_FRONTEND = 'speciality.card.img.frontend',
+	SPECIALIZATION_CARD_IMG_BACKEND = 'speciality.card.img.backend',
+	SPECIALIZATION_CARD_IMG_DATA = 'speciality.card.img.data',
+	SPECIALIZATION_CARD_IMG_MACHINE = 'speciality.card.img.machine',
+	SPECIALIZATION_CARD_IMG_TESTING = 'speciality.card.img.testing',
+	SPECIALIZATION_CARD_IMG_IOS = 'speciality.card.img.ios',
+	SPECIALIZATION_CARD_IMG_ANDROID = 'speciality.card.img.android',
+	SPECIALIZATION_CARD_IMG_GAME = 'speciality.card.img.game',
+	SPECIALIZATION_CARD_BUTTON = 'speciality.card.button',
 }
 
 export enum Subscription {
