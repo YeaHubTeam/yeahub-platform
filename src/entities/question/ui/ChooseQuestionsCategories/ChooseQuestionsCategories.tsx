@@ -20,6 +20,7 @@ interface ChooseQuestionsCategoriesProps {
 	skillsLimit?: number;
 	shouldShowScroll?: boolean;
 	selectedSpecialization: number;
+	showAllLabel?: boolean;
 }
 
 export const ChooseQuestionsCategories = ({
@@ -27,6 +28,7 @@ export const ChooseQuestionsCategories = ({
 	onChangeSkills,
 	skillsLimit,
 	selectedSpecialization,
+	showAllLabel = true,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT_CATEGORIES);
@@ -74,7 +76,7 @@ export const ChooseQuestionsCategories = ({
 				onClick={onChooseSkill}
 			/>
 
-			{!isMobile && (
+			{!isMobile && showAllLabel && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
 					{!showAll ? t(Questions.CATEGORIES_SHOW_ALL) : t(Questions.CATEGORIES_HIDE)}
 				</Button>
