@@ -112,7 +112,7 @@
 		}
 	},
 	"specialization": {
-		"title": "Choose Your Specialty",
+		"title_new": "Choose Your Specialty",
 		"button": "See more",
 		"card": {
 			"description": {
