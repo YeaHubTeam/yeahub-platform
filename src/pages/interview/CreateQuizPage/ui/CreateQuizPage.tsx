@@ -102,6 +102,7 @@ const CreateQuizPage = () => {
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
+						showAllLabel={false}
 					/>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity
