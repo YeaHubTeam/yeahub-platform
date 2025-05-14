@@ -20,7 +20,7 @@ export const SpecializationCard = ({ title, description, image, alt }: IMockSpec
 					{description}
 				</Text>
 				<Button fullWidth={true} className={styles['card-button']}>
-					{i18n.t(Landing.SPECIALITY_CARD_BUTTON, { ns: i18Namespace.landing })}
+					{i18n.t(Landing.SPECIALIZATION_CARD_BUTTON, { ns: i18Namespace.landing })}
 				</Button>
 			</Flex>
 		</Flex>
