@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import ClockSquare from '@/shared/assets/icons/clockSquare.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
@@ -32,7 +33,13 @@ export const CollectionBody = ({ questions }: CollectionBodyProps) => {
 					))}
 				</Flex>
 			) : (
-				<Flex justify="center">
+				<Flex
+					justify="center"
+					direction="column"
+					gap="8"
+					className={styles['wrapper-no-questions']}
+				>
+					<ClockSquare className={styles['no-questions-icon']} />
 					<Text variant="body3-accent" className={styles['no-questions']}>
 						{t(Questions.PREVIEW_EMPTY_COLLECTION)}
 					</Text>
