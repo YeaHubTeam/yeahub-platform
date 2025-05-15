@@ -14,11 +14,13 @@ import { useDeleteCollectionMutation } from '../../api/deleteCollectionApi';
 interface DeleteCollectionButtonProps {
 	collectionId: Collection['id'];
 	isDetailPage?: boolean;
+	classes?: string;
 }
 
 export const DeleteCollectionButton = ({
 	collectionId,
 	isDetailPage = false,
+	classes,
 }: DeleteCollectionButtonProps) => {
 	const [deleteCollectionMutation] = useDeleteCollectionMutation();
 
@@ -54,6 +56,7 @@ export const DeleteCollectionButton = ({
 				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
+				className={classes ? classes : ''}
 			>
 				{t(Translation.DELETE)}
 			</Button>

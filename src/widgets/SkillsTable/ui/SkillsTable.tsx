@@ -67,7 +67,8 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 				},
 			},
 			{
-				renderComponent: () => <DeleteSkillButton skillId={skill.id} />,
+				shouldBeClickable: true,
+				renderComponent: (_, classes) => <DeleteSkillButton skillId={skill.id} classes={classes} />,
 			},
 		];
 

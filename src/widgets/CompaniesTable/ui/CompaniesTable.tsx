@@ -73,7 +73,10 @@ export const CompaniesTable = ({
 				},
 			},
 			{
-				renderComponent: () => <DeleteCompanyButton companyId={company.id} />,
+				shouldBeClickable: true,
+				renderComponent: (_, classes) => (
+					<DeleteCompanyButton companyId={company.id} classes={classes} />
+				),
 			},
 		];
 

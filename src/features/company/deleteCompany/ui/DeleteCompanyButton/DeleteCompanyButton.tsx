@@ -14,11 +14,13 @@ import { useDeleteCompanyMutation } from '../../api/deleteCompanyApi';
 interface DeleteCompanyButtonProps {
 	companyId: Company['id'];
 	isDetailPage?: boolean;
+	classes?: string;
 }
 
 export const DeleteCompanyButton = ({
 	companyId,
 	isDetailPage = false,
+	classes,
 }: DeleteCompanyButtonProps) => {
 	const [deleteCompanyMutation] = useDeleteCompanyMutation();
 
@@ -55,6 +57,7 @@ export const DeleteCompanyButton = ({
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
 				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
+				className={classes ? classes : ''}
 			>
 				{t(Translation.DELETE)}
 			</Button>

@@ -14,11 +14,13 @@ import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationA
 interface DeleteSpecializationButtonProps {
 	specializationId: Specialization['id'];
 	isDetailPage?: boolean;
+	classes?: string;
 }
 
 export const DeleteSpecializationButton = ({
 	specializationId,
 	isDetailPage = false,
+	classes,
 }: DeleteSpecializationButtonProps) => {
 	const [deleteSpecializationMutation] = useDeleteSpecializationMutation();
 
@@ -54,6 +56,7 @@ export const DeleteSpecializationButton = ({
 				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
+				className={classes ? classes : ''}
 			>
 				{t(Translation.DELETE)}
 			</Button>

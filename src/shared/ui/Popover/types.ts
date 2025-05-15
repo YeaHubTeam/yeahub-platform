@@ -27,7 +27,8 @@ export interface PopoverMenuItem {
 	title?: string;
 	onClick?: () => void;
 	icon?: ReactNode;
-	renderComponent?: (onToggleOpenPopover: () => void) => ReactNode;
+	renderComponent?: (onToggleOpenPopover: () => void, classes?: string) => ReactNode;
+	shouldBeClickable?: boolean;
 }
 
 export interface PopoverHeaderConfig {

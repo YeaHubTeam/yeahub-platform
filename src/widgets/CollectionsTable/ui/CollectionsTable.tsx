@@ -90,7 +90,10 @@ export const CollectionsTable = ({
 				},
 			},
 			{
-				renderComponent: () => <DeleteCollectionButton collectionId={collection.id} />,
+				shouldBeClickable: true,
+				renderComponent: (_, classes) => (
+					<DeleteCollectionButton collectionId={collection.id} classes={classes} />
+				),
 			},
 		];
 

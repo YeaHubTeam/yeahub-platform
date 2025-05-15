@@ -65,7 +65,10 @@ export const SpecializationsTable = ({
 				},
 			},
 			{
-				renderComponent: () => <DeleteSpecializationButton specializationId={specialization.id} />,
+				shouldBeClickable: true,
+				renderComponent: (_, classes) => (
+					<DeleteSpecializationButton specializationId={specialization.id} classes={classes} />
+				),
 			},
 		];
 

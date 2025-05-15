@@ -14,9 +14,14 @@ import { useDeleteSkillMutation } from '../../api/deleteSkillApi';
 interface DeleteSkillButtonProps {
 	skillId: Skill['id'];
 	isDetailPage?: boolean;
+	classes?: string;
 }
 
-export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkillButtonProps) => {
+export const DeleteSkillButton = ({
+	skillId,
+	isDetailPage = false,
+	classes,
+}: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
 
 	const { t } = useTranslation(i18Namespace.translation);
@@ -52,6 +57,7 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 				variant={isDetailPage ? 'destructive' : 'tertiary'}
 				onClick={handleOpenModal}
 				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
+				className={classes ? classes : ''}
 			>
 				{t(Translation.DELETE)}
 			</Button>

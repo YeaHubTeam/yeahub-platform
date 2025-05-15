@@ -15,7 +15,7 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent }) => (
+			{menuItems.map(({ icon, onClick, title, renderComponent, shouldBeClickable }) => (
 				<Fragment key={title}>
 					{title && onClick ? (
 						<Button
@@ -29,6 +29,8 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 						>
 							{title}
 						</Button>
+					) : shouldBeClickable ? (
+						renderComponent?.(onToggleOpenPopover, styles.button)
 					) : (
 						renderComponent?.(onToggleOpenPopover)
 					)}
