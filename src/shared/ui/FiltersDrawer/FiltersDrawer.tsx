@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import { IconButton } from 'yeahub-ui-kit';
 
-import { useQueryFilter } from '@/shared/hooks';
+import { useQueryParams } from '@/shared/hooks';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 
@@ -19,13 +19,13 @@ export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
 	const toggleFilter = () => setIsOpenFilter((prev) => !prev);
 
 	const {
-		filter: { status, page, ...getParams },
-	} = useQueryFilter();
+		params: { roles, isEmailVerified },
+	} = useQueryParams();
 
 	useEffect(() => {
-		const hasActiveFilter = Object.values(getParams).some((value) => value !== undefined);
+		const hasActiveFilter = Boolean(roles) || isEmailVerified === 'true';
 		setIsActiveFilter(hasActiveFilter);
-	}, [getParams]);
+	}, [isEmailVerified, roles]);
 
 	return (
 		<>
