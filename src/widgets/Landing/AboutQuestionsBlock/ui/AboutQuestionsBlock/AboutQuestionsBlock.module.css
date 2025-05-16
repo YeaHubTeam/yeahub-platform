@@ -7,7 +7,7 @@
 @media screen and (width < 1440px) {
   .container {
     margin: 100px auto;
-    max-width: var(--container-width-laptop);
+    max-width: var(--container-width-xl);
   }
 }
 

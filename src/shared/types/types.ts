@@ -35,6 +35,7 @@ export type SelectedAdminEntity = SelectedEntity<number>;
 export type SelectedAdminEntities = SelectedAdminEntity[];
 
 export type Pallete =
+	| 'purple-950'
 	| 'purple-900'
 	| 'purple-800'
 	| 'purple-700'
