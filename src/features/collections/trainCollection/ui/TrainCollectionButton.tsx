@@ -33,7 +33,7 @@ export const TrainCollectionButton = ({
 	const isActiveQuizDisabled = !!activeQuizResponse?.data[0] || isActiveQuizLoading;
 
 	const handleTrainCollection = () => {
-		createNewQuiz({ profileId, collection: Number(collectionId) });
+		createNewQuiz({ profileId, collection: Number(collectionId), limit: 100 });
 	};
 
 	return (

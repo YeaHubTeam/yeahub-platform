@@ -1,8 +1,5 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 19px;
-  max-width: 740px;
+  gap: 20px;
 }
 
 .banners-container {

@@ -111,6 +111,16 @@
   border: 1px solid var(--button-border-secondary-focus);
 }
 
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+
+  &.drawer-mobile {
+    top: calc(var(--header-height) - 12px);
+    width: 100%;
+  }
+}
+
 .train-button {
   border-radius: 20px;
 }

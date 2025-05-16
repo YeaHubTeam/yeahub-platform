@@ -23,21 +23,21 @@ export const QuizzesStatistic = ({ className, quizzesStat }: QuizzesStatisticPro
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_BEST_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_BEST),
-			itemStyle: { color: '#400799' },
+			itemStyle: { color: '#008616' },
 		},
 		{
 			value: quizzesStat?.minQuizResult ?? 0,
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_WORST_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_WORST),
-			itemStyle: { color: '#E1CEFF' },
+			itemStyle: { color: '#af0932' },
 		},
 		{
 			value: quizzesStat?.avgQuizResult ?? 0,
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_AVG_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_AVG),
-			itemStyle: { color: '#6A0BFF' },
+			itemStyle: { color: '#ffc234' },
 		},
 	];
 
