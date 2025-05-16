@@ -535,8 +535,6 @@ export enum Companies {
 export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',
-	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
-	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
 	QUESTIONS_TITLE = 'questions.title',
 	QUESTIONS_DESCRIPTION = 'questions.description',
 	QUESTIONS_FIRST = 'questions.first',
@@ -594,6 +592,7 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+
 	// для нового лендинга ниже
 	BANNER_STICKER_SKILL = 'banner.sticker.skill',
 	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
@@ -615,6 +614,15 @@ export enum Landing {
 	COLLECTION_LINK = 'collections.link',
 	COLLECTION_EXPAND = 'collections.expand',
 	COLLECTION_STAR = 'collections.star',
+	HEADER_NAV_QUESTIONS_LIST = 'header.nav.questions.list',
+	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
+	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
+	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
+	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
+	FOOTER_LINKS_LINK_ARIA_LABEL = 'footer.links.link.aria.label',
+	FOOTER_TITLE = 'footer.title',
+	FOOTER_DESCRIPTION = 'footer.description',
+	APP_LOGO_ARIA_LABEL = 'app.logo.aria.label',
 	SPECIALIZATION_NEW_TITLE = 'specialization.title_new',
 	SPECIALIZATION_BUTTON = 'specialization.button',
 	SPECIALIZATION_CARD_DESCRIPTION_FRONTEND = 'specialization.card.description.frontend',
@@ -634,6 +642,14 @@ export enum Landing {
 	SPECIALIZATION_CARD_IMG_ANDROID = 'specialization.card.img.android',
 	SPECIALIZATION_CARD_IMG_GAME = 'specialization.card.img.game',
 	SPECIALIZATION_CARD_BUTTON = 'specialization.card.button',
+	HISTORY_TITLE = 'history.title',
+	HISTORY_SUBTITLE = 'history.subtitle',
+	HISTORY_SLIDES_FIRST = 'history.slides.first',
+	HISTORY_SLIDES_SECOND = 'history.slides.second',
+	HISTORY_SLIDES_THIRD = 'history.slides.third',
+	HISTORY_IMG_STATISTICS = 'history.img.statistics',
+	HISTORY_IMG_PROGRESS = 'history.img.progress',
+	HISTORY_IMG_DESCRIPTION = 'history.img.description',
 }
 
 export enum Subscription {

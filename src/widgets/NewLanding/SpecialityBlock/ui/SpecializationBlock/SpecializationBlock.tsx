@@ -28,7 +28,7 @@ export const SpecializationBlock = () => {
 	return (
 		<Flex direction={'column'} className={styles.container}>
 			<Text variant={'head3'} className={styles.title}>
-				{i18n.t(Landing.SPECIALITY_TITLE, { ns: i18Namespace.landing })}
+				{i18n.t(Landing.SPECIALIZATION_NEW_TITLE, { ns: i18Namespace.landing })}
 			</Text>
 			<ul className={styles['cards-list']}>
 				{displayedItems.map((item) => (
@@ -44,7 +44,7 @@ export const SpecializationBlock = () => {
 			</ul>
 			{(isMobile || isLaptop) && !seeAll && (
 				<Button variant={'outline'} className={styles.button} onClick={() => setSeeAll(true)}>
-					{i18n.t(Landing.SPECIALITY_BUTTON, { ns: i18Namespace.landing })}
+					{i18n.t(Landing.SPECIALIZATION_BUTTON, { ns: i18Namespace.landing })}
 				</Button>
 			)}
 		</Flex>
