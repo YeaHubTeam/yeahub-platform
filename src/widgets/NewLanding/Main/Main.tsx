@@ -6,8 +6,10 @@ import styles from './Main.module.css';
 
 export const Main = () => {
 	return (
-		<Flex direction="column" className={styles['main-container']}>
-			<Outlet />
-		</Flex>
+		<main className={styles.main}>
+			<Flex className={styles['main-content']}>
+				<Outlet />
+			</Flex>
+		</main>
 	);
 };

@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
   background-color: var(--color-white-900);
 }
 
@@ -20,7 +19,6 @@
 
 @media screen and (width < 1440px) {
   .header {
-    margin-bottom: 30px;
     padding: 0 60px;
   }
 }
@@ -42,7 +40,6 @@
 
 @media screen and (width < 768px) {
   .header {
-    margin-bottom: 20px;
     padding: 0 10px;
   }
 
