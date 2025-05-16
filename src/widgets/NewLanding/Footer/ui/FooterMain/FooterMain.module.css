@@ -7,20 +7,16 @@
 .footer-logo {
   width: 99px;
   height: 32px;
-  color: var(--color-white-900);
 }
 
 .footer-title {
-  padding: 12px 0 14px;
-  color: var(--color-white-900);
+  margin: 12px 0 14px;
 }
 
 .footer-description {
   margin-bottom: 18px;
-  color: var(--color-black-400);
 }
 
-/* для макета на 360рх */
 @media screen and (width < 768px) {
   .footer-description {
     margin-bottom: 16px;

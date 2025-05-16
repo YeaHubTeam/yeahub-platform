@@ -12,7 +12,6 @@
 }
 
 
-/* для макета на 1200рх */
 @media screen and (width < 1440px) {
   .footer {
     padding: 40px 60px 18px;
@@ -20,7 +19,6 @@
 }
 
 
-/* для макета на 768рх */
 @media screen and (width < 1200px) {
   .footer {
     padding: 30px 30px 18px;
@@ -28,7 +26,6 @@
 }
 
 
-/* для макета на 360рх */
 @media screen and (width < 768px) {
   .footer {
     padding: 10px 10px 16px;

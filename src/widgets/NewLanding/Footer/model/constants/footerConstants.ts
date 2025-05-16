@@ -1,14 +1,6 @@
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-
 import { LinkIcon } from '../types/footerTypes';
 
 export const RESOURCES_LINKS: LinkIcon[] = [
-	{
-		url: '/docs',
-		label: Landing.FOOTER_DOCS,
-		isTextLink: true,
-		className: 'docs-link',
-	},
 	{
 		url: 'https://www.figma.com/community/file/1438482355619792777/yeahub-public',
 		label: 'Figma',

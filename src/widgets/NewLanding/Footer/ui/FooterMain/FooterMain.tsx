@@ -19,16 +19,19 @@ export const FooterMain = () => {
 				className={styles['footer-logo']}
 				icon={'logoText'}
 				aria-label={t(Landing.APP_LOGO_ARIA_LABEL)}
+				color="white-900"
 			/>
 			<Text
 				className={styles['footer-title']}
 				variant={isMobileS ? 'body2' : isMobile ? 'body3' : 'body3-accent'}
+				color="white-900"
 			>
 				{t(Landing.FOOTER_TITLE)}
 			</Text>
 			<Text
 				className={styles['footer-description']}
 				variant={isSmallScreen ? 'body1' : 'body1-accent'}
+				color="black-400"
 			>
 				{t(Landing.FOOTER_DESCRIPTION)}
 			</Text>

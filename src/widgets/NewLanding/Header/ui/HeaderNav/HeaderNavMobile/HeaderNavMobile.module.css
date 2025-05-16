@@ -1,7 +1,3 @@
-.header-nav {
-  gap: 6px;
-}
-
 .header-popover {
   padding: 6px;
   overflow-y: hidden !important; /* important необходим для переопределения стилей портала */
@@ -18,7 +14,6 @@
   transform: rotate(180deg);
 }
 
-/* для макета на 360рх */
 @media screen and (width < 768px) {
   .header-popover {
     transform: translateX(0) translateY(12px);

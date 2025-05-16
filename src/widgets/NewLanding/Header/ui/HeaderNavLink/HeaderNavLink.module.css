@@ -21,7 +21,6 @@
   color: var(--color-purple-800);
 }
 
-/* для макета на 768рх */
 @media screen and (width < 1200px) {
   .nav-link {
     min-width: 192px;

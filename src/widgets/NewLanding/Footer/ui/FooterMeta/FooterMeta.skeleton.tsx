@@ -7,7 +7,7 @@ export const FooterMetaSkeleton = () => {
 	return (
 		<Flex justify="between" align="center">
 			<FooterCopyrightSkeleton />
-			<FooterLinksSkeleton className="footer-resources-links" />
+			<FooterLinksSkeleton />
 		</Flex>
 	);
 };

@@ -5,7 +5,7 @@
 }
 
 .docs-link {
-  padding-right: 10px;
+  margin-right: 10px;
 }
 
 .figma-link, 
@@ -35,9 +35,8 @@
 }
 
 
-/* для макета на 360рх */
 @media screen and (width < 768px) {
   .docs-link {
-    padding-right: 4px;
+    margin-right: 4px;
   }
 }

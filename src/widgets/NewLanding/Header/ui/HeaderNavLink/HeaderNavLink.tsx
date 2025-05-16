@@ -1,11 +1,16 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { Text } from '@/shared/ui/Text';
 
-import { HeaderNavLinkProps } from '../../model/types/headerTypes';
+import { HeaderNavLinks } from '../../model/types/headerTypes';
 
 import styles from './HeaderNavLink.module.css';
+
+interface HeaderNavLinkProps extends Pick<HeaderNavLinks, 'link' | 'path'> {
+	children: ReactNode;
+}
 
 export const HeaderNavLink = ({ link, path, children }: HeaderNavLinkProps) => {
 	const location = useLocation();

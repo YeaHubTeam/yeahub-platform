@@ -6,11 +6,11 @@ import { FooterMetaSkeleton } from './FooterMeta/FooterMeta.skeleton';
 
 export const FooterSkeleton = () => {
 	return (
-		<footer className={styles.footer}>
+		<Flex className={styles.footer}>
 			<Flex className={styles['footer-content']}>
 				<FooterMainSkeleton />
 				<FooterMetaSkeleton />
 			</Flex>
-		</footer>
+		</Flex>
 	);
 };

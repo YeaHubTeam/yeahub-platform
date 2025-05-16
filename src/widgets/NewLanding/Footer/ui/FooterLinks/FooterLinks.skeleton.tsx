@@ -1,23 +1,19 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { IconSkeleton } from '@/shared/ui/Icon';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './FooterLinks.module.css';
 
-export const FooterLinksSkeleton = ({ className }: { className: string }) => {
+export const FooterLinksSkeleton = () => {
 	const { isMobileS } = useScreenSize();
 
 	return (
-		<Flex className={className ? styles[className] : ''}>
-			<Skeleton
-				width={isMobileS ? 70 : 80}
-				height={20}
-				borderRadius="4px"
-				className={styles['docs-link']}
-			/>
-			<Skeleton width={24} height={24} borderRadius="50%" className={styles['figma-link']} />
-			<Skeleton width={24} height={24} borderRadius="50%" className={styles['github-link']} />
-			<Skeleton width={24} height={24} borderRadius="50%" className={styles['telegram-link']} />
+		<Flex className={styles['footer-resources-links']}>
+			<TextSkeleton className={styles['docs-link']} width={isMobileS ? 70 : 80} variant={'body2'} />
+			{[...Array(3)].map((_, index) => (
+				<IconSkeleton key={index} size={24} borderRadius={'50%'} />
+			))}
 		</Flex>
 	);
 };

@@ -14,9 +14,12 @@ export const HeaderAuthDesktop = () => {
 
 	return (
 		<Flex justify="between" align="center" gap="26">
-			<Link className={styles['login-link']} to={ROUTES.auth.login.page}>
-				{t(Landing.LOGIN)}
+			<Link to={ROUTES.auth.login.page}>
+				<Button variant="link" className={styles['login-link']}>
+					{t(Landing.LOGIN)}
+				</Button>
 			</Link>
+
 			<Link to={ROUTES.auth.register.page}>
 				<Button size="large" className={styles['register-button']}>
 					{t(Landing.REGISTER)}

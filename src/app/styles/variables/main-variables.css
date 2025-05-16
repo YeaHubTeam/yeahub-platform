@@ -13,6 +13,9 @@
 
   /* heights */
   --header-height: 76px;
+  --header-height-lg: 64px;
+  --header-height-md: 63px;
+  --header-height-sm: 53px;
 
   /* paddings */
   --container-padding: 0;

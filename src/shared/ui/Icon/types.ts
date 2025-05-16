@@ -1,4 +1,4 @@
-export type IconSize = 20 | 24 | 28 | 32;
+export type IconSize = 20 | 24 | 28 | 32 | 33;
 
 export type IconName =
 	| 'arrowRight'

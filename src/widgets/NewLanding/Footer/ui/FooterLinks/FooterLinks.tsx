@@ -8,36 +8,37 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { FooterLinksProps } from '../../model/types/footerTypes';
+import { RESOURCES_LINKS } from '../../model/constants/footerConstants';
 
 import styles from './FooterLinks.module.css';
 
-export const FooterLinks = ({ className, links }: FooterLinksProps) => {
+export const FooterLinks = () => {
 	const { isSmallScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.landing);
 
 	return (
-		<Flex className={styles[className]}>
-			{links.map(({ url, label, icon, color, className, isTextLink }) =>
-				isTextLink ? (
-					<NavLink className={className ? styles[className] : ''} key={url} to={url}>
-						<Text variant={isSmallScreen ? 'body2' : 'body2-accent'} color="black-400">
-							{t(label)}
-						</Text>
-					</NavLink>
-				) : (
-					<a
-						key={url}
-						href={url}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={`${label} ${t(Landing.FOOTER_LINKS_LINK_ARIA_LABEL)}`}
-						className={className ? styles[className] : ''}
-					>
-						{icon && <Icon icon={icon} color={color} />}
-					</a>
-				),
-			)}
+		<Flex className={styles['footer-resources-links']}>
+			<NavLink to={'/docs'}>
+				<Text
+					className={styles['docs-link']}
+					variant={isSmallScreen ? 'body2' : 'body2-accent'}
+					color="black-400"
+				>
+					{t(Landing.FOOTER_DOCS)}
+				</Text>
+			</NavLink>
+			{RESOURCES_LINKS.map(({ url, label, icon, color, className }) => (
+				<a
+					key={url}
+					href={url}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`${label} ${t(Landing.FOOTER_LINKS_LINK_ARIA_LABEL)}`}
+					className={styles[className]}
+				>
+					<Icon icon={icon} color={color} />
+				</a>
+			))}
 		</Flex>
 	);
 };

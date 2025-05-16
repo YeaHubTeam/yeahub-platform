@@ -4,7 +4,7 @@ import { HeaderAuthDesktopSkeleton } from './HeaderAuthDesktop/HeaderAuthDesktop
 import { HeaderAuthMobileSkeleton } from './HeaderAuthMobile/HeaderAuthMobile.skeleton';
 
 export const HeaderAuthSkeleton = () => {
-	const { isSmallScreen } = useScreenSize();
+	const { isLargeScreen } = useScreenSize();
 
-	return isSmallScreen ? <HeaderAuthMobileSkeleton /> : <HeaderAuthDesktopSkeleton />;
+	return isLargeScreen ? <HeaderAuthDesktopSkeleton /> : <HeaderAuthMobileSkeleton />;
 };

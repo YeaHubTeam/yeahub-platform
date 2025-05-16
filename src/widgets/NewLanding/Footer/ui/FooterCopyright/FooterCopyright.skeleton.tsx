@@ -1,8 +1,8 @@
 import { useScreenSize } from '@/shared/hooks';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 export const FooterCopyrightSkeleton = () => {
 	const { isMobileS } = useScreenSize();
 
-	return <Skeleton width={isMobileS ? 80 : 100} height={20} borderRadius="4px" />;
+	return <TextSkeleton width={isMobileS ? 80 : 100} variant={'body2'} />;
 };

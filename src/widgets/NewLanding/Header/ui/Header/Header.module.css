@@ -18,7 +18,6 @@
   gap: 42px;
 }
 
-/* для макета на 1200рх */
 @media screen and (width < 1440px) {
   .header {
     margin-bottom: 30px;
@@ -26,7 +25,6 @@
   }
 }
 
-/* для макета на 768рх */
 @media screen and (width < 1200px) {
   .header {
     padding: 0 30px;
@@ -42,7 +40,6 @@
   }
 }
 
-/* для макета на 360рх */
 @media screen and (width < 768px) {
   .header {
     margin-bottom: 20px;
