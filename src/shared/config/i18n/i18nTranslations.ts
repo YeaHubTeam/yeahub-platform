@@ -633,3 +633,21 @@ export enum Docs {
 	DOC5 = 'doc5',
 	DOC6 = 'doc6',
 }
+
+export enum TextEditor {
+	BOLD = 'editor.bold',
+	ITALIC = 'editor.italic',
+	UNDERLINE = 'editor.underline',
+	STRIKE = 'editor.strike',
+	CODE_INLINE = 'editor.code.inline',
+	ALIGN_LEFT = 'editor.align.left',
+	ALIGN_CENTER = 'editor.align.center',
+	ALIGN_RIGHT = 'editor.align.right',
+	HEADINGS = 'editor.headings',
+	BLOCKQUOTE = 'editor.blockquote',
+	CODE_BLOCK = 'editor.code.block',
+	UNDO = 'editor.undo',
+	REDO = 'editor.redo',
+	BULLET_LIST = 'editor.bullet.list',
+	ORDERED_LIST = 'editor.ordered.list',
+}

@@ -1,19 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { TextHtml } from './TextHtml';
+import { TextEditor } from './TextEditor';
 
 const meta = {
-	title: 'Data Entry/TextHtml',
-	component: TextHtml,
+	title: 'Data Entry/TextEditor',
+	component: TextEditor,
 	parameters: {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
 	argTypes: {
-		html: { control: 'text' },
-		disableCodeCopy: { control: 'boolean' },
+		data: { control: 'text' },
+		isInline: { control: 'boolean' },
+		disabled: { control: 'boolean' },
 	},
-} satisfies Meta<typeof TextHtml>;
+} satisfies Meta<typeof TextEditor>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -75,19 +76,25 @@ async function displayUsers() {
   }
 }
 // Кнопка копирования кода временно отключена
-</code>
-</pre>
+</code></pre>
 `;
 
 export const Default: Story = {
 	args: {
-		html: defaultContent,
+		data: defaultContent,
 	},
 };
 
-export const WithoutCodeCopy: Story = {
+export const Inline: Story = {
 	args: {
-		html: defaultContent,
-		disableCodeCopy: true,
+		data: '<p>Инлайн редактор для небольших текстов</p>',
+		isInline: true,
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		data: defaultContent,
+		disabled: true,
 	},
 };

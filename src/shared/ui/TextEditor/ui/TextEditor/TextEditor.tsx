@@ -8,27 +8,25 @@ import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import cn from 'classnames';
 import DOMPurify from 'dompurify';
-import hljs from 'highlight.js';
 import { common, createLowlight } from 'lowlight';
 import { useCallback, useEffect } from 'react';
 import 'highlight.js/styles/atom-one-dark.css';
 
-import { BubbleMenu } from './BubbleMenu';
-import { createCopyButton } from './createCopyButton';
+import { EditorProps } from '../../model/types';
+import { createCodeBlockNodeView } from '../../utils/createCodeBlockNodeView';
+import { BubbleMenu } from '../BubbleMenu/BubbleMenu';
 
-import './registerHighlightLanguages';
+import '../../utils/registerHighlightLanguages';
 
 import styles from './TextEditor.module.css';
-import { EditorProps } from './types';
 
 const lowlight = createLowlight(common);
 
-// Расширение блока кода с подсветкой и input rule
 const CustomCodeBlock = CodeBlockLowlight.extend({
 	addInputRules() {
 		return [
 			textblockTypeInputRule({
-				find: /^```([a-z]*)?[\s\n]$/,
+				find: /^```([a-z0-9+#/\\-]*)?[\s\n]$/i,
 				type: this.type,
 				getAttributes: (match) => ({
 					language: match[1] || 'plaintext',
@@ -38,53 +36,7 @@ const CustomCodeBlock = CodeBlockLowlight.extend({
 	},
 
 	addNodeView() {
-		return ({ node, editor }) => {
-			const container = document.createElement('div');
-			container.className = styles['code-block-wrapper'];
-
-			const pre = document.createElement('pre');
-			pre.className = styles['code-block'];
-
-			const code = document.createElement('code');
-			code.classList.add('hljs');
-
-			const rawCode = node.textContent || '';
-			const langAttr = node.attrs.language || 'plaintext';
-
-			let language;
-			let result;
-
-			if (hljs.getLanguage(langAttr)) {
-				language = langAttr;
-				result = hljs.highlight(rawCode, { language });
-			} else {
-				result = hljs.highlightAuto(rawCode);
-				language = result.language || 'plaintext';
-			}
-
-			code.innerHTML = result.value;
-			code.classList.add(`language-${language}`);
-
-			const header = document.createElement('div');
-			header.className = styles['code-block-header'];
-
-			const langLabel = document.createElement('span');
-			langLabel.textContent = language;
-			langLabel.className = styles['code-block-language'];
-
-			const copyButton = createCopyButton(editor, code);
-
-			header.appendChild(langLabel);
-			header.appendChild(copyButton);
-			container.appendChild(header);
-			container.appendChild(pre);
-			pre.appendChild(code);
-
-			return {
-				dom: container,
-				contentDOM: code,
-			};
-		};
+		return createCodeBlockNodeView(styles, lowlight);
 	},
 });
 

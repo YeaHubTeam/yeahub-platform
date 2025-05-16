@@ -5,6 +5,8 @@ import { common, createLowlight } from 'lowlight';
 import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect, useRef } from 'react';
 
+import { determineLanguage } from '@/shared/libs/utils/determineLanguage';
+
 import styles from './TextHtml.module.css';
 
 const lowlight = createLowlight(common);
@@ -23,18 +25,23 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 
 		const processCodeBlocks = () => {
 			const parser = new DOMParser();
-			const doc = parser.parseFromString(
-				DOMPurify.sanitize(html, { ADD_TAGS: ['pre', 'code'], ADD_ATTR: ['class'] }),
-				'text/html',
-			);
+			const sanitizedHtml = DOMPurify.sanitize(html, {
+				ADD_TAGS: ['pre', 'code'],
+				ADD_ATTR: ['class'],
+				FORBID_ATTR: ['style'],
+			});
+			const doc = parser.parseFromString(sanitizedHtml, 'text/html');
 			const preElements = doc.querySelectorAll('pre');
 
 			preElements.forEach((pre) => {
 				const code = pre.querySelector('code');
 				if (code) {
-					const language = code.className.replace('language-', '') || 'plaintext';
+					const codeContent = code.textContent || '';
+					const initialLanguage = code.className.replace('language-', '') || 'plaintext';
+					const language = determineLanguage(codeContent, initialLanguage, lowlight);
+
 					try {
-						const result = lowlight.highlight(language, code.textContent || '');
+						const result = lowlight.highlight(language, codeContent);
 						code.innerHTML = toHtml(result);
 						code.className = `hljs language-${language}`;
 
@@ -48,41 +55,39 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 						langLabel.textContent = language;
 						langLabel.className = styles['code-block-language'];
 
-						if (!disableCodeCopy) {
-							const copyButton = document.createElement('button');
-							copyButton.className = styles['code-block-copy'];
-							copyButton.disabled = disableCodeCopy;
-							copyButton.setAttribute('data-test', 'copy-button');
-
-							copyButton.innerHTML = `
-                <div class="${styles['copy-button-content']}">
-                  <svg class="${styles['copy-icon']}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  <svg class="${styles['check-icon']}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span></span>
-                </div>
-              `;
-
-							copyButton.onclick = () => {
-								if (!copyButton.disabled) {
-									navigator.clipboard.writeText(code.textContent || '').then(() => {
-										copyButton.classList.add(styles['copied']);
-										setTimeout(() => {
-											copyButton.classList.remove(styles['copied']);
-										}, 2000);
-									});
-								}
-							};
-
-							header.appendChild(langLabel);
-							header.appendChild(copyButton);
-						} else {
-							header.appendChild(langLabel);
-						}
+						//TODO: add copy button
+						// if (!disableCodeCopy) {
+						// 	const copyButton = document.createElement('button');
+						// 	copyButton.className = styles['code-block-copy'];
+						// 	copyButton.disabled = disableCodeCopy;
+						// 	copyButton.setAttribute('data-test', 'copy-button');
+						// 	copyButton.innerHTML = `
+						//         <div class="${styles['copy-button-content']}">
+						//           <svg class="${styles['copy-icon']}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						//             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+						//             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+						//           </svg>
+						//           <svg class="${styles['check-icon']}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						//             <polyline points="20 6 9 17 4 12"></polyline>
+						//           </svg>
+						//           <span></span>
+						//         </div>
+						//       `;
+						// 	copyButton.onclick = () => {
+						// 		if (!copyButton.disabled) {
+						// 			navigator.clipboard.writeText(codeContent).then(() => {
+						// 				copyButton.classList.add(styles['copied']);
+						// 				setTimeout(() => {
+						// 					copyButton.classList.remove(styles['copied']);
+						// 				}, 2000);
+						// 			});
+						// 		}
+						// 	};
+						// 	header.appendChild(langLabel);
+						// 	header.appendChild(copyButton);
+						// } else {
+						header.appendChild(langLabel);
+						// }
 
 						const existingWrapper = pre.parentElement;
 						if (existingWrapper?.classList.contains(styles['code-block-wrapper'])) {
@@ -93,7 +98,7 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 							wrapper.appendChild(pre);
 						}
 					} catch (_e) {
-						const result = lowlight.highlight('plaintext', code.textContent || '');
+						const result = lowlight.highlight('plaintext', codeContent);
 						code.innerHTML = toHtml(result);
 						code.className = 'hljs language-plaintext';
 					}

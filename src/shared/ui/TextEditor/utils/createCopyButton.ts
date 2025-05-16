@@ -1,6 +1,6 @@
 import { Editor } from '@tiptap/react';
 
-import styles from './TextEditor.module.css';
+import styles from '../TextEditor.module.css';
 
 export function createCopyButton(editor: Editor, code: HTMLElement): HTMLButtonElement {
 	const button = document.createElement('button');
