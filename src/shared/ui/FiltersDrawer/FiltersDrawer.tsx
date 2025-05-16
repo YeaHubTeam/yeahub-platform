@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { IconButton } from 'yeahub-ui-kit';
 
-import { useQueryParams } from '@/shared/hooks';
+import { useQueryFilter } from '@/shared/hooks';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 
@@ -18,14 +19,21 @@ export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
 
 	const toggleFilter = () => setIsOpenFilter((prev) => !prev);
 
+	const location = useLocation();
+
 	const {
-		params: { roles, isEmailVerified },
-	} = useQueryParams();
+		filter: { status, page, roles, isEmailVerified, ...getParams },
+	} = useQueryFilter();
 
 	useEffect(() => {
-		const hasActiveFilter = Boolean(roles) || isEmailVerified === 'true';
+		let hasActiveFilter;
+		if (location.pathname === '/admin/users') {
+			hasActiveFilter = Boolean(roles) || isEmailVerified === 'true';
+		} else {
+			hasActiveFilter = Object.values(getParams).some((value) => value !== undefined);
+		}
 		setIsActiveFilter(hasActiveFilter);
-	}, [isEmailVerified, roles]);
+	}, [getParams, isEmailVerified, location.pathname, roles]);
 
 	return (
 		<>
