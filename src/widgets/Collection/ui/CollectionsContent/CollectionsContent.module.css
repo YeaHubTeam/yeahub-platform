@@ -1,0 +1,37 @@
+.main-info-wrapper {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.title {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color-bright);
+  line-height: 120%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-h-s);
+}
+
+.content {
+  padding: 20px;
+  border-radius: 24px;
+}
+
+@media (width < 768px) {
+  .content {
+    padding: 20px 16px;
+  }
+}
+
+
+@media (width < 480px) {
+  .content {
+    padding: 20px 10px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: var(--font-size-h-xs);
+  }
+}

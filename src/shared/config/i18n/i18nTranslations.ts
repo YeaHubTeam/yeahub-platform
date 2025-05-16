@@ -537,6 +537,7 @@ export enum Landing {
 	REGISTER = 'header.actions.register',
 	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
 	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
+	HEADER_LINKS_PUBLIC_COLLECTIONS = 'header.links.public.collections',
 	QUESTIONS_TITLE = 'questions.title',
 	QUESTIONS_DESCRIPTION = 'questions.description',
 	QUESTIONS_FIRST = 'questions.first',

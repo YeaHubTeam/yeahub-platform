@@ -1,3 +1,20 @@
 .wrapper {
   min-height: 100vh;
 }
+
+.wrapper .main {
+  position: relative;
+  padding: 40px 30px;
+}
+
+@media screen and (width < 1216px) {
+  .wrapper .main {
+    padding: 24px 30px;
+  }
+}
+
+@media screen and (width < 768px) {
+  .wrapper .main {
+    padding: 20px 10px;
+  }
+}

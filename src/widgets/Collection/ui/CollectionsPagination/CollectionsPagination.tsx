@@ -3,19 +3,19 @@ import { Pagination } from '@/shared/ui/Pagination';
 
 import { Collection } from '@/entities/collection';
 
-import styles from './CollectionPagePagination.module.css';
+import styles from './CollectionsPagination.module.css';
 
-interface CollectionPagePaginationProps {
+interface CollectionsPaginationProps {
 	collectionsResponse?: Response<Collection[]>;
 	currentPage: number;
 	onPageChange: (page: number) => void;
 }
 
-export const CollectionPagePagination = ({
+export const CollectionsPagination = ({
 	collectionsResponse,
 	currentPage,
 	onPageChange,
-}: CollectionPagePaginationProps) => {
+}: CollectionsPaginationProps) => {
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};

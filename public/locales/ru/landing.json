@@ -6,8 +6,9 @@
     },
     "links": {
       "questions.list": "База вопросов",
-      "public.quiz": "Тренажер"
-    }
+      "public.quiz": "Тренажер",
+			"public.collections": "Собеседования"
+		}
   },
   "questions": {
     "first": "Что такое Virtual DOM, и как он работает?",

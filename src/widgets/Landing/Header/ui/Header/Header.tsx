@@ -42,6 +42,13 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 				</HeaderLink>
 			),
 		},
+		{
+			renderComponent: () => (
+				<HeaderLink link={ROUTES.collections.page} path="/collections/">
+					{t(Landing.HEADER_LINKS_PUBLIC_COLLECTIONS)}
+				</HeaderLink>
+			),
+		},
 	];
 	return (
 		<header className={styles['header-background']}>
@@ -56,6 +63,10 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 
 							<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
 								{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+							</HeaderLink>
+
+							<HeaderLink link={ROUTES.collections.page} path={'/collections/'}>
+								{t(Landing.HEADER_LINKS_PUBLIC_COLLECTIONS)}
 							</HeaderLink>
 						</Flex>
 						<Popover menuItems={settingsMenuItems} className={styles.popover}>

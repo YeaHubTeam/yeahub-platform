@@ -6,7 +6,8 @@
 		},
 		"links": {
 			"questions.list": "Interview Questions",
-			"public.quiz": "Interview Trainer"
+			"public.quiz": "Interview Trainer",
+			"public.collections": "Interviews"
 		}
 	},
 	"questions": {
