@@ -628,6 +628,9 @@ export enum Landing {
 	HISTORY_SLIDES_FIRST = 'history.slides.first',
 	HISTORY_SLIDES_SECOND = 'history.slides.second',
 	HISTORY_SLIDES_THIRD = 'history.slides.third',
+	HISTORY_IMG_STATISTICS = 'history.img.statistics',
+	HISTORY_IMG_PROGRESS = 'history.img.progress',
+	HISTORY_IMG_DESCRIPTION = 'history.img.description',
 }
 
 export enum Subscription {

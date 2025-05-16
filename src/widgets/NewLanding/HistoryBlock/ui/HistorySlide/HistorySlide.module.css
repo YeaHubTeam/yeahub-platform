@@ -1,15 +1,8 @@
 .slide-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
 }
 
 .slide-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 371px;
 }
 
@@ -22,11 +15,7 @@
 .slide-text {
   margin-top: 10px;
   max-width: 189px;
-  color: var(--text-color-black-900);
   text-align: center;
-  line-height: 130%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
 }
 
 /* stylelint-disable selector-pseudo-class-no-unknown */
@@ -49,13 +38,7 @@
   color: var(--color-purple-900) !important;
 }
 
-@media screen and (width < 1024px) {
-  .slide-card {
-    height: 346px;
-  }
-}
-
-@media screen and (width < 993px) {
+@media screen and (width < 1200px) {
   .slide-card {
     height: 346px;
   }

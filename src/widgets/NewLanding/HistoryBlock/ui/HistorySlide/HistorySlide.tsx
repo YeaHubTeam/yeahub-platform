@@ -1,26 +1,22 @@
-import styles from './HistorySlide.module.css';
+import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
-type HistorySlideProps = {
+import styles from './HistorySlide.module.css';
+interface HistorySlideProps {
 	src: string;
 	alt: string;
 	text: string;
-	mobileSrc?: string;
-};
+}
 
-export const HistorySlide = ({ src, alt, text, mobileSrc }: HistorySlideProps) => {
+export const HistorySlide = ({ src, alt, text }: HistorySlideProps) => {
 	return (
-		<div className={styles['slide-item']}>
-			<div className={styles['slide-card']}>
-				{mobileSrc ? (
-					<picture>
-						<source srcSet={mobileSrc} media="(max-width: 767px)" />
-						<img className={styles['slide-image']} src={src} alt={alt} />
-					</picture>
-				) : (
-					<img className={styles['slide-image']} src={src} alt={alt} />
-				)}
-				<p className={styles['slide-text']}>{text}</p>
-			</div>
-		</div>
+		<Flex justify="center" align="center" className={styles['slide-item']}>
+			<Flex direction="column" justify="center" align="center" className={styles['slide-card']}>
+				<img className={styles['slide-image']} src={src} alt={alt} />
+				<Text variant="body3" className={styles['slide-text']}>
+					{text}
+				</Text>
+			</Flex>
+		</Flex>
 	);
 };

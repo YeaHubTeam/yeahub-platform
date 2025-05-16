@@ -13,19 +13,6 @@
 
 @media screen and (width < 1200px) {
   .slider-block {
-    max-width: 530px;
-  }
-}
-
-@media screen and (width < 1024px) {
-  .slider-block {
-    padding: 24px 24px 50px;
-    max-width: 480px;
-  }
-}
-
-@media screen and (width < 993px) {
-  .slider-block {
     padding: 24px 24px 50px;
     max-width: 315px;
   }

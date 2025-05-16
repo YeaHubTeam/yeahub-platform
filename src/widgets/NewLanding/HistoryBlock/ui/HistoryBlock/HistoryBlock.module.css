@@ -4,7 +4,7 @@
   background-color: var(--background-block);
 }
 
-@media screen and (width < 1024px) {
+@media screen and (width < 1200px) {
   .history-block {
     margin-top: 70px;
   }

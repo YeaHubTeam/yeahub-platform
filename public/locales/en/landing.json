@@ -145,6 +145,11 @@
 			"first": "How many questions have you mastered already?",
 			"second": "Study only the necessary questions",
 			"third": "Which skills require more attention?"
+		},
+		"img": {
+			"statistics": "Statistics",
+			"description": "Description",
+			"progress": "Progress"
 		}
 	}
 }
