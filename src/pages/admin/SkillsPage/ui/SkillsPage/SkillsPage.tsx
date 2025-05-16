@@ -43,13 +43,13 @@ const SkillsPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection
+				to="create"
+				showRemoveButton={selectedSkills.length > 0}
+				onSearch={onChangeSearch}
+				renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
+			/>
 			<Card className={styles.content}>
-				<SearchSection
-					to="create"
-					showRemoveButton={selectedSkills.length > 0}
-					onSearch={onChangeSearch}
-					renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
-				/>
 				<SkillsTable
 					skills={skills?.data}
 					selectedSkills={selectedSkills}
