@@ -12,4 +12,8 @@
   &:focus {
     border: none;
   }
+	
+  &:hover {
+    cursor: pointer;
+  }
 }
