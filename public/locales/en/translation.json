@@ -62,7 +62,10 @@
     "actions": {
       "ok": "Yes",
       "cancel": "No"
-    }
+    },
+		"leave": {
+			"title": "Are you sure you want to leave?"
+		}
   },
   "file.loader": {
     "link": "Click to change",

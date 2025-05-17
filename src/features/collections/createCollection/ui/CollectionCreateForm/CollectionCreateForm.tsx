@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { useIsFormNonEmpty } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -24,10 +25,14 @@ export const CollectionCreateForm = () => {
 		},
 	});
 
-	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
+	const { control, formState } = methods;
+	const { isDirty, isSubmitted, isSubmitting } = formState;
+
+	const isNonEmpty = useIsFormNonEmpty(control, ['title', 'description']);
+
 	return (
 		<FormProvider {...methods}>
-			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
+			<LeavingPageBlocker isBlocked={isDirty && isNonEmpty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
 					<CollectionCreateFormHeader />
 					<Card className={styles.content}>
