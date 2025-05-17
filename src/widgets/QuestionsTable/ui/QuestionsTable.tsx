@@ -72,10 +72,7 @@ export const QuestionsTable = ({
 				},
 			},
 			{
-				shouldBeClickable: true,
-				renderComponent: (_, classes) => (
-					<DeleteQuestionButton questionId={question.id} classes={classes} />
-				),
+				renderComponent: () => <DeleteQuestionButton questionId={question.id} />,
 			},
 		];
 

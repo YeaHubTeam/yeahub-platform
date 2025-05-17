@@ -14,13 +14,11 @@ import { useDeleteQuestionMutation } from '../../api/deleteQuestionApi';
 export interface DeleteQuestionButtonProps {
 	questionId: Question['id'];
 	isDetailPage?: boolean;
-	classes?: string;
 }
 
 export const DeleteQuestionButton = ({
 	questionId,
 	isDetailPage = false,
-	classes,
 }: DeleteQuestionButtonProps) => {
 	const [deleteQuestionMutation] = useDeleteQuestionMutation();
 
@@ -54,10 +52,9 @@ export const DeleteQuestionButton = ({
 					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
+				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={handleOpenModal}
-				className={classes ? classes : ''}
 			>
 				{t(Translation.DELETE)}
 			</Button>

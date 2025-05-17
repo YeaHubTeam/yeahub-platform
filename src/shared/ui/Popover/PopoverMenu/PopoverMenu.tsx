@@ -5,8 +5,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { PopoverMenuItem } from '../types';
 
-import styles from './PopoverMenu.module.css';
-
 interface PopoverMenuProps {
 	menuItems: PopoverMenuItem[];
 	onToggleOpenPopover: () => void;
@@ -15,7 +13,7 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent, shouldBeClickable }) => (
+			{menuItems.map(({ icon, onClick, title, renderComponent }) => (
 				<Fragment key={title}>
 					{title && onClick ? (
 						<Button
@@ -23,14 +21,11 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 								onClick();
 								onToggleOpenPopover();
 							}}
-							className={styles.button}
-							variant="tertiary"
+							variant="tertiary-link"
 							preffix={icon}
 						>
 							{title}
 						</Button>
-					) : shouldBeClickable ? (
-						renderComponent?.(onToggleOpenPopover, styles.button)
 					) : (
 						renderComponent?.(onToggleOpenPopover)
 					)}

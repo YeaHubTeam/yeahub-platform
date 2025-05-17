@@ -5,6 +5,7 @@ const tagNameByVariants: Record<VariantType, 'button' | 'a'> = {
 	secondary: 'button',
 	outline: 'button',
 	tertiary: 'button',
+	'tertiary-link': 'button',
 	destructive: 'button',
 	'destructive-secondary': 'button',
 	'destructive-outline': 'button',
