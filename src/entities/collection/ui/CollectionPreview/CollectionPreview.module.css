@@ -151,13 +151,17 @@
   }
 
   .image-wrapper {
-    aspect-ratio: 1;
-    width: 100%;
-    height: auto;
+    &.row {
+      aspect-ratio: 1;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .wrapper {
-    flex-direction: column;
+    &.row {
+      flex-direction: column;
+    }
   }
 
   .specialization-container {
