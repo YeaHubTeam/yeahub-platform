@@ -45,7 +45,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 		{
 			renderComponent: () => (
 				<HeaderLink link={ROUTES.collections.page} path="/collections/">
-					{t(Landing.HEADER_LINKS_PUBLIC_COLLECTIONS)}
+					{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 				</HeaderLink>
 			),
 		},
@@ -66,7 +66,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 							</HeaderLink>
 
 							<HeaderLink link={ROUTES.collections.page} path={'/collections/'}>
-								{t(Landing.HEADER_LINKS_PUBLIC_COLLECTIONS)}
+								{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 							</HeaderLink>
 						</Flex>
 						<Popover menuItems={settingsMenuItems} className={styles.popover}>

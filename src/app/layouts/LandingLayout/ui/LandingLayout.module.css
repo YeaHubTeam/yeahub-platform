@@ -4,10 +4,10 @@
 
 .wrapper .main {
   position: relative;
-  padding: 40px 30px;
+  padding: 40px 0;
 }
 
-@media screen and (width < 1216px) {
+@media screen and (width < 1440px) {
   .wrapper .main {
     padding: 24px 30px;
   }

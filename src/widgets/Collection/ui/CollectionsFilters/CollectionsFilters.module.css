@@ -36,7 +36,7 @@
 }
 
 .public-collection-icon-positioning {
-  top: 52px;
+  top: 38px;
   right: 46px;
 }
 
@@ -55,13 +55,6 @@
 
   .additional-info-wrapper {
     display: none;
-  }
-}
-
-@media (width < 1216px) {
-  .public-collection-icon-positioning {
-    top: 38px;
-    right: 46px;
   }
 }
 
