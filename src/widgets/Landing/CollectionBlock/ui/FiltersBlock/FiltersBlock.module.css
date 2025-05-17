@@ -1,0 +1,6 @@
+.list {
+  position: relative;
+  padding-bottom: 5px;
+  width: 100%;
+  overflow: hidden;
+}
