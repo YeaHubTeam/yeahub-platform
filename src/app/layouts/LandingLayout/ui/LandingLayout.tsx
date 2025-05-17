@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -13,15 +14,15 @@ import styles from './LandingLayout.module.css';
 export const LandingLayout = () => {
 	return (
 		<Flex direction="column">
-			<Flex direction="column" gap="20" className={styles.wrapper}>
+			<Flex direction="column" className={styles.wrapper}>
 				<Header />
-				<div className="container">
+				<main className={classNames('container', styles.main)}>
 					<Suspense>
 						<AutoScrollToTop>
 							<Outlet />
 						</AutoScrollToTop>
 					</Suspense>
-				</div>
+				</main>
 			</Flex>
 			<Footer />
 			<CookiesWarning />

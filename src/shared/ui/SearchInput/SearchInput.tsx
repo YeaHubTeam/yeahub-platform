@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
@@ -17,6 +17,10 @@ export const SearchInput = ({
 	currentValue,
 }: SearchInputProps) => {
 	const [query, setQuery] = useState(currentValue || '');
+
+	useEffect(() => {
+		setQuery(currentValue || '');
+	}, [currentValue]);
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;

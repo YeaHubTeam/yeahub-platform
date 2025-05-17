@@ -9,3 +9,5 @@ export { useModal } from './useModal';
 export { useOutsideClick } from './useOutsideClick';
 export { useQueryFilter } from './useQueryFilter';
 export { useQueryParams } from './useQueryParams';
+
+export type { FilterFromUser } from './useQueryFilter';

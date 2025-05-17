@@ -20,7 +20,7 @@ interface FilterFromURL {
 	isEmailVerified?: string | null;
 }
 
-interface FilterFromUser {
+export interface FilterFromUser {
 	skills?: number[];
 	complexity?: number[];
 	rate?: number[];

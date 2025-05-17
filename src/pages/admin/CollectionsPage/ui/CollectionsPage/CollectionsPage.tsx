@@ -8,12 +8,12 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 
+import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
-import { CollectionsPagePagination } from '../CollectionsPagePagination/CollectionsPagePagination';
 
 import styles from './CollectionsPage.module.css';
 
@@ -57,7 +57,7 @@ const CollectionsPage = () => {
 				/>
 
 				{collections.total > collections.limit && (
-					<CollectionsPagePagination
+					<CollectionsPagination
 						collectionsResponse={collections}
 						currentPage={filter.page || 1}
 						onPageChange={onPageChange}
