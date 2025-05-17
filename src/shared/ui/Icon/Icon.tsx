@@ -11,6 +11,7 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 	icon: IconName;
 	size?: IconSize;
 	color?: Pallete;
+	borderRadius?: string | number;
 	className?: string;
 	onClick?: () => void;
 	dataTestId?: string;

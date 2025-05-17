@@ -146,7 +146,7 @@
 
 @media (width <= 992px) {
   .container {
-    max-width: var(--container-width-tablet);
+    max-width: var(--container-width-md);
   }
 
   .container-social {

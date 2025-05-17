@@ -55,4 +55,5 @@ export type GetCollectionQuestionsResponse = Response<Question[]>;
 
 export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;
+	limit?: number;
 };

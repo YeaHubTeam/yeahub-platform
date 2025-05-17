@@ -40,8 +40,9 @@ const collectionApi = baseApi.injectEndpoints({
 			GetCollectionQuestionsResponse,
 			GetCollectionByIdParamsRequest
 		>({
-			query: ({ collectionId }) => ({
-				url: route(collectionApiUrls.getCollectionQuestions, collectionId || ''),
+			query: (params) => ({
+				url: route(collectionApiUrls.getCollectionQuestions, params.collectionId || ''),
+				params: { limit: params.limit },
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),

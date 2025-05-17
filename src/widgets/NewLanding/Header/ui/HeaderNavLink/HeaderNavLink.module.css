@@ -1,0 +1,28 @@
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  width: 100%;
+  min-height: 38px;
+  border-radius: 12px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+  
+.nav-link:hover{
+  background-color:var(--color-black-30);
+}
+  
+.nav-link.active {
+  background-color: var(--color-black-30);
+}
+  
+.nav-link.active > * {
+  color: var(--color-purple-800);
+}
+
+@media screen and (width < 1200px) {
+  .nav-link {
+    min-width: 192px;
+  }
+}

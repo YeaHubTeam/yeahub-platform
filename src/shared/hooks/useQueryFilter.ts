@@ -16,6 +16,8 @@ interface FilterFromURL {
 	order?: string | null;
 	specialization?: string | null;
 	isFree?: string | null;
+	roles?: string | null;
+	isEmailVerified?: string | null;
 }
 
 export interface FilterFromUser {
@@ -29,6 +31,8 @@ export interface FilterFromUser {
 	order?: string;
 	specialization?: number | number[];
 	isFree?: boolean;
+	roles?: string | null;
+	isEmailVerified?: string | null;
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
@@ -69,6 +73,8 @@ export const useQueryFilter = (onReset?: () => void) => {
 			order: params.get('order'),
 			specialization: params.get('specialization'),
 			isFree: params.get('isFree'),
+			roles: params.get('roles'),
+			isEmailVerified: params.get('isEmailVerified'),
 		};
 	};
 
@@ -86,6 +92,8 @@ export const useQueryFilter = (onReset?: () => void) => {
 				? params.specialization.split(',').map(Number)
 				: undefined,
 			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
+			roles: params.roles ? params.roles : undefined,
+			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
 		};
 	};
 

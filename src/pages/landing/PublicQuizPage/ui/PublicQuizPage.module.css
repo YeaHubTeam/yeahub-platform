@@ -1,4 +1,5 @@
 .container {
+  gap: 20px;
   color: var(--text-color-bright);
   font-weight: var(--font-weight-500);
 }

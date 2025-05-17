@@ -15,6 +15,7 @@
 
 .gauge-text {
   position: absolute;
+  max-width: 190px;
   text-align: center;
   font-weight: var(--font-weight-600);
 }
