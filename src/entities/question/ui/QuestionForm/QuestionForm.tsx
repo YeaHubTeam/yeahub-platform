@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Select, Text, TextEditor } from 'yeahub-ui-kit';
+import { Select, Text } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
@@ -9,6 +9,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Range } from '@/shared/ui/Range';
 import { TextArea } from '@/shared/ui/TextArea';
+import { TextEditor } from '@/shared/ui/TextEditor';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SkillSelect } from '@/entities/skill';
