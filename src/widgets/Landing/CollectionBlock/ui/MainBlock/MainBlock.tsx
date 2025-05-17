@@ -71,22 +71,6 @@ export const MainBlock = () => {
 			tariff: 'premium' as const,
 			isFree: false,
 		},
-		{
-			id: 4,
-			title: t(Landing.COLLECTION_CARD_SBER),
-			description: '',
-			imageSrc: sberImg,
-			keywords: ['Frontend'],
-			specializations: [
-				{
-					id: 1,
-					title: 'Frontend',
-					description: '',
-				},
-			],
-			tariff: 'premium' as const,
-			isFree: false,
-		},
 	];
 
 	const renderCards = mockCards.map((collection, index) => (
