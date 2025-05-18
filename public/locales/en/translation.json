@@ -216,6 +216,12 @@
         "failed": "Profile could not be changed"
       }
     },
+		"user": {
+			"delete": {
+				"success": "Your account and all your data have been permanently deleted",
+				"failed": "Account could not be deleted"
+			}
+		},
     "avatar": {
       "update": {
         "success": "Profile photo changed",

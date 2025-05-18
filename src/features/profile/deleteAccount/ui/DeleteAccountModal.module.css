@@ -1,0 +1,13 @@
+.description {
+  margin-bottom: 20px;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--color-black-200);
+  background-color: transparent;
+}
