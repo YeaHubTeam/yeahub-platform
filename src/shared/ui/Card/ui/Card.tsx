@@ -135,6 +135,7 @@ export const Card = ({
 		>
 			{(title || actionRoute) && (
 				<div
+					data-testid="Card_Header"
 					className={classNames(styles['card-header'], {
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
@@ -148,7 +149,7 @@ export const Card = ({
 								[styles['link-disabled']]: actionDisabled,
 							})}
 						>
-							<Text variant="body3-strong" color="purple-700">
+							<Text variant="body3-strong" color="purple-700" dataTestId="Card_Link">
 								{actionTitle}
 							</Text>
 							<Icon

@@ -1,39 +1,23 @@
-import { render, screen } from '@testing-library/react';
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
 import { Card } from './Card';
 
-i18n.use(initReactI18next).init({
-	lng: 'en',
-	resources: {
-		en: {
-			translation: {
-				expand: 'Expand',
-				collapse: 'Collapse',
-			},
-		},
-	},
-});
-
-const renderWithRouter = (component: React.ReactElement) => {
-	return render(<MemoryRouter>{component}</MemoryRouter>);
-};
-
-describe('Card Component', () => {
+describe('Card', () => {
 	test('renders basic card with children', () => {
-		renderWithRouter(<Card>Card Content</Card>);
+		renderComponent(<Card>Card Content</Card>);
 		expect(screen.getByText('Card Content')).toBeInTheDocument();
 	});
 
 	test('renders with title', () => {
-		renderWithRouter(<Card title="Test Title">Content</Card>);
+		renderComponent(<Card title="Test Title">Content</Card>);
 		expect(screen.getByText('Test Title')).toBeInTheDocument();
 	});
 
 	test('renders without title and actionRoute', () => {
-		const { container } = renderWithRouter(<Card>Content</Card>);
+		const { container } = renderComponent(<Card>Content</Card>);
 
 		const header = container.querySelector('.card-header');
 		expect(header).not.toBeInTheDocument();
@@ -42,18 +26,18 @@ describe('Card Component', () => {
 	});
 
 	test('renders with action link', () => {
-		renderWithRouter(
+		renderComponent(
 			<Card actionRoute="/test" actionTitle="Test Action">
 				Content
 			</Card>,
 		);
-		const link = screen.getByText('Test Action');
+		const link = screen.getByTestId('Card_Link');
 		expect(link).toBeInTheDocument();
 		expect(link.closest('a')).toHaveAttribute('href', '/test');
 	});
 
 	test('renders disabled action', () => {
-		renderWithRouter(
+		renderComponent(
 			<Card actionRoute="/test" actionTitle="Test Action" actionDisabled>
 				Content
 			</Card>,
@@ -63,16 +47,16 @@ describe('Card Component', () => {
 	});
 
 	test('does not show expand button for short content', () => {
-		renderWithRouter(
+		renderComponent(
 			<Card expandable>
 				<div style={{ height: '100px' }}>Short Content</div>
 			</Card>,
 		);
-		expect(screen.queryByText('Expand')).not.toBeInTheDocument();
+		expect(screen.queryByText(Translation.EXPAND)).not.toBeInTheDocument();
 	});
 
 	test('applies shadow classes correctly', () => {
-		const { container } = renderWithRouter(
+		const { container } = renderComponent(
 			<Card withShadow withOutsideShadow>
 				Content
 			</Card>,
@@ -82,7 +66,7 @@ describe('Card Component', () => {
 	});
 
 	test('applies bottom position for action', () => {
-		const { container } = renderWithRouter(
+		const { container } = renderComponent(
 			<Card actionRoute="/test" actionTitle="Test" isActionPositionBottom>
 				Content
 			</Card>,
@@ -92,11 +76,11 @@ describe('Card Component', () => {
 	});
 
 	test('centers title when isTitleCenter is true', () => {
-		const { container } = renderWithRouter(
+		renderComponent(
 			<Card title="Test" isTitleCenter>
 				Content
 			</Card>,
 		);
-		expect(container.querySelector('.card-header')).toHaveClass('card-header-title-center');
+		expect(screen.getByTestId('Card_Header')).toHaveClass('card-header-title-center');
 	});
 });
