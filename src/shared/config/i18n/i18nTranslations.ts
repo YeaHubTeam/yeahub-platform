@@ -616,6 +616,7 @@ export enum Landing {
 	COLLECTION_STAR = 'collections.star',
 	HEADER_NAV_QUESTIONS_LIST = 'header.nav.questions.list',
 	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
+	HEADER_NAV_PUBLIC_COLLECTIONS = 'header.nav.public.collections',
 	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
 	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
 	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',

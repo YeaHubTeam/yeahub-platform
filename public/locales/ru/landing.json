@@ -12,6 +12,7 @@
 		"nav": {
 			"questions.list": "База вопросов",
 			"public.quiz": "Тренажёр",
+			"public.collections": "Собеседования",
 			"popover.title": "Подготовка",
       "aria.label": "Пользовательская"
 		},

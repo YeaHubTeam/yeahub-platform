@@ -12,6 +12,7 @@
     "nav": {
 			"questions.list": "Interview Questions",
 			"public.quiz": "Interview Trainer",
+			"public.collections": "Interviews",
 			"popover.title": "Preparation",
 			"aria.label": "User"
 		},

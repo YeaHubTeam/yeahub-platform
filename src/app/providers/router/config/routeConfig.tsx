@@ -65,6 +65,7 @@ import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
 import { NewLandingPage } from '@/pages/landing/NewLandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
+import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -233,6 +234,16 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.quiz.result.route,
 						element: <PublicQuizResultPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.collections.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicCollectionsPage />,
 					},
 				],
 			},
