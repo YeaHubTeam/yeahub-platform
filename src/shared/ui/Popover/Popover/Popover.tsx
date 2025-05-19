@@ -155,7 +155,7 @@ export const Popover = (props: PopoverProps & { isMobile?: boolean; isTablet?: b
 				{...rest}
 			>
 				<PopoverTrigger asChild={true}>{childrenToRender}</PopoverTrigger>
-				<PopoverContent>{contentMemo}</PopoverContent>
+				<PopoverContent style={{ zIndex: 2 }}>{contentMemo}</PopoverContent>
 			</PopoverFabric>
 		</div>
 	);
