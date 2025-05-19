@@ -68,6 +68,6 @@ export const Timer = ({
 	return timeLeft > 0 && isTimerStarted ? (
 		<div className={className}>{timeLeft}</div>
 	) : (
-		<div className={styles['timer-plug']} />
+		<div className={styles['timer-plug']} data-testid="timer-plug" />
 	);
 };
