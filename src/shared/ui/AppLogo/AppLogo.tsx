@@ -27,7 +27,7 @@ export const AppLogo = ({
 
 	return (
 		<NavLink
-			data-testid="NavLink"
+			data-testid="AppLogo_Link"
 			to={navigateTo}
 			className={classNames(
 				styles['home-link'],
@@ -42,7 +42,7 @@ export const AppLogo = ({
 					className={styles.logo}
 					src={logoSrc}
 					alt="Тренажер собеседований и вопросы собеседований в IT"
-					data-testid="logo-img"
+					data-testid="AppLogo_Img"
 				/>
 			)}
 			{!isOpen && (
