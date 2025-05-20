@@ -1,0 +1,46 @@
+.container {
+  margin: 120px 0;
+}
+
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(251px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 20px;
+}
+
+.title {
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-500);
+}
+
+.button {
+  margin: 40px auto 0 ;
+  width: 340px;
+  height: 44px;
+}
+
+@media screen and (width < 1440px) {
+  .container {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (width < 1024px) {
+  .container {
+    margin-bottom: 76px;
+  }
+}
+
+@media screen and (width < 768px) {
+  .container {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (width < 360px) {
+  .title {
+    font-size: var(--font-size-h-xs);
+  }
+}
