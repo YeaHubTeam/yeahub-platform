@@ -12,6 +12,7 @@ import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
+import ClockSquare from '@/shared/assets/icons/clockSquare.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
@@ -27,6 +28,7 @@ import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
+import LockKeyholeMinimalistic from '@/shared/assets/icons/LockKeyholeMinimalistic.svg';
 import LogoText from '@/shared/assets/icons/logoText.svg';
 import Megaphone from '@/shared/assets/icons/Megaphone.svg';
 import Minus from '@/shared/assets/icons/minus.svg';
@@ -104,6 +106,8 @@ export const icons: Record<IconName, IconComponent> = {
 	clipboardText: ClipboardText,
 	megaphone: Megaphone,
 	yeaHubCommunity: YeaHubCommunity,
+	clockSquare: ClockSquare,
+	lockKeyholeMinimalistic: LockKeyholeMinimalistic,
 	figmaWhite: Figma,
 	logoText: LogoText,
 };

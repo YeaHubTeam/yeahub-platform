@@ -1,4 +1,4 @@
-export type IconSize = 20 | 24 | 28 | 32;
+export type IconSize = 20 | 24 | 28 | 32 | 44 | 76;
 
 export type IconName =
 	| 'arrowRight'
@@ -50,6 +50,8 @@ export type IconName =
 	| 'notePencil'
 	| 'clipboardText'
 	| 'megaphone'
+	| 'clockSquare'
+	| 'lockKeyholeMinimalistic'
 	| 'yeaHubCommunity'
 	| 'figmaWhite'
 	| 'logoText';

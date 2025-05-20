@@ -199,7 +199,7 @@ export const ROUTES = {
 		route: 'collections',
 		page: '/collections',
 		detail: {
-			route: ':collectionsId',
+			route: ':collectionId',
 			page: '/collections/:collectionId',
 		},
 	},
