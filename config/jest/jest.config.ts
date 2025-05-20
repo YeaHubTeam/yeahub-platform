@@ -38,6 +38,7 @@ const config: Config = {
 	// A list of paths to modules that run some code to configure or set up the testing framework before each test
 	setupFilesAfterEnv: ['<rootDir>config/jest/jestSetup.ts'],
 
+
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
 		'\\.svg$': '<rootDir>/config/jest/jestSvgMock.tsx',
