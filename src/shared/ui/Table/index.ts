@@ -1,1 +1,2 @@
-export { Table } from './ui/Table';
+export { Table } from './Table';
+export { TableSkeleton } from './Table.skeleton';

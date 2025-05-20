@@ -1,0 +1,9 @@
+.offset {
+  margin-left: -118px;
+}
+
+@media screen and (width < 1400px) {
+  .offset {
+    margin-left: -113px;
+  }
+}

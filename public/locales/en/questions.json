@@ -4,7 +4,10 @@
   "preview": {
     "title": "Questions list",
     "link": "Study",
-    "empty": "Questions for the selected specialization will appear soon"
+		"empty": {
+			"specialization": "Questions for the selected specialization will appear soon",
+			"collection": "Questions for this collection will appear soon"
+		}
   },
   "title": {
     "short": "Questions",
@@ -74,12 +77,16 @@
     "title": "Keywords",
     "label": "Add keywords to the text"
   },
-  "author": "Author:",
+  "author": "Author",
   "level": "Level:",
   "skillsAdditional": "Skills:",
   "keywordsAdditional": "Keywords:",
   "image.alt": "Image code for question",
   "more": "More",
   "learn": "Learn",
-  "repeat": "Repeat"
+  "repeat": "Repeat",
+  "tooltip": {
+    "learn": "The issue has already been fully studied",
+    "repeat": "The question has not yet progressed to memorization"
+  }
 }

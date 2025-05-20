@@ -51,7 +51,8 @@
   "setting.tabs": {
     "select.tariff": "Select tariff",
     "change.password": "Password change",
-    "verify.email": "E-mail confirmation"
+    "verify.email": "E-mail confirmation",
+		"account": "Account"
   },
   "email.verification": {
     "title": "Confirm your e-mail",

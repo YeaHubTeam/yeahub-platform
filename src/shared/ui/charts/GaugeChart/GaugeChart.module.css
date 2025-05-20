@@ -1,0 +1,25 @@
+.gauge-chart-container {
+  position: relative;
+}
+
+.gauge-chart-container::before {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  z-index: -1;
+  width: 100%;
+  height: 100%; 
+  border-radius: 50%;
+  content: '';
+}
+
+.gauge-text {
+  position: absolute;
+  max-width: 190px;
+  text-align: center;
+  font-weight: var(--font-weight-600);
+}
+
+.gauge-progress {
+  transform-origin: center;
+}

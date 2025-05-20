@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
 import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
@@ -20,6 +20,7 @@ interface ChooseQuestionsCategoriesProps {
 	skillsLimit?: number;
 	shouldShowScroll?: boolean;
 	selectedSpecialization: number;
+	showAllLabel?: boolean;
 }
 
 export const ChooseQuestionsCategories = ({
@@ -27,6 +28,7 @@ export const ChooseQuestionsCategories = ({
 	onChangeSkills,
 	skillsLimit,
 	selectedSpecialization,
+	showAllLabel = true,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT_CATEGORIES);
@@ -74,7 +76,7 @@ export const ChooseQuestionsCategories = ({
 				onClick={onChooseSkill}
 			/>
 
-			{!isMobile && (
+			{!isMobile && showAllLabel && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
 					{!showAll ? t(Questions.CATEGORIES_SHOW_ALL) : t(Questions.CATEGORIES_HIDE)}
 				</Button>

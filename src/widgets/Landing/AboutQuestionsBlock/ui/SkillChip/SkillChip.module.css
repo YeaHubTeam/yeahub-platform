@@ -1,0 +1,7 @@
+.chip {
+  box-shadow: var(--main-shadow);
+  border: none;
+  pointer-events: none;
+}
+
+

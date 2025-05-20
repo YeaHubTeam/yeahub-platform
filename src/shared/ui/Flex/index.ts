@@ -1,1 +1,1 @@
-export { Flex } from './ui/Flex';
+export { Flex } from './Flex';

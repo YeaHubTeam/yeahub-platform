@@ -4,17 +4,9 @@
   gap: 12px;
 }
 
-.yeahub-container {
-  max-width: 210px;
-}
-
-.yeahub-community-container {
-  max-width: 330px;
-}
-
 .icon {
-  min-width: 20px;
-  min-height: 20px;
+  width: 20px;
+  height: 20px;
   color: var(--color-purple-700)
 }
 
@@ -24,19 +16,20 @@
 
 .card {
   width: 100%;
-  min-width: 380px;
-  max-width: 455px;
+  min-width: min(100%, 455px);
+  max-width: 598px;
 }
 
-@media (width < 768px) {
-  .yeahub-container,
-  .yeahub-community-container {
-    max-width: none;
-  }
-
+@media screen and (width <= 1023px) {
   .card {
-    width: 100%;
-    min-width: 328px;
-    max-width: none;
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .card {
+    padding: 20px 10px;
+    min-width: unset;
   }
 }

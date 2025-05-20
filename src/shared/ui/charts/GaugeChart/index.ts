@@ -1,2 +1,2 @@
-export { GaugeChart } from './ui/GaugeChart';
-export { GaugeChartSkeleton } from './ui/GaugeChart.skeleton';
+export { GaugeChart } from './GaugeChart';
+export { GaugeChartSkeleton } from './GaugeChart.skeleton';

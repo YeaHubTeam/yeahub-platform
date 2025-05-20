@@ -1,13 +1,10 @@
-.normal-hight {
-  height: auto;
-}
-
 .wrapper {
-  padding: 20px;
+  height: auto;
+  border-radius: 24px;
 }
 
 .title {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   line-height: 19px;
   font-size: var(--font-size-p-m);
 }
@@ -19,13 +16,18 @@
   list-style-type: none;
 }
 
-.param-wrapper > li:first-child {
+.param-wrapper>li:first-child {
   margin-right: 16px;
 }
 
 .chip {
-  cursor: pointer;
-  padding: 12px 10px;
+  cursor: auto;
+  min-width: 40px;
+}
+
+.questions-chip {
+  margin-top: 8px;
+  box-shadow: 0 0 0 1px var(--color-purple-700);
 }
 
 .chip:not(:last-of-type) {
@@ -40,4 +42,10 @@
 
 .keywords-wrapper a {
   color: var(--text-color-link-active);
+}
+
+@media (width < 1280px) {
+  .wrapper {
+    padding: 16px;
+  }
 }

@@ -1,0 +1,28 @@
+.container {
+  margin: 120px auto;
+  padding: 0;
+  max-width: var(--container-width);
+}
+
+@media screen and (width < 1440px) {
+  .container {
+    margin: 100px auto;
+    max-width: var(--container-width-xl);
+  }
+}
+
+@media screen and (width < 1024px) {
+  .container {
+    margin: 76px auto;
+    padding: 0 30px;
+    max-width: var(--container-width-mobile);
+  }
+}
+
+@media screen and (width < 768px) {
+  .container {
+    margin: 40px auto;
+    padding: 0 10px;
+    max-width: var(--container-width-mobile);
+  }
+}

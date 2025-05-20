@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Collection from '@/shared/assets/icons/collection.svg';
+import Companies from '@/shared/assets/icons/Companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -21,8 +22,12 @@ import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
 import { CollectionEditPage } from '@/pages/admin/CollectionEditPage';
-import { CollectionPage } from '@/pages/admin/CollectionPage';
-import { CollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CollectionPage as AdminCollectionPage } from '@/pages/admin/CollectionPage';
+import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/CollectionsPage';
+import { CompaniesTablePage } from '@/pages/admin/CompaniesTablePage';
+import { CompanyCreatePage } from '@/pages/admin/CompanyCreatePage';
+import { CompanyDetailPage } from '@/pages/admin/CompanyDetailPage';
+import { CompanyEditPage } from '@/pages/admin/CompanyEditPage';
 import { MainPage as AdminMainPage } from '@/pages/admin/MainPage';
 import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
@@ -44,6 +49,8 @@ import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
 import { RegistrationPage } from '@/pages/auth/RegistrationPage';
 import { Error404Page } from '@/pages/Error404Page';
+import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/CollectionPage';
+import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
@@ -56,8 +63,13 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
+import { NewLandingPage } from '@/pages/landing/NewLandingPage';
+import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
+import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
+import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
+import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -73,7 +85,7 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
-import { InterviewPublicQuizPage } from '@/pages/landing/InterviewPublicQuizPage';
+import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
@@ -159,9 +171,19 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 		icon: Collection,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.companies.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
+		icon: Companies,
+	},
 ];
 
 export const router = createBrowserRouter([
+	{
+		path: 'landingQuestions',
+		element: <LandingPageTemporary />,
+	},
 	{
 		path: ROUTES.appRoute,
 		element: <LandingLayout />,
@@ -170,9 +192,14 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <LandingMainPage />,
 			},
+			{ path: '/newLanding', element: <NewLandingPage /> },
 			{
 				path: '*',
 				element: <Error404Page />,
+			},
+			{
+				path: 'test',
+				element: <CollectionBlock />,
 			},
 			{
 				path: ROUTES.docs.page,
@@ -202,7 +229,21 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.quiz.new.route,
-						element: <InterviewPublicQuizPage />,
+						element: <PublicQuizPage />,
+					},
+					{
+						path: ROUTES.quiz.result.route,
+						element: <PublicQuizResultPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.collections.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicCollectionsPage />,
 					},
 				],
 			},
@@ -298,7 +339,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <CollectionsPage />,
+						element: <AdminCollectionsPage />,
 					},
 					{
 						path: ROUTES.admin.collections.create.route,
@@ -310,7 +351,29 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.admin.collections.details.route,
-						element: <CollectionPage />,
+						element: <AdminCollectionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.companies.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CompaniesTablePage />,
+					},
+					{
+						path: ROUTES.admin.companies.create.route,
+						element: <CompanyCreatePage />,
+					},
+					{
+						path: ROUTES.admin.companies.edit.route,
+						element: <CompanyEditPage />,
+					},
+					{
+						path: ROUTES.admin.companies.details.route,
+						element: <CompanyDetailPage />,
 					},
 				],
 			},
@@ -423,6 +486,26 @@ export const router = createBrowserRouter([
 								element: <InterviewQuestionPage />,
 								handle: {
 									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.interview.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
 								},
 							},
 						],

@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Docs } from '@/shared/config/i18n/i18nTranslations';
-import { Button } from '@/shared/ui/Button/ui/Button';
-import { Flex } from '@/shared/ui/Flex/ui/Flex';
+import { Button } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { DockItem } from '../../model/types/types';

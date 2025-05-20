@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { PercentsInfoPie } from '@/shared/ui/PercentsInfoPie';
 
 import { ProfileQuizzesStat } from '@/entities/quiz';
@@ -23,21 +23,21 @@ export const QuizzesStatistic = ({ className, quizzesStat }: QuizzesStatisticPro
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_BEST_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_BEST),
-			itemStyle: { color: '#400799' },
+			itemStyle: { color: '#008616' },
 		},
 		{
 			value: quizzesStat?.minQuizResult ?? 0,
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_WORST_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_WORST),
-			itemStyle: { color: '#E1CEFF' },
+			itemStyle: { color: '#af0932' },
 		},
 		{
 			value: quizzesStat?.avgQuizResult ?? 0,
 			name: isMobile
 				? t(InterviewStatistics.ATTEMPT_STATS_AVG_MOBILE)
 				: t(InterviewStatistics.ATTEMPT_STATS_AVG),
-			itemStyle: { color: '#6A0BFF' },
+			itemStyle: { color: '#ffc234' },
 		},
 	];
 

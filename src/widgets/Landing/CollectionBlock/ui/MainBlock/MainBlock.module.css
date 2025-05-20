@@ -1,0 +1,28 @@
+.main-block {
+  width: 100%;
+  overflow: hidden;
+}
+/* stylelint-disable selector-pseudo-class-no-unknown */
+.slider-container :global(.slick-slide) > div {
+  margin: 0 10px;
+}
+
+.slider-container :global(.slick-slide:first-child) > div {
+  margin-left: 0 !important ;
+}
+
+.slider-container :global(.slick-slide:last-child) > div {
+  margin-right: 0 !important;
+}
+
+.slider-container :global(.slick-list) {
+  margin-left: -0;
+  overflow: visible;
+}
+
+
+.slider-container :global(.slick-track) {
+  display: flex;
+  flex-direction: row;
+}
+

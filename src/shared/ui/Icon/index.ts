@@ -1,3 +1,3 @@
-export { Icon } from './ui/Icon';
-export { IconSkeleton } from './ui/Icon.skeleton';
-export type { IconName } from './model/types';
+export { Icon } from './Icon';
+export { IconSkeleton } from './Icon.skeleton';
+export type { IconName } from './types';

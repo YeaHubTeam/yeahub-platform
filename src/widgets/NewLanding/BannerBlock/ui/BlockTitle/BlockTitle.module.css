@@ -1,0 +1,45 @@
+.title {
+  max-width: 651px;
+  color: var(--color-white-900);
+  line-height: 109%;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-600);
+  white-space: pre-wrap;
+}
+
+.desktop {
+  display: block;
+}
+
+.tablet,
+.mobile {
+  display: none;
+}
+
+@media screen and (width < 1024px) {
+  .title {
+    max-width: none;
+    text-align: center;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+    line-height: 115%;
+    font-weight: var(--font-weight-500);
+  }
+}
+
+@media screen and (width < 768px) {
+  .tablet {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    font-size: var(--font-size-h-xs);
+  }
+}

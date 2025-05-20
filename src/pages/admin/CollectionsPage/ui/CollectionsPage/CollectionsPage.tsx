@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { useQueryFilter } from '@/shared/hooks/useQueryFilter';
+import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
@@ -9,12 +8,12 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 
+import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
-import { CollectionsPagePagination } from '../CollectionsPagePagination/CollectionsPagePagination';
 
 import styles from './CollectionsPage.module.css';
 
@@ -32,21 +31,16 @@ const CollectionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const { page, title } = filter;
 
-	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
+	const { data: allCollections } = useGetCollectionsListQuery({
 		page,
 	});
 
 	// in case other collections appear (eg: filtered collections)
 	// as in QuestionsPage
 	const collections = allCollections;
-
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 	};
-
-	if (isLoadingAllCollections) {
-		return 'TODO SKELETON PAGE';
-	}
 
 	if (!collections) {
 		return null;
@@ -63,7 +57,7 @@ const CollectionsPage = () => {
 				/>
 
 				{collections.total > collections.limit && (
-					<CollectionsPagePagination
+					<CollectionsPagination
 						collectionsResponse={collections}
 						currentPage={filter.page || 1}
 						onPageChange={onPageChange}

@@ -31,14 +31,21 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 		{
 			renderComponent: () => (
 				<HeaderLink link={ROUTES.questions.page} path="/questions/">
-					{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}
+					{t(Landing.HEADER_NAV_QUESTIONS_LIST)}
 				</HeaderLink>
 			),
 		},
 		{
 			renderComponent: () => (
 				<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
-					{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+					{t(Landing.HEADER_NAV_PUBLIC_QUIZ)}
+				</HeaderLink>
+			),
+		},
+		{
+			renderComponent: () => (
+				<HeaderLink link={ROUTES.collections.page} path="/collections/">
+					{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 				</HeaderLink>
 			),
 		},
@@ -51,11 +58,15 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 						<Flex className={styles.links}>
 							<HeaderLink link={ROUTES.questions.page} path="/questions/">
-								{t(Landing.HEADER_LINKS_QUESTIONS_LIST)}
+								{t(Landing.HEADER_NAV_QUESTIONS_LIST)}
 							</HeaderLink>
 
 							<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
-								{t(Landing.HEADER_LINKS_PUBLIC_QUIZ)}
+								{t(Landing.HEADER_NAV_PUBLIC_QUIZ)}
+							</HeaderLink>
+
+							<HeaderLink link={ROUTES.collections.page} path={'/collections/'}>
+								{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 							</HeaderLink>
 						</Flex>
 						<Popover menuItems={settingsMenuItems} className={styles.popover}>

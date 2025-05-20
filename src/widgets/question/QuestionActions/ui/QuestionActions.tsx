@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -22,11 +22,15 @@ export const QuestionActions = ({ questionId, checksCount = 0 }: QuestionActions
 					questionId={questionId}
 					checksCount={checksCount}
 					variant={buttonVariant}
+					placementTooltip="top"
+					offsetTooltip={5}
 				/>
 				<ResetQuestionStudyProgressButton
 					questionId={questionId}
 					checksCount={checksCount}
 					variant={buttonVariant}
+					placementTooltip="top"
+					offsetTooltip={5}
 				/>
 			</Flex>
 		</Card>
