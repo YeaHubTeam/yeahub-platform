@@ -1,5 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
@@ -21,56 +22,55 @@ describe('EmptyStub', () => {
 		mockedUseScreenSize.mockReturnValue({ isMobileS: false });
 	});
 
-	test('render on desktop/tablet/mobile screen size', () => {
+	test('render button', () => {
 		render();
 
-		const Text = screen.getByTestId('Text');
-		const Button = screen.getByTestId('Button');
+		const Button = screen.getByTestId('EmptyStub_Button');
 
-		expect(Text).toBeInTheDocument();
-		expect(Text).toHaveClass('body5-accent', 'text');
 		expect(Button).toBeInTheDocument();
 		expect(Button).toHaveClass('button', 'button-large');
-	});
-	test('render on mobileS screen size', () => {
-		mockedUseScreenSize.mockReturnValue({ isMobileS: true });
-
-		render();
-
-		const Text = screen.getByTestId('Text');
-		const Button = screen.getByTestId('Button');
-
-		expect(Text).toBeInTheDocument();
-		expect(Text).toHaveClass('body2-accent', 'text');
-		expect(Button).toBeInTheDocument();
-		expect(Button).toHaveClass('button', 'button-large');
+		expect(Button).toHaveTextContent(Translation.STUB_FILTER_SUBMIT);
 	});
 	test('button click triggers resetFilters callback', () => {
 		const mockResetFilters = jest.fn();
 
 		render({ resetFilters: mockResetFilters });
 
-		const button = screen.getByTestId('Button');
-		fireEvent.click(button);
+		const Button = screen.getByTestId('EmptyStub_Button');
+		fireEvent.click(Button);
 
 		expect(mockResetFilters).toHaveBeenCalledTimes(1);
+	});
+	test('render on desktop/tablet/mobile screen size', () => {
+		render();
+
+		const Text = screen.getByTestId('EmptyStub_Text');
+
+		expect(Text).toBeInTheDocument();
+		expect(Text).toHaveClass('body5-accent', 'text');
+	});
+	test('render on mobileS screen size', () => {
+		mockedUseScreenSize.mockReturnValue({ isMobileS: true });
+
+		render();
+
+		const Text = screen.getByTestId('EmptyStub_Text');
+
+		expect(Text).toBeInTheDocument();
+		expect(Text).toHaveClass('body2-accent', 'text');
 	});
 	test('render without text prop)', () => {
 		render();
 
-		const Text = screen.getByTestId('Text');
-		const Button = screen.getByTestId('Button');
+		const Text = screen.getByTestId('EmptyStub_Text');
 
-		expect(Text).toHaveTextContent('Test text');
-		expect(Button).toHaveTextContent('Test button');
+		expect(Text).toHaveTextContent(Translation.STUB_FILTER_TITLE);
 	});
 	test('render with text prop', () => {
 		render({ text: 'hello' });
 
-		const Text = screen.getByTestId('Text');
-		const Button = screen.getByTestId('Button');
+		const Text = screen.getByTestId('EmptyStub_Text');
 
-		expect(Text).toHaveTextContent('Test text “hello”');
-		expect(Button).toHaveTextContent('Test button');
+		expect(Text).toHaveTextContent(Translation.STUB_FILTER_TITLE);
 	});
 });

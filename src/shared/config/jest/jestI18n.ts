@@ -9,14 +9,7 @@ i18n.use(initReactI18next).init({
 	interpolation: {
 		escapeValue: false,
 	},
-	resources: {
-		ru: {
-			translation: {
-				'stub.filter.submit': 'Test button',
-				'stub.filter.text': 'Test text {{text}}',
-			},
-		},
-	},
+	resources: { ru: { translations: {} } },
 });
 
 export default i18n;
