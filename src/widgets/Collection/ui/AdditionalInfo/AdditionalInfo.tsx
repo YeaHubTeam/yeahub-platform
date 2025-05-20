@@ -41,7 +41,7 @@ export const AdditionalInfo = ({
 }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
-	const { isMobile, isTablet } = useScreenSize();
+	const { isLargeScreen, isSmallScreen } = useScreenSize();
 	const route = useBasePath();
 
 	if (project === 'landing')
@@ -62,10 +62,10 @@ export const AdditionalInfo = ({
 								path={`${route}?page=1&status=all&$keywords=`}
 							/>
 						</Flex>
-						{(isMobile || isTablet) && createdBy && <QuestionAuthor createdBy={createdBy} />}
+						{isSmallScreen && createdBy && <QuestionAuthor createdBy={createdBy} />}
 					</Flex>
 				</Card>
-				{!isMobile && !isTablet && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
+				{isLargeScreen && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
 			</>
 		);
 

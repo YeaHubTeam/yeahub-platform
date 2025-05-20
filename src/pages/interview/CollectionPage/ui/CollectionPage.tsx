@@ -35,7 +35,7 @@ export const CollectionPage = () => {
 		{ skip: collection?.questionsCount === undefined },
 	);
 
-	const { isMobileS, isMobile, isTablet } = useScreenSize();
+	const { isMobileS, isLargeScreen } = useScreenSize();
 
 	const questions = response?.data ?? [];
 
@@ -87,7 +87,7 @@ export const CollectionPage = () => {
 					{renderHeaderAndActions()}
 					<CollectionBody isFree={isFree} questions={questions} />
 				</div>
-				{!isMobile && !isTablet && (
+				{isLargeScreen && (
 					<Flex direction="column" gap="20" className={styles.additional}>
 						<AdditionalInfo
 							specializations={specializations}

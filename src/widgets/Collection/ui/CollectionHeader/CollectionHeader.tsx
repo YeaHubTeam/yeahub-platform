@@ -23,7 +23,7 @@ export const CollectionHeader = ({
 	company,
 	renderDrawer,
 }: CollectionHeaderProps) => {
-	const { isMobileS, isMobile, isTablet } = useScreenSize();
+	const { isMobileS, isSmallScreen } = useScreenSize();
 	const imageSrc = collectionImageSrc && company?.imageSrc;
 	const imageClassName = isMobileS ? styles['image-mobile'] : styles['image-default'];
 
@@ -34,7 +34,7 @@ export const CollectionHeader = ({
 				<Flex flex={1} direction="column">
 					<Flex direction="row" gap="8" justify="between" align="start">
 						<h2 className={styles.title}>{title}</h2>
-						{(isMobile || isTablet) && renderDrawer()}
+						{isSmallScreen && renderDrawer()}
 					</Flex>
 
 					<Text variant="body3-accent" maxRows={!isMobileS ? 4 : undefined}>

@@ -6,3 +6,8 @@
 .text {
   max-width: 358px;
 }
+
+.icon path{
+  stroke: var(--color-purple-700);
+  fill: var(--color-purple-700);
+}

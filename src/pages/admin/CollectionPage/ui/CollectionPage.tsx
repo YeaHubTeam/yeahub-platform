@@ -29,7 +29,7 @@ import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
-	const { isMobile, isTablet } = useScreenSize();
+	const { isSmallScreen, isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const profileId = useAppSelector(getProfileId);
@@ -64,7 +64,7 @@ export const CollectionPage = () => {
 		imageSrc,
 	} = collection;
 
-	const renderMobileOrTablet = (isMobile || isTablet) && (
+	const renderMobileOrTablet = isSmallScreen && (
 		<>
 			<section
 				className={classNames(styles.wrapper, {

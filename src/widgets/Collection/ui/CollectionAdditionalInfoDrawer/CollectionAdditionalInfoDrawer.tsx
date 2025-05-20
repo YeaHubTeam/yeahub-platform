@@ -1,6 +1,9 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize, useCurrentProject, useModal } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -23,11 +26,12 @@ export const CollectionAdditionalInfoDrawer = ({
 	const { isOpen, onToggle, onClose } = useModal();
 	const project = useCurrentProject();
 	const { createdBy, questionsCount, isFree, company, specializations, keywords } = collection;
+	const { t } = useTranslation(i18Namespace.collection);
 	return (
 		<div className={styles['popover-additional']}>
 			<IconButton
 				className={classNames({ active: isOpen })}
-				aria-label="go to additional info"
+				aria-label={t(Collections.ADDITIONAL_INFO_ARIA_LABEL)}
 				form="square"
 				icon={<PopoverIcon />}
 				size="small"

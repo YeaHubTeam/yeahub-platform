@@ -146,6 +146,8 @@ export enum Translation {
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
 	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
+
+	SKELETON_ARIA_LABEL = 'skeleton.aria.label',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -402,6 +404,7 @@ export enum Questions {
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 
 	COMMUNITY_JOIN = 'community.join',
 }
@@ -507,6 +510,7 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',

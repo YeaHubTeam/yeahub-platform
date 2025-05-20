@@ -94,5 +94,8 @@
   },
   "community": {
     "join": "Become a member of the community"
-  }
+  },
+  "additional": {
+		"aria.label": "Go to additional info"
+	}
 }

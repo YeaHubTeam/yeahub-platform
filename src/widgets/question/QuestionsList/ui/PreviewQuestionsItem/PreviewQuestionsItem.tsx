@@ -19,10 +19,10 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 	const { id, imageSrc, title, rate, complexity = 0 } = question;
 	const { isMobileS } = useScreenSize();
 	const project = useCurrentProject();
-	const questionRoute =
-		project === 'landing'
-			? route(ROUTES.questions.detail.page, id)
-			: route(ROUTES.interview.questions.detail.page, id);
+	const isLanding = project === 'landing';
+	const questionRoute = isLanding
+		? route(ROUTES.questions.detail.page, id)
+		: route(ROUTES.interview.questions.detail.page, id);
 
 	return (
 		<li className={styles.item}>

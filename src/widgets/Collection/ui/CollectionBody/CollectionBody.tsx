@@ -29,11 +29,11 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const navigate = useNavigate();
 	const { isMobile } = useScreenSize();
-	const isLanding = useCurrentProject() === 'landing';
+	const project = useCurrentProject();
 
 	// TODO: Добавить роут для сообщества
 	const onMoveSignup = () => {
-		if (isLanding) navigate(ROUTES.auth.register.page, { replace: false });
+		if (project === 'landing') navigate(ROUTES.auth.register.page, { replace: false });
 		else navigate(ROUTES.platformRoute, { replace: false });
 	};
 
@@ -50,7 +50,7 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 						))}
 					</Flex>
 				) : (
-					<NoQuestionsCard icon="clockSquare" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
+					<NoQuestionsCard icon="clock" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
 				)}
 			</Card>
 		);
@@ -71,10 +71,7 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 						</Button>
 					)}
 				</Flex>
-				<NoQuestionsCard
-					icon="lockKeyholeMinimalistic"
-					text={t(Questions.PREVIEW_LOCKED_COLLECTION)}
-				/>
+				<NoQuestionsCard icon="lock" text={t(Questions.PREVIEW_LOCKED_COLLECTION)} />
 				{isMobile && (
 					<Button
 						variant="link"
