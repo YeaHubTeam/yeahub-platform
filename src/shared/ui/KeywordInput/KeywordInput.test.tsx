@@ -20,20 +20,20 @@ describe('KeywordInput', () => {
 			render({ value: undefined });
 
 			expect(screen.getByTestId('KeywordInput')).toBeInTheDocument();
-			expect(screen.getByTestId('Input')).toBeInTheDocument();
-			expect(screen.getByTestId('Button')).toBeInTheDocument();
-			expect(screen.queryByTestId('Keywords-container')).not.toBeInTheDocument();
-			expect(screen.queryByTestId('Simple-chip-text')).not.toBeInTheDocument();
+			expect(screen.getByTestId('KeywordInput_Input')).toBeInTheDocument();
+			expect(screen.getByTestId('KeywordInput_Create_Button')).toBeInTheDocument();
+			expect(screen.queryByTestId('KeywordInput_Keywords')).not.toBeInTheDocument();
+			expect(screen.queryByTestId('KeywordInput_Keyword_Text')).not.toBeInTheDocument();
 		});
 		test('render test with few keywoards', () => {
 			render({ value: ['java', 'docker'] });
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 
 			expect(screen.getByTestId('KeywordInput')).toBeInTheDocument();
-			expect(screen.getByTestId('Input')).toBeInTheDocument();
-			expect(screen.getByTestId('Button')).toBeInTheDocument();
-			expect(screen.getByTestId('Keywords-container')).toBeInTheDocument();
+			expect(screen.getByTestId('KeywordInput_Input')).toBeInTheDocument();
+			expect(screen.getByTestId('KeywordInput_Create_Button')).toBeInTheDocument();
+			expect(screen.getByTestId('KeywordInput_Keywords')).toBeInTheDocument();
 			expect(allChips.length).toBe(2);
 		});
 	});
@@ -43,8 +43,8 @@ describe('KeywordInput', () => {
 
 			render({ onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
-			const button = screen.getByTestId('Button');
+			const input = screen.getByTestId('KeywordInput_Input');
+			const button = screen.getByTestId('KeywordInput_Create_Button');
 
 			fireEvent.change(input, { target: { value: 'JavaScript' } });
 			expect(input).toHaveValue('JavaScript');
@@ -52,7 +52,7 @@ describe('KeywordInput', () => {
 			fireEvent.click(button);
 			expect(input).toHaveValue('');
 
-			const newChip = screen.getByTestId('Simple-chip-text');
+			const newChip = screen.getByTestId('KeywordInput_Keyword_Text');
 
 			expect(newChip).toBeInTheDocument();
 			expect(newChip).toHaveTextContent('javascript');
@@ -64,10 +64,10 @@ describe('KeywordInput', () => {
 
 			render({ value: ['java', 'docker'], onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
-			const button = screen.getByTestId('Button');
+			const input = screen.getByTestId('KeywordInput_Input');
+			const button = screen.getByTestId('KeywordInput_Create_Button');
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChips.length).toBe(2);
 
 			fireEvent.change(input, { target: { value: 'JS' } });
@@ -76,7 +76,7 @@ describe('KeywordInput', () => {
 			fireEvent.click(button);
 			expect(input).toHaveValue('');
 
-			const allChipsAfterAdded = screen.getAllByTestId('Simple-chip-text');
+			const allChipsAfterAdded = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChipsAfterAdded.length).toBe(3);
 
 			const newChip = allChipsAfterAdded.find((chip) => chip.textContent === 'js');
@@ -91,10 +91,10 @@ describe('KeywordInput', () => {
 
 			render({ value: ['java', 'docker'], onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
-			const button = screen.getByTestId('Button');
+			const input = screen.getByTestId('KeywordInput_Input');
+			const button = screen.getByTestId('KeywordInput_Create_Button');
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChips.length).toBe(2);
 
 			fireEvent.change(input, { target: { value: '   ' } });
@@ -103,7 +103,7 @@ describe('KeywordInput', () => {
 			fireEvent.click(button);
 			expect(input).toHaveValue('   ');
 
-			const allChipsAfterAdded = screen.getAllByTestId('Simple-chip-text');
+			const allChipsAfterAdded = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChipsAfterAdded.length).toBe(2);
 
 			const newChip = allChipsAfterAdded.find((chip) => chip.textContent === '');
@@ -117,10 +117,10 @@ describe('KeywordInput', () => {
 
 			render({ value: ['java', 'docker'], onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
-			const button = screen.getByTestId('Button');
+			const input = screen.getByTestId('KeywordInput_Input');
+			const button = screen.getByTestId('KeywordInput_Create_Button');
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChips.length).toBe(2);
 
 			const oldChip = allChips.find((chip) => chip.textContent === 'java');
@@ -132,7 +132,7 @@ describe('KeywordInput', () => {
 			fireEvent.click(button);
 			expect(input).toHaveValue('JaVa');
 
-			const allChipsAfterAdded = screen.getAllByTestId('Simple-chip-text');
+			const allChipsAfterAdded = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChipsAfterAdded.length).toBe(2);
 
 			expect(oldChip).toBeInTheDocument();
@@ -144,9 +144,9 @@ describe('KeywordInput', () => {
 
 			render({ value: ['java', 'docker'], onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
+			const input = screen.getByTestId('KeywordInput_Input');
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChips.length).toBe(2);
 
 			fireEvent.change(input, { target: { value: 'TS' } });
@@ -155,7 +155,7 @@ describe('KeywordInput', () => {
 			fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 			expect(input).toHaveValue('');
 
-			const allChipsAfterAdded = screen.getAllByTestId('Simple-chip-text');
+			const allChipsAfterAdded = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChipsAfterAdded.length).toBe(3);
 
 			const newChip = allChipsAfterAdded.find((chip) => chip.textContent === 'ts');
@@ -170,7 +170,7 @@ describe('KeywordInput', () => {
 
 			render({ value: ['java', 'docker'], onChange: handleChange });
 
-			const input = screen.getByTestId('Input');
+			const input = screen.getByTestId('KeywordInput_Input');
 
 			fireEvent.change(input, { target: { value: 'TS' } });
 			expect(input).toHaveValue('TS');
@@ -185,7 +185,7 @@ describe('KeywordInput', () => {
 		test('delete', () => {
 			render({ value: ['java', 'docker'] });
 
-			const allChips = screen.getAllByTestId('Simple-chip-text');
+			const allChips = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChips.length).toBe(2);
 
 			const chipWithJava = allChips.find((chip) => chip.textContent?.toLowerCase() === 'java');
@@ -193,11 +193,11 @@ describe('KeywordInput', () => {
 
 			const deleteButton = chipWithJava?.nextElementSibling as HTMLElement;
 			expect(deleteButton).toBeInTheDocument();
-			expect(deleteButton).toHaveAttribute('data-testid', 'Simple-chip-delete-button');
+			expect(deleteButton).toHaveAttribute('data-testid', 'KeywordInput_Keyword_Delete_Button');
 
 			fireEvent.click(deleteButton!);
 
-			const allChipsAfterDel = screen.getAllByTestId('Simple-chip-text');
+			const allChipsAfterDel = screen.getAllByTestId('KeywordInput_Keyword_Text');
 			expect(allChipsAfterDel.length).toBe(1);
 
 			const chipWithJavaAfterDel = allChipsAfterDel.find(
