@@ -13,24 +13,5 @@
 }
 
 .collection-wrapper {
-  margin-top: 120px;
   max-width: 100%;
-}
-
-@media (width <= 1200px) {
-  .collection-wrapper {
-    margin-top: 100px;
-  }
-}
-
-@media (width <= 768px) {
-  .collection-wrapper {
-    margin-top: 70px;
-  }
-}
-
-@media (width <= 360px) {
-  .collection-wrapper {
-    margin-top: 40px;
-  }
 }

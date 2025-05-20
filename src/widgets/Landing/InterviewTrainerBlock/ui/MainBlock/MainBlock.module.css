@@ -10,7 +10,7 @@
 
 .image {
   box-sizing: border-box;
-  width: 80%;
+  width: 90%;
   box-shadow: var(--main-shadow);
   border-radius: 16px;
   object-fit: contain;

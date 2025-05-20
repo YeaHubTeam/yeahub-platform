@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
+import { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
@@ -17,7 +18,7 @@ export const SpecializationBlock = () => {
 	const isLaptop = useMediaQuery({ query: '(min-width: 1200px) and (max-width: 1439px)' });
 	const { isMobile } = useScreenSize();
 	const [seeAll, setSeeAll] = useState<boolean>(false);
-
+	const { t } = useTranslation(i18Namespace.landing);
 	const displayedItems =
 		isLaptop && !seeAll
 			? mockSpecialization.slice(0, 6)
@@ -28,23 +29,24 @@ export const SpecializationBlock = () => {
 	return (
 		<Flex direction={'column'} className={styles.container}>
 			<Text variant={'head3'} className={styles.title}>
-				{i18n.t(Landing.SPECIALIZATION_NEW_TITLE, { ns: i18Namespace.landing })}
+				{t(Landing.SPECIALIZATION_NEW_TITLE)}
 			</Text>
 			<ul className={styles['cards-list']}>
 				{displayedItems.map((item) => (
 					<li key={item.id}>
 						<SpecializationCard
-							title={item.title}
-							description={item.description}
+							title={t(item.title)}
+							description={t(item.description)}
 							image={item.image}
 							alt={item.alt}
+							link={item.link}
 						/>
 					</li>
 				))}
 			</ul>
 			{(isMobile || isLaptop) && !seeAll && (
 				<Button variant={'outline'} className={styles.button} onClick={() => setSeeAll(true)}>
-					{i18n.t(Landing.SPECIALIZATION_BUTTON, { ns: i18Namespace.landing })}
+					{t(Landing.SPECIALIZATION_BUTTON)}
 				</Button>
 			)}
 		</Flex>

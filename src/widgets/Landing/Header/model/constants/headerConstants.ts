@@ -14,4 +14,9 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		path: '/quiz/',
 		title: Landing.HEADER_NAV_PUBLIC_QUIZ,
 	},
+	{
+		link: ROUTES.collections.page,
+		path: '/collections/',
+		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
+	},
 ];

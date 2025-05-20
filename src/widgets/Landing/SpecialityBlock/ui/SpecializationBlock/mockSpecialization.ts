@@ -1,4 +1,3 @@
-import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 
 import androidImg from '@/widgets/Landing/SpecialityBlock/model/assets/Android Dev.avif';
@@ -16,73 +15,72 @@ export interface IMockSpeciality {
 	description: string;
 	image: string;
 	alt?: string;
+	link?: string;
 }
 
 export const mockSpecialization: Array<IMockSpeciality> = [
 	{
 		id: 1,
 		title: 'Frontend',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_FRONTEND, {
-			ns: i18Namespace.landing,
-		}),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_FRONTEND,
 		image: frontImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_FRONTEND, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_FRONTEND,
+		link: '/questions?page=1&status=all&specialization=11&skills=6',
 	},
 	{
 		id: 2,
 		title: 'Backend',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_BACKEND, {
-			ns: i18Namespace.landing,
-		}),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_BACKEND,
 		image: backImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_BACKEND, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_BACKEND,
+		link: '/questions?page=1&status=all&specialization=19&skills=33',
 	},
 	{
 		id: 3,
 		title: 'Data Science',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_DATA, { ns: i18Namespace.landing }),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_DATA,
 		image: dsImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_DATA, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_DATA,
+		link: '/questions?page=1&status=all&specialization=34&skills=64',
 	},
 	{
 		id: 4,
 		title: 'Machine Learning',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_MACHINE, {
-			ns: i18Namespace.landing,
-		}),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_MACHINE,
 		image: mlImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_MACHINE, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_MACHINE,
+		link: '/questions?page=1&status=all&specialization=37&skills=33',
 	},
 	{
 		id: 5,
 		title: 'Testing',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_TESTING, {
-			ns: i18Namespace.landing,
-		}),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_TESTING,
 		image: testingImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_TESTING, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_TESTING,
+		link: '/questions?page=1&status=all&specialization=29&skills=46',
 	},
 	{
 		id: 6,
 		title: 'iOS Dev',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_IOS, { ns: i18Namespace.landing }),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_IOS,
 		image: iosImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_IOS, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_IOS,
+		link: '/questions?page=1&status=all&specialization=26&skills=44',
 	},
 	{
 		id: 7,
 		title: 'Android Dev',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_ANDROID, {
-			ns: i18Namespace.landing,
-		}),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_ANDROID,
 		image: androidImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_ANDROID, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_ANDROID,
+		link: '/questions?page=1&status=all&specialization=27&skills=45',
 	},
 	{
 		id: 8,
 		title: 'Game Dev',
-		description: i18n.t(Landing.SPECIALIZATION_CARD_DESCRIPTION_GAME, { ns: i18Namespace.landing }),
+		description: Landing.SPECIALIZATION_CARD_DESCRIPTION_GAME,
 		image: gameImg,
-		alt: i18n.t(Landing.SPECIALIZATION_CARD_IMG_GAME, { ns: i18Namespace.landing }),
+		alt: Landing.SPECIALIZATION_CARD_IMG_GAME,
+		link: '/questions?page=1&status=all&specialization=35&skills=58',
 	},
 ];

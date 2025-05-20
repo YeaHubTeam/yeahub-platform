@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
@@ -14,6 +15,8 @@ export const AdditionalBlock = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	const { isMobileS } = useScreenSize();
+
+	const navigate = useNavigate();
 
 	return (
 		<Flex className={styles['additional-block']}>
@@ -36,7 +39,9 @@ export const AdditionalBlock = () => {
 				</Text>
 			</Card>
 
-			<Button className={styles.button}>{t(Landing.COLLECTION_LINK)}</Button>
+			<Button className={styles.button} onClick={() => navigate('collections')}>
+				{t(Landing.COLLECTION_LINK)}
+			</Button>
 		</Flex>
 	);
 };

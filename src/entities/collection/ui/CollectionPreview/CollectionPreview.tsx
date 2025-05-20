@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Question from '@/shared/assets/icons/collectionsQuestion.svg';
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
@@ -34,10 +34,16 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
 	};
 
+	const location = useLocation();
+
 	return (
 		<Card withOutsideShadow className={styles.content}>
 			<Link
-				to={route(ROUTES.interview.collections.detail.page, id)}
+				to={
+					location.pathname === '/'
+						? 'collections/'
+						: route(ROUTES.interview.collections.detail.page, id)
+				}
 				className={classnames(styles.wrapper, styles[variant])}
 			>
 				<ImageWithWrapper
