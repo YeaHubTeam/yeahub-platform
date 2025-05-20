@@ -36,18 +36,19 @@
   padding-left: 25px;
   list-style-position: outside;
 }
- 
-.content ul {
-  list-style-type: disc;
-}
- 
-.content ol {
-  list-style-type: decimal;
-}
- 
-.content li {
+
+.content ul li {
   display: list-item;
   margin-bottom: 5px;
+  list-style: disc;
+  list-style-position: outside;
+  line-height: 1.6;
+}
+
+.content ol li {
+  display: list-item;
+  margin-bottom: 5px;
+  list-style: decimal;
   list-style-position: outside;
   line-height: 1.6;
 }
@@ -71,7 +72,6 @@
  
 .content pre {
   position: relative;
-  margin: 15px 0;
   padding: 12px;
   max-height: 500px;
   overflow-x: auto;
@@ -103,7 +103,7 @@
 }
  
 .code-block-wrapper {
-  margin: 34px 0;
+  margin: 16px 0;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
