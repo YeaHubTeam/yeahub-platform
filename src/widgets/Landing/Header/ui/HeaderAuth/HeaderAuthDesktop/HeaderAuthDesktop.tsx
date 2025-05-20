@@ -7,12 +7,20 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
+import { useProfileQuery } from '@/entities/auth';
+
+import { AuthorizedBlock } from '@/widgets/Landing/Header/ui/AuthorizedBlock/AuthorizedBlock';
+
 import styles from './HeaderAuthDesktop.module.css';
 
 export const HeaderAuthDesktop = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
-	return (
+	const { data: profile } = useProfileQuery();
+
+	return profile?.username ? (
+		<AuthorizedBlock username={profile.username} avatarURL={profile.avatarUrl} />
+	) : (
 		<Flex justify="between" align="center" gap="26">
 			<Link to={ROUTES.auth.login.page}>
 				<Button variant="link" className={styles['login-link']}>
