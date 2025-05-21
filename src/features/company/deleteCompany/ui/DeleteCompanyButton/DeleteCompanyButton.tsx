@@ -52,9 +52,9 @@ export const DeleteCompanyButton = ({
 					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={handleOpenModal}
-				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
+				preffix={isDetailPage ? undefined : <Icon icon="trash" size={24} />}
 			>
 				{t(Translation.DELETE)}
 			</Button>

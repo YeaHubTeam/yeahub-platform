@@ -5,8 +5,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { PopoverMenuItem } from '../types';
 
-import styles from './PopoverMenu.module.css';
-
 interface PopoverMenuProps {
 	menuItems: PopoverMenuItem[];
 	onToggleOpenPopover: () => void;
@@ -23,8 +21,7 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 								onClick();
 								onToggleOpenPopover();
 							}}
-							className={styles.button}
-							variant="tertiary"
+							variant="tertiary-link"
 							preffix={icon}
 						>
 							{title}
