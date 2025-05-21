@@ -18,6 +18,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
+import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
@@ -84,7 +85,6 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
-import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 
 const mainLayoutMenuItems: MenuItem[] = [
 	{
