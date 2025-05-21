@@ -42,7 +42,7 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 			<Link
 				to={
 					project === 'landing'
-						? ROUTES.collections.route
+						? route(ROUTES.collections.detail.page, id)
 						: route(ROUTES.interview.collections.detail.page, id)
 				}
 				className={classnames(styles.wrapper, styles[variant])}
