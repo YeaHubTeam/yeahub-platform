@@ -246,6 +246,7 @@ export enum Auth {
 }
 
 export enum Specializations {
+	TITLE_MAIN = 'title.main',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -347,6 +348,7 @@ export enum Questions {
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
 	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
+	PREVIEW_LOCKED_COLLECTION = 'preview.locked.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -401,6 +403,9 @@ export enum Questions {
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+
+	COMMUNITY_JOIN = 'community.join',
 }
 
 export enum InterviewHistory {
@@ -504,6 +509,7 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',

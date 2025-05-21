@@ -7,7 +7,10 @@
 		"empty": {
 			"specialization": "Questions for the selected specialization will appear soon",
 			"collection": "Questions for this collection will appear soon"
-		}
+		},
+    "locked": {
+      "collection": "Community members will have a list of questions."
+    }
   },
   "title": {
     "short": "Questions",
@@ -88,5 +91,11 @@
   "tooltip": {
     "learn": "The issue has already been fully studied",
     "repeat": "The question has not yet progressed to memorization"
-  }
+  },
+  "community": {
+    "join": "Become a member of the community"
+  },
+  "additional": {
+		"aria.label": "Go to additional info"
+	}
 }

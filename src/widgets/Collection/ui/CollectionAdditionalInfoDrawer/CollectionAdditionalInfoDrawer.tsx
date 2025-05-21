@@ -3,35 +3,35 @@ import { useTranslation } from 'react-i18next';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize, useCurrentProject, useModal } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
 
-import { Question } from '@/entities/question';
+import { Collection } from '@/entities/collection';
 
-import { ProgressBlock } from '@/widgets/question/ProgressBlock';
-import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
+import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
 
-import styles from './QuestionAdditionalInfoDrawer.module.css';
+import styles from './CollectionAdditionalInfoDrawer.module.css';
 
-interface QuestionAdditionalInfoDrawerProps {
-	question: Question;
+interface CollectionAdditionalInfoDrawerProps {
+	collection: Collection;
 }
 
-export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInfoDrawerProps) => {
+export const CollectionAdditionalInfoDrawer = ({
+	collection,
+}: CollectionAdditionalInfoDrawerProps) => {
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
 	const project = useCurrentProject();
-	const { createdBy, checksCount, rate, keywords, complexity, questionSkills } = question;
-	const { t } = useTranslation(i18Namespace.questions);
+	const { createdBy, questionsCount, isFree, company, specializations, keywords } = collection;
+	const { t } = useTranslation(i18Namespace.collection);
 	return (
 		<div className={styles['popover-additional']}>
 			<IconButton
 				className={classNames({ active: isOpen })}
-				aria-label={t(Questions.ADDITIONAL_INFO_ARIA_LABEL)}
+				aria-label={t(Collections.ADDITIONAL_INFO_ARIA_LABEL)}
 				form="square"
 				icon={<PopoverIcon />}
 				size="small"
@@ -48,20 +48,14 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 				hasCloseButton
 			>
 				<Card className={styles.main}>
-					{project === 'platform' && (
-						<ProgressBlock
-							className={styles['additional-info-wrapper']}
-							checksCount={checksCount}
-						/>
-					)}
-					<QuestionAdditionalInfo
+					<AdditionalInfo
 						className={styles['additional-info-wrapper']}
-						rate={rate}
-						keywords={keywords}
-						complexity={complexity}
-						questionSkills={questionSkills}
 						createdBy={createdBy}
-						route={ROUTES.interview.questions.page}
+						questionsCount={questionsCount}
+						isFree={isFree}
+						company={company}
+						specializations={specializations}
+						keywords={keywords}
 					/>
 				</Card>
 			</Drawer>
