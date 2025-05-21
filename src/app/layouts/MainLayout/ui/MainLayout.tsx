@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
+import { SentryRouteTracker } from '@/shared/config/sentry/SentryRouteTracker';
 import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -52,6 +53,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	return (
 		<Suspense fallback={<MainLayoutSkeleton />}>
+			<SentryRouteTracker />
 			<AutoScrollToTop>
 				<section className={styles.layout}>
 					<div className={styles.sidebar}>

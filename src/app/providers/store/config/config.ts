@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { baseApi } from '@/shared/config/api/baseApi';
+import { sentryMiddleware } from '@/shared/config/sentry/middleware';
+import { sentryApiErrorMiddleware } from '@/shared/config/sentry/sentryApiErrorMiddleware';
 import { State } from '@/shared/config/store/State';
 
 import { refreshMiddleware } from '@/entities/auth';
@@ -45,7 +47,12 @@ export const createReduxStore = (initialState?: State) => {
 						navigate: router.navigate,
 					},
 				},
-			}).concat(baseApi.middleware, refreshMiddleware.middleware),
+			}).concat(
+				baseApi.middleware,
+				refreshMiddleware.middleware,
+				sentryMiddleware,
+				sentryApiErrorMiddleware,
+			),
 	});
 };
 
