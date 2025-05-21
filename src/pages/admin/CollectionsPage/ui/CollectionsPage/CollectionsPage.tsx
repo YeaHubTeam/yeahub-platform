@@ -12,7 +12,10 @@ import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
+import {
+	getCollectionsSearch,
+	getSelectedCollections,
+} from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
 import styles from './CollectionsPage.module.css';
@@ -23,6 +26,7 @@ import styles from './CollectionsPage.module.css';
  */
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
+	const search = useSelector(getCollectionsSearch);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
@@ -33,6 +37,7 @@ const CollectionsPage = () => {
 
 	const { data: allCollections } = useGetCollectionsListQuery({
 		page,
+		titleOrDescriptionSearch: search,
 	});
 
 	// in case other collections appear (eg: filtered collections)
@@ -42,13 +47,17 @@ const CollectionsPage = () => {
 		handleFilterChange({ page });
 	};
 
+	const onChangeSearch = (value: string) => {
+		dispatch(collectionsPageActions.setSearch(value));
+	};
+
 	if (!collections) {
 		return null;
 	}
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection to="create" showRemoveButton={true} />
+			<SearchSection to="create" showRemoveButton={true} onSearch={onChangeSearch} />
 			<Card className={styles.content}>
 				<CollectionsTable
 					collections={collections.data}
