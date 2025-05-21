@@ -182,6 +182,10 @@
 		"title": "Master Key Skills",
 		"description": "50+ in-demand technologies: JavaScript, React, Python, SQL, and more"
 	},
+	"filters": {
+		"title": "Flexible Filtering",
+		"description": "Easily filter questions by difficulty, popularity, and relevance"
+	},
 	"history": {
 		"title": "Your progress is your success",
 		"subtitle": "Every interview is a step forward! We track your progress to help improve weak points and reinforce what you've learned.",
