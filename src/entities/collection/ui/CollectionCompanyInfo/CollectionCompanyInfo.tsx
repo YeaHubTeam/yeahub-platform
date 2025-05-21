@@ -10,24 +10,28 @@ import { Collection } from '../../model/types/collection';
 
 import styles from './CollectionCompanyInfo.module.css';
 
-export const CollectionCompanyInfo = ({ company }: Pick<Collection, 'company'>) => {
+interface CollectionCompanyInfoProps {
+	company: Collection['company'];
+}
+
+export const CollectionCompanyInfo = ({ company }: CollectionCompanyInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 
+	if (!company) {
+		return null;
+	}
+
 	return (
-		<>
-			{company && (
-				<Flex direction="column" gap="8">
-					<Text variant="body3" color="black-700">
-						{t(Collections.COMPANY_TITLE)}
-					</Text>
-					<Chip
-						variant="big"
-						label={company.title}
-						prefix={company.imageSrc && <img src={company.imageSrc} alt={company.title} />}
-						className={styles.chip}
-					/>{' '}
-				</Flex>
-			)}
-		</>
+		<Flex direction="column" gap="8">
+			<Text variant="body3" color="black-700">
+				{t(Collections.COMPANY_TITLE)}
+			</Text>
+			<Chip
+				variant="big"
+				label={company.title}
+				prefix={company.imageSrc && <img src={company.imageSrc} alt={company.title} />}
+				className={styles.chip}
+			/>
+		</Flex>
 	);
 };

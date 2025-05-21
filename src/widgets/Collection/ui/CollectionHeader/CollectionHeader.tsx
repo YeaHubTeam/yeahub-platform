@@ -33,7 +33,9 @@ export const CollectionHeader = ({
 				<ImageWithWrapper src={imageSrc} className={classNames(styles.image, imageClassName)} />
 				<Flex flex={1} direction="column">
 					<Flex direction="row" gap="8" justify="between" align="start">
-						<h2 className={styles.title}>{title}</h2>
+						<Text variant="head2" className={styles.title}>
+							{title}
+						</Text>
 						{isSmallScreen && renderDrawer()}
 					</Flex>
 

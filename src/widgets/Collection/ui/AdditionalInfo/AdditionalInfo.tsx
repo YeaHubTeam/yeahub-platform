@@ -3,11 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useCurrentProject, useScreenSize } from '@/shared/hooks';
-import { useBasePath } from '@/shared/hooks/useBasePath';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
@@ -40,53 +38,30 @@ export const AdditionalInfo = ({
 	className,
 }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
-	const project = useCurrentProject();
 	const { isLargeScreen, isSmallScreen } = useScreenSize();
-	const route = useBasePath();
-
-	if (project === 'landing')
-		return (
-			<>
-				<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
-					<Flex direction="column" gap="24">
-						<SpecializationsList specializations={specializations} />
-						<CollectionAccessInfo isFree={isFree} />
-						<CollectionCompanyInfo company={company} />
-						<CollectionQuestionsCount questionsCount={questionsCount} />
-						<Flex direction="column" gap="8">
-							<Text variant="body3" color="black-700">
-								{t(Collections.KEYWORDS_TITLE)}
-							</Text>
-							<KeywordsList
-								keywords={keywords ?? []}
-								path={`${route}?page=1&status=all&$keywords=`}
-							/>
-						</Flex>
-						{isSmallScreen && createdBy && <QuestionAuthor createdBy={createdBy} />}
-					</Flex>
-				</Card>
-				{isLargeScreen && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
-			</>
-		);
 
 	return (
-		<Card className={classnames(styles.wrapper, className)}>
-			<Flex direction="column" gap="24">
-				<Flex direction="column" gap="8">
-					<Text variant="body3" color="black-700" className={styles.title}>
-						{t(Collections.TAGS_TITLE)}
-					</Text>
-					<div className={styles['keywords-wrapper']}>
-						{keywords?.map((keyword) => (
-							<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
-						))}
-					</div>
+		<>
+			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
+				<Flex direction="column" gap="24">
+					<Flex direction="column" gap="8">
+						<Text variant="body3" color="black-700" className={styles.title}>
+							{t(Collections.TAGS_TITLE)}
+						</Text>
+						<div className={styles['keywords-wrapper']}>
+							{keywords?.map((keyword) => (
+								<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
+							))}
+						</div>
+					</Flex>
+					<SpecializationsList specializations={specializations} />
+					<CollectionCompanyInfo company={company} />
+					<CollectionAccessInfo isFree={isFree} />
+					<CollectionQuestionsCount questionsCount={questionsCount} />
+					{isSmallScreen && createdBy && <QuestionAuthor createdBy={createdBy} />}
 				</Flex>
-				<SpecializationsList specializations={specializations} />
-				<CollectionCompanyInfo company={company} />
-				<CollectionAccessInfo isFree={isFree} />
-				<CollectionQuestionsCount questionsCount={questionsCount} />
-			</Flex>
-		</Card>
+			</Card>
+			{isLargeScreen && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
+		</>
 	);
 };

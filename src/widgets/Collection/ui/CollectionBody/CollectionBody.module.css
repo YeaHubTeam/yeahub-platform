@@ -4,6 +4,15 @@
   border-radius: 24px;
 }
 
+.wrapper > :first-child {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);}
+
+.wrapper > :first-child > p {
+  font-size: var(--font-size-h-s);
+}
+
 .title {
   margin-bottom: 24px;
   padding-bottom: 16px;

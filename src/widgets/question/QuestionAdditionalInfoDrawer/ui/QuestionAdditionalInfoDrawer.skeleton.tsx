@@ -12,7 +12,8 @@ export const QuestionAdditionalInfoDrawerSkeleton = () => {
 	return (
 		<div className={styles['popover-additional']}>
 			<IconButtonSkeleton
-				aria-label={t(Translation.SKELETON_ARIA_LABEL)}
+				aria-label={t(Translation.LOADING)}
+				role="status"
 				form="square"
 				size="small"
 				variant="tertiary"

@@ -15,6 +15,12 @@
 		"title-short": "Image",
 		"label": "Add collection image"
 	},
+	"tariff": {
+		"chooseCollections": "Collections",
+		"label": "Choose a variant",
+		"paid": "For members",
+		"free": "For all"
+	},
 	"select": {
 		"chooseCollections": "Collections",
 		"label": "Select option",

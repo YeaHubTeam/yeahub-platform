@@ -10,9 +10,11 @@ import { Collection } from '../../model/types/collection';
 
 import styles from './CollectionQuestionsCount.module.css';
 
-export const CollectionQuestionsCount = ({
-	questionsCount,
-}: Pick<Collection, 'questionsCount'>) => {
+interface CollectionQuestionsCountProps {
+	questionsCount: Collection['questionsCount'];
+}
+
+export const CollectionQuestionsCount = ({ questionsCount }: CollectionQuestionsCountProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 
 	return (

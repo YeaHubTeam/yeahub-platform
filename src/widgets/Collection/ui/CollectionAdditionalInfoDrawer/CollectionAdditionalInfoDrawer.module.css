@@ -36,7 +36,7 @@
   padding: 0;
 }
 
-@media screen and (width <=1023px) {
+@media screen and (width < 1024px) {
   .additional-info-wrapper {
     padding: 8px 24px 24px;
   }

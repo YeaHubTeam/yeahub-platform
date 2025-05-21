@@ -246,12 +246,6 @@ export const router = createBrowserRouter([
 						index: true,
 						element: <PublicCollectionsPage />,
 					},
-				],
-			},
-			{
-				path: ROUTES.collections.route,
-				element: <Outlet />,
-				children: [
 					{
 						path: ROUTES.collections.detail.route,
 						element: <PublicCollectionPage />,

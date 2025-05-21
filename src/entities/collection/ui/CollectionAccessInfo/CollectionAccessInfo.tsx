@@ -11,12 +11,16 @@ import { Collection } from '../../model/types/collection';
 
 import styles from './CollectionAccessInfo.module.css';
 
-export const CollectionAccessInfo = ({ isFree }: Pick<Collection, 'isFree'>) => {
+interface CollectionAccessInfoProps {
+	isFree: Collection['isFree'];
+}
+
+export const CollectionAccessInfo = ({ isFree }: CollectionAccessInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 
 	const accessText = {
-		free: t(Collections.TARIFF_FREE, { ns: i18Namespace.collection }),
-		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
+		free: t(Collections.TARIFF_FREE),
+		paid: t(Collections.TARIFF_PAID),
 	};
 	return (
 		<Flex direction="column" gap="8">
@@ -31,7 +35,7 @@ export const CollectionAccessInfo = ({ isFree }: Pick<Collection, 'isFree'>) => 
 					label={accessText.paid}
 					prefix={<Star style={{ width: '30px', height: '30px' }} />}
 				/>
-			)}{' '}
+			)}
 		</Flex>
 	);
 };

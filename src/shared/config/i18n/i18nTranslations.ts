@@ -146,8 +146,6 @@ export enum Translation {
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
 	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
-
-	SKELETON_ARIA_LABEL = 'skeleton.aria.label',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -248,6 +246,7 @@ export enum Auth {
 }
 
 export enum Specializations {
+	TITLE_MAIN = 'title.main',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',

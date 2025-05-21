@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -15,24 +15,24 @@ interface SpecializationsListProps {
 }
 
 export const SpecializationsList = ({ specializations }: SpecializationsListProps) => {
-	const { t } = useTranslation(i18Namespace.collection);
+	const { t } = useTranslation(i18Namespace.specialization);
+
+	if (!specializations) {
+		return null;
+	}
 
 	return (
-		<>
-			{specializations && (
-				<Flex direction="column" gap="8">
-					<Text variant="body3" color="black-700">
-						{t(Collections.SPECIALIZATION_TITLE)}
-					</Text>
-					<ul className={styles['param-wrapper']}>
-						{specializations?.map((spec) => (
-							<li key={spec.id}>
-								<Chip className={styles.chip} label={spec.title} />
-							</li>
-						))}
-					</ul>{' '}
-				</Flex>
-			)}
-		</>
+		<Flex direction="column" gap="8">
+			<Text variant="body3" color="black-700">
+				{t(Specializations.TITLE_MAIN)}
+			</Text>
+			<ul className={styles['param-wrapper']}>
+				{specializations?.map((spec) => (
+					<li key={spec.id}>
+						<Chip className={styles.chip} label={spec.title} />
+					</li>
+				))}
+			</ul>{' '}
+		</Flex>
 	);
 };

@@ -1,15 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useCurrentProject, useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
 import { Question } from '@/entities/question';
@@ -27,22 +22,12 @@ interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 
 export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
-	const navigate = useNavigate();
-	const { isMobile } = useScreenSize();
-	const project = useCurrentProject();
 
 	// TODO: Добавить роут для сообщества
-	const onMoveSignup = () => {
-		if (project === 'landing') navigate(ROUTES.auth.register.page, { replace: false });
-		else navigate(ROUTES.platformRoute, { replace: false });
-	};
 
 	if (isFree)
 		return (
-			<Card className={styles.wrapper} withOutsideShadow>
-				<Text variant="body6" className={styles.title}>
-					{t(Questions.PREVIEW_TITLE)}
-				</Text>
+			<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
 				{questions.length ? (
 					<Flex componentType="ul" direction="column" gap="12">
 						{questions?.map((question) => (
@@ -57,32 +42,14 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 
 	if (!isFree)
 		return (
-			<Card className={styles.wrapper} withOutsideShadow>
-				<Flex justify="between" align="center" className={styles.title}>
-					<Text variant="body6">{t(Questions.PREVIEW_TITLE)}</Text>
-					{!isMobile && (
-						<Button
-							variant="link"
-							size="large"
-							suffix={<Icon icon="arrowRight" size={24} />}
-							onClick={onMoveSignup}
-						>
-							{t(Questions.COMMUNITY_JOIN)}
-						</Button>
-					)}
-				</Flex>
+			<Card
+				className={styles.wrapper}
+				title={t(Questions.PREVIEW_TITLE)}
+				actionRoute={ROUTES.platformRoute}
+				actionTitle={t(Questions.COMMUNITY_JOIN)}
+				withOutsideShadow
+			>
 				<NoQuestionsCard icon="lock" text={t(Questions.PREVIEW_LOCKED_COLLECTION)} />
-				{isMobile && (
-					<Button
-						variant="link"
-						size="large"
-						className={styles['link-mobile']}
-						suffix={<Icon icon="arrowRight" size={24} />}
-						onClick={onMoveSignup}
-					>
-						{t(Questions.COMMUNITY_JOIN)}
-					</Button>
-				)}
 			</Card>
 		);
 
