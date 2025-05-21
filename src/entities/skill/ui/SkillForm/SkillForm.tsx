@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Input, Text } from 'yeahub-ui-kit';
+import { Input } from 'yeahub-ui-kit';
+
+//import { Input, Text } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
@@ -9,6 +11,7 @@ import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
+import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -42,15 +45,18 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 
 	return (
 		<>
-			<Text
-				title={isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
-				className={styles['main-title']}
-			/>
+			<Text variant="body5-strong" className={styles['main-title']}>
+				{isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
+			</Text>
 			<Flex direction="column" gap="60">
 				<Flex className={`${styles['skills-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text title={t(Skills.TITLE_FULL)} className={styles.title} />
-						<Text title={t(Skills.TITLE_LABEL)} className={styles.description} />
+						<Text variant="body4" className={styles.title}>
+							{t(Skills.TITLE_FULL)}
+						</Text>
+						<Text variant="body2" className={styles.description}>
+							{t(Skills.TITLE_LABEL)}
+						</Text>
 					</Flex>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} hasError={hasError} />}
@@ -58,8 +64,12 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				</Flex>
 				<Flex gap="120">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Skills.ICON_TITLE)} className={styles.title} />
-						<Text title={t(Skills.ICON_LABEL)} className={styles.description} />
+						<Text variant="body4" className={styles.title}>
+							{t(Skills.ICON_TITLE)}
+						</Text>
+						<Text variant="body2" className={styles.description}>
+							{t(Skills.ICON_LABEL)}
+						</Text>
 					</Flex>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
@@ -69,14 +79,12 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				</Flex>
 				<Flex direction="row" className={`${styles['skills-select']}`} gap="120">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text
-							title={t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
-							className={styles.title}
-						/>
-						<Text
-							title={t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
-							className={styles.description}
-						/>
+						<Text variant="body4" className={styles.title}>
+							{t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
+						</Text>
+						<Text variant="body2" className={styles.description}>
+							{t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
+						</Text>
 					</Flex>
 					<FormControl className={styles.select} name="specializations" control={control}>
 						{({ onChange, value }) => (
@@ -85,8 +93,12 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					</FormControl>
 				</Flex>
 				<Flex direction="column" gap="8">
-					<Text title={t(Skills.DESCRIPTION_FULL)} className={styles.title} />
-					<Text title={t(Skills.DESCRIPTION_LABEL)} className={styles.description} />
+					<Text variant="body4" className={styles.title}>
+						{t(Skills.DESCRIPTION_FULL)}
+					</Text>
+					<Text variant="body2" className={styles.description}>
+						{t(Skills.DESCRIPTION_LABEL)}
+					</Text>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
