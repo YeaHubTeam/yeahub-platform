@@ -51,8 +51,10 @@ export const PublicCollectionPage = () => {
 		keywords,
 		title,
 		description,
-		imageSrc,
+		imageSrc: collectionImageSrc,
 	} = collection;
+
+	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
 	return (
 		<Flex direction="column" align="start">

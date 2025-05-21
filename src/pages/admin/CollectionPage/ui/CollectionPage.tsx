@@ -61,8 +61,10 @@ export const CollectionPage = () => {
 		keywords,
 		title,
 		description,
-		imageSrc,
+		imageSrc: collectionImageSrc,
 	} = collection;
+
+	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
