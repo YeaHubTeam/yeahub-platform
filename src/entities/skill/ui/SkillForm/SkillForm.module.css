@@ -7,20 +7,6 @@
   margin-bottom: 28px; 
 }
 
-.title {
-  color: var(--text-color-primary);
-  line-height: 120%;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-l);
-}
-
-.description {
-  color: var(--text-color-primary);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
 .textarea {
   display: block;
   margin-top: 20px;
