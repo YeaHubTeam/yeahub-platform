@@ -5,7 +5,13 @@ import { Loader } from '@/shared/ui/Loader';
 
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 
+import { CollectionsPageSkeleton } from '@/pages/admin/CollectionsPage';
+import { CompaniesTablePageSkeleton } from '@/pages/admin/CompaniesTablePage';
 import { QuestionPageSkeleton } from '@/pages/admin/QuestionPage';
+import { QuestionsTablePageSkeleton } from '@/pages/admin/QuestionsTablePage';
+import { SkillsPageSkeleton } from '@/pages/admin/SkillsPage';
+import { SpecializationsPageSkeleton } from '@/pages/admin/SpecializationsPage';
+import { UsersTablePageSkeleton } from '@/pages/admin/UserTablePage';
 import { CreateQuizPageSkeleton } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPageSkeleton } from '@/pages/interview/InterviewHistoryPage';
 import { InterviewPageSkeleton } from '@/pages/interview/InterviewPage';
@@ -52,6 +58,18 @@ const SkeletonGenerator = () => {
 			return <ProfilePageSkeleton />;
 		case ROUTES.profile.edit.page:
 			return <EditProfileFormSkeleton />;
+		case ROUTES.admin.questions.page:
+			return <QuestionsTablePageSkeleton />;
+		case ROUTES.admin.specializations.page:
+			return <SpecializationsPageSkeleton />;
+		case ROUTES.admin.skills.page:
+			return <SkillsPageSkeleton />;
+		case ROUTES.admin.users.page:
+			return <UsersTablePageSkeleton />;
+		case ROUTES.admin.collections.page:
+			return <CollectionsPageSkeleton />;
+		case ROUTES.admin.companies.page:
+			return <CompaniesTablePageSkeleton />;
 
 		default:
 			return <Loader />;

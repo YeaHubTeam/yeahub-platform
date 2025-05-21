@@ -29,9 +29,11 @@ export type IconName =
 	| 'twitter'
 	| 'facebook'
 	| 'github'
+	| 'githubWhite'
 	| 'behance'
 	| 'whatsapp'
 	| 'telegram'
+	| 'telegramWhite'
 	| 'youtube'
 	| 'plus'
 	| 'minus'
@@ -48,6 +50,8 @@ export type IconName =
 	| 'notePencil'
 	| 'clipboardText'
 	| 'megaphone'
-	| 'yeaHubCommunity';
+	| 'yeaHubCommunity'
+	| 'figmaWhite'
+	| 'logoText';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

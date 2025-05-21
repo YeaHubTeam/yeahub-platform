@@ -76,7 +76,7 @@ div[data-floating-ui-portal] > div > div[role="tooltip"] {
 
 @media screen and (width <= 992px) {
   .container {
-    max-width: var(--container-width-tablet);
+    max-width: var(--container-width-md);
   }
 }
 

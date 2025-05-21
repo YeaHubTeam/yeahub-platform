@@ -8,10 +8,9 @@ import { useDebounce } from '@/shared/hooks/useDebounced';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ChooseCollectionAccess } from '@/entities/collection';
 import { ChooseSpecialization } from '@/entities/question';
 
-import { FilterParams } from '../model/types';
+import { FilterParams } from '../../../model/types/types';
 
 import styles from './CollectionsFilterPanel.module.css';
 

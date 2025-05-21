@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.container {
+  position: relative;
+}

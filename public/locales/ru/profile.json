@@ -51,7 +51,8 @@
   "settings.tabs": {
     "select.tariff": "Выбрать тариф",
     "change.password": "Смена пароля",
-    "verify.email": "Подтверждение e-mail"
+    "verify.email": "Подтверждение e-mail",
+		"account": "Аккаунт"
   },
   "email.verification": {
     "title": "Подтвердите ваш e-mail",
