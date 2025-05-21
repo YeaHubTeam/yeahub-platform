@@ -35,14 +35,18 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
 	};
 
-	const isLanding = useCurrentProject() === 'landing';
-	const collectionRoute = isLanding
-		? ROUTES.collections.detail.page
-		: ROUTES.interview.collections.detail.page;
+	const project = useCurrentProject();
 
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<Link to={route(collectionRoute, id)} className={classnames(styles.wrapper, styles[variant])}>
+			<Link
+				to={
+					project === 'landing'
+						? route(ROUTES.collections.detail.page, id)
+						: route(ROUTES.interview.collections.detail.page, id)
+				}
+				className={classnames(styles.wrapper, styles[variant])}
+			>
 				<ImageWithWrapper
 					src={imageSrc || company?.imageSrc}
 					alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}

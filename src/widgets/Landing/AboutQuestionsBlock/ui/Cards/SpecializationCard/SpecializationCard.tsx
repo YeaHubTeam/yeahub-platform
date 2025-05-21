@@ -8,10 +8,11 @@ import { SpecializationBlock } from './SpecializationBlock/SpecializationBlock';
 
 export const SpecializationCard = () => {
 	const { t } = useTranslation(i18Namespace.landing);
+
 	return (
 		<CardLayout
 			contentSlot={<SpecializationBlock />}
-			title={t(Landing.SPECIALIZATION_TITLE)}
+			title={t(Landing.SPECIALIZATION_NEW_TITLE)}
 			description={t(Landing.SPECIALIZATION_DESCRIPTION)}
 		/>
 	);
