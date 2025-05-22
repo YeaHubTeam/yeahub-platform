@@ -9,22 +9,29 @@ import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
 import { deleteAccountApiUrls } from '../model/constants';
+import { DeleteAccountPayload } from '../model/types/deleteAccount';
 
 const deleteAccountApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteAccount: build.mutation<void, string>({
-			query: (userId) => ({
+		deleteAccount: build.mutation<void, DeleteAccountPayload>({
+			query: ({ userId }) => ({
 				url: route(deleteAccountApiUrls.deleteAccount, userId),
 				method: 'DELETE',
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+			async onQueryStarted({ isAdmin }, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					dispatch(baseApi.util.resetApiState());
-					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.auth.register.page);
-					toast.success(i18n.t(Translation.TOAST_DELETE_ACCOUNT_SUCCESS));
+
+					if (isAdmin) {
+						typedExtra.navigate(ROUTES.admin.users.page);
+						toast.success(i18n.t(Translation.TOAST_ADMIN_DELETE_ACCOUNT_SUCCESS));
+					} else {
+						removeFromLS(LS_ACCESS_TOKEN_KEY);
+						dispatch(baseApi.util.resetApiState());
+						typedExtra.navigate(ROUTES.auth.register.page);
+						toast.success(i18n.t(Translation.TOAST_DELETE_ACCOUNT_SUCCESS));
+					}
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_DELETE_ACCOUNT_FAILED));
 					// eslint-disable-next-line no-console

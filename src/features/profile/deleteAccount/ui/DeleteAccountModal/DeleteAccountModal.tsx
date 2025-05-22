@@ -3,27 +3,39 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { getFullProfile } from '@/entities/profile';
+import { FullProfile } from '@/entities/auth';
+import { User as UserType } from '@/entities/user';
 
-import { useDeleteAccountMutation } from '../api/deleteAccountApi';
+import { useDeleteAccountMutation } from '../../api/deleteAccountApi';
 
 import styles from './DeleteAccountModal.module.css';
 
 interface DeleteAccountModalProps {
 	isOpen: boolean;
 	onClose: () => void;
+	profile: FullProfile | UserType;
+	isAdmin?: boolean;
+	warningMessage?: string;
+	confirmationLabel?: string;
+	confirmationPlaceholder?: string;
 }
 
-export const DeleteAccountModal = ({ isOpen, onClose }: DeleteAccountModalProps) => {
+export const DeleteAccountModal = ({
+	isOpen,
+	onClose,
+	profile,
+	warningMessage = '',
+	confirmationLabel,
+	confirmationPlaceholder,
+	isAdmin = false,
+}: DeleteAccountModalProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
-	const profile = useAppSelector(getFullProfile);
 	const [deleteAccount] = useDeleteAccountMutation();
 
 	const [value, setValue] = useState<string>('');
@@ -35,7 +47,7 @@ export const DeleteAccountModal = ({ isOpen, onClose }: DeleteAccountModalProps)
 		onClose();
 	};
 
-	const handleDeleteAccount = () => deleteAccount(profile?.id);
+	const handleDeleteAccount = () => deleteAccount({ userId: profile?.id, isAdmin });
 
 	const isButtonDisabled = value !== profile?.username;
 
@@ -51,14 +63,14 @@ export const DeleteAccountModal = ({ isOpen, onClose }: DeleteAccountModalProps)
 			isOpen={isOpen}
 			onClose={handleClose}
 		>
-			<TextHtml html={t(User.DELETE_DESCRIPTION_MODAL)} className={styles.description} />
+			<TextHtml html={warningMessage} className={styles.description} />
 			<Text variant="body2" className={styles.label}>
-				{t(User.DELETE_LABEL)}
+				{confirmationLabel}
 			</Text>
 			<Input
 				value={value}
 				onChange={handleChange}
-				placeholder={t(User.DELETE_PLACEHOLDER)}
+				placeholder={confirmationPlaceholder}
 				className={styles.input}
 			/>
 		</Modal>
