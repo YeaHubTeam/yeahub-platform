@@ -5,6 +5,8 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 
 import { CollectionsPreviewSkeleton } from '@/entities/collection';
 
+import { CollectionsFiltersDrawerSkeleton } from '../CollectionsFiltersDrawer/CollectionsFiltersDrawer.skeleton';
+
 import styles from './CollectionsContent.module.css';
 
 export const CollectionsContentSkeleton = () => {
@@ -13,9 +15,10 @@ export const CollectionsContentSkeleton = () => {
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
-				<div className={styles.title}>
-					<Skeleton height={isMobileS ? 24 : 29} width={124} />
-				</div>
+				<Flex direction="row" justify="between" className={styles.header}>
+					<Skeleton className={styles.title} height={isMobileS ? 24 : 29} width={124} />
+					<CollectionsFiltersDrawerSkeleton />
+				</Flex>
 				<Flex direction="column" gap="20">
 					{[...Array(6)].map((_, i) => (
 						<CollectionsPreviewSkeleton key={i} />

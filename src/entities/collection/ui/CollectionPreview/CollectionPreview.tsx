@@ -7,8 +7,6 @@ import Star from '@/shared/assets/icons/starsMinimalistic.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
-import { useCurrentProject } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -25,7 +23,7 @@ type CollectionProps = {
 };
 
 export const CollectionPreview = ({ collection, variant = 'row' }: CollectionProps) => {
-	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
+	const { title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
 		collection;
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
@@ -35,18 +33,9 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
 	};
 
-	const project = useCurrentProject();
-
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<Link
-				to={
-					project === 'landing'
-						? route(ROUTES.collections.detail.page, id)
-						: route(ROUTES.interview.collections.detail.page, id)
-				}
-				className={classnames(styles.wrapper, styles[variant])}
-			>
+			<Link to={ROUTES.collections.page} className={classnames(styles.wrapper, styles[variant])}>
 				<ImageWithWrapper
 					src={imageSrc || company?.imageSrc}
 					alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}

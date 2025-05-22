@@ -14,3 +14,4 @@ export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPre
 export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccessInfo';
 export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
 export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
+export { ChooseCollectionSpecializationSkeleton } from './ui/ChooseCollectionSpecialization/ChooseCollectionSpecialization.skeleton';

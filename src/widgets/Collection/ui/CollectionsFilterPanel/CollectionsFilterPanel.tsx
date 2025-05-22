@@ -10,7 +10,7 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ChooseSpecialization } from '@/entities/question';
 
-import { FilterParams } from '../../../model/types/types';
+import { FilterParams } from '../../model/types/types';
 
 import styles from './CollectionsFilterPanel.module.css';
 
@@ -27,7 +27,7 @@ export const CollectionsFilterPanel = ({
 	onChangeIsFree,
 	onChangeSpecialization,
 }: CollectionsFilterPanelProps) => {
-	const { title, specialization: filterSpecialization, tariff: filterIsFree } = filter;
+	const { title, specialization: filterSpecialization, isFree: filterIsFree } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [localIsFree, setLocalIsFree] = useState<boolean>(

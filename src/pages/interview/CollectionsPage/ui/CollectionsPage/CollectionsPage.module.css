@@ -3,3 +3,19 @@
   gap: 20px;
 }
 
+.filters {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  height: fit-content;
+  border-radius: 24px;
+}
+
+@media screen and (width < 1024px) {
+  .filters {
+    display: none;
+  }
+
+}

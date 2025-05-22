@@ -8,7 +8,7 @@
   }
 }
 
-.additional-info-wrapper {
+.filters {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
@@ -19,7 +19,6 @@
 }
 
 .filters-mobile {
-  position: absolute;
   display: none;
   justify-content: center;
   align-items: center;
@@ -48,20 +47,28 @@
   border: none;
 }
 
-@media (width < 1280px) {
+/* @media (width < 1280px) {
   .filters-mobile {
     display: flex;
   }
 
-  .additional-info-wrapper {
+  .filters {
     display: none;
   }
-}
+} */
 
 @media (width < 1024px) {
   .private-collection-icon-positioning {
     top: 16px;
     right: 16px;
+  }
+
+  .filters-mobile {
+    display: flex;
+  }
+  
+  .filters {
+    display: none;
   }
 }
 
