@@ -13,22 +13,11 @@ export const BlockTitle = () => {
 	const { isMobile } = useScreenSize();
 
 	return (
-		<>
-			<Text
-				variant={isMobile ? 'body5-accent' : 'head3'}
-				className={classNames(styles.title, styles.desktop)}
-			>
-				{t(Landing.BANNER_TITLE)}
-			</Text>
-			{/*Нет такого варианта текста*/}
-
-			<Text variant="head3" className={classNames(styles.title, styles.tablet)}>
-				{t(Landing.BANNER_TITLE)}
-			</Text>
-			{/*Нет такого варианта текста*/}
-			<Text variant="head3" className={classNames(styles.title, styles.mobile)}>
-				{t(Landing.BANNER_TITLE)}
-			</Text>
-		</>
+		<Text
+			variant={isMobile ? 'body5-accent' : 'head3'}
+			className={classNames(styles.title, styles.desktop)}
+		>
+			{t(Landing.BANNER_TITLE)}
+		</Text>
 	);
 };
