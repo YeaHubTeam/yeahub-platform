@@ -25,7 +25,7 @@ const deleteAccountApi = baseApi.injectEndpoints({
 
 					if (isAdmin) {
 						typedExtra.navigate(ROUTES.admin.users.page);
-						toast.success(i18n.t(Translation.TOAST_ADMIN_DELETE_ACCOUNT_SUCCESS));
+						toast.success(i18n.t(Translation.TOAST_USER_DELETE_ADMIN_SUCCESS));
 					} else {
 						removeFromLS(LS_ACCESS_TOKEN_KEY);
 						dispatch(baseApi.util.resetApiState());
@@ -33,7 +33,7 @@ const deleteAccountApi = baseApi.injectEndpoints({
 						toast.success(i18n.t(Translation.TOAST_DELETE_ACCOUNT_SUCCESS));
 					}
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_DELETE_ACCOUNT_FAILED));
+					toast.error(i18n.t(Translation.TOAST_USER_DELETE_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

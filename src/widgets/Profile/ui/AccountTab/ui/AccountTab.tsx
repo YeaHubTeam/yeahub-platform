@@ -21,6 +21,9 @@ export const AccountTab = () => {
 
 	const profile = useAppSelector(getFullProfile);
 
+	const handleModalOpen = () => setIsModalOpen(true);
+	const handleModalClose = () => setIsModalOpen(false);
+
 	return (
 		<>
 			<Card>
@@ -34,7 +37,7 @@ export const AccountTab = () => {
 					variant="destructive"
 					size="large"
 					className={styles.button}
-					onClick={() => setIsModalOpen(true)}
+					onClick={handleModalOpen}
 				>
 					{t(User.DELETE_BUTTON)}
 				</Button>
@@ -42,7 +45,7 @@ export const AccountTab = () => {
 
 			<DeleteAccountModal
 				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
+				onClose={handleModalClose}
 				profile={profile}
 				warningMessage={t(User.DELETE_DESCRIPTION_MODAL)}
 				confirmationLabel={t(User.DELETE_LABEL)}

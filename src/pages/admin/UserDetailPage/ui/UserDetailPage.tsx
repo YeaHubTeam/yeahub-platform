@@ -15,6 +15,8 @@ import { useGetUserByIdQuery, UserCard, UserFormValues } from '@/entities/user';
 
 import { DeleteUserAccount } from '@/features/profile/deleteAccount';
 
+import styles from './UserDetailPage.module.css';
+
 /**
  * Page showing detail info about specialization
  * @constructor
@@ -44,11 +46,14 @@ const UserDetailPage = () => {
 	}
 
 	return (
-		<Flex direction={'column'} gap={'24'}>
+		<Flex direction="column" gap="24">
 			<FormProvider {...methods}>
-				<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
+				<Flex align="center" justify="between" gap="8" className={styles.actions}>
 					<BackButton />
-					<NavLink to={route(ROUTES.admin.users.edit.page, user.id)}>
+					<NavLink
+						aria-label={t(Translation.EDIT)}
+						to={route(ROUTES.admin.users.edit.page, user.id)}
+					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
 				</Flex>

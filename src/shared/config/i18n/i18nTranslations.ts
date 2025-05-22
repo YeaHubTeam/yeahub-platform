@@ -145,8 +145,8 @@ export enum Translation {
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
-	TOAST_ADMIN_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.admin.success',
-	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
+	TOAST_USER_DELETE_ADMIN_SUCCESS = 'toast.user.delete.admin.success',
+	TOAST_USER_DELETE_FAILED = 'toast.user.delete.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -479,13 +479,13 @@ export enum User {
 	DELETE_TITLE = 'delete.title',
 	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
 	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
-	DELETE_DESCRIPTION_MAIN_ADMIN = 'delete.admin.description.main',
-	DELETE_DESCRIPTION_MODAL_ADMIN = 'delete.admin.description.modal',
+	DELETE_ADMIN_DESCRIPTION_MAIN = 'delete.admin.description.main',
+	DELETE_ADMIN_DESCRIPTION_MODAL = 'delete.admin.description.modal',
 	DELETE_BUTTON = 'delete.button',
 	DELETE_LABEL = 'delete.label',
-	DELETE_LABEL_ADMIN = 'delete.admin.label',
+	DELETE_ADMIN_LABEL = 'delete.admin.label',
 	DELETE_PLACEHOLDER = 'delete.placeholder',
-	DELETE_PLACEHOLDER_ADMIN = 'delete.admin.placeholder',
+	DELETE_ADMIN_PLACEHOLDER = 'delete.admin.placeholder',
 }
 
 export enum Collections {

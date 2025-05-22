@@ -30,8 +30,8 @@ export const DeleteAccountModal = ({
 	onClose,
 	profile,
 	warningMessage = '',
-	confirmationLabel,
-	confirmationPlaceholder,
+	confirmationLabel = '',
+	confirmationPlaceholder = '',
 	isAdmin = false,
 }: DeleteAccountModalProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);

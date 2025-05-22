@@ -21,16 +21,20 @@ interface DeleteUserAccountProps {
 export const DeleteUserAccount = ({ user }: DeleteUserAccountProps) => {
 	const { t } = useTranslation(i18Namespace.user);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+	const handleModalOpen = () => setIsModalOpen(true);
+	const handleModalClose = () => setIsModalOpen(false);
+
 	return (
 		<Card className={styles.card} withOutsideShadow>
 			<Text variant="body5-strong" className={styles.title}>
 				{t(User.DELETE_TITLE)}
 			</Text>
-			<TextHtml html={t(User.DELETE_DESCRIPTION_MAIN_ADMIN)} className={styles.warning} />
+			<TextHtml html={t(User.DELETE_ADMIN_DESCRIPTION_MAIN)} className={styles.warning} />
 			<Button
 				variant="destructive"
 				size="large"
-				onClick={() => setIsModalOpen(true)}
+				onClick={handleModalOpen}
 				className={styles.button}
 			>
 				{t(User.DELETE_BUTTON)}
@@ -38,11 +42,11 @@ export const DeleteUserAccount = ({ user }: DeleteUserAccountProps) => {
 
 			<DeleteAccountModal
 				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
+				onClose={handleModalClose}
 				profile={user}
-				warningMessage={t(User.DELETE_DESCRIPTION_MODAL_ADMIN)}
-				confirmationLabel={t(User.DELETE_LABEL_ADMIN)}
-				confirmationPlaceholder={t(User.DELETE_PLACEHOLDER_ADMIN)}
+				warningMessage={t(User.DELETE_ADMIN_DESCRIPTION_MODAL)}
+				confirmationLabel={t(User.DELETE_ADMIN_LABEL)}
+				confirmationPlaceholder={t(User.DELETE_ADMIN_PLACEHOLDER)}
 				isAdmin
 			/>
 		</Card>
