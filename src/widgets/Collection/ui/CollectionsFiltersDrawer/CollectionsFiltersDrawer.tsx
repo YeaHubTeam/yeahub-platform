@@ -15,7 +15,6 @@ interface CollectionsFiltersDrawerProps {
 	onChangeSpecialization: (specialization: number | number[]) => void;
 	onChangeIsFree: (isFree: boolean) => void;
 	filter: FilterFromUser;
-	isPublicCollections?: boolean;
 }
 
 export const CollectionsFiltersDrawer = ({
@@ -23,20 +22,12 @@ export const CollectionsFiltersDrawer = ({
 	onChangeSpecialization,
 	onChangeIsFree,
 	filter,
-	isPublicCollections = false,
 }: CollectionsFiltersDrawerProps) => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobileS } = useScreenSize();
 
-	const filtersMobileClasses = classNames(
-		styles['filters-mobile'],
-		isPublicCollections
-			? styles['public-collection-icon-positioning']
-			: styles['private-collection-icon-positioning'],
-	);
-
 	return (
-		<div className={filtersMobileClasses}>
+		<div className={styles['filters-mobile']}>
 			<IconButton
 				className={classNames({ [styles.active]: isOpen })}
 				icon={<Icon icon="slidersHorizontal" color="black-700" />}
@@ -55,7 +46,7 @@ export const CollectionsFiltersDrawer = ({
 				onClose={onClose}
 				hasCloseButton
 			>
-				<Card className={styles['filters--mobile']}>
+				<Card>
 					<CollectionsFilterPanel
 						onChangeSearch={onChangeSearch}
 						onChangeSpecialization={onChangeSpecialization}

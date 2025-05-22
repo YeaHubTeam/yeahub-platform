@@ -81,7 +81,7 @@ const CollectionsPage = () => {
 				)}
 			/>
 			{isLargeScreen && (
-				<Card className={styles['additional-info-wrapper']}>
+				<Card className={styles.filters}>
 					<CollectionsFilterPanel
 						onChangeSearch={onChangeSearchParams}
 						onChangeSpecialization={onChangeSpecialization}

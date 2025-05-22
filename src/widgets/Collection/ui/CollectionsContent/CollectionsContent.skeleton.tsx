@@ -15,7 +15,7 @@ export const CollectionsContentSkeleton = () => {
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
-				<Flex direction="row" justify="between" className={styles.header}>
+				<Flex justify="between" className={styles.header}>
 					<Skeleton className={styles.title} height={isMobileS ? 24 : 29} width={124} />
 					<CollectionsFiltersDrawerSkeleton />
 				</Flex>
