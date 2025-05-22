@@ -8,19 +8,19 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import styles from './AppLogo.module.css';
 
-interface AppLogoProps {
-	isOpen: boolean;
-	fill?: 'white' | 'black';
+export interface AppLogoProps {
 	navigateTo?: string;
 	logoType?: 'light' | 'dark';
+	fill?: 'white' | 'black';
+	isOpen?: boolean;
 	navigationFooter?: boolean;
 }
 
 export const AppLogo = ({
-	isOpen,
-	fill = 'black',
 	navigateTo = ROUTES.platformRoute,
 	logoType = 'dark',
+	fill = 'black',
+	isOpen = false,
 	navigationFooter = false,
 }: AppLogoProps) => {
 	const logoSrc = logoType === 'dark' ? logoDark : logoLight;
@@ -34,9 +34,7 @@ export const AppLogo = ({
 				{ [styles['pointer-event-none']]: navigateTo === '#' },
 			)}
 		>
-			{navigationFooter ? (
-				''
-			) : (
+			{!navigationFooter && (
 				<img
 					className={styles.logo}
 					src={logoSrc}

@@ -20,19 +20,19 @@ export const InterviewTrainerBlock = () => {
 
 	return (
 		<section className={styles['interview-trainer']}>
+			<div className={styles['title-block']}>
+				<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
+					{t(Landing.TRAINING_INTERVIEW_TITLE).toUpperCase()}
+				</Text>
+				<Text variant="body3" className={styles.subtitle}>
+					{t(Landing.TRAINING_INTERVIEW_SUBTITLE)}
+				</Text>
+			</div>
 			<Flex
 				direction={isTablet || isMobile ? 'column' : 'row'}
 				className={styles['interview-trainer-wrapper']}
 				align="center"
 			>
-				<div className={styles['title-block']}>
-					<Text variant="head2" className={styles.title}>
-						{t(Landing.TRAINING_INTERVIEW_TITLE).toUpperCase()}
-					</Text>
-					<Text variant="body3" className={styles.subtitle}>
-						{t(Landing.TRAINING_INTERVIEW_SUBTITLE)}
-					</Text>
-				</div>
 				<MainBlock
 					questionImg={questionImg1}
 					text={t(Landing.TRAINING_INTERVIEW_SUBTITLE_TABLET)}

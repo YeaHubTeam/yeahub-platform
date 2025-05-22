@@ -53,7 +53,7 @@ export const ROUTES = {
 		},
 		users: {
 			route: 'users',
-			page: 'admin/users',
+			page: '/admin/users',
 			edit: {
 				route: ':userId/edit',
 				page: '/admin/users/:userId/edit',
@@ -199,7 +199,7 @@ export const ROUTES = {
 		route: 'collections',
 		page: '/collections',
 		detail: {
-			route: ':collectionsId',
+			route: ':collectionId',
 			page: '/collections/:collectionId',
 		},
 	},

@@ -18,6 +18,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
+import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/CollectionCreatePage';
@@ -62,9 +63,10 @@ import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/Questio
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
-import { MainPage as LandingMainPage } from '@/pages/landing/MainPage';
-import { NewLandingPage } from '@/pages/landing/NewLandingPage';
+import { LandingPage } from '@/pages/landing/LandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
+import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
+import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -188,12 +190,15 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <LandingMainPage />,
+				element: <LandingPage />,
 			},
-			{ path: '/newLanding', element: <NewLandingPage /> },
 			{
 				path: '*',
 				element: <Error404Page />,
+			},
+			{
+				path: 'test',
+				element: <CollectionBlock />,
 			},
 			{
 				path: ROUTES.docs.page,
@@ -228,6 +233,20 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.quiz.result.route,
 						element: <PublicQuizResultPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.collections.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicCollectionsPage />,
+					},
+					{
+						path: ROUTES.collections.detail.route,
+						element: <PublicCollectionPage />,
 					},
 				],
 			},

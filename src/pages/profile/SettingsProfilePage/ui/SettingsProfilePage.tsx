@@ -6,8 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { EmailConfirmationTab } from '@/widgets/Profile';
-import { ChangePasswordTab } from '@/widgets/Profile';
+import { AccountTab, ChangePasswordTab, EmailConfirmationTab } from '@/widgets/Profile';
 
 const getTabs = (t: (arg: string) => string) => [
 	// {
@@ -27,6 +26,12 @@ const getTabs = (t: (arg: string) => string) => [
 		title: 'email-verify',
 		label: t(Profile.SETTINGS_TABS_VERIFY_EMAIL),
 		Component: EmailConfirmationTab,
+	},
+	{
+		id: 3,
+		title: 'account',
+		label: t(Profile.SETTINGS_TABS_ACCOUNT),
+		Component: AccountTab,
 	},
 ];
 

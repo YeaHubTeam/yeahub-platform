@@ -1,0 +1,72 @@
+.additional-first {
+  flex: 1;
+  background-color: var(--color-purple-700);
+}
+
+.additional-second {
+  flex: 1;
+}
+
+.additional-third {
+  position: relative;
+  flex: 2;
+  overflow: visible;
+}
+
+.additional-block {
+  position: relative;
+  gap: 20px;
+}
+
+.additional-first,
+.additional-second,
+.additional-third {
+  padding: 18px 20px;
+  height: 103px;
+  border-radius: 20px;
+}
+
+.button {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  width: 280px;
+  transform: translateY(50%);
+}
+
+@media screen and (width < 1024px) {
+  .additional-block {
+    flex-wrap: wrap;
+  }
+
+  .additional-third {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 95px;
+  }
+}
+
+@media screen and (width < 768px) {
+  .additional-first,
+  .additional-second,
+  .additional-third,
+  .button {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 83px;
+  }
+  
+  .button {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    height: 44px;
+    transform: none;
+  }
+  
+  .expand-button {
+    margin: 10px 0 20px;
+    width: 100%;
+    height: 44px;
+  }
+}

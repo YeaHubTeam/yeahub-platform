@@ -1,0 +1,14 @@
+.chip {
+  padding: 6px 12px 6px 6px;
+  width: fit-content;
+  box-shadow: var(--main-shadow);
+  border: none;
+  pointer-events: none;
+}
+
+.image {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 8px;
+}

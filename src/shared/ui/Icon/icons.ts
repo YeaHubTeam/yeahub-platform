@@ -19,12 +19,15 @@ import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import Eye from '@/shared/assets/icons/eye.svg';
 import EyeClosed from '@/shared/assets/icons/eyeClosed.svg';
 import Facebook from '@/shared/assets/icons/facebook.svg';
+import Figma from '@/shared/assets/icons/figma_white.svg';
 import Filter from '@/shared/assets/icons/filter.svg';
 import Github from '@/shared/assets/icons/github.svg';
+import GithubWhite from '@/shared/assets/icons/github_white.svg';
 import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
+import LogoText from '@/shared/assets/icons/logoText.svg';
 import Megaphone from '@/shared/assets/icons/Megaphone.svg';
 import Minus from '@/shared/assets/icons/minus.svg';
 import More from '@/shared/assets/icons/more.svg';
@@ -38,6 +41,7 @@ import Settings from '@/shared/assets/icons/settings.svg';
 import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
+import TelegramWhite from '@/shared/assets/icons/telegram_white.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
@@ -78,9 +82,11 @@ export const icons: Record<IconName, IconComponent> = {
 	twitter: Twitter,
 	facebook: Facebook,
 	github: Github,
+	githubWhite: GithubWhite,
 	behance: Behance,
 	whatsapp: Whatsapp,
 	telegram: Telegram,
+	telegramWhite: TelegramWhite,
 	youtube: Youtube,
 	plus: Plus,
 	minus: Minus,
@@ -98,4 +104,6 @@ export const icons: Record<IconName, IconComponent> = {
 	clipboardText: ClipboardText,
 	megaphone: Megaphone,
 	yeaHubCommunity: YeaHubCommunity,
+	figmaWhite: Figma,
+	logoText: LogoText,
 };
