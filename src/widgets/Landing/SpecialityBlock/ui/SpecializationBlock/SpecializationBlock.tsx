@@ -28,7 +28,7 @@ export const SpecializationBlock = () => {
 
 	return (
 		<Flex direction={'column'} className={styles.container}>
-			<Text variant={'head3'} className={styles.title}>
+			<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 				{t(Landing.SPECIALIZATION_NEW_TITLE)}
 			</Text>
 			<ul className={styles['cards-list']}>
