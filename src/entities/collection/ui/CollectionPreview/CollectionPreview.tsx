@@ -37,16 +37,17 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 
 	const project = useCurrentProject();
 
+	const isLandingPageVariant = variant === 'column';
+
+	const collectionPath = isLandingPageVariant
+		? ROUTES.collections.page
+		: project === 'landing'
+			? route(ROUTES.collections.detail.page, id)
+			: route(ROUTES.interview.collections.detail.page, id);
+
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<Link
-				to={
-					project === 'landing'
-						? route(ROUTES.collections.detail.page, id)
-						: route(ROUTES.interview.collections.detail.page, id)
-				}
-				className={classnames(styles.wrapper, styles[variant])}
-			>
+			<Link to={collectionPath} className={classnames(styles.wrapper, styles[variant])}>
 				<ImageWithWrapper
 					src={imageSrc || company?.imageSrc}
 					alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}

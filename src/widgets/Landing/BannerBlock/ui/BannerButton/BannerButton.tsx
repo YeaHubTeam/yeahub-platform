@@ -13,7 +13,7 @@ export const BannerButton = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	const handleClickNavigation = () => {
-		navigate(ROUTES.auth.register.page);
+		navigate(ROUTES.interview.page);
 	};
 
 	return (

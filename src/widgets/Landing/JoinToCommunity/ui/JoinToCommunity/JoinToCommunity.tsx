@@ -20,7 +20,7 @@ export const JoinToCommunity = () => {
 			className={styles.card}
 			withOutsideShadow
 			actionTitle={t(InterviewQuizResult.BECOME_MEMBER)}
-			actionRoute={ROUTES.auth.register.page}
+			actionRoute={ROUTES.interview.page}
 			isActionPositionBottom
 		>
 			<Flex direction="column" gap="16">
