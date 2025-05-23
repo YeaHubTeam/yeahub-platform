@@ -27,6 +27,8 @@ interface SidebarProps {
 	/**
 	 * Is a mobile option
 	 */
+	isAdmin?: boolean;
+
 	isMobileSidebar?: boolean;
 
 	onOpenSidebarDrawer?: () => void;
@@ -43,15 +45,17 @@ interface SidebarProps {
 
 export const Sidebar = ({
 	menuItems,
+	isAdmin = false,
 	isMobileSidebar = false,
 	onOpenSidebarDrawer,
 	isOpenSidebarDrawer,
 	setIsOpenSidebarDrawer,
 }: SidebarProps) => {
-	const { isMobile, isTablet, isLaptop, isDesktop } = useScreenSize();
+	const { isMobile, isTablet, isLaptop, isDesktop, isLargeScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
+	const isShowTooltip = isAdmin && isOpenNavSidebar && isLargeScreen;
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
@@ -102,7 +106,11 @@ export const Sidebar = ({
 					</button>
 				</div>
 				<div className={styles.menu}>
-					<SidebarMenuList fullWidth={isOpenNavSidebar} menuItems={menuItems} />
+					<SidebarMenuList
+						fullWidth={isOpenNavSidebar}
+						menuItems={menuItems}
+						isShowTooltip={isShowTooltip}
+					/>
 				</div>
 				<Flex direction="column" gap="8" className={styles['bottom-actions']}>
 					<Button
