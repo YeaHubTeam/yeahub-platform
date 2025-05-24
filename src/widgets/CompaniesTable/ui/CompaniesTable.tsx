@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Companies, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -12,6 +12,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { Text } from '@/shared/ui/Text';
 
 import { Company } from '@/entities/company';
 
@@ -53,7 +54,19 @@ export const CompaniesTable = ({
 			title: company.title,
 		};
 
-		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k}>
+				{k === 'title' ? (
+					<Link to={route(ROUTES.admin.companies.details.route, company.id)}>
+						<Text variant={'body3'} color={'purple-700'}>
+							{v}
+						</Text>
+					</Link>
+				) : (
+					v
+				)}
+			</td>
+		));
 	};
 
 	const renderActions = (company: Company) => {

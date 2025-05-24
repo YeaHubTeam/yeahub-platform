@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -13,6 +13,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
 
@@ -68,7 +69,15 @@ export const CollectionsTable = ({
 					[styles['questions-count']]: k === 'questionsCount',
 				})}
 			>
-				{v}
+				{k === 'title' ? (
+					<Link to={route(ROUTES.admin.collections.details.route, collection.id)}>
+						<Text variant={'body3'} color={'purple-700'}>
+							{v}
+						</Text>
+					</Link>
+				) : (
+					v
+				)}
 			</td>
 		));
 	};
