@@ -13,6 +13,10 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUserByIdQuery, UserCard, UserFormValues } from '@/entities/user';
 
+import { DeleteUserAccount } from '@/features/profile/deleteAccount';
+
+import styles from './UserDetailPage.module.css';
+
 /**
  * Page showing detail info about specialization
  * @constructor
@@ -42,15 +46,21 @@ const UserDetailPage = () => {
 	}
 
 	return (
-		<FormProvider {...methods}>
-			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
-				<BackButton />
-				<NavLink to={route(ROUTES.admin.users.edit.page, user.id)}>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
-			</Flex>
-			<UserCard user={user} />
-		</FormProvider>
+		<Flex direction="column" gap="24">
+			<FormProvider {...methods}>
+				<Flex align="center" justify="between" gap="8" className={styles.actions}>
+					<BackButton />
+					<NavLink
+						aria-label={t(Translation.EDIT)}
+						to={route(ROUTES.admin.users.edit.page, user.id)}
+					>
+						<Button>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Flex>
+				<UserCard user={user} />
+			</FormProvider>
+			<DeleteUserAccount user={user} />
+		</Flex>
 	);
 };
 

@@ -1,1 +1,2 @@
-export { DeleteAccountModal } from './ui/DeleteAccountModal';
+export { DeleteAccountModal } from './ui/DeleteAccountModal/DeleteAccountModal';
+export { DeleteUserAccount } from './ui/DeleteUserAccount/DeleteUserAccount';

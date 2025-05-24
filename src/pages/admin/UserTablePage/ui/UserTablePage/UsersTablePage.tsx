@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch, useDebounce } from '@/shared/hooks';
+import { useDebounce } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -11,8 +12,7 @@ import { UsersFilterSet, useUserFilter } from '@/features/user/UsersFilterSet';
 import { SearchSection } from '@/widgets/SearchSection';
 import { UsersTable } from '@/widgets/UsersTable';
 
-import { getUsersPageNum, getUsersSearch } from '../../model/selectors/usersPageSelectors';
-import { usersPageActions } from '../../model/slices/usersPageSlice';
+import { getUsersPageNum } from '../../model/selectors/usersPageSelectors';
 import { UserTablePagePagination } from '../UserTablePagePagination/UserTablePagePagination';
 
 import styles from './UsersTablePage.module.css';
@@ -23,15 +23,14 @@ import styles from './UsersTablePage.module.css';
  */
 
 export const UsersTablePage = () => {
-	const dispatch = useAppDispatch();
 	const page = useSelector(getUsersPageNum);
-	const search = useSelector(getUsersSearch);
+	const [search, setSearch] = useState('');
 	const { filter } = useUserFilter();
 
 	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
 
 	const onChangeSearch = useDebounce((value: string) => {
-		dispatch(usersPageActions.setSearch(value));
+		setSearch(value);
 	}, 500);
 
 	return (

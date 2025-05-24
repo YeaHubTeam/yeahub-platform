@@ -44,6 +44,14 @@
 		},
 		"label": "Enter your nickname to confirm",
 		"placeholder": "Enter your nickname",
-		"button": "Delete your account"
+		"button": "Delete account",
+		"admin": {
+			"description": {
+				"main": "Deleting the account will result in <b>complete data loss.</b> This action <b>cannot be undone.</b>",
+				"modal": "Deleting the account will result in <b>complete data loss.</b>\nThis action <b>cannot be undone</b>."
+			},
+			"label": "Enter the user's nickname to confirm",
+			"placeholder": "Enter the user's nickname"
+		}
 	}
 }

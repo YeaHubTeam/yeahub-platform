@@ -1,0 +1,25 @@
+.card {
+  border: 1px solid var(--icon-color-red);
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.warning {
+  margin-bottom: 12px;
+}
+
+.button {
+  max-width: 200px;
+}
+
+@media (width < 480px) {
+  .warning {
+    margin-bottom: 24px;
+  }
+	
+  .button {
+    max-width: 100%;
+  }
+}
