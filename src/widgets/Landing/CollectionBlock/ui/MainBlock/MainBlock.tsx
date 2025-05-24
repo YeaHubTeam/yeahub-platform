@@ -86,7 +86,7 @@ export const MainBlock = () => {
 	}
 
 	return (
-		<div className={styles['main-block']}>
+		<div data-testid="MainBlock" className={styles['main-block']}>
 			<Slider {...sliderSettings} className={styles['slider-container']}>
 				{renderCards}
 			</Slider>

@@ -17,9 +17,9 @@ export const CollectionBlock = () => {
 	const { isMobile } = useScreenSize();
 
 	return (
-		<section className={styles['collection']}>
+		<section className={styles['collection']} data-testid="CollectionBlock">
 			<Flex gap="20" direction="column" align="center" className={styles['collection-wrapper']}>
-				<div className={styles['title-block']}>
+				<div data-testid="TitleBlock" className={styles['title-block']}>
 					<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 						{t(Landing.COLLECTION_TITLE).toUpperCase()}
 					</Text>
