@@ -7,7 +7,7 @@ import styles from './FiltersBlock.module.css';
 
 export const FiltersBlock = () => {
 	return (
-		<div className={styles.list}>
+		<div data-testid="FiltersBlock" className={styles.list}>
 			<Flex gap="14" className={styles['slider-container']}>
 				{filtersList.map(({ src, alt }, index) => (
 					<FilterChip key={index} src={src} alt={alt} />
