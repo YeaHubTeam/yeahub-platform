@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -11,6 +11,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { Text } from '@/shared/ui/Text';
 
 import { Specialization } from '@/entities/specialization';
 
@@ -45,7 +46,19 @@ export const SpecializationsTable = ({
 			description: specialization.description,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k}>
+				{k === 'title' ? (
+					<Link to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
+						<Text variant={'body3'} color={'purple-700'}>
+							{v}
+						</Text>
+					</Link>
+				) : (
+					v
+				)}
+			</td>
+		));
 	};
 
 	const renderActions = (specialization: Specialization) => {
