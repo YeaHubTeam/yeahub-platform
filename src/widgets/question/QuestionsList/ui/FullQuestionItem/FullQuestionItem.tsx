@@ -14,7 +14,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { QuestionParam } from '@/shared/ui/QuestionParam';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getIsEmailVerified, getProfileId, getHasPremiumAccess } from '@/entities/profile';
 import { Question } from '@/entities/question';
 
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
@@ -34,6 +34,7 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 
 	const onMoveDetail = () => {
 		const path = isPublic ? ROUTES.questions.detail.page : ROUTES.interview.questions.detail.page;
@@ -51,7 +52,9 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 				<LearnQuestionButton
 					profileId={profileId}
 					questionId={id}
-					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount >= 3)}
+					isDisabled={
+						!isEmailVerified || !hasPremiumAccess || (checksCount !== undefined && checksCount >= 3)
+					}
 					onSuccess={onToggleOpenPopover}
 					isPopover
 					isSmallIcon
@@ -63,7 +66,11 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 				<ResetQuestionStudyProgressButton
 					profileId={profileId}
 					questionId={id}
-					isDisabled={!isEmailVerified || (checksCount !== undefined && checksCount === 0)}
+					isDisabled={
+						!isEmailVerified ||
+						!hasPremiumAccess ||
+						(checksCount !== undefined && checksCount === 0)
+					}
 					onSuccess={onToggleOpenPopover}
 					isPopover
 					isSmallIcon

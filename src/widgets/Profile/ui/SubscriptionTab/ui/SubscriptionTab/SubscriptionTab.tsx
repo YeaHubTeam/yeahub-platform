@@ -1,12 +1,12 @@
-import { useProfileQuery } from '@/entities/auth';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { getHasPremiumAccess } from '@/entities/profile';
 
 import { FreeSubscriptionTab } from '../FreeSubscriptionTab/FreeSubscriptionTab';
 import { PremiumSubscriptionTab } from '../PremiumSubscriptionTab/PremiumSubscriptionTab';
 
 export const SubscriptionTab = () => {
-	const roles = useProfileQuery();
-
-	const hasPremium = roles.data?.userRoles.some((role) => role.name === 'candidate-premium');
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	return <>{hasPremium ? <PremiumSubscriptionTab /> : <FreeSubscriptionTab />}</>;
 };

@@ -2,8 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+
+import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
@@ -30,6 +33,8 @@ export const LearnQuestionButton = ({
 }: LearnQuestionProps) => {
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
 	const { t } = useTranslation(i18Namespace.questions);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
+
 	const handleLearnQuestion = async () => {
 		try {
 			await learnQuestion({
@@ -52,7 +57,7 @@ export const LearnQuestionButton = ({
 			preffix={<Icon icon="student" color="black-600" size={iconSize} />}
 			variant={variant}
 			onClick={handleLearnQuestion}
-			disabled={isLoading || isDisabled}
+			disabled={isLoading || isDisabled || !hasPremium}
 		>
 			{t(Questions.LEARN)}
 		</Button>

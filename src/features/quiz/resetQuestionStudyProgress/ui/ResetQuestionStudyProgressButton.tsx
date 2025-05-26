@@ -2,8 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+
+import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
@@ -30,6 +33,7 @@ export const ResetQuestionStudyProgressButton = ({
 }: ResetQuestionStudyProgressProps) => {
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useTranslation(i18Namespace.questions);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const handleClick = async () => {
 		try {
@@ -49,7 +53,7 @@ export const ResetQuestionStudyProgressButton = ({
 			preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
 			variant={variant}
 			onClick={handleClick}
-			disabled={isLoading || isDisabled}
+			disabled={isLoading || isDisabled || !hasPremium}
 		>
 			{t(Questions.REPEAT)}
 		</Button>
