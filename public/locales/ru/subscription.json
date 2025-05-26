@@ -1,6 +1,6 @@
 {
   "subscribeAction": "Подписаться",
-  "changeTariffPlan": "Изменить тариф",
+  "changeTariffPlan": "Доступно для участников",
   "cancelSubscription": "Отменить подписку",
   "payHistory": "Ваши предыдущие платежи ",
   "tariff": {
