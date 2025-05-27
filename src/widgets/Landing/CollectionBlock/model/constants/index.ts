@@ -23,7 +23,6 @@ export const filters: Record<string, ImageItem> = {
 export const filtersList = Object.values(filters);
 
 export const sliderSettings = {
-	dots: false,
 	infinite: false,
 	speed: 500,
 	slidesToShow: 3,
