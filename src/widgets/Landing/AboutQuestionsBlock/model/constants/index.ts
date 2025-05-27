@@ -54,22 +54,12 @@ export const blocks: Record<string, ImageItem> = {
 	filters: { src: filtersBlock, alt: 'filters' },
 };
 
-const baseSliderSettings = {
-	dots: false,
-	infinite: true,
-	arrows: false,
-	speed: 300,
-	variableWidth: true,
-};
-
 export const interviewMaterialsSliderSettings = {
-	...baseSliderSettings,
 	slidesToShow: 2,
 	slidesToScroll: 1,
 };
 
 export const skillsTickerSliderSettings = {
-	...baseSliderSettings,
 	slidesToShow: 9,
 	slidesToScroll: 3,
 };
