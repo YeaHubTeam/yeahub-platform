@@ -64,10 +64,10 @@ export const QuestionAdditionalInfo = ({
 						</Text>
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
-					{(isMobile || isTablet) && <QuestionAuthor createdBy={createdBy} />}
+					{createdBy && (isMobile || isTablet) && <QuestionAuthor createdBy={createdBy} />}
 				</Flex>
 			</Card>
-			{!isMobile && !isTablet && <QuestionAuthor createdBy={createdBy} isCenter />}
+			{createdBy && !isMobile && !isTablet && <QuestionAuthor createdBy={createdBy} isCenter />}
 		</>
 	);
 };

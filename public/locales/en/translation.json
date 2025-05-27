@@ -184,77 +184,67 @@
 				"failed": "Specialization could not be changed"
 			},
 			"delete": {
-				"single": {
-					"success": "Specialization successfully deleted",
-					"failed": "Specialization could not be deleted"
-				},
-				"multiple": {
-					"success": "Successfully deleted specializations:",
-					"failed": "Specialization could not be deleted:"
-				}
-			}
-		},
-		"collections": {
-			"create": {
-				"success": "Collection successfully created",
-				"failed": "Collection could not be created"
-			},
+        "single": {
+          "success": "Collection successfully deleted",
+          "failed": "The collection could not be deleted"
+        }
+      },
+      "edit": {
+        "success": "Collection successfully changed",
+        "failed": "Collection could not be changed"
+      }
+    },
+    "profile": {
+      "update": {
+        "success": "Profile has been successfully changed",
+        "failed": "Profile could not be changed"
+      }
+    },
+		"user": {
 			"delete": {
-				"single": {
-					"success": "Collection successfully deleted",
-					"failed": "The collection could not be deleted"
-				}
-			},
-			"edit": {
-				"success": "Collection successfully changed",
-				"failed": "Collection could not be changed"
+				"success": "Your account and all your data have been permanently deleted",
+				"failed": "Account could not be deleted"
 			}
 		},
-		"profile": {
-			"update": {
-				"success": "Profile has been successfully changed",
-				"failed": "Profile could not be changed"
-			}
-		},
-		"avatar": {
-			"update": {
-				"success": "Profile photo changed",
-				"failed": "Profile photo could not be changed"
-			},
-			"create": {
-				"success": "Profile photo added",
-				"failed": "Profile photo could not be added"
-			},
-			"delete": {
-				"success": "Profile photo deleted",
-				"failed": "Profile photo could not be deleted"
-			}
-		},
-		"interview": {
-			"new": {
-				"quiz": {
-					"success": "New interview created",
-					"failed": "Failed to create new interview"
-				}
-			},
-			"finish": {
-				"success": "Interview completed",
-				"failed": "Failed to complete interview"
-			}
-		},
-		"settings": {
-			"sendVerificationEmail": {
-				"failed": "An error occurred while sending an e-mail for confirmation"
-			}
-		},
-		"password": {
-			"change": {
-				"success": "Password successfully changed",
-				"failed": "Password could not be changed",
-				"failed.email": "Invalid email"
-			}
-		},
-		"companies": {
+    "avatar": {
+      "update": {
+        "success": "Profile photo changed",
+        "failed": "Profile photo could not be changed"
+      },
+      "create": {
+        "success": "Profile photo added",
+        "failed": "Profile photo could not be added"
+      },
+      "delete": {
+        "success": "Profile photo deleted",
+        "failed": "Profile photo could not be deleted"
+      }
+    },
+    "interview": {
+      "new": {
+        "quiz": {
+          "success": "New interview created",
+          "failed": "Failed to create new interview"
+        }
+      },
+      "finish": {
+        "success": "Interview completed",
+        "failed": "Failed to complete interview"
+      }
+    },
+    "settings": {
+      "sendVerificationEmail": {
+        "failed": "An error occurred while sending an e-mail for confirmation"
+      }
+    },
+    "password": {
+      "change": {
+        "success": "Password successfully changed",
+        "failed": "Password could not be changed",
+        "failed.email": "Invalid email"
+      }
+    },
+		"companies" : {
 			"delete": {
 				"single": {
 					"success": "Company successfully deleted",

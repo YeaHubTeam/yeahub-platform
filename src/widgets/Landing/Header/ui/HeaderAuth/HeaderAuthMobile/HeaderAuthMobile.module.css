@@ -1,0 +1,40 @@
+.auth-popover {
+  padding: 6px;
+  overflow-y: hidden !important; /* important необходим для переопределения стилей портала */
+  border: none;
+  border-radius: 0 0 6px 6px;
+  transform: translateX(0) translateY(11px);
+}
+
+.burger-button {
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+  
+  &:hover {
+    border-radius: 4px;
+  }
+  
+  &:focus {
+    border: none;
+    border-radius: 4px;
+  }
+}
+
+.burger-button-skeleton {
+  width: 32px;
+  height: 32px;
+}
+
+
+@media screen and (width < 768px) {
+  .auth-popover {
+    transform: translateX(0) translateY(6px);
+  }
+}
+
+@media screen and (width < 350px) {
+  .auth-popover {
+    transform: translateX(37px) translateY(43px);
+  }
+}

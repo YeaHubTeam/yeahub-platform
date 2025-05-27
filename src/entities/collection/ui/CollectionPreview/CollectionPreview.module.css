@@ -1,7 +1,14 @@
 .content {
+  display: flex;
   padding: 20px;
   overflow: hidden;
   border-radius: 24px;
+}
+
+.card-title {
+  &.column {
+    min-height: 42px;
+  }
 }
 
 .wrapper {
@@ -9,6 +16,14 @@
   gap: 20px;
   cursor: pointer;
   overflow: hidden;
+
+  &.row{
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 }
 
 .wrapper-content {
@@ -48,11 +63,25 @@
 .image-wrapper {
   flex-shrink: 0;
   width: 100%;
-  width: 149px;
-  height: 157px;
   overflow: hidden;
   border-radius: 12px;
   place-content: center center;
+  background-color: inherit;
+
+  &.row {
+    width: 149px;
+    height: 157px;
+  }
+
+  &.column {
+    width: 100%;
+    height: clamp(196px, 15.4vw, 222px);
+  }
+}
+
+.image-wrapper > img {
+  object-fit: cover;
+  object-position: center;
 }
 
 .specialization-container {
@@ -122,13 +151,17 @@
   }
 
   .image-wrapper {
-    aspect-ratio: 1;
-    width: 100%;
-    height: auto;
+    &.row {
+      aspect-ratio: 1;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .wrapper {
-    flex-direction: column;
+    &.row {
+      flex-direction: column;
+    }
   }
 
   .specialization-container {

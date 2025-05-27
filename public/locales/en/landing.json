@@ -1,63 +1,78 @@
 {
-	"header": {
-		"actions": {
-			"register": "Registration",
-			"login": "Login"
-		},
-		"links": {
+  "app": {
+    "logo": {
+      "aria.label": "IT Job Interview Trainer"
+    }
+  },
+  "header": {
+    "actions": {
+      "register": "Registration",
+      "login": "Login"
+    },
+    "nav": {
 			"questions.list": "Interview Questions",
-			"public.quiz": "Interview Trainer"
-		}
-	},
-	"questions": {
-		"first": "What is Virtual DOM, and how does it work?",
-		"second": {
-			"title": "What types of data are there in JS?",
-			"answer": "<p>A value in JavaScript always refers to data of a certain type. For example, it can be a string or a number. There are eight main types of data in JavaScript. In this chapter we will look at them in general, and in the following chapters we will talk in more detail about each one.</p><p>A variable in JavaSctipt can contain any data. At one point there may be </p>"
+			"public.quiz": "Interview Trainer",
+			"public.collections": "Interviews",
+			"popover.title": "Preparation",
+			"aria.label": "User"
 		},
-		"third": "What is this?",
-		"fourth": "What is closure in JavaScript?",
-		"list": "Questions list"
-	},
-	"main": {
-		"title": {
-			"mobile": "YEAHUB helps to grow and achieve goals",
-			"tablet": "YEAHUB helps to grow and achieve goals",
-			"desktop": "YEAHUB helps to grow and achieve goals"
-		},
-		"subtitle": "Develop and improve your skills on one platform: learn new things, prepare for conversations, immerse yourself in nuances or update your knowledge - YeaHub will help you cope with any task",
-		"link": "Join",
-		"badge": "Top questions",
-		"advantages": {
-			"first": {
-				"title": "Large database of questions",
-				"description": "Study technology on current theoretical issues"
-			},
-			"second": {
-				"title": "Learning progress",
-				"description": "See the analysis on the topics covered, repeat the studied ones"
-			},
-			"third": {
-				"title": "User-friendly simulator",
-				"description": "Improve your skills in our question memorization simulator"
-			}
-		},
-		"progress": {
-			"title": "Progress",
-			"description": "Completed 3 out of 3 questions"
-		}
-	},
-	"training": {
-		"title": "Convenient simulator",
-		"subtitle.tablet": "In YeaHub, everyone will find new learning opportunities.",
-		"subtitle": "Practice the topics you've learned in our simulator.",
-		"advantages": {
-			"first": "Our simulator provides a unique chance to deepen your knowledge and take it to a new level",
-			"second": "Learning technology has never been so accessible and effective"
-		},
-		"link": "Start learning"
-	},
-	"training_interview": {
+    "auth": {
+      "iconbutton": {
+        "aria.label": "Authorization"
+      }
+    }
+  },
+  "questions": {
+		"title": "Interview Questions",
+		"description": "We have collected 10,000+ questions from real IT interviews. Choose your specialty, adjust the difficulty level and prepare for the interview in practice.",
+    "first": "What is Virtual DOM, and how does it work?",
+    "second": {
+      "title": "What types of data are there in JS?",
+      "answer": "<p>A value in JavaScript always refers to data of a certain type. For example, it can be a string or a number. There are eight main types of data in JavaScript. In this chapter we will look at them in general, and in the following chapters we will talk in more detail about each one.</p><p>A variable in JavaSctipt can contain any data. At one point there may be </p>"
+    },
+    "third": "What is this?",
+    "fourth": "What is closure in JavaScript?",
+    "list": "Questions list"
+  },
+  "main": {
+    "title": {
+      "mobile": "YEAHUB helps to grow and achieve goals",
+      "tablet": "YEAHUB helps to grow and achieve goals",
+      "desktop": "YEAHUB helps to grow and achieve goals"
+    },
+    "subtitle": "Develop and improve your skills on one platform: learn new things, prepare for conversations, immerse yourself in nuances or update your knowledge - YeaHub will help you cope with any task",
+    "link": "Join",
+    "badge": "Top questions",
+    "advantages": {
+      "first": {
+        "title": "Large database of questions",
+        "description": "Study technology on current theoretical issues"
+      },
+      "second": {
+        "title": "Learning progress",
+        "description": "See the analysis on the topics covered, repeat the studied ones"
+      },
+      "third": {
+        "title": "User-friendly simulator",
+        "description": "Improve your skills in our question memorization simulator"
+      }
+    },
+    "progress": {
+      "title": "Progress",
+      "description": "Completed 3 out of 3 questions"
+    }
+  },
+  "training": {
+    "title": "Convenient simulator",
+    "subtitle.tablet": "In YeaHub, everyone will find new learning opportunities.",
+    "subtitle": "Practice the topics you've learned in our simulator.",
+    "advantages": {
+      "first": "Our simulator provides a unique chance to deepen your knowledge and take it to a new level",
+      "second": "Learning technology has never been so accessible and effective"
+    },
+    "link": "Start learning"
+  },
+  "training_interview": {
 		"title": "Interview trainer",
 		"subtitle": "Turn preparation into a game! Our interactive trainer will help you \neffectively memorize information and pass interviews\n with confidence.",
 		"subtitle.tablet": "Repeat Mode — practice with questions you’ve already tackled.",
@@ -67,35 +82,42 @@
 		},
 		"link": "Try it"
 	},
-	"ready.interview": {
-		"title": "Get ready for IT interviews",
-		"subtitle": "With YeaHub, preparing for an interview becomes a simple and exciting process.",
-		"advantages": {
-			"first": "Our platform offers an extensive database of relevant questions on a wide range of topics and skills, which is regularly updated.",
-			"second": "Use convenient filters to search for questions on topics of interest to you and the level of complexity."
+  "ready.interview": {
+    "title": "Get ready for IT interviews",
+    "subtitle": "With YeaHub, preparing for an interview becomes a simple and exciting process.",
+    "advantages": {
+      "first": "Our platform offers an extensive database of relevant questions on a wide range of topics and skills, which is regularly updated.",
+      "second": "Use convenient filters to search for questions on topics of interest to you and the level of complexity."
+    }
+  },
+  "interview": {
+    "title": "interview mode",
+    "subtitle": "This is the perfect way to prepare for real job interviews.",
+    "advantages": {
+      "first": "Practice the topics you've learned in interview mode.",
+      "second": "Use convenient memory cards and the ability to save material for later repetition."
+    }
+  },
+  "progress": {
+    "title": "track your progress",
+    "subtitle": "YeaHub provides advanced tools to monitor your learning",
+    "advantages": {
+      "first": "Detailed statistics are available in your personal profile, including the number of completed questions and topics.",
+      "second": "Identify your current level and identify knowledge gaps for more focused learning or job search preparation."
+    }
+  },
+  "footer": {
+    "slogan": "Choose what IT will be like tomorrow, together with us",
+    "title": "Choose what IT will look like tomorrow — join us!",
+    "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
+    "description": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
+    "docs": "Documents",
+    "links": {
+			"link": {
+				"aria-label": "Will open in a new tab"
+			}
 		}
-	},
-	"interview": {
-		"title": "interview mode",
-		"subtitle": "This is the perfect way to prepare for real job interviews.",
-		"advantages": {
-			"first": "Practice the topics you've learned in interview mode.",
-			"second": "Use convenient memory cards and the ability to save material for later repetition."
-		}
-	},
-	"progress": {
-		"title": "track your progress",
-		"subtitle": "YeaHub provides advanced tools to monitor your learning",
-		"advantages": {
-			"first": "Detailed statistics are available in your personal profile, including the number of completed questions and topics.",
-			"second": "Identify your current level and identify knowledge gaps for more focused learning or job search preparation."
-		}
-	},
-	"footer": {
-		"slogan": "Choose what IT will be like tomorrow, together with us",
-		"about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
-		"docs": "Documents"
-	},
+  },
 	"banner": {
 		"sticker": {
 			"skill": "YeaHub — level up your skills",
@@ -107,7 +129,74 @@
 		"img": {
 			"homepage": "Homepage banner",
 			"statistics": "Statistics",
-			"company": "Сompany",
+			"company": "Company",
+			"progress": "Progress"
+		}
+	},
+	"collections": {
+		"title": "Real Company Questions",
+		"subtitle": "Prepare for interviews with collections of questions from major \nIT companies. Discover what questions are asked at Sber, T-Bank, \nYandex, Avito, Ozon, VK, and other companies.",
+		"cards": {
+			"sber": "Middle Frontend Developer at Sber",
+			"tbank": "Senior Frontend Developer at T-Bank",
+			"vk": "Senior Backend Developer at VK"
+		},
+		"additional": {
+			"first": "Current and in-demand questions from real technical interviews",
+			"second": "Study and practice questions in the interactive YeaHub simulator",
+			"third": "Test if you can pass an interview at top IT companies!"
+		},
+		"link": "Try it",
+		"expand": "See more",
+		"star": "For participants"
+	},
+	"specialization": {
+		"title_new": "Choose Your Specialty",
+		"description": "Questions for 20+ IT Specializations",
+		"button": "See more",
+		"card": {
+			"description": {
+				"frontend": "HTML, CSS, JavaScript, and modern frameworks",
+				"backend": "Databases, APIs, architecture, and security",
+				"data": "Build predictions and automate decisions",
+				"machine": "How machine learning is transforming the world of technology",
+				"testing": "Testing fundamentals: key aspects and approaches",
+				"ios": "iOS development: tools and approaches",
+				"android": "Explore key aspects of Android development",
+				"game": "Game development fundamentals: key points"
+			},
+			"img": {
+				"frontend": "Image: Web development (HTML, CSS, JavaScript) on a laptop screen",
+				"backend": "Image: Server infrastructure with databases and a security shield",
+				"data": "Image: Graphs and algorithms for data analysis and forecasting",
+				"machine": "Image: Robot with a neural network in a digital world",
+				"testing": "Image: Checklist and software testing tools",
+				"ios": "Image: iPhone with an app development interface",
+				"android": "Image: Android smartphone with open-source application code",
+				"game": "Image: Game controller and game development elements"
+			},
+			"button": "Go to Questions"
+		}
+	},
+	"skills": {
+		"title": "Master Key Skills",
+		"description": "50+ in-demand technologies: JavaScript, React, Python, SQL, and more"
+	},
+	"filters": {
+		"title": "Flexible Filtering",
+		"description": "Easily filter questions by difficulty, popularity, and relevance"
+	},
+	"history": {
+		"title": "Your progress is your success",
+		"subtitle": "Every interview is a step forward! We track your progress to help improve weak points and reinforce what you've learned.",
+		"slides": {
+			"first": "How many questions have you mastered already?",
+			"second": "Study only the necessary questions",
+			"third": "Which skills require more attention?"
+		},
+		"img": {
+			"statistics": "Statistics",
+			"description": "Description",
 			"progress": "Progress"
 		}
 	}

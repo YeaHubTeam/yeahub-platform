@@ -3,6 +3,7 @@ export type VariantType =
 	| 'secondary'
 	| 'outline'
 	| 'tertiary'
+	| 'tertiary-link'
 	| 'destructive'
 	| 'destructive-secondary'
 	| 'destructive-outline'

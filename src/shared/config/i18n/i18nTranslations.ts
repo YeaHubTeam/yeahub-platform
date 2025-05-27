@@ -144,6 +144,8 @@ export enum Translation {
 	TOAST_COMPANIES_DELETE_MULTIPLE_FAILED = 'toast.companies.delete.multiple.failed',
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
+	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
+	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -182,6 +184,7 @@ export enum Profile {
 	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',
+	SETTINGS_TABS_ACCOUNT = 'settings.tabs.account',
 	EMAIL_VERIFICATION_TITLE = 'email.verification.title',
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
@@ -243,6 +246,7 @@ export enum Auth {
 }
 
 export enum Specializations {
+	TITLE_MAIN = 'title.main',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -344,6 +348,7 @@ export enum Questions {
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
 	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
+	PREVIEW_LOCKED_COLLECTION = 'preview.locked.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -398,6 +403,9 @@ export enum Questions {
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+
+	COMMUNITY_JOIN = 'community.join',
 }
 
 export enum InterviewHistory {
@@ -472,6 +480,12 @@ export enum User {
 	FILTER_EMAIL = 'filter.email',
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
+	DELETE_TITLE = 'delete.title',
+	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
+	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
+	DELETE_BUTTON = 'delete.button',
+	DELETE_LABEL = 'delete.label',
+	DELETE_PLACEHOLDER = 'delete.placeholder',
 }
 
 export enum Collections {
@@ -495,6 +509,7 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
@@ -535,8 +550,6 @@ export enum Companies {
 export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',
-	HEADER_LINKS_QUESTIONS_LIST = 'header.links.questions.list',
-	HEADER_LINKS_PUBLIC_QUIZ = 'header.links.public.quiz',
 	QUESTIONS_TITLE = 'questions.title',
 	QUESTIONS_DESCRIPTION = 'questions.description',
 	QUESTIONS_FIRST = 'questions.first',
@@ -594,6 +607,7 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+
 	// для нового лендинга ниже
 	BANNER_STICKER_SKILL = 'banner.sticker.skill',
 	BANNER_STICKER_CANDIDATE = 'banner.sticker.candidate',
@@ -604,6 +618,54 @@ export enum Landing {
 	BANNER_IMG_STATISTICS = 'banner.img.statistics',
 	BANNER_IMG_COMPANY = 'banner.img.company',
 	BANNER_IMG_PROGRESS = 'banner.img.progress',
+	COLLECTION_CARD_SBER = 'collections.cards.sber',
+	COLLECTION_CARD_TBANK = 'collections.cards.tbank',
+	COLLECTION_CARD_VK = 'collections.cards.vk',
+	COLLECTION_TITLE = 'collections.title',
+	COLLECTION_SUBTITLE = 'collections.subtitle',
+	COLLECTION_ADDITIONAL_FIRST = 'collections.additional.first',
+	COLLECTION_ADDITIONAL_SECOND = 'collections.additional.second',
+	COLLECTION_ADDITIONAL_THIRD = 'collections.additional.third',
+	COLLECTION_LINK = 'collections.link',
+	COLLECTION_EXPAND = 'collections.expand',
+	COLLECTION_STAR = 'collections.star',
+	HEADER_NAV_QUESTIONS_LIST = 'header.nav.questions.list',
+	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
+	HEADER_NAV_PUBLIC_COLLECTIONS = 'header.nav.public.collections',
+	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
+	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
+	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
+	FOOTER_LINKS_LINK_ARIA_LABEL = 'footer.links.link.aria.label',
+	FOOTER_TITLE = 'footer.title',
+	FOOTER_DESCRIPTION = 'footer.description',
+	APP_LOGO_ARIA_LABEL = 'app.logo.aria.label',
+	SPECIALIZATION_NEW_TITLE = 'specialization.title_new',
+	SPECIALIZATION_BUTTON = 'specialization.button',
+	SPECIALIZATION_CARD_DESCRIPTION_FRONTEND = 'specialization.card.description.frontend',
+	SPECIALIZATION_CARD_DESCRIPTION_BACKEND = 'specialization.card.description.backend',
+	SPECIALIZATION_CARD_DESCRIPTION_DATA = 'specialization.card.description.data',
+	SPECIALIZATION_CARD_DESCRIPTION_MACHINE = 'specialization.card.description.machine',
+	SPECIALIZATION_CARD_DESCRIPTION_TESTING = 'specialization.card.description.testing',
+	SPECIALIZATION_CARD_DESCRIPTION_IOS = 'specialization.card.description.ios',
+	SPECIALIZATION_CARD_DESCRIPTION_ANDROID = 'specialization.card.description.android',
+	SPECIALIZATION_CARD_DESCRIPTION_GAME = 'specialization.card.description.game',
+	SPECIALIZATION_CARD_IMG_FRONTEND = 'specialization.card.img.frontend',
+	SPECIALIZATION_CARD_IMG_BACKEND = 'specialization.card.img.backend',
+	SPECIALIZATION_CARD_IMG_DATA = 'specialization.card.img.data',
+	SPECIALIZATION_CARD_IMG_MACHINE = 'specialization.card.img.machine',
+	SPECIALIZATION_CARD_IMG_TESTING = 'specialization.card.img.testing',
+	SPECIALIZATION_CARD_IMG_IOS = 'specialization.card.img.ios',
+	SPECIALIZATION_CARD_IMG_ANDROID = 'specialization.card.img.android',
+	SPECIALIZATION_CARD_IMG_GAME = 'specialization.card.img.game',
+	SPECIALIZATION_CARD_BUTTON = 'specialization.card.button',
+	HISTORY_TITLE = 'history.title',
+	HISTORY_SUBTITLE = 'history.subtitle',
+	HISTORY_SLIDES_FIRST = 'history.slides.first',
+	HISTORY_SLIDES_SECOND = 'history.slides.second',
+	HISTORY_SLIDES_THIRD = 'history.slides.third',
+	HISTORY_IMG_STATISTICS = 'history.img.statistics',
+	HISTORY_IMG_PROGRESS = 'history.img.progress',
+	HISTORY_IMG_DESCRIPTION = 'history.img.description',
 }
 
 export enum Subscription {

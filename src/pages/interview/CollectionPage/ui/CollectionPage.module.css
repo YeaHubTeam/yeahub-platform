@@ -16,41 +16,12 @@
   gap: 20px;
 }
 
-.popover-additional-wrapper {
-  width: 100%;
-  max-width: 314px;
-}
-
 .additional {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 360px;
   height: fit-content
-}
-
-.additional h4 {
-  color: var(--text-color-light);
-}
-
-
-:is(.additional, .mobile)>div {
-  height: auto;
-}
-
-.author {
-  grid-area: author;
-  margin: 0 auto;
-  width: auto;
-}
-
-.author p {
-  justify-content: center
-}
-
-.author a {
-  pointer-events: none;
-  color: var(--text-color-link-active);
 }
 
 .header {
@@ -93,52 +64,6 @@
   gap: 10px;
 }
 
-.popover-additional {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--border-right-color);
-  border-radius: 8px;
-  background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-}
-
-.popover-additional:has(button.active) {
-  border: 1px solid var(--button-border-secondary-focus);
-}
-
 .train-button {
   border-radius: 20px;
-}
-
-@media (width < 1280px) {
-  .popover-additional {
-    display: block;
-  }
-
-  .popover-open {
-    border: 1px solid var(--text-color-link-active);
-  }
-
-  .additional {
-    display: none;
-  }
-}
-
-
-@media (width < 1024px) {
-  .popover-additional {
-    top: 16px;
-    right: 16px;
-  }
-}
-
-@media (width < 768px) {
-  .popover-additional {
-    right: 10px;
-  }
 }

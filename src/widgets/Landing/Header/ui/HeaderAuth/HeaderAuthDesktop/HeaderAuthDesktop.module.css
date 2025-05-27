@@ -1,0 +1,9 @@
+.login-link:hover {
+  text-decoration: none;
+}
+
+.register-button {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-l);
+  transition: background-color 0.2s ease;
+}
