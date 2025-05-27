@@ -1,15 +1,19 @@
 import { Level } from '@tiptap/extension-heading';
 import { BubbleMenu as TiptapBubbleMenu, Editor } from '@tiptap/react';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import styles from './TextEditor.module.css';
+import { TextEditor } from '@/shared/config/i18n/i18nTranslations';
+
+import styles from './BubbleMenu.module.css';
 
 interface BubbleMenuProps {
 	editor: Editor | null;
 }
 
-export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
+const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 	const [showHeadings, setShowHeadings] = useState(false);
+	const { t } = useTranslation();
 
 	if (!editor) return null;
 
@@ -19,7 +23,6 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 			tippyOptions={{ duration: 100 }}
 			editor={editor}
 		>
-			{/* Текстовое форматирование */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
@@ -27,7 +30,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('bold') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Жирный (Ctrl+B)"
+					title={`${t(TextEditor.BOLD)} (Ctrl+B)`}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +53,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('italic') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Курсив (Ctrl+I)"
+					title={`${t(TextEditor.ITALIC)} (Ctrl+I)`}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +77,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('underline') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Подчеркнутый (Ctrl+U)"
+					title={`${t(TextEditor.UNDERLINE)} (Ctrl+U)`}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +100,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('strike') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Зачеркнутый"
+					title={t(TextEditor.STRIKE)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +123,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('code') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Инлайн код"
+					title={t(TextEditor.CODE_INLINE)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +142,6 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 				</button>
 			</div>
 
-			{/* Выравнивание текста */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
@@ -149,7 +151,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 							? styles['bubble-button-active']
 							: styles['bubble-button']
 					}
-					title="По левому краю"
+					title={t(TextEditor.ALIGN_LEFT)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +178,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 							? styles['bubble-button-active']
 							: styles['bubble-button']
 					}
-					title="По центру"
+					title={t(TextEditor.ALIGN_CENTER)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +205,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 							? styles['bubble-button-active']
 							: styles['bubble-button']
 					}
-					title="По правому краю"
+					title={t(TextEditor.ALIGN_RIGHT)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -224,13 +226,12 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 				</button>
 			</div>
 
-			{/* Заголовки */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
 					onClick={() => setShowHeadings(!showHeadings)}
 					className={styles['bubble-button']}
-					title="Заголовки"
+					title={t(TextEditor.HEADINGS)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -249,10 +250,38 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 						<path d="M21 18h-4c-.5 0-1-.2-1.4-.6-.4-.4-.6-.9-.6-1.4V7c0-.5.2-1 .6-1.4C16 5.2 16.5 5 17 5h4"></path>
 					</svg>
 				</button>
-
 				{showHeadings && (
 					<div className={styles['heading-dropdown']}>
-						{[1, 2].map((level) => (
+						<button
+							type="button"
+							onClick={() => {
+								editor.chain().focus().setParagraph().run();
+								setShowHeadings(false);
+							}}
+							className={
+								editor.isActive('paragraph')
+									? styles['bubble-button-active']
+									: styles['bubble-button']
+							}
+							title="Обычный текст"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							>
+								<line x1="4" y1="6" x2="20" y2="6" />
+								<line x1="4" y1="12" x2="20" y2="12" />
+								<line x1="4" y1="18" x2="20" y2="18" />
+							</svg>
+						</button>
+						{[1, 2, 3, 4, 5, 6].map((level) => (
 							<button
 								key={level}
 								type="button"
@@ -262,7 +291,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 										.focus()
 										.toggleHeading({ level: level as Level })
 										.run();
-									setShowHeadings((prev) => !prev);
+									setShowHeadings(false);
 								}}
 								className={
 									editor.isActive('heading', { level: level as Level })
@@ -270,14 +299,13 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 										: styles['bubble-button']
 								}
 							>
-								H{level}
+								{`H${level}`}
 							</button>
 						))}
 					</div>
 				)}
 			</div>
 
-			{/* Специальные блоки */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
@@ -285,7 +313,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('blockquote') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Цитата"
+					title={t(TextEditor.BLOCKQUOTE)}
 				>
 					{'" "'}
 				</button>
@@ -304,20 +332,19 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('codeBlock') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Блок кода (typescript)"
+					title={t(TextEditor.CODE_BLOCK)}
 				>
 					{'</>'}
 				</button>
 			</div>
 
-			{/* Отмена/Повтор */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
 					onClick={() => editor.chain().focus().undo().run()}
 					disabled={!editor.can().undo()}
 					className={styles['bubble-button']}
-					title="Отменить (Ctrl+Z)"
+					title={`${t(TextEditor.UNDO)} (Ctrl+Z)`}
 				>
 					↺
 				</button>
@@ -326,13 +353,12 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					onClick={() => editor.chain().focus().redo().run()}
 					disabled={!editor.can().redo()}
 					className={styles['bubble-button']}
-					title="Повторить (Ctrl+Y)"
+					title={`${t(TextEditor.REDO)} (Ctrl+Y)`}
 				>
 					↻
 				</button>
 			</div>
 
-			{/* Списки */}
 			<div className={styles['bubble-menu-group']}>
 				<button
 					type="button"
@@ -340,7 +366,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 					className={
 						editor.isActive('bulletList') ? styles['bubble-button-active'] : styles['bubble-button']
 					}
-					title="Маркированный список"
+					title={t(TextEditor.BULLET_LIST)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -369,7 +395,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 							? styles['bubble-button-active']
 							: styles['bubble-button']
 					}
-					title="Нумерованный список"
+					title={t(TextEditor.ORDERED_LIST)}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -394,3 +420,5 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 		</TiptapBubbleMenu>
 	);
 };
+
+export { BubbleMenu };

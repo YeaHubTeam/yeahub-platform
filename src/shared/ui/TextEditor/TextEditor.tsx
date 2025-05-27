@@ -9,14 +9,14 @@ import StarterKit from '@tiptap/starter-kit';
 import cn from 'classnames';
 import DOMPurify from 'dompurify';
 import { common, createLowlight } from 'lowlight';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import 'highlight.js/styles/atom-one-dark.css';
 
-import { EditorProps } from '../../model/types';
-import { createCodeBlockNodeView } from '../../utils/createCodeBlockNodeView';
-import { BubbleMenu } from '../BubbleMenu/BubbleMenu';
+import '../../utils/TextEditor/utils/registerHighlightLanguages';
 
-import '../../utils/registerHighlightLanguages';
+import { BubbleMenu } from '@/shared/utils/TextEditor/BubbleMenu/BubbleMenu';
+import { EditorProps } from '@/shared/utils/TextEditor/model/types';
+import { createCodeBlockNodeView } from '@/shared/utils/TextEditor/utils/createCodeBlockNodeView';
 
 import styles from './TextEditor.module.css';
 
@@ -57,7 +57,7 @@ export const TextEditor = ({
 			StarterKit.configure({
 				codeBlock: false,
 				heading: {
-					levels: [1, 2],
+					levels: [1, 2, 3, 4, 5, 6],
 					HTMLAttributes: {
 						class: styles['editor-heading'],
 					},
@@ -79,7 +79,7 @@ export const TextEditor = ({
 				},
 				blockquote: {
 					HTMLAttributes: {
-						class: styles.blockquote,
+						class: styles['blockquote'],
 					},
 				},
 			}),
@@ -124,6 +124,8 @@ export const TextEditor = ({
 		),
 	});
 
+	const editorContentRef = useRef<HTMLDivElement>(null);
+
 	useEffect(() => {
 		if (editor && onReady) {
 			onReady(editor);
@@ -136,6 +138,30 @@ export const TextEditor = ({
 		}
 	}, [data, editor]);
 
+	useEffect(() => {
+		if (!editorContentRef.current) return;
+		const handleTab = (e: KeyboardEvent) => {
+			if (!editor) return;
+			const isCode = editor.isActive('codeBlock');
+			if (isCode && e.key === 'Tab') {
+				e.preventDefault();
+				if (e.shiftKey) {
+					editor.commands.command(({ tr, state }) => {
+						const { selection } = state;
+						const { from } = selection;
+						tr.insertText('', from - 1, from);
+						return true;
+					});
+				} else {
+					editor.commands.insertContent('\t');
+				}
+			}
+		};
+		const node = editorContentRef.current;
+		node.addEventListener('keydown', handleTab);
+		return () => node.removeEventListener('keydown', handleTab);
+	}, [editor]);
+
 	return (
 		<div
 			className={cn(styles['yeahub-text-editor'], className, {
@@ -146,6 +172,7 @@ export const TextEditor = ({
 		>
 			<BubbleMenu editor={editor} />
 			<EditorContent
+				ref={editorContentRef}
 				editor={editor}
 				className={cn(styles['editor-content'], styles['prose-mirror'])}
 			/>

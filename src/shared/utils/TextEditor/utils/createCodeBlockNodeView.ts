@@ -47,21 +47,14 @@ export function createCodeBlockNodeView(styles: Record<string, string>, lowlight
 		try {
 			result = lowlight.highlight(langAttr, rawCode);
 			code.innerHTML = toHtml(result);
+			code.classList.add('hljs');
 			code.classList.add(`language-${langAttr}`);
 		} catch {
 			code.textContent = rawCode;
+			code.classList.add('hljs');
 			code.classList.add('language-plaintext');
 		}
 
-		const header = document.createElement('div');
-		header.className = styles['code-block-header'];
-
-		const langLabel = document.createElement('span');
-		langLabel.textContent = langAttr;
-		langLabel.className = styles['code-block-language'];
-
-		header.appendChild(langLabel);
-		container.appendChild(header);
 		container.appendChild(pre);
 		pre.appendChild(code);
 
