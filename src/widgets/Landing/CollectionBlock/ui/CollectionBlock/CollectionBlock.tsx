@@ -19,7 +19,7 @@ export const CollectionBlock = () => {
 	return (
 		<section className={styles['collection']} data-testid="CollectionBlock">
 			<Flex gap="20" direction="column" align="center" className={styles['collection-wrapper']}>
-				<div data-testid="TitleBlock" className={styles['title-block']}>
+				<div data-testid="CollectionBlock_TitleBlock" className={styles['title-block']}>
 					<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 						{t(Landing.COLLECTION_TITLE).toUpperCase()}
 					</Text>

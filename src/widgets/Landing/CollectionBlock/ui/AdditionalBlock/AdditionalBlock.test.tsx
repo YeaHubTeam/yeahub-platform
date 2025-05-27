@@ -1,3 +1,6 @@
+import { screen } from '@testing-library/react';
+
+import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
@@ -17,34 +20,31 @@ describe('AdditionalBlock', () => {
 	test('render', () => {
 		renderComponent(<AdditionalBlock />);
 
-		const component = document.querySelector('.additional-block');
+		const component = screen.getByTestId('AdditionalBlock');
 		expect(component).toBeInTheDocument();
 	});
 
 	test('should render expand button only on mobile', () => {
 		require('@/shared/hooks').useScreenSize.mockReturnValue({ isMobileS: false });
 		const { rerender } = renderComponent(<AdditionalBlock />);
-		expect(document.querySelector('.expand-button')).toBeNull();
+		expect(screen.queryByTestId('AdditionalBlock_ExpandButton')).toBeNull();
 
 		require('@/shared/hooks').useScreenSize.mockReturnValue({ isMobileS: true });
 		rerender(<AdditionalBlock />);
-		expect(document.querySelector('.expand-button')).toBeInTheDocument();
+		const button = screen.getByTestId('AdditionalBlock_ExpandButton');
+		expect(button).toBeInTheDocument();
+		expect(button).toHaveTextContent(Landing.COLLECTION_EXPAND);
+		expect(button).toHaveClass('expand-button');
 	});
 
 	describe('LinkButton', () => {
 		test('should render main action button', () => {
 			renderComponent(<AdditionalBlock />);
 
-			const button = document.querySelector('.button');
+			const button = screen.getByTestId('AdditionalBlock_LinkButton');
 			expect(button).toBeInTheDocument();
-			expect(button?.tagName).toBe('BUTTON');
-		});
-
-		test('should contain text content', () => {
-			renderComponent(<AdditionalBlock />);
-
-			const button = document.querySelector('.button');
-			expect(button?.textContent).toBeTruthy();
+			expect(button).toHaveClass('button');
+			expect(button).toHaveTextContent(Landing.COLLECTION_LINK);
 		});
 	});
 
@@ -53,18 +53,42 @@ describe('AdditionalBlock', () => {
 			(useScreenSize as jest.Mock).mockReturnValue({ isMobileS: false });
 
 			const { rerender } = renderComponent(<AdditionalBlock />);
-			const card = document.querySelector('.additional-third');
+			const card = screen.getByTestId('AdditionalBlock_Third');
 			const textElement = card?.querySelector('p');
 
+			expect(card).toHaveClass('additional-third');
 			expect(textElement).toHaveClass('body5');
-			expect(textElement).not.toHaveClass('body3');
 
 			(useScreenSize as jest.Mock).mockReturnValue({ isMobileS: true });
 			rerender(<AdditionalBlock />);
 
 			const mobileTextElement = document.querySelector('.additional-third p');
 			expect(mobileTextElement).toHaveClass('body3');
-			expect(mobileTextElement).not.toHaveClass('body5');
+			expect(mobileTextElement).toHaveTextContent(Landing.COLLECTION_ADDITIONAL_THIRD);
+		});
+	});
+
+	describe('AdditionalSecondTitle', () => {
+		test('should apply correct text variant and translation', () => {
+			renderComponent(<AdditionalBlock />);
+			const card = screen.getByTestId('AdditionalBlock_Second');
+			const textElement = card?.querySelector('p');
+
+			expect(card).toHaveClass('additional-second');
+			expect(textElement).toHaveClass('body3');
+			expect(textElement).toHaveTextContent(Landing.COLLECTION_ADDITIONAL_SECOND);
+		});
+	});
+
+	describe('AdditionalFirstTitle', () => {
+		test('should apply correct text variant and translation', () => {
+			renderComponent(<AdditionalBlock />);
+			const card = screen.getByTestId('AdditionalBlock_First');
+			const textElement = card?.querySelector('p');
+
+			expect(card).toHaveClass('additional-first');
+			expect(textElement).toHaveClass('body3');
+			expect(textElement).toHaveTextContent(Landing.COLLECTION_ADDITIONAL_FIRST);
 		});
 	});
 });

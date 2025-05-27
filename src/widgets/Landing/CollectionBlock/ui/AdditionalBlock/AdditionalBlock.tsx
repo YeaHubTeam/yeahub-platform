@@ -16,27 +16,45 @@ export const AdditionalBlock = () => {
 	const { isMobileS } = useScreenSize();
 
 	return (
-		<Flex className={styles['additional-block']}>
+		<Flex dataTestId="AdditionalBlock" className={styles['additional-block']}>
 			{isMobileS && (
-				<Button className={styles['expand-button']} variant="outline">
+				<Button
+					dataTestId="AdditionalBlock_ExpandButton"
+					className={styles['expand-button']}
+					variant="outline"
+				>
 					{t(Landing.COLLECTION_EXPAND)}
 				</Button>
 			)}
-			<Card className={styles['additional-first']} withOutsideShadow>
+			<Card
+				dataTestId="AdditionalBlock_First"
+				className={styles['additional-first']}
+				withOutsideShadow
+			>
 				<Text variant="body3" color="white-900">
 					{t(Landing.COLLECTION_ADDITIONAL_FIRST)}
 				</Text>
 			</Card>
-			<Card className={styles['additional-second']} withOutsideShadow>
+			<Card
+				dataTestId="AdditionalBlock_Second"
+				className={styles['additional-second']}
+				withOutsideShadow
+			>
 				<Text variant="body3">{t(Landing.COLLECTION_ADDITIONAL_SECOND)}</Text>
 			</Card>
-			<Card className={styles['additional-third']} withOutsideShadow>
+			<Card
+				dataTestId="AdditionalBlock_Third"
+				className={styles['additional-third']}
+				withOutsideShadow
+			>
 				<Text variant={isMobileS ? 'body3' : 'body5'}>
 					{t(Landing.COLLECTION_ADDITIONAL_THIRD)}
 				</Text>
 			</Card>
 
-			<Button className={styles.button}>{t(Landing.COLLECTION_LINK)}</Button>
+			<Button dataTestId="AdditionalBlock_LinkButton" className={styles.button}>
+				{t(Landing.COLLECTION_LINK)}
+			</Button>
 		</Flex>
 	);
 };

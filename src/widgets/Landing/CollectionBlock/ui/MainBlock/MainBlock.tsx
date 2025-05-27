@@ -74,19 +74,26 @@ export const MainBlock = () => {
 	];
 
 	const renderCards = mockCards.map((collection, index) => (
-		<CollectionPreview variant="column" key={index} collection={collection} />
+		<div key={index} data-testid="MainBlock_Card">
+			<CollectionPreview variant="column" collection={collection} />
+		</div>
 	));
 
 	if (isMobile) {
 		return (
-			<Flex gap="20" className={styles['main-block']} direction="column">
+			<Flex
+				dataTestId="MainBlock_Mobile"
+				gap="20"
+				className={styles['main-block']}
+				direction="column"
+			>
 				{renderCards}
 			</Flex>
 		);
 	}
 
 	return (
-		<div data-testid="MainBlock" className={styles['main-block']}>
+		<div data-testid="MainBlock_Desktop" className={styles['main-block']}>
 			<Slider {...sliderSettings} className={styles['slider-container']}>
 				{renderCards}
 			</Slider>

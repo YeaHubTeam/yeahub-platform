@@ -20,4 +20,5 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	size?: 'large' | 'medium' | 'small' | 'x-large';
 	badge?: string | number;
 	destructive?: boolean;
+	dataTestId?: string;
 }

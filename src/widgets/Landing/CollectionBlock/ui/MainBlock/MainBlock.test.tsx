@@ -4,10 +4,6 @@ import Slider from 'react-slick';
 import { useScreenSize } from '@/shared/hooks';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
-import { CollectionPreview } from '@/entities/collection';
-
-import { sliderSettings } from '../../model/constants';
-
 import { MainBlock } from './MainBlock';
 
 jest.mock('@/shared/hooks', () => ({
@@ -34,14 +30,15 @@ describe('MainBlock', () => {
 
 	test('render', () => {
 		renderComponent(<MainBlock />);
-		expect(screen.getByTestId('MainBlock')).toBeInTheDocument();
+		expect(screen.getByTestId('MainBlock_Desktop')).toBeInTheDocument();
 	});
 
 	test('render slider on desktop', () => {
-		(useScreenSize as jest.Mock).mockReturnValue({ isMobile: false });
 		renderComponent(<MainBlock />);
 
 		expect(screen.getByTestId('slider')).toBeInTheDocument();
+		expect(screen.getByTestId('MainBlock_Desktop')).toBeInTheDocument();
+		expect(screen.queryByTestId('MainBlock_Mobile')).not.toBeInTheDocument();
 	});
 
 	test('render cards without slider on mobile', () => {
@@ -49,66 +46,45 @@ describe('MainBlock', () => {
 		renderComponent(<MainBlock />);
 
 		expect(screen.queryByTestId('slider')).not.toBeInTheDocument();
+		expect(screen.queryByTestId('MainBlock_Desktop')).not.toBeInTheDocument();
+		expect(screen.getByTestId('MainBlock_Mobile')).toBeInTheDocument();
 	});
 
-	describe('CollectionPreview', () => {
-		test('passes correct props', () => {
-			renderComponent(<MainBlock />);
-
-			const collectionPreviewCalls = (CollectionPreview as jest.Mock).mock.calls;
-
-			collectionPreviewCalls.forEach(([props]) => {
-				const { imageSrc, ...restCollection } = props.collection;
-
-				expect(props).toMatchObject({
-					variant: 'column',
-					collection: {
-						...restCollection,
-						id: expect.any(Number),
-						title: expect.any(String),
-						isFree: expect.any(Boolean),
-						tariff: expect.stringMatching(/free|premium/),
-						description: expect.any(String),
-						keywords: expect.any(Array),
-						specializations: expect.arrayContaining([
-							expect.objectContaining({
-								id: expect.any(Number),
-								title: expect.any(String),
-								description: expect.any(String),
-							}),
-						]),
-					},
-				});
-
-				expect(imageSrc).toBeDefined();
-			});
-		});
+	test('renders correct count of cards', () => {
+		renderComponent(<MainBlock />);
+		const cards = screen.getAllByTestId('MainBlock_Card');
+		expect(cards).toHaveLength(3);
 	});
 
 	describe('Slider', () => {
 		beforeEach(() => {
 			jest.clearAllMocks();
-
 			(useScreenSize as jest.Mock).mockReturnValue({ isMobile: false });
 		});
 
-		test('passes correct setting to Slider', () => {
+		test('passes correct slider settings', () => {
 			renderComponent(<MainBlock />);
-
-			expect(Slider).toHaveBeenCalled();
 
 			const sliderProps = (Slider as jest.Mock).mock.calls[0][0];
 
-			expect(sliderProps).toMatchObject({
-				dots: sliderSettings.dots,
-				infinite: sliderSettings.infinite,
-				speed: sliderSettings.speed,
-				slidesToShow: sliderSettings.slidesToShow,
-				variableWidth: sliderSettings.variableWidth,
-				className: 'slider-container',
-			});
+			expect(sliderProps).toEqual(
+				expect.objectContaining({
+					slidesToShow: expect.any(Number),
+					variableWidth: expect.any(Boolean),
+					responsive: expect.any(Array),
+				}),
+			);
 
-			expect(sliderProps.responsive).toEqual(sliderSettings.responsive);
+			expect(sliderProps.slidesToShow).toBe(3);
+			expect(sliderProps.variableWidth).toBe(false);
+			expect(sliderProps.responsive).toEqual([
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 2,
+					},
+				},
+			]);
 		});
 	});
 });

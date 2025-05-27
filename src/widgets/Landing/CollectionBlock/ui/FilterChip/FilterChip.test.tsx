@@ -10,9 +10,11 @@ describe('FilterChip', () => {
 		alt: 'Test Alt Text',
 	};
 
-	test('should render with correct props', () => {
+	beforeEach(() => {
 		renderComponent(<FilterChip {...testProps} />);
+	});
 
+	test('should render with correct props', () => {
 		const chipElement = screen.getByText(testProps.alt).closest('div');
 		expect(chipElement).toBeInTheDocument();
 
@@ -24,8 +26,6 @@ describe('FilterChip', () => {
 	});
 
 	test('should apply correct variant class', () => {
-		renderComponent(<FilterChip {...testProps} />);
-
 		const chipElement = screen.getByText(testProps.alt).closest('div');
 		expect(chipElement).toHaveClass('big');
 	});

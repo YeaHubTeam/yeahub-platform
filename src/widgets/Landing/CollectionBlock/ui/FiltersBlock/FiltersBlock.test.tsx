@@ -13,22 +13,19 @@ jest.mock('../FilterChip/FilterChip', () => ({
 }));
 
 describe('FiltersBlock', () => {
-	test('render', () => {
+	beforeEach(() => {
 		renderComponent(<FiltersBlock />);
+	});
 
-		expect(screen.getByTestId('FiltersBlock')).toBeInTheDocument();
+	test('render', () => {
+		const filterElement = screen.getByTestId('FiltersBlock');
+		expect(filterElement).toHaveClass('list');
+		expect(filterElement).toBeInTheDocument();
 	});
 
 	test('renders correct number of filter chips', () => {
-		renderComponent(<FiltersBlock />);
-		const chips = screen.getAllByTestId('filter-chip');
-		expect(chips).toHaveLength(filtersList.length);
-	});
-
-	test('has correct Flex container', () => {
-		renderComponent(<FiltersBlock />);
-
-		const flexContainer = screen.getByTestId('FiltersBlock').firstChild;
-		expect(flexContainer).toHaveClass('slider-container');
+		const container = screen.getByTestId('FiltersBlock_SliderContainer');
+		expect(container.children).toHaveLength(filtersList.length);
+		expect(container).toHaveClass('slider-container');
 	});
 });
