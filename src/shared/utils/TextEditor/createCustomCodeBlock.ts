@@ -1,15 +1,12 @@
 import { textblockTypeInputRule } from '@tiptap/core';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import { type Root } from 'hast';
+import { createLowlight } from 'lowlight';
 
 import { createCodeBlockNodeView } from './createCodeBlockNodeView';
 
-type LowlightType = {
-	highlight: (lang: string, code: string) => Root;
-	registered: (lang: string) => boolean;
-};
+const lowlight = createLowlight();
 
-export function createCustomCodeBlock(styles: Record<string, string>, lowlight: LowlightType) {
+export function createCustomCodeBlock(styles: Record<string, string>) {
 	return CodeBlockLowlight.extend({
 		addInputRules() {
 			return [
@@ -24,7 +21,7 @@ export function createCustomCodeBlock(styles: Record<string, string>, lowlight: 
 		},
 
 		addNodeView() {
-			return createCodeBlockNodeView(styles, lowlight);
+			return createCodeBlockNodeView(styles);
 		},
-	});
+	}).configure({ lowlight });
 }

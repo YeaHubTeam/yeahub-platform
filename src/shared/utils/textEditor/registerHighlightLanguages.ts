@@ -1,4 +1,3 @@
-import hljs from 'highlight.js';
 import cpp from 'highlight.js/lib/languages/cpp';
 import csharp from 'highlight.js/lib/languages/csharp';
 import css from 'highlight.js/lib/languages/css';
@@ -12,19 +11,25 @@ import ruby from 'highlight.js/lib/languages/ruby';
 import rust from 'highlight.js/lib/languages/rust';
 import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
-import html from 'highlight.js/lib/languages/xml';
+import xml from 'highlight.js/lib/languages/xml';
+import { createLowlight } from 'lowlight';
 
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('python', python);
-hljs.registerLanguage('html', html);
-hljs.registerLanguage('java', java);
-hljs.registerLanguage('go', go);
-hljs.registerLanguage('php', php);
-hljs.registerLanguage('ruby', ruby);
-hljs.registerLanguage('swift', swift);
-hljs.registerLanguage('kotlin', kotlin);
-hljs.registerLanguage('rust', rust);
-hljs.registerLanguage('cpp', cpp);
-hljs.registerLanguage('csharp', csharp);
-hljs.registerLanguage('typescript', typescript);
+const lowlight = createLowlight();
+
+lowlight.register('css', css);
+lowlight.register('javascript', javascript);
+lowlight.register('python', python);
+lowlight.register('html', xml);
+lowlight.register('xml', xml);
+lowlight.register('java', java);
+lowlight.register('go', go);
+lowlight.register('php', php);
+lowlight.register('ruby', ruby);
+lowlight.register('swift', swift);
+lowlight.register('kotlin', kotlin);
+lowlight.register('rust', rust);
+lowlight.register('cpp', cpp);
+lowlight.register('csharp', csharp);
+lowlight.register('typescript', typescript);
+
+export { lowlight };

@@ -124,6 +124,14 @@
 			},
 			"login": {
 				"failed": "Invalid email or password."
+			},
+			"user": {
+				"email": {
+					"not_exist": "User with this email does not exist."
+				},
+				"password": {
+					"wrong": "User with this email has another password."
+				}
 			}
 		},
 		"questions": {
@@ -274,4 +282,20 @@
 				}
 			}
 		}
+	},
+	"editor.bold": "Bold",
+	"editor.italic": "Italic",
+	"editor.underline": "Underline",
+	"editor.strike": "Strikethrough",
+	"editor.code.inline": "Inline code",
+	"editor.align.left": "Align left",
+	"editor.align.center": "Align center",
+	"editor.align.right": "Align right",
+	"editor.headings": "Headings",
+	"editor.blockquote": "Blockquote",
+	"editor.code.block": "Code block",
+	"editor.undo": "Undo",
+	"editor.redo": "Redo",
+	"editor.bullet.list": "Bullet list",
+	"editor.ordered.list": "Ordered list"
 }

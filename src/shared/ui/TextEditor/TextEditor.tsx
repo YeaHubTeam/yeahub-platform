@@ -5,19 +5,15 @@ import Underline from '@tiptap/extension-underline';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import cn from 'classnames';
-import { common, createLowlight } from 'lowlight';
 import { useCallback, useEffect, useRef } from 'react';
+
 import 'highlight.js/styles/atom-one-dark.css';
-
-import '@/shared/utils/textEditor/registerHighlightLanguages';
-
 import { BubbleMenu } from '@/shared/ui/BubbleMenu/BubbleMenu';
 import { EditorProps } from '@/shared/ui/TextEditor/types';
 import { createCustomCodeBlock, normalizeHtmlContent } from '@/shared/utils/textEditor';
+import { createPastePlugin } from '@/shared/utils/textEditor/createPastePlugin';
 
 import styles from './TextEditor.module.css';
-
-const lowlight = createLowlight(common);
 
 export const TextEditor = ({
 	isInline = false,
@@ -67,8 +63,7 @@ export const TextEditor = ({
 					class: styles['inline-code'],
 				},
 			}),
-			createCustomCodeBlock(styles, lowlight).configure({
-				lowlight,
+			createCustomCodeBlock(styles).configure({
 				HTMLAttributes: {
 					class: styles['code-block'],
 				},
@@ -80,7 +75,7 @@ export const TextEditor = ({
 			}),
 			Strike,
 		],
-		content: normalizeHtmlContent(data, 4),
+		content: normalizeHtmlContent(data),
 		editable: !disabled,
 		autofocus,
 		parseOptions: {
@@ -133,6 +128,12 @@ export const TextEditor = ({
 		const node = editorContentRef.current;
 		node.addEventListener('keydown', handleTab);
 		return () => node.removeEventListener('keydown', handleTab);
+	}, [editor]);
+
+	useEffect(() => {
+		if (editor) {
+			editor.registerPlugin(createPastePlugin(editor));
+		}
 	}, [editor]);
 
 	return (

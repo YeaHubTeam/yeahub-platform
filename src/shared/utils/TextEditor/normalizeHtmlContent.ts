@@ -1,8 +1,6 @@
 import DOMPurify from 'dompurify';
 
-import { normalizeIndentation } from './normalizeIndentation';
-
-export function normalizeHtmlContent(htmlContent: string, spacesCount = 4): string {
+export function normalizeHtmlContent(htmlContent: string): string {
 	if (!htmlContent) return '';
 
 	const tempDiv = document.createElement('div');
@@ -11,12 +9,6 @@ export function normalizeHtmlContent(htmlContent: string, spacesCount = 4): stri
 	const codeBlocks = tempDiv.querySelectorAll('pre code');
 
 	codeBlocks.forEach((codeElement) => {
-		const codeText = codeElement.textContent || '';
-		if (codeText.trim()) {
-			const normalizedCode = normalizeIndentation(codeText, spacesCount);
-			codeElement.textContent = normalizedCode;
-		}
-
 		const preElement = codeElement.parentElement;
 		if (preElement && preElement.tagName.toLowerCase() === 'pre') {
 			const currentClasses = Array.from(codeElement.classList);

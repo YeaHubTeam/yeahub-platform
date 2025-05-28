@@ -292,7 +292,7 @@
   color: var(--color-white-900);
   font-size: var(--font-size-p-s);
   font-family: var(--font-family-courier);
-  white-space: pre;
+  white-space: pre-wrap;
   word-break: normal;
 }
 

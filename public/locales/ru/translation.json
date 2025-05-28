@@ -126,6 +126,14 @@
 			},
 			"login": {
 				"failed": "Неверный email или пароль."
+			},
+			"user": {
+				"email": {
+					"not_exist": "Пользователя с таким email не существует."
+				},
+				"password": {
+					"wrong": "Неверный пароль."
+				}
 			}
 		},
 		"questions": {
@@ -144,6 +152,26 @@
 			"edit": {
 				"success": "Вопрос успешно изменен",
 				"failed": "Не удалось изменить вопрос"
+			},
+			"delete": {
+				"single": {
+					"success": "Вопрос успешно удален",
+					"failed": "Не удалось удалить вопрос"
+				},
+				"multiple": {
+					"success": "Успешно удалено вопросов:",
+					"failed": "Не удалось удалить вопрос:"
+				}
+			}
+		},
+		"skills": {
+			"create": {
+				"success": "Навык успешно создан",
+				"failed": "Не удалось создать навык"
+			},
+			"edit": {
+				"success": "Навык успешно изменен",
+				"failed": "Не удалось изменить навык"
 			},
 			"delete": {
 				"single": {
@@ -268,4 +296,20 @@
 				"failed": "Не удалось создать компанию"
 			}
 		}
+	},
+	"editor.bold": "Жирный",
+	"editor.italic": "Курсив",
+	"editor.underline": "Подчеркнутый",
+	"editor.strike": "Зачеркнутый",
+	"editor.code.inline": "Инлайн код",
+	"editor.align.left": "По левому краю",
+	"editor.align.center": "По центру",
+	"editor.align.right": "По правому краю",
+	"editor.headings": "Заголовки",
+	"editor.blockquote": "Цитата",
+	"editor.code.block": "Блок кода",
+	"editor.undo": "Отменить",
+	"editor.redo": "Повторить",
+	"editor.bullet.list": "Маркированный список",
+	"editor.ordered.list": "Нумерованный список"
 }

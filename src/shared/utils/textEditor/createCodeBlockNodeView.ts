@@ -1,6 +1,4 @@
 import { NodeViewProps } from '@tiptap/core';
-import { Root } from 'hast';
-import { toHtml } from 'hast-util-to-html';
 
 const languageMap: Record<string, string> = {
 	js: 'javascript',
@@ -24,11 +22,7 @@ const languageMap: Record<string, string> = {
 	rust: 'rust',
 };
 
-type Lowlight = {
-	highlight: (lang: string, code: string) => Root;
-};
-
-export function createCodeBlockNodeView(styles: Record<string, string>, lowlight: Lowlight) {
+export function createCodeBlockNodeView(styles: Record<string, string>) {
 	return ({ node }: Pick<NodeViewProps, 'node'>) => {
 		const container = document.createElement('div');
 		container.className = styles['code-block-wrapper'];
@@ -43,17 +37,9 @@ export function createCodeBlockNodeView(styles: Record<string, string>, lowlight
 		let langAttr = (node.attrs.language || 'plaintext').toLowerCase().trim();
 		langAttr = languageMap[langAttr] || langAttr;
 
-		let result;
-		try {
-			result = lowlight.highlight(langAttr, rawCode);
-			code.innerHTML = toHtml(result);
-			code.classList.add('hljs');
-			code.classList.add(`language-${langAttr}`);
-		} catch {
-			code.textContent = rawCode;
-			code.classList.add('hljs');
-			code.classList.add('language-plaintext');
-		}
+		code.textContent = rawCode;
+		code.classList.add('hljs');
+		code.classList.add(`language-${langAttr}`);
 
 		container.appendChild(pre);
 		pre.appendChild(code);
