@@ -1,12 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
+import { Slider } from '@/shared/ui/Slider';
 
 import { CollectionPreview } from '@/entities/collection';
 

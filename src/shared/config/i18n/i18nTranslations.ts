@@ -144,6 +144,8 @@ export enum Translation {
 	TOAST_COMPANIES_DELETE_MULTIPLE_FAILED = 'toast.companies.delete.multiple.failed',
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
+	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
+	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -182,6 +184,7 @@ export enum Profile {
 	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',
+	SETTINGS_TABS_ACCOUNT = 'settings.tabs.account',
 	EMAIL_VERIFICATION_TITLE = 'email.verification.title',
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
@@ -243,6 +246,7 @@ export enum Auth {
 }
 
 export enum Specializations {
+	TITLE_MAIN = 'title.main',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -344,6 +348,7 @@ export enum Questions {
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
 	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
+	PREVIEW_LOCKED_COLLECTION = 'preview.locked.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -398,6 +403,9 @@ export enum Questions {
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+
+	COMMUNITY_JOIN = 'community.join',
 }
 
 export enum InterviewHistory {
@@ -472,6 +480,12 @@ export enum User {
 	FILTER_EMAIL = 'filter.email',
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
+	DELETE_TITLE = 'delete.title',
+	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
+	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
+	DELETE_BUTTON = 'delete.button',
+	DELETE_LABEL = 'delete.label',
+	DELETE_PLACEHOLDER = 'delete.placeholder',
 }
 
 export enum Collections {
@@ -495,6 +509,7 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',

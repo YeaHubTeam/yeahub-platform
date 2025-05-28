@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { FilterFromUser } from '@/shared/hooks';
+import { FilterFromUser, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
 
@@ -17,6 +19,7 @@ interface CollectionsProps {
 	collections: Collection[];
 	filter: FilterFromUser;
 	resetFilters: () => void;
+	renderDrawer: () => ReactNode;
 }
 
 export const CollectionsContent = ({
@@ -24,13 +27,20 @@ export const CollectionsContent = ({
 	pagination,
 	filter,
 	resetFilters,
+	renderDrawer,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
+	const { isSmallScreen } = useScreenSize();
 
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
-				<h1 className={styles.title}>{t(Collections.COLLECTIONS_TITLE)}</h1>
+				<Flex className={styles.header} direction="row" justify="between">
+					<Text variant="head1" className={styles.title}>
+						{t(Collections.COLLECTIONS_TITLE)}
+					</Text>
+					{isSmallScreen && renderDrawer()}
+				</Flex>
 
 				<CollectionsList collections={collections} />
 				{pagination}

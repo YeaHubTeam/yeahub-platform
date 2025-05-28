@@ -1,12 +1,9 @@
-import Slider from 'react-slick';
+import { Slider } from '@/shared/ui/Slider';
 
 import { skillsList, skillsTickerSliderSettings } from '../../model/constants';
 import { SkillChip } from '../SkillChip/SkillChip';
 
 import styles from './SkillsListTicker.module.css';
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 export const SkillsListTicker = () => {
 	return (

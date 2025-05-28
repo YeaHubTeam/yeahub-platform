@@ -1,8 +1,12 @@
+import { useScreenSize } from '@/shared/hooks';
+import { Card } from '@/shared/ui/Card';
+
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 
 import {
 	CollectionsContent,
-	CollectionsFilters,
+	CollectionsFilterPanel,
+	CollectionsFiltersDrawer,
 	CollectionsPagination,
 	useCollectionsFilters,
 } from '@/widgets/Collection';
@@ -30,6 +34,8 @@ const PublicCollectionsPage = () => {
 		limit: COLLECTIONS_PER_PAGE,
 	});
 
+	const { isLargeScreen } = useScreenSize();
+
 	if (isLoadingCollections) {
 		return <PublicCollectionsPageSkeleton />;
 	}
@@ -53,14 +59,33 @@ const PublicCollectionsPage = () => {
 						/>
 					)
 				}
+				renderDrawer={() => (
+					<CollectionsFiltersDrawer
+						onChangeSearch={onChangeSearchParams}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeIsFree={onChangeIsFree}
+						filter={{
+							title: filter.title,
+							specialization: filter.specialization,
+							isFree: filter.isFree,
+						}}
+					/>
+				)}
 			/>
-			<CollectionsFilters
-				onChangeSearch={onChangeSearchParams}
-				onChangeSpecialization={onChangeSpecialization}
-				onChangeIsFree={onChangeIsFree}
-				filter={filter}
-				isPublicCollections
-			/>
+			{isLargeScreen && (
+				<Card className={styles.filters}>
+					<CollectionsFilterPanel
+						onChangeSearch={onChangeSearchParams}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeIsFree={onChangeIsFree}
+						filter={{
+							title: filter.title,
+							specialization: filter.specialization,
+							isFree: filter.isFree,
+						}}
+					/>
+				</Card>
+			)}
 		</section>
 	);
 };

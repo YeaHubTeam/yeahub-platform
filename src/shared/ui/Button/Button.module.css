@@ -75,7 +75,7 @@
     background-color: var(--button-background-primary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-primary-focus);
     background-color: var(--button-background-primary-focus);
   }
@@ -112,7 +112,7 @@
     background-color: var(--button-background-secondary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-secondary-focus);
     background-color: var(--button-background-secondary-focus);
   }
@@ -136,8 +136,8 @@
     background-color: var(--button-background-outline-hover);
   }
 
-  &:focus {
-    border: 2px solid var(--button-border-outline-focus);
+  &:focus-visible {
+    outline: 1px solid var(--button-border-outline-focus);
   }
 
   &:active {
@@ -167,7 +167,7 @@
     background-color: var(--button-background-tertiary-hover) ;
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-tertiary-focus);
     background-color: var(--button-background-tertiary-focus);
     color: var(--button-text-color-tertiary-focus);
@@ -190,6 +190,30 @@
   }
 }
 
+.button-tertiary-link {
+  justify-content: flex-start;
+  padding: 6px 10px;
+  width: 100%;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--color-black-1000);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+	
+  &:hover {
+    background-color: var(--button-background-tertiary-hover);
+    color: var(--color-purple-800);
+  }
+	
+  &:focus {
+    border: 1px solid transparent;
+  }
+	
+  &:not([disabled]):hover {
+    color: var(--color-purple-700);
+  }
+}
+
 .button-destructive {
   background-color: var(--button-background-destructive);
 
@@ -197,7 +221,7 @@
     background-color: var(--button-background-destructive-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-destructive-focus);
     background-color: var(--button-background-destructive-focus);
   }
@@ -219,7 +243,7 @@
     background-color: var(--button-background-destructive-secondary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-destructive-secondary-focus);
     background-color: var(--button-background-destructive-secondary-focus);
   }
@@ -245,8 +269,8 @@
     background-color: var(--button-background-destructive-outline-hover);
   }
 
-  &:focus {
-    border: 2px solid var(--button-border-destructive-outline-focus);
+  &:focus-visible {
+    outline: 1px solid var(--button-border-destructive-outline-focus);
     color: var(--button-text-color-destructive-outline-focus);
   }
 
@@ -277,7 +301,7 @@
     background-color: var(--button-background-destructive-tartiary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     border: 1px solid var(--button-border-destructive-tartiary-focus);
   }
 
@@ -368,7 +392,7 @@
     color: var(--link-text-color-primary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     color: var(--link-text-color-primary-focus);
   }
 
@@ -384,7 +408,7 @@
     color: var(--link-text-color-secondary-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     color: var(--link-text-color-secondary-focus);
   }
 
@@ -400,7 +424,7 @@
     color: var(--link-text-color-purple-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     color: var(--link-text-color-purple-focus);
   }
 
@@ -416,7 +440,7 @@
     color: var(--link-text-color-destructive-hover);
   }
 
-  &:focus {
+  &:focus-visible {
     color: var(--link-text-color-destructive-focus);
   }
 

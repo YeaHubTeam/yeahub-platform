@@ -15,6 +15,12 @@
 		"title-short": "Image",
 		"label": "Add collection image"
 	},
+	"tariff": {
+		"chooseCollections": "Collections",
+		"label": "Choose a variant",
+		"paid": "For members",
+		"free": "For all"
+	},
 	"select": {
 		"chooseCollections": "Collections",
 		"label": "Select option",
@@ -49,5 +55,8 @@
 		"title": "Company",
 		"label": "Add company to this collection"
 	},
-	"empty": "Collections will appear soon"
+	"empty": "Collections will appear soon",
+	"additional": {
+		"aria.label": "Go to additional info"
+	}
 }

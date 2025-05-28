@@ -1,7 +1,7 @@
 export interface FilterParams {
 	title?: string;
 	specialization?: number[] | number;
-	tariff?: boolean;
+	isFree?: boolean;
 	page?: number;
 }
 

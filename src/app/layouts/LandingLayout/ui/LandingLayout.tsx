@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -9,22 +8,27 @@ import { CookiesWarning } from '@/widgets/Landing/CookiesWarningBlock';
 import { Footer } from '@/widgets/Landing/Footer';
 import { Header } from '@/widgets/Landing/Header';
 
+import { SkeletonGenerator } from '../model/helper/SkeletonGenerator';
+
 import styles from './LandingLayout.module.css';
+import { LandingLayoutSkeleton } from './LandingLayout.skeleton';
 
 export const LandingLayout = () => {
 	return (
 		<Flex direction="column">
-			<Flex direction="column" className={styles.wrapper}>
+			<Suspense fallback={<LandingLayoutSkeleton />}>
 				<Header />
-				<main className={classNames('container', styles.main)}>
-					<Suspense>
-						<AutoScrollToTop>
-							<Outlet />
-						</AutoScrollToTop>
-					</Suspense>
-				</main>
-			</Flex>
-			<Footer />
+				<AutoScrollToTop>
+					<main className={styles.main}>
+						<Flex direction="column" className={styles['main-content']}>
+							<Suspense fallback={<SkeletonGenerator />}>
+								<Outlet />
+							</Suspense>
+						</Flex>
+					</main>
+				</AutoScrollToTop>
+				<Footer />
+			</Suspense>
 			<CookiesWarning />
 		</Flex>
 	);

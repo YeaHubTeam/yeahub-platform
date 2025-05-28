@@ -1,20 +1,31 @@
-.wrapper {
-  min-height: 100vh;
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 120px;
+  min-height: calc(100vh - var(--header-height-lg));
 }
 
-.wrapper .main {
-  position: relative;
-  padding: 40px 0;
+.main-content {
+  width: 100%;
+  max-width: var(--container-width);
 }
 
-@media screen and (width < 1440px) {
-  .wrapper .main {
-    padding: 24px 30px;
+@media (width < 1440px) {
+  .main {
+    padding: 30px 60px 120px;
   }
 }
 
-@media screen and (width < 768px) {
-  .wrapper .main {
-    padding: 20px 10px;
+@media (width < 1200px) {
+  .main {
+    padding: 30px 30px 80px;
+    min-height: calc(100vh - var(--header-height-md));
+  }
+}
+
+@media (width < 768px) {
+  .main {
+    padding: 20px 10px 40px;
+    min-height: calc(100vh - var(--header-height-sm));
   }
 }

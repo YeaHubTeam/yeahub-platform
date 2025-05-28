@@ -8,6 +8,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { useCurrentProject } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -34,12 +35,19 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 		paid: t(Collections.TARIFF_PAID, { ns: i18Namespace.collection }),
 	};
 
+	const project = useCurrentProject();
+
+	const isLandingPageVariant = variant === 'column';
+
+	const collectionPath = isLandingPageVariant
+		? ROUTES.collections.page
+		: project === 'landing'
+			? route(ROUTES.collections.detail.page, id)
+			: route(ROUTES.interview.collections.detail.page, id);
+
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<Link
-				to={route(ROUTES.interview.collections.detail.page, id)}
-				className={classnames(styles.wrapper, styles[variant])}
-			>
+			<Link to={collectionPath} className={classnames(styles.wrapper, styles[variant])}>
 				<ImageWithWrapper
 					src={imageSrc || company?.imageSrc}
 					alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}

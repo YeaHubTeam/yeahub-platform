@@ -36,6 +36,14 @@ const collectionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
+		getPublicCollectionById: build.query<GetCollectionByIdResponse, GetCollectionByIdParamsRequest>(
+			{
+				query: ({ collectionId }) => ({
+					url: route(collectionApiUrls.getPublicCollectionById, collectionId || ''),
+				}),
+				providesTags: [ApiTags.COLLECTIONS],
+			},
+		),
 		getCollectionQuestions: build.query<
 			GetCollectionQuestionsResponse,
 			GetCollectionByIdParamsRequest
@@ -53,4 +61,5 @@ export const {
 	useGetCollectionsListQuery,
 	useGetCollectionByIdQuery,
 	useGetCollectionQuestionsQuery,
+	useGetPublicCollectionByIdQuery,
 } = collectionApi;

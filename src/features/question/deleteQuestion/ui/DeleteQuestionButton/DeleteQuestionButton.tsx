@@ -52,8 +52,8 @@ export const DeleteQuestionButton = ({
 					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} />}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
+				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={handleOpenModal}
 			>
 				{t(Translation.DELETE)}
