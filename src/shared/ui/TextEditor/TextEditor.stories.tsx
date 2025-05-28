@@ -48,37 +48,34 @@ const defaultContent = `
   </li>
 </ol>
 
-<pre>
-<code class="language-typescript">
-// Пример кода с подсветкой синтаксиса и скроллбаром
+<pre><code class="language-typescript">// Пример кода с подсветкой синтаксиса и скроллбаром
 interface User {
-  id: number;
-  name: string;
-  email: string;
+	id: number;
+	name: string;
+	email: string;
 }
 
 const user: User = {
-  id: 1,
-  name: "John Doe",
-  email: "john@example.com"
+	id: 1,
+	name: "John Doe",
+	email: "john@example.com"
 };
 
 // Дополнительные строки для демонстрации скроллбара
 function fetchUsers(): Promise<User[]> {
-  return fetch('/api/users')
-    .then(response => response.json())
-    .then(data => data as User[]);
+	return fetch('/api/users')
+		.then(response => response.json())
+		.then(data => data as User[]);
 }
 
 async function displayUsers() {
-  try {
-    const users = await fetchUsers();
-    console.log(users);
-  } catch (error) {
-    console.error('Ошибка при загрузке пользователей:', error);
-  }
-}
-</code></pre>
+	try {
+		const users = await fetchUsers();
+		console.log(users);
+	} catch (error) {
+		console.error('Ошибка при загрузке пользователей:', error);
+	}
+}</code></pre>
 `;
 
 export const Default: Story = {

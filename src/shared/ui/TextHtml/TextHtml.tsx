@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import DOMPurify from 'dompurify';
 import { toHtml } from 'hast-util-to-html';
 import { common, createLowlight } from 'lowlight';
@@ -6,6 +6,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect, useRef } from 'react';
 
 import { determineLanguage } from '@/shared/libs/utils/determineLanguage';
+import { normalizeHtmlContent } from '@/shared/utils/textEditor';
 
 import styles from './TextHtml.module.css';
 
@@ -24,8 +25,10 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 		if (!contentRef.current) return;
 
 		const processCodeBlocks = () => {
+			const normalizedHtml = normalizeHtmlContent(html);
+
 			const parser = new DOMParser();
-			const sanitizedHtml = DOMPurify.sanitize(html, {
+			const sanitizedHtml = DOMPurify.sanitize(normalizedHtml, {
 				ADD_TAGS: ['pre', 'code'],
 				ADD_ATTR: ['class'],
 				FORBID_ATTR: ['style'],
@@ -111,7 +114,7 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 	}, [html, disableCodeCopy]);
 
 	return (
-		<div className={classNames(styles['text-html'], className)}>
+		<div className={cn(styles['text-html'], className)}>
 			<div ref={contentRef} className={styles.content} />
 		</div>
 	);

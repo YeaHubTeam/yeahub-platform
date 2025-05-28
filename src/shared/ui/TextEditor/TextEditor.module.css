@@ -277,40 +277,30 @@
   font-size: var(--font-size-p-s);
 }
 
-.editor-content::-webkit-scrollbar,
-.code-block::-webkit-scrollbar,
-.code-block-wrapper::-webkit-scrollbar,
-.editor-content pre::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-}
-
-.editor-content::-webkit-scrollbar-thumb,
-.code-block::-webkit-scrollbar-thumb,
-.code-block-wrapper::-webkit-scrollbar-thumb,
-.editor-content pre::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background: #b0b0b0;
-}
-
-.editor-content::-webkit-scrollbar-corner,
-.code-block::-webkit-scrollbar-corner,
-.code-block-wrapper::-webkit-scrollbar-corner,
-.editor-content pre::-webkit-scrollbar-corner {
-  background: transparent;
+.editor-content pre,
+.editor-content code {
+  tab-size: 8
 }
 
 .editor-content .code-block,
 .editor-content pre,
 .editor-content pre code,
 .editor-content .code-block code {
-  padding: 8px;
-  max-height: 300px ;
-  background: #282c34;
-  color: var(--color-white-900) ;
-  font-size: var(--font-size-p-s) ;
-  font-family: var(--font-family-courier) ;
+  tab-size: 8;
+  max-height: 300px;
+  overflow: auto;
+  color: var(--color-white-900);
+  font-size: var(--font-size-p-s);
+  font-family: var(--font-family-courier);
+  white-space: pre;
+  word-break: normal;
+}
+
+.editor-content pre[class*="code-block"],
+.editor-content code[class*="code-block"],
+.editor-content pre[class*="TextEditor-module"],
+.editor-content code[class*="TextEditor-module"] {
+  tab-size: 8;
   white-space: pre;
   word-break: normal;
 }

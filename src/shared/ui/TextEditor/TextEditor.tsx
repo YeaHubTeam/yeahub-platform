@@ -1,44 +1,23 @@
-import { textblockTypeInputRule } from '@tiptap/core';
 import Code from '@tiptap/extension-code';
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import Strike from '@tiptap/extension-strike';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import cn from 'classnames';
-import DOMPurify from 'dompurify';
 import { common, createLowlight } from 'lowlight';
 import { useCallback, useEffect, useRef } from 'react';
 import 'highlight.js/styles/atom-one-dark.css';
 
-import '../../utils/TextEditor/utils/registerHighlightLanguages';
+import '@/shared/utils/textEditor/registerHighlightLanguages';
 
-import { BubbleMenu } from '@/shared/utils/TextEditor/BubbleMenu/BubbleMenu';
-import { EditorProps } from '@/shared/utils/TextEditor/model/types';
-import { createCodeBlockNodeView } from '@/shared/utils/TextEditor/utils/createCodeBlockNodeView';
+import { BubbleMenu } from '@/shared/ui/BubbleMenu/BubbleMenu';
+import { EditorProps } from '@/shared/ui/TextEditor/types';
+import { createCustomCodeBlock, normalizeHtmlContent } from '@/shared/utils/textEditor';
 
 import styles from './TextEditor.module.css';
 
 const lowlight = createLowlight(common);
-
-const CustomCodeBlock = CodeBlockLowlight.extend({
-	addInputRules() {
-		return [
-			textblockTypeInputRule({
-				find: /^```([a-z0-9+#/\\-]*)?[\s\n]$/i,
-				type: this.type,
-				getAttributes: (match) => ({
-					language: match[1] || 'plaintext',
-				}),
-			}),
-		];
-	},
-
-	addNodeView() {
-		return createCodeBlockNodeView(styles, lowlight);
-	},
-});
 
 export const TextEditor = ({
 	isInline = false,
@@ -88,7 +67,7 @@ export const TextEditor = ({
 					class: styles['inline-code'],
 				},
 			}),
-			CustomCodeBlock.configure({
+			createCustomCodeBlock(styles, lowlight).configure({
 				lowlight,
 				HTMLAttributes: {
 					class: styles['code-block'],
@@ -101,7 +80,7 @@ export const TextEditor = ({
 			}),
 			Strike,
 		],
-		content: DOMPurify.sanitize(data),
+		content: normalizeHtmlContent(data, 4),
 		editable: !disabled,
 		autofocus,
 		parseOptions: {
@@ -131,12 +110,6 @@ export const TextEditor = ({
 			onReady(editor);
 		}
 	}, [editor, onReady]);
-
-	useEffect(() => {
-		if (editor && editor.getHTML() !== data) {
-			editor.commands.setContent(DOMPurify.sanitize(data));
-		}
-	}, [data, editor]);
 
 	useEffect(() => {
 		if (!editorContentRef.current) return;

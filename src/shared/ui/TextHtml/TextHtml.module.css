@@ -97,6 +97,7 @@
 .content pre,
 .content pre code,
 .content pre code.hljs {
+  min-height: 56px;
   max-height: 300px;
   overflow: auto;
   font-size: var(--font-size-p-s);
@@ -110,6 +111,21 @@
   padding: 12px;
   background: transparent;
   color: var(--color-white-900);
+  tab-size: 8;
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 transparent;
+}
+
+.content pre[class*="code-block"],
+.content code[class*="code-block"],
+.content pre[class*="TextEditor-module"],
+.content code[class*="TextEditor-module"] {
+  tab-size: 8;
+  white-space: pre;
+  word-break: normal;
+}
+
+.content pre {
   tab-size: 8;
 }
  
@@ -139,6 +155,8 @@
   border-bottom: none;
   border-radius: 10px;
   background: var(--color-black-900);
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 transparent;
 }
  
 .code-block-language {
