@@ -1,6 +1,7 @@
 import { useScreenSize } from '@/shared/hooks';
+import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 import { SpecializationCardSkeleton } from '@/widgets/Landing/SpecialityBlock/ui/SpecializationCard/SpecializationCard.skeleton';
 
@@ -11,8 +12,8 @@ export const SpecializationBlockSkeleton = () => {
 
 	return (
 		<Flex direction="column" className={styles.container}>
-			<Skeleton
-				height={isMobile ? 24 : 39}
+			<TextSkeleton
+				variant={isMobile ? 'body5-accent' : 'head3'}
 				width={isMobile ? 330 : '50%'}
 				className={styles.title}
 			/>
@@ -25,7 +26,7 @@ export const SpecializationBlockSkeleton = () => {
 				))}
 			</ul>
 
-			{(isMobile || isDesktopS) && <Skeleton height={40} width={240} className={styles.button} />}
+			{(isMobile || isDesktopS) && <ButtonSkeleton fullWidth className={styles.button} />}
 		</Flex>
 	);
 };
