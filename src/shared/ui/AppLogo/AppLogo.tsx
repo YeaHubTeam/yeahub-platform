@@ -8,7 +8,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import styles from './AppLogo.module.css';
 
-interface AppLogoProps {
+export interface AppLogoProps {
 	navigateTo?: string;
 	logoType?: 'light' | 'dark';
 	fill?: 'white' | 'black';
