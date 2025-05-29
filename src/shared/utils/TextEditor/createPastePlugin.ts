@@ -7,6 +7,10 @@ export function createPastePlugin(editorInstance: Editor) {
 	return new Plugin({
 		props: {
 			handlePaste(view, event, _slice) {
+				const html = event.clipboardData?.getData('text/html');
+				if (html) {
+					return false;
+				}
 				const text = event.clipboardData?.getData('text/plain');
 				const state = view.state;
 				const { $from } = state.selection;

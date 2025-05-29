@@ -1,17 +1,19 @@
 import { Level } from '@tiptap/extension-heading';
 import { BubbleMenu as TiptapBubbleMenu, Editor } from '@tiptap/react';
+import { DOMSerializer } from 'prosemirror-model';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { TextEditor } from '@/shared/config/i18n/i18nTranslations';
+import { convertSpacesToTabs } from '@/shared/utils/textEditor';
 
-import styles from './BubbleMenu.module.css';
+import styles from './BubbleMenuEditor.module.css';
 
 interface BubbleMenuProps {
 	editor: Editor | null;
 }
 
-const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
+const BubbleMenuEditor = ({ editor }: BubbleMenuProps) => {
 	const [showHeadings, setShowHeadings] = useState(false);
 	const { t } = useTranslation();
 
@@ -326,7 +328,30 @@ const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 						if (isActive) {
 							command.toggleCodeBlock().run();
 						} else {
-							command.setNode('codeBlock', { language: 'typescript' }).run();
+							const { state } = editor;
+							const { from, to } = state.selection;
+							const slice = state.doc.slice(from, to);
+							const serializer = DOMSerializer.fromSchema(editor.schema);
+							const div = document.createElement('div');
+							slice.content.forEach((node) => {
+								const dom = serializer.serializeNode(node);
+								div.appendChild(dom);
+							});
+							const lines: string[] = [];
+							div.childNodes.forEach((node) => {
+								if (node.nodeType === Node.ELEMENT_NODE) {
+									lines.push((node as HTMLElement).innerText);
+								} else if (node.nodeType === Node.TEXT_NODE) {
+									lines.push(node.textContent || '');
+								}
+							});
+							const plain = lines.filter((line) => line.trim().length > 0).join('\n');
+							const formatted = convertSpacesToTabs(plain, 2);
+							editor.commands.insertContent({
+								type: 'codeBlock',
+								attrs: { language: 'plaintext' },
+								content: [{ type: 'text', text: formatted }],
+							});
 						}
 					}}
 					className={
@@ -421,4 +446,4 @@ const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 	);
 };
 
-export { BubbleMenu };
+export { BubbleMenuEditor };

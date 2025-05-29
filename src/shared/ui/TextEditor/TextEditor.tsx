@@ -8,7 +8,7 @@ import cn from 'classnames';
 import { useCallback, useEffect, useRef } from 'react';
 
 import 'highlight.js/styles/atom-one-dark.css';
-import { BubbleMenu } from '@/shared/ui/BubbleMenu/BubbleMenu';
+import { BubbleMenuEditor } from '@/shared/ui/BubbleMenu/BubbleMenuEditor';
 import { EditorProps } from '@/shared/ui/TextEditor/types';
 import { createCustomCodeBlock, normalizeHtmlContent } from '@/shared/utils/textEditor';
 import { createPastePlugin } from '@/shared/utils/textEditor/createPastePlugin';
@@ -144,7 +144,7 @@ export const TextEditor = ({
 			})}
 			id={String(id)}
 		>
-			<BubbleMenu editor={editor} />
+			<BubbleMenuEditor editor={editor} />
 			<EditorContent
 				ref={editorContentRef}
 				editor={editor}

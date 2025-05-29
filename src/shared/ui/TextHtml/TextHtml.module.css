@@ -93,7 +93,16 @@
 .content ol ol {
   list-style-type: lower-alpha;
 }
- 
+
+.content code {
+  display: inline;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: var(--color-black-10);
+  color: var(--color-green-700);
+  font-size: var(--font-size-p-s);
+}
+
 .content pre,
 .content pre code,
 .content pre code.hljs {
@@ -128,6 +137,7 @@
 .content pre {
   tab-size: 8;
 }
+
  
 .content pre code.hljs {
   padding: 0 ;
