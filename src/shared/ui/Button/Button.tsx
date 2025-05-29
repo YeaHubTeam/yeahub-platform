@@ -17,6 +17,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 			preffix,
 			suffix,
 			badge,
+			dataTestId = 'Button',
 			...props
 		},
 		ref,
@@ -39,7 +40,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 					tagName === 'a' && props.disabled ? styles['disabled'] : '',
 				)}
 				{...props}
-				data-testid="Button"
+				data-testid={dataTestId}
 			>
 				{preffix}
 				{children}

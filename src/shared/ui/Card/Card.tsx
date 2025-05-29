@@ -24,6 +24,7 @@ export interface CardProps {
 	withOutsideShadow?: boolean;
 	isActionPositionBottom?: boolean;
 	isTitleCenter?: boolean;
+	dataTestId?: string;
 }
 
 interface ExpandIconProps {
@@ -83,6 +84,7 @@ export const Card = ({
 	actionDisabled = false,
 	isActionPositionBottom = false,
 	isTitleCenter = false,
+	dataTestId = 'Card',
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -123,6 +125,7 @@ export const Card = ({
 
 	return (
 		<Flex
+			dataTestId={dataTestId}
 			gap="16"
 			direction="column"
 			className={classNames(styles.card, className, {

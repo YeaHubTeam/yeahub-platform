@@ -4,8 +4,8 @@ import progressDescription from '@/widgets/Landing/HistoryBlock/model/assets/pro
 
 export const sliderSettings = {
 	dots: true,
-	arrows: false,
 	speed: 500,
+	variableWidth: false,
 };
 
 export const historySlides = [

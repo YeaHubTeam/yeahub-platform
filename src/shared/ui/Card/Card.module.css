@@ -165,5 +165,6 @@
 }
 
 .content-height {
+  z-index: 0;
   margin-bottom: unset;
 }

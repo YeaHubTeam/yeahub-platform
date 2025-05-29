@@ -51,8 +51,8 @@ export const DeleteSpecializationButton = ({
 					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
-				preffix={isDetailPage ? undefined : <Icon icon="trash" size={20} />}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
+				preffix={isDetailPage ? undefined : <Icon icon="trash" size={24} />}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={handleOpenModal}
 			>
 				{t(Translation.DELETE)}
