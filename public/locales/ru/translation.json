@@ -296,5 +296,20 @@
 				"failed": "Не удалось создать компанию"
 			}
 		}
-	}
+	},
+	"editor.bold": "Жирный",
+	"editor.italic": "Курсив",
+	"editor.underline": "Подчеркнутый",
+	"editor.strike": "Зачеркнутый",
+	"editor.code.inline": "Инлайн код",
+	"editor.align.left": "По левому краю",
+	"editor.align.center": "По центру",
+	"editor.align.right": "По правому краю",
+	"editor.headings": "Заголовки",
+	"editor.blockquote": "Цитата",
+	"editor.code.block": "Блок кода",
+	"editor.undo": "Отменить",
+	"editor.redo": "Повторить",
+	"editor.bullet.list": "Маркированный список",
+	"editor.ordered.list": "Нумерованный список"
 }
