@@ -8,7 +8,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 
 import styles from './AppLogo.module.css';
 
-export interface AppLogoProps {
+interface AppLogoProps {
 	navigateTo?: string;
 	logoType?: 'light' | 'dark';
 	fill?: 'white' | 'black';
@@ -27,6 +27,7 @@ export const AppLogo = ({
 
 	return (
 		<NavLink
+			data-testid="AppLogo_Link"
 			to={navigateTo}
 			className={classNames(
 				styles['home-link'],
@@ -39,6 +40,7 @@ export const AppLogo = ({
 					className={styles.logo}
 					src={logoSrc}
 					alt="Тренажер собеседований и вопросы собеседований в IT"
+					data-testid="AppLogo_Img"
 				/>
 			)}
 			{(!isOpen || navigationFooter) && (
