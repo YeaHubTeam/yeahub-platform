@@ -28,11 +28,8 @@
   min-width: 708px;
 }
 
-.search-svg {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-  fill:  var(--color-black-300);
+.drawer-content{
+  display: flex;
 }
 
 .question-card {

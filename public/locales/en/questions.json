@@ -1,9 +1,16 @@
 {
   "count": "Questions count",
+  "count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
   "preview": {
     "title": "Questions list",
     "link": "Study",
-    "empty": "Questions for the selected specialization will appear soon"
+		"empty": {
+			"specialization": "Questions for the selected specialization will appear soon",
+			"collection": "Questions for this collection will appear soon"
+		},
+    "locked": {
+      "collection": "Community members will have a list of questions."
+    }
   },
   "title": {
     "short": "Questions",
@@ -21,10 +28,15 @@
     "show.all": "Show all",
     "hide": "Hide"
   },
+  "progress": {
+    "title": "Прогресс",
+    "description": "Вопрос изучен {{count}} из 3"
+  },
   "complexity": {
     "title": "Question Difficulty",
     "title.short": "Complexity",
-    "label": "Select questions difficulty"
+    "label": "Select questions difficulty",
+    "tooltip.unauthorized": "Difficulty levels will be available after registration"
   },
   "rate": {
     "title": "Question Rating",
@@ -61,18 +73,29 @@
     "placeholder": "Short answer to the question"
   },
   "specialization": {
-    "title": "Specialization",
+    "title": "Select a specialization",
     "label": "Select relevant specialization"
   },
   "keywords": {
     "title": "Keywords",
     "label": "Add keywords to the text"
   },
+  "author": "Author",
   "level": "Level:",
   "skillsAdditional": "Skills:",
   "keywordsAdditional": "Keywords:",
   "image.alt": "Image code for question",
   "more": "More",
   "learn": "Learn",
-  "repeat": "Repeat"
+  "repeat": "Repeat",
+  "tooltip": {
+    "learn": "The issue has already been fully studied",
+    "repeat": "The question has not yet progressed to memorization"
+  },
+  "community": {
+    "join": "Become a member of the community"
+  },
+  "additional": {
+		"aria.label": "Go to additional info"
+	}
 }

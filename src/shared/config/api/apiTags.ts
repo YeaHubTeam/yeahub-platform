@@ -5,6 +5,7 @@ export enum ApiTags {
 	QUESTIONS_LEARNED = 'question_learned',
 	QUESTIONS = 'questions',
 	COLLECTIONS = 'collections',
+	COLLECTION_DETAIL = 'collection_detail',
 	SKILLS = 'skills',
 	USERS = 'users',
 	USER_DETAIL = 'user_detail',
@@ -18,4 +19,6 @@ export enum ApiTags {
 	SPECIALIZATION_DETAIL = 'specialization_detail',
 	INTERVIEW_STATISTICS = 'interview_statistics',
 	PUBLIC_QUESTION_DETAIL = 'public_question_detail',
+	COMPANIES = 'companies',
+	COMPANY_DETAIL = 'company_detail',
 }

@@ -21,8 +21,8 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: string | null;
-	updatedBy: string | null;
+	createdBy: Author;
+	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;
@@ -50,6 +50,8 @@ export type CreateOrEditQuestionFormValues = Pick<
 	skills: number[];
 };
 
+type skillFilterMode = 'ALL' | 'ANY';
+
 export interface GetQuestionsListParamsRequest {
 	page?: number;
 	limit?: number;
@@ -57,8 +59,10 @@ export interface GetQuestionsListParamsRequest {
 	titleOrDescription?: string;
 	skills?: number[];
 	complexity?: number[];
+	collection?: number;
 	rate?: number[];
 	keywords?: string[];
+	skillFilterMode?: skillFilterMode;
 	specialization?: number | number[];
 	order?: string;
 	orderBy?: string;
@@ -86,3 +90,5 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
+
+export type Author = { id: string; username: string };

@@ -1,0 +1,170 @@
+.content {
+  display: flex;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.card-title {
+  &.column {
+    min-height: 42px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.row{
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+.wrapper-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  overflow: hidden;
+
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.popup {
+  position: relative;
+  top: 8px;
+  left: 15px;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+.image-wrapper {
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  place-content: center center;
+  background-color: inherit;
+
+  &.row {
+    width: 149px;
+    height: 157px;
+  }
+
+  &.column {
+    width: 100%;
+    height: clamp(196px, 15.4vw, 222px);
+  }
+}
+
+.image-wrapper > img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.specialization-container {
+  display: flex;
+  align-items: center;
+
+  /* Vertically center the content */
+  gap: 14px;
+
+  & p {
+    color: var(--color-black-500);
+    line-height: 120%;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-p-m);
+  }
+}
+
+.title p {
+  color: var(--text-color-light);
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);
+}
+
+.link {
+  justify-content: end;
+}
+
+.access-container {
+  display: flex;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  & svg path {
+    stroke-width: 0;
+    fill: var(--color-purple-700);
+  }
+
+  & p {
+    line-height: 1;
+  }
+}
+
+.access-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+@media (width < 768px) {
+  .content {
+    padding: 16px;
+  }
+}
+
+@media (width < 480px) {
+  .content {
+    padding: 10px 10px 18px;
+  }
+
+  .image-wrapper {
+    &.row {
+      aspect-ratio: 1;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .wrapper {
+    &.row {
+      flex-direction: column;
+    }
+  }
+
+  .specialization-container {
+    flex-wrap: wrap;
+  }
+}

@@ -1,3 +1,3 @@
-export { Card } from './ui/Card';
-export { CardSkeleton } from './ui/Card.skeleton';
-export type { CardProps } from './ui/Card';
+export { Card } from './Card';
+export { CardSkeleton } from './Card.skeleton';
+export type { CardProps } from './Card';

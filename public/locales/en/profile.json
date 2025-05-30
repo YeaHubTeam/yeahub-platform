@@ -42,10 +42,8 @@
     "empty": "Skills not selected"
   },
   "form": {
-    "firstname": "Name",
-    "lastname": "Last name",
+    "username": "Nickname",
     "specialization": "IT specialty",
-    "phone": "Contact number",
     "email": "Email for communication",
     "location": "Location",
     "skills": "Skills"
@@ -53,7 +51,8 @@
   "setting.tabs": {
     "select.tariff": "Select tariff",
     "change.password": "Password change",
-    "verify.email": "E-mail confirmation"
+    "verify.email": "E-mail confirmation",
+		"account": "Account"
   },
   "email.verification": {
     "title": "Confirm your e-mail",
@@ -62,7 +61,7 @@
     "submit": "Confirm",
     "sent.success": "The email was successfully sent to the mail",
     "verify.stub": {
-      "title": "{{firstName}}, confirm your e-mail",
+      "title": "{{username}}, confirm your e-mail",
       "description": "Become a part of our team! Confirm your e-mail to get access to additional features of the platform and start expanding your horizons in a community of dedicated professionals like you. Join us on the way to new heights!",
       "link": "Confirm e-mail"
     },

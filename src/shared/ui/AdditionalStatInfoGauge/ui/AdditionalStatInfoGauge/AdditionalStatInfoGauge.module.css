@@ -1,8 +1,4 @@
-.wrapper {
-  padding-top: 12px;
-}
-
-@media (width < 728px) {
+@media (width <= 767px) {
   .wrapper {
     gap: 12px;
   }

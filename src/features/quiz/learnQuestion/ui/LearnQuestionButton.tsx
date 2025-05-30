@@ -1,10 +1,15 @@
+import { type Placement } from '@floating-ui/react';
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+import { Tooltip } from '@/shared/ui/Tooltip';
+
+import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 
 import { getHasPremiumAccess } from '@/entities/profile';
 
@@ -12,54 +17,57 @@ import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
 import styles from './LearnQuestionButton.module.css';
 
-interface LearnQuestionProps {
-	profileId: number | string;
+export interface LearnQuestionButtonProps {
 	questionId: number | string;
-	isSmallIcon?: boolean;
-	isDisabled: boolean;
 	isPopover?: boolean;
 	variant?: 'tertiary' | 'link-gray';
-	onSuccess?: () => void;
+	checksCount: number;
+	placementTooltip?: Placement;
+	offsetTooltip?: number;
 }
 
 export const LearnQuestionButton = ({
-	profileId,
 	questionId,
-	isSmallIcon,
-	isDisabled,
 	isPopover = false,
 	variant = 'tertiary',
-	onSuccess,
-}: LearnQuestionProps) => {
-	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
-	const { t } = useTranslation(i18Namespace.questions);
+	checksCount,
+	placementTooltip = 'top',
+	offsetTooltip = 10,
+}: LearnQuestionButtonProps) => {
+	const profileId = useAppSelector(getProfileId);
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const hasQuestionMaxProgress = checksCount >= 3;
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
-	const handleLearnQuestion = async () => {
-		try {
-			await learnQuestion({
-				profileId: String(profileId),
-				questionId: Number(questionId),
-				isLearned: true,
-			}).unwrap();
-			onSuccess?.();
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error('Не удалось изучить вопрос:', error);
-		}
+	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
+	const { t } = useTranslation(i18Namespace.questions);
+	const onLearnQuestion = () => {
+		learnQuestion({
+			profileId: String(profileId),
+			questionId: Number(questionId),
+			isLearned: true,
+		});
 	};
 
-	const iconSize = isSmallIcon ? 20 : 24;
+	const iconSize = isPopover ? 20 : 24;
 
 	return (
-		<Button
-			className={isPopover ? styles.button : ''}
-			preffix={<Icon icon="student" color="black-600" size={iconSize} />}
-			variant={variant}
-			onClick={handleLearnQuestion}
-			disabled={isLoading || isDisabled || !hasPremium}
+		<Tooltip
+			title={t(Questions.TOOLTIP_LEARN)}
+			placement={placementTooltip}
+			color="violet"
+			offsetTooltip={offsetTooltip}
+			shouldShowTooltip={hasQuestionMaxProgress}
 		>
-			{t(Questions.LEARN)}
-		</Button>
+			<Button
+				className={classNames({ [styles.button]: isPopover }, styles['button-disabled'])}
+				preffix={<Icon icon="student" color="black-600" size={iconSize} />}
+				variant={variant}
+				onClick={onLearnQuestion}
+				disabled={isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium}
+			>
+				{t(Questions.LEARN)}
+			</Button>
+		</Tooltip>
 	);
 };

@@ -1,0 +1,135 @@
+.container {
+  gap: 20px;
+  color: var(--text-color-bright);
+  font-weight: var(--font-weight-500);
+}
+
+.container > div {
+  height: auto;
+}
+
+.progress-bar {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 1fr auto;
+}
+
+.progress-bar-title {
+  font-size: var(--font-size-h-xs);
+}
+
+.progress-num {
+  color: var(--text-color-lightest);
+  font-size: var(--font-size-p-s);
+}
+
+.progress-component {
+  grid-column: span 2;
+}
+
+.question {
+  position: relative;
+}
+
+.end-button {
+  position: relative;
+  margin-left: auto;
+  background-color: var(--button-background-destructive-secondary);
+  color: var(--button-text-color-destructive-secondary);
+  font-weight: var(--font-weight-600);
+
+  &:hover {
+    background-color: var(--button-background-destructive-secondary-hover);
+  }
+
+  &:focus {
+    border: 1px solid var(--button-border-destructive-secondary-focus);
+    background-color: var(--button-background-destructive-secondary-focus)
+  }
+
+  &:active {
+    background-color: var(--color-red-300);
+    color: var(--button-text-color-destructive-secondary-active);
+  }
+}
+
+
+.slider-card-skeleton{
+  padding: 24px;
+}
+
+.slider-skeleton {
+  display: grid;
+  grid-template: auto 1fr auto / minmax(50%, auto) minmax(300px, 526px);
+  grid-template-areas:
+    'question image'
+    'wrapper image'
+    'buttons image';
+  gap: 16px 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wrapper-skeleton {
+  grid-area: wrapper;
+}
+
+.question-skeleton {
+  display: list-item;
+  grid-area: question;
+  list-style: none;
+}
+
+.response-buttons-skeleton {
+  grid-area: buttons;
+}
+
+.image-skeleton {
+  grid-area: image;
+  flex-grow: 1;
+  width: 100%;
+  height: clamp(170px, 30vw, 303px);
+  border-radius: 24px;
+}
+
+@media (width <= 1024px) {
+  .slider-skeleton {
+    grid-template-columns: auto;
+    grid-template-areas: 
+      'question'
+      'image'
+      'wrapper'
+      'buttons';
+  }
+}
+
+@media (width <= 767px) {
+  .container > div {
+    padding: 20px 10px;
+  }
+
+  .question {
+    gap: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  .progress-bar {
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .progress-bar-title {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+  }
+
+  .progress-num {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+
+  .progress-component {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+  }
+}

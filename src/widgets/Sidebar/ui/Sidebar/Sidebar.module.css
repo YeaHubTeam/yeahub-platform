@@ -71,6 +71,10 @@
   transition: all 0.4s;
 }
 
+.sidebar-bottom-button-hide {
+  padding: 0;
+}
+
 .sidebar-bottom-button > svg {
   width: 24px;
   height: 24px;
@@ -93,5 +97,11 @@
 
   .desktop-sidebar {
     display: none;
+  }
+}
+
+@media (width > 1025px) and (width < 1439px) {
+  .close-icon:not(.left) {
+    right: 6px;
   }
 }

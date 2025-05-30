@@ -4,13 +4,14 @@
 
   &.drawer-mobile {
     top: var(--header-height);
+    padding-bottom: var(--header-height);
     width: 100%;
   }
 }
 
 .filters-mobile {
   position: absolute;
-  top: 16px;
+  top: 24px;
   right: 20px;
   display: none;
   justify-content: center;
@@ -53,8 +54,16 @@
   }
 }
 
-@media (width < 480px) {
+@media (width <= 1023px) {
   .filters-mobile {
-    top: 10px;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (width <= 767px) {
+  .filters-mobile {
+    top: 20px;
+    right: 10px;
   }
 }

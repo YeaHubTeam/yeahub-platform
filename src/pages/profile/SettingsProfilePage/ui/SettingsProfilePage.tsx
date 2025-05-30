@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { EmailConfirmationTab, SubscriptionTab, ChangePasswordTab } from '@/widgets/Profile';
+import { AccountTab, EmailConfirmationTab, SubscriptionTab, ChangePasswordTab } from '@/widgets/Profile';
 
 const getTabs = (t: (arg: string) => string) => [
 	{
@@ -27,6 +27,12 @@ const getTabs = (t: (arg: string) => string) => [
 		label: t(Profile.SETTINGS_TABS_VERIFY_EMAIL),
 		Component: EmailConfirmationTab,
 	},
+	{
+		id: 3,
+		title: 'account',
+		label: t(Profile.SETTINGS_TABS_ACCOUNT),
+		Component: AccountTab,
+	},
 ];
 
 const SettingsProfilePage = () => {
@@ -34,9 +40,18 @@ const SettingsProfilePage = () => {
 	const { t } = useTranslation(i18Namespace.profile);
 
 	const tabs = getTabs(t);
+
+	const index = tabs.findIndex((tab) => tab.title === hash.slice(1));
+
 	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
-		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
+		return index !== -1 ? index : 0;
 	});
+
+	useEffect(() => {
+		if (index !== -1) {
+			setCurrentActiveTab(index);
+		}
+	}, [hash]);
 
 	const ActiveComponent = tabs[currentActiveTab].Component;
 

@@ -1,20 +1,21 @@
 .home-link {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   width: auto;
   transition: padding-left 0.5s ease-in-out;
 }
 
 .logo {
-  width: 45px;
-  height: 45px;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
 }
 
-.logo-text {
+.logo-text{
   display: block;
-  width: 139px;
-  height: 45px;
+  width: 99px;
+  height: 32px;
 }
 
 .white > path {
@@ -33,8 +34,8 @@
   pointer-events: none;
 }
 
-@media (width <=768px) {
-  .logo-text {
+@media (width < 768px) {
+  .logo-text-header {
     display: none;
   }
 }

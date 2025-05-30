@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import { Toast } from 'react-hot-toast';
-import { Icon } from 'yeahub-ui-kit';
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Icon } from '@/shared/ui/Icon';
 
 import { CloseBtn } from './CloseBtn';
 import styles from './styles.module.css';
-
-const TOAST_TITLE = 'Warning';
 
 interface WarningProps {
 	currentToast: Toast;
@@ -13,6 +15,7 @@ interface WarningProps {
 }
 
 export const Warning = ({ currentToast, message }: WarningProps) => {
+	const { t } = useTranslation(i18Namespace.translation);
 	return (
 		<div
 			className={classNames(
@@ -21,9 +24,11 @@ export const Warning = ({ currentToast, message }: WarningProps) => {
 				currentToast.visible ? styles['fade-in'] : styles['fade-out'],
 			)}
 		>
-			<Icon icon="warning" color="--palette-ui-orange-900" />
+			<Icon icon="warning" color="yellow-900" />
 			<div className={styles['toaster-text-wrapper']}>
-				<span className={classNames(styles.title, styles['warning-title'])}>{TOAST_TITLE}</span>
+				<span className={classNames(styles.title, styles['warning-title'])}>
+					{t(Translation.TOAST_TITLE_WARNING, { ns: 'translation' })}
+				</span>
 				{message}
 			</div>
 			<CloseBtn toastId={currentToast.id} />

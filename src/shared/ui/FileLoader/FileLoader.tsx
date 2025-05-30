@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Gallery from '@/shared/assets/images/Gallery.png';
+import Gallery from '@/shared/assets/images/Gallery.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useDragAndDrop } from '@/shared/hooks/useDragAndDrop';
+import { useDragAndDrop } from '@/shared/hooks';
 
 import style from './FileLoader.module.css';
-import { Accept, Extension } from './model/types/types';
+import { Accept, Extension } from './types';
 
 interface FileLoaderProps {
 	accept: Accept;
@@ -109,7 +109,7 @@ export const FileLoader = ({
 			{isDragDropEnabled && (
 				<>
 					<div>
-						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} />
+						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} loading="lazy" />
 					</div>
 
 					<p>

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Skill } from '@/entities/skill';
 
@@ -22,12 +22,22 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
-	const onCloseDeleteModal = () => {
-		setIsModalOpen((prev) => !prev);
+	const handleOpenModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const onDeleteSkill = async () => {
-		await deleteSkillMutation(skillId);
+		try {
+			await deleteSkillMutation(skillId);
+			handleCloseModal();
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
 	};
 
 	return (
@@ -36,18 +46,19 @@ export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkill
 				aria-label="Large"
 				style={{
 					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
 					justifyContent: isDetailPage ? 'center' : 'flex-start',
 				}}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={onCloseDeleteModal}
-				preffix={
-					isDetailPage ? undefined : <Icon icon="trash" size={20} color="--palette-ui-red-600" />
-				}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
+				onClick={handleOpenModal}
+				preffix={isDetailPage ? undefined : <Icon icon="trash" size={24} />}
 			>
 				{t(Translation.DELETE)}
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
+					isOpen={isDeleteModalOpen}
+					onClose={handleCloseModal}
 					onOk={onDeleteSkill}
 					onCancel={() => setIsModalOpen(false)}
 					message={Translation.MODAL_DELETE_TITLE}

@@ -26,6 +26,8 @@ export const i18Namespace = {
 	translation: 'translation',
 	user: 'user',
 	collection: 'collection',
+	companies: 'companies',
+	editor: 'editor',
 };
 
 i18n

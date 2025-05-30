@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Chip, Icon } from 'yeahub-ui-kit';
 
-import PlusSvg from '@/shared/assets/icons/Plus.svg';
+import PlusSvg from '@/shared/assets/icons/Plus1.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useModal } from '@/shared/hooks/useModal';
+import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
+import { useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Chip } from '@/shared/ui/Chip';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 
@@ -21,12 +23,14 @@ interface ChooseQuestionsDrawerProps {
 	selectedQuestions: { title: string; id: number }[];
 	handleSelectQuestion: (question: { title: string; id: number }) => void;
 	handleUnselectQuestion: (id: number) => void;
+	specializations?: number[];
 }
 
 export const ChooseQuestionsDrawer = ({
 	selectedQuestions,
 	handleSelectQuestion,
 	handleUnselectQuestion,
+	specializations,
 }: ChooseQuestionsDrawerProps) => {
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
@@ -34,7 +38,11 @@ export const ChooseQuestionsDrawer = ({
 
 	const { isOpen, onToggle, onClose } = useModal();
 
-	const questions = useGetQuestionsListQuery({ title: collectionSearch, limit: 10 });
+	const questions = useGetQuestionsListQuery({
+		title: collectionSearch,
+		limit: COLLECTION_QUESTIONS_LIMIT,
+		specialization: specializations?.length ? specializations : undefined,
+	});
 
 	const handleCollectionSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCollectionSearch(e.target.value);
@@ -84,11 +92,11 @@ export const ChooseQuestionsDrawer = ({
 				</Button>
 			</Flex>
 			<Drawer isOpen={isOpen} onClose={onClose} rootName="body" className={styles['drawer']}>
-				<Flex direction="column" gap="16" className={styles['drawer-content']}>
+				<Flex direction="column" gap="24" className={styles['drawer-content']}>
 					<Input
 						onChange={handleCollectionSearch}
 						className={styles.input}
-						prefix={<Icon icon={'search'} className={styles['search-svg']} />}
+						prefix={<Icon icon="search" size={20} color="black-300" />}
 						placeholder={t(Translation.SEARCH)}
 					/>
 					<Flex direction="column" gap="16">

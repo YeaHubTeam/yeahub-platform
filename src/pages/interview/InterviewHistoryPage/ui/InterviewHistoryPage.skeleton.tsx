@@ -5,7 +5,7 @@ import { FullPassedQuizzesListSkeleton } from '@/widgets/interview/PassedQuizzes
 
 export const InterviewHistoryPageSkeleton = () => {
 	return (
-		<Flex gap="20">
+		<Flex gap="20" maxWidth>
 			<FullPassedQuizzesListSkeleton />
 			<EventCalendarSkeleton />
 		</Flex>

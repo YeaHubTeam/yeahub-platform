@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {
@@ -103,6 +102,7 @@ const CreateQuizPage = () => {
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
 						skillsLimit={MAX_LIMIT_CATEGORIES}
+						showAllLabel={false}
 					/>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity

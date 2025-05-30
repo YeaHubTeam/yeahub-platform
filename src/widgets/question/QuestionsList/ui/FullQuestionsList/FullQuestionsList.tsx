@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { Accordion } from '@/shared/ui/Accordion';
 import { Text } from '@/shared/ui/Text';
 
@@ -16,15 +16,17 @@ interface FullQuestionsListProps {
 	questions: Question[];
 	isPublic?: boolean;
 	additionalTitle?: string;
+	filterButton?: React.ReactNode;
 }
 
 export const FullQuestionsList = ({
 	questions,
 	isPublic,
 	additionalTitle,
+	filterButton,
 }: FullQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
-	const { isMobileS } = useScreenSize();
+	const { isMobile, isMobileS, isTablet } = useScreenSize();
 
 	const title = additionalTitle
 		? `${t(Questions.TITLE_SHORT)} ${additionalTitle}`
@@ -32,9 +34,12 @@ export const FullQuestionsList = ({
 
 	return (
 		<>
-			<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
-				{title}
-			</Text>
+			<div className={styles['questions-list-header']}>
+				<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
+					{title}
+				</Text>
+				{(isMobile || isTablet) && filterButton}
+			</div>
 			<hr className={styles.divider} />
 			{questions.map((question) => (
 				<Accordion key={question.id} title={question.title}>

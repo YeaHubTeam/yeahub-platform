@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
 
@@ -13,9 +15,12 @@ interface FilterFromURL {
 	orderBy?: string | null;
 	order?: string | null;
 	specialization?: string | null;
+	isFree?: string | null;
+	roles?: string | null;
+	isEmailVerified?: string | null;
 }
 
-interface FilterFromUser {
+export interface FilterFromUser {
 	skills?: number[];
 	complexity?: number[];
 	rate?: number[];
@@ -25,26 +30,38 @@ interface FilterFromUser {
 	orderBy?: string;
 	order?: string;
 	specialization?: number | number[];
+	isFree?: boolean;
+	roles?: string | null;
+	isEmailVerified?: string | null;
 }
 
-const initialState = '?page=1&status=all';
+const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
 
-export const useQueryFilter = () => {
+export const useQueryFilter = (onReset?: () => void) => {
 	const [filter, setFilters] = useState<FilterFromUser>({} as FilterFromUser);
-
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		if (!params.get('page') && !params.get('status')) {
-			navigate(initialState);
+		const page = params.get('page');
+		const status = params.get('status');
+		const specialization = params.get('specialization');
+
+		const shouldRedirect =
+			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
+
+		if (shouldRedirect) {
+			navigate(initialState, { replace: true });
 		}
-	}, []);
+	}, [location.pathname, location.search]);
+
+	useEffect(() => {
+		setFilters(parseFilters(getQueryParams()));
+	}, [location.search]);
 
 	const getQueryParams = (): FilterFromURL => {
 		const params = new URLSearchParams(location.search);
-
 		return {
 			page: params.get('page'),
 			skills: params.get('skills'),
@@ -55,6 +72,9 @@ export const useQueryFilter = () => {
 			orderBy: params.get('orderBy'),
 			order: params.get('order'),
 			specialization: params.get('specialization'),
+			isFree: params.get('isFree'),
+			roles: params.get('roles'),
+			isEmailVerified: params.get('isEmailVerified'),
 		};
 	};
 
@@ -71,6 +91,9 @@ export const useQueryFilter = () => {
 			specialization: params.specialization
 				? params.specialization.split(',').map(Number)
 				: undefined,
+			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
+			roles: params.roles ? params.roles : undefined,
+			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
 		};
 	};
 
@@ -81,13 +104,8 @@ export const useQueryFilter = () => {
 			const curFilter = newFilters[key as keyof FilterFromUser];
 
 			if (curFilter !== undefined && curFilter !== null) {
-				if (key === 'page' && Number(newFilters.page) === Number(params.get('page'))) {
-					params.set(key, '1');
-					return;
-				}
-
-				if (key === 'status' && newFilters.status === params.get('page')) {
-					params.set(key, 'all');
+				if (key === 'tariff') {
+					params.set('isFree', curFilter.toString());
 					return;
 				}
 
@@ -104,10 +122,6 @@ export const useQueryFilter = () => {
 		navigate(`?${params.toString()}`);
 	};
 
-	useEffect(() => {
-		setFilters(parseFilters(getQueryParams()));
-	}, [location.search]);
-
 	const handleFilterChange = (newFilters: FilterFromUser) => {
 		setFilters((prevFilters) => {
 			const updatedFilters = { ...prevFilters, ...newFilters };
@@ -118,7 +132,11 @@ export const useQueryFilter = () => {
 
 	const resetFilters = () => {
 		setFilters({} as FilterFromUser);
-		navigate(initialState);
+		if (location.pathname === '/admin/companies') {
+			onReset?.();
+			return;
+		}
+		navigate(initialState, { replace: true });
 	};
 
 	return { filter, handleFilterChange, resetFilters };

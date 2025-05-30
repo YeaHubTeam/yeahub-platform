@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -37,7 +37,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 	if (isEmptyData) {
 		return (
 			<Text variant="body4" color="black-700" className={styles['no-questions']}>
-				{t(Questions.PREVIEW_EMPTY)}
+				{t(Questions.PREVIEW_EMPTY_SPECIALIZATION)}
 			</Text>
 		);
 	}

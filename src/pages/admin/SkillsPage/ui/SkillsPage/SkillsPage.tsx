@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -43,13 +43,13 @@ const SkillsPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection
+				to="create"
+				showRemoveButton={selectedSkills.length > 0}
+				onSearch={onChangeSearch}
+				renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
+			/>
 			<Card className={styles.content}>
-				<SearchSection
-					to="create"
-					showRemoveButton={selectedSkills.length > 0}
-					onSearch={onChangeSearch}
-					renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
-				/>
 				<SkillsTable
 					skills={skills?.data}
 					selectedSkills={selectedSkills}

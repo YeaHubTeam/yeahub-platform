@@ -1,10 +1,15 @@
+import { type Placement } from '@floating-ui/react';
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+import { Tooltip } from '@/shared/ui/Tooltip';
+
+import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 
 import { getHasPremiumAccess } from '@/entities/profile';
 
@@ -12,50 +17,54 @@ import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgr
 
 import styles from './ResetQuestionStudyProgressButton.module.css';
 
-interface ResetQuestionStudyProgressProps {
-	profileId: number | string;
+export interface ResetQuestionStudyProgressProps {
 	questionId: number | string;
-	isSmallIcon?: boolean;
-	isDisabled: boolean;
 	isPopover?: boolean;
 	variant?: 'tertiary' | 'link-gray';
-	onSuccess?: () => void;
+	checksCount: number;
+	placementTooltip?: Placement;
+	offsetTooltip?: number;
 }
 
 export const ResetQuestionStudyProgressButton = ({
-	profileId,
 	questionId,
-	isSmallIcon,
-	isDisabled,
 	isPopover = false,
 	variant = 'tertiary',
-	onSuccess,
+	checksCount,
+	placementTooltip = 'top',
+	offsetTooltip = 10,
 }: ResetQuestionStudyProgressProps) => {
+	const profileId = useAppSelector(getProfileId);
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const notQuestionMaxProgress = checksCount === 0;
+
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useTranslation(i18Namespace.questions);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
-	const handleClick = async () => {
-		try {
-			await resetQuestion({ profileId, questionId }).unwrap();
-			onSuccess?.();
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error('Не удалось сбросить прогресс вопроса:', error);
-		}
+	const onResetQuestion = () => {
+		resetQuestion({ profileId, questionId });
 	};
 
-	const iconSize = isSmallIcon ? 20 : 24;
+	const iconSize = isPopover ? 20 : 24;
 
 	return (
-		<Button
-			className={isPopover ? styles.button : ''}
-			preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
-			variant={variant}
-			onClick={handleClick}
-			disabled={isLoading || isDisabled || !hasPremium}
+		<Tooltip
+			title={t(Questions.TOOLTIP_REPEAT)}
+			placement={placementTooltip}
+			color="violet"
+			offsetTooltip={offsetTooltip}
+			shouldShowTooltip={notQuestionMaxProgress}
 		>
-			{t(Questions.REPEAT)}
-		</Button>
+			<Button
+				className={classNames({ [styles.button]: isPopover }, styles['button-disabled'])}
+				preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
+				variant={variant}
+				onClick={onResetQuestion}
+				disabled={isLoading || !isEmailVerified || notQuestionMaxProgress || !hasPremium}
+			>
+				{t(Questions.REPEAT)}
+			</Button>
+		</Tooltip>
 	);
 };

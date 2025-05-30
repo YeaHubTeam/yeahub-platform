@@ -23,6 +23,10 @@ export const getIsEmailVerified = (state: State) => {
 	return state.profile.fullProfile?.isEmailVerified ?? false;
 };
 
+export const getIsEdit = (state: State) => {
+	return state.profile.isEdit;
+};
+
 export const getHasPremiumAccess = (state: State) => {
 	return (
 		state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false

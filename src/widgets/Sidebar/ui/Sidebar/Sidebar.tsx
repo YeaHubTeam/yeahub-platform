@@ -6,7 +6,7 @@ import ChatIcon from '@/shared/assets/icons/chat.svg';
 import ToogleSidebar from '@/shared/assets/icons/toggleSidebar.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -28,6 +28,12 @@ interface SidebarProps {
 	 * Is a mobile option
 	 */
 	isMobileSidebar?: boolean;
+
+	onOpenSidebarDrawer?: () => void;
+
+	isOpenSidebarDrawer?: boolean;
+
+	setIsOpenSidebarDrawer?: (boolean: boolean) => void;
 }
 
 /**
@@ -35,20 +41,38 @@ interface SidebarProps {
  * @param props
  */
 
-export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) => {
-	const { isMobile, isTablet } = useScreenSize();
+export const Sidebar = ({
+	menuItems,
+	isMobileSidebar = false,
+	onOpenSidebarDrawer,
+	isOpenSidebarDrawer,
+	setIsOpenSidebarDrawer,
+}: SidebarProps) => {
+	const { isMobile, isTablet, isLaptop, isDesktop } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
-			(isMobile || isTablet) && setIsOpenNavSidebar(true);
+			!isDesktop && setIsOpenNavSidebar(true);
 		}
-	}, [isMobile, isTablet, isMobileSidebar]);
+	}, [isMobile, isTablet, isLaptop, isMobileSidebar]);
+
+	useEffect(() => {
+		if (isOpenSidebarDrawer && setIsOpenSidebarDrawer && isDesktop) {
+			setIsOpenSidebarDrawer(false);
+		}
+	}, [isDesktop, isOpenSidebarDrawer, setIsOpenSidebarDrawer]);
 
 	const handleToggleSidebar = () => {
-		setIsOpenNavSidebar((prev) => !prev);
+		if (isLaptop) {
+			if (isOpenSidebarDrawer) {
+				setIsOpenSidebarDrawer?.(false);
+			} else {
+				onOpenSidebarDrawer?.();
+			}
+		} else setIsOpenNavSidebar((prev) => !prev);
 	};
 
 	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
@@ -70,7 +94,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 						className={classNames(styles['close-icon'], {
 							[styles.left]: isOpenNavSidebar,
 						})}
-						onClick={handleToggleSidebar}
+						onClick={() => handleToggleSidebar()}
 						data-testid="Sidebar_CloseButton"
 						aria-label={t(!isOpenNavSidebar ? Translation.SIDEBAR_CLOSE : Translation.SIDEBAR_OPEN)}
 					>
@@ -85,7 +109,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 						className={classNames(styles['sidebar-bottom-button'], {
 							[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
 						})}
-						size="L"
+						size="large"
 						onClick={openSupportTab}
 						preffix={<ChatIcon />}
 					>
@@ -96,7 +120,7 @@ export const Sidebar = ({ menuItems, isMobileSidebar = false }: SidebarProps) =>
 							className={classNames(styles['sidebar-bottom-button'], {
 								[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
 							})}
-							size="L"
+							size="large"
 							onClick={onLogout}
 							preffix={<SignOutIcon isCurrentColor />}
 							variant="destructive"

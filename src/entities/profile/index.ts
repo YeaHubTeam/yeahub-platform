@@ -11,6 +11,7 @@ export {
 	getSpecializationId,
 	getIsEmptySpecialization,
 	getIsEmailVerified,
+	getIsEdit,
 	getHasPremiumAccess,
 } from './model/selectors/profileSelectors';
 

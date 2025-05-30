@@ -1,21 +1,18 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
+import { useScreenSize } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getSkillDefaultIcon, Skill, useGetSkillsListQuery } from '@/entities/skill';
+import { useGetSkillsListQuery } from '@/entities/skill';
 
 import styles from './ChooseQuestionsCategories.module.css';
-
-const MAX_LIMIT = 5;
-export const DEFAULT_SPECIALIZATION = 11;
 
 interface ChooseQuestionsCategoriesProps {
 	selectedSkills?: number[];
@@ -23,6 +20,7 @@ interface ChooseQuestionsCategoriesProps {
 	skillsLimit?: number;
 	shouldShowScroll?: boolean;
 	selectedSpecialization: number;
+	showAllLabel?: boolean;
 }
 
 export const ChooseQuestionsCategories = ({
@@ -30,9 +28,10 @@ export const ChooseQuestionsCategories = ({
 	onChangeSkills,
 	skillsLimit,
 	selectedSpecialization,
+	showAllLabel = true,
 }: ChooseQuestionsCategoriesProps) => {
 	const [showAll, setShowAll] = useState(false);
-	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT);
+	const [limit, setLimit] = useState(skillsLimit || MAX_LIMIT_CATEGORIES);
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
@@ -47,9 +46,9 @@ export const ChooseQuestionsCategories = ({
 
 	useEffect(() => {
 		if (isMobile || showAll) {
-			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT));
+			setLimit(skills?.total ?? (skillsLimit || MAX_LIMIT_CATEGORIES));
 		} else {
-			setLimit(skillsLimit || MAX_LIMIT);
+			setLimit(skillsLimit || MAX_LIMIT_CATEGORIES);
 		}
 	}, [skills?.total, showAll, skillsLimit]);
 
@@ -69,18 +68,15 @@ export const ChooseQuestionsCategories = ({
 
 	if (!prepareData) return null;
 
-	const skillIcon = (skill: Skill) => <Icon icon={getSkillDefaultIcon(skill)} />;
-
 	return (
-		<div className={classNames(styles.wrapper, { [styles.mobile]: isMobile })}>
+		<div className={classNames(styles.wrapper)}>
 			<BaseFilterSection
 				data={prepareData}
 				title={t(Skills.SELECT_CHOOSE, { ns: i18Namespace.skill })}
 				onClick={onChooseSkill}
-				getDefaultIcon={(item) => skillIcon(item as Skill)}
 			/>
 
-			{!isMobile && (
+			{!isMobile && showAllLabel && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>
 					{!showAll ? t(Questions.CATEGORIES_SHOW_ALL) : t(Questions.CATEGORIES_HIDE)}
 				</Button>

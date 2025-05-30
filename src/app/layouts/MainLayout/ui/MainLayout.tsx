@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
+import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Drawer } from '@/shared/ui/Drawer';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
@@ -51,35 +52,47 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	return (
 		<Suspense fallback={<MainLayoutSkeleton />}>
-			<section className={styles.layout}>
-				<div className={styles.sidebar}>
-					<Sidebar menuItems={filteredMenuItems} />
-				</div>
+			<AutoScrollToTop>
+				<section className={styles.layout}>
+					<div className={styles.sidebar}>
+						<Sidebar
+							menuItems={filteredMenuItems}
+							onOpenSidebarDrawer={onToggleOpenSidebarDrawer}
+							isOpenSidebarDrawer={isOpenSidebarDrawer}
+							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
+						/>
+					</div>
 
-				<Header onOpenSidebarDrawer={onToggleOpenSidebarDrawer} />
+					<Header onOpenSidebarDrawer={onToggleOpenSidebarDrawer} />
 
-				<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
-					<main className={styles.main}>
-						<div className={styles.container}>
-							<Suspense fallback={<SkeletonGenerator />}>
+					<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
+						<main className={styles.main}>
+							<div className={styles.container}>
 								<Breadcrumbs />
-								<Outlet />
-							</Suspense>
-						</div>
-					</main>
-				</ErrorBoundary>
-			</section>
-			{isOpenSidebarDrawer && (
-				<Drawer
-					rootName="body"
-					isOpen={isOpenSidebarDrawer}
-					onClose={onToggleOpenSidebarDrawer}
-					position="left"
-					className={styles.drawer}
-				>
-					<Sidebar isMobileSidebar menuItems={filteredMenuItems} />
-				</Drawer>
-			)}
+								<Suspense fallback={<SkeletonGenerator />}>
+									<Outlet />
+								</Suspense>
+							</div>
+						</main>
+					</ErrorBoundary>
+				</section>
+				{isOpenSidebarDrawer && (
+					<Drawer
+						rootName="body"
+						isOpen={isOpenSidebarDrawer}
+						onClose={onToggleOpenSidebarDrawer}
+						position="left"
+						className={styles.drawer}
+					>
+						<Sidebar
+							isMobileSidebar
+							menuItems={filteredMenuItems}
+							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
+							isOpenSidebarDrawer={isOpenSidebarDrawer}
+						/>
+					</Drawer>
+				)}
+			</AutoScrollToTop>
 		</Suspense>
 	);
 };

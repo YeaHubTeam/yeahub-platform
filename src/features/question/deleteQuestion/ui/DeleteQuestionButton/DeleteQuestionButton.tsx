@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Icon } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Question } from '@/entities/question';
 
 import { useDeleteQuestionMutation } from '../../api/deleteQuestionApi';
 
-interface DeleteQuestionButtonProps {
+export interface DeleteQuestionButtonProps {
 	questionId: Question['id'];
 	isDetailPage?: boolean;
 }
@@ -25,29 +25,45 @@ export const DeleteQuestionButton = ({
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
 
-	const onCloseDeleteModal = () => {
-		setIsModalOpen((prev) => !prev);
+	const handleOpenModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const onDeleteQuestion = async () => {
-		await deleteQuestionMutation(questionId);
+		try {
+			await deleteQuestionMutation(questionId);
+			handleCloseModal();
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(error);
+		}
 	};
 
 	return (
 		<>
 			<Button
 				aria-label="Large"
-				style={{ width: 'auto', justifyContent: isDetailPage ? 'center' : 'flex-start' }}
-				preffix={!isDetailPage && <Icon icon="trash" size={20} color="--palette-ui-red-600" />}
-				variant={isDetailPage ? 'destructive' : 'tertiary'}
-				onClick={onCloseDeleteModal}
+				style={{
+					width: isDetailPage ? 'auto' : '100%',
+					padding: isDetailPage ? '0 32px' : '6px 10px',
+					justifyContent: isDetailPage ? 'center' : 'flex-start',
+				}}
+				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
+				onClick={handleOpenModal}
 			>
 				{t(Translation.DELETE)}
 			</Button>
 			{isDeleteModalOpen && (
 				<BlockerDialog
+					isOpen={isDeleteModalOpen}
+					onClose={handleCloseModal}
 					onOk={onDeleteQuestion}
-					onCancel={() => setIsModalOpen(false)}
+					onCancel={handleCloseModal}
 					message={Translation.MODAL_DELETE_TITLE}
 				/>
 			)}

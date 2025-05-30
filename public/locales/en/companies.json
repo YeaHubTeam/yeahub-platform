@@ -1,0 +1,18 @@
+{
+	"title": {
+		"full": "Company name",
+		"short": "Name",
+		"label": "Add company name"
+	},
+	"icon": {
+		"title": "Company image",
+		"label": "Add company image"
+	},
+	"create.page.title": "Creating new company",
+	"edit.page.title": "Edit company",
+	"select": {
+		"choose": "Choose company name",
+		"empty": "No companies available",
+		"selected": "Selected company"
+	}
+}

@@ -33,7 +33,7 @@ export const PreviewPassedQuizzesItem = ({ interview }: InterviewHistoryItemProp
 					{formattedDate}
 				</Text>
 				<Flex wrap="wrap" justify="between" gap="14" className={styles.info}>
-					<Text variant="body4">
+					<Text variant={'body3-accent'}>
 						{t(InterviewHistory.QUIZ_TITLE, { number: interview.quizNumber })}
 					</Text>
 					<Flex componentType="ul" gap="24">

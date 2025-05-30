@@ -2,6 +2,7 @@ export type {
 	Question,
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
+	Author,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
@@ -23,7 +24,12 @@ export { RateFilterSectionSkeleton } from './ui/RateFilterSection/RateFilterSect
 export { ChooseSpecialization } from './ui/ChooseSpecialization/ChooseSpecialization';
 export { ChooseSpecializationSkeleton } from './ui/ChooseSpecialization/ChooseSpecialization.skeleton';
 export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
-
+export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
+export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
+export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
+export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
+export { QuestionAuthor } from './ui/QuestionAuthor/QuestionAuthor';
+export { QuestionAuthorSkeleton } from './ui/QuestionAuthor/QuestionAuthor.skeleton';
 export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';

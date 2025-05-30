@@ -32,10 +32,10 @@
   }
 }
 
-@media (width <= 768px) {
+@media (width <= 767px) {
   .header {
     justify-content: space-between;
-    padding: 15px 20px;
+    padding: 10px;
   }
 }
 

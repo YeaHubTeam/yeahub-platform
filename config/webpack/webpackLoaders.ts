@@ -22,7 +22,7 @@ export const webpackLoaders = ({ isDev }: WebpackOptions): ModuleOptions['rules'
   };
 
   const assetLoader = {
-    test: /\.(png|jpep|jpg|gif|ico|webp|woff|woff2|ttf|)$/i,
+    test: /\.(png|jpeg|jpg|gif|ico|webp|avif|woff|woff2|ttf)$/i,
     type: 'asset/resource',
   };
 

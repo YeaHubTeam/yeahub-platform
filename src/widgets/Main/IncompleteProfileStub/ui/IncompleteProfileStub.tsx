@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Main } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -23,9 +23,7 @@ const getPercentProfileFullness = (user: FullProfile | null) => {
 
 	const fieldsToCheck = [
 		user.avatarUrl,
-		user.firstName,
-		user.lastName,
-		user.phone,
+		user.username,
 		user.email,
 		user.city,
 		user.profiles[0].description,
@@ -69,7 +67,7 @@ export const IncompleteProfileStub = () => {
 				<Text variant="body2-accent" color="black-600">
 					{t(Main.FILL_PROFILE_DESCRIPTION)}
 				</Text>
-				<Button onClick={redirectToProfileEditing} className={styles.button} size="L">
+				<Button onClick={redirectToProfileEditing} className={styles.button} size="large">
 					{t(Main.FILL_PROFILE_LINK)}
 				</Button>
 			</Flex>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { FileLoader } from '@/shared/ui/FileLoader';
-import { Accept, Extension } from '@/shared/ui/FileLoader/model/types/types';
+import { Accept, Extension } from '@/shared/ui/FileLoader/types';
 import { Flex } from '@/shared/ui/Flex';
 import { Loader } from '@/shared/ui/Loader';
 

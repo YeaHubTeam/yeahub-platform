@@ -1,22 +1,28 @@
-import { Select, Chip, Text } from 'yeahub-ui-kit';
+import { Select, Text } from 'yeahub-ui-kit';
+
+import { Chip } from '@/shared/ui/Chip';
 
 import styles from './SelectWithChips.module.css';
 
-type SelectWithChipsProps<T> = Omit<
+type SelectWithChipsProps<T, U> = Omit<
 	React.ComponentProps<typeof Select>,
 	'options' | 'type' | 'value' | 'onChange'
 > & {
 	title?: string;
 	placeholder?: string;
-	itemsDictionary?: Record<number, T>;
+	prefix?: string;
+	itemsDictionary?: Record<number | string, T>;
 	options: { label: string; value: string }[];
-	selectedItems?: number[];
+	selectedItems?: U[];
 	disabled?: boolean;
-	handleDeleteItem: (id: number) => () => void;
+	handleDeleteItem: (id: U) => () => void;
 	onChange: (value?: string) => void;
 };
 
-export const SelectWithChips = <T extends { id: number; title: string }>({
+export const SelectWithChips = <
+	T extends { id: number | string; title: string; imageSrc?: string | null },
+	U extends number | string,
+>({
 	title,
 	options,
 	onChange,
@@ -25,7 +31,7 @@ export const SelectWithChips = <T extends { id: number; title: string }>({
 	handleDeleteItem,
 	itemsDictionary,
 	disabled,
-}: SelectWithChipsProps<T>) => {
+}: SelectWithChipsProps<T, U>) => {
 	return (
 		<div className={styles.wrapper}>
 			<Select
@@ -43,10 +49,19 @@ export const SelectWithChips = <T extends { id: number; title: string }>({
 						{selectedItems.map((id) => (
 							<Chip
 								key={id}
-								label={itemsDictionary?.[id]?.title}
+								prefix={
+									itemsDictionary?.[id as U]?.imageSrc ? (
+										<img
+											src={itemsDictionary[id as U].imageSrc ?? ''}
+											alt={itemsDictionary[id as U].title}
+										/>
+									) : undefined
+								}
+								label={itemsDictionary?.[id as U]?.title}
 								theme="primary"
-								onDelete={handleDeleteItem(id)}
+								onDelete={handleDeleteItem(id as U)}
 								disabled={disabled}
+								active
 							/>
 						))}
 					</div>

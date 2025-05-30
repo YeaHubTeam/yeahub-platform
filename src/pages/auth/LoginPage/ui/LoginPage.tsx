@@ -4,7 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
 import { useLazyLogoutQuery } from '@/entities/auth';
@@ -25,14 +25,14 @@ const LoginPage = () => {
 	};
 
 	const loginTitle = accessToken
-		? `${t(Auth.LOGIN_HELLO)} ${profile?.firstName}`
+		? `${t(Auth.LOGIN_HELLO)} ${profile?.username}`
 		: t(Auth.LOGIN_TITLE);
 
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>{loginTitle}</h1>
 			{accessToken ? (
-				<Button onClick={handleLogoutUser} size="L">
+				<Button onClick={handleLogoutUser} size="large">
 					{t(Auth.LOGOUT)}
 				</Button>
 			) : (

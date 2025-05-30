@@ -1,34 +1,62 @@
 {
-  "title": {
-    "full": "Collection Title",
-    "short": "Title",
-    "label": "Add collection title"
-  },
-  "description": {
-    "full": "Collection Description",
-    "short": "Description",
-    "label": "Add description",
-    "placeholder": "Collection description"
-  },
-  "icon": {
-    "title": "Collection Image",
-    "title-short": "Image",
-    "label": "Add collection image"
-  },
-  "select": {
-    "chooseCollections": "Collections",
-    "label": "Select option",
-    "paid": "Paid",
-    "free": "Free"
-  },
-  "access": "Access:",
-  "specialization": "Specialization:",
-  "keywords": "Keywords:",
-  "questions": {
-    "short": "Questions",
-    "label": "Add questions",
-    "selected": "Selected questions: {{count}}"
-  },
-  "image.src": "Image URL",
-  "create.page.title": "Collection"
+	"title": {
+		"full": "Collection Title",
+		"short": "Title",
+		"label": "Add collection title"
+	},
+	"description": {
+		"full": "Collection Description",
+		"short": "Description",
+		"label": "Add description",
+		"placeholder": "Collection description"
+	},
+	"icon": {
+		"title": "Collection Image",
+		"title-short": "Image",
+		"label": "Add collection image"
+	},
+	"tariff": {
+		"chooseCollections": "Collections",
+		"label": "Choose a variant",
+		"paid": "For members",
+		"free": "For all"
+	},
+	"select": {
+		"chooseCollections": "Collections",
+		"label": "Select option",
+		"paid": "Paid",
+		"free": "Free"
+	},
+	"access": "Access",
+	"specialization": "Specialization:",
+	"numberOfQuestions": "Number of questions",
+	"tooltip": {
+		"title": "There is already an active interview",
+		"aria.label": "Warning: You cannot create a new interview because there is already an active one."
+	},
+	"keywords": "Keywords:",
+	"tags": {
+		"title": "Tags"
+	},
+	"questions": {
+		"short": "Questions",
+		"label": "Add questions",
+		"selected": "Selected questions: {{count}}",
+		"length": {
+			"min_one": "{{count}} question",
+			"min_other": "{{count}} questions"
+		}
+	},
+	"image.src": "Image URL",
+	"image.alt": "Image of company",
+	"create.page.title": "Collection",
+	"edit.page.title": "Edit collection",
+	"company": {
+		"title": "Company",
+		"label": "Add company to this collection"
+	},
+	"empty": "Collections will appear soon",
+	"additional": {
+		"aria.label": "Go to additional info"
+	}
 }

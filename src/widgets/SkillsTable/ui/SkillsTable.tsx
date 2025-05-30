@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -8,9 +7,11 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { Text } from '@/shared/ui/Text';
 
 import { Skill } from '@/entities/skill';
 
@@ -45,7 +46,15 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k} className={k === 'description' ? styles.description : undefined}>
-				{v}
+				{k === 'title' ? (
+					<Link to={route(ROUTES.admin.skills.detail.page, skill.id)}>
+						<Text variant={'body3'} color={'purple-700'}>
+							{v}
+						</Text>
+					</Link>
+				) : (
+					v
+				)}
 			</td>
 		));
 	};
@@ -60,7 +69,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 				},
 			},
 			{
-				icon: <Icon icon="pencil" size={24} />,
+				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
 					navigate(route(ROUTES.admin.skills.edit.page, skill.id));
@@ -79,7 +88,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

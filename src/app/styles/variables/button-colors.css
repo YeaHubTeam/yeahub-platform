@@ -10,6 +10,14 @@
   --button-background-primary-focus: var(--color-purple-800);
   --button-background-primary-disabled: var(--color-black-100);
   
+  /* primary-inverse */
+  --button-text-color-primary-inverse: var(--color-purple-700);
+  --button-background-primary-inverse: var(--color-white-900);
+  --button-background-primary-inverse-hover: var(--color-purple-500);
+  --button-text-color-primary-inverse-hover: var(--color-white-900);
+  --button-background-primary-inverse-active: var(--color-purple-900);
+  --button-text-color-primary-inverse-active: var(--color-white-900);
+
   /* secondary */
   --button-text-color-secondary: var(--color-purple-700);
   --button-background-secondary: var(--color-purple-100);

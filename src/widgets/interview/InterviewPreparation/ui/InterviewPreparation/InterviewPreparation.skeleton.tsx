@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/hooks';
 import { CardSkeleton } from '@/shared/ui/Card';
 
 import { PreviewActiveQuizSkeleton } from '../PreviewActiveQuiz/PreviewActiveQuiz.skeleton';
@@ -15,6 +15,7 @@ export const InterviewPreparationSkeleton = ({ className }: InterviewPreparation
 			actionTitle="actionTitle"
 			actionRoute="actionRoute"
 			withShadow={!isMobile}
+			isTitleCenter={isMobile}
 		>
 			<PreviewActiveQuizSkeleton />
 		</CardSkeleton>

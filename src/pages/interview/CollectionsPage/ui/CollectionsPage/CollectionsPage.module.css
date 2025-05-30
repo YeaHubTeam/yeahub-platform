@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.filters {
+  flex-shrink: 0;
+  width: 360px;
+  height: fit-content;
+  border-radius: 24px;
+}
+
+@media screen and (width < 1024px) {
+  .filters {
+    display: none;
+  }
+
+}

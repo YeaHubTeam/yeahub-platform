@@ -3,3 +3,4 @@ export { PreviewQuestionsListSkeleton } from './ui/PreviewQuestionsList/PreviewQ
 export { FullQuestionsList } from './ui/FullQuestionsList/FullQuestionsList';
 export { FullQuestionsListSkeleton } from './ui/FullQuestionsList/FullQuestionsList.skeleton';
 export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestionsItem';
+export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';

@@ -1,5 +1,5 @@
 {
-  "name": "Name",
+  "name": "Nickname",
   "role": "Role",
   "email": "E-mail",
   "roles": {
@@ -12,7 +12,7 @@
     "member": "Member"
   },
   "user.name": "User",
-  "full.name": "First Name Last Name",
+  "username": "Nickname",
   "avatar": "Profile Photo",
   "select.role": {
     "title": "Select User Role",
@@ -43,5 +43,15 @@
   "subscription": {
     "free": "Free",
     "premium": "Community member"
-  }
+  },
+	"delete": {
+		"title": "Delete account",
+		"description": {
+			"main": "All your data, progress, and activity will be permanently deleted. This action cannot be undone.",
+			"modal": "Are you sure? This action <b>cannot be canceled.</b>\n<b>All progress, profiles, and account information<b> will be deleted."
+		},
+		"label": "Enter your nickname to confirm",
+		"placeholder": "Enter your nickname",
+		"button": "Delete your account"
+	}
 }

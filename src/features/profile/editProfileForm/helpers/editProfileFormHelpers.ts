@@ -31,10 +31,8 @@ export const getTabs = (t: (arg: string) => string) => [
 
 export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
 	//image: profile.image_src,
-	firstName: profile.firstName,
-	lastName: profile.lastName,
+	username: profile.username,
 	specialization: profile.profiles[0].specializationId,
-	phone: profile.phone,
 	email: profile.email,
 	location: profile.city,
 	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
@@ -67,9 +65,7 @@ export const mapFormToProfile = (
 		...profile,
 		id: profile.id,
 		email: values.email,
-		firstName: values.firstName,
-		lastName: values.lastName,
-		phone: values.phone || '',
+		username: values.username,
 		city: values.location || profile.city || '',
 		birthday: profile.birthday || null,
 		address: profile.address || '',

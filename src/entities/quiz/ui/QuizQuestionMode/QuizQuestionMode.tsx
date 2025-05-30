@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { QuestionModeType } from '../../model/types/quiz';
 
 interface QuizQuestionModeProps {
 	onChangeMode: (complexity: QuestionModeType) => void;
 	modeFromURL?: QuestionModeType;
+	disabled?: boolean;
+	active?: boolean;
 }
 
 interface QuizQuestionModeData {
@@ -19,7 +22,11 @@ interface QuizQuestionModeData {
 	active: boolean;
 }
 
-export const QuizQuestionMode = ({ onChangeMode, modeFromURL }: QuizQuestionModeProps) => {
+export const QuizQuestionMode = ({
+	onChangeMode,
+	modeFromURL,
+	disabled,
+}: QuizQuestionModeProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 
 	const quizQuestionModeData: QuizQuestionModeData[] = [
@@ -44,20 +51,32 @@ export const QuizQuestionMode = ({ onChangeMode, modeFromURL }: QuizQuestionMode
 	};
 
 	useEffect(() => {
-		if (modeFromURL) {
+		if (modeFromURL && !disabled) {
 			const updatedModeData = quizQuestionMode.map((mode) => ({
 				...mode,
 				active: mode.value === modeFromURL,
 			}));
 			setQuizQuestionMode(updatedModeData);
 		}
-	}, [modeFromURL]);
+	}, [modeFromURL, disabled]);
 
 	return (
-		<BaseFilterSection
-			data={quizQuestionMode}
-			title={t(InterviewQuizCreate.MODE_SELECT)}
-			onClick={onChooseMode}
-		/>
+		<div style={{ maxWidth: '384px' }}>
+			<Tooltip
+				title={t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_UNAUTHORIZED)}
+				placement="top"
+				color="violet"
+				offsetTooltip={0}
+				tooltipDelay={{ open: 0, close: 150 }}
+				shouldShowTooltip={disabled || false}
+			>
+				<BaseFilterSection
+					data={quizQuestionMode}
+					title={t(InterviewQuizCreate.MODE_SELECT)}
+					onClick={onChooseMode}
+					disabled={disabled}
+				/>
+			</Tooltip>
+		</div>
 	);
 };

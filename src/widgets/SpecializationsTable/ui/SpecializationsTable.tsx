@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Icon } from 'yeahub-ui-kit';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -8,9 +7,11 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { Text } from '@/shared/ui/Text';
 
 import { Specialization } from '@/entities/specialization';
 
@@ -45,7 +46,19 @@ export const SpecializationsTable = ({
 			description: specialization.description,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k}>
+				{k === 'title' ? (
+					<Link to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
+						<Text variant={'body3'} color={'purple-700'}>
+							{v}
+						</Text>
+					</Link>
+				) : (
+					v
+				)}
+			</td>
+		));
 	};
 
 	const renderActions = (specialization: Specialization) => {
@@ -58,7 +71,7 @@ export const SpecializationsTable = ({
 				},
 			},
 			{
-				icon: <Icon icon="pencil" size={24} />,
+				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
 					navigate(route(ROUTES.admin.specializations.edit.page, specialization.id));
@@ -77,7 +90,7 @@ export const SpecializationsTable = ({
 							aria-label="go to details"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="M"
+							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
 						/>

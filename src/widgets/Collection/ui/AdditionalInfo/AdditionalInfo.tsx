@@ -1,76 +1,67 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Chip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
+import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { Collection, CollectionTariff } from '@/entities/collection';
+import {
+	CollectionAccessInfo,
+	Collection,
+	CollectionCompanyInfo,
+	CollectionQuestionsCount,
+} from '@/entities/collection';
+import { QuestionAuthor } from '@/entities/question';
+import { SpecializationsList } from '@/entities/specialization';
 
 import styles from './AdditionalInfo.module.css';
 
-interface AdditionalInfoProps {
-	collection: Collection;
+interface AdditionalInfoProps
+	extends Pick<
+		Collection,
+		'specializations' | 'isFree' | 'company' | 'questionsCount' | 'createdBy' | 'keywords'
+	> {
 	className?: string;
 }
 
-export const AdditionalInfo = ({ collection, className }: AdditionalInfoProps) => {
+export const AdditionalInfo = ({
+	specializations,
+	isFree,
+	company,
+	questionsCount,
+	createdBy,
+	keywords,
+	className,
+}: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
-
-	const collectionTariffs: Record<CollectionTariff, string> = {
-		premium: t(Collections.TARIFF_PAID),
-		free: t(Collections.TARIFF_FREE),
-	};
+	const { isLargeScreen, isSmallScreen } = useScreenSize();
 
 	return (
-		<Card className={classnames(styles['normal-hight'], className)} withOutsideShadow>
-			<div className={styles.wrapper}>
-				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.ADDITIONAL_INFO_ACCESS)}
-				</Text>
-				<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
-					<Text variant="body3">{collectionTariffs[collection.tariff]}</Text>
-				</div>
-			</div>
-			<div className={styles.wrapper}>
-				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.SPECIALIZATION_TITLE)}:
-				</Text>
-				<ul className={styles['param-wrapper']}>
-					{collection.specializations.map((spec) => {
-						return (
-							<li key={spec.id}>
-								<Chip
-									className={styles.chip}
-									label={spec.title}
-									theme="primary"
-									active
-									onClick={() => {}}
-								/>
-							</li>
-						);
-					})}
-				</ul>
-			</div>
-			<div className={styles.wrapper}>
-				<Text variant="body3" color="black-700" className={styles.title}>
-					{t(Collections.KEYWORDS_TITLE)}:
-				</Text>
-				<div className={styles['keywords-wrapper']}>
-					{collection.keywordsCollection?.map((keyword) => {
-						return (
-							<Link
-								key={keyword}
-								to={`${ROUTES.interview.questions.page}?page=1&status=all&keywords=${keyword}`}
-							>{`#${keyword}`}</Link>
-						);
-					})}
-				</div>
-			</div>
-		</Card>
+		<>
+			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
+				<Flex direction="column" gap="24">
+					<Flex direction="column" gap="8">
+						<Text variant="body3" color="black-700" className={styles.title}>
+							{t(Collections.TAGS_TITLE)}
+						</Text>
+						<div className={styles['keywords-wrapper']}>
+							{keywords?.map((keyword) => (
+								<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
+							))}
+						</div>
+					</Flex>
+					<SpecializationsList specializations={specializations} />
+					<CollectionCompanyInfo company={company} />
+					<CollectionAccessInfo isFree={isFree} />
+					<CollectionQuestionsCount questionsCount={questionsCount} />
+					{isSmallScreen && createdBy && <QuestionAuthor createdBy={createdBy} />}
+				</Flex>
+			</Card>
+			{isLargeScreen && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
+		</>
 	);
 };

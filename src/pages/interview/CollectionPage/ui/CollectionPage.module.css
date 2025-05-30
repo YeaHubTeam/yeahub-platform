@@ -1,0 +1,69 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.mobile,
+.tablet {
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.additional {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  height: fit-content
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
+.mobile .actions {
+  justify-content: flex-start;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.train-button {
+  border-radius: 20px;
+}

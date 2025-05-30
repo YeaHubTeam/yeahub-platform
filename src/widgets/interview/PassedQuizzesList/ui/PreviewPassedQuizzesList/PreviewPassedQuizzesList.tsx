@@ -1,16 +1,17 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewHistory, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getHasPremiumAccess, getProfileId } from '@/entities/profile';
-import { useGetHistoryQuizQuery } from '@/entities/quiz';
+import { useGetHistoryQuizQuery, QuizWithoutQuestions } from '@/entities/quiz';
 
 import { PreviewPassedQuizzesItem } from '../PreviewPassedQuizzesItem/PreviewPassedQuizzesItem';
 
@@ -21,6 +22,8 @@ export interface InterviewHistoryListProps {
 }
 
 export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProps) => {
+	const [uniqueData, setUniqueData] = useState<QuizWithoutQuestions[] | []>([]);
+	const [startTimeBefore, setStartTimeBefore] = useState<Date | undefined>(undefined);
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
 	const isVerified = fullProfile?.isEmailVerified;
@@ -31,11 +34,17 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	]);
 	const { data, isSuccess } = useGetHistoryQuizQuery({
 		profileId,
+		startAfter: new Date(0).toISOString(),
+		startBefore: startTimeBefore?.toISOString(),
 		limit: 3,
 		uniqueKey: 'interviewPreviewHistory',
 	});
 
+	const { isMobile } = useScreenSize();
+
 	const isEmptyData = isSuccess && data.data.length === 0;
+	
+	const isShowShadow = !isMobile || !isVerified;
 
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
@@ -51,13 +60,29 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
 			: t(InterviewHistory.LINK);
 
+	useEffect(() => {
+		setStartTimeBefore(new Date());
+	}, []);
+
+	useEffect(() => {
+		if (data?.data) {
+			const seen = new Set<string>();
+			const filtered = data.data.filter((item) => {
+				if (seen.has(item.id)) return false;
+				seen.add(item.id);
+				return true;
+			});
+			setUniqueData(filtered);
+		}
+	}, [data?.data]);
+
 	return (
 		<Card
 			className={className}
 			actionRoute={actionRoute}
 			actionTitle={actionTitle}
 			title={t(InterviewHistory.TITLE)}
-			withShadow
+			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
 		>
 			{!isVerified && (
@@ -72,7 +97,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 			)}
 			{!isEmptyData && isVerified && (
 				<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
-					{data?.data.map((interview) => (
+					{uniqueData.map((interview) => (
 						<PreviewPassedQuizzesItem key={interview.id} interview={interview} />
 					))}
 				</Flex>

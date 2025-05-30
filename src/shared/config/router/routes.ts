@@ -53,7 +53,7 @@ export const ROUTES = {
 		},
 		users: {
 			route: 'users',
-			page: 'admin/users',
+			page: '/admin/users',
 			edit: {
 				route: ':userId/edit',
 				page: '/admin/users/:userId/edit',
@@ -63,7 +63,6 @@ export const ROUTES = {
 				page: '/admin/users/:userId',
 			},
 		},
-
 		collections: {
 			route: 'collections',
 			page: '/admin/collections',
@@ -78,6 +77,22 @@ export const ROUTES = {
 			edit: {
 				route: ':collectionId/edit',
 				page: '/admin/collections/:collectionId/edit',
+			},
+		},
+		companies: {
+			route: 'companies',
+			page: '/admin/companies',
+			create: {
+				route: 'create',
+				page: '/admin/companies/create',
+			},
+			edit: {
+				route: ':companyId/edit',
+				page: '/admin/companies/:companyId/edit',
+			},
+			details: {
+				route: ':companyId',
+				page: '/admin/companies/:companyId',
 			},
 		},
 	},
@@ -108,6 +123,10 @@ export const ROUTES = {
 			page: '/dashboard/profile/edit',
 		},
 	},
+	users: {
+		route: 'users/:userId',
+		page: '/dashboard/users/:userId',
+	},
 	settings: {
 		route: 'settings',
 		page: '/dashboard/settings',
@@ -135,6 +154,14 @@ export const ROUTES = {
 				page: '/dashboard/interview/questions/:questionId',
 			},
 		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/interview/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/interview/collections/:collectionId',
+			},
+		},
 		quiz: {
 			route: 'quiz',
 			page: '/dashboard/interview/quiz',
@@ -156,12 +183,24 @@ export const ROUTES = {
 			page: '/questions/:questionId',
 		},
 	},
+	quiz: {
+		route: 'quiz',
+		page: '/quiz',
+		new: {
+			route: 'new',
+			page: '/quiz/new',
+		},
+		result: {
+			route: 'result',
+			page: '/quiz/result',
+		},
+	},
 	collections: {
 		route: 'collections',
 		page: '/collections',
 		detail: {
-			route: ':collectionsId',
+			route: ':collectionId',
 			page: '/collections/:collectionId',
 		},
 	},
-};
+} as const;

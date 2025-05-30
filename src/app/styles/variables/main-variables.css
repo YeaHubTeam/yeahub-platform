@@ -1,15 +1,33 @@
 :root {
   /* widths */
   --container-width: 1216px;
+  --container-width-xl: 1080px;
   --container-width-lg: 960px; 
-  --container-width-tablet: 708px;
+  --container-width-md: 708px;
   --container-width-sm: 540px;
+  --container-width-xs: 340px;
   --container-width-mobile: 100%;
+
+  /* grids */
   --grid-template-columns: 332px 244px 244px;
+
+  /* heights */
   --header-height: 76px;
+  --header-height-lg: 64px;
+  --header-height-md: 63px;
+  --header-height-sm: 53px;
 
   /* paddings */
   --container-padding: 0;
+  --container-padding-mobile: 16px;
+
+  /* margins */
+  --section-m-b-mobile: 40px;
+  --section-m-b-tablet: 80px;
+  --section-m-b-desktop: 130px;
+  --container-m-b-mobile: 40px;
+  --container-m-b-tablet: 80px;
+  --container-m-b-desktop: 130px;
   
   /* transitions */
   --drawer-transition-speed: 0.3s;
@@ -38,6 +56,7 @@
   
   /* shadows */
   --main-shadow: 0px 4px 10px rgb(106 99 118 / 10%);
+  --main-shadow-15: 0px 4px 10px rgb(106 99 118 / 15%);
   --focus-shadow: 0 0 0 3px var(--color-purple-100);
   --focus-shadow-error: 0 0 0 3px var(--color-red-100);
   --focus-shadow-valid: 0 0 0 3px var(--color-green-200);
