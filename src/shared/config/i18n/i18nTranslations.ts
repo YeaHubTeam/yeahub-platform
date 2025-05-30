@@ -477,15 +477,14 @@ export enum User {
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
 	DELETE_TITLE = 'delete.title',
+	DELETE_ADMIN_TITLE = 'delete.admin.title',
 	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
 	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
-	DELETE_ADMIN_DESCRIPTION_MAIN = 'delete.admin.description.main',
 	DELETE_ADMIN_DESCRIPTION_MODAL = 'delete.admin.description.modal',
 	DELETE_BUTTON = 'delete.button',
+	DELETE_ADMIN_BUTTON = 'delete.admin.button',
 	DELETE_LABEL = 'delete.label',
-	DELETE_ADMIN_LABEL = 'delete.admin.label',
 	DELETE_PLACEHOLDER = 'delete.placeholder',
-	DELETE_ADMIN_PLACEHOLDER = 'delete.admin.placeholder',
 }
 
 export enum Collections {

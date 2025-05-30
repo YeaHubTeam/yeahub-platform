@@ -46,12 +46,11 @@
 		"placeholder": "Enter your nickname",
 		"button": "Delete account",
 		"admin": {
+			"title": "Confirmation of account deletion",
 			"description": {
-				"main": "Deleting the account will result in <b>complete data loss.</b> This action <b>cannot be undone.</b>",
-				"modal": "Deleting the account will result in <b>complete data loss.</b>\nThis action <b>cannot be undone</b>."
+				"modal": "You are about to delete the user account <i>{{ username }}</i>.\nDeleting the account will result in <b>complete loss of data.</b>\nThis action <b>cannot be undone.</b>"
 			},
-			"label": "Enter the user's nickname to confirm",
-			"placeholder": "Enter the user's nickname"
+			"button": "Delete"
 		}
 	}
 }

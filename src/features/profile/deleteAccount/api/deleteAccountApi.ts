@@ -1,3 +1,4 @@
+import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -9,11 +10,11 @@ import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
 import { deleteAccountApiUrls } from '../model/constants';
-import { DeleteAccountPayload } from '../model/types/deleteAccount';
+import { DeleteAccountParams } from '../model/types/deleteAccount';
 
 const deleteAccountApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		deleteAccount: build.mutation<void, DeleteAccountPayload>({
+		deleteAccount: build.mutation<void, DeleteAccountParams>({
 			query: ({ userId }) => ({
 				url: route(deleteAccountApiUrls.deleteAccount, userId),
 				method: 'DELETE',
@@ -38,6 +39,7 @@ const deleteAccountApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
+			invalidatesTags: [ApiTags.USERS],
 		}),
 	}),
 });

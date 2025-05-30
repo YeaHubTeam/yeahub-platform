@@ -1,0 +1,9 @@
+.button {
+  max-width: 328px;
+}
+
+@media (width < 480px) {
+  .button {
+    max-width: 320px;
+  }
+}
