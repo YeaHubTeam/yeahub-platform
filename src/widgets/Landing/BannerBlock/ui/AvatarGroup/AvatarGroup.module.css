@@ -12,6 +12,10 @@
   background-color: var(--color-purple-900);
 }
 
+.avatar-load {
+  background-color: var(--color-black-400);
+}
+
 .avatar:first-child {
   margin-left: 0;
 }

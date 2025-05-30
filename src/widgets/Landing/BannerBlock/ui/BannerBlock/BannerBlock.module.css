@@ -4,6 +4,10 @@
   background-color: var(--color-purple-700);
 }
 
+.banner-block-load {  
+  background-color: var(--color-white-500);
+}
+
 @media screen and (width < 1024px) {
   .banner-block {
     position: relative;

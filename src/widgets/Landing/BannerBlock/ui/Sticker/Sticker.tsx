@@ -11,7 +11,7 @@ interface StickerProps {
 
 export const Sticker = ({ text, className }: StickerProps) => {
 	return (
-		<div className={classNames(styles.sticker, className)}>
+		<div className={classNames(styles.sticker, styles['sticker-border'], className)}>
 			<Text variant="body2" color="white-900" className={styles.text}>
 				{text}
 			</Text>
