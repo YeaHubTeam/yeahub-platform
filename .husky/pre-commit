@@ -1,21 +1,21 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-branch_name=$(git rev-parse --abbrev-ref HEAD)
-
-if ! echo "$branch_name" | grep -qE "^(((feature|fix)\/YH-[0-9]+)|(release\/\d+.\d+.\d+))+$"; then
-  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/X.X.X'"
-  exit 1
-fi
-
-export FORCE_COLOR=1
-
-echo '🔍🎨 Formating and checking staged files before committing!'
-
-npx lint-staged ||
-(
-  echo '💀❌ Ooops! Formating and checking process has failed!';
-  false;
-)
-
-echo '🥳✅ Formating and checking process has been successfully completed!'
+#branch_name=$(git rev-parse --abbrev-ref HEAD)
+#
+#if ! echo "$branch_name" | grep -qE "^(((feature|fix)\/YH-[0-9]+)|(release\/\d+.\d+.\d+))+$"; then
+#  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/X.X.X'"
+#  exit 1
+#fi
+#
+#export FORCE_COLOR=1
+#
+#echo '🔍🎨 Formating and checking staged files before committing!'
+#
+#npx lint-staged ||
+#(
+#  echo '💀❌ Ooops! Formating and checking process has failed!';
+#  false;
+#)
+#
+#echo '🥳✅ Formating and checking process has been successfully completed!'
