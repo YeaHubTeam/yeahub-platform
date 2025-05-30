@@ -57,7 +57,6 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					<div className={styles.sidebar}>
 						<Sidebar
 							menuItems={filteredMenuItems}
-							isAdmin={onlyAdmin}
 							onOpenSidebarDrawer={onToggleOpenSidebarDrawer}
 							isOpenSidebarDrawer={isOpenSidebarDrawer}
 							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}

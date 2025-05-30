@@ -5,6 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Tooltip } from '@/shared/ui/Tooltip';
 import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { CategoryMenuItem } from '../../model/types/sidebar';
@@ -14,9 +15,14 @@ import styles from './SidebarMenuItem.module.css';
 interface SidebarMenuCategoryItemProps {
 	menuItem: CategoryMenuItem;
 	fullWidth: boolean;
+	isShowTooltip?: boolean;
 }
 
-const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryItemProps) => {
+const SidebarCategoryMenuItem = ({
+	menuItem,
+	fullWidth,
+	isShowTooltip,
+}: SidebarMenuCategoryItemProps) => {
 	const location = useLocation();
 
 	const [expanded, setExpanded] = useState(location.pathname.includes(menuItem.elements[0].route));
@@ -36,34 +42,53 @@ const SidebarCategoryMenuItem = ({ menuItem, fullWidth }: SidebarMenuCategoryIte
 				[styles.fullwidth]: fullWidth,
 			})}
 		>
-			<button className={styles.container} onClick={handleExpand}>
-				<div className={styles.wrap}>
-					<ImageComponent className={styles.icon} />
-					<span className={classNames(styles.title)}>{t(menuItem.title)}</span>
-				</div>
-				<div className={styles.side}>
-					{!fullWidth && <ArrowIcon className={styles['category-expand-icon']} />}
-					{menuItem.notifications && (
-						<div className={styles.notifications}>{menuItem.notifications}</div>
-					)}
-				</div>
-			</button>
+			<Tooltip
+				title={t(menuItem.title)}
+				placement="right"
+				color="violet"
+				tooltipDelay={{ open: 0, close: 50 }}
+				shouldShowTooltip={isShowTooltip}
+			>
+				<button className={styles.container} onClick={handleExpand}>
+					<div className={styles.wrap}>
+						<ImageComponent className={styles.icon} />
+						<span className={classNames(styles.title)}>{t(menuItem.title)}</span>
+					</div>
+					<div className={styles.side}>
+						{!fullWidth && <ArrowIcon className={styles['category-expand-icon']} />}
+						{menuItem.notifications && (
+							<div className={styles.notifications}>{menuItem.notifications}</div>
+						)}
+					</div>
+				</button>
+			</Tooltip>
 			<div className={styles.items}>
 				{menuItem.elements.map((item, index) => {
 					const ImageComponent = item.icon;
 					const isActiveItem = isPathMatch(item.route, location.pathname);
 					return (
-						<NavLink
+						<Tooltip
 							key={index}
-							to={item.route}
-							end
-							className={classNames(styles.item, styles.nested, { [styles.active]: isActiveItem })}
+							title={t(item.title)}
+							placement="right"
+							color="violet"
+							tooltipDelay={{ open: 0, close: 50 }}
+							shouldShowTooltip={isShowTooltip}
 						>
-							<div className={styles.wrap}>
-								<ImageComponent className={styles.icon} />
-								<span className={classNames(styles.title)}>{t(item.title)}</span>
-							</div>
-						</NavLink>
+							<NavLink
+								key={index}
+								to={item.route}
+								end
+								className={classNames(styles.item, styles.nested, {
+									[styles.active]: isActiveItem,
+								})}
+							>
+								<div className={styles.wrap}>
+									<ImageComponent className={styles.icon} />
+									<span className={classNames(styles.title)}>{t(item.title)}</span>
+								</div>
+							</NavLink>
+						</Tooltip>
 					);
 				})}
 			</div>

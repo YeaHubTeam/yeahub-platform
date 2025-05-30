@@ -27,8 +27,6 @@ interface SidebarProps {
 	/**
 	 * Is a mobile option
 	 */
-	isAdmin?: boolean;
-
 	isMobileSidebar?: boolean;
 
 	onOpenSidebarDrawer?: () => void;
@@ -45,7 +43,6 @@ interface SidebarProps {
 
 export const Sidebar = ({
 	menuItems,
-	isAdmin = false,
 	isMobileSidebar = false,
 	onOpenSidebarDrawer,
 	isOpenSidebarDrawer,
@@ -55,7 +52,7 @@ export const Sidebar = ({
 	const { t } = useTranslation(i18Namespace.translation);
 	const [isOpenNavSidebar, setIsOpenNavSidebar] = useState<boolean>(false);
 	const [logout] = useLazyLogoutQuery();
-	const isShowTooltip = isAdmin && isOpenNavSidebar && isLargeScreen;
+	const isShowTooltip = isOpenNavSidebar && isLargeScreen;
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
