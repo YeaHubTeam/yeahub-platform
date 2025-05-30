@@ -76,7 +76,7 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 				type="hidden"
 				placeholder="ФИО плательщика"
 				name="name"
-				value={profile.lastName + profile.firstName}
+				value={profile.username}
 			/>
 			<input
 				className="payform-tbank-row"
@@ -90,7 +90,7 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 				type="hidden"
 				placeholder="Контактный телефон"
 				name="phone"
-				value={profile.phone}
+				value=""
 			/>
 			<input className="payform-tbank-row" type="hidden" name="reccurentPayment" value="true" />
 			<input className="payform-tbank-row" type="hidden" name="customerKey" value={profile.id} />

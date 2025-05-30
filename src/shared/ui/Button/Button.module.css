@@ -161,8 +161,8 @@
 }
 
 .button-tertiary {
-  color: var(--color-red-600);
-  
+  color: var(--button-text-color-tertiary);
+
   &:hover {
     background-color: var(--button-background-tertiary-hover) ;
   }

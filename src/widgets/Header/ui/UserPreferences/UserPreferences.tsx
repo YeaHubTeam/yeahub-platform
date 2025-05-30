@@ -11,7 +11,7 @@ import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
-import { getFullProfile } from '@/entities/profile';
+import { getFullProfile, getHasPremiumAccess } from '@/entities/profile';
 
 import { Logout } from '@/features/authentication/logout/Logout';
 
@@ -21,6 +21,7 @@ import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
 	const profile = useAppSelector(getFullProfile);
+	const isPremiumUser = useAppSelector(getHasPremiumAccess);
 	const navigate = useNavigate();
 
 	const { t } = useTranslation();
@@ -42,11 +43,12 @@ export const UserPreferences = () => {
 		},
 	];
 
-	const isPremiumUser = profile?.userRoles.some((user) => user.name === 'candidate-premium');
-
 	return (
 		<div className={styles['popover-additional']}>
-			<Popover menuItems={userMenuItems} header={<UserPreferencesHeader isPremiumUser={isPremiumUser} />}>
+			<Popover
+				menuItems={userMenuItems}
+				header={<UserPreferencesHeader isPremiumUser={isPremiumUser} />}
+			>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
 						{isPremiumUser ? (
