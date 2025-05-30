@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
+import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -9,7 +11,7 @@ import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
-import { getFullProfile } from '@/entities/profile';
+import { getFullProfile, getHasPremiumAccess } from '@/entities/profile';
 
 import { Logout } from '@/features/authentication/logout/Logout';
 
@@ -19,6 +21,7 @@ import styles from './UserPreferences.module.css';
 
 export const UserPreferences = () => {
 	const profile = useAppSelector(getFullProfile);
+	const isPremiumUser = useAppSelector(getHasPremiumAccess);
 	const navigate = useNavigate();
 
 	const { t } = useTranslation();
@@ -42,9 +45,17 @@ export const UserPreferences = () => {
 
 	return (
 		<div className={styles['popover-additional']}>
-			<Popover menuItems={userMenuItems} header={<UserPreferencesHeader />}>
+			<Popover
+				menuItems={userMenuItems}
+				header={<UserPreferencesHeader isPremiumUser={isPremiumUser} />}
+			>
 				{({ onToggle }) => (
 					<button className={styles.preferences} onClick={onToggle}>
+						{isPremiumUser ? (
+							<ProSubIcon className={styles['premium-icon']} />
+						) : (
+							<FreeSubIcon className={styles['free-icon']} />
+						)}
 						<Text variant={'body2'}>{profile?.username}</Text>
 						<div className={styles.avatar}>
 							{profile.avatarUrl ? (

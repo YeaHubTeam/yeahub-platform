@@ -11,6 +11,8 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 
+import { getHasPremiumAccess } from '@/entities/profile';
+
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
 import styles from './ResetQuestionStudyProgressButton.module.css';
@@ -38,6 +40,7 @@ export const ResetQuestionStudyProgressButton = ({
 
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();
 	const { t } = useTranslation(i18Namespace.questions);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const onResetQuestion = () => {
 		resetQuestion({ profileId, questionId });
@@ -58,7 +61,7 @@ export const ResetQuestionStudyProgressButton = ({
 				preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
 				variant={variant}
 				onClick={onResetQuestion}
-				disabled={isLoading || !isEmailVerified || notQuestionMaxProgress}
+				disabled={isLoading || !isEmailVerified || notQuestionMaxProgress || !hasPremium}
 			>
 				{t(Questions.REPEAT)}
 			</Button>

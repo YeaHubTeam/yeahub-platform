@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Text } from '@/shared/ui/Text';
+
 import { FaqProps } from '../../model/types/types';
 
 import styles from './FaqItem.module.css';
@@ -11,6 +14,7 @@ interface FaqItemProps {
 
 export const FaqItem = ({ item }: FaqItemProps) => {
 	const [isShowFaqItemContent, setIsShowFaqItemContent] = useState(false);
+	const { isMobile } = useScreenSize();
 
 	const onToggleFaqItem = () => {
 		setIsShowFaqItemContent((prev) => !prev);
@@ -19,7 +23,7 @@ export const FaqItem = ({ item }: FaqItemProps) => {
 	return (
 		<li className={styles['faq-item']}>
 			<button onClick={onToggleFaqItem} className={styles['faq-header']}>
-				<p>{item.question}</p>
+				<Text variant={isMobile ? 'body3-strong' : 'body5-accent'}>{item.question}</Text>
 				<div
 					className={classNames(styles['faq-show'], {
 						[styles['faq-show-active']]: isShowFaqItemContent,
@@ -29,7 +33,9 @@ export const FaqItem = ({ item }: FaqItemProps) => {
 			<div
 				className={classNames(styles['faq-collapse'], { [styles['open']]: isShowFaqItemContent })}
 			>
-				<div className={styles['faq-body']}>{item.answer}</div>
+				<div className={styles['faq-body']}>
+					<Text variant="body3">{item.answer}</Text>
+				</div>
 			</div>
 		</li>
 	);
