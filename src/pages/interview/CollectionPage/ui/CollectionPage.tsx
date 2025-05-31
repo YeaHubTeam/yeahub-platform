@@ -6,6 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
+import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
@@ -35,7 +36,7 @@ export const CollectionPage = () => {
 		{ skip: collection?.questionsCount === undefined },
 	);
 
-	const { isMobileS, isLargeScreen } = useScreenSize();
+	const { isMobileS, isLargeScreen, isSmallScreen } = useScreenSize();
 
 	const questions = response?.data ?? [];
 
@@ -63,6 +64,9 @@ export const CollectionPage = () => {
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
+	const guru = getGuruWithMatchingSpecialization(collection.specializations);
+	const showAuthor = guru ? false : true;
+
 	const renderHeaderAndActions = () => (
 		<>
 			<CollectionHeader
@@ -88,10 +92,12 @@ export const CollectionPage = () => {
 				<div className={styles.main}>
 					{renderHeaderAndActions()}
 					<CollectionBody isFree={isFree} questions={questions} />
+					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</div>
 				{isLargeScreen && (
 					<Flex direction="column" gap="20" className={styles.additional}>
 						<AdditionalInfo
+							showAuthor={showAuthor}
 							specializations={specializations}
 							isFree={isFree}
 							company={company}
@@ -99,6 +105,7 @@ export const CollectionPage = () => {
 							createdBy={createdBy}
 							keywords={keywords}
 						/>
+						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>
 				)}
 			</section>

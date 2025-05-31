@@ -4,6 +4,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
+import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -38,6 +39,9 @@ export const QuestionPage = () => {
 		return null;
 	}
 
+	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
+	const showAuthor = guru ? false : true;
+
 	const {
 		createdBy,
 		checksCount,
@@ -55,11 +59,13 @@ export const QuestionPage = () => {
 				<QuestionHeader question={question} />
 				<QuestionActions questionId={questionId} checksCount={checksCount} />
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 			</Flex>
 			{!isMobile && !isTablet && (
 				<Flex direction="column" gap="20" className={styles.additional}>
 					<ProgressBlock checksCount={checksCount} />
 					<QuestionAdditionalInfo
+						showAuthor={showAuthor}
 						rate={rate}
 						createdBy={createdBy}
 						keywords={keywords}
@@ -67,6 +73,7 @@ export const QuestionPage = () => {
 						questionSkills={questionSkills}
 						route={ROUTES.interview.questions.page}
 					/>
+					{guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 			)}
 		</Flex>

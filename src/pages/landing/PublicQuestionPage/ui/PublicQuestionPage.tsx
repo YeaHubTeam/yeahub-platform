@@ -9,6 +9,7 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
+import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
 import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
@@ -45,6 +46,9 @@ const PublicQuestionPage = () => {
 	const { createdBy, rate, keywords, complexity, questionSkills, shortAnswer, longAnswer } =
 		question;
 
+	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
+	const showAuthor = guru ? false : true;
+
 	return (
 		<Flex direction="column" align="start">
 			<Flex>
@@ -62,10 +66,12 @@ const PublicQuestionPage = () => {
 				<Flex gap="20" direction="column" flex={1} maxWidth>
 					<QuestionHeader question={question} />
 					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+					{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{!isMobile && !isTablet && (
 					<Flex direction="column" gap="20" className={styles.additional}>
 						<QuestionAdditionalInfo
+							showAuthor={showAuthor}
 							rate={rate}
 							createdBy={createdBy}
 							keywords={keywords}
@@ -73,6 +79,7 @@ const PublicQuestionPage = () => {
 							questionSkills={questionSkills}
 							route={ROUTES.interview.questions.page}
 						/>
+						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>
 				)}
 			</Flex>

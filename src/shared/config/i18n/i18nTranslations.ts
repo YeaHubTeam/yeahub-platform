@@ -737,3 +737,8 @@ export enum TextEditor {
 	BULLET_LIST = 'editor.bullet.list',
 	ORDERED_LIST = 'editor.ordered.list',
 }
+
+export enum Guru {
+	BANNER_TITLE = 'banner.title',
+	BANNER_DESCRIPTION = 'banner.description',
+}
