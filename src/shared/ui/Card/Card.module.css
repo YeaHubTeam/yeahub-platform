@@ -95,6 +95,7 @@
   flex-shrink: 0;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
   text-decoration: none;
 }
 
@@ -165,5 +166,6 @@
 }
 
 .content-height {
+  z-index: 0;
   margin-bottom: unset;
 }

@@ -23,6 +23,8 @@
     }
   },
   "questions": {
+		"title": "Interview Questions",
+		"description": "We have collected 10,000+ questions from real IT interviews. Choose your specialty, adjust the difficulty level and prepare for the interview in practice.",
     "first": "What is Virtual DOM, and how does it work?",
     "second": {
       "title": "What types of data are there in JS?",
@@ -150,6 +152,7 @@
 	},
 	"specialization": {
 		"title_new": "Choose Your Specialty",
+		"description": "Questions for 20+ IT Specializations",
 		"button": "See more",
 		"card": {
 			"description": {
@@ -174,6 +177,14 @@
 			},
 			"button": "Go to Questions"
 		}
+	},
+	"skills": {
+		"title": "Master Key Skills",
+		"description": "50+ in-demand technologies: JavaScript, React, Python, SQL, and more"
+	},
+	"filters": {
+		"title": "Flexible Filtering",
+		"description": "Easily filter questions by difficulty, popularity, and relevance"
 	},
 	"history": {
 		"title": "Your progress is your success",

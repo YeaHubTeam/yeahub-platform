@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory, Profile } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewHistory, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useScreenSize, useAppSelector } from '@/shared/hooks';
@@ -10,8 +10,8 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { getFullProfile, getProfileId } from '@/entities/profile';
-import { QuizWithoutQuestions, useGetHistoryQuizQuery } from '@/entities/quiz';
+import { getFullProfile, getHasPremiumAccess, getProfileId } from '@/entities/profile';
+import { useGetHistoryQuizQuery, QuizWithoutQuestions } from '@/entities/quiz';
 
 import { PreviewPassedQuizzesItem } from '../PreviewPassedQuizzesItem/PreviewPassedQuizzesItem';
 
@@ -27,7 +27,11 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
 	const isVerified = fullProfile?.isEmailVerified;
-	const { t } = useTranslation([i18Namespace.interviewHistory, i18Namespace.profile]);
+	const { t } = useTranslation([
+		i18Namespace.interviewHistory,
+		i18Namespace.profile,
+		i18Namespace.subscription,
+	]);
 	const { data, isSuccess } = useGetHistoryQuizQuery({
 		profileId,
 		startAfter: new Date(0).toISOString(),
@@ -42,10 +46,19 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 
 	const isShowShadow = !isMobile || !isVerified;
 
-	const actionRoute = isVerified ? ROUTES.interview.history.page : EMAIL_VERIFY_SETTINGS_TAB;
-	const actionTitle = isVerified
-		? t(InterviewHistory.LINK)
-		: t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile });
+	const hasPremium = useAppSelector(getHasPremiumAccess);
+
+	const actionRoute = !isVerified
+		? EMAIL_VERIFY_SETTINGS_TAB
+		: !hasPremium
+			? ROUTES.settings.page
+			: ROUTES.interview.history.page;
+
+	const actionTitle = !isVerified
+		? t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile })
+		: !hasPremium
+			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
+			: t(InterviewHistory.LINK);
 
 	useEffect(() => {
 		setStartTimeBefore(new Date());

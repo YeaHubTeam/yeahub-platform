@@ -17,3 +17,4 @@ export { RoleSelect } from './ui/RoleSelect/RoleSelect';
 export { ChooseUsersRole } from './ui/ChooseUsersRole/ChooseUsersRole';
 export { VerifiedEmail } from './ui/VerifiedEmail/VerifiedEmail';
 export { UserEditButton } from './ui/UserEditButton/UserEditButton';
+export { UserRolesList } from './ui/UserRolesList/UserRolesList';

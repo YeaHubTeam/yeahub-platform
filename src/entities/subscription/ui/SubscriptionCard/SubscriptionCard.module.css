@@ -1,57 +1,74 @@
 .subscription {
-  padding: 24px;
-  width: 360px;
-  height: 344px;
-  border: 1px solid transparent;
-  border-radius: 20px;
-  background-color: var(--color-white-900);
+  display: flex;
+  min-width: 360px;
+  border: 1px solid var(--color-white-900);
   cursor: pointer;
-} 
+}
 
 .subscription:hover {
-  border: 1px solid var(--color-purple-900);
+  border: 1px solid var(--color-purple-700);
   transition: border 0.5s ease-in-out;
 }
 
-.subscription-header {
-  margin-bottom: 8px;
-}
-
 .subscription-name {
-  color: var(--text-color-primary);
   line-height: 38px;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-large-30);
-  font-family: var(--font-family);
 }
 
 .subscription-description{
-  margin-bottom: 14px;
-  height: 36px;
-  overflow: hidden;
-  color: var(--text-color-primary);
   line-height: 18px;
-  font-weight: var(--font-weight-400);
-  font-size: var( --font-size-p-s);
-  font-family: var(--font-family);
-  text-overflow: ellipsis;
 }
 
 .subscription-price {
-  margin-bottom: 20px;
-  color: var(--text-color-primary);
   line-height: 19px;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
 }
 
-.subscription-button {
-  margin-bottom: 24px;
-  width: 100%;
+.subscription-check-inactive {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-black-500)
 }
 
-.subscription-check {
-  stroke: var(--color-purple-700);
+.subscription-check-active {
+  width: 20px;
+  height: 20px;
   fill: var(--color-purple-700);
+}
+
+.crossed-out-text {
+  color: var(--color-black-500);
+  text-decoration: line-through;
+}
+
+.crossed-out-price {
+  color: var(--color-black-400);
+  text-decoration: line-through;
+}
+
+.advantage {
+  min-width: 240px;
+}
+
+.advantages-list {
+  margin-top: 24px;
+}
+
+.advantages-and-button-container {
+  flex-direction: column;
+}
+
+.subscription-header svg {
+  width: 39px;
+  height: 39px;
+}
+
+@media (width <= 1024px) {
+  .subscription {
+    min-width: 222px;
+  }
+}
+
+@media (width <= 768px) {
+  .advantages-and-button-container {
+    flex-direction: column-reverse;
+  }
 }

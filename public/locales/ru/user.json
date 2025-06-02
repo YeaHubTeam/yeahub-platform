@@ -4,9 +4,9 @@
   "email": "E-mail",
   "roles": {
     "guest": "Гость",
-    "candidate": "Пользователь-Базовый",
-    "candidate.premium": "Пользователь-Премиум",
-    "candidate.free": "Пользователь-Бесплатный",
+    "candidate": "Базовый",
+    "candidate.premium": "Участник",
+    "candidate.free": "Кандидат",
     "HR": "HR",
     "admin": "Админ",
     "member": "Пользователь"
@@ -35,6 +35,10 @@
   "edit": {
     "success": "Пользователь успешно обновлен",
     "error": "Не удалось обновить пользователя"
+  },
+  "subscription": {
+    "free": "Кандидат",
+    "premium": "Участник сообщества"
   },
 	"delete": {
 		"title": "Удаление аккаунта",

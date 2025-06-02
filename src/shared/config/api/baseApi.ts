@@ -21,10 +21,27 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
-	const result = await baseQuery(args, api, extraOptions);
+	let result = await baseQuery(args, api, extraOptions);
 
 	if (result.error?.status === 401 && args.url !== '/auth/refresh') {
-		api.dispatch(apiAccessTokenIsBrokenEvent());
+		const refreshResult = await baseQuery(
+			{
+				url: '/auth/refresh',
+				method: 'GET',
+			},
+			api,
+			extraOptions,
+		);
+
+		if (refreshResult.data) {
+			const accessToken = (refreshResult.data as { access_token?: string })?.access_token;
+			if (accessToken) {
+				localStorage.setItem('accessToken', accessToken);
+			}
+			result = await baseQuery(args, api, extraOptions);
+		} else {
+			api.dispatch(apiAccessTokenIsBrokenEvent());
+		}
 	}
 
 	return result;

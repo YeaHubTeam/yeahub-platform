@@ -6,15 +6,20 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { AccountTab, ChangePasswordTab, EmailConfirmationTab } from '@/widgets/Profile';
+import {
+	AccountTab,
+	EmailConfirmationTab,
+	SubscriptionTab,
+	ChangePasswordTab,
+} from '@/widgets/Profile';
 
 const getTabs = (t: (arg: string) => string) => [
-	// {
-	// 	id: 0,
-	// 	title: 'select-tariff',
-	// 	label: t(Profile.SETTINGS_TABS_SELECT_TARIFF),
-	// 	Component: SubscriptionTab,
-	// },
+	{
+		id: 0,
+		title: 'select-tariff',
+		label: t(Profile.SETTINGS_TABS_SELECT_TARIFF),
+		Component: SubscriptionTab,
+	},
 	{
 		id: 1,
 		title: 'change-password',

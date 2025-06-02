@@ -247,6 +247,7 @@ export enum Auth {
 }
 
 export enum Specializations {
+	TITLE_MAIN = 'title.main',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -348,6 +349,7 @@ export enum Questions {
 	PREVIEW_LINK = 'preview.link',
 	PREVIEW_EMPTY_SPECIALIZATION = 'preview.empty.specialization',
 	PREVIEW_EMPTY_COLLECTION = 'preview.empty.collection',
+	PREVIEW_LOCKED_COLLECTION = 'preview.locked.collection',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -402,6 +404,9 @@ export enum Questions {
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+
+	COMMUNITY_JOIN = 'community.join',
 }
 
 export enum InterviewHistory {
@@ -474,6 +479,8 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	SUBSCRIPTION_FREE = 'subscription.free',
+	SUBSCRIPTION_PREMIUM = 'subscription.premium',
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
 	DELETE_TITLE = 'delete.title',
@@ -508,6 +515,7 @@ export enum Collections {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	ADDITIONAL_INFO_ACCESS = 'access',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	QUESTIONS_SHORT = 'questions.short',
 	QUESTIONS_LABEL = 'questions.label',
 	QUESTIONS_SELECTED = 'questions.selected',
@@ -677,11 +685,33 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
+	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
+	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
+	SUBSCRIPTION_FAQ_SECOND_QUESTION = 'faq.second.question',
+	SUBSCRIPTION_FAQ_SECOND_ANSWER = 'faq.second.answer',
+	SUBSCRIPTION_FAQ_THIRD_QUESTION = 'faq.third.question',
+	SUBSCRIPTION_FAQ_THIRD_ANSWER = 'faq.third.answer',
+	SUBSCRIPTION_FAQ_FOURTH_QUESTION = 'faq.fourth.question',
+	SUBSCRIPTION_FAQ_FOURTH_ANSWER = 'faq.fourth.answer',
 }
 
 export enum SubscriptionCard {
-	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_TITLE = 'subscription.title',
+	SUBSCRIPTION_DESCRIPTION = 'subscription.description',
 	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+	SUBSCRIPTION_CARD_ADVANTAGES_FIRST = 'subscription.advantages.first',
+	SUBSCRIPTION_CARD_ADVANTAGES_SECOND = 'subscription.advantages.second',
+	SUBSCRIPTION_CARD_ADVANTAGES_THIRD = 'subscription.advantages.third',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_FREE = 'subscription.advantages.fourth.free',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_PAID = 'subscription.advantages.fourth.paid',
+	SUBSCRIPTION_CARD_FREE_TITLE = 'subscription.free.title',
+	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
+	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
+	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
+	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
+	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
 }
 
 export enum Docs {
@@ -692,4 +722,22 @@ export enum Docs {
 	DOC4 = 'doc4',
 	DOC5 = 'doc5',
 	DOC6 = 'doc6',
+}
+
+export enum TextEditor {
+	BOLD = 'editor.bold',
+	ITALIC = 'editor.italic',
+	UNDERLINE = 'editor.underline',
+	STRIKE = 'editor.strike',
+	CODE_INLINE = 'editor.code.inline',
+	ALIGN_LEFT = 'editor.align.left',
+	ALIGN_CENTER = 'editor.align.center',
+	ALIGN_RIGHT = 'editor.align.right',
+	HEADINGS = 'editor.headings',
+	BLOCKQUOTE = 'editor.blockquote',
+	CODE_BLOCK = 'editor.code.block',
+	UNDO = 'editor.undo',
+	REDO = 'editor.redo',
+	BULLET_LIST = 'editor.bullet.list',
+	ORDERED_LIST = 'editor.ordered.list',
 }

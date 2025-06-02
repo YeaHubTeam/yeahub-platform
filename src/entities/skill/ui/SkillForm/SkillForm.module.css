@@ -4,24 +4,7 @@
 }
 
 .main-title {
-  margin-bottom: 28px;
-  line-height: 120%;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-h-xs);
-}
-
-.title {
-  color: var(--text-color-primary);
-  line-height: 120%;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-p-l);
-}
-
-.description {
-  color: var(--text-color-primary);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
+  margin-bottom: 28px; 
 }
 
 .textarea {

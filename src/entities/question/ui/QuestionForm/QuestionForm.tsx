@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Select, Text, TextEditor } from 'yeahub-ui-kit';
+import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
@@ -8,7 +8,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Range } from '@/shared/ui/Range';
+import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
+import { TextEditor } from '@/shared/ui/TextEditor';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SkillSelect } from '@/entities/skill';
@@ -40,7 +42,9 @@ export const QuestionForm = () => {
 	return (
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
-				<Text title={t(Questions.TITLE_SHORT)} />
+				<Text variant="body3-strong" color="black-800">
+					{t(Questions.TITLE_SHORT)}
+				</Text>
 				<FormControl name="title" control={control} label={t(Questions.TITLE_LABEL)}>
 					{(field, hasError) => (
 						<TextArea {...field} state={hasError ? 'error' : 'default'} className={styles.title} />
@@ -48,7 +52,9 @@ export const QuestionForm = () => {
 				</FormControl>
 			</Flex>
 			<Flex direction="column">
-				<Text title={t(Questions.DESCRIPTION_TITLE)} />
+				<Text variant="body3-strong" color="black-800">
+					{t(Questions.DESCRIPTION_TITLE)}
+				</Text>
 				<FormControl name="description" control={control} label={t(Questions.DESCRIPTION_LABEL)}>
 					{(field, hasError) => (
 						<TextArea
@@ -62,8 +68,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text title={t(Questions.RATE_TITLE)} />
-					<Text text={t(Questions.RATE_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.RATE_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.RATE_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="rate" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
@@ -71,8 +81,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text title={t(Questions.COMPLEXITY_TITLE)} />
-					<Text text={t(Questions.COMPLEXITY_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.COMPLEXITY_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.COMPLEXITY_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="complexity" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={10} step={1} hasScale {...field} />}
@@ -80,8 +94,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text title={t(Questions.STATUS_TITLE)} />
-					<Text text={t(Questions.STATUS_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.STATUS_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.STATUS_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="status" control={control}>
 					{({ onChange, value }) => (
@@ -100,8 +118,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
-					<Text title={t(Questions.SPECIALIZATION_TITLE)} />
-					<Text text={t(Questions.SPECIALIZATION_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.SPECIALIZATION_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.SPECIALIZATION_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
@@ -113,8 +135,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
-					<Text title={t(Questions.SKILLS_TITLE)} />
-					<Text text={t(Questions.SKILLS_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.SKILLS_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.SKILLS_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="skills" control={control}>
 					{({ onChange, value }) => {
@@ -132,8 +158,12 @@ export const QuestionForm = () => {
 			</Flex>
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
-					<Text title={t(Questions.KEYWORDS_TITLE)} />
-					<Text text={t(Questions.KEYWORDS_LABEL)} className={styles.label} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Questions.KEYWORDS_TITLE)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Questions.KEYWORDS_LABEL)}
+					</Text>
 				</Flex>
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value }) => {
@@ -146,7 +176,9 @@ export const QuestionForm = () => {
 				</FormControl>
 			</Flex>
 			<Flex direction="column">
-				<Text title={t(Questions.SHORT_ANSWER_TITLE)} />
+				<Text variant="body3-strong" color="black-800">
+					{t(Questions.SHORT_ANSWER_TITLE)}
+				</Text>
 				<FormControl name="shortAnswer" control={control} label={t(Questions.SHORT_ANSWER_LABEL)}>
 					{(field) => (
 						<TextEditor
@@ -160,7 +192,9 @@ export const QuestionForm = () => {
 				</FormControl>
 			</Flex>
 			<Flex direction="column">
-				<Text title={t(Questions.LONG_ANSWER_TITLE)} />
+				<Text variant="body3-strong" color="black-800">
+					{t(Questions.LONG_ANSWER_TITLE)}
+				</Text>
 				<FormControl name="longAnswer" control={control} label={t(Questions.LONG_ANSWER_LABEL)}>
 					{(field) => (
 						<TextEditor

@@ -65,6 +65,7 @@ import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
+import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
@@ -78,6 +79,7 @@ import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
+import { PremiumRoute } from '@/app/providers/router/ui/PremiumRoute';
 
 import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
@@ -242,6 +244,10 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <PublicCollectionsPage />,
+					},
+					{
+						path: ROUTES.collections.detail.route,
+						element: <PublicCollectionPage />,
 					},
 				],
 			},
@@ -437,7 +443,9 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.history.route,
 						element: (
 							<VerifiedEmailRoute>
-								<Outlet />
+								<PremiumRoute>
+									<Outlet />
+								</PremiumRoute>
 							</VerifiedEmailRoute>
 						),
 						handle: {
@@ -461,7 +469,9 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.statistic.route,
 						element: (
 							<VerifiedEmailRoute>
-								<InterviewStatisticsPage />
+								<PremiumRoute>
+									<InterviewStatisticsPage />
+								</PremiumRoute>
 							</VerifiedEmailRoute>
 						),
 						handle: {
@@ -512,7 +522,9 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.quiz.route,
 						element: (
 							<VerifiedEmailRoute>
-								<Outlet />
+								<PremiumRoute>
+									<Outlet />
+								</PremiumRoute>
 							</VerifiedEmailRoute>
 						),
 						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
@@ -522,7 +534,9 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.new.route,
 						element: (
 							<VerifiedEmailRoute>
-								<InterviewQuizPage />
+								<PremiumRoute>
+									<InterviewQuizPage />
+								</PremiumRoute>
 							</VerifiedEmailRoute>
 						),
 						handle: {

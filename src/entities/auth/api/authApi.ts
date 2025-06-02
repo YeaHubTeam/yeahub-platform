@@ -1,7 +1,6 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { ExtraArgument } from '@/shared/config/store/types';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
@@ -36,7 +35,10 @@ export const authApi = baseApi.injectEndpoints({
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_AUTH_LOGIN_FAILED));
+					if (error && typeof error === 'object' && 'error' in error) {
+						const errObj = error as { error: { data: { message: string } } };
+						toast.error(i18n.t('toast.' + errObj.error.data.message));
+					}
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
@@ -58,6 +60,10 @@ export const authApi = baseApi.injectEndpoints({
 
 					typedExtra.navigate(ROUTES.platformRoute);
 				} catch (error) {
+					if (error && typeof error === 'object' && 'error' in error) {
+						const errObj = error as { error: { data: { message: string } } };
+						toast.error(i18n.t('toast.' + errObj.error.data.message));
+					}
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

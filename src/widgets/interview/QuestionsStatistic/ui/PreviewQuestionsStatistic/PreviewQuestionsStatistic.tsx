@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics, Profile } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewStatistics, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getIsEmailVerified, getProfileId } from '@/entities/profile';
 import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import { getQuestionsStats } from '../../model/lib/getQuestionsStats/getQuestionsStats';
@@ -17,7 +17,11 @@ export interface PreviewQuestionsStatisticProps {
 }
 
 export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatisticProps) => {
-	const { t } = useTranslation([i18Namespace.interviewStatistics, i18Namespace.profile]);
+	const { t } = useTranslation([
+		i18Namespace.interviewStatistics,
+		i18Namespace.profile,
+		i18Namespace.subscription,
+	]);
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
 
@@ -29,9 +33,13 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 	const newQuestion = profileStats?.questionsStat.unlearnedQuestionsCount;
 	const newUser = allQuestion === newQuestion;
 
+	const hasPremium = useAppSelector(getHasPremiumAccess);
+
 	const statsActionTitleKey = !isEmailVerified
 		? t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile })
-		: t(InterviewStatistics.LINK);
+		: !hasPremium
+			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
+			: t(InterviewStatistics.LINK);
 
 	const statsActionRoute = !isEmailVerified
 		? EMAIL_VERIFY_SETTINGS_TAB

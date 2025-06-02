@@ -4,13 +4,16 @@
 }
 
 .title {
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-color);
   color: var(--text-color-bright);
   line-height: 120%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-s);
+}
+
+.header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .content {
@@ -30,8 +33,11 @@
     padding: 20px 10px;
   }
 
-  .title {
+  .header {
     margin-bottom: 24px;
+  }
+
+  .title {
     font-size: var(--font-size-h-xs);
   }
 }

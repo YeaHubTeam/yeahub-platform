@@ -1,0 +1,306 @@
+.yeahub-text-editor {
+  position: relative;
+}
+
+.prose-mirror {
+  padding: 16px;
+  min-height: 200px;
+  outline: none;
+  cursor: text;
+}
+
+.inline-prose-mirror {
+  min-height: auto;
+}
+
+.disabled-prose-mirror {
+  background-color: var(--color-black-25);
+  cursor: not-allowed;
+}
+
+.editor-content {
+  border: 1px solid var(--color-black-100);
+  border-radius: 18px;
+  background-color: var(--color-white-900);
+  color: var(--color-black-800);
+  line-height: 1.6;
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family-arial);
+  transition: all 0.2s ease;
+  cursor: text;
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 transparent;
+}
+
+.editor-content:hover {
+  border-color: var(--color-purple-300);
+}
+
+.editor-content:focus-within {
+  box-shadow: var(--focus-shadow);
+  border-color: var(--color-purple-500);
+}
+
+.disabled-editor .editor-content {
+  background-color: var(--color-black-25);
+  cursor: cell;
+}
+
+.editor-content p {
+  margin-bottom: 8px;
+}
+
+.blockquote {
+  margin: 8px 0;
+  padding: 8px 16px;
+  border-left: 4px solid var(--color-purple-300);
+  background: var(--color-black-25);
+  color: var(--color-black-600);
+  font-style: italic;
+}
+
+.heading-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: var(--z-index-modal);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  box-shadow: var(--main-shadow);
+  border: 1px solid var(--color-black-100);
+  border-radius: 8px;
+  background: var(--color-white-900);
+}
+
+.editor-heading[data-level="1"] {
+  margin: 20px 0 15px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-s);
+}
+
+.editor-heading[data-level="2"] {
+  margin: 18px 0 13px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-xs);
+}
+
+.editor-heading[data-level="3"] {
+  margin: 16px 0 11px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-l);
+}
+
+.editor-heading[data-level="4"] {
+  margin: 14px 0 9px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+}
+
+.editor-heading[data-level="5"] {
+  margin: 12px 0 7px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-s);
+}
+
+.editor-heading[data-level="6"] {
+  margin: 10px 0 5px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-xs);
+}
+
+.editor-content ul,
+.editor-content ol {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  list-style-position: outside;
+}
+
+.editor-content ul {
+  list-style: disc;
+}
+
+.editor-content ol {
+  list-style: decimal;
+}
+
+.editor-content li p {
+  margin: 0;
+}
+
+.editor-content ul ul,
+.editor-content ol ol {
+  margin-left: 18px;
+}
+
+.editor-content ul ul {
+  list-style: circle;
+}
+
+.editor-content ol ol {
+  list-style: lower-alpha;
+}
+
+.list-item {
+  display: list-item;
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+
+.bullet-list > .list-item {
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.ordered-list > .list-item {
+  list-style: decimal;
+  list-style-position: outside;
+}
+
+.bullet-list .bullet-list > .list-item {
+  list-style: circle;
+}
+
+.ordered-list .ordered-list > .list-item {
+  list-style: lower-alpha;
+}
+
+.bullet-list .bullet-list,
+.ordered-list .ordered-list {
+  margin-left: 18px;
+}
+
+.bubble-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 8px;
+  width: fit-content;
+  box-shadow: var(--main-shadow);
+  border: 1px solid var(--color-black-100);
+  border-radius: 12px;
+  background-color: var(--color-white-900);
+}
+
+.bubble-menu-group {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.bubble-menu-group:not(:last-child) {
+  border-right: 1px solid var(--color-black-100);
+}
+
+.bubble-button,
+.bubble-button-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  width: 32px;
+  min-width: 24px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: var(--font-size-p-xs);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.bubble-button {
+  border: 1px solid var(--color-black-100);
+  background: var(--color-white-900);
+  color: var(--color-black-900);
+}
+
+.bubble-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bubble-button:hover:not(:disabled) {
+  border-color: var(--color-purple-300);
+  background: var(--color-purple-50);
+}
+
+.bubble-button-active {
+  border: 1px solid var(--color-purple-500);
+  border-radius: 8px;
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-700);
+}
+
+.code-block-wrapper {
+  margin: 15px 0;
+  overflow: hidden;
+  border: 1px solid var(--color-black-700);
+  border-radius: 12px;
+  background: var(--color-black-900);
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 transparent;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-black-700);
+  background: var(--color-black-800);
+}
+
+.code-block code {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  border-radius: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 transparent;
+}
+
+.inline-code {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: var(--color-black-10);
+  color: var(--color-green-700);
+  font-size: var(--font-size-p-s);
+  font-family: var(--font-family-courier);
+}
+
+.code-block-language {
+  color: var(--color-black-300);
+  font-size: var(--font-size-p-s);
+}
+
+.editor-content pre,
+.editor-content code {
+  tab-size: 8
+}
+
+.editor-content .code-block,
+.editor-content pre,
+.editor-content pre code,
+.editor-content .code-block code {
+  tab-size: 8;
+  max-height: 300px;
+  overflow: auto;
+  color: var(--color-white-900);
+  font-size: var(--font-size-p-s);
+  font-family: var(--font-family-courier);
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.editor-content pre[class*="code-block"],
+.editor-content code[class*="code-block"],
+.editor-content pre[class*="TextEditor-module"],
+.editor-content code[class*="TextEditor-module"] {
+  tab-size: 8;
+  white-space: pre;
+  word-break: normal;
+}

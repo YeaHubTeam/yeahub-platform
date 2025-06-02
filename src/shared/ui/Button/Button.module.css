@@ -162,7 +162,7 @@
 
 .button-tertiary {
   color: var(--button-text-color-tertiary);
-  
+
   &:hover {
     background-color: var(--button-background-tertiary-hover) ;
   }
@@ -187,6 +187,30 @@
 
   &:disabled:active {
     background-color: inherit;
+  }
+}
+
+.button-tertiary-link {
+  justify-content: flex-start;
+  padding: 6px 10px;
+  width: 100%;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--color-black-1000);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+	
+  &:hover {
+    background-color: var(--button-background-tertiary-hover);
+    color: var(--color-purple-800);
+  }
+	
+  &:focus {
+    border: 1px solid transparent;
+  }
+	
+  &:not([disabled]):hover {
+    color: var(--color-purple-700);
   }
 }
 

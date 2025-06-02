@@ -1,6 +1,5 @@
-import Slider from 'react-slick';
-
 import { Flex } from '@/shared/ui/Flex';
+import { Slider } from '@/shared/ui/Slider';
 
 import { FiltersCard } from '@/widgets/Landing/AboutQuestionsBlock/ui/Cards/FiltersCard/FiltersCard';
 
@@ -10,8 +9,6 @@ import { SkillsCard } from '../Cards/SkillsCard/SkillsCard';
 import { SpecializationCard } from '../Cards/SpecializationCard/SpecializationCard';
 
 import styles from './InterviewMaterials.module.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 export const InterviewMaterials = () => {
 	return (
