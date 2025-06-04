@@ -4,7 +4,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Sticker.module.css';
 
-interface StickerProps {
+export interface StickerProps {
 	text: string;
 	className?: string;
 }
