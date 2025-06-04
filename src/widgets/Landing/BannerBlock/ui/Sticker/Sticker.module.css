@@ -3,11 +3,8 @@
   padding: 4px 12px;
   width: fit-content;
   box-shadow: 0 3px 0 0 var(--color-sticky-shadow);
-  background-color: var(--color-green-750);
-}
-
-.sticker-border {
   border-radius: 40px;
+  background-color: var(--color-green-750);
 }
 
 @media screen and (width < 768px) {
