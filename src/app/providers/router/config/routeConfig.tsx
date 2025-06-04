@@ -71,7 +71,7 @@ import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
 import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
-import { MarketplacePage } from '@/pages/marketplace/MarketplacePage/index';
+import { MarketplacePage } from '@/pages/marketplace';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
