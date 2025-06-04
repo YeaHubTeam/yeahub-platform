@@ -227,7 +227,10 @@
 		"user": {
 			"delete": {
 				"success": "Your account and all your data have been permanently deleted",
-				"failed": "Account could not be deleted"
+				"failed": "Account could not be deleted",
+				"admin": {
+					"success": "The user account and all its data have been deleted without the possibility of recovery"
+				}
 			},
 			"user": {
 				"id": {

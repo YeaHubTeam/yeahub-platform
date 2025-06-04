@@ -11,7 +11,7 @@ import { VariantType } from '../Button/types';
 
 import styles from './Modal.module.css';
 
-type ModalProps = {
+export type ModalProps = {
 	title: string;
 	isOpen: boolean;
 	onClose: () => void;

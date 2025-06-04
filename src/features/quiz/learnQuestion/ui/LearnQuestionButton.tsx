@@ -10,7 +10,6 @@ import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { getIsEmailVerified, getProfileId } from '@/entities/profile';
-
 import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';

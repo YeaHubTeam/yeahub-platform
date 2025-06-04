@@ -6,7 +6,12 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { AccountTab, EmailConfirmationTab, SubscriptionTab, ChangePasswordTab } from '@/widgets/Profile';
+import {
+	AccountTab,
+	EmailConfirmationTab,
+	SubscriptionTab,
+	ChangePasswordTab,
+} from '@/widgets/Profile';
 
 const getTabs = (t: (arg: string) => string) => [
 	{

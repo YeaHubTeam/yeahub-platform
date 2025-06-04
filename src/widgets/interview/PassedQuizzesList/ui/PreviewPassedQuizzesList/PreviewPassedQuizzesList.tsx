@@ -43,7 +43,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const { isMobile } = useScreenSize();
 
 	const isEmptyData = isSuccess && data.data.length === 0;
-	
+
 	const isShowShadow = !isMobile || !isVerified;
 
 	const hasPremium = useAppSelector(getHasPremiumAccess);

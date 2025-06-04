@@ -145,7 +145,8 @@ export enum Translation {
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
-	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
+	TOAST_USER_DELETE_ADMIN_SUCCESS = 'toast.user.delete.admin.success',
+	TOAST_USER_DELETE_FAILED = 'toast.user.delete.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -483,9 +484,12 @@ export enum User {
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
 	DELETE_TITLE = 'delete.title',
+	DELETE_ADMIN_TITLE = 'delete.admin.title',
 	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
 	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
+	DELETE_ADMIN_DESCRIPTION_MODAL = 'delete.admin.description.modal',
 	DELETE_BUTTON = 'delete.button',
+	DELETE_ADMIN_BUTTON = 'delete.admin.button',
 	DELETE_LABEL = 'delete.label',
 	DELETE_PLACEHOLDER = 'delete.placeholder',
 }

@@ -11,16 +11,11 @@ import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { getFullProfile } from '@/entities/profile';
 
-import { useDeleteAccountMutation } from '../api/deleteAccountApi';
+import { useDeleteAccountMutation } from './../../../api/deleteAccountApi';
+import { UserDeleteAccountModalProps } from './../../../model/types/deleteAccount';
+import styles from './UserDeleteAccountModal.module.css';
 
-import styles from './DeleteAccountModal.module.css';
-
-interface DeleteAccountModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-}
-
-export const DeleteAccountModal = ({ isOpen, onClose }: DeleteAccountModalProps) => {
+export const UserDeleteAccountModal = ({ isOpen, onClose }: UserDeleteAccountModalProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const profile = useAppSelector(getFullProfile);
@@ -35,7 +30,7 @@ export const DeleteAccountModal = ({ isOpen, onClose }: DeleteAccountModalProps)
 		onClose();
 	};
 
-	const handleDeleteAccount = () => deleteAccount(profile?.id);
+	const handleDeleteAccount = () => deleteAccount({ userId: profile?.id });
 
 	const isButtonDisabled = value !== profile?.username;
 
