@@ -57,7 +57,6 @@ export type IconName =
 	| 'logoText'
 	| 'favorite'
 	| 'favoriteRed'
-	| 'logoText'
 	| 'listWithBackground';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
