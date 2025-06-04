@@ -1,3 +1,27 @@
-.marketplace-page {
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   padding: 24px;
+  width: 100%;
+}
+
+.list-placeholder {
+  flex: 1;            
+  min-height: 200px;   
+}
+
+.filter-placeholder {
+  width: 280px;         
+  min-height: 400px;    
+}
+
+@media (width < 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .filter-placeholder {
+    width: 100%;
+  }
 }
