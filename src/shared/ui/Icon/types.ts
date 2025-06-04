@@ -52,6 +52,8 @@ export type IconName =
 	| 'megaphone'
 	| 'yeaHubCommunity'
 	| 'figmaWhite'
-	| 'logoText';
+	| 'logoText'
+	| 'favorite'
+	| 'favoriteRed';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

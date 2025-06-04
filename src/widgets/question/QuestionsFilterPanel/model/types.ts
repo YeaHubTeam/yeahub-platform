@@ -7,7 +7,7 @@ export interface FilterParams {
 	specialization?: number | number[];
 }
 
-export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
+export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
 
 export interface QuestionFilterStatusItem {
 	id: QuestionFilterStatus;

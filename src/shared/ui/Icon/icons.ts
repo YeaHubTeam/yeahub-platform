@@ -19,6 +19,8 @@ import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import Eye from '@/shared/assets/icons/eye.svg';
 import EyeClosed from '@/shared/assets/icons/eyeClosed.svg';
 import Facebook from '@/shared/assets/icons/facebook.svg';
+import Favorite from '@/shared/assets/icons/favorite.svg';
+import FavoriteRed from '@/shared/assets/icons/favorite_red.svg';
 import Figma from '@/shared/assets/icons/figma_white.svg';
 import Filter from '@/shared/assets/icons/filter.svg';
 import Github from '@/shared/assets/icons/github.svg';
@@ -106,4 +108,6 @@ export const icons: Record<IconName, IconComponent> = {
 	yeaHubCommunity: YeaHubCommunity,
 	figmaWhite: Figma,
 	logoText: LogoText,
+	favorite: Favorite,
+	favoriteRed: FavoriteRed,
 };

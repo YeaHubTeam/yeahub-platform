@@ -47,13 +47,18 @@ export const QuestionPage = () => {
 		questionSkills,
 		shortAnswer,
 		longAnswer,
+		isFavorite,
 	} = question;
 
 	return (
 		<Flex gap="20">
 			<Flex gap="20" direction="column" flex={1} maxWidth>
 				<QuestionHeader question={question} />
-				<QuestionActions questionId={questionId} checksCount={checksCount} />
+				<QuestionActions
+					questionId={questionId}
+					checksCount={checksCount}
+					isFavorite={isFavorite}
+				/>
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 			</Flex>
 			{!isMobile && !isTablet && (

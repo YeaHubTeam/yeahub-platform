@@ -135,6 +135,14 @@
         "success": "Progress on the issue has been reset",
         "failed": "Failed to reset the progress of the issue"
       },
+			"favorite": {
+				"success": "The question has been successfully added to favorites",
+				"failed": "Failed to add to favorites"
+			},
+			"reset.favorite": {
+				"success": "The question has been successfully removed from favorites",
+				"failed": "Failed to remove from favorites"
+			},
       "create": {
         "success": "The question was created successfully",
         "failed": "Failed to create a question"

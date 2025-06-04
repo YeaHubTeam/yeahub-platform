@@ -52,6 +52,21 @@ const QuestionsPage = () => {
 			skip: status !== 'all',
 		},
 	);
+
+	const { data: favoriteQuestions, isLoading: isLoadingFavoriteQuestions } =
+		useGetQuestionsListQuery(
+			{
+				...getParams,
+				profileId,
+				specialization: specializationId,
+				areFavorites: true,
+				keywords: keywords ? [keywords] : undefined,
+			},
+			{
+				skip: status !== 'favorite',
+			},
+		);
+
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
 		useGetLearnedQuestionsQuery(
 			{
@@ -61,11 +76,12 @@ const QuestionsPage = () => {
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: status === 'all',
+				skip: status === 'all' || status === 'favorite',
 			},
 		);
 
-	const questions = status === 'all' ? allQuestions : learnedQuestions;
+	const questions =
+		status === 'all' ? allQuestions : status === 'favorite' ? favoriteQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
 		handleFilterChange({ title: value });
@@ -109,7 +125,12 @@ const QuestionsPage = () => {
 		/>
 	);
 
-	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
+	if (
+		isLoadingAllQuestions ||
+		isLoadingLearnedQuestions ||
+		isLoadingCategories ||
+		isLoadingFavoriteQuestions
+	) {
 		return <QuestionsPageSkeleton />;
 	}
 
