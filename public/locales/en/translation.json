@@ -117,96 +117,105 @@
 			"warning": "Warning!",
 			"error": "Error!"
 		},
-		"auth": {
-			"resetPassword": {
-				"success": "Password successfully changed",
-				"failed": "Error when changing password"
+    "auth": {
+      "resetPassword": {
+        "success": "Password successfully changed",
+        "failed": "Error when changing password"
+      },
+      "login": {
+        "failed": "Invalid email or password."
+      }
+    },
+		"user": {
+			"email": {
+				"not_exist": "User with this email does not exist."
 			},
-			"login": {
-				"failed": "Invalid email or password."
-			},
-			"user": {
-				"email": {
-					"not_exist": "User with this email does not exist."
-				},
-				"password": {
-					"wrong": "User with this email has another password."
-				}
+			"password": {
+				"wrong": "User with this email has another password."
 			}
-		},
-		"questions": {
-			"learned": {
-				"success": "The question has been fully studied",
-				"failed": "Failed to fully explore the issue"
+		}
+	},
+    "questions": {
+      "learned": {
+        "success": "The question has been fully studied",
+        "failed": "Failed to fully explore the issue"
+      },
+      "reset.progress": {
+        "success": "Progress on the issue has been reset",
+        "failed": "Failed to reset the progress of the issue"
+      },
+			"favorite": {
+				"success": "The question has been successfully added to favorites",
+				"failed": "Failed to add to favorites"
 			},
-			"reset.progress": {
-				"success": "Progress on the issue has been reset",
-				"failed": "Failed to reset the progress of the issue"
+			"reset.favorite": {
+				"success": "The question has been successfully removed from favorites",
+				"failed": "Failed to remove from favorites"
 			},
-			"create": {
-				"success": "The question was created successfully",
-				"failed": "Failed to create a question"
-			},
-			"edit": {
-				"success": "The question was successfully changed",
-				"failed": "Couldn't edit the question"
-			},
-			"delete": {
-				"single": {
-					"success": "The question was successfully deleted",
-					"failed": "The issue could not be deleted"
-				},
-				"multiple": {
-					"success": "Successfully deleted questions:",
-					"failed": "The issue could not be deleted:"
-				}
-			}
-		},
-		"skills": {
-			"create": {
-				"success": "Skill created successfully",
-				"failed": "Failed to create Skill"
-			},
-			"edit": {
-				"success": "Skill changed successfully",
-				"failed": "The Skill could not be changed"
-			},
-			"delete": {
-				"single": {
-					"success": "Skill successfully deleted",
-					"failed": "The skill could not be deleted"
-				},
-				"multiple": {
-					"success": "Successfully deleted skills:",
-					"failed": "Failed to delete skill:"
-				}
-			}
-		},
-		"specializations": {
-			"create": {
-				"success": "Specialization successfully created",
-				"failed": "Specialization could not be created"
-			},
-			"edit": {
-				"success": "Specialization successfully changed",
-				"failed": "Specialization could not be changed"
-			},
-			"delete": {
-				"single": {
-					"success": "Specialization successfully deleted",
-					"failed": "Specialization could not be deleted"
-				},
-				"multiple": {
-					"success": "Successfully deleted specializations:",
-					"failed": "Specialization could not be deleted:"
-				}
-			}
-		},
-		"collections": {
-			"create": {
-				"success": "Collection successfully created",
-				"failed": "Collection could not be created"
-			},
+      "create": {
+        "success": "The question was created successfully",
+        "failed": "Failed to create a question"
+      },
+      "edit": {
+        "success": "The question was successfully changed",
+        "failed": "Couldn't edit the question"
+      },
+      "delete": {
+        "single": {
+          "success": "The question was successfully deleted",
+          "failed": "The issue could not be deleted"
+        },
+        "multiple": {
+          "success": "Successfully deleted questions:",
+          "failed": "The issue could not be deleted:"
+        }
+      }
+    },
+    "skills": {
+      "create": {
+        "success": "Skill created successfully",
+        "failed": "Failed to create Skill"
+      },
+      "edit": {
+        "success": "Skill changed successfully",
+        "failed": "The Skill could not be changed"
+      },
+      "delete": {
+        "single": {
+          "success": "Skill successfully deleted",
+          "failed": "The skill could not be deleted"
+        },
+        "multiple": {
+          "success": "Successfully deleted skills:",
+          "failed": "Failed to delete skill:"
+        }
+      }
+    },
+    "specializations": {
+      "create": {
+        "success": "Specialization successfully created",
+        "failed": "Specialization could not be created"
+      },
+      "edit": {
+        "success": "Specialization successfully changed",
+        "failed": "Specialization could not be changed"
+      },
+      "delete": {
+        "single": {
+          "success": "Specialization successfully deleted",
+          "failed": "Specialization could not be deleted"
+        },
+        "multiple": {
+          "success": "Successfully deleted specializations:",
+          "failed": "Specialization could not be deleted:"
+        }
+      }
+    },
+    "collections": {
+      "create": {
+        "success": "Collection successfully created",
+        "failed": "Collection could not be created"
+      },
 			"delete": {
 				"single": {
 					"success": "Collection successfully deleted",
@@ -293,7 +302,6 @@
 			"subscribe": {
 				"failed": "Couldn't enable subscription"
 			}
-		}
 	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",

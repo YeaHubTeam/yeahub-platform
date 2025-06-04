@@ -14,6 +14,7 @@ import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { Question, QuestionGradeList } from '@/entities/question';
 
+import { FavoriteQuestionButton } from '@/features/quiz/favoriteQuestion';
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 
@@ -25,7 +26,7 @@ interface FullQuestionItemProps {
 }
 
 export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionItemProps) => {
-	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount = 0 } = question;
+	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount = 0, isFavorite } = question;
 	const { t } = useTranslation(i18Namespace.questions);
 	const navigate = useNavigate();
 
@@ -59,6 +60,17 @@ export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionIte
 					isPopover
 					placementTooltip="left"
 					offsetTooltip={20}
+				/>
+			),
+		},
+		{
+			renderComponent: () => (
+				<FavoriteQuestionButton
+					questionId={id}
+					isPopover
+					placementTooltip="left"
+					offsetTooltip={20}
+					isFavorite={isFavorite}
 				/>
 			),
 		},
