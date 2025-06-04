@@ -9,11 +9,6 @@
   overflow: hidden;
   border:1px solid var(--color-white-900);
   border-radius: 50%;
-  background-color: var(--color-purple-900);
-}
-
-.avatar-load {
-  background-color: var(--color-black-400);
 }
 
 .avatar:first-child {
