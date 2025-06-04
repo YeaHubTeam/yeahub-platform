@@ -1,9 +1,9 @@
 export { BannerBlock } from './ui/BannerBlock/BannerBlock';
-export { BannerBlockSkeleton } from './ui/BannerBlock/BannerBlockSkeleton';
-export { AvatarGroupSkeleton } from './ui/AvatarGroup/AvatarGroupSkeleton';
-export { BlockTitleSkeleton } from './ui/BlockTitle/BlockTitleSkeleton';
-export { BlockDescriptionSkeleton } from './ui/BlockDescription/BlockDescriptionSkeleton';
-export { BannerButtonSkeleton } from './ui/BannerButton/BannerButtonSkeleton';
-export { BannerContentSkeleton } from './ui/BannerContent/BannerContentSkeleton';
-export { BannerImageSkeleton } from './ui/BannerImage/BannerImageSkeleton';
-export { StickerSkeleton } from './ui/Sticker/StickerSkeleton';
+export { BannerBlockSkeleton } from './ui/BannerBlock/BannerBlock.skeleton';
+export { AvatarGroupSkeleton } from './ui/AvatarGroup/AvatarGroup.skeleton';
+export { BlockTitleSkeleton } from './ui/BlockTitle/BlockTitle.skeleton';
+export { BlockDescriptionSkeleton } from './ui/BlockDescription/BlockDescription.skeleton';
+export { BannerButtonSkeleton } from './ui/BannerButton/BannerButton.skeleton';
+export { BannerContentSkeleton } from './ui/BannerContent/BannerContent.skeleton';
+export { BannerImageSkeleton } from './ui/BannerImage/BannerImage.skeleton';
+export { StickerSkeleton } from './ui/Sticker/Sticker.skeleton';
