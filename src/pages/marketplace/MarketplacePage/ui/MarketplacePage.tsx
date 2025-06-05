@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -15,5 +13,4 @@ const MarketplacePage = () => (
 	</Flex>
 );
 
-export default memo(MarketplacePage);
-export { MarketplacePage };
+export default MarketplacePage;
