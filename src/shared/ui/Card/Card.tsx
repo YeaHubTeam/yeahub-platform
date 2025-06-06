@@ -16,6 +16,7 @@ export interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
+	itemClassName?: string;
 	title?: string;
 	actionRoute?: string;
 	actionTitle?: string;
@@ -85,6 +86,7 @@ export const Card = ({
 	isActionPositionBottom = false,
 	isTitleCenter = false,
 	dataTestId = 'Card',
+	itemClassName = '',
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -166,11 +168,11 @@ export const Card = ({
 			)}
 
 			<div
-				className={classNames(styles.content, {
+				className={`${classNames(styles.content, {
 					[styles['content-shadow']]: withShadow,
 					[styles['content-bottom']]: isActionPositionBottom,
 					[styles['content-height']]: !actionRoute,
-				})}
+				})} ${itemClassName}`}
 				ref={contentRef}
 			>
 				{children}

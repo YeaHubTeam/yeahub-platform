@@ -45,6 +45,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 	return (
 		<Card
 			className={className}
+			itemClassName={styles.card}
 			title={t(Questions.PREVIEW_TITLE)}
 			actionTitle={t(Questions.PREVIEW_LINK)}
 			actionRoute={ROUTES.interview.questions.page}

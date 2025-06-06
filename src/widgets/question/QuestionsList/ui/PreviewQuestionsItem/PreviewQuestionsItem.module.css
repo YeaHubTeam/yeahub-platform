@@ -1,10 +1,7 @@
-.params {
-  gap: 24px;
-}
-
-.item:not(:last-child) {
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-color);
+.item {
+  padding: 11px;
+  box-shadow: 0 4px 10px 0 #6A63761A;
+  border-radius: 12px;
 }
 
 .link {
@@ -43,16 +40,22 @@
   display: none;
 }
 
+.params {
+  gap: 12px;
+}
+
+.params-item {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: var(--font-size-p-xs);
+}
+
+.image {
+  height: auto;
+}
+
 @media (width <= 768px) {
   .link:not(:last-child) {
-    border-bottom: none;
-  }
-	
-  .params {
-    gap: 12px;
-  }
-	
-  .item:not(:last-child) {
     border-bottom: none;
   }
 }
@@ -66,7 +69,6 @@
   .image {
     aspect-ratio: 4 / 3;
     width: 100%;
-    height: auto;
   }
 
   .params {

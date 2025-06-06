@@ -3,10 +3,15 @@
   width: calc(50% - 10px);
 }
 
+.card {
+  box-shadow: none;
+}
+
 .list {
   margin: 0;
-  padding: 24px;
   list-style: none;
+
+  /* padding: 24px; */
 }
 
 .no-questions {

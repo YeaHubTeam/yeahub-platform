@@ -32,7 +32,13 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 					<Text variant="body3-accent" maxRows={1} className={styles.title}>
 						{title}
 					</Text>
-					<QuestionGradeList rate={rate} complexity={complexity} className={styles.params} />
+					<QuestionGradeList
+						rate={rate}
+						complexity={complexity}
+						className={styles.params}
+						itemClassName={styles['params-item']}
+						size={'small'}
+					/>
 				</Flex>
 			</Link>
 		</li>
