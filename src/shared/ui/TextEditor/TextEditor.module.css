@@ -25,7 +25,6 @@
   color: var(--color-black-800);
   line-height: 1.6;
   font-size: var(--font-size-p-m);
-  font-family: var(--font-family-arial);
   transition: all 0.2s ease;
   cursor: text;
   scrollbar-width: thin;
@@ -48,6 +47,7 @@
 
 .editor-content p {
   margin-bottom: 8px;
+  text-indent: 1.5em;
 }
 
 .blockquote {
@@ -76,37 +76,37 @@
 }
 
 .editor-heading[data-level="1"] {
-  margin: 20px 0 15px;
+  margin: 20px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-h-s);
 }
 
 .editor-heading[data-level="2"] {
-  margin: 18px 0 13px;
+  margin: 18px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-h-xs);
 }
 
 .editor-heading[data-level="3"] {
-  margin: 16px 0 11px;
+  margin: 16px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-l);
 }
 
 .editor-heading[data-level="4"] {
-  margin: 14px 0 9px;
+  margin: 14px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-m);
 }
 
 .editor-heading[data-level="5"] {
-  margin: 12px 0 7px;
+  margin: 12px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-s);
 }
 
 .editor-heading[data-level="6"] {
-  margin: 10px 0 5px;
+  margin: 10px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-xs);
 }
@@ -119,6 +119,7 @@
 }
 
 .editor-content ul {
+  margin: 0;
   list-style: disc;
 }
 
@@ -128,6 +129,7 @@
 
 .editor-content li p {
   margin: 0;
+  text-indent: 0;
 }
 
 .editor-content ul ul,
@@ -236,7 +238,7 @@
 }
 
 .code-block-wrapper {
-  margin: 15px 0;
+  margin-bottom: 15px;
   overflow: hidden;
   border: 1px solid var(--color-black-700);
   border-radius: 12px;
@@ -264,12 +266,14 @@
 }
 
 .inline-code {
-  padding: 2px 4px;
+  padding: 0 4px;
   border-radius: 3px;
   background: var(--color-black-10);
   color: var(--color-green-700);
+  line-height: 1.2;
   font-size: var(--font-size-p-s);
-  font-family: var(--font-family-courier);
+  font-family: var(--font-family-code);
+  vertical-align: baseline;
 }
 
 .code-block-language {
@@ -279,19 +283,19 @@
 
 .editor-content pre,
 .editor-content code {
-  tab-size: 8
+  tab-size: 4
 }
 
 .editor-content .code-block,
 .editor-content pre,
 .editor-content pre code,
 .editor-content .code-block code {
-  tab-size: 8;
+  tab-size: 4;
   max-height: 300px;
   overflow: auto;
   color: var(--color-white-900);
   font-size: var(--font-size-p-s);
-  font-family: var(--font-family-courier);
+  font-family: var(--font-family-code);
   white-space: pre-wrap;
   word-break: normal;
 }
@@ -300,7 +304,7 @@
 .editor-content code[class*="code-block"],
 .editor-content pre[class*="TextEditor-module"],
 .editor-content code[class*="TextEditor-module"] {
-  tab-size: 8;
+  tab-size: 4;
   white-space: pre;
   word-break: normal;
 }

@@ -16,40 +16,41 @@
  
 .content p {
   margin-bottom: 16px;
+  text-indent: 1.5em;
 }
  
 .content h1 {
-  margin: 20px 0 15px;
+  margin: 20px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-h-s);
 }
  
 .content h2 {
-  margin: 18px 0 13px;
+  margin: 18px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-h-xs);
 }
 
 .content h3 {
-  margin: 16px 0 11px;
+  margin: 16px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-l);
 }
 
 .content h4 {
-  margin: 14px 0 9px;
+  margin: 14px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-m);
 }
 
 .content h5 {
-  margin: 12px 0 7px;
+  margin: 12px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-s);
 }
 
 .content h6 {
-  margin: 10px 0 5px;
+  margin: 10px 0 0;
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-xs);
 }
@@ -79,6 +80,7 @@
  
 .content li p {
   margin: 0;
+  text-indent: 0;
 }
  
 .content ul ul,
@@ -100,7 +102,9 @@
   border-radius: 3px;
   background: var(--color-black-10);
   color: var(--color-green-700);
+  line-height: 1.2;
   font-size: var(--font-size-p-s);
+  vertical-align: baseline;
 }
 
 .content pre,
@@ -109,8 +113,9 @@
   min-height: 56px;
   max-height: 300px;
   overflow: auto;
+  line-height: 1.5;
   font-size: var(--font-size-p-s);
-  font-family: var(--font-family-courier);
+  font-family: var(--font-family-code);
   white-space: pre;
   word-break: normal;
 }
@@ -120,7 +125,7 @@
   padding: 12px;
   background: transparent;
   color: var(--color-white-900);
-  tab-size: 8;
+  tab-size: 4;
   scrollbar-width: thin;
   scrollbar-color: #b0b0b0 transparent;
 }
@@ -129,13 +134,13 @@
 .content code[class*="code-block"],
 .content pre[class*="TextEditor-module"],
 .content code[class*="TextEditor-module"] {
-  tab-size: 8;
+  tab-size: 4;
   white-space: pre;
   word-break: normal;
 }
 
 .content pre {
-  tab-size: 8;
+  tab-size: 4;
 }
 
  
@@ -156,7 +161,7 @@
 
 .code-block-wrapper {
   position: relative;
-  margin: 15px 0;
+  margin-bottom: 15px;
   padding: 0;
   overflow: hidden;
   box-shadow: none;
