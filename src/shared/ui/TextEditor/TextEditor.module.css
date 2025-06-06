@@ -47,7 +47,6 @@
 
 .editor-content p {
   margin-bottom: 8px;
-  text-indent: 1.5em;
 }
 
 .blockquote {
@@ -129,7 +128,6 @@
 
 .editor-content li p {
   margin: 0;
-  text-indent: 0;
 }
 
 .editor-content ul ul,

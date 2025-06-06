@@ -16,7 +16,6 @@
  
 .content p {
   margin-bottom: 16px;
-  text-indent: 1.5em;
 }
  
 .content h1 {
@@ -80,7 +79,6 @@
  
 .content li p {
   margin: 0;
-  text-indent: 0;
 }
  
 .content ul ul,
