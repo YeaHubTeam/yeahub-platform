@@ -18,7 +18,7 @@ export const RESOURCES_LINKS: LinkIcon[] = [
 	{
 		url: 'https://t.me/yeahub',
 		label: 'Telegram',
-		icon: 'telegramWhite',
+		icon: 'telegramWithBackground',
 		color: 'white-900',
 		className: 'telegram-link',
 	},

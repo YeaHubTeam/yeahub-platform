@@ -1,4 +1,4 @@
-export type IconSize = 20 | 24 | 28 | 32;
+export type IconSize = 20 | 24 | 28 | 32 | 40;
 
 export type IconName =
 	| 'arrowRight'
@@ -33,8 +33,9 @@ export type IconName =
 	| 'behance'
 	| 'whatsapp'
 	| 'telegram'
-	| 'telegramWhite'
+	| 'telegramWithBackground'
 	| 'youtube'
+	| 'youtubeWithBackground'
 	| 'plus'
 	| 'minus'
 	| 'plusCircle'
@@ -45,6 +46,7 @@ export type IconName =
 	| 'filter'
 	| 'settings'
 	| 'sealCheck'
+	| 'userCheckWithBackground'
 	| 'userSwitch'
 	| 'trendUp'
 	| 'notePencil'
@@ -52,6 +54,7 @@ export type IconName =
 	| 'megaphone'
 	| 'yeaHubCommunity'
 	| 'figmaWhite'
-	| 'logoText';
+	| 'logoText'
+	| 'listWithBackground';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

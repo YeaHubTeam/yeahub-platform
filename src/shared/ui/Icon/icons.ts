@@ -27,6 +27,7 @@ import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
+import ListWithBackground from '@/shared/assets/icons/listWithBackground.svg';
 import LogoText from '@/shared/assets/icons/logoText.svg';
 import Megaphone from '@/shared/assets/icons/Megaphone.svg';
 import Minus from '@/shared/assets/icons/minus.svg';
@@ -41,15 +42,17 @@ import Settings from '@/shared/assets/icons/settings.svg';
 import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
-import TelegramWhite from '@/shared/assets/icons/telegram_white.svg';
+import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
+import UserCheckWithBackground from '@/shared/assets/icons/userCheckWithBackground.svg';
 import UserSwitch from '@/shared/assets/icons/UserSwitch.svg';
 import Warning from '@/shared/assets/icons/warning.svg';
 import Whatsapp from '@/shared/assets/icons/whatsapp.svg';
 import YeaHubCommunity from '@/shared/assets/icons/YeaHubCommunity.svg';
 import Youtube from '@/shared/assets/icons/youtube.svg';
+import YoutubeWithBackground from '@/shared/assets/icons/youtubeWithBackground.svg';
 
 import { IconComponent, IconName } from './types';
 
@@ -86,8 +89,9 @@ export const icons: Record<IconName, IconComponent> = {
 	behance: Behance,
 	whatsapp: Whatsapp,
 	telegram: Telegram,
-	telegramWhite: TelegramWhite,
+	telegramWithBackground: TelegramWithBackground,
 	youtube: Youtube,
+	youtubeWithBackground: YoutubeWithBackground,
 	plus: Plus,
 	minus: Minus,
 	plusCircle: PlusCircle,
@@ -98,6 +102,7 @@ export const icons: Record<IconName, IconComponent> = {
 	filter: Filter,
 	settings: Settings,
 	sealCheck: SealCheck,
+	userCheckWithBackground: UserCheckWithBackground,
 	userSwitch: UserSwitch,
 	trendUp: TrendUp,
 	notePencil: NotePencil,
@@ -106,4 +111,5 @@ export const icons: Record<IconName, IconComponent> = {
 	yeaHubCommunity: YeaHubCommunity,
 	figmaWhite: Figma,
 	logoText: LogoText,
+	listWithBackground: ListWithBackground,
 };

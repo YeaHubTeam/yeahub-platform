@@ -16,20 +16,4 @@
 
 .card {
   width: 100%;
-  min-width: min(100%, 455px);
-  max-width: 598px;
-}
-
-@media screen and (width <= 1023px) {
-  .card {
-    padding: 20px 16px;
-    max-width: 100%;
-  }
-}
-
-@media screen and (width <= 767px) {
-  .card {
-    padding: 20px 10px;
-    min-width: unset;
-  }
 }

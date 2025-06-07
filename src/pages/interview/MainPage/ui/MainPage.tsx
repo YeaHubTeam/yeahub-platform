@@ -6,6 +6,7 @@ import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { getRandomGurus, GurusBanner } from '@/entities/guru';
 import { EmailVerifyStub, getFullProfile } from '@/entities/profile';
 
 import { IncompleteProfileStub } from '@/widgets/Main/IncompleteProfileStub';
@@ -17,6 +18,9 @@ const MainPage = () => {
 	const profile = useAppSelector(getFullProfile);
 
 	const { t } = useTranslation([i18Namespace.translation]);
+
+	const gurus = getRandomGurus();
+	const showGurus = gurus.length > 0;
 
 	return (
 		<>
@@ -35,7 +39,10 @@ const MainPage = () => {
 						) : (
 							<IncompleteProfileStub />
 						)}
-						<SubscribeToMedia />
+						<Flex direction="column" gap="20" className={styles['right-banners']} maxWidth>
+							<SubscribeToMedia />
+							{showGurus && <GurusBanner variant="list" gurus={gurus} />}
+						</Flex>
 					</Flex>
 				</Flex>
 			)}
