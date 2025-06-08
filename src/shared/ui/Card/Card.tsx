@@ -12,11 +12,12 @@ import { Flex } from '../Flex';
 
 import styles from './Card.module.css';
 
+type CardSize = 'small' | 'medium';
+
 export interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
-	itemClassName?: string;
 	title?: string;
 	actionRoute?: string;
 	actionTitle?: string;
@@ -26,6 +27,7 @@ export interface CardProps {
 	isActionPositionBottom?: boolean;
 	isTitleCenter?: boolean;
 	dataTestId?: string;
+	size?: CardSize;
 }
 
 interface ExpandIconProps {
@@ -86,7 +88,7 @@ export const Card = ({
 	isActionPositionBottom = false,
 	isTitleCenter = false,
 	dataTestId = 'Card',
-	itemClassName = '',
+	size = 'medium',
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -130,7 +132,7 @@ export const Card = ({
 			dataTestId={dataTestId}
 			gap="16"
 			direction="column"
-			className={classNames(styles.card, className, {
+			className={classNames(styles.card, styles[size], className, {
 				[styles['card-expandable']]: isHeightForExpand,
 				[styles['card-outside-shadow']]: withOutsideShadow,
 			})}
@@ -168,11 +170,11 @@ export const Card = ({
 			)}
 
 			<div
-				className={`${classNames(styles.content, {
+				className={classNames(styles.content, {
 					[styles['content-shadow']]: withShadow,
 					[styles['content-bottom']]: isActionPositionBottom,
 					[styles['content-height']]: !actionRoute,
-				})} ${itemClassName}`}
+				})}
 				ref={contentRef}
 			>
 				{children}
