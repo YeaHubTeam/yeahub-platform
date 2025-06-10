@@ -1,9 +1,9 @@
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import styles from './MarketplacePage.module.css';
+import styles from './PublicMarketplacePage.module.css';
 
-const MarketplacePage = () => (
+const PublicMarketplacePage = () => (
 	<Flex gap="20" align="start" className={styles.wrapper}>
 		{/* левая колонка со списком ресурсов */}
 		<Card className={styles['list-placeholder']}>TODO: resources list placeholder</Card>
@@ -13,4 +13,4 @@ const MarketplacePage = () => (
 	</Flex>
 );
 
-export default MarketplacePage;
+export default PublicMarketplacePage;

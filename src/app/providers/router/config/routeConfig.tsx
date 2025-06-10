@@ -67,11 +67,11 @@ import { LandingPage } from '@/pages/landing/LandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
+import { PublicMarketplacePage } from '@/pages/landing/PublicMarketplacePage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
 import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
-import { MarketplacePage } from '@/pages/marketplace';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -204,7 +204,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.marketplace.route,
-				element: <MarketplacePage />,
+				element: <PublicMarketplacePage />,
 			},
 			{
 				path: ROUTES.docs.page,

@@ -18,8 +18,8 @@
 }
 
 .right-banners {
-	min-width: 455px;
-	max-width: 598px;
+  min-width: 455px;
+  max-width: 598px;
 }
 
 @media (width < 768px) {
@@ -27,8 +27,8 @@
     flex-direction: column;
   }
 
-	.right-banners {
-		min-width: unset;
-		max-width: unset;
-	}
+  .right-banners {
+    min-width: unset;
+    max-width: unset;
+  }
 }
