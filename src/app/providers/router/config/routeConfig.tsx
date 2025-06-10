@@ -10,7 +10,6 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
@@ -107,12 +106,6 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.profile.route,
 		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
-	},
-	{
-		type: 'single',
-		route: ROUTES.settings.page,
-		title: i18n.t(Translation.SIDEBAR_MENU_SETTINGS),
-		icon: SettingsIcon,
 	},
 	{
 		type: 'category',

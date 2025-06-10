@@ -33,9 +33,15 @@ export const UserPreferences = () => {
 			},
 		},
 		{
-			title: i18n.t(Translation.HEADER_MENU_CHANGE_PASSWORD),
+			title: i18n.t(Translation.HEADER_MENU_CHOOSE_MEMBERSHIP),
 			onClick: () => {
-				navigate(`${ROUTES.settings.page}#change-password`);
+				navigate(`${ROUTES.settings.page}#select-tariff`);
+			},
+		},
+		{
+			title: i18n.t(Translation.HEADER_MENU_SETTINGS),
+			onClick: () => {
+				navigate(`${ROUTES.settings.page}`);
 			},
 		},
 		{
