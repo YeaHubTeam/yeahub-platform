@@ -48,7 +48,6 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 			title={t(Questions.PREVIEW_TITLE)}
 			actionTitle={t(Questions.PREVIEW_LINK)}
 			actionRoute={ROUTES.interview.questions.page}
-			withShadow
 		>
 			<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 				{questions.map((question) => (

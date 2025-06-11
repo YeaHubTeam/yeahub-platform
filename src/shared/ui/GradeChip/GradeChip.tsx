@@ -1,20 +1,41 @@
+import classNames from 'classnames';
+
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
+import { TextVariant } from '@/shared/ui/Text/types';
 
 import styles from './GradeChip.module.css';
+
+export type GradeChipSize = 'small' | 'medium';
+
+export const labelVariants: Record<GradeChipSize, TextVariant> = {
+	small: 'body1',
+	medium: 'body2-accent',
+} as const;
+
+export const valueVariants: Record<GradeChipSize, TextVariant> = {
+	small: 'body1',
+	medium: 'body2-strong',
+} as const;
 
 interface GradeChipProps {
 	label: string;
 	value: number;
+	size?: GradeChipSize;
 }
 
-export const GradeChip = ({ label, value }: GradeChipProps) => {
+export const GradeChip = ({ label, value, size = 'medium' }: GradeChipProps) => {
 	return (
-		<Flex align="center" gap="12" componentType="li" className={styles.param}>
-			<Text variant="body2-accent" color="black-800">
+		<Flex
+			align="center"
+			gap="12"
+			componentType="li"
+			className={classNames(styles[`size-${size}`], styles.params)}
+		>
+			<Text variant={labelVariants[size]} color="black-800">
 				{label}:
 			</Text>
-			<Text variant="body2-strong" color="white-900" className={styles.value}>
+			<Text variant={valueVariants[size]} color="white-900" className={styles.value}>
 				{value}
 			</Text>
 		</Flex>

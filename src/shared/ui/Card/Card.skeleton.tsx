@@ -16,12 +16,13 @@ export const CardSkeleton = ({
 	actionRoute = '',
 	isActionPositionBottom = false,
 	isTitleCenter = false,
+	size = 'medium',
 }: CardProps) => {
 	return (
 		<Flex
 			gap="24"
 			direction="column"
-			className={classNames(styles.card, className, {
+			className={classNames(styles.card, className, styles[size], {
 				[styles['card-outside-shadow']]: withOutsideShadow,
 			})}
 		>

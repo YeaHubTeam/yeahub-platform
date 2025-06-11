@@ -1,13 +1,25 @@
+import classNames from 'classnames';
+
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
+import { GradeChipSize, labelVariants } from './GradeChip';
 import styles from './GradeChip.module.css';
 
-export const GradeChipSkeleton = () => {
+interface GradeChipSkeletonProps {
+	size?: GradeChipSize;
+}
+
+export const GradeChipSkeleton = ({ size = 'medium' }: GradeChipSkeletonProps) => {
 	return (
-		<Flex align="center" gap="12" componentType="li" className={styles.param}>
-			<TextSkeleton variant="body2-accent" width={50} />
-			<TextSkeleton variant="body2-strong" width={16} />
+		<Flex
+			align="center"
+			gap="12"
+			componentType="li"
+			className={classNames(styles[`size-${size}`], styles.params)}
+		>
+			<TextSkeleton variant={labelVariants[size]} width={50} />
+			<TextSkeleton variant="body3" width={16} />
 		</Flex>
 	);
 };
