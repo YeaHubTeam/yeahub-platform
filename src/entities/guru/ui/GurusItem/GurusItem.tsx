@@ -26,10 +26,10 @@ export const GurusItem = ({ guru, avatarSize, withDescription = false }: GurusIt
 			<Flex gap="8" align={withDescription ? 'center' : 'start'}>
 				<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
 				<Flex gap="4" direction="column">
-					<Text variant="body4" color="black-800">
+					<Text variant="body3-accent" color="black-800">
 						{title}
 					</Text>
-					<Text variant="body3-accent" color="black-800">
+					<Text variant="body3-accent" color="black-500">
 						{name}
 					</Text>
 					{!withDescription && <GuruSocialsList socials={socials} />}
