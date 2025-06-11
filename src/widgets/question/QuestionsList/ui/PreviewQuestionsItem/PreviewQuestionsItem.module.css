@@ -39,7 +39,9 @@
 }
 
 .image {
+  width: 71px;
   height: auto;
+  min-height: 70px;
 }
 
 @media (width <= 768px) {

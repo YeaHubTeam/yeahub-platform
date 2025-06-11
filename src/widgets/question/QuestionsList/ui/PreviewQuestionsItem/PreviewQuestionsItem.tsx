@@ -27,7 +27,7 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 
 	return (
 		<li>
-			<Card withShadow size={'small'}>
+			<Card withOutsideShadow size="small">
 				<Link to={questionRoute} className={styles.link}>
 					{!isMobileS && <ImageWithWrapper src={imageSrc} className={styles.image} />}
 					<Flex direction="column" gap="8">

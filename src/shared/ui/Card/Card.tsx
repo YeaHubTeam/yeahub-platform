@@ -132,7 +132,7 @@ export const Card = ({
 			dataTestId={dataTestId}
 			gap="16"
 			direction="column"
-			className={classNames(styles.card, styles[size], className, {
+			className={classNames(styles.card, className, styles[size], {
 				[styles['card-expandable']]: isHeightForExpand,
 				[styles['card-outside-shadow']]: withOutsideShadow,
 			})}
@@ -142,7 +142,7 @@ export const Card = ({
 		>
 			{(title || actionRoute) && (
 				<div
-					className={classNames(styles['card-header'], {
+					className={classNames(styles['card-header'], styles[size], {
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
 				>

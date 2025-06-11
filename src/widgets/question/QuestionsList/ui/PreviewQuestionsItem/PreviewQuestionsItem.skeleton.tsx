@@ -11,18 +11,20 @@ import styles from './PreviewQuestionsItem.module.css';
 
 export const PreviewQuestionsItemSkeleton = () => {
 	return (
-		<Flex componentType="li" gap="8" className={classNames(styles.item, styles.link)}>
-			<Card withShadow size={'small'}>
-				<ImageWithWrapperSkeleton className={styles.image} />
-				<Flex direction="column" gap="8">
-					<TextSkeleton
-						variant="body2-accent"
-						width={280}
-						className={classNames(styles.title, styles['title-skeleton'])}
-					/>
-					<QuestionGradeListSkeleton className={styles.params} />
+		<li>
+			<Card withOutsideShadow size="small">
+				<Flex gap="8">
+					<ImageWithWrapperSkeleton className={styles.image} />
+					<Flex direction="column" gap="8">
+						<TextSkeleton
+							variant="body3-accent"
+							width={380}
+							className={classNames(styles.title, styles['title-skeleton'])}
+						/>
+						<QuestionGradeListSkeleton className={styles.params} size="small" />
+					</Flex>
 				</Flex>
 			</Card>
-		</Flex>
+		</li>
 	);
 };
