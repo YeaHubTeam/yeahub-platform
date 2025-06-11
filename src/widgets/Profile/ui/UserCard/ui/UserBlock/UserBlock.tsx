@@ -4,7 +4,6 @@ import { Card } from '@/shared/ui/Card';
 import { FullProfile } from '@/entities/auth';
 import { getIsEdit } from '@/entities/profile';
 import { Specialization } from '@/entities/specialization';
-import { UserRolesList } from '@/entities/user';
 import { UserEditButton } from '@/entities/user';
 
 import { UserImageBlock } from '../UserImageBlock';
@@ -19,7 +18,6 @@ interface UserBlockProps {
 
 export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) => {
 	const isEdit = useAppSelector(getIsEdit);
-	const userRoles = profile.userRoles;
 
 	return (
 		<Card withOutsideShadow>
@@ -27,7 +25,6 @@ export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) =>
 				<div className={styles['user-data']}>
 					<UserImageBlock avatar={profile.avatarUrl} />
 					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
-					<UserRolesList userRoles={userRoles} />
 				</div>
 				{isEdit && <UserEditButton tab={'personal-information'} />}
 			</div>

@@ -17,7 +17,11 @@ export const GuruSocialsList = ({ socials }: GuruSocialsListProps) => {
 	return (
 		<Flex gap="12">
 			<Link to={route(ROUTES.users.page, socials.profileId)}>
-				<Icon icon="userCheckWithBackground" color="purple-700" className={styles.userCheckIcon} />
+				<Icon
+					icon="userCheckWithBackground"
+					color="purple-700"
+					className={styles['user-check-icon']}
+				/>
 			</Link>
 			<a href={socials.telegram} target="_blank" rel="noreferrer">
 				<Icon icon="telegramWithBackground" color="purple-700" />
