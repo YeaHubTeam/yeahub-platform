@@ -2,12 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .divider {
   border-top-width: 0;
-  border-bottom-color: var(--color-black-50);
+  border-bottom-color: var(--color-black-50);	 
 }
 
 @media screen and (width <= 1023px) {

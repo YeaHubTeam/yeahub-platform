@@ -1,5 +1,5 @@
 .wrapper {
-  margin: 40px 0 16px;
+  margin: 16px 0;
 }
 
 @media (width <= 768px) {
