@@ -1,5 +1,6 @@
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
@@ -11,6 +12,7 @@ import { FaqList } from '@/widgets/FaqList';
 
 export const FreeSubscriptionTab = () => {
 	const { isMobile } = useScreenSize();
+	const { t } = useTranslation(i18Namespace.subscription);
 
 	const faqList = [
 		{
