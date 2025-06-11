@@ -28,7 +28,7 @@ export const CardSkeleton = ({
 		>
 			{(title || actionRoute) && (
 				<div
-					className={classNames(styles['card-header'], styles[size], {
+					className={classNames(styles['card-header'], {
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
 				>

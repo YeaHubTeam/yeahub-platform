@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
@@ -14,7 +16,7 @@ export const GradeChipSkeleton = ({ size = 'medium' }: GradeChipSkeletonProps) =
 			align="center"
 			gap="12"
 			componentType="li"
-			className={`${styles['size-' + size]} ${styles.params}`}
+			className={classNames(styles[`size-${size}`], styles.params)}
 		>
 			<TextSkeleton variant={labelVariants[size]} width={50} />
 			<TextSkeleton variant="body3" width={16} />
