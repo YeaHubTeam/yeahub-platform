@@ -67,6 +67,7 @@ import { LandingPage } from '@/pages/landing/LandingPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
+import { PublicMarketplacePage } from '@/pages/landing/PublicMarketplacePage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -200,6 +201,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'test',
 				element: <CollectionBlock />,
+			},
+			{
+				path: ROUTES.marketplace.route,
+				element: <PublicMarketplacePage />,
 			},
 			{
 				path: ROUTES.docs.page,
