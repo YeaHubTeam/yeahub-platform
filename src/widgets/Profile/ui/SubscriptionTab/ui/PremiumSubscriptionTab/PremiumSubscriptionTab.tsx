@@ -1,11 +1,9 @@
-import { differenceInDays, getDaysInMonth, parseISO } from 'date-fns';
+import { differenceInDays, getDaysInMonth } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { DATE_FORMATS } from '@/shared/constants/dateFormats';
-import { formatDate } from '@/shared/helpers/formatDate';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
@@ -59,7 +57,7 @@ export const PremiumSubscriptionTab = () => {
 		},
 	];
 
-	const { D_MM_YYYY } = DATE_FORMATS;
+	//const { D_MM_YYYY } = DATE_FORMATS;
 
 	return (
 		<>
@@ -77,11 +75,12 @@ export const PremiumSubscriptionTab = () => {
 					label={t(Subscription.DAYS_LEFT, { count: restDays })}
 					variant="large"
 				/>
-				<p className={styles.text}>
-					{t(Subscription.SUBSCRIPTION_RENEWAL, {
-						Date: formatDate(parseISO(endDate), D_MM_YYYY),
-					})}
-				</p>
+				{/*<p className={styles.text}>
+						{t(Subscription.SUBSCRIPTION_RENEWAL, {
+							Date: formatDate(parseISO(endDate), D_MM_YYYY),
+						})}
+					</p> */}
+				<p className={styles.text}>{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</p>
 			</Flex>
 			<div className={styles['actions-button']}>
 				<Flex direction="row" gap="8">

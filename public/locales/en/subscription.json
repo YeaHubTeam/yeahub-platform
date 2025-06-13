@@ -12,6 +12,7 @@
   "daysLeft_other": " {{count}} Days Left",
   "greeting": "Excellent choice, now you have access to all the functions of the service",
   "renewal": "Payment will be renewed automatically on {{Date}}",
+	"accessWarning": "Renew your subscription for full access",
   "faq": {
     "title": "Frequently Asked Questions",
     "first": {
