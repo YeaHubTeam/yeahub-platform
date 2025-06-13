@@ -7,6 +7,7 @@ import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { route } from '@/shared/helpers/route';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -27,24 +28,26 @@ export const PreviewPassedQuizzesItem = ({ interview }: InterviewHistoryItemProp
 	const formattedDate = formatDate(parseISO(interview.endDate));
 
 	return (
-		<li className={styles.item}>
-			<Link to={route(ROUTES.interview.history.result.page, id)} className={styles.link}>
-				<Text variant="body3-accent" color="black-500" className={styles.date}>
-					{formattedDate}
-				</Text>
-				<Flex wrap="wrap" justify="between" gap="14" className={styles.info}>
-					<Text variant={'body3-accent'}>
-						{t(InterviewHistory.QUIZ_TITLE, { number: interview.quizNumber })}
+		<li>
+			<Card withOutsideShadow size="small">
+				<Link to={route(ROUTES.interview.history.result.page, id)} className={styles.link}>
+					<Text variant="body3-accent" color="black-500" className={styles.date}>
+						{formattedDate}
 					</Text>
-					<Flex componentType="ul" gap="24">
-						<InterviewResults
-							label={t(InterviewHistory.RESULT)}
-							correctAnswersCount={successCount}
-							incorrectAnswersCount={incorrectAnswersCount}
-						/>
+					<Flex wrap="wrap" justify="between" gap="14" className={styles.info}>
+						<Text variant={'body3-accent'}>
+							{t(InterviewHistory.QUIZ_TITLE, { number: interview.quizNumber })}
+						</Text>
+						<Flex componentType="ul" gap="24">
+							<InterviewResults
+								label={t(InterviewHistory.RESULT)}
+								correctAnswersCount={successCount}
+								incorrectAnswersCount={incorrectAnswersCount}
+							/>
+						</Flex>
 					</Flex>
-				</Flex>
-			</Link>
+				</Link>
+			</Card>
 		</li>
 	);
 };

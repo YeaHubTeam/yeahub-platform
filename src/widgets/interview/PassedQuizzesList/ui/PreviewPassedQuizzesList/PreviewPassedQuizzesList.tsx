@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -5,7 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewHistory, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useScreenSize, useAppSelector } from '@/shared/hooks';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -40,11 +41,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 		uniqueKey: 'interviewPreviewHistory',
 	});
 
-	const { isMobile } = useScreenSize();
-
 	const isEmptyData = isSuccess && data.data.length === 0;
-
-	const isShowShadow = !isMobile || !isVerified;
 
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
@@ -78,11 +75,10 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 
 	return (
 		<Card
-			className={className}
+			className={classNames(styles.card, className)}
 			actionRoute={actionRoute}
 			actionTitle={actionTitle}
 			title={t(InterviewHistory.TITLE)}
-			withShadow={isShowShadow}
 			actionDisabled={isEmptyData}
 		>
 			{!isVerified && (
@@ -96,7 +92,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 				</Text>
 			)}
 			{!isEmptyData && isVerified && (
-				<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
+				<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 					{uniqueData.map((interview) => (
 						<PreviewPassedQuizzesItem key={interview.id} interview={interview} />
 					))}
