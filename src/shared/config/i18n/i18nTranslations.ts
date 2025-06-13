@@ -19,14 +19,14 @@ export enum Translation {
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
 	/* Header*/
-	HEADER_MENU_CHANGE_PASSWORD = 'header.menu.password',
+	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
+	HEADER_MENU_SETTINGS = 'header.menu.settings',
 	/* Sidebar */
 	SIDEBAR_CLOSE = 'sidebar.close',
 	SIDEBAR_OPEN = 'sidebar.open',
 	SIDEBAR_MENU_MAIN = 'sidebar.menu.main',
 	SIDEBAR_MENU_PLATFORM = 'sidebar.menu.platform',
 	SIDEBAR_MENU_ADMIN = 'sidebar.menu.admin',
-	SIDEBAR_MENU_SETTINGS = 'sidebar.menu.settings',
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',

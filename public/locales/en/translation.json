@@ -22,7 +22,8 @@
 	"back.button": "Go back to the previous page",
 	"header": {
 		"menu": {
-			"password": "Change password"
+			"membership": "Choose membership",
+			"settings": "Settings"
 		}
 	},
 	"sidebar": {
@@ -32,7 +33,6 @@
 			"main": "Home",
 			"platform": "Platform",
 			"admin": "Editor",
-			"settings": "Settings",
 			"specializations": "Specializations",
 			"users": "Users",
 			"collections": "Collections",

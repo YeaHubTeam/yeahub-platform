@@ -22,7 +22,8 @@
 	"back.button": "Вернуться на прошлую страницу",
 	"header": {
 		"menu": {
-			"password": "Сменить пароль"
+			"membership": "Выбрать членство",
+			"settings": "Настройки"
 		}
 	},
 	"sidebar": {
@@ -32,7 +33,6 @@
 			"main": "Главная",
 			"platform": "Платформа",
 			"admin": "Редактор",
-			"settings": "Настройки",
 			"specializations": "Специализации",
 			"users": "Пользователи",
 			"collections": "Коллекции",
