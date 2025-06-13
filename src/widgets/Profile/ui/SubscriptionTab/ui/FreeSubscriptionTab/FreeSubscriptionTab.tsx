@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { AgreementForm } from '@/features/subscription';
@@ -11,7 +11,6 @@ import { AgreementForm } from '@/features/subscription';
 import { FaqList } from '@/widgets/FaqList';
 
 export const FreeSubscriptionTab = () => {
-	const { isMobile } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.subscription);
 
 	const faqList = [
@@ -39,9 +38,13 @@ export const FreeSubscriptionTab = () => {
 
 	return (
 		<>
-			<Flex direction="column" gap={isMobile ? '40' : '60'}>
-				<AgreementForm />
-				<FaqList faqList={faqList} />
+			<Flex direction="column" gap={'20'}>
+				<Card>
+					<AgreementForm />
+				</Card>
+				<Card>
+					<FaqList faqList={faqList} />
+				</Card>
 			</Flex>
 		</>
 	);

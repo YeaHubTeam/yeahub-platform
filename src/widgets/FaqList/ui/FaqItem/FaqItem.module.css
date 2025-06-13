@@ -1,6 +1,6 @@
 .faq-item {
   padding: 24px;
-  max-width: 930px;
+  box-shadow: 0 4px 10px 0 #6A63761A;
   border-radius: 14px;
   background-color: var(--color-white-900);
 }
@@ -69,6 +69,7 @@
   
 .faq-body {
   margin-top: 12px;
+  max-width: 761px;
   line-height: 19px;
 }  
 
