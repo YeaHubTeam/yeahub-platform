@@ -22,8 +22,7 @@
 
 .content {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  flex-direction: column; 
   border-radius: 12px;
 }
 

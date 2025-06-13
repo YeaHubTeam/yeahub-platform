@@ -1,7 +1,6 @@
 .accordion {	
   padding: 16px 24px;		
-  box-shadow: 0 4px 10px 0 #6A63761A;
-  border-bottom: 1px;
+  box-shadow: 0 4px 10px 0 #6A63761A; 
   border-radius: 8px; 
   transition: padding 0.2s ease-in-out;	
 }
@@ -72,7 +71,7 @@
 }
 
 .content {
-  padding: 0 0 16px 24px;
+  padding: 0 0 8px;
   color: var(--text-color-light);
 }
 

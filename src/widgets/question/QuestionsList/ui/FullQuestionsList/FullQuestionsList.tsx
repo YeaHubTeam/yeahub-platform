@@ -42,7 +42,7 @@ export const FullQuestionsList = ({
 			</div>
 			<hr className={styles.divider} />
 			{questions.map((question) => (
-				<Accordion key={question.id} title={question.title}>
+				<Accordion key={question.id} title={question.title} className={styles.gap}>
 					<FullQuestionItem question={question} isPublic={isPublic} />
 				</Accordion>
 			))}
