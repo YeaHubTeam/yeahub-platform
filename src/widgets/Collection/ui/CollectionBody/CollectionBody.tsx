@@ -18,14 +18,16 @@ import styles from './CollectionBody.module.css';
 
 interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 	questions: Question[];
+	userRole?: string;
 }
 
-export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
+export const CollectionBody = ({ questions, isFree, userRole }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
-
 	// TODO: Добавить роут для сообщества
 
-	if (isFree)
+	const hasAccess = isFree || userRole === 'candidate-premium';
+
+	if (hasAccess)
 		return (
 			<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
 				{questions.length ? (
@@ -40,7 +42,7 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 			</Card>
 		);
 
-	if (!isFree)
+	if (!hasAccess)
 		return (
 			<Card
 				className={styles.wrapper}
