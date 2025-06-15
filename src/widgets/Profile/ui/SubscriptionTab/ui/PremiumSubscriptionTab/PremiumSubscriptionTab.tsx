@@ -7,6 +7,7 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
+import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
 import { useGetUserSubscriptionQuery } from '@/entities/subscription';
@@ -80,7 +81,7 @@ export const PremiumSubscriptionTab = () => {
 							Date: formatDate(parseISO(endDate), D_MM_YYYY),
 						})}
 					</p> */}
-				<p className={styles.text}>{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</p>
+				<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 			</Flex>
 			<div className={styles['actions-button']}>
 				<Flex direction="row" gap="8">

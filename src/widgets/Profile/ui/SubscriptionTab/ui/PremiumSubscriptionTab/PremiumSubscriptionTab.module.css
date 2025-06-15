@@ -16,14 +16,6 @@
   font-size: var(--font-size-large-34);
 }
 
-.text{
-  color: var(--color-black-1000);
-  line-height: 120%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-m);
-  font-family: var(--font-family);
-}
-
 .actions-button{
   margin-bottom: 60px;
 }
