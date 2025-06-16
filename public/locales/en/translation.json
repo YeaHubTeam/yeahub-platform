@@ -284,6 +284,12 @@
 					}
 				}
 			}
+		},
+		"subscriptions": {
+			"unsubscribe": {
+				"success": "Subscription disabled",
+				"failed": "Couldn't disable subscription"
+			}
 		}
 	},
 	"editor.bold": "Bold",

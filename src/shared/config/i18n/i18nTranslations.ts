@@ -147,6 +147,8 @@ export enum Translation {
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
 	TOAST_USER_DELETE_ADMIN_SUCCESS = 'toast.user.delete.admin.success',
 	TOAST_USER_DELETE_FAILED = 'toast.user.delete.failed',
+	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
+	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -676,6 +678,9 @@ export enum Landing {
 
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
+	UNSUBSCRIBE_MODAL_TITLE = 'unsubscribe.modal.title',
+	UNSUBSCRIBE_MODAL_BUTTON = 'unsubscribe.modal.button',
+	UNSUBSCRIBE_MODAL_DESCRIPTION = 'unsubscribe.modal.description',
 	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
 	CANCEL_SUBSCRIPTION = 'cancelSubscription',
 	PAY_HISTORY = 'payHistory',

@@ -13,7 +13,7 @@ import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { getFullProfile } from '@/entities/profile';
 import { useGetUserSubscriptionQuery } from '@/entities/subscription';
 
-import { UnsubscribeButton } from '@/features/subscription';
+import { UnsubscribeButton } from '@/features/subscriptions/unsubscribe';
 
 import { PayHistory } from '../../types/types';
 import { PayHistoryList } from '../PayHistoryList/PayHistoryList';

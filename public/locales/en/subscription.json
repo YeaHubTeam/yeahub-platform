@@ -1,5 +1,12 @@
 {
   "subscribeAction": "Subscribe",
+	"unsubscribe": {
+		"modal": {
+			"title": "Unsubscribe",
+			"button": "Unsubscribe",
+			"description": "Are you sure? This action <b>cannot be undone.</b>\nYour subscription will be canceled."
+		}
+	},
   "changeTariffPlan": "Change tariff plan",
   "cancelSubscription": "Cancel subscription",
   "payHistory": "Pay History",
