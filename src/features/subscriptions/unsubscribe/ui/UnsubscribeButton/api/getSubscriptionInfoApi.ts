@@ -6,7 +6,7 @@ import { SubscriptionInfoResponse } from '../model/types/types';
 
 const getSubscriptionInfo = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getSubscriptionInfo: build.query<SubscriptionInfoResponse, string>({
+		getSubscriptionInfo: build.query<SubscriptionInfoResponse[], string>({
 			query: (userId) => ({
 				url: route(unsubscribeApiUrls.getSubscriptionInfoId, userId),
 				method: 'GET',

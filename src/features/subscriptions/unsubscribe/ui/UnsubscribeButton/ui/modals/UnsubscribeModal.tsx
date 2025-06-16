@@ -21,6 +21,7 @@ export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => 
 	const profile = useAppSelector(getFullProfile);
 
 	const { data } = useGetSubscriptionInfoQuery(profile?.id);
+	const subscriptionId = data?.[0]?.subscriptionId;
 
 	const [unsubscribe] = useUnsubscribeMutation();
 
@@ -30,7 +31,7 @@ export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => 
 
 	const handleUnsubscribe = () => {
 		unsubscribe({
-			subscriptionId: data?.subscriptionId,
+			subscriptionId: subscriptionId,
 			userId: profile?.id,
 		});
 		onClose();
