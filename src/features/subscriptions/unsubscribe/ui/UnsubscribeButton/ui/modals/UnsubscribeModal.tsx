@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -21,7 +22,15 @@ export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => 
 	const profile = useAppSelector(getFullProfile);
 
 	const { data } = useGetSubscriptionInfoQuery(profile?.id);
-	const subscriptionId = data?.[0]?.subscriptionId;
+	const subscriptionId = useMemo(() => {
+		if (!data || data.length === 0) return undefined;
+
+		const sorted = [...data].sort(
+			(a, b) => new Date(b.createDate).getTime() - new Date(a.createDate).getTime(),
+		);
+
+		return sorted[0].subscriptionId;
+	}, [data]);
 
 	const [unsubscribe] = useUnsubscribeMutation();
 
