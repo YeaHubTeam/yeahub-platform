@@ -3,7 +3,10 @@
 	"unsubscribe": {
 		"modal": {
 			"title": "Unsubscribe",
-			"button": "Unsubscribe",
+			"button": {
+				"yes": "Yes",
+				"no": "No"
+			},
 			"description": "Are you sure? This action <b>cannot be undone.</b>\nYour subscription will be canceled."
 		}
 	},

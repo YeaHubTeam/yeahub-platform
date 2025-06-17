@@ -5,7 +5,7 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
-import { UnsubscribeModal } from '@/features/subscriptions/unsubscribe/ui/UnsubscribeButton/ui/modals/UnsubscribeModal';
+import { UnsubscribeModal } from '../UnsubscribeModal/UnsubscribeModal';
 
 export const UnsubscribeButton = () => {
 	const {

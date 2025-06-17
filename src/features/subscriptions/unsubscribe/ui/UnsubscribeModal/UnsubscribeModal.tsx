@@ -2,35 +2,31 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Subscription, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
-import { Modal } from '@/shared/ui/Modal';
+import { Modal, ModalProps } from '@/shared/ui/Modal';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { getFullProfile } from '@/entities/profile';
 
-import { useGetSubscriptionInfoQuery } from '@/features/subscriptions/unsubscribe/ui/UnsubscribeButton/api/getSubscriptionInfoApi';
-import { useUnsubscribeMutation } from '@/features/subscriptions/unsubscribe/ui/UnsubscribeButton/api/unsubscribeApi';
-
-import { UnsubscribeModalProps } from '../../model/types/types';
+import { useUnsubscribeMutation } from '../../api/unsubscribeApi';
 
 import styles from './UnsubscribeModal.module.css';
 
+type UnsubscribeModalProps = Pick<ModalProps, 'isOpen' | 'onClose'>;
+
 export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => {
-	const { t } = useTranslation([i18Namespace.subscription, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.subscription]);
 
-	const profile = useAppSelector(getFullProfile);
+	const profileInfo = useAppSelector(getFullProfile);
 
-	const { data } = useGetSubscriptionInfoQuery(profile?.id);
 	const subscriptionId = useMemo(() => {
-		if (!data || data.length === 0) return undefined;
-
-		const sorted = [...data].sort(
+		const sorted = [...profileInfo.subscriptions].sort(
 			(a, b) => new Date(b.createDate).getTime() - new Date(a.createDate).getTime(),
 		);
 
 		return sorted[0].subscriptionId;
-	}, [data]);
+	}, [profileInfo]);
 
 	const [unsubscribe] = useUnsubscribeMutation();
 
@@ -41,7 +37,7 @@ export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => 
 	const handleUnsubscribe = () => {
 		unsubscribe({
 			subscriptionId: subscriptionId,
-			userId: profile?.id,
+			userId: profileInfo?.id,
 		});
 		onClose();
 	};
@@ -50,8 +46,8 @@ export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => 
 		<Modal
 			title={t(Subscription.UNSUBSCRIBE_MODAL_TITLE)}
 			variant="error"
-			buttonPrimaryText={t(Subscription.UNSUBSCRIBE_MODAL_BUTTON)}
-			buttonOutlineText={t(Translation.CANCEL, { ns: 'translation' })}
+			buttonPrimaryText={t(Subscription.UNSUBSCRIBE_MODAL_BUTTON_YES)}
+			buttonOutlineText={t(Subscription.UNSUBSCRIBE_MODAL_BUTTON_NO)}
 			buttonOutlineClick={handleClose}
 			buttonPrimaryClick={handleUnsubscribe}
 			isOpen={isOpen}

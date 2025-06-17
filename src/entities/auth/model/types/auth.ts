@@ -38,6 +38,34 @@ export interface Profile {
 	profileSkills: Skill[];
 }
 
+interface Permission {
+	id: string;
+	name: string;
+}
+
+interface RoleSubscription {
+	id: string;
+	name: string;
+	permissions: Permission[];
+}
+
+interface GetSubscriptionResponse {
+	id: string;
+	name: string;
+	pricePerMonth: number;
+	description?: string;
+	roles: RoleSubscription[];
+}
+
+interface Subscription {
+	id: string;
+	subscriptionId: number;
+	userId: string;
+	createDate: string;
+	endDate?: string;
+	subscription: GetSubscriptionResponse;
+}
+
 export interface User {
 	id: string;
 	username: string;
@@ -50,6 +78,7 @@ export interface User {
 	createdAt: string;
 	updatedAt: string;
 	isEmailVerified?: boolean;
+	subscriptions: Subscription[];
 	userRoles: Role[];
 }
 

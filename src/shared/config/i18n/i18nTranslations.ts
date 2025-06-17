@@ -679,7 +679,8 @@ export enum Landing {
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
 	UNSUBSCRIBE_MODAL_TITLE = 'unsubscribe.modal.title',
-	UNSUBSCRIBE_MODAL_BUTTON = 'unsubscribe.modal.button',
+	UNSUBSCRIBE_MODAL_BUTTON_YES = 'unsubscribe.modal.button.yes',
+	UNSUBSCRIBE_MODAL_BUTTON_NO = 'unsubscribe.modal.button.no',
 	UNSUBSCRIBE_MODAL_DESCRIPTION = 'unsubscribe.modal.description',
 	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
 	CANCEL_SUBSCRIPTION = 'cancelSubscription',

@@ -1,1 +1,1 @@
-export { UnsubscribeButton } from './ui/UnsubscribeButton';
+export { UnsubscribeButton } from './ui/UnsubscribeButton/UnsubscribeButton';

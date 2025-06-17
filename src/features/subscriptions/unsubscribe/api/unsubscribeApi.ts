@@ -5,13 +5,12 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
-import { unsubscribeApiUrls } from '@/features/subscriptions/unsubscribe/ui/UnsubscribeButton/model/constants/unsubscribeConstants';
-
-import { UnsubscribeParams, UnsubscribeResponse } from '../model/types/types';
+import { unsubscribeApiUrls } from '../model/constants/unsubscribeConstants';
+import { UnsubscribeParams } from '../model/types/types';
 
 const unsubscribeApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		unsubscribe: build.mutation<UnsubscribeResponse, UnsubscribeParams>({
+		unsubscribe: build.mutation<void, UnsubscribeParams>({
 			query: (body) => ({
 				url: route(unsubscribeApiUrls.unsubscribeUser),
 				method: 'DELETE',
