@@ -51,7 +51,7 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 				className="payform-tbank-row"
 				type="hidden"
 				name="terminalkey"
-				value="1732126948702DEMO"
+				value={process.env.TBANK_TERMINAL_KEY}
 			/>
 			<input className="payform-tbank-row" type="hidden" name="frame" value="false" />
 			<input className="payform-tbank-row" type="hidden" name="language" value="ru" />
