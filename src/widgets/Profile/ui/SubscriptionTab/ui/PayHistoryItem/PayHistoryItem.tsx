@@ -16,14 +16,14 @@ interface PayHistoryItemProps {
 
 export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {
 	return (
-		<Card key={payHistory.id}>
+		<Card key={payHistory.id} className={styles['history-item']}>
 			<Flex gap="16" align="center">
 				<ArrowDownIcon className={styles['arrow-down-icon']} />
 				<Flex gap="8" align="center">
 					<SealCheck
 						className={styles['seal-check']}
 						style={{
-							fill:
+							color:
 								payHistory.status === 'pending'
 									? 'var(--color-yellow-900)'
 									: 'var(--color-green-900)',

@@ -62,31 +62,33 @@ export const PremiumSubscriptionTab = () => {
 
 	return (
 		<>
-			<Flex gap="20" direction="column" className={styles.wrapper}>
-				<Flex gap="12" direction="column">
-					<Flex gap="12" align="center">
-						<SealCheck className={styles.svg} />
-						<h3 className={styles['card-title']}>{t(Subscription.TARIFF_PREMIUM)}</h3>
+			<div className={styles['wrapper-top']}>
+				<Flex gap="20" direction="column" className={styles.wrapper}>
+					<Flex gap="12" direction="column">
+						<Flex gap="12" align="center">
+							<SealCheck className={styles.svg} />
+							<h3 className={styles['card-title']}>{t(Subscription.TARIFF_PREMIUM)}</h3>
+						</Flex>
+						<p className={styles.text}>{t(Subscription.SUBSCRIPTION_GREETING)}</p>
 					</Flex>
-					<p className={styles.text}>{t(Subscription.SUBSCRIPTION_GREETING)}</p>
-				</Flex>
-				<ProgressBar
-					currentCount={restDays}
-					totalCount={daysInMonth}
-					label={t(Subscription.DAYS_LEFT, { count: restDays })}
-					variant="large"
-				/>
-				{/*<p className={styles.text}>
+					<ProgressBar
+						currentCount={restDays}
+						totalCount={daysInMonth}
+						label={t(Subscription.DAYS_LEFT, { count: restDays })}
+						variant="large"
+					/>
+					{/*<p className={styles.text}>
 						{t(Subscription.SUBSCRIPTION_RENEWAL, {
 							Date: formatDate(parseISO(endDate), D_MM_YYYY),
 						})}
 					</p> */}
-				<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
-			</Flex>
-			<div className={styles['actions-button']}>
-				<Flex direction="row" gap="8">
-					<UnsubscribeButton />
+					<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 				</Flex>
+				<div className={styles['actions-button']}>
+					<Flex direction="row" gap="8">
+						<UnsubscribeButton />
+					</Flex>
+				</div>
 			</div>
 			<PayHistoryList payHistories={payHistories} />
 		</>

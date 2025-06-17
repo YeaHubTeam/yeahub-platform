@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui/Button';
 export const UnsubscribeButton = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	return (
-		<Button variant="tertiary" aria-label="Cancel subscription">
+		<Button variant="link" aria-label="Cancel subscription" destructive={true}>
 			{t(Subscription.CANCEL_SUBSCRIPTION)}
 		</Button>
 	);
