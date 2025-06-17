@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
-import { getFullProfile, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
@@ -25,8 +25,7 @@ import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 export const CollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
-	const fullProfile = useAppSelector(getFullProfile);
-	const userRole = fullProfile?.userRoles?.[0]?.name;
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const profileId = useAppSelector(getProfileId);
 	const { data: response, isSuccess } = useGetQuestionsListQuery(
 		{
@@ -69,8 +68,7 @@ export const CollectionPage = () => {
 	const showAuthor = guru ? false : true;
 
 	const renderHeaderAndActions = () => {
-		const canTrain = userRole === 'candidate-premium' && !isEmptyData && !isMobileS;
-
+		const canTrain = (isFree || hasPremiumAccess) && !isEmptyData && !isMobileS;
 		return (
 			<>
 				<CollectionHeader
@@ -96,7 +94,11 @@ export const CollectionPage = () => {
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					{renderHeaderAndActions()}
-					<CollectionBody isFree={isFree} questions={questions} userRole={userRole} />
+					<CollectionBody
+						isFree={isFree}
+						questions={questions}
+						hasPremiumAccess={hasPremiumAccess}
+					/>
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</div>
 				{isLargeScreen && (
