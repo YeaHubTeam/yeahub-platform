@@ -1,23 +1,32 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { FaqProps } from '../../model/types/types';
 import { FaqItem } from '../FaqItem/FaqItem';
-
-import styles from './FaqList.module.css';
 
 interface FaqListProps {
 	faqList: FaqProps[];
 }
 
 export const FaqList = ({ faqList }: FaqListProps) => {
+	const { t } = useTranslation(i18Namespace.subscription);
+	const { isMobile } = useScreenSize();
+
 	return (
-		<Flex direction="column">
-			<h1 className={styles['faq-title']}>Часто задаваемые вопросы</h1>
-			<ul className={styles['faq-items']}>
+		<Flex direction="column" gap={isMobile ? '16' : '24'}>
+			<Text variant={isMobile ? 'body5-accent' : 'head3'}>
+				{t(Subscription.SUBSCRIPTION_FAQ_TITLE)}
+			</Text>
+			<Flex componentType="ul" direction="column" gap="12">
 				{faqList.map((faqItem: FaqProps) => (
 					<FaqItem key={faqItem.id} item={faqItem} />
 				))}
-			</ul>
+			</Flex>
 		</Flex>
 	);
 };

@@ -16,10 +16,9 @@ export const PreviewPassedQuizzesListSkeleton = ({ className }: InterviewHistory
 			actionRoute="actionRoute"
 			actionTitle="actionTitle"
 			title="title"
-			withShadow
 			isTitleCenter={isMobile}
 		>
-			<Flex componentType="ul" direction="column" gap="8" className={styles.list}>
+			<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 				{[...Array(5)].map((_, index) => (
 					<PreviewPassedQuizzesItemSkeleton key={index} />
 				))}

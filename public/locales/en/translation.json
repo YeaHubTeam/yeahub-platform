@@ -22,7 +22,8 @@
 	"back.button": "Go back to the previous page",
 	"header": {
 		"menu": {
-			"password": "Change password"
+			"membership": "Choose membership",
+			"settings": "Settings"
 		}
 	},
 	"sidebar": {
@@ -32,7 +33,6 @@
 			"main": "Home",
 			"platform": "Platform",
 			"admin": "Editor",
-			"settings": "Settings",
 			"specializations": "Specializations",
 			"users": "Users",
 			"collections": "Collections",
@@ -227,7 +227,10 @@
 		"user": {
 			"delete": {
 				"success": "Your account and all your data have been permanently deleted",
-				"failed": "Account could not be deleted"
+				"failed": "Account could not be deleted",
+				"admin": {
+					"success": "The user account and all its data have been deleted without the possibility of recovery"
+				}
 			},
 			"user": {
 				"id": {
@@ -280,6 +283,12 @@
 						"failed": "Company could not be deleted"
 					}
 				}
+			}
+		},
+		"subscriptions": {
+			"unsubscribe": {
+				"success": "Subscription disabled",
+				"failed": "Couldn't disable subscription"
 			}
 		}
 	},

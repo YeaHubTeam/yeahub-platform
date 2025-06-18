@@ -1,6 +1,29 @@
 {
   "subscription": {
-    "free": "Free/month",
-    "price": "{{price}}₽/month"
+    "price": "{{price}}₽/month",
+    "title": "Membership",
+    "description": "Become a member of the YeaHub community and get access to all the features of the platform. The membership fee helps develop the platform, add new functions and support members",
+    "advantages": {
+      "first": "All questions",
+      "second": "Advanced simulator", 
+      "third": "Training statistics",
+      "fourth": {
+        "free": "Free collections",
+        "paid": "All collections"
+      }
+    },
+    "free": {
+      "title": "Candidate",
+      "description": "Candidate gets access to the question base and free collections"
+    },
+    "premium": {
+      "title": "Community member",
+      "description": "Community member has unlimited access to all features of the platform"
+    },
+    "privacy": {
+      "title": "By checking the box («✔») and clicking Subscribe «Subscribe»:",
+      "offer.agreement": "I confirm that I have read and agree to the <processingLink>Offer Agreement</processingLink> and <processingLink>Subscription Agreement</processingLink>.",
+      "consent": "I allow  <processingLink>to save credentials</processingLink>"
+    }
   }
 }

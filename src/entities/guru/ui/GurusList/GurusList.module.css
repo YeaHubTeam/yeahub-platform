@@ -1,0 +1,11 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px;
+}
+
+@media (width < 480px) {
+  .list {
+    grid-template-columns: 1fr
+  }
+}

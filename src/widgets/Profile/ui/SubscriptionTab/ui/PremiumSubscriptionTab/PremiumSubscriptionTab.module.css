@@ -1,0 +1,23 @@
+.wrapper{
+  margin-bottom: 27px;
+}
+
+.svg {
+  width: 32px;
+  height: 33px;
+  color: var(--color-yellow-900);
+}
+
+.card-title {
+  margin: 0;
+  color: var(--text-color-black-landing);
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-large-34);
+}
+
+.wrapper-top{
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--color-white-900);
+}

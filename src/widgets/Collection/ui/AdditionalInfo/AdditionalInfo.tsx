@@ -25,6 +25,7 @@ interface AdditionalInfoProps
 		Collection,
 		'specializations' | 'isFree' | 'company' | 'questionsCount' | 'createdBy' | 'keywords'
 	> {
+	showAuthor?: boolean;
 	className?: string;
 }
 
@@ -35,6 +36,7 @@ export const AdditionalInfo = ({
 	questionsCount,
 	createdBy,
 	keywords,
+	showAuthor = true,
 	className,
 }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
@@ -58,10 +60,12 @@ export const AdditionalInfo = ({
 					<CollectionCompanyInfo company={company} />
 					<CollectionAccessInfo isFree={isFree} />
 					<CollectionQuestionsCount questionsCount={questionsCount} />
-					{isSmallScreen && createdBy && <QuestionAuthor createdBy={createdBy} />}
+					{isSmallScreen && showAuthor && createdBy && <QuestionAuthor createdBy={createdBy} />}
 				</Flex>
 			</Card>
-			{isLargeScreen && createdBy && <QuestionAuthor createdBy={createdBy} isCenter />}
+			{isLargeScreen && showAuthor && createdBy && (
+				<QuestionAuthor createdBy={createdBy} isCenter />
+			)}
 		</>
 	);
 };

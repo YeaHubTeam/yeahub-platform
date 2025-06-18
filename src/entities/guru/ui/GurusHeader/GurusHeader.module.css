@@ -1,0 +1,7 @@
+.icon {
+  flex-shrink: 0;
+
+  path {
+    color: var(--color-white-900);
+  }
+}

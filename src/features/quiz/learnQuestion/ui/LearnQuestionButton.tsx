@@ -10,6 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
 
@@ -35,6 +36,7 @@ export const LearnQuestionButton = ({
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
 	const hasQuestionMaxProgress = checksCount >= 3;
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const [learnQuestion, { isLoading }] = useLearnQuestionMutation();
 	const { t } = useTranslation(i18Namespace.questions);
@@ -61,7 +63,7 @@ export const LearnQuestionButton = ({
 				preffix={<Icon icon="student" color="black-600" size={iconSize} />}
 				variant={variant}
 				onClick={onLearnQuestion}
-				disabled={isLoading || !isEmailVerified || hasQuestionMaxProgress}
+				disabled={isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium}
 			>
 				{t(Questions.LEARN)}
 			</Button>

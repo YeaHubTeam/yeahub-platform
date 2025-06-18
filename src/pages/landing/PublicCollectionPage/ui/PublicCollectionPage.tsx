@@ -4,6 +4,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
+import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 
 import {
@@ -30,7 +31,7 @@ export const PublicCollectionPage = () => {
 		},
 		{ skip: collection?.questionsCount === undefined },
 	);
-	const { isLargeScreen } = useScreenSize();
+	const { isSmallScreen, isLargeScreen } = useScreenSize();
 
 	const questions = response?.data ?? [];
 
@@ -56,6 +57,9 @@ export const PublicCollectionPage = () => {
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
+	const guru = getGuruWithMatchingSpecialization(collection.specializations);
+	const showAuthor = guru ? false : true;
+
 	return (
 		<Flex direction="column" align="start">
 			<Flex gap="20" maxWidth>
@@ -68,10 +72,12 @@ export const PublicCollectionPage = () => {
 						company={company}
 					/>
 					<CollectionBody isFree={isFree} questions={questions} />
+					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{isLargeScreen && (
 					<Flex direction="column" gap="20" className={styles.additional}>
 						<AdditionalInfo
+							showAuthor={showAuthor}
 							specializations={specializations}
 							isFree={isFree}
 							company={company}
@@ -79,6 +85,7 @@ export const PublicCollectionPage = () => {
 							createdBy={createdBy}
 							keywords={keywords}
 						/>
+						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>
 				)}
 			</Flex>

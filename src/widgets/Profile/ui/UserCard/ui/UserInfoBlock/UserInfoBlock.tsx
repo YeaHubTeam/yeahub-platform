@@ -8,13 +8,14 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FullProfile } from '@/entities/auth';
 import { getIsEdit } from '@/entities/profile';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
+import { UserRolesList } from '@/entities/user';
 
 import styles from './UserInfoBlock.module.css';
 
@@ -24,8 +25,9 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { username, birthday, email, country, city, isEmailVerified } = profile;
+	const { username, birthday, email, country, city, isEmailVerified, userRoles } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
+	const { isMobileS } = useScreenSize();
 	const isEdit = useAppSelector(getIsEdit);
 
 	// return (
@@ -50,7 +52,15 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 	return (
 		<div className={styles['card-info']}>
 			<div className={styles['card-header']}>
-				<h2 className={styles['card-name']}>{`${username}`}</h2>
+				<Flex
+					gap={isMobileS ? '8' : '16'}
+					direction={isMobileS ? 'column-reverse' : 'row'}
+					justify="between"
+					maxWidth
+				>
+					<h2 className={styles['card-name']}>{`${username}`}</h2>
+					<UserRolesList userRoles={userRoles} />
+				</Flex>
 				{!!birthday && (
 					<p className={styles['card-age']}>
 						{`${differenceInYears(new Date(), new Date(birthday))} лет`}

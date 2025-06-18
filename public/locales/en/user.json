@@ -29,12 +29,20 @@
   "registration.date": "Registration Date",
   "select.shoose": "Select Role",
   "filter": {
-    "role": { "title": "User Roles" },
-    "email": { "title": "Is Email Confirmed" }
+    "role": {
+      "title": "User Roles"
+    },
+    "email": {
+      "title": "Is Email Confirmed"
+    }
   },
   "edit": {
     "success": "User updated successfully",
     "error": "Failed to update user"
+  },
+  "subscription": {
+    "free": "Free",
+    "premium": "Community member"
   },
 	"delete": {
 		"title": "Delete account",
@@ -44,6 +52,13 @@
 		},
 		"label": "Enter your nickname to confirm",
 		"placeholder": "Enter your nickname",
-		"button": "Delete your account"
+		"button": "Delete account",
+		"admin": {
+			"title": "Confirmation of account deletion",
+			"description": {
+				"modal": "You are about to delete the user account <i>{{ username }}</i>.\nDeleting the account will result in <b>complete loss of data.</b>\nThis action <b>cannot be undone.</b>"
+			},
+			"button": "Delete"
+		}
 	}
 }

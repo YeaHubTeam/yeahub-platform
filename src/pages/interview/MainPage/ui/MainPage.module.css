@@ -17,8 +17,18 @@
   text-align: center;
 }
 
+.right-banners {
+  min-width: 455px;
+  max-width: 598px;
+}
+
 @media (width < 768px) {
   .banners-container {
     flex-direction: column;
+  }
+
+  .right-banners {
+    min-width: unset;
+    max-width: unset;
   }
 }

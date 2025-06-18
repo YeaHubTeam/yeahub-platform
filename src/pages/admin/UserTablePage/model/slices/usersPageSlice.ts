@@ -4,7 +4,6 @@ import { UsersPageState } from '../types/usersPageTypes';
 
 const initialState: UsersPageState = {
 	page: 1,
-	search: '',
 };
 
 const usersPageSlice = createSlice({
@@ -13,9 +12,6 @@ const usersPageSlice = createSlice({
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
-		},
-		setSearch: (state, action: PayloadAction<string>) => {
-			state.search = action.payload;
 		},
 	},
 });

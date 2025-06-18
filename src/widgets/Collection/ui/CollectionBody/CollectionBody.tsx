@@ -18,29 +18,14 @@ import styles from './CollectionBody.module.css';
 
 interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 	questions: Question[];
+	hasPremiumAccess?: boolean;
 }
 
-export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
+export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
-
 	// TODO: Добавить роут для сообщества
 
-	if (isFree)
-		return (
-			<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
-				{questions.length ? (
-					<Flex componentType="ul" direction="column" gap="12">
-						{questions?.map((question) => (
-							<PreviewQuestionsItem key={question.id} question={question} />
-						))}
-					</Flex>
-				) : (
-					<NoQuestionsCard icon="clock" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
-				)}
-			</Card>
-		);
-
-	if (!isFree)
+	if (!isFree && !hasPremiumAccess)
 		return (
 			<Card
 				className={styles.wrapper}
@@ -53,5 +38,17 @@ export const CollectionBody = ({ questions, isFree }: CollectionBodyProps) => {
 			</Card>
 		);
 
-	return null;
+	return (
+		<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
+			{questions.length ? (
+				<Flex componentType="ul" direction="column" gap="12">
+					{questions?.map((question) => (
+						<PreviewQuestionsItem key={question.id} question={question} />
+					))}
+				</Flex>
+			) : (
+				<NoQuestionsCard icon="clock" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
+			)}
+		</Card>
+	);
 };

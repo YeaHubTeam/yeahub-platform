@@ -9,14 +9,20 @@ export interface QuestionGradeListProps {
 	className?: string;
 	rate: number;
 	complexity: number;
+	size?: 'small' | 'medium';
 }
 
-export const QuestionGradeList = ({ className, rate, complexity }: QuestionGradeListProps) => {
+export const QuestionGradeList = ({
+	className,
+	rate,
+	complexity,
+	size,
+}: QuestionGradeListProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	return (
-		<Flex componentType="ul" gap="16" className={className}>
-			<GradeChip label={t(Questions.RATE_TITLE_SHORT)} value={rate} />
-			<GradeChip label={t(Questions.COMPLEXITY_TITLE_SHORT)} value={complexity} />
+		<Flex componentType="ul" gap="24" className={className}>
+			<GradeChip label={t(Questions.RATE_TITLE_SHORT)} value={rate} size={size} />
+			<GradeChip label={t(Questions.COMPLEXITY_TITLE_SHORT)} value={complexity} size={size} />
 		</Flex>
 	);
 };

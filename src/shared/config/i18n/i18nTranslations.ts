@@ -19,14 +19,14 @@ export enum Translation {
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
 	/* Header*/
-	HEADER_MENU_CHANGE_PASSWORD = 'header.menu.password',
+	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
+	HEADER_MENU_SETTINGS = 'header.menu.settings',
 	/* Sidebar */
 	SIDEBAR_CLOSE = 'sidebar.close',
 	SIDEBAR_OPEN = 'sidebar.open',
 	SIDEBAR_MENU_MAIN = 'sidebar.menu.main',
 	SIDEBAR_MENU_PLATFORM = 'sidebar.menu.platform',
 	SIDEBAR_MENU_ADMIN = 'sidebar.menu.admin',
-	SIDEBAR_MENU_SETTINGS = 'sidebar.menu.settings',
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
@@ -145,7 +145,10 @@ export enum Translation {
 	TOAST_COMPANY_EDIT_SUCCESS = 'toast.companies.edit.success',
 	TOAST_COMPANY_EDIT_FAILED = 'toast.companies.edit.failed',
 	TOAST_DELETE_ACCOUNT_SUCCESS = 'toast.user.delete.success',
-	TOAST_DELETE_ACCOUNT_FAILED = 'toast.user.delete.failed',
+	TOAST_USER_DELETE_ADMIN_SUCCESS = 'toast.user.delete.admin.success',
+	TOAST_USER_DELETE_FAILED = 'toast.user.delete.failed',
+	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
+	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -478,12 +481,17 @@ export enum User {
 	SELECT_CHOOSE = 'select.shoose',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
+	SUBSCRIPTION_FREE = 'subscription.free',
+	SUBSCRIPTION_PREMIUM = 'subscription.premium',
 	EDIT_SUCCESS = 'edit.success',
 	EDIT_ERROR = 'edit.error',
 	DELETE_TITLE = 'delete.title',
+	DELETE_ADMIN_TITLE = 'delete.admin.title',
 	DELETE_DESCRIPTION_MAIN = 'delete.description.main',
 	DELETE_DESCRIPTION_MODAL = 'delete.description.modal',
+	DELETE_ADMIN_DESCRIPTION_MODAL = 'delete.admin.description.modal',
 	DELETE_BUTTON = 'delete.button',
+	DELETE_ADMIN_BUTTON = 'delete.admin.button',
 	DELETE_LABEL = 'delete.label',
 	DELETE_PLACEHOLDER = 'delete.placeholder',
 }
@@ -670,6 +678,10 @@ export enum Landing {
 
 export enum Subscription {
 	SUBSCRIBE_ACTION = 'subscribeAction',
+	UNSUBSCRIBE_MODAL_TITLE = 'unsubscribe.modal.title',
+	UNSUBSCRIBE_MODAL_BUTTON_YES = 'unsubscribe.modal.button.yes',
+	UNSUBSCRIBE_MODAL_BUTTON_NO = 'unsubscribe.modal.button.no',
+	UNSUBSCRIBE_MODAL_DESCRIPTION = 'unsubscribe.modal.description',
 	CHANGE_TARIFF_PLAN = 'changeTariffPlan',
 	CANCEL_SUBSCRIPTION = 'cancelSubscription',
 	PAY_HISTORY = 'payHistory',
@@ -679,11 +691,34 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
+	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
+	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
+	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
+	SUBSCRIPTION_FAQ_SECOND_QUESTION = 'faq.second.question',
+	SUBSCRIPTION_FAQ_SECOND_ANSWER = 'faq.second.answer',
+	SUBSCRIPTION_FAQ_THIRD_QUESTION = 'faq.third.question',
+	SUBSCRIPTION_FAQ_THIRD_ANSWER = 'faq.third.answer',
+	SUBSCRIPTION_FAQ_FOURTH_QUESTION = 'faq.fourth.question',
+	SUBSCRIPTION_FAQ_FOURTH_ANSWER = 'faq.fourth.answer',
 }
 
 export enum SubscriptionCard {
-	SUBSCRIPTION_CARD_FREE = 'subscription.free',
+	SUBSCRIPTION_TITLE = 'subscription.title',
+	SUBSCRIPTION_DESCRIPTION = 'subscription.description',
 	SUBSCRIPTION_CARD_PRICE = 'subscription.price',
+	SUBSCRIPTION_CARD_ADVANTAGES_FIRST = 'subscription.advantages.first',
+	SUBSCRIPTION_CARD_ADVANTAGES_SECOND = 'subscription.advantages.second',
+	SUBSCRIPTION_CARD_ADVANTAGES_THIRD = 'subscription.advantages.third',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_FREE = 'subscription.advantages.fourth.free',
+	SUBSCRIPTION_CARD_ADVANTAGES_FOURTH_PAID = 'subscription.advantages.fourth.paid',
+	SUBSCRIPTION_CARD_FREE_TITLE = 'subscription.free.title',
+	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
+	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
+	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
+	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
+	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
 }
 
 export enum Docs {
@@ -712,4 +747,9 @@ export enum TextEditor {
 	REDO = 'editor.redo',
 	BULLET_LIST = 'editor.bullet.list',
 	ORDERED_LIST = 'editor.ordered.list',
+}
+
+export enum Guru {
+	BANNER_TITLE = 'banner.title',
+	BANNER_DESCRIPTION = 'banner.description',
 }

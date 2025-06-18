@@ -1,5 +1,8 @@
+.card {
+  gap: 24px;
+}
+
 .list {
-  padding: 20px 24px;
   list-style: none;
 }
 

@@ -10,10 +10,6 @@
   max-width: 500px;
 }
 
-.button {
-  max-width: 328px;
-}
-
 @media (width < 768px) {
   .description {
     margin-bottom: 20px;
@@ -24,9 +20,5 @@
   .title {
     margin-bottom: 8px;
     font-size: var(--font-size-h-s);
-  }
-
-  .button {
-    max-width: 320px;
   }
 }

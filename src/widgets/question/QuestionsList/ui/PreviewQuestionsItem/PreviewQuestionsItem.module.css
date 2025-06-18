@@ -1,12 +1,3 @@
-.params {
-  gap: 24px;
-}
-
-.item:not(:last-child) {
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-color);
-}
-
 .link {
   display: flex;
   gap: 8px;
@@ -43,16 +34,18 @@
   display: none;
 }
 
+.params {
+  gap: 24px;
+}
+
+.image {
+  width: 71px;
+  height: auto;
+  min-height: 70px;
+}
+
 @media (width <= 768px) {
   .link:not(:last-child) {
-    border-bottom: none;
-  }
-	
-  .params {
-    gap: 12px;
-  }
-	
-  .item:not(:last-child) {
     border-bottom: none;
   }
 }
@@ -66,7 +59,6 @@
   .image {
     aspect-ratio: 4 / 3;
     width: 100%;
-    height: auto;
   }
 
   .params {

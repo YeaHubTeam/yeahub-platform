@@ -6,7 +6,7 @@ import styles from './Flex.module.css';
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexAlign = 'start' | 'center' | 'end' | 'normal';
 type FlexWrap = 'wrap' | 'nowrap';
-type FlexDirection = 'row' | 'column';
+type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
 type FlexGap =
 	| '4'
 	| '6'
@@ -37,6 +37,8 @@ const justifyClasses: Record<FlexJustify, string> = {
 const directionClasses: Record<FlexDirection, string> = {
 	row: styles['direction-row'],
 	column: styles['direction-column'],
+	'row-reverse': styles['direction-row-reverse'],
+	'column-reverse': styles['direction-column-reverse'],
 };
 
 const alignClasses: Record<FlexAlign, string> = {

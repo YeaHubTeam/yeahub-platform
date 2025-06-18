@@ -11,9 +11,14 @@ export const useModal = () => {
 		setIsOpen(false);
 	};
 
+	const onOpen = () => {
+		setIsOpen(true);
+	};
+
 	return {
 		isOpen,
 		onClose,
 		onToggle,
+		onOpen,
 	};
 };

@@ -23,6 +23,7 @@ export interface QuestionAdditionalInfoProps {
 	createdBy: Author;
 	className?: string;
 	route?: string;
+	showAuthor?: boolean;
 }
 
 export const QuestionAdditionalInfo = ({
@@ -33,6 +34,7 @@ export const QuestionAdditionalInfo = ({
 	createdBy,
 	className,
 	route,
+	showAuthor = true,
 }: QuestionAdditionalInfoProps) => {
 	const navigate = useNavigate();
 	const { isMobile, isTablet } = useScreenSize();
@@ -64,10 +66,14 @@ export const QuestionAdditionalInfo = ({
 						</Text>
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
-					{createdBy && (isMobile || isTablet) && <QuestionAuthor createdBy={createdBy} />}
+					{showAuthor && createdBy && (isMobile || isTablet) && (
+						<QuestionAuthor createdBy={createdBy} />
+					)}
 				</Flex>
 			</Card>
-			{createdBy && !isMobile && !isTablet && <QuestionAuthor createdBy={createdBy} isCenter />}
+			{showAuthor && createdBy && !isMobile && !isTablet && (
+				<QuestionAuthor createdBy={createdBy} isCenter />
+			)}
 		</>
 	);
 };

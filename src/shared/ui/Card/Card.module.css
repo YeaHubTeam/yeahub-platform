@@ -1,10 +1,18 @@
 .card {
   position: relative;
-  padding: 24px;
   overflow: hidden;
-  border-radius: 16px;
   background-color: var(--background-block);
   transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.small {
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.medium {
+  padding: 24px;
+  border-radius: 16px;
 }
 
 .card-header {
@@ -30,8 +38,12 @@
   box-shadow: 0 4px 10px 0 #6A63761A;
 }
 
-.card-outside-shadow{
+.card-outside-shadow {
   box-shadow: 0 4px 10px 0 #6A63761A
+}
+
+.border {
+  border: 1px solid var(--color-purple-700);
 }
 
 .content-bottom {
@@ -95,6 +107,7 @@
   flex-shrink: 0;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
   text-decoration: none;
 }
 
@@ -117,7 +130,7 @@
   bottom: 24px;
 }
 
-@media (width <= 767px) {   
+@media (width <= 767px) {
   .card {
     padding: 20px 10px;
     max-width: 100%;

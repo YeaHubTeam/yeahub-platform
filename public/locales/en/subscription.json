@@ -1,5 +1,15 @@
 {
   "subscribeAction": "Subscribe",
+	"unsubscribe": {
+		"modal": {
+			"title": "Unsubscribe",
+			"button": {
+				"yes": "Yes",
+				"no": "No"
+			},
+			"description": "Are you sure? This action <b>cannot be undone.</b>\nYour subscription will be canceled."
+		}
+	},
   "changeTariffPlan": "Change tariff plan",
   "cancelSubscription": "Cancel subscription",
   "payHistory": "Pay History",
@@ -11,5 +21,25 @@
   "daysLeft_one": " {{count}} Day Left",
   "daysLeft_other": " {{count}} Days Left",
   "greeting": "Excellent choice, now you have access to all the functions of the service",
-  "renewal": "Payment will be renewed automatically on {{Date}}"
+  "renewal": "Payment will be renewed automatically on {{Date}}",
+	"accessWarning": "Renew your subscription for full access",
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "first": {
+      "question": "How much does membership cost?",
+      "answer": "The membership fee is 200 rubles per month. This allows you to use all the features of the platform, including premium content and participation in closed events."
+    },
+    "second": {
+      "question": "What are the advantages of membership?",
+      "answer": "Membership opens up a wide range of materials, exclusive collections and activities, as well as gives you the opportunity to support the development of the community and platform."
+    }, 
+    "third": {
+      "question": "How can I cancel my subscription?",
+      "answer": "You can cancel your subscription at any time from your account on the platform. Access to paid materials will be suspended at the end of the current month."
+    },
+    "fourth": {
+      "question": "Can I pause my subscription for some time?",
+      "answer": "At the moment, subscription pause is not provided. You can cancel your subscription at any time and resubscribe later."
+    }
+  }
 }

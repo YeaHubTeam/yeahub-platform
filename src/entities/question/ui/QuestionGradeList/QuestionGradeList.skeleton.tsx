@@ -3,11 +3,11 @@ import { GradeChipSkeleton } from '@/shared/ui/GradeChip';
 
 import { QuestionGradeListProps } from './QuestionGradeList';
 
-export const QuestionGradeListSkeleton = ({ className }: Partial<QuestionGradeListProps>) => {
+export const QuestionGradeListSkeleton = ({ className, size }: Partial<QuestionGradeListProps>) => {
 	return (
-		<Flex componentType="ul" gap="16" className={className}>
-			<GradeChipSkeleton />
-			<GradeChipSkeleton />
+		<Flex componentType="ul" gap="24" className={className}>
+			<GradeChipSkeleton size={size} />
+			<GradeChipSkeleton size={size} />
 		</Flex>
 	);
 };

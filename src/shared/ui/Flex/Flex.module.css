@@ -30,6 +30,14 @@
   flex-direction: column;
 }
 
+.direction-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
 .align-end {
   align-items: flex-end;
 }

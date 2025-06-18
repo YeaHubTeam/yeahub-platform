@@ -203,4 +203,8 @@ export const ROUTES = {
 			page: '/collections/:collectionId',
 		},
 	},
+	marketplace: {
+		route: 'marketplace',
+		page: '/marketplace',
+	},
 } as const;
