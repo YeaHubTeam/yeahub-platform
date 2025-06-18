@@ -5,6 +5,8 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
+import { MarketplaceList } from '@/widgets/Marketplace';
+
 import styles from './PublicMarketplacePage.module.css';
 
 const PublicMarketplacePage = () => {
@@ -42,7 +44,7 @@ const PublicMarketplacePage = () => {
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				{/* список ресурсов: пока пустышка */}
-				<div style={{ minHeight: 200 }}>Список ресурсов (заглушка)</div>
+				<MarketplaceList />
 
 				{/* бургер виден только при ширине ≤ 1023 px */}
 				{(isMobile || isTablet) && filterButton}
