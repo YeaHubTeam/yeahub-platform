@@ -5,6 +5,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
+import { toast } from '@/shared/ui/Toast';
 
 import { MarketplaceList } from '@/widgets/Marketplace';
 
@@ -41,20 +42,35 @@ const PublicMarketplacePage = () => {
 		</div>
 	);
 
+	const suggestButton = (
+		<span
+			role="button"
+			tabIndex={0}
+			className={styles.suggest}
+			onClick={() => toast.success('Фича в разработке')}
+			onKeyDown={(e) => e.key === 'Enter' && toast.success('Фича в разработке')}
+		>
+			Предложить свой
+			<Icon icon="plus" color="purple-700" />
+		</span>
+	);
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
-				<Flex className={styles.header} direction="row" justify="between">
+				<Flex className={styles.header}>
 					<Text variant="head1" className={styles.title}>
 						Полезные IT-ресурсы
 					</Text>
-					{/* здесь позже появится кнопка «Предложить свой» */}
+					<div className={styles.actions}>
+						{(isMobile || isTablet) && filterButton}
+						{suggestButton}
+					</div>
 				</Flex>
 				{/* список ресурсов: пока пустышка */}
 				<MarketplaceList />
 
 				{/* бургер виден только при ширине ≤ 1023 px */}
-				{(isMobile || isTablet) && filterButton}
 			</Card>
 
 			{/* правый сайдбар с фильтрами — только десктоп */}

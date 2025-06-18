@@ -6,9 +6,19 @@
 }
 
 .header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .title {
@@ -28,13 +38,13 @@
 
 .filters-mobile {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  display: inline-block;
+  top: 0;
+  right: 0;
+  display: none;
   width: fit-content;
   border: 1px solid var(--border-right-color);
   border-radius: 8px;
-  background-color: transparent;
+  background: transparent;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -42,10 +52,14 @@
   border: none;
 }
 
-@media screen and (width >= 1024px) {
-  .filters-mobile {
-    display: none;
-  }
+.suggest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-purple-700);
+  line-height: 110%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
 }
 
 .drawer {
@@ -65,10 +79,27 @@
   .filters {
     display: none;
   }
+
+  .filters-mobile {
+    display: inline-flex;
+  }
 }
 
-@media screen and (width <= 767px) {
+@media screen and (width <= 360px) {
   .main {
     padding: 20px 10px;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .filters-mobile {
+    position: static;
+    margin-top: 0;
+  }
+
+  .suggest {
+    margin: 0;
   }
 }
