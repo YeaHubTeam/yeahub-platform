@@ -12,14 +12,30 @@ export const resourcesMock: Resource[] = [
 		id: 'git-guide',
 		title: 'Как пользоваться Git: пошаговое руководство',
 		description: 'Видео с объяснением init, commit, push, pull и ветвления.',
-		url: 'https://coderunner.io/git-guide',
-		image: 'https://coderunner.io/img/git-guide-thumb.png',
+		url: 'https://coderunner.io/',
+		image: null,
+	},
+	{
+		id: 'rest-vs-graphql',
+		title: 'Background Fetch API',
+		description:
+			'When a web application requires the user to download large files, this often presents a problem in that the user needs to stay connected to the page for the download to complete.',
+		url: 'https://developer.mozilla.org/en-US/docs/Web/API/Background_Fetch_API',
+		image: null,
+	},
+	{
+		id: 'gateway',
+		title: 'Паттерны Gateway и Backend-for-Frontend',
+		description:
+			'Gateway и Backend-for-Frontend (BFF) — паттерны проектирования для разработки веб-приложений. ',
+		url: 'https://doka.guide/tools/gateway-bff/',
+		image: null,
 	},
 	{
 		id: 'rest-vs-graphql',
 		title: 'REST vs GraphQL: что выбрать и когда?',
 		description: 'Плюсы, минусы, советы по применению для начинающих разработчиков.',
-		url: 'https://coderunner.io/rest-vs-graphql',
+		url: 'https://coderunner.io/',
 		image: null,
 	},
 ];

@@ -4,6 +4,7 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
+import { Text } from '@/shared/ui/Text';
 
 import { MarketplaceList } from '@/widgets/Marketplace';
 
@@ -43,6 +44,12 @@ const PublicMarketplacePage = () => {
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
+				<Flex className={styles.header} direction="row" justify="between">
+					<Text variant="head1" className={styles.title}>
+						Полезные IT-ресурсы
+					</Text>
+					{/* здесь позже появится кнопка «Предложить свой» */}
+				</Flex>
 				{/* список ресурсов: пока пустышка */}
 				<MarketplaceList />
 
