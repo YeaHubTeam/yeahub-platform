@@ -1,5 +1,15 @@
 {
   "subscribeAction": "Подписаться",
+	"unsubscribe": {
+		"modal": {
+			"title": "Отключение подписки",
+			"button": {
+				"yes": "Да",
+				"no": "Нет"
+			},
+			"description": "Вы уверены? Это действие <b>нельзя отменить.</b>\nПодписка будет отменена."
+		}
+	},
   "changeTariffPlan": "Доступно для участников",
   "cancelSubscription": "Отменить подписку",
   "payHistory": "Ваши предыдущие платежи ",

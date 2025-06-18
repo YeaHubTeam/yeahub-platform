@@ -14,6 +14,40 @@ export const authMockResponse: AuthResponse = {
 		avatarUrl: 'https://cdn.fastcup.net/logos/teams/20989_7n1la213o.png',
 		createdAt: '',
 		updatedAt: '',
+		subscriptions: [
+			{
+				id: 'sub-123',
+				subscriptionId: 1001,
+				userId: 'user-789',
+				createDate: '2024-03-15T10:00:00Z',
+				endDate: '2025-03-15T10:00:00Z',
+				subscription: {
+					id: 'plan-premium',
+					name: 'Premium Plan',
+					pricePerMonth: 29.99,
+					description: 'Full access to all features with priority support',
+					roles: [
+						{
+							id: 'role-admin',
+							name: 'Admin',
+							permissions: [
+								{ id: 'perm-create', name: 'Create Users' },
+								{ id: 'perm-delete', name: 'Delete Users' },
+								{ id: 'perm-view-analytics', name: 'View Analytics' },
+							],
+						},
+						{
+							id: 'role-editor',
+							name: 'Editor',
+							permissions: [
+								{ id: 'perm-create', name: 'Create Users' },
+								{ id: 'perm-edit', name: 'Edit Posts' },
+							],
+						},
+					],
+				},
+			},
+		],
 		userRoles: [{ id: 4, name: 'admin', permissions: [] }],
 		isEmailVerified: true,
 	},

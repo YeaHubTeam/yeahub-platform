@@ -5,7 +5,7 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { AgreementForm } from '@/features/subscription';
+import { AgreementForm } from '@/features/subscriptions/subscribe';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { FaqList } from '@/widgets/FaqList';
