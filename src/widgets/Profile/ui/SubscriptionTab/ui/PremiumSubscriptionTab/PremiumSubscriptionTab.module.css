@@ -5,7 +5,7 @@
 .svg {
   width: 32px;
   height: 33px;
-  fill: var(--color-yellow-900);
+  color: var(--color-yellow-900);
 }
 
 .card-title {
@@ -16,6 +16,8 @@
   font-size: var(--font-size-large-34);
 }
 
-.actions-button{
-  margin-bottom: 60px;
+.wrapper-top{
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--color-white-900);
 }

@@ -20,7 +20,7 @@ export const PayHistoryList = ({ payHistories }: PayHistoryListProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 
 	return (
-		<Flex direction="column" gap="40">
+		<Flex direction="column" gap="24" className={styles.wrapper}>
 			<h3 className={styles.title}>{t(Subscription.PAY_HISTORY)}</h3>
 			<Flex gap="14" direction="column">
 				{payHistories.map((payHistory) => (
