@@ -12,6 +12,7 @@ interface AccordionProps {
 	 *The part of the content that remains visible when closed
 	 */
 	title: string;
+	className?: string;
 	/**
 	 *The part of content that appear when open
 	 */
@@ -21,10 +22,11 @@ interface AccordionProps {
 /**
  * This component can hide and show the content
  * @param title
+ * @param className
  * @param children
  * @constructor
  */
-export const Accordion = ({ title, children }: AccordionProps) => {
+export const Accordion = ({ title, className, children }: AccordionProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const contentRef = useRef<HTMLDivElement | null>(null);
 	const { isMobileS } = useScreenSize();
@@ -34,7 +36,9 @@ export const Accordion = ({ title, children }: AccordionProps) => {
 	};
 
 	return (
-		<div className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen })}>
+		<div
+			className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen }, className)}
+		>
 			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
 				<button className={styles.button} onClick={onOpenAccordion}>
 					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.title}>

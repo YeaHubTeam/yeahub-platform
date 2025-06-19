@@ -30,7 +30,7 @@
 
 .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   border-radius: 12px;
 }
 
