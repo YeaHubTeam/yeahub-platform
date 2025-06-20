@@ -19,6 +19,10 @@
   margin-bottom: 120px;
 }
 
+.interview-trainer-wrapper-skeleton{
+  width: 100%;
+}
+
 .title-block {
   align-self: baseline;
 }

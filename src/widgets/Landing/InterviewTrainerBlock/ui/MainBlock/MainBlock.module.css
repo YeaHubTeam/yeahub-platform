@@ -8,6 +8,11 @@
   background-color: var(--background-purple-block);
 }
 
+.main-block-load {
+  width: 100%;  
+  background-color: var(--color-white-500);
+}
+
 .image {
   box-sizing: border-box;
   width: 90%;

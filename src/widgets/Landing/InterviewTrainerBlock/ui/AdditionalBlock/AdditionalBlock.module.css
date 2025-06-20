@@ -2,8 +2,19 @@
   row-gap: 20px;
 }
 
+.additional-block-skeleton {
+  row-gap: 20px;
+  width: 100%;
+}
+
 @media (width >= 768px) {
   .additional-block {
     width: 100%;
+  }
+}
+
+@media (width < 768px) {
+  .additional-block-skeleton {
+    width: 90%;
   }
 }
