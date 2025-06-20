@@ -36,7 +36,8 @@
 }
 
 .drawer {
-  width: 328px;
+  top: 60px;
+  width: 100%;
   overflow-x: hidden;
 }
 
