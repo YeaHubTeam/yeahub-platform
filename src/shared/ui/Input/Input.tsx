@@ -14,6 +14,7 @@ export interface InputProps extends Omit<React.ComponentPropsWithRef<'input'>, '
 	placeholder?: string;
 	error?: boolean;
 	label?: string;
+	dataTestId?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -27,6 +28,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			placeholder = '',
 			error = false,
 			label = '',
+			dataTestId = 'Input_Field',
 			...props
 		},
 		ref,
@@ -92,7 +94,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					aria-invalid={error}
 					aria-labelledby={label}
 					aria-label={label}
-					data-testid="Input_Field"
+					data-testid={dataTestId}
 					{...props}
 				/>
 				{suffix && (
