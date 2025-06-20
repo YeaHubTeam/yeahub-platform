@@ -10,10 +10,10 @@ import { SimpleChip } from '@/shared/ui/SimpleChip';
 
 import styles from './KeywordInput.module.css';
 
-type KeywordInputProps = {
+export interface KeywordInputProps {
 	value: string[];
 	onChange: (value: string[]) => void;
-};
+}
 
 export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 	const [keywords, setKeywords] = useState('');
@@ -54,10 +54,20 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 	};
 
 	return (
-		<Flex gap="24" direction="column">
+		<Flex gap="24" direction="column" dataTestId="KeywordInput">
 			<Flex gap="8">
-				<Input type="text" value={keywords} onChange={changeHandler} onKeyDown={handleKeyDown} />
-				<Button className={styles.button} onClick={handleClick}>
+				<Input
+					dataTestId="KeywordInput_Input"
+					type="text"
+					value={keywords}
+					onChange={changeHandler}
+					onKeyDown={handleKeyDown}
+				/>
+				<Button
+					className={styles.button}
+					onClick={handleClick}
+					dataTestId="KeywordInput_Create_Button"
+				>
 					{t(Translation.CREATE, { ns: i18Namespace.translation })}
 				</Button>
 			</Flex>
@@ -65,10 +75,15 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 				{keywordsArray?.length > 0 && (
 					<>
 						<h4>{t(Questions.KEYWORDS_TITLE)}</h4>
-						<Flex direction="row" gap="32">
+						<Flex direction="row" gap="32" dataTestId="KeywordInput_Keywords">
 							{keywordsArray.map((keyword) => {
 								return (
 									<SimpleChip
+										dataTestIds={{
+											simpleChip: 'KeywordInput_Keyword',
+											simpleChipText: 'KeywordInput_Keyword_Text',
+											simpleChipDeleteButton: 'KeywordInput_Keyword_Delete_Button',
+										}}
 										key={keyword}
 										onDelete={() => {
 											handleDeleteKeywords(keyword);
