@@ -1,3 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -14,6 +18,8 @@ import styles from './PublicMarketplacePage.module.css';
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+
+	const { t } = useTranslation(i18Namespace.marketplace);
 
 	// заглушка для фильтров
 	const renderFilters = () => <div>Фильтры (заглушка)</div>;
@@ -50,7 +56,7 @@ const PublicMarketplacePage = () => {
 			onClick={() => toast.success('Фича в разработке')}
 			onKeyDown={(e) => e.key === 'Enter' && toast.success('Фича в разработке')}
 		>
-			Предложить свой
+			{t(Marketplace.PROPOSE_LABEL)}
 			<Icon icon="plus" color="purple-700" />
 		</span>
 	);
@@ -60,7 +66,7 @@ const PublicMarketplacePage = () => {
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="head1" className={styles.title}>
-						Полезные IT-ресурсы
+						{t(Marketplace.HEADER_TITLE)}
 					</Text>
 					<div className={styles.actions}>
 						{(isMobile || isTablet) && filterButton}
