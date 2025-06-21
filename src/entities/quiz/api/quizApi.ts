@@ -106,6 +106,7 @@ const quizApi = baseApi.injectEndpoints({
 								questionId: question.questionId,
 								questionTitle: question.questionTitle,
 								answer: question.answer,
+								isFavorite: question.isFavorite,
 								shortAnswer: question.shortAnswer ?? '',
 								imageSrc: question.imageSrc ?? undefined,
 							}),

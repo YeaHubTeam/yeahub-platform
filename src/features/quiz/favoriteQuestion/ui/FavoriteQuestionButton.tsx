@@ -12,9 +12,9 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 import { getIsEmailVerified, getProfileId } from '@/entities/profile';
 
 import {
-	useFavoriteQuestionMutation,
+	useAddFavoriteQuestionMutation,
 	useResetFavoriteQuestionMutation,
-} from '@/features/quiz/favoriteQuestion/api/favoriteQuestionApi';
+} from '../api/favoriteQuestionApi';
 
 import styles from './FavoriteQuestionButton.module.css';
 
@@ -25,6 +25,7 @@ export interface FavoriteQuestionProps {
 	placementTooltip?: Placement;
 	offsetTooltip?: number;
 	isFavorite?: boolean;
+	size?: 'small' | 'medium';
 }
 
 export const FavoriteQuestionButton = ({
@@ -34,15 +35,16 @@ export const FavoriteQuestionButton = ({
 	placementTooltip = 'top',
 	offsetTooltip = 10,
 	isFavorite,
+	size = 'medium',
 }: FavoriteQuestionProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
 
-	const [favoriteQuestion, favoriteState] = useFavoriteQuestionMutation();
+	const [favoriteQuestion, favoriteState] = useAddFavoriteQuestionMutation();
 	const [resetFavoriteQuestion, resetState] = useResetFavoriteQuestionMutation();
 
 	const { t } = useTranslation(i18Namespace.questions);
-	const onFavoriteQuestion = () => {
+	const onToggleFavoriteQuestion = () => {
 		isFavorite
 			? resetFavoriteQuestion({
 					profileId: String(profileId),
@@ -58,7 +60,7 @@ export const FavoriteQuestionButton = ({
 
 	return (
 		<Tooltip
-			title={t(Questions.TOOLTIP_FAVORITE)}
+			title={isFavorite ? t(Questions.TOOLTIP_FAVORITE_DELETE) : t(Questions.TOOLTIP_FAVORITE_ADD)}
 			placement={placementTooltip}
 			color="violet"
 			offsetTooltip={offsetTooltip}
@@ -74,10 +76,10 @@ export const FavoriteQuestionButton = ({
 					)
 				}
 				variant={variant}
-				onClick={onFavoriteQuestion}
+				onClick={onToggleFavoriteQuestion}
 				disabled={resetState.isLoading || favoriteState.isLoading || !isEmailVerified}
 			>
-				{t(Questions.FAVORITE)}
+				{size === 'medium' && t(Questions.FAVORITE)}
 			</Button>
 		</Tooltip>
 	);

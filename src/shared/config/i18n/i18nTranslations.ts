@@ -409,7 +409,8 @@ export enum Questions {
 	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
-	TOOLTIP_FAVORITE = 'tooltip.favorite',
+	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
+	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',

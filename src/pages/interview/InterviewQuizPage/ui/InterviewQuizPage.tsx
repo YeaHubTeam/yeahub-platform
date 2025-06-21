@@ -52,6 +52,7 @@ const InterviewQuizPage = () => {
 		activeQuestion,
 		totalCount,
 		answer,
+		isFavorite,
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
@@ -141,6 +142,7 @@ const InterviewQuizPage = () => {
 							imageSrc={imageSrc}
 							shortAnswer={shortAnswer}
 							answer={answer}
+							isFavorite={isFavorite}
 							changeAnswer={changeAnswer}
 							isAnswerVisible={isAnswerVisible}
 							setIsAnswerVisible={setIsAnswerVisible}

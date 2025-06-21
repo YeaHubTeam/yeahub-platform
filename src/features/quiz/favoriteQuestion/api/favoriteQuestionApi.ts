@@ -2,18 +2,17 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
-import {
-	FavoriteQuestionParams,
-	FavoriteQuestionResponse,
-} from '@/features/quiz/favoriteQuestion/model/favoriteQuestionTypes';
+import { favoriteQuestionApiUrls } from '../model/constants/favoriteQuestionConstants';
+import { FavoriteQuestionParams } from '../model/types/favoriteQuestionTypes';
 
 const favoriteQuestionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		favoriteQuestion: build.mutation<FavoriteQuestionResponse, FavoriteQuestionParams>({
+		addFavoriteQuestion: build.mutation<void, FavoriteQuestionParams>({
 			query: ({ profileId, questionId }) => ({
-				url: `/questions/favorites/${profileId}/${questionId}`,
+				url: route(favoriteQuestionApiUrls.addFavoriteQuestion, profileId, questionId),
 				method: 'POST',
 			}),
 			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],
@@ -27,9 +26,9 @@ const favoriteQuestionApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		resetFavoriteQuestion: build.mutation<FavoriteQuestionResponse, FavoriteQuestionParams>({
+		resetFavoriteQuestion: build.mutation<void, FavoriteQuestionParams>({
 			query: ({ profileId, questionId }) => ({
-				url: `/questions/favorites/${profileId}/${questionId}`,
+				url: route(favoriteQuestionApiUrls.resetFavoriteQuestion, profileId, questionId),
 				method: 'DELETE',
 			}),
 			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],
@@ -46,5 +45,5 @@ const favoriteQuestionApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useFavoriteQuestionMutation, useResetFavoriteQuestionMutation } =
+export const { useAddFavoriteQuestionMutation, useResetFavoriteQuestionMutation } =
 	favoriteQuestionApi;

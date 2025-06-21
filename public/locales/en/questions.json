@@ -93,7 +93,10 @@
   "tooltip": {
     "learn": "The issue has already been fully studied",
     "repeat": "The question has not yet progressed to memorization",
-		"favorite": "Add/Remove from Favorites"
+		"favorite": {
+			"add": "Add Favorite",
+			"delete": "Remove Favorite"
+		}
   },
   "community": {
     "join": "Become a member of the community"

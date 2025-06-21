@@ -8,6 +8,8 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
+import { FavoriteQuestionButton } from '@/features/quiz/favoriteQuestion';
+
 import { QuizQuestionAnswerType } from '../../model/types/quiz';
 
 import styles from './ResponseButtons.module.css';
@@ -15,12 +17,22 @@ import styles from './ResponseButtons.module.css';
 interface ResponseButtonsProps {
 	className?: string;
 	answer: string;
+	isFavorite?: boolean;
+	questionId?: number | string;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 }
 
-export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
+export const ResponseButtons = ({
+	className,
+	answer,
+	changeAnswer,
+	isFavorite,
+	questionId,
+}: ResponseButtonsProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();
+
+	console.log(questionId, isFavorite);
 
 	return (
 		<Flex gap="8" className={classNames(styles.wrapper, className)}>
@@ -42,6 +54,9 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 			>
 				{!isMobile && <span>{t(InterviewQuiz.ANSWER_KNOW)}</span>}
 			</Button>
+			{questionId && (
+				<FavoriteQuestionButton questionId={questionId} isFavorite={isFavorite} size={'small'} />
+			)}
 		</Flex>
 	);
 };

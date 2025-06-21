@@ -21,6 +21,7 @@ interface InterviewSliderProps {
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	isAnswerVisible: boolean;
 	setIsAnswerVisible: (value: boolean) => void;
+	isFavorite?: boolean;
 }
 
 export const InterviewSlider = ({
@@ -32,6 +33,7 @@ export const InterviewSlider = ({
 	changeAnswer,
 	isAnswerVisible,
 	setIsAnswerVisible,
+	isFavorite,
 }: InterviewSliderProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
@@ -66,6 +68,8 @@ export const InterviewSlider = ({
 				className={styles['response-buttons']}
 				answer={answer}
 				changeAnswer={changeAnswer}
+				questionId={id}
+				isFavorite={isFavorite}
 			/>
 			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>

@@ -46,26 +46,13 @@ const QuestionsPage = () => {
 			...getParams,
 			profileId,
 			specialization: specializationId,
+			areFavorites: status === 'favorite' ? true : undefined,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: status !== 'all',
+			skip: status ? !['all', 'favorite'].includes(status) : false,
 		},
 	);
-
-	const { data: favoriteQuestions, isLoading: isLoadingFavoriteQuestions } =
-		useGetQuestionsListQuery(
-			{
-				...getParams,
-				profileId,
-				specialization: specializationId,
-				areFavorites: true,
-				keywords: keywords ? [keywords] : undefined,
-			},
-			{
-				skip: status !== 'favorite',
-			},
-		);
 
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
 		useGetLearnedQuestionsQuery(
@@ -76,12 +63,11 @@ const QuestionsPage = () => {
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: status === 'all' || status === 'favorite',
+				skip: status ? ['all', 'favorite'].includes(status) : false,
 			},
 		);
 
-	const questions =
-		status === 'all' ? allQuestions : status === 'favorite' ? favoriteQuestions : learnedQuestions;
+	const questions = status === 'all' || status === 'favorite' ? allQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
 		handleFilterChange({ title: value });
@@ -125,12 +111,7 @@ const QuestionsPage = () => {
 		/>
 	);
 
-	if (
-		isLoadingAllQuestions ||
-		isLoadingLearnedQuestions ||
-		isLoadingCategories ||
-		isLoadingFavoriteQuestions
-	) {
+	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
 		return <QuestionsPageSkeleton />;
 	}
 
