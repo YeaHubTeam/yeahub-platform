@@ -1,45 +1,46 @@
 {
-  "name": "Никнейм",
-  "role": "Роль",
-  "email": "E-mail",
-  "roles": {
-    "guest": "Гость",
-    "candidate": "Базовый",
-    "candidate.premium": "Участник",
-    "candidate.free": "Кандидат",
-    "HR": "HR",
-    "admin": "Админ",
-    "member": "Пользователь"
-  },
-  "user.name": "Пользователь",
-  "username": "Никнейм",
-  "avatar": "Фото профиля",
-  "select.role": {
-    "title": "Выбрать роль пользователя",
-    "label": "Выберите теги по роли"
-  },
-  "confirm.email": {
-    "title": "Подтверждение e-mail",
-    "label": "Возможность подтвердить e-mail",
-    "confirm": "E-mail подтвержден",
-    "unconfirm": "E-mail не подтвержден"
-  },
-  "address": "Страна, город, улица",
-  "birth.date": "Дата рождения",
-  "registration.date": "Дата регистрации",
-  "select.shoose": "Выберите роль",
-  "filter": {
-    "role": "Роли пользователей",
-    "email": "Подтверждён ли Email"
-  },
-  "edit": {
-    "success": "Пользователь успешно обновлен",
-    "error": "Не удалось обновить пользователя"
-  },
-  "subscription": {
-    "free": "Кандидат",
-    "premium": "Участник сообщества"
-  },
+	"name": "Никнейм",
+	"role": "Роль",
+	"email": "E-mail",
+	"roles": {
+		"guest": "Гость",
+		"candidate": "Базовый",
+		"candidate.premium": "Участник",
+		"candidate.free": "Кандидат",
+		"HR": "HR",
+		"author": "Автор",
+		"admin": "Админ",
+		"member": "Пользователь"
+	},
+	"user.name": "Пользователь",
+	"username": "Никнейм",
+	"avatar": "Фото профиля",
+	"select.role": {
+		"title": "Выбрать роль пользователя",
+		"label": "Выберите теги по роли"
+	},
+	"confirm.email": {
+		"title": "Подтверждение e-mail",
+		"label": "Возможность подтвердить e-mail",
+		"confirm": "E-mail подтвержден",
+		"unconfirm": "E-mail не подтвержден"
+	},
+	"address": "Страна, город, улица",
+	"birth.date": "Дата рождения",
+	"registration.date": "Дата регистрации",
+	"select.shoose": "Выберите роль",
+	"filter": {
+		"role": "Роли пользователей",
+		"email": "Подтверждён ли Email"
+	},
+	"edit": {
+		"success": "Пользователь успешно обновлен",
+		"error": "Не удалось обновить пользователя"
+	},
+	"subscription": {
+		"free": "Кандидат",
+		"premium": "Участник сообщества"
+	},
 	"delete": {
 		"title": "Удаление аккаунта",
 		"description": {

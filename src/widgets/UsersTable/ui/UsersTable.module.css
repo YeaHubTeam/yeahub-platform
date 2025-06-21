@@ -38,6 +38,13 @@
   color: var(--color-red-800);
 }
 
+.author {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--color-red-100);
+  color: var(--color-red-800);
+}
+
 .admin {
   padding: 2px 8px;
   border-radius: 12px;

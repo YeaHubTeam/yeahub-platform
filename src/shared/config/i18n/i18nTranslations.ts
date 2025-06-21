@@ -464,6 +464,7 @@ export enum User {
 	CANDIDATE_FREE = 'roles.candidate.free',
 	CANDIDATE_PREMIUM = 'roles.candidate.premium',
 	HR = 'roles.HR',
+	AUTHOR = 'roles.author',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
 	USER_NAME = 'user.name',
