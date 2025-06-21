@@ -8,6 +8,7 @@ const getPaymentUrl = baseApi.injectEndpoints({
 		getPaymentUrl: build.query<string, string>({
 			query: (subscribeId) => ({
 				url: route(subscribeApiUrls.getPaymentUrl, subscribeId || ''),
+				params: { cost: 200 },
 				responseHandler: 'text',
 			}),
 		}),
