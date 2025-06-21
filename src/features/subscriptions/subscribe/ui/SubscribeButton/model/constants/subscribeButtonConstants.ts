@@ -1,3 +1,3 @@
 export const subscribeApiUrls = {
-	getOrderBySubscriptionId: 'subscriptions/:id/orders/new',
+	getPaymentUrl: 'subscriptions/:id/payment/init',
 };
