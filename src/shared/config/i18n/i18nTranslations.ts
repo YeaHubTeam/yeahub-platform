@@ -421,6 +421,7 @@ export enum InterviewHistory {
 	LINK = 'link',
 	EMPTY = 'empty',
 	UNVERIFIED = 'unverified',
+	NO_PREMIUM = 'no.premium',
 	PREV_MONTH = 'prev.month',
 	NEXT_MONTH = 'next.month',
 }

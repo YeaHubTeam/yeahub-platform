@@ -36,6 +36,7 @@ i18n
 	.use(LanguageDetector)
 	.use(initReactI18next)
 	.init({
+		defaultNS: [i18Namespace.translation, i18Namespace.user],
 		fallbackLng: 'ru',
 		debug: __IS_DEV__,
 		interpolation: {

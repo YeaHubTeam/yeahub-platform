@@ -91,7 +91,12 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 					{t(InterviewHistory.EMPTY)}
 				</Text>
 			)}
-			{!isEmptyData && isVerified && (
+			{!hasPremium && isVerified && (
+				<Text variant="body4" color="black-700" className={styles['no-history']}>
+					{t(InterviewHistory.NO_PREMIUM)}
+				</Text>
+			)}
+			{!isEmptyData && isVerified && hasPremium && (
 				<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 					{uniqueData.map((interview) => (
 						<PreviewPassedQuizzesItem key={interview.id} interview={interview} />
