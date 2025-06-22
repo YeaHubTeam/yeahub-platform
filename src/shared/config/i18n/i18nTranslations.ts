@@ -149,6 +149,7 @@ export enum Translation {
 	TOAST_USER_DELETE_FAILED = 'toast.user.delete.failed',
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
+	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -420,6 +421,7 @@ export enum InterviewHistory {
 	LINK = 'link',
 	EMPTY = 'empty',
 	UNVERIFIED = 'unverified',
+	NO_PREMIUM = 'no.premium',
 	PREV_MONTH = 'prev.month',
 	NEXT_MONTH = 'next.month',
 }
@@ -464,6 +466,7 @@ export enum User {
 	CANDIDATE_FREE = 'roles.candidate.free',
 	CANDIDATE_PREMIUM = 'roles.candidate.premium',
 	HR = 'roles.HR',
+	AUTHOR = 'roles.author',
 	ADMIN = 'roles.admin',
 	MEMBER = 'roles.member',
 	USER_NAME = 'user.name',

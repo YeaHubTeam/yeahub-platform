@@ -8,11 +8,11 @@ import SkeletonGenerator from '../model/helper/SkeletonGenerator';
 import styles from './MainLayout.module.css';
 
 export const MainLayoutSkeleton = () => {
-	const { isDesktop, isLaptop } = useScreenSize();
+	const { isDesktop, isLaptop, isDesktopS } = useScreenSize();
 
 	return (
 		<section className={styles.layout}>
-			{(isDesktop || isLaptop) && (
+			{(isDesktop || isLaptop || isDesktopS) && (
 				<div className={styles.sidebar}>
 					<SidebarSkeleton />
 				</div>

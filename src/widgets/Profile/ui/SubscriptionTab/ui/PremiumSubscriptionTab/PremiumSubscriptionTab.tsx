@@ -21,8 +21,8 @@ import styles from './PremiumSubscriptionTab.module.css';
 
 export const PremiumSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const userId = useAppSelector(getFullProfile)?.id;
-	const { data } = useGetUserSubscriptionQuery(userId ?? '');
+	const { id, subscriptions } = useAppSelector(getFullProfile);
+	const { data } = useGetUserSubscriptionQuery(id ?? '');
 
 	const endDate = data?.[0]?.endDate || '';
 	const createDate = data?.[0]?.createDate || '';
@@ -84,11 +84,13 @@ export const PremiumSubscriptionTab = () => {
 					</p> */}
 					<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 				</Flex>
-				<div className={styles['actions-button']}>
-					<Flex direction="row" gap="8">
-						<UnsubscribeButton />
-					</Flex>
-				</div>
+				{subscriptions.length > 0 ? (
+					<div className={styles['actions-button']}>
+						<Flex direction="row" gap="8">
+							<UnsubscribeButton />
+						</Flex>
+					</div>
+				) : null}
 			</div>
 			{/*<PayHistoryList payHistories={payHistories} />*/}
 		</>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useDebounce } from '@/shared/hooks';
+import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -26,11 +26,13 @@ export const UsersTablePage = () => {
 	const page = useSelector(getUsersPageNum);
 	const [search, setSearch] = useState('');
 	const { filter } = useUserFilter();
+	const { setQueryParams } = useQueryParams();
 
 	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
 
 	const onChangeSearch = useDebounce((value: string) => {
 		setSearch(value);
+		setQueryParams({ page: 1 });
 	}, 500);
 
 	return (

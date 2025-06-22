@@ -7,6 +7,7 @@
   "link": "Details",
   "empty": "Your interview history will appear here soon",
   "unverified": "Your interview history is prepared after email confirmation",
-  "prev.month": "Change month on previous",
+	"no.premium": "The interview history is only available to community members",
+	"prev.month": "Change month on previous",
   "next.month": "Change month on next"
 }
