@@ -36,4 +36,29 @@ export const getQuestionsStats = (questionsStat?: ProfileQuestionsStat) =>
 					route: `${ROUTES.interview.questions.page}?page=1&status=learned`,
 				},
 			]
-		: [];
+		: [
+				{
+					title: i18n.t(InterviewStatistics.QUESTION_STATS_ALL, {
+						ns: i18Namespace.interviewStatistics,
+					}),
+					value: '0',
+				},
+				{
+					title: i18n.t(InterviewStatistics.QUESTION_STATS_NEW, {
+						ns: i18Namespace.interviewStatistics,
+					}),
+					value: '0',
+				},
+				{
+					title: i18n.t(InterviewStatistics.QUESTION_STATS_IN_PROCESS, {
+						ns: i18Namespace.interviewStatistics,
+					}),
+					value: '0',
+				},
+				{
+					title: i18n.t(InterviewStatistics.QUESTION_STATS_LEARNED, {
+						ns: i18Namespace.interviewStatistics,
+					}),
+					value: '0',
+				},
+			];
