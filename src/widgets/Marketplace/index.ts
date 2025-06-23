@@ -1,1 +1,1 @@
-export * from './ui/MarketplaceList/MarketplaceList';
+export * from './ui/RecourcesList/ResourcesList';
