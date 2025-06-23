@@ -1,7 +1,6 @@
 .content {
   display: flex;
   padding: 20px;
-  overflow: hidden;
   border-radius: 24px;
 }
 
@@ -9,7 +8,6 @@
   display: flex;
   gap: 20px;
   width: 100%;
-  overflow: hidden;
 }
 
 .image-wrapper {
@@ -17,7 +15,6 @@
   width: 149px;
   height: 157px;
   border-radius: 12px;
-  background-color: inherit;
 }
 
 .image-wrapper > img {
