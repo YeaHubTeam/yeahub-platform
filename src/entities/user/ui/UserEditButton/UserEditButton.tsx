@@ -1,10 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
@@ -15,8 +11,6 @@ interface UserEditButtonProps {
 }
 
 export const UserEditButton = ({ tab }: UserEditButtonProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
-	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 
 	const handleNavigate = () => {
@@ -30,11 +24,8 @@ export const UserEditButton = ({ tab }: UserEditButtonProps) => {
 				fullWidth={true}
 				className={styles['card-edit']}
 				onClick={handleNavigate}
-				preffix={
-					isMobile || isTablet ? <Icon icon="pen" size={20} color="purple-700" /> : undefined
-				}
 			>
-				{!(isMobile || isTablet) ? t(Translation.EDIT) : ''}
+				<Icon icon="pen" size={20} color="purple-700" />
 			</Button>
 		</div>
 	);

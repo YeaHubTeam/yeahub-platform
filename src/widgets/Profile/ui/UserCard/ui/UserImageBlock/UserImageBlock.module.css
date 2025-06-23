@@ -1,84 +1,94 @@
 .card-image {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 170px;
-  height: 188px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 170px;
+	height: 188px;
 }
 
 .card-avatar {
-  position: relative;
-  flex-shrink: 0;
-  width: 170px;
-  height: 188px;
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: var(--color-purple-100);
+	position: relative;
+	flex-shrink: 0;
+	width: 170px;
+	height: 188px;
+	overflow: hidden;
+	border-radius: 20px;
+	background-color: var(--color-purple-100);
 }
 
-.card-avatar>img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.card-avatar > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .card-placeholder {
-  width: 100%;
-  height: 188px;
+	width: 100%;
+	height: 188px;
 }
 
 .card-schedule {
-  font-weight: var(--font-weight-400);
+	font-weight: var(--font-weight-400);
 }
 
 .button {
-  justify-content: flex-start;
-  padding: 6px 10px;
-  border-radius: 12px;
+	justify-content: flex-start;
+	padding: 6px 10px;
+	border-radius: 12px;
 
-  svg {
-    color: var(--palette-ui-red-700);
-  }
+	svg {
+		color: var(--palette-ui-red-700);
+	}
 }
 
 .button:focus {
-  border: 1px solid transparent;
+	border: 1px solid transparent;
 }
 
-.image-button{
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  border: none;
-  cursor: pointer;
+.image-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	border: none;
+	cursor: pointer;
 }
 
 .image-button:disabled {
-  cursor: default;
+	cursor: default;
 }
 
-.loader{
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.loader {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-@media (width <=480px) {
-  .card-image {
-    width: 100%;
-    height: auto;
-  }
+@media (width <=768px) {
+	.card-image {
+		width: 100%;
+		height: auto;
+	}
 
-  .card-avatar {
-    aspect-ratio: 296 / 263;
-    width: 100%;
-    height: auto;
-  }
+	.card-avatar {
+		aspect-ratio: 296 / 263;
+		width: 100%;
+		height: auto;
+	}
+	.image-button {
+		display: block;
+	}
+}
+
+@media (width <= 576px) {
+	.card-avatar {
+		width: 170px;
+		height: 188px;
+	}
 }
