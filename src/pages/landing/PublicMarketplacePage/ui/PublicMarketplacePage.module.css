@@ -15,12 +15,6 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .filters {
   position: sticky;
   top: 0;

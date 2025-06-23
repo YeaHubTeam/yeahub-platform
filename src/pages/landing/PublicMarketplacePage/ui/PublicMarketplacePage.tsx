@@ -66,10 +66,10 @@ const PublicMarketplacePage = () => {
 					<Text variant="body6" isMainTitle>
 						{t(Marketplace.HEADER_TITLE)}
 					</Text>
-					<div className={styles.actions}>
+					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
 						{suggestButton}
-					</div>
+					</Flex>
 				</Flex>
 				{/* список ресурсов: пока пустышка */}
 				<MarketplaceList />
