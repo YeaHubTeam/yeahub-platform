@@ -22,14 +22,6 @@
   object-position: center;
 }
 
-.hostname {
-  line-height: 120%;
-}
-
-.title {
-  line-height: 130%;
-}
-
 @media (width < 768px) {
   .content {
     padding: 16px;
