@@ -5,7 +5,6 @@ export interface Resource {
 	iconBase64: string;
 	description: string;
 	accessCategory: string;
-	url: string;
 	createdAt: string;
 	updatedAt: string;
 	isActive: boolean;
