@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
@@ -49,16 +50,13 @@ const PublicMarketplacePage = () => {
 	);
 
 	const suggestButton = (
-		<span
-			role="button"
-			tabIndex={0}
-			className={styles.suggest}
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
 			onClick={() => toast.success('Фича в разработке')}
-			onKeyDown={(e) => e.key === 'Enter' && toast.success('Фича в разработке')}
 		>
 			{t(Marketplace.PROPOSE_LABEL)}
-			<Icon icon="plus" color="purple-700" />
-		</span>
+		</Button>
 	);
 
 	return (
