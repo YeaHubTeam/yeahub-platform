@@ -1,16 +1,14 @@
 import { useState } from 'react';
 
-import { ROUTES } from '@/shared/config/router/routes';
 import { Flex } from '@/shared/ui/Flex';
 
+import { ChooseQuestionsCategories, ChooseSpecialization } from '@/entities/question';
 import {
 	FilterParams,
-	KeywordsListSection,
 	MarketplaceFilterStatus,
 	ResourcesFilterSection,
 	StatusFilterSection,
-} from '@/entities/marketplace';
-import { ChooseQuestionsCategories, ChooseSpecialization } from '@/entities/question';
+} from '@/entities/resource';
 
 import { SearchBlock } from '../SearchBlock/SearchBlock';
 
@@ -50,7 +48,7 @@ export const MarketplaceFiltersPanel = ({
 		}
 	};
 
-	const keywords = ['JavaScript', 'React', 'Node.js', 'CSS', 'HTML'];
+	// const keywords = ['JavaScript', 'React', 'Node.js', 'CSS', 'HTML'];
 
 	return (
 		<Flex direction="column" justify="start" gap="24">
@@ -65,7 +63,7 @@ export const MarketplaceFiltersPanel = ({
 				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
 			/>
 			<ResourcesFilterSection selectedResources={resource} onChooseResources={onChangeResources} />
-			<KeywordsListSection keywords={keywords} route={ROUTES.marketplace.page} />
+			{/* <KeywordsListSection keywords={keywords} route={ROUTES.marketplace.page} /> */}
 			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</Flex>
 	);
