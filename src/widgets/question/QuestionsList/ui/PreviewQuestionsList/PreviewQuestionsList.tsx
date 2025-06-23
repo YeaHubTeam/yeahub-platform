@@ -34,26 +34,25 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 
 	const isEmptyData = isSuccess && questions.length === 0;
 
-	if (isEmptyData) {
-		return (
-			<Text variant="body4" color="black-700" className={styles['no-questions']}>
-				{t(Questions.PREVIEW_EMPTY_SPECIALIZATION)}
-			</Text>
-		);
-	}
-
 	return (
 		<Card
 			className={className}
 			title={t(Questions.PREVIEW_TITLE)}
 			actionTitle={t(Questions.PREVIEW_LINK)}
+			actionDisabled={isEmptyData}
 			actionRoute={ROUTES.interview.questions.page}
 		>
-			<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
-				{questions.map((question) => (
-					<PreviewQuestionsItem key={question.id} question={question} />
-				))}
-			</Flex>
+			{isEmptyData ? (
+				<Text variant="body4" color="black-700" className={styles['no-questions']}>
+					{t(Questions.PREVIEW_EMPTY_SPECIALIZATION)}
+				</Text>
+			) : (
+				<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
+					{questions.map((question) => (
+						<PreviewQuestionsItem key={question.id} question={question} />
+					))}
+				</Flex>
+			)}
 		</Card>
 	);
 };
