@@ -21,13 +21,6 @@
   gap: 12px;
 }
 
-.title {
-  color: var(--text-color-bright);
-  line-height: 120%;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-s);
-}
-
 .filters {
   position: sticky;
   top: 0;

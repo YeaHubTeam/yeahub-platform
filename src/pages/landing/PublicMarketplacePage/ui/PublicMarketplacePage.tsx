@@ -63,7 +63,7 @@ const PublicMarketplacePage = () => {
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
-					<Text variant="head1" className={styles.title}>
+					<Text variant="body6" isMainTitle>
 						{t(Marketplace.HEADER_TITLE)}
 					</Text>
 					<div className={styles.actions}>
