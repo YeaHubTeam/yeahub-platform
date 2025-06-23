@@ -1,7 +1,13 @@
 export interface Resource {
 	id: string;
-	title: string;
+	name: string;
+	provider: string;
+	iconBase64: string;
 	description: string;
+	accessCategory: string;
 	url: string;
-	image?: string | null;
+	createdAt: string;
+	updatedAt: string;
+	isActive: boolean;
+	createdById: string;
 }
