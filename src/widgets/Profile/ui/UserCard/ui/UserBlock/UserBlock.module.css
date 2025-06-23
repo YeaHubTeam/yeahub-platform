@@ -1,43 +1,31 @@
 .card {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 16px;
+	height: 100%;
 }
 
 .user-data {
-  display: flex;
+	display: flex;
 	width: 100%;
-  gap: 16px;
+	gap: 16px;
 }
 
 @media (width <= 768px) {
-  .user-data {
-    flex-direction: row;
-    order: 2;
-    width: 100%;
-  }
+	.card {
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 8px;
+	}
 
-  .card {
-    flex-direction: column;
-    align-items: flex-end;
-    height: 100%;
-  }
+	.card > .card-edit-block {
+		order: 1;
+	}
 
-  .card > .card-edit-block {
-    order: 1;
-  }
-}
-
-@media (width <= 480px) {
-  .card {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .user-data {
-    flex-direction: column;
-    width: 100%;
-  }
+	.user-data {
+		flex-direction: column;
+		order: 2;
+		width: 100%;
+	}
 }
