@@ -55,7 +55,7 @@ const PublicMarketplacePage = () => {
 			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
 			onClick={() => toast.success('Фича в разработке')}
 		>
-			{t(Marketplace.PROPOSE_LABEL)}
+			{t(Marketplace.LINK_LABEL)}
 		</Button>
 	);
 

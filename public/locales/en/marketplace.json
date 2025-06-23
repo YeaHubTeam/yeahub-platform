@@ -1,8 +1,12 @@
 {
-  "header": {
-    "title": "Useful IT resources"
-  },
-  "propose": {
-    "label": "Suggest yours"
-  }
+	"header": {
+		"title": "Useful IT resources"
+	},
+	"add": {
+		"resource": {
+			"link": {
+				"label": "Suggest yours"
+			}
+		}
+	}
 }

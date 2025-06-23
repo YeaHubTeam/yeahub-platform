@@ -548,7 +548,7 @@ export enum Collections {
 
 export enum Marketplace {
 	HEADER_TITLE = 'header.title',
-	PROPOSE_LABEL = 'propose.label',
+	LINK_LABEL = 'add.resource.link.label',
 }
 
 export enum Companies {
