@@ -3,11 +3,11 @@ import { Flex } from '@/shared/ui/Flex';
 import { Resource, resourcesMock } from '@/entities/resource';
 import { ResourceCard } from '@/entities/resource';
 
-interface MarketplaceListProps {
+interface ResourcesListProps {
 	resources?: Resource[];
 }
 
-export const MarketplaceList = ({ resources = resourcesMock }: MarketplaceListProps) => {
+export const ResourcesList = ({ resources = resourcesMock }: ResourcesListProps) => {
 	return (
 		<Flex direction="column" gap="20">
 			{resources.map((resource) => (

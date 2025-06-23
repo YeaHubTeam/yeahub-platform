@@ -12,7 +12,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 import { toast } from '@/shared/ui/Toast';
 
-import { MarketplaceList } from '@/widgets/Marketplace';
+import { ResourcesList } from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
 
@@ -72,7 +72,7 @@ const PublicMarketplacePage = () => {
 					</Flex>
 				</Flex>
 				{/* список ресурсов: пока пустышка */}
-				<MarketplaceList />
+				<ResourcesList />
 
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
