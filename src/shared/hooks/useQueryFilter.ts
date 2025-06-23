@@ -18,6 +18,7 @@ interface FilterFromURL {
 	isFree?: string | null;
 	roles?: string | null;
 	isEmailVerified?: string | null;
+	resources?: string | null;
 }
 
 export interface FilterFromUser {
@@ -33,6 +34,7 @@ export interface FilterFromUser {
 	isFree?: boolean;
 	roles?: string | null;
 	isEmailVerified?: string | null;
+	resources?: number[];
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
@@ -75,6 +77,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			isFree: params.get('isFree'),
 			roles: params.get('roles'),
 			isEmailVerified: params.get('isEmailVerified'),
+			resources: params.get('resources'),
 		};
 	};
 
@@ -94,6 +97,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
 			roles: params.roles ? params.roles : undefined,
 			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
+			resources: params.resources ? params.resources.split(',').map(Number) : undefined,
 		};
 	};
 

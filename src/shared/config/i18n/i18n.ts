@@ -29,6 +29,7 @@ export const i18Namespace = {
 	companies: 'companies',
 	editor: 'editor',
 	guru: 'guru',
+	marketplace: 'marketplace',
 };
 
 i18n

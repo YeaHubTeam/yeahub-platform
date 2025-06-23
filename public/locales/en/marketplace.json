@@ -1,0 +1,17 @@
+{
+	"search.placeholder": "Enter a query…",
+	"show.all": "Show all",
+	"hide": "Hide",
+	"keywords.title": "Keywords",
+	"resources": {
+		"title": "Resource types",
+		"repository": "Repository",
+		"video": "Video",
+		"article": "Article",
+		"course": "Course"
+	},
+	"status": {
+		"title": "Status",
+		"all": "All"
+	}
+}

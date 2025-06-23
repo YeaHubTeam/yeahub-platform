@@ -1,0 +1,17 @@
+{
+	"search.placeholder": "Введите запрос…",
+	"show.all": "Посмотреть все",
+	"hide": "Скрыть",
+	"keywords.title": "Ключевые слова",
+	"resources": {
+		"title": "Типы ресурсов",
+		"repository": "Репозиторий",
+		"video": "Видео",
+		"article": "Статья",
+		"course": "Курс"
+	},
+	"status": {
+		"title": "Статус",
+		"all": "Все"
+	}
+}
