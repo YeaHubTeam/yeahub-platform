@@ -78,9 +78,8 @@
 
 	.card-avatar {
 		aspect-ratio: 296 / 263;
-		width: 100%;
-		height: auto;
 	}
+
 	.image-button {
 		display: block;
 	}
@@ -88,7 +87,7 @@
 
 @media (width <= 576px) {
 	.card-avatar {
-		width: 170px;
-		height: 188px;
+		width: 100%;
+		height: auto;
 	}
 }
