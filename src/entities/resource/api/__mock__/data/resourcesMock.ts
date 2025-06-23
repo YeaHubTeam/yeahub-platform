@@ -1,4 +1,4 @@
-import { Resource } from '@/entities/marketplace/model/types/resource';
+import { Resource } from '@/entities/resource/model/types/resource';
 
 export const resourcesMock: Resource[] = [
 	{

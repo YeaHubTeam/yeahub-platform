@@ -1,7 +1,7 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { Resource, resourcesMock } from '@/entities/marketplace';
-import { ResourceCard } from '@/entities/marketplace';
+import { Resource, resourcesMock } from '@/entities/resource';
+import { ResourceCard } from '@/entities/resource';
 
 interface MarketplaceListProps {
 	resources?: Resource[];
