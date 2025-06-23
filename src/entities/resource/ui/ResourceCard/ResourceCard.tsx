@@ -3,7 +3,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import { Resource } from '@/entities/resource';
+import { Resource } from '../../model/types/resource';
 
 import styles from './ResourceCard.module.css';
 
