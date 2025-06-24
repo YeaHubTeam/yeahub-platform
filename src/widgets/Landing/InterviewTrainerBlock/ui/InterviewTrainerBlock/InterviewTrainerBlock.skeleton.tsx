@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
