@@ -8,6 +8,9 @@ import { useLazyGetPaymentUrlQuery } from '../api/getPaymentUrl';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
 import styles from './SubscribeButton.module.css';
+import { useProfileQuery } from '@/entities/auth';
+import { useNavigate } from 'react-router-dom';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 
 interface SubscribeButtonProps {
 	className?: string;
@@ -16,11 +19,19 @@ interface SubscribeButtonProps {
 export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 	const { trigger } = useFormContext();
 	const [getPaymentUrl] = useLazyGetPaymentUrlQuery();
+	const { data: profile } = useProfileQuery();
+	const navigate = useNavigate();
+
+	const isEmailVerified = profile?.isEmailVerified;
 
 	const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		const isValid = await trigger();
 		if (!isValid) return;
+		if (!isEmailVerified) {
+			navigate(EMAIL_VERIFY_SETTINGS_TAB);
+			return;
+		}
 		try {
 			const { data: paymentUrl } = await getPaymentUrl('3');
 			if (paymentUrl) {
