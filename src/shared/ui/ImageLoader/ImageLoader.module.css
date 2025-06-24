@@ -1,94 +1,93 @@
 .container {
-  width: 100%;
-  max-width: 660px;
+	width: 100%;
 }
 
 .profile-picture-block {
-  position: relative;
-  width: 170px;
-  min-height: 188px;
-}
-
-.img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  object-fit: cover;
-}
-
-.delete-avatar-btn {
-  position: absolute;
-  right: 50%;
-  bottom: -28px;
-  width: max-content;
-  max-width: 170px;
-  border: none;
-  background-color: transparent;
-  color: var(--color-red-600);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-s);
-  transform: translateX(50%);
-  cursor: pointer;
+	position: relative;
+	width: 170px;
+	min-height: 188px;
 }
 
 @media (width <= 768px) {
-  .profile-picture-wrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+	.profile-picture-block {
+	}
 }
 
-@media (width <= 480px) {
-  .profile-picture-block {
-    width: 100%;
-  }
+.img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	object-fit: cover;
+}
 
-  .delete-avatar-btn {
-    align-self: center;
-  }
+.delete-avatar-btn {
+	position: absolute;
+	right: 50%;
+	bottom: -28px;
+	width: max-content;
+	max-width: 170px;
+	border: none;
+	background-color: transparent;
+	color: var(--color-red-600);
+	font-weight: var(--font-weight-400);
+	font-size: var(--font-size-s);
+	transform: translateX(50%);
+	cursor: pointer;
+}
+
+@media (width <= 768px) {
+	.profile-picture-wrapper {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.profile-picture-block {
+		width: 100%;
+	}
+	.delete-avatar-btn {
+		align-self: center;
+	}
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 40px;
-  color: var(--text-color-light);
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	padding: 40px;
+	color: var(--text-color-light);
 }
 
 .cropper-info {
-  margin-bottom: 25px;
+	margin-bottom: 25px;
 }
 
 .cropper {
-  max-width: 500px;
-  max-height: 500px;
-  border-radius: 24px;
+	max-width: 500px;
+	max-height: 500px;
+	border-radius: 24px;
 }
 
-
 .buttons-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  margin-top: 30px;
-  padding: 30px 40px;
-  border-radius: inherit;
-  background: var(--background-app);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	margin-top: 30px;
+	padding: 30px 40px;
+	border-radius: inherit;
+	background: var(--background-app);
 }
 
 .avatar-preview {
-  aspect-ratio: 1;
-  border-radius: 100%;
+	aspect-ratio: 1;
+	border-radius: 100%;
 }
 
 .large-preview {
-  width: 76px;
-  height: 76px;
+	width: 76px;
+	height: 76px;
 }
 
 .small-preview {
-  width: 26px;
+	width: 26px;
 }

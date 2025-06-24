@@ -10,6 +10,7 @@ import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { formatAddress } from '@/shared/helpers/formatAddress';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { FullProfile } from '@/entities/auth';
 import { getIsEdit } from '@/entities/profile';
@@ -58,17 +59,17 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					justify="between"
 					maxWidth
 				>
-					<h2 className={styles['card-name']}>{`${username}`}</h2>
+					<Text variant="body6">{username}</Text>
 					<UserRolesList userRoles={userRoles} />
 				</Flex>
 				{!!birthday && (
-					<p className={styles['card-age']}>
-						{`${differenceInYears(new Date(), new Date(birthday))} лет`}
-					</p>
+					<Text variant="body3-accent">{`${differenceInYears(new Date(), new Date(birthday))} лет`}</Text>
 				)}
 			</div>
 			{!!profileSpecialization?.title && (
-				<p className={styles['card-specialization']}>{profileSpecialization?.title}</p>
+				<Text variant="body3-accent" color="black-800">
+					{profileSpecialization?.title}
+				</Text>
 			)}
 			<ul className={styles['card-list']}>
 				<li className={styles['card-address']}>{formatAddress(country, city)}</li>
@@ -78,15 +79,17 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					(isEmailVerified ? (
 						<Flex align="center" gap="4">
 							<DoubleCheck className={styles['svg-check']} />
-							<span className={styles['card-verify-span']}>{email}</span>
+							<Text variant="body2" color="black-700">
+								{email}
+							</Text>
 						</Flex>
 					) : (
 						<Link to={EMAIL_VERIFY_SETTINGS_TAB}>
 							<Flex align="center" gap="4">
 								<Time className={styles['svg-time']} />
-								<span className={styles['card-verify-link']}>
+								<Text variant="body2" color="black-600">
 									{t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK)}
-								</span>
+								</Text>
 							</Flex>
 						</Link>
 					))}

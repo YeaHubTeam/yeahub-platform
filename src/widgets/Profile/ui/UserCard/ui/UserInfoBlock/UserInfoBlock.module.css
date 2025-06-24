@@ -1,130 +1,94 @@
 .card {
-  display: flex;
-  gap: 16px;
-  height: 100%;
+	display: flex;
+	gap: 16px;
+	height: 100%;
 }
 
 .card-info {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 4px;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .card-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-}
-
-.card-name {
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-s);
-}
-
-.card-age {
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m);
-  white-space: nowrap;
-}
-
-.card-specialization {
-  color: var(--color-black-800);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m)
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-items: flex-start;
+	gap: 8px;
+	width: 100%;
 }
 
 .card-address {
-  color: var(--color-black-500);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
+	color: var(--color-black-500);
+	font-weight: var(--font-weight-400);
+	font-size: var(--font-size-p-s);
 }
 
 .card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
 .card-list > li {
-  list-style-type:  none;
+	list-style-type: none;
 }
 
 .card-contacts {
-  margin-top: auto;
-
+	margin-top: auto;
 }
 
 .card-contacts > h4 {
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
-.card-verify-span {
-  color: var(--text-color-light); 
-  line-height: 130%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
-.card-verify-link {
-  color: var(--text-color-lighter);
-  line-height: 120%;
-  font-weight: var(--font-weight-500);
+	font-weight: var(--font-weight-400);
+	font-size: var(--font-size-p-s);
 }
 
 .svg-time {
-  width: 16px;
-  height: 16px;
-  fill:var(--text-color-lighter)
+	width: 16px;
+	height: 16px;
+	fill: var(--text-color-lighter);
 }
 
 .svg-check {
-  width: 16px;
-  height: 16px;
-  fill: var(--svg-color-green);
+	width: 16px;
+	height: 16px;
+	fill: var(--svg-color-green);
 }
-
-
 
 @media (width <= 768px) {
-  .card-edit-icon {
-    display: block;
-  }
+	.card-edit-icon {
+		display: block;
+	}
 
-  .card-edit {
-    display: none;
-  }
-}
+	.card-edit {
+		display: none;
+	}
+	.card-name {
+		font-size: var(--font-size-h-xs);
+	}
 
-@media (width <= 480px) {
-  .card-name {
-    font-size: var(--font-size-h-xs);
-  }
+	.card-age {
+		font-size: var(--font-size-p-s);
+	}
 
-  .card-age {
-    font-size: var(--font-size-p-s);
-  }
+	.card-specialization {
+		font-size: var(--font-size-p-s);
+	}
 
-  .card-specialization {
-    font-size: var(--font-size-p-s);
-  }
-  
-  .card-header {
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 4px;
-  }
+	.card-header {
+		flex-direction: row;
+		align-items: center;
+		gap: 4px;
+		margin-bottom: 4px;
+	}
 
-  .card-address {
-    font-size: var(--font-size-p-xs);
-  }
+	.card-address {
+		font-size: var(--font-size-p-xs);
+	}
 
-  .card-contacts > h4 {
-    display: inline;
-  }
+	.card-contacts > h4 {
+		display: inline;
+	}
 }

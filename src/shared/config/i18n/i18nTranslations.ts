@@ -762,3 +762,17 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
+
+export enum Marketplace {
+	SEARCH_PLACEHOLDER = 'search.placeholder',
+	SHOW_ALL = 'show.all',
+	HIDE = 'hide',
+	KEYWORDS_TITLE = 'keywords.title',
+	RESOURCES_TITLE = 'resources.title',
+	RESOURCES_REPOSITORY = 'resources.repository',
+	RESOURCES_VIDEO = 'resources.video',
+	RESOURCES_ARTICLE = 'resources.article',
+	RESOURCES_COURSE = 'resources.course',
+	STATUS_ALL = 'status.all',
+	STATUS_TITLE = 'status.title',
+}

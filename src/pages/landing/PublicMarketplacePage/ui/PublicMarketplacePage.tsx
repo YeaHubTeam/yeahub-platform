@@ -14,16 +14,37 @@ import { toast } from '@/shared/ui/Toast';
 
 import { ResourcesList } from '@/widgets/Marketplace';
 
+import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
+
 import styles from './PublicMarketplacePage.module.css';
 
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+	const {
+		onChangeSearchParams,
+		onChangeSkills,
+		onChangeSpecialization,
+		onChangeResources,
+		onChangeStatus,
+		filter,
+	} = useMarketplaceFilters();
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	// заглушка для фильтров
-	const renderFilters = () => <div>Фильтры (заглушка)</div>;
+	const renderFilters = () => (
+		<MarketplaceFiltersPanel
+			filter={{
+				skills: filter.skills,
+				status: filter.status,
+			}}
+			onChangeSearch={onChangeSearchParams}
+			onChangeSkills={onChangeSkills}
+			onChangeSpecialization={onChangeSpecialization}
+			onChangeStatus={onChangeStatus}
+			onChangeResources={onChangeResources}
+		/>
+	);
 
 	// бургер-кнопка + дровер (нужны лишь на мобилках/планшетах)
 	const filterButton = (
@@ -77,7 +98,6 @@ const PublicMarketplacePage = () => {
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
-			{/* правый сайдбар с фильтрами — только десктоп */}
 			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</Flex>
 	);

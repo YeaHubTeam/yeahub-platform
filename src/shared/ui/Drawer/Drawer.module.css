@@ -88,6 +88,9 @@
   margin: 16px 16px 0 auto;
   width: 20px;
   height: 20px;
-  fill: var(--icon-color-red);
   cursor: pointer;
+}
+
+.close-icon path {
+  fill: var(--icon-color-red);
 }
