@@ -1,6 +1,6 @@
 import { useQueryFilter } from '@/shared/hooks';
 
-import { MarketplaceFilterStatus } from '@/entities/marketplace';
+import { MarketplaceFilterStatus } from '@/entities/resource';
 
 export const useMarketplaceFilters = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
