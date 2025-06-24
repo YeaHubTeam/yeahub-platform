@@ -6,7 +6,7 @@ import styles from './AdditionalBlock.module.css';
 
 export const AdditionalBlockSkeleton = () => {
 	return (
-		<Flex direction="column" className={styles['additional-block-skeleton']}>
+		<Flex direction="column" className={styles['additional-block']}>
 			<InterviewCardSkeleton />
 			<InterviewCardSkeleton />
 		</Flex>

@@ -17,10 +17,7 @@
 .interview-trainer-wrapper {
   gap: 20px;
   margin-bottom: 120px;
-}
-
-.interview-trainer-wrapper-skeleton{
-  width: 100%;
+	width: 100%;
 }
 
 .title-block {

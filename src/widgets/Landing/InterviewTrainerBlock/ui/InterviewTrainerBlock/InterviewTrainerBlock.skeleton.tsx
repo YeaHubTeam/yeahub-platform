@@ -17,17 +17,13 @@ export const InterviewTrainerBlockSkeleton = () => {
 				<TextSkeleton
 					width={isMobile ? 450 : 473}
 					variant={isMobile ? 'body5-accent' : 'head3'}
-					className={classNames(styles.title, styles['title-skeleton'])}
+					className={styles.title}
 				/>
-
 				<TextSkeleton width={isMobile ? 450 : 473} variant="body3" className={styles.subtitle} />
 			</div>
 			<Flex
 				direction={isTablet || isMobile ? 'column' : 'row'}
-				className={classNames(
-					styles['interview-trainer-wrapper'],
-					styles['interview-trainer-wrapper-skeleton'],
-				)}
+				className={styles['interview-trainer-wrapper']}
 				align="center"
 			>
 				<MainBlockSkeleton />
