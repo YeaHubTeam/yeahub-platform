@@ -1,9 +1,18 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
+import { Text } from '@/shared/ui/Text';
+import { toast } from '@/shared/ui/Toast';
+
+import { ResourcesList } from '@/widgets/Marketplace';
 
 import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
 
@@ -20,6 +29,8 @@ const PublicMarketplacePage = () => {
 		onChangeStatus,
 		filter,
 	} = useMarketplaceFilters();
+
+	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
@@ -59,14 +70,32 @@ const PublicMarketplacePage = () => {
 		</div>
 	);
 
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
+			onClick={() => toast.success('Фича в разработке')}
+		>
+			{t(Marketplace.LINK_LABEL)}
+		</Button>
+	);
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
+				<Flex className={styles.header}>
+					<Text variant="body6" isMainTitle>
+						{t(Marketplace.HEADER_TITLE)}
+					</Text>
+					<Flex gap="12" align="center">
+						{(isMobile || isTablet) && filterButton}
+						{suggestButton}
+					</Flex>
+				</Flex>
 				{/* список ресурсов: пока пустышка */}
-				<div style={{ minHeight: 200 }}>Список ресурсов (заглушка)</div>
+				<ResourcesList />
 
 				{/* бургер виден только при ширине ≤ 1023 px */}
-				{(isMobile || isTablet) && filterButton}
 			</Card>
 
 			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}

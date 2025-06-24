@@ -545,6 +545,12 @@ export enum Collections {
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
 }
+
+export enum Marketplace {
+	HEADER_TITLE = 'header.title',
+	LINK_LABEL = 'add.resource.link.label',
+}
+
 export enum Companies {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
