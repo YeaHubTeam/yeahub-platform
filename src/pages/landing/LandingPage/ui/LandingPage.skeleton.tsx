@@ -1,4 +1,5 @@
 import { BannerBlockSkeleton } from '@/widgets/Landing/BannerBlock';
+import { InterviewTrainerBlockSkeleton } from '@/widgets/Landing/InterviewTrainerBlock';
 import { SpecializationBlockSkeleton } from '@/widgets/Landing/SpecialityBlock';
 
 export const LandingPageSkeleton = () => {
@@ -6,6 +7,7 @@ export const LandingPageSkeleton = () => {
 		<>
 			<BannerBlockSkeleton />
 			<SpecializationBlockSkeleton />
+			<InterviewTrainerBlockSkeleton />
 		</>
 	);
 };
