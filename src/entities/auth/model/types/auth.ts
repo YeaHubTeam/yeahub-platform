@@ -36,6 +36,7 @@ export interface Profile {
 	socialNetwork: SocialNetwork[];
 	image_src: string;
 	profileSkills: Skill[];
+	isActive: boolean;
 }
 
 interface Permission {

@@ -76,5 +76,19 @@
     "label": "Enter a new password",
     "repeat.label": "Repeat the password",
     "placeholder": "Password"
-  }
+  },
+	"manage.profiles": {
+		"title": "Your Profiles",
+		"tooltip": {
+			"not.member": "Additional profiles are available to community members",
+			"max.count": "You have reached the limit of profiles you can create"
+		},
+		"modal": {
+			"title": "Delete Profile",
+			"description": "All your data, progress and activity will be permanently deleted. This action cannot be undone.",
+			"label": "Enter your username to confirm",
+			"placeholder": "Enter your username",
+			"button": "Delete Profile"
+		}
+	}
 }

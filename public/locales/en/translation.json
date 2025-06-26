@@ -222,6 +222,17 @@
 			"update": {
 				"success": "Profile has been successfully changed",
 				"failed": "Profile could not be changed"
+			},
+			"create": {
+				"success": "Profile created successfully",
+				"failed": "Failed to add new profile"
+			},
+			"delete": {
+				"success": "Profile deleted",
+				"failed": "Failed to delete profile"
+			},
+			"set": {
+				"failed": "Failed to switch profile"
 			}
 		},
 		"user": {
