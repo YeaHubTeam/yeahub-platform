@@ -279,19 +279,16 @@
   font-size: var(--font-size-p-s);
 }
 
-/* .editor-content pre, */
-
-/* .editor-content code { */
-
-/*  tab-size: 4 */
-
-/* } */
+.editor-content pre,
+.editor-content code {
+  tab-size: 2
+} 
 
 .editor-content .code-block,
 .editor-content pre,
 .editor-content pre code,
 .editor-content .code-block code {
-  /* tab-size: 4; */
+  tab-size: 2; 
   max-height: 300px;
   overflow: auto;
   color: var(--color-white-900);
@@ -305,7 +302,7 @@
 .editor-content code[class*="code-block"],
 .editor-content pre[class*="TextEditor-module"],
 .editor-content code[class*="TextEditor-module"] {
-  /* tab-size: 4; */
+  tab-size: 2; 
   white-space: pre;
   word-break: normal;
 }

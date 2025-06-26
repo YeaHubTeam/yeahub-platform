@@ -123,8 +123,7 @@
   padding: 12px;
   background: transparent;
   color: var(--color-white-900);
-
-  /* tab-size: 4; */
+  tab-size: 2; 
   scrollbar-width: thin;
   scrollbar-color: #b0b0b0 transparent;
 }
@@ -133,16 +132,14 @@
 .content code[class*="code-block"],
 .content pre[class*="TextEditor-module"],
 .content code[class*="TextEditor-module"] {
-  /* tab-size: 4; */
+  tab-size: 2; 
   white-space: pre;
   word-break: normal;
 }
 
-/* .content pre { */
-
-/*  tab-size: 4; */
-
-/* } */
+.content pre {
+  tab-size: 2;
+} 
 
  
 .content pre code.hljs {
