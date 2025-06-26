@@ -30,12 +30,11 @@ export class SentryErrorBoundary extends React.Component<
 		if (this.props.store) {
 			setAppStateContext(this.props.store.getState());
 		}
-		const eventId = Sentry.captureException(error, {
+		Sentry.captureException(error, {
 			extra: {
 				componentStack: errorInfo.componentStack,
 			},
 		});
-		Sentry.showReportDialog({ eventId });
 	}
 
 	render() {
