@@ -12,9 +12,11 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 import { toast } from '@/shared/ui/Toast';
 
-import { ResourcesList } from '@/widgets/Marketplace';
-
-import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
+import {
+	ResourcesList,
+	MarketplaceFiltersPanel,
+	useMarketplaceFilters,
+} from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
 
@@ -73,7 +75,7 @@ const PublicMarketplacePage = () => {
 	const suggestButton = (
 		<Button
 			variant="link-purple"
-			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
+			suffix={<Icon icon="plus" />}
 			onClick={() => toast.success('Фича в разработке')}
 		>
 			{t(Marketplace.LINK_LABEL)}
