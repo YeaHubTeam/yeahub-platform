@@ -4,6 +4,7 @@
 @import url('./variables/button-colors.css');
 @import url('./variables/themes.css');
 @import url('./variables/main-variables.css');
+@import url('./variables/font-families.css');
 
 body {
 	min-height: 100vh;

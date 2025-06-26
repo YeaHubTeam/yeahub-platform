@@ -5,6 +5,7 @@ import Underline from '@tiptap/extension-underline';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import cn from 'classnames';
+import { TextSelection } from 'prosemirror-state';
 import { useCallback, useEffect, useRef } from 'react';
 
 import 'highlight.js/styles/atom-one-dark.css';
@@ -110,21 +111,35 @@ export const TextEditor = ({
 		if (!editorContentRef.current) return;
 		const handleTab = (e: KeyboardEvent) => {
 			if (!editor) return;
-			const isCode = editor.isActive('codeBlock');
-			if (isCode && e.key === 'Tab') {
-				e.preventDefault();
-				if (e.shiftKey) {
-					editor.commands.command(({ tr, state }) => {
-						const { selection } = state;
-						const { from } = selection;
-						tr.insertText('', from - 1, from);
-						return true;
-					});
-				} else {
-					editor.commands.insertContent('\t');
-				}
-			}
+			if (!editor.isActive('codeBlock') || e.key !== 'Tab') return;
+
+			e.preventDefault();
+
+			editor.commands.command(({ tr, state }) => {
+				const { from, to } = state.selection;
+				const selectedText = state.doc.textBetween(from, to, '\n');
+				const lines = selectedText.split('\n');
+
+				const updatedLines = lines.map((line) => {
+					if (e.shiftKey) {
+						if (line.startsWith('\t')) return line.slice(1);
+						if (line.startsWith('    ')) return line.slice(4);
+						return line;
+					} else {
+						return '\t' + line;
+					}
+				});
+
+				const newText = updatedLines.join('\n');
+				tr.insertText(newText, from, to);
+
+				const delta = newText.length - selectedText.length;
+				tr.setSelection(TextSelection.create(tr.doc, from, to + delta));
+
+				return true;
+			});
 		};
+
 		const node = editorContentRef.current;
 		node.addEventListener('keydown', handleTab);
 		return () => node.removeEventListener('keydown', handleTab);
