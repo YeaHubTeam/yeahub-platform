@@ -403,6 +403,7 @@ export enum Questions {
 	REPEAT = 'repeat',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
+	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',

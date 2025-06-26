@@ -46,10 +46,11 @@ export const ResetQuestionStudyProgressButton = ({
 	};
 
 	const iconSize = isPopover ? 20 : 24;
+	const tooltipTitle = isEmailVerified ? Questions.TOOLTIP_LEARN : Questions.TOOLTIP_MEMBERS_ONLY;
 
 	return (
 		<Tooltip
-			title={t(Questions.TOOLTIP_REPEAT)}
+			title={t(tooltipTitle)}
 			placement={placementTooltip}
 			color="violet"
 			offsetTooltip={offsetTooltip}

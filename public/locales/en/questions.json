@@ -90,7 +90,8 @@
   "repeat": "Repeat",
   "tooltip": {
     "learn": "The issue has already been fully studied",
-    "repeat": "The question has not yet progressed to memorization"
+    "repeat": "The question has not yet progressed to memorization",
+		"members.only": "Available to community members"
   },
   "community": {
     "join": "Become a member of the community"
