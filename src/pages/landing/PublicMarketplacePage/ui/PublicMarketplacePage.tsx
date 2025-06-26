@@ -12,11 +12,18 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 import { toast } from '@/shared/ui/Toast';
 
-import { ResourcesList } from '@/widgets/Marketplace';
+import { useGetResourcesListQuery } from '@/entities/resource';
 
-import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
+import {
+	ResourcesList,
+	MarketplaceFiltersPanel,
+	useMarketplaceFilters,
+	ResourcesPagination,
+} from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
+
+const RESOURCES_PER_PAGE = 6;
 
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
@@ -28,9 +35,30 @@ const PublicMarketplacePage = () => {
 		onChangeResources,
 		onChangeStatus,
 		filter,
+		onChangePage,
 	} = useMarketplaceFilters();
 
+	const {
+		data: resourcesResponse,
+		isFetching,
+		error,
+	} = useGetResourcesListQuery({
+		page: filter.page ?? 1,
+		limit: RESOURCES_PER_PAGE,
+		name: filter.title,
+	});
+
+	const resources = resourcesResponse?.data ?? [];
+
 	const { t } = useTranslation(i18Namespace.marketplace);
+
+	if (isFetching && !resourcesResponse) {
+		return <div>Loading…</div>;
+	}
+
+	if (error) {
+		return <div>Не удалось загрузить ресурсы</div>;
+	}
 
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
@@ -73,7 +101,7 @@ const PublicMarketplacePage = () => {
 	const suggestButton = (
 		<Button
 			variant="link-purple"
-			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
+			suffix={<Icon icon="plus" />}
 			onClick={() => toast.success('Фича в разработке')}
 		>
 			{t(Marketplace.LINK_LABEL)}
@@ -92,9 +120,13 @@ const PublicMarketplacePage = () => {
 						{suggestButton}
 					</Flex>
 				</Flex>
-				{/* список ресурсов: пока пустышка */}
-				<ResourcesList />
+				<ResourcesList resources={resources} />
 
+				<ResourcesPagination
+					resourcesResponse={resourcesResponse}
+					currentPage={filter.page ?? 1}
+					onChangePage={onChangePage}
+				/>
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
