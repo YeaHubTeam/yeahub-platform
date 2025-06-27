@@ -4,6 +4,9 @@
   border-radius: 0 20px 20px 0;
   background-color: var(--color-purple-700);
 }
+.slider-block-loader{
+	background-color: var(--color-white-500);
+}
 
 .image-slider-container {
   box-shadow: 0 4px 20px rgb(0 0 0 / 10%);

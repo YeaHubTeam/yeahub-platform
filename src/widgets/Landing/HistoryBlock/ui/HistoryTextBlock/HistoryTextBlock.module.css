@@ -8,6 +8,7 @@
   position: relative;
   max-width: 448px;
   text-align: center;
+	width: 100%;
 }
 
 .title {
@@ -90,4 +91,9 @@
   .title::after {
     display: none
   }
+}
+
+.skeleton .title::before,
+.skeleton .title::after {
+  display: none!important;
 }
