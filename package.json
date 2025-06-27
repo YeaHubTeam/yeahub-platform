@@ -171,6 +171,7 @@
 		"react-slick": "^0.30.3",
 		"slick-carousel": "^1.8.1",
 		"storybook-react-i18next": "^3.0.1",
+		"tiptap-markdown": "^0.8.10",
 		"undici": "6.19.8",
 		"yeahub-ui-kit": "^1.0.22",
 		"yup": "^1.4.0",
