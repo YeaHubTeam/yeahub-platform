@@ -63,7 +63,7 @@ const QuestionsPage = () => {
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: status ? ['all', 'favorite'].includes(status) : false,
+				skip: status ? ['all', 'favorite'].includes(status) : true,
 			},
 		);
 
