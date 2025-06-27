@@ -102,3 +102,7 @@
   }
 }
 
+.skeleton .title::before,
+.skeleton .title::after {
+  display: none!important;
+}
