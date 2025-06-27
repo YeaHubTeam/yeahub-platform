@@ -2,7 +2,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { FavoriteQuestionButton } from '@/features/quiz/favoriteQuestion';
+import { FavoriteQuestionButton } from '@/features/question/favoriteQuestion';
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 

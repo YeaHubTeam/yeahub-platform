@@ -1,6 +1,6 @@
 import { ButtonSkeleton } from '@/shared/ui/Button';
 
-import { FavoriteQuestionProps } from '@/features/quiz/favoriteQuestion/ui/FavoriteQuestionButton';
+import { FavoriteQuestionProps } from './FavoriteQuestionButton';
 
 export const FavoriteQuestionButtonSkeleton = ({
 	variant = 'tertiary',

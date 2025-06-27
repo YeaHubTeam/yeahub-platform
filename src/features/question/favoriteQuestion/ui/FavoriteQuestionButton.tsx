@@ -69,10 +69,10 @@ export const FavoriteQuestionButton = ({
 			<Button
 				className={classNames({ [styles.button]: isPopover }, { [styles.red]: isFavorite })}
 				preffix={
-					!isFavorite ? (
-						<Icon icon="favorite" color="black-600" size={iconSize} />
-					) : (
+					isFavorite ? (
 						<Icon icon="favoriteRed" color="red-800" size={iconSize} />
+					) : (
+						<Icon icon="favorite" color="black-600" size={iconSize} />
 					)
 				}
 				variant={variant}

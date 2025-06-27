@@ -14,7 +14,7 @@ import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { Question, QuestionGradeList } from '@/entities/question';
 
-import { FavoriteQuestionButton } from '@/features/quiz/favoriteQuestion';
+import { FavoriteQuestionButton } from '@/features/question/favoriteQuestion';
 import { LearnQuestionButton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButton } from '@/features/quiz/resetQuestionStudyProgress';
 

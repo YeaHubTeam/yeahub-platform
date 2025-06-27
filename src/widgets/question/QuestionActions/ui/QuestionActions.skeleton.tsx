@@ -2,7 +2,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { FavoriteQuestionButtonSkeleton } from '@/features/quiz/favoriteQuestion';
+import { FavoriteQuestionButtonSkeleton } from '@/features/question/favoriteQuestion';
 import { LearnQuestionButtonSkeleton } from '@/features/quiz/learnQuestion';
 import { ResetQuestionStudyProgressButtonSkeleton } from '@/features/quiz/resetQuestionStudyProgress';
 
