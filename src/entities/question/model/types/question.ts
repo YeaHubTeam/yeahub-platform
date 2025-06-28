@@ -26,11 +26,15 @@ export interface Question {
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;
+	isFavorite?: boolean;
 	isLearned?: boolean;
 	profileId?: string;
 }
 
-export type PublicQuestion = Omit<Question, 'isLearned' | 'profileId' | 'checksCount'>;
+export type PublicQuestion = Omit<
+	Question,
+	'isLearned' | 'profileId' | 'checksCount' | 'isFavorite'
+>;
 
 export type CreateOrEditQuestionFormValues = Pick<
 	Question,
@@ -68,6 +72,7 @@ export interface GetQuestionsListParamsRequest {
 	orderBy?: string;
 	random?: boolean;
 	profileId?: string;
+	areFavorites?: boolean;
 }
 
 export type GetQuestionsListResponse = Response<Question[]>;
@@ -82,6 +87,7 @@ export interface GetLearnedQuestionsParamsRequest
 	extends Omit<GetQuestionsListParamsRequest, 'order' | 'orderBy' | 'random'> {
 	profileId: string;
 	isLearned?: boolean;
+	areFavorites?: boolean;
 }
 export type GetLearnedQuestionsResponse = Response<Question[]>;
 
