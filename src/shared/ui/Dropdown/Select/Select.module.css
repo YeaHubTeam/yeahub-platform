@@ -49,6 +49,10 @@
   line-height: 120%;
 }
 
+.with-value {
+  color: var(--color-black-900);
+}
+
 .wrapper-s {
   width: 328px; 
 }

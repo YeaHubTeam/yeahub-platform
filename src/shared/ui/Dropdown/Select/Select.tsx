@@ -14,6 +14,7 @@ interface SelectProps {
 	isOpen?: boolean;
 	onClick: () => void;
 	width?: number | string;
+	value?: string;
 }
 
 export const Select = ({
@@ -26,6 +27,7 @@ export const Select = ({
 	prefix,
 	suffix,
 	width,
+	value,
 }: SelectProps) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
@@ -49,7 +51,9 @@ export const Select = ({
 				</span>
 			)}
 			<button
-				className={classNames(styles.button, styles['dropdown'], className)}
+				className={classNames(styles.button, styles['dropdown'], className, {
+					[styles['with-value']]: value,
+				})}
 				aria-expanded={isOpen}
 				onClick={(e) => {
 					e.preventDefault();
@@ -57,7 +61,7 @@ export const Select = ({
 				}}
 				disabled={disabled}
 			>
-				{label}
+				{value || label}
 			</button>
 			{suffix && <span className={styles['select-suffix']}>{suffix}</span>}
 		</div>
