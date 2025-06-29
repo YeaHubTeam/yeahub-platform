@@ -96,7 +96,7 @@ export const SpecializationSelect = ({
 						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 					}
 					disabled={disabled}
-					value={specializationsDictionary[selectedSpecializations[0] || 0].title}
+					value={specializationsDictionary[selectedSpecializations[0] || 0]?.title ?? ''}
 					onSelect={(val) => handleChange(String(val))}
 				>
 					{options.map((option) => (

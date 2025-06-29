@@ -6,6 +6,12 @@
 @import url('./variables/main-variables.css');
 @import url('./variables/font-families.css');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   background-color: var(--background-app);

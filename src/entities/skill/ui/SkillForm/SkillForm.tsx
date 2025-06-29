@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'yeahub-ui-kit';
-
-//import { Input, Text } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions, Skills } from '@/shared/config/i18n/i18nTranslations';
@@ -11,6 +8,7 @@ import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
+import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
@@ -55,7 +53,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 						<Text variant="body2">{t(Skills.TITLE_LABEL)}</Text>
 					</Flex>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} hasError={hasError} />}
+						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</Flex>
 				<Flex gap="120">
