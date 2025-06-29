@@ -41,7 +41,7 @@
   border-radius: 12px;
 
   svg {
-    color: var(--palette-ui-red-700);
+    color: var(--color-red-700);
   }
 }
 
