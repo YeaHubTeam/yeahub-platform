@@ -12,7 +12,7 @@ import { Select } from '../Select/Select';
 import styles from './Dropdown.module.css';
 
 interface DropdownProps
-	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect'> {
+	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect' | 'value'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	size?: DropdownSize;
@@ -20,6 +20,7 @@ interface DropdownProps
 	className?: string;
 	onSelect?: (value: string | number) => void;
 	multiple?: boolean;
+	value?: string;
 }
 
 export const Dropdown = ({
@@ -33,6 +34,7 @@ export const Dropdown = ({
 	onSelect,
 	width,
 	multiple = false,
+	value = '',
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -55,6 +57,7 @@ export const Dropdown = ({
 				onClick={onSelectClick}
 				isOpen={isOpen}
 				label={label}
+				value={value}
 			/>
 			{isOpen && (
 				<div
