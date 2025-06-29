@@ -404,6 +404,7 @@ export enum Questions {
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
+	TOOLTIP_NOT_CONFIRMED = 'tooltip.not.confirmed',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
