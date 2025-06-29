@@ -31,6 +31,7 @@ export const Dropdown = ({
 	className,
 	children,
 	onSelect,
+	width,
 	multiple = false,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +43,9 @@ export const Dropdown = ({
 	};
 
 	return (
-		<div className={classNames(styles.dropdown, className)} ref={dropdownRef}>
+		<div className={classNames(styles.dropdown, className)} style={{ width }} ref={dropdownRef}>
 			<Select
+				width={width}
 				size={size}
 				prefix={prefix || <Lens className={styles.suffix} />}
 				suffix={

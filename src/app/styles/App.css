@@ -7,86 +7,86 @@
 @import url('./variables/font-families.css');
 
 body {
-	min-height: 100vh;
-	background-color: var(--background-app);
-	line-height: 140%;
-	font-weight: var(--font-weight-500);
-	font-size: var(--font-size-p-m);
-	font-family: var(--font-family);
-	user-select: none;
+  min-height: 100vh;
+  background-color: var(--background-app);
+  line-height: 140%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  font-family: var(--font-family);
+  user-select: none;
 }
 
 li {
-	list-style: none;
+  list-style: none;
 }
 
 input,
 textarea {
-	user-select: text;
+  user-select: text;
 }
 
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 2px;
-	background-color: var(--border-color);
-	transition: background-color 0.3s ease-in-out;
+  border-radius: 2px;
+  background-color: var(--border-color);
+  transition: background-color 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--color-black-300);
+  background: var(--color-black-300);
 }
 
 ::-webkit-scrollbar-thumb:active {
-	background: var(--color-purple-400);
+  background: var(--color-purple-400);
 }
 
 button,
 a {
-	-webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 div[data-floating-ui-portal] > div > div[role='tooltip'] {
-	overflow-y: inherit;
+  overflow-y: inherit;
 }
 
 .container {
-	flex: 1 1 auto;
-	margin: 0 auto var(--container-m-b-desktop);
-	width: 100%;
-	max-width: var(--container-width);
+  flex: 1 1 auto;
+  margin: 0 auto var(--container-m-b-desktop);
+  width: 100%;
+  max-width: var(--container-width);
 }
 
 @media screen and (width <= 1439px) {
-	.container {
-		padding: 0 30px;
-	}
+  .container {
+    padding: 0 30px;
+  }
 }
 
 @media screen and (width <= 1023px) {
-	.container {
-		margin-bottom: var(--container-m-b-tablet);
-	}
+  .container {
+    margin-bottom: var(--container-m-b-tablet);
+  }
 }
 
 @media screen and (width <= 992px) {
-	.container {
-		max-width: var(--container-width-md);
-	}
+  .container {
+    max-width: var(--container-width-md);
+  }
 }
 
 @media screen and (width <= 767px) {
-	.container {
-		margin-bottom: var(--container-m-b-mobile);
-		padding: 0 10px;
-		max-width: var(--container-width-sm);
-	}
+  .container {
+    margin-bottom: var(--container-m-b-mobile);
+    padding: 0 10px;
+    max-width: var(--container-width-sm);
+  }
 }
 
 @media screen and (width <= 576px) {
-	.container {
-		max-width: var(--container-width-mobile);
-	}
+  .container {
+    max-width: var(--container-width-mobile);
+  }
 }

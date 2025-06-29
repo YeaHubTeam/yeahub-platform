@@ -1,12 +1,13 @@
-import { Select, Text } from 'yeahub-ui-kit';
+import { Text } from 'yeahub-ui-kit';
 
 import { Chip } from '@/shared/ui/Chip';
+import { Dropdown, Option } from '@/shared/ui/Dropdown';
 
 import styles from './SelectWithChips.module.css';
 
 type SelectWithChipsProps<T, U> = Omit<
-	React.ComponentProps<typeof Select>,
-	'options' | 'type' | 'value' | 'onChange'
+	React.ComponentProps<typeof Dropdown>,
+	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	title?: string;
 	placeholder?: string;
@@ -34,14 +35,16 @@ export const SelectWithChips = <
 }: SelectWithChipsProps<T, U>) => {
 	return (
 		<div className={styles.wrapper}>
-			<Select
-				onChange={onChange}
-				options={options}
-				type="default"
-				placeholder={placeholder}
-				className={styles.select}
+			<Dropdown
+				width={320}
+				label={placeholder}
 				disabled={disabled}
-			/>
+				onSelect={(val) => onChange(String(val))}
+			>
+				{options.map((option) => (
+					<Option value={option.value} label={option.label} key={option.label} />
+				))}
+			</Dropdown>
 			{!!selectedItems?.length && (
 				<>
 					<Text title={title} />

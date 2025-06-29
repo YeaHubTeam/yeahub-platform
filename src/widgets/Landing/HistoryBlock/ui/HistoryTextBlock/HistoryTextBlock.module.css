@@ -6,9 +6,9 @@
 
 .content {
   position: relative;
+  width: 100%;
   max-width: 448px;
   text-align: center;
-	width: 100%;
 }
 
 .title {
