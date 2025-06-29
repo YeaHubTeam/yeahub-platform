@@ -13,6 +13,7 @@ interface SelectProps {
 	label: string;
 	isOpen?: boolean;
 	onClick: () => void;
+	width?: number | string;
 }
 
 export const Select = ({
@@ -24,6 +25,7 @@ export const Select = ({
 	onClick,
 	prefix,
 	suffix,
+	width,
 }: SelectProps) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
@@ -36,7 +38,7 @@ export const Select = ({
 	);
 
 	return (
-		<div className={wrapperClasses}>
+		<div className={wrapperClasses} style={{ width }}>
 			{prefix && (
 				<span
 					className={classNames({
@@ -47,9 +49,7 @@ export const Select = ({
 				</span>
 			)}
 			<button
-				className={classNames(styles.button, styles['dropdown'], className, {
-					[styles.open]: isOpen,
-				})}
+				className={classNames(styles.button, styles['dropdown'], className)}
 				aria-expanded={isOpen}
 				onClick={(e) => {
 					e.preventDefault();
