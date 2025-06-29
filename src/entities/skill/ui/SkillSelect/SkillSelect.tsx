@@ -1,15 +1,18 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
+import { Dropdown } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
 
-type SkillSelectProps = Omit<React.ComponentProps<typeof Select>, 'options' | 'type' | 'value'> & {
+type SkillSelectProps = Omit<
+	React.ComponentProps<typeof Dropdown>,
+	'options' | 'type' | 'value' | 'children'
+> & {
 	value: number[];
 	onChange: (value: number[]) => void;
 	selectedSPecializations?: number[];

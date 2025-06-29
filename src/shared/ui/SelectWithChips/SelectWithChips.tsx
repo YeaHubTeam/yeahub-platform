@@ -1,7 +1,6 @@
-import { Text } from 'yeahub-ui-kit';
-
 import { Chip } from '@/shared/ui/Chip';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './SelectWithChips.module.css';
 
@@ -47,7 +46,7 @@ export const SelectWithChips = <
 			</Dropdown>
 			{!!selectedItems?.length && (
 				<>
-					<Text title={title} />
+					<Text variant="body3-accent">{title}</Text>
 					<div className={styles.selection}>
 						{selectedItems.map((id) => (
 							<Chip

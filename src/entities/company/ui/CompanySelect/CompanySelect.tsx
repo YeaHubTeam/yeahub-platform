@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Companies } from '@/shared/config/i18n/i18nTranslations';
+import { Dropdown } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetCompaniesListQuery } from '../../api/companyApi';
@@ -11,8 +11,8 @@ import { useGetCompaniesListQuery } from '../../api/companyApi';
 import styles from './CompanySelect.module.css';
 
 type CompanySelectProps = Omit<
-	React.ComponentProps<typeof Select>,
-	'options' | 'type' | 'value' | 'onChange'
+	React.ComponentProps<typeof Dropdown>,
+	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: string;
 	onChange: (value: string) => void;
