@@ -39,12 +39,18 @@
 .button {
   display: flex;
   flex-grow: 1;
-  box-sizing: border-box; 
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px; 
   outline: none;
   border: none; 
   background: transparent;
-  color: var(--text-color-bright); 
+  color: var(--text-color-the-lightest); 
   line-height: 120%;
+}
+
+.with-value {
+  color: var(--color-black-900);
 }
 
 .wrapper-s {

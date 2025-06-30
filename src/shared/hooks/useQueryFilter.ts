@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
-type QuestionFilterStatus = 'all' | 'learned' | 'not-learned';
+type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
 
 interface FilterFromURL {
 	skills: string | null;

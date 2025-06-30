@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Chip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useCurrentProject, useScreenSize } from '@/shared/hooks';
+import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -58,7 +58,7 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 					</Text>
 					<Chip
 						theme="outlined"
-						preffix={<Icon icon={questionAnswers[answer].icon} size={24} />}
+						prefix={<Icon icon={questionAnswers[answer].icon} size={24} />}
 						label={t(questionAnswers[answer].label)}
 					/>
 				</Flex>

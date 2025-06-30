@@ -1,9 +1,9 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
@@ -103,16 +103,16 @@ export const QuestionForm = () => {
 				</Flex>
 				<FormControl name="status" control={control}>
 					{({ onChange, value }) => (
-						<div className={styles.select}>
-							<Select
-								type="default"
-								onChange={onChange}
-								value={value}
-								placeholder={t(Questions.STATUS_LABEL)}
-								options={questionStatusesItems}
-								className={styles['status-select']}
-							/>
-						</div>
+						<Dropdown
+							width={320}
+							label={t(Questions.STATUS_LABEL)}
+							onSelect={(val) => onChange(String(val))}
+							value={questionStatusesItems.find((status) => status.value === value)?.label || ''}
+						>
+							{questionStatusesItems.map((option) => (
+								<Option value={option.value} label={option.label} key={option.label} />
+							))}
+						</Dropdown>
 					)}
 				</FormControl>
 			</Flex>

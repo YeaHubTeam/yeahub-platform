@@ -6,7 +6,7 @@ export interface FilterParams {
 	status?: MarketplaceFilterStatus;
 }
 
-export type MarketplaceFilterStatus = 'all' | 'learned' | 'not-learned';
+export type MarketplaceFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
 
 export interface MarketplaceFilterStatusItem {
 	id: MarketplaceFilterStatus;

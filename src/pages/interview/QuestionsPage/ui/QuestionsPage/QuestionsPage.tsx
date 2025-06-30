@@ -46,12 +46,14 @@ const QuestionsPage = () => {
 			...getParams,
 			profileId,
 			specialization: specializationId,
+			areFavorites: status === 'favorite' ? true : undefined,
 			keywords: keywords ? [keywords] : undefined,
 		},
 		{
-			skip: status !== 'all',
+			skip: status ? !['all', 'favorite'].includes(status) : false,
 		},
 	);
+
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
 		useGetLearnedQuestionsQuery(
 			{
@@ -61,11 +63,11 @@ const QuestionsPage = () => {
 				keywords: keywords ? [keywords] : undefined,
 			},
 			{
-				skip: status === 'all',
+				skip: status ? ['all', 'favorite'].includes(status) : true,
 			},
 		);
 
-	const questions = status === 'all' ? allQuestions : learnedQuestions;
+	const questions = status === 'all' || status === 'favorite' ? allQuestions : learnedQuestions;
 
 	const onChangeSearchParams = (value: string) => {
 		handleFilterChange({ title: value });

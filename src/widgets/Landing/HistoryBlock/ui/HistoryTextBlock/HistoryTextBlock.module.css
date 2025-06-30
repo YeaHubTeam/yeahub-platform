@@ -6,6 +6,7 @@
 
 .content {
   position: relative;
+  width: 100%;
   max-width: 448px;
   text-align: center;
 }
@@ -90,4 +91,9 @@
   .title::after {
     display: none
   }
+}
+
+.skeleton .title::before,
+.skeleton .title::after {
+  display: none!important;
 }

@@ -20,6 +20,7 @@ export const StatusFilterSection = ({
 		{ id: 'not-learned', title: t(Questions.STATUS_UNLEARNED) },
 		{ id: 'learned', title: t(Questions.STATUS_LEARNED) },
 		{ id: 'all', title: t(Questions.STATUS_ALL) },
+		{ id: 'favorite', title: t(Questions.STATUS_FAVORITE) },
 	];
 
 	const preparedData = progressStatus.map((item) => ({

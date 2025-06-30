@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import { IconButton } from 'yeahub-ui-kit';
 
 import { useQueryFilter } from '@/shared/hooks';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
 
 import styles from './FiltersDrawer.module.css';
 
@@ -41,7 +41,7 @@ export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
 				aria-label="go to filter"
 				icon={<Icon icon="filter" size={24} />}
 				size="large"
-				theme="tertiary"
+				variant="tertiary"
 				onClick={toggleFilter}
 				isActive={isActiveFilter}
 				className={styles['filter-button']}

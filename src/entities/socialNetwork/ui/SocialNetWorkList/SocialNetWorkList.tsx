@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { IconButton } from 'yeahub-ui-kit';
 
 import { useScreenSize } from '@/shared/hooks';
 import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
 
 import { SocialNetwork } from '../../model/types/socialNetwork';
 
@@ -25,7 +25,7 @@ export const SocialNetWorkList = ({ socialNetwork }: SocialNetWorkListProps) => 
 						form="round"
 						icon={<Icon icon={link.code} size={isMobile ? 20 : 24} />}
 						size="small"
-						theme="primary"
+						variant="primary"
 					/>
 				</Link>
 			))}

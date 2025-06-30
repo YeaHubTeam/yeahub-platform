@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Icon, Tooltip } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetActiveQuizQuery, useLazyCreateNewQuizQuery } from '@/entities/quiz';
 

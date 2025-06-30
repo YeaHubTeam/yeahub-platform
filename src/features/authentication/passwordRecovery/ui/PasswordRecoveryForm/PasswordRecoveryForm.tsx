@@ -1,10 +1,10 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { Button } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { Button } from '@/shared/ui/Button';
 import { PasswordInput } from '@/shared/ui/PasswordInput';
 
 import { useResetPasswordMutation } from '../../api/passwordRecoveryApi';
@@ -55,7 +55,7 @@ export const PasswordRecoveryForm = () => {
 				/>
 			</div>
 			<Button
-				theme="primary"
+				variant="primary"
 				className={styles['submit-button']}
 				onClick={handleSubmit(onClickResetPassword)}
 			>

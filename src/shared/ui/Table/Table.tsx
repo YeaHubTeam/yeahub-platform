@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Checkbox } from 'yeahub-ui-kit';
 
 import { SelectedEntities, SelectedEntity } from '@/shared/types/types';
+import { Checkbox } from '@/shared/ui/Checkbox';
 
 import styles from './Table.module.css';
 

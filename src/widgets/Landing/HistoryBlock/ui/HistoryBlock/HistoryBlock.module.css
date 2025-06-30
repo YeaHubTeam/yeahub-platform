@@ -22,4 +22,8 @@
     margin-top: 40px;
     background-color: var(--color-purple-700);
   }
+
+  .history-block-load{
+    background-color: var(--color-white-500);
+  }
 }

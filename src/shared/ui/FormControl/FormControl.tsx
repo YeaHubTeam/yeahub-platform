@@ -3,6 +3,7 @@ import { useController, Control, ControllerRenderProps, FieldValues, Path } from
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
@@ -49,7 +50,12 @@ export const FormControl = <T extends FieldValues>({
 	if (label) {
 		return (
 			<label htmlFor={name} className={className} {...otherProps}>
-				{content}
+				<Flex direction="column" gap="8">
+					<Text variant="body2" color="black-700">
+						{label}
+					</Text>
+					{content}
+				</Flex>
 			</label>
 		);
 	}

@@ -15,6 +15,7 @@ export interface Quiz {
 	fullCount: number;
 	successCount: number;
 	skills: string[];
+	isFavorite: boolean;
 	response: QuizResponse;
 	questions: Question[];
 }
@@ -31,6 +32,7 @@ export interface Answers {
 	answer: QuizQuestionAnswerType;
 	imageSrc?: string;
 	shortAnswer: string;
+	isFavorite: boolean;
 }
 
 export interface ActiveQuizState {
