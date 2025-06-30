@@ -17,11 +17,11 @@ export const getProfiles = (state: State) => {
 };
 
 export const getUserId = (state: State) => {
-	return state.profile.fullProfile?.id;
+	return state.profile.fullProfile?.id || '';
 };
 
 export const getProfilesLength = createSelector(getProfiles, (profiles) => {
-	return profiles?.length;
+	return profiles?.length || 0;
 });
 
 export const getActiveProfile = createSelector(getProfiles, (profiles) => {

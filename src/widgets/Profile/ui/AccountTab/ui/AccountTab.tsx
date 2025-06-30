@@ -7,7 +7,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { DeleteAccountButton } from '@/features/profile/deleteAccount';
-import { ManageProfilesPanel } from '@/features/profile/manageProfiles';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { ManageProfilesPanel } from '@/widgets/manageProfiles';
 
 import styles from './AccountTab.module.css';
 

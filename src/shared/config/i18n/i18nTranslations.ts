@@ -210,6 +210,7 @@ export enum Profile {
 	CHANGE_PASSWORD_REPEAT_LABEL = 'change.password.repeat.label',
 	CHANGE_PASSWORD_PLACEHOLDER = 'change.password.placeholder',
 	MANAGE_PROFILES_TITLE = 'manage.profiles.title',
+	MANAGE_PROFILES_OPEN = 'manage.profiles.open',
 	MANAGE_PROFILES_TOOLTIP_NOT_MEMBER = 'manage.profiles.tooltip.not.member',
 	MANAGE_PROFILES_TOOLTIP_MAX_COUNT = 'manage.profiles.tooltip.max.count',
 	MANAGE_PROFILES_MODAL_TITLE = 'manage.profiles.modal.title',
