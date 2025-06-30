@@ -5,6 +5,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import { getChannelsForSpecializations } from '@/entities/media';
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 
 import {
@@ -58,6 +59,7 @@ export const PublicCollectionPage = () => {
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
 	const guru = getGuruWithMatchingSpecialization(collection.specializations);
+	const media = getChannelsForSpecializations(collection.specializations || []);
 	const showAuthor = guru ? false : true;
 
 	return (
@@ -84,6 +86,7 @@ export const PublicCollectionPage = () => {
 							questionsCount={questionsCount}
 							createdBy={createdBy}
 							keywords={keywords}
+							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>

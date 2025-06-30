@@ -15,6 +15,7 @@ import {
 	CollectionCompanyInfo,
 	CollectionQuestionsCount,
 } from '@/entities/collection';
+import { Media, MediaLinksBanner } from '@/entities/media';
 import { QuestionAuthor } from '@/entities/question';
 import { SpecializationsList } from '@/entities/specialization';
 
@@ -27,6 +28,7 @@ interface AdditionalInfoProps
 	> {
 	showAuthor?: boolean;
 	className?: string;
+	media: Media[];
 }
 
 export const AdditionalInfo = ({
@@ -38,6 +40,7 @@ export const AdditionalInfo = ({
 	keywords,
 	showAuthor = true,
 	className,
+	media,
 }: AdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isLargeScreen, isSmallScreen } = useScreenSize();
@@ -61,6 +64,7 @@ export const AdditionalInfo = ({
 					<CollectionAccessInfo isFree={isFree} />
 					<CollectionQuestionsCount questionsCount={questionsCount} />
 					{isSmallScreen && showAuthor && createdBy && <QuestionAuthor createdBy={createdBy} />}
+					{media?.length !== 0 && <MediaLinksBanner mediaLinks={media} />}
 				</Flex>
 			</Card>
 			{isLargeScreen && showAuthor && createdBy && (

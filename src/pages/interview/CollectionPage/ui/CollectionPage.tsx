@@ -7,6 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import { getChannelsForSpecializations } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
@@ -65,6 +66,7 @@ export const CollectionPage = () => {
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
 	const guru = getGuruWithMatchingSpecialization(collection.specializations);
+	const media = getChannelsForSpecializations(collection.specializations || []);
 	const showAuthor = guru ? false : true;
 
 	const renderHeaderAndActions = () => {
@@ -111,6 +113,7 @@ export const CollectionPage = () => {
 							questionsCount={questionsCount}
 							createdBy={createdBy}
 							keywords={keywords}
+							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>

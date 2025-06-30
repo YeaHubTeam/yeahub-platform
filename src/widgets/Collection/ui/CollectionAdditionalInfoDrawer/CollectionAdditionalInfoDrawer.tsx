@@ -10,6 +10,7 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { Collection } from '@/entities/collection';
+import { getChannelsForSpecializations } from '@/entities/media';
 
 import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
 
@@ -26,6 +27,7 @@ export const CollectionAdditionalInfoDrawer = ({
 	const { isOpen, onToggle, onClose } = useModal();
 	const project = useCurrentProject();
 	const { createdBy, questionsCount, isFree, company, specializations, keywords } = collection;
+	const media = getChannelsForSpecializations(collection.specializations || []);
 	const { t } = useTranslation(i18Namespace.collection);
 	return (
 		<div className={styles['popover-additional']}>
@@ -56,6 +58,7 @@ export const CollectionAdditionalInfoDrawer = ({
 						company={company}
 						specializations={specializations}
 						keywords={keywords}
+						media={media}
 					/>
 				</Card>
 			</Drawer>

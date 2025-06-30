@@ -770,7 +770,10 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
-
+export enum MediaLink {
+	MEDIA_LINK_START = 'labelStart',
+	MEDIA_LINK_END = 'labelEnd',
+}
 export enum Marketplace {
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
