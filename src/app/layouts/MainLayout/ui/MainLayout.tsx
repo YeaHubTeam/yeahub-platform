@@ -30,10 +30,13 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	const { data: profile, isLoading } = useProfileQuery();
 	const isAdmin = profile?.userRoles.some((role) => role.name === 'admin');
+	const isAuthor = profile?.userRoles.some((role) => role.name === 'author');
 
-	const filteredMenuItems = !isAdmin
-		? sidebarItems.filter((_, index) => index !== 0)
-		: sidebarItems;
+	const filteredMenuItems = isAdmin
+		? sidebarItems
+		: isAuthor
+			? sidebarItems.filter((item) => !Object.prototype.hasOwnProperty.call(item, 'noAccessAuthor'))
+			: sidebarItems.filter((_, index) => index !== 0);
 
 	const onToggleOpenSidebarDrawer = () => {
 		setIsOpenSidebarDrawer((prev) => !prev);
@@ -47,7 +50,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	if (isLoading) return <MainLayoutSkeleton />;
 
-	if (onlyAdmin && !isAdmin) {
+	if (onlyAdmin && !isAdmin && !isAuthor) {
 		return <Navigate to={ROUTES.appRoute} />;
 	}
 

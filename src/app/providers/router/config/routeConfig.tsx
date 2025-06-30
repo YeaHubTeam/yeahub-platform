@@ -159,6 +159,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
+		noAccessAuthor: true,
 	},
 	{
 		type: 'single',

@@ -8,6 +8,7 @@ export interface SingleMenuItem {
 	icon: FC<SVGProps<SVGSVGElement>>;
 	notifications?: number;
 	isAdmin?: boolean;
+	noAccessAuthor?: boolean;
 }
 
 export interface CategoryMenuItem {
