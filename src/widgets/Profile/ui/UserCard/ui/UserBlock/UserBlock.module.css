@@ -8,36 +8,24 @@
 
 .user-data {
   display: flex;
-	width: 100%;
   gap: 16px;
+  width: 100%;
 }
 
 @media (width <= 768px) {
-  .user-data {
-    flex-direction: row;
-    order: 2;
-    width: 100%;
-  }
-
   .card {
     flex-direction: column;
     align-items: flex-end;
-    height: 100%;
+    gap: 8px;
   }
 
   .card > .card-edit-block {
     order: 1;
   }
-}
-
-@media (width <= 480px) {
-  .card {
-    flex-direction: column;
-    gap: 8px;
-  }
 
   .user-data {
     flex-direction: column;
+    order: 2;
     width: 100%;
   }
 }

@@ -5,6 +5,7 @@
 .button {
   justify-content: flex-start;
   margin-top: 8px;
+  font-size: var(--font-size-h-xxs);
   
   span {
     margin-left: 0;

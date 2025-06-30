@@ -20,23 +20,6 @@
   width: 100%;
 }
 
-.card-name {
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-s);
-}
-
-.card-age {
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m);
-  white-space: nowrap;
-}
-
-.card-specialization {
-  color: var(--color-black-800);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-p-m)
-}
-
 .card-address {
   color: var(--color-black-500);
   font-weight: var(--font-weight-400);
@@ -50,12 +33,11 @@
 }
 
 .card-list > li {
-  list-style-type:  none;
+  list-style-type: none;
 }
 
 .card-contacts {
   margin-top: auto;
-
 }
 
 .card-contacts > h4 {
@@ -63,23 +45,10 @@
   font-size: var(--font-size-p-s);
 }
 
-.card-verify-span {
-  color: var(--text-color-light); 
-  line-height: 130%;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
-}
-
-.card-verify-link {
-  color: var(--text-color-lighter);
-  line-height: 120%;
-  font-weight: var(--font-weight-500);
-}
-
 .svg-time {
   width: 16px;
   height: 16px;
-  fill:var(--text-color-lighter)
+  fill: var(--text-color-lighter);
 }
 
 .svg-check {
@@ -87,8 +56,6 @@
   height: 16px;
   fill: var(--svg-color-green);
 }
-
-
 
 @media (width <= 768px) {
   .card-edit-icon {
@@ -98,9 +65,7 @@
   .card-edit {
     display: none;
   }
-}
 
-@media (width <= 480px) {
   .card-name {
     font-size: var(--font-size-h-xs);
   }
@@ -112,7 +77,7 @@
   .card-specialization {
     font-size: var(--font-size-p-s);
   }
-  
+
   .card-header {
     flex-direction: row;
     align-items: center;

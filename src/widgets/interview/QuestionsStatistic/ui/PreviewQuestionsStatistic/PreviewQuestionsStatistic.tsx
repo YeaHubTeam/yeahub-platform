@@ -41,9 +41,7 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
 			: t(InterviewStatistics.LINK);
 
-	const statsActionRoute = !isEmailVerified
-		? EMAIL_VERIFY_SETTINGS_TAB
-		: ROUTES.interview.statistic.page;
+	const statsActionRoute = !isEmailVerified ? EMAIL_VERIFY_SETTINGS_TAB : ROUTES.settings.page;
 
 	return (
 		<AdditionalStatInfoGauge
@@ -52,7 +50,7 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 			title={t(InterviewStatistics.QUESTION_STATS_TITLE_SHORT)}
 			actionTitle={statsActionTitleKey}
 			actionRoute={statsActionRoute}
-			actionDisabled={isEmailVerified && newUser}
+			actionDisabled={isEmailVerified && newUser && hasPremium}
 			statsInfo={questionStats}
 			total={profileStats?.questionsStat?.uniqueQuestionsCount ?? 0}
 			learned={profileStats?.questionsStat?.learnedQuestionsCount ?? 0}

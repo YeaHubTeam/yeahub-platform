@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  max-width: 660px;
 }
 
 .profile-picture-block {
@@ -27,7 +26,7 @@
   background-color: transparent;
   color: var(--color-red-600);
   font-weight: var(--font-weight-400);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-p-s);
   transform: translateX(50%);
   cursor: pointer;
 }
@@ -37,9 +36,7 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-}
 
-@media (width <= 480px) {
   .profile-picture-block {
     width: 100%;
   }
@@ -66,7 +63,6 @@
   max-height: 500px;
   border-radius: 24px;
 }
-
 
 .buttons-wrapper {
   display: flex;

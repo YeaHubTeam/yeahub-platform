@@ -1,5 +1,6 @@
 import { ChipSkeleton } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
+import { IconSkeleton } from '@/shared/ui/Icon';
 
 export const SkillListSkeleton = () => {
 	return (
@@ -7,7 +8,7 @@ export const SkillListSkeleton = () => {
 			{[...Array(10)].map((_, index) => {
 				return (
 					<li key={index}>
-						<ChipSkeleton />
+						<ChipSkeleton label="..." withText={60} prefix={<IconSkeleton size={32} />} />
 					</li>
 				);
 			})}

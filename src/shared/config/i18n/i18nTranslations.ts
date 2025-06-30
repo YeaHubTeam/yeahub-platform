@@ -87,6 +87,10 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
+	TOAST_QUESTIONS_FAVORITE_SUCCESS = 'toast.questions.favorite.success',
+	TOAST_QUESTIONS_FAVORITE_FAILED = 'toast.questions.favorite.failed',
+	TOAST_QUESTIONS_RESET_FAVORITE_SUCCESS = 'toast.questions.reset.favorite.success',
+	TOAST_QUESTIONS_RESET_FAVORITE_FAILED = 'toast.questions.reset.favorite.failed',
 	TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS = 'toast.questions.delete.single.success',
 	TOAST_QUESTIONS_DELETE_SINGLE_FAILED = 'toast.questions.delete.single.failed',
 	TOAST_QUESTIONS_DELETE_MULTIPLE_SUCCESS = 'toast.questions.delete.multiple.success',
@@ -380,6 +384,7 @@ export enum Questions {
 	STATUS_UNLEARNED = 'status.unlearned',
 	STATUS_LEARNED = 'status.learned',
 	STATUS_ALL = 'status.all',
+	STATUS_FAVORITE = 'status.favorite',
 	STATUS_LABEL = 'status.label',
 	STATUS_PUBLIC = 'status.public',
 	STATUS_DRAFT = 'status.draft',
@@ -401,8 +406,11 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
+	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
+	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
@@ -545,6 +553,12 @@ export enum Collections {
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
 }
+
+export enum Marketplace {
+	HEADER_TITLE = 'header.title',
+	LINK_LABEL = 'add.resource.link.label',
+}
+
 export enum Companies {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
@@ -755,4 +769,18 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+}
+
+export enum Marketplace {
+	SEARCH_PLACEHOLDER = 'search.placeholder',
+	SHOW_ALL = 'show.all',
+	HIDE = 'hide',
+	KEYWORDS_TITLE = 'keywords.title',
+	RESOURCES_TITLE = 'resources.title',
+	RESOURCES_REPOSITORY = 'resources.repository',
+	RESOURCES_VIDEO = 'resources.video',
+	RESOURCES_ARTICLE = 'resources.article',
+	RESOURCES_COURSE = 'resources.course',
+	STATUS_ALL = 'status.all',
+	STATUS_TITLE = 'status.title',
 }

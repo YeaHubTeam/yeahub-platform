@@ -54,6 +54,7 @@
     "unlearned": "Unlearned",
     "learned": "Learned",
     "all": "All",
+		"favorite": "Favorite",
     "label": "Select status",
     "public": "Public",
     "draft": "Draft"
@@ -88,9 +89,14 @@
   "more": "More",
   "learn": "Learn",
   "repeat": "Repeat",
+	"favorite": "Favorite",
   "tooltip": {
     "learn": "The issue has already been fully studied",
-    "repeat": "The question has not yet progressed to memorization"
+    "repeat": "The question has not yet progressed to memorization",
+		"favorite": {
+			"add": "Add Favorite",
+			"delete": "Remove Favorite"
+		}
   },
   "community": {
     "join": "Become a member of the community"
