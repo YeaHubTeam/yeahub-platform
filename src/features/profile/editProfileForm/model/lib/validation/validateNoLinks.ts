@@ -13,8 +13,11 @@ const linkPatterns = [
 
 export const validateNoLinks = (value: string | null | undefined): boolean => {
 	if (!value) return true;
+
+	const withoutCodeBlocks = value.replace(/```[\s\S]*?```/g, '').replace(/`[^`]*`/g, '');
+
 	return !linkPatterns.some((pattern) => {
 		if (pattern.flags.includes('g')) pattern.lastIndex = 0;
-		return pattern.test(value);
+		return pattern.test(withoutCodeBlocks);
 	});
 };

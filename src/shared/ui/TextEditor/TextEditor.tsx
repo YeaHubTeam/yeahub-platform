@@ -79,6 +79,12 @@ export const TextEditor = ({
 			Strike,
 			Markdown.configure({
 				html: false,
+				tightLists: true,
+				bulletListMarker: '*',
+				linkify: true,
+				breaks: true,
+				transformPastedText: false,
+				transformCopiedText: false,
 			}),
 		],
 		content: normalizeHtmlContent(data),
