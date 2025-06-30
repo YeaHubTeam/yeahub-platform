@@ -23,13 +23,12 @@ function isRejectedAction(action: unknown): action is RejectedAction {
 
 export const sentryApiErrorMiddleware: Middleware = () => (next) => (action) => {
 	if (isRejectedAction(action)) {
-		const eventId = Sentry.captureException(action.error, {
+		Sentry.captureException(action.error, {
 			extra: {
 				context: 'RTK Query API error',
 				action,
 			},
 		});
-		Sentry.showReportDialog({ eventId });
 	}
 	return next(action);
 };

@@ -11,4 +11,5 @@ export interface ChipProps {
 	onClick?: () => void;
 	className?: string;
 	style?: React.CSSProperties;
+	withText?: number | string;
 }
