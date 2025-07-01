@@ -1,6 +1,8 @@
 import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
+import { subscriptionPrices } from '@/entities/subscription';
+
 import { subscribeApiUrls } from '../model/constants/subscribeButtonConstants';
 
 const getPaymentUrl = baseApi.injectEndpoints({
@@ -8,7 +10,7 @@ const getPaymentUrl = baseApi.injectEndpoints({
 		getPaymentUrl: build.query<string, string>({
 			query: (subscribeId) => ({
 				url: route(subscribeApiUrls.getPaymentUrl, subscribeId || ''),
-				params: { cost: 200 },
+				params: { cost: subscriptionPrices.discountPrice },
 				responseHandler: 'text',
 			}),
 		}),
