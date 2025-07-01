@@ -5,6 +5,7 @@ import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import { getChannelsForSpecialization } from '@/entities/media';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -42,6 +43,8 @@ export const QuestionPage = () => {
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
 	const showAuthor = guru ? false : true;
 
+	const media = getChannelsForSpecialization(question.questionSpecializations);
+
 	const {
 		createdBy,
 		checksCount,
@@ -51,13 +54,18 @@ export const QuestionPage = () => {
 		questionSkills,
 		shortAnswer,
 		longAnswer,
+		isFavorite,
 	} = question;
 
 	return (
 		<Flex gap="20">
 			<Flex gap="20" direction="column" flex={1} maxWidth>
 				<QuestionHeader question={question} />
-				<QuestionActions questionId={questionId} checksCount={checksCount} />
+				<QuestionActions
+					questionId={questionId}
+					checksCount={checksCount}
+					isFavorite={isFavorite}
+				/>
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 			</Flex>
@@ -72,6 +80,7 @@ export const QuestionPage = () => {
 						complexity={complexity}
 						questionSkills={questionSkills}
 						route={ROUTES.interview.questions.page}
+						media={media}
 					/>
 					{guru && <GurusBanner gurus={[guru]} />}
 				</Flex>

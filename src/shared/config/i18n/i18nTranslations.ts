@@ -87,6 +87,10 @@ export enum Translation {
 	TOAST_QUESTIONS_LEARNED_FAILED = 'toast.questions.learned.failed',
 	TOAST_QUESTIONS_RESET_PROGRESS_SUCCESS = 'toast.questions.reset.progress.success',
 	TOAST_QUESTIONS_RESET_PROGRESS_FAILED = 'toast.questions.reset.progress.failed',
+	TOAST_QUESTIONS_FAVORITE_SUCCESS = 'toast.questions.favorite.success',
+	TOAST_QUESTIONS_FAVORITE_FAILED = 'toast.questions.favorite.failed',
+	TOAST_QUESTIONS_RESET_FAVORITE_SUCCESS = 'toast.questions.reset.favorite.success',
+	TOAST_QUESTIONS_RESET_FAVORITE_FAILED = 'toast.questions.reset.favorite.failed',
 	TOAST_QUESTIONS_DELETE_SINGLE_SUCCESS = 'toast.questions.delete.single.success',
 	TOAST_QUESTIONS_DELETE_SINGLE_FAILED = 'toast.questions.delete.single.failed',
 	TOAST_QUESTIONS_DELETE_MULTIPLE_SUCCESS = 'toast.questions.delete.multiple.success',
@@ -101,6 +105,11 @@ export enum Translation {
 	TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_FAILED = 'toast.specializations.delete.multiple.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
+	TOAST_PROFILE_CREATE_SUCCESS = 'toast.profile.create.success',
+	TOAST_PROFILE_CREATE_FAILED = 'toast.profile.create.failed',
+	TOAST_PROFILE_DELETE_SUCCESS = 'toast.profile.delete.success',
+	TOAST_PROFILE_DELETE_FAILED = 'toast.profile.delete.failed',
+	TOAST_PROFILE_SET_FAILED = 'toast.profile.set.failed',
 	TOAST_QUESTION_CREATE_SUCCESS = 'toast.questions.create.success',
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
@@ -204,6 +213,15 @@ export enum Profile {
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
 	CHANGE_PASSWORD_REPEAT_LABEL = 'change.password.repeat.label',
 	CHANGE_PASSWORD_PLACEHOLDER = 'change.password.placeholder',
+	MANAGE_PROFILES_TITLE = 'manage.profiles.title',
+	MANAGE_PROFILES_OPEN = 'manage.profiles.open',
+	MANAGE_PROFILES_TOOLTIP_NOT_MEMBER = 'manage.profiles.tooltip.not.member',
+	MANAGE_PROFILES_TOOLTIP_MAX_COUNT = 'manage.profiles.tooltip.max.count',
+	MANAGE_PROFILES_MODAL_TITLE = 'manage.profiles.modal.title',
+	MANAGE_PROFILES_MODAL_DESCRIPTION = 'manage.profiles.modal.description',
+	MANAGE_PROFILES_MODAL_LABEL = 'manage.profiles.modal.label',
+	MANAGE_PROFILES_MODAL_PLACEHOLDER = 'manage.profiles.modal.placeholder',
+	MANAGE_PROFILES_MODAL_BUTTON = 'manage.profiles.modal.button',
 }
 
 export enum Auth {
@@ -380,6 +398,7 @@ export enum Questions {
 	STATUS_UNLEARNED = 'status.unlearned',
 	STATUS_LEARNED = 'status.learned',
 	STATUS_ALL = 'status.all',
+	STATUS_FAVORITE = 'status.favorite',
 	STATUS_LABEL = 'status.label',
 	STATUS_PUBLIC = 'status.public',
 	STATUS_DRAFT = 'status.draft',
@@ -401,10 +420,13 @@ export enum Questions {
 	MORE = 'more',
 	LEARN = 'learn',
 	REPEAT = 'repeat',
+	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
 	TOOLTIP_NOT_CONFIRMED = 'tooltip.not.confirmed',
+	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
+	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 
 	ADDITIONAL_INFO_LEVEL = 'level',
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
@@ -764,7 +786,10 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
-
+export enum Media {
+	MEDIA_LINK_START = 'label.start',
+	MEDIA_LINK_END = 'label.end',
+}
 export enum Marketplace {
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',

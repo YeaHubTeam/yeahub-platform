@@ -13,6 +13,8 @@ interface SelectProps {
 	label: string;
 	isOpen?: boolean;
 	onClick: () => void;
+	width?: number | string;
+	value?: string;
 }
 
 export const Select = ({
@@ -24,6 +26,8 @@ export const Select = ({
 	onClick,
 	prefix,
 	suffix,
+	width,
+	value,
 }: SelectProps) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
@@ -36,7 +40,7 @@ export const Select = ({
 	);
 
 	return (
-		<div className={wrapperClasses}>
+		<div className={wrapperClasses} style={{ width }}>
 			{prefix && (
 				<span
 					className={classNames({
@@ -48,7 +52,7 @@ export const Select = ({
 			)}
 			<button
 				className={classNames(styles.button, styles['dropdown'], className, {
-					[styles.open]: isOpen,
+					[styles['with-value']]: value,
 				})}
 				aria-expanded={isOpen}
 				onClick={(e) => {
@@ -57,7 +61,7 @@ export const Select = ({
 				}}
 				disabled={disabled}
 			>
-				{label}
+				{value || label}
 			</button>
 			{suffix && <span className={styles['select-suffix']}>{suffix}</span>}
 		</div>

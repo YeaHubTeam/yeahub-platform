@@ -65,7 +65,6 @@ export const CollectionPage = () => {
 	} = collection;
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
-
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
 			<section
