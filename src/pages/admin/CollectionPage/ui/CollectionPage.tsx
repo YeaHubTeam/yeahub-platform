@@ -12,7 +12,6 @@ import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getChannelsForSpecializations } from '@/entities/media';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
@@ -66,7 +65,6 @@ export const CollectionPage = () => {
 	} = collection;
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
-	const media = getChannelsForSpecializations(collection.specializations || []);
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
 			<section
@@ -119,7 +117,6 @@ export const CollectionPage = () => {
 							company={company}
 							specializations={specializations}
 							keywords={keywords}
-							media={media}
 						/>
 					</div>
 				</section>

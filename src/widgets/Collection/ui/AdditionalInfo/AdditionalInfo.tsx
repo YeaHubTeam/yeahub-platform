@@ -28,7 +28,7 @@ interface AdditionalInfoProps
 	> {
 	showAuthor?: boolean;
 	className?: string;
-	media: Media[];
+	media?: Media | undefined;
 }
 
 export const AdditionalInfo = ({
@@ -64,7 +64,7 @@ export const AdditionalInfo = ({
 					<CollectionAccessInfo isFree={isFree} />
 					<CollectionQuestionsCount questionsCount={questionsCount} />
 					{isSmallScreen && showAuthor && createdBy && <QuestionAuthor createdBy={createdBy} />}
-					{media?.length !== 0 && <MediaLinksBanner mediaLinks={media} />}
+					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>
 			</Card>
 			{isLargeScreen && showAuthor && createdBy && (

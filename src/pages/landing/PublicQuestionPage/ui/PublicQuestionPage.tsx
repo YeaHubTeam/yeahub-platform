@@ -10,6 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import { getChannelsForSpecializationById } from '@/entities/media';
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
 import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
@@ -49,6 +50,10 @@ const PublicQuestionPage = () => {
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
 	const showAuthor = guru ? false : true;
 
+	const media = question.questionSpecializations?.length
+		? getChannelsForSpecializationById(question.questionSpecializations[0].id)
+		: undefined;
+
 	return (
 		<Flex direction="column" align="start">
 			<Flex>
@@ -78,6 +83,7 @@ const PublicQuestionPage = () => {
 							complexity={complexity}
 							questionSkills={questionSkills}
 							route={ROUTES.interview.questions.page}
+							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
 					</Flex>

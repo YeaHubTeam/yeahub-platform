@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
-import { getChannelsForSpecializations } from '@/entities/media';
+import { getChannelsForSpecializationById } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
@@ -66,8 +66,11 @@ export const CollectionPage = () => {
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 
 	const guru = getGuruWithMatchingSpecialization(collection.specializations);
-	const media = getChannelsForSpecializations(collection.specializations || []);
 	const showAuthor = guru ? false : true;
+
+	const media = collection.specializations?.length
+		? getChannelsForSpecializationById(collection.specializations[0].id)
+		: undefined;
 
 	const renderHeaderAndActions = () => {
 		const canTrain = (isFree || hasPremiumAccess) && !isEmptyData && !isMobileS;
