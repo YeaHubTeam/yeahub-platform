@@ -1,5 +1,7 @@
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
+
 import { mediaLinks } from '../constants/media';
-import { Specialization } from '../types/media';
 
 export const getChannelsForSpecialization = (
 	specializationsOrId: number | Specialization[] | undefined,

@@ -1,5 +1,3 @@
-import { Flex } from '@/shared/ui/Flex';
-
 import { Media } from '../../model/types/media';
 import { MediaLinksItem } from '../MediaLinksItem/MediaLinksItem';
 
@@ -8,9 +6,5 @@ interface MediaLinksBannerProps {
 }
 
 export const MediaLinksBanner = ({ mediaLink }: MediaLinksBannerProps) => {
-	return (
-		<Flex gap="10">
-			<MediaLinksItem mediaLink={mediaLink} />
-		</Flex>
-	);
+	return <MediaLinksItem mediaLink={mediaLink} />;
 };
