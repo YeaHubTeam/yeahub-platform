@@ -1,5 +1,16 @@
 import { mediaLinks } from '../constants/media';
+import { Specialization } from '../types/media';
 
-export const getChannelsForSpecializationById = (id: number) => {
-	return mediaLinks.find((link) => link.specializationId === id);
+export const getChannelsForSpecialization = (
+	specializationsOrId: number | Specialization[] | undefined,
+) => {
+	if (typeof specializationsOrId === 'number') {
+		return mediaLinks.find((link) => link.specializationId === specializationsOrId);
+	}
+
+	if (Array.isArray(specializationsOrId) && specializationsOrId.length > 0) {
+		return mediaLinks.find((link) => link.specializationId === specializationsOrId[0].id);
+	}
+
+	return undefined;
 };

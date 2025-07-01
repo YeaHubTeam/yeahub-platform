@@ -5,7 +5,7 @@ import { useDebounce } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
-import { getChannelsForSpecializationById, MediaLinksBanner } from '@/entities/media';
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
@@ -45,9 +45,7 @@ export const PublicQuestionsFilterPanel = ({
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
 	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
-	const media = getChannelsForSpecializationById(
-		selectedSpecialization ? selectedSpecialization : DEFAULT_SPECIALIZATION,
-	);
+	const media = getChannelsForSpecialization(selectedSpecialization ?? DEFAULT_SPECIALIZATION);
 
 	return (
 		<Flex direction="column" gap="24">

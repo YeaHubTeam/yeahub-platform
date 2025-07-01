@@ -1,5 +1,5 @@
 export { MediaLinksBanner } from './ui/MediaLinksBanner/MediaLinksBanner';
 
-export { getChannelsForSpecializationById } from './model/helpers/getChannelsForSpecializations';
+export { getChannelsForSpecialization } from './model/helpers/getChannelsForSpecializations';
 
-export type { Media } from './model/types/media';
+export type { Media, Specialization } from './model/types/media';

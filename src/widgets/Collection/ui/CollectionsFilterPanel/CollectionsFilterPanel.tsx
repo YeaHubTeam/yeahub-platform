@@ -8,7 +8,7 @@ import { useDebounce } from '@/shared/hooks/useDebounced';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { getChannelsForSpecializationById, MediaLinksBanner } from '@/entities/media';
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { ChooseSpecialization } from '@/entities/question';
 
 import { FilterParams } from '../../model/types/types';
@@ -57,9 +57,7 @@ export const CollectionsFilterPanel = ({
 	};
 
 	const debouncedSearch = useDebounce(handleSearch, 500);
-	const media = getChannelsForSpecializationById(
-		localSpecialization ? localSpecialization : DEFAULT_SPECIALIZATION,
-	);
+	const media = getChannelsForSpecialization(localSpecialization ?? DEFAULT_SPECIALIZATION);
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput

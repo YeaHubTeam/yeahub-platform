@@ -10,7 +10,7 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { Collection } from '@/entities/collection';
-import { getChannelsForSpecializationById } from '@/entities/media';
+import { getChannelsForSpecialization } from '@/entities/media';
 
 import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
 
@@ -28,9 +28,7 @@ export const CollectionAdditionalInfoDrawer = ({
 	const project = useCurrentProject();
 	const { createdBy, questionsCount, isFree, company, specializations, keywords } = collection;
 
-	const media = collection.specializations?.length
-		? getChannelsForSpecializationById(collection.specializations[0].id)
-		: undefined;
+	const media = getChannelsForSpecialization(collection.specializations);
 
 	const { t } = useTranslation(i18Namespace.collection);
 	return (
