@@ -45,6 +45,7 @@ const PublicMarketplacePage = () => {
 	} = useGetResourcesListQuery({
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
+		name: filter.title,
 	});
 
 	const resources = resourcesResponse?.data ?? [];
