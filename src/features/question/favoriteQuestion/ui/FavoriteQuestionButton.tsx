@@ -1,5 +1,6 @@
 import { type Placement } from '@floating-ui/react';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -44,32 +45,38 @@ export const FavoriteQuestionButton = ({
 	const [resetFavoriteQuestion, resetState] = useResetFavoriteQuestionMutation();
 
 	const { t } = useTranslation(i18Namespace.questions);
+
+	const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
+
+	useEffect(() => {
+		setIsFavoriteState(isFavorite);
+	}, [isFavorite]);
+
 	const onToggleFavoriteQuestion = () => {
-		isFavorite
-			? resetFavoriteQuestion({
-					profileId: String(profileId),
-					questionId: Number(questionId),
-				})
-			: favoriteQuestion({
-					profileId: String(profileId),
-					questionId: Number(questionId),
-				});
+		const action = isFavoriteState ? resetFavoriteQuestion : favoriteQuestion;
+		action({
+			profileId: String(profileId),
+			questionId: Number(questionId),
+		});
+		setIsFavoriteState((prev) => !prev);
 	};
 
 	const iconSize = isPopover ? 20 : 24;
 
 	return (
 		<Tooltip
-			title={isFavorite ? t(Questions.TOOLTIP_FAVORITE_DELETE) : t(Questions.TOOLTIP_FAVORITE_ADD)}
+			title={
+				isFavoriteState ? t(Questions.TOOLTIP_FAVORITE_DELETE) : t(Questions.TOOLTIP_FAVORITE_ADD)
+			}
 			placement={placementTooltip}
 			color="violet"
 			offsetTooltip={offsetTooltip}
 			shouldShowTooltip={true}
 		>
 			<Button
-				className={classNames({ [styles.button]: isPopover }, { [styles.red]: isFavorite })}
+				className={classNames({ [styles.button]: isPopover }, { [styles.red]: isFavoriteState })}
 				preffix={
-					isFavorite ? (
+					isFavoriteState ? (
 						<Icon icon="favoriteRed" color="red-800" size={iconSize} />
 					) : (
 						<Icon icon="favorite" color="black-600" size={iconSize} />
