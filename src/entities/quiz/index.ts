@@ -2,7 +2,6 @@ export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
 export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
-export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
 
 export {
 	useLazyCreateNewQuizQuery,

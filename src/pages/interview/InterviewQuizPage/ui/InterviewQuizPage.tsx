@@ -13,7 +13,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { getProfileId } from '@/entities/profile';
 import {
-	InterviewSlider,
 	QuestionNavPanel,
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
@@ -22,6 +21,8 @@ import {
 	getIsAllQuestionsAnswered,
 	useInterruptQuizMutation,
 } from '@/entities/quiz';
+
+import { InterviewSlider } from '@/widgets/quiz/InterviewSlider/InterviewSlider';
 
 import styles from './InterviewQuizPage.module.css';
 

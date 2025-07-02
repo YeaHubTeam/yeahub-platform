@@ -3,12 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line import/order
-import {
-	InterviewSlider,
-	QuestionNavPanel,
-	useSlideSwitcher,
-	LS_ACTIVE_MOCK_QUIZ_KEY,
-} from '@/entities/quiz';
+import { QuestionNavPanel, useSlideSwitcher, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
@@ -25,6 +20,8 @@ import {
 	QuizQuestionAnswerType,
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
+
+import { InterviewSlider } from '@/widgets/quiz/InterviewSlider/InterviewSlider';
 
 import styles from './PublicQuizPage.module.css';
 
