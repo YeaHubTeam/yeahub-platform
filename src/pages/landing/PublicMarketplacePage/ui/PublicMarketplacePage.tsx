@@ -12,13 +12,14 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 import { toast } from '@/shared/ui/Toast';
 
-import {
-	ResourcesList,
-	MarketplaceFiltersPanel,
-	useMarketplaceFilters,
-} from '@/widgets/Marketplace';
+import { useGetResourcesListQuery } from '@/entities/resource';
+
+import { ResourcesList } from '@/widgets/Marketplace';
+import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
+
+const RESOURCES_PER_PAGE = 12;
 
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
@@ -32,7 +33,26 @@ const PublicMarketplacePage = () => {
 		filter,
 	} = useMarketplaceFilters();
 
+	const {
+		data: resourcesResponse,
+		isFetching,
+		error,
+	} = useGetResourcesListQuery({
+		page: filter.page ?? 1,
+		limit: RESOURCES_PER_PAGE,
+	});
+
+	const resources = resourcesResponse?.data ?? [];
+
 	const { t } = useTranslation(i18Namespace.marketplace);
+
+	if (isFetching && !resourcesResponse) {
+		return <div>Loading…</div>;
+	}
+
+	if (error) {
+		return <div>Не удалось загрузить ресурсы</div>;
+	}
 
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
@@ -95,7 +115,7 @@ const PublicMarketplacePage = () => {
 					</Flex>
 				</Flex>
 				{/* список ресурсов: пока пустышка */}
-				<ResourcesList />
+				<ResourcesList resources={resources} />
 
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>

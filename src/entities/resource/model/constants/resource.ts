@@ -1,3 +1,3 @@
 export const resourceApiUrls = {
-	getResourcesList: 'external-products',
+	getResourcesList: 'external-products/product',
 };
