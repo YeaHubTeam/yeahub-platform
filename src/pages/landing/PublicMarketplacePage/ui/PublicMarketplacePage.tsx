@@ -14,12 +14,16 @@ import { toast } from '@/shared/ui/Toast';
 
 import { useGetResourcesListQuery } from '@/entities/resource';
 
-import { ResourcesList } from '@/widgets/Marketplace';
-import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
+import {
+	ResourcesList,
+	MarketplaceFiltersPanel,
+	useMarketplaceFilters,
+	ResourcesPagination,
+} from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
 
-const RESOURCES_PER_PAGE = 12;
+const RESOURCES_PER_PAGE = 6;
 
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
@@ -31,6 +35,7 @@ const PublicMarketplacePage = () => {
 		onChangeResources,
 		onChangeStatus,
 		filter,
+		onPageChange,
 	} = useMarketplaceFilters();
 
 	const {
@@ -114,9 +119,13 @@ const PublicMarketplacePage = () => {
 						{suggestButton}
 					</Flex>
 				</Flex>
-				{/* список ресурсов: пока пустышка */}
 				<ResourcesList resources={resources} />
 
+				<ResourcesPagination
+					resourcesResponse={resourcesResponse}
+					currentPage={filter.page ?? 1}
+					onPageChange={onPageChange}
+				/>
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 

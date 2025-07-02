@@ -28,6 +28,10 @@ export const useMarketplaceFilters = () => {
 		handleFilterChange({ status });
 	};
 
+	const onPageChange = (page: number) => {
+		handleFilterChange({ page });
+	};
+
 	return {
 		filter,
 		onChangeSearchParams,
@@ -35,6 +39,7 @@ export const useMarketplaceFilters = () => {
 		onChangeResources,
 		onChangeSpecialization,
 		onChangeStatus,
+		onPageChange,
 		resetFilters,
 	};
 };
