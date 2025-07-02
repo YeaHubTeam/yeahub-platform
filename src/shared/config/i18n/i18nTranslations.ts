@@ -566,6 +566,9 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+
+	POPOVER_WARNING_INTRO = 'warning.intro',
+	POPOVER_WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
 export enum Marketplace {

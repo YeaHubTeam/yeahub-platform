@@ -7,6 +7,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { Collection } from '@/entities/collection';
+import { CollectionWarningInfo } from '@/entities/collection';
 import { Question } from '@/entities/question';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -39,7 +40,12 @@ export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: Collecti
 		);
 
 	return (
-		<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
+		<Card
+			className={styles.wrapper}
+			title={t(Questions.PREVIEW_TITLE)}
+			componentIcon={<CollectionWarningInfo />}
+			withOutsideShadow
+		>
 			{questions.length ? (
 				<Flex componentType="ul" direction="column" gap="12">
 					{questions?.map((question) => (
