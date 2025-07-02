@@ -17,6 +17,8 @@ import { Text } from '@/shared/ui/Text';
 
 import { User } from '@/entities/user';
 
+import { DeleteAccountButton } from '@/features/profile/deleteAccount';
+
 import styles from './UsersTable.module.css';
 
 interface UsersTableProps {
@@ -84,6 +86,9 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 				onClick: () => {
 					navigate(route(ROUTES.admin.users.edit.page, user.id));
 				},
+			},
+			{
+				renderComponent: () => <DeleteAccountButton user={user} isAdmin isDetailPage />,
 			},
 		];
 
