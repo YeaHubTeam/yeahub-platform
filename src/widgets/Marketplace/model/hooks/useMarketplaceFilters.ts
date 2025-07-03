@@ -6,11 +6,11 @@ export const useMarketplaceFilters = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 
 	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ title: value });
+		handleFilterChange({ title: value, page: 1 });
 	};
 
 	const onChangeSkills = (skills: number[] | undefined) => {
-		handleFilterChange({ skills });
+		handleFilterChange({ skills, page: 1 });
 	};
 
 	const onChangeSpecialization = (specialization: number | number[]) => {
@@ -21,14 +21,14 @@ export const useMarketplaceFilters = () => {
 	};
 
 	const onChangeResources = (resources: number[] | undefined) => {
-		handleFilterChange({ resources });
+		handleFilterChange({ resources, page: 1 });
 	};
 
 	const onChangeStatus = (status: MarketplaceFilterStatus) => {
-		handleFilterChange({ status });
+		handleFilterChange({ status, page: 1 });
 	};
 
-	const onPageChange = (page: number) => {
+	const onChangePage = (page: number) => {
 		handleFilterChange({ page });
 	};
 
@@ -39,7 +39,7 @@ export const useMarketplaceFilters = () => {
 		onChangeResources,
 		onChangeSpecialization,
 		onChangeStatus,
-		onPageChange,
+		onChangePage,
 		resetFilters,
 	};
 };

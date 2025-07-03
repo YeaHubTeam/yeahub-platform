@@ -35,7 +35,7 @@ const PublicMarketplacePage = () => {
 		onChangeResources,
 		onChangeStatus,
 		filter,
-		onPageChange,
+		onChangePage,
 	} = useMarketplaceFilters();
 
 	const {
@@ -125,7 +125,7 @@ const PublicMarketplacePage = () => {
 				<ResourcesPagination
 					resourcesResponse={resourcesResponse}
 					currentPage={filter.page ?? 1}
-					onPageChange={onPageChange}
+					onChangePage={onChangePage}
 				/>
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>

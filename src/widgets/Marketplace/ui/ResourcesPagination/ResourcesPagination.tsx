@@ -8,21 +8,21 @@ import styles from './ResourcesPagination.module.css';
 interface ResourcesPaginationProps {
 	resourcesResponse?: Response<Resource[]>;
 	currentPage: number;
-	onPageChange: (page: number) => void;
+	onChangePage: (page: number) => void;
 }
 
 export const ResourcesPagination = ({
 	resourcesResponse,
 	currentPage,
-	onPageChange,
+	onChangePage,
 }: ResourcesPaginationProps) => {
 	if (!resourcesResponse?.data?.length) return null;
 
 	const totalPages = Math.ceil(resourcesResponse.total / resourcesResponse.limit);
 
-	const handlePrev = () => onPageChange(currentPage - 1);
-	const handleNext = () => onPageChange(currentPage + 1);
-	const handleButton = (page: number) => onPageChange(page);
+	const handlePrev = () => onChangePage(currentPage - 1);
+	const handleNext = () => onChangePage(currentPage + 1);
+	const handleButton = (page: number) => onChangePage(page);
 
 	return (
 		<div className={styles.wrapper}>
