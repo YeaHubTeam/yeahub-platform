@@ -25,4 +25,15 @@ export const gurus: Guru[] = [
 			profileId: '9865139a-3656-4781-91a7-fd86a77b7e1e',
 		},
 	},
+	{
+		title: 'iOS Guru',
+		name: 'Roman Isakov',
+		specializationId: 26,
+		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/рома.jpg',
+		socials: {
+			telegram: 'https://t.me/isakov/_ios',
+			youtube: 'https://www.youtube.com/watch?v=VdN4PKgnzRg&ab/_channel=RomanIsakov',
+			profileId: 'f917b016-280f-4127-8d4b-149a3c1aec71',
+		},
+	},
 ];
