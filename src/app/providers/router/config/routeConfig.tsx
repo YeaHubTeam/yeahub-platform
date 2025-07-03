@@ -17,6 +17,9 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
+import { RoleName } from '@/entities/auth';
+import { listAdminRoles } from '@/entities/auth';
+
 import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
 
@@ -88,12 +91,24 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 
+export const allRoles: RoleName[] = [
+	'guest',
+	'candidate',
+	'member',
+	'admin',
+	'hr',
+	'candidate-free',
+	'candidate-premium',
+	'author',
+];
+
 const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.adminRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_ADMIN),
 		icon: Crown,
+		roles: listAdminRoles,
 		isAdmin: true,
 	},
 	{
@@ -101,12 +116,14 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.platformRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
+		roles: allRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
 		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
+		roles: allRoles,
 	},
 	{
 		type: 'category',
@@ -119,6 +136,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 				icon: InterviewIcon,
 			},
 		],
+		roles: allRoles,
 	},
 ];
 
@@ -128,6 +146,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.platformRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
+		roles: listAdminRoles,
 		isAdmin: true,
 	},
 	{
@@ -135,42 +154,49 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.adminRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: Home,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.questions.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
 		icon: QuestionsIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.specializations.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_SPECIALIZATIONS),
 		icon: SpecializationIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.skills.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_SKILLS),
 		icon: SkillsIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
+		roles: ['admin'],
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.collections.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 		icon: Collection,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.companies.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
 		icon: Companies,
+		roles: listAdminRoles,
 	},
 ];
 
