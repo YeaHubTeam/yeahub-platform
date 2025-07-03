@@ -72,7 +72,6 @@
   }
 
   .wallpaper {
-    right: -28px;
     bottom: 0;
   }
 
@@ -88,7 +87,6 @@
   }
 
   .wallpaper {
-    right: 59px;
     height: 95%;
   }
 
@@ -120,51 +118,41 @@
   }
 	
   .wallpaper {
-    right: 100px;
     height: 97%;
   }
 
   .progress {
     scale: 1.7;
-    top: 35.5%;
-    right: 55px;
+    right: 45px;
     width: 100px;
     height: 35px;
   }
 
   .statistics {
-    scale: 1.7;
-    top: 23.5%;
-    left: 70px;
+    top: 34.5%;
+    left: 45px;
     width: 87px;
     height: 114px;
-  }
-
-  .company {
-    scale: 1.3;
-    left: 67px;
-  }
-}
-
-@media screen and (width < 360px) {
-  .wallpaper {
-    right: 10px;
-    height: 87%;
-  }
-
-  .progress {
-    scale: 1.1;
-    top: 37.5%;
-    right: 17px;
-  }
-
-  .statistics {
-    scale: 1.1;
-    top: 39.5%;
-    left: 10px;
+    scale: 1.7
   }
 
   .company {
     display: none;
+  }
+}
+
+@media (width <= 480px) {
+  .progress {
+    scale: 1;
+    right: 12px;
+    width: 100px;
+    height: 35px;
+  }
+
+  .statistics {
+    scale: 1;
+    left: 12px;
+    width: 87px;
+    height: 114px;
   }
 }
