@@ -35,6 +35,7 @@ export interface UserSubscription {
 	endDate: string;
 	subscriptionId: number;
 	userId: string;
+	state: string;
 	subscription: SubscriptionRoot;
 }
 
