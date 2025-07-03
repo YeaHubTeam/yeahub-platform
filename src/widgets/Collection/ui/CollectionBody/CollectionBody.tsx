@@ -43,7 +43,7 @@ export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: Collecti
 		<Card
 			className={styles.wrapper}
 			title={t(Questions.PREVIEW_TITLE)}
-			componentIcon={<CollectionWarningInfo />}
+			headerAction={<CollectionWarningInfo />}
 			withOutsideShadow
 		>
 			{questions.length ? (

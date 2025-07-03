@@ -567,8 +567,8 @@ export enum Collections {
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
 
-	POPOVER_WARNING_INTRO = 'warning.intro',
-	POPOVER_WARNING_DISCLAIMER = 'warning.disclaimer',
+	WARNING_INTRO = 'warning.intro',
+	WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
 export enum Marketplace {
