@@ -12,6 +12,7 @@ type DateType<T> = {
 	title: string;
 	imageSrc?: string | null;
 	active?: boolean;
+	disabled?: boolean;
 };
 
 export interface BaseFilterSectionProps<T> {
@@ -56,7 +57,7 @@ export const BaseFilterSection = <T,>({
 							}
 							onClick={onHandleClick(item.id)}
 							active={!disabled && item.active}
-							disabled={disabled}
+							disabled={!disabled && item.disabled}
 						/>
 					))}
 			</Flex>

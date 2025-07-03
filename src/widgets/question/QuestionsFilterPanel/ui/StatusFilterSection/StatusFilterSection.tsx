@@ -2,7 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+
+import { getFullProfile } from '@/entities/profile';
 
 import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
 interface StatusFilterSectionProps {
@@ -15,6 +18,7 @@ export const StatusFilterSection = ({
 	selectedStatus,
 }: StatusFilterSectionProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
+	const profile = useAppSelector(getFullProfile);
 
 	const progressStatus: QuestionFilterStatusItem[] = [
 		{ id: 'not-learned', title: t(Questions.STATUS_UNLEARNED) },
@@ -26,6 +30,9 @@ export const StatusFilterSection = ({
 	const preparedData = progressStatus.map((item) => ({
 		...item,
 		active: item.id === selectedStatus,
+		disabled:
+			profile.userRoles?.[0]?.name === 'candidate-free' &&
+			(item.title === 'Не изучено' || item.title === 'Изучено'),
 	}));
 
 	return (
