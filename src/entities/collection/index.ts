@@ -15,3 +15,4 @@ export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccess
 export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
 export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
 export { ChooseCollectionSpecializationSkeleton } from './ui/ChooseCollectionSpecialization/ChooseCollectionSpecialization.skeleton';
+export { CollectionWarningInfo } from './ui/СollectionWarningInfo/CollectionWarningInfo';

@@ -10,6 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
+import { Media, MediaLinksBanner } from '@/entities/media';
 import { Author, QuestionAuthor, QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
 
@@ -24,6 +25,7 @@ export interface QuestionAdditionalInfoProps {
 	className?: string;
 	route?: string;
 	showAuthor?: boolean;
+	media?: Media;
 }
 
 export const QuestionAdditionalInfo = ({
@@ -35,6 +37,7 @@ export const QuestionAdditionalInfo = ({
 	className,
 	route,
 	showAuthor = true,
+	media,
 }: QuestionAdditionalInfoProps) => {
 	const navigate = useNavigate();
 	const { isMobile, isTablet } = useScreenSize();
@@ -69,6 +72,7 @@ export const QuestionAdditionalInfo = ({
 					{showAuthor && createdBy && (isMobile || isTablet) && (
 						<QuestionAuthor createdBy={createdBy} />
 					)}
+					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>
 			</Card>
 			{showAuthor && createdBy && !isMobile && !isTablet && (

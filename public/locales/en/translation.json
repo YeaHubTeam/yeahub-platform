@@ -124,14 +124,14 @@
 			},
 			"login": {
 				"failed": "Invalid email or password."
+			}
+		},
+		"user": {
+			"email": {
+				"not_exist": "User with this email does not exist."
 			},
-			"user": {
-				"email": {
-					"not_exist": "User with this email does not exist."
-				},
-				"password": {
-					"wrong": "User with this email has another password."
-				}
+			"password": {
+				"wrong": "User with this email has another password."
 			}
 		},
 		"questions": {
@@ -142,6 +142,14 @@
 			"reset.progress": {
 				"success": "Progress on the issue has been reset",
 				"failed": "Failed to reset the progress of the issue"
+			},
+			"favorite": {
+				"success": "The question has been successfully added to favorites",
+				"failed": "Failed to add to favorites"
+			},
+			"reset.favorite": {
+				"success": "The question has been successfully removed from favorites",
+				"failed": "Failed to remove from favorites"
 			},
 			"create": {
 				"success": "The question was created successfully",
@@ -222,6 +230,17 @@
 			"update": {
 				"success": "Profile has been successfully changed",
 				"failed": "Profile could not be changed"
+			},
+			"create": {
+				"success": "Profile created successfully",
+				"failed": "Failed to add new profile"
+			},
+			"delete": {
+				"success": "Profile deleted",
+				"failed": "Failed to delete profile"
+			},
+			"set": {
+				"failed": "Failed to switch profile"
 			}
 		},
 		"user": {

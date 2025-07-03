@@ -5,6 +5,8 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
+import { subscriptionPrices } from '@/entities/subscription';
+
 import { AgreementForm } from '@/features/subscriptions/subscribe';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -17,7 +19,9 @@ export const FreeSubscriptionTab = () => {
 		{
 			id: 1,
 			question: t(Subscription.SUBSCRIPTION_FAQ_FIRST_QUESTION),
-			answer: t(Subscription.SUBSCRIPTION_FAQ_FIRST_ANSWER),
+			answer: t(Subscription.SUBSCRIPTION_FAQ_FIRST_ANSWER, {
+				price: subscriptionPrices.discountPrice,
+			}),
 		},
 		{
 			id: 2,

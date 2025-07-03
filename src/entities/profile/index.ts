@@ -7,12 +7,17 @@ export { profileReducer, profileActions } from './model/slices/profileSlice';
 export {
 	getProfileIsEmailSent,
 	getFullProfile,
+	getUserId,
+	getProfiles,
+	getProfilesLength,
+	getEmptySpecializationProfile,
 	getProfileId,
 	getSpecializationId,
 	getIsEmptySpecialization,
 	getIsEmailVerified,
 	getIsEdit,
 	getHasPremiumAccess,
+	getHasSubscriptions,
 } from './model/selectors/profileSelectors';
 
 export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';

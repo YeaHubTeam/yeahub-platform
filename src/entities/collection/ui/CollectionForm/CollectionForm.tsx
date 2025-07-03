@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Text, Input } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -10,8 +9,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Radio } from '@/shared/ui/Radio';
+import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -90,24 +91,31 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 
 	return (
 		<>
-			<Text
-				title={isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
-				className={styles['main-title']}
-			/>
+			<Text variant="body5-strong">
+				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
+			</Text>
 			<Flex direction="column" gap="60">
 				<Flex className={`${styles['collection-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text title={t(Collections.TITLE_FULL)} className={styles.title} />
-						<Text title={t(Collections.TITLE_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.TITLE_FULL)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.TITLE_LABEL)}
+						</Text>
 					</Flex>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} hasError={hasError} />}
+						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</Flex>
 				<Flex gap={'120'}>
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.COMPANY_TITLE)} className={styles.title} />
-						<Text text={t(Collections.COMPANY_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.COMPANY_TITLE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.COMPANY_LABEL)}
+						</Text>
 					</Flex>
 					<FormControl name="companyId" control={control}>
 						{({ onChange, value }) => (
@@ -118,8 +126,12 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					</FormControl>
 				</Flex>
 				<Flex direction="column" gap="8">
-					<Text title={t(Collections.DESCRIPTION_FULL)} className={styles.title} />
-					<Text title={t(Collections.DESCRIPTION_LABEL)} className={styles.description} />
+					<Text variant="body3-strong" color="black-800">
+						{t(Collections.DESCRIPTION_FULL)}
+					</Text>
+					<Text variant="body2" color="black-800">
+						{t(Collections.DESCRIPTION_LABEL)}
+					</Text>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
@@ -134,8 +146,12 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				</Flex>
 				<Flex gap="120">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.ICON_TITLE)} className={styles.title} />
-						<Text title={t(Collections.ICON_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.ICON_TITLE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.ICON_LABEL)}
+						</Text>
 					</Flex>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
@@ -145,8 +161,12 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				</Flex>
 				<Flex gap="120" align="center">
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.TARIFF_CHOOSE)} className={styles.title} />
-						<Text title={t(Collections.TARIFF_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.TARIFF_CHOOSE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.TARIFF_LABEL)}
+						</Text>
 					</Flex>
 					<Flex gap="60">
 						<Radio
@@ -165,8 +185,12 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				</Flex>
 				<Flex gap={'120'}>
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.SPECIALIZATION_TITLE)} className={styles.title} />
-						<Text text={t(Collections.SPECIALIZATION_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.SPECIALIZATION_TITLE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.SPECIALIZATION_LABEL)}
+						</Text>
 					</Flex>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
@@ -178,8 +202,12 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				</Flex>
 				<Flex gap={'120'}>
 					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
-						<Text title={t(Collections.KEYWORDS_TITLE)} className={styles.title} />
-						<Text text={t(Collections.KEYWORDS_LABEL)} className={styles.description} />
+						<Text variant="body3-strong" color="black-800">
+							{t(Collections.KEYWORDS_TITLE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Collections.KEYWORDS_LABEL)}
+						</Text>
 					</Flex>
 					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {

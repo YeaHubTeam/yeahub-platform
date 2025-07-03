@@ -1,19 +1,17 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'yeahub-ui-kit';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 import { Specialization } from '../../model/types/specialization';
 
-import styles from './SpecializationSelect.module.css';
-
 type SpecializationSelectProps = Omit<
-	React.ComponentProps<typeof Select>,
-	'options' | 'type' | 'value' | 'onChange'
+	React.ComponentProps<typeof Dropdown>,
+	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: number | number[];
 	onChange: (value: number[] | number) => void;
@@ -74,28 +72,38 @@ export const SpecializationSelect = ({
 	}, [selectedSpecializations, specializations]);
 
 	const specializationsDictionary = useMemo(() => {
-		return specializations?.data?.reduce(
+		const emptySpecialization: Specialization = {
+			id: 0,
+			title: t(Specializations.SELECT_CHOOSE),
+			imageSrc: null,
+			description: '',
+		};
+		return (specializations?.data || []).reduce(
 			(acc, specialization) => {
 				acc[specialization.id] = specialization;
 				return acc;
 			},
-			{} as Record<number, Specialization>,
+			{ 0: emptySpecialization } as Record<number, Specialization>,
 		);
 	}, [specializations]);
 
 	if (!hasMultiple) {
 		return (
-			<Select
-				onChange={handleChange}
-				options={options}
-				value={selectedSpecializations[0]?.toString()}
-				type="default"
-				placeholder={
-					options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
-				}
-				className={styles.select}
-				disabled={disabled}
-			/>
+			<>
+				<Dropdown
+					width={320}
+					label={
+						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
+					}
+					disabled={disabled}
+					value={specializationsDictionary[selectedSpecializations[0] || 0]?.title ?? ''}
+					onSelect={(val) => handleChange(String(val))}
+				>
+					{options.map((option) => (
+						<Option value={option.value} label={option.label} key={option.label} />
+					))}
+				</Dropdown>
+			</>
 		);
 	}
 
