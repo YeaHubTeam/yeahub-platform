@@ -57,7 +57,7 @@ export const BaseFilterSection = <T,>({
 							}
 							onClick={onHandleClick(item.id)}
 							active={!disabled && item.active}
-							disabled={!disabled && item.disabled}
+							disabled={disabled ? disabled : item.disabled}
 						/>
 					))}
 			</Flex>
