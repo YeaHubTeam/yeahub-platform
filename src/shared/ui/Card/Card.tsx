@@ -29,6 +29,7 @@ export interface CardProps {
 	isTitleCenter?: boolean;
 	dataTestId?: string;
 	size?: CardSize;
+	headerAction?: ReactNode;
 }
 
 interface ExpandIconProps {
@@ -91,6 +92,7 @@ export const Card = ({
 	isTitleCenter = false,
 	dataTestId = 'Card',
 	size = 'medium',
+	headerAction,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -169,6 +171,7 @@ export const Card = ({
 							/>
 						</Link>
 					) : null}
+					{headerAction}
 				</div>
 			)}
 
