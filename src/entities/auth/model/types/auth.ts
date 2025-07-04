@@ -98,7 +98,8 @@ export type RoleName =
 	| 'admin'
 	| 'hr'
 	| 'candidate-free'
-	| 'candidate-premium';
+	| 'candidate-premium'
+	| 'author';
 
 export interface Role {
 	id: number;

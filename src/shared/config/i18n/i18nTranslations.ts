@@ -566,6 +566,9 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+
+	WARNING_INTRO = 'warning.intro',
+	WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
 export enum Marketplace {
@@ -722,6 +725,7 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_CANCELED = 'canceled',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',

@@ -18,6 +18,7 @@ export {
 	getIsEdit,
 	getHasPremiumAccess,
 	getHasSubscriptions,
+	getActiveProfile,
 } from './model/selectors/profileSelectors';
 
 export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';

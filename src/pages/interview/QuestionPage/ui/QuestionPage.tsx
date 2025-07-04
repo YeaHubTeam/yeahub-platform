@@ -23,16 +23,12 @@ export const QuestionPage = () => {
 	const { questionId = '' } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
-	const {
-		data: question,
-		isFetching,
-		isLoading,
-	} = useGetQuestionByIdQuery({
+	const { data: question, isLoading } = useGetQuestionByIdQuery({
 		questionId,
 		profileId,
 	});
 
-	if (isLoading || isFetching) {
+	if (isLoading) {
 		return <QuestionPageSkeleton />;
 	}
 
