@@ -14,6 +14,7 @@ import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
+import Info from '@/shared/assets/icons/info.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import Eye from '@/shared/assets/icons/eye.svg';
@@ -83,6 +84,7 @@ export const icons: Record<IconName, IconComponent> = {
 	eyeClosed: EyeClosed,
 	like: Like,
 	dislike: Dislike,
+	info: Info,
 	instagram: Instagram,
 	linkedin: Linkedin,
 	twitter: Twitter,
