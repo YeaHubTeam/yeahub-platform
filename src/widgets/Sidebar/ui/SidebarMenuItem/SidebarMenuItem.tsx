@@ -1,6 +1,7 @@
 import { MenuItem } from '../../model/types/sidebar';
 
 import SidebarCategoryMenuItem from './SidebarCategoryMenuItem';
+import SidebarSettingsMenuItem from './SidebarSettingsMenuItem';
 import SidebarSingleMenuItem from './SidebarSingleMenuItem';
 
 interface SidebarMenuItemProps {
@@ -36,6 +37,14 @@ export const SidebarMenuItem = ({ menuItem, fullWidth, isShowTooltip }: SidebarM
 		case 'single':
 			return (
 				<SidebarSingleMenuItem
+					fullWidth={fullWidth}
+					menuItem={menuItem}
+					isShowTooltip={isShowTooltip}
+				/>
+			);
+		case 'settings':
+			return (
+				<SidebarSettingsMenuItem
 					fullWidth={fullWidth}
 					menuItem={menuItem}
 					isShowTooltip={isShowTooltip}
