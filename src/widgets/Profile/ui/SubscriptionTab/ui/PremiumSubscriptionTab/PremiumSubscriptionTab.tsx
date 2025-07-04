@@ -11,25 +11,20 @@ import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { Text } from '@/shared/ui/Text';
 
-import { getFullProfile } from '@/entities/profile';
-import { useGetUserSubscriptionQuery } from '@/entities/subscription';
+import { getActiveSubscription } from '@/entities/subscription';
 
 import { UnsubscribeButton } from '@/features/subscriptions/unsubscribe';
 
 // import { PayHistory } from '../../types/types';
 // import { PayHistoryList } from '../PayHistoryList/PayHistoryList';
-import { getActiveSubscriptions } from '../../model/helpers/getActiveSubscriptions';
-import { FreeSubscriptionTab } from '../FreeSubscriptionTab/FreeSubscriptionTab';
 
 import styles from './PremiumSubscriptionTab.module.css';
 
 export const PremiumSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const { id, subscriptions } = useAppSelector(getFullProfile);
-	const { data } = useGetUserSubscriptionQuery(id ?? '');
 
-	const activeSubscriptions = getActiveSubscriptions(data);
-	console.log('st', activeSubscriptions);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const activeSubscriptions = useAppSelector(getActiveSubscription);
 
 	const endDate = activeSubscriptions?.endDate || '';
 	const createDate = activeSubscriptions?.createDate || '';
@@ -42,9 +37,7 @@ export const PremiumSubscriptionTab = () => {
 	const total = hasEndDate ? daysInMonth : 100;
 	const label = hasEndDate ? t(Subscription.DAYS_LEFT, { count: restDays }) : undefined;
 
-	const isActiveState = activeSubscriptions?.state.toLowerCase() === 'active';
-	const isInactiveState =
-		activeSubscriptions?.state.toLowerCase() === 'inactive' || !activeSubscriptions;
+	const isActiveState = activeSubscriptions?.state === 'active';
 
 	// const payHistories: PayHistory[] = [
 	// 	{
@@ -77,9 +70,6 @@ export const PremiumSubscriptionTab = () => {
 	const { D_MM_YYYY } = DATE_FORMATS;
 	const formattedDate = hasEndDate ? formatDate(parseISO(endDate), D_MM_YYYY) : '';
 
-	if (isInactiveState) {
-		return <FreeSubscriptionTab />;
-	}
 	return (
 		<>
 			<div className={styles['wrapper-top']}>
@@ -94,11 +84,12 @@ export const PremiumSubscriptionTab = () => {
 					<ProgressBar currentCount={current} totalCount={total} label={label} variant="large" />
 					<Text variant="body3">
 						{isActiveState
-							? t(Subscription.SUBSCRIPTION_RENEWAL, { Date: formattedDate })
+							? /*t(Subscription.SUBSCRIPTION_RENEWAL, { Date: formattedDate })*/
+								t(Subscription.SUBSCRIPTION_ACCESS_WARNING)
 							: t(Subscription.SUBSCRIPTION_CANCELED, { Date: formattedDate })}
 					</Text>
 				</Flex>
-				{subscriptions.length > 0 && isActiveState ? (
+				{isActiveState ? (
 					<div className={styles['actions-button']}>
 						<Flex direction="row" gap="8">
 							<UnsubscribeButton />
