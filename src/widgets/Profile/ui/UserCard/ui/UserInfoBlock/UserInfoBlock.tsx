@@ -13,7 +13,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { FullProfile } from '@/entities/auth';
-import { getIsEdit } from '@/entities/profile';
+import { getActiveProfile, getIsEdit } from '@/entities/profile';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 import { UserRolesList } from '@/entities/user';
@@ -28,8 +28,10 @@ interface UserInfoProps {
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const { username, birthday, email, country, city, isEmailVerified, userRoles } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
+
 	const { isMobileS } = useScreenSize();
 	const isEdit = useAppSelector(getIsEdit);
+	const activeProfile = useAppSelector(getActiveProfile);
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -94,8 +96,8 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						</Link>
 					))}
 
-				{profile.profiles[0].socialNetwork?.length > 0 ? (
-					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
+				{activeProfile && activeProfile?.socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={activeProfile.socialNetwork} />
 				) : null}
 			</div>
 		</div>
