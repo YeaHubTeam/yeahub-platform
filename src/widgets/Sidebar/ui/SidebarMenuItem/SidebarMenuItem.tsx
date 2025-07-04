@@ -1,6 +1,7 @@
 import { MenuItem } from '../../model/types/sidebar';
 
 import SidebarCategoryMenuItem from './SidebarCategoryMenuItem';
+// import SidebarSettingsMenuItem from './SidebarSettingsMenuItem';
 import SidebarSingleMenuItem from './SidebarSingleMenuItem';
 
 interface SidebarMenuItemProps {

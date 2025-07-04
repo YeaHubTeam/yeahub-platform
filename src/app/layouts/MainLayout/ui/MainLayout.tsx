@@ -37,8 +37,6 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 		i.roles?.find((j) => profile?.userRoles.some((r) => r.name == j)),
 	);
 
-	const filteredMenuItems = isAdminRole ? accessList : accessList.filter((_, index) => index !== 0);
-
 	const onToggleOpenSidebarDrawer = () => {
 		setIsOpenSidebarDrawer((prev) => !prev);
 	};
@@ -62,7 +60,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 				<section className={styles.layout}>
 					<div className={styles.sidebar}>
 						<Sidebar
-							menuItems={filteredMenuItems}
+							menuItems={accessList}
 							onOpenSidebarDrawer={onToggleOpenSidebarDrawer}
 							isOpenSidebarDrawer={isOpenSidebarDrawer}
 							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
@@ -92,7 +90,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					>
 						<Sidebar
 							isMobileSidebar
-							menuItems={filteredMenuItems}
+							menuItems={accessList}
 							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
 							isOpenSidebarDrawer={isOpenSidebarDrawer}
 						/>
