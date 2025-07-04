@@ -10,8 +10,11 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { Subscription } from '../../model/types/subscription';
+import { SubscriptionTooltip } from '../SubscriptionTooltip/SubscriptionTooltip';
 
 import styles from './SubscriptionCard.module.css';
+import { Tooltip } from '@/shared/ui/Tooltip';
+import { Icon } from '@/shared/ui/Icon';
 
 interface SubscriptionCardProps {
 	subscription: Subscription;
@@ -36,11 +39,25 @@ export const SubscriptionCard = ({
 		<Card withOutsideShadow className={classNames(styles['subscription'], className)}>
 			<Flex direction="column" gap="14">
 				<Flex direction="column" gap="14">
-					<Flex gap="8" className={styles['subscription-header']}>
-						{subscription.icon}
-						<Text variant={titleVariant} className={styles['subscription-name']}>
-							{subscription.name}
-						</Text>
+					<Flex gap="8" justify="between" className={styles['subscription-header']}>
+						<Flex justify="start">
+							{subscription.icon}
+							<Text variant={titleVariant} className={styles['subscription-name']}>
+								{subscription.name}
+							</Text>
+						</Flex>
+						{subscription.hasSubscribeButton && (
+							<Tooltip
+								title={<SubscriptionTooltip />}
+								offsetTooltip={0}
+								placement="bottom"
+								color="violet"
+							>
+								<div className={styles['subscription-tooltip']}>
+									<Icon icon="info" size={20} color="black-600" />
+								</div>
+							</Tooltip>
+						)}
 					</Flex>
 					<Text variant="body2" className={styles['subscription-description']}>
 						{subscription.description}
