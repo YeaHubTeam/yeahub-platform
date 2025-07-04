@@ -127,7 +127,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 		roles: allRoles,
 	},
 	{
-		type: 'settings',
+		type: 'single',
 		route: ROUTES.settings.route,
 		title: i18n.t(Translation.HEADER_MENU_SETTINGS),
 		icon: SettingsIcon,
