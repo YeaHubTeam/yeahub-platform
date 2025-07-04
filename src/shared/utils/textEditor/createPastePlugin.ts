@@ -1,33 +1,51 @@
 import { Editor } from '@tiptap/react';
 import { Plugin } from 'prosemirror-state';
 
-import { convertSpacesToTabs } from './convertSpacesToTabs';
-
 export function createPastePlugin(editorInstance: Editor) {
 	return new Plugin({
 		props: {
-			handlePaste(view, event, _slice) {
+			handlePaste(view, event) {
 				const html = event.clipboardData?.getData('text/html');
 				if (html) {
 					return false;
 				}
+
 				const text = event.clipboardData?.getData('text/plain');
-				const state = view.state;
-				const { $from } = state.selection;
+				if (!text) return false;
+
+				const { $from } = view.state.selection;
 				const parentNodeType = $from.parent.type.name;
 				if (parentNodeType === 'codeBlock') {
 					return false;
 				}
-				if (text && text.includes('\n')) {
+
+				if (text.match(/^```[\s\S]*```$/)) {
 					event.preventDefault();
-					const codeWithTabs = convertSpacesToTabs(text, 2);
+					const codeContent = text.replace(/^```(\w*)?\n?|\n```$/g, '');
 					editorInstance.commands.insertContent({
 						type: 'codeBlock',
 						attrs: { language: 'plaintext' },
-						content: [{ type: 'text', text: codeWithTabs }],
+						content: [{ type: 'text', text: codeContent }],
 					});
 					return true;
 				}
+
+				if (text.match(/^#+\s.+/m)) {
+					return false;
+				}
+
+				if (text.includes('\n')) {
+					event.preventDefault();
+
+					const cleanText = text
+						.replace(/^plaintext\b|\bplaintext$/gi, '')
+						.replace(/^```|```$/g, '')
+						.trim();
+
+					editorInstance.commands.insertContent(cleanText);
+					return true;
+				}
+
 				return false;
 			},
 		},
