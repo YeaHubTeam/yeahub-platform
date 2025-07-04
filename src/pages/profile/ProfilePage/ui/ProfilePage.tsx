@@ -2,8 +2,12 @@ import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 
-import { getFullProfile, getSpecializationId, profileActions } from '@/entities/profile';
-import { getActiveProfile } from '@/entities/profile/model/selectors/profileSelectors';
+import {
+	getActiveProfile,
+	getFullProfile,
+	getSpecializationId,
+	profileActions,
+} from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 
 import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
