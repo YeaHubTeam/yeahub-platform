@@ -3,12 +3,17 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { QuizQuestionAnswerType } from '../../model/types/quiz';
-import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
+import { getProfileId } from '@/entities/profile';
+import { useGetQuestionByIdQuery } from '@/entities/question';
+import { QuizQuestionAnswerType } from '@/entities/quiz/model/types/quiz';
+import { ResponseButtons } from '@/entities/quiz/ui/ResponseButtons/ResponseButtons';
+
+import { FavoriteQuestionButton } from '@/features/question/favoriteQuestion';
 
 import styles from './InterviewSlider.module.css';
 
@@ -39,6 +44,10 @@ export const InterviewSlider = ({
 		setIsAnswerVisible(!isAnswerVisible);
 	};
 
+	const profileId = useAppSelector(getProfileId);
+	const { data } = useGetQuestionByIdQuery({ questionId: `${id}`, profileId: profileId });
+	const isFavorite = data?.isFavorite;
+
 	return (
 		<article
 			key={id}
@@ -66,6 +75,9 @@ export const InterviewSlider = ({
 				className={styles['response-buttons']}
 				answer={answer}
 				changeAnswer={changeAnswer}
+				favoriteButton={
+					<FavoriteQuestionButton questionId={id} size={'small'} isFavorite={isFavorite} />
+				}
 			/>
 			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>
