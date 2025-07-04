@@ -41,6 +41,7 @@ const SidebarCategoryMenuItem = ({
 				[styles.expanded]: expanded,
 				[styles.fullwidth]: fullWidth,
 			})}
+			data-testid="SidebarCategoryMenuItem"
 		>
 			<Tooltip
 				title={t(menuItem.title)}
@@ -49,15 +50,29 @@ const SidebarCategoryMenuItem = ({
 				tooltipDelay={{ open: 0, close: 50 }}
 				shouldShowTooltip={isShowTooltip}
 			>
-				<button className={styles.container} onClick={handleExpand}>
+				<button
+					className={styles.container}
+					data-testid="SidebarCategoryMenuItem_ExpandButton"
+					onClick={handleExpand}
+				>
 					<div className={styles.wrap}>
 						<ImageComponent className={styles.icon} />
 						<span className={classNames(styles.title)}>{t(menuItem.title)}</span>
 					</div>
 					<div className={styles.side}>
-						{!fullWidth && <ArrowIcon className={styles['category-expand-icon']} />}
+						{!fullWidth && (
+							<ArrowIcon
+								className={styles['category-expand-icon']}
+								data-testid="SidebarCategoryMenuItem_ArrowIcon"
+							/>
+						)}
 						{menuItem.notifications && (
-							<div className={styles.notifications}>{menuItem.notifications}</div>
+							<div
+								className={styles.notifications}
+								data-testid="SidebarCategoryMenuItem_Notifications"
+							>
+								{menuItem.notifications}
+							</div>
 						)}
 					</div>
 				</button>

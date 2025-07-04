@@ -109,7 +109,12 @@ export const Sidebar = ({
 						isShowTooltip={isShowTooltip}
 					/>
 				</div>
-				<Flex direction="column" gap="8" className={styles['bottom-actions']}>
+				<Flex
+					direction="column"
+					gap="8"
+					className={styles['bottom-actions']}
+					dataTestId="Sidebar_BottomButtons"
+				>
 					<Button
 						className={classNames(styles['sidebar-bottom-button'], {
 							[styles['sidebar-bottom-button-hide']]: isOpenNavSidebar,
@@ -117,6 +122,7 @@ export const Sidebar = ({
 						size="large"
 						onClick={openSupportTab}
 						preffix={<ChatIcon />}
+						dataTestId="Sidebar_BottomFirstButton"
 					>
 						<span>{t(Translation.SUPPORT, { ns: i18Namespace.translation })}</span>
 					</Button>
@@ -129,6 +135,7 @@ export const Sidebar = ({
 							onClick={onLogout}
 							preffix={<SignOutIcon isCurrentColor />}
 							variant="destructive"
+							dataTestId="Sidebar_BottomSecondButton"
 						>
 							<span>{t(Translation.LOGOUT, { ns: i18Namespace.translation })}</span>
 						</Button>
