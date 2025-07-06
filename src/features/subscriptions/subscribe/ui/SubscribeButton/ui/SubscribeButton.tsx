@@ -1,17 +1,19 @@
 import classNames from 'classnames';
-import toast from 'react-hot-toast';
 import { useFormContext } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 import i18n from '@/shared/config/i18n/i18n';
-import { Button } from '@/shared/ui/Button';
-import { useLazyGetPaymentUrlQuery } from '../api/getPaymentUrl';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-
-import styles from './SubscribeButton.module.css';
-import { useNavigate } from 'react-router-dom';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Button } from '@/shared/ui/Button';
+
 import { getIsEmailVerified } from '@/entities/profile';
+
+import { useLazyGetPaymentUrlQuery } from '../api/getPaymentUrl';
+
+import styles from './SubscribeButton.module.css';
 
 interface SubscribeButtonProps {
 	className?: string;

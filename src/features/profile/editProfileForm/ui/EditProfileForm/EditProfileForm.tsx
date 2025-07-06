@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { FullProfile, useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
@@ -27,7 +28,8 @@ export const EditProfileForm = () => {
 	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 
 	const { hash } = useLocation();
-	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
+
 	const { isLoading: isLoadingSlilsList } = useGetSkillsListQuery({ limit: 100 });
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
 
@@ -39,23 +41,15 @@ export const EditProfileForm = () => {
 	const methods = useForm<ProfileSchema>({
 		resolver: yupResolver(editProfileSchema),
 		mode: 'onTouched',
-		defaultValues: userProfile ? mapProfileToForm(userProfile) : {},
+		defaultValues: mapProfileToForm(profile),
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
-
-	useEffect(() => {
-		if (userProfile) {
-			methods.reset(mapProfileToForm(userProfile));
-		}
-	}, [methods, userProfile]);
-
 	const onSubmit = (data: ProfileSchema) => {
-		updateProfile(mapFormToProfile(userProfile as FullProfile, data));
-		methods.reset();
+		updateProfile(mapFormToProfile(profile, data));
 	};
 
-	if (isLoadingProfile || isLoadingSlilsList) return <EditProfileFormSkeleton />;
+	if (isLoadingSlilsList) return <EditProfileFormSkeleton />;
 	return (
 		<section className={styles.section}>
 			<Tabs
