@@ -42,11 +42,7 @@ export const BaseFilterSection = <T,>({
 			<Flex wrap="wrap" gap="8">
 				{data &&
 					data.map((item) => (
-						<Tooltip
-							title={item.tooltip}
-							key={item?.id as Key}
-							shouldShowTooltip={item.disabled || false}
-						>
+						<Tooltip title={item.tooltip} key={item?.id as Key} shouldShowTooltip={item.disabled}>
 							<Chip
 								className={styles.chip}
 								label={item.title}
