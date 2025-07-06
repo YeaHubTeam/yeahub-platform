@@ -91,5 +91,10 @@
 			"placeholder": "Enter your username",
 			"button": "Delete Profile"
 		}
+	},
+	"tooltip": {
+	"limit.reached": "Profile limit reached",
+	"empty.specialization": "A profile without a selected specialization exists",
+	"not.member": "Available for members only"
 	}
 }
