@@ -4,6 +4,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { Chip } from '../Chip';
+import { Tooltip } from '../Tooltip';
 
 import styles from './BaseFilterSection.module.css';
 
@@ -13,6 +14,7 @@ type DateType<T> = {
 	imageSrc?: string | null;
 	active?: boolean;
 	disabled?: boolean;
+	tooltip?: string;
 };
 
 export interface BaseFilterSectionProps<T> {
@@ -40,25 +42,30 @@ export const BaseFilterSection = <T,>({
 			<Flex wrap="wrap" gap="8">
 				{data &&
 					data.map((item) => (
-						<Chip
-							className={styles.chip}
+						<Tooltip
+							title={item.tooltip}
 							key={item?.id as Key}
-							label={item.title}
-							theme="primary"
-							prefix={
-								item.imageSrc && (
-									<img
-										style={{ width: 20, height: 20 }}
-										src={item.imageSrc}
-										alt={item.title}
-										loading="lazy"
-									/>
-								)
-							}
-							onClick={onHandleClick(item.id)}
-							active={!disabled && item.active}
-							disabled={disabled ? disabled : item.disabled}
-						/>
+							shouldShowTooltip={item.disabled || false}
+						>
+							<Chip
+								className={styles.chip}
+								label={item.title}
+								theme="primary"
+								prefix={
+									item.imageSrc && (
+										<img
+											style={{ width: 20, height: 20 }}
+											src={item.imageSrc}
+											alt={item.title}
+											loading="lazy"
+										/>
+									)
+								}
+								onClick={onHandleClick(item.id)}
+								active={!disabled && item.active}
+								disabled={disabled || item.disabled}
+							/>
+						</Tooltip>
 					))}
 			</Flex>
 		</Flex>
