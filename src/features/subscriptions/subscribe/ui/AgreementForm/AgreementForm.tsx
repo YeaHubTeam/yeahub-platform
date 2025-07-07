@@ -14,7 +14,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { SubscriptionCard } from '@/entities/subscription';
+import { PremiumSubscriptionTooltipBody, SubscriptionCard } from '@/entities/subscription';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
@@ -65,6 +65,7 @@ export const AgreementForm = () => {
 			description: t(SubscriptionCardI18.SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION),
 			price: 400,
 			discountedPrice: 200,
+			tooltipBody: <PremiumSubscriptionTooltipBody />,
 			hasSubscribeButton: true,
 			advantages: [
 				{

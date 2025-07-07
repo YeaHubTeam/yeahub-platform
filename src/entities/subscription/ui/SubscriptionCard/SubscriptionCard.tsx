@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { Subscription } from '../../model/types/subscription';
-import { SubscriptionTooltip } from '../SubscriptionTooltip/SubscriptionTooltip';
+import { PremiumSubscriptionTooltipBody } from '../PremiumSubscriptionTooltipBody/PremiumSubscriptionTooltipBody';
 
 import styles from './SubscriptionCard.module.css';
 import { Tooltip } from '@/shared/ui/Tooltip';
@@ -46,16 +46,14 @@ export const SubscriptionCard = ({
 								{subscription.name}
 							</Text>
 						</Flex>
-						{subscription.hasSubscribeButton && (
+						{subscription.tooltipBody && (
 							<Tooltip
-								title={<SubscriptionTooltip />}
+								title={subscription.tooltipBody}
 								offsetTooltip={0}
 								placement="bottom"
 								color="violet"
 							>
-								<div className={styles['subscription-tooltip']}>
-									<Icon icon="info" size={20} color="black-600" />
-								</div>
+								<Icon icon="info" size={20} color="black-600" />
 							</Tooltip>
 						)}
 					</Flex>
