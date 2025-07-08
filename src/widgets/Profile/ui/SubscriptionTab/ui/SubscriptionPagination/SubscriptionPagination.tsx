@@ -15,6 +15,8 @@ export const SubscriptionPagination = ({
 	totalPage,
 	limitCount,
 }: SubscriptionPaginationProps) => {
+	const totalPages = totalPage && limitCount ? Math.ceil(totalPage / limitCount) : 0;
+
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};
@@ -34,7 +36,7 @@ export const SubscriptionPagination = ({
 				onNextPageClick={onNextPageClick}
 				onChangePage={onPaginationButtonClick}
 				page={currentPage}
-				totalPages={Math.ceil(totalPage! / limitCount!)}
+				totalPages={totalPages}
 			/>
 		</div>
 	);
