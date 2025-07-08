@@ -10,7 +10,8 @@ import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
-import { Tabs } from '@/shared/ui/Tabs';
+import { Tabs, useTabs } from '@/shared/ui/Tabs';
+import { Text } from '@/shared/ui/Text';
 
 import { FullProfile, useProfileQuery } from '@/entities/auth';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -32,9 +33,7 @@ export const EditProfileForm = () => {
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
 
 	const tabs = getTabs(t);
-	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
-		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
-	});
+	const { activeTab, setActiveTab } = useTabs(tabs);
 
 	const methods = useForm<ProfileSchema>({
 		resolver: yupResolver(editProfileSchema),
@@ -58,16 +57,14 @@ export const EditProfileForm = () => {
 	if (isLoadingProfile || isLoadingSlilsList) return <EditProfileFormSkeleton />;
 	return (
 		<section className={styles.section}>
-			<Tabs
-				title={t(Profile.EDIT_PAGE_TITLE)}
-				tabs={tabs}
-				tabToggle={currentActiveTab}
-				setTabToggle={setCurrentActiveTab}
-			/>
+			<Text variant="body5-strong" isMainTitle className={styles.title}>
+				{t(Profile.EDIT_PAGE_TITLE)}
+			</Text>
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<FormProvider {...methods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>
-						{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+						{tabs.map(({ id, Component }) => activeTab.id === id && <Component key={id} />)}
 
 						<Flex direction="column" align="end" className={styles['btn-container']}>
 							<Button type="submit" disabled={isUpdateProfileLoading}>
