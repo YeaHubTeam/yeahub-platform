@@ -32,11 +32,11 @@ export const getTabs = (t: (arg: string) => string) => [
 export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
 	//image: profile.image_src,
 	username: profile.username,
-	specialization: profile.profiles[0].specializationId,
+	specialization: profile.activeProfile.specializationId,
 	email: profile.email,
 	location: profile.city,
 	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
-		const currentSocialNetwork = profile.profiles[0].socialNetwork?.find(
+		const currentSocialNetwork = profile.activeProfile.socialNetwork?.find(
 			({ code }) => code === socialNetwork.code,
 		);
 		result.push({
@@ -45,16 +45,16 @@ export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
 		});
 		return result;
 	}, []),
-	aboutMe: profile.profiles[0].description,
-	skills: profile.profiles[0].profileSkills.map((skill) => skill.id),
+	aboutMe: profile.activeProfile.description,
+	skills: profile.activeProfile.profileSkills.map((skill) => skill.id),
 });
 
 export const mapFormToProfile = (
 	profile: FullProfile,
 	values: ProfileSchema,
 ): EditProfileRequestData => ({
-	...profile.profiles[0],
-	id: profile.profiles[0].id,
+	...profile.activeProfile,
+	id: profile.activeProfile.id,
 	specializationId: values.specialization,
 	description: values.aboutMe || '',
 	socialNetwork: values.socialNetworks

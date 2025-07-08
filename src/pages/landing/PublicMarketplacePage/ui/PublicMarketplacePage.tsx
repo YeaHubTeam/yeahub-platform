@@ -13,7 +13,6 @@ import { Text } from '@/shared/ui/Text';
 import { toast } from '@/shared/ui/Toast';
 
 import { ResourcesList } from '@/widgets/Marketplace';
-
 import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';

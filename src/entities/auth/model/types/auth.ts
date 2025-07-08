@@ -19,6 +19,7 @@ export type SignUpFormValues = Pick<User, 'username' | 'email'> & {
 
 export interface FullProfile extends User {
 	profiles: Profile[];
+	activeProfile: Profile;
 }
 
 export interface AuthResponse {

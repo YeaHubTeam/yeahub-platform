@@ -2,14 +2,14 @@ import { useTranslation } from 'react-i18next';
 
 import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { User } from '@/shared/config/i18n/i18nTranslations';
+import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 
 import styles from './UserPreferencesHeader.module.css';
 
@@ -18,12 +18,13 @@ interface UserPreferencesHeaderProps {
 }
 
 export const UserPreferencesHeader = ({ isPremiumUser }: UserPreferencesHeaderProps) => {
-	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
+
 	const { t } = useTranslation(i18Namespace.user);
 
 	return (
 		<div className={styles.container}>
-			{isSuccessGetProfile && (
+			{profile && (
 				<>
 					<Flex direction="column" align="center" gap="14" className={styles.header}>
 						<div className={styles.avatar}>
