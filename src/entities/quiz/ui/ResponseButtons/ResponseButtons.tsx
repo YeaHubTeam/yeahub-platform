@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -16,9 +17,15 @@ interface ResponseButtonsProps {
 	className?: string;
 	answer: string;
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
+	favoriteButton?: React.ReactNode;
 }
 
-export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseButtonsProps) => {
+export const ResponseButtons = ({
+	className,
+	answer,
+	changeAnswer,
+	favoriteButton,
+}: ResponseButtonsProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 	const { isMobile } = useScreenSize();
 
@@ -42,6 +49,7 @@ export const ResponseButtons = ({ className, answer, changeAnswer }: ResponseBut
 			>
 				{!isMobile && <span>{t(InterviewQuiz.ANSWER_KNOW)}</span>}
 			</Button>
+			{favoriteButton}
 		</Flex>
 	);
 };
