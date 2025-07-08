@@ -35,7 +35,7 @@ export const SelectWithChips = <
 	return (
 		<div className={styles.wrapper}>
 			<Dropdown
-				width={320}
+				// width={320}
 				label={placeholder}
 				disabled={disabled}
 				onSelect={(val) => onChange(String(val))}

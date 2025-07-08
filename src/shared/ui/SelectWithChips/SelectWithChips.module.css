@@ -21,6 +21,12 @@
   
 }
 
+@media (width <= 360px) {
+  .selection {
+    width: 100%;
+  }
+}
+
 .select {
   width: 100%;
   max-width: 320px;
