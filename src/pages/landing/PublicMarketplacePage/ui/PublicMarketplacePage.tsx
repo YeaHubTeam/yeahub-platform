@@ -40,7 +40,7 @@ const PublicMarketplacePage = () => {
 
 	const {
 		data: resourcesResponse,
-		isFetching,
+		isLoading,
 		error,
 	} = useGetResourcesListQuery({
 		page: filter.page ?? 1,
@@ -52,7 +52,7 @@ const PublicMarketplacePage = () => {
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	if (isFetching && !resourcesResponse) {
+	if (isLoading) {
 		return <div>Loading…</div>;
 	}
 
