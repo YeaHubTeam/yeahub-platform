@@ -1,4 +1,4 @@
-import { Response } from '@/shared/types/types';
+import { Response, SortOrder } from '@/shared/types/types';
 
 export type ResourceAccessCategory = 'free' | 'has_trial' | 'payed_only';
 
@@ -23,7 +23,7 @@ export interface GetResourcesListParamsRequest {
 	accessCategory?: ResourceAccessCategory;
 	authorId?: string;
 	orderBy?: string;
-	order?: 'ASC' | 'DESC';
+	order?: SortOrder;
 	random?: boolean;
 }
 
