@@ -91,7 +91,7 @@ export const SpecializationSelect = ({
 		return (
 			<>
 				<Dropdown
-					width={320}
+					// width={320}
 					label={
 						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 					}
