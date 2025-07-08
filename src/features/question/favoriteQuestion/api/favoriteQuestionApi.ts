@@ -15,7 +15,9 @@ const favoriteQuestionApi = baseApi.injectEndpoints({
 				url: route(favoriteQuestionApiUrls.addFavoriteQuestion, profileId, questionId),
 				method: 'POST',
 			}),
-			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],
+			invalidatesTags: (_result, _error, { quiz }: { quiz: boolean }) => {
+				return quiz ? [ApiTags.INTERVIEW_QUIZ] : [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL];
+			},
 			async onQueryStarted() {
 				try {
 					toast.success(i18n.t(Translation.TOAST_QUESTIONS_FAVORITE_SUCCESS));
@@ -31,7 +33,9 @@ const favoriteQuestionApi = baseApi.injectEndpoints({
 				url: route(favoriteQuestionApiUrls.resetFavoriteQuestion, profileId, questionId),
 				method: 'DELETE',
 			}),
-			invalidatesTags: [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL],
+			invalidatesTags: (_result, _error, { quiz }: { quiz: boolean }) => {
+				return quiz ? [ApiTags.INTERVIEW_QUIZ] : [ApiTags.QUESTIONS, ApiTags.QUESTION_DETAIL];
+			},
 			async onQueryStarted() {
 				try {
 					toast.success(i18n.t(Translation.TOAST_QUESTIONS_RESET_FAVORITE_SUCCESS));

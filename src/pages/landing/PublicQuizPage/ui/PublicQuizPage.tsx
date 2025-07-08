@@ -21,7 +21,7 @@ import {
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
 
-import { InterviewSlider } from '@/widgets/quiz/InterviewSlider/InterviewSlider';
+import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
 
 import styles from './PublicQuizPage.module.css';
 
@@ -139,6 +139,7 @@ const PublicQuizPage = () => {
 						changeAnswer={handleAnswerChange}
 						isAnswerVisible={isAnswerVisible}
 						setIsAnswerVisible={setIsAnswerVisible}
+						isPublic={true}
 					/>
 					<Flex direction="row">
 						<Button onClick={isNextButton ? onRightSlide : onCheckQuizResult} disabled={isDisabled}>

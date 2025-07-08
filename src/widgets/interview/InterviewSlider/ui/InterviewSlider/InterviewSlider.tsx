@@ -3,15 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { getProfileId } from '@/entities/profile';
-import { useGetQuestionByIdQuery } from '@/entities/question';
-import { QuizQuestionAnswerType } from '@/entities/quiz/model/types/quiz';
-import { ResponseButtons } from '@/entities/quiz/ui/ResponseButtons/ResponseButtons';
+import { QuizQuestionAnswerType, ResponseButtons } from '@/entities/quiz';
 
 import { FavoriteQuestionButton } from '@/features/question/favoriteQuestion';
 
@@ -26,6 +22,8 @@ interface InterviewSliderProps {
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	isAnswerVisible: boolean;
 	setIsAnswerVisible: (value: boolean) => void;
+	isFavorite?: boolean;
+	isPublic?: boolean;
 }
 
 export const InterviewSlider = ({
@@ -37,16 +35,14 @@ export const InterviewSlider = ({
 	changeAnswer,
 	isAnswerVisible,
 	setIsAnswerVisible,
+	isFavorite,
+	isPublic = false,
 }: InterviewSliderProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
 	const onToggleAnswerVisibility = () => {
 		setIsAnswerVisible(!isAnswerVisible);
 	};
-
-	const profileId = useAppSelector(getProfileId);
-	const { data } = useGetQuestionByIdQuery({ questionId: `${id}`, profileId: profileId });
-	const isFavorite = data?.isFavorite;
 
 	return (
 		<article
@@ -76,7 +72,14 @@ export const InterviewSlider = ({
 				answer={answer}
 				changeAnswer={changeAnswer}
 				favoriteButton={
-					<FavoriteQuestionButton questionId={id} size={'small'} isFavorite={isFavorite} />
+					isPublic ? undefined : (
+						<FavoriteQuestionButton
+							questionId={id}
+							size={'small'}
+							isFavorite={isFavorite}
+							isQuiz={true}
+						/>
+					)
 				}
 			/>
 			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
