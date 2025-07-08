@@ -12,3 +12,12 @@ export interface Payment {
 	data: PaymentData[];
 	total: number;
 }
+
+export interface PaginationParams {
+	page?: number;
+	limit?: number;
+}
+
+export interface ActivePaymentState {
+	payment: Payment | null;
+}

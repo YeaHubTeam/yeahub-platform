@@ -21,4 +21,5 @@ export enum ApiTags {
 	PUBLIC_QUESTION_DETAIL = 'public_question_detail',
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
+	PAYMENTS = 'payments',
 }

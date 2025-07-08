@@ -6,17 +6,17 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { PayHistory } from '../../types/types';
+import { PaymentData } from '@/entities/payment';
 
 import styles from './PayHistoryItem.module.css';
 
 interface PayHistoryItemProps {
-	payHistory: PayHistory;
+	payHistory: PaymentData;
 }
 
 export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {
 	return (
-		<Card key={payHistory.id} className={styles['history-item']}>
+		<Card className={styles['history-item']}>
 			<Flex gap="16" align="center">
 				<ArrowDownIcon className={styles['arrow-down-icon']} />
 				<Flex gap="8" align="center">
@@ -24,12 +24,12 @@ export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {
 						className={styles['seal-check']}
 						style={{
 							color:
-								payHistory.status === 'pending'
+								payHistory.status === 'CONFIRMED'
 									? 'var(--color-yellow-900)'
 									: 'var(--color-green-900)',
 						}}
 					/>
-					<span>{formatDate(parseISO(payHistory.payDate), 'd MMMM yyyy')}</span>
+					<span>{formatDate(parseISO(payHistory.createdAt), 'd MMMM yyyy')}</span>
 				</Flex>
 			</Flex>
 		</Card>
