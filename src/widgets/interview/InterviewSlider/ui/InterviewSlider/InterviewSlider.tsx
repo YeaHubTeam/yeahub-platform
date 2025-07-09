@@ -7,8 +7,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { QuizQuestionAnswerType } from '../../model/types/quiz';
-import { ResponseButtons } from '../ResponseButtons/ResponseButtons';
+import { QuizQuestionAnswerType, ResponseButtons } from '@/entities/quiz';
+
+import { FavoriteQuestionButton } from '@/features/question/favoriteQuestion';
 
 import styles from './InterviewSlider.module.css';
 
@@ -21,6 +22,8 @@ interface InterviewSliderProps {
 	changeAnswer: (answer: QuizQuestionAnswerType) => void;
 	isAnswerVisible: boolean;
 	setIsAnswerVisible: (value: boolean) => void;
+	isFavorite?: boolean;
+	isPublic?: boolean;
 }
 
 export const InterviewSlider = ({
@@ -32,6 +35,8 @@ export const InterviewSlider = ({
 	changeAnswer,
 	isAnswerVisible,
 	setIsAnswerVisible,
+	isFavorite,
+	isPublic = false,
 }: InterviewSliderProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
@@ -66,6 +71,16 @@ export const InterviewSlider = ({
 				className={styles['response-buttons']}
 				answer={answer}
 				changeAnswer={changeAnswer}
+				favoriteButton={
+					isPublic ? undefined : (
+						<FavoriteQuestionButton
+							questionId={id}
+							size={'small'}
+							isFavorite={isFavorite}
+							isQuiz={true}
+						/>
+					)
+				}
 			/>
 			{imageSrc && <ImageWithWrapper src={imageSrc} alt={title} className={styles.image} />}
 		</article>

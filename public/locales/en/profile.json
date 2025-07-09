@@ -1,80 +1,95 @@
 {
-  "edit.page.title": "Profile editing",
-  "tabs": {
-    "personal": "Personal info",
-    "about.me": "About me",
-    "skills": "Skills"
-  },
-  "photo": {
-    "title": "Profile photo",
-    "description": "Your photo will be visible to all members of the YeaHub community",
-    "update": "Update photo",
-    "delete": "Delete photo",
-    "update.full": "Update photograph",
-    "delete.full": "Delete photograph",
-    "modal": {
-      "title": "Select an area for profile photos",
-      "description": "The selected thumbnail will be used in articles, personal messages and comments.",
-      "submit": "Save the changes",
-      "click.secondary": "Change the photo",
-      "large.preview": "Large size of the avatar preview",
-      "small.preview": "Small size of the avatar preview",
-      "min.res": "Minimum image resolution: {{minRes}}",
-      "max.res": "Maximum resolution for an image: {{maxRes}}"
-    }
-  },
-  "personal": {
-    "title": "Personal information",
-    "description": "Your detailed information"
-  },
-  "links": {
-    "title": "Personal links",
-    "description": "Share your profiles on other social networks. networks"
-  },
-  "about.me": {
-    "title": "About your beloved",
-    "description": "Tell the whole community about yourself. We value a person not for his professional qualities, so write whatever you want to share.",
-    "empty": "Description is empty"
-  },
-  "skills": {
-    "title": "Your skills",
-    "description": "Show what you can do and what you're really good at",
-    "empty": "Skills not selected"
-  },
-  "form": {
-    "username": "Nickname",
-    "specialization": "IT specialty",
-    "email": "Email for communication",
-    "location": "Location",
-    "skills": "Skills"
-  },
-  "setting.tabs": {
-    "select.tariff": "Select tariff",
-    "change.password": "Password change",
-    "verify.email": "E-mail confirmation",
+	"edit.page.title": "Profile editing",
+	"tabs": {
+		"personal": "Personal info",
+		"about.me": "About me",
+		"skills": "Skills"
+	},
+	"photo": {
+		"title": "Profile photo",
+		"description": "Your photo will be visible to all members of the YeaHub community",
+		"update": "Update photo",
+		"delete": "Delete photo",
+		"update.full": "Update photograph",
+		"delete.full": "Delete photograph",
+		"modal": {
+			"title": "Select an area for profile photos",
+			"description": "The selected thumbnail will be used in articles, personal messages and comments.",
+			"submit": "Save the changes",
+			"click.secondary": "Change the photo",
+			"large.preview": "Large size of the avatar preview",
+			"small.preview": "Small size of the avatar preview",
+			"min.res": "Minimum image resolution: {{minRes}}",
+			"max.res": "Maximum resolution for an image: {{maxRes}}"
+		}
+	},
+	"personal": {
+		"title": "Personal information",
+		"description": "Your detailed information"
+	},
+	"links": {
+		"title": "Personal links",
+		"description": "Share your profiles on other social networks. networks"
+	},
+	"about.me": {
+		"title": "About your beloved",
+		"description": "Tell the whole community about yourself. We value a person not for his professional qualities, so write whatever you want to share.",
+		"empty": "Description is empty"
+	},
+	"skills": {
+		"title": "Your skills",
+		"description": "Show what you can do and what you're really good at",
+		"empty": "Skills not selected"
+	},
+	"form": {
+		"username": "Nickname",
+		"specialization": "IT specialty",
+		"email": "Email for communication",
+		"location": "Location",
+		"skills": "Skills"
+	},
+	"setting.tabs": {
+		"select.tariff": "Select tariff",
+		"change.password": "Password change",
+		"verify.email": "E-mail confirmation",
 		"account": "Account"
-  },
-  "email.verification": {
-    "title": "Confirm your e-mail",
-    "description": "Confirm your e-mail to activate your account, after activation you will get access to our platform",
-    "email": "Enter e-mail",
-    "submit": "Confirm",
-    "sent.success": "The email was successfully sent to the mail",
-    "verify.stub": {
-      "title": "{{username}}, confirm your e-mail",
-      "description": "Become a part of our team! Confirm your e-mail to get access to additional features of the platform and start expanding your horizons in a community of dedicated professionals like you. Join us on the way to new heights!",
-      "link": "Confirm e-mail"
-    },
-    "success.verify.stub": {
-      "title": "Mail has been successfully confirmed",
-      "description": "Thank you for confirming your mail, now more services are available on the platform"
-    }
-  },
-  "change.password": {
-    "title": "Change your password",
-    "description": "For security reasons, or if you notice suspicious activity, change your password",
-    "label": "Enter a new password",
-    "repeat.label": "Repeat the password",
-    "placeholder": "Password"
-  }
+	},
+	"email.verification": {
+		"title": "Confirm your e-mail",
+		"description": "Confirm your e-mail to activate your account, after activation you will get access to our platform",
+		"email": "Enter e-mail",
+		"submit": "Confirm",
+		"sent.success": "The email was successfully sent to the mail",
+		"verify.stub": {
+			"title": "{{username}}, confirm your e-mail",
+			"description": "Become a part of our team! Confirm your e-mail to get access to additional features of the platform and start expanding your horizons in a community of dedicated professionals like you. Join us on the way to new heights!",
+			"link": "Confirm e-mail"
+		},
+		"success.verify.stub": {
+			"title": "Mail has been successfully confirmed",
+			"description": "Thank you for confirming your mail, now more services are available on the platform"
+		}
+	},
+	"change.password": {
+		"title": "Change your password",
+		"description": "For security reasons, or if you notice suspicious activity, change your password",
+		"label": "Enter a new password",
+		"repeat.label": "Repeat the password",
+		"placeholder": "Password"
+	},
+	"manage.profiles": {
+		"title": "Your Profiles",
+		"open": "Go to profile",
+		"tooltip": {
+			"not.member": "Additional profiles are available to community members",
+			"max.count": "You have reached the limit of profiles you can create"
+		},
+		"modal": {
+			"title": "Delete Profile",
+			"description": "All your data, progress and activity will be permanently deleted. This action cannot be undone.",
+			"label": "Enter your username to confirm",
+			"placeholder": "Enter your username",
+			"button": "Delete Profile"
+		}
+	}
 }

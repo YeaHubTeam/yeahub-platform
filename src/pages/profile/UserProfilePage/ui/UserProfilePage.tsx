@@ -20,7 +20,7 @@ export const UserProfilePage = () => {
 		dispatch(profileActions.setIsEdit(false));
 	}, []);
 
-	const { description, profileSkills, specializationId } = profile?.profiles?.[0] || {};
+	const { description, profileSkills, specializationId } = profile?.activeProfile || {};
 	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId));
 
 	return (

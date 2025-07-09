@@ -19,6 +19,7 @@ export type SignUpFormValues = Pick<User, 'username' | 'email'> & {
 
 export interface FullProfile extends User {
 	profiles: Profile[];
+	activeProfile: Profile;
 }
 
 export interface AuthResponse {
@@ -36,6 +37,7 @@ export interface Profile {
 	socialNetwork: SocialNetwork[];
 	image_src: string;
 	profileSkills: Skill[];
+	isActive: boolean;
 }
 
 interface Permission {
@@ -97,7 +99,8 @@ export type RoleName =
 	| 'admin'
 	| 'hr'
 	| 'candidate-free'
-	| 'candidate-premium';
+	| 'candidate-premium'
+	| 'author';
 
 export interface Role {
 	id: number;

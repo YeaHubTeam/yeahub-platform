@@ -37,6 +37,7 @@ export type IconName =
 	| 'telegramWithBackground'
 	| 'youtube'
 	| 'youtubeWithBackground'
+	| 'tiktok'
 	| 'plus'
 	| 'minus'
 	| 'plusCircle'

@@ -46,6 +46,7 @@ import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
+import TikTok from '@/shared/assets/icons/tiktok.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
@@ -96,6 +97,7 @@ export const icons: Record<IconName, IconComponent> = {
 	telegramWithBackground: TelegramWithBackground,
 	youtube: Youtube,
 	youtubeWithBackground: YoutubeWithBackground,
+	tiktok: TikTok,
 	plus: Plus,
 	minus: Minus,
 	plusCircle: PlusCircle,
