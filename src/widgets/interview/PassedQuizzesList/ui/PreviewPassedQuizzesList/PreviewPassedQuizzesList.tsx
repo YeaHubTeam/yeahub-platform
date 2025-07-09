@@ -6,6 +6,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewHistory, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -48,7 +49,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const actionRoute = !isVerified
 		? EMAIL_VERIFY_SETTINGS_TAB
 		: !hasPremium
-			? ROUTES.settings.page
+			? SELECT_TARIFF_SETTINGS_TAB
 			: ROUTES.interview.history.page;
 
 	const actionTitle = !isVerified
