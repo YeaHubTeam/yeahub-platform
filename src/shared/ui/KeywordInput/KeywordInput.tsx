@@ -77,7 +77,6 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 						<h4>{t(Questions.KEYWORDS_TITLE)}</h4>
 						<Flex
 							direction="row"
-							// gap="32"
 							wrap="wrap"
 							dataTestId="KeywordInput_Keywords"
 							className={styles.keywords}

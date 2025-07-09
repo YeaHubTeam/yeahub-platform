@@ -6,6 +6,8 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
+import { EMPTY_RESOURCE_ID } from '../../model/constants/resource';
+
 type ResourcesSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
@@ -86,7 +88,7 @@ export const ResourcesSelect = ({
 
 	const resourcesDictionary = useMemo(() => {
 		const emptyResource: ResourceType = {
-			id: 0,
+			id: EMPTY_RESOURCE_ID,
 			title: t(Marketplace.SELECT_CHOOSE),
 		};
 		return (resourcesTypes?.data || []).reduce(
@@ -94,7 +96,7 @@ export const ResourcesSelect = ({
 				acc[resource.id] = resource;
 				return acc;
 			},
-			{ 0: emptyResource } as Record<number, ResourceType>,
+			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<number, ResourceType>,
 		);
 	}, [resourcesTypes]);
 

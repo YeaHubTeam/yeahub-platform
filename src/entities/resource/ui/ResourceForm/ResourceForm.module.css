@@ -34,6 +34,12 @@
   }
 }
 
+@media (width>554px) {
+  .keywords button {
+    height: unset;
+  }
+}
+
 @media (width <=554px) {
   .keywords>div>div {
     flex-direction: column;

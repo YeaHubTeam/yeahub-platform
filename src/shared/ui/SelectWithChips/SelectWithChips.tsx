@@ -34,12 +34,7 @@ export const SelectWithChips = <
 }: SelectWithChipsProps<T, U>) => {
 	return (
 		<div className={styles.wrapper}>
-			<Dropdown
-				// width={320}
-				label={placeholder}
-				disabled={disabled}
-				onSelect={(val) => onChange(String(val))}
-			>
+			<Dropdown label={placeholder} disabled={disabled} onSelect={(val) => onChange(String(val))}>
 				{options.map((option) => (
 					<Option value={option.value} label={option.label} key={option.label} />
 				))}
