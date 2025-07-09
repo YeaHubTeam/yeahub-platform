@@ -47,15 +47,15 @@ export const ManageProfilesPanel = () => {
 	const tooltipEntry = useMemo(() => {
 		switch (true) {
 			case isReachedProfilesLimit:
-				return t(Profile.TOOLTIP_LIMIT_REACHED);
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED;
 			case hasSubscription && hasEmptySpecialization:
-				return t(Profile.TOOLTIP_EMPTY_SPECIALIZATION);
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION;
 			case !hasSubscription:
-				return t(Profile.TOOLTIP_NOT_MEMBER);
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER;
 			default:
 				return '';
 		}
-	}, [isReachedProfilesLimit, hasSubscription, hasEmptySpecialization, t]);
+	}, [isReachedProfilesLimit, hasSubscription, hasEmptySpecialization]);
 
 	const createProfileDisabled = Boolean(tooltipEntry);
 
@@ -78,13 +78,16 @@ export const ManageProfilesPanel = () => {
 				className={styles.mb}
 			/>
 			<div className={styles.tooltip}>
-				{createProfileDisabled ? (
-					<Tooltip title={tooltipEntry} className={styles.tooltip}>
-						<CreateProfileButton className={styles['create-button']} disabled />
-					</Tooltip>
-				) : (
-					<CreateProfileButton className={styles['create-button']} disabled={false} />
-				)}
+				<Tooltip
+					title={t(tooltipEntry)}
+					className={styles.tooltip}
+					shouldShowTooltip={createProfileDisabled}
+				>
+					<CreateProfileButton
+						className={styles['create-button']}
+						disabled={createProfileDisabled}
+					/>
+				</Tooltip>
 			</div>
 		</Card>
 	);
