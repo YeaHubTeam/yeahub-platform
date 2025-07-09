@@ -13,7 +13,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { FullProfile } from '@/entities/auth';
-import { getActiveProfile, getIsEdit } from '@/entities/profile';
+import { getIsEdit } from '@/entities/profile';
 import { SocialNetWorkList } from '@/entities/socialNetwork';
 import { Specialization } from '@/entities/specialization';
 import { UserRolesList } from '@/entities/user';
@@ -31,7 +31,6 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 
 	const { isMobileS } = useScreenSize();
 	const isEdit = useAppSelector(getIsEdit);
-	const activeProfile = useAppSelector(getActiveProfile);
 
 	// return (
 	// 	<div className={styles['card-info']}>
@@ -96,8 +95,8 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						</Link>
 					))}
 
-				{activeProfile && activeProfile?.socialNetwork?.length > 0 ? (
-					<SocialNetWorkList socialNetwork={activeProfile.socialNetwork} />
+				{profile.activeProfile?.socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.activeProfile.socialNetwork} />
 				) : null}
 			</div>
 		</div>

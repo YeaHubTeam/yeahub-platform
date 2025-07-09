@@ -15,7 +15,6 @@ export interface Quiz {
 	fullCount: number;
 	successCount: number;
 	skills: string[];
-	isFavorite: boolean;
 	response: QuizResponse;
 	questions: Question[];
 }

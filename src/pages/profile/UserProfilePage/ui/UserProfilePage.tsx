@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '@/shared/hooks';
+import { useAppDispatch } from '@/shared/hooks';
 
-import { getActiveProfile, profileActions } from '@/entities/profile';
+import { profileActions } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 import { useGetUserProfileByIdQuery } from '@/entities/user';
 
@@ -15,13 +15,12 @@ export const UserProfilePage = () => {
 	const { userId = '' } = useParams<{ userId: string }>();
 	const { data: profile } = useGetUserProfileByIdQuery(userId);
 	const dispatch = useAppDispatch();
-	const activeProfile = useAppSelector(getActiveProfile);
 
 	useEffect(() => {
 		dispatch(profileActions.setIsEdit(false));
 	}, []);
 
-	const { description, profileSkills, specializationId } = activeProfile || {};
+	const { description, profileSkills, specializationId } = profile?.activeProfile || {};
 	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId));
 
 	return (

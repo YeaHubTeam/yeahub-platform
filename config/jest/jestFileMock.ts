@@ -1,5 +1,5 @@
 const jestFileMock = function () {
-  return '';
+	return '';
 };
 
 export default jestFileMock;
