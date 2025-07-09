@@ -3,6 +3,8 @@ import * as yup from 'yup';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
+import { ResourceAccessCategory } from '@/entities/resource';
+
 import { CreateResourceFormValues } from '../../types/resourceCreateTypes';
 
 export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = yup.object().shape({
@@ -20,6 +22,9 @@ export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = 
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	accessCategory: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	accessCategory: yup
+		.mixed<ResourceAccessCategory>()
+		.oneOf(['free', 'has_trial', 'payed_only'])
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	isActive: yup.boolean().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });
