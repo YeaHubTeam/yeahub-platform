@@ -24,6 +24,7 @@ export type IconName =
 	| 'eyeClosed'
 	| 'like'
 	| 'dislike'
+	| 'info'
 	| 'instagram'
 	| 'linkedin'
 	| 'twitter'
