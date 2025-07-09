@@ -9,6 +9,7 @@ export const useScreenSize = () => {
 	const isTablet = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)' });
 	const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 	const isMobileS = useMediaQuery({ query: '(max-width: 480px)' });
+	const isMobileM = useMediaQuery({ query: '(max-width: 567px)' });
 
 	return {
 		isDesktop,
@@ -19,5 +20,6 @@ export const useScreenSize = () => {
 		isTablet,
 		isMobile,
 		isMobileS,
+		isMobileM,
 	};
 };
