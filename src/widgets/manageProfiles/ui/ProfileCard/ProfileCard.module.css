@@ -1,81 +1,103 @@
 .container {
-  position: relative;
+	position: relative;
 }
 
 .image {
-  max-width: 38px;
-  max-height: 38px;
-  border: 1px solid var(--color-black-30);
-  border-radius: 38px;
+	width: 38px;
+	height: 38px;
+	max-width: 38px;
+	max-height: 38px;
+	border: 1px solid var(--color-black-30);
+	border-radius: 38px;
 }
 
 .title {
-  position: relative;
-  color: var(--color-blue-550);
-  line-height: 120%;
+	position: relative;
+	color: var(--color-blue-550);
+	line-height: 120%;
 }
 
 .card {
-  flex-grow: 1;
-  padding: 10px 24px;
-  border: 1px solid var(--color-black-30);
-  border-radius: 14px;
-  background-color: var(--color-black-30);
-  cursor: pointer;
+	flex-grow: 1;
+	padding: 10px 24px;
+	border: 1px solid var(--color-black-30);
+	border-radius: 14px;
+	background-color: var(--color-black-30);
+	cursor: pointer;
 
-  &:hover {
-    border: 1px solid var(--color-purple-700);
+	&:hover {
+		border: 1px solid var(--color-purple-700);
 
-    .title {
-      color: var(--color-purple-700);
-    }
+		.title {
+			color: var(--color-purple-700);
+		}
 
-    .image {
-      border: 1px solid var(--color-purple-700);
-    }
-  }
+		.image {
+			border: 1px solid var(--color-purple-700);
+		}
+	}
+}
+
+.imageWrapper {
+	position: relative;
+	display: inline-block;
 }
 
 .icon-check::after {
-  position: absolute;
-  bottom: -10px;
-  left: -26px;
-  display: block;
-  width: 18px;
-  height: 18px;
-  background-image: url('../../model/assets/check.avif');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  content: '';
+	position: absolute;
+	bottom: 0;
+	right: -8px;
+	display: block;
+	width: 18px;
+	height: 18px;
+	background-image: url('../../model/assets/check.avif');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	content: '';
 }
 
 .active-container {
-  cursor: none;
+	cursor: none;
 }
 
 .active-color {
-  color: var(--color-purple-700);
+	color: var(--color-purple-700);
 }
 
 .active-border {
-  border: 1px solid var(--color-purple-700);
+	border: 1px solid var(--color-purple-700);
 }
 
 .button {
-  position: absolute;
-  top: 20px;
-  right: 24px;
+	position: absolute;
+	top: 20px;
+	right: 24px;
 }
 
 .button.open {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .icon {
-  transition: .3s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
 
 .button:hover .icon {
-  transform: translateX(5px);
+	transform: translateX(5px);
+}
+
+@media (max-width: 567px) {
+	.title {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 200px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		max-width: 130px;
+	}
 }
