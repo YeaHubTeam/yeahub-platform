@@ -3,17 +3,19 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { paymentsApiUrls } from '../model/constants/payments';
-import { PaginationParams, Payment } from '../model/types/payments';
+import { PaginationParams, GetPaymentsResponse } from '../model/types/payments';
 
 export const paymentApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getPaymentsHistory: build.query<Payment, { id: string; params?: PaginationParams }>({
-			query: ({ id, params }) => ({
-				url: route(paymentsApiUrls.getPaymentsHistory, id || ''),
-				params,
-			}),
-			providesTags: [ApiTags.PAYMENTS],
-		}),
+		getPaymentsHistory: build.query<GetPaymentsResponse, { id: string; params?: PaginationParams }>(
+			{
+				query: ({ id, params }) => ({
+					url: route(paymentsApiUrls.getPaymentsHistory, id || ''),
+					params: { page: 1, limit: 5, ...params },
+				}),
+				providesTags: [ApiTags.PAYMENTS],
+			},
+		),
 	}),
 });
 

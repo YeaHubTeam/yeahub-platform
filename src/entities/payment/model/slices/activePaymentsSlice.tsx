@@ -4,6 +4,7 @@ import { ActivePaymentState, Payment } from '../types/payments';
 
 const initialState: ActivePaymentState = {
 	payment: null,
+	limit: 5,
 };
 
 export const activePaymentSlice = createSlice({

@@ -6,12 +6,12 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { PaymentData } from '@/entities/payment';
+import { Payment } from '@/entities/payment';
 
 import styles from './PayHistoryItem.module.css';
 
 interface PayHistoryItemProps {
-	payHistory: PaymentData;
+	payHistory: Payment;
 }
 
 export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {

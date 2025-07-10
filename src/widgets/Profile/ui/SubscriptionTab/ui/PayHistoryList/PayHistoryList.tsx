@@ -6,7 +6,7 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { PaymentData, useGetPaymentsHistoryQuery } from '@/entities/payment';
+import { Payment, useGetPaymentsHistoryQuery } from '@/entities/payment';
 import { getFullProfile } from '@/entities/profile';
 
 import { PayHistoryItem } from '../PayHistoryItem/PayHistoryItem';
@@ -28,7 +28,7 @@ export const PayHistoryList = () => {
 		<Flex direction="column" gap="24" className={styles.wrapper}>
 			<h3 className={styles.title}>{t(Subscription.PAY_HISTORY)}</h3>
 			<Flex gap="14" direction="column">
-				{payHistories?.data.map((payment: PaymentData) => (
+				{payHistories?.data.map((payment: Payment) => (
 					<PayHistoryItem payHistory={payment} key={payment.orderId} />
 				))}
 			</Flex>
