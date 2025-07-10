@@ -28,3 +28,13 @@ export interface GetResourcesListParamsRequest {
 }
 
 export type GetResourcesListResponse = Response<Resource[]>;
+
+export type CreateOrEditResourceFormValues = Pick<
+	Resource,
+	'id' | 'name' | 'provider' | 'description' | 'iconBase64' | 'accessCategory' | 'isActive'
+> & {
+	specializations: number[];
+	skills: number[];
+	types: number[];
+	keywords: string[];
+};

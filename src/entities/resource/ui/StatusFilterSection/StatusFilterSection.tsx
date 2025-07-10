@@ -4,7 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { MarketplaceFilterStatus, MarketplaceFilterStatusItem } from '../../model/types';
+import { MarketplaceFilterStatus, MarketplaceFilterStatusItem } from '../../model/types/filters';
 
 interface StatusFilterSectionProps {
 	selectedStatus?: MarketplaceFilterStatus;

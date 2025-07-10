@@ -75,7 +75,12 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 				{keywordsArray?.length > 0 && (
 					<>
 						<h4>{t(Questions.KEYWORDS_TITLE)}</h4>
-						<Flex direction="row" gap="32" dataTestId="KeywordInput_Keywords">
+						<Flex
+							direction="row"
+							wrap="wrap"
+							dataTestId="KeywordInput_Keywords"
+							className={styles.keywords}
+						>
 							{keywordsArray.map((keyword) => {
 								return (
 									<SimpleChip

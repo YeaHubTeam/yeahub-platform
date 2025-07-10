@@ -206,5 +206,9 @@ export const ROUTES = {
 	marketplace: {
 		route: 'marketplace',
 		page: '/marketplace',
+		request: {
+			route: 'request',
+			page: '/marketplace/request',
+		},
 	},
 } as const;

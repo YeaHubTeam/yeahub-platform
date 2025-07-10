@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -10,7 +12,6 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
-import { toast } from '@/shared/ui/Toast';
 
 import { useGetResourcesListQuery } from '@/entities/resource';
 
@@ -28,6 +29,8 @@ const RESOURCES_PER_PAGE = 6;
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
+
 	const {
 		onChangeSearchParams,
 		onChangeSkills,
@@ -101,8 +104,8 @@ const PublicMarketplacePage = () => {
 	const suggestButton = (
 		<Button
 			variant="link-purple"
-			suffix={<Icon icon="plus" />}
-			onClick={() => toast.success('Фича в разработке')}
+			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
+			onClick={() => navigate(ROUTES.marketplace.request.page)}
 		>
 			{t(Marketplace.LINK_LABEL)}
 		</Button>

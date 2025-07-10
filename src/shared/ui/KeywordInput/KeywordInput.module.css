@@ -1,3 +1,13 @@
 .button {
   font-weight: var(--font-weight-600);
 }
+
+.keywords {
+  gap: 8px 16px;
+}
+
+@media (width <= 360) {
+  .keywords {
+    width: 100%;
+  }
+}
