@@ -1,68 +1,52 @@
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { Tabs } from '@/shared/ui/Tabs';
+import { Tab, Tabs, useTabs } from '@/shared/ui/Tabs';
 
 import {
 	AccountTab,
+	ChangePasswordTab,
 	EmailConfirmationTab,
 	SubscriptionTab,
-	ChangePasswordTab,
 } from '@/widgets/Profile';
 
-const getTabs = (t: (arg: string) => string) => [
+type SettingProfileTab = 'select-tariff' | 'change-password' | 'email-verify' | 'account';
+
+const getTabs = (t: (arg: string) => string): Tab<SettingProfileTab>[] => [
 	{
-		id: 0,
-		title: 'select-tariff',
+		id: 'select-tariff',
 		label: t(Profile.SETTINGS_TABS_SELECT_TARIFF),
 		Component: SubscriptionTab,
 	},
 	{
-		id: 1,
-		title: 'change-password',
+		id: 'change-password',
 		label: t(Profile.SETTINGS_TABS_CHANGE_PASSWORD),
 		Component: ChangePasswordTab,
 	},
 	{
-		id: 2,
-		title: 'email-verify',
+		id: 'email-verify',
 		label: t(Profile.SETTINGS_TABS_VERIFY_EMAIL),
 		Component: EmailConfirmationTab,
 	},
 	{
-		id: 3,
-		title: 'account',
+		id: 'account',
 		label: t(Profile.SETTINGS_TABS_ACCOUNT),
 		Component: AccountTab,
 	},
 ];
 
 const SettingsProfilePage = () => {
-	const { hash } = useLocation();
 	const { t } = useTranslation(i18Namespace.profile);
 
 	const tabs = getTabs(t);
+	const { activeTab, setActiveTab } = useTabs(tabs);
 
-	const index = tabs.findIndex((tab) => tab.title === hash.slice(1));
-
-	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
-		return index !== -1 ? index : 0;
-	});
-
-	useEffect(() => {
-		if (index !== -1) {
-			setCurrentActiveTab(index);
-		}
-	}, [hash]);
-
-	const ActiveComponent = tabs[currentActiveTab].Component;
+	const ActiveComponent = activeTab.Component;
 
 	return (
 		<>
-			<Tabs tabs={tabs} tabToggle={currentActiveTab} setTabToggle={setCurrentActiveTab} />
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<ActiveComponent />
 		</>
 	);

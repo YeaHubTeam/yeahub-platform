@@ -1,72 +1,34 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-// ToDo заменить на UIKit
-import { useEffect, useRef } from 'react';
+import classNames from 'classnames';
+import { Dispatch, Key, SetStateAction, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import style from './Tabs.module.css';
+import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
-interface EditTab {
-	/**
-	 * Unique identifier for the tab.
-	 */
-	id: number;
-	/**
-	 * Title of the tab, used in navigation (e.g., for anchor links).
-	 */
-	title: string;
-	/**
-	 * Label displayed for the tab in the UI.
-	 */
+import styles from './Tabs.module.css';
+
+export interface Tab<T> {
+	id: T;
 	label: string;
-	/**
-	 * Component rendered when this tab is active.
-	 */
 	Component: () => JSX.Element;
 }
 
-interface TabsProps {
-	/**
-	 * Array of tab objects defining their properties.
-	 */
-	tabs: EditTab[];
-	/**
-	 * Optional title displayed above the tabs.
-	 */
-	title?: string;
-	/**
-	 * Index of the currently active tab.
-	 */
-	tabToggle: number;
-	/**
-	 * Setter function to update the currently active tab index.
-	 */
-	setTabToggle: React.Dispatch<React.SetStateAction<number>>;
+export interface TabsProps<T> {
+	tabs: Tab<T>[];
+	activeTab: Tab<T>;
+	setActiveTab: Dispatch<SetStateAction<Tab<T>>>;
 }
 
-/**
- * Tabs component for rendering a tabbed interface.
- * Allows switching between tabs and highlights the active tab.
- * The active tab is tracked with `tabToggle` and dynamically updates styles
- * for a sliding line under the active tab.
- *
- * @param tabs - Array of tab objects with `id`, `title`, `label`, and `Component`.
- * @param title - Optional title for the tabs section.
- * @param tabToggle - Currently active tab index.
- * @param setTabToggle - Function to set the active tab index.
- * @constructor
- */
-
-export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
+export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 	const lineRef = useRef<HTMLDivElement>(null);
 	const navigate = useNavigate();
 
-	const handleTabToggle = (e: React.MouseEvent<HTMLLIElement>, id: number, pathname: string) => {
+	const onTabToggle = (e: React.MouseEvent<HTMLLIElement>, tab: Tab<T>) => {
 		const tabElement = e.target as HTMLLIElement;
 		const tabRect = tabElement.offsetLeft;
 
-		setTabToggle(id);
-		navigate(`#${pathname}`, { replace: true });
+		setActiveTab(tab);
+		navigate(`#${tab.id}`, { replace: true });
 
 		if (lineRef.current) {
 			lineRef.current.style.width = tabElement.offsetWidth + 'px';
@@ -76,33 +38,41 @@ export const Tabs = ({ tabs, title, tabToggle, setTabToggle }: TabsProps) => {
 
 	useEffect(() => {
 		const tabElement = document.querySelector(
-			`.${style['tab-item']}.${style.active}`,
+			`.${styles['tab-item']}.${styles.active}`,
 		) as HTMLLIElement | null;
 		if (tabElement && lineRef.current) {
 			const tabRect = tabElement.offsetLeft;
 			lineRef.current.style.width = `${tabElement.offsetWidth}px`;
 			lineRef.current.style.left = `${tabRect}px`;
 		}
-	}, [tabToggle]);
+	}, [activeTab]);
 
 	return (
-		<div className={style['tab-container']} data-testid="tabs-container">
-			{title && <h2 data-testid="tabs-title">{title}</h2>}
-			<ul className={style['tab-list']} role="tablist" data-testid="tabs-list">
-				{tabs.map((tab, index) => (
+		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
+			<Flex
+				componentType="ul"
+				gap="24"
+				className={styles['tab-list']}
+				role="tablist"
+				data-testid="Tabs_List"
+			>
+				{tabs.map((tab) => (
+					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<li
-						key={index}
-						className={`${style['tab-item']} ${tabToggle === index ? style.active : ''}`}
-						onClick={(e) => handleTabToggle(e, index, tab.title)}
+						key={tab.id as Key}
+						className={classNames(styles['tab-item'], { [styles.active]: activeTab.id === tab.id })}
+						onClick={(e) => onTabToggle(e, tab)}
 						role="tab"
 						tabIndex={0}
-						data-testid={`tab-item-${index}`}
+						data-testid={`Tabs_Item_${tab.id}`}
 					>
-						{tab.label}
+						<Text variant="body4" color={activeTab.id === tab.id ? 'black-800' : 'black-500'}>
+							{tab.label}
+						</Text>
 					</li>
 				))}
-			</ul>
-			<div ref={lineRef} className={style['line-indicator']} data-testid="line-indicator" />
-		</div>
+			</Flex>
+			<div ref={lineRef} className={styles['line-indicator']} data-testid="Tabs_Line" />
+		</Flex>
 	);
 };

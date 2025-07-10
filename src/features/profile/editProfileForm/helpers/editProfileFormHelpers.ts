@@ -1,4 +1,5 @@
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { Tab } from '@/shared/ui/Tabs';
 
 import { FullProfile } from '@/entities/auth';
 import { SOCIAL_NETWORKS, SocialNetwork } from '@/entities/socialNetwork';
@@ -8,22 +9,21 @@ import { AboutMeTabForm } from '../ui/AboutMeTabForm/AboutMeTabForm';
 import { PersonalInformationTabForm } from '../ui/PersonalInformationTabForm/PersonalInformationTabForm';
 import { SkillsTabForm } from '../ui/SkillsTabForm/SkillsTabForm';
 
-export const getTabs = (t: (arg: string) => string) => [
+type EditProfileTab = 'personal-information' | 'about-me' | 'skills';
+
+export const getTabs = (t: (arg: string) => string): Tab<EditProfileTab>[] => [
 	{
-		id: 0,
-		title: 'personal-information',
+		id: 'personal-information',
 		label: t(Profile.TABS_PERSONAL),
 		Component: PersonalInformationTabForm,
 	},
 	{
-		id: 1,
-		title: 'about-me',
+		id: 'about-me',
 		label: t(Profile.TABS_ABOUT_ME),
 		Component: AboutMeTabForm,
 	},
 	{
-		id: 2,
-		title: 'skills',
+		id: 'skills',
 		label: t(Profile.TABS_SKILLS),
 		Component: SkillsTabForm,
 	},
