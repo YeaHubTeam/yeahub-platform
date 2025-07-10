@@ -314,6 +314,13 @@
 			}
 		}
 	},
+		"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "You don't have access to this feature"
+			}
+		}
+	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",
 	"editor.underline": "Underline",

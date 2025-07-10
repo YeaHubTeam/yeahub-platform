@@ -212,6 +212,17 @@
   &:not([disabled]):hover {
     color: var(--color-purple-700);
   }
+	  &:disabled {
+    color: var(--button-text-color-tertiary-disabled);
+  }
+
+  &:disabled:hover {
+    background-color: inherit;
+  }
+
+  &:disabled:active {
+    background-color: inherit;
+  }
 }
 
 .button-destructive {

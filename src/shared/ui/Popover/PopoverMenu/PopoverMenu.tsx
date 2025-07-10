@@ -13,7 +13,7 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent }) => (
+			{menuItems.map(({ icon, onClick, title, renderComponent, disabled }) => (
 				<Fragment key={title}>
 					{title && onClick ? (
 						<Button
@@ -23,6 +23,7 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 							}}
 							variant="tertiary-link"
 							preffix={icon}
+							disabled={disabled}
 						>
 							{title}
 						</Button>

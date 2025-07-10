@@ -48,6 +48,6 @@
   cursor: not-allowed;
 }
 	
-.checkbox-wrapper input[type="checkbox"]:not(:checked):hover {
+.checkbox-wrapper input[type="checkbox"]:not(:checked):not(:disabled):hover {
   border-color: var(--border-focus-purple);
 }
