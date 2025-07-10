@@ -78,7 +78,9 @@ export const Tooltip = ({
 						<FloatingArrow
 							tipRadius={1}
 							fill="white"
-							stroke={`var(--color-${color === 'violet' ? 'purple' : color}-${color === 'gray' ? '300' : color === 'yellow' ? '800' : '600'})`}
+							stroke={`var(--color-${
+								color === 'violet' ? 'purple' : color
+							}-${color === 'gray' ? '300' : color === 'yellow' ? '800' : color === 'red' ? '700' : '600'})`}
 							strokeWidth={1}
 							height={8}
 							width={16}

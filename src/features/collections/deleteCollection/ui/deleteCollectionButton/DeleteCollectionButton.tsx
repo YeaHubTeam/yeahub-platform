@@ -1,3 +1,4 @@
+import { Placement } from '@floating-ui/react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,11 +15,15 @@ import { useDeleteCollectionMutation } from '../../api/deleteCollectionApi';
 interface DeleteCollectionButtonProps {
 	collectionId: Collection['id'];
 	isDetailPage?: boolean;
+	disabled?: boolean;
+	placementTooltip?: Placement;
+	offsetTooltip?: number;
 }
 
 export const DeleteCollectionButton = ({
 	collectionId,
 	isDetailPage = false,
+	disabled = false,
 }: DeleteCollectionButtonProps) => {
 	const [deleteCollectionMutation] = useDeleteCollectionMutation();
 
@@ -54,6 +59,7 @@ export const DeleteCollectionButton = ({
 				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
 				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={handleOpenModal}
+				disabled={disabled}
 			>
 				{t(Translation.DELETE)}
 			</Button>
