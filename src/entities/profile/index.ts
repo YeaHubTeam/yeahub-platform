@@ -19,7 +19,6 @@ export {
 	getHasPremiumAccess,
 	getHasSubscriptions,
 	getActiveProfile,
-	getHasAdminRole,
 } from './model/selectors/profileSelectors';
 
 export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';

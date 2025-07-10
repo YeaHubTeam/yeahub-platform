@@ -3,7 +3,6 @@ import { Card } from '@/shared/ui/Card';
 
 import {
 	getEmptySpecializationProfile,
-	getHasAdminRole,
 	getHasPremiumAccess,
 	getProfiles,
 	getProfilesLength,
@@ -30,31 +29,26 @@ export const ManageProfilesPanel = () => {
 	const hasEmptySpecialization = Boolean(emptySpecializationProfile);
 
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
-	const hasAdminRole = useAppSelector(getHasAdminRole);
-
-	const isCreateProfileEnabled = hasPremiumAccess || hasAdminRole;
 
 	if (!profiles) {
 		return null;
 	}
 
-	const countLimit = isCreateProfileEnabled
+	const countLimit = hasPremiumAccess
 		? MEMBER_PROFILES_COUNT_LIMIT
 		: NOT_MEMBER_PROFILES_COUNT_LIMIT;
 
 	const isReachedProfilesLimit = profilesCount === countLimit;
 
 	const createProfileDisabled =
-		isReachedProfilesLimit ||
-		(isCreateProfileEnabled && hasEmptySpecialization) ||
-		!isCreateProfileEnabled;
+		isReachedProfilesLimit || (hasPremiumAccess && hasEmptySpecialization) || !hasPremiumAccess;
 
 	return (
 		<Card className={styles.container}>
 			<ManageProfilesHeader
 				currentCount={profilesCount}
 				maxCount={countLimit}
-				isMember={isCreateProfileEnabled}
+				isMember={hasPremiumAccess}
 				isReachedLimit={isReachedProfilesLimit}
 				className={styles.mb}
 			/>
