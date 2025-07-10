@@ -10,8 +10,7 @@ import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
-import { useProfileQuery } from '@/entities/auth';
-import { getIsEdit } from '@/entities/profile';
+import { getFullProfile, getIsEdit } from '@/entities/profile';
 
 import { useUpdateAvatarMutation } from '@/features/profile/editProfileForm';
 
@@ -23,8 +22,9 @@ interface UserImageBlockProps {
 
 export const UserImageBlock = ({ avatar }: UserImageBlockProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
-	const { data: profile } = useProfileQuery();
 	const isEdit = useAppSelector(getIsEdit);
+	const profile = useAppSelector(getFullProfile);
+
 	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 

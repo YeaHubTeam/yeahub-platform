@@ -5,6 +5,7 @@ export interface Subscription {
 	name: string;
 	description: string;
 	price: number;
+	tooltipBody?: React.ReactNode;
 	hasSubscribeButton: boolean;
 	discountedPrice?: number;
 	advantages: { title: string; isActive: boolean }[];
