@@ -1,0 +1,1 @@
+export { paymentsMock } from './paymentsMock';
