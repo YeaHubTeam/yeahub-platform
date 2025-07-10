@@ -426,6 +426,8 @@ export enum Questions {
 	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
+	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
+	TOOLTIP_NOT_CONFIRMED = 'tooltip.not.confirmed',
 	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
 	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 

@@ -1,5 +1,6 @@
 import { type Placement } from '@floating-ui/react';
 import classNames from 'classnames';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -45,22 +46,30 @@ export const ResetQuestionStudyProgressButton = ({
 		resetQuestion({ profileId, questionId });
 	};
 
+	const tooltipTitle = useMemo(() => {
+		if (!isEmailVerified) return Questions.TOOLTIP_NOT_CONFIRMED;
+		if (!hasPremium) return Questions.TOOLTIP_MEMBERS_ONLY;
+		return Questions.TOOLTIP_REPEAT;
+	}, [isEmailVerified, hasPremium]);
+
 	const iconSize = isPopover ? 20 : 24;
+	const shouldShowTooltip = !isEmailVerified || !hasPremium || notQuestionMaxProgress;
+	const isButtonDisabled = !isEmailVerified || !hasPremium || notQuestionMaxProgress || isLoading;
 
 	return (
 		<Tooltip
-			title={t(Questions.TOOLTIP_REPEAT)}
+			title={t(tooltipTitle)}
 			placement={placementTooltip}
 			color="violet"
 			offsetTooltip={offsetTooltip}
-			shouldShowTooltip={notQuestionMaxProgress}
+			shouldShowTooltip={shouldShowTooltip}
 		>
 			<Button
 				className={classNames({ [styles.button]: isPopover }, styles['button-disabled'])}
 				preffix={<Icon icon="clockCounterClockwise" color="black-600" size={iconSize} />}
 				variant={variant}
 				onClick={onResetQuestion}
-				disabled={isLoading || !isEmailVerified || notQuestionMaxProgress || !hasPremium}
+				disabled={isButtonDisabled}
 			>
 				{t(Questions.REPEAT)}
 			</Button>
