@@ -58,6 +58,10 @@ export const getHasPremiumAccess = (state: State) => {
 	);
 };
 
+export const getHasAdminRole = (state: State) => {
+	return state.profile.fullProfile?.userRoles.some((role) => role.name === 'admin') ?? false;
+};
+
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;
 };

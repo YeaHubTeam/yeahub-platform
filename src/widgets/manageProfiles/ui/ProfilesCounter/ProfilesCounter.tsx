@@ -26,6 +26,8 @@ export const ProfilesCounter = ({
 		? t(Profile.MANAGE_PROFILES_TOOLTIP_NOT_MEMBER)
 		: t(Profile.MANAGE_PROFILES_TOOLTIP_MAX_COUNT);
 
+	const displayMaxCount = Math.max(currentCount, maxCount);
+
 	return (
 		<Tooltip
 			title={tooltipText}
@@ -35,7 +37,7 @@ export const ProfilesCounter = ({
 		>
 			<div className={styles.container}>
 				<Text variant="body5-accent" color="white-900">
-					{currentCount}/{maxCount}
+					{currentCount}/{displayMaxCount}
 				</Text>
 			</div>
 		</Tooltip>

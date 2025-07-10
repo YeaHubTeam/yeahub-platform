@@ -2,9 +2,10 @@ import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import {
-	getProfiles,
 	getEmptySpecializationProfile,
-	getHasSubscriptions,
+	getHasAdminRole,
+	getHasPremiumAccess,
+	getProfiles,
 	getProfilesLength,
 } from '@/entities/profile';
 
@@ -28,27 +29,32 @@ export const ManageProfilesPanel = () => {
 	const isEmptySpecialization = (id: number) => id === emptySpecializationProfile?.specializationId;
 	const hasEmptySpecialization = Boolean(emptySpecializationProfile);
 
-	const hasSubscription = useAppSelector(getHasSubscriptions);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
+	const hasAdminRole = useAppSelector(getHasAdminRole);
+
+	const isCreateProfileEnabled = hasPremiumAccess || hasAdminRole;
 
 	if (!profiles) {
 		return null;
 	}
 
-	const countLimit = hasSubscription
+	const countLimit = isCreateProfileEnabled
 		? MEMBER_PROFILES_COUNT_LIMIT
 		: NOT_MEMBER_PROFILES_COUNT_LIMIT;
 
 	const isReachedProfilesLimit = profilesCount === countLimit;
 
 	const createProfileDisabled =
-		isReachedProfilesLimit || (hasSubscription && hasEmptySpecialization) || !hasSubscription;
+		isReachedProfilesLimit ||
+		(isCreateProfileEnabled && hasEmptySpecialization) ||
+		!isCreateProfileEnabled;
 
 	return (
 		<Card className={styles.container}>
 			<ManageProfilesHeader
 				currentCount={profilesCount}
 				maxCount={countLimit}
-				isMember={hasSubscription}
+				isMember={isCreateProfileEnabled}
 				isReachedLimit={isReachedProfilesLimit}
 				className={styles.mb}
 			/>
