@@ -19,7 +19,7 @@ import { useSetActiveProfileMutation } from '@/features/profile/setActiveProfile
 import { profile } from '../../model/assets';
 
 import styles from './ProfileCard.module.css';
-
+import { Tooltip } from '@/shared/ui/Tooltip';
 interface ProfileCardProps {
 	profileId: string;
 	specializationId: number;
@@ -37,7 +37,7 @@ export const ProfileCard = ({
 }: ProfileCardProps) => {
 	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.profile]);
 
-	const { isMobile } = useScreenSize();
+	const { isMobile, isMobileM } = useScreenSize();
 
 	const navigate = useNavigate();
 
@@ -66,21 +66,33 @@ export const ProfileCard = ({
 	const showDeleteButton = !isActive && !isLoading && !isError && !isMobile;
 
 	const titleStyles = classnames(styles.title, {
-		[styles['icon-check']]: isActive,
 		[styles['active-color']]: isActive,
 	});
 	const border = { [styles['active-border']]: isActive };
 	const cardStyles = classnames(styles.card, border);
-	const imageStyles = classnames(styles.image, border);
+	const imageWrapperStyles = classnames(styles.imageWrapper, {
+		[styles['icon-check']]: isActive,
+	});
+	const imageStyles = classnames(styles.image, { border, [styles['icon-check']]: isActive });
 
 	return (
 		<Flex className={styles.container}>
 			<Flex componentType="button" onClick={handleProfileSet} className={cardStyles}>
 				<Flex align="center" gap="16">
-					<img src={profileImageSrc ?? profile} alt="profile" className={imageStyles} />
-					<Text variant="body3-accent" className={titleStyles}>
-						{specializationText}
-					</Text>
+					<Flex className={imageWrapperStyles}>
+						<img src={profileImageSrc ?? profile} alt="profile" className={imageStyles} />
+					</Flex>
+					{isMobileM ? (
+						<Tooltip title={specializationText} placement="bottom" color="violet">
+							<Text variant="body3-accent" className={titleStyles}>
+								{specializationText}
+							</Text>
+						</Tooltip>
+					) : (
+						<Text variant="body3-accent" className={titleStyles}>
+							{specializationText}
+						</Text>
+					)}
 				</Flex>
 			</Flex>
 			{isActive && (
