@@ -53,14 +53,19 @@ const SidebarSingleMenuItem = ({
 				}
 				to={menuItem.route}
 			>
-				<div className={styles.container}>
+				<div className={styles.container} data-testid="SidebarSingleMenuItem">
 					<div className={styles.wrap}>
 						<ImageComponent className={styles.icon} />
 						<span className={classNames(styles.title)}>{t(menuItem.title)}</span>
 					</div>
 					<div className={styles.side}>
 						{menuItem.notifications && (
-							<div className={styles.notifications}>{menuItem.notifications}</div>
+							<div
+								className={styles.notifications}
+								data-testid="SidebarSingleMenuItem_Notifications"
+							>
+								{menuItem.notifications}
+							</div>
 						)}
 					</div>
 				</div>
