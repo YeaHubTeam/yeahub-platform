@@ -75,7 +75,8 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, dispatch }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(profileActions.setProfile(result.data));
+					const activeProfile = result.data?.profiles.find((profile) => profile.isActive);
+					dispatch(profileActions.setFullProfile({ ...result.data, activeProfile }));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

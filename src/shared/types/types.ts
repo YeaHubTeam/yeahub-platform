@@ -15,6 +15,8 @@ export interface Response<T> {
 	page: number;
 }
 
+export type SortOrder = 'ASC' | 'DESC';
+
 export interface GetLoginError {
 	error: {
 		status: number;

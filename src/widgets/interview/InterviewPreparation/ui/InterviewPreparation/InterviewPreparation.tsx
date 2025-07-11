@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
@@ -50,7 +51,7 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 		}
 
 		if (!hasPremium) {
-			return ROUTES.settings.page;
+			return SELECT_TARIFF_SETTINGS_TAB;
 		}
 
 		return lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page;

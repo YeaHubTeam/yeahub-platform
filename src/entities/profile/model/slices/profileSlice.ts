@@ -15,8 +15,19 @@ export const profileSlice = createSlice({
 		setEmailSent(state, action: PayloadAction<boolean>) {
 			state.isEmailSent = action.payload;
 		},
-		setProfile(state, action) {
+		setFullProfile(state, action) {
 			state.fullProfile = action.payload;
+		},
+		setActiveProfile(state, action: PayloadAction<string>) {
+			if (!state.fullProfile) return;
+
+			const profiles = state.fullProfile.profiles;
+			if (!profiles) return;
+
+			state.fullProfile.profiles = profiles.map((profile) => ({
+				...profile,
+				isActive: profile.id === action.payload,
+			}));
 		},
 		setIsEdit(state, action) {
 			state.isEdit = action.payload;
@@ -26,4 +37,4 @@ export const profileSlice = createSlice({
 
 export const { reducer: profileReducer, actions: profileActions } = profileSlice;
 
-export const { setEmailSent, setProfile, setIsEdit } = profileSlice.actions;
+export const { setEmailSent, setFullProfile, setActiveProfile, setIsEdit } = profileSlice.actions;

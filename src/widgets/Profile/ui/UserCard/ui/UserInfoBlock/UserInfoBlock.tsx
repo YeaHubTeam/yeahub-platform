@@ -28,6 +28,7 @@ interface UserInfoProps {
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
 	const { username, birthday, email, country, city, isEmailVerified, userRoles } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
+
 	const { isMobileS } = useScreenSize();
 	const isEdit = useAppSelector(getIsEdit);
 
@@ -94,8 +95,8 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 						</Link>
 					))}
 
-				{profile.profiles[0].socialNetwork?.length > 0 ? (
-					<SocialNetWorkList socialNetwork={profile.profiles[0].socialNetwork} />
+				{profile.activeProfile?.socialNetwork?.length > 0 ? (
+					<SocialNetWorkList socialNetwork={profile.activeProfile.socialNetwork} />
 				) : null}
 			</div>
 		</div>

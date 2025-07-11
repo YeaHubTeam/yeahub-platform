@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 export interface ChipProps {
 	variant?: 'small' | 'big';
 	theme?: 'primary' | 'outlined';
-	label?: string;
+	label?: string | ReactNode;
 	onDelete?: () => void;
 	disabled?: boolean;
 	active?: boolean;

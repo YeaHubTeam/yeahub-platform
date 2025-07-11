@@ -1,3 +1,5 @@
+import { RoleName } from '../types/auth';
+
 export const authApiUrls = {
 	login: 'auth/login',
 	register: 'auth/signUp',
@@ -5,3 +7,5 @@ export const authApiUrls = {
 	logout: 'auth/logout',
 	refresh: 'auth/refresh',
 };
+
+export const listAdminRoles: RoleName[] = ['author', 'admin'];

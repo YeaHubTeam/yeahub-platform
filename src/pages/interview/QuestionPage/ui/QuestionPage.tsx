@@ -5,6 +5,7 @@ import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import { getChannelsForSpecialization } from '@/entities/media';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
@@ -22,16 +23,12 @@ export const QuestionPage = () => {
 	const { questionId = '' } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
-	const {
-		data: question,
-		isFetching,
-		isLoading,
-	} = useGetQuestionByIdQuery({
+	const { data: question, isLoading } = useGetQuestionByIdQuery({
 		questionId,
 		profileId,
 	});
 
-	if (isLoading || isFetching) {
+	if (isLoading) {
 		return <QuestionPageSkeleton />;
 	}
 
@@ -41,6 +38,8 @@ export const QuestionPage = () => {
 
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
 	const showAuthor = guru ? false : true;
+
+	const media = getChannelsForSpecialization(question.questionSpecializations);
 
 	const {
 		createdBy,
@@ -77,6 +76,7 @@ export const QuestionPage = () => {
 						complexity={complexity}
 						questionSkills={questionSkills}
 						route={ROUTES.interview.questions.page}
+						media={media}
 					/>
 					{guru && <GurusBanner gurus={[guru]} />}
 				</Flex>

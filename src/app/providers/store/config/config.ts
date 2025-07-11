@@ -8,6 +8,7 @@ import { State } from '@/shared/config/store/State';
 import { refreshMiddleware } from '@/entities/auth';
 import { profileReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
+import { activeSubscriptionSlice } from '@/entities/subscription';
 
 import { collectionsPageReducer } from '@/pages/admin/CollectionsPage';
 import { companiesTablePageReducer } from '@/pages/admin/CompaniesTablePage';
@@ -30,6 +31,7 @@ export const createReduxStore = (initialState?: State) => {
 			createQuizPage: createQuizPageReducer,
 			createPublicQuizPage: createPublicQuizPageReducer,
 			activeQuiz: activeQuizSlice.reducer,
+			activeSubscription: activeSubscriptionSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
 			interviewHistoryPage: interviewHistoryPageReducer,
 			questionsTablePage: questionsTablePageReducer,

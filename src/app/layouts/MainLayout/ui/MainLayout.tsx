@@ -9,7 +9,7 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { ErrorElement } from '@/shared/ui/ErrorElement';
 
-import { useProfileQuery } from '@/entities/auth';
+import { listAdminRoles, useProfileQuery } from '@/entities/auth';
 
 import { Header } from '@/widgets/Header';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
@@ -29,11 +29,13 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const location = useLocation();
 
 	const { data: profile, isLoading } = useProfileQuery();
-	const isAdmin = profile?.userRoles.some((role) => role.name === 'admin');
+	const isAdminRole = profile?.userRoles?.some((role) =>
+		listAdminRoles.find((i) => i == role.name),
+	);
 
-	const filteredMenuItems = !isAdmin
-		? sidebarItems.filter((_, index) => index !== 0)
-		: sidebarItems;
+	const accessList = sidebarItems.filter((i) =>
+		i.roles?.find((j) => profile?.userRoles.some((r) => r.name == j)),
+	);
 
 	const onToggleOpenSidebarDrawer = () => {
 		setIsOpenSidebarDrawer((prev) => !prev);
@@ -47,7 +49,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 
 	if (isLoading) return <MainLayoutSkeleton />;
 
-	if (onlyAdmin && !isAdmin) {
+	if (onlyAdmin && !isAdminRole) {
 		return <Navigate to={ROUTES.appRoute} />;
 	}
 
@@ -58,7 +60,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 				<section className={styles.layout}>
 					<div className={styles.sidebar}>
 						<Sidebar
-							menuItems={filteredMenuItems}
+							menuItems={accessList}
 							onOpenSidebarDrawer={onToggleOpenSidebarDrawer}
 							isOpenSidebarDrawer={isOpenSidebarDrawer}
 							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
@@ -88,7 +90,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					>
 						<Sidebar
 							isMobileSidebar
-							menuItems={filteredMenuItems}
+							menuItems={accessList}
 							setIsOpenSidebarDrawer={setIsOpenSidebarDrawer}
 							isOpenSidebarDrawer={isOpenSidebarDrawer}
 						/>

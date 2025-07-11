@@ -14,6 +14,7 @@ import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
+import Info from '@/shared/assets/icons/info.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import Eye from '@/shared/assets/icons/eye.svg';
@@ -45,6 +46,7 @@ import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
+import TikTok from '@/shared/assets/icons/tiktok.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
@@ -82,6 +84,7 @@ export const icons: Record<IconName, IconComponent> = {
 	eyeClosed: EyeClosed,
 	like: Like,
 	dislike: Dislike,
+	info: Info,
 	instagram: Instagram,
 	linkedin: Linkedin,
 	twitter: Twitter,
@@ -94,6 +97,7 @@ export const icons: Record<IconName, IconComponent> = {
 	telegramWithBackground: TelegramWithBackground,
 	youtube: Youtube,
 	youtubeWithBackground: YoutubeWithBackground,
+	tiktok: TikTok,
 	plus: Plus,
 	minus: Minus,
 	plusCircle: PlusCircle,

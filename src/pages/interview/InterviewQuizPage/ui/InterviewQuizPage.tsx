@@ -13,7 +13,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { getProfileId } from '@/entities/profile';
 import {
-	InterviewSlider,
 	QuestionNavPanel,
 	getActiveQuizQuestions,
 	useGetActiveQuizQuery,
@@ -22,6 +21,8 @@ import {
 	getIsAllQuestionsAnswered,
 	useInterruptQuizMutation,
 } from '@/entities/quiz';
+
+import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
 
 import styles from './InterviewQuizPage.module.css';
 
@@ -37,11 +38,33 @@ const InterviewQuizPage = () => {
 		page: 1,
 		limit: 1,
 	});
+
 	const [saveResult] = useSaveQuizResultMutation();
 	const [saveInteruptedResult] = useInterruptQuizMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
+
+	const favorites = activeQuiz?.data?.reduce(
+		(acc, quiz) => {
+			if (quiz.questions) {
+				quiz.questions.forEach((question) => {
+					if (question.isFavorite) {
+						acc[question.id] = question.isFavorite;
+					}
+				});
+			}
+			return acc;
+		},
+		{} as Record<string, boolean>,
+	);
+
+	const updatedQuiz = favorites
+		? activeQuizQuestions.map((question) => ({
+				...question,
+				isFavorite: favorites[question.questionId] || false,
+			}))
+		: undefined;
 
 	const {
 		questionId,
@@ -52,10 +75,11 @@ const InterviewQuizPage = () => {
 		activeQuestion,
 		totalCount,
 		answer,
+		isFavorite,
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(activeQuizQuestions ?? []);
+	} = useSlideSwitcher(updatedQuiz ?? []);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
@@ -144,6 +168,7 @@ const InterviewQuizPage = () => {
 							changeAnswer={changeAnswer}
 							isAnswerVisible={isAnswerVisible}
 							setIsAnswerVisible={setIsAnswerVisible}
+							isFavorite={isFavorite}
 						/>
 						<Flex direction="row">
 							<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>

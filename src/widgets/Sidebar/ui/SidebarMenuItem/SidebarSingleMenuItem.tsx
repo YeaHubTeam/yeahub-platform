@@ -28,9 +28,10 @@ const SidebarSingleMenuItem = ({
 	const location = useLocation();
 	const { t } = useTranslation(i18Namespace.translation);
 	const isProfileItem = menuItem.route === ROUTES.profile.route;
-
+	const isSettingItem = menuItem.route === ROUTES.settings.route;
 	const isActiveItem = isPathMatch(menuItem.route, location.pathname);
-	if (isProfileItem && !(isMobile || isTablet)) {
+
+	if ((isProfileItem || isSettingItem) && !(isMobile || isTablet)) {
 		return null;
 	}
 	return (

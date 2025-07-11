@@ -16,6 +16,20 @@ export const RESOURCES_LINKS: LinkIcon[] = [
 		className: 'github-link',
 	},
 	{
+		url: 'https://www.youtube.com/@yeahub',
+		label: 'YouTube',
+		icon: 'youtubeWithBackground',
+		color: 'white-900',
+		className: 'youtube-link',
+	},
+	{
+		url: 'https://www.tiktok.com/@yeahub%5C_it',
+		label: 'TikTok',
+		icon: 'tiktok',
+		color: 'white-900',
+		className: 'tiktok-link',
+	},
+	{
 		url: 'https://t.me/yeahub',
 		label: 'Telegram',
 		icon: 'telegramWithBackground',

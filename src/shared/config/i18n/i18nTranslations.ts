@@ -106,6 +106,11 @@ export enum Translation {
 	TOAST_SPECIALIZATIONS_DELETE_MULTIPLE_FAILED = 'toast.specializations.delete.multiple.failed',
 	TOAST_PROFILE_UPDATE_SUCCESS = 'toast.profile.update.success',
 	TOAST_PROFILE_UPDATE_FAILED = 'toast.profile.update.failed',
+	TOAST_PROFILE_CREATE_SUCCESS = 'toast.profile.create.success',
+	TOAST_PROFILE_CREATE_FAILED = 'toast.profile.create.failed',
+	TOAST_PROFILE_DELETE_SUCCESS = 'toast.profile.delete.success',
+	TOAST_PROFILE_DELETE_FAILED = 'toast.profile.delete.failed',
+	TOAST_PROFILE_SET_FAILED = 'toast.profile.set.failed',
 	TOAST_QUESTION_CREATE_SUCCESS = 'toast.questions.create.success',
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
@@ -161,6 +166,9 @@ export enum Profile {
 	TABS_PERSONAL = 'tabs.personal',
 	TABS_ABOUT_ME = 'tabs.about.me',
 	TABS_SKILLS = 'tabs.skills',
+	TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED = 'tooltip.create.profile.button.limit.reached',
+	TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION = 'tooltip.create.profile.button.empty.specialization',
+	TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER = 'tooltip.create.profile.button.not.member',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
 	PHOTO_UPDATE = 'photo.update',
@@ -209,6 +217,15 @@ export enum Profile {
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
 	CHANGE_PASSWORD_REPEAT_LABEL = 'change.password.repeat.label',
 	CHANGE_PASSWORD_PLACEHOLDER = 'change.password.placeholder',
+	MANAGE_PROFILES_TITLE = 'manage.profiles.title',
+	MANAGE_PROFILES_OPEN = 'manage.profiles.open',
+	MANAGE_PROFILES_TOOLTIP_NOT_MEMBER = 'manage.profiles.tooltip.not.member',
+	MANAGE_PROFILES_TOOLTIP_MAX_COUNT = 'manage.profiles.tooltip.max.count',
+	MANAGE_PROFILES_MODAL_TITLE = 'manage.profiles.modal.title',
+	MANAGE_PROFILES_MODAL_DESCRIPTION = 'manage.profiles.modal.description',
+	MANAGE_PROFILES_MODAL_LABEL = 'manage.profiles.modal.label',
+	MANAGE_PROFILES_MODAL_PLACEHOLDER = 'manage.profiles.modal.placeholder',
+	MANAGE_PROFILES_MODAL_BUTTON = 'manage.profiles.modal.button',
 }
 
 export enum Auth {
@@ -410,6 +427,8 @@ export enum Questions {
 	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
+	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
+	TOOLTIP_NOT_CONFIRMED = 'tooltip.not.confirmed',
 	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
 	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 
@@ -553,6 +572,9 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+
+	WARNING_INTRO = 'warning.intro',
+	WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
 export enum Marketplace {
@@ -709,6 +731,7 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_CANCELED = 'canceled',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
@@ -734,6 +757,14 @@ export enum SubscriptionCard {
 	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
 	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
 	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_TITLE = 'subscription.premium.tooltip.title',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_TITLE = 'subscription.premium.tooltip.list.title',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIRST = 'subscription.premium.tooltip.list.first',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_SECOND = 'subscription.premium.tooltip.list.second',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THIRD = 'subscription.premium.tooltip.list.third',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FOURTH = 'subscription.premium.tooltip.list.fourth',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIFTH = 'subscription.premium.tooltip.list.fifth',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THANKS = 'subscription.premium.tooltip.list.thanks',
 	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
 	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
 	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
@@ -771,7 +802,10 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
-
+export enum Media {
+	MEDIA_LINK_START = 'label.start',
+	MEDIA_LINK_END = 'label.end',
+}
 export enum Marketplace {
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',

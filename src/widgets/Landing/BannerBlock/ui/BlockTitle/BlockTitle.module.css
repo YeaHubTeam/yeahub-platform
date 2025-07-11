@@ -22,10 +22,6 @@
     text-align: center;
   }
 
-  .desktop {
-    display: none;
-  }
-
   .tablet {
     display: block;
     line-height: 115%;

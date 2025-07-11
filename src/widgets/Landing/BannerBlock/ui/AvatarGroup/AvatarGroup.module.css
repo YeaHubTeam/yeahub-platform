@@ -22,8 +22,9 @@
 }
 
 .avatar.count {
+  background-color: var(--color-purple-900);
   color: var(--color-white-900);
-  font-size: var(--font-size-p-s)
+  font-size: var(--font-size-p-s);
 }
 
 @media screen and (width < 1024px) {
@@ -52,3 +53,4 @@
     right: 20px;
   }
 }
+

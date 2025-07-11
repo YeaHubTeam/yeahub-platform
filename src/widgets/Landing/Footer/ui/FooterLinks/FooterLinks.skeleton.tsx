@@ -11,7 +11,7 @@ export const FooterLinksSkeleton = () => {
 	return (
 		<Flex className={styles['footer-resources-links']}>
 			<TextSkeleton className={styles['docs-link']} width={isMobileS ? 70 : 80} variant={'body2'} />
-			{[...Array(3)].map((_, index) => (
+			{[...Array(5)].map((_, index) => (
 				<IconSkeleton key={index} size={24} borderRadius={'50%'} />
 			))}
 		</Flex>

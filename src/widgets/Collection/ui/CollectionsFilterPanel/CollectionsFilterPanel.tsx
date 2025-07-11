@@ -8,12 +8,14 @@ import { useDebounce } from '@/shared/hooks/useDebounced';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { ChooseSpecialization } from '@/entities/question';
 
 import { FilterParams } from '../../model/types/types';
 
 import styles from './CollectionsFilterPanel.module.css';
 
+const DEFAULT_SPECIALIZATION = 11;
 interface CollectionsFilterPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
@@ -55,7 +57,7 @@ export const CollectionsFilterPanel = ({
 	};
 
 	const debouncedSearch = useDebounce(handleSearch, 500);
-
+	const media = getChannelsForSpecialization(localSpecialization ?? DEFAULT_SPECIALIZATION);
 	return (
 		<div className={styles.wrapper}>
 			<SearchInput
@@ -64,10 +66,13 @@ export const CollectionsFilterPanel = ({
 				currentValue={title}
 			/>
 			{project === 'landing' && (
-				<ChooseSpecialization
-					selectedSpecialization={localSpecialization}
-					onChangeSpecialization={handleSpecializationChange}
-				/>
+				<>
+					<ChooseSpecialization
+						selectedSpecialization={localSpecialization}
+						onChangeSpecialization={handleSpecializationChange}
+					/>
+					{media && <MediaLinksBanner mediaLink={media} />}
+				</>
 			)}
 
 			{/* <ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} /> */}

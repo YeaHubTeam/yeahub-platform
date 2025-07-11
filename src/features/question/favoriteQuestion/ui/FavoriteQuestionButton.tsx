@@ -26,6 +26,7 @@ export interface FavoriteQuestionProps {
 	offsetTooltip?: number;
 	isFavorite?: boolean;
 	size?: 'small' | 'medium';
+	isQuiz?: boolean;
 }
 
 export const FavoriteQuestionButton = ({
@@ -36,6 +37,7 @@ export const FavoriteQuestionButton = ({
 	offsetTooltip = 10,
 	isFavorite,
 	size = 'medium',
+	isQuiz = false,
 }: FavoriteQuestionProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
@@ -49,10 +51,12 @@ export const FavoriteQuestionButton = ({
 			? resetFavoriteQuestion({
 					profileId: String(profileId),
 					questionId: Number(questionId),
+					quiz: isQuiz,
 				})
 			: favoriteQuestion({
 					profileId: String(profileId),
 					questionId: Number(questionId),
+					quiz: isQuiz,
 				});
 	};
 

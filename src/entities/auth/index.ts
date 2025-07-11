@@ -6,7 +6,9 @@ export type {
 	ProfileUpdate,
 	User,
 	Role,
+	RoleName,
 } from './model/types/auth';
+export { listAdminRoles } from './model/constants/authConstants';
 export { authApi } from './api/authApi';
 export {
 	useLoginMutation,

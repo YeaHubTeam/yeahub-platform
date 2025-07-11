@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Questions, Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+
+import { getHasPremiumAccess } from '@/entities/profile';
 
 import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
 interface StatusFilterSectionProps {
@@ -14,11 +17,22 @@ export const StatusFilterSection = ({
 	onChangeStatus,
 	selectedStatus,
 }: StatusFilterSectionProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.subscription]);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const progressStatus: QuestionFilterStatusItem[] = [
-		{ id: 'not-learned', title: t(Questions.STATUS_UNLEARNED) },
-		{ id: 'learned', title: t(Questions.STATUS_LEARNED) },
+		{
+			id: 'not-learned',
+			title: t(Questions.STATUS_UNLEARNED),
+			tooltip: t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription }),
+			disabled: !hasPremium,
+		},
+		{
+			id: 'learned',
+			title: t(Questions.STATUS_LEARNED),
+			tooltip: t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription }),
+			disabled: !hasPremium,
+		},
 		{ id: 'all', title: t(Questions.STATUS_ALL) },
 		{ id: 'favorite', title: t(Questions.STATUS_FAVORITE) },
 	];

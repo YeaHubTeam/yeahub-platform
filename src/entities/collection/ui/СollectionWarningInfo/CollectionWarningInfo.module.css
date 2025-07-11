@@ -1,0 +1,13 @@
+.popover{
+  padding: 20px;
+  border-color:var(--color-yellow-900);
+  background-color: var(--color-yellow-300);
+}
+
+.warning{
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

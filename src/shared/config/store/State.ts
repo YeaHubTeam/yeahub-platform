@@ -1,6 +1,7 @@
 /* eslint-disable @conarti/feature-sliced/layers-slices */
 import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
+import { ActiveSubscriptionState } from '@/entities/subscription';
 
 import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
 import { CompaniesTablePageState } from '@/pages/admin/CompaniesTablePage';
@@ -20,6 +21,7 @@ export interface State {
 	createQuizPage: CreateQuizPageState;
 	createPublicQuizPage: CreatePublicQuizPageState;
 	activeQuiz: ActiveQuizState;
+	activeSubscription: ActiveSubscriptionState;
 	interviewHistoryPage: InterviewHistoryState;
 	[baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 	questionsTablePage: QuestionsTablePageState;

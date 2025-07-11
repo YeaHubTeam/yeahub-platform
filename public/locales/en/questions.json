@@ -93,6 +93,8 @@
   "tooltip": {
     "learn": "The issue has already been fully studied",
     "repeat": "The question has not yet progressed to memorization",
+		"members.only": "Available to community members",
+		"not.confirmed": "Email has not been confirmed",
 		"favorite": {
 			"add": "Add Favorite",
 			"delete": "Remove Favorite"

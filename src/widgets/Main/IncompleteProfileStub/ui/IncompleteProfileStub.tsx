@@ -11,13 +11,16 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { FullProfile } from '@/entities/auth';
-import { getFullProfile } from '@/entities/profile';
+import { FullProfile, Profile } from '@/entities/auth';
+import { getActiveProfile, getFullProfile } from '@/entities/profile';
 
 import styles from './IncompleteProfileStub.module.css';
 
-const getPercentProfileFullness = (user: FullProfile | null) => {
-	if (!user) return 0;
+const getPercentProfileFullness = (
+	user: FullProfile | null,
+	activeProfile: Profile | undefined,
+) => {
+	if (!user || !activeProfile) return 0;
 
 	let filledCount = 0;
 
@@ -26,14 +29,14 @@ const getPercentProfileFullness = (user: FullProfile | null) => {
 		user.username,
 		user.email,
 		user.city,
-		user.profiles[0].description,
-		user.profiles[0].specializationId !== 0 ? user.profiles[0].specializationId.toString() : null,
-		user.profiles[0].profileSkills.length > 0 ? user.profiles[0].profileSkills : null,
+		activeProfile.description,
+		activeProfile.specializationId !== 0 ? activeProfile.specializationId.toString() : null,
+		activeProfile.profileSkills.length > 0 ? activeProfile.profileSkills : null,
 	];
 
 	filledCount += fieldsToCheck.filter((field) => field && field.length > 0).length;
 
-	const socialLength = user.profiles[0].socialNetwork?.length || 0;
+	const socialLength = activeProfile.socialNetwork?.length || 0;
 	filledCount += socialLength > 2 ? 2 : socialLength;
 
 	const allFileldsCount = fieldsToCheck.length + 2;
@@ -46,12 +49,16 @@ export const IncompleteProfileStub = () => {
 
 	const { t } = useTranslation(i18Namespace.main);
 	const fullProfile = useAppSelector(getFullProfile);
+	const activeProfile = useAppSelector(getActiveProfile);
 
 	const redirectToProfileEditing = () => {
 		navigate(`${ROUTES.profile.edit.page}#personal-information`);
 	};
 
-	const percentFullness = useMemo(() => getPercentProfileFullness(fullProfile), [fullProfile]);
+	const percentFullness = useMemo(
+		() => getPercentProfileFullness(fullProfile, activeProfile),
+		[fullProfile, activeProfile],
+	);
 
 	const isIncompleteProfile = percentFullness < 100;
 
