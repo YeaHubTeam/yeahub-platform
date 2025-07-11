@@ -264,7 +264,7 @@ export enum Auth {
 	FORGOT_PASSWORD_MODAL_SUBMIT = 'forgot.password.modal.submit',
 	PASSWORD_RECOVERY_TITLE = 'password.recovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'password.recovery.subtitle',
-	PASSWORD_RECOVERY_SUBMIT = 'passwordRecovery.submit',
+	PASSWORD_RECOVERY_SUBMIT = 'password.recovery.submit',
 }
 
 export enum Specializations {
