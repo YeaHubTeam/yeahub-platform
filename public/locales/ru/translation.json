@@ -126,14 +126,14 @@
 			},
 			"login": {
 				"failed": "Неверный email или пароль."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "Пользователя с таким email не существует."
 			},
-			"password": {
-				"wrong": "Неверный пароль."
+			"user": {
+				"email": {
+					"not_exist": "Пользователя с таким email не существует."
+				},
+				"password": {
+					"wrong": "Неверный пароль."
+				}
 			}
 		},
 		"questions": {

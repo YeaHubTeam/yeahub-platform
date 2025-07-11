@@ -124,14 +124,14 @@
 			},
 			"login": {
 				"failed": "Invalid email or password."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "User with this email does not exist."
 			},
-			"password": {
-				"wrong": "User with this email has another password."
+			"user": {
+				"email": {
+					"not_exist": "User with this email does not exist."
+				},
+				"password": {
+					"wrong": "User with this email has another password."
+				}
 			}
 		},
 		"questions": {
