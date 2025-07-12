@@ -53,11 +53,35 @@ export const getIsEdit = (state: State) => {
 };
 
 export const getHasPremiumAccess = (state: State) => {
+	let isTrial = false;
+	const fullProfile = state.profile?.fullProfile;
+	if (fullProfile?.subscriptions?.length) {
+		const activeSubscription = fullProfile.subscriptions.find(
+			(i) =>
+				'state' in i && i.state === 'active' && 'subscriptionId' in i && i.subscriptionId === 4,
+		);
+		isTrial = !!activeSubscription;
+	}
+	isTrial = false;
 	return (
-		state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false
+		(state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ??
+			false) ||
+		isTrial
 	);
 };
 
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;
+};
+
+export const getHasTrialSubscriptions = (state: State) => {
+	const fullProfile = state.profile?.fullProfile;
+	if (fullProfile?.subscriptions?.length) {
+		const activeSubscription = fullProfile.subscriptions.find(
+			(i) =>
+				'state' in i && i.state === 'inactive' && 'subscriptionId' in i && i.subscriptionId === 4,
+		);
+		return !!activeSubscription;
+	}
+	return true;
 };

@@ -1,69 +1,73 @@
 .subscription {
-	display: flex;
-	min-width: 360px;
-	border: 1px solid var(--color-white-900);
-	cursor: pointer;
+  display: flex;
+  min-width: 360px;
+  border: 1px solid var(--color-white-900);
+  cursor: pointer;
 }
 
 .subscription:hover {
-	border: 1px solid var(--color-purple-700);
-	transition: border 0.5s ease-in-out;
+  border: 1px solid var(--color-purple-700);
+  transition: border 0.5s ease-in-out;
 }
 
 .subscription-name {
-	line-height: 38px;
+  line-height: 38px;
 }
 
 .subscription-description {
-	line-height: 18px;
+  line-height: 18px;
 }
 
 .subscription-price {
-	line-height: 19px;
+  line-height: 19px;
 }
 
 .subscription-check-inactive {
-	width: 20px;
-	height: 20px;
-	fill: var(--color-black-500);
+  width: 20px;
+  height: 20px;
+  fill: var(--color-black-500);
 }
 
 .subscription-check-active {
-	width: 20px;
-	height: 20px;
-	fill: var(--color-purple-700);
+  width: 20px;
+  height: 20px;
+  fill: var(--color-purple-700);
 }
 
 .crossed-out-text {
-	color: var(--color-black-500);
-	text-decoration: line-through;
+  color: var(--color-black-500);
+  text-decoration: line-through;
 }
 
 .crossed-out-price {
-	color: var(--color-black-400);
-	text-decoration: line-through;
+  color: var(--color-black-400);
+  text-decoration: line-through;
 }
 
 .advantage {
-	min-width: 240px;
+  min-width: 240px;
 }
 
 .advantages-list {
-	margin-top: 24px;
+  margin-top: 24px;
 }
 
 .advantages-and-button-container {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 @media (width <= 1024px) {
-	.subscription {
-		min-width: 222px;
-	}
+  .subscription {
+    min-width: 222px;
+  }
 }
 
 @media (width <= 768px) {
-	.advantages-and-button-container {
-		flex-direction: column-reverse;
-	}
+  .advantages-and-button-container {
+    flex-direction: column-reverse;
+  }
+	
+  .btn-wrapper{
+    flex-direction: column;
+  }
 }

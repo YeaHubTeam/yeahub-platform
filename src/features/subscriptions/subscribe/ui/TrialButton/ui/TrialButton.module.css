@@ -1,0 +1,10 @@
+.trial{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-left: 20px;
+  padding: 13px 0;
+  width: 240px;
+  height: 48px;
+}

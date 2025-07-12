@@ -731,6 +731,7 @@ export enum Subscription {
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
 	SUBSCRIPTION_CANCELED = 'canceled',
+	SUBSCRIPTION_TEST_DRIVE = 'test_drive',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',

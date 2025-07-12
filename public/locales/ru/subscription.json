@@ -18,6 +18,7 @@
 		"base": "Базовый",
 		"premium": "Участник сообщества"
 	},
+	"test_drive":"Тест драйв 7 дней",
 	"daysLeft_one": "Осталось {{count}} день",
 	"daysLeft_few": "Осталось {{count}} дня",
 	"daysLeft_many": "Осталось {{count}} дней",
