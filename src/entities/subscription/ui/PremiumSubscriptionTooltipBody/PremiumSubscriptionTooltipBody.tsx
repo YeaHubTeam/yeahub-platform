@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
-import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
 
 import styles from './PremiumSubscriptionTooltipBody.module.css';
 
@@ -27,9 +27,9 @@ export const PremiumSubscriptionTooltipBody = () => {
 				{t(SubscriptionCardI18.SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_TITLE)}
 			</Text>
 			<Flex componentType="ul" className={styles['tooltip-list']}>
-				{listItems.map((item) => {
+				{listItems.map((item, index) => {
 					return (
-						<li>
+						<li key={index}>
 							<Text variant="body2" color="black-700">
 								{item}
 							</Text>

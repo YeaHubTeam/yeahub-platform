@@ -18,6 +18,7 @@ export {
 	getIsEdit,
 	getHasPremiumAccess,
 	getHasSubscriptions,
+	getHasTrialSubscriptions,
 	getActiveProfile,
 } from './model/selectors/profileSelectors';
 
