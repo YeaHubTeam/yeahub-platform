@@ -63,7 +63,7 @@ export const Tooltip = ({
 
 	return (
 		<>
-			<span ref={refs.setReference} {...getReferenceProps()}>
+			<span className={styles.children} ref={refs.setReference} {...getReferenceProps()}>
 				{children}
 			</span>
 			{isShowTooltip && (
