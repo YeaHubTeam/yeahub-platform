@@ -54,7 +54,7 @@ export const FormControl = <T extends FieldValues>({
 					<Text variant="body2" color="black-700">
 						{label}
 					</Text>
-					{content}
+					<span>{content}</span>
 				</Flex>
 			</label>
 		);
