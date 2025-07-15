@@ -20,8 +20,12 @@ import { DeleteCompanyButton } from '@/features/company/deleteCompany';
 
 import styles from './CompaniesTable.module.css';
 
+interface UICompany extends Company {
+	disabled?: boolean;
+}
+
 interface CompaniesTableProps {
-	companies?: Company[];
+	companies?: UICompany[];
 	selectedCompanies?: SelectedAdminEntities;
 	onSelectCompanies?: (ids: SelectedAdminEntities) => void;
 }
@@ -69,7 +73,7 @@ export const CompaniesTable = ({
 		));
 	};
 
-	const renderActions = (company: Company) => {
+	const renderActions = (company: UICompany) => {
 		const menuItems: PopoverMenuItem[] = [
 			{
 				icon: <Icon icon="eye" size={24} />,
@@ -81,12 +85,15 @@ export const CompaniesTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				disabled: company.disabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.companies.edit.route, company.id));
 				},
 			},
 			{
-				renderComponent: () => <DeleteCompanyButton companyId={company.id} />,
+				renderComponent: () => (
+					<DeleteCompanyButton companyId={company.id} disabled={company.disabled} />
+				),
 			},
 		];
 

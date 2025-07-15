@@ -21,3 +21,7 @@
 .violet {
   border: 1px solid var(--color-purple-500);
 }
+
+.red {
+  border: 1px solid var(--color-red-600);
+}

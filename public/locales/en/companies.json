@@ -14,5 +14,6 @@
 		"choose": "Choose company name",
 		"empty": "No companies available",
 		"selected": "Selected company"
-	}
+	},
+	"tooltip.button.disabled": "You don't have access to this feature"
 }

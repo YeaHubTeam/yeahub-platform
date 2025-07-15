@@ -208,6 +208,11 @@
   &:focus {
     border: 1px solid transparent;
   }
+
+  &:disabled {
+    background-color: transparent;
+    color: var(--button-text-color-tertiary-disabled);
+  }
 	
   &:not([disabled]):hover {
     color: var(--color-purple-700);
