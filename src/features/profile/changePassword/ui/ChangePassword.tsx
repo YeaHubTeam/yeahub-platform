@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { PasswordInput } from '@/shared/ui/PasswordInput';
+import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
 
@@ -48,8 +49,8 @@ export const ChangePassword = () => {
 	return (
 		<Card>
 			<Flex direction="column" gap="12" className={styles['header-section']}>
-				<h3 className={styles['title']}>{t(Profile.CHANGE_PASSWORD_TITLE)}</h3>
-				<p className={styles['description']}>{t(Profile.CHANGE_PASSWORD_DESCRIPTION)}</p>
+				<Text variant="head3">{t(Profile.CHANGE_PASSWORD_TITLE)}</Text>
+				<Text variant="body3">{t(Profile.CHANGE_PASSWORD_DESCRIPTION)}</Text>
 			</Flex>
 
 			<form className={styles.form} onSubmit={handleSubmit(handleChangePassword)}>

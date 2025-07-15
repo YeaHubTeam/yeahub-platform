@@ -1,23 +1,27 @@
 .tooltip {
-  z-index: var(--z-index-modal);
-  padding: 16px 12px;
-  max-width: 295px;
-  border-radius: 16px;
-  background-color: var(--color-white-900);
+	z-index: var(--z-index-modal);
+	padding: 16px 12px;
+	max-width: 295px;
+	border-radius: 16px;
+	background-color: var(--color-white-900);
+}
+
+.children {
+  max-width: 100%;
 }
 
 .green {
-  border: 1px solid var(--color-green-600);
+	border: 1px solid var(--color-green-600);
 }
 
 .yellow {
-  border: 1px solid var(--color-yellow-800);
+	border: 1px solid var(--color-yellow-800);
 }
 
 .gray {
-  border: 1px solid var(--color-black-300);
+	border: 1px solid var(--color-black-300);
 }
 
 .violet {
-  border: 1px solid var(--color-purple-500);
+	border: 1px solid var(--color-purple-500);
 }

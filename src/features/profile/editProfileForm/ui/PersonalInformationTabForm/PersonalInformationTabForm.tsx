@@ -31,7 +31,7 @@ export const PersonalInformationTabForm = () => {
 	};
 
 	return (
-		<Flex direction="column" gap="120" className={styles.wrapper}>
+		<Flex direction="column" gap="60" className={styles.wrapper}>
 			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>{t(Profile.PHOTO_TITLE)}</h3>

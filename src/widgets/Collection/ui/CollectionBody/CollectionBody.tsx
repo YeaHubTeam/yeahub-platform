@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -31,7 +31,7 @@ export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: Collecti
 			<Card
 				className={styles.wrapper}
 				title={t(Questions.PREVIEW_TITLE)}
-				actionRoute={ROUTES.platformRoute}
+				actionRoute={SELECT_TARIFF_SETTINGS_TAB}
 				actionTitle={t(Questions.COMMUNITY_JOIN)}
 				withOutsideShadow
 			>

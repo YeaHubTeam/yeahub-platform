@@ -91,5 +91,12 @@
 			"placeholder": "Введите ваш никнейм",
 			"button": "Удалить профиль"
 		}
+	},
+	"tooltip": {
+		"create.profile.button": {
+			"limit.reached": "Превышен лимит количества профилей",
+			"empty.specialization": "Есть профиль без выбранной специализации",
+			"not.member": "Доступно для участников"
+		}
 	}
 }
