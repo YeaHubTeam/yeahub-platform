@@ -3,6 +3,7 @@ import { Fragment } from 'react/jsx-runtime';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
+import { Tooltip } from '../../Tooltip';
 import { PopoverMenuItem } from '../types';
 
 interface PopoverMenuProps {
@@ -13,20 +14,29 @@ interface PopoverMenuProps {
 export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps) => {
 	return (
 		<Flex direction="column" gap="4">
-			{menuItems.map(({ icon, onClick, title, renderComponent, disabled }) => (
+			{menuItems.map(({ icon, onClick, title, renderComponent, disabled, tooltip }) => (
 				<Fragment key={title}>
 					{title && onClick ? (
-						<Button
-							onClick={() => {
-								onClick();
-								onToggleOpenPopover();
-							}}
-							variant="tertiary-link"
-							preffix={icon}
-							disabled={disabled}
+						<Tooltip
+							title={tooltip?.text}
+							placement={'left'}
+							color={tooltip?.color}
+							offsetTooltip={10}
+							shouldShowTooltip={disabled}
 						>
-							{title}
-						</Button>
+							{' '}
+							<Button
+								onClick={() => {
+									onClick();
+									onToggleOpenPopover();
+								}}
+								variant="tertiary-link"
+								preffix={icon}
+								disabled={disabled}
+							>
+								{title}
+							</Button>
+						</Tooltip>
 					) : (
 						renderComponent?.(onToggleOpenPopover)
 					)}

@@ -91,20 +91,8 @@ export const CollectionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				<Tooltip
-					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-					placement={'bottom-start'}
-					color="red"
-					offsetTooltip={10}
-					shouldShowTooltip={isDisabled}
-				>
-					<DeleteCollectionButton
-						collectionId={collection.id}
-						isDetailPage
-						disabled={isDisabled}
-						placementTooltip="bottom-start"
-					/>
-				</Tooltip>
+				<DeleteCollectionButton collectionId={collection.id} isDetailPage disabled={isDisabled} />
+
 				<Tooltip
 					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
 					placement={'bottom-start'}

@@ -94,6 +94,10 @@ export const CollectionsTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
 				disabled: collection.disabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.questions.edit.route, collection.id));
@@ -101,11 +105,7 @@ export const CollectionsTable = ({
 			},
 			{
 				renderComponent: () => (
-					<DeleteCollectionButton
-						collectionId={collection.id}
-						disabled={collection.disabled}
-						placementTooltip={'left'}
-					/>
+					<DeleteCollectionButton collectionId={collection.id} disabled={collection.disabled} />
 				),
 			},
 		];
