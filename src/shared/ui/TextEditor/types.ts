@@ -8,6 +8,7 @@ export interface EditorProps {
 	config?: Record<string, unknown>;
 	autofocus?: boolean;
 	className?: string;
+	state?: 'error' | 'default';
 	onChange?: (value: string) => void;
 	onBlur?: (value: string) => void;
 	onFocus?: (value: string) => void;

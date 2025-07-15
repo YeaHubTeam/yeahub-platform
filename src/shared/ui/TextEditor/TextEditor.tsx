@@ -23,6 +23,7 @@ export const TextEditor = ({
 	disabled = false,
 	autofocus = false,
 	className,
+	state = 'default',
 	onChange,
 	onBlur,
 	onFocus,
@@ -97,6 +98,13 @@ export const TextEditor = ({
 			},
 			[onFocus],
 		),
+		onCreate({ editor }) {
+			editor.on('focus', () => {
+				const view = editor.view;
+				view.dom.style.outline = 'none';
+				view.dom.style.boxShadow = 'none';
+			});
+		},
 	});
 
 	const editorContentRef = useRef<HTMLDivElement>(null);
@@ -156,6 +164,7 @@ export const TextEditor = ({
 			className={cn(styles['yeahub-text-editor'], className, {
 				[styles['inline-prose-mirror']]: isInline,
 				[styles['disabled-editor']]: disabled,
+				[styles['error']]: state === 'error',
 			})}
 			id={String(id)}
 		>
