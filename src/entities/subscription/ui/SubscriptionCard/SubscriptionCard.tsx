@@ -7,14 +7,13 @@ import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i1
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { Subscription } from '../../model/types/subscription';
-import { PremiumSubscriptionTooltipBody } from '../PremiumSubscriptionTooltipBody/PremiumSubscriptionTooltipBody';
 
 import styles from './SubscriptionCard.module.css';
-import { Tooltip } from '@/shared/ui/Tooltip';
-import { Icon } from '@/shared/ui/Icon';
 
 interface SubscriptionCardProps {
 	subscription: Subscription;

@@ -41,9 +41,7 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
 			: t(InterviewStatistics.LINK);
 
-	const statsActionRoute = !isEmailVerified
-		? EMAIL_VERIFY_SETTINGS_TAB
-		: SELECT_TARIFF_SETTINGS_TAB;
+	const statsActionRoute = isEmailVerified ? EMAIL_VERIFY_SETTINGS_TAB : SELECT_TARIFF_SETTINGS_TAB;
 
 	return (
 		<AdditionalStatInfoGauge
