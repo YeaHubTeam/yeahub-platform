@@ -1,10 +1,16 @@
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import {
-	getProfiles,
 	getEmptySpecializationProfile,
 	getHasSubscriptions,
+	getProfiles,
 	getProfilesLength,
 } from '@/entities/profile';
 
@@ -28,11 +34,9 @@ export const ManageProfilesPanel = () => {
 	const isEmptySpecialization = (id: number) => id === emptySpecializationProfile?.specializationId;
 	const hasEmptySpecialization = Boolean(emptySpecializationProfile);
 
-	const hasSubscription = useAppSelector(getHasSubscriptions);
+	const { t } = useTranslation(i18Namespace.profile);
 
-	if (!profiles) {
-		return null;
-	}
+	const hasSubscription = useAppSelector(getHasSubscriptions);
 
 	const countLimit = hasSubscription
 		? MEMBER_PROFILES_COUNT_LIMIT
@@ -40,8 +44,24 @@ export const ManageProfilesPanel = () => {
 
 	const isReachedProfilesLimit = profilesCount === countLimit;
 
-	const createProfileDisabled =
-		isReachedProfilesLimit || (hasSubscription && hasEmptySpecialization) || !hasSubscription;
+	const tooltipEntry = useMemo(() => {
+		switch (true) {
+			case isReachedProfilesLimit:
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED;
+			case hasSubscription && hasEmptySpecialization:
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION;
+			case !hasSubscription:
+				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER;
+			default:
+				return '';
+		}
+	}, [isReachedProfilesLimit, hasSubscription, hasEmptySpecialization]);
+
+	const createProfileDisabled = Boolean(tooltipEntry);
+
+	if (!profiles) {
+		return null;
+	}
 
 	return (
 		<Card className={styles.container}>
@@ -57,7 +77,18 @@ export const ManageProfilesPanel = () => {
 				isEmptySpecialization={isEmptySpecialization}
 				className={styles.mb}
 			/>
-			<CreateProfileButton className={styles['create-button']} disabled={createProfileDisabled} />
+			<div className={styles.tooltip}>
+				<Tooltip
+					title={t(tooltipEntry)}
+					className={styles.tooltip}
+					shouldShowTooltip={createProfileDisabled}
+				>
+					<CreateProfileButton
+						className={styles['create-button']}
+						disabled={createProfileDisabled}
+					/>
+				</Tooltip>
+			</div>
 		</Card>
 	);
 };

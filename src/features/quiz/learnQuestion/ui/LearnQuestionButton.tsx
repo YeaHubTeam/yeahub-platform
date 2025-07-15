@@ -1,5 +1,6 @@
 import { type Placement } from '@floating-ui/react';
 import classNames from 'classnames';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -48,22 +49,30 @@ export const LearnQuestionButton = ({
 		});
 	};
 
+	const tooltipTitle = useMemo(() => {
+		if (!isEmailVerified) return Questions.TOOLTIP_NOT_CONFIRMED;
+		if (!hasPremium) return Questions.TOOLTIP_MEMBERS_ONLY;
+		return Questions.TOOLTIP_LEARN;
+	}, [isEmailVerified, hasPremium]);
+
 	const iconSize = isPopover ? 20 : 24;
+	const shouldShowTooltip = !isEmailVerified || !hasPremium || hasQuestionMaxProgress;
+	const isButtonDisabled = isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium;
 
 	return (
 		<Tooltip
-			title={t(Questions.TOOLTIP_LEARN)}
+			title={t(tooltipTitle)}
 			placement={placementTooltip}
 			color="violet"
 			offsetTooltip={offsetTooltip}
-			shouldShowTooltip={hasQuestionMaxProgress}
+			shouldShowTooltip={shouldShowTooltip}
 		>
 			<Button
 				className={classNames({ [styles.button]: isPopover }, styles['button-disabled'])}
 				preffix={<Icon icon="student" color="black-600" size={iconSize} />}
 				variant={variant}
 				onClick={onLearnQuestion}
-				disabled={isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium}
+				disabled={isButtonDisabled}
 			>
 				{t(Questions.LEARN)}
 			</Button>

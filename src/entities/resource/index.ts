@@ -1,6 +1,7 @@
 export * from './model/types/resource';
 export * from './api/__mock__/data/resourcesMock';
 export * from './ui/ResourceCard/ResourceCard';
+export * from './api/resourceApi';
 
 export type {
 	FilterParams,

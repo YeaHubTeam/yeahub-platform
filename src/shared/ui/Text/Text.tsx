@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import classNames from 'classnames';
-import { ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 import { Pallete } from '@/shared/types/types';
 
@@ -16,6 +17,7 @@ export interface TextProps {
 	className?: string;
 	width?: string | number;
 	isMainTitle?: boolean;
+	isLimitSize?: boolean;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -49,27 +51,40 @@ export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElement
  * @param children - The text content to display.
  * @param className - Additional CSS classes for customization.
  */
-export const Text = ({
-	variant,
-	color = 'black-900',
-	maxRows,
-	children,
-	className,
-	width,
-	isMainTitle,
-}: TextProps) => {
-	const Tag = isMainTitle ? 'h1' : variantToTagMapping[variant];
-	return (
-		<Tag
-			className={classNames(
-				styles[variant],
-				styles[`text-${color}`],
-				maxRows && styles[`text-rows-${maxRows}`],
-				className,
-			)}
-			style={{ width }}
-		>
-			{children}
-		</Tag>
-	);
-};
+
+export const Text = forwardRef(
+	(
+		{
+			variant,
+			color = 'black-900',
+			maxRows,
+			children,
+			className,
+			width,
+			isMainTitle,
+			isLimitSize,
+		}: TextProps,
+		ref,
+	) => {
+		const Tag = isMainTitle ? 'h1' : variantToTagMapping[variant];
+		return (
+			//@ts-ignore
+			<Tag
+				//@ts-ignore
+				ref={ref}
+				className={classNames(
+					styles[variant],
+					styles[`text-${color}`],
+					maxRows && styles[`text-rows-${maxRows}`],
+					className,
+					{ [styles.limited]: isLimitSize },
+				)}
+				style={{ width }}
+			>
+				{children}
+			</Tag>
+		);
+	},
+);
+
+Text.displayName = 'Text';

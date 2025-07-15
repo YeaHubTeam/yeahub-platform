@@ -6,6 +6,7 @@ import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
@@ -35,7 +36,7 @@ export const UserPreferences = () => {
 		{
 			title: i18n.t(Translation.HEADER_MENU_CHOOSE_MEMBERSHIP),
 			onClick: () => {
-				navigate(`${ROUTES.settings.page}#select-tariff`);
+				navigate(SELECT_TARIFF_SETTINGS_TAB);
 			},
 		},
 		{

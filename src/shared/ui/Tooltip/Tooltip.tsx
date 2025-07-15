@@ -1,9 +1,9 @@
 import {
-	FloatingArrow,
-	FloatingPortal,
 	arrow,
 	autoUpdate,
 	flip,
+	FloatingArrow,
+	FloatingPortal,
 	offset,
 	shift,
 	useFloating,
@@ -25,7 +25,7 @@ export const Tooltip = ({
 	ariaLabel,
 	children,
 	className,
-	color = 'green',
+	color = 'violet',
 	offsetTooltip = 10,
 	placement = 'top',
 	shouldShowTooltip = true,
@@ -63,7 +63,7 @@ export const Tooltip = ({
 
 	return (
 		<>
-			<span ref={refs.setReference} {...getReferenceProps()}>
+			<span className={styles.children} ref={refs.setReference} {...getReferenceProps()}>
 				{children}
 			</span>
 			{isShowTooltip && (
