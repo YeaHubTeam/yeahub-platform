@@ -306,8 +306,3 @@
   white-space: pre;
   word-break: normal;
 }
-
-.yeahub-text-editor.error {
-  border: 1px solid var(--palette-ui-red-700);
-  border-radius: 18px;
-}

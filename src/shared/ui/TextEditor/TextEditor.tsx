@@ -23,7 +23,6 @@ export const TextEditor = ({
 	disabled = false,
 	autofocus = false,
 	className,
-	state = 'default',
 	onChange,
 	onBlur,
 	onFocus,
@@ -164,7 +163,6 @@ export const TextEditor = ({
 			className={cn(styles['yeahub-text-editor'], className, {
 				[styles['inline-prose-mirror']]: isInline,
 				[styles['disabled-editor']]: disabled,
-				[styles['error']]: state === 'error',
 			})}
 			id={String(id)}
 		>

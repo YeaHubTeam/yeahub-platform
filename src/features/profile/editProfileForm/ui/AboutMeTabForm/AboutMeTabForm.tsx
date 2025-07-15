@@ -21,14 +21,13 @@ export const AboutMeTabForm = () => {
 			</div>
 			<div className={styles['textarea-container']}>
 				<FormControl name="aboutMe" control={control}>
-					{(field, hasError) => (
+					{(field) => (
 						<TextEditor
 							id="aboutMe"
 							isInline
 							data={field.value}
 							onChange={(value) => field.onChange(value)}
 							onBlur={field.onBlur}
-							state={hasError ? 'error' : 'default'}
 						/>
 					)}
 				</FormControl>
