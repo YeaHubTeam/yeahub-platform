@@ -2,7 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewStatistics, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import {
+	EMAIL_VERIFY_SETTINGS_TAB,
+	INTERVIEW_STATISTICS_TAB,
+} from '@/shared/constants/customRoutes';
 import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
@@ -41,7 +44,11 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
 			: t(InterviewStatistics.LINK);
 
-	const statsActionRoute = isEmailVerified ? EMAIL_VERIFY_SETTINGS_TAB : SELECT_TARIFF_SETTINGS_TAB;
+	const statsActionRoute = !isEmailVerified
+		? EMAIL_VERIFY_SETTINGS_TAB
+		: !hasPremium
+			? SELECT_TARIFF_SETTINGS_TAB
+			: INTERVIEW_STATISTICS_TAB;
 
 	return (
 		<AdditionalStatInfoGauge
