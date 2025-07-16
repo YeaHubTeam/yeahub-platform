@@ -56,6 +56,10 @@
   flex-direction: column;
 }
 
+.btn-wrapper {  
+  gap:20px;
+}
+
 @media (width <= 1024px) {
   .subscription {
     min-width: 222px;

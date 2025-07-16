@@ -5,7 +5,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import type { GetUserSubscriptionResponse } from '../';
-import { subscriptionApiUrls, trialApi } from '../model/constants/subscriptionConstants';
+import { subscriptionApiUrls } from '../model/constants/subscriptionConstants';
 import { setActiveSubscription } from '../model/slices/activeSubscriptionSlice';
 
 export const subscriptionApi = baseApi.injectEndpoints({
@@ -33,10 +33,7 @@ export const subscriptionApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getTrial: build.query<string, string>({
-			query: () => ({ url: route(trialApi.getTrial) }),
-		}),
 	}),
 });
 
-export const { useGetUserSubscriptionQuery, useLazyGetTrialQuery } = subscriptionApi;
+export const { useGetUserSubscriptionQuery } = subscriptionApi;

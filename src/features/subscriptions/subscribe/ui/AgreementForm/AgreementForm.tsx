@@ -15,17 +15,18 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { getHasTrialSubscriptions } from '@/entities/profile';
+import { isAvailableTrial } from '@/entities/profile';
 import {
 	PremiumSubscriptionTooltipBody,
 	SubscriptionCard,
 	subscriptionPrices,
 } from '@/entities/subscription';
 
+import { TrialButton } from '@/features/subscriptions/trial';
+
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
 import { SubscribeButton } from '../SubscribeButton';
-import { TrialButton } from '../TrialButton';
 
 import styles from './AgreementForm.module.css';
 
@@ -102,7 +103,7 @@ export const AgreementForm = () => {
 	);
 	const consentParts = parseI18nText(t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_CONSENT));
 
-	const hasTrialSubscriptions = useAppSelector(getHasTrialSubscriptions);
+	const hasTrialSubscriptions = useAppSelector(isAvailableTrial);
 
 	return (
 		<FormProvider {...subscriptionMethods}>

@@ -52,36 +52,26 @@ export const getIsEdit = (state: State) => {
 	return state.profile.isEdit;
 };
 
-export const getHasPremiumAccess = (state: State) => {
+export const isAvailableTrial = createSelector(getFullProfile, (fullProfile) => {
 	let isTrial = false;
-	const fullProfile = state.profile?.fullProfile;
 	if (fullProfile?.subscriptions?.length) {
 		const activeSubscription = fullProfile.subscriptions.find(
-			(i) =>
-				'state' in i && i.state === 'active' && 'subscriptionId' in i && i.subscriptionId === 4,
+			(subscription) => subscription.state === 'active' && subscription.subscriptionId === 4,
 		);
 		isTrial = !!activeSubscription;
 	}
-	isTrial = false;
-	return (
-		(state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ??
-			false) ||
-		isTrial
-	);
-};
+	return isTrial;
+});
+
+export const getHasPremiumAccess = createSelector(
+	[getFullProfile, isAvailableTrial],
+	(fullProfile, isTrial) => {
+		return (
+			(fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false) || isTrial
+		);
+	},
+);
 
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;
-};
-
-export const getHasTrialSubscriptions = (state: State) => {
-	const fullProfile = state.profile?.fullProfile;
-	if (fullProfile?.subscriptions?.length) {
-		const activeSubscription = fullProfile.subscriptions.find(
-			(i) =>
-				'state' in i && i.state === 'inactive' && 'subscriptionId' in i && i.subscriptionId === 4,
-		);
-		return !!activeSubscription;
-	}
-	return true;
 };

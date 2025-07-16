@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 
-import { useLazyGetTrialQuery } from '@/entities/subscription';
+import { useLazyGetTrialQuery } from '../api/getTrial';
 
 import styles from './TrialButton.module.css';
 
@@ -16,22 +16,23 @@ interface TrialButtonProps {
 export const TrialButton = ({ className }: TrialButtonProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 
-	const [getTrial] = useLazyGetTrialQuery();
+	const [getTrial, { isLoading }] = useLazyGetTrialQuery();
 
-	const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+	const onGetTrial = async (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 
-		await getTrial('');
+		await getTrial();
 	};
 
 	return (
 		<Button
+			disabled={isLoading}
 			size="large"
 			variant="outline"
 			className={classNames(styles.trial, className)}
-			onClick={handleClick}
+			onClick={onGetTrial}
 		>
-			{t(Subscription.SUBSCRIPTION_TEST_DRIVE)}
+			{t(Subscription.SUBSCRIPTION_BUTTON_TRIAL)}
 		</Button>
 	);
 };

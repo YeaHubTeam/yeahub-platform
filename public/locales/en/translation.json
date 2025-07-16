@@ -311,6 +311,10 @@
 			},
 			"subscribe": {
 				"failed": "Couldn't enable subscription"
+			},
+			"trial":{
+				"success": "You have successfully connected a trial subscription",
+				"failed": "Failed to connect trial subscription"
 			}
 		}
 	},
