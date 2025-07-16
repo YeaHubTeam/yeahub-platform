@@ -1,6 +1,6 @@
 {
   "title": "Вопросы собеседования",
-  "preview.title": "Подготовка к собеседованиям",
+  "preview.title": "Тренажёр собеседований",
   "continue.quiz": "Продолжить собеседование",
   "progress.bar.title": "Вопрос викторины {{fromQuestionNumber}} из {{toQuestionNumber}}",
   "start.quiz": {
