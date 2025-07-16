@@ -326,6 +326,7 @@ export enum InterviewQuizCreate {
 	MODE_RANDOM = 'mode.random',
 	MODE_SELECT = 'mode.select',
 	MODE_SELECT_TOOLTIP_UNAUTHORIZED = 'mode.select.tooltip.unauthorized',
+	MODE_SELECT_TOOLTIP_PREMIUMONLY = 'mode.select.tooltip.premiumonly',
 }
 
 export enum InterviewQuizResult {
