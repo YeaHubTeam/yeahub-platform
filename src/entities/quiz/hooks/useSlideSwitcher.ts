@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { matchPath, useLocation } from 'react-router-dom';
 
 // eslint-disable-next-line
-import { useAppDispatch } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { getProfileId } from '@/entities/profile';
 
 import { changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
@@ -11,6 +14,7 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	const dispatch = useAppDispatch();
+	const profileId = useAppSelector(getProfileId);
 	const location = useLocation();
 
 	const answeredCount = questions.filter((question) => question.answer !== undefined).length;
@@ -22,6 +26,7 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 				questionId: questions[currentQuestion].questionId,
 				answer,
 				shouldSaveToLS: isAuthRoute,
+				profileId,
 			}),
 		);
 	};
