@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px;
+  padding: 12px;
   width: fit-content;
   border: 1px solid var(--color-black-200);
   border-radius: 12px;
