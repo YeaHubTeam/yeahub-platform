@@ -31,7 +31,6 @@ export const PremiumSubscriptionTab = () => {
 	const daysInMonth = getDaysInMonth(createDate);
 	const { D_MM_YYYY } = DATE_FORMATS;
 
-	console.log(subscriptions);
 	return (
 		<>
 			<div className={styles['wrapper-top']}>
