@@ -70,7 +70,7 @@
 .wrapper .form-wrapper .input-wrapper label div p {
   position: absolute;
   top: 2px;
-  left: 0;
+  left: 16px;
   height: 16px;
   color: var(--error-color-red);
   line-height: 1.36;
