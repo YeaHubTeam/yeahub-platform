@@ -40,6 +40,7 @@ export interface ActiveQuizState {
 
 export interface ChangeQuestionAnswerParams {
 	questionId: number;
+	profileId: string;
 	answer: QuizQuestionAnswerType;
 	shouldSaveToLS?: boolean;
 }

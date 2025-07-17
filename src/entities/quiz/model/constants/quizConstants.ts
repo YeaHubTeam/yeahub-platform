@@ -1,4 +1,4 @@
-export const LS_ACTIVE_QUIZ_KEY = 'activeQuiz';
+export const LS_ACTIVE_QUIZZES_KEY = 'activeQuizzes';
 export const LS_ACTIVE_MOCK_QUIZ_KEY = 'activeMockQuiz';
 
 export const quizApiUrls = {
