@@ -128,3 +128,13 @@ export interface GetProfileQuizStatsResponse {
 	questionsStat: ProfileQuestionsStat;
 	skillsStat: ProfileSkillsStat;
 }
+
+export type SkillQuestion = {
+	skill: string;
+	count: number;
+};
+
+export interface GetQuizResults {
+	total: number;
+	skillsQuestions: SkillQuestion[];
+}

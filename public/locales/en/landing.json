@@ -198,6 +198,12 @@
 			"statistics": "Statistics",
 			"description": "Description",
 			"progress": "Progress"
-		}
+		},
+		"statistic": {
+      "title": "Smart mode for studying questions",
+      "question": "Statistics of completed questions",
+      "schedule": "Learning progress by skills",
+      "link": "View statistics"
+    }
 	}
 }

@@ -1,9 +1,9 @@
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Flex } from '@/shared/ui/Flex';
 
+import { CategoryProgressListWrapSkeleton } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsListSkeleton } from '@/widgets/interview/PassedQuestionsList';
-import { JoinToCommunitySkeleton } from '@/widgets/Landing/JoinToCommunity';
-import { SubscribeToMediaSkeleton } from '@/widgets/Main/SubscribeToMedia';
+import { PassedQuestionsStatisticSkeleton } from '@/widgets/interview/QuestionsStatistic';
 
 import styles from './PublicQuizResultPage.module.css';
 
@@ -13,8 +13,8 @@ export const PublicQuizResultPageSkeleton = () => {
 	return (
 		<Flex gap="20" direction="column" className={styles.container}>
 			<Flex gap="20" className={styles.wrapper} direction={isTablet || isMobile ? 'column' : 'row'}>
-				<JoinToCommunitySkeleton />
-				<SubscribeToMediaSkeleton />
+				<PassedQuestionsStatisticSkeleton className={styles.statistic} total={0} />
+				<CategoryProgressListWrapSkeleton className={styles.progress} />
 			</Flex>
 			<PassedQuestionsListSkeleton className={styles['questions-list']} questions={[]} />
 		</Flex>

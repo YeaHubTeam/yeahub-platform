@@ -9,7 +9,7 @@ interface ProgressByCategoriesItemProps {
 }
 
 export const CategoryProgressItem = ({ progressData }: ProgressByCategoriesItemProps) => {
-	const { category, total, passed } = progressData;
+	const { category, total, passed } = progressData!;
 
 	return (
 		<Flex direction="column" gap="4">
@@ -21,7 +21,7 @@ export const CategoryProgressItem = ({ progressData }: ProgressByCategoriesItemP
 					{passed}/{total}
 				</Text>
 			</Flex>
-			<BarChart progress={progressData} />
+			<BarChart progress={progressData!} />
 		</Flex>
 	);
 };
