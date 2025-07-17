@@ -1,6 +1,6 @@
 import { Response } from '@/shared/types/types';
 
-import { Payment } from '@/entities/payment/model/types/payments';
+import { Payment } from '../../../model/types/payments';
 
 export const paymentsMock: Response<Payment[]> = {
 	data: [

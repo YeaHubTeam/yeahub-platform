@@ -1,14 +1,9 @@
 import { Response } from '@/shared/types/types';
 
-export interface GetPaymentDataParamsRequest {
-	page?: number;
-	limit?: number;
-	data: Payment[];
-	total: number;
-}
+type PaymentStatus = 'CONFIRMED' | 'AUTHORIZED';
 
 export interface Payment {
-	status: 'CONFIRMED' | 'AUTHORIZED' | null;
+	status: PaymentStatus;
 	rebillId: string | null;
 	createdAt: string;
 	orderId: string;

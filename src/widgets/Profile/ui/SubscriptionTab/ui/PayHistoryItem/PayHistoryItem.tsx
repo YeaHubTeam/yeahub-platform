@@ -1,6 +1,5 @@
 import { parseISO } from 'date-fns';
 
-import ArrowDownIcon from '@/shared/assets/icons/ArrowDownIcon.svg';
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { Card } from '@/shared/ui/Card';
@@ -18,7 +17,6 @@ export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {
 	return (
 		<Card className={styles['history-item']}>
 			<Flex gap="16" align="center">
-				<ArrowDownIcon className={styles['arrow-down-icon']} />
 				<Flex gap="8" align="center">
 					<SealCheck
 						className={styles['seal-check']}

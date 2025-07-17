@@ -12,7 +12,7 @@ import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
-import { useGetUserSubscriptionQuery } from '@/entities/subscription';
+import { getActiveSubscription } from '@/entities/subscription';
 
 import { UnsubscribeButton } from '@/features/subscriptions/unsubscribe';
 
@@ -22,17 +22,16 @@ import styles from './PremiumSubscriptionTab.module.css';
 
 export const PremiumSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const { id, subscriptions } = useAppSelector(getFullProfile);
-	const { data } = useGetUserSubscriptionQuery(id ?? '');
-
-	const endDate = data?.[0]?.endDate || '';
-	const createDate = data?.[0]?.createDate || '';
+	const { subscriptions } = useAppSelector(getFullProfile);
+	const activeSubscriptions = useAppSelector(getActiveSubscription);
+	const endDate = activeSubscriptions?.endDate || '';
+	const createDate = activeSubscriptions?.createDate || '';
 
 	const restDays = differenceInDays(endDate, new Date());
 	const daysInMonth = getDaysInMonth(createDate);
-
 	const { D_MM_YYYY } = DATE_FORMATS;
 
+	console.log(subscriptions);
 	return (
 		<>
 			<div className={styles['wrapper-top']}>

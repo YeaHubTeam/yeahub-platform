@@ -6,8 +6,8 @@ import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { Payment, useGetPaymentsHistoryQuery } from '@/entities/payment';
-import { getFullProfile } from '@/entities/profile';
+import { useGetPaymentsHistoryQuery } from '@/entities/payment';
+import { getUserId } from '@/entities/profile';
 
 import { PayHistoryItem } from '../PayHistoryItem/PayHistoryItem';
 import { SubscriptionPagination } from '../SubscriptionPagination/SubscriptionPagination';
@@ -18,7 +18,7 @@ export const PayHistoryList = () => {
 	const [pageNumber, setPageNumber] = useState(1);
 	const { t } = useTranslation(i18Namespace.subscription);
 
-	const { id: userId } = useAppSelector(getFullProfile);
+	const userId = useAppSelector(getUserId);
 	const { data: payHistories } = useGetPaymentsHistoryQuery({
 		id: userId,
 		params: { page: pageNumber },
@@ -28,7 +28,7 @@ export const PayHistoryList = () => {
 		<Flex direction="column" gap="24" className={styles.wrapper}>
 			<h3 className={styles.title}>{t(Subscription.PAY_HISTORY)}</h3>
 			<Flex gap="14" direction="column">
-				{payHistories?.data.map((payment: Payment) => (
+				{payHistories?.data.map((payment) => (
 					<PayHistoryItem payHistory={payment} key={payment.orderId} />
 				))}
 			</Flex>

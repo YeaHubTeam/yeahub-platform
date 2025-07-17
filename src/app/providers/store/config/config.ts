@@ -6,7 +6,6 @@ import { sentryApiErrorMiddleware } from '@/shared/config/sentry/sentryApiErrorM
 import { State } from '@/shared/config/store/State';
 
 import { refreshMiddleware } from '@/entities/auth';
-import { activePaymentSlice } from '@/entities/payment';
 import { profileReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
 import { activeSubscriptionSlice } from '@/entities/subscription';
@@ -41,7 +40,6 @@ export const createReduxStore = (initialState?: State) => {
 			usersPage: usersPageReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
-			payments: activePaymentSlice.reducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>

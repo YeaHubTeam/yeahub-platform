@@ -1,12 +1,12 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
 import { paymentsApiUrls } from '../../model/constants/payments';
-import { GetPaymentDataParamsRequest, GetPaymentsResponse } from '../../model/types/payments';
+import { GetPaymentsResponse, PaginationParams } from '../../model/types/payments';
 
 import { paymentsMock } from './data';
 
 export const paymentsListMock = http.get<
-	Record<keyof GetPaymentDataParamsRequest, string>,
+	Record<keyof PaginationParams, string>,
 	DefaultBodyType,
 	GetPaymentsResponse
 >(process.env.API_URL + paymentsApiUrls.getPaymentsHistory, ({ request }) => {

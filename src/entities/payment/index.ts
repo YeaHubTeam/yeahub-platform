@@ -1,9 +1,4 @@
-export { activePaymentSlice } from './model/slices/activePaymentsSlice';
-export type {
-	Payment,
-	ActivePaymentState,
-	GetPaymentDataParamsRequest,
-} from './model/types/payments';
+export type { Payment, ActivePaymentState } from './model/types/payments';
 export { useGetPaymentsHistoryQuery } from './api/paymentApi';
 
 export { paymentHandlers } from './api/__mocks__';
