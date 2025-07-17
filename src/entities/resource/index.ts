@@ -7,7 +7,9 @@ export type {
 	FilterParams,
 	MarketplaceFilterStatus,
 	MarketplaceFilterStatusItem,
-} from './model/types';
+} from './model/types/filters';
+
 export { StatusFilterSection } from './ui/StatusFilterSection/StatusFilterSection';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
 export { ResourcesFilterSection } from './ui/ResourcesFilterSection/ResourcesFilterSection';
+export { ResourceForm } from './ui/ResourceForm/ResourceForm';

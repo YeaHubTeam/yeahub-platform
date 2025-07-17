@@ -1,3 +1,4 @@
+import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
@@ -40,6 +41,7 @@ export const setActiveProfileApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
+			invalidatesTags: [ApiTags.PROFILE],
 		}),
 	}),
 });

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
+
 import { ProfileState } from '@/entities/profile/model/types/profile';
 
 const initialState: ProfileState = {
@@ -32,6 +34,11 @@ export const profileSlice = createSlice({
 		setIsEdit(state, action) {
 			state.isEdit = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

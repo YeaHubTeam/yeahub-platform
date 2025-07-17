@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
+
 import { UsersPageState } from '../types/usersPageTypes';
 
 const initialState: UsersPageState = {
@@ -13,6 +15,11 @@ const usersPageSlice = createSlice({
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

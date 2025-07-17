@@ -576,11 +576,6 @@ export enum Collections {
 	WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
-export enum Marketplace {
-	HEADER_TITLE = 'header.title',
-	LINK_LABEL = 'add.resource.link.label',
-}
-
 export enum Companies {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
@@ -805,10 +800,14 @@ export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
 }
+
 export enum Marketplace {
+	HEADER_TITLE = 'header.title',
+	LINK_LABEL = 'add.resource.link.label',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
 	HIDE = 'hide',
+	DELETE = 'delete',
 	KEYWORDS_TITLE = 'keywords.title',
 	RESOURCES_TITLE = 'resources.title',
 	RESOURCES_REPOSITORY = 'resources.repository',
@@ -817,4 +816,29 @@ export enum Marketplace {
 	RESOURCES_COURSE = 'resources.course',
 	STATUS_ALL = 'status.all',
 	STATUS_TITLE = 'status.title',
+	ADD_RESOURCE_TITLE = 'add.resource.title',
+	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
+	NAME_SHORT = 'name.short',
+	NAME_LABEL = 'name.label',
+	DESCRIPTION_SHORT = 'description.short',
+	DESCRIPTION_LABEL = 'description.label',
+	PROVIDER_SHORT = 'provider.short',
+	PROVIDER_LABEL = 'provider.label',
+	ICON_SHORT = 'icon.short',
+	ICON_LABEL = 'icon.label',
+	TYPES_SHORT = 'types.short',
+	TYPES_LABEL = 'types.label',
+	SPECIALIZATIONS_SHORT = 'specializations.short',
+	SPECIALIZATIONS_LABEL = 'specializations.label',
+	SKILLS_SHORT = 'skills.short',
+	SKILLS_LABEL = 'skills.label',
+	KEYWORDS_SHORT = 'keywords.short',
+	KEYWORDS_LABEL = 'keywords.label',
+	ACCESS_CATEGORY_SHORT = 'access.category.short',
+	ACCESS_CATEGORY_LABEL = 'access.category.label',
+	IS_ACTIVE_SHORT = 'is.active.short',
+	IS_ACTIVE_LABEL = 'is.active.label',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
 }

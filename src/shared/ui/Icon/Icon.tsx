@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
 
 import { Pallete } from '@/shared/types/types';
 
@@ -13,7 +13,7 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 	color?: Pallete;
 	borderRadius?: string | number;
 	className?: string;
-	onClick?: () => void;
+	onClick?: MouseEventHandler<SVGElement>;
 	dataTestId?: string;
 }
 
