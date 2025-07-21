@@ -1,12 +1,14 @@
 .preparation-empty {
   padding: 24px;
+  max-height: 388px;
 }
 
 .inactive-description {
   padding: 16px;
   width: 100%;
   min-width: 316px;
-  max-height: 340px;
+  max-width: 508px;
+  box-shadow: var(--main-shadow);
   border: 1px solid var(--color-purple-300);
   border-radius: 16px;
 }
@@ -14,8 +16,8 @@
 .preparation-noactiveimage {
   width: 308px;
   height: 340px;
+  box-shadow: var(--main-shadow);
   border-radius: 16px;
-  object-fit: contain;
 }
 
 .vector-icon {
@@ -31,8 +33,9 @@
 }
 
 @media (width <= 1440px) {
-  .inactive-description{
-    max-width: 500px;
+  .preparation-empty {
+    gap: 18px;
+    padding: 24px 16px;
   }
 }
 
@@ -40,14 +43,15 @@
   .preparation-empty {
     padding: 16px;
   }
+	
+  .preparation-noactiveimage {
+    height: 351px;
+  }
 }
 
-@media (width <= 768px) {  
-  .preparation-empty {
-    padding: 8px;
-  }  
-  
+@media (width <= 768px) {
   .inactive-description{
+    min-width: auto;
     max-width: none;
   }
 }
