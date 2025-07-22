@@ -3,6 +3,8 @@ import * as yup from 'yup';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
+import { validateNoLinks } from './validateNoLinks';
+
 export const editProfileSchema = yup.object().shape({
 	image: yup.string().nullable().optional(),
 	username: yup
@@ -18,6 +20,9 @@ export const editProfileSchema = yup.object().shape({
 	location: yup.string().nullable(),
 	skillLevel: yup.string(),
 	socialNetworks: yup.array(),
-	aboutMe: yup.string().nullable(),
+	aboutMe: yup
+		.string()
+		.nullable()
+		.test('no-links', () => i18n.t(Translation.VALIDATION_LINK), validateNoLinks),
 	skills: yup.array(yup.number().required()),
 });
