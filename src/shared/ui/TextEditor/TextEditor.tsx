@@ -97,6 +97,13 @@ export const TextEditor = ({
 			},
 			[onFocus],
 		),
+		onCreate({ editor }) {
+			editor.on('focus', () => {
+				const view = editor.view;
+				view.dom.style.outline = 'none';
+				view.dom.style.boxShadow = 'none';
+			});
+		},
 	});
 
 	const editorContentRef = useRef<HTMLDivElement>(null);

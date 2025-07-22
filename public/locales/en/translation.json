@@ -92,7 +92,8 @@
 		"file": {
 			"size": "Large file size",
 			"type": "Invalid file format"
-		}
+		},
+		"link": "Links forbidden"
 	},
 	"crumbs": {
 		"profile": "Profile",

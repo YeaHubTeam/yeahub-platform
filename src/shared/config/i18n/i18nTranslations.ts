@@ -78,6 +78,7 @@ export enum Translation {
 	VALIDATION_PARAMETER = 'validation.parameter',
 	VALIDATION_FILE_SIZE = 'validation.file.size',
 	VALIDATION_FILE_TYPE = 'validation.file.type',
+	VALIDATION_LINK = 'validation.link',
 
 	/* Toast */
 	TOAST_TITLE_SUCCESS = 'toast.title.success',

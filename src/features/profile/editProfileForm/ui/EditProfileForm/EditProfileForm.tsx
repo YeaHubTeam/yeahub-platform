@@ -45,7 +45,11 @@ export const EditProfileForm = () => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 	const onSubmit = (data: ProfileSchema) => {
-		updateProfile(mapFormToProfile(profile, data));
+		updateProfile(mapFormToProfile(profile, data))
+			.unwrap()
+			.then(() => {
+				methods.reset(mapProfileToForm(profile));
+			});
 	};
 
 	if (isLoadingSlilsList) return <EditProfileFormSkeleton />;
