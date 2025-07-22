@@ -116,6 +116,7 @@ export enum Translation {
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
+	TOOLTIP_COLLECTION_DISABLED_INFO = 'tooltip.collections.disabled.info',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',

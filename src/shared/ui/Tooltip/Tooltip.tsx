@@ -61,6 +61,24 @@ export const Tooltip = ({
 
 	const isShowTooltip = isOpen && title && shouldShowTooltip;
 
+	const colorMap: Record<string, string> = {
+		violet: 'purple',
+		gray: 'gray',
+		yellow: 'yellow',
+		red: 'red',
+	};
+
+	const shadeMap: Record<string, string> = {
+		gray: '300',
+		yellow: '800',
+		red: '700',
+	};
+
+	const baseColor = colorMap[color] ?? color;
+	const shade = shadeMap[color] ?? '600';
+
+	const stroke = `var(--color-${baseColor}-${shade})`;
+
 	return (
 		<>
 			<span className={styles.children} ref={refs.setReference} {...getReferenceProps()}>
@@ -78,7 +96,7 @@ export const Tooltip = ({
 						<FloatingArrow
 							tipRadius={1}
 							fill="white"
-							stroke={`var(--color-${color === 'violet' ? 'purple' : color}-${color === 'gray' ? '300' : color === 'yellow' ? '800' : '600'})`}
+							stroke={stroke}
 							strokeWidth={1}
 							height={8}
 							width={16}

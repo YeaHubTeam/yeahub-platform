@@ -328,6 +328,13 @@
 			}
 		}
 	},
+	"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
+			}
+		}
+	},
 	"editor.bold": "Жирный",
 	"editor.italic": "Курсив",
 	"editor.underline": "Подчеркнутый",

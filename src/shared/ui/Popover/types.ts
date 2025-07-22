@@ -1,6 +1,8 @@
 import { Placement } from '@floating-ui/react';
 import React, { ReactNode } from 'react';
 
+import { TooltipColor } from '../Tooltip';
+
 export interface PopoverChildrenProps {
 	onToggle: () => void;
 	isOpen: boolean;
@@ -27,6 +29,11 @@ export interface PopoverMenuItem {
 	title?: string;
 	onClick?: () => void;
 	icon?: ReactNode;
+	disabled?: boolean;
+	tooltip?: {
+		color: TooltipColor;
+		text: string;
+	};
 	renderComponent?: (onToggleOpenPopover: () => void) => ReactNode;
 	disabled?: boolean;
 }
