@@ -161,11 +161,6 @@
     align-items: flex-start;
   }
 
-  .link {
-    bottom: 16px;
-    left: 16px;
-  }
-
   .content {
     margin-bottom: 40px;
   }
