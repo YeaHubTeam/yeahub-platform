@@ -84,6 +84,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 								<Checkbox
 									checked={selectedItemsIds?.includes(item.id)}
 									onChange={onSelectItem({ id: item.id, title: item.title })}
+									disabled={item.disabled}
 								/>
 							</td>
 						)}
