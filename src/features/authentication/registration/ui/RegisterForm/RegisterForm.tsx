@@ -14,6 +14,7 @@ import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 import { PasswordInput } from '@/shared/ui/PasswordInput';
+import { Text } from '@/shared/ui/Text';
 
 import { SignUpFormValues, useRegisterMutation } from '@/entities/auth';
 
@@ -42,7 +43,7 @@ export const RegisterForm = () => {
 
 	return (
 		<form className={styles['form-wrapper']} onSubmit={handleSubmit(onRegistration)}>
-			<h1>{t(Auth.REGISTRATION_TITLE)}</h1>
+			<Text variant="head2">{t(Auth.REGISTRATION_TITLE)}</Text>
 
 			<div className={styles['input-wrapper']}>
 				<FormControl name="username" control={control} label={t(Auth.FORM_USERNAME_LABEL)}>
@@ -92,7 +93,9 @@ export const RegisterForm = () => {
 				{t(Auth.REGISTRATION_SUBMIT)}
 			</Button>
 			<div className={styles['consent-wrapper']}>
-				<p>{t(Auth.REGISTRATION_PRIVACY_TITLE)}</p>
+				<Text variant="body2" className={styles['text-gap']}>
+					{t(Auth.REGISTRATION_PRIVACY_TITLE)}
+				</Text>
 				<FormControl name="privacyConsent" control={control}>
 					{(field) => (
 						<Checkbox

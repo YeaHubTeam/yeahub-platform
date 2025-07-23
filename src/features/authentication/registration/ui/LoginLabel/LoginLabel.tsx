@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './LoginLabel.module.css';
 
@@ -16,7 +17,7 @@ export const LoginLabel = () => {
 	};
 	return (
 		<div className={styles.wrapper}>
-			<p>{t(Auth.REGISTRATION_HAVE_ACCOUNT)}</p>
+			<Text variant="body2">{t(Auth.REGISTRATION_HAVE_ACCOUNT)}</Text>
 			<Button className={styles.btn} variant="link" onClick={handleClickNavigation}>
 				{t(Auth.REGISTRATION_LOGIN_LINK)}
 			</Button>

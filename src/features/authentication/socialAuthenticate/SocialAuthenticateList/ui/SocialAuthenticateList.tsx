@@ -1,4 +1,5 @@
 import GitHubIcon from '@/shared/assets/icons/github1.svg';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './SocialAuthenticateList.module.css';
 
@@ -9,11 +10,11 @@ interface SocialAuthenticateListProps {
 export const SocialAuthenticateList = ({ isAuthenticate }: SocialAuthenticateListProps) => {
 	return (
 		<div className={styles.wrapper}>
-			<p className={styles.title}>
+			<Text variant="body2" className={styles.title}>
 				{isAuthenticate
 					? 'Авторизоваться через социальные сети'
 					: 'Зарегистрироваться через социальные сети'}
-			</p>
+			</Text>
 			<div className={styles['icons-wrapper']}>
 				<GitHubIcon className={styles.icon} />
 				<GitHubIcon className={styles.icon} />

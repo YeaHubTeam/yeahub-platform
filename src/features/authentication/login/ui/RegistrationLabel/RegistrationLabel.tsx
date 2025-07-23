@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Auth } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './RegistrationLabel.module.css';
 
@@ -18,7 +19,7 @@ export const RegistrationLabel = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<p>{t(Auth.LOGIN_NO_ACCOUNT)}</p>
+			<Text variant="body2">{t(Auth.LOGIN_NO_ACCOUNT)}</Text>
 			<Button className={styles.btn} variant="link" onClick={handleClickNavigation}>
 				{t(Auth.LOGIN_REGISTER_LINK)}
 			</Button>
