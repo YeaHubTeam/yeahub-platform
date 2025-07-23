@@ -18,6 +18,8 @@ export enum Translation {
 	SUPPORT = 'support',
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
+	EXPAND = 'expand',
+	COLLAPSE = 'collapse',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
