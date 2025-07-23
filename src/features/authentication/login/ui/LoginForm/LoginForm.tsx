@@ -33,43 +33,41 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<div className={styles.wrapper}>
-			<form onSubmit={handleSubmit(onLogin)} className={styles['form-wrapper']}>
-				<div className={styles['input-wrapper']}>
-					<FormControl name="username" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
-						{(field, hasError) => (
-							<Input
-								{...field}
-								className={styles.input}
-								placeholder={t(Auth.FORM_EMAIL_PLACEHOLDER)}
-								error={hasError}
-							/>
-						)}
-					</FormControl>
-				</div>
+		<form onSubmit={handleSubmit(onLogin)} className={styles['form-wrapper']}>
+			<div className={styles['input-wrapper']}>
+				<FormControl name="username" control={control} label={t(Auth.FORM_EMAIL_LABEL)}>
+					{(field, hasError) => (
+						<Input
+							{...field}
+							className={styles.input}
+							placeholder={t(Auth.FORM_EMAIL_PLACEHOLDER)}
+							error={hasError}
+						/>
+					)}
+				</FormControl>
+			</div>
 
-				<div className={styles['input-wrapper']}>
-					<PasswordInput
-						name="password"
-						error={errors.password?.message}
-						label={t(Auth.FORM_PASSWORD_LABEL)}
-						placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
-					/>
-					<div className={styles['forgot-password-link']}>
-						<Button variant="link" onClick={handeleForgotPassword}>
-							{t(Auth.LOGIN_FORGOT_PASSWORD_LINK)}
-						</Button>
-					</div>
+			<div className={styles['input-wrapper']}>
+				<PasswordInput
+					name="password"
+					error={errors.password?.message}
+					label={t(Auth.FORM_PASSWORD_LABEL)}
+					placeholder={t(Auth.FORM_PASSWORD_PLACEHOLDER)}
+				/>
+				<div className={styles['forgot-password-link']}>
+					<Button variant="link" onClick={handeleForgotPassword}>
+						{t(Auth.LOGIN_FORGOT_PASSWORD_LINK)}
+					</Button>
 				</div>
-				<Button
-					type="submit"
-					variant="primary"
-					disabled={isLoading}
-					className={styles['submit-button']}
-				>
-					{t(Auth.LOGIN_SUBMIT)}
-				</Button>
-			</form>
-		</div>
+			</div>
+			<Button
+				type="submit"
+				variant="primary"
+				disabled={isLoading}
+				className={styles['submit-button']}
+			>
+				{t(Auth.LOGIN_SUBMIT)}
+			</Button>
+		</form>
 	);
 };

@@ -9,6 +9,7 @@ import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal } from '@/shared/ui/Modal';
+import { Text } from '@/shared/ui/Text';
 import { Timer } from '@/shared/ui/Timer/Timer';
 import { toast } from '@/shared/ui/Toast';
 
@@ -62,7 +63,9 @@ export const EmailSendModal = ({
 		<Modal title={t(Auth.FORGOT_PASSWORD_MODAL_TITLE)} isOpen={isOpen} onClose={onModalClose}>
 			<Flex justify="center" align="center" direction="column" className={styles['modal']}>
 				<img src={EmailModal} alt="email icon" loading="lazy" />
-				<p className={styles['modal-subtitle']}>{t(Auth.FORGOT_PASSWORD_MODAL_SUBTITLE)}</p>
+				<Text variant="body2" className={styles['modal-subtitle']}>
+					{t(Auth.FORGOT_PASSWORD_MODAL_SUBTITLE)}
+				</Text>
 				<Timer
 					duration={60}
 					setIsDisabled={setIsSendAgainButtonDisabled}
