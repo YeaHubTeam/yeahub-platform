@@ -18,6 +18,7 @@ export interface TextProps {
 	width?: string | number;
 	isMainTitle?: boolean;
 	isLimitSize?: boolean;
+	dataTestId?: string;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -63,6 +64,7 @@ export const Text = forwardRef(
 			width,
 			isMainTitle,
 			isLimitSize,
+			dataTestId,
 		}: TextProps,
 		ref,
 	) => {
@@ -72,6 +74,7 @@ export const Text = forwardRef(
 			<Tag
 				//@ts-ignore
 				ref={ref}
+				data-testid={dataTestId}
 				className={classNames(
 					styles[variant],
 					styles[`text-${color}`],
