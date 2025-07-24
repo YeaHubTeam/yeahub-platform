@@ -18,8 +18,7 @@ export const ChooseQuestionComplexity = ({
 	disabled,
 	hasPremium,
 }: ChooseQuestionComplexityProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
-	const { t: tInterview } = useTranslation(i18Namespace.interviewQuizCreate);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.interviewQuizCreate]);
 	const QUESTIONS_COMPLEXITY = [
 		{ id: 1, title: '1-3', value: [1, 2, 3] },
 		{ id: 2, title: '4-6', value: [4, 5, 6] },
@@ -42,7 +41,9 @@ export const ChooseQuestionComplexity = ({
 	}));
 
 	const tooltipTitle = !hasPremium
-		? tInterview(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY)
+		? t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY, {
+				ns: i18Namespace.interviewQuizCreate,
+			})
 		: t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED);
 
 	return (

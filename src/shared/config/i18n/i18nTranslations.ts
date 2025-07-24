@@ -159,6 +159,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
+	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',

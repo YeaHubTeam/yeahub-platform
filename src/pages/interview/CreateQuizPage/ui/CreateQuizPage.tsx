@@ -121,7 +121,7 @@ const CreateQuizPage = () => {
 						/>
 						<ChooseQuestionCount
 							onChangeLimit={onChangeLimit}
-							count={hasPremium && filter.count ? filter.count : 1}
+							count={filter.count || 1}
 							maxCount={hasPremium ? undefined : MAX_CHOOSE_QUESTION_COUNT}
 							disabled={!hasPremium}
 							hasPremium={hasPremium}

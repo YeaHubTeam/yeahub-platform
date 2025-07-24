@@ -23,8 +23,7 @@ export const ChooseQuestionCount = ({
 	disabled,
 	hasPremium,
 }: ChooseQuestionCountProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
-	const { t: tInterview } = useTranslation(i18Namespace.interviewQuizCreate);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.interviewQuizCreate]);
 
 	const onChange = (counter: number) => {
 		onChangeLimit(counter);
@@ -32,7 +31,9 @@ export const ChooseQuestionCount = ({
 
 	const isTooltipVisible = disabled && maxCount !== undefined && count >= maxCount;
 	const tooltipTitle = !hasPremium
-		? tInterview(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY)
+		? t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY, {
+				ns: i18Namespace.interviewQuizCreate,
+			})
 		: t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED);
 	return (
 		<div style={{ maxWidth: '290px' }}>
