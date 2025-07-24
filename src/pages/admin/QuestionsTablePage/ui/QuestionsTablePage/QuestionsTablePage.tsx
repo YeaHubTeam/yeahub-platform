@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
-import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
+import { getIsAuthor, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
@@ -29,12 +30,14 @@ import styles from './QuestionsTablePage.module.css';
 
 const QuestionsPage = () => {
 	const dispatch = useAppDispatch();
-	const search = useSelector(getQuestionsSearch);
-	const selectedQuestions = useSelector(getSelectedQuestions);
+	const userId = useAppSelector(getUserId);
+	const search = useAppSelector(getQuestionsSearch);
+	const selectedQuestions = useAppSelector(getSelectedQuestions);
+	const isAuthor = useAppSelector(getIsAuthor);
 
 	const { filter, handleFilterChange } = useQueryFilter();
 
-	const { data: questions } = useGetQuestionsListQuery({
+	const { data: allQuestions } = useGetQuestionsListQuery({
 		...filter,
 		title: search,
 	});
@@ -51,6 +54,17 @@ const QuestionsPage = () => {
 		handleFilterChange({ page });
 		dispatch(questionsTablePageActions.setPage(page));
 	};
+
+	const questions = useMemo(() => {
+		if (!allQuestions || !allQuestions.data) return undefined;
+		return {
+			...allQuestions,
+			data: allQuestions.data.map((item) => ({
+				...item,
+				disabled: isAuthor && item.createdBy?.id !== userId,
+			})),
+		};
+	}, [allQuestions, userId]);
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
