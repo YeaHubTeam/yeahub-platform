@@ -3,16 +3,20 @@ import { Pagination } from '@/shared/ui/Pagination';
 import styles from './SubscriptionPagination.module.css';
 
 interface SubscriptionPaginationProps {
-	// subscribeResponse?: Response<unknown>;
 	currentPage: number;
 	onPageChange: (page: number) => void;
+	totalPage?: number;
+	limitCount?: number;
 }
 
 export const SubscriptionPagination = ({
-	// subscribeResponse,
 	currentPage = 1,
 	onPageChange,
+	totalPage,
+	limitCount,
 }: SubscriptionPaginationProps) => {
+	const totalPages = totalPage && limitCount ? Math.ceil(totalPage / limitCount) : 0;
+
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};
@@ -25,10 +29,6 @@ export const SubscriptionPagination = ({
 		onPageChange(newPage);
 	};
 
-	// if (!subscribeResponse?.data) {
-	//   return null;
-	// }
-
 	return (
 		<div className={styles.wrapper}>
 			<Pagination
@@ -36,8 +36,7 @@ export const SubscriptionPagination = ({
 				onNextPageClick={onNextPageClick}
 				onChangePage={onPaginationButtonClick}
 				page={currentPage}
-				// totalPages={Math.ceil(subscribeResponse?.total / subscribeResponse?.limit)}
-				totalPages={24}
+				totalPages={totalPages}
 			/>
 		</div>
 	);

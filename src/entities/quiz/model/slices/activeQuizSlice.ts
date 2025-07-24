@@ -1,8 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { clearStore } from '@/shared/config/store/clearStore';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_ACTIVE_QUIZ_KEY } from '../constants/quizConstants';
+import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
+
+import { LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
 import { updateQuestionAnswer } from '../helpers/updateQuestionAnswer';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
@@ -16,24 +19,37 @@ export const activeQuizSlice = createSlice({
 	reducers: {
 		setActiveQuizQuestions: (
 			state,
-			action: PayloadAction<{ questions: Answers[]; shouldSaveToLS?: boolean }>,
+			action: PayloadAction<{ questions: Answers[]; shouldSaveToLS?: boolean; profileId?: string }>,
 		) => {
-			const { questions, shouldSaveToLS = true } = action.payload;
+			const { questions, shouldSaveToLS = true, profileId } = action.payload;
 
 			if (questions.length > 0) {
-				shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, questions);
+				if (shouldSaveToLS && profileId) {
+					const { quizzes } = getValidActiveQuizzesFromLS();
+					setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: questions });
+				}
 				state.questions = questions;
 			}
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
-			const { shouldSaveToLS } = action.payload;
+			const { shouldSaveToLS, profileId } = action.payload;
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
-			shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, state.questions);
+			if (shouldSaveToLS && profileId) {
+				const { quizzes } = getValidActiveQuizzesFromLS();
+				setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+			}
 		},
-		clearActiveQuizState: (state) => {
+		clearActiveQuizState: (state, action: PayloadAction<string>) => {
 			state.questions = [];
-			removeFromLS(LS_ACTIVE_QUIZ_KEY);
+			const { quizzes } = getValidActiveQuizzesFromLS();
+			quizzes && delete quizzes[action.payload];
+			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

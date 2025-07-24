@@ -19,7 +19,15 @@ export const DeleteProfileButton = ({ profileId, className = '' }: DeleteProfile
 
 	return (
 		<>
-			<Button variant="link" destructive onClick={onOpen} className={className}>
+			<Button
+				variant="link"
+				destructive
+				onClick={(e) => {
+					e.stopPropagation();
+					onOpen();
+				}}
+				className={className}
+			>
 				{t(Translation.DELETE)}
 			</Button>
 			<DeleteProfileModal profileId={profileId} isOpen={isOpen} onClose={onClose} />

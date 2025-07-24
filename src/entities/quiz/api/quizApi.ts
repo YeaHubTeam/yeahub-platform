@@ -9,12 +9,9 @@ import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import {
-	LS_ACTIVE_MOCK_QUIZ_KEY,
-	LS_ACTIVE_QUIZ_KEY,
-	quizApiUrls,
-} from '../model/constants/quizConstants';
-import { getValidActiveQuizFromLS } from '../model/helpers/getValidActiveQuizFromLS';
+import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
+
+import { LS_ACTIVE_MOCK_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
@@ -88,19 +85,19 @@ const quizApi = baseApi.injectEndpoints({
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+			async onQueryStarted({ profileId }, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					const activeQuizQuestionsFromLS = getValidActiveQuizFromLS(LS_ACTIVE_QUIZ_KEY);
-
-					if (activeQuizQuestionsFromLS) {
+					const { profileActiveQuiz } = getValidActiveQuizzesFromLS(profileId);
+					if (profileActiveQuiz && result.data.data.length > 0) {
 						dispatch(
 							setActiveQuizQuestions({
-								questions: activeQuizQuestionsFromLS,
+								questions: profileActiveQuiz,
 								shouldSaveToLS: false,
 							}),
 						);
 					} else {
+						dispatch(clearActiveQuizState(profileId));
 						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data?.data[0]).map(
 							(question) => ({
 								questionId: question.questionId,
@@ -158,7 +155,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					dispatch(clearActiveQuizState());
+					dispatch(clearActiveQuizState(arg.profileId));
 
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
@@ -183,7 +180,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted({ data }, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					dispatch(clearActiveQuizState());
+					dispatch(clearActiveQuizState(data.profileId));
 					await dispatch(
 						quizApi.endpoints.getActiveQuiz.initiate(
 							{ profileId: data.profileId, page: 1, limit: 1 },
