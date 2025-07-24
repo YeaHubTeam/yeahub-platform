@@ -565,9 +565,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.quiz.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<Outlet />
-								</PremiumRoute>
+								<Outlet />
 							</VerifiedEmailRoute>
 						),
 						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },

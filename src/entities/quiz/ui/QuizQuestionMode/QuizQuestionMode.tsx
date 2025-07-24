@@ -13,6 +13,7 @@ interface QuizQuestionModeProps {
 	modeFromURL?: QuestionModeType;
 	disabled?: boolean;
 	active?: boolean;
+	hasPremium?: boolean;
 }
 
 interface QuizQuestionModeData {
@@ -26,6 +27,7 @@ export const QuizQuestionMode = ({
 	onChangeMode,
 	modeFromURL,
 	disabled,
+	hasPremium,
 }: QuizQuestionModeProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 
@@ -60,10 +62,14 @@ export const QuizQuestionMode = ({
 		}
 	}, [modeFromURL, disabled]);
 
+	const tooltipTitle = !hasPremium
+		? t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY)
+		: t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_UNAUTHORIZED);
+
 	return (
 		<div style={{ maxWidth: '384px' }}>
 			<Tooltip
-				title={t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_UNAUTHORIZED)}
+				title={tooltipTitle}
 				placement="top"
 				color="violet"
 				offsetTooltip={0}

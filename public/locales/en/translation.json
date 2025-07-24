@@ -336,5 +336,6 @@
 	"editor.undo": "Undo",
 	"editor.redo": "Redo",
 	"editor.bullet.list": "Bullet list",
-	"editor.ordered.list": "Ordered list"
+	"editor.ordered.list": "Ordered list",
+	"tooltip.premiumonly": "Available to members"
 }
