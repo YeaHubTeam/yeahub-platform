@@ -52,19 +52,33 @@ export const getIsEdit = (state: State) => {
 	return state.profile.isEdit;
 };
 
-export const isAvailableTrial = createSelector(getFullProfile, (fullProfile) => {
-	let isTrial = false;
+export const getTrialSubscription = createSelector(getFullProfile, (fullProfile) => {
 	if (fullProfile?.subscriptions?.length) {
 		const activeSubscription = fullProfile.subscriptions.find(
-			(subscription) => subscription.state === 'active' && subscription.subscriptionId === 4,
+			(subscription) => subscription.subscriptionId === 4,
 		);
-		isTrial = !!activeSubscription;
+		return activeSubscription;
 	}
-	return isTrial;
+	return undefined;
 });
 
+export const isActiveTrial = createSelector(getTrialSubscription, (trialSubscription) => {
+	return trialSubscription && trialSubscription.state && trialSubscription.state === 'active'
+		? true
+		: false;
+});
+
+export const isAvailableTrial = createSelector(
+	[getTrialSubscription, getFullProfile],
+	(trialSubscription, fullProfile) => {
+		const candidatPremium = fullProfile && fullProfile.userRoles;
+		fullProfile.userRoles.find((role) => role.name === 'candidate-premium') ? true : false;
+		return !candidatPremium || !trialSubscription;
+	},
+);
+
 export const getHasPremiumAccess = createSelector(
-	[getFullProfile, isAvailableTrial],
+	[getFullProfile, isActiveTrial],
 	(fullProfile, isTrial) => {
 		return (
 			(fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false) || isTrial
