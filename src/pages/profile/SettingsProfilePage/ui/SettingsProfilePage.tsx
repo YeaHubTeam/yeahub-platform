@@ -4,12 +4,10 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Tab, Tabs, useTabs } from '@/shared/ui/Tabs';
 
-import {
-	AccountTab,
-	ChangePasswordTab,
-	EmailConfirmationTab,
-	SubscriptionTab,
-} from '@/widgets/Profile';
+import { AccountTab } from './tabs/AccountTab/AccountTab';
+import { ChangePasswordTab } from './tabs/ChangePasswordTab/ChangePasswordTab';
+import { EmailConfirmationTab } from './tabs/EmailConfirmationTab/EmailConfirmationTab';
+import { SubscriptionTab } from './tabs/SubscriptionTab/SubscriptionTab';
 
 type SettingProfileTab = 'select-tariff' | 'change-password' | 'email-verify' | 'account';
 
