@@ -27,6 +27,15 @@ export const FooterLinks = () => {
 					{t(Landing.FOOTER_DOCS)}
 				</Text>
 			</NavLink>
+			<NavLink to={'/media'}>
+				<Text
+					className={styles['docs-link']}
+					variant={isSmallScreen ? 'body2' : 'body2-accent'}
+					color="black-400"
+				>
+					{t(Landing.FOOTER_MEDIA)}
+				</Text>
+			</NavLink>
 			{RESOURCES_LINKS.map(({ url, label, icon, color, className }) => (
 				<a
 					key={url}

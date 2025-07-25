@@ -14,7 +14,11 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { PremiumSubscriptionTooltipBody, SubscriptionCard, subscriptionPrices } from '@/entities/subscription';
+import {
+	PremiumSubscriptionTooltipBody,
+	SubscriptionCard,
+	subscriptionPrices,
+} from '@/entities/subscription';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';

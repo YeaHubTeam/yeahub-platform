@@ -1,40 +1,63 @@
-import { Media } from '../types/media';
+import Android from '@/shared/assets/icons/android.svg';
+import C from '@/shared/assets/icons/c.svg';
+import CSharp from '@/shared/assets/icons/csharp.svg';
+import DevOps from '@/shared/assets/icons/devops.svg';
+import DS from '@/shared/assets/icons/ds.svg';
+import Game from '@/shared/assets/icons/game.svg';
+import Go from '@/shared/assets/icons/go.svg';
+import IOS from '@/shared/assets/icons/ios.svg';
+import Java from '@/shared/assets/icons/java.svg';
+import ML from '@/shared/assets/icons/ml.svg';
+import NodeJs from '@/shared/assets/icons/nodejs.svg';
+import Python from '@/shared/assets/icons/py.svg';
+import Qa from '@/shared/assets/icons/qa.svg';
+import Ruby from '@/shared/assets/icons/ruby.svg';
+import Rust from '@/shared/assets/icons/rust.svg';
 
-export const mediaLinks: Media[] = [
+import { MediaWithImage } from '../types/media';
+
+export const mediaLinks: MediaWithImage[] = [
 	{
 		title: 'Python Developer',
 		link: 'https://t.me/+ESvCF1T89XNkOWYy',
 		specializationId: 19,
+		image: Python,
 	},
 	{
 		title: 'C# Developer',
 		link: 'https://t.me/+IiB9MdbGUOxmNzli',
 		specializationId: 33,
+		image: CSharp,
 	},
 	{
 		title: 'ML Engineer',
 		link: 'https://t.me/+DbMQbphRGt0xNTU6',
 		specializationId: 37,
+		image: ML,
 	},
 	{
 		title: 'C/C++ Developer',
 		link: 'https://t.me/+Z9wqIOFdHbkyYzQy',
 		specializationId: 32,
+		image: C,
 	},
 	{
 		title: 'Data Science',
 		link: 'https://t.me/+dnZMFajHMqkyZTky',
 		specializationId: 34,
+		image: DS,
 	},
 	{
 		title: 'Java Developer',
 		link: 'https://t.me/+4kGLlFfiWWBhZTc6',
 		specializationId: 20,
+		image: Java,
 	},
 	{
 		title: 'PHP Developer',
 		link: 'https://t.me/+ny_6GvV684cwOGM6',
 		specializationId: 24,
+		image: Ruby,
 	},
 	{
 		title: 'React Developer',
@@ -45,45 +68,54 @@ export const mediaLinks: Media[] = [
 		title: 'Rust Developer',
 		link: 'https://t.me/+qZZcP2_m_UNlOWQ6',
 		specializationId: 28,
+		image: Rust,
 	},
 	{
 		title: 'Golang Developer',
 		link: 'https://t.me/+NFCSAsCPBa9kOWQy',
 		specializationId: 23,
+		image: Go,
 	},
 	{
 		title: 'Ruby Developer',
 		link: 'https://t.me/+w_hDI2z7uEcwZDMy',
 		specializationId: 25,
+		image: Ruby,
 	},
 	{
 		title: 'Node.js Developer',
 		link: 'https://t.me/+y__haOJn5K8zZDgy',
 		specializationId: 21,
+		image: NodeJs,
 	},
 	{
 		title: 'QA Engineer',
 		link: 'https://t.me/+4Wv3cw34AXZiZTQ6',
 		specializationId: 29,
+		image: Qa,
 	},
 	{
 		title: 'Android Developer',
 		link: 'https://t.me/+3sIlHYjfoAU1MDA6',
 		specializationId: 27,
+		image: Android,
 	},
 	{
 		title: 'iOS Developer',
 		link: 'https://t.me/+TcGolYjIcjQ3MWJi',
 		specializationId: 26,
+		image: IOS,
 	},
 	{
 		title: 'Game Developer',
 		link: 'https://t.me/+mCRECMm9HUFiMzQy',
 		specializationId: 35,
+		image: Game,
 	},
 	{
 		title: 'DevOps Engineer',
 		link: 'https://t.me/+YTy2aTPQGSpmY2My',
 		specializationId: 36,
+		image: DevOps,
 	},
 ];

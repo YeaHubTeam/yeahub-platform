@@ -112,6 +112,7 @@
     "about": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
     "description": "YeaHub is a completely open project designed to unite and improve the IT sphere. Our source code is available for viewing on GitHub. The design of the project is also open for review in Figma.",
     "docs": "Documents",
+	"media": "Media",
     "links": {
 			"link": {
 				"aria-label": "Will open in a new tab"
