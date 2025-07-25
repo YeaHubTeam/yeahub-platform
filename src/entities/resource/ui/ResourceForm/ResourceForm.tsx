@@ -95,7 +95,7 @@ export const ResourceForm = () => {
 			>
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
-						<div className={styles.select}>
+						<div>
 							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
 						</div>
 					)}
@@ -105,7 +105,7 @@ export const ResourceForm = () => {
 				<FormControl name="skills" control={control}>
 					{({ onChange, value }) => {
 						return (
-							<div className={styles.select}>
+							<div>
 								<SkillSelect
 									onChange={onChange}
 									value={value}
@@ -117,10 +117,10 @@ export const ResourceForm = () => {
 				</FormControl>
 			</FormSelect>
 			<FormSelect short={t(Marketplace.TYPES_SHORT)} label={t(Marketplace.TYPES_LABEL)}>
-				<FormControl name="types" control={control}>
+				<FormControl name="provider" control={control}>
 					{({ onChange, value }) => (
-						<div className={styles.select}>
-							<ResourcesSelect onChange={onChange} value={value} hasMultiple />
+						<div>
+							<ResourcesSelect onChange={onChange} value={value} />
 						</div>
 					)}
 				</FormControl>

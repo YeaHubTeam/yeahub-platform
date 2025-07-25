@@ -30,9 +30,7 @@ export const ResourcesSelect = ({
 	disabled,
 }: ResourcesSelectProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
-	// const { data: resourcesTypes } = useGetResourcesTypesListQuery({ limit: 100 });
 
-	//TODO: Implement useGetResourcesTypesListQuery
 	const resourcesTypes = {
 		total: 4,
 		data: [
@@ -57,7 +55,7 @@ export const ResourcesSelect = ({
 			onChange(updates);
 		} else {
 			setSelectedResources([numValue]);
-			onChange([numValue]);
+			onChange(numValue);
 		}
 	};
 
