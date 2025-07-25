@@ -356,5 +356,6 @@
 	"editor.undo": "Отменить",
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
-	"editor.ordered.list": "Нумерованный список"
+	"editor.ordered.list": "Нумерованный список",
+	"tooltip.premiumonly": "Доступно для участников"
 }

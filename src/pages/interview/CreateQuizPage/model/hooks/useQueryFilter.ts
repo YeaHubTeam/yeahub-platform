@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/hooks';
+
+import { getHasPremiumAccess } from '@/entities/profile';
 import { QuestionModeType } from '@/entities/quiz';
 
 interface FilterFromURL {
@@ -21,14 +24,14 @@ const initialState = '?mode=RANDOM&count=10';
 
 export const useQueryFilter = () => {
 	const [filter, setFilters] = useState<FilterFromUser>({ tariff: true } as FilterFromUser);
-
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
 		if (!params.get('mode') && !params.get('count')) {
-			navigate(initialState);
+			navigate(hasPremium ? initialState : '?mode=RANDOM');
 		}
 	}, []);
 

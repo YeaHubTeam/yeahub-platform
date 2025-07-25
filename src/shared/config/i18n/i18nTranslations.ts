@@ -165,6 +165,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
 	TOAST_RESOURCE_CREATE_SUCCESS = 'toast.resources.create.success',
 	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
+	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -336,6 +337,7 @@ export enum InterviewQuizCreate {
 	MODE_RANDOM = 'mode.random',
 	MODE_SELECT = 'mode.select',
 	MODE_SELECT_TOOLTIP_UNAUTHORIZED = 'mode.select.tooltip.unauthorized',
+	MODE_SELECT_TOOLTIP_PREMIUMONLY = 'mode.select.tooltip.premiumonly',
 }
 
 export enum InterviewQuizResult {
