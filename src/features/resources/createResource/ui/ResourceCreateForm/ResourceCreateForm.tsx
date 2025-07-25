@@ -11,6 +11,17 @@ export const ResourceCreateForm = () => {
 	const methods = useForm<CreateResourceFormValues>({
 		resolver: yupResolver(resourceCreateSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			name: '',
+			provider: '',
+			description: '',
+			iconBase64: '',
+			accessCategory: 'free',
+			isActive: true,
+			skills: [],
+			specializations: [],
+			keywords: [],
+		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
