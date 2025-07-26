@@ -63,17 +63,18 @@ export const getTrialSubscription = createSelector(getFullProfile, (fullProfile)
 });
 
 export const isActiveTrial = createSelector(getTrialSubscription, (trialSubscription) => {
-	return trialSubscription && trialSubscription.state && trialSubscription.state === 'active'
-		? true
-		: false;
+	return !!(trialSubscription && trialSubscription.state && trialSubscription.state === 'active');
 });
 
 export const isAvailableTrial = createSelector(
 	[getTrialSubscription, getFullProfile],
 	(trialSubscription, fullProfile) => {
-		const candidatPremium = fullProfile && fullProfile.userRoles;
-		fullProfile.userRoles.find((role) => role.name === 'candidate-premium') ? true : false;
-		return !candidatPremium || !trialSubscription;
+		const candidatePremium = !!(
+			fullProfile &&
+			fullProfile.userRoles &&
+			fullProfile.userRoles.find((role) => role.name === 'candidate-premium')
+		);
+		return candidatePremium && trialSubscription;
 	},
 );
 
@@ -81,7 +82,8 @@ export const getHasPremiumAccess = createSelector(
 	[getFullProfile, isActiveTrial],
 	(fullProfile, isTrial) => {
 		return (
-			(fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false) || isTrial
+			(fullProfile?.userRoles?.some((role) => role.name === 'candidate-premium') ?? false) ||
+			isTrial
 		);
 	},
 );
