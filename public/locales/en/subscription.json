@@ -18,8 +18,8 @@
 		"base": "Base",
 		"premium": "Premium"
 	},
-	"button":{
-		"trial":"Test drive 7 days"
+	"button": {
+		"trial": "Test drive 7 days"
 	},
 	"daysLeft_one": " {{count}} Day Left",
 	"daysLeft_other": " {{count}} Days Left",

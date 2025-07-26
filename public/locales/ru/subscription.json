@@ -18,8 +18,8 @@
 		"base": "Базовый",
 		"premium": "Участник сообщества"
 	},
-	"button":{
-		"trial":"Тест драйв 7 дней"
+	"button": {
+		"trial": "Тест драйв 7 дней"
 	},
 	"daysLeft_one": "Осталось {{count}} день",
 	"daysLeft_few": "Осталось {{count}} дня",
