@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
+
 import { QuestionModeType } from '@/entities/quiz';
 
 import { CreateQuizPageState } from '../types/CreateQuizPageTypes';
@@ -31,6 +33,11 @@ const createQuizPageSlice = createSlice({
 		setMode: (state, action: PayloadAction<QuestionModeType>) => {
 			state.mode = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

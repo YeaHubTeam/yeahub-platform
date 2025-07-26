@@ -29,7 +29,7 @@ export const PremiumSubscriptionTooltipBody = () => {
 			<Flex componentType="ul" className={styles['tooltip-list']}>
 				{listItems.map((item, index) => {
 					return (
-						<li key={index}>
+						<li key={`${item}-${index}`}>
 							<Text variant="body2" color="black-700">
 								{item}
 							</Text>

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
@@ -7,6 +8,7 @@ import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
+import { getUserId } from '@/entities/profile';
 
 import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
@@ -26,6 +28,7 @@ import styles from './CollectionsPage.module.css';
  */
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
+	const userId = useSelector(getUserId);
 	const search = useSelector(getCollectionsSearch);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
@@ -42,7 +45,16 @@ const CollectionsPage = () => {
 
 	// in case other collections appear (eg: filtered collections)
 	// as in QuestionsPage
-	const collections = allCollections;
+	const collections = useMemo(() => {
+		if (!allCollections || !allCollections.data) return undefined;
+		return {
+			...allCollections,
+			data: allCollections.data.map((item) => ({
+				...item,
+				disabled: item.createdBy?.id !== userId,
+			})),
+		};
+	}, [allCollections, userId]);
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 	};

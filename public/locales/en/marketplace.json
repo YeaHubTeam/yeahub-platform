@@ -6,9 +6,12 @@
 		"resource": {
 			"link": {
 				"label": "Suggest yours"
-			}
+			},
+			"title": "Add a resource",
+			"submit": "Send for moderation"
 		}
 	},
+	"delete": "Delete",
 	"search.placeholder": "Enter a query…",
 	"show.all": "Show all",
 	"hide": "Hide",
@@ -23,5 +26,42 @@
 	"status": {
 		"title": "Status",
 		"all": "All"
+	},
+	"name": {
+		"short": "Name",
+		"label": "Add a name"
+	},
+	"description": {
+		"short": "Description",
+		"label": "Add a description"
+	},
+	"provider": {
+		"short": "Provider",
+		"label": "Add a provider"
+	},
+	"icon": {
+		"short": "Resource image",
+		"label": "Add an image"
+	},
+	"types": {
+		"short": "Resource type",
+		"label": "Select a type"
+	},
+	"specializations": {
+		"short": "Specialization",
+		"label": "Select a specialization"
+	},
+	"skills": {
+		"short": "Skills",
+		"label": "Skills relevant to the topic"
+	},
+	"keywords": {
+		"short": "Keywords",
+		"label": "Add keywords to the text"
+	},
+	"select": {
+		"choose": "Choose a resource type from the list",
+		"empty": "No options",
+		"selected": "Selected resource types"
 	}
 }

@@ -9,7 +9,7 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 
 import {
 	getEmptySpecializationProfile,
-	getHasSubscriptions,
+	getHasPremiumAccess,
 	getProfiles,
 	getProfilesLength,
 } from '@/entities/profile';
@@ -36,9 +36,9 @@ export const ManageProfilesPanel = () => {
 
 	const { t } = useTranslation(i18Namespace.profile);
 
-	const hasSubscription = useAppSelector(getHasSubscriptions);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 
-	const countLimit = hasSubscription
+	const countLimit = hasPremiumAccess
 		? MEMBER_PROFILES_COUNT_LIMIT
 		: NOT_MEMBER_PROFILES_COUNT_LIMIT;
 
@@ -48,14 +48,14 @@ export const ManageProfilesPanel = () => {
 		switch (true) {
 			case isReachedProfilesLimit:
 				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED;
-			case hasSubscription && hasEmptySpecialization:
+			case hasPremiumAccess && hasEmptySpecialization:
 				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION;
-			case !hasSubscription:
+			case !hasPremiumAccess:
 				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER;
 			default:
 				return '';
 		}
-	}, [isReachedProfilesLimit, hasSubscription, hasEmptySpecialization]);
+	}, [isReachedProfilesLimit, hasPremiumAccess, hasEmptySpecialization]);
 
 	const createProfileDisabled = Boolean(tooltipEntry);
 
@@ -68,7 +68,7 @@ export const ManageProfilesPanel = () => {
 			<ManageProfilesHeader
 				currentCount={profilesCount}
 				maxCount={countLimit}
-				isMember={hasSubscription}
+				isMember={hasPremiumAccess}
 				isReachedLimit={isReachedProfilesLimit}
 				className={styles.mb}
 			/>

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
 import { SelectedAdminEntities } from '@/shared/types/types';
 
 import { deleteMultipleQuestionsThunk } from '@/features/question/deleteQuestions';
@@ -28,6 +29,9 @@ const questionsTablePageSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 		builder.addCase(deleteMultipleQuestionsThunk.fulfilled, (state) => {
 			state.selectedQuestions = [];
 		});

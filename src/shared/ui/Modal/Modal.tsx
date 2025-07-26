@@ -71,12 +71,14 @@ export const Modal = ({
 	const overlayRef = useRef<HTMLDivElement>(null);
 
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation();
 		const target = e.target as Node;
 		if (overlayRef.current && !overlayRef.current.contains(target)) {
 			onClose();
 		}
 	};
-	const handleClickXCircle = () => {
+	const handleClickXCircle = (e: React.MouseEvent<SVGElement>) => {
+		e.stopPropagation();
 		onClose();
 	};
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {

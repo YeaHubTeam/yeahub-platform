@@ -1,6 +1,6 @@
 import { UseHoverProps, type Placement } from '@floating-ui/react';
 
-export type TooltipColor = 'green' | 'yellow' | 'gray' | 'violet';
+export type TooltipColor = 'green' | 'yellow' | 'gray' | 'violet' | 'red';
 
 export interface TooltipProps {
 	title: React.ReactNode;

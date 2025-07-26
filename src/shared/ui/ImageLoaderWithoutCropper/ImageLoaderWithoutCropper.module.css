@@ -65,6 +65,7 @@
 @media (width <= 480px) {
   .picture-block {
     width: 100%;
+    height: 220px;
   }
 
   .delete-btn {

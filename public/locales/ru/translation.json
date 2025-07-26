@@ -92,7 +92,8 @@
 		"file": {
 			"size": "Большой размер файла",
 			"type": "Неверный формат файла"
-		}
+		},
+		"link": "Ссылки запрещены"
 	},
 	"crumbs": {
 		"profile": "Профиль",
@@ -126,14 +127,14 @@
 			},
 			"login": {
 				"failed": "Неверный email или пароль."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "Пользователя с таким email не существует."
 			},
-			"password": {
-				"wrong": "Неверный пароль."
+			"user": {
+				"email": {
+					"not_exist": "Пользователя с таким email не существует."
+				},
+				"password": {
+					"wrong": "Неверный пароль."
+				}
 			}
 		},
 		"questions": {
@@ -329,6 +330,13 @@
 			"trial":{
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
+			}
+		}
+	},
+	"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
 			}
 		}
 	},
