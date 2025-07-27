@@ -83,7 +83,7 @@ export const CollectionPage = () => {
 					imageSrc={imageSrc}
 					company={company}
 				/>{' '}
-				<CollectionBody isFree={isFree} questions={questions} />
+				<CollectionBody isFree={isFree} isAdmin questions={questions} />
 			</section>
 		</>
 	);
@@ -119,7 +119,7 @@ export const CollectionPage = () => {
 							imageSrc={imageSrc}
 							company={company}
 						/>{' '}
-						<CollectionBody isFree={isFree} questions={questions} />
+						<CollectionBody isFree={isFree} isAdmin questions={questions} />
 					</div>
 					<div className={styles.additional}>
 						<AdditionalInfo
