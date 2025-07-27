@@ -12,6 +12,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { PopoverChildrenProps } from '@/shared/ui/Popover/types';
+import { StatusChip } from '@/shared/ui/StatusChip';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
@@ -39,6 +40,21 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	const roleVariantMap = {
+		yellow: ['candidate', 'candidate-premium', 'candidate-free'],
+		red: ['hr', 'author'],
+		purple: ['guest', 'member'],
+		green: ['admin'],
+	} as const;
+
+	const variantByRole: Record<string, keyof typeof roleVariantMap> = {};
+
+	Object.entries(roleVariantMap).forEach(([variant, roles]) => {
+		roles.forEach((role) => {
+			variantByRole[role] = variant as keyof typeof roleVariantMap;
+		});
+	});
+
 	const renderTableBody = (user: User) => {
 		const columns = {
 			username: `${user.username}`,
@@ -46,9 +62,13 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 				<div className={styles['roles-container']}>
 					{user.userRoles.map((role) => {
 						return (
-							<span key={role.id} className={styles[role.name]}>
-								{t(Users[convertRoleNameToEnumKey(role.name)])}
-							</span>
+							<StatusChip
+								key={role.id}
+								status={{
+									variant: variantByRole[role.name.toLowerCase()],
+									text: t(Users[convertRoleNameToEnumKey(role.name)]),
+								}}
+							/>
 						);
 					})}
 				</div>
