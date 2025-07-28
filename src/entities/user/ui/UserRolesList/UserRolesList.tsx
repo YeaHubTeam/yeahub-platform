@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { User } from '@/shared/config/i18n/i18nTranslations';
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
-// eslint-disable-next-line import/order
 import { Flex } from '@/shared/ui/Flex';
-
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { StatusChip } from '@/shared/ui/StatusChip';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -19,12 +16,20 @@ interface UserRolesListProps {
 export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 	const { t } = useTranslation([i18Namespace.user]);
 
-	const variantMap = {
-		admin: 'green',
-		author: 'red',
-		'candidate-premium': 'yellow',
-		'candidate-free': 'purple',
+	const userRoleVariants = {
+		yellow: ['candidate', 'candidate-premium', 'candidate-free'],
+		red: ['hr', 'author'],
+		purple: ['guest', 'member'],
+		green: ['admin'],
 	} as const;
+
+	const variantByRole: Record<string, keyof typeof userRoleVariants> = {};
+
+	Object.entries(userRoleVariants).forEach(([variant, roles]) => {
+		roles.forEach((role) => {
+			variantByRole[role] = variant as keyof typeof userRoleVariants;
+		});
+	});
 
 	return (
 		<Flex gap="12" align="start">
@@ -32,7 +37,7 @@ export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 				<StatusChip
 					key={role.id}
 					status={{
-						variant: variantMap[role.name as keyof typeof variantMap],
+						variant: variantByRole[role.name.toLowerCase()],
 						text: t(User[convertRoleNameToEnumKey(role.name)]),
 					}}
 				/>
