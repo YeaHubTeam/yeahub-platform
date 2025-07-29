@@ -1,36 +1,52 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
+import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { CategoryProgressListWrap } from '@/widgets/interview/CategoryProgressList';
+import { useGetQuestionsSpecializationByIdCountQuery } from '@/entities/question';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
+
+import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { PassedQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
 
-import { useQuizStatic } from '@/pages/landing/PublicQuizResultPage/model/hooks/useQuizStatic';
 import { PublicQuizResultPageSkeleton } from '@/pages/landing/PublicQuizResultPage/ui/PublicQuizResultPage.skeleton';
 
+import { useCalculationQuizResult } from '../model/hooks/useCalculationQuizResult';
 import { usePublicQuizResultData } from '../model/hooks/usePublicQuizResultData';
 
 import styles from './PublicQuizResultPage.module.css';
 
 const PublicQuizResultPage = () => {
 	const { quizAnswers, isLoading } = usePublicQuizResultData();
-	const { t } = useTranslation(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 	const { isMobile, isTablet } = useScreenSize();
-	const { quizResults, isLoading: loadingResult } = useQuizStatic();
+
+	const specializationId = getJSONFromLS(LS_ACTIVE_SPECIALIZATION_ID);
+	const { data: quizResults, isLoading: loadingResult } =
+		useGetQuestionsSpecializationByIdCountQuery(specializationId);
+	const skillsData = useCalculationQuizResult(quizResults);
 
 	if (isLoading || loadingResult) return <PublicQuizResultPageSkeleton />;
 
 	return (
 		<Flex gap="20" direction="column">
-			<Card title={t(Landing.TITLE_STATISTIC)} actionTitle={t(Landing.LINK_STAT)} actionRoute={'/'}>
+			<Card
+				title={t(InterviewQuizResult.INTERVIEW_STATISTIC_TITLE)}
+				actionRoute={'/'}
+				actionTitle={t(InterviewQuizResult.INTERVIEW_STATISTIC_LINK)}
+			>
 				<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
 					<PassedQuestionsStatistic total={quizResults!.total} className={styles.statistic} />
-					<CategoryProgressListWrap quizResults={quizResults!} className={styles.progress} />
+					<CategoryProgressList
+						title={t(InterviewQuizResult.INTERVIEW_STATISTIC_SCHEDULE)}
+						className={styles.progress}
+						skillsStat={skillsData?.skillStat}
+					/>
 				</Flex>
 			</Card>
 			<PassedQuestionsList className={styles['questions-list']} questions={quizAnswers || []} />

@@ -25,6 +25,7 @@ import {
 	QuizQuestionAnswerType,
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import styles from './PublicQuizPage.module.css';
 
@@ -106,6 +107,7 @@ const PublicQuizPage = () => {
 			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
 			navigate(`${ROUTES.quiz.page}`);
 		}
+		removeFromLS(LS_ACTIVE_SPECIALIZATION_ID);
 	};
 
 	return (

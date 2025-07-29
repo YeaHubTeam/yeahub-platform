@@ -341,6 +341,10 @@ export enum InterviewQuizResult {
 	STATS_HISTORY = 'join.community.stats.history',
 	FULL_ACCESS = 'join.community.full.access',
 	BECOME_MEMBER = 'join.community.become.member',
+	INTERVIEW_STATISTIC_TITLE = 'statistics.title',
+	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
+	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
+	INTERVIEW_STATISTIC_LINK = 'statistics.link',
 }
 
 export enum InterviewStatistics {
@@ -708,10 +712,6 @@ export enum Landing {
 	HISTORY_IMG_STATISTICS = 'history.img.statistics',
 	HISTORY_IMG_PROGRESS = 'history.img.progress',
 	HISTORY_IMG_DESCRIPTION = 'history.img.description',
-	TITLE_STATISTIC = 'history.statistics.title',
-	TITLE_COMPLETION_STAT = 'history.statistics.question',
-	PROGRESS_SKILL_LEARNING = 'history.statistics.schedule',
-	LINK_STAT = 'history.statistics.link',
 }
 
 export enum Subscription {

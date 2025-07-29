@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
@@ -20,7 +20,7 @@ export const PassedQuestionsStatistic = ({
 	isLoading,
 	className,
 }: PassedQuestionsStatisticProps) => {
-	const { t } = useTranslation(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
 	const activeMockQuiz: Quiz = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
 	const inProcessCount = activeMockQuiz.response.answers.filter(
@@ -41,10 +41,11 @@ export const PassedQuestionsStatistic = ({
 		<AdditionalStatInfoGauge
 			isLoading={isLoading}
 			className={className}
-			title={t(Landing.TITLE_COMPLETION_STAT)}
+			title={t(InterviewQuizResult.INTERVIEW_STATISTIC_QUESTION)}
 			statsInfo={questionStats}
 			learned={statDate?.learnedQuestionsCount ?? 0}
 			total={total ?? 0}
+			withOutsideShadow
 		/>
 	);
 };

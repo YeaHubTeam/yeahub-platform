@@ -4,4 +4,5 @@ export const questionApiUrls = {
 	getLearnedQuestions: 'interview-preparation/learn/:profileId',
 	getPublicQuestionsList: 'questions/public-questions',
 	getPublicQuestionById: 'questions/public-questions/:questionId',
+	getStatisticsQuestionsSpecializationById: 'questions/by-specializations/count/:specializationId',
 };

@@ -9,11 +9,15 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_LIMIT_SPECIALIZATIONS,
 } from '@/shared/constants/queryConstants';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
-import { useGetSpecializationsListQuery } from '@/entities/specialization';
+import {
+	LS_ACTIVE_SPECIALIZATION_ID,
+	useGetSpecializationsListQuery,
+} from '@/entities/specialization';
 
 import styles from './ChooseSpecialization.module.css';
 
@@ -37,6 +41,8 @@ export const ChooseSpecialization = ({
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
 
+	useEffect(() => setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER)), []);
+
 	const toggleShowAll = () => {
 		setShowAll(!showAll);
 	};
@@ -50,6 +56,7 @@ export const ChooseSpecialization = ({
 	}, [limit, specialization?.total, showAll, specializationLimit, isMobile]);
 
 	const handleChooseSpecialization = (id: number) => {
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(id));
 		onChangeSpecialization(id);
 	};
 

@@ -10,11 +10,6 @@
   }
 }
 
-.statistic,
-.progress {
-  box-shadow: 0 4px 10px 0 #6A63761A;
-}
-
 .statistic:first-child > div:first-child {
   display: block;
   margin: auto;
