@@ -7,3 +7,4 @@ export type { GuruSocials, Guru } from './model/types/guru';
 
 export { gurus } from './model/constants/gurus';
 export { GurusItem } from './ui/GurusItem/GurusItem';
+export { GurusList } from './ui/GurusList/GurusList';

@@ -8,8 +8,8 @@
   height: 78px;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .wrapper {
-    margin-block    : 20px;
+    margin-block: 20px;
   }
 }

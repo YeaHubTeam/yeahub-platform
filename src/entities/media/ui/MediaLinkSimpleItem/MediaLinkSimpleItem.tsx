@@ -8,12 +8,12 @@ import { Text } from '@/shared/ui/Text';
 
 import { Media as MediaInterface } from '../../model/types/media';
 
-import styles from './MediaLinksItem.module.css';
+import styles from './MediaLinkSimpleItem.module.css';
 
-type MediaLinksItemProps = {
+type MediaLinkSimpleItemProps = {
 	mediaLink: MediaInterface;
 };
-export const MediaLinksItem = ({ mediaLink }: MediaLinksItemProps) => {
+export const MediaLinkSimpleItem = ({ mediaLink }: MediaLinkSimpleItemProps) => {
 	const { t } = useTranslation(i18Namespace.media);
 	return (
 		<Chip

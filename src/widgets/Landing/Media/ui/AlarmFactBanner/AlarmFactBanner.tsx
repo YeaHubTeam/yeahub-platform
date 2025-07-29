@@ -7,9 +7,9 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './AlarmFact.module.css';
+import styles from './AlarmFactBanner.module.css';
 
-export const AlarmFact = () => {
+export const AlarmFactBanner = () => {
 	const { t } = useTranslation(i18Namespace.media);
 	const { isLargeScreen, isLaptop } = useScreenSize();
 

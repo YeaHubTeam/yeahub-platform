@@ -7,25 +7,21 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { MediaWithImage } from '@/entities/media';
+import { Media } from '@/entities/media';
 
-import styles from './TelegramChannels.module.css';
+import styles from './MediaLinkItem.module.css';
 
-interface TelegramChannelProps {
-	channel: MediaWithImage;
+interface MediaLinkItemProps {
+	channel: Media;
 }
 
-export const TelegramChannel = ({ channel }: TelegramChannelProps) => {
+export const MediaLinkItem = ({ channel }: MediaLinkItemProps) => {
 	const { t } = useTranslation(i18Namespace.media);
 
 	return (
-		<Flex justify="between" className={styles['item']} align="center">
-			<Flex gap="12" align="start" className={styles['content']}>
-				{channel.image ? (
-					<div className={styles['svg-wrapper']}>{<channel.image />}</div>
-				) : (
-					<div className={styles['avatar']}></div>
-				)}
+		<Flex justify="between" className={styles['item']} align="center" componentType="li">
+			<Flex gap="12" align="start">
+				{channel.image && <div className={styles['svg-wrapper']}>{<channel.image />}</div>}
 				<Flex direction="column" gap="6">
 					<Text variant="body3-strong">{channel.title}</Text>
 					<Text variant="body3">{t(MediaTranslation.TELEGRAM_DESCRIPTION)}</Text>

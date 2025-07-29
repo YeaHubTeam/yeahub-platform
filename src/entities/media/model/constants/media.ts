@@ -1,22 +1,25 @@
-import Android from '@/shared/assets/icons/android.svg';
-import C from '@/shared/assets/icons/c.svg';
-import CSharp from '@/shared/assets/icons/csharp.svg';
-import DevOps from '@/shared/assets/icons/devops.svg';
-import DS from '@/shared/assets/icons/ds.svg';
-import Game from '@/shared/assets/icons/game.svg';
-import Go from '@/shared/assets/icons/go.svg';
-import IOS from '@/shared/assets/icons/ios.svg';
-import Java from '@/shared/assets/icons/java.svg';
-import ML from '@/shared/assets/icons/ml.svg';
-import NodeJs from '@/shared/assets/icons/nodejs.svg';
-import Python from '@/shared/assets/icons/py.svg';
-import Qa from '@/shared/assets/icons/qa.svg';
-import Ruby from '@/shared/assets/icons/ruby.svg';
-import Rust from '@/shared/assets/icons/rust.svg';
+import {
+	Android,
+	C,
+	CSharp,
+	DS,
+	Php,
+	Go,
+	NodeJs,
+	DevOps,
+	Game,
+	IOS,
+	Java,
+	ML,
+	Python,
+	Qa,
+	Ruby,
+	Rust,
+	React
+} from '../assets';
+import { Media } from '../types/media';
 
-import { MediaWithImage } from '../types/media';
-
-export const mediaLinks: MediaWithImage[] = [
+export const mediaLinks: Media[] = [
 	{
 		title: 'Python Developer',
 		link: 'https://t.me/+ESvCF1T89XNkOWYy',
@@ -57,12 +60,13 @@ export const mediaLinks: MediaWithImage[] = [
 		title: 'PHP Developer',
 		link: 'https://t.me/+ny_6GvV684cwOGM6',
 		specializationId: 24,
-		image: Ruby,
+		image: Php,
 	},
 	{
 		title: 'React Developer',
 		link: 'https://t.me/+_hfo9fzcFNxiY2Fi',
 		specializationId: 11,
+		image: React
 	},
 	{
 		title: 'Rust Developer',

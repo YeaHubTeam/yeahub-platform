@@ -10,15 +10,20 @@ import styles from './GurusItem.module.css';
 interface GurusItemProps {
 	guru: Guru;
 	avatarSize: number;
-	className?: string;
 	description?: string;
+	hasBorder?: boolean;
 }
 
-export const GurusItem = ({ guru, avatarSize, className, description }: GurusItemProps) => {
+export const GurusItem = ({ guru, avatarSize, description, hasBorder = false }: GurusItemProps) => {
 	const { image, name, title, socials } = guru;
 
 	return (
-		<Flex componentType="li" direction="column" gap="12" className={className}>
+		<Flex
+			componentType="li"
+			direction="column"
+			gap="12"
+			className={hasBorder ? styles.border : undefined}
+		>
 			<Flex gap="8" align={description ? 'center' : 'start'}>
 				<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
 				<Flex gap="4" direction="column">

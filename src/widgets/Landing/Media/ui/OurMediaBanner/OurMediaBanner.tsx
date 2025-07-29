@@ -7,9 +7,9 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './OurMedia.module.css';
+import styles from './OurMediaBanner.module.css';
 
-export const OurMedia = () => {
+export const OurMediaBanner = () => {
 	const { t } = useTranslation(i18Namespace.media);
 	const { isMobile } = useScreenSize();
 
@@ -21,7 +21,7 @@ export const OurMedia = () => {
 			direction={isMobile ? 'column' : 'row'}
 		>
 			<Flex direction="column" gap="12" justify="center" className={styles['intro-text-wrapper']}>
-				<Text variant={isMobile ? 'head5' : 'head3'} className={styles['intro-title']}>
+				<Text variant={isMobile ? 'head5' : 'head3'} isMainTitle>
 					{t(Media.MEDIA_INTRODUCTION_TITLE)}
 				</Text>
 				<Text variant="body3" className={styles['intro-description']}>

@@ -7,10 +7,6 @@
   padding: 40px;
 }
 
-.intro-title {
-  font-weight: var(--font-weight-500);
-}
-
 .intro-description {
   white-space: pre-line;
 }
@@ -20,7 +16,7 @@
   height: 165px;
 }
 
-@media (width <= 1024px) {
+@media (width < 1024px) {
   .intro-text-wrapper {
     padding: 20px;
   }
@@ -35,7 +31,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .intro {
     gap: 10px;
     padding: 20px 10px

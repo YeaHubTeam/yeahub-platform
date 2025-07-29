@@ -6,12 +6,12 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { mediaLinks } from '@/entities/media';
+import { mediaLinks } from '../../model/constants/media';
+import { MediaLinkItem } from '../MediaLinkItem/MediaLinkItem';
 
-import { TelegramChannel } from './TelegramChannel';
-import styles from './TelegramChannels.module.css';
+import styles from './MediaLinksList.module.css';
 
-export const TelegramChannels = () => {
+export const MediaLinksList = () => {
 	const { t } = useTranslation(i18Namespace.media);
 	const { isMobile } = useScreenSize();
 
@@ -21,11 +21,11 @@ export const TelegramChannels = () => {
 			<Text variant="body3" className={styles['description']}>
 				{t(Media.MEDIA_CHANNELS_DESCRIPTION)}
 			</Text>
-			<div className={styles['list']}>
+			<ul className={styles['links-list']}>
 				{mediaLinks.map((channel) => (
-					<TelegramChannel channel={channel} key={channel.title} />
+					<MediaLinkItem channel={channel} key={channel.title} />
 				))}
-			</div>
+			</ul>
 		</Flex>
 	);
 };
