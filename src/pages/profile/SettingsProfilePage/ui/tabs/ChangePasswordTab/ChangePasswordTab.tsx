@@ -1,5 +1,5 @@
-import { ChangePassword } from '@/features/profile/changePassword';
+import { ChangePasswordForm } from '@/features/profile/changePassword';
 
 export const ChangePasswordTab = () => {
-	return <ChangePassword />;
+	return <ChangePasswordForm />;
 };

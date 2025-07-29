@@ -19,9 +19,9 @@ import { useChangePasswordMutation } from '../api/changePasswordApi';
 import { createChangePasswordSchema } from '../model/lib/validation/changePasswordSchema';
 import { ChangePasswordFormValues, ChangePasswordSchema } from '../model/types/changePasswordTypes';
 
-import styles from './ChangePassword.module.css';
+import styles from './ChangePasswordForm.module.css';
 
-export const ChangePassword = () => {
+export const ChangePasswordForm = () => {
 	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 	const token = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const profile = useAppSelector(getFullProfile);

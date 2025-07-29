@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -37,7 +38,7 @@ const getTabs = (t: (arg: string) => string): Tab<SettingProfileTab>[] => [
 const SettingsProfilePage = () => {
 	const { t } = useTranslation(i18Namespace.profile);
 
-	const tabs = getTabs(t);
+	const tabs = useMemo(() => getTabs(t), [t]);
 	const { activeTab, setActiveTab } = useTabs(tabs);
 
 	const ActiveComponent = activeTab.Component;

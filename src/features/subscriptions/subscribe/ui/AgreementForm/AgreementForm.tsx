@@ -9,6 +9,7 @@ import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i1
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { Card } from '@/shared/ui/Card';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -23,6 +24,11 @@ import {
 } from '@/entities/subscription';
 
 import { TrialButton } from '@/features/subscriptions/trial';
+import {
+	PremiumSubscriptionTooltipBody,
+	SubscriptionCard,
+	subscriptionPrices,
+} from '@/entities/subscription';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
@@ -106,93 +112,91 @@ export const AgreementForm = () => {
 	const hasTrialSubscriptions = useAppSelector(isAvailableTrial);
 
 	return (
-		<FormProvider {...subscriptionMethods}>
-			<Flex direction="column">
-				<Flex
-					direction="column"
-					gap={isMobile ? '8' : '12'}
-					className={styles['subscription-info']}
-				>
-					<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
-						{t(SubscriptionCardI18.SUBSCRIPTION_TITLE)}
-					</Text>
-					<Text variant={isMobile ? 'body2' : 'body3'}>
-						{t(SubscriptionCardI18.SUBSCRIPTION_DESCRIPTION)}
-					</Text>
-				</Flex>
-				<Flex gap="20" className={styles['subscription-cards']}>
-					<SubscriptionCard
-						subscription={subscriptions[0]}
-						renderSubscribeButton={() => (
-							<SubscribeButton className={styles['subscription-button']} />
-						)}
-						className={styles.free}
-					/>
-
-					<SubscriptionCard
-						subscription={subscriptions[1]}
-						renderSubscribeButton={() => (
-							<SubscribeButton className={styles['subscription-button']} />
-						)}
-						{...(hasTrialSubscriptions
-							? {
-									renderTrialButton: () => (
-										<TrialButton className={styles['subscription-button']} />
-									),
-								}
-							: {})}
-						className={styles.premium}
-					/>
-				</Flex>
-				<Flex direction="column" gap="16">
-					<Text variant="body1" color="black-600">
-						{t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_TITLE)}
-					</Text>
-					<Flex direction="column" gap="8">
-						<FormControl name="isOfferAgreed" control={control} className={styles['form-control']}>
-							{(field) => (
-								<Checkbox
-									{...field}
-									label={
-										<Text variant="body1" color="black-600">
-											{offerAgreementParts[0]}
-											<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-												{' '}
-												{offerAgreementParts[1]}
-											</a>
-											{offerAgreementParts[2]}
-											<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-												{' '}
-												{offerAgreementParts[3]}
-											</a>
-										</Text>
-									}
-								/>
+		<Card>
+			<FormProvider {...subscriptionMethods}>
+				<Flex direction="column">
+					<Flex
+						direction="column"
+						gap={isMobile ? '8' : '12'}
+						className={styles['subscription-info']}
+					>
+						<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
+							{t(SubscriptionCardI18.SUBSCRIPTION_TITLE)}
+						</Text>
+						<Text variant={isMobile ? 'body2' : 'body3'}>
+							{t(SubscriptionCardI18.SUBSCRIPTION_DESCRIPTION)}
+						</Text>
+					</Flex>
+					<Flex gap="20" className={styles['subscription-cards']}>
+						<SubscriptionCard
+							subscription={subscriptions[0]}
+							renderSubscribeButton={() => (
+								<SubscribeButton className={styles['subscription-button']} />
 							)}
-						</FormControl>
-						<FormControl
-							name="isConsentAgreed"
-							control={control}
-							className={styles['form-control']}
-						>
-							{(field) => (
-								<Checkbox
-									{...field}
-									label={
-										<Text variant="body1" color="black-600">
-											{consentParts[0]}
-											<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-												{' '}
-												{consentParts[1]}
-											</a>
-										</Text>
-									}
-								/>
+							className={styles.free}
+						/>
+						<SubscriptionCard
+							subscription={subscriptions[1]}
+							renderSubscribeButton={() => (
+								<SubscribeButton className={styles['subscription-button']} />
 							)}
-						</FormControl>
+							className={styles.premium}
+						/>
+					</Flex>
+					<Flex direction="column" gap="16">
+						<Text variant="body1" color="black-600">
+							{t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_TITLE)}
+						</Text>
+						<Flex direction="column" gap="8">
+							<FormControl
+								name="isOfferAgreed"
+								control={control}
+								className={styles['form-control']}
+							>
+								{(field) => (
+									<Checkbox
+										{...field}
+										label={
+											<Text variant="body1" color="black-600">
+												{offerAgreementParts[0]}
+												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+													{' '}
+													{offerAgreementParts[1]}
+												</a>
+												{offerAgreementParts[2]}
+												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+													{' '}
+													{offerAgreementParts[3]}
+												</a>
+											</Text>
+										}
+									/>
+								)}
+							</FormControl>
+							<FormControl
+								name="isConsentAgreed"
+								control={control}
+								className={styles['form-control']}
+							>
+								{(field) => (
+									<Checkbox
+										{...field}
+										label={
+											<Text variant="body1" color="black-600">
+												{consentParts[0]}
+												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+													{' '}
+													{consentParts[1]}
+												</a>
+											</Text>
+										}
+									/>
+								)}
+							</FormControl>
+						</Flex>
 					</Flex>
 				</Flex>
-			</Flex>
-		</FormProvider>
+			</FormProvider>
+		</Card>
 	);
 };
