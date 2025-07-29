@@ -17,7 +17,6 @@ import { specializationEditHandlers } from '@/features/specialization/editSpecia
 
 export const handlers = [
 	...authHandlers,
-	...quizHandlers,
 	...interviewHandlers,
 	...questionHandlers,
 	...specializationHandlers,
@@ -32,4 +31,5 @@ export const handlers = [
 	...skillDeleteHandlers,
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
+	...quizHandlers,
 ];
