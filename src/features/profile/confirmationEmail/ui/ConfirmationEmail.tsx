@@ -39,7 +39,7 @@ export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailPr
 			<Flex direction="column" gap="12">
 				<h3 className={styles['card-title']}>{t(Profile.EMAIL_VERIFICATION_TITLE)}</h3>
 				<p className={styles['card-text']}>{t(Profile.EMAIL_VERIFICATION_DESCRIPTION)}</p>
-				{isSendingVerificationEmail && (
+				{isLetterSended && (
 					<p className={classNames(styles['card-text'], styles['spam-message'])}>
 						{t(Profile.EMAIL_VERIFICATION_SPAM_MESSAGE)}
 					</p>
