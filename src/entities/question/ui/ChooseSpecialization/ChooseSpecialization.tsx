@@ -41,8 +41,6 @@ export const ChooseSpecialization = ({
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile } = useScreenSize();
 
-	useEffect(() => setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER)), []);
-
 	const toggleShowAll = () => {
 		setShowAll(!showAll);
 	};
