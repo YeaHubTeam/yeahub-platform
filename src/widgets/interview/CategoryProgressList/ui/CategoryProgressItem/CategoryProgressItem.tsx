@@ -21,7 +21,7 @@ export const CategoryProgressItem = ({ progressData }: ProgressByCategoriesItemP
 					{passed}/{total}
 				</Text>
 			</Flex>
-			<BarChart progress={progressData} />
+			<BarChart progress={progressData!} />
 		</Flex>
 	);
 };

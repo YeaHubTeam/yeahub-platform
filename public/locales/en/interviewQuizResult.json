@@ -17,5 +17,11 @@
     "stats.history": "Learning analytics & history",
     "full.access": "Access all collections",
     "become.member": "Join the community"
+  },
+  "statistic": {
+    "title": "Smart mode for studying questions",
+    "question": "Statistics of completed questions",
+    "schedule": "Learning progress by skills",
+    "link": "View statistics"
   }
 }

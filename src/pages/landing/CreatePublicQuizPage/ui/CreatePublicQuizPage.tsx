@@ -9,6 +9,7 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
+import { getFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -24,6 +25,7 @@ import {
 } from '@/entities/question';
 import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -47,6 +49,10 @@ const CreatePublicQuizPage = () => {
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 	const { isMobile, isTablet } = useScreenSize();
+
+	useEffect(() => {
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER));
+	}, []);
 
 	useEffect(() => {
 		if (filter.specialization?.length && filter.specialization[0] !== selectedSpecialization) {
