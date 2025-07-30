@@ -1,3 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -13,6 +17,7 @@ import styles from './InterviewStatisticsPage.module.css';
 import { InterviewStatisticsPageSkeleton } from './InterviewStatisticsPage.skeleton';
 
 const InterviewStatisticsPage = () => {
+	const { t } = useTranslation(i18Namespace.interviewStatistics);
 	const profileId = useAppSelector(getProfileId);
 	const { data: profileStats, isLoading } = useGetProfileQuizStatsQuery(profileId);
 
@@ -28,7 +33,11 @@ const InterviewStatisticsPage = () => {
 				questionsStat={profileStats?.questionsStat}
 			/>
 			<PreviewPassedQuizzesList className={styles.history} />
-			<CategoryProgressList className={styles.progress} skillsStat={profileStats?.skillsStat} />
+			<CategoryProgressList
+				className={styles.progress}
+				skillsStat={profileStats?.skillsStat}
+				title={t(InterviewStatistics.PROGRESS_TITLE)}
+			/>
 		</Flex>
 	);
 };

@@ -1,7 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -16,20 +12,20 @@ import styles from './CategoryProgressList.module.css';
 export interface CategoryProgressListProps {
 	className?: string;
 	skillsStat?: ProfileSkillsStat;
+	title?: string;
 }
 
-export const CategoryProgressList = ({ className, skillsStat }: CategoryProgressListProps) => {
-	const { t } = useTranslation(i18Namespace.interviewStatistics);
+export const CategoryProgressList = ({
+	className,
+	skillsStat,
+	title,
+}: CategoryProgressListProps) => {
 	const { isMobile } = useScreenSize();
 
 	const transformSkillsStat = skillsStat ? transformSkillsArray(skillsStat) : [];
 
 	return (
-		<Card
-			className={className}
-			title={t(InterviewStatistics.PROGRESS_TITLE)}
-			isTitleCenter={isMobile}
-		>
+		<Card className={className} title={title} isTitleCenter={isMobile} withOutsideShadow>
 			<Flex direction="column" gap="12" className={styles.list}>
 				{transformSkillsStat.map((skillStat) => (
 					<CategoryProgressItem key={skillStat.category} progressData={skillStat} />

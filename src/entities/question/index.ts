@@ -3,6 +3,7 @@ export type {
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
 	Author,
+	GetQuestionsBySpecializationCountResponse,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
@@ -10,6 +11,7 @@ export {
 	useGetLearnedQuestionsQuery,
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
+	useGetQuestionsSpecializationByIdCountQuery,
 } from './api/questionApi';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
@@ -33,3 +35,5 @@ export { QuestionAuthorSkeleton } from './ui/QuestionAuthor/QuestionAuthor.skele
 export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';
+
+export { quizHandlers } from './api/__mocks__/index';

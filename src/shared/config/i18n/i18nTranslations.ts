@@ -354,6 +354,10 @@ export enum InterviewQuizResult {
 	STATS_HISTORY = 'join.community.stats.history',
 	FULL_ACCESS = 'join.community.full.access',
 	BECOME_MEMBER = 'join.community.become.member',
+	INTERVIEW_STATISTIC_TITLE = 'statistics.title',
+	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
+	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
+	INTERVIEW_STATISTIC_LINK = 'statistics.link',
 }
 
 export enum InterviewStatistics {
