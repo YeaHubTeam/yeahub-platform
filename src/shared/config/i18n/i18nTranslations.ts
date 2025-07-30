@@ -210,6 +210,7 @@ export enum Profile {
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
 	EMAIL_VERIFICATION_SUBMIT = 'email.verification.submit',
+	EMAIL_VERIFICATION_SPAM_MESSAGE = 'email.verification.spam.message',
 	EMAIL_VERIFICATION_SENT_SUCCESS = 'email.verification.sent.success',
 	EMAIL_VERIFICATION_VERIFY_STUB_TITLE = 'email.verification.verify.stub.title',
 	EMAIL_VERIFICATION_VERIFY_STUB_DESCRIPTION = 'email.verification.verify.stub.description',
