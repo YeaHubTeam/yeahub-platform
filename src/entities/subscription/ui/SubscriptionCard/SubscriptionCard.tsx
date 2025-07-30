@@ -7,7 +7,9 @@ import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i1
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { Subscription } from '../../model/types/subscription';
 
@@ -36,11 +38,23 @@ export const SubscriptionCard = ({
 		<Card withOutsideShadow className={classNames(styles['subscription'], className)}>
 			<Flex direction="column" gap="14">
 				<Flex direction="column" gap="14">
-					<Flex gap="8" className={styles['subscription-header']}>
-						{subscription.icon}
-						<Text variant={titleVariant} className={styles['subscription-name']}>
-							{subscription.name}
-						</Text>
+					<Flex gap="8" justify="between" className={styles['subscription-header']}>
+						<Flex justify="start">
+							{subscription.icon}
+							<Text variant={titleVariant} className={styles['subscription-name']}>
+								{subscription.name}
+							</Text>
+						</Flex>
+						{subscription.tooltipBody && (
+							<Tooltip
+								title={subscription.tooltipBody}
+								offsetTooltip={0}
+								placement="bottom"
+								color="violet"
+							>
+								<Icon icon="info" size={20} color="black-600" />
+							</Tooltip>
+						)}
 					</Flex>
 					<Text variant="body2" className={styles['subscription-description']}>
 						{subscription.description}

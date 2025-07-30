@@ -92,7 +92,8 @@
 		"file": {
 			"size": "Large file size",
 			"type": "Invalid file format"
-		}
+		},
+		"link": "Links forbidden"
 	},
 	"crumbs": {
 		"profile": "Profile",
@@ -124,14 +125,14 @@
 			},
 			"login": {
 				"failed": "Invalid email or password."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "User with this email does not exist."
 			},
-			"password": {
-				"wrong": "User with this email has another password."
+			"user": {
+				"email": {
+					"not_exist": "User with this email does not exist."
+				},
+				"password": {
+					"wrong": "User with this email has another password."
+				}
 			}
 		},
 		"questions": {
@@ -314,6 +315,13 @@
 			}
 		}
 	},
+		"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "You don't have access to this feature"
+			}
+		}
+	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",
 	"editor.underline": "Underline",
@@ -328,5 +336,6 @@
 	"editor.undo": "Undo",
 	"editor.redo": "Redo",
 	"editor.bullet.list": "Bullet list",
-	"editor.ordered.list": "Ordered list"
+	"editor.ordered.list": "Ordered list",
+	"tooltip.premiumonly": "Available to members"
 }

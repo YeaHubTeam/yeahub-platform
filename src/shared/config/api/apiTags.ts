@@ -6,6 +6,7 @@ export enum ApiTags {
 	QUESTIONS = 'questions',
 	QUESTION_STATISTICS = 'question_statistic',
 	COLLECTIONS = 'collections',
+	RESOURCES = 'resources',
 	COLLECTION_DETAIL = 'collection_detail',
 	SKILLS = 'skills',
 	USERS = 'users',
@@ -22,4 +23,5 @@ export enum ApiTags {
 	PUBLIC_QUESTION_DETAIL = 'public_question_detail',
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
+	PAYMENTS = 'payments',
 }

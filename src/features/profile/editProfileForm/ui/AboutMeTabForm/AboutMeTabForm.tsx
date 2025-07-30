@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
-import { TextArea } from '@/shared/ui/TextArea';
+import { TextEditor } from '@/shared/ui/TextEditor';
 
 import styles from './AboutMeTabForm.module.css';
 
@@ -21,7 +21,15 @@ export const AboutMeTabForm = () => {
 			</div>
 			<div className={styles['textarea-container']}>
 				<FormControl name="aboutMe" control={control}>
-					{(field) => <TextArea {...field} className={styles.textarea} />}
+					{(field) => (
+						<TextEditor
+							id="aboutMe"
+							isInline
+							data={field.value}
+							onChange={(value) => field.onChange(value)}
+							onBlur={field.onBlur}
+						/>
+					)}
 				</FormControl>
 			</div>
 		</Flex>

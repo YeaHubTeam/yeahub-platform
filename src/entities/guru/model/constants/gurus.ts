@@ -31,9 +31,20 @@ export const gurus: Guru[] = [
 		specializationId: 26,
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/рома.jpg',
 		socials: {
-			telegram: 'https://t.me/isakov/_ios',
+			telegram: 'https://t.me/isakov_ios',
 			youtube: 'https://www.youtube.com/watch?v=VdN4PKgnzRg&ab/_channel=RomanIsakov',
 			profileId: 'f917b016-280f-4127-8d4b-149a3c1aec71',
+		},
+	},
+	{
+		title: 'Golang Guru',
+		name: 'Maxim Lukyanov',
+		specializationId: 23,
+		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/Автостоп.jpg',
+		socials: {
+			telegram: 'https://t.me/Avtostopom_po_G0',
+			youtube: 'https://www.youtube.com/@Avtostopom_po_Go',
+			profileId: '2350f2b4-d06d-4a8b-b6a6-742c8e0df414',
 		},
 	},
 ];

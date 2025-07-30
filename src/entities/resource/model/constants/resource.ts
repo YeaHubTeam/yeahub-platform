@@ -1,0 +1,4 @@
+export const EMPTY_RESOURCE_ID = 0;
+export const resourceApiUrls = {
+	getResourcesList: 'external-products/product',
+};

@@ -9,11 +9,8 @@
 }
 
 .modal-subtitle {
-  color: var(--text-color-bright);
+  margin-bottom: 16px;
   text-align: center;
-  line-height: 21px;
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
   white-space: pre-wrap;
 }
 

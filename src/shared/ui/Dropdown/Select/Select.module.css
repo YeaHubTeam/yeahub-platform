@@ -82,6 +82,12 @@
   cursor: pointer;
 }
 
+@media (width <= 450px) {
+  .wrapper, .wrapper-l, .wrapper-s {
+    width: 100%;
+  }
+}
+
 .select-prefix {
   display: flex;
   flex-shrink: 0;

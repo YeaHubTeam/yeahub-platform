@@ -15,7 +15,6 @@ export interface Quiz {
 	fullCount: number;
 	successCount: number;
 	skills: string[];
-	isFavorite: boolean;
 	response: QuizResponse;
 	questions: Question[];
 }
@@ -41,6 +40,7 @@ export interface ActiveQuizState {
 
 export interface ChangeQuestionAnswerParams {
 	questionId: number;
+	profileId: string;
 	answer: QuizQuestionAnswerType;
 	shouldSaveToLS?: boolean;
 }

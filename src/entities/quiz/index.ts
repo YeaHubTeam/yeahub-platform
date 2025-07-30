@@ -2,7 +2,6 @@ export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
 export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
-export { InterviewSlider } from './ui/InterviewSlider/InterviewSlider';
 
 export {
 	useLazyCreateNewQuizQuery,
@@ -39,6 +38,6 @@ export {
 
 export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
 
-export { LS_ACTIVE_QUIZ_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
+export { LS_ACTIVE_QUIZZES_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
 
 export { interviewHandlers } from './api/__mocks__/index';

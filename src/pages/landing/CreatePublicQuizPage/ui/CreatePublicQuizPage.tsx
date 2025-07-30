@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import {
 	MAX_LIMIT_CATEGORIES,
 	MAX_LIMIT_SPECIALIZATIONS,
@@ -50,7 +49,6 @@ const CreatePublicQuizPage = () => {
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 	const { isMobile, isTablet } = useScreenSize();
-	const isAuth = Boolean(getFromLS(LS_ACCESS_TOKEN_KEY));
 
 	useEffect(() => {
 		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER));
@@ -135,19 +133,19 @@ const CreatePublicQuizPage = () => {
 						<ChooseQuestionComplexity
 							selectedComplexity={filter.complexity}
 							onChangeComplexity={onChangeComplexity}
-							disabled={!isAuth}
+							disabled={true}
 						/>
 						<QuizQuestionMode
 							onChangeMode={onChangeMode}
 							modeFromURL={filter.mode}
-							disabled={!isAuth}
-							active={!isAuth}
+							disabled={true}
+							active={true}
 						/>
-						<ChooseQuestionCount
+						<ChooseQuestionCount 
 							onChangeLimit={onChangeLimit}
 							count={filter.count || 1}
-							maxCount={isAuth ? undefined : MAX_CHOOSE_QUESTION_COUNT}
-							disabled={!isAuth}
+							maxCount={MAX_CHOOSE_QUESTION_COUNT}
+							disabled={true}
 						/>
 					</Flex>
 				</Flex>

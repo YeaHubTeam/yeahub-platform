@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
-import { Tabs } from '@/shared/ui/Tabs';
+import { Tabs, useTabs } from '@/shared/ui/Tabs';
+import { Text } from '@/shared/ui/Text';
 
-import { FullProfile, useProfileQuery } from '@/entities/auth';
+import { getFullProfile } from '@/entities/profile';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
@@ -27,47 +29,40 @@ export const EditProfileForm = () => {
 	const { t } = useTranslation([i18Namespace.profile, i18Namespace.translation]);
 
 	const { hash } = useLocation();
-	const { data: userProfile, isLoading: isLoadingProfile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
+
 	const { isLoading: isLoadingSlilsList } = useGetSkillsListQuery({ limit: 100 });
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
 
 	const tabs = getTabs(t);
-	const [currentActiveTab, setCurrentActiveTab] = useState(() => {
-		return tabs.find((tab) => tab.title === hash.slice(1))?.id ?? 0;
-	});
+	const { activeTab, setActiveTab } = useTabs(tabs);
 
 	const methods = useForm<ProfileSchema>({
 		resolver: yupResolver(editProfileSchema),
 		mode: 'onTouched',
-		defaultValues: userProfile ? mapProfileToForm(userProfile) : {},
+		defaultValues: mapProfileToForm(profile),
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
-
-	useEffect(() => {
-		if (userProfile) {
-			methods.reset(mapProfileToForm(userProfile));
-		}
-	}, [methods, userProfile]);
-
 	const onSubmit = (data: ProfileSchema) => {
-		updateProfile(mapFormToProfile(userProfile as FullProfile, data));
-		methods.reset();
+		updateProfile(mapFormToProfile(profile, data))
+			.unwrap()
+			.then(() => {
+				methods.reset(mapProfileToForm(profile));
+			});
 	};
 
-	if (isLoadingProfile || isLoadingSlilsList) return <EditProfileFormSkeleton />;
+	if (isLoadingSlilsList) return <EditProfileFormSkeleton />;
 	return (
 		<section className={styles.section}>
-			<Tabs
-				title={t(Profile.EDIT_PAGE_TITLE)}
-				tabs={tabs}
-				tabToggle={currentActiveTab}
-				setTabToggle={setCurrentActiveTab}
-			/>
+			<Text variant="body5-strong" isMainTitle className={styles.title}>
+				{t(Profile.EDIT_PAGE_TITLE)}
+			</Text>
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<FormProvider {...methods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>
-						{tabs.map(({ id, Component }) => currentActiveTab === id && <Component key={id} />)}
+						{tabs.map(({ id, Component }) => activeTab.id === id && <Component key={id} />)}
 
 						<Flex direction="column" align="end" className={styles['btn-container']}>
 							<Button type="submit" disabled={isUpdateProfileLoading}>

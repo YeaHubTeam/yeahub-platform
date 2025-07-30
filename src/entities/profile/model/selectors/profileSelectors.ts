@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { State } from '@/shared/config/store/State';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { FullProfile } from '@/entities/auth';
+import { FullProfile, Profile } from '@/entities/auth';
 
 export const getProfileIsEmailSent = (state: State) => {
 	return state.profile.isEmailSent;
@@ -24,9 +24,9 @@ export const getProfilesLength = createSelector(getProfiles, (profiles) => {
 	return profiles?.length || 0;
 });
 
-export const getActiveProfile = createSelector(getProfiles, (profiles) => {
-	return profiles?.find((profile) => profile.isActive);
-});
+export const getActiveProfile = (state: State) => {
+	return (state.profile.fullProfile?.activeProfile || {}) as Profile;
+};
 
 export const getEmptySpecializationProfile = createSelector(getProfiles, (profiles) => {
 	return profiles?.find((profile) => profile.specializationId === 0);

@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -10,17 +12,25 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
-import { toast } from '@/shared/ui/Toast';
 
-import { ResourcesList } from '@/widgets/Marketplace';
+import { useGetResourcesListQuery } from '@/entities/resource';
 
-import { MarketplaceFiltersPanel, useMarketplaceFilters } from '@/widgets/Marketplace';
+import {
+	ResourcesList,
+	MarketplaceFiltersPanel,
+	useMarketplaceFilters,
+	ResourcesPagination,
+} from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
+
+const RESOURCES_PER_PAGE = 6;
 
 const PublicMarketplacePage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
+
 	const {
 		onChangeSearchParams,
 		onChangeSkills,
@@ -28,9 +38,30 @@ const PublicMarketplacePage = () => {
 		onChangeResources,
 		onChangeStatus,
 		filter,
+		onChangePage,
 	} = useMarketplaceFilters();
 
+	const {
+		data: resourcesResponse,
+		isLoading,
+		error,
+	} = useGetResourcesListQuery({
+		page: filter.page ?? 1,
+		limit: RESOURCES_PER_PAGE,
+		name: filter.title,
+	});
+
+	const resources = resourcesResponse?.data ?? [];
+
 	const { t } = useTranslation(i18Namespace.marketplace);
+
+	if (isLoading) {
+		return <div>Loading…</div>;
+	}
+
+	if (error) {
+		return <div>Не удалось загрузить ресурсы</div>;
+	}
 
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
@@ -74,7 +105,7 @@ const PublicMarketplacePage = () => {
 		<Button
 			variant="link-purple"
 			suffix={<Icon icon="plus" />} // сюда «внёс» вашу иконку
-			onClick={() => toast.success('Фича в разработке')}
+			onClick={() => navigate(ROUTES.marketplace.request.page)}
 		>
 			{t(Marketplace.LINK_LABEL)}
 		</Button>
@@ -92,9 +123,13 @@ const PublicMarketplacePage = () => {
 						{suggestButton}
 					</Flex>
 				</Flex>
-				{/* список ресурсов: пока пустышка */}
-				<ResourcesList />
+				<ResourcesList resources={resources} />
 
+				<ResourcesPagination
+					resourcesResponse={resourcesResponse}
+					currentPage={filter.page ?? 1}
+					onChangePage={onChangePage}
+				/>
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 

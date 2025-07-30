@@ -9,8 +9,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 import { Input } from '@/shared/ui/Input';
 
-import { useProfileQuery } from '@/entities/auth';
-import { getIsEmptySpecialization } from '@/entities/profile';
+import { getFullProfile, getIsEmptySpecialization } from '@/entities/profile';
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 import { SpecializationSelect } from '@/entities/specialization';
 
@@ -21,19 +20,18 @@ import styles from './PersonalInformationTabForm.module.css';
 export const PersonalInformationTabForm = () => {
 	const { control, setValue } = useFormContext();
 	const { t } = useTranslation(i18Namespace.profile);
-	const { data: profile, isSuccess: isSuccessGetProfile } = useProfileQuery();
+	const profile = useAppSelector(getFullProfile);
+
 	const [updateAvatar, { isLoading: isAvatarLoading }] = useUpdateAvatarMutation();
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 
 	const onImageChange = (image: string | null) => {
 		setValue('image', image);
-		if (profile) {
-			updateAvatar({ id: profile.id, image, oldImage: profile.avatarUrl });
-		}
+		updateAvatar({ id: profile.id, image, oldImage: profile.avatarUrl });
 	};
 
 	return (
-		<Flex direction="column" gap="120" className={styles.wrapper}>
+		<Flex direction="column" gap="60" className={styles.wrapper}>
 			<Flex gap="16" className={styles.column}>
 				<div className={styles.description}>
 					<h3>{t(Profile.PHOTO_TITLE)}</h3>
@@ -50,7 +48,7 @@ export const PersonalInformationTabForm = () => {
 					maxResolution={{ width: 2048, height: 2048 }}
 					maxMBSize={5}
 					setValue={onImageChange}
-					initialSrc={isSuccessGetProfile ? profile.avatarUrl : null}
+					initialSrc={profile.avatarUrl}
 					isLoading={isAvatarLoading}
 				/>
 			</Flex>

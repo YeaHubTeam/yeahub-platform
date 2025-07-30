@@ -9,3 +9,7 @@
 .create-button {
   align-self: flex-end;
 }
+
+.tooltip {
+  align-self: flex-end;
+}

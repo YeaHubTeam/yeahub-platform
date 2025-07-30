@@ -15,6 +15,8 @@ export interface Response<T> {
 	page: number;
 }
 
+export type SortOrder = 'ASC' | 'DESC';
+
 export interface GetLoginError {
 	error: {
 		status: number;
@@ -28,6 +30,7 @@ export interface GetLoginError {
 export interface SelectedEntity<Id extends string | number> {
 	id: Id;
 	title?: string;
+	disabled?: boolean;
 }
 export type SelectedEntities<Id extends string | number> = SelectedEntity<Id>[];
 

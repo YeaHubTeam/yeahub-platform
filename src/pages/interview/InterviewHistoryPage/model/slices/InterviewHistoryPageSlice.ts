@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
 import { Value } from '@/shared/ui/Calendar/EventCalendar';
 
 import { InterviewHistoryState } from '../types/InterviewHistoryPageType';
@@ -18,6 +19,11 @@ const interviewHistoryPageSlice = createSlice({
 		resetDateRange(state) {
 			state.dateRange = initialState.dateRange;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

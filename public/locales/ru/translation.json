@@ -92,7 +92,8 @@
 		"file": {
 			"size": "Большой размер файла",
 			"type": "Неверный формат файла"
-		}
+		},
+		"link": "Ссылки запрещены"
 	},
 	"crumbs": {
 		"profile": "Профиль",
@@ -126,14 +127,14 @@
 			},
 			"login": {
 				"failed": "Неверный email или пароль."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "Пользователя с таким email не существует."
 			},
-			"password": {
-				"wrong": "Неверный пароль."
+			"user": {
+				"email": {
+					"not_exist": "Пользователя с таким email не существует."
+				},
+				"password": {
+					"wrong": "Неверный пароль."
+				}
 			}
 		},
 		"questions": {
@@ -328,6 +329,13 @@
 			}
 		}
 	},
+	"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
+			}
+		}
+	},
 	"editor.bold": "Жирный",
 	"editor.italic": "Курсив",
 	"editor.underline": "Подчеркнутый",
@@ -342,5 +350,6 @@
 	"editor.undo": "Отменить",
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
-	"editor.ordered.list": "Нумерованный список"
+	"editor.ordered.list": "Нумерованный список",
+	"tooltip.premiumonly": "Доступно для участников"
 }
