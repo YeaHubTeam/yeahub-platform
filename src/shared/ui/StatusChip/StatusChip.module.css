@@ -1,18 +1,25 @@
 .wrapper {
   padding: 2px 8px;
-  min-width: 80px;
   height: 20px;
   border-radius: 30px;
 }
 
 .variant-yellow {
   background-color: var(--color-yellow-200);
+  color: var(--color-yellow-800);
 }
 
 .variant-red {
   background-color: var(--color-red-200);
+  color: var(--color-red-900);
 }
 
 .variant-green {
   background-color: var(--color-green-200);
+  color: var(--color-green-750);
+}
+
+.variant-purple {
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-800);
 }
