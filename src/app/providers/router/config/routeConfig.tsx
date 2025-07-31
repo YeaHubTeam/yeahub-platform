@@ -18,8 +18,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
-import { RoleName } from '@/entities/auth';
-import { listAdminRoles } from '@/entities/auth';
+import { listAdminRoles, RoleName } from '@/entities/auth';
 
 import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
@@ -98,7 +97,7 @@ export const allRoles: RoleName[] = [
 	'candidate',
 	'member',
 	'admin',
-	'hr',
+	'HR',
 	'candidate-free',
 	'candidate-premium',
 	'author',
