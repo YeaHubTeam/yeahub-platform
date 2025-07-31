@@ -26,12 +26,12 @@ export const createResourceApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body: resource,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(arg, { queryFulfilled, extra }) {
 				try {
 					const result = await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 
-					if (_.isAdmin) {
+					if (arg.isAdmin) {
 						typedExtra.navigate(route(ROUTES.admin.resources.details.page, result.data.id));
 						toast.success(i18n.t(Translation.TOAST_RESOURCE_CREATE_SUCCESS));
 					} else {
