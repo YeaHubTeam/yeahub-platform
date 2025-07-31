@@ -38,7 +38,7 @@ const titleColors: Record<string, Pallete> = {
 };
 
 const closeIconColors: Record<string, Pallete> = {
-	default: 'black-25',
+	default: 'purple-700',
 	error: 'red-600',
 };
 
@@ -132,36 +132,40 @@ export const Modal = ({
 					aria-label="Закрыть модальное окно"
 					onKeyDown={handleKeyDown}
 				/>
-				<Text
-					className={classNames(styles.title, styles[`${variant}-title`])}
-					variant="body6"
-					color={titleColors[variant]}
-				>
-					{title}
-				</Text>
-				<Text className={styles.text} variant="body3">
-					{children}
-				</Text>
+				<div className={styles['content-wrapper']}>
+					<Text
+						className={classNames(styles.title, styles[`${variant}-title`])}
+						variant="body5-accent"
+						color={titleColors[variant]}
+					>
+						{title}
+					</Text>
+					<Text className={styles.text} variant="body3">
+						{children}
+					</Text>
+				</div>
 				{isButtons && (
 					<div className={classNames(styles.buttons, styles[`${variant}-buttons`])}>
 						{buttonPrimaryText && (
 							<Button
-								style={{ width: '100%' }}
+								style={{ maxWidth: '240px' }}
 								variant={primaryButtonVariants[variant]}
 								size="large"
 								onClick={buttonPrimaryClick}
 								disabled={buttonPrimaryDisabled}
+								fullWidth
 							>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
 							<Button
-								style={{ width: '100%' }}
+								style={{ backgroundColor: 'transparent', maxWidth: '240px' }}
 								variant={outlineButtonVariants[variant]}
 								size="large"
 								onClick={buttonOutlineClick}
 								disabled={buttonOutlineDisabled}
+								fullWidth
 							>
 								{buttonOutlineText}
 							</Button>
