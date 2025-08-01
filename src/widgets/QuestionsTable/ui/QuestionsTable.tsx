@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -6,6 +8,7 @@ import { Questions, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -16,6 +19,10 @@ import { Text } from '@/shared/ui/Text';
 import { Question } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+
+import styles from './QuestionsTable.module.css';
+
+const ENTITY_SHOW_COUNT = 4;
 
 interface QuestionsTableProps {
 	questions?: Question[];
@@ -28,6 +35,22 @@ export const QuestionsTable = ({
 	selectedQuestions,
 	onSelectQuestions,
 }: QuestionsTableProps) => {
+	const [expandedSpecs, setExpandedSpecs] = useState<Record<number, boolean>>({});
+	const [expandedSkills, setExpandedSkills] = useState<Record<number, boolean>>({});
+
+	const toggleSpecs = (questionId: number) => {
+		setExpandedSpecs((prev) => ({
+			...prev,
+			[questionId]: !prev[questionId],
+		}));
+	};
+
+	const toggleSkills = (questionId: number) => {
+		setExpandedSkills((prev) => ({
+			...prev,
+			[questionId]: !prev[questionId],
+		}));
+	};
 	const navigate = useNavigate();
 
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
@@ -46,26 +69,74 @@ export const QuestionsTable = ({
 		const columns = {
 			title: question.title,
 			specialization: question.questionSpecializations?.length
-				? question.questionSpecializations?.map((skill) => skill.title).join(', ')
-				: '-',
+				? question.questionSpecializations?.map((skill) => skill.title)
+				: [],
 			skills: question.questionSkills?.length
-				? question.questionSkills?.map((skill) => skill.title).join(', ')
-				: '-',
+				? question.questionSkills?.map((skill) => skill.title)
+				: [],
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
+		return (
+			<>
+				<td>
 					<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
 						<Text variant={'body3'} color={'purple-700'}>
-							{v}
+							{columns.title}
 						</Text>
 					</Link>
-				) : (
-					v
-				)}
-			</td>
-		));
+				</td>
+				<td>
+					{expandedSpecs[question.id] || columns.specialization.length <= ENTITY_SHOW_COUNT
+						? columns.specialization.join(', ')
+						: columns.specialization.slice(0, ENTITY_SHOW_COUNT).join(', ')}
+					{columns.specialization.length > ENTITY_SHOW_COUNT && (
+						<Button
+							variant="link-gray"
+							onClick={() => toggleSpecs(question.id)}
+							className={styles.button}
+						>
+							<Text variant="body1" color="black-200" className={styles.link}>
+								{!expandedSpecs[question.id]
+									? t(Translation.EXPAND, { ns: i18Namespace.translation })
+									: t(Translation.COLLAPSE, { ns: i18Namespace.translation })}
+							</Text>
+							<Icon
+								icon="arrowShortDown"
+								size={14}
+								className={classNames(styles.icon, {
+									[styles['opened']]: expandedSpecs[question.id],
+								})}
+							/>
+						</Button>
+					)}
+				</td>
+				<td>
+					{expandedSkills[question.id] || columns.skills.length <= ENTITY_SHOW_COUNT
+						? columns.skills.join(', ')
+						: columns.skills.slice(0, ENTITY_SHOW_COUNT).join(', ')}
+					{columns.skills.length > ENTITY_SHOW_COUNT && (
+						<Button
+							variant="link-gray"
+							onClick={() => toggleSkills(question.id)}
+							className={styles.button}
+						>
+							<Text variant="body1" color="black-200" className={styles.link}>
+								{!expandedSkills[question.id]
+									? t(Translation.EXPAND, { ns: i18Namespace.translation })
+									: t(Translation.COLLAPSE, { ns: i18Namespace.translation })}
+							</Text>
+							<Icon
+								icon="arrowShortDown"
+								size={14}
+								className={classNames(styles.icon, {
+									[styles['opened']]: expandedSkills[question.id],
+								})}
+							/>
+						</Button>
+					)}
+				</td>
+			</>
+		);
 	};
 
 	const renderActions = (question: Question) => {

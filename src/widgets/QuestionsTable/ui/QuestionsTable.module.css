@@ -1,0 +1,20 @@
+.icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.opened {
+  transform: rotate(-180deg);
+}
+
+.button {
+  justify-self: flex-start;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.icon path {
+  stroke: var(--color-purple-700);
+}
