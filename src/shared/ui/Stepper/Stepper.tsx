@@ -51,7 +51,7 @@ export const Stepper = <T,>({
 			className={cn(isMobile ? styles['stepper-mobile'] : styles['stepper'], className)}
 		>
 			{steps.map((step, index) => {
-				const state = getStepStatus(index);
+				const status = getStepStatus(index);
 				const isLastStep = index === steps.length - 1;
 				return (
 					<li key={step.id as Key}>
@@ -71,15 +71,15 @@ export const Stepper = <T,>({
 							)}
 							<div
 								className={cn(isMobile ? styles['step-item-mobile'] : styles['step-item'], {
-									[styles.active]: state === 'active',
-									[styles.completed]: state === 'completed',
+									[styles.active]: status === 'active',
+									[styles.completed]: status === 'completed',
 								})}
 							>
-								{state === 'completed' ? <StepCheck /> : <step.image className={styles.icon} />}
+								{status === 'completed' ? <StepCheck /> : <step.image className={styles.icon} />}
 								{!isMobile && (
 									<Text
 										variant="body3-strong"
-										color={state === 'inactive' ? 'black-200' : 'white-900'}
+										color={status === 'inactive' ? 'black-200' : 'white-900'}
 									>
 										{step.label}
 									</Text>
