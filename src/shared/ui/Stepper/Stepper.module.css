@@ -1,0 +1,110 @@
+.stepper {
+  z-index: 0;
+  width: 100%;
+}
+
+.stepper-mobile {
+  gap: 40px;
+}
+
+.step-wrapper {
+  position: relative;
+}
+
+.step-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 12px;
+  color: var(--color-black-200);
+}
+
+.step-item-mobile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-black-200);
+}
+
+.step-item.active:not(.mobile) {
+  box-shadow: var(--main-shadow);
+  background-color: var(--color-purple-800);
+  color: var(--color-white-900);
+  transition: all .2s ease-in-out;
+}
+
+.step-item svg {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.step-item-mobile svg {
+  width: 28px;
+  height: 28px;
+}
+
+.step-item.active svg {
+  fill: var(--color-purple-900);
+}
+
+.step-item-mobile.completed svg rect {
+  fill: var(--color-purple-700);
+}
+
+.step-item-mobile.completed svg path {
+  stroke: var(--color-white-900);
+}
+
+.step-item-mobile.active svg {
+  fill: var(--color-purple-900);
+}
+
+.icon {
+  fill: var(--color-black-200);
+}
+
+.dashed-separator {
+  position: absolute;
+  top: 64px;
+  left: 38px;
+  z-index: 0;
+  width: 2px;
+  height: 28px;
+  border-radius: 50px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-purple-300),
+    var(--color-purple-300) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.dashed-separator.mobile {
+  top: 0;
+  left: 48px;
+  transform: rotate(90deg);
+}
+
+@media (width < 1024px) {
+  .stepper {
+    gap: 14px;
+  }
+
+  .step-item {
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .dashed-separator {
+    left: 34px;
+  }
+}
