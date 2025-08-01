@@ -1,0 +1,17 @@
+.image {
+  max-width: 266px;
+  max-height: 314px;
+  box-shadow: var(--main-shadow);
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 306px;
+  height: 346px;
+  border-radius: 12px;
+  background-color: var(--background-light-hover);
+}

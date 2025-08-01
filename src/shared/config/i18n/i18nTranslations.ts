@@ -359,6 +359,16 @@ export enum InterviewQuizResult {
 	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
 	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
 	INTERVIEW_STATISTIC_LINK = 'statistics.link',
+	MODAL_TITLE = 'modal.title',
+	MODAL_QUESTION = 'modal.question',
+	MODAL_ACCESS = 'modal.access',
+	MODAL_METRICS = 'modal.metrics',
+	MODAL_FEATURES_FULL_ACCESS = 'modal.features.full.access',
+	MODAL_FEATURES_SMART_MODE = 'modal.features.smart.mode',
+	MODAL_FEATURES_STATS = 'modal.features.stats',
+	MODAL_FEATURES_INTERVIEWS = 'modal.features.interviews',
+	MODAL_CTA = 'modal.cta',
+	MODAL_TRIAL = 'modal.trial',
 }
 
 export enum InterviewStatistics {

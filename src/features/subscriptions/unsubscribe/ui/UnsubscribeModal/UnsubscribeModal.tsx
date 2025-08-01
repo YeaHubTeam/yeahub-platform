@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
-import { Modal, ModalProps } from '@/shared/ui/Modal';
+import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { getFullProfile } from '@/entities/profile';
@@ -13,9 +13,7 @@ import { useUnsubscribeMutation } from '../../api/unsubscribeApi';
 
 import styles from './UnsubscribeModal.module.css';
 
-type UnsubscribeModalProps = Pick<ModalProps, 'isOpen' | 'onClose'>;
-
-export const UnsubscribeModal = ({ isOpen, onClose }: UnsubscribeModalProps) => {
+export const UnsubscribeModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	const { t } = useTranslation([i18Namespace.subscription]);
 
 	const profileInfo = useAppSelector(getFullProfile);

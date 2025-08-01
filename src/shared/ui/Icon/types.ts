@@ -7,6 +7,7 @@ export type IconName =
 	| 'arrowDownSquare'
 	| 'clock'
 	| 'calendar'
+	| 'check'
 	| 'altArrowRight'
 	| 'altArrowLeft'
 	| 'dotsThree'

@@ -8,13 +8,13 @@ import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
 import Behance from '@/shared/assets/icons/behance.svg';
 import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
+import Check from '@/shared/assets/icons/check.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
-import Info from '@/shared/assets/icons/info.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
 import Eye from '@/shared/assets/icons/eye.svg';
@@ -27,6 +27,7 @@ import Filter from '@/shared/assets/icons/filter.svg';
 import Github from '@/shared/assets/icons/github.svg';
 import GithubWhite from '@/shared/assets/icons/github_white.svg';
 import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
+import Info from '@/shared/assets/icons/info.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
@@ -67,6 +68,7 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowDownSquare: ArrowDownSquare,
 	clock: Clock,
 	calendar: Calendar,
+	check: Check,
 	altArrowLeft: AltArrowLeft,
 	altArrowRight: AltArrowRight,
 	dotsThree: DotsThree,
