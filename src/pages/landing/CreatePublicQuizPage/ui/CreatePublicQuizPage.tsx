@@ -9,7 +9,7 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
-import { getFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -141,7 +141,7 @@ const CreatePublicQuizPage = () => {
 							disabled={true}
 							active={true}
 						/>
-						<ChooseQuestionCount 
+						<ChooseQuestionCount
 							onChangeLimit={onChangeLimit}
 							count={filter.count || 1}
 							maxCount={MAX_CHOOSE_QUESTION_COUNT}
