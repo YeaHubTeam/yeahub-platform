@@ -18,3 +18,7 @@
 .icon path {
   stroke: var(--color-purple-700);
 }
+
+.link * {
+  display: inline;
+}
