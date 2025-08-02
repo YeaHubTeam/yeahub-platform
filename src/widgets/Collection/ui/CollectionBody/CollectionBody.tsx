@@ -19,14 +19,20 @@ import styles from './CollectionBody.module.css';
 
 interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 	questions: Question[];
+	isAdmin?: boolean;
 	hasPremiumAccess?: boolean;
 }
 
-export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: CollectionBodyProps) => {
+export const CollectionBody = ({
+	questions,
+	isFree,
+	isAdmin = false,
+	hasPremiumAccess,
+}: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	// TODO: Добавить роут для сообщества
 
-	if (!isFree && !hasPremiumAccess)
+	if (!isFree && !hasPremiumAccess && !isAdmin)
 		return (
 			<Card
 				className={styles.wrapper}
