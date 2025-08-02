@@ -13,6 +13,7 @@ import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
 import { Accept, Extension } from '../FileLoader/types';
 import { Flex } from '../Flex';
+import { Text } from '../Text';
 
 import styles from './ImageLoader.module.css';
 import './ImageLoaderCropper.css';
@@ -191,9 +192,9 @@ export const ImageLoader = ({
 			>
 				<Flex direction="column" gap="8">
 					{!!cropper && (
-						<Flex direction="column" gap="8" className={styles['cropper-info']}>
-							<p>{cropper?.title}</p>
-							<p>{cropper?.description}</p>
+						<Flex direction="column" className={styles['cropper-info']}>
+							<Text variant="body3-accent">{cropper?.title}</Text>
+							<Text variant="body3-accent">{cropper?.description}</Text>
 						</Flex>
 					)}
 					<Flex gap="16" justify="center">

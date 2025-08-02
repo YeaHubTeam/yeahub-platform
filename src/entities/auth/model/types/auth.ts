@@ -100,7 +100,7 @@ export type RoleName =
 	| 'candidate'
 	| 'member'
 	| 'admin'
-	| 'hr'
+	| 'HR'
 	| 'candidate-free'
 	| 'candidate-premium'
 	| 'author';

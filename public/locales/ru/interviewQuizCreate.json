@@ -1,11 +1,12 @@
 {
-	"title": "Собеседование",
-	"create.button": "Начать",
-	"mode": {
-		"select": "Выберите режим",
-		"select.tooltip.unauthorized": "Выбор режима будет доступен после регистрации",
-		"repeat": "Повторение",
-		"new": "Только новые",
-		"random": "Случайные"
-	}
+  "title": "Собеседование",
+  "create.button": "Начать",
+  "mode": {
+    "select": "Выберите режим",
+    "select.tooltip.unauthorized": "Выбор режима будет доступен после регистрации",
+		"select.tooltip.premiumonly": "Доступно для участников",
+    "repeat": "Повторение",
+    "new": "Только новые",
+    "random": "Случайные"
+  }
 }

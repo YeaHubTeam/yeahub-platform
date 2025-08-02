@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
 
 import { Answers, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 export const usePublicQuizResultData = () => {
 	const [quizAnswers, setQuizAnswers] = useState<Answers[] | null>(null);
@@ -35,7 +36,10 @@ export const usePublicQuizResultData = () => {
 	}, []);
 
 	useEffect(() => {
-		return () => removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+		return () => {
+			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			removeFromLS(LS_ACTIVE_SPECIALIZATION_ID);
+		};
 	}, []);
 
 	return { quizAnswers, isLoading };

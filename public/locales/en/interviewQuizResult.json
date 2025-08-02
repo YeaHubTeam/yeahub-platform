@@ -1,21 +1,27 @@
 {
-	"title": {
-		"questions.answers": "Interview result № {{title}}",
-		"stat": "Statistics of passed questions for all categories",
-		"questions.list": "Passed interview questions lits"
-	},
-	"passed.question": "Passed",
-	"time": "Time spent",
-	"date": "Date",
-	"duration": "Duration",
-	"clone.button": "Take again",
-	"join.community": {
-		"title": "Grow with us!",
-		"description": "Become a YeaHub community member and unlock full platform access!",
-		"interview.simulator": "Interview simulator",
-		"memory.mode": "Question memorization mode",
-		"stats.history": "Learning analytics & history",
-		"full.access": "Access all collections",
-		"become.member": "Join the community"
-	}
+  "title": {
+    "questions.answers": "Interview result № {{title}}",
+    "stat": "Statistics of passed questions for all categories",
+    "questions.list": "Passed interview questions lits"
+  },
+  "passed.question": "Passed",
+  "time": "Time spent",
+  "date": "Date",
+  "duration": "Duration",
+  "clone.button": "Take again",
+  "join.community": {
+    "title": "Grow with us!",
+    "description": "Become a YeaHub community member and unlock full platform access!",
+    "interview.simulator": "Interview simulator",
+    "memory.mode": "Question memorization mode",
+    "stats.history": "Learning analytics & history",
+    "full.access": "Access all collections",
+    "become.member": "Join the community"
+  },
+  "statistic": {
+    "title": "Smart mode for studying questions",
+    "question": "Statistics of completed questions",
+    "schedule": "Learning progress by skills",
+    "link": "View statistics"
+  }
 }
