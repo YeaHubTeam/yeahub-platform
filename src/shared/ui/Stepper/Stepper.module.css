@@ -1,5 +1,4 @@
 .stepper {
-  z-index: 0;
   width: 100%;
 }
 
@@ -16,59 +15,58 @@
   z-index: 1;
   display: flex;
   align-items: center;
+}
+
+.step-item-desktop {
   gap: 20px;
   padding: 14px 20px;
   width: 100%;
   cursor: pointer;
   border-radius: 12px;
-  color: var(--color-black-200);
 }
 
 .step-item-mobile {
-  position: relative;
-  z-index: 1;
-  display: flex;
   padding: 0;
-  cursor: pointer;
-  color: var(--color-black-200);
 }
 
-.step-item.active:not(.mobile) {
+.step-item.active:not(.step-item-mobile) {
   box-shadow: var(--main-shadow);
   background-color: var(--color-purple-800);
-  color: var(--color-white-900);
   transition: all .2s ease-in-out;
 }
 
-.step-item svg {
-  flex-shrink: 0;
+.step-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 
-.step-item-mobile svg {
+.step-icon.icon-active {
+  background-color: var(--color-purple-900);
+}
+
+.step-icon.icon-completed {
+  background-color: var(--color-white-900);
+}
+
+.step-icon.icon-inactive {
+  background-color: var(--color-black-200);
+}
+
+.step-icon.mobile {
   width: 28px;
   height: 28px;
 }
 
-.step-item.active svg {
-  fill: var(--color-purple-900);
+.step-icon.icon-completed.mobile {
+  background-color: var(--color-purple-700);
 }
 
-.step-item-mobile.completed svg rect {
-  fill: var(--color-purple-700);
-}
-
-.step-item-mobile.completed svg path {
+.step-icon.icon-completed.mobile path {
   stroke: var(--color-white-900);
-}
-
-.step-item-mobile.active svg {
-  fill: var(--color-purple-900);
-}
-
-.icon {
-  fill: var(--color-black-200);
 }
 
 .dashed-separator {
@@ -99,12 +97,13 @@
     gap: 14px;
   }
 
-  .step-item {
+  .step-item-desktop {
     gap: 14px;
     padding: 14px;
   }
 
   .dashed-separator {
+    top: 60px;
     left: 34px;
   }
 }

@@ -1,7 +1,7 @@
-import cn from 'classnames';
-import React, { Dispatch, Key, SetStateAction, type SVGProps } from 'react';
+import classNames from 'classnames';
+import React, { Dispatch, Key, SetStateAction } from 'react';
 
-import StepCheck from '@/shared/assets/icons/stepCheck.svg';
+import { Icon, type IconName } from '@/shared/ui/Icon';
 
 import { Flex } from '../Flex';
 import { Text } from '../Text';
@@ -11,8 +11,8 @@ import styles from './Stepper.module.css';
 export interface Step<T> {
 	id: T;
 	label: string;
-	image: React.FC<SVGProps<SVGSVGElement>>;
-	Component: () => JSX.Element;
+	image: IconName;
+	Component: (setActiveStep?: (step: step<T>) => void) => JSX.Element;
 }
 
 export interface StepperProps<T> {
@@ -48,7 +48,7 @@ export const Stepper = <T,>({
 			direction={isMobile ? 'row' : 'column'}
 			componentType={'ul'}
 			gap={'20'}
-			className={cn(isMobile ? styles['stepper-mobile'] : styles['stepper'], className)}
+			className={classNames(isMobile ? styles['stepper-mobile'] : styles['stepper'], className)}
 		>
 			{steps.map((step, index) => {
 				const status = getStepStatus(index);
@@ -64,18 +64,29 @@ export const Stepper = <T,>({
 						>
 							{!isLastStep && (
 								<div
-									className={cn(styles['dashed-separator'], {
-										[styles.mobile]: isMobile,
-									})}
+									className={classNames(styles['dashed-separator'], isMobile && styles.mobile)}
 								/>
 							)}
 							<div
-								className={cn(isMobile ? styles['step-item-mobile'] : styles['step-item'], {
-									[styles.active]: status === 'active',
-									[styles.completed]: status === 'completed',
-								})}
+								className={classNames(
+									styles['step-item'],
+									isMobile ? styles['step-item-mobile'] : styles['step-item-desktop'],
+									status === 'active' && styles.active,
+								)}
 							>
-								{status === 'completed' ? <StepCheck /> : <step.image className={styles.icon} />}
+								<div
+									className={classNames(
+										styles['step-icon'],
+										styles[`icon-${status}`],
+										isMobile && styles.mobile,
+									)}
+								>
+									<Icon
+										icon={status === 'completed' ? 'check' : step.image}
+										color={'white-900'}
+										size={isMobile ? 18 : 26}
+									/>
+								</div>
 								{!isMobile && (
 									<Text
 										variant="body3-strong"

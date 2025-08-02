@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
-import Icon from '@/shared/assets/icons/stepStudent.svg';
-
 import { Step, Stepper } from './Stepper';
 
 type StoryStep = 'step1' | 'step2' | 'step3' | 'step4' | 'step5';
@@ -11,31 +9,31 @@ const steps: Step<StoryStep>[] = [
 	{
 		id: 'step1',
 		label: 'Step_1',
-		image: Icon,
+		image: 'student',
 		Component: () => <div>Content_1</div>,
 	},
 	{
 		id: 'step2',
 		label: 'Step_2',
-		image: Icon,
+		image: 'student',
 		Component: () => <div>Content_2</div>,
 	},
 	{
 		id: 'step3',
 		label: 'Step_3',
-		image: Icon,
+		image: 'student',
 		Component: () => <div>Content_3</div>,
 	},
 	{
 		id: 'step4',
 		label: 'Step_4',
-		image: Icon,
+		image: 'student',
 		Component: () => <div>Content_4</div>,
 	},
 	{
 		id: 'step5',
 		label: 'Step_5',
-		image: Icon,
+		image: 'student',
 		Component: () => <div>Content_5</div>,
 	},
 ];
