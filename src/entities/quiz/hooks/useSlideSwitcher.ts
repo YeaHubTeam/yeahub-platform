@@ -5,7 +5,7 @@ import { matchPath, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 
 import { changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
@@ -15,6 +15,7 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 
 	const dispatch = useAppDispatch();
 	const profileId = useAppSelector(getProfileId);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const location = useLocation();
 
 	const answeredCount = questions.filter((question) => question.answer !== undefined).length;
@@ -27,6 +28,7 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 				answer,
 				shouldSaveToLS: isAuthRoute,
 				profileId,
+				hasPremium,
 			}),
 		);
 	};

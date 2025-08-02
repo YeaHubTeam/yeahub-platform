@@ -5,7 +5,7 @@ import { setToLS } from '@/shared/helpers/manageLocalStorage';
 
 import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
 
-import { LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
+import { LS_ACTIVE_MOCK_QUIZ_KEY, LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
 import { updateQuestionAnswer } from '../helpers/updateQuestionAnswer';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
@@ -32,18 +32,23 @@ export const activeQuizSlice = createSlice({
 			}
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
-			const { shouldSaveToLS, profileId } = action.payload;
+			const { shouldSaveToLS, profileId, hasPremium = true } = action.payload;
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
 			if (shouldSaveToLS && profileId) {
-				const { quizzes } = getValidActiveQuizzesFromLS();
-				setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+				if (hasPremium) {
+					const { quizzes } = getValidActiveQuizzesFromLS();
+					quizzes &&
+						setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+				} else {
+					setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, state.questions);
+				}
 			}
 		},
 		clearActiveQuizState: (state, action: PayloadAction<string>) => {
 			state.questions = [];
 			const { quizzes } = getValidActiveQuizzesFromLS();
 			quizzes && delete quizzes[action.payload];
-			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
+			quizzes && setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
 		},
 	},
 	extraReducers: (builder) => {

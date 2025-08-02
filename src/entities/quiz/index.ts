@@ -5,6 +5,7 @@ export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
 
 export {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockPublicQuizQuery,
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
@@ -36,8 +37,16 @@ export {
 	getLastActiveQuizInfo,
 } from './model/selectors/quizSelectors';
 
-export { activeQuizSlice, setActiveQuizQuestions } from './model/slices/activeQuizSlice';
+export {
+	activeQuizSlice,
+	setActiveQuizQuestions,
+	clearActiveQuizState,
+} from './model/slices/activeQuizSlice';
 
-export { LS_ACTIVE_QUIZZES_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
+export {
+	LS_ACTIVE_QUIZZES_KEY,
+	LS_ACTIVE_MOCK_QUIZ_KEY,
+	LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY,
+} from './model/constants/quizConstants';
 
 export { interviewHandlers } from './api/__mocks__/index';

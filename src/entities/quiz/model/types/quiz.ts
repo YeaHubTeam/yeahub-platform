@@ -31,7 +31,7 @@ export interface Answers {
 	answer: QuizQuestionAnswerType;
 	imageSrc?: string;
 	shortAnswer: string;
-	isFavorite: boolean;
+	isFavorite?: boolean;
 }
 
 export interface ActiveQuizState {
@@ -43,6 +43,7 @@ export interface ChangeQuestionAnswerParams {
 	profileId: string;
 	answer: QuizQuestionAnswerType;
 	shouldSaveToLS?: boolean;
+	hasPremium?: boolean;
 }
 
 export interface ProgressByCategoriesData {
@@ -93,7 +94,7 @@ export type interruptQuizRequest = {
 
 export interface CreateNewMockQuizParamsRequest
 	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
-	specialization?: number[];
+	specialization?: number[] | number;
 }
 
 export type CreateNewMockQuizResponse = Omit<CreateNewQuizResponse, 'profileId'>;
