@@ -327,7 +327,7 @@
 			"subscribe": {
 				"failed": "Не удалось подключить подписку"
 			},
-			"trial":{
+			"trial": {
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}

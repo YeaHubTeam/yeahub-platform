@@ -135,7 +135,7 @@ const CreatePublicQuizPage = () => {
 							disabled={true}
 							active={true}
 						/>
-						<ChooseQuestionCount 
+						<ChooseQuestionCount
 							onChangeLimit={onChangeLimit}
 							count={filter.count || 1}
 							maxCount={MAX_CHOOSE_QUESTION_COUNT}
