@@ -12,7 +12,7 @@ export interface Step<T> {
 	id: T;
 	label: string;
 	image: IconName;
-	Component: (setActiveStep?: (step: step<T>) => void) => JSX.Element;
+	Component: (setActiveStep?: (step: Step<T>) => void) => JSX.Element;
 }
 
 export interface StepperProps<T> {
