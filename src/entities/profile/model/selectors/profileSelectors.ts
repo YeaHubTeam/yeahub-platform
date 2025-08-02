@@ -74,7 +74,7 @@ export const isAvailableTrial = createSelector(
 			fullProfile.userRoles &&
 			fullProfile.userRoles.find((role) => role.name === 'candidate-premium')
 		);
-		return candidatePremium && trialSubscription;
+		return !candidatePremium && !trialSubscription;
 	},
 );
 
