@@ -41,6 +41,7 @@ export {
 	activeQuizSlice,
 	setActiveQuizQuestions,
 	clearActiveQuizState,
+	clearActiveMockQuizState,
 } from './model/slices/activeQuizSlice';
 
 export {

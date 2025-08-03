@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useAppDispatch, useAppSelector, useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -24,10 +24,8 @@ import {
 	getIsAllQuestionsAnswered,
 	useInterruptQuizMutation,
 	LS_ACTIVE_MOCK_QUIZ_KEY,
-	setActiveQuizQuestions,
-	clearActiveQuizState,
+	clearActiveMockQuizState,
 } from '@/entities/quiz';
-import { getActiveQuizQuestions as mapActiveQuizQuestions } from '@/entities/quiz/utils/getActiveQuizQuestions';
 
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
 
@@ -52,35 +50,23 @@ const InterviewQuizPage = () => {
 		{ skip: !hasPremium },
 	);
 
-	useEffect(() => {
-		if (!hasPremium) {
-			const mockQuizLS = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-			if (mockQuizLS) {
-				const parsedQuestions = mapActiveQuizQuestions(mockQuizLS).map((question) => ({
-					questionId: question.questionId,
-					questionTitle: question.questionTitle,
-					answer: question.answer,
-					isFavorite: question.isFavorite,
-					shortAnswer: question.shortAnswer ?? '',
-					imageSrc: question.imageSrc ?? undefined,
-				}));
-				dispatch(
-					setActiveQuizQuestions({ questions: parsedQuestions, shouldSaveToLS: false, profileId }),
-				);
-			}
-		}
-
-		return () => {
-			dispatch(clearActiveQuizState(profileId));
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
-		};
-	}, []);
-
 	const [saveResult] = useSaveQuizResultMutation();
 	const [saveInteruptedResult] = useInterruptQuizMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
+
+	useEffect(() => {
+		if (!hasPremium) {
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { [profileId]: activeQuizQuestions });
+		}
+
+		return () => {
+			if (!hasPremium) {
+				dispatch(clearActiveMockQuizState(profileId));
+			}
+		};
+	}, []);
 
 	const favorites = activeQuiz?.data?.reduce(
 		(acc, quiz) => {
@@ -157,8 +143,7 @@ const InterviewQuizPage = () => {
 			};
 			saveInteruptedResult({ data: quizToSave, isInterrupted: true });
 		} else {
-			dispatch(clearActiveQuizState(profileId));
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			dispatch(clearActiveMockQuizState(profileId));
 			navigate(ROUTES.interview.page);
 		}
 	};

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 
-import { changeQuestionAnswer } from '../model/slices/activeQuizSlice';
+import { changeMockQuestionAnswer, changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
 
 export const useSlideSwitcher = (questions: Answers[]) => {
@@ -22,15 +22,23 @@ export const useSlideSwitcher = (questions: Answers[]) => {
 	const isAuthRoute = !!matchPath('/dashboard/interview/new', location.pathname);
 
 	const changeAnswer = (answer: QuizQuestionAnswerType) => {
-		dispatch(
-			changeQuestionAnswer({
-				questionId: questions[currentQuestion].questionId,
-				answer,
-				shouldSaveToLS: isAuthRoute,
-				profileId,
-				hasPremium,
-			}),
-		);
+		hasPremium
+			? dispatch(
+					changeQuestionAnswer({
+						questionId: questions[currentQuestion].questionId,
+						answer,
+						shouldSaveToLS: isAuthRoute,
+						profileId,
+					}),
+				)
+			: dispatch(
+					changeMockQuestionAnswer({
+						questionId: questions[currentQuestion].questionId,
+						answer,
+						shouldSaveToLS: isAuthRoute,
+						profileId,
+					}),
+				);
 	};
 
 	const goToNextSlide = () => {

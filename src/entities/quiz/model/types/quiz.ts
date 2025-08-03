@@ -43,7 +43,6 @@ export interface ChangeQuestionAnswerParams {
 	profileId: string;
 	answer: QuizQuestionAnswerType;
 	shouldSaveToLS?: boolean;
-	hasPremium?: boolean;
 }
 
 export interface ProgressByCategoriesData {

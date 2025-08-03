@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config/store/clearStore';
 import { setToLS } from '@/shared/helpers/manageLocalStorage';
 
+import { getValidActiveMockQuizFromLS } from '@/entities/quiz/model/helpers/getValidActiveMockQuizFromLS';
 import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
 
 import { LS_ACTIVE_MOCK_QUIZ_KEY, LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
@@ -32,23 +33,34 @@ export const activeQuizSlice = createSlice({
 			}
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
-			const { shouldSaveToLS, profileId, hasPremium = true } = action.payload;
+			const { shouldSaveToLS, profileId } = action.payload;
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
 			if (shouldSaveToLS && profileId) {
-				if (hasPremium) {
-					const { quizzes } = getValidActiveQuizzesFromLS();
-					quizzes &&
-						setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
-				} else {
-					setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, state.questions);
-				}
+				const { quizzes } = getValidActiveQuizzesFromLS();
+				quizzes &&
+					setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+			}
+		},
+		changeMockQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
+			const { shouldSaveToLS, profileId } = action.payload;
+			state.questions = updateQuestionAnswer(state.questions, action.payload);
+			if (shouldSaveToLS && profileId) {
+				const { quizzes } = getValidActiveMockQuizFromLS();
+				quizzes &&
+					setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}), [profileId]: state.questions });
 			}
 		},
 		clearActiveQuizState: (state, action: PayloadAction<string>) => {
 			state.questions = [];
 			const { quizzes } = getValidActiveQuizzesFromLS();
 			quizzes && delete quizzes[action.payload];
-			quizzes && setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
+			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
+		},
+		clearActiveMockQuizState: (state, action: PayloadAction<string>) => {
+			state.questions = [];
+			const { quizzes } = getValidActiveMockQuizFromLS();
+			quizzes && delete quizzes[action.payload];
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}) });
 		},
 	},
 	extraReducers: (builder) => {
@@ -58,5 +70,10 @@ export const activeQuizSlice = createSlice({
 	},
 });
 
-export const { setActiveQuizQuestions, changeQuestionAnswer, clearActiveQuizState } =
-	activeQuizSlice.actions;
+export const {
+	setActiveQuizQuestions,
+	changeQuestionAnswer,
+	changeMockQuestionAnswer,
+	clearActiveQuizState,
+	clearActiveMockQuizState,
+} = activeQuizSlice.actions;
