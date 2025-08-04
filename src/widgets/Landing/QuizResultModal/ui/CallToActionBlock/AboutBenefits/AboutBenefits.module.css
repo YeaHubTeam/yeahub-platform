@@ -1,11 +1,4 @@
-.list-title {
-  margin-bottom: 12px;
-}
-
-.ul {
+.benefits {
+  margin-top: 12px;
   margin-bottom: 20px;
-}
-
-.li:not(:last-child) {
-  margin-bottom: 8px;
 }

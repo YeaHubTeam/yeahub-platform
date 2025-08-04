@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -18,8 +18,8 @@ export const CallToActionBlock = () => {
 
 	const navigate = useNavigate();
 
-	const handleButtonClick = () => {
-		navigate(ROUTES.settings.page);
+	const onMoveSelectSubscription = () => {
+		navigate(SELECT_TARIFF_SETTINGS_TAB);
 	};
 
 	return (
@@ -29,11 +29,11 @@ export const CallToActionBlock = () => {
 				{t(InterviewQuizResult.MODAL_TITLE)}
 			</Text>
 			<AboutBenefits />
-			<Button onClick={handleButtonClick} size="large" fullWidth className={styles.button}>
-				{t(InterviewQuizResult.MODAL_CTA)}
+			<Button onClick={onMoveSelectSubscription} size="large" fullWidth className={styles.button}>
+				{t(InterviewQuizResult.MODAL_BUTTON_TEXT)}
 			</Button>
 			<Text variant="body3-accent" color="black-600" className={styles.trial}>
-				{t(InterviewQuizResult.MODAL_TRIAL)}
+				{t(InterviewQuizResult.MODAL_BUTTON_TIP)}
 			</Text>
 		</Flex>
 	);

@@ -6,7 +6,7 @@ import { useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
-import { QuizResultModal } from '@/widgets/Landing/QuizResultModal/ui/QuizResultModal/QuizResultModal';
+import { QuizResultModal } from '../QuizResultModal/QuizResultModal';
 
 import styles from './QuizResultButton.module.css';
 

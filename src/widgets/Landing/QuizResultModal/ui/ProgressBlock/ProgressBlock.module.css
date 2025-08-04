@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 306px;
+  min-width: 306px;
   height: 346px;
   border-radius: 12px;
   background-color: var(--background-light-hover);
