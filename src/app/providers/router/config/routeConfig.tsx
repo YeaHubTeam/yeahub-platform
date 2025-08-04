@@ -574,9 +574,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.new.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<InterviewQuizPage />
-								</PremiumRoute>
+								<InterviewQuizPage />
 							</VerifiedEmailRoute>
 						),
 						handle: {
