@@ -47,4 +47,15 @@ export const gurus: Guru[] = [
 			profileId: '2350f2b4-d06d-4a8b-b6a6-742c8e0df414',
 		},
 	},
+	{
+		title: 'QA Manual Guru',
+		name: 'Ziyaev Ed',
+		specializationId: 29,
+		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D1%8D%D0%B41.jpg',
+		socials: {
+			telegram: 'https://t.me/twitereda',
+			youtube: 'https://www.youtube.com/@youtubeeda',
+			profileId: '8d66fa66-1437-4365-a6d5-add0686aa6db',
+		},
+	},
 ];
