@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector, useModal } from '@/shared/hooks';
+import { ROUTES } from '@/shared/config/router/routes';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppDispatch, useAppSelector, useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -11,7 +14,7 @@ import { Modal } from '@/shared/ui/Modal';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { Text } from '@/shared/ui/Text';
 
-import { getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import {
 	QuestionNavPanel,
 	getActiveQuizQuestions,
@@ -20,6 +23,8 @@ import {
 	useSlideSwitcher,
 	getIsAllQuestionsAnswered,
 	useInterruptQuizMutation,
+	LS_ACTIVE_MOCK_QUIZ_KEY,
+	clearActiveMockQuizState,
 } from '@/entities/quiz';
 
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
@@ -29,21 +34,39 @@ import styles from './InterviewQuizPage.module.css';
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 	const { isOpen: isOpenModal, onToggle: onToggleModal } = useModal();
+	const navigate = useNavigate();
+	const hasPremium = useAppSelector(getHasPremiumAccess);
+	const dispatch = useAppDispatch();
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
 	const profileId = useAppSelector(getProfileId);
-	const { data: activeQuiz } = useGetActiveQuizQuery({
-		profileId,
-		page: 1,
-		limit: 1,
-	});
+	const { data: activeQuiz } = useGetActiveQuizQuery(
+		{
+			profileId,
+			page: 1,
+			limit: 1,
+		},
+		{ skip: !hasPremium },
+	);
 
 	const [saveResult] = useSaveQuizResultMutation();
 	const [saveInteruptedResult] = useInterruptQuizMutation();
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
+
+	useEffect(() => {
+		if (!hasPremium) {
+			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { [profileId]: activeQuizQuestions });
+		}
+
+		return () => {
+			if (!hasPremium) {
+				dispatch(clearActiveMockQuizState(profileId));
+			}
+		};
+	}, []);
 
 	const favorites = activeQuiz?.data?.reduce(
 		(acc, quiz) => {
@@ -79,7 +102,7 @@ const InterviewQuizPage = () => {
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(updatedQuiz ?? []);
+	} = useSlideSwitcher(updatedQuiz ?? activeQuizQuestions ?? []);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
@@ -119,6 +142,9 @@ const InterviewQuizPage = () => {
 				},
 			};
 			saveInteruptedResult({ data: quizToSave, isInterrupted: true });
+		} else {
+			dispatch(clearActiveMockQuizState(profileId));
+			navigate(ROUTES.interview.page);
 		}
 	};
 
