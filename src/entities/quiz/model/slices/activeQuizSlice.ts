@@ -56,11 +56,17 @@ export const activeQuizSlice = createSlice({
 			quizzes && delete quizzes[action.payload];
 			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
 		},
-		clearActiveMockQuizState: (state, action: PayloadAction<string>) => {
+		clearActiveMockQuizState: (
+			state,
+			action: PayloadAction<{ shouldClearLS?: boolean; profileId?: string }>,
+		) => {
+			const { shouldClearLS = true, profileId } = action.payload;
 			state.questions = [];
-			const { quizzes } = getValidActiveMockQuizFromLS();
-			quizzes && delete quizzes[action.payload];
-			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}) });
+			if (shouldClearLS && profileId) {
+				const { quizzes } = getValidActiveMockQuizFromLS();
+				quizzes && delete quizzes[profileId];
+				setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}) });
+			}
 		},
 	},
 	extraReducers: (builder) => {

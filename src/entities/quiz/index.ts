@@ -50,4 +50,6 @@ export {
 	LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY,
 } from './model/constants/quizConstants';
 
+export { getValidActiveMockQuizFromLS } from './model/helpers/getValidActiveMockQuizFromLS';
+
 export { interviewHandlers } from './api/__mocks__/index';
