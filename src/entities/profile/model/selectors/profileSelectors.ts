@@ -52,11 +52,41 @@ export const getIsEdit = (state: State) => {
 	return state.profile.isEdit;
 };
 
-export const getHasPremiumAccess = (state: State) => {
-	return (
-		state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false
-	);
-};
+export const getTrialSubscription = createSelector(getFullProfile, (fullProfile) => {
+	if (fullProfile?.subscriptions?.length) {
+		const activeSubscription = fullProfile.subscriptions.find(
+			(subscription) => subscription.subscriptionId === 4,
+		);
+		return activeSubscription;
+	}
+	return undefined;
+});
+
+export const isActiveTrial = createSelector(getTrialSubscription, (trialSubscription) => {
+	return !!(trialSubscription && trialSubscription.state && trialSubscription.state === 'active');
+});
+
+export const isAvailableTrial = createSelector(
+	[getTrialSubscription, getFullProfile],
+	(trialSubscription, fullProfile) => {
+		const candidatePremium = !!(
+			fullProfile &&
+			fullProfile.userRoles &&
+			fullProfile.userRoles.find((role) => role.name === 'candidate-premium')
+		);
+		return !candidatePremium && !trialSubscription;
+	},
+);
+
+export const getHasPremiumAccess = createSelector(
+	[getFullProfile, isActiveTrial],
+	(fullProfile, isTrial) => {
+		return (
+			(fullProfile?.userRoles?.some((role) => role.name === 'candidate-premium') ?? false) ||
+			isTrial
+		);
+	},
+);
 
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;
