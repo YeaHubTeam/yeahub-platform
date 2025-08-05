@@ -13,6 +13,7 @@ export const authProfileQueryMockResponse: FullProfile = {
 	updatedAt: '2024-09-09T04:01:39.385Z',
 	subscriptions: [
 		{
+			state: 'active',
 			id: 'sub-123',
 			subscriptionId: 1001,
 			userId: 'user-789',

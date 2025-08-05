@@ -5,25 +5,12 @@ import { createPortal } from 'react-dom';
 import { Pallete } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+import { ModalProps } from '@/shared/ui/Modal/ModalTypes';
 import { Text } from '@/shared/ui/Text';
 
 import { VariantType } from '../Button/types';
 
 import styles from './Modal.module.css';
-
-export type ModalProps = {
-	title: string;
-	isOpen: boolean;
-	onClose: () => void;
-	children: React.ReactNode;
-	buttonPrimaryText?: string;
-	buttonOutlineText?: string;
-	buttonPrimaryClick?: () => void;
-	buttonOutlineClick?: () => void;
-	buttonPrimaryDisabled?: boolean;
-	buttonOutlineDisabled?: boolean;
-	variant?: 'default' | 'error';
-};
 
 const createPortalRoot = () => {
 	const modalRoot = document.createElement('div');
@@ -53,7 +40,6 @@ const outlineButtonVariants: Record<string, VariantType> = {
 };
 
 export const Modal = ({
-	title,
 	isOpen,
 	onClose,
 	buttonPrimaryText,
@@ -64,6 +50,8 @@ export const Modal = ({
 	buttonOutlineDisabled,
 	variant = 'default',
 	children,
+	title,
+	className = '',
 }: ModalProps) => {
 	const portalRootRef = useRef(document.getElementById('modal-root') || createPortalRoot());
 	const renderRootRef = useRef(document.body);
@@ -132,14 +120,16 @@ export const Modal = ({
 					aria-label="Закрыть модальное окно"
 					onKeyDown={handleKeyDown}
 				/>
-				<div className={styles['content-wrapper']}>
-					<Text
-						className={classNames(styles.title, styles[`${variant}-title`])}
-						variant="body5-accent"
-						color={titleColors[variant]}
-					>
-						{title}
-					</Text>
+				<div className={classNames(styles['content-wrapper'], className)}>
+					{title && (
+						<Text
+							className={classNames(styles.title, styles[`${variant}-title`])}
+							variant="body5-accent"
+							color={titleColors[variant]}
+						>
+							{title}
+						</Text>
+					)}
 					<Text className={styles.text} variant="body3">
 						{children}
 					</Text>

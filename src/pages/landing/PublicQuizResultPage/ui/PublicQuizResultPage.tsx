@@ -13,6 +13,7 @@ import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { PassedQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
+import { QuizResultButton } from '@/widgets/Landing/QuizResultModal';
 
 import { PublicQuizResultPageSkeleton } from '@/pages/landing/PublicQuizResultPage/ui/PublicQuizResultPage.skeleton';
 
@@ -37,8 +38,8 @@ const PublicQuizResultPage = () => {
 		<Flex gap="20" direction="column">
 			<Card
 				title={t(InterviewQuizResult.INTERVIEW_STATISTIC_TITLE)}
-				actionRoute={'/'}
 				actionTitle={t(InterviewQuizResult.INTERVIEW_STATISTIC_LINK)}
+				headerAction={<QuizResultButton />}
 			>
 				<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
 					<PassedQuestionsStatistic total={quizResults!.total} className={styles.statistic} />

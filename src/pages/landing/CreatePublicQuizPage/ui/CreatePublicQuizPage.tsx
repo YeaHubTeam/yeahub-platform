@@ -23,7 +23,11 @@ import {
 	ChooseQuestionsCategories,
 	ChooseSpecialization,
 } from '@/entities/question';
-import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
+import {
+	QuestionModeType,
+	QuizQuestionMode,
+	useLazyCreateNewMockPublicQuizQuery,
+} from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
 import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
@@ -40,7 +44,7 @@ const CreatePublicQuizPage = () => {
 
 	const { filter, handleFilterChange } = useQueryFilter();
 	const [createNewMockQuiz, { isLoading: isCreateNewMockQuizLoading }] =
-		useLazyCreateNewMockQuizQuery();
+		useLazyCreateNewMockPublicQuizQuery();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
