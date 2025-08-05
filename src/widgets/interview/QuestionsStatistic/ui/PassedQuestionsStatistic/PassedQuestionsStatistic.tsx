@@ -5,7 +5,7 @@ import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
 import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
-import { LS_ACTIVE_MOCK_QUIZ_KEY, Quiz } from '@/entities/quiz';
+import { LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, Quiz } from '@/entities/quiz';
 
 import { getQuestionsStats } from '../../model/lib/getQuestionsStats/getQuestionsStats';
 
@@ -22,7 +22,7 @@ export const PassedQuestionsStatistic = ({
 }: PassedQuestionsStatisticProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
-	const activeMockQuiz: Quiz = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+	const activeMockQuiz: Quiz = getJSONFromLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY);
 	const inProcessCount = activeMockQuiz.response.answers.filter(
 		(el) => el.answer === 'UNKNOWN',
 	).length;

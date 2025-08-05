@@ -110,6 +110,7 @@ export const icons: Record<IconName, IconComponent> = {
 	filter: Filter,
 	settings: Settings,
 	sealCheck: SealCheck,
+	check: Check,
 	userCheckWithBackground: UserCheckWithBackground,
 	userSwitch: UserSwitch,
 	trendUp: TrendUp,
