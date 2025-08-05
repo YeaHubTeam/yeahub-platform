@@ -1,0 +1,28 @@
+@media screen and (width <= 1023px) {
+  .questions-list {
+    padding: 20px 16px;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .questions-list {
+    padding: 20px 10px;
+  }
+}
+
+.statistic:first-child > div:first-child {
+  display: block;
+  margin: auto;
+  width: 70%;
+  text-align: center;
+}
+
+@media (width > 1023px) {
+  .statistic {
+    flex-basis: calc(41% - 10px);
+  }
+
+  .progress {
+    flex-basis: calc(59% - 10px);
+  }
+}

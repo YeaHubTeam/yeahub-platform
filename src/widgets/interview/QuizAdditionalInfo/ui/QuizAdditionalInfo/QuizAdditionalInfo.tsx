@@ -18,7 +18,7 @@ export interface QuizAdditionalInfoProps {
 export const QuizAdditionalInfo = ({ className, quiz, isLoading }: QuizAdditionalInfoProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
-	const learnedQuestions = quiz?.response.answers.filter((e) => e.answer === 'KNOWN').length;
+	const learnedQuestions = (quiz?.questions || []).filter((question) => question.isLearned).length;
 
 	const questionStats = [
 		{

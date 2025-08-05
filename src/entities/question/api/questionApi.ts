@@ -60,7 +60,7 @@ const questionApi = baseApi.injectEndpoints({
 		}),
 		getQuestionsSpecializationByIdCount: build.query<
 			GetQuestionsBySpecializationCountResponse,
-			string
+			number
 		>({
 			query: (specializationId) =>
 				route(questionApiUrls.getStatisticsQuestionsSpecializationById, specializationId),

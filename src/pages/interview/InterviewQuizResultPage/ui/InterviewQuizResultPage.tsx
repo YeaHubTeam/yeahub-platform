@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
+import { getProfileId } from '@/entities/profile';
 import {
 	useGetActiveQuizQuery,
 	useGetQuizByProfileIdQuery,
@@ -16,24 +13,18 @@ import {
 
 import { ResetActiveQuizModal } from '@/features/quiz/resetActiveQuizModal';
 
-import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { QuizAdditionalInfo } from '@/widgets/interview/QuizAdditionalInfo';
 import { QuizQuestionsInfo } from '@/widgets/interview/QuizzesStatistic';
 
 import { InterviewQuizResultPageSkeleton } from '@/pages/interview/InterviewQuizResultPage';
 
-import { useCalculationInterviewResult } from '../../CreateQuizPage/model/hooks/useCalculationInterviewResult';
-
 import styles from './InterviewQuizResultPage.module.css';
 
 const InterviewQuizResultPage = () => {
-	const { t } = useTranslation(i18Namespace.interviewStatistics);
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
 	const profileId = useAppSelector(getProfileId);
-	const hasPremium = useAppSelector(getHasPremiumAccess);
-
 	const { quizId } = useParams<{ quizId?: string }>();
 
 	const [cloneQuiz] = useLazyCloneQuizQuery();
@@ -42,9 +33,6 @@ const InterviewQuizResultPage = () => {
 		quizId: quizId ?? '',
 		profileId,
 	});
-
-	const questions = quiz?.response.answers;
-	const interviewResult = useCalculationInterviewResult(quiz, questions);
 
 	const { data: activeQuizResponse } = useGetActiveQuizQuery({
 		profileId,
@@ -56,6 +44,8 @@ const InterviewQuizResultPage = () => {
 	if (isLoading) {
 		return <InterviewQuizResultPageSkeleton />;
 	}
+
+	const questions = quiz?.response.answers;
 
 	function handleCloneQuiz() {
 		if (!activeQuiz) {
@@ -76,21 +66,12 @@ const InterviewQuizResultPage = () => {
 	return (
 		<>
 			<Flex gap="20" wrap="wrap" className={styles.container}>
-				{hasPremium && (
-					<QuizQuestionsInfo
-						className={styles.questions}
-						questions={questions}
-						quizNumber={quiz?.quizNumber}
-					/>
-				)}
+				<QuizQuestionsInfo
+					className={styles.questions}
+					questions={questions}
+					quizNumber={quiz?.quizNumber}
+				/>
 				<QuizAdditionalInfo className={styles.quiz} quiz={quiz} isLoading={isLoading} />
-				{!hasPremium && (
-					<CategoryProgressList
-						title={t(InterviewStatistics.PROGRESS_TITLE)}
-						className={styles.questions}
-						skillsStat={interviewResult?.skillStat}
-					/>
-				)}
 				<PassedQuestionsList
 					className={styles['questions-list']}
 					questions={questions ?? []}
