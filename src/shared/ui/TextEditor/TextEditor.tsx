@@ -76,6 +76,11 @@ export const TextEditor = ({
 			}),
 			Strike,
 		],
+		editorProps: {
+			attributes: {
+				class: styles['prose-mirror'],
+			},
+		},
 		content: normalizeHtmlContent(data),
 		editable: !disabled,
 		autofocus,
@@ -167,11 +172,7 @@ export const TextEditor = ({
 			id={String(id)}
 		>
 			<BubbleMenuEditor editor={editor} />
-			<EditorContent
-				ref={editorContentRef}
-				editor={editor}
-				className={cn(styles['editor-content'], styles['prose-mirror'])}
-			/>
+			<EditorContent ref={editorContentRef} editor={editor} className={styles['editor-content']} />
 		</div>
 	);
 };
