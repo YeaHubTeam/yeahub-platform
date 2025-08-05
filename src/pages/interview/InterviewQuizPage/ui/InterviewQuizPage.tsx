@@ -63,7 +63,7 @@ const InterviewQuizPage = () => {
 
 		return () => {
 			if (!hasPremium) {
-				dispatch(clearActiveMockQuizState(profileId));
+				dispatch(clearActiveMockQuizState({ profileId: profileId, shouldClearLS: false }));
 			}
 		};
 	}, []);
@@ -143,7 +143,7 @@ const InterviewQuizPage = () => {
 			};
 			saveInteruptedResult({ data: quizToSave, isInterrupted: true });
 		} else {
-			dispatch(clearActiveMockQuizState(profileId));
+			dispatch(clearActiveMockQuizState({ profileId: profileId }));
 			navigate(ROUTES.interview.page);
 		}
 	};
