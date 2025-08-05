@@ -11,6 +11,7 @@ export const getActiveQuizQuestions = <T extends CreateNewQuizResponse | CreateN
 			...item,
 			imageSrc: matchedQuestion?.imageSrc,
 			shortAnswer: matchedQuestion?.shortAnswer,
+			skills: matchedQuestion?.questionSkills,
 		};
 	});
 	return quizQuestions;

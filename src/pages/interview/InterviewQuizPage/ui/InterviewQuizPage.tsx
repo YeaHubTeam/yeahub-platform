@@ -60,12 +60,6 @@ const InterviewQuizPage = () => {
 		if (!hasPremium) {
 			setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { [profileId]: activeQuizQuestions });
 		}
-
-		return () => {
-			if (!hasPremium) {
-				dispatch(clearActiveMockQuizState({ profileId: profileId, shouldClearLS: false }));
-			}
-		};
 	}, []);
 
 	const favorites = activeQuiz?.data?.reduce(
@@ -119,14 +113,18 @@ const InterviewQuizPage = () => {
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
 	const onSubmitQuiz = () => {
-		if (activeQuiz) {
-			const quizToSave = {
-				...activeQuiz.data[0],
-				response: {
-					answers: activeQuizQuestions,
-				},
-			};
-			saveResult(quizToSave);
+		if (hasPremium) {
+			if (activeQuiz) {
+				const quizToSave = {
+					...activeQuiz.data[0],
+					response: {
+						answers: activeQuizQuestions,
+					},
+				};
+				saveResult(quizToSave);
+			}
+		} else {
+			navigate('result');
 		}
 	};
 
