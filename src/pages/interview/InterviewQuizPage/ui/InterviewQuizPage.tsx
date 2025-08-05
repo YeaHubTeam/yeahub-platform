@@ -141,7 +141,7 @@ const InterviewQuizPage = () => {
 			};
 			saveInteruptedResult({ data: quizToSave, isInterrupted: true });
 		} else {
-			dispatch(clearActiveMockQuizState(profileId));
+			dispatch(clearActiveMockQuizState({ profileId: profileId }));
 			navigate(ROUTES.interview.page);
 		}
 	};
