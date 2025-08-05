@@ -2,7 +2,7 @@
   "title": {
     "questions.answers": "Interview result № {{title}}",
     "stat": "Statistics of passed questions for all categories",
-    "questions.list": "Passed interview questions lits"
+    "questions.list": "Passed interview questions list"
   },
   "passed.question": "Passed",
   "time": "Time spent",
@@ -23,5 +23,19 @@
     "question": "Statistics of completed questions",
     "schedule": "Learning progress by skills",
     "link": "View statistics"
-  }
+  },
+	"modal": {
+		"title": "Become a community member",
+		"description": "Want to see all your progress? With subscription you'll get access to all metrics:",
+		"benefits": {
+			"full.access": "Full access to simulator",
+			"smart.mode": "Smart question repetition mode",
+			"statistics": "Detailed progress statistics",
+			"interviews": "Closed interviews from top companies"
+		},
+		"button": {
+			"text": "Become a member",
+			"tip": "7 days free"
+		}
+	}
 }
