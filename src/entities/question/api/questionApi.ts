@@ -12,6 +12,7 @@ import {
 	GetQuestionsListResponse,
 	GetPublicQuestionByIdResponse,
 	GetPublicQuestionByIdParamsRequest,
+	GetQuestionsBySpecializationCountResponse,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -57,6 +58,14 @@ const questionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.PUBLIC_QUESTION_DETAIL],
 		}),
+		getQuestionsSpecializationByIdCount: build.query<
+			GetQuestionsBySpecializationCountResponse,
+			number
+		>({
+			query: (specializationId) =>
+				route(questionApiUrls.getStatisticsQuestionsSpecializationById, specializationId),
+			providesTags: [ApiTags.QUESTION_STATISTICS],
+		}),
 	}),
 });
 
@@ -66,4 +75,5 @@ export const {
 	useGetLearnedQuestionsQuery,
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
+	useGetQuestionsSpecializationByIdCountQuery,
 } = questionApi;

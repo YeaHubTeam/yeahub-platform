@@ -9,6 +9,7 @@ import {
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -22,8 +23,13 @@ import {
 	ChooseQuestionsCategories,
 	ChooseSpecialization,
 } from '@/entities/question';
-import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
+import {
+	QuestionModeType,
+	QuizQuestionMode,
+	useLazyCreateNewMockPublicQuizQuery,
+} from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -38,7 +44,7 @@ const CreatePublicQuizPage = () => {
 
 	const { filter, handleFilterChange } = useQueryFilter();
 	const [createNewMockQuiz, { isLoading: isCreateNewMockQuizLoading }] =
-		useLazyCreateNewMockQuizQuery();
+		useLazyCreateNewMockPublicQuizQuery();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
@@ -47,6 +53,10 @@ const CreatePublicQuizPage = () => {
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 	const { isMobile, isTablet } = useScreenSize();
+
+	useEffect(() => {
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER));
+	}, []);
 
 	useEffect(() => {
 		if (filter.specialization?.length && filter.specialization[0] !== selectedSpecialization) {
@@ -135,7 +145,7 @@ const CreatePublicQuizPage = () => {
 							disabled={true}
 							active={true}
 						/>
-						<ChooseQuestionCount 
+						<ChooseQuestionCount
 							onChangeLimit={onChangeLimit}
 							count={filter.count || 1}
 							maxCount={MAX_CHOOSE_QUESTION_COUNT}

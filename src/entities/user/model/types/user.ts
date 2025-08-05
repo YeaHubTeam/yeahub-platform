@@ -15,7 +15,7 @@ export type RoleName =
 	| 'candidate'
 	| 'member'
 	| 'admin'
-	| 'hr'
+	| 'HR'
 	| 'author'
 	| 'candidate-free'
 	| 'candidate-premium';

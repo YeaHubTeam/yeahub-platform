@@ -19,12 +19,14 @@ interface SubscriptionCardProps {
 	subscription: Subscription;
 	className?: string;
 	renderSubscribeButton: () => React.ReactNode;
+	renderTrialButton?: () => React.ReactNode;
 }
 
 export const SubscriptionCard = ({
 	subscription,
 	className,
 	renderSubscribeButton,
+	renderTrialButton,
 }: SubscriptionCardProps) => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);
 	const { isMobile, isTablet } = useScreenSize();
@@ -94,7 +96,10 @@ export const SubscriptionCard = ({
 						</Flex>
 					))}
 				</Flex>
-				{subscription.hasSubscribeButton && renderSubscribeButton()}
+				<Flex align="center" className={styles['btn-wrapper']}>
+					{subscription.hasSubscribeButton && renderSubscribeButton()}
+					{subscription.hasSubscribeButton && renderTrialButton?.()}
+				</Flex>
 			</Flex>
 		</Card>
 	);

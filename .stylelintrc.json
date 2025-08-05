@@ -9,6 +9,7 @@
 				"ignoreValues": ["currentColor", "unset", "inherit", "initial", "transparent"]
 			}
 		],
+		"indentation": [2],
 		"order/properties-order": [
 			"all",
 			"position",

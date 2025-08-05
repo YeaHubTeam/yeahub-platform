@@ -1,40 +1,40 @@
 {
-  "title": "Interview questions",
-  "preview.title": "Interview Trainer",
-  "continue.quiz": "Continue interview",
-  "progress.bar.title": "Quiz question {{fromQuestionNumber}} of {{toQuestionNumber}}",
-  "start.quiz": {
-    "title": "Improve your skills before the interview",
-    "description": "Prepare like a pro with the interactive trainer",
-    "setup.list": {
+	"title": "Interview questions",
+	"preview.title": "Interview Trainer",
+	"continue.quiz": "Continue interview",
+	"progress.bar.title": "Quiz question {{fromQuestionNumber}} of {{toQuestionNumber}}",
+	"start.quiz": {
+		"title": "Improve your skills before the interview",
+		"description": "Prepare like a pro with the interactive trainer",
+		"setup.list": {
 			"first": "Choose skills to level up",
 			"second": "Select the difficulty level",
 			"third": "Set the number of questions",
 			"fourth": "Select mode: Review or Study"
 		},
-    "link": "Start interview"
-  },
-  "interrupt.quiz": {
-    "title": "Do you want to interrupt the interview?",
-    "description": "In this case, unanswered questions will be marked as - Do not know",
-    "yes": "Yes",
-    "no": "No"
-  },
-  "complete": "Complete",
-  "next": "Next",
-  "check.quiz": "Check",
-  "a11y.next": "Next interview question",
-  "a11y.prev": "Previous interview question",
-  "answer": {
-    "hide": "Hide answer",
-    "show": "Show answer",
-    "do.not.know": "Do not know",
-    "know": "Know"
-  },
-  "modal.quiz": {
-    "title": "You already have an active interview.",
-    "description": "Do you really want to abandon the active interview progress and create a new one?",
-    "ok": "Yes",
-    "cancel": "No"
-  }
+		"link": "Start interview"
+	},
+	"interrupt.quiz": {
+		"title": "Do you want to interrupt the interview?",
+		"description": "In this case, unanswered questions will be marked as - Do not know",
+		"yes": "Yes",
+		"no": "No"
+	},
+	"complete": "Complete",
+	"next": "Next",
+	"check.quiz": "Check",
+	"a11y.next": "Next interview question",
+	"a11y.prev": "Previous interview question",
+	"answer": {
+		"hide": "Hide answer",
+		"show": "Show answer",
+		"do.not.know": "Do not know",
+		"know": "Know"
+	},
+	"modal.quiz": {
+		"title": "You already have an active interview.",
+		"description": "Do you really want to abandon the active interview progress and create a new one?",
+		"ok": "Yes",
+		"cancel": "No"
+	}
 }

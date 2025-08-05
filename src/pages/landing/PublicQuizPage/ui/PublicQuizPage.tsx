@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line import/order
-import { QuestionNavPanel, useSlideSwitcher, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
+import {
+	QuestionNavPanel,
+	useSlideSwitcher,
+	LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY,
+} from '@/entities/quiz';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
@@ -20,6 +24,7 @@ import {
 	QuizQuestionAnswerType,
 	// eslint-disable-next-line @conarti/feature-sliced/public-api
 } from '@/entities/quiz/model/types/quiz';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
 
@@ -29,7 +34,7 @@ const PublicQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 	const navigate = useNavigate();
-	const activeMockQuiz = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+	const activeMockQuiz = getJSONFromLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY);
 	const isAllQuestionsAnswered = activeMockQuiz?.response.answers.every(
 		(question: Answers) => question.answer !== undefined && question.answer !== null,
 	);
@@ -93,16 +98,17 @@ const PublicQuizPage = () => {
 			...activeMockQuiz,
 			response: { ...activeMockQuiz.response, answers: updatedAnswers },
 		};
-		setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, newMockData);
+		setToLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, newMockData);
 		forceUpdate();
 		changeAnswer(newAnswer);
 	};
 
 	const onInterruptQuiz = () => {
 		if (activeMockQuiz) {
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			removeFromLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY);
 			navigate(`${ROUTES.quiz.page}`);
 		}
+		removeFromLS(LS_ACTIVE_SPECIALIZATION_ID);
 	};
 
 	return (

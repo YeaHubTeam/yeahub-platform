@@ -2,16 +2,14 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
-import { Modal } from '@/shared/ui/Modal';
+import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { User as UserType } from '@/entities/user';
 
 import { useDeleteAccountMutation } from '@/features/profile/deleteAccount/api/deleteAccountApi';
 
-import { UserDeleteAccountModalProps } from './../../../model/types/deleteAccount';
-
-interface AdminDeleteAccountModalProps extends UserDeleteAccountModalProps {
+interface AdminDeleteAccountModalProps extends RequiredModalProps {
 	user: UserType;
 }
 

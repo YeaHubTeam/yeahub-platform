@@ -165,6 +165,8 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
 	TOAST_RESOURCE_CREATE_SUCCESS = 'toast.resources.create.success',
 	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
+	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
+	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 }
 export enum Profile {
@@ -212,6 +214,7 @@ export enum Profile {
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
 	EMAIL_VERIFICATION_SUBMIT = 'email.verification.submit',
+	EMAIL_VERIFICATION_SPAM_MESSAGE = 'email.verification.spam.message',
 	EMAIL_VERIFICATION_SENT_SUCCESS = 'email.verification.sent.success',
 	EMAIL_VERIFICATION_VERIFY_STUB_TITLE = 'email.verification.verify.stub.title',
 	EMAIL_VERIFICATION_VERIFY_STUB_DESCRIPTION = 'email.verification.verify.stub.description',
@@ -356,6 +359,18 @@ export enum InterviewQuizResult {
 	STATS_HISTORY = 'join.community.stats.history',
 	FULL_ACCESS = 'join.community.full.access',
 	BECOME_MEMBER = 'join.community.become.member',
+	INTERVIEW_STATISTIC_TITLE = 'statistics.title',
+	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
+	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
+	INTERVIEW_STATISTIC_LINK = 'statistics.link',
+	MODAL_TITLE = 'modal.title',
+	MODAL_DESCRIPTION = 'modal.description',
+	MODAL_BENEFITS_FULL_ACCESS = 'modal.benefits.full.access',
+	MODAL_BENEFITS_SMART_MODE = 'modal.benefits.smart.mode',
+	MODAL_BENEFITS_STATISTICS = 'modal.benefits.statistics',
+	MODAL_BENEFITS_INTERVIEWS = 'modal.benefits.interviews',
+	MODAL_BUTTON_TEXT = 'modal.button.text',
+	MODAL_BUTTON_TIP = 'modal.button.tip',
 }
 
 export enum InterviewStatistics {
@@ -738,6 +753,7 @@ export enum Subscription {
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
 	SUBSCRIPTION_CANCELED = 'canceled',
+	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',

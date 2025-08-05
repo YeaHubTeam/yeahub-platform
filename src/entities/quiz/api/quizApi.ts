@@ -11,7 +11,7 @@ import { toast } from '@/shared/ui/Toast';
 
 import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
 
-import { LS_ACTIVE_MOCK_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
+import { LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
@@ -54,7 +54,39 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		createNewMockQuiz: build.query<
+		createNewMockQuiz: build.query<CreateNewMockQuizResponse, CreateNewMockQuizParamsRequest>({
+			query: ({ ...params }) => {
+				return {
+					url: route(quizApiUrls.createNewMockQuiz),
+					params,
+				};
+			},
+			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+				try {
+					const { data: mockQuizResponse } = await queryFulfilled;
+					const parsedQuestions: Answers[] = getActiveQuizQuestions(mockQuizResponse).map(
+						(question) => ({
+							questionId: question.questionId,
+							questionTitle: question.questionTitle,
+							answer: question.answer,
+							shortAnswer: question.shortAnswer ?? '',
+							imageSrc: question.imageSrc ?? undefined,
+							skills: question.skills ?? [],
+						}),
+					);
+					dispatch(setActiveQuizQuestions({ questions: parsedQuestions }));
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
+					typedExtra.navigate(ROUTES.interview.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
+					console.error(error);
+				}
+			},
+		}),
+		createNewMockPublicQuiz: build.query<
 			Response<CreateNewMockQuizResponse>,
 			CreateNewMockQuizParamsRequest
 		>({
@@ -68,7 +100,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					const { data: mockQuizResponse } = await queryFulfilled;
-					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, mockQuizResponse);
+					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, mockQuizResponse);
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.quiz.new.page);
@@ -108,7 +140,7 @@ const quizApi = baseApi.injectEndpoints({
 								isFavorite: question.isFavorite,
 							}),
 						);
-						dispatch(setActiveQuizQuestions({ questions: parsedQuestions }));
+						dispatch(setActiveQuizQuestions({ questions: parsedQuestions, profileId }));
 					}
 				} catch (error) {
 					// eslint-disable-next-line no-console
@@ -240,6 +272,7 @@ const quizApi = baseApi.injectEndpoints({
 
 export const {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockPublicQuizQuery,
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
