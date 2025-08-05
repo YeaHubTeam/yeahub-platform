@@ -26,6 +26,7 @@ export interface Collection {
 	companyId?: string;
 	createdById?: string;
 	createdBy?: { id: string; username: string };
+	disabled?: boolean;
 }
 
 export type CreateOrEditCollectionFormValues = Pick<

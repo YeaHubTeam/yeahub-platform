@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuizCreate, Questions } from '@/shared/config/i18n/i18nTranslations';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
@@ -9,14 +9,16 @@ interface ChooseQuestionComplexityProps {
 	selectedComplexity?: number[];
 	onChangeComplexity: (complexity?: number[]) => void;
 	disabled?: boolean;
+	hasPremium?: boolean;
 }
 
 export const ChooseQuestionComplexity = ({
 	selectedComplexity,
 	onChangeComplexity,
 	disabled,
+	hasPremium,
 }: ChooseQuestionComplexityProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.interviewQuizCreate]);
 	const QUESTIONS_COMPLEXITY = [
 		{ id: 1, title: '1-3', value: [1, 2, 3] },
 		{ id: 2, title: '4-6', value: [4, 5, 6] },
@@ -38,10 +40,16 @@ export const ChooseQuestionComplexity = ({
 		active: selectedComplexity?.some((selectedItem) => item.value.includes(selectedItem)),
 	}));
 
+	const tooltipTitle = !hasPremium
+		? t(InterviewQuizCreate.MODE_SELECT_TOOLTIP_PREMIUMONLY, {
+				ns: i18Namespace.interviewQuizCreate,
+			})
+		: t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED);
+
 	return (
 		<div style={{ maxWidth: '290px' }}>
 			<Tooltip
-				title={t(Questions.COMPLEXITY_TOOLTIP_UNAUTHORIZED)}
+				title={tooltipTitle}
 				placement="top"
 				color="violet"
 				offsetTooltip={0}

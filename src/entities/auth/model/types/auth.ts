@@ -59,12 +59,15 @@ interface GetSubscriptionResponse {
 	roles: RoleSubscription[];
 }
 
+type SubscriptionState = 'canceled ' | 'active' | 'inactive';
+
 interface Subscription {
 	id: string;
 	subscriptionId: number;
 	userId: string;
 	createDate: string;
 	endDate?: string;
+	state: SubscriptionState;
 	subscription: GetSubscriptionResponse;
 }
 
@@ -97,7 +100,7 @@ export type RoleName =
 	| 'candidate'
 	| 'member'
 	| 'admin'
-	| 'hr'
+	| 'HR'
 	| 'candidate-free'
 	| 'candidate-premium'
 	| 'author';

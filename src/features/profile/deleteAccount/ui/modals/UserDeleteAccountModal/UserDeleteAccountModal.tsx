@@ -4,13 +4,13 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { ConfirmationDeleteModal } from '@/shared/ui/ConfirmationDeleteModal';
+import { RequiredModalProps } from '@/shared/ui/Modal';
 
 import { getFullProfile } from '@/entities/profile';
 
 import { useDeleteAccountMutation } from './../../../api/deleteAccountApi';
-import { UserDeleteAccountModalProps } from './../../../model/types/deleteAccount';
 
-export const UserDeleteAccountModal = ({ isOpen, onClose }: UserDeleteAccountModalProps) => {
+export const UserDeleteAccountModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const profile = useAppSelector(getFullProfile);

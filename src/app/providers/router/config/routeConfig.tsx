@@ -18,8 +18,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 
-import { RoleName } from '@/entities/auth';
-import { listAdminRoles } from '@/entities/auth';
+import { listAdminRoles, RoleName } from '@/entities/auth';
 
 import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
@@ -57,6 +56,7 @@ import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/Col
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
+import { InterviewMockQuizResultPage } from '@/pages/interview/InterviewMockQuizResultPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
 import { InterviewQuizPage } from '@/pages/interview/InterviewQuizPage';
 import { InterviewQuizResultPage } from '@/pages/interview/InterviewQuizResultPage';
@@ -98,7 +98,7 @@ export const allRoles: RoleName[] = [
 	'candidate',
 	'member',
 	'admin',
-	'hr',
+	'HR',
 	'candidate-free',
 	'candidate-premium',
 	'author',
@@ -483,6 +483,10 @@ export const router = createBrowserRouter([
 						element: <InterviewPage />,
 					},
 					{
+						path: 'new/result',
+						element: <InterviewMockQuizResultPage />,
+					},
+					{
 						path: ROUTES.interview.history.route,
 						element: (
 							<VerifiedEmailRoute>
@@ -565,9 +569,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.quiz.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<Outlet />
-								</PremiumRoute>
+								<Outlet />
 							</VerifiedEmailRoute>
 						),
 						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
@@ -577,9 +579,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.new.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<InterviewQuizPage />
-								</PremiumRoute>
+								<InterviewQuizPage />
 							</VerifiedEmailRoute>
 						),
 						handle: {

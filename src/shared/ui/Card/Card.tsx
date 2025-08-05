@@ -150,6 +150,7 @@ export const Card = ({
 					className={classNames(styles['card-header'], {
 						[styles['card-header-title-center']]: isTitleCenter,
 					})}
+					data-testid="Card_Header"
 				>
 					{title && <Text variant="body5-accent">{title}</Text>}
 					{actionRoute ? (
@@ -160,7 +161,11 @@ export const Card = ({
 								[styles['link-disabled']]: actionDisabled,
 							})}
 						>
-							<Text variant="body3-strong" color={actionDisabled ? 'purple-300' : 'purple-700'}>
+							<Text
+								variant="body3-strong"
+								color={actionDisabled ? 'purple-300' : 'purple-700'}
+								dataTestId="Card_Link"
+							>
 								{actionTitle}
 							</Text>
 							<Icon

@@ -18,6 +18,8 @@ export enum Translation {
 	SUPPORT = 'support',
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
+	EXPAND = 'expand',
+	COLLAPSE = 'collapse',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -78,6 +80,7 @@ export enum Translation {
 	VALIDATION_PARAMETER = 'validation.parameter',
 	VALIDATION_FILE_SIZE = 'validation.file.size',
 	VALIDATION_FILE_TYPE = 'validation.file.type',
+	VALIDATION_LINK = 'validation.link',
 
 	/* Toast */
 	TOAST_TITLE_SUCCESS = 'toast.title.success',
@@ -116,6 +119,7 @@ export enum Translation {
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
+	TOOLTIP_COLLECTION_DISABLED_INFO = 'tooltip.collections.disabled.info',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
@@ -159,6 +163,9 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
+	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
+	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
+	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -205,6 +212,7 @@ export enum Profile {
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
 	EMAIL_VERIFICATION_SUBMIT = 'email.verification.submit',
+	EMAIL_VERIFICATION_SPAM_MESSAGE = 'email.verification.spam.message',
 	EMAIL_VERIFICATION_SENT_SUCCESS = 'email.verification.sent.success',
 	EMAIL_VERIFICATION_VERIFY_STUB_TITLE = 'email.verification.verify.stub.title',
 	EMAIL_VERIFICATION_VERIFY_STUB_DESCRIPTION = 'email.verification.verify.stub.description',
@@ -267,7 +275,7 @@ export enum Auth {
 	FORGOT_PASSWORD_MODAL_SUBMIT = 'forgot.password.modal.submit',
 	PASSWORD_RECOVERY_TITLE = 'password.recovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'password.recovery.subtitle',
-	PASSWORD_RECOVERY_SUBMIT = 'passwordRecovery.submit',
+	PASSWORD_RECOVERY_SUBMIT = 'password.recovery.submit',
 }
 
 export enum Specializations {
@@ -298,6 +306,10 @@ export enum InterviewQuiz {
 	PROGRESS_BAR_TITLE = 'progress.bar.title',
 	START_QUIZ_TITLE = 'start.quiz.title',
 	START_QUIZ_DESCRIPTION = 'start.quiz.description',
+	START_QUIZ_SETUP_LIST_FIRST = 'start.quiz.setup.list.first',
+	START_QUIZ_SETUP_LIST_SECOND = 'start.quiz.setup.list.second',
+	START_QUIZ_SETUP_LIST_THIRD = 'start.quiz.setup.list.third',
+	START_QUIZ_SETUP_LIST_FOURTH = 'start.quiz.setup.list.fourth',
 	START_QUIZ_LINK = 'start.quiz.link',
 	INTERRUPT_QUIZ_TITLE = 'interrupt.quiz.title',
 	INTERRUPT_QUIZ_DESCRIPTION = 'interrupt.quiz.description',
@@ -326,6 +338,7 @@ export enum InterviewQuizCreate {
 	MODE_RANDOM = 'mode.random',
 	MODE_SELECT = 'mode.select',
 	MODE_SELECT_TOOLTIP_UNAUTHORIZED = 'mode.select.tooltip.unauthorized',
+	MODE_SELECT_TOOLTIP_PREMIUMONLY = 'mode.select.tooltip.premiumonly',
 }
 
 export enum InterviewQuizResult {
@@ -344,6 +357,18 @@ export enum InterviewQuizResult {
 	STATS_HISTORY = 'join.community.stats.history',
 	FULL_ACCESS = 'join.community.full.access',
 	BECOME_MEMBER = 'join.community.become.member',
+	INTERVIEW_STATISTIC_TITLE = 'statistics.title',
+	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
+	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
+	INTERVIEW_STATISTIC_LINK = 'statistics.link',
+	MODAL_TITLE = 'modal.title',
+	MODAL_DESCRIPTION = 'modal.description',
+	MODAL_BENEFITS_FULL_ACCESS = 'modal.benefits.full.access',
+	MODAL_BENEFITS_SMART_MODE = 'modal.benefits.smart.mode',
+	MODAL_BENEFITS_STATISTICS = 'modal.benefits.statistics',
+	MODAL_BENEFITS_INTERVIEWS = 'modal.benefits.interviews',
+	MODAL_BUTTON_TEXT = 'modal.button.text',
+	MODAL_BUTTON_TIP = 'modal.button.tip',
 }
 
 export enum InterviewStatistics {
@@ -726,6 +751,7 @@ export enum Subscription {
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
 	SUBSCRIPTION_CANCELED = 'canceled',
+	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',

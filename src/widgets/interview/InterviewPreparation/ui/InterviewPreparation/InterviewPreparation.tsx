@@ -1,16 +1,23 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuiz, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { InterviewQuiz, Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useScreenSize, useAppSelector } from '@/shared/hooks';
+import { useScreenSize, useAppSelector, useAppDispatch } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
-import { getIsEmailVerified, getIsEmptySpecialization } from '@/entities/profile';
-import { getHasPremiumAccess } from '@/entities/profile';
-import { getLastActiveQuizInfo } from '@/entities/quiz';
+import {
+	getHasPremiumAccess,
+	getIsEmailVerified,
+	getIsEmptySpecialization,
+	getProfileId,
+} from '@/entities/profile';
+import {
+	getLastActiveQuizInfo,
+	setActiveQuizQuestions,
+	getValidActiveMockQuizFromLS,
+} from '@/entities/quiz';
 
 import { PreviewActiveQuiz } from '../PreviewActiveQuiz/PreviewActiveQuiz';
 import { PreviewInactiveQuiz } from '../PreviewInactiveQuiz/PreviewInactiveQuiz';
@@ -27,7 +34,9 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 		i18Namespace.subscription,
 	]);
 	const { isMobile } = useScreenSize();
+	const dispatch = useAppDispatch();
 
+	const profileId = useAppSelector(getProfileId);
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
@@ -38,10 +47,6 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 			return t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile });
 		}
 
-		if (!hasPremium) {
-			return t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription });
-		}
-
 		return lastActiveQuizInfo ? t(InterviewQuiz.CONTINUE_QUIZ) : t(InterviewQuiz.START_QUIZ_LINK);
 	}, [isEmailVerified, isSpecializationEmpty, lastActiveQuizInfo]);
 
@@ -50,12 +55,16 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 			return ROUTES.settings.page + '#email-verify';
 		}
 
-		if (!hasPremium) {
-			return SELECT_TARIFF_SETTINGS_TAB;
-		}
-
 		return lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page;
 	}, [isEmailVerified, isSpecializationEmpty, lastActiveQuizInfo]);
+
+	useEffect(() => {
+		if (!hasPremium) {
+			const { profileActiveQuiz } = getValidActiveMockQuizFromLS(profileId);
+			profileActiveQuiz &&
+				dispatch(setActiveQuizQuestions({ questions: profileActiveQuiz, shouldSaveToLS: false }));
+		}
+	}, []);
 
 	return (
 		<Card
