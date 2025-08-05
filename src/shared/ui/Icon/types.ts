@@ -1,4 +1,4 @@
-export type IconSize = 20 | 24 | 28 | 32 | 34 | 36 | 40;
+export type IconSize = 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
 
 export type IconName =
 	| 'arrowRight'
@@ -13,6 +13,7 @@ export type IconName =
 	| 'dotsThreeVertical'
 	| 'more'
 	| 'student'
+	| 'check'
 	| 'clockCounterClockwise'
 	| 'arrowShortDown'
 	| 'slidersHorizontal'
