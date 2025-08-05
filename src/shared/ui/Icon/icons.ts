@@ -68,7 +68,6 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowDownSquare: ArrowDownSquare,
 	clock: Clock,
 	calendar: Calendar,
-	check: Check,
 	altArrowLeft: AltArrowLeft,
 	altArrowRight: AltArrowRight,
 	dotsThree: DotsThree,

@@ -14,7 +14,6 @@ export type IconName =
 	| 'dotsThreeVertical'
 	| 'more'
 	| 'student'
-	| 'check'
 	| 'clockCounterClockwise'
 	| 'arrowShortDown'
 	| 'slidersHorizontal'
