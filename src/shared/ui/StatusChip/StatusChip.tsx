@@ -16,23 +16,24 @@ interface StatusChipProps {
 	status: StatusChipItem;
 }
 
+export const STATUS_CHIP_TEXT_COLORS: Record<StatusChipVariant, Pallete> = {
+	red: 'red-900',
+	yellow: 'yellow-900',
+	green: 'green-900',
+	purple: 'purple-800',
+} as const;
+
 export const StatusChip = ({ status }: StatusChipProps) => {
 	const { variant, text } = status;
-
-	const textColor: Record<StatusChipVariant, Pallete> = {
-		red: 'red-900',
-		yellow: 'yellow-900',
-		green: 'green-900',
-		purple: 'purple-800',
-	};
 
 	return (
 		<Flex
 			justify="center"
 			align="center"
+			dataTestId="StatusChip"
 			className={classNames(styles.wrapper, styles[`variant-${variant}`])}
 		>
-			<Text variant="body1-accent" color={textColor[variant]}>
+			<Text variant="body1-accent" color={STATUS_CHIP_TEXT_COLORS[variant]}>
 				{text}
 			</Text>
 		</Flex>
