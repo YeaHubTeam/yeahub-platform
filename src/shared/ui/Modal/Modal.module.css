@@ -30,6 +30,10 @@
   right: -5px;
   margin: 0;
   cursor: pointer;
+	
+  &:active {
+    outline: none;
+  }
 }
 
 .title {
