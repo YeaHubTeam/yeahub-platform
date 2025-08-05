@@ -56,6 +56,7 @@ import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/Col
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
+import { InterviewMockQuizResultPage } from '@/pages/interview/InterviewMockQuizResultPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
 import { InterviewQuizPage } from '@/pages/interview/InterviewQuizPage';
 import { InterviewQuizResultPage } from '@/pages/interview/InterviewQuizResultPage';
@@ -480,6 +481,10 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <InterviewPage />,
+					},
+					{
+						path: 'new/result',
+						element: <InterviewMockQuizResultPage />,
 					},
 					{
 						path: ROUTES.interview.history.route,
