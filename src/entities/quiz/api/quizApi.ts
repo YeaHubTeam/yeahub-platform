@@ -72,6 +72,7 @@ const quizApi = baseApi.injectEndpoints({
 							answer: question.answer,
 							shortAnswer: question.shortAnswer ?? '',
 							imageSrc: question.imageSrc ?? undefined,
+							skills: question.skills ?? [],
 						}),
 					);
 					dispatch(setActiveQuizQuestions({ questions: parsedQuestions }));
