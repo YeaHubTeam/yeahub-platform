@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getJSONFromLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppSelector } from '@/shared/hooks';
+import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 
 import { getProfileId } from '@/entities/profile';
-import { Answers, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
+import { Answers, clearActiveMockQuizState, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 
 export const useInterviewMockQuizResultData = () => {
 	const [quizAnswers, setQuizAnswers] = useState<Answers[] | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
 	const profileId = useAppSelector(getProfileId);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		let timer: ReturnType<typeof setTimeout>;
@@ -39,7 +40,7 @@ export const useInterviewMockQuizResultData = () => {
 
 	useEffect(() => {
 		return () => {
-			removeFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+			dispatch(clearActiveMockQuizState({ profileId, shouldClearLS: true }));
 		};
 	}, []);
 
