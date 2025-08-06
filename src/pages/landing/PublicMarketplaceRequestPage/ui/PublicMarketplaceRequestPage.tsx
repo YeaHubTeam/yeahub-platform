@@ -1,4 +1,4 @@
-import { ResourceCreateForm } from '@/features/resource/createResource';
+import { ResourceCreateForm } from '@/features/resources/createResource';
 const PublicMarketplaceRequestPage = () => {
 	return <ResourceCreateForm />;
 };

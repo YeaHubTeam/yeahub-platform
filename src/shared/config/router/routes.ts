@@ -79,6 +79,22 @@ export const ROUTES = {
 				page: '/admin/collections/:collectionId/edit',
 			},
 		},
+		resources: {
+			route: 'resources',
+			page: '/admin/resources',
+			create: {
+				route: 'create',
+				page: '/admin/resources/create',
+			},
+			details: {
+				route: ':resourceId',
+				page: '/admin/resources/:resourceId',
+			},
+			edit: {
+				route: ':resourceId/edit',
+				page: '/admin/resources/:resourceId/edit',
+			},
+		},
 		companies: {
 			route: 'companies',
 			page: '/admin/companies',
