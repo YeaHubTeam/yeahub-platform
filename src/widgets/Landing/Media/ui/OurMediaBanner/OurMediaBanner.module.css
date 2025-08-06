@@ -1,0 +1,49 @@
+.intro {
+  border-radius: 12px;
+  background-color: var(--color-white-900);
+}
+
+.intro-text-wrapper {
+  padding: 40px;
+}
+
+.intro-description {
+  white-space: pre-line;
+}
+
+.books-img {
+  padding-right: 100px;
+  height: 165px;
+}
+
+@media (width < 1024px) {
+  .intro-text-wrapper {
+    padding: 20px;
+  }
+
+  .intro-description {
+    white-space: normal;
+  }
+
+  .books-img {
+    padding-right: 20px;
+    height: 124px;
+  }
+}
+
+@media (width < 768px) {
+  .intro {
+    gap: 10px;
+    padding: 20px 10px
+  }
+
+  .intro-text-wrapper {
+    padding: 0;
+  }
+
+
+  .books-img {
+    align-self: end;
+    padding-right: 10px;
+  }
+}

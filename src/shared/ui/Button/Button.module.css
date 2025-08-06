@@ -217,6 +217,10 @@
     color: var(--color-purple-700);
   }
 
+  &:disabled {
+    color: var(--button-text-color-tertiary-disabled);
+  }
+
   &:disabled:hover {
     background-color: inherit;
   }

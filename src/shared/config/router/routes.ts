@@ -191,6 +191,10 @@ export const ROUTES = {
 		route: 'docs',
 		page: '/docs',
 	},
+	media: {
+		route: 'media',
+		page: '/media',
+	},
 	questions: {
 		route: 'questions',
 		page: '/questions',

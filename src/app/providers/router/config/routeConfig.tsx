@@ -67,6 +67,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
+import { MediaPage } from '@/pages/landing/MediaPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
@@ -247,6 +248,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.docs.page,
 				element: <DocsPage />,
+			},
+			{
+				path: ROUTES.media.page,
+				element: <MediaPage />,
 			},
 			{
 				path: ROUTES.questions.route,

@@ -1,0 +1,17 @@
+export { default as Android } from './android.svg';
+export { default as C } from './c.svg';
+export { default as CSharp } from './csharp.svg';
+export { default as DevOps } from './devops.svg';
+export { default as DS } from './ds.svg';
+export { default as Game } from './game.svg';
+export { default as Go } from './go.svg';
+export { default as IOS } from './ios.svg';
+export { default as Java } from './java.svg';
+export { default as ML } from './ml.svg';
+export { default as NodeJs } from './nodejs.svg';
+export { default as Php } from './php.svg';
+export { default as Python } from './py.svg';
+export { default as Qa } from './qa.svg';
+export { default as Ruby } from './ruby.svg';
+export { default as Rust } from './rust.svg';
+export { default as React } from './react.svg';
