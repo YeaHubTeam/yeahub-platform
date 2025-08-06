@@ -24,9 +24,9 @@ export const GurusList = ({ variant, gurus }: GurusListProps) => {
 		'list-with-borders': 53,
 	};
 
-	const description: Record<GuruListViewVariant, string> = {
+	const description: Record<GuruListViewVariant, string | undefined> = {
 		single: t(GuruTranslation.BANNER_DESCRIPTION),
-		list: t(Media.GURU_DESCRIPTION, { ns: i18Namespace.media }),
+		list: undefined,
 		'list-with-borders': t(Media.GURU_DESCRIPTION, { ns: i18Namespace.media }),
 	};
 
