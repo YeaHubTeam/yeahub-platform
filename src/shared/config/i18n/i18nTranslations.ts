@@ -677,6 +677,7 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+	FOOTER_MEDIA = 'footer.media',
 
 	// для нового лендинга ниже
 	BANNER_STICKER_SKILL = 'banner.sticker.skill',
@@ -828,6 +829,16 @@ export enum Guru {
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
+	MEDIA_INTRODUCTION_TITLE = 'introduction.title',
+	MEDIA_INTRODUCTION_DESCRIPTION = 'introduction.description',
+	MEDIA_EXPERTS_TITLE = 'experts.title',
+	MEDIA_EXPERTS_DESCRIPTION = 'experts.description',
+	MEDIA_CHANNELS_TITLE = 'channels.title',
+	MEDIA_CHANNELS_DESCRIPTION = 'channels.description',
+	MEDIA_FACT = 'fact',
+	GURU_DESCRIPTION = 'guru.description',
+	TELEGRAM_SUBSCRIBE = 'telegram.subscribe',
+	TELEGRAM_DESCRIPTION = 'telegram.description',
 }
 
 export enum Marketplace {

@@ -221,6 +221,10 @@
     color: var(--button-text-color-tertiary-disabled);
   }
 
+  &:disabled {
+    color: var(--button-text-color-tertiary-disabled);
+  }
+
   &:disabled:hover {
     background-color: inherit;
   }

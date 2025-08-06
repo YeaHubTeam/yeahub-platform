@@ -1,3 +1,10 @@
 .avatar {
   flex-shrink: 0;
 }
+
+.border {
+  padding: 16px;
+  min-width: 289px;
+  border: 1px solid var(--color-purple-700);
+  border-radius: 8px;
+}
