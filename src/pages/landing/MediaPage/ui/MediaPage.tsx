@@ -1,11 +1,12 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { MediaLinksList } from '@/entities/media';
-
-import { OurMediaBanner } from '@/widgets/Landing/Media';
-import { GurusBlock } from '@/widgets/Landing/Media';
-import { AlarmFactBanner } from '@/widgets/Landing/Media';
+import {
+	OurMediaBanner,
+	AlarmFactBanner,
+	GurusBlock,
+	TelegramChannels,
+} from '@/widgets/Landing/Media';
 
 const MediaPage = () => {
 	const { isTablet, isMobile } = useScreenSize();
@@ -15,7 +16,7 @@ const MediaPage = () => {
 			<OurMediaBanner />
 			<GurusBlock />
 			<AlarmFactBanner />
-			<MediaLinksList />
+			<TelegramChannels />
 		</Flex>
 	);
 };

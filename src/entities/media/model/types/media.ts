@@ -1,8 +1,10 @@
 import { SVGProps } from 'react';
 
+import { IconComponent } from '@/shared/ui/Icon/types';
+
 export interface Media {
 	title: string;
 	link: string;
 	specializationId: number;
-	image?: React.FC<SVGProps<SVGSVGElement>>;
+	image?: IconComponent;
 }

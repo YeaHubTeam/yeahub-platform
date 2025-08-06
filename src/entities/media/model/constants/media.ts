@@ -15,7 +15,7 @@ import {
 	Qa,
 	Ruby,
 	Rust,
-	React
+	React,
 } from '../assets';
 import { Media } from '../types/media';
 
@@ -66,7 +66,7 @@ export const mediaLinks: Media[] = [
 		title: 'React Developer',
 		link: 'https://t.me/+_hfo9fzcFNxiY2Fi',
 		specializationId: 11,
-		image: React
+		image: React,
 	},
 	{
 		title: 'Rust Developer',
