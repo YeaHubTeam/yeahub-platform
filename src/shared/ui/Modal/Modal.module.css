@@ -14,31 +14,36 @@
 .modal {
   position: relative;
   margin: 0 20px;
-  padding: 40px;
-  min-width: 300px;
+  min-width: 462px;
   max-width: 800px;
   border-radius: 24px;
   background-color: var(--background-block);
 }
 
+.content-wrapper {
+  padding: 40px 40px 0;
+}
+
 .x-circle {
   position: absolute;
-  top: -40px;
+  top: -34px;
   right: -5px;
   margin: 0;
   cursor: pointer;
+	
+  &:active {
+    outline: none;
+  }
 }
 
 .title {
   margin-bottom: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--border-color);
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-s);
 }
 
 .text {
-  margin-bottom: 45px;
+  margin-bottom: 30px;
 }
 
 .buttons {
@@ -47,6 +52,9 @@
   align-items: center;
   gap: 16px;
   margin-top: 30px;
+  padding: 30px 40px 40px;
+  border-radius: 0 0 24px 24px;
+  background-color: var(--color-black-25);
 }
 
 .error-modal {
@@ -54,12 +62,15 @@
   background-color: var(--color-red-50);
 }
 
+.default-modal {
+  outline: 1px solid var(--color-purple-700);
+}
+
 .error-title {
   border-bottom: 1px solid var(--color-red-100);
 }
 
 .error-buttons {
-  margin: 30px -40px -40px;
   padding: 30px 40px 40px;
   border-radius: 0 0 24px 24px;
   background-color: var(--color-white-900);
@@ -76,5 +87,9 @@
 @media (width < 480px) {
   .buttons {
     flex-direction: column;
+  }
+
+  .modal {
+    min-width: 300px;
   }
 }

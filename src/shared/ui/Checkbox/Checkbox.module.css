@@ -40,8 +40,8 @@
 }
 	
 .checkbox:disabled {
-  border-color: var(--color-grey-500);
-  background-color: var(--color-grey-300);
+  border-color: var(--color-black-500);
+  background-color: var(--color-black-300);
 }
 
 .checkbox-wrapper.disabled .checkbox {

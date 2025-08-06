@@ -61,7 +61,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
-					stroke="#FFE7AE"
+					stroke="#008616"
 					strokeWidth={strokeWidth}
 					fill="none"
 					strokeLinecap="round"

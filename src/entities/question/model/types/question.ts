@@ -98,3 +98,13 @@ export type GetPublicQuestionByIdParamsRequest = {
 };
 
 export type Author = { id: string; username: string };
+
+export type SkillQuestion = {
+	skill: string;
+	count: number;
+};
+
+export interface GetQuestionsBySpecializationCountResponse {
+	total: number;
+	skillsQuestions: SkillQuestion[];
+}

@@ -1,28 +1,28 @@
 {
-  "app": {
-    "logo": {
-      "aria.label": "Тренажер собеседований в IT"
-    }
-  },
-  "header": {
-    "actions": {
-      "register": "Регистрация",
-      "login": "Вход"
-    },
+	"app": {
+		"logo": {
+			"aria.label": "Тренажер собеседований в IT"
+		}
+	},
+	"header": {
+		"actions": {
+			"register": "Регистрация",
+			"login": "Вход"
+		},
 		"nav": {
 			"questions.list": "База вопросов",
 			"public.quiz": "Тренажёр",
 			"public.collections": "Собеседования",
 			"popover.title": "Подготовка",
-      "aria.label": "Пользовательская"
+			"aria.label": "Пользовательская"
 		},
-    "auth": {
-      "iconbutton": {
-        "aria.label": "Авторизация"
-      }
-    }
-  },
-  "questions": {
+		"auth": {
+			"iconbutton": {
+				"aria.label": "Авторизация"
+			}
+		}
+	},
+	"questions": {
 		"title": "Вопросы с собеседований",
 		"description": "Мы собрали 10 000+ вопросов из реальных IT-интервью. Выбирайте свою специальность, настраивайте уровень сложности и готовьтесь к собеседованию на практике.",
     "first": "Что такое Virtual DOM, и как он работает?",

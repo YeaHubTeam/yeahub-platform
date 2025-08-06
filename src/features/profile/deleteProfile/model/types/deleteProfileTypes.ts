@@ -1,5 +1,5 @@
-import { ModalProps } from '@/shared/ui/Modal';
+import { RequiredModalProps } from '@/shared/ui/Modal';
 
-export type DeleteProfileModalProps = Pick<ModalProps, 'isOpen' | 'onClose'> & {
+export type DeleteProfileModalProps = RequiredModalProps & {
 	profileId: string;
 };

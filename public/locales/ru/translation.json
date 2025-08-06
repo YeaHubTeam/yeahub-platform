@@ -326,6 +326,10 @@
 			},
 			"subscribe": {
 				"failed": "Не удалось подключить подписку"
+			},
+			"trial": {
+				"success": "You have successfully connected a trial subscription",
+				"failed": "Failed to connect trial subscription"
 			}
 		}
 	},
@@ -350,5 +354,6 @@
 	"editor.undo": "Отменить",
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
-	"editor.ordered.list": "Нумерованный список"
+	"editor.ordered.list": "Нумерованный список",
+	"tooltip.premiumonly": "Доступно для участников"
 }

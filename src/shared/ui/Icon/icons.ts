@@ -8,6 +8,7 @@ import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
 import Behance from '@/shared/assets/icons/behance.svg';
 import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
+import Check from '@/shared/assets/icons/check.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
@@ -108,6 +109,7 @@ export const icons: Record<IconName, IconComponent> = {
 	filter: Filter,
 	settings: Settings,
 	sealCheck: SealCheck,
+	check: Check,
 	userCheckWithBackground: UserCheckWithBackground,
 	userSwitch: UserSwitch,
 	trendUp: TrendUp,

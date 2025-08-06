@@ -29,8 +29,9 @@ export const authApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
+					dispatch(baseApi.util.resetApiState());
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
@@ -93,8 +94,10 @@ export const authApi = baseApi.injectEndpoints({
 					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.auth.login.page);
-					dispatch(baseApi.util.resetApiState());
-					dispatch(clearStore());
+					setTimeout(() => {
+						dispatch(baseApi.util.resetApiState());
+						dispatch(clearStore());
+					}, 0);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

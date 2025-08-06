@@ -31,6 +31,7 @@ export type SubscriptionRoot = {
 };
 
 type SubscriptionState = 'canceled ' | 'active' | 'inactive';
+
 export interface UserSubscription {
 	id: string;
 	createDate: string;

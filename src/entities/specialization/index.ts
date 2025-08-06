@@ -14,3 +14,5 @@ export { SpecializationsList } from './ui/SpecializationsList/SpecializationsLis
 export { specializationHandlers } from './api/__mocks__';
 
 export { specializationsMock } from './api/__mocks__/data';
+
+export { LS_ACTIVE_SPECIALIZATION_ID } from './model/constants/specializationConstants';

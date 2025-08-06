@@ -1,6 +1,8 @@
-import { CreateNewQuizResponse } from '../model/types/quiz';
+import { CreateNewMockQuizResponse, CreateNewQuizResponse } from '../model/types/quiz';
 
-export const getActiveQuizQuestions = (data: CreateNewQuizResponse) => {
+export const getActiveQuizQuestions = <T extends CreateNewQuizResponse | CreateNewMockQuizResponse>(
+	data: T,
+) => {
 	const answers = data.response.answers;
 	const questions = data.questions;
 	const quizQuestions = answers?.map((item) => {
@@ -9,6 +11,7 @@ export const getActiveQuizQuestions = (data: CreateNewQuizResponse) => {
 			...item,
 			imageSrc: matchedQuestion?.imageSrc,
 			shortAnswer: matchedQuestion?.shortAnswer,
+			skills: matchedQuestion?.questionSkills,
 		};
 	});
 	return quizQuestions;
