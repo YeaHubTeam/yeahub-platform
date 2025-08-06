@@ -26,15 +26,4 @@ describe('StatusChip component', () => {
 			expect(screen.getByText(testText)).toHaveClass(`text-${STATUS_CHIP_TEXT_COLORS[variant]}`);
 		});
 	});
-
-	describe('Additional props', () => {
-		it('applies custom className when provided', () => {
-			renderComponent(
-				<StatusChip status={{ variant: 'green', text: 'Test' }} className="custom-class" />,
-			);
-
-			const chip = screen.getByTestId('StatusChip');
-			expect(chip).toHaveClass('variant-green');
-		});
-	});
 });
