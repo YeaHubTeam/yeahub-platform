@@ -21,6 +21,7 @@ import {
 	QuestionModeType,
 	QuizQuestionMode,
 	useGetActiveQuizQuery,
+	useLazyCreateNewMockQuizQuery,
 	useLazyCreateNewQuizQuery,
 } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -48,17 +49,22 @@ const CreateQuizPage = () => {
 
 	const navigate = useNavigate();
 
-	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId,
-		limit: 1,
-		page: 1,
-	});
+	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+		{
+			profileId,
+			limit: 1,
+			page: 1,
+		},
+		{ skip: !hasPremium },
+	);
 
 	if (activeQuizData?.data[0]?.questions) {
 		navigate(ROUTES.interview.new.page);
 	}
 
 	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
+	const [createNewMockQuiz, { isLoading: isCreateNewMockQuizLoading }] =
+		useLazyCreateNewMockQuizQuery();
 
 	const onChangeSkills = (skills?: number[]) => {
 		handleFilterChange({ category: skills });
@@ -83,6 +89,14 @@ const CreateQuizPage = () => {
 			complexity: filter.complexity,
 			limit: filter.count,
 			mode: filter.mode,
+		});
+	};
+
+	const onCreateNewMockQuiz = () => {
+		createNewMockQuiz({
+			skills: filter.category,
+			limit: filter.count || 1,
+			specialization: profileSpecialization,
 		});
 	};
 
@@ -130,9 +144,9 @@ const CreateQuizPage = () => {
 				</Flex>
 				<Button
 					className={styles.button}
-					onClick={onCreateNewQuiz}
+					onClick={hasPremium ? onCreateNewQuiz : onCreateNewMockQuiz}
 					suffix={<Icon icon="arrowRight" size={24} />}
-					disabled={isCreateNewQuizLoading}
+					disabled={hasPremium ? isCreateNewQuizLoading : isCreateNewMockQuizLoading}
 				>
 					{t(InterviewQuizCreate.CREATE_BUTTON)}
 				</Button>

@@ -1,14 +1,23 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz, Profile } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize, useAppSelector } from '@/shared/hooks';
+import { useScreenSize, useAppSelector, useAppDispatch } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
-import { getIsEmailVerified, getIsEmptySpecialization } from '@/entities/profile';
-import { getLastActiveQuizInfo } from '@/entities/quiz';
+import {
+	getHasPremiumAccess,
+	getIsEmailVerified,
+	getIsEmptySpecialization,
+	getProfileId,
+} from '@/entities/profile';
+import {
+	getLastActiveQuizInfo,
+	setActiveQuizQuestions,
+	getValidActiveMockQuizFromLS,
+} from '@/entities/quiz';
 
 import { PreviewActiveQuiz } from '../PreviewActiveQuiz/PreviewActiveQuiz';
 import { PreviewInactiveQuiz } from '../PreviewInactiveQuiz/PreviewInactiveQuiz';
@@ -25,9 +34,12 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 		i18Namespace.subscription,
 	]);
 	const { isMobile } = useScreenSize();
+	const dispatch = useAppDispatch();
 
+	const profileId = useAppSelector(getProfileId);
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const lastActiveQuizInfo = useAppSelector(getLastActiveQuizInfo);
 
 	const interviewPreparationActionTitle = useMemo(() => {
@@ -45,6 +57,14 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 
 		return lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page;
 	}, [isEmailVerified, isSpecializationEmpty, lastActiveQuizInfo]);
+
+	useEffect(() => {
+		if (!hasPremium) {
+			const { profileActiveQuiz } = getValidActiveMockQuizFromLS(profileId);
+			profileActiveQuiz &&
+				dispatch(setActiveQuizQuestions({ questions: profileActiveQuiz, shouldSaveToLS: false }));
+		}
+	}, []);
 
 	return (
 		<Card

@@ -18,6 +18,9 @@
 		"base": "Base",
 		"premium": "Premium"
 	},
+	"button": {
+		"trial": "Test drive 7 days"
+	},
 	"daysLeft_one": " {{count}} Day Left",
 	"daysLeft_other": " {{count}} Days Left",
 	"greeting": "Excellent choice, now you have access to all the functions of the service",

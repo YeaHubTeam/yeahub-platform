@@ -23,6 +23,7 @@ import styles from './PremiumSubscriptionTab.module.css';
 export const PremiumSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	const { subscriptions } = useAppSelector(getFullProfile);
+
 	const activeSubscriptions = useAppSelector(getActiveSubscription);
 	const endDate = activeSubscriptions?.endDate || '';
 	const createDate = activeSubscriptions?.createDate || '';
@@ -30,7 +31,6 @@ export const PremiumSubscriptionTab = () => {
 	const restDays = differenceInDays(endDate, new Date());
 	const daysInMonth = getDaysInMonth(createDate);
 	const { D_MM_YYYY } = DATE_FORMATS;
-
 	return (
 		<>
 			<div className={styles['wrapper-top']}>
@@ -55,7 +55,7 @@ export const PremiumSubscriptionTab = () => {
 					</p>
 					<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 				</Flex>
-				{subscriptions.length > 0 ? (
+				{subscriptions.length > 0 && activeSubscriptions?.state === 'active' ? (
 					<div className={styles['actions-button']}>
 						<Flex direction="row" gap="8">
 							<UnsubscribeButton />
