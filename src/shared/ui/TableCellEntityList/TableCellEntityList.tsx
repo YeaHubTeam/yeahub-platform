@@ -1,0 +1,78 @@
+import { useState, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
+
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Icon } from '@/shared/ui/Icon';
+import { route } from '@/shared/helpers/route';
+import { Text } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex';
+
+import styles from './TableCellEntityList.module.css';
+
+interface TableCellEntityListProps<T> {
+  showCount: number;
+  items: T[];
+  url?: string;
+}
+
+export const TableCellEntityList = <T extends { id: number; title: string }>({
+  showCount,
+  items,
+  url,
+}: TableCellEntityListProps<T>) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation(i18Namespace.translation);
+
+  const toggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const itemsToShow = isOpen ? items : items.slice(0, showCount);
+
+  return (
+    <Flex direction="column" gap="8" componentType="td" align='start'>
+      <div>
+        {url ? (
+          <>
+            {itemsToShow.map((item) => (
+              <Fragment key={item.id}>
+                <Link to={route(url, item.id)} className={styles.link}>
+                  <Text variant={'body3'} color={'purple-700'}>
+                    {item.title}
+                  </Text>
+                </Link>
+                {itemsToShow.indexOf(item) < itemsToShow.length - 1 && <span>, </span>}
+              </Fragment>
+            ))}
+          </>
+        ) : (
+          itemsToShow.map((item) => item.title).join(', ')
+        )}
+      </div>
+      {items.length > showCount && (
+        <Button
+          variant="link-gray"
+          onClick={toggleOpen}
+          className={styles.button}
+          suffix={
+            <Icon
+              icon="arrowShortDown"
+              size={14}
+              className={classNames(styles.icon, {
+                [styles['opened']]: isOpen,
+              })}
+            />
+          }
+        >
+          <Text variant="body1" color="black-200" className={styles.link}>
+            {!isOpen ? t(Translation.EXPAND) : t(Translation.COLLAPSE)}
+          </Text>
+        </Button>
+      )}
+    </Flex>
+  );
+};

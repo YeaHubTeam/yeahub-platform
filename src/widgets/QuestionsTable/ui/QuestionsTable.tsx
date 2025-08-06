@@ -12,10 +12,15 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 
 import { Question } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+
+
+const SKILL_SHOW_COUNT = 4;
+const SPECIALIZATION_SHOW_COUNT = 2;
 
 interface QuestionsTableProps {
 	questions?: Question[];
@@ -45,16 +50,23 @@ export const QuestionsTable = ({
 	const renderTableBody = (question: Question) => {
 		const columns = {
 			title: question.title,
-			specialization: question.questionSpecializations?.length
-				? question.questionSpecializations?.map((skill) => skill.title).join(', ')
-				: '-',
-			skills: question.questionSkills?.length
-				? question.questionSkills?.map((skill) => skill.title).join(', ')
-				: '-',
+			specialization: 
+				<TableCellEntityList 
+					url={ROUTES.admin.specializations.details.page} 
+					items={question.questionSpecializations} 
+					showCount={SPECIALIZATION_SHOW_COUNT}
+				/>,
+			skills: 
+				<TableCellEntityList 
+					url={ROUTES.admin.skills.detail.page} 
+					items={question.questionSkills} 
+					showCount={SKILL_SHOW_COUNT}
+				/>
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
+		return Object.entries(columns)?.map(([k, v]) => {
+			return (
+				<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
 						<Text variant={'body3'} color={'purple-700'}>
@@ -65,7 +77,9 @@ export const QuestionsTable = ({
 					v
 				)}
 			</td>
-		));
+			)
+		}
+		);
 	};
 
 	const renderActions = (question: Question) => {
