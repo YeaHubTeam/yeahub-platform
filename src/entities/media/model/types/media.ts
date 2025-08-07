@@ -1,5 +1,3 @@
-import { SVGProps } from 'react';
-
 import { IconComponent } from '@/shared/ui/Icon/types';
 
 export interface Media {
