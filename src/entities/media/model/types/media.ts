@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+// import { SVGProps } from 'react';
 
 import { IconComponent } from '@/shared/ui/Icon/types';
 
