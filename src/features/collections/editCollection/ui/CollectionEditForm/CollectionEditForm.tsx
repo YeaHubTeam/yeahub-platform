@@ -1,16 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { CollectionForm } from '@/entities/collection';
 import { Collection } from '@/entities/collection';
-import { getUserId } from '@/entities/profile';
 
 import { collectionEditSchema } from '@/features/collections/editCollection/model/lib/validation/collectionEditSchema';
 import { CollectionEditFormValues } from '@/features/collections/editCollection/model/types/collectionEditTypes';
@@ -35,7 +31,6 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 		createdBy,
 		...restCollection
 	} = collection;
-	const userId = useAppSelector(getUserId);
 	const methods = useForm<CollectionEditFormValues>({
 		resolver: yupResolver(collectionEditSchema),
 		mode: 'onTouched',
@@ -49,10 +44,6 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
-
-	if (collection.createdBy?.id !== userId) {
-		return <Navigate to={ROUTES.admin.collections.page} />;
-	}
 
 	return (
 		<FormProvider {...methods}>
