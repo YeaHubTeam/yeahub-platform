@@ -21,7 +21,9 @@ export const UserProfilePage = () => {
 	}, []);
 
 	const { description, profileSkills, specializationId } = profile?.activeProfile || {};
-	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId));
+	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId), {
+		skip: !specializationId,
+	});
 
 	return (
 		profile && (
