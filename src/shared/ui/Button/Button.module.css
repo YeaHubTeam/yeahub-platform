@@ -210,18 +210,6 @@
   }
 
   &:disabled {
-    background-color: transparent;
-    color: var(--button-text-color-tertiary-disabled);
-  }
-	
-  &:not([disabled]):hover {
-    color: var(--color-purple-700);
-  }
-	  &:disabled {
-    color: var(--button-text-color-tertiary-disabled);
-  }
-
-  &:disabled {
     color: var(--button-text-color-tertiary-disabled);
   }
 
@@ -231,6 +219,10 @@
 
   &:disabled:active {
     background-color: inherit;
+  }
+
+  &:not([disabled]):hover {
+    color: var(--color-purple-700);
   }
 }
 
