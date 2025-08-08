@@ -1,7 +1,12 @@
 import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getIsEmptySpecialization, getProfileId, getSpecializationId } from '@/entities/profile';
+import {
+	getHasPremiumAccess,
+	getIsEmptySpecialization,
+	getProfileId,
+	getSpecializationId,
+} from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 import { useGetActiveQuizQuery, useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
@@ -18,8 +23,11 @@ const InterviewPage = () => {
 	const profileId = useAppSelector(getProfileId);
 	const specializationId = useAppSelector(getSpecializationId);
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
-	const { isLoading: isProfileStatsLoading } = useGetProfileQuizStatsQuery(profileId);
+	const { isLoading: isProfileStatsLoading } = useGetProfileQuizStatsQuery(profileId, {
+		skip: !hasPremium,
+	});
 
 	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery({
 		random: true,
@@ -27,11 +35,14 @@ const InterviewPage = () => {
 		specialization: specializationId,
 	});
 
-	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId,
-		limit: 1,
-		page: 1,
-	});
+	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+		{
+			profileId,
+			limit: 1,
+			page: 1,
+		},
+		{ skip: !hasPremium },
+	);
 
 	if (isProfileStatsLoading || isActiveQuizLoading || isQuestionsListLoading) {
 		return <InterviewPageSkeleton />;

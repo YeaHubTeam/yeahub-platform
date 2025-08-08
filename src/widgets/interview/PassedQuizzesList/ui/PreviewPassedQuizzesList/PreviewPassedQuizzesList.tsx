@@ -28,23 +28,25 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const [startTimeBefore, setStartTimeBefore] = useState<Date | undefined>(undefined);
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const isVerified = fullProfile?.isEmailVerified;
 	const { t } = useTranslation([
 		i18Namespace.interviewHistory,
 		i18Namespace.profile,
 		i18Namespace.subscription,
 	]);
-	const { data, isSuccess } = useGetHistoryQuizQuery({
-		profileId,
-		startAfter: new Date(0).toISOString(),
-		startBefore: startTimeBefore?.toISOString(),
-		limit: 3,
-		uniqueKey: 'interviewPreviewHistory',
-	});
+	const { data, isSuccess } = useGetHistoryQuizQuery(
+		{
+			profileId,
+			startAfter: new Date(0).toISOString(),
+			startBefore: startTimeBefore?.toISOString(),
+			limit: 3,
+			uniqueKey: 'interviewPreviewHistory',
+		},
+		{ skip: !hasPremium },
+	);
 
 	const isEmptyData = isSuccess && data.data.length === 0;
-
-	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const actionRoute = !isVerified
 		? EMAIL_VERIFY_SETTINGS_TAB
