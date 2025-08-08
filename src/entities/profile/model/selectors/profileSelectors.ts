@@ -88,6 +88,10 @@ export const getHasPremiumAccess = createSelector(
 	},
 );
 
+export const getIsAuthor = createSelector(getFullProfile, (fullProfile) => {
+	return fullProfile?.userRoles.some((role) => role.name === 'author');
+});
+
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;
 };

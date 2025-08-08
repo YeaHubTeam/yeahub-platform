@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -13,7 +14,7 @@ import { Button } from '@/shared/ui/Button';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getProfileId, getUserId } from '@/entities/profile';
+import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
@@ -33,6 +34,7 @@ export const CollectionPage = () => {
 	const { isSmallScreen, isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
+	const isAuthor = useSelector(getIsAuthor);
 	const profileId = useAppSelector(getProfileId);
 	const userId = useAppSelector(getUserId);
 	const { data: response } = useGetQuestionsListQuery(
@@ -66,7 +68,7 @@ export const CollectionPage = () => {
 		imageSrc: collectionImageSrc,
 	} = collection;
 
-	const isDisabled = createdBy?.id !== userId;
+	const isDisabled = isAuthor && createdBy?.id !== userId;
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
