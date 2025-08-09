@@ -1,0 +1,14 @@
+.arrow-down-icon {
+  width: 12px;
+  height: 16px;
+  fill: var(--color-black-1000);
+}
+
+.seal-check {
+  width: 27px;
+  height: 27px;
+}
+
+.history-item {
+  box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
+} 

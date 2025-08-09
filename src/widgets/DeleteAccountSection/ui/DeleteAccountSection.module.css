@@ -1,0 +1,24 @@
+.title {
+  margin-bottom: 12px;
+  text-align: start;
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+}
+
+.description {
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+@media (width < 768px) {
+  .description {
+    margin-bottom: 20px;
+  }
+}
+
+@media (width < 480px) {
+  .title {
+    margin-bottom: 8px;
+    font-size: var(--font-size-h-s);
+  }
+} 
