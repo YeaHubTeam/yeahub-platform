@@ -8,7 +8,7 @@ import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
-import { getUserId } from '@/entities/profile';
+import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
@@ -29,6 +29,7 @@ import styles from './CollectionsPage.module.css';
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
 	const userId = useSelector(getUserId);
+	const isAuthor = useSelector(getIsAuthor);
 	const search = useSelector(getCollectionsSearch);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
@@ -51,7 +52,7 @@ const CollectionsPage = () => {
 			...allCollections,
 			data: allCollections.data.map((item) => ({
 				...item,
-				disabled: item.createdBy?.id !== userId,
+				disabled: isAuthor && item.createdBy?.id !== userId,
 			})),
 		};
 	}, [allCollections, userId]);
