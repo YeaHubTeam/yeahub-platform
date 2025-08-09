@@ -1,6 +1,6 @@
 import { differenceInDays, getDaysInMonth } from 'date-fns';
 
-export const calculateSubscriptionDays = (endDate: string, createDate: string) => {
+export const calculateSubscriptionDays = (endDate: Date | '', createDate: Date | '') => {
 	if (!endDate || !createDate) {
 		return {
 			restDays: 0,

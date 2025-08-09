@@ -8,22 +8,23 @@ import { Text } from '@/shared/ui/Text';
 
 import type { Payment } from '@/entities/payment';
 
-import { PaymentHistoryItem } from './PaymentHistoryItem/PaymentHistoryItem';
-import styles from './PaymentHistoryList.module.css';
+import { PayHistoryItem } from '../PayHistoryItem/PayHistoryItem';
 
-interface PaymentHistoryListProps {
+import styles from './PayHistoryList.module.css';
+
+interface PayHistoryListProps {
 	payments: Payment[];
 	page: number;
 	totalPages: number;
 	onPageChange: (page: number) => void;
 }
 
-export const PaymentHistoryList = ({
+export const PayHistoryList = ({
 	payments,
 	page,
 	totalPages,
 	onPageChange,
-}: PaymentHistoryListProps) => {
+}: PayHistoryListProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 
 	const onPrevPageClick = () => {
@@ -45,7 +46,7 @@ export const PaymentHistoryList = ({
 			</Text>
 			<Flex gap="14" direction="column">
 				{payments.map((payment) => (
-					<PaymentHistoryItem payHistory={payment} key={payment.orderId} />
+					<PayHistoryItem payHistory={payment} key={payment.orderId} />
 				))}
 			</Flex>
 			{totalPages > 1 && (

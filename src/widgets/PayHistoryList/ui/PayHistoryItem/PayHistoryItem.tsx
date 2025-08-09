@@ -7,13 +7,13 @@ import { Flex } from '@/shared/ui/Flex';
 
 import type { Payment } from '@/entities/payment';
 
-import styles from './PaymentHistoryItem.module.css';
+import styles from './PayHistoryItem.module.css';
 
-interface PaymentHistoryItemProps {
+interface PayHistoryItemProps {
 	payHistory: Payment;
 }
 
-export const PaymentHistoryItem = ({ payHistory }: PaymentHistoryItemProps) => {
+export const PayHistoryItem = ({ payHistory }: PayHistoryItemProps) => {
 	return (
 		<Card className={styles['history-item']}>
 			<Flex gap="16" align="center">

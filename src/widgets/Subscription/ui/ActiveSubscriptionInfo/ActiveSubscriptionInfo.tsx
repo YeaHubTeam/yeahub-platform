@@ -16,11 +16,15 @@ import { getActiveSubscription } from '@/entities/subscription';
 
 import { UnsubscribeButton } from '@/features/subscriptions/unsubscribe';
 
-import { calculateSubscriptionDays } from '../model/lib/subscriptionUtils';
+import { calculateSubscriptionDays } from '../../model/lib/subscriptionUtils';
 
 import styles from './ActiveSubscriptionInfo.module.css';
 
-export const ActiveSubscriptionInfo = () => {
+interface ActiveSubscriptionInfoProps {
+	renderActions?: () => React.ReactNode;
+}
+
+export const ActiveSubscriptionInfo = ({ renderActions }: ActiveSubscriptionInfoProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	const { subscriptions } = useAppSelector(getFullProfile);
 	const activeSubscriptions = useAppSelector(getActiveSubscription);
@@ -28,7 +32,10 @@ export const ActiveSubscriptionInfo = () => {
 	const endDate = activeSubscriptions?.endDate || '';
 	const createDate = activeSubscriptions?.createDate || '';
 
-	const { restDays, daysInMonth } = calculateSubscriptionDays(endDate, createDate);
+	const parsedEndDate = endDate ? parseISO(endDate) : '';
+	const parsedCreateDate = createDate ? parseISO(createDate) : '';
+
+	const { restDays, daysInMonth } = calculateSubscriptionDays(parsedEndDate, parsedCreateDate);
 	const { D_MM_YYYY } = DATE_FORMATS;
 
 	return (
@@ -57,7 +64,7 @@ export const ActiveSubscriptionInfo = () => {
 			{subscriptions.length > 0 && (
 				<div className={styles.actions}>
 					<Flex direction="row" gap="8">
-						<UnsubscribeButton />
+						{renderActions ? renderActions() : <UnsubscribeButton />}
 					</Flex>
 				</div>
 			)}

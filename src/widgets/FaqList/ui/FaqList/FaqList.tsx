@@ -7,23 +7,25 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { getSubscriptionFaqList } from '../model/constants/faqData';
+import { FaqProps } from '../../model/types/types';
+import { FaqItem } from '../FaqItem/FaqItem';
 
-import { FaqItem } from './FaqItem/FaqItem';
+interface FaqListProps {
+	faqList: FaqProps[];
+}
 
-export const FaqList = () => {
+export const FaqList = ({ faqList }: FaqListProps) => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	const { isMobile } = useScreenSize();
-	const faqList = getSubscriptionFaqList(t);
 
 	return (
 		<Card>
-			<Flex direction="column" gap="16">
+			<Flex direction="column" gap={isMobile ? '16' : '24'}>
 				<Text variant={isMobile ? 'body5-accent' : 'head3'}>
 					{t(Subscription.SUBSCRIPTION_FAQ_TITLE)}
 				</Text>
-				<Flex componentType="ul" direction="column" gap="16">
-					{faqList.map((faqItem) => (
+				<Flex componentType="ul" direction="column" gap="12">
+					{faqList.map((faqItem: FaqProps) => (
 						<FaqItem key={faqItem.id} item={faqItem} />
 					))}
 				</Flex>

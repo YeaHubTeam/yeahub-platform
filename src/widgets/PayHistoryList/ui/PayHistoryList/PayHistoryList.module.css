@@ -1,6 +1,10 @@
 .wrapper {
-  margin-top: 28px;
   padding: 24px;
   border-radius: 24px;
   background-color: var(--color-white-900);
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
 } 

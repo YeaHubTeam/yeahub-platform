@@ -7,7 +7,6 @@ import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Card } from '@/shared/ui/Card';
 import { Checkbox } from '@/shared/ui/Checkbox';
@@ -16,14 +15,6 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { isAvailableTrial } from '@/entities/profile';
-import {
-	PremiumSubscriptionTooltipBody,
-	SubscriptionCard,
-	subscriptionPrices,
-} from '@/entities/subscription';
-
-import { TrialButton } from '@/features/subscriptions/trial';
 import {
 	PremiumSubscriptionTooltipBody,
 	SubscriptionCard,
@@ -108,8 +99,6 @@ export const AgreementForm = () => {
 		t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT),
 	);
 	const consentParts = parseI18nText(t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_CONSENT));
-
-	const hasTrialSubscriptions = useAppSelector(isAvailableTrial);
 
 	return (
 		<Card>
