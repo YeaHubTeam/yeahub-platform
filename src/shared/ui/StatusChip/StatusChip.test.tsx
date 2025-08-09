@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
-import { statusChipVariants } from '@/shared/ui/StatusChip/model/constants';
+import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/model/constants';
 import { StatusChip, StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 
 const testVariants = Object.keys(statusChipVariants) as StatusChipVariant[];
@@ -15,7 +15,7 @@ describe('StatusChip component', () => {
 
 	it('applies correct typography variant', () => {
 		renderComponent(<StatusChip status={{ variant: testVariants[0], text: testText }} />);
-		expect(screen.getByTestId('StatusChip')).toHaveClass('body1-accent');
+		expect(screen.getByTestId(statusChipTestIds.statusChip)).toHaveClass('body1-accent');
 	});
 
 	describe.each(testVariants)('For "%s" variant', (variant) => {
@@ -24,7 +24,7 @@ describe('StatusChip component', () => {
 		});
 
 		it('renders with correct variant class', () => {
-			expect(screen.getByTestId('StatusChip')).toHaveClass(`variant-${variant}`);
+			expect(screen.getByTestId(statusChipTestIds.statusChip)).toHaveClass(`variant-${variant}`);
 		});
 
 		it('applies correct text color', () => {
