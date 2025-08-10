@@ -35,7 +35,9 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.platformRoute);
+					const searchParams = new URLSearchParams(window.location.search);
+					const returnPage = searchParams.get('returnPage') || ROUTES.platformRoute;
+					typedExtra.navigate(returnPage);
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
 						const errObj = error as { error: { data: { message: string } } };
