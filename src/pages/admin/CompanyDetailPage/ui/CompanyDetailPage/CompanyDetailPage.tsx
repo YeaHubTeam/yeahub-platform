@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Companies, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useAppSelector } from '@/shared/hooks';
@@ -12,18 +13,19 @@ import { Flex } from '@/shared/ui/Flex';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { CompanyCard, useGetCompanyByIdQuery } from '@/entities/company';
-import { getUserId } from '@/entities/profile';
+import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompanyButton } from '@/features/company/deleteCompany';
 
 const CompanyDetailPage = () => {
-	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const { companyId } = useParams();
 	const { data: company } = useGetCompanyByIdQuery({ companyId: companyId! });
 	const userId = useAppSelector(getUserId);
+	const isAuthor = useSelector(getIsAuthor);
 
-	const isDisabled = company?.createdBy?.id !== userId;
+	const isDisabled = isAuthor && company?.createdBy?.id !== userId;
 
 	if (!company) {
 		return null;
@@ -34,10 +36,20 @@ const CompanyDetailPage = () => {
 			<Flex align={'center'} justify={'between'} gap={'8'} style={{ marginBottom: 24 }}>
 				<BackButton />
 				<Flex gap={'16'}>
-					<Tooltip title={t(Companies.TOOLTIP_BUTTON_DISABLED)} color={'red'} placement="bottom">
+					<Tooltip
+						title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
+						color={'red'}
+						placement={'bottom-start'}
+						shouldShowTooltip={isDisabled}
+					>
 						<DeleteCompanyButton companyId={company.id} isDetailPage disabled={isDisabled} />
 					</Tooltip>
-					<Tooltip title={t(Companies.TOOLTIP_BUTTON_DISABLED)} color={'red'} placement="bottom">
+					<Tooltip
+						title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
+						color={'red'}
+						placement={'bottom-start'}
+						shouldShowTooltip={isDisabled}
+					>
 						<NavLink to={route(ROUTES.admin.companies.edit.page, company.id)}>
 							<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
 						</NavLink>

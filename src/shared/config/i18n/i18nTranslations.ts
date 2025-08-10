@@ -614,7 +614,6 @@ export enum Companies {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
-	TOOLTIP_BUTTON_DISABLED = 'tooltip.button.disabled',
 }
 
 export enum Landing {

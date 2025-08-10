@@ -8,7 +8,7 @@ import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
-import { getUserId } from '@/entities/profile';
+import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
 
@@ -29,6 +29,7 @@ const CompaniesTablePage = () => {
 	const [localSearchValue, setLocalSearchValue] = useState<string>('');
 	const storeSearchValue = useSelector(getCompaniesSearch);
 	const selectedCompanies = useSelector(getSelectedCompanies);
+	const isAuthor = useSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter(() => {
 		dispatch(companiesTablePageActions.setSearch(''));
@@ -55,9 +56,9 @@ const CompaniesTablePage = () => {
 		if (!companies?.data) return [];
 		return companies?.data.map((company) => ({
 			...company,
-			disabled: company.createdBy?.id !== userId,
+			disabled: isAuthor && company.createdBy?.id !== userId,
 		}));
-	}, [companies, userId]);
+	}, [companies, userId, isAuthor]);
 
 	const setStoreSearchValue = useDebounce((value: string) => {
 		dispatch(companiesTablePageActions.setSearch(value));

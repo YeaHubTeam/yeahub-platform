@@ -35,7 +35,6 @@ export interface PopoverMenuItem {
 		text: string;
 	};
 	renderComponent?: (onToggleOpenPopover: () => void) => ReactNode;
-	disabled?: boolean;
 }
 
 export interface PopoverHeaderConfig {
