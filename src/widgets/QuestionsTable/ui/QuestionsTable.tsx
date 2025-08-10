@@ -13,6 +13,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 
 import { Question } from '@/entities/question';
 
@@ -80,7 +81,7 @@ export const QuestionsTable = ({
 				</td>
 			);
 		});
-	};
+   };
 
 	const renderActions = (question: Question) => {
 		const menuItems: PopoverMenuItem[] = [
