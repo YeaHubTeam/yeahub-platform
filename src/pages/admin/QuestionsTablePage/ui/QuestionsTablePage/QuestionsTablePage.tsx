@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetQuestionsListQuery } from '@/entities/question';
@@ -32,9 +33,9 @@ const QuestionsPage = () => {
 	const search = useSelector(getQuestionsSearch);
 	const selectedQuestions = useSelector(getSelectedQuestions);
 
-	const { filter, handleFilterChange } = useQueryFilter();
+	const { filter, handleFilterChange, resetFilters: resetQueryFilters } = useQueryFilter();
 
-	const { data: questions } = useGetQuestionsListQuery({
+	const { data: questions, isFetching } = useGetQuestionsListQuery({
 		...filter,
 		title: search,
 	});
@@ -52,6 +53,16 @@ const QuestionsPage = () => {
 		dispatch(questionsTablePageActions.setPage(page));
 	};
 
+	const resetAll = () => {
+		dispatch(questionsTablePageActions.setSearch(''));
+		dispatch(questionsTablePageActions.setSelectedQuestions([]));
+		dispatch(questionsTablePageActions.setPage(1));
+		resetQueryFilters();
+	};
+
+	const rows = questions?.data ?? [];
+	const isEmpty = !isFetching && rows.length === 0;
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
@@ -66,6 +77,7 @@ const QuestionsPage = () => {
 					questions={questions?.data}
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
+					emptySlot={isEmpty ? <EmptyStub text={search} resetFilters={resetAll} /> : undefined}
 				/>
 				<QuestionPagePagination
 					questionsResponse={questions}
