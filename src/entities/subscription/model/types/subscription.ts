@@ -30,7 +30,7 @@ export type SubscriptionRoot = {
 	roles: SubscriptionRole[];
 };
 
-type SubscriptionState = 'canceled ' | 'active' | 'inactive';
+type SubscriptionState = 'canceled' | 'active' | 'inactive';
 
 export interface UserSubscription {
 	id: string;
