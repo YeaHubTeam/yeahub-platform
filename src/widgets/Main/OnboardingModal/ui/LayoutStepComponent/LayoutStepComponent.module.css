@@ -1,0 +1,28 @@
+.title {
+  text-align: center;
+}
+
+.text {
+  white-space: pre-line;
+}
+
+.button-container {
+  margin-top: 4px;
+  padding-right: 10px;
+}
+
+.button-container button {
+  width: 100%;
+  max-width: 240px;
+}
+
+@media (width <= 768px) {
+  .button-container {
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .button-container button {
+    max-width: none;
+  }
+}

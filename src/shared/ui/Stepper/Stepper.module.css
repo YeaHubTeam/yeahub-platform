@@ -37,6 +37,7 @@
 
 .step-icon {
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;;
   width: 40px;
@@ -49,6 +50,7 @@
 }
 
 .step-icon.icon-completed {
+  stroke: var(--color-purple-700);
   background-color: var(--color-white-900);
 }
 
@@ -93,12 +95,7 @@
 }
 
 @media (width < 1024px) {
-  .stepper {
-    gap: 14px;
-  }
-
   .step-item-desktop {
-    gap: 14px;
     padding: 14px;
   }
 

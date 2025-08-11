@@ -1,23 +1,39 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector, useModal } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getRandomGurus, GurusBanner } from '@/entities/guru';
-import { EmailVerifyStub, getFullProfile } from '@/entities/profile';
+import {
+	EmailVerifyStub,
+	getFullProfile,
+	getIsEmptySpecialization,
+	getProfilesLength,
+} from '@/entities/profile';
 
 import { IncompleteProfileStub } from '@/widgets/Main/IncompleteProfileStub';
+import { OnboardingModal } from '@/widgets/Main/OnboardingModal';
 import { SubscribeToMedia } from '@/widgets/Main/SubscribeToMedia';
 
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
 	const profile = useAppSelector(getFullProfile);
+	const profilesCount = useAppSelector(getProfilesLength);
+	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 
 	const { t } = useTranslation([i18Namespace.translation]);
+	const { isOpen, onOpen, onClose } = useModal();
+
+	useEffect(() => {
+		if (isSpecializationEmpty && profilesCount === 1) {
+			onOpen();
+		}
+	}, []);
 
 	const gurus = getRandomGurus();
 	const showGurus = gurus.length > 0;
@@ -46,6 +62,7 @@ const MainPage = () => {
 					</Flex>
 				</Flex>
 			)}
+			<OnboardingModal isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 };

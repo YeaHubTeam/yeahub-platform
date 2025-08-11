@@ -1,0 +1,52 @@
+.onboarding-modal {
+  margin: 0;
+  padding: 0;
+}
+
+.onboarding-modal p {
+  margin: 0;
+}
+
+.stepper-container {
+  gap: 30px;
+  padding: 30px;
+  width: 49%;
+  border-radius: 24px 0 0 24px;
+  background-color: var(--color-purple-700);
+}
+
+.active-step-content {
+  padding: 20px 30px 20px 20px;
+  width: 51%;
+}
+
+@media (width < 1024px) {
+  .stepper-container {
+    padding: 20px;
+  }
+
+  .active-step-content {
+    padding: 20px;
+  }
+}
+
+@media (width < 768px) {
+  .active-step-content {
+    padding: 20px 10px;
+
+  }
+}
+
+@media (width < 567px) {
+  .stepper-container {
+    align-items: center;
+    padding: 20px 10px 0;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .active-step-content {
+    padding: 30px 10px 20px;
+    width: 100%;
+  }
+}

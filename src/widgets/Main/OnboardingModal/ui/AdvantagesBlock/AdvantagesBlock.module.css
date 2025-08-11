@@ -1,0 +1,38 @@
+.list-item {
+  position: relative;
+  padding-left: 16px;
+}
+
+.list-item::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--text-color-link-active);
+}
+
+.check-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+}
+
+.check-icon svg {
+  stroke: var(--color-white-900);
+}
+
+.check-icon::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: var(--color-purple-700);
+  content: '';
+}

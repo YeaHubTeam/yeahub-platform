@@ -1,0 +1,44 @@
+.greeting {
+  align-items: center;
+}
+
+.greeting h3 {
+  position: relative;
+  line-height: 127%;
+}
+
+.greeting h3::after {
+  position: absolute;
+  top: -29px;
+  left: -24px;
+  width: 54px;
+  height: 55px;
+  background-image: url('../../model/assets/sealCheck.avif');
+  background-size: contain;
+  content: '';
+}
+
+.greeting p {
+  text-align: center;
+  line-height: 130%;
+  font-weight: var(--font-weight-400);
+}
+
+.greeting button {
+  min-width: 240px;
+}
+
+@media (width < 1024px) {
+  .greeting h3 {
+    align-self: center;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .greeting h3::after {
+    top: -25px;
+    left: -22px;
+    width: 44px;
+    height: 45px;;
+  }
+}
+

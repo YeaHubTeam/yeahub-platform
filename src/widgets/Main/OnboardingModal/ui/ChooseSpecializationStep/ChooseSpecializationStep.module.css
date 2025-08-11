@@ -1,0 +1,9 @@
+.select-container p {
+  font-size: var(--font-size-p-s);
+}
+
+.select-container div {
+  margin-top: 8px;
+  width: 100%;
+  max-height: 176px;
+}
