@@ -83,7 +83,7 @@ export const Stepper = <T,>({
 								>
 									<Icon
 										icon={status === 'completed' ? 'check' : step.image}
-										color={'white-900'}
+										color={status === 'completed' ? 'purple-700' : 'white-900'}
 										size={isMobile ? 18 : 26}
 									/>
 								</div>

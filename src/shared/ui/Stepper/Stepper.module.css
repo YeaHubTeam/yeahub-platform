@@ -50,7 +50,6 @@
 }
 
 .step-icon.icon-completed {
-  stroke: var(--color-purple-700);
   background-color: var(--color-white-900);
 }
 

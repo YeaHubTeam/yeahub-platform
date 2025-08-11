@@ -23,7 +23,7 @@ export const AdvantagesBlock = ({ label, items, withIcon, className }: Advantage
 							variant="body3-accent"
 							className={withIcon ? styles['check-icon'] : styles['list-item']}
 						>
-							{withIcon && <Icon icon="check" size={20} />}
+							{withIcon && <Icon icon="check" color={'white-900'} size={20} />}
 							{item}
 						</Text>
 					</Flex>
