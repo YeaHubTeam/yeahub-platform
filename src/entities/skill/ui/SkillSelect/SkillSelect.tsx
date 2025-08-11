@@ -21,10 +21,13 @@ type SkillSelectProps = Omit<
 export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
-	const { data: skills } = useGetSkillsListQuery({
-		limit: 100,
-		specializations: selectedSPecializations,
-	});
+	const { data: skills } = useGetSkillsListQuery(
+		{
+			limit: 100,
+			specializations: selectedSPecializations,
+		},
+		{ skip: !selectedSPecializations?.length },
+	);
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
 
