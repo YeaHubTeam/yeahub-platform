@@ -28,10 +28,6 @@
 }
 
 @media (width < 1024px) {
-  .greeting  {
-    align-self: center;
-  }
-
   .greeting > *:first-child::after {
     top: -25px;
     left: -22px;
