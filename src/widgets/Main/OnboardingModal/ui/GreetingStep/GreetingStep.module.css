@@ -7,7 +7,7 @@
   line-height: 127%;
 }
 
-.greeting> *:first-child::after {
+.greeting > *:first-child::after {
   position: absolute;
   top: -29px;
   left: -24px;
@@ -27,7 +27,7 @@
   min-width: 240px;
 }
 
-@media (width < 1024px) {
+@media (width < 1200px) {
   .greeting > *:first-child::after {
     top: -25px;
     left: -22px;

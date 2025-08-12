@@ -35,18 +35,19 @@ export const LayoutStepComponent = ({
 	children,
 	className,
 }: LayoutActiveStepProps) => {
-	const withButtons = buttonPrimaryText || buttonSecondaryText;
 	const { isSmallScreen } = useScreenSize();
+
+	const withButtons = buttonPrimaryText || buttonSecondaryText;
+	const withTitle = title || headTitle;
+
 	return (
 		<Flex direction={'column'} gap={'16'} className={className}>
-			{title && (
-				<Text variant={'body5-accent'} className={styles['title']}>
-					{title}
-				</Text>
-			)}
-			{headTitle && (
-				<Text variant={isSmallScreen ? 'body5-accent' : 'head3'} className={styles['title']}>
-					{headTitle}
+			{withTitle && (
+				<Text
+					variant={isSmallScreen || title ? 'body5-accent' : 'head3'}
+					className={styles['title']}
+				>
+					{title || headTitle}
 				</Text>
 			)}
 			{description && (
