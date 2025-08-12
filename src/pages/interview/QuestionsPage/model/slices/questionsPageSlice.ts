@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
+
 import { QuestionFilterStatus } from '@/widgets/question/QuestionsFilterPanel';
 
 import { QuestionsPageState } from '../types/questionsPageType';
@@ -41,6 +43,11 @@ const questionsPageSlice = createSlice({
 			state.page = 1;
 		},
 		resetFilters: () => initialState,
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 

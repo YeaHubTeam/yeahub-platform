@@ -8,6 +8,7 @@ import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
 import Behance from '@/shared/assets/icons/behance.svg';
 import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
+import Check from '@/shared/assets/icons/check.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
 import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
@@ -26,6 +27,7 @@ import Filter from '@/shared/assets/icons/filter.svg';
 import Github from '@/shared/assets/icons/github.svg';
 import GithubWhite from '@/shared/assets/icons/github_white.svg';
 import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
+import Info from '@/shared/assets/icons/info.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
@@ -45,6 +47,7 @@ import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
+import TikTok from '@/shared/assets/icons/tiktok.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
 import Twitter from '@/shared/assets/icons/twitter.svg';
@@ -82,6 +85,7 @@ export const icons: Record<IconName, IconComponent> = {
 	eyeClosed: EyeClosed,
 	like: Like,
 	dislike: Dislike,
+	info: Info,
 	instagram: Instagram,
 	linkedin: Linkedin,
 	twitter: Twitter,
@@ -94,6 +98,7 @@ export const icons: Record<IconName, IconComponent> = {
 	telegramWithBackground: TelegramWithBackground,
 	youtube: Youtube,
 	youtubeWithBackground: YoutubeWithBackground,
+	tiktok: TikTok,
 	plus: Plus,
 	minus: Minus,
 	plusCircle: PlusCircle,
@@ -104,6 +109,7 @@ export const icons: Record<IconName, IconComponent> = {
 	filter: Filter,
 	settings: Settings,
 	sealCheck: SealCheck,
+	check: Check,
 	userCheckWithBackground: UserCheckWithBackground,
 	userSwitch: UserSwitch,
 	trendUp: TrendUp,

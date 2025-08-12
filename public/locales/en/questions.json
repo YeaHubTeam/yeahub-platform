@@ -1,107 +1,109 @@
 {
-  "count": "Questions count",
-  "count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
-  "preview": {
-    "title": "Questions list",
-    "link": "Study",
+	"count": "Questions count",
+	"count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
+	"preview": {
+		"title": "Questions list",
+		"link": "Study",
 		"empty": {
 			"specialization": "Questions for the selected specialization will appear soon",
 			"collection": "Questions for this collection will appear soon"
 		},
-    "locked": {
-      "collection": "Community members will have a list of questions."
-    }
-  },
-  "title": {
-    "short": "Questions",
-    "label": "Add question",
-    "placeholder": "Detailed question on a specific topic"
-  },
-  "description": {
-    "title": "Description",
-    "label": "Add description",
-    "placeholder": "Add description"
-  },
-  "search.placeholder": "Enter a query...",
-  "categories": {
-    "title": "Question Categories",
-    "show.all": "Show all",
-    "hide": "Hide"
-  },
-  "progress": {
-    "title": "Прогресс",
-    "description": "Вопрос изучен {{count}} из 3"
-  },
-  "complexity": {
-    "title": "Question Difficulty",
-    "title.short": "Complexity",
-    "label": "Select questions difficulty",
-    "tooltip.unauthorized": "Difficulty levels will be available after registration"
-  },
-  "rate": {
-    "title": "Question Rating",
-    "title.short": "Rating",
-    "label": "Select rate"
-  },
-  "sort": {
-    "field": "Sort by field",
-    "title": "Sort by",
-    "ascending": "Ascending",
-    "descending": "Descending"
-  },
-  "status": {
-    "title": "Status",
-    "unlearned": "Unlearned",
-    "learned": "Learned",
-    "all": "All",
+		"locked": {
+			"collection": "Community members will have a list of questions."
+		}
+	},
+	"title": {
+		"short": "Questions",
+		"label": "Add question",
+		"placeholder": "Detailed question on a specific topic"
+	},
+	"description": {
+		"title": "Description",
+		"label": "Add description",
+		"placeholder": "Add description"
+	},
+	"search.placeholder": "Enter a query...",
+	"categories": {
+		"title": "Question Categories",
+		"show.all": "Show all",
+		"hide": "Hide"
+	},
+	"progress": {
+		"title": "Прогресс",
+		"description": "Вопрос изучен {{count}} из 3"
+	},
+	"complexity": {
+		"title": "Question Difficulty",
+		"title.short": "Complexity",
+		"label": "Select questions difficulty",
+		"tooltip.unauthorized": "Difficulty levels will be available after registration"
+	},
+	"rate": {
+		"title": "Question Rating",
+		"title.short": "Rating",
+		"label": "Select rate"
+	},
+	"sort": {
+		"field": "Sort by field",
+		"title": "Sort by",
+		"ascending": "Ascending",
+		"descending": "Descending"
+	},
+	"status": {
+		"title": "Status",
+		"unlearned": "Unlearned",
+		"learned": "Learned",
+		"all": "All",
 		"favorite": "Favorite",
-    "label": "Select status",
-    "public": "Public",
-    "draft": "Draft"
-  },
-  "skills": {
-    "title": "Skills",
-    "label": "Select relevant skills"
-  },
-  "long.answer": {
-    "title": "Long answer",
-    "label": "Add long answer",
-    "placeholder": "Full answer to the question"
-  },
-  "short.answer": {
-    "title": "Short answer",
-    "label": "Add short answer",
-    "placeholder": "Short answer to the question"
-  },
-  "specialization": {
-    "title": "Select a specialization",
-    "label": "Select relevant specialization"
-  },
-  "keywords": {
-    "title": "Keywords",
-    "label": "Add keywords to the text"
-  },
-  "author": "Author",
-  "level": "Level:",
-  "skillsAdditional": "Skills:",
-  "keywordsAdditional": "Keywords:",
-  "image.alt": "Image code for question",
-  "more": "More",
-  "learn": "Learn",
-  "repeat": "Repeat",
+		"label": "Select status",
+		"public": "Public",
+		"draft": "Draft"
+	},
+	"skills": {
+		"title": "Skills",
+		"label": "Select relevant skills"
+	},
+	"long.answer": {
+		"title": "Long answer",
+		"label": "Add long answer",
+		"placeholder": "Full answer to the question"
+	},
+	"short.answer": {
+		"title": "Short answer",
+		"label": "Add short answer",
+		"placeholder": "Short answer to the question"
+	},
+	"specialization": {
+		"title": "Select a specialization",
+		"label": "Select relevant specialization"
+	},
+	"keywords": {
+		"title": "Keywords",
+		"label": "Add keywords to the text"
+	},
+	"author": "Author",
+	"level": "Level:",
+	"skillsAdditional": "Skills:",
+	"keywordsAdditional": "Keywords:",
+	"image.alt": "Image code for question",
+	"more": "More",
+	"learn": "Learn",
+	"repeat": "Repeat",
 	"favorite": "Favorite",
-  "tooltip": {
-    "learn": "The issue has already been fully studied",
-    "repeat": "The question has not yet progressed to memorization",
+	"tooltip": {
+		"learn": "The issue has already been fully studied",
+		"repeat": "The question has not yet progressed to memorization",
+		"members.only": "Available to community members",
+		"not.confirmed": "Email has not been confirmed",
 		"favorite": {
 			"add": "Add Favorite",
 			"delete": "Remove Favorite"
 		}
-  },
-  "community": {
-    "join": "Become a member of the community"
-  },
-  "additional": {
+	},
+	"community": {
+		"join": "Become a member of the community"
+	},
+	"additional": {
 		"aria.label": "Go to additional info"
 	}
 }

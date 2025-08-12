@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { route } from '@/shared/helpers/route';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -15,9 +14,9 @@ import { PopoverChildrenProps } from '@/shared/ui/Popover/types';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
-import { User } from '@/entities/user';
+import { User, UserRolesList } from '@/entities/user';
 
-import styles from './UsersTable.module.css';
+import { DeleteAccountButton } from '@/features/profile/deleteAccount';
 
 interface UsersTableProps {
 	users?: User[];
@@ -40,17 +39,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 	const renderTableBody = (user: User) => {
 		const columns = {
 			username: `${user.username}`,
-			roles: (
-				<div className={styles['roles-container']}>
-					{user.userRoles.map((role) => {
-						return (
-							<span key={role.id} className={styles[role.name]}>
-								{t(Users[convertRoleNameToEnumKey(role.name)])}
-							</span>
-						);
-					})}
-				</div>
-			),
+			roles: <UserRolesList userRoles={user.userRoles} />,
 			email: user.email,
 		};
 
@@ -84,6 +73,9 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 				onClick: () => {
 					navigate(route(ROUTES.admin.users.edit.page, user.id));
 				},
+			},
+			{
+				renderComponent: () => <DeleteAccountButton user={user} isAdmin isDetailPage />,
 			},
 		];
 

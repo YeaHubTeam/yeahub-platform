@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { MAX_CHOOSE_QUESTION_COUNT } from '@/shared/constants/queryConstants';
 import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
-import { getProfileId, getSpecializationId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId, getSpecializationId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionCount,
@@ -20,6 +21,7 @@ import {
 	QuestionModeType,
 	QuizQuestionMode,
 	useGetActiveQuizQuery,
+	useLazyCreateNewMockQuizQuery,
 	useLazyCreateNewQuizQuery,
 } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -34,7 +36,7 @@ const MAX_LIMIT_CATEGORIES = 20;
 const CreateQuizPage = () => {
 	const profileId = useAppSelector(getProfileId);
 	const profileSpecialization = useAppSelector(getSpecializationId);
-
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const { filter, handleFilterChange } = useQueryFilter();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
@@ -47,17 +49,22 @@ const CreateQuizPage = () => {
 
 	const navigate = useNavigate();
 
-	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
-		profileId,
-		limit: 1,
-		page: 1,
-	});
+	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+		{
+			profileId,
+			limit: 1,
+			page: 1,
+		},
+		{ skip: !hasPremium },
+	);
 
 	if (activeQuizData?.data[0]?.questions) {
 		navigate(ROUTES.interview.new.page);
 	}
 
 	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
+	const [createNewMockQuiz, { isLoading: isCreateNewMockQuizLoading }] =
+		useLazyCreateNewMockQuizQuery();
 
 	const onChangeSkills = (skills?: number[]) => {
 		handleFilterChange({ category: skills });
@@ -85,6 +92,14 @@ const CreateQuizPage = () => {
 		});
 	};
 
+	const onCreateNewMockQuiz = () => {
+		createNewMockQuiz({
+			skills: filter.category,
+			limit: filter.count || 1,
+			specialization: profileSpecialization,
+		});
+	};
+
 	if (isActiveQuizLoading || isLoadingCategories) return <CreateQuizPageSkeleton />;
 
 	return (
@@ -108,16 +123,30 @@ const CreateQuizPage = () => {
 						<ChooseQuestionComplexity
 							selectedComplexity={filter.complexity}
 							onChangeComplexity={onChangeComplexity}
+							disabled={!hasPremium}
+							hasPremium={hasPremium}
 						/>
-						<QuizQuestionMode onChangeMode={onChangeMode} modeFromURL={filter.mode} />
-						<ChooseQuestionCount onChangeLimit={onChangeLimit} count={filter.count || 1} />
+						<QuizQuestionMode
+							onChangeMode={onChangeMode}
+							modeFromURL={filter.mode}
+							disabled={!hasPremium}
+							active={!hasPremium}
+							hasPremium={hasPremium}
+						/>
+						<ChooseQuestionCount
+							onChangeLimit={onChangeLimit}
+							count={filter.count || 1}
+							maxCount={hasPremium ? undefined : MAX_CHOOSE_QUESTION_COUNT}
+							disabled={!hasPremium}
+							hasPremium={hasPremium}
+						/>
 					</Flex>
 				</Flex>
 				<Button
 					className={styles.button}
-					onClick={onCreateNewQuiz}
+					onClick={hasPremium ? onCreateNewQuiz : onCreateNewMockQuiz}
 					suffix={<Icon icon="arrowRight" size={24} />}
-					disabled={isCreateNewQuizLoading}
+					disabled={hasPremium ? isCreateNewQuizLoading : isCreateNewMockQuizLoading}
 				>
 					{t(InterviewQuizCreate.CREATE_BUTTON)}
 				</Button>

@@ -9,12 +9,9 @@ import { route } from '@/shared/helpers/route';
 import { Response } from '@/shared/types/types';
 import { toast } from '@/shared/ui/Toast';
 
-import {
-	LS_ACTIVE_MOCK_QUIZ_KEY,
-	LS_ACTIVE_QUIZ_KEY,
-	quizApiUrls,
-} from '../model/constants/quizConstants';
-import { getValidActiveQuizFromLS } from '../model/helpers/getValidActiveQuizFromLS';
+import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
+
+import { LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
@@ -57,7 +54,39 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		createNewMockQuiz: build.query<
+		createNewMockQuiz: build.query<CreateNewMockQuizResponse, CreateNewMockQuizParamsRequest>({
+			query: ({ ...params }) => {
+				return {
+					url: route(quizApiUrls.createNewMockQuiz),
+					params,
+				};
+			},
+			providesTags: [ApiTags.NEW_QUIZ],
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+				try {
+					const { data: mockQuizResponse } = await queryFulfilled;
+					const parsedQuestions: Answers[] = getActiveQuizQuestions(mockQuizResponse).map(
+						(question) => ({
+							questionId: question.questionId,
+							questionTitle: question.questionTitle,
+							answer: question.answer,
+							shortAnswer: question.shortAnswer ?? '',
+							imageSrc: question.imageSrc ?? undefined,
+							skills: question.skills ?? [],
+						}),
+					);
+					dispatch(setActiveQuizQuestions({ questions: parsedQuestions }));
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
+					typedExtra.navigate(ROUTES.interview.new.page);
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
+					console.error(error);
+				}
+			},
+		}),
+		createNewMockPublicQuiz: build.query<
 			Response<CreateNewMockQuizResponse>,
 			CreateNewMockQuizParamsRequest
 		>({
@@ -71,7 +100,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
 					const { data: mockQuizResponse } = await queryFulfilled;
-					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, mockQuizResponse);
+					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, mockQuizResponse);
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.quiz.new.page);
@@ -88,30 +117,30 @@ const quizApi = baseApi.injectEndpoints({
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
-			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+			async onQueryStarted({ profileId }, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					const activeQuizQuestionsFromLS = getValidActiveQuizFromLS(LS_ACTIVE_QUIZ_KEY);
-
-					if (activeQuizQuestionsFromLS) {
+					const { profileActiveQuiz } = getValidActiveQuizzesFromLS(profileId);
+					if (profileActiveQuiz && result.data.data.length > 0) {
 						dispatch(
 							setActiveQuizQuestions({
-								questions: activeQuizQuestionsFromLS,
+								questions: profileActiveQuiz,
 								shouldSaveToLS: false,
 							}),
 						);
 					} else {
+						dispatch(clearActiveQuizState(profileId));
 						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data?.data[0]).map(
 							(question) => ({
 								questionId: question.questionId,
 								questionTitle: question.questionTitle,
 								answer: question.answer,
-								isFavorite: question.isFavorite,
 								shortAnswer: question.shortAnswer ?? '',
 								imageSrc: question.imageSrc ?? undefined,
+								isFavorite: question.isFavorite,
 							}),
 						);
-						dispatch(setActiveQuizQuestions({ questions: parsedQuestions }));
+						dispatch(setActiveQuizQuestions({ questions: parsedQuestions, profileId }));
 					}
 				} catch (error) {
 					// eslint-disable-next-line no-console
@@ -158,7 +187,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					dispatch(clearActiveQuizState());
+					dispatch(clearActiveQuizState(arg.profileId));
 
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
@@ -183,7 +212,7 @@ const quizApi = baseApi.injectEndpoints({
 			async onQueryStarted({ data }, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;
-					dispatch(clearActiveQuizState());
+					dispatch(clearActiveQuizState(data.profileId));
 					await dispatch(
 						quizApi.endpoints.getActiveQuiz.initiate(
 							{ profileId: data.profileId, page: 1, limit: 1 },
@@ -243,6 +272,7 @@ const quizApi = baseApi.injectEndpoints({
 
 export const {
 	useLazyCreateNewQuizQuery,
+	useLazyCreateNewMockPublicQuizQuery,
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,

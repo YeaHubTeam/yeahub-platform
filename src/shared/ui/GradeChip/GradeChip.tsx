@@ -18,19 +18,26 @@ export const valueVariants: Record<GradeChipSize, TextVariant> = {
 	medium: 'body2-strong',
 } as const;
 
-interface GradeChipProps {
+export interface GradeChipProps {
 	label: string;
 	value: number;
 	size?: GradeChipSize;
+	dataTestId?: string;
 }
 
-export const GradeChip = ({ label, value, size = 'medium' }: GradeChipProps) => {
+export const GradeChip = ({
+	label,
+	value,
+	size = 'medium',
+	dataTestId = 'GradeChip',
+}: GradeChipProps) => {
 	return (
 		<Flex
 			align="center"
 			gap="12"
 			componentType="li"
 			className={classNames(styles[`size-${size}`], styles.params)}
+			dataTestId={dataTestId}
 		>
 			<Text variant={labelVariants[size]} color="black-800">
 				{label}:

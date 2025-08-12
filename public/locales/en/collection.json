@@ -58,5 +58,9 @@
 	"empty": "Collections will appear soon",
 	"additional": {
 		"aria.label": "Go to additional info"
+	},
+	"warning": {
+		"intro": "This section is created by candidates for candidates. We share real interview questions to help you prepare more effectively — understand which topics really matter, improve your knowledge, and feel more confident.",
+		"disclaimer": "It’s important to note that we are not affiliated with these companies and do not aim to interfere with their hiring processes. All questions are collected from public sources and candidates’ personal experiences. Our goal is to help you prepare more thoughtfully — not to provide ready-made answers."
 	}
 }

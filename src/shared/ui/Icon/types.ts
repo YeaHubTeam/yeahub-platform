@@ -1,4 +1,4 @@
-export type IconSize = 20 | 24 | 28 | 32 | 34 | 36 | 40;
+export type IconSize = 14 | 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
 
 export type IconName =
 	| 'arrowRight'
@@ -7,6 +7,7 @@ export type IconName =
 	| 'arrowDownSquare'
 	| 'clock'
 	| 'calendar'
+	| 'check'
 	| 'altArrowRight'
 	| 'altArrowLeft'
 	| 'dotsThree'
@@ -24,6 +25,7 @@ export type IconName =
 	| 'eyeClosed'
 	| 'like'
 	| 'dislike'
+	| 'info'
 	| 'instagram'
 	| 'linkedin'
 	| 'twitter'
@@ -36,6 +38,7 @@ export type IconName =
 	| 'telegramWithBackground'
 	| 'youtube'
 	| 'youtubeWithBackground'
+	| 'tiktok'
 	| 'plus'
 	| 'minus'
 	| 'plusCircle'

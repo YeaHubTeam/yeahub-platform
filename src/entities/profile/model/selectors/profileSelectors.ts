@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { State } from '@/shared/config/store/State';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { FullProfile } from '@/entities/auth';
+import { FullProfile, Profile } from '@/entities/auth';
 
 export const getProfileIsEmailSent = (state: State) => {
 	return state.profile.isEmailSent;
@@ -24,9 +24,9 @@ export const getProfilesLength = createSelector(getProfiles, (profiles) => {
 	return profiles?.length || 0;
 });
 
-export const getActiveProfile = createSelector(getProfiles, (profiles) => {
-	return profiles?.find((profile) => profile.isActive);
-});
+export const getActiveProfile = (state: State) => {
+	return (state.profile.fullProfile?.activeProfile || {}) as Profile;
+};
 
 export const getEmptySpecializationProfile = createSelector(getProfiles, (profiles) => {
 	return profiles?.find((profile) => profile.specializationId === 0);
@@ -52,11 +52,45 @@ export const getIsEdit = (state: State) => {
 	return state.profile.isEdit;
 };
 
-export const getHasPremiumAccess = (state: State) => {
-	return (
-		state.profile.fullProfile?.userRoles.some((role) => role.name === 'candidate-premium') ?? false
-	);
-};
+export const getTrialSubscription = createSelector(getFullProfile, (fullProfile) => {
+	if (fullProfile?.subscriptions?.length) {
+		const activeSubscription = fullProfile.subscriptions.find(
+			(subscription) => subscription.subscriptionId === 4,
+		);
+		return activeSubscription;
+	}
+	return undefined;
+});
+
+export const isActiveTrial = createSelector(getTrialSubscription, (trialSubscription) => {
+	return !!(trialSubscription && trialSubscription.state && trialSubscription.state === 'active');
+});
+
+export const isAvailableTrial = createSelector(
+	[getTrialSubscription, getFullProfile],
+	(trialSubscription, fullProfile) => {
+		const candidatePremium = !!(
+			fullProfile &&
+			fullProfile.userRoles &&
+			fullProfile.userRoles.find((role) => role.name === 'candidate-premium')
+		);
+		return !candidatePremium && !trialSubscription;
+	},
+);
+
+export const getHasPremiumAccess = createSelector(
+	[getFullProfile, isActiveTrial],
+	(fullProfile, isTrial) => {
+		return (
+			(fullProfile?.userRoles?.some((role) => role.name === 'candidate-premium') ?? false) ||
+			isTrial
+		);
+	},
+);
+
+export const getIsAuthor = createSelector(getFullProfile, (fullProfile) => {
+	return fullProfile?.userRoles.some((role) => role.name === 'author');
+});
 
 export const getHasSubscriptions = (state: State) => {
 	return (state.profile.fullProfile?.subscriptions?.length ?? 0) > 0;

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -10,9 +11,10 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getProfileId } from '@/entities/profile';
+import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
@@ -32,7 +34,9 @@ export const CollectionPage = () => {
 	const { isSmallScreen, isMobile, isTablet } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
+	const isAuthor = useSelector(getIsAuthor);
 	const profileId = useAppSelector(getProfileId);
+	const userId = useAppSelector(getUserId);
 	const { data: response } = useGetQuestionsListQuery(
 		{
 			collection: Number(collectionId),
@@ -64,6 +68,7 @@ export const CollectionPage = () => {
 		imageSrc: collectionImageSrc,
 	} = collection;
 
+	const isDisabled = isAuthor && createdBy?.id !== userId;
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
@@ -80,7 +85,7 @@ export const CollectionPage = () => {
 					imageSrc={imageSrc}
 					company={company}
 				/>{' '}
-				<CollectionBody isFree={isFree} questions={questions} />
+				<CollectionBody isFree={isFree} isAdmin questions={questions} />
 			</section>
 		</>
 	);
@@ -88,13 +93,22 @@ export const CollectionPage = () => {
 	return (
 		<>
 			<BackHeader>
-				<DeleteCollectionButton collectionId={collection.id} isDetailPage />
-				<NavLink
-					style={{ marginLeft: 'auto' }}
-					to={route(ROUTES.admin.collections.edit.page, collection.id)}
+				<DeleteCollectionButton collectionId={collection.id} isDetailPage disabled={isDisabled} />
+
+				<Tooltip
+					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
+					placement={'bottom-start'}
+					color="red"
+					offsetTooltip={10}
+					shouldShowTooltip={isDisabled}
 				>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+					<NavLink
+						style={{ marginLeft: 'auto' }}
+						to={route(ROUTES.admin.collections.edit.page, collection.id)}
+					>
+						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Tooltip>
 			</BackHeader>
 
 			{renderMobileOrTablet || (
@@ -107,7 +121,7 @@ export const CollectionPage = () => {
 							imageSrc={imageSrc}
 							company={company}
 						/>{' '}
-						<CollectionBody isFree={isFree} questions={questions} />
+						<CollectionBody isFree={isFree} isAdmin questions={questions} />
 					</div>
 					<div className={styles.additional}>
 						<AdditionalInfo

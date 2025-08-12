@@ -18,6 +18,8 @@ export enum Translation {
 	SUPPORT = 'support',
 	TOTAL_QUESTIONS = 'total.questions',
 	BACK_BUTTON = 'back.button',
+	EXPAND = 'expand',
+	COLLAPSE = 'collapse',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -78,6 +80,7 @@ export enum Translation {
 	VALIDATION_PARAMETER = 'validation.parameter',
 	VALIDATION_FILE_SIZE = 'validation.file.size',
 	VALIDATION_FILE_TYPE = 'validation.file.type',
+	VALIDATION_LINK = 'validation.link',
 
 	/* Toast */
 	TOAST_TITLE_SUCCESS = 'toast.title.success',
@@ -116,6 +119,7 @@ export enum Translation {
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
+	TOOLTIP_COLLECTION_DISABLED_INFO = 'tooltip.collections.disabled.info',
 	TOAST_SKILL_CREATE_SUCCESS = 'toast.skills.create.success',
 	TOAST_SKILL_CREATE_FAILED = 'toast.skills.create.failed',
 	TOAST_SKILL_EDIT_SUCCESS = 'toast.skills.edit.success',
@@ -159,12 +163,20 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS = 'toast.subscriptions.unsubscribe.success',
 	TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_FAILED = 'toast.subscriptions.unsubscribe.failed',
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
+	TOAST_RESOURCE_CREATE_SUCCESS = 'toast.resources.create.success',
+	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
+	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
+	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
+	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	TABS_PERSONAL = 'tabs.personal',
 	TABS_ABOUT_ME = 'tabs.about.me',
 	TABS_SKILLS = 'tabs.skills',
+	TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED = 'tooltip.create.profile.button.limit.reached',
+	TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION = 'tooltip.create.profile.button.empty.specialization',
+	TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER = 'tooltip.create.profile.button.not.member',
 	PHOTO_TITLE = 'photo.title',
 	PHOTO_DESCRIPTION = 'photo.description',
 	PHOTO_UPDATE = 'photo.update',
@@ -202,6 +214,7 @@ export enum Profile {
 	EMAIL_VERIFICATION_DESCRIPTION = 'email.verification.description',
 	EMAIL_VERIFICATION_EMAIL = 'email.verification.email',
 	EMAIL_VERIFICATION_SUBMIT = 'email.verification.submit',
+	EMAIL_VERIFICATION_SPAM_MESSAGE = 'email.verification.spam.message',
 	EMAIL_VERIFICATION_SENT_SUCCESS = 'email.verification.sent.success',
 	EMAIL_VERIFICATION_VERIFY_STUB_TITLE = 'email.verification.verify.stub.title',
 	EMAIL_VERIFICATION_VERIFY_STUB_DESCRIPTION = 'email.verification.verify.stub.description',
@@ -264,7 +277,7 @@ export enum Auth {
 	FORGOT_PASSWORD_MODAL_SUBMIT = 'forgot.password.modal.submit',
 	PASSWORD_RECOVERY_TITLE = 'password.recovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'password.recovery.subtitle',
-	PASSWORD_RECOVERY_SUBMIT = 'passwordRecovery.submit',
+	PASSWORD_RECOVERY_SUBMIT = 'password.recovery.submit',
 }
 
 export enum Specializations {
@@ -295,6 +308,10 @@ export enum InterviewQuiz {
 	PROGRESS_BAR_TITLE = 'progress.bar.title',
 	START_QUIZ_TITLE = 'start.quiz.title',
 	START_QUIZ_DESCRIPTION = 'start.quiz.description',
+	START_QUIZ_SETUP_LIST_FIRST = 'start.quiz.setup.list.first',
+	START_QUIZ_SETUP_LIST_SECOND = 'start.quiz.setup.list.second',
+	START_QUIZ_SETUP_LIST_THIRD = 'start.quiz.setup.list.third',
+	START_QUIZ_SETUP_LIST_FOURTH = 'start.quiz.setup.list.fourth',
 	START_QUIZ_LINK = 'start.quiz.link',
 	INTERRUPT_QUIZ_TITLE = 'interrupt.quiz.title',
 	INTERRUPT_QUIZ_DESCRIPTION = 'interrupt.quiz.description',
@@ -323,6 +340,7 @@ export enum InterviewQuizCreate {
 	MODE_RANDOM = 'mode.random',
 	MODE_SELECT = 'mode.select',
 	MODE_SELECT_TOOLTIP_UNAUTHORIZED = 'mode.select.tooltip.unauthorized',
+	MODE_SELECT_TOOLTIP_PREMIUMONLY = 'mode.select.tooltip.premiumonly',
 }
 
 export enum InterviewQuizResult {
@@ -341,6 +359,18 @@ export enum InterviewQuizResult {
 	STATS_HISTORY = 'join.community.stats.history',
 	FULL_ACCESS = 'join.community.full.access',
 	BECOME_MEMBER = 'join.community.become.member',
+	INTERVIEW_STATISTIC_TITLE = 'statistics.title',
+	INTERVIEW_STATISTIC_QUESTION = 'statistics.question',
+	INTERVIEW_STATISTIC_SCHEDULE = 'statistics.schedule',
+	INTERVIEW_STATISTIC_LINK = 'statistics.link',
+	MODAL_TITLE = 'modal.title',
+	MODAL_DESCRIPTION = 'modal.description',
+	MODAL_BENEFITS_FULL_ACCESS = 'modal.benefits.full.access',
+	MODAL_BENEFITS_SMART_MODE = 'modal.benefits.smart.mode',
+	MODAL_BENEFITS_STATISTICS = 'modal.benefits.statistics',
+	MODAL_BENEFITS_INTERVIEWS = 'modal.benefits.interviews',
+	MODAL_BUTTON_TEXT = 'modal.button.text',
+	MODAL_BUTTON_TIP = 'modal.button.tip',
 }
 
 export enum InterviewStatistics {
@@ -423,6 +453,8 @@ export enum Questions {
 	FAVORITE = 'favorite',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
+	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
+	TOOLTIP_NOT_CONFIRMED = 'tooltip.not.confirmed',
 	TOOLTIP_FAVORITE_ADD = 'tooltip.favorite.add',
 	TOOLTIP_FAVORITE_DELETE = 'tooltip.favorite.delete',
 
@@ -566,11 +598,9 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
-}
 
-export enum Marketplace {
-	HEADER_TITLE = 'header.title',
-	LINK_LABEL = 'add.resource.link.label',
+	WARNING_INTRO = 'warning.intro',
+	WARNING_DISCLAIMER = 'warning.disclaimer',
 }
 
 export enum Companies {
@@ -646,6 +676,7 @@ export enum Landing {
 	FOOTER_SLOGAN = 'footer.slogan',
 	FOOTER_ABOUT = 'footer.about',
 	FOOTER_DOCS = 'footer.docs',
+	FOOTER_MEDIA = 'footer.media',
 
 	// для нового лендинга ниже
 	BANNER_STICKER_SKILL = 'banner.sticker.skill',
@@ -722,6 +753,8 @@ export enum Subscription {
 	DAYS_LEFT = 'daysLeft',
 	SUBSCRIPTION_GREETING = 'greeting',
 	SUBSCRIPTION_RENEWAL = 'renewal',
+	SUBSCRIPTION_CANCELED = 'canceled',
+	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
@@ -747,6 +780,14 @@ export enum SubscriptionCard {
 	SUBSCRIPTION_CARD_FREE_DESCRIPTION = 'subscription.free.description',
 	SUBSCRIPTION_CARD_PREMIUM_TITLE = 'subscription.premium.title',
 	SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION = 'subscription.premium.description',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_TITLE = 'subscription.premium.tooltip.title',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_TITLE = 'subscription.premium.tooltip.list.title',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIRST = 'subscription.premium.tooltip.list.first',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_SECOND = 'subscription.premium.tooltip.list.second',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THIRD = 'subscription.premium.tooltip.list.third',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FOURTH = 'subscription.premium.tooltip.list.fourth',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIFTH = 'subscription.premium.tooltip.list.fifth',
+	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THANKS = 'subscription.premium.tooltip.list.thanks',
 	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
 	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
 	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
@@ -787,11 +828,25 @@ export enum Guru {
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
+	MEDIA_INTRODUCTION_TITLE = 'introduction.title',
+	MEDIA_INTRODUCTION_DESCRIPTION = 'introduction.description',
+	MEDIA_EXPERTS_TITLE = 'experts.title',
+	MEDIA_EXPERTS_DESCRIPTION = 'experts.description',
+	MEDIA_CHANNELS_TITLE = 'channels.title',
+	MEDIA_CHANNELS_DESCRIPTION = 'channels.description',
+	MEDIA_FACT = 'fact',
+	GURU_DESCRIPTION = 'guru.description',
+	TELEGRAM_SUBSCRIBE = 'telegram.subscribe',
+	TELEGRAM_DESCRIPTION = 'telegram.description',
 }
+
 export enum Marketplace {
+	HEADER_TITLE = 'header.title',
+	LINK_LABEL = 'add.resource.link.label',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
 	HIDE = 'hide',
+	DELETE = 'delete',
 	KEYWORDS_TITLE = 'keywords.title',
 	RESOURCES_TITLE = 'resources.title',
 	RESOURCES_REPOSITORY = 'resources.repository',
@@ -800,4 +855,29 @@ export enum Marketplace {
 	RESOURCES_COURSE = 'resources.course',
 	STATUS_ALL = 'status.all',
 	STATUS_TITLE = 'status.title',
+	ADD_RESOURCE_TITLE = 'add.resource.title',
+	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
+	NAME_SHORT = 'name.short',
+	NAME_LABEL = 'name.label',
+	DESCRIPTION_SHORT = 'description.short',
+	DESCRIPTION_LABEL = 'description.label',
+	PROVIDER_SHORT = 'provider.short',
+	PROVIDER_LABEL = 'provider.label',
+	ICON_SHORT = 'icon.short',
+	ICON_LABEL = 'icon.label',
+	TYPES_SHORT = 'types.short',
+	TYPES_LABEL = 'types.label',
+	SPECIALIZATIONS_SHORT = 'specializations.short',
+	SPECIALIZATIONS_LABEL = 'specializations.label',
+	SKILLS_SHORT = 'skills.short',
+	SKILLS_LABEL = 'skills.label',
+	KEYWORDS_SHORT = 'keywords.short',
+	KEYWORDS_LABEL = 'keywords.label',
+	ACCESS_CATEGORY_SHORT = 'access.category.short',
+	ACCESS_CATEGORY_LABEL = 'access.category.label',
+	IS_ACTIVE_SHORT = 'is.active.short',
+	IS_ACTIVE_LABEL = 'is.active.label',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
 }

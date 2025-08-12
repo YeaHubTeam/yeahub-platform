@@ -1,0 +1,22 @@
+.tooltip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tooltip-list li {
+  position: relative;
+  padding: 2px 0;
+  padding-left: 16px;
+}
+
+.tooltip-list li::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-purple-700);
+}

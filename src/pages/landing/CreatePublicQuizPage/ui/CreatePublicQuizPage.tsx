@@ -3,14 +3,13 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import {
 	MAX_LIMIT_CATEGORIES,
 	MAX_LIMIT_SPECIALIZATIONS,
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -24,8 +23,13 @@ import {
 	ChooseQuestionsCategories,
 	ChooseSpecialization,
 } from '@/entities/question';
-import { QuestionModeType, QuizQuestionMode, useLazyCreateNewMockQuizQuery } from '@/entities/quiz';
+import {
+	QuestionModeType,
+	QuizQuestionMode,
+	useLazyCreateNewMockPublicQuizQuery,
+} from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
+import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -40,7 +44,7 @@ const CreatePublicQuizPage = () => {
 
 	const { filter, handleFilterChange } = useQueryFilter();
 	const [createNewMockQuiz, { isLoading: isCreateNewMockQuizLoading }] =
-		useLazyCreateNewMockQuizQuery();
+		useLazyCreateNewMockPublicQuizQuery();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_LIMIT_CATEGORIES,
@@ -49,7 +53,10 @@ const CreatePublicQuizPage = () => {
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
 	const { isMobile, isTablet } = useScreenSize();
-	const isAuth = Boolean(getFromLS(LS_ACCESS_TOKEN_KEY));
+
+	useEffect(() => {
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER));
+	}, []);
 
 	useEffect(() => {
 		if (filter.specialization?.length && filter.specialization[0] !== selectedSpecialization) {
@@ -130,19 +137,19 @@ const CreatePublicQuizPage = () => {
 						<ChooseQuestionComplexity
 							selectedComplexity={filter.complexity}
 							onChangeComplexity={onChangeComplexity}
-							disabled={!isAuth}
+							disabled={true}
 						/>
 						<QuizQuestionMode
 							onChangeMode={onChangeMode}
 							modeFromURL={filter.mode}
-							disabled={!isAuth}
-							active={!isAuth}
+							disabled={true}
+							active={true}
 						/>
 						<ChooseQuestionCount
 							onChangeLimit={onChangeLimit}
 							count={filter.count || 1}
-							maxCount={isAuth ? undefined : MAX_CHOOSE_QUESTION_COUNT}
-							disabled={!isAuth}
+							maxCount={MAX_CHOOSE_QUESTION_COUNT}
+							disabled={true}
 						/>
 					</Flex>
 				</Flex>

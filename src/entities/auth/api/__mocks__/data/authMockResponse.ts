@@ -16,6 +16,7 @@ export const authMockResponse: AuthResponse = {
 		updatedAt: '',
 		subscriptions: [
 			{
+				state: 'active',
 				id: 'sub-123',
 				subscriptionId: 1001,
 				userId: 'user-789',

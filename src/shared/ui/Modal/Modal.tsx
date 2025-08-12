@@ -5,25 +5,12 @@ import { createPortal } from 'react-dom';
 import { Pallete } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+import { ModalProps } from '@/shared/ui/Modal/ModalTypes';
 import { Text } from '@/shared/ui/Text';
 
 import { VariantType } from '../Button/types';
 
 import styles from './Modal.module.css';
-
-export type ModalProps = {
-	title: string;
-	isOpen: boolean;
-	onClose: () => void;
-	children: React.ReactNode;
-	buttonPrimaryText?: string;
-	buttonOutlineText?: string;
-	buttonPrimaryClick?: () => void;
-	buttonOutlineClick?: () => void;
-	buttonPrimaryDisabled?: boolean;
-	buttonOutlineDisabled?: boolean;
-	variant?: 'default' | 'error';
-};
 
 const createPortalRoot = () => {
 	const modalRoot = document.createElement('div');
@@ -38,7 +25,7 @@ const titleColors: Record<string, Pallete> = {
 };
 
 const closeIconColors: Record<string, Pallete> = {
-	default: 'black-25',
+	default: 'purple-700',
 	error: 'red-600',
 };
 
@@ -53,7 +40,6 @@ const outlineButtonVariants: Record<string, VariantType> = {
 };
 
 export const Modal = ({
-	title,
 	isOpen,
 	onClose,
 	buttonPrimaryText,
@@ -64,6 +50,8 @@ export const Modal = ({
 	buttonOutlineDisabled,
 	variant = 'default',
 	children,
+	title,
+	className = '',
 }: ModalProps) => {
 	const portalRootRef = useRef(document.getElementById('modal-root') || createPortalRoot());
 	const renderRootRef = useRef(document.body);
@@ -71,12 +59,14 @@ export const Modal = ({
 	const overlayRef = useRef<HTMLDivElement>(null);
 
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation();
 		const target = e.target as Node;
 		if (overlayRef.current && !overlayRef.current.contains(target)) {
 			onClose();
 		}
 	};
-	const handleClickXCircle = () => {
+	const handleClickXCircle = (e: React.MouseEvent<SVGElement>) => {
+		e.stopPropagation();
 		onClose();
 	};
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
@@ -130,36 +120,42 @@ export const Modal = ({
 					aria-label="Закрыть модальное окно"
 					onKeyDown={handleKeyDown}
 				/>
-				<Text
-					className={classNames(styles.title, styles[`${variant}-title`])}
-					variant="body6"
-					color={titleColors[variant]}
-				>
-					{title}
-				</Text>
-				<Text className={styles.text} variant="body3">
-					{children}
-				</Text>
+				<div className={classNames(styles['content-wrapper'], className)}>
+					{title && (
+						<Text
+							className={classNames(styles.title, styles[`${variant}-title`])}
+							variant="body5-accent"
+							color={titleColors[variant]}
+						>
+							{title}
+						</Text>
+					)}
+					<Text className={styles.text} variant="body3">
+						{children}
+					</Text>
+				</div>
 				{isButtons && (
 					<div className={classNames(styles.buttons, styles[`${variant}-buttons`])}>
 						{buttonPrimaryText && (
 							<Button
-								style={{ width: '100%' }}
+								style={{ maxWidth: '240px' }}
 								variant={primaryButtonVariants[variant]}
 								size="large"
 								onClick={buttonPrimaryClick}
 								disabled={buttonPrimaryDisabled}
+								fullWidth
 							>
 								{buttonPrimaryText}
 							</Button>
 						)}
 						{buttonOutlineText && (
 							<Button
-								style={{ width: '100%' }}
+								style={{ backgroundColor: 'transparent', maxWidth: '240px' }}
 								variant={outlineButtonVariants[variant]}
 								size="large"
 								onClick={buttonOutlineClick}
 								disabled={buttonOutlineDisabled}
+								fullWidth
 							>
 								{buttonOutlineText}
 							</Button>

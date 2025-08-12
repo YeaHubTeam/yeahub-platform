@@ -92,7 +92,8 @@
 		"file": {
 			"size": "Большой размер файла",
 			"type": "Неверный формат файла"
-		}
+		},
+		"link": "Ссылки запрещены"
 	},
 	"crumbs": {
 		"profile": "Профиль",
@@ -126,14 +127,14 @@
 			},
 			"login": {
 				"failed": "Неверный email или пароль."
-			}
-		},
-		"user": {
-			"email": {
-				"not_exist": "Пользователя с таким email не существует."
 			},
-			"password": {
-				"wrong": "Неверный пароль."
+			"user": {
+				"email": {
+					"not_exist": "Пользователя с таким email не существует."
+				},
+				"password": {
+					"wrong": "Неверный пароль."
+				}
 			}
 		},
 		"questions": {
@@ -226,6 +227,12 @@
 			"edit": {
 				"success": "Коллекция успешно изменена",
 				"failed": "Не удалось изменить коллекцию"
+			}
+		},
+		"resources": {
+			"create": {
+				"success": "Ресурс успешно создан",
+				"failed": "Не удалось создать ресурс"
 			}
 		},
 		"profile": {
@@ -325,6 +332,17 @@
 			},
 			"subscribe": {
 				"failed": "Не удалось подключить подписку"
+			},
+			"trial": {
+				"success": "You have successfully connected a trial subscription",
+				"failed": "Failed to connect trial subscription"
+			}
+		}
+	},
+	"tooltip": {
+		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
 			}
 		}
 	},
@@ -342,5 +360,6 @@
 	"editor.undo": "Отменить",
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
-	"editor.ordered.list": "Нумерованный список"
+	"editor.ordered.list": "Нумерованный список",
+	"tooltip.premiumonly": "Доступно для участников"
 }

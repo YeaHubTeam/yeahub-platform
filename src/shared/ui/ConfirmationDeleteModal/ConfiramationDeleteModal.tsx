@@ -1,13 +1,13 @@
 import { ChangeEvent, useState } from 'react';
 
 import { Input } from '@/shared/ui/Input';
-import { Modal, ModalProps } from '@/shared/ui/Modal';
+import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
 import styles from './ConfirmationDeleteModal.module.css';
 
-export type UserDeleteAccountModalProps = Pick<ModalProps, 'isOpen' | 'onClose'> & {
+export interface UserDeleteAccountModalProps extends RequiredModalProps {
 	confirmationName: string;
 	onDelete: () => void;
 	modalTitle: string;
@@ -16,7 +16,7 @@ export type UserDeleteAccountModalProps = Pick<ModalProps, 'isOpen' | 'onClose'>
 	deleteDescriptionModal: string;
 	deleteLabel: string;
 	deletePlaceholder: string;
-};
+}
 
 export const ConfirmationDeleteModal = ({
 	isOpen,

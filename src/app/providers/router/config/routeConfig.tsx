@@ -10,12 +10,15 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+
+import { listAdminRoles, RoleName } from '@/entities/auth';
 
 import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
@@ -53,6 +56,7 @@ import { CollectionPage as InterviewCollectionPage } from '@/pages/interview/Col
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/interview/CollectionsPage';
 import { CreateQuizPage } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryPage } from '@/pages/interview/InterviewHistoryPage';
+import { InterviewMockQuizResultPage } from '@/pages/interview/InterviewMockQuizResultPage';
 import { InterviewPage } from '@/pages/interview/InterviewPage';
 import { InterviewQuizPage } from '@/pages/interview/InterviewQuizPage';
 import { InterviewQuizResultPage } from '@/pages/interview/InterviewQuizResultPage';
@@ -63,10 +67,12 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
+import { MediaPage } from '@/pages/landing/MediaPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
 import { PublicMarketplacePage } from '@/pages/landing/PublicMarketplacePage';
+import { PublicMarketplaceRequestPage } from '@/pages/landing/PublicMarketplaceRequestPage';
 import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
@@ -88,12 +94,24 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 
+export const allRoles: RoleName[] = [
+	'guest',
+	'candidate',
+	'member',
+	'admin',
+	'HR',
+	'candidate-free',
+	'candidate-premium',
+	'author',
+];
+
 const mainLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
 		route: ROUTES.adminRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_ADMIN),
 		icon: Crown,
+		roles: listAdminRoles,
 		isAdmin: true,
 	},
 	{
@@ -101,12 +119,21 @@ const mainLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.platformRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
+		roles: allRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.profile.route,
 		title: i18n.t(Translation.PROFILE),
 		icon: ProfileIcon,
+		roles: allRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.settings.route,
+		title: i18n.t(Translation.HEADER_MENU_SETTINGS),
+		icon: SettingsIcon,
+		roles: allRoles,
 	},
 	{
 		type: 'category',
@@ -119,6 +146,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 				icon: InterviewIcon,
 			},
 		],
+		roles: allRoles,
 	},
 ];
 
@@ -128,6 +156,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.platformRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
+		roles: listAdminRoles,
 		isAdmin: true,
 	},
 	{
@@ -135,42 +164,49 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.adminRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: Home,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.questions.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
 		icon: QuestionsIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.specializations.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_SPECIALIZATIONS),
 		icon: SpecializationIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.skills.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_SKILLS),
 		icon: SkillsIcon,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
+		roles: ['admin'],
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.collections.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 		icon: Collection,
+		roles: listAdminRoles,
 	},
 	{
 		type: 'single',
 		route: ROUTES.admin.companies.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
 		icon: Companies,
+		roles: listAdminRoles,
 	},
 ];
 
@@ -197,11 +233,25 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.marketplace.route,
-				element: <PublicMarketplacePage />,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicMarketplacePage />,
+					},
+					{
+						path: ROUTES.marketplace.request.route,
+						element: <PublicMarketplaceRequestPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.docs.page,
 				element: <DocsPage />,
+			},
+			{
+				path: ROUTES.media.page,
+				element: <MediaPage />,
 			},
 			{
 				path: ROUTES.questions.route,
@@ -438,6 +488,10 @@ export const router = createBrowserRouter([
 						element: <InterviewPage />,
 					},
 					{
+						path: 'new/result',
+						element: <InterviewMockQuizResultPage />,
+					},
+					{
 						path: ROUTES.interview.history.route,
 						element: (
 							<VerifiedEmailRoute>
@@ -520,9 +574,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.quiz.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<Outlet />
-								</PremiumRoute>
+								<Outlet />
 							</VerifiedEmailRoute>
 						),
 						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
@@ -532,9 +584,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.interview.new.route,
 						element: (
 							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<InterviewQuizPage />
-								</PremiumRoute>
+								<InterviewQuizPage />
 							</VerifiedEmailRoute>
 						),
 						handle: {

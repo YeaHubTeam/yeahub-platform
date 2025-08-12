@@ -14,7 +14,7 @@
   line-height: 38px;
 }
 
-.subscription-description{
+.subscription-description {
   line-height: 18px;
 }
 
@@ -25,7 +25,7 @@
 .subscription-check-inactive {
   width: 20px;
   height: 20px;
-  fill: var(--color-black-500)
+  fill: var(--color-black-500);
 }
 
 .subscription-check-active {
@@ -56,9 +56,8 @@
   flex-direction: column;
 }
 
-.subscription-header svg {
-  width: 39px;
-  height: 39px;
+.btn-wrapper {  
+  gap:20px;
 }
 
 @media (width <= 1024px) {
@@ -70,5 +69,9 @@
 @media (width <= 768px) {
   .advantages-and-button-container {
     flex-direction: column-reverse;
+  }
+	
+  .btn-wrapper{
+    flex-direction: column;
   }
 }

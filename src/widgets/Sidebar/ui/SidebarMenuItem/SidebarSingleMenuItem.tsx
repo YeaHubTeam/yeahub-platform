@@ -28,9 +28,10 @@ const SidebarSingleMenuItem = ({
 	const location = useLocation();
 	const { t } = useTranslation(i18Namespace.translation);
 	const isProfileItem = menuItem.route === ROUTES.profile.route;
-
+	const isSettingItem = menuItem.route === ROUTES.settings.route;
 	const isActiveItem = isPathMatch(menuItem.route, location.pathname);
-	if (isProfileItem && !(isMobile || isTablet)) {
+
+	if ((isProfileItem || isSettingItem) && !(isMobile || isTablet)) {
 		return null;
 	}
 	return (
@@ -52,14 +53,19 @@ const SidebarSingleMenuItem = ({
 				}
 				to={menuItem.route}
 			>
-				<div className={styles.container}>
+				<div className={styles.container} data-testid="SidebarSingleMenuItem">
 					<div className={styles.wrap}>
 						<ImageComponent className={styles.icon} />
 						<span className={classNames(styles.title)}>{t(menuItem.title)}</span>
 					</div>
 					<div className={styles.side}>
 						{menuItem.notifications && (
-							<div className={styles.notifications}>{menuItem.notifications}</div>
+							<div
+								className={styles.notifications}
+								data-testid="SidebarSingleMenuItem_Notifications"
+							>
+								{menuItem.notifications}
+							</div>
 						)}
 					</div>
 				</div>

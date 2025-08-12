@@ -60,6 +60,7 @@
 		"email": "Enter e-mail",
 		"submit": "Confirm",
 		"sent.success": "The email was successfully sent to the mail",
+		"spam.message": "Check the spam: the email could have got there.",
 		"verify.stub": {
 			"title": "{{username}}, confirm your e-mail",
 			"description": "Become a part of our team! Confirm your e-mail to get access to additional features of the platform and start expanding your horizons in a community of dedicated professionals like you. Join us on the way to new heights!",
@@ -90,6 +91,13 @@
 			"label": "Enter your username to confirm",
 			"placeholder": "Enter your username",
 			"button": "Delete Profile"
+		}
+	},
+	"tooltip": {
+		"create.profile.button": {
+			"limit.reached": "Profile limit reached",
+			"empty.specialization": "A profile without a selected specialization exists",
+			"not.member": "Available for members only"
 		}
 	}
 }

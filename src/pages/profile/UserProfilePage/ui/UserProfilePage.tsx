@@ -20,8 +20,10 @@ export const UserProfilePage = () => {
 		dispatch(profileActions.setIsEdit(false));
 	}, []);
 
-	const { description, profileSkills, specializationId } = profile?.profiles?.[0] || {};
-	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId));
+	const { description, profileSkills, specializationId } = profile?.activeProfile || {};
+	const { data: profileSpecialization } = useGetSpecializationByIdQuery(String(specializationId), {
+		skip: !specializationId,
+	});
 
 	return (
 		profile && (

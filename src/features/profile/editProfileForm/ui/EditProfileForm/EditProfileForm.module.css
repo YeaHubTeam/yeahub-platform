@@ -1,6 +1,9 @@
 section * {
   list-style: none;
+}
 
+.title {
+  margin-bottom: 24px;
 }
 
 .section {

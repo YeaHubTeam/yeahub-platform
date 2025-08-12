@@ -13,6 +13,7 @@ export const authProfileQueryMockResponse: FullProfile = {
 	updatedAt: '2024-09-09T04:01:39.385Z',
 	subscriptions: [
 		{
+			state: 'active',
 			id: 'sub-123',
 			subscriptionId: 1001,
 			userId: 'user-789',
@@ -57,8 +58,20 @@ export const authProfileQueryMockResponse: FullProfile = {
 			links: [],
 			markingWeight: 1,
 			socialNetwork: [],
-			isActive: false,
+			isActive: true,
 		},
 	],
+	activeProfile: {
+		id: '03499949-5ba6-44fd-8600-3edd5cf88f68',
+		specializationId: 11,
+		profileType: 1,
+		profileSkills: [],
+		description: '',
+		image_src: '',
+		links: [],
+		markingWeight: 1,
+		socialNetwork: [],
+		isActive: true,
+	},
 	isEmailVerified: true,
 };

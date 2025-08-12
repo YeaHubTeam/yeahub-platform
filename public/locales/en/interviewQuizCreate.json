@@ -4,7 +4,8 @@
   "mode": {
     "select": "Choose mode",
     "select.tooltip.unauthorized": "The choice of mode will be available after registration",
-    "repeat": "Repeat",
+   	"select.tooltip.premiumonly": "Available to members",
+		"repeat": "Repeat",
     "new": "Only new",
     "random": "Random"
   }

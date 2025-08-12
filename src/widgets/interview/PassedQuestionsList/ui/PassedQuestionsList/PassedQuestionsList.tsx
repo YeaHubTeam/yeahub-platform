@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { useCurrentProject } from '@/shared/hooks';
+import { useAppSelector, useCurrentProject } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 
+import { getHasPremiumAccess } from '@/entities/profile';
 import { Answers } from '@/entities/quiz';
 
 import { PassedQuestionsItem } from '../PassedQuestionsItem/PassedQuestionsItem';
@@ -23,6 +24,7 @@ export const PassedQuestionsList = ({
 	handleClone,
 }: PassedQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const project = useCurrentProject();
 
@@ -33,7 +35,7 @@ export const PassedQuestionsList = ({
 					<PassedQuestionsItem key={question.questionId} question={question} />
 				))}
 			</ul>
-			{project === 'platform' && (
+			{project === 'platform' && hasPremium && (
 				<Button className={styles.button} size="large" onClick={handleClone}>
 					{t(InterviewQuizResult.CLONE_BUTTON)}
 				</Button>

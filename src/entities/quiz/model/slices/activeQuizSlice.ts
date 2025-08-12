@@ -1,8 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { clearStore } from '@/shared/config/store/clearStore';
+import { setToLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_ACTIVE_QUIZ_KEY } from '../constants/quizConstants';
+import { getValidActiveMockQuizFromLS } from '@/entities/quiz/model/helpers/getValidActiveMockQuizFromLS';
+import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
+
+import { LS_ACTIVE_MOCK_QUIZ_KEY, LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
 import { updateQuestionAnswer } from '../helpers/updateQuestionAnswer';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 
@@ -16,26 +20,66 @@ export const activeQuizSlice = createSlice({
 	reducers: {
 		setActiveQuizQuestions: (
 			state,
-			action: PayloadAction<{ questions: Answers[]; shouldSaveToLS?: boolean }>,
+			action: PayloadAction<{ questions: Answers[]; shouldSaveToLS?: boolean; profileId?: string }>,
 		) => {
-			const { questions, shouldSaveToLS = true } = action.payload;
+			const { questions, shouldSaveToLS = true, profileId } = action.payload;
 
 			if (questions.length > 0) {
-				shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, questions);
+				if (shouldSaveToLS && profileId) {
+					const { quizzes } = getValidActiveQuizzesFromLS();
+					setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: questions });
+				}
 				state.questions = questions;
 			}
 		},
 		changeQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
-			const { shouldSaveToLS } = action.payload;
+			const { shouldSaveToLS, profileId } = action.payload;
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
-			shouldSaveToLS && setToLS(LS_ACTIVE_QUIZ_KEY, state.questions);
+			if (shouldSaveToLS && profileId) {
+				const { quizzes } = getValidActiveQuizzesFromLS();
+				quizzes &&
+					setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+			}
 		},
-		clearActiveQuizState: (state) => {
+		changeMockQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
+			const { shouldSaveToLS, profileId } = action.payload;
+			state.questions = updateQuestionAnswer(state.questions, action.payload);
+			if (shouldSaveToLS && profileId) {
+				const { quizzes } = getValidActiveMockQuizFromLS();
+				quizzes &&
+					setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+			}
+		},
+		clearActiveQuizState: (state, action: PayloadAction<string>) => {
 			state.questions = [];
-			removeFromLS(LS_ACTIVE_QUIZ_KEY);
+			const { quizzes } = getValidActiveQuizzesFromLS();
+			quizzes && delete quizzes[action.payload];
+			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
 		},
+		clearActiveMockQuizState: (
+			state,
+			action: PayloadAction<{ shouldClearLS?: boolean; profileId?: string }>,
+		) => {
+			const { shouldClearLS = true, profileId } = action.payload;
+			state.questions = [];
+			if (shouldClearLS && profileId) {
+				const { quizzes } = getValidActiveMockQuizFromLS();
+				quizzes && delete quizzes[profileId];
+				setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}) });
+			}
+		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(clearStore, () => {
+			return initialState;
+		});
 	},
 });
 
-export const { setActiveQuizQuestions, changeQuestionAnswer, clearActiveQuizState } =
-	activeQuizSlice.actions;
+export const {
+	setActiveQuizQuestions,
+	changeQuestionAnswer,
+	changeMockQuestionAnswer,
+	clearActiveQuizState,
+	clearActiveMockQuizState,
+} = activeQuizSlice.actions;

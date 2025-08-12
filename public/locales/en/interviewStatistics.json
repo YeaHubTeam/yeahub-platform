@@ -1,31 +1,31 @@
 {
-  "passed": "passed",
-  "soon": "Statistics will \n appear here soon",
-  "link": "View full",
-  "progress": {
-    "title": "Progress"
-  },
-  "question.stats": {
-    "title": "Completed questions statistics for all categories",
-    "title.short": "Interview statistics",
-    "learned": "Learned questions",
-    "in.process": "In process",
-    "new": "New questions",
-    "all": "All questions"
-  },
-  "attemptStats": {
-    "title": "Statistics of completed interviews",
-    "best": {
-      "default": "Best result",
-      "mobile": "Best"
-    },
-    "worst": {
-      "default": "Worst result",
-      "mobile": "Worst"
-    },
-    "avg": {
-      "default": "Average result",
-      "mobile": "Average"
-    }
-  }
+	"passed": "passed",
+	"soon": "Statistics will \n appear here soon",
+	"link": "View full",
+	"progress": {
+		"title": "Progress"
+	},
+	"question.stats": {
+		"title": "Completed questions statistics for all categories",
+		"title.short": "Interview statistics",
+		"learned": "Learned questions",
+		"in.process": "In process",
+		"new": "New questions",
+		"all": "All questions"
+	},
+	"attemptStats": {
+		"title": "Statistics of completed interviews",
+		"best": {
+			"default": "Best result",
+			"mobile": "Best"
+		},
+		"worst": {
+			"default": "Worst result",
+			"mobile": "Worst"
+		},
+		"avg": {
+			"default": "Average result",
+			"mobile": "Average"
+		}
+	}
 }

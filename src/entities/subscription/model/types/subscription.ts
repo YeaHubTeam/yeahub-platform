@@ -5,6 +5,7 @@ export interface Subscription {
 	name: string;
 	description: string;
 	price: number;
+	tooltipBody?: React.ReactNode;
 	hasSubscribeButton: boolean;
 	discountedPrice?: number;
 	advantages: { title: string; isActive: boolean }[];
@@ -29,13 +30,19 @@ export type SubscriptionRoot = {
 	roles: SubscriptionRole[];
 };
 
+type SubscriptionState = 'canceled' | 'active' | 'inactive';
+
 export interface UserSubscription {
 	id: string;
 	createDate: string;
 	endDate: string;
 	subscriptionId: number;
 	userId: string;
+	state: SubscriptionState;
 	subscription: SubscriptionRoot;
+}
+export interface ActiveSubscriptionState {
+	subscription: UserSubscription | null;
 }
 
 export type GetUserSubscriptionResponse = UserSubscription[];

@@ -1,5 +1,7 @@
 import { FC, SVGProps } from 'react';
 
+import { RoleName } from '@/entities/auth';
+
 export type MenuItem = SingleMenuItem | CategoryMenuItem;
 export interface SingleMenuItem {
 	type: 'single';
@@ -7,6 +9,7 @@ export interface SingleMenuItem {
 	title: string;
 	icon: FC<SVGProps<SVGSVGElement>>;
 	notifications?: number;
+	roles?: RoleName[];
 	isAdmin?: boolean;
 }
 
@@ -20,4 +23,5 @@ export interface CategoryMenuItem {
 		icon: FC<SVGProps<SVGSVGElement>>;
 		route: string;
 	}[];
+	roles?: RoleName[];
 }

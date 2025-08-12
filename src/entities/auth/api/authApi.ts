@@ -2,6 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { ROUTES } from '@/shared/config/router/routes';
+import { clearStore } from '@/shared/config/store/clearStore';
 import { ExtraArgument } from '@/shared/config/store/types';
 import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
 import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
@@ -28,8 +29,9 @@ export const authApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra }) {
+			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
 				try {
+					dispatch(baseApi.util.resetApiState());
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
@@ -75,7 +77,9 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled, dispatch }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(profileActions.setFullProfile(result.data));
+					const activeProfile = result.data?.profiles.find((profile) => profile.isActive);
+					dispatch(profileActions.setFullProfile({ ...result.data, activeProfile }));
+					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -90,7 +94,10 @@ export const authApi = baseApi.injectEndpoints({
 					removeFromLS(LS_ACCESS_TOKEN_KEY);
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(ROUTES.auth.login.page);
-					dispatch(baseApi.util.resetApiState());
+					setTimeout(() => {
+						dispatch(baseApi.util.resetApiState());
+						dispatch(clearStore());
+					}, 0);
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					console.error(error);

@@ -1,65 +1,37 @@
-import { differenceInDays, getDaysInMonth } from 'date-fns';
+import { differenceInDays, formatDate, getDaysInMonth, parseISO } from 'date-fns';
+import { ru } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { DATE_FORMATS } from '@/shared/constants/dateFormats';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
-import { useGetUserSubscriptionQuery } from '@/entities/subscription';
+import { getActiveSubscription } from '@/entities/subscription';
 
 import { UnsubscribeButton } from '@/features/subscriptions/unsubscribe';
 
-// import { PayHistory } from '../../types/types';
-// import { PayHistoryList } from '../PayHistoryList/PayHistoryList';
+import { PayHistoryList } from '../PayHistoryList/PayHistoryList';
 
 import styles from './PremiumSubscriptionTab.module.css';
 
 export const PremiumSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const { id, subscriptions } = useAppSelector(getFullProfile);
-	const { data } = useGetUserSubscriptionQuery(id ?? '');
+	const { subscriptions } = useAppSelector(getFullProfile);
 
-	const endDate = data?.[0]?.endDate || '';
-	const createDate = data?.[0]?.createDate || '';
+	const activeSubscriptions = useAppSelector(getActiveSubscription);
+	const subscriptionState = activeSubscriptions?.state || '';
+	const endDate = activeSubscriptions?.endDate || '';
+	const createDate = activeSubscriptions?.createDate || '';
 
 	const restDays = differenceInDays(endDate, new Date());
 	const daysInMonth = getDaysInMonth(createDate);
-
-	// const payHistories: PayHistory[] = [
-	// 	{
-	// 		id: 1,
-	// 		status: 'pending',
-	// 		payDate: '2024-11-20T09:07:45.647Z',
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		status: 'pending',
-	// 		payDate: '2024-11-21T09:07:45.647Z',
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		status: 'success',
-	// 		payDate: '2024-11-23T09:07:45.647Z',
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		status: 'success',
-	// 		payDate: '2024-11-25T09:07:45.647Z',
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		status: 'pending',
-	// 		payDate: '2024-11-28T09:07:45.647Z',
-	// 	},
-	// ];
-
-	//const { D_MM_YYYY } = DATE_FORMATS;
-
+	const { D_MM_YYYY } = DATE_FORMATS;
 	return (
 		<>
 			<div className={styles['wrapper-top']}>
@@ -77,14 +49,19 @@ export const PremiumSubscriptionTab = () => {
 						label={t(Subscription.DAYS_LEFT, { count: restDays })}
 						variant="large"
 					/>
-					{/*<p className={styles.text}>
-						{t(Subscription.SUBSCRIPTION_RENEWAL, {
-							Date: formatDate(parseISO(endDate), D_MM_YYYY),
-						})}
-					</p> */}
+					<p className={styles.text}>
+						{t(
+							subscriptionState === 'active'
+								? Subscription.SUBSCRIPTION_RENEWAL
+								: Subscription.SUBSCRIPTION_CANCELED,
+							{
+								Date: formatDate(parseISO(endDate), D_MM_YYYY, { locale: ru }),
+							},
+						)}
+					</p>
 					<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 				</Flex>
-				{subscriptions.length > 0 ? (
+				{subscriptions.length > 0 && subscriptionState === 'active' ? (
 					<div className={styles['actions-button']}>
 						<Flex direction="row" gap="8">
 							<UnsubscribeButton />
@@ -92,7 +69,7 @@ export const PremiumSubscriptionTab = () => {
 					</div>
 				) : null}
 			</div>
-			{/*<PayHistoryList payHistories={payHistories} />*/}
+			<PayHistoryList />
 		</>
 	);
 };

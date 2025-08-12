@@ -22,6 +22,7 @@
 
 .head5 {
   line-height:127%;
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-p-l);
 }
 
@@ -317,4 +318,10 @@
 
 .text-rows-4 {
   -webkit-line-clamp: 4;
+}
+
+.limited {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

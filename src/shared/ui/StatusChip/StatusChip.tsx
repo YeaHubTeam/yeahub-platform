@@ -6,7 +6,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './StatusChip.module.css';
 
-export type StatusChipVariant = 'green' | 'yellow' | 'red';
+export type StatusChipVariant = 'green' | 'yellow' | 'red' | 'purple';
 
 export interface StatusChipItem {
 	text: string;
@@ -23,6 +23,7 @@ export const StatusChip = ({ status }: StatusChipProps) => {
 		red: 'red-900',
 		yellow: 'yellow-900',
 		green: 'green-900',
+		purple: 'purple-800',
 	};
 
 	return (

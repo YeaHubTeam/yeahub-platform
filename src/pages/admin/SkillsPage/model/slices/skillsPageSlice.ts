@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { clearStore } from '@/shared/config/store/clearStore';
 import { SelectedAdminEntities } from '@/shared/types/types';
 
 import { deleteMultipleSkillsThunk } from '@/features/skill/deleteSkills';
@@ -30,6 +31,9 @@ const skillsPageSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(deleteMultipleSkillsThunk.fulfilled, (state) => {
 			state.selectedSkills = [];
+		});
+		builder.addCase(clearStore, () => {
+			return initialState;
 		});
 	},
 });

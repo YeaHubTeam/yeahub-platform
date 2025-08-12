@@ -6,12 +6,20 @@
   background-color: var(--color-white-900);
 }
 
+.children {
+  max-width: 100%;
+}
+
 .green {
   border: 1px solid var(--color-green-600);
 }
 
 .yellow {
   border: 1px solid var(--color-yellow-800);
+}
+
+.red {
+  border: 1px solid var(--color-red-700);
 }
 
 .gray {

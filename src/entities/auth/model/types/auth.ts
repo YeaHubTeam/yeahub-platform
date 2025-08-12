@@ -19,6 +19,7 @@ export type SignUpFormValues = Pick<User, 'username' | 'email'> & {
 
 export interface FullProfile extends User {
 	profiles: Profile[];
+	activeProfile: Profile;
 }
 
 export interface AuthResponse {
@@ -58,12 +59,15 @@ interface GetSubscriptionResponse {
 	roles: RoleSubscription[];
 }
 
+type SubscriptionState = 'canceled ' | 'active' | 'inactive';
+
 interface Subscription {
 	id: string;
 	subscriptionId: number;
 	userId: string;
 	createDate: string;
 	endDate?: string;
+	state: SubscriptionState;
 	subscription: GetSubscriptionResponse;
 }
 
@@ -96,9 +100,10 @@ export type RoleName =
 	| 'candidate'
 	| 'member'
 	| 'admin'
-	| 'hr'
+	| 'HR'
 	| 'candidate-free'
-	| 'candidate-premium';
+	| 'candidate-premium'
+	| 'author';
 
 export interface Role {
 	id: number;

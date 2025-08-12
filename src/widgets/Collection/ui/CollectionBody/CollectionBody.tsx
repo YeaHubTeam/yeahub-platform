@@ -2,11 +2,12 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { Collection } from '@/entities/collection';
+import { CollectionWarningInfo } from '@/entities/collection';
 import { Question } from '@/entities/question';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
@@ -18,19 +19,25 @@ import styles from './CollectionBody.module.css';
 
 interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 	questions: Question[];
+	isAdmin?: boolean;
 	hasPremiumAccess?: boolean;
 }
 
-export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: CollectionBodyProps) => {
+export const CollectionBody = ({
+	questions,
+	isFree,
+	isAdmin = false,
+	hasPremiumAccess,
+}: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	// TODO: Добавить роут для сообщества
 
-	if (!isFree && !hasPremiumAccess)
+	if (!isFree && !hasPremiumAccess && !isAdmin)
 		return (
 			<Card
 				className={styles.wrapper}
 				title={t(Questions.PREVIEW_TITLE)}
-				actionRoute={ROUTES.platformRoute}
+				actionRoute={SELECT_TARIFF_SETTINGS_TAB}
 				actionTitle={t(Questions.COMMUNITY_JOIN)}
 				withOutsideShadow
 			>
@@ -39,7 +46,12 @@ export const CollectionBody = ({ questions, isFree, hasPremiumAccess }: Collecti
 		);
 
 	return (
-		<Card className={styles.wrapper} title={t(Questions.PREVIEW_TITLE)} withOutsideShadow>
+		<Card
+			className={styles.wrapper}
+			title={t(Questions.PREVIEW_TITLE)}
+			headerAction={<CollectionWarningInfo />}
+			withOutsideShadow
+		>
 			{questions.length ? (
 				<Flex componentType="ul" direction="column" gap="12">
 					{questions?.map((question) => (

@@ -7,6 +7,7 @@ import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
@@ -14,8 +15,14 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { SubscriptionCard } from '@/entities/subscription';
-import { subscriptionPrices } from '@/entities/subscription';
+import { isAvailableTrial } from '@/entities/profile';
+import {
+	PremiumSubscriptionTooltipBody,
+	SubscriptionCard,
+	subscriptionPrices,
+} from '@/entities/subscription';
+
+import { TrialButton } from '@/features/subscriptions/trial';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
@@ -64,6 +71,7 @@ export const AgreementForm = () => {
 			icon: <ProSubIcon className={styles['premium-sub-icon']} />,
 			name: t(SubscriptionCardI18.SUBSCRIPTION_CARD_PREMIUM_TITLE),
 			description: t(SubscriptionCardI18.SUBSCRIPTION_CARD_PREMIUM_DESCRIPTION),
+			tooltipBody: <PremiumSubscriptionTooltipBody />,
 			price: subscriptionPrices.price,
 			discountedPrice: subscriptionPrices.discountPrice,
 			hasSubscribeButton: true,
@@ -95,6 +103,8 @@ export const AgreementForm = () => {
 	);
 	const consentParts = parseI18nText(t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_CONSENT));
 
+	const hasTrialSubscriptions = useAppSelector(isAvailableTrial);
+
 	return (
 		<FormProvider {...subscriptionMethods}>
 			<Flex direction="column">
@@ -118,11 +128,19 @@ export const AgreementForm = () => {
 						)}
 						className={styles.free}
 					/>
+
 					<SubscriptionCard
 						subscription={subscriptions[1]}
 						renderSubscribeButton={() => (
 							<SubscribeButton className={styles['subscription-button']} />
 						)}
+						{...(hasTrialSubscriptions
+							? {
+									renderTrialButton: () => (
+										<TrialButton className={styles['subscription-button']} />
+									),
+								}
+							: {})}
 						className={styles.premium}
 					/>
 				</Flex>
