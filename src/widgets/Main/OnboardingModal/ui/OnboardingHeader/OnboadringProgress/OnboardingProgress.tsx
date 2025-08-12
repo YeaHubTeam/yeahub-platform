@@ -4,18 +4,17 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './OnboardingProgress.module.css';
 
-const FINAL_STEP = 5;
-
 export interface OnboardingProgressProps {
 	activeStep: number;
+	finalStep: number;
 }
 
-export const OnboardingProgress = ({ activeStep }: OnboardingProgressProps) => {
+export const OnboardingProgress = ({ activeStep, finalStep }: OnboardingProgressProps) => {
 	return (
 		<Flex className={styles['progress']} justify="center" align="center">
 			<StepIndicatorIcon activeStep={activeStep} />
 			<Text variant="body3-strong">
-				{activeStep}/{FINAL_STEP}
+				{activeStep}/{finalStep}
 			</Text>
 		</Flex>
 	);

@@ -12,11 +12,12 @@
 }
 
 .button-container button {
+  padding: 15px 20px;;
   width: 100%;
   max-width: 240px;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .button-container {
     padding-right: 0;
     width: 100%;

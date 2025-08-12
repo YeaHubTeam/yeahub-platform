@@ -31,9 +31,12 @@
 }
 
 @media (width < 768px) {
+  .stepper-container {
+    padding: 20px 10px;
+  }
+
   .active-step-content {
     padding: 20px 10px;
-
   }
 }
 

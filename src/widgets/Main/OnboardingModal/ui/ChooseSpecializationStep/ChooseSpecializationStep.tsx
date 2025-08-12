@@ -15,7 +15,11 @@ import { LayoutStepComponent } from '../LayoutStepComponent/LayoutStepComponent'
 
 import styles from './ChooseSpecializationStep.module.css';
 
-export const ChooseSpecializationStep = (goNextStep?: () => void) => {
+interface ChooseSpecializationStepProps {
+	goNextStep?: () => void;
+}
+
+export const ChooseSpecializationStep = ({ goNextStep }: ChooseSpecializationStepProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const profile = useAppSelector(getFullProfile);
 	const currentSpecialization = useAppSelector(getSpecializationId);
@@ -40,8 +44,9 @@ export const ChooseSpecializationStep = (goNextStep?: () => void) => {
 		<LayoutStepComponent
 			title={t(Onboarding.CHOOSE_SPECIALIZATION_TITLE)}
 			description={t(Onboarding.CHOOSE_SPECIALIZATION_CONTENT)}
-			buttonLeftClick={onStepComplete}
-			buttonLeftText={t(Onboarding.CHOOSE_SPECIALIZATION_BUTTON)}
+			buttonPrimaryClick={onStepComplete}
+			buttonPrimaryText={t(Onboarding.CHOOSE_SPECIALIZATION_BUTTON)}
+			className={styles['specialization']}
 		>
 			<div className={styles['select-container']}>
 				<Text variant={'body2'} color={'black-700'}>

@@ -1,5 +1,9 @@
-import { To } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { To, useNavigate } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -9,12 +13,32 @@ import type { NavItem } from '../../../model/types/types';
 
 import styles from './NavigationBlock.module.css';
 
-interface NavigationBlockProps {
-	navItems: NavItem[];
-	onMoveService: (serviceLink: To) => void;
-}
+export const NavigationBlock = () => {
+	const { t } = useTranslation(i18Namespace.onboarding);
+	const navigate = useNavigate();
 
-export const NavigationBlock = ({ navItems, onMoveService }: NavigationBlockProps) => {
+	const navItems: NavItem[] = [
+		{
+			icon: 'question',
+			label: t(Onboarding.FINAL_QUESTIONS_LINK),
+			route: ROUTES.interview.questions.page,
+		},
+		{
+			icon: 'checkList',
+			label: t(Onboarding.FINAL_TRAINER_LINK),
+			route: ROUTES.interview.quiz.page,
+		},
+		{
+			icon: 'student',
+			label: t(Onboarding.FINAL_INTERVIEW_LINK),
+			route: ROUTES.interview.collections.page,
+		},
+	];
+
+	const onMoveService = (serviceLink: To) => {
+		navigate(serviceLink);
+	};
+
 	return (
 		<Flex
 			componentType={'ul'}

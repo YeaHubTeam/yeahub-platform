@@ -2,12 +2,12 @@
   align-items: center;
 }
 
-.greeting h3 {
+.greeting > *:first-child {
   position: relative;
   line-height: 127%;
 }
 
-.greeting h3::after {
+.greeting> *:first-child::after {
   position: absolute;
   top: -29px;
   left: -24px;
@@ -21,7 +21,6 @@
 .greeting p {
   text-align: center;
   line-height: 130%;
-  font-weight: var(--font-weight-400);
 }
 
 .greeting button {
@@ -29,12 +28,11 @@
 }
 
 @media (width < 1024px) {
-  .greeting h3 {
+  .greeting  {
     align-self: center;
-    font-size: var(--font-size-h-xs);
   }
 
-  .greeting h3::after {
+  .greeting > *:first-child::after {
     top: -25px;
     left: -22px;
     width: 44px;

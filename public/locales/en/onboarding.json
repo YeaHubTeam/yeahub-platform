@@ -2,11 +2,11 @@
 	"title": "Onboarding",
 	"description": "Discover the benefits of the YeaHub platform",
 	"stepper": {
-		"first.step": "Greeting and Introduction",
-		"second.step": "Choosing a specialization",
-		"third.step": "Preparing for interviews",
-		"fourth.step": "Membership and Statistics",
-		"fifth.step": "Finishing"
+		"greeting.step": "Greeting and Introduction",
+		"choose.specialization.step": "Choosing a specialization",
+		"service.overview.step": "Preparing for interviews",
+		"subscription.step": "Membership and Statistics",
+		"final.step": "Finishing"
 	},
 		"greeting": {
 			"title": "Welcome!",

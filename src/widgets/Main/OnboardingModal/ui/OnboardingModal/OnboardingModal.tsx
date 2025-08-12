@@ -17,36 +17,41 @@ import { SubscriptionBenefitsStep } from '../SubscriptionBenefitsStep/Subscripti
 
 import styles from './OnboardingModal.module.css';
 
-export type Steps = 1 | 2 | 3 | 4 | 5;
+export type OnboardingStep =
+	| 'greeting'
+	| 'choose-specialization'
+	| 'service-overview'
+	| 'subscription'
+	| 'final';
 
-const getSteps = (t: (arg: string) => string): Step<Steps>[] => [
+const getSteps = (t: (arg: string) => string): Step<OnboardingStep>[] => [
 	{
-		id: 1,
-		label: t(Onboarding.STEPPER_FIRST_STEP),
+		id: 'greeting',
+		label: t(Onboarding.STEPPER_GREETING_STEP),
 		image: 'handShake',
 		Component: GreetingStep,
 	},
 	{
-		id: 2,
-		label: t(Onboarding.STEPPER_SECOND_STEP),
+		id: 'choose-specialization',
+		label: t(Onboarding.STEPPER_CHOOSE_SPECIALIZATION_STEP),
 		image: 'specialization',
 		Component: ChooseSpecializationStep,
 	},
 	{
-		id: 3,
-		label: t(Onboarding.STEPPER_THIRD_STEP),
+		id: 'service-overview',
+		label: t(Onboarding.STEPPER_SERVICE_OVERVIEW_STEP),
 		image: 'student',
 		Component: ServiceOverviewStep,
 	},
 	{
-		id: 4,
-		label: t(Onboarding.STEPPER_FOURTH_STEP),
+		id: 'subscription',
+		label: t(Onboarding.STEPPER_SUBSCRIPTION_STEP),
 		image: 'graphUp',
 		Component: SubscriptionBenefitsStep,
 	},
 	{
-		id: 5,
-		label: t(Onboarding.STEPPER_FIFTH_STEP),
+		id: 'final',
+		label: t(Onboarding.STEPPER_FINAL_STEP),
 		image: 'keySquare',
 		Component: FinalStep,
 	},
@@ -58,26 +63,32 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 
 	const { isMobileM } = useScreenSize();
 
-	const [activeStep, setActiveStep] = useState<Step<Steps>>(steps[0]);
+	const [activeStep, setActiveStep] = useState<Step<OnboardingStep>>(steps[0]);
 	const activeStepIndex = steps.findIndex((step) => step.id === activeStep.id);
+	const allowClose = activeStepIndex === steps.length - 1;
 
 	const goNextStep = () => {
 		setActiveStep(steps[activeStepIndex + 1]);
 	};
 
 	const onCloseModal = () => {
-		if (activeStepIndex === steps.length - 1) {
+		if (allowClose) {
 			onClose();
 		}
 	};
 
-	const StepComponent = () => activeStep.Component(goNextStep);
+	const StepComponent = () => activeStep.Component({ goNextStep });
 
 	return (
-		<Modal isOpen={isOpen} onClose={onCloseModal} className={styles['onboarding-modal']}>
+		<Modal
+			isOpen={isOpen}
+			onClose={onCloseModal}
+			withCloseIcon={allowClose}
+			className={styles['onboarding-modal']}
+		>
 			<Flex direction={isMobileM ? 'column' : 'row'}>
 				<Flex direction={'column'} className={styles['stepper-container']}>
-					<OnboardingHeader activeStep={activeStep.id} />
+					<OnboardingHeader activeStep={activeStepIndex + 1} finalStep={steps.length} />
 					<Stepper
 						steps={steps}
 						activeStep={activeStep}

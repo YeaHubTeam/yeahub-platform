@@ -7,7 +7,11 @@ import { Text } from '@/shared/ui/Text';
 import { AdvantagesBlock } from '../AdvantagesBlock/AdvantagesBlock';
 import { LayoutStepComponent } from '../LayoutStepComponent/LayoutStepComponent';
 
-export const ServiceOverviewStep = (goNextStep?: () => void) => {
+interface ServiceOverviewStepProps {
+	goNextStep?: () => void;
+}
+
+export const ServiceOverviewStep = ({ goNextStep }: ServiceOverviewStepProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const services = [
 		t(Onboarding.OVERVIEW_SERVICE_LIST_FIRST),
@@ -17,8 +21,8 @@ export const ServiceOverviewStep = (goNextStep?: () => void) => {
 	return (
 		<LayoutStepComponent
 			title={t(Onboarding.OVERVIEW_SERVICE_TITLE)}
-			buttonLeftClick={() => goNextStep?.()}
-			buttonLeftText={t(Onboarding.OVERVIEW_SERVICE_BUTTON)}
+			buttonPrimaryClick={() => goNextStep?.()}
+			buttonPrimaryText={t(Onboarding.OVERVIEW_SERVICE_BUTTON)}
 		>
 			<AdvantagesBlock items={services} />
 			<Text variant={'body3-accent'}>{t(Onboarding.OVERVIEW_SERVICE_DESCRIPTION)}</Text>

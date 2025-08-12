@@ -12,7 +12,7 @@ export interface Step<T> {
 	id: T;
 	label: string;
 	image: IconName;
-	Component: (goNextStep?: () => void) => JSX.Element;
+	Component: (props: { goNextStep?: () => void }) => JSX.Element;
 }
 
 export interface StepperProps<T> {
