@@ -14,11 +14,13 @@ import { useDeleteCompanyMutation } from '../../api/deleteCompanyApi';
 interface DeleteCompanyButtonProps {
 	companyId: Company['id'];
 	isDetailPage?: boolean;
+	disabled?: boolean;
 }
 
 export const DeleteCompanyButton = ({
 	companyId,
 	isDetailPage = false,
+	disabled = false,
 }: DeleteCompanyButtonProps) => {
 	const [deleteCompanyMutation] = useDeleteCompanyMutation();
 
@@ -46,6 +48,7 @@ export const DeleteCompanyButton = ({
 	return (
 		<>
 			<Button
+				disabled={disabled}
 				aria-label="Large"
 				style={{
 					width: isDetailPage ? 'auto' : '100%',
