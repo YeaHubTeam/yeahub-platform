@@ -17,6 +17,7 @@ export const i18Namespace = {
 	interviewStatistics: 'interviewStatistics',
 	landing: 'landing',
 	main: 'main',
+	onboarding: 'onboarding',
 	profile: 'profile',
 	questions: 'questions',
 	skill: 'skill',
