@@ -116,6 +116,16 @@ export interface RolePermission {
 	name: string;
 }
 
+export interface TelegramUser {
+	id: number;
+	first_name: string;
+	auth_date: number;
+	hash: string;
+	last_name?: string;
+	username?: string;
+	photo_url?: string;
+}
+
 export type LoginBodyRequest = LoginFormValues;
 export type LoginResponse = AuthResponse;
 
@@ -124,3 +134,6 @@ export type SignUpResponse = AuthResponse;
 
 export type RefreshResponse = AuthResponse;
 export type ProfileResponse = FullProfile;
+
+export type TelegramLoginBodyRequest = TelegramUser;
+export type TelegramLoginResponse = AuthResponse;

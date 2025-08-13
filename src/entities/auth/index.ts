@@ -7,12 +7,14 @@ export type {
 	User,
 	Role,
 	RoleName,
+	TelegramUser,
 } from './model/types/auth';
 export { listAdminRoles } from './model/constants/authConstants';
 export { authApi } from './api/authApi';
 export {
 	useLoginMutation,
 	useRegisterMutation,
+	useTelegramMutation,
 	useProfileQuery,
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
