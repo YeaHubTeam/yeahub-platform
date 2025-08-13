@@ -1,4 +1,3 @@
-// import { useFormContext } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +13,7 @@ import { listAdminRoles, useProfileQuery } from '@/entities/auth';
 import { ResourceForm } from '@/entities/resource';
 
 import { useCreateResourceMutation } from '../../api/createResourceApi';
+import { toCreateResourceBody } from '../../model/lib/map/toCreateResourceBody';
 import { CreateResourceFormValues } from '../../model/types/resourceCreateTypes';
 
 import styles from './ResourceCreateFormWithHeader.module.css';
@@ -30,7 +30,9 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		await createResourceMutation({ resource: data, isAdmin: isAdminRole });
+		const dto = toCreateResourceBody(data);
+
+		await createResourceMutation({ resource: dto, isAdmin: isAdminRole }).unwrap();
 	};
 
 	return (
