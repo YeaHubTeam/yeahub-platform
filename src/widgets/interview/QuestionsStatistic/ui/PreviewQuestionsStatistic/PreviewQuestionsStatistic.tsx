@@ -25,16 +25,15 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 	]);
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
 
-	const { data: profileStats } = useGetProfileQuizStatsQuery(profileId);
+	const { data: profileStats } = useGetProfileQuizStatsQuery(profileId, { skip: !hasPremium });
 
 	const questionStats = getQuestionsStats(profileStats?.questionsStat);
 
 	const allQuestion = profileStats?.questionsStat.uniqueQuestionsCount;
 	const newQuestion = profileStats?.questionsStat.unlearnedQuestionsCount;
 	const newUser = allQuestion === newQuestion;
-
-	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const statsActionTitleKey = !isEmailVerified
 		? t(Profile.EMAIL_VERIFICATION_VERIFY_STUB_LINK, { ns: i18Namespace.profile })
