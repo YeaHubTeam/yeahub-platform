@@ -34,6 +34,7 @@ export enum Translation {
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
@@ -391,6 +392,13 @@ export enum InterviewStatistics {
 	ATTEMPT_STATS_BEST_MOBILE = 'attempt.stats.best.mobile',
 	ATTEMPT_STATS_WORST_MOBILE = 'attempt.stats.worst.mobile',
 	ATTEMPT_STATS_AVG_MOBILE = 'attempt.stats.avg.mobile',
+}
+
+export enum Resources {
+	TITLE_SHORT = 'title.short',
+	DESCRIPTION = 'description.title',
+	ACCESS_CATEGORY = 'access_category',
+	AUTHOR = 'author',
 }
 
 export enum Questions {
