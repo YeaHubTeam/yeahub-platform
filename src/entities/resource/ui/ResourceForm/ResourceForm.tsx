@@ -106,11 +106,13 @@ export const ResourceForm = () => {
 					{({ onChange, value }) => {
 						return (
 							<div>
-								<SkillSelect
-									onChange={onChange}
-									value={value}
-									selectedSPecializations={selectedSpecializations}
-								/>
+								{!!selectedSpecializations.length && (
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSPecializations={selectedSpecializations}
+									/>
+								)}
 							</div>
 						);
 					}}
