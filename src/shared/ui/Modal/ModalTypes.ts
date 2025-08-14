@@ -8,6 +8,7 @@ export type ModalProps = {
 	buttonOutlineClick?: () => void;
 	buttonPrimaryDisabled?: boolean;
 	buttonOutlineDisabled?: boolean;
+	withCloseIcon?: boolean;
 	variant?: 'default' | 'error';
 	title?: string;
 	className?: string;

@@ -14,4 +14,11 @@ export const companyCreateSchema: yup.ObjectSchema<CreateCompanyFormValues> = yu
 	companyImage: yup.string().notRequired(),
 	inn: yup.string(),
 	kpp: yup.string(),
+	createdBy: yup
+		.object()
+		.shape({
+			id: yup.string().required(),
+			username: yup.string().required(),
+		})
+		.optional(),
 });

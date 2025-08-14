@@ -12,7 +12,6 @@ export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = 
 	provider: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	iconBase64: yup.string().defined(),
-	types: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),

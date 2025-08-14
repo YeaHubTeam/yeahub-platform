@@ -1,0 +1,9 @@
+.final {
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.final p + p {
+  padding: 0 20px;
+}

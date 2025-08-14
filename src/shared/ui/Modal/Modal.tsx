@@ -48,6 +48,7 @@ export const Modal = ({
 	buttonOutlineClick,
 	buttonPrimaryDisabled,
 	buttonOutlineDisabled,
+	withCloseIcon = true,
 	variant = 'default',
 	children,
 	title,
@@ -110,16 +111,18 @@ export const Modal = ({
 			onClick={handleOverlayClick}
 		>
 			<div className={classNames(styles.modal, styles[`${variant}-modal`])} ref={overlayRef}>
-				<Icon
-					icon="closeCircle"
-					type="button"
-					className={styles['x-circle']}
-					color={closeIconColors[variant]}
-					onClick={handleClickXCircle}
-					tabIndex={0}
-					aria-label="Закрыть модальное окно"
-					onKeyDown={handleKeyDown}
-				/>
+				{withCloseIcon && (
+					<Icon
+						icon="closeCircle"
+						type="button"
+						className={styles['x-circle']}
+						color={closeIconColors[variant]}
+						onClick={handleClickXCircle}
+						tabIndex={0}
+						aria-label="Закрыть модальное окно"
+						onKeyDown={handleKeyDown}
+					/>
+				)}
 				<div className={classNames(styles['content-wrapper'], className)}>
 					{title && (
 						<Text

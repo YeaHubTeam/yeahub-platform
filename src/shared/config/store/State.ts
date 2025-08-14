@@ -6,6 +6,7 @@ import { ActiveSubscriptionState } from '@/entities/subscription';
 import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
 import { CompaniesTablePageState } from '@/pages/admin/CompaniesTablePage';
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
+import { ResourcesTablePageState } from '@/pages/admin/ResourcesTablePage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
 import { UsersPageState } from '@/pages/admin/UserTablePage';
@@ -26,6 +27,7 @@ export interface State {
 	[baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 	questionsTablePage: QuestionsTablePageState;
 	companiesTablePage: CompaniesTablePageState;
+	resourcesTablePage: ResourcesTablePageState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
 	usersPage: UsersPageState;

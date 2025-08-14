@@ -16,7 +16,7 @@ export const EmailConfirmationTab = () => {
 
 	const { data: profile, refetch } = useProfileQuery();
 
-	const isEmailVerified = profile?.isEmailVerified;
+	const isEmailVerified = profile?.isVerified;
 
 	const email = profile?.email ?? '';
 

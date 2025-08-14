@@ -26,7 +26,7 @@ interface UserInfoProps {
 }
 
 export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps) => {
-	const { username, birthday, email, country, city, isEmailVerified, userRoles } = profile;
+	const { username, birthday, email, country, city, isVerified, userRoles } = profile;
 	const { t } = useTranslation(i18Namespace.profile);
 
 	const { isMobileS } = useScreenSize();
@@ -77,7 +77,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 			</ul>
 			<div className={styles['card-contacts']}>
 				{isEdit &&
-					(isEmailVerified ? (
+					(isVerified ? (
 						<Flex align="center" gap="4">
 							<DoubleCheck className={styles['svg-check']} />
 							<Text variant="body2" color="black-700">

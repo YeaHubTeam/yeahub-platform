@@ -73,5 +73,5 @@ export const authProfileQueryMockResponse: FullProfile = {
 		socialNetwork: [],
 		isActive: true,
 	},
-	isEmailVerified: true,
+	isVerified: true,
 };

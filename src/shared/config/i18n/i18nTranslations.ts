@@ -34,6 +34,7 @@ export enum Translation {
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
@@ -393,6 +394,13 @@ export enum InterviewStatistics {
 	ATTEMPT_STATS_AVG_MOBILE = 'attempt.stats.avg.mobile',
 }
 
+export enum Resources {
+	TITLE_SHORT = 'title.short',
+	DESCRIPTION = 'description.title',
+	ACCESS_CATEGORY = 'access_category',
+	AUTHOR = 'author',
+}
+
 export enum Questions {
 	COUNT = 'count',
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
@@ -490,6 +498,46 @@ export enum Main {
 	SUBSCRIBE_MEDIA_YEAHUB_DESCRIPTION = 'subscribe.media.yeahub.description',
 	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE = 'subscribe.media.community.yeahub.title',
 	SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_DESCRIPTION = 'subscribe.media.community.yeahub.description',
+}
+
+export enum Onboarding {
+	TITLE = 'title',
+	DESCRIPTION = 'description',
+	STEPPER_GREETING_STEP = 'stepper.greeting.step',
+	STEPPER_CHOOSE_SPECIALIZATION_STEP = 'stepper.choose.specialization.step',
+	STEPPER_SERVICE_OVERVIEW_STEP = 'stepper.service.overview.step',
+	STEPPER_SUBSCRIPTION_STEP = 'stepper.subscription.step',
+	STEPPER_FINAL_STEP = 'stepper.final.step',
+	GREETING_TITLE = 'greeting.title',
+	GREETING_CONTENT = 'greeting.content',
+	GREETING_BUTTON = 'greeting.button',
+	CHOOSE_SPECIALIZATION_TITLE = 'choose.specialization.title',
+	CHOOSE_SPECIALIZATION_CONTENT = 'choose.specialization.content',
+	CHOOSE_SPECIALIZATION_SELECT_LABEL = 'choose.specialization.select.label',
+	CHOOSE_SPECIALIZATION_BUTTON = 'choose.specialization.button',
+	OVERVIEW_SERVICE_TITLE = 'overview.service.title',
+	OVERVIEW_SERVICE_LIST_FIRST = 'overview.service.list.first',
+	OVERVIEW_SERVICE_LIST_SECOND = 'overview.service.list.second',
+	OVERVIEW_SERVICE_LIST_THIRD = 'overview.service.list.third',
+	OVERVIEW_SERVICE_DESCRIPTION = 'overview.service.description',
+	OVERVIEW_SERVICE_BUTTON = 'overview.service.button',
+	SUBSCRIPTION_TITLE = 'subscription.title',
+	SUBSCRIPTION_IMPROVEMENTS_LABEL = 'subscription.improvements.label',
+	SUBSCRIPTION_IMPROVEMENTS_LIST_FIRST = 'subscription.improvements.list.first',
+	SUBSCRIPTION_IMPROVEMENTS_LIST_SECOND = 'subscription.improvements.list.second',
+	SUBSCRIPTION_IMPROVEMENTS_LIST_THIRD = 'subscription.improvements.list.third',
+	SUBSCRIPTION_BENEFITS_LABEL = 'subscription.benefits.label',
+	SUBSCRIPTION_BENEFITS_LIST_FIRST = 'subscription.benefits.list.first',
+	SUBSCRIPTION_BENEFITS_LIST_SECOND = 'subscription.benefits.list.second',
+	SUBSCRIPTION_BENEFITS_LIST_THIRD = 'subscription.benefits.list.third',
+	SUBSCRIPTION_BENEFITS_LIST_FOURTH = 'subscription.benefits.list.fourth',
+	SUBSCRIPTION_LEFT_BUTTON = 'subscription.left.button',
+	SUBSCRIPTION_RIGHT_BUTTON = 'subscription.right.button',
+	FINAL_TITLE = 'final.title',
+	FINAL_CONTENT = 'final.content',
+	FINAL_QUESTIONS_LINK = 'final.questions.link',
+	FINAL_TRAINER_LINK = 'final.trainer.link',
+	FINAL_INTERVIEW_LINK = 'final.interview.link',
 }
 
 export enum Skills {
