@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -26,14 +25,12 @@ interface QuestionsTableProps {
 	questions?: Question[];
 	selectedQuestions?: SelectedAdminEntities;
 	onSelectQuestions?: (ids: SelectedAdminEntities) => void;
-	emptySlot?: ReactNode;
 }
 
 export const QuestionsTable = ({
 	questions,
 	selectedQuestions,
 	onSelectQuestions,
-	emptySlot,
 }: QuestionsTableProps) => {
 	const navigate = useNavigate();
 
@@ -136,7 +133,6 @@ export const QuestionsTable = ({
 			items={questions}
 			selectedItems={selectedQuestions}
 			onSelectItems={onSelectQuestions}
-			emptySlot={emptySlot}
 		/>
 	);
 };

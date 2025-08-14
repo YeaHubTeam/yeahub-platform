@@ -54,9 +54,7 @@ const QuestionsPage = () => {
 	};
 
 	const resetAll = () => {
-		dispatch(questionsTablePageActions.setSearch(''));
-		dispatch(questionsTablePageActions.setSelectedQuestions([]));
-		dispatch(questionsTablePageActions.setPage(1));
+		dispatch(questionsTablePageActions.resetFilters());
 		resetQueryFilters();
 	};
 
@@ -77,13 +75,17 @@ const QuestionsPage = () => {
 					questions={questions?.data}
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
-					emptySlot={isEmpty ? <EmptyStub text={search} resetFilters={resetAll} /> : undefined}
 				/>
-				<QuestionPagePagination
-					questionsResponse={questions}
-					currentPage={filter.page || 1}
-					onPageChange={onPageChange}
-				/>
+
+				{isEmpty && <EmptyStub text={search} resetFilters={resetAll} />}
+
+				{!isEmpty && (
+					<QuestionPagePagination
+						questionsResponse={questions}
+						currentPage={filter.page || 1}
+						onPageChange={onPageChange}
+					/>
+				)}
 			</Card>
 		</Flex>
 	);

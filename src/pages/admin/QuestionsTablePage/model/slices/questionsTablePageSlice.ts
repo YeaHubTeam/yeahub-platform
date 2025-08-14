@@ -27,6 +27,7 @@ const questionsTablePageSlice = createSlice({
 		setSelectedQuestions: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedQuestions = action.payload;
 		},
+		resetFilters: () => initialState,
 	},
 	extraReducers: (builder) => {
 		builder.addCase(clearStore, () => {

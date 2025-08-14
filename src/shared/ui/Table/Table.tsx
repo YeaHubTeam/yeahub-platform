@@ -1,4 +1,4 @@
-import { ReactNode, Children } from 'react';
+import { ReactNode } from 'react';
 
 import { SelectedEntities, SelectedEntity } from '@/shared/types/types';
 import { Checkbox } from '@/shared/ui/Checkbox';
@@ -24,7 +24,6 @@ interface TableProps<Id extends string | number, T> {
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
-	emptySlot?: ReactNode;
 }
 
 /**
@@ -44,7 +43,6 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	renderActions,
 	selectedItems,
 	onSelectItems,
-	emptySlot,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -65,10 +63,6 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 		}
 	};
 
-	const headerCells = renderTableHeader();
-	const baseCols = Children.toArray(headerCells).length;
-	const colSpan = baseCols + (selectedItems ? 1 : 0) + (hasActions ? 1 : 0);
-
 	return (
 		<table className={styles.table} data-testid="table">
 			<thead className={styles.head}>
@@ -83,27 +77,21 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				</tr>
 			</thead>
 			<tbody>
-				{items.length === 0 && emptySlot ? (
-					<tr>
-						<td colSpan={colSpan}>{emptySlot}</td>
+				{items.map((item) => (
+					<tr key={item.id} className={styles.row} data-testid="table-row">
+						{selectedItems && (
+							<td className={styles.cell}>
+								<Checkbox
+									checked={selectedItemsIds?.includes(item.id)}
+									onChange={onSelectItem({ id: item.id, title: item.title })}
+									disabled={item.disabled}
+								/>
+							</td>
+						)}
+						{renderTableBody(item)}
+						{hasActions && <td>{renderActions?.(item)}</td>}
 					</tr>
-				) : (
-					items.map((item) => (
-						<tr key={item.id} className={styles.row} data-testid="table-row">
-							{selectedItems && (
-								<td className={styles.cell}>
-									<Checkbox
-										checked={selectedItemsIds?.includes(item.id)}
-										onChange={onSelectItem({ id: item.id, title: item.title })}
-										disabled={item.disabled}
-									/>
-								</td>
-							)}
-							{renderTableBody(item)}
-							{hasActions && <td>{renderActions?.(item)}</td>}
-						</tr>
-					))
-				)}
+				))}
 			</tbody>
 		</table>
 	);
