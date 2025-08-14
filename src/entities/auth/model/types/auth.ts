@@ -82,7 +82,7 @@ export interface User {
 	avatarUrl: string;
 	createdAt: string;
 	updatedAt: string;
-	isEmailVerified?: boolean;
+	isVerified?: boolean;
 	subscriptions: Subscription[];
 	userRoles: Role[];
 }

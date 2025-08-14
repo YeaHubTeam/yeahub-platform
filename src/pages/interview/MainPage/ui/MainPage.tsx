@@ -41,16 +41,12 @@ const MainPage = () => {
 	return (
 		<>
 			{profile && (
-				<Flex
-					direction="column"
-					gap="24"
-					className={!profile.isEmailVerified ? styles.wrapper : ''}
-				>
+				<Flex direction="column" gap="24" className={!profile.isVerified ? styles.wrapper : ''}>
 					<Text variant="head2" className={styles.title}>
 						{t(Translation.HELLO, { username: profile.username })}
 					</Text>
 					<Flex gap="20" className={styles['banners-container']}>
-						{!profile.isEmailVerified ? (
+						{!profile.isVerified ? (
 							<EmailVerifyStub username={profile.username} />
 						) : (
 							<IncompleteProfileStub />

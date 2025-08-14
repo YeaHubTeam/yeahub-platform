@@ -40,7 +40,7 @@ export interface User {
 	updatedAt: string;
 	createdAt: string;
 	userRoles: UserRole[];
-	isEmailVerified?: boolean;
+	isVerified?: boolean;
 	profiles?: FullProfile;
 }
 
