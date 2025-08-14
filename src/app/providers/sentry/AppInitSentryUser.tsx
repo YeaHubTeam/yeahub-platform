@@ -11,7 +11,7 @@ const AppInitSentryUser = () => {
 		if (profile && profile.id) {
 			setUserContext({
 				id: String(profile.id),
-				email: profile.isEmailVerified ? profile.email : undefined,
+				email: profile.isVerified ? profile.email : undefined,
 				role: profile.userRoles?.[0]?.name || 'unknown',
 				metadata: {
 					username: profile.username,

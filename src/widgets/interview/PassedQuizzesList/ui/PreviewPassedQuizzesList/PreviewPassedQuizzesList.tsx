@@ -29,7 +29,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
-	const isVerified = fullProfile?.isEmailVerified;
+	const isVerified = fullProfile?.isVerified;
 	const { t } = useTranslation([
 		i18Namespace.interviewHistory,
 		i18Namespace.profile,

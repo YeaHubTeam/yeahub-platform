@@ -94,11 +94,11 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 							<Flex align="center" gap="10">
 								<Switch
 									switchClassName={classNames(styles['switch'])}
-									checked={user.isEmailVerified ?? false}
+									checked={user.isVerified ?? false}
 									onChange={() => {}}
 								/>
 								<Text variant="body2" color="black-800" width={246}>
-									{user.isEmailVerified
+									{user.isVerified
 										? t(Users.CONFIRM_EMAIL_CONFIRM)
 										: t(Users.CONFIRM_EMAIL_UNCONFIRM)}
 								</Text>
