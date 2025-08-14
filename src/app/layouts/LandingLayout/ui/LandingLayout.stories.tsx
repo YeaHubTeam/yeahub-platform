@@ -42,9 +42,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Стандартное состояние:
- */
 export const Default: Story = {
 	decorators: [StoreDecorator({})],
 	parameters: {
@@ -56,9 +53,6 @@ export const Default: Story = {
 	},
 };
 
-/**
- * Состояние загрузки:
- */
 export const Loading: Story = {
 	parameters: {
 		docs: {
