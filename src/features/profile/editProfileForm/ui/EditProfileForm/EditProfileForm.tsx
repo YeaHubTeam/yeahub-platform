@@ -3,10 +3,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -33,6 +34,7 @@ export const EditProfileForm = () => {
 
 	const { isLoading: isLoadingSlilsList } = useGetSkillsListQuery({ limit: 100 });
 	const [updateProfile, { isLoading: isUpdateProfileLoading }] = useUpdateProfileMutation();
+	const navigate = useNavigate();
 
 	const tabs = getTabs(t);
 	const { activeTab, setActiveTab } = useTabs(tabs);
@@ -49,6 +51,7 @@ export const EditProfileForm = () => {
 			.unwrap()
 			.then(() => {
 				methods.reset(mapProfileToForm(profile));
+				navigate(ROUTES.profile.page);
 			});
 	};
 

@@ -29,6 +29,7 @@ export interface Question {
 	isFavorite?: boolean;
 	isLearned?: boolean;
 	profileId?: string;
+	disabled?: boolean;
 }
 
 export type PublicQuestion = Omit<

@@ -12,7 +12,7 @@ interface VerifiedEmailRouteProps {
 
 export const VerifiedEmailRoute = ({ children }: VerifiedEmailRouteProps) => {
 	const profile = useAppSelector(getFullProfile);
-	const isEmailVerified = !!profile?.isEmailVerified;
+	const isEmailVerified = !!profile?.isVerified;
 
 	return isEmailVerified ? <>{children}</> : <Navigate to={EMAIL_VERIFY_SETTINGS_TAB} />;
 };

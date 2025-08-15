@@ -97,9 +97,16 @@ export const QuestionsTable = ({
 				onClick: () => {
 					navigate(route(ROUTES.admin.questions.edit.route, question.id));
 				},
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
+				disabled: question.disabled,
 			},
 			{
-				renderComponent: () => <DeleteQuestionButton questionId={question.id} />,
+				renderComponent: () => (
+					<DeleteQuestionButton questionId={question.id} disabled={question.disabled} />
+				),
 			},
 		];
 

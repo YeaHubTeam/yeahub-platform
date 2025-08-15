@@ -12,7 +12,7 @@ export interface Step<T> {
 	id: T;
 	label: string;
 	image: IconName;
-	Component: (setActiveStep?: Dispatch<SetStateAction<Step<T>>>) => JSX.Element;
+	Component: (props: { goNextStep?: () => void }) => JSX.Element;
 }
 
 export interface StepperProps<T> {
@@ -83,7 +83,7 @@ export const Stepper = <T,>({
 								>
 									<Icon
 										icon={status === 'completed' ? 'check' : step.image}
-										color={'white-900'}
+										color={status === 'completed' ? 'purple-700' : 'white-900'}
 										size={isMobile ? 18 : 26}
 									/>
 								</div>

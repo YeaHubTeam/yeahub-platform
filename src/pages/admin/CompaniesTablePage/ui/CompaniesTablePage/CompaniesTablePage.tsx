@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch, useDebounce, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector, useDebounce, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
+import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
+import { companiesTablePageActions } from '@/pages/admin/CompaniesTablePage';
+
 import {
 	getCompaniesSearch,
 	getSelectedCompanies,
 } from '../../model/selectors/companiesTablePageSelectors';
-import { companiesTablePageActions } from '../../model/slices/companiesTablePageSlice';
 import { CompaniesTablePagePagination } from '../CompaniesTablePagePagination/CompaniesTablePagePagination';
 
 import styles from './CompaniesTablePage.module.css';
@@ -27,10 +29,13 @@ const CompaniesTablePage = () => {
 	const [localSearchValue, setLocalSearchValue] = useState<string>('');
 	const storeSearchValue = useSelector(getCompaniesSearch);
 	const selectedCompanies = useSelector(getSelectedCompanies);
+	const isAuthor = useSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter(() => {
 		dispatch(companiesTablePageActions.setSearch(''));
 	});
+
+	const userId = useAppSelector(getUserId);
 
 	const onSelectCompanies = (ids: SelectedAdminEntities) => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
@@ -46,6 +51,14 @@ const CompaniesTablePage = () => {
 		titleOrLegalNameOrDescriptionSearch: storeSearchValue,
 		status: undefined,
 	});
+
+	const companiesWithEditFlags = useMemo(() => {
+		if (!companies?.data) return [];
+		return companies?.data.map((company) => ({
+			...company,
+			disabled: isAuthor && company.createdBy?.id !== userId,
+		}));
+	}, [companies, userId, isAuthor]);
 
 	const setStoreSearchValue = useDebounce((value: string) => {
 		dispatch(companiesTablePageActions.setSearch(value));
@@ -76,7 +89,7 @@ const CompaniesTablePage = () => {
 			/>
 			<Card className={styles.content}>
 				<CompaniesTable
-					companies={companies?.data}
+					companies={companiesWithEditFlags}
 					selectedCompanies={selectedCompanies}
 					onSelectCompanies={onSelectCompanies}
 				/>

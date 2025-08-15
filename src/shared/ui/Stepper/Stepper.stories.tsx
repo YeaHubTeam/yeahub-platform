@@ -51,7 +51,9 @@ const StepperWrapper = () => {
 			}}
 		>
 			<Stepper steps={steps} activeStep={stepToggle} setActiveStep={setStepToggle} />
-			<div style={{ width: '100px', paddingTop: '20px' }}>{stepToggle.Component()}</div>
+			<div style={{ width: '100px', paddingTop: '20px' }}>
+				<stepToggle.Component />
+			</div>
 		</div>
 	);
 };
@@ -69,7 +71,7 @@ const MobileStepperWrapper = () => {
 			}}
 		>
 			<Stepper isMobile steps={steps} activeStep={stepToggle} setActiveStep={setStepToggle} />
-			<div>{stepToggle.Component()}</div>
+			<stepToggle.Component />
 		</div>
 	);
 };
