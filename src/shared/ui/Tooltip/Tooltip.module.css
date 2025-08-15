@@ -22,10 +22,6 @@
   border: 1px solid var(--color-red-700);
 }
 
-.red {
-  border: 1px solid var(--color-red-700);
-}
-
 .gray {
   border: 1px solid var(--color-black-300);
 }

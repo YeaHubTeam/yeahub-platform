@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -35,9 +36,9 @@ const QuestionsPage = () => {
 	const selectedQuestions = useAppSelector(getSelectedQuestions);
 	const isAuthor = useAppSelector(getIsAuthor);
 
-	const { filter, handleFilterChange } = useQueryFilter();
+	const { filter, handleFilterChange, resetFilters: resetQueryFilters } = useQueryFilter();
 
-	const { data: allQuestions } = useGetQuestionsListQuery({
+	const { data: allQuestions, isFetching } = useGetQuestionsListQuery({
 		...filter,
 		title: search,
 	});
@@ -55,8 +56,17 @@ const QuestionsPage = () => {
 		dispatch(questionsTablePageActions.setPage(page));
 	};
 
+	const resetAll = () => {
+		dispatch(questionsTablePageActions.resetFilters());
+		resetQueryFilters();
+	};
+
+	const rows = allQuestions?.data ?? [];
+	const isEmpty = !isFetching && rows.length === 0;
+
 	const questions = useMemo(() => {
 		if (!allQuestions || !allQuestions.data) return undefined;
+
 		return {
 			...allQuestions,
 			data: allQuestions.data.map((item) => ({
@@ -81,11 +91,16 @@ const QuestionsPage = () => {
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
 				/>
-				<QuestionPagePagination
-					questionsResponse={questions}
-					currentPage={filter.page || 1}
-					onPageChange={onPageChange}
-				/>
+
+				{isEmpty && <EmptyStub text={search} resetFilters={resetAll} />}
+
+				{!isEmpty && (
+					<QuestionPagePagination
+						questionsResponse={questions}
+						currentPage={filter.page || 1}
+						onPageChange={onPageChange}
+					/>
+				)}
 			</Card>
 		</Flex>
 	);
