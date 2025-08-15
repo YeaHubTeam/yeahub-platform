@@ -33,7 +33,7 @@ export const ResourcesSelect = ({
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const { data } = useGetResourceTypesQuery();
-	const providers = data?.providers.map((provider, index) => ({ id: index, title: provider }));
+	const resourceTypes = data?.providers.map((provider, index) => ({ id: index, title: provider }));
 
 	const [selectedResources, setSelectedResources] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
@@ -62,35 +62,35 @@ export const ResourcesSelect = ({
 
 	const options = useMemo(() => {
 		if (hasMultiple) {
-			return (providers || [])
-				.map((provider) => ({
-					label: provider.title,
-					value: provider.id.toString(),
+			return (resourceTypes || [])
+				.map((resource) => ({
+					label: resource.title,
+					value: resource.id.toString(),
 					limit: 100,
 				}))
 				.filter((resource) => !selectedResources?.includes(+resource.value));
 		} else {
-			return (providers || []).map((provider) => ({
-				label: provider.title,
-				value: provider.id.toString(),
+			return (resourceTypes || []).map((resource) => ({
+				label: resource.title,
+				value: resource.id.toString(),
 				limit: 100,
 			}));
 		}
-	}, [selectedResources, providers]);
+	}, [selectedResources, resourceTypes]);
 
 	const resourcesDictionary = useMemo(() => {
 		const emptyResource: ResourceType = {
 			id: EMPTY_RESOURCE_ID,
 			title: t(Marketplace.SELECT_CHOOSE),
 		};
-		return (providers || []).reduce(
-			(acc, provider) => {
-				acc[provider.id] = provider;
+		return (resourceTypes || []).reduce(
+			(acc, resource) => {
+				acc[resource.id] = resource;
 				return acc;
 			},
 			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<number, ResourceType>,
 		);
-	}, [providers]);
+	}, [resourceTypes]);
 
 	if (!hasMultiple) {
 		return (

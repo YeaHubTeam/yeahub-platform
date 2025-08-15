@@ -21,7 +21,7 @@ const resourceApi = baseApi.injectEndpoints({
 			query: () => ({
 				url: resourceApiUrls.getResourceTypes,
 			}),
-			providesTags: [ApiTags.PROVIDERS],
+			providesTags: [ApiTags.RESOURCESTYPES],
 		}),
 	}),
 });
