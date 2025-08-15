@@ -101,21 +101,23 @@ export const ResourceForm = () => {
 					)}
 				</FormControl>
 			</FormSelect>
-			<FormSelect short={t(Marketplace.SKILLS_SHORT)} label={t(Marketplace.SKILLS_LABEL)}>
-				<FormControl name="skills" control={control}>
-					{({ onChange, value }) => {
-						return (
-							<div>
-								<SkillSelect
-									onChange={onChange}
-									value={value}
-									selectedSPecializations={selectedSpecializations}
-								/>
-							</div>
-						);
-					}}
-				</FormControl>
-			</FormSelect>
+			{!!selectedSpecializations.length && (
+				<FormSelect short={t(Marketplace.SKILLS_SHORT)} label={t(Marketplace.SKILLS_LABEL)}>
+					<FormControl name="skills" control={control}>
+						{({ onChange, value }) => {
+							return (
+								<div>
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSPecializations={selectedSpecializations}
+									/>
+								</div>
+							);
+						}}
+					</FormControl>
+				</FormSelect>
+			)}
 			<FormSelect short={t(Marketplace.TYPES_SHORT)} label={t(Marketplace.TYPES_LABEL)}>
 				<FormControl name="provider" control={control}>
 					{({ onChange, value }) => (
