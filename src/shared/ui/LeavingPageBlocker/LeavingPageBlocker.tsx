@@ -20,7 +20,7 @@ export const LeavingPageBlocker = ({ isBlocked, children }: LeavingPageBlockerPr
 				<BlockerDialog
 					isOpen={blocker.state === 'blocked'}
 					onClose={blocker.reset}
-					message={blocker.state === 'blocked' ? 'Are you sure you want to leave?' : ''}
+					message={undefined}
 					onCancel={blocker.reset}
 					onOk={blocker.proceed}
 				/>
