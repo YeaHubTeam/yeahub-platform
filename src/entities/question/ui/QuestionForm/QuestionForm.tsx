@@ -133,18 +133,19 @@ export const QuestionForm = () => {
 					)}
 				</FormControl>
 			</Flex>
-			<Flex gap={'32'}>
-				<Flex direction="column" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.SKILLS_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.SKILLS_LABEL)}
-					</Text>
-				</Flex>
-				<FormControl name="skills" control={control}>
-					{({ onChange, value }) => {
-						return (
+			{selectedSpecializations?.length ? (
+				<Flex gap={'32'}>
+					<Flex direction="column" className={styles.titles}>
+						<Text variant="body3-strong" color="black-800">
+							{t(Questions.SKILLS_TITLE)}
+						</Text>
+						<Text variant="body2" color="black-800">
+							{t(Questions.SKILLS_LABEL)}
+						</Text>
+					</Flex>
+
+					<FormControl name="skills" control={control}>
+						{({ onChange, value }) => (
 							<div className={styles.select}>
 								<SkillSelect
 									onChange={onChange}
@@ -152,10 +153,10 @@ export const QuestionForm = () => {
 									selectedSPecializations={selectedSpecializations}
 								/>
 							</div>
-						);
-					}}
-				</FormControl>
-			</Flex>
+						)}
+					</FormControl>
+				</Flex>
+			) : null}
 			<Flex gap={'32'}>
 				<Flex direction="column" className={styles.titles}>
 					<Text variant="body3-strong" color="black-800">

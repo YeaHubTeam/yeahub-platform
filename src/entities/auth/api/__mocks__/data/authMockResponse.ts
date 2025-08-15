@@ -50,6 +50,6 @@ export const authMockResponse: AuthResponse = {
 			},
 		],
 		userRoles: [{ id: 4, name: 'admin', permissions: [] }],
-		isEmailVerified: true,
+		isVerified: true,
 	},
 };

@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Books from '@/shared/assets/icons/books.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
 import Companies from '@/shared/assets/icons/Companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
@@ -67,6 +68,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
+import { MediaPage } from '@/pages/landing/MediaPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
 import { PublicCollectionsPage } from '@/pages/landing/PublicCollectionsPage';
@@ -92,6 +94,7 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -207,6 +210,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		icon: Companies,
 		roles: listAdminRoles,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.resources.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
+		icon: Books,
+		roles: listAdminRoles,
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -247,6 +257,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.docs.page,
 				element: <DocsPage />,
+			},
+			{
+				path: ROUTES.media.page,
+				element: <MediaPage />,
 			},
 			{
 				path: ROUTES.questions.route,
@@ -323,6 +337,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.questions.edit.page,
 				element: <QuestionEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.page,
+				element: <ResourcesTablePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

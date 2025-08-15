@@ -11,11 +11,15 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Question } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+
+const SKILL_SHOW_COUNT = 4;
+const SPECIALIZATION_SHOW_COUNT = 2;
 
 interface QuestionsTableProps {
 	questions?: Question[];
@@ -45,27 +49,37 @@ export const QuestionsTable = ({
 	const renderTableBody = (question: Question) => {
 		const columns = {
 			title: question.title,
-			specialization: question.questionSpecializations?.length
-				? question.questionSpecializations?.map((skill) => skill.title).join(', ')
-				: '-',
-			skills: question.questionSkills?.length
-				? question.questionSkills?.map((skill) => skill.title).join(', ')
-				: '-',
+			specialization: (
+				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
+					items={question.questionSpecializations}
+					showCount={SPECIALIZATION_SHOW_COUNT}
+				/>
+			),
+			skills: (
+				<TableCellEntityList
+					url={ROUTES.admin.skills.detail.page}
+					items={question.questionSkills}
+					showCount={SKILL_SHOW_COUNT}
+				/>
+			),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
-					</Link>
-				) : (
-					v
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => {
+			return (
+				<td key={k}>
+					{k === 'title' ? (
+						<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
+							<Text variant={'body3'} color={'purple-700'}>
+								{v}
+							</Text>
+						</Link>
+					) : (
+						v
+					)}
+				</td>
+			);
+		});
 	};
 
 	const renderActions = (question: Question) => {
@@ -83,9 +97,16 @@ export const QuestionsTable = ({
 				onClick: () => {
 					navigate(route(ROUTES.admin.questions.edit.route, question.id));
 				},
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
+				disabled: question.disabled,
 			},
 			{
-				renderComponent: () => <DeleteQuestionButton questionId={question.id} />,
+				renderComponent: () => (
+					<DeleteQuestionButton questionId={question.id} disabled={question.disabled} />
+				),
 			},
 		];
 

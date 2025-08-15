@@ -12,9 +12,9 @@ export const MainPageSkeleton = () => {
 	const profile = useAppSelector(getFullProfile);
 
 	return (
-		<Flex direction="column" gap="24" className={!profile?.isEmailVerified ? styles.wrapper : ''}>
+		<Flex direction="column" gap="24" className={!profile?.isVerified ? styles.wrapper : ''}>
 			<TextSkeleton variant="head2" width={200} className={styles.title} />
-			{!profile?.isEmailVerified ? <EmailVerifyStubSkeleton /> : <IncompleteProfileStubSkeleton />}
+			{!profile?.isVerified ? <EmailVerifyStubSkeleton /> : <IncompleteProfileStubSkeleton />}
 		</Flex>
 	);
 };

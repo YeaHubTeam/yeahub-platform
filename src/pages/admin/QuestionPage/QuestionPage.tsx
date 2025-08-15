@@ -10,8 +10,9 @@ import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { getProfileId } from '@/entities/profile';
+import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
@@ -30,6 +31,8 @@ export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
+	const userId = useAppSelector(getUserId);
+	const isAuthor = useAppSelector(getIsAuthor);
 
 	const {
 		data: question,
@@ -51,13 +54,23 @@ export const QuestionPage = () => {
 	const { rate, keywords, complexity, questionSkills, shortAnswer, longAnswer, id, createdBy } =
 		question;
 
+	const isDisabled = isAuthor && createdBy?.id !== userId;
+
 	return (
 		<>
 			<BackHeader>
-				<DeleteQuestionButton questionId={id} isDetailPage />
-				<NavLink style={{ marginLeft: 'auto' }} to={route(ROUTES.admin.questions.edit.page, id)}>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
+				<DeleteQuestionButton questionId={id} isDetailPage disabled={isDisabled} />
+				<Tooltip
+					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
+					placement={'bottom-start'}
+					color="red"
+					offsetTooltip={10}
+					shouldShowTooltip={isDisabled}
+				>
+					<NavLink style={{ marginLeft: 'auto' }} to={route(ROUTES.admin.questions.edit.page, id)}>
+						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
+					</NavLink>
+				</Tooltip>
 			</BackHeader>
 			<Flex gap="20">
 				<Flex gap="20" direction="column" flex={1} maxWidth>

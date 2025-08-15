@@ -1,4 +1,4 @@
-export type IconSize = 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
+export type IconSize = 14 | 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
 
 export type IconName =
 	| 'arrowRight'
@@ -8,6 +8,12 @@ export type IconName =
 	| 'clock'
 	| 'calendar'
 	| 'check'
+	| 'question'
+	| 'checkList'
+	| 'handShake'
+	| 'specialization'
+	| 'graphUp'
+	| 'keySquare'
 	| 'altArrowRight'
 	| 'altArrowLeft'
 	| 'dotsThree'

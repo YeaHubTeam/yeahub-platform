@@ -1,10 +1,10 @@
 import { Media } from '../../model/types/media';
-import { MediaLinksItem } from '../MediaLinksItem/MediaLinksItem';
+import { MediaLinkSimpleItem } from '../MediaLinkSimpleItem/MediaLinkSimpleItem';
 
 interface MediaLinksBannerProps {
 	mediaLink: Media;
 }
 
 export const MediaLinksBanner = ({ mediaLink }: MediaLinksBannerProps) => {
-	return <MediaLinksItem mediaLink={mediaLink} />;
+	return <MediaLinkSimpleItem mediaLink={mediaLink} />;
 };

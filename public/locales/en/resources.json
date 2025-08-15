@@ -1,0 +1,16 @@
+{
+	"access_category": "Access category",
+	"title": {
+		"short": "Resources",
+		"label": "Add resource",
+		"placeholder": "Deatiled resource description"
+	},
+	"description": {
+		"title": "Description",
+		"label": "Add descrioption",
+		"placeholder": "Add description"
+	},
+	"search.placeholder": "Enter resource...",
+
+	"author": "Author"
+}

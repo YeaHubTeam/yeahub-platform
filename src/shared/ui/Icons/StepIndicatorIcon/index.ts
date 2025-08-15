@@ -1,0 +1,1 @@
+export { StepIndicatorIcon } from './StepIndicatorIcon';

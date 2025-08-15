@@ -25,6 +25,7 @@ export const PremiumSubscriptionTab = () => {
 	const { subscriptions } = useAppSelector(getFullProfile);
 
 	const activeSubscriptions = useAppSelector(getActiveSubscription);
+	const subscriptionState = activeSubscriptions?.state || '';
 	const endDate = activeSubscriptions?.endDate || '';
 	const createDate = activeSubscriptions?.createDate || '';
 
@@ -49,13 +50,18 @@ export const PremiumSubscriptionTab = () => {
 						variant="large"
 					/>
 					<p className={styles.text}>
-						{t(Subscription.SUBSCRIPTION_RENEWAL, {
-							Date: formatDate(parseISO(endDate), D_MM_YYYY, { locale: ru }),
-						})}
+						{t(
+							subscriptionState === 'active'
+								? Subscription.SUBSCRIPTION_RENEWAL
+								: Subscription.SUBSCRIPTION_CANCELED,
+							{
+								Date: formatDate(parseISO(endDate), D_MM_YYYY, { locale: ru }),
+							},
+						)}
 					</p>
 					<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 				</Flex>
-				{subscriptions.length > 0 && activeSubscriptions?.state === 'active' ? (
+				{subscriptions.length > 0 && subscriptionState === 'active' ? (
 					<div className={styles['actions-button']}>
 						<Flex direction="row" gap="8">
 							<UnsubscribeButton />

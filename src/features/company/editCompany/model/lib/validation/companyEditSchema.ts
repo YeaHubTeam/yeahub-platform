@@ -14,4 +14,11 @@ export const companyEditSchema: yup.ObjectSchema<CompanyEditFormValues> = yup.ob
 	companyImage: yup.string().notRequired(),
 	inn: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	kpp: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	createdBy: yup
+		.object()
+		.shape({
+			id: yup.string().required(),
+			username: yup.string().required(),
+		})
+		.optional(),
 });
