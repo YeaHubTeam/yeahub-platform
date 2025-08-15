@@ -38,11 +38,6 @@ export type CreateOrEditResourceFormValues = Pick<
 	keywords?: string[];
 };
 
-export interface GetProvidersListResponse {
+export interface GetresourceTypesResponse {
 	providers: string[];
-}
-
-export interface GetProvidersListParamsRequest {
-	page?: number;
-	limit?: number;
 }

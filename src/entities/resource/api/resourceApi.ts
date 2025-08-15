@@ -3,8 +3,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 
 import { resourceApiUrls } from '../model/constants/resource';
 import {
-	GetProvidersListParamsRequest,
-	GetProvidersListResponse,
+	GetresourceTypesResponse,
 	GetResourcesListParamsRequest,
 	GetResourcesListResponse,
 } from '../model/types/resource';
@@ -18,15 +17,14 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
-		getProviders: build.query<GetProvidersListResponse, GetProvidersListParamsRequest>({
-			query: (params) => ({
-				url: resourceApiUrls.getProviders,
-				params: { page: 1, limit: 10, ...params },
+		getResourceTypes: build.query<GetresourceTypesResponse, void>({
+			query: () => ({
+				url: resourceApiUrls.getResourceTypes,
 			}),
 			providesTags: [ApiTags.PROVIDERS],
 		}),
 	}),
 });
 
-export const { useGetResourcesListQuery, useGetProvidersQuery } = resourceApi;
+export const { useGetResourcesListQuery, useGetResourceTypesQuery } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

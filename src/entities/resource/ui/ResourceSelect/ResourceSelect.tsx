@@ -6,7 +6,7 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
-import { useGetProvidersQuery } from '../../api/resourceApi';
+import { useGetResourceTypesQuery } from '../../api/resourceApi';
 import { EMPTY_RESOURCE_ID } from '../../model/constants/resource';
 
 type ResourcesSelectProps = Omit<
@@ -32,7 +32,7 @@ export const ResourcesSelect = ({
 }: ResourcesSelectProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const { data } = useGetProvidersQuery({ limit: 100 });
+	const { data } = useGetResourceTypesQuery();
 	const providers = data?.providers.map((provider, index) => ({ id: index, title: provider }));
 
 	const [selectedResources, setSelectedResources] = useState<number[]>(
