@@ -14,6 +14,12 @@
   color: var(--text-color-primary);
 }
 
+@media (width <= 1024px) {
+  .content {
+    margin-bottom: 30px;
+  }
+}
+
 @media (width < 768px) {
   .wrapper {
     flex-basis: 100%;

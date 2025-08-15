@@ -18,15 +18,3 @@
 .btn span {
   margin-left: auto;
 }
-
-@media (width < 768px) {
-  .wrapper {
-    margin-bottom: 40px;
-  }
-}
-
-@media (width <= 480px) {
-  .wrapper {
-    margin-bottom: 20px;
-  }
-}

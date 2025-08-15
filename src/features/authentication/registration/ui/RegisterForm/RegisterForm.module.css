@@ -1,5 +1,10 @@
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .submit-button {
-  margin-top: 40px;
+  margin-top: 24px;
   width: 100%;
 }
 
