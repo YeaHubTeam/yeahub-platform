@@ -1,41 +1,14 @@
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { Tab } from '@/shared/ui/Tabs';
-
 import { FullProfile } from '@/entities/auth';
-import { SOCIAL_NETWORKS, SocialNetwork } from '@/entities/socialNetwork';
+import { SocialNetwork, socialNetworks } from '@/entities/socialNetwork';
 
-import { EditProfileRequestData, ProfileSchema } from '../model/types/editProfileTypes';
-import { AboutMeTabForm } from '../ui/AboutMeTabForm/AboutMeTabForm';
-import { PersonalInformationTabForm } from '../ui/PersonalInformationTabForm/PersonalInformationTabForm';
-import { SkillsTabForm } from '../ui/SkillsTabForm/SkillsTabForm';
-
-type EditProfileTab = 'personal-information' | 'about-me' | 'skills';
-
-export const getTabs = (t: (arg: string) => string): Tab<EditProfileTab>[] => [
-	{
-		id: 'personal-information',
-		label: t(Profile.TABS_PERSONAL),
-		Component: PersonalInformationTabForm,
-	},
-	{
-		id: 'about-me',
-		label: t(Profile.TABS_ABOUT_ME),
-		Component: AboutMeTabForm,
-	},
-	{
-		id: 'skills',
-		label: t(Profile.TABS_SKILLS),
-		Component: SkillsTabForm,
-	},
-];
+import { EditProfileRequestData, ProfileSchema } from '../../types/editProfileTypes';
 
 export const mapProfileToForm = (profile: FullProfile): ProfileSchema => ({
-	//image: profile.image_src,
 	username: profile.username,
 	specialization: profile.activeProfile.specializationId,
 	email: profile.email,
 	location: profile.city,
-	socialNetworks: SOCIAL_NETWORKS.reduce((result: SocialNetwork[], socialNetwork) => {
+	socialNetworks: socialNetworks.reduce((result: SocialNetwork[], socialNetwork) => {
 		const currentSocialNetwork = profile.activeProfile.socialNetwork?.find(
 			({ code }) => code === socialNetwork.code,
 		);
