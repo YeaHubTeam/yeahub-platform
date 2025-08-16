@@ -6,6 +6,7 @@ export const HeaderNavDesktopSkeleton = () => {
 		<Flex gap="26">
 			<Skeleton width={120} height={20} borderRadius={4} />
 			<Skeleton width={90} height={20} borderRadius={4} />
+			<Skeleton width={130} height={20} borderRadius={4} />
 		</Flex>
 	);
 };
