@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { Cropper, ReactCropperElement } from 'react-cropper';
-import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Button } from '@/shared/ui/Button';
 import { Loader } from '@/shared/ui/Loader';
 import { Modal } from '@/shared/ui/Modal';
+import { toast } from '@/shared/ui/Toast';
 
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 import { FileLoader } from '../FileLoader';
@@ -18,7 +19,7 @@ import { Text } from '../Text';
 import styles from './ImageLoader.module.css';
 import './ImageLoaderCropper.css';
 
-interface ImageLoaderProps {
+export interface ImageLoaderProps {
 	setValue?: (image: string | null) => void;
 	cropper?: {
 		aspectRatio: number;
@@ -79,24 +80,24 @@ export const ImageLoader = ({
 
 	const uploaderRef = useRef<HTMLDivElement>(null);
 
-	const submitImage = () => {
+	const onSubmitImage = () => {
 		setValue && setValue(croppedArea);
 		setDeleted(false);
 		setFile(null);
 	};
 
-	const removeImage = () => {
+	const onRemoveImage = () => {
 		setValue && setValue(null);
 		setDeleted(true);
 		setCroppedArea(null);
 		setFile(null);
 	};
 
-	const replaceImage = () => {
+	const onReplaceImage = () => {
 		uploaderRef.current?.getElementsByTagName('input')[0].click();
 	};
 
-	const closeModal = () => {
+	const onCloseModal = () => {
 		setFile(null);
 		setCroppedArea(null);
 		onClose && onClose();
@@ -162,12 +163,17 @@ export const ImageLoader = ({
 						<AvatarWithoutPhoto />
 					)}
 					{!deleted && src && (
-						<button type="button" className={styles['delete-avatar-btn']} onClick={removeImage}>
+						<Button
+							fullWidth
+							variant="destructive-tertiary"
+							className={styles['delete-avatar-btn']}
+							onClick={onRemoveImage}
+						>
 							{t(Profile.PHOTO_DELETE)}
-						</button>
+						</Button>
 					)}
 				</Flex>
-				<div ref={uploaderRef}>
+				<div className={styles['file-loader']} ref={uploaderRef}>
 					<FileLoader
 						maxFileMBSize={maxMBSize}
 						accept={Accept.IMAGE}
@@ -176,7 +182,7 @@ export const ImageLoader = ({
 						})}
 						extensionsText={Extension.IMAGE}
 						onChange={handleUpload}
-						isDragDropEnabled={isPopover ? false : true}
+						isDragDropEnabled={!isPopover}
 					/>
 				</div>
 			</Flex>
@@ -184,11 +190,11 @@ export const ImageLoader = ({
 			<Modal
 				isOpen={isOpenProp || Boolean(cropper && file)}
 				title={t(Profile.PHOTO_MODAL_TITLE)}
-				onClose={closeModal}
+				onClose={onCloseModal}
 				buttonPrimaryText={t(Profile.PHOTO_MODAL_SUBMIT)}
 				buttonOutlineText={t(Profile.PHOTO_MODAL_CLICK_SECONDARY)}
-				buttonPrimaryClick={submitImage}
-				buttonOutlineClick={replaceImage}
+				buttonPrimaryClick={onSubmitImage}
+				buttonOutlineClick={onReplaceImage}
 			>
 				<Flex direction="column" gap="8">
 					{!!cropper && (
