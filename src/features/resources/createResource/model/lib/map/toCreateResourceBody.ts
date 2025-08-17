@@ -4,13 +4,11 @@ import type {
 } from '../../types/resourceCreateTypes';
 
 export const toCreateResourceBody = (f: CreateResourceFormValues): CreateResourceBodyRequest => ({
-	product: {
-		name: f.name.trim(),
-		description: f.description.trim(),
-		provider: f.provider,
-		accessCategory: f.accessCategory,
-		iconBase64: f.iconBase64 || null,
-	},
+	name: f.name.trim(),
+	description: f.description.trim(),
+	provider: f.provider,
+	accessCategory: f.accessCategory,
+	iconBase64: f.iconBase64 || null,
 	skills: (f.skills ?? []).map(Number),
 	specializations: (f.specializations ?? []).map(Number),
 	keywords: (f.keywords ?? []).map((k) => k.trim()).filter(Boolean),

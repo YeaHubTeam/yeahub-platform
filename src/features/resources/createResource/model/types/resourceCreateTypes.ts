@@ -7,13 +7,11 @@ import {
 export type CreateResourceFormValues = Omit<CreateOrEditResourceFormValues, 'id'>;
 
 export type CreateResourceBodyRequest = {
-	product: {
-		name: string;
-		description: string;
-		provider: string;
-		accessCategory: ResourceAccessCategory;
-		iconBase64: string | null;
-	};
+	name: string;
+	description: string;
+	provider: string;
+	accessCategory: ResourceAccessCategory;
+	iconBase64: string | null;
 	skills: number[];
 	specializations: number[];
 	keywords: string[];
