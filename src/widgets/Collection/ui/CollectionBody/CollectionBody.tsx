@@ -32,7 +32,7 @@ export const CollectionBody = ({
 	const { t } = useTranslation(i18Namespace.questions);
 	// TODO: Добавить роут для сообщества
 
-	if (!isFree && !hasPremiumAccess && !isAdmin)
+	if (isFree && !hasPremiumAccess && !isAdmin)
 		return (
 			<Card
 				className={styles.wrapper}
