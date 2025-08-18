@@ -1,0 +1,15 @@
+.wrapper {
+  width: 100%;
+  max-width: 442px;
+  height: 100%;
+}
+
+.form {
+  padding: 0 17px;
+}
+
+@media (width <= 768px) {
+  .form {
+    padding: 0;
+  }
+}
