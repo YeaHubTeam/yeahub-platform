@@ -68,6 +68,7 @@ const PublicMarketplacePage = () => {
 			filter={{
 				skills: filter.skills,
 				status: filter.status,
+				resources: filter.resources,
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}

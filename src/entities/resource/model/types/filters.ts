@@ -1,7 +1,7 @@
 export interface FilterParams {
 	specialization?: number | number[];
 	skills?: number[];
-	resource?: number[];
+	resources?: number[];
 	keywords?: string | string[];
 	status?: MarketplaceFilterStatus;
 }

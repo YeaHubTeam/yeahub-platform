@@ -33,7 +33,10 @@ export const ResourcesSelect = ({
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const { data } = useGetResourceTypesQuery();
-	const resourceTypes = data?.providers.map((provider, index) => ({ id: index, title: provider }));
+	const resourceTypes = data?.map((item, index) => ({
+		id: index,
+		title: item.code,
+	}));
 
 	const [selectedResources, setSelectedResources] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],

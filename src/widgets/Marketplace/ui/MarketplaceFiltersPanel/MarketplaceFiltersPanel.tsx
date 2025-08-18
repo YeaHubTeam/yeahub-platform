@@ -31,7 +31,7 @@ export const MarketplaceFiltersPanel = ({
 	onChangeStatus,
 	onChangeResources,
 }: MarketplaceFiltersPanelProps) => {
-	const { skills, status, specialization: filterSpecialization, resource } = filter;
+	const { skills, status, specialization: filterSpecialization, resources } = filter;
 
 	const selectedSpecialization = Array.isArray(filterSpecialization)
 		? filterSpecialization[0]
@@ -62,7 +62,7 @@ export const MarketplaceFiltersPanel = ({
 				onChangeSkills={onChangeSkills}
 				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
 			/>
-			<ResourcesFilterSection selectedResources={resource} onChooseResources={onChangeResources} />
+			<ResourcesFilterSection selectedResources={resources} onChooseResources={onChangeResources} />
 			{/* <KeywordsListSection keywords={keywords} route={ROUTES.marketplace.page} /> */}
 			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</Flex>
