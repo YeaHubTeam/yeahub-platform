@@ -20,7 +20,7 @@ interface MarketplaceFiltersPanelProps {
 	onChangeSpecialization: (specialization: number[] | number) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeStatus: (status: MarketplaceFilterStatus) => void;
-	onChangeResources: (resources: number[] | undefined) => void;
+	onChangeResources: (resources: string[] | undefined) => void;
 }
 
 export const MarketplaceFiltersPanel = ({

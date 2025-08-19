@@ -13,8 +13,8 @@ import styles from './ResourcesFilterSection.module.css';
 
 interface ResourcesFilterSectionProps {
 	resourceLimit?: number;
-	selectedResources?: number[];
-	onChooseResources: (resources: number[] | undefined) => void;
+	selectedResources?: string[] | string;
+	onChooseResources: (resources: string[] | undefined) => void;
 }
 
 export const ResourcesFilterSection = ({
@@ -27,9 +27,9 @@ export const ResourcesFilterSection = ({
 	const [limit] = useState(resourceLimit || MAX_LIMIT_RESOURCES);
 
 	const { data } = useGetResourceTypesQuery();
-	const resourceTypes = data?.map((item, index) => ({
-		id: index,
-		title: item.code,
+	const resourceTypes = data?.map((item) => ({
+		id: item.code,
+		title: t(`resourceTypes.${item.code}`, item.code),
 	}));
 
 	const hasHiddenResources = (resourceTypes?.length ?? 0) > (resourceLimit ?? MAX_LIMIT_RESOURCES);
@@ -39,18 +39,24 @@ export const ResourcesFilterSection = ({
 	};
 
 	const preparedData = (showAll ? resourceTypes : resourceTypes?.slice(0, limit))?.map(
-		(resource, index) => ({
+		(resource) => ({
 			...resource,
-			active: selectedResources?.includes(index) ?? false,
+			active: selectedResources?.includes(resource.id) ?? false,
 		}),
 	);
 
-	const onChooseResource = (id: number) => {
-		if (selectedResources?.includes(id)) {
-			const filteredResources = selectedResources.filter((resource) => resource !== id);
+	const onChooseResource = (id: string) => {
+		const resourcesArray = Array.isArray(selectedResources)
+			? selectedResources
+			: selectedResources
+				? [selectedResources]
+				: [];
+
+		if (resourcesArray.includes(id)) {
+			const filteredResources = resourcesArray.filter((resource) => resource !== id);
 			onChooseResources(filteredResources.length > 0 ? filteredResources : undefined);
 		} else {
-			onChooseResources([...(selectedResources || []), id]);
+			onChooseResources([...resourcesArray, id]);
 		}
 	};
 

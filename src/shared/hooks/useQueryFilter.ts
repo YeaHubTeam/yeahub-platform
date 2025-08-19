@@ -34,7 +34,7 @@ export interface FilterFromUser {
 	isFree?: boolean;
 	roles?: string | null;
 	isEmailVerified?: string | null;
-	resources?: number[];
+	resources?: string | string[];
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
@@ -97,7 +97,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			isFree: params.isFree === 'true' ? true : params.isFree === 'false' ? false : undefined,
 			roles: params.roles ? params.roles : undefined,
 			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
-			resources: params.resources ? params.resources.split(',').map(Number) : undefined,
+			resources: params.resources ? params.resources.split(',') : undefined,
 		};
 	};
 
