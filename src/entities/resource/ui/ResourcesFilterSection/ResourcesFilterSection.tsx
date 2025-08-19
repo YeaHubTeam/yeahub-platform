@@ -28,10 +28,10 @@ export const ResourcesFilterSection = ({
 	const resources = {
 		total: 4,
 		data: [
-			{ id: 1, title: t(Marketplace.RESOURCES_REPOSITORY) },
-			{ id: 2, title: t(Marketplace.RESOURCES_VIDEO) },
-			{ id: 3, title: t(Marketplace.RESOURCES_ARTICLE) },
-			{ id: 4, title: t(Marketplace.RESOURCES_COURSE) },
+			{ id: 1, title: '' },
+			{ id: 2, title: '' },
+			{ id: 3, title: '' },
+			{ id: 4, title: '' },
 		],
 	};
 

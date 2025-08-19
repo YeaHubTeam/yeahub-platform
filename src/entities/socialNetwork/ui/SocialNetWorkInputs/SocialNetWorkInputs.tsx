@@ -1,20 +1,20 @@
 import { ChangeEvent } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
+import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 
-import { SOCIAL_NETWORKS } from '../../model/data/socialNetwork';
+import { socialNetworks } from '../../model/data/socialNetwork';
 import { SocialNetwork, SocialNetworkCode } from '../../model/types/socialNetwork';
-
-import style from './SocialNetWorkInputs.module.css';
 
 export const SocialNetWorkInputs = () => {
 	const { fields, update } = useFieldArray<{ socialNetworks: SocialNetwork[] }>({
 		name: 'socialNetworks',
 	});
 	const { control } = useFormContext();
-	const onChangeHandler =
+
+	const onChangeSocialNetwork =
 		(socialNetworkCode: SocialNetworkCode, onChange: (e: ChangeEvent<HTMLInputElement>) => void) =>
 		(e: ChangeEvent<HTMLInputElement>) => {
 			onChange(e);
@@ -29,25 +29,23 @@ export const SocialNetWorkInputs = () => {
 		};
 
 	return (
-		<>
-			{SOCIAL_NETWORKS.map((socialNetwork, index) => (
+		<Flex gap="20" maxWidth wrap="wrap">
+			{socialNetworks.map((socialNetwork, index) => (
 				<FormControl
 					key={socialNetwork.code}
 					name={`socialNetworks.${index}.title`}
 					control={control}
 					label={socialNetwork.title}
-					className={style.form}
 				>
 					{(field) => (
 						<Input
 							{...field}
-							onChange={onChangeHandler(socialNetwork.code, field.onChange)}
-							className={style.input}
+							onChange={onChangeSocialNetwork(socialNetwork.code, field.onChange)}
 							size="S"
 						/>
 					)}
 				</FormControl>
 			))}
-		</>
+		</Flex>
 	);
 };

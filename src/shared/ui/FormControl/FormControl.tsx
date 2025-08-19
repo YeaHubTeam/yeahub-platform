@@ -8,7 +8,7 @@ import { Text } from '@/shared/ui/Text';
 
 type ChildrenProps = Omit<ControllerRenderProps<FieldValues, string>, 'ref'>;
 
-interface FormControlProps<T extends FieldValues> {
+export interface FormControlProps<T extends FieldValues> {
 	name: Path<T>;
 	control: Control<T>;
 	label?: string;

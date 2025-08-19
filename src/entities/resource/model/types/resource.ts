@@ -37,3 +37,7 @@ export type CreateOrEditResourceFormValues = Pick<
 	skills: number[];
 	keywords?: string[];
 };
+
+export interface GetresourceTypesResponse {
+	providers: string[];
+}

@@ -6,6 +6,7 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
+import { useGetResourceTypesQuery } from '../../api/resourceApi';
 import { EMPTY_RESOURCE_ID } from '../../model/constants/resource';
 
 type ResourcesSelectProps = Omit<
@@ -31,15 +32,8 @@ export const ResourcesSelect = ({
 }: ResourcesSelectProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const resourcesTypes = {
-		total: 4,
-		data: [
-			{ id: 1, title: t(Marketplace.RESOURCES_REPOSITORY) },
-			{ id: 2, title: t(Marketplace.RESOURCES_VIDEO) },
-			{ id: 3, title: t(Marketplace.RESOURCES_ARTICLE) },
-			{ id: 4, title: t(Marketplace.RESOURCES_COURSE) },
-		],
-	};
+	const { data } = useGetResourceTypesQuery();
+	const resourceTypes = data?.providers.map((provider, index) => ({ id: index, title: provider }));
 
 	const [selectedResources, setSelectedResources] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
@@ -68,7 +62,7 @@ export const ResourcesSelect = ({
 
 	const options = useMemo(() => {
 		if (hasMultiple) {
-			return (resourcesTypes?.data || [])
+			return (resourceTypes || [])
 				.map((resource) => ({
 					label: resource.title,
 					value: resource.id.toString(),
@@ -76,27 +70,27 @@ export const ResourcesSelect = ({
 				}))
 				.filter((resource) => !selectedResources?.includes(+resource.value));
 		} else {
-			return (resourcesTypes?.data || []).map((resource) => ({
+			return (resourceTypes || []).map((resource) => ({
 				label: resource.title,
 				value: resource.id.toString(),
 				limit: 100,
 			}));
 		}
-	}, [selectedResources, resourcesTypes]);
+	}, [selectedResources, resourceTypes]);
 
 	const resourcesDictionary = useMemo(() => {
 		const emptyResource: ResourceType = {
 			id: EMPTY_RESOURCE_ID,
 			title: t(Marketplace.SELECT_CHOOSE),
 		};
-		return (resourcesTypes?.data || []).reduce(
+		return (resourceTypes || []).reduce(
 			(acc, resource) => {
 				acc[resource.id] = resource;
 				return acc;
 			},
 			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<number, ResourceType>,
 		);
-	}, [resourcesTypes]);
+	}, [resourceTypes]);
 
 	if (!hasMultiple) {
 		return (

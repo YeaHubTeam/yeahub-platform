@@ -133,6 +133,11 @@
 				"password": {
 					"wrong": "User with this email has another password."
 				}
+			},
+			"telegram": {
+				"verify_denied": "Telegram verification denied",
+				"data_outdated": "Telegram data is outdated",
+				"invalid_data": "Telegram data is invalid"
 			}
 		},
 		"questions": {
@@ -250,6 +255,9 @@
 			},
 			"set": {
 				"failed": "Failed to switch profile"
+			},
+			"specialization": {
+				"already_exists": "Specialization already exists"
 			}
 		},
 		"user": {
