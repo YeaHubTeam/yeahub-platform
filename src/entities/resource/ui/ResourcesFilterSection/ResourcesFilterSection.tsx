@@ -24,7 +24,7 @@ export const ResourcesFilterSection = ({
 }: ResourcesFilterSectionProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const [showAll, setShowAll] = useState(false);
-	const [limit] = useState(resourceLimit || MAX_LIMIT_RESOURCES);
+	const limit = resourceLimit || MAX_LIMIT_RESOURCES;
 
 	const { data } = useGetResourceTypesQuery();
 	const resourceTypes = data?.map((item) => ({
