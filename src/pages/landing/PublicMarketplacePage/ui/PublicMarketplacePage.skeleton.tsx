@@ -1,25 +1,36 @@
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { IconSkeleton } from '@/shared/ui/Icon';
+import { TextSkeleton } from '@/shared/ui/Text';
 
-import { CollectionsContentSkeleton, CollectionsFilterPanelSkeleton } from '@/widgets/Collection';
-import { ResourcesListSkeleton } from '@/widgets/Marketplace/ui/RecourcesList/ResourcesList.skeleton';
-import { MarketplaceFiltersPanelSkeleton } from '@/widgets/Marketplace/ui/MarketplaceFiltersPanel/MarketplaceFiltersPanel.skeleton';
-// Изменить как в Collection импорт
+import {
+	ResourcesListSkeleton,
+	MarketplaceFiltersPanelSkeleton,
+	ResourcesPaginationSkeleton,
+} from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
 
-
-
 export const PublicMarketplacePageSkeleton = () => {
+	const { isMobileS, isMobile, isTablet } = useScreenSize();
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
-			<Flex className={styles.header}>
-			</Flex>
-			<ResourcesListSkeleton />
-			pagination
+				<Flex className={styles.header}>
+					<TextSkeleton variant={isMobileS ? 'body5-accent' : 'body6'} width={250} />
+					<Flex gap="12" align="center">
+						{(isMobile || isTablet) && <IconSkeleton size={32} />}
+						<TextSkeleton variant={isMobileS ? 'body5-accent' : 'body6'} width={150} />
+					</Flex>
+				</Flex>
+				<ResourcesListSkeleton />
+				<ResourcesPaginationSkeleton />
 			</Card>
-			<MarketplaceFiltersPanelSkeleton /> 
+			<Card className={styles.filters}>
+				<MarketplaceFiltersPanelSkeleton />
+			</Card>
 		</Flex>
 	);
 };

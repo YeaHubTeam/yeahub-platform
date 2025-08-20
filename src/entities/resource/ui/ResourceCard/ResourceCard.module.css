@@ -22,6 +22,10 @@
   object-position: center;
 }
 
+.right-block {
+  width: 100%;
+}
+
 @media (width < 768px) {
   .content {
     padding: 16px;
