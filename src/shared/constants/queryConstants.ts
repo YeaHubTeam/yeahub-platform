@@ -5,3 +5,4 @@ export const MAX_LIMIT_CATEGORIES = 5;
 export const MAX_LIMIT_SPECIALIZATIONS = 5;
 export const MAX_CHOOSE_QUESTION_COUNT = 8;
 export const COLLECTION_QUESTIONS_LIMIT = 20;
+export const MAX_LIMIT_RESOURCES = 4;
