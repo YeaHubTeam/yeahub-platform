@@ -4,7 +4,7 @@ import { DropdownSize } from '../DropdownTypes';
 
 import styles from './Select.module.css';
 
-interface SelectProps {
+export interface SelectProps {
 	size?: DropdownSize;
 	prefix: React.ReactNode;
 	suffix: React.ReactNode;

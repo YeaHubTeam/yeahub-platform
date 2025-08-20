@@ -18,6 +18,7 @@ export interface TextProps {
 	width?: string | number;
 	isMainTitle?: boolean;
 	isLimitSize?: boolean;
+	isNoWrap?: boolean;
 	dataTestId?: string;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
@@ -64,6 +65,7 @@ export const Text = forwardRef(
 			width,
 			isMainTitle,
 			isLimitSize,
+			isNoWrap,
 			dataTestId,
 		}: TextProps,
 		ref,
@@ -80,7 +82,7 @@ export const Text = forwardRef(
 					styles[`text-${color}`],
 					maxRows && styles[`text-rows-${maxRows}`],
 					className,
-					{ [styles.limited]: isLimitSize },
+					{ [styles.limited]: isLimitSize, [styles['no-wrap']]: isNoWrap },
 				)}
 				style={{ width }}
 			>

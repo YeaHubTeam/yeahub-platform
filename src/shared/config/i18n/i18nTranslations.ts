@@ -261,6 +261,7 @@ export enum Auth {
 	REGISTRATION_PRIVACY_ADD_CONSENT = 'registration.privacy.add.consent',
 	REGISTRATION_HAVE_ACCOUNT = 'registration.have.account',
 	REGISTRATION_LOGIN_LINK = 'registration.login.link',
+	REGISTRATION_SOCIAL_MEDIA = 'registration.social.media',
 	FORM_EMAIL_LABEL = 'form.email.label',
 	FORM_EMAIL_PLACEHOLDER = 'form.email.placeholder',
 	FORM_PASSWORD_LABEL = 'form.password.label',

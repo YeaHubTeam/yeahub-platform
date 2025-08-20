@@ -1,5 +1,6 @@
 export type { Skill, CreateOrEditSkillFormValues } from './model/types/skill';
 export { SkillSelect } from './ui/SkillSelect/SkillSelect';
+export { SkillSelectSkeleton } from './ui/SkillSelect/SkillSelect.skeleton';
 export { SkillForm } from './ui/SkillForm/SkillForm';
 export { SkillCard } from './ui/SkillCard/SkillCard';
 export { SkillList } from './ui/SkillList/SkillList';

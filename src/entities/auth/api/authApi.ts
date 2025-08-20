@@ -19,6 +19,8 @@ import {
 	RefreshResponse,
 	SignUpBodyRequest,
 	SignUpResponse,
+	TelegramLoginBodyRequest,
+	TelegramLoginResponse,
 } from '../model/types/auth';
 
 export const authApi = baseApi.injectEndpoints({
@@ -48,6 +50,29 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		telegram: build.mutation<TelegramLoginResponse, TelegramLoginBodyRequest>({
+			query: (body) => ({
+				url: authApiUrls.telegram,
+				method: 'POST',
+				body,
+			}),
+			async onQueryStarted(_, { queryFulfilled, extra }) {
+				try {
+					const result = await queryFulfilled;
+					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
+					const typedExtra = extra as ExtraArgument;
+					typedExtra.navigate(ROUTES.platformRoute);
+				} catch (error) {
+					if (error && typeof error === 'object' && 'error' in error) {
+						const errObj = error as { error: { data: { message: string } } };
+						toast.error(i18n.t('toast.' + errObj.error.data.message));
+					}
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+		}),
+
 		register: build.mutation<SignUpResponse, SignUpBodyRequest>({
 			query: (body) => ({
 				url: authApiUrls.register,
@@ -126,6 +151,7 @@ export const authApi = baseApi.injectEndpoints({
 
 export const {
 	useLoginMutation,
+	useTelegramMutation,
 	useRegisterMutation,
 	useProfileQuery,
 	useLazyLogoutQuery,

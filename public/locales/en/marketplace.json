@@ -63,5 +63,21 @@
 		"choose": "Choose a resource type from the list",
 		"empty": "No options",
 		"selected": "Selected resource types"
+	},
+	"resourceTypes": {
+		"video": "Video",
+		"podcast": "Podcast",
+		"channel": "Channel",
+		"course": "Course",
+		"article": "Article",
+		"book": "Book",
+		"guide": "Guide",
+		"roadmap": "Roadmap",
+		"trainer": "Trainer",
+		"game": "Game",
+		"repository": "Repository",
+		"chat": "Chat",
+		"tool": "Tool",
+		"documentation": "Documentation"
 	}
 }

@@ -3,7 +3,7 @@ import { baseApi } from '@/shared/config/api/baseApi';
 
 import { resourceApiUrls } from '../model/constants/resource';
 import {
-	GetresourceTypesResponse,
+	GetResourceTypesResponse,
 	GetResourcesListParamsRequest,
 	GetResourcesListResponse,
 } from '../model/types/resource';
@@ -17,7 +17,7 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
-		getResourceTypes: build.query<GetresourceTypesResponse, void>({
+		getResourceTypes: build.query<GetResourceTypesResponse, void>({
 			query: () => ({
 				url: resourceApiUrls.getResourceTypes,
 			}),

@@ -9,21 +9,23 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
 
+import { SkillSelectSkeleton } from './SkillSelect.skeleton';
+
 type SkillSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'children'
 > & {
 	value: number[];
 	onChange: (value: number[]) => void;
-	selectedSPecializations?: number[];
+	selectedSpecializations?: number[];
 };
 
-export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillSelectProps) => {
+export const SkillSelect = ({ onChange, value, selectedSpecializations }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
-	const { data: skills } = useGetSkillsListQuery({
+	const { data: skills, isLoading } = useGetSkillsListQuery({
 		limit: 100,
-		specializations: selectedSPecializations,
+		specializations: selectedSpecializations,
 	});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
@@ -59,6 +61,10 @@ export const SkillSelect = ({ onChange, value, selectedSPecializations }: SkillS
 			{} as Record<string, Skill>,
 		);
 	}, [skills]);
+
+	if (isLoading) {
+		return <SkillSelectSkeleton />;
+	}
 
 	return (
 		<SelectWithChips
