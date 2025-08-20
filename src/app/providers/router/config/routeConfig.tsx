@@ -95,7 +95,7 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
-import { ResourcesTablePageRequest } from '@/pages/admin/ResourcesTablePageRequest';
+import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -345,7 +345,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.resources.create.page,
-				element: <ResourcesTablePageRequest />,
+				element: <ResourceCreatePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

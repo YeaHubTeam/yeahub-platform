@@ -1,16 +1,11 @@
-import {
-	CreateOrEditResourceFormValues,
-	Resource,
-	ResourceAccessCategory,
-} from '@/entities/resource';
+import { CreateOrEditResourceFormValues, Resource } from '@/entities/resource';
 
 export type CreateResourceFormValues = Omit<CreateOrEditResourceFormValues, 'id'>;
 
 export type CreateResourceBodyRequest = {
 	name: string;
 	description: string;
-	provider: string;
-	accessCategory: ResourceAccessCategory;
+	type: string;
 	iconBase64: string | null;
 	skills: number[];
 	specializations: number[];
