@@ -105,7 +105,7 @@ const PublicMarketplacePage = () => {
 		</Button>
 	);
 
-	if (isLoading) {
+	if (true) {
 		return <PublicMarketplacePageSkeleton />;
 	}
 

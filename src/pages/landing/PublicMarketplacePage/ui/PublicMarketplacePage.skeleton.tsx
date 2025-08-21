@@ -19,10 +19,10 @@ export const PublicMarketplacePageSkeleton = () => {
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
-					<TextSkeleton variant={isMobileS ? 'body5-accent' : 'body6'} width={250} />
+					<TextSkeleton variant={'body6'} width={250} />
 					<Flex gap="12" align="center">
-						{(isMobile || isTablet) && <IconSkeleton size={32} />}
-						<TextSkeleton variant={isMobileS ? 'body5-accent' : 'body6'} width={150} />
+						{(isMobile || isTablet) && <IconSkeleton size={36} />}
+						<IconSkeleton size={28} />
 					</Flex>
 				</Flex>
 				<ResourcesListSkeleton />
