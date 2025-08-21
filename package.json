@@ -1,6 +1,6 @@
 {
 	"name": "yeahub-platform",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"description": "YeaHub is a platform for IT professionals, bringing together learning, career growth, personal development, and a community of like-minded individuals. A React-based platform with integrated Storybook and advanced developer tooling.",
 	"main": "src/app/index.tsx",
 	"homepage": "https://github.com/YeaHubTeam/yeahub-platform",
@@ -120,7 +120,7 @@
 		"stylelint-order": "^6.0.4",
 		"ts-loader": "^9.5.1",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.3.3",
+		"typescript": "^5.5.3",
 		"typescript-plugin-css-modules": "^5.1.0",
 		"web-streams-polyfill": "4.0.0",
 		"webpack": "^5.90.1",

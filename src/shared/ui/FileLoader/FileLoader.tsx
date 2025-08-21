@@ -8,13 +8,15 @@ import Gallery from '@/shared/assets/images/Gallery.avif';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useDragAndDrop } from '@/shared/hooks';
+import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import style from './FileLoader.module.css';
 import { Accept, Extension } from './types';
 
-interface FileLoaderProps {
+export interface FileLoaderProps {
 	accept: Accept;
-	multyple?: boolean;
+	multiply?: boolean;
 	maxFileMBSize?: number;
 	fileTypeText: string;
 	className?: string;
@@ -29,7 +31,7 @@ export const FileLoader = ({
 	fileTypeText,
 	maxFileMBSize,
 	extensionsText,
-	multyple = false,
+	multiply = false,
 	onChange,
 	isDragDropEnabled = true,
 }: FileLoaderProps) => {
@@ -52,7 +54,7 @@ export const FileLoader = ({
 			if (refFiles && refFiles.length > 0) {
 				const file = Array.from(refFiles);
 
-				if (!multyple) {
+				if (!multiply) {
 					setFiles([file[0]]);
 					onChange([file[0]]);
 
@@ -79,7 +81,7 @@ export const FileLoader = ({
 		if (transferFiles && transferFiles.length > 0) {
 			const file = Array.from(transferFiles);
 
-			if (!multyple) {
+			if (!multiply) {
 				setFiles([file[0]]);
 				onChange([file[0]]);
 				return;
@@ -92,7 +94,11 @@ export const FileLoader = ({
 	};
 
 	return (
-		<div
+		<Flex
+			direction="column"
+			justify="center"
+			align="center"
+			gap="12"
 			tabIndex={0}
 			role={'button'}
 			onDrop={onDrop}
@@ -111,27 +117,28 @@ export const FileLoader = ({
 					<div>
 						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} loading="lazy" />
 					</div>
-
-					<p>
-						<span>{t(Translation.FILE_LOADER_LINK)}</span> {t(Translation.FILE_LOADER_TEXT)}{' '}
-						{fileTypeText}
-					</p>
-
-					<p className={style['extension-descriptions']}>
+					<Flex align="center" gap="4" justify="center" wrap="wrap">
+						<Text variant="body2" color="purple-700" isNoWrap>
+							{t(Translation.FILE_LOADER_LINK)}
+						</Text>
+						<Text variant="body2" color="black-500" isNoWrap>
+							{t(Translation.FILE_LOADER_TEXT)} {fileTypeText}
+						</Text>
+					</Flex>
+					<Text variant="body1" color="black-300">
 						{extensionsText}
 						{maxFileMBSize && ` (${t(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`}
-					</p>
+					</Text>
 				</>
 			)}
-
 			<input
 				type="file"
 				accept={accept}
 				ref={uploaderRef}
 				onChange={handleChange}
-				multiple={multyple}
+				multiple={multiply}
 				className={style['file-input']}
 			/>
-		</div>
+		</Flex>
 	);
 };

@@ -224,10 +224,6 @@
   &:disabled:active {
     background-color: inherit;
   }
-
-  &:not([disabled]):hover {
-    color: var(--color-purple-700);
-  }
 }
 
 .button-destructive {

@@ -6,20 +6,21 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
+import { useGetResourceTypesQuery } from '../../api/resourceApi';
 import { EMPTY_RESOURCE_ID } from '../../model/constants/resource';
 
 type ResourcesSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
-	value: number | number[];
-	onChange: (value: number[] | number) => void;
+	value: string | string[];
+	onChange: (value: string[] | string) => void;
 	hasMultiple?: boolean;
 	disabled?: boolean;
 };
 
 type ResourceType = {
-	id: number;
+	id: string;
 	title: string;
 };
 
@@ -31,35 +32,31 @@ export const ResourcesSelect = ({
 }: ResourcesSelectProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const resourcesTypes = {
-		total: 4,
-		data: [
-			{ id: 1, title: t(Marketplace.RESOURCES_REPOSITORY) },
-			{ id: 2, title: t(Marketplace.RESOURCES_VIDEO) },
-			{ id: 3, title: t(Marketplace.RESOURCES_ARTICLE) },
-			{ id: 4, title: t(Marketplace.RESOURCES_COURSE) },
-		],
-	};
+	const { data } = useGetResourceTypesQuery();
+	const resourceTypes = data?.map((item) => ({
+		id: item.code,
+		title: t(`resourceTypes.${item.code}`, item.code),
+	}));
 
-	const [selectedResources, setSelectedResources] = useState<number[]>(
+	const [selectedResources, setSelectedResources] = useState<string[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
-		const numValue = +newValue;
+		const strValue = newValue;
 
 		if (hasMultiple) {
-			const updates = [...selectedResources, numValue];
+			const updates = [...selectedResources, strValue];
 			setSelectedResources(updates);
 			onChange(updates);
 		} else {
-			setSelectedResources([numValue]);
-			onChange(numValue);
+			setSelectedResources([strValue]);
+			onChange(strValue);
 		}
 	};
 
-	const handleDeleteResource = (id: number) => () => {
+	const handleDeleteResource = (id: string) => () => {
 		if (disabled) return;
 		const updates = selectedResources.filter((resourceId) => resourceId !== id);
 		setSelectedResources(updates);
@@ -68,35 +65,35 @@ export const ResourcesSelect = ({
 
 	const options = useMemo(() => {
 		if (hasMultiple) {
-			return (resourcesTypes?.data || [])
+			return (resourceTypes || [])
 				.map((resource) => ({
 					label: resource.title,
-					value: resource.id.toString(),
+					value: resource.id,
 					limit: 100,
 				}))
-				.filter((resource) => !selectedResources?.includes(+resource.value));
+				.filter((resource) => !selectedResources?.includes(resource.value));
 		} else {
-			return (resourcesTypes?.data || []).map((resource) => ({
+			return (resourceTypes || []).map((resource) => ({
 				label: resource.title,
-				value: resource.id.toString(),
+				value: resource.id,
 				limit: 100,
 			}));
 		}
-	}, [selectedResources, resourcesTypes]);
+	}, [selectedResources, resourceTypes]);
 
 	const resourcesDictionary = useMemo(() => {
 		const emptyResource: ResourceType = {
 			id: EMPTY_RESOURCE_ID,
 			title: t(Marketplace.SELECT_CHOOSE),
 		};
-		return (resourcesTypes?.data || []).reduce(
+		return (resourceTypes || []).reduce(
 			(acc, resource) => {
 				acc[resource.id] = resource;
 				return acc;
 			},
-			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<number, ResourceType>,
+			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<string, ResourceType>,
 		);
-	}, [resourcesTypes]);
+	}, [resourceTypes]);
 
 	if (!hasMultiple) {
 		return (
@@ -104,7 +101,7 @@ export const ResourcesSelect = ({
 				<Dropdown
 					label={options.length ? t(Marketplace.SELECT_CHOOSE) : t(Marketplace.SELECT_EMPTY)}
 					disabled={disabled}
-					value={resourcesDictionary[selectedResources[0] || 0]?.title ?? ''}
+					value={resourcesDictionary[selectedResources[0] || EMPTY_RESOURCE_ID]?.title ?? ''}
 					onSelect={(val) => handleChange(String(val))}
 				>
 					{options.map((option) => (

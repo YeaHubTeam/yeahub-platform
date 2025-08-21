@@ -20,7 +20,7 @@ export const useMarketplaceFilters = () => {
 		});
 	};
 
-	const onChangeResources = (resources: number[] | undefined) => {
+	const onChangeResources = (resources: string[] | undefined) => {
 		handleFilterChange({ resources, page: 1 });
 	};
 

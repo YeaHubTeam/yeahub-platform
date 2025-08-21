@@ -43,7 +43,9 @@ export const RegisterForm = () => {
 
 	return (
 		<form className={styles['form-wrapper']} onSubmit={handleSubmit(onRegistration)}>
-			<Text variant="head2">{t(Auth.REGISTRATION_TITLE)}</Text>
+			<Text variant="head2" className={styles.header}>
+				{t(Auth.REGISTRATION_TITLE)}
+			</Text>
 
 			<div className={styles['input-wrapper']}>
 				<FormControl name="username" control={control} label={t(Auth.FORM_USERNAME_LABEL)}>

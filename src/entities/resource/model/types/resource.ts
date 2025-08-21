@@ -37,3 +37,26 @@ export type CreateOrEditResourceFormValues = Pick<
 	skills: number[];
 	keywords?: string[];
 };
+
+export type ResourceTypeCode =
+	| 'video'
+	| 'podcast'
+	| 'channel'
+	| 'course'
+	| 'article'
+	| 'book'
+	| 'guide'
+	| 'roadmap'
+	| 'trainer'
+	| 'game'
+	| 'repository'
+	| 'chat'
+	| 'tool'
+	| 'documentation';
+
+export interface ResourceType {
+	code: ResourceTypeCode;
+	description: string;
+}
+
+export type GetResourceTypesResponse = ResourceType[];

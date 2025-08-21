@@ -1,0 +1,61 @@
+{
+	"title": "Onboarding",
+	"description": "Discover the benefits of the YeaHub platform",
+	"stepper": {
+		"greeting.step": "Greeting and Introduction",
+		"choose.specialization.step": "Choosing a specialization",
+		"service.overview.step": "Preparing for interviews",
+		"subscription.step": "Membership and Statistics",
+		"final.step": "Finishing"
+	},
+	"greeting": {
+		"title": "Welcome!",
+		"content": "YeaHub is a platform for the growth, training and interaction of IT specialists.\u2028Our goal is to create a single center where everyone can develop skills, build a career, share knowledge and find like—minded people. \uD83E\uDD13",
+		"button": "Continue"
+	},
+	"choose.specialization": {
+		"title": "Choose your specialty",
+		"content": "Choose a direction, for example Frontend. This way you will see only the necessary questions and materials for this area. \n\nYou can change your specialization later. One profile — one specialization, so that the training is convenient and understandable \uD83E\uDDD0",
+		"select.label": "Choosing a specialization",
+		"button": "Save and continue"
+	},
+	"overview.service": {
+		"title": "The platform now has a service for preparing for interviews:",
+		"list": {
+			"first": "10,000+ questions with user-friendly filters",
+			"second": "Real collections of questions from Tinkoff, Avito, Sber, etc.",
+			"third": "Interactive trainer, for training"
+		},
+		"description": "In the future, 20+ more useful services for IT specialists will be added, but this is still a secret \uD83D\uDE04",
+		"button": "Continue"
+	},
+	"subscription": {
+		"title": "Your subscription helps us to develop the platform!",
+		"improvements": {
+			"label": "Thanks to you, we:",
+			"list": {
+				"first": "Adding new questions and interviews",
+				"second": "Creating useful services",
+				"third": "Improving content every day"
+			}
+		},
+		"benefits": {
+			"label": "What do you get:",
+			"list": {
+				"first": "Full access to trainer",
+				"second": "Closed collections of top companies",
+				"third": "Detailed statistics of your progress",
+				"fourth": "Smart question repetition mode"
+			}
+		},
+		"left.button": "Subscribe",
+		"right.button": "Later"
+	},
+	"final": {
+		"title": "YeaHub is getting better thanks to you!",
+		"content": "Thank you for choosing us! Here you will find everything for growth — learn, communicate and develop in a community where knowledge and commitment are valued ❤\uFE0F",
+		"questions.link": "Questions list",
+		"trainer.link": "Trainer",
+		"interview.link": "Interview"
+	}
+}

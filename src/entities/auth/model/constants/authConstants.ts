@@ -6,6 +6,7 @@ export const authApiUrls = {
 	profile: 'auth/profile',
 	logout: 'auth/logout',
 	refresh: 'auth/refresh',
+	telegram: 'auth/telegram',
 };
 
 export const listAdminRoles: RoleName[] = ['author', 'admin'];

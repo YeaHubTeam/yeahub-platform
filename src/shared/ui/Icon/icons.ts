@@ -10,6 +10,7 @@ import Burger from '@/shared/assets/icons/burger.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
 import Check from '@/shared/assets/icons/check.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
+import CheckList from '@/shared/assets/icons/checkList.svg';
 import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
@@ -26,9 +27,12 @@ import Figma from '@/shared/assets/icons/figma_white.svg';
 import Filter from '@/shared/assets/icons/filter.svg';
 import Github from '@/shared/assets/icons/github.svg';
 import GithubWhite from '@/shared/assets/icons/github_white.svg';
+import GraphUp from '@/shared/assets/icons/graphUp.svg';
+import HandShake from '@/shared/assets/icons/handShake.svg';
 import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Info from '@/shared/assets/icons/info.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
+import KeySquare from '@/shared/assets/icons/keySquare.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
 import ListWithBackground from '@/shared/assets/icons/listWithBackground.svg';
@@ -40,10 +44,12 @@ import NotePencil from '@/shared/assets/icons/NotePencil.svg';
 import Pen from '@/shared/assets/icons/pen.svg';
 import Plus from '@/shared/assets/icons/plus.svg';
 import PlusCircle from '@/shared/assets/icons/plusCircle.svg';
+import Question from '@/shared/assets/icons/questions.svg';
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
 import Search from '@/shared/assets/icons/search.svg';
 import Settings from '@/shared/assets/icons/settings.svg';
 import SlidersHorizontal from '@/shared/assets/icons/slidersHorizontal.svg';
+import Specialization from '@/shared/assets/icons/specialization.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
@@ -110,6 +116,12 @@ export const icons: Record<IconName, IconComponent> = {
 	settings: Settings,
 	sealCheck: SealCheck,
 	check: Check,
+	checkList: CheckList,
+	question: Question,
+	handShake: HandShake,
+	specialization: Specialization,
+	graphUp: GraphUp,
+	keySquare: KeySquare,
 	userCheckWithBackground: UserCheckWithBackground,
 	userSwitch: UserSwitch,
 	trendUp: TrendUp,

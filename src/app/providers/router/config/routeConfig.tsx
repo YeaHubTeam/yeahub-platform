@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import Books from '@/shared/assets/icons/books.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
 import Companies from '@/shared/assets/icons/Companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
@@ -93,6 +94,8 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
+import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -206,6 +209,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.companies.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
 		icon: Companies,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.resources.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
+		icon: Books,
 		roles: listAdminRoles,
 	},
 ];
@@ -328,6 +338,14 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.questions.edit.page,
 				element: <QuestionEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.page,
+				element: <ResourcesTablePage />,
+			},
+			{
+				path: ROUTES.admin.resources.create.page,
+				element: <ResourceCreatePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

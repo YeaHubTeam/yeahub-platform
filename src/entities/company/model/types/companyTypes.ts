@@ -10,6 +10,7 @@ export interface Company {
 	kpp?: string;
 	createdAt?: string;
 	updatedAt?: string;
+	createdBy?: { id: string; username: string };
 }
 
 export type GetCompanyByIdResponse = Company;

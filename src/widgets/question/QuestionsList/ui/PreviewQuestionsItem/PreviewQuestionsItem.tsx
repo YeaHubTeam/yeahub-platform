@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
 import { useCurrentProject, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
+import { getQuestionRoute } from '@/entities/question';
 import { Question, QuestionGradeList } from '@/entities/question';
 
 import styles from './PreviewQuestionsItem.module.css';
@@ -20,10 +19,7 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 	const { id, imageSrc, title, rate, complexity = 0 } = question;
 	const { isMobileS } = useScreenSize();
 	const project = useCurrentProject();
-	const isLanding = project === 'landing';
-	const questionRoute = isLanding
-		? route(ROUTES.questions.detail.page, id)
-		: route(ROUTES.interview.questions.detail.page, id);
+	const questionRoute = getQuestionRoute[project](id);
 
 	return (
 		<li>
