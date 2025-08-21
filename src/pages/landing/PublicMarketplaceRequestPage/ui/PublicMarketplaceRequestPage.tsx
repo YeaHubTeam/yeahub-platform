@@ -1,6 +1,5 @@
 import { ResourceCreateForm } from '@/features/resources/createResource';
-const PublicMarketplaceRequestPage = () => {
-	return <ResourceCreateForm />;
-};
+
+const PublicMarketplaceRequestPage = () => <ResourceCreateForm />;
 
 export default PublicMarketplaceRequestPage;

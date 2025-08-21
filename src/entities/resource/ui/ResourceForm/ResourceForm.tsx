@@ -129,13 +129,11 @@ export const ResourceForm = () => {
 			</FormField>
 			<FormField label={t(Marketplace.KEYWORDS_SHORT)} description={t(Marketplace.KEYWORDS_LABEL)}>
 				<FormControl name="keywords" control={control}>
-					{({ onChange, value }) => {
-						return (
-							<div className={styles.keywords}>
-								<KeywordInput value={value} onChange={onChange} />
-							</div>
-						);
-					}}
+					{({ onChange, value }) => (
+						<div className={styles.keywords}>
+							<KeywordInput value={value} onChange={onChange} />
+						</div>
+					)}
 				</FormControl>
 			</FormField>
 		</Flex>

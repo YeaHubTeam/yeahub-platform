@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -41,16 +42,13 @@ export const ResourceCreateFormWithHeader = () => {
 				<BackButton />
 			</div>
 			<Flex gap="20" align="center" className={styles.buttons}>
-				<Button variant="link" destructive className={styles['delete-button']}>
-					{t(Marketplace.DELETE)}
-				</Button>
 				<Button
 					disabled={isLoading}
 					className={styles['submit-button']}
 					onClick={() => handleSubmit(onCreateResource)()}
 					type="submit"
 				>
-					{t(Marketplace.ADD_RESOURCE_SUBMIT)}
+					{t(Translation.SAVE, { ns: 'translation' })}
 				</Button>
 			</Flex>
 			<Card className={styles.content}>

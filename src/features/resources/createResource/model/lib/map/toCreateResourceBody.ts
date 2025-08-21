@@ -3,16 +3,15 @@ import type {
 	CreateResourceFormValues,
 } from '../../types/resourceCreateTypes';
 
-export const toCreateResourceBody = (f: CreateResourceFormValues): CreateResourceBodyRequest => ({
-	product: {
-		name: f.name.trim(),
-		description: f.description.trim(),
-		provider: f.provider,
-		accessCategory: f.accessCategory,
-		iconBase64: f.iconBase64 || null,
-	},
-	skills: (f.skills ?? []).map(Number),
-	specializations: (f.specializations ?? []).map(Number),
-	keywords: (f.keywords ?? []).map((k) => k.trim()).filter(Boolean),
-	isActive: !!f.isActive,
+export const toCreateResourceBody = (
+	resource: CreateResourceFormValues,
+): CreateResourceBodyRequest => ({
+	name: resource.name.trim(),
+	description: resource.description.trim(),
+	type: String(resource.provider),
+	iconBase64: resource.iconBase64 || null,
+	skills: (resource.skills ?? []).map(Number),
+	specializations: (resource.specializations ?? []).map(Number),
+	keywords: (resource.keywords ?? []).map((k) => k.trim()).filter(Boolean),
+	isActive: !!resource.isActive,
 });
