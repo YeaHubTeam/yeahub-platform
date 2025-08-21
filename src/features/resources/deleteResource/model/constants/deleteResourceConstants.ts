@@ -1,3 +1,3 @@
 export const deleteResourceApiUrls = {
-	deleteResource: '/external-products/product/:resourceId',
+	deleteResource: 'external-products/product/:resourceId',
 };

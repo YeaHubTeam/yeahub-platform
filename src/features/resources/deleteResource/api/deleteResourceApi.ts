@@ -4,13 +4,18 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { ExtraArgument } from '@/shared/config/store/types';
+import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
+
+import { Resource } from '@/entities/resource';
+
+import { deleteResourceApiUrls } from '../model/constants/deleteResourceConstants';
 
 const deleteResourceApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		deleteResource: builder.mutation<void, string>({
+		deleteResource: builder.mutation<void, Resource['id']>({
 			query: (resourceId) => ({
-				url: `external-products/product/${resourceId}`,
+				url: route(deleteResourceApiUrls.deleteResource, resourceId),
 				method: 'DELETE',
 			}),
 			async onQueryStarted(_, { queryFulfilled, extra }) {

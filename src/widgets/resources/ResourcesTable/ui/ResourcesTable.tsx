@@ -14,7 +14,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
 
-import { DeleteResourceButton } from '../../../../features/resources/deleteResource/ui/DeleteResourceButton.tsx/DeleteResourceButton';
+import { DeleteResourceButton } from '@/features/resources/deleteResource/ui/DeleteResourceButton.tsx/DeleteResourceButton';
 
 interface UIResource extends Resource {
 	disabled?: boolean;
