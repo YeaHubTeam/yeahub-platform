@@ -19,7 +19,7 @@ export const EmailVerification = () => {
 	const { data: profile, refetch } = useProfileQuery();
 	const pollingAttemptsRef = useRef(0);
 
-	const isEmailVerified = profile?.isEmailVerified;
+	const isEmailVerified = profile?.isVerified;
 	const email = profile?.email ?? '';
 
 	useEffect(() => {
