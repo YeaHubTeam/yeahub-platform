@@ -13,7 +13,7 @@ import {
 import styles from './PublicMarketplacePage.module.css';
 
 export const PublicMarketplacePageSkeleton = () => {
-	const { isMobileS, isMobile, isTablet } = useScreenSize();
+	const { isMobile, isTablet } = useScreenSize();
 
 	return (
 		<Flex gap="20" align="start">
