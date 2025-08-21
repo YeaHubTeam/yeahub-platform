@@ -1,42 +1,50 @@
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Subscription } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Pagination } from '@/shared/ui/Pagination';
 import { Text } from '@/shared/ui/Text';
 
-import type { Payment } from '@/entities/payment';
+import { useGetPaymentsHistoryQuery } from '@/entities/payment';
 
 import { PayHistoryItem } from '../PayHistoryItem/PayHistoryItem';
 
 import styles from './PayHistoryList.module.css';
 
-interface PayHistoryListProps {
-	payments: Payment[];
-	page: number;
-	totalPages: number;
-	onPageChange: (page: number) => void;
-}
+export const PayHistoryList = () => {
+	const [pageNumber, setPageNumber] = useState(1);
+	const userId = useAppSelector((state) => state.profile.fullProfile?.id || '');
 
-export const PayHistoryList = ({
-	payments,
-	page,
-	totalPages,
-	onPageChange,
-}: PayHistoryListProps) => {
+	const queryParams = useMemo(
+		() => ({
+			id: userId,
+			params: { page: pageNumber },
+		}),
+		[userId, pageNumber],
+	);
+
+	const { data: payHistories } = useGetPaymentsHistoryQuery(queryParams);
+
+	const payments = payHistories?.data || [];
+	const totalPages =
+		payHistories?.total && payHistories?.limit
+			? Math.ceil(payHistories.total / payHistories.limit)
+			: 0;
 	const { t } = useTranslation(i18Namespace.subscription);
 
 	const onPrevPageClick = () => {
-		onPageChange(page - 1);
+		setPageNumber(pageNumber - 1);
 	};
 
 	const onNextPageClick = () => {
-		onPageChange(page + 1);
+		setPageNumber(pageNumber + 1);
 	};
 
 	const onPaginationButtonClick = (newPage: number) => {
-		onPageChange(newPage);
+		setPageNumber(newPage);
 	};
 
 	return (
@@ -55,7 +63,7 @@ export const PayHistoryList = ({
 						onPrevPageClick={onPrevPageClick}
 						onNextPageClick={onNextPageClick}
 						onChangePage={onPaginationButtonClick}
-						page={page}
+						page={pageNumber}
 						totalPages={totalPages}
 					/>
 				</div>
