@@ -19,7 +19,7 @@ export type GetCompanyByIdRequest = {
 	companyId: string;
 };
 
-export type CreateOrEditCompanyFormValues = Omit<Company, 'createdAt' | 'updatedAt'>;
+export type CreateOrEditCompanyFormValues = Omit<Company, 'createdAt' | 'updatedAt' | 'createdBy'>;
 
 export type GetCompaniesListResponse = Response<Company[]>;
 

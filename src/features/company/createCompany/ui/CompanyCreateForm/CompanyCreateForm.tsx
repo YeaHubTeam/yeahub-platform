@@ -18,6 +18,9 @@ export const CompanyCreateForm = () => {
 	const companyMethods = useForm<CreateCompanyFormValues>({
 		resolver: yupResolver(companyCreateSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			title: '',
+		},
 	});
 
 	const { isDirty, isSubmitting, isSubmitted } = companyMethods.formState;
