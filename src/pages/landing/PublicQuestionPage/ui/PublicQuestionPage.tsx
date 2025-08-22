@@ -34,7 +34,7 @@ const PublicQuestionPage = () => {
 		questionId,
 	});
 
-	const onBack = () => navigate(ROUTES.questions.page);
+	const onBack = () => navigate(-1);
 
 	if (isLoading || isFetching) {
 		return <PublicQuestionPageSkeleton />;
