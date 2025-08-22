@@ -232,6 +232,14 @@
 				"failed": "Collection could not be changed"
 			}
 		},
+		"resources": {
+			"delete": {
+				"single": {
+					"success": "Resource deleted successfully",
+					"failed": "Failed to delete resource"
+				}
+			}
+		},
 		"profile": {
 			"update": {
 				"success": "Profile has been successfully changed",
