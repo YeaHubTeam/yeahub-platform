@@ -1,0 +1,17 @@
+.wrapper {
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--color-white-900);
+}
+
+.icon {
+  width: 27px;
+  height: 27px;
+  color: var(--color-yellow-900);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 16px;
+} 
