@@ -1,6 +1,6 @@
 import t from 'react-hot-toast';
 
-import styles from './styles.module.css';
+import styles from './Toast.module.css';
 
 export const CloseBtn = ({ toastId }: { toastId: string }) => (
 	<button onClick={() => t.dismiss(toastId)} className={styles['close-btn']}>
