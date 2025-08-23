@@ -1,6 +1,6 @@
 .img-block {
   position: relative;
-}	
+}
 
 .sticker-candidate {
   position: absolute;
@@ -29,7 +29,7 @@
 .company {
   position: absolute;
   bottom: 56px;
-  left: 4px;
+  left: -71px;
   width: 293px;
   height: 114px;
   border-radius: 10px
@@ -49,6 +49,12 @@
   object-fit: contain;
 }
 
+@media screen and (width < 1305px) {
+  .company {
+    left: 30px;
+  }
+}
+
 @media screen and (width < 1200px) {
   .statistics {
     top: 60px;
@@ -66,7 +72,6 @@
   }
 
   .company {
-    left: 30px;
     width: 236px;
     height: 92px;
   }
@@ -116,7 +121,7 @@
   .img-wrapper {
     height: 404px;
   }
-	
+
   .wallpaper {
     height: 97%;
   }

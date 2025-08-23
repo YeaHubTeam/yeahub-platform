@@ -12,8 +12,11 @@
 }
 
 .title {
+  position: relative;
+  display: inline;
   text-transform: uppercase;
   font-weight: var(--font-weight-500);
+  isolation: isolate;
 }
 
 .title::before {
@@ -31,6 +34,7 @@
   position: absolute;
   top:65.5px;
   left: 204px;
+  z-index: -1;
   width: 123px;
   height: 7px;
   border-radius: 16px;
@@ -56,7 +60,7 @@
     line-height: 120%;
     font-size: var(--font-size-h-xs);
   }
-	
+
   .text-block p {
     line-height: 130%;
     font-weight: var(--font-weight-400);
