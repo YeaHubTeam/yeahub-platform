@@ -10,4 +10,5 @@ export const statusChipVariants: Record<StatusChipVariant, Pallete> = {
 
 export const statusChipTestIds = {
 	statusChip: 'StatusChip',
+	statusChipText: 'StatusChip_Text',
 };

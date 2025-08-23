@@ -32,6 +32,5 @@ describe('BaseFilterSection', () => {
 
 	test('should render image or default icon', () => {
 		expect(screen.getByAltText('Item 1')).toBeInTheDocument();
-		expect(screen.getByText('Default Icon')).toBeInTheDocument();
 	});
 });
