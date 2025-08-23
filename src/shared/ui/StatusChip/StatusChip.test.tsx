@@ -8,14 +8,14 @@ const testVariants = Object.keys(statusChipVariants) as StatusChipVariant[];
 const testText = 'Test chip text';
 
 describe('StatusChip component', () => {
-	it('displays correct text content', () => {
+	test('displays correct text content', () => {
 		renderComponent(<StatusChip status={{ variant: testVariants[0], text: testText }} />);
-		expect(screen.getByText(testText)).toBeInTheDocument();
+		expect(screen.getByTestId(statusChipTestIds.statusChipText)).toHaveTextContent(testText);
 	});
 
-	it('applies correct typography variant', () => {
+	test('applies correct typography variant', () => {
 		renderComponent(<StatusChip status={{ variant: testVariants[0], text: testText }} />);
-		expect(screen.getByTestId(statusChipTestIds.statusChip)).toHaveClass('body1-accent');
+		expect(screen.getByTestId(statusChipTestIds.statusChipText)).toHaveClass('body1-accent');
 	});
 
 	describe.each(testVariants)('For "%s" variant', (variant) => {
@@ -23,12 +23,14 @@ describe('StatusChip component', () => {
 			renderComponent(<StatusChip status={{ variant, text: testText }} />);
 		});
 
-		it('renders with correct variant class', () => {
+		test('renders with correct variant class', () => {
 			expect(screen.getByTestId(statusChipTestIds.statusChip)).toHaveClass(`variant-${variant}`);
 		});
 
-		it('applies correct text color', () => {
-			expect(screen.getByText(testText)).toHaveClass(`text-${statusChipVariants[variant]}`);
+		test('applies correct text color', () => {
+			expect(screen.getByTestId(statusChipTestIds.statusChipText)).toHaveClass(
+				`text-${statusChipVariants[variant]}`,
+			);
 		});
 	});
 });

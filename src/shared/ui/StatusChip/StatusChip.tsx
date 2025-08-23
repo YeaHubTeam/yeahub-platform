@@ -26,7 +26,11 @@ export const StatusChip = ({ status }: StatusChipProps) => {
 			dataTestId={statusChipTestIds.statusChip}
 			className={classNames(styles.wrapper, styles[`variant-${variant}`])}
 		>
-			<Text variant="body1-accent" color={statusChipVariants[variant]}>
+			<Text
+				dataTestId={statusChipTestIds.statusChipText}
+				variant="body1-accent"
+				color={statusChipVariants[variant]}
+			>
 				{text}
 			</Text>
 		</Flex>
