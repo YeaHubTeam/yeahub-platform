@@ -1,0 +1,63 @@
+.toaster {
+  position: relative;
+  padding: 6px 12px;
+  min-width: 348px;
+  border-radius: 14px;
+  color: var(--color-black-900);
+}
+
+.error {
+  border: 1px solid var(--color-red-700);
+  background: var(--color-red-50);
+}
+
+.success {
+  border: 1px solid var(--color-green-900);
+  background: var(--color-green-007);
+
+}
+
+.warning {
+  border: 1px solid var(--color-yellow-900);
+  background: var(--color-yellow-200);
+
+}
+
+.close-btn {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  z-index: 999;
+  width: 10px;
+  height: 10px;
+  border: none;
+  background: transparent;
+  color: var(--color-black-800);
+  cursor: pointer;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease forwards;
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fade-out 1s ease forwards;
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
