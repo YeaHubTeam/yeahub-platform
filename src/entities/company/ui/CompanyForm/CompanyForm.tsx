@@ -35,6 +35,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 	const removeImage = () => {
 		setPreviewImg(null);
 		setValue('companyImage', null);
+		setValue('imageSrc', null);
 	};
 
 	return (
