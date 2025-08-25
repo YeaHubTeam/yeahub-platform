@@ -400,8 +400,9 @@ export enum InterviewStatistics {
 export enum Resources {
 	TITLE_SHORT = 'title.short',
 	DESCRIPTION = 'description.title',
-	ACCESS_CATEGORY = 'access_category',
+	TYPE = 'type',
 	AUTHOR = 'author',
+	SPECIALIZATION_TITLE = 'specialization.title',
 }
 
 export enum Questions {

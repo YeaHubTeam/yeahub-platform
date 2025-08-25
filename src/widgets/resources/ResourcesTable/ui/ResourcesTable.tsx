@@ -10,11 +10,14 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
 
 import { DeleteResourceButton } from '@/features/resources/deleteResource';
+
+const SPECIALIZATION_SHOW_COUNT = 2;
 
 interface UIResource extends Resource {
 	disabled?: boolean;
@@ -31,9 +34,9 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
-			accessCategory: t(Resources.ACCESS_CATEGORY),
+			type: t(Resources.TYPE),
 			description: t(Resources.DESCRIPTION),
-			author: t(Resources.AUTHOR),
+			author: t(Resources.SPECIALIZATION_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -42,9 +45,15 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			accessCategory: resource.accessCategory,
+			type: resource.type?.code,
 			description: resource.description,
-			author: resource.provider,
+			specialization: (
+				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
+					items={resource.specializations}
+					showCount={SPECIALIZATION_SHOW_COUNT}
+				/>
+			),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (

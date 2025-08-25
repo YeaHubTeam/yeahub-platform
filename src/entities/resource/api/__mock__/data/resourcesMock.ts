@@ -12,6 +12,16 @@ export const resourcesMock: Resource[] = [
 		updatedAt: '2025-06-23T16:43:50.115Z',
 		isActive: true,
 		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
+		specializations: [
+			{
+				id: 11,
+				title: 'Frontend',
+				description: 'Frontend-разработчик',
+				imageSrc: null,
+				createdAt: '2024-10-03T09:08:10.605Z',
+				updatedAt: '2024-11-02T06:46:12.745Z',
+			},
+		],
 	},
 	{
 		id: 'git-guide',
@@ -24,6 +34,16 @@ export const resourcesMock: Resource[] = [
 		updatedAt: '2025-06-23T16:43:50.115Z',
 		isActive: true,
 		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
+		specializations: [
+			{
+				id: 11,
+				title: 'Frontend',
+				description: 'Frontend-разработчик',
+				imageSrc: null,
+				createdAt: '2024-10-03T09:08:10.605Z',
+				updatedAt: '2024-11-02T06:46:12.745Z',
+			},
+		],
 	},
 	{
 		id: 'rest-vs-graphql',
@@ -37,6 +57,16 @@ export const resourcesMock: Resource[] = [
 		updatedAt: '2025-06-23T16:43:50.115Z',
 		isActive: true,
 		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
+		specializations: [
+			{
+				id: 11,
+				title: 'Frontend',
+				description: 'Frontend-разработчик',
+				imageSrc: null,
+				createdAt: '2024-10-03T09:08:10.605Z',
+				updatedAt: '2024-11-02T06:46:12.745Z',
+			},
+		],
 	},
 	{
 		id: 'gateway',
@@ -50,6 +80,16 @@ export const resourcesMock: Resource[] = [
 		updatedAt: '2025-06-23T16:43:50.115Z',
 		isActive: true,
 		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
+		specializations: [
+			{
+				id: 11,
+				title: 'Frontend',
+				description: 'Frontend-разработчик',
+				imageSrc: null,
+				createdAt: '2024-10-03T09:08:10.605Z',
+				updatedAt: '2024-11-02T06:46:12.745Z',
+			},
+		],
 	},
 	{
 		id: 'rest-vs-graphql',
@@ -62,5 +102,15 @@ export const resourcesMock: Resource[] = [
 		updatedAt: '2025-06-23T16:43:50.115Z',
 		isActive: true,
 		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
+		specializations: [
+			{
+				id: 11,
+				title: 'Frontend',
+				description: 'Frontend-разработчик',
+				imageSrc: null,
+				createdAt: '2024-10-03T09:08:10.605Z',
+				updatedAt: '2024-11-02T06:46:12.745Z',
+			},
+		],
 	},
 ];
