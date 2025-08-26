@@ -12,4 +12,5 @@ export interface ChipProps {
 	className?: string;
 	style?: React.CSSProperties;
 	withText?: number | string;
+	chipPadding6?: boolean;
 }
