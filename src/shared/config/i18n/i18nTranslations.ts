@@ -330,10 +330,10 @@ export enum InterviewQuiz {
 	ANSWER_HIDE = 'answer.hide',
 	ANSWER_DO_NOT_KNOW = 'answer.do.not.know',
 	ANSWER_KNOW = 'answer.know',
-	MODAL_QUIZ_TITLE = 'modal.quiz.title',
-	MODAL_QUIZ_DESCRIPTION = 'modal.quiz.description',
-	MODAL_QUIZ_ACTIONS_OK = 'modal.quiz.ok',
-	MODAL_QUIZ_ACTIONS_CANCEL = 'modal.quiz.cancel',
+	MODAL_CLONE_QUIZ_CONFIRM_TITLE = 'modal.clone.quiz.confirm.title',
+	MODAL_CLONE_QUIZ_CONFIRM_DESCRIPTION = 'modal.clone.quiz.confirm.description',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_OK = 'modal.clone.quiz.confirm.ok',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_CANCEL = 'modal.clone.quiz.confirm.cancel',
 }
 
 export enum InterviewQuizCreate {
