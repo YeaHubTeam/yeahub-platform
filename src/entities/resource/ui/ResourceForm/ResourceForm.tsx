@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
+import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -133,6 +134,18 @@ export const ResourceForm = () => {
 						<div className={styles.keywords}>
 							<KeywordInput value={value} onChange={onChange} />
 						</div>
+					)}
+				</FormControl>
+			</FormField>
+			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>
+				<FormControl name="url" control={control}>
+					{(field, hasError) => (
+						<Input
+							{...field}
+							type="url"
+							placeholder={t(Marketplace.URL_PLACEHOLDER)}
+							error={hasError}
+						/>
 					)}
 				</FormControl>
 			</FormField>

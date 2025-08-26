@@ -168,6 +168,8 @@ export enum Translation {
 	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
 	TOAST_RESOURCE_DELETE_SINGLE_SUCCESS = 'toast.resources.delete.single.success',
 	TOAST_RESOURCE_DELETE_SINGLE_FAILED = 'toast.resources.delete.single.failed',
+	TOAST_RESOURCE_EDIT_SUCCESS = 'toast.resources.edit.success',
+	TOAST_RESOURCE_EDIT_FAILED = 'toast.resources.edit.failed',
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
@@ -927,4 +929,7 @@ export enum Marketplace {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	URL_SHORT = 'url.short',
+	URL_LABEL = 'url.label',
+	URL_PLACEHOLDER = 'url.placeholder',
 }
