@@ -10,10 +10,10 @@ export const trialApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		getTrial: build.query<void, void>({
 			query: () => ({ url: trialApiUrl.getTrial }),
-			providesTags: [ApiTags.PROFILE, ApiTags.ROLES, ApiTags.USER_DETAIL, ApiTags.SUBSCRIPTIONS],
-			async onQueryStarted() {
+			async onQueryStarted(_, { dispatch }) {
 				try {
 					toast.success(i18n.t(Translation.TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS));
+					dispatch(baseApi.util.invalidateTags([ApiTags.PROFILE, ApiTags.SUBSCRIPTIONS]));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_SUBSCRIPTIONS_TRIAL_FAILED));
 					console.log(error);
