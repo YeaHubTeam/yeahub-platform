@@ -5,3 +5,7 @@
 .btn-container {
   margin-top: 36px;
 }
+
+.card-with-visible-overflow {
+  overflow: visible;
+}
