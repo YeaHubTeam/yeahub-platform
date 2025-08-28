@@ -1,1 +1,3 @@
-export const productByIdUrl = (id: string | number) => `external-products/product/${id}`;
+export const editResourceByIdUrl = {
+	editResource: 'external-products/product/:resourceId',
+};

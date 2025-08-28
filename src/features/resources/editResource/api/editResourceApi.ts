@@ -7,25 +7,14 @@ import { ExtraArgument } from '@/shared/config/store/types';
 import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
-import { productByIdUrl } from '../model/constants/editResourceConstants';
-import type {
-	UpdateResourceBodyRequest,
-	ResourceEditResponse,
-} from '../model/types/resourcesEditTypes';
-
-type GetArgs = { id: string | number };
-type UpdateArgs = { id: string | number; resource: UpdateResourceBodyRequest };
+import { editResourceByIdUrl } from '../model/constants/editResourceConstants';
+import { EditResourceBodyRequest, EditResourceResponse } from '../model/types/resourcesEditTypes';
 
 export const editResourceApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getResourceById: build.query<ResourceEditResponse, GetArgs>({
-			query: ({ id }) => ({ url: productByIdUrl(id), method: 'GET' }),
-			providesTags: (_res, _err, { id }) => [{ type: ApiTags.RESOURCES, id }],
-		}),
-
-		updateResource: build.mutation<ResourceEditResponse, UpdateArgs>({
-			query: ({ id, resource }) => ({
-				url: productByIdUrl(id),
+		editResource: build.mutation<EditResourceResponse, EditResourceBodyRequest>({
+			query: ({ resource }) => ({
+				url: route(editResourceByIdUrl.editResource, resource.id),
 				method: 'PUT',
 				body: resource,
 			}),
@@ -35,25 +24,16 @@ export const editResourceApi = baseApi.injectEndpoints({
 					const typedExtra = extra as ExtraArgument;
 
 					typedExtra.navigate(route(ROUTES.admin.resources.details.page, res.data.id));
-					toast.success(
-						i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS, {
-							defaultValue: 'Updated successfully',
-						}),
-					);
+					toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS));
 				} catch (e) {
-					toast.error(
-						i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED, { defaultValue: 'Update failed' }),
-					);
+					toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(e);
 				}
 			},
-			invalidatesTags: (_res, _err, { id }) => [
-				{ type: ApiTags.RESOURCES },
-				{ type: ApiTags.RESOURCES, id },
-			],
+			invalidatesTags: [ApiTags.RESOURCES, ApiTags.RESOURCES_DETAIL],
 		}),
 	}),
 });
 
-export const { useGetResourceByIdQuery, useUpdateResourceMutation } = editResourceApi;
+export const { useEditResourceMutation } = editResourceApi;

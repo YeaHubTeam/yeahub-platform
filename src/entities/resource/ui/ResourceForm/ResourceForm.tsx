@@ -120,7 +120,7 @@ export const ResourceForm = () => {
 				</FormField>
 			)}
 			<FormField label={t(Marketplace.TYPES_SHORT)} description={t(Marketplace.TYPES_LABEL)}>
-				<FormControl name="provider" control={control}>
+				<FormControl name="type" control={control}>
 					{({ onChange, value }) => (
 						<div>
 							<ResourcesSelect onChange={onChange} value={value} />
@@ -140,12 +140,7 @@ export const ResourceForm = () => {
 			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>
 				<FormControl name="url" control={control}>
 					{(field, hasError) => (
-						<Input
-							{...field}
-							type="url"
-							placeholder={t(Marketplace.URL_PLACEHOLDER)}
-							error={hasError}
-						/>
+						<Input {...field} placeholder={t(Marketplace.URL_PLACEHOLDER)} error={hasError} />
 					)}
 				</FormControl>
 			</FormField>
