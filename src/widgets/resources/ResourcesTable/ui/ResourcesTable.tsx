@@ -34,7 +34,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
-			type: t(Resources.TYPE),
+			resourceType: t(Resources.TYPE),
 			description: t(Resources.DESCRIPTION),
 			author: t(Resources.SPECIALIZATION_TITLE),
 		};
@@ -45,7 +45,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			type: resource.type?.code,
+			resourceType: resource.type?.code,
 			description: resource.description,
 			specialization: (
 				<TableCellEntityList
