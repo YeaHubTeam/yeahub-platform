@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import { useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getChannelsForSpecialization } from '@/entities/media';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 
 import {
@@ -20,6 +21,8 @@ import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
+	const profileId = useAppSelector(getProfileId);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const {
 		data: collection,
 		isFetching,
@@ -28,10 +31,21 @@ export const PublicCollectionPage = () => {
 	const { data: response } = useGetPublicQuestionsListQuery(
 		{
 			collection: Number(collectionId),
+			profileId,
 			limit: collection?.questionsCount,
 		},
 		{ skip: collection?.questionsCount === undefined },
 	);
+
+	// const { data: response } = useGetQuestionsListQuery(
+	// 	{
+	// 		collection: Number(collection?.id), // работает, если доставать напрямую(но это не паблик)
+	// 		collection: Number(collectionId), // так не работает в этом компоненте
+	// 		profileId,
+	// 		limit: collection?.questionsCount,
+	// 	},
+	// 	{ skip: collection?.questionsCount === undefined },
+	// );
 	const { isSmallScreen, isLargeScreen } = useScreenSize();
 
 	const questions = response?.data ?? [];
@@ -74,7 +88,11 @@ export const PublicCollectionPage = () => {
 						imageSrc={imageSrc}
 						company={company}
 					/>
-					<CollectionBody isFree={isFree} questions={questions} />
+					<CollectionBody
+						isFree={isFree}
+						questions={questions}
+						hasPremiumAccess={hasPremiumAccess}
+					/>
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{isLargeScreen && (
