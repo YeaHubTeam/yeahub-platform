@@ -6,8 +6,8 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getChannelsForSpecialization } from '@/entities/media';
-import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
-import { useGetPublicQuestionsListQuery } from '@/entities/question';
+import { getHasPremiumAccess } from '@/entities/profile';
+import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
 
 import {
 	AdditionalInfo,
@@ -21,34 +21,31 @@ import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
-	const profileId = useAppSelector(getProfileId);
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const {
 		data: collection,
 		isFetching,
 		isLoading,
 	} = useGetPublicCollectionByIdQuery({ collectionId });
-	const { data: response } = useGetPublicQuestionsListQuery(
+
+	const { data: publicResponse } = useGetPublicQuestionsListQuery(
 		{
 			collection: Number(collectionId),
-			profileId,
 			limit: collection?.questionsCount,
 		},
-		{ skip: collection?.questionsCount === undefined },
+		{ skip: hasPremiumAccess },
 	);
 
-	// const { data: response } = useGetQuestionsListQuery(
-	// 	{
-	// 		collection: Number(collection?.id), // работает, если доставать напрямую(но это не паблик)
-	// 		collection: Number(collectionId), // так не работает в этом компоненте
-	// 		profileId,
-	// 		limit: collection?.questionsCount,
-	// 	},
-	// 	{ skip: collection?.questionsCount === undefined },
-	// );
+	const { data: privateResponse } = useGetQuestionsListQuery(
+		{
+			collection: Number(collectionId),
+			limit: collection?.questionsCount,
+		},
+		{ skip: !hasPremiumAccess },
+	);
 	const { isSmallScreen, isLargeScreen } = useScreenSize();
 
-	const questions = response?.data ?? [];
+	const questions = (hasPremiumAccess ? privateResponse?.data : publicResponse?.data) ?? [];
 
 	if (isLoading || isFetching) {
 		return <PublicCollectionPageSkeleton />;
