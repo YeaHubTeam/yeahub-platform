@@ -23,7 +23,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 					className={styles['image-wrapper']}
 				/>
 
-				<Flex direction="column" gap="12">
+				<Flex direction="column" gap="12" maxWidth={true}>
 					<Text variant="body2" color="purple-700" className={styles.hostname}>
 						{provider}
 					</Text>

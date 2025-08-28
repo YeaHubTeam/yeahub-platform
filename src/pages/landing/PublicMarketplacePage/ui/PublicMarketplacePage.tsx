@@ -23,6 +23,7 @@ import {
 } from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
+import { PublicMarketplacePageSkeleton } from './PublicMarketplacePage.skeleton';
 
 const RESOURCES_PER_PAGE = 6;
 
@@ -54,14 +55,6 @@ const PublicMarketplacePage = () => {
 	const resources = resourcesResponse?.data ?? [];
 
 	const { t } = useTranslation(i18Namespace.marketplace);
-
-	if (isLoading) {
-		return <div>Loading…</div>;
-	}
-
-	if (error) {
-		return <div>Не удалось загрузить ресурсы</div>;
-	}
 
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
@@ -111,6 +104,14 @@ const PublicMarketplacePage = () => {
 			{t(Marketplace.LINK_LABEL)}
 		</Button>
 	);
+
+	if (isLoading) {
+		return <PublicMarketplacePageSkeleton />;
+	}
+
+	if (error) {
+		return <div>Не удалось загрузить ресурсы</div>;
+	}
 
 	return (
 		<Flex gap="20" align="start">
