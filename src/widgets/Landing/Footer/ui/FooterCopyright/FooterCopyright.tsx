@@ -6,7 +6,11 @@ export const FooterCopyright = () => {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<Text variant={isSmallScreen ? 'body2' : 'body2-accent'} color="black-400">
+		<Text
+			dataTestId="FooterCopyright"
+			variant={isSmallScreen ? 'body2' : 'body2-accent'}
+			color="black-400"
+		>
 			© {currentYear} {'YeaHub'}
 		</Text>
 	);

@@ -26,6 +26,7 @@ export interface PopoverProps {
 }
 
 export interface PopoverMenuItem {
+	dataTestId?: string;
 	title?: string;
 	onClick?: () => void;
 	icon?: ReactNode;

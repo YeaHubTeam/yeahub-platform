@@ -13,8 +13,8 @@ export const Footer = () => {
 	if (isLoading) return <FooterSkeleton />;
 
 	return (
-		<footer className={styles.footer}>
-			<Flex className={styles['footer-content']}>
+		<footer data-testid="Footer" className={styles.footer}>
+			<Flex dataTestId="Footer_Content" className={styles['footer-content']}>
 				<FooterMain />
 				<FooterMeta />
 			</Flex>

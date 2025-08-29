@@ -6,12 +6,12 @@ import { SpecializationBlockSkeleton } from '@/widgets/Landing/SpecialityBlock';
 
 export const LandingPageSkeleton = () => {
 	return (
-		<>
+		<div data-testid={'LandingPageSkeleton'}>
 			<BannerBlockSkeleton />
 			<SpecializationBlockSkeleton />
 			<AboutQuestionsBlockSkeleton />
 			<InterviewTrainerBlockSkeleton />
 			<HistoryBlockSkeleton />
-		</>
+		</div>
 	);
 };

@@ -14,14 +14,16 @@ export const FooterMain = () => {
 	const { isMobile, isMobileS, isSmallScreen } = useScreenSize();
 
 	return (
-		<Flex className={styles['footer-main']}>
+		<Flex dataTestId="FooterMain" className={styles['footer-main']}>
 			<Icon
+				dataTestId="FooterMain_Logo"
 				className={styles['footer-logo']}
 				icon={'logoText'}
 				aria-label={t(Landing.APP_LOGO_ARIA_LABEL)}
 				color="white-900"
 			/>
 			<Text
+				dataTestId="FooterMain_Title"
 				className={styles['footer-title']}
 				variant={isMobileS ? 'body2' : isMobile ? 'body3' : 'body3-accent'}
 				color="white-900"
@@ -29,6 +31,7 @@ export const FooterMain = () => {
 				{t(Landing.FOOTER_TITLE)}
 			</Text>
 			<Text
+				dataTestId="FooterMain_Description"
 				className={styles['footer-description']}
 				variant={isSmallScreen ? 'body1' : 'body1-accent'}
 				color="black-400"
