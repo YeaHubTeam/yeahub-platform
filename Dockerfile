@@ -1,17 +1,14 @@
 #syntax=docker/dockerfile:1
 
 # Стадия сборки
-FROM node:20-alpine as builder
-
+FROM --platform=linux/amd64 node:20-alpine as builder
 WORKDIR /app
 
-# Скопировать файлы `package.json` и `package-lock.json` (или `yarn.lock`)
+# Копируем зависимости
 COPY package.json package-lock.json ./
-
-# Установить зависимости
 RUN npm ci --legacy-peer-deps
 
-# Скопировать все файлы проекта в рабочую директорию
+# Копируем исходники
 COPY . .
 
 # Добавить аргументы сборки
@@ -20,9 +17,6 @@ ARG LANDING_URL
 ARG PORT
 ARG NODE_ENV
 ARG SENTRY_DSN
-ARG TBANK_API_HOST
-ARG TBANK_TERMINAL_KEY
-ARG TBANK_TERMINAL_PASS
 
 # Установить переменные окружения
 ENV API_URL=$API_URL
@@ -30,9 +24,6 @@ ENV LANDING_URL=$LANDING_URL
 ENV PORT=$PORT
 ENV NODE_ENV=$NODE_ENV
 ENV SENTRY_DSN=$SENTRY_DSN
-ENV TBANK_API_HOST=$TBANK_API_HOST
-ENV TBANK_TERMINAL_KEY=$TBANK_TERMINAL_KEY
-ENV TBANK_TERMINAL_PASS=$TBANK_TERMINAL_PASS
 
 # Вывести переменные окружения для отладки
 RUN echo "API_URL: $API_URL"
@@ -40,19 +31,29 @@ RUN echo "LANDING_URL: $LANDING_URL"
 RUN echo "PORT: $PORT"
 RUN echo "NODE_ENV: $NODE_ENV"
 RUN echo "SENTRY_DSN: $SENTRY_DSN"
-RUN echo "TBANK_API_HOST: $TBANK_API_HOST"
-RUN echo "TBANK_TERMINAL_KEY: $TBANK_TERMINAL_KEY"
-RUN echo "TBANK_TERMINAL_PASS: $TBANK_TERMINAL_PASS"
 
-# Собрать приложение
+# Сборка приложения
 RUN npm run build
 
-# Стадия запуска с Nginx
+# Финальный образ с Nginx
 FROM nginx:stable-alpine
 
-# Копировать собранные файлы в контейнер Nginx
+# Удаляем дефолтный конфиг
+RUN rm -rf /etc/nginx/conf.d/default.conf
+
+# Копируем кастомный конфиг (SPA + Kubernetes)
+COPY nginx/yeahub_default.conf /etc/nginx/conf.d/yeahub.conf
+
+# Копируем собранное приложение
 COPY --from=builder /app/build /usr/share/nginx/html
+
+# Безопасные права
+RUN chmod -R 755 /usr/share/nginx/html
+
+# # Запуск Nginx под непривилегированным пользователем
+# USER nginx
 
 EXPOSE 5173
 
 CMD ["nginx", "-g", "daemon off;"]
+
