@@ -4,7 +4,7 @@ import styles from './AvatarWithoutPhoto.module.css';
 
 export const AvatarWithoutPhoto = () => {
 	return (
-		<div className={styles['avatar-wrapper']}>
+		<div data-testid="AvatarWithoutPhoto_Wrapper" className={styles['avatar-wrapper']}>
 			<WithoutPhotoIcon
 				role="img"
 				aria-label="Аватар пользователя"

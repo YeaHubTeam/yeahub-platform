@@ -9,14 +9,20 @@ export const FooterMainSkeleton = () => {
 	const { isMobile, isMobileS } = useScreenSize();
 
 	return (
-		<Flex className={styles['footer-main']}>
-			<IconSkeleton className={styles['footer-logo']} />
+		<Flex dataTestId="FooterMainSkeleton" className={styles['footer-main']}>
+			<IconSkeleton dataTestId="FooterMain_Logo" className={styles['footer-logo']} />
 			<TextSkeleton
+				dataTestId="FooterMain_Title"
 				className={styles['footer-title']}
 				width={isMobileS ? '70%' : isMobile ? '50%' : '30%'}
 				variant={isMobileS ? 'body2' : isMobile ? 'body3' : 'body3-accent'}
 			/>
-			<TextSkeleton className={styles['footer-description']} width="96%" variant="body1" />
+			<TextSkeleton
+				dataTestId="FooterMain_Description"
+				className={styles['footer-description']}
+				width="96%"
+				variant="body1"
+			/>
 		</Flex>
 	);
 };

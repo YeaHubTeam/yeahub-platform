@@ -11,6 +11,7 @@ export const HeaderAuthMobileSkeleton = () => {
 
 	return (
 		<IconButtonSkeleton
+			dataTestId={'HeaderAuthMobileSkeleton'}
 			className={styles['burger-button-skeleton']}
 			aria-label={t(Landing.HEADER_AUTH_ICONBUTTON_ARIA_LABEL)}
 		/>

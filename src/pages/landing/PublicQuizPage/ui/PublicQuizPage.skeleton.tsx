@@ -5,11 +5,11 @@ import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 import styles from './PublicQuizPage.module.css';
 
-export const PublicQuizPageSkeleton = () => {
+export const PublicQuizPageSkeleton = ({ dataTestId }: { dataTestId?: string }) => {
 	const { isMobile } = useScreenSize();
 
 	return (
-		<Flex direction="column" className={styles.container}>
+		<Flex dataTestId={dataTestId} direction="column" className={styles.container}>
 			<Card>
 				<Flex gap="16" direction="column">
 					<div className={styles['progress-bar']}>

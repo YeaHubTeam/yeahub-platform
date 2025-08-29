@@ -4,6 +4,7 @@ import { TextProps } from './Text';
 import { TextVariant } from './types';
 
 export const TextSkeleton = ({
+	dataTestId,
 	className,
 	variant,
 	width,
@@ -32,6 +33,7 @@ export const TextSkeleton = ({
 
 	return (
 		<Skeleton
+			dataTestId={dataTestId}
 			className={className}
 			height={skeletonHeight[variant]}
 			width={width}

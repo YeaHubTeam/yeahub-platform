@@ -10,6 +10,7 @@ export type VariantType =
 	| 'destructive-tertiary';
 
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
+	dataTestId?: string;
 	variant?: VariantType;
 	form?: 'square' | 'round';
 	size?: 'small' | 'medium' | 'large';

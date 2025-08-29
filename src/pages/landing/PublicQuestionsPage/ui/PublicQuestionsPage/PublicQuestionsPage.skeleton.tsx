@@ -8,9 +8,9 @@ import { PublicQuestionPagePaginationSkeleton } from '../PublicQuestionsPagePagi
 
 import styles from './PublicQuestionsPage.module.css';
 
-export const PublicQuestionsPageSkeleton = () => {
+export const PublicQuestionsPageSkeleton = ({ dataTestId }: { dataTestId?: string }) => {
 	return (
-		<Flex gap="20" align="start" className={styles.wrapper}>
+		<Flex dataTestId={dataTestId} gap="20" align="start" className={styles.wrapper}>
 			<Card className={styles.main}>
 				<FullQuestionsListSkeleton />
 				<PublicQuestionPagePaginationSkeleton />

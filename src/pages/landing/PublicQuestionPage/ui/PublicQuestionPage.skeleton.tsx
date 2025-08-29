@@ -8,11 +8,11 @@ import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
 
 import styles from './PublicQuestionPage.module.css';
 
-export const PublicQuestionPageSkeleton = () => {
+export const PublicQuestionPageSkeleton = ({ dataTestId }: { dataTestId?: string }) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
-		<Flex direction="column" align="start">
+		<Flex dataTestId={dataTestId} direction="column" align="start">
 			<ButtonSkeleton
 				width={100}
 				size="small"

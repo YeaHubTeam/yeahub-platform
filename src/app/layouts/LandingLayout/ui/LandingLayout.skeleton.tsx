@@ -9,10 +9,14 @@ import styles from './LandingLayout.module.css';
 
 export const LandingLayoutSkeleton = () => {
 	return (
-		<Flex direction="column">
+		<Flex dataTestId={'LandingLayoutSkeleton_Wrapper'} direction="column">
 			<HeaderSkeleton />
-			<main className={styles.main}>
-				<Flex direction="column" className={styles['main-content']}>
+			<main data-testid={'LandingLayoutSkeleton_Main'} className={styles.main}>
+				<Flex
+					dataTestId={'LandingLayoutSkeleton_MainContent'}
+					direction="column"
+					className={styles['main-content']}
+				>
 					<SkeletonGenerator />
 				</Flex>
 			</main>

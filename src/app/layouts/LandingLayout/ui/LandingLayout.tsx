@@ -15,12 +15,16 @@ import { LandingLayoutSkeleton } from './LandingLayout.skeleton';
 
 export const LandingLayout = () => {
 	return (
-		<Flex direction="column">
+		<Flex dataTestId="LandingLayout_Wrapper" direction="column">
 			<Suspense fallback={<LandingLayoutSkeleton />}>
 				<Header />
 				<AutoScrollToTop>
-					<main className={styles.main}>
-						<Flex direction="column" className={styles['main-content']}>
+					<main data-testid="LandingLayout_Main" className={styles.main}>
+						<Flex
+							dataTestId="LandingLayout_MainContent"
+							direction="column"
+							className={styles['main-content']}
+						>
 							<Suspense fallback={<SkeletonGenerator />}>
 								<Outlet />
 							</Suspense>

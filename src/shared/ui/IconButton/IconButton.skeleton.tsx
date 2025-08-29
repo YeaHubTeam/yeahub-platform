@@ -7,6 +7,7 @@ import styles from './IconButton.module.css';
 import { ButtonProps } from './';
 
 export const IconButtonSkeleton = ({
+	dataTestId,
 	variant = 'primary',
 	size = 'medium',
 	form = 'square',
@@ -16,6 +17,7 @@ export const IconButtonSkeleton = ({
 }: Omit<ButtonProps, 'icon'>) => {
 	return (
 		<Skeleton
+			dataTestId={dataTestId}
 			className={classnames(
 				styles['icon-button'],
 				styles[`icon-button-${form}`],
