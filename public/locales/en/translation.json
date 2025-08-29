@@ -238,6 +238,10 @@
 					"success": "Resource deleted successfully",
 					"failed": "Failed to delete resource"
 				}
+			},
+			"edit": {
+				"success": "Resource successfully changed",
+				"failed": "Resource could not be changed"
 			}
 		},
 		"profile": {
