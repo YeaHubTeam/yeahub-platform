@@ -43,6 +43,7 @@ const CompaniesTablePage = () => {
 
 	const onChangePage = (page: number) => {
 		handleFilterChange({ page });
+		dispatch(companiesTablePageActions.setSelectedCompanies([]));
 	};
 
 	const { data: companies } = useGetCompaniesListQuery({
