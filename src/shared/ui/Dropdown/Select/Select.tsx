@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import React from 'react';
 
 import { DropdownSize } from '../DropdownTypes';
 
@@ -31,7 +32,7 @@ export const Select = ({
 }: SelectProps) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
-		styles['dropdown'],
+		styles.dropdown,
 		{
 			[styles['wrapper-disabled']]: disabled,
 			[styles[`wrapper-${size.toLowerCase()}`]]: size,
@@ -39,30 +40,40 @@ export const Select = ({
 		className,
 	);
 
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		if (disabled) return;
+
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			onClick();
+		}
+	};
+
 	return (
-		<div className={wrapperClasses} style={{ width }}>
-			{prefix && (
-				<span
-					className={classNames({
-						[styles['select-prefix']]: !!prefix,
-					})}
-				>
-					{prefix}
-				</span>
-			)}
-			<button
-				className={classNames(styles.button, styles['dropdown'], className, {
-					[styles['with-value']]: value,
-				})}
-				aria-expanded={isOpen}
-				onClick={(e) => {
+		<div
+			className={wrapperClasses}
+			style={{ width }}
+			onClick={(e) => {
+				if (!disabled) {
 					e.preventDefault();
 					onClick();
-				}}
-				disabled={disabled}
+				}
+			}}
+			onKeyDown={handleKeyDown}
+			role="button"
+			aria-expanded={isOpen}
+			tabIndex={0}
+		>
+			{prefix && <span className={styles['select-prefix']}>{prefix}</span>}
+
+			<span
+				className={classNames(styles.button, {
+					[styles['with-value']]: value,
+				})}
 			>
 				{value || label}
-			</button>
+			</span>
+
 			{suffix && <span className={styles['select-suffix']}>{suffix}</span>}
 		</div>
 	);
