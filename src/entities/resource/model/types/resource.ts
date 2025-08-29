@@ -1,5 +1,8 @@
 import { Response, SortOrder } from '@/shared/types/types';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
+
 export type ResourceAccessCategory = 'free' | 'has_trial' | 'payed_only';
 
 export interface Resource {
@@ -9,10 +12,12 @@ export interface Resource {
 	iconBase64: string;
 	description: string;
 	accessCategory: ResourceAccessCategory;
+	type?: ResourceType;
 	createdAt: string;
 	updatedAt: string;
 	isActive: boolean;
 	createdById: string;
+	specializations: Specialization[];
 }
 
 export interface GetResourcesListParamsRequest {
