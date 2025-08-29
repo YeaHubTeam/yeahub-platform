@@ -14,6 +14,7 @@ export {
 	useGetQuestionsSpecializationByIdCountQuery,
 } from './api/questionApi';
 export { getQuestionRoute } from './model/lib/getQuestionRoute';
+export { getQuestionImage } from './model/lib/getQuestionImage';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';

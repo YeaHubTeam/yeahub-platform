@@ -6,7 +6,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import { Question } from '@/entities/question';
+import { Question, getQuestionImage } from '@/entities/question';
 
 import { QuestionAdditionalInfoDrawer } from '@/widgets/question/QuestionAdditionalInfoDrawer';
 
@@ -19,13 +19,14 @@ interface QuestionHeaderProps {
 export const QuestionHeader = ({ question }: QuestionHeaderProps) => {
 	const { isMobile, isTablet, isDesktop } = useScreenSize();
 	const { title, description } = question;
+	const imagePriorityToShow = getQuestionImage(question);
 
 	const imageClassName = isMobile ? styles['image-mobile'] : styles['image-default'];
 
 	return (
 		<Card withOutsideShadow className={styles.header}>
 			<Flex gap="10" direction={isMobile ? 'column' : 'row'}>
-				{isDesktop && <ImageWithWrapper className={imageClassName} src={''} />}
+				{isDesktop && <ImageWithWrapper className={imageClassName} src={imagePriorityToShow} />}
 				<Flex direction="column" gap="8" maxWidth>
 					<Flex justify="between" align="start" gap="8" maxWidth>
 						<Text
