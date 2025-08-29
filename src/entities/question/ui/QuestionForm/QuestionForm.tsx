@@ -150,7 +150,7 @@ export const QuestionForm = () => {
 								<SkillSelect
 									onChange={onChange}
 									value={value}
-									selectedSPecializations={selectedSpecializations}
+									selectedSpecializations={selectedSpecializations}
 								/>
 							</div>
 						)}

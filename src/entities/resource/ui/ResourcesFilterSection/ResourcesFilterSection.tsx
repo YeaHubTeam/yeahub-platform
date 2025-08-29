@@ -3,18 +3,19 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { MAX_LIMIT_RESOURCES } from '@/shared/constants/queryConstants';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
+
+import { useGetResourceTypesQuery } from '@/entities/resource/api/resourceApi';
 
 import styles from './ResourcesFilterSection.module.css';
 
 interface ResourcesFilterSectionProps {
 	resourceLimit?: number;
-	selectedResources?: number[];
-	onChooseResources: (resources: number[] | undefined) => void;
+	selectedResources?: string[] | string;
+	onChooseResources: (resources: string[] | undefined) => void;
 }
-
-const MAX_LIMIT_RESOURCES = 3;
 
 export const ResourcesFilterSection = ({
 	resourceLimit,
@@ -23,56 +24,46 @@ export const ResourcesFilterSection = ({
 }: ResourcesFilterSectionProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const [showAll, setShowAll] = useState(false);
-	// const [limit, setLimit] = useState(resourceLimit || MAX_LIMIT_RESOURCES);
+	const limit = resourceLimit || MAX_LIMIT_RESOURCES;
 
-	const resources = {
-		total: 4,
-		data: [
-			{ id: 1, title: '' },
-			{ id: 2, title: '' },
-			{ id: 3, title: '' },
-			{ id: 4, title: '' },
-		],
-	};
-
-	const hasHiddenResources = resources.total > (resourceLimit || MAX_LIMIT_RESOURCES);
-
-	// TODO: Implement useGetResourcesListQuery
-	// const { data: resources } = useGetResourcesListQuery({
-	// 	limit,
-	// 	resources: [selectedResources],
-	// });
-
-	// useEffect(() => {
-	// 	if (showAll) {
-	// 		setLimit(resources?.total ?? (resourceLimit || MAX_LIMIT_RESOURCES));
-	// 	} else {
-	// 		setLimit(resourceLimit || MAX_LIMIT_RESOURCES);
-	// 	}
-	// }, [resources?.total, showAll, resourceLimit]);
-
-	const toggleShowAll = () => {
-		setShowAll(!showAll);
-	};
-
-	const preparedData = resources?.data.map((resource) => ({
-		...resource,
-		active: selectedResources?.includes(resource.id),
+	const { data } = useGetResourceTypesQuery();
+	const resourceTypes = data?.map((item) => ({
+		id: item.code,
+		title: t(`resourceTypes.${item.code}`, item.code),
 	}));
 
-	const onChooseResource = (id: number) => {
-		if (selectedResources?.includes(id)) {
-			const filteredResources = selectedResources.filter((resource) => resource !== id);
+	const hasHiddenResources = (resourceTypes?.length ?? 0) > (resourceLimit ?? MAX_LIMIT_RESOURCES);
+
+	const toggleShowAll = () => {
+		setShowAll((prev) => !prev);
+	};
+
+	const preparedData = (showAll ? resourceTypes : resourceTypes?.slice(0, limit))?.map(
+		(resource) => ({
+			...resource,
+			active: selectedResources?.includes(resource.id) ?? false,
+		}),
+	);
+
+	const onChooseResource = (id: string) => {
+		const resourcesArray = Array.isArray(selectedResources)
+			? selectedResources
+			: selectedResources
+				? [selectedResources]
+				: [];
+
+		if (resourcesArray.includes(id)) {
+			const filteredResources = resourcesArray.filter((resource) => resource !== id);
 			onChooseResources(filteredResources.length > 0 ? filteredResources : undefined);
 		} else {
-			onChooseResources([...(selectedResources || []), id]);
+			onChooseResources([...resourcesArray, id]);
 		}
 	};
 
 	return (
 		<div className={styles.wrapper}>
 			<BaseFilterSection
-				data={preparedData}
+				data={preparedData ?? []}
 				title={t(Marketplace.RESOURCES_TITLE)}
 				onClick={onChooseResource}
 			/>

@@ -8,6 +8,6 @@ export interface Guru {
 
 export type GuruSocials = {
 	telegram: string;
-	youtube: string;
+	youtube?: string;
 	profileId: string;
 };

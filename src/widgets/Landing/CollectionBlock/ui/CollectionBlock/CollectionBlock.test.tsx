@@ -10,6 +10,7 @@ jest.mock('@/shared/hooks', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobileS: false,
 	})),
+	useCurrentProject: jest.fn(),
 }));
 
 describe('CollectionBlock', () => {

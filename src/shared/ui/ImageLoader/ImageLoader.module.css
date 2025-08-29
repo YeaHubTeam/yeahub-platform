@@ -19,19 +19,12 @@
 .delete-avatar-btn {
   position: absolute;
   right: 50%;
-  bottom: -28px;
-  width: max-content;
-  max-width: 170px;
-  border: none;
-  background-color: transparent;
-  color: var(--color-red-600);
-  font-weight: var(--font-weight-400);
-  font-size: var(--font-size-p-s);
+  bottom: -40px;
+  background: none;
   transform: translateX(50%);
-  cursor: pointer;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .profile-picture-wrapper {
     flex-wrap: wrap;
     justify-content: center;
@@ -87,4 +80,8 @@
 
 .small-preview {
   width: 26px;
+}
+
+.file-loader {
+  flex: 1;
 }

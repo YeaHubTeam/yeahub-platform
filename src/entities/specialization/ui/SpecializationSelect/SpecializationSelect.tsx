@@ -9,7 +9,7 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 import { Specialization } from '../../model/types/specialization';
 
-type SpecializationSelectProps = Omit<
+export type SpecializationSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
@@ -91,6 +91,7 @@ export const SpecializationSelect = ({
 		return (
 			<>
 				<Dropdown
+					size="S"
 					label={
 						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
 					}
@@ -108,6 +109,7 @@ export const SpecializationSelect = ({
 
 	return (
 		<SelectWithChips
+			size="S"
 			title={t(Specializations.SELECT_SELECTED)}
 			options={options}
 			onChange={handleChange}

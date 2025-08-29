@@ -325,3 +325,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.no-wrap {
+  text-wrap: nowrap;
+}

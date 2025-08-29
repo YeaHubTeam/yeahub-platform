@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Tab } from './Tabs';
 
 export const useTabs = <T>(tabs: Tab<T>[]) => {
 	const { hash } = useLocation();
-	const currentTab = tabs.find((tab) => tab.id === hash.slice(1));
+	const currentTab = useMemo(() => tabs.find((tab) => tab.id === hash.slice(1)), [hash, tabs]);
 
 	const [activeTab, setActiveTab] = useState<Tab<T>>(currentTab ?? tabs[0]);
 
@@ -13,7 +13,7 @@ export const useTabs = <T>(tabs: Tab<T>[]) => {
 		if (currentTab) {
 			setActiveTab(currentTab);
 		}
-	}, [currentTab]);
+	}, [hash]);
 
 	return {
 		activeTab,

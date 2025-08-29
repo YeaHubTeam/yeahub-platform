@@ -1,3 +1,5 @@
+export type ModalVariant = 'default' | 'error';
+
 export type ModalProps = {
 	isOpen: boolean;
 	onClose: () => void;
@@ -9,7 +11,8 @@ export type ModalProps = {
 	buttonPrimaryDisabled?: boolean;
 	buttonOutlineDisabled?: boolean;
 	withCloseIcon?: boolean;
-	variant?: 'default' | 'error';
+	dataTestId?: string;
+	variant?: ModalVariant;
 	title?: string;
 	className?: string;
 };

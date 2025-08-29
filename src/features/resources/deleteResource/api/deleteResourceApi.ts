@@ -1,0 +1,38 @@
+import { ApiTags } from '@/shared/config/api/apiTags';
+import { baseApi } from '@/shared/config/api/baseApi';
+import i18n from '@/shared/config/i18n/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { ExtraArgument } from '@/shared/config/store/types';
+import { route } from '@/shared/helpers/route';
+import { toast } from '@/shared/ui/Toast';
+
+import { Resource } from '@/entities/resource';
+
+import { deleteResourceApiUrls } from '../model/constants/deleteResourceConstants';
+
+const deleteResourceApi = baseApi.injectEndpoints({
+	endpoints: (builder) => ({
+		deleteResource: builder.mutation<void, Resource['id']>({
+			query: (resourceId) => ({
+				url: route(deleteResourceApiUrls.deleteResource, resourceId),
+				method: 'DELETE',
+			}),
+			async onQueryStarted(_, { queryFulfilled, extra }) {
+				try {
+					await queryFulfilled;
+					const typedExtra = extra as ExtraArgument;
+					toast.success(i18n.t(Translation.TOAST_RESOURCE_DELETE_SINGLE_SUCCESS));
+					typedExtra.navigate(ROUTES.admin.resources.page);
+				} catch (error) {
+					toast.error(i18n.t(Translation.TOAST_RESOURCE_DELETE_SINGLE_FAILED));
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+			},
+			invalidatesTags: [ApiTags.RESOURCES, ApiTags.RESOURCES_DETAIL],
+		}),
+	}),
+});
+
+export const { useDeleteResourceMutation } = deleteResourceApi;

@@ -1,36 +1,11 @@
-section * {
-  list-style: none;
-}
-
 .title {
   margin-bottom: 24px;
-}
-
-.section {
-  padding: 24px;
-  width: 100%;
-  border-radius: 24px;
-  background: var(--color-white-900);
-}
-
-.section form {
-  margin-top: 36px;
 }
 
 .btn-container {
   margin-top: 36px;
 }
 
-.card-wrap {
-  padding-top: 0;
-  height: auto !important;
-}
-
-.flex-wrap {
-  gap: 120px;
-  max-width: 1034px;
-}
-
-.button {
-  margin-left: auto;
+.card-with-visible-overflow {
+  overflow: visible;
 }

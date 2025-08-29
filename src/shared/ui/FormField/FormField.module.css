@@ -1,0 +1,19 @@
+.titles {
+  width: 100%;
+  max-width: 230px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.limit-width {
+  max-width: 1010px;
+}
+
+@media (width < 1024px) {
+  .form-field {
+    flex-flow: column wrap;
+    gap: 20px;
+  }
+}

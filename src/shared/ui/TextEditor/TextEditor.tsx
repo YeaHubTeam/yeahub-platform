@@ -4,17 +4,30 @@ import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import cn from 'classnames';
+import classNames from 'classnames';
 import { TextSelection } from 'prosemirror-state';
 import { useCallback, useEffect, useRef } from 'react';
 
 import 'highlight.js/styles/atom-one-dark.css';
 import { BubbleMenuEditor } from '@/shared/ui/BubbleMenuEditor/BubbleMenuEditor';
-import { EditorProps } from '@/shared/ui/TextEditor/types';
 import { createCustomCodeBlock, normalizeHtmlContent } from '@/shared/utils/textEditor';
 import { createPastePlugin } from '@/shared/utils/textEditor/createPastePlugin';
 
 import styles from './TextEditor.module.css';
+
+export interface TextEditorProps {
+	isInline?: boolean;
+	data?: string;
+	id?: string | number;
+	disabled?: boolean;
+	config?: Record<string, unknown>;
+	autofocus?: boolean;
+	className?: string;
+	onChange?: (value: string) => void;
+	onBlur?: (value: string) => void;
+	onFocus?: (value: string) => void;
+	onReady?: (editor: Editor) => void;
+}
 
 export const TextEditor = ({
 	isInline = false,
@@ -27,7 +40,7 @@ export const TextEditor = ({
 	onBlur,
 	onFocus,
 	onReady,
-}: EditorProps) => {
+}: TextEditorProps) => {
 	const editor = useEditor({
 		extensions: [
 			StarterKit.configure({
@@ -165,7 +178,7 @@ export const TextEditor = ({
 
 	return (
 		<div
-			className={cn(styles['yeahub-text-editor'], className, {
+			className={classNames(styles['yeahub-text-editor'], className, {
 				[styles['inline-prose-mirror']]: isInline,
 				[styles['disabled-editor']]: disabled,
 			})}

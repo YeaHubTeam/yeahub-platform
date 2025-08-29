@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useRef } from 'react';
+import { createRef } from 'react';
 
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 import { Icon } from '@/shared/ui/Icon';
@@ -68,7 +68,7 @@ describe('Input', () => {
 		});
 
 		test('ref should be equal input', () => {
-			const ref = useRef<HTMLInputElement>(null);
+			const ref = createRef<HTMLInputElement>();
 			const { input } = rerenderWith({ ref });
 			expect(ref.current).toBe(input);
 		});

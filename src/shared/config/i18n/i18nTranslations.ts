@@ -166,6 +166,8 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_SUBSCRIBE_FAILED = 'toast.subscriptions.subscribe.failed',
 	TOAST_RESOURCE_CREATE_SUCCESS = 'toast.resources.create.success',
 	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
+	TOAST_RESOURCE_DELETE_SINGLE_SUCCESS = 'toast.resources.delete.single.success',
+	TOAST_RESOURCE_DELETE_SINGLE_FAILED = 'toast.resources.delete.single.failed',
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
@@ -261,6 +263,7 @@ export enum Auth {
 	REGISTRATION_PRIVACY_ADD_CONSENT = 'registration.privacy.add.consent',
 	REGISTRATION_HAVE_ACCOUNT = 'registration.have.account',
 	REGISTRATION_LOGIN_LINK = 'registration.login.link',
+	REGISTRATION_SOCIAL_MEDIA = 'registration.social.media',
 	FORM_EMAIL_LABEL = 'form.email.label',
 	FORM_EMAIL_PLACEHOLDER = 'form.email.placeholder',
 	FORM_PASSWORD_LABEL = 'form.password.label',
@@ -327,10 +330,10 @@ export enum InterviewQuiz {
 	ANSWER_HIDE = 'answer.hide',
 	ANSWER_DO_NOT_KNOW = 'answer.do.not.know',
 	ANSWER_KNOW = 'answer.know',
-	MODAL_QUIZ_TITLE = 'modal.quiz.title',
-	MODAL_QUIZ_DESCRIPTION = 'modal.quiz.description',
-	MODAL_QUIZ_ACTIONS_OK = 'modal.quiz.ok',
-	MODAL_QUIZ_ACTIONS_CANCEL = 'modal.quiz.cancel',
+	MODAL_CLONE_QUIZ_CONFIRM_TITLE = 'modal.clone.quiz.confirm.title',
+	MODAL_CLONE_QUIZ_CONFIRM_DESCRIPTION = 'modal.clone.quiz.confirm.description',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_OK = 'modal.clone.quiz.confirm.ok',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_CANCEL = 'modal.clone.quiz.confirm.cancel',
 }
 
 export enum InterviewQuizCreate {
