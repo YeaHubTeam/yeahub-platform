@@ -40,6 +40,13 @@ export const Select = ({
 		className,
 	);
 
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!disabled) {
+			e.preventDefault();
+			onClick();
+		}
+	};
+
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (disabled) return;
 
@@ -53,12 +60,7 @@ export const Select = ({
 		<div
 			className={wrapperClasses}
 			style={{ width }}
-			onClick={(e) => {
-				if (!disabled) {
-					e.preventDefault();
-					onClick();
-				}
-			}}
+			onClick={handleClick}
 			onKeyDown={handleKeyDown}
 			role="button"
 			aria-expanded={isOpen}
