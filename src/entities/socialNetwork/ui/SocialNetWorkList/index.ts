@@ -1,1 +1,0 @@
-export { SocialNetWorkList } from './SocialNetWorkList';

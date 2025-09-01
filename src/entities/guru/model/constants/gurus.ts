@@ -58,4 +58,15 @@ export const gurus: Guru[] = [
 			profileId: '8d66fa66-1437-4365-a6d5-add0686aa6db',
 		},
 	},
+	{
+		title: 'Node.js Guru',
+		name: 'Demetra',
+		specializationId: 21,
+		image:
+			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B4%D0%B5%D0%BC%D0%B5%D1%82%D1%80%D0%B0.jpg',
+		socials: {
+			telegram: 'https://t.me/DemetraIT',
+			profileId: 'c5e0ed42-3c59-4217-9de5-0a240afee6c8',
+		},
+	},
 ];

@@ -7,6 +7,7 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Text } from '@/shared/ui/Text';
@@ -17,7 +18,6 @@ import { SkillSelect } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
-import FormSelect from '../FormSelect/FormSelect';
 import { ResourcesSelect } from '../ResourceSelect/ResourceSelect';
 
 import styles from './ResourceForm.module.css';
@@ -82,16 +82,16 @@ export const ResourceForm = () => {
 					</FormControl>
 				</div>
 			</Flex>
-			<FormSelect short={t(Marketplace.ICON_SHORT)} label={t(Marketplace.ICON_LABEL)}>
+			<FormField label={t(Marketplace.ICON_SHORT)} description={t(Marketplace.ICON_LABEL)}>
 				<ImageLoaderWithoutCropper
 					removeImage={removeImage}
 					changeImage={changeImage}
 					initialSrc={previewImg}
 				/>
-			</FormSelect>
-			<FormSelect
-				short={t(Marketplace.SPECIALIZATIONS_SHORT)}
-				label={t(Marketplace.SPECIALIZATIONS_LABEL)}
+			</FormField>
+			<FormField
+				label={t(Marketplace.SPECIALIZATIONS_SHORT)}
+				description={t(Marketplace.SPECIALIZATIONS_LABEL)}
 			>
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
@@ -100,9 +100,9 @@ export const ResourceForm = () => {
 						</div>
 					)}
 				</FormControl>
-			</FormSelect>
+			</FormField>
 			{!!selectedSpecializations.length && (
-				<FormSelect short={t(Marketplace.SKILLS_SHORT)} label={t(Marketplace.SKILLS_LABEL)}>
+				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
 					<FormControl name="skills" control={control}>
 						{({ onChange, value }) => {
 							return (
@@ -110,15 +110,15 @@ export const ResourceForm = () => {
 									<SkillSelect
 										onChange={onChange}
 										value={value}
-										selectedSPecializations={selectedSpecializations}
+										selectedSpecializations={selectedSpecializations}
 									/>
 								</div>
 							);
 						}}
 					</FormControl>
-				</FormSelect>
+				</FormField>
 			)}
-			<FormSelect short={t(Marketplace.TYPES_SHORT)} label={t(Marketplace.TYPES_LABEL)}>
+			<FormField label={t(Marketplace.TYPES_SHORT)} description={t(Marketplace.TYPES_LABEL)}>
 				<FormControl name="provider" control={control}>
 					{({ onChange, value }) => (
 						<div>
@@ -126,18 +126,16 @@ export const ResourceForm = () => {
 						</div>
 					)}
 				</FormControl>
-			</FormSelect>
-			<FormSelect short={t(Marketplace.KEYWORDS_SHORT)} label={t(Marketplace.KEYWORDS_LABEL)}>
+			</FormField>
+			<FormField label={t(Marketplace.KEYWORDS_SHORT)} description={t(Marketplace.KEYWORDS_LABEL)}>
 				<FormControl name="keywords" control={control}>
-					{({ onChange, value }) => {
-						return (
-							<div className={styles.keywords}>
-								<KeywordInput value={value} onChange={onChange} />
-							</div>
-						);
-					}}
+					{({ onChange, value }) => (
+						<div className={styles.keywords}>
+							<KeywordInput value={value} onChange={onChange} />
+						</div>
+					)}
 				</FormControl>
-			</FormSelect>
+			</FormField>
 		</Flex>
 	);
 };

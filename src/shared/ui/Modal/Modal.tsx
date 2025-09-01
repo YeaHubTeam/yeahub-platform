@@ -2,41 +2,25 @@ import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Pallete } from '@/shared/types/types';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
-import { ModalProps } from '@/shared/ui/Modal/ModalTypes';
 import { Text } from '@/shared/ui/Text';
 
-import { VariantType } from '../Button/types';
-
+import {
+	closeIconColors,
+	modalTestIds,
+	outlineButtonVariants,
+	primaryButtonVariants,
+	titleColors,
+} from './constants';
 import styles from './Modal.module.css';
+import { ModalProps } from './ModalTypes';
 
 const createPortalRoot = () => {
 	const modalRoot = document.createElement('div');
 	modalRoot.setAttribute('id', 'modal-root');
 
 	return modalRoot;
-};
-
-const titleColors: Record<string, Pallete> = {
-	default: 'black-900',
-	error: 'red-700',
-};
-
-const closeIconColors: Record<string, Pallete> = {
-	default: 'purple-700',
-	error: 'red-600',
-};
-
-const primaryButtonVariants: Record<string, VariantType> = {
-	default: 'primary',
-	error: 'destructive',
-};
-
-const outlineButtonVariants: Record<string, VariantType> = {
-	default: 'outline',
-	error: 'destructive-outline',
 };
 
 export const Modal = ({
@@ -50,6 +34,7 @@ export const Modal = ({
 	buttonOutlineDisabled,
 	withCloseIcon = true,
 	variant = 'default',
+	dataTestId = 'Modal',
 	children,
 	title,
 	className = '',
@@ -107,10 +92,15 @@ export const Modal = ({
 			aria-labelledby="У вас открыто модальное окно"
 			tabIndex={0}
 			className={classNames(styles.overlay, { [styles['modal-open']]: isOpen })}
+			data-testid={modalTestIds.modalOverlay}
 			onKeyDown={handleKeyDown}
 			onClick={handleOverlayClick}
 		>
-			<div className={classNames(styles.modal, styles[`${variant}-modal`])} ref={overlayRef}>
+			<div
+				data-testid={dataTestId}
+				className={classNames(styles.modal, styles[`${variant}-modal`])}
+				ref={overlayRef}
+			>
 				{withCloseIcon && (
 					<Icon
 						icon="closeCircle"
@@ -120,15 +110,20 @@ export const Modal = ({
 						onClick={handleClickXCircle}
 						tabIndex={0}
 						aria-label="Закрыть модальное окно"
+						dataTestId={modalTestIds.modalCloseIcon}
 						onKeyDown={handleKeyDown}
 					/>
 				)}
-				<div className={classNames(styles['content-wrapper'], className)}>
+				<div
+					data-testid={modalTestIds.modalContentWrapper}
+					className={classNames(styles['content-wrapper'], className)}
+				>
 					{title && (
 						<Text
 							className={classNames(styles.title, styles[`${variant}-title`])}
 							variant="body5-accent"
 							color={titleColors[variant]}
+							dataTestId={modalTestIds.modalTitle}
 						>
 							{title}
 						</Text>
@@ -146,6 +141,7 @@ export const Modal = ({
 								size="large"
 								onClick={buttonPrimaryClick}
 								disabled={buttonPrimaryDisabled}
+								dataTestId={modalTestIds.modalPrimaryButton}
 								fullWidth
 							>
 								{buttonPrimaryText}
@@ -158,6 +154,7 @@ export const Modal = ({
 								size="large"
 								onClick={buttonOutlineClick}
 								disabled={buttonOutlineDisabled}
+								dataTestId={modalTestIds.modalOutlineButton}
 								fullWidth
 							>
 								{buttonOutlineText}

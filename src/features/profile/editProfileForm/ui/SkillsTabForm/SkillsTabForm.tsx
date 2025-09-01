@@ -5,29 +5,25 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 
 import { SkillSelect } from '@/entities/skill';
+
+import { ProfileSchema } from '../../model/types/editProfileTypes';
 
 import styles from './SkillsTabForm.module.css';
 
 export const SkillsTabForm = () => {
 	const { t } = useTranslation(i18Namespace.profile);
-	const { control } = useFormContext();
+	const { control } = useFormContext<ProfileSchema>();
 
 	return (
 		<Flex className={styles.container} gap="20">
-			<div className={styles.description}>
-				<h3>{t(Profile.SKILLS_TITLE)}</h3>
-				<p>{t(Profile.SKILLS_DESCRIPTION)}</p>
-			</div>
-			<FormControl
-				className={styles.select}
-				name="skills"
-				control={control}
-				label={t(Profile.FORM_SKILLS)}
-			>
-				{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
-			</FormControl>
+			<FormField description={t(Profile.SKILLS_DESCRIPTION)} label={t(Profile.SKILLS_TITLE)}>
+				<FormControl name="skills" control={control} label={t(Profile.FORM_SKILLS)}>
+					{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
+				</FormControl>
+			</FormField>
 		</Flex>
 	);
 };

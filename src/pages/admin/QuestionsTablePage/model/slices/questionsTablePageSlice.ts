@@ -7,7 +7,7 @@ import { deleteMultipleQuestionsThunk } from '@/features/question/deleteQuestion
 
 import { QuestionsTablePageState } from '../types/questionsTablePageTypes';
 
-const initialState: QuestionsTablePageState = {
+export const initialState: QuestionsTablePageState = {
 	page: 1,
 	selectedQuestions: [],
 	search: '',

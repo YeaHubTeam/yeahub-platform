@@ -26,9 +26,11 @@ export const GuruSocialsList = ({ socials }: GuruSocialsListProps) => {
 			<a href={socials.telegram} target="_blank" rel="noreferrer">
 				<Icon icon="telegramWithBackground" color="purple-700" />
 			</a>
-			<a href={socials.youtube} target="_blank" rel="noreferrer">
-				<Icon icon="youtubeWithBackground" color="purple-700" />
-			</a>
+			{socials.youtube && (
+				<a href={socials.youtube} target="_blank" rel="noreferrer">
+					<Icon icon="youtubeWithBackground" color="purple-700" />
+				</a>
+			)}
 		</Flex>
 	);
 };
