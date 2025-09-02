@@ -82,8 +82,9 @@ jobs:
           echo "Updating Helm values with tag: $IMAGE_TAG"
           yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i helm/values-test.yaml
 
+          cd helm
           git config --global user.email "ci@github.com"
           git config --global user.name "github-actions"
-          git add helm/values-test.yaml
+          git add values-test.yaml
           git commit -m "Update frontend tag to $IMAGE_TAG" || echo "No changes to commit"
-          git push origin develop
+          git push https://x-access-token:${{ secrets.HELM_REPO_TOKEN }}@github.com/YeaHubTeam/yeahub-helm.git develop
