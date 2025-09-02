@@ -40,6 +40,10 @@
 				"title": "Обучение",
 				"interview": "Собеседование"
 			},
+			"wiki": {
+				"title": "База знаний",
+				"resources": "Ресурсы"
+			},
 			"questions": "Вопросы",
 			"resources": "Ресурсы",
 			"skills": "Навыки",

@@ -40,6 +40,10 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"wiki": {
+				"title": "Knowledge base",
+				"resources": "Resources"
+			},
 			"questions": "Questions",
 			"skills": "Skills",
 			"companies": "Companies"
