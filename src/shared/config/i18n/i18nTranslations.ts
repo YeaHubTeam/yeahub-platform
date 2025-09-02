@@ -71,6 +71,8 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
+	CRUMBS_WIKI = 'crumbs.wiki',
+	CRUMBS_RESOURCES = 'crumbs.resources',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',

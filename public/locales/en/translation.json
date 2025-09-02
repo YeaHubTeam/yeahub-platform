@@ -114,7 +114,9 @@
 		"main.page": "Home",
 		"error.404": "Page not found",
 		"login": "Login",
-		"register": "Registration"
+		"register": "Registration",
+		"wiki": "Knowledge base",
+		"resources": "Resources"
 	},
 	"toast": {
 		"title": {

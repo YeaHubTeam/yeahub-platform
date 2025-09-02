@@ -84,6 +84,7 @@ import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
+import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
@@ -94,6 +95,7 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
+import { WikiRoute } from '../ui/WikiRoute';
 
 import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
@@ -622,6 +624,25 @@ export const router = createBrowserRouter([
 						),
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
+						},
+					},
+				],
+			},
+			{
+				element: (
+					<WikiRoute>
+						<Outlet />
+					</WikiRoute>
+				),
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+				},
+				children: [
+					{
+						path: ROUTES.wiki.resources.route,
+						element: <ResourcesPage />,
+						handle: {
+							crumb: Translation.CRUMBS_RESOURCES,
 						},
 					},
 				],

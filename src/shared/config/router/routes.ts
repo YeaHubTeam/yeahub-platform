@@ -188,6 +188,7 @@ export const ROUTES = {
 		},
 	},
 	wiki: {
+		route: 'wiki',
 		resources: {
 			route: 'resources',
 			page: '/dashboard/wiki/resources',
