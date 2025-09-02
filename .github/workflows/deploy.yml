@@ -7,7 +7,6 @@ on:
       - main
 
 env:
-  SERVICE_NAME_TEST: platform
   SERVICE_NAME_PRODUCTION: platform
   REGISTRY: cr.selcloud.ru/yeahub-registry
   IMAGE_NAME: yeahub-frontend
@@ -15,18 +14,11 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref == 'refs/heads/develop' && 'deploy-develop' || github.run_id }}
+      cancel-in-progress: ${{ github.ref == 'refs/heads/develop' && true || false }}
     steps:
       # ================== VPS ==================
-      - name: Deploy to VPS for test
-        if: github.ref == 'refs/heads/develop'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST_TEST }}
-          username: ${{ secrets.VPS_USERNAME_TEST }}
-          key: ${{ secrets.VPS_SSH_KEY_TEST }}
-          script: |
-            docker-compose --env-file .env.test up -d --build ${{ env.SERVICE_NAME_TEST }}
-
       - name: Deploy to VPS for production
         if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@master
@@ -64,13 +56,13 @@ jobs:
       - name: Update image tag in values-test.yaml
         if: github.ref == 'refs/heads/develop'
         run: |
-          yq eval ".${{ env.IMAGE_NAME }}.tag = \"${GITHUB_SHA}\"" -i helm/values-test.yaml
+          yq eval ".frontend.tag = \"${GITHUB_SHA}\"" -i helm/values-test.yaml
 
       - name: Commit and push Helm changes
         if: github.ref == 'refs/heads/develop'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Update ${{ env.IMAGE_NAME }} tag to ${GITHUB_SHA}'
+          commit_message: 'Update frontend tag to ${GITHUB_SHA}'
           branch: develop
           file_pattern: 'values-test.yaml'
           repository: helm
