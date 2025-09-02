@@ -17,8 +17,13 @@ jobs:
     concurrency:
       group: ${{ github.ref == 'refs/heads/develop' && 'deploy-develop' || github.run_id }}
       cancel-in-progress: ${{ github.ref == 'refs/heads/develop' && true || false }}
+
     steps:
-      # ================== VPS ==================
+      # ================== Checkout code ==================
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # ================== VPS (production) ==================
       - name: Deploy to VPS for production
         if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@master
@@ -27,15 +32,29 @@ jobs:
           username: ${{ secrets.VPS_USERNAME_PRODUCTION }}
           key: ${{ secrets.VPS_SSH_KEY_PRODUCTION }}
           script: |
+            set -e
+            echo "Deploying ${SERVICE_NAME_PRODUCTION} on VPS..."
             docker-compose --env-file .env.production up -d --build ${{ env.SERVICE_NAME_PRODUCTION }}
 
-      # ================== KUBERNETES (develop) ==================
-      - name: Build and push Docker image
+      # ================== Generate Docker tag ==================
+      - name: Generate Docker tag
+        if: github.ref == 'refs/heads/develop'
+        id: docker_tag
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]')
+          BRANCH_SAFE=$(echo "$BRANCH_NAME" | sed 's/[\/]/-/g' | sed 's/[^a-z0-9-_]/-/g')
+          SHORT_SHA=${GITHUB_SHA::7}
+          IMAGE_TAG="${BRANCH_SAFE}-${SHORT_SHA}"
+          echo "Docker tag for dev: $IMAGE_TAG"
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      # ================== Build and push Docker image ==================
+      - name: Build and push Docker image for dev
         if: github.ref == 'refs/heads/develop'
         run: |
-          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login cr.selcloud.ru -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login ${{ env.REGISTRY }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
           docker build \
-            -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${GITHUB_SHA} \
+            -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }} \
             --build-arg API_URL="https://api.yeatwork.ru/" \
             --build-arg LANDING_URL="https://yeatwork.ru/" \
             --build-arg PORT=5173 \
@@ -43,8 +62,9 @@ jobs:
             --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
             --build-arg TELEGRAM_BOT_NAME="yeahub_test_bot" \
             .
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${GITHUB_SHA}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }}
 
+      # ================== Checkout Helm repo ==================
       - name: Checkout Helm repo
         if: github.ref == 'refs/heads/develop'
         uses: actions/checkout@v3
@@ -53,16 +73,16 @@ jobs:
           token: ${{ secrets.HELM_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           path: helm
 
-      - name: Update image tag in values-test.yaml
+      # ================== Update Helm values and commit ==================
+      - name: Update Helm values for dev and commit
         if: github.ref == 'refs/heads/develop'
         run: |
-          yq eval ".frontend.tag = \"${GITHUB_SHA}\"" -i helm/values-test.yaml
+          IMAGE_TAG=${{ steps.docker_tag.outputs.IMAGE_TAG }}
+          echo "Updating Helm values with tag: $IMAGE_TAG"
+          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i helm/values-test.yaml
 
-      - name: Commit and push Helm changes
-        if: github.ref == 'refs/heads/develop'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Update frontend tag to ${GITHUB_SHA}'
-          branch: develop
-          file_pattern: 'values-test.yaml'
-          repository: helm
+          git config --global user.email "ci@github.com"
+          git config --global user.name "github-actions"
+          git add helm/values-test.yaml
+          git commit -m "Update frontend tag to $IMAGE_TAG" || echo "No changes to commit"
+          git push origin develop
