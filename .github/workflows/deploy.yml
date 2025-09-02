@@ -42,7 +42,7 @@ jobs:
         id: docker_tag
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]')
-          BRANCH_SAFE=$(echo "$BRANCH_NAME" | sed 's/[\/]/-/g' | sed 's/[^a-z0-9-_]/-/g')
+          BRANCH_SAFE=$(echo "$BRANCH_NAME" | sed 's/[\/]/-/g' | sed 's/[^a-z0-9_:-]/-/g')
           SHORT_SHA=${GITHUB_SHA::7}
           IMAGE_TAG="${BRANCH_SAFE}-${SHORT_SHA}"
           echo "Docker tag for dev: $IMAGE_TAG"
