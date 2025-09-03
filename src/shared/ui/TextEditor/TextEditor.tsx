@@ -116,6 +116,9 @@ export const TextEditor = ({
 			[onFocus],
 		),
 		onCreate({ editor }) {
+			const pastePlugin = createPastePlugin(editor);
+			editor.registerPlugin(pastePlugin);
+
 			editor.on('focus', () => {
 				const view = editor.view;
 				view.dom.style.outline = 'none';
@@ -168,12 +171,6 @@ export const TextEditor = ({
 		const node = editorContentRef.current;
 		node.addEventListener('keydown', handleTab);
 		return () => node.removeEventListener('keydown', handleTab);
-	}, [editor]);
-
-	useEffect(() => {
-		if (editor) {
-			editor.registerPlugin(createPastePlugin(editor));
-		}
 	}, [editor]);
 
 	return (
