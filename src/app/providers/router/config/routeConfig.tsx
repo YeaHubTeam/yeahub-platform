@@ -16,7 +16,7 @@ import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
 import WikiIcon from '@/shared/assets/icons/wiki.svg';
-import WikiResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
+import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -95,7 +95,6 @@ import { AuthRoute } from '../ui/AuthRoute';
 import { InterviewRoute } from '../ui/InterviewRoute';
 import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
-import { WikiRoute } from '../ui/WikiRoute';
 
 import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
@@ -163,7 +162,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 			{
 				route: ROUTES.wiki.resources.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
-				icon: WikiResourcesIcon,
+				icon: ResourcesIcon,
 			},
 		],
 		roles: allRoles,
@@ -629,11 +628,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				element: (
-					<WikiRoute>
-						<Outlet />
-					</WikiRoute>
-				),
+				element: <Outlet />,
 				handle: {
 					crumb: Translation.CRUMBS_WIKI,
 				},
