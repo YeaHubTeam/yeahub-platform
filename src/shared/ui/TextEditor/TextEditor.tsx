@@ -116,8 +116,7 @@ export const TextEditor = ({
 			[onFocus],
 		),
 		onCreate({ editor }) {
-			const pastePlugin = createPastePlugin(editor);
-			editor.registerPlugin(pastePlugin);
+			editor.registerPlugin(createPastePlugin(editor));
 
 			editor.on('focus', () => {
 				const view = editor.view;
