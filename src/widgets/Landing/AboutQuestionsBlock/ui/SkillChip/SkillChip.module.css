@@ -4,6 +4,6 @@
   pointer-events: none;
 }
 
-:global(.padding6) .chip {
+/* :global(.padding6) .chip {
   padding: 6px;
-}
+} */
