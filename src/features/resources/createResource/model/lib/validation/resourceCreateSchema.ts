@@ -9,7 +9,7 @@ import { CreateResourceFormValues } from '../../types/resourceCreateTypes';
 
 export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = yup.object().shape({
 	name: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	provider: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	url: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	iconBase64: yup.string().defined(),
 	specializations: yup

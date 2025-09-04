@@ -8,7 +8,7 @@ export const toCreateResourceBody = (
 ): CreateResourceBodyRequest => ({
 	name: resource.name.trim(),
 	description: resource.description.trim(),
-	type: String(resource.provider),
+	type: String(resource.url),
 	iconBase64: resource.iconBase64 || null,
 	skills: (resource.skills ?? []).map(Number),
 	specializations: (resource.specializations ?? []).map(Number),

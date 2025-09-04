@@ -44,7 +44,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			title: resource.name,
 			accessCategory: resource.accessCategory,
 			description: resource.description,
-			author: resource.provider,
+			author: resource.url,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (

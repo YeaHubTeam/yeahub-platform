@@ -4,9 +4,14 @@ export const resourcesMock: Resource[] = [
 	{
 		id: 'a26208c7-8b7b-4cfe-b877-67d85076a570',
 		name: 'New Course on Python',
-		provider: 'https://udemy.com/course/new-python-course',
+		url: 'https://udemy.com/course/new-python-course',
 		iconBase64: 'data:image/png;base64,...',
 		description: 'A new Python course',
+		type: {
+			code: 'article',
+			description: 'test',
+		},
+		specializations: [{ id: 0, title: 'Python Developer' }],
 		accessCategory: 'free',
 		createdAt: '2025-06-23T16:43:50.115Z',
 		updatedAt: '2025-06-23T16:43:50.115Z',
@@ -16,9 +21,14 @@ export const resourcesMock: Resource[] = [
 	{
 		id: 'git-guide',
 		name: 'Как пользоваться Git: пошаговое руководство',
-		provider: 'https://coderunner.io/',
+		url: 'https://coderunner.io/',
 		iconBase64: 'data:image/png;base64,...',
 		description: 'Видео с объяснением init, commit, push, pull и ветвления.',
+		type: {
+			code: 'book',
+			description: 'test',
+		},
+		specializations: [{ id: 1, title: 'React Developer' }],
 		accessCategory: 'free',
 		createdAt: '2025-06-23T16:43:50.115Z',
 		updatedAt: '2025-06-23T16:43:50.115Z',
@@ -28,10 +38,15 @@ export const resourcesMock: Resource[] = [
 	{
 		id: 'rest-vs-graphql',
 		name: 'Background Fetch API',
-		provider: 'https://developer.mozilla.org/',
+		url: 'https://developer.mozilla.org/',
 		iconBase64: 'data:image/png;base64,...',
 		description:
 			'When a web application requires the user to download large files, this often presents a problem in that the user needs to stay connected to the page for the download to complete.',
+		type: {
+			code: 'channel',
+			description: 'test',
+		},
+		specializations: [{ id: 2, title: 'Python Developer' }],
 		accessCategory: 'free',
 		createdAt: '2025-06-23T16:43:50.115Z',
 		updatedAt: '2025-06-23T16:43:50.115Z',
@@ -41,10 +56,15 @@ export const resourcesMock: Resource[] = [
 	{
 		id: 'gateway',
 		name: 'Паттерны Gateway и Backend-for-Frontend',
-		provider: 'https://doka.guide/tools/gateway-bff/',
+		url: 'https://doka.guide/tools/gateway-bff/',
 		iconBase64: 'data:image/png;base64,...',
 		description:
 			'Gateway и Backend-for-Frontend (BFF) — паттерны проектирования для разработки веб-приложений.',
+		type: {
+			code: 'chat',
+			description: 'test',
+		},
+		specializations: [{ id: 3, title: 'Backend Developer' }],
 		accessCategory: 'free',
 		createdAt: '2025-06-23T16:43:50.115Z',
 		updatedAt: '2025-06-23T16:43:50.115Z',
@@ -54,9 +74,14 @@ export const resourcesMock: Resource[] = [
 	{
 		id: 'rest-vs-graphql',
 		name: 'REST vs GraphQL: что выбрать и когда?',
-		provider: 'https://coderunner.io/',
+		url: 'https://coderunner.io/',
 		iconBase64: 'data:image/png;base64,...',
 		description: 'Плюсы, минусы, советы по применению для начинающих разработчиков.',
+		type: {
+			code: 'course',
+			description: 'test',
+		},
+		specializations: [{ id: 4, title: 'Backend Developer' }],
 		accessCategory: 'free',
 		createdAt: '2025-06-23T16:43:50.115Z',
 		updatedAt: '2025-06-23T16:43:50.115Z',

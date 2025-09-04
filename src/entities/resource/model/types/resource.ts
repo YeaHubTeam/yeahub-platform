@@ -5,9 +5,11 @@ export type ResourceAccessCategory = 'free' | 'has_trial' | 'payed_only';
 export interface Resource {
 	id: string;
 	name: string;
-	provider: string;
+	url: string;
 	iconBase64: string;
 	description: string;
+	type: ResourceType;
+	specializations: ResourseSpecialization[];
 	accessCategory: ResourceAccessCategory;
 	createdAt: string;
 	updatedAt: string;
@@ -31,7 +33,7 @@ export type GetResourcesListResponse = Response<Resource[]>;
 
 export type CreateOrEditResourceFormValues = Pick<
 	Resource,
-	'id' | 'name' | 'provider' | 'description' | 'iconBase64' | 'accessCategory' | 'isActive'
+	'id' | 'name' | 'url' | 'description' | 'iconBase64' | 'accessCategory' | 'isActive'
 > & {
 	specializations: number[];
 	skills: number[];
@@ -57,6 +59,11 @@ export type ResourceTypeCode =
 export interface ResourceType {
 	code: ResourceTypeCode;
 	description: string;
+}
+
+export interface ResourseSpecialization {
+	id: number;
+	title: string;
 }
 
 export type GetResourceTypesResponse = ResourceType[];

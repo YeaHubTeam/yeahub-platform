@@ -13,7 +13,7 @@ export const ResourceCreateForm = () => {
 		mode: 'onTouched',
 		defaultValues: {
 			name: '',
-			provider: '',
+			url: '',
 			description: '',
 			iconBase64: '',
 			accessCategory: 'free',
