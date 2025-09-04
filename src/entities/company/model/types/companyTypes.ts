@@ -3,11 +3,11 @@ import { Response } from '@/shared/types/types';
 export interface Company {
 	id: string | number;
 	title?: string;
-	legalName?: string;
-	description?: string;
+	legalName?: string | null;
+	description?: string | null;
 	imageSrc?: string | null;
-	inn?: string;
-	kpp?: string;
+	inn?: string | null;
+	kpp?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
 	createdBy?: { id: string; username: string };

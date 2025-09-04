@@ -5,8 +5,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { RegistrationLabel } from '@/entities/auth';
 
-import { LoginForm } from '@/features/authentication/login';
-import { TelegramLogin } from '@/features/authentication/login/ui/TelegramLoginButton/ui/TelegramLogin/TelegramLogin';
+import { LoginForm, TelegramLogin } from '@/features/authentication/login';
 
 import { loginSchema } from '../../model/lib/validation/loginSchema';
 import { LoginSchema } from '../../model/types/loginTypes';

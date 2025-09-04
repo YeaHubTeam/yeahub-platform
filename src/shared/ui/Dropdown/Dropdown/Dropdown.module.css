@@ -17,28 +17,29 @@
   transform: rotate(180deg); 
 }
 
-
 .list {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1000;
   margin-top: 8px;
-  width: 100%;
+  width: 400px;
   overflow-y: auto;
   border: 1px solid var(--color-border);
   border-radius: 4px;
   background-color: var(--color-white-900);
 }
 
+@media (width <= 450px) {
+  .list {
+    width: 100%;
+  }
+}
+
 .list-l {
   max-height: 276px;
-
 } 
 
 .list-s {
   max-height: 184px;
 }
-
-
-

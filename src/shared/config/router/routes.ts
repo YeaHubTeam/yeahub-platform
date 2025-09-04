@@ -187,6 +187,13 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
+	wiki: {
+		route: 'wiki',
+		resources: {
+			route: 'resources',
+			page: '/dashboard/wiki/resources',
+		},
+	},
 	docs: {
 		route: 'docs',
 		page: '/docs',
