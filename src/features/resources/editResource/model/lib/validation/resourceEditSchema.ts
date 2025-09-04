@@ -5,14 +5,15 @@ import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
 import { ResourceTypeCode } from '@/entities/resource';
 
-import { CreateResourceFormValues } from '../../types/resourceCreateTypes';
+import { EditResourceFormValues } from '../../types/resourcesEditTypes';
 
-export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = yup.object().shape({
-	name: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+export const resourceEditSchema: yup.ObjectSchema<EditResourceFormValues> = yup.object().shape({
+	id: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	name: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	description: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	type: yup.string<ResourceTypeCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	url: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	iconBase64: yup.string().defined(),
+	iconBase64: yup.string().optional(),
 	resourceSpecializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
@@ -20,8 +21,7 @@ export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = 
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	keywords: yup
-		.array()
-		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))
+		.array(yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });

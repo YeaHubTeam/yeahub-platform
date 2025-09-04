@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
+import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -26,8 +27,8 @@ export const ResourceForm = () => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const { control, watch, setValue } = useFormContext();
 
-	const selectedSpecializations = watch('specializations');
-
+	const selectedSpecializations = watch('resourceSpecializations');
+	console.log('all', watch());
 	const [previewImg, setPreviewImg] = useState<string | null>(null);
 
 	const changeImage = (imageBase64: string) => {
@@ -93,7 +94,7 @@ export const ResourceForm = () => {
 				label={t(Marketplace.SPECIALIZATIONS_SHORT)}
 				description={t(Marketplace.SPECIALIZATIONS_LABEL)}
 			>
-				<FormControl name="specializations" control={control}>
+				<FormControl name="resourceSpecializations" control={control}>
 					{({ onChange, value }) => (
 						<div>
 							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
@@ -101,9 +102,9 @@ export const ResourceForm = () => {
 					)}
 				</FormControl>
 			</FormField>
-			{!!selectedSpecializations.length && (
+			{!!selectedSpecializations?.length && (
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
-					<FormControl name="skills" control={control}>
+					<FormControl name="resourceSkills" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div>
@@ -119,7 +120,7 @@ export const ResourceForm = () => {
 				</FormField>
 			)}
 			<FormField label={t(Marketplace.TYPES_SHORT)} description={t(Marketplace.TYPES_LABEL)}>
-				<FormControl name="provider" control={control}>
+				<FormControl name="type" control={control}>
 					{({ onChange, value }) => (
 						<div>
 							<ResourcesSelect onChange={onChange} value={value} />
@@ -133,6 +134,13 @@ export const ResourceForm = () => {
 						<div className={styles.keywords}>
 							<KeywordInput value={value} onChange={onChange} />
 						</div>
+					)}
+				</FormControl>
+			</FormField>
+			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>
+				<FormControl name="url" control={control}>
+					{(field, hasError) => (
+						<Input {...field} placeholder={t(Marketplace.URL_PLACEHOLDER)} error={hasError} />
 					)}
 				</FormControl>
 			</FormField>

@@ -12,11 +12,11 @@ type ResourceCardProps = {
 };
 
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
-	const { name, description, provider, iconBase64 } = resource;
+	const { name, description, url, iconBase64 } = resource;
 
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<a href={provider} target="_blank" rel="noopener noreferrer" className={styles.wrapper}>
+			<a href={url} target="_blank" rel="noopener noreferrer" className={styles.wrapper}>
 				<ImageWithWrapper
 					src={iconBase64 ?? undefined}
 					alt={name}
@@ -25,7 +25,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 
 				<Flex direction="column" gap="12" maxWidth={true}>
 					<Text variant="body2" color="purple-700" className={styles.hostname}>
-						{provider}
+						{url}
 					</Text>
 
 					<Text variant="body3-accent" className={styles.title} maxRows={2}>
