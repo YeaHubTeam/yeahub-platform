@@ -15,6 +15,8 @@ import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
+import WikiIcon from '@/shared/assets/icons/wiki.svg';
+import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -82,6 +84,7 @@ import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
+import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
@@ -147,6 +150,19 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: ROUTES.interview.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
+			},
+		],
+		roles: allRoles,
+	},
+	{
+		type: 'category',
+		title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
+		icon: WikiIcon,
+		elements: [
+			{
+				route: ROUTES.wiki.resources.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
+				icon: ResourcesIcon,
 			},
 		],
 		roles: allRoles,
@@ -607,6 +623,21 @@ export const router = createBrowserRouter([
 						),
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
+						},
+					},
+				],
+			},
+			{
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+				},
+				children: [
+					{
+						path: ROUTES.wiki.resources.route,
+						element: <ResourcesPage />,
+						handle: {
+							crumb: Translation.CRUMBS_RESOURCES,
 						},
 					},
 				],
