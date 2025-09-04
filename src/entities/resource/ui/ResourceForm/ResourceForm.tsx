@@ -27,8 +27,8 @@ export const ResourceForm = () => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const { control, watch, setValue } = useFormContext();
 
-	const selectedSpecializations = watch('specializations');
-
+	const selectedSpecializations = watch('resourceSpecializations');
+	console.log('all', watch());
 	const [previewImg, setPreviewImg] = useState<string | null>(null);
 
 	const changeImage = (imageBase64: string) => {
@@ -94,7 +94,7 @@ export const ResourceForm = () => {
 				label={t(Marketplace.SPECIALIZATIONS_SHORT)}
 				description={t(Marketplace.SPECIALIZATIONS_LABEL)}
 			>
-				<FormControl name="specializations" control={control}>
+				<FormControl name="resourceSpecializations" control={control}>
 					{({ onChange, value }) => (
 						<div>
 							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
@@ -102,9 +102,9 @@ export const ResourceForm = () => {
 					)}
 				</FormControl>
 			</FormField>
-			{!!selectedSpecializations.length && (
+			{!!selectedSpecializations?.length && (
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
-					<FormControl name="skills" control={control}>
+					<FormControl name="resourceSkills" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div>

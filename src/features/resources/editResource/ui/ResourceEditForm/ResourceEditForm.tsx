@@ -16,7 +16,7 @@ import { ResourceEditFormHeader } from '../ResourceEditFormHeader/ResourceEditFo
 import styles from './ResourceEditForm.module.css';
 
 interface ResourceEditFormProps {
-	resource?: Resource;
+	resource: Resource;
 }
 
 const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
@@ -24,15 +24,16 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
-	const { resourceSkills, resourceSpecializations, ...formattedResources } = resource;
+	const { skills, specializations, type, ...formattedResources } = resource;
 
 	const methods = useForm<EditResourceFormValues>({
 		resolver: yupResolver(resourceEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
 			...formattedResources,
-			skills: formatToFormField<Skill[]>(resourceSkills),
-			specializations: formatToFormField<Specialization[]>(resourceSpecializations),
+			resourceSkills: formatToFormField<Skill[]>(skills),
+			resourceSpecializations: formatToFormField<Specialization[]>(specializations),
+			type: type.code,
 		},
 	});
 

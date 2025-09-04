@@ -5,8 +5,6 @@ import { Skill } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Specialization } from '@/entities/specialization';
 
-export type ResourceAccessCategory = 'free' | 'has_trial' | 'payed_only';
-
 export interface Resource {
 	id: string;
 	name: string;
@@ -14,8 +12,9 @@ export interface Resource {
 	type: ResourceType;
 	url: string;
 	keywords?: string[];
-	resourceSpecializations: Specialization[];
-	resourceSkills: Skill[];
+	imageSrc: string;
+	specializations: Specialization[];
+	skills: Skill[];
 	createdById: string;
 	createdBy: Author;
 	createdAt: string;
@@ -28,7 +27,6 @@ export interface GetResourcesListParamsRequest {
 	limit?: number;
 	name?: string;
 	provider?: string;
-	accessCategory?: ResourceAccessCategory;
 	authorId?: string;
 	orderBy?: string;
 	order?: SortOrder;
@@ -45,11 +43,12 @@ export type GetResourceByIdResponse = Resource;
 
 export type CreateOrEditResourceFormValues = Pick<
 	Resource,
-	'id' | 'name' | 'description' | 'type' | 'iconBase64' | 'url'
+	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
-	skills: number[];
-	specializations: number[];
+	resourceSkills: number[];
+	resourceSpecializations: number[];
 	keywords: string[];
+	type: ResourceTypeCode;
 };
 
 export type ResourceTypeCode =

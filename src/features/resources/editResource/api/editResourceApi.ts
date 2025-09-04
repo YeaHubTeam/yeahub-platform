@@ -13,7 +13,7 @@ import { EditResourceBodyRequest, EditResourceResponse } from '../model/types/re
 export const editResourceApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		editResource: build.mutation<EditResourceResponse, EditResourceBodyRequest>({
-			query: ({ resource }) => ({
+			query: (resource) => ({
 				url: route(editResourceByIdUrl.editResource, resource.id),
 				method: 'PUT',
 				body: resource,
