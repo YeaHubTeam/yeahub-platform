@@ -15,7 +15,7 @@ type ResourceCardProps = {
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
 	const { name, description, url, iconBase64, type, specializations } = resource;
 
-	const resourceHostname = url?.replace(/^(https?:\/\/)?(www\.)?/, '');
+	const resourceHostname = url?.replace(/^(https?:\/\/)?(www\.)?([^/]+).*$/, '$3');
 
 	return (
 		<Card withOutsideShadow className={styles.content}>
