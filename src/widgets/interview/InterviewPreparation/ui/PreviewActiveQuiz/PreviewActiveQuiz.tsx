@@ -16,7 +16,6 @@ export const PreviewActiveQuiz = () => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
 	const lastActiveQuizInfo = useAppSelector(getLastActiveQuizInfo);
-
 	if (!lastActiveQuizInfo) {
 		return null;
 	}
@@ -24,7 +23,7 @@ export const PreviewActiveQuiz = () => {
 	return (
 		<Flex direction="column" gap="16" className={styles.preparation}>
 			<ProgressBar
-				currentCount={lastActiveQuizInfo.fromQuestionNumber}
+				currentCount={lastActiveQuizInfo.answeredCount ?? lastActiveQuizInfo.toQuestionNumber}
 				totalCount={lastActiveQuizInfo.toQuestionNumber}
 				label={t(InterviewQuiz.PROGRESS_BAR_TITLE, {
 					fromQuestionNumber: lastActiveQuizInfo.fromQuestionNumber,
