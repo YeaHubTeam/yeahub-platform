@@ -33,6 +33,8 @@ export enum Translation {
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
+	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
+	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
@@ -69,6 +71,8 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
+	CRUMBS_WIKI = 'crumbs.wiki',
+	CRUMBS_RESOURCES = 'crumbs.resources',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
