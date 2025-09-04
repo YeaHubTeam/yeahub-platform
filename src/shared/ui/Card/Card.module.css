@@ -3,6 +3,8 @@
   overflow: hidden;
   background-color: var(--background-block);
   transition: height 800ms ease-in-out, background-color 300ms ease-in-out;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .small {
