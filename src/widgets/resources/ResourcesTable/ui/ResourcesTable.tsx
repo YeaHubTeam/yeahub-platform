@@ -29,14 +29,18 @@ interface ResourcesTableProps {
 
 export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const navigate = useNavigate();
-	const { t } = useTranslation([i18Namespace.resources, i18Namespace.translation]);
+	const { t } = useTranslation([
+		i18Namespace.resources,
+		i18Namespace.translation,
+		i18Namespace.marketplace,
+	]);
 
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
-			resourceType: t(Resources.TYPE),
+			type: t(Resources.TYPE),
 			description: t(Resources.DESCRIPTION),
-			author: t(Resources.SPECIALIZATION_TITLE),
+			specialization: t(Resources.SPECIALIZATION_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -45,7 +49,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			resourceType: resource.type?.code,
+			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			description: resource.description,
 			specialization: (
 				<TableCellEntityList
