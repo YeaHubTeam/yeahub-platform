@@ -8,6 +8,7 @@ import { ButtonProps } from './';
 export const IconButton = forwardRef<HTMLButtonElement, ButtonProps & { isActive?: boolean }>(
 	(
 		{
+			dataTestId,
 			variant = 'primary',
 			size = 'medium',
 			form = 'square',
@@ -22,6 +23,7 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps & { isActive
 	): JSX.Element => {
 		return (
 			<button
+				data-testid={dataTestId}
 				ref={ref}
 				className={classnames(
 					styles['icon-button'],

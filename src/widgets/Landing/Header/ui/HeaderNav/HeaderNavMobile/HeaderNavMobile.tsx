@@ -29,8 +29,10 @@ export const HeaderNavMobile = () => {
 		<Popover menuItems={popoverLinks} className={styles['header-popover']}>
 			{({ onToggle, isOpen }) => (
 				<Button
+					dataTestId={'PopoverButton'}
 					suffix={
 						<Icon
+							dataTestId={'ArrowShortDown_Icon'}
 							icon="arrowShortDown"
 							size={24}
 							className={`${styles.arrow} ${isOpen ? styles['arrow-open'] : ''}`}

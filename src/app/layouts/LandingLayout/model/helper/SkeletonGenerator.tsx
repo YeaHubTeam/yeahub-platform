@@ -18,13 +18,16 @@ export const SkeletonGenerator = () => {
 	const isQuestionsPage = useMatch(ROUTES.questions.page);
 	const isQuestionDetailPage = useMatch(ROUTES.questions.detail.page);
 
-	// Расскомментировать после наличия полного скелетона для лендинга
-	if (isLandingPage) return <LandingPageSkeleton />;
-	if (isQuizPage) return <CreatePublicQuizPageSkeleton />;
-	if (isNewQuizPage) return <PublicQuizPageSkeleton />;
-	if (isQuizResultPage) return <PublicQuizResultPageSkeleton />;
-	if (isQuestionsPage) return <PublicQuestionsPageSkeleton />;
-	if (isQuestionDetailPage) return <PublicQuestionPageSkeleton />;
+	if (isLandingPage) return <LandingPageSkeleton data-testid={'LandingPageSkeleton'} />;
+	if (isQuizPage)
+		return <CreatePublicQuizPageSkeleton data-testid={'CreatePublicQuizPageSkeleton'} />;
+	if (isNewQuizPage) return <PublicQuizPageSkeleton dataTestId={'PublicQuizPageSkeleton'} />;
+	if (isQuizResultPage)
+		return <PublicQuizResultPageSkeleton dataTestId={'PublicQuizResultPageSkeleton'} />;
+	if (isQuestionsPage)
+		return <PublicQuestionsPageSkeleton dataTestId={'PublicQuestionsPageSkeleton'} />;
+	if (isQuestionDetailPage)
+		return <PublicQuestionPageSkeleton dataTestId={'PublicQuestionPageSkeleton'} />;
 
 	return <Loader />;
 };

@@ -13,13 +13,14 @@ export const FooterLinksSkeleton = () => {
 			{[...Array(2)].map((_, index) => (
 				<TextSkeleton
 					key={index}
+					dataTestId={'TextSkeleton'}
 					className={styles['docs-link']}
-					width={isMobileS ? 50 : 90}
+					width={isMobileS ? 70 : 80}
 					variant={'body2'}
 				/>
 			))}
 			{[...Array(5)].map((_, index) => (
-				<IconSkeleton key={index} size={24} borderRadius={'50%'} />
+				<IconSkeleton dataTestId={'IconSkeleton'} key={index} size={24} borderRadius={'50%'} />
 			))}
 		</Flex>
 	);

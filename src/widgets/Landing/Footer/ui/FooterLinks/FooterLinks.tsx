@@ -17,9 +17,10 @@ export const FooterLinks = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	return (
-		<Flex className={styles['footer-resources-links']}>
-			<NavLink to={'/docs'}>
+		<Flex dataTestId={'FooterLinks'} className={styles['footer-resources-links']}>
+			<NavLink data-testid="Footer_NavDocs" to={'/docs'}>
 				<Text
+					dataTestId={'Footer_Docs'}
 					className={styles['docs-link']}
 					variant={isSmallScreen ? 'body2' : 'body2-accent'}
 					color="black-400"
@@ -27,8 +28,9 @@ export const FooterLinks = () => {
 					{t(Landing.FOOTER_DOCS)}
 				</Text>
 			</NavLink>
-			<NavLink to={'/media'}>
+			<NavLink data-testid="Footer_NavMedia" to={'/media'}>
 				<Text
+					dataTestId={'Footer_Media'}
 					className={styles['docs-link']}
 					variant={isSmallScreen ? 'body2' : 'body2-accent'}
 					color="black-400"
@@ -45,7 +47,7 @@ export const FooterLinks = () => {
 					aria-label={`${label} ${t(Landing.FOOTER_LINKS_LINK_ARIA_LABEL)}`}
 					className={styles[className]}
 				>
-					<Icon icon={icon} color={color} />
+					<Icon icon={icon} color={color} dataTestId={`icon-${label}`} />
 				</a>
 			))}
 		</Flex>
