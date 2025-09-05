@@ -22,10 +22,6 @@
   object-position: center;
 }
 
-.specialization {
-  font-weight: var(--font-weight-400);
-}
-
 @media (width < 768px) {
   .content {
     padding: 16px;

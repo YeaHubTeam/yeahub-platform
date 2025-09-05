@@ -28,13 +28,13 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 
 				<Flex direction="column" gap="12" flex={1}>
 					<Flex justify="between" wrap="wrap">
-						<Text variant="body2" color="purple-700" className={styles.hostname}>
+						<Text variant="body2" color="purple-700">
 							{resourceHostname}
 						</Text>
 						{type && <StatusChip status={{ text: type.description, variant: 'purple' }} />}
 					</Flex>
 
-					<Text variant="body3-accent" maxRows={2} className={styles.title}>
+					<Text variant="body3-accent" maxRows={2}>
 						{name}
 					</Text>
 
@@ -45,7 +45,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 					<Flex gap="14">
 						{specializations.map((specialization) => (
 							<Text
-								variant="body3-accent"
+								variant="body3"
 								color="black-500"
 								key={specialization.id}
 								className={styles.specialization}
