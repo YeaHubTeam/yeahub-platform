@@ -12,8 +12,20 @@ export const getIsAllQuestionsAnswered = (state: State) => {
 
 export const getLastActiveQuizInfo = createSelector(
 	getActiveQuizQuestions,
-	(activeQuizQuestions) => {
+	getIsAllQuestionsAnswered,
+	(activeQuizQuestions, areAllQuestionsAnswered) => {
+		const answeredCount = activeQuizQuestions.filter(
+			(question) => question.answer !== undefined && question.answer !== null,
+		).length;
+
 		if (!activeQuizQuestions || !activeQuizQuestions.length) return null;
+		if (areAllQuestionsAnswered) {
+			return {
+				question: activeQuizQuestions[0],
+				fromQuestionNumber: activeQuizQuestions.length,
+				toQuestionNumber: activeQuizQuestions.length,
+			};
+		}
 
 		const questionWithoutAnswer =
 			activeQuizQuestions.find((question) => !question.answer) ?? activeQuizQuestions[0];
@@ -24,6 +36,7 @@ export const getLastActiveQuizInfo = createSelector(
 			question: questionWithoutAnswer,
 			fromQuestionNumber: questionIndexWithoutAnswer >= 0 ? questionIndexWithoutAnswer + 1 : 1,
 			toQuestionNumber: activeQuizQuestions.length,
+			answeredCount: answeredCount,
 		};
 	},
 );

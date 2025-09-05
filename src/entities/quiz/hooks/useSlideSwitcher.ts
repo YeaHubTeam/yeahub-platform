@@ -9,9 +9,8 @@ import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 
 import { changeMockQuestionAnswer, changeQuestionAnswer } from '../model/slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
-
-export const useSlideSwitcher = (questions: Answers[]) => {
-	const [currentQuestion, setCurrentQuestion] = useState(0);
+export const useSlideSwitcher = (questions: Answers[], initialSlideIndex?: number) => {
+	const [currentQuestion, setCurrentQuestion] = useState(initialSlideIndex || 0);
 
 	const dispatch = useAppDispatch();
 	const profileId = useAppSelector(getProfileId);

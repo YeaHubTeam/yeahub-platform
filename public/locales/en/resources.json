@@ -1,7 +1,7 @@
 {
-	"access_category": "Access category",
+	"type": "Resource type",
 	"title": {
-		"short": "Resources",
+		"short": "Name",
 		"label": "Add resource",
 		"placeholder": "Deatiled resource description"
 	},
@@ -11,6 +11,8 @@
 		"placeholder": "Add description"
 	},
 	"search.placeholder": "Enter resource...",
-
-	"author": "Author"
+	"author": "Author",
+	"specialization": {
+		"title": "Specialization"
+	}
 }
