@@ -34,7 +34,7 @@ export interface FilterFromUser {
 	isFree?: boolean;
 	roles?: string | null;
 	isEmailVerified?: string | null;
-	resources?: string | string[];
+	resources?: string[];
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
