@@ -23,10 +23,13 @@ export interface Resource {
 }
 
 export interface GetResourcesListParamsRequest {
+	types?: string[];
+	specializations?: number | number[];
+	skills?: number[];
+	keywords?: string[];
 	page?: number;
 	limit?: number;
 	name?: string;
-	provider?: string;
 	authorId?: string;
 	orderBy?: string;
 	order?: SortOrder;

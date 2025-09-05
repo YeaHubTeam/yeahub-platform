@@ -3,12 +3,7 @@ import { useState } from 'react';
 import { Flex } from '@/shared/ui/Flex';
 
 import { ChooseQuestionsCategories, ChooseSpecialization } from '@/entities/question';
-import {
-	FilterParams,
-	MarketplaceFilterStatus,
-	ResourcesFilterSection,
-	StatusFilterSection,
-} from '@/entities/resource';
+import { FilterParams, ResourcesFilterSection } from '@/entities/resource';
 
 import { SearchBlock } from '../SearchBlock/SearchBlock';
 
@@ -19,7 +14,6 @@ interface MarketplaceFiltersPanelProps {
 	onChangeSearch: (value: string) => void;
 	onChangeSpecialization: (specialization: number[] | number) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
-	onChangeStatus: (status: MarketplaceFilterStatus) => void;
 	onChangeResources: (resources: string[] | undefined) => void;
 }
 
@@ -28,10 +22,9 @@ export const MarketplaceFiltersPanel = ({
 	onChangeSearch,
 	onChangeSpecialization,
 	onChangeSkills,
-	onChangeStatus,
 	onChangeResources,
 }: MarketplaceFiltersPanelProps) => {
-	const { skills, status, specialization: filterSpecialization, resources } = filter;
+	const { skills, specialization: filterSpecialization, resources } = filter;
 
 	const selectedSpecialization = Array.isArray(filterSpecialization)
 		? filterSpecialization[0]
@@ -64,7 +57,6 @@ export const MarketplaceFiltersPanel = ({
 			/>
 			<ResourcesFilterSection selectedResources={resources} onChooseResources={onChangeResources} />
 			{/* <KeywordsListSection keywords={keywords} route={ROUTES.marketplace.page} /> */}
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
 		</Flex>
 	);
 };
