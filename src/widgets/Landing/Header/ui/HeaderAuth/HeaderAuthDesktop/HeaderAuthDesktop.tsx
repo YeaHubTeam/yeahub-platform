@@ -28,7 +28,7 @@ export const HeaderAuthDesktop = () => {
 				</Button>
 			</Link>
 
-			<Link dataTestId={'RegisterLink'} to={ROUTES.auth.register.page}>
+			<Link to={ROUTES.auth.register.page}>
 				<Button dataTestId={'RegisterButton'} size="large" className={styles['register-button']}>
 					{t(Landing.REGISTER)}
 				</Button>
