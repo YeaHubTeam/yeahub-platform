@@ -139,6 +139,14 @@
   }
 }
 
+.popover {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  max-width: 400px;
+}
+
 @media (width < 768px) {
   .content {
     padding: 16px;

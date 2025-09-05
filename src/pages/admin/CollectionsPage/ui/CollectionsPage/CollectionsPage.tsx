@@ -58,6 +58,7 @@ const CollectionsPage = () => {
 	}, [allCollections, userId]);
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
+		dispatch(collectionsPageActions.setSelectedCollections([]));
 	};
 
 	const onChangeSearch = (value: string) => {

@@ -33,6 +33,8 @@ export enum Translation {
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
+	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
+	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
@@ -69,6 +71,8 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
+	CRUMBS_WIKI = 'crumbs.wiki',
+	CRUMBS_RESOURCES = 'crumbs.resources',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -168,6 +172,8 @@ export enum Translation {
 	TOAST_RESOURCE_CREATE_FAILED = 'toast.resources.create.failed',
 	TOAST_RESOURCE_DELETE_SINGLE_SUCCESS = 'toast.resources.delete.single.success',
 	TOAST_RESOURCE_DELETE_SINGLE_FAILED = 'toast.resources.delete.single.failed',
+	TOAST_RESOURCE_EDIT_SUCCESS = 'toast.resources.edit.success',
+	TOAST_RESOURCE_EDIT_FAILED = 'toast.resources.edit.failed',
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
@@ -330,10 +336,10 @@ export enum InterviewQuiz {
 	ANSWER_HIDE = 'answer.hide',
 	ANSWER_DO_NOT_KNOW = 'answer.do.not.know',
 	ANSWER_KNOW = 'answer.know',
-	MODAL_QUIZ_TITLE = 'modal.quiz.title',
-	MODAL_QUIZ_DESCRIPTION = 'modal.quiz.description',
-	MODAL_QUIZ_ACTIONS_OK = 'modal.quiz.ok',
-	MODAL_QUIZ_ACTIONS_CANCEL = 'modal.quiz.cancel',
+	MODAL_CLONE_QUIZ_CONFIRM_TITLE = 'modal.clone.quiz.confirm.title',
+	MODAL_CLONE_QUIZ_CONFIRM_DESCRIPTION = 'modal.clone.quiz.confirm.description',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_OK = 'modal.clone.quiz.confirm.ok',
+	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_CANCEL = 'modal.clone.quiz.confirm.cancel',
 }
 
 export enum InterviewQuizCreate {
@@ -928,4 +934,7 @@ export enum Marketplace {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	URL_SHORT = 'url.short',
+	URL_LABEL = 'url.label',
+	URL_PLACEHOLDER = 'url.placeholder',
 }

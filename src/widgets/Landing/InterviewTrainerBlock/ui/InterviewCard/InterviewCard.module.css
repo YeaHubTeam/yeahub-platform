@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 80%;
   box-shadow: var(--main-shadow);
-  border-radius: 16px;
+  border-radius: 8px;
   object-fit: contain;
 }
 
@@ -51,12 +51,12 @@
   content: '';
 }
 
-.text-icon.icon-settings::before { 
+.text-icon.icon-settings::before {
   box-shadow: 0 2px 0 0 var(--color-yellow-900);
   background-color: var(--icon-background-yellow)
 }
 
-.text-icon.icon-student::before { 
+.text-icon.icon-student::before {
   box-shadow: 0 2px 0 0 var(--svg-color-green);
   background-color: var(--icon-background-green);
 }
@@ -104,7 +104,7 @@
     height: 100%;
     min-height: 180px;
   }
-    
+
   .card-image {
     position: absolute;
     top: 50%;

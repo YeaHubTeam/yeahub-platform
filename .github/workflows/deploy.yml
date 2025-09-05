@@ -7,23 +7,23 @@ on:
       - main
 
 env:
-  SERVICE_NAME_TEST: platform
   SERVICE_NAME_PRODUCTION: platform
+  REGISTRY: cr.selcloud.ru/yeahub-registry
+  IMAGE_NAME: yeahub-frontend
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to VPS for test
-        if: github.ref == 'refs/heads/develop'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST_TEST }}
-          username: ${{ secrets.VPS_USERNAME_TEST }}
-          key: ${{ secrets.VPS_SSH_KEY_TEST }}
-          script: |
-            docker-compose --env-file .env.test up -d --build ${{ env.SERVICE_NAME_TEST }}
+    concurrency:
+      group: ${{ github.ref == 'refs/heads/develop' && 'deploy-develop' || github.run_id }}
+      cancel-in-progress: ${{ github.ref == 'refs/heads/develop' && true || false }}
 
+    steps:
+      # ================== Checkout code ==================
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # ================== VPS (production) ==================
       - name: Deploy to VPS for production
         if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@master
@@ -32,4 +32,59 @@ jobs:
           username: ${{ secrets.VPS_USERNAME_PRODUCTION }}
           key: ${{ secrets.VPS_SSH_KEY_PRODUCTION }}
           script: |
+            set -e
+            echo "Deploying ${SERVICE_NAME_PRODUCTION} on VPS..."
             docker-compose --env-file .env.production up -d --build ${{ env.SERVICE_NAME_PRODUCTION }}
+
+      # ================== Generate Docker tag ==================
+      - name: Generate Docker tag
+        if: github.ref == 'refs/heads/develop'
+        id: docker_tag
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]')
+          BRANCH_SAFE=$(echo "$BRANCH_NAME" | sed 's/[\/]/-/g' | sed 's/[^a-z0-9_:-]/-/g')
+          SHORT_SHA=${GITHUB_SHA::7}
+          IMAGE_TAG="${BRANCH_SAFE}-${SHORT_SHA}"
+          echo "Docker tag for dev: $IMAGE_TAG"
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      # ================== Build and push Docker image ==================
+      - name: Build and push Docker image for dev
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login ${{ env.REGISTRY }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+          docker build \
+            -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }} \
+            --build-arg API_URL="https://api.yeatwork.ru/" \
+            --build-arg LANDING_URL="https://yeatwork.ru/" \
+            --build-arg PORT=5173 \
+            --build-arg NODE_ENV=production \
+            --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
+            --build-arg TELEGRAM_BOT_NAME="yeahub_test_bot" \
+            .
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }}
+
+      # ================== Checkout Helm repo ==================
+      - name: Checkout Helm repo
+        if: github.ref == 'refs/heads/develop'
+        uses: actions/checkout@v3
+        with:
+          repository: YeaHubTeam/yeahub-helm
+          ref: develop
+          token: ${{ secrets.HELM_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          path: helm
+
+      # ================== Update Helm values and commit ==================
+      - name: Update Helm values for dev and commit
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          IMAGE_TAG=${{ steps.docker_tag.outputs.IMAGE_TAG }}
+          echo "Updating Helm values with tag: $IMAGE_TAG"
+          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i helm/values-test.yaml
+
+          cd helm
+          git config --global user.email "ci@github.com"
+          git config --global user.name "github-actions"
+          git add values-test.yaml
+          git commit -m "Update frontend tag to $IMAGE_TAG" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.HELM_REPO_TOKEN }}@github.com/YeaHubTeam/yeahub-helm.git develop

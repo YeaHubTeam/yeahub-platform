@@ -40,6 +40,10 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"wiki": {
+				"title": "Knowledge base",
+				"resources": "Resources"
+			},
 			"questions": "Questions",
 			"skills": "Skills",
 			"companies": "Companies"
@@ -110,7 +114,9 @@
 		"main.page": "Home",
 		"error.404": "Page not found",
 		"login": "Login",
-		"register": "Registration"
+		"register": "Registration",
+		"wiki": "Knowledge base",
+		"resources": "Resources"
 	},
 	"toast": {
 		"title": {
@@ -238,6 +244,10 @@
 					"success": "Resource deleted successfully",
 					"failed": "Failed to delete resource"
 				}
+			},
+			"edit": {
+				"success": "Resource successfully changed",
+				"failed": "Resource could not be changed"
 			}
 		},
 		"profile": {
