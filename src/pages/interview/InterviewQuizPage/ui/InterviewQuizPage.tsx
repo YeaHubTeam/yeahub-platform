@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,6 +25,7 @@ import {
 	useInterruptQuizMutation,
 	LS_ACTIVE_MOCK_QUIZ_KEY,
 	clearActiveMockQuizState,
+	getLastActiveQuizInfo,
 } from '@/entities/quiz';
 
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
@@ -39,6 +40,13 @@ const InterviewQuizPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
+
+	const lastActiveQuizInfo = useAppSelector(getLastActiveQuizInfo);
+	const initialSlideIndex = useMemo(() => {
+		return lastActiveQuizInfo && lastActiveQuizInfo.question
+			? lastActiveQuizInfo.fromQuestionNumber - 1
+			: 0;
+	}, [lastActiveQuizInfo]);
 
 	const profileId = useAppSelector(getProfileId);
 	const { data: activeQuiz } = useGetActiveQuizQuery(
@@ -96,7 +104,7 @@ const InterviewQuizPage = () => {
 		changeAnswer,
 		goToNextSlide,
 		goToPrevSlide,
-	} = useSlideSwitcher(updatedQuiz ?? activeQuizQuestions ?? []);
+	} = useSlideSwitcher(updatedQuiz ?? activeQuizQuestions ?? [], initialSlideIndex);
 
 	const onPrevSlide = () => {
 		setIsAnswerVisible(false);
