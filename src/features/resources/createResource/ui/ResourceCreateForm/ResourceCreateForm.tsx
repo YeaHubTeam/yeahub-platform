@@ -16,10 +16,8 @@ export const ResourceCreateForm = () => {
 			url: '',
 			description: '',
 			iconBase64: '',
-			accessCategory: 'free',
-			isActive: true,
-			skills: [],
-			specializations: [],
+			resourceSkills: [],
+			resourceSpecializations: [],
 			keywords: [],
 		},
 	});

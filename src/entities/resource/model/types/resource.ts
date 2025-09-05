@@ -1,20 +1,25 @@
 import { Response, SortOrder } from '@/shared/types/types';
 
-export type ResourceAccessCategory = 'free' | 'has_trial' | 'payed_only';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Skill } from '@/entities/skill';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
 
 export interface Resource {
 	id: string;
 	name: string;
-	url: string;
-	iconBase64: string;
 	description: string;
 	type: ResourceType;
-	specializations: ResourseSpecialization[];
-	accessCategory: ResourceAccessCategory;
+	url: string;
+	keywords?: string[];
+	imageSrc: string;
+	specializations: Specialization[];
+	skills: Skill[];
+	createdById: string;
+	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;
-	isActive: boolean;
-	createdById: string;
+	iconBase64?: string;
 }
 
 export interface GetResourcesListParamsRequest {
@@ -22,7 +27,6 @@ export interface GetResourcesListParamsRequest {
 	limit?: number;
 	name?: string;
 	provider?: string;
-	accessCategory?: ResourceAccessCategory;
 	authorId?: string;
 	orderBy?: string;
 	order?: SortOrder;
@@ -31,13 +35,20 @@ export interface GetResourcesListParamsRequest {
 
 export type GetResourcesListResponse = Response<Resource[]>;
 
+export type GetResourceByIdParamsRequest = {
+	resourceId?: string;
+};
+
+export type GetResourceByIdResponse = Resource;
+
 export type CreateOrEditResourceFormValues = Pick<
 	Resource,
-	'id' | 'name' | 'url' | 'description' | 'iconBase64' | 'accessCategory' | 'isActive'
+	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
-	specializations: number[];
-	skills: number[];
-	keywords?: string[];
+	resourceSkills: number[];
+	resourceSpecializations: number[];
+	keywords: string[];
+	type: ResourceTypeCode;
 };
 
 export type ResourceTypeCode =
@@ -61,9 +72,6 @@ export interface ResourceType {
 	description: string;
 }
 
-export interface ResourseSpecialization {
-	id: number;
-	title: string;
-}
+export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];

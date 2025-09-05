@@ -79,5 +79,10 @@
 		"chat": "Chat",
 		"tool": "Tool",
 		"documentation": "Documentation"
+	},
+	"url": {
+		"short": "Resource link",
+		"label": "Add a link",
+		"placeholder": "Paste a resource link"
 	}
 }

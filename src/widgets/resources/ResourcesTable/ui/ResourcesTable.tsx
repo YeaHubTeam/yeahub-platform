@@ -42,9 +42,9 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			accessCategory: resource.accessCategory,
+			accessCategory: '',
 			description: resource.description,
-			author: resource.url,
+			author: '',
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
