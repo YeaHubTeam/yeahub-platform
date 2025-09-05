@@ -1,5 +1,16 @@
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { ChipSkeleton } from '@/shared/ui/Chip';
+import { IconSkeleton } from '@/shared/ui/Icon';
+
+import styles from './FilterChip.module.css';
 
 export const FilterChipSkeleton = () => {
-	return <Skeleton width={74} height={40} borderRadius={20} />;
+	return (
+		<ChipSkeleton
+			variant={'big'}
+			className={styles.chip}
+			label="..."
+			withText={60}
+			prefix={<IconSkeleton size={20} />}
+		/>
+	);
 };
