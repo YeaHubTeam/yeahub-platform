@@ -5,7 +5,7 @@ export const resourcesMock: Resource[] = [
 		id: '6497a854-b2b4-4caf-8cae-675461ae3b29',
 		name: 'EE',
 		description: 'test',
-		url: '',
+		url: 'https://udemy.com/course/new-python-course',
 		imageSrc: '',
 		createdAt: '2025-08-28T07:22:21.022Z',
 		updatedAt: '2025-08-28T07:22:21.022Z',
