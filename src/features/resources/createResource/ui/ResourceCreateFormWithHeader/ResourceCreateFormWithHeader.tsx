@@ -14,7 +14,6 @@ import { listAdminRoles, useProfileQuery } from '@/entities/auth';
 import { ResourceForm } from '@/entities/resource';
 
 import { useCreateResourceMutation } from '../../api/createResourceApi';
-import { toCreateResourceBody } from '../../model/lib/map/toCreateResourceBody';
 import { CreateResourceFormValues } from '../../model/types/resourceCreateTypes';
 
 import styles from './ResourceCreateFormWithHeader.module.css';
@@ -31,9 +30,7 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		const dto = toCreateResourceBody(data);
-
-		await createResourceMutation({ resource: dto, isAdmin: isAdminRole }).unwrap();
+		await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
 	};
 
 	return (
