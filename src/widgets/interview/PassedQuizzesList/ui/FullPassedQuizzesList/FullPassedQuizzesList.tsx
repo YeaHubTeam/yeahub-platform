@@ -61,7 +61,7 @@ export const FullPassedQuizzesList = ({
 
 	useEffect(() => {
 		isSuccess && onLoaded && onLoaded();
-	}, [isSuccess]);
+	}, [isSuccess, onLoaded]);
 
 	if (isEmptyData) {
 		return (

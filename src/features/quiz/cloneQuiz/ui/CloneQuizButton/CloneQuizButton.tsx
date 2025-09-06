@@ -8,7 +8,9 @@ import { useAppSelector, useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
 import { getProfileId } from '@/entities/profile';
-import { useGetActiveQuizQuery, useLazyCloneQuizQuery } from '@/entities/quiz';
+import { useGetActiveQuizQuery } from '@/entities/quiz';
+
+import { useLazyCloneQuizQuery } from '../../api/cloneQuizApi';
 
 const ResetActiveQuizModal = lazy(() => import('../ResetActiveQuizModal/ResetActiveQuizModal'));
 
