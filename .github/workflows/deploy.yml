@@ -83,21 +83,22 @@ jobs:
           token: ${{ secrets.HELM_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           path: helm
 
-      # ================== Update Helm values and commit ==================
+      # ================== Update Helm values and push ==================
       - name: Update Helm values and push
         run: |
           if [ "${GITHUB_REF}" == "refs/heads/develop" ]; then
-            HELM_FILE="helm/values-test.yaml"
+            HELM_FILE="values-test.yaml"
             IMAGE_TAG=${{ steps.docker_tag_dev.outputs.IMAGE_TAG }}
           else
-            HELM_FILE="helm/values-prod.yaml"
+            HELM_FILE="values-prod.yaml"
             IMAGE_TAG=${{ steps.docker_tag_prod.outputs.IMAGE_TAG }}
           fi
 
           echo "Updating Helm values in $HELM_FILE with tag: $IMAGE_TAG"
-          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i $HELM_FILE
 
           cd helm
+          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i $HELM_FILE
+
           git config --global user.email "ci@github.com"
           git config --global user.name "github-actions"
           git add $HELM_FILE
