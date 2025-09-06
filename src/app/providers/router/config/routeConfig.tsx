@@ -15,6 +15,8 @@ import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
+// import WikiIcon from '@/shared/assets/icons/wiki.svg';
+// import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -82,6 +84,7 @@ import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
+import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
@@ -96,6 +99,7 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
+import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -151,6 +155,19 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
+	// {
+	// 	type: 'category',
+	// 	title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
+	// 	icon: WikiIcon,
+	// 	elements: [
+	// 		{
+	// 			route: ROUTES.wiki.resources.route,
+	// 			title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
+	// 			icon: ResourcesIcon,
+	// 		},
+	// 	],
+	// 	roles: allRoles,
+	// },
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -346,6 +363,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.create.page,
 				element: <ResourceCreatePage />,
+			},
+			{
+				path: ROUTES.admin.resources.edit.page,
+				element: <ResourceEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -607,6 +628,21 @@ export const router = createBrowserRouter([
 						),
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
+						},
+					},
+				],
+			},
+			{
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+				},
+				children: [
+					{
+						path: ROUTES.wiki.resources.route,
+						element: <ResourcesPage />,
+						handle: {
+							crumb: Translation.CRUMBS_RESOURCES,
 						},
 					},
 				],

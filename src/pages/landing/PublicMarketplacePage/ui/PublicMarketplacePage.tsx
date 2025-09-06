@@ -23,6 +23,7 @@ import {
 } from '@/widgets/Marketplace';
 
 import styles from './PublicMarketplacePage.module.css';
+import { PublicMarketplacePageSkeleton } from './PublicMarketplacePage.skeleton';
 
 const RESOURCES_PER_PAGE = 6;
 
@@ -36,7 +37,6 @@ const PublicMarketplacePage = () => {
 		onChangeSkills,
 		onChangeSpecialization,
 		onChangeResources,
-		onChangeStatus,
 		filter,
 		onChangePage,
 	} = useMarketplaceFilters();
@@ -49,31 +49,25 @@ const PublicMarketplacePage = () => {
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 		name: filter.title,
+		specializations: filter.specialization,
+		skills: filter.skills,
+		types: filter.resources,
 	});
 
 	const resources = resourcesResponse?.data ?? [];
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	if (isLoading) {
-		return <div>Loading…</div>;
-	}
-
-	if (error) {
-		return <div>Не удалось загрузить ресурсы</div>;
-	}
-
 	const renderFilters = () => (
 		<MarketplaceFiltersPanel
 			filter={{
 				skills: filter.skills,
-				status: filter.status,
 				resources: filter.resources,
+				specialization: filter.specialization,
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}
 			onChangeSpecialization={onChangeSpecialization}
-			onChangeStatus={onChangeStatus}
 			onChangeResources={onChangeResources}
 		/>
 	);
@@ -82,7 +76,6 @@ const PublicMarketplacePage = () => {
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
-				className={styles['filters-mobile-button']}
 				aria-label="открыть фильтры"
 				form="square"
 				icon={<Icon icon="slidersHorizontal" color="black-700" />}
@@ -111,6 +104,14 @@ const PublicMarketplacePage = () => {
 			{t(Marketplace.LINK_LABEL)}
 		</Button>
 	);
+
+	if (isLoading) {
+		return <PublicMarketplacePageSkeleton />;
+	}
+
+	if (error) {
+		return <div>Не удалось загрузить ресурсы</div>;
+	}
 
 	return (
 		<Flex gap="20" align="start">

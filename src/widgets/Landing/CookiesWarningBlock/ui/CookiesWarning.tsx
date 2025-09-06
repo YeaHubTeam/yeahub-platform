@@ -40,7 +40,7 @@ export const CookiesWarning = () => {
 	};
 
 	return createPortal(
-		<div role="alert" className={styles.wrapper}>
+		<div data-testid="CookiesWarning" role="alert" className={styles.wrapper}>
 			<div className={styles['cookie-wrapper']}>
 				<Text className={styles.text} variant="body3" color="black-700">
 					{t(Landing.COOKIES_TEXT)}{' '}
@@ -54,7 +54,12 @@ export const CookiesWarning = () => {
 						</Text>
 					</a>
 				</Text>
-				<Button className={styles.btn} variant="primary" onClick={handleClick}>
+				<Button
+					dataTestId="CookiesWarning_AgreeButton"
+					className={styles.btn}
+					variant="primary"
+					onClick={handleClick}
+				>
 					{t(Landing.COOKIES_AGREE)}
 				</Button>
 			</div>

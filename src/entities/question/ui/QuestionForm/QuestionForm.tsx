@@ -39,6 +39,8 @@ export const QuestionForm = () => {
 		},
 	];
 
+	console.log('all', watch());
+
 	return (
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
