@@ -5,7 +5,7 @@ import {
 	ChooseQuestionsCategoriesSkeleton,
 	ChooseSpecializationSkeleton,
 } from '@/entities/question';
-import { ResourcesFilterSectionSkeleton, StatusFilterSectionSkeleton } from '@/entities/resource';
+import { ResourcesFilterSectionSkeleton } from '@/entities/resource';
 
 export const MarketplaceFiltersPanelSkeleton = () => {
 	return (
@@ -14,7 +14,6 @@ export const MarketplaceFiltersPanelSkeleton = () => {
 			<ChooseSpecializationSkeleton />
 			<ChooseQuestionsCategoriesSkeleton />
 			<ResourcesFilterSectionSkeleton />
-			<StatusFilterSectionSkeleton />
 		</Flex>
 	);
 };

@@ -4,6 +4,7 @@
   pointer-events: none;
 }
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
 :global(.padding6) .chip {
   padding: 6px;
 }

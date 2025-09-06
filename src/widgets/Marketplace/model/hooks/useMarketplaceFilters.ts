@@ -1,7 +1,5 @@
 import { useQueryFilter } from '@/shared/hooks';
 
-import { MarketplaceFilterStatus } from '@/entities/resource';
-
 export const useMarketplaceFilters = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 
@@ -24,10 +22,6 @@ export const useMarketplaceFilters = () => {
 		handleFilterChange({ resources, page: 1 });
 	};
 
-	const onChangeStatus = (status: MarketplaceFilterStatus) => {
-		handleFilterChange({ status, page: 1 });
-	};
-
 	const onChangePage = (page: number) => {
 		handleFilterChange({ page });
 	};
@@ -38,7 +32,6 @@ export const useMarketplaceFilters = () => {
 		onChangeSkills,
 		onChangeResources,
 		onChangeSpecialization,
-		onChangeStatus,
 		onChangePage,
 		resetFilters,
 	};

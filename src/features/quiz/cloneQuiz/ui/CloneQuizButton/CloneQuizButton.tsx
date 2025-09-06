@@ -14,7 +14,6 @@ const ResetActiveQuizModal = lazy(() => import('../ResetActiveQuizModal/ResetAct
 
 export const CloneQuizButton = () => {
 	const { quizId = '' } = useParams<{ quizId?: string }>();
-
 	const { isOpen, onToggle, onClose } = useModal();
 
 	const profileId = useAppSelector(getProfileId);

@@ -1,11 +1,14 @@
 import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
+import { route } from '@/shared/helpers/route';
 
 import { resourceApiUrls } from '../model/constants/resource';
 import {
 	GetResourceTypesResponse,
 	GetResourcesListParamsRequest,
 	GetResourcesListResponse,
+	GetResourceByIdResponse,
+	GetResourceByIdParamsRequest,
 } from '../model/types/resource';
 
 const resourceApi = baseApi.injectEndpoints({
@@ -23,8 +26,15 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCESTYPES],
 		}),
+		getResourceById: build.query<GetResourceByIdResponse, GetResourceByIdParamsRequest>({
+			query: ({ resourceId }) => ({
+				url: route(resourceApiUrls.getResourceById, resourceId || ''),
+			}),
+			providesTags: [ApiTags.RESOURCES],
+		}),
 	}),
 });
 
-export const { useGetResourcesListQuery, useGetResourceTypesQuery } = resourceApi;
+export const { useGetResourcesListQuery, useGetResourceTypesQuery, useGetResourceByIdQuery } =
+	resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

@@ -51,7 +51,7 @@ export const CollectionsTable = ({
 		const columns = {
 			imageSrc: (
 				<ImageWithWrapper
-					src={collection.imageSrc}
+					src={collection.company?.imageSrc || ''}
 					alt={`${t(Translation.LOGO)} ${collection.title}`}
 					className={styles['card-image']}
 				/>

@@ -52,7 +52,7 @@ export const EditProfileForm = () => {
 	};
 
 	return (
-		<Card className={styles['card-with-visible-overflow']}>
+		<Card>
 			<Text variant="body5-strong" isMainTitle className={styles.title}>
 				{t(Profile.EDIT_PAGE_TITLE)}
 			</Text>

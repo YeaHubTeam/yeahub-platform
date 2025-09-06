@@ -37,7 +37,6 @@ const PublicMarketplacePage = () => {
 		onChangeSkills,
 		onChangeSpecialization,
 		onChangeResources,
-		onChangeStatus,
 		filter,
 		onChangePage,
 	} = useMarketplaceFilters();
@@ -50,6 +49,9 @@ const PublicMarketplacePage = () => {
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 		name: filter.title,
+		specializations: filter.specialization,
+		skills: filter.skills,
+		types: filter.resources,
 	});
 
 	const resources = resourcesResponse?.data ?? [];
@@ -60,13 +62,12 @@ const PublicMarketplacePage = () => {
 		<MarketplaceFiltersPanel
 			filter={{
 				skills: filter.skills,
-				status: filter.status,
 				resources: filter.resources,
+				specialization: filter.specialization,
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}
 			onChangeSpecialization={onChangeSpecialization}
-			onChangeStatus={onChangeStatus}
 			onChangeResources={onChangeResources}
 		/>
 	);
@@ -75,7 +76,6 @@ const PublicMarketplacePage = () => {
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
-				className={styles['filters-mobile-button']}
 				aria-label="открыть фильтры"
 				form="square"
 				icon={<Icon icon="slidersHorizontal" color="black-700" />}

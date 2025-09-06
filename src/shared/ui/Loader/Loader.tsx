@@ -18,8 +18,12 @@ export const Loader = ({ hasText = true, style, className }: LoaderProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	return (
-		<div className={classNames(styles.wrapper, className)} style={style}>
-			<Card>
+		<div
+			data-testid={'Loader_Wrapper'}
+			className={classNames(styles.wrapper, className)}
+			style={style}
+		>
+			<Card dataTestId={'LoaderCard'}>
 				<div className={styles.content}>
 					<span className={styles.loader}></span>
 					{hasText && <span className={styles.text}>{t(Translation.LOADING)}</span>}

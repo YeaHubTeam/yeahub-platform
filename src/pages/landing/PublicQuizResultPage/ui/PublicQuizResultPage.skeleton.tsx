@@ -7,11 +7,11 @@ import { PassedQuestionsStatisticSkeleton } from '@/widgets/interview/QuestionsS
 
 import styles from './PublicQuizResultPage.module.css';
 
-export const PublicQuizResultPageSkeleton = () => {
+export const PublicQuizResultPageSkeleton = ({ dataTestId }: { dataTestId?: string }) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
-		<Flex gap="20" direction="column" className={styles.container}>
+		<Flex dataTestId={dataTestId} gap="20" direction="column" className={styles.container}>
 			<Flex gap="20" className={styles.wrapper} direction={isTablet || isMobile ? 'column' : 'row'}>
 				<PassedQuestionsStatisticSkeleton className={styles.statistic} total={0} />
 				<CategoryProgressListSkeleton className={styles.progress} />
