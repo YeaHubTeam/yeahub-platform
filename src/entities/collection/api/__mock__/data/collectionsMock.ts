@@ -1,610 +1,626 @@
+import { Response } from '@/shared/types/types';
+
 import { Collection } from '@/entities/collection/model/types/collection';
 
-export const collectionsMock: Collection[] = [
-	{
-		createdAt: '2024-06-04T13:40:16.610Z',
-		description: 'Cобеседование на мидл разработчика, вилка 250-300к',
-		id: 12,
-		imageSrc:
-			'https://avatars.mds.yandex.net/i?id=ab1f3fd174b9dd0d8f5d3fb2247b6f339b0b8e20-4355070-images-thumbs&n=13',
-
-		title: 'Сбер',
-		updatedAt: '2024-12-28T17:14:21.662Z',
-		questionsCount: 6,
-		tariff: 'premium',
-		keywords: ['async', 'defer', 'script'],
-		specializations: [
-			{
-				id: 11,
-				title: 'Frontend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
+export const collectionsMock: Response<Collection[]> = {
+	data: [
+		{
+			id: 80,
+			title: 'Middle Frontend разработчик в компанию Мегафон',
+			description:
+				'Техническое собеседование. Зима 2025. Опыт в резюме: 3.4 года. Вилка: 200к+. Проект: Личный кабинет абонента Мегафон. Был лайвкодинг по Event Loop, код-ревью.',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-08-10T12:23:44.387Z',
+			updatedAt: '2025-08-10T12:23:44.387Z',
+			keywords: ['solid', 'http', 'cors', 'this'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'troll',
 			},
-			{
-				id: 12,
-				title: 'Backend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
+			company: {
+				id: '9a9a686c-a013-4cc1-be5e-ce7310d8ff75',
+				title: 'Мегафон',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/4dbb981e-5b60-4c9c-9b84-939143bbdb9d',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-10T12:18:51.912Z',
+				updatedAt: '2025-08-10T12:18:51.912Z',
 			},
-		],
-		questions: [
-			{
-				id: 113,
-				title: 'Зачем для тега <script> добавляют атрибуты async и defer?',
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 12,
+					title: 'Backend',
+					description: 'Frontend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+				{
+					id: 19,
+					title: '',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 20,
+		},
+		{
+			id: 83,
+			title: 'Senior Frontend разработчик в компанию Avito',
+			description:
+				'Техническое собеседование. Осень 2024. Просил 340к+. Опыт в резюме: 4.7 года. В конце был легкий лайвкодинг.',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-08-10T12:40:10.281Z',
+			updatedAt: '2025-08-10T12:40:10.281Z',
+			keywords: ['js', 'dom', 'css', 'network'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'bred',
+			},
+			company: {
+				id: '74c12291-8006-430c-a140-ea05867abfd7',
+				title: 'Avito',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/291345d4-3089-45d9-af5c-fb834f68c194',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-05-23T15:00:33.959Z',
+				updatedAt: '2025-05-23T15:00:33.959Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 20,
+					title: 'Backend',
+					description: 'Frontend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+				{
+					id: 23,
+					title: '',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 15,
+		},
+		{
+			id: 86,
+			title: 'Middle Frontend разработчик (React/Next.js) в компанию ДиджиталСектор',
+			description:
+				'Техническое собеседование. Лето 2025. Вилка: 150-200к. Опыт в резюме: 3+ года. Проект: Аутсорсинговая компания с различными проектами',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-08-29T10:41:01.659Z',
+			updatedAt: '2025-08-29T10:46:37.944Z',
+			keywords: ['css', 'next', 'js'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'yaml',
+			},
+			company: {
+				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
+				title: 'Диджетал Сектор',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-29T10:10:02.903Z',
+				updatedAt: '2025-08-29T10:10:02.903Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 12,
+					title: 'Backend',
+					description: 'Frontend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+				{
+					id: 19,
+					title: '',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 26,
+		},
+		{
+			id: 82,
+			title: 'Middle Frontend разработчик в компанию X5 Group',
+			description:
+				'Техническое собеседование. Зима 2025. Опыт в резюме: 3.5 года. Вилка: 200к+. Проект: разработка продуктов для ритейла. В конце был лайвкодинг typescript.',
+			imageSrc: null,
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-08-10T12:33:50.940Z',
+			updatedAt: '2025-08-10T12:33:50.940Z',
+			keywords: ['http', 'react', 'typescript', 'memo'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'yest',
+			},
+			company: {
+				id: '2791d8eb-4a8e-4049-a481-1cf850323b3c',
+				title: 'X5 Tech',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/68c33275-f338-45bc-bae1-04edd8038e41',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-06-02T20:15:06.652Z',
+				updatedAt: '2025-06-02T20:15:06.652Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 20,
+					title: 'Backend',
+					description: 'Frontend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+				{
+					id: 40,
+					title: '',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 14,
+		},
+		{
+			id: 85,
+			title: 'Middle Frontend разработчик (React) в компанию Билайн',
+			description:
+				'Техническое собеседование. Лето 2025. Вилка: от 300к. Опыт в резюме: 3+ года. Было два практических задания: реализация аккордеона с бесконечной вложенностью и создание модального окна с контролируемой формой.',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-08-29T10:20:48.182Z',
+			updatedAt: '2025-08-29T10:20:48.182Z',
+			keywords: ['react', 'nextjs', 'vdom', 'ssr', 'optimizatoin', 'modal'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'trish',
+			},
+			company: {
+				id: '2ee7d0d1-4dc1-4fc6-bc68-9fbc4a334511',
+				title: 'Билайн',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/e7b36262-c2b4-43cc-a335-1b23aeea3a7b',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-06-02T20:14:37.017Z',
+				updatedAt: '2025-06-02T20:14:37.017Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 21,
+					title: 'Backend',
+					description: 'Frontend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+				{
+					id: 23,
+					title: '',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 18,
+		},
+		{
+			id: 81,
+			title: 'Middle Frontend разработчик в компанию Домклик',
+			description:
+				'Техническое собеседование. Зима 2025. Опыт: 3+ года. Вилка: 200к+. В конце был лайвкодинг - функция, которая принимает число и возвращает максимально большое число, составленное из цифр.',
+			imageSrc: null,
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-08-10T12:29:05.318Z',
+			updatedAt: '2025-08-10T12:29:05.318Z',
+			keywords: ['map', 'filter', 'js', 'function', 'promise', 'event loop', 'css', 'react'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'kreck',
+			},
+			company: {
+				id: '169b7272-85a6-47c6-a561-58370e36924f',
+				title: 'Домклик',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/10bbb81e-d6c5-4cfe-96f9-5fe9abb7444f',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-10T12:18:34.601Z',
+				updatedAt: '2025-08-10T12:18:34.601Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 24,
+					title: 'Backend',
+					description: 'Backend-разработчик',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-11-02T06:46:12.745Z',
+				},
+			],
+			questionsCount: 28,
+		},
+		{
+			id: 73,
+			title: 'c',
+			description: 'c',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-03-12T21:52:09.295Z',
+			updatedAt: '2025-03-12T21:52:09.295Z',
+			keywords: ['c'],
+			createdBy: {
+				id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+				username: 'adminadminov499',
+			},
+			company: {
+				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
+				title: 'Диджетал Сектор',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-29T10:10:02.903Z',
+				updatedAt: '2025-08-29T10:10:02.903Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+			],
+			questionsCount: 1,
+		},
+		{
+			id: 88,
+			title: 'Test company12344234',
+			description: 'test company\n',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-04-18T13:31:03.696Z',
+			updatedAt: '2025-04-20T16:34:45.603Z',
+			keywords: ['test'],
+			createdBy: {
+				id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+				username: 'adminadminov499',
+			},
+			company: {
+				id: 'fda7fdee-16e5-4c4b-b9a2-712b40a4f2d1',
+				title: 'Магнит Tech',
+				legalName: 'Магнит России',
 				description:
-					'Этот вопрос проверяет понимание работы атрибутов async и defer в контексте загрузки и выполнения JavaScript-кода на веб-страницах.',
-				code: null,
-				imageSrc: null,
-				keywords: ['async', 'defer', 'script'],
-				longAnswer:
-					'<p>При добавлении скриптов на страницу важно учитывать, как они могут повлиять на производительность и пользовательский опыт. По умолчанию, когда браузер встречает тег <code>&lt;script&gt;</code>, он приостанавливает рендеринг страницы, чтобы загрузить и выполнить скрипт, что может замедлить отображение контента.</p><p>&nbsp;</p><p>Атрибут <code>async</code> позволяет браузеру загружать скрипт асинхронно, что значит, что загрузка скрипта не блокирует рендеринг страницы. Как только скрипт загружен, он выполняется сразу, даже если HTML-документ еще не полностью загружен.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" async&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Атрибут <code>defer</code>, в свою очередь, также загружает скрипт асинхронно, но откладывает его выполнение до тех пор, пока весь HTML-документ не будет загружен. Это позволяет гарантировать, что скрипт выполняется только после полной загрузки страницы.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" defer&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Использование этих атрибутов позволяет оптимизировать время загрузки и улучшить пользовательский опыт, особенно на страницах с большим количеством скриптов или при наличии тяжелых JavaScript-фреймворков.</p>',
-				shortAnswer:
-					'<p>Атрибуты async и defer у тега &lt;script&gt; используются для управления тем, как и когда браузер загружает и выполняет JavaScript. async загружает скрипт асинхронно и выполняет его сразу после загрузки, не дожидаясь завершения загрузки всей страницы. defer также загружает скрипт асинхронно, но откладывает его выполнение до полной загрузки HTML-документа, что предотвращает блокировку рендеринга страницы.</p>',
-				status: 'public',
-				rate: 4,
-				complexity: 6,
-				createdAt: '2024-10-10T16:46:51.672Z',
-				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
+					'Российский финансовый конгломерат, крупнейший универсальный банк России и Восточной Европы',
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/46d32814-f785-4de9-a588-b8862096a38b',
+				inn: '7701234567',
+				kpp: '123456789',
+				createdAt: '2025-04-15T07:59:38.970Z',
+				updatedAt: '2025-04-19T17:54:00.226Z',
 			},
-			{
-				id: 119,
-				title:
-					'Как работает Shadow DOM? Какие преимущества он дает для разработки веб-компонентов?',
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+			],
+			questionsCount: 1,
+		},
+		{
+			id: 34,
+			title: 'Сбербанк',
+			description: 'Собеседование на мидл разработчика, вилка 250-300ккккк',
+			imageSrc:
+				'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/collection/e88910fe-b51f-4972-b2f0-d53288b6125a',
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-03-06T13:59:49.452Z',
+			updatedAt: '2025-03-10T08:03:12.768Z',
+			keywords: ['JavaScript', 'react'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'yaml',
+			},
+			company: {
+				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
+				title: 'Диджетал Сектор',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-29T10:10:02.903Z',
+				updatedAt: '2025-08-29T10:10:02.903Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+			],
+			questionsCount: 0,
+		},
+		{
+			id: 80,
+			title: 'СбербанкМой1',
+			description: 'Собеседование на мидл разработчика, вилка 250-300',
+			imageSrc: null,
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-03-06T13:59:49.452Z',
+			updatedAt: '2025-03-10T18:02:08.965Z',
+			keywords: ['JavaScript'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'yaml',
+			},
+			company: {
+				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
+				title: 'Диджетал Сектор',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-29T10:10:02.903Z',
+				updatedAt: '2025-08-29T10:10:02.903Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+				{
+					id: 25,
+					title: 'Ruby Backend Developer',
+					description:
+						'Программисты Ruby (Ruby Developers) создают сервисную часть сайтов, корпоративные приложения, высоконагруженное программное обеспечение на языке общего назначения Ruby',
+					imageSrc: null,
+					createdAt: '2024-12-13T15:32:58.103Z',
+					updatedAt: '2024-12-13T15:32:58.103Z',
+				},
+			],
+			questionsCount: 0,
+		},
+		{
+			id: 90,
+			title: '13241324',
+			description: '1234',
+			imageSrc: null,
+			isFree: false,
+			tariff: 'premium',
+			createdAt: '2025-04-19T05:59:11.450Z',
+			updatedAt: '2025-04-21T16:24:52.184Z',
+			keywords: ['test'],
+			createdBy: {
+				id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+				username: 'adminadminov499',
+			},
+			company: {
+				id: 'fda7fdee-16e5-4c4b-b9a2-712b40a4f2d1',
+				title: 'Магнит Tech',
+				legalName: 'Магнит России',
 				description:
-					'Этот вопрос проверяет понимание концепции Shadow DOM и его роли в создании веб-компонентов, а также преимущества, которые он предоставляет разработчикам.',
-				code: null,
-				imageSrc: null,
-				keywords: ['shadow dom'],
-				longAnswer:
-					"<p>Shadow DOM — это технология, которая позволяет создавать \"теневой\" DOM внутри элемента, обеспечивая изоляцию его содержимого и стилей от основного документа. Это позволяет разработчикам создавать веб-компоненты, которые могут содержать собственные стили и элементы, не затрагивая другие части страницы. Shadow DOM делает элементы более независимыми и переиспользуемыми.</p><p>&nbsp;</p><p>Когда вы создаете Shadow DOM для элемента, например, с помощью метода <code>attachShadow()</code>, создается новый контекст, который не наследует стили и скрипты от внешнего документа. Вот пример кода, который демонстрирует создание Shadow DOM:</p><p>&nbsp;</p><p><code>class MyElement extends HTMLElement {\n &nbsp; &nbsp;constructor() {\n &nbsp; &nbsp; &nbsp; &nbsp;super();\n &nbsp; &nbsp; &nbsp; &nbsp;const shadow = this.attachShadow({ mode: 'open' });\n &nbsp; &nbsp; &nbsp; &nbsp;shadow.innerHTML = `\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;p {\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;color: blue;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;p&gt;Hello from Shadow DOM!&lt;/p&gt;\n &nbsp; &nbsp; &nbsp; &nbsp;`;\n &nbsp; &nbsp;}\n}\n\ncustomElements.define('my-element', MyElement);\n</code></p><p>&nbsp;</p><p><strong>Преимущества Shadow DOM:</strong></p><ol><li><strong>Изоляция стилей:</strong> Стили внутри Shadow DOM не конфликтуют с глобальными стилями, что делает его идеальным для разработки компонентов.</li><li><strong>Инкапсуляция:</strong> Все, что находится внутри Shadow DOM, скрыто от внешнего окружения, что уменьшает вероятность конфликтов и ошибок.</li><li><strong>Переиспользуемость:</strong> Компоненты с Shadow DOM могут быть легко переиспользованы в разных частях приложения, обеспечивая консистентность и упрощая поддержку.</li></ol><p>&nbsp;</p><p>Таким образом, Shadow DOM является мощным инструментом для разработки веб-компонентов, который обеспечивает инкапсуляцию и защиту от конфликтов стилей.</p>",
-				shortAnswer:
-					'<p><strong>Shadow DOM</strong> создает изолированное дерево DOM для веб-компонента, которое скрыто от остальной части документа.</p><p>&nbsp;</p><p>Плюсы:</p><ol><li><strong>• Изолирует стили и разметку.</strong></li><li><strong>•&nbsp;Упрощает повторное использование.</strong></li><li><strong>•&nbsp;Инкапсулирует логику.</strong></li></ol>',
-				status: 'public',
-				rate: 3,
-				complexity: 6,
-				createdAt: '2024-10-11T15:59:35.247Z',
-				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: {
-					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
-					username: 'daryakrutova',
-				},
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
+					'Российский финансовый конгломерат, крупнейший универсальный банк России и Восточной Европы',
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/46d32814-f785-4de9-a588-b8862096a38b',
+				inn: '7701234567',
+				kpp: '123456789',
+				createdAt: '2025-04-15T07:59:38.970Z',
+				updatedAt: '2025-04-19T17:54:00.226Z',
 			},
-			{
-				id: 123,
-				title:
-					'Как работают форматы ввода и валидация данных в HTML5? В чем различие между встроенной и кастомной валидацией?',
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+			],
+			questionsCount: 1,
+		},
+		{
+			id: 35,
+			title: 'СбербанкТиньк',
+			description: 'Собеседование на мидл разработчика, вилка 250-300ккккк',
+			imageSrc:
+				'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/collection/e88910fe-b51f-4972-b2f0-d53288b6125a',
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-03-06T13:59:49.452Z',
+			updatedAt: '2025-03-10T08:03:12.768Z',
+			keywords: ['JavaScript', 'react'],
+			createdBy: {
+				id: '31f454ef-aa68-4691-b111-9483a5fe8cfc',
+				username: 'yaml',
+			},
+			company: {
+				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
+				title: 'Диджетал Сектор',
+				legalName: null,
+				description: null,
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
+				inn: null,
+				kpp: null,
+				createdAt: '2025-08-29T10:10:02.903Z',
+				updatedAt: '2025-08-29T10:10:02.903Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
+				},
+			],
+			questionsCount: 0,
+		},
+		{
+			id: 85,
+			title: '7777',
+			description: '777',
+			imageSrc: null,
+			isFree: true,
+			tariff: 'free',
+			createdAt: '2025-03-15T19:58:24.878Z',
+			updatedAt: '2025-04-22T03:39:22.335Z',
+			keywords: ['11111'],
+			createdBy: {
+				id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+				username: 'adminadminov499',
+			},
+			company: {
+				id: 'fda7fdee-16e5-4c4b-b9a2-712b40a4f2d1',
+				title: 'Магнит Tech',
+				legalName: 'Магнит России',
 				description:
-					'Этот вопрос проверяет понимание различных форматов ввода в HTML5 и механизмов валидации данных. Также он выясняет, как встроенная и кастомная валидация отличаются друг от друга.',
-				code: null,
-				imageSrc: null,
-				keywords: ['input', 'validation', 'form'],
-				longAnswer:
-					'<p>HTML5 ввел множество новых типов ввода и улучшил механизм валидации данных в формах. Это позволяет разработчикам создавать более интерактивные и удобные веб-приложения с меньшими затратами времени на написание пользовательского кода.</p><p>&nbsp;</p><p><strong>Форматы ввода в HTML5:</strong><br>Некоторые новые типы ввода включают:</p><ul><li><code>&lt;input type="email"&gt;</code>: Проверяет, что введенное значение имеет формат email (например, user@example.com).</li><li><code>&lt;input type="url"&gt;</code>: Проверяет, что введенное значение соответствует формату URL (например, <a href="https://example.com">https://example.com</a>).</li><li><code>&lt;input type="number"&gt;</code>: Ограничивает ввод только числами и может включать атрибуты для задания диапазона (например, <code>min</code> и <code>max</code>).</li></ul><p>&nbsp;</p><p><strong>Встроенная валидация:</strong><br>HTML5 обеспечивает встроенную валидацию форм, которая происходит автоматически при отправке. Если данные не соответствуют установленным требованиям (например, неправильный формат email), браузер покажет сообщение об ошибке и предотвратит отправку формы. Например:</p><p>&nbsp;</p><p><code>&lt;form&gt;\n &nbsp; &nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;\n &nbsp; &nbsp;&lt;input type="email" id="email" required&gt;\n &nbsp; &nbsp;&lt;button type="submit"&gt;Отправить&lt;/button&gt;\n&lt;/form&gt;\n</code></p><p>&nbsp;</p><p>Если пользователь введет неверный email, браузер уведомит его об этом.</p><p>&nbsp;</p><p><strong>Кастомная валидация:</strong><br>Кастомная валидация позволяет разработчикам добавлять собственные правила проверки данных. Это делается с помощью JavaScript и событий, таких как <code>submit</code> или <code>input</code>. Например, вы можете создать проверку на основе определенного условия:</p><p>&nbsp;</p><p><code>const form = document.querySelector(\'form\');\nform.addEventListener(\'submit\', function(event) {\n &nbsp; &nbsp;const email = document.getElementById(\'email\').value;\n &nbsp; &nbsp;if (!email.endsWith(\'@example.com\')) {\n &nbsp; &nbsp; &nbsp; &nbsp;alert(\'Email должен заканчиваться на @example.com\');\n &nbsp; &nbsp; &nbsp; &nbsp;event.preventDefault(); // предотвращает отправку формы\n &nbsp; &nbsp;}\n});\n</code></p><p>&nbsp;</p><p><strong>Сравнение:</strong></p><ul><li><strong>Встроенная валидация:</strong> Автоматическая проверка данных на соответствие заданным типам, без необходимости писать дополнительный код.</li><li><strong>Кастомная валидация:</strong> Позволяет создавать более сложные и специфичные проверки, которые не могут быть выполнены стандартными средствами.</li></ul><p>&nbsp;</p><p>Оба подхода могут использоваться вместе для обеспечения наилучшего пользовательского опыта и повышения качества вводимых данных.</p>',
-				shortAnswer:
-					'<p>HTML5 предоставляет различные форматы ввода, такие как <code>&lt;input type="email"&gt;</code>, <code>&lt;input type="url"&gt;</code> и <code>&lt;input type="number"&gt;</code>, которые автоматически проверяют вводимые данные на соответствие определенным критериям. Встроенная валидация происходит автоматически при отправке формы, и браузер уведомляет пользователя об ошибках, если данные не соответствуют формату. Кастомная валидация, с другой стороны, позволяет разработчикам создавать свои собственные правила проверки данных с помощью JavaScript, что дает больше контроля и гибкости.</p>',
-				status: 'public',
-				rate: 2,
-				complexity: 5,
-				createdAt: '2024-10-11T16:09:09.969Z',
-				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
+					'Российский финансовый конгломерат, крупнейший универсальный банк России и Восточной Европы',
+				imageSrc:
+					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/46d32814-f785-4de9-a588-b8862096a38b',
+				inn: '7701234567',
+				kpp: '123456789',
+				createdAt: '2025-04-15T07:59:38.970Z',
+				updatedAt: '2025-04-19T17:54:00.226Z',
+			},
+			specializations: [
+				{
+					id: 11,
+					title: 'React Frontend Developer',
+					description:
+						'React-разработчик — это инженер-программист или веб-разработчик, который занимается фронтендом или дизайном пользовательских интерфейсов, используя библиотеку React',
+					imageSrc: null,
+					createdAt: '2024-10-03T09:08:10.605Z',
+					updatedAt: '2024-12-13T15:29:16.935Z',
 				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-		],
-	},
-	{
-		createdAt: '2024-07-15T09:22:34.123Z',
-		description: 'Собеседование на senior разработчика, вилка 400-500к',
-		id: 13,
-		imageSrc:
-			'https://avatars.mds.yandex.net/i?id=17dd12b49e0cdf3506978885f761225687d566f2-8497452-images-thumbs&n=13',
-		title: 'Яндекс',
-		updatedAt: '2024-11-10T14:55:12.345Z',
-		questionsCount: 8,
-		tariff: 'free',
-		keywords: ['async', 'defer', 'script'],
-		specializations: [
-			{
-				id: 11,
-				title: 'Frontend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
-			},
-			{
-				id: 12,
-				title: 'Backend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
-			},
-		],
-		questions: [
-			{
-				id: 113,
-				title: 'Зачем для тега <script> добавляют атрибуты async и defer?',
-				description:
-					'Этот вопрос проверяет понимание работы атрибутов async и defer в контексте загрузки и выполнения JavaScript-кода на веб-страницах.',
-				code: null,
-				imageSrc: null,
-				keywords: ['async', 'defer', 'script'],
-				longAnswer:
-					'<p>При добавлении скриптов на страницу важно учитывать, как они могут повлиять на производительность и пользовательский опыт. По умолчанию, когда браузер встречает тег <code>&lt;script&gt;</code>, он приостанавливает рендеринг страницы, чтобы загрузить и выполнить скрипт, что может замедлить отображение контента.</p><p>&nbsp;</p><p>Атрибут <code>async</code> позволяет браузеру загружать скрипт асинхронно, что значит, что загрузка скрипта не блокирует рендеринг страницы. Как только скрипт загружен, он выполняется сразу, даже если HTML-документ еще не полностью загружен.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" async&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Атрибут <code>defer</code>, в свою очередь, также загружает скрипт асинхронно, но откладывает его выполнение до тех пор, пока весь HTML-документ не будет загружен. Это позволяет гарантировать, что скрипт выполняется только после полной загрузки страницы.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" defer&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Использование этих атрибутов позволяет оптимизировать время загрузки и улучшить пользовательский опыт, особенно на страницах с большим количеством скриптов или при наличии тяжелых JavaScript-фреймворков.</p>',
-				shortAnswer:
-					'<p>Атрибуты async и defer у тега &lt;script&gt; используются для управления тем, как и когда браузер загружает и выполняет JavaScript. async загружает скрипт асинхронно и выполняет его сразу после загрузки, не дожидаясь завершения загрузки всей страницы. defer также загружает скрипт асинхронно, но откладывает его выполнение до полной загрузки HTML-документа, что предотвращает блокировку рендеринга страницы.</p>',
-				status: 'public',
-				rate: 4,
-				complexity: 6,
-				createdAt: '2024-10-10T16:46:51.672Z',
-				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-			{
-				id: 119,
-				title:
-					'Как работает Shadow DOM? Какие преимущества он дает для разработки веб-компонентов?',
-				description:
-					'Этот вопрос проверяет понимание концепции Shadow DOM и его роли в создании веб-компонентов, а также преимущества, которые он предоставляет разработчикам.',
-				code: null,
-				imageSrc: null,
-				keywords: ['shadow dom'],
-				longAnswer:
-					"<p>Shadow DOM — это технология, которая позволяет создавать \"теневой\" DOM внутри элемента, обеспечивая изоляцию его содержимого и стилей от основного документа. Это позволяет разработчикам создавать веб-компоненты, которые могут содержать собственные стили и элементы, не затрагивая другие части страницы. Shadow DOM делает элементы более независимыми и переиспользуемыми.</p><p>&nbsp;</p><p>Когда вы создаете Shadow DOM для элемента, например, с помощью метода <code>attachShadow()</code>, создается новый контекст, который не наследует стили и скрипты от внешнего документа. Вот пример кода, который демонстрирует создание Shadow DOM:</p><p>&nbsp;</p><p><code>class MyElement extends HTMLElement {\n &nbsp; &nbsp;constructor() {\n &nbsp; &nbsp; &nbsp; &nbsp;super();\n &nbsp; &nbsp; &nbsp; &nbsp;const shadow = this.attachShadow({ mode: 'open' });\n &nbsp; &nbsp; &nbsp; &nbsp;shadow.innerHTML = `\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;p {\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;color: blue;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;p&gt;Hello from Shadow DOM!&lt;/p&gt;\n &nbsp; &nbsp; &nbsp; &nbsp;`;\n &nbsp; &nbsp;}\n}\n\ncustomElements.define('my-element', MyElement);\n</code></p><p>&nbsp;</p><p><strong>Преимущества Shadow DOM:</strong></p><ol><li><strong>Изоляция стилей:</strong> Стили внутри Shadow DOM не конфликтуют с глобальными стилями, что делает его идеальным для разработки компонентов.</li><li><strong>Инкапсуляция:</strong> Все, что находится внутри Shadow DOM, скрыто от внешнего окружения, что уменьшает вероятность конфликтов и ошибок.</li><li><strong>Переиспользуемость:</strong> Компоненты с Shadow DOM могут быть легко переиспользованы в разных частях приложения, обеспечивая консистентность и упрощая поддержку.</li></ol><p>&nbsp;</p><p>Таким образом, Shadow DOM является мощным инструментом для разработки веб-компонентов, который обеспечивает инкапсуляцию и защиту от конфликтов стилей.</p>",
-				shortAnswer:
-					'<p><strong>Shadow DOM</strong> создает изолированное дерево DOM для веб-компонента, которое скрыто от остальной части документа.</p><p>&nbsp;</p><p>Плюсы:</p><ol><li><strong>• Изолирует стили и разметку.</strong></li><li><strong>•&nbsp;Упрощает повторное использование.</strong></li><li><strong>•&nbsp;Инкапсулирует логику.</strong></li></ol>',
-				status: 'public',
-				rate: 3,
-				complexity: 6,
-				createdAt: '2024-10-11T15:59:35.247Z',
-				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: {
-					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
-					username: 'daryakrutova',
-				},
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-			{
-				id: 123,
-				title:
-					'Как работают форматы ввода и валидация данных в HTML5? В чем различие между встроенной и кастомной валидацией?',
-				description:
-					'Этот вопрос проверяет понимание различных форматов ввода в HTML5 и механизмов валидации данных. Также он выясняет, как встроенная и кастомная валидация отличаются друг от друга.',
-				code: null,
-				imageSrc: null,
-				keywords: ['input', 'validation', 'form'],
-				longAnswer:
-					'<p>HTML5 ввел множество новых типов ввода и улучшил механизм валидации данных в формах. Это позволяет разработчикам создавать более интерактивные и удобные веб-приложения с меньшими затратами времени на написание пользовательского кода.</p><p>&nbsp;</p><p><strong>Форматы ввода в HTML5:</strong><br>Некоторые новые типы ввода включают:</p><ul><li><code>&lt;input type="email"&gt;</code>: Проверяет, что введенное значение имеет формат email (например, user@example.com).</li><li><code>&lt;input type="url"&gt;</code>: Проверяет, что введенное значение соответствует формату URL (например, <a href="https://example.com">https://example.com</a>).</li><li><code>&lt;input type="number"&gt;</code>: Ограничивает ввод только числами и может включать атрибуты для задания диапазона (например, <code>min</code> и <code>max</code>).</li></ul><p>&nbsp;</p><p><strong>Встроенная валидация:</strong><br>HTML5 обеспечивает встроенную валидацию форм, которая происходит автоматически при отправке. Если данные не соответствуют установленным требованиям (например, неправильный формат email), браузер покажет сообщение об ошибке и предотвратит отправку формы. Например:</p><p>&nbsp;</p><p><code>&lt;form&gt;\n &nbsp; &nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;\n &nbsp; &nbsp;&lt;input type="email" id="email" required&gt;\n &nbsp; &nbsp;&lt;button type="submit"&gt;Отправить&lt;/button&gt;\n&lt;/form&gt;\n</code></p><p>&nbsp;</p><p>Если пользователь введет неверный email, браузер уведомит его об этом.</p><p>&nbsp;</p><p><strong>Кастомная валидация:</strong><br>Кастомная валидация позволяет разработчикам добавлять собственные правила проверки данных. Это делается с помощью JavaScript и событий, таких как <code>submit</code> или <code>input</code>. Например, вы можете создать проверку на основе определенного условия:</p><p>&nbsp;</p><p><code>const form = document.querySelector(\'form\');\nform.addEventListener(\'submit\', function(event) {\n &nbsp; &nbsp;const email = document.getElementById(\'email\').value;\n &nbsp; &nbsp;if (!email.endsWith(\'@example.com\')) {\n &nbsp; &nbsp; &nbsp; &nbsp;alert(\'Email должен заканчиваться на @example.com\');\n &nbsp; &nbsp; &nbsp; &nbsp;event.preventDefault(); // предотвращает отправку формы\n &nbsp; &nbsp;}\n});\n</code></p><p>&nbsp;</p><p><strong>Сравнение:</strong></p><ul><li><strong>Встроенная валидация:</strong> Автоматическая проверка данных на соответствие заданным типам, без необходимости писать дополнительный код.</li><li><strong>Кастомная валидация:</strong> Позволяет создавать более сложные и специфичные проверки, которые не могут быть выполнены стандартными средствами.</li></ul><p>&nbsp;</p><p>Оба подхода могут использоваться вместе для обеспечения наилучшего пользовательского опыта и повышения качества вводимых данных.</p>',
-				shortAnswer:
-					'<p>HTML5 предоставляет различные форматы ввода, такие как <code>&lt;input type="email"&gt;</code>, <code>&lt;input type="url"&gt;</code> и <code>&lt;input type="number"&gt;</code>, которые автоматически проверяют вводимые данные на соответствие определенным критериям. Встроенная валидация происходит автоматически при отправке формы, и браузер уведомляет пользователя об ошибках, если данные не соответствуют формату. Кастомная валидация, с другой стороны, позволяет разработчикам создавать свои собственные правила проверки данных с помощью JavaScript, что дает больше контроля и гибкости.</p>',
-				status: 'public',
-				rate: 2,
-				complexity: 5,
-				createdAt: '2024-10-11T16:09:09.969Z',
-				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-		],
-	},
-	{
-		createdAt: '2024-08-20T18:45:56.789Z',
-		description: 'Собеседование на junior разработчика, вилка 150-200к',
-		id: 14,
-		imageSrc: 'https://goldenpark.su/upload/iblock/1b9/out_t_bank.jpg',
-		title: 'Т-Банк',
-		updatedAt: '2024-09-25T10:30:45.678Z',
-		questionsCount: 5,
-		tariff: 'premium',
-		keywords: ['async', 'defer', 'script'],
-		specializations: [
-			{
-				id: 11,
-				title: 'Frontend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
-			},
-			{
-				id: 12,
-				title: 'Backend',
-				description: 'Frontend-разработчик',
-				imageSrc: null,
-				createdAt: '2024-10-03T09:08:10.605Z',
-				updatedAt: '2024-11-02T06:46:12.745Z',
-			},
-		],
-		questions: [
-			{
-				id: 113,
-				title: 'Зачем для тега <script> добавляют атрибуты async и defer?',
-				description:
-					'Этот вопрос проверяет понимание работы атрибутов async и defer в контексте загрузки и выполнения JavaScript-кода на веб-страницах.',
-				code: null,
-				imageSrc: null,
-				keywords: ['async', 'defer', 'script'],
-				longAnswer:
-					'<p>При добавлении скриптов на страницу важно учитывать, как они могут повлиять на производительность и пользовательский опыт. По умолчанию, когда браузер встречает тег <code>&lt;script&gt;</code>, он приостанавливает рендеринг страницы, чтобы загрузить и выполнить скрипт, что может замедлить отображение контента.</p><p>&nbsp;</p><p>Атрибут <code>async</code> позволяет браузеру загружать скрипт асинхронно, что значит, что загрузка скрипта не блокирует рендеринг страницы. Как только скрипт загружен, он выполняется сразу, даже если HTML-документ еще не полностью загружен.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" async&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Атрибут <code>defer</code>, в свою очередь, также загружает скрипт асинхронно, но откладывает его выполнение до тех пор, пока весь HTML-документ не будет загружен. Это позволяет гарантировать, что скрипт выполняется только после полной загрузки страницы.</p><p>&nbsp;</p><p>Пример:</p><p><code>&lt;script src="script.js" defer&gt;&lt;/script&gt;\n</code></p><p>&nbsp;</p><p>Использование этих атрибутов позволяет оптимизировать время загрузки и улучшить пользовательский опыт, особенно на страницах с большим количеством скриптов или при наличии тяжелых JavaScript-фреймворков.</p>',
-				shortAnswer:
-					'<p>Атрибуты async и defer у тега &lt;script&gt; используются для управления тем, как и когда браузер загружает и выполняет JavaScript. async загружает скрипт асинхронно и выполняет его сразу после загрузки, не дожидаясь завершения загрузки всей страницы. defer также загружает скрипт асинхронно, но откладывает его выполнение до полной загрузки HTML-документа, что предотвращает блокировку рендеринга страницы.</p>',
-				status: 'public',
-				rate: 4,
-				complexity: 6,
-				createdAt: '2024-10-10T16:46:51.672Z',
-				updatedAt: '2024-10-10T16:46:51.672Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-			{
-				id: 119,
-				title:
-					'Как работает Shadow DOM? Какие преимущества он дает для разработки веб-компонентов?',
-				description:
-					'Этот вопрос проверяет понимание концепции Shadow DOM и его роли в создании веб-компонентов, а также преимущества, которые он предоставляет разработчикам.',
-				code: null,
-				imageSrc: null,
-				keywords: ['shadow dom'],
-				longAnswer:
-					"<p>Shadow DOM — это технология, которая позволяет создавать \"теневой\" DOM внутри элемента, обеспечивая изоляцию его содержимого и стилей от основного документа. Это позволяет разработчикам создавать веб-компоненты, которые могут содержать собственные стили и элементы, не затрагивая другие части страницы. Shadow DOM делает элементы более независимыми и переиспользуемыми.</p><p>&nbsp;</p><p>Когда вы создаете Shadow DOM для элемента, например, с помощью метода <code>attachShadow()</code>, создается новый контекст, который не наследует стили и скрипты от внешнего документа. Вот пример кода, который демонстрирует создание Shadow DOM:</p><p>&nbsp;</p><p><code>class MyElement extends HTMLElement {\n &nbsp; &nbsp;constructor() {\n &nbsp; &nbsp; &nbsp; &nbsp;super();\n &nbsp; &nbsp; &nbsp; &nbsp;const shadow = this.attachShadow({ mode: 'open' });\n &nbsp; &nbsp; &nbsp; &nbsp;shadow.innerHTML = `\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;p {\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;color: blue;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/style&gt;\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;p&gt;Hello from Shadow DOM!&lt;/p&gt;\n &nbsp; &nbsp; &nbsp; &nbsp;`;\n &nbsp; &nbsp;}\n}\n\ncustomElements.define('my-element', MyElement);\n</code></p><p>&nbsp;</p><p><strong>Преимущества Shadow DOM:</strong></p><ol><li><strong>Изоляция стилей:</strong> Стили внутри Shadow DOM не конфликтуют с глобальными стилями, что делает его идеальным для разработки компонентов.</li><li><strong>Инкапсуляция:</strong> Все, что находится внутри Shadow DOM, скрыто от внешнего окружения, что уменьшает вероятность конфликтов и ошибок.</li><li><strong>Переиспользуемость:</strong> Компоненты с Shadow DOM могут быть легко переиспользованы в разных частях приложения, обеспечивая консистентность и упрощая поддержку.</li></ol><p>&nbsp;</p><p>Таким образом, Shadow DOM является мощным инструментом для разработки веб-компонентов, который обеспечивает инкапсуляцию и защиту от конфликтов стилей.</p>",
-				shortAnswer:
-					'<p><strong>Shadow DOM</strong> создает изолированное дерево DOM для веб-компонента, которое скрыто от остальной части документа.</p><p>&nbsp;</p><p>Плюсы:</p><ol><li><strong>• Изолирует стили и разметку.</strong></li><li><strong>•&nbsp;Упрощает повторное использование.</strong></li><li><strong>•&nbsp;Инкапсулирует логику.</strong></li></ol>',
-				status: 'public',
-				rate: 3,
-				complexity: 6,
-				createdAt: '2024-10-11T15:59:35.247Z',
-				updatedAt: '2024-10-28T15:44:05.373Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: {
-					id: 'bc475b16-8d73-4dd1-9cb9-5214feca6eae',
-					username: 'daryakrutova',
-				},
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-			{
-				id: 123,
-				title:
-					'Как работают форматы ввода и валидация данных в HTML5? В чем различие между встроенной и кастомной валидацией?',
-				description:
-					'Этот вопрос проверяет понимание различных форматов ввода в HTML5 и механизмов валидации данных. Также он выясняет, как встроенная и кастомная валидация отличаются друг от друга.',
-				code: null,
-				imageSrc: null,
-				keywords: ['input', 'validation', 'form'],
-				longAnswer:
-					'<p>HTML5 ввел множество новых типов ввода и улучшил механизм валидации данных в формах. Это позволяет разработчикам создавать более интерактивные и удобные веб-приложения с меньшими затратами времени на написание пользовательского кода.</p><p>&nbsp;</p><p><strong>Форматы ввода в HTML5:</strong><br>Некоторые новые типы ввода включают:</p><ul><li><code>&lt;input type="email"&gt;</code>: Проверяет, что введенное значение имеет формат email (например, user@example.com).</li><li><code>&lt;input type="url"&gt;</code>: Проверяет, что введенное значение соответствует формату URL (например, <a href="https://example.com">https://example.com</a>).</li><li><code>&lt;input type="number"&gt;</code>: Ограничивает ввод только числами и может включать атрибуты для задания диапазона (например, <code>min</code> и <code>max</code>).</li></ul><p>&nbsp;</p><p><strong>Встроенная валидация:</strong><br>HTML5 обеспечивает встроенную валидацию форм, которая происходит автоматически при отправке. Если данные не соответствуют установленным требованиям (например, неправильный формат email), браузер покажет сообщение об ошибке и предотвратит отправку формы. Например:</p><p>&nbsp;</p><p><code>&lt;form&gt;\n &nbsp; &nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;\n &nbsp; &nbsp;&lt;input type="email" id="email" required&gt;\n &nbsp; &nbsp;&lt;button type="submit"&gt;Отправить&lt;/button&gt;\n&lt;/form&gt;\n</code></p><p>&nbsp;</p><p>Если пользователь введет неверный email, браузер уведомит его об этом.</p><p>&nbsp;</p><p><strong>Кастомная валидация:</strong><br>Кастомная валидация позволяет разработчикам добавлять собственные правила проверки данных. Это делается с помощью JavaScript и событий, таких как <code>submit</code> или <code>input</code>. Например, вы можете создать проверку на основе определенного условия:</p><p>&nbsp;</p><p><code>const form = document.querySelector(\'form\');\nform.addEventListener(\'submit\', function(event) {\n &nbsp; &nbsp;const email = document.getElementById(\'email\').value;\n &nbsp; &nbsp;if (!email.endsWith(\'@example.com\')) {\n &nbsp; &nbsp; &nbsp; &nbsp;alert(\'Email должен заканчиваться на @example.com\');\n &nbsp; &nbsp; &nbsp; &nbsp;event.preventDefault(); // предотвращает отправку формы\n &nbsp; &nbsp;}\n});\n</code></p><p>&nbsp;</p><p><strong>Сравнение:</strong></p><ul><li><strong>Встроенная валидация:</strong> Автоматическая проверка данных на соответствие заданным типам, без необходимости писать дополнительный код.</li><li><strong>Кастомная валидация:</strong> Позволяет создавать более сложные и специфичные проверки, которые не могут быть выполнены стандартными средствами.</li></ul><p>&nbsp;</p><p>Оба подхода могут использоваться вместе для обеспечения наилучшего пользовательского опыта и повышения качества вводимых данных.</p>',
-				shortAnswer:
-					'<p>HTML5 предоставляет различные форматы ввода, такие как <code>&lt;input type="email"&gt;</code>, <code>&lt;input type="url"&gt;</code> и <code>&lt;input type="number"&gt;</code>, которые автоматически проверяют вводимые данные на соответствие определенным критериям. Встроенная валидация происходит автоматически при отправке формы, и браузер уведомляет пользователя об ошибках, если данные не соответствуют формату. Кастомная валидация, с другой стороны, позволяет разработчикам создавать свои собственные правила проверки данных с помощью JavaScript, что дает больше контроля и гибкости.</p>',
-				status: 'public',
-				rate: 2,
-				complexity: 5,
-				createdAt: '2024-10-11T16:09:09.969Z',
-				updatedAt: '2024-10-11T16:09:09.969Z',
-				createdBy: {
-					id: '0a1438a3-1776-43b4-9a95-e60ee6573903',
-					username: 'ruslankuyanets',
-				},
-				updatedBy: null,
-				questionSpecializations: [
-					{
-						id: 11,
-						title: 'Frontend',
-						description: 'Frontend-разработчик',
-						imageSrc: null,
-						createdAt: '2024-10-03T09:08:10.605Z',
-						updatedAt: '2024-11-02T06:46:12.745Z',
-					},
-				],
-				questionSkills: [
-					{
-						id: 27,
-						title: 'HTML',
-						description:
-							'Разметка веб-страниц с использованием семантических тегов для улучшения SEO и доступности.',
-						imageSrc: null,
-						createdAt: '2024-10-06T06:32:23.656Z',
-						updatedAt: '2024-10-06T06:32:23.656Z',
-					},
-					{
-						id: 2,
-						title: 'JavaScript',
-						description:
-							'JavaScript - популярный язык программирования, в основном используемый для создания динамических и интерактивных веб-страниц. Он необходим для разработки интерфейсов веб-приложений.',
-						imageSrc: null,
-						createdAt: '2024-06-04T13:40:16.610Z',
-						updatedAt: '2024-11-01T21:33:13.635Z',
-					},
-				],
-				checksCount: 0,
-				isLearned: false,
-			},
-		],
-	},
-];
+			],
+			questionsCount: 0,
+		},
+	],
+	page: 1,
+	limit: 10,
+	total: 20,
+};

@@ -4,6 +4,7 @@ export type {
 	CreateOrEditCollectionFormValues,
 } from './model/types/collection';
 export { collectionsMock } from './api/__mock__/data';
+export { collectionHandlers } from './api/__mock__/index';
 export { CollectionForm } from './ui/CollectionForm/CollectionForm';
 export * from './api/collectionApi';
 
