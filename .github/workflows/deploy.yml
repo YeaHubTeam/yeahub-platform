@@ -23,23 +23,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # ================== VPS (production) ==================
-      - name: Deploy to VPS for production
-        if: github.ref == 'refs/heads/main'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST_PRODUCTION }}
-          username: ${{ secrets.VPS_USERNAME_PRODUCTION }}
-          key: ${{ secrets.VPS_SSH_KEY_PRODUCTION }}
-          script: |
-            set -e
-            echo "Deploying ${SERVICE_NAME_PRODUCTION} on VPS..."
-            docker-compose --env-file .env.production up -d --build ${{ env.SERVICE_NAME_PRODUCTION }}
-
-      # ================== Generate Docker tag ==================
-      - name: Generate Docker tag
+      # ================== Set Docker tags ==================
+      - name: Set IMAGE_TAGS (Develop)
         if: github.ref == 'refs/heads/develop'
-        id: docker_tag
+        id: docker_tag_dev
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]')
           BRANCH_SAFE=$(echo "$BRANCH_NAME" | sed 's/[\/]/-/g' | sed 's/[^a-z0-9_:-]/-/g')
@@ -48,43 +35,71 @@ jobs:
           echo "Docker tag for dev: $IMAGE_TAG"
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      # ================== Build and push Docker image ==================
-      - name: Build and push Docker image for dev
-        if: github.ref == 'refs/heads/develop'
+      - name: Set IMAGE_TAGS (Production)
+        if: github.ref == 'refs/heads/main'
+        id: docker_tag_prod
+        run: |
+          PROD_TAG=$(jq -r .version package.json)
+          echo "Docker tag for prod: $PROD_TAG"
+          echo "IMAGE_TAG=$PROD_TAG" >> $GITHUB_OUTPUT
+
+      # ================== Docker login ==================
+      - name: Docker login
         run: |
           echo ${{ secrets.REGISTRY_PASSWORD }} | docker login ${{ env.REGISTRY }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+
+      # ================== Build and push Docker image ==================
+      - name: Build and push Docker image
+        run: |
+          if [ "${GITHUB_REF}" == "refs/heads/develop" ]; then
+            IMAGE_TAG=${{ steps.docker_tag_dev.outputs.IMAGE_TAG }}
+            API_URL="https://api.yeatwork.ru/"
+            LANDING_URL="https://yeatwork.ru/"
+            TELEGRAM_BOT_NAME="yeahub_test_bot"
+          else
+            IMAGE_TAG=${{ steps.docker_tag_prod.outputs.IMAGE_TAG }}
+            API_URL="https://api.yeahub.ru/"
+            LANDING_URL="https://yeahub.ru/"
+            TELEGRAM_BOT_NAME="yeahub_bot"
+          fi
+
           docker build \
-            -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }} \
-            --build-arg API_URL="https://api.yeatwork.ru/" \
-            --build-arg LANDING_URL="https://yeatwork.ru/" \
+            -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$IMAGE_TAG \
+            --build-arg API_URL=$API_URL \
+            --build-arg LANDING_URL=$LANDING_URL \
             --build-arg PORT=5173 \
             --build-arg NODE_ENV=production \
             --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \
-            --build-arg TELEGRAM_BOT_NAME="yeahub_test_bot" \
+            --build-arg TELEGRAM_BOT_NAME=$TELEGRAM_BOT_NAME \
             .
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.docker_tag.outputs.IMAGE_TAG }}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$IMAGE_TAG
 
       # ================== Checkout Helm repo ==================
       - name: Checkout Helm repo
-        if: github.ref == 'refs/heads/develop'
         uses: actions/checkout@v3
         with:
           repository: YeaHubTeam/yeahub-helm
-          ref: develop
+          ref: ${{ github.ref == 'refs/heads/main' && 'main' || 'develop' }}
           token: ${{ secrets.HELM_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           path: helm
 
       # ================== Update Helm values and commit ==================
-      - name: Update Helm values for dev and commit
-        if: github.ref == 'refs/heads/develop'
+      - name: Update Helm values and push
         run: |
-          IMAGE_TAG=${{ steps.docker_tag.outputs.IMAGE_TAG }}
-          echo "Updating Helm values with tag: $IMAGE_TAG"
-          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i helm/values-test.yaml
+          if [ "${GITHUB_REF}" == "refs/heads/develop" ]; then
+            HELM_FILE="helm/values-test.yaml"
+            IMAGE_TAG=${{ steps.docker_tag_dev.outputs.IMAGE_TAG }}
+          else
+            HELM_FILE="helm/values-prod.yaml"
+            IMAGE_TAG=${{ steps.docker_tag_prod.outputs.IMAGE_TAG }}
+          fi
+
+          echo "Updating Helm values in $HELM_FILE with tag: $IMAGE_TAG"
+          yq eval ".frontend.tag = \"$IMAGE_TAG\"" -i $HELM_FILE
 
           cd helm
           git config --global user.email "ci@github.com"
           git config --global user.name "github-actions"
-          git add values-test.yaml
+          git add $HELM_FILE
           git commit -m "Update frontend tag to $IMAGE_TAG" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.HELM_REPO_TOKEN }}@github.com/YeaHubTeam/yeahub-helm.git develop
+          git push https://x-access-token:${{ secrets.HELM_REPO_TOKEN }}@github.com/YeaHubTeam/yeahub-helm.git ${{ github.ref == 'refs/heads/main' && 'main' || 'develop' }}
