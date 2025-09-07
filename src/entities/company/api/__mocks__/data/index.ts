@@ -1,0 +1,1 @@
+export { companiesMock } from './companiesMock';
