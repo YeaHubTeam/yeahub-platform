@@ -84,12 +84,9 @@ export interface CreateNewQuizParamsRequest {
 	limit?: number;
 	mode?: QuestionModeType;
 }
-export type CreateNewQuizResponse = Omit<Quiz, 'endDate'>;
+export type ActiveQuiz = Omit<Quiz, 'endDate'>;
 
-export type interruptQuizRequest = {
-	data: CreateNewQuizResponse;
-	isInterrupted?: boolean;
-};
+export type CreateNewQuizResponse = ActiveQuiz;
 
 export interface CreateNewMockQuizParamsRequest
 	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
@@ -98,7 +95,7 @@ export interface CreateNewMockQuizParamsRequest
 
 export type CreateNewMockQuizResponse = Omit<CreateNewQuizResponse, 'profileId'>;
 
-export type GetActiveQuizResponse = Response<Omit<Quiz, 'endDate'>[]>;
+export type GetActiveQuizResponse = Response<ActiveQuiz[]>;
 export interface GetActiveQuizParamsRequest {
 	profileId: string;
 	page: number;
