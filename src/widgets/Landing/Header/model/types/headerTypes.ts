@@ -5,3 +5,7 @@ export interface HeaderNavLinks {
 	path: string;
 	title: string;
 }
+
+export interface HeaderNavLinksProps {
+	links?: HeaderNavLinks[];
+}

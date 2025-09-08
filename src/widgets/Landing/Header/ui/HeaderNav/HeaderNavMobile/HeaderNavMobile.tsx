@@ -8,22 +8,25 @@ import { Icon } from '@/shared/ui/Icon';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 
 import { HEADER_NAV_LINKS } from '../../../model/constants/headerConstants';
+import { HeaderNavLinksProps } from '../../../model/types/headerTypes';
 import { HeaderNavLink } from '../../HeaderNavLink/HeaderNavLink';
 
 import styles from './HeaderNavMobile.module.css';
 
-export const HeaderNavMobile = () => {
+export const HeaderNavMobile = ({ links }: HeaderNavLinksProps) => {
 	const { t } = useTranslation(i18Namespace.landing);
 
-	const popoverLinks: PopoverMenuItem[] = HEADER_NAV_LINKS.map(({ link, path, title }) => ({
-		renderComponent: (onToggle) => (
-			<Flex onClick={onToggle}>
-				<HeaderNavLink link={link} path={path}>
-					{t(title)}
-				</HeaderNavLink>
-			</Flex>
-		),
-	}));
+	const popoverLinks: PopoverMenuItem[] = (links || HEADER_NAV_LINKS).map(
+		({ link, path, title }) => ({
+			renderComponent: (onToggle) => (
+				<Flex onClick={onToggle}>
+					<HeaderNavLink link={link} path={path}>
+						{t(title)}
+					</HeaderNavLink>
+				</Flex>
+			),
+		}),
+	);
 
 	return (
 		<Popover menuItems={popoverLinks} className={styles['header-popover']}>
