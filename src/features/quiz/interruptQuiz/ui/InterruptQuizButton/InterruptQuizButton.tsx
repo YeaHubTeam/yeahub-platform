@@ -8,7 +8,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useAppDispatch, useAppSelector, useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
-import { getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { ActiveQuiz, Answers, clearActiveMockQuizState } from '@/entities/quiz';
 
 import { useInterruptQuizMutation } from '../../api/interruptQuizApi';
@@ -18,18 +18,18 @@ const ConfirmInterruptQuizModal = lazy(
 );
 
 interface InterruptQuizButtonProps {
-	className?: string;
 	activeQuizQuestions: Answers[];
 	activeQuiz?: ActiveQuiz;
 }
 
 export const InterruptQuizButton = ({
-	className,
 	activeQuizQuestions,
 	activeQuiz,
 }: InterruptQuizButtonProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 	const profileId = useAppSelector(getProfileId);
+	const hasPremium = useAppSelector(getHasPremiumAccess);
+
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
@@ -39,17 +39,19 @@ export const InterruptQuizButton = ({
 	const [saveInterruptedResult, { isLoading }] = useInterruptQuizMutation();
 
 	const onInterruptQuiz = () => {
-		if (activeQuiz) {
-			const quizToSave = {
-				...activeQuiz,
-				response: {
-					answers: activeQuizQuestions.map((quest) => ({
-						...quest,
-						answer: quest.answer ?? 'UNKNOWN',
-					})),
-				},
-			};
-			saveInterruptedResult(quizToSave);
+		if (hasPremium) {
+			if (activeQuiz) {
+				const quizToSave = {
+					...activeQuiz,
+					response: {
+						answers: activeQuizQuestions.map((quest) => ({
+							...quest,
+							answer: quest.answer ?? 'UNKNOWN',
+						})),
+					},
+				};
+				saveInterruptedResult(quizToSave);
+			}
 		} else {
 			dispatch(clearActiveMockQuizState({ profileId }));
 			navigate(ROUTES.interview.page);
@@ -59,8 +61,8 @@ export const InterruptQuizButton = ({
 	return (
 		<>
 			<Button
-				className={className}
 				disabled={isLoading}
+				variant="destructive-secondary"
 				onClick={onToggleInterruptQuizConfirmModal}
 			>
 				{t(InterviewQuiz.COMPLETE)}

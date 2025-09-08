@@ -26,6 +26,7 @@ import {
 	GetQuizHistoryParamsRequest,
 	GetQuizHistoryResponse,
 	Answers,
+	ActiveQuiz,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
@@ -110,17 +111,20 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getActiveQuiz: build.query<GetActiveQuizResponse, GetActiveQuizParamsRequest>({
+		getActiveQuiz: build.query<ActiveQuiz, GetActiveQuizParamsRequest>({
 			query: ({ profileId, ...params }) => ({
 				url: route(quizApiUrls.getActiveQuiz, profileId),
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
+			transformResponse(response: GetActiveQuizResponse) {
+				return response.data[0];
+			},
 			async onQueryStarted({ profileId }, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
 					const { profileActiveQuiz } = getValidActiveQuizzesFromLS(profileId);
-					if (profileActiveQuiz && result.data.data.length > 0) {
+					if (profileActiveQuiz && result.data) {
 						dispatch(
 							setActiveQuizQuestions({
 								questions: profileActiveQuiz,
@@ -129,7 +133,7 @@ const quizApi = baseApi.injectEndpoints({
 						);
 					} else {
 						dispatch(clearActiveQuizState(profileId));
-						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data?.data[0]).map(
+						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data).map(
 							(question) => ({
 								questionId: question.questionId,
 								questionTitle: question.questionTitle,
@@ -174,30 +178,7 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-		saveQuizResult: build.mutation<boolean, CreateNewQuizResponse>({
-			query: (data) => {
-				return {
-					url: quizApiUrls.saveQuizResult,
-					method: 'POST',
-					body: data,
-				};
-			},
-			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ, ApiTags.INTERVIEW_STATISTICS],
-			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
-				try {
-					await queryFulfilled;
-					dispatch(clearActiveQuizState(arg.profileId));
 
-					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
-					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_INTERVIEW_FINISH_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
 		getQuizByProfileId: build.query<GetQuizByProfileIdResponse, GetQuizByProfileIdParamsRequest>({
 			query: ({ profileId, quizId }) => {
 				return {
@@ -223,7 +204,6 @@ export const {
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
-	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
 } = quizApi;
