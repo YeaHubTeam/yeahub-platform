@@ -17,12 +17,22 @@ export const companyListMock = http.get<
 	const page = Number(url.searchParams.get('page') ?? 1);
 	const limit = Number(url.searchParams.get('limit') ?? 10);
 
-	const slice = companiesMock.data.slice((page - 1) * limit, page * limit);
+	const search = (url.searchParams.get('titleOrLegalNameOrDescriptionSearch') ?? '')
+		.trim()
+		.toLowerCase();
+
+	const filtered = !search
+		? companiesMock.data
+		: companiesMock.data.filter((c) =>
+				[c.title, c.legalName, c.description].join(' ').toLowerCase().includes(search),
+			);
+
+	const slice = filtered.slice((page - 1) * limit, page * limit);
 
 	return HttpResponse.json({
 		data: slice,
 		page,
-		total: companiesMock.total,
-		limit: companiesMock.limit,
+		total: filtered.length,
+		limit,
 	});
 });
