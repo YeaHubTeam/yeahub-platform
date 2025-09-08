@@ -7,7 +7,6 @@ export const quizApiUrls = {
 	createNewMockQuiz: 'interview-preparation/quizzes/mock/new',
 	getActiveQuiz: 'interview-preparation/quizzes/active/:profileId',
 	getHistoryQuiz: 'interview-preparation/quizzes/history/:profileId',
-	saveQuizResult: 'interview-preparation/quizzes',
 	getQuizByProfileId: 'interview-preparation/quizzes/history/:profileId/:quizId',
 	getProfileQuizStats: 'interview-preparation/stat/:profileId',
 };

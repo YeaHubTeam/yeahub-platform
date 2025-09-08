@@ -49,7 +49,7 @@ const CreateQuizPage = () => {
 
 	const navigate = useNavigate();
 
-	const { data: activeQuizData, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
+	const { data: activeQuiz, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
 		{
 			profileId,
 			limit: 1,
@@ -58,7 +58,7 @@ const CreateQuizPage = () => {
 		{ skip: !hasPremium },
 	);
 
-	if (activeQuizData?.data[0]?.questions) {
+	if (activeQuiz?.questions) {
 		navigate(ROUTES.interview.new.page);
 	}
 

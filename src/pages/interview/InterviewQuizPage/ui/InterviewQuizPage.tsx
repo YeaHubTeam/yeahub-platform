@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
@@ -19,10 +18,10 @@ import {
 	LS_ACTIVE_MOCK_QUIZ_KEY,
 	QuestionNavPanel,
 	useGetActiveQuizQuery,
-	useSaveQuizResultMutation,
 	useSlideSwitcher,
 } from '@/entities/quiz';
 
+import { FinishQuizButton } from '@/features/quiz/finishQuiz';
 import { InterruptQuizButton } from '@/features/quiz/interruptQuiz';
 
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
@@ -31,7 +30,6 @@ import styles from './InterviewQuizPage.module.css';
 
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-	const navigate = useNavigate();
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
@@ -53,8 +51,6 @@ const InterviewQuizPage = () => {
 		{ skip: !hasPremium },
 	);
 
-	const [saveResult] = useSaveQuizResultMutation();
-
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
 	const isAllQuestionsAnswered = useAppSelector(getIsAllQuestionsAnswered);
 
@@ -64,18 +60,14 @@ const InterviewQuizPage = () => {
 		}
 	}, []);
 
-	const favorites = activeQuiz?.data?.reduce(
-		(acc, quiz) => {
-			if (quiz.questions) {
-				quiz.questions.forEach((question) => {
-					if (question.isFavorite) {
-						acc[question.id] = question.isFavorite;
-					}
-				});
+	const favorites = activeQuiz?.questions?.reduce(
+		(result, question) => {
+			if (question.isFavorite) {
+				result[question.id] = question.isFavorite;
 			}
-			return acc;
+			return result;
 		},
-		{} as Record<string, boolean>,
+		{} as Record<number, boolean>,
 	);
 
 	const updatedQuiz = favorites
@@ -114,22 +106,6 @@ const InterviewQuizPage = () => {
 	const isNextButton = !isLastQuestion && !isAllQuestionsAnswered;
 	const isDisabled = (isLastQuestion && !isAllQuestionsAnswered) || (!isLastQuestion && !answer);
 
-	const onSubmitQuiz = () => {
-		if (hasPremium) {
-			if (activeQuiz) {
-				const quizToSave = {
-					...activeQuiz.data[0],
-					response: {
-						answers: activeQuizQuestions,
-					},
-				};
-				saveResult(quizToSave);
-			}
-		} else {
-			navigate('result');
-		}
-	};
-
 	return (
 		<>
 			<Flex direction="column" gap="20" className={styles.container}>
@@ -167,15 +143,22 @@ const InterviewQuizPage = () => {
 							setIsAnswerVisible={setIsAnswerVisible}
 							isFavorite={isFavorite}
 						/>
-						<Flex direction="row">
-							<Button onClick={isNextButton ? onRightSlide : onSubmitQuiz} disabled={isDisabled}>
-								{isNextButton ? t(InterviewQuiz.NEXT) : t(InterviewQuiz.CHECK)}
-							</Button>
-							{isNextButton && (
-								<InterruptQuizButton
-									className={styles['end-button']}
-									activeQuiz={activeQuiz?.data?.[0]}
+						<Flex direction="row" justify="between">
+							{isNextButton ? (
+								<>
+									<Button onClick={onRightSlide} disabled={isDisabled}>
+										{t(InterviewQuiz.NEXT)}
+									</Button>
+									<InterruptQuizButton
+										activeQuiz={activeQuiz}
+										activeQuizQuestions={activeQuizQuestions}
+									/>
+								</>
+							) : (
+								<FinishQuizButton
+									activeQuiz={activeQuiz}
 									activeQuizQuestions={activeQuizQuestions}
+									isDisabled={isDisabled}
 								/>
 							)}
 						</Flex>

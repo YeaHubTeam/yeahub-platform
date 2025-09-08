@@ -26,12 +26,12 @@ export const TrainCollectionButton = ({
 
 	const [createNewQuiz, { isLoading: isCreateNewQuizLoading }] = useLazyCreateNewQuizQuery();
 
-	const { data: activeQuizResponse, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
+	const { data: activeQuiz, isLoading: isActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId,
 		page: 1,
 		limit: 1,
 	});
-	const isActiveQuizDisabled = !!activeQuizResponse?.data[0] || isActiveQuizLoading;
+	const isActiveQuizDisabled = !!activeQuiz || isActiveQuizLoading;
 
 	const handleTrainCollection = () => {
 		createNewQuiz({ profileId, collection: Number(collectionId), limit: 100 });
