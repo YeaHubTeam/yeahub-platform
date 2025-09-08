@@ -6,7 +6,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 
-import { HEADER_NAV_LINKS, HEADER_NAV_LINKS_AUTH } from '../../model/constants/headerConstants';
 import { HeaderAuth } from '../HeaderAuth/HeaderAuth';
 import { HeaderNav } from '../HeaderNav/HeaderNav';
 
@@ -17,7 +16,6 @@ export const Header = () => {
 	const { isLoading } = useProfileQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const logoNavigateTo = accessToken ? ROUTES.platformRoute : ROUTES.appRoute;
-	const navLinks = accessToken ? HEADER_NAV_LINKS_AUTH : HEADER_NAV_LINKS;
 
 	if (isLoading) return <HeaderSkeleton />;
 
@@ -26,7 +24,7 @@ export const Header = () => {
 			<Flex className={styles['header-content']}>
 				<Flex className={styles['header-main']}>
 					<AppLogo navigateTo={logoNavigateTo} />
-					<HeaderNav links={navLinks} />
+					<HeaderNav />
 				</Flex>
 				<HeaderAuth />
 			</Flex>
