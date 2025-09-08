@@ -1,0 +1,1504 @@
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> npm run dev
+
+> yeahub-platform@1.1.8 dev
+> webpack serve --mode development --env mode=development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: https://localhost:443/
+<i> [webpack-dev-server] Content not from webpack is served from 'C:\Users\Никита\Desktop\YeaHub\yeahub-platform\public' directory
+<i> [webpack-dev-server] 404s will fallback to '/index.html'
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 37.6 MiB [immutable]
+  assets by path assets/ 1.13 MiB
+    assets by path assets/*.avif 1.06 MiB 65 assets
+    assets by path assets/*.png 58.9 KiB
+      asset assets/ec9f55240b8de018b1a0.png 51 KiB [emitted] [immutable] [from: src/shared/assets/images/books.png]
+      asset assets/6791d815daa321190f23.png 7.87 KiB [emitted] [immutable] [from: src/shared/assets/images/alarm.png]
+    + 5 assets
+  assets by path *.js 36.5 MiB
+    asset main.65d9ad5e192e4127a8e5.js 31.8 MiB [emitted] [immutable] (name: main)
+    asset src_pages_interview_MainPage_ui_MainPage_tsx.a31b9295462922aca2f1.js 414 KiB [emitted] [immutable]
+    asset src_widgets_Profile_index_ts.02ff4d3feb9ad370b904.js 372 KiB [emitted] [immutable]
+    asset src_pages_auth_PasswordRecoveryPage_ui_PasswordRecoveryPage_tsx.24fccaffba1a55b926ab.js 300 KiB [emitted] [immutable]
+    + 62 assets
+asset favicon.svg 6.51 KiB [emitted]
+asset index.html 5.1 KiB [emitted]
+orphan modules 3.44 MiB [orphan] 1168 modules
+runtime modules 37.5 KiB 18 modules
+modules by path ./src/ 5.2 MiB (javascript) 1.11 MiB (asset)
+  javascript modules 5.19 MiB 2118 modules
+  asset modules 1.11 MiB (asset) 2.75 KiB (javascript) 67 modules
+modules by path ./node_modules/ 6.15 MiB (javascript) 12.1 KiB (asset)
+  javascript modules 6.15 MiB 755 modules
+  asset modules 12.1 KiB (asset) 210 bytes (javascript)
+    ./node_modules/slick-carousel/slick/ajax-loader.gif 4.08 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.eot 2 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    ./node_modules/slick-carousel/slick/fonts/slick.woff 1.35 KiB (asset) 42 bytes (javascript) [built] [code generated]
+    + 2 modules
+data:image/png;base64,iVBORw0KGgoAAAAN.. 261 bytes [built] [code generated]
+webpack 5.99.9 compiled successfully in 27887 ms
+No typescript errors found.
+
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform>
+ *  History restored 
+
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash
+warning: in the working copy of 'src/pages/interview/QuestionPage/ui/QuestionPage.tsx', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash pop
+On branch develop
+Your branch is behind 'origin/develop' by 31 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/app/providers/store/config/config.ts
+        modified:   src/pages/interview/QuestionPage/ui/QuestionPage.tsx
+        modified:   src/shared/config/store/State.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/onboard/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (75560ca5281281c652f1796aa3c87e26206d45a3)
+PS C:\Users\Никита\Desktop\YeaHub\yeahub-platform> git stash -u
+Saved working directory and index state WIP on develop: 3f9b7ea4 Feature/migration to k8s (#844)
