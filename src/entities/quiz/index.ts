@@ -12,7 +12,6 @@ export {
 	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
-	useInterruptQuizMutation,
 } from './api/quizApi';
 
 export type {
@@ -23,6 +22,7 @@ export type {
 	QuestionModeType,
 	QuizQuestionAnswerType,
 	Quiz,
+	ActiveQuiz,
 	QuizWithoutQuestions,
 	GetQuizHistoryParamsRequest,
 	ProfileSkillsStat,
