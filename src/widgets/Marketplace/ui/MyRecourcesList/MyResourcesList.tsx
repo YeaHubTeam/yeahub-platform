@@ -6,10 +6,11 @@ interface ResourcesListProps {
 	resources?: MyResource[];
 }
 
-export const MyResourcesList = ({ resources = myResourcesMock }: ResourcesListProps) => {
+export const MyResourcesList = ({ resources }: ResourcesListProps) => {
+	const res = resources?.length ? resources : myResourcesMock;
 	return (
 		<Flex direction="column" gap="20">
-			{resources.map((resource) => (
+			{res.map((resource) => (
 				<MyResourceCard key={resource.id} resource={resource} />
 			))}
 		</Flex>

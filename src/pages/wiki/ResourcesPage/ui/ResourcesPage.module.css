@@ -66,6 +66,7 @@
   position: absolute;
   top: -60px; 
   right: 0;
+  width: 153px;
 }
 
 @media screen and (width <= 1023px) {
@@ -79,6 +80,10 @@
 
   .filters-mobile {
     display: inline-flex;
+  }
+	
+  .absolute-button {
+    right: 20px;
   }
 }
 

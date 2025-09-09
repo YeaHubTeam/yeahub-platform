@@ -22,7 +22,7 @@ export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
 		status,
 	} = resource;
 
-	const { t } = useTranslation(i18Namespace.marketplace); // или какой у тебя там
+	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const resourceHostname = url?.replace(/^(https?:\/\/)?(www\.)?([^/]+).*$/, '$3');
 
