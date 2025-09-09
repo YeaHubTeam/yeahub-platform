@@ -20,3 +20,21 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
 	},
 ];
+
+export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
+	{
+		link: ROUTES.interview.questions.page,
+		path: '/dashboard/interview/questions',
+		title: Landing.HEADER_NAV_QUESTIONS_LIST,
+	},
+	{
+		link: ROUTES.interview.quiz.page,
+		path: '/dashboard/interview/quiz',
+		title: Landing.HEADER_NAV_PUBLIC_QUIZ,
+	},
+	{
+		link: ROUTES.interview.collections.page,
+		path: '/dashboard/interview/collections',
+		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
+	},
+];
