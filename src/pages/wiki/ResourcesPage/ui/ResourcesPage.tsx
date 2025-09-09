@@ -129,7 +129,7 @@ const ResourcesPage = () => {
 					size="large"
 					onClick={() => navigate('/dashboard/my-resources')}
 				>
-					Мои заявки
+					{t(Marketplace.MY_RESOURCE)}
 				</Button>
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
