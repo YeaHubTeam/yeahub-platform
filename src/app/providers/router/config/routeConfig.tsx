@@ -100,6 +100,7 @@ import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
+import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -643,6 +644,13 @@ export const router = createBrowserRouter([
 						element: <ResourcesPage />,
 						handle: {
 							crumb: Translation.CRUMBS_RESOURCES,
+						},
+					},
+					{
+						path: ROUTES.wiki.myResources.route,
+						element: <MyResourcesPage />,
+						handle: {
+							crumb: 'Мои заявки',
 						},
 					},
 				],
