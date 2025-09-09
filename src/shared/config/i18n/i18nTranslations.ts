@@ -73,6 +73,7 @@ export enum Translation {
 	CRUMBS_QUIZ = 'crumbs.quiz',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
+	CRUMBS_MY_RESOURCES = 'crumbs.my.resources',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -937,4 +938,5 @@ export enum Marketplace {
 	URL_SHORT = 'url.short',
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
+	MY_RESOURCE = 'resources.my',
 }

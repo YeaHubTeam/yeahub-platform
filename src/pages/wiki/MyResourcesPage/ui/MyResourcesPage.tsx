@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -12,10 +13,10 @@ import { Text } from '@/shared/ui/Text';
 import { useGetMyResourceQuery } from '@/entities/resource';
 
 import {
-	ResourcesList,
+	MyResourcesList,
 	MarketplaceFiltersPanel,
 	useMarketplaceFilters,
-	ResourcesPagination,
+	MyResourcesPagination,
 } from '@/widgets/Marketplace';
 
 import styles from './MyResourcesPage.module.css';
@@ -46,7 +47,7 @@ const MyResourcesPage = () => {
 
 	const resources = resourcesResponse?.data ?? [];
 
-	const { t: _t } = useTranslation(i18Namespace.marketplace);
+	const { t } = useTranslation(i18Namespace.marketplace);
 
 	if (isLoading) {
 		return <div>Loading…</div>;
@@ -98,15 +99,15 @@ const MyResourcesPage = () => {
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
-						{'Мои заявки'}
+						{t(Marketplace.MY_RESOURCE)}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
 					</Flex>
 				</Flex>
-				<ResourcesList resources={resources} />
+				<MyResourcesList resources={resources} />
 
-				<ResourcesPagination
+				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
 					currentPage={filter.page ?? 1}
 					onChangePage={onChangePage}

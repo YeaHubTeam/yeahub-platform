@@ -22,6 +22,26 @@ export interface Resource {
 	iconBase64?: string;
 }
 
+export interface MyResource {
+	id: string;
+	userId: string;
+	requestPayload: {
+		name: string;
+		description: string;
+		url: string;
+		type: ResourceTypeCode;
+		imageSrc: string;
+		iconBase64?: string;
+		keywords?: string[];
+	};
+	specializations: Specialization[];
+	skills: Skill[];
+	createdAt: string;
+	reviewedAt: string | null;
+	reviewedBy: string | null;
+	status: 'pending' | 'approved' | 'rejected';
+}
+
 export interface GetResourcesListParamsRequest {
 	types?: string[];
 	specializations?: number | number[];
@@ -83,3 +103,4 @@ export interface ResourceType {
 export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
+export type GetMyResourceTypesResponse = Response<MyResource[]>;

@@ -119,7 +119,8 @@
 		"login": "Вход",
 		"register": "Регистрация",
 		"wiki": "База знаний",
-		"resources": "Ресурсы"
+		"resources": "Ресурсы",
+		"my.resources": "Мои заявки"
 	},
 	"toast": {
 		"title": {
