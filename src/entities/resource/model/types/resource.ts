@@ -36,6 +36,11 @@ export interface GetResourcesListParamsRequest {
 	random?: boolean;
 }
 
+export interface GetMyResourcesRequest {
+	page?: number;
+	limit?: number;
+}
+
 export type GetResourcesListResponse = Response<Resource[]>;
 
 export type GetResourceByIdParamsRequest = {

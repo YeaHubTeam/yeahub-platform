@@ -9,6 +9,7 @@ import {
 	GetResourcesListResponse,
 	GetResourceByIdResponse,
 	GetResourceByIdParamsRequest,
+	GetMyResourcesRequest,
 } from '../model/types/resource';
 
 const resourceApi = baseApi.injectEndpoints({
@@ -32,9 +33,20 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
+		getMyResource: build.query<GetResourcesListResponse, GetMyResourcesRequest>({
+			query: () => ({
+				url: resourceApiUrls.getMyResources,
+				params: { page: 1, limit: 10 },
+			}),
+			providesTags: [ApiTags.RESOURCES],
+		}),
 	}),
 });
 
-export const { useGetResourcesListQuery, useGetResourceTypesQuery, useGetResourceByIdQuery } =
-	resourceApi;
+export const {
+	useGetResourcesListQuery,
+	useGetResourceTypesQuery,
+	useGetResourceByIdQuery,
+	useGetMyResourceQuery,
+} = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

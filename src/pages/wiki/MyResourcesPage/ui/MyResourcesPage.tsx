@@ -1,10 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
@@ -12,7 +9,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetResourcesListQuery } from '@/entities/resource';
+import { useGetMyResourceQuery } from '@/entities/resource';
 
 import {
 	ResourcesList,
@@ -21,14 +18,13 @@ import {
 	ResourcesPagination,
 } from '@/widgets/Marketplace';
 
-import styles from './ResourcesPage.module.css';
+import styles from './MyResourcesPage.module.css';
 
 const RESOURCES_PER_PAGE = 6;
 
-const ResourcesPage = () => {
+const MyResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
-	const navigate = useNavigate();
 
 	const {
 		onChangeSearchParams,
@@ -43,18 +39,14 @@ const ResourcesPage = () => {
 		data: resourcesResponse,
 		isLoading,
 		error,
-	} = useGetResourcesListQuery({
+	} = useGetMyResourceQuery({
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
-		name: filter.title,
-		specializations: filter.specialization,
-		skills: filter.skills,
-		types: filter.resources,
 	});
 
 	const resources = resourcesResponse?.data ?? [];
 
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { t: _t } = useTranslation(i18Namespace.marketplace);
 
 	if (isLoading) {
 		return <div>Loading…</div>;
@@ -106,7 +98,7 @@ const ResourcesPage = () => {
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
-						{t(Marketplace.HEADER_TITLE)}
+						{'Мои заявки'}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
@@ -122,20 +114,9 @@ const ResourcesPage = () => {
 				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
-			<Flex className={styles['button-wrapper']}>
-				<Button
-					className={styles['absolute-button']}
-					variant="outline"
-					size="large"
-					onClick={() => navigate('/dashboard/my-resources')}
-				>
-					Мои заявки
-				</Button>
-
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			{/*{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}*/}
 		</Flex>
 	);
 };
 
-export default ResourcesPage;
+export default MyResourcesPage;
