@@ -71,11 +71,10 @@ const MyResourcesPage = () => {
 		/>
 	);
 
-	// бургер-кнопка + дровер (нужны лишь на мобилках/планшетах)
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
-				aria-label="открыть фильтры"
+				aria-label="Открыть фильтры"
 				form="square"
 				icon={<Icon icon="slidersHorizontal" color="black-700" />}
 				size="small"
@@ -99,7 +98,7 @@ const MyResourcesPage = () => {
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
-						{t(Marketplace.MY_RESOURCE)}
+						{t(Marketplace.MY_RESOURCES)}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
@@ -112,10 +111,7 @@ const MyResourcesPage = () => {
 					currentPage={filter.page ?? 1}
 					onChangePage={onChangePage}
 				/>
-				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
-
-			{/*{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}*/}
 		</Flex>
 	);
 };

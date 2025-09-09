@@ -68,7 +68,7 @@
   right: 0;
 }
 
-@media screen and (width <= 1023px) {
+@media screen and (width < 1024px) {
   .main {
     padding: 20px 16px 40px;
   }

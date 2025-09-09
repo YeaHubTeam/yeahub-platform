@@ -938,5 +938,5 @@ export enum Marketplace {
 	URL_SHORT = 'url.short',
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
-	MY_RESOURCE = 'resources.my',
+	MY_RESOURCES = 'resources.my',
 }

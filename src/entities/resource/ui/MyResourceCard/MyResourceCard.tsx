@@ -40,7 +40,6 @@ export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
 						<Text variant="body2" color="purple-700">
 							{resourceHostname}
 						</Text>
-						{/*{type && <StatusChip status={{ text: type.description, variant: 'purple' }} />}*/}
 						<Flex gap="8">
 							<Flex gap="8">
 								{status && (

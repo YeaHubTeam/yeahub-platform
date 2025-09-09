@@ -4,7 +4,7 @@
   margin: 40px 0 16px;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .wrapper {
     margin-top: 30px;
   }
