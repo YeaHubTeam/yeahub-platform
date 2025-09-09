@@ -105,6 +105,7 @@ export const CollectionPage = () => {
 					<NavLink
 						style={{ marginLeft: 'auto' }}
 						to={route(ROUTES.admin.collections.edit.page, collection.id)}
+						state={{ collection }}
 					>
 						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
 					</NavLink>

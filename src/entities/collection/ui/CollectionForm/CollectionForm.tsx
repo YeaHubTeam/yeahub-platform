@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -33,6 +34,8 @@ export interface CollectionFormProps {
 
 export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
+	const { state } = useLocation();
+	const collectionData = state.collection;
 	const { control, setValue, watch } = useFormContext();
 	const imageSrc = watch('imageSrc');
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
@@ -60,6 +63,11 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 			);
 		}
 	}, [collectionQuestions, setValue]);
+	useEffect(() => {
+		if (collectionData?.company?.id) {
+			setValue('companyId', collectionData.company.id);
+		}
+	}, [collectionData, setValue]);
 
 	const isFree = watch('isFree', true);
 	const watchCollectionQuestions = watch('questions', []);
