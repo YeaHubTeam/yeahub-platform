@@ -650,7 +650,7 @@ export const router = createBrowserRouter([
 						path: ROUTES.wiki.myResources.route,
 						element: <MyResourcesPage />,
 						handle: {
-							crumb: 'Мои заявки',
+							crumb: Translation.CRUMBS_MY_RESOURCES,
 						},
 					},
 				],
