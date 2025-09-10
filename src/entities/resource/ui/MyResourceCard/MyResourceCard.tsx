@@ -5,17 +5,30 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { StatusChip } from '@/shared/ui/StatusChip';
+import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { MyResource } from '../../model/types/resource';
+import { ResourceRequest, ResourceRequestStatus } from '@/entities/resource';
 
 import styles from './MyResourceCard.module.css';
 
-type MyResourceCardProps = {
-	resource: MyResource;
+type ResourceRequestCard = {
+	resource: ResourceRequest;
 };
 
-export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
+const statusesText: Record<ResourceRequestStatus, string> = {
+	approved: 'status.approved',
+	pending: 'status.pending',
+	rejected: 'status.rejected',
+};
+
+const statusesVariant: Record<ResourceRequestStatus, StatusChipVariant> = {
+	approved: 'green',
+	pending: 'yellow',
+	rejected: 'red',
+};
+
+export const MyResourceCard = ({ resource }: ResourceRequestCard) => {
 	const {
 		requestPayload: { name, description, url, iconBase64 },
 		specializations,
@@ -28,7 +41,7 @@ export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
 
 	return (
 		<Card withOutsideShadow className={styles.content}>
-			<a href={url} target="_blank" rel="noopener noreferrer" className={styles.wrapper}>
+			<Flex direction="row" className={styles.wrapper}>
 				<ImageWithWrapper
 					src={iconBase64 ?? undefined}
 					alt={name}
@@ -42,16 +55,19 @@ export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
 						</Text>
 						<Flex gap="8">
 							<Flex gap="8">
-								{status && (
-									<StatusChip
-										status={{
-											text: t(`status.${status}`),
-											variant:
-												status === 'approved' ? 'green' : status === 'pending' ? 'yellow' : 'red',
-										}}
-									/>
-								)}
+								<StatusChip
+									status={{
+										text: t(statusesText[status]),
+										variant: statusesVariant[status],
+									}}
+								/>
 							</Flex>
+							<StatusChip
+								status={{
+									text: t(`resourceTypes.${resource.requestPayload.type}`),
+									variant: 'purple',
+								}}
+							/>
 						</Flex>
 					</Flex>
 
@@ -76,7 +92,7 @@ export const MyResourceCard = ({ resource }: MyResourceCardProps) => {
 						))}
 					</Flex>
 				</Flex>
-			</a>
+			</Flex>
 		</Card>
 	);
 };

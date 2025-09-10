@@ -117,7 +117,7 @@
 		"register": "Registration",
 		"wiki": "Knowledge base",
 		"resources": "Resources",
-		"my.resources": "My resources"
+		"resources.my": "My resources"
 	},
 	"toast": {
 		"title": {

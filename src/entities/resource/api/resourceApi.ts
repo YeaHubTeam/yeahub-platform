@@ -9,8 +9,8 @@ import {
 	GetResourcesListResponse,
 	GetResourceByIdResponse,
 	GetResourceByIdParamsRequest,
-	GetMyResourcesRequest,
-	GetMyResourceTypesResponse,
+	GetMyRequestsResourcesParamsRequest,
+	GetMyRequestsResourcesResponse,
 } from '../model/types/resource';
 
 const resourceApi = baseApi.injectEndpoints({
@@ -26,7 +26,7 @@ const resourceApi = baseApi.injectEndpoints({
 			query: () => ({
 				url: resourceApiUrls.getResourceTypes,
 			}),
-			providesTags: [ApiTags.RESOURCESTYPES],
+			providesTags: [ApiTags.RESOURCES_TYPES],
 		}),
 		getResourceById: build.query<GetResourceByIdResponse, GetResourceByIdParamsRequest>({
 			query: ({ resourceId }) => ({
@@ -34,12 +34,15 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
-		getMyResource: build.query<GetMyResourceTypesResponse, GetMyResourcesRequest>({
-			query: () => ({
-				url: resourceApiUrls.getMyResources,
-				params: { page: 1, limit: 10 },
+		getMyRequestsResources: build.query<
+			GetMyRequestsResourcesResponse,
+			GetMyRequestsResourcesParamsRequest
+		>({
+			query: (params) => ({
+				url: resourceApiUrls.getMyRequestsResources,
+				params: { page: 1, limit: 10, ...params },
 			}),
-			providesTags: [ApiTags.RESOURCES],
+			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
 	}),
 });
@@ -48,6 +51,6 @@ export const {
 	useGetResourcesListQuery,
 	useGetResourceTypesQuery,
 	useGetResourceByIdQuery,
-	useGetMyResourceQuery,
+	useGetMyRequestsResourcesQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

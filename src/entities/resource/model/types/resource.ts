@@ -22,7 +22,9 @@ export interface Resource {
 	iconBase64?: string;
 }
 
-export interface MyResource {
+export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
+
+export interface ResourceRequest {
 	id: string;
 	userId: string;
 	requestPayload: {
@@ -39,7 +41,7 @@ export interface MyResource {
 	createdAt: string;
 	reviewedAt: string | null;
 	reviewedBy: string | null;
-	status: 'pending' | 'approved' | 'rejected';
+	status: ResourceRequestStatus;
 }
 
 export interface GetResourcesListParamsRequest {
@@ -56,7 +58,7 @@ export interface GetResourcesListParamsRequest {
 	random?: boolean;
 }
 
-export interface GetMyResourcesRequest {
+export interface GetMyRequestsResourcesParamsRequest {
 	page?: number;
 	limit?: number;
 }
@@ -103,4 +105,4 @@ export interface ResourceType {
 export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
-export type GetMyResourceTypesResponse = Response<MyResource[]>;
+export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

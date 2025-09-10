@@ -73,7 +73,7 @@ export enum Translation {
 	CRUMBS_QUIZ = 'crumbs.quiz',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
-	CRUMBS_MY_RESOURCES = 'crumbs.my.resources',
+	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',

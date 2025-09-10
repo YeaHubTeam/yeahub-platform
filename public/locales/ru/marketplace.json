@@ -26,9 +26,9 @@
 	"status": {
 		"title": "Статус",
 		"all": "Все",
-		"approved": "Одобрен",
-		"pending": "На рассмотрении",
-		"rejected": "Отклонён"
+		"approved": "Одобрено",
+		"pending": "На ревью",
+		"rejected": "Отклонено"
 	},
 	"delete": "Удалить",
 	"name": {

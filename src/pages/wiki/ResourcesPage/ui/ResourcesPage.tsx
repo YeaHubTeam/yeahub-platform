@@ -58,7 +58,7 @@ const ResourcesPage = () => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const handleNavigateToMyResources = () => {
-		navigate(ROUTES.wiki.myResources.page);
+		navigate(ROUTES.wiki.resources.my.page);
 	};
 
 	if (isLoading) {

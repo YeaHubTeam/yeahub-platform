@@ -2,19 +2,14 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { useModal, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetMyResourceQuery } from '@/entities/resource';
+import { useGetMyRequestsResourcesQuery } from '@/entities/resource';
 
 import {
 	MyResourcesList,
-	MarketplaceFiltersPanel,
 	useMarketplaceFilters,
 	MyResourcesPagination,
 } from '@/widgets/Marketplace';
@@ -24,23 +19,13 @@ import styles from './MyResourcesPage.module.css';
 const RESOURCES_PER_PAGE = 6;
 
 const MyResourcesPage = () => {
-	const { isOpen, onToggle, onClose } = useModal();
-	const { isMobile, isTablet } = useScreenSize();
-
-	const {
-		onChangeSearchParams,
-		onChangeSkills,
-		onChangeSpecialization,
-		onChangeResources,
-		filter,
-		onChangePage,
-	} = useMarketplaceFilters();
+	const { filter, onChangePage } = useMarketplaceFilters();
 
 	const {
 		data: resourcesResponse,
 		isLoading,
 		error,
-	} = useGetMyResourceQuery({
+	} = useGetMyRequestsResourcesQuery({
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 	});
@@ -57,42 +42,6 @@ const MyResourcesPage = () => {
 		return <div>Не удалось загрузить ресурсы</div>;
 	}
 
-	const renderFilters = () => (
-		<MarketplaceFiltersPanel
-			filter={{
-				skills: filter.skills,
-				resources: filter.resources,
-				specialization: filter.specialization,
-			}}
-			onChangeSearch={onChangeSearchParams}
-			onChangeSkills={onChangeSkills}
-			onChangeSpecialization={onChangeSpecialization}
-			onChangeResources={onChangeResources}
-		/>
-	);
-
-	const filterButton = (
-		<div className={styles['filters-mobile']}>
-			<IconButton
-				aria-label="Открыть фильтры"
-				form="square"
-				icon={<Icon icon="slidersHorizontal" color="black-700" />}
-				size="small"
-				variant="tertiary"
-				onClick={onToggle}
-			/>
-			<Drawer
-				rootName="body"
-				isOpen={isOpen}
-				onClose={onClose}
-				className={styles.drawer}
-				hasCloseButton
-			>
-				<Card className={styles['drawer-content']}>{renderFilters()}</Card>
-			</Drawer>
-		</div>
-	);
-
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
@@ -100,9 +49,6 @@ const MyResourcesPage = () => {
 					<Text variant="body6" isMainTitle>
 						{t(Marketplace.MY_RESOURCES)}
 					</Text>
-					<Flex gap="12" align="center">
-						{(isMobile || isTablet) && filterButton}
-					</Flex>
 				</Flex>
 				<MyResourcesList resources={resources} />
 

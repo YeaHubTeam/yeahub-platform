@@ -190,12 +190,12 @@ export const ROUTES = {
 	wiki: {
 		route: 'wiki',
 		resources: {
-			route: 'wiki/resources',
-			page: '/dashboard/wiki/resources',
-		},
-		myResources: {
-			route: 'wiki/my-resources',
-			page: '/dashboard/wiki/my-resources',
+			route: 'resources',
+			page: '/dashboard/resources',
+			my: {
+				route: 'my-resources',
+				page: '/dashboard/resources/my-resources',
+			},
 		},
 	},
 	docs: {

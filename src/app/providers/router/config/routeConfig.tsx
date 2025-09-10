@@ -641,17 +641,23 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						path: ROUTES.wiki.resources.route,
-						element: <ResourcesPage />,
+						element: <Outlet />,
 						handle: {
 							crumb: Translation.CRUMBS_RESOURCES,
 						},
-					},
-					{
-						path: ROUTES.wiki.myResources.route,
-						element: <MyResourcesPage />,
-						handle: {
-							crumb: Translation.CRUMBS_MY_RESOURCES,
-						},
+						children: [
+							{
+								index: true,
+								element: <ResourcesPage />,
+							},
+							{
+								path: ROUTES.wiki.resources.my.route,
+								element: <MyResourcesPage />,
+								handle: {
+									crumb: Translation.CRUMBS_RESOURCES_MY,
+								},
+							},
+						],
 					},
 				],
 			},

@@ -1,12 +1,12 @@
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { MyResource } from '@/entities/resource';
+import { ResourceRequest } from '@/entities/resource';
 
 import styles from './MyResourcesPagination.module.css';
 
 interface ResourcesPaginationProps {
-	resourcesResponse?: Response<MyResource[]>;
+	resourcesResponse?: Response<ResourceRequest[]>;
 	currentPage: number;
 	onChangePage: (page: number) => void;
 }
