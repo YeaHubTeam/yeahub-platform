@@ -39,7 +39,7 @@ export const PersonalInfoFields = () => {
 					)}
 				</FormControl>
 				<FormControl name="email" control={control} label={t(Profile.FORM_EMAIL)}>
-					{(field) => <Input {...field} size="S" />}
+					{(field) => <Input {...field} size="S" disabled />}
 				</FormControl>
 				<FormControl name="location" control={control} label={t(Profile.FORM_LOCATION)}>
 					{(field) => <Input {...field} size="S" />}
