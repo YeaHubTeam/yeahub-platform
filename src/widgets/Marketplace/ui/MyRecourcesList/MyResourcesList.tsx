@@ -9,7 +9,7 @@ interface ResourcesListProps {
 export const MyResourcesList = ({ resources }: ResourcesListProps) => {
 	return (
 		<Flex direction="column" gap="20">
-			{resources.map((resource) => (
+			{(resources || []).map((resource) => (
 				<MyResourceCard key={resource.id} resource={resource} />
 			))}
 		</Flex>
