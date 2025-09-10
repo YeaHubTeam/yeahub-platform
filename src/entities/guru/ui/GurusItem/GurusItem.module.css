@@ -8,3 +8,15 @@
   border: 1px solid var(--color-purple-700);
   border-radius: 8px;
 }
+
+.img-wrapper{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.img-social{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}

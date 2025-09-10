@@ -16,6 +16,14 @@
   height: 165px;
 }
 
+.img-wrapper {
+  margin-right: 100px;
+  width: 200px;
+  height: 140px;
+  border-radius: 4px;
+}
+
+
 @media (width < 1024px) {
   .intro-text-wrapper {
     padding: 20px;
@@ -29,6 +37,12 @@
     padding-right: 20px;
     height: 124px;
   }
+
+  .img-wrapper {
+    width: 200px;
+    height: 124px;
+    border-radius: 4px;
+  }
 }
 
 @media (width < 768px) {
@@ -41,9 +55,14 @@
     padding: 0;
   }
 
-
   .books-img {
     align-self: end;
     padding-right: 10px;
+  }
+
+  .img-wrapper {
+    width: 200px;
+    height: 124px;
+    border-radius: 4px;
   }
 }

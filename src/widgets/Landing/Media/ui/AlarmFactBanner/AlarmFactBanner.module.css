@@ -4,12 +4,27 @@
   background-color: var(--color-purple-700);
 }
 
+.wrapper-skeleton{
+  padding: 24px;
+  border-radius: 8px;
+  background-color: var(--color-white-900);
+}
+
 .alarm {
+  height: 78px;
+}
+
+.img-wrapper{
+  width: 65px;
   height: 78px;
 }
 
 @media (width < 768px) {
   .wrapper {
+    margin-block: 20px;
+  }
+
+  .wrapper-skeleton{
     margin-block: 20px;
   }
 }
