@@ -189,9 +189,18 @@ export const ROUTES = {
 	},
 	wiki: {
 		route: 'wiki',
+		page: '/dashboard/wiki',
 		resources: {
 			route: 'resources',
 			page: '/dashboard/wiki/resources',
+			requests: {
+				route: 'requests',
+				page: '/dashboard/wiki/resources/requests',
+				create: {
+					route: 'create',
+					page: '/dashboard/wiki/resources/requests/create',
+				},
+			},
 		},
 	},
 	docs: {

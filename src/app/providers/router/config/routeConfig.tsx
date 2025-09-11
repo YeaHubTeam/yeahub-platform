@@ -100,6 +100,7 @@ import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
+import { RequestResourcePage } from '@/pages/wiki/RequestResourcePage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -161,7 +162,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 		icon: WikiIcon,
 		elements: [
 			{
-				route: ROUTES.wiki.resources.route,
+				route: ROUTES.wiki.resources.page,
 				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
 				icon: ResourcesIcon,
 			},
@@ -633,6 +634,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
+				path: ROUTES.wiki.route,
 				element: <Outlet />,
 				handle: {
 					crumb: Translation.CRUMBS_WIKI,
@@ -640,10 +642,25 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						path: ROUTES.wiki.resources.route,
-						element: <ResourcesPage />,
 						handle: {
 							crumb: Translation.CRUMBS_RESOURCES,
 						},
+						children: [
+							{
+								index: true,
+								element: <ResourcesPage />,
+							},
+							{
+								path: ROUTES.wiki.resources.requests.route,
+								element: <Outlet />,
+								children: [
+									{
+										path: ROUTES.wiki.resources.requests.create.route,
+										element: <RequestResourcePage />,
+									},
+								],
+							},
+						],
 					},
 				],
 			},

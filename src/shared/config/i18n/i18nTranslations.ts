@@ -177,6 +177,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
+	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
