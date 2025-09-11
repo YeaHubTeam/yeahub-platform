@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -61,15 +58,7 @@ export const EditProfileForm = () => {
 			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<FormProvider {...methods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
-					<form
-						onSubmit={methods.handleSubmit(onSubmit)}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter' || e.key === ' ') {
-								e.preventDefault();
-								methods.handleSubmit(onSubmit)();
-							}
-						}}
-					>
+					<form onSubmit={methods.handleSubmit(onSubmit)}>
 						{tabs.map(({ id, Component }) => activeTab.id === id && <Component key={id} />)}
 
 						<Flex direction="column" align="end" className={styles['btn-container']}>

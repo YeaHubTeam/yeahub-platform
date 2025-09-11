@@ -53,6 +53,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 		const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
 				handleClick();
 			}
 		};
