@@ -17,6 +17,7 @@
 
 .answer {
   border: none;
+  background: var(--color-black-30) !important;
 }
 
 .answer p {
