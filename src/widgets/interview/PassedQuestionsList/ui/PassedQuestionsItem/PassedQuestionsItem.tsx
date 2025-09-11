@@ -35,11 +35,11 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const questionAnswers: Record<QuizQuestionAnswerType, QuestionAnswerItem> = {
 		UNKNOWN: {
 			label: InterviewQuiz.ANSWER_DO_NOT_KNOW,
-			icon: 'dislike',
+			icon: 'thumbsDown',
 		},
 		KNOWN: {
 			label: InterviewQuiz.ANSWER_KNOW,
-			icon: 'like',
+			icon: 'thumbsUp',
 		},
 	};
 
@@ -47,6 +47,9 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 		project === 'landing'
 			? route(ROUTES.questions.detail.page, questionId)
 			: route(ROUTES.interview.questions.detail.page, questionId);
+
+	const iconColor = answer === 'KNOWN' ? 'purple-700' : 'black-700';
+	const answerStyles = answer === 'KNOWN' ? styles['answer-known'] : styles['answer-unknown'];
 
 	return (
 		<Link to={questionLink} className={styles.link}>
@@ -57,9 +60,11 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 						{questionTitle}
 					</Text>
 					<Chip
-						theme="outlined"
-						prefix={<Icon icon={questionAnswers[answer].icon} size={24} />}
+						theme="primary"
+						prefix={<Icon icon={questionAnswers[answer].icon} size={24} color={iconColor} />}
 						label={t(questionAnswers[answer].label)}
+						style={{ backgroundColor: '#F8F8F8' }}
+						className={`${styles.answer} ${answerStyles}`}
 					/>
 				</Flex>
 			</li>

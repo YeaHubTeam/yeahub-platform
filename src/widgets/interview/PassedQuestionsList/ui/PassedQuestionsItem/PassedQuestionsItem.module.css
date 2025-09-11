@@ -15,6 +15,18 @@
   color: inherit;
 }
 
+.answer {
+  border: none;
+}
+
+.answer p {
+  color: var(--color-black-700);
+}
+
+.answer-known p {
+  color: var(--color-purple-700)
+}
+
 @media (width < 768px) {
   .item {
     gap: 16px;
