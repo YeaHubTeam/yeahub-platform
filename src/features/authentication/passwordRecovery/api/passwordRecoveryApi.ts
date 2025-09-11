@@ -26,7 +26,7 @@ export const passwordRecoveryApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_SUCCESSFULLY_CHANGE_PASSWORD));
 
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.platformRoute);
+					typedExtra.navigate(ROUTES.interview.page);
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_ERROR_CHANGE_PASSWORD));
 					// eslint-disable-next-line no-console
