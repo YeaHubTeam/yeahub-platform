@@ -5,7 +5,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { RegistrationLabel } from '@/entities/auth';
 
-import { LoginForm, TelegramLogin } from '@/features/authentication/login';
+import { LoginForm } from '@/features/authentication/login';
 
 import { loginSchema } from '../../model/lib/validation/loginSchema';
 import { LoginSchema } from '../../model/types/loginTypes';
@@ -23,7 +23,7 @@ export const LoginCreateForm = () => {
 				<FormProvider {...methods}>
 					<LoginForm />
 				</FormProvider>
-				<TelegramLogin />
+				{/*<TelegramLogin />*/}
 			</Flex>
 			<RegistrationLabel />
 		</Flex>
