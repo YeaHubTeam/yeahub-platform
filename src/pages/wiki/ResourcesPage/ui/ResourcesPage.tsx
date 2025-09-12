@@ -23,6 +23,7 @@ import {
 } from '@/widgets/Marketplace';
 
 import styles from './ResourcesPage.module.css';
+import { ResourcesPageSkeleton } from './ResourcesPageSkeleton.skeleton';
 
 const RESOURCES_PER_PAGE = 6;
 
@@ -62,7 +63,7 @@ const ResourcesPage = () => {
 	};
 
 	if (isLoading) {
-		return <div>Loading…</div>;
+		return <ResourcesPageSkeleton />;
 	}
 
 	if (error) {
