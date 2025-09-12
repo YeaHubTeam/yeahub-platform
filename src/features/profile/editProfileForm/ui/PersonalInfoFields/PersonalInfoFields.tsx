@@ -25,9 +25,27 @@ export const PersonalInfoFields = () => {
 			label={t(Profile.PERSONAL_TITLE)}
 			description={t(Profile.PERSONAL_DESCRIPTION)}
 		>
-			<Flex gap="20" direction="column">
+			<Flex
+				gap="20"
+				direction="column"
+				onKeyDown={(e) => {
+					if (e.key === 'Enter') {
+						e.preventDefault();
+					}
+				}}
+			>
 				<FormControl name="username" control={control} label={t(Profile.FORM_USERNAME)}>
-					{(field) => <Input {...field} size="S" />}
+					{(field) => (
+						<Input
+							{...field}
+							size="S"
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									e.preventDefault();
+								}
+							}}
+						/>
+					)}
 				</FormControl>
 				<FormControl name="specialization" control={control} label={t(Profile.FORM_SPECIALIZATION)}>
 					{({ onChange, value }) => (
@@ -35,14 +53,40 @@ export const PersonalInfoFields = () => {
 							onChange={onChange}
 							value={[value]}
 							disabled={!isSpecializationEmpty}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									e.preventDefault();
+								}
+							}}
 						/>
 					)}
 				</FormControl>
 				<FormControl name="email" control={control} label={t(Profile.FORM_EMAIL)}>
-					{(field) => <Input {...field} size="S" disabled />}
+					{(field) => (
+						<Input
+							{...field}
+							size="S"
+							disabled
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									e.preventDefault();
+								}
+							}}
+						/>
+					)}
 				</FormControl>
 				<FormControl name="location" control={control} label={t(Profile.FORM_LOCATION)}>
-					{(field) => <Input {...field} size="S" />}
+					{(field) => (
+						<Input
+							{...field}
+							size="S"
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									e.preventDefault();
+								}
+							}}
+						/>
+					)}
 				</FormControl>
 			</Flex>
 		</FormField>
