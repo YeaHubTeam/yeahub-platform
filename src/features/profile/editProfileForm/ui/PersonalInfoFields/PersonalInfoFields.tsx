@@ -25,15 +25,7 @@ export const PersonalInfoFields = () => {
 			label={t(Profile.PERSONAL_TITLE)}
 			description={t(Profile.PERSONAL_DESCRIPTION)}
 		>
-			<Flex
-				gap="20"
-				direction="column"
-				onKeyDown={(e) => {
-					if (e.key === 'Enter') {
-						e.preventDefault();
-					}
-				}}
-			>
+			<Flex gap="20" direction="column">
 				<FormControl name="username" control={control} label={t(Profile.FORM_USERNAME)}>
 					{(field) => (
 						<Input
