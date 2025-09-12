@@ -22,6 +22,28 @@ export interface Resource {
 	iconBase64?: string;
 }
 
+export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
+
+export interface ResourceRequest {
+	id: string;
+	userId: string;
+	requestPayload: {
+		name: string;
+		description: string;
+		url: string;
+		type: ResourceTypeCode;
+		imageSrc: string;
+		iconBase64?: string;
+		keywords?: string[];
+	};
+	specializations: Specialization[];
+	skills: Skill[];
+	createdAt: string;
+	reviewedAt: string | null;
+	reviewedBy: string | null;
+	status: ResourceRequestStatus;
+}
+
 export interface GetResourcesListParamsRequest {
 	types?: string[];
 	specializations?: number | number[];
@@ -34,6 +56,11 @@ export interface GetResourcesListParamsRequest {
 	orderBy?: string;
 	order?: SortOrder;
 	random?: boolean;
+}
+
+export interface GetMyRequestsResourcesParamsRequest {
+	page?: number;
+	limit?: number;
 }
 
 export type GetResourcesListResponse = Response<Resource[]>;
@@ -78,3 +105,4 @@ export interface ResourceType {
 export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
+export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

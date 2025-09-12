@@ -8,5 +8,5 @@ export const AutoScrollToTop = ({ children }: { children: React.ReactNode }) => 
 		window.scrollTo(0, 0);
 	}, [location.pathname]);
 
-	return <div data-testid="AutoScrollToTop_Wrapper">{children}</div>;
+	return <>{children}</>;
 };

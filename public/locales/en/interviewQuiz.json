@@ -14,11 +14,13 @@
 		},
 		"link": "Start interview"
 	},
-	"interrupt.quiz": {
-		"title": "Do you want to interrupt the interview?",
-		"description": "In this case, unanswered questions will be marked as - Do not know",
-		"yes": "Yes",
-		"no": "No"
+	"modal": {
+		"interrupt.quiz": {
+			"title": "Do you want to interrupt the interview?",
+			"description": "In this case, unanswered questions will be marked as - Do not know",
+			"yes": "Yes",
+			"no": "No"
+		}
 	},
 	"complete": "Complete",
 	"next": "Next",

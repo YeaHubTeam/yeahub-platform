@@ -73,6 +73,7 @@ export enum Translation {
 	CRUMBS_QUIZ = 'crumbs.quiz',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
+	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -323,10 +324,10 @@ export enum InterviewQuiz {
 	START_QUIZ_SETUP_LIST_THIRD = 'start.quiz.setup.list.third',
 	START_QUIZ_SETUP_LIST_FOURTH = 'start.quiz.setup.list.fourth',
 	START_QUIZ_LINK = 'start.quiz.link',
-	INTERRUPT_QUIZ_TITLE = 'interrupt.quiz.title',
-	INTERRUPT_QUIZ_DESCRIPTION = 'interrupt.quiz.description',
-	INTERRUPT_QUIZ_YES = 'interrupt.quiz.yes',
-	INTERRUPT_QUIZ_NO = 'interrupt.quiz.no',
+	MODAL_INTERRUPT_QUIZ_TITLE = 'modal.interrupt.quiz.title',
+	MODAL_INTERRUPT_QUIZ_DESCRIPTION = 'modal.interrupt.quiz.description',
+	MODAL_INTERRUPT_QUIZ_YES = 'modal.interrupt.quiz.yes',
+	MODAL_INTERRUPT_QUIZ_NO = 'modal.interrupt.quiz.no',
 	COMPLETE = 'complete',
 	NEXT = 'next',
 	CHECK = 'check.quiz',
@@ -937,4 +938,5 @@ export enum Marketplace {
 	URL_SHORT = 'url.short',
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
+	MY_RESOURCES = 'resources.my',
 }

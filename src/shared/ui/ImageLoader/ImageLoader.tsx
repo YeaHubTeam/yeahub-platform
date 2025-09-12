@@ -168,6 +168,7 @@ export const ImageLoader = ({
 							variant="destructive-tertiary"
 							className={styles['delete-avatar-btn']}
 							onClick={onRemoveImage}
+							type="button"
 						>
 							{t(Profile.PHOTO_DELETE)}
 						</Button>

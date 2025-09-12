@@ -20,11 +20,15 @@
 		"repository": "Репозиторий",
 		"video": "Видео",
 		"article": "Статья",
-		"course": "Курс"
+		"course": "Курс",
+		"my": "Мои заявки"
 	},
 	"status": {
 		"title": "Статус",
-		"all": "Все"
+		"all": "Все",
+		"approved": "Одобрено",
+		"pending": "На ревью",
+		"rejected": "Отклонено"
 	},
 	"delete": "Удалить",
 	"name": {

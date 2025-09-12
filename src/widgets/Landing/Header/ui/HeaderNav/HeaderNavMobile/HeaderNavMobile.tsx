@@ -2,20 +2,24 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
+import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 
-import { HEADER_NAV_LINKS } from '../../../model/constants/headerConstants';
+import { HEADER_NAV_LINKS, HEADER_NAV_LINKS_AUTH } from '../../../model/constants/headerConstants';
 import { HeaderNavLink } from '../../HeaderNavLink/HeaderNavLink';
 
 import styles from './HeaderNavMobile.module.css';
 
 export const HeaderNavMobile = () => {
 	const { t } = useTranslation(i18Namespace.landing);
+	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
+	const navLinks = accessToken ? HEADER_NAV_LINKS_AUTH : HEADER_NAV_LINKS;
 
-	const popoverLinks: PopoverMenuItem[] = HEADER_NAV_LINKS.map(({ link, path, title }) => ({
+	const popoverLinks: PopoverMenuItem[] = navLinks.map(({ link, path, title }) => ({
 		renderComponent: (onToggle) => (
 			<Flex onClick={onToggle}>
 				<HeaderNavLink link={link} path={path}>

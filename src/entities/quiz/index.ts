@@ -9,11 +9,8 @@ export {
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
-	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
-	useLazyCloneQuizQuery,
-	useInterruptQuizMutation,
 } from './api/quizApi';
 
 export type {
@@ -24,6 +21,7 @@ export type {
 	QuestionModeType,
 	QuizQuestionAnswerType,
 	Quiz,
+	ActiveQuiz,
 	QuizWithoutQuestions,
 	GetQuizHistoryParamsRequest,
 	ProfileSkillsStat,

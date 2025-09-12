@@ -1,4 +1,6 @@
 import { authHandlers } from '@/entities/auth';
+import { collectionHandlers } from '@/entities/collection';
+import { companyHandlers } from '@/entities/company';
 import { paymentHandlers } from '@/entities/payment';
 import { questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
@@ -18,9 +20,11 @@ import { specializationEditHandlers } from '@/features/specialization/editSpecia
 
 export const handlers = [
 	...authHandlers,
+	...companyHandlers,
 	...paymentHandlers,
 	...interviewHandlers,
 	...questionHandlers,
+	...collectionHandlers,
 	...specializationHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,

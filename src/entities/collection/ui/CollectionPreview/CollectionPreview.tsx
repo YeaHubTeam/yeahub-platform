@@ -79,68 +79,68 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 			: route(ROUTES.interview.collections.detail.page, id);
 
 	return (
-		<Card withOutsideShadow className={styles.content}>
-			<div className={classnames(styles.wrapper, styles[variant])}>
-				<Link to={collectionPath}>
+		<Link to={collectionPath}>
+			<Card withOutsideShadow className={styles.content}>
+				<div className={classnames(styles.wrapper, styles[variant])}>
 					<ImageWithWrapper
 						src={imageSrc || company?.imageSrc}
 						alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}
 						className={classnames(styles['image-wrapper'], styles[variant])}
 					/>
-				</Link>
-				<Flex direction="column" gap="16">
-					<div className={styles.header}>
-						<ul className={styles.tags}>
-							{keywords?.map(
-								(keyword, index) =>
-									index < MAX_LIMIT_KEYWORDS && (
-										<li key={keyword}>
-											<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
-										</li>
-									),
-							)}
-						</ul>
-						{keywords &&
-							keywords?.length > MAX_LIMIT_KEYWORDS &&
-							renderActions(keywords?.slice(MAX_LIMIT_KEYWORDS))}
-					</div>
-					<Flex direction="column" gap="20">
-						<Text
-							className={classnames(styles['card-title'], styles[variant])}
-							variant={'body3-accent'}
-							maxRows={2}
-						>
-							{title}
-						</Text>
-						<div className={styles['access-container']}>
-							<div className={styles['access-item']}>
-								{!isFree && <Star />}
-								<Text variant={'body2'} color="purple-700">
-									{accessText[isFree ? 'free' : 'paid']}
-								</Text>
-							</div>
-							{!!questionsCount && (
+					<Flex direction="column" gap="16">
+						<div className={styles.header}>
+							<ul className={styles.tags}>
+								{keywords?.map(
+									(keyword, index) =>
+										index < MAX_LIMIT_KEYWORDS && (
+											<li key={keyword}>
+												<StatusChip key={keyword} status={{ text: keyword, variant: 'green' }} />
+											</li>
+										),
+								)}
+							</ul>
+							{keywords &&
+								keywords?.length > MAX_LIMIT_KEYWORDS &&
+								renderActions(keywords?.slice(MAX_LIMIT_KEYWORDS))}
+						</div>
+						<Flex direction="column" gap="20">
+							<Text
+								className={classnames(styles['card-title'], styles[variant])}
+								variant={'body3-accent'}
+								maxRows={2}
+							>
+								{title}
+							</Text>
+							<div className={styles['access-container']}>
 								<div className={styles['access-item']}>
-									<Question />
+									{!isFree && <Star />}
 									<Text variant={'body2'} color="purple-700">
-										{t(Collections.QUESTIONS_COUNT, {
-											ns: i18Namespace.collection,
-											count: questionsCount,
-										})}
+										{accessText[isFree ? 'free' : 'paid']}
 									</Text>
 								</div>
-							)}
-						</div>
-						<div className={styles['specialization-container']}>
-							{specializations?.map((spec) => (
-								<Text variant={'body3-accent'} key={spec.id}>
-									{spec.title}
-								</Text>
-							))}
-						</div>
+								{!!questionsCount && (
+									<div className={styles['access-item']}>
+										<Question />
+										<Text variant={'body2'} color="purple-700">
+											{t(Collections.QUESTIONS_COUNT, {
+												ns: i18Namespace.collection,
+												count: questionsCount,
+											})}
+										</Text>
+									</div>
+								)}
+							</div>
+							<div className={styles['specialization-container']}>
+								{specializations?.map((spec) => (
+									<Text variant={'body3-accent'} key={spec.id}>
+										{spec.title}
+									</Text>
+								))}
+							</div>
+						</Flex>
 					</Flex>
-				</Flex>
-			</div>
-		</Card>
+				</div>
+			</Card>
+		</Link>
 	);
 };

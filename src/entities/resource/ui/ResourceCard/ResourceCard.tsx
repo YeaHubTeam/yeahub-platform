@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -15,6 +18,8 @@ type ResourceCardProps = {
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
 	const { name, description, url, iconBase64, type, specializations } = resource;
 
+	const { t } = useTranslation(i18Namespace.marketplace);
+
 	const resourceHostname = url?.replace(/^(https?:\/\/)?(www\.)?([^/]+).*$/, '$3');
 
 	return (
@@ -31,7 +36,14 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 						<Text variant="body2" color="purple-700">
 							{resourceHostname}
 						</Text>
-						{type && <StatusChip status={{ text: type.description, variant: 'purple' }} />}
+						{type && (
+							<StatusChip
+								status={{
+									text: t(`resourceTypes.${resource.type.code}`),
+									variant: 'purple',
+								}}
+							/>
+						)}
 					</Flex>
 
 					<Text variant="body3-accent" maxRows={2}>

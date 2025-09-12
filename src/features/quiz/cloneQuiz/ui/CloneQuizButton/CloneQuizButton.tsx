@@ -8,7 +8,9 @@ import { useAppSelector, useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
 import { getProfileId } from '@/entities/profile';
-import { useGetActiveQuizQuery, useLazyCloneQuizQuery } from '@/entities/quiz';
+import { useGetActiveQuizQuery } from '@/entities/quiz';
+
+import { useLazyCloneQuizQuery } from '../../api/cloneQuizApi';
 
 const ResetActiveQuizModal = lazy(() => import('../ResetActiveQuizModal/ResetActiveQuizModal'));
 
@@ -22,15 +24,14 @@ export const CloneQuizButton = () => {
 
 	const [cloneQuiz, { isLoading: isCloneQuizLoading }] = useLazyCloneQuizQuery();
 
-	const { data: activeQuizResponse, isLoading: isGetActiveQuizLoading } = useGetActiveQuizQuery({
+	const { data: activeQuiz, isLoading: isGetActiveQuizLoading } = useGetActiveQuizQuery({
 		profileId,
 		page: 1,
 		limit: 1,
 	});
-	const hasActiveQuiz = Boolean(activeQuizResponse?.data?.[0]);
 
 	const onCloneQuiz = () => {
-		if (!hasActiveQuiz) {
+		if (!activeQuiz) {
 			cloneQuiz(quizId);
 		} else {
 			onToggle();

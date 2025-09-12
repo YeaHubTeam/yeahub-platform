@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
@@ -20,12 +23,14 @@ import {
 } from '@/widgets/Marketplace';
 
 import styles from './ResourcesPage.module.css';
+import { ResourcesPageSkeleton } from './ResourcesPageSkeleton.skeleton';
 
 const RESOURCES_PER_PAGE = 6;
 
 const ResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
 
 	const {
 		onChangeSearchParams,
@@ -53,8 +58,12 @@ const ResourcesPage = () => {
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
+	const handleNavigateToMyResources = () => {
+		navigate(ROUTES.wiki.resources.my.page);
+	};
+
 	if (isLoading) {
-		return <div>Loading…</div>;
+		return <ResourcesPageSkeleton />;
 	}
 
 	if (error) {
@@ -75,7 +84,6 @@ const ResourcesPage = () => {
 		/>
 	);
 
-	// бургер-кнопка + дровер (нужны лишь на мобилках/планшетах)
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
@@ -116,10 +124,20 @@ const ResourcesPage = () => {
 					currentPage={filter.page ?? 1}
 					onChangePage={onChangePage}
 				/>
-				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
-			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
+			<Flex className={styles['button-wrapper']}>
+				<Button
+					className={styles['absolute-button']}
+					variant="outline"
+					size="large"
+					onClick={handleNavigateToMyResources}
+				>
+					{t(Marketplace.MY_RESOURCES)}
+				</Button>
+
+				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
+			</Flex>
 		</Flex>
 	);
 };

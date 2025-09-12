@@ -21,11 +21,15 @@
 		"repository": "Repository",
 		"video": "Video",
 		"article": "Article",
-		"course": "Course"
+		"course": "Course",
+		"my": "My resources"
 	},
 	"status": {
 		"title": "Status",
-		"all": "All"
+		"all": "All",
+		"approved": "Approved",
+		"pending": "Pending review",
+		"rejected": "Rejected"
 	},
 	"name": {
 		"short": "Name",

@@ -3,7 +3,6 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { State } from '@/shared/config/store/State';
 import { ExtraArgument } from '@/shared/config/store/types';
 import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { route } from '@/shared/helpers/route';
@@ -26,8 +25,8 @@ import {
 	GetQuizByProfileIdResponse,
 	GetQuizHistoryParamsRequest,
 	GetQuizHistoryResponse,
-	interruptQuizRequest,
 	Answers,
+	ActiveQuiz,
 } from '../model/types/quiz';
 import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
@@ -112,17 +111,20 @@ const quizApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		getActiveQuiz: build.query<GetActiveQuizResponse, GetActiveQuizParamsRequest>({
+		getActiveQuiz: build.query<ActiveQuiz, GetActiveQuizParamsRequest>({
 			query: ({ profileId, ...params }) => ({
 				url: route(quizApiUrls.getActiveQuiz, profileId),
 				params,
 			}),
 			providesTags: [ApiTags.INTERVIEW_QUIZ],
+			transformResponse(response: GetActiveQuizResponse) {
+				return response.data[0];
+			},
 			async onQueryStarted({ profileId }, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
 					const { profileActiveQuiz } = getValidActiveQuizzesFromLS(profileId);
-					if (profileActiveQuiz && result.data.data.length > 0) {
+					if (profileActiveQuiz && result.data) {
 						dispatch(
 							setActiveQuizQuestions({
 								questions: profileActiveQuiz,
@@ -131,7 +133,7 @@ const quizApi = baseApi.injectEndpoints({
 						);
 					} else {
 						dispatch(clearActiveQuizState(profileId));
-						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data?.data[0]).map(
+						const parsedQuestions: Answers[] = getActiveQuizQuestions(result.data).map(
 							(question) => ({
 								questionId: question.questionId,
 								questionTitle: question.questionTitle,
@@ -176,60 +178,7 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.HISTORY_QUIZ],
 		}),
-		saveQuizResult: build.mutation<boolean, CreateNewQuizResponse>({
-			query: (data) => {
-				return {
-					url: quizApiUrls.saveQuizResult,
-					method: 'POST',
-					body: data,
-				};
-			},
-			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ, ApiTags.INTERVIEW_STATISTICS],
-			async onQueryStarted(arg, { queryFulfilled, extra, dispatch }) {
-				try {
-					await queryFulfilled;
-					dispatch(clearActiveQuizState(arg.profileId));
 
-					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
-					typedExtra.navigate(route(ROUTES.interview.history.result.page, arg.id));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_INTERVIEW_FINISH_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
-		interruptQuiz: build.mutation<boolean, interruptQuizRequest>({
-			query: ({ data, ...params }) => {
-				return {
-					url: quizApiUrls.saveQuizResult,
-					method: 'POST',
-					body: data,
-					params,
-				};
-			},
-			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_STATISTICS],
-			async onQueryStarted({ data }, { queryFulfilled, extra, dispatch }) {
-				try {
-					await queryFulfilled;
-					dispatch(clearActiveQuizState(data.profileId));
-					await dispatch(
-						quizApi.endpoints.getActiveQuiz.initiate(
-							{ profileId: data.profileId, page: 1, limit: 1 },
-							{ forceRefetch: true },
-						),
-					).unwrap();
-					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_INTERVIEW_FINISH_SUCCESS));
-					typedExtra.navigate(route(ROUTES.interview.quiz.page));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_INTERVIEW_FINISH_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
 		getQuizByProfileId: build.query<GetQuizByProfileIdResponse, GetQuizByProfileIdParamsRequest>({
 			query: ({ profileId, quizId }) => {
 				return {
@@ -245,34 +194,6 @@ const quizApi = baseApi.injectEndpoints({
 			},
 			providesTags: [ApiTags.INTERVIEW_STATISTICS],
 		}),
-		cloneQuiz: build.query<CreateNewQuizResponse, string>({
-			query: (quizId) => {
-				return {
-					url: route(quizApiUrls.cloneQuiz, quizId),
-				};
-			},
-			providesTags: [ApiTags.NEW_QUIZ],
-			async onQueryStarted(_, { queryFulfilled, extra, dispatch, getState }) {
-				try {
-					await queryFulfilled;
-					const typedExtra = extra as ExtraArgument;
-					const state = getState() as State;
-					const profileId = state.profile.fullProfile?.activeProfile.id || '';
-
-					if (profileId) {
-						dispatch(clearActiveQuizState(profileId));
-					}
-					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
-					typedExtra.navigate(ROUTES.interview.quiz.page);
-
-					dispatch(baseApi.util.invalidateTags([ApiTags.INTERVIEW_QUIZ, ApiTags.HISTORY_QUIZ]));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
 	}),
 	overrideExisting: true,
 });
@@ -283,9 +204,6 @@ export const {
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
-	useSaveQuizResultMutation,
 	useGetQuizByProfileIdQuery,
 	useGetProfileQuizStatsQuery,
-	useLazyCloneQuizQuery,
-	useInterruptQuizMutation,
 } = quizApi;
