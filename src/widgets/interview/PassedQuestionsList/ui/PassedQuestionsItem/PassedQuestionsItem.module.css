@@ -2,12 +2,13 @@
   display: flex;
   gap: 20px;
   padding: 12px;
-  border-bottom: thin solid var(--border-input);
+  box-shadow: var(--main-shadow);
+  border-radius: 12px;
 }
 
 .img {
   width: clamp(101px, 5.52vw + 74.8px, 154px);
-  height:clamp(90px, 2.08vw + 60px, 110px);
+  height: clamp(90px, 2.08vw + 60px, 110px);
   border-radius: 12px;
 }
 
@@ -17,7 +18,6 @@
 
 .answer {
   border: none;
-  background: var(--color-black-30) !important;
 }
 
 .answer p {

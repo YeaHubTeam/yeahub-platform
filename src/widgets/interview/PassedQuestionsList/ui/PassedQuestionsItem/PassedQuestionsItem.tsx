@@ -63,6 +63,7 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 						theme="primary"
 						prefix={<Icon icon={questionAnswers[answer].icon} size={24} color={iconColor} />}
 						label={t(questionAnswers[answer].label)}
+						style={{ background: '#F8F8F8' }}
 						className={`${styles.answer} ${answerStyles}`}
 					/>
 				</Flex>
