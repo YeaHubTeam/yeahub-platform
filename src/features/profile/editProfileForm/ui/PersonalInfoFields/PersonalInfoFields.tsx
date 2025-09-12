@@ -19,6 +19,12 @@ export const PersonalInfoFields = () => {
 	const { control } = useFormContext<ProfileSchema>();
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 
+	const handleKeyDown = (e: React.KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+		}
+	};
+
 	return (
 		<FormField
 			isLimitWidth
@@ -27,17 +33,7 @@ export const PersonalInfoFields = () => {
 		>
 			<Flex gap="20" direction="column">
 				<FormControl name="username" control={control} label={t(Profile.FORM_USERNAME)}>
-					{(field) => (
-						<Input
-							{...field}
-							size="S"
-							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
-									e.preventDefault();
-								}
-							}}
-						/>
-					)}
+					{(field) => <Input {...field} size="S" onKeyDown={handleKeyDown} />}
 				</FormControl>
 				<FormControl name="specialization" control={control} label={t(Profile.FORM_SPECIALIZATION)}>
 					{({ onChange, value }) => (
@@ -45,40 +41,15 @@ export const PersonalInfoFields = () => {
 							onChange={onChange}
 							value={[value]}
 							disabled={!isSpecializationEmpty}
-							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
-									e.preventDefault();
-								}
-							}}
+							onKeyDown={handleKeyDown}
 						/>
 					)}
 				</FormControl>
 				<FormControl name="email" control={control} label={t(Profile.FORM_EMAIL)}>
-					{(field) => (
-						<Input
-							{...field}
-							size="S"
-							disabled
-							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
-									e.preventDefault();
-								}
-							}}
-						/>
-					)}
+					{(field) => <Input {...field} size="S" disabled onKeyDown={handleKeyDown} />}
 				</FormControl>
 				<FormControl name="location" control={control} label={t(Profile.FORM_LOCATION)}>
-					{(field) => (
-						<Input
-							{...field}
-							size="S"
-							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
-									e.preventDefault();
-								}
-							}}
-						/>
-					)}
+					{(field) => <Input {...field} size="S" onKeyDown={handleKeyDown} />}
 				</FormControl>
 			</Flex>
 		</FormField>
