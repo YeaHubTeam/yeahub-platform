@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+
+import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
 import { KeywordsListTestIds } from './KeywordsList';
 import { KeywordsList } from './KeywordsList';
@@ -8,16 +9,9 @@ import { KeywordsListSkeleton } from './KeywordsList.skeleton';
 const keywords = ['react', 'solid', 'event loop'];
 const path = '/search?tag=';
 
-const setup = () =>
-	render(
-		<MemoryRouter>
-			<KeywordsList keywords={keywords} path={path} />
-		</MemoryRouter>,
-	);
-
 describe('KeywordsList basic rendering', () => {
 	beforeEach(() => {
-		setup();
+		renderComponent(<KeywordsList keywords={keywords} path={path} />);
 	});
 
 	test('renders wrapper with correct props', () => {
@@ -62,7 +56,7 @@ describe('KeywordsList basic rendering', () => {
 
 describe('KeywordsListSkeleton', () => {
 	test('renders exactly two TextSkeleton placeholders', () => {
-		const { container } = render(<KeywordsListSkeleton />);
+		const { container } = renderComponent(<KeywordsListSkeleton />);
 
 		const skeletons = container.querySelectorAll('div[class*="skeleton"]');
 
