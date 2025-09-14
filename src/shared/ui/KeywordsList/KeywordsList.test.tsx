@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { KeywordsListTestIds } from './KeywordsList';
 import { KeywordsList } from './KeywordsList';
 import { KeywordsListSkeleton } from './KeywordsList.skeleton';
 
@@ -14,23 +15,49 @@ const setup = () =>
 		</MemoryRouter>,
 	);
 
-test('renders without crashing', () => {
-	setup();
-	expect(screen.getAllByRole('link').length).toBe(keywords.length);
-});
+describe('KeywordsList basic rendering', () => {
+	beforeEach(() => {
+		setup();
+	});
 
-test('shows correct hashtag text', () => {
-	setup();
-	expect(screen.getByText('#react')).toBeInTheDocument();
-	expect(screen.getByText('#solid')).toBeInTheDocument();
-	expect(screen.getByText('#event loop')).toBeInTheDocument();
-});
+	test('renders wrapper with correct props', () => {
+		const wrapper = screen.getByTestId(KeywordsListTestIds.wrapper);
 
-test('builds correct links', () => {
-	setup();
-	const links = screen.getAllByRole('link');
-	expect(links[0]).toHaveAttribute('href', `${path}react`);
-	expect(links[2]).toHaveAttribute('href', `${path}${encodeURIComponent('event loop')}`);
+		expect(wrapper).toBeInTheDocument();
+		// Flex превращается в div, но атрибуты data-* сохраняются
+		expect(wrapper).toHaveAttribute('data-testId', KeywordsListTestIds.wrapper);
+		// classNames от Flex содержат wrap и gap — можно проверить часть класса
+		expect(wrapper.className).toMatch(/wrap/);
+	});
+
+	test('renders right amount of Text elements', () => {
+		const texts = screen.getAllByTestId(KeywordsListTestIds.text);
+		expect(texts).toHaveLength(keywords.length);
+	});
+
+	test('Text contains correct hashtag and link', () => {
+		expect(screen.getByText('#react')).toBeInTheDocument();
+		const links = screen.getAllByRole('link');
+
+		expect(links[0]).toHaveAttribute('href', `${path}react`);
+		expect(links[2]).toHaveAttribute('href', `${path}${encodeURIComponent('event loop')}`);
+	});
+
+	test('renders correct amount of links', () => {
+		expect(screen.getAllByRole('link')).toHaveLength(keywords.length);
+	});
+
+	test('shows correct hashtag text', () => {
+		expect(screen.getByText('#react')).toBeInTheDocument();
+		expect(screen.getByText('#solid')).toBeInTheDocument();
+		expect(screen.getByText('#event loop')).toBeInTheDocument();
+	});
+
+	test('builds correct links', () => {
+		const links = screen.getAllByRole('link');
+		expect(links[0]).toHaveAttribute('href', `${path}react`);
+		expect(links[2]).toHaveAttribute('href', `${path}${encodeURIComponent('event loop')}`);
+	});
 });
 
 describe('KeywordsListSkeleton', () => {
