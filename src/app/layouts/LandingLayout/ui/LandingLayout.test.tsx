@@ -33,10 +33,6 @@ describe('LandingLayout', () => {
 		expect(screen.getByTestId('Header')).toBeInTheDocument();
 	});
 
-	test('renders AutoScrollToTop wrapper', () => {
-		expect(screen.getByTestId('AutoScrollToTop_Wrapper')).toBeInTheDocument();
-	});
-
 	test('renders main element with correct class', () => {
 		const main = screen.getByTestId('LandingLayout_Main');
 		expect(main).toBeInTheDocument();

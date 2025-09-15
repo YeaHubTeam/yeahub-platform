@@ -15,8 +15,8 @@ import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
-// import WikiIcon from '@/shared/assets/icons/wiki.svg';
-// import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
+import WikiIcon from '@/shared/assets/icons/wiki.svg';
+import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -156,19 +156,19 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	// {
-	// 	type: 'category',
-	// 	title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
-	// 	icon: WikiIcon,
-	// 	elements: [
-	// 		{
-	// 			route: ROUTES.wiki.resources.route,
-	// 			title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
-	// 			icon: ResourcesIcon,
-	// 		},
-	// 	],
-	// 	roles: allRoles,
-	// },
+	{
+		type: 'category',
+		title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
+		icon: WikiIcon,
+		elements: [
+			{
+				route: ROUTES.wiki.resources.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
+				icon: ResourcesIcon,
+			},
+		],
+		roles: allRoles,
+	},
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
