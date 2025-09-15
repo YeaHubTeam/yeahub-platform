@@ -111,6 +111,22 @@ export const ROUTES = {
 				page: '/admin/companies/:companyId',
 			},
 		},
+		externalProducts: {
+			route: 'external-products',
+			page: '/admin/external-products',
+			create: {
+				route: 'create',
+				page: '/admin/external-products/create',
+			},
+			details: {
+				route: ':productId',
+				page: '/admin/external-products/:productId',
+			},
+			edit: {
+				route: ':productId/edit',
+				page: '/admin/external-products/:productId/edit',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',

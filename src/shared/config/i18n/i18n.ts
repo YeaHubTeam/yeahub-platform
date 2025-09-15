@@ -30,6 +30,7 @@ export const i18Namespace = {
 	collection: 'collection',
 	marketplace: 'marketplace',
 	companies: 'companies',
+	externalProducts: 'externalProducts',
 	editor: 'editor',
 	guru: 'guru',
 	media: 'media',

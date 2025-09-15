@@ -5,6 +5,7 @@ import { ActiveSubscriptionState } from '@/entities/subscription';
 
 import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
 import { CompaniesTablePageState } from '@/pages/admin/CompaniesTablePage';
+import { ExternalProductsTablePageState } from '@/pages/admin/ExternalProductsTablePage';
 import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
 import { ResourcesTablePageState } from '@/pages/admin/ResourcesTablePage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
@@ -28,6 +29,7 @@ export interface State {
 	questionsTablePage: QuestionsTablePageState;
 	companiesTablePage: CompaniesTablePageState;
 	resourcesTablePage: ResourcesTablePageState;
+	externalProductsTablePage: ExternalProductsTablePageState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
 	usersPage: UsersPageState;

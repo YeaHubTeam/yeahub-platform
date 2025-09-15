@@ -1,0 +1,12 @@
+{
+	"title": "Название",
+	"status": "Статус",
+	"specializations": "Специализация",
+	"type": "Тип ресурса",
+	"author": "Автор",
+	"statusList": {
+		"approved": "Одобрено",
+		"review": "На ревью",
+		"rejected": "Отклонено"
+	}
+}

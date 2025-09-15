@@ -177,6 +177,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
+	EXTERNAL_PRODUCTS = 'externalProducts',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -672,6 +673,14 @@ export enum Companies {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+}
+
+export enum ExternalProducts {
+	TITLE = 'title',
+	STATUS = 'status',
+	SPECIALIZATIONS = 'specializations',
+	TYPE = 'type',
+	AUTHOR = 'author',
 }
 
 export enum Landing {
