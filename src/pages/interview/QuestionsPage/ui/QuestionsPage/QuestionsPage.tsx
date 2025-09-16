@@ -11,7 +11,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
-import { useGetSkillsListQuery } from '@/entities/skill';
+import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import {
 	QuestionFilterStatus,
@@ -24,13 +24,11 @@ import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPageP
 import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
-const MAX_LIMIT_CATEGORIES = 5;
-
 const QuestionsPage = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
 	const specializationId = useAppSelector(getSpecializationId);
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
-		limit: MAX_LIMIT_CATEGORIES,
+		limit: MAX_SHOW_LIMIT_SKILLS,
 		specializations: [specializationId],
 	});
 	const [queryParams] = useSearchParams();
@@ -107,7 +105,6 @@ const QuestionsPage = () => {
 				status: filter.status,
 				title: filter.title,
 			}}
-			skillsLimit={MAX_LIMIT_CATEGORIES}
 		/>
 	);
 

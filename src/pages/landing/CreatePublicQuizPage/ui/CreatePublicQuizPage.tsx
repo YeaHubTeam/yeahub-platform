@@ -3,11 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
-import {
-	MAX_LIMIT_CATEGORIES,
-	DEFAULT_SPECIALIZATION_NUMBER,
-	MAX_CHOOSE_QUESTION_COUNT,
-} from '@/shared/constants/queryConstants';
+import { MAX_CHOOSE_QUESTION_COUNT } from '@/shared/constants/queryConstants';
 import { setToLS } from '@/shared/helpers/manageLocalStorage';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { Button } from '@/shared/ui/Button';
@@ -16,18 +12,18 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import {
-	ChooseQuestionComplexity,
-	ChooseQuestionCount,
-	ChooseQuestionsCategories,
-} from '@/entities/question';
+import { ChooseQuestionComplexity, ChooseQuestionCount } from '@/entities/question';
 import {
 	QuestionModeType,
 	QuizQuestionMode,
 	useLazyCreateNewMockPublicQuizQuery,
 } from '@/entities/quiz';
-import { useGetSkillsListQuery } from '@/entities/skill';
-import { LS_ACTIVE_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
+import { MAX_SHOW_LIMIT_SKILLS, SkillsListField, useGetSkillsListQuery } from '@/entities/skill';
+import {
+	DEFAULT_SPECIALIZATION_ID,
+	LS_ACTIVE_SPECIALIZATION_ID,
+	SpecializationsListField,
+} from '@/entities/specialization';
 
 import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -37,7 +33,7 @@ import { CreatePublicQuizPageSkeleton } from './CreatePublicQuizPage.skeleton';
 
 const CreatePublicQuizPage = () => {
 	const [selectedSpecialization, setSelectedSpecialization] = useState<number | undefined>(
-		DEFAULT_SPECIALIZATION_NUMBER,
+		DEFAULT_SPECIALIZATION_ID,
 	);
 
 	const { filter, handleFilterChange } = useQueryFilter();
@@ -45,7 +41,7 @@ const CreatePublicQuizPage = () => {
 		useLazyCreateNewMockPublicQuizQuery();
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
-		limit: MAX_LIMIT_CATEGORIES,
+		limit: MAX_SHOW_LIMIT_SKILLS,
 		specializations: selectedSpecialization ? [selectedSpecialization] : [],
 	});
 
@@ -53,7 +49,7 @@ const CreatePublicQuizPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	useEffect(() => {
-		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_NUMBER));
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_ID));
 	}, []);
 
 	useEffect(() => {
@@ -123,11 +119,10 @@ const CreatePublicQuizPage = () => {
 							onChangeSpecialization={onChangeSpecialization}
 						/>
 						{selectedSpecialization !== undefined && (
-							<ChooseQuestionsCategories
+							<SkillsListField
 								selectedSpecialization={selectedSpecialization}
 								selectedSkills={filter.category}
 								onChangeSkills={onChangeSkills}
-								skillsLimit={MAX_LIMIT_CATEGORIES}
 							/>
 						)}
 					</Flex>
