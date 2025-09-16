@@ -94,6 +94,10 @@ export const ROUTES = {
 				route: ':resourceId/edit',
 				page: '/admin/resources/:resourceId/edit',
 			},
+			requests: {
+				route: 'requests',
+				page: '/admin/resources/requests',
+			},
 		},
 		companies: {
 			route: 'companies',
@@ -109,22 +113,6 @@ export const ROUTES = {
 			details: {
 				route: ':companyId',
 				page: '/admin/companies/:companyId',
-			},
-		},
-		externalProducts: {
-			route: 'external-products',
-			page: '/admin/external-products',
-			create: {
-				route: 'create',
-				page: '/admin/external-products/create',
-			},
-			details: {
-				route: ':productId',
-				page: '/admin/external-products/:productId',
-			},
-			edit: {
-				route: ':productId/edit',
-				page: '/admin/external-products/:productId/edit',
 			},
 		},
 	},

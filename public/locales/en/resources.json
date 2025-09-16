@@ -14,5 +14,15 @@
 	"author": "Author",
 	"specialization": {
 		"title": "Specialization"
+	},
+	"requests": {
+		"title": "Resource Requests",
+		"status": "Status",
+		"specializations": "Specializations",
+		"type": "Type",
+		"author": "Author",
+		"statusApproved": "Approved",
+		"statusReview": "Under review",
+		"statusRejected": "Rejected"
 	}
 }

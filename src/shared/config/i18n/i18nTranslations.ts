@@ -675,12 +675,15 @@ export enum Companies {
 	SELECT_SELECTED = 'select.selected',
 }
 
-export enum ExternalProducts {
-	TITLE = 'title',
-	STATUS = 'status',
-	SPECIALIZATIONS = 'specializations',
-	TYPE = 'type',
-	AUTHOR = 'author',
+export enum ResourceRequests {
+	TITLE = 'requests.title',
+	STATUS = 'requests.status',
+	SPECIALIZATIONS = 'requests.specializations',
+	TYPE = 'requests.type',
+	AUTHOR = 'requests.author',
+	STATUS_APPROVED = 'requests.statusApproved',
+	STATUS_PENDING = 'requests.statusPending',
+	STATUS_REJECTED = 'requests.statusRejected',
 }
 
 export enum Landing {

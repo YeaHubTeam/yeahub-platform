@@ -12,8 +12,8 @@ import { activeSubscriptionSlice } from '@/entities/subscription';
 
 import { collectionsPageReducer } from '@/pages/admin/CollectionsPage';
 import { companiesTablePageReducer } from '@/pages/admin/CompaniesTablePage';
-import { externalProductsTablePageReducer } from '@/pages/admin/ExternalProductsTablePage';
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
+import { resourceRequestsPageReducer } from '@/pages/admin/ResourceRequestsPage';
 import { resourcesTablePageReducer } from '@/pages/admin/ResourcesTablePage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
@@ -43,7 +43,7 @@ export const createReduxStore = (initialState?: State) => {
 			usersPage: usersPageReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
-			externalProductsTablePage: externalProductsTablePageReducer,
+			resourceRequestsPage: resourceRequestsPageReducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>

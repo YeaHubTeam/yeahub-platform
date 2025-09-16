@@ -1,21 +1,21 @@
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { ExternalProduct } from '@/entities/external-product';
+import { ResourceRequest } from '@/entities/resource';
 
-import styles from './ExternalProductsTablePagePagination.module.css';
+import styles from './ResourceRequestsPagePagination.module.css';
 
-interface ExternalProductsPagePaginationProps {
-	externalProductsResponse?: Response<ExternalProduct[]>;
+interface ResourceRequestsPagePaginationProps {
+	resourceRequestsResponse?: Response<ResourceRequest[]>;
 	currentPage: number;
 	onPageChange: (page: number) => void;
 }
 
-export const ExternalProductsTablePagePagination = ({
-	externalProductsResponse,
+export const ResourceRequestsPagePagination = ({
+	resourceRequestsResponse,
 	currentPage,
 	onPageChange,
-}: ExternalProductsPagePaginationProps) => {
+}: ResourceRequestsPagePaginationProps) => {
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};
@@ -28,7 +28,7 @@ export const ExternalProductsTablePagePagination = ({
 		onPageChange(newPage);
 	};
 
-	if (!externalProductsResponse?.data) {
+	if (!resourceRequestsResponse?.data) {
 		return null;
 	}
 
@@ -39,7 +39,7 @@ export const ExternalProductsTablePagePagination = ({
 				onNextPageClick={onNextPageClick}
 				onChangePage={onPaginationButtonClick}
 				page={currentPage}
-				totalPages={Math.ceil(externalProductsResponse?.total / externalProductsResponse?.limit)}
+				totalPages={Math.ceil(resourceRequestsResponse?.total / resourceRequestsResponse?.limit)}
 			/>
 		</div>
 	);

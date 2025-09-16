@@ -100,7 +100,8 @@ import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
-import { ExternalProductsTablePage } from '@/pages/admin/ExternalProductsTablePage';
+
+import { ResourceRequestsPage } from '../../../../pages/admin/ResourceRequestsPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -370,6 +371,10 @@ export const router = createBrowserRouter([
 				element: <ResourceEditPage />,
 			},
 			{
+				path: ROUTES.admin.resources.requests.page,
+				element: <ResourceRequestsPage />,
+			},
+			{
 				path: ROUTES.admin.specializations.page,
 				element: <SpecializationsPage />,
 			},
@@ -466,16 +471,6 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.admin.externalProducts.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <ExternalProductsTablePage />,
 					},
 				],
 			},

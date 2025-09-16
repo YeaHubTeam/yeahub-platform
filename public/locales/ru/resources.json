@@ -14,5 +14,15 @@
 	"author": "Автор",
 	"specialization": {
 		"title": "Специализация"
+	},
+	"requests": {
+		"title": "Название",
+		"status": "Статус",
+		"specializations": "Специализации",
+		"type": "Тип",
+		"author": "Автор",
+		"statusApproved": "Одобрено",
+		"statusPending": "На ревью",
+		"statusRejected": "Отклонено"
 	}
 }
