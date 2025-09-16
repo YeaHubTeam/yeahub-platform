@@ -14,16 +14,15 @@ import {
 	MAX_SHOW_LIMIT_SPECIALIZATIONS,
 } from '../../model/constants/specializationConstants';
 
-interface ChooseSpecializationProps {
+interface SpecializationsListFieldProps {
 	selectedSpecialization?: number;
 	onChangeSpecialization: (specialization: number | undefined) => void;
-	shouldShowScroll?: boolean;
 }
 
 export const SpecializationsListField = ({
 	selectedSpecialization = DEFAULT_SPECIALIZATION_ID,
 	onChangeSpecialization,
-}: ChooseSpecializationProps) => {
+}: SpecializationsListFieldProps) => {
 	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
 	const { isMobile } = useScreenSize();
 

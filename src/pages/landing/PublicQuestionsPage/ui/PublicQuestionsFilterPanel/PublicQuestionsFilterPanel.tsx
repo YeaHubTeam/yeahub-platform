@@ -6,18 +6,14 @@ import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
-import {
-	ChooseQuestionComplexity,
-	ChooseQuestionsCategories,
-	RateFilterSection,
-} from '@/entities/question';
+import { ChooseQuestionComplexity, RateFilterSection } from '@/entities/question';
+import { SkillsListField } from '@/entities/skill';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 import type { FilterParams } from '@/widgets/question/QuestionsFilterPanel';
 
 interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
-	specializationLimit?: number;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
@@ -31,7 +27,6 @@ export const PublicQuestionsFilterPanel = ({
 	onChangeComplexity,
 	onChangeRate,
 	onChangeSpecialization,
-	specializationLimit,
 }: PublicQuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
@@ -56,8 +51,7 @@ export const PublicQuestionsFilterPanel = ({
 				selectedSpecialization={selectedSpecialization}
 				onChangeSpecialization={onChangeSpecialization}
 			/>
-			<ChooseQuestionsCategories
-				skillsLimit={specializationLimit}
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
 				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION_ID}

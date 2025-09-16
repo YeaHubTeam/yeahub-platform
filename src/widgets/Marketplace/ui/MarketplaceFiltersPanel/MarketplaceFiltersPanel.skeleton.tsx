@@ -1,8 +1,8 @@
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInputSkeleton } from '@/shared/ui/SearchInput';
 
-import { ChooseQuestionsCategoriesSkeleton } from '@/entities/question';
 import { ResourcesFilterSectionSkeleton } from '@/entities/resource';
+import { SkillsListFieldSkeleton } from '@/entities/skill';
 import { SpecializationsListFieldSkeleton } from '@/entities/specialization';
 
 export const MarketplaceFiltersPanelSkeleton = () => {
@@ -10,7 +10,7 @@ export const MarketplaceFiltersPanelSkeleton = () => {
 		<Flex direction="column" gap="24">
 			<SearchInputSkeleton />
 			<SpecializationsListFieldSkeleton />
-			<ChooseQuestionsCategoriesSkeleton />
+			<SkillsListFieldSkeleton />
 			<ResourcesFilterSectionSkeleton />
 		</Flex>
 	);

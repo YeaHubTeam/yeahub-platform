@@ -19,8 +19,6 @@ export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';
-export { ChooseQuestionsCategories } from './ui/ChooseQuestionsCategories/ChooseQuestionsCategories';
-export { ChooseQuestionsCategoriesSkeleton } from './ui/ChooseQuestionsCategories/ChooseQuestionsCategories.skeleton';
 export { SortQuestionsByField } from './ui/SortQuestions/SortQuestionsByField/SortQuestionsByField';
 export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSorter';
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';

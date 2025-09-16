@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import { ChooseQuestionsCategories } from '@/entities/question';
 import { FilterParams, ResourcesFilterSection } from '@/entities/resource';
+import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
 
 import { SearchBlock } from '../SearchBlock/SearchBlock';
@@ -51,7 +51,7 @@ export const MarketplaceFiltersPanel = ({
 				selectedSpecialization={localSpecialization}
 				onChangeSpecialization={handleSpecializationChange}
 			/>
-			<ChooseQuestionsCategories
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
 				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
