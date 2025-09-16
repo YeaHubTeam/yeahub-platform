@@ -6,6 +6,8 @@
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
 	"show": "View",
+	"show.all": "View all",
+	"hide": "Hide",
 	"edit": "Edit",
 	"delete": "Delete",
 	"hello": "Hello {{username}}!",

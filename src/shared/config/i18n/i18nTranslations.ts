@@ -6,6 +6,8 @@ export enum Translation {
 	REMOVE_SELECTED = 'remove.selected',
 	LOADING = 'loading',
 	SHOW = 'show',
+	SHOW_ALL = 'show.all',
+	HIDE = 'hide',
 	EDIT = 'edit',
 	DELETE = 'delete',
 	HELLO = 'hello',

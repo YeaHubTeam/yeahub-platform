@@ -4,15 +4,15 @@ import { SearchInputSkeleton } from '@/shared/ui/SearchInput';
 import {
 	ChooseQuestionComplexitySkeleton,
 	ChooseQuestionsCategoriesSkeleton,
-	ChooseSpecializationSkeleton,
 	RateFilterSectionSkeleton,
 } from '@/entities/question';
+import { SpecializationsListFieldSkeleton } from '@/entities/specialization';
 
 export const PublicQuestionsFilterPanelSkeleton = () => {
 	return (
 		<Flex direction="column" gap="24">
 			<SearchInputSkeleton />
-			<ChooseSpecializationSkeleton />
+			<SpecializationsListFieldSkeleton />
 			<ChooseQuestionsCategoriesSkeleton />
 			<ChooseQuestionComplexitySkeleton />
 			<RateFilterSectionSkeleton />

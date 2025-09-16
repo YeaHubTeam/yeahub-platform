@@ -25,8 +25,6 @@ export { SortQuestionsByField } from './ui/SortQuestions/SortQuestionsByField/So
 export { QuestionsSorter } from './ui/SortQuestions/QuestionsSorter/QuestionsSorter';
 export { RateFilterSection } from './ui/RateFilterSection/RateFilterSection';
 export { RateFilterSectionSkeleton } from './ui/RateFilterSection/RateFilterSection.skeleton';
-export { ChooseSpecialization } from './ui/ChooseSpecialization/ChooseSpecialization';
-export { ChooseSpecializationSkeleton } from './ui/ChooseSpecialization/ChooseSpecialization.skeleton';
 export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
 export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
