@@ -9,13 +9,11 @@ import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media
 import {
 	ChooseQuestionComplexity,
 	ChooseQuestionsCategories,
-	ChooseSpecialization,
 	RateFilterSection,
 } from '@/entities/question';
+import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 import type { FilterParams } from '@/widgets/question/QuestionsFilterPanel';
-
-const DEFAULT_SPECIALIZATION = 11;
 
 interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
@@ -45,7 +43,7 @@ export const PublicQuestionsFilterPanel = ({
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
 	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
-	const media = getChannelsForSpecialization(selectedSpecialization ?? DEFAULT_SPECIALIZATION);
+	const media = getChannelsForSpecialization(selectedSpecialization ?? DEFAULT_SPECIALIZATION_ID);
 
 	return (
 		<Flex direction="column" gap="24">
@@ -54,16 +52,15 @@ export const PublicQuestionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
-			<ChooseSpecialization
+			<SpecializationsListField
 				selectedSpecialization={selectedSpecialization}
 				onChangeSpecialization={onChangeSpecialization}
-				specializationLimit={specializationLimit}
 			/>
 			<ChooseQuestionsCategories
 				skillsLimit={specializationLimit}
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION_ID}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

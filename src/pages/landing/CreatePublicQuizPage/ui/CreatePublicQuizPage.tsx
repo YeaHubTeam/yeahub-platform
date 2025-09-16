@@ -5,7 +5,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { InterviewQuizCreate } from '@/shared/config/i18n/i18nTranslations';
 import {
 	MAX_LIMIT_CATEGORIES,
-	MAX_LIMIT_SPECIALIZATIONS,
 	DEFAULT_SPECIALIZATION_NUMBER,
 	MAX_CHOOSE_QUESTION_COUNT,
 } from '@/shared/constants/queryConstants';
@@ -21,7 +20,6 @@ import {
 	ChooseQuestionComplexity,
 	ChooseQuestionCount,
 	ChooseQuestionsCategories,
-	ChooseSpecialization,
 } from '@/entities/question';
 import {
 	QuestionModeType,
@@ -29,7 +27,7 @@ import {
 	useLazyCreateNewMockPublicQuizQuery,
 } from '@/entities/quiz';
 import { useGetSkillsListQuery } from '@/entities/skill';
-import { LS_ACTIVE_SPECIALIZATION_ID } from '@/entities/specialization';
+import { LS_ACTIVE_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 import { PublicQuizPageSkeleton } from '../../PublicQuizPage';
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
@@ -66,6 +64,7 @@ const CreatePublicQuizPage = () => {
 
 	const onChangeSpecialization = (value: number | undefined) => {
 		setSelectedSpecialization(value);
+		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(value));
 		handleFilterChange({
 			specialization: value ? [value] : undefined,
 			category: undefined,
@@ -119,10 +118,9 @@ const CreatePublicQuizPage = () => {
 						gap={isMobile ? '16' : '24'}
 						direction={'column'}
 					>
-						<ChooseSpecialization
+						<SpecializationsListField
 							selectedSpecialization={selectedSpecialization}
 							onChangeSpecialization={onChangeSpecialization}
-							specializationLimit={MAX_LIMIT_SPECIALIZATIONS}
 						/>
 						{selectedSpecialization !== undefined && (
 							<ChooseQuestionsCategories
