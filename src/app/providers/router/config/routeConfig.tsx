@@ -100,8 +100,7 @@ import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
-
-import { ResourceRequestsPage } from '../../../../pages/admin/ResourceRequestsPage';
+import { ResourceRequestsPage } from '@/pages/admin/ResourceRequestsPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
