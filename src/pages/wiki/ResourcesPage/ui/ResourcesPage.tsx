@@ -8,6 +8,7 @@ import { useModal, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -39,6 +40,7 @@ const ResourcesPage = () => {
 		onChangeResources,
 		filter,
 		onChangePage,
+		resetFilters,
 	} = useMarketplaceFilters();
 
 	const {
@@ -117,7 +119,12 @@ const ResourcesPage = () => {
 						{(isMobile || isTablet) && filterButton}
 					</Flex>
 				</Flex>
-				<ResourcesList resources={resources} />
+
+				{resources.length > 0 ? (
+					<ResourcesList resources={resources} />
+				) : (
+					<EmptyStub resetFilters={resetFilters} />
+				)}
 
 				<ResourcesPagination
 					resourcesResponse={resourcesResponse}
