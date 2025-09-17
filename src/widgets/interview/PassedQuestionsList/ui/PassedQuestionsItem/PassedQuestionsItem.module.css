@@ -2,7 +2,6 @@
   display: flex;
   gap: 20px;
   padding: 12px;
-  box-shadow: var(--main-shadow);
   border-radius: 12px;
 }
 
