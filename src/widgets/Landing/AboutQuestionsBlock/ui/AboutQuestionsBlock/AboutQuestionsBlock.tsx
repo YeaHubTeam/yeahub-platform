@@ -5,11 +5,9 @@ import styles from './AboutQuestionsBlock.module.css';
 
 export const AboutQuestionsBlock = () => {
 	return (
-		<section>
-			<div className={styles.container}>
-				<InterviewMaterials />
-				<SkillsListTicker />
-			</div>
+		<section className={styles.container} data-testid={'AboutQuestionsBlock_Section'}>
+			<InterviewMaterials />
+			<SkillsListTicker />
 		</section>
 	);
 };
