@@ -31,7 +31,7 @@ export interface CollectionFormProps {
 	questionsCount?: number;
 }
 
-export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) => {
+export const CollectionForm = ({ questionsCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, setValue, watch } = useFormContext();
 	const imageSrc = watch('imageSrc');
@@ -90,10 +90,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 	};
 
 	return (
-		<>
-			<Text variant="body5-strong">
-				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
-			</Text>
+		<Flex direction="column" gap="28">
+			<Text variant="body5-strong">{t(Collections.CREATE_PAGE_TITLE)}</Text>
 			<Flex direction="column" gap="60">
 				<Flex className={`${styles['collection-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
@@ -127,7 +125,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				</Flex>
 				<Flex direction="column" gap="8">
 					<Text variant="body3-strong" color="black-800">
-						{t(Collections.DESCRIPTION_FULL)}
+						{t(Collections.DESCRIPTION_SHORT)}
 					</Text>
 					<Text variant="body2" color="black-800">
 						{t(Collections.DESCRIPTION_LABEL)}
@@ -231,6 +229,6 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					)}
 				</FormControl>
 			</Flex>
-		</>
+		</Flex>
 	);
 };

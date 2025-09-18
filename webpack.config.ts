@@ -40,6 +40,7 @@ export default (env: EnvVariables) => {
 		httpsCert: path.resolve(__dirname, 'cert', 'localhost.crt'),
 		robots: path.resolve(__dirname, 'public', 'robots.txt'),
 		sitemap: path.resolve(__dirname, 'public', 'sitemap.xml'),
+		// webpack.config.js или vite.config.js
 	};
 
 	// Пытаемся загрузить .env файл, если он существует
