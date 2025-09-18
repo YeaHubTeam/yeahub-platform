@@ -3,48 +3,43 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Resources } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { AuthorInfo } from '@/shared/ui/AuthorInfo/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
-import { Text } from '@/shared/ui/Text';
 
-import { Media, MediaLinksBanner } from '@/entities/media';
-import { QuestionAuthor, QuestionGradeList } from '@/entities/question';
+import { ResourceAuthor } from '@/entities/resource';
 import { Skill, SkillList } from '@/entities/skill';
+import { Specialization, SpecializationsList } from '@/entities/specialization';
 
-import styles from './QuestionAdditionalInfo.module.css';
+import styles from './ResourceAdditionalInfo.module.css';
 
-export interface QuestionAdditionalInfoProps {
-	rate: number;
-	complexity: number;
+export interface ResourceAdditionalInfoProps {
 	keywords: string[];
-	questionSkills: Skill[];
-	createdBy: QuestionAuthor;
+	specializations: Specialization[];
+	resourceSkills: Skill[];
+	createdBy: ResourceAuthor;
 	className?: string;
-	route?: string;
 	showAuthor?: boolean;
-	media?: Media;
+	route: string;
 }
 
-export const QuestionAdditionalInfo = ({
-	rate,
-	complexity,
-	questionSkills,
+export const ResourceAdditionalInfo = ({
+	resourceSkills,
+	specializations,
 	keywords,
 	createdBy,
-	className,
+	className = '',
 	route,
 	showAuthor = true,
-	media,
-}: QuestionAdditionalInfoProps) => {
+}: ResourceAdditionalInfoProps) => {
 	const navigate = useNavigate();
 	const { isMobile, isTablet } = useScreenSize();
 
-	const { t } = useTranslation(i18Namespace.questions);
-	const onMoveToQuestionsWithSkills = (skillId: number) => {
+	const { t } = useTranslation(i18Namespace.resources);
+	const onMoveToResourcesWithSkills = (skillId: number) => {
 		navigate(`${route}?page=1&status=all&skills=` + encodeURIComponent(skillId));
 	};
 
@@ -53,27 +48,19 @@ export const QuestionAdditionalInfo = ({
 			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
 					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
-							{t(Questions.ADDITIONAL_INFO_LEVEL)}
-						</Text>
-						<QuestionGradeList rate={rate} complexity={complexity} />
+						<SpecializationsList specializations={specializations} />
 					</Flex>
 					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
-							{t(Questions.ADDITIONAL_INFO_SKILLS)}
-						</Text>
-						<SkillList skills={questionSkills} onClick={onMoveToQuestionsWithSkills} />
+						{t(Resources.ADDITIONAL_INFO_SKILLS)}
+						<SkillList skills={resourceSkills} onClick={onMoveToResourcesWithSkills} />
 					</Flex>
 					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
-							{t(Questions.ADDITIONAL_INFO_KEYWORDS)}
-						</Text>
+						{t(Resources.ADDITIONAL_INFO_KEYWORDS)}
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
 					{showAuthor && createdBy && (isMobile || isTablet) && (
 						<AuthorInfo createdBy={createdBy} />
 					)}
-					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>
 			</Card>
 			{showAuthor && createdBy && !isMobile && !isTablet && (

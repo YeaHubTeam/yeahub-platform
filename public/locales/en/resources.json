@@ -1,18 +1,30 @@
 {
+	"author": "Author",
+	"date": "Date: ",
+	"description": {
+		"title": "Description",
+		"label": "Add descrioption",
+		"placeholder": "Add description"
+	},
+	"keywords": {
+		"additional": "Keywords:"
+	},
+	"link": "Link: ",
+	"search.placeholder": "Enter resource...",
+	"skills": {
+		"additional": "Skills",
+		"title": "Skills"
+	},
+	"specialization": {
+		"title": "Specialization"
+	},
 	"type": "Resource type",
 	"title": {
 		"short": "Name",
 		"label": "Add resource",
 		"placeholder": "Deatiled resource description"
 	},
-	"description": {
-		"title": "Description",
-		"label": "Add descrioption",
-		"placeholder": "Add description"
-	},
-	"search.placeholder": "Enter resource...",
-	"author": "Author",
-	"specialization": {
-		"title": "Specialization"
+	"additional": {
+		"aria.label": "Go to additional info"
 	}
 }

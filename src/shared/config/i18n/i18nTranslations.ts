@@ -22,6 +22,7 @@ export enum Translation {
 	BACK_BUTTON = 'back.button',
 	EXPAND = 'expand',
 	COLLAPSE = 'collapse',
+	AUTHOR = 'author',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -408,11 +409,16 @@ export enum InterviewStatistics {
 }
 
 export enum Resources {
-	TITLE_SHORT = 'title.short',
-	DESCRIPTION = 'description.title',
-	TYPE = 'type',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+	ADDITIONAL_INFO_KEYWORDS = 'keywords.additional',
+	ADDITIONAL_INFO_SKILLS = 'skills.additional',
 	AUTHOR = 'author',
+	DATE = 'date',
+	DESCRIPTION = 'description.title',
+	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
+	TITLE_SHORT = 'title.short',
+	TYPE = 'type',
 }
 
 export enum Questions {

@@ -16,7 +16,7 @@ export interface Resource {
 	specializations: Specialization[];
 	skills: Skill[];
 	createdById: string;
-	createdBy: Author;
+	createdBy: ResourceAuthor;
 	createdAt: string;
 	updatedAt: string;
 	iconBase64?: string;
@@ -102,7 +102,7 @@ export interface ResourceType {
 	description: string;
 }
 
-export type Author = { id: string; username: string };
+export type ResourceAuthor = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;
