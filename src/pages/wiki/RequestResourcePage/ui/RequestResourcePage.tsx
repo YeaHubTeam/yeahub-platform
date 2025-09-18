@@ -1,5 +1,5 @@
-import { ResourceCreateForm } from '@/features/resources/createResource';
+import { ResourceRequestCreateForm } from '@/features/resources/createResourceRequest';
 
-const RequestResourcePage = () => <ResourceCreateForm />;
+const RequestResourcePage = () => <ResourceRequestCreateForm />;
 
 export default RequestResourcePage;

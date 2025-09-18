@@ -14,5 +14,10 @@
 	"author": "Автор",
 	"specialization": {
 		"title": "Специализация"
+	},
+	"submit": {
+		"for": {
+			"moderation": "Отправить на модерацию"
+		}
 	}
 }

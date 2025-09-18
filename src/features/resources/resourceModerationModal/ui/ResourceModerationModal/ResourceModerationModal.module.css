@@ -1,0 +1,37 @@
+.moderation-content {
+  padding: 64px 20px !important;
+}
+
+.modal {
+  max-width: 420px;
+  min-height: 176px;
+}
+
+.modal img {
+  margin-bottom: 20px;
+  width: 87px;
+  height: 79px;
+}
+
+.modal-title {
+  margin-bottom: 8px;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.modal-subtitle {
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.button {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-s);
+}
+
+.button-disabled {
+  color: var(--text-color-link-disabled);
+  pointer-events: none;
+}

@@ -51,6 +51,8 @@ export enum Translation {
 	MODAL_DELETE_TITLE = 'modal.delete.title',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
+	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
+	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 
 	FILE_LOADER_LINK = 'file.loader.link',
 	FILE_LOADER_TEXT = 'file.loader.text',
@@ -178,6 +180,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
+	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -410,6 +413,7 @@ export enum Resources {
 	TYPE = 'type',
 	AUTHOR = 'author',
 	SPECIALIZATION_TITLE = 'specialization.title',
+	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
 }
 
 export enum Questions {

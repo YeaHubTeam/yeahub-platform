@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -32,6 +32,12 @@ export const SpecializationSelect = ({
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
 
+	useEffect(() => {
+		const newSelected = Array.isArray(value) ? value : value !== undefined ? [value] : [];
+		if (JSON.stringify(newSelected) !== JSON.stringify(selectedSpecializations)) {
+			setSelectedSpecializations(newSelected);
+		}
+	}, [value]);
 	const handleChange = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
 		const numValue = +newValue;
