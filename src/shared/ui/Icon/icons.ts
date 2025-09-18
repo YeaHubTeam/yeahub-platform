@@ -53,6 +53,8 @@ import Specialization from '@/shared/assets/icons/specialization.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
+import ThumbsDown from '@/shared/assets/icons/thumbsDown.svg';
+import ThumbsUp from '@/shared/assets/icons/thumbsUp.svg';
 import TikTok from '@/shared/assets/icons/tiktok.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
@@ -134,4 +136,6 @@ export const icons: Record<IconName, IconComponent> = {
 	favorite: Favorite,
 	favoriteRed: FavoriteRed,
 	listWithBackground: ListWithBackground,
+	thumbsDown: ThumbsDown,
+	thumbsUp: ThumbsUp,
 };
