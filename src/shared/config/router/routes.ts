@@ -147,6 +147,10 @@ export const ROUTES = {
 		route: 'settings',
 		page: '/dashboard/settings',
 	},
+	analytics: {
+		route: 'analytics',
+		page: '/dashboard/analytics',
+	},
 	interview: {
 		route: 'interview',
 		page: '/dashboard/interview',
