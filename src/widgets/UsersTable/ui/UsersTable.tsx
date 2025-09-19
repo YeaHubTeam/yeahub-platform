@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -29,8 +28,8 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 	const renderTableHeader = () => {
 		const columns = {
 			username: t(Users.NAME),
-			roles: t(Users.ROLE),
 			email: t(Users.EMAIL),
+			roles: t(Users.ROLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -39,8 +38,8 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 	const renderTableBody = (user: User) => {
 		const columns = {
 			username: `${user.username}`,
-			roles: <UserRolesList userRoles={user.userRoles} />,
 			email: user.email,
+			roles: <UserRolesList userRoles={user.userRoles} />,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
@@ -107,6 +106,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
 			items={users}
+			columnWidths={['auto', 'auto', '15%']}
 		/>
 	);
 };

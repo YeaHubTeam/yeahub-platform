@@ -24,6 +24,7 @@ interface TableProps<Id extends string | number, T> {
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
+	columnWidths?: string[];
 }
 
 /**
@@ -43,6 +44,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	renderActions,
 	selectedItems,
 	onSelectItems,
+	columnWidths,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -65,6 +67,18 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 
 	return (
 		<table className={styles.table} data-testid="table">
+			<colgroup>
+				{selectedItems && <col className={styles.cell} />}
+				{columnWidths?.map((width, idx) => (
+					<col key={idx} style={{ width }} />
+				))}
+				{hasActions && (
+					<col
+						className={styles['actions-column']}
+						style={{ width: '40px', padding: '16px 0px 14px' }}
+					/>
+				)}
+			</colgroup>
 			<thead className={styles.head}>
 				<tr>
 					{selectedItems && (
@@ -73,7 +87,12 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						</td>
 					)}
 					{renderTableHeader()}
-					{hasActions && <td className={styles['actions-column']}></td>}
+					{hasActions && (
+						<td
+							className={styles['actions-column']}
+							style={{ width: '40px', padding: '16px 0px 14px' }}
+						></td>
+					)}
 				</tr>
 			</thead>
 			<tbody>
@@ -89,7 +108,9 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 							</td>
 						)}
 						{renderTableBody(item)}
-						{hasActions && <td>{renderActions?.(item)}</td>}
+						{hasActions && (
+							<td style={{ width: '40px', padding: '16px 0px 14px' }}>{renderActions?.(item)}</td>
+						)}
 					</tr>
 				))}
 			</tbody>

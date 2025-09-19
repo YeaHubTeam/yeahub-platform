@@ -140,6 +140,7 @@ export const QuestionsTable = ({
 			items={questions}
 			selectedItems={selectedQuestions}
 			onSelectItems={onSelectQuestions}
+			columnWidths={['auto', '20%', '15%']}
 		/>
 	);
 };

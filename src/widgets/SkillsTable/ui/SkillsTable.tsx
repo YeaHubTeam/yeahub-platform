@@ -110,6 +110,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			items={skills}
 			selectedItems={selectedSkills}
 			onSelectItems={onSelectSkills}
+			columnWidths={['20%', 'auto']}
 		/>
 	);
 };

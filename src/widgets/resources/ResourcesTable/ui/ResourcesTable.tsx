@@ -38,8 +38,8 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
-			type: t(Resources.TYPE),
 			description: t(Resources.DESCRIPTION),
+			type: t(Resources.TYPE),
 			specialization: t(Resources.SPECIALIZATION_TITLE),
 		};
 
@@ -49,8 +49,8 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			description: resource.description,
+			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			specialization: (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -127,6 +127,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
 			items={resources}
+			columnWidths={['auto', 'auto', '15%', '20%']}
 		/>
 	);
 };

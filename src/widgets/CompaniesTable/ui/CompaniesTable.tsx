@@ -40,8 +40,8 @@ export const CompaniesTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			imageSrc: t(Companies.ICON_TITLE),
-			title: t(Companies.TITLE_FULL),
+			imageSrc: t(Companies.ICON_SHORT),
+			title: t(Companies.TITLE_SHORT),
 		};
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};
@@ -127,6 +127,7 @@ export const CompaniesTable = ({
 			items={companies as SelectedAdminEntities}
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
+			columnWidths={['100px', 'auto']}
 		/>
 	);
 };

@@ -112,6 +112,7 @@ export const SpecializationsTable = ({
 			renderActions={renderActions}
 			selectedItems={selectedSpecializations}
 			onSelectItems={onSelectSpecializations}
+			columnWidths={['25%', 'auto']}
 		/>
 	);
 };

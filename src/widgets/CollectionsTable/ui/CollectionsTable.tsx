@@ -140,6 +140,7 @@ export const CollectionsTable = ({
 			items={collections}
 			selectedItems={selectedCollections}
 			onSelectItems={onSelectCollections}
+			columnWidths={['100px', '30%', 'auto', '90px']}
 		/>
 	);
 };
