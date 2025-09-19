@@ -18,7 +18,7 @@
 	"specialization": {
 		"title": "Specialization"
 	},
-	"type": "Resource type",
+	"type": "Resource type: ",
 	"title": {
 		"short": "Name",
 		"label": "Add resource",

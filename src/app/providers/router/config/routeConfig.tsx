@@ -42,7 +42,7 @@ import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
-import { ResourcePage } from '@/pages/admin/ResourcePage/ResourcePage';
+import { ResourcePage } from '@/pages/admin/ResourcePage';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';

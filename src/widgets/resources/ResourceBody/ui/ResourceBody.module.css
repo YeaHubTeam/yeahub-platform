@@ -1,0 +1,22 @@
+.resource-body {
+  display: flex;
+  flex-grow: 1;  
+}
+
+.image-wrapper {
+  display: flex;
+  margin-right: 10px;
+  min-width: 250px;
+  min-height: 166px;
+}
+
+
+@media screen and (width <= 480px) {
+  .resource-body {
+    flex-direction: column;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+}

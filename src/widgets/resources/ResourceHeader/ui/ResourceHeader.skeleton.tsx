@@ -2,7 +2,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { ResourceAdditionalInfoDrawerSkeleton } from '../ResourceAdditionalInfoDrawer/ui/ResourceAdditionalInfoDrawer.skeleton';
+import { ResourceAdditionalInfoDrawerSkeleton } from '../../ResourceAdditionalInfoDrawer/ui/ResourceAdditionalInfoDrawer.skeleton';
 
 export const ResourceHeaderSkeleton = () => {
 	const { isMobile, isTablet } = useScreenSize();

@@ -7,10 +7,10 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetResourceByIdQuery } from '@/entities/resource';
-import { ResourceCard } from '@/entities/resource';
 
 import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
-import { ResourceHeader } from '@/widgets/resources/ResourceHeader/ResourceHeader';
+import { ResourceBody } from '@/widgets/resources/ResourceBody';
+import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 
 import styles from './ResourcePage.module.css';
 import { ResourcePageSkeleton } from './ResourcePage.skeleton';
@@ -34,9 +34,11 @@ export const ResourcePage = () => {
 		<>
 			<BackHeader />
 			<Flex gap="20">
-				<Card withOutsideShadow className={styles.main}>
-					<ResourceHeader resource={resource} />
-					<ResourceCard resource={resource} />
+				<Card withOutsideShadow>
+					<Flex direction="column" gap="20" maxWidth>
+						<ResourceHeader resource={resource} />
+						<ResourceBody resource={resource} />
+					</Flex>
 				</Card>
 
 				{!isMobile && !isTablet && (

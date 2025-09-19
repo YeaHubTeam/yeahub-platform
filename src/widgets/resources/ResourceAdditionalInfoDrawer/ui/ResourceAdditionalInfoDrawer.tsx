@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import SlidersHorizontalIcon from '@/shared/assets/icons/slidersHorizontal.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Resources } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
@@ -29,11 +29,11 @@ export const ResourceAdditionalInfoDrawer = ({ resource }: ResourceAdditionalInf
 	return (
 		<>
 			<IconButton
-				className={classNames({ active: isOpen })}
+				className={styles['icon-button']}
 				aria-label={t(Resources.ADDITIONAL_INFO_ARIA_LABEL)}
 				form="square"
-				icon={<PopoverIcon />}
-				size="small"
+				icon={<SlidersHorizontalIcon />}
+				size="medium"
 				variant="tertiary"
 				onClick={onToggle}
 			/>

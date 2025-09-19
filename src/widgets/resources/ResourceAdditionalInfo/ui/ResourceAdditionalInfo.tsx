@@ -46,7 +46,7 @@ export const ResourceAdditionalInfo = ({
 	return (
 		<>
 			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
-				<Flex direction="column" gap="24">
+				<Flex gap="24" direction="column">
 					<Flex direction="column" gap="8">
 						<SpecializationsList specializations={specializations} />
 					</Flex>
