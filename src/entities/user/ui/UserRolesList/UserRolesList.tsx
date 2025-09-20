@@ -29,7 +29,7 @@ export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 	};
 
 	return (
-		<Flex gap="12" align="start" direction="column">
+		<Flex gap="12" align="start" wrap="wrap">
 			{userRoles?.map((role) => (
 				<StatusChip
 					key={role.id}

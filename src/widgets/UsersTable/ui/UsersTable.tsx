@@ -25,6 +25,16 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			username: 'auto',
+			email: 'auto',
+			roles: '15%',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			username: t(Users.NAME),
@@ -106,7 +116,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
 			items={users}
-			columnWidths={['auto', 'auto', '15%']}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

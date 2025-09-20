@@ -24,7 +24,10 @@ interface TableProps<Id extends string | number, T> {
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
-	columnWidths?: string[];
+	/**
+	 * Render function for defining column widths in the table.
+	 */
+	renderTableColumnWidths?: () => ReactNode;
 }
 
 /**
@@ -44,7 +47,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	renderActions,
 	selectedItems,
 	onSelectItems,
-	columnWidths,
+	renderTableColumnWidths,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -69,15 +72,8 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 		<table className={styles.table} data-testid="table">
 			<colgroup>
 				{selectedItems && <col className={styles.cell} />}
-				{columnWidths?.map((width, idx) => (
-					<col key={idx} style={{ width }} />
-				))}
-				{hasActions && (
-					<col
-						className={styles['actions-column']}
-						style={{ width: '40px', padding: '16px 0px 14px' }}
-					/>
-				)}
+				{renderTableColumnWidths?.()}
+				{hasActions && <col className={styles['actions-column']} />}
 			</colgroup>
 			<thead className={styles.head}>
 				<tr>
@@ -87,12 +83,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						</td>
 					)}
 					{renderTableHeader()}
-					{hasActions && (
-						<td
-							className={styles['actions-column']}
-							style={{ width: '40px', padding: '16px 0px 14px' }}
-						></td>
-					)}
+					{hasActions && <td className={styles['actions-column']}></td>}
 				</tr>
 			</thead>
 			<tbody>
@@ -108,9 +99,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 							</td>
 						)}
 						{renderTableBody(item)}
-						{hasActions && (
-							<td style={{ width: '40px', padding: '16px 0px 14px' }}>{renderActions?.(item)}</td>
-						)}
+						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
 					</tr>
 				))}
 			</tbody>

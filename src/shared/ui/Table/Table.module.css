@@ -13,12 +13,10 @@ td {
   padding: 16px 8px 14px;
 }
 
-td.cell {
-  padding: 16px 4px 14px 8px;
-  width: 32px;
-}
-
 .cell {
+  padding: 0 6px;
+  width: 32px;
+
   span {
     position: relative;
     top: 3px;
@@ -30,9 +28,7 @@ td.cell {
   border-bottom: 1px solid var(--color-black-25);
 }
 
-.table td.actions-column,
-.table th.actions-column {
-  width: 40px !important;
-  min-width: 40px !important;
-  max-width: 40px !important;
+.actions-column {
+  padding: 0;
+  width: 40px;
 }

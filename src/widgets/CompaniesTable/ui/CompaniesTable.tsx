@@ -38,6 +38,15 @@ export const CompaniesTable = ({
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			imageSrc: '100px',
+			title: 'auto',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			imageSrc: t(Companies.ICON_SHORT),
@@ -127,7 +136,7 @@ export const CompaniesTable = ({
 			items={companies as SelectedAdminEntities}
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
-			columnWidths={['100px', 'auto']}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

@@ -35,6 +35,17 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 		i18Namespace.marketplace,
 	]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			title: 'auto',
+			description: 'auto',
+			type: '15%',
+			specialization: '20%',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
@@ -127,7 +138,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
 			items={resources}
-			columnWidths={['auto', 'auto', '15%', '20%']}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };
