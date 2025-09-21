@@ -4,7 +4,11 @@ export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
 
-export type { FilterParams } from './model/types/filters';
+export type {
+	FilterParams,
+	ResourcesFilterStatus,
+	MyResourcesFilterParams,
+} from './model/types/filters';
 
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
 export { ResourcesFilterSection } from './ui/ResourcesFilterSection/ResourcesFilterSection';
