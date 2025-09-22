@@ -40,7 +40,11 @@ const resourceApi = baseApi.injectEndpoints({
 		>({
 			query: (params) => ({
 				url: resourceApiUrls.getMyRequestsResources,
-				params: { page: 1, limit: 10, ...params },
+				params: {
+					page: 1,
+					limit: 10,
+					...params,
+				},
 			}),
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),

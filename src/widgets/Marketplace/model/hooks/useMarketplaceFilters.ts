@@ -1,4 +1,4 @@
-import { useQueryFilter } from '@/shared/hooks';
+import { FilterFromUser, useQueryFilter } from '@/shared/hooks';
 
 export const useMarketplaceFilters = () => {
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
@@ -26,6 +26,10 @@ export const useMarketplaceFilters = () => {
 		handleFilterChange({ page });
 	};
 
+	const onChangeStatus = (status: FilterFromUser['status']) => {
+		handleFilterChange({ status, page: 1 });
+	};
+
 	return {
 		filter,
 		onChangeSearchParams,
@@ -34,5 +38,6 @@ export const useMarketplaceFilters = () => {
 		onChangeSpecialization,
 		onChangePage,
 		resetFilters,
+		onChangeStatus,
 	};
 };
