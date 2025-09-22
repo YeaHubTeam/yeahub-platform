@@ -1,3 +1,5 @@
+import { ResourceRequestStatus } from './resource';
+
 export interface FilterParams {
 	specialization?: number | number[];
 	skills?: number[];
@@ -5,10 +7,8 @@ export interface FilterParams {
 	keywords?: string | string[];
 }
 
-export type ResourcesFilterStatus = 'pending' | 'approved' | 'rejected';
-
 export interface MyResourcesFilterParams extends FilterParams {
-	status?: ResourcesFilterStatus;
+	status?: ResourceRequestStatus;
 }
 
 export type DisplayMode = 'popover' | 'link';

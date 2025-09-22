@@ -12,7 +12,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetMyRequestsResourcesQuery } from '@/entities/resource';
-import { MyResourcesFilterParams, ResourcesFilterStatus } from '@/entities/resource';
+import { MyResourcesFilterParams, ResourceRequestStatus } from '@/entities/resource';
 
 import {
 	MyResourcesList,
@@ -46,9 +46,9 @@ const MyResourcesPage = () => {
 	} = useGetMyRequestsResourcesQuery({
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
-		status: filter.status as ResourcesFilterStatus,
-		title: filter.title,
-		resources: filter.resources,
+		status: filter.status !== 'all' ? (filter.status as ResourceRequestStatus) : undefined,
+		search: filter.title,
+		types: filter.resources,
 	});
 
 	const resources = resourcesResponse?.data ?? [];

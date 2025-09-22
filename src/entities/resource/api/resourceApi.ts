@@ -38,19 +38,14 @@ const resourceApi = baseApi.injectEndpoints({
 			GetMyRequestsResourcesResponse,
 			GetMyRequestsResourcesParamsRequest
 		>({
-			query: (params) => {
-				const { status, ...rest } = params;
-
-				return {
-					url: resourceApiUrls.getMyRequestsResources,
-					params: {
-						page: 1,
-						limit: 10,
-						...rest,
-						...(status !== 'all' ? { status } : {}),
-					},
-				};
-			},
+			query: (params) => ({
+				url: resourceApiUrls.getMyRequestsResources,
+				params: {
+					page: 1,
+					limit: 10,
+					...params,
+				},
+			}),
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
 	}),

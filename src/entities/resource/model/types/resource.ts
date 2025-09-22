@@ -61,9 +61,9 @@ export interface GetResourcesListParamsRequest {
 export interface GetMyRequestsResourcesParamsRequest {
 	page?: number;
 	limit?: number;
-	title?: string;
-	status?: 'pending' | 'approved' | 'rejected' | 'all';
-	resources?: string[];
+	search?: string;
+	status?: ResourceRequestStatus | 'all';
+	types?: string[];
 	skills?: number[];
 }
 
