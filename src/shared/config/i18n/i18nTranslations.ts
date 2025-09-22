@@ -670,6 +670,7 @@ export enum Companies {
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	ICON_TITLE = 'icon.title',
+	ICON_SHORT = 'icon.short',
 	ICON_LABEL = 'icon.label',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',

@@ -36,6 +36,17 @@ export const CollectionsTable = ({
 
 	const { t } = useTranslation([i18Namespace.collection, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			imageSrc: '100px',
+			title: '30%',
+			description: 'auto',
+			questionsCount: '90px',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			imageSrc: t(Collections.ICON_TITLE_SHORT),
@@ -140,6 +151,7 @@ export const CollectionsTable = ({
 			items={collections}
 			selectedItems={selectedCollections}
 			onSelectItems={onSelectCollections}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };
