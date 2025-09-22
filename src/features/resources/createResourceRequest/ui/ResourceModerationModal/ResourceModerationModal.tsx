@@ -17,11 +17,7 @@ interface ResourceModerationModalProps {
 	onClose: () => void;
 }
 
-export const ResourceModerationModal = ({
-	isOpen,
-	resourceData,
-	onClose,
-}: ResourceModerationModalProps) => {
+export const ResourceModerationModal = ({ isOpen, onClose }: ResourceModerationModalProps) => {
 	const { t } = useTranslation([i18Namespace.resources]);
 	return (
 		<Modal
@@ -43,9 +39,7 @@ export const ResourceModerationModal = ({
 				</Text>
 
 				<Text variant="body3-accent" className={styles['modal-subtitle']}>
-					{t(Resources.MODAL_RESOURCE_MODERATION_MESSAGE, {
-						resourceName: resourceData?.name,
-					})}
+					{t(Resources.MODAL_RESOURCE_MODERATION_MESSAGE)}
 				</Text>
 			</Flex>
 		</Modal>
