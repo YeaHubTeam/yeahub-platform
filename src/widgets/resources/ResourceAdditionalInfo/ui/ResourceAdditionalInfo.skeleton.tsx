@@ -16,24 +16,26 @@ export const ResourceAdditionalInfoSkeleton = ({
 	className,
 }: Partial<ResourceAdditionalInfoProps>) => {
 	const { isMobile, isTablet } = useScreenSize();
+
 	return (
-		<>
-			<CardSkeleton className={classNames(styles['normal-height'], className)} withOutsideShadow>
+		<Flex direction="column" align="start">
+			<CardSkeleton className={(classNames(styles['additional']), className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
 					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={150} />
+						<TextSkeleton variant="body3" width={200} />
 					</Flex>
 					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={150} />
+						<TextSkeleton variant="body3" width={200} />
 						<SkillListSkeleton />
 					</Flex>
 					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={150} />
+						<TextSkeleton variant="body3" width={200} />
 						<KeywordsListSkeleton />
 					</Flex>
 				</Flex>
 			</CardSkeleton>
-			{!isMobile && !isTablet && <AuthorInfoSkeleton />}
-		</>
+
+			{!isMobile && !isTablet && <AuthorInfoSkeleton isCenter />}
+		</Flex>
 	);
 };

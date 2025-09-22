@@ -1,15 +1,15 @@
 {
 	"author": "Author",
-	"date": "Date: ",
+	"date": "Date",
 	"description": {
 		"title": "Description",
 		"label": "Add descrioption",
 		"placeholder": "Add description"
 	},
 	"keywords": {
-		"additional": "Keywords:"
+		"additional": "Keywords"
 	},
-	"link": "Link: ",
+	"link": "Link",
 	"search.placeholder": "Enter resource...",
 	"skills": {
 		"additional": "Skills",
@@ -18,7 +18,7 @@
 	"specialization": {
 		"title": "Specialization"
 	},
-	"type": "Resource type: ",
+	"type": "Resource type",
 	"title": {
 		"short": "Name",
 		"label": "Add resource",

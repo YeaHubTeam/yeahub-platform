@@ -1,4 +1,5 @@
 import { Response } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -21,8 +22,8 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: QuestionAuthor;
-	updatedBy: QuestionAuthor | null;
+	createdBy: Author;
+	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
 	checksCount?: number;
@@ -97,8 +98,6 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
-
-export type QuestionAuthor = { id: string; username: string };
 
 export type SkillQuestion = {
 	skill: string;

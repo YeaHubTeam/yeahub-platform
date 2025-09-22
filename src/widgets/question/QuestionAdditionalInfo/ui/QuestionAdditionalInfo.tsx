@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
-import { AuthorInfo } from '@/shared/ui/AuthorInfo/AuthorInfo';
+import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
 import { Media, MediaLinksBanner } from '@/entities/media';
-import { QuestionAuthor, QuestionGradeList } from '@/entities/question';
+import { QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
 
 import styles from './QuestionAdditionalInfo.module.css';
@@ -22,7 +22,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
-	createdBy: QuestionAuthor;
+	createdBy: Author;
 	className?: string;
 	route?: string;
 	showAuthor?: boolean;

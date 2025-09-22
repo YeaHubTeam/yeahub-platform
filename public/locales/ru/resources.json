@@ -1,15 +1,15 @@
 {
 	"author": "Автор",
-	"date": "Дата: ",
+	"date": "Дата",
 	"keywords": {
-		"additional": "Ключевые слова:"
+		"additional": "Ключевые слова"
 	},
 	"description": {
 		"title": "Описание",
 		"label": "Добавьте описание",
 		"placeholder": "Добавьте описание"
 	},
-	"link": "Ссылка: ",
+	"link": "Ссылка",
 
 	"search.placeholder": "Введите ресурс...",
 	"specialization": {
@@ -19,7 +19,7 @@
 		"additional": "Навыки",
 		"title": "Навыки"
 	},
-	"type": "Тип ресурса:",
+	"type": "Тип ресурса",
 	"title": {
 		"short": "Название",
 		"label": "Добавьте вопрос",

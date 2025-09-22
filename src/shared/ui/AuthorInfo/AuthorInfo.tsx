@@ -9,11 +9,13 @@ import { useCurrentProject } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+export interface Author {
+	id: string;
+	username: string;
+}
+
 export interface AuthorInfoProps {
-	createdBy: {
-		id: string;
-		username: string;
-	};
+	createdBy: Author;
 	isCenter?: boolean;
 }
 

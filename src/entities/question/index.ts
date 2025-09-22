@@ -2,7 +2,6 @@ export type {
 	Question,
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
-	QuestionAuthor,
 	GetQuestionsBySpecializationCountResponse,
 } from './model/types/question';
 export {

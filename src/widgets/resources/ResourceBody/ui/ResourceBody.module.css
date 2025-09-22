@@ -1,13 +1,16 @@
 .resource-body {
   display: flex;
-  flex-grow: 1;  
+  align-items: start;
+  align-self: stretch;
+  gap: 20px;  
+
 }
 
 .image-wrapper {
   display: flex;
-  margin-right: 10px;
-  min-width: 250px;
-  min-height: 166px;
+  padding: 10px;
+  min-width: 149px;
+  min-height: 157px;
 }
 
 

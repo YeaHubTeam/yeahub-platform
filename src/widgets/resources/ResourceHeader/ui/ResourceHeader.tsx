@@ -16,12 +16,14 @@ export const ResourceHeader = ({ resource }: ResourceHeaderProps) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
-		<Flex direction="column" gap="20" flex={1} className={styles.header}>
+		<Flex direction="column" gap="8" className={styles.header}>
 			<Flex gap="10" wrap="nowrap" justify="between">
-				<Text variant="head3">{resource.name}</Text>
+				<Text variant="body6" isMainTitle>
+					{resource.name}
+				</Text>
 				{(isMobile || isTablet) && <ResourceAdditionalInfoDrawer resource={resource} />}
 			</Flex>
-			<Text variant="body3-accent">{resource.description}</Text>
+			<Text variant="body3">{resource.description}</Text>
 		</Flex>
 	);
 };

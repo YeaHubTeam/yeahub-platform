@@ -16,17 +16,14 @@ export const ResourcePageSkeleton = () => {
 		<>
 			<BackHeaderSkeleton />
 			<Flex gap="20">
-				<CardSkeleton withOutsideShadow>
-					<Flex direction="column" gap="20" maxWidth>
+				<CardSkeleton withOutsideShadow className={styles.main}>
+					<Flex maxWidth direction="column" gap="20">
 						<ResourceHeaderSkeleton />
 						<ResourceBodySkeleton />
 					</Flex>
-					{!isMobile && !isTablet && (
-						<Flex direction="column" gap="20" className={styles.additional}>
-							<ResourceAdditionalInfoSkeleton />
-						</Flex>
-					)}
 				</CardSkeleton>
+
+				{!isMobile && !isTablet && <ResourceAdditionalInfoSkeleton />}
 			</Flex>
 		</>
 	);

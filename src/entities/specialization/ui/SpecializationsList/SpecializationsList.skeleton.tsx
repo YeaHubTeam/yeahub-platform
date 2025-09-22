@@ -9,7 +9,7 @@ export const SpecializationsListSkeleton = () => {
 		<Flex direction="column" gap="8">
 			<TextSkeleton variant="body3" width={150} />
 			<ul className={styles['param-wrapper']}>
-				{[...Array(10)].map((_, index) => (
+				{[...Array(5)].map((_, index) => (
 					<ChipSkeleton key={index} />
 				))}
 			</ul>{' '}

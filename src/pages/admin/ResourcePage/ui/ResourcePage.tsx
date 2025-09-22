@@ -34,23 +34,21 @@ export const ResourcePage = () => {
 		<>
 			<BackHeader />
 			<Flex gap="20">
-				<Card withOutsideShadow>
-					<Flex direction="column" gap="20" maxWidth>
+				<Card withOutsideShadow className={styles.main}>
+					<Flex maxWidth direction="column" gap="20">
 						<ResourceHeader resource={resource} />
 						<ResourceBody resource={resource} />
 					</Flex>
 				</Card>
 
 				{!isMobile && !isTablet && (
-					<Flex direction="column" gap="20" className={styles.additional}>
-						<ResourceAdditionalInfo
-							createdBy={createdBy}
-							keywords={keywords || []}
-							resourceSkills={skills}
-							specializations={specializations}
-							route={ROUTES.admin.resources.page}
-						/>
-					</Flex>
+					<ResourceAdditionalInfo
+						createdBy={createdBy}
+						keywords={keywords || []}
+						resourceSkills={skills}
+						specializations={specializations}
+						route={ROUTES.admin.resources.page}
+					/>
 				)}
 			</Flex>
 		</>
