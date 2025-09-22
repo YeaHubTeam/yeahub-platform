@@ -7,17 +7,10 @@
   height: 48px;
   clip-path: inset(0 round 8px);
   background-color: var(--color-black-25);
-} 
+}
 
 td {
   padding: 16px 8px 14px;
-}
-
-.cell {
-  span {
-    position: relative;
-    top: 3px;
-  }
 }
 
 .row {
@@ -25,6 +18,57 @@ td {
   border-bottom: 1px solid var(--color-black-25);
 }
 
+.head-analysis-view {
+  width: 48px;
+  clip-path: inset(0 round 16px 16px 0 0);
+  background-color: var(--color-purple-700);
+}
+
+.head-analysis-view td {
+  padding: 13.5px 20px;
+}
+
+.row-analysis-view {
+  height: 48px;
+}
+
+.row-analysis-view td {
+  padding: 13.5px 20px;
+}
+
+.head-analysis-view td:first-child {
+  padding: 13.5px 15px;
+}
+
+.row-analysis-view td:first-child {
+  width: 48px;
+  text-align: center;
+}
+
+.row-analysis-view td:last-child {
+  text-align: end;
+}
+
+.head-analysis-view tr:first-child > td:last-child {
+  width: 241px;
+  text-align: end;
+}
+
+.row-analysis-view:last-child {
+  clip-path: inset(0 round 0 0 16px 16px);
+}
+
+.row-analysis-view:hover {
+  background-color: var(--color-purple-100);
+}
+
 .actions-column {
   width: 50px;
+}
+
+.cell {
+  span {
+    position: relative;
+    top: 3px;
+  }
 }

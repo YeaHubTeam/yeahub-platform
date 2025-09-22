@@ -67,7 +67,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 
 	return (
 		<table className={styles.table} data-testid="table">
-			<thead className={`${styles.head} ${analysisView ? styles.head_analysisView : ''}`}>
+			<thead className={`${styles.head} ${analysisView ? styles['head-analysis-view'] : ''}`}>
 				<tr>
 					{selectedItems && (
 						<td className={styles.cell}>
@@ -82,7 +82,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				{items.map((item) => (
 					<tr
 						key={item.id}
-						className={`${analysisView ? styles.row_analysisView : styles.row}`}
+						className={`${analysisView ? styles['row-analysis-view'] : styles.row}`}
 						data-testid="table-row"
 					>
 						{selectedItems && (
