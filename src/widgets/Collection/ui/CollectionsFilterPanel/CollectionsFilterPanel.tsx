@@ -9,7 +9,7 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
-import { ChooseSpecialization } from '@/entities/question';
+import { SpecializationsListField } from '@/entities/specialization';
 
 import { FilterParams } from '../../model/types/types';
 
@@ -67,7 +67,7 @@ export const CollectionsFilterPanel = ({
 			/>
 			{project === 'landing' && (
 				<>
-					<ChooseSpecialization
+					<SpecializationsListField
 						selectedSpecialization={localSpecialization}
 						onChangeSpecialization={handleSpecializationChange}
 					/>

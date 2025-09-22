@@ -13,10 +13,7 @@ export const editProfileSchema = yup.object().shape({
 		.min(2, ({ min }) => i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: min }))
 		.max(30, ({ max }) => i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: max })),
 	specialization: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	email: yup
-		.string()
-		.email(i18n.t(Translation.VALIDATION_EMAIL))
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	email: yup.string().nullable().email(i18n.t(Translation.VALIDATION_EMAIL)),
 	location: yup.string().nullable(),
 	skillLevel: yup.string(),
 	socialNetworks: yup.array(),

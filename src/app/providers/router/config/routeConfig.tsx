@@ -100,7 +100,8 @@ import '../../../styles/App.css';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
-import { RequestResourcePage } from '@/pages/wiki/RequestResourcePage';
+import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
+import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -634,14 +635,12 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.wiki.route,
+				path: '/dashboard',
 				element: <Outlet />,
-				handle: {
-					crumb: Translation.CRUMBS_WIKI,
-				},
 				children: [
 					{
 						path: ROUTES.wiki.resources.route,
+						element: <Outlet />,
 						handle: {
 							crumb: Translation.CRUMBS_RESOURCES,
 						},
@@ -656,9 +655,16 @@ export const router = createBrowserRouter([
 								children: [
 									{
 										path: ROUTES.wiki.resources.requests.create.route,
-										element: <RequestResourcePage />,
+										element: <RequestResourceCreatePage />,
 									},
 								],
+							},
+							{
+								path: ROUTES.wiki.resources.my.route,
+								element: <MyResourcesPage />,
+								handle: {
+									crumb: Translation.CRUMBS_RESOURCES_MY,
+								},
 							},
 						],
 					},

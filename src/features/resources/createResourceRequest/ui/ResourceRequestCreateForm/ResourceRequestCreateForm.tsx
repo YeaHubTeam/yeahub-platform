@@ -10,8 +10,6 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { ResourceModerationModal } from '@/features/resources/resourceModerationModal';
-
 import { useCreateResourceRequestMutation } from '../../api/createResourceRequestApi';
 import { resourceRequestCreateSchema } from '../../model/lib/validation/resourceRequestCreateSchema';
 import {
@@ -19,6 +17,7 @@ import {
 	CreateResourceRequestFormValues,
 	CreateResourceRequestResponse,
 } from '../../model/types/resourceRequestCreateTypes';
+import { ResourceModerationModal } from '../ResourceModerationModal/ResourceModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestCreateFormWithHeader/ResourceRequestFormWithHeader';
 
 export const ResourceRequestCreateForm = () => {
@@ -70,12 +69,11 @@ export const ResourceRequestCreateForm = () => {
 		try {
 			const result = await createResourceRequestMutation({
 				resource: requestBody,
-				isUser: true,
 			}).unwrap();
 			methods.reset();
 			handleOpenModal(result);
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error) {
-			console.error('Ошибка при отправке запроса:', error);
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_REQUEST_CREATE_FAILED));
 		}
 	};

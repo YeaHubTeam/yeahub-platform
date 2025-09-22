@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -33,13 +33,6 @@ export const ResourcesSelect = ({
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const { data } = useGetResourceTypesQuery();
-
-	useEffect(() => {
-		const newSelected = Array.isArray(value) ? value : value !== undefined ? [value] : [];
-		if (JSON.stringify(newSelected) !== JSON.stringify(selectedResources)) {
-			setSelectedResources(newSelected);
-		}
-	}, [value]);
 
 	const resourceTypes = data?.map((item) => ({
 		id: item.code,

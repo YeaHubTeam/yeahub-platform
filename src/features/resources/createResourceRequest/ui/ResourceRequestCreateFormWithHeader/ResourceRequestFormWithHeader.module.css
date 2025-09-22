@@ -3,23 +3,9 @@
   flex-flow: row wrap;
 }
 
-.back,
 .buttons {
   flex: 1 1 48%;
-}
-
-.buttons {
   justify-content: flex-end;
-}
-
-.button-clear {
-  background-color: transparent !important;
-  color: var(--color-red-600);
-}
-
-.button-clear:hover {
-  background-color: transparent !important;
-  color: var(--color-red-700);
 }
 
 .content {
@@ -27,17 +13,9 @@
 }
 
 @media (width <= 768px) {
-  .back,
-  .buttons {
-    width: 100%;
-  }
-
-  .back {
-    order: 1;
-  }
-
   .buttons {
     order: 3;
+    width: 100%;
 
     .delete-button {
       flex: 1 1 30%;

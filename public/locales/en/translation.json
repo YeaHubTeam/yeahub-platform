@@ -6,6 +6,8 @@
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
 	"show": "View",
+	"show.all": "View all",
+	"hide": "Hide",
 	"edit": "Edit",
 	"delete": "Delete",
 	"hello": "Hello {{username}}!",
@@ -66,12 +68,6 @@
 		"actions": {
 			"ok": "Yes",
 			"cancel": "No"
-		},
-		"resource": {
-			"moderation": {
-				"title": "The resource has been sent for moderation",
-				"message": "The resource has been successfully submitted for moderation. Track its status in the list of questions"
-			}
 		}
 	},
 	"file.loader": {
@@ -122,7 +118,8 @@
 		"login": "Login",
 		"register": "Registration",
 		"wiki": "Knowledge base",
-		"resources": "Resources"
+		"resources": "Resources",
+		"resources.my": "My resources"
 	},
 	"toast": {
 		"title": {

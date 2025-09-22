@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -29,12 +29,6 @@ export const SkillSelect = ({ onChange, value, selectedSpecializations }: SkillS
 	});
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
-
-	useEffect(() => {
-		if (JSON.stringify(value) !== JSON.stringify(selectedSkills)) {
-			setSelectedSkills(value);
-		}
-	}, [value]);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;

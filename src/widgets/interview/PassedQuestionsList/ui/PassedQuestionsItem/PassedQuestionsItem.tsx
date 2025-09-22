@@ -6,6 +6,7 @@ import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { useCurrentProject, useScreenSize } from '@/shared/hooks';
+import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';
@@ -35,11 +36,11 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const questionAnswers: Record<QuizQuestionAnswerType, QuestionAnswerItem> = {
 		UNKNOWN: {
 			label: InterviewQuiz.ANSWER_DO_NOT_KNOW,
-			icon: 'dislike',
+			icon: 'thumbsDown',
 		},
 		KNOWN: {
 			label: InterviewQuiz.ANSWER_KNOW,
-			icon: 'like',
+			icon: 'thumbsUp',
 		},
 	};
 
@@ -48,21 +49,28 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 			? route(ROUTES.questions.detail.page, questionId)
 			: route(ROUTES.interview.questions.detail.page, questionId);
 
+	const iconColor = answer === 'KNOWN' ? 'purple-700' : 'black-700';
+	const answerStyles = answer === 'KNOWN' ? styles['answer-known'] : styles['answer-unknown'];
+
 	return (
-		<Link to={questionLink} className={styles.link}>
-			<li className={styles.item}>
-				<ImageWithWrapper src={imageSrc} className={styles.img} />
-				<Flex direction="column" gap="8" maxWidth>
-					<Text variant={isMobile ? 'body3-accent' : 'body4'} maxRows={2} color="black-800">
-						{questionTitle}
-					</Text>
-					<Chip
-						theme="outlined"
-						prefix={<Icon icon={questionAnswers[answer].icon} size={24} />}
-						label={t(questionAnswers[answer].label)}
-					/>
-				</Flex>
-			</li>
-		</Link>
+		<Card withOutsideShadow size="small">
+			<Link to={questionLink} className={styles.link}>
+				<li className={styles.item}>
+					<ImageWithWrapper src={imageSrc} className={styles.img} />
+					<Flex direction="column" gap="8" maxWidth>
+						<Text variant={isMobile ? 'body3-accent' : 'body4'} maxRows={2} color="black-800">
+							{questionTitle}
+						</Text>
+						<Chip
+							theme="primary"
+							prefix={<Icon icon={questionAnswers[answer].icon} size={24} color={iconColor} />}
+							label={t(questionAnswers[answer].label)}
+							style={{ background: '#F8F8F8' }}
+							className={`${styles.answer} ${answerStyles}`}
+						/>
+					</Flex>
+				</li>
+			</Link>
+		</Card>
 	);
 };

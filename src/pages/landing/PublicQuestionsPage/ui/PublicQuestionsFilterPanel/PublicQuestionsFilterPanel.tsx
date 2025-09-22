@@ -6,20 +6,14 @@ import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
-import {
-	ChooseQuestionComplexity,
-	ChooseQuestionsCategories,
-	ChooseSpecialization,
-	RateFilterSection,
-} from '@/entities/question';
+import { ChooseQuestionComplexity, RateFilterSection } from '@/entities/question';
+import { SkillsListField } from '@/entities/skill';
+import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 import type { FilterParams } from '@/widgets/question/QuestionsFilterPanel';
 
-const DEFAULT_SPECIALIZATION = 11;
-
 interface PublicQuestionsFilterPanelProps {
 	filter: FilterParams;
-	specializationLimit?: number;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
@@ -33,7 +27,6 @@ export const PublicQuestionsFilterPanel = ({
 	onChangeComplexity,
 	onChangeRate,
 	onChangeSpecialization,
-	specializationLimit,
 }: PublicQuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
@@ -45,7 +38,7 @@ export const PublicQuestionsFilterPanel = ({
 	const debouncedSearch = useDebounce(handleSearch, 500);
 
 	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
-	const media = getChannelsForSpecialization(selectedSpecialization ?? DEFAULT_SPECIALIZATION);
+	const media = getChannelsForSpecialization(selectedSpecialization ?? DEFAULT_SPECIALIZATION_ID);
 
 	return (
 		<Flex direction="column" gap="24">
@@ -54,16 +47,14 @@ export const PublicQuestionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
-			<ChooseSpecialization
+			<SpecializationsListField
 				selectedSpecialization={selectedSpecialization}
 				onChangeSpecialization={onChangeSpecialization}
-				specializationLimit={specializationLimit}
 			/>
-			<ChooseQuestionsCategories
-				skillsLimit={specializationLimit}
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION_ID}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}

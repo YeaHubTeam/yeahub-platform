@@ -14,5 +14,5 @@ export type CreateResourceBodyRequest = {
 	skills: number[];
 	specializations: number[];
 };
-
-export type CreateResourceRequestResponse = Resource;
+export type ResouceRequesst = Resource;
+export type CreateResourceRequestResponse = ResouceRequesst;

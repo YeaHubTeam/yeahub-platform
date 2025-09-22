@@ -6,6 +6,8 @@ export enum Translation {
 	REMOVE_SELECTED = 'remove.selected',
 	LOADING = 'loading',
 	SHOW = 'show',
+	SHOW_ALL = 'show.all',
+	HIDE = 'hide',
 	EDIT = 'edit',
 	DELETE = 'delete',
 	HELLO = 'hello',
@@ -51,8 +53,6 @@ export enum Translation {
 	MODAL_DELETE_TITLE = 'modal.delete.title',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
-	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
-	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 
 	FILE_LOADER_LINK = 'file.loader.link',
 	FILE_LOADER_TEXT = 'file.loader.text',
@@ -75,6 +75,7 @@ export enum Translation {
 	CRUMBS_QUIZ = 'crumbs.quiz',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
+	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -414,6 +415,8 @@ export enum Resources {
 	AUTHOR = 'author',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
+	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
+	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 }
 
 export enum Questions {
@@ -942,4 +945,5 @@ export enum Marketplace {
 	URL_SHORT = 'url.short',
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
+	MY_RESOURCES = 'resources.my',
 }

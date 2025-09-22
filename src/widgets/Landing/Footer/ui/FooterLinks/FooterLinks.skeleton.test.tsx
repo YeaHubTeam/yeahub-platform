@@ -26,11 +26,15 @@ describe('FooterLinksSkeleton', () => {
 	test('should render docs TextSkeleton with default width', () => {
 		renderComponent(<FooterLinksSkeleton />);
 
-		const textSkeleton = screen.getByTestId('TextSkeleton');
-		expect(textSkeleton).toBeInTheDocument();
-		expect(textSkeleton).toHaveClass('docs-link');
-		expect(textSkeleton).toHaveStyle({ width: '80px' });
-		expect(textSkeleton).toHaveStyle({ height: '16.8px' });
+		const textSkeleton = screen.getAllByTestId('TextSkeleton');
+		expect(textSkeleton).toHaveLength(2);
+
+		textSkeleton.forEach((textSkeleton) => {
+			expect(textSkeleton).toBeInTheDocument();
+			expect(textSkeleton).toHaveClass('docs-link');
+			expect(textSkeleton).toHaveStyle({ width: '80px' });
+			expect(textSkeleton).toHaveStyle({ height: '16.8px' });
+		});
 	});
 
 	test('should render 5 IconSkeleton components with correct styles', () => {
@@ -51,7 +55,14 @@ describe('FooterLinksSkeleton', () => {
 
 		renderComponent(<FooterLinksSkeleton />);
 
-		const textSkeleton = screen.getByTestId('TextSkeleton');
-		expect(textSkeleton).toHaveStyle({ width: '70px' });
+		const textSkeletons = screen.getAllByTestId('TextSkeleton');
+		expect(textSkeletons).toHaveLength(2);
+
+		textSkeletons.forEach((textSkeleton) => {
+			expect(textSkeleton).toBeInTheDocument();
+			expect(textSkeleton).toHaveClass('docs-link');
+			expect(textSkeleton).toHaveStyle({ width: '70px' });
+			expect(textSkeleton).toHaveStyle({ height: '16.8px' });
+		});
 	});
 });

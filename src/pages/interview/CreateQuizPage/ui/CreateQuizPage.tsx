@@ -12,11 +12,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
 import { getHasPremiumAccess, getProfileId, getSpecializationId } from '@/entities/profile';
-import {
-	ChooseQuestionComplexity,
-	ChooseQuestionCount,
-	ChooseQuestionsCategories,
-} from '@/entities/question';
+import { ChooseQuestionComplexity, ChooseQuestionCount } from '@/entities/question';
 import {
 	QuestionModeType,
 	QuizQuestionMode,
@@ -24,7 +20,7 @@ import {
 	useLazyCreateNewMockQuizQuery,
 	useLazyCreateNewQuizQuery,
 } from '@/entities/quiz';
-import { useGetSkillsListQuery } from '@/entities/skill';
+import { SkillsListField, useGetSkillsListQuery } from '@/entities/skill';
 
 import { useQueryFilter } from '../model/hooks/useQueryFilter';
 
@@ -112,11 +108,10 @@ const CreateQuizPage = () => {
 					direction={isTablet ? 'column' : 'row'}
 					className={styles.wrapper}
 				>
-					<ChooseQuestionsCategories
+					<SkillsListField
 						selectedSpecialization={profileSpecialization}
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
-						skillsLimit={MAX_LIMIT_CATEGORIES}
 						showAllLabel={false}
 					/>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>

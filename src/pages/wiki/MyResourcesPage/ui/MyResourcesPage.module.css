@@ -1,0 +1,111 @@
+.main {
+  position: relative;
+  flex-grow: 1;
+  padding: 24px 20px 40px;
+  height: auto;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filters {
+  position: sticky;
+  top: 0;
+  min-width: 360px;
+  max-width: 360px;
+  height: auto;
+}
+
+.filters-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  width: fit-content;
+  border: 1px solid var(--border-right-color);
+  border-radius: 8px;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filters-mobile button:focus {
+  border: none;
+}
+
+.suggest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-purple-700);
+  line-height: 110%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+}
+
+.drawer {
+  width: 328px;
+  overflow-x: hidden;
+}
+
+.drawer-content {
+  padding: 8px 16px 16px;
+}
+
+.button-wrapper {
+  position: relative;
+}
+
+.absolute-button {
+  position: absolute;
+  top: -60px; 
+  right: 0;
+}
+
+@media screen and (width < 1024px) {
+  .main {
+    padding: 20px 16px 40px;
+  }
+
+  .filters {
+    display: none;
+  }
+
+  .filters-mobile {
+    display: inline-flex;
+  }
+}
+
+@media screen and (width <= 360px) {
+  .main {
+    padding: 20px 10px;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .filters-mobile {
+    position: static;
+    margin-top: 0;
+  }
+
+  .suggest {
+    margin: 0;
+  }
+}
+
+@media screen and (width >= 1023px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}

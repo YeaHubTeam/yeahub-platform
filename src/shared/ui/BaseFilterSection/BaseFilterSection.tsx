@@ -8,7 +8,7 @@ import { Tooltip } from '../Tooltip';
 
 import styles from './BaseFilterSection.module.css';
 
-type DateType<T> = {
+export type BaseFilterItem<T> = {
 	id: T;
 	title: string;
 	imageSrc?: string | null;
@@ -19,7 +19,7 @@ type DateType<T> = {
 
 export interface BaseFilterSectionProps<T> {
 	title: string;
-	data: DateType<T>[];
+	data: BaseFilterItem<T>[];
 	onClick: (id: T) => void;
 	disabled?: boolean;
 }

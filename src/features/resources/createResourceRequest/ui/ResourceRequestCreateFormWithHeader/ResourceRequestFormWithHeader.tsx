@@ -1,11 +1,8 @@
-import PropTypes from 'prop-types'; // <--- НОВЫЙ ИМПОРТ!
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace, Resources } from '@/shared/config/i18n/i18nTranslations';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -22,28 +19,19 @@ interface ResourceRequestFormWithHeaderProps {
 }
 
 export const ResourceRequestFormWithHeader: React.FC<ResourceRequestFormWithHeaderProps> = ({
+	// eslint-disable-next-line react/prop-types
 	onSubmit,
 }) => {
 	const {
 		handleSubmit,
-		reset,
 		formState: { isDirty },
 	} = useFormContext<CreateResourceRequestFormValues>();
 
 	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.resources]);
 
-	const handleClearForm = () => {
-		reset();
-	};
 	return (
 		<Flex componentType="main" gap="24" className={styles.wrapper}>
-			<div className={styles.back}>
-				<BackButton />
-			</div>
 			<Flex gap="20" align="center" className={styles.buttons}>
-				<Button className={styles['button-clear']} disabled={!isDirty} onClick={handleClearForm}>
-					{t(Translation.DELETE)}
-				</Button>
 				<Button
 					disabled={!isDirty}
 					className={styles['submit-button']}
@@ -63,8 +51,4 @@ export const ResourceRequestFormWithHeader: React.FC<ResourceRequestFormWithHead
 			</Card>
 		</Flex>
 	);
-};
-
-ResourceRequestFormWithHeader.propTypes = {
-	onSubmit: PropTypes.func.isRequired,
 };

@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -21,11 +21,6 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
-	useEffect(() => {
-		if (JSON.stringify(value) !== JSON.stringify(keywordsArray)) {
-			setKeywordsArray(value);
-		}
-	}, [value]);
 	const handleInput = () => {
 		const enteredKeywords = keywords.toLocaleLowerCase().trim();
 		if (enteredKeywords) {
