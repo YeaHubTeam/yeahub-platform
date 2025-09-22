@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { ResourceRequests } from '@/shared/config/i18n/i18nTranslations';
+import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
 
@@ -10,6 +11,8 @@ import {
 	ResourceRequestStatusChip,
 	SelectedResourceRequestEntities,
 } from '@/entities/resource';
+
+import styles from './ResourceRequestsTable.module.css';
 
 const SPECIALIZATION_SHOW_COUNT = 2;
 
@@ -28,10 +31,10 @@ export const ResourceRequestsTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(ResourceRequests.TITLE),
-			status: t(ResourceRequests.STATUS),
-			specializations: t(ResourceRequests.SPECIALIZATIONS),
-			type: t(ResourceRequests.TYPE),
+			title: t(Marketplace.NAME_SHORT, { ns: i18Namespace.marketplace }),
+			status: t(Marketplace.STATUS_TITLE, { ns: i18Namespace.marketplace }),
+			specializations: t(Marketplace.SPECIALIZATIONS_SHORT, { ns: i18Namespace.marketplace }),
+			type: t(Marketplace.TYPES_SHORT, { ns: i18Namespace.marketplace }),
 		};
 		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
 	};
@@ -40,9 +43,14 @@ export const ResourceRequestsTable = ({
 		const resourceType = request.requestPayload.type || '';
 		const columns = {
 			title: request.requestPayload.name,
-			status: <ResourceRequestStatusChip status={request.status} />,
+			status: (
+				<div className={styles['status-cell']}>
+					<ResourceRequestStatusChip status={request.status} />
+				</div>
+			),
 			specializations: (
 				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
 					items={request.specializations}
 					showCount={SPECIALIZATION_SHOW_COUNT}
 				/>

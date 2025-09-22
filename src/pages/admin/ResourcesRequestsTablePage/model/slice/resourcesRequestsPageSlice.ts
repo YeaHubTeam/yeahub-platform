@@ -4,31 +4,31 @@ import { clearStore } from '@/shared/config/store/clearStore';
 
 import { SelectedResourceRequestEntities } from '@/entities/resource';
 
-import { ResourceRequestsPageState } from '../types/resourceRequestsPageTypes';
+import { ResourcesRequestsTablePageState } from '../types/resourcesRequestsTablePageTypes';
 
-const initialState: ResourceRequestsPageState = {
+const initialState: ResourcesRequestsTablePageState = {
 	page: 1,
-	selectedResourceRequests: [],
+	selectedResourcesRequests: [],
 	search: '',
 };
 
-const resourceRequestsPageSlice = createSlice({
-	name: 'resourceRequestsPage',
+const resourcesRequestsTablePageSlice = createSlice({
+	name: 'resourcesRequestsTablePage',
 	initialState,
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
 			state.page = action.payload;
-			state.selectedResourceRequests = [];
+			state.selectedResourcesRequests = [];
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
-			state.selectedResourceRequests = [];
+			state.selectedResourcesRequests = [];
 		},
 		setSelectedResourceRequests: (
 			state,
 			action: PayloadAction<SelectedResourceRequestEntities>,
 		) => {
-			state.selectedResourceRequests = action.payload;
+			state.selectedResourcesRequests = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -36,5 +36,7 @@ const resourceRequestsPageSlice = createSlice({
 	},
 });
 
-export const { reducer: resourceRequestsPageReducer, actions: resourceRequestsPageActions } =
-	resourceRequestsPageSlice;
+export const {
+	reducer: resourcesRequestsTablePageReducer,
+	actions: resourcesRequestsTablePageActions,
+} = resourcesRequestsTablePageSlice;

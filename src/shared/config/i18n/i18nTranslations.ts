@@ -177,7 +177,6 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
-	EXTERNAL_PRODUCTS = 'externalProducts',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -676,14 +675,9 @@ export enum Companies {
 }
 
 export enum ResourceRequests {
-	TITLE = 'requests.title',
-	STATUS = 'requests.status',
-	SPECIALIZATIONS = 'requests.specializations',
-	TYPE = 'requests.type',
-	AUTHOR = 'requests.author',
-	STATUS_APPROVED = 'requests.statusApproved',
-	STATUS_PENDING = 'requests.statusPending',
-	STATUS_REJECTED = 'requests.statusRejected',
+	STATUS_APPROVED = 'status.approved',
+	STATUS_REVIEW = 'status.review',
+	STATUS_REJECTED = 'status.rejected',
 }
 
 export enum Landing {

@@ -13,13 +13,13 @@ import { SearchSection } from '@/widgets/SearchSection';
 import {
 	getResourceRequestsSearch,
 	getSelectedResourceRequests,
-} from '../../model/selectors/resourceRequestsPageSelectors';
-import { resourceRequestsPageActions } from '../../model/slice/resourceRequestsPageSlice';
-import { ResourceRequestsPagePagination } from '../ResourceRequestsPagePagination/ResourceRequestsPagePagination';
+} from '../../model/selectors/resourcesRequestsTablePageSelectors';
+import { resourcesRequestsTablePageActions } from '../../model/slice/resourcesRequestsPageSlice';
+import { ResourcesRequestsTablePagePagination } from '../ResourcesRequestsTablePagePagination/ResourcesRequestsTablePagePagination';
 
-import styles from './ResourceRequestsPage.module.css';
+import styles from './ResourcesRequestsTablePage.module.css';
 
-export const ResourceRequestsPage = () => {
+export const ResourcesRequestsTablePage = () => {
 	const dispatch = useAppDispatch();
 	const search = useSelector(getResourceRequestsSearch);
 	const selectedResourceRequests = useSelector(getSelectedResourceRequests);
@@ -34,17 +34,17 @@ export const ResourceRequestsPage = () => {
 	});
 
 	const onSelectResourceRequests = (ids: SelectedResourceRequestEntities) => {
-		dispatch(resourceRequestsPageActions.setSelectedResourceRequests(ids));
+		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests(ids));
 	};
 
 	const onChangePage = (page: number) => {
 		handleFilterChange({ page });
-		dispatch(resourceRequestsPageActions.setSelectedResourceRequests([]));
+		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests([]));
 	};
 
 	const onChangeSearch = (value: string) => {
-		dispatch(resourceRequestsPageActions.setSearch(value));
-		dispatch(resourceRequestsPageActions.setSelectedResourceRequests([]));
+		dispatch(resourcesRequestsTablePageActions.setSearch(value));
+		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests([]));
 	};
 
 	return (
@@ -63,8 +63,8 @@ export const ResourceRequestsPage = () => {
 				/>
 
 				{resourceRequests?.data && resourceRequests.data.length > 0 && (
-					<ResourceRequestsPagePagination
-						resourceRequestsResponse={resourceRequests}
+					<ResourcesRequestsTablePagePagination
+						resourcesRequestsResponse={resourceRequests}
 						currentPage={page || 1}
 						onPageChange={onChangePage}
 					/>

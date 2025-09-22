@@ -1,21 +1,13 @@
-import { Response, SortOrder } from '@/shared/types/types';
+import { Response, SelectedEntities, SortOrder } from '@/shared/types/types';
+
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Skill } from '@/entities/skill';
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { Specialization } from '@/entities/specialization';
 
 import { ResourceTypeCode } from './resource';
 
-export enum ResourceRequestStatus {
-	PENDING = 'pending',
-	APPROVED = 'approved',
-	REJECTED = 'rejected',
-}
-
-export interface ResourceRequestSpecialization {
-	id: number;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
-}
+export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
 
 export interface ResourceRequestSkill {
 	id: number;
@@ -44,23 +36,22 @@ export interface ResourceRequest {
 	createdAt: string;
 	reviewedAt: string | null;
 	reviewedBy: string | null;
-	specializations: ResourceRequestSpecialization[];
-	skills: ResourceRequestSkill[];
+	specializations: Specialization[];
+	skills: Skill[];
 }
 
 export interface GetResourceRequestsParams {
-	name?: string;
 	types?: string[];
-	userId?: string;
 	specializations?: number[];
 	skills?: number[];
 	keywords?: string[];
+	userId?: string;
 	status?: ResourceRequestStatus;
 	page?: number;
 	limit?: number;
+	name?: string;
 	orderBy?: string;
 	order?: SortOrder;
-	random?: boolean;
 }
 
 export type GetResourceRequestsResponse = Response<ResourceRequest[]>;
@@ -70,4 +61,4 @@ export interface SelectedResourceRequestEntity {
 	title?: string;
 	disabled?: boolean;
 }
-export type SelectedResourceRequestEntities = SelectedResourceRequestEntity[];
+export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['id']>;
