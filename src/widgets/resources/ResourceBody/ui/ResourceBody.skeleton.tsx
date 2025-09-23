@@ -11,19 +11,19 @@ export const ResourceBodySkeleton = () => {
 			<ImageWithWrapperSkeleton className={styles['image-wrapper']} />
 
 			<Flex direction="column" align="start" gap="20">
-				<Flex wrap="nowrap">
-					<TextSkeleton variant={'body2'} width={110} />
-					<TextSkeleton variant="body3-accent" width={150} />
+				<Flex wrap="nowrap" gap="20">
+					<TextSkeleton variant={'body2'} width={80} />
+					<TextSkeleton variant="body3-accent" width={100} />
 				</Flex>
 
-				<Flex align="center" wrap="nowrap">
-					<TextSkeleton variant={'body2'} width={110} />
-					<ChipSkeleton active />
+				<Flex wrap="nowrap" gap="20" align="center">
+					<TextSkeleton variant={'body2'} width={80} />
+					<ChipSkeleton active variant="big" label={'...'} withText={80} />
 				</Flex>
 
-				<Flex wrap="nowrap">
-					<TextSkeleton variant={'body2'} width={110} />
-					<TextSkeleton variant={'body2-accent'} width={150} />
+				<Flex wrap="nowrap" gap="20">
+					<TextSkeleton variant={'body2'} width={80} />
+					<TextSkeleton variant={'body2-accent'} width={100} />
 				</Flex>
 			</Flex>
 		</Flex>

@@ -8,6 +8,7 @@ import { KeywordsListSkeleton } from '@/shared/ui/KeywordsList';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import { SkillListSkeleton } from '@/entities/skill';
+import { SpecializationsListSkeleton } from '@/entities/specialization';
 
 import { ResourceAdditionalInfoProps } from './ResourceAdditionalInfo';
 import styles from './ResourceAdditionalInfo.module.css';
@@ -18,18 +19,16 @@ export const ResourceAdditionalInfoSkeleton = ({
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
-		<Flex direction="column" align="start">
+		<Flex direction="column" gap="20">
 			<CardSkeleton className={(classNames(styles['additional']), className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
+					<SpecializationsListSkeleton />
 					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={200} />
-					</Flex>
-					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={200} />
+						<TextSkeleton variant="body2" color="black-700" width={80} />
 						<SkillListSkeleton />
 					</Flex>
 					<Flex direction="column" gap="8">
-						<TextSkeleton variant="body3" width={200} />
+						<TextSkeleton variant="body3" width={100} />
 						<KeywordsListSkeleton />
 					</Flex>
 				</Flex>

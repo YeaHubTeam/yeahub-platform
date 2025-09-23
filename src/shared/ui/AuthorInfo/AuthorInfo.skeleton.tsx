@@ -7,7 +7,7 @@ export const AuthorInfoSkeleton = ({ isCenter }: Partial<AuthorInfoProps>) => {
 	return (
 		<Flex justify={isCenter ? 'center' : 'start'} gap="4">
 			<TextSkeleton variant="body2-accent" width={50} />
-			<TextSkeleton variant="body2-accent" width={200} />
+			<TextSkeleton variant="body2-accent" width={150} />
 		</Flex>
 	);
 };

@@ -13,7 +13,7 @@ export { SpecializationSelectSkeleton } from './ui/SpecializationSelect/Speciali
 export { SpecializationsList } from './ui/SpecializationsList/SpecializationsList';
 export { SpecializationsListField } from './ui/SpecializationsListField/SpecializationsListField';
 export { SpecializationsListFieldSkeleton } from './ui/SpecializationsListField/SpecializationsListField.skeleton';
-
+export { SpecializationsListSkeleton } from './ui/SpecializationsList/SpecializationsList.skeleton';
 export { specializationHandlers } from './api/__mocks__';
 
 export { specializationsMock } from './api/__mocks__/data';

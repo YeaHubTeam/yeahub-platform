@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Resources } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
 import { formatDate } from '@/shared/helpers/formatDate';
-import { route } from '@/shared/helpers/route';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -23,7 +21,6 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 	const { name, iconBase64, type, url, createdAt } = resource;
 
 	const { t } = useTranslation(i18Namespace.resources);
-	const resourceUrl = route(ROUTES.admin.resources.details.page, url);
 	const formattedDate = formatDate(new Date(createdAt), 'dd.MM.yyyy');
 
 	return (
@@ -34,14 +31,14 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 				className={styles['image-wrapper']}
 			/>
 
-			<Flex direction="column" align="start" gap="20">
+			<Flex direction="column" gap="20">
 				<Flex wrap="nowrap">
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.LINK)}
 					</Text>
-					<Link to={resourceUrl}>
+					<Link to={url}>
 						<Text variant="body2" color="purple-700">
-							{resourceUrl}
+							{url}
 						</Text>
 					</Link>
 				</Flex>

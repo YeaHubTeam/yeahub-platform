@@ -33,9 +33,9 @@ export const ResourcePage = () => {
 	return (
 		<>
 			<BackHeader />
-			<Flex gap="20">
+			<Flex gap="20" align="start">
 				<Card withOutsideShadow className={styles.main}>
-					<Flex maxWidth direction="column" gap="20">
+					<Flex direction="column" gap="20">
 						<ResourceHeader resource={resource} />
 						<ResourceBody resource={resource} />
 					</Flex>

@@ -15,9 +15,9 @@ export const ResourcePageSkeleton = () => {
 	return (
 		<>
 			<BackHeaderSkeleton />
-			<Flex gap="20">
+			<Flex gap="20" align="start">
 				<CardSkeleton withOutsideShadow className={styles.main}>
-					<Flex maxWidth direction="column" gap="20">
+					<Flex direction="column" gap="20" justify="start">
 						<ResourceHeaderSkeleton />
 						<ResourceBodySkeleton />
 					</Flex>

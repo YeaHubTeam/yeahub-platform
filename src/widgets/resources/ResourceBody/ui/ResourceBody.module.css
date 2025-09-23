@@ -1,9 +1,7 @@
 .resource-body {
   display: flex;
-  align-items: start;
-  align-self: stretch;
+  justify-content: flex-start;
   gap: 20px;  
-
 }
 
 .image-wrapper {
@@ -11,8 +9,8 @@
   padding: 10px;
   min-width: 149px;
   min-height: 157px;
+  border-radius: 12px;
 }
-
 
 @media screen and (width <= 480px) {
   .resource-body {
