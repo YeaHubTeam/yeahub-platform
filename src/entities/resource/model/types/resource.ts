@@ -1,4 +1,5 @@
 import { Response, SortOrder } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -105,8 +106,6 @@ export interface ResourceType {
 	code: ResourceTypeCode;
 	description: string;
 }
-
-export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

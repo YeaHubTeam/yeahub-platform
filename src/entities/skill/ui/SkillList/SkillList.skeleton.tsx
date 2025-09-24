@@ -5,7 +5,7 @@ import { IconSkeleton } from '@/shared/ui/Icon';
 export const SkillListSkeleton = () => {
 	return (
 		<Flex componentType="ul" gap="10" wrap="wrap">
-			{[...Array(10)].map((_, index) => {
+			{[...Array(3)].map((_, index) => {
 				return (
 					<li key={index}>
 						<ChipSkeleton label="..." withText={60} prefix={<IconSkeleton size={32} />} />

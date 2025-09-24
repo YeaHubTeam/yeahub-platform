@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
+import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
 import { Media, MediaLinksBanner } from '@/entities/media';
-import { Author, QuestionAuthor, QuestionGradeList } from '@/entities/question';
+import { QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
 
 import styles from './QuestionAdditionalInfo.module.css';
@@ -70,13 +71,13 @@ export const QuestionAdditionalInfo = ({
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />
 					</Flex>
 					{showAuthor && createdBy && (isMobile || isTablet) && (
-						<QuestionAuthor createdBy={createdBy} />
+						<AuthorInfo createdBy={createdBy} />
 					)}
 					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>
 			</Card>
 			{showAuthor && createdBy && !isMobile && !isTablet && (
-				<QuestionAuthor createdBy={createdBy} isCenter />
+				<AuthorInfo createdBy={createdBy} isCenter />
 			)}
 		</>
 	);
