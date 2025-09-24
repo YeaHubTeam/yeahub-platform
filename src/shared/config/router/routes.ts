@@ -151,6 +151,10 @@ export const ROUTES = {
 		route: 'settings',
 		page: '/dashboard/settings',
 	},
+	analytics: {
+		route: 'analytics',
+		page: '/dashboard/analytics',
+	},
 	interview: {
 		route: 'interview',
 		page: '/dashboard/interview',
@@ -195,7 +199,11 @@ export const ROUTES = {
 		route: 'wiki',
 		resources: {
 			route: 'resources',
-			page: '/dashboard/wiki/resources',
+			page: '/dashboard/resources',
+			my: {
+				route: 'my-resources',
+				page: '/dashboard/resources/my-resources',
+			},
 		},
 	},
 	docs: {

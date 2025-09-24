@@ -20,7 +20,6 @@ interface ChooseCollectionSpecializationProps {
 	selectedSpecializations?: number[];
 	onChangeSpecialization: (complexity?: number[]) => void;
 	specializationsLimit?: number;
-	shouldShowScroll?: boolean;
 	selectedSpecialization: number;
 }
 

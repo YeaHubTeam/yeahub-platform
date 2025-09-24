@@ -1,11 +1,8 @@
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInputSkeleton } from '@/shared/ui/SearchInput';
 
-import {
-	ChooseQuestionComplexitySkeleton,
-	ChooseQuestionsCategoriesSkeleton,
-	RateFilterSectionSkeleton,
-} from '@/entities/question';
+import { ChooseQuestionComplexitySkeleton, RateFilterSectionSkeleton } from '@/entities/question';
+import { SkillsListFieldSkeleton } from '@/entities/skill';
 
 import { StatusFilterSectionSkeleton } from './StatusFilterSection/StatusFilterSection.skeleton';
 
@@ -13,7 +10,7 @@ export const QuestionsFilterPanelSkeleton = () => {
 	return (
 		<Flex direction="column" gap="24">
 			<SearchInputSkeleton />
-			<ChooseQuestionsCategoriesSkeleton />
+			<SkillsListFieldSkeleton />
 			<ChooseQuestionComplexitySkeleton />
 			<RateFilterSectionSkeleton />
 			<StatusFilterSectionSkeleton />

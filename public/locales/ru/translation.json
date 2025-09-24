@@ -6,6 +6,8 @@
 	"remove.selected": "Удалить выбранное",
 	"loading": "Идет загрузка...",
 	"show": "Посмотреть",
+	"show.all": "Посмотреть все",
+	"hide": "Скрыть",
 	"edit": "Редактировать",
 	"delete": "Удалить",
 	"hello": "Привет {{username}}!",
@@ -20,6 +22,7 @@
 	"support": "Поддержка",
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
+	"author": "Автор",
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
@@ -47,7 +50,8 @@
 			"questions": "Вопросы",
 			"resources": "Ресурсы",
 			"skills": "Навыки",
-			"companies": "Компании"
+			"companies": "Компании",
+			"analytics": "Аналитика"
 		}
 	},
 	"stub": {
@@ -119,7 +123,8 @@
 		"login": "Вход",
 		"register": "Регистрация",
 		"wiki": "База знаний",
-		"resources": "Ресурсы"
+		"resources": "Ресурсы",
+		"resources.my": "Мои заявки"
 	},
 	"toast": {
 		"title": {

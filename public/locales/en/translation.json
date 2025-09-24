@@ -6,6 +6,8 @@
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
 	"show": "View",
+	"show.all": "View all",
+	"hide": "Hide",
 	"edit": "Edit",
 	"delete": "Delete",
 	"hello": "Hello {{username}}!",
@@ -20,6 +22,7 @@
 	"support": "Support",
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
+	"author": "Author",
 	"header": {
 		"menu": {
 			"membership": "Choose membership",
@@ -46,7 +49,8 @@
 			},
 			"questions": "Questions",
 			"skills": "Skills",
-			"companies": "Companies"
+			"companies": "Companies",
+			"analytics": "Analytics"
 		}
 	},
 	"stub": {
@@ -116,7 +120,8 @@
 		"login": "Login",
 		"register": "Registration",
 		"wiki": "Knowledge base",
-		"resources": "Resources"
+		"resources": "Resources",
+		"resources.my": "My resources"
 	},
 	"toast": {
 		"title": {

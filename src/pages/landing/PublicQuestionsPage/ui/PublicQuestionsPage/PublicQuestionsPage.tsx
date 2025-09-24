@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { MAX_LIMIT_CATEGORIES } from '@/shared/constants/queryConstants';
 import { useScreenSize, useModal, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -11,7 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
-import { useGetSkillsListQuery } from '@/entities/skill';
+import { useGetSkillsListQuery, MAX_SHOW_LIMIT_SKILLS } from '@/entities/skill';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
@@ -41,7 +40,7 @@ const PublicQuestionsPage = () => {
 
 	const { data: skills, isLoading: isLoadingCategories } = useGetSkillsListQuery(
 		{
-			limit: MAX_LIMIT_CATEGORIES,
+			limit: MAX_SHOW_LIMIT_SKILLS,
 			specializations: preparedSpecializationsIds,
 		},
 		{ skip: !filter.specialization },
@@ -108,7 +107,6 @@ const PublicQuestionsPage = () => {
 				title: filter.title,
 				specialization: filter.specialization,
 			}}
-			specializationLimit={MAX_LIMIT_CATEGORIES}
 		/>
 	);
 

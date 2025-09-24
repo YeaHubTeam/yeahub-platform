@@ -4,22 +4,24 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { Chip } from '../Chip';
+import { Icon, IconName } from '../Icon';
 import { Tooltip } from '../Tooltip';
 
 import styles from './BaseFilterSection.module.css';
 
-type DateType<T> = {
+export type BaseFilterItem<T> = {
 	id: T;
 	title: string;
 	imageSrc?: string | null;
 	active?: boolean;
 	disabled?: boolean;
 	tooltip?: string;
+	iconName?: IconName;
 };
 
 export interface BaseFilterSectionProps<T> {
 	title: string;
-	data: DateType<T>[];
+	data: BaseFilterItem<T>[];
 	onClick: (id: T) => void;
 	disabled?: boolean;
 }
@@ -48,13 +50,17 @@ export const BaseFilterSection = <T,>({
 								label={item.title}
 								theme="primary"
 								prefix={
-									item.imageSrc && (
-										<img
-											style={{ width: 20, height: 20 }}
-											src={item.imageSrc}
-											alt={item.title}
-											loading="lazy"
-										/>
+									item.iconName ? (
+										<Icon icon={item.iconName} size={20} color="black-700" />
+									) : (
+										item.imageSrc && (
+											<img
+												style={{ width: 20, height: 20 }}
+												src={item.imageSrc}
+												alt={item.title}
+												loading="lazy"
+											/>
+										)
 									)
 								}
 								onClick={onHandleClick(item.id)}
