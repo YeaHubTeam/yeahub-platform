@@ -57,7 +57,10 @@ export const QuestionsFilterPanel = ({
 				selectedComplexity={complexity}
 			/>
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
+			<StatusFilterSection
+				onChangeStatus={onChangeStatus}
+				selectedStatus={status as QuestionFilterStatus}
+			/>
 		</Flex>
 	);
 };

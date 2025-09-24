@@ -62,6 +62,10 @@ export interface GetResourcesListParamsRequest {
 export interface GetMyRequestsResourcesParamsRequest {
 	page?: number;
 	limit?: number;
+	search?: string;
+	status?: ResourceRequestStatus | 'all';
+	types?: string[];
+	skills?: number[];
 }
 
 export type GetResourcesListResponse = Response<Resource[]>;

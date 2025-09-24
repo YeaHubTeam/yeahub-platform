@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
+type RecourcesFilterStatus = 'pending' | 'approved' | 'rejected';
 
 interface FilterFromURL {
 	skills: string | null;
@@ -26,7 +27,7 @@ export interface FilterFromUser {
 	complexity?: number[];
 	rate?: number[];
 	title?: string;
-	status?: QuestionFilterStatus;
+	status?: QuestionFilterStatus | RecourcesFilterStatus;
 	page?: number;
 	orderBy?: string;
 	order?: string;
