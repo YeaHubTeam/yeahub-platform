@@ -9,7 +9,7 @@ export interface ProgressBarProps {
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large';
+	variant?: 'small' | 'large' | 'medium';
 }
 
 export const ProgressBar = ({

@@ -947,3 +947,7 @@ export enum Marketplace {
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
 }
+
+export enum Analytics {
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+}

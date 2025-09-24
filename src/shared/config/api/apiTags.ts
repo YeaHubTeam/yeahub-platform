@@ -27,4 +27,5 @@ export enum ApiTags {
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
 	PAYMENTS = 'payments',
+	POPULAR_SKILLS = 'popular_skills',
 }

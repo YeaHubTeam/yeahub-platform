@@ -1,0 +1,26 @@
+.progress-skills-card {
+  gap: 24px;
+  max-width: 650px;
+}
+
+.flex-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.more-info-flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  width: fit-content;
+  color: var(--color-purple-700);
+}
+
+@media (width <= 1440px) {
+  .progress-skills-card {
+    padding: 16px;
+    max-width: 340px;
+  }
+}
