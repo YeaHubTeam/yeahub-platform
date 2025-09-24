@@ -12,7 +12,7 @@ export interface Resource {
 	description: string;
 	type: ResourceType;
 	url: string;
-	keywords?: string[];
+	keywords: string[];
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
@@ -35,7 +35,7 @@ export interface ResourceRequest {
 		type: ResourceTypeCode;
 		imageSrc: string;
 		iconBase64?: string;
-		keywords?: string[];
+		keywords: string[];
 	};
 	specializations: Specialization[];
 	skills: Skill[];
