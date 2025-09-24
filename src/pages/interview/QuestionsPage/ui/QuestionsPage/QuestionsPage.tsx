@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import { useSearchParams } from 'react-router-dom';
 
-import { useScreenSize, useModal, useAppSelector, useQueryFilter } from '@/shared/hooks';
+import { useAppSelector, useModal, useQueryFilter, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
@@ -12,6 +11,8 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
+
+import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
 import {
 	QuestionFilterStatus,
@@ -31,7 +32,7 @@ const QuestionsPage = () => {
 		limit: MAX_SHOW_LIMIT_SKILLS,
 		specializations: [specializationId],
 	});
-	const [queryParams] = useSearchParams();
+	const { queryParams, handleNavigation } = useQuestionQueryNavigate();
 	const keywords = queryParams.get('keywords');
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
@@ -91,6 +92,10 @@ const QuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
+	const onMoveQuestionDetail = (id: number) => {
+		handleNavigation(id);
+	};
+
 	const renderFilters = () => (
 		<QuestionsFilterPanel
 			onChangeSearch={onChangeSearchParams}
@@ -141,7 +146,7 @@ const QuestionsPage = () => {
 				</Drawer>
 			</div>
 			<Card className={styles.main}>
-				<FullQuestionsList questions={questions.data} />
+				<FullQuestionsList questions={questions.data} onMoveQuestionDetail={onMoveQuestionDetail} />
 				{questions.total > questions.limit && (
 					// TODO Дубляжи в пагинации на других страницах
 					<QuestionPagePagination

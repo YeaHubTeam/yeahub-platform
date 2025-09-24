@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 import { useScreenSize, useModal, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
@@ -11,6 +10,8 @@ import { IconButton } from '@/shared/ui/IconButton';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { useGetSkillsListQuery, MAX_SHOW_LIMIT_SKILLS } from '@/entities/skill';
+
+import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
@@ -28,7 +29,7 @@ import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 const PublicQuestionsPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const [queryParams] = useSearchParams();
+	const { queryParams, handleNavigation } = useQuestionQueryNavigate();
 	const { isMobile, isTablet } = useScreenSize();
 	const keywords = queryParams.get('keywords');
 
@@ -93,6 +94,10 @@ const PublicQuestionsPage = () => {
 		handleFilterChange({ page });
 	};
 
+	const onMoveQuestionDetail = (id: number) => {
+		handleNavigation(id);
+	};
+
 	const renderFilters = () => (
 		<PublicQuestionsFilterPanel
 			onChangeSearch={onChangeSearchParams}
@@ -113,7 +118,6 @@ const PublicQuestionsPage = () => {
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
-				className={styles['filters-mobile-button']}
 				aria-label="go to filters"
 				form="square"
 				icon={<Icon icon="slidersHorizontal" color="black-700" />}
@@ -134,13 +138,14 @@ const PublicQuestionsPage = () => {
 	);
 
 	return (
-		<Flex gap="20" align="start" className={styles.wrapper}>
+		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				<FullQuestionsList
 					questions={questions.data}
 					isPublic
 					additionalTitle={additionalTitle}
 					filterButton={filterButton}
+					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
 
 				{questions.total > questions.limit && (
