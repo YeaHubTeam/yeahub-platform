@@ -24,7 +24,6 @@ interface TableProps<Id extends string | number, T> {
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
-	analysisView?: boolean;
 }
 
 /**
