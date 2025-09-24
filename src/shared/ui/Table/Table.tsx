@@ -44,7 +44,6 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	renderActions,
 	selectedItems,
 	onSelectItems,
-	analysisView,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -67,7 +66,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 
 	return (
 		<table className={styles.table} data-testid="table">
-			<thead className={`${styles.head} ${analysisView ? styles['head-analysis-view'] : ''}`}>
+			<thead className={styles.head}>
 				<tr>
 					{selectedItems && (
 						<td className={styles.cell}>
@@ -80,11 +79,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 			</thead>
 			<tbody>
 				{items.map((item) => (
-					<tr
-						key={item.id}
-						className={`${analysisView ? styles['row-analysis-view'] : styles.row}`}
-						data-testid="table-row"
-					>
+					<tr key={item.id} className={styles.row} data-testid="table-row">
 						{selectedItems && (
 							<td className={styles.cell}>
 								<Checkbox
