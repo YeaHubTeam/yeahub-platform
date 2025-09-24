@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useAppSelector, useModal, useQueryFilter, useScreenSize } from '@/shared/hooks';
+import { useScreenSize, useModal, useAppSelector, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';

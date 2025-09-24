@@ -26,7 +26,6 @@ import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 export const QuestionPage = () => {
 	const { filter } = useQueryFilter();
 	const { isMobile, isTablet } = useScreenSize();
-
 	const { questionId = '' } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
