@@ -685,6 +685,12 @@ export enum Companies {
 	SELECT_SELECTED = 'select.selected',
 }
 
+export enum ResourceRequests {
+	STATUS_APPROVED = 'status.approved',
+	STATUS_REVIEW = 'status.review',
+	STATUS_REJECTED = 'status.rejected',
+}
+
 export enum Landing {
 	LOGIN = 'header.actions.login',
 	REGISTER = 'header.actions.register',

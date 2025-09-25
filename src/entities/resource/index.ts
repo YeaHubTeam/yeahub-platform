@@ -13,3 +13,14 @@ export { ResourceForm } from './ui/ResourceForm/ResourceForm';
 export { ResourcesFilterSectionSkeleton } from './ui/ResourcesFilterSection/ResourcesFilterSection.skeleton';
 export { ResourceCard } from './ui/ResourceCard/ResourceCard';
 export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
+export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
+
+export type {
+	ResourceRequest,
+	ResourceRequestStatus,
+	GetResourceRequestsParams,
+	GetResourceRequestsResponse,
+	SelectedResourceRequestEntity,
+	SelectedResourceRequestEntities,
+} from './model/types/resourceRequest';
+export { useGetResourceRequestsQuery } from './api/resourceApi';

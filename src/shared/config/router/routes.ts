@@ -94,6 +94,10 @@ export const ROUTES = {
 				route: ':resourceId/edit',
 				page: '/admin/resources/:resourceId/edit',
 			},
+			requests: {
+				route: 'requests',
+				page: '/admin/resources/requests',
+			},
 		},
 		companies: {
 			route: 'companies',

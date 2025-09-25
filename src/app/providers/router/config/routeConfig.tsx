@@ -43,6 +43,7 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
+import { ResourcesRequestsTablePage } from '@/pages/admin/ResourcesRequestsTablePage';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
@@ -382,6 +383,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.page,
+				element: <ResourcesRequestsTablePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

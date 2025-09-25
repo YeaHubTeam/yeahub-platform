@@ -26,5 +26,11 @@
 	},
 	"additional": {
 		"aria.label": "Go to additional info"
+	},
+	"status": {
+		"title": "Status",
+		"approved": "Approved",
+		"review": "Review",
+		"rejected": "Rejected"
 	}
 }
