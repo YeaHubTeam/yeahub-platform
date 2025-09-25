@@ -637,6 +637,9 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard',
 				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+				},
 				children: [
 					{
 						path: ROUTES.wiki.resources.route,
@@ -650,21 +653,29 @@ export const router = createBrowserRouter([
 								element: <ResourcesPage />,
 							},
 							{
-								path: ROUTES.wiki.resources.requests.route,
+								path: ROUTES.wiki.resources.my.route,
 								element: <Outlet />,
+								handle: {
+									crumb: Translation.CRUMBS_RESOURCES_MY,
+								},
 								children: [
 									{
-										path: ROUTES.wiki.resources.requests.create.route,
+										index: true,
+										element: <MyResourcesPage />,
+									},
+									{
+										path: ROUTES.wiki.resources.my.create.route,
 										element: <RequestResourceCreatePage />,
+										handle: {
+											crumb: Translation.CRUMBS_CREATE_REQUEST,
+										},
 									},
 								],
 							},
 							{
-								path: ROUTES.wiki.resources.my.route,
-								element: <MyResourcesPage />,
-								handle: {
-									crumb: Translation.CRUMBS_RESOURCES_MY,
-								},
+								path: ROUTES.wiki.resources.requests.route,
+								element: <Outlet />,
+								children: [],
 							},
 						],
 					},

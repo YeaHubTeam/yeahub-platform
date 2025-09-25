@@ -196,14 +196,14 @@ export const ROUTES = {
 			requests: {
 				route: 'requests',
 				page: '/dashboard/resources/requests',
-				create: {
-					route: 'create',
-					page: '/dashboard/resources/requests/create',
-				},
 			},
 			my: {
 				route: 'my-resources',
 				page: '/dashboard/resources/my-resources',
+				create: {
+					route: 'create',
+					page: '/dashboard/resources/my-resources/create',
+				},
 			},
 		},
 	},

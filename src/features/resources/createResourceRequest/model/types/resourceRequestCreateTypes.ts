@@ -1,4 +1,8 @@
-import { CreateOrEditResourceFormValues, Resource, ResourceTypeCode } from '@/entities/resource';
+import {
+	CreateOrEditResourceFormValues,
+	ResourceRequest,
+	ResourceTypeCode,
+} from '@/entities/resource';
 
 export type CreateResourceRequestFormValues = Omit<CreateOrEditResourceFormValues, 'id'>;
 
@@ -14,5 +18,4 @@ export type CreateResourceBodyRequest = {
 	skills: number[];
 	specializations: number[];
 };
-export type ResouceRequesst = Resource;
-export type CreateResourceRequestResponse = ResouceRequesst;
+export type CreateResourceRequestResponse = ResourceRequest;

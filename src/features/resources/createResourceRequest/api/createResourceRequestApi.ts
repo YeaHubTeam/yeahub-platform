@@ -9,17 +9,16 @@ import {
 
 export const createResourceRequestApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		createResourceRequest: build.mutation<
-			CreateResourceRequestResponse,
-			{ resource: CreateResourceBodyRequest }
-		>({
-			query: ({ resource }) => ({
-				url: createResourceRequestApiUrls.createResourceRequest,
-				method: 'POST',
-				body: resource,
-			}),
-			invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS],
-		}),
+		createResourceRequest: build.mutation<CreateResourceRequestResponse, CreateResourceBodyRequest>(
+			{
+				query: (resource) => ({
+					url: createResourceRequestApiUrls.createResourceRequest,
+					method: 'POST',
+					body: resource,
+				}),
+				invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS],
+			},
+		),
 	}),
 });
 

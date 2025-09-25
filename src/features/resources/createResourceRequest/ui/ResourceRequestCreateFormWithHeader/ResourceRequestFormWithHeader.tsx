@@ -18,10 +18,7 @@ interface ResourceRequestFormWithHeaderProps {
 	onSubmit: (formData: CreateResourceRequestFormValues) => Promise<void>;
 }
 
-export const ResourceRequestFormWithHeader: React.FC<ResourceRequestFormWithHeaderProps> = ({
-	// eslint-disable-next-line react/prop-types
-	onSubmit,
-}) => {
+export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormWithHeaderProps) => {
 	const {
 		handleSubmit,
 		formState: { isDirty },
@@ -31,7 +28,7 @@ export const ResourceRequestFormWithHeader: React.FC<ResourceRequestFormWithHead
 
 	return (
 		<Flex componentType="main" gap="24" className={styles.wrapper}>
-			<Flex gap="20" align="center" className={styles.buttons}>
+			<Flex align="center" className={styles.buttons}>
 				<Button
 					disabled={!isDirty}
 					className={styles['submit-button']}

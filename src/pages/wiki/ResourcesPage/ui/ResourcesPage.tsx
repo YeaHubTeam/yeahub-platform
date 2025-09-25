@@ -111,7 +111,7 @@ const ResourcesPage = () => {
 		<Button
 			variant="link-purple"
 			suffix={<Icon icon="plus" />}
-			onClick={() => navigate(ROUTES.wiki.resources.requests.create.page)}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
 		>
 			{t(Marketplace.LINK_LABEL)}
 		</Button>

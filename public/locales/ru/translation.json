@@ -122,7 +122,8 @@
 		"register": "Регистрация",
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
-		"resources.my": "Мои заявки"
+		"resources.my": "Мои заявки",
+		"create.request": "Создание заявки"
 	},
 	"toast": {
 		"title": {

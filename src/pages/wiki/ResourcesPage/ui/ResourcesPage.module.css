@@ -1,7 +1,6 @@
 .main {
   position: relative;
   flex-grow: 1;
-  margin-top: 68px;
   padding: 24px 20px 40px;
   height: auto;
 }
@@ -19,7 +18,6 @@
 .filters {
   position: sticky;
   top: 0;
-  margin-top: 68px;
   min-width: 360px;
   max-width: 360px;
   height: auto;
@@ -66,6 +64,7 @@
 
 .absolute-button {
   position: absolute;
+  top: -60px;
   right: 0;
   width: 153px;
 }

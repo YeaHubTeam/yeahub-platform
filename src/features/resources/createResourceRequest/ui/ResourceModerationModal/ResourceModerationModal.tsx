@@ -7,13 +7,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { Modal } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
 
-import { CreateResourceRequestResponse } from '@/features/resources/createResourceRequest/model/types/resourceRequestCreateTypes';
-
 import styles from './ResourceModerationModal.module.css';
 
 interface ResourceModerationModalProps {
 	isOpen: boolean;
-	resourceData: CreateResourceRequestResponse | null;
 	onClose: () => void;
 }
 

@@ -8,6 +8,11 @@
   justify-content: flex-end;
 }
 
+.submit-button {
+  position: absolute;
+  top: 18px;
+}
+
 .content {
   flex: 1 1 100%;
 }

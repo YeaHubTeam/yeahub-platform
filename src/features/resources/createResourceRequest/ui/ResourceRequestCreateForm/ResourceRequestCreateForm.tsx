@@ -15,7 +15,6 @@ import { resourceRequestCreateSchema } from '../../model/lib/validation/resource
 import {
 	CreateResourceBodyRequest,
 	CreateResourceRequestFormValues,
-	CreateResourceRequestResponse,
 } from '../../model/types/resourceRequestCreateTypes';
 import { ResourceModerationModal } from '../ResourceModerationModal/ResourceModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestCreateFormWithHeader/ResourceRequestFormWithHeader';
@@ -39,17 +38,12 @@ export const ResourceRequestCreateForm = () => {
 
 	const [createResourceRequestMutation] = useCreateResourceRequestMutation();
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [resourceForModal, setResourceForModal] = useState<CreateResourceRequestResponse | null>(
-		null,
-	);
 
-	const handleOpenModal = useCallback((resource: CreateResourceRequestResponse) => {
+	const handleOpenModal = useCallback(() => {
 		setIsModalOpen(true);
-		setResourceForModal(resource);
 	}, []);
 	const handleCloseModal = useCallback(() => {
 		setIsModalOpen(false);
-		setResourceForModal(null);
 		navigate(route(ROUTES.wiki.resources.requests.page));
 	}, [navigate]);
 
@@ -67,11 +61,9 @@ export const ResourceRequestCreateForm = () => {
 			specializations: formData.resourceSpecializations,
 		};
 		try {
-			const result = await createResourceRequestMutation({
-				resource: requestBody,
-			}).unwrap();
+			await createResourceRequestMutation(requestBody).unwrap();
 			methods.reset();
-			handleOpenModal(result);
+			handleOpenModal();
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error) {
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_REQUEST_CREATE_FAILED));
@@ -85,11 +77,7 @@ export const ResourceRequestCreateForm = () => {
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<ResourceRequestFormWithHeader onSubmit={onCreateResourceRequest} />
 			</LeavingPageBlocker>
-			<ResourceModerationModal
-				isOpen={isModalOpen}
-				resourceData={resourceForModal}
-				onClose={handleCloseModal}
-			/>
+			<ResourceModerationModal isOpen={isModalOpen} onClose={handleCloseModal} />
 		</FormProvider>
 	);
 };

@@ -76,6 +76,7 @@ export enum Translation {
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
+	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
