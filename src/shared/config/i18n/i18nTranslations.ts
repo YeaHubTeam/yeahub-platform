@@ -22,6 +22,7 @@ export enum Translation {
 	BACK_BUTTON = 'back.button',
 	EXPAND = 'expand',
 	COLLAPSE = 'collapse',
+	AUTHOR = 'author',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -42,6 +43,7 @@ export enum Translation {
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
+	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
@@ -410,14 +412,19 @@ export enum InterviewStatistics {
 }
 
 export enum Resources {
-	TITLE_SHORT = 'title.short',
-	DESCRIPTION = 'description.title',
-	TYPE = 'type',
+	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
+	ADDITIONAL_INFO_KEYWORDS = 'keywords.additional',
+	ADDITIONAL_INFO_SKILLS = 'skills.additional',
 	AUTHOR = 'author',
+	DATE = 'date',
+	DESCRIPTION = 'description.title',
+	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
 	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
 	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
+	TITLE_SHORT = 'title.short',
+	TYPE = 'type',
 }
 
 export enum Questions {
@@ -675,12 +682,19 @@ export enum Companies {
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	ICON_TITLE = 'icon.title',
+	ICON_SHORT = 'icon.short',
 	ICON_LABEL = 'icon.label',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+}
+
+export enum ResourceRequests {
+	STATUS_APPROVED = 'status.approved',
+	STATUS_REVIEW = 'status.review',
+	STATUS_REJECTED = 'status.rejected',
 }
 
 export enum Landing {
@@ -918,6 +932,9 @@ export enum Marketplace {
 	RESOURCES_TITLE = 'resources.title',
 	STATUS_ALL = 'status.all',
 	STATUS_TITLE = 'status.title',
+	STATUS_APPROVED = 'status.approved',
+	STATUS_REJECTED = 'status.rejected',
+	STATUS_PENDING = 'status.pending',
 	ADD_RESOURCE_TITLE = 'add.resource.title',
 	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
 	NAME_SHORT = 'name.short',

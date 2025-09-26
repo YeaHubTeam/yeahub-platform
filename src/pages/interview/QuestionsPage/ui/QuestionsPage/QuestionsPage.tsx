@@ -102,7 +102,7 @@ const QuestionsPage = () => {
 				skills: filter.skills,
 				rate: filter.rate,
 				complexity: filter.complexity,
-				status: filter.status,
+				status: filter.status as QuestionFilterStatus,
 				title: filter.title,
 			}}
 		/>

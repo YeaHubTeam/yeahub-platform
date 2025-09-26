@@ -14,6 +14,9 @@ td {
 }
 
 .cell {
+  padding: 0 6px;
+  width: 32px;
+
   span {
     position: relative;
     top: 3px;
@@ -26,5 +29,6 @@ td {
 }
 
 .actions-column {
-  width: 50px;
+  padding: 0;
+  width: 40px;
 }

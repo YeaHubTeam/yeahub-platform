@@ -24,6 +24,10 @@ interface TableProps<Id extends string | number, T> {
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
+	/**
+	 * Render function for defining column widths in the table.
+	 */
+	renderTableColumnWidths?: () => ReactNode;
 }
 
 /**
@@ -43,6 +47,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	renderActions,
 	selectedItems,
 	onSelectItems,
+	renderTableColumnWidths,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -65,6 +70,11 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 
 	return (
 		<table className={styles.table} data-testid="table">
+			<colgroup>
+				{selectedItems && <col className={styles.cell} />}
+				{renderTableColumnWidths?.()}
+				{hasActions && <col className={styles['actions-column']} />}
+			</colgroup>
 			<thead className={styles.head}>
 				<tr>
 					{selectedItems && (
@@ -89,7 +99,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 							</td>
 						)}
 						{renderTableBody(item)}
-						{hasActions && <td>{renderActions?.(item)}</td>}
+						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
 					</tr>
 				))}
 			</tbody>

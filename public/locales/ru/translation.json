@@ -22,6 +22,7 @@
 	"support": "Поддержка",
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
+	"author": "Автор",
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
@@ -49,7 +50,8 @@
 			"questions": "Вопросы",
 			"resources": "Ресурсы",
 			"skills": "Навыки",
-			"companies": "Компании"
+			"companies": "Компании",
+			"analytics": "Аналитика"
 		}
 	},
 	"stub": {

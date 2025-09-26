@@ -48,7 +48,7 @@ export const QuizAdditionalInfo = ({ className, quiz, isLoading }: QuizAdditiona
 			className={className}
 			title={t(InterviewQuizResult.TITLE_STAT)}
 			statsInfo={questionStats}
-			learned={quiz?.successCount ?? 0}
+			learned={learnedQuestions ?? 0}
 			total={quiz?.fullCount ?? 1}
 		/>
 	);

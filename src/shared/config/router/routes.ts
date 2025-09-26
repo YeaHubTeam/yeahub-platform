@@ -94,6 +94,10 @@ export const ROUTES = {
 				route: ':resourceId/edit',
 				page: '/admin/resources/:resourceId/edit',
 			},
+			requests: {
+				route: 'requests',
+				page: '/admin/resources/requests',
+			},
 		},
 		companies: {
 			route: 'companies',
@@ -146,6 +150,10 @@ export const ROUTES = {
 	settings: {
 		route: 'settings',
 		page: '/dashboard/settings',
+	},
+	analytics: {
+		route: 'analytics',
+		page: '/dashboard/analytics',
 	},
 	interview: {
 		route: 'interview',

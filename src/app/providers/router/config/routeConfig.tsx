@@ -9,6 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
+import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -39,6 +40,11 @@ import { QuestionCreatePage } from '@/pages/admin/QuestionCreatePage';
 import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
+import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
+import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
+import { ResourcePage } from '@/pages/admin/ResourcePage';
+import { ResourcesRequestsTablePage } from '@/pages/admin/ResourcesRequestsTablePage';
+import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillEditPage } from '@/pages/admin/SkillEditPage';
@@ -50,6 +56,7 @@ import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
 import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
+import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
@@ -84,6 +91,8 @@ import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
+import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
+import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
 import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -97,11 +106,6 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
-import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
-import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
-import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
-import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
-import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -168,6 +172,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 				icon: ResourcesIcon,
 			},
 		],
+		roles: allRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.analytics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+		icon: AnalyticsIcon,
 		roles: allRoles,
 	},
 ];
@@ -363,12 +374,20 @@ export const router = createBrowserRouter([
 				element: <ResourcesTablePage />,
 			},
 			{
+				path: ROUTES.admin.resources.details.page,
+				element: <ResourcePage />,
+			},
+			{
 				path: ROUTES.admin.resources.create.page,
 				element: <ResourceCreatePage />,
 			},
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.page,
+				element: <ResourcesRequestsTablePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -487,6 +506,10 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+			},
+			{
+				path: ROUTES.analytics.route,
+				element: <AnalyticsPage />,
 			},
 			{
 				path: ROUTES.profile.route,
