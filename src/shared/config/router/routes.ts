@@ -242,12 +242,8 @@ export const ROUTES = {
 			page: '/collections/:collectionId',
 		},
 	},
-	marketplace: {
-		route: 'marketplace',
-		page: '/marketplace',
-		request: {
-			route: 'request',
-			page: '/marketplace/request',
-		},
+	resources: {
+		route: 'resources',
+		page: '/resources',
 	},
 } as const;
