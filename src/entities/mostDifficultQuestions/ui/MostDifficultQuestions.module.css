@@ -26,13 +26,13 @@
   vertical-align: bottom;
 }
 
-.progress-bar{
-  line-height: 14px;
-}
-
 .percent {
   line-height: 21px;
   white-space: nowrap;
+}
+
+.progress-bar{
+  line-height: 14px;
 }
 
 @media (width <= 767px) {
@@ -45,7 +45,7 @@
     top: 10px;
   }
 
-  .inner-card {
+  .card {
     padding: 12px;
   }
 

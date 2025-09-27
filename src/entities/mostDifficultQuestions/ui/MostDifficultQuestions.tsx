@@ -9,8 +9,10 @@ import styles from './MostDifficultQuestions.module.css';
 
 export const MostDifficultQuestions = () => {
 	const { data: difficultQuestions } = useGetMostDifficultQuestionsQuery({ specId: 4 });
-	const progressBarColors = ['green', 'yellow', 'red'] as const;
 	const { isSmallScreen } = useScreenSize();
+
+	const progressBarColors = ['green', 'yellow', 'red'] as const;
+
 	const smallScreenQuestions = difficultQuestions?.slice(3);
 
 	return (
@@ -18,7 +20,7 @@ export const MostDifficultQuestions = () => {
 			{(isSmallScreen ? smallScreenQuestions : difficultQuestions)?.map((question, index) => {
 				const color = progressBarColors[index % progressBarColors.length];
 				return (
-					<Card key={question.id} withOutsideShadow size={'small'} className={styles['inner-card']}>
+					<Card key={question.id} withOutsideShadow size={'small'} className={styles['card']}>
 						<Flex justify={'between'}>
 							<p className={styles.question}>
 								<span>{question.topStat.title}</span>
