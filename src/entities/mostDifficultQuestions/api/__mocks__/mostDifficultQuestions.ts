@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
-import { mostDifficultQuestionsApiUrls } from '../../model/constants/questions';
-import { MostDifficultQuestionsResponse } from '../../model/types/questions';
+import { mostDifficultQuestionsApiUrls } from '../../model/constants/difficultQuestions';
+import { MostDifficultQuestionsResponse } from '../../model/types/difficultQuestions';
 
 import { mostDifficultQuestions } from './data';
 

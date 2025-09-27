@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { difficultQuestionsHandler } from '@/entities/mostDifficultQuestions/index';
 import { paymentHandlers } from '@/entities/payment';
 import { questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
@@ -17,9 +18,6 @@ import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
-
-// eslint-disable-next-line @conarti/feature-sliced/public-api
-import { difficultQuestionsHandler } from '@/widgets/question/MostDifficultQuestions/api/__mocks__/index';
 
 export const handlers = [
 	...authHandlers,

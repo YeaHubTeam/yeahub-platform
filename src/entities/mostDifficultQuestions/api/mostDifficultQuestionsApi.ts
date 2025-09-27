@@ -1,11 +1,11 @@
 import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
-import { mostDifficultQuestionsApiUrls } from '../model/constants/questions';
+import { mostDifficultQuestionsApiUrls } from '../model/constants/difficultQuestions';
 import {
 	MostDifficultQuestionsParams,
 	MostDifficultQuestionsResponse,
-} from '../model/types/questions';
+} from '../model/types/difficultQuestions';
 
 export const mostDifficultQuestionsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

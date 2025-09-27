@@ -1,4 +1,4 @@
-import { MostDifficultQuestionsResponse } from '../../../model/types/questions';
+import { MostDifficultQuestionsResponse } from '../../../model/types/difficultQuestions';
 
 export const mostDifficultQuestions: MostDifficultQuestionsResponse[] = [
 	{

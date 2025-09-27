@@ -1,5 +1,5 @@
-import { MostDifficultQuestions } from '@/widgets/question/MostDifficultQuestions/index';
+import { DifficultQuestionsList } from '@/widgets/question/DifficultQuestionsList/index';
 
 export const AnalyticsPage = () => {
-	return <MostDifficultQuestions />;
+	return <DifficultQuestionsList />;
 };

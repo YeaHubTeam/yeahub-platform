@@ -1,0 +1,18 @@
+.card {
+  gap: 20px;
+  max-width: 455px;
+}
+
+@media (width <= 767px) {
+  .card {
+    padding: 16px;
+    max-width: 344px;
+  }
+}
+
+@media (width <= 480px) {
+  .card {
+    padding: 20px 10px;
+    max-width: 340px;
+  }
+}
