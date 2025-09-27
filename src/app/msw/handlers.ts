@@ -18,6 +18,9 @@ import { specializationCreateHandlers } from '@/features/specialization/createSp
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 
+// eslint-disable-next-line @conarti/feature-sliced/public-api
+import { difficultQuestionsHandler } from '@/widgets/question/MostDifficultQuestions/api/__mocks__/index';
+
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
@@ -38,4 +41,5 @@ export const handlers = [
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
+	...difficultQuestionsHandler,
 ];

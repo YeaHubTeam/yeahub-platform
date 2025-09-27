@@ -24,8 +24,8 @@ async function deferRender() {
 		return;
 	}
 
-	// const { worker } = await import('./msw/browser');
-	// return worker.start();
+	const { worker } = await import('./msw/browser');
+	return worker.start();
 }
 
 initSentry();
