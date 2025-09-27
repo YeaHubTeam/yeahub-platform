@@ -10,9 +10,9 @@ import {
 	ResourcesPaginationSkeleton,
 } from '@/widgets/Marketplace';
 
-import styles from './PublicMarketplacePage.module.css';
+import styles from './PublicResourcesPage.module.css';
 
-export const PublicMarketplacePageSkeleton = () => {
+export const PublicResourcesPageSkeleton = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
