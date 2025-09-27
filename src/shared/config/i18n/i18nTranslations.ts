@@ -315,6 +315,11 @@ export enum Specializations {
 	SELECT_SELECTED = 'select.selected',
 }
 
+export enum Analytics {
+	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
+	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+}
+
 export enum InterviewQuiz {
 	TITLE = 'title',
 	PREVIEW_TITLE = 'preview.title',
