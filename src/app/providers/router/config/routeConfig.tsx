@@ -90,6 +90,7 @@ import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
+import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
 import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -165,7 +166,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 		icon: WikiIcon,
 		elements: [
 			{
-				route: ROUTES.wiki.resources.route,
+				route: ROUTES.wiki.resources.page,
 				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
 				icon: ResourcesIcon,
 			},
@@ -646,6 +647,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
+				path: '/dashboard',
 				element: <Outlet />,
 				handle: {
 					crumb: Translation.CRUMBS_WIKI,
@@ -664,10 +666,28 @@ export const router = createBrowserRouter([
 							},
 							{
 								path: ROUTES.wiki.resources.my.route,
-								element: <MyResourcesPage />,
+								element: <Outlet />,
 								handle: {
 									crumb: Translation.CRUMBS_RESOURCES_MY,
 								},
+								children: [
+									{
+										index: true,
+										element: <MyResourcesPage />,
+									},
+									{
+										path: ROUTES.wiki.resources.my.create.route,
+										element: <RequestResourceCreatePage />,
+										handle: {
+											crumb: Translation.CRUMBS_CREATE_REQUEST,
+										},
+									},
+								],
+							},
+							{
+								path: ROUTES.wiki.resources.requests.route,
+								element: <Outlet />,
+								children: [],
 							},
 						],
 					},

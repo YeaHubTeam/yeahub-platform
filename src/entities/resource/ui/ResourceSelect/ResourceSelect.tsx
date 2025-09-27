@@ -33,6 +33,7 @@ export const ResourcesSelect = ({
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const { data } = useGetResourceTypesQuery();
+
 	const resourceTypes = data?.map((item) => ({
 		id: item.code,
 		title: t(`resourceTypes.${item.code}`, item.code),

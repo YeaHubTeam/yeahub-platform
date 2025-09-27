@@ -78,6 +78,7 @@ export enum Translation {
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
+	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -182,6 +183,8 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
+	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
+	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -417,6 +420,9 @@ export enum Resources {
 	DESCRIPTION = 'description.title',
 	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
+	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
+	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
+	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
 }

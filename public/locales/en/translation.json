@@ -121,7 +121,8 @@
 		"register": "Registration",
 		"wiki": "Knowledge base",
 		"resources": "Resources",
-		"resources.my": "My resources"
+		"resources.my": "My resources",
+		"create.request": "Creating a request"
 	},
 	"toast": {
 		"title": {

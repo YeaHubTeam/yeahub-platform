@@ -197,12 +197,21 @@ export const ROUTES = {
 	},
 	wiki: {
 		route: 'wiki',
+		page: '/dashboard',
 		resources: {
 			route: 'resources',
 			page: '/dashboard/resources',
+			requests: {
+				route: 'requests',
+				page: '/dashboard/resources/requests',
+			},
 			my: {
 				route: 'my-resources',
 				page: '/dashboard/resources/my-resources',
+				create: {
+					route: 'create',
+					page: '/dashboard/resources/my-resources/create',
+				},
 			},
 		},
 	},
