@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
 import Books from '@/shared/assets/icons/books.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
@@ -43,7 +43,6 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
-import { ResourcesRequestsTablePage } from '@/pages/admin/ResourcesRequestsTablePage';
 import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
@@ -376,7 +375,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.resources.requests.page,
-				element: <ResourcesRequestsTablePage />,
+				element: <Navigate to={`${ROUTES.admin.resources.page}#requests`} replace />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
