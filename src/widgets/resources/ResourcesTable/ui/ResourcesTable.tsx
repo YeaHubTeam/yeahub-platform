@@ -74,7 +74,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k}>
 				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.resources.details.route, resource.id)}>
+					<Link to={route(ROUTES.admin.resources.view.route, resource.id)}>
 						<Text variant={'body3'} color={'purple-700'}>
 							{v}
 						</Text>

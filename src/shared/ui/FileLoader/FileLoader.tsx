@@ -23,6 +23,7 @@ export interface FileLoaderProps {
 	extensionsText: Extension;
 	onChange: (files: globalThis.File[]) => void;
 	isDragDropEnabled?: boolean;
+	disabled?: boolean;
 }
 
 export const FileLoader = ({
@@ -34,6 +35,7 @@ export const FileLoader = ({
 	multiply = false,
 	onChange,
 	isDragDropEnabled = true,
+	disabled,
 }: FileLoaderProps) => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
 
@@ -49,6 +51,7 @@ export const FileLoader = ({
 	};
 
 	const handleChange = () => {
+		if (disabled) return null;
 		if (uploaderRef.current) {
 			const refFiles = uploaderRef?.current.files;
 			if (refFiles && refFiles.length > 0) {
@@ -74,6 +77,7 @@ export const FileLoader = ({
 	};
 
 	const onDrop = (e: DragEvent<HTMLDivElement>) => {
+		if (disabled) return null;
 		e.preventDefault();
 		const transferFiles = e.dataTransfer.files;
 		handleIsDragActive(false);
@@ -138,6 +142,7 @@ export const FileLoader = ({
 				onChange={handleChange}
 				multiple={multiply}
 				className={style['file-input']}
+				disabled={disabled}
 			/>
 		</Flex>
 	);

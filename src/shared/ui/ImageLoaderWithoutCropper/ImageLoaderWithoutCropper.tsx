@@ -25,6 +25,7 @@ interface ImageLoaderWithoutCropperProps {
 		height: number;
 	};
 	initialSrc: string | null;
+	disabled?: boolean;
 }
 
 export const ImageLoaderWithoutCropper = ({
@@ -32,6 +33,7 @@ export const ImageLoaderWithoutCropper = ({
 	removeImage,
 	maxMBSize,
 	initialSrc: src,
+	disabled,
 }: ImageLoaderWithoutCropperProps) => {
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.profile]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +41,7 @@ export const ImageLoaderWithoutCropper = ({
 	const uploaderRef = useRef<HTMLDivElement | null>(null);
 
 	const handleUpload = ([file]: File[]) => {
+		if (disabled) return null;
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
 		setIsLoading(true);
@@ -62,7 +65,12 @@ export const ImageLoaderWithoutCropper = ({
 				{!isLoading && <ImageWithWrapper src={src} alt={'skill icon'} className={styles.img} />}
 
 				{!isLoading && src && (
-					<button type="button" className={styles['delete-btn']} onClick={removeImage}>
+					<button
+						disabled={disabled}
+						type="button"
+						className={styles['delete-btn']}
+						onClick={removeImage}
+					>
 						{t(Profile.PHOTO_DELETE, { ns: i18Namespace.profile })}
 					</button>
 				)}
@@ -70,6 +78,7 @@ export const ImageLoaderWithoutCropper = ({
 
 			<div ref={uploaderRef} className={styles['file-loader-wrapper']}>
 				<FileLoader
+					disabled={disabled}
 					className={styles['file-loader']}
 					maxFileMBSize={maxMBSize}
 					accept={Accept.IMAGE}

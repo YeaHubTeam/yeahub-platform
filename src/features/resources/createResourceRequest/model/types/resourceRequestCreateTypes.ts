@@ -1,10 +1,10 @@
 import {
-	CreateOrEditResourceFormValues,
+	CreateOrEditOrViewResourceFormValues,
 	ResourceRequest,
 	ResourceTypeCode,
 } from '@/entities/resource';
 
-export type CreateResourceRequestFormValues = Omit<CreateOrEditResourceFormValues, 'id'>;
+export type CreateResourceRequestFormValues = Omit<CreateOrEditOrViewResourceFormValues, 'id'>;
 
 export type CreateResourceBodyRequest = {
 	product: {

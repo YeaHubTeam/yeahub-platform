@@ -13,9 +13,10 @@ import styles from './KeywordInput.module.css';
 export interface KeywordInputProps {
 	value: string[];
 	onChange: (value: string[]) => void;
+	disabled?: boolean;
 }
 
-export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
+export const KeywordInput = ({ value = [], onChange, disabled }: KeywordInputProps) => {
 	const [keywords, setKeywords] = useState('');
 	const [keywordsArray, setKeywordsArray] = useState<string[]>(value);
 
@@ -62,11 +63,13 @@ export const KeywordInput = ({ value = [], onChange }: KeywordInputProps) => {
 					value={keywords}
 					onChange={changeHandler}
 					onKeyDown={handleKeyDown}
+					disabled={disabled}
 				/>
 				<Button
 					className={styles.button}
 					onClick={handleClick}
 					dataTestId="KeywordInput_Create_Button"
+					disabled={disabled}
 				>
 					{t(Translation.CREATE, { ns: i18Namespace.translation })}
 				</Button>

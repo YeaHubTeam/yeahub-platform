@@ -1,6 +1,6 @@
-import { CreateOrEditResourceFormValues, Resource } from '@/entities/resource';
+import { CreateOrEditOrViewResourceFormValues, Resource } from '@/entities/resource';
 
-export type EditResourceFormValues = CreateOrEditResourceFormValues;
+export type EditResourceFormValues = CreateOrEditOrViewResourceFormValues;
 
 export type EditResourceBodyRequest = EditResourceFormValues;
 export type EditResourceResponse = Resource;
