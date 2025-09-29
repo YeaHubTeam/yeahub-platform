@@ -51,7 +51,7 @@
 	"setting.tabs": {
 		"select.tariff": "Select tariff",
 		"change.password": "Password change",
-		"verify.email": "E-mail confirmation",
+		"verify.email": "Verification",
 		"account": "Account"
 	},
 	"email.verification": {
@@ -69,6 +69,15 @@
 		"success.verify.stub": {
 			"title": "Mail has been successfully confirmed",
 			"description": "Thank you for confirming your mail, now more services are available on the platform"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram not connected",
+		"description": "Connect Telegram for quick login and notifications",
+		"submit": "Verify via Telegram",
+		"success": {
+			"title": "Telegram confirmed",
+			"description": "Thank you for confirming your Telegram. It can now be used for login"
 		}
 	},
 	"change.password": {

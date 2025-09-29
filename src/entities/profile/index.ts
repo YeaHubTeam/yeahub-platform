@@ -27,3 +27,4 @@ export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';
 export { EmailVerifyStubSkeleton } from './ui/EmailVerifyStub/EmailVerifyStub.skeleton';
 
 export { UserVerifyed } from './ui/UserVerifyed/UserVerifyed';
+export { TelegramVerified } from './ui/TelegramVerifyed/TelegramVerified';

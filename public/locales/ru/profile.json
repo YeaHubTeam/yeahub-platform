@@ -51,7 +51,7 @@
 	"settings.tabs": {
 		"select.tariff": "Выбрать тариф",
 		"change.password": "Смена пароля",
-		"verify.email": "Подтверждение e-mail",
+		"verify.email": "Верификация",
 		"account": "Аккаунт"
 	},
 	"email.verification": {
@@ -69,6 +69,15 @@
 		"success.verify.stub": {
 			"title": "Почта успешно подтверждена",
 			"description": "Спасибо что подтвердили вашу почту, теперь вам доступно больше услуг на платформе"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram не подключён",
+		"description": "Подключите Telegram для быстрого входа и уведомлений",
+		"submit": "Подтвердить через Telegram",
+		"success": {
+			"title": "Telegram подтверждён",
+			"description": "Спасибо, что подтвердили Ваш Telegram. Теперь его можно использовать для входа"
 		}
 	},
 	"change.password": {

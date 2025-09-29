@@ -1,0 +1,33 @@
+.card-title {
+  margin: 0;
+  color: var(--text-color-black-landing);
+  line-height: 127%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-large-34);
+}
+
+.card-text {
+  margin: 0;
+  width: 100%;
+  color: var(--text-color-black-landing);
+  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-p-m);
+}
+
+.button {
+  margin-top: 8px;
+  width: 328px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
