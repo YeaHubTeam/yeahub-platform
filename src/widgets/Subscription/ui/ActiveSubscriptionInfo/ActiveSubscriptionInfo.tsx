@@ -28,7 +28,7 @@ export const ActiveSubscriptionInfo = ({ renderActions }: ActiveSubscriptionInfo
 	const { t } = useTranslation(i18Namespace.subscription);
 	const { subscriptions } = useAppSelector(getFullProfile);
 	const activeSubscriptions = useAppSelector(getActiveSubscription);
-
+	const subscriptionState = activeSubscriptions?.state || '';
 	const endDate = activeSubscriptions?.endDate || '';
 	const createDate = activeSubscriptions?.createDate || '';
 
@@ -55,13 +55,18 @@ export const ActiveSubscriptionInfo = ({ renderActions }: ActiveSubscriptionInfo
 					variant="large"
 				/>
 				<Text variant="body3">
-					{t(Subscription.SUBSCRIPTION_RENEWAL, {
-						Date: formatDate(parseISO(endDate), D_MM_YYYY, { locale: ru }),
-					})}
+					{t(
+						subscriptionState === 'active'
+							? Subscription.SUBSCRIPTION_RENEWAL
+							: Subscription.SUBSCRIPTION_CANCELED,
+						{
+							Date: formatDate(parseISO(endDate), D_MM_YYYY, { locale: ru }),
+						},
+					)}
 				</Text>
 				<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 			</Flex>
-			{subscriptions.length > 0 && (
+			{subscriptions.length > 0 && subscriptionState === 'active' && (
 				<div className={styles.actions}>
 					<Flex direction="row" gap="8">
 						{renderActions ? renderActions() : <UnsubscribeButton />}
