@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Books from '@/shared/assets/icons/books.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
@@ -41,6 +41,7 @@ import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
+import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
@@ -102,7 +103,7 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
-import { ResourcesAdminPage } from '@/pages/admin/ResourcesPage';
+import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -358,7 +359,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.resources.page,
-				element: <ResourcesAdminPage />,
+				element: <AdminResourcesPage />,
 			},
 			{
 				path: ROUTES.admin.resources.details.page,
@@ -369,8 +370,8 @@ export const router = createBrowserRouter([
 				element: <ResourceCreatePage />,
 			},
 			{
-				path: ROUTES.admin.resources.requests.page,
-				element: <Navigate to={`${ROUTES.admin.resources.page}#requests`} replace />,
+				path: ROUTES.admin.resources.edit.page,
+				element: <ResourceEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

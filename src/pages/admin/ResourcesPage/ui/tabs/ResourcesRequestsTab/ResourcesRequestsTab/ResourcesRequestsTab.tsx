@@ -10,14 +10,13 @@ import { useGetResourceRequestsQuery, SelectedResourceRequestEntities } from '@/
 import { ResourceRequestsTable } from '@/widgets/resources';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { ResourcesRequestsTabPagination } from '../ResourcesRequestsTabPagination/ResourcesRequestsTabPagination';
-
 import {
 	getResourcesRequestsTabSearch,
 	getResourcesRequestsTabSelected,
 	getResourcesRequestsTabPage,
-} from '../../model/selectors/resourcesRequestsTabSelectors';
-import { resourcesRequestsTabActions } from '../../model/slice/resourcesRequestsTabSlice';
+} from '../../../../model/selectors/resourcesRequestsTabSelectors';
+import { resourcesRequestsTabActions } from '../../../../model/slice/resourcesRequestsTabSlice';
+import { ResourcesRequestsTabPagination } from '../ResourcesRequestsTabPagination/ResourcesRequestsTabPagination';
 
 import styles from './ResourcesRequestsTab.module.css';
 

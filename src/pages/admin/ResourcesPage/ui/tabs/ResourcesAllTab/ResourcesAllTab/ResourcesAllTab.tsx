@@ -13,18 +13,13 @@ import {
 	getResourcesAllTabPage,
 	getResourcesAllTabSearch,
 	getResourcesAllTabSelected,
-} from '../../model/selectors/resourcesAllTabSelectors';
-import { resourcesAllTabActions } from '../../model/slice/resourcesAllTabSlice';
+} from '../../../../model/selectors/resourcesAllTabSelectors';
+import { resourcesAllTabActions } from '../../../../model/slice/resourcesAllTabSlice';
 import { ResourcesAllTabPagination } from '../ResourcesAllTabPagination/ResourcesAllTabPagination';
 
 import styles from './ResourcesAllTab.module.css';
 
-/**
- * Page showing info about all the created questions
- * @constructor
- */
-
-const ResourcesAllTab = () => {
+export const ResourcesAllTab = () => {
 	const dispatch = useAppDispatch();
 	const search = useSelector(getResourcesAllTabSearch);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
@@ -65,5 +60,3 @@ const ResourcesAllTab = () => {
 		</Flex>
 	);
 };
-
-export default ResourcesAllTab;

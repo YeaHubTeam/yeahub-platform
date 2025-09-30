@@ -55,7 +55,6 @@ export const useQueryFilter = (onReset?: () => void) => {
 			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
 
 		if (shouldRedirect) {
-			// navigate(initialState, { replace: true });
 			navigate(`${initialState}${location.hash}`, { replace: true });
 		}
 	}, [location.pathname, location.search]);
@@ -125,7 +124,6 @@ export const useQueryFilter = (onReset?: () => void) => {
 			}
 		});
 
-		// navigate(`?${params.toString()}`);
 		navigate(`?${params.toString()}${location.hash}`);
 	};
 
@@ -143,7 +141,6 @@ export const useQueryFilter = (onReset?: () => void) => {
 			onReset?.();
 			return;
 		}
-		// navigate(initialState, { replace: true });
 		navigate(`${initialState}${location.hash}`, { replace: true });
 	};
 
