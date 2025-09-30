@@ -1,6 +1,7 @@
 export type {
 	Specialization,
 	CreateOrEditSpecializationFormValues,
+	SpecializationProgress,
 } from './model/types/specialization';
 export {
 	useGetSpecializationsListQuery,

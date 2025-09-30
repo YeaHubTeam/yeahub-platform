@@ -1,0 +1,8 @@
+.card {
+  gap: 24px;
+}
+
+.table-header {
+  background: var(--background-primary);
+  color: var(--text-color-white);
+}

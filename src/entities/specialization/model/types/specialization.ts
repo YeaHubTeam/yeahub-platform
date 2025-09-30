@@ -27,3 +27,11 @@ export type CreateOrEditSpecializationFormValues = Pick<
 	Specialization,
 	'id' | 'title' | 'description' | 'imageSrc'
 >;
+
+export interface SpecializationProgress {
+	id: number;
+	title: string;
+	skillCount: number;
+	questionCount: number;
+	averageProgress: number;
+}
