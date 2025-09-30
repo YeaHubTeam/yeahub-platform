@@ -41,9 +41,7 @@ import { QuestionEditPage } from '@/pages/admin/QuestionEditPage';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/QuestionPage';
 import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
-import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
-import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillEditPage } from '@/pages/admin/SkillEditPage';
@@ -104,6 +102,7 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
+import { ResourcesAdminPage } from '@/pages/admin/ResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -359,7 +358,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.resources.page,
-				element: <ResourcesTablePage />,
+				element: <ResourcesAdminPage />,
 			},
 			{
 				path: ROUTES.admin.resources.details.page,
@@ -368,10 +367,6 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.create.page,
 				element: <ResourceCreatePage />,
-			},
-			{
-				path: ROUTES.admin.resources.edit.page,
-				element: <ResourceEditPage />,
 			},
 			{
 				path: ROUTES.admin.resources.requests.page,
