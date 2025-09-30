@@ -1,4 +1,5 @@
 import { Response, SortOrder } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -11,7 +12,7 @@ export interface Resource {
 	description: string;
 	type: ResourceType;
 	url: string;
-	keywords?: string[];
+	keywords: string[];
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
@@ -34,7 +35,7 @@ export interface ResourceRequest {
 		type: ResourceTypeCode;
 		imageSrc: string;
 		iconBase64?: string;
-		keywords?: string[];
+		keywords: string[];
 	};
 	specializations: Specialization[];
 	skills: Skill[];
@@ -61,6 +62,10 @@ export interface GetResourcesListParamsRequest {
 export interface GetMyRequestsResourcesParamsRequest {
 	page?: number;
 	limit?: number;
+	search?: string;
+	status?: ResourceRequestStatus | 'all';
+	types?: string[];
+	skills?: number[];
 }
 
 export type GetResourcesListResponse = Response<Resource[]>;
@@ -101,8 +106,6 @@ export interface ResourceType {
 	code: ResourceTypeCode;
 	description: string;
 }
-
-export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

@@ -19,6 +19,11 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		path: '/collections/',
 		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
 	},
+	{
+		link: ROUTES.resources.page,
+		path: '/resources/',
+		title: Landing.HEADER_NAV_PUBLIC_RESOURCES,
+	},
 ];
 
 export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
@@ -36,5 +41,10 @@ export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 		link: ROUTES.interview.collections.page,
 		path: '/dashboard/interview/collections',
 		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
+	},
+	{
+		link: ROUTES.wiki.resources.page,
+		path: '/dashboard/resources',
+		title: Landing.HEADER_NAV_PUBLIC_RESOURCES,
 	},
 ];

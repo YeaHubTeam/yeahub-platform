@@ -7,11 +7,8 @@ import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 import { getSpecializationId } from '@/entities/profile';
-import {
-	ChooseQuestionComplexity,
-	ChooseQuestionsCategories,
-	RateFilterSection,
-} from '@/entities/question';
+import { ChooseQuestionComplexity, RateFilterSection } from '@/entities/question';
+import { SkillsListField } from '@/entities/skill';
 
 import { FilterParams, QuestionFilterStatus } from '../model/types';
 
@@ -19,7 +16,6 @@ import { StatusFilterSection } from './StatusFilterSection/StatusFilterSection';
 
 interface QuestionsFilterPanelProps {
 	filter: FilterParams;
-	skillsLimit?: number;
 	onChangeSearch: (value: string) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeComplexity: (complexity: number[] | undefined) => void;
@@ -33,7 +29,6 @@ export const QuestionsFilterPanel = ({
 	onChangeComplexity,
 	onChangeRate,
 	onChangeStatus,
-	skillsLimit,
 }: QuestionsFilterPanelProps) => {
 	const { skills, rate, complexity, status, title } = filter;
 	const { t } = useTranslation(i18Namespace.questions);
@@ -52,11 +47,9 @@ export const QuestionsFilterPanel = ({
 				onSearch={debouncedSearch}
 				currentValue={title}
 			/>
-			<ChooseQuestionsCategories
-				skillsLimit={skillsLimit}
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				shouldShowScroll
 				selectedSpecialization={profileSpecialization}
 			/>
 			<ChooseQuestionComplexity
@@ -64,7 +57,10 @@ export const QuestionsFilterPanel = ({
 				selectedComplexity={complexity}
 			/>
 			<RateFilterSection onChangeRate={onChangeRate} selectedRate={rate} />
-			<StatusFilterSection onChangeStatus={onChangeStatus} selectedStatus={status} />
+			<StatusFilterSection
+				onChangeStatus={onChangeStatus}
+				selectedStatus={status as QuestionFilterStatus}
+			/>
 		</Flex>
 	);
 };

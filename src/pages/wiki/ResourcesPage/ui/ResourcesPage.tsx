@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+// import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
+// import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -30,7 +31,7 @@ const RESOURCES_PER_PAGE = 6;
 const ResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const {
 		onChangeSearchParams,
@@ -39,6 +40,7 @@ const ResourcesPage = () => {
 		onChangeResources,
 		filter,
 		onChangePage,
+		resetFilters,
 	} = useMarketplaceFilters();
 
 	const {
@@ -58,9 +60,9 @@ const ResourcesPage = () => {
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const handleNavigateToMyResources = () => {
-		navigate(ROUTES.wiki.resources.my.page);
-	};
+	// const handleNavigateToMyResources = () => {
+	// 	navigate(ROUTES.wiki.resources.my.page);
+	// };
 
 	if (isLoading) {
 		return <ResourcesPageSkeleton />;
@@ -105,6 +107,15 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
+	// const suggestButton = (
+	// 	<Button
+	// 		variant="link-purple"
+	// 		suffix={<Icon icon="plus" />}
+	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+	// 	>
+	// 		{t(Marketplace.LINK_LABEL)}
+	// 	</Button>
+	// );
 
 	return (
 		<Flex gap="20" align="start">
@@ -115,9 +126,15 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
+						{/*{suggestButton}*/}
 					</Flex>
 				</Flex>
-				<ResourcesList resources={resources} />
+
+				{resources.length > 0 ? (
+					<ResourcesList resources={resources} />
+				) : (
+					<EmptyStub resetFilters={resetFilters} />
+				)}
 
 				<ResourcesPagination
 					resourcesResponse={resourcesResponse}
@@ -127,14 +144,14 @@ const ResourcesPage = () => {
 			</Card>
 
 			<Flex className={styles['button-wrapper']}>
-				<Button
-					className={styles['absolute-button']}
-					variant="outline"
-					size="large"
-					onClick={handleNavigateToMyResources}
-				>
-					{t(Marketplace.MY_RESOURCES)}
-				</Button>
+				{/*<Button*/}
+				{/*	className={styles['absolute-button']}*/}
+				{/*	variant="outline"*/}
+				{/*	size="large"*/}
+				{/*	onClick={handleNavigateToMyResources}*/}
+				{/*>*/}
+				{/*	{t(Marketplace.MY_RESOURCES)}*/}
+				{/*</Button>*/}
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
 			</Flex>

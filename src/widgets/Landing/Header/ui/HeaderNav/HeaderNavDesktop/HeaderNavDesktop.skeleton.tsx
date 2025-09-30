@@ -7,6 +7,7 @@ export const HeaderNavDesktopSkeleton = () => {
 			<Skeleton dataTestId={'HeaderNavDesktopSkeleton'} width={120} height={20} borderRadius={4} />
 			<Skeleton dataTestId={'HeaderNavDesktopSkeleton'} width={90} height={20} borderRadius={4} />
 			<Skeleton width={130} height={20} borderRadius={4} />
+			<Skeleton width={130} height={20} borderRadius={4} />
 		</Flex>
 	);
 };

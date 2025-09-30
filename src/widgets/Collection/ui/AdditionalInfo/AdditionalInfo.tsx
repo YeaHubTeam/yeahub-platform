@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
+import { AuthorInfo } from '@/shared/ui/AuthorInfo/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip } from '@/shared/ui/StatusChip';
@@ -16,7 +17,6 @@ import {
 	CollectionQuestionsCount,
 } from '@/entities/collection';
 import { Media, MediaLinksBanner } from '@/entities/media';
-import { QuestionAuthor } from '@/entities/question';
 import { SpecializationsList } from '@/entities/specialization';
 
 import styles from './AdditionalInfo.module.css';
@@ -63,13 +63,11 @@ export const AdditionalInfo = ({
 					<CollectionCompanyInfo company={company} />
 					<CollectionAccessInfo isFree={isFree} />
 					<CollectionQuestionsCount questionsCount={questionsCount} />
-					{isSmallScreen && showAuthor && createdBy && <QuestionAuthor createdBy={createdBy} />}
+					{isSmallScreen && showAuthor && createdBy && <AuthorInfo createdBy={createdBy} />}
 					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>
 			</Card>
-			{isLargeScreen && showAuthor && createdBy && (
-				<QuestionAuthor createdBy={createdBy} isCenter />
-			)}
+			{isLargeScreen && showAuthor && createdBy && <AuthorInfo createdBy={createdBy} isCenter />}
 		</>
 	);
 };

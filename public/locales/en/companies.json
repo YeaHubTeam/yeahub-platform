@@ -6,6 +6,7 @@
 	},
 	"icon": {
 		"title": "Company image",
+		"short": "Company",
 		"label": "Add company image"
 	},
 	"create.page.title": "Creating new company",
