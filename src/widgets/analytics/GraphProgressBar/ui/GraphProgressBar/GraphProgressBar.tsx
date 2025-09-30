@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetPopularSkillsQuery } from '@/entities/skill';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { ProgressBarItem } from '../ProgressBarItem/ProgressBarItem';
 
@@ -19,7 +20,7 @@ interface GraphProgressBarProps {
 }
 
 export const GraphProgressBar = ({ direction }: GraphProgressBarProps) => {
-	const specializationId = useAppSelector(getSpecializationId);
+	const specializationId = useAppSelector(getSpecializationId) || DEFAULT_SPECIALIZATION_ID;
 
 	const { data } = useGetPopularSkillsQuery({ limit: 3, page: 1, specializationId });
 
