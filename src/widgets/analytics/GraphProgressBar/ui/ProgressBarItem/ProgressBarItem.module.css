@@ -1,0 +1,54 @@
+.progress-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar-column {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.progress-item-card-row {
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.progress-item-card-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  min-width: 58px;
+  max-width: 58px;
+}
+
+.flex-column {
+  min-height: 272px;
+  max-height: 272px;
+  
+}
+
+.flex-row {
+  width: 100%;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+  font-size: var(--font-size-p-xs);
+}
+
+@media (width <= 1440px) {
+  .progress-item-card-row {
+    padding: 16px;
+    min-width: 310px;
+    max-width: 310px;
+  }
+}

@@ -10,6 +10,7 @@ export interface ProgressBarProps {
 	className?: string;
 	label?: string;
 	variant?: 'small' | 'large' | 'medium';
+	direction?: 'row' | 'column';
 }
 
 export const ProgressBar = ({
@@ -18,9 +19,10 @@ export const ProgressBar = ({
 	totalCount,
 	label,
 	variant = 'small',
+	direction = 'row',
 }: ProgressBarProps) => {
 	return (
-		<div className={classNames(styles['progress-bar'], className)}>
+		<div className={classNames(styles['progress-bar'], className, styles[direction])}>
 			<progress
 				className={styles[`progress-bar-${variant}`]}
 				value={currentCount}
