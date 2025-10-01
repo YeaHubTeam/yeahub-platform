@@ -1,4 +1,4 @@
-import { InterviewPopularQuestions } from '@/widgets/interview/InterviewPopularQuestions/ui/InterviewPopularQuestions';
+import { InterviewPopularQuestions } from '@/widgets/interview/InterviewPopularQuestions';
 
 export const AnalyticsPage = () => {
 	const popularQuestions = [
