@@ -74,7 +74,7 @@ const QuestionsPage = () => {
 				disabled: isAuthor && item.createdBy?.id !== userId,
 			})),
 		};
-	}, [allQuestions, userId]);
+	}, [allQuestions, userId, isAuthor]);
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
