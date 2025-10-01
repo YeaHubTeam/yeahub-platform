@@ -20,6 +20,7 @@ export const InterviewPopularQuestions = ({ topStat }: InterviewPopularQuestions
 			title={'Самые частые вопросы в подборках'}
 			isActionPositionBottom={true}
 			actionTitle={'Подробнее'}
+			actionRoute={'_blank'}
 			size={'medium'}
 		>
 			<Flex direction="column" gap={'24'}>
