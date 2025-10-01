@@ -14,6 +14,7 @@ export const useMarketplaceFilters = () => {
 	const onChangeSpecialization = (specialization: number | number[]) => {
 		handleFilterChange({
 			specialization: Array.isArray(specialization) ? specialization : [specialization],
+			skills: undefined,
 			page: 1,
 		});
 	};
