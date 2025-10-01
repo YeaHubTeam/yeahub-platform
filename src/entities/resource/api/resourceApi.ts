@@ -12,6 +12,10 @@ import {
 	GetMyRequestsResourcesParamsRequest,
 	GetMyRequestsResourcesResponse,
 } from '../model/types/resource';
+import {
+	GetResourceRequestsResponse,
+	GetResourceRequestsParams,
+} from '../model/types/resourceRequest';
 
 const resourceApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -48,6 +52,13 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
+		getResourceRequests: build.query<GetResourceRequestsResponse, GetResourceRequestsParams>({
+			query: (params) => ({
+				url: resourceApiUrls.getResourceRequests,
+				params: { page: 1, limit: 10, ...params },
+			}),
+			providesTags: [ApiTags.RESOURCE_REQUESTS],
+		}),
 	}),
 });
 
@@ -56,5 +67,6 @@ export const {
 	useGetResourceTypesQuery,
 	useGetResourceByIdQuery,
 	useGetMyRequestsResourcesQuery,
+	useGetResourceRequestsQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

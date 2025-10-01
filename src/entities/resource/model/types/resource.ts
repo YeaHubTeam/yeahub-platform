@@ -1,4 +1,5 @@
 import { Response, SortOrder } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -11,7 +12,7 @@ export interface Resource {
 	description: string;
 	type: ResourceType;
 	url: string;
-	keywords?: string[];
+	keywords: string[];
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
@@ -19,7 +20,7 @@ export interface Resource {
 	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;
-	iconBase64?: string;
+	iconBase64?: string | null;
 }
 
 export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
@@ -34,7 +35,7 @@ export interface ResourceRequest {
 		type: ResourceTypeCode;
 		imageSrc: string;
 		iconBase64?: string;
-		keywords?: string[];
+		keywords: string[];
 	};
 	specializations: Specialization[];
 	skills: Skill[];
@@ -79,8 +80,8 @@ export type CreateOrEditResourceFormValues = Pick<
 	Resource,
 	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
-	resourceSkills: number[];
-	resourceSpecializations: number[];
+	skills: number[];
+	specializations: number[];
 	keywords: string[];
 	type: ResourceTypeCode;
 };
@@ -105,8 +106,6 @@ export interface ResourceType {
 	code: ResourceTypeCode;
 	description: string;
 }
-
-export type Author = { id: string; username: string };
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

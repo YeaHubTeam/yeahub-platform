@@ -4,4 +4,5 @@ export const resourceApiUrls = {
 	getResourceTypes: 'external-products/resource-types',
 	getResourceById: 'external-products/product/:resourceId',
 	getMyRequestsResources: 'external-products/request/my',
+	getResourceRequests: 'external-products/request',
 };

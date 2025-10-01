@@ -32,7 +32,7 @@ export const SpecializationsList = ({ specializations }: SpecializationsListProp
 						<Chip className={styles.chip} label={spec.title} />
 					</li>
 				))}
-			</ul>{' '}
+			</ul>
 		</Flex>
 	);
 };

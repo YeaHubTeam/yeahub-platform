@@ -22,6 +22,7 @@
 	"support": "Поддержка",
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
+	"author": "Автор",
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
@@ -123,7 +124,8 @@
 		"register": "Регистрация",
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
-		"resources.my": "Мои заявки"
+		"resources.my": "Мои заявки",
+		"create.request": "Создание заявки"
 	},
 	"toast": {
 		"title": {
