@@ -6,7 +6,7 @@ import { getFullProfile } from '@/entities/profile';
 import { EmailVerification } from '@/widgets/EmailVerification';
 import { TelegramVerifiedSection } from '@/widgets/TelegramVerifiedSection';
 
-export const VerificationTab = () => {
+export const EmailConfirmationTab = () => {
 	const { telegram: telegramUserName } = useAppSelector(getFullProfile);
 
 	return (

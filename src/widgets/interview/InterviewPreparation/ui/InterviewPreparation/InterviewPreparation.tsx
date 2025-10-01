@@ -52,7 +52,7 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 
 	const interviewPreparationActionRoute = useMemo(() => {
 		if (!isEmailVerified && !isSpecializationEmpty) {
-			return ROUTES.settings.page + '#verification';
+			return ROUTES.settings.page + '#email-verify';
 		}
 
 		return lastActiveQuizInfo ? ROUTES.interview.new.page : ROUTES.interview.quiz.page;
