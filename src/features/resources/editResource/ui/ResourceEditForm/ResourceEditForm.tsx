@@ -24,15 +24,16 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
-	const { skills, specializations, type, ...formattedResources } = resource;
+	const { skills, specializations, type, imageSrc, ...formattedResources } = resource;
 
 	const methods = useForm<EditResourceFormValues>({
 		resolver: yupResolver(resourceEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
 			...formattedResources,
-			resourceSkills: formatToFormField<Skill[]>(skills),
-			resourceSpecializations: formatToFormField<Specialization[]>(specializations),
+			iconBase64: imageSrc,
+			skills: formatToFormField<Skill[]>(skills),
+			specializations: formatToFormField<Specialization[]>(specializations),
 			type: type.code,
 		},
 	});

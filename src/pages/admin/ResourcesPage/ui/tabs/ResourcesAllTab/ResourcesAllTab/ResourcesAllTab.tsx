@@ -6,44 +6,40 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetResourcesListQuery } from '@/entities/resource';
 
-import { ResourcesTable } from '@/widgets/resources/';
+import { ResourcesTable } from '@/widgets/resources';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import {
-	getResourcesPageNum,
-	getResourcesSearch,
-	getSelectedResources,
-} from '../../model/selectors/resourcesTablePageSelectors';
-import { resourcesTablePageActions } from '../../model/slice/resourcesTablePageSlice';
-import { ResourcesPagePagination } from '../ResourcesTablePagePagination/ResourcesTablePagePagination';
+	getResourcesAllTabPage,
+	getResourcesAllTabSearch,
+	getResourcesAllTabSelected,
+} from '../../../../model/selectors/resourcesAllTabSelectors';
+import { resourcesAllTabActions } from '../../../../model/slice/resourcesAllTabSlice';
+import { ResourcesAllTabPagination } from '../ResourcesAllTabPagination/ResourcesAllTabPagination';
 
-import styles from './ResourcesTablePage.module.css';
+import styles from './ResourcesAllTab.module.css';
 
-/**
- * Page showing info about all the created questions
- * @constructor
- */
-
-const ResourcesTablePage = () => {
+export const ResourcesAllTab = () => {
 	const dispatch = useAppDispatch();
-	const search = useSelector(getResourcesSearch);
-	const selectedResources = useSelector(getSelectedResources);
-	const page = useSelector(getResourcesPageNum);
+	const search = useSelector(getResourcesAllTabSearch);
+	const selectedResources = useSelector(getResourcesAllTabSelected);
+	const page = useSelector(getResourcesAllTabPage);
 
 	const { filter, handleFilterChange } = useQueryFilter();
+	const currentPage = filter.page || page;
 
 	const { data: resources } = useGetResourcesListQuery({
-		page,
+		page: currentPage,
 		name: search,
 	});
 
 	const onChangeSearch = (value: string) => {
-		dispatch(resourcesTablePageActions.setSearch(value));
+		dispatch(resourcesAllTabActions.setSearch(value));
 	};
 
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
-		dispatch(resourcesTablePageActions.setPage(page));
+		dispatch(resourcesAllTabActions.setPage(page));
 	};
 
 	return (
@@ -55,14 +51,12 @@ const ResourcesTablePage = () => {
 			/>
 			<Card className={styles.content}>
 				<ResourcesTable resources={resources?.data} />
-				<ResourcesPagePagination
+				<ResourcesAllTabPagination
 					resourcesResponse={resources}
-					currentPage={filter.page || 1}
+					currentPage={currentPage}
 					onPageChange={onPageChange}
 				/>
 			</Card>
 		</Flex>
 	);
 };
-
-export default ResourcesTablePage;

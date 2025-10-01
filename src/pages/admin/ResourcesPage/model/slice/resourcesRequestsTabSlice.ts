@@ -4,16 +4,16 @@ import { clearStore } from '@/shared/config/store/clearStore';
 
 import { SelectedResourceRequestEntities } from '@/entities/resource';
 
-import { ResourcesRequestsTablePageState } from '../types/resourcesRequestsTablePageTypes';
+import { ResourcesRequestsTabState } from '../types/resourcesRequestsTabTypes';
 
-const initialState: ResourcesRequestsTablePageState = {
+const initialState: ResourcesRequestsTabState = {
 	page: 1,
 	selectedResourcesRequests: [],
 	search: '',
 };
 
-const resourcesRequestsTablePageSlice = createSlice({
-	name: 'resourcesRequestsTablePage',
+const resourcesRequestsTabSlice = createSlice({
+	name: 'resourcesRequestsTab',
 	initialState,
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
@@ -36,7 +36,5 @@ const resourcesRequestsTablePageSlice = createSlice({
 	},
 });
 
-export const {
-	reducer: resourcesRequestsTablePageReducer,
-	actions: resourcesRequestsTablePageActions,
-} = resourcesRequestsTablePageSlice;
+export const { reducer: resourcesRequestsTabReducer, actions: resourcesRequestsTabActions } =
+	resourcesRequestsTabSlice;
