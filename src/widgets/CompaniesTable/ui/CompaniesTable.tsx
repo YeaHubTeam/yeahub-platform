@@ -94,6 +94,10 @@ export const CompaniesTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COMPANY_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
 				disabled: company.disabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.companies.edit.route, company.id));
