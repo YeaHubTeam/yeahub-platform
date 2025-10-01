@@ -41,6 +41,7 @@ export interface User {
 	createdAt: string;
 	userRoles: UserRole[];
 	isVerified?: boolean;
+	telegram: string | null;
 	profiles?: FullProfile;
 }
 

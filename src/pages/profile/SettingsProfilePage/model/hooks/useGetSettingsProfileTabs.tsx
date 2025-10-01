@@ -7,10 +7,10 @@ import { Tab, useTabs } from '@/shared/ui/Tabs';
 
 import { AccountTab } from '../../ui/tabs/AccountTab/AccountTab';
 import { ChangePasswordTab } from '../../ui/tabs/ChangePasswordTab/ChangePasswordTab';
-import { EmailConfirmationTab } from '../../ui/tabs/EmailConfirmationTab/EmailConfirmationTab';
 import { SubscriptionTab } from '../../ui/tabs/SubscriptionTab/SubscriptionTab';
+import { VerificationTab } from '../../ui/tabs/VerificationTab/VerificationTab';
 
-type SettingProfileTab = 'select-tariff' | 'change-password' | 'email-verify' | 'account';
+type SettingProfileTab = 'select-tariff' | 'change-password' | 'verification' | 'account';
 
 interface UseGetSettingsProfileTabsResult {
 	tabs: Tab<SettingProfileTab>[];
@@ -33,9 +33,9 @@ export const useGetSettingsProfileTabs = (): UseGetSettingsProfileTabsResult => 
 			Component: ChangePasswordTab,
 		},
 		{
-			id: 'email-verify',
+			id: 'verification',
 			label: t(Profile.SETTINGS_TABS_VERIFY_EMAIL),
-			Component: EmailConfirmationTab,
+			Component: VerificationTab,
 		},
 		{
 			id: 'account',

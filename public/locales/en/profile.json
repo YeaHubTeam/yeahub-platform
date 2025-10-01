@@ -71,6 +71,18 @@
 			"description": "Thank you for confirming your mail, now more services are available on the platform"
 		}
 	},
+	"telegram.verified": {
+		"title": "Telegram confirmed",
+		"description": "Thank you for confirming your Telegram. \n It can now be used for login",
+		"button": "Unlink your account",
+		"status": "Verified",
+		"modal": {
+			"title": "Unlink Telegram account",
+			"description": "Are you sure you want to unlink Telegram from your account?",
+			"yes": "Yes",
+			"no": "No"
+		}
+	},
 	"change.password": {
 		"title": "Change your password",
 		"description": "For security reasons, or if you notice suspicious activity, change your password",
