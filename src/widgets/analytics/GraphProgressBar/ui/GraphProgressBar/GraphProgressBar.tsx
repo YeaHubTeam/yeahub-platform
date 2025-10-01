@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -17,14 +17,15 @@ import styles from './GraphProgressBar.module.css';
 
 interface GraphProgressBarProps {
 	direction: 'row' | 'column';
+	title: string;
 }
 
-export const GraphProgressBar = ({ direction }: GraphProgressBarProps) => {
+export const GraphProgressBar = ({ direction, title }: GraphProgressBarProps) => {
 	const specializationId = useAppSelector(getSpecializationId) || DEFAULT_SPECIALIZATION_ID;
 
 	const { data } = useGetPopularSkillsQuery({ limit: 3, page: 1, specializationId });
 
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.analytics]);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const isSmallScreen = useMediaQuery({ maxWidth: 1440 });
 
@@ -35,7 +36,7 @@ export const GraphProgressBar = ({ direction }: GraphProgressBarProps) => {
 		<Card
 			className={styles[direction]}
 			size="medium"
-			title={t(Analytics.TITLE_POPULAR_SKILLS, { ns: i18Namespace.analytics })}
+			title={title}
 			actionTitle={t(Translation.CRUMBS_QUESTION_DETAIL)}
 			actionRoute="/"
 			isActionPositionBottom
