@@ -1,21 +1,21 @@
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
-import { ResourceRequest } from '@/entities/resource';
+import { Resource } from '@/entities/resource';
 
-import styles from './ResourcesRequestsTablePagePagination.module.css';
+import styles from './ResourcesAllTabPagination.module.css';
 
-interface ResourcesRequestsTablePagePaginationProps {
-	resourcesRequestsResponse?: Response<ResourceRequest[]>;
+interface ResourcesAllTabPaginationProps {
+	resourcesResponse?: Response<Resource[]>;
 	currentPage: number;
 	onPageChange: (page: number) => void;
 }
 
-export const ResourcesRequestsTablePagePagination = ({
-	resourcesRequestsResponse,
+export const ResourcesAllTabPagination = ({
+	resourcesResponse,
 	currentPage,
 	onPageChange,
-}: ResourcesRequestsTablePagePaginationProps) => {
+}: ResourcesAllTabPaginationProps) => {
 	const onPrevPageClick = () => {
 		onPageChange(currentPage - 1);
 	};
@@ -28,7 +28,7 @@ export const ResourcesRequestsTablePagePagination = ({
 		onPageChange(newPage);
 	};
 
-	if (!resourcesRequestsResponse?.data) {
+	if (!resourcesResponse?.data) {
 		return null;
 	}
 
@@ -39,7 +39,7 @@ export const ResourcesRequestsTablePagePagination = ({
 				onNextPageClick={onNextPageClick}
 				onChangePage={onPaginationButtonClick}
 				page={currentPage}
-				totalPages={Math.ceil(resourcesRequestsResponse?.total / resourcesRequestsResponse?.limit)}
+				totalPages={Math.ceil(resourcesResponse?.total / resourcesResponse?.limit)}
 			/>
 		</div>
 	);
