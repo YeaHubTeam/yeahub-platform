@@ -30,8 +30,8 @@ export const ResourceRequestCreateForm = () => {
 			url: '',
 			description: '',
 			iconBase64: '',
-			resourceSkills: [],
-			resourceSpecializations: [],
+			skills: [],
+			specializations: [],
 			keywords: [],
 		},
 	});
@@ -57,8 +57,8 @@ export const ResourceRequestCreateForm = () => {
 				url: formData.url,
 				keywords: formData.keywords || [],
 			},
-			skills: formData.resourceSkills,
-			specializations: formData.resourceSpecializations,
+			skills: formData.skills,
+			specializations: formData.specializations,
 		};
 		try {
 			await createResourceRequestMutation(requestBody).unwrap();

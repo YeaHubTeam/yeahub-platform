@@ -16,7 +16,7 @@ type ResourceCardProps = {
 };
 
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
-	const { name, description, url, iconBase64, type, specializations } = resource;
+	const { name, description, url, imageSrc, type, specializations } = resource;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -26,7 +26,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 		<Card withOutsideShadow className={styles.content}>
 			<a href={url} target="_blank" rel="noopener noreferrer" className={styles.wrapper}>
 				<ImageWithWrapper
-					src={iconBase64 ?? undefined}
+					src={imageSrc ?? undefined}
 					alt={name}
 					className={styles['image-wrapper']}
 				/>

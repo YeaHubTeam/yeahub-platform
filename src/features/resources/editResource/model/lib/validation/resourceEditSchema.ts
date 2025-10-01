@@ -13,13 +13,11 @@ export const resourceEditSchema: yup.ObjectSchema<EditResourceFormValues> = yup.
 	description: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	type: yup.string<ResourceTypeCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	url: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	iconBase64: yup.string().optional(),
-	resourceSpecializations: yup
+	iconBase64: yup.string().optional().nullable(),
+	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	resourceSkills: yup
-		.array(yup.number().required())
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	skills: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	keywords: yup
 		.array(yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)))
 		.min(1, () => i18n.t(Translation.VALIDATION_REQUIRED))

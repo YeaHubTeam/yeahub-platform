@@ -11,7 +11,7 @@ export type CreateResourceBodyRequest = {
 		name: string;
 		description: string;
 		type: ResourceTypeCode;
-		iconBase64?: string;
+		iconBase64?: string | null;
 		url: string;
 		keywords?: string[];
 	};
