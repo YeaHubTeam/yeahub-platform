@@ -3,16 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config/store/clearStore';
 import { SelectedAdminEntities } from '@/shared/types/types';
 
-import { ResourcesTablePageState } from '../types/resourcesTablePageTypes';
+import { ResourcesAllTabState } from '../types/resourcesAllTabTypes';
 
-const initialState: ResourcesTablePageState = {
+const initialState: ResourcesAllTabState = {
 	page: 1,
 	selectedResources: [],
 	search: '',
 };
 
-const resourcesTablePageSlice = createSlice({
-	name: 'resourcesTablePage',
+const resourcesAllTabSlice = createSlice({
+	name: 'resourcesAllTab',
 	initialState,
 	reducers: {
 		setPage: (state, action: PayloadAction<number>) => {
@@ -27,11 +27,9 @@ const resourcesTablePageSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(clearStore, () => {
-			return initialState;
-		});
+		builder.addCase(clearStore, () => initialState);
 	},
 });
 
-export const { reducer: resourcesTablePageReducer, actions: resourcesTablePageActions } =
-	resourcesTablePageSlice;
+export const { reducer: resourcesAllTabReducer, actions: resourcesAllTabActions } =
+	resourcesAllTabSlice;

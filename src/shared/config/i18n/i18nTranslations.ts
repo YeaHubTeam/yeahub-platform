@@ -695,6 +695,8 @@ export enum ResourceRequests {
 	STATUS_APPROVED = 'status.approved',
 	STATUS_REVIEW = 'status.review',
 	STATUS_REJECTED = 'status.rejected',
+	TABS_ALL = 'admin.tabs.all',
+	TABS_REQUESTS = 'admin.tabs.requests',
 }
 
 export enum Landing {

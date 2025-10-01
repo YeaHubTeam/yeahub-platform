@@ -20,7 +20,7 @@ export interface Resource {
 	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;
-	iconBase64?: string;
+	iconBase64?: string | null;
 }
 
 export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
@@ -80,8 +80,8 @@ export type CreateOrEditOrViewResourceFormValues = Pick<
 	Resource,
 	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
-	resourceSkills: number[];
-	resourceSpecializations: number[];
+	skills: number[];
+	specializations: number[];
 	keywords: string[];
 	type: ResourceTypeCode;
 };
