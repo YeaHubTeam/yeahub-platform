@@ -47,12 +47,10 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			<td key={k}>
 				{k === 'username' ? (
 					<Link to={route(ROUTES.admin.users.detail.page, user.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
-					v
+					<Text variant={'body3-accent'}>{v}</Text>
 				)}
 			</td>
 		));

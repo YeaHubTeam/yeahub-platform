@@ -1,20 +1,30 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  color: var(--color-black-900);
 }
 
 .head {
   height: 48px;
   clip-path: inset(0 round 16px 16px 0 0);
+  background-color: var(--color-black-25);
+  color: var(--color-white-900);
+  line-height: 130%;
+}
+ 
+.bg {
   background-color: var(--color-purple-700);
 }
 
 td {
-  padding: 13.5px 20px;
+  align-items: center;
+  padding: 13px 14px;
   width: auto;
+  min-height: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
+  vertical-align: middle;
 }
 
 .row {
@@ -24,8 +34,11 @@ td {
 }
 
 td:first-child {
-  padding: 13.5px 15px;
-  white-space: nowrap;
+  width: 50px;
+}
+
+tr.row td {
+  color: var(--color-black-900);
 }
 
 .row:last-child {

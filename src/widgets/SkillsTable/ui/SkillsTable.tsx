@@ -48,12 +48,10 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			<td key={k} className={k === 'description' ? styles.description : undefined}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.skills.detail.page, skill.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
-					v
+					<Text variant={'body3-accent'}>{v}</Text>
 				)}
 			</td>
 		));

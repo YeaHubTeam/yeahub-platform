@@ -71,12 +71,10 @@ export const CollectionsTable = ({
 			>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.collections.details.route, collection.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
-					v
+					<Text variant={'body3-accent'}>{v}</Text>
 				)}
 			</td>
 		));
