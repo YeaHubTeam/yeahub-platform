@@ -15,12 +15,10 @@ export const resourceRequestCreateSchema: yup.ObjectSchema<CreateResourceRequest
 		description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		url: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		iconBase64: yup.string().defined(),
-		resourceSpecializations: yup
+		specializations: yup
 			.array(yup.number().required())
 			.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-		resourceSkills: yup
-			.array(yup.number().required())
-			.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+		skills: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		keywords: yup
 			.array()
 			.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))

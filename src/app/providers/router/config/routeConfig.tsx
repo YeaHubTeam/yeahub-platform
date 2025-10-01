@@ -9,7 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
-// import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
+import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -43,8 +43,6 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
-import { ResourcesRequestsTablePage } from '@/pages/admin/ResourcesRequestsTablePage';
-import { ResourcesTablePage } from '@/pages/admin/ResourcesTablePage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillEditPage } from '@/pages/admin/SkillEditPage';
@@ -105,6 +103,7 @@ import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
+import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -173,13 +172,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	// {
-	// 	type: 'single',
-	// 	route: ROUTES.analytics.route,
-	// 	title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-	// 	icon: AnalyticsIcon,
-	// 	roles: allRoles,
-	// },
+	{
+		type: 'single',
+		route: ROUTES.analytics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+		icon: AnalyticsIcon,
+		roles: allRoles,
+	},
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -360,7 +359,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.resources.page,
-				element: <ResourcesTablePage />,
+				element: <AdminResourcesPage />,
 			},
 			{
 				path: ROUTES.admin.resources.details.page,
@@ -373,10 +372,6 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
-			},
-			{
-				path: ROUTES.admin.resources.requests.page,
-				element: <ResourcesRequestsTablePage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

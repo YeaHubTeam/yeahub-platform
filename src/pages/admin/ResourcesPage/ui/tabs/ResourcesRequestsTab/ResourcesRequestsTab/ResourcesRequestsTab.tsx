@@ -11,40 +11,42 @@ import { ResourceRequestsTable } from '@/widgets/resources';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import {
-	getResourceRequestsSearch,
-	getSelectedResourceRequests,
-} from '../../model/selectors/resourcesRequestsTablePageSelectors';
-import { resourcesRequestsTablePageActions } from '../../model/slice/resourcesRequestsPageSlice';
-import { ResourcesRequestsTablePagePagination } from '../ResourcesRequestsTablePagePagination/ResourcesRequestsTablePagePagination';
+	getResourcesRequestsTabSearch,
+	getResourcesRequestsTabSelected,
+	getResourcesRequestsTabPage,
+} from '../../../../model/selectors/resourcesRequestsTabSelectors';
+import { resourcesRequestsTabActions } from '../../../../model/slice/resourcesRequestsTabSlice';
+import { ResourcesRequestsTabPagination } from '../ResourcesRequestsTabPagination/ResourcesRequestsTabPagination';
 
-import styles from './ResourcesRequestsTablePage.module.css';
+import styles from './ResourcesRequestsTab.module.css';
 
-export const ResourcesRequestsTablePage = () => {
+export const ResourcesRequestsTab = () => {
 	const dispatch = useAppDispatch();
-	const search = useSelector(getResourceRequestsSearch);
-	const selectedResourceRequests = useSelector(getSelectedResourceRequests);
+	const search = useSelector(getResourcesRequestsTabSearch);
+	const selectedResourceRequests = useSelector(getResourcesRequestsTabSelected);
+	const storedPage = useSelector(getResourcesRequestsTabPage);
 
 	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { page } = filter;
+	const currentPage = filter.page || storedPage;
 
 	const { data: resourceRequests } = useGetResourceRequestsQuery({
-		page: page || 1,
+		page: currentPage,
 		limit: 10,
 		name: search || undefined,
 	});
 
 	const onSelectResourceRequests = (ids: SelectedResourceRequestEntities) => {
-		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests(ids));
+		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests(ids));
 	};
 
 	const onChangePage = (page: number) => {
 		handleFilterChange({ page });
-		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests([]));
+		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests([]));
 	};
 
 	const onChangeSearch = (value: string) => {
-		dispatch(resourcesRequestsTablePageActions.setSearch(value));
-		dispatch(resourcesRequestsTablePageActions.setSelectedResourceRequests([]));
+		dispatch(resourcesRequestsTabActions.setSearch(value));
+		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests([]));
 	};
 
 	return (
@@ -63,9 +65,9 @@ export const ResourcesRequestsTablePage = () => {
 				/>
 
 				{resourceRequests?.data && resourceRequests.data.length > 0 && (
-					<ResourcesRequestsTablePagePagination
+					<ResourcesRequestsTabPagination
 						resourcesRequestsResponse={resourceRequests}
-						currentPage={page || 1}
+						currentPage={currentPage}
 						onPageChange={onChangePage}
 					/>
 				)}
