@@ -33,10 +33,6 @@ td {
   background-color: var(--color-black-30);
 }
 
-td:first-child {
-  width: 50px;
-}
-
 tr.row td {
   color: var(--color-black-900);
 }
@@ -50,10 +46,14 @@ tr.row td {
 }
 
 .actions-column {
-  width: 50px;
+  padding: 0;
+  width: 40px;
 }
 
 .cell {
+  padding: 0 6px;
+  width: 32px;
+  
   span {
     position: relative;
     top: 3px;

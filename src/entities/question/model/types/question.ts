@@ -1,4 +1,5 @@
 import { Response } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -97,8 +98,6 @@ export type GetPublicQuestionByIdResponse = PublicQuestion;
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
-
-export type Author = { id: string; username: string };
 
 export type SkillQuestion = {
 	skill: string;

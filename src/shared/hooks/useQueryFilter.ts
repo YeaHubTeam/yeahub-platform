@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { DEFAULT_SPECIALIZATION_NUMBER } from '../constants/queryConstants';
 
 type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
+type RecourcesFilterStatus = 'pending' | 'approved' | 'rejected';
 
 interface FilterFromURL {
 	skills: string | null;
@@ -26,7 +27,7 @@ export interface FilterFromUser {
 	complexity?: number[];
 	rate?: number[];
 	title?: string;
-	status?: QuestionFilterStatus;
+	status?: QuestionFilterStatus | RecourcesFilterStatus;
 	page?: number;
 	orderBy?: string;
 	order?: string;
@@ -54,7 +55,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			location.pathname !== '/admin/companies' && (!page || !status || !specialization);
 
 		if (shouldRedirect) {
-			navigate(initialState, { replace: true });
+			navigate(`${initialState}${location.hash}`, { replace: true });
 		}
 	}, [location.pathname, location.search]);
 
@@ -123,7 +124,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			}
 		});
 
-		navigate(`?${params.toString()}`);
+		navigate(`?${params.toString()}${location.hash}`);
 	};
 
 	const handleFilterChange = (newFilters: FilterFromUser) => {
@@ -140,7 +141,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			onReset?.();
 			return;
 		}
-		navigate(initialState, { replace: true });
+		navigate(`${initialState}${location.hash}`, { replace: true });
 	};
 
 	return { filter, handleFilterChange, resetFilters };

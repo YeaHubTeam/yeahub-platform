@@ -1,18 +1,50 @@
 {
+	"author": "Author",
+	"date": "Date",
+	"description": {
+		"title": "Description",
+		"label": "Add descrioption",
+		"placeholder": "Add description"
+	},
+	"keywords": {
+		"additional": "Keywords"
+	},
+	"link": "Link",
+	"search.placeholder": "Enter resource...",
+	"skills": {
+		"additional": "Skills",
+		"title": "Skills"
+	},
+	"specialization": {
+		"title": "Specialization"
+	},
 	"type": "Resource type",
 	"title": {
 		"short": "Name",
 		"label": "Add resource",
 		"placeholder": "Deatiled resource description"
 	},
-	"description": {
-		"title": "Description",
-		"label": "Add descrioption",
-		"placeholder": "Add description"
+	"additional": {
+		"aria.label": "Go to additional info"
 	},
-	"search.placeholder": "Enter resource...",
-	"author": "Author",
-	"specialization": {
-		"title": "Specialization"
+	"status": {
+		"title": "Status",
+		"approved": "Approved",
+		"review": "Review",
+		"rejected": "Rejected"
+	},
+	"modal": {
+		"resource": {
+			"moderation": {
+				"title": "The resource has been sent for moderation",
+				"message": "The resource has been successfully submitted for moderation. Track its status in the list of resource requests"
+			}
+		}
+	},
+	"admin": {
+		"tabs": {
+			"all": "All resources",
+			"requests": "Requests"
+		}
 	}
 }

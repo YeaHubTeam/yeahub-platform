@@ -29,6 +29,15 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.skill, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			title: '20%',
+			description: 'auto',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Skills.TITLE_SHORT),
@@ -108,6 +117,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			items={skills}
 			selectedItems={selectedSkills}
 			onSelectItems={onSelectSkills}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

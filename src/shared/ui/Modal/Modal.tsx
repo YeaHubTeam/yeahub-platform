@@ -38,6 +38,7 @@ export const Modal = ({
 	children,
 	title,
 	className = '',
+	view = 'default',
 }: ModalProps) => {
 	const portalRootRef = useRef(document.getElementById('modal-root') || createPortalRoot());
 	const renderRootRef = useRef(document.body);
@@ -98,7 +99,7 @@ export const Modal = ({
 		>
 			<div
 				data-testid={dataTestId}
-				className={classNames(styles.modal, styles[`${variant}-modal`])}
+				className={classNames(styles.modal, styles[`${variant}-modal`], styles[`${view}-modal`])}
 				ref={overlayRef}
 			>
 				{withCloseIcon && (

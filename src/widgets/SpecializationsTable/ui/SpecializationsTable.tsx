@@ -31,6 +31,15 @@ export const SpecializationsTable = ({
 	const { t } = useTranslation('specialization');
 	const navigate = useNavigate();
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			title: '25%',
+			description: 'auto',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Specializations.TITLE_SHORT),
@@ -110,6 +119,7 @@ export const SpecializationsTable = ({
 			renderActions={renderActions}
 			selectedItems={selectedSpecializations}
 			onSelectItems={onSelectSpecializations}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

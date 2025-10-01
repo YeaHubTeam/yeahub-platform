@@ -69,4 +69,16 @@ export const gurus: Guru[] = [
 			profileId: 'c5e0ed42-3c59-4217-9de5-0a240afee6c8',
 		},
 	},
+	{
+		title: 'Rust Guru',
+		name: 'Eduard Paul',
+		specializationId: 28,
+		image:
+			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%9F%D0%B0%D1%83%D0%BB%D1%8C.jpg',
+		socials: {
+			telegram: 'https://t.me/EduardPaul_Rust',
+			youtube: 'https://youtube.com/@ed.paul_mentor',
+			profileId: 'c2d730c0-5f3f-4cd9-a85b-896aee31acc1',
+		},
+	},
 ];
