@@ -1,3 +1,3 @@
-import type { TelegramLoginResponse } from '@/entities/auth';
+import { User } from '@/entities/auth';
 
-export type TelegramUnlinkResponse = TelegramLoginResponse;
+export type TelegramUnlinkResponse = Omit<User, 'subscriptions'> & { phone: string };
