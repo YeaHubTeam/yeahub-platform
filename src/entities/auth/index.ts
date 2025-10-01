@@ -15,7 +15,6 @@ export {
 	useLoginMutation,
 	useRegisterMutation,
 	useTelegramMutation,
-	useLinkTelegramAccountMutation,
 	useProfileQuery,
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,

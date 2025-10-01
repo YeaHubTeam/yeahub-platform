@@ -38,7 +38,6 @@ export interface Profile {
 	image_src: string;
 	profileSkills: Skill[];
 	isActive: boolean;
-	telegram: string | null;
 }
 
 interface Permission {

@@ -1,13 +1,13 @@
 import { Flex } from '@/shared/ui/Flex';
 
+import { ConfirmationTelegram } from '@/widgets/ConfirmationTelegram';
 import { EmailVerification } from '@/widgets/EmailVerification';
-import { TelegramVerification } from '@/widgets/TelegramVerification';
 
 export const EmailConfirmationTab = () => {
 	return (
-		<Flex direction="column" gap="32">
+		<Flex direction="column" gap="20">
 			<EmailVerification />
-			<TelegramVerification />
+			<ConfirmationTelegram />
 		</Flex>
 	);
 };

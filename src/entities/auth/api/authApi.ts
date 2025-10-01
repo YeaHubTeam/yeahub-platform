@@ -72,21 +72,6 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-		linkTelegramAccount: build.mutation<TelegramLoginResponse, TelegramLoginBodyRequest>({
-			query: (body) => ({
-				url: authApiUrls.linkTelegram,
-				method: 'POST',
-				body,
-			}),
-			async onQueryStarted() {
-				try {
-					/* empty */
-				} catch (error) {
-					// eslint-disable-next-line no-console
-					console.error(error);
-				}
-			},
-		}),
 		register: build.mutation<SignUpResponse, SignUpBodyRequest>({
 			query: (body) => ({
 				url: authApiUrls.register,
@@ -166,7 +151,6 @@ export const authApi = baseApi.injectEndpoints({
 export const {
 	useLoginMutation,
 	useTelegramMutation,
-	useLinkTelegramAccountMutation,
 	useRegisterMutation,
 	useProfileQuery,
 	useLazyLogoutQuery,

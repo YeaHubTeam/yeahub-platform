@@ -240,6 +240,8 @@ export enum Profile {
 	TELEGRAM_VERIFICATION_SUBMIT = 'telegram.verification.submit',
 	TELEGRAM_VERIFICATION_SUCCESS_TITLE = 'telegram.verification.success.title',
 	TELEGRAM_VERIFICATION_SUCCESS_DESCRIPTION = 'telegram.verification.success.description',
+	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_SUCCESS = 'telegram.verification.toast.telegram.link.success',
+	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_ERROR = 'telegram.verification.toast.telegram.link.error',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
 	CHANGE_PASSWORD_DESCRIPTION = 'change.password.description',
 	CHANGE_PASSWORD_LABEL = 'change.password.label',

@@ -59,7 +59,6 @@ export const authProfileQueryMockResponse: FullProfile = {
 			markingWeight: 1,
 			socialNetwork: [],
 			isActive: true,
-			telegram: null,
 		},
 	],
 	activeProfile: {
@@ -73,7 +72,6 @@ export const authProfileQueryMockResponse: FullProfile = {
 		markingWeight: 1,
 		socialNetwork: [],
 		isActive: true,
-		telegram: null,
 	},
 	isVerified: true,
 };
