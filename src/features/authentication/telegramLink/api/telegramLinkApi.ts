@@ -21,7 +21,7 @@ export const telegramLinkApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Profile.TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_SUCCESS));
 					dispatch(baseApi.util.invalidateTags([ApiTags.PROFILE]));
 				} catch (error) {
-					toast.success(i18n.t(Profile.TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_ERROR));
+					toast.error(i18n.t(Profile.TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_ERROR));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

@@ -33,11 +33,13 @@ interface Subscription {
 	state: SubscriptionState;
 	subscription: GetSubscriptionResponse;
 }
+
 export interface Role {
 	id: number;
 	name: RoleName;
 	permissions: RolePermission[];
 }
+
 export type RoleName =
 	| 'guest'
 	| 'candidate'
