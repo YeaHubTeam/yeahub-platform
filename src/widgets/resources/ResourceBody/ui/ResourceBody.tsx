@@ -18,7 +18,7 @@ type ResourceCardProps = {
 };
 
 export const ResourceBody = ({ resource }: ResourceCardProps) => {
-	const { name, iconBase64, type, url, createdAt } = resource;
+	const { name, imageSrc, type, url, createdAt } = resource;
 
 	const { t } = useTranslation(i18Namespace.resources);
 	const formattedDate = formatDate(new Date(createdAt), 'dd.MM.yyyy');
@@ -26,7 +26,7 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 	return (
 		<Flex className={styles['resource-body']} maxWidth>
 			<ImageWithWrapper
-				src={iconBase64 ?? undefined}
+				src={imageSrc ?? undefined}
 				alt={name}
 				className={styles['image-wrapper']}
 			/>
