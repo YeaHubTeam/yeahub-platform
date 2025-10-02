@@ -11,53 +11,7 @@ import { SpecializationProgress } from '../../model/types/specializationProgress
 export const SpecializationsProgress = () => {
 	const { t } = useTranslation([i18Namespace.specialization]);
 
-	const data = useGetGeneralProgressQuery({});
-	console.log(data);
-
-	const mockData = [
-		{
-			id: 1,
-			skillCount: 10,
-			questionCount: 20,
-			averageProgress: 10,
-			specialization: {
-				id: 1,
-				title: 'ml',
-				description: 'frontend + backend',
-				imageSrc: null,
-				createdAt: '2024-12-31T10:00:00.000Z',
-				updatedAt: '2024-12-31T10:00:00.000Z',
-			},
-		},
-		{
-			id: 1,
-			skillCount: 12,
-			questionCount: 30,
-			averageProgress: 30,
-			specialization: {
-				id: 1,
-				title: 'frontend',
-				description: 'frontend + backend',
-				imageSrc: null,
-				createdAt: '2024-12-31T10:00:00.000Z',
-				updatedAt: '2024-12-31T10:00:00.000Z',
-			},
-		},
-		{
-			id: 1,
-			skillCount: 13,
-			questionCount: 40,
-			averageProgress: 40,
-			specialization: {
-				id: 1,
-				title: 'androidDev',
-				description: 'frontend + backend',
-				imageSrc: null,
-				createdAt: '2024-12-31T10:00:00.000Z',
-				updatedAt: '2024-12-31T10:00:00.000Z',
-			},
-		},
-	];
+	const { data: specializationProgress } = useGetGeneralProgressQuery({});
 
 	const renderTableHeader = () => {
 		const columns = {
@@ -80,6 +34,10 @@ export const SpecializationsProgress = () => {
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	if (!specializationProgress?.data) {
+		return null;
+	}
+
 	return (
 		<Card
 			actionTitle={t(Specializations.PROGRESS_DETAIL)}
@@ -88,7 +46,7 @@ export const SpecializationsProgress = () => {
 			isActionPositionBottom
 		>
 			<Table
-				items={mockData}
+				items={specializationProgress.data}
 				renderTableHeader={renderTableHeader}
 				renderTableBody={renderTableBody}
 			/>
