@@ -1,8 +1,7 @@
 import { TelegramUser } from '@/entities/auth';
 
-import { useLinkTelegramAccountMutation } from '@/features/authentication/telegramLink';
-
-import { TelegramWidget } from '../TelegramWidget/TelegramWidget';
+import { TelegramWidget } from '../../../login/ui/TelegramLoginButton/ui/TelegramWidget/TelegramWidget';
+import { useLinkTelegramAccountMutation } from '../../api/telegramLinkApi';
 
 export const TelegramLinkButton = () => {
 	const [triggerTelegram] = useLinkTelegramAccountMutation();

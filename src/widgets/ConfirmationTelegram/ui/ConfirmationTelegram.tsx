@@ -6,7 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TelegramLinkButton } from '@/features/authentication/login';
+import { TelegramLinkButton } from '@/features/authentication/telegramLink';
 
 export const ConfirmationTelegram = () => {
 	const { t } = useTranslation(i18Namespace.profile);
