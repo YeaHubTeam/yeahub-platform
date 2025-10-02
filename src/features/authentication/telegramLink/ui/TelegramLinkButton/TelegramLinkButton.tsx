@@ -1,6 +1,6 @@
 import { TelegramUser } from '@/entities/auth';
+import { TelegramWidget } from '@/entities/auth';
 
-import { TelegramWidget } from '../../../login/ui/TelegramLoginButton/ui/TelegramWidget/TelegramWidget';
 import { useLinkTelegramAccountMutation } from '../../api/telegramLinkApi';
 
 export const TelegramLinkButton = () => {

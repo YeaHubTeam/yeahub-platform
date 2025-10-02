@@ -1,6 +1,5 @@
 import { useTelegramMutation, TelegramUser } from '@/entities/auth';
-
-import { TelegramWidget } from '../TelegramWidget/TelegramWidget';
+import { TelegramWidget } from '@/entities/auth';
 
 export const TelegramLoginButton = () => {
 	const [triggerTelegram] = useTelegramMutation();

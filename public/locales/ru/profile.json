@@ -74,11 +74,6 @@
 	"telegram.verification": {
 		"title": "Telegram не подключён",
 		"description": "Подключите Telegram для быстрого входа и уведомлений",
-		"submit": "Подтвердить через Telegram",
-		"success": {
-			"title": "Telegram подтверждён",
-			"description": "Спасибо, что подтвердили Ваш Telegram. Теперь его можно использовать для входа"
-		},
 		"toast": {
 			"telegram.link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
 			"telegram.link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту"

@@ -74,11 +74,6 @@
 	"telegram.verification": {
 		"title": "Telegram is not linked",
 		"description": "Link your Telegram to enable quick login and receive notifications",
-		"submit": "Link Telegram",
-		"success": {
-			"title": "Telegram linked",
-			"description": "Thank you for linking your Telegram. You can now use it to log in."
-		},
 		"toast": {
 			"telegram.link.success": "Telegram is successfully linked to your account!",
 			"telegram.link.error": "Failed to link your Telegram to your account."
