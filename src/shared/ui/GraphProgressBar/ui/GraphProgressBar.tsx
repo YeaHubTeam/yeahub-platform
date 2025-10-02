@@ -2,25 +2,27 @@ import classNames from 'classnames';
 
 import { Text } from '@/shared/ui/Text';
 
-import styles from './ProgressBar.module.css';
+import styles from './GraphProgressBar.module.css';
 
-export interface ProgressBarProps {
+export interface GraphProgressBarProps {
 	currentCount: number;
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large';
+	variant?: 'small' | 'large' | 'medium';
+	direction?: 'row' | 'column';
 }
 
-export const ProgressBar = ({
+export const GraphProgressBar = ({
 	className = '',
 	currentCount,
 	totalCount,
 	label,
 	variant = 'small',
-}: ProgressBarProps) => {
+	direction = 'row',
+}: GraphProgressBarProps) => {
 	return (
-		<div className={classNames(styles['progress-bar'], className)}>
+		<div className={classNames(styles['progress-bar'], className, styles[direction])}>
 			<progress
 				className={styles[`progress-bar-${variant}`]}
 				value={currentCount}

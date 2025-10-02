@@ -1,0 +1,112 @@
+.label-small {
+  margin-top: 4px;
+}
+
+.label-large {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background-color: var(--background-progress-bar);
+}
+
+.label-medium {
+  padding: 7px 14px;
+  width: fit-content;
+  box-shadow: 0 4px 10px 0 #6A63761A;
+  border-radius: 6px;  
+  color: var(--color-black-900);
+  font-size: var(--font-size-p-xs);
+  white-space: nowrap;
+}
+
+.row {
+  flex-direction: row;
+  width: 100%;
+}
+
+.column {
+  flex-direction: column;
+  align-items: center; 
+  width: 100%;
+  height: 240px;
+}
+
+.progress-bar {
+  position: relative;
+}
+
+.progress-bar-small {
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+
+  &::-webkit-progress-value {
+    border-radius: 50px;
+    background-color: var(--text-color-link-active);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 50px;
+    background-color: var(--background-progress-bar);
+  }
+}
+
+.progress-bar-medium {
+  width: 100%;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.progress-bar-medium::-webkit-progress-value {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #fff 0%, var(--color-purple-700) 100%);
+}
+
+.progress-bar-medium::-webkit-progress-bar {
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+.progress-bar-large {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.progress-bar-large::-webkit-progress-value {
+  border-radius: 8px;
+  background-color: var(--text-color-link-active);
+}
+
+.progress-bar-large::-webkit-progress-bar {
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+.column .progress-bar-medium {
+  width: 24px;
+  height: 100%;
+  appearance: none;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+
+.column .progress-bar-medium::-webkit-progress-value {
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fff 0%, var(--color-purple-700) 100%);
+}
+
+.column .progress-bar-medium::-webkit-progress-bar {
+  border-radius: 6px;
+  background: transparent;
+}
+
+.column .label-medium {
+  position: static;
+  margin-top: 8px;
+  text-align: center;
+  transform: rotate(0);
+}

@@ -50,10 +50,10 @@ export interface PopularSkill {
 	frequencyStat: number;
 }
 
-export interface PopularSkillsResponse {
+export type PopularSkillsResponse = Response<PopularSkill[]> & { specializationId: number };
+
+export type PopularSkillsParamsRequest = {
 	page: number;
 	limit: number;
-	total: number;
 	specializationId: number;
-	data: PopularSkill[];
-}
+};
