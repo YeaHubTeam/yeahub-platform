@@ -26,4 +26,4 @@ export {
 export { EmailVerifyStub } from './ui/EmailVerifyStub/EmailVerifyStub';
 export { EmailVerifyStubSkeleton } from './ui/EmailVerifyStub/EmailVerifyStub.skeleton';
 
-export { UserVerified } from './ui/UserVerifyed/UserVerified';
+export { UserVerified } from '@/entities/profile/ui/UserVerified/UserVerified';

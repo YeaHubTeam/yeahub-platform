@@ -4,8 +4,9 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { toast } from '@/shared/ui/Toast';
 
+import { TelegramLoginBodyRequest, TelegramLoginResponse } from '@/entities/auth';
+
 import { linkTelegramApiUrls } from '../model/constants/telegramLinkConstants';
-import { TelegramLoginBodyRequest, TelegramLoginResponse } from '../model/types/telegramLinkTypes';
 
 export const telegramLinkApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

@@ -8,6 +8,8 @@ export type {
 	Role,
 	RoleName,
 	TelegramUser,
+	TelegramLoginBodyRequest,
+	TelegramLoginResponse,
 } from './model/types/auth';
 export { listAdminRoles } from './model/constants/authConstants';
 export { authApi } from './api/authApi';
