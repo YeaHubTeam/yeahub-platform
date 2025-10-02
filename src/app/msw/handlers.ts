@@ -19,6 +19,8 @@ import { specializationCreateHandlers } from '@/features/specialization/createSp
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 
+import { specializationProgressHandlers } from '@/widgets/analytics';
+
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
@@ -40,4 +42,5 @@ export const handlers = [
 	...resetQuestionHandlers,
 	...quizHandlers,
 	...learnedQuestionHandlers,
+	...specializationProgressHandlers,
 ];
