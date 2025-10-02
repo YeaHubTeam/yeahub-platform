@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField/FormField';
@@ -20,43 +19,33 @@ import { SkillSelect } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { SpecializationSelect } from '@/entities/specialization';
 
-import styles from './ResourceDisabledForm.module.css';
+import styles from './ResourceRequestDisabledForm.module.css';
 
-export const ResourceDisabledForm = () => {
+export const ResourceRequestDisableForm = () => {
 	const { t } = useTranslation(i18Namespace.marketplace);
-	const { control, watch, setValue } = useFormContext();
+	const { control, watch } = useFormContext();
 
-	const selectedSpecializations = watch('resourceSpecializations');
-	console.log('all', watch());
-	const [previewImg, setPreviewImg] = useState<string | null>(null);
-
-	const changeImage = (imageBase64: string) => {
-		const image = removeBase64Data(imageBase64);
-
-		setPreviewImg(imageBase64);
-		setValue('skillImage', image);
-	};
-
-	const removeImage = () => {
-		setPreviewImg(null);
-		setValue('imageSrc', null);
-	};
+	const selectedSpecializations = watch('specializations');
+	const iconBase64 = watch('iconBase64');
+	const [previewImg] = useState<string | null>(iconBase64 ?? null);
 
 	return (
 		<Flex direction="column" gap="60" className={styles.wrapper}>
 			<Flex direction="column" gap="8" className={styles['form-field']}>
-				<Text variant="body4" color="black-800">
-					{t(Marketplace.NAME_SHORT)}
-				</Text>
+				<Flex>
+					<Text variant="body4" color="black-800">
+						{t(Marketplace.NAME_SHORT)}
+					</Text>
+				</Flex>
 				<div className={styles.form}>
 					<FormControl name="name" control={control} label={t(Marketplace.NAME_LABEL)}>
 						{(field, hasError) => (
 							<TextArea
 								{...field}
+								disabled
 								state={hasError ? 'error' : 'default'}
 								className={styles.name}
 								placeholder={t(Marketplace.NAME_LABEL)}
-								disabled={true}
 							/>
 						)}
 					</FormControl>
@@ -75,10 +64,10 @@ export const ResourceDisabledForm = () => {
 						{(field, hasError) => (
 							<TextArea
 								{...field}
+								disabled
 								state={hasError ? 'error' : 'default'}
 								className={styles.name}
 								placeholder={t(Marketplace.DESCRIPTION_LABEL)}
-								disabled
 							/>
 						)}
 					</FormControl>
@@ -87,8 +76,8 @@ export const ResourceDisabledForm = () => {
 			<FormField label={t(Marketplace.ICON_SHORT)} description={t(Marketplace.ICON_LABEL)}>
 				<ImageLoaderWithoutCropper
 					disabled
-					removeImage={removeImage}
-					changeImage={changeImage}
+					removeImage={() => {}}
+					changeImage={() => {}}
 					initialSrc={previewImg}
 				/>
 			</FormField>
@@ -96,7 +85,7 @@ export const ResourceDisabledForm = () => {
 				label={t(Marketplace.SPECIALIZATIONS_SHORT)}
 				description={t(Marketplace.SPECIALIZATIONS_LABEL)}
 			>
-				<FormControl name="resourceSpecializations" control={control}>
+				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
 						<div>
 							<SpecializationSelect disabled onChange={onChange} value={value} hasMultiple />
@@ -106,7 +95,7 @@ export const ResourceDisabledForm = () => {
 			</FormField>
 			{!!selectedSpecializations?.length && (
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
-					<FormControl name="resourceSkills" control={control}>
+					<FormControl name="skills" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div>
@@ -145,8 +134,8 @@ export const ResourceDisabledForm = () => {
 					{(field, hasError) => (
 						<Input
 							{...field}
-							placeholder={t(Marketplace.URL_PLACEHOLDER)}
 							disabled
+							placeholder={t(Marketplace.URL_PLACEHOLDER)}
 							error={hasError}
 						/>
 					)}

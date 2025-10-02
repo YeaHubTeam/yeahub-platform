@@ -10,7 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
-import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
@@ -74,7 +74,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k}>
 				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.resources.view.route, resource.id)}>
+					<Link to={route(ROUTES.admin.resources.details.route, resource.id)}>
 						<Text variant={'body3'} color={'purple-700'}>
 							{v}
 						</Text>

@@ -1,3 +1,3 @@
-import { ResourceViewPage } from './ui/ResourceViewPage.lazy';
+import { ResourceRequestViewPage } from './ui/ResourceRequestViewPage.lazy';
 
-export { ResourceViewPage };
+export { ResourceRequestViewPage };

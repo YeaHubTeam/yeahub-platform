@@ -97,10 +97,10 @@ export const ROUTES = {
 			requests: {
 				route: 'requests',
 				page: '/admin/resources/requests',
-			},
-			view: {
-				route: ':resourceId/view',
-				page: '/admin/resources/:resourceId/view',
+				view: {
+					route: ':resourceId/view',
+					page: '/admin/resources/:resourceId/view',
+				},
 			},
 		},
 		companies: {
