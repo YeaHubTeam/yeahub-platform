@@ -62,3 +62,7 @@ export interface SelectedResourceRequestEntity {
 	disabled?: boolean;
 }
 export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['id']>;
+
+export interface GetResourceRequestParams {
+	requestId: string | undefined;
+}
