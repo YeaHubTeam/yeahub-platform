@@ -4,12 +4,21 @@ export interface MostDifficultQuestionsParams {
 
 export interface MostDifficultQuestionsResponse {
 	id: number;
-	specializationId: number;
-	calculatedAt: string;
-	topStat: {
-		questionId: number;
+	specialization: {
+		id: number;
 		title: string;
-		answersCount: number;
-		state: number;
+		description: string;
+		imageSrc: string;
+		createdAt: string;
+		updatedAt: string;
 	};
+	calculatedAt: string;
+	topStat: [
+		{
+			questionId: number;
+			title: string;
+			answersCount: number;
+			state: number;
+		},
+	];
 }
