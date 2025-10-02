@@ -4,6 +4,8 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { ResourceRequests } from '@/shared/config/i18n/i18nTranslations';
 import { Tab } from '@/shared/ui/Tabs';
 
+import { useGetResourcesRequestsTotal } from '@/pages/admin/ResourcesPage/model/hooks/useGetResourcesRequestsTotal';
+
 import { ResourcesAllTab } from '../../ui/tabs/ResourcesAllTab/ResourcesAllTab/ResourcesAllTab';
 import { ResourcesRequestsTab } from '../../ui/tabs/ResourcesRequestsTab/ResourcesRequestsTab/ResourcesRequestsTab';
 
@@ -11,6 +13,9 @@ type AdminResourcesTabId = 'all' | 'requests';
 
 export const useGetResourcesPageTabs = () => {
 	const { t } = useTranslation(i18Namespace.resources);
+	const baseRequestsLabel = t(ResourceRequests.TABS_REQUESTS);
+	const { total, isLoading } = useGetResourcesRequestsTotal();
+	const requestsLabel = !isLoading && total ? `${baseRequestsLabel} (${total})` : baseRequestsLabel;
 
 	const tabs: Tab<AdminResourcesTabId>[] = [
 		{
@@ -20,7 +25,7 @@ export const useGetResourcesPageTabs = () => {
 		},
 		{
 			id: 'requests',
-			label: t(ResourceRequests.TABS_REQUESTS),
+			label: requestsLabel,
 			Component: ResourcesRequestsTab,
 		},
 	];
