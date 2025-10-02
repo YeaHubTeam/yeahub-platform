@@ -17,6 +17,8 @@ import { Text } from '@/shared/ui/Text';
 import { useGetMyRequestsResourcesQuery } from '@/entities/resource';
 import { MyResourcesFilterParams, ResourceRequestStatus } from '@/entities/resource';
 
+import { DeleteRequest } from '@/features/requests/deleteApplication';
+
 import {
 	MyResourcesList,
 	useMarketplaceFilters,
@@ -110,6 +112,7 @@ const MyResourcesPage = () => {
 
 	return (
 		<Flex gap="20" align="start">
+			<DeleteRequest requestId="" status="pending" />
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
