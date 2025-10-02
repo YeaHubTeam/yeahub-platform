@@ -1,20 +1,24 @@
-.item {
-	background: #ffffff;
-	border-radius: 16px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Пример тени */
-	padding: 16px; /* Добавьте отступы внутри карточки */
+.link {
+	 
+	display: flex;
+	gap: 8px;
+	color: var(--text-color-bright);
+	text-decoration: none;
+}
+.link:not(:last-child) {
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--border-color);
+}
+.title {
+	position: relative;
+	display: flex;
+	align-items: baseline;
+	margin: 0;
+	transition: color 0.3s ease-in-out;
 }
 
-.freq {
-	background-color: #635bff; /* Фиолетовый цвет, как на скриншоте */
-	color: white;
-	padding: 5px 4px;
-	border-radius: 4px;
-	justify-content: center;
 
-}
-
-.icon {
+.image {
 	width: 45px;
 	height: 45px;
 	background-color: #635bff;
