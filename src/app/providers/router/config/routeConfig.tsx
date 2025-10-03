@@ -102,8 +102,10 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
+import { ResourceRequestViewPage } from '@/pages/admin/ResourceViewPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -372,6 +374,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.view.page,
+				element: <ResourceRequestViewPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

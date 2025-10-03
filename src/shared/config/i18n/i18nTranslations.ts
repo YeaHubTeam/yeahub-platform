@@ -971,4 +971,5 @@ export enum Marketplace {
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
+	REQUEST_TITLE = 'requests.title',
 }
