@@ -94,8 +94,9 @@ export const KeywordInput = ({ value = [], onChange, disabled }: KeywordInputPro
 										}}
 										key={keyword}
 										onDelete={() => {
-											handleDeleteKeywords(keyword);
+											!disabled && handleDeleteKeywords(keyword);
 										}}
+										disabled={disabled}
 									>
 										{keyword}
 									</SimpleChip>

@@ -112,7 +112,10 @@ export const FileLoader = ({
 			onDragEnter={onDragOverAndEnter}
 			className={classNames(
 				style['file-upload-container'],
-				{ [style.active]: isDragActive },
+				{
+					[style.active]: isDragActive,
+					[style.disabled]: disabled,
+				},
 				className,
 			)}
 		>

@@ -98,8 +98,8 @@ export const ROUTES = {
 				route: 'requests',
 				page: '/admin/resources/requests',
 				view: {
-					route: ':resourceId/view',
-					page: '/admin/resources/:resourceId/view',
+					route: 'requests/:resourceId',
+					page: '/admin/resources/requests/:resourceId',
 				},
 			},
 		},

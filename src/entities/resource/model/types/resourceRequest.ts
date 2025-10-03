@@ -5,7 +5,7 @@ import { Skill } from '@/entities/skill';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Specialization } from '@/entities/specialization';
 
-import { Resource, ResourceTypeCode } from './resource';
+import { CreateOrEditOrViewResourceFormValues, ResourceTypeCode } from './resource';
 
 export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
 
@@ -62,8 +62,6 @@ export interface SelectedResourceRequestEntity {
 	disabled?: boolean;
 }
 export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['id']>;
-export type ResourceRequestForm = Omit<Resource, 'specializations' | 'skills'> & {
-	specializations: number[];
-	skills: number[];
+export type ResourceRequestFormValues = CreateOrEditOrViewResourceFormValues & {
 	status: ResourceRequestStatus;
 };

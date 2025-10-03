@@ -9,9 +9,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { ResourceRequestStatusChip } from '@/entities/resource';
-
-import { ResourceRequestDisableForm } from '../ResourceRequestDisabledForm/ResourceRequestDisabledForm';
+import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
 
 import styles from './ResourceRequestViewFormWithHeader.module.css';
 
@@ -40,7 +38,7 @@ export const ResourceRequestViewFormWithHeader = () => {
 						</Text>
 						<ResourceRequestStatusChip status={status} />
 					</Flex>
-					<ResourceRequestDisableForm />
+					<ResourceForm readonly />
 				</Flex>
 			</Card>
 		</Flex>

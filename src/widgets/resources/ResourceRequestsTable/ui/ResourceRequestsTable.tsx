@@ -19,8 +19,6 @@ import {
 	SelectedResourceRequestEntities,
 } from '@/entities/resource';
 
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
-
 import styles from './ResourceRequestsTable.module.css';
 
 const SPECIALIZATION_SHOW_COUNT = 2;
@@ -93,7 +91,7 @@ export const ResourceRequestsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k}>
 				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.resources.requests.view.route, request.id)}>
+					<Link to={route(ROUTES.admin.resources.requests.view.page, request.id)}>
 						<Text variant={'body3'} color={'purple-700'}>
 							{v}
 						</Text>
@@ -113,19 +111,6 @@ export const ResourceRequestsTable = ({
 				onClick: () => {
 					navigate(route(ROUTES.admin.resources.requests.view.route, resource.id));
 				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				disabled: resource.disabled,
-				onClick: () => {
-					navigate(route(ROUTES.admin.resources.edit.route, resource.id));
-				},
-			},
-			{
-				renderComponent: () => (
-					<DeleteResourceButton resourceId={resource.id} disabled={resource.disabled} />
-				),
 			},
 		];
 

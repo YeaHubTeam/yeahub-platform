@@ -60,9 +60,9 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUESTS],
 		}),
-		getResourceRequestById: build.query<ResourceRequest, GetResourceByIdParamsRequest>({
-			query: ({ resourceId }) => ({
-				url: route(resourceApiUrls.getResourceRequestById, resourceId || ''),
+		getResourceRequestById: build.query<ResourceRequest, string>({
+			query: (resourceId) => ({
+				url: route(resourceApiUrls.getResourceRequestById, resourceId),
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUESTS],
 		}),

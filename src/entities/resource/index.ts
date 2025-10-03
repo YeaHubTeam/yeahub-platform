@@ -23,6 +23,6 @@ export type {
 	GetResourceRequestsResponse,
 	SelectedResourceRequestEntity,
 	SelectedResourceRequestEntities,
-	ResourceRequestForm,
+	ResourceRequestFormValues,
 } from './model/types/resourceRequest';
 export { useGetResourceRequestsQuery } from './api/resourceApi';
