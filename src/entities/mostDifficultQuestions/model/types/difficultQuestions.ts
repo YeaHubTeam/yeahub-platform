@@ -1,7 +1,3 @@
-export interface MostDifficultQuestionsParams {
-	specId: number;
-}
-
 export interface MostDifficultQuestionsResponse {
 	id: number;
 	specialization: {
@@ -13,12 +9,10 @@ export interface MostDifficultQuestionsResponse {
 		updatedAt: string;
 	};
 	calculatedAt: string;
-	topStat: [
-		{
-			questionId: number;
-			title: string;
-			answersCount: number;
-			state: number;
-		},
-	];
+	topStat: {
+		questionId: number;
+		title: string;
+		answersCount: number;
+		state: number;
+	}[];
 }

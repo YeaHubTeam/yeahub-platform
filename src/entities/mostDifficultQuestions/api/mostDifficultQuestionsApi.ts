@@ -2,22 +2,22 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { mostDifficultQuestionsApiUrls } from '../model/constants/difficultQuestions';
-import {
-	MostDifficultQuestionsParams,
-	MostDifficultQuestionsResponse,
-} from '../model/types/difficultQuestions';
+import { MostDifficultQuestionsResponse } from '../model/types/difficultQuestions';
 
 export const mostDifficultQuestionsApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getMostDifficultQuestions: build.query<
-			MostDifficultQuestionsResponse[],
-			MostDifficultQuestionsParams
+		getMostDifficultQuestionsBySpecializationId: build.query<
+			MostDifficultQuestionsResponse,
+			{ specId: number }
 		>({
 			query: ({ specId }) => ({
-				url: route(mostDifficultQuestionsApiUrls.getMostDifficultQuestions, specId),
+				url: route(
+					mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
+					specId,
+				),
 			}),
 		}),
 	}),
 });
 
-export const { useGetMostDifficultQuestionsQuery } = mostDifficultQuestionsApi;
+export const { useGetMostDifficultQuestionsBySpecializationIdQuery } = mostDifficultQuestionsApi;

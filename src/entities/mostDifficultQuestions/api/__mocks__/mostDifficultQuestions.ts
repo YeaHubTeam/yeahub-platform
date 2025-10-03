@@ -8,7 +8,10 @@ import { mostDifficultQuestions } from './data';
 export const mostDifficultQuestionsMock = http.get<
 	never,
 	undefined,
-	MostDifficultQuestionsResponse[]
->(process.env.API_URL + mostDifficultQuestionsApiUrls.getMostDifficultQuestions, () => {
-	return HttpResponse.json<MostDifficultQuestionsResponse[]>(mostDifficultQuestions);
-});
+	MostDifficultQuestionsResponse
+>(
+	process.env.API_URL + mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
+	() => {
+		return HttpResponse.json<MostDifficultQuestionsResponse>(mostDifficultQuestions);
+	},
+);

@@ -1,3 +1,3 @@
 export const mostDifficultQuestionsApiUrls = {
-	getMostDifficultQuestions: 'questions-stats/most-difficult/:specId',
+	getMostDifficultQuestionsBySpecializationId: 'questions-stats/most-difficult/:specId',
 };
