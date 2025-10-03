@@ -51,7 +51,7 @@
 	"setting.tabs": {
 		"select.tariff": "Select tariff",
 		"change.password": "Password change",
-		"verify.email": "E-mail confirmation",
+		"verify.email": "Verification",
 		"account": "Account"
 	},
 	"email.verification": {
@@ -81,6 +81,14 @@
 			"description": "Are you sure you want to unlink Telegram from your account?",
 			"yes": "Yes",
 			"no": "No"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram is not linked",
+		"description": "Link your Telegram to enable quick login and receive notifications",
+		"toast": {
+			"telegram.link.success": "Telegram is successfully linked to your account!",
+			"telegram.link.error": "Failed to link your Telegram to your account."
 		}
 	},
 	"change.password": {

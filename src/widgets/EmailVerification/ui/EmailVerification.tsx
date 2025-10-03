@@ -5,7 +5,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
-import { getProfileIsEmailSent, UserVerifyed } from '@/entities/profile';
+import { getProfileIsEmailSent, UserVerified } from '@/entities/profile';
 
 import { ConfirmationEmail } from '@/features/profile/confirmationEmail';
 
@@ -15,7 +15,7 @@ const POLLING_INTERVAL = 5000;
 const MAX_POLLING_ATTEMPTS = 60;
 
 export const EmailVerification = () => {
-	const isLetterSended = useAppSelector(getProfileIsEmailSent);
+	const isLetterSent = useAppSelector(getProfileIsEmailSent);
 	const { data: profile, refetch } = useProfileQuery();
 	const pollingAttemptsRef = useRef(0);
 
@@ -23,13 +23,13 @@ export const EmailVerification = () => {
 	const email = profile?.email ?? '';
 
 	useEffect(() => {
-		if (isLetterSended) {
+		if (isLetterSent) {
 			pollingAttemptsRef.current = 0;
 		}
-	}, [isLetterSended]);
+	}, [isLetterSent]);
 
 	useEffect(() => {
-		if (isLetterSended && !isEmailVerified && pollingAttemptsRef.current < MAX_POLLING_ATTEMPTS) {
+		if (isLetterSent && !isEmailVerified && pollingAttemptsRef.current < MAX_POLLING_ATTEMPTS) {
 			const interval = setInterval(async () => {
 				try {
 					await refetch();
@@ -47,15 +47,15 @@ export const EmailVerification = () => {
 
 			return () => clearInterval(interval);
 		}
-	}, [isLetterSended, isEmailVerified, refetch]);
+	}, [isLetterSent, isEmailVerified, refetch]);
 
 	return (
 		<Card>
 			<Flex direction="column" className={styles.wrapper}>
 				{isEmailVerified ? (
-					<UserVerifyed />
+					<UserVerified />
 				) : (
-					<ConfirmationEmail email={email} isLetterSended={isLetterSended} />
+					<ConfirmationEmail email={email} isLetterSent={isLetterSent} />
 				)}
 			</Flex>
 		</Card>

@@ -75,7 +75,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				{renderTableColumnWidths?.()}
 				{hasActions && <col className={styles['actions-column']} />}
 			</colgroup>
-			<thead className={styles.head}>
+			<thead className={`${styles.head} ${styles.bg}`}>
 				<tr>
 					{selectedItems && (
 						<td className={styles.cell}>

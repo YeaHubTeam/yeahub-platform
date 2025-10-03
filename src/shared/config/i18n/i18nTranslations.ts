@@ -249,6 +249,10 @@ export enum Profile {
 	TELEGRAM_VERIFIED_MODAL_DESCRIPTION = 'telegram.verified.modal.description',
 	TELEGRAM_VERIFIED_MODAL_YES = 'telegram.verified.modal.yes',
 	TELEGRAM_VERIFIED_MODAL_NO = 'telegram.verified.modal.no',
+	TELEGRAM_VERIFICATION_TITLE = 'telegram.verification.title',
+	TELEGRAM_VERIFICATION_DESCRIPTION = 'telegram.verification.description',
+	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_SUCCESS = 'telegram.verification.toast.telegram.link.success',
+	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_ERROR = 'telegram.verification.toast.telegram.link.error',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
 	CHANGE_PASSWORD_DESCRIPTION = 'change.password.description',
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
@@ -920,7 +924,6 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
-
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',

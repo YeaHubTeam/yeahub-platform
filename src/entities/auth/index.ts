@@ -8,6 +8,7 @@ export type {
 	Role,
 	RoleName,
 	TelegramUser,
+	TelegramLoginBodyRequest,
 	TelegramLoginResponse,
 } from './model/types/auth';
 export { listAdminRoles } from './model/constants/authConstants';
@@ -23,3 +24,4 @@ export {
 export { authHandlers } from './api/__mocks__';
 export { refreshMiddleware } from './api/refreshMiddleware';
 export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';
+export { TelegramWidget } from './ui/TelegramWidget/TelegramWidget';

@@ -51,7 +51,7 @@
 	"settings.tabs": {
 		"select.tariff": "Выбрать тариф",
 		"change.password": "Смена пароля",
-		"verify.email": "Подтверждение e-mail",
+		"verify.email": "Верификация",
 		"account": "Аккаунт"
 	},
 	"email.verification": {
@@ -81,6 +81,14 @@
 			"description": "Вы действительно хотите отвязать Telegram от Вашего аккаунта?",
 			"yes": "Да",
 			"no": "Нет"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram не подключён",
+		"description": "Подключите Telegram для быстрого входа и уведомлений",
+		"toast": {
+			"telegram.link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
+			"telegram.link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту"
 		}
 	},
 	"change.password": {
