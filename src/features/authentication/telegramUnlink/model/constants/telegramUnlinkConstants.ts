@@ -1,3 +1,3 @@
 export const telegramUnlinkApiUrls = {
-	telegramUnlink: '/users/unlink-telegram',
+	telegramUnlink: 'users/unlink-telegram',
 };
