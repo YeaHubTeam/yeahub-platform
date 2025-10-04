@@ -1,14 +1,12 @@
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
-
-import styles from './GuruSocialsList.module.css';
+import { IconSkeleton } from '@/shared/ui/Icon';
 
 export const GuruSocialsListSkeleton = () => {
 	return (
 		<Flex gap="12">
-			<Skeleton className={styles['img-social']} />
-			<Skeleton className={styles['img-social']} />
-			<Skeleton className={styles['img-social']} />
+			<IconSkeleton size={24} borderRadius="50%" />
+			<IconSkeleton size={24} borderRadius="50%" />
+			<IconSkeleton size={24} borderRadius="50%" />
 		</Flex>
 	);
 };

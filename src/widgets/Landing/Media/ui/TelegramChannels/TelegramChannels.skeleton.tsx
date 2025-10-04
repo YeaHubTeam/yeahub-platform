@@ -12,7 +12,11 @@ export const TelegramChannelsSkeleton = () => {
 	return (
 		<Flex direction="column" gap="12">
 			<TextSkeleton variant={isMobile ? 'body5-accent' : 'head3'} width={250} />
-			<TextSkeleton variant="body3" className={styles['description']} width={250} />
+			<TextSkeleton
+				variant="body3"
+				className={styles['description']}
+				width={isMobile ? '100%' : '60%'}
+			/>
 			<MediaLinksListSkeleton />
 		</Flex>
 	);

@@ -12,18 +12,17 @@ export const OurMediaBannerSkeleton = () => {
 		<Flex
 			className={styles['intro']}
 			justify="between"
-			align="center"
+			align={isMobile ? 'normal' : 'center'}
 			direction={isMobile ? 'column' : 'row'}
 		>
 			<Flex direction="column" gap="12" justify="center" className={styles['intro-text-wrapper']}>
-				<TextSkeleton width={isMobile ? 300 : 600} variant={isMobile ? 'head5' : 'head3'} />
-				<TextSkeleton
-					variant="body3"
-					className={styles['intro-description']}
-					width={isMobile ? 300 : 600}
-				/>
+				<TextSkeleton width={150} variant={isMobile ? 'head5' : 'head3'} />
+				<TextSkeleton className={styles['intro-description']} variant="body3" width={'100%'} />
+				<TextSkeleton className={styles['intro-description']} variant="body3" width={'100%'} />
 			</Flex>
-			<Skeleton className={styles['img-wrapper']} />
+			<Flex className={styles['books-img']}>
+				<Skeleton width={206} />
+			</Flex>
 		</Flex>
 	);
 };

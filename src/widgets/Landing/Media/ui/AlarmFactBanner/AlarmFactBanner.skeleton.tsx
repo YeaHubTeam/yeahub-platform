@@ -13,7 +13,7 @@ export const AlarmFactBannerSkeleton = () => {
 			<Skeleton className={styles['img-wrapper']} />
 			<TextSkeleton
 				variant={isLargeScreen || isLaptop ? 'body6' : 'body5-accent'}
-				width={isLargeScreen || isLaptop ? 700 : 300}
+				width={isLaptop ? '90%' : '100%'}
 			/>
 		</Flex>
 	);

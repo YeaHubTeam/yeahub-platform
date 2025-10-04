@@ -1,6 +1,7 @@
 .intro {
+  gap:10px;
   border-radius: 12px;
-  background-color: var(--color-white-900);
+  background-color: var(--color-white-900)
 }
 
 .intro-text-wrapper {
@@ -15,14 +16,6 @@
   padding-right: 100px;
   height: 165px;
 }
-
-.img-wrapper {
-  margin-right: 100px;
-  width: 200px;
-  height: 140px;
-  border-radius: 4px;
-}
-
 
 @media (width < 1024px) {
   .intro-text-wrapper {
@@ -39,7 +32,8 @@
   }
 
   .img-wrapper {
-    width: 200px;
+    margin: 10px 10px 10px auto;
+    width: 150px;
     height: 124px;
     border-radius: 4px;
   }
@@ -61,8 +55,6 @@
   }
 
   .img-wrapper {
-    width: 200px;
-    height: 124px;
-    border-radius: 4px;
+    margin: 10px 10px 10px auto;
   }
 }

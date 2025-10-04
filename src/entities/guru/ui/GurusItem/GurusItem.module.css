@@ -9,6 +9,13 @@
   border-radius: 8px;
 }
 
+.border-skeleton {
+  padding: 16px;
+  min-width: 289px;
+  border: 1px solid var(--color-grey-300);
+  border-radius: 8px;
+}
+
 .img-wrapper{
   width: 40px;
   height: 40px;
