@@ -1,6 +1,6 @@
-import { LearnedQuestionsResponse } from '../../../model/types';
+import { GetLearnedQuestionsResponse } from '../../../model/types/learnedQuestion';
 
-export const learnedQuestionsMock: LearnedQuestionsResponse = {
+export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 	data: [
 		{
 			id: 1,

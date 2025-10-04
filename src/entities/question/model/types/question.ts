@@ -84,13 +84,13 @@ export type GetQuestionByIdParamsRequest = {
 };
 export type GetQuestionByIdResponse = Question;
 
-export interface GetLearnedQuestionsParamsRequest
+export interface GetQuestionsForLearnParamsRequest
 	extends Omit<GetQuestionsListParamsRequest, 'order' | 'orderBy' | 'random'> {
 	profileId: string;
 	isLearned?: boolean;
 	areFavorites?: boolean;
 }
-export type GetLearnedQuestionsResponse = Response<Question[]>;
+export type GetQuestionsForLearnResponse = Response<Question[]>;
 
 export type GetPublicQuestionByIdResponse = PublicQuestion;
 

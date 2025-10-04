@@ -14,10 +14,11 @@ export interface LearnedQuestion {
 	calculatedAt: string;
 }
 
-export type LearnedQuestionsParamsRequest = {
+export type GetLearnedQuestionsParamsRequest = {
 	page?: number;
 	limit?: number;
 	specializationId?: number;
+	skillId?: number;
 };
 
-export type LearnedQuestionsResponse = Response<LearnedQuestion[]>;
+export type GetLearnedQuestionsResponse = Response<LearnedQuestion[]>;

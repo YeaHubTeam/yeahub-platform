@@ -3,10 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Analytics } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useGetLearnedQuestionsBySkillQuery } from '@/entities/questionStats/learnedQuestion';
+import { getSpecializationId } from '@/entities/profile';
+import { useGetLearnedQuestionsQuery } from '@/entities/question';
 
 import { useItemsSizeCalculation } from '../../model/hooks/useItemsSizeCalculation';
 import { SkillProficiencyItem } from '../SkillProficiencyItem/SkillProficiencyItem';
@@ -14,7 +16,12 @@ import { SkillProficiencyItem } from '../SkillProficiencyItem/SkillProficiencyIt
 import styles from './SkillsProficiency.module.css';
 
 export const SkillsProficiency = () => {
-	const { data: response } = useGetLearnedQuestionsBySkillQuery({});
+	const specializationId = useAppSelector(getSpecializationId);
+	const { data: response } = useGetLearnedQuestionsQuery({
+		page: 1,
+		limit: 6,
+		specializationId,
+	});
 
 	const learnedQuestions = response?.data ?? [];
 

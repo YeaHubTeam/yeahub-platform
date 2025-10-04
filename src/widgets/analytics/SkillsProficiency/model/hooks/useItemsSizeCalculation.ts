@@ -1,6 +1,6 @@
 import { useScreenSize } from '@/shared/hooks';
 
-import { LearnedQuestion } from '@/entities/questionStats/learnedQuestion/';
+import { LearnedQuestion } from '@/entities/question';
 
 const DESKTOP_ITEM_MAX_WIDTH = 208;
 const TABLET_ITEM_MAX_WIDTH = 224;

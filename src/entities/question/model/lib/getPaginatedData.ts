@@ -1,4 +1,4 @@
-import { LearnedQuestion } from '../types';
+import { LearnedQuestion } from '../types/learnedQuestion';
 
 type preparePaginatedDataArg = {
 	questions: LearnedQuestion[];

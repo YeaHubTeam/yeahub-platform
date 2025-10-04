@@ -1,1 +1,0 @@
-export { learnedQuestionsMock } from './learnedQuestionsMock';
