@@ -8,6 +8,7 @@ import type {
 	GetSkillByIdResponse,
 	GetSkillsListParamsRequest,
 	GetSkillsListResponse,
+	PopularSkillsResponse,
 } from '../model/types/skill';
 
 const skillApi = baseApi.injectEndpoints({
@@ -25,7 +26,17 @@ const skillApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.SKILL_DETAIL],
 		}),
+		getPopularSkills: build.query<
+			PopularSkillsResponse,
+			Pick<PopularSkillsResponse, 'limit' | 'page' | 'specializationId'>
+		>({
+			query: (params) => ({
+				url: skillApiUrls.popularSkills,
+				params,
+			}),
+			providesTags: [ApiTags.POPULAR_SKILLS],
+		}),
 	}),
 });
 
-export const { useGetSkillsListQuery, useGetSkillByIdQuery } = skillApi;
+export const { useGetSkillsListQuery, useGetSkillByIdQuery, useGetPopularSkillsQuery } = skillApi;

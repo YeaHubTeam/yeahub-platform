@@ -1,0 +1,12 @@
+.popular-skills-card {
+  gap: 24px;
+  max-width: 645px;
+}
+
+@media (width <= 1440px) {
+  .popular-skills-card {
+    gap: 24px;
+    padding: 16px;
+    max-width: 344px;
+  }
+}
