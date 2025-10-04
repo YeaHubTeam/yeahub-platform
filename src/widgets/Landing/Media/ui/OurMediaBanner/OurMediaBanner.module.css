@@ -1,6 +1,7 @@
 .intro {
+  gap:10px;
   border-radius: 12px;
-  background-color: var(--color-white-900);
+  background-color: var(--color-white-900)
 }
 
 .intro-text-wrapper {
@@ -29,6 +30,13 @@
     padding-right: 20px;
     height: 124px;
   }
+
+  .img-wrapper {
+    margin: 10px 10px 10px auto;
+    width: 150px;
+    height: 124px;
+    border-radius: 4px;
+  }
 }
 
 @media (width < 768px) {
@@ -41,9 +49,12 @@
     padding: 0;
   }
 
-
   .books-img {
     align-self: end;
     padding-right: 10px;
+  }
+
+  .img-wrapper {
+    margin: 10px 10px 10px auto;
   }
 }
