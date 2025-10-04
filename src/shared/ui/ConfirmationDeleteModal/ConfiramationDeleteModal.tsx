@@ -8,14 +8,14 @@ import { TextHtml } from '@/shared/ui/TextHtml';
 import styles from './ConfirmationDeleteModal.module.css';
 
 export interface UserDeleteAccountModalProps extends RequiredModalProps {
-	confirmationName: string;
+	confirmationName?: string;
 	onDelete: () => void;
 	modalTitle: string;
 	confirmButtonText: string;
 	discardButtonText: string;
 	deleteDescriptionModal: string;
-	deleteLabel: string;
-	deletePlaceholder: string;
+	deleteLabel?: string;
+	deletePlaceholder?: string;
 }
 
 export const ConfirmationDeleteModal = ({
@@ -52,7 +52,7 @@ export const ConfirmationDeleteModal = ({
 			variant="error"
 			buttonPrimaryText={confirmButtonText}
 			buttonOutlineText={discardButtonText}
-			buttonPrimaryDisabled={isButtonDisabled}
+			buttonPrimaryDisabled={confirmationName ? isButtonDisabled : false}
 			buttonOutlineClick={handleClose}
 			buttonPrimaryClick={handleDeleteAccount}
 			isOpen={isOpen}
@@ -62,12 +62,16 @@ export const ConfirmationDeleteModal = ({
 			<Text variant="body2" className={styles.label}>
 				{deleteLabel}
 			</Text>
-			<Input
-				value={value}
-				onChange={handleChange}
-				placeholder={deletePlaceholder}
-				className={styles.input}
-			/>
+			{confirmationName ? (
+				<Input
+					value={value}
+					onChange={handleChange}
+					placeholder={deletePlaceholder}
+					className={styles.input}
+				/>
+			) : (
+				''
+			)}
 		</Modal>
 	);
 };
