@@ -6,6 +6,7 @@ export const authProfileQueryMockResponse: FullProfile = {
 	country: 'AGroba',
 	city: 'Bag-dad',
 	email: 'user@example.com',
+	telegram: 'troll',
 	birthday: '1990-01-01T00:00:00.000Z',
 	address: 'улица Пушкина дом Колотушкина',
 	avatarUrl: 'https://cdn.fastcup.net/logos/teams/20989_7n1la213o.png',

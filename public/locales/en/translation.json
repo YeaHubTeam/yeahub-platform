@@ -328,6 +328,12 @@
 					"failed.email": "Invalid email"
 				}
 			},
+			"verification": {
+				"telegram.unlink": {
+					"success": "Telegram account successfully unlinked",
+					"failed": "Failed to unlink your Telegram account"
+				}
+			},
 			"companies": {
 				"delete": {
 					"single": {
