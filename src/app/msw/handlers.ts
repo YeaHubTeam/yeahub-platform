@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { difficultQuestionsHandler } from '@/entities/mostDifficultQuestions/index';
 import { paymentHandlers } from '@/entities/payment';
 import { questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
@@ -38,4 +39,5 @@ export const handlers = [
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
+	...difficultQuestionsHandler,
 ];
