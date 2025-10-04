@@ -1,10 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -23,16 +20,19 @@ import styles from './FullQuestionItem.module.css';
 interface FullQuestionItemProps {
 	question: Question;
 	isPublic?: boolean;
+	onMoveQuestionDetail: (id: number) => void;
 }
 
-export const FullQuestionItem = ({ question, isPublic = false }: FullQuestionItemProps) => {
+export const FullQuestionItem = ({
+	question,
+	isPublic = false,
+	onMoveQuestionDetail,
+}: FullQuestionItemProps) => {
 	const { id, imageSrc, complexity = 0, rate, shortAnswer, checksCount = 0, isFavorite } = question;
 	const { t } = useTranslation(i18Namespace.questions);
-	const navigate = useNavigate();
 
 	const onMoveDetail = () => {
-		const path = isPublic ? ROUTES.questions.detail.page : ROUTES.interview.questions.detail.page;
-		navigate(route(path, id));
+		onMoveQuestionDetail(id);
 	};
 
 	const settingsMenuItems: PopoverMenuItem[] = [
