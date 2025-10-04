@@ -1,6 +1,6 @@
 export const ReactIcon = () => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32">
+		<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32">
 			<circle cx="16" cy="15.974" r="2.5" fill="#00d8ff" />
 			<path
 				fill="#00d8ff"

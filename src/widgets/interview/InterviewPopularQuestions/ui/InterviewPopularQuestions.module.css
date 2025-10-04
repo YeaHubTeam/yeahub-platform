@@ -1,0 +1,33 @@
+.link {
+	 
+	display: flex;
+	gap: 8px;
+	color: var(--text-color-bright);
+	text-decoration: none;
+}
+.link:not(:last-child) {
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--border-color);
+}
+.title {
+	position: relative;
+	display: flex;
+	align-items: baseline;
+	margin: 0;
+	transition: color 0.3s ease-in-out;
+}
+
+
+.image {
+	width: 45px;
+	height: 45px;
+	background-color: #635bff;
+	padding: 2px 3px;
+	border-radius: 8px;
+}
+
+.populariry {
+	background-color: #F8F8F8;
+	padding: 4px;
+	border-radius: 4px;
+}
