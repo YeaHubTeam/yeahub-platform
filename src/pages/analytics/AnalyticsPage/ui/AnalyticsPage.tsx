@@ -1,3 +1,5 @@
+import { SpecializationsProgress } from '@/widgets/analytics';
+
 export const AnalyticsPage = () => {
-	return <div>AnalyticsPage</div>;
+	return <SpecializationsProgress />;
 };

@@ -28,4 +28,5 @@ export enum ApiTags {
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
 	PAYMENTS = 'payments',
+	GENERAL_PROGRESS = 'general_progress',
 }
