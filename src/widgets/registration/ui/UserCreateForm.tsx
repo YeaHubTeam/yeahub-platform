@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import { TelegramLogin } from '@/features/authentication/login';
+// import { TelegramLogin } from '@/features/authentication/login';
 import { LoginLabel, RegisterForm } from '@/features/authentication/registration';
 
 import { registerSchema } from '../model/lib/validation/registerSchema';
@@ -23,7 +23,7 @@ export const UserCreateForm = () => {
 				<FormProvider {...methods}>
 					<RegisterForm />
 				</FormProvider>
-				<TelegramLogin />
+				{/*<TelegramLogin />*/}
 			</Flex>
 			<LoginLabel />
 		</Flex>
