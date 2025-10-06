@@ -185,6 +185,8 @@ export enum Translation {
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
+	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
+	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -701,6 +703,11 @@ export enum ResourceRequests {
 	STATUS_REJECTED = 'status.rejected',
 	TABS_ALL = 'admin.tabs.all',
 	TABS_REQUESTS = 'admin.tabs.requests',
+	APPROVE_BUTTON = 'requests.approve',
+	APPROVE_CONFIRMATION_MODAL_TITLE = 'modal.resource.approveRequest.title',
+	APPROVE_CONFIRMATION_MODAL_MESSAGE = 'modal.resource.approveRequest.message',
+	MODAL_ACTIONS_OK = 'modal.resource.approveRequest.buttonOk',
+	MODAL_ACTIONS_CANCEL = 'modal.resource.approveRequest.buttonCancel',
 }
 
 export enum Landing {
