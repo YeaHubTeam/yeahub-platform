@@ -11,6 +11,7 @@ import {
 	GetResourceByIdParamsRequest,
 	GetMyRequestsResourcesParamsRequest,
 	GetMyRequestsResourcesResponse,
+	ResourceRequest,
 } from '../model/types/resource';
 import {
 	GetResourceRequestsResponse,
@@ -67,6 +68,12 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUESTS],
 		}),
+		getResourceRequestById: build.query<ResourceRequest, string>({
+			query: (resourceId) => ({
+				url: route(resourceApiUrls.getResourceRequestById, resourceId),
+			}),
+			providesTags: [ApiTags.RESOURCE_REQUESTS],
+		}),
 	}),
 });
 
@@ -77,5 +84,6 @@ export const {
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
 	useGetMyRequestsResourcesCountQuery,
+	useGetResourceRequestByIdQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

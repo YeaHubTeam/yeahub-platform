@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
@@ -8,6 +7,7 @@ import { useAppSelector } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Input } from '@/shared/ui/Input';
+import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
 
@@ -17,10 +17,10 @@ import styles from './ConfirmationEmail.module.css';
 
 interface ConfirmationEmailProps {
 	email: string;
-	isLetterSended: boolean;
+	isLetterSent: boolean;
 }
 
-export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailProps) => {
+export const ConfirmationEmail = ({ email, isLetterSent }: ConfirmationEmailProps) => {
 	const { t } = useTranslation(i18Namespace.profile);
 	const profile = useAppSelector(getFullProfile);
 	const userId = profile?.id;
@@ -37,12 +37,12 @@ export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailPr
 	return (
 		<>
 			<Flex direction="column" gap="12">
-				<h3 className={styles['card-title']}>{t(Profile.EMAIL_VERIFICATION_TITLE)}</h3>
-				<p className={styles['card-text']}>{t(Profile.EMAIL_VERIFICATION_DESCRIPTION)}</p>
-				{isLetterSended && (
-					<p className={classNames(styles['card-text'], styles['spam-message'])}>
+				<Text variant="head3">{t(Profile.EMAIL_VERIFICATION_TITLE)}</Text>
+				<Text variant="body3">{t(Profile.EMAIL_VERIFICATION_DESCRIPTION)}</Text>
+				{isLetterSent && (
+					<Text variant="body3" className={styles['spam-message']}>
 						{t(Profile.EMAIL_VERIFICATION_SPAM_MESSAGE)}
-					</p>
+					</Text>
 				)}
 			</Flex>
 
@@ -51,7 +51,7 @@ export const ConfirmationEmail = ({ email, isLetterSended }: ConfirmationEmailPr
 			<div className={styles.card}>
 				<Input placeholder="E-mail" value={email} disabled className={styles.input} />
 
-				{isLetterSended ? (
+				{isLetterSent ? (
 					<Flex align="center" className={styles.flex}>
 						<Checkmark className={styles.svg} />
 						<p className={styles['card-text-email']}>

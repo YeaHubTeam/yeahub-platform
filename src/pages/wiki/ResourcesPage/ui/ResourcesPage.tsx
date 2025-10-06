@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -14,7 +16,9 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
+import { getSpecializationId } from '@/entities/profile';
 import { useGetMyRequestsResourcesCountQuery, useGetResourcesListQuery } from '@/entities/resource';
+
 
 import {
 	ResourcesList,
@@ -32,6 +36,7 @@ const ResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
+	const specializationID = useSelector(getSpecializationId);
 
 	const {
 		onChangeSearchParams,
@@ -51,13 +56,19 @@ const ResourcesPage = () => {
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 		name: filter.title,
-		specializations: filter.specialization,
+		specializations: specializationID,
 		skills: filter.skills,
 		types: filter.resources,
 	});
 	const { data: myRequestsTotal } = useGetMyRequestsResourcesCountQuery({
 		status: 'pending',
 	});
+
+	useEffect(() => {
+		if (specializationID) {
+			onChangeSpecialization(specializationID);
+		}
+	}, []);
 
 	const resources = resourcesResponse?.data ?? [];
 	const myRequestsCount = myRequestsTotal ?? 0;
@@ -85,8 +96,8 @@ const ResourcesPage = () => {
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}
-			onChangeSpecialization={onChangeSpecialization}
 			onChangeResources={onChangeResources}
+			showSpecialization={false}
 		/>
 	);
 
@@ -111,15 +122,15 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
-	const suggestButton = (
-		<Button
-			variant="link-purple"
-			suffix={<Icon icon="plus" />}
-			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-		>
-			{t(Marketplace.LINK_LABEL)}
-		</Button>
-	);
+	// const suggestButton = (
+	// 	<Button
+	// 		variant="link-purple"
+	// 		suffix={<Icon icon="plus" />}
+	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+	// 	>
+	// 		{t(Marketplace.LINK_LABEL)}
+	// 	</Button>
+	// );
 
 	return (
 		<Flex gap="20" align="start">
@@ -130,7 +141,7 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
-						{suggestButton}
+						{/*{suggestButton}*/}
 					</Flex>
 				</Flex>
 
