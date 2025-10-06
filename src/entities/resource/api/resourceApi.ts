@@ -64,7 +64,7 @@ const resourceApi = baseApi.injectEndpoints({
 			query: (resourceId) => ({
 				url: route(resourceApiUrls.getResourceRequestById, resourceId),
 			}),
-			providesTags: [ApiTags.RESOURCE_REQUESTS],
+			providesTags: [ApiTags.RESOURCE_REQUEST_DETAIL],
 		}),
 	}),
 });

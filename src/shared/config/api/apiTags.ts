@@ -12,6 +12,7 @@ export enum ApiTags {
 	RESOURCES_TYPES = 'resources_types',
 	COLLECTION_DETAIL = 'collection_detail',
 	RESOURCE_REQUESTS = 'resource_requests',
+	RESOURCE_REQUEST_DETAIL = 'resource_request_detail',
 	SKILLS = 'skills',
 	USERS = 'users',
 	USER_DETAIL = 'user_detail',
