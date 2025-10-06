@@ -426,7 +426,7 @@ export enum Resources {
 	DESCRIPTION = 'description.title',
 	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
-	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
+	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
 	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
 	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 	TITLE_SHORT = 'title.short',
