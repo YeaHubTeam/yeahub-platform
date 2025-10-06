@@ -15,37 +15,39 @@ export const MostDifficultQuestions = () => {
 
 	const progressBarColors = ['green', 'yellow', 'red'] as const;
 
-	const smallScreenQuestions = difficultQuestions?.topStat.slice(3);
+	// const mixedQuestions = difficultQuestions?.topStat.sort(() => Math.random() - 0.5);
+
+	const filteredQuestions = isSmallScreen
+		? difficultQuestions?.topStat.slice(3)
+		: difficultQuestions?.topStat.slice(0, 6);
 
 	return (
 		<Flex direction="column" gap="12">
-			{(isSmallScreen ? smallScreenQuestions : difficultQuestions?.topStat)?.map(
-				(question, index) => {
-					const color = progressBarColors[index % progressBarColors.length];
-					return (
-						<Card
-							key={question.questionId}
-							withOutsideShadow
-							size={'small'}
-							className={styles['card']}
-						>
-							<Flex justify={'between'}>
-								<p className={styles.question}>
-									<span>{question.title}</span>
-								</p>
-								<div className={styles.percent}>{question.answersCount}%</div>
-							</Flex>
-							<ProgressBar
-								currentCount={question.answersCount}
-								totalCount={100}
-								variant={'colored'}
-								color={color}
-								className={styles['progress-bar']}
-							/>
-						</Card>
-					);
-				},
-			)}
+			{filteredQuestions?.map((question, index) => {
+				const color = progressBarColors[index % progressBarColors.length];
+				return (
+					<Card
+						key={question.questionId}
+						withOutsideShadow
+						size={'small'}
+						className={styles['card']}
+					>
+						<Flex justify={'between'}>
+							<p className={styles.question}>
+								<span>{question.title}</span>
+							</p>
+							<div className={styles.percent}>{question.answersCount}%</div>
+						</Flex>
+						<ProgressBar
+							currentCount={question.answersCount}
+							totalCount={100}
+							variant={'colored'}
+							color={color}
+							className={styles['progress-bar']}
+						/>
+					</Card>
+				);
+			})}
 		</Flex>
 	);
 };

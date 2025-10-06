@@ -48,18 +48,6 @@ export const mostDifficultQuestions: MostDifficultQuestionsResponse = {
 			answersCount: 82,
 			state: 1,
 		},
-		{
-			questionId: 1,
-			title: 'Что такое Virtual DOM, и как он работает?',
-			answersCount: 82,
-			state: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Как работает event loop в JavaScript?',
-			answersCount: 82,
-			state: 1,
-		},
 	],
 };
 // {
