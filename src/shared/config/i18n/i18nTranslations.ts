@@ -187,6 +187,8 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
 	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -242,8 +244,6 @@ export enum Profile {
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_DESCRIPTION = 'email.verification.success.verify.stub.description',
 	TELEGRAM_VERIFICATION_TITLE = 'telegram.verification.title',
 	TELEGRAM_VERIFICATION_DESCRIPTION = 'telegram.verification.description',
-	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_SUCCESS = 'telegram.verification.toast.telegram.link.success',
-	TELEGRAM_VERIFICATION_TOAST_TELEGRAM_LINK_ERROR = 'telegram.verification.toast.telegram.link.error',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
 	CHANGE_PASSWORD_DESCRIPTION = 'change.password.description',
 	CHANGE_PASSWORD_LABEL = 'change.password.label',

@@ -148,6 +148,12 @@
 				"password": {
 					"wrong": "Неверный пароль."
 				}
+			},
+			"telegram": {
+				"verification": {
+					"link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
+					"link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту."
+				}
 			}
 		},
 		"questions": {

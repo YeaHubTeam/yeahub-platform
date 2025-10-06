@@ -147,9 +147,10 @@
 				}
 			},
 			"telegram": {
-				"verify_denied": "Telegram verification denied",
-				"data_outdated": "Telegram data is outdated",
-				"invalid_data": "Telegram data is invalid"
+				"verification": {
+					"link.success": "Telegram is successfully linked to your account!",
+					"link.error": "Failed to link your Telegram to your account."
+				}
 			}
 		},
 		"questions": {

@@ -38,6 +38,12 @@
   color: var(--color-purple-700);
 }
 
+.img-wrapper{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 @media (width < 1024px) {
   .link {
     align-self: self-end;
