@@ -59,6 +59,13 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUESTS],
 		}),
+		getResourceRequestsReviewCount: build.query<number, GetResourceRequestsParams | void>({
+			query: (params) => ({
+				url: resourceApiUrls.getResourceRequests,
+				params: { page: 1, limit: 1, status: 'pending', ...params },
+			}),
+			transformResponse: (response: GetResourceRequestsResponse): number => response.total ?? 0,
+		}),
 	}),
 });
 
@@ -68,5 +75,6 @@ export const {
 	useGetResourceByIdQuery,
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
+	useGetResourceRequestsReviewCountQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
