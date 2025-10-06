@@ -186,7 +186,7 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
-	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.telegram.verification.link.error',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
