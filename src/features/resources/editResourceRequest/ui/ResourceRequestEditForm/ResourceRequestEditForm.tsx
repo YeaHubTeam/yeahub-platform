@@ -28,13 +28,13 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 
 export const ResourceRequestEditForm = ({ request }: ResourceRequestEditFormProps) => {
 	const navigate = useNavigate();
-	const { skills, specializations, requestPayload, ...formatedRequest } = request;
+	const { skills, specializations, requestPayload, ...formattedRequest } = request;
 
 	const methods = useForm<EditResourceRequestFormValues>({
 		resolver: yupResolver(resourceRequestEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
-			...formatedRequest,
+			...formattedRequest,
 			...requestPayload,
 			iconBase64: requestPayload.imageSrc,
 			skills: formatToFormField<Skill[]>(skills),

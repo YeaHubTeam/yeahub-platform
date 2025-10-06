@@ -21,10 +21,10 @@ export const editResourceRequestApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, { queryFulfilled }) {
 				try {
 					await queryFulfilled;
-				} catch (e) {
+				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
 					// eslint-disable-next-line no-console
-					console.error(e);
+					console.error(error);
 				}
 			},
 			invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS, ApiTags.RESOURCE_REQUEST_DETAIL],

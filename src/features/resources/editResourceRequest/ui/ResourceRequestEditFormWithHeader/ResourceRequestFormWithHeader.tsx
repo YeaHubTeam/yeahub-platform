@@ -22,7 +22,7 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 	const {
 		watch,
 		handleSubmit,
-		formState: { isDirty },
+		formState: { isDirty, isSubmitting },
 	} = useFormContext<EditResourceRequestFormValues>();
 
 	const status = watch('status');
@@ -30,10 +30,10 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	return (
-		<Flex componentType="main" gap="24" className={styles.wrapper}>
+		<Flex componentType="main" className={styles.wrapper}>
 			<Flex align="center" className={styles.buttons}>
 				<Button
-					disabled={!isDirty}
+					disabled={!isDirty || isSubmitting}
 					className={styles['submit-button']}
 					onClick={handleSubmit(onSubmit)}
 					type="submit"

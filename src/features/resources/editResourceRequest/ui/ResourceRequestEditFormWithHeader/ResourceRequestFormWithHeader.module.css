@@ -17,20 +17,17 @@
   flex: 1 1 100%;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .buttons {
     order: 3;
+    margin-top: 20px;
     width: 100%;
-
-    .delete-button {
-      flex: 1 1 30%;
-    }
-
-    .submit-button {
-      flex: 1 1 70%;
-    }
   }
 
+  .submit-button {
+    position: static;
+  }
+	
   .content {
     order: 2;
   }
