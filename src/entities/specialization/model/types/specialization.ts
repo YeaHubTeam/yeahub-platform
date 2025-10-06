@@ -14,6 +14,7 @@ export type GetSpecializationsListParamsRequest = {
 	title?: string;
 	limit?: number;
 	specializations?: number[];
+	authorId?: string;
 };
 export type GetSpecializationsListResponse = Response<Specialization[]>;
 

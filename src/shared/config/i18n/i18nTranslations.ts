@@ -610,6 +610,7 @@ export enum User {
 	BIRTH_DATE = 'birth.date',
 	REGISTRATION_DATE = 'registration.date',
 	SELECT_CHOOSE = 'select.shoose',
+	FILTER_AUTHOR = 'filter.author',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
 	SUBSCRIPTION_FREE = 'subscription.free',

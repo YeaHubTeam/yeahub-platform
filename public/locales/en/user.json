@@ -33,6 +33,9 @@
 		"role": {
 			"title": "User Roles"
 		},
+		"author": {
+			"title": "Specialization Author"
+		},
 		"email": {
 			"title": "Is Email Confirmed"
 		}
