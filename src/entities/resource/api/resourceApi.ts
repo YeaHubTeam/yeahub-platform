@@ -52,6 +52,14 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
+		getMyRequestsResourcesCount: build.query<number, GetMyRequestsResourcesParamsRequest | void>({
+			query: (params = {}) => ({
+				url: resourceApiUrls.getMyRequestsResources,
+				params: { page: 1, limit: 1, ...params },
+			}),
+			transformResponse: (response: GetMyRequestsResourcesResponse) => response.total,
+			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
+		}),
 		getResourceRequests: build.query<GetResourceRequestsResponse, GetResourceRequestsParams>({
 			query: (params) => ({
 				url: resourceApiUrls.getResourceRequests,
@@ -68,5 +76,6 @@ export const {
 	useGetResourceByIdQuery,
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
+	useGetMyRequestsResourcesCountQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

@@ -14,11 +14,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
-import {
-	ResourceRequestStatus,
-	useGetMyRequestsResourcesQuery,
-	useGetResourcesListQuery,
-} from '@/entities/resource';
+import { useGetMyRequestsResourcesCountQuery, useGetResourcesListQuery } from '@/entities/resource';
 
 import {
 	ResourcesList,
@@ -59,12 +55,12 @@ const ResourcesPage = () => {
 		skills: filter.skills,
 		types: filter.resources,
 	});
-	const { data: myPendingResources } = useGetMyRequestsResourcesQuery({
-		status: filter.status === 'pending' ? (filter.status as ResourceRequestStatus) : undefined,
+	const { data: myRequestsTotal } = useGetMyRequestsResourcesCountQuery({
+		status: 'pending',
 	});
 
 	const resources = resourcesResponse?.data ?? [];
-	const myResources = myPendingResources?.data ?? [];
+	const myRequestsCount = myRequestsTotal ?? 0;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -158,7 +154,7 @@ const ResourcesPage = () => {
 					size="large"
 					onClick={handleNavigateToMyResources}
 				>
-					{t(Marketplace.MY_RESOURCES)} {myResources.length > 0 ? `(${myResources.length})` : ''}
+					{t(Marketplace.MY_RESOURCES)} {myRequestsCount > 0 ? `(${myRequestsCount})` : ''}
 				</Button>
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
