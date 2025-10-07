@@ -1,1 +1,1 @@
-export { DeleteRequest } from './ui/DeleteRequest/DeleteRequest';
+export { DeleteMyResourceRequestButton } from './ui/DeleteMyResourceRequestButton/DeleteMyResourceRequestButton';

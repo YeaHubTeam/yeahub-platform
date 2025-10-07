@@ -1,3 +1,3 @@
-export const DeleteRequestApiUrls = {
-	deleteRequest: 'external-products/request/:id',
+export const deleteMyResourceRequestApiUrls = {
+	deleteMyResourceRequest: 'external-products/request/:id',
 };

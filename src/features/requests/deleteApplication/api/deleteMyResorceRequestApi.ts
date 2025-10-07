@@ -7,13 +7,13 @@ import { ExtraArgument } from '@/shared/config/store/types';
 import { route } from '@/shared/helpers/route';
 import { toast } from '@/shared/ui/Toast';
 
-import { DeleteRequestApiUrls } from '../model/constants/DeleteRequestApiUrls';
+import { deleteMyResourceRequestApiUrls } from '../model/constants/DeleteRequestApiUrls';
 
-const deleteRequestApi = baseApi.injectEndpoints({
+const deleteMyResourceRequestApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		deleteRequest: builder.mutation<void, string>({
+		deleteMyResourceRequest: builder.mutation<void, string>({
 			query: (requestId) => ({
-				url: route(DeleteRequestApiUrls.deleteRequest, requestId),
+				url: route(deleteMyResourceRequestApiUrls.deleteMyResourceRequest, requestId),
 				method: 'DELETE',
 			}),
 			async onQueryStarted(_, { queryFulfilled, extra }) {
@@ -21,7 +21,7 @@ const deleteRequestApi = baseApi.injectEndpoints({
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_RESOURCE_DELETE_SINGLE_SUCCESS));
-					typedExtra.navigate(ROUTES.admin.resources.requests.page);
+					typedExtra.navigate(ROUTES.wiki.resources.my.page);
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_RESOURCE_DELETE_SINGLE_FAILED));
 					// eslint-disable-next-line no-console
@@ -33,4 +33,4 @@ const deleteRequestApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useDeleteRequestMutation } = deleteRequestApi;
+export const { useDeleteMyResourceRequestMutation } = deleteMyResourceRequestApi;
