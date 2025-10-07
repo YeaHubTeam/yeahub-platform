@@ -876,6 +876,8 @@ export enum SubscriptionCard {
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FOURTH = 'subscription.premium.tooltip.list.fourth',
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIFTH = 'subscription.premium.tooltip.list.fifth',
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THANKS = 'subscription.premium.tooltip.list.thanks',
+	SUBSCRIPTION_CARD_EMAIL_DESCRIPTION = 'subscription.email.description',
+	SUBSCRIPTION_CARD_EMAIL_INPUT_VALUE = 'subscription.email.input.value',
 	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
 	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
 	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
