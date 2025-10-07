@@ -1,4 +1,3 @@
-import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
 import { Response } from '@/shared/types/types';
 
 import type { PopularSkillsResponse, Skill } from '@/entities/skill/model/types/skill';
@@ -463,7 +462,6 @@ export const popularSkillsMock: PopularSkillsResponse = {
 	page: 1,
 	limit: 3,
 	total: 2,
-	specializationId: DEFAULT_SPECIALIZATION_NUMBER,
 	data: [
 		{
 			id: 1,

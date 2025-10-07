@@ -9,7 +9,7 @@ export interface GraphProgressBarProps {
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large' | 'medium';
+	variant?: 'medium';
 	direction?: 'row' | 'column';
 }
 
@@ -18,7 +18,7 @@ export const GraphProgressBar = ({
 	currentCount,
 	totalCount,
 	label,
-	variant = 'small',
+	variant = 'medium',
 	direction = 'row',
 }: GraphProgressBarProps) => {
 	return (

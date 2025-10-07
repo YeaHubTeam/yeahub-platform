@@ -15,10 +15,18 @@
   width: 100%;
 }
 
-@media (width <= 1440px) {
+@media (width <= 1024px) {
   .progress-item-card {
     padding: 16px;
     min-width: 310px;
     max-width: 310px;
+  }
+}
+
+@media (width <= 768px) {
+  .progress-item-card {
+    padding: 16px;
+    min-width: 100%;
+    max-width: 100%;
   }
 }

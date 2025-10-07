@@ -50,7 +50,7 @@ export interface PopularSkill {
 	frequencyStat: number;
 }
 
-export type PopularSkillsResponse = Response<PopularSkill[]> & { specializationId: number };
+export type PopularSkillsResponse = Response<PopularSkill[]>;
 
 export type PopularSkillsParamsRequest = {
 	page: number;
