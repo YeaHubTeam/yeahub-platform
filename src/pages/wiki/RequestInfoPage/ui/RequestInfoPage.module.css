@@ -1,4 +1,8 @@
 .main {
   flex-grow: 1;
   padding: 20px;
+
+  @media (width <= 768px) {
+    padding: 20px 10px;
+  }
 }
