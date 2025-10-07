@@ -974,3 +974,7 @@ export enum Marketplace {
 	MY_RESOURCES = 'resources.my',
 	REQUEST_TITLE = 'requests.title',
 }
+
+export enum Analytics {
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+}

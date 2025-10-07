@@ -1,0 +1,32 @@
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.progress-item-card {
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.flex-card {
+  width: 100%;
+}
+
+@media (width <= 1024px) {
+  .progress-item-card {
+    padding: 16px;
+    min-width: 310px;
+    max-width: 310px;
+  }
+}
+
+@media (width <= 768px) {
+  .progress-item-card {
+    padding: 16px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
