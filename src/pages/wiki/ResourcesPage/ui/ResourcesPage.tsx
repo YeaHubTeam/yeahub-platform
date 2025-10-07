@@ -17,7 +17,10 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetMyRequestsResourcesCountQuery, useGetResourcesListQuery } from '@/entities/resource';
+import {
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourcesListQuery,
+} from '@/entities/resource';
 
 
 import {
@@ -60,9 +63,7 @@ const ResourcesPage = () => {
 		skills: filter.skills,
 		types: filter.resources,
 	});
-	const { data: myRequestsTotal } = useGetMyRequestsResourcesCountQuery({
-		status: 'pending',
-	});
+	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 
 	useEffect(() => {
 		if (specializationID) {
@@ -71,7 +72,6 @@ const ResourcesPage = () => {
 	}, []);
 
 	const resources = resourcesResponse?.data ?? [];
-	const myRequestsCount = myRequestsTotal ?? 0;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -165,7 +165,8 @@ const ResourcesPage = () => {
 					size="large"
 					onClick={handleNavigateToMyResources}
 				>
-					{t(Marketplace.MY_RESOURCES)} {myRequestsCount > 0 ? `(${myRequestsCount})` : ''}
+					{t(Marketplace.MY_RESOURCES)}{' '}
+					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
 				</Button>
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
