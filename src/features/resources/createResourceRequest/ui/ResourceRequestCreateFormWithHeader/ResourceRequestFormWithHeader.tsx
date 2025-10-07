@@ -27,9 +27,10 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	return (
-		<Flex componentType="main" gap="24" className={styles.wrapper}>
+		<Flex componentType="main" className={styles.wrapper}>
 			<Flex align="center" className={styles.buttons}>
 				<Button
+					size="large"
 					disabled={!isDirty}
 					className={styles['submit-button']}
 					onClick={handleSubmit(onSubmit)}

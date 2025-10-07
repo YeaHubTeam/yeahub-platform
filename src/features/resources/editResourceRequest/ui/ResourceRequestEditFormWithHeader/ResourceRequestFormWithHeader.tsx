@@ -33,10 +33,10 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 		<Flex componentType="main" className={styles.wrapper}>
 			<Flex align="center" className={styles.buttons}>
 				<Button
+					size="large"
 					disabled={!isDirty || isSubmitting}
 					className={styles['submit-button']}
 					onClick={handleSubmit(onSubmit)}
-					type="submit"
 				>
 					{t(Marketplace.ADD_RESOURCE_SUBMIT)}
 				</Button>

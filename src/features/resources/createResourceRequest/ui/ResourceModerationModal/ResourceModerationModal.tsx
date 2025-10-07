@@ -32,11 +32,11 @@ export const ResourceModerationModal = ({ isOpen, onClose }: ResourceModerationM
 					className={styles['modal-image']}
 				/>
 				<Text variant="body6" className={styles['modal-title']}>
-					{t(Resources.MODAL_RESOURCE_MODERATION_TITLE)}
+					{t(Resources.MODAL_RESOURCE_CREATE_MODERATION_TITLE)}
 				</Text>
 
 				<Text variant="body3-accent" className={styles['modal-subtitle']}>
-					{t(Resources.MODAL_RESOURCE_MODERATION_MESSAGE)}
+					{t(Resources.MODAL_RESOURCE_CREATE_MODERATION_MESSAGE)}
 				</Text>
 			</Flex>
 		</Modal>

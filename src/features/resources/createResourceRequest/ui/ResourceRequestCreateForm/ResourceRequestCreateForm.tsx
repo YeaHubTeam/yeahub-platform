@@ -10,14 +10,13 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { ResourceModerationModal } from '@/entities/resource';
-
 import { useCreateResourceRequestMutation } from '../../api/createResourceRequestApi';
 import { resourceRequestCreateSchema } from '../../model/lib/validation/resourceRequestCreateSchema';
 import {
 	CreateResourceBodyRequest,
 	CreateResourceRequestFormValues,
 } from '../../model/types/resourceRequestCreateTypes';
+import { ResourceModerationModal } from '../ResourceModerationModal/ResourceModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestCreateFormWithHeader/ResourceRequestFormWithHeader';
 
 export const ResourceRequestCreateForm = () => {

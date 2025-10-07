@@ -427,8 +427,10 @@ export enum Resources {
 	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
-	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
-	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
+	MODAL_RESOURCE_CREATE_MODERATION_MESSAGE = 'modal.resource.create.moderation.message',
+	MODAL_RESOURCE_CREATE_MODERATION_TITLE = 'modal.resource.create.moderation.title',
+	MODAL_RESOURCE_EDIT_MODERATION_MESSAGE = 'modal.resource.edit.moderation.message',
+	MODAL_RESOURCE_EDIT_MODERATION_TITLE = 'modal.resource.edit.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
 }

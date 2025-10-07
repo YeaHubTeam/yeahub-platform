@@ -9,13 +9,14 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useModal } from '@/shared/hooks';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { ResourceModerationModal, ResourceRequest } from '@/entities/resource';
+import { ResourceRequest } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
 import { useEditResourceRequestMutation } from '../../api/editResourceRequestApi';
 import { resourceRequestEditSchema } from '../../model/lib/validation/resourceRequestEditSchema';
 import { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
+import { ResourceEditedModerationModal } from '../ResourceEditedModerationModal/ResourceEditedModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestEditFormWithHeader/ResourceRequestFormWithHeader';
 
 interface ResourceRequestEditFormProps {
@@ -72,7 +73,7 @@ export const ResourceRequestEditForm = ({ request }: ResourceRequestEditFormProp
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<ResourceRequestFormWithHeader onSubmit={onEditResourceRequest} />
 			</LeavingPageBlocker>
-			<ResourceModerationModal isOpen={isOpen} onClose={onClose} />
+			<ResourceEditedModerationModal isOpen={isOpen} onClose={onClose} />
 		</FormProvider>
 	);
 };
