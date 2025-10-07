@@ -257,7 +257,7 @@
 			}
 		},
 		"resource.request": {
-			"reject":{
+			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"
 			}
