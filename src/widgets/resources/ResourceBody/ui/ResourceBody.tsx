@@ -2,24 +2,37 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Resources } from '@/shared/config/i18n/i18nTranslations';
+import { Marketplace, Resources } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { StatusChip } from '@/shared/ui/StatusChip';
+import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 import { Text } from '@/shared/ui/Text';
-
-import { Resource } from '@/entities/resource';
 
 import styles from './ResourceBody.module.css';
 
 type ResourceCardProps = {
-	resource: Resource;
+	name: string;
+	imageSrc?: string;
+	type: string;
+	url: string;
+	createdAt: string;
+	status?: {
+		text: string;
+		variant: StatusChipVariant;
+	};
 };
 
-export const ResourceBody = ({ resource }: ResourceCardProps) => {
-	const { name, imageSrc, type, url, createdAt } = resource;
-
+export const ResourceBody = ({
+	name,
+	imageSrc,
+	type,
+	url,
+	createdAt,
+	status,
+}: ResourceCardProps) => {
 	const { t } = useTranslation(i18Namespace.resources);
 	const formattedDate = formatDate(new Date(createdAt), 'dd.MM.yyyy');
 
@@ -32,6 +45,24 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 			/>
 
 			<Flex direction="column" gap="20">
+				{status && (
+					<Flex wrap="nowrap">
+						<Text variant="body2" width={110} color="black-700">
+							{t(Marketplace.STATUS_TITLE)}
+						</Text>
+						<Link to={url}>
+							<Text variant="body2" color="purple-700">
+								<StatusChip
+									status={{
+										text: status.text,
+										variant: status?.variant,
+									}}
+								/>
+							</Text>
+						</Link>
+					</Flex>
+				)}
+
 				<Flex wrap="nowrap">
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.LINK)}
@@ -47,7 +78,7 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.TYPE)}
 					</Text>
-					<Chip variant="small" active label={type.description} />
+					<Chip variant="small" active label={type} />
 				</Flex>
 
 				<Flex wrap="nowrap">

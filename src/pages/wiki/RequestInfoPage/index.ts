@@ -1,1 +1,1 @@
-export { ResourceInfoPage } from './ui/ResourceInfoPage';
+export { RequestInfoPage } from './ui/RequestInfoPage';

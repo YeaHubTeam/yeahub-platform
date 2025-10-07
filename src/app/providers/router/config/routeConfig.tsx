@@ -88,7 +88,7 @@ import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
-import { ResourceInfoPage } from '@/pages/wiki/RequestInfoPage';
+import { RequestInfoPage } from '@/pages/wiki/RequestInfoPage';
 import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
 import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
@@ -680,7 +680,7 @@ export const router = createBrowserRouter([
 									},
 									{
 										path: ROUTES.wiki.resources.my.request.route,
-										element: <ResourceInfoPage />,
+										element: <RequestInfoPage />,
 									},
 								],
 							},
