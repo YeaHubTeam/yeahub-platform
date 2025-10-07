@@ -48,6 +48,13 @@
 		}
 	},
 	"requests": {
-		"title": "Viewing a request for a resource"
+		"title": "Viewing a request for a resource",
+		"reject": "Reject",
+		"rejectModal": {
+			"title": "Reject resource request",
+			"text": "Are you sure you want to reject the resource request?",
+			"yes": "Yes",
+			"no": "No"
+		}
 	}
 }
