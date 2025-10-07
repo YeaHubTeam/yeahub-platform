@@ -37,7 +37,7 @@ export const mapFormToProfile = (
 	user: {
 		...profile,
 		id: profile.id,
-		email: values.email,
+		email: values.email || '',
 		username: values.username,
 		city: values.location || profile.city || '',
 		birthday: profile.birthday || null,

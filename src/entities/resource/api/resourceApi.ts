@@ -9,7 +9,14 @@ import {
 	GetResourcesListResponse,
 	GetResourceByIdResponse,
 	GetResourceByIdParamsRequest,
+	GetMyRequestsResourcesParamsRequest,
+	GetMyRequestsResourcesResponse,
+	ResourceRequest,
 } from '../model/types/resource';
+import {
+	GetResourceRequestsResponse,
+	GetResourceRequestsParams,
+} from '../model/types/resourceRequest';
 
 const resourceApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -24,7 +31,7 @@ const resourceApi = baseApi.injectEndpoints({
 			query: () => ({
 				url: resourceApiUrls.getResourceTypes,
 			}),
-			providesTags: [ApiTags.RESOURCESTYPES],
+			providesTags: [ApiTags.RESOURCES_TYPES],
 		}),
 		getResourceById: build.query<GetResourceByIdResponse, GetResourceByIdParamsRequest>({
 			query: ({ resourceId }) => ({
@@ -32,9 +39,42 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
+		getMyRequestsResources: build.query<
+			GetMyRequestsResourcesResponse,
+			GetMyRequestsResourcesParamsRequest
+		>({
+			query: (params) => ({
+				url: resourceApiUrls.getMyRequestsResources,
+				params: {
+					page: 1,
+					limit: 10,
+					...params,
+				},
+			}),
+			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
+		}),
+		getResourceRequests: build.query<GetResourceRequestsResponse, GetResourceRequestsParams>({
+			query: (params) => ({
+				url: resourceApiUrls.getResourceRequests,
+				params: { page: 1, limit: 10, ...params },
+			}),
+			providesTags: [ApiTags.RESOURCE_REQUESTS],
+		}),
+		getResourceRequestById: build.query<ResourceRequest, string>({
+			query: (resourceId) => ({
+				url: route(resourceApiUrls.getResourceRequestById, resourceId),
+			}),
+			providesTags: [ApiTags.RESOURCE_REQUESTS],
+		}),
 	}),
 });
 
-export const { useGetResourcesListQuery, useGetResourceTypesQuery, useGetResourceByIdQuery } =
-	resourceApi;
+export const {
+	useGetResourcesListQuery,
+	useGetResourceTypesQuery,
+	useGetResourceByIdQuery,
+	useGetMyRequestsResourcesQuery,
+	useGetResourceRequestsQuery,
+	useGetResourceRequestByIdQuery,
+} = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };

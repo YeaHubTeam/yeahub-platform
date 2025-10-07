@@ -38,10 +38,19 @@ export const CompaniesTable = ({
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			imageSrc: '100px',
+			title: 'auto',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
-			imageSrc: t(Companies.ICON_TITLE),
-			title: t(Companies.TITLE_FULL),
+			imageSrc: t(Companies.ICON_SHORT),
+			title: t(Companies.TITLE_SHORT),
 		};
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};
@@ -62,9 +71,7 @@ export const CompaniesTable = ({
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.companies.details.route, company.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
 					v
@@ -127,6 +134,7 @@ export const CompaniesTable = ({
 			items={companies as SelectedAdminEntities}
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

@@ -2,8 +2,9 @@ import { useState } from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import { ChooseQuestionsCategories, ChooseSpecialization } from '@/entities/question';
 import { FilterParams, ResourcesFilterSection } from '@/entities/resource';
+import { SkillsListField } from '@/entities/skill';
+import { SpecializationsListField } from '@/entities/specialization';
 
 import { SearchBlock } from '../SearchBlock/SearchBlock';
 
@@ -12,9 +13,10 @@ const DEFAULT_SPECIALIZATION = 11;
 interface MarketplaceFiltersPanelProps {
 	filter: FilterParams;
 	onChangeSearch: (value: string) => void;
-	onChangeSpecialization: (specialization: number[] | number) => void;
+	onChangeSpecialization?: (specialization: number[] | number) => void;
 	onChangeSkills: (skills: number[] | undefined) => void;
 	onChangeResources: (resources: string[] | undefined) => void;
+	showSpecialization?: boolean;
 }
 
 export const MarketplaceFiltersPanel = ({
@@ -23,6 +25,7 @@ export const MarketplaceFiltersPanel = ({
 	onChangeSpecialization,
 	onChangeSkills,
 	onChangeResources,
+	showSpecialization = true,
 }: MarketplaceFiltersPanelProps) => {
 	const { skills, specialization: filterSpecialization, resources } = filter;
 
@@ -36,21 +39,22 @@ export const MarketplaceFiltersPanel = ({
 
 	const handleSpecializationChange = (newSpecialization: number | undefined) => {
 		setLocalSpecialization(newSpecialization);
-		if (newSpecialization) {
+		if (newSpecialization && onChangeSpecialization) {
 			onChangeSpecialization([newSpecialization]);
 		}
 	};
-
 	// const keywords = ['JavaScript', 'React', 'Node.js', 'CSS', 'HTML'];
 
 	return (
 		<Flex direction="column" justify="start" gap="24">
 			<SearchBlock onChangeSearch={onChangeSearch} />
-			<ChooseSpecialization
-				selectedSpecialization={localSpecialization}
-				onChangeSpecialization={handleSpecializationChange}
-			/>
-			<ChooseQuestionsCategories
+			{showSpecialization && (
+				<SpecializationsListField
+					selectedSpecialization={localSpecialization}
+					onChangeSpecialization={handleSpecializationChange}
+				/>
+			)}
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
 				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}

@@ -38,7 +38,7 @@ export const authApi = baseApi.injectEndpoints({
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
 					const searchParams = new URLSearchParams(window.location.search);
-					const returnPage = searchParams.get('returnPage') || ROUTES.platformRoute;
+					const returnPage = searchParams.get('returnPage') || ROUTES.interview.page;
 					typedExtra.navigate(returnPage);
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
@@ -61,7 +61,7 @@ export const authApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(ROUTES.platformRoute);
+					typedExtra.navigate(ROUTES.interview.page);
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
 						const errObj = error as { error: { data: { message: string } } };
@@ -72,7 +72,6 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-
 		register: build.mutation<SignUpResponse, SignUpBodyRequest>({
 			query: (body) => ({
 				url: authApiUrls.register,
@@ -87,7 +86,7 @@ export const authApi = baseApi.injectEndpoints({
 
 					dispatch(profileActions.setEmailSent(true));
 
-					typedExtra.navigate(ROUTES.platformRoute);
+					typedExtra.navigate(ROUTES.interview.page);
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
 						const errObj = error as { error: { data: { message: string } } };

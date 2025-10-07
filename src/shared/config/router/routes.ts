@@ -94,6 +94,14 @@ export const ROUTES = {
 				route: ':resourceId/edit',
 				page: '/admin/resources/:resourceId/edit',
 			},
+			requests: {
+				route: 'requests',
+				page: '/admin/resources/requests',
+				view: {
+					route: 'requests/:resourceId',
+					page: '/admin/resources/requests/:resourceId',
+				},
+			},
 		},
 		companies: {
 			route: 'companies',
@@ -147,6 +155,10 @@ export const ROUTES = {
 		route: 'settings',
 		page: '/dashboard/settings',
 	},
+	analytics: {
+		route: 'analytics',
+		page: '/dashboard/analytics',
+	},
 	interview: {
 		route: 'interview',
 		page: '/dashboard/interview',
@@ -189,9 +201,22 @@ export const ROUTES = {
 	},
 	wiki: {
 		route: 'wiki',
+		page: '/dashboard',
 		resources: {
 			route: 'resources',
-			page: '/dashboard/wiki/resources',
+			page: '/dashboard/resources',
+			requests: {
+				route: 'requests',
+				page: '/dashboard/resources/requests',
+			},
+			my: {
+				route: 'my-resources',
+				page: '/dashboard/resources/my-resources',
+				create: {
+					route: 'create',
+					page: '/dashboard/resources/my-resources/create',
+				},
+			},
 		},
 	},
 	docs: {
@@ -230,12 +255,8 @@ export const ROUTES = {
 			page: '/collections/:collectionId',
 		},
 	},
-	marketplace: {
-		route: 'marketplace',
-		page: '/marketplace',
-		request: {
-			route: 'request',
-			page: '/marketplace/request',
-		},
+	resources: {
+		route: 'resources',
+		page: '/resources',
 	},
 } as const;

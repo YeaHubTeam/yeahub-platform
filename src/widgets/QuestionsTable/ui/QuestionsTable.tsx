@@ -36,6 +36,16 @@ export const QuestionsTable = ({
 
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			title: 'auto',
+			specialization: '20%',
+			skills: '15%',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Questions.TITLE_SHORT),
@@ -70,9 +80,7 @@ export const QuestionsTable = ({
 				<td key={k}>
 					{k === 'title' ? (
 						<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
-							<Text variant={'body3'} color={'purple-700'}>
-								{v}
-							</Text>
+							<Text variant={'body3-accent'}>{v}</Text>
 						</Link>
 					) : (
 						v
@@ -140,6 +148,7 @@ export const QuestionsTable = ({
 			items={questions}
 			selectedItems={selectedQuestions}
 			onSelectItems={onSelectQuestions}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

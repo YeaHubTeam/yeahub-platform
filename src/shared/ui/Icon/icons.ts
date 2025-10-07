@@ -7,6 +7,7 @@ import ArrowShortDown from '@/shared/assets/icons/arrowShortDown.svg';
 import ArrowUpSquare from '@/shared/assets/icons/arrowUpSquare.svg';
 import Behance from '@/shared/assets/icons/behance.svg';
 import Burger from '@/shared/assets/icons/burger.svg';
+import BurgerAndCross from '@/shared/assets/icons/burgerAndCross.svg';
 import Calendar from '@/shared/assets/icons/calendar.svg';
 import Check from '@/shared/assets/icons/check.svg';
 import CheckCircle from '@/shared/assets/icons/checkCircle.svg';
@@ -15,6 +16,7 @@ import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
+import Cross from '@/shared/assets/icons/cross.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
 import DotsThreeVertical from '@/shared/assets/icons/dotsThreeVertical.svg';
@@ -53,6 +55,8 @@ import Specialization from '@/shared/assets/icons/specialization.svg';
 import Student from '@/shared/assets/icons/student.svg';
 import Telegram from '@/shared/assets/icons/telegram.svg';
 import TelegramWithBackground from '@/shared/assets/icons/telegramWithBackground.svg';
+import ThumbsDown from '@/shared/assets/icons/thumbsDown.svg';
+import ThumbsUp from '@/shared/assets/icons/thumbsUp.svg';
 import TikTok from '@/shared/assets/icons/tiktok.svg';
 import Trash from '@/shared/assets/icons/trash.svg';
 import TrendUp from '@/shared/assets/icons/TrendUp.svg';
@@ -134,4 +138,8 @@ export const icons: Record<IconName, IconComponent> = {
 	favorite: Favorite,
 	favoriteRed: FavoriteRed,
 	listWithBackground: ListWithBackground,
+	thumbsDown: ThumbsDown,
+	thumbsUp: ThumbsUp,
+	cross: Cross,
+	burgerAndCross: BurgerAndCross,
 };

@@ -9,7 +9,7 @@ export const FooterLinksSkeleton = () => {
 	const { isMobileS } = useScreenSize();
 
 	return (
-		<Flex className={styles['footer-resources-links']}>
+		<Flex className={styles['footer-resources-links']} dataTestId={'FooterLinksSkeleton'}>
 			{[...Array(2)].map((_, index) => (
 				<TextSkeleton
 					key={index}

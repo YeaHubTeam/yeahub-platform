@@ -10,7 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
-import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
@@ -35,11 +35,22 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 		i18Namespace.marketplace,
 	]);
 
+	const renderTableColumnWidths = () => {
+		const columnWidths = {
+			title: 'auto',
+			description: 'auto',
+			type: '15%',
+			specialization: '20%',
+		};
+
+		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
+	};
+
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Resources.TITLE_SHORT),
-			type: t(Resources.TYPE),
 			description: t(Resources.DESCRIPTION),
+			type: t(Resources.TYPE),
 			specialization: t(Resources.SPECIALIZATION_TITLE),
 		};
 
@@ -49,8 +60,8 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
 			title: resource.name,
-			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			description: resource.description,
+			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			specialization: (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -64,12 +75,10 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.resources.details.route, resource.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
-					v
+					<Text variant={'body3-accent'}>{v}</Text>
 				)}
 			</td>
 		));
@@ -131,6 +140,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
 			items={resources}
+			renderTableColumnWidths={renderTableColumnWidths}
 		/>
 	);
 };

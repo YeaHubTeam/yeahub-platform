@@ -1,15 +1,22 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
+import { getSpecializationId } from '@/entities/profile';
 import { useGetResourcesListQuery } from '@/entities/resource';
 
 import {
@@ -20,12 +27,15 @@ import {
 } from '@/widgets/Marketplace';
 
 import styles from './ResourcesPage.module.css';
+import { ResourcesPageSkeleton } from './ResourcesPageSkeleton.skeleton';
 
 const RESOURCES_PER_PAGE = 6;
 
 const ResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
+	const specializationID = useSelector(getSpecializationId);
 
 	const {
 		onChangeSearchParams,
@@ -34,6 +44,7 @@ const ResourcesPage = () => {
 		onChangeResources,
 		filter,
 		onChangePage,
+		resetFilters,
 	} = useMarketplaceFilters();
 
 	const {
@@ -44,17 +55,27 @@ const ResourcesPage = () => {
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 		name: filter.title,
-		specializations: filter.specialization,
+		specializations: specializationID,
 		skills: filter.skills,
 		types: filter.resources,
 	});
+
+	useEffect(() => {
+		if (specializationID) {
+			onChangeSpecialization(specializationID);
+		}
+	}, []);
 
 	const resources = resourcesResponse?.data ?? [];
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
+	const handleNavigateToMyResources = () => {
+		navigate(ROUTES.wiki.resources.my.page);
+	};
+
 	if (isLoading) {
-		return <div>Loading…</div>;
+		return <ResourcesPageSkeleton />;
 	}
 
 	if (error) {
@@ -70,12 +91,11 @@ const ResourcesPage = () => {
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}
-			onChangeSpecialization={onChangeSpecialization}
 			onChangeResources={onChangeResources}
+			showSpecialization={false}
 		/>
 	);
 
-	// бургер-кнопка + дровер (нужны лишь на мобилках/планшетах)
 	const filterButton = (
 		<div className={styles['filters-mobile']}>
 			<IconButton
@@ -97,6 +117,15 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
+	// const suggestButton = (
+	// 	<Button
+	// 		variant="link-purple"
+	// 		suffix={<Icon icon="plus" />}
+	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+	// 	>
+	// 		{t(Marketplace.LINK_LABEL)}
+	// 	</Button>
+	// );
 
 	return (
 		<Flex gap="20" align="start">
@@ -107,19 +136,35 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
+						{/*{suggestButton}*/}
 					</Flex>
 				</Flex>
-				<ResourcesList resources={resources} />
+
+				{resources.length > 0 ? (
+					<ResourcesList resources={resources} />
+				) : (
+					<EmptyStub resetFilters={resetFilters} />
+				)}
 
 				<ResourcesPagination
 					resourcesResponse={resourcesResponse}
 					currentPage={filter.page ?? 1}
 					onChangePage={onChangePage}
 				/>
-				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
-			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
+			<Flex className={styles['button-wrapper']}>
+				<Button
+					className={styles['absolute-button']}
+					variant="outline"
+					size="large"
+					onClick={handleNavigateToMyResources}
+				>
+					{t(Marketplace.MY_RESOURCES)}
+				</Button>
+
+				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
+			</Flex>
 		</Flex>
 	);
 };

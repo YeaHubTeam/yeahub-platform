@@ -38,7 +38,7 @@ export const CollectionEditForm = ({ collection }: CollectionEditFormProps) => {
 			...restCollection,
 			questions: formatToFormField(collection.questions),
 			specializations: formatToFormField(collection.specializations),
-			companyId: collection.companyId ?? '',
+			companyId: company?.id ? String(company.id) : '',
 			keywords: collection.keywords,
 		},
 	});

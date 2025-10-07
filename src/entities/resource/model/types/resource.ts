@@ -1,4 +1,5 @@
 import { Response, SortOrder } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -11,7 +12,7 @@ export interface Resource {
 	description: string;
 	type: ResourceType;
 	url: string;
-	keywords?: string[];
+	keywords: string[];
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
@@ -19,7 +20,29 @@ export interface Resource {
 	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;
-	iconBase64?: string;
+	iconBase64?: string | null;
+}
+
+export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
+
+export interface ResourceRequest {
+	id: string;
+	userId: string;
+	requestPayload: {
+		name: string;
+		description: string;
+		url: string;
+		type: ResourceTypeCode;
+		imageSrc: string;
+		iconBase64?: string;
+		keywords: string[];
+	};
+	specializations: Specialization[];
+	skills: Skill[];
+	createdAt: string;
+	reviewedAt: string | null;
+	reviewedBy: string | null;
+	status: ResourceRequestStatus;
 }
 
 export interface GetResourcesListParamsRequest {
@@ -36,6 +59,15 @@ export interface GetResourcesListParamsRequest {
 	random?: boolean;
 }
 
+export interface GetMyRequestsResourcesParamsRequest {
+	page?: number;
+	limit?: number;
+	search?: string;
+	status?: ResourceRequestStatus | 'all';
+	types?: string[];
+	skills?: number[];
+}
+
 export type GetResourcesListResponse = Response<Resource[]>;
 
 export type GetResourceByIdParamsRequest = {
@@ -44,12 +76,12 @@ export type GetResourceByIdParamsRequest = {
 
 export type GetResourceByIdResponse = Resource;
 
-export type CreateOrEditResourceFormValues = Pick<
+export type CreateOrEditOrViewResourceFormValues = Pick<
 	Resource,
 	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
-	resourceSkills: number[];
-	resourceSpecializations: number[];
+	skills: number[];
+	specializations: number[];
 	keywords: string[];
 	type: ResourceTypeCode;
 };
@@ -75,6 +107,5 @@ export interface ResourceType {
 	description: string;
 }
 
-export type Author = { id: string; username: string };
-
 export type GetResourceTypesResponse = ResourceType[];
+export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;

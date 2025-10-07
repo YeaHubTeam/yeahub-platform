@@ -4,7 +4,7 @@ import { Card } from '@/shared/ui/Card';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
-import { useGetSkillsListQuery } from '@/entities/skill';
+import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import {
 	CollectionsContent,
@@ -16,8 +16,6 @@ import {
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
-
-const MAX_LIMIT_CATEGORIES = 5;
 
 const CollectionsPage = () => {
 	const {
@@ -32,7 +30,7 @@ const CollectionsPage = () => {
 	const specializationId = useAppSelector(getSpecializationId);
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
-		limit: MAX_LIMIT_CATEGORIES,
+		limit: MAX_SHOW_LIMIT_SKILLS,
 		specializations: [specializationId],
 	});
 

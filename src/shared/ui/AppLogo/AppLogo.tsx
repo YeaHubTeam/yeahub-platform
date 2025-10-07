@@ -17,7 +17,7 @@ export interface AppLogoProps {
 }
 
 export const AppLogo = ({
-	navigateTo = ROUTES.platformRoute,
+	navigateTo = ROUTES.interview.page,
 	logoType = 'dark',
 	fill = 'black',
 	isOpen = false,

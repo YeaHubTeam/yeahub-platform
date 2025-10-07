@@ -1,5 +1,7 @@
 export type ModalVariant = 'default' | 'error';
 
+export type ModalView = 'default' | 'notification';
+
 export type ModalProps = {
 	isOpen: boolean;
 	onClose: () => void;
@@ -15,6 +17,7 @@ export type ModalProps = {
 	variant?: ModalVariant;
 	title?: string;
 	className?: string;
+	view?: ModalView;
 };
 
 export type RequiredModalProps = Pick<ModalProps, 'isOpen' | 'onClose'>;

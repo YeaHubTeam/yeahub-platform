@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-text {
+  margin-top: 12px;
+  max-width: 476px;
+}
+
+.svg {
+  width: 32px;
+  height: 33px;
+  fill: var(--background-primary);
+}

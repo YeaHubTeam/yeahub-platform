@@ -2,15 +2,12 @@ import { useQueryFilter } from '@/shared/hooks';
 
 import {
 	ChooseQuestionComplexity,
-	ChooseQuestionsCategories,
-	ChooseSpecialization,
 	QuestionsSorter,
 	RateFilterSection,
 	SortQuestionsByField,
 } from '@/entities/question';
-
-const MAX_LIMIT_CATEGORIES = 5;
-const DEFAULT_SPECIALIZATION = 11;
+import { SkillsListField } from '@/entities/skill';
+import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 export const QuestionsFilterSet = () => {
 	const {
@@ -47,15 +44,14 @@ export const QuestionsFilterSet = () => {
 
 	return (
 		<>
-			<ChooseSpecialization
+			<SpecializationsListField
 				selectedSpecialization={selectedSpecialization}
 				onChangeSpecialization={onChangeSpecialization}
-				specializationLimit={MAX_LIMIT_CATEGORIES}
 			/>
-			<ChooseQuestionsCategories
+			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION}
+				selectedSpecialization={selectedSpecialization || DEFAULT_SPECIALIZATION_ID}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
