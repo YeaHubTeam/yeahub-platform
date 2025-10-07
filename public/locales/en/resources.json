@@ -43,7 +43,7 @@
 		"resource.edit": {
 			"moderation": {
 				"title": "The resource has been successfully edited",
-				"message": "The resource has been updated submitted for moderation. Track its status in the list of resource requests"
+				"message": "The resource has been updated and submitted for moderation. Track its status in the list of resource requests"
 			}
 		}
 	},
