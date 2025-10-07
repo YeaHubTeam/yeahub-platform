@@ -1,0 +1,95 @@
+import { Response } from '@/shared/types/types';
+
+import { SpecializationProgress } from '../../../model/types/specializationProgress';
+
+export const specializationProgressMock: Response<SpecializationProgress[]> = {
+	data: [
+		{
+			id: 1,
+			skillCount: 10,
+			questionCount: 20,
+			averageProgress: 10,
+			specialization: {
+				id: 1,
+				title: 'ml',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+		{
+			id: 2,
+			skillCount: 12,
+			questionCount: 30,
+			averageProgress: 30,
+			specialization: {
+				id: 1,
+				title: 'frontend',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+		{
+			id: 3,
+			skillCount: 13,
+			questionCount: 40,
+			averageProgress: 40,
+			specialization: {
+				id: 1,
+				title: 'androidDev',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+		{
+			id: 4,
+			skillCount: 20,
+			questionCount: 50,
+			averageProgress: 50,
+			specialization: {
+				id: 1,
+				title: 'gameDevelopment',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+		{
+			id: 5,
+			skillCount: 40,
+			questionCount: 6,
+			averageProgress: 70,
+			specialization: {
+				id: 1,
+				title: 'dataScience',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+		{
+			id: 6,
+			skillCount: 50,
+			questionCount: 60,
+			averageProgress: 90,
+			specialization: {
+				id: 1,
+				title: 'testing',
+				description: 'frontend + backend',
+				imageSrc: null,
+				createdAt: '2024-12-31T10:00:00.000Z',
+				updatedAt: '2024-12-31T10:00:00.000Z',
+			},
+		},
+	],
+	page: 1,
+	limit: 10,
+	total: 6,
+};
