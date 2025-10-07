@@ -162,6 +162,7 @@ export enum Translation {
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
 	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOOLTIP_COMPANY_DISABLED_INFO = 'tooltip.companies.disabled.info',
 	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
 	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 	TOAST_COMPANIES_DELETE_MULTIPLE_SUCCESS = 'toast.companies.delete.multiple.success',
