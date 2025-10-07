@@ -67,8 +67,13 @@
 }
 
 .form-control input {
-  background-color: var(--color-white-900);
+  background-color: transparent;
+
+  &::placeholder {
+    color: var(--color-black-900)
+  }
 }
+
 
 .subscription-button {
   margin-top: 24px;
@@ -111,4 +116,34 @@
     margin-left: 0;
     width: 300px;
   }
+	
+}
+
+@media (width <= 768px) {
+  .subscription-cards {
+    flex-direction: column;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .free,
+  .premium {
+    width: 100%;
+    min-width: 328px;
+    max-width: none;
+  }
+
+  .subscription-button {
+    margin-top: 20px;
+    margin-left: 0;
+    width: 300px;
+  }
+
+}
+
+@media (width <= 479px) {
+  .input {
+    width: 100%;
+  }
+
 }

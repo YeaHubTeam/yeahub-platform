@@ -13,10 +13,11 @@ import { Card } from '@/shared/ui/Card';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { parseI18nText } from '@/shared/utils/parseI18nText';
 
-import { isAvailableTrial } from '@/entities/profile';
+import { getFullProfile, isAvailableTrial } from '@/entities/profile';
 import {
 	PremiumSubscriptionTooltipBody,
 	SubscriptionCard,
@@ -35,9 +36,14 @@ export const AgreementForm = () => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);
 	const { isMobile } = useScreenSize();
 
+	const profile = useAppSelector(getFullProfile);
+
 	const subscriptionMethods = useForm<SubscriptionAgreeFormValues>({
 		resolver: yupResolver(subscriptionAgreeSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			email: profile.email ?? '',
+		},
 	});
 
 	const subscriptions = [
@@ -145,56 +151,74 @@ export const AgreementForm = () => {
 							className={styles.premium}
 						/>
 					</Flex>
-					<Flex direction="column" gap="16">
-						<Text variant="body1" color="black-600">
-							{t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_TITLE)}
-						</Text>
-						<Flex direction="column" gap="8">
-							<FormControl
-								name="isOfferAgreed"
-								control={control}
-								className={styles['form-control']}
-							>
-								{(field) => (
-									<Checkbox
-										{...field}
-										label={
-											<Text variant="body1" color="black-600">
-												{offerAgreementParts[0]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-													{' '}
-													{offerAgreementParts[1]}
-												</a>
-												{offerAgreementParts[2]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-													{' '}
-													{offerAgreementParts[3]}
-												</a>
-											</Text>
-										}
+					<Flex direction="column" gap="20">
+						<Flex direction="column" gap="12">
+							<FormControl name="email" control={control} className={styles['form-control']}>
+								{(register, hasError) => (
+									<Input
+										{...register}
+										error={hasError}
+										placeholder={t(SubscriptionCardI18.SUBSCRIPTION_CARD_EMAIL_INPUT_VALUE)}
+										disabled={!!profile.isVerified}
+										className={styles['input']}
 									/>
 								)}
 							</FormControl>
-							<FormControl
-								name="isConsentAgreed"
-								control={control}
-								className={styles['form-control']}
-							>
-								{(field) => (
-									<Checkbox
-										{...field}
-										label={
-											<Text variant="body1" color="black-600">
-												{consentParts[0]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
-													{' '}
-													{consentParts[1]}
-												</a>
-											</Text>
-										}
-									/>
-								)}
-							</FormControl>
+							<Text variant="body1" color="black-600">
+								{t(SubscriptionCardI18.SUBSCRIPTION_CARD_EMAIL_DESCRIPTION)}
+							</Text>
+						</Flex>
+						<Flex direction="column" gap="16">
+							<Text variant="body1" color="black-600">
+								{t(SubscriptionCardI18.SUBSCRIPTION_CARD_PRIVACY_TITLE)}
+							</Text>
+							<Flex direction="column" gap="8">
+								<FormControl
+									name="isOfferAgreed"
+									control={control}
+									className={styles['form-control']}
+								>
+									{(field) => (
+										<Checkbox
+											{...field}
+											label={
+												<Text variant="body1" color="black-600">
+													{offerAgreementParts[0]}
+													<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+														{' '}
+														{offerAgreementParts[1]}
+													</a>
+													{offerAgreementParts[2]}
+													<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+														{' '}
+														{offerAgreementParts[3]}
+													</a>
+												</Text>
+											}
+										/>
+									)}
+								</FormControl>
+								<FormControl
+									name="isConsentAgreed"
+									control={control}
+									className={styles['form-control']}
+								>
+									{(field) => (
+										<Checkbox
+											{...field}
+											label={
+												<Text variant="body1" color="black-600">
+													{consentParts[0]}
+													<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+														{' '}
+														{consentParts[1]}
+													</a>
+												</Text>
+											}
+										/>
+									)}
+								</FormControl>
+							</Flex>
 						</Flex>
 					</Flex>
 				</Flex>
