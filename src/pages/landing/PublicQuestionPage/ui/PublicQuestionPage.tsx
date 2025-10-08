@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { useQueryFilter, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -13,17 +13,24 @@ import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru'
 import { getChannelsForSpecialization } from '@/entities/media';
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
 
+import {
+	usePublicQuestionNavigation,
+	useQuestionQueryNavigate,
+} from '@/features/question/navigateQuestion';
+
 import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
+import { QuestionNavigation } from '@/widgets/question/QuestionNavigation';
 
 import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
 
 const PublicQuestionPage = () => {
+	const { filter } = useQueryFilter();
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
-	const { questionId } = useParams<{ questionId: string }>();
+	const { questionId = '' } = useParams<{ questionId: string }>();
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const {
@@ -31,6 +38,13 @@ const PublicQuestionPage = () => {
 		isFetching,
 		isLoading,
 	} = useGetPublicQuestionByIdQuery({
+		questionId,
+	});
+
+	const { handleNavigation } = useQuestionQueryNavigate();
+
+	const { prevId, prevPage, nextId, nextPage, isDisabled } = usePublicQuestionNavigation({
+		filter,
 		questionId,
 	});
 
@@ -52,6 +66,14 @@ const PublicQuestionPage = () => {
 
 	const media = getChannelsForSpecialization(question.questionSpecializations);
 
+	const onMovePrev = () => {
+		handleNavigation(prevId, prevPage);
+	};
+
+	const onMoveNext = () => {
+		handleNavigation(nextId, nextPage);
+	};
+
 	return (
 		<Flex direction="column" align="start">
 			<Flex>
@@ -68,6 +90,11 @@ const PublicQuestionPage = () => {
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1} maxWidth>
 					<QuestionHeader question={question} />
+					<QuestionNavigation
+						onMovePrev={onMovePrev}
+						onMoveNext={onMoveNext}
+						isDisabled={isDisabled}
+					/>
 					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 					{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>

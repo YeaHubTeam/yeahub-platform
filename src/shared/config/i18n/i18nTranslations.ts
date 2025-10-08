@@ -189,6 +189,7 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
+
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	TABS_PERSONAL = 'tabs.personal',
@@ -490,6 +491,8 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
@@ -914,6 +917,7 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
+
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
