@@ -1,8 +1,12 @@
+import { useSelector } from 'react-redux';
+
 import { useQueryFilter } from '@/shared/hooks';
 
+import { getProfileId } from '@/entities/profile';
 import {
 	ChooseQuestionComplexity,
 	QuestionsSorter,
+	QuestionAuthorFilter,
 	RateFilterSection,
 	SortQuestionsByField,
 } from '@/entities/question';
@@ -10,12 +14,18 @@ import { SkillsListField } from '@/entities/skill';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
 export const QuestionsFilterSet = () => {
+	const profileId = useSelector(getProfileId);
+
 	const {
-		filter: { skills, complexity, rate, orderBy, order, specialization },
+		filter: { skills, complexity, rate, orderBy, order, specialization, authorId },
 		handleFilterChange,
 	} = useQueryFilter();
-
+	const isAuthorQuestions = authorId === profileId;
 	const selectedSpecialization = Array.isArray(specialization) ? specialization[0] : specialization;
+
+	const onChangeAuthorQuestions = (value: boolean) => {
+		handleFilterChange({ authorId: value ? profileId : undefined });
+	};
 
 	const onChangeSkills = (skills: number[] | undefined) => {
 		handleFilterChange({ skills });
@@ -44,6 +54,10 @@ export const QuestionsFilterSet = () => {
 
 	return (
 		<>
+			<QuestionAuthorFilter
+				selectedAuthorQuestions={isAuthorQuestions}
+				onChangeAuthorQuestions={onChangeAuthorQuestions}
+			/>
 			<SpecializationsListField
 				selectedSpecialization={selectedSpecialization}
 				onChangeSpecialization={onChangeSpecialization}
