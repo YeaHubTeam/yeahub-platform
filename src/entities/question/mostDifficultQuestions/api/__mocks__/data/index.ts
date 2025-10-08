@@ -1,1 +1,0 @@
-export { mostDifficultQuestions } from './mostDifficultQuestionsMock';

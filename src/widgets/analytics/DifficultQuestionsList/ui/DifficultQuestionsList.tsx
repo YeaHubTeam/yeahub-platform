@@ -9,7 +9,7 @@ import { getSpecializationId } from '@/entities/profile';
 import {
 	MostDifficultQuestions,
 	useGetMostDifficultQuestionsBySpecializationIdQuery,
-} from '@/entities/question/mostDifficultQuestions';
+} from '@/entities/question';
 
 import styles from './DifficultQuestionsList.module.css';
 
