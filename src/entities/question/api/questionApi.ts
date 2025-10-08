@@ -2,10 +2,15 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
-import { questionApiUrls } from '../model/constants/question';
 import {
 	GetLearnedQuestionsParamsRequest,
 	GetLearnedQuestionsResponse,
+} from '@/entities/question/model/types/learnedQuestion';
+
+import { questionApiUrls } from '../model/constants/question';
+import {
+	GetQuestionsForLearnParamsRequest,
+	GetQuestionsForLearnResponse,
 	GetQuestionByIdParamsRequest,
 	GetQuestionByIdResponse,
 	GetQuestionsListParamsRequest,
@@ -33,15 +38,16 @@ const questionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.QUESTION_DETAIL],
 		}),
-		getLearnedQuestions: build.query<GetLearnedQuestionsResponse, GetLearnedQuestionsParamsRequest>(
-			{
-				query: (params) => ({
-					url: route(questionApiUrls.getLearnedQuestions, params.profileId),
-					params,
-				}),
-				providesTags: [ApiTags.QUESTIONS_LEARNED],
-			},
-		),
+		getQuestionsForLearn: build.query<
+			GetQuestionsForLearnResponse,
+			GetQuestionsForLearnParamsRequest
+		>({
+			query: (params) => ({
+				url: route(questionApiUrls.getQuestionsForLearn, params.profileId),
+				params,
+			}),
+			providesTags: [ApiTags.QUESTIONS_LEARN],
+		}),
 		getPublicQuestionsList: build.query<GetQuestionsListResponse, GetQuestionsListParamsRequest>({
 			query: (params) => ({
 				url: questionApiUrls.getPublicQuestionsList,
@@ -66,14 +72,24 @@ const questionApi = baseApi.injectEndpoints({
 				route(questionApiUrls.getStatisticsQuestionsSpecializationById, specializationId),
 			providesTags: [ApiTags.QUESTION_STATISTICS],
 		}),
+		getLearnedQuestions: build.query<GetLearnedQuestionsResponse, GetLearnedQuestionsParamsRequest>(
+			{
+				query: (params) => ({
+					url: questionApiUrls.getLearnedQuestions,
+					params,
+				}),
+				providesTags: [ApiTags.QUESTIONS_LEARNED],
+			},
+		),
 	}),
 });
 
 export const {
 	useGetQuestionsListQuery,
 	useGetQuestionByIdQuery,
-	useGetLearnedQuestionsQuery,
+	useGetQuestionsForLearnQuery,
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
+	useGetLearnedQuestionsQuery,
 } = questionApi;

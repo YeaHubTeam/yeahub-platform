@@ -10,7 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
-import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
+import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import {
@@ -53,7 +53,7 @@ const QuestionsPage = () => {
 	);
 
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
-		useGetLearnedQuestionsQuery(
+		useGetQuestionsForLearnQuery(
 			{
 				...getParams,
 				profileId,
