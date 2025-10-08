@@ -6,7 +6,10 @@ import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import { getSpecializationId } from '@/entities/profile';
-import { MostDifficultQuestions } from '@/entities/question/mostDifficultQuestions';
+import {
+	MostDifficultQuestions,
+	useGetMostDifficultQuestionsBySpecializationIdQuery,
+} from '@/entities/question/mostDifficultQuestions';
 
 import styles from './DifficultQuestionsList.module.css';
 
@@ -14,15 +17,19 @@ export const DifficultQuestionsList = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const specializationId = useAppSelector(getSpecializationId);
 
+	const { data: difficultQuestions } = useGetMostDifficultQuestionsBySpecializationIdQuery({
+		specId: specializationId,
+	});
+
 	return (
 		<Card
 			className={styles.card}
-			title="Топ самых сложных вопросов Python"
+			title={`${t(Questions.MOST_DIFFICULT_QUESTIONS_TITLE)} ${difficultQuestions?.specialization.title}`}
 			actionTitle={t(Questions.MORE)}
 			actionRoute="/"
 			isActionPositionBottom
 		>
-			<MostDifficultQuestions specializationId={specializationId} />
+			<MostDifficultQuestions difficultQuestions={difficultQuestions} />
 		</Card>
 	);
 };

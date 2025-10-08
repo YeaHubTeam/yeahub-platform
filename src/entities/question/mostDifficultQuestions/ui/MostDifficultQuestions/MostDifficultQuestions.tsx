@@ -1,13 +1,14 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '../../api/mostDifficultQuestionsApi';
+import { MostDifficultQuestionsResponse } from '../../model/types/difficultQuestions';
 import MostDifficultQuestion from '../MostDifficultQuestion/MostDifficultQuestion';
 
-export const MostDifficultQuestions = ({ specializationId }: { specializationId: number }) => {
-	const { data: difficultQuestions } = useGetMostDifficultQuestionsBySpecializationIdQuery({
-		specId: specializationId,
-	});
+export const MostDifficultQuestions = ({
+	difficultQuestions,
+}: {
+	difficultQuestions?: MostDifficultQuestionsResponse;
+}) => {
 	const { isSmallScreen } = useScreenSize();
 
 	// const mixedQuestions = difficultQuestions?.topStat.sort(() => Math.random() - 0.5);

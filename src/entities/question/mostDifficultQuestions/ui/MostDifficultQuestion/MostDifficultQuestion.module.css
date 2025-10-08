@@ -19,9 +19,10 @@
 
 .question span {
   display: inline-block;
+  margin-right: 15px;
   max-width: 320px;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   vertical-align: bottom;
 }
@@ -35,10 +36,9 @@
   line-height: 14px;
 }
 
-@media (width <= 767px) {
+@media (width <= 1024px) {
   .question span {
     white-space: wrap;
-    max-width: 225px;
   }
 
   .question::before {

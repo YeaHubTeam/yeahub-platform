@@ -7,6 +7,12 @@ import { TopStat } from '../../model/types/difficultQuestions';
 
 import styles from './MostDifficultQuestion.module.css';
 
+const getProgressColor = (percent: number) => {
+	if (percent < 50) return 'green';
+	if (percent < 80) return 'yellow';
+	return 'red';
+};
+
 interface Props {
 	questions?: TopStat[];
 }
@@ -28,6 +34,7 @@ const MostDifficultQuestion = ({ questions }: Props) => {
 						currentCount={question.answersCount}
 						totalCount={100}
 						variant={'medium'}
+						color={getProgressColor(question.answersCount)}
 						className={styles['progress-bar']}
 					/>
 				</Card>

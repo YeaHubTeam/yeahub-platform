@@ -486,6 +486,8 @@ export enum Questions {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 
 	COMMUNITY_JOIN = 'community.join',
+
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'mostDifficulTitle',
 }
 
 export enum InterviewHistory {
