@@ -6,13 +6,18 @@ import { Button } from '@/shared/ui/Button';
 
 import { useUserFilter } from '../../UsersFilterSet';
 
-export const ResetFiltersButton = () => {
+interface ResetFiltersButtonProps {
+	resetSearch: () => void;
+}
+
+export const ResetFiltersButton = ({ resetSearch }: ResetFiltersButtonProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const { handleFilterChange } = useUserFilter();
 
 	const onResetFilters = () => {
 		handleFilterChange({ roles: [], isEmailVerified: undefined });
+		resetSearch?.();
 	};
 
 	return (
