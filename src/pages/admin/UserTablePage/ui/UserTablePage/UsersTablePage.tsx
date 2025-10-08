@@ -7,6 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
+import { ResetFiltersButton } from '@/features/user/resetUsers';
 import { UsersFilterSet, useUserFilter } from '@/features/user/UsersFilterSet';
 
 import { SearchSection } from '@/widgets/SearchSection';
@@ -37,7 +38,15 @@ export const UsersTablePage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection onSearch={onChangeSearch} renderFilter={() => <UsersFilterSet />} />
+			<SearchSection
+				onSearch={onChangeSearch}
+				renderFilter={() => <UsersFilterSet />}
+				showRemoveButton={
+					(filter.roles && filter.roles.length > 0) ||
+					(filter.isEmailVerified !== undefined && filter.isEmailVerified !== null)
+				}
+				renderRemoveButton={() => <ResetFiltersButton />}
+			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
