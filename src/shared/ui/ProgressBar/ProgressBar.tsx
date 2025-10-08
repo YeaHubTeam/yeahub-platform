@@ -9,7 +9,7 @@ export interface ProgressBarProps {
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large' | 'colored';
+	variant?: 'small' | 'large' | 'medium';
 	color?: 'green' | 'yellow' | 'red';
 }
 
@@ -24,7 +24,10 @@ export const ProgressBar = ({
 	return (
 		<div className={classNames(styles['progress-bar'], className)}>
 			<progress
-				className={classNames(styles[`progress-bar-${variant}`], styles[`progress-bar-${color}`])}
+				className={classNames(
+					styles[`progress-bar-${variant}`],
+					color && styles[`progress-bar-${color}`],
+				)}
 				value={currentCount}
 				max={totalCount}
 			/>

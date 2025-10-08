@@ -1,4 +1,4 @@
-interface TopStat {
+export interface TopStat {
 	questionId: number;
 	title: string;
 	answersCount: number;

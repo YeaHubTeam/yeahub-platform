@@ -1,10 +1,10 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
-import { difficultQuestionsHandler } from '@/entities/mostDifficultQuestions/index';
 import { paymentHandlers } from '@/entities/payment';
 import { questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
+import { difficultQuestionsHandler } from '@/entities/question/mostDifficultQuestions';
 import { interviewHandlers } from '@/entities/quiz';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
