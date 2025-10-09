@@ -2,20 +2,16 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
 import { toast } from '@/shared/ui/Toast';
+
+import { approveResourceApiUrls } from '../model/constants/approveResourceConstants';
 
 export const approveResourceRequestApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		approveResourceRequest: build.mutation<void, string>({
 			query: (resourceId) => ({
-				url: `/external-products/request/${resourceId}/approve`,
+				url: approveResourceApiUrls.approveResourceRequest(resourceId),
 				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${getFromLS(LS_ACCESS_TOKEN_KEY)}`,
-				},
 			}),
 
 			async onQueryStarted(_, { queryFulfilled }) {
@@ -24,6 +20,7 @@ export const approveResourceRequestApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_RESOURCE_APPROVE_SUCCESS));
 				} catch {
 					toast.error(i18n.t(Translation.TOAST_RESOURCE_APPROVE_FAILED));
+					return;
 				}
 			},
 

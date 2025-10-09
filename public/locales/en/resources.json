@@ -47,10 +47,6 @@
 			}
 		}
 	},
-	"toast": {
-		"resourceRequestSuccess": "Resource request successfully approved",
-		"resourceRequestFailed": "Failed to approve resource request"
-	},
 	"admin": {
 		"tabs": {
 			"all": "All resources",

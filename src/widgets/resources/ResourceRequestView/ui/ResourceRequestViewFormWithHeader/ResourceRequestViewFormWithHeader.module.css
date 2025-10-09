@@ -16,11 +16,6 @@
   flex: 1 1 100%;
 }
 
-.button { 
-  font-weight: var(--font-weight-600); 
-  width: 170px;
-}
-
 @media (width <= 768px) {
   .back,
   .buttons {

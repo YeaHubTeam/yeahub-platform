@@ -53,10 +53,6 @@
 			}
 		}
 	},
-	"toast": {
-		"resourceRequestSuccess": "Заявка на ресурс успешно одобрена",
-		"resourceRequestFailed": "Не удалось одобрить заявку на ресурс"
-	},
 	"admin": {
 		"tabs": {
 			"all": "Все ресурсы",
