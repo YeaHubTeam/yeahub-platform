@@ -59,6 +59,7 @@ export const SelectWithChips = <
 								onDelete={handleDeleteItem(id as U)}
 								disabled={disabled}
 								active
+								data-testid="chip"
 							/>
 						))}
 					</div>
