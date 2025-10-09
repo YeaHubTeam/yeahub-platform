@@ -1,7 +1,7 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { MostDifficultQuestionsResponse } from '../../model/types/difficultQuestions';
+import { MostDifficultQuestionsResponse } from '../../model/types/question';
 import MostDifficultQuestion from '../MostDifficultQuestion/MostDifficultQuestion';
 
 export const MostDifficultQuestions = ({

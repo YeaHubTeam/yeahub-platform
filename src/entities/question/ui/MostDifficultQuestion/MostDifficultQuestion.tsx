@@ -3,7 +3,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { Text } from '@/shared/ui/Text';
 
-import { TopStat } from '../../model/types/difficultQuestions';
+import { TopStat } from '../../model/types/question';
 
 import styles from './MostDifficultQuestion.module.css';
 

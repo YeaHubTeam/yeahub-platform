@@ -6,3 +6,7 @@ export const questionApiUrls = {
 	getPublicQuestionById: 'questions/public-questions/:questionId',
 	getStatisticsQuestionsSpecializationById: 'questions/questions-count/:specializationId',
 };
+
+export const mostDifficultQuestionsApiUrls = {
+	getMostDifficultQuestionsBySpecializationId: 'questions-stats/most-difficult/:specId',
+};

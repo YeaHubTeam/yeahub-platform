@@ -2,7 +2,7 @@ import { ApiTags } from '@/shared/config/api/apiTags';
 import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
-import { questionApiUrls } from '../model/constants/question';
+import { mostDifficultQuestionsApiUrls, questionApiUrls } from '../model/constants/question';
 import {
 	GetLearnedQuestionsParamsRequest,
 	GetLearnedQuestionsResponse,
@@ -13,6 +13,7 @@ import {
 	GetPublicQuestionByIdResponse,
 	GetPublicQuestionByIdParamsRequest,
 	GetQuestionsBySpecializationCountResponse,
+	MostDifficultQuestionsResponse,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -66,6 +67,17 @@ const questionApi = baseApi.injectEndpoints({
 				route(questionApiUrls.getStatisticsQuestionsSpecializationById, specializationId),
 			providesTags: [ApiTags.QUESTION_STATISTICS],
 		}),
+		getMostDifficultQuestionsBySpecializationId: build.query<
+			MostDifficultQuestionsResponse,
+			{ specId: number }
+		>({
+			query: ({ specId }) => ({
+				url: route(
+					mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
+					specId,
+				),
+			}),
+		}),
 	}),
 });
 
@@ -76,4 +88,5 @@ export const {
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
+	useGetMostDifficultQuestionsBySpecializationIdQuery,
 } = questionApi;

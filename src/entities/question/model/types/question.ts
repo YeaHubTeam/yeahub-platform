@@ -109,3 +109,17 @@ export interface GetQuestionsBySpecializationCountResponse {
 	total: number;
 	skillsQuestions: SkillQuestion[];
 }
+
+export interface TopStat {
+	questionId: number;
+	title: string;
+	answersCount: number;
+	state: number;
+}
+
+export interface MostDifficultQuestionsResponse {
+	id: number;
+	specialization: Specialization;
+	calculatedAt: string;
+	topStat: TopStat[];
+}
