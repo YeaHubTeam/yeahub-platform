@@ -11,11 +11,10 @@ export const MostDifficultQuestions = ({
 }) => {
 	const { isSmallScreen } = useScreenSize();
 
-	// const mixedQuestions = difficultQuestions?.topStat.sort(() => Math.random() - 0.5);
+	const mixedQuestions =
+		difficultQuestions && [...difficultQuestions.topStat].sort(() => Math.random() - 0.5);
 
-	const filteredQuestions = isSmallScreen
-		? difficultQuestions?.topStat.slice(3)
-		: difficultQuestions?.topStat.slice(0, 6);
+	const filteredQuestions = isSmallScreen ? mixedQuestions?.slice(3) : mixedQuestions?.slice(0, 6);
 
 	return (
 		<Flex direction="column" gap="12">
