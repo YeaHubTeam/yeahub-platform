@@ -19,6 +19,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 			prefix,
 			onClick,
 			onDelete,
+			dataTestId = 'Chip',
 			...props
 		},
 		ref,
@@ -32,6 +33,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 
 		return (
 			<div
+				data-testid={dataTestId}
 				{...props}
 				className={classNames(
 					styles['chip-wrapper'],
