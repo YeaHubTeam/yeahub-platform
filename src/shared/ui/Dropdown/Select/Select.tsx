@@ -65,6 +65,7 @@ export const Select = ({
 			role="button"
 			aria-expanded={isOpen}
 			tabIndex={0}
+			data-testid="dropdown-select"
 		>
 			{prefix && <span className={styles['select-prefix']}>{prefix}</span>}
 
