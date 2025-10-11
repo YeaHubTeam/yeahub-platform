@@ -79,6 +79,7 @@ export enum Translation {
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
+	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -189,6 +190,7 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
+
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	TABS_PERSONAL = 'tabs.personal',
@@ -426,8 +428,10 @@ export enum Resources {
 	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
-	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
-	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
+	MODAL_RESOURCE_CREATE_MODERATION_MESSAGE = 'modal.resource.create.moderation.message',
+	MODAL_RESOURCE_CREATE_MODERATION_TITLE = 'modal.resource.create.moderation.title',
+	MODAL_RESOURCE_EDIT_MODERATION_MESSAGE = 'modal.resource.edit.moderation.message',
+	MODAL_RESOURCE_EDIT_MODERATION_TITLE = 'modal.resource.edit.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
 }
@@ -914,6 +918,7 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
+
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
@@ -945,6 +950,7 @@ export enum Marketplace {
 	STATUS_PENDING = 'status.pending',
 	ADD_RESOURCE_TITLE = 'add.resource.title',
 	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
+	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	NAME_SHORT = 'name.short',
 	NAME_LABEL = 'name.label',
 	DESCRIPTION_SHORT = 'description.short',

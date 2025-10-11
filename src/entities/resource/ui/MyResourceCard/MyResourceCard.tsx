@@ -30,7 +30,7 @@ const statusesVariant: Record<ResourceRequestStatus, StatusChipVariant> = {
 
 export const MyResourceCard = ({ resource }: ResourceRequestCard) => {
 	const {
-		requestPayload: { name, description, url, iconBase64 },
+		requestPayload: { name, description, url, imageSrc },
 		specializations,
 		status,
 	} = resource;
@@ -43,7 +43,7 @@ export const MyResourceCard = ({ resource }: ResourceRequestCard) => {
 		<Card withOutsideShadow className={styles.content}>
 			<Flex direction="row" className={styles.wrapper}>
 				<ImageWithWrapper
-					src={iconBase64 ?? undefined}
+					src={imageSrc ?? undefined}
 					alt={name}
 					className={styles['image-wrapper']}
 				/>

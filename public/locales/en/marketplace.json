@@ -11,6 +11,11 @@
 			"submit": "Send for moderation"
 		}
 	},
+	"edit": {
+		"resource": {
+			"title": "Request review form"
+		}
+	},
 	"delete": "Delete",
 	"search.placeholder": "Enter a query…",
 	"show.all": "Show all",
