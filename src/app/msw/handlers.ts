@@ -2,7 +2,7 @@ import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
 import { paymentHandlers } from '@/entities/payment';
-import { questionHandlers } from '@/entities/question';
+import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
 import { skillHandlers } from '@/entities/skill';
@@ -38,4 +38,5 @@ export const handlers = [
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
+	...difficultQuestionsHandler,
 ];

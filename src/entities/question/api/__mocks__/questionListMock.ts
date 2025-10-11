@@ -1,12 +1,13 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
-import { questionApiUrls } from '../../model/constants/question';
+import { mostDifficultQuestionsApiUrls, questionApiUrls } from '../../model/constants/question';
 import {
 	GetQuestionsListResponse,
 	GetQuestionsListParamsRequest,
+	MostDifficultQuestionsResponse,
 } from '../../model/types/question';
 
-import { questionsMock } from './data';
+import { mostDifficultQuestions, questionsMock } from './data';
 
 export const questionListMock = http.get<
 	Record<keyof GetQuestionsListParamsRequest, string>,
@@ -62,3 +63,14 @@ export const questionListMock = http.get<
 		limit: questionsMock.limit,
 	});
 });
+
+export const mostDifficultQuestionsMock = http.get<
+	never,
+	undefined,
+	MostDifficultQuestionsResponse
+>(
+	process.env.API_URL + mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
+	() => {
+		return HttpResponse.json<MostDifficultQuestionsResponse>(mostDifficultQuestions);
+	},
+);
