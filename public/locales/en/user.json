@@ -28,10 +28,17 @@
 	"address": "Country, City, Street",
 	"birth.date": "Date of Birth",
 	"registration.date": "Registration Date",
-	"select.shoose": "Select Role",
+	"select": {
+		"choose": "Select specialization from the list",
+		"empty": "No options available",
+		"selected": "Selected specializations"
+	},
 	"filter": {
 		"role": {
 			"title": "User Roles"
+		},
+		"author": {
+			"title": "Specialization Author"
 		},
 		"email": {
 			"title": "Is Email Confirmed"

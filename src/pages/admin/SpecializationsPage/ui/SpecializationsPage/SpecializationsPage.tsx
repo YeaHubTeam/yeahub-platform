@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks';
@@ -7,9 +8,10 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
-import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpecializations';
-
-import { SearchSection } from '@/widgets/SearchSection';
+import {
+	SpecializationFilterSet,
+	useSpecializationFilter,
+} from '@/widgets/specializationFilterSet';
 import { SpecializationsTable } from '@/widgets/SpecializationsTable';
 
 import {
@@ -31,26 +33,30 @@ const SpecializationsPage = () => {
 	const page = useSelector(getSpecializationsPageNum);
 	const search = useSelector(getSpecializationsSearch);
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
+	const { filter } = useSpecializationFilter();
 
-	const { data: specializations } = useGetSpecializationsListQuery({ page, title: search });
+	useEffect(() => {
+		if (filter.page && filter.page !== page) {
+			dispatch(specializationsPageActions.setPage(filter.page));
+		}
+		if (filter.authorId !== undefined && filter.authorId !== search) {
+			dispatch(specializationsPageActions.setSearch(filter.authorId));
+		}
+	}, [filter.page, filter.authorId, page, search, dispatch]);
+
+	const { data: specializations } = useGetSpecializationsListQuery({
+		...filter,
+		authorId: search,
+		page,
+	});
 
 	const onSelectSpecializations = (ids: SelectedAdminEntities) => {
 		dispatch(specializationsPageActions.setSelectedSpecializations(ids));
 	};
-	const onChangeSearch = (value: string) => {
-		dispatch(specializationsPageActions.setSearch(value));
-	};
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				showRemoveButton={selectedSpecializations.length > 0}
-				onSearch={onChangeSearch}
-				renderRemoveButton={() => (
-					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
-				)}
-			/>
+			<SpecializationFilterSet to="create" />
 			<Card className={styles.content}>
 				<SpecializationsTable
 					specializations={specializations?.data}

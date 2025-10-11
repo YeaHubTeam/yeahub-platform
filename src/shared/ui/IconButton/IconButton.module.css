@@ -126,10 +126,6 @@
   &:active {
     background-color: var(--button-background-tertiary-active);
   }
-
-  &.icon-button-is-active {
-    background-color: var(--button-background-tertiary-active);
-  }
   
   &:disabled {
     color: var(--button-text-color-tertiary-disabled);
