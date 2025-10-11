@@ -22,7 +22,12 @@
 		"video": "Video",
 		"article": "Article",
 		"course": "Course",
-		"my": "My resources"
+		"my": "My resources",
+		"empty": {
+			"title": "There are no requests yet",
+			"description": "Create the first — and start filling your knowledge base with content",
+			"button": "Add request"
+		}
 	},
 	"status": {
 		"title": "Status",
