@@ -68,6 +68,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 						size={20}
 						color={disabled ? 'black-100' : 'red-600'}
 						onClick={onDelete}
+						dataTestId="icon"
 					/>
 				)}
 			</div>
