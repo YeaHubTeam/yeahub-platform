@@ -56,22 +56,32 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 				{prefix && (
 					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
 				)}
+
 				{label && (
 					<TextSkeleton
 						width={props.withText ? props.withText : '100%'}
 						variant="body3-accent"
 						color="black-800"
 						className={styles['chip-label']}
+						dataTestId="text-skeleton"
 					/>
-				)}{' '}
+				)}
+
 				{onDelete && (
-					<IconSkeleton
-						className={styles['chip-delete-icon']}
-						icon="closeCircle"
-						size={20}
-						color={disabled ? 'black-100' : 'red-600'}
+					<button
+						type="button"
+						className={styles['chip-delete-button']}
 						onClick={onDelete}
-					/>
+						disabled={disabled}
+						data-testid="icon-skeleton"
+					>
+						<IconSkeleton
+							className={styles['chip-delete-icon']}
+							icon="closeCircle"
+							size={20}
+							color={disabled ? 'black-100' : 'red-600'}
+						/>
+					</button>
 				)}
 			</div>
 		);
