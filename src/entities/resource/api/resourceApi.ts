@@ -77,7 +77,7 @@ const resourceApi = baseApi.injectEndpoints({
 				params: { page: 1, limit: 1, status: 'pending', ...params },
 			}),
 			transformResponse: (response: GetResourceRequestsResponse): number => response.total ?? 0,
-    }),
+		}),
 		getResourceRequestById: build.query<ResourceRequest, string>({
 			query: (resourceId) => ({
 				url: route(resourceApiUrls.getResourceRequestById, resourceId),
@@ -94,5 +94,7 @@ export const {
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
 	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestsReviewCountQuery,
+	useGetResourceRequestByIdQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
