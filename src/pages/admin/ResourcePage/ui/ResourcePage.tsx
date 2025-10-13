@@ -36,7 +36,19 @@ export const ResourcePage = () => {
 		return null;
 	}
 
-	const { id, createdBy, createdById, keywords, skills, specializations } = resource;
+	const {
+		id,
+		createdBy,
+		createdById,
+		keywords,
+		skills,
+		specializations,
+		name,
+		description,
+		type,
+		url,
+		createdAt,
+	} = resource;
 
 	const isDisabled = isResourceDisabled({ isAuthor, userId, createdById });
 
@@ -49,8 +61,15 @@ export const ResourcePage = () => {
 			<Flex gap="20" align="start">
 				<Card withOutsideShadow className={styles.main}>
 					<Flex direction="column" gap="20">
-						<ResourceHeader resource={resource} />
-						<ResourceBody resource={resource} />
+						<ResourceHeader
+							name={name}
+							description={description}
+							keywords={keywords}
+							skills={skills}
+							specializations={specializations}
+							createdBy={createdBy}
+						/>
+						<ResourceBody name={name} type={type.code} url={url} createdAt={createdAt} />
 					</Flex>
 				</Card>
 

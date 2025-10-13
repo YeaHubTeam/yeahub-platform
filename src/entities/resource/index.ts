@@ -26,4 +26,9 @@ export type {
 	SelectedResourceRequestEntities,
 	ResourceRequestFormValues,
 } from './model/types/resourceRequest';
-export { useGetResourceRequestsQuery } from './api/resourceApi';
+export {
+	useGetResourceRequestsQuery,
+	useGetResourceByIdQuery,
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestByIdQuery,
+} from './api/resourceApi';
