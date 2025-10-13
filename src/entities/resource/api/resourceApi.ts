@@ -95,6 +95,7 @@ export const {
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
 	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestsReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
