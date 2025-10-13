@@ -10,6 +10,8 @@ import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 
 import { ResourceRequestStatus, useGetResourceRequestByIdQuery } from '@/entities/resource';
 
+import { DeleteMyResourceRequestButton } from '@/features/resources/deleteMyResourceRequest';
+
 import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
@@ -62,6 +64,11 @@ export const RequestInfoPage = () => {
 							variant: statusesVariant[status],
 						}}
 					/>
+					{status === 'pending' && (
+						<Flex gap="20">
+							<DeleteMyResourceRequestButton requestId={requestId || ''} />
+						</Flex>
+					)}
 				</Flex>
 			</Card>
 			{!isMobile && !isTablet && (

@@ -7,20 +7,16 @@ import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Modal } from '@/shared/ui/Modal';
 
-import type { ResourceRequestStatus } from '@/entities/resource';
-
 import { useDeleteMyResourceRequestMutation } from '../../api/deleteMyResorceRequestApi';
 
 import styles from './DeleteMyResourceRequestButton.module.css';
 
 interface DeleteMyResourceRequestButtonProps {
 	requestId: string;
-	status: ResourceRequestStatus;
 }
 
 export const DeleteMyResourceRequestButton = ({
 	requestId,
-	status,
 }: DeleteMyResourceRequestButtonProps) => {
 	const { t } = useTranslation([i18Namespace.resources, i18Namespace.translation]);
 	const { isMobileS } = useScreenSize();
@@ -40,19 +36,16 @@ export const DeleteMyResourceRequestButton = ({
 
 	return (
 		<>
-			{status === 'pending' && (
-				<Button
-					variant="outline"
-					size="large"
-					fullWidth={isMobileS}
-					className={styles.button}
-					onClick={() => setIsOpen(true)}
-					disabled={isLoading}
-				>
-					{t(Resources.WITHDRAW_BUTTON)}
-				</Button>
-			)}
-
+			<Button
+				variant="outline"
+				size="large"
+				fullWidth={isMobileS}
+				className={styles.button}
+				onClick={() => setIsOpen(true)}
+				disabled={isLoading}
+			>
+				{t(Resources.WITHDRAW_BUTTON)}
+			</Button>
 			<Modal
 				isOpen={isOpen}
 				variant="error"

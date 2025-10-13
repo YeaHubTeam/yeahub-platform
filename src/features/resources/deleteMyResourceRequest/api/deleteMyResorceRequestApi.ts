@@ -28,7 +28,7 @@ const deleteMyResourceRequestApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
-			invalidatesTags: [ApiTags.RESOURCE_REQUESTS],
+			invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
 	}),
 });
