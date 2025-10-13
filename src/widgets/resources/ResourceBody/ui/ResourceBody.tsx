@@ -7,8 +7,7 @@ import { formatDate } from '@/shared/helpers/formatDate';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-import { StatusChip } from '@/shared/ui/StatusChip';
-import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
+import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './ResourceBody.module.css';
@@ -19,10 +18,7 @@ type ResourceCardProps = {
 	type: string;
 	url: string;
 	createdAt: string;
-	status?: {
-		text: string;
-		variant: StatusChipVariant;
-	};
+	status?: StatusChipItem;
 };
 
 export const ResourceBody = ({
@@ -33,7 +29,7 @@ export const ResourceBody = ({
 	createdAt,
 	status,
 }: ResourceCardProps) => {
-	const { t } = useTranslation(i18Namespace.resources);
+	const { t } = useTranslation([i18Namespace.resources, i18Namespace.marketplace]);
 	const formattedDate = formatDate(new Date(createdAt), 'dd.MM.yyyy');
 
 	return (
@@ -50,16 +46,12 @@ export const ResourceBody = ({
 						<Text variant="body2" width={110} color="black-700">
 							{t(Marketplace.STATUS_TITLE)}
 						</Text>
-						<Link to={url}>
-							<Text variant="body2" color="purple-700">
-								<StatusChip
-									status={{
-										text: status.text,
-										variant: status?.variant,
-									}}
-								/>
-							</Text>
-						</Link>
+						<StatusChip
+							status={{
+								text: status.text,
+								variant: status.variant,
+							}}
+						/>
 					</Flex>
 				)}
 
@@ -78,7 +70,11 @@ export const ResourceBody = ({
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.TYPE)}
 					</Text>
-					<Chip variant="small" active label={type} />
+					<Chip
+						variant="small"
+						active
+						label={t(`resourceTypes.${type}`, { ns: i18Namespace.marketplace })}
+					/>
 				</Flex>
 
 				<Flex wrap="nowrap">

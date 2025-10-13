@@ -8,7 +8,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 
-import { ResourceRequestStatus, useGetResourseRequestByIdQuery } from '@/entities/resource';
+import { ResourceRequestStatus, useGetResourceRequestByIdQuery } from '@/entities/resource';
 
 import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
@@ -31,7 +31,7 @@ const statusesVariant: Record<ResourceRequestStatus, StatusChipVariant> = {
 export const RequestInfoPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { requestId } = useParams<{ requestId: string }>();
-	const { data: request } = useGetResourseRequestByIdQuery({ requestId });
+	const { data: request } = useGetResourceRequestByIdQuery(requestId || '');
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	if (!request) {

@@ -125,6 +125,7 @@
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
+		"resources.my.request": "Заявка",
 		"create.request": "Создание заявки"
 	},
 	"toast": {

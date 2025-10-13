@@ -45,7 +45,7 @@ export const ResourcePage = () => {
 							specializations={specializations}
 							createdBy={createdBy}
 						/>
-						<ResourceBody name={name} type={type.description} url={url} createdAt={createdAt} />
+						<ResourceBody name={name} type={type.code} url={url} createdAt={createdAt} />
 					</Flex>
 				</Card>
 

@@ -65,7 +65,3 @@ export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['
 export type ResourceRequestFormValues = CreateOrEditOrViewResourceFormValues & {
 	status: ResourceRequestStatus;
 };
-
-export interface GetResourceRequestParams {
-	requestId: string | undefined;
-}
