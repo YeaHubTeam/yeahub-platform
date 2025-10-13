@@ -29,4 +29,5 @@ export {
 	useGetResourceRequestsQuery,
 	useGetResourceByIdQuery,
 	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';

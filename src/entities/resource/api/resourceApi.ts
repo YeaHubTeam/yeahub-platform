@@ -11,11 +11,11 @@ import {
 	GetResourceByIdParamsRequest,
 	GetMyRequestsResourcesParamsRequest,
 	GetMyRequestsResourcesResponse,
-	ResourceRequest,
 } from '../model/types/resource';
 import {
 	GetResourceRequestsResponse,
 	GetResourceRequestsParams,
+	ResourceRequest,
 } from '../model/types/resourceRequest';
 
 const resourceApi = baseApi.injectEndpoints({
@@ -79,10 +79,10 @@ const resourceApi = baseApi.injectEndpoints({
 			transformResponse: (response: GetResourceRequestsResponse): number => response.total ?? 0,
 		}),
 		getResourceRequestById: build.query<ResourceRequest, string>({
-			query: (resourceId) => ({
-				url: route(resourceApiUrls.getResourceRequestById, resourceId),
+			query: (requestId) => ({
+				url: route(resourceApiUrls.getResourceRequestById, requestId),
 			}),
-			providesTags: [ApiTags.RESOURCE_REQUESTS],
+			providesTags: [ApiTags.RESOURCE_REQUEST],
 		}),
 	}),
 });

@@ -2,25 +2,34 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Resources } from '@/shared/config/i18n/i18nTranslations';
+import { Marketplace, Resources } from '@/shared/config/i18n/i18nTranslations';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
-
-import { Resource } from '@/entities/resource';
 
 import styles from './ResourceBody.module.css';
 
 type ResourceCardProps = {
-	resource: Resource;
+	name: string;
+	imageSrc?: string;
+	type: string;
+	url: string;
+	createdAt: string;
+	status?: StatusChipItem;
 };
 
-export const ResourceBody = ({ resource }: ResourceCardProps) => {
-	const { name, imageSrc, type, url, createdAt } = resource;
-
-	const { t } = useTranslation(i18Namespace.resources);
+export const ResourceBody = ({
+	name,
+	imageSrc,
+	type,
+	url,
+	createdAt,
+	status,
+}: ResourceCardProps) => {
+	const { t } = useTranslation([i18Namespace.resources, i18Namespace.marketplace]);
 	const formattedDate = formatDate(new Date(createdAt), 'dd.MM.yyyy');
 
 	return (
@@ -32,6 +41,20 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 			/>
 
 			<Flex direction="column" gap="20">
+				{status && (
+					<Flex wrap="nowrap">
+						<Text variant="body2" width={110} color="black-700">
+							{t(Marketplace.STATUS_TITLE)}
+						</Text>
+						<StatusChip
+							status={{
+								text: status.text,
+								variant: status.variant,
+							}}
+						/>
+					</Flex>
+				)}
+
 				<Flex wrap="nowrap">
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.LINK)}
@@ -47,7 +70,11 @@ export const ResourceBody = ({ resource }: ResourceCardProps) => {
 					<Text variant="body2" width={110} color="black-700">
 						{t(Resources.TYPE)}
 					</Text>
-					<Chip variant="small" active label={type.description} />
+					<Chip
+						variant="small"
+						active
+						label={t(`resourceTypes.${type}`, { ns: i18Namespace.marketplace })}
+					/>
 				</Flex>
 
 				<Flex wrap="nowrap">

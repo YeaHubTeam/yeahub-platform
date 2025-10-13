@@ -22,7 +22,6 @@ import {
 	useGetResourcesListQuery,
 } from '@/entities/resource';
 
-
 import {
 	ResourcesList,
 	MarketplaceFiltersPanel,
