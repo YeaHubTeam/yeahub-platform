@@ -22,7 +22,8 @@ export interface DropdownProps
 	multiple?: boolean;
 	value?: string;
 	isInput?: boolean;
-	inputPlaceholder?: string;
+	inputValue?: string;
+	onChangeValue?: (value: string) => void;
 }
 
 export const Dropdown = ({
@@ -38,10 +39,10 @@ export const Dropdown = ({
 	multiple = false,
 	value = '',
 	isInput = false,
-	inputPlaceholder,
+	inputValue,
+	onChangeValue,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [searchQuery, setSearchQuery] = useState('');
 
 	const dropdownRef = useOutsideClick<HTMLDivElement>(() => setIsOpen(false));
 
@@ -51,7 +52,7 @@ export const Dropdown = ({
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!isInput) return;
-		setSearchQuery(e.target.value);
+		onChangeValue?.(e.target.value);
 	};
 
 	const handleInputClick = (e: React.MouseEvent) => {
@@ -62,7 +63,7 @@ export const Dropdown = ({
 	};
 
 	const filteredChildren = useMemo(() => {
-		if (!isInput || !searchQuery) {
+		if (!isInput || !inputValue) {
 			return children;
 		}
 
@@ -70,11 +71,11 @@ export const Dropdown = ({
 			if (!React.isValidElement(child)) return child;
 
 			const childProps = child.props as OptionProps;
-			const matchesSearch = childProps.label.toLowerCase().includes(searchQuery.toLowerCase());
+			const matchesSearch = childProps.label.toLowerCase().includes(inputValue.toLowerCase());
 
 			return matchesSearch ? child : null;
 		})?.filter(Boolean);
-	}, [children, searchQuery, isInput]);
+	}, [children, inputValue, isInput]);
 
 	return (
 		<div className={classNames(styles.dropdown, className)} style={{ width }} ref={dropdownRef}>
@@ -91,8 +92,7 @@ export const Dropdown = ({
 				label={label}
 				value={value}
 				isInput={isInput}
-				inputValue={searchQuery}
-				inputPlaceholder={inputPlaceholder}
+				inputValue={inputValue}
 				onInputChange={handleInputChange}
 				onInputClick={handleInputClick}
 			/>

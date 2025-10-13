@@ -18,7 +18,6 @@ export interface SelectProps {
 	value?: string;
 	isInput?: boolean;
 	inputValue?: string;
-	inputPlaceholder?: string;
 	onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onInputClick?: (e: React.MouseEvent) => void;
 }
@@ -36,7 +35,6 @@ export const Select = ({
 	value,
 	isInput,
 	inputValue,
-	inputPlaceholder,
 	onInputChange,
 	onInputClick,
 }: SelectProps) => {
@@ -83,7 +81,7 @@ export const Select = ({
 					className={styles.input}
 					value={inputValue}
 					onChange={onInputChange}
-					placeholder={inputPlaceholder}
+					placeholder={label}
 					onClick={onInputClick}
 				/>
 			) : (
