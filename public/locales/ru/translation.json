@@ -125,6 +125,7 @@
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
+		"resources.my.request": "Заявка",
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки"
 	},
@@ -371,6 +372,11 @@
 	},
 	"tooltip": {
 		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
+			}
+		},
+		"companies": {
 			"disabled": {
 				"info": "У вас нет доступа к этой функции"
 			}

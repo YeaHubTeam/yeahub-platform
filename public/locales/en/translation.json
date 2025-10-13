@@ -122,6 +122,7 @@
 		"wiki": "Knowledge base",
 		"resources": "Resources",
 		"resources.my": "My resources",
+		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request"
 	},

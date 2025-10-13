@@ -220,6 +220,10 @@ export const ROUTES = {
 					route: ':requestId/edit',
 					page: '/dashboard/resources/my-resources/:requestId/edit',
 				},
+				request: {
+					route: ':requestId',
+					page: '/dashboard/resources/my-resources/:requestId',
+				},
 			},
 		},
 	},

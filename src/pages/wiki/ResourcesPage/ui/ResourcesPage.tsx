@@ -17,7 +17,10 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetResourcesListQuery } from '@/entities/resource';
+import {
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourcesListQuery,
+} from '@/entities/resource';
 
 import {
 	ResourcesList,
@@ -59,6 +62,7 @@ const ResourcesPage = () => {
 		skills: filter.skills,
 		types: filter.resources,
 	});
+	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 
 	useEffect(() => {
 		if (specializationID) {
@@ -160,7 +164,8 @@ const ResourcesPage = () => {
 					size="large"
 					onClick={handleNavigateToMyResources}
 				>
-					{t(Marketplace.MY_RESOURCES)}
+					{t(Marketplace.MY_RESOURCES)}{' '}
+					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
 				</Button>
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}

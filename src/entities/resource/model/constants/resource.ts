@@ -5,5 +5,5 @@ export const resourceApiUrls = {
 	getResourceById: 'external-products/product/:resourceId',
 	getMyRequestsResources: 'external-products/request/my',
 	getResourceRequests: 'external-products/request',
-	getResourceRequestById: 'external-products/request/:resourceId',
+	getResourceRequestById: 'external-products/request/:requestId',
 };
