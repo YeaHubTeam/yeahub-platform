@@ -1,3 +1,6 @@
+import { InterviewPopularQuestions } from '@/widgets/interview/InterviewPopularQuestions';
+
 export const AnalyticsPage = () => {
-	return <div>AnalyticsPage</div>;
+	return <InterviewPopularQuestions />;
 };
+export default AnalyticsPage;
