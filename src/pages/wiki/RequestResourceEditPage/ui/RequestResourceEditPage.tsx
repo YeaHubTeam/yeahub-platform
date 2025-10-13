@@ -7,7 +7,7 @@ import { ResourceRequestEditForm } from '@/features/resources/editResourceReques
 const RequestResourceEditPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();
 
-	const { data: myResourceRequest } = useGetResourceRequestByIdQuery(requestId!);
+	const { data: myResourceRequest } = useGetResourceRequestByIdQuery(requestId || '');
 
 	if (!myResourceRequest) return null;
 

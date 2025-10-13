@@ -27,7 +27,7 @@ export const editResourceRequestApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
-			invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS, ApiTags.RESOURCE_REQUEST_DETAIL],
+			invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS, ApiTags.RESOURCE_REQUEST],
 		}),
 	}),
 });
