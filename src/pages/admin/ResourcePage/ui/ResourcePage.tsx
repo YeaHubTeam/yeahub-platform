@@ -1,12 +1,17 @@
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { useGetResourceByIdQuery } from '@/entities/resource';
+import { getIsAuthor, getUserId } from '@/entities/profile';
+import { isResourceDisabled, useGetResourceByIdQuery } from '@/entities/resource';
+
+import { DeleteResourceButton } from '@/features/resources/deleteResource';
+import { ResourceEditButton } from '@/features/resources/editResource';
 
 import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
@@ -20,6 +25,9 @@ export const ResourcePage = () => {
 	const { resourceId } = useParams<{ resourceId: string }>();
 	const { data: resource, isFetching, isLoading } = useGetResourceByIdQuery({ resourceId });
 
+	const isAuthor = useSelector(getIsAuthor);
+	const userId = useAppSelector(getUserId);
+
 	if (isLoading || isFetching) {
 		return <ResourcePageSkeleton />;
 	}
@@ -28,11 +36,16 @@ export const ResourcePage = () => {
 		return null;
 	}
 
-	const { createdBy, keywords, skills, specializations } = resource;
+	const { id, createdBy, createdById, keywords, skills, specializations } = resource;
+
+	const isDisabled = isResourceDisabled({ isAuthor, userId, createdById });
 
 	return (
 		<>
-			<BackHeader />
+			<BackHeader>
+				<DeleteResourceButton resourceId={id} isDetailPage disabled={isDisabled} />
+				<ResourceEditButton resourceId={id} isDisabled={isDisabled} />
+			</BackHeader>
 			<Flex gap="20" align="start">
 				<Card withOutsideShadow className={styles.main}>
 					<Flex direction="column" gap="20">
