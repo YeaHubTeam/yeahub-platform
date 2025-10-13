@@ -97,6 +97,10 @@ export const ROUTES = {
 			requests: {
 				route: 'requests',
 				page: '/admin/resources/requests',
+				view: {
+					route: 'requests/:resourceId',
+					page: '/admin/resources/requests/:resourceId',
+				},
 			},
 		},
 		companies: {
@@ -211,6 +215,10 @@ export const ROUTES = {
 				create: {
 					route: 'create',
 					page: '/dashboard/resources/my-resources/create',
+				},
+				request: {
+					route: ':requestId',
+					page: '/dashboard/resources/my-resources/:requestId',
 				},
 			},
 		},

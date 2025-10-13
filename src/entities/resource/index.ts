@@ -14,6 +14,7 @@ export { ResourcesFilterSectionSkeleton } from './ui/ResourcesFilterSection/Reso
 export { ResourceCard } from './ui/ResourceCard/ResourceCard';
 export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
 export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
+export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
 
 export type {
 	ResourceRequest,
@@ -22,5 +23,11 @@ export type {
 	GetResourceRequestsResponse,
 	SelectedResourceRequestEntity,
 	SelectedResourceRequestEntities,
+	ResourceRequestFormValues,
 } from './model/types/resourceRequest';
-export { useGetResourceRequestsQuery } from './api/resourceApi';
+export {
+	useGetResourceRequestsQuery,
+	useGetResourceByIdQuery,
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestByIdQuery,
+} from './api/resourceApi';

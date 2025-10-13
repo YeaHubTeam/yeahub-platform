@@ -50,5 +50,8 @@
 			"all": "All resources",
 			"requests": "Requests"
 		}
+	},
+	"requests": {
+		"title": "Viewing a request for a resource"
 	}
 }

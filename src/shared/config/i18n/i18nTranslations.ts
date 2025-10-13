@@ -78,6 +78,7 @@ export enum Translation {
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
+	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 
 	/* Validation */
@@ -162,6 +163,7 @@ export enum Translation {
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
 	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOOLTIP_COMPANY_DISABLED_INFO = 'tooltip.companies.disabled.info',
 	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
 	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 	TOAST_COMPANIES_DELETE_MULTIPLE_SUCCESS = 'toast.companies.delete.multiple.success',
@@ -185,6 +187,8 @@ export enum Translation {
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -238,6 +242,8 @@ export enum Profile {
 	EMAIL_VERIFICATION_VERIFY_STUB_LINK = 'email.verification.verify.stub.link',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_TITLE = 'email.verification.success.verify.stub.title',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_DESCRIPTION = 'email.verification.success.verify.stub.description',
+	TELEGRAM_VERIFICATION_TITLE = 'telegram.verification.title',
+	TELEGRAM_VERIFICATION_DESCRIPTION = 'telegram.verification.description',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
 	CHANGE_PASSWORD_DESCRIPTION = 'change.password.description',
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
@@ -969,4 +975,5 @@ export enum Marketplace {
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
+	REQUEST_TITLE = 'requests.title',
 }

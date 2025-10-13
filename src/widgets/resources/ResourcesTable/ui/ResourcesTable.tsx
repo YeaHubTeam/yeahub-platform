@@ -10,7 +10,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
-import { TableCellEntityList } from '@/shared/ui/TableCellEntityList/TableCellEntityList';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
@@ -96,6 +96,10 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
 				disabled: resource.disabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.resources.edit.route, resource.id));
