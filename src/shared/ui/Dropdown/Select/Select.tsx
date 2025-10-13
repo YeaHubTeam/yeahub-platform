@@ -16,6 +16,11 @@ export interface SelectProps {
 	onClick: () => void;
 	width?: number | string;
 	value?: string;
+	isInput?: boolean;
+	inputValue?: string;
+	inputPlaceholder?: string;
+	onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onInputClick?: (e: React.MouseEvent) => void;
 }
 
 export const Select = ({
@@ -29,6 +34,11 @@ export const Select = ({
 	suffix,
 	width,
 	value,
+	isInput,
+	inputValue,
+	inputPlaceholder,
+	onInputChange,
+	onInputClick,
 }: SelectProps) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
@@ -67,14 +77,24 @@ export const Select = ({
 			tabIndex={0}
 		>
 			{prefix && <span className={styles['select-prefix']}>{prefix}</span>}
-
-			<span
-				className={classNames(styles.button, {
-					[styles['with-value']]: value,
-				})}
-			>
-				{value || label}
-			</span>
+			{isInput ? (
+				<input
+					type="text"
+					className={styles.input}
+					value={inputValue}
+					onChange={onInputChange}
+					placeholder={inputPlaceholder}
+					onClick={onInputClick}
+				/>
+			) : (
+				<span
+					className={classNames(styles.button, {
+						[styles['with-value']]: value,
+					})}
+				>
+					{value || label}
+				</span>
+			)}
 
 			{suffix && <span className={styles['select-suffix']}>{suffix}</span>}
 		</div>
