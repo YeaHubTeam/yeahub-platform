@@ -55,7 +55,7 @@ const CollectionsPage = () => {
 				disabled: isAuthor && item.createdBy?.id !== userId,
 			})),
 		};
-	}, [allCollections, userId]);
+	}, [allCollections, userId, isAuthor]);
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 		dispatch(collectionsPageActions.setSelectedCollections([]));

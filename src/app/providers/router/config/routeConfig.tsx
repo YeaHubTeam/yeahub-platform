@@ -9,7 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
-import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
+// import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -103,8 +103,10 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
+
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
+import { ResourceRequestViewPage } from '@/pages/admin/ResourceViewPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -173,13 +175,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	{
-		type: 'single',
-		route: ROUTES.analytics.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-		icon: AnalyticsIcon,
-		roles: allRoles,
-	},
+	// {
+	// 	type: 'single',
+	// 	route: ROUTES.analytics.route,
+	// 	title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+	// 	icon: AnalyticsIcon,
+	// 	roles: allRoles,
+	// },
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -373,6 +375,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.view.page,
+				element: <ResourceRequestViewPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

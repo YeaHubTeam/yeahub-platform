@@ -20,7 +20,12 @@ type SkillSelectProps = Omit<
 	selectedSpecializations?: number[];
 };
 
-export const SkillSelect = ({ onChange, value, selectedSpecializations }: SkillSelectProps) => {
+export const SkillSelect = ({
+	onChange,
+	value,
+	selectedSpecializations,
+	disabled,
+}: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
 	const { data: skills, isLoading } = useGetSkillsListQuery({
@@ -68,6 +73,7 @@ export const SkillSelect = ({ onChange, value, selectedSpecializations }: SkillS
 
 	return (
 		<SelectWithChips
+			disabled={disabled}
 			title={t(t(Skills.SELECT_SELECTED))}
 			options={options}
 			onChange={handleChange}

@@ -54,6 +54,17 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
+		getMyRequestsResourcesReviewCount: build.query<
+			number,
+			GetMyRequestsResourcesParamsRequest | void
+		>({
+			query: (params = {}) => ({
+				url: resourceApiUrls.getMyRequestsResources,
+				params: { page: 1, limit: 1, status: 'pending', ...params },
+			}),
+			transformResponse: (response: GetMyRequestsResourcesResponse) => response.total ?? 0,
+			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
+		}),
 		getResourceRequests: build.query<GetResourceRequestsResponse, GetResourceRequestsParams>({
 			query: (params) => ({
 				url: resourceApiUrls.getResourceRequests,
@@ -61,7 +72,14 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUESTS],
 		}),
-		getResourseRequestById: build.query<ResourceRequest, GetResourceRequestParams>({
+		getResourceRequestsReviewCount: build.query<number, GetResourceRequestsParams | void>({
+			query: (params) => ({
+				url: resourceApiUrls.getResourceRequests,
+				params: { page: 1, limit: 1, status: 'pending', ...params },
+			}),
+			transformResponse: (response: GetResourceRequestsResponse): number => response.total ?? 0,
+		}),
+		getResourceRequestById: build.query<ResourceRequest, GetResourceRequestParams>({
 			query: ({ requestId }) => ({
 				url: route(resourceApiUrls.getResourceRequestById, requestId || ''),
 			}),
@@ -76,6 +94,7 @@ export const {
 	useGetResourceByIdQuery,
 	useGetMyRequestsResourcesQuery,
 	useGetResourceRequestsQuery,
-	useGetResourseRequestByIdQuery,
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestByIdQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
