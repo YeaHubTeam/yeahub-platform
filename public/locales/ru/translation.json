@@ -126,6 +126,7 @@
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
 		"resources.my.request": "Заявка",
+		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки"
 	},
 	"toast": {

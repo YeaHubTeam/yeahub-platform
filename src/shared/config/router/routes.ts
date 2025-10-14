@@ -216,6 +216,10 @@ export const ROUTES = {
 					route: 'create',
 					page: '/dashboard/resources/my-resources/create',
 				},
+				edit: {
+					route: ':requestId/edit',
+					page: '/dashboard/resources/my-resources/:requestId/edit',
+				},
 				request: {
 					route: ':requestId',
 					page: '/dashboard/resources/my-resources/:requestId',

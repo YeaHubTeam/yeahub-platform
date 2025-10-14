@@ -93,6 +93,7 @@ import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
 import { RequestInfoPage } from '@/pages/wiki/RequestInfoPage';
 import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
+import { RequestResourceEditPage } from '@/pages/wiki/RequestResourceEditPage';
 import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -688,6 +689,13 @@ export const router = createBrowserRouter([
 										element: <RequestInfoPage />,
 										handle: {
 											crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
+										},
+									},
+									{
+										path: ROUTES.wiki.resources.my.edit.route,
+										element: <RequestResourceEditPage />,
+										handle: {
+											crumb: Translation.CRUMBS_EDIT_REQUEST,
 										},
 									},
 								],

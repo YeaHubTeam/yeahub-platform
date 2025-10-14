@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
@@ -32,9 +35,10 @@ const statusesVariant: Record<ResourceRequestStatus, StatusChipVariant> = {
 
 export const RequestInfoPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
 	const { requestId } = useParams<{ requestId: string }>();
 	const { data: request } = useGetResourceRequestByIdQuery(requestId || '');
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 
 	if (!request) {
 		return null;
@@ -66,6 +70,12 @@ export const RequestInfoPage = () => {
 					/>
 					{status === 'pending' && (
 						<Flex gap="20">
+							<Button
+								size="large"
+								onClick={() => navigate(route(ROUTES.wiki.resources.my.edit.page, requestId || ''))}
+							>
+								{t(Translation.EDIT, { ns: i18Namespace.translation })}
+							</Button>
 							<DeleteMyResourceRequestButton requestId={requestId || ''} />
 						</Flex>
 					)}

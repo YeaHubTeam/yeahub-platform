@@ -8,21 +8,24 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { ResourceForm } from '@/entities/resource';
+import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
 
-import { CreateResourceRequestFormValues } from '../../model/types/resourceRequestCreateTypes';
+import type { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
 
 import styles from './ResourceRequestFormWithHeader.module.css';
 
 interface ResourceRequestFormWithHeaderProps {
-	onSubmit: (formData: CreateResourceRequestFormValues) => Promise<void>;
+	onSubmit: (formData: EditResourceRequestFormValues) => void;
 }
 
 export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormWithHeaderProps) => {
 	const {
+		watch,
 		handleSubmit,
-		formState: { isDirty },
-	} = useFormContext<CreateResourceRequestFormValues>();
+		formState: { isDirty, isSubmitting },
+	} = useFormContext<EditResourceRequestFormValues>();
+
+	const status = watch('status');
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -31,19 +34,21 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 			<Flex align="center" className={styles.buttons}>
 				<Button
 					size="large"
-					disabled={!isDirty}
+					disabled={!isDirty || isSubmitting}
 					className={styles['submit-button']}
 					onClick={handleSubmit(onSubmit)}
-					type="submit"
 				>
 					{t(Marketplace.ADD_RESOURCE_SUBMIT)}
 				</Button>
 			</Flex>
 			<Card className={styles.content}>
 				<Flex direction="column" gap="28">
-					<Text variant="body5-strong" color="black-900">
-						{t(Marketplace.ADD_RESOURCE_TITLE)}
-					</Text>
+					<Flex justify="between">
+						<Text variant="body5-strong" color="black-900">
+							{t(Marketplace.EDIT_RESOURCE_TITLE)}
+						</Text>
+						<ResourceRequestStatusChip status={status} />
+					</Flex>
 					<ResourceForm />
 				</Flex>
 			</Card>
