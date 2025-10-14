@@ -10,7 +10,9 @@ export const FiltersCard = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 	return (
 		<CardLayout
-			contentSlot={<img src={blocks.filters.src} alt={blocks.filters.alt} />}
+			contentSlot={
+				<img src={blocks.filters.src} alt={blocks.filters.alt} data-testid="FiltersCard_Img" />
+			}
 			title={t(Landing.FILTERS_TITLE)}
 			description={t(Landing.FILTERS_DESCRIPTION)}
 		/>
