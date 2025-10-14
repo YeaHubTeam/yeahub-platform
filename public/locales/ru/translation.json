@@ -125,6 +125,7 @@
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
+		"resources.my.request": "Заявка",
 		"create.request": "Создание заявки"
 	},
 	"toast": {
@@ -147,6 +148,12 @@
 				},
 				"password": {
 					"wrong": "Неверный пароль."
+				}
+			},
+			"telegram": {
+				"verification": {
+					"link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
+					"link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту."
 				}
 			}
 		},
@@ -370,6 +377,11 @@
 	},
 	"tooltip": {
 		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
+			}
+		},
+		"companies": {
 			"disabled": {
 				"info": "У вас нет доступа к этой функции"
 			}

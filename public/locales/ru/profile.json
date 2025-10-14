@@ -85,11 +85,7 @@
 	},
 	"telegram.verification": {
 		"title": "Telegram не подключён",
-		"description": "Подключите Telegram для быстрого входа и уведомлений",
-		"toast": {
-			"telegram.link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
-			"telegram.link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту"
-		}
+		"description": "Подключите Telegram для быстрого входа и уведомлений"
 	},
 	"change.password": {
 		"title": "Сменить пароль",

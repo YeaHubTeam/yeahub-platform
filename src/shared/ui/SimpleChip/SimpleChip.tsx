@@ -14,6 +14,7 @@ interface SimpleChipProps {
 	dataTestIds?: SimpleChipTestId;
 	children: React.ReactNode;
 	onDelete: () => void;
+	disabled?: boolean;
 }
 export const SimpleChip = ({
 	children,
@@ -23,19 +24,22 @@ export const SimpleChip = ({
 		simpleChipText: 'SimpleChip_Text',
 		simpleChipDeleteButton: 'SimpleChip_Delete_Button',
 	},
+	disabled,
 }: SimpleChipProps) => {
 	return (
 		<Flex direction="row" className={styles.container} dataTestId={dataTestIds.simpleChip}>
 			<span className={styles.text} data-testid={dataTestIds.simpleChipText}>
 				{children}
 			</span>
-			<button
-				onClick={onDelete}
-				className={styles.button}
-				data-testid={dataTestIds.simpleChipDeleteButton}
-			>
-				x
-			</button>
+			{!disabled && (
+				<button
+					onClick={onDelete}
+					className={styles.button}
+					data-testid={dataTestIds.simpleChipDeleteButton}
+				>
+					x
+				</button>
+			)}
 		</Flex>
 	);
 };
