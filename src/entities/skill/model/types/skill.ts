@@ -42,3 +42,18 @@ export type ErrorResponce = {
 export type EditSkillBodyRequest = CreateOrEditSkillFormValues;
 
 export type EditSkillResponse = Skill | ErrorResponce;
+
+export interface PopularSkill {
+	id: number;
+	skill: Skill;
+	calculatedAt: string;
+	frequencyStat: number;
+}
+
+export type PopularSkillsResponse = Response<PopularSkill[]>;
+
+export type PopularSkillsParamsRequest = {
+	page: number;
+	limit: number;
+	specializationId: number;
+};

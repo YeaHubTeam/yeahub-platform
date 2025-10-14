@@ -6,7 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
-import { useGetResourcesListQuery } from '@/entities/resource';
+import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
 
 import { ResourcesTable } from '@/widgets/resources';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -41,7 +41,7 @@ export const ResourcesAllTab = () => {
 		if (!resources?.data) return [];
 		return resources?.data.map((resource) => ({
 			...resource,
-			disabled: isAuthor && resource?.createdById !== userId,
+			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource?.createdById }),
 		}));
 	}, [resources, userId, isAuthor]);
 

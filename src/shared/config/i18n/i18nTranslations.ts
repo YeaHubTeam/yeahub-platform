@@ -159,6 +159,8 @@ export enum Translation {
 	TOAST_CHANGE_PASSWORD_FAILED_EMAIL = 'toast.password.change.failed.email',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
+	TOAST_USER_VERIFICATION_TELEGRAM_UNLINK_FAILED = 'toast.user.verification.telegram.unlink.failed',
+	TOAST_USER_VERIFICATION_TELEGRAM_UNLINK_SUCCESS = 'toast.user.verification.telegram.unlink.success',
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
@@ -244,6 +246,14 @@ export enum Profile {
 	EMAIL_VERIFICATION_VERIFY_STUB_LINK = 'email.verification.verify.stub.link',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_TITLE = 'email.verification.success.verify.stub.title',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_DESCRIPTION = 'email.verification.success.verify.stub.description',
+	TELEGRAM_VERIFIED_TITLE = 'telegram.verified.title',
+	TELEGRAM_VERIFIED_DESCRIPTION = 'telegram.verified.description',
+	TELEGRAM_VERIFIED_BUTTON = 'telegram.verified.button',
+	TELEGRAM_VERIFIED_STATUS = 'telegram.verified.status',
+	TELEGRAM_VERIFIED_MODAL_TITLE = 'telegram.verified.modal.title',
+	TELEGRAM_VERIFIED_MODAL_DESCRIPTION = 'telegram.verified.modal.description',
+	TELEGRAM_VERIFIED_MODAL_YES = 'telegram.verified.modal.yes',
+	TELEGRAM_VERIFIED_MODAL_NO = 'telegram.verified.modal.no',
 	TELEGRAM_VERIFICATION_TITLE = 'telegram.verification.title',
 	TELEGRAM_VERIFICATION_DESCRIPTION = 'telegram.verification.description',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
@@ -435,6 +445,8 @@ export enum Resources {
 	MODAL_RESOURCE_EDIT_MODERATION_TITLE = 'modal.resource.edit.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
+	WITHDRAW_BUTTON = 'withdraw.button',
+	WITHDRAW_TITLE = 'withdraw.title',
 }
 
 export enum Questions {
@@ -982,4 +994,8 @@ export enum Marketplace {
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
 	REQUEST_TITLE = 'requests.title',
+}
+
+export enum Analytics {
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
 }
