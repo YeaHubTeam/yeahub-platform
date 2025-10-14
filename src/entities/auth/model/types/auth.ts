@@ -83,7 +83,7 @@ export interface User {
 	createdAt: string;
 	updatedAt: string;
 	isVerified?: boolean;
-	telegram: string | null;
+	telegramUsername: string | null;
 	subscriptions: Subscription[];
 	userRoles: Role[];
 }

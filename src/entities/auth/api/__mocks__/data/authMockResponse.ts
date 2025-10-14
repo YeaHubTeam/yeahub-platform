@@ -7,7 +7,7 @@ export const authMockResponse: AuthResponse = {
 		id: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
 		username: 'user',
 		email: 'user@example.com',
-		telegram: 'troll',
+		telegramUsername: 'troll',
 		country: 'AGroba',
 		city: 'Bag-dad',
 		birthday: '1990-01-01T00:00:00.000Z',

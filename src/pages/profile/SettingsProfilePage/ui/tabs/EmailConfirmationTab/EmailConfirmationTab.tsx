@@ -8,12 +8,12 @@ import { EmailVerification } from '@/widgets/EmailVerification';
 import { TelegramVerifiedSection } from '@/widgets/TelegramVerifiedSection';
 
 export const EmailConfirmationTab = () => {
-	const { telegram: telegramUserName } = useAppSelector(getFullProfile);
+	const { telegramUsername } = useAppSelector(getFullProfile);
 
 	return (
 		<Flex direction="column" gap="20">
 			<EmailVerification />
-			{telegramUserName ? <TelegramVerifiedSection /> : <ConfirmationTelegram />}
+			{telegramUsername ? <TelegramVerifiedSection /> : <ConfirmationTelegram />}
 		</Flex>
 	);
 };

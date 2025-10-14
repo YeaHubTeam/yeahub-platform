@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-// import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
-// import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
@@ -32,7 +32,7 @@ const RESOURCES_PER_PAGE = 6;
 const MyResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const {
 		onChangeResources,
@@ -59,15 +59,15 @@ const MyResourcesPage = () => {
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	// const suggestButton = (
-	// 	<Button
-	// 		variant="link-purple"
-	// 		suffix={<Icon icon="plus" />}
-	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-	// 	>
-	// 		{t(Marketplace.LINK_LABEL)}
-	// 	</Button>
-	// );
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.LINK_LABEL)}
+		</Button>
+	);
 
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
@@ -117,7 +117,7 @@ const MyResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
-						{/*{suggestButton}*/}
+						{suggestButton}
 					</Flex>
 				</Flex>
 

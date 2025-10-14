@@ -19,7 +19,7 @@ export const TelegramVerifiedSection = () => {
 	const { t } = useTranslation(i18Namespace.profile);
 	const { isMobileS } = useScreenSize();
 
-	const { telegram: nickname } = useAppSelector(getFullProfile);
+	const { telegramUsername } = useAppSelector(getFullProfile);
 
 	return (
 		<Card className={styles.card}>
@@ -40,7 +40,7 @@ export const TelegramVerifiedSection = () => {
 				</Text>
 				<Flex align="center" gap="8">
 					<Icon icon="telegramWithBackground" color="purple-700" size={28} />
-					<Text variant="body5-accent">@{nickname}</Text>
+					<Text variant="body5-accent">@{telegramUsername}</Text>
 				</Flex>
 			</Flex>
 			<TelegramUnlinkButton />
