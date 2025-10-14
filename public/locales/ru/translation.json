@@ -335,6 +335,12 @@
 				"failed.email": "Некорректный email"
 			}
 		},
+		"verification": {
+			"telegram.unlink": {
+				"success": "Telegram успешно отвязан от Вашего аккаунта",
+				"failed": "Не удалось отвязать Telegram от Вашего аккаунта"
+			}
+		},
 		"companies": {
 			"edit": {
 				"success": "Компания успешно изменена",
