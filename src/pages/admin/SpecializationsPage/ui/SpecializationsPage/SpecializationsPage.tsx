@@ -8,6 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
+import { SearchSection } from '@/widgets/SearchSection';
 import {
 	SpecializationFilterSet,
 	useSpecializationFilter,
@@ -16,6 +17,7 @@ import { SpecializationsTable } from '@/widgets/SpecializationsTable';
 
 import {
 	getSelectedSpecializations,
+	getSpecializationsAuthor,
 	getSpecializationsPageNum,
 	getSpecializationsSearch,
 } from '../../model/selectors/specializationsPageSelectors';
@@ -32,6 +34,7 @@ const SpecializationsPage = () => {
 	const dispatch = useAppDispatch();
 	const page = useSelector(getSpecializationsPageNum);
 	const search = useSelector(getSpecializationsSearch);
+	const author = useSelector(getSpecializationsAuthor);
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
 	const { filter } = useSpecializationFilter();
 
@@ -39,14 +42,15 @@ const SpecializationsPage = () => {
 		if (filter.page && filter.page !== page) {
 			dispatch(specializationsPageActions.setPage(filter.page));
 		}
-		if (filter.authorId !== undefined && filter.authorId !== search) {
-			dispatch(specializationsPageActions.setSearch(filter.authorId));
+		if (filter.authorId !== undefined && filter.authorId !== author) {
+			dispatch(specializationsPageActions.setAuthor(filter.authorId));
 		}
-	}, [filter.page, filter.authorId, page, search, dispatch]);
+	}, [filter.page, filter.authorId, page, author, dispatch]);
 
 	const { data: specializations } = useGetSpecializationsListQuery({
 		...filter,
-		authorId: search,
+		authorId: author,
+		title: search,
 		page,
 	});
 
@@ -54,9 +58,17 @@ const SpecializationsPage = () => {
 		dispatch(specializationsPageActions.setSelectedSpecializations(ids));
 	};
 
+	const onChangeSearch = (value: string) => {
+		dispatch(specializationsPageActions.setSearch(value));
+	};
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SpecializationFilterSet to="create" />
+			<SearchSection
+				to="create"
+				onSearch={onChangeSearch}
+				renderFilter={() => <SpecializationFilterSet />}
+			/>
 			<Card className={styles.content}>
 				<SpecializationsTable
 					specializations={specializations?.data}
