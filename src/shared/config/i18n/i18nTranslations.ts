@@ -442,6 +442,8 @@ export enum Resources {
 	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
+	WITHDRAW_BUTTON = 'withdraw.button',
+	WITHDRAW_TITLE = 'withdraw.title',
 }
 
 export enum Questions {

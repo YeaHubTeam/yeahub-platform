@@ -41,6 +41,10 @@
 			}
 		}
 	},
+	"withdraw": {
+		"button": "Withdraw request",
+		"title": "Do you really want to withdraw the request?"
+	},
 	"admin": {
 		"tabs": {
 			"all": "All resources",
