@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 
 import { useScreenSize } from '@/shared/hooks';
+import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo/AuthorInfo.skeleton';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsListSkeleton } from '@/shared/ui/KeywordsList';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { QuestionAuthorSkeleton, QuestionGradeListSkeleton } from '@/entities/question';
+import { QuestionGradeListSkeleton } from '@/entities/question';
 import { SkillListSkeleton } from '@/entities/skill';
 
 import { QuestionAdditionalInfoProps } from './QuestionAdditionalInfo';
@@ -35,7 +36,7 @@ export const QuestionAdditionalInfoSkeleton = ({
 					</Flex>
 				</Flex>
 			</CardSkeleton>
-			{!isMobile && !isTablet && <QuestionAuthorSkeleton isCenter />}
+			{!isMobile && !isTablet && <AuthorInfoSkeleton isCenter />}
 		</>
 	);
 };

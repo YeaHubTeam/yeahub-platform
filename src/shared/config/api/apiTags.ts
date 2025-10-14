@@ -12,6 +12,8 @@ export enum ApiTags {
 	RESOURCES_DETAIL = 'resources_detail',
 	RESOURCES_TYPES = 'resources_types',
 	COLLECTION_DETAIL = 'collection_detail',
+	RESOURCE_REQUESTS = 'resource_requests',
+	RESOURCE_REQUEST = 'resource_request',
 	SKILLS = 'skills',
 	USERS = 'users',
 	USER_DETAIL = 'user_detail',
@@ -28,4 +30,5 @@ export enum ApiTags {
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
 	PAYMENTS = 'payments',
+	POPULAR_SKILLS = 'skills_popular',
 }

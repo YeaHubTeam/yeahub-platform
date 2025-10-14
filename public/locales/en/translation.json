@@ -22,6 +22,7 @@
 	"support": "Support",
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
+	"author": "Author",
 	"header": {
 		"menu": {
 			"membership": "Choose membership",
@@ -120,7 +121,9 @@
 		"register": "Registration",
 		"wiki": "Knowledge base",
 		"resources": "Resources",
-		"resources.my": "My resources"
+		"resources.my": "My resources",
+		"resources.my.request": "Request",
+		"create.request": "Creating a request"
 	},
 	"toast": {
 		"title": {
@@ -145,9 +148,10 @@
 				}
 			},
 			"telegram": {
-				"verify_denied": "Telegram verification denied",
-				"data_outdated": "Telegram data is outdated",
-				"invalid_data": "Telegram data is invalid"
+				"verification": {
+					"link.success": "Telegram is successfully linked to your account!",
+					"link.error": "Failed to link your Telegram to your account."
+				}
 			}
 		},
 		"questions": {
@@ -324,6 +328,12 @@
 					"success": "Password successfully changed",
 					"failed": "Password could not be changed",
 					"failed.email": "Invalid email"
+				}
+			},
+			"verification": {
+				"telegram.unlink": {
+					"success": "Telegram account successfully unlinked",
+					"failed": "Failed to unlink your Telegram account"
 				}
 			},
 			"companies": {

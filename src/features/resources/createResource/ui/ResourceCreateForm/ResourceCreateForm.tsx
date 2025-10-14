@@ -16,8 +16,8 @@ export const ResourceCreateForm = () => {
 			url: '',
 			description: '',
 			iconBase64: '',
-			resourceSkills: [],
-			resourceSpecializations: [],
+			skills: [],
+			specializations: [],
 			keywords: [],
 		},
 	});

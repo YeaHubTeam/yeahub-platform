@@ -2,7 +2,6 @@ export type {
 	Question,
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
-	Author,
 	GetQuestionsBySpecializationCountResponse,
 } from './model/types/question';
 export {
@@ -29,8 +28,6 @@ export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
-export { QuestionAuthor } from './ui/QuestionAuthor/QuestionAuthor';
-export { QuestionAuthorSkeleton } from './ui/QuestionAuthor/QuestionAuthor.skeleton';
 export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';

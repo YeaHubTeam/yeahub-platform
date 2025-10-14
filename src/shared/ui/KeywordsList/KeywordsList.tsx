@@ -15,7 +15,7 @@ interface KeywordsListProps {
 
 export const KeywordsList = ({ keywords, path }: KeywordsListProps) => {
 	return (
-		<Flex wrap="wrap" gap="10" dataTestId={KeywordsListTestIds.wrapper}>
+		<Flex wrap="wrap" gap="14" dataTestId={KeywordsListTestIds.wrapper}>
 			{keywords.map((keyword) => {
 				return (
 					<Link key={keyword} to={path + encodeURIComponent(keyword)}>

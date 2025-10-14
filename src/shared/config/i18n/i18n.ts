@@ -8,6 +8,7 @@ type Langs = 'en' | 'ru';
 const supportedLngs: Langs[] = ['en', 'ru'];
 
 export const i18Namespace = {
+	analytics: 'analytics',
 	auth: 'auth',
 	analytics: 'analytics',
 	docs: 'docs',
@@ -22,6 +23,7 @@ export const i18Namespace = {
 	profile: 'profile',
 	questions: 'questions',
 	resources: 'resources',
+	resourceRequests: 'resourceRequests',
 	skill: 'skill',
 	specialization: 'specialization',
 	subscription: 'subscription',

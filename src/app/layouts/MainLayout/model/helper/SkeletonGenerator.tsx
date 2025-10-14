@@ -20,6 +20,7 @@ import { InterviewQuizResultPageSkeleton } from '@/pages/interview/InterviewQuiz
 import { InterviewStatisticsPageSkeleton } from '@/pages/interview/InterviewStatisticsPage';
 import { MainPageSkeleton } from '@/pages/interview/MainPage';
 import { QuestionsPageSkeleton } from '@/pages/interview/QuestionsPage';
+import { MediaPageSkeleton } from '@/pages/landing/MediaPage';
 import { ProfilePageSkeleton } from '@/pages/profile/ProfilePage';
 
 const SkeletonGenerator = () => {
@@ -70,7 +71,8 @@ const SkeletonGenerator = () => {
 			return <CollectionsPageSkeleton />;
 		case ROUTES.admin.companies.page:
 			return <CompaniesTablePageSkeleton />;
-
+		case ROUTES.media.page:
+			return <MediaPageSkeleton />;
 		default:
 			return <Loader />;
 	}

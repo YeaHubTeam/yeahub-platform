@@ -1,5 +1,6 @@
 export { MediaLinksBanner } from './ui/MediaLinksBanner/MediaLinksBanner';
 export { MediaLinksList } from './ui/MediaLinksList/MediaLinksList';
+export { MediaLinksListSkeleton } from './ui/MediaLinksList/MediaLinksList.skeleton';
 
 export { getChannelsForSpecialization } from './model/helpers/getChannelsForSpecializations';
 
