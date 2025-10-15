@@ -5,7 +5,7 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useModal, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -116,7 +116,7 @@ const PublicResourcesPage = () => {
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
 				) : (
-					<EmptyStub resetFilters={resetFilters} />
+					<EmptyFilterStub resetFilters={resetFilters} />
 				)}
 
 				<ResourcesPagination

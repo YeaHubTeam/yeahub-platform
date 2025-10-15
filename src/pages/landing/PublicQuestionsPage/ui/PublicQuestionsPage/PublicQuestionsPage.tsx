@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useScreenSize, useModal, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -151,7 +151,7 @@ const PublicQuestionsPage = () => {
 					/>
 				)}
 				{questions.data.length === 0 && (
-					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={getParams.title} resetFilters={resetFilters} />
 				)}
 			</Card>
 			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}

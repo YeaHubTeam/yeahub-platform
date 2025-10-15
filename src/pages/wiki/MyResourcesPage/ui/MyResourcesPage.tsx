@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
+// import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
@@ -21,7 +21,7 @@ import {
 	useMarketplaceFilters,
 	MyResourcesPagination,
 	MyResourcesFiltersPanel,
-	NoRequestsCard,
+	EmptyStub,
 } from '@/widgets/Marketplace';
 
 import styles from './MyResourcesPage.module.css';
@@ -65,26 +65,12 @@ const MyResourcesPage = () => {
 		? t(Marketplace.MY_RESOURCES)
 		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
 
-	const suggestButton = (
-		<Button
-			size="large"
-			variant="primary"
-			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-			className={styles.button}
-		>
-			{t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
-		</Button>
-	);
-
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
 	}
-	//К обсуждению, нужно решить в какой ситуации показывать заглушку об отсутствии данных, тк если юзер unverified,
-	// запрос падает на ошибку, визуала которой нет в макете. сейчас эту заглушку так же видят пользователи у которых есть заявки,
-	//  но под фильтры ничего не подходит, а resetfilters в макете больше нет
 
 	// if (error) {
-	// 	return <div>Не удалось загрузить ресурсы (доступно для верифицированных пользователей)</div>;
+	// 	return <div>Не удалось загрузить ресурсы</div>;
 	// }
 
 	const renderFilters = () => (
@@ -129,15 +115,15 @@ const MyResourcesPage = () => {
 						{(isMobile || isTablet) && filterButton}
 					</Flex>
 				</Flex>
-
 				{hasResources ? (
 					<MyResourcesList resources={resources} />
 				) : (
-					<NoRequestsCard text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}>
-						{suggestButton}
-					</NoRequestsCard>
+					<EmptyStub
+						text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+						button={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+					></EmptyStub>
 				)}
-
 				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
 					currentPage={filter.page ?? 1}

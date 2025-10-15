@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector, useDebounce, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
@@ -102,7 +102,7 @@ const CompaniesTablePage = () => {
 				/>
 
 				{companies.data.length === 0 && (
-					<EmptyStub text={filter.title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={filter.title} resetFilters={resetFilters} />
 				)}
 			</Card>
 		</Flex>
