@@ -1,1 +1,0 @@
-export { specializationProgressMock } from './specializationProgressMock';

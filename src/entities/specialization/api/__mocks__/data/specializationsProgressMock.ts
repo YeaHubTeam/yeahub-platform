@@ -1,8 +1,8 @@
 import { Response } from '@/shared/types/types';
 
-import { SpecializationProgress } from '../../../model/types/specializationProgress';
+import { SpecializationsProgress } from '../../../model/types/specializationsProgress';
 
-export const specializationProgressMock: Response<SpecializationProgress[]> = {
+export const specializationsProgressMock: Response<SpecializationsProgress[]> = {
 	data: [
 		{
 			id: 1,
@@ -17,6 +17,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 		{
 			id: 2,
@@ -31,6 +32,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 		{
 			id: 3,
@@ -45,6 +47,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 		{
 			id: 4,
@@ -59,6 +62,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 		{
 			id: 5,
@@ -73,6 +77,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 		{
 			id: 6,
@@ -87,6 +92,7 @@ export const specializationProgressMock: Response<SpecializationProgress[]> = {
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
 			},
+			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
 	],
 	page: 1,

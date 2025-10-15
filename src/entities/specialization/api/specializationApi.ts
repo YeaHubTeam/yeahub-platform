@@ -3,11 +3,16 @@ import { baseApi } from '@/shared/config/api/baseApi';
 import { route } from '@/shared/helpers/route';
 
 import { specializationApiUrls } from '../model/constants/specializationConstants';
+import { specializationsProgressApiUrls } from '../model/constants/specializationsProgress';
 import {
 	GetSpecializationByIdResponse,
 	GetSpecializationsListParamsRequest,
 	GetSpecializationsListResponse,
 } from '../model/types/specialization';
+import {
+	GetSpecializationsProgressParamsRequest,
+	GetSpecializationsProgressResponse,
+} from '../model/types/specializationsProgress';
 
 const specializationApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -27,7 +32,21 @@ const specializationApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.SPECIALIZATION_DETAIL],
 		}),
+		getSpecializationsGeneralProgress: build.query<
+			GetSpecializationsProgressResponse,
+			GetSpecializationsProgressParamsRequest
+		>({
+			query: (params) => ({
+				url: specializationsProgressApiUrls.getSpecializationsGeneralProgress,
+				params: { page: 1, limit: 10, ...params },
+			}),
+			providesTags: [ApiTags.SPECIALIZATIONS_GENERAL_PROGRESS],
+		}),
 	}),
 });
 
-export const { useGetSpecializationByIdQuery, useGetSpecializationsListQuery } = specializationApi;
+export const {
+	useGetSpecializationByIdQuery,
+	useGetSpecializationsListQuery,
+	useGetSpecializationsGeneralProgressQuery,
+} = specializationApi;
