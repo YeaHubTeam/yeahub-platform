@@ -1,0 +1,39 @@
+.card > div {
+  gap: 30px;
+}
+
+.card p + div {
+  width: fit-content;
+}
+
+.card svg {
+  flex-shrink: 0;
+}
+
+.card button {
+  max-width: 328px;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+
+@media (width < 1024px) {
+  .card {
+    padding: 20px 16px;
+  }
+
+  .card > div {
+    gap: 20px;
+  }
+}
+
+@media (width < 480px) {
+  .card {
+    padding: 20px 10px;
+  }
+
+  .card > div {
+    gap: 16px;
+  }
+} 
