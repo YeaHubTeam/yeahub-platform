@@ -1,10 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { User as UserI18n } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
+import { Flex } from '@/shared/ui/Flex';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { Text } from '@/shared/ui/Text';
 
 import { useGetUsersListQuery } from '../../api/userApi';
 
@@ -25,6 +27,10 @@ export const UserSelect = ({ value, onChange, hasMultiple, disabled }: UserSelec
 	const [selectedUsers, setSelectedUsers] = useState<string[]>(
 		Array.isArray(value) ? value : value ? [value] : [],
 	);
+
+	useEffect(() => {
+		setSelectedUsers(Array.isArray(value) ? value : value ? [value] : []);
+	}, [value]);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
@@ -76,33 +82,36 @@ export const UserSelect = ({ value, onChange, hasMultiple, disabled }: UserSelec
 		);
 	}, [users, t]);
 
-	if (!hasMultiple) {
-		return (
-			<Dropdown
-				size="S"
-				label={options.length ? t(UserI18n.SELECT_CHOOSE) : t(UserI18n.SELECT_EMPTY)}
-				disabled={disabled}
-				value={usersDictionary[selectedUsers[0] || '0']?.title ?? ''}
-				onSelect={(val) => handleChange(String(val))}
-			>
-				{options.map((option) => (
-					<Option value={option.value} label={option.label} key={option.value} />
-				))}
-			</Dropdown>
-		);
-	}
-
 	return (
-		<SelectWithChips
-			size="S"
-			title={t(UserI18n.SELECT_SELECTED)}
-			options={options}
-			onChange={handleChange}
-			selectedItems={selectedUsers}
-			handleDeleteItem={handleDeleteUser}
-			itemsDictionary={usersDictionary}
-			placeholder={options.length ? t(UserI18n.SELECT_CHOOSE) : t(UserI18n.SELECT_EMPTY)}
-			disabled={disabled}
-		/>
+		<Flex direction="column" align="start" gap="8">
+			<Text variant="body2" color="black-700">
+				{t(UserI18n.USER_NAME)}
+			</Text>
+			{!hasMultiple ? (
+				<Dropdown
+					size="S"
+					label={options.length ? t(UserI18n.SELECT_CHOOSE) : t(UserI18n.SELECT_EMPTY)}
+					disabled={disabled}
+					value={usersDictionary[selectedUsers[0] || '0']?.title ?? ''}
+					onSelect={(val) => handleChange(String(val))}
+				>
+					{options.map((option) => (
+						<Option value={option.value} label={option.label} key={option.value} />
+					))}
+				</Dropdown>
+			) : (
+				<SelectWithChips
+					size="S"
+					title={t(UserI18n.SELECT_SELECTED)}
+					options={options}
+					onChange={handleChange}
+					selectedItems={selectedUsers}
+					handleDeleteItem={handleDeleteUser}
+					itemsDictionary={usersDictionary}
+					placeholder={options.length ? t(UserI18n.SELECT_CHOOSE) : t(UserI18n.SELECT_EMPTY)}
+					disabled={disabled}
+				/>
+			)}
+		</Flex>
 	);
 };
