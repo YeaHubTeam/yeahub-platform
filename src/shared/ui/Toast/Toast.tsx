@@ -25,20 +25,21 @@ const Toast = ({ currentToast, message, variant }: ToastProps) => {
 		<Flex
 			gap="16"
 			align="center"
+			dataTestId="Toast_Root"
 			className={classNames(
 				styles.toaster,
 				styles[variant],
 				currentToast.visible ? styles['fade-in'] : styles['fade-out'],
 			)}
 		>
-			<Icon icon={toastIcon[variant]} color={toastColor[variant]} />
+			<Icon icon={toastIcon[variant]} color={toastColor[variant]} data-testid="Toast_Icon" />
 			<Flex direction="column">
-				<Text variant="body3-strong" color={toastColor[variant]}>
+				<Text variant="body3-strong" color={toastColor[variant]} data-testid="Toast_Text">
 					{tI18(toastTitle[variant])}
 				</Text>
 				{message}
 			</Flex>
-			<CloseBtn toastId={currentToast.id} />
+			<CloseBtn toastId={currentToast.id} dataTestId="Toast_CloseBtn" />
 		</Flex>
 	);
 };
