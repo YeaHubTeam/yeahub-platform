@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { ResetFiltersButton } from '@/shared/ui/ResetFiltersButton';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
-import { ResetFiltersButton } from '@/features/user/resetUsers';
 import { UsersFilterSet, useUserFilter } from '@/features/user/UsersFilterSet';
 
 import { SearchSection } from '@/widgets/SearchSection';
@@ -26,7 +26,7 @@ import styles from './UsersTablePage.module.css';
 export const UsersTablePage = () => {
 	const page = useSelector(getUsersPageNum);
 	const [search, setSearch] = useState('');
-	const { filter } = useUserFilter();
+	const { filter, handleFilterChange } = useUserFilter();
 	const { setQueryParams } = useQueryParams();
 
 	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
@@ -37,9 +37,13 @@ export const UsersTablePage = () => {
 	}, 500);
 
 	const hasActiveFiltersOrSearch =
-		(filter.roles && filter.roles.length > 0) ||
-		(filter.isEmailVerified !== undefined && filter.isEmailVerified !== null) ||
-		(search && search.trim() !== '');
+		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || search.trim();
+
+	const onResetFilters = () => {
+		setQueryParams({ page: 1 });
+		handleFilterChange({ roles: undefined, isEmailVerified: undefined });
+		setSearch('');
+	};
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
@@ -48,7 +52,7 @@ export const UsersTablePage = () => {
 				searchValue={search}
 				renderFilter={() => <UsersFilterSet />}
 				showRemoveButton={!!hasActiveFiltersOrSearch}
-				renderRemoveButton={() => <ResetFiltersButton resetSearch={() => setSearch('')} />}
+				renderRemoveButton={() => <ResetFiltersButton onResetFilters={onResetFilters} />}
 			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
