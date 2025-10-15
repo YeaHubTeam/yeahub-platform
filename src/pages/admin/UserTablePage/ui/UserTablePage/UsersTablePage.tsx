@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { ResetFiltersButton } from '@/shared/ui/ResetFiltersButton';
 
@@ -25,13 +26,16 @@ import styles from './UsersTablePage.module.css';
 
 export const UsersTablePage = () => {
 	const page = useSelector(getUsersPageNum);
+	const [searchValue, setSearchValue] = useState('');
 	const [search, setSearch] = useState('');
-	const { filter, handleFilterChange } = useUserFilter();
+
+	const { filter, handleFilterChange, resetFilters } = useUserFilter();
+
 	const { setQueryParams } = useQueryParams();
 
-	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
+	const { data: users, isFetching } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
 
-	const onChangeSearch = useDebounce((value: string) => {
+	const debouncedSearch = useDebounce((value: string) => {
 		setSearch(value);
 		setQueryParams({ page: 1 });
 	}, 500);
@@ -40,23 +44,35 @@ export const UsersTablePage = () => {
 		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || search.trim();
 
 	const onResetFilters = () => {
-		setQueryParams({ page: 1 });
 		handleFilterChange({ roles: undefined, isEmailVerified: undefined });
 		setSearch('');
+		setSearchValue('');
+		resetFilters();
 	};
+
+	const onChangeSearch = (value: string) => {
+		setSearchValue(value);
+		debouncedSearch(value);
+	};
+
+	const userData = users?.data ?? [];
+	const isEmpty = !isFetching && userData.length === 0;
+
+	const resetAll = onResetFilters;
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
-				onSearch={onChangeSearch}
-				searchValue={search}
 				renderFilter={() => <UsersFilterSet />}
 				showRemoveButton={!!hasActiveFiltersOrSearch}
 				renderRemoveButton={() => <ResetFiltersButton onResetFilters={onResetFilters} />}
+				searchValue={searchValue}
+				onSearch={onChangeSearch}
 			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
+				{isEmpty && <EmptyStub resetFilters={resetAll} />}
 			</Card>
 		</Flex>
 	);
