@@ -20,7 +20,7 @@ export interface ResourceAdditionalInfoProps {
 	keywords: string[];
 	specializations: Specialization[];
 	resourceSkills: Skill[];
-	createdBy: Author;
+	createdBy?: Author;
 	className?: string;
 	showAuthor?: boolean;
 	route: string;

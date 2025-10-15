@@ -44,7 +44,7 @@ export const ResourceRequestCreateForm = () => {
 	}, []);
 	const handleCloseModal = useCallback(() => {
 		setIsModalOpen(false);
-		navigate(route(ROUTES.wiki.resources.requests.page));
+		navigate(route(ROUTES.wiki.resources.my.page));
 	}, [navigate]);
 
 	const onCreateResourceRequest = async (formData: CreateResourceRequestFormValues) => {

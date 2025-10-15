@@ -22,7 +22,6 @@ import {
 	useGetResourcesListQuery,
 } from '@/entities/resource';
 
-
 import {
 	ResourcesList,
 	MarketplaceFiltersPanel,
@@ -122,15 +121,15 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
-	// const suggestButton = (
-	// 	<Button
-	// 		variant="link-purple"
-	// 		suffix={<Icon icon="plus" />}
-	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-	// 	>
-	// 		{t(Marketplace.LINK_LABEL)}
-	// 	</Button>
-	// );
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.LINK_LABEL)}
+		</Button>
+	);
 
 	return (
 		<Flex gap="20" align="start">
@@ -141,7 +140,7 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
-						{/*{suggestButton}*/}
+						{suggestButton}
 					</Flex>
 				</Flex>
 

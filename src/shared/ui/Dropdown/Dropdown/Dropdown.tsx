@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import Lens from '@/shared/assets/icons/Magnifer.svg';
@@ -21,6 +21,9 @@ export interface DropdownProps
 	onSelect?: (value: string | number) => void;
 	multiple?: boolean;
 	value?: string;
+	isInput?: boolean;
+	inputValue?: string;
+	onChangeValue?: (value: string) => void;
 }
 
 export const Dropdown = ({
@@ -35,6 +38,9 @@ export const Dropdown = ({
 	width,
 	multiple = false,
 	value = '',
+	isInput = false,
+	inputValue,
+	onChangeValue,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -43,6 +49,33 @@ export const Dropdown = ({
 	const onSelectClick = () => {
 		if (!disabled) setIsOpen((prev) => !prev);
 	};
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!isInput) return;
+		onChangeValue?.(e.target.value);
+	};
+
+	const handleInputClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (!isOpen && !disabled) {
+			setIsOpen(true);
+		}
+	};
+
+	const filteredChildren = useMemo(() => {
+		if (!isInput || !inputValue) {
+			return children;
+		}
+
+		return React.Children.map(children, (child) => {
+			if (!React.isValidElement(child)) return child;
+
+			const childProps = child.props as OptionProps;
+			const matchesSearch = childProps.label.toLowerCase().includes(inputValue.toLowerCase());
+
+			return matchesSearch ? child : null;
+		})?.filter(Boolean);
+	}, [children, inputValue, isInput]);
 
 	return (
 		<div className={classNames(styles.dropdown, className)} style={{ width }} ref={dropdownRef}>
@@ -58,13 +91,17 @@ export const Dropdown = ({
 				isOpen={isOpen}
 				label={label}
 				value={value}
+				isInput={isInput}
+				inputValue={inputValue}
+				onInputChange={handleInputChange}
+				onInputClick={handleInputClick}
 			/>
 			{isOpen && (
 				<div
 					role="listbox"
 					className={classNames(styles.list, styles[`list-${size.toLowerCase()}`])}
 				>
-					{React.Children.map(children, (child) =>
+					{React.Children.map(filteredChildren, (child) =>
 						React.cloneElement(child as React.ReactElement<OptionProps>, {
 							onClick: () => {
 								if (onSelect && 'value' in (child as React.ReactElement<OptionProps>).props) {
