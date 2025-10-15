@@ -34,12 +34,22 @@
 		"rejected": "Rejected"
 	},
 	"modal": {
-		"resource": {
+		"resource.create": {
 			"moderation": {
 				"title": "The resource has been sent for moderation",
 				"message": "The resource has been successfully submitted for moderation. Track its status in the list of resource requests"
 			}
+		},
+		"resource.edit": {
+			"moderation": {
+				"title": "The resource has been successfully edited",
+				"message": "The resource has been updated and submitted for moderation. Track its status in the list of resource requests"
+			}
 		}
+	},
+	"withdraw": {
+		"button": "Withdraw request",
+		"title": "Do you really want to withdraw the request?"
 	},
 	"admin": {
 		"tabs": {

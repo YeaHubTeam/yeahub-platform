@@ -11,7 +11,7 @@ interface SkillListProps {
 export const SkillList = ({ skills, onClick }: SkillListProps) => {
 	return (
 		<Flex componentType="ul" gap="10" wrap="wrap">
-			{skills.map((skill) => {
+			{skills?.map((skill) => {
 				return (
 					<li key={skill.id}>
 						<Chip

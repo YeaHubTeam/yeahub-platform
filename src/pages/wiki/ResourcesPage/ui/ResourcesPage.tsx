@@ -17,7 +17,10 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetResourcesListQuery } from '@/entities/resource';
+import {
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourcesListQuery,
+} from '@/entities/resource';
 
 import {
 	ResourcesList,
@@ -59,6 +62,7 @@ const ResourcesPage = () => {
 		skills: filter.skills,
 		types: filter.resources,
 	});
+	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 
 	useEffect(() => {
 		if (specializationID) {
@@ -117,15 +121,15 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
-	// const suggestButton = (
-	// 	<Button
-	// 		variant="link-purple"
-	// 		suffix={<Icon icon="plus" />}
-	// 		onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-	// 	>
-	// 		{t(Marketplace.LINK_LABEL)}
-	// 	</Button>
-	// );
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.LINK_LABEL)}
+		</Button>
+	);
 
 	return (
 		<Flex gap="20" align="start">
@@ -136,7 +140,7 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
-						{/*{suggestButton}*/}
+						{suggestButton}
 					</Flex>
 				</Flex>
 
@@ -160,7 +164,8 @@ const ResourcesPage = () => {
 					size="large"
 					onClick={handleNavigateToMyResources}
 				>
-					{t(Marketplace.MY_RESOURCES)}
+					{t(Marketplace.MY_RESOURCES)}{' '}
+					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
 				</Button>
 
 				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}

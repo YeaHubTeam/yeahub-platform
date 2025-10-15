@@ -16,7 +16,6 @@ export interface Resource {
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
-	createdById: string;
 	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;

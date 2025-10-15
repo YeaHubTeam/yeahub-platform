@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
-// import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
@@ -31,7 +31,9 @@ const RESOURCES_PER_PAGE = 6;
 
 const MyResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
+
 	const { isMobile, isTablet, isMobileS } = useScreenSize();
+
 	const navigate = useNavigate();
 
 	const {
@@ -59,6 +61,7 @@ const MyResourcesPage = () => {
 
 	const resources = resourcesResponse?.data ?? [];
 	const { t } = useTranslation(i18Namespace.marketplace);
+
 
 	const hasResources = resources.length > 0;
 	const title = hasResources

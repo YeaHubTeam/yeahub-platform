@@ -125,6 +125,8 @@
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
+		"resources.my.request": "Заявка",
+		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки"
 	},
 	"toast": {
@@ -332,6 +334,12 @@
 				"success": "Пароль успешно изменен",
 				"failed": "Не удалось изменить пароль",
 				"failed.email": "Некорректный email"
+			}
+		},
+		"verification": {
+			"telegram.unlink": {
+				"success": "Telegram успешно отвязан от Вашего аккаунта",
+				"failed": "Не удалось отвязать Telegram от Вашего аккаунта"
 			}
 		},
 		"companies": {
