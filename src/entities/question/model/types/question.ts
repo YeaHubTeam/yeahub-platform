@@ -1,4 +1,5 @@
 import { Response } from '@/shared/types/types';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -84,21 +85,19 @@ export type GetQuestionByIdParamsRequest = {
 };
 export type GetQuestionByIdResponse = Question;
 
-export interface GetLearnedQuestionsParamsRequest
+export interface GetQuestionsForLearnParamsRequest
 	extends Omit<GetQuestionsListParamsRequest, 'order' | 'orderBy' | 'random'> {
 	profileId: string;
 	isLearned?: boolean;
 	areFavorites?: boolean;
 }
-export type GetLearnedQuestionsResponse = Response<Question[]>;
+export type GetQuestionsForLearnResponse = Response<Question[]>;
 
 export type GetPublicQuestionByIdResponse = PublicQuestion;
 
 export type GetPublicQuestionByIdParamsRequest = {
 	questionId?: string;
 };
-
-export type Author = { id: string; username: string };
 
 export type SkillQuestion = {
 	skill: string;

@@ -48,10 +48,10 @@
 		"location": "Location",
 		"skills": "Skills"
 	},
-	"setting.tabs": {
+	"settings.tabs": {
 		"select.tariff": "Select tariff",
 		"change.password": "Password change",
-		"verify.email": "E-mail confirmation",
+		"verify.email": "Verification",
 		"account": "Account"
 	},
 	"email.verification": {
@@ -70,6 +70,22 @@
 			"title": "Mail has been successfully confirmed",
 			"description": "Thank you for confirming your mail, now more services are available on the platform"
 		}
+	},
+	"telegram.verified": {
+		"title": "Telegram confirmed",
+		"description": "Thank you for confirming your Telegram. \n It can now be used for login",
+		"button": "Unlink your account",
+		"status": "Verified",
+		"modal": {
+			"title": "Unlink Telegram account",
+			"description": "Are you sure you want to unlink Telegram from your account?",
+			"yes": "Yes",
+			"no": "No"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram is not linked",
+		"description": "Link your Telegram to enable quick login and receive notifications"
 	},
 	"change.password": {
 		"title": "Change your password",

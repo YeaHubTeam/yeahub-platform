@@ -30,7 +30,7 @@
   right: -5px;
   margin: 0;
   cursor: pointer;
-	
+
   &:active {
     outline: none;
   }
@@ -55,6 +55,11 @@
   padding: 30px 40px 40px;
   border-radius: 0 0 24px 24px;
   background-color: var(--color-black-25);
+}
+
+.notification-modal {
+  min-width: 328px;
+  max-width: 410px;
 }
 
 .error-modal {

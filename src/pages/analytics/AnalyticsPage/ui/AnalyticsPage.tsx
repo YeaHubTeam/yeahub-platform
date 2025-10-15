@@ -1,5 +1,15 @@
-import { DifficultQuestionsList } from '@/widgets/analytics/DifficultQuestionsList/index';
+import { Flex } from '@/shared/ui/Flex';
+
+import { DifficultQuestionsList } from '@/widgets/analytics/DifficultQuestionsList';
+import { PopularSkills } from '@/widgets/analytics/PopularSkills';
+import { SkillsProficiency } from '@/widgets/analytics/SkillsProficiency';
 
 export const AnalyticsPage = () => {
-	return <DifficultQuestionsList />;
+	return (
+		<Flex wrap="wrap" gap="20">
+			<SkillsProficiency />
+			<PopularSkills />
+			<DifficultQuestionsList />
+		</Flex>
+	);
 };

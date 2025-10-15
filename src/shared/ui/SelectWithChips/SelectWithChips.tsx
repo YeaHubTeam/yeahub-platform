@@ -17,6 +17,9 @@ type SelectWithChipsProps<T, U> = Omit<
 	disabled?: boolean;
 	handleDeleteItem: (id: U) => () => void;
 	onChange: (value?: string) => void;
+	isInput?: boolean;
+	inputValue?: string;
+	onChangeValue?: (value: string) => void;
 };
 
 export const SelectWithChips = <
@@ -31,10 +34,20 @@ export const SelectWithChips = <
 	handleDeleteItem,
 	itemsDictionary,
 	disabled,
+	inputValue,
+	isInput,
+	onChangeValue,
 }: SelectWithChipsProps<T, U>) => {
 	return (
 		<div className={styles.wrapper}>
-			<Dropdown label={placeholder} disabled={disabled} onSelect={(val) => onChange(String(val))}>
+			<Dropdown
+				isInput={isInput}
+				inputValue={inputValue}
+				onChangeValue={onChangeValue}
+				label={placeholder}
+				disabled={disabled}
+				onSelect={(val) => onChange(String(val))}
+			>
 				{options.map((option) => (
 					<Option value={option.value} label={option.label} key={option.label} />
 				))}

@@ -71,9 +71,7 @@ export const CompaniesTable = ({
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.companies.details.route, company.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
-							{v}
-						</Text>
+						<Text variant={'body3-accent'}>{v}</Text>
 					</Link>
 				) : (
 					v
@@ -94,6 +92,10 @@ export const CompaniesTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COMPANY_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
 				disabled: company.disabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.companies.edit.route, company.id));

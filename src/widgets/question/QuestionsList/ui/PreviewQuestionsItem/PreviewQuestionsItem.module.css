@@ -39,9 +39,9 @@
 }
 
 .image {
-  width: 71px;
-  height: auto;
-  min-height: 70px;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
 }
 
 @media (width <= 768px) {

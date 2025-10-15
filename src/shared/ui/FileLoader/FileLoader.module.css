@@ -20,3 +20,9 @@
   height: 0;
   line-height: 0;
 }
+
+.file-upload-container.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

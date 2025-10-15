@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
@@ -24,23 +25,44 @@ import styles from './UsersTablePage.module.css';
 
 export const UsersTablePage = () => {
 	const page = useSelector(getUsersPageNum);
+	const [searchValue, setSearchValue] = useState('');
 	const [search, setSearch] = useState('');
-	const { filter } = useUserFilter();
+	const { filter, resetFilters } = useUserFilter();
+
 	const { setQueryParams } = useQueryParams();
 
-	const { data: users } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
+	const { data: users, isFetching } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
 
-	const onChangeSearch = useDebounce((value: string) => {
+	const debouncedSearch = useDebounce((value: string) => {
 		setSearch(value);
 		setQueryParams({ page: 1 });
 	}, 500);
 
+	const onChangeSearch = (value: string) => {
+		setSearchValue(value);
+		debouncedSearch(value);
+	};
+
+	const userData = users?.data ?? [];
+	const isEmpty = !isFetching && userData.length === 0;
+
+	const resetAll = () => {
+		setSearch('');
+		setSearchValue('');
+		resetFilters();
+	};
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection onSearch={onChangeSearch} renderFilter={() => <UsersFilterSet />} />
+			<SearchSection
+				searchValue={searchValue}
+				onSearch={onChangeSearch}
+				renderFilter={() => <UsersFilterSet />}
+			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
+				{isEmpty && <EmptyStub resetFilters={resetAll} />}
 			</Card>
 		</Flex>
 	);
