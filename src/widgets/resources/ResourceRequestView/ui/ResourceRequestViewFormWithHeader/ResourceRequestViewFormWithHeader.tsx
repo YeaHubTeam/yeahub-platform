@@ -11,7 +11,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
 
-import { ApproveRequestButton } from '@/features/resources/approveRequest/ui/ApproveRequestButton/ApproveRequestButton';
+import { ApproveRequestButton } from '@/features/resources/approveRequest';
 
 import styles from './ResourceRequestViewFormWithHeader.module.css';
 
@@ -19,9 +19,13 @@ export const ResourceRequestViewFormWithHeader = () => {
 	const { t } = useTranslation(i18Namespace.resources);
 	const { resourceId } = useParams<{ resourceId: string }>();
 
-	const { watch } = useFormContext();
+	const { watch, setValue } = useFormContext();
 
 	const status = watch('status');
+
+	const onSuccess = () => {
+		setValue('status', 'approved');
+	};
 
 	return (
 		<Flex componentType="main" gap="24" className={styles.wrapper}>
@@ -39,7 +43,7 @@ export const ResourceRequestViewFormWithHeader = () => {
 					<ResourceForm readonly />
 					{status === 'pending' && (
 						<Flex gap="12" align="center" style={{ marginLeft: 'auto' }}>
-							<ApproveRequestButton resourceId={resourceId!} />
+							<ApproveRequestButton resourceId={resourceId || ''} onSuccess={onSuccess} />
 						</Flex>
 					)}
 				</Flex>

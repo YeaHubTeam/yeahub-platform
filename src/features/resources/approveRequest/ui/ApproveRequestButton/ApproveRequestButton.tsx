@@ -5,8 +5,6 @@ import { ResourceRequests } from '@/shared/config/i18n/i18nTranslations';
 import { useModal } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 
-import { useGetResourceRequestByIdQuery } from '@/entities/resource';
-
 import { useApproveResourceRequestMutation } from '../../api/approveResourceRequestApi';
 import { ApproveRequestModal } from '../ApproveRequestModal/ApproveRequestModal';
 
@@ -14,11 +12,11 @@ import styles from './ApproveRequestButton.module.css';
 
 interface ApproveRequestButtonProps {
 	resourceId: string;
+	onSuccess: () => void;
 }
 
-export const ApproveRequestButton = ({ resourceId }: ApproveRequestButtonProps) => {
+export const ApproveRequestButton = ({ resourceId, onSuccess }: ApproveRequestButtonProps) => {
 	const { t } = useTranslation(i18Namespace.resources);
-	const { refetch } = useGetResourceRequestByIdQuery(resourceId);
 	const [approveRequest] = useApproveResourceRequestMutation();
 
 	const { isOpen, onOpen, onClose } = useModal();
@@ -28,7 +26,7 @@ export const ApproveRequestButton = ({ resourceId }: ApproveRequestButtonProps) 
 
 		try {
 			await approveRequest(resourceId).unwrap();
-			await refetch();
+			onSuccess();
 		} catch {
 			return;
 		}

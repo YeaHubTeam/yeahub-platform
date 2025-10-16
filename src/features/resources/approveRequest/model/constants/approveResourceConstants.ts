@@ -1,4 +1,3 @@
 export const approveResourceApiUrls = {
-	approveResourceRequest: (resourceId: string) =>
-		`/external-products/request/${resourceId}/approve`,
+	approveResourceRequest: 'external-products/request/:requestId/approve',
 };
