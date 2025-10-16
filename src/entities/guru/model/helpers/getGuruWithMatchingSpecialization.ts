@@ -17,7 +17,7 @@ export const getGuruWithMatchingSpecialization = (
 
 	for (const guru of gurus) {
 		for (const specialization of specializations) {
-			if (guru.specializationId === specialization.id) {
+			if (guru.specializations.includes(specialization.id)) {
 				return guru;
 			}
 		}

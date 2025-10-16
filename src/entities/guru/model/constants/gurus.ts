@@ -4,7 +4,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'Frontend Guru',
 		name: 'Ruslan Kuyanets',
-		specializationId: 11,
+		specializations: [11],
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D1%80%D1%83%D1%81%D0%BB%D0%B0%D0%BD%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D1%80%20(1).jpeg',
 		socials: {
@@ -16,7 +16,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'Android Guru',
 		name: 'Anton Gulyaev',
-		specializationId: 27,
+		specializations: [27],
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D1%80.png',
 		socials: {
@@ -28,7 +28,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'iOS Guru',
 		name: 'Roman Isakov',
-		specializationId: 26,
+		specializations: [26],
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/рома.jpg',
 		socials: {
 			telegram: 'https://t.me/isakov_ios',
@@ -39,7 +39,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'Golang Guru',
 		name: 'Maxim Lukyanov',
-		specializationId: 23,
+		specializations: [23],
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/Автостоп.jpg',
 		socials: {
 			telegram: 'https://t.me/Avtostopom_po_G0',
@@ -50,7 +50,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'QA Manual Guru',
 		name: 'Ziyaev Ed',
-		specializationId: 29,
+		specializations: [29],
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D1%8D%D0%B41.jpg',
 		socials: {
 			telegram: 'https://t.me/twitereda',
@@ -61,7 +61,7 @@ export const gurus: Guru[] = [
 	{
 		title: 'Node.js Guru',
 		name: 'Demetra',
-		specializationId: 21,
+		specializations: [21],
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B4%D0%B5%D0%BC%D0%B5%D1%82%D1%80%D0%B0.jpg',
 		socials: {
@@ -72,13 +72,47 @@ export const gurus: Guru[] = [
 	{
 		title: 'Rust Guru',
 		name: 'Eduard Paul',
-		specializationId: 28,
+		specializations: [28],
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%9F%D0%B0%D1%83%D0%BB%D1%8C.jpg',
 		socials: {
 			telegram: 'https://t.me/EduardPaul_Rust',
 			youtube: 'https://youtube.com/@ed.paul_mentor',
 			profileId: 'c2d730c0-5f3f-4cd9-a85b-896aee31acc1',
+		},
+	},
+	{
+		title: 'System Analysis Guru',
+		name: 'Tsarev Andrei',
+		specializations: [42, 44],
+		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/saguruandrey.jpg',
+		socials: {
+			telegram: 'https://t.me/notsystemanalysis',
+			youtube: 'https://www.youtube.com/@notsystemanalysis',
+			profileId: '75ff78e7-89be-47fd-8afa-2ae83ba174c7',
+		},
+	},
+	{
+		title: '1C Developer Guru',
+		name: 'Nadvorny Vladimir',
+		specializations: [41, 43],
+		image:
+			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B3%D1%83%D1%80%D1%831%D1%81.jpg',
+		socials: {
+			telegram: 'https://t.me/Mentor1CProfi',
+			profileId: '73771794-59d6-4c5b-8449-07e1887ea0d2',
+		},
+	},
+	{
+		title: 'Unity Guru',
+		name: 'Oleg Miroshkin',
+		specializations: [35],
+		image:
+			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%BE%D0%BB%D0%B5%D0%B3%D0%B3%D0%B5%D0%B8%CC%86%D0%BC.png',
+		socials: {
+			telegram: 'https://t.me/wealthygamedev',
+			youtube: 'https://www.youtube.com/@wealthygamedev',
+			profileId: '801d60b8-4f72-4180-984d-8d6811c71963',
 		},
 	},
 ];
