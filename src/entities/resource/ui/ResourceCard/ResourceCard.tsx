@@ -16,7 +16,7 @@ type ResourceCardProps = {
 };
 
 export const ResourceCard = ({ resource }: ResourceCardProps) => {
-	const { name, description, url, imageSrc, type, specializations } = resource;
+	const { name, description, url, imageSrc, type } = resource;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -53,19 +53,6 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 					<Text variant="body2" color="black-700" maxRows={3}>
 						{description}
 					</Text>
-
-					<Flex gap="14">
-						{specializations.map((specialization) => (
-							<Text
-								variant="body3"
-								color="black-500"
-								key={specialization.id}
-								className={styles.specialization}
-							>
-								{specialization.title}
-							</Text>
-						))}
-					</Flex>
 				</Flex>
 			</a>
 		</Card>

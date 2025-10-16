@@ -31,7 +31,9 @@ const RESOURCES_PER_PAGE = 6;
 
 const MyResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
+
 	const { isMobile, isTablet, isMobileS } = useScreenSize();
+
 	const navigate = useNavigate();
 
 	const {

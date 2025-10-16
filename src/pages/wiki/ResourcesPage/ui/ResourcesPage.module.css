@@ -67,6 +67,7 @@
   top: -60px;
   right: 0;
   width: 153px;
+  white-space: nowrap;
 }
 
 @media screen and (width < 1024px) {

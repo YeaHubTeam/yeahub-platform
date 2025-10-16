@@ -2,6 +2,7 @@ export enum ApiTags {
 	PROFILE_DETAIL = 'profile_detail',
 	PROFILE = 'profile',
 	QUESTION_DETAIL = 'question_detail',
+	QUESTIONS_LEARN = 'question_learn',
 	QUESTIONS_LEARNED = 'question_learned',
 	QUESTIONS = 'questions',
 	QUESTION_STATISTICS = 'question_statistic',
@@ -12,6 +13,7 @@ export enum ApiTags {
 	RESOURCES_TYPES = 'resources_types',
 	COLLECTION_DETAIL = 'collection_detail',
 	RESOURCE_REQUESTS = 'resource_requests',
+	RESOURCE_REQUEST = 'resource_request',
 	SKILLS = 'skills',
 	USERS = 'users',
 	USER_DETAIL = 'user_detail',
@@ -28,4 +30,5 @@ export enum ApiTags {
 	COMPANIES = 'companies',
 	COMPANY_DETAIL = 'company_detail',
 	PAYMENTS = 'payments',
+	POPULAR_SKILLS = 'skills_popular',
 }
