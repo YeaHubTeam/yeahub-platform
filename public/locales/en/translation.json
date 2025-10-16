@@ -263,6 +263,12 @@
 				"failed": "Не удалось одобрить заявку на ресурс"
 			}
 		},
+		"resource.request": {
+			"reject": {
+				"success": "The resource request has been successfully rejected",
+				"failed": "Failed to reject the resource request"
+			}
+		},
 		"profile": {
 			"update": {
 				"success": "Profile has been successfully changed",

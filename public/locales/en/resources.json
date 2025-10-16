@@ -38,12 +38,6 @@
 			"moderation": {
 				"title": "The resource has been sent for moderation",
 				"message": "The resource has been successfully submitted for moderation. Track its status in the list of resource requests"
-			},
-			"approveRequest": {
-				"title": "Confirmation",
-				"message": "Do you really want to approve the resource request?",
-				"buttonOk": "Yes",
-				"buttonCancel": "No"
 			}
 		},
 		"resource.edit": {
@@ -51,6 +45,18 @@
 				"title": "The resource has been successfully edited",
 				"message": "The resource has been updated and submitted for moderation. Track its status in the list of resource requests"
 			}
+		},
+		"resource.approve.request": {
+			"title": "Confirmation",
+			"message": "Do you really want to approve the resource request?",
+			"button.ok": "Yes",
+			"button.cancel": "No"
+		},
+		"resource.reject.request": {
+			"title": "Reject resource request",
+			"message": "Are you sure you want to reject the resource request?",
+			"button.ok": "Yes",
+			"button.cancel": "No"
 		}
 	},
 	"withdraw": {
@@ -65,6 +71,7 @@
 	},
 	"requests": {
 		"title": "Viewing a request for a resource",
+		"reject": "Reject",
 		"approve": "Approve"
 	}
 }

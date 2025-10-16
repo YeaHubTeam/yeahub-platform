@@ -192,6 +192,8 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
 	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
+	TOAST_RESOURCE_REQUEST_REJECT_SUCCESS = 'toast.resource.request.reject.success',
+	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
@@ -726,10 +728,15 @@ export enum ResourceRequests {
 	TABS_ALL = 'admin.tabs.all',
 	TABS_REQUESTS = 'admin.tabs.requests',
 	APPROVE_BUTTON = 'requests.approve',
-	APPROVE_CONFIRMATION_MODAL_TITLE = 'modal.resource.approveRequest.title',
-	APPROVE_CONFIRMATION_MODAL_MESSAGE = 'modal.resource.approveRequest.message',
-	MODAL_ACTIONS_OK = 'modal.resource.approveRequest.buttonOk',
-	MODAL_ACTIONS_CANCEL = 'modal.resource.approveRequest.buttonCancel',
+	MODAL_RESOURCE_APPROVE_REQUEST_TITLE = 'modal.resource.approve.request.title',
+	MODAL_RESOURCE_APPROVE_REQUEST_MESSAGE = 'modal.resource.approve.request.message',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_OK = 'modal.resource.approve.request.button.ok',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_CANCEL = 'modal.resource.approve.request.button.cancel',
+	REJECT_BUTTON = 'requests.reject',
+	MODAL_RESOURCE_REJECT_REQUEST_TITLE = 'modal.resource.reject.request.title',
+	MODAL_RESOURCE_REJECT_REQUEST_MESSAGE = 'modal.resource.reject.request.message',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_OK = 'modal.resource.reject.request.button.ok',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_CANCEL = 'modal.resource.reject.request.button.cancel',
 }
 
 export enum Landing {
