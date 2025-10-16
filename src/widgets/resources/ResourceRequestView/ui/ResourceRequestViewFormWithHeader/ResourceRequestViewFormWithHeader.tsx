@@ -20,13 +20,9 @@ export const ResourceRequestViewFormWithHeader = () => {
 	const { t } = useTranslation(i18Namespace.resources);
 	const { resourceId } = useParams<{ resourceId: string }>();
 
-	const { watch, setValue } = useFormContext();
+	const { watch } = useFormContext();
 
 	const status = watch('status');
-
-	const onSuccess = () => {
-		setValue('status', 'approved');
-	};
 
 	return (
 		<Flex componentType="main" gap="24" className={styles.wrapper}>
@@ -45,7 +41,7 @@ export const ResourceRequestViewFormWithHeader = () => {
 					{status === 'pending' && (
 						<Flex gap="12" align="center" style={{ marginLeft: 'auto' }}>
 							<RejectResourceRequestButton resourceId={resourceId ?? ''} />
-							<ApproveRequestButton resourceId={resourceId || ''} onSuccess={onSuccess} />
+							<ApproveRequestButton resourceId={resourceId || ''} />
 						</Flex>
 					)}
 				</Flex>

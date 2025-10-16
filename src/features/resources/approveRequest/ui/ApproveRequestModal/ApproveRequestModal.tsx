@@ -17,13 +17,13 @@ export const ApproveRequestModal = ({ isOpen, onClose, onOk }: ApproveRequestMod
 		<Modal
 			isOpen={isOpen}
 			onClose={onClose}
-			title={t(ResourceRequests.APPROVE_CONFIRMATION_MODAL_TITLE)}
-			buttonPrimaryText={t(ResourceRequests.MODAL_ACTIONS_OK)}
-			buttonOutlineText={t(ResourceRequests.MODAL_ACTIONS_CANCEL)}
+			title={t(ResourceRequests.MODAL_RESOURCE_APPROVE_REQUEST_TITLE)}
+			buttonPrimaryText={t(ResourceRequests.MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_OK)}
+			buttonOutlineText={t(ResourceRequests.MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_CANCEL)}
 			buttonPrimaryClick={onOk}
 			buttonOutlineClick={onClose}
 		>
-			{t(ResourceRequests.APPROVE_CONFIRMATION_MODAL_MESSAGE)}
+			{t(ResourceRequests.MODAL_RESOURCE_APPROVE_REQUEST_MESSAGE)}
 		</Modal>
 	);
 };

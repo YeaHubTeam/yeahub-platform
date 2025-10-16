@@ -24,7 +24,7 @@ const rejectResourceRequestApi = baseApi.injectEndpoints({
 					toast.error(i18n.t(Translation.TOAST_RESOURCE_REQUEST_REJECT_FAILED));
 				}
 			},
-			invalidatesTags: [ApiTags.RESOURCE_REQUESTS],
+			invalidatesTags: [ApiTags.RESOURCE_REQUESTS, ApiTags.RESOURCE_REQUEST],
 		}),
 	}),
 });

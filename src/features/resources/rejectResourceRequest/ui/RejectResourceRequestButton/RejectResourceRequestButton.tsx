@@ -7,8 +7,8 @@ import { Button } from '@/shared/ui/Button';
 
 import { ResourceRequest } from '@/entities/resource';
 
-import { useRejectResourceRequestMutation } from '@/features/resources/rejectResourceRequest/api/rejectResourceRequestApi';
-import { RejectResourceRequestModal } from '@/features/resources/rejectResourceRequest/ui/RejectResourceRequestModal/RejectResourceRequestModal';
+import { useRejectResourceRequestMutation } from '../../api/rejectResourceRequestApi';
+import { RejectResourceRequestModal } from '../../ui/RejectResourceRequestModal/RejectResourceRequestModal';
 
 interface RejectResourceRequestButtonProps {
 	resourceId: ResourceRequest['id'];

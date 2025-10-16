@@ -20,12 +20,13 @@ export const RejectResourceRequestModal = ({
 		<Modal
 			isOpen={isOpen}
 			onClose={onClose}
-			buttonPrimaryText={t(ResourceRequests.REJECT_MODAL_TITLE_YES)}
-			buttonOutlineText={t(ResourceRequests.REJECT_MODAL_TITLE_NO)}
+			title={t(ResourceRequests.MODAL_RESOURCE_REJECT_REQUEST_TITLE)}
+			buttonPrimaryText={t(ResourceRequests.MODAL_RESOURCE_REJECT_REQUEST_BUTTON_OK)}
+			buttonOutlineText={t(ResourceRequests.MODAL_RESOURCE_REJECT_REQUEST_BUTTON_CANCEL)}
 			buttonPrimaryClick={onOk}
 			buttonOutlineClick={onClose}
 		>
-			<div>{t(ResourceRequests.REJECT_MODAL_TEXT)}</div>
+			{t(ResourceRequests.MODAL_RESOURCE_REJECT_REQUEST_MESSAGE)}
 		</Modal>
 	);
 };

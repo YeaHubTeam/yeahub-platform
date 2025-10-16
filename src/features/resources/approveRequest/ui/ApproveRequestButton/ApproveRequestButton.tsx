@@ -12,23 +12,20 @@ import styles from './ApproveRequestButton.module.css';
 
 interface ApproveRequestButtonProps {
 	resourceId: string;
-	onSuccess: () => void;
 }
 
-export const ApproveRequestButton = ({ resourceId, onSuccess }: ApproveRequestButtonProps) => {
+export const ApproveRequestButton = ({ resourceId }: ApproveRequestButtonProps) => {
 	const { t } = useTranslation(i18Namespace.resources);
 	const [approveRequest] = useApproveResourceRequestMutation();
 
 	const { isOpen, onOpen, onClose } = useModal();
 
 	const handleApprove = async () => {
-		onClose();
-
 		try {
 			await approveRequest(resourceId).unwrap();
-			onSuccess();
-		} catch {
-			return;
+			onClose();
+		} catch (error) {
+			console.error(error);
 		}
 	};
 
