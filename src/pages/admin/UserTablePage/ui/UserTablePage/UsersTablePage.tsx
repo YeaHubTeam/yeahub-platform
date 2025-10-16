@@ -69,7 +69,7 @@ export const UsersTablePage = () => {
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
-				{isEmpty && <EmptyFilterStub resetFilters={resetAll} />}
+				{isEmpty && <EmptyFilterStub resetFilters={onResetFilters} />}
 			</Card>
 		</Flex>
 	);
