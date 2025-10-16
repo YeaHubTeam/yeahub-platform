@@ -475,3 +475,7 @@
 .a-link-destructive.disabled {
   color: var(--link-text-color-destructive-disabled);
 }
+
+.aaa {
+  justify-content: flex-start;
+}

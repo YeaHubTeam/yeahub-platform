@@ -46,7 +46,8 @@
 		"specialization": "IT специальность",
 		"email": "Email для связи",
 		"location": "Локация",
-		"skills": "Навыки"
+		"skills": "Навыки",
+		"switch.specialization": "Сменить специальность"
 	},
 	"settings.tabs": {
 		"select.tariff": "Выбрать тариф",

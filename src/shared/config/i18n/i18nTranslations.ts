@@ -233,6 +233,7 @@ export enum Profile {
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
 	FORM_SKILLS = 'form.skills',
+	FORM_SWITCH_SPECIALIZATION = 'form.switch.specialization',
 	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',

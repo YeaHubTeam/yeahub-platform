@@ -46,7 +46,8 @@
 		"specialization": "IT specialty",
 		"email": "Email for communication",
 		"location": "Location",
-		"skills": "Skills"
+		"skills": "Skills",
+		"switch.specialization": "Change specialization"
 	},
 	"settings.tabs": {
 		"select.tariff": "Select tariff",
