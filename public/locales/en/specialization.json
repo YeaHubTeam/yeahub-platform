@@ -28,13 +28,13 @@
 	"create.page.title": "Creating new specialization",
 	"edit.page.title": "Edit specialization",
 	"progress": {
-	"title": "Overall progress in specialty",
-	"detail": "Detail",
-	"table": {
-		"specialization": "specialization",
-		"skills": "Skills",
-		"questions": "Questions",
-		"progress": "Progress"
-	}
+		"title": "Overall progress in specialty",
+		"detail": "Detail",
+		"table": {
+			"specialization": "specialization",
+			"skills": "Skills",
+			"questions": "Questions",
+			"progress": "Progress"
+		}
 	}
 }
