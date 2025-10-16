@@ -339,6 +339,12 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	PROGRESS_TITLE = 'progress.title',
+	PROGRESS_DETAIL = 'progress.detail',
+	PROGRESS_TABLE_SPECIALIZATION = 'progress.table.specialization',
+	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
+	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
+	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 }
 
 export enum Analytics {

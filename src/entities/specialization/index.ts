@@ -2,9 +2,11 @@ export type {
 	Specialization,
 	CreateOrEditSpecializationFormValues,
 } from './model/types/specialization';
+export type { SpecializationsProgress } from './model/types/specializationsProgress';
 export {
 	useGetSpecializationsListQuery,
 	useGetSpecializationByIdQuery,
+	useGetSpecializationsGeneralProgressQuery,
 } from './api/specializationApi';
 export { SpecializationCard } from './ui/SpecializationCard/SpecializationCard';
 export { SpecializationForm } from './ui/SpecializationForm/SpecializationForm';
@@ -14,9 +16,9 @@ export { SpecializationsList } from './ui/SpecializationsList/SpecializationsLis
 export { SpecializationsListField } from './ui/SpecializationsListField/SpecializationsListField';
 export { SpecializationsListFieldSkeleton } from './ui/SpecializationsListField/SpecializationsListField.skeleton';
 export { SpecializationsListSkeleton } from './ui/SpecializationsList/SpecializationsList.skeleton';
-export { specializationHandlers } from './api/__mocks__';
+export { specializationHandlers, specializationsProgressHandlers } from './api/__mocks__';
 
-export { specializationsMock } from './api/__mocks__/data';
+export { specializationsMock, specializationsProgressMock } from './api/__mocks__/data';
 
 export {
 	LS_ACTIVE_SPECIALIZATION_ID,
