@@ -18,7 +18,9 @@ export const MostDifficultQuestions = ({
 
 	return (
 		<Flex direction="column" gap="12">
-			<MostDifficultQuestion questions={filteredQuestions} />
+			{filteredQuestions?.map((question) => (
+				<MostDifficultQuestion key={question.questionId} question={question} />
+			))}
 		</Flex>
 	);
 };

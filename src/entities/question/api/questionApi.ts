@@ -7,7 +7,6 @@ import {
 	GetLearnedQuestionsResponse,
 } from '@/entities/question/model/types/learnedQuestion';
 
-import { mostDifficultQuestionsApiUrls, questionApiUrls } from '../model/constants/question';
 import { questionApiUrls } from '../model/constants/question';
 import {
 	GetQuestionsForLearnParamsRequest,
@@ -85,13 +84,10 @@ const questionApi = baseApi.injectEndpoints({
 		),
 		getMostDifficultQuestionsBySpecializationId: build.query<
 			MostDifficultQuestionsResponse,
-			{ specId: number }
+			number
 		>({
-			query: ({ specId }) => ({
-				url: route(
-					mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
-					specId,
-				),
+			query: (specId) => ({
+				url: route(questionApiUrls.getMostDifficultQuestionsBySpecializationId, specId),
 			}),
 		}),
 	}),

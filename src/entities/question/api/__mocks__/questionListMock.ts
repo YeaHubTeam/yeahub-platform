@@ -1,6 +1,6 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
-import { mostDifficultQuestionsApiUrls, questionApiUrls } from '../../model/constants/question';
+import { questionApiUrls } from '../../model/constants/question';
 import {
 	GetQuestionsListResponse,
 	GetQuestionsListParamsRequest,
@@ -68,9 +68,6 @@ export const mostDifficultQuestionsMock = http.get<
 	never,
 	undefined,
 	MostDifficultQuestionsResponse
->(
-	process.env.API_URL + mostDifficultQuestionsApiUrls.getMostDifficultQuestionsBySpecializationId,
-	() => {
-		return HttpResponse.json<MostDifficultQuestionsResponse>(mostDifficultQuestions);
-	},
-);
+>(process.env.API_URL + questionApiUrls.getMostDifficultQuestionsBySpecializationId, () => {
+	return HttpResponse.json<MostDifficultQuestionsResponse>(mostDifficultQuestions);
+});

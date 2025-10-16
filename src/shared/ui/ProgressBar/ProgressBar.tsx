@@ -4,13 +4,16 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './ProgressBar.module.css';
 
+export type ProgressBarVariant = 'small' | 'large' | 'medium';
+export type ProgressBarColor = 'green' | 'yellow' | 'red';
+
 export interface ProgressBarProps {
 	currentCount: number;
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large' | 'medium';
-	color?: 'green' | 'yellow' | 'red';
+	variant?: ProgressBarVariant;
+	color?: ProgressBarColor;
 }
 
 export const ProgressBar = ({

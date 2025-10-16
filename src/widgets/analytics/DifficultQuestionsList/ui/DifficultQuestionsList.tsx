@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { Analytics } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
@@ -14,18 +14,17 @@ import {
 import styles from './DifficultQuestionsList.module.css';
 
 export const DifficultQuestionsList = () => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data: difficultQuestions } = useGetMostDifficultQuestionsBySpecializationIdQuery({
-		specId: specializationId,
-	});
+	const { data: difficultQuestions } =
+		useGetMostDifficultQuestionsBySpecializationIdQuery(specializationId);
 
 	return (
 		<Card
 			className={styles.card}
-			title={`${t(Questions.MOST_DIFFICULT_QUESTIONS_TITLE)} ${difficultQuestions?.specialization.title}`}
-			actionTitle={t(Questions.MORE)}
+			title={`${t(Analytics.MOST_DIFFICULT_QUESTIONS_TITLE)} ${difficultQuestions?.specialization.title}`}
+			actionTitle={t(Analytics.MOST_DIFFICULT_QUESTIONS_LINK_DETAIL)}
 			actionRoute="/"
 			isActionPositionBottom
 		>

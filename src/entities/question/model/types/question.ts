@@ -113,7 +113,7 @@ export interface TopStat {
 	questionId: number;
 	title: string;
 	answersCount: number;
-	state: number;
+	stat: number;
 }
 
 export interface MostDifficultQuestionsResponse {
