@@ -43,6 +43,8 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
+import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
+import { ResourceRequestViewPage } from '@/pages/admin/ResourceViewPage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
 import { SkillDetailPage } from '@/pages/admin/SkillDetailPage';
 import { SkillEditPage } from '@/pages/admin/SkillEditPage';
@@ -83,12 +85,15 @@ import { PublicQuestionPage } from '@/pages/landing/PublicQuestionPage';
 import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
 import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
+import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
 import { UserProfilePage } from '@/pages/profile/UserProfilePage';
 import { MyResourcesPage } from '@/pages/wiki/MyResourcesPage';
+import { RequestInfoPage } from '@/pages/wiki/RequestInfoPage';
 import { RequestResourceCreatePage } from '@/pages/wiki/RequestResourceCreatePage';
+import { RequestResourceEditPage } from '@/pages/wiki/RequestResourceEditPage';
 import { ResourcesPage } from '@/pages/wiki/ResourcesPage';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
@@ -102,8 +107,6 @@ import { UnAuthRoute } from '../ui/UnAuthRoute';
 import { VerifiedEmailRoute } from '../ui/VerifiedEmailRoute';
 
 import '../../../styles/App.css';
-import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
-import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -372,6 +375,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.edit.page,
 				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.view.page,
+				element: <ResourceRequestViewPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -675,6 +682,20 @@ export const router = createBrowserRouter([
 										element: <RequestResourceCreatePage />,
 										handle: {
 											crumb: Translation.CRUMBS_CREATE_REQUEST,
+										},
+									},
+									{
+										path: ROUTES.wiki.resources.my.request.route,
+										element: <RequestInfoPage />,
+										handle: {
+											crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
+										},
+									},
+									{
+										path: ROUTES.wiki.resources.my.edit.route,
+										element: <RequestResourceEditPage />,
+										handle: {
+											crumb: Translation.CRUMBS_EDIT_REQUEST,
 										},
 									},
 								],

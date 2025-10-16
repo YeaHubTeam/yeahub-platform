@@ -1,0 +1,11 @@
+{
+	"title.popular.skills": "Популярность навыков в квизах",
+	"skill.proficiency": {
+		"title": "Средний % изученности навыка",
+		"link.detail": "Подробнее"
+	},
+	"most.difficult.questions": {
+		"title": "Топ самых сложных вопросов",
+		"link.detail": "Подробнее"
+	}
+}

@@ -10,7 +10,8 @@
 
 .submit-button {
   position: absolute;
-  top: 18px;
+  top: 12px;
+  padding: 0 18px;
 }
 
 .content {

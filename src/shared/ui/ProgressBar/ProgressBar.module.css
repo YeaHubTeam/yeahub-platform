@@ -50,6 +50,49 @@
   }
 }
 
+.progress-bar-medium {
+  width: 100%;
+  height: 6px;
+  border-radius: 21px;
+}
+
+.progress-bar-green {
+  &::-webkit-progress-value {
+    border-radius: 50px;
+    background-color: var(--color-green-750);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 50px;
+    background-color:  var(--color-green-450);
+  }
+}
+
+.progress-bar-yellow {
+  &::-webkit-progress-value {
+    border-radius: 50px;
+    background-color: var(--color-yellow-800);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 50px;
+    background-color: var(--color-yellow-500);
+  }
+}
+
+.progress-bar-red {
+  &::-webkit-progress-value {
+    border-radius: 50px;
+    background-color: var(--color-red-700);
+  }
+
+  &::-webkit-progress-bar {
+    border-radius: 50px;
+    background-color:  var(--color-red-100);
+  }
+}
+
+
 /* .progress-bar-large { */
 
 /*	width: 100%; */

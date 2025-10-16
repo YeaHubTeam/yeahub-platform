@@ -72,7 +72,6 @@ export const authApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
-
 		register: build.mutation<SignUpResponse, SignUpBodyRequest>({
 			query: (body) => ({
 				url: authApiUrls.register,

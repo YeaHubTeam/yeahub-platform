@@ -1,0 +1,11 @@
+{
+	"title.popular.skills": "The popularity of skills in quizzes",
+	"skill.proficiency": {
+		"title": "Average % of skill proficiency",
+		"link.detail": "More details"
+	},
+	"most.difficult.questions": {
+		"title": "Most Difficult questions",
+		"link.detail": "More details"
+	}
+}

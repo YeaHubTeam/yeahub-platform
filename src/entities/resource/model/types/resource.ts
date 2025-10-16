@@ -16,7 +16,6 @@ export interface Resource {
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
-	createdById: string;
 	createdBy: Author;
 	createdAt: string;
 	updatedAt: string;
@@ -76,7 +75,7 @@ export type GetResourceByIdParamsRequest = {
 
 export type GetResourceByIdResponse = Resource;
 
-export type CreateOrEditResourceFormValues = Pick<
+export type CreateOrEditOrViewResourceFormValues = Pick<
 	Resource,
 	'id' | 'name' | 'description' | 'iconBase64' | 'url'
 > & {
