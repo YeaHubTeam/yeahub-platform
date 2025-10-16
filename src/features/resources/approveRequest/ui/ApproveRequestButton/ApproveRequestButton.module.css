@@ -1,0 +1,4 @@
+.button { 
+  font-weight: var(--font-weight-600); 
+  width: 170px;
+}

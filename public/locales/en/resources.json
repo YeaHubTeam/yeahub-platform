@@ -38,6 +38,12 @@
 			"moderation": {
 				"title": "The resource has been sent for moderation",
 				"message": "The resource has been successfully submitted for moderation. Track its status in the list of resource requests"
+			},
+			"approveRequest": {
+				"title": "Confirmation",
+				"message": "Do you really want to approve the resource request?",
+				"buttonOk": "Yes",
+				"buttonCancel": "No"
 			}
 		},
 		"resource.edit": {
@@ -58,6 +64,7 @@
 		}
 	},
 	"requests": {
-		"title": "Viewing a request for a resource"
+		"title": "Viewing a request for a resource",
+		"approve": "Approve"
 	}
 }
