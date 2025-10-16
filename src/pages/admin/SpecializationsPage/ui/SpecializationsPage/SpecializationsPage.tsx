@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks';
@@ -7,13 +8,16 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
-import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpecializations';
-
 import { SearchSection } from '@/widgets/SearchSection';
+import {
+	SpecializationFilterSet,
+	useSpecializationFilter,
+} from '@/widgets/specializationFilterSet';
 import { SpecializationsTable } from '@/widgets/SpecializationsTable';
 
 import {
 	getSelectedSpecializations,
+	getSpecializationsAuthor,
 	getSpecializationsPageNum,
 	getSpecializationsSearch,
 } from '../../model/selectors/specializationsPageSelectors';
@@ -30,13 +34,30 @@ const SpecializationsPage = () => {
 	const dispatch = useAppDispatch();
 	const page = useSelector(getSpecializationsPageNum);
 	const search = useSelector(getSpecializationsSearch);
+	const author = useSelector(getSpecializationsAuthor);
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
+	const { filter } = useSpecializationFilter();
 
-	const { data: specializations } = useGetSpecializationsListQuery({ page, title: search });
+	useEffect(() => {
+		if (filter.page && filter.page !== page) {
+			dispatch(specializationsPageActions.setPage(filter.page));
+		}
+		if (filter.authorId !== undefined && filter.authorId !== author) {
+			dispatch(specializationsPageActions.setAuthor(filter.authorId));
+		}
+	}, [filter.page, filter.authorId, page, author, dispatch]);
+
+	const { data: specializations } = useGetSpecializationsListQuery({
+		...filter,
+		authorId: author,
+		title: search,
+		page,
+	});
 
 	const onSelectSpecializations = (ids: SelectedAdminEntities) => {
 		dispatch(specializationsPageActions.setSelectedSpecializations(ids));
 	};
+
 	const onChangeSearch = (value: string) => {
 		dispatch(specializationsPageActions.setSearch(value));
 	};
@@ -45,11 +66,8 @@ const SpecializationsPage = () => {
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				to="create"
-				showRemoveButton={selectedSpecializations.length > 0}
 				onSearch={onChangeSearch}
-				renderRemoveButton={() => (
-					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
-				)}
+				renderFilter={() => <SpecializationFilterSet />}
 			/>
 			<Card className={styles.content}>
 				<SpecializationsTable
