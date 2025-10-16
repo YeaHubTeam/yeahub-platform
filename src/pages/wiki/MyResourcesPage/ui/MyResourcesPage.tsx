@@ -61,7 +61,7 @@ const MyResourcesPage = () => {
 
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
-	const hasFilters = filter.status !== 'all' || filter.resources;
+	const hasFilters = filter.status !== 'all' || !!filter.resources || !!filter.title;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
