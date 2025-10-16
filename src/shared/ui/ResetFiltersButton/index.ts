@@ -1,1 +1,0 @@
-export { ResetFiltersButton } from './ResetFiltersButton';

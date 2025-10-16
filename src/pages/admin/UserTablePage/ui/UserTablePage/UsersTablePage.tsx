@@ -5,7 +5,6 @@ import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
-import { ResetFiltersButton } from '@/shared/ui/ResetFiltersButton';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
@@ -41,7 +40,7 @@ export const UsersTablePage = () => {
 	}, 500);
 
 	const hasActiveFiltersOrSearch =
-		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || search.trim();
+		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || !!search.trim();
 
 	const onResetFilters = () => {
 		handleFilterChange({ roles: undefined, isEmailVerified: undefined });
@@ -58,21 +57,19 @@ export const UsersTablePage = () => {
 	const userData = users?.data ?? [];
 	const isEmpty = !isFetching && userData.length === 0;
 
-	const resetAll = onResetFilters;
-
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				renderFilter={() => <UsersFilterSet />}
-				showRemoveButton={!!hasActiveFiltersOrSearch}
-				renderRemoveButton={() => <ResetFiltersButton onResetFilters={onResetFilters} />}
+				showResetFilterButton={hasActiveFiltersOrSearch}
 				searchValue={searchValue}
 				onSearch={onChangeSearch}
+				onResetFilters={onResetFilters}
 			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
-				{isEmpty && <EmptyStub resetFilters={resetAll} />}
+				{isEmpty && <EmptyStub resetFilters={onResetFilters} />}
 			</Card>
 		</Flex>
 	);
