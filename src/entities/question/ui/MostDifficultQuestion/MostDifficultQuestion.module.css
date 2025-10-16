@@ -1,0 +1,47 @@
+.question {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  transition: color 0.3s ease-in-out;
+}
+
+.question::before {
+  flex-shrink: 0;
+  margin-right: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-color-link-active);
+  font-size: var(--font-size-p-s);
+  transform: translateY(-50%);
+  content: '';
+}
+
+.percent {
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.progress-bar{
+  line-height: 14px;
+}
+
+@media (width <= 1024px) {
+  .question span {
+    white-space: wrap;
+  }
+
+  .question::before {
+    top: 10px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .percent {
+    display: flex;
+    align-items: center; 
+  }
+}

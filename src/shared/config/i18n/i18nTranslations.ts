@@ -523,7 +523,6 @@ export enum Questions {
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
-
 	COMMUNITY_JOIN = 'community.join',
 }
 
@@ -1003,4 +1002,6 @@ export enum Marketplace {
 
 export enum Analytics {
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

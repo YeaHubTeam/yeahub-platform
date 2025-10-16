@@ -34,5 +34,9 @@ export { questionsMock } from './api/__mocks__/data';
 
 export { quizHandlers } from './api/__mocks__/index';
 
+export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';
+export { difficultQuestionsHandler } from './api/__mocks__/index';
+export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
+
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion } from './model/types/learnedQuestion';
