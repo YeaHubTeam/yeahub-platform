@@ -35,6 +35,16 @@
   }
 }
 
+.input {
+  flex-grow: 1;
+  align-self: center;
+  box-sizing: border-box; 
+  outline: none;
+  border: none; 
+  background: transparent;
+  color: var(--text-color-bright); 
+  line-height: 120%;
+}
 
 .button {
   display: flex;

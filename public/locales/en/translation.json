@@ -122,6 +122,8 @@
 		"wiki": "Knowledge base",
 		"resources": "Resources",
 		"resources.my": "My resources",
+		"resources.my.request": "Request",
+		"edit.request": "Editing a request",
 		"create.request": "Creating a request"
 	},
 	"toast": {
@@ -255,6 +257,10 @@
 			"edit": {
 				"success": "Resource successfully changed",
 				"failed": "Resource could not be changed"
+			},
+			"approve": {
+				"success": "Заявка на ресурс успешно одобрена",
+				"failed": "Не удалось одобрить заявку на ресурс"
 			}
 		},
 		"resource.request": {
@@ -333,6 +339,12 @@
 					"success": "Password successfully changed",
 					"failed": "Password could not be changed",
 					"failed.email": "Invalid email"
+				}
+			},
+			"verification": {
+				"telegram.unlink": {
+					"success": "Telegram account successfully unlinked",
+					"failed": "Failed to unlink your Telegram account"
 				}
 			},
 			"companies": {

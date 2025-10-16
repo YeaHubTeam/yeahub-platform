@@ -7,6 +7,7 @@ export * from './api/resourceApi';
 export type { FilterParams, MyResourcesFilterParams } from './model/types/filters';
 export type { Resource } from './model/types/resource';
 
+export { isResourceDisabled } from './model/helpers/isResourceDisabled';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
 export { ResourcesFilterSection } from './ui/ResourcesFilterSection/ResourcesFilterSection';
 export { ResourceForm } from './ui/ResourceForm/ResourceForm';
@@ -25,4 +26,9 @@ export type {
 	SelectedResourceRequestEntities,
 	ResourceRequestFormValues,
 } from './model/types/resourceRequest';
-export { useGetResourceRequestsQuery } from './api/resourceApi';
+export {
+	useGetResourceRequestsQuery,
+	useGetResourceByIdQuery,
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourceRequestByIdQuery,
+} from './api/resourceApi';

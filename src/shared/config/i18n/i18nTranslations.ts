@@ -78,7 +78,9 @@ export enum Translation {
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
+	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
+	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -157,11 +159,14 @@ export enum Translation {
 	TOAST_CHANGE_PASSWORD_FAILED_EMAIL = 'toast.password.change.failed.email',
 	TOAST_SUCCESSFULLY_CHANGE_PASSWORD = 'toast.auth.resetPassword.success',
 	TOAST_ERROR_CHANGE_PASSWORD = 'toast.auth.resetPassword.failed',
+	TOAST_USER_VERIFICATION_TELEGRAM_UNLINK_FAILED = 'toast.user.verification.telegram.unlink.failed',
+	TOAST_USER_VERIFICATION_TELEGRAM_UNLINK_SUCCESS = 'toast.user.verification.telegram.unlink.success',
 	TOAST_AUTH_LOGIN_FAILED = 'toast.auth.login.failed',
 	TOAST_COLLECTION_CREATE_SUCCESS = 'toast.collections.create.success',
 	TOAST_COLLECTION_CREATE_FAILED = 'toast.collections.create.failed',
 	TOAST_COMPANY_CREATE_SUCCESS = 'toast.companies.create.success',
 	TOAST_COMPANY_CREATE_FAILED = 'toast.companies.create.failed',
+	TOOLTIP_COMPANY_DISABLED_INFO = 'tooltip.companies.disabled.info',
 	TOAST_COMPANIES_DELETE_SINGLE_SUCCESS = 'toast.companies.delete.single.success',
 	TOAST_COMPANIES_DELETE_SINGLE_FAILED = 'toast.companies.delete.single.failed',
 	TOAST_COMPANIES_DELETE_MULTIPLE_SUCCESS = 'toast.companies.delete.multiple.success',
@@ -185,11 +190,14 @@ export enum Translation {
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
+	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
+	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
 	TOAST_RESOURCE_REQUEST_REJECT_SUCCESS = 'toast.resource.request.reject.success',
 	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
+
 export enum Profile {
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	TABS_PERSONAL = 'tabs.personal',
@@ -242,6 +250,14 @@ export enum Profile {
 	EMAIL_VERIFICATION_VERIFY_STUB_LINK = 'email.verification.verify.stub.link',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_TITLE = 'email.verification.success.verify.stub.title',
 	EMAIL_VERIFICATION_SUCCESS_VERIFY_STUB_DESCRIPTION = 'email.verification.success.verify.stub.description',
+	TELEGRAM_VERIFIED_TITLE = 'telegram.verified.title',
+	TELEGRAM_VERIFIED_DESCRIPTION = 'telegram.verified.description',
+	TELEGRAM_VERIFIED_BUTTON = 'telegram.verified.button',
+	TELEGRAM_VERIFIED_STATUS = 'telegram.verified.status',
+	TELEGRAM_VERIFIED_MODAL_TITLE = 'telegram.verified.modal.title',
+	TELEGRAM_VERIFIED_MODAL_DESCRIPTION = 'telegram.verified.modal.description',
+	TELEGRAM_VERIFIED_MODAL_YES = 'telegram.verified.modal.yes',
+	TELEGRAM_VERIFIED_MODAL_NO = 'telegram.verified.modal.no',
 	TELEGRAM_VERIFICATION_TITLE = 'telegram.verification.title',
 	TELEGRAM_VERIFICATION_DESCRIPTION = 'telegram.verification.description',
 	CHANGE_PASSWORD_TITLE = 'change.password.title',
@@ -323,6 +339,11 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+}
+
+export enum Analytics {
+	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
+	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
 }
 
 export enum InterviewQuiz {
@@ -427,10 +448,14 @@ export enum Resources {
 	LINK = 'link',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	SUBMIT_FOR_MODERATION = 'submit.for.moderation',
-	MODAL_RESOURCE_MODERATION_MESSAGE = 'modal.resource.moderation.message',
-	MODAL_RESOURCE_MODERATION_TITLE = 'modal.resource.moderation.title',
+	MODAL_RESOURCE_CREATE_MODERATION_MESSAGE = 'modal.resource.create.moderation.message',
+	MODAL_RESOURCE_CREATE_MODERATION_TITLE = 'modal.resource.create.moderation.title',
+	MODAL_RESOURCE_EDIT_MODERATION_MESSAGE = 'modal.resource.edit.moderation.message',
+	MODAL_RESOURCE_EDIT_MODERATION_TITLE = 'modal.resource.edit.moderation.title',
 	TITLE_SHORT = 'title.short',
 	TYPE = 'type',
+	WITHDRAW_BUTTON = 'withdraw.button',
+	WITHDRAW_TITLE = 'withdraw.title',
 }
 
 export enum Questions {
@@ -502,7 +527,6 @@ export enum Questions {
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
-
 	COMMUNITY_JOIN = 'community.join',
 }
 
@@ -703,6 +727,11 @@ export enum ResourceRequests {
 	STATUS_REJECTED = 'status.rejected',
 	TABS_ALL = 'admin.tabs.all',
 	TABS_REQUESTS = 'admin.tabs.requests',
+	APPROVE_BUTTON = 'requests.approve',
+	APPROVE_CONFIRMATION_MODAL_TITLE = 'modal.resource.approveRequest.title',
+	APPROVE_CONFIRMATION_MODAL_MESSAGE = 'modal.resource.approveRequest.message',
+	MODAL_ACTIONS_OK = 'modal.resource.approveRequest.buttonOk',
+	MODAL_ACTIONS_CANCEL = 'modal.resource.approveRequest.buttonCancel',
 	REJECT_BUTTON = 'requests.reject',
 	REJECT_MODAL_TITLE = 'requests.rejectModal.title',
 	REJECT_MODAL_TEXT = 'requests.rejectModal.text',
@@ -883,6 +912,8 @@ export enum SubscriptionCard {
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FOURTH = 'subscription.premium.tooltip.list.fourth',
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_FIFTH = 'subscription.premium.tooltip.list.fifth',
 	SUBSCRIPTION_CARD_PREMIUM_TOOLTIP_LIST_THANKS = 'subscription.premium.tooltip.list.thanks',
+	SUBSCRIPTION_CARD_EMAIL_DESCRIPTION = 'subscription.email.description',
+	SUBSCRIPTION_CARD_EMAIL_INPUT_VALUE = 'subscription.email.input.value',
 	SUBSCRIPTION_CARD_PRIVACY_TITLE = 'subscription.privacy.title',
 	SUBSCRIPTION_CARD_PRIVACY_OFFER_AGREEMENT = 'subscription.privacy.offer.agreement',
 	SUBSCRIPTION_CARD_PRIVACY_CONSENT = 'subscription.privacy.consent',
@@ -920,6 +951,7 @@ export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
 }
+
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
@@ -951,6 +983,7 @@ export enum Marketplace {
 	STATUS_PENDING = 'status.pending',
 	ADD_RESOURCE_TITLE = 'add.resource.title',
 	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
+	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	NAME_SHORT = 'name.short',
 	NAME_LABEL = 'name.label',
 	DESCRIPTION_SHORT = 'description.short',
@@ -979,4 +1012,10 @@ export enum Marketplace {
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
 	REQUEST_TITLE = 'requests.title',
+}
+
+export enum Analytics {
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

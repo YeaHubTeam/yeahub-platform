@@ -10,6 +10,7 @@ import styles from './Tabs.module.css';
 export interface Tab<T> {
 	id: T;
 	label: string;
+	count?: number;
 	Component: () => JSX.Element;
 }
 
@@ -67,7 +68,7 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 						data-testid={`Tabs_Item_${tab.id}`}
 					>
 						<Text variant="body4" color={activeTab.id === tab.id ? 'black-800' : 'black-500'}>
-							{tab.label}
+							{tab.label} {(tab.count ?? 0) > 0 && `(${tab.count})`}
 						</Text>
 					</li>
 				))}
