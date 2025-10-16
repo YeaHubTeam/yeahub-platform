@@ -59,7 +59,7 @@
 .progress-bar-green {
   &::-webkit-progress-value {
     border-radius: 50px;
-    background-color: var(--color-green-900);
+    background-color: var(--color-green-750);
   }
 
   &::-webkit-progress-bar {
@@ -71,7 +71,7 @@
 .progress-bar-yellow {
   &::-webkit-progress-value {
     border-radius: 50px;
-    background-color: var(--color-yellow-900);
+    background-color: var(--color-yellow-800);
   }
 
   &::-webkit-progress-bar {
