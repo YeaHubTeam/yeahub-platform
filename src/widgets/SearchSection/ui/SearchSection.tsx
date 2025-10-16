@@ -16,10 +16,12 @@ import styles from './SearchSection.module.css';
 interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
+	showResetFilterButton?: boolean;
 	onSearch?: (value: string) => void;
 	searchValue?: string;
 	renderRemoveButton?: () => React.ReactNode;
 	renderFilter?: () => React.ReactNode;
+	onResetFilters?: () => void;
 }
 
 export const SearchSection = ({
@@ -29,6 +31,8 @@ export const SearchSection = ({
 	showRemoveButton,
 	renderRemoveButton,
 	renderFilter,
+	onResetFilters,
+	showResetFilterButton,
 }: SearchSectionProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
@@ -37,7 +41,7 @@ export const SearchSection = ({
 	};
 
 	return (
-		<Card className={styles.card}>
+		<Card>
 			<section className={styles.section}>
 				{renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 				<Input
@@ -47,14 +51,19 @@ export const SearchSection = ({
 					prefix={<Icon className={styles.search} icon="search" size={20} color="black-300" />}
 					placeholder={t(Translation.SEARCH)}
 				/>
+				{onResetFilters && showResetFilterButton && (
+					<Button size="large" onClick={onResetFilters} variant="outline">
+						{t(Translation.STUB_FILTER_SUBMIT)}
+					</Button>
+				)}
 				{showRemoveButton && renderRemoveButton && renderRemoveButton()}
 				{to && (
-					<Button>
-						<NavLink className={styles.link} to={to}>
+					<NavLink to={to}>
+						<Button size="large">
 							{t(Translation.CREATE)}
 							<PlusSvg className={styles['plus-svg']} />
-						</NavLink>
-					</Button>
+						</Button>
+					</NavLink>
 				)}
 			</section>
 		</Card>

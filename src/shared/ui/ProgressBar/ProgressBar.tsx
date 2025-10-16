@@ -4,12 +4,16 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './ProgressBar.module.css';
 
+export type ProgressBarVariant = 'small' | 'large' | 'medium';
+export type ProgressBarColor = 'green' | 'yellow' | 'red';
+
 export interface ProgressBarProps {
 	currentCount: number;
 	totalCount: number;
 	className?: string;
 	label?: string;
-	variant?: 'small' | 'large';
+	variant?: ProgressBarVariant;
+	color?: ProgressBarColor;
 }
 
 export const ProgressBar = ({
@@ -18,11 +22,15 @@ export const ProgressBar = ({
 	totalCount,
 	label,
 	variant = 'small',
+	color,
 }: ProgressBarProps) => {
 	return (
 		<div className={classNames(styles['progress-bar'], className)}>
 			<progress
-				className={styles[`progress-bar-${variant}`]}
+				className={classNames(
+					styles[`progress-bar-${variant}`],
+					color && styles[`progress-bar-${color}`],
+				)}
 				value={currentCount}
 				max={totalCount}
 			/>
