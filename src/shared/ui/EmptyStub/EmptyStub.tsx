@@ -11,10 +11,10 @@ import styles from './EmptyStub.module.css';
 interface EmptyStubProps {
 	text: string;
 	onClick: React.MouseEventHandler<HTMLButtonElement>;
-	button: string;
+	buttonText: string;
 }
 
-export const EmptyStub = ({ text, onClick, button }: EmptyStubProps) => {
+export const EmptyStub = ({ text, onClick, buttonText }: EmptyStubProps) => {
 	const { isMobile } = useScreenSize();
 	const textVariant = isMobile ? 'body3-strong' : 'body4';
 	return (
@@ -24,8 +24,8 @@ export const EmptyStub = ({ text, onClick, button }: EmptyStubProps) => {
 				<Text variant={textVariant} className={styles.text}>
 					{text}
 				</Text>
-				<Button size="large" variant="primary" onClick={onClick} className={styles.button}>
-					{button}
+				<Button className={styles.button} size="large" variant="primary" onClick={onClick}>
+					{buttonText}
 				</Button>
 			</Flex>
 		</Card>

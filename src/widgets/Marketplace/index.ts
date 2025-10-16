@@ -10,4 +10,3 @@ export { MarketplaceFiltersPanelSkeleton } from './ui/MarketplaceFiltersPanel/Ma
 export { ResourcesPaginationSkeleton } from './ui/ResourcesPagination/ResourcesPagination.skeleton';
 export { useMarketplaceFilters } from './model/hooks/useMarketplaceFilters';
 export { MyResourcesFiltersPanel } from './ui/MyResourcesFiltersPanel/MyResourcesFiltersPanel';
-export { EmptyStub } from '../../shared/ui/EmptyStub/EmptyStub';

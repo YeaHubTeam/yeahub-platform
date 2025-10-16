@@ -50,11 +50,6 @@
   font-size: var(--font-size-p-m);
 }
 
-.button {
-  width: 240px;
-  font-weight: var(--font-weight-500);
-}
-
 .drawer {
   width: 328px;
   overflow-x: hidden;

@@ -12,6 +12,10 @@
   width: 360px;
 }
 
+.button {
+  width: 240px;
+  font-weight: var(--font-weight-500);
+}
 
 .text{
   text-align: center;

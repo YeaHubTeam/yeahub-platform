@@ -5,9 +5,10 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
-// import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
+import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -21,7 +22,6 @@ import {
 	useMarketplaceFilters,
 	MyResourcesPagination,
 	MyResourcesFiltersPanel,
-	EmptyStub,
 } from '@/widgets/Marketplace';
 
 import styles from './MyResourcesPage.module.css';
@@ -40,7 +40,7 @@ const MyResourcesPage = () => {
 		onChangePage,
 		onChangeSearchParams,
 		onChangeStatus,
-		// resetFilters,
+		resetFilters,
 	} = useMarketplaceFilters();
 
 	const {
@@ -58,9 +58,11 @@ const MyResourcesPage = () => {
 	const titleVariant = isMobileS ? 'body5-accent' : 'body6';
 
 	const resources = resourcesResponse?.data ?? [];
+	const hasResources = resources.length > 0;
+	const hasFilters = filter.status !== 'all' || filter.resources;
+
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const hasResources = resources.length > 0;
 	const title = hasResources
 		? t(Marketplace.MY_RESOURCES)
 		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
@@ -117,12 +119,14 @@ const MyResourcesPage = () => {
 				</Flex>
 				{hasResources ? (
 					<MyResourcesList resources={resources} />
+				) : hasFilters ? (
+					<EmptyFilterStub resetFilters={resetFilters}></EmptyFilterStub>
 				) : (
 					<EmptyStub
 						text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
-						button={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
 						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-					></EmptyStub>
+					/>
 				)}
 				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
