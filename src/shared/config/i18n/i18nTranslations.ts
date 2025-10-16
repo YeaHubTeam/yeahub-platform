@@ -190,6 +190,10 @@ export enum Translation {
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
+	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
+	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
+	TOAST_RESOURCE_REQUEST_REJECT_SUCCESS = 'toast.resource.request.reject.success',
+	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
@@ -529,7 +533,6 @@ export enum Questions {
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
-
 	COMMUNITY_JOIN = 'community.join',
 }
 
@@ -730,6 +733,16 @@ export enum ResourceRequests {
 	STATUS_REJECTED = 'status.rejected',
 	TABS_ALL = 'admin.tabs.all',
 	TABS_REQUESTS = 'admin.tabs.requests',
+	APPROVE_BUTTON = 'requests.approve',
+	MODAL_RESOURCE_APPROVE_REQUEST_TITLE = 'modal.resource.approve.request.title',
+	MODAL_RESOURCE_APPROVE_REQUEST_MESSAGE = 'modal.resource.approve.request.message',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_OK = 'modal.resource.approve.request.button.ok',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_CANCEL = 'modal.resource.approve.request.button.cancel',
+	REJECT_BUTTON = 'requests.reject',
+	MODAL_RESOURCE_REJECT_REQUEST_TITLE = 'modal.resource.reject.request.title',
+	MODAL_RESOURCE_REJECT_REQUEST_MESSAGE = 'modal.resource.reject.request.message',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_OK = 'modal.resource.reject.request.button.ok',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_CANCEL = 'modal.resource.reject.request.button.cancel',
 }
 
 export enum Landing {
@@ -1009,4 +1022,6 @@ export enum Marketplace {
 
 export enum Analytics {
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

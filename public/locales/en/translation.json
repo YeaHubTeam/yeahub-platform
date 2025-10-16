@@ -257,6 +257,16 @@
 			"edit": {
 				"success": "Resource successfully changed",
 				"failed": "Resource could not be changed"
+			},
+			"approve": {
+				"success": "Заявка на ресурс успешно одобрена",
+				"failed": "Не удалось одобрить заявку на ресурс"
+			}
+		},
+		"resource.request": {
+			"reject": {
+				"success": "The resource request has been successfully rejected",
+				"failed": "Failed to reject the resource request"
 			}
 		},
 		"profile": {
