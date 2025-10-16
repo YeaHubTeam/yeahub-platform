@@ -15,7 +15,7 @@ export const AlarmFactBanner = () => {
 
 	return (
 		<Flex className={styles['wrapper']} gap="20" align="center">
-			<img src={Alarm} className={styles['alarm']} alt="" />
+			<img src={Alarm} className={styles['img-wrapper']} alt="" />
 			<Text variant={isLargeScreen || isLaptop ? 'body6' : 'body5-accent'} color="white-900">
 				{t(Media.MEDIA_FACT)}
 			</Text>
