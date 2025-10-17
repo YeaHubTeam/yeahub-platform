@@ -1,41 +1,33 @@
-import { useTranslation } from 'react-i18next';
-
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import SearchImg from '@/shared/assets/images/searchPage.png';
 import { useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
-import { emptyStubTestIds } from '@/shared/ui/EmptyStub/constants';
+import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
+
+import { Button } from '../Button';
 
 import styles from './EmptyStub.module.css';
 
-export interface EmptyStubProps {
-	text?: string;
-	resetFilters?: () => void;
+interface EmptyStubProps {
+	text: string;
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	buttonText: string;
 }
 
-export const EmptyStub = ({ resetFilters, text }: EmptyStubProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
-	const { isMobileS } = useScreenSize();
-
+export const EmptyStub = ({ text, onClick, buttonText }: EmptyStubProps) => {
+	const { isMobile } = useScreenSize();
+	const textVariant = isMobile ? 'body3-strong' : 'body4';
 	return (
-		<>
-			<Text
-				dataTestId={emptyStubTestIds.emptyStubText}
-				variant={isMobileS ? 'body2-accent' : 'body5-accent'}
-				className={styles.text}
-			>
-				{t(Translation.STUB_FILTER_TITLE, { text: text ? `“${text}”` : undefined })}
-			</Text>
-			<Button
-				dataTestId={emptyStubTestIds.emptyStubButton}
-				size="large"
-				variant="outline"
-				onClick={resetFilters}
-				className={styles.button}
-			>
-				{t(Translation.STUB_FILTER_SUBMIT)}
-			</Button>
-		</>
+		<Card className={styles.wrapper} withOutsideShadow>
+			<Flex justify="between" align="center" gap="20" direction="column" className={styles.flex}>
+				<img src={SearchImg} alt="" className={styles['card-img']}></img>
+				<Text variant={textVariant} className={styles.text}>
+					{text}
+				</Text>
+				<Button className={styles.button} size="large" variant="primary" onClick={onClick}>
+					{buttonText}
+				</Button>
+			</Flex>
+		</Card>
 	);
 };

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetResourceRequestsQuery, SelectedResourceRequestEntities } from '@/entities/resource';
@@ -73,7 +73,7 @@ export const ResourcesRequestsTab = () => {
 				)}
 
 				{resourceRequests?.data && resourceRequests.data.length === 0 && (
-					<EmptyStub
+					<EmptyFilterStub
 						text={search ? `По запросу "${search}" ничего не найдено` : 'Нет данных'}
 						resetFilters={resetFilters}
 					/>

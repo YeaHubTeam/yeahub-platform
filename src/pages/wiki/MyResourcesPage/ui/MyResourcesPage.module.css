@@ -1,19 +1,20 @@
 .main {
   position: relative;
   flex-grow: 1;
-  padding: 24px 20px 40px;
+  padding: 24px 20px 20px;
   height: auto;
 }
+
 
 .header {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
 }
+
 
 .filters {
   position: sticky;
@@ -70,7 +71,7 @@
 
 @media screen and (width < 1024px) {
   .main {
-    padding: 20px 16px 40px;
+    padding: 20px 16px;
   }
 
   .filters {
@@ -82,9 +83,10 @@
   }
 }
 
+
 @media screen and (width <= 360px) {
   .main {
-    padding: 20px 10px;
+    padding: 10px;
   }
 
   .header {
@@ -100,6 +102,14 @@
     margin: 0;
   }
 }
+
+@media screen and (width <= 567px) {
+  .text{
+    display: inline-block;
+    width: 170px;
+  }
+}
+
 
 @media screen and (width >= 1023px) {
   .header {

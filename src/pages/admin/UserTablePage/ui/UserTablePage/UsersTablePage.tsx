@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
@@ -69,7 +69,7 @@ export const UsersTablePage = () => {
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
-				{isEmpty && <EmptyStub resetFilters={onResetFilters} />}
+				{isEmpty && <EmptyFilterStub resetFilters={onResetFilters} />}
 			</Card>
 		</Flex>
 	);

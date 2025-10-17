@@ -1020,6 +1020,9 @@ export enum Marketplace {
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
+	MY_RESOURCES_EMPTY_TITLE = 'resources.empty.title',
+	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
+	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
 }
 
