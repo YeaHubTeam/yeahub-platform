@@ -96,6 +96,7 @@
 		"placeholder": "Password"
 	},
 	"manage.profiles": {
+		"multiprofile": "We have a multi-profile system. Each profile is tied to one specialty — this makes learning more precise and convenient. To choose another specialty, simply create a new profile. You cannot change the specialty in an existing profile.",
 		"title": "Your Profiles",
 		"open": "Go to profile",
 		"tooltip": {

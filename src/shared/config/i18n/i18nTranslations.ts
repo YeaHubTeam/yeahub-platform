@@ -264,6 +264,7 @@ export enum Profile {
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
 	CHANGE_PASSWORD_REPEAT_LABEL = 'change.password.repeat.label',
 	CHANGE_PASSWORD_PLACEHOLDER = 'change.password.placeholder',
+	MANAGE_PROFILES_MULTIPROFILE = 'manage.profiles.multiprofile',
 	MANAGE_PROFILES_TITLE = 'manage.profiles.title',
 	MANAGE_PROFILES_OPEN = 'manage.profiles.open',
 	MANAGE_PROFILES_TOOLTIP_NOT_MEMBER = 'manage.profiles.tooltip.not.member',
