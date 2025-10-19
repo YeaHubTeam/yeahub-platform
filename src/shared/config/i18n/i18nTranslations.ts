@@ -190,6 +190,10 @@ export enum Translation {
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
 	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
+	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
+	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
+	TOAST_RESOURCE_REQUEST_REJECT_SUCCESS = 'toast.resource.request.reject.success',
+	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
 }
@@ -335,6 +339,12 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	PROGRESS_TITLE = 'progress.title',
+	PROGRESS_DETAIL = 'progress.detail',
+	PROGRESS_TABLE_SPECIALIZATION = 'progress.table.specialization',
+	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
+	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
+	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 }
 
 export enum Analytics {
@@ -523,7 +533,6 @@ export enum Questions {
 	ADDITIONAL_INFO_SKILLS = 'skillsAdditional',
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
-
 	COMMUNITY_JOIN = 'community.join',
 }
 
@@ -636,7 +645,10 @@ export enum User {
 	ADDRESS = 'address',
 	BIRTH_DATE = 'birth.date',
 	REGISTRATION_DATE = 'registration.date',
-	SELECT_CHOOSE = 'select.shoose',
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_SELECTED = 'select.selected',
+	FILTER_AUTHOR = 'filter.author',
 	FILTER_ROLE = 'filter.role',
 	FILTER_EMAIL = 'filter.email',
 	SUBSCRIPTION_FREE = 'subscription.free',
@@ -724,6 +736,16 @@ export enum ResourceRequests {
 	STATUS_REJECTED = 'status.rejected',
 	TABS_ALL = 'admin.tabs.all',
 	TABS_REQUESTS = 'admin.tabs.requests',
+	APPROVE_BUTTON = 'requests.approve',
+	MODAL_RESOURCE_APPROVE_REQUEST_TITLE = 'modal.resource.approve.request.title',
+	MODAL_RESOURCE_APPROVE_REQUEST_MESSAGE = 'modal.resource.approve.request.message',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_OK = 'modal.resource.approve.request.button.ok',
+	MODAL_RESOURCE_APPROVE_REQUEST_BUTTON_CANCEL = 'modal.resource.approve.request.button.cancel',
+	REJECT_BUTTON = 'requests.reject',
+	MODAL_RESOURCE_REJECT_REQUEST_TITLE = 'modal.resource.reject.request.title',
+	MODAL_RESOURCE_REJECT_REQUEST_MESSAGE = 'modal.resource.reject.request.message',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_OK = 'modal.resource.reject.request.button.ok',
+	MODAL_RESOURCE_REJECT_REQUEST_BUTTON_CANCEL = 'modal.resource.reject.request.button.cancel',
 }
 
 export enum Landing {
@@ -998,9 +1020,14 @@ export enum Marketplace {
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
+	MY_RESOURCES_EMPTY_TITLE = 'resources.empty.title',
+	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
+	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
 }
 
 export enum Analytics {
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

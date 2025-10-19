@@ -14,7 +14,6 @@ export const resourcesMock: Resource[] = [
 			code: 'guide',
 			description: 'Гайд',
 		},
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -48,7 +47,6 @@ export const resourcesMock: Resource[] = [
 		description: 'Dev',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -90,7 +88,6 @@ export const resourcesMock: Resource[] = [
 		description: 'JS',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -132,7 +129,6 @@ export const resourcesMock: Resource[] = [
 		description: 'asides',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -174,7 +170,6 @@ export const resourcesMock: Resource[] = [
 		description: 'ads',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -216,7 +211,6 @@ export const resourcesMock: Resource[] = [
 		description: 'YH-1294',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -258,7 +252,6 @@ export const resourcesMock: Resource[] = [
 		description: 'qweфывф',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -309,7 +302,6 @@ export const resourcesMock: Resource[] = [
 		description: 'Example123124',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -360,7 +352,6 @@ export const resourcesMock: Resource[] = [
 		description: '111212',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -410,7 +401,6 @@ export const resourcesMock: Resource[] = [
 		description: '1',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -451,7 +441,6 @@ export const resourcesMock: Resource[] = [
 		description: '1',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -492,7 +481,6 @@ export const resourcesMock: Resource[] = [
 		description: '13123',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -533,7 +521,6 @@ export const resourcesMock: Resource[] = [
 		description: 'Серия статей: создание full-stack приложения на Svelte Kit.',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -554,7 +541,6 @@ export const resourcesMock: Resource[] = [
 		description: '30 практических мини-проектов, чтобы прокачать чистый JS.',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',
@@ -575,7 +561,6 @@ export const resourcesMock: Resource[] = [
 		description: 'Курс: контейнеризация Node-приложений с лучшими практиками.',
 		url: '',
 		imageSrc: '',
-		createdById: '7f9313cb-b4ad-442d-8b5d-9331779e70a2',
 		createdBy: {
 			id: 'dd429b2f-1877-4991-9a42-acdc76418476',
 			username: 'Nikitos_228',

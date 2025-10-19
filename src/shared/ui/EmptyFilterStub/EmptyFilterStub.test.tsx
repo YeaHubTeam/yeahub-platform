@@ -3,9 +3,9 @@ import { fireEvent, screen } from '@testing-library/react';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks/useScreenSize';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
-import { emptyStubTestIds } from '@/shared/ui/EmptyStub/constants';
+import { emptyStubTestIds } from '@/shared/ui/EmptyFilterStub/constants';
 
-import { EmptyStub, EmptyStubProps } from './EmptyStub';
+import { EmptyFilterStub, EmptyStubProps } from './EmptyFilterStub';
 
 jest.mock('@/shared/hooks/useScreenSize', () => ({
 	useScreenSize: jest.fn(),
@@ -14,10 +14,10 @@ jest.mock('@/shared/hooks/useScreenSize', () => ({
 const mockedUseScreenSize = useScreenSize as jest.Mock;
 
 const render = (props?: EmptyStubProps) => {
-	renderComponent(<EmptyStub {...props} />);
+	renderComponent(<EmptyFilterStub {...props} />);
 };
 
-describe('EmptyStub', () => {
+describe('EmptyFilterStub', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
 		mockedUseScreenSize.mockReturnValue({ isMobileS: false });

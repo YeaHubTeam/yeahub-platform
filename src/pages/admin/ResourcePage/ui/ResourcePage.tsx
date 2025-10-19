@@ -39,7 +39,6 @@ export const ResourcePage = () => {
 	const {
 		id,
 		createdBy,
-		createdById,
 		keywords,
 		skills,
 		specializations,
@@ -50,7 +49,7 @@ export const ResourcePage = () => {
 		createdAt,
 	} = resource;
 
-	const isDisabled = isResourceDisabled({ isAuthor, userId, createdById });
+	const isDisabled = isResourceDisabled({ isAuthor, userId, createdById: createdBy.id });
 
 	return (
 		<>

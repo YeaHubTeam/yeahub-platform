@@ -4,4 +4,5 @@ export interface SpecializationsPageState {
 	page: number;
 	selectedSpecializations?: SelectedAdminEntities;
 	search?: string;
+	author?: string;
 }
