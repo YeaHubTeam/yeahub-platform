@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { CloseBtn } from './CloseBtn';
-import { TOAST_DURATION, toastColor, toastIcon, toastTitle } from './constants';
+import { TOAST_DURATION, toastColor, toastIcon, toastTestIds, toastTitle } from './constants';
 import styles from './Toast.module.css';
 import { ToastVariant } from './types';
 
@@ -25,21 +25,29 @@ const Toast = ({ currentToast, message, variant }: ToastProps) => {
 		<Flex
 			gap="16"
 			align="center"
-			dataTestId="Toast_Root"
+			dataTestId={toastTestIds.toastRoot}
 			className={classNames(
 				styles.toaster,
 				styles[variant],
 				currentToast.visible ? styles['fade-in'] : styles['fade-out'],
 			)}
 		>
-			<Icon icon={toastIcon[variant]} color={toastColor[variant]} data-testid="Toast_Icon" />
+			<Icon
+				icon={toastIcon[variant]}
+				color={toastColor[variant]}
+				dataTestId={toastTestIds.toastIcon}
+			/>
 			<Flex direction="column">
-				<Text variant="body3-strong" color={toastColor[variant]} data-testid="Toast_Text">
+				<Text
+					variant="body3-strong"
+					color={toastColor[variant]}
+					dataTestId={toastTestIds.toastText}
+				>
 					{tI18(toastTitle[variant])}
 				</Text>
 				{message}
 			</Flex>
-			<CloseBtn toastId={currentToast.id} dataTestId="Toast_CloseBtn" />
+			<CloseBtn toastId={currentToast.id} dataTestId={toastTestIds.toastCloseBtn} />
 		</Flex>
 	);
 };
