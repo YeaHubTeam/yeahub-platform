@@ -979,6 +979,7 @@ export enum Media {
 export enum Marketplace {
 	HEADER_TITLE = 'header.title',
 	LINK_LABEL = 'add.resource.link.label',
+	ADD_RESOURCE_REQUEST_LINK = 'add.resource.request.link',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
 	HIDE = 'hide',

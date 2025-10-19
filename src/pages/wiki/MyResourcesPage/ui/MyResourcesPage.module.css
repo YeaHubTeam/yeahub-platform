@@ -10,6 +10,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border-color);

@@ -50,8 +50,6 @@ export const ManageProfilesPanel = () => {
 				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_LIMIT_REACHED;
 			case hasPremiumAccess && hasEmptySpecialization:
 				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_EMPTY_SPECIALIZATION;
-			case !hasPremiumAccess:
-				return Profile.TOOLTIP_CREATE_PROFILE_BUTTON_NOT_MEMBER;
 			default:
 				return '';
 		}

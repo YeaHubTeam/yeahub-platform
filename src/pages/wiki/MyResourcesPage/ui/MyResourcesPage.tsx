@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -108,6 +109,16 @@ const MyResourcesPage = () => {
 		</div>
 	);
 
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
+		</Button>
+	);
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main} withOutsideShadow>
@@ -117,6 +128,7 @@ const MyResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
+						{suggestButton}
 					</Flex>
 				</Flex>
 				{hasResources ? (
@@ -136,9 +148,7 @@ const MyResourcesPage = () => {
 					onChangePage={onChangePage}
 				/>
 			</Card>
-			<Flex className={styles['button-wrapper']}>
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
 	);
 };
