@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import {
@@ -15,6 +16,8 @@ import {
 } from '@/entities/profile';
 
 import { CreateProfileButton } from '@/features/profile/createProfile';
+
+import { SwitchSpecializationInfoButton } from '@/widgets/manageProfiles/ui/SwitchSpecializationInfoButton';
 
 import {
 	MEMBER_PROFILES_COUNT_LIMIT,
@@ -78,16 +81,19 @@ export const ManageProfilesPanel = () => {
 				className={styles.mb}
 			/>
 			<div className={styles.tooltip}>
-				<Tooltip
-					title={t(tooltipEntry)}
-					className={styles.tooltip}
-					shouldShowTooltip={createProfileDisabled}
-				>
-					<CreateProfileButton
-						className={styles['create-button']}
-						disabled={createProfileDisabled}
-					/>
-				</Tooltip>
+				<Flex direction="row" justify="between">
+					<SwitchSpecializationInfoButton />
+					<Tooltip
+						title={t(tooltipEntry)}
+						className={styles.tooltip}
+						shouldShowTooltip={createProfileDisabled}
+					>
+						<CreateProfileButton
+							className={styles['create-button']}
+							disabled={createProfileDisabled}
+						/>
+					</Tooltip>
+				</Flex>
 			</div>
 		</Card>
 	);
