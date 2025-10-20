@@ -25,12 +25,12 @@ export const DeleteProfileModal = ({ isOpen, onClose, profileId }: DeleteProfile
 		<ConfirmationDeleteModal
 			confirmationName={profile.username}
 			onDelete={handleDeleteProfile}
-			modalTitle={t(Profile.MANAGE_PROFILES_MODAL_TITLE)}
-			confirmButtonText={t(Profile.MANAGE_PROFILES_MODAL_BUTTON)}
+			modalTitle={t(Profile.MANAGE_PROFILES_MODAL_DELETE_PROFILE_TITLE)}
+			confirmButtonText={t(Profile.MANAGE_PROFILES_MODAL_DELETE_PROFILE_BUTTON)}
 			discardButtonText={t(Translation.CANCEL, { ns: 'translation' })}
-			deleteDescriptionModal={t(Profile.MANAGE_PROFILES_MODAL_DESCRIPTION)}
-			deleteLabel={t(Profile.MANAGE_PROFILES_MODAL_LABEL)}
-			deletePlaceholder={t(Profile.MANAGE_PROFILES_MODAL_PLACEHOLDER)}
+			deleteDescriptionModal={t(Profile.MANAGE_PROFILES_MODAL_DELETE_PROFILE_DESCRIPTION)}
+			deleteLabel={t(Profile.MANAGE_PROFILES_MODAL_DELETE_PROFILE_LABEL)}
+			deletePlaceholder={t(Profile.MANAGE_PROFILES_MODAL_DELETE_PROFILE_PLACEHOLDER)}
 			isOpen={isOpen}
 			onClose={onClose}
 		/>
