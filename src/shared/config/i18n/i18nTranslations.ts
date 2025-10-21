@@ -81,6 +81,8 @@ export enum Translation {
 	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
+	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',

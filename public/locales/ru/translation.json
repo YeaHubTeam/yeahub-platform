@@ -127,7 +127,9 @@
 		"resources.my": "Мои заявки",
 		"resources.my.request": "Заявка",
 		"edit.request": "Редактирование заявки",
-		"create.request": "Создание заявки"
+		"create.request": "Создание заявки",
+		"popular.skills": "Популярные навыки",
+		"analytics": "Аналитика"
 	},
 	"toast": {
 		"title": {

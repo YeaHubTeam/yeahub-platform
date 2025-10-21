@@ -502,6 +502,9 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.analytics.route,
 				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_ANALYTICS,
+				},
 				children: [
 					{
 						index: true,
@@ -510,6 +513,9 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.analytics.skills.route,
 						element: <PopularSkillsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_POPULAR_SKILLS,
+						},
 					},
 				],
 			},
