@@ -5,6 +5,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
+import { chipTestIDs } from './model/constants';
 import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
@@ -47,6 +48,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				)}
 				aria-hidden={disabled}
 				aria-disabled={disabled}
+				data-testid={chipTestIDs.chip}
 				onClick={!disabled ? onClick : undefined}
 				onKeyDown={!disabled ? handleKeyDown : undefined}
 				role="button"
@@ -54,10 +56,20 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				ref={ref}
 			>
 				{prefix && (
-					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
+					<div
+						className={classNames(styles['chip-prefix'], { [styles.gap]: label })}
+						data-testid={chipTestIDs.prefix}
+					>
+						{prefix}
+					</div>
 				)}
 				{label && (
-					<Text variant="body3-accent" color="black-800" className={styles['chip-label']}>
+					<Text
+						variant="body3-accent"
+						color="black-800"
+						className={styles['chip-label']}
+						dataTestId={chipTestIDs.labelText}
+					>
 						{label}
 					</Text>
 				)}{' '}
@@ -68,7 +80,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 						size={20}
 						color={disabled ? 'black-100' : 'red-600'}
 						onClick={onDelete}
-						dataTestId="icon"
+						dataTestId={chipTestIDs.icon}
 					/>
 				)}
 			</div>
