@@ -19,7 +19,7 @@ import { EditResourceRequestFormValues } from '../../model/types/resourceRequest
 import { ResourceEditedModerationModal } from '../ResourceEditedModerationModal/ResourceEditedModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestEditFormWithHeader/ResourceRequestFormWithHeader';
 
-interface ResourceRequestEditFormProps {
+interface ResourceEditFormAllProps {
 	request: ResourceRequest;
 }
 
@@ -27,7 +27,7 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 	return arg ? arg.map((el) => el.id) : [];
 };
 
-export const ResourceRequestEditForm = ({ request }: ResourceRequestEditFormProps) => {
+export const ResourceEditFormAll = ({ request }: ResourceEditFormAllProps) => {
 	const navigate = useNavigate();
 	const { skills, specializations, requestPayload, ...formattedRequest } = request;
 
