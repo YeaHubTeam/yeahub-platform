@@ -122,6 +122,7 @@ export interface MostDifficultQuestionsResponse {
 	calculatedAt: string;
 	topStat: TopStat[];
 }
+
 export interface PopularQuestionStat {
 	title: string;
 	imageSrc: string;

@@ -1,0 +1,5 @@
+@media (width <= 738px) {
+  .popular-questions-card {
+    width: 344px;
+  }
+}
