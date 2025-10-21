@@ -1034,6 +1034,7 @@ export enum Marketplace {
 
 export enum Analytics {
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	TITLE_POPULAR_QUESTIONS = 'title.popular.questions',
 	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
 	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

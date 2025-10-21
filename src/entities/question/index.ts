@@ -3,6 +3,9 @@ export type {
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
 	GetQuestionsBySpecializationCountResponse,
+	PopularQuestionStat,
+	PopularQuestionsSpecialization,
+	GetPopularQuestionsResponse,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
@@ -12,6 +15,7 @@ export {
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPopularQuestionsQuery,
 } from './api/questionApi';
 export { getQuestionRoute } from './model/lib/getQuestionRoute';
 export { getQuestionImage } from './model/lib/getQuestionImage';
@@ -28,11 +32,11 @@ export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
-export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';
 
-export { quizHandlers } from './api/__mocks__/index';
+export { PopularQuestion } from './ui/PopularQuestion/PopularQuestion';
+export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
 export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';
 export { difficultQuestionsHandler } from './api/__mocks__/index';

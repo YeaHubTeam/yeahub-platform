@@ -122,3 +122,18 @@ export interface MostDifficultQuestionsResponse {
 	calculatedAt: string;
 	topStat: TopStat[];
 }
+export interface PopularQuestionStat {
+	title: string;
+	imageSrc: string;
+	questionId: number;
+	frequencyStat: number;
+}
+
+export interface PopularQuestionsSpecialization {
+	specializationId: number;
+	specializationTitle: string;
+	calculatedAt: string;
+	topStat: PopularQuestionStat[];
+}
+
+export type GetPopularQuestionsResponse = PopularQuestionsSpecialization[];
