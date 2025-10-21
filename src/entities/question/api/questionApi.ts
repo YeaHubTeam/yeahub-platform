@@ -18,6 +18,7 @@ import {
 	GetPublicQuestionByIdResponse,
 	GetPublicQuestionByIdParamsRequest,
 	GetQuestionsBySpecializationCountResponse,
+	GetPopularQuestionsResponse,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -81,6 +82,12 @@ const questionApi = baseApi.injectEndpoints({
 				providesTags: [ApiTags.QUESTIONS_LEARNED],
 			},
 		),
+		getPopularQuestions: build.query<GetPopularQuestionsResponse, void>({
+			query: () => ({
+				url: questionApiUrls.popularQuestions,
+			}),
+			providesTags: [ApiTags.POPULAR_QUESTIONS],
+		}),
 	}),
 });
 
@@ -92,4 +99,5 @@ export const {
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPopularQuestionsQuery,
 } = questionApi;
