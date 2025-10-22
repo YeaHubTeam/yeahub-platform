@@ -1,10 +1,10 @@
 import { useScreenSize } from '@/shared/hooks';
+import { BannerSkeleton } from '@/shared/ui/Banner';
 import { Flex } from '@/shared/ui/Flex';
 
 import {
 	OurMediaBannerSkeleton,
 	GurusBlockSkeleton,
-	AlarmFactBannerSkeleton,
 	TelegramChannelsSkeleton,
 } from '@/widgets/Landing/Media';
 
@@ -15,7 +15,7 @@ export const MediaPageSkeleton = () => {
 		<Flex direction="column" gap={isMobile ? '20' : isTablet ? '40' : '60'}>
 			<OurMediaBannerSkeleton />
 			<GurusBlockSkeleton />
-			<AlarmFactBannerSkeleton />
+			<BannerSkeleton />
 			<TelegramChannelsSkeleton />
 		</Flex>
 	);
