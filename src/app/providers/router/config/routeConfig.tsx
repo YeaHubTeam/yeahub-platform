@@ -168,7 +168,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 		icon: WikiIcon,
 		elements: [
 			{
-				route: ROUTES.wiki.resources.page,
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.resources.route}`,
 				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
 				icon: ResourcesIcon,
 			},
@@ -649,7 +649,7 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: '/dashboard',
+				path: ROUTES.wiki.route,
 				element: <Outlet />,
 				handle: {
 					crumb: Translation.CRUMBS_WIKI,

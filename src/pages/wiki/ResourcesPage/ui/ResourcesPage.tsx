@@ -132,7 +132,7 @@ const ResourcesPage = () => {
 	);
 
 	return (
-		<Flex gap="20" align="start">
+		<Flex gap="20" align="start" style={{ position: 'relative' }}>
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
@@ -157,19 +157,17 @@ const ResourcesPage = () => {
 				/>
 			</Card>
 
-			<Flex className={styles['button-wrapper']}>
-				<Button
-					className={styles['absolute-button']}
-					variant="outline"
-					size="large"
-					onClick={handleNavigateToMyResources}
-				>
-					{t(Marketplace.MY_RESOURCES)}{' '}
-					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
-				</Button>
+			<Button
+				className={styles['absolute-button']}
+				variant="outline"
+				size="large"
+				onClick={handleNavigateToMyResources}
+			>
+				{t(Marketplace.MY_RESOURCES)}{' '}
+				{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
+			</Button>
 
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
 	);
 };

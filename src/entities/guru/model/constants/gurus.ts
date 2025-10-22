@@ -115,4 +115,15 @@ export const gurus: Guru[] = [
 			profileId: '801d60b8-4f72-4180-984d-8d6811c71963',
 		},
 	},
+	{
+		title: 'Python Guru',
+		name: 'Sergey Filichkin',
+		specializations: [19],
+		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/pythonserg.png',
+		socials: {
+			telegram: 'https://link.sergeyfilichkin.ru/gApVDF',
+			youtube: 'https://link.sergeyfilichkin.ru/50gs',
+			profileId: 'd173ffab-d458-49f4-9368-35336da765ab',
+		},
+	},
 ];

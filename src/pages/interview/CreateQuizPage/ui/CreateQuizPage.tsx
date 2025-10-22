@@ -112,7 +112,7 @@ const CreateQuizPage = () => {
 						selectedSpecialization={profileSpecialization}
 						selectedSkills={filter.category}
 						onChangeSkills={onChangeSkills}
-						showAllLabel={false}
+						showAllLabel
 					/>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity
