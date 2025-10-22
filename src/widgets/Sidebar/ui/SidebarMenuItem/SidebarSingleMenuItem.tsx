@@ -30,7 +30,7 @@ const SidebarSingleMenuItem = ({
 	const isProfileItem = menuItem.route === ROUTES.profile.route;
 	const isSettingItem = menuItem.route === ROUTES.settings.route;
 	const isActiveItem = isPathMatch(menuItem.route, location.pathname);
-	console.log(menuItem);
+
 	if ((isProfileItem || isSettingItem) && !(isMobile || isTablet)) {
 		return null;
 	}
