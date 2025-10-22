@@ -15,3 +15,5 @@ export { default as Qa } from './qa.svg';
 export { default as Ruby } from './ruby.svg';
 export { default as Rust } from './rust.svg';
 export { default as React } from './react.svg';
+export { default as OneC } from './1c.svg';
+export { default as BASA } from './basa.svg';

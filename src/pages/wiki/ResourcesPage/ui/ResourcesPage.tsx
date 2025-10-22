@@ -10,7 +10,7 @@ import { useModal, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -132,7 +132,7 @@ const ResourcesPage = () => {
 	);
 
 	return (
-		<Flex gap="20" align="start">
+		<Flex gap="20" align="start" style={{ position: 'relative' }}>
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
@@ -147,7 +147,7 @@ const ResourcesPage = () => {
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
 				) : (
-					<EmptyStub resetFilters={resetFilters} />
+					<EmptyFilterStub resetFilters={resetFilters} />
 				)}
 
 				<ResourcesPagination
@@ -157,19 +157,17 @@ const ResourcesPage = () => {
 				/>
 			</Card>
 
-			<Flex className={styles['button-wrapper']}>
-				<Button
-					className={styles['absolute-button']}
-					variant="outline"
-					size="large"
-					onClick={handleNavigateToMyResources}
-				>
-					{t(Marketplace.MY_RESOURCES)}{' '}
-					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
-				</Button>
+			<Button
+				className={styles['absolute-button']}
+				variant="outline"
+				size="large"
+				onClick={handleNavigateToMyResources}
+			>
+				{t(Marketplace.MY_RESOURCES)}{' '}
+				{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
+			</Button>
 
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
 	);
 };

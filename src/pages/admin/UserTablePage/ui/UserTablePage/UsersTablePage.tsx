@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
@@ -27,7 +27,8 @@ export const UsersTablePage = () => {
 	const page = useSelector(getUsersPageNum);
 	const [searchValue, setSearchValue] = useState('');
 	const [search, setSearch] = useState('');
-	const { filter, resetFilters } = useUserFilter();
+
+	const { filter, handleFilterChange, resetFilters } = useUserFilter();
 
 	const { setQueryParams } = useQueryParams();
 
@@ -38,6 +39,16 @@ export const UsersTablePage = () => {
 		setQueryParams({ page: 1 });
 	}, 500);
 
+	const hasActiveFiltersOrSearch =
+		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || !!search.trim();
+
+	const onResetFilters = () => {
+		handleFilterChange({ roles: undefined, isEmailVerified: undefined });
+		setSearch('');
+		setSearchValue('');
+		resetFilters();
+	};
+
 	const onChangeSearch = (value: string) => {
 		setSearchValue(value);
 		debouncedSearch(value);
@@ -46,23 +57,19 @@ export const UsersTablePage = () => {
 	const userData = users?.data ?? [];
 	const isEmpty = !isFetching && userData.length === 0;
 
-	const resetAll = () => {
-		setSearch('');
-		setSearchValue('');
-		resetFilters();
-	};
-
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
+				renderFilter={() => <UsersFilterSet />}
+				showResetFilterButton={hasActiveFiltersOrSearch}
 				searchValue={searchValue}
 				onSearch={onChangeSearch}
-				renderFilter={() => <UsersFilterSet />}
+				onResetFilters={onResetFilters}
 			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
 				<UserTablePagePagination usersResponse={users} />
-				{isEmpty && <EmptyStub resetFilters={resetAll} />}
+				{isEmpty && <EmptyFilterStub resetFilters={onResetFilters} />}
 			</Card>
 		</Flex>
 	);

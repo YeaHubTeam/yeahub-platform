@@ -11,6 +11,7 @@ const initialState: SpecializationsPageState = {
 	page: 1,
 	selectedSpecializations: [],
 	search: '',
+	author: '',
 };
 
 const specializationsPageSlice = createSlice({
@@ -23,6 +24,9 @@ const specializationsPageSlice = createSlice({
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
+		},
+		setAuthor: (state, action: PayloadAction<string>) => {
+			state.author = action.payload;
 		},
 		setSelectedSpecializations: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedSpecializations = action.payload;

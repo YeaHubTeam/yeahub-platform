@@ -20,6 +20,7 @@ interface FilterFromURL {
 	roles?: string | null;
 	isEmailVerified?: string | null;
 	resources?: string | null;
+	authorId?: string | null;
 }
 
 export interface FilterFromUser {
@@ -36,6 +37,7 @@ export interface FilterFromUser {
 	roles?: string | null;
 	isEmailVerified?: string | null;
 	resources?: string[];
+	authorId?: string;
 }
 
 const initialState = `?page=1&status=all&specialization=${DEFAULT_SPECIALIZATION_NUMBER}`;
@@ -79,6 +81,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			roles: params.get('roles'),
 			isEmailVerified: params.get('isEmailVerified'),
 			resources: params.get('resources'),
+			authorId: params.get('authorId'),
 		};
 	};
 
@@ -99,6 +102,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			roles: params.roles ? params.roles : undefined,
 			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
 			resources: params.resources ? params.resources.split(',') : undefined,
+			authorId: params.authorId || undefined,
 		};
 	};
 

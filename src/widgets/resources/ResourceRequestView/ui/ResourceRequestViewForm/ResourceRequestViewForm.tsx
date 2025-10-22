@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { ResourceRequest, ResourceRequestFormValues } from '@/entities/resource';
@@ -30,6 +31,12 @@ export const ResourceRequestViewForm = ({ resource }: ResourceEditFormProps) => 
 			status: status,
 		},
 	});
+
+	useEffect(() => {
+		methods.reset({
+			status: resource.status,
+		});
+	}, [resource, methods]);
 
 	return (
 		<FormProvider {...methods}>

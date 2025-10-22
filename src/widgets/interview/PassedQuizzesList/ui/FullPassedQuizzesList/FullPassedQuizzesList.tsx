@@ -3,7 +3,7 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 import { useAppSelector, useInfiniteScroll } from '@/shared/hooks';
 import { Value } from '@/shared/ui/Calendar/EventCalendar';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getProfileId } from '@/entities/profile';
@@ -66,7 +66,7 @@ export const FullPassedQuizzesList = ({
 	if (isEmptyData) {
 		return (
 			<Card>
-				<EmptyStub resetFilters={resetFilters} />
+				<EmptyFilterStub resetFilters={resetFilters} />
 			</Card>
 		);
 	}
