@@ -23,24 +23,28 @@ import { ResourcesSelect } from '../ResourceSelect/ResourceSelect';
 
 import styles from './ResourceForm.module.css';
 
-export const ResourceForm = () => {
+interface ResourceFormProps {
+	readonly?: boolean;
+}
+
+export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const { control, watch, setValue } = useFormContext();
 
-	const selectedSpecializations = watch('resourceSpecializations');
-	console.log('all', watch());
-	const [previewImg, setPreviewImg] = useState<string | null>(null);
+	const selectedSpecializations = watch('specializations');
+	const iconBase64 = watch('iconBase64');
+	const [previewImg, setPreviewImg] = useState<string | null>(iconBase64 ?? null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('skillImage', image);
+		setValue('iconBase64', image);
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
-		setValue('imageSrc', null);
+		setValue('iconBase64', null);
 	};
 
 	return (
@@ -57,6 +61,7 @@ export const ResourceForm = () => {
 								state={hasError ? 'error' : 'default'}
 								className={styles.name}
 								placeholder={t(Marketplace.NAME_LABEL)}
+								disabled={readonly}
 							/>
 						)}
 					</FormControl>
@@ -78,6 +83,7 @@ export const ResourceForm = () => {
 								state={hasError ? 'error' : 'default'}
 								className={styles.name}
 								placeholder={t(Marketplace.DESCRIPTION_LABEL)}
+								disabled={readonly}
 							/>
 						)}
 					</FormControl>
@@ -88,23 +94,29 @@ export const ResourceForm = () => {
 					removeImage={removeImage}
 					changeImage={changeImage}
 					initialSrc={previewImg}
+					disabled={readonly}
 				/>
 			</FormField>
 			<FormField
 				label={t(Marketplace.SPECIALIZATIONS_SHORT)}
 				description={t(Marketplace.SPECIALIZATIONS_LABEL)}
 			>
-				<FormControl name="resourceSpecializations" control={control}>
+				<FormControl name="specializations" control={control}>
 					{({ onChange, value }) => (
 						<div>
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							<SpecializationSelect
+								onChange={onChange}
+								value={value}
+								hasMultiple
+								disabled={readonly}
+							/>
 						</div>
 					)}
 				</FormControl>
 			</FormField>
 			{!!selectedSpecializations?.length && (
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
-					<FormControl name="resourceSkills" control={control}>
+					<FormControl name="skills" control={control}>
 						{({ onChange, value }) => {
 							return (
 								<div>
@@ -112,6 +124,7 @@ export const ResourceForm = () => {
 										onChange={onChange}
 										value={value}
 										selectedSpecializations={selectedSpecializations}
+										disabled={readonly}
 									/>
 								</div>
 							);
@@ -123,7 +136,7 @@ export const ResourceForm = () => {
 				<FormControl name="type" control={control}>
 					{({ onChange, value }) => (
 						<div>
-							<ResourcesSelect onChange={onChange} value={value} />
+							<ResourcesSelect onChange={onChange} value={value} disabled={readonly} />
 						</div>
 					)}
 				</FormControl>
@@ -132,7 +145,7 @@ export const ResourceForm = () => {
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value }) => (
 						<div className={styles.keywords}>
-							<KeywordInput value={value} onChange={onChange} />
+							<KeywordInput value={value} onChange={onChange} disabled={readonly} />
 						</div>
 					)}
 				</FormControl>
@@ -140,7 +153,12 @@ export const ResourceForm = () => {
 			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>
 				<FormControl name="url" control={control}>
 					{(field, hasError) => (
-						<Input {...field} placeholder={t(Marketplace.URL_PLACEHOLDER)} error={hasError} />
+						<Input
+							{...field}
+							placeholder={t(Marketplace.URL_PLACEHOLDER)}
+							error={hasError}
+							disabled={readonly}
+						/>
 					)}
 				</FormControl>
 			</FormField>

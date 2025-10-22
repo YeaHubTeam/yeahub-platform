@@ -70,6 +70,7 @@ export type IconName =
 	| 'thumbsDown'
 	| 'thumbsUp'
 	| 'cross'
-	| 'burgerAndCross';
+	| 'burgerAndCross'
+	| 'lamp';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

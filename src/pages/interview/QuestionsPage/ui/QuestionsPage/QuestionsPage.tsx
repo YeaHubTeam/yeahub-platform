@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { useScreenSize, useModal, useAppSelector, useQueryFilter } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
-import { useGetLearnedQuestionsQuery, useGetQuestionsListQuery } from '@/entities/question';
+import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
@@ -54,7 +54,7 @@ const QuestionsPage = () => {
 	);
 
 	const { data: learnedQuestions, isLoading: isLoadingLearnedQuestions } =
-		useGetLearnedQuestionsQuery(
+		useGetQuestionsForLearnQuery(
 			{
 				...getParams,
 				profileId,
@@ -156,7 +156,7 @@ const QuestionsPage = () => {
 					/>
 				)}
 				{questions.data.length === 0 && (
-					<EmptyStub text={getParams.title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={getParams.title} resetFilters={resetFilters} />
 				)}
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>

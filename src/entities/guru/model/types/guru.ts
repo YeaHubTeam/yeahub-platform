@@ -1,7 +1,7 @@
 export interface Guru {
 	title: string;
 	name: string;
-	specializationId: number;
+	specializations: number[];
 	image: string;
 	socials: GuruSocials;
 }

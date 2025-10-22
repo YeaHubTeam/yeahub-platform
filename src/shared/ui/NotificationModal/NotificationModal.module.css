@@ -1,0 +1,26 @@
+.modal {
+  white-space: pre-wrap;
+}
+
+.moderation-content {
+  padding: 64px 20px 36px;
+}
+
+.modal img {
+  align-items: center;
+  margin-bottom: 20px;
+  width: 87px;
+  height: 79px;
+}
+
+.modal-title {
+  margin-bottom: 8px;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.modal-subtitle {
+  width: 100%;
+  text-align: center;
+  white-space: pre-wrap;
+}

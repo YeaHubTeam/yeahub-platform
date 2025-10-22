@@ -31,7 +31,7 @@ export const QuestionActions = ({
 	return (
 		<Card withOutsideShadow>
 			<Flex direction="column" gap="12">
-				<Flex justify="center" gap="40" align="center">
+				<Flex justify="center" align="center" direction={'row'} wrap={'wrap'} gap={'20'}>
 					<LearnQuestionButton
 						questionId={questionId}
 						checksCount={checksCount}

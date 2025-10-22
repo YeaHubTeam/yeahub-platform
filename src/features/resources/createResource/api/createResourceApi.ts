@@ -35,9 +35,10 @@ export const createResourceApi = baseApi.injectEndpoints({
 						typedExtra.navigate(route(ROUTES.admin.resources.details.page, result.data.id));
 						toast.success(i18n.t(Translation.TOAST_RESOURCE_CREATE_SUCCESS));
 					} else {
+						typedExtra.navigate(ROUTES.wiki.resources.requests.page);
+						toast.success(i18n.t(Translation.TOAST_RESOURCE_REQUEST_SUCCESS));
 						// TODO: implement a modal for resource moderation, delete the toast!
 						// typedExtra.openResourceModerationModal?.(result.data);
-						toast.success('Отправлено на модерацию');
 					}
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_RESOURCE_CREATE_FAILED));

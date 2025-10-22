@@ -13,7 +13,7 @@ import { activeSubscriptionSlice } from '@/entities/subscription';
 import { collectionsPageReducer } from '@/pages/admin/CollectionsPage';
 import { companiesTablePageReducer } from '@/pages/admin/CompaniesTablePage';
 import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
-import { resourcesTablePageReducer } from '@/pages/admin/ResourcesTablePage';
+import { resourcesAllTabReducer, resourcesRequestsTabReducer } from '@/pages/admin/ResourcesPage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
 import { usersPageReducer } from '@/pages/admin/UserTablePage';
@@ -34,7 +34,7 @@ export const createReduxStore = (initialState?: State) => {
 			activeQuiz: activeQuizSlice.reducer,
 			activeSubscription: activeSubscriptionSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
-			resourcesTablePage: resourcesTablePageReducer,
+			resourcesAllTab: resourcesAllTabReducer,
 			interviewHistoryPage: interviewHistoryPageReducer,
 			questionsTablePage: questionsTablePageReducer,
 			companiesTablePage: companiesTablePageReducer,
@@ -42,6 +42,7 @@ export const createReduxStore = (initialState?: State) => {
 			usersPage: usersPageReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
+			resourcesRequestsTab: resourcesRequestsTabReducer,
 		},
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>

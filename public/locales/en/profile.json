@@ -46,12 +46,13 @@
 		"specialization": "IT specialty",
 		"email": "Email for communication",
 		"location": "Location",
-		"skills": "Skills"
+		"skills": "Skills",
+		"switch.specialization": "Change specialization"
 	},
-	"setting.tabs": {
+	"settings.tabs": {
 		"select.tariff": "Select tariff",
 		"change.password": "Password change",
-		"verify.email": "E-mail confirmation",
+		"verify.email": "Verification",
 		"account": "Account"
 	},
 	"email.verification": {
@@ -71,6 +72,22 @@
 			"description": "Thank you for confirming your mail, now more services are available on the platform"
 		}
 	},
+	"telegram.verified": {
+		"title": "Telegram confirmed",
+		"description": "Thank you for confirming your Telegram. \n It can now be used for login",
+		"button": "Unlink your account",
+		"status": "Verified",
+		"modal": {
+			"title": "Unlink Telegram account",
+			"description": "Are you sure you want to unlink Telegram from your account?",
+			"yes": "Yes",
+			"no": "No"
+		}
+	},
+	"telegram.verification": {
+		"title": "Telegram is not linked",
+		"description": "Link your Telegram to enable quick login and receive notifications"
+	},
 	"change.password": {
 		"title": "Change your password",
 		"description": "For security reasons, or if you notice suspicious activity, change your password",
@@ -79,6 +96,7 @@
 		"placeholder": "Password"
 	},
 	"manage.profiles": {
+		"multiprofile.banner.description": "We have a multi-profile system. Each profile is tied to one specialty — this makes learning more precise and convenient. To choose another specialty, simply create a new profile. You cannot change the specialty in an existing profile.",
 		"title": "Your Profiles",
 		"open": "Go to profile",
 		"tooltip": {
@@ -86,11 +104,24 @@
 			"max.count": "You have reached the limit of profiles you can create"
 		},
 		"modal": {
-			"title": "Delete Profile",
-			"description": "All your data, progress and activity will be permanently deleted. This action cannot be undone.",
-			"label": "Enter your username to confirm",
-			"placeholder": "Enter your username",
-			"button": "Delete Profile"
+			"delete.profile:": {
+				"title": "Delete Profile",
+				"description": "All your data, progress and activity will be permanently deleted. This action cannot be undone.",
+				"label": "Enter your username to confirm",
+				"placeholder": "Enter your username",
+				"button": "Delete Profile"
+			},
+			"how.switch.specialization": {
+				"title": "How to choose a new specialization",
+				"content": [
+					"Click 'Add +'",
+					"Go to the created profile",
+					"Select a specialization for this profile",
+					"Progress will start anew, meaning training paths will be separated"
+				],
+				"button": "How to change specialization",
+				"description": "💡 This way, you can conveniently manage multiple learning paths — each specialization has its own profile and progress."
+			}
 		}
 	},
 	"tooltip": {

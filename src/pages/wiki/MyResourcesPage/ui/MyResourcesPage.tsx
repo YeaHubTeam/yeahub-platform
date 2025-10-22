@@ -1,10 +1,14 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useModal, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -28,7 +32,10 @@ const RESOURCES_PER_PAGE = 6;
 
 const MyResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
-	const { isMobile, isTablet } = useScreenSize();
+
+	const { isMobile, isTablet, isMobileS } = useScreenSize();
+
+	const navigate = useNavigate();
 
 	const {
 		onChangeResources,
@@ -42,7 +49,7 @@ const MyResourcesPage = () => {
 	const {
 		data: resourcesResponse,
 		isLoading,
-		error,
+		// error,
 	} = useGetMyRequestsResourcesQuery({
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
@@ -51,17 +58,25 @@ const MyResourcesPage = () => {
 		types: filter.resources,
 	});
 
+	const titleVariant = isMobileS ? 'body5-accent' : 'body6';
+
 	const resources = resourcesResponse?.data ?? [];
+	const hasResources = resources.length > 0;
+	const hasFilters = filter.status !== 'all' || !!filter.resources || !!filter.title;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
+
+	const title = hasResources
+		? t(Marketplace.MY_RESOURCES)
+		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
 
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
 	}
 
-	if (error) {
-		return <div>Не удалось загрузить ресурсы</div>;
-	}
+	// if (error) {
+	// 	return <div>Не удалось загрузить ресурсы</div>;
+	// }
 
 	const renderFilters = () => (
 		<MyResourcesFiltersPanel
@@ -94,33 +109,46 @@ const MyResourcesPage = () => {
 		</div>
 	);
 
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
+		</Button>
+	);
+
 	return (
 		<Flex gap="20" align="start">
-			<Card className={styles.main}>
+			<Card className={styles.main} withOutsideShadow>
 				<Flex className={styles.header}>
-					<Text variant="body6" isMainTitle>
-						{t(Marketplace.MY_RESOURCES)}
+					<Text variant={titleVariant} isMainTitle className={styles.text}>
+						{title}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
+						{suggestButton}
 					</Flex>
 				</Flex>
-
-				{resources.length > 0 ? (
+				{hasResources ? (
 					<MyResourcesList resources={resources} />
+				) : hasFilters ? (
+					<EmptyFilterStub resetFilters={resetFilters}></EmptyFilterStub>
 				) : (
-					<EmptyStub resetFilters={resetFilters} />
+					<EmptyStub
+						text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+					/>
 				)}
-
 				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
 					currentPage={filter.page ?? 1}
 					onChangePage={onChangePage}
 				/>
 			</Card>
-			<Flex className={styles['button-wrapper']}>
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
 	);
 };

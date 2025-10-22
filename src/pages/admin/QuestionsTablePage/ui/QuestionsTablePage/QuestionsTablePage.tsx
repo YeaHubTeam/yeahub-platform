@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -74,7 +74,7 @@ const QuestionsPage = () => {
 				disabled: isAuthor && item.createdBy?.id !== userId,
 			})),
 		};
-	}, [allQuestions, userId]);
+	}, [allQuestions, userId, isAuthor]);
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
@@ -92,7 +92,7 @@ const QuestionsPage = () => {
 					onSelectQuestions={onSelectQuestions}
 				/>
 
-				{isEmpty && <EmptyStub text={search} resetFilters={resetAll} />}
+				{isEmpty && <EmptyFilterStub text={search} resetFilters={resetAll} />}
 
 				{!isEmpty && (
 					<QuestionPagePagination

@@ -58,15 +58,12 @@
   padding: 8px 16px 16px;
 }
 
-.button-wrapper {
-  position: relative;
-}
-
 .absolute-button {
   position: absolute;
-  top: -60px; 
+  top: -60px;
   right: 0;
   width: 153px;
+  white-space: nowrap;
 }
 
 @media screen and (width < 1024px) {
@@ -80,10 +77,6 @@
 
   .filters-mobile {
     display: inline-flex;
-  }
-	
-  .absolute-button {
-    right: 20px;
   }
 }
 

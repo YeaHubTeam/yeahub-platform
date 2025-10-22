@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { FilterFromUser, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -44,7 +44,9 @@ export const CollectionsContent = ({
 
 				<CollectionsList collections={collections} />
 				{pagination}
-				{collections.length === 0 && <EmptyStub text={filter?.title} resetFilters={resetFilters} />}
+				{collections.length === 0 && (
+					<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />
+				)}
 			</Card>
 		</div>
 	);

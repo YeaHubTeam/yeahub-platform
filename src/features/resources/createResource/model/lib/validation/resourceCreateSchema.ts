@@ -12,13 +12,11 @@ export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = 
 	type: yup.string<ResourceTypeCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	url: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	iconBase64: yup.string().defined(),
-	resourceSpecializations: yup
+	iconBase64: yup.string().optional().nullable(),
+	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	resourceSkills: yup
-		.array(yup.number().required())
-		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	skills: yup.array(yup.number().required()).required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	keywords: yup
 		.array()
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))

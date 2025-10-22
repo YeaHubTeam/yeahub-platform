@@ -34,16 +34,14 @@ export const TableCellEntityList = <T extends { id: number; title: string }>({
 	const itemsToShow = isOpen ? items : items.slice(0, showCount);
 
 	return (
-		<Flex direction="column" gap="8" componentType="td" align="start">
+		<Flex direction="column" gap="8" align="start">
 			<div>
 				{url ? (
 					<>
 						{itemsToShow.map((item) => (
 							<Fragment key={item.id}>
 								<Link to={route(url, item.id)} className={styles.link}>
-									<Text variant={'body3'} color={'purple-700'}>
-										{item.title}
-									</Text>
+									<Text variant={'body3-accent'}>{item.title}</Text>
 								</Link>
 								{itemsToShow.indexOf(item) < itemsToShow.length - 1 && <span>, </span>}
 							</Fragment>

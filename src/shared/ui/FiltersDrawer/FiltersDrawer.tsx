@@ -26,12 +26,18 @@ export const FiltersDrawer = ({ children }: FiltersDrawerProps) => {
 	} = useQueryFilter();
 
 	useEffect(() => {
-		let hasActiveFilter;
+		let hasActiveFilter = false;
+
 		if (location.pathname === '/admin/users') {
 			hasActiveFilter = Boolean(roles) || isEmailVerified === 'true';
+		} else if (location.pathname === '/admin/specializations') {
+			hasActiveFilter = Boolean(getParams.authorId);
 		} else {
-			hasActiveFilter = Object.values(getParams).some((value) => value !== undefined);
+			hasActiveFilter = Object.values(getParams).some(
+				(value) => value !== undefined && value !== null && value !== '',
+			);
 		}
+
 		setIsActiveFilter(hasActiveFilter);
 	}, [getParams, isEmailVerified, location.pathname, roles]);
 

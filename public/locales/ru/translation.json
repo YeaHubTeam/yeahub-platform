@@ -22,6 +22,7 @@
 	"support": "Поддержка",
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
+	"author": "Автор",
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
@@ -123,7 +124,10 @@
 		"register": "Регистрация",
 		"wiki": "База знаний",
 		"resources": "Ресурсы",
-		"resources.my": "Мои заявки"
+		"resources.my": "Мои заявки",
+		"resources.my.request": "Заявка",
+		"edit.request": "Редактирование заявки",
+		"create.request": "Создание заявки"
 	},
 	"toast": {
 		"title": {
@@ -145,6 +149,12 @@
 				},
 				"password": {
 					"wrong": "Неверный пароль."
+				}
+			},
+			"telegram": {
+				"verification": {
+					"link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
+					"link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту."
 				}
 			}
 		},
@@ -254,6 +264,16 @@
 			"edit": {
 				"success": "Ресурс успешно изменен",
 				"failed": "Не удалось изменить ресурс"
+			},
+			"approve": {
+				"success": "Заявка на ресурс успешно одобрена",
+				"failed": "Не удалось одобрить заявку на ресурс"
+			}
+		},
+		"resource.request": {
+			"reject": {
+				"success": "Заявка на ресурс успешно отклонена",
+				"failed": "Не удалось отклонить заявку на ресурс"
 			}
 		},
 		"profile": {
@@ -326,6 +346,12 @@
 				"failed.email": "Некорректный email"
 			}
 		},
+		"verification": {
+			"telegram.unlink": {
+				"success": "Telegram успешно отвязан от Вашего аккаунта",
+				"failed": "Не удалось отвязать Telegram от Вашего аккаунта"
+			}
+		},
 		"companies": {
 			"edit": {
 				"success": "Компания успешно изменена",
@@ -362,6 +388,11 @@
 	},
 	"tooltip": {
 		"collections": {
+			"disabled": {
+				"info": "У вас нет доступа к этой функции"
+			}
+		},
+		"companies": {
 			"disabled": {
 				"info": "У вас нет доступа к этой функции"
 			}

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks';
+import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -8,6 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
+import { SkillFilter } from '@/features/skill/skillFilter';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { SkillsTable } from '@/widgets/SkillsTable';
@@ -31,8 +32,17 @@ const SkillsPage = () => {
 	const page = useSelector(getSkillsPageNum);
 	const search = useSelector(getSkillsSearch);
 	const selectedSkills = useSelector(getSelectedSkills);
+	const {
+		filter: { specialization },
+	} = useQueryFilter();
 
-	const { data: skills } = useGetSkillsListQuery({ page, title: search });
+	const specializations = Array.isArray(specialization) ? specialization : [specialization!];
+
+	const { data: skills } = useGetSkillsListQuery({
+		page,
+		title: search,
+		specializations,
+	});
 
 	const onSelectSkills = (ids: SelectedAdminEntities) => {
 		dispatch(skillsPageActions.setSelectedSkills(ids));
@@ -48,6 +58,7 @@ const SkillsPage = () => {
 				showRemoveButton={selectedSkills.length > 0}
 				onSearch={onChangeSearch}
 				renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
+				renderFilter={() => <SkillFilter />}
 			/>
 			<Card className={styles.content}>
 				<SkillsTable

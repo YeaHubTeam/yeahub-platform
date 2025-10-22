@@ -86,5 +86,10 @@ export const useUserFilter = () => {
 		});
 	};
 
-	return { filter, handleFilterChange };
+	const resetFilters = () => {
+		setFilters({} as FilterFromUser);
+		navigate(initialState, { replace: true });
+	};
+
+	return { filter, handleFilterChange, resetFilters };
 };

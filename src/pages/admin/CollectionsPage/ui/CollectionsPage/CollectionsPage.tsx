@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
@@ -55,7 +55,7 @@ const CollectionsPage = () => {
 				disabled: isAuthor && item.createdBy?.id !== userId,
 			})),
 		};
-	}, [allCollections, userId]);
+	}, [allCollections, userId, isAuthor]);
 	const onPageChange = (page: number) => {
 		handleFilterChange({ page });
 		dispatch(collectionsPageActions.setSelectedCollections([]));
@@ -87,7 +87,9 @@ const CollectionsPage = () => {
 					/>
 				)}
 
-				{collections.data.length === 0 && <EmptyStub text={title} resetFilters={resetFilters} />}
+				{collections.data.length === 0 && (
+					<EmptyFilterStub text={title} resetFilters={resetFilters} />
+				)}
 			</Card>
 		</Flex>
 	);

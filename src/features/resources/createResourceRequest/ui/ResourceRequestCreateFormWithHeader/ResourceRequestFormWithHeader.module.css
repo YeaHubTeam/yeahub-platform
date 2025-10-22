@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.buttons {
+  flex: 1 1 48%;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  position: absolute;
+  top: 12px;
+  padding: 0 18px;
+}
+
+.content {
+  flex: 1 1 100%;
+}
+
+@media (width <= 768px) {
+  .buttons {
+    order: 3;
+    width: 100%;
+
+    .delete-button {
+      flex: 1 1 30%;
+    }
+
+    .submit-button {
+      flex: 1 1 70%;
+    }
+  }
+
+  .content {
+    order: 2;
+  }
+}

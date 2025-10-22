@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -8,13 +10,17 @@ import { useModal, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
+import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetResourcesListQuery } from '@/entities/resource';
+import { getSpecializationId } from '@/entities/profile';
+import {
+	useGetMyRequestsResourcesReviewCountQuery,
+	useGetResourcesListQuery,
+} from '@/entities/resource';
 
 import {
 	ResourcesList,
@@ -32,6 +38,7 @@ const ResourcesPage = () => {
 	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
+	const specializationID = useSelector(getSpecializationId);
 
 	const {
 		onChangeSearchParams,
@@ -51,10 +58,17 @@ const ResourcesPage = () => {
 		page: filter.page ?? 1,
 		limit: RESOURCES_PER_PAGE,
 		name: filter.title,
-		specializations: filter.specialization,
+		specializations: specializationID,
 		skills: filter.skills,
 		types: filter.resources,
 	});
+	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
+
+	useEffect(() => {
+		if (specializationID) {
+			onChangeSpecialization(specializationID);
+		}
+	}, []);
 
 	const resources = resourcesResponse?.data ?? [];
 
@@ -81,8 +95,8 @@ const ResourcesPage = () => {
 			}}
 			onChangeSearch={onChangeSearchParams}
 			onChangeSkills={onChangeSkills}
-			onChangeSpecialization={onChangeSpecialization}
 			onChangeResources={onChangeResources}
+			showSpecialization={false}
 		/>
 	);
 
@@ -107,9 +121,18 @@ const ResourcesPage = () => {
 			</Drawer>
 		</div>
 	);
+	const suggestButton = (
+		<Button
+			variant="link-purple"
+			suffix={<Icon icon="plus" />}
+			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+		>
+			{t(Marketplace.LINK_LABEL)}
+		</Button>
+	);
 
 	return (
-		<Flex gap="20" align="start">
+		<Flex gap="20" align="start" style={{ position: 'relative' }}>
 			<Card className={styles.main}>
 				<Flex className={styles.header}>
 					<Text variant="body6" isMainTitle>
@@ -117,13 +140,14 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && filterButton}
+						{suggestButton}
 					</Flex>
 				</Flex>
 
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
 				) : (
-					<EmptyStub resetFilters={resetFilters} />
+					<EmptyFilterStub resetFilters={resetFilters} />
 				)}
 
 				<ResourcesPagination
@@ -133,18 +157,17 @@ const ResourcesPage = () => {
 				/>
 			</Card>
 
-			<Flex className={styles['button-wrapper']}>
-				<Button
-					className={styles['absolute-button']}
-					variant="outline"
-					size="large"
-					onClick={handleNavigateToMyResources}
-				>
-					{t(Marketplace.MY_RESOURCES)}
-				</Button>
+			<Button
+				className={styles['absolute-button']}
+				variant="outline"
+				size="large"
+				onClick={handleNavigateToMyResources}
+			>
+				{t(Marketplace.MY_RESOURCES)}{' '}
+				{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
+			</Button>
 
-				{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}
-			</Flex>
+			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
 	);
 };
