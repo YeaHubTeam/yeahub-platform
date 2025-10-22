@@ -67,7 +67,7 @@ describe('Chip', () => {
 		expect(chip).toHaveClass('chip-clickable');
 	});
 
-	it('prefix should be rendered when prop is provided', () => {
+	it('should render prefix when prop is provided', () => {
 		render({ prefix: 'prefix' });
 
 		const prefix = screen.getByTestId(chipTestIDs.prefix);
@@ -77,7 +77,7 @@ describe('Chip', () => {
 		expect(prefix).toHaveClass('chip-prefix');
 	});
 
-	it('prefix should not be rendered without prop', () => {
+	it('should not render prefix without prop', () => {
 		render();
 
 		const prefix = screen.queryByTestId(chipTestIDs.prefix);
@@ -85,7 +85,15 @@ describe('Chip', () => {
 		expect(prefix).not.toBeInTheDocument();
 	});
 
-	it('label should be rendered when prop is provided', () => {
+	it('should render prefix with gap className (with label)', () => {
+		render({ prefix: 'prefix', label: 'label' });
+
+		const prefix = screen.queryByTestId(chipTestIDs.prefix);
+
+		expect(prefix).toHaveClass('gap');
+	});
+
+	it('should render label when prop is provided', () => {
 		render({ label: chipTestIDs.labelText });
 
 		const label = screen.getByTestId(chipTestIDs.labelText);
@@ -198,7 +206,7 @@ describe('Chip', () => {
 		});
 	});
 
-	it('onDelete should render icon with appropriate class,color and call onClick', async () => {
+	it('should render icon with appropriate class,color and call onClick (with onDelete)', async () => {
 		const onClick = jest.fn();
 		const onDelete = jest.fn();
 
