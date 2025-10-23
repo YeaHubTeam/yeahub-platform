@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const useQueryFilterParams = <T extends { page?: number }>(initialParams: T) => {
+export const useQueryFilterParams = <T extends object>(initialParams: T) => {
 	const [filter, setFilters] = useState<T>(initialParams as T);
 	const navigate = useNavigate();
 	const location = useLocation();
