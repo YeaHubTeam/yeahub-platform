@@ -2,9 +2,8 @@ import { useAppSelector } from '@/shared/hooks';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {
-	LearnedQuestion,
 	Question,
-	useGetLearnedQuestionsQuery,
+	useGetQuestionsForLearnQuery,
 	useGetQuestionsListQuery,
 } from '@/entities/question';
 
@@ -37,7 +36,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 		useGetQuestionsListQuery({ ...params, page: currentPage }, { skip: skipGetAllQuestions });
 
 	const { data: currentLearnedQuestions, isFetching: isLoadingCurrentLearnedQuestions } =
-		useGetLearnedQuestionsQuery(
+		useGetQuestionsForLearnQuery(
 			{ ...params, page: currentPage },
 			{ skip: skipGetLearnedQuestions },
 		);
@@ -66,7 +65,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 			{ skip: skipGetAllQuestions || skipGetPrevQuestions || !lastPageNum },
 		);
 	const { data: prevLearnedQuestions, isFetching: isLoadingPrevLearnedQuestions } =
-		useGetLearnedQuestionsQuery(
+		useGetQuestionsForLearnQuery(
 			{ ...params, page: prevPageNum },
 			{ skip: skipGetLearnedQuestions || skipGetPrevQuestions || !lastPageNum },
 		);
@@ -77,7 +76,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 			{ skip: skipGetAllQuestions || skipGetNextQuestions || !lastPageNum },
 		);
 	const { data: nextLearnedQuestions, isFetching: isLoadingLearnedQuestions } =
-		useGetLearnedQuestionsQuery(
+		useGetQuestionsForLearnQuery(
 			{ ...params, page: nextPageNum },
 			{ skip: skipGetLearnedQuestions || skipGetNextQuestions || !lastPageNum },
 		);
@@ -90,9 +89,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 		isLoadingNextAllQuestions ||
 		isLoadingLearnedQuestions;
 
-	const { prevId, nextPage, nextId, prevPage } = calculatePageNavigation<
-		Question | LearnedQuestion
-	>({
+	const { prevId, nextPage, nextId, prevPage } = calculatePageNavigation<Question>({
 		currentPageData: currentQuestions,
 		prevPageData: isAllQuestions ? prevAllQuestions : prevLearnedQuestions,
 		nextPageData: isAllQuestions ? nextAllQuestions : nextLearnedQuestions,
