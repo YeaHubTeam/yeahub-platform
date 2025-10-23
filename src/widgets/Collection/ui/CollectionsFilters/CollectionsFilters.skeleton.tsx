@@ -3,7 +3,7 @@ import { SearchInputSkeleton } from '@/shared/ui/SearchInput';
 
 import { ChooseCollectionSpecializationSkeleton } from '@/entities/collection';
 
-export const CollectionsFilterPanelSkeleton = () => {
+export const CollectionsFiltersSkeleton = () => {
 	return (
 		<Flex direction="column" gap="24">
 			<SearchInputSkeleton />

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { getKeyboardFireEventObject } from '@/shared/libs/jest/getKeyboardFireEventObject';
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
 
-import { Drawer, DrawerProps, drawerTestIds } from './Drawer';
+import Drawer, { DrawerProps, drawerTestIds } from './Drawer';
 
 const DrawerWrapper = ({
 	isOpen = true,

@@ -1,8 +1,6 @@
-export interface FilterParams {
+export interface CollectionsFilterParams {
 	title?: string;
-	specialization?: number[] | number;
+	specialization?: number;
 	isFree?: boolean;
 	page?: number;
 }
-
-export type DisplayMode = 'popover' | 'link';

@@ -4,13 +4,11 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { IconButtonSkeleton } from '@/shared/ui/IconButton';
 
-import styles from './CollectionsFiltersDrawer.module.css';
-
-export const CollectionsFiltersDrawerSkeleton = () => {
+export const FiltersDrawerSkeleton = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	return (
-		<div className={styles['filters-mobile']}>
+		<div>
 			<IconButtonSkeleton
 				aria-label={t(Translation.LOADING)}
 				role="status"

@@ -6,7 +6,6 @@
 }
 
 .filter-button {
-  margin-right: 10px;
   border: 1px solid var(--color-black-50);
 
   &:focus {
@@ -15,5 +14,15 @@
 	
   &:hover {
     cursor: pointer;
+  }
+}
+
+.drawer {
+  width: 360px;
+  overflow-x: hidden;
+
+  &.drawer-mobile {
+    top: calc(var(--header-height) - 12px);
+    width: 100%;
   }
 }
