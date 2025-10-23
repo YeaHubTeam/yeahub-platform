@@ -2,6 +2,7 @@ import { useAppSelector } from '@/shared/hooks';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {
+	LearnedQuestion,
 	Question,
 	useGetLearnedQuestionsQuery,
 	useGetQuestionsListQuery,
@@ -89,7 +90,9 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 		isLoadingNextAllQuestions ||
 		isLoadingLearnedQuestions;
 
-	const { prevId, nextPage, nextId, prevPage } = calculatePageNavigation<Question>({
+	const { prevId, nextPage, nextId, prevPage } = calculatePageNavigation<
+		Question | LearnedQuestion
+	>({
 		currentPageData: currentQuestions,
 		prevPageData: isAllQuestions ? prevAllQuestions : prevLearnedQuestions,
 		nextPageData: isAllQuestions ? nextAllQuestions : nextLearnedQuestions,

@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 
 import { getFromLS, removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
 
-import { LS_INIT_QUESTION_ID, Question } from '@/entities/question';
+import { LearnedQuestion, LS_INIT_QUESTION_ID, Question } from '@/entities/question';
 
-export const useInitQuestionId = (questionId: number, questions: Question[]) => {
+export const useInitQuestionId = (
+	questionId: number,
+	questions: Question[] | LearnedQuestion[],
+) => {
 	const [initQuestionId, setInitQuestionId] = useState<number>(
 		() => Number(getFromLS(LS_INIT_QUESTION_ID)) ?? 0,
 	);
