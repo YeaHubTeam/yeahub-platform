@@ -26,7 +26,7 @@ export const QuestionAuthorFilter = ({
 			className={styles.switch}
 			checked={selectedAuthorQuestions ?? false}
 			onChange={handleSwitchChange}
-			label={t(Questions.SORT_AUTHOR)}
+			label={t(Questions.SORT_AUTHOR_TITLE)}
 		/>
 	);
 };

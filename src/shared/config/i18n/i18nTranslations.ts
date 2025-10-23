@@ -497,7 +497,7 @@ export enum Questions {
 	RATE_TITLE = 'rate.title',
 	RATE_TITLE_SHORT = 'rate.title.short',
 	RATE_LABEL = 'rate.label',
-	SORT_AUTHOR = 'sort.author',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
 	SORT_TITLE = 'sort.title',
 	SORT_ASCENDING = 'sort.ascending',
