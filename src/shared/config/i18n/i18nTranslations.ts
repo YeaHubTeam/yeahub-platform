@@ -497,6 +497,7 @@ export enum Questions {
 	RATE_TITLE = 'rate.title',
 	RATE_TITLE_SHORT = 'rate.title.short',
 	RATE_LABEL = 'rate.label',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
 	SORT_TITLE = 'sort.title',
 	SORT_ASCENDING = 'sort.ascending',
@@ -540,6 +541,7 @@ export enum Questions {
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
+	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 }
 
 export enum InterviewHistory {

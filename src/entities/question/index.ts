@@ -28,6 +28,7 @@ export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
+export { QuestionAuthorFilter } from './ui/QuestionAuthorFilter/QuestionAuthorFilter';
 export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';
