@@ -13,3 +13,6 @@ export interface ChipProps {
 	style?: React.CSSProperties;
 	withText?: number | string;
 }
+
+export type ChipVariant = NonNullable<ChipProps['variant']>;
+export type ChipTheme = NonNullable<ChipProps['theme']>;
