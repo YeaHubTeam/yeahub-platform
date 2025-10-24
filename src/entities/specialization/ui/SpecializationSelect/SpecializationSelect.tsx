@@ -89,21 +89,17 @@ export const SpecializationSelect = ({
 
 	if (!hasMultiple) {
 		return (
-			<>
-				<Dropdown
-					size="S"
-					label={
-						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
-					}
-					disabled={disabled}
-					value={specializationsDictionary[selectedSpecializations[0] || 0]?.title ?? ''}
-					onSelect={(val) => handleChange(String(val))}
-				>
-					{options.map((option) => (
-						<Option value={option.value} label={option.label} key={option.label} />
-					))}
-				</Dropdown>
-			</>
+			<Dropdown
+				size="S"
+				label={options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)}
+				disabled={disabled}
+				value={specializationsDictionary[selectedSpecializations[0] || 0]?.title ?? ''}
+				onSelect={(val) => handleChange(String(val))}
+			>
+				{options.map((option) => (
+					<Option value={option.value} label={option.label} key={option.label} />
+				))}
+			</Dropdown>
 		);
 	}
 
