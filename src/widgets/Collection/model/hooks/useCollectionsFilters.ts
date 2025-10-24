@@ -1,10 +1,14 @@
 import { useQueryFilterParams } from '@/shared/hooks';
 
-import { CollectionsFilterParams } from '@/widgets/Collection';
+import { useGetCollectionsFilterParams } from '../hooks/useGetCollectionsFilterParams';
+import { CollectionsFilterParams } from '../types/types';
 
 export const useCollectionsFilters = (initialParams: CollectionsFilterParams) => {
-	const { filter, onFilterChange, onResetFilters } =
-		useQueryFilterParams<CollectionsFilterParams>(initialParams);
+	const currentParams = useGetCollectionsFilterParams(initialParams);
+	const { filters, onFilterChange, onResetFilters } = useQueryFilterParams<CollectionsFilterParams>(
+		initialParams,
+		currentParams,
+	);
 
 	const onChangeSearchParams = (title: string) => {
 		onFilterChange({ title, page: 1 });
@@ -17,20 +21,15 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		});
 	};
 
-	// const onChangeIsFree = (isFree: boolean) => {
-	// 	onFilterChange({ isFree, page: 1 });
-	// };
-
 	const onChangePage = (page: number) => {
 		onFilterChange({ page });
 	};
 
 	return {
-		filter,
+		filters,
 		onResetFilters,
 		onChangeSearchParams,
 		onChangeSpecialization,
-		// onChangeIsFree,
 		onChangePage,
 	};
 };

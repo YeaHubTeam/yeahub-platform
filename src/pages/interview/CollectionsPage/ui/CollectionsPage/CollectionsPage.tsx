@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
@@ -20,13 +18,9 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const {
-		filter,
-		onResetFilters,
-		onChangePage,
-		onChangeSearchParams,
-		// onChangeIsFree,
-	} = useCollectionsFilters({ page: 1 });
+	const { filters, onResetFilters, onChangePage, onChangeSearchParams } = useCollectionsFilters({
+		page: 1,
+	});
 
 	const specializationId = useAppSelector(getSpecializationId);
 
@@ -36,25 +30,20 @@ const CollectionsPage = () => {
 	});
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
-		titleOrDescriptionSearch: filter.title,
+		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
-		page: filter.page,
+		page: filters.page,
 	});
 
 	const { isLargeScreen } = useScreenSize();
 
-	const renderFilters = useMemo(
-		() => (
-			<CollectionsFilters
-				onChangeSearch={onChangeSearchParams}
-				// onChangeIsFree={onChangeIsFree}
-				filter={{
-					title: filter.title,
-					isFree: filter.isFree,
-				}}
-			/>
-		),
-		[filter, onChangeSearchParams],
+	const renderFilters = () => (
+		<CollectionsFilters
+			onChangeSearch={onChangeSearchParams}
+			filter={{
+				title: filters.title,
+			}}
+		/>
 	);
 
 	if (isLoadingAllCollections || isLoadingCategories) {
@@ -69,20 +58,20 @@ const CollectionsPage = () => {
 		<section className={styles.wrapper}>
 			<CollectionsContent
 				collections={allCollections.data}
-				filter={filter}
+				filter={filters}
 				resetFilters={onResetFilters}
 				pagination={
 					allCollections?.total > allCollections?.limit && (
 						<CollectionsPagination
 							collectionsResponse={allCollections}
-							currentPage={filter.page || 1}
+							currentPage={filters.page || 1}
 							onPageChange={onChangePage}
 						/>
 					)
 				}
-				renderDrawer={() => <FiltersDrawer>{renderFilters}</FiltersDrawer>}
+				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilters}</Card>}
+			{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</section>
 	);
 };

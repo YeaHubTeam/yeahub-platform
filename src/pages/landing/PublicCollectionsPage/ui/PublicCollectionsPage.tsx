@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
@@ -21,36 +19,25 @@ import styles from './PublicCollectionsPage.module.css';
 const COLLECTIONS_PER_PAGE = 6;
 
 const PublicCollectionsPage = () => {
-	const {
-		filter,
-		onResetFilters,
-		onChangePage,
-		onChangeSpecialization,
-		onChangeSearchParams,
-		// onChangeIsFree,
-	} = useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
+	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeSearchParams } =
+		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
-		titleOrDescriptionSearch: filter.title,
-		specializations: filter.specialization,
-		page: filter.page,
+		titleOrDescriptionSearch: filters.title,
+		specializations: filters.specialization,
+		page: filters.page,
 		limit: COLLECTIONS_PER_PAGE,
 	});
 
-	const renderFilter = useMemo(
-		() => (
-			<CollectionsFilters
-				onChangeSearch={onChangeSearchParams}
-				onChangeSpecialization={onChangeSpecialization}
-				// onChangeIsFree={onChangeIsFree}
-				filter={{
-					title: filter.title,
-					specialization: filter.specialization,
-					// isFree: filter.isFree,
-				}}
-			/>
-		),
-		[filter, onChangeSearchParams, onChangeSpecialization],
+	const renderFilter = () => (
+		<CollectionsFilters
+			onChangeSearch={onChangeSearchParams}
+			onChangeSpecialization={onChangeSpecialization}
+			filter={{
+				title: filters.title,
+				specialization: filters.specialization,
+			}}
+		/>
 	);
 
 	const { isLargeScreen } = useScreenSize();
@@ -67,20 +54,20 @@ const PublicCollectionsPage = () => {
 		<section className={styles.wrapper}>
 			<CollectionsContent
 				collections={collections.data}
-				filter={filter}
+				filter={filters}
 				resetFilters={onResetFilters}
 				pagination={
 					collections?.total > collections.limit && (
 						<CollectionsPagination
 							collectionsResponse={collections}
-							currentPage={filter.page || 1}
+							currentPage={filters.page || 1}
 							onPageChange={onChangePage}
 						/>
 					)
 				}
-				renderDrawer={() => <FiltersDrawer>{renderFilter}</FiltersDrawer>}
+				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilter}</Card>}
+			{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
 		</section>
 	);
 };

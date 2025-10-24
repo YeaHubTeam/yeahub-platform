@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const useQueryFilterParams = <T extends object>(initialParams: T) => {
-	const [filter, setFilters] = useState<T>(initialParams as T);
+export const useQueryFilterParams = <T extends object>(initialParams: T, currentParams: T) => {
+	const [filters, setFilters] = useState<T>(currentParams as T);
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -52,8 +52,10 @@ export const useQueryFilterParams = <T extends object>(initialParams: T) => {
 	};
 
 	useEffect(() => {
-		navigate(getInitialParams(), { replace: true });
+		if (!location.search) {
+			navigate(getInitialParams(), { replace: true });
+		}
 	}, []);
 
-	return { filter, onFilterChange, onResetFilters };
+	return { filters, onFilterChange, onResetFilters };
 };
