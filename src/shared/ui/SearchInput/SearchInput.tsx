@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
+import { useDebounce } from '@/shared/hooks';
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 
@@ -22,10 +23,12 @@ export const SearchInput = ({
 		setQuery(currentValue || '');
 	}, [currentValue]);
 
+	const debouncedSearch = useDebounce(onSearch, 500);
+
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 		setQuery(value);
-		onSearch(value);
+		debouncedSearch(value);
 	};
 
 	return (

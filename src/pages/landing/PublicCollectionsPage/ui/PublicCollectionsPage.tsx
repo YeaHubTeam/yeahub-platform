@@ -1,12 +1,13 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import {
 	CollectionsContent,
-	CollectionsFilterPanel,
-	CollectionsFiltersDrawer,
+	CollectionsFilters,
 	CollectionsPagination,
 	useCollectionsFilters,
 } from '@/widgets/Collection';
@@ -18,21 +19,26 @@ import styles from './PublicCollectionsPage.module.css';
 const COLLECTIONS_PER_PAGE = 6;
 
 const PublicCollectionsPage = () => {
-	const {
-		filter,
-		resetFilters,
-		onPageChange,
-		onChangeSpecialization,
-		onChangeSearchParams,
-		onChangeIsFree,
-	} = useCollectionsFilters();
+	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeSearchParams } =
+		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
-		titleOrDescriptionSearch: filter.title,
-		specializations: filter.specialization,
-		page: filter.page,
+		titleOrDescriptionSearch: filters.title,
+		specializations: filters.specialization,
+		page: filters.page,
 		limit: COLLECTIONS_PER_PAGE,
 	});
+
+	const renderFilter = () => (
+		<CollectionsFilters
+			onChangeSearch={onChangeSearchParams}
+			onChangeSpecialization={onChangeSpecialization}
+			filter={{
+				title: filters.title,
+				specialization: filters.specialization,
+			}}
+		/>
+	);
 
 	const { isLargeScreen } = useScreenSize();
 
@@ -48,44 +54,20 @@ const PublicCollectionsPage = () => {
 		<section className={styles.wrapper}>
 			<CollectionsContent
 				collections={collections.data}
-				filter={filter}
-				resetFilters={resetFilters}
+				filter={filters}
+				resetFilters={onResetFilters}
 				pagination={
 					collections?.total > collections.limit && (
 						<CollectionsPagination
 							collectionsResponse={collections}
-							currentPage={filter.page || 1}
-							onPageChange={onPageChange}
+							currentPage={filters.page || 1}
+							onPageChange={onChangePage}
 						/>
 					)
 				}
-				renderDrawer={() => (
-					<CollectionsFiltersDrawer
-						onChangeSearch={onChangeSearchParams}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						filter={{
-							title: filter.title,
-							specialization: filter.specialization,
-							isFree: filter.isFree,
-						}}
-					/>
-				)}
+				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && (
-				<Card className={styles.filters}>
-					<CollectionsFilterPanel
-						onChangeSearch={onChangeSearchParams}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						filter={{
-							title: filter.title,
-							specialization: filter.specialization,
-							isFree: filter.isFree,
-						}}
-					/>
-				</Card>
-			)}
+			{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
 		</section>
 	);
 };
