@@ -1,23 +1,10 @@
-.process { margin: 20px 0; max-width: 782px;
+.process {
+	margin: 20px 0;
+	max-width: 782px;
 }
 
-.description { max-width: 645px
+.description {
+	max-width: 645px
 }
 
-.container { display: grid; grid-template-columns: repeat(3, auto ); gap: 20px;
-}
 
-.card { display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-
-.icon { padding: 0; width: 42px; height: 42px;
-}
-
-.banner { margin-top: 20px; width: 100%; height: auto;
-}
-
-@media screen and ( width <= 1024px) {    .container{ grid-template-columns: repeat(2, auto )}
-}
-
-@media screen and (width <= 650px) {    .container{ grid-template-columns: repeat(1, auto );}
-}
