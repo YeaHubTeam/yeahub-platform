@@ -10,25 +10,29 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		currentParams,
 	);
 
-	const onChangeSearchParams = (title: string) => {
+	const hasFilters =
+		(filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.specialization);
+
+	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
 	};
 
-	const onChangeSpecialization = (specialization: number) => {
+	const onChangeSpecialization = (specialization: CollectionsFilterParams['specialization']) => {
 		onFilterChange({
 			specialization,
 			page: 1,
 		});
 	};
 
-	const onChangePage = (page: number) => {
+	const onChangePage = (page: CollectionsFilterParams['page']) => {
 		onFilterChange({ page });
 	};
 
 	return {
 		filters,
+		hasFilters,
 		onResetFilters,
-		onChangeSearchParams,
+		onChangeTitle,
 		onChangeSpecialization,
 		onChangePage,
 	};

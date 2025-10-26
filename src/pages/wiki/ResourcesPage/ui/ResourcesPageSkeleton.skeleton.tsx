@@ -4,11 +4,8 @@ import { Flex } from '@/shared/ui/Flex';
 import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import {
-	MarketplaceFiltersPanelSkeleton,
-	ResourcesListSkeleton,
-	ResourcesPaginationSkeleton,
-} from '@/widgets/Marketplace';
+import { ResourcesListSkeleton, ResourcesPaginationSkeleton } from '@/widgets/Marketplace';
+import { ResourcesFiltersSkeleton } from '@/widgets/resources/ResourcesFilters';
 
 import styles from './ResourcesPage.module.css';
 
@@ -29,7 +26,7 @@ export const ResourcesPageSkeleton = () => {
 				<ResourcesPaginationSkeleton />
 			</Card>
 			<Card className={styles.filters}>
-				<MarketplaceFiltersPanelSkeleton />
+				<ResourcesFiltersSkeleton />
 			</Card>
 		</Flex>
 	);

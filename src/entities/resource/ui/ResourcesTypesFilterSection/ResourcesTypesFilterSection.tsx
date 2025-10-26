@@ -7,21 +7,22 @@ import { MAX_LIMIT_RESOURCES } from '@/shared/constants/queryConstants';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
+import { ResourceTypeCode } from '@/entities/resource';
 import { useGetResourceTypesQuery } from '@/entities/resource/api/resourceApi';
 
-import styles from './ResourcesFilterSection.module.css';
+import styles from './ResourcesTypesFilterSection.module.css';
 
-interface ResourcesFilterSectionProps {
+interface ResourcesTypesFilterSectionProps {
 	resourceLimit?: number;
-	selectedResources?: string[] | string;
-	onChooseResources: (resources: string[] | undefined) => void;
+	selectedTypes?: ResourceTypeCode[];
+	onChooseTypes: (types?: ResourceTypeCode[]) => void;
 }
 
-export const ResourcesFilterSection = ({
+export const ResourcesTypesFilterSection = ({
 	resourceLimit,
-	selectedResources,
-	onChooseResources,
-}: ResourcesFilterSectionProps) => {
+	selectedTypes,
+	onChooseTypes,
+}: ResourcesTypesFilterSectionProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const [showAll, setShowAll] = useState(false);
 	const limit = resourceLimit || MAX_LIMIT_RESOURCES;
@@ -41,22 +42,22 @@ export const ResourcesFilterSection = ({
 	const preparedData = (showAll ? resourceTypes : resourceTypes?.slice(0, limit))?.map(
 		(resource) => ({
 			...resource,
-			active: selectedResources?.includes(resource.id) ?? false,
+			active: selectedTypes?.includes(resource.id) ?? false,
 		}),
 	);
 
-	const onChooseResource = (id: string) => {
-		const resourcesArray = Array.isArray(selectedResources)
-			? selectedResources
-			: selectedResources
-				? [selectedResources]
+	const onChooseType = (id: ResourceTypeCode) => {
+		const typesArray = Array.isArray(selectedTypes)
+			? selectedTypes
+			: selectedTypes
+				? [selectedTypes]
 				: [];
 
-		if (resourcesArray.includes(id)) {
-			const filteredResources = resourcesArray.filter((resource) => resource !== id);
-			onChooseResources(filteredResources.length > 0 ? filteredResources : undefined);
+		if (typesArray.includes(id)) {
+			const filteredTypes = typesArray.filter((type) => type !== id);
+			onChooseTypes(filteredTypes.length > 0 ? filteredTypes : undefined);
 		} else {
-			onChooseResources([...resourcesArray, id]);
+			onChooseTypes([...typesArray, id]);
 		}
 	};
 
@@ -65,7 +66,7 @@ export const ResourcesFilterSection = ({
 			<BaseFilterSection
 				data={preparedData ?? []}
 				title={t(Marketplace.RESOURCES_TITLE)}
-				onClick={onChooseResource}
+				onClick={onChooseType}
 			/>
 			{hasHiddenResources && (
 				<Button className={styles.button} variant="link" onClick={toggleShowAll}>

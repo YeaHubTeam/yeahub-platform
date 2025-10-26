@@ -16,22 +16,19 @@ import { PublicCollectionsPageSkeleton } from '@/pages/landing/PublicCollections
 
 import styles from './PublicCollectionsPage.module.css';
 
-const COLLECTIONS_PER_PAGE = 6;
-
 const PublicCollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeSearchParams } =
+	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
 		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
 		page: filters.page,
-		limit: COLLECTIONS_PER_PAGE,
 	});
 
 	const renderFilter = () => (
 		<CollectionsFilters
-			onChangeSearch={onChangeSearchParams}
+			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
 			filter={{
 				title: filters.title,
