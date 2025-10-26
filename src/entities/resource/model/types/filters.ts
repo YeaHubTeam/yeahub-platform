@@ -1,14 +1,16 @@
-import { ResourceRequestStatus } from './resource';
+import { ResourceRequestStatus, ResourceTypeCode } from '@/entities/resource';
 
-export interface FilterParams {
-	specialization?: number | number[];
+export interface ResourcesFilterParams {
+	title?: string;
+	specialization?: number;
+	page?: number;
 	skills?: number[];
-	resources?: string | string[];
-	keywords?: string | string[];
+	types?: ResourceTypeCode[];
 }
 
-export interface MyResourcesFilterParams extends FilterParams {
-	status?: ResourceRequestStatus;
+export interface ResourceRequestsFilterParams {
+	title?: string;
+	page?: number;
+	types?: ResourceTypeCode[];
+	status?: ResourceRequestStatus | 'all';
 }
-
-export type DisplayMode = 'popover' | 'link';

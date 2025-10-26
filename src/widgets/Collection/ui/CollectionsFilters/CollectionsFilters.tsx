@@ -14,26 +14,28 @@ import styles from './CollectionsFilters.module.css';
 
 interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
-	onChangeSearch: (value: string) => void;
-	onChangeSpecialization?: (specialization: number) => void;
+	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
+	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 }
 
 export const CollectionsFilters = ({
 	filter,
-	onChangeSearch,
+	onChangeTitle,
 	onChangeSpecialization,
 }: CollectionsFiltersProps) => {
 	const { title, specialization } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
-	const handleSearch = (value: string) => {
-		onChangeSearch(value);
+	const handleSearch = (value: CollectionsFilterParams['title']) => {
+		onChangeTitle(value);
 	};
 
-	const handleSpecializationChange = (newSpecialization: number | undefined) => {
-		if (newSpecialization) {
-			onChangeSpecialization?.(newSpecialization);
+	const handleSpecializationChange = (
+		specialization: CollectionsFilterParams['specialization'],
+	) => {
+		if (specialization) {
+			onChangeSpecialization?.(specialization);
 		}
 	};
 
