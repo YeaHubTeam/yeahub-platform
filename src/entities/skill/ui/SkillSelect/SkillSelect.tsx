@@ -11,7 +11,7 @@ import { Skill } from '../../model/types/skill';
 
 import { SkillSelectSkeleton } from './SkillSelect.skeleton';
 
-type SkillSelectProps = Omit<
+export type SkillSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'children'
 > & {

@@ -2,6 +2,7 @@ import { Chip } from '@/shared/ui/Chip';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Text } from '@/shared/ui/Text';
 
+import { selectWithChipsTestIds } from './constants';
 import styles from './SelectWithChips.module.css';
 
 type SelectWithChipsProps<T, U> = Omit<
@@ -39,7 +40,7 @@ export const SelectWithChips = <
 	onChangeValue,
 }: SelectWithChipsProps<T, U>) => {
 	return (
-		<div className={styles.wrapper}>
+		<div data-testid={selectWithChipsTestIds.selectWithChips} className={styles.wrapper}>
 			<Dropdown
 				isInput={isInput}
 				inputValue={inputValue}
