@@ -12,13 +12,11 @@ import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
 import { UsersPageState } from '@/pages/admin/UserTablePage';
 import { CreateQuizPageState } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
-import { QuestionsPageState } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPageState } from '@/pages/landing/CreatePublicQuizPage';
 
 import { baseApi } from '../api/baseApi';
 
 export interface State {
-	questionsPage: QuestionsPageState;
 	createQuizPage: CreateQuizPageState;
 	createPublicQuizPage: CreatePublicQuizPageState;
 	activeQuiz: ActiveQuizState;

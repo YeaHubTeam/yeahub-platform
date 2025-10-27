@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace } from '@/shared/config/i18n/i18n';
 import { Questions, Subscription } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector } from '@/shared/hooks';
-import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getHasPremiumAccess } from '@/entities/profile';
+import { QuestionFilterStatus } from '@/entities/question';
 
-import { QuestionFilterStatus, QuestionFilterStatusItem } from '../../model/types';
 interface StatusFilterSectionProps {
 	selectedStatus?: QuestionFilterStatus;
 	onChangeStatus: (status: QuestionFilterStatus) => void;
@@ -20,7 +21,7 @@ export const StatusFilterSection = ({
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.subscription]);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
-	const progressStatus: QuestionFilterStatusItem[] = [
+	const progressStatus: BaseFilterItem<QuestionFilterStatus>[] = [
 		{
 			id: 'not-learned',
 			title: t(Questions.STATUS_UNLEARNED),

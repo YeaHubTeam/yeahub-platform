@@ -1,7 +1,7 @@
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { QuestionsFilterPanelSkeleton } from '@/widgets/question/QuestionsFilterPanel';
+import { QuestionsFiltersSkeleton } from '@/widgets/question/QuestionsFilters';
 import { FullQuestionsListSkeleton } from '@/widgets/question/QuestionsList';
 
 import { QuestionPagePaginationSkeleton } from '../QuestionsPagePagination/QuestionPagePagination.skeleton';
@@ -16,7 +16,7 @@ export const QuestionsPageSkeleton = () => {
 				<QuestionPagePaginationSkeleton />
 			</Card>
 			<Card className={styles.filters}>
-				<QuestionsFilterPanelSkeleton />
+				<QuestionsFiltersSkeleton />
 			</Card>
 		</Flex>
 	);
