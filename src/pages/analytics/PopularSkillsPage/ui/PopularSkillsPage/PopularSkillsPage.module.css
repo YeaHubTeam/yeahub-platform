@@ -1,0 +1,26 @@
+.card {
+  @media (width <= 1024px) {
+    padding: 20px 16px;
+  }
+
+  @media (width <= 767px) {
+    padding: 20px 10px;
+  }
+}
+
+.dropdown {
+  margin: 24px 0 16px;
+  font-weight: var(--font-weight-400);;
+
+  @media     (width <= 767px) {
+    margin-bottom: 0;
+  }
+}
+
+.tooltip {
+  max-width: 449px;
+
+  @media (width <= 767px) {
+    max-width: 288px;
+  }
+}

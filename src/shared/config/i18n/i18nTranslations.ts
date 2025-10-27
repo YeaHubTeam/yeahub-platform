@@ -354,6 +354,8 @@ export enum Analytics {
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
 	SKILLS_TABLE_SKILLS = 'table.skills',
 	SKILLS_TABLE_POPULARITY = 'table.popularity',
+	POPULARITY_TOOLTIP = 'popularity.tooltip',
+	SKILLS_POPULARITY = 'skills.popularity',
 }
 
 export enum InterviewQuiz {

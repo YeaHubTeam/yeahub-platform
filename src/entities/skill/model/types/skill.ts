@@ -46,6 +46,7 @@ export type EditSkillResponse = Skill | ErrorResponce;
 export interface PopularSkill {
 	id: number;
 	skill: Skill;
+	specialization: Specialization;
 	calculatedAt: string;
 	frequencyStat: number;
 }

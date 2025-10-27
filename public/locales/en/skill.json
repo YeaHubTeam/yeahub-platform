@@ -19,10 +19,6 @@
 		"empty": "No options available",
 		"selected": "Selected skills"
 	},
-	"table": {
-		"skills": "Skills",
-		"popularity": "Popularity"
-	},
 	"empty": "No skills",
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",

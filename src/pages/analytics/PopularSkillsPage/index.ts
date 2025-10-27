@@ -1,1 +1,1 @@
-export { PopularSkillsPage } from './ui/PopularSkillsPage';
+export { PopularSkillsPage } from './ui/PopularSkillsPage/PopularSkillsPage';
