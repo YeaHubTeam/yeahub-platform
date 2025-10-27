@@ -81,6 +81,8 @@ export enum Translation {
 	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
+	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -356,6 +358,14 @@ export enum Specializations {
 export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
+	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
+	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
+	SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
+	SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
+	SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
+	SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
+	SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
 }
 
 export enum InterviewQuiz {
