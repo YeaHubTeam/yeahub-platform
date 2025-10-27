@@ -47,8 +47,8 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 			chunkIds: 'deterministic',
 			splitChunks: {
 				chunks: 'all',
-				minSize: 40000,
-				maxInitialRequests: 10,
+				minSize: 30000,
+				maxInitialRequests: 8,
 				cacheGroups: {
 					react: {
 						test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
@@ -78,7 +78,7 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 						test: /[\\/]node_modules[\\/]/,
 						name: 'vendors',
 						priority: 10,
-						minSize: 150000,
+						minSize: 80000,
 					},
 				},
 			},
