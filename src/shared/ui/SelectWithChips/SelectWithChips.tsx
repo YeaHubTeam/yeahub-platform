@@ -21,6 +21,7 @@ type SelectWithChipsProps<T, U> = Omit<
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
+	dataTestId?: string;
 };
 
 export const SelectWithChips = <
@@ -38,9 +39,10 @@ export const SelectWithChips = <
 	inputValue,
 	isInput,
 	onChangeValue,
+	dataTestId = selectWithChipsTestIds.selectWithChips,
 }: SelectWithChipsProps<T, U>) => {
 	return (
-		<div data-testid={selectWithChipsTestIds.selectWithChips} className={styles.wrapper}>
+		<div data-testid={dataTestId} className={styles.wrapper}>
 			<Dropdown
 				isInput={isInput}
 				inputValue={inputValue}
