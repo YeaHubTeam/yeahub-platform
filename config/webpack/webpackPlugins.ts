@@ -1,6 +1,7 @@
 import path from 'path';
 
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
@@ -23,6 +24,7 @@ export const webpackPlugins = ({
 		new HtmlWebpackPlugin({
 			template: paths.html,
 			favicon: path.resolve(paths.public, 'images/favicon.svg'),
+			minify: !isDev,
 		}),
 		new DefinePlugin(envs),
 		new Dotenv({
@@ -77,6 +79,13 @@ export const webpackPlugins = ({
 				threshold: 10240,
 				minRatio: 0.8,
 				deleteOriginalAssets: false,
+			}),
+		);
+		plugins.push(
+			new StatoscopeWebpackPlugin({
+				saveReportTo: path.resolve(paths.output, 'statoscope-report.html'),
+				saveStatsTo: path.resolve(paths.output, 'statoscope-stats.json'),
+				open: false,
 			}),
 		);
 	}
