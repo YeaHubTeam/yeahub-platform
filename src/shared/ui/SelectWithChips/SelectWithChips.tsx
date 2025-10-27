@@ -2,6 +2,7 @@ import { Chip } from '@/shared/ui/Chip';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Text } from '@/shared/ui/Text';
 
+import { selectWithChipsTestIds } from './constants';
 import styles from './SelectWithChips.module.css';
 
 type SelectWithChipsProps<T, U> = Omit<
@@ -20,6 +21,7 @@ type SelectWithChipsProps<T, U> = Omit<
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
+	dataTestId?: string;
 };
 
 export const SelectWithChips = <
@@ -37,9 +39,10 @@ export const SelectWithChips = <
 	inputValue,
 	isInput,
 	onChangeValue,
+	dataTestId = selectWithChipsTestIds.selectWithChips,
 }: SelectWithChipsProps<T, U>) => {
 	return (
-		<div className={styles.wrapper}>
+		<div data-testid={dataTestId} className={styles.wrapper}>
 			<Dropdown
 				isInput={isInput}
 				inputValue={inputValue}
