@@ -1,3 +1,4 @@
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { Configuration, Entry } from 'webpack';
 
 import { WebpackOptions } from './types/types';
@@ -34,5 +35,21 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 		plugins: webpackPlugins(options),
 		devServer: isDev ? webpackDevServer(options) : undefined,
 		devtool: isDev ? 'inline-source-map' : 'source-map',
+		optimization: {
+			splitChunks: {
+				chunks: 'all',
+				minSize: 244 * 1024,
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendors',
+						chunks: 'all',
+					},
+				},
+			},
+			runtimeChunk: 'single',
+			usedExports: true,
+			minimizer: ['...', new CssMinimizerPlugin()],
+		},
 	};
 };
