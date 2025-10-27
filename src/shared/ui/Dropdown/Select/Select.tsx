@@ -10,6 +10,7 @@ export interface SelectProps {
 	prefix: React.ReactNode;
 	suffix: React.ReactNode;
 	className?: string;
+	dataTestId?: string;
 	disabled?: boolean;
 	label: string;
 	isOpen?: boolean;
