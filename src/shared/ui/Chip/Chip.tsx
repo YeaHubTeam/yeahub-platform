@@ -20,6 +20,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 			prefix,
 			onClick,
 			onDelete,
+			dataTestId = chipTestIDs.chip,
 			...props
 		},
 		ref,
@@ -33,6 +34,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 
 		return (
 			<div
+				data-testid={dataTestId}
 				{...props}
 				className={classNames(
 					styles['chip-wrapper'],
@@ -48,7 +50,6 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				)}
 				aria-hidden={disabled}
 				aria-disabled={disabled}
-				data-testid={chipTestIDs.chip}
 				onClick={!disabled ? onClick : undefined}
 				onKeyDown={!disabled ? handleKeyDown : undefined}
 				role="button"

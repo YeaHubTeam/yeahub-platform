@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetResourceRequestsQuery, SelectedResourceRequestEntities } from '@/entities/resource';
 
-import { ResourceRequestsTable } from '@/widgets/resources';
+import { ResourceRequestsTable } from '@/widgets/resources/ResourceRequestsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import {
