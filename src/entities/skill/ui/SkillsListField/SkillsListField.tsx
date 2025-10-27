@@ -32,7 +32,7 @@ export const SkillsListField = ({
 
 	const { data: skills } = useGetSkillsListQuery({
 		limit,
-		specializations: [selectedSpecialization],
+		specializations: selectedSpecialization,
 	});
 
 	const onToggleShowAll = () => {

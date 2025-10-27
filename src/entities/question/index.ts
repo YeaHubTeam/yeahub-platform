@@ -29,6 +29,8 @@ export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStat
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
 export { QuestionAuthorFilter } from './ui/QuestionAuthorFilter/QuestionAuthorFilter';
+export { StatusFilterSection } from './ui/StatusFilterSection/StatusFilterSection';
+export { StatusFilterSectionSkeleton } from './ui/StatusFilterSection/StatusFilterSection.skeleton';
 export { questionHandlers } from './api/__mocks__/index';
 
 export { questionsMock } from './api/__mocks__/data';
@@ -41,3 +43,8 @@ export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/quest
 
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
+
+export { useQuestionsFilters } from './model/hooks/useQuestionsFilters';
+export { useGetQuestionsFilterParams } from './model/hooks/useGetQuestionsFilterParams';
+
+export type { QuestionsFilterParams, QuestionFilterStatus } from './model/types/filters';
