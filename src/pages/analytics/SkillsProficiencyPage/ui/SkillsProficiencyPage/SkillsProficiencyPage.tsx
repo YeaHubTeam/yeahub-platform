@@ -1,20 +1,23 @@
-import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { State } from '@/shared/config/store/State';
+import { useAppDispatch, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetLearnedQuestionsQuery } from '@/entities/question';
-import { Skill, useGetSkillsListQuery } from '@/entities/skill';
-import { Specialization, useGetSpecializationsListQuery } from '@/entities/specialization';
+import { SkillSelect } from '@/entities/skill';
+import { SpecializationSelect } from '@/entities/specialization';
 
+import { skillsProficiencyActions } from '../../model/slices/skillsProficiencyPageSlice';
+import { SkillsProficiencyList } from '../SkillsProficiencyList/SkillsProficiencyList';
+import { SkillsProficiencyPagePagination } from '../SkillsProficiencyPagePagination/SkillsProficiencyPagePagination';
 import { SkillsProficiencyPageTable } from '../SkillsProficiencyPageTable/SkillsProficiencyPageTable';
 
 import styles from './SkillsProficiencyPage.module.css';
@@ -22,72 +25,25 @@ import styles from './SkillsProficiencyPage.module.css';
 export const SkillsProficiencyPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const { isMobile } = useScreenSize();
+	const dispatch = useAppDispatch();
+	const filter = useSelector((state: State) => state.skillsProficiencyPage);
 
-	const [selectedSpecialization, setSelectedSpecialization] = useState(0);
-	const [selectedSkill, setSelectedSkill] = useState(0);
+	const onPageChange = (page: number) => {
+		dispatch(skillsProficiencyActions.setPage(page));
+	};
+	const onSelectSpecialization = (id: number | number[]) => {
+		const value = Array.isArray(id) ? id[0] : id;
+		dispatch(skillsProficiencyActions.setSelectedSpecialization(value));
+	};
+	const onSelectSkill = (id: number | number[]) => {
+		const value = Array.isArray(id) ? id[0] : id;
+		dispatch(skillsProficiencyActions.setSelectedSkill(value));
+	};
 
-	const { data: specializations, isLoading: specializationsLoading } =
-		useGetSpecializationsListQuery({ limit: 100 });
-	const { data: skills, isLoading: skillsLoading } = useGetSkillsListQuery({ limit: 100 });
 	const { data: response } = useGetLearnedQuestionsQuery({
-		page: 1,
-		limit: 6,
-		specializationId: selectedSpecialization || undefined,
-		skillId: selectedSkill || undefined,
+		...filter,
 	});
 	const learnedQuestions = response?.data ?? [];
-
-	const specializationOptions = useMemo(() => {
-		return (specializations?.data || []).map((specialization) => ({
-			label: specialization.title,
-			value: specialization.id.toString(),
-			limit: 100,
-		}));
-	}, [specializations]);
-
-	const specializationsDictionary = useMemo(() => {
-		const emptySpecialization: Specialization = {
-			id: 0,
-			title: t(Analytics.SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE),
-			imageSrc: null,
-			description: '',
-		};
-		return (specializations?.data || []).reduce(
-			(acc, specialization) => {
-				acc[specialization.id] = specialization;
-				return acc;
-			},
-			{ 0: emptySpecialization } as Record<number, Specialization>,
-		);
-	}, [specializations]);
-
-	const skillOptions = useMemo(() => {
-		return (skills?.data || []).map((skill) => ({
-			label: skill.title,
-			value: skill.id.toString(),
-			limit: 100,
-		}));
-	}, [skills]);
-
-	const skillsDictionary = useMemo(() => {
-		const emptySkills: Skill = {
-			id: 0,
-			title: t(Analytics.SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE),
-			imageSrc: null,
-			description: '',
-		};
-		return (skills?.data || []).reduce(
-			(acc, skill) => {
-				acc[skill.id] = skill;
-				return acc;
-			},
-			{ 0: emptySkills } as Record<string, Skill>,
-		);
-	}, [skills]);
-
-	if (!learnedQuestions.length) {
-		return null;
-	}
 
 	return (
 		<Card className={styles.content}>
@@ -111,31 +67,31 @@ export const SkillsProficiencyPage = () => {
 				direction={isMobile ? 'column' : 'row'}
 				align={isMobile ? 'center' : 'start'}
 			>
-				<Dropdown
-					size="S"
-					value={specializationsDictionary[selectedSpecialization || 0]?.title ?? ''}
-					onSelect={(value) => setSelectedSpecialization(Number(value))}
-					disabled={specializationsLoading}
-					width={isMobile ? '100%' : 'auto'}
-				>
-					{specializationOptions.map((option) => (
-						<Option value={option.value} label={option.label} key={option.label} />
-					))}
-				</Dropdown>
-
-				<Dropdown
-					size="S"
-					value={skillsDictionary[selectedSkill || 0]?.title ?? ''}
-					onSelect={(value) => setSelectedSkill(Number(value))}
-					disabled={skillsLoading}
-					width={isMobile ? '100%' : 'auto'}
-				>
-					{skillOptions.map((option) => (
-						<Option value={option.value} label={option.label} key={option.label} />
-					))}
-				</Dropdown>
+				<SpecializationSelect
+					onChange={onSelectSpecialization}
+					value={filter.specializationId || 0}
+				/>
+				<SkillSelect
+					onChange={onSelectSkill}
+					value={filter.skillId || 0}
+					selectedSpecializations={
+						Array.isArray(filter.specializationId)
+							? filter.specializationId
+							: [filter.specializationId || 0]
+					}
+					hasMultiple={false}
+				/>
 			</Flex>
-			<SkillsProficiencyPageTable items={learnedQuestions} />
+			{isMobile ? (
+				<SkillsProficiencyList learnedQuestions={learnedQuestions} />
+			) : (
+				<SkillsProficiencyPageTable learnedQuestions={learnedQuestions} />
+			)}
+			<SkillsProficiencyPagePagination
+				learnedQuestionsResponse={response}
+				currentPage={filter.page || 1}
+				onChangePage={onPageChange}
+			/>
 		</Card>
 	);
 };

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Skills } from '@/shared/config/i18n/i18nTranslations';
-import { Dropdown } from '@/shared/ui/Dropdown';
+import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
@@ -13,17 +13,19 @@ import { SkillSelectSkeleton } from './SkillSelect.skeleton';
 
 type SkillSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
-	'options' | 'type' | 'value' | 'children'
+	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
-	value: number[];
+	value: number[] | number;
 	onChange: (value: number[]) => void;
 	selectedSpecializations?: number[];
+	hasMultiple?: boolean;
 };
 
 export const SkillSelect = ({
 	onChange,
 	value,
 	selectedSpecializations,
+	hasMultiple = true,
 	disabled,
 }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
@@ -33,13 +35,20 @@ export const SkillSelect = ({
 		specializations: selectedSpecializations,
 	});
 
-	const [selectedSkills, setSelectedSkills] = useState<number[]>(value);
+	const [selectedSkills, setSelectedSkills] = useState<number[]>(
+		Array.isArray(value) ? value : value !== undefined ? [value] : [],
+	);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
-		const updates = [...(selectedSkills || []), +newValue];
-		setSelectedSkills(updates);
-		onChange(updates);
+		if (hasMultiple) {
+			const updates = [...(selectedSkills || []), +newValue];
+			setSelectedSkills(updates);
+			onChange(updates);
+		} else {
+			setSelectedSkills([+newValue]);
+			onChange([+newValue]);
+		}
 	};
 
 	const handleDeleteSkill = (id: number) => () => {
@@ -49,12 +58,19 @@ export const SkillSelect = ({
 	};
 
 	const options = useMemo(() => {
-		return (skills?.data || [])
-			.map((skill) => ({
+		if (hasMultiple) {
+			return (skills?.data || [])
+				.map((skill) => ({
+					label: skill.title,
+					value: skill.id.toString(),
+				}))
+				.filter((skill) => !selectedSkills?.includes(+skill.value));
+		} else {
+			return (skills?.data || []).map((skill) => ({
 				label: skill.title,
 				value: skill.id.toString(),
-			}))
-			.filter((skill) => !selectedSkills?.includes(+skill.value));
+			}));
+		}
 	}, [skills?.data, selectedSkills]);
 
 	const skillsDictionary = useMemo(() => {
@@ -69,6 +85,23 @@ export const SkillSelect = ({
 
 	if (isLoading) {
 		return <SkillSelectSkeleton />;
+	}
+
+	if (!hasMultiple) {
+		return (
+			<>
+				<Dropdown
+					label={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
+					disabled={disabled}
+					onSelect={(val) => handleChange(String(val))}
+					size="S"
+				>
+					{options.map((option) => (
+						<Option value={option.value} label={option.label} key={option.label} />
+					))}
+				</Dropdown>
+			</>
+		);
 	}
 
 	return (

@@ -40,4 +40,4 @@ export { difficultQuestionsHandler } from './api/__mocks__/index';
 export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
 
 export { learnedQuestionHandlers } from './api/__mocks__';
-export type { LearnedQuestion } from './model/types/learnedQuestion';
+export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
