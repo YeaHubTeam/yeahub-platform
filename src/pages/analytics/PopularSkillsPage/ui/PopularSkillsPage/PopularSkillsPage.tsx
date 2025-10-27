@@ -25,7 +25,7 @@ export const PopularSkillsPage = () => {
 	const { isMobile } = useScreenSize();
 
 	const { data: popularSkills } = useGetPopularSkillsQuery({
-		limit: 3,
+		limit: 100,
 		page: 1,
 		specializationId: selectedSpecId,
 	});
