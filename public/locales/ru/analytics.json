@@ -11,9 +11,9 @@
 			"choose": "Укажите специализацию"
 		},
 		"columns": {
-         "index": "№",
-         "questions": "Вопросы",
-         "learnedPercentage": "Изучили"
+			"index": "№",
+			"questions": "Вопросы",
+			"learnedPercentage": "Изучили"
 		},
 		"column.questions.total": "вопросов"
 	},

@@ -11,9 +11,9 @@
 			"choose": "Please indicate your specialization"
 		},
 		"columns": {
-         "index": "№",
-         "questions": "Questions",
-         "learnedPercentage": "Studied"
+			"index": "№",
+			"questions": "Questions",
+			"learnedPercentage": "Studied"
 		},
 		"column.questions.total": "questions"
 	},

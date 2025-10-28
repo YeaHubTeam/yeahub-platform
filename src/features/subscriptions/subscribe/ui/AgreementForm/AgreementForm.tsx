@@ -28,7 +28,7 @@ import { TrialButton } from '@/features/subscriptions/trial';
 
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
-import { SubscribeButton } from '../SubscribeButton';
+import { SubscribeButton } from '../SubscribeButton/SubscribeButton';
 
 import styles from './AgreementForm.module.css';
 
@@ -45,6 +45,8 @@ export const AgreementForm = () => {
 			email: profile.email ?? '',
 		},
 	});
+
+	const email = subscriptionMethods.watch('email');
 
 	const subscriptions = [
 		{
@@ -132,14 +134,14 @@ export const AgreementForm = () => {
 						<SubscriptionCard
 							subscription={subscriptions[0]}
 							renderSubscribeButton={() => (
-								<SubscribeButton className={styles['subscription-button']} />
+								<SubscribeButton className={styles['subscription-button']} email={email} />
 							)}
 							className={styles.free}
 						/>
 						<SubscriptionCard
 							subscription={subscriptions[1]}
 							renderSubscribeButton={() => (
-								<SubscribeButton className={styles['subscription-button']} />
+								<SubscribeButton className={styles['subscription-button']} email={email} />
 							)}
 							{...(hasTrialSubscriptions
 								? {
