@@ -110,6 +110,7 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 			}
 		};
 
+		contentRef.current.style.maxWidth = contentRef.current.clientWidth + 'px';
 		processCodeBlocks();
 	}, [html, disableCodeCopy]);
 
