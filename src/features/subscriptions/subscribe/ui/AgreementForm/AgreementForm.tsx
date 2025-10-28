@@ -159,7 +159,7 @@ export const AgreementForm = () => {
 										{...register}
 										error={hasError}
 										placeholder={t(SubscriptionCardI18.SUBSCRIPTION_CARD_EMAIL_INPUT_VALUE)}
-										disabled={!!profile.isVerified}
+										disabled={!!profile.email}
 										className={styles['input']}
 									/>
 								)}
