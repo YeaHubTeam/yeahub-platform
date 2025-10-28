@@ -3,21 +3,17 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
 import { Table } from '@/shared/ui/Table';
 
 import { PopularSkill } from '@/entities/skill';
 
-import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
-
 import styles from './PopularSkillsPageTable.module.css';
 
-interface Props {
+interface PopularSkillsPageTableProps {
 	popularSkills?: PopularSkill[];
 }
 
-export const PopularSkillsPageTable = ({ popularSkills }: Props) => {
-	const { isMobile } = useScreenSize();
+export const PopularSkillsPageTable = ({ popularSkills }: PopularSkillsPageTableProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
 	const renderTableHeader = () => {
@@ -59,17 +55,11 @@ export const PopularSkillsPageTable = ({ popularSkills }: Props) => {
 	};
 
 	return (
-		<>
-			{isMobile ? (
-				popularSkills?.map((skill) => <PopularSkillsList key={skill.id} skill={skill} />)
-			) : (
-				<Table
-					items={popularSkills || []}
-					renderTableHeader={renderTableHeader}
-					renderTableBody={renderTableBody}
-					renderTableColumnWidths={renderTableColumnWidths}
-				/>
-			)}
-		</>
+		<Table
+			items={popularSkills || []}
+			renderTableHeader={renderTableHeader}
+			renderTableBody={renderTableBody}
+			renderTableColumnWidths={renderTableColumnWidths}
+		/>
 	);
 };

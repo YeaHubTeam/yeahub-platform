@@ -7,13 +7,13 @@ import { Text } from '@/shared/ui/Text';
 
 import { PopularSkill } from '@/entities/skill';
 
-import styles from './PopularSkillsList.module.css';
+import styles from './PopularSkillsMobileCard.module.css';
 
-interface Props {
+interface PopularSkillsMobileCardProps {
 	skill: PopularSkill;
 }
 
-export const PopularSkillsList = ({ skill }: Props) => {
+export const PopularSkillsMobileCard = ({ skill }: PopularSkillsMobileCardProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
 	return (
