@@ -11,15 +11,16 @@ import { Button } from '@/shared/ui/Button';
 
 import { getIsEmailVerified } from '@/entities/profile';
 
-import { useLazyGetPaymentUrlQuery } from '../api/getPaymentUrl';
+import { useLazyGetPaymentUrlQuery } from '@/features/subscriptions/subscribe/api/getPaymentUrl';
 
 import styles from './SubscribeButton.module.css';
 
 interface SubscribeButtonProps {
 	className?: string;
+	email: string;
 }
 
-export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
+export const SubscribeButton = ({ className, email }: SubscribeButtonProps) => {
 	const { trigger } = useFormContext();
 	const [getPaymentUrl] = useLazyGetPaymentUrlQuery();
 	const navigate = useNavigate();
@@ -35,7 +36,7 @@ export const SubscribeButton = ({ className }: SubscribeButtonProps) => {
 		}
 		if (!isValid) return;
 		try {
-			const { data: paymentUrl } = await getPaymentUrl('3');
+			const { data: paymentUrl } = await getPaymentUrl({ subscriptionId: '3', email });
 			if (paymentUrl) {
 				window.location.href = paymentUrl;
 			}

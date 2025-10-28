@@ -4,13 +4,14 @@ import { route } from '@/shared/helpers/route';
 import { subscriptionPrices } from '@/entities/subscription';
 
 import { subscribeApiUrls } from '../model/constants/subscribeButtonConstants';
+import { GetPaymentUrlParamsRequest } from '../model/types/subscriptionAgreeTypes';
 
 const getPaymentUrl = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getPaymentUrl: build.query<string, string>({
-			query: (subscribeId) => ({
-				url: route(subscribeApiUrls.getPaymentUrl, subscribeId || ''),
-				params: { cost: subscriptionPrices.discountPrice },
+		getPaymentUrl: build.query<string, GetPaymentUrlParamsRequest>({
+			query: (params) => ({
+				url: route(subscribeApiUrls.getPaymentUrl, params.subscriptionId || ''),
+				params: { cost: subscriptionPrices.discountPrice, email: params.email },
 				responseHandler: 'text',
 			}),
 		}),
