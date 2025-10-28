@@ -30,3 +30,7 @@
     max-width: 288px;
   }
 }
+
+.pagination {
+  margin-top: 20px;
+}

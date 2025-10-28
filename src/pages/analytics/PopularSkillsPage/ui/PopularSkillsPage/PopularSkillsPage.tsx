@@ -72,14 +72,12 @@ export const PopularSkillsPage = () => {
 				className={styles.dropdown}
 				prefix
 			/>
-			<Flex direction="column" justify="center" align="center" gap="20">
-				{isMobile ? (
-					popularSkills?.data.map((skill) => (
-						<PopularSkillsMobileCard key={skill.id} skill={skill} />
-					))
-				) : (
-					<PopularSkillsPageTable popularSkills={popularSkills?.data} />
-				)}
+			{isMobile ? (
+				popularSkills?.data.map((skill) => <PopularSkillsMobileCard key={skill.id} skill={skill} />)
+			) : (
+				<PopularSkillsPageTable popularSkills={popularSkills?.data} />
+			)}
+			<Flex className={styles.pagination} justify="center">
 				<Pagination
 					onPrevPageClick={onPrevPageClick}
 					onNextPageClick={onNextPageClick}
