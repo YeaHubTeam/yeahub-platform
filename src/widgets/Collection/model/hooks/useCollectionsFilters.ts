@@ -1,33 +1,39 @@
-import { useQueryFilter } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/hooks';
 
-export const useCollectionsFilters = () => {
-	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
+import { useGetCollectionsFilterParams } from '../hooks/useGetCollectionsFilterParams';
+import { CollectionsFilterParams } from '../types/types';
 
-	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ title: value });
+export const useCollectionsFilters = (initialParams: CollectionsFilterParams) => {
+	const currentParams = useGetCollectionsFilterParams(initialParams);
+	const { filters, onFilterChange, onResetFilters } = useQueryFilterParams<CollectionsFilterParams>(
+		initialParams,
+		currentParams,
+	);
+
+	const hasFilters =
+		(filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.specialization);
+
+	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
+		onFilterChange({ title, page: 1 });
 	};
 
-	const onChangeSpecialization = (specialization: number | number[]) => {
-		handleFilterChange({
-			specialization: Array.isArray(specialization) ? specialization : [specialization],
+	const onChangeSpecialization = (specialization: CollectionsFilterParams['specialization']) => {
+		onFilterChange({
+			specialization,
 			page: 1,
 		});
 	};
 
-	const onChangeIsFree = (isFree: boolean) => {
-		handleFilterChange({ isFree: isFree, page: 1 });
-	};
-
-	const onPageChange = (page: number) => {
-		handleFilterChange({ page });
+	const onChangePage = (page: CollectionsFilterParams['page']) => {
+		onFilterChange({ page });
 	};
 
 	return {
-		filter,
-		resetFilters,
-		onChangeSearchParams,
+		filters,
+		hasFilters,
+		onResetFilters,
+		onChangeTitle,
 		onChangeSpecialization,
-		onChangeIsFree,
-		onPageChange,
+		onChangePage,
 	};
 };

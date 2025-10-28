@@ -102,7 +102,7 @@ export const useQueryFilter = (onReset?: () => void) => {
 			roles: params.roles ? params.roles : undefined,
 			isEmailVerified: params.isEmailVerified ? params.isEmailVerified : undefined,
 			resources: params.resources ? params.resources.split(',') : undefined,
-			authorId: params.authorId || undefined,
+			authorId: params.authorId ?? undefined,
 		};
 	};
 

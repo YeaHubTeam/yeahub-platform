@@ -10,6 +10,7 @@ export interface SelectProps {
 	prefix: React.ReactNode;
 	suffix: React.ReactNode;
 	className?: string;
+	dataTestId?: string;
 	disabled?: boolean;
 	label: string;
 	isOpen?: boolean;
@@ -73,6 +74,7 @@ export const Select = ({
 			role="button"
 			aria-expanded={isOpen}
 			tabIndex={0}
+			data-testid="dropdown-select"
 		>
 			{prefix && <span className={styles['select-prefix']}>{prefix}</span>}
 			{isInput ? (

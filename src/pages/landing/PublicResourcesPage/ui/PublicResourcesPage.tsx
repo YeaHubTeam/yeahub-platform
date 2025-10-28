@@ -2,54 +2,45 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { useModal, useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetResourcesListQuery } from '@/entities/resource';
+import { useGetResourcesListQuery, useResourcesFilters } from '@/entities/resource';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import {
-	MarketplaceFiltersPanel,
-	ResourcesList,
-	ResourcesPagination,
-	useMarketplaceFilters,
-} from '@/widgets/Marketplace';
+import { ResourcesList, ResourcesPagination } from '@/widgets/Marketplace';
+import { ResourcesFilters } from '@/widgets/resources/ResourcesFilters';
 
 import styles from './PublicResourcesPage.module.css';
 import { PublicResourcesPageSkeleton } from './PublicResourcesPage.skeleton';
 
-const RESOURCES_PER_PAGE = 6;
-
 const PublicResourcesPage = () => {
-	const { isOpen, onToggle, onClose } = useModal();
 	const { isMobile, isTablet } = useScreenSize();
 
 	const {
-		onChangeSearchParams,
+		onChangeTitle,
 		onChangeSkills,
 		onChangeSpecialization,
-		onChangeResources,
-		filter,
+		onChangeTypes,
+		filters,
 		onChangePage,
-		resetFilters,
-	} = useMarketplaceFilters();
+		onResetFilters,
+	} = useResourcesFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 
 	const {
 		data: resourcesResponse,
 		isLoading,
 		error,
 	} = useGetResourcesListQuery({
-		page: filter.page ?? 1,
-		limit: RESOURCES_PER_PAGE,
-		name: filter.title,
-		specializations: filter.specialization,
-		skills: filter.skills,
-		types: filter.resources,
+		page: filters.page ?? 1,
+		name: filters.title,
+		specializations: filters.specialization,
+		skills: filters.skills,
+		types: filters.types,
 	});
 
 	const resources = resourcesResponse?.data ?? [];
@@ -57,40 +48,18 @@ const PublicResourcesPage = () => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 
 	const renderFilters = () => (
-		<MarketplaceFiltersPanel
-			filter={{
-				skills: filter.skills,
-				resources: filter.resources,
-				specialization: filter.specialization,
+		<ResourcesFilters
+			filters={{
+				skills: filters.skills,
+				types: filters.types,
+				specialization: filters.specialization,
+				title: filters.title,
 			}}
-			onChangeSearch={onChangeSearchParams}
+			onChangeTitle={onChangeTitle}
 			onChangeSkills={onChangeSkills}
 			onChangeSpecialization={onChangeSpecialization}
-			onChangeResources={onChangeResources}
+			onChangeTypes={onChangeTypes}
 		/>
-	);
-
-	// бургер-кнопка + дровер (нужны лишь на мобилках/планшетах)
-	const filterButton = (
-		<div className={styles['filters-mobile']}>
-			<IconButton
-				aria-label="открыть фильтры"
-				form="square"
-				icon={<Icon icon="slidersHorizontal" color="black-700" />}
-				size="small"
-				variant="tertiary"
-				onClick={onToggle}
-			/>
-			<Drawer
-				rootName="body"
-				isOpen={isOpen}
-				onClose={onClose}
-				className={styles.drawer}
-				hasCloseButton
-			>
-				<Card className={styles['drawer-content']}>{renderFilters()}</Card>
-			</Drawer>
-		</div>
 	);
 
 	if (isLoading) {
@@ -109,22 +78,21 @@ const PublicResourcesPage = () => {
 						{t(Marketplace.HEADER_TITLE)}
 					</Text>
 					<Flex gap="12" align="center">
-						{(isMobile || isTablet) && filterButton}
+						{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					</Flex>
 				</Flex>
 
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
 				) : (
-					<EmptyFilterStub resetFilters={resetFilters} />
+					<EmptyFilterStub resetFilters={onResetFilters} />
 				)}
 
 				<ResourcesPagination
 					resourcesResponse={resourcesResponse}
-					currentPage={filter.page ?? 1}
+					currentPage={filters.page ?? 1}
 					onChangePage={onChangePage}
 				/>
-				{/* бургер виден только при ширине ≤ 1023 px */}
 			</Card>
 
 			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}

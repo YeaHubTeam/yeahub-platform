@@ -16,7 +16,7 @@ import {
 
 interface SpecializationsListFieldProps {
 	selectedSpecialization?: number;
-	onChangeSpecialization: (specialization: number | undefined) => void;
+	onChangeSpecialization: (specialization?: number) => void;
 }
 
 export const SpecializationsListField = ({

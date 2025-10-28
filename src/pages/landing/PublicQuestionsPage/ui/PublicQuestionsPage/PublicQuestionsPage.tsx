@@ -1,64 +1,66 @@
-import { useMemo } from 'react';
-
-import { useScreenSize, useModal, useQueryFilter } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { Drawer } from '@/shared/ui/Drawer';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
 
-import { useGetPublicQuestionsListQuery } from '@/entities/question';
-import { useGetSkillsListQuery, MAX_SHOW_LIMIT_SKILLS } from '@/entities/skill';
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
+import { useGetPublicQuestionsListQuery, useQuestionsFilters } from '@/entities/question';
+import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
+import { QuestionsFilters } from '@/widgets/question/QuestionsFilters';
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import {
 	getSkillTitles,
 	getSpecializationTitleFromSkills,
-	transformSpecializationToGetSkills,
 } from '../../model/helpers/getTitleFromQuery';
-import { PublicQuestionsFilterPanel } from '../PublicQuestionsFilterPanel/PublicQuestionsFilterPanel';
 import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
 import styles from './PublicQuestionsPage.module.css';
 import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 
 const PublicQuestionsPage = () => {
-	const { isOpen, onToggle, onClose } = useModal();
-	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { queryParams, handleNavigation } = useQuestionQueryNavigate();
+	const {
+		filters,
+		onResetFilters,
+		onChangePage,
+		onChangeTitle,
+		onChangeSkills,
+		onChangeComplexity,
+		onChangeSpecialization,
+		onChangeRate,
+	} = useQuestionsFilters({
+		page: 1,
+		specialization: DEFAULT_SPECIALIZATION_ID,
+	});
+
+	const { handleNavigation } = useQuestionQueryNavigate();
+
 	const { isMobile, isTablet } = useScreenSize();
-	const keywords = queryParams.get('keywords');
-
-	const { status, ...getParams } = filter;
-
-	const preparedSpecializationsIds = useMemo(() => {
-		return transformSpecializationToGetSkills(filter.specialization);
-	}, [filter.specialization]);
 
 	const { data: skills, isLoading: isLoadingCategories } = useGetSkillsListQuery(
 		{
 			limit: MAX_SHOW_LIMIT_SKILLS,
-			specializations: preparedSpecializationsIds,
+			specializations: filters.specialization || DEFAULT_SPECIALIZATION_ID,
 		},
-		{ skip: !filter.specialization },
+		{ skip: !filters.specialization },
 	);
 
-	const specializationName = getSpecializationTitleFromSkills(skills?.data, filter.specialization);
+	const specializationName = getSpecializationTitleFromSkills(skills?.data, filters.specialization);
 
-	const skillNames = getSkillTitles(skills?.data, filter.skills);
+	const skillNames = getSkillTitles(skills?.data, filters.skills);
 	const additionalTitle = specializationName || skillNames || '';
 
 	const { data: questions, isLoading: isLoadingQuestions } = useGetPublicQuestionsListQuery(
 		{
-			...getParams,
-			keywords: keywords ? [keywords] : undefined,
+			...filters,
 		},
 		{
-			skip: status !== 'all' || !filter.specialization,
+			skip: !filters.specialization,
 		},
 	);
 
@@ -70,71 +72,30 @@ const PublicQuestionsPage = () => {
 		return null;
 	}
 
-	const onChangeSpecialization = (value: number | undefined) => {
-		handleFilterChange({ specialization: value ? [value] : undefined, skills: undefined });
-	};
-
-	const onChangeSearchParams = (value: string) => {
-		handleFilterChange({ title: value });
-	};
-
-	const onChangeSkills = (skills: number[] | undefined) => {
-		handleFilterChange({ skills });
-	};
-
-	const onChangeComplexity = (complexity?: number[]) => {
-		handleFilterChange({ complexity });
-	};
-
-	const onChangeRate = (rate: number[]) => {
-		handleFilterChange({ rate });
-	};
-
-	const onPageChange = (page: number) => {
-		handleFilterChange({ page });
-	};
+	const media = getChannelsForSpecialization(filters.specialization);
 
 	const onMoveQuestionDetail = (id: number) => {
 		handleNavigation(id);
 	};
 
 	const renderFilters = () => (
-		<PublicQuestionsFilterPanel
-			onChangeSearch={onChangeSearchParams}
-			onChangeSkills={onChangeSkills}
-			onChangeComplexity={onChangeComplexity}
-			onChangeRate={onChangeRate}
-			onChangeSpecialization={onChangeSpecialization}
-			filter={{
-				skills: filter.skills,
-				rate: filter.rate,
-				complexity: filter.complexity,
-				title: filter.title,
-				specialization: filter.specialization,
-			}}
-		/>
-	);
-
-	const filterButton = (
-		<div className={styles['filters-mobile']}>
-			<IconButton
-				aria-label="go to filters"
-				form="square"
-				icon={<Icon icon="slidersHorizontal" color="black-700" />}
-				size="small"
-				variant={'tertiary'}
-				onClick={onToggle}
+		<Flex direction="column" gap="24">
+			<QuestionsFilters
+				onChangeTitle={onChangeTitle}
+				onChangeSkills={onChangeSkills}
+				onChangeComplexity={onChangeComplexity}
+				onChangeRate={onChangeRate}
+				onChangeSpecialization={onChangeSpecialization}
+				filters={{
+					skills: filters.skills,
+					rate: filters.rate,
+					complexity: filters.complexity,
+					title: filters.title,
+					specialization: filters.specialization,
+				}}
 			/>
-			<Drawer
-				rootName="body"
-				isOpen={isOpen}
-				onClose={onClose}
-				className={styles.drawer}
-				hasCloseButton
-			>
-				<Card className={styles['drawer-content']}>{renderFilters()}</Card>
-			</Drawer>
-		</div>
+			{media && <MediaLinksBanner mediaLink={media} />}
+		</Flex>
 	);
 
 	return (
@@ -144,19 +105,19 @@ const PublicQuestionsPage = () => {
 					questions={questions.data}
 					isPublic
 					additionalTitle={additionalTitle}
-					filterButton={filterButton}
+					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
 
 				{questions.total > questions.limit && (
 					<PublicQuestionPagePagination
 						questionsResponse={questions}
-						currentPage={filter.page || 1}
-						onPageChange={onPageChange}
+						currentPage={filters.page || 1}
+						onPageChange={onChangePage}
 					/>
 				)}
 				{questions.data.length === 0 && (
-					<EmptyFilterStub text={getParams.title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={filters.title} resetFilters={onResetFilters} />
 				)}
 			</Card>
 			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}

@@ -12,26 +12,6 @@
   height: auto;
 }
 
-.filters-mobile {
-  border: 1px solid var(--border-right-color);
-  border-radius: 8px;
-  background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.filters-mobile button:focus {
-  border: none;
-}
-
-.drawer {
-  width: 328px;
-  overflow-x: hidden;
-}
-
-.drawer-content {
-  padding: 8px 16px 16px;
-}
-
 @media screen and (width <= 1023px) {
   .main {
     padding: 20px 16px 40px;

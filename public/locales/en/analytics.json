@@ -2,7 +2,20 @@
 	"title.popular.skills": "The popularity of skills in quizzes",
 	"skill.proficiency": {
 		"title": "Average % of skill proficiency",
-		"link.detail": "More details"
+		"link.detail": "More details",
+		"tooltip": "We calculate the overall progress of all users for a given skill",
+		"skill.select": {
+			"choose": "Please indicate your skills"
+		},
+		"specialization.select": {
+			"choose": "Please indicate your specialization"
+		},
+		"columns": {
+         "index": "№",
+         "questions": "Questions",
+         "learnedPercentage": "Studied"
+		},
+		"column.questions.total": "questions"
 	},
 	"most.difficult.questions": {
 		"title": "Most Difficult questions",

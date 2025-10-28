@@ -8,7 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
 
-import { ResourcesTable } from '@/widgets/resources';
+import { ResourcesTable } from '@/widgets/resources/ResourcesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import {
