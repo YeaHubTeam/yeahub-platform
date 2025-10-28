@@ -462,6 +462,8 @@ export enum Resources {
 	TYPE = 'type',
 	WITHDRAW_BUTTON = 'withdraw.button',
 	WITHDRAW_TITLE = 'withdraw.title',
+	REQUESTS_TITLE_VIEW = 'requests.title.view',
+	REQUESTS_TITLE_EDIT = 'requests.title.edit',
 }
 
 export enum Questions {
@@ -1020,7 +1022,6 @@ export enum Marketplace {
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
 	MY_RESOURCES = 'resources.my',
-	REQUEST_TITLE = 'requests.title',
 }
 
 export enum Analytics {

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { useGetResourceRequestByIdQuery } from '@/entities/resource';
 
-import { ResourceEditFormAll } from '@/features/resources/editResourceRequest';
+import { ResourceRequestEditForm } from '@/features/resources/editResourceRequest';
 
 const RequestResourceEditPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();
@@ -11,7 +11,7 @@ const RequestResourceEditPage = () => {
 
 	if (!myResourceRequest) return null;
 
-	return <ResourceEditFormAll request={myResourceRequest} />;
+	return <ResourceRequestEditForm request={myResourceRequest} />;
 };
 
 export default RequestResourceEditPage;

@@ -70,7 +70,10 @@
 		}
 	},
 	"requests": {
-		"title": "Review request form",
+		"title": {
+			"view": "Request form overview",
+			"edit": "Review request form"
+		},
 		"reject": "Reject",
 		"approve": "Approve"
 	}

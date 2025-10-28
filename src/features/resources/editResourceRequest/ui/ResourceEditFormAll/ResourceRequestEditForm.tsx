@@ -7,6 +7,7 @@ import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useModal } from '@/shared/hooks';
+import { useCurrentProject } from '@/shared/hooks';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { ResourceRequest } from '@/entities/resource';
@@ -27,9 +28,10 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 	return arg ? arg.map((el) => el.id) : [];
 };
 
-export const ResourceEditFormAll = ({ request }: ResourceEditFormAllProps) => {
+export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) => {
 	const navigate = useNavigate();
 	const { skills, specializations, requestPayload, ...formattedRequest } = request;
+	const project = useCurrentProject();
 
 	const methods = useForm<EditResourceRequestFormValues>({
 		resolver: yupResolver(resourceRequestEditSchema),
@@ -49,7 +51,9 @@ export const ResourceEditFormAll = ({ request }: ResourceEditFormAllProps) => {
 
 	const onClose = () => {
 		onToggle();
-		navigate(ROUTES.wiki.resources.my.page);
+		project === 'admin'
+			? navigate(ROUTES.admin.resources.page)
+			: navigate(ROUTES.wiki.resources.my.page);
 	};
 
 	const onEditResourceRequest = async (formData: EditResourceRequestFormValues) => {
@@ -61,6 +65,7 @@ export const ResourceEditFormAll = ({ request }: ResourceEditFormAllProps) => {
 				specializations: formData.specializations,
 			}).unwrap();
 			onToggle();
+			project === 'admin' && toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS));
 		} catch (_) {
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
 		}
@@ -73,7 +78,9 @@ export const ResourceEditFormAll = ({ request }: ResourceEditFormAllProps) => {
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<ResourceRequestFormWithHeader onSubmit={onEditResourceRequest} />
 			</LeavingPageBlocker>
-			<ResourceEditedModerationModal isOpen={isOpen} onClose={onClose} />
+			{project === 'platform' && (
+				<ResourceEditedModerationModal isOpen={isOpen} onClose={onClose} />
+			)}
 		</FormProvider>
 	);
 };
