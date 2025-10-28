@@ -17,9 +17,9 @@ import { resourcesAllTabReducer, resourcesRequestsTabReducer } from '@/pages/adm
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
 import { usersPageReducer } from '@/pages/admin/UserTablePage';
+import { skillsProficiencyReducer } from '@/pages/analytics/SkillsProficiencyPage';
 import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
-import { questionsPageReducer } from '@/pages/interview/QuestionsPage';
 import { createPublicQuizPageReducer } from '@/pages/landing/CreatePublicQuizPage';
 
 import { router } from '../../router';
@@ -27,7 +27,6 @@ import { router } from '../../router';
 export const createReduxStore = (initialState?: State) => {
 	return configureStore({
 		reducer: {
-			questionsPage: questionsPageReducer,
 			skillsPage: skillsPageReducer,
 			createQuizPage: createQuizPageReducer,
 			createPublicQuizPage: createPublicQuizPageReducer,
@@ -40,6 +39,7 @@ export const createReduxStore = (initialState?: State) => {
 			companiesTablePage: companiesTablePageReducer,
 			specializationsPage: specializationsPageReducer,
 			usersPage: usersPageReducer,
+			skillsProficiencyPage: skillsProficiencyReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
 			resourcesRequestsTab: resourcesRequestsTabReducer,

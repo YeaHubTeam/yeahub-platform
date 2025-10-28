@@ -12,6 +12,7 @@ export interface LearnedQuestion {
 	total: number;
 	learnedPercentage: number;
 	calculatedAt: string;
+	rowNumber: number;
 }
 
 export type GetLearnedQuestionsParamsRequest = {

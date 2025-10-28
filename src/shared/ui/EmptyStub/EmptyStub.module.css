@@ -1,8 +1,28 @@
-.button {
-  align-self: flex-start;
+.wrapper {
+  padding: 24px;
 }
 
-.text {
-  margin-bottom: 24px;
-  padding-top: 22px;
+.card-img {
+  object-fit: contain;
+  height: 165px;
+}
+
+.flex {
+  margin: auto;
+  width: 360px;
+}
+
+.button {
+  width: 240px;
+  font-weight: var(--font-weight-500);
+}
+
+.text{
+  text-align: center;
+}
+
+@media screen and (width <= 768px) {
+  .flex{
+    width: 272px;
+  }
 }

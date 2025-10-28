@@ -1,9 +1,12 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField/FormField';
@@ -18,6 +21,7 @@ export const PersonalInfoFields = () => {
 	const { t } = useTranslation(i18Namespace.profile);
 	const { control } = useFormContext<ProfileSchema>();
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
+	const navigate = useNavigate();
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter') {
@@ -37,12 +41,23 @@ export const PersonalInfoFields = () => {
 				</FormControl>
 				<FormControl name="specialization" control={control} label={t(Profile.FORM_SPECIALIZATION)}>
 					{({ onChange, value }) => (
-						<SpecializationSelect
-							onChange={onChange}
-							value={[value]}
-							disabled={!isSpecializationEmpty}
-							onKeyDown={handleKeyDown}
-						/>
+						<>
+							<SpecializationSelect
+								onChange={onChange}
+								value={[value]}
+								disabled={!isSpecializationEmpty}
+								onKeyDown={handleKeyDown}
+							/>
+							<Flex justify="start">
+								<Button
+									size="large"
+									variant="link"
+									onClick={() => navigate(ROUTES.settings.page + '#account')}
+								>
+									{t(Profile.FORM_SWITCH_SPECIALIZATION)}
+								</Button>
+							</Flex>
+						</>
 					)}
 				</FormControl>
 				<FormControl name="email" control={control} label={t(Profile.FORM_EMAIL)}>

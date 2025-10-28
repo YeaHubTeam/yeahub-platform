@@ -1,0 +1,11 @@
+.learned-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.learned-question {
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--color-black-30);
+}
