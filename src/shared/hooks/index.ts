@@ -10,5 +10,6 @@ export { useOutsideClick } from './useOutsideClick';
 export { useQueryFilter } from './useQueryFilter';
 export { useQueryParams } from './useQueryParams';
 export { useTruncation } from './useTruncation';
+export { useQueryFilterParams } from './useQueryFilterParams';
 
 export type { FilterFromUser } from './useQueryFilter';

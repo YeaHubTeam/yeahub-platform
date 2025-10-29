@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import { setImmediate, clearImmediate } from 'timers';
 
 Object.defineProperty(window, 'matchMedia', {
 	writable: true,
@@ -20,4 +21,10 @@ function channelMock() {
 		this.onmessage({ data });
 	};
 }
+
 global.BroadcastChannel = channelMock;
+
+global.setImmediate = setImmediate;
+global.clearImmediate = clearImmediate;
+
+process.env.API_URL = 'http://localhost/';

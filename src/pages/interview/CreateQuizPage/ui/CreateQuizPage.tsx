@@ -108,12 +108,14 @@ const CreateQuizPage = () => {
 					direction={isTablet ? 'column' : 'row'}
 					className={styles.wrapper}
 				>
-					<SkillsListField
-						selectedSpecialization={profileSpecialization}
-						selectedSkills={filter.category}
-						onChangeSkills={onChangeSkills}
-						showAllLabel
-					/>
+					<Flex className={styles['main-info']}>
+						<SkillsListField
+							selectedSpecialization={profileSpecialization}
+							selectedSkills={filter.category}
+							onChangeSkills={onChangeSkills}
+							showAllLabel
+						/>
+					</Flex>
 					<Flex direction="column" gap="24" className={styles['additional-wrapper']}>
 						<ChooseQuestionComplexity
 							selectedComplexity={filter.complexity}

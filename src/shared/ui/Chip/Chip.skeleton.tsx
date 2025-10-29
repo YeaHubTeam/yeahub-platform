@@ -1,10 +1,11 @@
 import classNames from 'classnames';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
+import { chipTestIDs } from './model/constants';
 import { ChipProps } from './types';
 
 export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
@@ -17,19 +18,11 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 			disabled,
 			active,
 			prefix,
-			onClick,
 			onDelete,
 			...props
 		},
 		ref,
 	): JSX.Element => {
-		const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-			if (event.key === 'Enter' || event.key === ' ') {
-				event.preventDefault();
-				onClick?.();
-			}
-		};
-
 		return (
 			<div
 				{...props}
@@ -39,7 +32,6 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 					{
 						[styles['chip-primary']]: theme === 'primary',
 						[styles['chip-outlined']]: theme === 'outlined',
-						[styles['chip-clickable']]: onClick,
 						[styles['chip-disabled']]: disabled,
 						[styles['chip-active']]: active,
 					},
@@ -47,8 +39,7 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 				)}
 				aria-hidden={disabled}
 				aria-disabled={disabled}
-				onClick={!disabled ? onClick : undefined}
-				onKeyDown={!disabled ? handleKeyDown : undefined}
+				data-testid={chipTestIDs.skeleton}
 				role="button"
 				tabIndex={0}
 				ref={ref}
@@ -56,6 +47,7 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 				{prefix && (
 					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
 				)}
+
 				{label && (
 					<TextSkeleton
 						width={props.withText ? props.withText : '100%'}
@@ -63,15 +55,22 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 						color="black-800"
 						className={styles['chip-label']}
 					/>
-				)}{' '}
+				)}
+
 				{onDelete && (
-					<IconSkeleton
-						className={styles['chip-delete-icon']}
-						icon="closeCircle"
-						size={20}
-						color={disabled ? 'black-100' : 'red-600'}
+					<button
+						type="button"
+						className={styles['chip-delete-button']}
 						onClick={onDelete}
-					/>
+						disabled={disabled}
+					>
+						<IconSkeleton
+							className={styles['chip-delete-icon']}
+							icon="closeCircle"
+							size={20}
+							color={disabled ? 'black-100' : 'red-600'}
+						/>
+					</button>
 				)}
 			</div>
 		);

@@ -2,7 +2,20 @@
 	"title.popular.skills": "Популярность навыков в квизах",
 	"skill.proficiency": {
 		"title": "Средний % изученности навыка",
-		"link.detail": "Подробнее"
+		"link.detail": "Подробнее",
+		"tooltip": "Мы рассчитываем общий прогресс всех пользователей по определённому навыку",
+		"skill.select": {
+			"choose": "Укажите навыки"
+		},
+		"specialization.select": {
+			"choose": "Укажите специализацию"
+		},
+		"columns": {
+			"index": "№",
+			"questions": "Вопросы",
+			"learnedPercentage": "Изучили"
+		},
+		"column.questions.total": "вопросов"
 	},
 	"most.difficult.questions": {
 		"title": "Топ самых сложных вопросов",
