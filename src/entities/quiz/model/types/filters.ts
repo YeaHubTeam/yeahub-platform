@@ -1,8 +1,9 @@
 import { QuestionModeType } from '@/entities/quiz';
 
-export interface CreatePublicQuizPageState {
+export interface CreateQuizFilterParams {
 	skills?: number[];
+	specialization?: number;
 	complexity?: number[];
-	limit?: number;
+	count?: number;
 	mode?: QuestionModeType;
 }

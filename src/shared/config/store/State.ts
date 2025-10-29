@@ -11,15 +11,11 @@ import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
 import { UsersPageState } from '@/pages/admin/UserTablePage';
 import { SkillsProficiencyPageState } from '@/pages/analytics/SkillsProficiencyPage';
-import { CreateQuizPageState } from '@/pages/interview/CreateQuizPage';
 import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
-import { CreatePublicQuizPageState } from '@/pages/landing/CreatePublicQuizPage';
 
 import { baseApi } from '../api/baseApi';
 
 export interface State {
-	createQuizPage: CreateQuizPageState;
-	createPublicQuizPage: CreatePublicQuizPageState;
 	activeQuiz: ActiveQuizState;
 	activeSubscription: ActiveSubscriptionState;
 	interviewHistoryPage: InterviewHistoryState;
