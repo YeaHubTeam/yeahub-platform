@@ -74,11 +74,11 @@ export const FavoriteQuestionButton = ({
 				style={{ padding: 0 }}
 				className={classNames({ [styles.button]: isPopover }, { [styles.red]: isFavorite })}
 				preffix={
-					isFavorite ? (
-						<Icon icon="favoriteRed" color="red-800" size={iconSize} />
-					) : (
-						<Icon icon="favorite" color="black-600" size={iconSize} />
-					)
+					<Icon
+						icon={isFavorite ? 'favoriteRed' : 'favorite'}
+						color={isFavorite ? 'red-800' : 'black-600'}
+						size={iconSize}
+					/>
 				}
 				variant={variant}
 				onClick={onToggleFavoriteQuestion}
