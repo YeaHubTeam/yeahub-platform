@@ -977,6 +977,7 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+	BUTTON_MORE = 'button.more',
 }
 
 export enum Media {
