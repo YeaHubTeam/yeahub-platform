@@ -9,7 +9,7 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 import styles from './ChooseQuestionCount.module.css';
 
 interface ChooseQuestionCountProps {
-	onChangeLimit: (limit: number) => void;
+	onChangeCount: (limit: number) => void;
 	count: number;
 	maxCount?: number;
 	disabled?: boolean;
@@ -17,7 +17,7 @@ interface ChooseQuestionCountProps {
 }
 
 export const ChooseQuestionCount = ({
-	onChangeLimit,
+	onChangeCount,
 	count,
 	maxCount,
 	disabled,
@@ -26,7 +26,7 @@ export const ChooseQuestionCount = ({
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.interviewQuizCreate]);
 
 	const onChange = (counter: number) => {
-		onChangeLimit(counter);
+		onChangeCount(counter);
 	};
 
 	const isTooltipVisible = disabled && maxCount !== undefined && count >= maxCount;
