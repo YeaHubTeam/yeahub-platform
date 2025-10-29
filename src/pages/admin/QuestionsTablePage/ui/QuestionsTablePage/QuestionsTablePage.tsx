@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { useAppDispatch, useAppSelector, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -10,55 +10,58 @@ import { getIsAuthor, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
-import { QuestionsFilterSet } from '@/features/question/questionsFilterSet';
+import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
 
 import { QuestionsTable } from '@/widgets/QuestionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import {
-	getQuestionsSearch,
-	getSelectedQuestions,
-} from '../../model/selectors/questionsTablePageSelectors';
+import { getSelectedQuestions } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
 import { QuestionPagePagination } from '../QuestionTablePagePagination/QuestionTablePagePagination';
 
 import styles from './QuestionsTablePage.module.css';
 
-/**
- * Page showing info about all the created questions
- * @constructor
- */
-
 const QuestionsPage = () => {
 	const dispatch = useAppDispatch();
 	const userId = useAppSelector(getUserId);
-	const search = useAppSelector(getQuestionsSearch);
 	const selectedQuestions = useAppSelector(getSelectedQuestions);
 	const isAuthor = useAppSelector(getIsAuthor);
 
-	const { filter, handleFilterChange, resetFilters: resetQueryFilters } = useQueryFilter();
+	const {
+		filters,
+		onResetFilters,
+		onChangeTitle,
+		onChangePage,
+		onChangeComplexity,
+		onChangeSkills,
+		onChangeSpecialization,
+		onChangeRate,
+		onChangeIsMy,
+		onChangeOrder,
+		onChangeOrderBy,
+	} = useQuestionsFilters({
+		page: 1,
+	});
 
 	const { data: allQuestions, isFetching } = useGetQuestionsListQuery({
-		...filter,
-		title: search,
+		skills: filters.skills,
+		page: filters.page,
+		specialization: filters.specialization,
+		title: filters.title,
+		complexity: filters.complexity,
+		rate: filters.rate,
+		orderBy: filters.orderBy,
+		order: filters.order,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const onSelectQuestions = (ids: SelectedAdminEntities) => {
 		dispatch(questionsTablePageActions.setSelectedQuestions(ids));
 	};
 
-	const onChangeSearch = (value: string) => {
-		dispatch(questionsTablePageActions.setSearch(value));
-	};
-
-	const onPageChange = (page: number) => {
-		handleFilterChange({ page });
-		dispatch(questionsTablePageActions.setPage(page));
-	};
-
 	const resetAll = () => {
 		dispatch(questionsTablePageActions.resetFilters());
-		resetQueryFilters();
+		onResetFilters();
 	};
 
 	const rows = allQuestions?.data ?? [];
@@ -81,9 +84,20 @@ const QuestionsPage = () => {
 			<SearchSection
 				to="create"
 				showRemoveButton={selectedQuestions.length > 0}
-				onSearch={onChangeSearch}
+				onSearch={onChangeTitle}
 				renderRemoveButton={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
-				renderFilter={() => <QuestionsFilterSet />}
+				renderFilter={() => (
+					<QuestionsFilters
+						filters={filters}
+						onChangeComplexity={onChangeComplexity}
+						onChangeSkills={onChangeSkills}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeRate={onChangeRate}
+						onChangeOrder={onChangeOrder}
+						onChangeIsMy={onChangeIsMy}
+						onChangeOrderBy={onChangeOrderBy}
+					/>
+				)}
 			/>
 			<Card className={styles.content}>
 				<QuestionsTable
@@ -92,13 +106,13 @@ const QuestionsPage = () => {
 					onSelectQuestions={onSelectQuestions}
 				/>
 
-				{isEmpty && <EmptyFilterStub text={search} resetFilters={resetAll} />}
+				{isEmpty && <EmptyFilterStub text={filters.title} resetFilters={resetAll} />}
 
 				{!isEmpty && (
 					<QuestionPagePagination
 						questionsResponse={questions}
-						currentPage={filter.page || 1}
-						onPageChange={onPageChange}
+						currentPage={filters.page || 1}
+						onPageChange={onChangePage}
 					/>
 				)}
 			</Card>

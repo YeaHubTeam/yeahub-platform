@@ -1,10 +1,10 @@
-import React, { InputHTMLAttributes } from 'react';
+import { ChangeEvent, InputHTMLAttributes, RefObject, ComponentPropsWithoutRef } from 'react';
 
-export interface SwitchProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
+export interface SwitchProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange'> {
 	checked: boolean;
 	disabled?: boolean;
-	onChange: (e: React.ChangeEvent) => void;
-	inputRef?: React.RefObject<HTMLInputElement>;
+	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	inputRef?: RefObject<HTMLInputElement>;
 	inputProps?: InputHTMLAttributes<HTMLInputElement>;
 	label?: string;
 	labelClassName?: string;

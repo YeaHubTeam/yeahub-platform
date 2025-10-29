@@ -20,29 +20,6 @@ const selectedQuestions: SelectedAdminEntities = [
 ];
 
 describe('questionsPageSlice', () => {
-	test('change page num', () => {
-		const state: QuestionsTablePageState = {
-			page: 1,
-		};
-		expect(questionsTablePageReducer(state, questionsTablePageActions.setPage(2))).toEqual({
-			page: 2,
-			selectedQuestions: [],
-		});
-	});
-
-	test('change page search', () => {
-		const state: QuestionsTablePageState = {
-			page: 1,
-			search: '',
-		};
-		expect(questionsTablePageReducer(state, questionsTablePageActions.setSearch('search'))).toEqual(
-			{
-				page: 1,
-				search: 'search',
-			},
-		);
-	});
-
 	test('change selected questions', () => {
 		const state: QuestionsTablePageState = {
 			page: 1,

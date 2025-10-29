@@ -75,6 +75,7 @@ export interface GetQuestionsListParamsRequest {
 	random?: boolean;
 	profileId?: string;
 	areFavorites?: boolean;
+	authorId?: string;
 }
 
 export type GetQuestionsListResponse = Response<Question[]>;

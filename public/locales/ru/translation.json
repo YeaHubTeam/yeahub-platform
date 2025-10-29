@@ -23,6 +23,11 @@
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
 	"author": "Автор",
+	"sort": {
+		"title": "Сортировать по",
+		"ascending": "Возрастанию",
+		"descending": "Убыванию"
+	},
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
