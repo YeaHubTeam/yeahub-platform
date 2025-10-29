@@ -7,5 +7,8 @@
 	"most.difficult.questions": {
 		"title": "Most Difficult questions",
 		"link.detail": "More details"
+	},
+	"tooltip": {
+		"specify": "We compare the average progress of all users by specialty."
 	}
 }

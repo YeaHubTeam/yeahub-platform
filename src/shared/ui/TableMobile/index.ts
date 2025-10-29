@@ -1,0 +1,1 @@
+export { TableMobile } from './TableMobile';

@@ -1,0 +1,14 @@
+.wrapper {
+  padding: 10px;
+  border-radius: 14px;
+  background-color: var(--color-black-30);
+}
+
+.wrapper:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.table {
+  width: 100%;
+}
+

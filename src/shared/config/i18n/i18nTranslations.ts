@@ -81,6 +81,8 @@ export enum Translation {
 	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
+	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -345,17 +347,23 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	SELECT_SPECIFY = 'select.specify',
 	PROGRESS_TITLE = 'progress.title',
 	PROGRESS_DETAIL = 'progress.detail',
 	PROGRESS_TABLE_SPECIALIZATION = 'progress.table.specialization',
 	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
 	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
+	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 }
 
 export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
+	TOOLTIP_SPECIFY = 'tooltip.specify',
 }
 
 export enum InterviewQuiz {
@@ -1033,10 +1041,4 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
-}
-
-export enum Analytics {
-	TITLE_POPULAR_SKILLS = 'title.popular.skills',
-	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
-	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

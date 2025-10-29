@@ -17,7 +17,7 @@ interface TableProps<Id extends string | number, T> {
 	/**
 	 * Render function for displaying the table body
 	 */
-	renderTableBody: (item: T) => ReactNode;
+	renderTableBody: (item: T, index?: number) => ReactNode;
 	/**
 	 * Render function for displaying the table actions in the last column
 	 */
@@ -87,7 +87,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				</tr>
 			</thead>
 			<tbody>
-				{items.map((item) => (
+				{items.map((item, index) => (
 					<tr key={item.id} className={styles.row} data-testid="table-row">
 						{selectedItems && (
 							<td className={styles.cell}>
@@ -98,7 +98,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 								/>
 							</td>
 						)}
-						{renderTableBody(item)}
+						{renderTableBody(item, index)}
 						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
 					</tr>
 				))}

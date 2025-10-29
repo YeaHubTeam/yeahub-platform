@@ -18,7 +18,8 @@
 	"select": {
 		"choose": "Select specialization from the list",
 		"empty": "No options available",
-		"selected": "Selected specializations"
+		"selected": "Selected specializations",
+		"specify": "Specify your specialization"
 	},
 	"empty": "No specializations",
 	"image": {
@@ -34,7 +35,8 @@
 			"specialization": "specialization",
 			"skills": "Skills",
 			"questions": "Questions",
-			"progress": "Progress"
+			"progress": "Progress",
+			"number": "№"
 		}
 	}
 }

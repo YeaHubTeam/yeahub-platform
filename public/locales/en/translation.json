@@ -124,7 +124,9 @@
 		"resources.my": "My resources",
 		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
-		"create.request": "Creating a request"
+		"create.request": "Creating a request",
+		"analytics": "Analytics",
+		"progress.specializations": "Progress in the specialty"
 	},
 	"toast": {
 		"title": {
