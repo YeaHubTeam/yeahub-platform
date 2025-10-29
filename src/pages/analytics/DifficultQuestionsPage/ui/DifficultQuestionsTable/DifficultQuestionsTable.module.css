@@ -1,0 +1,16 @@
+.align-start {
+  text-align: start;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-end {
+  text-align: end;
+}
+
+.th {
+  padding: 13px 14px;
+}
+

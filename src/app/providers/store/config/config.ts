@@ -17,6 +17,7 @@ import { resourcesAllTabReducer, resourcesRequestsTabReducer } from '@/pages/adm
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
 import { usersPageReducer } from '@/pages/admin/UserTablePage';
+import { difficultQuestionsReducer } from '@/pages/analytics/DifficultQuestionsPage';
 import { skillsProficiencyReducer } from '@/pages/analytics/SkillsProficiencyPage';
 import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
@@ -40,6 +41,7 @@ export const createReduxStore = (initialState?: State) => {
 			specializationsPage: specializationsPageReducer,
 			usersPage: usersPageReducer,
 			skillsProficiencyPage: skillsProficiencyReducer,
+			difficultQuestionsPage: difficultQuestionsReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
 			resourcesRequestsTab: resourcesRequestsTabReducer,
