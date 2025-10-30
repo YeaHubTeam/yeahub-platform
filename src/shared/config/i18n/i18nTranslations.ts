@@ -1050,7 +1050,6 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
-
 }
 
 export enum Analytics {
