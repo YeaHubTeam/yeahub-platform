@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Analytics } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
@@ -25,7 +26,7 @@ export const DifficultQuestionsList = () => {
 			className={styles.card}
 			title={`${t(Analytics.MOST_DIFFICULT_QUESTIONS_TITLE)} ${difficultQuestions?.specialization.title}`}
 			actionTitle={t(Analytics.MOST_DIFFICULT_QUESTIONS_LINK_DETAIL)}
-			actionRoute="/"
+			actionRoute={ROUTES.analytics.difficultQuestions.page}
 			isActionPositionBottom
 		>
 			<MostDifficultQuestions difficultQuestions={difficultQuestions} />

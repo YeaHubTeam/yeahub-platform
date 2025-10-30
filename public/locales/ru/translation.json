@@ -129,7 +129,8 @@
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
 		"analytics": "Аналитика",
-		"analytics.skillsProficiency": "Средний процент изученности навыка"
+		"analytics.skillsProficiency": "Средний процент изученности навыка",
+		"analytics.difficultQuestions": "Самые сложные вопросы"
 	},
 	"toast": {
 		"title": {

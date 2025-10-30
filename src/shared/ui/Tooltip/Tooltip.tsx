@@ -30,6 +30,7 @@ export const Tooltip = ({
 	placement = 'top',
 	shouldShowTooltip = true,
 	tooltipDelay = { open: 0, close: 150 },
+	titleVariant = 'body3-accent',
 }: TooltipProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const arrowRef = useRef<SVGSVGElement>(null);
@@ -103,7 +104,7 @@ export const Tooltip = ({
 							context={context}
 							ref={arrowRef}
 						/>
-						<Text variant="body3-accent">{title}</Text>
+						<Text variant={titleVariant}>{title}</Text>
 					</div>
 				</FloatingPortal>
 			)}
