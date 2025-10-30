@@ -12,12 +12,12 @@ const rate = [
 	{ id: 5, title: '5' },
 ];
 
-interface RateFilterSectionProps {
+interface QuestionRateFilterProps {
 	selectedRate?: number[];
 	onChangeRate: (rate: number[]) => void;
 }
 
-export const RateFilterSection = ({ onChangeRate, selectedRate }: RateFilterSectionProps) => {
+export const QuestionRateFilter = ({ onChangeRate, selectedRate }: QuestionRateFilterProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);

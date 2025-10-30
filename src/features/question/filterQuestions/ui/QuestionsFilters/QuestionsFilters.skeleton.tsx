@@ -1,9 +1,11 @@
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInputSkeleton } from '@/shared/ui/SearchInput';
 
-import { ChooseQuestionComplexitySkeleton, RateFilterSectionSkeleton } from '@/entities/question';
-import { StatusFilterSectionSkeleton } from '@/entities/question/ui/StatusFilterSection/StatusFilterSection.skeleton';
+import { ChooseQuestionComplexitySkeleton } from '@/entities/question';
 import { SkillsListFieldSkeleton } from '@/entities/skill';
+
+import { QuestionRateFilterSkeleton } from '../QuestionRateFilter/QuestionRateFilter.skeleton';
+import { QuestionStatusFilterSkeleton } from '../QuestionStatusFilter/QuestionStatusFilter.skeleton';
 
 export const QuestionsFiltersSkeleton = () => {
 	return (
@@ -11,8 +13,8 @@ export const QuestionsFiltersSkeleton = () => {
 			<SearchInputSkeleton />
 			<SkillsListFieldSkeleton />
 			<ChooseQuestionComplexitySkeleton />
-			<RateFilterSectionSkeleton />
-			<StatusFilterSectionSkeleton />
+			<QuestionRateFilterSkeleton />
+			<QuestionStatusFilterSkeleton />
 		</Flex>
 	);
 };

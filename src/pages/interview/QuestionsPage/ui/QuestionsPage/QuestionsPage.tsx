@@ -5,14 +5,11 @@ import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
-import {
-	useGetQuestionsForLearnQuery,
-	useGetQuestionsListQuery,
-	useQuestionsFilters,
-} from '@/entities/question';
+import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
-import { QuestionsFilters } from '@/widgets/question/QuestionsFilters';
+import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
+
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';

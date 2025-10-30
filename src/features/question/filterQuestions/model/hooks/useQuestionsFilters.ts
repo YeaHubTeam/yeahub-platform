@@ -18,7 +18,10 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		(filters.skills || []).length > 0 ||
 		(filters.rate || []).length > 0 ||
 		(filters.complexity || []).length > 0 ||
-		filters.status !== 'all';
+		filters.status !== 'all' ||
+		filters.isMy ||
+		Boolean(filters.orderBy) ||
+		Boolean(filters.order);
 
 	const onChangeTitle = (title: QuestionsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -55,6 +58,18 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		onFilterChange({ status, page: 1 });
 	};
 
+	const onChangeIsMy = (isMy: QuestionsFilterParams['isMy']) => {
+		onFilterChange({ isMy, page: 1 });
+	};
+
+	const onChangeOrder = (order: QuestionsFilterParams['order']) => {
+		onFilterChange({ order, page: 1 });
+	};
+
+	const onChangeOrderBy = (orderBy: QuestionsFilterParams['orderBy']) => {
+		onFilterChange({ orderBy, page: 1 });
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -66,5 +81,8 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		onChangeComplexity,
 		onChangeRate,
 		onChangeStatus,
+		onChangeIsMy,
+		onChangeOrder,
+		onChangeOrderBy,
 	};
 };

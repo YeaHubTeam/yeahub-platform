@@ -7,17 +7,18 @@ import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getHasPremiumAccess } from '@/entities/profile';
-import { QuestionFilterStatus } from '@/entities/question';
 
-interface StatusFilterSectionProps {
+import { QuestionFilterStatus } from '../../model/types/filters';
+
+interface QuestionStatusFilterProps {
 	selectedStatus?: QuestionFilterStatus;
 	onChangeStatus: (status: QuestionFilterStatus) => void;
 }
 
-export const StatusFilterSection = ({
+export const QuestionStatusFilter = ({
 	onChangeStatus,
 	selectedStatus,
-}: StatusFilterSectionProps) => {
+}: QuestionStatusFilterProps) => {
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.subscription]);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 

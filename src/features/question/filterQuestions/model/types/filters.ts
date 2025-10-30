@@ -1,3 +1,5 @@
+import { SortOrder } from '@/shared/types/types';
+
 export interface QuestionsFilterParams {
 	skills?: number[];
 	complexity?: number[];
@@ -6,6 +8,11 @@ export interface QuestionsFilterParams {
 	title?: string;
 	specialization?: number;
 	page?: number;
+	isMy?: boolean;
+	order?: SortOrder;
+	orderBy?: QuestionFilterOrderBy;
 }
 
 export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
+
+export type QuestionFilterOrderBy = 'title' | 'complexity' | 'rate';

@@ -23,6 +23,11 @@
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
 	"author": "Author",
+	"sort": {
+		"title": "Sort by",
+		"ascending": "Ascending",
+		"descending": "Descending"
+	},
 	"header": {
 		"menu": {
 			"membership": "Choose membership",
