@@ -126,7 +126,8 @@
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
 		"popular.skills": "Popular skills",
-		"analytics": "Analytics"
+		"analytics": "Analytics",
+		"analytics.skillsProficiency": "Average percentage of skill mastered"
 	},
 	"toast": {
 		"title": {

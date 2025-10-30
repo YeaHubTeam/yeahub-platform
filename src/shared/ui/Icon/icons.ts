@@ -35,6 +35,7 @@ import ImageEdit from '@/shared/assets/icons/imageEdit.svg';
 import Info from '@/shared/assets/icons/info.svg';
 import Instagram from '@/shared/assets/icons/instagram.svg';
 import KeySquare from '@/shared/assets/icons/keySquare.svg';
+import Lamp from '@/shared/assets/icons/lamp.svg';
 import Like from '@/shared/assets/icons/like.svg';
 import Linkedin from '@/shared/assets/icons/linkedin.svg';
 import ListWithBackground from '@/shared/assets/icons/listWithBackground.svg';
@@ -142,4 +143,5 @@ export const icons: Record<IconName, IconComponent> = {
 	thumbsUp: ThumbsUp,
 	cross: Cross,
 	burgerAndCross: BurgerAndCross,
+	lamp: Lamp,
 };

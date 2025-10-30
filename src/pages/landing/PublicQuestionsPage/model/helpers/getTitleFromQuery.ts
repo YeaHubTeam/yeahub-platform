@@ -1,17 +1,4 @@
-import { DEFAULT_SPECIALIZATION_NUMBER } from '@/shared/constants/queryConstants';
-
 import { Skill } from '@/entities/skill';
-
-/**
- * get the name of skills to display as an additional title
- */
-
-export const transformSpecializationToGetSkills = (specialization?: number | number[]) => {
-	if (!specialization || (Array.isArray(specialization) && specialization.length === 0))
-		return [DEFAULT_SPECIALIZATION_NUMBER];
-
-	return Array.isArray(specialization) ? specialization : [specialization];
-};
 
 export const getSkillTitles = (skills: Skill[] = [], filterSkills: number[] | undefined) => {
 	return skills
@@ -20,19 +7,9 @@ export const getSkillTitles = (skills: Skill[] = [], filterSkills: number[] | un
 		.join(', ');
 };
 
-/**
- * get the name of the specialization from skills to display as an additional title
- */
-
-const getSpecializationId = (specialization: number | number[] = DEFAULT_SPECIALIZATION_NUMBER) => {
-	return Array.isArray(specialization) ? specialization[0] : specialization;
-};
-
 export const getSpecializationTitleFromSkills = (
 	skills: Skill[] = [],
-	filterSpecialization?: number | number[],
+	filterSpecialization?: number,
 ): string | undefined => {
-	return skills[0]?.specializations?.find(
-		(spec) => spec.id === getSpecializationId(filterSpecialization),
-	)?.title;
+	return skills[0]?.specializations?.find((spec) => spec.id === filterSpecialization)?.title;
 };

@@ -4,18 +4,18 @@ export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
 
-export type { FilterParams, MyResourcesFilterParams } from './model/types/filters';
 export type { Resource } from './model/types/resource';
 
 export { isResourceDisabled } from './model/helpers/isResourceDisabled';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
-export { ResourcesFilterSection } from './ui/ResourcesFilterSection/ResourcesFilterSection';
 export { ResourceForm } from './ui/ResourceForm/ResourceForm';
-export { ResourcesFilterSectionSkeleton } from './ui/ResourcesFilterSection/ResourcesFilterSection.skeleton';
+export { ResourcesTypesFilterSection } from './ui/ResourcesTypesFilterSection/ResourcesTypesFilterSection';
+export { ResourcesTypesFilterSectionSkeleton } from './ui/ResourcesTypesFilterSection/ResourcesTypesFilterSection.skeleton';
 export { ResourceCard } from './ui/ResourceCard/ResourceCard';
 export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
 export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
 export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
+export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusBlock';
 
 export type {
 	ResourceRequest,
@@ -32,3 +32,9 @@ export {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';
+
+export { useResourceRequestsFilters } from './model/hooks/useResourceRequestsFilters';
+export { useGetResourcesFilterParams } from './model/hooks/useGetResourcesFilterParams';
+export { useResourcesFilters } from './model/hooks/useResourcesFilters';
+export { useGetResourceRequestsFilterParams } from './model/hooks/useGetResourceRequestsFilterParams';
+export type { ResourcesFilterParams, ResourceRequestsFilterParams } from './model/types/filters';

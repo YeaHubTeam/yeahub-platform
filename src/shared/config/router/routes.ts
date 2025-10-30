@@ -158,9 +158,13 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/dashboard/analytics',
-		skills: {
+		'popular-skills': {
 			route: 'popular-skills',
 			page: '/dashboard/analytics/popular-skills',
+		},
+		'skills-proficiency': {
+			route: 'skills',
+			page: '/dashboard/analytics/skills',
 		},
 	},
 	interview: {
@@ -205,28 +209,28 @@ export const ROUTES = {
 	},
 	wiki: {
 		route: 'wiki',
-		page: '/dashboard',
+		page: '/dashboard/wiki',
 		resources: {
 			route: 'resources',
-			page: '/dashboard/resources',
+			page: '/dashboard/wiki/resources',
 			requests: {
 				route: 'requests',
-				page: '/dashboard/resources/requests',
+				page: '/dashboard/wiki/resources/requests',
 			},
 			my: {
 				route: 'my-resources',
-				page: '/dashboard/resources/my-resources',
+				page: '/dashboard/wiki/resources/my-resources',
 				create: {
 					route: 'create',
-					page: '/dashboard/resources/my-resources/create',
+					page: '/dashboard/wiki/resources/my-resources/create',
 				},
 				edit: {
 					route: ':requestId/edit',
-					page: '/dashboard/resources/my-resources/:requestId/edit',
+					page: '/dashboard/wiki/resources/my-resources/:requestId/edit',
 				},
 				request: {
 					route: ':requestId',
-					page: '/dashboard/resources/my-resources/:requestId',
+					page: '/dashboard/wiki/resources/my-resources/:requestId',
 				},
 			},
 		},

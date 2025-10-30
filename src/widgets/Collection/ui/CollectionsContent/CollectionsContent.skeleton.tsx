@@ -1,11 +1,10 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
+import { FiltersDrawerSkeleton } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import { CollectionsPreviewSkeleton } from '@/entities/collection';
-
-import { CollectionsFiltersDrawerSkeleton } from '../CollectionsFiltersDrawer/CollectionsFiltersDrawer.skeleton';
 
 import styles from './CollectionsContent.module.css';
 
@@ -17,7 +16,7 @@ export const CollectionsContentSkeleton = () => {
 			<Card className={styles.content}>
 				<Flex justify="between" className={styles.header}>
 					<Skeleton className={styles.title} height={isMobileS ? 24 : 29} width={124} />
-					<CollectionsFiltersDrawerSkeleton />
+					<FiltersDrawerSkeleton />
 				</Flex>
 				<Flex direction="column" gap="20">
 					{[...Array(6)].map((_, i) => (

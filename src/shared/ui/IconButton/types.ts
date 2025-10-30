@@ -9,11 +9,13 @@ export type VariantType =
 	| 'destructive-outline'
 	| 'destructive-tertiary';
 
+export type IconButtonSize = 'small' | 'medium' | 'large';
+
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
 	dataTestId?: string;
 	variant?: VariantType;
 	form?: 'square' | 'round';
-	size?: 'small' | 'medium' | 'large';
+	size?: IconButtonSize;
 	icon: React.ReactNode;
 	destructive?: boolean;
 	'aria-label': string;

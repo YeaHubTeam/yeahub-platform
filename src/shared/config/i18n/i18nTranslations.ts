@@ -83,6 +83,7 @@ export enum Translation {
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',
 	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
+	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -237,6 +238,7 @@ export enum Profile {
 	FORM_EMAIL = 'form.email',
 	FORM_LOCATION = 'form.location',
 	FORM_SKILLS = 'form.skills',
+	FORM_SWITCH_SPECIALIZATION = 'form.switch.specialization',
 	SETTINGS_TABS_SELECT_TARIFF = 'settings.tabs.select.tariff',
 	SETTINGS_TABS_CHANGE_PASSWORD = 'settings.tabs.change.password',
 	SETTINGS_TABS_VERIFY_EMAIL = 'settings.tabs.verify.email',
@@ -267,15 +269,20 @@ export enum Profile {
 	CHANGE_PASSWORD_LABEL = 'change.password.label',
 	CHANGE_PASSWORD_REPEAT_LABEL = 'change.password.repeat.label',
 	CHANGE_PASSWORD_PLACEHOLDER = 'change.password.placeholder',
+	MANAGE_PROFILES_MULTIPROFILE_BANNER_DESCRIPTION = 'manage.profiles.multiprofile.banner.description',
 	MANAGE_PROFILES_TITLE = 'manage.profiles.title',
 	MANAGE_PROFILES_OPEN = 'manage.profiles.open',
 	MANAGE_PROFILES_TOOLTIP_NOT_MEMBER = 'manage.profiles.tooltip.not.member',
 	MANAGE_PROFILES_TOOLTIP_MAX_COUNT = 'manage.profiles.tooltip.max.count',
-	MANAGE_PROFILES_MODAL_TITLE = 'manage.profiles.modal.title',
-	MANAGE_PROFILES_MODAL_DESCRIPTION = 'manage.profiles.modal.description',
-	MANAGE_PROFILES_MODAL_LABEL = 'manage.profiles.modal.label',
-	MANAGE_PROFILES_MODAL_PLACEHOLDER = 'manage.profiles.modal.placeholder',
-	MANAGE_PROFILES_MODAL_BUTTON = 'manage.profiles.modal.button',
+	MANAGE_PROFILES_MODAL_DELETE_PROFILE_TITLE = 'manage.profiles.modal.delete.profile.title',
+	MANAGE_PROFILES_MODAL_DELETE_PROFILE_DESCRIPTION = 'manage.profiles.modal.delete.profile.description',
+	MANAGE_PROFILES_MODAL_DELETE_PROFILE_LABEL = 'manage.profiles.modal.delete.profile.label',
+	MANAGE_PROFILES_MODAL_DELETE_PROFILE_PLACEHOLDER = 'manage.profiles.modal.delete.profile.placeholder',
+	MANAGE_PROFILES_MODAL_DELETE_PROFILE_BUTTON = 'manage.profiles.modal.delete.profile.button',
+	MANAGE_PROFILES_MODAL_HOW_SWITCH_SPECIALIZATION_TITLE = 'manage.profiles.modal.how.switch.specialization.title',
+	MANAGE_PROFILES_MODAL_HOW_SWITCH_SPECIALIZATION_CONTENT = 'manage.profiles.modal.how.switch.specialization.content',
+	MANAGE_PROFILES_MODAL_HOW_SWITCH_SPECIALIZATION_DESCRIPTION = 'manage.profiles.modal.how.switch.specialization.description',
+	MANAGE_PROFILES_MODAL_HOW_SWITCH_SPECIALIZATION_BUTTON = 'manage.profiles.modal.how.switch.specialization.button',
 }
 
 export enum Auth {
@@ -356,6 +363,14 @@ export enum Analytics {
 	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
 	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
 	SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
+	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
+	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
+	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
+	SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
+	SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
+	SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
+	SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
+	SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
 }
 
 export enum InterviewQuiz {
@@ -497,6 +512,7 @@ export enum Questions {
 	RATE_TITLE = 'rate.title',
 	RATE_TITLE_SHORT = 'rate.title.short',
 	RATE_LABEL = 'rate.label',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
 	SORT_TITLE = 'sort.title',
 	SORT_ASCENDING = 'sort.ascending',
@@ -540,6 +556,7 @@ export enum Questions {
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
+	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 }
 
 export enum InterviewHistory {
@@ -985,6 +1002,7 @@ export enum Media {
 export enum Marketplace {
 	HEADER_TITLE = 'header.title',
 	LINK_LABEL = 'add.resource.link.label',
+	ADD_RESOURCE_REQUEST_LINK = 'add.resource.request.link',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
 	HIDE = 'hide',

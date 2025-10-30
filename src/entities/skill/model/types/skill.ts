@@ -16,7 +16,7 @@ export type GetSkillsListParamsRequest = {
 	page?: number;
 	title?: string;
 	limit?: number;
-	specializations?: number[];
+	specializations?: number[] | number;
 };
 export type GetSkillsListResponse = Response<Skill[]>;
 

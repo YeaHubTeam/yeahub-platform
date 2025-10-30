@@ -5,7 +5,12 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { SelectProps } from './Select';
 import styles from './Select.module.css';
 
-export const SelectSkeleton = ({ size = 'L', className, width }: Partial<SelectProps>) => {
+export const SelectSkeleton = ({
+	size = 'L',
+	className,
+	width,
+	dataTestId,
+}: Partial<SelectProps>) => {
 	const wrapperClasses = classNames(
 		styles.wrapper,
 		styles['dropdown'],
@@ -15,5 +20,5 @@ export const SelectSkeleton = ({ size = 'L', className, width }: Partial<SelectP
 		className,
 	);
 
-	return <Skeleton className={wrapperClasses} style={{ width }} />;
+	return <Skeleton dataTestId={dataTestId} className={wrapperClasses} style={{ width }} />;
 };

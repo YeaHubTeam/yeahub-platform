@@ -1,0 +1,45 @@
+.wrapper {
+  padding: 24px;
+
+}
+
+.wrapper-skeleton{
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.white {
+  border-radius: 24px;
+  background-color: var(--color-white-900);
+  color: var(--color-black-900);
+}
+
+.violet {
+  border-radius: 8px;
+  background-color: var(--color-purple-700);
+  color: var(--color-white-900);
+}
+
+.alarm-img{
+  min-width: 65px;
+  height: 78px;
+}
+
+.text {
+  max-width: 869px;
+}
+
+@media (width < 768px) {
+  .wrapper {
+    margin-block: 20px;
+  }
+
+  .wrapper-skeleton{
+    margin-block: 20px;
+  }
+  
+  .alarm-img{
+    width: 65px;
+    height: 78px;
+  }
+}

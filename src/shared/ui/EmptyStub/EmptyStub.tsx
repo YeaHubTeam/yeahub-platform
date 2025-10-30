@@ -1,4 +1,4 @@
-import SearchImg from '@/shared/assets/images/searchPage.png';
+import SearchImg from '@/shared/assets/images/SearchPage.png';
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';

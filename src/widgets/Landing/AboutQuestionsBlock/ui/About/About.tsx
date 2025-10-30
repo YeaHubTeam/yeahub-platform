@@ -12,7 +12,7 @@ export const About = () => {
 	const { isMobile } = useScreenSize();
 
 	return (
-		<div className={styles.about}>
+		<div className={styles.about} data-testid="About">
 			<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 				{t(Landing.QUESTIONS_TITLE)}
 			</Text>

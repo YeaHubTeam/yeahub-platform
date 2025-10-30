@@ -27,7 +27,7 @@ const PopularSkills = () => {
 			size="medium"
 			title={t(Analytics.TITLE_POPULAR_SKILLS, { ns: i18Namespace.analytics })}
 			actionTitle={t(Translation.CRUMBS_QUESTION_DETAIL, { ns: i18Namespace.translation })}
-			actionRoute={ROUTES.analytics.skills.page}
+			actionRoute={ROUTES.analytics['popular-skills'].page}
 			isActionPositionBottom
 		>
 			<Flex direction="column" gap="12">
