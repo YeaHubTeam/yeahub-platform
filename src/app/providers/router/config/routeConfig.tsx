@@ -57,6 +57,7 @@ import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
+import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -511,7 +512,14 @@ export const router = createBrowserRouter([
 						element: <AnalyticsPage />,
 					},
 					{
-						path: ROUTES.analytics.skills.route,
+						path: ROUTES.analytics['popular-skills'].route,
+						element: <PopularSkillsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_POPULAR_SKILLS,
+						},
+					},
+					{
+						path: ROUTES.analytics['skills-proficiency'].route,
 						element: <SkillsProficiencyPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,

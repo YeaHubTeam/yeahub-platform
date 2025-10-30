@@ -125,6 +125,7 @@
 		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
+		"popular.skills": "Popular skills",
 		"analytics": "Analytics",
 		"analytics.skillsProficiency": "Average percentage of skill mastered"
 	},

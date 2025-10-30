@@ -1,0 +1,10 @@
+.card {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 14px;
+  background-color: var(--color-black-30);
+}
+
+.mobile-popularity{
+  margin-top: 12px;
+}

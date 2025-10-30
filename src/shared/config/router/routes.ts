@@ -158,7 +158,11 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/dashboard/analytics',
-		skills: {
+		'popular-skills': {
+			route: 'popular-skills',
+			page: '/dashboard/analytics/popular-skills',
+		},
+		'skills-proficiency': {
 			route: 'skills',
 			page: '/dashboard/analytics/skills',
 		},
