@@ -85,6 +85,7 @@ const QuestionsPage = () => {
 				to="create"
 				showRemoveButton={selectedQuestions.length > 0}
 				onSearch={onChangeTitle}
+				searchValue={filters.title}
 				renderRemoveButton={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
 				renderFilter={() => (
 					<QuestionsFilters
