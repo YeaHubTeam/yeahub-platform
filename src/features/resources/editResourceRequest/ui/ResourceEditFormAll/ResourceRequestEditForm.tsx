@@ -1,14 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
+import { route } from '@/shared/helpers/route';
 import { useModal } from '@/shared/hooks';
 import { useCurrentProject } from '@/shared/hooks';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
+import { toast } from '@/shared/ui/Toast';
 
 import { ResourceRequest } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
@@ -32,6 +33,7 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 	const navigate = useNavigate();
 	const { skills, specializations, requestPayload, ...formattedRequest } = request;
 	const project = useCurrentProject();
+	const { resourceId } = useParams<{ resourceId: string }>();
 
 	const methods = useForm<EditResourceRequestFormValues>({
 		resolver: yupResolver(resourceRequestEditSchema),
@@ -51,9 +53,7 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 
 	const onClose = () => {
 		onToggle();
-		project === 'admin'
-			? navigate(ROUTES.admin.resources.page)
-			: navigate(ROUTES.wiki.resources.my.page);
+		navigate(ROUTES.wiki.resources.my.page);
 	};
 
 	const onEditResourceRequest = async (formData: EditResourceRequestFormValues) => {
@@ -65,7 +65,10 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 				specializations: formData.specializations,
 			}).unwrap();
 			onToggle();
-			project === 'admin' && toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS));
+			if (project === 'admin') {
+				toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS)),
+					navigate(route(ROUTES.admin.resources.requests.view.page, resourceId!));
+			}
 		} catch (_) {
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
 		}
