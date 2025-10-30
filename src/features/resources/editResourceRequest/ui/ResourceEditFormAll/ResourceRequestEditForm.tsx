@@ -33,7 +33,7 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 	const navigate = useNavigate();
 	const { skills, specializations, requestPayload, ...formattedRequest } = request;
 	const project = useCurrentProject();
-	const { resourceId } = useParams<{ resourceId: string }>();
+	const { resourceId = '' } = useParams<{ resourceId: string }>();
 
 	const methods = useForm<EditResourceRequestFormValues>({
 		resolver: yupResolver(resourceRequestEditSchema),
@@ -66,8 +66,8 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 			}).unwrap();
 			onToggle();
 			if (project === 'admin') {
-				toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS)),
-					navigate(route(ROUTES.admin.resources.requests.view.page, resourceId!));
+				toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS));
+				navigate(route(ROUTES.admin.resources.requests.view.page, resourceId));
 			}
 		} catch (_) {
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
