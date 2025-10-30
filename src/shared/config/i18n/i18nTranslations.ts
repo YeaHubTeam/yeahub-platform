@@ -82,6 +82,7 @@ export enum Translation {
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
@@ -358,6 +359,10 @@ export enum Specializations {
 export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
+	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
+	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
+	SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
 	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
 	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
 	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',

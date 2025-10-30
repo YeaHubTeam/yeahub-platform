@@ -128,6 +128,7 @@
 		"resources.my.request": "Заявка",
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
+		"popular.skills": "Популярные навыки",
 		"analytics": "Аналитика",
 		"analytics.skillsProficiency": "Средний процент изученности навыка"
 	},

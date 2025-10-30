@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 
-import { changeMockQuestionAnswer, changeQuestionAnswer } from '../model/slices/activeQuizSlice';
-import { Answers, QuizQuestionAnswerType } from '../model/types/quiz';
+import { changeMockQuestionAnswer, changeQuestionAnswer } from '../slices/activeQuizSlice';
+import { Answers, QuizQuestionAnswerType } from '../types/quiz';
 export const useSlideSwitcher = (questions: Answers[], initialSlideIndex?: number) => {
 	const [currentQuestion, setCurrentQuestion] = useState(initialSlideIndex || 0);
 
