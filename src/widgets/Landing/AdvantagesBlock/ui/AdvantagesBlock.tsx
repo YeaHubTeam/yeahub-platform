@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Learning } from '@/shared/config/i18n/i18nTranslations';
-import AdvantagesList from '@/shared/ui/AdvantagesList/AdvantagesList';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './AdvantagesBlock.module.css';
+import { AdvantagesList } from './AdvantagesList/AdvantagesList';
 
 export const AdvantagesBlock = () => {
 	const { t } = useTranslation(i18Namespace.learning);
