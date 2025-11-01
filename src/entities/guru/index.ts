@@ -10,3 +10,5 @@ export { GurusItem } from './ui/GurusItem/GurusItem';
 
 export { GurusList } from './ui/GurusList/GurusList';
 export { GurusListSkeleton } from './ui/GurusList/GurusList.skeleton';
+
+export { GuruSocialsList } from './ui/GuruSocialsList/GuruSocialsList';
