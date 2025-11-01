@@ -1,5 +1,10 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Guru as GuruI18n } from '@/shared/config/i18n/i18nTranslations';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { Guru } from '../../model/types/guru';
@@ -16,6 +21,8 @@ interface GurusItemProps {
 
 export const GurusItem = ({ guru, avatarSize, description, hasBorder = false }: GurusItemProps) => {
 	const { image, name, title, socials } = guru;
+
+	const { t } = useTranslation(i18Namespace.guru);
 
 	return (
 		<Flex
@@ -43,6 +50,12 @@ export const GurusItem = ({ guru, avatarSize, description, hasBorder = false }: 
 					</Text>
 					<GuruSocialsList socials={socials} />
 				</>
+			)}
+			{socials.landing && (
+				<a className={styles['more-link']} href={socials.landing} target="_blank" rel="noreferrer">
+					{t(GuruI18n.BUTTON_MORE)}
+					<Icon icon="arrowRight" />
+				</a>
 			)}
 		</Flex>
 	);
