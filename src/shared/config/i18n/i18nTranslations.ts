@@ -347,7 +347,6 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
-	SELECT_SPECIFY = 'select.specify',
 	PROGRESS_TITLE = 'progress.title',
 	PROGRESS_DETAIL = 'progress.detail',
 	PROGRESS_TABLE_SPECIALIZATION = 'progress.table.specialization',

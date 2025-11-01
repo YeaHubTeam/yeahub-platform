@@ -32,16 +32,15 @@ export const ProgressSpecializationsPage = () => {
 		specializationId: selectedSpecializations,
 	});
 
-	const { t: tAnalytics } = useTranslation(i18Namespace.analytics);
-	const { t: tSpecialization } = useTranslation(i18Namespace.specialization);
+	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.analytics]);
 
 	const renderTableHeader = () => {
 		const columns = {
-			number: tSpecialization(Specializations.PROGRESS_TABLE_NUMBER),
-			specialization: tSpecialization(Specializations.PROGRESS_TABLE_SPECIALIZATION),
-			skillCount: tSpecialization(Specializations.PROGRESS_TABLE_SKILLS),
-			questionCount: tSpecialization(Specializations.PROGRESS_TABLE_QUESTIONS),
-			averageProgress: tSpecialization(Specializations.PROGRESS_TABLE_PROGRESS),
+			number: t(Specializations.PROGRESS_TABLE_NUMBER),
+			specialization: t(Specializations.PROGRESS_TABLE_SPECIALIZATION),
+			skillCount: t(Specializations.PROGRESS_TABLE_SKILLS),
+			questionCount: t(Specializations.PROGRESS_TABLE_QUESTIONS),
+			averageProgress: t(Specializations.PROGRESS_TABLE_PROGRESS),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
@@ -106,15 +105,15 @@ export const ProgressSpecializationsPage = () => {
 	const renderTableMobileBody = (stats: SpecializationsProgress) => {
 		const columns = [
 			{
-				title: tSpecialization(Specializations.PROGRESS_TABLE_SKILLS),
+				title: t(Specializations.PROGRESS_TABLE_SKILLS),
 				value: stats.skillCount,
 			},
 			{
-				title: tSpecialization(Specializations.PROGRESS_TABLE_QUESTIONS),
+				title: t(Specializations.PROGRESS_TABLE_QUESTIONS),
 				value: stats.questionCount,
 			},
 			{
-				title: tSpecialization(Specializations.PROGRESS_TABLE_PROGRESS),
+				title: t(Specializations.PROGRESS_TABLE_PROGRESS),
 				value: `${stats.averageProgress}%`,
 			},
 		];
@@ -138,24 +137,19 @@ export const ProgressSpecializationsPage = () => {
 	return (
 		<Card>
 			<Flex justify="between">
-				<h2 className={styles.title}>{tSpecialization(Specializations.PROGRESS_TITLE)}</h2>
+				<Text variant="head2" className={styles.title}>
+					{t(Specializations.PROGRESS_TITLE)}
+				</Text>
 				<Tooltip
 					className={styles.tooltip}
-					title={tAnalytics(Analytics.TOOLTIP_SPECIFY)}
+					title={t(Analytics.TOOLTIP_SPECIFY, { ns: i18Namespace.analytics })}
 					placement="bottom"
 				>
 					<Icon icon="info" size={18} color="black-600" />
 				</Tooltip>
 			</Flex>
 			<FormControl className={styles['form-control']} name="specializations" control={control}>
-				{({ onChange, value }) => (
-					<SpecializationSelect
-						onChange={onChange}
-						value={value}
-						defaultValue={tSpecialization(Specializations.SELECT_SPECIFY)}
-						withoutPrefix={true}
-					/>
-				)}
+				{({ onChange, value }) => <SpecializationSelect onChange={onChange} value={value} />}
 			</FormControl>
 			{isMobile ? (
 				<TableMobile

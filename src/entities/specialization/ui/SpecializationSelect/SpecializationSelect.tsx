@@ -17,8 +17,6 @@ export type SpecializationSelectProps = Omit<
 	onChange: (value: number[] | number) => void;
 	hasMultiple?: boolean;
 	disabled?: boolean;
-	defaultValue?: string;
-	withoutPrefix?: boolean;
 };
 
 export const SpecializationSelect = ({
@@ -26,8 +24,6 @@ export const SpecializationSelect = ({
 	value,
 	hasMultiple,
 	disabled,
-	defaultValue,
-	withoutPrefix,
 }: SpecializationSelectProps) => {
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
@@ -78,7 +74,7 @@ export const SpecializationSelect = ({
 	const specializationsDictionary = useMemo(() => {
 		const emptySpecialization: Specialization = {
 			id: 0,
-			title: defaultValue || t(Specializations.SELECT_CHOOSE),
+			title: t(Specializations.SELECT_CHOOSE),
 			imageSrc: null,
 			description: '',
 		};
@@ -99,7 +95,6 @@ export const SpecializationSelect = ({
 				disabled={disabled}
 				value={specializationsDictionary[selectedSpecializations[0] || 0]?.title ?? ''}
 				onSelect={(val) => handleChange(String(val))}
-				withoutPrefix={withoutPrefix}
 			>
 				{options.map((option) => (
 					<Option value={option.value} label={option.label} key={option.label} />

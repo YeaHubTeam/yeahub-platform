@@ -24,7 +24,6 @@ export interface DropdownProps
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
-	withoutPrefix?: boolean;
 }
 
 export const Dropdown = ({
@@ -42,7 +41,6 @@ export const Dropdown = ({
 	isInput = false,
 	inputValue,
 	onChangeValue,
-	withoutPrefix,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -89,7 +87,7 @@ export const Dropdown = ({
 			<Select
 				width={width}
 				size={size}
-				prefix={withoutPrefix ? null : prefix || <Lens className={styles.suffix} />}
+				prefix={prefix || <Lens className={styles.suffix} />}
 				suffix={
 					suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />
 				}
