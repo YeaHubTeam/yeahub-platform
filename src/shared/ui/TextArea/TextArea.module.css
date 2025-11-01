@@ -3,10 +3,11 @@
   width: inherit;
   height: inherit;
   overflow: auto;
-  border: 1px solid var(--palette-ui-black-50);
+  outline: none;
+  border: 1px solid var(--color-black-50);
   border-radius: 1.5rem;
-  background-color: var(--palette-ui-white-900);
-  color: var(--palette-ui-black-900);
+  background-color: var(--color-white-900);
+  color: var(--color-black-900);
   transition: 0.2s;
   cursor: text;
 }
@@ -16,60 +17,64 @@
     } */
   
 .yeahub-textarea:hover {
-  border-color: var(--palette-ui-purple-300);
+  border-color: var(--color-purple-300);
 }
   
 .yeahub-textarea:focus {
-  box-shadow: var(--yeahub-focus-shadow);
-  border-color: var(--palette-ui-purple-500);
+  border-color: var(--color-purple-500);
 }
   
 .yeahub-textarea:active {
-  border-color: var(--palette-ui-purple-700);
+  border-color: var(--color-purple-700);
 }
   
+/* Вид disabled textarea привела к виду disabled input, как образцы textarea в макете, 
+несмотря на то что на макете страницы формы ревью textarea изображены default, 
+что не совсем логично на нередактируемой странице */
+
 .yeahub-textarea:disabled {
-  border: 1px solid var(--palette-ui-purple-50);
-  color: var(--palette-ui-purple-25);
+  border: 1px solid var(--color-black-50);
+  background-color: var(--color-black-25);
+  color: var(--text-color-the-lightest);
   cursor: not-allowed;
 }
   
 .yeahub-textarea::placeholder {
-  color: var(--palette-ui-black-100);
+  color: var(--color-black-100);
 }
   
 .yeahub-textarea-valid {
-  outline: 1px solid var(--palette-green-500);
-  border-color: var(--palette-ui-green-700);
+  outline: 1px solid var(--color-green-50);
+  border-color: var(--color-green-700);
 }
 
 .yeahub-textarea-valid:focus {
-  box-shadow: var(--yeahub-focus-shadow-valid);
-  outline: 2px solid var(--palette-green-500);
-  border-color: var(--palette-ui-green-700);
+  box-shadow: var(--focus-shadow-valid);
+  outline: 2px solid var(--color-green-500);
+  border-color: var(--color-green-700);
 }
 
 .yeahub-textarea-valid:hover {
-  border-color: var(--palette-ui-green-800);
+  border-color: var(--color-green-800);
 }
 
 .yeahub-textarea-valid:active {
-  border-color: var(--palette-ui-green-700);
+  border-color: var(--color-green-700);
 }
 
 .yeahub-textarea-error {
-  border-color: var(--palette-ui-red-700);
+  border-color: var(--color-red-700);
 }
 
 .yeahub-textarea-error:hover {
-  border-color: var(--palette-ui-red-800);
+  border-color: var(--color-red-800);
 }
   
 .yeahub-textarea-error:focus {
-  box-shadow: var(--yeahub-focus-shadow-error);
-  border-color: var(--palette-ui-red-700);
+  box-shadow: var(--focus-shadow-error);
+  border-color: var(--color-red-700);
 }
   
 .yeahub-textarea-error:active {
-  border-color: var(--palette-ui-red-700);
+  border-color: var(--color-red-700);
 }

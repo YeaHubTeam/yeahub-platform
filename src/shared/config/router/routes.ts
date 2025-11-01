@@ -101,6 +101,10 @@ export const ROUTES = {
 					route: 'requests/:resourceId',
 					page: '/admin/resources/requests/:resourceId',
 				},
+				edit: {
+					route: 'requests/:resourceId/edit',
+					page: '/admin/resources/requests/:resourceId/edit',
+				},
 			},
 		},
 		companies: {

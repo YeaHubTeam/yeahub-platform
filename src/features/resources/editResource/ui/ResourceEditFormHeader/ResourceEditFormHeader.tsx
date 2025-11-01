@@ -5,29 +5,46 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
+import { VariantType } from '@/shared/ui/IconButton';
 
-import { useEditResourceMutation } from '../../api/editResourceApi';
+import { ResourceRequestFormValues } from '@/entities/resource';
+
 import { EditResourceFormValues } from '../../model/types/resourcesEditTypes';
 
-export const ResourceEditFormHeader = () => {
+import styles from './ResourceEditFormHeader.module.css';
+interface ResourceEditFormHeaderProps<
+	T extends EditResourceFormValues | ResourceRequestFormValues,
+> {
+	onSubmit: (formData: T) => Promise<void>;
+	className?: string;
+	btnVariant?: VariantType;
+}
+
+export const ResourceEditFormHeader = <
+	T extends EditResourceFormValues | ResourceRequestFormValues,
+>({
+	onSubmit,
+	className,
+	btnVariant = 'secondary',
+}: ResourceEditFormHeaderProps<T>) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
-	const { handleSubmit, reset, formState } = useFormContext<EditResourceFormValues>();
-	const [editResourceMutation, { isLoading }] = useEditResourceMutation();
+	const { handleSubmit, reset, formState } = useFormContext<T>();
+
 	const onResetFormValues = () => {
 		reset();
 	};
 
-	const onEditResource = async (data: EditResourceFormValues) => {
-		editResourceMutation(data);
-	};
-
 	return (
-		<BackHeader>
-			<Button onClick={onResetFormValues} variant="secondary">
+		<BackHeader className={className}>
+			<Button onClick={onResetFormValues} variant={btnVariant} className={styles.btn}>
 				{t(Translation.CANCEL)}
 			</Button>
-			<Button disabled={isLoading || formState.isSubmitting} onClick={handleSubmit(onEditResource)}>
+			<Button
+				disabled={formState.isSubmitting}
+				onClick={handleSubmit(onSubmit)}
+				className={styles.btn}
+			>
 				{t(Translation.SAVE)}
 			</Button>
 		</BackHeader>

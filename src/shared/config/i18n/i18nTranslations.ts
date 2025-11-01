@@ -486,6 +486,8 @@ export enum Resources {
 	TYPE = 'type',
 	WITHDRAW_BUTTON = 'withdraw.button',
 	WITHDRAW_TITLE = 'withdraw.title',
+	REQUESTS_TITLE_VIEW = 'requests.title.view',
+	REQUESTS_TITLE_EDIT = 'requests.title.edit',
 }
 
 export enum Questions {

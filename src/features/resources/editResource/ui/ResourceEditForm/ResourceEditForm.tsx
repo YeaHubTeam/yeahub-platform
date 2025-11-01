@@ -9,6 +9,7 @@ import { Resource, ResourceForm } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
+import { useEditResourceMutation } from '../../api/editResourceApi';
 import { resourceEditSchema } from '../../model/lib/validation/resourceEditSchema';
 import { EditResourceFormValues } from '../../model/types/resourcesEditTypes';
 import { ResourceEditFormHeader } from '../ResourceEditFormHeader/ResourceEditFormHeader';
@@ -40,11 +41,16 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
+	const [editResourceMutation] = useEditResourceMutation();
+
+	const onEditResource = async (data: EditResourceFormValues) => {
+		editResourceMutation(data);
+	};
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<ResourceEditFormHeader />
+					<ResourceEditFormHeader onSubmit={onEditResource} />
 					<Card className={styles.content}>
 						<ResourceForm />
 					</Card>

@@ -1,1 +1,1 @@
-export { ResourceRequestEditForm } from './ui/ResourceRequestEditForm/ResourceRequestEditForm';
+export { ResourceRequestEditForm } from './ui/ResourceEditFormAll/ResourceRequestEditForm';
