@@ -887,6 +887,9 @@ export enum Landing {
 	HISTORY_IMG_STATISTICS = 'history.img.statistics',
 	HISTORY_IMG_PROGRESS = 'history.img.progress',
 	HISTORY_IMG_DESCRIPTION = 'history.img.description',
+	MENTORS_TITLE = 'mentors.title',
+	MENTORS_DESCRIPTION = 'mentors.description',
+	MENTORS_LINK = 'mentors.link',
 }
 
 export enum Subscription {

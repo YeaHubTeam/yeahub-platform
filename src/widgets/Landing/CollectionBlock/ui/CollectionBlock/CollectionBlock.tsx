@@ -6,6 +6,8 @@ import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { MentorsBlock } from '@/widgets/Landing/MentorsBlock';
+
 import { AdditionalBlock } from '../AdditionalBlock/AdditionalBlock';
 import { FiltersBlock } from '../FiltersBlock/FiltersBlock';
 import { MainBlock } from '../MainBlock/MainBlock';
@@ -18,6 +20,7 @@ export const CollectionBlock = () => {
 
 	return (
 		<section className={styles['collection']} data-testid="CollectionBlock">
+			<MentorsBlock />
 			<Flex gap="20" direction="column" align="center" className={styles['collection-wrapper']}>
 				<div data-testid="CollectionBlock_TitleBlock" className={styles['title-block']}>
 					<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
