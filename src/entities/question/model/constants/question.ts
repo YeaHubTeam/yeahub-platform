@@ -7,4 +7,5 @@ export const questionApiUrls = {
 	getPublicQuestionById: 'questions/public-questions/:questionId',
 	getStatisticsQuestionsSpecializationById: 'questions/questions-count/:specializationId',
 	getMostDifficultQuestionsBySpecializationId: 'questions-stats/most-difficult/:specId',
+	popularQuestions: 'questions-stats/question-popularity',
 };
