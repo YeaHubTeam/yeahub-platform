@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector, useScreenSize } from '@/shared/hooks';
+import { useScreenSize, useAppSelector } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';

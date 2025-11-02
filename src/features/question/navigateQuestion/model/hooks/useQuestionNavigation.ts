@@ -75,7 +75,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 			{ ...params, page: nextPageNum },
 			{ skip: skipGetAllQuestions || skipGetNextQuestions || !lastPageNum },
 		);
-	const { data: nextLearnedQuestions, isFetching: isLoadingLearnedQuestions } =
+	const { data: nextLearnedQuestions, isFetching: isLoadingNextLearnedQuestions } =
 		useGetQuestionsForLearnQuery(
 			{ ...params, page: nextPageNum },
 			{ skip: skipGetLearnedQuestions || skipGetNextQuestions || !lastPageNum },
@@ -87,7 +87,7 @@ export const useQuestionNavigation = ({ questionId, filter }: QuestionNavigation
 		isLoadingPrevAllQuestions ||
 		isLoadingPrevLearnedQuestions ||
 		isLoadingNextAllQuestions ||
-		isLoadingLearnedQuestions;
+		isLoadingNextLearnedQuestions;
 
 	const { prevId, nextPage, nextId, prevPage } = calculatePageNavigation<Question>({
 		currentPageData: currentQuestions,
