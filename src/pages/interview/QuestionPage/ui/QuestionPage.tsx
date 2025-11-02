@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector, useQueryFilter, useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
@@ -9,6 +9,7 @@ import { getChannelsForSpecialization } from '@/entities/media';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
+import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
 import {
 	useQuestionNavigation,
 	useQuestionQueryNavigate,
@@ -24,7 +25,7 @@ import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
 export const QuestionPage = () => {
-	const { filter } = useQueryFilter();
+	const filter = useGetQuestionsFilterParams({ page: 1, status: 'all' });
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId = '' } = useParams<{ questionId: string }>();
 

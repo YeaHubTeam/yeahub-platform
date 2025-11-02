@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useQueryFilter, useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -12,7 +12,9 @@ import { Icon } from '@/shared/ui/Icon';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getChannelsForSpecialization } from '@/entities/media';
 import { useGetPublicQuestionByIdQuery } from '@/entities/question';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
+import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
 import {
 	usePublicQuestionNavigation,
 	useQuestionQueryNavigate,
@@ -27,7 +29,10 @@ import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
 
 const PublicQuestionPage = () => {
-	const { filter } = useQueryFilter();
+	const filter = useGetQuestionsFilterParams({
+		specialization: DEFAULT_SPECIALIZATION_ID,
+		page: 1,
+	});
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const { questionId = '' } = useParams<{ questionId: string }>();

@@ -10,10 +10,8 @@ import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
-
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
-import { QuestionsFilters } from '@/widgets/question/QuestionsFilters';
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import {

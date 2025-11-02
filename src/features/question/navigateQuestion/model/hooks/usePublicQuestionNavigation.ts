@@ -10,10 +10,11 @@ export const usePublicQuestionNavigation = ({ filter, questionId }: QuestionNavi
 	const currentQuestionId = Number(questionId);
 	const currentPage = page ?? 1;
 
-	const skipCurrentPage = status !== 'all' || !filter.specialization;
-
 	const { data: currentPublicQuestions, isFetching: isLoadingCurrentPage } =
-		useGetPublicQuestionsListQuery({ ...params, page: currentPage }, { skip: skipCurrentPage });
+		useGetPublicQuestionsListQuery(
+			{ ...params, page: currentPage },
+			{ skip: !filter.specialization },
+		);
 
 	const currentQuestionsData = currentPublicQuestions?.data || [];
 	const currentIndex = currentQuestionsData.findIndex((item) => item.id === currentQuestionId);
