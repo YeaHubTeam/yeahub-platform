@@ -5,11 +5,12 @@ import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
-import { useGetPublicQuestionsListQuery, useQuestionsFilters } from '@/entities/question';
+import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import { QuestionsFilters } from '@/widgets/question/QuestionsFilters';
+import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
+
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import {

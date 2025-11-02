@@ -1,6 +1,8 @@
 import classnames from 'classnames';
 import { forwardRef } from 'react';
 
+import { Flex } from '@/shared/ui/Flex';
+
 import { SwitchProps } from '../model/types';
 
 import styles from './Switch.module.css';
@@ -20,7 +22,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 		ref,
 	): JSX.Element => {
 		return (
-			<div ref={ref} {...otherProps}>
+			<Flex align="center" ref={ref} {...otherProps}>
 				<label className={classnames(styles.switch, switchClassName)}>
 					<input
 						ref={inputRef}
@@ -38,7 +40,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 				{label && (
 					<span className={classnames(styles['switch-label'], labelClassName)}>{label}</span>
 				)}
-			</div>
+			</Flex>
 		);
 	},
 );

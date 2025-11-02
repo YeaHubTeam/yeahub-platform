@@ -34,7 +34,7 @@ export const SkillsProficiency = () => {
 	return (
 		<Card
 			title={t(Analytics.SKILL_PROFICIENCY_TITLE)}
-			actionRoute={ROUTES.analytics.skills.route}
+			actionRoute={ROUTES.analytics['skills-proficiency'].route}
 			actionTitle={t(Analytics.SKILL_PROFICIENCY_LINK_DETAIL)}
 			isActionPositionBottom
 			className={styles.card}
