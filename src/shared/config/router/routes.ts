@@ -275,4 +275,8 @@ export const ROUTES = {
 		route: 'resources',
 		page: '/resources',
 	},
+	learning: {
+		route: 'learning',
+		page: '/learning',
+	},
 } as const;
