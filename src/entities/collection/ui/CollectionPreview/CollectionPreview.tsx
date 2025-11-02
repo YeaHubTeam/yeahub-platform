@@ -7,7 +7,6 @@ import Star from '@/shared/assets/icons/starsMinimalistic.svg';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
 import { useCurrentProject } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -17,7 +16,8 @@ import { Popover } from '@/shared/ui/Popover';
 import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { Collection } from '@/entities/collection';
+import { getCollectionRoute } from '../../model/lib/getCollectionRoute';
+import { Collection } from '../../model/types/collection';
 
 import styles from './CollectionPreview.module.css';
 
@@ -26,9 +26,14 @@ const MAX_LIMIT_KEYWORDS = 4;
 type CollectionProps = {
 	collection: Collection;
 	variant?: 'row' | 'column';
+	queryParams?: string;
 };
 
-export const CollectionPreview = ({ collection, variant = 'row' }: CollectionProps) => {
+export const CollectionPreview = ({
+	collection,
+	variant = 'row',
+	queryParams,
+}: CollectionProps) => {
 	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
 		collection;
 
@@ -56,7 +61,6 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 						size="medium"
 						variant="link"
 						onClick={onToggle}
-						className={styles.ada}
 					/>
 				)}
 			</Popover>
@@ -71,12 +75,11 @@ export const CollectionPreview = ({ collection, variant = 'row' }: CollectionPro
 	const project = useCurrentProject();
 
 	const isLandingPageVariant = variant === 'column';
+	const path = getCollectionRoute[project](id);
 
 	const collectionPath = isLandingPageVariant
 		? ROUTES.collections.page
-		: project === 'landing'
-			? route(ROUTES.collections.detail.page, id)
-			: route(ROUTES.interview.collections.detail.page, id);
+		: { pathname: path, search: queryParams };
 
 	return (
 		<Link to={collectionPath}>

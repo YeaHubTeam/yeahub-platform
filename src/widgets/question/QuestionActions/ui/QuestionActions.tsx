@@ -46,7 +46,11 @@ export const QuestionActions = ({
 						placementTooltip="top"
 						offsetTooltip={5}
 					/>
-					<FavoriteQuestionButton questionId={questionId} isFavorite={isFavorite} />
+					<FavoriteQuestionButton
+						questionId={questionId}
+						isFavorite={isFavorite}
+						variant={buttonVariant}
+					/>
 				</Flex>
 				<QuestionNavigationButtons
 					variant={buttonVariant}

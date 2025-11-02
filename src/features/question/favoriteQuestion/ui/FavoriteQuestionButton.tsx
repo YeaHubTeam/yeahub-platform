@@ -71,7 +71,6 @@ export const FavoriteQuestionButton = ({
 			shouldShowTooltip={true}
 		>
 			<Button
-				style={{ padding: 0 }}
 				className={classNames({ [styles.button]: isPopover }, { [styles.red]: isFavorite })}
 				preffix={
 					<Icon

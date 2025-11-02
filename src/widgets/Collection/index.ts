@@ -11,6 +11,9 @@ export { CollectionAdditionalInfoDrawerSkeleton } from './ui/CollectionAdditiona
 export { CollectionsContent } from './ui/CollectionsContent/CollectionsContent';
 export { CollectionsContentSkeleton } from './ui/CollectionsContent/CollectionsContent.skeleton';
 export { CollectionsPagination } from './ui/CollectionsPagination/CollectionsPagination';
+export { CollectionNavigation } from './ui/CollectionNavigation/CollectionNavigation';
+export { CollectionNavigationSkeleton } from './ui/CollectionNavigation/CollectionNavigation.skeleton';
+export { useGetCollectionsFilterParams } from './model/hooks/useGetCollectionsFilterParams';
 export { useCollectionsFilters } from './model/hooks/useCollectionsFilters';
 export { CollectionsFiltersSkeleton } from '@/widgets/Collection/ui/CollectionsFilters/CollectionsFilters.skeleton';
 

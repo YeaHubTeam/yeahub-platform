@@ -28,7 +28,7 @@ export const calculatePageNavigation = <T extends { id: number | string }>({
 	initItemId,
 	currentItemId,
 }: CalculatePageNavigation<T>): CalculatePageNavigationResult => {
-	if (!currentPageData || !currentPageData.data.length) {
+	if (!currentPageData || currentPageData.total <= 1) {
 		return { prevId: 0, nextId: 0, prevPage: currentPage, nextPage: currentPage };
 	}
 
@@ -62,8 +62,8 @@ export const calculatePageNavigation = <T extends { id: number | string }>({
 	};
 
 	const handleFirst = () => {
-		const nextId = currentItems[1]?.id ?? 0;
-		const nextPage = currentPage;
+		const nextId = currentItems[1]?.id ?? getFirsItemId(nextPageData?.data);
+		const nextPage = currentItems[1]?.id ? currentPage : 1;
 
 		if (currentPage > 1) {
 			return {

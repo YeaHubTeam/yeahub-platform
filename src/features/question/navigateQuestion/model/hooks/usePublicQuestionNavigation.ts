@@ -1,6 +1,7 @@
+import { calculatePageNavigation } from '@/shared/helpers/calculatePageNavigation';
+
 import { Question, useGetPublicQuestionsListQuery } from '@/entities/question';
 
-import { calculatePageNavigation } from '../helpers/calculatePageNavigation';
 import { QuestionNavigation } from '../types/questionNavigationTypes';
 
 import { useInitQuestionId } from './useInitQuestionId';

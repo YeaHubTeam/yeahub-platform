@@ -1,12 +1,12 @@
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import { QuestionNavigationButtonsProps } from './QuestionNavigationButtons';
+import { CollectionNavigationButtonsProps } from './CollectionNavigationButtons';
 
-export const QuestionNavigationButtonsSkeleton = ({
+export const CollectionNavigationButtonsSkeleton = ({
 	variant = 'tertiary',
 	width,
-}: Partial<QuestionNavigationButtonsProps> & {
+}: Partial<CollectionNavigationButtonsProps> & {
 	width?: number;
 }) => {
 	return (

@@ -12,7 +12,7 @@ import {
 	useCollectionsFilters,
 } from '@/widgets/Collection';
 
-import { PublicCollectionsPageSkeleton } from '@/pages/landing/PublicCollectionsPage/ui/PublicCollectionsPage.skeleton';
+import { PublicCollectionsPageSkeleton } from '../ui/PublicCollectionsPage.skeleton';
 
 import styles from './PublicCollectionsPage.module.css';
 
