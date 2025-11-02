@@ -8,14 +8,12 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
 export interface CollectionNavigationButtonsProps {
-	variant?: 'tertiary' | 'link-gray';
 	onMovePrev: () => void;
 	onMoveNext: () => void;
 	isDisabled: boolean;
 }
 
 export const CollectionNavigationButtons = ({
-	variant,
 	onMoveNext,
 	onMovePrev,
 	isDisabled,
@@ -28,7 +26,7 @@ export const CollectionNavigationButtons = ({
 	return (
 		<Flex justify="center" gap="20">
 			<Button
-				variant={variant || buttonVariant}
+				variant={buttonVariant}
 				preffix={<Icon icon="altArrowLeft" color="black-600" size={24} />}
 				onClick={onMovePrev}
 				disabled={isDisabled}

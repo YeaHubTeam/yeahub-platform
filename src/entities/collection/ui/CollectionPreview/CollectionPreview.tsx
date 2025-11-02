@@ -26,13 +26,13 @@ const MAX_LIMIT_KEYWORDS = 4;
 type CollectionProps = {
 	collection: Collection;
 	variant?: 'row' | 'column';
-	queryParams?: string;
+	queryFilter?: string;
 };
 
 export const CollectionPreview = ({
 	collection,
 	variant = 'row',
-	queryParams,
+	queryFilter,
 }: CollectionProps) => {
 	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
 		collection;
@@ -79,7 +79,7 @@ export const CollectionPreview = ({
 
 	const collectionPath = isLandingPageVariant
 		? ROUTES.collections.page
-		: { pathname: path, search: queryParams };
+		: { pathname: path, search: queryFilter };
 
 	return (
 		<Link to={collectionPath}>
