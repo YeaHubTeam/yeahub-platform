@@ -12,6 +12,10 @@
   margin-bottom: 48px;
 }
 
+.main-info {
+  flex-basis: 60%;
+}
+
 .additional-wrapper {
   flex-basis: 40%;
 }

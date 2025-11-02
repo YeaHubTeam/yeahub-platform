@@ -1,7 +1,6 @@
 export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
 export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
-export { useSlideSwitcher } from '../quiz/hooks/useSlideSwitcher';
 
 export {
 	useLazyCreateNewQuizQuery,
@@ -51,3 +50,8 @@ export {
 export { getValidActiveMockQuizFromLS } from './model/helpers/getValidActiveMockQuizFromLS';
 
 export { interviewHandlers } from './api/__mocks__/index';
+
+export type { CreateQuizFilterParams } from './model/types/filters';
+
+export { useCreateQuizFilters } from './model/hooks/useCreateQuizFilters';
+export { useSlideSwitcher } from './model/hooks/useSlideSwitcher';

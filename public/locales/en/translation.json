@@ -23,6 +23,11 @@
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
 	"author": "Author",
+	"sort": {
+		"title": "Sort by",
+		"ascending": "Ascending",
+		"descending": "Descending"
+	},
 	"header": {
 		"menu": {
 			"membership": "Choose membership",
@@ -125,6 +130,7 @@
 		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
+		"popular.skills": "Popular skills",
 		"analytics": "Analytics",
 		"analytics.skillsProficiency": "Average percentage of skill mastered"
 	},

@@ -13,6 +13,7 @@ export {
 	useGetPopularSkillsQuery,
 } from './api/skillApi';
 export type { ProfileSkill } from '../skill/model/types/profileSkill';
+export type { PopularSkill } from './model/types/skill';
 
 export { skillHandlers } from './api/__mocks__/index';
 

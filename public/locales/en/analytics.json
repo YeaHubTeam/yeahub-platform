@@ -11,14 +11,22 @@
 			"choose": "Please indicate your specialization"
 		},
 		"columns": {
-         "index": "№",
-         "questions": "Questions",
-         "learnedPercentage": "Studied"
+			"index": "№",
+			"questions": "Questions",
+			"learnedPercentage": "Studied"
 		},
 		"column.questions.total": "questions"
 	},
 	"most.difficult.questions": {
 		"title": "Most Difficult questions",
 		"link.detail": "More details"
+	},
+	"skills.popularity": {
+		"popularity.tooltip": "We calculate the popularity of skills based on how often they are chosen during training in the simulator",
+		"table": {
+			"skills": "Skills",
+			"popularity": "Popularity"
+		},
+		"skills.popularity.title": "Skill popularity in quizzes for {{specialization}}"
 	}
 }

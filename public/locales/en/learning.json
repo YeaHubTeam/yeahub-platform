@@ -1,0 +1,32 @@
+{
+	"advantages": {
+		"main": {
+			"title": "YeaHub — your first IT team",
+			"description": "We’re building YeaHub by IT professionals, for IT professionals. Experienced specialists work side by side with newcomers, turning learning into real practice: actual development, team workflows, and a live product. There are no generic pet projects here—you go through every stage and gain experience valued in real-world jobs."
+		},
+		"process": {
+			"title": "IT-company-level processes",
+			"description": "We work using Scrum: two-week sprints, daily stand-ups, planning sessions, and cross-team syncs. Everything is just like in the industry — and sometimes even better."
+		},
+		"techno": {
+			"title": "Modern tech stack",
+			"description": "We work with top-tier technologies and enterprise-grade infrastructure. Kubernetes, Next.js, and other modern tools — everything you’ll encounter in real companies."
+		},
+		"team": {
+			"title": "Teamwork",
+			"description": "Every role is represented on the project: Frontend, Backend, Design, QA, Mobile, SA/BA. We learn to collaborate and build products like a real team."
+		},
+		"support": {
+			"title": "Learning and support",
+			"description": "Each mentor guides their mentees: provides learning materials, explains complex topics, supports growth, and prepares them for employment."
+		},
+		"project": {
+			"title": "A large, live project",
+			"description": "This isn’t just a practice pet project — it’s a full-fledged system. You dive into real code and see how everything works in practice."
+		},
+		"experience": {
+			"title": "Real-world experience",
+			"description": "Instead of rote learning and repetitive pet projects, you gain hands-on team experience, support, and knowledge that truly prepares you for your career."
+		}
+	}
+}

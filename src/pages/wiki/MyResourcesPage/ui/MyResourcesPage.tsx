@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -14,6 +15,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
+import { getIsEmailVerified } from '@/entities/profile';
 import {
 	ResourceRequestStatus,
 	useGetMyRequestsResourcesQuery,
@@ -30,6 +32,13 @@ const MyResourcesPage = () => {
 	const { isMobile, isTablet, isMobileS } = useScreenSize();
 
 	const navigate = useNavigate();
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
+
+	useEffect(() => {
+		if (!isEmailVerified) {
+			navigate(ROUTES.wiki.resources.page);
+		}
+	}, [isEmailVerified, navigate]);
 
 	const {
 		onChangeTypes,

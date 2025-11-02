@@ -23,6 +23,9 @@ export enum Translation {
 	EXPAND = 'expand',
 	COLLAPSE = 'collapse',
 	AUTHOR = 'author',
+	SORT_TITLE = 'sort.title',
+	SORT_ASCENDING = 'sort.ascending',
+	SORT_DESCENDING = 'sort.descending',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -82,6 +85,7 @@ export enum Translation {
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
@@ -358,6 +362,10 @@ export enum Specializations {
 export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
+	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
+	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
+	SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
 	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
 	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
 	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
@@ -481,6 +489,8 @@ export enum Resources {
 }
 
 export enum Questions {
+	MOST_FREQ_LABEL = 'Популярность',
+	MOST_FREQ_TITLE_COLLECTION = 'Список самых популярных вопросов',
 	COUNT = 'count',
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
@@ -509,9 +519,6 @@ export enum Questions {
 	RATE_LABEL = 'rate.label',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
-	SORT_TITLE = 'sort.title',
-	SORT_ASCENDING = 'sort.ascending',
-	SORT_DESCENDING = 'sort.descending',
 	STATUS_TITLE = 'status.title',
 	STATUS_UNLEARNED = 'status.unlearned',
 	STATUS_LEARNED = 'status.learned',
@@ -979,6 +986,23 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+}
+
+export enum Learning {
+	BANNER_TITLE = 'advantages.main.title',
+	BANNER_DESCRIPTION = 'advantages.main.description',
+	PROCESS_TITLE = 'advantages.process.title',
+	PROCESS_DESCRIPTION = 'advantages.process.description',
+	TECHNO_TITLE = 'advantages.techno.title',
+	TECHNO_DESCRIPTION = 'advantages.techno.description',
+	TEAM_TITLE = 'advantages.team.title',
+	TEAM_DESCRIPTION = 'advantages.team.description',
+	SUPPORT_TITLE = 'advantages.support.title',
+	SUPPORT_DESCRIPTION = 'advantages.support.description',
+	PROJECT_TITLE = 'advantages.project.title',
+	PROJECT_DESCRIPTION = 'advantages.project.description',
+	EXPERIENCE_TITLE = 'advantages.experience.title',
+	EXPERIENCE_DESCRIPTION = 'advantages.experience.description',
 }
 
 export enum Media {

@@ -44,10 +44,7 @@
 		"label": "Select rate"
 	},
 	"sort": {
-		"field": "Sort by field",
-		"title": "Sort by",
-		"ascending": "Ascending",
-		"descending": "Descending"
+		"field": "Sort by field"
 	},
 	"status": {
 		"title": "Status",
