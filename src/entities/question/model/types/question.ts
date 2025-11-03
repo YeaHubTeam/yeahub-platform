@@ -124,6 +124,7 @@ export interface MostDifficultQuestionsResponse {
 }
 
 export interface PopularQuestionStat {
+	id: number;
 	title: string;
 	imageSrc: string;
 	questionId: number;

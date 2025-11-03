@@ -1,6 +1,6 @@
 {
 	"title.popular.skills": "Популярность навыков в квизах",
-	"title.popular.questions": "Самые частые вопросы в подборках",
+	"popular.questions": { "title": "Самые частые вопросы в подборках", "frequency": "Популярность" },
 	"skill.proficiency": {
 		"title": "Средний % изученности навыка",
 		"link.detail": "Подробнее"

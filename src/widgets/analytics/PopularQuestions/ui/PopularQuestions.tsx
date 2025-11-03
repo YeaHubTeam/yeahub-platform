@@ -8,36 +8,47 @@ import { Card } from '@/shared/ui/Card';
 import { getSpecializationId } from '@/entities/profile';
 import {
 	PopularQuestionsSpecialization,
-	PopularQuestionStat,
+	PreviewQuestionsItem,
 	useGetPopularQuestionsQuery,
 } from '@/entities/question';
-import { PopularQuestion } from '@/entities/question';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import styles from './PopularQuestions.module.css';
 
 export const PopularQuestions = () => {
-	const { data } = useGetPopularQuestionsQuery();
+	const { data, isLoading } = useGetPopularQuestionsQuery();
 	const specializationId = useAppSelector(getSpecializationId) || DEFAULT_SPECIALIZATION_ID;
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.analytics]);
-	const currentSpecializationData = data?.find(
-		(item: PopularQuestionsSpecialization) => item.specializationId === specializationId,
-	);
+	const currentSpecializationData =
+		data?.find(
+			(question: PopularQuestionsSpecialization) => question.specializationId === specializationId,
+		) ?? data?.[0];
 	const popularQuestions = currentSpecializationData?.topStat?.slice(0, 3) || [];
 
 	return (
 		<Card
 			className={styles['popular-questions-card']}
 			size="medium"
-			title={t(Analytics.TITLE_POPULAR_QUESTIONS, { ns: i18Namespace.analytics })}
+			title={t(Analytics.POPULAR_QUESTIONS_TITLE, { ns: i18Namespace.analytics })}
 			actionTitle={t(Translation.CRUMBS_QUESTION_DETAIL, { ns: i18Namespace.translation })}
 			actionRoute="/"
 			isActionPositionBottom
 		>
-			{popularQuestions.map((item: PopularQuestionStat) => (
-				<PopularQuestion question={item} key={item.questionId} />
-			))}
+			{isLoading && null}
+			{!isLoading && (
+				<>
+					{popularQuestions.map((question) => (
+						<PreviewQuestionsItem
+							key={question.questionId}
+							questionId={question.questionId}
+							title={question.title}
+							frequency={question.frequencyStat}
+							imageSrc={question.imageSrc}
+						/>
+					))}
+				</>
+			)}
 		</Card>
 	);
 };

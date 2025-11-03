@@ -10,8 +10,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-
-import { PreviewQuestionsItem } from '../PreviewQuestionsItem/PreviewQuestionsItem';
+import { PreviewQuestionsItem } from '@/entities/question/ui/PreviewQuestionsItem/PreviewQuestionsItem';
 
 import styles from './PreviewQuestionsList.module.css';
 
@@ -49,7 +48,13 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 			) : (
 				<Flex componentType="ul" direction="column" gap="12" className={styles.list}>
 					{questions.map((question) => (
-						<PreviewQuestionsItem key={question.id} question={question} />
+						<PreviewQuestionsItem
+							key={question.id}
+							title={question.title}
+							questionId={question.id}
+							rate={question.rate}
+							complexity={question.complexity}
+						/>
 					))}
 				</Flex>
 			)}

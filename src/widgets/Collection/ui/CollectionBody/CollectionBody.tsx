@@ -8,10 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { Collection } from '@/entities/collection';
 import { CollectionWarningInfo } from '@/entities/collection';
-import { Question } from '@/entities/question';
-
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { PreviewQuestionsItem } from '@/widgets/question/QuestionsList';
+import { Question, PreviewQuestionsItem } from '@/entities/question';
 
 import { NoQuestionsCard } from '../NoQuestionsCard/NoQuestionsCard';
 
@@ -55,7 +52,13 @@ export const CollectionBody = ({
 			{questions.length ? (
 				<Flex componentType="ul" direction="column" gap="12">
 					{questions?.map((question) => (
-						<PreviewQuestionsItem key={question.id} question={question} />
+						<PreviewQuestionsItem
+							key={question.id}
+							title={question.title}
+							questionId={question.id}
+							rate={question.rate}
+							complexity={question.complexity}
+						/>
 					))}
 				</Flex>
 			) : (

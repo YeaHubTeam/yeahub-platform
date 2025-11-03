@@ -32,10 +32,11 @@ export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
+export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestionsItem';
+export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 
 export { questionsMock } from './api/__mocks__/data';
 
-export { PopularQuestion } from './ui/PopularQuestion/PopularQuestion';
 export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
 export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';

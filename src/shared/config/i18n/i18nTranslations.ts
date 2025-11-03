@@ -353,11 +353,6 @@ export enum Specializations {
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 }
 
-export enum Analytics {
-	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
-	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
-}
-
 export enum InterviewQuiz {
 	TITLE = 'title',
 	PREVIEW_TITLE = 'preview.title',
@@ -1033,8 +1028,11 @@ export enum Marketplace {
 }
 
 export enum Analytics {
+	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
+	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
-	TITLE_POPULAR_QUESTIONS = 'title.popular.questions',
+	POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
+	POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
 	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
 	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

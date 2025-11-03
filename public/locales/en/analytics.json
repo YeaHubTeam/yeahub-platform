@@ -1,6 +1,9 @@
 {
 	"title.popular.skills": "The popularity of skills in quizzes",
-	"title.popular.questions": "Most frequent questions in collections",
+	"popular.questions": {
+		"title": "Most frequent questions in collections",
+		"frequency": "Popularity"
+	},
 	"skill.proficiency": {
 		"title": "Average % of skill proficiency",
 		"link.detail": "More details"
