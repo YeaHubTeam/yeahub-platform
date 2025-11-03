@@ -9,7 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
-// import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
+import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -43,6 +43,7 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
+import { ResourceRequestEditPage } from '@/pages/admin/ResourceRequestEditPage';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
 import { ResourceRequestViewPage } from '@/pages/admin/ResourceViewPage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
@@ -57,6 +58,7 @@ import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
+import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
@@ -79,6 +81,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
+import { LearningPage } from '@/pages/landing/LearningPage';
 import { MediaPage } from '@/pages/landing/MediaPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
@@ -177,13 +180,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	// {
-	// 	type: 'single',
-	// 	route: ROUTES.analytics.route,
-	// 	title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-	// 	icon: AnalyticsIcon,
-	// 	roles: allRoles,
-	// },
+	{
+		type: 'single',
+		route: ROUTES.analytics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+		icon: AnalyticsIcon,
+		roles: allRoles,
+	},
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -265,6 +268,10 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <LandingPage />,
+			},
+			{
+				path: '/learning',
+				element: <LearningPage />,
 			},
 			{
 				path: '*',
@@ -381,6 +388,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.requests.view.page,
 				element: <ResourceRequestViewPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.edit.page,
+				element: <ResourceRequestEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -512,7 +523,14 @@ export const router = createBrowserRouter([
 						element: <AnalyticsPage />,
 					},
 					{
-						path: ROUTES.analytics.skills.route,
+						path: ROUTES.analytics['popular-skills'].route,
+						element: <PopularSkillsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_POPULAR_SKILLS,
+						},
+					},
+					{
+						path: ROUTES.analytics['skills-proficiency'].route,
 						element: <SkillsProficiencyPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,

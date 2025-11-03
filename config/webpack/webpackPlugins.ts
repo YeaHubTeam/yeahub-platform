@@ -1,7 +1,9 @@
 import path from 'path';
 
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -9,7 +11,7 @@ import HtmlInlineScriptPlugin from 'html-inline-script-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { WebpackOptions } from './types/types';
 
@@ -22,6 +24,7 @@ export const webpackPlugins = ({
 		new HtmlWebpackPlugin({
 			template: paths.html,
 			favicon: path.resolve(paths.public, 'images/favicon.svg'),
+			minify: !isDev,
 		}),
 		new DefinePlugin(envs),
 		new Dotenv({
@@ -40,7 +43,6 @@ export const webpackPlugins = ({
 				failOnError: true,
 			}),
 		);
-		// plugins.push(new BundleAnalyzerPlugin());
 	} else {
 		plugins.push(
 			new MiniCssExtractPlugin({
@@ -53,7 +55,6 @@ export const webpackPlugins = ({
 				scriptMatchPattern: [/initTheme\..+\.js$/],
 			}),
 		);
-		// plugins.push(new BundleAnalyzerPlugin());
 		plugins.push(
 			new CopyPlugin({
 				patterns: [
@@ -61,6 +62,30 @@ export const webpackPlugins = ({
 					{ from: paths.robots, to: paths.output },
 					{ from: paths.sitemap, to: paths.output },
 				],
+			}),
+		);
+		plugins.push(
+			new BundleAnalyzerPlugin({
+				analyzerMode: 'static',
+				openAnalyzer: false,
+				reportFilename: 'bundle-report.html',
+			}),
+		);
+		plugins.push(
+			new CompressionPlugin({
+				algorithm: 'gzip',
+				test: /\.(js|css|html|svg|json)$/,
+				filename: '[path][base].gz',
+				threshold: 10240,
+				minRatio: 0.8,
+				deleteOriginalAssets: false,
+			}),
+		);
+		plugins.push(
+			new StatoscopeWebpackPlugin({
+				saveReportTo: path.resolve(paths.output, 'statoscope-report.html'),
+				saveStatsTo: path.resolve(paths.output, 'statoscope-stats.json'),
+				open: false,
 			}),
 		);
 	}
