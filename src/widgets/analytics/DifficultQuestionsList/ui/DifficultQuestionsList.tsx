@@ -26,7 +26,7 @@ export const DifficultQuestionsList = () => {
 			className={styles.card}
 			title={`${t(Analytics.MOST_DIFFICULT_QUESTIONS_TITLE)} ${difficultQuestions?.specialization.title}`}
 			actionTitle={t(Analytics.MOST_DIFFICULT_QUESTIONS_LINK_DETAIL)}
-			actionRoute={ROUTES.analytics.difficultQuestions.page}
+			actionRoute={ROUTES.analytics['difficult-questions'].page}
 			isActionPositionBottom
 		>
 			<MostDifficultQuestions difficultQuestions={difficultQuestions} />

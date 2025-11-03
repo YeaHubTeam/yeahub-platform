@@ -58,8 +58,8 @@ import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
-import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
+import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -537,7 +537,7 @@ export const router = createBrowserRouter([
 						},
 					},
 					{
-						path: ROUTES.analytics.difficultQuestions.route,
+						path: ROUTES.analytics['difficult-questions'].route,
 						element: <DifficultQuestionsPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,

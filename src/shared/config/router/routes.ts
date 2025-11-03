@@ -170,7 +170,7 @@ export const ROUTES = {
 			route: 'skills',
 			page: '/dashboard/analytics/skills',
 		},
-		difficultQuestions: {
+		'difficult-questions': {
 			route: 'difficultQuestions',
 			page: '/dashboard/analytics/difficultQuestions',
 		},
