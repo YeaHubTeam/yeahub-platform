@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks';
@@ -8,66 +7,53 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
-import { SearchSection } from '@/widgets/SearchSection';
+import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpecializations';
 import {
-	SpecializationFilterSet,
-	useSpecializationFilter,
-} from '@/widgets/specializationFilterSet';
+	SpecializationsFilters,
+	useSpecializationsFilters,
+} from '@/features/specialization/filterSecializations';
+
+import { SearchSection } from '@/widgets/SearchSection';
 import { SpecializationsTable } from '@/widgets/SpecializationsTable';
 
-import {
-	getSelectedSpecializations,
-	getSpecializationsAuthor,
-	getSpecializationsPageNum,
-	getSpecializationsSearch,
-} from '../../model/selectors/specializationsPageSelectors';
+import { getSelectedSpecializations } from '../../model/selectors/specializationsPageSelectors';
 import { specializationsPageActions } from '../../model/slices/specializationsPageSlice';
 import { SpecializationsPagePagination } from '../SpecializationsPagePagination/SpecializationsPagePagination';
 
 import styles from './SpecializationsPage.module.css';
 
-/**
- * Page showing info about all the created specializations
- * @constructor
- */
 const SpecializationsPage = () => {
 	const dispatch = useAppDispatch();
-	const page = useSelector(getSpecializationsPageNum);
-	const search = useSelector(getSpecializationsSearch);
-	const author = useSelector(getSpecializationsAuthor);
+	const { filters, hasFilters, onChangePage, onChangeAuthor, onChangeTitle } =
+		useSpecializationsFilters({
+			page: 1,
+		});
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
-	const { filter } = useSpecializationFilter();
-
-	useEffect(() => {
-		if (filter.page && filter.page !== page) {
-			dispatch(specializationsPageActions.setPage(filter.page));
-		}
-		if (filter.authorId !== undefined && filter.authorId !== author) {
-			dispatch(specializationsPageActions.setAuthor(filter.authorId));
-		}
-	}, [filter.page, filter.authorId, page, author, dispatch]);
 
 	const { data: specializations } = useGetSpecializationsListQuery({
-		...filter,
-		authorId: author,
-		title: search,
-		page,
+		authorId: filters.author,
+		title: filters.title,
+		page: filters.page,
 	});
 
 	const onSelectSpecializations = (ids: SelectedAdminEntities) => {
 		dispatch(specializationsPageActions.setSelectedSpecializations(ids));
 	};
 
-	const onChangeSearch = (value: string) => {
-		dispatch(specializationsPageActions.setSearch(value));
-	};
-
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				to="create"
-				onSearch={onChangeSearch}
-				renderFilter={() => <SpecializationFilterSet />}
+				showRemoveButton={selectedSpecializations.length > 0}
+				onSearch={onChangeTitle}
+				searchValue={filters.title}
+				hasFilters={hasFilters}
+				renderRemoveButton={() => (
+					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
+				)}
+				renderFilter={() => (
+					<SpecializationsFilters filters={filters} onChangeAuthor={onChangeAuthor} />
+				)}
 			/>
 			<Card className={styles.content}>
 				<SpecializationsTable
@@ -75,7 +61,11 @@ const SpecializationsPage = () => {
 					selectedSpecializations={selectedSpecializations}
 					onSelectSpecializations={onSelectSpecializations}
 				/>
-				<SpecializationsPagePagination specializationsResponse={specializations} />
+				<SpecializationsPagePagination
+					specializations={specializations}
+					currentPage={filters.page || 1}
+					onPageChange={onChangePage}
+				/>
 			</Card>
 		</Flex>
 	);
