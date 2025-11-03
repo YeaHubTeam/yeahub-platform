@@ -8,7 +8,6 @@ const ResourceRequestViewPage = () => {
 	const { resourceId } = useParams<{ resourceId: string }>();
 
 	const { data: resource } = useGetResourceRequestByIdQuery(resourceId || '');
-
 	if (!resource) return null;
 
 	return <ResourceRequestViewForm resource={resource} />;
