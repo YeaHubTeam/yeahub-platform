@@ -26,12 +26,14 @@ export const DifficultQuestionsPage = () => {
 	const { isMobile } = useScreenSize();
 	const dispatch = useAppDispatch();
 
-	const { specId: selectedSpecialization } = useAppSelector(getDifficultQuestionsFilters);
 	const profileSpecialization = useAppSelector(getSpecializationId);
 
-	const { data: response } = useGetMostDifficultQuestionsBySpecializationIdQuery(
-		selectedSpecialization ?? profileSpecialization,
+	const { selectedSpecialization = profileSpecialization } = useAppSelector(
+		getDifficultQuestionsFilters,
 	);
+
+	const { data: response } =
+		useGetMostDifficultQuestionsBySpecializationIdQuery(selectedSpecialization);
 
 	const onSelectSpecialization = (id: number | number[]) => {
 		const value = Array.isArray(id) ? id[0] : id;

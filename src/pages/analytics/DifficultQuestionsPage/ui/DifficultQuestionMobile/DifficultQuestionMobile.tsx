@@ -6,17 +6,17 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TopStat } from '../../model/types/question';
+import { TopStat } from '@/entities/question';
 
-import styles from './MostDifficultQuestionsMobile.module.css';
+import styles from './DifficultQuestionMobile.module.css';
 
-type MostDifficultQuestionsMobile = Omit<TopStat, 'questionId'>;
+type MostDifficultQuestionsMobileProps = Omit<TopStat, 'questionId'>;
 
-export const MostDifficultQuestionMobile = ({
+export const DifficultQuestionMobile = ({
 	title,
 	stat,
 	answersCount,
-}: MostDifficultQuestionsMobile) => {
+}: MostDifficultQuestionsMobileProps) => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
 	return (

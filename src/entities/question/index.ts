@@ -38,7 +38,6 @@ export { questionsMock } from './api/__mocks__/data';
 export { quizHandlers } from './api/__mocks__/index';
 
 export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';
-export { MostDifficultQuestionMobile } from '../question/ui/MostDifficultQuestionMobile/MostDifficultQuestionMobile';
 export { difficultQuestionsHandler } from './api/__mocks__/index';
 export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
 
@@ -50,4 +49,3 @@ export { useGetQuestionsFilterParams } from './model/hooks/useGetQuestionsFilter
 
 export type { QuestionsFilterParams, QuestionFilterStatus } from './model/types/filters';
 export type { TopStat } from './model/types/question';
-export type { DifficultQuestionTableRow } from './model/types/difficultQuestion';

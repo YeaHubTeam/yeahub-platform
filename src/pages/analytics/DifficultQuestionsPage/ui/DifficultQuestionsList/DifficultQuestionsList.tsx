@@ -1,6 +1,8 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { MostDifficultQuestionMobile, TopStat } from '@/entities/question';
+import { TopStat } from '@/entities/question';
+
+import { DifficultQuestionMobile } from '../DifficultQuestionMobile/DifficultQuestionMobile';
 
 interface MostDifficultQuestionsMobileProps {
 	difficultQuestions: TopStat[];
@@ -12,7 +14,7 @@ export const DifficultQuestionsList = ({
 		<Flex direction="column" gap="20">
 			{difficultQuestions.map((difficultQuestion) => {
 				return (
-					<MostDifficultQuestionMobile
+					<DifficultQuestionMobile
 						key={difficultQuestion.questionId}
 						title={difficultQuestion.title}
 						stat={difficultQuestion.stat}

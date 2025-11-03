@@ -1,3 +1,10 @@
+import { TopStat } from '@/entities/question';
+
 export interface DifficultQuestionsPageState {
-	specId?: number;
+	selectedSpecialization?: number;
 }
+
+export type DifficultQuestionTableRow = Omit<TopStat, 'questionId'> & {
+	id: number;
+	rowId: number;
+};

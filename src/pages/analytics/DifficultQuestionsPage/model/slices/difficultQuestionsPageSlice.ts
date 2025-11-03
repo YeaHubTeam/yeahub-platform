@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DifficultQuestionsPageState } from '../types/difficultQuestionsPageTypes';
 
 const initialState: DifficultQuestionsPageState = {
-	specId: undefined,
+	selectedSpecialization: undefined,
 };
 
 const difficultQuestionsPageSlice = createSlice({
@@ -11,10 +11,10 @@ const difficultQuestionsPageSlice = createSlice({
 	initialState,
 	reducers: {
 		setSelectedSpecialization: (state, action: PayloadAction<number>) => {
-			state.specId = action.payload;
+			state.selectedSpecialization = action.payload;
 		},
 		resetSelectedSpecialization: (state) => {
-			state.specId = undefined;
+			state.selectedSpecialization = undefined;
 		},
 	},
 });

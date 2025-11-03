@@ -6,7 +6,9 @@ import { Analytics } from '@/shared/config/i18n/i18nTranslations';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
-import { DifficultQuestionTableRow, TopStat } from '@/entities/question';
+import { TopStat } from '@/entities/question';
+
+import { DifficultQuestionTableRow } from '../../model/types/difficultQuestionsPageTypes';
 
 import styles from './DifficultQuestionsTable.module.css';
 
