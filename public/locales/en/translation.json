@@ -23,6 +23,11 @@
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
 	"author": "Author",
+	"sort": {
+		"title": "Sort by",
+		"ascending": "Ascending",
+		"descending": "Descending"
+	},
 	"header": {
 		"menu": {
 			"membership": "Choose membership",
@@ -126,7 +131,9 @@
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
 		"analytics": "Analytics",
-		"progress.specializations": "Progress in the specialty"
+		"progress.specializations": "Progress in the specialty",
+		"popular.skills": "Popular skills",
+		"analytics.skillsProficiency": "Average percentage of skill mastered"
 	},
 	"toast": {
 		"title": {

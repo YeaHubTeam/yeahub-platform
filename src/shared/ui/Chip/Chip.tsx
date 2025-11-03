@@ -77,6 +77,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				{onDelete && (
 					<Icon
 						className={styles['chip-delete-icon']}
+						aria-label="delete"
 						icon="closeCircle"
 						size={20}
 						color={disabled ? 'black-100' : 'red-600'}

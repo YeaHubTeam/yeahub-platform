@@ -23,6 +23,11 @@
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
 	"author": "Автор",
+	"sort": {
+		"title": "Сортировать по",
+		"ascending": "Возрастанию",
+		"descending": "Убыванию"
+	},
 	"header": {
 		"menu": {
 			"membership": "Выбрать членство",
@@ -129,7 +134,9 @@
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
 		"analytics": "Аналитика",
-		"progress.specializations": "Прогресс по специальности"
+		"progress.specializations": "Прогресс по специальности",
+		"popular.skills": "Популярные навыки",
+		"analytics.skillsProficiency": "Средний процент изученности навыка"
 	},
 	"toast": {
 		"title": {

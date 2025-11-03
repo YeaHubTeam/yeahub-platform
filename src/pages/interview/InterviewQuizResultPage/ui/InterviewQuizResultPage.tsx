@@ -42,7 +42,7 @@ const InterviewQuizResultPage = () => {
 					quizNumber={quiz?.quizNumber}
 				/>
 				<QuizAdditionalInfo className={styles.quiz} quiz={quiz} isLoading={isLoading} />
-				<PassedQuestionsList questions={questions ?? []} />
+				<PassedQuestionsList className={styles['questions-list']} questions={questions ?? []} />
 				{hasPremium && <CloneQuizButton />}
 			</Flex>
 		</>

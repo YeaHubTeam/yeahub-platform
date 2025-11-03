@@ -1,3 +1,4 @@
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { Configuration, Entry } from 'webpack';
 
 import { WebpackOptions } from './types/types';
@@ -21,6 +22,12 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 			};
 
 	return {
+		cache: {
+			type: 'filesystem',
+			buildDependencies: {
+				config: [__filename],
+			},
+		},
 		mode: mode ?? 'development',
 		entry: {
 			...mainEntry,
@@ -34,5 +41,49 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 		plugins: webpackPlugins(options),
 		devServer: isDev ? webpackDevServer(options) : undefined,
 		devtool: isDev ? 'inline-source-map' : 'source-map',
+		optimization: {
+			minimize: true,
+			minimizer: ['...', new CssMinimizerPlugin()],
+			chunkIds: 'deterministic',
+			splitChunks: {
+				chunks: 'all',
+				minSize: 30000,
+				maxInitialRequests: 8,
+				cacheGroups: {
+					react: {
+						test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+						name: 'react',
+						chunks: 'all',
+						priority: 100,
+						enforce: true,
+					},
+					text_editor: {
+						test: /[\\/]node_modules[\\/](@tiptap|prosemirror|lowlight|highlight.js)[\\/]/,
+						name: 'text-editor',
+						chunks: 'all',
+						priority: 90,
+						enforce: true,
+					},
+					core: {
+						test: /[\\/]node_modules[\\/](@reduxjs|react-redux|@sentry|react-hook-form|i18next|date-fns|yup|yup-password|react-router-dom|react-hot-toast)[\\/]/,
+						name: 'core',
+						priority: 80,
+					},
+					ui: {
+						test: /[\\/]node_modules[\\/](react-slick|slick-carousel|react-calendar|react-cropper|react-responsive|react-device-detect|@floating-ui)[\\/]/,
+						name: 'ui',
+						priority: 70,
+					},
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendors',
+						priority: 10,
+						minSize: 80000,
+					},
+				},
+			},
+			runtimeChunk: 'single',
+			usedExports: true,
+		},
 	};
 };

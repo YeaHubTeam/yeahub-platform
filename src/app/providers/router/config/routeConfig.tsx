@@ -43,6 +43,7 @@ import { QuestionsTablePage } from '@/pages/admin/QuestionsTablePage';
 import { ResourceCreatePage } from '@/pages/admin/ResourceCreatePage';
 import { ResourceEditPage } from '@/pages/admin/ResourceEditPage';
 import { ResourcePage } from '@/pages/admin/ResourcePage';
+import { ResourceRequestEditPage } from '@/pages/admin/ResourceRequestEditPage';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/ResourcesPage';
 import { ResourceRequestViewPage } from '@/pages/admin/ResourceViewPage';
 import { SkillCreatePage } from '@/pages/admin/SkillCreatePage';
@@ -58,6 +59,8 @@ import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
 import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
+import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
+import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { PasswordRecoveryPage } from '@/pages/auth/PasswordRecoveryPage';
@@ -78,6 +81,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
+import { LearningPage } from '@/pages/landing/LearningPage';
 import { MediaPage } from '@/pages/landing/MediaPage';
 import { PageTemporary as LandingPageTemporary } from '@/pages/landing/PageTemporary';
 import { PublicCollectionPage } from '@/pages/landing/PublicCollectionPage';
@@ -266,6 +270,10 @@ export const router = createBrowserRouter([
 				element: <LandingPage />,
 			},
 			{
+				path: '/learning',
+				element: <LearningPage />,
+			},
+			{
 				path: '*',
 				element: <Error404Page />,
 			},
@@ -380,6 +388,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.requests.view.page,
 				element: <ResourceRequestViewPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.edit.page,
+				element: <ResourceRequestEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -515,11 +527,21 @@ export const router = createBrowserRouter([
 						element: <ProgressSpecializationsPage />,
 						handle: {
 							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
+						path: ROUTES.analytics['popular-skills'].route,
+						element: <PopularSkillsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_POPULAR_SKILLS,
+						},
+					},
+					{
+						path: ROUTES.analytics['skills-proficiency'].route,
+						element: <SkillsProficiencyPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
 						},
 					},
 				],
 			},
-
 			{
 				path: ROUTES.profile.route,
 				element: <Outlet />,

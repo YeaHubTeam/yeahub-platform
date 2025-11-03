@@ -23,6 +23,9 @@ export enum Translation {
 	EXPAND = 'expand',
 	COLLAPSE = 'collapse',
 	AUTHOR = 'author',
+	SORT_TITLE = 'sort.title',
+	SORT_ASCENDING = 'sort.ascending',
+	SORT_DESCENDING = 'sort.descending',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -83,6 +86,8 @@ export enum Translation {
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',
 	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
+	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
+	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -363,6 +368,18 @@ export enum Analytics {
 	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
 	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 	TOOLTIP_SPECIFY = 'tooltip.specify',
+	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
+	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
+	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
+	SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
+	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
+	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
+	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
+	SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
+	SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
+	SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
+	SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
+	SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
 }
 
 export enum InterviewQuiz {
@@ -475,9 +492,13 @@ export enum Resources {
 	TYPE = 'type',
 	WITHDRAW_BUTTON = 'withdraw.button',
 	WITHDRAW_TITLE = 'withdraw.title',
+	REQUESTS_TITLE_VIEW = 'requests.title.view',
+	REQUESTS_TITLE_EDIT = 'requests.title.edit',
 }
 
 export enum Questions {
+	MOST_FREQ_LABEL = 'Популярность',
+	MOST_FREQ_TITLE_COLLECTION = 'Список самых популярных вопросов',
 	COUNT = 'count',
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
@@ -506,9 +527,6 @@ export enum Questions {
 	RATE_LABEL = 'rate.label',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
-	SORT_TITLE = 'sort.title',
-	SORT_ASCENDING = 'sort.ascending',
-	SORT_DESCENDING = 'sort.descending',
 	STATUS_TITLE = 'status.title',
 	STATUS_UNLEARNED = 'status.unlearned',
 	STATUS_LEARNED = 'status.learned',
@@ -974,6 +992,23 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+}
+
+export enum Learning {
+	BANNER_TITLE = 'advantages.main.title',
+	BANNER_DESCRIPTION = 'advantages.main.description',
+	PROCESS_TITLE = 'advantages.process.title',
+	PROCESS_DESCRIPTION = 'advantages.process.description',
+	TECHNO_TITLE = 'advantages.techno.title',
+	TECHNO_DESCRIPTION = 'advantages.techno.description',
+	TEAM_TITLE = 'advantages.team.title',
+	TEAM_DESCRIPTION = 'advantages.team.description',
+	SUPPORT_TITLE = 'advantages.support.title',
+	SUPPORT_DESCRIPTION = 'advantages.support.description',
+	PROJECT_TITLE = 'advantages.project.title',
+	PROJECT_DESCRIPTION = 'advantages.project.description',
+	EXPERIENCE_TITLE = 'advantages.experience.title',
+	EXPERIENCE_DESCRIPTION = 'advantages.experience.description',
 }
 
 export enum Media {

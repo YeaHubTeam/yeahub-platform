@@ -10,17 +10,12 @@ import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/R
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
 import { UsersPageState } from '@/pages/admin/UserTablePage';
-import { CreateQuizPageState } from '@/pages/interview/CreateQuizPage';
+import { SkillsProficiencyPageState } from '@/pages/analytics/SkillsProficiencyPage';
 import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
-import { QuestionsPageState } from '@/pages/interview/QuestionsPage';
-import { CreatePublicQuizPageState } from '@/pages/landing/CreatePublicQuizPage';
 
 import { baseApi } from '../api/baseApi';
 
 export interface State {
-	questionsPage: QuestionsPageState;
-	createQuizPage: CreateQuizPageState;
-	createPublicQuizPage: CreatePublicQuizPageState;
 	activeQuiz: ActiveQuizState;
 	activeSubscription: ActiveSubscriptionState;
 	interviewHistoryPage: InterviewHistoryState;
@@ -34,4 +29,5 @@ export interface State {
 	usersPage: UsersPageState;
 	profile: ProfileState;
 	collectionsPage: CollectionsPageState;
+	skillsProficiencyPage: SkillsProficiencyPageState;
 }

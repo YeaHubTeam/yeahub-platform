@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -14,7 +14,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { getSpecializationId } from '@/entities/profile';
+import { getIsEmailVerified, getSpecializationId } from '@/entities/profile';
 import {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
@@ -31,6 +31,7 @@ const ResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const specializationId = useSelector(getSpecializationId);
+	const isEmailVerified = useAppSelector(getIsEmailVerified);
 
 	const { onChangeTitle, onChangeSkills, onChangeTypes, filters, onChangePage, onResetFilters } =
 		useResourcesFilters({ page: 1 });
@@ -97,7 +98,7 @@ const ResourcesPage = () => {
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-						{suggestButton}
+						{isEmailVerified && suggestButton}
 					</Flex>
 				</Flex>
 
@@ -114,15 +115,17 @@ const ResourcesPage = () => {
 				/>
 			</Card>
 
-			<Button
-				className={styles['absolute-button']}
-				variant="outline"
-				size="large"
-				onClick={handleNavigateToMyResources}
-			>
-				{t(Marketplace.MY_RESOURCES)}{' '}
-				{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
-			</Button>
+			{isEmailVerified && (
+				<Button
+					className={styles['absolute-button']}
+					variant="outline"
+					size="large"
+					onClick={handleNavigateToMyResources}
+				>
+					{t(Marketplace.MY_RESOURCES)}{' '}
+					{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
+				</Button>
+			)}
 
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
