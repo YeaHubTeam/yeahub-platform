@@ -1,5 +1,7 @@
+import { Pallete } from '@/shared/types/types';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon, IconName } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { Guru } from '../../model/types/guru';
@@ -12,9 +14,16 @@ interface GurusItemProps {
 	avatarSize: number;
 	description?: string;
 	hasBorder?: boolean;
+	avatarIcon?: { icon: IconName; color?: Pallete };
 }
 
-export const GurusItem = ({ guru, avatarSize, description, hasBorder = false }: GurusItemProps) => {
+export const GurusItem = ({
+	guru,
+	avatarSize,
+	description,
+	hasBorder = false,
+	avatarIcon,
+}: GurusItemProps) => {
 	const { image, name, title, socials } = guru;
 
 	return (
@@ -25,7 +34,16 @@ export const GurusItem = ({ guru, avatarSize, description, hasBorder = false }: 
 			className={hasBorder ? styles.border : undefined}
 		>
 			<Flex gap="8" align={description ? 'center' : 'start'}>
-				<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
+				<div className={styles['avatar-container']}>
+					<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
+					{avatarIcon && (
+						<Icon
+							icon={avatarIcon.icon}
+							color={avatarIcon.color || 'purple-700'}
+							className={styles['avatar-badge']}
+						/>
+					)}
+				</div>
 				<Flex gap="4" direction="column">
 					<Text variant="body3-accent" color="black-800">
 						{title}

@@ -21,7 +21,7 @@ export const MentorsBlock = () => {
 		<Card>
 			<Flex direction="column" gap="20" className={styles.container}>
 				<Flex direction="column" gap="8">
-					<Text variant="head3" className={styles.mainText}>
+					<Text variant="head3" className={styles['main-text']}>
 						{t(Landing.MENTORS_TITLE)}
 					</Text>
 					<Text variant="body3">{t(Landing.MENTORS_DESCRIPTION)}</Text>
