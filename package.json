@@ -14,7 +14,7 @@
 		"dev": "webpack serve --mode development --env mode=development",
 		"start": "serve -s build",
 		"build": "webpack --mode production --env mode=production",
-    "build:analyze": "npm run build && npx serve build",
+		"build:analyze": "npm run build && npx serve build",
 		"docker:dev": "docker-compose --env-file .env.development -f docker-compose.dev.yml up",
 		"docker-build:dev": "docker-compose --env-file .env.development -f docker-compose.dev.yml up --build",
 		"docker:prod": "docker-compose --env-file .env.production -f docker-compose.yml up",
