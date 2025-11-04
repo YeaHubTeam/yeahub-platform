@@ -11,7 +11,7 @@ import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpe
 import {
 	SpecializationsFilters,
 	useSpecializationsFilters,
-} from '@/features/specialization/filterSecializations';
+} from '@/features/specialization/filterSpecializations';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { SpecializationsTable } from '@/widgets/SpecializationsTable';
