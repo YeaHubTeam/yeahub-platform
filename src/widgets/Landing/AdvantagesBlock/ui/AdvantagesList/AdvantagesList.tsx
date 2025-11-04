@@ -70,7 +70,7 @@ export const AdvantagesList = () => {
 		<>
 			<Flex className={styles.container}>
 				{advantages.map((item) => (
-					<Card size={'medium'} key={item.id} className={styles.cardWrap}>
+					<Card size={'medium'} key={item.id} className={styles['card-wrap']}>
 						<img src={item.icon} alt={item.icon} className={styles.icon} />
 						<Flex className={styles.card}>
 							<Flex gap={'8'} direction={'column'}>

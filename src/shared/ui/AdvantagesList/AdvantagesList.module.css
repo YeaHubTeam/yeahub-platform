@@ -1,56 +1,56 @@
 .container {
-	display: grid;
-	grid-template-columns: repeat(3, auto );
-	gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, auto );
+  gap: 20px;
 
 
 }
 
 .card {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 
 }
 
 .icon {
-	width: 46px;
-	height: 46px;
+  width: 46px;
+  height: 46px;
 
 
 }
 
 .box {
-	width: 36px;
-	height: 38px;
-	border-radius: 8px;
-	background-color: #fff;
+  width: 36px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: var(--color-white-900);
 
 
 }
 
 .box.green {
-	background-color: #008616;
+  background-color: var(--color-green-750);
 }
 
 .box.orange {
-	background-color: #FFC234;
+  background-color: var(--color-yellow-800);
 }
 
 .box.red {
-	background-color: #F3164E;
+  background-color: var(--color-yellow-600);
 }
 
 @media screen and ( width <= 1024px) {
-	.container {
-		grid-template-columns: repeat(2, auto )
-	}
+  .container {
+    grid-template-columns: repeat(2, auto )
+  }
 }
 
 @media screen and (width <= 728px) {
-	.container {
-		grid-template-columns: repeat(1, auto );
-	}
+  .container {
+    grid-template-columns: repeat(1, auto );
+  }
 }

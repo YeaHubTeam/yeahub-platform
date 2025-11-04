@@ -77,6 +77,7 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { AvosPage } from '@/pages/landing/AvosPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
@@ -337,6 +338,10 @@ export const router = createBrowserRouter([
 						element: <PublicCollectionPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.avos.route,
+				element: <AvosPage />,
 			},
 		],
 	},
