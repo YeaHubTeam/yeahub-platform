@@ -4,26 +4,23 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { User } from '@/shared/config/i18n/i18nTranslations';
 import { Switch } from '@/shared/ui/Switch';
 
-import styles from './VerifiedEmail.module.css';
+import styles from './VerifiedSwitch.module.css';
 
-interface VerifiedEmailProps {
-	selectedVerifiedEmail?: boolean | null;
-	onChangeVerifiedEmail: (isVerified: boolean) => void;
+interface VerifiedSwitchProps {
+	selectedVerified?: boolean | null;
+	onChangeVerified: (isVerified: boolean) => void;
 }
 
-export const VerifiedEmail = ({
-	selectedVerifiedEmail,
-	onChangeVerifiedEmail,
-}: VerifiedEmailProps) => {
+export const VerifiedSwitch = ({ selectedVerified, onChangeVerified }: VerifiedSwitchProps) => {
 	const { t } = useTranslation(i18Namespace.user);
 	const handleSwitchChange = (e: React.ChangeEvent<Element>) => {
-		onChangeVerifiedEmail((e.target as HTMLInputElement).checked);
+		onChangeVerified((e.target as HTMLInputElement).checked);
 	};
 
 	return (
 		<Switch
 			className={styles.switch}
-			checked={selectedVerifiedEmail ?? false}
+			checked={selectedVerified ?? false}
 			onChange={handleSwitchChange}
 			label={t(User.FILTER_EMAIL)}
 		/>

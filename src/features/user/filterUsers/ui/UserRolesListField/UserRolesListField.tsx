@@ -5,24 +5,23 @@ import { User } from '@/shared/config/i18n/i18nTranslations';
 import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { useGetUserRolesListQuery } from '../../api/userApi';
-import { UserRole } from '../../model/types/user';
+import { useGetUserRolesListQuery, UserRole } from '@/entities/user';
 
-interface ChooseUsersRoleProps {
-	selectedRoleIds?: number[];
-	onChangeRoles: (roles: number[]) => void;
+interface UserRolesListFieldProps {
+	selectedRoles?: number[];
+	onChangeRoles: (roles?: number[]) => void;
 }
 
-export const ChooseUsersRole = ({ onChangeRoles, selectedRoleIds }: ChooseUsersRoleProps) => {
+export const UserRolesListField = ({ onChangeRoles, selectedRoles }: UserRolesListFieldProps) => {
 	const { t } = useTranslation(i18Namespace.user);
 
 	const { data } = useGetUserRolesListQuery();
 
 	const onClick = (roleId: number) => {
-		const isDataExist = selectedRoleIds?.some((item) => item === roleId);
-		const updates = isDataExist
-			? (selectedRoleIds || []).filter((item) => item !== roleId)
-			: [...(selectedRoleIds || []), roleId];
+		const isDataExist = selectedRoles?.some((item) => item === roleId);
+		const filteredRoles = (selectedRoles || []).filter((item) => item !== roleId);
+		const filteredRolesItems = filteredRoles.length > 0 ? filteredRoles : undefined;
+		const updates = isDataExist ? filteredRolesItems : [...(selectedRoles || []), roleId];
 		onChangeRoles(updates);
 	};
 
@@ -31,7 +30,7 @@ export const ChooseUsersRole = ({ onChangeRoles, selectedRoleIds }: ChooseUsersR
 	const preparedData = data.map((role: UserRole) => ({
 		id: role.id,
 		title: t(User[convertRoleNameToEnumKey(role.name)]),
-		active: selectedRoleIds?.some((selectedRoleIds) => role.id === selectedRoleIds),
+		active: selectedRoles?.some((selectedRoleIds) => role.id === selectedRoleIds),
 	}));
 
 	return <BaseFilterSection data={preparedData} title={t(User.FILTER_ROLE)} onClick={onClick} />;

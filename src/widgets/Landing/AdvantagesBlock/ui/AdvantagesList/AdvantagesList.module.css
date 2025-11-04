@@ -1,46 +1,55 @@
 .container {
-	display: grid;
-	grid-template-columns: repeat(3, auto );
-	gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, auto );
+  gap: 20px;
 }
-.cardWrap{
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
+
+.card-wrap{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
+
 .card {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
 .banner {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
+
 .description {
-	min-height: 88px;
+  min-height: 88px;
 }
+
 .icon {
-	position: relative;
-	left: -8px;
-	width: 52px;
-	height: 52px;
+  position: relative;
+  left: -8px;
+  width: 52px;
+  height: 52px;
 }
+
 @media screen and ( width <= 1320px) {
-	.container {
-		grid-template-columns: repeat(2, auto )
-	}
+  .container {
+    grid-template-columns: repeat(2, auto )
+  }
 }
+
 @media (width <= 950px) {
-	.container {
-		grid-template-columns: repeat(1, auto );
+  .container {
+    grid-template-columns: repeat(1, auto );
 	
-	}
-	.description {
-		height: 60px;
-	}
-	.card {
-		gap: 0;
-	}
+  }
+
+  .description {
+    height: 60px;
+  }
+
+  .card {
+    gap: 0;
+  }
 }
 
