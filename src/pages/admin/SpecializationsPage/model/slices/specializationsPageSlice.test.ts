@@ -16,32 +16,8 @@ const selectedSpecializations: SelectedAdminEntities = [
 ];
 
 describe('specializationsPageSlice', () => {
-	test('change page num', () => {
-		const state: SpecializationsPageState = {
-			page: 1,
-		};
-		expect(specializationsPageReducer(state, specializationsPageActions.setPage(2))).toEqual({
-			page: 2,
-			selectedSpecializations: [],
-		});
-	});
-
-	test('change page search', () => {
-		const state: SpecializationsPageState = {
-			page: 1,
-			search: '',
-		};
-		expect(
-			specializationsPageReducer(state, specializationsPageActions.setSearch('search')),
-		).toEqual({
-			page: 1,
-			search: 'search',
-		});
-	});
-
 	test('change selected specializations', () => {
 		const state: SpecializationsPageState = {
-			page: 1,
 			selectedSpecializations: selectedSpecializations.slice(0, 1),
 		};
 		expect(
@@ -50,7 +26,6 @@ describe('specializationsPageSlice', () => {
 				specializationsPageActions.setSelectedSpecializations(selectedSpecializations),
 			),
 		).toEqual({
-			page: 1,
 			selectedSpecializations,
 		});
 	});

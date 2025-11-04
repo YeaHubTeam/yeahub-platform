@@ -9,10 +9,7 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
-import {
-	DEFAULT_SPECIALIZATION_ID,
-	MAX_SHOW_LIMIT_SPECIALIZATIONS,
-} from '../../model/constants/specializationConstants';
+import { MAX_SHOW_LIMIT_SPECIALIZATIONS } from '../../model/constants/specializationConstants';
 
 interface SpecializationsListFieldProps {
 	selectedSpecialization?: number;
@@ -20,7 +17,7 @@ interface SpecializationsListFieldProps {
 }
 
 export const SpecializationsListField = ({
-	selectedSpecialization = DEFAULT_SPECIALIZATION_ID,
+	selectedSpecialization,
 	onChangeSpecialization,
 }: SpecializationsListFieldProps) => {
 	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
@@ -46,7 +43,7 @@ export const SpecializationsListField = ({
 	}, [limit, specializations?.total, showAll, isMobile]);
 
 	const onChooseSpecialization = (id: number) => {
-		onChangeSpecialization(id);
+		onChangeSpecialization(id === selectedSpecialization ? undefined : id);
 	};
 
 	const specializationsItems: BaseFilterItem<number>[] | undefined = useMemo(
