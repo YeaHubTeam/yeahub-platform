@@ -548,6 +548,8 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
