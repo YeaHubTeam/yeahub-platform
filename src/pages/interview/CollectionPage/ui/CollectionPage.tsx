@@ -11,6 +11,7 @@ import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
+import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
 	CollectionNavigationButtons,
 	useCollectionNavigation,
@@ -23,7 +24,6 @@ import {
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	useGetCollectionsFilterParams,
 } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';

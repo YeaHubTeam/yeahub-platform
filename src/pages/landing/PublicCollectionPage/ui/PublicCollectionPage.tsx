@@ -10,6 +10,7 @@ import { getHasPremiumAccess } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
+import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
 	useCollectionQueryNavigate,
 	usePublicCollectionNavigation,
@@ -21,7 +22,6 @@ import {
 	CollectionBody,
 	CollectionHeader,
 	CollectionNavigation,
-	useGetCollectionsFilterParams,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
