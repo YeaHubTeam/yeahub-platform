@@ -1,0 +1,31 @@
+.grid, .grid-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(376px, 1fr));
+  gap: 20px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-large-34);
+}
+
+.description {
+  max-width: 654px;
+}
+
+.more-link-skeleton {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+
+@media (width <= 768px) {
+  .grid, .grid-skeleton {
+    grid-template-columns: 1fr
+  }
+  
+  .skeleton-description {
+    max-width: 100%;
+  }
+}
