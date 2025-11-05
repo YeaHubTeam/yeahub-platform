@@ -4,8 +4,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
 
+import { ResourcesFiltersSkeleton } from '@/features/resources/filterResources';
+
 import { ResourcesListSkeleton, ResourcesPaginationSkeleton } from '@/widgets/Marketplace';
-import { ResourcesFiltersSkeleton } from '@/widgets/resources/ResourcesFilters';
 
 import styles from './ResourcesPage.module.css';
 

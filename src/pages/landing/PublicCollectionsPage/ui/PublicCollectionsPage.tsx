@@ -6,15 +6,14 @@ import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import {
-	CollectionsContent,
 	CollectionsFilters,
-	CollectionsPagination,
 	useCollectionsFilters,
-} from '@/widgets/Collection';
+} from '@/features/collections/filterCollections';
 
-import { PublicCollectionsPageSkeleton } from '../ui/PublicCollectionsPage.skeleton';
+import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
 
 import styles from './PublicCollectionsPage.module.css';
+import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton';
 
 const PublicCollectionsPage = () => {
 	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =

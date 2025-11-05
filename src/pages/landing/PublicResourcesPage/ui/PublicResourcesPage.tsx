@@ -9,11 +9,12 @@ import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetResourcesListQuery, useResourcesFilters } from '@/entities/resource';
+import { useGetResourcesListQuery } from '@/entities/resource';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
+import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
+
 import { ResourcesList, ResourcesPagination } from '@/widgets/Marketplace';
-import { ResourcesFilters } from '@/widgets/resources/ResourcesFilters';
 
 import styles from './PublicResourcesPage.module.css';
 import { PublicResourcesPageSkeleton } from './PublicResourcesPage.skeleton';

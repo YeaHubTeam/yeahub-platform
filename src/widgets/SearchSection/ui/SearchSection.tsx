@@ -22,6 +22,7 @@ interface SearchSectionProps {
 	renderRemoveButton?: () => ReactNode;
 	renderFilter?: () => ReactNode;
 	onResetFilters?: () => void;
+	hasFilters?: boolean;
 }
 
 export const SearchSection = ({
@@ -33,6 +34,7 @@ export const SearchSection = ({
 	renderFilter,
 	onResetFilters,
 	showResetFilterButton,
+	hasFilters,
 }: SearchSectionProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
@@ -40,7 +42,7 @@ export const SearchSection = ({
 		<Card>
 			<Flex className={styles.section} justify="between">
 				<Flex gap="10">
-					{renderFilter && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
+					{renderFilter && <FiltersDrawer hasFilters={hasFilters}>{renderFilter()}</FiltersDrawer>}
 					<SearchInput
 						placeholder={t(Translation.SEARCH)}
 						onSearch={onSearch}

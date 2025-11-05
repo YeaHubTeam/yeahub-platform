@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -10,42 +10,40 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
+import { useCollectionsFilters } from '@/features/collections/filterCollections';
+
 import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import {
-	getCollectionsSearch,
-	getSelectedCollections,
-} from '../../model/selectors/collectionsPageSelectors';
+import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
 import styles from './CollectionsPage.module.css';
 
-/**
- * Page showing info about all the created collections
- * @constructor
- */
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
 	const userId = useSelector(getUserId);
 	const isAuthor = useSelector(getIsAuthor);
-	const search = useSelector(getCollectionsSearch);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
 	};
 
-	const { filter, handleFilterChange, resetFilters } = useQueryFilter();
-	const { page, title } = filter;
-
-	const { data: allCollections } = useGetCollectionsListQuery({
-		page,
-		titleOrDescriptionSearch: search,
+	const { filters, onResetFilters, onChangeTitle, onChangePage } = useCollectionsFilters({
+		page: 1,
 	});
 
-	// in case other collections appear (eg: filtered collections)
-	// as in QuestionsPage
+	const onResetAll = () => {
+		dispatch(collectionsPageActions.resetFilters());
+		onResetFilters();
+	};
+
+	const { data: allCollections } = useGetCollectionsListQuery({
+		page: filters.page,
+		titleOrDescriptionSearch: filters.title,
+	});
+
 	const collections = useMemo(() => {
 		if (!allCollections || !allCollections.data) return undefined;
 		return {
@@ -56,14 +54,6 @@ const CollectionsPage = () => {
 			})),
 		};
 	}, [allCollections, userId, isAuthor]);
-	const onPageChange = (page: number) => {
-		handleFilterChange({ page });
-		dispatch(collectionsPageActions.setSelectedCollections([]));
-	};
-
-	const onChangeSearch = (value: string) => {
-		dispatch(collectionsPageActions.setSearch(value));
-	};
 
 	if (!collections) {
 		return null;
@@ -71,7 +61,12 @@ const CollectionsPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection to="create" showRemoveButton={true} onSearch={onChangeSearch} />
+			<SearchSection
+				to="create"
+				showRemoveButton={true}
+				searchValue={filters.title}
+				onSearch={onChangeTitle}
+			/>
 			<Card className={styles.content}>
 				<CollectionsTable
 					collections={collections.data}
@@ -82,13 +77,13 @@ const CollectionsPage = () => {
 				{collections.total > collections.limit && (
 					<CollectionsPagination
 						collectionsResponse={collections}
-						currentPage={filter.page || 1}
-						onPageChange={onPageChange}
+						currentPage={filters.page || 1}
+						onPageChange={onChangePage}
 					/>
 				)}
 
 				{collections.data.length === 0 && (
-					<EmptyFilterStub text={title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={filters.title} resetFilters={onResetAll} />
 				)}
 			</Card>
 		</Flex>

@@ -2,7 +2,6 @@ export { CollectionBody } from './ui/CollectionBody/CollectionBody';
 export { CollectionHeader } from './ui/CollectionHeader/CollectionHeader';
 export { AdditionalInfo } from './ui/AdditionalInfo/AdditionalInfo';
 export { CollectionsList } from './ui/CollectionsList/CollectionsList';
-export { CollectionsFilters } from '@/widgets/Collection/ui/CollectionsFilters/CollectionsFilters';
 export { AdditionalInfoSkeleton } from './ui/AdditionalInfo/AdditionalInfo.skeleton';
 export { CollectionHeaderSkeleton } from './ui/CollectionHeader/CollectionHeader.skeleton';
 export { CollectionBodySkeleton } from './ui/CollectionBody/CollectionBody.skeleton';
@@ -13,8 +12,3 @@ export { CollectionsContentSkeleton } from './ui/CollectionsContent/CollectionsC
 export { CollectionsPagination } from './ui/CollectionsPagination/CollectionsPagination';
 export { CollectionNavigation } from './ui/CollectionNavigation/CollectionNavigation';
 export { CollectionNavigationSkeleton } from './ui/CollectionNavigation/CollectionNavigation.skeleton';
-export { useGetCollectionsFilterParams } from './model/hooks/useGetCollectionsFilterParams';
-export { useCollectionsFilters } from './model/hooks/useCollectionsFilters';
-export { CollectionsFiltersSkeleton } from '@/widgets/Collection/ui/CollectionsFilters/CollectionsFilters.skeleton';
-
-export type { CollectionsFilterParams } from './model/types/types';
