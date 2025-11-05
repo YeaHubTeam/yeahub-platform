@@ -5,11 +5,9 @@ import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
-import {
-	ResourceRequestsFilterParams,
-	ResourcesStatusBlock,
-	ResourcesTypesFilterSection,
-} from '@/entities/resource';
+import { ResourcesStatusBlock, ResourcesTypesFilterSection } from '@/entities/resource';
+
+import { ResourceRequestsFilterParams } from '../../model/types/filters';
 
 interface MyResourcesFiltersPanelProps {
 	filters: ResourceRequestsFilterParams;
@@ -18,7 +16,7 @@ interface MyResourcesFiltersPanelProps {
 	onChangeTypes: (types: ResourceRequestsFilterParams['types']) => void;
 }
 
-export const MyResourcesFilters = ({
+export const ResourceRequestsFilters = ({
 	filters,
 	onChangeTitle,
 	onChangeStatus,

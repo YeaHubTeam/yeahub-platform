@@ -1,40 +1,33 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch, useAppSelector, useQueryFilter } from '@/shared/hooks';
+import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
 
+import { useResourcesFilters } from '@/features/resources/filterResources';
+
 import { ResourcesTable } from '@/widgets/resources/ResourcesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import {
-	getResourcesAllTabPage,
-	getResourcesAllTabSearch,
-	getResourcesAllTabSelected,
-} from '../../../../model/selectors/resourcesAllTabSelectors';
-import { resourcesAllTabActions } from '../../../../model/slice/resourcesAllTabSlice';
+import { getResourcesAllTabSelected } from '../../../../model/selectors/resourcesAllTabSelectors';
 import { ResourcesAllTabPagination } from '../ResourcesAllTabPagination/ResourcesAllTabPagination';
 
 import styles from './ResourcesAllTab.module.css';
 
 export const ResourcesAllTab = () => {
-	const dispatch = useAppDispatch();
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
-	const search = useSelector(getResourcesAllTabSearch);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
-	const page = useSelector(getResourcesAllTabPage);
 
-	const { filter, handleFilterChange } = useQueryFilter();
-	const currentPage = filter.page || page;
+	const { onChangeTitle, filters, onChangePage } = useResourcesFilters({ page: 1 });
 
 	const { data: resources } = useGetResourcesListQuery({
-		page: currentPage,
-		name: search,
+		page: filters.page,
+		name: filters.title,
 	});
 
 	const resourcesWithEditFlags = useMemo(() => {
@@ -45,28 +38,20 @@ export const ResourcesAllTab = () => {
 		}));
 	}, [resources, userId, isAuthor]);
 
-	const onChangeSearch = (value: string) => {
-		dispatch(resourcesAllTabActions.setSearch(value));
-	};
-
-	const onPageChange = (page: number) => {
-		handleFilterChange({ page });
-		dispatch(resourcesAllTabActions.setPage(page));
-	};
-
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				to="create"
 				showRemoveButton={selectedResources.length > 0}
-				onSearch={onChangeSearch}
+				searchValue={filters.title}
+				onSearch={onChangeTitle}
 			/>
 			<Card className={styles.content}>
 				<ResourcesTable resources={resourcesWithEditFlags} />
 				<ResourcesAllTabPagination
 					resourcesResponse={resources}
-					currentPage={currentPage}
-					onPageChange={onPageChange}
+					currentPage={filters.page || 1}
+					onPageChange={onChangePage}
 				/>
 			</Card>
 		</Flex>

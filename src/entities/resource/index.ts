@@ -32,9 +32,3 @@ export {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';
-
-export { useResourceRequestsFilters } from './model/hooks/useResourceRequestsFilters';
-export { useGetResourcesFilterParams } from './model/hooks/useGetResourcesFilterParams';
-export { useResourcesFilters } from './model/hooks/useResourcesFilters';
-export { useGetResourceRequestsFilterParams } from './model/hooks/useGetResourceRequestsFilterParams';
-export type { ResourcesFilterParams, ResourceRequestsFilterParams } from './model/types/filters';

@@ -1,5 +1,6 @@
+import { ResourceTypeCode } from '@/entities/resource';
+
 import { ResourcesFilterParams } from '../types/filters';
-import { ResourceTypeCode } from '../types/resource';
 
 export const useGetResourcesFilterParams = (initialParams: ResourcesFilterParams) => {
 	const params = new URLSearchParams(location.search);
