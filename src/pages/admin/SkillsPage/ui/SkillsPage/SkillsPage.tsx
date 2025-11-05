@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -8,47 +8,34 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
-import { SkillFilter } from '@/features/skill/skillFilter';
+import { useSkillsFilters, SkillsFilters } from '@/features/skill/filterSkills';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { SkillsTable } from '@/widgets/SkillsTable';
 
-import {
-	getSelectedSkills,
-	getSkillsPageNum,
-	getSkillsSearch,
-} from '../../model/selectors/skillsPageSelectors';
+import { getSelectedSkills } from '../../model/selectors/skillsPageSelectors';
 import { skillsPageActions } from '../../model/slices/skillsPageSlice';
 import { SkillsPagePagination } from '../SkillsPagePagination/SkillsPagePagination';
 
 import styles from './SkillsPage.module.css';
 
-/**
- * Page showing info about all the created skills
- * @constructor
- */
 const SkillsPage = () => {
 	const dispatch = useAppDispatch();
-	const page = useSelector(getSkillsPageNum);
-	const search = useSelector(getSkillsSearch);
 	const selectedSkills = useSelector(getSelectedSkills);
-	const {
-		filter: { specialization },
-	} = useQueryFilter();
 
-	const specializations = Array.isArray(specialization) ? specialization : [specialization!];
+	const { filters, hasFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
+		useSkillsFilters({
+			page: 1,
+		});
 
 	const { data: skills } = useGetSkillsListQuery({
-		page,
-		title: search,
-		specializations,
+		page: filters.page,
+		title: filters.title,
+		specializations: filters.specialization,
 	});
 
 	const onSelectSkills = (ids: SelectedAdminEntities) => {
 		dispatch(skillsPageActions.setSelectedSkills(ids));
-	};
-	const onChangeSearch = (value: string) => {
-		dispatch(skillsPageActions.setSearch(value));
 	};
 
 	return (
@@ -56,9 +43,13 @@ const SkillsPage = () => {
 			<SearchSection
 				to="create"
 				showRemoveButton={selectedSkills.length > 0}
-				onSearch={onChangeSearch}
+				searchValue={filters.title}
+				onSearch={onChangeTitle}
+				hasFilters={hasFilters}
 				renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
-				renderFilter={() => <SkillFilter />}
+				renderFilter={() => (
+					<SkillsFilters filters={filters} onChangeSpecialization={onChangeSpecialization} />
+				)}
 			/>
 			<Card className={styles.content}>
 				<SkillsTable
@@ -66,7 +57,11 @@ const SkillsPage = () => {
 					selectedSkills={selectedSkills}
 					onSelectSkills={onSelectSkills}
 				/>
-				<SkillsPagePagination skillsResponse={skills} />
+				<SkillsPagePagination
+					skills={skills}
+					onPageChange={onChangePage}
+					currentPage={filters.page || 1}
+				/>
 			</Card>
 		</Flex>
 	);
