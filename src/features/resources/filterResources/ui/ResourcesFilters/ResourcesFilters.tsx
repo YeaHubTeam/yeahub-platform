@@ -7,9 +7,11 @@ import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
 import { getSpecializationId } from '@/entities/profile';
-import { ResourcesFilterParams, ResourcesTypesFilterSection } from '@/entities/resource';
+import { ResourcesTypesFilterSection } from '@/entities/resource';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
+
+import { ResourcesFilterParams } from '../../model/types/filters';
 
 interface MarketplaceFiltersPanelProps {
 	filters: ResourcesFilterParams;
