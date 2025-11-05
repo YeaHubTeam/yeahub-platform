@@ -8,11 +8,11 @@ import { getSpecializationId } from '@/entities/profile';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import {
-	CollectionsContent,
 	CollectionsFilters,
-	CollectionsPagination,
 	useCollectionsFilters,
-} from '@/widgets/Collection';
+} from '@/features/collections/filterCollections';
+
+import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';

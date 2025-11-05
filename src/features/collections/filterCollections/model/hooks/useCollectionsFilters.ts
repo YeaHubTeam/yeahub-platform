@@ -1,7 +1,8 @@
 import { useQueryFilterParams } from '@/shared/hooks';
 
-import { useGetCollectionsFilterParams } from '../hooks/useGetCollectionsFilterParams';
 import { CollectionsFilterParams } from '../types/types';
+
+import { useGetCollectionsFilterParams } from './useGetCollectionsFilterParams';
 
 export const useCollectionsFilters = (initialParams: CollectionsFilterParams) => {
 	const currentParams = useGetCollectionsFilterParams(initialParams);
