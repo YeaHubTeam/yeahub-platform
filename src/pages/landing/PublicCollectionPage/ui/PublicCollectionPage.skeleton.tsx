@@ -5,6 +5,7 @@ import {
 	AdditionalInfoSkeleton,
 	CollectionBodySkeleton,
 	CollectionHeaderSkeleton,
+	CollectionNavigationSkeleton,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
@@ -17,6 +18,7 @@ export const PublicCollectionPageSkeleton = () => {
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1}>
 					<CollectionHeaderSkeleton />
+					<CollectionNavigationSkeleton />
 					<CollectionBodySkeleton />
 				</Flex>
 				{!isMobile && !isTablet && (

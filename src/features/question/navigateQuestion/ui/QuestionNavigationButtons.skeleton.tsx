@@ -10,7 +10,7 @@ export const QuestionNavigationButtonsSkeleton = ({
 	width?: number;
 }) => {
 	return (
-		<Flex justify="center" gap="40">
+		<Flex justify="center" gap="20">
 			<ButtonSkeleton variant={variant} width={width} />
 			<ButtonSkeleton variant={variant} width={width} />
 		</Flex>

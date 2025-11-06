@@ -740,6 +740,8 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',

@@ -8,19 +8,31 @@ import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru'
 import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
+
+import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
+import {
+	useCollectionQueryNavigate,
+	usePublicCollectionNavigation,
+} from '@/features/collections/navigateCollection';
 
 import {
 	AdditionalInfo,
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
+	CollectionNavigation,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
-	const { collectionId } = useParams<{ collectionId: string }>();
+	const filter = useGetCollectionsFilterParams({
+		specialization: DEFAULT_SPECIALIZATION_ID,
+		page: 1,
+	});
+	const { collectionId = '' } = useParams<{ collectionId: string }>();
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const {
 		data: collection,
@@ -33,7 +45,7 @@ export const PublicCollectionPage = () => {
 			collection: Number(collectionId),
 			limit: collection?.questionsCount,
 		},
-		{ skip: hasPremiumAccess },
+		{ skip: hasPremiumAccess || !collection?.questionsCount },
 	);
 
 	const { data: privateResponse } = useGetQuestionsListQuery(
@@ -41,8 +53,16 @@ export const PublicCollectionPage = () => {
 			collection: Number(collectionId),
 			limit: collection?.questionsCount,
 		},
-		{ skip: !hasPremiumAccess },
+		{ skip: !hasPremiumAccess || !collection?.questionsCount },
 	);
+
+	const { onQueryNavigate } = useCollectionQueryNavigate();
+
+	const { prevId, nextId, prevPage, nextPage, isDisabled } = usePublicCollectionNavigation({
+		collectionId,
+		filter,
+	});
+
 	const { isSmallScreen, isLargeScreen } = useScreenSize();
 
 	const questions = (hasPremiumAccess ? privateResponse?.data : publicResponse?.data) ?? [];
@@ -74,6 +94,14 @@ export const PublicCollectionPage = () => {
 
 	const media = getChannelsForSpecialization(collection.specializations);
 
+	const onMovePrev = () => {
+		onQueryNavigate(prevId, prevPage);
+	};
+
+	const onMoveNext = () => {
+		onQueryNavigate(nextId, nextPage);
+	};
+
 	return (
 		<Flex direction="column" align="start">
 			<Flex gap="20" maxWidth>
@@ -84,6 +112,11 @@ export const PublicCollectionPage = () => {
 						description={description}
 						imageSrc={imageSrc}
 						company={company}
+					/>
+					<CollectionNavigation
+						onMovePrev={onMovePrev}
+						onMoveNext={onMoveNext}
+						isDisabled={isDisabled}
 					/>
 					<CollectionBody
 						isFree={isFree}

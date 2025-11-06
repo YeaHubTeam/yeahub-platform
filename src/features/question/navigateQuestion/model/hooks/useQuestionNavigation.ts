@@ -1,3 +1,4 @@
+import { calculatePageNavigation } from '@/shared/helpers/calculatePageNavigation';
 import { useAppSelector } from '@/shared/hooks';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
@@ -7,7 +8,6 @@ import {
 	useGetQuestionsListQuery,
 } from '@/entities/question';
 
-import { calculatePageNavigation } from '../helpers/calculatePageNavigation';
 import { normalizeFilters } from '../helpers/normalizeFilters';
 import { QuestionNavigation } from '../types/questionNavigationTypes';
 
