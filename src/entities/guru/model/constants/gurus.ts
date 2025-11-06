@@ -26,6 +26,9 @@ export const gurus: Guru[] = [
 			'Отвечает за мобильную разработку под Android, показывает, как создавать удобные и современные приложения вместе с учениками.',
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D1%80.png',
+		hasPractice: true,
+		description:
+			'Отвечает за мобильную разработку под Android, показывает, как создавать удобные и современные приложения вместе с учениками.',
 		socials: {
 			telegram: 'https://t.me/gulyaev_it',
 			youtube: 'https://youtube.com/@gulyaev_it',
@@ -41,6 +44,9 @@ export const gurus: Guru[] = [
 		description:
 			'Главный по iOS-направлению: учит проектировать и разрабатывать приложения для iPhone, делясь практикой реальной разработки.',
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/рома.jpg',
+		hasPractice: true,
+		description:
+			'Главный по iOS-направлению: учит проектировать и разрабатывать приложения для iPhone, делясь практикой реальной разработки.',
 		socials: {
 			telegram: 'https://t.me/isakov_ios',
 			youtube: 'https://www.youtube.com/watch?v=VdN4PKgnzRg&ab/_channel=RomanIsakov',
@@ -56,6 +62,9 @@ export const gurus: Guru[] = [
 		description:
 			'Следит за качеством контента по Go, обновляет материалы и вопросы, добавляет интервью и развивает направление как эксперт редакции.',
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/Автостоп.jpg',
+		hasPractice: false,
+		description:
+			'Следит за качеством контента по Go, обновляет материалы и вопросы, добавляет интервью и развивает направление как эксперт редакции.',
 		socials: {
 			telegram: 'https://t.me/Avtostopom_po_G0',
 			youtube: 'https://www.youtube.com/@Avtostopom_po_Go',
@@ -71,6 +80,9 @@ export const gurus: Guru[] = [
 		description:
 			'Ведёт команду тестировщиков, учит находить баги и выстраивать качественный процесс QA, как в настоящей продуктовой компании.',
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D1%8D%D0%B41.jpg',
+		hasPractice: true,
+		description:
+			'Ведёт команду тестировщиков, учит находить баги и выстраивать качественный процесс QA, как в настоящей продуктовой компании.',
 		socials: {
 			telegram: 'https://t.me/twitereda',
 			youtube: 'https://www.youtube.com/@youtubeeda',
@@ -87,6 +99,9 @@ export const gurus: Guru[] = [
 			'Отвечает за развитие направления по Node.js, следит за качеством контента и материалов, добавляет задачи и вопросы для обучающихся.',
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B4%D0%B5%D0%BC%D0%B5%D1%82%D1%80%D0%B0.jpg',
+		hasPractice: false,
+		description:
+			'Отвечает за развитие направления по Node.js, следит за качеством контента и материалов, добавляет задачи и вопросы для обучающихся.',
 		socials: {
 			telegram: 'https://t.me/DemetraIT',
 			profileId: 'c5e0ed42-3c59-4217-9de5-0a240afee6c8',
@@ -102,6 +117,9 @@ export const gurus: Guru[] = [
 			'Редактор и эксперт по Rust: помогает поддерживать актуальность материалов, добавляет практические задания и контролирует качество контента.',
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%9F%D0%B0%D1%83%D0%BB%D1%8C.jpg',
+		hasPractice: false,
+		description:
+			'Редактор и эксперт по Rust: помогает поддерживать актуальность материалов, добавляет практические задания и контролирует качество контента.',
 		socials: {
 			telegram: 'https://t.me/EduardPaul_Rust',
 			youtube: 'https://youtube.com/@ed.paul_mentor',
@@ -117,6 +135,9 @@ export const gurus: Guru[] = [
 		description:
 			'Наставляет аналитиков, учит грамотно описывать требования и превращать идеи в понятные задачи для команды.',
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/saguruandrey.jpg',
+		hasPractice: true,
+		description:
+			'Наставляет аналитиков, учит грамотно описывать требования и превращать идеи в понятные задачи для команды.',
 		socials: {
 			telegram: 'https://t.me/notsystemanalysis',
 			youtube: 'https://www.youtube.com/@notsystemanalysis',
@@ -133,6 +154,9 @@ export const gurus: Guru[] = [
 			'Отвечает за направление 1C: следит за актуальностью материалов, помогает формировать контент и добавляет вопросы для практики и интервью.',
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B3%D1%83%D1%80%D1%831%D1%81.jpg',
+		hasPractice: false,
+		description:
+			'Отвечает за направление 1C: следит за актуальностью материалов, помогает формировать контент и добавляет вопросы для практики и интервью.',
 		socials: {
 			telegram: 'https://t.me/Mentor1CProfi',
 			profileId: '73771794-59d6-4c5b-8449-07e1887ea0d2',
@@ -148,6 +172,9 @@ export const gurus: Guru[] = [
 			'Контролирует качество учебных материалов по Unity, обновляет контент и вопросы, развивает направление геймдев-наставничества.',
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%BE%D0%BB%D0%B5%D0%B3%D0%B3%D0%B5%D0%B8%CC%86%D0%BC.png',
+		hasPractice: false,
+		description:
+			'Контролирует качество учебных материалов по Unity, обновляет контент и вопросы, развивает направление геймдев-наставничества.',
 		socials: {
 			telegram: 'https://t.me/wealthygamedev',
 			youtube: 'https://www.youtube.com/@wealthygamedev',
@@ -163,6 +190,9 @@ export const gurus: Guru[] = [
 		description:
 			'Редактор и эксперт по Python: следит за качеством контента, добавляет новые материалы и вопросы, поддерживает развитие направления.',
 		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/pythonserg.png',
+		hasPractice: false,
+		description:
+			'Редактор и эксперт по Python: следит за качеством контента, добавляет новые материалы и вопросы, поддерживает развитие направления.',
 		socials: {
 			telegram: 'https://link.sergeyfilichkin.ru/gApVDF',
 			youtube: 'https://link.sergeyfilichkin.ru/50gs',

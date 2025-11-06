@@ -1,58 +1,38 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
-import { useDebounce, useQueryParams } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
-import { UsersFilterSet, useUserFilter } from '@/features/user/UsersFilterSet';
+import { UsersFilters, useUsersFilters } from '@/features/user/filterUsers';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { UsersTable } from '@/widgets/UsersTable';
 
-import { getUsersPageNum } from '../../model/selectors/usersPageSelectors';
 import { UserTablePagePagination } from '../UserTablePagePagination/UserTablePagePagination';
 
 import styles from './UsersTablePage.module.css';
 
-/**
- * Page showing info about all the created users
- * @constructor
- */
-
 export const UsersTablePage = () => {
-	const page = useSelector(getUsersPageNum);
-	const [searchValue, setSearchValue] = useState('');
-	const [search, setSearch] = useState('');
+	const {
+		filters,
+		hasFilters,
+		onChangePage,
+		onResetFilters,
+		onChangeSearch,
+		onChangeRoles,
+		onChangeIsVerified,
+	} = useUsersFilters({
+		page: 1,
+	});
 
-	const { filter, handleFilterChange, resetFilters } = useUserFilter();
-
-	const { setQueryParams } = useQueryParams();
-
-	const { data: users, isFetching } = useGetUsersListQuery({ page, limit: 10, search, ...filter });
-
-	const debouncedSearch = useDebounce((value: string) => {
-		setSearch(value);
-		setQueryParams({ page: 1 });
-	}, 500);
-
-	const hasActiveFiltersOrSearch =
-		(filter.roles && filter.roles.length > 0) || filter.isEmailVerified || !!search.trim();
-
-	const onResetFilters = () => {
-		handleFilterChange({ roles: undefined, isEmailVerified: undefined });
-		setSearch('');
-		setSearchValue('');
-		resetFilters();
-	};
-
-	const onChangeSearch = (value: string) => {
-		setSearchValue(value);
-		debouncedSearch(value);
-	};
+	const { data: users, isFetching } = useGetUsersListQuery({
+		page: filters.page,
+		search: filters.search,
+		isVerified: filters.isVerified || undefined,
+		roles: filters.roles,
+		limit: 10,
+	});
 
 	const userData = users?.data ?? [];
 	const isEmpty = !isFetching && userData.length === 0;
@@ -60,15 +40,26 @@ export const UsersTablePage = () => {
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
-				renderFilter={() => <UsersFilterSet />}
-				showResetFilterButton={hasActiveFiltersOrSearch}
-				searchValue={searchValue}
+				renderFilter={() => (
+					<UsersFilters
+						filters={filters}
+						onChangeRoles={onChangeRoles}
+						onChangeIsVerified={onChangeIsVerified}
+					/>
+				)}
+				showResetFilterButton={hasFilters}
+				hasFilters={hasFilters}
+				searchValue={filters.search}
 				onSearch={onChangeSearch}
 				onResetFilters={onResetFilters}
 			/>
 			<Card className={styles.content}>
 				<UsersTable users={users?.data} />
-				<UserTablePagePagination usersResponse={users} />
+				<UserTablePagePagination
+					users={users}
+					currentPage={filters.page || 1}
+					onPageChange={onChangePage}
+				/>
 				{isEmpty && <EmptyFilterStub resetFilters={onResetFilters} />}
 			</Card>
 		</Flex>

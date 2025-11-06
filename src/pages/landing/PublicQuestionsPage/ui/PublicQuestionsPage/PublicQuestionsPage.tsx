@@ -10,6 +10,7 @@ import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
+import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
@@ -36,6 +37,8 @@ const PublicQuestionsPage = () => {
 		page: 1,
 		specialization: DEFAULT_SPECIALIZATION_ID,
 	});
+
+	const { handleNavigation } = useQuestionQueryNavigate();
 
 	const { isMobile, isTablet } = useScreenSize();
 
@@ -71,6 +74,10 @@ const PublicQuestionsPage = () => {
 
 	const media = getChannelsForSpecialization(filters.specialization);
 
+	const onMoveQuestionDetail = (id: number) => {
+		handleNavigation(id);
+	};
+
 	const renderFilters = () => (
 		<Flex direction="column" gap="24">
 			<QuestionsFilters
@@ -99,6 +106,7 @@ const PublicQuestionsPage = () => {
 					isPublic
 					additionalTitle={additionalTitle}
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
 
 				{questions.total > questions.limit && (

@@ -204,7 +204,12 @@
 	},
 	"mentors": {
 		"title": "MENTORS WITH HANDS-ON EXPERIENCE AT YEAHUB",
-		"description": "At YeaHub, we believe that the best learning comes through practice. That’s why we’ve brought together mentors from different fields so that students can learn through real projects.",
+		"description": "At YeaHub, we believe that the best learning comes through practice. That’s why we’ve brought together mentors from different fields so that students can learn through real projects."
+	},
+	"guru": {
+		"title": "Gurus at YeaHub",
+		"description": "In YeaHub, there are not only mentors who lead internships on projects, but also Gurus — mentors who help us develop the platform and make learning even more valuable. They add up-to-date interview questions and write explanations of complex topics.",
+		"badge": "Team member",
 		"link": "Learn more"
 	}
 }

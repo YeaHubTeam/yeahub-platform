@@ -2,8 +2,6 @@
   display: grid;
   grid-template-columns: repeat(3, auto );
   gap: 20px;
-
-
 }
 
 .card {
@@ -11,15 +9,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .icon {
   width: 46px;
   height: 46px;
-
-
 }
 
 .box {
@@ -27,8 +21,6 @@
   height: 38px;
   border-radius: 8px;
   background-color: var(--color-white-900);
-
-
 }
 
 .box.green {

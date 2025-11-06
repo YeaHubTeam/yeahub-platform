@@ -12,5 +12,5 @@ export type GuruSocials = {
 	telegram: string;
 	youtube?: string;
 	profileId: string;
-	landing: string;
+	landing?: string;
 };

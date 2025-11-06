@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
-import { useAppDispatch, useAppSelector, useDebounce, useQueryFilter } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
@@ -11,29 +10,22 @@ import { useGetCompaniesListQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
+import { useCompaniesFilters } from '@/features/company/filterCompanies';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { companiesTablePageActions } from '@/pages/admin/CompaniesTablePage';
-
-import {
-	getCompaniesSearch,
-	getSelectedCompanies,
-} from '../../model/selectors/companiesTablePageSelectors';
+import { getSelectedCompanies } from '../../model/selectors/companiesTablePageSelectors';
+import { companiesTablePageActions } from '../../model/slices/companiesTablePageSlice';
 import { CompaniesTablePagePagination } from '../CompaniesTablePagePagination/CompaniesTablePagePagination';
 
 import styles from './CompaniesTablePage.module.css';
 
 const CompaniesTablePage = () => {
-	const [localSearchValue, setLocalSearchValue] = useState<string>('');
-	const storeSearchValue = useSelector(getCompaniesSearch);
-	const selectedCompanies = useSelector(getSelectedCompanies);
-	const isAuthor = useSelector(getIsAuthor);
+	const selectedCompanies = useAppSelector(getSelectedCompanies);
+	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
-	const { filter, handleFilterChange, resetFilters } = useQueryFilter(() => {
-		dispatch(companiesTablePageActions.setSearch(''));
-	});
+	const { filters, onChangePage, onChangeTitle, onResetFilters } = useCompaniesFilters({ page: 1 });
 
 	const userId = useAppSelector(getUserId);
 
@@ -41,16 +33,10 @@ const CompaniesTablePage = () => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
 	};
 
-	const onChangePage = (page: number) => {
-		handleFilterChange({ page });
-		dispatch(companiesTablePageActions.setSelectedCompanies([]));
-	};
-
 	const { data: companies } = useGetCompaniesListQuery({
-		...filter,
-		limit: 5,
-		titleOrLegalNameOrDescriptionSearch: storeSearchValue,
-		status: undefined,
+		page: filters.page,
+		limit: 10,
+		titleOrLegalNameOrDescriptionSearch: filters.title,
 	});
 
 	const companiesWithEditFlags = useMemo(() => {
@@ -61,20 +47,6 @@ const CompaniesTablePage = () => {
 		}));
 	}, [companies, userId, isAuthor]);
 
-	const setStoreSearchValue = useDebounce((value: string) => {
-		dispatch(companiesTablePageActions.setSearch(value));
-	}, 500);
-
-	//TODO: подумать, как уйти от локального состояния и при этом сохранить функциональность поиска и сброса фильтров
-	const handleSearchChange = (value: string) => {
-		setLocalSearchValue(value);
-		setStoreSearchValue(value);
-	};
-
-	useEffect(() => {
-		setLocalSearchValue(storeSearchValue);
-	}, [storeSearchValue]);
-
 	if (!companies) {
 		return null;
 	}
@@ -83,8 +55,8 @@ const CompaniesTablePage = () => {
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				to="create"
-				onSearch={handleSearchChange}
-				searchValue={localSearchValue}
+				onSearch={onChangeTitle}
+				searchValue={filters.title}
 				showRemoveButton={selectedCompanies.length > 0}
 				renderRemoveButton={() => <DeleteCompaniesButton companiesToRemove={selectedCompanies} />}
 			/>
@@ -94,15 +66,13 @@ const CompaniesTablePage = () => {
 					selectedCompanies={selectedCompanies}
 					onSelectCompanies={onSelectCompanies}
 				/>
-
 				<CompaniesTablePagePagination
 					companiesResponse={companies}
-					currentPage={filter.page || 1}
+					currentPage={filters.page || 1}
 					onChangePage={onChangePage}
 				/>
-
 				{companies.data.length === 0 && (
-					<EmptyFilterStub text={filter.title} resetFilters={resetFilters} />
+					<EmptyFilterStub text={filters.title} resetFilters={onResetFilters} />
 				)}
 			</Card>
 		</Flex>

@@ -548,6 +548,8 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
@@ -738,6 +740,8 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',
@@ -899,6 +903,10 @@ export enum Landing {
 	MENTORS_TITLE = 'mentors.title',
 	MENTORS_DESCRIPTION = 'mentors.description',
 	MENTORS_LINK = 'mentors.link',
+	GURU_TITLE = 'guru.title',
+	GURU_DESCRIPTION = 'guru.description',
+	GURU_BADGE = 'guru.badge',
+	GURU_LINK = 'guru.link',
 }
 
 export enum Subscription {
