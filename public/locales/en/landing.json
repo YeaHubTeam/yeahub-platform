@@ -201,5 +201,11 @@
 			"description": "Description",
 			"progress": "Progress"
 		}
+	},
+	"guru": {
+		"title": "Gurus at YeaHub",
+		"description": "In YeaHub, there are not only mentors who lead internships on projects, but also Gurus — mentors who help us develop the platform and make learning even more valuable. They add up-to-date interview questions and write explanations of complex topics.",
+		"badge": "Team member",
+		"link": "Learn more"
 	}
 }

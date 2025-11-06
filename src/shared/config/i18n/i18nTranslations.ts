@@ -900,6 +900,10 @@ export enum Landing {
 	HISTORY_IMG_STATISTICS = 'history.img.statistics',
 	HISTORY_IMG_PROGRESS = 'history.img.progress',
 	HISTORY_IMG_DESCRIPTION = 'history.img.description',
+	GURU_TITLE = 'guru.title',
+	GURU_DESCRIPTION = 'guru.description',
+	GURU_BADGE = 'guru.badge',
+	GURU_LINK = 'guru.link',
 }
 
 export enum Subscription {
