@@ -8,11 +8,11 @@ import { Guru, GurusItem } from '@/entities/guru';
 
 import styles from './MentorCard.module.css';
 
-interface CardItemProps {
+interface MentorCardProps {
 	guru: Guru;
 }
 
-export const MentorCard = ({ guru }: CardItemProps) => {
+export const MentorCard = ({ guru }: MentorCardProps) => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	const { socials, description } = guru;
