@@ -54,6 +54,7 @@
 
 .card-expandable {
   height: 250px;
+  overflow: hidden;
 }
 
 .card-expand {
