@@ -1,4 +1,4 @@
-.grid, .grid-skeleton {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(376px, 1fr));
   gap: 20px;
@@ -14,18 +14,12 @@
   max-width: 654px;
 }
 
-.more-link-skeleton {
-  align-self: flex-end;
-  margin-top: auto;
-}
-
-
 @media (width <= 768px) {
-  .grid, .grid-skeleton {
+  .grid {
     grid-template-columns: 1fr
   }
   
-  .skeleton-description {
+  .title {
     max-width: 100%;
   }
 }

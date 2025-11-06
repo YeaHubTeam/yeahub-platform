@@ -28,12 +28,6 @@
   border-radius: 50%;
 }
 
-.badge {
-  padding: 3px 12px;
-  border-radius: 30px;
-  background-color: rgba(0 136 22 / 7%);
-  font-size: var(--font-size-p-xs)
-}
 
 
 

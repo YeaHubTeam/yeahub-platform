@@ -4,6 +4,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Flex } from '@/shared/ui/Flex';
+import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
 import { Guru } from '../../model/types/guru';
@@ -54,9 +55,7 @@ export const GurusItem = ({
 				<Flex gap="10" direction={'column'}>
 					<Flex gap="6" direction={'column'} align={'center'}>
 						<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
-						<Text variant={'body3-accent'} color={'green-750'} className={styles.badge}>
-							{t(Landing.GURU_BADGE)}
-						</Text>
+						<StatusChip status={{ text: t(Landing.GURU_BADGE), variant: 'green' }} />
 					</Flex>
 					<Flex gap="4" direction="column">
 						<Text variant="body3-accent" color="black-800">
