@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { Marketplace, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
@@ -13,6 +13,7 @@ import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { LoadErrorStub } from '@/shared/ui/LoadErrorStub';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsEmailVerified } from '@/entities/profile';
@@ -50,7 +51,12 @@ const MyResourcesPage = () => {
 		hasFilters,
 	} = useResourceRequestsFilters({ status: 'all', page: 1 });
 
-	const { data: resourcesResponse, isLoading } = useGetMyRequestsResourcesQuery({
+	const {
+		data: resourcesResponse,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetMyRequestsResourcesQuery({
 		page: filters.page ?? 1,
 		status: filters.status !== 'all' ? (filters.status as ResourceRequestStatus) : undefined,
 		search: filters.title,
@@ -62,11 +68,12 @@ const MyResourcesPage = () => {
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
 
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { t: tMarket } = useTranslation(i18Namespace.marketplace);
+	const { t: tCommon } = useTranslation(i18Namespace.translation);
 
 	const title = hasResources
-		? t(Marketplace.MY_RESOURCES)
-		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
+		? tMarket(Marketplace.MY_RESOURCES)
+		: tMarket(Marketplace.MY_RESOURCES_EMPTY_TITLE);
 
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
@@ -81,13 +88,28 @@ const MyResourcesPage = () => {
 		/>
 	);
 
+	if (isError) {
+		return (
+			<Flex gap="20" justify="between" align="start">
+				<LoadErrorStub
+					title={tCommon(Translation.STUB_LOAD_ERROR_TITLE)}
+					subTitle={tCommon(Translation.STUB_LOAD_ERROR_SUBTITLE)}
+					retryLabel={tCommon(Translation.STUB_ACTION_RETRY)}
+					onRetry={refetch}
+				/>
+
+				<Card className={styles.filters}>{renderFilters()}</Card>
+			</Flex>
+		);
+	}
+
 	const suggestButton = (
 		<Button
 			variant="link-purple"
 			suffix={<Icon icon="plus" />}
 			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
 		>
-			{t(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
+			{tMarket(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
 		</Button>
 	);
 
@@ -109,8 +131,8 @@ const MyResourcesPage = () => {
 					<EmptyFilterStub resetFilters={onResetFilters}></EmptyFilterStub>
 				) : (
 					<EmptyStub
-						text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
-						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+						text={tMarket(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+						buttonText={tMarket(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
 						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
 					/>
 				)}
