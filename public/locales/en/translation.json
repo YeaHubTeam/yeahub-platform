@@ -62,6 +62,13 @@
 		"filter": {
 			"text": "Unfortunately, nothing was found for the query {{text}}. Try to change the query or use our categories",
 			"submit": "Reset filter"
+		},
+		"loadError": {
+			"title": "Failed to load data",
+			"subtitle": "Try again or refresh the page"
+		},
+		"actions": {
+			"retry": "Try again"
 		}
 	},
 	"modal": {
