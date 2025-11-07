@@ -1,0 +1,23 @@
+.listen {
+  margin: 20px 0 10px;
+}
+
+.button {
+  align-self:flex-end;
+  width: 240px;
+}
+
+.text {
+  max-width: 709px;
+}
+
+@media (width < 480px) {
+  .headphones {
+    align-self: flex-start;
+  }
+
+  .button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
