@@ -165,6 +165,7 @@ export const ROUTES = {
 		progressSpecializations: {
 			route: 'progress-specializations',
 			page: '/dashboard/analytics/progress-specializations',
+		},
 		'popular-skills': {
 			route: 'popular-skills',
 			page: '/dashboard/analytics/popular-skills',
