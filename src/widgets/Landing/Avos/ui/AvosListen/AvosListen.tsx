@@ -15,17 +15,19 @@ import styles from './AvosListen.module.css';
 export const AvosListen = () => {
 	const { isSmallScreen, isMobileS } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.landing);
+	const openTelegram = () =>
+		window.open('https://t.me/tribute/app?startapp=svN2-5zjSPWPELyQ', '_blank');
 
 	return (
 		<Card withOutsideShadow className={styles.listen}>
 			<Flex gap="10" justify="between" direction={isSmallScreen ? 'column' : 'row'}>
 				<Flex align="center" gap="20" direction={isMobileS ? 'column' : 'row'}>
-					<img src={headphones} alt="" className={styles.headphones} />
+					<img src={headphones} alt="headphones icon" className={styles.headphones} />
 					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.text}>
 						{t(Landing.AVOS_LISTEN_PRACTICE)}
 					</Text>
 				</Flex>
-				<Button size="large" className={styles.button}>
+				<Button size="large" onClick={openTelegram} className={styles.button}>
 					{t(Landing.AVOS_LISTEN_JOIN)}
 				</Button>
 			</Flex>

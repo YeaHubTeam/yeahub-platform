@@ -24,6 +24,8 @@ export const AvosPromo = () => {
 		t(Landing.AVOS_PROMO_CHIPS_INTERVIEW),
 		t(Landing.AVOS_PROMO_CHIPS_GUIDES),
 	];
+	const openTelegram = () =>
+		window.open('https://t.me/tribute/app?startapp=svN2-5zjSPWPELyQ', '_blank');
 
 	return (
 		<Card className={styles.wrapper} withOutsideShadow>
@@ -34,7 +36,11 @@ export const AvosPromo = () => {
 						{t(Landing.AVOS_PROMO_LEARN)}
 					</Text>
 
-					<img src={tabletScreenshot} alt="" className={styles['tablet-screenshot']} />
+					<img
+						src={tabletScreenshot}
+						alt="telegram channel's screenshots"
+						className={styles['tablet-screenshot']}
+					/>
 
 					<Flex wrap={'wrap'} gap={isMobileS ? '8' : '12'} className={styles.chips}>
 						{chips.map((chip, i) => (
@@ -50,12 +56,16 @@ export const AvosPromo = () => {
 					<Text variant="body3" className={styles.sum}>
 						{t(Landing.AVOS_PROMO_SUM)}
 					</Text>
-					<Button size="large" className={styles.button}>
+					<Button size="large" className={styles.button} onClick={openTelegram}>
 						{t(Landing.AVOS_PROMO_JOIN_PRICE)}
 					</Button>
 				</div>
 
-				<img src={desktopScreenshot} alt="" className={styles.screenshot}></img>
+				<img
+					src={desktopScreenshot}
+					alt="telegram channel's screenshots"
+					className={styles.screenshot}
+				/>
 			</Flex>
 		</Card>
 	);
