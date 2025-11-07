@@ -1,7 +1,7 @@
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { PreviewQuestionsItemSkeleton } from '../../../../../entities/question/ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
+import { PreviewQuestionsItemSkeleton } from '@/entities/question/ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 
 import { PreviewQuestionsListProps } from './PreviewQuestionsList';
 import styles from './PreviewQuestionsList.module.css';

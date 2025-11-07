@@ -6,11 +6,7 @@ import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 
 import { getSpecializationId } from '@/entities/profile';
-import {
-	PopularQuestionsSpecialization,
-	PreviewQuestionsItem,
-	useGetPopularQuestionsQuery,
-} from '@/entities/question';
+import { PreviewQuestionsItem, useGetPopularQuestionsQuery } from '@/entities/question';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import styles from './PopularQuestions.module.css';
@@ -21,9 +17,7 @@ export const PopularQuestions = () => {
 
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.analytics]);
 	const currentSpecializationData =
-		data?.find(
-			(question: PopularQuestionsSpecialization) => question.specializationId === specializationId,
-		) ?? data?.[0];
+		data?.find((question) => question.specializationId === specializationId) ?? data?.[0];
 	const popularQuestions = currentSpecializationData?.topStat?.slice(0, 3) || [];
 
 	return (

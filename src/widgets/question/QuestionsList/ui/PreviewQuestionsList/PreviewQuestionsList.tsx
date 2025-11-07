@@ -10,7 +10,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-import { PreviewQuestionsItem } from '@/entities/question/ui/PreviewQuestionsItem/PreviewQuestionsItem';
+import { PreviewQuestionsItem } from '@/entities/question';
 
 import styles from './PreviewQuestionsList.module.css';
 
@@ -54,6 +54,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 							questionId={question.id}
 							rate={question.rate}
 							complexity={question.complexity}
+							imageSrc={question.questionSkills[0].imageSrc ?? undefined}
 						/>
 					))}
 				</Flex>

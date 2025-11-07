@@ -58,6 +58,7 @@ export const CollectionBody = ({
 							questionId={question.id}
 							rate={question.rate}
 							complexity={question.complexity}
+							imageSrc={question.questionSkills[0].imageSrc ?? undefined}
 						/>
 					))}
 				</Flex>
