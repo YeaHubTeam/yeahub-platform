@@ -1,13 +1,21 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
+
+import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
 import {
 	AdditionalInfo,
@@ -20,6 +28,7 @@ import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
+	const { t } = useTranslation(i18Namespace.collection);
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const {
@@ -85,6 +94,18 @@ export const PublicCollectionPage = () => {
 						imageSrc={imageSrc}
 						company={company}
 					/>
+					<Card withOutsideShadow>
+						<Flex justify="center" align="center">
+							<Button
+								preffix={<Icon icon="student" size={24} />}
+								variant={'tertiary'}
+								disabled={true}
+							>
+								{t(Collections.COLLECTIONS_TRAIN)}
+							</Button>
+							<WatchCollectionButton />
+						</Flex>
+					</Card>
 					<CollectionBody
 						isFree={isFree}
 						questions={questions}

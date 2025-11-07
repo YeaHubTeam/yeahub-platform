@@ -11,11 +11,13 @@ import {
 	CollectionsContent,
 	CollectionsFilters,
 	CollectionsPagination,
+	InterviewRecording,
 	useCollectionsFilters,
 } from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
+import { Flex } from '@/shared/ui/Flex';
 
 const CollectionsPage = () => {
 	const { filters, onResetFilters, onChangePage, onChangeTitle } = useCollectionsFilters({
@@ -55,24 +57,29 @@ const CollectionsPage = () => {
 	}
 
 	return (
-		<section className={styles.wrapper}>
-			<CollectionsContent
-				collections={allCollections.data}
-				filter={filters}
-				resetFilters={onResetFilters}
-				pagination={
-					allCollections?.total > allCollections?.limit && (
-						<CollectionsPagination
-							collectionsResponse={allCollections}
-							currentPage={filters.page || 1}
-							onPageChange={onChangePage}
-						/>
-					)
-				}
-				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
-		</section>
+		<>
+			<section className={styles.wrapper}>
+				<CollectionsContent
+					collections={allCollections.data}
+					filter={filters}
+					resetFilters={onResetFilters}
+					pagination={
+						allCollections?.total > allCollections?.limit && (
+							<CollectionsPagination
+								collectionsResponse={allCollections}
+								currentPage={filters.page || 1}
+								onPageChange={onChangePage}
+							/>
+						)
+					}
+					renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+				/>
+				<Flex direction="column" gap={"20"}>
+					{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
+					{isLargeScreen && <InterviewRecording />}
+				</Flex>
+			</section>
+		</>
 	);
 };
 

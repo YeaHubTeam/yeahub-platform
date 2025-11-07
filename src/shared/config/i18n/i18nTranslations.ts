@@ -741,6 +741,9 @@ export enum Collections {
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',
+	INTERVIEW_RECORDINGS = 'interview.recordings',
+	INTERVIEW_ALL_RECORDINGS = 'interview.all.recordings',
+	INTERVIEW_JOIN = 'interview.join',
 }
 
 export enum Companies {

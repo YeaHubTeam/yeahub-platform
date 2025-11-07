@@ -1,3 +1,4 @@
+export { InterviewRecording } from './ui/CollectionInterview/InterviewRecording';
 export { CollectionBody } from './ui/CollectionBody/CollectionBody';
 export { CollectionHeader } from './ui/CollectionHeader/CollectionHeader';
 export { AdditionalInfo } from './ui/AdditionalInfo/AdditionalInfo';
@@ -13,5 +14,4 @@ export { CollectionsContentSkeleton } from './ui/CollectionsContent/CollectionsC
 export { CollectionsPagination } from './ui/CollectionsPagination/CollectionsPagination';
 export { useCollectionsFilters } from './model/hooks/useCollectionsFilters';
 export { CollectionsFiltersSkeleton } from '@/widgets/Collection/ui/CollectionsFilters/CollectionsFilters.skeleton';
-
 export type { CollectionsFilterParams } from './model/types/types';

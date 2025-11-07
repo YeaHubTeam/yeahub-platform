@@ -1,0 +1,14 @@
+.wrapperIcon{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap: 4px;
+	align-items: center;
+	column-gap: 4px;
+}
+.icon{
+	width: 28px;
+	height: 28px;
+}
+.card{
+	max-width: 360px;
+}

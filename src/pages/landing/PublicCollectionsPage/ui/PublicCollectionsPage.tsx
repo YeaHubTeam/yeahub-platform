@@ -8,13 +8,14 @@ import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 import {
 	CollectionsContent,
 	CollectionsFilters,
-	CollectionsPagination,
+	CollectionsPagination, InterviewRecording,
 	useCollectionsFilters,
 } from '@/widgets/Collection';
 
 import { PublicCollectionsPageSkeleton } from '@/pages/landing/PublicCollectionsPage/ui/PublicCollectionsPage.skeleton';
 
 import styles from './PublicCollectionsPage.module.css';
+import { Flex } from '@/shared/ui/Flex';
 
 const PublicCollectionsPage = () => {
 	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
@@ -64,7 +65,10 @@ const PublicCollectionsPage = () => {
 				}
 				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 			/>
+			<Flex direction="column" gap={"20"}>
 			{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+				{isLargeScreen && <InterviewRecording />}
+			</Flex>
 		</section>
 	);
 };

@@ -12,12 +12,14 @@ import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
+import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
 import {
 	AdditionalInfo,
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
+	InterviewRecording,
 } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
@@ -85,6 +87,8 @@ export const CollectionPage = () => {
 					<Card withOutsideShadow className={styles['train-button']}>
 						<Flex justify="center" align="center">
 							<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
+							{/*	тут добавить кнопку просмотри ролика*/}
+							<WatchCollectionButton />
 						</Flex>
 					</Card>
 				)}
@@ -117,6 +121,7 @@ export const CollectionPage = () => {
 							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
+						<InterviewRecording />
 					</Flex>
 				)}
 			</section>

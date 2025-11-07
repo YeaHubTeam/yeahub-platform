@@ -49,6 +49,7 @@ export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProp
 						<CollectionPreview key={collection.id} collection={collection} />
 					))}
 				</Flex>
+				
 			)}
 		</Card>
 	);
