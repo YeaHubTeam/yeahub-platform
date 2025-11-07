@@ -55,6 +55,10 @@
 		"title": "Company",
 		"label": "Add company to this collection"
 	},
+	"navigation": {
+		"previous": "Previous",
+		"next": "Next"
+	},
 	"empty": "Collections will appear soon",
 	"additional": {
 		"aria.label": "Go to additional info"

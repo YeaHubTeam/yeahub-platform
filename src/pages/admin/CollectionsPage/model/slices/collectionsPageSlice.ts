@@ -7,19 +7,16 @@ import { CollectionsPageState } from '../types/collectionsPageTypes';
 
 const initialState: CollectionsPageState = {
 	selectedCollections: [],
-	search: '',
 };
 
 const collectionsPageSlice = createSlice({
 	name: 'collectionsPage',
 	initialState,
 	reducers: {
-		setSearch: (state, action: PayloadAction<string>) => {
-			state.search = action.payload;
-		},
 		setSelectedCollections: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedCollections = action.payload;
 		},
+		resetFilters: () => initialState,
 	},
 	extraReducers: (builder) => {
 		builder.addCase(clearStore, () => {

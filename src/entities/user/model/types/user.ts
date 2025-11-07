@@ -61,6 +61,8 @@ export type CreateOrEditUserFormValues = Pick<
 export type GetUsersListParamsRequest = {
 	page?: number;
 	search?: string;
+	isVerified?: boolean;
+	roles?: number[];
 	limit?: number;
 };
 

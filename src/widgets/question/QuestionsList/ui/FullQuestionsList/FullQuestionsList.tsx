@@ -17,6 +17,7 @@ interface FullQuestionsListProps {
 	isPublic?: boolean;
 	additionalTitle?: string;
 	filterButton?: React.ReactNode;
+	onMoveQuestionDetail: (id: number) => void;
 }
 
 export const FullQuestionsList = ({
@@ -24,6 +25,7 @@ export const FullQuestionsList = ({
 	isPublic,
 	additionalTitle,
 	filterButton,
+	onMoveQuestionDetail,
 }: FullQuestionsListProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const { isMobile, isMobileS, isTablet } = useScreenSize();
@@ -43,7 +45,11 @@ export const FullQuestionsList = ({
 			<hr className={styles.divider} />
 			{questions.map((question) => (
 				<Accordion key={question.id} title={question.title} className={styles.gap}>
-					<FullQuestionItem question={question} isPublic={isPublic} />
+					<FullQuestionItem
+						question={question}
+						isPublic={isPublic}
+						onMoveQuestionDetail={onMoveQuestionDetail}
+					/>
 				</Accordion>
 			))}
 		</>

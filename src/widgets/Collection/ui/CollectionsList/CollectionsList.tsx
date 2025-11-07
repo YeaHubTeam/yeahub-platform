@@ -5,14 +5,19 @@ import { CollectionPreview } from '@/entities/collection';
 
 interface CollectionsListProps {
 	collections: Collection[];
+	queryFilter?: string;
 }
 
-export const CollectionsList = ({ collections }: CollectionsListProps) => {
+export const CollectionsList = ({ collections, queryFilter }: CollectionsListProps) => {
 	return (
 		<Flex direction="column" gap="20">
 			{collections &&
 				collections.map((collection) => (
-					<CollectionPreview key={collection.id} collection={collection} />
+					<CollectionPreview
+						key={collection.id}
+						collection={collection}
+						queryFilter={queryFilter}
+					/>
 				))}
 		</Flex>
 	);

@@ -11,11 +11,10 @@ export {
 	useGetUserProfileByIdQuery,
 	useAddUserRolesMutation,
 	useRemoveUserRolesMutation,
+	useGetUserRolesListQuery,
 } from './api/userApi';
 export { UserCard } from './ui/UserCard/UserCard';
 export { RoleSelect } from './ui/RoleSelect/RoleSelect';
-export { ChooseUsersRole } from './ui/ChooseUsersRole/ChooseUsersRole';
-export { VerifiedEmail } from './ui/VerifiedEmail/VerifiedEmail';
 export { UserEditButton } from './ui/UserEditButton/UserEditButton';
 export { UserRolesList } from './ui/UserRolesList/UserRolesList';
 export { UserSelect } from './ui/UserSelect/UserSelect';
