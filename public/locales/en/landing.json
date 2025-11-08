@@ -14,6 +14,7 @@
 			"public.quiz": "Interview Trainer",
 			"public.collections": "Interviews",
 			"public.resources": "Resources",
+			"learning": "Learning",
 			"popover.title": "Preparation",
 			"aria.label": "User"
 		},
@@ -201,6 +202,11 @@
 			"description": "Description",
 			"progress": "Progress"
 		}
+	},
+	"mentors": {
+		"title": "MENTORS WITH HANDS-ON EXPERIENCE AT YEAHUB",
+		"description": "At YeaHub, we believe that the best learning comes through practice. That’s why we’ve brought together mentors from different fields so that students can learn through real projects.",
+		"link": "Learn more"
 	},
 	"guru": {
 		"title": "Gurus at YeaHub",

@@ -2,9 +2,9 @@ export interface Guru {
 	title: string;
 	name: string;
 	specializations: number[];
-	image: string;
 	hasPractice: boolean;
 	description: string;
+	image: string;
 	socials: GuruSocials;
 }
 
