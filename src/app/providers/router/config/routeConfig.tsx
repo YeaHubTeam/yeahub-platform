@@ -59,6 +59,7 @@ import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
 import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
+import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -520,6 +521,13 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <AnalyticsPage />,
+					},
+					{
+						path: ROUTES.analytics.progressSpecializations.route,
+						element: <ProgressSpecializationsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
+						},
 					},
 					{
 						path: ROUTES.analytics['popular-skills'].route,
