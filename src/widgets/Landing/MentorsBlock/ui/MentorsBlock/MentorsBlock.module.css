@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(376px, 1fr));
+  gap: 20px;
+}
+
+.main-text {
+  text-transform: uppercase;
+}
+
+@media (width <= 768px) {
+  .grid {
+    grid-template-columns: 1fr; 
+  }
+}

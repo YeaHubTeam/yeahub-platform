@@ -8,26 +8,13 @@ import { deleteMultipleSpecializationsThunk } from '@/features/specialization/de
 import { SpecializationsPageState } from '../types/specializationsPageTypes';
 
 const initialState: SpecializationsPageState = {
-	page: 1,
 	selectedSpecializations: [],
-	search: '',
-	author: '',
 };
 
 const specializationsPageSlice = createSlice({
 	name: 'specializationsPage',
 	initialState,
 	reducers: {
-		setPage: (state, action: PayloadAction<number>) => {
-			state.page = action.payload;
-			state.selectedSpecializations = [];
-		},
-		setSearch: (state, action: PayloadAction<string>) => {
-			state.search = action.payload;
-		},
-		setAuthor: (state, action: PayloadAction<string>) => {
-			state.author = action.payload;
-		},
 		setSelectedSpecializations: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedSpecializations = action.payload;
 		},

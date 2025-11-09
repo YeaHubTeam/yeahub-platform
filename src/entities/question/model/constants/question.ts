@@ -1,3 +1,5 @@
+export const LS_INIT_QUESTION_ID = 'initQuestionId';
+
 export const questionApiUrls = {
 	getQuestionsList: 'questions',
 	getQuestionById: 'questions/:questionId',

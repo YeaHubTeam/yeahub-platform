@@ -16,21 +16,15 @@ import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
 import { resourcesAllTabReducer, resourcesRequestsTabReducer } from '@/pages/admin/ResourcesPage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
-import { usersPageReducer } from '@/pages/admin/UserTablePage';
-import { createQuizPageReducer } from '@/pages/interview/CreateQuizPage';
+import { skillsProficiencyReducer } from '@/pages/analytics/SkillsProficiencyPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
-import { questionsPageReducer } from '@/pages/interview/QuestionsPage';
-import { createPublicQuizPageReducer } from '@/pages/landing/CreatePublicQuizPage';
 
 import { router } from '../../router';
 
 export const createReduxStore = (initialState?: State) => {
 	return configureStore({
 		reducer: {
-			questionsPage: questionsPageReducer,
 			skillsPage: skillsPageReducer,
-			createQuizPage: createQuizPageReducer,
-			createPublicQuizPage: createPublicQuizPageReducer,
 			activeQuiz: activeQuizSlice.reducer,
 			activeSubscription: activeSubscriptionSlice.reducer,
 			[baseApi.reducerPath]: baseApi.reducer,
@@ -39,7 +33,7 @@ export const createReduxStore = (initialState?: State) => {
 			questionsTablePage: questionsTablePageReducer,
 			companiesTablePage: companiesTablePageReducer,
 			specializationsPage: specializationsPageReducer,
-			usersPage: usersPageReducer,
+			skillsProficiencyPage: skillsProficiencyReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
 			resourcesRequestsTab: resourcesRequestsTabReducer,

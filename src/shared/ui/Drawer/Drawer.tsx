@@ -30,7 +30,7 @@ const createPortalRoot = () => {
 	return drawerRoot;
 };
 
-export const Drawer = ({
+const Drawer = ({
 	isOpen,
 	children,
 	position = 'right',
@@ -104,3 +104,5 @@ export const Drawer = ({
 		portalRootRef.current,
 	);
 };
+
+export default Drawer;

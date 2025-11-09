@@ -23,6 +23,9 @@ export enum Translation {
 	EXPAND = 'expand',
 	COLLAPSE = 'collapse',
 	AUTHOR = 'author',
+	SORT_TITLE = 'sort.title',
+	SORT_ASCENDING = 'sort.ascending',
+	SORT_DESCENDING = 'sort.descending',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -81,6 +84,10 @@ export enum Translation {
 	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
+	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
+	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
+	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -351,6 +358,30 @@ export enum Specializations {
 	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
 	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
+	PROGRESS_TABLE_NUMBER = 'progress.table.number',
+}
+
+export enum Analytics {
+  SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
+  SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+  TITLE_POPULAR_SKILLS = 'title.popular.skills',
+  POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
+  POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
+  MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+  MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
+  TOOLTIP_SPECIFY = 'tooltip.specify',
+  SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
+  SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
+  POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
+  SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
+  SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
+  SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
+  SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
+  SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
+  SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
+  SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
+  SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
+  SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
 }
 
 export enum InterviewQuiz {
@@ -463,9 +494,13 @@ export enum Resources {
 	TYPE = 'type',
 	WITHDRAW_BUTTON = 'withdraw.button',
 	WITHDRAW_TITLE = 'withdraw.title',
+	REQUESTS_TITLE_VIEW = 'requests.title.view',
+	REQUESTS_TITLE_EDIT = 'requests.title.edit',
 }
 
 export enum Questions {
+	MOST_FREQ_LABEL = 'Популярность',
+	MOST_FREQ_TITLE_COLLECTION = 'Список самых популярных вопросов',
 	COUNT = 'count',
 	COUNT_TOOLTIP_UNAUTHORIZED = 'count.tooltip.unauthorized',
 	PREVIEW_TITLE = 'preview.title',
@@ -492,10 +527,8 @@ export enum Questions {
 	RATE_TITLE = 'rate.title',
 	RATE_TITLE_SHORT = 'rate.title.short',
 	RATE_LABEL = 'rate.label',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SORT_FIELD = 'sort.field',
-	SORT_TITLE = 'sort.title',
-	SORT_ASCENDING = 'sort.ascending',
-	SORT_DESCENDING = 'sort.descending',
 	STATUS_TITLE = 'status.title',
 	STATUS_UNLEARNED = 'status.unlearned',
 	STATUS_LEARNED = 'status.learned',
@@ -523,6 +556,8 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
@@ -535,6 +570,7 @@ export enum Questions {
 	ADDITIONAL_INFO_KEYWORDS = 'keywordsAdditional',
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
+	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 }
 
 export enum InterviewHistory {
@@ -712,6 +748,8 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',
@@ -836,6 +874,7 @@ export enum Landing {
 	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
 	HEADER_NAV_PUBLIC_COLLECTIONS = 'header.nav.public.collections',
 	HEADER_NAV_PUBLIC_RESOURCES = 'header.nav.public.resources',
+	HEADER_NAV_LEARNING = 'header.nav.learning',
 	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
 	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
 	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
@@ -870,6 +909,13 @@ export enum Landing {
 	HISTORY_IMG_STATISTICS = 'history.img.statistics',
 	HISTORY_IMG_PROGRESS = 'history.img.progress',
 	HISTORY_IMG_DESCRIPTION = 'history.img.description',
+	MENTORS_TITLE = 'mentors.title',
+	MENTORS_DESCRIPTION = 'mentors.description',
+	MENTORS_LINK = 'mentors.link',
+	GURU_TITLE = 'guru.title',
+	GURU_DESCRIPTION = 'guru.description',
+	GURU_BADGE = 'guru.badge',
+	GURU_LINK = 'guru.link',
 }
 
 export enum Subscription {
@@ -962,6 +1008,23 @@ export enum Guru {
 	BANNER_DESCRIPTION = 'banner.description',
 }
 
+export enum Learning {
+	BANNER_TITLE = 'advantages.main.title',
+	BANNER_DESCRIPTION = 'advantages.main.description',
+	PROCESS_TITLE = 'advantages.process.title',
+	PROCESS_DESCRIPTION = 'advantages.process.description',
+	TECHNO_TITLE = 'advantages.techno.title',
+	TECHNO_DESCRIPTION = 'advantages.techno.description',
+	TEAM_TITLE = 'advantages.team.title',
+	TEAM_DESCRIPTION = 'advantages.team.description',
+	SUPPORT_TITLE = 'advantages.support.title',
+	SUPPORT_DESCRIPTION = 'advantages.support.description',
+	PROJECT_TITLE = 'advantages.project.title',
+	PROJECT_DESCRIPTION = 'advantages.project.description',
+	EXPERIENCE_TITLE = 'advantages.experience.title',
+	EXPERIENCE_DESCRIPTION = 'advantages.experience.description',
+}
+
 export enum Media {
 	MEDIA_LINK_START = 'label.start',
 	MEDIA_LINK_END = 'label.end',
@@ -980,6 +1043,7 @@ export enum Media {
 export enum Marketplace {
 	HEADER_TITLE = 'header.title',
 	LINK_LABEL = 'add.resource.link.label',
+	ADD_RESOURCE_REQUEST_LINK = 'add.resource.request.link',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 	SHOW_ALL = 'show.all',
 	HIDE = 'hide',
@@ -1025,14 +1089,4 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
-}
-
-export enum Analytics {
-	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
-	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
-	TITLE_POPULAR_SKILLS = 'title.popular.skills',
-	POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
-	POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
-	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
-	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 }

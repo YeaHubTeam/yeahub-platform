@@ -101,6 +101,10 @@ export const ROUTES = {
 					route: 'requests/:resourceId',
 					page: '/admin/resources/requests/:resourceId',
 				},
+				edit: {
+					route: 'requests/:resourceId/edit',
+					page: '/admin/resources/requests/:resourceId/edit',
+				},
 			},
 		},
 		companies: {
@@ -158,6 +162,18 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/dashboard/analytics',
+		progressSpecializations: {
+			route: 'progress-specializations',
+			page: '/dashboard/analytics/progress-specializations',
+		},
+		'popular-skills': {
+			route: 'popular-skills',
+			page: '/dashboard/analytics/popular-skills',
+		},
+		'skills-proficiency': {
+			route: 'skills',
+			page: '/dashboard/analytics/skills',
+		},
 	},
 	interview: {
 		route: 'interview',
@@ -201,28 +217,28 @@ export const ROUTES = {
 	},
 	wiki: {
 		route: 'wiki',
-		page: '/dashboard',
+		page: '/dashboard/wiki',
 		resources: {
 			route: 'resources',
-			page: '/dashboard/resources',
+			page: '/dashboard/wiki/resources',
 			requests: {
 				route: 'requests',
-				page: '/dashboard/resources/requests',
+				page: '/dashboard/wiki/resources/requests',
 			},
 			my: {
 				route: 'my-resources',
-				page: '/dashboard/resources/my-resources',
+				page: '/dashboard/wiki/resources/my-resources',
 				create: {
 					route: 'create',
-					page: '/dashboard/resources/my-resources/create',
+					page: '/dashboard/wiki/resources/my-resources/create',
 				},
 				edit: {
 					route: ':requestId/edit',
-					page: '/dashboard/resources/my-resources/:requestId/edit',
+					page: '/dashboard/wiki/resources/my-resources/:requestId/edit',
 				},
 				request: {
 					route: ':requestId',
-					page: '/dashboard/resources/my-resources/:requestId',
+					page: '/dashboard/wiki/resources/my-resources/:requestId',
 				},
 			},
 		},
@@ -266,5 +282,9 @@ export const ROUTES = {
 	resources: {
 		route: 'resources',
 		page: '/resources',
+	},
+	learning: {
+		route: 'learning',
+		page: '/learning',
 	},
 } as const;

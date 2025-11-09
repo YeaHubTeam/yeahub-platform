@@ -1,31 +1,26 @@
 import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
+import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
 import {
-	CollectionsContent,
-	CollectionsFilterPanel,
-	CollectionsFiltersDrawer,
-	CollectionsPagination,
+	CollectionsFilters,
 	useCollectionsFilters,
-} from '@/widgets/Collection';
+} from '@/features/collections/filterCollections';
+
+import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const {
-		filter,
-		resetFilters,
-		onPageChange,
-		onChangeSpecialization,
-		onChangeSearchParams,
-		onChangeIsFree,
-	} = useCollectionsFilters();
+	const { filters, onResetFilters, onChangePage, onChangeTitle } = useCollectionsFilters({
+		page: 1,
+	});
 
 	const specializationId = useAppSelector(getSpecializationId);
 
@@ -35,12 +30,21 @@ const CollectionsPage = () => {
 	});
 
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
-		titleOrDescriptionSearch: filter.title,
+		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
-		page: filter.page,
+		page: filters.page,
 	});
 
 	const { isLargeScreen } = useScreenSize();
+
+	const renderFilters = () => (
+		<CollectionsFilters
+			onChangeTitle={onChangeTitle}
+			filter={{
+				title: filters.title,
+			}}
+		/>
+	);
 
 	if (isLoadingAllCollections || isLoadingCategories) {
 		return <CollectionsPageSkeleton />;
@@ -54,44 +58,20 @@ const CollectionsPage = () => {
 		<section className={styles.wrapper}>
 			<CollectionsContent
 				collections={allCollections.data}
-				filter={filter}
-				resetFilters={resetFilters}
+				filter={filters}
+				resetFilters={onResetFilters}
 				pagination={
 					allCollections?.total > allCollections?.limit && (
 						<CollectionsPagination
 							collectionsResponse={allCollections}
-							currentPage={filter.page || 1}
-							onPageChange={onPageChange}
+							currentPage={filters.page || 1}
+							onPageChange={onChangePage}
 						/>
 					)
 				}
-				renderDrawer={() => (
-					<CollectionsFiltersDrawer
-						onChangeSearch={onChangeSearchParams}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						filter={{
-							title: filter.title,
-							specialization: filter.specialization,
-							isFree: filter.isFree,
-						}}
-					/>
-				)}
+				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && (
-				<Card className={styles.filters}>
-					<CollectionsFilterPanel
-						onChangeSearch={onChangeSearchParams}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						filter={{
-							title: filter.title,
-							specialization: filter.specialization,
-							isFree: filter.isFree,
-						}}
-					/>
-				</Card>
-			)}
+			{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</section>
 	);
 };

@@ -5,6 +5,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
+import { chipTestIDs } from './model/constants';
 import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
@@ -19,6 +20,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 			prefix,
 			onClick,
 			onDelete,
+			dataTestId = chipTestIDs.chip,
 			...props
 		},
 		ref,
@@ -32,6 +34,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 
 		return (
 			<div
+				data-testid={dataTestId}
 				{...props}
 				className={classNames(
 					styles['chip-wrapper'],
@@ -54,20 +57,32 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				ref={ref}
 			>
 				{prefix && (
-					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
+					<div
+						className={classNames(styles['chip-prefix'], { [styles.gap]: label })}
+						data-testid={chipTestIDs.prefix}
+					>
+						{prefix}
+					</div>
 				)}
 				{label && (
-					<Text variant="body3-accent" color="black-800" className={styles['chip-label']}>
+					<Text
+						variant="body3-accent"
+						color="black-800"
+						className={styles['chip-label']}
+						dataTestId={chipTestIDs.labelText}
+					>
 						{label}
 					</Text>
 				)}{' '}
 				{onDelete && (
 					<Icon
 						className={styles['chip-delete-icon']}
+						aria-label="delete"
 						icon="closeCircle"
 						size={20}
 						color={disabled ? 'black-100' : 'red-600'}
 						onClick={onDelete}
+						dataTestId={chipTestIDs.icon}
 					/>
 				)}
 			</div>

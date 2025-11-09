@@ -78,7 +78,12 @@ export const Dropdown = ({
 	}, [children, inputValue, isInput]);
 
 	return (
-		<div className={classNames(styles.dropdown, className)} style={{ width }} ref={dropdownRef}>
+		<div
+			className={classNames(styles.dropdown, className)}
+			style={{ width }}
+			ref={dropdownRef}
+			data-testid="dropdown"
+		>
 			<Select
 				width={width}
 				size={size}

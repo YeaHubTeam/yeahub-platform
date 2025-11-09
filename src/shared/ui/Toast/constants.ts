@@ -22,3 +22,11 @@ export const toastTitle: Record<ToastVariant, string> = {
 	warning: Translation.TOAST_TITLE_WARNING,
 	success: Translation.TOAST_TITLE_SUCCESS,
 };
+
+export const toastTestIds = {
+	toastRoot: 'Toast_Root',
+	toastIcon: 'Toast_Icon',
+	toastText: 'Toast_Text',
+	toastCloseBtn: 'Toast_CloseBtn',
+	toastMessage: 'Toast_Message',
+};

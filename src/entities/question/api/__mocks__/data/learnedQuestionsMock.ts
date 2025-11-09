@@ -26,6 +26,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 92,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 1,
 		},
 		{
 			id: 2,
@@ -51,6 +52,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 72,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 2,
 		},
 		{
 			id: 3,
@@ -76,6 +78,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 62,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 3,
 		},
 		{
 			id: 4,
@@ -101,6 +104,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 32,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 4,
 		},
 		{
 			id: 5,
@@ -126,6 +130,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 72,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 5,
 		},
 		{
 			id: 6,
@@ -151,6 +156,7 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 			total: 100,
 			learnedPercentage: 92,
 			calculatedAt: '2024-12-12T19:16:34.726Z',
+			rowNumber: 6,
 		},
 	],
 	page: 1,

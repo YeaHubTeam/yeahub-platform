@@ -3,10 +3,34 @@
 	"popular.questions": { "title": "Самые частые вопросы в подборках", "frequency": "Популярность" },
 	"skill.proficiency": {
 		"title": "Средний % изученности навыка",
-		"link.detail": "Подробнее"
+		"link.detail": "Подробнее",
+		"tooltip": "Мы рассчитываем общий прогресс всех пользователей по определённому навыку",
+		"skill.select": {
+			"choose": "Укажите навыки"
+		},
+		"specialization.select": {
+			"choose": "Укажите специализацию"
+		},
+		"columns": {
+			"index": "№",
+			"questions": "Вопросы",
+			"learnedPercentage": "Изучили"
+		},
+		"column.questions.total": "вопросов"
 	},
 	"most.difficult.questions": {
 		"title": "Топ самых сложных вопросов",
 		"link.detail": "Подробнее"
+	},
+	"tooltip": {
+		"specify": "Сравниваем средний прогресс всех пользователей по специальности."
+  },
+	"skills.popularity": {
+		"popularity.tooltip": "Мы рассчитываем популярность навыков на основе частоты выбора их во время тренировки в тренажере",
+		"table": {
+			"skills": "Навыки",
+			"popularity": "Популярность"
+		},
+		"skills.popularity.title": "Популярность навыков в квизах для {{specialization}}"
 	}
 }

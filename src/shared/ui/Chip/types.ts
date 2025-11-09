@@ -12,4 +12,8 @@ export interface ChipProps {
 	className?: string;
 	style?: React.CSSProperties;
 	withText?: number | string;
+	dataTestId?: string;
 }
+
+export type ChipVariant = NonNullable<ChipProps['variant']>;
+export type ChipTheme = NonNullable<ChipProps['theme']>;

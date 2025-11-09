@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
@@ -14,6 +15,7 @@ import { Collection } from '@/entities/collection';
 import { CollectionsList } from '../CollectionsList/CollectionsList';
 
 import styles from './CollectionsContent.module.css';
+
 interface CollectionsProps {
 	pagination: ReactNode;
 	collections: Collection[];
@@ -31,6 +33,7 @@ export const CollectionsContent = ({
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
+	const { search } = useLocation();
 
 	return (
 		<div className={styles['main-info-wrapper']}>
@@ -42,7 +45,7 @@ export const CollectionsContent = ({
 					{isSmallScreen && renderDrawer()}
 				</Flex>
 
-				<CollectionsList collections={collections} />
+				<CollectionsList collections={collections} queryFilter={search} />
 				{pagination}
 				{collections.length === 0 && (
 					<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />

@@ -16,7 +16,7 @@ export type GetSkillsListParamsRequest = {
 	page?: number;
 	title?: string;
 	limit?: number;
-	specializations?: number[];
+	specializations?: number[] | number;
 };
 export type GetSkillsListResponse = Response<Skill[]>;
 
@@ -46,6 +46,7 @@ export type EditSkillResponse = Skill | ErrorResponce;
 export interface PopularSkill {
 	id: number;
 	skill: Skill;
+	specialization: Specialization;
 	calculatedAt: string;
 	frequencyStat: number;
 }

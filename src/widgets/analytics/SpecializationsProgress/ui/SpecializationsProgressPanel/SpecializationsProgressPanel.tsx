@@ -41,7 +41,7 @@ export const SpecializationsProgressPanel = () => {
 	return (
 		<Card
 			actionTitle={t(Specializations.PROGRESS_DETAIL)}
-			actionRoute={'statsActionRoute'}
+			actionRoute={'progress-specializations'}
 			title={t(Specializations.PROGRESS_TITLE)}
 			isActionPositionBottom
 		>
