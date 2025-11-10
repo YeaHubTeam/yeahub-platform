@@ -30,6 +30,7 @@ import { MyResourcesPageSkeleton } from './MyResourcesPageSkeleton.skeleton';
 
 const MyResourcesPage = () => {
 	const { isMobile, isTablet, isMobileS } = useScreenSize();
+	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 
 	const navigate = useNavigate();
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
@@ -67,12 +68,6 @@ const MyResourcesPage = () => {
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
 
-	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
-
-	const title = hasResources
-		? t(Marketplace.MY_RESOURCES)
-		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
-
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
 	}
@@ -85,16 +80,6 @@ const MyResourcesPage = () => {
 			onChangeStatus={onChangeStatus}
 		/>
 	);
-
-	if (isError) {
-		return (
-			<Flex gap="20" justify="between" align="start">
-				<Stub type="error" onClick={refetch} />
-
-				<Card className={styles.filters}>{renderFilters()}</Card>
-			</Flex>
-		);
-	}
 
 	const suggestButton = (
 		<Button
@@ -111,24 +96,29 @@ const MyResourcesPage = () => {
 			<Card className={styles.main} withOutsideShadow>
 				<Flex className={styles.header}>
 					<Text variant={titleVariant} isMainTitle className={styles.text}>
-						{title}
+						{t(Marketplace.MY_RESOURCES)}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						{suggestButton}
 					</Flex>
 				</Flex>
-				{hasResources ? (
-					<MyResourcesList resources={resources} />
-				) : hasFilters ? (
-					<EmptyFilterStub resetFilters={onResetFilters}></EmptyFilterStub>
+				{isError ? (
+					<Stub type="error" onClick={refetch} />
 				) : (
-					<Stub
-						type="empty"
-						title={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
-						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
-						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-					/>
+					<>
+						{hasResources && <MyResourcesList resources={resources} />}
+						{!hasResources && hasFilters && <EmptyFilterStub resetFilters={onResetFilters} />}
+						{!hasResources && !hasFilters && (
+							<Stub
+								type="empty"
+								subtitle={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+								title={t(Marketplace.MY_RESOURCES_EMPTY_TITLE)}
+								buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+								onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+							/>
+						)}
+					</>
 				)}
 				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
