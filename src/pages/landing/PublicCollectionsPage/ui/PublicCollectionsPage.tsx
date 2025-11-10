@@ -1,6 +1,7 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
@@ -10,7 +11,11 @@ import {
 	useCollectionsFilters,
 } from '@/features/collections/filterCollections';
 
-import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
+import {
+	CollectionsContent,
+	CollectionsPagination,
+	InterviewRecordings,
+} from '@/widgets/Collection';
 
 import styles from './PublicCollectionsPage.module.css';
 import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton';
@@ -63,7 +68,10 @@ const PublicCollectionsPage = () => {
 				}
 				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+			<Flex direction="column" gap={'20'}>
+				{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+				{isLargeScreen && <InterviewRecordings />}
+			</Flex>
 		</section>
 	);
 };

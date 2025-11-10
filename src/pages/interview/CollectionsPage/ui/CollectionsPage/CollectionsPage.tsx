@@ -12,7 +12,11 @@ import {
 	useCollectionsFilters,
 } from '@/features/collections/filterCollections';
 
-import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
+import {
+	CollectionsContent,
+	CollectionsPagination,
+	InterviewRecordings,
+} from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
@@ -72,6 +76,7 @@ const CollectionsPage = () => {
 				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 			/>
 			{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
+			{isLargeScreen && <InterviewRecordings />}
 		</section>
 	);
 };

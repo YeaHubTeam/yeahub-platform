@@ -1,0 +1,1 @@
+export { WatchCollectionButton } from './WatchCollectionButton';

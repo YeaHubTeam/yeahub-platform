@@ -1,38 +1,33 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
-import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
-
-import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
-import {
-	useCollectionQueryNavigate,
-	usePublicCollectionNavigation,
-} from '@/features/collections/navigateCollection';
 
 import {
 	AdditionalInfo,
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	CollectionNavigation,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
-	const filter = useGetCollectionsFilterParams({
-		specialization: DEFAULT_SPECIALIZATION_ID,
-		page: 1,
-	});
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
+	const { t } = useTranslation(i18Namespace.collection);
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const {
 		data: collection,
@@ -55,13 +50,6 @@ export const PublicCollectionPage = () => {
 		},
 		{ skip: !hasPremiumAccess || !collection?.questionsCount },
 	);
-
-	const { onQueryNavigate } = useCollectionQueryNavigate();
-
-	const { prevId, nextId, prevPage, nextPage, isDisabled } = usePublicCollectionNavigation({
-		collectionId,
-		filter,
-	});
 
 	const { isSmallScreen, isLargeScreen } = useScreenSize();
 
@@ -93,15 +81,6 @@ export const PublicCollectionPage = () => {
 	const showAuthor = guru ? false : true;
 
 	const media = getChannelsForSpecialization(collection.specializations);
-
-	const onMovePrev = () => {
-		onQueryNavigate(prevId, prevPage);
-	};
-
-	const onMoveNext = () => {
-		onQueryNavigate(nextId, nextPage);
-	};
-
 	return (
 		<Flex direction="column" align="start">
 			<Flex gap="20" maxWidth>
@@ -113,11 +92,16 @@ export const PublicCollectionPage = () => {
 						imageSrc={imageSrc}
 						company={company}
 					/>
-					<CollectionNavigation
-						onMovePrev={onMovePrev}
-						onMoveNext={onMoveNext}
-						isDisabled={isDisabled}
-					/>
+					<Card withOutsideShadow>
+						<Flex justify="center" align="center">
+							<Button preffix={<Icon icon="student" size={24} />} variant={'tertiary'}>
+								{t(Collections.COLLECTIONS_TRAIN)}
+							</Button>
+							<Button preffix={<Icon icon="watch" size={24} />} variant={'tertiary'}>
+								{t(Collections.INTERVIEW_WATCH)}
+							</Button>
+						</Flex>
+					</Card>
 					<CollectionBody
 						isFree={isFree}
 						questions={questions}
