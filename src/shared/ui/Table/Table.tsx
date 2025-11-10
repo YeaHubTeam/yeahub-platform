@@ -87,7 +87,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				</tr>
 			</thead>
 			<tbody>
-				{items.map((item, i) => (
+				{items.map((item, index) => (
 					<tr key={item.id} className={styles.row} data-testid="table-row">
 						{selectedItems && (
 							<td className={styles.cell}>
@@ -98,7 +98,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 								/>
 							</td>
 						)}
-						{renderTableBody(item, i)}
+						{renderTableBody(item, index)}
 						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
 					</tr>
 				))}

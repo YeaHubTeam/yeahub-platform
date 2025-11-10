@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(376px, 1fr));
+  gap: 20px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-large-34);
+}
+
+.description {
+  max-width: 654px;
+}
+
+@media (width <= 768px) {
+  .grid {
+    grid-template-columns: 1fr
+  }
+  
+  .title {
+    max-width: 100%;
+  }
+}

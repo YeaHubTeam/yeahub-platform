@@ -2,6 +2,24 @@
   flex-shrink: 0;
 }
 
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-badge {
+  position: absolute;
+  top: -1px; 
+  right: -1px; 
+  width: 30%; 
+  height: 30%;
+  border-radius: 50%;
+
+  path {
+    stroke: var(--color-white-900);
+  }
+}
+
 .border {
   padding: 16px;
   min-width: 289px;
@@ -16,14 +34,19 @@
   border-radius: 8px;
 }
 
-.img-wrapper{
+.img-wrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-.img-social{
+.img-social {
   width: 25px;
   height: 25px;
   border-radius: 50%;
 }
+
+
+
+
+

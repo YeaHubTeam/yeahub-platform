@@ -18,11 +18,11 @@ import { getIsEmailVerified, getSpecializationId } from '@/entities/profile';
 import {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
-	useResourcesFilters,
 } from '@/entities/resource';
 
+import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
+
 import { ResourcesList, ResourcesPagination } from '@/widgets/Marketplace';
-import { ResourcesFilters } from '@/widgets/resources/ResourcesFilters';
 
 import styles from './ResourcesPage.module.css';
 import { ResourcesPageSkeleton } from './ResourcesPageSkeleton.skeleton';

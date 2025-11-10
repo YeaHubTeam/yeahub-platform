@@ -9,6 +9,12 @@ import { getChannelsForSpecialization } from '@/entities/media';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
+import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
+import {
+	useQuestionNavigation,
+	useQuestionQueryNavigate,
+} from '@/features/question/navigateQuestion';
+
 import { ProgressBlock } from '@/widgets/question/ProgressBlock';
 import { QuestionActions } from '@/widgets/question/QuestionActions';
 import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
@@ -19,6 +25,7 @@ import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
 export const QuestionPage = () => {
+	const filter = useGetQuestionsFilterParams({ page: 1, status: 'all' });
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId = '' } = useParams<{ questionId: string }>();
 
@@ -26,6 +33,13 @@ export const QuestionPage = () => {
 	const { data: question, isLoading } = useGetQuestionByIdQuery({
 		questionId,
 		profileId,
+	});
+
+	const { handleNavigation } = useQuestionQueryNavigate();
+
+	const { prevId, prevPage, nextId, nextPage, isDisabled } = useQuestionNavigation({
+		questionId,
+		filter,
 	});
 
 	if (isLoading) {
@@ -40,6 +54,14 @@ export const QuestionPage = () => {
 	const showAuthor = guru ? false : true;
 
 	const media = getChannelsForSpecialization(question.questionSpecializations);
+
+	const onMovePrev = () => {
+		handleNavigation(prevId, prevPage);
+	};
+
+	const onMoveNext = () => {
+		handleNavigation(nextId, nextPage);
+	};
 
 	const {
 		createdBy,
@@ -61,6 +83,9 @@ export const QuestionPage = () => {
 					questionId={questionId}
 					checksCount={checksCount}
 					isFavorite={isFavorite}
+					onMovePrev={onMovePrev}
+					onMoveNext={onMoveNext}
+					isDisabled={isDisabled}
 				/>
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}

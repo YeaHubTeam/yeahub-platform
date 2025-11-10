@@ -1,0 +1,10 @@
+.card {
+  height: 274px;
+  border: 1px solid transparent; 
+  transition: border-color 0.3s ease-in-out;
+}
+
+.card:hover {
+  border-color: var(--color-purple-700);
+}
+

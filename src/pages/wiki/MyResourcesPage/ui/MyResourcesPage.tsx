@@ -16,14 +16,14 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsEmailVerified } from '@/entities/profile';
+import { ResourceRequestStatus, useGetMyRequestsResourcesQuery } from '@/entities/resource';
+
 import {
-	ResourceRequestStatus,
-	useGetMyRequestsResourcesQuery,
+	ResourceRequestsFilters,
 	useResourceRequestsFilters,
-} from '@/entities/resource';
+} from '@/features/resources/filterResourceRequests';
 
 import { MyResourcesList, MyResourcesPagination } from '@/widgets/Marketplace';
-import { MyResourcesFilters } from '@/widgets/resources/MyResourcesFilters';
 
 import styles from './MyResourcesPage.module.css';
 import { MyResourcesPageSkeleton } from './MyResourcesPageSkeleton.skeleton';
@@ -73,7 +73,7 @@ const MyResourcesPage = () => {
 	}
 
 	const renderFilters = () => (
-		<MyResourcesFilters
+		<ResourceRequestsFilters
 			filters={filters}
 			onChangeTitle={onChangeTitle}
 			onChangeTypes={onChangeTypes}

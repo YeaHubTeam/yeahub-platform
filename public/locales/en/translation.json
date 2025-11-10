@@ -130,8 +130,9 @@
 		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
-		"popular.skills": "Popular skills",
 		"analytics": "Analytics",
+		"progress.specializations": "Progress in the specialty",
+		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions"
 	},

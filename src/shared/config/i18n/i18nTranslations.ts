@@ -85,6 +85,7 @@ export enum Translation {
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',
+	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
 	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 	CRUMBS_ANALYTICS_DIFFICULTQUESTIONS = 'crumbs.analytics.difficultQuestions',
@@ -358,11 +359,22 @@ export enum Specializations {
 	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
 	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
+	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 }
 
 export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
+	MOST_DIFFICULT_QUESTIONS_PAGE_TITLE = 'most.difficult.questions.page.title',
+	MOST_DIFFICULT_QUESTIONS_TOOLTIP = 'most.difficult.questions.tooltip',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_INDEX = 'most.difficult.questions.columns.index',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_QUESTIONS = 'most.difficult.questions.columns.questions',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_STAT = 'most.difficult.questions.columns.stat',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_ANSWERS_COUNT = 'most.difficult.questions.columns.answers.count',
+	TOOLTIP_SPECIFY = 'tooltip.specify',
 	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
 	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
 	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
@@ -549,6 +561,8 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
 	TOOLTIP_REPEAT = 'tooltip.repeat',
 	TOOLTIP_MEMBERS_ONLY = 'tooltip.members.only',
@@ -739,6 +753,8 @@ export enum Collections {
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
 	COMPANY_LABEL = 'company.label',
+	NAVIGATION_PREVIOUS = 'navigation.previous',
+	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',
@@ -863,6 +879,7 @@ export enum Landing {
 	HEADER_NAV_PUBLIC_QUIZ = 'header.nav.public.quiz',
 	HEADER_NAV_PUBLIC_COLLECTIONS = 'header.nav.public.collections',
 	HEADER_NAV_PUBLIC_RESOURCES = 'header.nav.public.resources',
+	HEADER_NAV_LEARNING = 'header.nav.learning',
 	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
 	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
 	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
@@ -897,6 +914,13 @@ export enum Landing {
 	HISTORY_IMG_STATISTICS = 'history.img.statistics',
 	HISTORY_IMG_PROGRESS = 'history.img.progress',
 	HISTORY_IMG_DESCRIPTION = 'history.img.description',
+	MENTORS_TITLE = 'mentors.title',
+	MENTORS_DESCRIPTION = 'mentors.description',
+	MENTORS_LINK = 'mentors.link',
+	GURU_TITLE = 'guru.title',
+	GURU_DESCRIPTION = 'guru.description',
+	GURU_BADGE = 'guru.badge',
+	GURU_LINK = 'guru.link',
 }
 
 export enum Subscription {
@@ -1070,16 +1094,4 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
-}
-
-export enum Analytics {
-	TITLE_POPULAR_SKILLS = 'title.popular.skills',
-	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
-	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
-	MOST_DIFFICULT_QUESTIONS_PAGE_TITLE = 'most.difficult.questions.page.title',
-	MOST_DIFFICULT_QUESTIONS_TOOLTIP = 'most.difficult.questions.tooltip',
-	MOST_DIFFICULT_QUESTIONS_COLUMNS_INDEX = 'most.difficult.questions.columns.index',
-	MOST_DIFFICULT_QUESTIONS_COLUMNS_QUESTIONS = 'most.difficult.questions.columns.questions',
-	MOST_DIFFICULT_QUESTIONS_COLUMNS_STAT = 'most.difficult.questions.columns.stat',
-	MOST_DIFFICULT_QUESTIONS_COLUMNS_ANSWERS_COUNT = 'most.difficult.questions.columns.answers.count',
 }
