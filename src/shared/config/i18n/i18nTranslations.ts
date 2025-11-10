@@ -51,6 +51,9 @@ export enum Translation {
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+	STUB_ERROR_TITLE = 'stub.error.title',
+	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
+	STUB_ERROR_SUBMIT = 'stub.error.submit',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',
