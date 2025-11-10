@@ -22,7 +22,34 @@ export const telegramLinkApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS));
 					dispatch(baseApi.util.invalidateTags([ApiTags.PROFILE]));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR));
+					switch (error) {
+						case 'auth.auth.unauthorized':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_UNAUTHORIZED));
+							break;
+						case 'auth.telegram.invalid_data':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_INVALID_DATA));
+							break;
+						case 'auth.telegram.data_outdated':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_DATA_OUTDATED));
+							break;
+
+						case 'user.telegram.already_linked':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_ALREADY_LINKED));
+							break;
+						case 'user.telegram.linked_to_another_user':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_LINKED_TO_ANOTHER_USER));
+							break;
+						case 'auth.telegram.verify_denied':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_VERIFY_DENIED));
+							break;
+
+						case 'user.user.id.not_found':
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_USER_NOT_FOUND));
+							break;
+
+						default:
+							toast.error(i18n.t(Translation.TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR));
+					}
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

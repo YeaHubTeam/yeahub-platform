@@ -176,7 +176,16 @@
 			"telegram": {
 				"verification": {
 					"link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
-					"link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту."
+					"link.error": {
+						"error" : "Не удалось привязать Telegram-аккаунт к Вашему аккаунту.",
+						"unauthorized": "Ошибка авторизации.",
+						"invalidData": "Неверные данные Telegram.",
+						"dataOutdated": "Данные Telegram устарели.",
+						"alreadyLinked": "Этот Telegram-аккаунт уже привязан к вашему профилю.",
+						"linkedToAnotherUser": "Этот Telegram-аккаунт уже привязан к другому пользователю.",
+						"verifyDenied": "Подтверждение Telegram отклонено.",
+						"userNotFound": "Пользователь не найден."
+					}
 				}
 			}
 		},
