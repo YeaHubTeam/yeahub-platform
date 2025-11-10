@@ -31,6 +31,7 @@ export const MentorCard = ({ guru }: MentorCardProps) => {
 				description={description}
 				avatarSize={53}
 				avatarIcon={{ icon: 'tickWithBackground' }}
+				layout="row"
 			/>
 		</Card>
 	);

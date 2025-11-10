@@ -23,7 +23,13 @@ const GurusCard = ({ guru }: GurusCardProps) => {
 			actionTitle={t(Landing.GURU_LINK)}
 			isActionPositionBottom
 		>
-			<GurusItem guru={guru} avatarSize={65} description={description} showSocials={false} />
+			<GurusItem
+				guru={guru}
+				avatarSize={65}
+				description={description}
+				showSocials={false}
+				layout="column"
+			/>
 		</Card>
 	);
 };
