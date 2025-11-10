@@ -1,8 +1,15 @@
 {
 	"title.popular.skills": "The popularity of skills in quizzes",
 	"popular.questions": {
-		"title": "Most frequent questions in collections",
-		"frequency": "Popularity"
+		"title": "Most frequently asked questions in collections",
+		"frequency": "Popularity",
+		"tooltip": "We show the most frequently asked questions in collections for each specialty",
+		"columns": {
+			"index": "№",
+			"question": "Questions",
+			"answer": "Answers",
+			"mobile.answer": "Total answers"
+		}
 	},
 	"skill.proficiency": {
 		"title": "Average % of skill proficiency",
