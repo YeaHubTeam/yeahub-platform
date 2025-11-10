@@ -3,17 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
-import { LoadErrorStub } from '@/shared/ui/LoadErrorStub';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsEmailVerified } from '@/entities/profile';
@@ -68,12 +67,11 @@ const MyResourcesPage = () => {
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
 
-	const { t: tMarket } = useTranslation(i18Namespace.marketplace);
-	const { t: tCommon } = useTranslation(i18Namespace.translation);
+	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 
 	const title = hasResources
-		? tMarket(Marketplace.MY_RESOURCES)
-		: tMarket(Marketplace.MY_RESOURCES_EMPTY_TITLE);
+		? t(Marketplace.MY_RESOURCES)
+		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
 
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
@@ -91,12 +89,7 @@ const MyResourcesPage = () => {
 	if (isError) {
 		return (
 			<Flex gap="20" justify="between" align="start">
-				<LoadErrorStub
-					title={tCommon(Translation.STUB_LOAD_ERROR_TITLE)}
-					subTitle={tCommon(Translation.STUB_LOAD_ERROR_SUBTITLE)}
-					retryLabel={tCommon(Translation.STUB_ACTION_RETRY)}
-					onRetry={refetch}
-				/>
+				<Stub type="error" onClick={refetch} />
 
 				<Card className={styles.filters}>{renderFilters()}</Card>
 			</Flex>
@@ -109,7 +102,7 @@ const MyResourcesPage = () => {
 			suffix={<Icon icon="plus" />}
 			onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
 		>
-			{tMarket(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
+			{t(Marketplace.ADD_RESOURCE_REQUEST_LINK)}
 		</Button>
 	);
 
@@ -130,9 +123,10 @@ const MyResourcesPage = () => {
 				) : hasFilters ? (
 					<EmptyFilterStub resetFilters={onResetFilters}></EmptyFilterStub>
 				) : (
-					<EmptyStub
-						text={tMarket(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
-						buttonText={tMarket(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+					<Stub
+						type="empty"
+						title={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
 						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
 					/>
 				)}
