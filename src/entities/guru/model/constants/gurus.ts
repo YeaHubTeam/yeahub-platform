@@ -170,4 +170,20 @@ export const gurus: Guru[] = [
 			landing: 'https://www.sergeyfilichkin.ru',
 		},
 	},
+	{
+		title: 'PHP Guru',
+		name: 'Mikhail Savin',
+		specializations: [24],
+		hasPractice: false,
+		description:
+			'Следит за качеством и актуальностью материалов по PHP, добавляет вопросы, обновления и интервью, помогает развивать направление как эксперт и редактор.',
+		image:
+			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%BF%D1%85%D0%BF%D0%BC%D0%B8%D1%85%D0%B0.jpeg',
+		socials: {
+			telegram: 'https://t.me/+OeP_aGXNhpNkMjEy',
+			youtube: 'https://www.youtube.com/@msavin_php',
+			profileId: '4b940663-07e3-470d-a6b3-fe0868c67706',
+			landing: 'https://teletype.in/@msavin_dev/mentoring',
+		},
+	},
 ];
