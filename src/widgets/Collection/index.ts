@@ -12,3 +12,4 @@ export { CollectionsContentSkeleton } from './ui/CollectionsContent/CollectionsC
 export { CollectionsPagination } from './ui/CollectionsPagination/CollectionsPagination';
 export { CollectionNavigation } from './ui/CollectionNavigation/CollectionNavigation';
 export { CollectionNavigationSkeleton } from './ui/CollectionNavigation/CollectionNavigation.skeleton';
+export { InterviewRecordings } from './ui/CollectionInterview/InterviewRecordings';
