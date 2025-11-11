@@ -174,6 +174,10 @@ export const ROUTES = {
 			route: 'skills',
 			page: '/dashboard/analytics/skills',
 		},
+		'difficult-questions': {
+			route: 'difficultQuestions',
+			page: '/dashboard/analytics/difficultQuestions',
+		},
 	},
 	interview: {
 		route: 'interview',

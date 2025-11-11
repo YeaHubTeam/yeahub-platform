@@ -37,3 +37,5 @@ export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/quest
 
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
+
+export type { TopStat } from './model/types/question';
