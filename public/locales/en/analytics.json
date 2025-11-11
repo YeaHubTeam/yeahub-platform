@@ -19,7 +19,15 @@
 	},
 	"most.difficult.questions": {
 		"title": "Most Difficult questions",
-		"link.detail": "More details"
+		"link.detail": "More details",
+		"page.title": "The most 10 difficult questions for {{text}}",
+		"tooltip": "We analyze the participants' responses to this question: how many users answered \"I don't know\" when they first saw this question",
+		"columns": {
+			"index": "№",
+			"questions": "Questions",
+			"stat": "Don't know",
+			"answers.count": "Answers count"
+		}
 	},
 	"tooltip": {
 		"specify": "We compare the average progress of all users by specialty."

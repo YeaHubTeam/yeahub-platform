@@ -58,6 +58,7 @@ import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
+import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
 import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
@@ -545,6 +546,13 @@ export const router = createBrowserRouter([
 						element: <SkillsProficiencyPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
+						},
+					},
+					{
+						path: ROUTES.analytics['difficult-questions'].route,
+						element: <DifficultQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
 						},
 					},
 				],

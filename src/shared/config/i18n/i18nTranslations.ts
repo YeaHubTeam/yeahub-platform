@@ -91,6 +91,7 @@ export enum Translation {
 	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
 	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
+	CRUMBS_ANALYTICS_DIFFICULTQUESTIONS = 'crumbs.analytics.difficultQuestions',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -370,6 +371,12 @@ export enum Analytics {
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
 	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
 	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
+	MOST_DIFFICULT_QUESTIONS_PAGE_TITLE = 'most.difficult.questions.page.title',
+	MOST_DIFFICULT_QUESTIONS_TOOLTIP = 'most.difficult.questions.tooltip',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_INDEX = 'most.difficult.questions.columns.index',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_QUESTIONS = 'most.difficult.questions.columns.questions',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_STAT = 'most.difficult.questions.columns.stat',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_ANSWERS_COUNT = 'most.difficult.questions.columns.answers.count',
 	TOOLTIP_SPECIFY = 'tooltip.specify',
 	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
 	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',

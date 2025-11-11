@@ -141,7 +141,8 @@
 		"analytics": "Аналитика",
 		"progress.specializations": "Прогресс по специальности",
 		"popular.skills": "Популярные навыки",
-		"analytics.skillsProficiency": "Средний процент изученности навыка"
+		"analytics.skillsProficiency": "Средний процент изученности навыка",
+		"analytics.difficultQuestions": "Самые сложные вопросы"
 	},
 	"toast": {
 		"title": {
