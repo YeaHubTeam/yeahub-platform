@@ -24,6 +24,11 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		path: '/resources/',
 		title: Landing.HEADER_NAV_PUBLIC_RESOURCES,
 	},
+	{
+		link: ROUTES.learning.page,
+		path: '/learning/',
+		title: Landing.HEADER_NAV_LEARNING,
+	},
 ];
 
 export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
@@ -46,5 +51,10 @@ export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 		link: ROUTES.wiki.resources.page,
 		path: '/dashboard/resources',
 		title: Landing.HEADER_NAV_PUBLIC_RESOURCES,
+	},
+	{
+		link: ROUTES.learning.page,
+		path: '/learning/',
+		title: Landing.HEADER_NAV_LEARNING,
 	},
 ];

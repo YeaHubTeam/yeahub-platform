@@ -1,42 +1,34 @@
-import { useSelector } from 'react-redux';
-
-import { useAppDispatch, useQueryParams } from '@/shared/hooks';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
 import { Skill } from '@/entities/skill';
 
-import { getSkillsPageNum } from '../../model/selectors/skillsPageSelectors';
-import { skillsPageActions } from '../../model/slices/skillsPageSlice';
-
 import styles from './SkillsPagePagination.module.css';
 
 interface SkillsPagePaginationProps {
-	skillsResponse?: Response<Skill[]>;
+	skills?: Response<Skill[]>;
+	currentPage: number;
+	onPageChange: (page: number) => void;
 }
 
-export const SkillsPagePagination = ({ skillsResponse }: SkillsPagePaginationProps) => {
-	const dispatch = useAppDispatch();
-	const page = useSelector(getSkillsPageNum);
-
-	const { setQueryParams } = useQueryParams();
-
+export const SkillsPagePagination = ({
+	skills,
+	currentPage,
+	onPageChange,
+}: SkillsPagePaginationProps) => {
 	const onPrevPageClick = () => {
-		dispatch(skillsPageActions.setPage(page - 1));
-		setQueryParams({ page: page - 1 });
+		onPageChange(currentPage - 1);
 	};
 
 	const onNextPageClick = () => {
-		dispatch(skillsPageActions.setPage(page + 1));
-		setQueryParams({ page: page + 1 });
+		onPageChange(currentPage + 1);
 	};
 
-	const onChangePage = (newPage: number) => {
-		dispatch(skillsPageActions.setPage(newPage));
-		setQueryParams({ page: newPage });
+	const onPaginationButtonClick = (newPage: number) => {
+		onPageChange(newPage);
 	};
 
-	if (!skillsResponse?.data) {
+	if (!skills?.data) {
 		return null;
 	}
 
@@ -45,9 +37,9 @@ export const SkillsPagePagination = ({ skillsResponse }: SkillsPagePaginationPro
 			<Pagination
 				onPrevPageClick={onPrevPageClick}
 				onNextPageClick={onNextPageClick}
-				onChangePage={onChangePage}
-				page={page}
-				totalPages={Math.ceil(skillsResponse?.total / skillsResponse?.limit)}
+				onChangePage={onPaginationButtonClick}
+				page={currentPage}
+				totalPages={Math.ceil(skills?.total / skills?.limit)}
 			/>
 		</div>
 	);

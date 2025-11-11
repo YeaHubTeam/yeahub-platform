@@ -41,19 +41,19 @@ export const useQueryFilterParams = <T extends object>(initialParams: T, current
 	const onFilterChange = (newFilters: T) => {
 		setFilters((prevFilters) => {
 			const updatedFilters = { ...prevFilters, ...newFilters };
-			navigate(getUpdateQueryParams(updatedFilters));
+			navigate(`${getUpdateQueryParams(updatedFilters)}${location.hash}`);
 			return updatedFilters;
 		});
 	};
 
 	const onResetFilters = () => {
 		setFilters(initialParams as T);
-		navigate(getInitialParams(), { replace: true });
+		navigate(`${getInitialParams()}${location.hash}`, { replace: true });
 	};
 
 	useEffect(() => {
 		if (!location.search) {
-			navigate(getInitialParams(), { replace: true });
+			navigate(`${getInitialParams()}${location.hash}`, { replace: true });
 		}
 	}, []);
 

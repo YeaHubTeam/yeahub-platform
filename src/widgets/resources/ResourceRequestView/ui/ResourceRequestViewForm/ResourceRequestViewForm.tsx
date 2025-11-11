@@ -33,9 +33,19 @@ export const ResourceRequestViewForm = ({ resource }: ResourceEditFormProps) => 
 	});
 
 	useEffect(() => {
-		methods.reset({
-			status: resource.status,
-		});
+		if (resource) {
+			methods.reset({
+				skills: formatToFormField<Skill[]>(resource.skills),
+				specializations: formatToFormField<Specialization[]>(resource.specializations),
+				name: resource.requestPayload.name,
+				description: resource.requestPayload.description,
+				type: resource.requestPayload.type,
+				url: resource.requestPayload.url,
+				keywords: resource.requestPayload.keywords,
+				iconBase64: resource.requestPayload.iconBase64,
+				status: resource.status,
+			});
+		}
 	}, [resource, methods]);
 
 	return (

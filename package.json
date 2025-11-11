@@ -1,16 +1,20 @@
 {
 	"name": "yeahub-platform",
-	"version": "1.1.17",
+	"version": "1.2.0",
 	"description": "YeaHub is a platform for IT professionals, bringing together learning, career growth, personal development, and a community of like-minded individuals. A React-based platform with integrated Storybook and advanced developer tooling.",
 	"main": "src/app/index.tsx",
 	"homepage": "https://github.com/YeaHubTeam/yeahub-platform",
 	"bugs": {
 		"url": "https://github.com/YeaHubTeam/yeahub-platform/issues"
 	},
+	"sideEffects": [
+		"*.css"
+	],
 	"scripts": {
 		"dev": "webpack serve --mode development --env mode=development",
 		"start": "serve -s build",
 		"build": "webpack --mode production --env mode=production",
+		"build:analyze": "npm run build && npx serve build",
 		"docker:dev": "docker-compose --env-file .env.development -f docker-compose.dev.yml up",
 		"docker-build:dev": "docker-compose --env-file .env.development -f docker-compose.dev.yml up --build",
 		"docker:prod": "docker-compose --env-file .env.production -f docker-compose.yml up",
@@ -47,6 +51,7 @@
 		"@happy-dom/jest-environment": "15.7.4",
 		"@hookform/resolvers": "^3.9.0",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+		"@statoscope/webpack-plugin": "^5.29.0",
 		"@storybook/addon-essentials": "^7.6.17",
 		"@storybook/addon-interactions": "^7.6.17",
 		"@storybook/addon-links": "^7.6.17",
@@ -79,8 +84,10 @@
 		"babel-loader": "^9.1.3",
 		"circular-dependency-plugin": "^5.2.2",
 		"classnames": "^2.5.1",
+		"compression-webpack-plugin": "^11.1.0",
 		"copy-webpack-plugin": "^12.0.2",
 		"css-loader": "^6.10.0",
+		"css-minimizer-webpack-plugin": "^7.0.2",
 		"dotenv-webpack": "^8.1.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",

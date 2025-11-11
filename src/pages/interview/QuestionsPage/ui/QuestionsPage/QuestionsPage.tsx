@@ -5,14 +5,12 @@ import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
-import {
-	useGetQuestionsForLearnQuery,
-	useGetQuestionsListQuery,
-	useQuestionsFilters,
-} from '@/entities/question';
+import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
-import { QuestionsFilters } from '@/widgets/question/QuestionsFilters';
+import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
+import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
+
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
@@ -39,6 +37,7 @@ const QuestionsPage = () => {
 		limit: MAX_SHOW_LIMIT_SKILLS,
 		specializations: [specializationId],
 	});
+	const { handleNavigation } = useQuestionQueryNavigate();
 
 	const { status, ...getParams } = filters;
 	const profileId = useAppSelector(getProfileId);
@@ -68,6 +67,10 @@ const QuestionsPage = () => {
 		);
 
 	const questions = status === 'all' || status === 'favorite' ? allQuestions : learnedQuestions;
+
+	const onMoveQuestionDetail = (id: number) => {
+		handleNavigation(id);
+	};
 
 	const renderFilters = () => (
 		<QuestionsFilters
@@ -100,6 +103,7 @@ const QuestionsPage = () => {
 				<FullQuestionsList
 					questions={questions.data}
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
 				{questions.total > questions.limit && (
 					// TODO Дубляжи в пагинации на других страницах

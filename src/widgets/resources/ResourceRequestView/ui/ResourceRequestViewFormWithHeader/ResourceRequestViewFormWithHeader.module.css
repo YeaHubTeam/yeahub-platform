@@ -12,6 +12,10 @@
   justify-content: flex-end;
 }
 
+.edit-button {
+  width: 170px;
+}
+
 .content {
   flex: 1 1 100%;
 }

@@ -101,6 +101,10 @@ export const ROUTES = {
 					route: 'requests/:resourceId',
 					page: '/admin/resources/requests/:resourceId',
 				},
+				edit: {
+					route: 'requests/:resourceId/edit',
+					page: '/admin/resources/requests/:resourceId/edit',
+				},
 			},
 		},
 		companies: {
@@ -158,9 +162,21 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/dashboard/analytics',
-		skills: {
+		progressSpecializations: {
+			route: 'progress-specializations',
+			page: '/dashboard/analytics/progress-specializations',
+		},
+		'popular-skills': {
+			route: 'popular-skills',
+			page: '/dashboard/analytics/popular-skills',
+		},
+		'skills-proficiency': {
 			route: 'skills',
 			page: '/dashboard/analytics/skills',
+		},
+		'difficult-questions': {
+			route: 'difficultQuestions',
+			page: '/dashboard/analytics/difficultQuestions',
 		},
 	},
 	interview: {
@@ -270,5 +286,9 @@ export const ROUTES = {
 	resources: {
 		route: 'resources',
 		page: '/resources',
+	},
+	learning: {
+		route: 'learning',
+		page: '/learning',
 	},
 } as const;

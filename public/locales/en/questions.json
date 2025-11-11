@@ -44,10 +44,7 @@
 		"label": "Select rate"
 	},
 	"sort": {
-		"field": "Sort by field",
-		"title": "Sort by",
-		"ascending": "Ascending",
-		"descending": "Descending"
+		"field": "Sort by field"
 	},
 	"status": {
 		"title": "Status",
@@ -90,6 +87,10 @@
 	"learn": "Learn",
 	"repeat": "Repeat",
 	"favorite": "Favorite",
+	"navigation": {
+		"previous": "Previous",
+		"next": "Next"
+	},
 	"tooltip": {
 		"learn": "The issue has already been fully studied",
 		"repeat": "The question has not yet progressed to memorization",
