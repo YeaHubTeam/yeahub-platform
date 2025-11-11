@@ -29,7 +29,7 @@ export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 	};
 
 	return (
-		<Flex gap="12" align="start" wrap="wrap">
+		<Flex gap="12" align="start" wrap="wrap" dataTestId="UserRolesList">
 			{userRoles?.map((role) => (
 				<StatusChip
 					key={role.id}
