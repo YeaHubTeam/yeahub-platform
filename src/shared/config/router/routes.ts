@@ -287,4 +287,8 @@ export const ROUTES = {
 		route: 'learning',
 		page: '/learning',
 	},
+	avos: {
+		route: 'avos',
+		page: '/avos',
+	},
 } as const;

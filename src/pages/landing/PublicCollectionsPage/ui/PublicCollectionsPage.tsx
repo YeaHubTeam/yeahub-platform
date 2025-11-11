@@ -62,7 +62,7 @@ const PublicCollectionsPage = () => {
 						<CollectionsPagination
 							collectionsResponse={collections}
 							currentPage={filters.page || 1}
-							onPageChange={onChangePage}
+							onPageChange={onChangePage} /**/
 						/>
 					)
 				}
