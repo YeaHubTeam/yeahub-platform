@@ -2,6 +2,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
@@ -75,8 +76,10 @@ const CollectionsPage = () => {
 				}
 				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
-			{isLargeScreen && <InterviewRecordings />}
+			<Flex direction={'column'} gap={'20'}>
+				{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
+				{isLargeScreen && <InterviewRecordings />}
+			</Flex>
 		</section>
 	);
 };

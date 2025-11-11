@@ -281,6 +281,10 @@ export const router = createBrowserRouter([
 				element: <Error404Page />,
 			},
 			{
+				path: '/avos',
+				element: <Error404Page />,
+			},
+			{
 				path: 'test',
 				element: <CollectionBlock />,
 			},
