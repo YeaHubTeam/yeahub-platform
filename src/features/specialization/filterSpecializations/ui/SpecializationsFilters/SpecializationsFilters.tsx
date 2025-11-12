@@ -1,5 +1,12 @@
-import { Flex } from '@/shared/ui/Flex';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { useAppSelector, useCurrentProject } from '@/shared/hooks';
+import { Flex } from '@/shared/ui/Flex';
+import { Switch } from '@/shared/ui/Switch';
+
+import { getUserId } from '@/entities/profile';
 import { UserSelect } from '@/entities/user';
 
 import { SpecializationsFilterParams } from '../../model/types/filters';
@@ -7,17 +14,35 @@ import { SpecializationsFilterParams } from '../../model/types/filters';
 interface SpecializationsFiltersProps {
 	filters: SpecializationsFilterParams;
 	onChangeAuthor: (author?: SpecializationsFilterParams['author']) => void;
+	onChangeIsMy: (isMy?: SpecializationsFilterParams['isMy']) => void;
 }
 
 export const SpecializationsFilters = ({
 	filters,
 	onChangeAuthor,
+	onChangeIsMy,
 }: SpecializationsFiltersProps) => {
-	const { author } = filters;
+	const { author, isMy } = filters;
+
+	const { t } = useTranslation(i18Namespace.specialization);
+
+	const project = useCurrentProject();
+
+	const resolvedAuthor = isMy ? undefined : author;
+
+	const canUseMy = Boolean(useAppSelector(getUserId));
 
 	return (
 		<Flex direction="column" gap="24">
-			<UserSelect onChange={onChangeAuthor} value={author} />
+			{project === 'admin' && onChangeIsMy && (
+				<Switch
+					checked={!!isMy}
+					disabled={!canUseMy}
+					onChange={(e) => onChangeIsMy(e.target.checked)}
+					label={t(Specializations.SORT_AUTH_TITLE)}
+				/>
+			)}
+			<UserSelect onChange={onChangeAuthor} value={resolvedAuthor} disabled={!!isMy} />
 		</Flex>
 	);
 };
