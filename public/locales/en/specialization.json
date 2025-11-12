@@ -37,5 +37,10 @@
 			"progress": "Progress",
 			"number": "№"
 		}
+	},
+	"sort": {
+		"auth": {
+			"title": "My specializations"
+		}
 	}
 }

@@ -364,6 +364,7 @@ export enum Specializations {
 	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 	PROGRESS_TABLE_NUMBER = 'progress.table.number',
+	SORT_AUTH_TITLE = 'sort.auth.title',
 }
 
 export enum Analytics {
