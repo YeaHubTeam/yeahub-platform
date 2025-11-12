@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
@@ -15,6 +16,7 @@ import {
 	useCollectionQueryNavigate,
 	usePublicCollectionNavigation,
 } from '@/features/collections/navigateCollection';
+import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
 import {
 	AdditionalInfo,
@@ -26,8 +28,6 @@ import {
 
 import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
-import { WatchCollectionButton } from '@/features/collections/watchCollection';
-import { Card } from '@/shared/ui/Card';
 
 export const PublicCollectionPage = () => {
 	const filter = useGetCollectionsFilterParams({
