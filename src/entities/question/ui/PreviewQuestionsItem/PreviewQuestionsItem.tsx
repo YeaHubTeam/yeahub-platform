@@ -6,31 +6,37 @@ import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import {
-	Question,
-	QuestionGradeList,
-	getQuestionRoute,
-	getQuestionImage,
-} from '@/entities/question';
+import { getQuestionRoute } from '../../model/lib/getQuestionRoute';
+import { QuestionGradeList } from '../QuestionGradeList/QuestionGradeList';
 
 import styles from './PreviewQuestionsItem.module.css';
 
 interface PreviewQuestionsItemProps {
-	question: Question;
+	title: string;
+	questionId: number;
+	rate?: number;
+	complexity?: number;
+	frequency?: number;
+	imageSrc?: string;
 }
 
-export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) => {
-	const { id, title, rate, complexity = 0 } = question;
+export const PreviewQuestionsItem = ({
+	title,
+	questionId,
+	rate,
+	complexity,
+	frequency,
+	imageSrc,
+}: PreviewQuestionsItemProps) => {
 	const { isMobileS } = useScreenSize();
 	const project = useCurrentProject();
-	const questionRoute = getQuestionRoute[project](id);
-	const imagePriorityToShow = getQuestionImage(question);
+	const questionRoute = getQuestionRoute[project](questionId);
 
 	return (
 		<li>
 			<Card withOutsideShadow size="small">
 				<Link to={questionRoute} className={styles.link}>
-					{!isMobileS && <ImageWithWrapper src={imagePriorityToShow} className={styles.image} />}
+					{!isMobileS && imageSrc && <ImageWithWrapper src={imageSrc} className={styles.image} />}
 					<Flex direction="column" gap="8">
 						<Text variant="body3-accent" maxRows={1} className={styles.title}>
 							{title}
@@ -39,6 +45,7 @@ export const PreviewQuestionsItem = ({ question }: PreviewQuestionsItemProps) =>
 							rate={rate}
 							complexity={complexity}
 							className={styles.params}
+							frequency={frequency}
 							size="small"
 						/>
 					</Flex>
