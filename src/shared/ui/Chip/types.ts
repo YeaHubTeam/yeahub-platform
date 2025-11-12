@@ -1,9 +1,12 @@
 import React, { ReactNode } from 'react';
 
+import { TextVariant } from '../Text/types';
+
 export interface ChipProps {
 	variant?: 'small' | 'big';
 	theme?: 'primary' | 'outlined';
 	label?: string | ReactNode;
+	labelVariant?: TextVariant;
 	onDelete?: () => void;
 	disabled?: boolean;
 	active?: boolean;

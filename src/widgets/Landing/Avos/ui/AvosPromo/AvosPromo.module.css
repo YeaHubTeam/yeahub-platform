@@ -1,0 +1,64 @@
+.wrapper {
+  margin-top: 60px;
+}
+
+.chips {
+  margin-top: 20px;
+}
+
+.subtitle{
+  margin-top: 8px;
+}
+
+.sum{
+  margin-top: 16px;
+}
+
+.button {
+  margin-top: 20px;
+  width: 240px;
+}
+
+.screenshot {
+  max-width: 50%;
+  object-fit: contain;
+}
+
+.tablet-screenshot{
+  display: none;
+  object-fit: contain;
+  width: 100%;
+}
+
+@media (width < 1024px) {
+  .screenshot {
+    display: none;
+  }
+
+  .tablet-screenshot{
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+@media (width < 768px) {
+  .wrapper {
+    padding: 20px;
+  }
+}
+
+@media (width < 480px) {
+  .wrapper {
+    margin-top: 16px;
+    padding: 12px;
+  }
+
+  .tablet-screenshot{
+    justify-self:center; 
+    max-width: 304px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

@@ -213,5 +213,28 @@
 		"description": "In YeaHub, there are not only mentors who lead internships on projects, but also Gurus — mentors who help us develop the platform and make learning even more valuable. They add up-to-date interview questions and write explanations of complex topics.",
 		"badge": "Team member",
 		"link": "Learn more"
+	},
+	"avos": {
+		"title": "Real Job Interviews — ‘Авось Прорвемся’ & YeaHub",
+		"subtitle": "All interviews and questions collected together with our partners. Recordings are available in private chats.",
+		"interviews": "1000+ real interviews, salary ranges, résumés and breakdowns — all in one place",
+		"promo": {
+			"about": "‘Авось Прорвемся’ — a channel with interviews",
+			"learn": "Learn asynchronously and stay in touch with the job market",
+			"sum": "Bottom line: 1000+ interviews already inside, new ones are added constantly",
+			"join.price": "Join for 1,500 ₽",
+			"chips": {
+				"reviews": "",
+				"recordings": "",
+				"breakdowns": "",
+				"interview": "",
+				"contacts": "",
+				"guides": ""
+			}
+		},
+		"listen": {
+			"practice": "First listen to how real interviews go, then analyze and practice the same cases in the simulator",
+			"join": "Join"
+		}
 	}
 }
