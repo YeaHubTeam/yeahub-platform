@@ -369,6 +369,8 @@ export enum Analytics {
 	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
 	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
 	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
+	POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
 	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
 	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
 	MOST_DIFFICULT_QUESTIONS_PAGE_TITLE = 'most.difficult.questions.page.title',
