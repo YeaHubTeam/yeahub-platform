@@ -1,0 +1,57 @@
+.avos-banner {
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--color-purple-700);
+}
+
+.content {
+  margin-top: 11px;
+}
+
+.promo {
+  align-self:flex-end;
+  max-width: 572px;
+}
+
+.title {
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+@media (width < 1200px) {
+  .avos-banner {
+    margin-top: 0;
+    padding: 20px;
+  }
+
+  .logo{
+    align-self: flex-end;
+    max-width: 450px;
+  }
+
+  .promo {
+    align-self:flex-start
+  }
+}
+
+@media (width < 768px) {
+  .content {
+    margin-top: 0;
+  }
+
+  .title {
+    margin-top: 8px;
+  }
+
+  .logo{
+    max-width: 304px;
+  }
+}
+
+@media (width < 480px) {
+  .logo{
+    align-self:center;
+  }
+  
+}

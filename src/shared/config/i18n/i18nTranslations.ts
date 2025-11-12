@@ -929,6 +929,21 @@ export enum Landing {
 	GURU_DESCRIPTION = 'guru.description',
 	GURU_BADGE = 'guru.badge',
 	GURU_LINK = 'guru.link',
+	AVOS_TITLE = 'avos.title',
+	AVOS_SUBTITLE = 'avos.subtitle',
+	AVOS_INTERVIEWS = 'avos.interviews',
+	AVOS_PROMO_ABOUT = 'avos.promo.about',
+	AVOS_PROMO_LEARN = 'avos.promo.learn',
+	AVOS_PROMO_SUM = 'avos.promo.sum',
+	AVOS_PROMO_JOIN_PRICE = 'avos.promo.join.price',
+	AVOS_LISTEN_PRACTICE = 'avos.listen.practice',
+	AVOS_LISTEN_JOIN = 'avos.listen.join',
+	AVOS_PROMO_CHIPS_REVIEWS = 'avos.promo.chips.reviews',
+	AVOS_PROMO_CHIPS_RECORDINGS = 'avos.promo.chips.recordings',
+	AVOS_PROMO_CHIPS_BREAKDOWNS = 'avos.promo.chips.breakdowns',
+	AVOS_PROMO_CHIPS_INTERVIEW = 'avos.promo.chips.interview',
+	AVOS_PROMO_CHIPS_CONTACTS = 'avos.promo.chips.contacts',
+	AVOS_PROMO_CHIPS_GUIDES = 'avos.promo.chips.guides',
 }
 
 export enum Subscription {
