@@ -11,6 +11,13 @@ import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
+import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
+import {
+	CollectionNavigationButtons,
+	useCollectionQueryNavigate,
+	usePublicCollectionNavigation,
+} from '@/features/collections/navigateCollection';
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
 import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
@@ -19,6 +26,7 @@ import {
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
+	CollectionNavigation,
 	InterviewRecordings,
 } from '@/widgets/Collection';
 
@@ -26,6 +34,10 @@ import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
+	const filter = useGetCollectionsFilterParams({
+		specialization: DEFAULT_SPECIALIZATION_ID,
+		page: 1,
+	});
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
 	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
@@ -38,6 +50,11 @@ export const CollectionPage = () => {
 		},
 		{ skip: !collection?.questionsCount },
 	);
+	const { onQueryNavigate } = useCollectionQueryNavigate();
+	const { prevId, nextId, prevPage, nextPage, isDisabled } = usePublicCollectionNavigation({
+		collectionId,
+		filter,
+	});
 
 	const { isMobileS, isLargeScreen, isSmallScreen } = useScreenSize();
 
@@ -53,6 +70,13 @@ export const CollectionPage = () => {
 		return null;
 	}
 
+	const onMovePrev = () => {
+		onQueryNavigate(prevId, prevPage);
+	};
+
+	const onMoveNext = () => {
+		onQueryNavigate(nextId, nextPage);
+	};
 	const {
 		createdBy,
 		questionsCount,
@@ -85,9 +109,18 @@ export const CollectionPage = () => {
 				/>
 				{canTrain && (
 					<Card withOutsideShadow className={styles['train-button']}>
-						<Flex justify="center" align="center" gap="20">
-							<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
-							<WatchCollectionButton />
+						<Flex direction="column" gap="12" justify="center" align="center">
+							<Flex direction="row" gap="12">
+								{canTrain && (
+									<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
+								)}
+								<WatchCollectionButton />
+							</Flex>
+							<CollectionNavigationButtons
+								onMovePrev={onMovePrev}
+								onMoveNext={onMoveNext}
+								isDisabled={isDisabled}
+							/>
 						</Flex>
 					</Card>
 				)}

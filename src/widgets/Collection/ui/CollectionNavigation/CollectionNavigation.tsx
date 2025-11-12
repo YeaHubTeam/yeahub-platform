@@ -7,7 +7,6 @@ interface CollectionNavigationProps {
 	onMoveNext: () => void;
 	isDisabled: boolean;
 }
-
 export const CollectionNavigation = ({
 	onMoveNext,
 	onMovePrev,

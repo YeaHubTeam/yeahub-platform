@@ -26,6 +26,8 @@ import {
 
 import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
+import { WatchCollectionButton } from '@/features/collections/watchCollection';
+import { Card } from '@/shared/ui/Card';
 
 export const PublicCollectionPage = () => {
 	const filter = useGetCollectionsFilterParams({
@@ -109,11 +111,16 @@ export const PublicCollectionPage = () => {
 						imageSrc={imageSrc}
 						company={company}
 					/>
-					<CollectionNavigation
-						onMovePrev={onMovePrev}
-						onMoveNext={onMoveNext}
-						isDisabled={isDisabled}
-					/>
+					<Card>
+						<Flex align={'center'} direction={'column'}>
+							<WatchCollectionButton />
+							<CollectionNavigation
+								onMovePrev={onMovePrev}
+								onMoveNext={onMoveNext}
+								isDisabled={isDisabled}
+							/>
+						</Flex>
+					</Card>
 					<CollectionBody
 						isFree={isFree}
 						questions={questions}
