@@ -92,6 +92,7 @@ export enum Translation {
 	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 	CRUMBS_ANALYTICS_DIFFICULTQUESTIONS = 'crumbs.analytics.difficultQuestions',
+	CRUMBS_ANALYTICS_POPULAR_QUESTIONS = 'crumbs.analytics.popularQuestions',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -392,6 +393,11 @@ export enum Analytics {
 	SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
 	SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
 	SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
+	POPULAR_QUESTIONS_TOOLTIP = 'popular.questions.tooltip',
+	POPULAR_QUESTIONS_COLUMNS_INDEX = 'popular.questions.columns.index',
+	POPULAR_QUESTIONS_COLUMNS_QUESTIONS = 'popular.questions.columns.question',
+	POPULAR_QUESTIONS_COLUMNS_ANSWER = 'popular.questions.columns.answer',
+	POPULAR_QUESTIONS_COLUMNS_MOBILE_ANSWER = 'popular.questions.columns.mobile.answer',
 }
 
 export enum InterviewQuiz {

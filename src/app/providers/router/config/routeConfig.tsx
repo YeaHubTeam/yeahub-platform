@@ -59,6 +59,7 @@ import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
 import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
+import { PopularQuestionsPage } from '@/pages/analytics/PopularQuestionsPage';
 import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
@@ -557,7 +558,14 @@ export const router = createBrowserRouter([
 						path: ROUTES.analytics['difficult-questions'].route,
 						element: <DifficultQuestionsPage />,
 						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
+						crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
+						}
+					},
+					{
+						path: ROUTES.analytics['popular-questions'].route,
+						element: <PopularQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
 						},
 					},
 				],
