@@ -51,6 +51,9 @@ export enum Translation {
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.text',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+	STUB_ERROR_TITLE = 'stub.error.title',
+	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
+	STUB_ERROR_SUBMIT = 'stub.error.submit',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',
@@ -88,6 +91,7 @@ export enum Translation {
 	CRUMBS_PROGRESS_SPECIALIZATIONS = 'crumbs.progress.specializations',
 	CRUMBS_POPULAR_SKILLS = 'crumbs.popular.skills',
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
+	CRUMBS_ANALYTICS_DIFFICULTQUESTIONS = 'crumbs.analytics.difficultQuestions',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -362,26 +366,32 @@ export enum Specializations {
 }
 
 export enum Analytics {
-  SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
-  SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
-  TITLE_POPULAR_SKILLS = 'title.popular.skills',
-  POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
-  POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
-  MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
-  MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
-  TOOLTIP_SPECIFY = 'tooltip.specify',
-  SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
-  SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
-  POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
-  SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
-  SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
-  SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
-  SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
-  SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
-  SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
-  SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
-  SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
-  SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
+	SKILL_PROFICIENCY_TITLE = 'skill.proficiency.title',
+	SKILL_PROFICIENCY_LINK_DETAIL = 'skill.proficiency.link.detail',
+	TITLE_POPULAR_SKILLS = 'title.popular.skills',
+	POPULAR_QUESTIONS_TITLE = 'popular.questions.title',
+	POPULAR_QUESTIONS_FREQUENCY = 'popular.questions.frequency',
+	MOST_DIFFICULT_QUESTIONS_TITLE = 'most.difficult.questions.title',
+	MOST_DIFFICULT_QUESTIONS_LINK_DETAIL = 'most.difficult.questions.link.detail',
+	MOST_DIFFICULT_QUESTIONS_PAGE_TITLE = 'most.difficult.questions.page.title',
+	MOST_DIFFICULT_QUESTIONS_TOOLTIP = 'most.difficult.questions.tooltip',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_INDEX = 'most.difficult.questions.columns.index',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_QUESTIONS = 'most.difficult.questions.columns.questions',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_STAT = 'most.difficult.questions.columns.stat',
+	MOST_DIFFICULT_QUESTIONS_COLUMNS_ANSWERS_COUNT = 'most.difficult.questions.columns.answers.count',
+	TOOLTIP_SPECIFY = 'tooltip.specify',
+	SKILLS_TABLE_SKILLS = 'skills.popularity.table.skills',
+	SKILLS_TABLE_POPULARITY = 'skills.popularity.table.popularity',
+	POPULARITY_TOOLTIP = 'skills.popularity.popularity.tooltip',
+	SKILLS_POPULARITY = 'skills.popularity.skills.popularity.title',
+	SKILL_PROFICIENCY_TOOLTIP = 'skill.proficiency.tooltip',
+	SKILL_PROFICIENCY_SKILL_SELECT_CHOOSE = 'skill.proficiency.skill.select.choose',
+	SKILL_PROFICIENCY_SKILL_SPECIALIZATION_CHOOSE = 'skill.proficiency.specialization.select.choose',
+	SKILL_PROFICIENCY_COLUMNS_INDEX = 'skill.proficiency.columns.index',
+	SKILL_PROFICIENCY_COLUMNS_QUESTIONS = 'skill.proficiency.columns.questions',
+	SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE = 'skill.proficiency.columns.learnedPercentage',
+	SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL = 'skill.proficiency.column.questions.total',
+	SKILL_PROFICIENCY_ADA = 'skill.proficiency.ada',
 }
 
 export enum InterviewQuiz {
