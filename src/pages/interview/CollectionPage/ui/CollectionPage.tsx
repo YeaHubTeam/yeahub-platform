@@ -10,8 +10,8 @@ import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru'
 import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
+
 import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
 	CollectionNavigationButtons,
@@ -26,7 +26,6 @@ import {
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	CollectionNavigation,
 	InterviewRecordings,
 } from '@/widgets/Collection';
 
