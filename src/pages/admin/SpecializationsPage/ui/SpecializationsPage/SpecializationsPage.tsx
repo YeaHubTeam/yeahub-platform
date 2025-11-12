@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
+import { getUserId } from '@/entities/profile';
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
 import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpecializations';
@@ -24,14 +25,21 @@ import styles from './SpecializationsPage.module.css';
 
 const SpecializationsPage = () => {
 	const dispatch = useAppDispatch();
-	const { filters, hasFilters, onChangePage, onChangeAuthor, onChangeTitle } =
-		useSpecializationsFilters({
-			page: 1,
-		});
+
+	const userId = useAppSelector(getUserId);
+
+	const { filters, hasFilters, onChangePage, onChangeAuthor, onChangeTitle, onChangeIsMy } =
+		useSpecializationsFilters(
+			{
+				page: 1,
+			},
+			{ userId },
+		);
+
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
 
 	const { data: specializations } = useGetSpecializationsListQuery({
-		authorId: filters.author,
+		authorId: filters.isMy ? userId : filters.author,
 		title: filters.title,
 		page: filters.page,
 	});
@@ -52,7 +60,11 @@ const SpecializationsPage = () => {
 					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
 				)}
 				renderFilter={() => (
-					<SpecializationsFilters filters={filters} onChangeAuthor={onChangeAuthor} />
+					<SpecializationsFilters
+						filters={filters}
+						onChangeAuthor={onChangeAuthor}
+						onChangeIsMy={onChangeIsMy}
+					/>
 				)}
 			/>
 			<Card className={styles.content}>
