@@ -35,7 +35,12 @@ export const AvosBanner = () => {
 						{t(Landing.AVOS_TITLE)}
 					</Text>
 				</div>
-				<img src={avosAndYeahubLogo} alt="Avos and Yeahub logo" className={styles.logo} />
+				<img
+					src={avosAndYeahubLogo}
+					alt="Avos and Yeahub logo"
+					className={styles.logo}
+					loading="lazy"
+				/>
 			</Flex>
 		</Flex>
 	);

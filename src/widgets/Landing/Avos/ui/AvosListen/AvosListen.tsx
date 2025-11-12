@@ -2,35 +2,29 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { AVOS_TELEGRAM_URL } from '@/shared/constants/media';
 import { useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
-import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
+import { Banner } from '@/shared/ui/Banner';
 
 import headphones from '@/widgets/Landing/Avos/model/assets/headphones.jpg';
 
 import styles from './AvosListen.module.css';
 
 export const AvosListen = () => {
-	const { isSmallScreen, isMobileS } = useScreenSize();
+	const { isMobileS } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.landing);
-	const openTelegram = () =>
-		window.open('https://t.me/tribute/app?startapp=svN2-5zjSPWPELyQ', '_blank');
+	const openTelegram = () => window.open(AVOS_TELEGRAM_URL, '_blank');
 
 	return (
-		<Card withOutsideShadow className={styles.listen}>
-			<Flex gap="10" justify="between" direction={isSmallScreen ? 'column' : 'row'}>
-				<Flex align="center" gap="20" direction={isMobileS ? 'column' : 'row'}>
-					<img src={headphones} alt="headphones icon" className={styles.headphones} />
-					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.text}>
-						{t(Landing.AVOS_LISTEN_PRACTICE)}
-					</Text>
-				</Flex>
-				<Button size="large" onClick={openTelegram} className={styles.button}>
-					{t(Landing.AVOS_LISTEN_JOIN)}
-				</Button>
-			</Flex>
-		</Card>
+		<Banner
+			img={headphones}
+			title={t(Landing.AVOS_LISTEN_PRACTICE)}
+			titleVariant={isMobileS ? 'body3-accent' : 'body5-accent'}
+			buttonLabel={t(Landing.AVOS_LISTEN_JOIN)}
+			className={styles['listen-wrap']}
+			buttonClassName={styles.button}
+			onButtonClick={openTelegram}
+			innerWrapClassName={styles['inner-wrap']}
+		/>
 	);
 };

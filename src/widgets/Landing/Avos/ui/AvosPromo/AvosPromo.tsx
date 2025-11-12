@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { AVOS_TELEGRAM_URL } from '@/shared/constants/media';
 import { useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -24,8 +25,7 @@ export const AvosPromo = () => {
 		t(Landing.AVOS_PROMO_CHIPS_INTERVIEW),
 		t(Landing.AVOS_PROMO_CHIPS_GUIDES),
 	];
-	const openTelegram = () =>
-		window.open('https://t.me/tribute/app?startapp=svN2-5zjSPWPELyQ', '_blank');
+	const openTelegram = () => window.open(AVOS_TELEGRAM_URL, '_blank');
 
 	return (
 		<Card className={styles.wrapper} withOutsideShadow>
@@ -40,6 +40,7 @@ export const AvosPromo = () => {
 						src={tabletScreenshot}
 						alt="telegram channel's screenshots"
 						className={styles['tablet-screenshot']}
+						loading="lazy"
 					/>
 
 					<Flex wrap={'wrap'} gap={isMobileS ? '8' : '12'} className={styles.chips}>
@@ -65,6 +66,7 @@ export const AvosPromo = () => {
 					src={desktopScreenshot}
 					alt="telegram channel's screenshots"
 					className={styles.screenshot}
+					loading="lazy"
 				/>
 			</Flex>
 		</Card>
