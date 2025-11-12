@@ -29,6 +29,7 @@ const QuestionsPage = () => {
 
 	const {
 		filters,
+		hasFilters,
 		onResetFilters,
 		onChangeTitle,
 		onChangePage,
@@ -86,6 +87,7 @@ const QuestionsPage = () => {
 				showRemoveButton={selectedQuestions.length > 0}
 				onSearch={onChangeTitle}
 				searchValue={filters.title}
+				hasFilters={hasFilters}
 				renderRemoveButton={() => <DeleteQuestionsButton questionsToRemove={selectedQuestions} />}
 				renderFilter={() => (
 					<QuestionsFilters

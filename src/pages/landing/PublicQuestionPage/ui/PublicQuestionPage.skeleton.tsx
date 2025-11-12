@@ -5,6 +5,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { QuestionAdditionalInfoSkeleton } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBodySkeleton } from '@/widgets/question/QuestionBody';
 import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
+import { QuestionNavigationSkeleton } from '@/widgets/question/QuestionNavigation';
 
 import styles from './PublicQuestionPage.module.css';
 
@@ -22,6 +23,7 @@ export const PublicQuestionPageSkeleton = ({ dataTestId }: { dataTestId?: string
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1}>
 					<QuestionHeaderSkeleton />
+					<QuestionNavigationSkeleton />
 					<QuestionBodySkeleton />
 				</Flex>
 				{!isMobile && !isTablet && (

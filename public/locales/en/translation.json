@@ -62,6 +62,11 @@
 		"filter": {
 			"text": "Unfortunately, nothing was found for the query {{text}}. Try to change the query or use our categories",
 			"submit": "Reset filter"
+		},
+		"error": {
+			"title": "Failed to load data",
+			"subtitle": "Try again or refresh the page",
+			"submit": "Try again"
 		}
 	},
 	"modal": {
@@ -130,9 +135,11 @@
 		"resources.my.request": "Request",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
-		"popular.skills": "Popular skills",
 		"analytics": "Analytics",
-		"analytics.skillsProficiency": "Average percentage of skill mastered"
+		"progress.specializations": "Progress in the specialty",
+		"popular.skills": "Popular skills",
+		"analytics.skillsProficiency": "Average percentage of skill mastered",
+		"analytics.difficultQuestions": "The most difficult questions"
 	},
 	"toast": {
 		"title": {

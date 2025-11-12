@@ -9,7 +9,7 @@ import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
 import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/ResourcesPage';
 import { SkillsPageState } from '@/pages/admin/SkillsPage';
 import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
-import { UsersPageState } from '@/pages/admin/UserTablePage';
+import { DifficultQuestionsPageState } from '@/pages/analytics/DifficultQuestionsPage';
 import { SkillsProficiencyPageState } from '@/pages/analytics/SkillsProficiencyPage';
 import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
 
@@ -26,8 +26,8 @@ export interface State {
 	resourcesRequestsTab: ResourcesRequestsTabState;
 	specializationsPage: SpecializationsPageState;
 	skillsPage: SkillsPageState;
-	usersPage: UsersPageState;
 	profile: ProfileState;
 	collectionsPage: CollectionsPageState;
 	skillsProficiencyPage: SkillsProficiencyPageState;
+	difficultQuestionsPage: DifficultQuestionsPageState;
 }

@@ -162,6 +162,10 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/dashboard/analytics',
+		progressSpecializations: {
+			route: 'progress-specializations',
+			page: '/dashboard/analytics/progress-specializations',
+		},
 		'popular-skills': {
 			route: 'popular-skills',
 			page: '/dashboard/analytics/popular-skills',
@@ -169,6 +173,10 @@ export const ROUTES = {
 		'skills-proficiency': {
 			route: 'skills',
 			page: '/dashboard/analytics/skills',
+		},
+		'difficult-questions': {
+			route: 'difficultQuestions',
+			page: '/dashboard/analytics/difficultQuestions',
 		},
 	},
 	interview: {

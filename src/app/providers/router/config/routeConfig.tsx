@@ -9,7 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
-import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
+// import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -58,7 +58,9 @@ import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
+import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
 import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
+import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -180,13 +182,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	{
-		type: 'single',
-		route: ROUTES.analytics.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-		icon: AnalyticsIcon,
-		roles: allRoles,
-	},
+	// {
+	// 	type: 'single',
+	// 	route: ROUTES.analytics.route,
+	// 	title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+	// 	icon: AnalyticsIcon,
+	// 	roles: allRoles,
+	// },
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -527,6 +529,13 @@ export const router = createBrowserRouter([
 						element: <AnalyticsPage />,
 					},
 					{
+						path: ROUTES.analytics.progressSpecializations.route,
+						element: <ProgressSpecializationsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
+						},
+					},
+					{
 						path: ROUTES.analytics['popular-skills'].route,
 						element: <PopularSkillsPage />,
 						handle: {
@@ -538,6 +547,13 @@ export const router = createBrowserRouter([
 						element: <SkillsProficiencyPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
+						},
+					},
+					{
+						path: ROUTES.analytics['difficult-questions'].route,
+						element: <DifficultQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
 						},
 					},
 				],

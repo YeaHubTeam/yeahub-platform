@@ -34,7 +34,8 @@
 			"specialization": "specialization",
 			"skills": "Skills",
 			"questions": "Questions",
-			"progress": "Progress"
+			"progress": "Progress",
+			"number": "№"
 		}
 	}
 }

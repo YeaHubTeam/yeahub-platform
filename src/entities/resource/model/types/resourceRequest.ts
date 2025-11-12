@@ -1,4 +1,4 @@
-import { Response, SelectedEntities, SortOrder } from '@/shared/types/types';
+import { Response, SelectedEntities } from '@/shared/types/types';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';
@@ -8,15 +8,6 @@ import { Specialization } from '@/entities/specialization';
 import { CreateOrEditOrViewResourceFormValues, ResourceTypeCode } from './resource';
 
 export type ResourceRequestStatus = 'pending' | 'approved' | 'rejected';
-
-export interface ResourceRequestSkill {
-	id: number;
-	title: string;
-	description: string;
-	imageSrc: string;
-	createdAt: string;
-	updatedAt: string;
-}
 
 export interface ResourceRequestPayload {
 	name: string;
@@ -44,14 +35,11 @@ export interface GetResourceRequestsParams {
 	types?: string[];
 	specializations?: number[];
 	skills?: number[];
-	keywords?: string[];
 	userId?: string;
 	status?: ResourceRequestStatus;
 	page?: number;
 	limit?: number;
-	name?: string;
-	orderBy?: string;
-	order?: SortOrder;
+	search?: string;
 }
 
 export type GetResourceRequestsResponse = Response<ResourceRequest[]>;

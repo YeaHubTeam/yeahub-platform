@@ -63,6 +63,11 @@
 		"filter": {
 			"text": "К сожалению, по запросу {{text}} ничего не найдено. Попробуйте изменить запрос или воспользуйтесь нашими категориями",
 			"submit": "Сбросить фильтр"
+		},
+		"error": {
+			"title": "Не удалось загрузить данные",
+			"subtitle": "Попробуйте еще раз или обновите попытку",
+			"submit": "Повторить попытку"
 		}
 	},
 	"modal": {
@@ -133,9 +138,11 @@
 		"resources.my.request": "Заявка",
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
-		"popular.skills": "Популярные навыки",
 		"analytics": "Аналитика",
-		"analytics.skillsProficiency": "Средний процент изученности навыка"
+		"progress.specializations": "Прогресс по специальности",
+		"popular.skills": "Популярные навыки",
+		"analytics.skillsProficiency": "Средний процент изученности навыка",
+		"analytics.difficultQuestions": "Самые сложные вопросы"
 	},
 	"toast": {
 		"title": {

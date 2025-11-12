@@ -13,6 +13,7 @@ export {
 	useGetQuestionsSpecializationByIdCountQuery,
 	useGetLearnedQuestionsQuery,
 } from './api/questionApi';
+export { LS_INIT_QUESTION_ID } from './model/constants/question';
 export { getQuestionRoute } from './model/lib/getQuestionRoute';
 export { getQuestionImage } from './model/lib/getQuestionImage';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
@@ -36,3 +37,5 @@ export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/quest
 
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
+
+export type { TopStat } from './model/types/question';

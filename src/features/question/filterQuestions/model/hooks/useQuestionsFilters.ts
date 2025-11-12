@@ -18,7 +18,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		(filters.skills || []).length > 0 ||
 		(filters.rate || []).length > 0 ||
 		(filters.complexity || []).length > 0 ||
-		filters.status !== 'all' ||
+		(filters.status && filters.status !== 'all') ||
 		filters.isMy ||
 		Boolean(filters.orderBy) ||
 		Boolean(filters.order);

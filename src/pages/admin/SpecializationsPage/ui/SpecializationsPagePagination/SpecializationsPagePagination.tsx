@@ -1,43 +1,34 @@
-import { useSelector } from 'react-redux';
-
-import { useAppDispatch, useQueryParams } from '@/shared/hooks';
 import { Response } from '@/shared/types/types';
 import { Pagination } from '@/shared/ui/Pagination';
 
 import { Specialization } from '@/entities/specialization';
 
-import { getSpecializationsPageNum } from '../../model/selectors/specializationsPageSelectors';
-import { specializationsPageActions } from '../../model/slices/specializationsPageSlice';
-
 import styles from './SpecializationPagePagination.module.css';
+
 interface SpecializationsPagePaginationProps {
-	specializationsResponse?: Response<Specialization[]>;
+	specializations?: Response<Specialization[]>;
+	currentPage: number;
+	onPageChange: (page: number) => void;
 }
 
 export const SpecializationsPagePagination = ({
-	specializationsResponse,
+	specializations,
+	currentPage,
+	onPageChange,
 }: SpecializationsPagePaginationProps) => {
-	const dispatch = useAppDispatch();
-	const page = useSelector(getSpecializationsPageNum);
-
-	const { setQueryParams } = useQueryParams();
-
 	const onPrevPageClick = () => {
-		dispatch(specializationsPageActions.setPage(page - 1));
-		setQueryParams({ page: page - 1 });
+		onPageChange(currentPage - 1);
 	};
 
 	const onNextPageClick = () => {
-		dispatch(specializationsPageActions.setPage(page + 1));
-		setQueryParams({ page: page + 1 });
+		onPageChange(currentPage + 1);
 	};
 
-	const onChangePage = (newPage: number) => {
-		dispatch(specializationsPageActions.setPage(newPage));
-		setQueryParams({ page: newPage });
+	const onPaginationButtonClick = (newPage: number) => {
+		onPageChange(newPage);
 	};
 
-	if (!specializationsResponse?.data) {
+	if (!specializations?.data) {
 		return null;
 	}
 
@@ -46,9 +37,9 @@ export const SpecializationsPagePagination = ({
 			<Pagination
 				onPrevPageClick={onPrevPageClick}
 				onNextPageClick={onNextPageClick}
-				onChangePage={onChangePage}
-				page={page}
-				totalPages={Math.ceil(specializationsResponse.total / specializationsResponse.limit)}
+				onChangePage={onPaginationButtonClick}
+				page={currentPage}
+				totalPages={Math.ceil(specializations?.total / specializations?.limit)}
 			/>
 		</div>
 	);

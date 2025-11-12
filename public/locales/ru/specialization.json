@@ -34,7 +34,8 @@
 			"specialization": "Специальность",
 			"skills": "Навыков",
 			"questions": "Вопросов",
-			"progress": "Прогрессс"
+			"progress": "Прогресс",
+			"number": "№"
 		}
 	}
 }

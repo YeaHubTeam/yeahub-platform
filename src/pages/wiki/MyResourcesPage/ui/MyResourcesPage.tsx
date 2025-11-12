@@ -9,27 +9,28 @@ import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
-import { EmptyStub } from '@/shared/ui/EmptyStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsEmailVerified } from '@/entities/profile';
+import { ResourceRequestStatus, useGetMyRequestsResourcesQuery } from '@/entities/resource';
+
 import {
-	ResourceRequestStatus,
-	useGetMyRequestsResourcesQuery,
+	ResourceRequestsFilters,
 	useResourceRequestsFilters,
-} from '@/entities/resource';
+} from '@/features/resources/filterResourceRequests';
 
 import { MyResourcesList, MyResourcesPagination } from '@/widgets/Marketplace';
-import { MyResourcesFilters } from '@/widgets/resources/MyResourcesFilters';
 
 import styles from './MyResourcesPage.module.css';
 import { MyResourcesPageSkeleton } from './MyResourcesPageSkeleton.skeleton';
 
 const MyResourcesPage = () => {
 	const { isMobile, isTablet, isMobileS } = useScreenSize();
+	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 
 	const navigate = useNavigate();
 	const isEmailVerified = useAppSelector(getIsEmailVerified);
@@ -50,7 +51,12 @@ const MyResourcesPage = () => {
 		hasFilters,
 	} = useResourceRequestsFilters({ status: 'all', page: 1 });
 
-	const { data: resourcesResponse, isLoading } = useGetMyRequestsResourcesQuery({
+	const {
+		data: resourcesResponse,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetMyRequestsResourcesQuery({
 		page: filters.page ?? 1,
 		status: filters.status !== 'all' ? (filters.status as ResourceRequestStatus) : undefined,
 		search: filters.title,
@@ -62,18 +68,12 @@ const MyResourcesPage = () => {
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
 
-	const { t } = useTranslation(i18Namespace.marketplace);
-
-	const title = hasResources
-		? t(Marketplace.MY_RESOURCES)
-		: t(Marketplace.MY_RESOURCES_EMPTY_TITLE);
-
 	if (isLoading) {
 		return <MyResourcesPageSkeleton />;
 	}
 
 	const renderFilters = () => (
-		<MyResourcesFilters
+		<ResourceRequestsFilters
 			filters={filters}
 			onChangeTitle={onChangeTitle}
 			onChangeTypes={onChangeTypes}
@@ -96,23 +96,29 @@ const MyResourcesPage = () => {
 			<Card className={styles.main} withOutsideShadow>
 				<Flex className={styles.header}>
 					<Text variant={titleVariant} isMainTitle className={styles.text}>
-						{title}
+						{t(Marketplace.MY_RESOURCES)}
 					</Text>
 					<Flex gap="12" align="center">
 						{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						{suggestButton}
 					</Flex>
 				</Flex>
-				{hasResources ? (
-					<MyResourcesList resources={resources} />
-				) : hasFilters ? (
-					<EmptyFilterStub resetFilters={onResetFilters}></EmptyFilterStub>
+				{isError ? (
+					<Stub type="error" onClick={refetch} />
 				) : (
-					<EmptyStub
-						text={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
-						buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
-						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-					/>
+					<>
+						{hasResources && <MyResourcesList resources={resources} />}
+						{!hasResources && hasFilters && <EmptyFilterStub resetFilters={onResetFilters} />}
+						{!hasResources && !hasFilters && (
+							<Stub
+								type="empty"
+								subtitle={t(Marketplace.MY_RESOURCES_EMPTY_DESCRIPTION)}
+								title={t(Marketplace.MY_RESOURCES_EMPTY_TITLE)}
+								buttonText={t(Marketplace.MY_RESOURCES_EMPTY_BUTTON)}
+								onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+							/>
+						)}
+					</>
 				)}
 				<MyResourcesPagination
 					resourcesResponse={resourcesResponse}
