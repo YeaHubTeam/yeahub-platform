@@ -1,9 +1,15 @@
-import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
@@ -19,20 +25,21 @@ import {
 	usePublicCollectionNavigation,
 } from '@/features/collections/navigateCollection';
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
-import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
 import {
 	AdditionalInfo,
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	InterviewRecordings,
+	InterviewRecordingsBanner,
 } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.collection);
 	const filter = useGetCollectionsFilterParams({
 		specialization: DEFAULT_SPECIALIZATION_ID,
 		page: 1,
@@ -68,11 +75,9 @@ export const CollectionPage = () => {
 	if (!collection) {
 		return null;
 	}
-
 	const onMovePrev = () => {
 		onQueryNavigate(prevId, prevPage);
 	};
-
 	const onMoveNext = () => {
 		onQueryNavigate(nextId, nextPage);
 	};
@@ -106,23 +111,30 @@ export const CollectionPage = () => {
 					imageSrc={imageSrc}
 					company={company}
 				/>
-				{canTrain && (
-					<Card withOutsideShadow className={styles['train-button']}>
-						<Flex direction="column" gap="12" justify="center" align="center">
-							<Flex direction="row" gap="12">
-								{canTrain && (
-									<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
-								)}
-								<WatchCollectionButton />
-							</Flex>
-							<CollectionNavigationButtons
-								onMovePrev={onMovePrev}
-								onMoveNext={onMoveNext}
-								isDisabled={isDisabled}
-							/>
+				<Card withOutsideShadow className={styles['train-button']}>
+					<Flex direction="column" gap="12" justify="center" align="center">
+						<Flex direction="row" gap="12">
+							{canTrain && (
+								<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
+							)}
+							<Button
+								className={styles.button}
+								variant={'tertiary'}
+								preffix={<Icon icon="watch" size={24} />}
+								onClick={() => {
+									navigate(ROUTES.avos.page);
+								}}
+							>
+								{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
+							</Button>
 						</Flex>
-					</Card>
-				)}
+						<CollectionNavigationButtons
+							onMovePrev={onMovePrev}
+							onMoveNext={onMoveNext}
+							isDisabled={isDisabled}
+						/>
+					</Flex>
+				</Card>
 			</>
 		);
 	};
@@ -138,6 +150,7 @@ export const CollectionPage = () => {
 						hasPremiumAccess={hasPremiumAccess}
 					/>
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
+					{isSmallScreen && <InterviewRecordingsBanner />}
 				</div>
 				{isLargeScreen && (
 					<Flex direction="column" gap="20" className={styles.additional}>
@@ -152,7 +165,7 @@ export const CollectionPage = () => {
 							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
-						<InterviewRecordings />
+						<InterviewRecordingsBanner />
 					</Flex>
 				)}
 			</section>
