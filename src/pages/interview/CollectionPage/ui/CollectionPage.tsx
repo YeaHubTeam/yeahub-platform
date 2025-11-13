@@ -16,7 +16,6 @@ import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru'
 import { getChannelsForSpecialization } from '@/entities/media';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
@@ -31,7 +30,6 @@ import {
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	InterviewRecordingsBanner,
 } from '@/widgets/Collection';
 
 import styles from './CollectionPage.module.css';
@@ -41,7 +39,6 @@ export const CollectionPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.collection);
 	const filter = useGetCollectionsFilterParams({
-		specialization: DEFAULT_SPECIALIZATION_ID,
 		page: 1,
 	});
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
@@ -150,7 +147,6 @@ export const CollectionPage = () => {
 						hasPremiumAccess={hasPremiumAccess}
 					/>
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
-					{isSmallScreen && <InterviewRecordingsBanner />}
 				</div>
 				{isLargeScreen && (
 					<Flex direction="column" gap="20" className={styles.additional}>
@@ -165,7 +161,6 @@ export const CollectionPage = () => {
 							media={media}
 						/>
 						{guru && <GurusBanner gurus={[guru]} />}
-						<InterviewRecordingsBanner />
 					</Flex>
 				)}
 			</section>

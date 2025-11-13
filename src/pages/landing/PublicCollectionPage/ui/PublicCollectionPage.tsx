@@ -19,6 +19,7 @@ import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
+	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
 	usePublicCollectionNavigation,
 } from '@/features/collections/navigateCollection';
@@ -28,7 +29,6 @@ import {
 	CollectionAdditionalInfoDrawer,
 	CollectionBody,
 	CollectionHeader,
-	CollectionNavigation,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
@@ -119,7 +119,7 @@ export const PublicCollectionPage = () => {
 						company={company}
 					/>
 					<Card>
-						<Flex align={'center'} direction={'column'}>
+						<Flex align={'center'} direction={'column'} gap="12">
 							<Button
 								className={styles.button}
 								variant={'tertiary'}
@@ -130,7 +130,7 @@ export const PublicCollectionPage = () => {
 							>
 								{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
 							</Button>
-							<CollectionNavigation
+							<CollectionNavigationButtons
 								onMovePrev={onMovePrev}
 								onMoveNext={onMoveNext}
 								isDisabled={isDisabled}

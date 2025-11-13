@@ -6,7 +6,7 @@ import { WebpackOptions } from './types/types';
 
 export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConfiguration => {
 	return {
-		port: 3001,
+		port: port ?? 3001,
 		open: process.env.BROWSER
 			? {
 					app: {
@@ -16,12 +16,12 @@ export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConf
 			: true,
 		historyApiFallback: true,
 		hot: true,
-		// server: {
-		// 	type: 'https',
-		// 	options: {
-		// 		cert: readFileSync(paths.httpsCert),
-		// 		key: readFileSync(paths.httpsKey),
-		// 	},
-		// },
+		server: {
+			type: 'https',
+			options: {
+				cert: readFileSync(paths.httpsCert),
+				key: readFileSync(paths.httpsKey),
+			},
+		},
 	};
 };

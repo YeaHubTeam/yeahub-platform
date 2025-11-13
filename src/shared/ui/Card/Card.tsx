@@ -134,7 +134,7 @@ export const Card = ({
 	return (
 		<Flex
 			dataTestId={dataTestId}
-			gap="16"
+			gap={!title ? undefined : '16'}
 			direction="column"
 			className={classNames(styles.card, className, styles[size], {
 				[styles['card-expandable']]: isHeightForExpand,
