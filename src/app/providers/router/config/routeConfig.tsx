@@ -281,10 +281,6 @@ export const router = createBrowserRouter([
 				element: <Error404Page />,
 			},
 			{
-				path: '/avos',
-				element: <Error404Page />,
-			},
-			{
 				path: 'test',
 				element: <CollectionBlock />,
 			},
@@ -558,8 +554,8 @@ export const router = createBrowserRouter([
 						path: ROUTES.analytics['difficult-questions'].route,
 						element: <DifficultQuestionsPage />,
 						handle: {
-						crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
-						}
+							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
+						},
 					},
 					{
 						path: ROUTES.analytics['popular-questions'].route,

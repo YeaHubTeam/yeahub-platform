@@ -1,8 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config/i18n';
+import { Collections } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 
 import { useGetPublicCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
@@ -16,7 +22,6 @@ import {
 	useCollectionQueryNavigate,
 	usePublicCollectionNavigation,
 } from '@/features/collections/navigateCollection';
-import { WatchCollectionButton } from '@/features/collections/watchCollection';
 
 import {
 	AdditionalInfo,
@@ -30,6 +35,8 @@ import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
 
 export const PublicCollectionPage = () => {
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.collection);
 	const filter = useGetCollectionsFilterParams({
 		specialization: DEFAULT_SPECIALIZATION_ID,
 		page: 1,
@@ -113,7 +120,16 @@ export const PublicCollectionPage = () => {
 					/>
 					<Card>
 						<Flex align={'center'} direction={'column'}>
-							<WatchCollectionButton />
+							<Button
+								className={styles.button}
+								variant={'tertiary'}
+								preffix={<Icon icon="watch" size={24} />}
+								onClick={() => {
+									navigate(ROUTES.avos.page);
+								}}
+							>
+								{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
+							</Button>
 							<CollectionNavigation
 								onMovePrev={onMovePrev}
 								onMoveNext={onMoveNext}

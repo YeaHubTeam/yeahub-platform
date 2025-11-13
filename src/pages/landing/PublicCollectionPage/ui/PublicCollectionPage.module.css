@@ -2,3 +2,12 @@
   width: 392px;
   height: auto;
 }
+.button {
+	justify-content: center;
+	padding: 6px 10px;
+	border-radius: 12px;
+}
+
+.button:focus {
+	border: 1px solid transparent;
+}

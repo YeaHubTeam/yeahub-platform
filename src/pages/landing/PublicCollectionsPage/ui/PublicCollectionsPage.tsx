@@ -14,7 +14,7 @@ import {
 import {
 	CollectionsContent,
 	CollectionsPagination,
-	InterviewRecordings,
+	InterviewRecordingsBanner,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionsPage.module.css';
@@ -23,7 +23,7 @@ import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton'
 const PublicCollectionsPage = () => {
 	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
 		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
-
+	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
@@ -40,9 +40,6 @@ const PublicCollectionsPage = () => {
 			}}
 		/>
 	);
-
-	const { isLargeScreen } = useScreenSize();
-
 	if (isLoadingCollections) {
 		return <PublicCollectionsPageSkeleton />;
 	}
@@ -50,7 +47,6 @@ const PublicCollectionsPage = () => {
 	if (!collections) {
 		return null;
 	}
-
 	return (
 		<section className={styles.wrapper}>
 			<CollectionsContent
@@ -62,7 +58,7 @@ const PublicCollectionsPage = () => {
 						<CollectionsPagination
 							collectionsResponse={collections}
 							currentPage={filters.page || 1}
-							onPageChange={onChangePage} /**/
+							onPageChange={onChangePage}
 						/>
 					)
 				}
@@ -70,7 +66,7 @@ const PublicCollectionsPage = () => {
 			/>
 			<Flex direction="column" gap={'20'}>
 				{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
-				{isLargeScreen && <InterviewRecordings />}
+				{isLargeScreen && <InterviewRecordingsBanner />}
 			</Flex>
 		</section>
 	);

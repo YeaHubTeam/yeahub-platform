@@ -16,7 +16,7 @@ import {
 import {
 	CollectionsContent,
 	CollectionsPagination,
-	InterviewRecordings,
+	InterviewRecordingsBanner,
 } from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
@@ -78,7 +78,7 @@ const CollectionsPage = () => {
 			/>
 			<Flex direction={'column'} gap={'20'}>
 				{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
-				{isLargeScreen && <InterviewRecordings />}
+				{isLargeScreen && <InterviewRecordingsBanner />}
 			</Flex>
 		</section>
 	);
