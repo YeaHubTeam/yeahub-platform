@@ -18,6 +18,7 @@ import styles from './CollectionsContent.module.css';
 
 interface CollectionsProps {
 	pagination: ReactNode;
+	banner?: ReactNode;
 	collections: Collection[];
 	filter: FilterFromUser;
 	resetFilters: () => void;
@@ -30,6 +31,7 @@ export const CollectionsContent = ({
 	filter,
 	resetFilters,
 	renderDrawer,
+	banner,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
@@ -44,12 +46,14 @@ export const CollectionsContent = ({
 					</Text>
 					{isSmallScreen && renderDrawer()}
 				</Flex>
-
-				<CollectionsList collections={collections} queryFilter={search} />
-				{pagination}
-				{collections.length === 0 && (
-					<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />
-				)}
+				<Flex direction="column" gap="20">
+					<CollectionsList collections={collections} queryFilter={search} />
+					{banner}
+					{pagination}
+					{collections.length === 0 && (
+						<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />
+					)}
+				</Flex>
 			</Card>
 		</div>
 	);

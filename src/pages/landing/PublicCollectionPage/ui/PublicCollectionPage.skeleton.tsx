@@ -1,11 +1,12 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
+import { CollectionNavigationButtonsSkeleton } from '@/features/collections/navigateCollection';
+
 import {
 	AdditionalInfoSkeleton,
 	CollectionBodySkeleton,
 	CollectionHeaderSkeleton,
-	CollectionNavigationSkeleton,
 } from '@/widgets/Collection';
 
 import styles from './PublicCollectionPage.module.css';
@@ -18,7 +19,7 @@ export const PublicCollectionPageSkeleton = () => {
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1}>
 					<CollectionHeaderSkeleton />
-					<CollectionNavigationSkeleton />
+					<CollectionNavigationButtonsSkeleton width={160} />
 					<CollectionBodySkeleton />
 				</Flex>
 				{!isMobile && !isTablet && (

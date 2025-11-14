@@ -769,6 +769,11 @@ export enum Collections {
 
 	WARNING_INTRO = 'warning.intro',
 	WARNING_DISCLAIMER = 'warning.disclaimer',
+
+	BANNER_INTERVIEW_TITLE = 'banner.interview.title',
+	BANNER_INTERVIEW_DESCRIPTION = 'banner.interview.description',
+	BANNER_INTERVIEW_LINK = 'banner.interview.link',
+	BANNER_INTERVIEW_WATCH_BUTTON = 'banner.interview.watch.button',
 }
 
 export enum Companies {
