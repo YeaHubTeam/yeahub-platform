@@ -9,7 +9,11 @@ export const useSpecializationsFilters = (initialParams: SpecializationsFilterPa
 	const { filters, onFilterChange, onResetFilters } =
 		useQueryFilterParams<SpecializationsFilterParams>(initialParams, currentParams);
 
-	const hasFilters = (filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.author);
+	const hasFilters =
+		(filters.page || 1) > 1 ||
+		Boolean(filters.title) ||
+		Boolean(filters.author) ||
+		Boolean(filters.isMy);
 
 	const onChangeTitle = (title: SpecializationsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -20,7 +24,11 @@ export const useSpecializationsFilters = (initialParams: SpecializationsFilterPa
 	};
 
 	const onChangeAuthor = (author?: SpecializationsFilterParams['author']) => {
-		onFilterChange({ author, page: 1 });
+		onFilterChange({ author, isMy: false, page: 1 });
+	};
+
+	const onChangeIsMy = (isMy?: SpecializationsFilterParams['isMy']) => {
+		onFilterChange({ author: undefined, isMy: !!isMy, page: 1 });
 	};
 
 	return {
@@ -30,5 +38,6 @@ export const useSpecializationsFilters = (initialParams: SpecializationsFilterPa
 		onChangeTitle,
 		onChangeAuthor,
 		onChangePage,
+		onChangeIsMy,
 	};
 };
