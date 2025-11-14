@@ -29,12 +29,9 @@ const SpecializationsPage = () => {
 	const userId = useAppSelector(getUserId);
 
 	const { filters, hasFilters, onChangePage, onChangeAuthor, onChangeTitle, onChangeIsMy } =
-		useSpecializationsFilters(
-			{
-				page: 1,
-			},
-			{ userId },
-		);
+		useSpecializationsFilters({
+			page: 1,
+		});
 
 	const selectedSpecializations = useSelector(getSelectedSpecializations);
 

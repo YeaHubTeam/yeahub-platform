@@ -4,26 +4,16 @@ import { SpecializationsFilterParams } from '../types/filters';
 
 import { useGetSpecializationsFilterParams } from './useGetSpecializationsFilterParams';
 
-export const useSpecializationsFilters = (
-	initialParams: SpecializationsFilterParams,
-	options?: { userId?: string | null },
-) => {
+export const useSpecializationsFilters = (initialParams: SpecializationsFilterParams) => {
 	const currentParams = useGetSpecializationsFilterParams(initialParams);
 	const { filters, onFilterChange, onResetFilters } =
 		useQueryFilterParams<SpecializationsFilterParams>(initialParams, currentParams);
 
-	const isMyEffective = filters.isMy && options?.userId;
-
-	const normalizedFilters: SpecializationsFilterParams = {
-		...filters,
-		isMy: Boolean(isMyEffective),
-	};
-
 	const hasFilters =
-		(normalizedFilters.page || 1) > 1 ||
-		Boolean(normalizedFilters.title) ||
-		Boolean(normalizedFilters.author) ||
-		normalizedFilters.isMy;
+		(filters.page || 1) > 1 ||
+		Boolean(filters.title) ||
+		Boolean(filters.author) ||
+		Boolean(filters.isMy);
 
 	const onChangeTitle = (title: SpecializationsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -42,7 +32,7 @@ export const useSpecializationsFilters = (
 	};
 
 	return {
-		filters: normalizedFilters,
+		filters,
 		hasFilters,
 		onResetFilters,
 		onChangeTitle,

@@ -2,11 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Specializations } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector, useCurrentProject } from '@/shared/hooks';
+import { useCurrentProject } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 import { Switch } from '@/shared/ui/Switch';
 
-import { getUserId } from '@/entities/profile';
 import { UserSelect } from '@/entities/user';
 
 import { SpecializationsFilterParams } from '../../model/types/filters';
@@ -28,21 +27,16 @@ export const SpecializationsFilters = ({
 
 	const project = useCurrentProject();
 
-	const resolvedAuthor = isMy ? undefined : author;
-
-	const canUseMy = Boolean(useAppSelector(getUserId));
-
 	return (
 		<Flex direction="column" gap="24">
 			{project === 'admin' && onChangeIsMy && (
 				<Switch
 					checked={!!isMy}
-					disabled={!canUseMy}
 					onChange={(e) => onChangeIsMy(e.target.checked)}
-					label={t(Specializations.SORT_AUTH_TITLE)}
+					label={t(Specializations.FILTER_IS_MY_TITLE)}
 				/>
 			)}
-			<UserSelect onChange={onChangeAuthor} value={resolvedAuthor} disabled={!!isMy} />
+			<UserSelect onChange={onChangeAuthor} value={author} disabled={!!isMy} />
 		</Flex>
 	);
 };
