@@ -4,16 +4,11 @@ export const useGetSpecializationsFilterParams = (initialParams: Specializations
 	const params = new URLSearchParams(location.search);
 	const parsedParams = Object.fromEntries(params.entries());
 
-	const isMy =
-		parsedParams.isMy !== undefined
-			? parsedParams.isMy === '1' || parsedParams.isMy === 'true'
-			: (initialParams.isMy ?? false);
-
 	const currentParams: SpecializationsFilterParams = {
 		page: parsedParams.page ? Number(parsedParams.page) : initialParams.page,
 		title: parsedParams.title || initialParams.title,
-		author: isMy ? undefined : parsedParams.author || initialParams.author,
-		isMy,
+		author: parsedParams.author || initialParams.author,
+		isMy: parsedParams.isMy === 'true' ? !!parsedParams.isMy : initialParams.isMy,
 	};
 
 	return currentParams;
