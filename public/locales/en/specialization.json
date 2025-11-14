@@ -38,9 +38,11 @@
 			"number": "№"
 		}
 	},
-	"sort": {
-		"auth": {
-			"title": "My specializations"
+	"filter": {
+		"is": {
+			"my": {
+				"title": "My specializations"
+			}
 		}
 	}
 }
