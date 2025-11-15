@@ -51,10 +51,10 @@ const SkeletonGenerator = () => {
 			return <InterviewHistoryPageSkeleton />;
 		case ROUTES.interview.statistic.page:
 			return <InterviewStatisticsPageSkeleton />;
-		case ROUTES.interview.questions.page:
-			return <QuestionsPageSkeleton />;
 		case ROUTES.interview.quiz.page:
 			return <CreateQuizPageSkeleton />;
+		case ROUTES.wiki.questions.page:
+			return <QuestionsPageSkeleton />;
 		case ROUTES.profile.page:
 			return <ProfilePageSkeleton />;
 		case ROUTES.profile.edit.page:

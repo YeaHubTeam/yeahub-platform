@@ -58,7 +58,6 @@ const CollectionsPage = () => {
 	if (!allCollections) {
 		return null;
 	}
-
 	return (
 		<section className={styles.wrapper}>
 			<CollectionsContent

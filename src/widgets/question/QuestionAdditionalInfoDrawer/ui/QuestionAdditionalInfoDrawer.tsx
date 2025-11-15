@@ -61,7 +61,7 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 						complexity={complexity}
 						questionSkills={questionSkills}
 						createdBy={createdBy}
-						route={ROUTES.interview.questions.page}
+						route={ROUTES.wiki.questions.page}
 					/>
 				</Card>
 			</Drawer>
