@@ -6,6 +6,7 @@ import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
+import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -105,6 +106,10 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 		);
 	};
 
+	const renderCopyButton = (skill: Skill) => {
+		return <CopyButton text={skill.id} />;
+	};
+
 	if (!skills) {
 		return null;
 	}
@@ -118,6 +123,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			selectedItems={selectedSkills}
 			onSelectItems={onSelectSkills}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderCopyButton={renderCopyButton}
 		/>
 	);
 };

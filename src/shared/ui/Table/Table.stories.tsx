@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { SelectedEntities } from '@/shared/types/types';
+import { CopyButton } from '@/shared/ui/CopyButton';
 
 import { Table } from './Table';
 
@@ -37,6 +38,10 @@ const renderTableBody = (item: (typeof sampleItems)[number]) => (
 	</>
 );
 
+const renderCopyButton = () => {
+	return <CopyButton text={'id'} />;
+};
+
 export const Default: Story = {
 	render: () => {
 		const TableWithState = () => {
@@ -64,6 +69,17 @@ export const WithActions: Story = {
 			renderActions={(item) => (
 				<button onClick={() => alert(`Action on ${item.title}`)}>Action</button>
 			)}
+		/>
+	),
+};
+
+export const WithCopyButton: Story = {
+	render: () => (
+		<Table
+			items={sampleItems}
+			renderTableHeader={renderTableHeader}
+			renderTableBody={renderTableBody}
+			renderCopyButton={renderCopyButton}
 		/>
 	),
 };

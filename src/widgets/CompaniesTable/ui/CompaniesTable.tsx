@@ -6,6 +6,7 @@ import { Companies, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
+import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -126,6 +127,10 @@ export const CompaniesTable = ({
 		);
 	};
 
+	const renderCopyButton = (company: UICompany) => {
+		return <CopyButton text={company.id} />;
+	};
+
 	if (!companies) {
 		return null;
 	}
@@ -139,6 +144,7 @@ export const CompaniesTable = ({
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderCopyButton={renderCopyButton}
 		/>
 	);
 };

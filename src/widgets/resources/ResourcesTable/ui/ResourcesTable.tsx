@@ -5,6 +5,7 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Resources, Translation } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
+import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -130,6 +131,10 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 		);
 	};
 
+	const renderCopyButton = (resource: UIResource) => {
+		return <CopyButton text={resource.id} />;
+	};
+
 	if (!resources) {
 		return null;
 	}
@@ -141,6 +146,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			renderActions={renderActions}
 			items={resources}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderCopyButton={renderCopyButton}
 		/>
 	);
 };

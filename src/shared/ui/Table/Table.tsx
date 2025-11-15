@@ -28,6 +28,10 @@ interface TableProps<Id extends string | number, T> {
 	 * Render function for defining column widths in the table.
 	 */
 	renderTableColumnWidths?: () => ReactNode;
+	/**
+	 * Render function for displaying the copy button.
+	 */
+	renderCopyButton?: (item: T) => ReactNode;
 }
 
 /**
@@ -48,8 +52,10 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	selectedItems,
 	onSelectItems,
 	renderTableColumnWidths,
+	renderCopyButton,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
+	const hasCopyButton = !!renderCopyButton;
 
 	const isAllSelected = selectedItems?.length === items.length;
 	const selectedItemsIds = selectedItems?.map(({ id }) => id) || [];
@@ -74,6 +80,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				{selectedItems && <col className={styles.cell} />}
 				{renderTableColumnWidths?.()}
 				{hasActions && <col className={styles['actions-column']} />}
+				{hasCopyButton && <col className={styles['actions-column']} />}
 			</colgroup>
 			<thead className={`${styles.head} ${styles.bg}`}>
 				<tr>
@@ -84,6 +91,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 					)}
 					{renderTableHeader()}
 					{hasActions && <td className={styles['actions-column']}></td>}
+					{hasCopyButton && <td className={styles['actions-column']}></td>}
 				</tr>
 			</thead>
 			<tbody>
@@ -100,6 +108,9 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						)}
 						{renderTableBody(item, index)}
 						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
+						{hasCopyButton && (
+							<td className={styles['actions-column']}>{renderCopyButton?.(item)}</td>
+						)}
 					</tr>
 				))}
 			</tbody>
