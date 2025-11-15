@@ -36,7 +36,6 @@ export const CollectionsContent = ({
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
 	const { search } = useLocation();
-
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>

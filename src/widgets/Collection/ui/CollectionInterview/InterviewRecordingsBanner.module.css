@@ -2,10 +2,12 @@
   width: 72px;
   height: 72px;
 }
+
 .card{
   max-width: 360px;
 }
-  @media  screen and (max-width: 1220px) {
+
+@media  screen and (width <= 1220px) {
   .card {
     max-width: 100%;
   }
