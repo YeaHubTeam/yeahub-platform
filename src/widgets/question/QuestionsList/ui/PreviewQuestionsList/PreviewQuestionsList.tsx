@@ -39,7 +39,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 			title={t(Questions.PREVIEW_TITLE)}
 			actionTitle={t(Questions.PREVIEW_LINK)}
 			actionDisabled={isEmptyData}
-			actionRoute={ROUTES.interview.questions.page}
+			actionRoute={ROUTES.wiki.questions.page}
 		>
 			{isEmptyData ? (
 				<Text variant="body4" color="black-700" className={styles['no-questions']}>

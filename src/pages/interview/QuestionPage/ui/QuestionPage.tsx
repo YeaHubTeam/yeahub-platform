@@ -100,7 +100,7 @@ export const QuestionPage = () => {
 						keywords={keywords}
 						complexity={complexity}
 						questionSkills={questionSkills}
-						route={ROUTES.interview.questions.page}
+						route={ROUTES.wiki.questions.page}
 						media={media}
 					/>
 					{guru && <GurusBanner gurus={[guru]} />}

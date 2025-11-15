@@ -198,22 +198,6 @@ export const ROUTES = {
 			route: 'statistic',
 			page: '/dashboard/interview/statistic',
 		},
-		questions: {
-			route: 'questions',
-			page: '/dashboard/interview/questions',
-			detail: {
-				route: ':questionId',
-				page: '/dashboard/interview/questions/:questionId',
-			},
-		},
-		collections: {
-			route: 'collections',
-			page: '/dashboard/interview/collections',
-			detail: {
-				route: ':collectionId',
-				page: '/dashboard/interview/collections/:collectionId',
-			},
-		},
 		quiz: {
 			route: 'quiz',
 			page: '/dashboard/interview/quiz',
@@ -226,6 +210,22 @@ export const ROUTES = {
 	wiki: {
 		route: 'wiki',
 		page: '/dashboard/wiki',
+		questions: {
+			route: 'questions',
+			page: '/dashboard/wiki/questions',
+			detail: {
+				route: ':questionId',
+				page: '/dashboard/wiki/questions/:questionId',
+			},
+		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/wiki/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/wiki/collections/:collectionId',
+			},
+		},
 		resources: {
 			route: 'resources',
 			page: '/dashboard/wiki/resources',
