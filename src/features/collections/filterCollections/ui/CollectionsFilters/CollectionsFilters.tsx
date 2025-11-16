@@ -68,7 +68,6 @@ export const CollectionsFilters = ({
 			)}
 
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={handleIsFreeChange} />
-			{/*<ChooseCollectionAccess isFree={false} onChangeIsFree={handleIsFreeChange} />*/}
 		</div>
 	);
 };

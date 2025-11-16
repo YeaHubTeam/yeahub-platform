@@ -28,10 +28,7 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 	];
 
 	const onChooseAccess = (id: CollectionTariff) => {
-		console.log(isFree);
-		console.log('ChooseCollectionAccess', id);
 		const isFreeValue = id === 'free';
-		console.log(isFreeValue);
 		onChangeIsFree(isFreeValue);
 	};
 
