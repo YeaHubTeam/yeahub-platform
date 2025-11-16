@@ -9,7 +9,7 @@ import { CollectionTariff } from '@/entities/collection';
 import styles from './ChooseCollectionAccess.module.css';
 
 interface ChooseCollectionAccessProps {
-	isFree: boolean;
+	isFree?: boolean;
 	onChangeIsFree: (isFree: boolean) => void;
 }
 
@@ -28,7 +28,10 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 	];
 
 	const onChooseAccess = (id: CollectionTariff) => {
+		console.log(isFree);
+		console.log('ChooseCollectionAccess', id);
 		const isFreeValue = id === 'free';
+		console.log(isFreeValue);
 		onChangeIsFree(isFreeValue);
 	};
 

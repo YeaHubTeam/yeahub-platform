@@ -21,12 +21,19 @@ import styles from './PublicCollectionsPage.module.css';
 import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton';
 
 const PublicCollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
-		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
+	const {
+		filters,
+		onResetFilters,
+		onChangePage,
+		onChangeSpecialization,
+		onChangeIsFree,
+		onChangeTitle,
+	} = useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
+		isFree: filters.isFree,
 		page: filters.page,
 	});
 
@@ -34,9 +41,11 @@ const PublicCollectionsPage = () => {
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
+			onChangeIsFree={onChangeIsFree}
 			filter={{
 				title: filters.title,
 				specialization: filters.specialization,
+				isFree: filters.isFree,
 			}}
 		/>
 	);
