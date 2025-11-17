@@ -48,39 +48,5 @@ export const PopularSkillsPage = () => {
 				hasFilters,
 			}}
 		/>
-		// <Card className={styles.card}>
-		// 	<Flex justify="between" align="start">
-		// 		<Text variant={isMobile ? 'body5-accent' : 'body6'} className={styles.title}>
-		// 			{t(Analytics.SKILLS_POPULARITY, { specialization })}
-		// 		</Text>
-		// 		<Tooltip
-		// 			title={t(Analytics.POPULARITY_TOOLTIP)}
-		// 			placement="bottom-start"
-		// 			className={styles.tooltip}
-		// 		>
-		// 			<Icon icon="info" size={20} color="black-600" />
-		// 		</Tooltip>
-		// 	</Flex>
-		// 	<SpecializationSelect
-		// 		onChange={(value) => setSelectedSpecId(Array.isArray(value) ? value[0] : value)}
-		// 		value={selectedSpecId}
-		// 		className={styles.dropdown}
-		// 		prefix
-		// 	/>
-		// 	{isMobile ? (
-		// 		popularSkills?.data.map((skill) => <PopularSkillsMobileCard key={skill.id} skill={skill} />)
-		// 	) : (
-		// 		<PopularSkillsPageTable popularSkills={popularSkills?.data} />
-		// 	)}
-		// 	<Flex className={styles.pagination} justify="center">
-		// 		<Pagination
-		// 			onPrevPageClick={onPrevPageClick}
-		// 			onNextPageClick={onNextPageClick}
-		// 			onChangePage={onChangePage}
-		// 			page={currentPage}
-		// 			totalPages={totalPages}
-		// 		/>
-		// 	</Flex>
-		// </Card>
 	);
 };

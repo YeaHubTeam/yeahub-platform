@@ -38,7 +38,7 @@ export const SkillSelect = ({
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
-	console.log(selectedSkills);
+
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
 		if (hasMultiple) {
