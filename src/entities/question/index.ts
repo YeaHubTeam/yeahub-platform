@@ -36,11 +36,10 @@ export { questionsMock } from './api/__mocks__/data';
 
 export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
-export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';
 export { difficultQuestionsHandler } from './api/__mocks__/index';
 export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
 
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
 
-export type { TopStat } from './model/types/question';
+export type { MostDifficultQuestion } from './model/types/question';

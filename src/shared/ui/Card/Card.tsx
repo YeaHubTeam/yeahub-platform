@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Arrow from '@/shared/assets/icons/arrowShortDown.svg';
 import { i18Namespace } from '@/shared/config/i18n';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { Text } from '@/shared/ui/Text';
 
@@ -18,6 +19,7 @@ export interface CardProps {
 	children?: ReactNode;
 	expandable?: boolean;
 	className?: string;
+	classNameContent?: string;
 	title?: string;
 	actionRoute?: string;
 	actionTitle?: string;
@@ -35,13 +37,6 @@ export interface CardProps {
 interface ExpandIconProps {
 	isExpand: boolean;
 }
-
-/**
- * Reusable block component
- * @param { string | ReactNode } children block content
- * @param { boolean } expandable if the flag is true then the block is expandable (an expand button appears)
- * @param { string } className className string for custom styles
- */
 
 const ExpandIcon = ({ isExpand }: ExpandIconProps) => {
 	return (
@@ -80,12 +75,13 @@ const ExpandIcon = ({ isExpand }: ExpandIconProps) => {
 export const Card = ({
 	children,
 	className = '',
+	classNameContent = '',
 	withShadow = false,
 	withOutsideShadow = false,
 	withBorder = false,
 	expandable = false,
 	title = '',
-	actionTitle = '',
+	actionTitle,
 	actionRoute = '',
 	actionDisabled = false,
 	isActionPositionBottom = false,
@@ -166,7 +162,7 @@ export const Card = ({
 								color={actionDisabled ? 'purple-300' : 'purple-700'}
 								dataTestId="Card_Link"
 							>
-								{actionTitle}
+								{actionTitle || t(Translation.MORE)}
 							</Text>
 							<Icon
 								icon="arrowRight"
@@ -181,7 +177,7 @@ export const Card = ({
 			)}
 
 			<div
-				className={classNames(styles.content, {
+				className={classNames(styles.content, classNameContent, {
 					[styles['content-shadow']]: withShadow,
 					[styles['content-bottom']]: isActionPositionBottom,
 					[styles['content-height']]: !actionRoute,
