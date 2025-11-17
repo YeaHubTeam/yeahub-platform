@@ -1,0 +1,14 @@
+.icon {
+  width: 72px;
+  height: 72px;
+}
+
+.card{
+  max-width: 360px;
+}
+
+@media  screen and (width <= 1280px) {
+  .card {
+    max-width: 100%;
+  }
+}

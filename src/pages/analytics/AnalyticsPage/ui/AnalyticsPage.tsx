@@ -1,17 +1,26 @@
+import { useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
 
-import { DifficultQuestionsList } from '@/widgets/analytics/DifficultQuestionsList';
-import { PopularSkills } from '@/widgets/analytics/PopularSkills';
-import { SkillsProficiency } from '@/widgets/analytics/SkillsProficiency';
-import { SpecializationsProgressPanel } from '@/widgets/analytics/SpecializationsProgress';
+import { MostDifficultQuestionsWidget } from '@/widgets/analytics/MostDifficultQuestionsWidget';
+import { PopularQuestionsWidget } from '@/widgets/analytics/PopularQuestionsWidget';
+import { PopularSkillsWidget } from '@/widgets/analytics/PopularSkillsWidget';
+import { SkillsProficiencyWidget } from '@/widgets/analytics/SkillsProficiencyWidget';
+import { SpecializationProgressWidget } from '@/widgets/analytics/SpecializationProgressWidget';
 
 export const AnalyticsPage = () => {
+	const { isSmallScreen, isLaptop, isTablet } = useScreenSize();
+
 	return (
-		<Flex wrap="wrap" gap="20">
-			<SkillsProficiency />
-			<PopularSkills />
-			<DifficultQuestionsList />
-			<SpecializationsProgressPanel />
+		<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">
+			<Flex direction={isTablet || isLaptop ? 'row' : 'column'} gap="20" maxWidth={isSmallScreen}>
+				<SkillsProficiencyWidget />
+				<MostDifficultQuestionsWidget />
+			</Flex>
+			<Flex style={{ maxWidth: '100%' }} direction="column" gap="20" flex={1}>
+				<SpecializationProgressWidget />
+				<PopularQuestionsWidget />
+				<PopularSkillsWidget />
+			</Flex>
 		</Flex>
 	);
 };

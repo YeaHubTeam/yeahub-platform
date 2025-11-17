@@ -3,6 +3,9 @@ export type {
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
 	GetQuestionsBySpecializationCountResponse,
+	PopularQuestionStat,
+	PopularQuestionsSpecialization,
+	GetPopularQuestionsResponse,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
@@ -12,6 +15,7 @@ export {
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
 	useGetLearnedQuestionsQuery,
+	useGetPopularQuestionsQuery,
 } from './api/questionApi';
 export { LS_INIT_QUESTION_ID } from './model/constants/question';
 export { getQuestionRoute } from './model/lib/getQuestionRoute';
@@ -25,17 +29,17 @@ export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
-export { questionHandlers } from './api/__mocks__/index';
+export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestionsItem';
+export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 
 export { questionsMock } from './api/__mocks__/data';
 
-export { quizHandlers } from './api/__mocks__/index';
+export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
-export { MostDifficultQuestions } from '../question/ui/MostDifficultQuestions/MostDifficultQuestions';
 export { difficultQuestionsHandler } from './api/__mocks__/index';
 export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
 
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
 
-export type { TopStat } from './model/types/question';
+export type { MostDifficultQuestion } from './model/types/question';

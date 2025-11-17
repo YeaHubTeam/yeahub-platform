@@ -1,0 +1,46 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace } from '@/shared/config/i18n';
+import { Analytics, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector } from '@/shared/hooks';
+import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
+
+import { getSpecializationId } from '@/entities/profile';
+import { PreviewQuestionsItem, useGetPopularQuestionsQuery } from '@/entities/question';
+
+export const PopularQuestionsWidget = () => {
+	const { data, isLoading } = useGetPopularQuestionsQuery();
+	const specializationId = useAppSelector(getSpecializationId);
+
+	const { t } = useTranslation([i18Namespace.translation, i18Namespace.analytics]);
+	const currentSpecializationData =
+		data?.find((question) => question.specializationId === specializationId) ?? data?.[0];
+	const popularQuestions = currentSpecializationData?.topStat?.slice(0, 3) || [];
+
+	return (
+		<Card
+			size="medium"
+			title={t(Analytics.POPULAR_QUESTIONS_TITLE, { ns: i18Namespace.analytics })}
+			actionTitle={t(Translation.CRUMBS_QUESTION_DETAIL, { ns: i18Namespace.translation })}
+			actionRoute={ROUTES.analytics['popular-questions'].route}
+			isActionPositionBottom
+		>
+			{isLoading && null}
+			{!isLoading && (
+				<Flex direction="column" gap="12">
+					{popularQuestions.map((question) => (
+						<PreviewQuestionsItem
+							key={question.questionId}
+							questionId={question.questionId}
+							title={question.title}
+							frequency={question.frequencyStat}
+							imageSrc={question.imageSrc}
+						/>
+					))}
+				</Flex>
+			)}
+		</Card>
+	);
+};

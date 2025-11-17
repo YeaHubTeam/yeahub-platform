@@ -1,0 +1,24 @@
+.header {
+  margin-bottom: 24px;
+}
+
+.dropdown-container {
+  margin-bottom: 20px;
+}
+
+.tooltip {
+  max-width: 449px;
+}
+
+@media (width < 1440px) {
+  .tooltip {
+    max-width: 288px;
+  }
+}
+
+@media (width < 768px) {
+  .tooltip {
+    max-width: 269px;
+  }
+}
+

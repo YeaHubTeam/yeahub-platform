@@ -9,7 +9,7 @@ import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
-// import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
+import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
@@ -59,6 +59,7 @@ import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
 import { AnalyticsPage } from '@/pages/analytics/AnalyticsPage';
 import { DifficultQuestionsPage } from '@/pages/analytics/DifficultQuestionsPage';
+import { PopularQuestionsPage } from '@/pages/analytics/PopularQuestionsPage';
 import { PopularSkillsPage } from '@/pages/analytics/PopularSkillsPage';
 import { ProgressSpecializationsPage } from '@/pages/analytics/ProgressSpecializationsPage';
 import { SkillsProficiencyPage } from '@/pages/analytics/SkillsProficiencyPage';
@@ -79,6 +80,7 @@ import { InterviewStatisticsPage } from '@/pages/interview/InterviewStatisticsPa
 import { MainPage } from '@/pages/interview/MainPage';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/interview/QuestionPage';
 import { QuestionsPage } from '@/pages/interview/QuestionsPage';
+import { AvosPage } from '@/pages/landing/AvosPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
@@ -181,13 +183,13 @@ const mainLayoutMenuItems: MenuItem[] = [
 		],
 		roles: allRoles,
 	},
-	// {
-	// 	type: 'single',
-	// 	route: ROUTES.analytics.route,
-	// 	title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-	// 	icon: AnalyticsIcon,
-	// 	roles: allRoles,
-	// },
+	{
+		type: 'single',
+		route: ROUTES.analytics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+		icon: AnalyticsIcon,
+		roles: allRoles,
+	},
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
@@ -339,6 +341,10 @@ export const router = createBrowserRouter([
 						element: <PublicCollectionPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.avos.route,
+				element: <AvosPage />,
 			},
 		],
 	},
@@ -549,6 +555,13 @@ export const router = createBrowserRouter([
 						element: <DifficultQuestionsPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
+						},
+					},
+					{
+						path: ROUTES.analytics['popular-questions'].route,
+						element: <PopularQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
 						},
 					},
 				],

@@ -1,1 +1,1 @@
-export { ProgressSpecializationsPage } from './ui/ProgressSpecializationsPage';
+export { ProgressSpecializationsPage } from './ui/ProgressSpecializationsPage/ProgressSpecializationsPage';

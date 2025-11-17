@@ -54,7 +54,7 @@ export interface PopularSkill {
 export type PopularSkillsResponse = Response<PopularSkill[]>;
 
 export type PopularSkillsParamsRequest = {
-	page: number;
-	limit: number;
-	specializationId: number;
+	page?: number;
+	limit?: number;
+	specializationId?: number;
 };

@@ -178,6 +178,10 @@ export const ROUTES = {
 			route: 'difficultQuestions',
 			page: '/dashboard/analytics/difficultQuestions',
 		},
+		'popular-questions': {
+			route: 'popular-questions',
+			page: '/dashboard/analytics/popular-questions',
+		},
 	},
 	interview: {
 		route: 'interview',
@@ -290,5 +294,9 @@ export const ROUTES = {
 	learning: {
 		route: 'learning',
 		page: '/learning',
+	},
+	avos: {
+		route: 'avos',
+		page: '/avos',
 	},
 } as const;

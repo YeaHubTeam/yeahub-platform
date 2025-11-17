@@ -1,0 +1,32 @@
+.listen-wrap {
+  margin-top: 20px;
+}
+
+.button {
+  align-self:flex-end;
+  min-width: 240px;
+}
+
+@media (width < 1200px) {
+  .listen-wrap {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+} 
+
+@media (width < 480px) {
+  .headphones {
+    align-self: flex-start;
+  }
+
+  .button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .inner-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

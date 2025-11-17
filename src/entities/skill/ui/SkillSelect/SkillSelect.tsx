@@ -93,6 +93,7 @@ export const SkillSelect = ({
 				<Dropdown
 					label={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
 					disabled={disabled}
+					value={skillsDictionary?.[Array.isArray(value) ? value[0] : value]?.title}
 					onSelect={(val) => handleChange(String(val))}
 					size="S"
 				>
