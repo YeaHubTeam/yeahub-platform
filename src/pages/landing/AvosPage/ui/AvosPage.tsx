@@ -1,6 +1,6 @@
 import { AvosBanner, AvosPromo, AvosListen } from '@/widgets/Landing/Avos';
 
-export const AvosPage = () => {
+const AvosPage = () => {
 	return (
 		<>
 			<AvosBanner />
@@ -9,3 +9,5 @@ export const AvosPage = () => {
 		</>
 	);
 };
+
+export default AvosPage;
