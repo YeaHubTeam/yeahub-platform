@@ -1,0 +1,11 @@
+@media (width <= 1024px) {
+  .progress-item-card {
+    padding: 16px;
+  }
+}
+
+@media (width <= 768px) {
+  .progress-item-card {
+    padding: 16px;
+  }
+}

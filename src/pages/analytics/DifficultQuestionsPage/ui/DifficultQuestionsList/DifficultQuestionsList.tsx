@@ -1,27 +1,40 @@
-import { Flex } from '@/shared/ui/Flex';
+import { useTranslation } from 'react-i18next';
 
-import { TopStat } from '@/entities/question';
+import { i18Namespace } from '@/shared/config/i18n';
+import { Analytics } from '@/shared/config/i18n/i18nTranslations';
 
-import { DifficultQuestionMobile } from '../DifficultQuestionMobile/DifficultQuestionMobile';
+import { MostDifficultQuestion } from '@/entities/question';
+
+import {
+	AnalyticPageTemplateMobileList,
+	AnalyticPageTemplateMobileListItem,
+} from '@/widgets/analytics/AnalyticPageTemplate';
 
 interface MostDifficultQuestionsMobileProps {
-	difficultQuestions: TopStat[];
+	difficultQuestions: MostDifficultQuestion[];
 }
 export const DifficultQuestionsList = ({
 	difficultQuestions,
 }: MostDifficultQuestionsMobileProps) => {
-	return (
-		<Flex direction="column" gap="20">
-			{difficultQuestions.map((difficultQuestion) => {
-				return (
-					<DifficultQuestionMobile
-						key={difficultQuestion.questionId}
-						title={difficultQuestion.title}
-						stat={difficultQuestion.stat}
-						answersCount={difficultQuestion.answersCount}
-					/>
-				);
-			})}
-		</Flex>
+	const { t } = useTranslation([i18Namespace.analytics]);
+
+	const difficultQuestionsFields: AnalyticPageTemplateMobileListItem[] = difficultQuestions.map(
+		(question) => {
+			return {
+				title: question.title,
+				fields: [
+					{
+						label: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_STAT),
+						value: `${Math.round(question.stat)}%`,
+					},
+					{
+						label: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_ANSWERS_COUNT),
+						value: question.answersCount,
+					},
+				],
+			};
+		},
 	);
+
+	return <AnalyticPageTemplateMobileList items={difficultQuestionsFields} />;
 };

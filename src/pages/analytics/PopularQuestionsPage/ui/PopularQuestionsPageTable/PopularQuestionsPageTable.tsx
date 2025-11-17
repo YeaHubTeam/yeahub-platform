@@ -20,9 +20,9 @@ export const PopularQuestionsPageTable = ({ popularQuestions }: PopularQuestions
 
 	const renderTableHeader = () => {
 		const columns = {
-			index: t(Analytics.POPULAR_QUESTIONS_COLUMNS_INDEX),
-			question: t(Analytics.POPULAR_QUESTIONS_COLUMNS_QUESTIONS),
-			answer: t(Analytics.POPULAR_QUESTIONS_COLUMNS_ANSWER),
+			index: t(Analytics.POPULAR_QUESTIONS_TABLE_INDEX),
+			question: t(Analytics.POPULAR_QUESTIONS_TABLE_QUESTIONS),
+			answer: t(Analytics.POPULAR_QUESTIONS_TABLE_ANSWER),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);

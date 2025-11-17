@@ -92,7 +92,7 @@
   cursor: pointer;
 }
 
-@media (width <= 450px) {
+@media (width < 768px) {
   .wrapper, .wrapper-l, .wrapper-s {
     width: 100%;
   }

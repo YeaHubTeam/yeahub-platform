@@ -1,0 +1,9 @@
+.card {
+  background-color: var(--color-black-30);
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}

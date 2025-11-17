@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -6,14 +5,15 @@ import { Analytics } from '@/shared/config/i18n/i18nTranslations';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
-import { TopStat } from '@/entities/question';
+import { MostDifficultQuestion } from '@/entities/question';
 
-import { DifficultQuestionTableRow } from '../../model/types/difficultQuestionsPageTypes';
-
-import styles from './DifficultQuestionsTable.module.css';
+export type DifficultQuestionTableRow = Omit<MostDifficultQuestion, 'questionId'> & {
+	id: number;
+	rowId: number;
+};
 
 type DifficultQuestionsTableProps = {
-	difficultQuestions: TopStat[];
+	difficultQuestions: MostDifficultQuestion[];
 };
 
 export const DifficultQuestionsTable = ({ difficultQuestions }: DifficultQuestionsTableProps) => {
@@ -29,24 +29,16 @@ export const DifficultQuestionsTable = ({ difficultQuestions }: DifficultQuestio
 		};
 	});
 
-	const getAlignmentClasses = (i: number) => {
-		return classNames({
-			[styles['align-center']]: i === 0,
-			[styles['align-start']]: i === 1,
-			[styles['align-end']]: i > 1,
-		});
-	};
-
 	const renderTableHeader = () => {
 		const columns = {
-			index: t(Analytics.MOST_DIFFICULT_QUESTIONS_COLUMNS_INDEX),
-			questions: t(Analytics.MOST_DIFFICULT_QUESTIONS_COLUMNS_QUESTIONS),
-			stat: t(Analytics.MOST_DIFFICULT_QUESTIONS_COLUMNS_STAT),
-			answersCount: t(Analytics.MOST_DIFFICULT_QUESTIONS_COLUMNS_ANSWERS_COUNT),
+			index: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_INDEX),
+			questions: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_QUESTIONS),
+			stat: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_STAT),
+			answersCount: t(Analytics.MOST_DIFFICULT_QUESTIONS_TABLE_ANSWERS_COUNT),
 		};
 
-		return Object.entries(columns).map(([k, v], i) => (
-			<th key={k} className={classNames(styles.th, getAlignmentClasses(i))}>
+		return Object.entries(columns).map(([k, v]) => (
+			<th key={k}>
 				<Text variant={'body3-accent'} color={'white-900'}>
 					{v}
 				</Text>
@@ -62,11 +54,7 @@ export const DifficultQuestionsTable = ({ difficultQuestions }: DifficultQuestio
 			answersCount: difficultQuestion.answersCount,
 		};
 
-		return Object.entries(columns).map(([k, v], i) => (
-			<td className={getAlignmentClasses(i)} key={k}>
-				{v}
-			</td>
-		));
+		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderTableColumnWidths = () => {

@@ -30,7 +30,7 @@
   background-color: var(--color-white-900);
 }
 
-@media (width <= 450px) {
+@media (width < 768px) {
   .dropdown,
   .list {
     width: 100%;
