@@ -23,7 +23,7 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeAccess } =
+	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
 		useCollectionsFilters({
 			page: 1,
 		});
@@ -47,7 +47,7 @@ const CollectionsPage = () => {
 	const renderFilters = () => (
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
-			onChangeAccess={onChangeAccess}
+			onChangeIsFree={onChangeIsFree}
 			filter={{
 				title: filters.title,
 				isFree: filters.isFree,

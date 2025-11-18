@@ -10,7 +10,7 @@ import styles from './ChooseCollectionAccess.module.css';
 
 interface ChooseCollectionAccessProps {
 	isFree?: boolean;
-	onChangeIsFree: (isFree: boolean) => void;
+	onChangeIsFree: (isFree: boolean | undefined) => void;
 }
 
 interface AccessItem {
@@ -28,8 +28,12 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 	];
 
 	const onChooseAccess = (id: CollectionTariff) => {
-		const isFreeValue = id === 'free';
-		onChangeIsFree(isFreeValue);
+		if ((id === 'free' && isFree === true) || (id === 'premium' && isFree === false)) {
+			onChangeIsFree(undefined);
+		} else {
+			const isFreeValue = id === 'free';
+			onChangeIsFree(isFreeValue);
+		}
 	};
 
 	const prepareData = accessItems.map((item) => ({

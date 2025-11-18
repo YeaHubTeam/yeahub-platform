@@ -25,7 +25,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		});
 	};
 
-	const onChangeAccess = (isFree: CollectionsFilterParams['isFree']) => {
+	const onChangeIsFree = (isFree: CollectionsFilterParams['isFree']) => {
 		onFilterChange({
 			isFree,
 			page: 1,
@@ -42,7 +42,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onResetFilters,
 		onChangeTitle,
 		onChangeSpecialization,
-		onChangeAccess,
+		onChangeIsFree,
 		onChangePage,
 	};
 };

@@ -17,14 +17,14 @@ interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
 	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
-	onChangeAccess?: (isFree: CollectionsFilterParams['isFree']) => void;
+	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
 }
 
 export const CollectionsFilters = ({
 	filter,
 	onChangeTitle,
 	onChangeSpecialization,
-	onChangeAccess,
+	onChangeIsFree,
 }: CollectionsFiltersProps) => {
 	const { title, specialization, isFree } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
@@ -39,12 +39,6 @@ export const CollectionsFilters = ({
 	) => {
 		if (specialization) {
 			onChangeSpecialization?.(specialization);
-		}
-	};
-
-	const handleIsFreeChange = (isFree: CollectionsFilterParams['isFree']) => {
-		if (isFree === true || isFree === false) {
-			onChangeAccess?.(isFree);
 		}
 	};
 
@@ -67,7 +61,7 @@ export const CollectionsFilters = ({
 				</>
 			)}
 
-			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={handleIsFreeChange} />
+			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 		</div>
 	);
 };
