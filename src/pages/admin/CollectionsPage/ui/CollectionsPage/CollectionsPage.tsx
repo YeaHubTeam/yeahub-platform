@@ -9,6 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
+import { UserSelect } from '@/entities/user';
 
 import { useCollectionsFilters } from '@/features/collections/filterCollections';
 
@@ -30,9 +31,10 @@ const CollectionsPage = () => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
 	};
 
-	const { filters, onResetFilters, onChangeTitle, onChangePage } = useCollectionsFilters({
-		page: 1,
-	});
+	const { filters, hasFilters, onResetFilters, onChangeTitle, onChangePage, onChangeAuthor } =
+		useCollectionsFilters({
+			page: 1,
+		});
 
 	const onResetAll = () => {
 		dispatch(collectionsPageActions.resetFilters());
@@ -40,6 +42,7 @@ const CollectionsPage = () => {
 	};
 
 	const { data: allCollections } = useGetCollectionsListQuery({
+		authorId: filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
 	});
@@ -63,9 +66,11 @@ const CollectionsPage = () => {
 		<Flex componentType="main" direction="column" gap="24">
 			<SearchSection
 				to="create"
-				showRemoveButton={true}
+				showRemoveButton={selectedCollections.length > 0}
 				searchValue={filters.title}
 				onSearch={onChangeTitle}
+				hasFilters={hasFilters}
+				renderFilter={() => <UserSelect value={filters.authorId} onChange={onChangeAuthor} />}
 			/>
 			<Card className={styles.content}>
 				<CollectionsTable
