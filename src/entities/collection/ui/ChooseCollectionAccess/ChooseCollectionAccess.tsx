@@ -28,12 +28,12 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 	];
 
 	const onChooseAccess = (id: CollectionTariff) => {
-		if ((id === 'free' && isFree === true) || (id === 'premium' && isFree === false)) {
-			onChangeIsFree(undefined);
-		} else {
-			const isFreeValue = id === 'free';
-			onChangeIsFree(isFreeValue);
-		}
+		const values: Record<CollectionTariff, string> = {
+			premium: 'false',
+			free: 'true',
+		};
+
+		onChangeIsFree(isFree === JSON.parse(values[id]) ? undefined : JSON.parse(values[id]));
 	};
 
 	const prepareData = accessItems.map((item) => ({
