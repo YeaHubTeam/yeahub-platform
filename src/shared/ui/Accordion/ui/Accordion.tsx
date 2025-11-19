@@ -5,9 +5,11 @@ import { useScreenSize } from '@/shared/hooks';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
+import { ACCORDION_TEST_IDS } from '../model/constans';
+
 import styles from './Accordion.module.css';
 
-interface AccordionProps {
+export interface AccordionProps {
 	/**
 	 *The part of the content that remains visible when closed
 	 */
@@ -38,10 +40,22 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 	return (
 		<div
 			className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen }, className)}
+			data-testid={ACCORDION_TEST_IDS.ACCORDION}
 		>
-			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
-				<button className={styles.button} onClick={onOpenAccordion}>
-					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.title}>
+			<div
+				className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}
+				data-testid={ACCORDION_TEST_IDS.HEADING}
+			>
+				<button
+					className={styles.button}
+					onClick={onOpenAccordion}
+					data-testid={ACCORDION_TEST_IDS.BUTTON}
+				>
+					<Text
+						variant={isMobileS ? 'body3-accent' : 'body5-accent'}
+						className={styles.title}
+						dataTestId={ACCORDION_TEST_IDS.TITLE}
+					>
 						{title}
 					</Text>
 					<Icon
@@ -49,6 +63,7 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 						size={24}
 						color="purple-700"
 						className={classNames(styles.icon, { [styles['accordion-opened']]: isOpen })}
+						dataTestId={ACCORDION_TEST_IDS.ICON}
 					/>
 				</button>
 			</div>
@@ -56,7 +71,7 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 				className={styles['content-wrapper']}
 				style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
 			>
-				<div className={styles.content} ref={contentRef}>
+				<div className={styles.content} ref={contentRef} data-testid={ACCORDION_TEST_IDS.CONTENT}>
 					{children}
 				</div>
 			</div>
