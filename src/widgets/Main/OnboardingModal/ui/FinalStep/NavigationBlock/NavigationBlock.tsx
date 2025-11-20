@@ -21,7 +21,7 @@ export const NavigationBlock = () => {
 		{
 			icon: 'question',
 			label: t(Onboarding.FINAL_QUESTIONS_LINK),
-			route: ROUTES.interview.questions.page,
+			route: ROUTES.wiki.questions.page,
 		},
 		{
 			icon: 'checkList',
@@ -31,7 +31,7 @@ export const NavigationBlock = () => {
 		{
 			icon: 'student',
 			label: t(Onboarding.FINAL_INTERVIEW_LINK),
-			route: ROUTES.interview.collections.page,
+			route: ROUTES.wiki.collections.page,
 		},
 	];
 

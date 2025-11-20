@@ -37,7 +37,7 @@ export const PreviewCollectionsList = ({ className }: PreviewCollectionsListProp
 			title={t(Collections.COLLECTIONS_TITLE)}
 			actionTitle={t(Collections.COLLECTIONS_DETAIL)}
 			actionDisabled={isEmptyCollections}
-			actionRoute={ROUTES.collections.route}
+			actionRoute={ROUTES.wiki.collections.page}
 		>
 			{isEmptyCollections ? (
 				<Text variant="body4" color="black-700" className={styles['no-collections']}>

@@ -180,6 +180,16 @@ const mainLayoutMenuItems: MenuItem[] = [
 				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
 				icon: ResourcesIcon,
 			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.questions.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
+				icon: QuestionsIcon,
+			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+				icon: Collection,
+			},
 		],
 		roles: allRoles,
 	},
@@ -650,46 +660,6 @@ export const router = createBrowserRouter([
 						},
 					},
 					{
-						path: ROUTES.interview.questions.route,
-						element: <Outlet />,
-						handle: {
-							crumb: Translation.CRUMBS_QUESTIONS_LIST,
-						},
-						children: [
-							{
-								index: true,
-								element: <QuestionsPage />,
-							},
-							{
-								path: ROUTES.interview.questions.detail.route,
-								element: <InterviewQuestionPage />,
-								handle: {
-									crumb: Translation.CRUMBS_QUESTION_DETAIL,
-								},
-							},
-						],
-					},
-					{
-						path: ROUTES.interview.collections.route,
-						element: <Outlet />,
-						handle: {
-							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
-						},
-						children: [
-							{
-								index: true,
-								element: <InterviewCollectionsPage />,
-							},
-							{
-								path: ROUTES.interview.collections.detail.route,
-								element: <InterviewCollectionPage />,
-								handle: {
-									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
-								},
-							},
-						],
-					},
-					{
 						path: ROUTES.interview.quiz.route,
 						element: (
 							<VerifiedEmailRoute>
@@ -768,6 +738,46 @@ export const router = createBrowserRouter([
 								path: ROUTES.wiki.resources.requests.route,
 								element: <Outlet />,
 								children: [],
+							},
+						],
+					},
+					{
+						path: ROUTES.wiki.questions.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_QUESTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <QuestionsPage />,
+							},
+							{
+								path: ROUTES.wiki.questions.detail.route,
+								element: <InterviewQuestionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.wiki.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.wiki.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+								},
 							},
 						],
 					},
