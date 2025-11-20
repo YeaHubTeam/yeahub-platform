@@ -31,7 +31,7 @@ interface ImageLoaderWithoutCropperProps {
 export const ImageLoaderWithoutCropper = ({
 	changeImage,
 	removeImage,
-	maxMBSize,
+	maxMBSize = 150,
 	initialSrc: src,
 	disabled,
 }: ImageLoaderWithoutCropperProps) => {
@@ -80,7 +80,7 @@ export const ImageLoaderWithoutCropper = ({
 				<FileLoader
 					disabled={disabled}
 					className={styles['file-loader']}
-					maxFileMBSize={maxMBSize}
+					maxFileKBSize={maxMBSize}
 					accept={Accept.IMAGE}
 					fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO)}
 					extensionsText={Extension.IMAGE}
