@@ -8,6 +8,7 @@ export const useGetSpecializationsFilterParams = (initialParams: Specializations
 		page: parsedParams.page ? Number(parsedParams.page) : initialParams.page,
 		title: parsedParams.title || initialParams.title,
 		author: parsedParams.author || initialParams.author,
+		isMy: parsedParams.isMy === 'true' ? !!parsedParams.isMy : initialParams.isMy,
 	};
 
 	return currentParams;
