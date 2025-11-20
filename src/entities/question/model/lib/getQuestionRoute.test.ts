@@ -13,7 +13,7 @@ describe('getQuestionRoute', () => {
 
 	it('returns correct platform question route', () => {
 		const result = getQuestionRoute.platform(testId);
-		const expected = ROUTES.interview.questions.detail.page.replace(':questionId', testId);
+		const expected = ROUTES.wiki.questions.detail.page.replace(':questionId', testId);
 		expect(result).toBe(expected);
 	});
 

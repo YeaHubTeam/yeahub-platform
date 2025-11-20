@@ -1,54 +1,57 @@
 {
-	"title.popular.skills": "The popularity of skills in quizzes",
 	"popular.questions": {
 		"title": "Most frequently asked questions in collections",
 		"frequency": "Popularity",
 		"tooltip": "We show the most frequently asked questions in collections for each specialty",
-		"columns": {
+		"table": {
 			"index": "№",
 			"question": "Questions",
-			"answer": "Answers",
-			"mobile.answer": "Total answers"
+			"answer": "Answers"
 		}
 	},
 	"skill.proficiency": {
 		"title": "Average % of skill proficiency",
-		"link.detail": "More details",
 		"tooltip": "We calculate the overall progress of all users for a given skill",
-		"skill.select": {
-			"choose": "Please indicate your skills"
-		},
-		"specialization.select": {
-			"choose": "Please indicate your specialization"
-		},
-		"columns": {
+		"badge_one": "{{count}} question",
+		"badge_other": "{{count}} questions",
+		"table": {
 			"index": "№",
 			"questions": "Questions",
-			"learnedPercentage": "Studied"
-		},
-		"column.questions.total": "questions"
+			"learned.percentage": "Studied"
+		}
 	},
 	"most.difficult.questions": {
-		"title": "Most Difficult questions",
-		"link.detail": "More details",
-		"page.title": "The most 10 difficult questions for {{text}}",
+		"title": {
+			"widget": "Most Difficult questions",
+			"page": "The most 10 difficult questions for {{text}}",
+			"page.all": "The most 10 difficult questions"
+		},
 		"tooltip": "We analyze the participants' responses to this question: how many users answered \"I don't know\" when they first saw this question",
-		"columns": {
+		"table": {
 			"index": "№",
 			"questions": "Questions",
 			"stat": "Don't know",
 			"answers.count": "Answers count"
 		}
 	},
-	"tooltip": {
-		"specify": "We compare the average progress of all users by specialty."
-	},
-	"skills.popularity": {
-		"popularity.tooltip": "We calculate the popularity of skills based on how often they are chosen during training in the simulator",
+	"popular.skills": {
+		"title": "Skill popularity in quizzes for {{specialization}}",
+		"title.all": "Skill popularity in quizzes",
+		"tooltip": "We calculate the popularity of skills based on how often they are chosen during training in the simulator",
 		"table": {
 			"skills": "Skills",
 			"popularity": "Popularity"
-		},
-		"skills.popularity.title": "Skill popularity in quizzes for {{specialization}}"
+		}
+	},
+	"specialization.progress": {
+		"title": "Overall progress in specialty",
+		"tooltip": "We compare the average progress of all users by specialty.",
+		"table": {
+			"specialization": "specialization",
+			"skills": "Skills",
+			"questions": "Questions",
+			"progress": "Progress",
+			"number": "№"
+		}
 	}
 }

@@ -16,8 +16,6 @@ import { questionsTablePageReducer } from '@/pages/admin/QuestionsTablePage';
 import { resourcesAllTabReducer, resourcesRequestsTabReducer } from '@/pages/admin/ResourcesPage';
 import { skillsPageReducer } from '@/pages/admin/SkillsPage';
 import { specializationsPageReducer } from '@/pages/admin/SpecializationsPage';
-import { difficultQuestionsReducer } from '@/pages/analytics/DifficultQuestionsPage';
-import { skillsProficiencyReducer } from '@/pages/analytics/SkillsProficiencyPage';
 import { interviewHistoryPageReducer } from '@/pages/interview/InterviewHistoryPage';
 
 import { router } from '../../router';
@@ -34,8 +32,6 @@ export const createReduxStore = (initialState?: State) => {
 			questionsTablePage: questionsTablePageReducer,
 			companiesTablePage: companiesTablePageReducer,
 			specializationsPage: specializationsPageReducer,
-			skillsProficiencyPage: skillsProficiencyReducer,
-			difficultQuestionsPage: difficultQuestionsReducer,
 			profile: profileReducer,
 			collectionsPage: collectionsPageReducer,
 			resourcesRequestsTab: resourcesRequestsTabReducer,

@@ -1,1 +1,1 @@
-export { AvosPage } from './ui/AvosPage';
+export { AvosPage } from './ui/AvosPage.lazy';

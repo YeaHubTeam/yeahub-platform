@@ -149,7 +149,7 @@ export const gurus: Guru[] = [
 		image:
 			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%BE%D0%BB%D0%B5%D0%B3%D0%B3%D0%B5%D0%B8%CC%86%D0%BC.png',
 		socials: {
-			telegram: 'https://t.me/wealthygamedev',
+			telegram: 'https://t.me/+-cgBKDlC6I8zZDdi',
 			youtube: 'https://www.youtube.com/@wealthygamedev',
 			profileId: '801d60b8-4f72-4180-984d-8d6811c71963',
 			landing: 'https://clck.ru/3AZ47b',

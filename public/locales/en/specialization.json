@@ -37,5 +37,12 @@
 			"progress": "Progress",
 			"number": "№"
 		}
+	},
+	"filter": {
+		"is": {
+			"my": {
+				"title": "My specializations"
+			}
+		}
 	}
 }

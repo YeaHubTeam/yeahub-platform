@@ -67,6 +67,7 @@ import Twitter from '@/shared/assets/icons/twitter.svg';
 import UserCheckWithBackground from '@/shared/assets/icons/userCheckWithBackground.svg';
 import UserSwitch from '@/shared/assets/icons/UserSwitch.svg';
 import Warning from '@/shared/assets/icons/warning.svg';
+import Watch from '@/shared/assets/icons/watch.svg';
 import Whatsapp from '@/shared/assets/icons/whatsapp.svg';
 import YeaHubCommunity from '@/shared/assets/icons/YeaHubCommunity.svg';
 import Youtube from '@/shared/assets/icons/youtube.svg';
@@ -148,4 +149,5 @@ export const icons: Record<IconName, IconComponent> = {
 	lamp: Lamp,
 	tickWithBackground: TickWithBackground,
 	copy: Copy,
+	watch: Watch,
 };

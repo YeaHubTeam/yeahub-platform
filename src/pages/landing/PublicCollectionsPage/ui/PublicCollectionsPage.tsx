@@ -1,6 +1,7 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
@@ -10,7 +11,11 @@ import {
 	useCollectionsFilters,
 } from '@/features/collections/filterCollections';
 
-import { CollectionsContent, CollectionsPagination } from '@/widgets/Collection';
+import {
+	CollectionsContent,
+	CollectionsPagination,
+	InterviewRecordingsBanner,
+} from '@/widgets/Collection';
 
 import styles from './PublicCollectionsPage.module.css';
 import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton';
@@ -18,7 +23,7 @@ import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton'
 const PublicCollectionsPage = () => {
 	const { filters, onResetFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
 		useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
-
+	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
@@ -35,9 +40,6 @@ const PublicCollectionsPage = () => {
 			}}
 		/>
 	);
-
-	const { isLargeScreen } = useScreenSize();
-
 	if (isLoadingCollections) {
 		return <PublicCollectionsPageSkeleton />;
 	}
@@ -45,7 +47,6 @@ const PublicCollectionsPage = () => {
 	if (!collections) {
 		return null;
 	}
-
 	return (
 		<section className={styles.wrapper}>
 			<CollectionsContent
@@ -62,8 +63,12 @@ const PublicCollectionsPage = () => {
 					)
 				}
 				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
+				banner={!isLargeScreen && <InterviewRecordingsBanner />}
 			/>
-			{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+			<Flex direction="column" gap={'20'}>
+				{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+				{isLargeScreen && <InterviewRecordingsBanner />}
+			</Flex>
 		</section>
 	);
 };

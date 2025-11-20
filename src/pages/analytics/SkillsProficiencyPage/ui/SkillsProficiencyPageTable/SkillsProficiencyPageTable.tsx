@@ -20,9 +20,9 @@ export const SkillsProficiencyPageTable = ({
 
 	const renderTableHeader = () => {
 		const columns = {
-			index: t(Analytics.SKILL_PROFICIENCY_COLUMNS_INDEX),
-			questions: t(Analytics.SKILL_PROFICIENCY_COLUMNS_QUESTIONS),
-			learnedPercentage: t(Analytics.SKILL_PROFICIENCY_COLUMNS_LEARNED_PERCENTAGE),
+			index: t(Analytics.SKILL_PROFICIENCY_TABLE_INDEX),
+			questions: t(Analytics.SKILL_PROFICIENCY_TABLE_QUESTIONS),
+			learnedPercentage: t(Analytics.SKILL_PROFICIENCY_TABLE_LEARNED_PERCENTAGE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -33,7 +33,7 @@ export const SkillsProficiencyPageTable = ({
 			index: learnedQuestion.rowNumber,
 			questions: {
 				title: `${learnedQuestion.specialization.title} - ${learnedQuestion.skill.title}`,
-				total: `${learnedQuestion.total} ${t(Analytics.SKILL_PROFICIENCY_COLUMN_QUESTIONS_TOTAL)}`,
+				total: t(Analytics.SKILL_PROFICIENCY_BADGE, { count: learnedQuestion.total }),
 			},
 			learnedPercentage: `${learnedQuestion.learnedPercentage}%`,
 		};
