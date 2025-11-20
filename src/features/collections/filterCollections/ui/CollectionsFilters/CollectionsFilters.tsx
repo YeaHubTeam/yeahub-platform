@@ -5,6 +5,7 @@ import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useCurrentProject } from '@/shared/hooks';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
+import { ChooseCollectionAccess } from '@/entities/collection';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
@@ -16,14 +17,16 @@ interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
 	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
+	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
 }
 
 export const CollectionsFilters = ({
 	filter,
 	onChangeTitle,
 	onChangeSpecialization,
+	onChangeIsFree,
 }: CollectionsFiltersProps) => {
-	const { title, specialization } = filter;
+	const { title, specialization, isFree } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -58,7 +61,7 @@ export const CollectionsFilters = ({
 				</>
 			)}
 
-			{/* <ChooseCollectionAccess isFree={localIsFree} onChangeIsFree={handleIsFreeChange} /> */}
+			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 		</div>
 	);
 };

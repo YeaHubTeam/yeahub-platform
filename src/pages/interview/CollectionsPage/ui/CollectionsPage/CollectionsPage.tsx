@@ -23,9 +23,10 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeTitle } = useCollectionsFilters({
-		page: 1,
-	});
+	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
+		useCollectionsFilters({
+			page: 1,
+		});
 
 	const specializationId = useAppSelector(getSpecializationId);
 
@@ -37,6 +38,7 @@ const CollectionsPage = () => {
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
+		isFree: filters.isFree,
 		page: filters.page,
 	});
 
@@ -45,8 +47,10 @@ const CollectionsPage = () => {
 	const renderFilters = () => (
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
+			onChangeIsFree={onChangeIsFree}
 			filter={{
 				title: filters.title,
+				isFree: filters.isFree,
 			}}
 		/>
 	);

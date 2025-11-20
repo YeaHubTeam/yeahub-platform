@@ -9,8 +9,8 @@ import { CollectionTariff } from '@/entities/collection';
 import styles from './ChooseCollectionAccess.module.css';
 
 interface ChooseCollectionAccessProps {
-	isFree: boolean;
-	onChangeIsFree: (isFree: boolean) => void;
+	isFree?: boolean;
+	onChangeIsFree: (isFree: boolean | undefined) => void;
 }
 
 interface AccessItem {
@@ -28,8 +28,12 @@ export const ChooseCollectionAccess = ({ isFree, onChangeIsFree }: ChooseCollect
 	];
 
 	const onChooseAccess = (id: CollectionTariff) => {
-		const isFreeValue = id === 'free';
-		onChangeIsFree(isFreeValue);
+		const values: Record<CollectionTariff, string> = {
+			premium: 'false',
+			free: 'true',
+		};
+
+		onChangeIsFree(isFree === JSON.parse(values[id]) ? undefined : JSON.parse(values[id]));
 	};
 
 	const prepareData = accessItems.map((item) => ({
