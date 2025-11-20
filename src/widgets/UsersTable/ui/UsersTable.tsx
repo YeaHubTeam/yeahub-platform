@@ -5,7 +5,6 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
-import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -105,10 +104,6 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		);
 	};
 
-	const renderCopyButton = (user: User) => {
-		return <CopyButton text={user.id} />;
-	};
-
 	if (!users) {
 		return null;
 	}
@@ -120,7 +115,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			renderActions={renderActions}
 			items={users}
 			renderTableColumnWidths={renderTableColumnWidths}
-			renderCopyButton={renderCopyButton}
+			hasCopyButton
 		/>
 	);
 };

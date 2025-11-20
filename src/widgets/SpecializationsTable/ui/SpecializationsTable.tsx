@@ -6,7 +6,6 @@ import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslati
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
-import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -108,10 +107,6 @@ export const SpecializationsTable = ({
 		);
 	};
 
-	const renderCopyButton = (specialization: Specialization) => {
-		return <CopyButton text={specialization.id} />;
-	};
-
 	if (!specializations) {
 		return null;
 	}
@@ -125,7 +120,7 @@ export const SpecializationsTable = ({
 			selectedItems={selectedSpecializations}
 			onSelectItems={onSelectSpecializations}
 			renderTableColumnWidths={renderTableColumnWidths}
-			renderCopyButton={renderCopyButton}
+			hasCopyButton
 		/>
 	);
 };

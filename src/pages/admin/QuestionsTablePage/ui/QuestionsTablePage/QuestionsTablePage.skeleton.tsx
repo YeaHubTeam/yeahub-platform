@@ -9,7 +9,7 @@ export const QuestionsTablePageSkeleton = () => {
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<Card className={styles.content}>
-				<TableSkeleton />
+				<TableSkeleton hasCopyButton />
 			</Card>
 		</Flex>
 	);

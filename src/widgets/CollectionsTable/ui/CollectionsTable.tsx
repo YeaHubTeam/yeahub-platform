@@ -7,7 +7,6 @@ import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations'
 import { ROUTES } from '@/shared/config/router/routes';
 import { route } from '@/shared/helpers/route';
 import { SelectedAdminEntities } from '@/shared/types/types';
-import { CopyButton } from '@/shared/ui/CopyButton';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -138,10 +137,6 @@ export const CollectionsTable = ({
 		);
 	};
 
-	const renderCopyButton = (collection: Collection) => {
-		return <CopyButton text={collection.id} />;
-	};
-
 	if (!collections) {
 		return null;
 	}
@@ -155,7 +150,7 @@ export const CollectionsTable = ({
 			selectedItems={selectedCollections}
 			onSelectItems={onSelectCollections}
 			renderTableColumnWidths={renderTableColumnWidths}
-			renderCopyButton={renderCopyButton}
+			hasCopyButton
 		/>
 	);
 };

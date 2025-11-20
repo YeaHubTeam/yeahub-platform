@@ -9,7 +9,7 @@ export const UsersTablePageSkeleton = () => {
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<Card className={styles.content}>
-				<TableSkeleton columnCount={3} hasSelectors={false} />
+				<TableSkeleton columnCount={3} hasSelectors={false} hasCopyButton />
 			</Card>
 		</Flex>
 	);

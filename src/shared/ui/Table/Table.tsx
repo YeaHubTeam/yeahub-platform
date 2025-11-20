@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { SelectedEntities, SelectedEntity } from '@/shared/types/types';
 import { Checkbox } from '@/shared/ui/Checkbox';
+import { CopyButton } from '@/shared/ui/CopyButton';
 
 import styles from './Table.module.css';
 
@@ -29,9 +30,9 @@ interface TableProps<Id extends string | number, T> {
 	 */
 	renderTableColumnWidths?: () => ReactNode;
 	/**
-	 * Render function for displaying the copy button.
+	 * Shows a copy button
 	 */
-	renderCopyButton?: (item: T) => ReactNode;
+	hasCopyButton?: boolean;
 }
 
 /**
@@ -52,10 +53,9 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	selectedItems,
 	onSelectItems,
 	renderTableColumnWidths,
-	renderCopyButton,
+	hasCopyButton,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
-	const hasCopyButton = !!renderCopyButton;
 
 	const isAllSelected = selectedItems?.length === items.length;
 	const selectedItemsIds = selectedItems?.map(({ id }) => id) || [];
@@ -109,7 +109,9 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 						{renderTableBody(item, index)}
 						{hasActions && <td className={styles['actions-column']}>{renderActions?.(item)}</td>}
 						{hasCopyButton && (
-							<td className={styles['actions-column']}>{renderCopyButton?.(item)}</td>
+							<td className={styles['actions-column']}>
+								<CopyButton data-testid="Table_CopyButton" text={item.id} />
+							</td>
 						)}
 					</tr>
 				))}
