@@ -12,5 +12,8 @@ export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterPa
 		title: parsedParams.title || initialParams.title,
 	};
 
+	const authorId = parsedParams.authorId || initialParams.authorId;
+	if (authorId) currentParams.authorId = authorId;
+
 	return currentParams;
 };
