@@ -95,7 +95,7 @@ export const RequestInfoPage = () => {
 					keywords={requestPayload.keywords || []}
 					resourceSkills={skills}
 					specializations={specializations}
-					route={ROUTES.wiki.resources.requests.page}
+					route={ROUTES.wiki.resources.my.page}
 				/>
 			)}
 		</Flex>
