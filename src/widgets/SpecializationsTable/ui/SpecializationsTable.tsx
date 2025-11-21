@@ -120,6 +120,7 @@ export const SpecializationsTable = ({
 			selectedItems={selectedSpecializations}
 			onSelectItems={onSelectSpecializations}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

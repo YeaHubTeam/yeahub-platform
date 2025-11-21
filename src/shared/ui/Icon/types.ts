@@ -73,6 +73,7 @@ export type IconName =
 	| 'burgerAndCross'
 	| 'lamp'
 	| 'tickWithBackground'
+	| 'copy'
 	| 'watch';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

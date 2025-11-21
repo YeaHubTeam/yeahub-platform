@@ -141,6 +141,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			renderActions={renderActions}
 			items={resources}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

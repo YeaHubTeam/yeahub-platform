@@ -118,6 +118,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			selectedItems={selectedSkills}
 			onSelectItems={onSelectSkills}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

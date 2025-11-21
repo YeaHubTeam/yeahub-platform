@@ -8,12 +8,14 @@ interface TableSkeletonProps {
 	hasSelectors?: boolean;
 	rowCount?: number;
 	columnCount?: number;
+	hasCopyButton?: boolean;
 }
 
 export const TableSkeleton = ({
 	hasSelectors = true,
 	rowCount = 10,
 	columnCount = 3,
+	hasCopyButton = false,
 }: TableSkeletonProps) => {
 	return (
 		<table className={styles.table}>
@@ -31,6 +33,7 @@ export const TableSkeleton = ({
 						</th>
 					))}
 					<th className={styles['actions-column']}></th>
+					{hasCopyButton && <th className={styles['actions-column']}></th>}
 				</tr>
 			</thead>
 			<tbody>
@@ -54,6 +57,16 @@ export const TableSkeleton = ({
 								variant="tertiary"
 							/>
 						</td>
+						{hasCopyButton && (
+							<td className={styles.cell}>
+								<IconButtonSkeleton
+									aria-label="icon skeleton"
+									form="square"
+									size="small"
+									variant="tertiary"
+								/>
+							</td>
+						)}
 					</tr>
 				))}
 			</tbody>

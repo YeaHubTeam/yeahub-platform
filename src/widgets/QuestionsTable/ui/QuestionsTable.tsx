@@ -149,6 +149,7 @@ export const QuestionsTable = ({
 			selectedItems={selectedQuestions}
 			onSelectItems={onSelectQuestions}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };
