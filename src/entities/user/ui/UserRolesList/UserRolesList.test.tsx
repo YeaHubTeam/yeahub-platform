@@ -1,11 +1,23 @@
 import { screen } from '@testing-library/react';
 
 import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { FlexProps } from '@/shared/ui/Flex/Flex';
 import { StatusChipProps } from '@/shared/ui/StatusChip/StatusChip';
 
-import { mockRoles } from '../../model/data/userRolesMock';
+import type { Role } from '@/entities/auth';
+
+import { userRolesMock } from '../../__mocks__/data/userRolesMock';
+import { userRoleColors } from '../../model/constants/userRoleColors';
 
 import { UserRolesList } from './UserRolesList';
+
+jest.mock('@/shared/ui/Flex', () => ({
+	Flex: ({ gap, align, wrap, children, dataTestId }: FlexProps) => (
+		<div data-testid={dataTestId} data-gap={gap} data-align={align} data-wrap={wrap}>
+			{children}
+		</div>
+	),
+}));
 
 jest.mock('@/shared/ui/StatusChip', () => ({
 	StatusChip: ({ status }: StatusChipProps) => (
@@ -17,37 +29,40 @@ jest.mock('@/shared/ui/StatusChip', () => ({
 
 describe('UserRolesList', () => {
 	test('renders', () => {
-		renderComponent(<UserRolesList userRoles={mockRoles} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock} />);
 		expect(screen.getByTestId('UserRolesList')).toBeInTheDocument();
 	});
 
 	test('renders StatusChip for every role', () => {
-		renderComponent(<UserRolesList userRoles={mockRoles} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock} />);
 		const chips = screen.getAllByTestId('StatusChip');
-		expect(chips).toHaveLength(mockRoles.length);
+		expect(chips).toHaveLength(userRolesMock.length);
 	});
 
 	test('applies correct color variants', () => {
-		const expectedColors: Record<string, string> = {
-			candidate: 'yellow',
-			HR: 'red',
-			admin: 'green',
-			guest: 'purple',
-		};
+		renderComponent(<UserRolesList userRoles={userRolesMock} />);
 
-		renderComponent(<UserRolesList userRoles={mockRoles} />);
+		const chips = screen.getAllByTestId('StatusChip');
 
-		mockRoles.forEach((role) => {
-			const chip = screen
-				.getAllByTestId('StatusChip')
-				.find((c) => c.textContent.includes(role.name));
+		userRolesMock.forEach((role: Role, index: number) => {
+			const chip = chips[index];
 
-			expect(chip).toHaveAttribute('data-variant', expectedColors[role.name]);
+			expect(chip).toHaveAttribute('data-variant', userRoleColors[role.name]);
 		});
 	});
 
 	test('renders nothing when userRoles is empty', () => {
 		renderComponent(<UserRolesList userRoles={[]} />);
 		expect(screen.queryByTestId('StatusChip')).toBeNull();
+	});
+
+	test('correct props to Flex', () => {
+		renderComponent(<UserRolesList userRoles={userRolesMock} />);
+
+		const flex = screen.getByTestId('UserRolesList');
+
+		expect(flex).toHaveAttribute('data-gap', '12');
+		expect(flex).toHaveAttribute('data-align', 'start');
+		expect(flex).toHaveAttribute('data-wrap', 'wrap');
 	});
 });
