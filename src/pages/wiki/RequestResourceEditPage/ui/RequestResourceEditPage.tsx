@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 import { useGetResourceRequestByIdQuery } from '@/entities/resource';
 
 import { ResourceRequestEditForm } from '@/features/resources/editResourceRequest';
@@ -13,7 +13,7 @@ const RequestResourceEditPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();
 	const navigate = useNavigate();
 
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	useEffect(() => {
 		if (!isEmailVerified) {

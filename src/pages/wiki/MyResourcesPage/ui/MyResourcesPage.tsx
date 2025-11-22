@@ -15,7 +15,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 import { ResourceRequestStatus, useGetMyRequestsResourcesQuery } from '@/entities/resource';
 
 import {
@@ -33,7 +33,7 @@ const MyResourcesPage = () => {
 	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 
 	const navigate = useNavigate();
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	useEffect(() => {
 		if (!isEmailVerified) {

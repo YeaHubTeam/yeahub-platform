@@ -10,7 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getIsVerified, getProfileId } from '@/entities/profile';
 import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
@@ -35,7 +35,7 @@ export const ResetQuestionStudyProgressButton = ({
 	offsetTooltip = 10,
 }: ResetQuestionStudyProgressProps) => {
 	const profileId = useAppSelector(getProfileId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 	const notQuestionMaxProgress = checksCount === 0;
 
 	const [resetQuestion, { isLoading }] = useResetQuestionProgressMutation();

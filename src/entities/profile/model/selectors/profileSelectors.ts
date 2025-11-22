@@ -44,7 +44,7 @@ export const getIsEmptySpecialization = (state: State) => {
 	return getSpecializationId(state) === 0;
 };
 
-export const getIsEmailVerified = (state: State) => {
+export const getIsVerified = (state: State) => {
 	return state.profile.fullProfile?.isVerified ?? false;
 };
 

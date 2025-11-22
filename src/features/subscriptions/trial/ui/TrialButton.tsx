@@ -11,7 +11,7 @@ import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 
 import { useLazyGetTrialQuery } from '../api/getTrial';
 
@@ -26,7 +26,7 @@ export const TrialButton = ({ className }: TrialButtonProps) => {
 
 	const navigate = useNavigate();
 
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	const [getTrial, { isLoading }] = useLazyGetTrialQuery();
 

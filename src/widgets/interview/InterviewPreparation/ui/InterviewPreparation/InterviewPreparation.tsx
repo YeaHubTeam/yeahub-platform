@@ -9,7 +9,7 @@ import { Card } from '@/shared/ui/Card';
 
 import {
 	getHasPremiumAccess,
-	getIsEmailVerified,
+	getIsVerified,
 	getIsEmptySpecialization,
 	getProfileId,
 } from '@/entities/profile';
@@ -38,7 +38,7 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 
 	const profileId = useAppSelector(getProfileId);
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const lastActiveQuizInfo = useAppSelector(getLastActiveQuizInfo);
 

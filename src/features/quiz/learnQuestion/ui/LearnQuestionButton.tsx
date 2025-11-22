@@ -10,7 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getIsVerified, getProfileId } from '@/entities/profile';
 import { getHasPremiumAccess } from '@/entities/profile';
 
 import { useLearnQuestionMutation } from '../api/learnQuestionApi';
@@ -35,7 +35,7 @@ export const LearnQuestionButton = ({
 	offsetTooltip = 10,
 }: LearnQuestionButtonProps) => {
 	const profileId = useAppSelector(getProfileId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 	const hasQuestionMaxProgress = checksCount >= 3;
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
