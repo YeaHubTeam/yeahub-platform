@@ -206,13 +206,15 @@
 	"mentors": {
 		"title": "MENTORS WITH HANDS-ON EXPERIENCE AT YEAHUB",
 		"description": "At YeaHub, we believe that the best learning comes through practice. That’s why we’ve brought together mentors from different fields so that students can learn through real projects.",
-		"link": "Learn more"
+		"link": "Learn more",
+		"banner": "Each YeaHub mentor has their own training program, cost, and author's materials.\nWe are united by a common project where students gain practical experience, and we are confident in each mentor - they really involve in real work and help grow, and not just give a typical pet project."
 	},
 	"guru": {
 		"title": "Gurus at YeaHub",
 		"description": "In YeaHub, there are not only mentors who lead internships on projects, but also Gurus — mentors who help us develop the platform and make learning even more valuable. They add up-to-date interview questions and write explanations of complex topics.",
 		"badge": "Team member",
-		"link": "Learn more"
+		"link": "Learn more",
+		"banner": "Each Guru at YeaHub has their own courses, prices, and training programs. You can learn more about them from your specific mentor. We all share a common goal: to make the platform as useful as possible, from internships in projects to fresh content and proven materials for preparing for interviews."
 	},
 	"avos": {
 		"title": "Real Job Interviews — ‘Авось Прорвемся’ & YeaHub",
