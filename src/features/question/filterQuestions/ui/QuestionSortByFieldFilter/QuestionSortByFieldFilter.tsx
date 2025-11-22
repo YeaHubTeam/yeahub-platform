@@ -7,7 +7,7 @@ import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection
 import { QuestionFilterOrderBy } from '../../model/types/filters';
 
 interface QuestionSortByFieldFilterProps {
-	onChangeOrderBy: (orderBy: QuestionFilterOrderBy) => void;
+	onChangeOrderBy: (orderBy?: QuestionFilterOrderBy) => void;
 	selectedOrderBy?: QuestionFilterOrderBy;
 }
 
@@ -28,11 +28,15 @@ export const QuestionSortByFieldFilter = ({
 		active: selectedOrderBy === item.id,
 	}));
 
+	const onChangeOrder = (orderBy: QuestionFilterOrderBy) => {
+		onChangeOrderBy(orderBy === selectedOrderBy ? undefined : orderBy);
+	};
+
 	return (
 		<BaseFilterSection
 			data={preparedData}
 			title={t(Questions.SORT_FIELD)}
-			onClick={onChangeOrderBy}
+			onClick={onChangeOrder}
 		/>
 	);
 };

@@ -14,17 +14,18 @@ const rate = [
 
 interface QuestionRateFilterProps {
 	selectedRate?: number[];
-	onChangeRate: (rate: number[]) => void;
+	onChangeRate: (rate?: number[]) => void;
 }
 
 export const QuestionRateFilter = ({ onChangeRate, selectedRate }: QuestionRateFilterProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
+
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);
 		const updates = isDataExist
 			? (selectedRate || []).filter((item) => item !== rateId)
 			: [...(selectedRate || []), rateId];
-		onChangeRate(updates);
+		onChangeRate(updates.length ? updates : undefined);
 	};
 
 	const preparedData = rate.map((item) => ({
