@@ -14,8 +14,10 @@ export const AdvantagesBlock = () => {
 		<>
 			<Flex gap="20" direction="column">
 				<Flex direction="column" gap={'8'} className={styles.process}>
-					<Text variant={'head2'}>{t(Learning.BANNER_TITLE)}</Text>
-					<Text variant={'body3'} className={styles.description}>
+					<Text variant="head2" className={styles['main-text']}>
+						{t(Learning.BANNER_TITLE)}
+					</Text>
+					<Text variant="body3" className={styles.description}>
 						{t(Learning.BANNER_DESCRIPTION)}
 					</Text>
 				</Flex>

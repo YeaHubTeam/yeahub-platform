@@ -1,1 +1,1 @@
-export { LearningPage } from './ui/LearningPage';
+export { LearningPage } from './ui/LearningPage.lazy';
