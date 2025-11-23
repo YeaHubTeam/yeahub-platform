@@ -29,6 +29,11 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		path: '/learning/',
 		title: Landing.HEADER_NAV_LEARNING,
 	},
+	{
+		link: ROUTES.hhAnalytics.page,
+		path: '/hh-analytics/',
+		title: Landing.HEADER_NAV_SKILLS,
+	},
 ];
 
 export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
@@ -56,5 +61,10 @@ export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 		link: ROUTES.learning.page,
 		path: '/learning/',
 		title: Landing.HEADER_NAV_LEARNING,
+	},
+	{
+		link: ROUTES.hhAnalytics.page,
+		path: '/hh-analytics/',
+		title: Landing.HEADER_NAV_SKILLS,
 	},
 ];
