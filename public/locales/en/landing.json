@@ -16,7 +16,8 @@
 			"public.resources": "Resources",
 			"learning": "Learning",
 			"popover.title": "Preparation",
-			"aria.label": "User"
+			"aria.label": "User",
+			"skills": "Skills"
 		},
 		"auth": {
 			"iconbutton": {

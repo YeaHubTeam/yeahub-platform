@@ -16,7 +16,8 @@
 			"public.resources": "База ресурсов",
 			"learning": "Обучение",
 			"popover.title": "Подготовка",
-			"aria.label": "Пользовательская"
+			"aria.label": "Пользовательская",
+			"skills": "Навыки"
 		},
 		"auth": {
 			"iconbutton": {
