@@ -12,7 +12,7 @@ export interface StatusChipItem {
 	text: string;
 	variant: StatusChipVariant;
 }
-interface StatusChipProps {
+export interface StatusChipProps {
 	status: StatusChipItem;
 }
 
