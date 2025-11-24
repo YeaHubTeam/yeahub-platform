@@ -1,54 +1,39 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Loader } from '@/shared/ui/Loader';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetHhTopBySpecQuery } from '@/entities/hhAnalytics';
-import { SpecializationSelect } from '@/entities/specialization';
+import { useGetHhTopBySpecQuery } from '@/entities/hh';
+import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import {
-	HhAnalyticsMode,
-	HhAnalyticsRow,
-	HhAnalyticsTable,
-} from '@/widgets/analytics/HhAnalyticsTable';
+import { HhAnalyticsFilters, useHhAnalyticsFilters } from '@/features/hhAnalyticsFilters';
 
-import styles from './HhAnalyticsPage.module.css';
+import { HhAnalyticsRow, HhAnalyticsTable } from '@/widgets/analytics/HhAnalyticsTable';
 
-const PAGE_LIMIT = 20;
-const DEFAULT_SPEC_ID = 11;
+import { AnalyticsPageSkeleton } from '@/pages/landing/HhAnalyticsPage';
+
+const PAGE_LIMIT = 10;
 
 const HhAnalyticsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
-	const { isMobile } = useScreenSize();
+	const { filters, onChangePage, onChangeSpecialization, onChangeMode } = useHhAnalyticsFilters({
+		page: 1,
+		mode: 'skills',
+		specialization: DEFAULT_SPECIALIZATION_ID,
+	});
 
-	const [mode, setMode] = useState<HhAnalyticsMode>('skills');
-	const [page, setPage] = useState(1);
-	const [specializationId, setSpecializationId] = useState(DEFAULT_SPEC_ID);
+	const page = filters.page ?? 1;
+	const specializationId = filters.specialization ?? DEFAULT_SPECIALIZATION_ID;
+
+	const mode = filters.mode ?? 'skills';
 
 	const { data, isLoading } = useGetHhTopBySpecQuery(specializationId);
-
-	const handleChangeMode = (newMode: HhAnalyticsMode) => {
-		setMode(newMode);
-		setPage(1);
-	};
-	const handleChangePage = (newPage: number) => {
-		setPage(newPage);
-	};
-	const handleChangeSpecialization = (newSpecializationId: number | number[]) => {
-		const value = Array.isArray(newSpecializationId) ? newSpecializationId[0] : newSpecializationId;
-
-		setSpecializationId(value);
-		setPage(1);
-	};
 
 	const activeList = useMemo(() => {
 		if (!data) {
@@ -79,7 +64,7 @@ const HhAnalyticsPage = () => {
 	const total = activeList.length;
 
 	if (isLoading) {
-		return <Loader />;
+		return <AnalyticsPageSkeleton />;
 	}
 
 	return (
@@ -91,47 +76,16 @@ const HhAnalyticsPage = () => {
 						: t(Analytics.HH_ANALYTICS_TITLE_KEYWORDS)}
 				</Text>
 
-				<Flex direction={'column'} gap="20">
-					<Flex direction={isMobile ? 'column' : 'row'} gap="24" justify="between">
-						<SpecializationSelect
-							prefix={' '}
-							value={specializationId}
-							onChange={handleChangeSpecialization}
-						/>
+				<HhAnalyticsFilters
+					specializationId={specializationId}
+					mode={mode}
+					onChangeSpecialization={onChangeSpecialization}
+					onChangeMode={onChangeMode}
+				/>
 
-						<Flex direction={isMobile ? 'column' : 'row'} align="center" gap="14">
-							<Button
-								size={'large'}
-								variant={mode === 'skills' ? 'secondary' : 'outline'}
-								onClick={() => handleChangeMode('skills')}
-								fullWidth={isMobile}
-								className={styles['mode-button']}
-							>
-								{t(Analytics.HH_ANALYTICS_TAB_SKILLS)}
-							</Button>
-							<Button
-								size={'large'}
-								variant={mode === 'keywords' ? 'secondary' : 'outline'}
-								onClick={() => handleChangeMode('keywords')}
-								fullWidth={isMobile}
-								className={styles['mode-button']}
-							>
-								{t(Analytics.HH_ANALYTICS_TAB_KEYWORDS)}
-							</Button>
-						</Flex>
-					</Flex>
+				<HhAnalyticsTable rows={rows} mode={mode} />
 
-					<Flex direction="column">
-						<HhAnalyticsTable rows={rows} mode={mode} />
-
-						<TablePagination
-							total={total}
-							page={page}
-							onChangePage={handleChangePage}
-							limit={PAGE_LIMIT}
-						/>
-					</Flex>
-				</Flex>
+				<TablePagination total={total} page={page} onChangePage={onChangePage} limit={PAGE_LIMIT} />
 			</Flex>
 		</Card>
 	);

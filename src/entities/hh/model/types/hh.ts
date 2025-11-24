@@ -3,7 +3,7 @@ export type HhAnalyticsItem = {
 	count: number;
 };
 
-export type HhAnalyticsItemResponse = {
+export type GetHhAnalyticsItemResponse = {
 	skills: HhAnalyticsItem[];
 	keywords: HhAnalyticsItem[];
 	vacanciesCount: number;
