@@ -83,6 +83,7 @@ import { QuestionsPage } from '@/pages/interview/QuestionsPage';
 import { AvosPage } from '@/pages/landing/AvosPage';
 import { CreatePublicQuizPage } from '@/pages/landing/CreatePublicQuizPage';
 import { DocsPage } from '@/pages/landing/DocsPage';
+import { HhAnalyticsPage } from '@/pages/landing/HhAnalyticsPage';
 import { LandingPage } from '@/pages/landing/LandingPage';
 import { LearningPage } from '@/pages/landing/LearningPage';
 import { MediaPage } from '@/pages/landing/MediaPage';
@@ -355,6 +356,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.avos.route,
 				element: <AvosPage />,
+			},
+			{
+				path: ROUTES.hhAnalytics.route,
+				element: <HhAnalyticsPage />,
 			},
 		],
 	},

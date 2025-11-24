@@ -1,0 +1,13 @@
+.top-row-cell {
+  color: var(--color-purple-700);
+}
+
+.count-column {
+  text-align: right;
+}
+
+.cell {
+  height: 71px;
+  overflow-wrap: anywhere;
+}
+

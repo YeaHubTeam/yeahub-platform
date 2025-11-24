@@ -295,4 +295,8 @@ export const ROUTES = {
 		route: 'avos',
 		page: '/avos',
 	},
+	hhAnalytics: {
+		route: 'hh-analytics',
+		page: '/hh-analytics',
+	},
 } as const;
