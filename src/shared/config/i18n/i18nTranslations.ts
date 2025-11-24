@@ -675,6 +675,7 @@ export enum Skills {
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	MY_SKILLS_TITLE = 'my.skills.title',
 }
 
 export enum User {

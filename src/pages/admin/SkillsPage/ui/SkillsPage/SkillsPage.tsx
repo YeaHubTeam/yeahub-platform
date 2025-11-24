@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
+import { getUserId } from '@/entities/profile';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
@@ -22,8 +23,8 @@ import styles from './SkillsPage.module.css';
 const SkillsPage = () => {
 	const dispatch = useAppDispatch();
 	const selectedSkills = useSelector(getSelectedSkills);
-
-	const { filters, hasFilters, onChangePage, onChangeSpecialization, onChangeTitle } =
+	const userId = useAppSelector(getUserId);
+	const { filters, hasFilters, onChangePage, onChangeSpecialization, onChangeTitle, onChangeIsMy } =
 		useSkillsFilters({
 			page: 1,
 		});
@@ -32,6 +33,7 @@ const SkillsPage = () => {
 		page: filters.page,
 		title: filters.title,
 		specializations: filters.specialization,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const onSelectSkills = (ids: SelectedAdminEntities) => {
@@ -48,7 +50,11 @@ const SkillsPage = () => {
 				hasFilters={hasFilters}
 				renderRemoveButton={() => <DeleteSkillsButton skillsToRemove={selectedSkills} />}
 				renderFilter={() => (
-					<SkillsFilters filters={filters} onChangeSpecialization={onChangeSpecialization} />
+					<SkillsFilters
+						filters={filters}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeIsMy={onChangeIsMy}
+					/>
 				)}
 			/>
 			<Card className={styles.content}>
