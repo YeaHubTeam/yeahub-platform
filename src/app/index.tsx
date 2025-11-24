@@ -8,10 +8,13 @@ import '@/shared/config/i18n/i18n';
 import { ToastOptions } from '@/shared/config/reactHotToast';
 import { SentryErrorBoundary } from '@/shared/config/sentry/ErrorBoundary';
 import { initSentry } from '@/shared/config/sentry/sentry';
+import { Loader } from '@/shared/ui/Loader';
 
 import { router } from '@/app/providers/router';
 import AppInitSentryUser from '@/app/providers/sentry/AppInitSentryUser';
 import { StoreProvider, createReduxStore } from '@/app/providers/store';
+
+import { Suspense } from 'react';
 
 const root = document.getElementById('root');
 
@@ -35,7 +38,9 @@ deferRender().then(() => {
 		<StoreProvider initialState={store.getState()}>
 			<SentryErrorBoundary store={store}>
 				<AppInitSentryUser />
-				<RouterProvider router={router} />
+				<Suspense fallback={<Loader />}>
+					<RouterProvider router={router} />
+				</Suspense>
 			</SentryErrorBoundary>
 			<Toaster toastOptions={ToastOptions} gutter={20} />
 		</StoreProvider>,
