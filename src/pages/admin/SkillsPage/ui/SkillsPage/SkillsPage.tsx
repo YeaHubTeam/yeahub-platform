@@ -8,7 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
 import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
-import { useSkillsFilters, SkillsFilters } from '@/features/skill/filterSkills';
+import { SkillsFilters, useSkillsFilters } from '@/features/skill/filterSkills';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { SkillsTable } from '@/widgets/SkillsTable';

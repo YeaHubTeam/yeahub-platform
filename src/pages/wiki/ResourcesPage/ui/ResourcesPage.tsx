@@ -14,7 +14,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { getIsEmailVerified, getSpecializationId } from '@/entities/profile';
+import { getIsVerified, getSpecializationId } from '@/entities/profile';
 import {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
@@ -31,7 +31,7 @@ const ResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const specializationId = useSelector(getSpecializationId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	const { onChangeTitle, onChangeSkills, onChangeTypes, filters, onChangePage, onResetFilters } =
 		useResourcesFilters({ page: 1 });

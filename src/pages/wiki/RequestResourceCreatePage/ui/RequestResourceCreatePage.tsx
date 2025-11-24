@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector } from '@/shared/hooks';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 
 import { ResourceRequestCreateForm } from '@/features/resources/createResourceRequest';
 
 const RequestResourceCreatePage = () => {
 	const navigate = useNavigate();
 
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	useEffect(() => {
 		if (!isEmailVerified) {

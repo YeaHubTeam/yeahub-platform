@@ -8,7 +8,7 @@ import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
-import { getHasPremiumAccess, getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getIsVerified, getProfileId } from '@/entities/profile';
 import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import { getQuestionsStats } from '../../model/lib/getQuestionsStats/getQuestionsStats';
@@ -24,7 +24,7 @@ export const PreviewQuestionsStatistic = ({ className }: PreviewQuestionsStatist
 		i18Namespace.subscription,
 	]);
 	const profileId = useAppSelector(getProfileId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
 	const { data: profileStats } = useGetProfileQuizStatsQuery(profileId, { skip: !hasPremium });

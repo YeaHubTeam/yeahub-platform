@@ -14,7 +14,7 @@ export {
 	getProfileId,
 	getSpecializationId,
 	getIsEmptySpecialization,
-	getIsEmailVerified,
+	getIsVerified,
 	getIsEdit,
 	getHasPremiumAccess,
 	getHasSubscriptions,

@@ -51,14 +51,14 @@ export const Banner = ({
 	return (
 		<Flex className={wrapperClassName} align="center" gap="10">
 			<Flex gap="20" align="center" className={innerWrapClassName}>
-				<img src={img} className={imgClassName} alt={alt} />
+				<img src={img} className={classNames(styles.img, imgClassName)} alt={alt} />
 				{title && (
 					<Text variant={textVariant} color={textColor}>
 						{title}
 					</Text>
 				)}
 				{description && (
-					<Text variant="body3-accent" className={styles.text} color={textColor}>
+					<Text variant="body3-accent" color={textColor}>
 						{description}
 					</Text>
 				)}

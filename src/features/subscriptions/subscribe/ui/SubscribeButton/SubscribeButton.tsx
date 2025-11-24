@@ -9,7 +9,7 @@ import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Button } from '@/shared/ui/Button';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 
 import { useLazyGetPaymentUrlQuery } from '@/features/subscriptions/subscribe/api/getPaymentUrl';
 
@@ -25,7 +25,7 @@ export const SubscribeButton = ({ className, email }: SubscribeButtonProps) => {
 	const [getPaymentUrl] = useLazyGetPaymentUrlQuery();
 	const navigate = useNavigate();
 
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();

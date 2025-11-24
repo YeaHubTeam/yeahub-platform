@@ -9,7 +9,7 @@ import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { getIsEmailVerified, getProfileId } from '@/entities/profile';
+import { getIsVerified, getProfileId } from '@/entities/profile';
 
 import {
 	useAddFavoriteQuestionMutation,
@@ -40,7 +40,7 @@ export const FavoriteQuestionButton = ({
 	isQuiz = false,
 }: FavoriteQuestionProps) => {
 	const profileId = useAppSelector(getProfileId);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	const [favoriteQuestion, favoriteState] = useAddFavoriteQuestionMutation();
 	const [resetFavoriteQuestion, resetState] = useResetFavoriteQuestionMutation();

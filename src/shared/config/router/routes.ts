@@ -229,24 +229,20 @@ export const ROUTES = {
 		resources: {
 			route: 'resources',
 			page: '/dashboard/wiki/resources',
-			requests: {
-				route: 'requests',
-				page: '/dashboard/wiki/resources/requests',
-			},
 			my: {
-				route: 'my-resources',
-				page: '/dashboard/wiki/resources/my-resources',
+				route: 'my-requests',
+				page: '/dashboard/wiki/resources/my-requests',
 				create: {
 					route: 'create',
-					page: '/dashboard/wiki/resources/my-resources/create',
+					page: '/dashboard/wiki/resources/my-requests/create',
 				},
 				edit: {
 					route: ':requestId/edit',
-					page: '/dashboard/wiki/resources/my-resources/:requestId/edit',
+					page: '/dashboard/wiki/resources/my-requests/:requestId/edit',
 				},
 				request: {
 					route: ':requestId',
-					page: '/dashboard/wiki/resources/my-resources/:requestId',
+					page: '/dashboard/wiki/resources/my-requests/:requestId',
 				},
 			},
 		},

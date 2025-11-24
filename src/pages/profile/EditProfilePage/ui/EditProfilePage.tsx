@@ -1,5 +1,7 @@
 import { EditProfileForm } from '@/features/profile/editProfileForm';
 
-export const EditProfilePage = () => {
+const EditProfilePage = () => {
 	return <EditProfileForm />;
 };
+
+export default EditProfilePage;

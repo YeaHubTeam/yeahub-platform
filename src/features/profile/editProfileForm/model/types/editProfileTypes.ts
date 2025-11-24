@@ -58,3 +58,5 @@ export type EditAvatarRequestData = {
 	image: string | null;
 	oldImage: string;
 };
+
+export type EditProfileTab = 'personal-information' | 'about-me' | 'skills';

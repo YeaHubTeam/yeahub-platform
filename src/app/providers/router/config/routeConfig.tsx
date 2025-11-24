@@ -734,11 +734,6 @@ export const router = createBrowserRouter([
 									},
 								],
 							},
-							{
-								path: ROUTES.wiki.resources.requests.route,
-								element: <Outlet />,
-								children: [],
-							},
 						],
 					},
 					{

@@ -24,8 +24,9 @@
   height: 78px;
 }
 
-.text {
-  max-width: 869px;
+.img {
+  width: 100%;
+  max-width: 96px;
 }
 
 @media (width < 768px) {
