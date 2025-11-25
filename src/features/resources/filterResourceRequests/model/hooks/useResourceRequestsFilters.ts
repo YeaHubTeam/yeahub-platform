@@ -13,7 +13,8 @@ export const useResourceRequestsFilters = (initialParams: ResourceRequestsFilter
 		(filters.page || 1) > 1 ||
 		Boolean(filters.title) ||
 		filters.status !== 'all' ||
-		(filters?.types || [])?.length > 0;
+		(filters?.skills || [])?.length > 0;
+	(filters?.types || [])?.length > 0;
 
 	const onChangeTitle = (title: ResourceRequestsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -31,6 +32,10 @@ export const useResourceRequestsFilters = (initialParams: ResourceRequestsFilter
 		onFilterChange({ status, page: 1 });
 	};
 
+	const onChangeSkills = (skills: ResourceRequestsFilterParams['skills']) => {
+		onFilterChange({ skills, page: 1 });
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -39,5 +44,6 @@ export const useResourceRequestsFilters = (initialParams: ResourceRequestsFilter
 		onChangePage,
 		onChangeStatus,
 		onResetFilters,
+		onChangeSkills,
 	};
 };

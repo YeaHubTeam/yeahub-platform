@@ -5,4 +5,5 @@ export interface ResourceRequestsFilterParams {
 	page?: number;
 	types?: ResourceTypeCode[];
 	status?: ResourceRequestStatus | 'all';
+	skills?: number[];
 }
