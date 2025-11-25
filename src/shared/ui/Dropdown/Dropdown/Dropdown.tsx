@@ -23,7 +23,6 @@ export interface DropdownProps
 	value?: string;
 	isInput?: boolean;
 	inputValue?: string;
-	disableDefaultFilter?: boolean;
 	onChangeValue?: (value: string) => void;
 }
 
@@ -41,7 +40,6 @@ export const Dropdown = ({
 	value = '',
 	isInput = false,
 	inputValue,
-	disableDefaultFilter,
 	onChangeValue,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +63,7 @@ export const Dropdown = ({
 	};
 
 	const filteredChildren = useMemo(() => {
-		if (!isInput || !inputValue || disableDefaultFilter) {
+		if (!isInput || !inputValue) {
 			return children;
 		}
 
@@ -73,11 +71,14 @@ export const Dropdown = ({
 			if (!React.isValidElement(child)) return child;
 
 			const childProps = child.props as OptionProps;
-			const matchesSearch = childProps.label.toLowerCase().includes(inputValue.toLowerCase());
+
+			const isSpecialOption = childProps.value === '' || childProps.value === 'not-found';
+			const matchesSearch =
+				isSpecialOption || childProps.label.toLowerCase().includes(inputValue.toLowerCase());
 
 			return matchesSearch ? child : null;
 		})?.filter(Boolean);
-	}, [children, inputValue, isInput, disableDefaultFilter]);
+	}, [children, inputValue, isInput]);
 
 	return (
 		<div

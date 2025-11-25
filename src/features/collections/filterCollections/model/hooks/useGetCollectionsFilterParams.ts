@@ -10,10 +10,8 @@ export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterPa
 			? Number(parsedParams.specialization)
 			: initialParams.specialization,
 		title: parsedParams.title || initialParams.title,
+		authorId: parsedParams.authorId || initialParams.authorId,
 	};
-
-	const authorId = parsedParams.authorId || initialParams.authorId;
-	if (authorId) currentParams.authorId = authorId;
 
 	return currentParams;
 };
