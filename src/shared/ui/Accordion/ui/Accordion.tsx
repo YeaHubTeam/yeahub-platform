@@ -5,7 +5,7 @@ import { useScreenSize } from '@/shared/hooks';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { ACCORDION_TEST_IDS } from '../model/constans';
+import { accordionTestIds } from '../model/constants';
 
 import styles from './Accordion.module.css';
 
@@ -40,21 +40,21 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 	return (
 		<div
 			className={classNames(styles.accordion, { [styles['accordion-opened']]: isOpen }, className)}
-			data-testid={ACCORDION_TEST_IDS.ACCORDION}
+			data-testid={accordionTestIds.accordion}
 		>
 			<div
 				className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}
-				data-testid={ACCORDION_TEST_IDS.HEADING}
+				data-testid={accordionTestIds.heading}
 			>
 				<button
 					className={styles.button}
 					onClick={onOpenAccordion}
-					data-testid={ACCORDION_TEST_IDS.BUTTON}
+					data-testid={accordionTestIds.button}
 				>
 					<Text
 						variant={isMobileS ? 'body3-accent' : 'body5-accent'}
 						className={styles.title}
-						dataTestId={ACCORDION_TEST_IDS.TITLE}
+						dataTestId={accordionTestIds.title}
 					>
 						{title}
 					</Text>
@@ -63,15 +63,16 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 						size={24}
 						color="purple-700"
 						className={classNames(styles.icon, { [styles['accordion-opened']]: isOpen })}
-						dataTestId={ACCORDION_TEST_IDS.ICON}
+						dataTestId={accordionTestIds.icon}
 					/>
 				</button>
 			</div>
 			<div
 				className={styles['content-wrapper']}
 				style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
+				data-testid={accordionTestIds.contentWrapper}
 			>
-				<div className={styles.content} ref={contentRef} data-testid={ACCORDION_TEST_IDS.CONTENT}>
+				<div className={styles.content} ref={contentRef} data-testid={accordionTestIds.content}>
 					{children}
 				</div>
 			</div>
