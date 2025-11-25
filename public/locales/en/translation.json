@@ -49,6 +49,9 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"liveCoding": {
+				"title": "Live Coding"
+			},
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
@@ -125,6 +128,7 @@
 		"questions.list": "List of questions",
 		"question.detail": "More details",
 		"quiz": "Interview",
+		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
 		"main.page": "Home",
 		"error.404": "Page not found",

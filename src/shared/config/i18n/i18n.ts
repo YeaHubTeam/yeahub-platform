@@ -36,6 +36,7 @@ export const i18Namespace = {
 	editor: 'editor',
 	guru: 'guru',
 	media: 'media',
+	liveCoding: 'liveCoding',
 };
 
 i18n

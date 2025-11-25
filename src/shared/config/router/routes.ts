@@ -207,6 +207,10 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
+	liveCoding: {
+		route: 'live-coding',
+		page: '/dashboard/live-coding',
+	},
 	wiki: {
 		route: 'wiki',
 		page: '/dashboard/wiki',
