@@ -71,7 +71,10 @@ export const Dropdown = ({
 			if (!React.isValidElement(child)) return child;
 
 			const childProps = child.props as OptionProps;
-			const matchesSearch = childProps.label.toLowerCase().includes(inputValue.toLowerCase());
+
+			const isSpecialOption = childProps.value === '' || childProps.value === 'not-found';
+			const matchesSearch =
+				isSpecialOption || childProps.label.toLowerCase().includes(inputValue.toLowerCase());
 
 			return matchesSearch ? child : null;
 		})?.filter(Boolean);

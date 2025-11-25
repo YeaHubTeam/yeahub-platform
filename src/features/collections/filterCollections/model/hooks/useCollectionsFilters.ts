@@ -12,7 +12,10 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 	);
 
 	const hasFilters =
-		(filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.specialization);
+		(filters.page || 1) > 1 ||
+		Boolean(filters.title) ||
+		Boolean(filters.specialization) ||
+		Boolean(filters.authorId);
 
 	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -36,6 +39,10 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onFilterChange({ page });
 	};
 
+	const onChangeAuthor = (authorId?: CollectionsFilterParams['authorId']) => {
+		onFilterChange({ authorId, page: 1 });
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -44,5 +51,6 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onChangeSpecialization,
 		onChangeIsFree,
 		onChangePage,
+		onChangeAuthor,
 	};
 };

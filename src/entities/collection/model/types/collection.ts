@@ -47,6 +47,7 @@ export interface GetCollectionsListParamsRequest {
 	specializations?: number | number[];
 	keywords?: string[];
 	titleOrDescriptionSearch?: string;
+	authorId?: string;
 }
 
 export type GetCollectionsListResponse = Response<Collection[]>;

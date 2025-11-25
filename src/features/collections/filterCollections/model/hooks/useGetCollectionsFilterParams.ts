@@ -11,6 +11,7 @@ export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterPa
 			: initialParams.specialization,
 		isFree: parsedParams.isFree ? Boolean(parsedParams.isFree) : initialParams.isFree,
 		title: parsedParams.title || initialParams.title,
+		authorId: parsedParams.authorId || initialParams.authorId,
 	};
 
 	return currentParams;

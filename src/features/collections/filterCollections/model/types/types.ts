@@ -3,4 +3,5 @@ export interface CollectionsFilterParams {
 	specialization?: number;
 	isFree?: boolean;
 	page?: number;
+	authorId?: string;
 }

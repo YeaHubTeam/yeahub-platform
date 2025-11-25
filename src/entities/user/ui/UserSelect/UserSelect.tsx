@@ -1,8 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { User as UserI18n } from '@/shared/config/i18n/i18nTranslations';
+import { useDebounce } from '@/shared/hooks';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -18,9 +19,23 @@ export type UserSelectProps = Omit<
 	disabled?: boolean;
 };
 
+const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
+
 export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
-	const { t } = useTranslation(i18Namespace.user);
-	const { data: users } = useGetUsersListQuery({ page: 1, limit: 10 });
+	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
+
+	const [searchValue, setSearchValue] = useState('');
+	const [debouncedValue, setDebouncedValue] = useState('');
+
+	const debouncedSetValue = useDebounce((value: string) => {
+		setDebouncedValue(value);
+	}, 500);
+
+	const { data: users, isFetching } = useGetUsersListQuery({
+		search: debouncedValue,
+		page: 1,
+		limit: 10,
+	});
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
@@ -32,21 +47,22 @@ export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
 		label: t(UserI18n.SELECT_CHOOSE),
 	};
 
-	const options = useMemo(() => {
-		return (users?.data || []).reduce(
-			(result, user) => {
-				result.push({
-					value: user.id.toString(),
-					label: user.username,
-				});
+	const handleSearchChange = (val: string) => {
+		setSearchValue(val);
+		debouncedSetValue(val);
+	};
 
-				return result;
-			},
-			[emptyUser],
-		);
-	}, [emptyUser, users]);
+	const options = useMemo(() => {
+		return (users?.data || []).map((user) => ({
+			value: user.id.toString(),
+			label: user.username,
+		}));
+	}, [users]);
 
 	const selectUser = options.find((option) => option.value === value) || emptyUser;
+	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
+	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
+	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectUser.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
@@ -57,14 +73,23 @@ export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
 				size="S"
 				label={selectUser.label}
 				disabled={disabled}
-				value={selectUser.label}
+				value={displayValue}
+				isInput={true}
+				inputValue={searchValue}
+				onChangeValue={handleSearchChange}
 				onSelect={(val) => {
+					const selected = options.find((opt) => opt.value === val);
 					handleChange(val !== 'all' ? String(val) : undefined);
+					setSearchValue(selected?.label ?? '');
 				}}
 			>
-				{options.map((option) => (
-					<Option value={option.value} label={option.label} key={option.value} />
-				))}
+				{showNotFoundMessage ? (
+					<Option value="" label={notFoundText} disabled />
+				) : (
+					options.map((option) => (
+						<Option value={option.value} label={option.label} key={option.value} />
+					))
+				)}
 			</Dropdown>
 		</Flex>
 	);
