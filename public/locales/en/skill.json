@@ -22,5 +22,6 @@
 	"empty": "No skills",
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",
-	"edit.page.title": "Edit skill"
+	"edit.page.title": "Edit skill",
+	"my.skills.title": "My Skills"
 }
