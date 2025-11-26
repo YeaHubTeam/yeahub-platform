@@ -56,6 +56,11 @@ export enum Translation {
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
 
+	/* Access Denied */
+	ACCESS_DENIED_TITLE = 'access.denied.title',
+	ACCESS_DENIED_DESCRIPTION = 'access.denied.description',
+	ACCESS_DENIED_BUTTON = 'access.denied.button',
+
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',
 	MODAL_BLOCK_DESCRIPTION = 'modal.block.description',
