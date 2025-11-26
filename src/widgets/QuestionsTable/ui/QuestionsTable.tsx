@@ -41,6 +41,9 @@ export const QuestionsTable = ({
 			title: 'auto',
 			specialization: '20%',
 			skills: '15%',
+			rate: '5%',
+			complexity: '5%',
+			author: '10%',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -51,6 +54,9 @@ export const QuestionsTable = ({
 			title: t(Questions.TITLE_SHORT),
 			specialization: t(Questions.SPECIALIZATION_TITLE),
 			skills: t(Questions.SKILLS_TITLE),
+			rate: t(Questions.RATE_TITLE_SHORT),
+			complexity: t(Questions.COMPLEXITY_TITLE_SHORT),
+			author: t(Questions.AUTHOR),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -73,6 +79,9 @@ export const QuestionsTable = ({
 					showCount={SKILL_SHOW_COUNT}
 				/>
 			),
+			rate: question.rate,
+			complexity: question.complexity,
+			author: question.createdBy.username,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {
