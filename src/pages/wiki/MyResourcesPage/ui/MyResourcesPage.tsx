@@ -49,6 +49,7 @@ const MyResourcesPage = () => {
 		onChangeStatus,
 		onResetFilters,
 		hasFilters,
+		onChangeSkills,
 	} = useResourceRequestsFilters({ status: 'all', page: 1 });
 
 	const {
@@ -61,6 +62,7 @@ const MyResourcesPage = () => {
 		status: filters.status !== 'all' ? (filters.status as ResourceRequestStatus) : undefined,
 		search: filters.title,
 		types: filters.types,
+		skills: filters.skills,
 	});
 
 	const titleVariant = isMobileS ? 'body5-accent' : 'body6';
@@ -78,6 +80,7 @@ const MyResourcesPage = () => {
 			onChangeTitle={onChangeTitle}
 			onChangeTypes={onChangeTypes}
 			onChangeStatus={onChangeStatus}
+			onChangeSkills={onChangeSkills}
 		/>
 	);
 
