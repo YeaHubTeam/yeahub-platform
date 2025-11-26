@@ -79,7 +79,7 @@ export const ManageProfilesPanel = () => {
 				className={styles.mb}
 			/>
 			<div className={styles.tooltip}>
-				<Flex direction="row" justify="between">
+				<Flex direction="row" justify="between" gap="20" align="center" wrap="wrap">
 					<SwitchSpecializationInfoButton />
 					<Tooltip
 						title={t(tooltipEntry)}

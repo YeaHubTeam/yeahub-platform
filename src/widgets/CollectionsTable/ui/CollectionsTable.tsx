@@ -150,6 +150,7 @@ export const CollectionsTable = ({
 			selectedItems={selectedCollections}
 			onSelectItems={onSelectCollections}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

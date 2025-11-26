@@ -25,6 +25,13 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		});
 	};
 
+	const onChangeIsFree = (isFree: CollectionsFilterParams['isFree']) => {
+		onFilterChange({
+			isFree,
+			page: 1,
+		});
+	};
+
 	const onChangePage = (page: CollectionsFilterParams['page']) => {
 		onFilterChange({ page });
 	};
@@ -35,6 +42,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onResetFilters,
 		onChangeTitle,
 		onChangeSpecialization,
+		onChangeIsFree,
 		onChangePage,
 	};
 };

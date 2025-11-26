@@ -115,6 +115,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			renderActions={renderActions}
 			items={users}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

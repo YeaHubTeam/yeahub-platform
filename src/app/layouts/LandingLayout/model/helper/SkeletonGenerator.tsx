@@ -4,6 +4,7 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { Loader } from '@/shared/ui/Loader';
 
 import { CreatePublicQuizPageSkeleton } from '@/pages/landing/CreatePublicQuizPage';
+import { AnalyticsPageSkeleton } from '@/pages/landing/HhAnalyticsPage';
 import { LandingPageSkeleton } from '@/pages/landing/LandingPage';
 import { MediaPageSkeleton } from '@/pages/landing/MediaPage';
 import { PublicQuestionPageSkeleton } from '@/pages/landing/PublicQuestionPage';
@@ -19,6 +20,7 @@ export const SkeletonGenerator = () => {
 	const isQuestionsPage = useMatch(ROUTES.questions.page);
 	const isQuestionDetailPage = useMatch(ROUTES.questions.detail.page);
 	const isMediaPage = useMatch(ROUTES.media.page);
+	const isHhAnalyticsPage = useMatch(ROUTES.hhAnalytics.page);
 
 	if (isLandingPage) return <LandingPageSkeleton data-testid={'LandingPageSkeleton'} />;
 	if (isQuizPage)
@@ -31,6 +33,7 @@ export const SkeletonGenerator = () => {
 	if (isQuestionDetailPage)
 		return <PublicQuestionPageSkeleton dataTestId={'PublicQuestionPageSkeleton'} />;
 	if (isMediaPage) return <MediaPageSkeleton />;
+	if (isHhAnalyticsPage) return <AnalyticsPageSkeleton />;
 
 	return <Loader />;
 };

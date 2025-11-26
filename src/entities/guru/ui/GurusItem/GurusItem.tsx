@@ -50,9 +50,7 @@ export const GurusItem = ({
 			</div>
 
 			<Flex gap="4" direction="column">
-				<Text variant="body3-accent" color="black-800">
-					{title}
-				</Text>
+				<Text variant="body3-strong">{title}</Text>
 				<Text variant="body3-accent" color="black-500">
 					{name}
 				</Text>

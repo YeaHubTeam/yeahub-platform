@@ -198,22 +198,6 @@ export const ROUTES = {
 			route: 'statistic',
 			page: '/dashboard/interview/statistic',
 		},
-		questions: {
-			route: 'questions',
-			page: '/dashboard/interview/questions',
-			detail: {
-				route: ':questionId',
-				page: '/dashboard/interview/questions/:questionId',
-			},
-		},
-		collections: {
-			route: 'collections',
-			page: '/dashboard/interview/collections',
-			detail: {
-				route: ':collectionId',
-				page: '/dashboard/interview/collections/:collectionId',
-			},
-		},
 		quiz: {
 			route: 'quiz',
 			page: '/dashboard/interview/quiz',
@@ -226,27 +210,39 @@ export const ROUTES = {
 	wiki: {
 		route: 'wiki',
 		page: '/dashboard/wiki',
+		questions: {
+			route: 'questions',
+			page: '/dashboard/wiki/questions',
+			detail: {
+				route: ':questionId',
+				page: '/dashboard/wiki/questions/:questionId',
+			},
+		},
+		collections: {
+			route: 'collections',
+			page: '/dashboard/wiki/collections',
+			detail: {
+				route: ':collectionId',
+				page: '/dashboard/wiki/collections/:collectionId',
+			},
+		},
 		resources: {
 			route: 'resources',
 			page: '/dashboard/wiki/resources',
-			requests: {
-				route: 'requests',
-				page: '/dashboard/wiki/resources/requests',
-			},
 			my: {
-				route: 'my-resources',
-				page: '/dashboard/wiki/resources/my-resources',
+				route: 'my-requests',
+				page: '/dashboard/wiki/resources/my-requests',
 				create: {
 					route: 'create',
-					page: '/dashboard/wiki/resources/my-resources/create',
+					page: '/dashboard/wiki/resources/my-requests/create',
 				},
 				edit: {
 					route: ':requestId/edit',
-					page: '/dashboard/wiki/resources/my-resources/:requestId/edit',
+					page: '/dashboard/wiki/resources/my-requests/:requestId/edit',
 				},
 				request: {
 					route: ':requestId',
-					page: '/dashboard/wiki/resources/my-resources/:requestId',
+					page: '/dashboard/wiki/resources/my-requests/:requestId',
 				},
 			},
 		},
@@ -298,5 +294,9 @@ export const ROUTES = {
 	avos: {
 		route: 'avos',
 		page: '/avos',
+	},
+	hhAnalytics: {
+		route: 'hh-analytics',
+		page: '/hh-analytics',
 	},
 } as const;

@@ -1,0 +1,7 @@
+.reset {
+  &:focus {
+    border: none;
+    background-color: transparent;
+  }
+}
+

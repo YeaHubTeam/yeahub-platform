@@ -29,11 +29,16 @@ export const HEADER_NAV_LINKS: HeaderNavLinks[] = [
 		path: '/learning/',
 		title: Landing.HEADER_NAV_LEARNING,
 	},
+	{
+		link: ROUTES.hhAnalytics.page,
+		path: '/hh-analytics/',
+		title: Landing.HEADER_NAV_SKILLS,
+	},
 ];
 
 export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 	{
-		link: ROUTES.interview.questions.page,
+		link: ROUTES.wiki.questions.page,
 		path: '/dashboard/interview/questions',
 		title: Landing.HEADER_NAV_QUESTIONS_LIST,
 	},
@@ -43,7 +48,7 @@ export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 		title: Landing.HEADER_NAV_PUBLIC_QUIZ,
 	},
 	{
-		link: ROUTES.interview.collections.page,
+		link: ROUTES.wiki.collections.page,
 		path: '/dashboard/interview/collections',
 		title: Landing.HEADER_NAV_PUBLIC_COLLECTIONS,
 	},
@@ -56,5 +61,10 @@ export const HEADER_NAV_LINKS_AUTH: HeaderNavLinks[] = [
 		link: ROUTES.learning.page,
 		path: '/learning/',
 		title: Landing.HEADER_NAV_LEARNING,
+	},
+	{
+		link: ROUTES.hhAnalytics.page,
+		path: '/hh-analytics/',
+		title: Landing.HEADER_NAV_SKILLS,
 	},
 ];

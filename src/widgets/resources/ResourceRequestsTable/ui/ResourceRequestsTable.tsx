@@ -143,6 +143,7 @@ export const ResourceRequestsTable = ({
 			selectedItems={selectedResourceRequests}
 			onSelectItems={onSelectResourceRequests}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

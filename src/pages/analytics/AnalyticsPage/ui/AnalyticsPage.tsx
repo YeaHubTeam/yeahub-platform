@@ -1,5 +1,11 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { ROUTES } from '@/shared/config/router/routes';
+import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
+
+import { getIsVerified } from '@/entities/profile';
 
 import { MostDifficultQuestionsWidget } from '@/widgets/analytics/MostDifficultQuestionsWidget';
 import { PopularQuestionsWidget } from '@/widgets/analytics/PopularQuestionsWidget';
@@ -9,6 +15,14 @@ import { SpecializationProgressWidget } from '@/widgets/analytics/Specialization
 
 export const AnalyticsPage = () => {
 	const { isSmallScreen, isLaptop, isTablet } = useScreenSize();
+	const navigate = useNavigate();
+	const isVerified = useAppSelector(getIsVerified);
+
+	useEffect(() => {
+		if (!isVerified) {
+			navigate(ROUTES.interview.page);
+		}
+	}, [isVerified, navigate]);
 
 	return (
 		<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">

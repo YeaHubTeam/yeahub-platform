@@ -6,7 +6,7 @@ import { SortOrder } from '@/shared/types/types';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface OrderFilterProps {
-	changeOrder: (order: SortOrder) => void;
+	changeOrder: (order?: SortOrder) => void;
 	selectedOrder?: string;
 }
 
@@ -23,11 +23,15 @@ export const OrderFilter = ({ changeOrder, selectedOrder }: OrderFilterProps) =>
 		active: selectedOrder === item.id,
 	}));
 
+	const onChangeOrder = (order: SortOrder) => {
+		changeOrder(order === selectedOrder ? undefined : order);
+	};
+
 	return (
 		<BaseFilterSection
 			data={preparedData}
 			title={t(Translation.SORT_TITLE)}
-			onClick={changeOrder}
+			onClick={onChangeOrder}
 		/>
 	);
 };

@@ -16,6 +16,7 @@ import ClipboardText from '@/shared/assets/icons/ClipboardText.svg';
 import Clock from '@/shared/assets/icons/clock.svg';
 import ClockCounterClockwise from '@/shared/assets/icons/clockCounterClockwise.svg';
 import CloseCircle from '@/shared/assets/icons/closeCircle.svg';
+import Copy from '@/shared/assets/icons/copy.svg';
 import Cross from '@/shared/assets/icons/cross.svg';
 import Dislike from '@/shared/assets/icons/dislike.svg';
 import DotsThree from '@/shared/assets/icons/dotsThree.svg';
@@ -147,5 +148,6 @@ export const icons: Record<IconName, IconComponent> = {
 	burgerAndCross: BurgerAndCross,
 	lamp: Lamp,
 	tickWithBackground: TickWithBackground,
+	copy: Copy,
 	watch: Watch,
 };

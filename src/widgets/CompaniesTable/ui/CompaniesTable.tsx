@@ -139,6 +139,7 @@ export const CompaniesTable = ({
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
 			renderTableColumnWidths={renderTableColumnWidths}
+			hasCopyButton
 		/>
 	);
 };

@@ -68,6 +68,17 @@ export const WithActions: Story = {
 	),
 };
 
+export const WithCopyButton: Story = {
+	render: () => (
+		<Table
+			items={sampleItems}
+			renderTableHeader={renderTableHeader}
+			renderTableBody={renderTableBody}
+			hasCopyButton
+		/>
+	),
+};
+
 export const EmptyState: Story = {
 	render: () => (
 		<Table items={[]} renderTableHeader={renderTableHeader} renderTableBody={() => <></>} />

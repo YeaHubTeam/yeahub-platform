@@ -12,7 +12,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 
-import { getIsEmailVerified } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 import { ResourceRequestStatus, useGetResourceRequestByIdQuery } from '@/entities/resource';
 
 import { DeleteMyResourceRequestButton } from '@/features/resources/deleteMyResourceRequest';
@@ -41,7 +41,7 @@ export const RequestInfoPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();
 	const { data: request } = useGetResourceRequestByIdQuery(requestId || '');
 	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
-	const isEmailVerified = useAppSelector(getIsEmailVerified);
+	const isEmailVerified = useAppSelector(getIsVerified);
 
 	useEffect(() => {
 		if (!isEmailVerified) {
@@ -95,7 +95,7 @@ export const RequestInfoPage = () => {
 					keywords={requestPayload.keywords || []}
 					resourceSkills={skills}
 					specializations={specializations}
-					route={ROUTES.wiki.resources.requests.page}
+					route={ROUTES.wiki.resources.my.page}
 				/>
 			)}
 		</Flex>

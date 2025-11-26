@@ -117,6 +117,21 @@ describe('Table', () => {
 		expect(renderActions).toHaveBeenCalledTimes(mockData.length);
 	});
 
+	test('should render copy button when hasCopyButton prop is provided', () => {
+		cleanup();
+		renderComponent(
+			<Table
+				items={mockData}
+				renderTableHeader={renderTableHeader}
+				renderTableBody={renderTableBody}
+				hasCopyButton
+			/>,
+		);
+
+		const copyButtons = screen.getAllByTestId('Table_CopyButton');
+		expect(copyButtons).toHaveLength(mockData.length);
+	});
+
 	test('should handle empty data array', () => {
 		cleanup();
 		renderComponent(

@@ -358,6 +358,14 @@ export enum Specializations {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	PROGRESS_TITLE = 'progress.title',
+	PROGRESS_DETAIL = 'progress.detail',
+	PROGRESS_TABLE_SPECIALIZATION = 'progress.table.specialization',
+	PROGRESS_TABLE_SKILLS = 'progress.table.skills',
+	PROGRESS_TABLE_QUESTIONS = 'progress.table.questions',
+	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
+	PROGRESS_TABLE_NUMBER = 'progress.table.number',
+	FILTER_IS_MY_TITLE = 'filter.is.my.title',
 }
 
 export enum Analytics {
@@ -393,6 +401,14 @@ export enum Analytics {
 	SPECIALIZATION_PROGRESS_TABLE_QUESTIONS = 'specialization.progress.table.questions',
 	SPECIALIZATION_PROGRESS_TABLE_PROGRESS = 'specialization.progress.table.progress',
 	SPECIALIZATION_PROGRESS_TABLE_NUMBER = 'specialization.progress.table.number',
+	HH_ANALYTICS_TITLE_SKILLS = 'hhAnalytics.title.skills',
+	HH_ANALYTICS_TITLE_KEYWORDS = 'hhAnalytics.title.keywords',
+	HH_ANALYTICS_TAB_SKILLS = 'hhAnalytics.tab.skills',
+	HH_ANALYTICS_TAB_KEYWORDS = 'hhAnalytics.tab.keywords',
+	HH_ANALYTICS_TABLE_INDEX = 'hhAnalytics.table.index',
+	HH_ANALYTICS_TABLE_SKILLS = 'hhAnalytics.table.skills',
+	HH_ANALYTICS_TABLE_KEYWORDS = 'hhAnalytics.table.keywords',
+	HH_ANALYTICS_TABLE_COUNT = 'hhAnalytics.table.count',
 }
 
 export enum InterviewQuiz {
@@ -894,6 +910,7 @@ export enum Landing {
 	HEADER_NAV_POPOVER_TITLE = 'header.nav.popover.title',
 	HEADER_NAV_ARIA_LABEL = 'header.nav.aria.label',
 	HEADER_AUTH_ICONBUTTON_ARIA_LABEL = 'header.auth.iconbutton.aria.label',
+	HEADER_NAV_SKILLS = 'header.nav.skills',
 	FOOTER_LINKS_LINK_ARIA_LABEL = 'footer.links.link.aria.label',
 	FOOTER_TITLE = 'footer.title',
 	FOOTER_DESCRIPTION = 'footer.description',
@@ -928,8 +945,10 @@ export enum Landing {
 	MENTORS_TITLE = 'mentors.title',
 	MENTORS_DESCRIPTION = 'mentors.description',
 	MENTORS_LINK = 'mentors.link',
+	MENTORS_BANNER = 'mentors.banner',
 	GURU_TITLE = 'guru.title',
 	GURU_DESCRIPTION = 'guru.description',
+	GURU_BANNER = 'guru.banner',
 	GURU_BADGE = 'guru.badge',
 	GURU_LINK = 'guru.link',
 	AVOS_TITLE = 'avos.title',
