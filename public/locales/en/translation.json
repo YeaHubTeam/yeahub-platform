@@ -172,7 +172,16 @@
 			"telegram": {
 				"verification": {
 					"link.success": "Telegram is successfully linked to your account!",
-					"link.error": "Failed to link your Telegram to your account."
+					"link.error": {
+						"error" : "Failed to link your Telegram to your account.",
+						"unauthorized": "Authentication failed.",
+						"invalidData": "Invalid Telegram data.",
+						"dataOutdated": "Your Telegram data is outdated.",
+						"alreadyLinked": "This Telegram account is already linked to your profile.",
+						"linkedToAnotherUser": "This Telegram account is linked to another user.",
+						"verifyDenied": "Telegram verification denied.",
+						"userNotFound": "User not found."
+					}
 				}
 			}
 		},
