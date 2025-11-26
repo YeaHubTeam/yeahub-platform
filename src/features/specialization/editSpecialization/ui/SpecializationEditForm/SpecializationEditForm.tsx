@@ -30,8 +30,8 @@ export const SpecializationEditForm = ({ specialization }: SpecializationEditFor
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
+					<SpecializationEditFormHeader />
 					<Card className={styles.content}>
-						<SpecializationEditFormHeader />
 						<SpecializationForm />
 					</Card>
 				</Flex>

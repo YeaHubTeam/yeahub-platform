@@ -22,7 +22,6 @@
 
 .specialization-input {
   align-items: center;
-  height: 48px;
 }
 
 .input-form input::placeholder {
@@ -33,4 +32,12 @@
 .input-form textarea::placeholder {
   color: var(--text-color-more-lightest);
   font-weight: var(--font-weight-500);
+}
+
+@media (width < 768px) { 
+  .specialization-input {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 }
