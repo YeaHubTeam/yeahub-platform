@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import AccessDeniedImg from '@/shared/assets/images/AccessDenied.png';
 import LoadError from '@/shared/assets/images/LoadError.png';
 import SearchImg from '@/shared/assets/images/SearchPage.png';
 import { i18Namespace } from '@/shared/config/i18n';
@@ -14,7 +15,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
 
-type StubType = 'empty' | 'error';
+type StubType = 'empty' | 'error' | 'access-denied';
 
 type StubProps = {
 	type: StubType;
@@ -35,21 +36,25 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const titleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_TITLE),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_TITLE),
 	};
 
 	const subtitleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBTITLE),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_DESCRIPTION),
 	};
 
 	const buttonTextByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBMIT),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_BUTTON),
 	};
 
 	const imgByType: Record<StubType, string> = {
 		empty: SearchImg,
 		error: LoadError,
+		'access-denied': AccessDeniedImg,
 	};
 
 	const resolvedTitle = title ?? titleByType[type];

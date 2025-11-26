@@ -70,6 +70,11 @@
 			"submit": "Try again"
 		}
 	},
+	"access.denied": {
+		"title": "Access Denied",
+		"description": "You don't have access to view this section. If you think this is an error, please contact support",
+		"button": "Return to Home"
+	},
 	"modal": {
 		"block": {
 			"title": "Confirm action",
