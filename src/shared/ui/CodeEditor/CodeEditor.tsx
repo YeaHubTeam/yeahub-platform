@@ -3,14 +3,14 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
-import { LiveCoding as LiveCodingTranslation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config/i18n/i18nTranslations';
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './LiveCoding.module.css';
+import styles from './CodeEditor.module.css';
 
-export const LiveCoding: FC = () => {
-	const { t } = useTranslation(i18Namespace.liveCoding);
+export const CodeEditor: FC = () => {
+	const { t } = useTranslation([i18Namespace.translation]);
 	const [code, setCode] = useState('// type your code here');
 	const [output, setOutput] = useState('');
 
@@ -23,7 +23,7 @@ export const LiveCoding: FC = () => {
 
 	return (
 		<div className={styles.widget}>
-			<Text variant="head1">{t(LiveCodingTranslation.TITLE)}</Text>
+			<Text variant="head1">{t(Translation.LIVE_CODING_TITLE)}</Text>
 			<div className={styles['editor-container']}>
 				<MonacoEditor
 					height="400px"
@@ -33,7 +33,7 @@ export const LiveCoding: FC = () => {
 					theme="vs-dark"
 				/>
 			</div>
-			<Button onClick={handleRunCode}>{t(LiveCodingTranslation.RUN)}</Button>
+			<Button onClick={handleRunCode}>{t(Translation.LIVE_CODING_RUN)}</Button>
 			<div className={styles['output-container']}>
 				<pre>{output}</pre>
 			</div>

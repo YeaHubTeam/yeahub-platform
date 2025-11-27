@@ -397,6 +397,10 @@
 			}
 		}
 	},
+	"live.coding": {
+		"title": "Live Coding",
+		"run": "Run"
+	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",
 	"editor.underline": "Underline",

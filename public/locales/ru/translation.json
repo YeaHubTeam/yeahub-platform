@@ -419,6 +419,10 @@
 			}
 		}
 	},
+	"live.coding": {
+		"title": "Live Coding",
+		"run": "Выполнить"
+	},
 	"editor.bold": "Жирный",
 	"editor.italic": "Курсив",
 	"editor.underline": "Подчеркнутый",

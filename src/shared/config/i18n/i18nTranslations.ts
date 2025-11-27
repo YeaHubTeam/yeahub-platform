@@ -211,6 +211,9 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error',
+	/* Live Coding */
+	LIVE_CODING_TITLE = 'live.coding.title',
+	LIVE_CODING_RUN = 'live.coding.run',
 }
 
 export enum Profile {
@@ -1141,9 +1144,4 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
-}
-
-export enum LiveCoding {
-	TITLE = 'title',
-	RUN = 'run',
 }
