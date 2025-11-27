@@ -5,6 +5,7 @@ import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -17,7 +18,6 @@ import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCompanies } from '../../model/selectors/companiesTablePageSelectors';
 import { companiesTablePageActions } from '../../model/slices/companiesTablePageSlice';
-import { CompaniesTablePagePagination } from '../CompaniesTablePagePagination/CompaniesTablePagePagination';
 
 import styles from './CompaniesTablePage.module.css';
 
@@ -66,11 +66,13 @@ const CompaniesTablePage = () => {
 					selectedCompanies={selectedCompanies}
 					onSelectCompanies={onSelectCompanies}
 				/>
-				<CompaniesTablePagePagination
-					companiesResponse={companies}
-					currentPage={filters.page || 1}
+				<TablePagination
+					page={filters.page || 1}
 					onChangePage={onChangePage}
+					limit={companies.limit}
+					total={companies.total}
 				/>
+
 				{companies.data.length === 0 && (
 					<EmptyFilterStub text={filters.title} resetFilters={onResetFilters} />
 				)}

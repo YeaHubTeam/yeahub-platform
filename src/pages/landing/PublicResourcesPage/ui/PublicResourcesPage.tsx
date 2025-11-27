@@ -7,6 +7,7 @@ import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetResourcesListQuery } from '@/entities/resource';
@@ -14,7 +15,7 @@ import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
 
-import { ResourcesList, ResourcesPagination } from '@/widgets/Marketplace';
+import { ResourcesList } from '@/widgets/Marketplace';
 
 import styles from './PublicResourcesPage.module.css';
 import { PublicResourcesPageSkeleton } from './PublicResourcesPage.skeleton';
@@ -83,17 +84,19 @@ const PublicResourcesPage = () => {
 					</Flex>
 				</Flex>
 
-				{resources.length > 0 ? (
-					<ResourcesList resources={resources} />
+				{resourcesResponse ? (
+					<>
+						<ResourcesList resources={resources} />
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={resourcesResponse.limit}
+							total={resourcesResponse.total}
+						/>
+					</>
 				) : (
 					<EmptyFilterStub resetFilters={onResetFilters} />
 				)}
-
-				<ResourcesPagination
-					resourcesResponse={resourcesResponse}
-					currentPage={filters.page ?? 1}
-					onChangePage={onChangePage}
-				/>
 			</Card>
 
 			{!isMobile && !isTablet && <Card className={styles.filters}>{renderFilters()}</Card>}

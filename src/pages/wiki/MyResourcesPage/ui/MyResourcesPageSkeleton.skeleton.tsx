@@ -2,11 +2,12 @@ import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { IconSkeleton } from '@/shared/ui/Icon';
+import { TablePaginationSkeleton } from '@/shared/ui/TablePagination';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import { ResourcesFiltersSkeleton } from '@/features/resources/filterResources';
 
-import { ResourcesListSkeleton, ResourcesPaginationSkeleton } from '@/widgets/Marketplace';
+import { ResourcesListSkeleton } from '@/widgets/Marketplace';
 
 import styles from './MyResourcesPage.module.css';
 
@@ -24,7 +25,7 @@ export const MyResourcesPageSkeleton = () => {
 					</Flex>
 				</Flex>
 				<ResourcesListSkeleton />
-				<ResourcesPaginationSkeleton />
+				<TablePaginationSkeleton />
 			</Card>
 			<Card className={styles.filters}>
 				<ResourcesFiltersSkeleton />

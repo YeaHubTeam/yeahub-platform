@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getUserId } from '@/entities/profile';
 import { useGetSkillsListQuery } from '@/entities/skill';
@@ -16,7 +17,6 @@ import { SkillsTable } from '@/widgets/SkillsTable';
 
 import { getSelectedSkills } from '../../model/selectors/skillsPageSelectors';
 import { skillsPageActions } from '../../model/slices/skillsPageSlice';
-import { SkillsPagePagination } from '../SkillsPagePagination/SkillsPagePagination';
 
 import styles from './SkillsPage.module.css';
 
@@ -58,16 +58,21 @@ const SkillsPage = () => {
 				)}
 			/>
 			<Card className={styles.content}>
-				<SkillsTable
-					skills={skills?.data}
-					selectedSkills={selectedSkills}
-					onSelectSkills={onSelectSkills}
-				/>
-				<SkillsPagePagination
-					skills={skills}
-					onPageChange={onChangePage}
-					currentPage={filters.page || 1}
-				/>
+				{skills && (
+					<>
+						<SkillsTable
+							skills={skills?.data}
+							selectedSkills={selectedSkills}
+							onSelectSkills={onSelectSkills}
+						/>
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={skills.limit}
+							total={skills.total}
+						/>
+					</>
+				)}
 			</Card>
 		</Flex>
 	);
