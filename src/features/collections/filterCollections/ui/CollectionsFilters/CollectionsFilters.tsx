@@ -5,7 +5,7 @@ import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useCurrentProject } from '@/shared/hooks';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
-import { ChooseCollectionAccess } from '@/entities/collection';
+import { ChooseCollectionAccess, KeywordSelect } from '@/entities/collection';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 
@@ -18,6 +18,7 @@ interface CollectionsFiltersProps {
 	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
+	onChangeKeyword: (keyword: CollectionsFilterParams['keyword']) => void;
 }
 
 export const CollectionsFilters = ({
@@ -25,8 +26,9 @@ export const CollectionsFilters = ({
 	onChangeTitle,
 	onChangeSpecialization,
 	onChangeIsFree,
+	onChangeKeyword,
 }: CollectionsFiltersProps) => {
-	const { title, specialization, isFree } = filter;
+	const { title, specialization, isFree, keyword } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -57,6 +59,7 @@ export const CollectionsFilters = ({
 						selectedSpecialization={specialization}
 						onChangeSpecialization={handleSpecializationChange}
 					/>
+					<KeywordSelect value={keyword} onChange={onChangeKeyword} />
 					{media && <MediaLinksBanner mediaLink={media} />}
 				</>
 			)}

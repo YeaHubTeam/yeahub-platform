@@ -6,4 +6,5 @@ export const collectionApiUrls = {
 	getCollectionQuestions: 'questions?collection=:collectionId',
 	getPublicCollectionById: 'collections/:collectionId/public',
 	getPublicCollectionsList: 'collections/public',
+	getCollectionKeywords: 'collections/keywords',
 };

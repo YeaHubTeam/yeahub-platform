@@ -23,7 +23,7 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
+	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree, onChangeKeyword } =
 		useCollectionsFilters({
 			page: 1,
 		});
@@ -40,6 +40,7 @@ const CollectionsPage = () => {
 		specializations: specializationId,
 		isFree: filters.isFree,
 		page: filters.page,
+		keywords: filters.keyword ? [filters.keyword] : undefined,
 	});
 
 	const { isLargeScreen } = useScreenSize();
@@ -48,9 +49,11 @@ const CollectionsPage = () => {
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeIsFree={onChangeIsFree}
+			onChangeKeyword={onChangeKeyword}
 			filter={{
 				title: filters.title,
 				isFree: filters.isFree,
+				keyword: filters.keyword,
 			}}
 		/>
 	);
