@@ -140,6 +140,7 @@
 	"dependencies": {
 		"@floating-ui/react": "^0.27.4",
 		"@hookform/resolvers": "^3.9.0",
+		"@monaco-editor/react": "^4.7.0",
 		"@reduxjs/toolkit": "^2.2.2",
 		"@sentry/browser": "^8.35.0",
 		"@sentry/react": "^8.35.0",
@@ -162,6 +163,7 @@
 		"i18next-browser-languagedetector": "^7.2.0",
 		"i18next-http-backend": "^2.5.0",
 		"lowlight": "^3.3.0",
+		"monaco-editor": "^0.55.1",
 		"msw": "^2.4.5",
 		"react": "^18.2.0",
 		"react-calendar": "^5.0.0",
