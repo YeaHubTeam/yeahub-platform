@@ -59,3 +59,10 @@ export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;
 	limit?: number;
 };
+
+type Keyword = {
+	collectionId: number;
+	keywords: string[];
+};
+
+export type GetCollectionKeywordsResponse = Keyword[];

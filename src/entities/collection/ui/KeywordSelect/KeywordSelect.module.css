@@ -1,0 +1,9 @@
+.clear-button {
+  display: none;
+  margin-right: 10px;
+  pointer-events: auto;
+}
+
+.wrapper:hover .clear-button {
+  display: block;
+}
