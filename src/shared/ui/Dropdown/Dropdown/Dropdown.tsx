@@ -15,6 +15,7 @@ export interface DropdownProps
 	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect' | 'value'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
+	extraSuffix?: React.ReactNode;
 	size?: DropdownSize;
 	children: React.ReactNode;
 	className?: string;
@@ -31,6 +32,7 @@ export const Dropdown = ({
 	disabled = false,
 	prefix,
 	suffix,
+	extraSuffix,
 	size = 'L',
 	className,
 	children,
@@ -92,7 +94,10 @@ export const Dropdown = ({
 				size={size}
 				prefix={prefix || <Lens className={styles.suffix} />}
 				suffix={
-					suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />
+					<>
+						{extraSuffix}
+						{suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />}
+					</>
 				}
 				disabled={disabled}
 				onClick={onSelectClick}

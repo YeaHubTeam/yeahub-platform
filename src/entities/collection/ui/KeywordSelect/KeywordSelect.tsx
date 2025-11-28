@@ -5,9 +5,12 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetCollectionKeywordsQuery } from '../../api/collectionApi';
+
+import styles from './KeywordSelect.module.css';
 
 export type KeywordSelectProps = Omit<
 	React.ComponentProps<typeof Dropdown>,
@@ -28,6 +31,14 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
 		onChange(newValue);
+	};
+
+	const handleClear = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (disabled) return;
+
+		setSearchValue('');
+		onChange(undefined);
 	};
 
 	const emptyKeyword = {
@@ -58,7 +69,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectedKeyword.label;
 
 	return (
-		<Flex direction="column" align="start" gap="8">
+		<Flex direction="column" align="start" gap="8" className={styles.wrapper}>
 			<Text variant="body2" color="black-700">
 				{t(Collections.KEYWORD_LABEL)}
 			</Text>
@@ -77,6 +88,17 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 					handleChange(String(val));
 					setSearchValue(selected?.label ?? '');
 				}}
+				extraSuffix={
+					<Icon
+						icon="closeCircle"
+						size={20}
+						color="red-600"
+						onClick={handleClear}
+						dataTestId="keyword-select-clear"
+						className={styles['clear-button']}
+						style={{ display: !searchValue ? 'none' : undefined }}
+					/>
+				}
 			>
 				{showNotFoundMessage ? (
 					<Option value="not-found" label={notFoundText} disabled />

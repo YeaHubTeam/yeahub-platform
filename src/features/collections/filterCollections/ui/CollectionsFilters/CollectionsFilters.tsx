@@ -54,17 +54,14 @@ export const CollectionsFilters = ({
 				currentValue={title}
 			/>
 			{project === 'landing' && (
-				<>
-					<SpecializationsListField
-						selectedSpecialization={specialization}
-						onChangeSpecialization={handleSpecializationChange}
-					/>
-					<KeywordSelect value={keyword} onChange={onChangeKeyword} />
-					{media && <MediaLinksBanner mediaLink={media} />}
-				</>
+				<SpecializationsListField
+					selectedSpecialization={specialization}
+					onChangeSpecialization={handleSpecializationChange}
+				/>
 			)}
-
+			<KeywordSelect value={keyword} onChange={onChangeKeyword} />
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
+			{media && <MediaLinksBanner mediaLink={media} />}
 		</div>
 	);
 };
