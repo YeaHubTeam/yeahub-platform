@@ -176,7 +176,7 @@ export const ImageLoader = ({
 				</Flex>
 				<div className={styles['file-loader']} ref={uploaderRef}>
 					<FileLoader
-						maxFileMBSize={maxMBSize}
+						maxFileKBSize={maxMBSize}
 						accept={Accept.IMAGE}
 						fileTypeText={t(Translation.FILE_LOADER_TYPES_PHOTO, {
 							ns: i18Namespace.translation,
