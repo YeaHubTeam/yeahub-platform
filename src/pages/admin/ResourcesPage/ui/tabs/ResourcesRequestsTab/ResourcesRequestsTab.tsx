@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { SelectedResourceRequestEntities, useGetResourceRequestsQuery } from '@/entities/resource';
 
@@ -12,9 +13,8 @@ import { useResourceRequestsFilters } from '@/features/resources/filterResourceR
 import { ResourceRequestsTable } from '@/widgets/resources/ResourceRequestsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { getResourcesRequestsTabSelected } from '../../../../model/selectors/resourcesRequestsTabSelectors';
-import { resourcesRequestsTabActions } from '../../../../model/slice/resourcesRequestsTabSlice';
-import { ResourcesRequestsTabPagination } from '../ResourcesRequestsTabPagination/ResourcesRequestsTabPagination';
+import { getResourcesRequestsTabSelected } from '../../../model/selectors/resourcesRequestsTabSelectors';
+import { resourcesRequestsTabActions } from '../../../model/slice/resourcesRequestsTabSlice';
 
 import styles from './ResourcesRequestsTab.module.css';
 
@@ -44,20 +44,21 @@ export const ResourcesRequestsTab = () => {
 				showRemoveButton={selectedResourceRequests?.length > 0}
 			/>
 			<Card className={styles.content}>
-				<ResourceRequestsTable
-					resourceRequests={resourceRequests?.data}
-					selectedResourceRequests={selectedResourceRequests}
-					onSelectResourceRequests={onSelectResourceRequests}
-				/>
-
-				{resourceRequests?.data && resourceRequests.data.length > 0 && (
-					<ResourcesRequestsTabPagination
-						resourcesRequestsResponse={resourceRequests}
-						currentPage={filters.page || 1}
-						onPageChange={onChangePage}
-					/>
+				{resourceRequests && (
+					<>
+						<ResourceRequestsTable
+							resourceRequests={resourceRequests?.data}
+							selectedResourceRequests={selectedResourceRequests}
+							onSelectResourceRequests={onSelectResourceRequests}
+						/>
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={resourceRequests.limit}
+							total={resourceRequests.total}
+						/>
+					</>
 				)}
-
 				{resourceRequests?.data && resourceRequests.data.length === 0 && (
 					<EmptyFilterStub
 						text={filters.title ? `По запросу "${filters.title}" ничего не найдено` : 'Нет данных'}

@@ -6,6 +6,7 @@ import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -13,7 +14,6 @@ import { UserSelect } from '@/entities/user';
 
 import { useCollectionsFilters } from '@/features/collections/filterCollections';
 
-import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
@@ -78,15 +78,12 @@ const CollectionsPage = () => {
 					selectedCollections={selectedCollections}
 					onSelectCollections={onSelectCollections}
 				/>
-
-				{collections.total > collections.limit && (
-					<CollectionsPagination
-						collectionsResponse={collections}
-						currentPage={filters.page || 1}
-						onPageChange={onChangePage}
-					/>
-				)}
-
+				<TablePagination
+					page={filters.page || 1}
+					onChangePage={onChangePage}
+					limit={collections.limit}
+					total={collections.total}
+				/>
 				{collections.data.length === 0 && (
 					<EmptyFilterStub text={filters.title} resetFilters={onResetAll} />
 				)}

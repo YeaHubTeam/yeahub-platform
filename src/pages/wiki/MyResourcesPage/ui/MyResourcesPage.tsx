@@ -13,6 +13,7 @@ import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Stub } from '@/shared/ui/Stub';
+import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsVerified } from '@/entities/profile';
@@ -23,7 +24,7 @@ import {
 	useResourceRequestsFilters,
 } from '@/features/resources/filterResourceRequests';
 
-import { MyResourcesList, MyResourcesPagination } from '@/widgets/Marketplace';
+import { MyResourcesList } from '@/widgets/Marketplace';
 
 import styles from './MyResourcesPage.module.css';
 import { MyResourcesPageSkeleton } from './MyResourcesPageSkeleton.skeleton';
@@ -110,7 +111,17 @@ const MyResourcesPage = () => {
 					<Stub type="error" onClick={refetch} />
 				) : (
 					<>
-						{hasResources && <MyResourcesList resources={resources} />}
+						{resourcesResponse && (
+							<>
+								<MyResourcesList resources={resources} />
+								<TablePagination
+									page={filters.page || 1}
+									onChangePage={onChangePage}
+									limit={resourcesResponse.limit}
+									total={resourcesResponse.total}
+								/>
+							</>
+						)}
 						{!hasResources && hasFilters && <EmptyFilterStub resetFilters={onResetFilters} />}
 						{!hasResources && !hasFilters && (
 							<Stub
@@ -123,11 +134,6 @@ const MyResourcesPage = () => {
 						)}
 					</>
 				)}
-				<MyResourcesPagination
-					resourcesResponse={resourcesResponse}
-					currentPage={filters.page ?? 1}
-					onChangePage={onChangePage}
-				/>
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>

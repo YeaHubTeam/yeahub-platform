@@ -12,6 +12,7 @@ import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsVerified, getSpecializationId } from '@/entities/profile';
@@ -22,7 +23,7 @@ import {
 
 import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
 
-import { ResourcesList, ResourcesPagination } from '@/widgets/Marketplace';
+import { ResourcesList } from '@/widgets/Marketplace';
 
 import styles from './ResourcesPage.module.css';
 import { ResourcesPageSkeleton } from './ResourcesPageSkeleton.skeleton';
@@ -101,20 +102,20 @@ const ResourcesPage = () => {
 						{isEmailVerified && suggestButton}
 					</Flex>
 				</Flex>
-
-				{resources.length > 0 ? (
-					<ResourcesList resources={resources} />
+				{resourcesResponse ? (
+					<>
+						<ResourcesList resources={resources} />
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={resourcesResponse.limit}
+							total={resourcesResponse.total}
+						/>
+					</>
 				) : (
 					<EmptyFilterStub resetFilters={onResetFilters} />
 				)}
-
-				<ResourcesPagination
-					resourcesResponse={resourcesResponse}
-					currentPage={filters.page ?? 1}
-					onChangePage={onChangePage}
-				/>
 			</Card>
-
 			{isEmailVerified && (
 				<Button
 					className={styles['absolute-button']}

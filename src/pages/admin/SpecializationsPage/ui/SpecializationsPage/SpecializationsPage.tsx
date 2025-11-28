@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getUserId } from '@/entities/profile';
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
@@ -19,7 +20,6 @@ import { SpecializationsTable } from '@/widgets/SpecializationsTable';
 
 import { getSelectedSpecializations } from '../../model/selectors/specializationsPageSelectors';
 import { specializationsPageActions } from '../../model/slices/specializationsPageSlice';
-import { SpecializationsPagePagination } from '../SpecializationsPagePagination/SpecializationsPagePagination';
 
 import styles from './SpecializationsPage.module.css';
 
@@ -65,16 +65,21 @@ const SpecializationsPage = () => {
 				)}
 			/>
 			<Card className={styles.content}>
-				<SpecializationsTable
-					specializations={specializations?.data}
-					selectedSpecializations={selectedSpecializations}
-					onSelectSpecializations={onSelectSpecializations}
-				/>
-				<SpecializationsPagePagination
-					specializations={specializations}
-					currentPage={filters.page || 1}
-					onPageChange={onChangePage}
-				/>
+				{specializations && (
+					<>
+						<SpecializationsTable
+							specializations={specializations?.data}
+							selectedSpecializations={selectedSpecializations}
+							onSelectSpecializations={onSelectSpecializations}
+						/>
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={specializations.limit}
+							total={specializations.total}
+						/>
+					</>
+				)}
 			</Card>
 		</Flex>
 	);

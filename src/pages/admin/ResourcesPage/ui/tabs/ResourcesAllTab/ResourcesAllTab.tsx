@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
@@ -13,8 +14,7 @@ import { useResourcesFilters } from '@/features/resources/filterResources';
 import { ResourcesTable } from '@/widgets/resources/ResourcesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { getResourcesAllTabSelected } from '../../../../model/selectors/resourcesAllTabSelectors';
-import { ResourcesAllTabPagination } from '../ResourcesAllTabPagination/ResourcesAllTabPagination';
+import { getResourcesAllTabSelected } from '../../../model/selectors/resourcesAllTabSelectors';
 
 import styles from './ResourcesAllTab.module.css';
 
@@ -47,12 +47,17 @@ export const ResourcesAllTab = () => {
 				onSearch={onChangeTitle}
 			/>
 			<Card className={styles.content}>
-				<ResourcesTable resources={resourcesWithEditFlags} />
-				<ResourcesAllTabPagination
-					resourcesResponse={resources}
-					currentPage={filters.page || 1}
-					onPageChange={onChangePage}
-				/>
+				{resources && (
+					<>
+						<ResourcesTable resources={resourcesWithEditFlags} />
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={resources.limit}
+							total={resources.total}
+						/>
+					</>
+				)}
 			</Card>
 		</Flex>
 	);

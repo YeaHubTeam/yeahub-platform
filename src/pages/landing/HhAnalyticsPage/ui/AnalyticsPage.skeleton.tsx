@@ -4,8 +4,8 @@ import { useScreenSize } from '@/shared/hooks';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { PaginationSkeleton } from '@/shared/ui/Pagination';
 import { TableSkeleton } from '@/shared/ui/Table';
+import { TablePaginationSkeleton } from '@/shared/ui/TablePagination';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import { SpecializationSelectSkeleton } from '@/entities/specialization';
@@ -27,7 +27,7 @@ export const AnalyticsPageSkeleton = () => {
 					</Flex>
 					<Flex align="center" direction="column" gap="20">
 						<TableSkeleton columnCount={1} />
-						<PaginationSkeleton />
+						<TablePaginationSkeleton />
 					</Flex>
 				</Flex>
 			</Flex>

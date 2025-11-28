@@ -3,6 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -12,8 +13,6 @@ import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filte
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
-
-import { QuestionPagePagination } from '../QuestionsPagePagination/QuestionPagePagination';
 
 import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
@@ -105,14 +104,12 @@ const QuestionsPage = () => {
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
-				{questions.total > questions.limit && (
-					// TODO Дубляжи в пагинации на других страницах
-					<QuestionPagePagination
-						questionsResponse={questions}
-						currentPage={filters.page || 1}
-						onPageChange={onChangePage}
-					/>
-				)}
+				<TablePagination
+					page={filters.page || 1}
+					onChangePage={onChangePage}
+					limit={questions.limit}
+					total={questions.total}
+				/>
 				{questions.data.length === 0 && (
 					<EmptyFilterStub text={getParams.title} resetFilters={onResetFilters} />
 				)}
