@@ -43,6 +43,14 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onFilterChange({ authorId, page: 1 });
 	};
 
+	//added
+	const onChangeIsMy = (isMy: CollectionsFilterParams['isMy']) => {
+		onFilterChange({
+			isMy,
+			page: 1,
+		});
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -52,5 +60,6 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onChangeIsFree,
 		onChangePage,
 		onChangeAuthor,
+		onChangeIsMy,
 	};
 };
