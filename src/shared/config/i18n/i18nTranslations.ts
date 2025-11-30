@@ -791,6 +791,7 @@ export enum Collections {
 	BANNER_INTERVIEW_DESCRIPTION = 'banner.interview.description',
 	BANNER_INTERVIEW_LINK = 'banner.interview.link',
 	BANNER_INTERVIEW_WATCH_BUTTON = 'banner.interview.watch.button',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 }
 
 export enum Companies {

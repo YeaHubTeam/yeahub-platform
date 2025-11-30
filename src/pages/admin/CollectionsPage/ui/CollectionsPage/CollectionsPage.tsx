@@ -9,9 +9,12 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
-import { UserSelect } from '@/entities/user';
+// import { UserSelect } from '@/entities/user';
 
-import { useCollectionsFilters } from '@/features/collections/filterCollections';
+import {
+	CollectionsFilters,
+	useCollectionsFilters,
+} from '@/features/collections/filterCollections';
 
 import { CollectionsPagination } from '@/widgets/Collection';
 import { CollectionsTable } from '@/widgets/CollectionsTable';
@@ -20,6 +23,7 @@ import { SearchSection } from '@/widgets/SearchSection';
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
+// import { SpecializationsFilters } from '@/features/specialization/filterSpecializations';
 import styles from './CollectionsPage.module.css';
 
 const CollectionsPage = () => {
@@ -31,10 +35,18 @@ const CollectionsPage = () => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
 	};
 
-	const { filters, hasFilters, onResetFilters, onChangeTitle, onChangePage, onChangeAuthor } =
-		useCollectionsFilters({
-			page: 1,
-		});
+	const {
+		filters,
+		hasFilters,
+		onResetFilters,
+		onChangeTitle,
+		onChangePage,
+		onChangeIsFree,
+		onChangeSpecialization,
+		onChangeIsMy,
+	} = useCollectionsFilters({
+		page: 1,
+	});
 
 	const onResetAll = () => {
 		dispatch(collectionsPageActions.resetFilters());
@@ -42,7 +54,7 @@ const CollectionsPage = () => {
 	};
 
 	const { data: allCollections } = useGetCollectionsListQuery({
-		authorId: filters.authorId,
+		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
 	});
@@ -70,7 +82,15 @@ const CollectionsPage = () => {
 				searchValue={filters.title}
 				onSearch={onChangeTitle}
 				hasFilters={hasFilters}
-				renderFilter={() => <UserSelect value={filters.authorId} onChange={onChangeAuthor} />}
+				renderFilter={() => (
+					<CollectionsFilters
+						filter={filters}
+						onChangeTitle={onChangeTitle}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeIsFree={onChangeIsFree}
+						onChangeIsMy={onChangeIsMy}
+					/>
+				)}
 			/>
 			<Card className={styles.content}>
 				<CollectionsTable

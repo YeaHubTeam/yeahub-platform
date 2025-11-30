@@ -72,5 +72,10 @@
 		"description": "1000+ real interview recordings",
 		"link": "Join",
 		"watch.button": "Watch"
+	},
+	"sort": {
+		"author": {
+			"title": "My Collections"
+		}
 	}
 }

@@ -4,4 +4,5 @@ export interface CollectionsFilterParams {
 	isFree?: boolean;
 	page?: number;
 	authorId?: string;
+	isMy?: boolean;
 }
