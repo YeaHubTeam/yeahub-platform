@@ -27,6 +27,7 @@ export enum Translation {
 	SORT_TITLE = 'sort.title',
 	SORT_ASCENDING = 'sort.ascending',
 	SORT_DESCENDING = 'sort.descending',
+	ERROR = 'error',
 	/* Header*/
 	HEADER_MENU_CHOOSE_MEMBERSHIP = 'header.menu.membership',
 	HEADER_MENU_SETTINGS = 'header.menu.settings',
@@ -213,14 +214,14 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_REJECT_SUCCESS = 'toast.resource.request.reject.success',
 	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
-	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.error',
+	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
-	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalidData',
-	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.dataOutdated',
-	TOAST_AUTH_TELEGRAM_ALREADY_LINKED = 'toast.auth.telegram.verification.link.error.alreadyLinked',
-	TOAST_AUTH_TELEGRAM_LINKED_TO_ANOTHER_USER = 'toast.auth.telegram.verification.link.error.linkedToAnotherUser',
-	TOAST_AUTH_TELEGRAM_VERIFY_DENIED = 'toast.auth.telegram.verification.link.error.verifyDenied',
-	TOAST_AUTH_TELEGRAM_USER_NOT_FOUND = 'toast.auth.telegram.verification.link.error.userNotFound',
+	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
+	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
+	TOAST_AUTH_TELEGRAM_ALREADY_LINKED = 'toast.auth.telegram.verification.link.error.already.linked',
+	TOAST_AUTH_TELEGRAM_LINKED_TO_ANOTHER_USER = 'toast.auth.telegram.verification.link.error.linked.to.another.user',
+	TOAST_AUTH_TELEGRAM_VERIFY_DENIED = 'toast.auth.telegram.verification.link.error.verify.denied',
+	TOAST_AUTH_TELEGRAM_USER_NOT_FOUND = 'toast.auth.telegram.verification.link.error.user.not.found',
 }
 
 export enum Profile {
