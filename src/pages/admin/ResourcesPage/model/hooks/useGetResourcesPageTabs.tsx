@@ -6,8 +6,8 @@ import { Tab } from '@/shared/ui/Tabs';
 
 import { useGetResourceRequestsReviewCountQuery } from '@/entities/resource';
 
-import { ResourcesAllTab } from '../../ui/tabs/ResourcesAllTab/ResourcesAllTab/ResourcesAllTab';
-import { ResourcesRequestsTab } from '../../ui/tabs/ResourcesRequestsTab/ResourcesRequestsTab/ResourcesRequestsTab';
+import { ResourcesAllTab } from '../../ui/tabs/ResourcesAllTab/ResourcesAllTab';
+import { ResourcesRequestsTab } from '../../ui/tabs/ResourcesRequestsTab/ResourcesRequestsTab';
 
 type AdminResourcesTabId = 'all' | 'requests';
 

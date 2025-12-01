@@ -15,7 +15,6 @@ export const useAnalyticFilters = (initialParams: AnalyticFilterParams) => {
 		(filters.page || 1) > 1 || Boolean(filters.skill) || Boolean(filters.specialization);
 
 	const onChangeSpecialization = (specialization: AnalyticFilterParams['specialization']) => {
-		console.log(specialization);
 		onFilterChange({
 			specialization,
 			skill: undefined,

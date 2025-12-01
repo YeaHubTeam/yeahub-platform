@@ -9,5 +9,4 @@ export { CollectionAdditionalInfoDrawer } from './ui/CollectionAdditionalInfoDra
 export { CollectionAdditionalInfoDrawerSkeleton } from './ui/CollectionAdditionalInfoDrawer/CollectionAdditionalInfoDrawer.skeleton';
 export { CollectionsContent } from './ui/CollectionsContent/CollectionsContent';
 export { CollectionsContentSkeleton } from './ui/CollectionsContent/CollectionsContent.skeleton';
-export { CollectionsPagination } from './ui/CollectionsPagination/CollectionsPagination';
 export { InterviewRecordingsBanner } from './ui/CollectionInterview/InterviewRecordingsBanner';

@@ -3,6 +3,7 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
@@ -13,11 +14,7 @@ import {
 	useCollectionsFilters,
 } from '@/features/collections/filterCollections';
 
-import {
-	CollectionsContent,
-	CollectionsPagination,
-	InterviewRecordingsBanner,
-} from '@/widgets/Collection';
+import { CollectionsContent, InterviewRecordingsBanner } from '@/widgets/Collection';
 
 import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
@@ -69,13 +66,12 @@ const CollectionsPage = () => {
 				filter={filters}
 				resetFilters={onResetFilters}
 				pagination={
-					allCollections?.total > allCollections?.limit && (
-						<CollectionsPagination
-							collectionsResponse={allCollections}
-							currentPage={filters.page || 1}
-							onPageChange={onChangePage}
-						/>
-					)
+					<TablePagination
+						page={filters.page || 1}
+						onChangePage={onChangePage}
+						limit={allCollections.limit}
+						total={allCollections.total}
+					/>
 				}
 				renderDrawer={() => <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 				banner={!isLargeScreen && <InterviewRecordingsBanner />}

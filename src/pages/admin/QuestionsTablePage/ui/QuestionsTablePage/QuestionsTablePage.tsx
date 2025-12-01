@@ -5,6 +5,7 @@ import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
@@ -17,7 +18,6 @@ import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedQuestions } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
-import { QuestionPagePagination } from '../QuestionTablePagePagination/QuestionTablePagePagination';
 
 import styles from './QuestionsTablePage.module.css';
 
@@ -103,21 +103,22 @@ const QuestionsPage = () => {
 				)}
 			/>
 			<Card className={styles.content}>
-				<QuestionsTable
-					questions={questions?.data}
-					selectedQuestions={selectedQuestions}
-					onSelectQuestions={onSelectQuestions}
-				/>
-
-				{isEmpty && <EmptyFilterStub text={filters.title} resetFilters={resetAll} />}
-
-				{!isEmpty && (
-					<QuestionPagePagination
-						questionsResponse={questions}
-						currentPage={filters.page || 1}
-						onPageChange={onChangePage}
-					/>
+				{questions && (
+					<>
+						<QuestionsTable
+							questions={questions?.data}
+							selectedQuestions={selectedQuestions}
+							onSelectQuestions={onSelectQuestions}
+						/>
+						<TablePagination
+							page={filters.page || 1}
+							onChangePage={onChangePage}
+							limit={questions.limit}
+							total={questions.total}
+						/>
+					</>
 				)}
+				{isEmpty && <EmptyFilterStub text={filters.title} resetFilters={resetAll} />}
 			</Card>
 		</Flex>
 	);

@@ -3,6 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
@@ -18,7 +19,6 @@ import {
 	getSkillTitles,
 	getSpecializationTitleFromSkills,
 } from '../../model/helpers/getTitleFromQuery';
-import { PublicQuestionPagePagination } from '../PublicQuestionsPagePagination/PublicQuestionPagePagination';
 
 import styles from './PublicQuestionsPage.module.css';
 import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
@@ -108,14 +108,12 @@ const PublicQuestionsPage = () => {
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
-
-				{questions.total > questions.limit && (
-					<PublicQuestionPagePagination
-						questionsResponse={questions}
-						currentPage={filters.page || 1}
-						onPageChange={onChangePage}
-					/>
-				)}
+				<TablePagination
+					page={filters.page || 1}
+					onChangePage={onChangePage}
+					limit={questions.limit}
+					total={questions.total}
+				/>
 				{questions.data.length === 0 && (
 					<EmptyFilterStub text={filters.title} resetFilters={onResetFilters} />
 				)}
