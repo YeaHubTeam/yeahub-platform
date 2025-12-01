@@ -61,7 +61,7 @@
 	},
 	"stub": {
 		"filter": {
-			"text": "Unfortunately, nothing was found for the query {{text}}. Try to change the query or use our categories",
+			"text": "Unfortunately, nothing was found for the query {{text}}. Try changing your filters and try again.",
 			"submit": "Reset filter"
 		},
 		"error": {

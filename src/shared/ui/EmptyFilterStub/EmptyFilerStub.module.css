@@ -1,8 +1,22 @@
-.button {
-  align-self: flex-start;
+.container {
+  padding: 24px 0;
+}
+
+.card {
+  max-width: 600px;
 }
 
 .text {
   margin-bottom: 24px;
-  padding-top: 22px;
+  text-align: center;
+}
+
+.img {
+  margin-bottom: 22px;
+  width: 186px;
+  height: 164px;
+}
+
+.button {
+  margin-bottom: 24px;
 }
