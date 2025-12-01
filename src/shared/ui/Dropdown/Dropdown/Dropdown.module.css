@@ -30,6 +30,16 @@
   background-color: var(--color-white-900);
 }
 
+.clear-button {
+  display: none;
+  margin-right: 10px;
+  pointer-events: auto;
+}
+
+.dropdown:hover .clear-button {
+  display: block;
+}
+
 @media (width < 768px) {
   .dropdown,
   .list {

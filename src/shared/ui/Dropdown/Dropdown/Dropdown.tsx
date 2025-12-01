@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
 import Lens from '@/shared/assets/icons/Magnifer.svg';
 import { useOutsideClick } from '@/shared/hooks';
+import { Icon } from '@/shared/ui/Icon';
 
 import { DropdownSize } from '../DropdownTypes';
 import { OptionProps } from '../Option/Option';
@@ -15,7 +16,6 @@ export interface DropdownProps
 	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect' | 'value'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
-	extraSuffix?: React.ReactNode;
 	size?: DropdownSize;
 	children: React.ReactNode;
 	className?: string;
@@ -25,6 +25,7 @@ export interface DropdownProps
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
+	onChangeFilterValue?: () => void;
 }
 
 export const Dropdown = ({
@@ -32,7 +33,6 @@ export const Dropdown = ({
 	disabled = false,
 	prefix,
 	suffix,
-	extraSuffix,
 	size = 'L',
 	className,
 	children,
@@ -43,6 +43,7 @@ export const Dropdown = ({
 	isInput = false,
 	inputValue,
 	onChangeValue,
+	onChangeFilterValue,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -62,6 +63,14 @@ export const Dropdown = ({
 		if (!isOpen && !disabled) {
 			setIsOpen(true);
 		}
+	};
+
+	const handleInputClear = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (disabled || !onChangeValue) return;
+
+		onChangeValue('');
+		if (onChangeFilterValue) onChangeFilterValue();
 	};
 
 	const filteredChildren = useMemo(() => {
@@ -95,7 +104,16 @@ export const Dropdown = ({
 				prefix={prefix || <Lens className={styles.suffix} />}
 				suffix={
 					<>
-						{extraSuffix}
+						{isInput && (
+							<Icon
+								icon="closeCircle"
+								size={20}
+								color="red-600"
+								onClick={handleInputClear}
+								className={styles['clear-button']}
+								style={{ display: !inputValue ? 'none' : undefined }}
+							/>
+						)}
 						{suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />}
 					</>
 				}
