@@ -95,6 +95,7 @@ import { PublicQuestionsPage } from '@/pages/landing/PublicQuestionsPage';
 import { PublicQuizPage } from '@/pages/landing/PublicQuizPage';
 import { PublicQuizResultPage } from '@/pages/landing/PublicQuizResultPage';
 import { PublicResourcesPage } from '@/pages/landing/PublicResourcesPage';
+import { LiveCodingPage } from '@/pages/liveCoding';
 import { EditProfilePage } from '@/pages/profile/EditProfilePage';
 import { ProfilePage } from '@/pages/profile/ProfilePage';
 import { SettingsProfilePage } from '@/pages/profile/SettingsProfilePage';
@@ -167,6 +168,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: ROUTES.interview.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.liveCoding.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_LIVE_CODING_TITLE),
+				icon: CursorSquare, // TODO: добавить иконку
 			},
 		],
 		roles: allRoles,
@@ -686,6 +692,13 @@ export const router = createBrowserRouter([
 						},
 					},
 				],
+			},
+			{
+				path: ROUTES.liveCoding.route,
+				element: <LiveCodingPage />,
+				handle: {
+					crumb: i18n.t(Translation.CRUMBS_LIVE_CODING),
+				},
 			},
 			{
 				path: ROUTES.wiki.route,
