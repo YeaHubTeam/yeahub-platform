@@ -54,6 +54,7 @@ import { SpecializationCreatePage } from '@/pages/admin/SpecializationCreatePage
 import { SpecializationDetailPage } from '@/pages/admin/SpecializationDetailPage';
 import { SpecializationEditPage } from '@/pages/admin/SpecializationEditPage';
 import { SpecializationsPage } from '@/pages/admin/SpecializationsPage';
+import { TopicsPage } from '@/pages/admin/TopicsPage';
 import { UserDetailPage } from '@/pages/admin/UserDetailPage';
 import { UserEditPage } from '@/pages/admin/UserEditPage';
 import { UsersTablePage } from '@/pages/admin/UserTablePage';
@@ -512,6 +513,16 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.topics.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TopicsPage />,
 					},
 				],
 			},

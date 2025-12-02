@@ -1146,3 +1146,10 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
 }
+
+export enum Topics {
+	TITLE_SHORT = 'title.short',
+	DESCRIPTION_SHORT = 'description.short',
+	SKILLS_SHORT = 'skills.short',
+	CREATED_AT = 'created.at',
+}
