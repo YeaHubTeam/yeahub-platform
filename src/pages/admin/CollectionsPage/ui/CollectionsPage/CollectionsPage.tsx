@@ -9,7 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
-// import { UserSelect } from '@/entities/user';
 
 import {
 	CollectionsFilters,
@@ -23,7 +22,6 @@ import { SearchSection } from '@/widgets/SearchSection';
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
-// import { SpecializationsFilters } from '@/features/specialization/filterSpecializations';
 import styles from './CollectionsPage.module.css';
 
 const CollectionsPage = () => {

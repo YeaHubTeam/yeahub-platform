@@ -4,12 +4,15 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { useCurrentProject } from '@/shared/hooks';
 import { Flex } from '@/shared/ui/Flex';
+import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import { ChooseCollectionAccess } from '@/entities/collection';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
+import { UserSelect } from '@/entities/user';
 
+import { useCollectionsFilters } from '../../model/hooks/useCollectionsFilters';
 import { CollectionsFilterParams } from '../../model/types/types';
 
 interface CollectionsFiltersProps {
@@ -17,25 +20,49 @@ interface CollectionsFiltersProps {
 	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
-	onChangeIsMy: (isMy?: CollectionsFilterParams['isMy']) => void;
+	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
+	onChangeIsMy?: (isMy?: CollectionsFilterParams['isMy']) => void;
 }
 
 export const CollectionsFilters = ({
 	filter,
+	onChangeTitle,
 	onChangeSpecialization,
 	onChangeIsFree,
 	onChangeIsMy,
 }: CollectionsFiltersProps) => {
-	const { specialization, isFree } = filter;
+	const { specialization, isFree, isMy, title } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
-	const media = getChannelsForSpecialization(specialization ?? DEFAULT_SPECIALIZATION_ID);
+	const handleSearch = (value: CollectionsFilterParams['title']) => {
+		onChangeTitle(value);
+	};
 
-	const { isMy } = filter;
+	const handleSpecializationChange = (
+		specialization: CollectionsFilterParams['specialization'],
+	) => {
+		if (specialization) {
+			onChangeSpecialization?.(specialization);
+		}
+	};
+
+	const { onChangeAuthor } = useCollectionsFilters({
+		page: 1,
+	});
+
+	const media = getChannelsForSpecialization(specialization ?? DEFAULT_SPECIALIZATION_ID);
 
 	return (
 		<Flex direction="column" gap="24">
+			{project === 'landing' ||
+				(project === 'admin' && (
+					<SearchInput
+						placeholder={t(Collections.SEARCH_PLACEHOLDER)}
+						onSearch={handleSearch}
+						currentValue={title}
+					/>
+				))}
 			{project === 'admin' && onChangeIsMy && (
 				<Switch
 					checked={!!isMy}
@@ -43,15 +70,18 @@ export const CollectionsFilters = ({
 					label={t(Collections.SORT_AUTHOR_TITLE)}
 				/>
 			)}
+			{project === 'admin' && (
+				<UserSelect value={filter.authorId} onChange={onChangeAuthor} disabled={!!isMy} />
+			)}
 			{(project === 'admin' || project === 'landing') && onChangeSpecialization && (
 				<SpecializationsListField
 					selectedSpecialization={specialization}
-					onChangeSpecialization={onChangeSpecialization}
+					onChangeSpecialization={handleSpecializationChange}
 				/>
 			)}
-			{media && <MediaLinksBanner mediaLink={media} />}
-
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
+
+			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);
 };

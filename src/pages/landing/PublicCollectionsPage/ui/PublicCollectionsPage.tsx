@@ -28,7 +28,6 @@ const PublicCollectionsPage = () => {
 		onChangeSpecialization,
 		onChangeIsFree,
 		onChangeTitle,
-		onChangeIsMy, //added
 	} = useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
@@ -43,12 +42,10 @@ const PublicCollectionsPage = () => {
 			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
 			onChangeIsFree={onChangeIsFree}
-			onChangeIsMy={onChangeIsMy} //added
 			filter={{
 				title: filters.title,
 				specialization: filters.specialization,
 				isFree: filters.isFree,
-				isMy: filters.isMy, //added
 			}}
 		/>
 	);
