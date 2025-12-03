@@ -8,10 +8,10 @@ import { ROUTES } from '@/shared/config/router/routes';
 import { useAppSelector, useScreenSize } from '@/shared/hooks';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
@@ -113,7 +113,7 @@ const ResourcesPage = () => {
 						/>
 					</>
 				) : (
-					<EmptyFilterStub resetFilters={onResetFilters} />
+					<Stub type={'filter-empty'} onClick={onResetFilters} />
 				)}
 			</Card>
 			{isEmailVerified && (

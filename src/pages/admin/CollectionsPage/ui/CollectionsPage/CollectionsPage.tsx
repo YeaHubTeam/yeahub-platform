@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/hooks';
 import { SelectedAdminEntities } from '@/shared/types/types';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
@@ -84,9 +84,7 @@ const CollectionsPage = () => {
 					limit={collections.limit}
 					total={collections.total}
 				/>
-				{collections.data.length === 0 && (
-					<EmptyFilterStub text={filters.title} resetFilters={onResetAll} />
-				)}
+				{collections.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetAll} />}
 			</Card>
 		</Flex>
 	);

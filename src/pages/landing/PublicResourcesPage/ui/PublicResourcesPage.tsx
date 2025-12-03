@@ -4,9 +4,9 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
@@ -95,7 +95,7 @@ const PublicResourcesPage = () => {
 						/>
 					</>
 				) : (
-					<EmptyFilterStub resetFilters={onResetFilters} />
+					<Stub type={'filter-empty'} onClick={onResetFilters} />
 				)}
 			</Card>
 

@@ -1,6 +1,6 @@
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetUsersListQuery } from '@/entities/user';
@@ -64,7 +64,7 @@ export const UsersTablePage = () => {
 						/>
 					</>
 				)}
-				{isEmpty && <EmptyFilterStub resetFilters={onResetFilters} />}
+				{isEmpty && <Stub type={'filter-empty'} onClick={onResetFilters} />}
 			</Card>
 		</Flex>
 	);

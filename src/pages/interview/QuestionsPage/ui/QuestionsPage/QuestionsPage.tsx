@@ -1,8 +1,8 @@
 import { useAppSelector } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
@@ -20,13 +20,13 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 const QuestionsPage = () => {
 	const {
 		filters,
-		onResetFilters,
 		onChangePage,
 		onChangeTitle,
 		onChangeSkills,
 		onChangeComplexity,
 		onChangeRate,
 		onChangeStatus,
+		onResetFilters,
 	} = useQuestionsFilters({
 		page: 1,
 		status: 'all',
@@ -110,9 +110,7 @@ const QuestionsPage = () => {
 					limit={questions.limit}
 					total={questions.total}
 				/>
-				{questions.data.length === 0 && (
-					<EmptyFilterStub text={getParams.title} resetFilters={onResetFilters} />
-				)}
+				{questions.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetFilters} />}
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>

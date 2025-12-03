@@ -1,8 +1,8 @@
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
@@ -114,9 +114,7 @@ const PublicQuestionsPage = () => {
 					limit={questions.limit}
 					total={questions.total}
 				/>
-				{questions.data.length === 0 && (
-					<EmptyFilterStub text={filters.title} resetFilters={onResetFilters} />
-				)}
+				{questions.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetFilters} />}
 			</Card>
 			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</Flex>

@@ -6,8 +6,8 @@ import { i18Namespace } from '@/shared/config/i18n';
 import { Collections } from '@/shared/config/i18n/i18nTranslations';
 import { FilterFromUser, useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
@@ -28,7 +28,6 @@ interface CollectionsProps {
 export const CollectionsContent = ({
 	collections,
 	pagination,
-	filter,
 	resetFilters,
 	renderDrawer,
 	banner,
@@ -49,9 +48,7 @@ export const CollectionsContent = ({
 					<CollectionsList collections={collections} queryFilter={search} />
 					{banner}
 					{pagination}
-					{collections.length === 0 && (
-						<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />
-					)}
+					{collections.length === 0 && <Stub type={'filter-empty'} onClick={resetFilters} />}
 				</Flex>
 			</Card>
 		</div>
