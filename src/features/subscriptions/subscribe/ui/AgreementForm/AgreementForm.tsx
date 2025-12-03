@@ -4,18 +4,14 @@ import { useTranslation } from 'react-i18next';
 
 import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
 import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { i18Namespace, SubscriptionCard as SubscriptionCardI18, ROUTES } from '@/shared/config';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
-import { parseI18nText } from '@/shared/utils/parseI18nText';
 
 import { getFullProfile, isAvailableTrial } from '@/entities/profile';
 import {
@@ -31,6 +27,8 @@ import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgre
 import { SubscribeButton } from '../SubscribeButton/SubscribeButton';
 
 import styles from './AgreementForm.module.css';
+
+const parseI18nText = (text: string) => text.split(/<processingLink>|<\/processingLink>/);
 
 export const AgreementForm = () => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);

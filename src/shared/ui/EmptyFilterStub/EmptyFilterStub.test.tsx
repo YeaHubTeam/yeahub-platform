@@ -1,13 +1,13 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Translation } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 import { emptyStubTestIds } from '@/shared/ui/EmptyFilterStub/constants';
 
 import { EmptyFilterStub, EmptyStubProps } from './EmptyFilterStub';
 
-jest.mock('@/shared/hooks/useScreenSize', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(),
 }));
 

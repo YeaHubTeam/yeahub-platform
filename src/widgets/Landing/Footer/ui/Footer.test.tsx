@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -19,7 +19,7 @@ describe('Footer', () => {
 		jest.clearAllMocks();
 	});
 
-	test('should render FooterSkeleton while profile is loading', () => {
+	test('should render FooterSkeleton while profileInfo is loading', () => {
 		(useProfileQuery as jest.Mock).mockReturnValue({ isLoading: true });
 
 		renderComponent(<Footer />);
@@ -27,7 +27,7 @@ describe('Footer', () => {
 		expect(screen.getByTestId('FooterSkeleton')).toBeInTheDocument();
 	});
 
-	test('should render full Footer with FooterMain and FooterMeta after profile has loaded', () => {
+	test('should render full Footer with FooterMain and FooterMeta after profileInfo has loaded', () => {
 		(useProfileQuery as jest.Mock).mockReturnValue({ isLoading: false });
 
 		renderComponent(<Footer />);

@@ -1,14 +1,14 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useCreateCollectionMutation } from '../../api/createCollectionApi';
 import { CollectionCreateFormValues } from '../../model/types/collectionCreateTypes';
+
 export interface CollectionCreateFormHeaderProps {
 	children?: React.ReactNode;
 }

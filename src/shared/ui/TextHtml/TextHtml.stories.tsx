@@ -65,7 +65,7 @@ const user: User = {
 
 // Дополнительные строки для демонстрации скроллбара
 function fetchUsers(): Promise<User[]> {
-  return fetch('/api/users')
+  return fetch('/query/users')
     .then(response => response.json())
     .then(data => data as User[]);
 }

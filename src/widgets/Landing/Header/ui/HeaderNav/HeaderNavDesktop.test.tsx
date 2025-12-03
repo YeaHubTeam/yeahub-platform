@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs/jest';
 
-import { HEADER_NAV_LINKS } from '@/widgets/Landing/Header/model/constants/headerConstants';
+import { HEADER_NAV_LINKS } from '../../model/constants/headerConstants';
 
 import { HeaderNavDesktop } from './HeaderNavDesktop/HeaderNavDesktop';
 

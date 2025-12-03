@@ -1,13 +1,10 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { route } from '@/shared/helpers/route';
+import { ApiTags, baseApi, i18n, Translation } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { ResourceRequest } from '@/entities/resource';
 
-import { rejectResourceRequestApiUrls } from '@/features/resources/rejectResourceRequest/model/constants/rejectResourceRequestConstants';
+import { rejectResourceRequestApiUrls } from '../model/constants/rejectResourceRequestConstants';
 
 const rejectResourceRequestApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({

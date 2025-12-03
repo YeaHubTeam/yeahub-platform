@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks';
-import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo/AuthorInfo.skeleton';
+import { useScreenSize } from '@/shared/libs';
+import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsListSkeleton } from '@/shared/ui/KeywordsList';

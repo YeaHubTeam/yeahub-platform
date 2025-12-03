@@ -7,7 +7,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { QuestionForm } from '@/entities/question';
 
-import { questionCreateSchema } from '../../model/lib/validation/questionCreateSchema';
+import { questionCreateSchema } from '../../lib/validation/questionCreateSchema';
 import { CreateQuestionFormValues } from '../../model/types/questionCreateTypes';
 import { QuestionCreateFormHeader } from '../QuestionCreateFormHeader/QuestionCreateFormHeader';
 

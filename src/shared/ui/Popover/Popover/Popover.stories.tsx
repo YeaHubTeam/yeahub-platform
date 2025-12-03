@@ -138,7 +138,7 @@ WithMenuItems.args = {
 	menuItems: [
 		{
 			title: 'Profile',
-			onClick: () => alert('Go to profile!'),
+			onClick: () => alert('Go to profileInfo!'),
 			icon: <Icon icon="student" />,
 		},
 		{

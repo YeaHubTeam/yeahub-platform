@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { i18Namespace } from '@/shared/config';
+import { LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { HEADER_NAV_LINKS, HEADER_NAV_LINKS_AUTH } from '../../../model/constants/headerConstants';

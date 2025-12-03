@@ -1,5 +1,5 @@
 import { Middleware } from '@reduxjs/toolkit';
-import * as Sentry from '@sentry/react';
+import { captureException } from '@sentry/react';
 
 interface RejectedAction {
 	type: string;
@@ -23,7 +23,7 @@ function isRejectedAction(action: unknown): action is RejectedAction {
 
 export const sentryApiErrorMiddleware: Middleware = () => (next) => (action) => {
 	if (isRejectedAction(action)) {
-		Sentry.captureException(action.error, {
+		captureException(action.error, {
 			extra: {
 				context: 'RTK Query API error',
 				action,

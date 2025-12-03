@@ -1,12 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Questions } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
-import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';

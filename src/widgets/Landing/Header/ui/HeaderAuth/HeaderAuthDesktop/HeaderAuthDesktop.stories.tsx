@@ -17,7 +17,7 @@ const meta = {
 		docs: {
 			description: {
 				component:
-					'Desktop authentication block that toggles between auth buttons and user profile',
+					'Desktop authentication block that toggles between auth buttons and user profileInfo',
 			},
 		},
 	},
@@ -38,7 +38,7 @@ export const Authenticated: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Displays user profile block when authenticated',
+				story: 'Displays user profileInfo block when authenticated',
 			},
 		},
 	},

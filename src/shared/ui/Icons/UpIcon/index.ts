@@ -1,1 +1,1 @@
-export { TechnologyIcon } from './TechnologyIcon';
+export { UpIcon } from './UpIcon';

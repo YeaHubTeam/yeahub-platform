@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
 import { useLocation, useMatches } from 'react-router-dom';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { Breadcrumbs } from './Breadcrumbs';
 
@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 	useLocation: jest.fn(),
 }));
 
-jest.mock('@/shared/hooks/useScreenSize', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(),
 }));
 
@@ -66,11 +66,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profile',
+				pathname: '/home/profileInfo',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -139,15 +139,15 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profile',
+				pathname: '/home/profileInfo',
 			},
 			{
 				handle: { crumb: 'Settings' },
-				pathname: '/home/profile/settings',
+				pathname: '/home/profileInfo/settings',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profile/settings' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo/settings' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -176,11 +176,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profile',
+				pathname: '/home/profileInfo',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -201,11 +201,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profile',
+				pathname: '/home/profileInfo',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
 		mockUseScreenSize.mockReturnValue({ isMobile: true });
 
 		const { container } = renderComponent(<Breadcrumbs />);

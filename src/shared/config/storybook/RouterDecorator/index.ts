@@ -1,0 +1,1 @@
+export { RouteDecorator } from './RouterDecorator';

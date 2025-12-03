@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Translation } from '@/shared/config';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { BackButton } from './BackButton';
 import styles from './BackButton.module.css';

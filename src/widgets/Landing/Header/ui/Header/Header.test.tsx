@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { useProfileQuery } from '@/entities/auth';
 
@@ -15,7 +15,7 @@ jest.mock('@/entities/auth', () => {
 	};
 });
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(),
 }));
 
@@ -24,7 +24,7 @@ describe('Header', () => {
 		jest.clearAllMocks();
 	});
 
-	test('should render HeaderSkeleton while profile is loading', () => {
+	test('should render HeaderSkeleton while profileInfo is loading', () => {
 		(useProfileQuery as jest.Mock).mockReturnValue({ isLoading: true });
 		(useScreenSize as jest.Mock).mockReturnValue({ isLargeScreen: true });
 

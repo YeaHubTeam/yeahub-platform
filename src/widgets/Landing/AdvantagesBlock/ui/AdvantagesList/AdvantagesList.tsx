@@ -12,8 +12,7 @@ import ProjectIcon from '@/shared/assets/images/landing/learning/icons/projectIc
 import SupportIcon from '@/shared/assets/images/landing/learning/icons/supportIcon.png';
 import TeamIcon from '@/shared/assets/images/landing/learning/icons/teamIcon.png';
 import TechnoIcon from '@/shared/assets/images/landing/learning/icons/technoIcon.png';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Learning } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Learning } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

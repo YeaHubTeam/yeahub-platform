@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './Loader.module.css';

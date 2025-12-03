@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { Pallete } from '@/shared/types/types';
+import { i18Namespace, Landing } from '@/shared/config';
+import { Pallete } from '@/shared/libs';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';

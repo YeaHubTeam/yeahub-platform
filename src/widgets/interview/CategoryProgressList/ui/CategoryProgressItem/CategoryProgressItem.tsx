@@ -1,4 +1,4 @@
-import { BarChart } from '@/shared/ui/charts/BarChart';
+import { BarChart } from '@/shared/ui/charts';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 

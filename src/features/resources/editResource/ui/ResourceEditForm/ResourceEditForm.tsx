@@ -10,7 +10,7 @@ import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
 import { useEditResourceMutation } from '../../api/editResourceApi';
-import { resourceEditSchema } from '../../model/lib/validation/resourceEditSchema';
+import { resourceEditSchema } from '../../lib/validation/resourceEditSchema';
 import { EditResourceFormValues } from '../../model/types/resourcesEditTypes';
 import { ResourceEditFormHeader } from '../ResourceEditFormHeader/ResourceEditFormHeader';
 

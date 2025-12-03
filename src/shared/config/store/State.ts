@@ -1,17 +1,17 @@
 /* eslint-disable @conarti/feature-sliced/layers-slices */
+import { baseApi } from '@/shared/config';
+
 import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 import { ActiveSubscriptionState } from '@/entities/subscription';
 
-import { CollectionsPageState } from '@/pages/admin/CollectionsPage';
-import { CompaniesTablePageState } from '@/pages/admin/CompaniesTablePage';
-import { QuestionsTablePageState } from '@/pages/admin/QuestionsTablePage';
-import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/ResourcesPage';
-import { SkillsPageState } from '@/pages/admin/SkillsPage';
-import { SpecializationsPageState } from '@/pages/admin/SpecializationsPage';
-import { InterviewHistoryState } from '@/pages/interview/InterviewHistoryPage';
-
-import { baseApi } from '../api/baseApi';
+import { CollectionsPageState } from '@/pages/admin/collection/collections';
+import { CompaniesTablePageState } from '@/pages/admin/company/companies';
+import { QuestionsTablePageState } from '@/pages/admin/question/questions';
+import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/resource/resources';
+import { SkillsPageState } from '@/pages/admin/skill/skills';
+import { SpecializationsPageState } from '@/pages/admin/specialization/specializations';
+import { InterviewHistoryState } from '@/pages/interview/interviewHistory';
 
 export interface State {
 	activeQuiz: ActiveQuizState;

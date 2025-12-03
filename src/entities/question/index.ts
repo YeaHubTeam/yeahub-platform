@@ -18,8 +18,8 @@ export {
 	useGetPopularQuestionsQuery,
 } from './api/questionApi';
 export { LS_INIT_QUESTION_ID } from './model/constants/question';
-export { getQuestionRoute } from './model/lib/getQuestionRoute';
-export { getQuestionImage } from './model/lib/getQuestionImage';
+export { getQuestionRoute } from '@/entities/question/lib/getQuestionRoute';
+export { getQuestionImage } from '@/entities/question/lib/getQuestionImage';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';

@@ -145,10 +145,10 @@ export const ROUTES = {
 	},
 	profile: {
 		route: 'profile',
-		page: '/dashboard/profile',
+		page: '/dashboard/profileInfo',
 		edit: {
 			route: 'edit',
-			page: '/dashboard/profile/edit',
+			page: '/dashboard/profileInfo/edit',
 		},
 	},
 	users: {
@@ -253,7 +253,7 @@ export const ROUTES = {
 	},
 	media: {
 		route: 'media',
-		page: '/media',
+		page: '/socialMedia',
 	},
 	questions: {
 		route: 'questions',
