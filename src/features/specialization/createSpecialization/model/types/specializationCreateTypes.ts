@@ -4,5 +4,3 @@ export type CreateSpecializationFormValues = Omit<CreateOrEditSpecializationForm
 
 export type CreateSpecializationBodyRequest = CreateSpecializationFormValues;
 export type CreateSpecializationResponse = Specialization;
-
-export type CreateSpecializationError = 'specialization.specialization.title.conflict';
