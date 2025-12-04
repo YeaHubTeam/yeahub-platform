@@ -1,12 +1,5 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { removeFromLS } from '@/shared/helpers/manageLocalStorage';
-import { route } from '@/shared/helpers/route';
+import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
+import { route, LS_ACCESS_TOKEN_KEY, removeFromLS } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { deleteAccountApiUrls } from '../model/constants';

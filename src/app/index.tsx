@@ -5,9 +5,8 @@ import { RouterProvider } from 'react-router-dom';
 
 import '@/shared/config/i18n/i18n';
 
-import { ToastOptions } from '@/shared/config/reactHotToast';
-import { SentryErrorBoundary } from '@/shared/config/sentry/ErrorBoundary';
-import { initSentry } from '@/shared/config/sentry/sentry';
+import { ToastOptions } from '@/shared/config';
+import { SentryErrorBoundary, initSentry } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
 import { router } from '@/app/providers/router';

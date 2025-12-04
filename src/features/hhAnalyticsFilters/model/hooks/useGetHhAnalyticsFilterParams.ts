@@ -1,4 +1,4 @@
-import type { HhAnalyticsFiltersParams, HhAnalyticsMode } from '@/features/hhAnalyticsFilters';
+import type { HhAnalyticsFiltersParams, HhAnalyticsMode } from '../types/types';
 
 export const useGetHhAnalyticsFilterParams = (initialParams: HhAnalyticsFiltersParams) => {
 	const params = new URLSearchParams(location.search);

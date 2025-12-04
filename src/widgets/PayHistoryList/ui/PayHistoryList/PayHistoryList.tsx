@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Subscription } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetPaymentsHistoryQuery } from '@/entities/payment';
+import { getUserId } from '@/entities/profile';
 
 import { PayHistoryItem } from '../PayHistoryItem/PayHistoryItem';
 
@@ -16,7 +16,7 @@ import styles from './PayHistoryList.module.css';
 
 export const PayHistoryList = () => {
 	const [pageNumber, setPageNumber] = useState(1);
-	const userId = useAppSelector((state) => state.profile.fullProfile?.id || '');
+	const userId = useAppSelector(getUserId);
 
 	const queryParams = useMemo(
 		() => ({
@@ -34,9 +34,7 @@ export const PayHistoryList = () => {
 
 	return (
 		<Flex direction="column" gap="24" className={styles.wrapper}>
-			<Text variant="head3" className={styles.title}>
-				{t(Subscription.PAY_HISTORY)}
-			</Text>
+			<Text variant="head3">{t(Subscription.PAY_HISTORY)}</Text>
 			<Flex gap="14" direction="column">
 				{payHistories && (
 					<>

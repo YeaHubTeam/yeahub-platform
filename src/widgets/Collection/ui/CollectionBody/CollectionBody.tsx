@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { i18Namespace, Questions } from '@/shared/config';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { Collection } from '@/entities/collection';
-import { CollectionWarningInfo } from '@/entities/collection';
+import { Collection, CollectionWarningInfo } from '@/entities/collection';
 import { Question, PreviewQuestionsItem } from '@/entities/question';
 
 import { NoQuestionsCard } from '../NoQuestionsCard/NoQuestionsCard';

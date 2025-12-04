@@ -1,17 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { AVOS_TELEGRAM_URL } from '@/shared/constants/media';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { AVOS_TELEGRAM_URL, useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import desktopScreenshot from '@/widgets/Landing/Avos/model/assets/desktopScreenshot.jpg';
-import tabletScreenshot from '@/widgets/Landing/Avos/model/assets/desktopScreenshot.jpg';
+import { desktopScreenshot, tabletScreenshot } from '../../model/assets';
 
 import styles from './AvosPromo.module.css';
 

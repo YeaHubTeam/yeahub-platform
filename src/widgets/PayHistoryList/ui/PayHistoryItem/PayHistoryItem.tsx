@@ -1,7 +1,7 @@
 import { parseISO } from 'date-fns';
 
 import SealCheck from '@/shared/assets/icons/SealCheck.svg';
-import { formatDate } from '@/shared/helpers/formatDate';
+import { formatDate } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 

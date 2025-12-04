@@ -1,6 +1,6 @@
 import Clock from '@/shared/assets/icons/clockSquare.svg';
 import Lock from '@/shared/assets/icons/lockKeyholeMinimalistic.svg';
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

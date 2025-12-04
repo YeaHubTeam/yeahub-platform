@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Text } from '@/shared/ui/Text';
 
 export const FooterCopyright = () => {

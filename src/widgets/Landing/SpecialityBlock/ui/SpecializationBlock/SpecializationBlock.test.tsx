@@ -1,17 +1,17 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { mockSpecialization } from './mockSpecialization';
 import { SpecializationBlock } from './SpecializationBlock';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(),
 }));
 
-const mockUseScreenSize = require('@/shared/hooks').useScreenSize;
+const mockUseScreenSize = require('@/shared/libs').useScreenSize;
 
 const createScreenSizeMock = (overrides: Partial<ReturnType<typeof useScreenSize>> = {}) => {
 	return {

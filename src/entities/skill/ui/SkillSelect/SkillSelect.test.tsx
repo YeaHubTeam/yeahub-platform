@@ -1,8 +1,8 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 
-import { Skills } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Skills } from '@/shared/config';
+import { renderComponent } from '@/shared/libs/jest';
 import { setupMockServer } from '@/shared/libs/jest/setupMockServer';
 import { dropdownTestIds } from '@/shared/ui/Dropdown';
 import { selectWithChipsTestIds } from '@/shared/ui/SelectWithChips';

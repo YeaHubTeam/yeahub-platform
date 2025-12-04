@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Onboarding } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { Step, Stepper } from '@/shared/ui/Stepper';

@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 
 import { HeaderAuthDesktopSkeleton } from './HeaderAuthDesktop/HeaderAuthDesktop.skeketon';
 import { HeaderAuthMobileSkeleton } from './HeaderAuthMobile/HeaderAuthMobile.skeleton';

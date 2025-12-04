@@ -1,5 +1,5 @@
 import { Flex } from '@/shared/ui/Flex';
-import { StepIndicatorIcon } from '@/shared/ui/Icons/StepIndicatorIcon/StepIndicatorIcon';
+import { StepIndicatorIcon } from '@/shared/ui/Icons';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './OnboardingProgress.module.css';

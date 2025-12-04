@@ -8,7 +8,7 @@ export const userRolesMock: Role[] = [
 		permissions: [
 			{
 				id: 1,
-				name: 'View members list/profile',
+				name: 'View members list/profileInfo',
 			},
 			{
 				id: 6,
@@ -22,15 +22,15 @@ export const userRolesMock: Role[] = [
 		permissions: [
 			{
 				id: 1,
-				name: 'View members list/profile',
+				name: 'View members list/profileInfo',
 			},
 			{
 				id: 2,
-				name: 'View candidates list/profile',
+				name: 'View candidates list/profileInfo',
 			},
 			{
 				id: 3,
-				name: 'Edit own profile',
+				name: 'Edit own profileInfo',
 			},
 			{
 				id: 6,
@@ -44,15 +44,15 @@ export const userRolesMock: Role[] = [
 		permissions: [
 			{
 				id: 1,
-				name: 'View members list/profile',
+				name: 'View members list/profileInfo',
 			},
 			{
 				id: 2,
-				name: 'View candidates list/profile',
+				name: 'View candidates list/profileInfo',
 			},
 			{
 				id: 3,
-				name: 'Edit own profile',
+				name: 'Edit own profileInfo',
 			},
 			{
 				id: 6,
@@ -78,15 +78,15 @@ export const userRolesMock: Role[] = [
 		permissions: [
 			{
 				id: 1,
-				name: 'View members list/profile',
+				name: 'View members list/profileInfo',
 			},
 			{
 				id: 2,
-				name: 'View candidates list/profile',
+				name: 'View candidates list/profileInfo',
 			},
 			{
 				id: 3,
-				name: 'Edit own profile',
+				name: 'Edit own profileInfo',
 			},
 			{
 				id: 4,
@@ -132,7 +132,7 @@ export const userRolesMock: Role[] = [
 		permissions: [
 			{
 				id: 1,
-				name: 'View members list/profile',
+				name: 'View members list/profileInfo',
 			},
 			{
 				id: 5,

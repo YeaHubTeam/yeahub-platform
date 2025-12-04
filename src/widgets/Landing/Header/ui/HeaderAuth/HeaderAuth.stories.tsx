@@ -40,7 +40,7 @@ export const DesktopVersion: Story = {
 		},
 		docs: {
 			description: {
-				story: 'Desktop version with auth buttons/profile',
+				story: 'Desktop version with auth buttons/profileInfo',
 			},
 		},
 	},
@@ -81,7 +81,7 @@ export const MobileVersion: Story = {
 		},
 		docs: {
 			description: {
-				story: 'Mobile version with burger menu/profile',
+				story: 'Mobile version with burger menu/profileInfo',
 			},
 		},
 	},

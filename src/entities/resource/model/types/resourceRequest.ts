@@ -1,4 +1,4 @@
-import { Response, SelectedEntities } from '@/shared/types/types';
+import { Response, SelectedEntities } from '@/shared/libs';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Skill } from '@/entities/skill';

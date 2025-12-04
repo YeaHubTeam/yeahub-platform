@@ -1,0 +1,1 @@
+export { StyleDecorator } from './StyleDecorator';

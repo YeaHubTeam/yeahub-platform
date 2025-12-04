@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Cropper, ReactCropperElement } from 'react-cropper';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Profile, Translation } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Loader } from '@/shared/ui/Loader';
 import { Modal } from '@/shared/ui/Modal';
@@ -144,8 +144,8 @@ export const ImageLoader = ({
 
 	return (
 		<div className={styles.container}>
-			<Flex className={styles['profile-picture-wrapper']} gap="40">
-				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
+			<Flex className={styles['profileInfo-picture-wrapper']} gap="40">
+				<Flex className={styles['profileInfo-picture-block']} gap="8" direction="column">
 					{isLoading && (
 						<Loader
 							hasText={false}

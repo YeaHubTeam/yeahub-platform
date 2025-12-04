@@ -1,14 +1,14 @@
 import { screen } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { RESOURCES_LINKS } from '../../model/constants/footerConstants';
 
 import { FooterLinks } from './FooterLinks';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(() => ({ isSmallScreen: false })),
 }));
 
@@ -25,7 +25,7 @@ describe('FooterLinks', () => {
 		expect(flexWrapper).toHaveClass('footer-resources-links');
 	});
 
-	test('should render docs and media links inside NavLink with correct href', () => {
+	test('should render docs and socialMedia links inside NavLink with correct href', () => {
 		renderComponent(<FooterLinks />);
 
 		const navDocs = screen.getByTestId('Footer_NavDocs');
@@ -34,10 +34,10 @@ describe('FooterLinks', () => {
 
 		const navMedia = screen.getByTestId('Footer_NavMedia');
 		expect(navMedia).toBeInTheDocument();
-		expect(navMedia).toHaveAttribute('href', '/media');
+		expect(navMedia).toHaveAttribute('href', '/socialMedia');
 	});
 
-	test('should render docs and media links with correct default variant, color, className and translation', () => {
+	test('should render docs and socialMedia links with correct default variant, color, className and translation', () => {
 		renderComponent(<FooterLinks />);
 
 		const docsLink = screen.getByTestId('Footer_Docs');

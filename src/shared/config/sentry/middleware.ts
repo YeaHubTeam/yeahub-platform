@@ -1,17 +1,17 @@
 import { Middleware } from '@reduxjs/toolkit';
-import * as Sentry from '@sentry/react';
+import { addBreadcrumb } from '@sentry/react';
 
 import { setUserContext, UserContext } from './context';
 
 export const sentryMiddleware: Middleware = (store) => (next) => (action) => {
-	const loginActionTypes = ['auth/login/fulfilled', 'profile/fetch/fulfilled'];
+	const loginActionTypes = ['auth/login/fulfilled', 'profileInfo/fetch/fulfilled'];
 	const logoutActionTypes = ['auth/logout/fulfilled'];
-	const updateProfileActionTypes = ['profile/update/fulfilled'];
+	const updateProfileActionTypes = ['profileInfo/update/fulfilled'];
 
 	const actionWithType = action as { type?: string; payload?: unknown };
 
 	if (actionWithType.type && !actionWithType.type.startsWith('@@')) {
-		Sentry.addBreadcrumb({
+		addBreadcrumb({
 			category: 'redux.action',
 			message: actionWithType.type,
 			level: 'info',
