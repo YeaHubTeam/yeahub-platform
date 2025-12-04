@@ -145,10 +145,10 @@ export const ROUTES = {
 	},
 	profile: {
 		route: 'profile',
-		page: '/dashboard/profileInfo',
+		page: '/dashboard/profile',
 		edit: {
 			route: 'edit',
-			page: '/dashboard/profileInfo/edit',
+			page: '/dashboard/profile/edit',
 		},
 	},
 	users: {

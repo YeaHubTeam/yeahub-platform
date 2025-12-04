@@ -8,8 +8,8 @@ export const UserProfilePageSkeleton = () => {
 	return (
 		<div className={styles.content}>
 			<div className={styles.container}>
-				<Card className={styles['profileInfo-card-skeleton']}>
-					<div className={styles['flex-profileInfo-skeleton']}>
+				<Card className={styles['profile-card-skeleton']}>
+					<div className={styles['flex-profile-skeleton']}>
 						<Flex gap="8" direction="column">
 							<Skeleton width={170} height={188} borderRadius={20} />
 							<Flex direction="column" gap="4">
@@ -49,7 +49,7 @@ export const UserProfilePageSkeleton = () => {
 								))}
 							</Flex>
 						</Flex>
-						<div style={{ flex: '1 0' }} className={styles['sleleton-link-profileInfo']}>
+						<div style={{ flex: '1 0' }} className={styles['sleleton-link-profile']}>
 							<div className={styles['sleleton-link']}>
 								<Skeleton width={'100%'} height={'100%'} />
 							</div>

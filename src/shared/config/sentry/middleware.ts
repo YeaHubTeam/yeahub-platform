@@ -4,9 +4,9 @@ import { addBreadcrumb } from '@sentry/react';
 import { setUserContext, UserContext } from './context';
 
 export const sentryMiddleware: Middleware = (store) => (next) => (action) => {
-	const loginActionTypes = ['auth/login/fulfilled', 'profileInfo/fetch/fulfilled'];
+	const loginActionTypes = ['auth/login/fulfilled', 'profile/fetch/fulfilled'];
 	const logoutActionTypes = ['auth/logout/fulfilled'];
-	const updateProfileActionTypes = ['profileInfo/update/fulfilled'];
+	const updateProfileActionTypes = ['profile/update/fulfilled'];
 
 	const actionWithType = action as { type?: string; payload?: unknown };
 

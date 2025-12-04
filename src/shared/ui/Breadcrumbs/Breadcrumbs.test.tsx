@@ -66,11 +66,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profileInfo',
+				pathname: '/home/profile',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -139,15 +139,15 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profileInfo',
+				pathname: '/home/profile',
 			},
 			{
 				handle: { crumb: 'Settings' },
-				pathname: '/home/profileInfo/settings',
+				pathname: '/home/profile/settings',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo/settings' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profile/settings' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -176,11 +176,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profileInfo',
+				pathname: '/home/profile',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
 
 		renderComponent(<Breadcrumbs />);
 
@@ -201,11 +201,11 @@ describe('Breadcrumbs', () => {
 			},
 			{
 				handle: { crumb: 'Profile' },
-				pathname: '/home/profileInfo',
+				pathname: '/home/profile',
 			},
 		]);
 
-		mockUseLocation.mockReturnValue({ pathname: '/home/profileInfo' });
+		mockUseLocation.mockReturnValue({ pathname: '/home/profile' });
 		mockUseScreenSize.mockReturnValue({ isMobile: true });
 
 		const { container } = renderComponent(<Breadcrumbs />);
