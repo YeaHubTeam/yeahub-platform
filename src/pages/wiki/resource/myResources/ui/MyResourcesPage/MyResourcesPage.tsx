@@ -6,7 +6,6 @@ import { i18Namespace, Marketplace, ROUTES } from '@/shared/config';
 import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -120,7 +119,7 @@ const MyResourcesPage = () => {
 								/>
 							</>
 						)}
-						{!hasResources && hasFilters && <EmptyFilterStub resetFilters={onResetFilters} />}
+						{!hasResources && hasFilters && <Stub type={'filter-empty'} onClick={onResetFilters} />}
 						{!hasResources && !hasFilters && (
 							<Stub
 								type="empty"

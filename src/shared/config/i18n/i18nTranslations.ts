@@ -51,7 +51,8 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 
 	/* Stub */
-	STUB_FILTER_TITLE = 'stub.filter.text',
+	STUB_FILTER_TITLE = 'stub.filter.title',
+	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',

@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { SelectedResourceRequestEntities, useGetResourceRequestsQuery } from '@/entities/resource';
@@ -60,10 +60,7 @@ export const ResourcesRequestsTab = () => {
 					</>
 				)}
 				{resourceRequests?.data && resourceRequests.data.length === 0 && (
-					<EmptyFilterStub
-						text={filters.title ? `По запросу "${filters.title}" ничего не найдено` : 'Нет данных'}
-						resetFilters={onResetFilters}
-					/>
+					<Stub type={'filter-empty'} onClick={onResetFilters} />
 				)}
 			</Card>
 		</Flex>

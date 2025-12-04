@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -117,7 +117,7 @@ const QuestionsPage = () => {
 						/>
 					</>
 				)}
-				{isEmpty && <EmptyFilterStub text={filters.title} resetFilters={resetAll} />}
+				{isEmpty && <Stub type={'filter-empty'} onClick={resetAll} />}
 			</Card>
 		</Flex>
 	);
