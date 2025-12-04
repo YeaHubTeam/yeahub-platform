@@ -6,9 +6,10 @@ import './EventCalendar.css';
 import 'react-calendar/dist/Calendar.css';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize, useModal } from '@/shared/hooks';
+import { i18Namespace } from '@/shared/config';
+import { InterviewHistory } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { useModal } from '@/shared/libs';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 

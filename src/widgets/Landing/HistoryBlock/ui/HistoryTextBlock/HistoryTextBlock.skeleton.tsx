@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { clearStore } from '@/shared/config/store/clearStore';
+import { clearStore } from '@/shared/config';
 
-import { ProfileState } from '@/entities/profile/model/types/profile';
+import { ProfileState } from '../types/profile';
 
 const initialState: ProfileState = {
 	isEmailSent: false,

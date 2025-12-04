@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config';
 import { AuthAvatarFrame } from '@/shared/ui/AuthAvatarFrame';
 
 import styles from './AuthorizedBlock.module.css';

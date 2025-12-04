@@ -1,6 +1,6 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 
-import { apiAccessTokenIsBrokenEvent } from '@/shared/config/api/apiAccessTokenIsBrokenEvent';
+import { apiAccessTokenIsBrokenEvent } from '@/shared/config';
 
 import { authApi } from './authApi';
 

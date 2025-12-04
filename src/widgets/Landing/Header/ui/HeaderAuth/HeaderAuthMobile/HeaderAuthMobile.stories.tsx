@@ -40,7 +40,7 @@ export const Authenticated: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Displays user profile when authenticated on mobile',
+				story: 'Displays user profileInfo when authenticated on mobile',
 			},
 		},
 	},

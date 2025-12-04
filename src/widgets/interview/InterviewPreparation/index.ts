@@ -1,2 +1,2 @@
-export { InterviewPreparation } from './ui/InterviewPreparation/InterviewPreparation';
-export { InterviewPreparationSkeleton } from './ui/InterviewPreparation/InterviewPreparation.skeleton';
+export { InterviewPreparation } from './InterviewPreparation/InterviewPreparation';
+export { InterviewPreparationSkeleton } from './InterviewPreparation/InterviewPreparation.skeleton';

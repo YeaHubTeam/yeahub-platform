@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18Namespace, Landing, ROUTES } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
 
-import { AuthorizedBlock } from '@/widgets/Landing/Header/ui/AuthorizedBlock/AuthorizedBlock';
+import { AuthorizedBlock } from '../../AuthorizedBlock/AuthorizedBlock';
 
 import styles from './HeaderAuthDesktop.module.css';
 

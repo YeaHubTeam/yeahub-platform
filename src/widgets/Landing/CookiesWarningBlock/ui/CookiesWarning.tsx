@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { getJSONFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { i18Namespace, Landing } from '@/shared/config';
+import { getJSONFromLS, setToLS } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
 

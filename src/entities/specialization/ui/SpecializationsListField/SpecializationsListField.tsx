@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Specializations, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Specializations, Translation } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';

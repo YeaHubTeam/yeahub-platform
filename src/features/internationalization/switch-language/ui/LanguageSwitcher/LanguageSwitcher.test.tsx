@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import i18n from '@/shared/config/jest/jestI18n';
+import { Translation, i18n } from '@/shared/config';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
 

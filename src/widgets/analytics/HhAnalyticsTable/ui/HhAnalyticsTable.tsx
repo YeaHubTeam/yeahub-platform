@@ -2,9 +2,8 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { SelectedEntity } from '@/shared/types/types';
+import { i18Namespace, Analytics } from '@/shared/config';
+import { SelectedEntity } from '@/shared/libs';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 

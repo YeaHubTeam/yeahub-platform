@@ -1,4 +1,4 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices

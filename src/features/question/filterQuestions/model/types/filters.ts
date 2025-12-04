@@ -1,4 +1,4 @@
-import { SortOrder } from '@/shared/types/types';
+import { SortOrder } from '@/shared/libs';
 
 export interface QuestionsFilterParams {
 	skills?: number[];

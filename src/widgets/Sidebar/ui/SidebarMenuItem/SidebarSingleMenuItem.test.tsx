@@ -1,14 +1,14 @@
 import { screen } from '@testing-library/react';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { i18n } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
-import { profileMenuItemMock, sidebarUserMenuMock } from '@/widgets/Sidebar/model/data/sidebarMock';
+import { profileMenuItemMock, sidebarUserMenuMock } from '../../model/data/sidebarMock';
 
 import SidebarSingleMenuItem from './SidebarSingleMenuItem';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobile: false,
 		isTablet: false,
@@ -32,7 +32,7 @@ describe('SidebarSingleMenuItem', () => {
 		expect(singleItem).toHaveTextContent(i18n.t(menuItem.title));
 	});
 
-	describe('profile route', () => {
+	describe('profileInfo route', () => {
 		const profileItem = profileMenuItemMock;
 
 		test('does not render on desktop', () => {

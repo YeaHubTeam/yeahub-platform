@@ -4,7 +4,7 @@ import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { GuruCardSkeleton } from '@/widgets/Landing/GurusBlock/ui/GuruCard/GuruCard.skeleton';
+import { GuruCardSkeleton } from '../GuruCard/GuruCard.skeleton';
 
 import styles from './GurusBlock.module.css';
 

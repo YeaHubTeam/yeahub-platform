@@ -1,11 +1,5 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { ROUTES } from '@/shared/config/router/routes';
-import { clearStore } from '@/shared/config/store/clearStore';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { i18n, ApiTags, baseApi, ROUTES, clearStore, ExtraArgument } from '@/shared/config';
+import { LS_ACCESS_TOKEN_KEY, removeFromLS, setToLS } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices

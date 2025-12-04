@@ -3,6 +3,7 @@ import { http } from 'msw';
 import { skillsMock } from '@/entities/skill';
 
 import { deleteSkillApiUrls } from '../../model/constants/deleteSkillConstants';
+
 export const deleteSkillMock = http.delete(
 	process.env.API_URL + deleteSkillApiUrls.deleteSkill,
 	({ params }) => {

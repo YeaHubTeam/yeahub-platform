@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

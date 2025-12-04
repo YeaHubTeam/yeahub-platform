@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import PlusSvg from '@/shared/assets/icons/Plus1.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { COLLECTION_QUESTIONS_LIMIT } from '@/shared/constants/queryConstants';
-import { useModal } from '@/shared/hooks';
+import { i18Namespace, Collections, Translation } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
@@ -18,6 +16,8 @@ import { Text } from '@/shared/ui/Text';
 import { useGetQuestionsListQuery } from '../../api/questionApi';
 
 import styles from './ChooseQuestionsDrawer.module.css';
+
+const COLLECTION_QUESTIONS_LIMIT = 20;
 
 interface ChooseQuestionsDrawerProps {
 	selectedQuestions: { title: string; id: number }[];
@@ -44,7 +44,7 @@ export const ChooseQuestionsDrawer = ({
 		specialization: specializations?.length ? specializations : undefined,
 	});
 
-	const handleCollectionSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleCollectionSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setCollectionSearch(e.target.value);
 	};
 

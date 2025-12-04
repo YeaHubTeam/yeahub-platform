@@ -1,4 +1,4 @@
-import { AppLogoSkeleton } from '@/shared/ui/AppLogo/AppLogo.skeleton';
+import { AppLogoSkeleton } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 

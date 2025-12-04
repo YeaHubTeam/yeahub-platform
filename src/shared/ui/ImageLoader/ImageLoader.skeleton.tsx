@@ -8,8 +8,8 @@ import styles from './ImageLoader.module.css';
 export const ImageLoaderSkeleton = ({ isPopover }: Partial<ImageLoaderProps>) => {
 	return (
 		<div className={styles.container}>
-			<Flex className={styles['profile-picture-wrapper']} gap="40">
-				<Flex className={styles['profile-picture-block']} gap="8" direction="column">
+			<Flex className={styles['profileInfo-picture-wrapper']} gap="40">
+				<Flex className={styles['profileInfo-picture-block']} gap="8" direction="column">
 					<Skeleton width="100%" height="100%" />
 				</Flex>
 				<div className={styles['file-loader']}>

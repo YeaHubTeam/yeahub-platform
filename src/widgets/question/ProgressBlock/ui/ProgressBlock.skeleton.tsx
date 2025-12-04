@@ -3,7 +3,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import styles from '@/widgets/question/ProgressBlock/ui/ProgressBlock.module.css';
+import styles from './ProgressBlock.module.css';
 
 export const ProgressBlockSkeleton = () => {
 	return (

@@ -1,10 +1,9 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
-import { FormField } from '@/shared/ui/FormField/FormField';
+import { i18Namespace, Profile } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoader } from '@/shared/ui/ImageLoader';
 
 import { getFullProfile } from '@/entities/profile';

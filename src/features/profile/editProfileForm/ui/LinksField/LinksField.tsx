@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { FormField } from '@/shared/ui/FormField/FormField';
+import { i18Namespace } from '@/shared/config';
+import { Profile } from '@/shared/config';
+import { FormField } from '@/shared/ui/FormField';
 
 import { SocialNetWorkInputs } from '@/entities/socialNetwork';
 
