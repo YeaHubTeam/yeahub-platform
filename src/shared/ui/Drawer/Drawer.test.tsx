@@ -108,6 +108,11 @@ describe('Drawer component with default props', () => {
 		const body = document.querySelector('body');
 		expect(body).toHaveStyle('overflow: hidden');
 	});
+
+	test('should have default width 360px when width prop is not provided', () => {
+		const drawer = screen.getByTestId(drawerTestIds.drawer);
+		expect(drawer).toHaveStyle('width: 360px');
+	});
 });
 
 describe('Drawer component without default props', () => {
