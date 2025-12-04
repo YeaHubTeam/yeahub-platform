@@ -1,5 +1,5 @@
 import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
-import { handleApiError } from '@/shared/helpers/handleApiError/handleApiError';
+import { handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { TelegramLoginBodyRequest, TelegramLoginResponse } from '@/entities/auth';
