@@ -1,9 +1,7 @@
-/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector, useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useAppSelector, useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { OrderFilter } from '@/shared/ui/OrderFilter';
 import { SearchInput } from '@/shared/ui/SearchInput';

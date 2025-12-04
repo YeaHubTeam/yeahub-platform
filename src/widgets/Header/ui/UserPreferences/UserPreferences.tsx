@@ -3,18 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
 import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks';
+import { Translation, ROUTES, i18n } from '@/shared/config';
+import { useAppSelector, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getHasPremiumAccess } from '@/entities/profile';
 
-import { Logout } from '@/features/authentication/logout/Logout';
+import { Logout } from '@/features/authentication/logout';
 
 import { UserPreferencesHeader } from '../UserPreferencesHeader/UserPreferencesHeader';
 

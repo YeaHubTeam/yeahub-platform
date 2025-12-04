@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18Namespace, Landing, ROUTES } from '@/shared/config';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';

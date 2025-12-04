@@ -24,6 +24,7 @@
 	"total.questions": "Всего вопросов",
 	"back.button": "Вернуться на прошлую страницу",
 	"author": "Автор",
+	"error": "Неизвестная ошибка",
 	"sort": {
 		"title": "Сортировать по",
 		"ascending": "Возрастанию",
@@ -177,7 +178,16 @@
 			"telegram": {
 				"verification": {
 					"link.success": "Telegram-аккаунт успешно привязан к Вашему аккаунту!",
-					"link.error": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту."
+					"link.error": {
+						"default": "Не удалось привязать Telegram-аккаунт к Вашему аккаунту.",
+						"unauthorized": "Ошибка авторизации.",
+						"invalid.data": "Неверные данные Telegram.",
+						"data.outdated": "Данные Telegram устарели.",
+						"already.linked": "Этот Telegram-аккаунт уже привязан к вашему профилю.",
+						"linked.to.another.user": "Этот Telegram-аккаунт уже привязан к другому пользователю.",
+						"verify.denied": "Подтверждение Telegram отклонено.",
+						"user.not.found": "Пользователь не найден."
+					}
 				}
 			}
 		},

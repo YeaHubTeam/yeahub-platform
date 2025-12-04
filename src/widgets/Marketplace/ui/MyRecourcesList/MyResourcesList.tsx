@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
+import { ROUTES } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { ResourceRequest, MyResourceCard } from '@/entities/resource';

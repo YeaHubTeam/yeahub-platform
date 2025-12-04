@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
 import { Modal } from '@/shared/ui/Modal';
 
 import styles from './BlockerDialogModal.module.css';

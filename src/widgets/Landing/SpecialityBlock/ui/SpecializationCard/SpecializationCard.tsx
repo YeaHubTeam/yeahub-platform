@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Landing } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { IMockSpeciality } from '@/widgets/Landing/SpecialityBlock/ui/SpecializationBlock/mockSpecialization';
+import { IMockSpeciality } from '../SpecializationBlock/mockSpecialization';
 
 import styles from './SpecializationCard.module.css';
 

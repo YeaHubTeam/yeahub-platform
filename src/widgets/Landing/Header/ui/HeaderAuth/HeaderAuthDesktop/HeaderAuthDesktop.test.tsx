@@ -1,8 +1,7 @@
 import { screen } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing, ROUTES } from '@/shared/config';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { useProfileQuery } from '@/entities/auth';
 

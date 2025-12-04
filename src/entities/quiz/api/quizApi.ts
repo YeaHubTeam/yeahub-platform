@@ -1,17 +1,10 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { setToLS } from '@/shared/helpers/manageLocalStorage';
-import { route } from '@/shared/helpers/route';
-import { Response } from '@/shared/types/types';
+import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
+import { route, Response, setToLS } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
-import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
-
 import { LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
+import { getActiveQuizQuestions } from '../model/helpers/getActiveQuizQuestions';
+import { getValidActiveQuizzesFromLS } from '../model/helpers/getValidActiveQuizzesFromLS';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
 import {
 	CreateNewQuizParamsRequest,
@@ -28,7 +21,6 @@ import {
 	Answers,
 	ActiveQuiz,
 } from '../model/types/quiz';
-import { getActiveQuizQuestions } from '../utils/getActiveQuizQuestions';
 
 const quizApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

@@ -2,11 +2,8 @@ import { parseISO } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { formatDate } from '@/shared/helpers/formatDate';
-import { route } from '@/shared/helpers/route';
+import { i18Namespace, InterviewHistory, ROUTES } from '@/shared/config';
+import { route, formatDate } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

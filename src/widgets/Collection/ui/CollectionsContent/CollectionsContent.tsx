@@ -2,15 +2,16 @@ import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { FilterFromUser, useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { Collection } from '@/entities/collection';
+
+import { CollectionsFilterParams } from '@/features/collections/filterCollections';
 
 import { CollectionsList } from '../CollectionsList/CollectionsList';
 
@@ -20,7 +21,7 @@ interface CollectionsProps {
 	pagination: ReactNode;
 	banner?: ReactNode;
 	collections: Collection[];
-	filter: FilterFromUser;
+	filter: CollectionsFilterParams;
 	resetFilters: () => void;
 	renderDrawer: () => ReactNode;
 }

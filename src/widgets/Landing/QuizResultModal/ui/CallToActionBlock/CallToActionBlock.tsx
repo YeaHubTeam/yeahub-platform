@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

@@ -2,16 +2,15 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing, ROUTES } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './InterviewCard.module.css';
+
 interface InterviewCardProps {
 	iconType: 'settings' | 'student';
 	img: string;

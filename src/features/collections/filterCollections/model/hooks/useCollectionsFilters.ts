@@ -1,4 +1,4 @@
-import { useQueryFilterParams } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/libs';
 
 import { CollectionsFilterParams } from '../types/types';
 

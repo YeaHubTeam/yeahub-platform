@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';

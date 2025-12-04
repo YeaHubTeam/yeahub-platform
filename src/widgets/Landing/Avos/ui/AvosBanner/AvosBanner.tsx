@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import avosAndYeahubLogo from '@/widgets/Landing/Avos/model/assets/avosAndYeahubLogo.png';
+import { avosAndYeahubLogo } from '../../model/assets';
 
 import styles from './AvosBanner.module.css';
 

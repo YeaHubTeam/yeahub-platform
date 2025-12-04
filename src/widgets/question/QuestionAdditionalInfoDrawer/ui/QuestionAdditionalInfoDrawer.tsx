@@ -2,10 +2,8 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize, useCurrentProject, useModal } from '@/shared/hooks';
+import { i18Namespace, Questions, ROUTES } from '@/shared/config';
+import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';

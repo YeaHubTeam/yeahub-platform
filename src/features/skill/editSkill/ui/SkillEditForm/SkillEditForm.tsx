@@ -8,9 +8,8 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Skill, SkillForm } from '@/entities/skill';
 
-import { EditSkillFormValues } from '@/features/skill/editSkill/model/types/skillEditPageTypes';
-
-import { skillEditSchema } from '../../model/lib/validation/skillEditSchema';
+import { skillEditSchema } from '../../lib/validation/skillEditSchema';
+import { EditSkillFormValues } from '../../model/types/skillEditPageTypes';
 import { SkillEditFormHeader } from '../SkillEditFormHeader/SkillEditFormHeader';
 
 import styles from './SkillEditForm.module.css';

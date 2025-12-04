@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import Checkmark from '@/shared/assets/icons/Checkmark.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Profile } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Input } from '@/shared/ui/Input';

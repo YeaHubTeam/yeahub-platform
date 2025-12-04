@@ -253,7 +253,7 @@ export const ROUTES = {
 	},
 	media: {
 		route: 'media',
-		page: '/media',
+		page: '/socialMedia',
 	},
 	questions: {
 		route: 'questions',

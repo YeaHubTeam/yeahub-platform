@@ -1,1 +1,0 @@
-export { determineLanguage } from './determineLanguage';

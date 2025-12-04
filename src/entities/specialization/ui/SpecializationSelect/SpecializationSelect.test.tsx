@@ -2,8 +2,9 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { specializationsMock } from '../../api/__mocks__/data';
 
-const mockSpecializations = specializationsMock;
 import { SpecializationSelect } from './SpecializationSelect';
+
+const mockSpecializations = specializationsMock;
 
 jest.mock('react-i18next', () => ({
 	useTranslation: () => ({

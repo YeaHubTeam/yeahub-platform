@@ -7,8 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { TabsSkeleton } from '@/shared/ui/Tabs';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { EditProfileTab } from '@/features/profile/editProfileForm/model/types/editProfileTypes';
-
+import { EditProfileTab } from '../../model/types/editProfileTypes';
 import { AboutMeTabFormSkeleton } from '../AboutMeTabForm/AboutMeTabForm.skeleton';
 import { PersonalInformationTabFormSkeleton } from '../PersonalInformationTabForm/PersonalInformationTabForm.skeleton';
 import { SkillsTabFormSkeleton } from '../SkillsTabForm/SkillsTabForm.skeleton';

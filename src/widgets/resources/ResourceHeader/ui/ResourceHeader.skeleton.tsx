@@ -1,8 +1,8 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { ResourceAdditionalInfoDrawerSkeleton } from '../../ResourceAdditionalInfoDrawer/ui/ResourceAdditionalInfoDrawer.skeleton';
+import { ResourceAdditionalInfoDrawerSkeleton } from '../../ResourceAdditionalInfoDrawer';
 
 import styles from './ResourceHeader.module.css';
 

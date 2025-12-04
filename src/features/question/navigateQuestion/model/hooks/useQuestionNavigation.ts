@@ -1,5 +1,5 @@
-import { calculatePageNavigation } from '@/shared/helpers/calculatePageNavigation';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector } from '@/shared/libs';
+import { calculatePageNavigation } from '@/shared/libs';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {

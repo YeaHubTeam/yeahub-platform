@@ -1,14 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Landing } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
-import company from '@/widgets/Landing/BannerBlock/model/assets/company.avif';
-import personImg from '@/widgets/Landing/BannerBlock/model/assets/personImg.avif';
-import progress from '@/widgets/Landing/BannerBlock/model/assets/progress.avif';
-import statistics from '@/widgets/Landing/BannerBlock/model/assets/statistics.avif';
-
+import { company, personImg, statistics, progress } from '../../model/assets';
 import { Sticker } from '../Sticker/Sticker';
 
 import styles from './BannerImage.module.css';

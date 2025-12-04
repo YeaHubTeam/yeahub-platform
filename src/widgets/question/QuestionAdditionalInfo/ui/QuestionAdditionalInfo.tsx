@@ -2,18 +2,17 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
-import { Media, MediaLinksBanner } from '@/entities/media';
 import { QuestionGradeList } from '@/entities/question';
 import { Skill, SkillList } from '@/entities/skill';
+import { Media, MediaLinksBanner } from '@/entities/socialMedia';
 
 import styles from './QuestionAdditionalInfo.module.css';
 

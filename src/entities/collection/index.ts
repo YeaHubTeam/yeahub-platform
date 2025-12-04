@@ -4,7 +4,7 @@ export type {
 	CreateOrEditCollectionFormValues,
 } from './model/types/collection';
 export { LS_INIT_COLLECTION_ID } from './model/constants/collection';
-export { getCollectionRoute } from './model/lib/getCollectionRoute';
+export { getCollectionRoute } from '@/entities/collection/lib/getCollectionRoute';
 export { collectionsMock } from './api/__mock__/data';
 export { collectionHandlers } from './api/__mock__/index';
 export { CollectionForm } from './ui/CollectionForm/CollectionForm';

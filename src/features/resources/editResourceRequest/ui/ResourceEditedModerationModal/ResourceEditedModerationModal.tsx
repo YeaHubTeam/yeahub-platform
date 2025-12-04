@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Resources } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Resources } from '@/shared/config';
 import { NotificationModal } from '@/shared/ui/NotificationModal';
 
 interface ResourceEditedModerationModalProps {

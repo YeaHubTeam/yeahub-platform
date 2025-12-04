@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { i18Namespace, Profile } from '@/shared/config';
+import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Text } from '@/shared/ui/Text';
 

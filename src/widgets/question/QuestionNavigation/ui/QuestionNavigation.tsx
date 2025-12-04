@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 
 import { QuestionNavigationButtons } from '@/features/question/navigateQuestion';

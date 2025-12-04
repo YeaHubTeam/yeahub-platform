@@ -2,9 +2,8 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Resources } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Resources } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';

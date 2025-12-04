@@ -19,3 +19,4 @@ export { UserEditButton } from './ui/UserEditButton/UserEditButton';
 export { UserRolesList } from './ui/UserRolesList/UserRolesList';
 export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';
+export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey/convertRoleNameToEnumKey';

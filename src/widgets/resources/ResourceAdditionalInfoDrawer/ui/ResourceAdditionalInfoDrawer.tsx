@@ -2,10 +2,8 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import SlidersHorizontalIcon from '@/shared/assets/icons/slidersHorizontal.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Resources } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize, useCurrentProject, useModal } from '@/shared/hooks';
+import { i18Namespace, Resources, ROUTES } from '@/shared/config';
+import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';

@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
@@ -28,7 +27,7 @@ export const FooterLinks = () => {
 					{t(Landing.FOOTER_DOCS)}
 				</Text>
 			</NavLink>
-			<NavLink data-testid="Footer_NavMedia" to={'/media'}>
+			<NavLink data-testid="Footer_NavMedia" to={'/socialMedia'}>
 				<Text
 					dataTestId={'Footer_Media'}
 					className={styles['docs-link']}
