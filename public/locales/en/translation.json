@@ -95,7 +95,16 @@
 		"types": {
 			"photo": "photo"
 		},
-		"limit": "no more than {{maxFileMBSize}}mb"
+		"error": {
+			"weight": "The file size exceeds  {{maxFileKBSize}}kb",
+			"size": "Upload error: Image must be square",
+			"crop": "You can crop the image here:",
+			"compress": "You can compress the image here:"
+		},
+		"uploaded": "Image added successfully",
+		"limit": "no more than {{maxFileKBSize}}kb",
+		"size": "Recommended size — 800х800 px",
+		"square": "We accept only  square images."
 	},
 	"validation": {
 		"required": "This field is required to be completed",
