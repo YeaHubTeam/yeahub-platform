@@ -15,9 +15,9 @@
 		"label": "Add skill icon"
 	},
 	"select": {
-		"choose": "Select skills from the list",
+		"choose": "Select skill from the list",
 		"empty": "No options available",
-		"selected": "Selected skills"
+		"selected": "Selected skill"
 	},
 	"empty": "No skills",
 	"image.src": "Image url",

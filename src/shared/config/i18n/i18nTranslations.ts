@@ -217,6 +217,8 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
+	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
+	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
 	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
 	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
@@ -381,6 +383,16 @@ export enum Specializations {
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 	FILTER_IS_MY_TITLE = 'filter.is.my.title',
+}
+
+export enum Topics {
+	TITLE_FULL = 'title.full',
+	TITLE_LABEL = 'title.label',
+	DESCRIPTION_FULL = 'description.full',
+	DESCRIPTION_LABEL = 'description.label',
+	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum Analytics {

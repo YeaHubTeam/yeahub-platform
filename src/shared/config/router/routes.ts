@@ -126,6 +126,14 @@ export const ROUTES = {
 		topics: {
 			route: 'topics',
 			page: '/admin/topics',
+			create: {
+				route: 'create',
+				page: '/admin/topics/create',
+			},
+			details: {
+				route: ':topicId',
+				page: '/admin/topics/:topicId',
+			},
 		},
 	},
 	auth: {
@@ -257,7 +265,7 @@ export const ROUTES = {
 	},
 	media: {
 		route: 'media',
-		page: '/socialMedia',
+		page: '/media',
 	},
 	questions: {
 		route: 'questions',

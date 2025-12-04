@@ -6,10 +6,10 @@ export interface Topic {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc: string;
+	imageSrc?: string | null;
 	skill: Skill;
-	createdAt: string;
-	updatedAt: string;
+	createdAt?: string;
+	updatedAt?: string;
 }
 
 export interface GetTopicsListParamsRequest {
@@ -19,4 +19,5 @@ export interface GetTopicsListParamsRequest {
 	skillIds?: number[];
 }
 
+export type CreateOrEditTopicFormValues = Pick<Topic, 'id' | 'title' | 'description'> | 'skillId';
 export type GetTopicsListResponse = Response<Topic[]>;
