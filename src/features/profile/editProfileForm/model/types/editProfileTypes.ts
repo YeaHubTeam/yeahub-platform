@@ -10,7 +10,7 @@ export type ProfileSchema = yup.InferType<typeof editProfileSchema>;
 /**
  * Interface representing personal information of a user.
  *
- * @param image        - Optional. URL of the user's profileInfo image.
+ * @param image        - Optional. URL of the user's profile image.
  * @param name         - Required. The user's name and last name, e.g., Aleksey Narodny.
  * @param specialization - Required. The user's specialization, e.g., "Web Developer" or "Graphic Designer."
  * @param email        - Required. The user's email address.

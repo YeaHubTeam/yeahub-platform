@@ -24,7 +24,7 @@ describe('Header', () => {
 		jest.clearAllMocks();
 	});
 
-	test('should render HeaderSkeleton while profileInfo is loading', () => {
+	test('should render HeaderSkeleton while profile is loading', () => {
 		(useProfileQuery as jest.Mock).mockReturnValue({ isLoading: true });
 		(useScreenSize as jest.Mock).mockReturnValue({ isLargeScreen: true });
 

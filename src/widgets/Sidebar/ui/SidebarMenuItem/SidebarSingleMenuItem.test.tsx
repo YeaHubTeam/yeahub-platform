@@ -32,7 +32,7 @@ describe('SidebarSingleMenuItem', () => {
 		expect(singleItem).toHaveTextContent(i18n.t(menuItem.title));
 	});
 
-	describe('profileInfo route', () => {
+	describe('profile route', () => {
 		const profileItem = profileMenuItemMock;
 
 		test('does not render on desktop', () => {

@@ -26,7 +26,7 @@ const meta = {
 		docs: {
 			description: {
 				component:
-					'Clickable user profileInfo block that displays username and avatar, and navigates to platform page on click. Handles both custom and default avatar states.',
+					'Clickable user profile block that displays username and avatar, and navigates to platform page on click. Handles both custom and default avatar states.',
 			},
 		},
 	},

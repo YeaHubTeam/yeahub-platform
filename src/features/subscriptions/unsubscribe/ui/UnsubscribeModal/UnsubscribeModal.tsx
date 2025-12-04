@@ -16,15 +16,15 @@ import styles from './UnsubscribeModal.module.css';
 export const UnsubscribeModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	const { t } = useTranslation([i18Namespace.subscription]);
 
-	const profileInfo = useAppSelector(getFullProfile);
+	const profile = useAppSelector(getFullProfile);
 
 	const subscriptionId = useMemo(() => {
-		const sorted = [...profileInfo.subscriptions].sort(
+		const sorted = [...profile.subscriptions].sort(
 			(a, b) => new Date(b.createDate).getTime() - new Date(a.createDate).getTime(),
 		);
 
 		return sorted[0].subscriptionId;
-	}, [profileInfo]);
+	}, [profile]);
 
 	const [unsubscribe] = useUnsubscribeMutation();
 
@@ -35,7 +35,7 @@ export const UnsubscribeModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	const handleUnsubscribe = () => {
 		unsubscribe({
 			subscriptionId: subscriptionId,
-			userId: profileInfo?.id,
+			userId: profile?.id,
 		});
 		onClose();
 	};

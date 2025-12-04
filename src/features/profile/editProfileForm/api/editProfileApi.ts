@@ -10,25 +10,25 @@ import {
 export const editProfileApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		updateProfile: build.mutation<void, EditProfileRequestData>({
-			query: ({ id, ...profileInfo }) => ({
+			query: ({ id, ...profile }) => ({
 				url: `profiles/${id}`,
-				body: profileInfo,
+				body: profile,
 				method: 'PUT',
 			}),
-			async onQueryStarted({ ...profileInfo }, { queryFulfilled, dispatch }) {
+			async onQueryStarted({ ...profile }, { queryFulfilled, dispatch }) {
 				try {
 					await queryFulfilled;
 					await dispatch(
 						editProfileApi.endpoints.updateUser.initiate({
-							id: profileInfo.user.id,
+							id: profile.user.id,
 							userInfo: {
-								username: profileInfo.user.username,
-								country: profileInfo.user.country,
-								city: profileInfo.user.city,
-								birthday: profileInfo.user.birthday,
-								address: profileInfo.user.address,
-								avatarUrl: profileInfo.user.avatarUrl,
-								avatarImage: profileInfo.user.avatarImage,
+								username: profile.user.username,
+								country: profile.user.country,
+								city: profile.user.city,
+								birthday: profile.user.birthday,
+								address: profile.user.address,
+								avatarUrl: profile.user.avatarUrl,
+								avatarImage: profile.user.avatarImage,
 							},
 						}),
 					);

@@ -24,6 +24,7 @@
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
 	"author": "Author",
+	"error": "Unknown error",
 	"sort": {
 		"title": "Sort by",
 		"ascending": "Ascending",
@@ -172,7 +173,16 @@
 			"telegram": {
 				"verification": {
 					"link.success": "Telegram is successfully linked to your account!",
-					"link.error": "Failed to link your Telegram to your account."
+					"link.error": {
+						"error": "Failed to link your Telegram to your account.",
+						"unauthorized": "Authentication failed.",
+						"invalid.data": "Invalid Telegram data.",
+						"data.outdated": "Your Telegram data is outdated.",
+						"already.linked": "This Telegram account is already linked to your profile.",
+						"linked.to.another.user": "This Telegram account is linked to another user.",
+						"verify.denied": "Telegram verification denied.",
+						"user.not.found": "User not found."
+					}
 				}
 			}
 		},
