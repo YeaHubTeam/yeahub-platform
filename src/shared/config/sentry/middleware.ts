@@ -1,5 +1,5 @@
 import { Middleware } from '@reduxjs/toolkit';
-import * as Sentry from '@sentry/react';
+import { addBreadcrumb } from '@sentry/react';
 
 import { setUserContext, UserContext } from './context';
 
@@ -11,7 +11,7 @@ export const sentryMiddleware: Middleware = (store) => (next) => (action) => {
 	const actionWithType = action as { type?: string; payload?: unknown };
 
 	if (actionWithType.type && !actionWithType.type.startsWith('@@')) {
-		Sentry.addBreadcrumb({
+		addBreadcrumb({
 			category: 'redux.action',
 			message: actionWithType.type,
 			level: 'info',

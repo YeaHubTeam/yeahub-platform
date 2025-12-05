@@ -24,3 +24,15 @@ type DeepPartial<T> = T extends object
 	: T;
 
 declare const __IS_DEV__: boolean;
+
+interface ApiError<T> {
+	error: {
+		data: ApiErrorData<T>;
+	};
+}
+
+interface ApiErrorData<T> {
+	message: T;
+	statusCode: number;
+	description: string;
+}

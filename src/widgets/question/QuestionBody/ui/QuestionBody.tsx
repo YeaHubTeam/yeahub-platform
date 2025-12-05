@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Questions } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { TextHtml } from '@/shared/ui/TextHtml';
 

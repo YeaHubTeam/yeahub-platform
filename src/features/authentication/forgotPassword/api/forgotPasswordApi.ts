@@ -1,4 +1,4 @@
-import { baseApi } from '@/shared/config/api/baseApi';
+import { baseApi } from '@/shared/config';
 
 import { SendEmailRecoveryPasswordParams } from '../model/types/forgotPasswordTypes';
 

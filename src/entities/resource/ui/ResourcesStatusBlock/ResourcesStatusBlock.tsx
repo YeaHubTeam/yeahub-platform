@@ -1,11 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Marketplace } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { IconName } from '@/shared/ui/Icon';
 
-import { ResourceRequestStatus } from '@/entities/resource';
+import { ResourceRequestStatus } from '../../model/types/resourceRequest';
 
 import styles from './ResourcesStatusBlock.module.css';
 

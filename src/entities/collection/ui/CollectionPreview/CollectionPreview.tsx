@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Question from '@/shared/assets/icons/collectionsQuestion.svg';
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, Collections, ROUTES } from '@/shared/config';
+import { useCurrentProject } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -16,7 +14,8 @@ import { Popover } from '@/shared/ui/Popover';
 import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { getCollectionRoute } from '../../model/lib/getCollectionRoute';
+import { getCollectionRoute } from '@/entities/collection/lib/getCollectionRoute';
+
 import { Collection } from '../../model/types/collection';
 
 import styles from './CollectionPreview.module.css';

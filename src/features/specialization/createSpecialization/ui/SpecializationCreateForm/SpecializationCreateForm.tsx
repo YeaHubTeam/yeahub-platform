@@ -7,7 +7,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { SpecializationForm } from '@/entities/specialization';
 
-import { specializationCreateSchema } from '../../model/lib/validation/specializationCreateSchema';
+import { specializationCreateSchema } from '../../lib/validation/specializationCreateSchema';
 import { CreateSpecializationFormValues } from '../../model/types/specializationCreateTypes';
 import { SpecializationCreateFormHeader } from '../SpecializationCreateFormHeader/SpecializationCreateFormHeader';
 

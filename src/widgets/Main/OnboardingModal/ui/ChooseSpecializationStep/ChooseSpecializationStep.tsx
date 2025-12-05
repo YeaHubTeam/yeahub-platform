@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Onboarding } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getIsEmptySpecialization, getSpecializationId } from '@/entities/profile';
@@ -46,7 +45,6 @@ export const ChooseSpecializationStep = ({ goNextStep }: ChooseSpecializationSte
 			description={t(Onboarding.CHOOSE_SPECIALIZATION_CONTENT)}
 			buttonPrimaryClick={onStepComplete}
 			buttonPrimaryText={t(Onboarding.CHOOSE_SPECIALIZATION_BUTTON)}
-			className={styles['specialization']}
 		>
 			<div className={styles['select-container']}>
 				<Text variant={'body2'} color={'black-700'}>

@@ -2,12 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
-import { useModal } from '@/shared/hooks';
-import { useCurrentProject } from '@/shared/hooks';
+import { Translation, i18n, ROUTES } from '@/shared/config';
+import { route, useCurrentProject, useModal } from '@/shared/libs';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { toast } from '@/shared/ui/Toast';
 
@@ -16,7 +12,7 @@ import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
 import { useEditResourceRequestMutation } from '../../api/editResourceRequestApi';
-import { resourceRequestEditSchema } from '../../model/lib/validation/resourceRequestEditSchema';
+import { resourceRequestEditSchema } from '../../lib/validation/resourceRequestEditSchema';
 import { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
 import { ResourceEditedModerationModal } from '../ResourceEditedModerationModal/ResourceEditedModerationModal';
 import { ResourceRequestFormWithHeader } from '../ResourceRequestEditFormWithHeader/ResourceRequestFormWithHeader';

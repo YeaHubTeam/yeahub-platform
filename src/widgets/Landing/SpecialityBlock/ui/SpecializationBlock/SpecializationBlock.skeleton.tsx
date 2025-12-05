@@ -1,9 +1,9 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { SpecializationCardSkeleton } from '@/widgets/Landing/SpecialityBlock/ui/SpecializationCard/SpecializationCard.skeleton';
+import { SpecializationCardSkeleton } from '../SpecializationCard/SpecializationCard.skeleton';
 
 import styles from './SpecializationBlock.module.css';
 

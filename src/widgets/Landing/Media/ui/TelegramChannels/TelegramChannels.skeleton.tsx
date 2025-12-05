@@ -1,8 +1,8 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { MediaLinksListSkeleton } from '@/entities/media';
+import { MediaLinksListSkeleton } from '@/entities/socialMedia';
 
 import styles from './TelegramChannels.module.css';
 

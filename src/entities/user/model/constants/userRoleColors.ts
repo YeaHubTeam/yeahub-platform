@@ -1,4 +1,4 @@
-import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
+import { StatusChipVariant } from '@/shared/ui/StatusChip';
 
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { RoleName } from '@/entities/auth';

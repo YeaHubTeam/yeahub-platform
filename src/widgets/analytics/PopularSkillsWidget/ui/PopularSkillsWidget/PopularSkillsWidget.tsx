@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Analytics, ROUTES } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -30,14 +28,16 @@ const PopularSkillsWidget = () => {
 			isActionPositionBottom
 		>
 			<Flex direction="column" gap="12">
-				{data?.data.slice(0, 3).map((item) => (
-					<PopularSkillItem
-						key={item.id}
-						currentCount={item.frequencyStat}
-						totalCount={100}
-						title={item.skill.title}
-					/>
-				))}
+				{data?.data
+					.slice(0, 3)
+					.map((item) => (
+						<PopularSkillItem
+							key={item.id}
+							currentCount={item.frequencyStat}
+							totalCount={100}
+							title={item.skill.title}
+						/>
+					))}
 			</Flex>
 		</Card>
 	);

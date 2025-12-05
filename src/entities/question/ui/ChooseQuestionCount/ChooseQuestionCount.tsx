@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizCreate, Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, InterviewQuizCreate, Questions } from '@/shared/config';
 import { Counter } from '@/shared/ui/Counter';
 import { Text } from '@/shared/ui/Text';
 import { Tooltip } from '@/shared/ui/Tooltip';

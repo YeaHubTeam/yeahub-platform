@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Companies } from '@/shared/config/i18n/i18nTranslations';
-import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
+import { i18Namespace, Companies } from '@/shared/config';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';

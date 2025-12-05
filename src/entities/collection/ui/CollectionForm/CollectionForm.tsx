@@ -2,15 +2,14 @@ import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
+import { i18Namespace, Collections } from '@/shared/config';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Input } from '@/shared/ui/Input';
-import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -95,7 +94,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex className={`${styles['collection-input']}`} gap="120">
+				<Flex className={`${styles['collectionDetail-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.TITLE_FULL)}

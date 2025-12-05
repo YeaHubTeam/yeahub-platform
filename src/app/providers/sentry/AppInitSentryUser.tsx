@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { setUserContext } from '@/shared/config/sentry/context';
-import { useAppSelector } from '@/shared/hooks';
+import { setUserContext } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 
 import { getFullProfile } from '@/entities/profile';
 
