@@ -1,5 +1,4 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
+import { ApiTags, baseApi } from '@/shared/config';
 
 import { topicApiUrl } from '../model/constants/topicConstants';
 import { GetTopicsListParamsRequest, GetTopicsListResponse } from '../model/types/topic';

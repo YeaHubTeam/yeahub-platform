@@ -16,7 +16,7 @@ import {
 } from '@/pages/admin/resource/resources';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
-import { topicsPageReducer } from '@/pages/admin/TopicsPage';
+import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';

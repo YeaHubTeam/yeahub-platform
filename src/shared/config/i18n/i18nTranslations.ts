@@ -49,6 +49,7 @@ export enum Translation {
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
+	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.title',

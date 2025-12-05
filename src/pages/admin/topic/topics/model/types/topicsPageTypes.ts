@@ -1,4 +1,4 @@
-import { SelectedAdminEntities } from '@/shared/types/types';
+import { SelectedAdminEntities } from '@/shared/libs/app';
 
 export interface TopicsPageState {
 	selectedTopics?: SelectedAdminEntities;
