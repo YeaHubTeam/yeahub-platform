@@ -17,7 +17,7 @@ import { CollectionsFilterParams } from '../../model/types/types';
 
 interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
-	onChangeTitle: (value: CollectionsFilterParams['title']) => void;
+	onChangeTitle?: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
 	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
@@ -36,7 +36,7 @@ export const CollectionsFilters = ({
 	const project = useCurrentProject();
 
 	const handleSearch = (value: CollectionsFilterParams['title']) => {
-		onChangeTitle(value);
+		onChangeTitle?.(value);
 	};
 
 	const handleSpecializationChange = (
@@ -55,14 +55,13 @@ export const CollectionsFilters = ({
 
 	return (
 		<Flex direction="column" gap="24">
-			{project === 'landing' ||
-				(project === 'admin' && (
-					<SearchInput
-						placeholder={t(Collections.SEARCH_PLACEHOLDER)}
-						onSearch={handleSearch}
-						currentValue={title}
-					/>
-				))}
+			{(project === 'landing' || project === 'platform') && (
+				<SearchInput
+					placeholder={t(Collections.SEARCH_PLACEHOLDER)}
+					onSearch={handleSearch}
+					currentValue={title}
+				/>
+			)}
 			{project === 'admin' && onChangeIsMy && (
 				<Switch
 					checked={!!isMy}

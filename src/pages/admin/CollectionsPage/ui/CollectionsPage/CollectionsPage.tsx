@@ -83,7 +83,6 @@ const CollectionsPage = () => {
 				renderFilter={() => (
 					<CollectionsFilters
 						filter={filters}
-						onChangeTitle={onChangeTitle}
 						onChangeSpecialization={onChangeSpecialization}
 						onChangeIsFree={onChangeIsFree}
 						onChangeIsMy={onChangeIsMy}

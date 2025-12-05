@@ -48,6 +48,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onFilterChange({
 			isMy,
 			page: 1,
+			authorId: undefined,
 		});
 	};
 
