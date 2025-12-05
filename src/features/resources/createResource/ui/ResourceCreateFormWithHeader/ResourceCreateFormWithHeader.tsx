@@ -28,7 +28,12 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+		try {
+			await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+		} catch (error) {
+			//eslint-disable-next-line no-console
+			console.log(error);
+		}
 	};
 
 	return (

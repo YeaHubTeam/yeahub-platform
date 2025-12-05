@@ -296,6 +296,10 @@
 			}
 		},
 		"resource.request": {
+			"create": {
+				"success": "The resource request has been successfully created",
+				"failed": "Failed to create the resource request"
+			},
 			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"

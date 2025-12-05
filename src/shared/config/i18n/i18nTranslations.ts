@@ -208,7 +208,7 @@ export enum Translation {
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',
 	TOAST_SUBSCRIPTIONS_TRIAL_FAILED = 'toast.subscriptions.trial.failed',
 	TOOLTIP_PREMIUMONLY = 'tooltip.premiumOnly',
-	TOAST_RESOURCE_REQUEST_SUCCESS = 'toast.resource.request.success',
+	TOAST_RESOURCE_REQUEST_CREATE_SUCCESS = 'toast.resource.request.create.success',
 	TOAST_RESOURCE_REQUEST_CREATE_FAILED = 'toast.resource.request.create.failed',
 	TOAST_RESOURCE_APPROVE_SUCCESS = 'toast.resources.approve.success',
 	TOAST_RESOURCE_APPROVE_FAILED = 'toast.resources.approve.failed',
