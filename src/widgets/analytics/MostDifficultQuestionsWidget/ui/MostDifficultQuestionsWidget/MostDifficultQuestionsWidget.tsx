@@ -11,12 +11,13 @@ import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/
 import { MostDifficultQuestionItem } from '../MostDifficultQuestionItem/MostDifficultQuestionItem';
 
 import styles from './MostDifficultQuestionsWidget.module.css';
+import { MostDifficultQuestionsWidgetSkeleton } from './MostDifficultQuestionsWidget.skeleton';
 
 export const MostDifficultQuestionsWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data: difficultQuestions } =
+	const { data: difficultQuestions, isLoading } =
 		useGetMostDifficultQuestionsBySpecializationIdQuery(specializationId);
 
 	const { isSmallScreen } = useScreenSize();
@@ -27,6 +28,8 @@ export const MostDifficultQuestionsWidget = () => {
 	const filteredQuestions = isSmallScreen
 		? mixedQuestions?.slice(0, 3)
 		: mixedQuestions?.slice(0, 6);
+
+	if (isLoading) return <MostDifficultQuestionsWidgetSkeleton />;
 
 	return (
 		<Card

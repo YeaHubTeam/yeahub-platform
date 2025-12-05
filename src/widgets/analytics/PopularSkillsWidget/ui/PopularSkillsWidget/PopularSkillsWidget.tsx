@@ -11,13 +11,16 @@ import { useGetPopularSkillsQuery } from '@/entities/skill';
 import { PopularSkillItem } from '../PopularSkillItem/PopularSkillItem';
 
 import styles from './PopularSkillsWidget.module.css';
+import { PopularSkillsWidgetSkeleton } from './PopularSkillsWidget.skeleton';
 
 const PopularSkillsWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data } = useGetPopularSkillsQuery({ limit: 3, page: 1, specializationId });
+	const { data, isLoading } = useGetPopularSkillsQuery({ limit: 3, page: 1, specializationId });
+
+	if (isLoading) return <PopularSkillsWidgetSkeleton />;
 
 	return (
 		<Card

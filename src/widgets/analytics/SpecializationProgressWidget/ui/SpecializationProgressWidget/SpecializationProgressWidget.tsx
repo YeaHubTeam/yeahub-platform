@@ -9,11 +9,16 @@ import {
 } from '@/entities/specialization';
 
 import styles from './SpecializationProgressWidget.module.css';
+import { SpecializationProgressWidgetSkeleton } from './SpecializationProgressWidget.skeleton';
 
 export const SpecializationProgressWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
-	const { data: specializationsProgress } = useGetSpecializationsGeneralProgressQuery({ limit: 5 });
+	const { data: specializationsProgress, isLoading } = useGetSpecializationsGeneralProgressQuery({
+		limit: 5,
+	});
+
+	if (isLoading) return <SpecializationProgressWidgetSkeleton />;
 
 	if (!specializationsProgress?.data) {
 		return null;
