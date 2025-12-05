@@ -14,7 +14,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
 
-type StubType = 'empty' | 'error';
+type StubType = 'empty' | 'error' | 'emptyResources';
 
 type StubProps = {
 	type: StubType;
@@ -35,21 +35,25 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const titleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_TITLE),
 		empty: '',
+		emptyResources: t(Translation.STUB_EMPTY_RESOURCES_TITLE),
 	};
 
 	const subtitleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBTITLE),
 		empty: '',
+		emptyResources: t(Translation.STUB_EMPTY_RESOURCES_SUBTITLE),
 	};
 
 	const buttonTextByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBMIT),
 		empty: '',
+		emptyResources: t(Translation.STUB_EMPTY_RESOURCES_SUBMIT),
 	};
 
 	const imgByType: Record<StubType, string> = {
 		empty: SearchImg,
 		error: LoadError,
+		emptyResources: SearchImg,
 	};
 
 	const resolvedTitle = title ?? titleByType[type];

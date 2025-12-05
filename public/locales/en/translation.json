@@ -68,6 +68,11 @@
 			"title": "Failed to load data",
 			"subtitle": "Try again or refresh the page",
 			"submit": "Try again"
+		},
+		"empty.resources": {
+			"title": "It seems that there are no resources here yet",
+			"subtitle": "Create your first useful resource and start adding content to the knowledge base",
+			"submit": "Add resource"
 		}
 	},
 	"modal": {

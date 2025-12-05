@@ -55,6 +55,9 @@ export enum Translation {
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
+	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
+	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
+	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',

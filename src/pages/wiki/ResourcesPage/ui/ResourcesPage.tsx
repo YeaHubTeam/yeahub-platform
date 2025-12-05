@@ -12,6 +12,7 @@ import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsVerified, getSpecializationId } from '@/entities/profile';
@@ -104,8 +105,13 @@ const ResourcesPage = () => {
 
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
-				) : (
+				) : filters.title || filters.skills?.length || filters.types?.length ? (
 					<EmptyFilterStub resetFilters={onResetFilters} />
+				) : (
+					<Stub
+						type={'emptyResources'}
+						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+					/>
 				)}
 
 				<ResourcesPagination

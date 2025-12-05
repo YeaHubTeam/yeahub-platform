@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace } from '@/shared/config/i18n';
 import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { ROUTES } from '@/shared/config/router/routes';
 import { useScreenSize } from '@/shared/hooks';
 import { Card } from '@/shared/ui/Card';
 import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetResourcesListQuery } from '@/entities/resource';
@@ -21,6 +24,7 @@ import { PublicResourcesPageSkeleton } from './PublicResourcesPage.skeleton';
 
 const PublicResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
+	const navigate = useNavigate();
 
 	const {
 		onChangeTitle,
@@ -85,8 +89,13 @@ const PublicResourcesPage = () => {
 
 				{resources.length > 0 ? (
 					<ResourcesList resources={resources} />
-				) : (
+				) : filters.title || filters.skills?.length || filters.types?.length ? (
 					<EmptyFilterStub resetFilters={onResetFilters} />
+				) : (
+					<Stub
+						type={'emptyResources'}
+						onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
+					/>
 				)}
 
 				<ResourcesPagination
