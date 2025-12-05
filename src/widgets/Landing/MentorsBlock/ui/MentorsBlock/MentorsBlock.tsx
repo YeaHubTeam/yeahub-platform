@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import MentorsBanner from '@/shared/assets/images/landing/learning/mentor-banner.png';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Landing } from '@/shared/config';
 import { Banner } from '@/shared/ui/Banner';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';

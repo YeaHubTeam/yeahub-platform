@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18Namespace, Analytics, ROUTES } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 
 import {

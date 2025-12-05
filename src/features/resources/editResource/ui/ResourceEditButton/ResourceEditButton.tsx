@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
+import { Translation, ROUTES } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Tooltip } from '@/shared/ui/Tooltip';
 

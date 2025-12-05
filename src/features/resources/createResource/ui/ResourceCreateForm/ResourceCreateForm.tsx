@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { resourceCreateSchema } from '../../model/lib/validation/resourceCreateSchema';
+import { resourceCreateSchema } from '../../lib/validation/resourceCreateSchema';
 import { CreateResourceFormValues } from '../../model/types/resourceCreateTypes';
 import { ResourceCreateFormWithHeader } from '../ResourceCreateFormWithHeader/ResourceCreateFormWithHeader';
 

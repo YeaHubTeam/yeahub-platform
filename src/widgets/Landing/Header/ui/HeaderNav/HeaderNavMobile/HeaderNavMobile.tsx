@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { i18Namespace, Landing } from '@/shared/config';
+import { LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';

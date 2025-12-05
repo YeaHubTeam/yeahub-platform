@@ -5,9 +5,9 @@ import { DragEvent, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Gallery from '@/shared/assets/images/Gallery.avif';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useDragAndDrop } from '@/shared/hooks';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
+import { useDragAndDrop } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 

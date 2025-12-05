@@ -3,9 +3,9 @@ import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { route } from '@/shared/helpers/route';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';

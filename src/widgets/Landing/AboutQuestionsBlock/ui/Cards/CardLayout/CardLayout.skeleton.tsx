@@ -5,6 +5,7 @@ import { Card } from '@/shared/ui/Card';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './CardLayout.module.css';
+
 interface CardLayoutProps {
 	contentSlot: ReactNode;
 }

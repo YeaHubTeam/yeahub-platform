@@ -1,2 +1,2 @@
-export { Accordion } from './ui/Accordion';
-export { AccordionSkeleton } from './ui/Accordion.skeleton';
+export { Accordion } from './Accordion';
+export { AccordionSkeleton } from './Accordion.skeleton';

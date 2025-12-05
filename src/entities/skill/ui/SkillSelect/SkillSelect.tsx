@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Skills } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Skills } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
@@ -12,7 +11,7 @@ import { Skill } from '../../model/types/skill';
 import { SkillSelectSkeleton } from './SkillSelect.skeleton';
 
 export type SkillSelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: number[] | number;

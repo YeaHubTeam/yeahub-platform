@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
 
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { useScreenSize } from '@/shared/libs';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { HeaderAuthSkeleton } from './HeaderAuth.skeleton';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(() => ({ isLargeScreen: true })),
 }));
 

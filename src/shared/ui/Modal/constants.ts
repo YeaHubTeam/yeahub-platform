@@ -1,4 +1,4 @@
-import { Pallete } from '@/shared/types/types';
+import { Pallete } from '@/shared/libs';
 import { VariantType } from '@/shared/ui/Button/types';
 
 import type { ModalVariant } from './ModalTypes';

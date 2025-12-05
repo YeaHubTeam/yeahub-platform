@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 
 import { HeaderNavDesktopSkeleton } from './HeaderNavDesktop/HeaderNavDesktop.skeleton';
 import { HeaderNavMobileSkeleton } from './HeaderNavMobile/HeaderNavMobile.skeleton';

@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { State } from '@/shared/config/store/State';
+import { State } from '@/shared/config';
 
 export const getActiveQuizQuestions = (state: State) => {
 	return state.activeQuiz.questions;

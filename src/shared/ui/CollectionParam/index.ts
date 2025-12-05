@@ -1,2 +1,2 @@
-export { CollectionParam } from './ui/CollectionParam';
-export { CollectionParamSkeleton } from './ui/CollectionParam.skeleton';
+export { CollectionParam } from './CollectionParam';
+export { CollectionParamSkeleton } from './CollectionParam.skeleton';

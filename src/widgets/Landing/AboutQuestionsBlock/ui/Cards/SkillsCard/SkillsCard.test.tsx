@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing } from '@/shared/config';
+import { renderComponent } from '@/shared/libs/jest';
 
 import { SkillsCard } from './SkillsCard';
 

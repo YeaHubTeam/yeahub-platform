@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Guru as GuruTranslation, Media } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Guru as GuruTranslation, Media } from '@/shared/config';
 
 import { Guru } from '../../model/types/guru';
 import { GurusItem } from '../GurusItem/GurusItem';

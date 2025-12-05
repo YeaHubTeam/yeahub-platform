@@ -3,15 +3,13 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { getIsVerified, getProfileId } from '@/entities/profile';
-import { getHasPremiumAccess } from '@/entities/profile';
+import { getIsVerified, getProfileId, getHasPremiumAccess } from '@/entities/profile';
 
 import { useResetQuestionProgressMutation } from '../api/resetQuestionStudyProgressApi';
 
