@@ -27,4 +27,5 @@ export interface GetCompaniesListParamsRequest {
 	limit?: number;
 	page?: number;
 	titleOrLegalNameOrDescriptionSearch?: string;
+	userId?: string;
 }

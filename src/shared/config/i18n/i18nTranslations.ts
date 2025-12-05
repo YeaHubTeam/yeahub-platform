@@ -797,6 +797,7 @@ export enum Companies {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
+	TITLE_MY = 'title.my',
 	ICON_TITLE = 'icon.title',
 	ICON_SHORT = 'icon.short',
 	ICON_LABEL = 'icon.label',

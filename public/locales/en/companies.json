@@ -2,7 +2,8 @@
 	"title": {
 		"full": "Company name",
 		"short": "Name",
-		"label": "Add company name"
+		"label": "Add company name",
+		"my": "My companies"
 	},
 	"icon": {
 		"title": "Company image",
