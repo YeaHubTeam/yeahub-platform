@@ -26,8 +26,7 @@ export const createSpecializationApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.specializations.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_FAILED));
-					// eslint-disable-next-line no-console
+					//const status = error.error?.status;
 					console.error(error);
 				}
 			},

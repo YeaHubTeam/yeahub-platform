@@ -261,6 +261,22 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			},
+			"user": {
+				"not_found": "User not found."
+			},
+			"auth": {
+				"unauthorized": "Authentication failed.",
+				"user": {
+					"verified": "The route is available for verified users"
+				}
+			},
+			"tinify": {
+				"compress_failed": "Failed to compress image with TinyPNG",
+				"resize_failed": "Failed to resize image"
+			},
+			"title": {
+				"conflict": "Specialization with this title already exists"
 			}
 		},
 		"collections": {
