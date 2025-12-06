@@ -39,6 +39,7 @@ export const createSpecializationApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_SUCCESS));
 				} catch (error) {
 					toast.error(i18n.t(handleApiError(error, getSpecializationsErrorMessage)));
+					//eslint-disable-next-line no-console
 					console.error(error);
 				}
 			},
