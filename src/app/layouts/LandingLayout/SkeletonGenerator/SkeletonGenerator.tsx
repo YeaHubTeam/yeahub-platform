@@ -3,6 +3,7 @@ import { useMatch } from 'react-router-dom';
 import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
+import { AvosPageSkeleton } from '@/pages/landing/avos';
 import { CreatePublicQuizPageSkeleton } from '@/pages/landing/createPublicQuiz';
 import { HhAnalyticsPageSkeleton } from '@/pages/landing/hhAnalytics';
 import { LandingPageSkeleton } from '@/pages/landing/landing';
@@ -21,6 +22,7 @@ export const SkeletonGenerator = () => {
 	const isQuestionDetailPage = useMatch(ROUTES.questions.detail.page);
 	const isMediaPage = useMatch(ROUTES.media.page);
 	const isHhAnalyticsPage = useMatch(ROUTES.hhAnalytics.page);
+	const isAvosPage = useMatch(ROUTES.avos.page);
 
 	if (isLandingPage) return <LandingPageSkeleton data-testid={'LandingPageSkeleton'} />;
 	if (isQuizPage)
@@ -34,6 +36,7 @@ export const SkeletonGenerator = () => {
 		return <PublicQuestionPageSkeleton dataTestId={'PublicQuestionPageSkeleton'} />;
 	if (isMediaPage) return <MediaPageSkeleton />;
 	if (isHhAnalyticsPage) return <HhAnalyticsPageSkeleton />;
+	if (isAvosPage) return <AvosPageSkeleton />;
 
 	return <Loader />;
 };
