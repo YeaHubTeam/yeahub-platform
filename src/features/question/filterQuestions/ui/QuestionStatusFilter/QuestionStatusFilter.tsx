@@ -5,8 +5,7 @@ import { useAppSelector } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 import { getHasPremiumAccess } from '@/entities/profile';
-
-import { QuestionFilterStatus } from '../../model/types/filters';
+import { QuestionFilterStatus } from '@/entities/question';
 
 interface QuestionStatusFilterProps {
 	selectedStatus?: QuestionFilterStatus;

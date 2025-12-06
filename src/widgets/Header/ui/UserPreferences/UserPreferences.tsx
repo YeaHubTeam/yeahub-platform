@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
-import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
+import FreeSubIcon from '@/shared/assets/icons/freeSub.svg';
+import ProSubIcon from '@/shared/assets/icons/proSub.svg';
 import { Translation, ROUTES, i18n } from '@/shared/config';
 import { useAppSelector, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';

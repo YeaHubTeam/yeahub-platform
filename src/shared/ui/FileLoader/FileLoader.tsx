@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Gallery from '@/shared/assets/images/Gallery.avif';
+import Gallery from '@/shared/assets/images/gallery.avif';
 import { i18Namespace } from '@/shared/config';
 import { Translation } from '@/shared/config';
 import { useDragAndDrop } from '@/shared/libs';

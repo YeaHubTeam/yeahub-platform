@@ -11,10 +11,8 @@ import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 import { TextEditor } from '@/shared/ui/TextEditor';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SkillSelect } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { SkillSelect } from '@/entities/skill/@x/question';
+import { SpecializationSelect } from '@/entities/specialization/@x/question';
 
 import { QuestionStatus } from '../../model/types/question';
 

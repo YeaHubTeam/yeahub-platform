@@ -8,11 +8,10 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import { getSpecializationId } from '@/entities/profile';
-import { ChooseQuestionComplexity } from '@/entities/question';
+import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
 
-import { QuestionsFilterParams } from '../../model/types/filters';
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
 import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
 import { QuestionStatusFilter } from '../QuestionStatusFilter/QuestionStatusFilter';

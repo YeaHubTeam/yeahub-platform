@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import interviewBannerIcon from '@/shared/assets/images/collections/InterviewBanner.png';
+import { interviewBanner } from '@/shared/assets';
 import { i18Namespace, Collections } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -21,7 +21,7 @@ export const InterviewRecordingsBanner = () => {
 				className={styles.card}
 			>
 				<Flex gap={'8'} align={'center'}>
-					<img src={interviewBannerIcon} alt={'interviewBanner'} className={styles.icon} />
+					<img src={interviewBanner} alt={'interviewBanner'} className={styles.icon} />
 					<Flex direction="column" gap="4">
 						<Text variant={'body4'}>{t(Collections.BANNER_INTERVIEW_TITLE)}</Text>
 						<Text variant={'body3'}>{t(Collections.BANNER_INTERVIEW_DESCRIPTION)}</Text>

@@ -1,12 +1,11 @@
 import { screen } from '@testing-library/react';
 
 import { Landing } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
-import { renderComponent } from '@/shared/libs/jest';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { FooterMain } from './FooterMain';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobile: false,
 		isMobileS: false,

@@ -69,6 +69,7 @@
 		"react/react-in-jsx-scope": "off",
 		"padding-line-between-statements": "error",
 		"@conarti/feature-sliced/absolute-relative": "off",
-		"import/order": "warn"
+		"import/order": "warn",
+		"@conarti/feature-sliced/layers-slices": "warn"
 	}
 }

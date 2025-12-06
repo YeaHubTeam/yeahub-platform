@@ -1,4 +1,4 @@
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { SkillsBlock } from './SkillsBlock';
 

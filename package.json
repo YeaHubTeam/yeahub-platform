@@ -49,6 +49,7 @@
 		"@commitlint/config-conventional": "19.5.0",
 		"@conarti/eslint-plugin-feature-sliced": "^1.0.5",
 		"@feature-sliced/eslint-config": "^0.1.0-beta.6",
+		"@feature-sliced/steiger-plugin": "^0.5.7",
 		"@happy-dom/jest-environment": "15.7.4",
 		"@hookform/resolvers": "^3.9.0",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
