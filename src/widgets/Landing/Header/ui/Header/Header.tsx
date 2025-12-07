@@ -19,7 +19,7 @@ export const Header = () => {
 	if (isLoading) return <HeaderSkeleton />;
 
 	return (
-		<header data-testid={'Header'} className={styles.header}>
+		<header data-testid="Header" className={styles.header}>
 			<Flex className={styles['header-content']}>
 				<Flex className={styles['header-main']}>
 					<AppLogo navigateTo={logoNavigateTo} />

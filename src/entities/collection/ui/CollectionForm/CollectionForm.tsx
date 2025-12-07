@@ -103,8 +103,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.COMPANY_TITLE)}
 						</Text>
@@ -140,7 +140,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					</FormControl>
 				</Flex>
 				<Flex gap="120">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.ICON_TITLE)}
 						</Text>
@@ -155,7 +155,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					/>
 				</Flex>
 				<Flex gap="120" align="center">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.TARIFF_CHOOSE)}
 						</Text>
@@ -178,8 +178,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						/>
 					</Flex>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.SPECIALIZATION_TITLE)}
 						</Text>
@@ -195,8 +195,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						)}
 					</FormControl>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.KEYWORDS_TITLE)}
 						</Text>

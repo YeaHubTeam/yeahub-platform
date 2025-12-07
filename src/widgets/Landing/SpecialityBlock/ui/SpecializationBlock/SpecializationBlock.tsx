@@ -26,7 +26,7 @@ export const SpecializationBlock = () => {
 				: mockSpecialization;
 
 	return (
-		<Flex direction={'column'} className={styles.container} dataTestId="SpecializationBlock">
+		<Flex direction="column" className={styles.container} dataTestId="SpecializationBlock">
 			<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 				{t(Landing.SPECIALIZATION_NEW_TITLE)}
 			</Text>
@@ -45,7 +45,7 @@ export const SpecializationBlock = () => {
 			</ul>
 			{(isMobile || isLaptop) && !seeAll && (
 				<Button
-					variant={'outline'}
+					variant="outline"
 					className={styles.button}
 					onClick={() => setSeeAll(true)}
 					dataTestId="SpecializationButton"

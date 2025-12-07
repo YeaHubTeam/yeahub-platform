@@ -86,7 +86,7 @@ export const QuestionsTable = ({
 				<td key={k}>
 					{k === 'title' ? (
 						<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
-							<Text variant={'body3-accent'}>{v}</Text>
+							<Text variant="body3-accent">{v}</Text>
 						</Link>
 					) : (
 						v

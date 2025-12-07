@@ -19,15 +19,15 @@ export const HeaderAuthDesktop = () => {
 	return profile?.username ? (
 		<AuthorizedBlock username={profile.username} avatarURL={profile.avatarUrl} />
 	) : (
-		<Flex dataTestId={'HeaderAuthDesktop_Wrapper'} justify="between" align="center" gap="26">
+		<Flex dataTestId="HeaderAuthDesktop_Wrapper" justify="between" align="center" gap="26">
 			<Link to={ROUTES.auth.login.page}>
-				<Button dataTestId={'LoginButton'} variant="link" className={styles['login-link']}>
+				<Button dataTestId="LoginButton" variant="link" className={styles['login-link']}>
 					{t(Landing.LOGIN)}
 				</Button>
 			</Link>
 
 			<Link to={ROUTES.auth.register.page}>
-				<Button dataTestId={'RegisterButton'} size="large" className={styles['register-button']}>
+				<Button dataTestId="RegisterButton" size="large" className={styles['register-button']}>
 					{t(Landing.REGISTER)}
 				</Button>
 			</Link>

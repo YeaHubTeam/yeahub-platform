@@ -42,7 +42,7 @@ export const HeaderAuthMobile = () => {
 		<Popover menuItems={authMenuLinks} className={styles['auth-popover']}>
 			{({ onToggle }) => (
 				<IconButton
-					dataTestId={'HeaderAuthMobile_IconButton'}
+					dataTestId="HeaderAuthMobile_IconButton"
 					form="square"
 					variant="tertiary"
 					onClick={onToggle}

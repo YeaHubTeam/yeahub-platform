@@ -15,7 +15,7 @@ export const HhAnalyticsPageSkeleton = () => {
 	return (
 		<CardSkeleton>
 			<Flex direction="column" gap="24">
-				<TextSkeleton width={isMobile ? 'auto' : '550px'} variant={'body3'} />
+				<TextSkeleton width={isMobile ? 'auto' : '550px'} variant="body3" />
 
 				<Flex direction="column" gap="20">
 					<Flex justify="between" direction={isMobile ? 'column' : 'row'} gap="24">

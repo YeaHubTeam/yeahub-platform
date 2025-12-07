@@ -62,7 +62,7 @@ export const ImageLoaderWithoutCropper = ({
 			<Flex className={styles['picture-block']} gap="8" direction="column">
 				{isLoading && <Loader hasText={false} className={styles.loader} />}
 
-				{!isLoading && <ImageWithWrapper src={src} alt={'skill icon'} className={styles.img} />}
+				{!isLoading && <ImageWithWrapper src={src} alt="skill icon" className={styles.img} />}
 
 				{!isLoading && src && (
 					<button

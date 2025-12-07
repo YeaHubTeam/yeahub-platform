@@ -117,10 +117,10 @@ export const PublicCollectionPage = () => {
 						company={company}
 					/>
 					<Card>
-						<Flex align={'center'} direction={'column'} gap="12">
+						<Flex align="center" direction="column" gap="12">
 							<Button
 								className={styles.button}
-								variant={'tertiary'}
+								variant="tertiary"
 								preffix={<Icon icon="watch" size={24} />}
 								onClick={() => {
 									navigate(ROUTES.avos.page);

@@ -15,7 +15,7 @@ export const InfoBlockHeader = () => {
 	return (
 		<div className={styles['info-header']}>
 			<h3 className={styles['info-title']}>{t(Profile.TABS_ABOUT_ME)}</h3>
-			{isEdit && <UserEditButton tab={'about-me'} />}
+			{isEdit && <UserEditButton tab="about-me" />}
 		</div>
 	);
 };

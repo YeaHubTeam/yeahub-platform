@@ -42,7 +42,7 @@ export const Authenticated: Story = {
 			},
 		},
 	},
-	render: () => <AuthorizedBlock username={'Анастасия'} avatarURL={avatarImage} />,
+	render: () => <AuthorizedBlock username="Анастасия" avatarURL={avatarImage} />,
 };
 
 export const NotAuthenticated: Story = {

@@ -110,7 +110,7 @@ const QuestionsPage = () => {
 					limit={questions.limit}
 					total={questions.total}
 				/>
-				{questions.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetFilters} />}
+				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>

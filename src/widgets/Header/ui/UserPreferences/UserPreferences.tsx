@@ -60,7 +60,7 @@ export const UserPreferences = () => {
 						) : (
 							<FreeSubIcon className={styles['free-icon']} />
 						)}
-						<Text variant={'body2'}>{profile?.username}</Text>
+						<Text variant="body2">{profile?.username}</Text>
 						<div className={styles.avatar}>
 							{profile.avatarUrl ? (
 								<img className={styles.img} src={profile.avatarUrl} alt={t(Translation.AVATAR)} />

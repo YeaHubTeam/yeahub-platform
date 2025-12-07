@@ -38,15 +38,15 @@ export const PreviewInactiveQuiz = () => {
 	];
 
 	return (
-		<Flex gap={'20'} className={styles['preparation-empty']}>
+		<Flex gap="20" className={styles['preparation-empty']}>
 			<div className={styles['inactive-description']}>
 				<div className={styles['inactive-title']}>
 					<Vector className={styles['vector-icon']} />
 					<Text variant="body4">{t(InterviewQuiz18.START_QUIZ_TITLE)}</Text>
 				</div>
-				<Flex direction={'column'} gap={'20'}>
-					<Text variant={'body3-accent'}>{t(InterviewQuiz18.START_QUIZ_DESCRIPTION)}</Text>
-					<Flex componentType="ul" gap="16" direction={'column'} wrap="nowrap">
+				<Flex direction="column" gap="20">
+					<Text variant="body3-accent">{t(InterviewQuiz18.START_QUIZ_DESCRIPTION)}</Text>
+					<Flex componentType="ul" gap="16" direction="column" wrap="nowrap">
 						{quizSetupList.map(({ id, title }) => (
 							<Flex key={id} gap="10">
 								<Text variant="body4">{id}</Text>

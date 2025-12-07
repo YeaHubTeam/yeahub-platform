@@ -113,7 +113,7 @@ export const CollectionPage = () => {
 							)}
 							<Button
 								className={styles.button}
-								variant={'tertiary'}
+								variant="tertiary"
 								preffix={<Icon icon="watch" size={24} />}
 								onClick={() => {
 									navigate(ROUTES.avos.page);

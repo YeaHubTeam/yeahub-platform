@@ -19,7 +19,7 @@ export const PopoverMenu = ({ menuItems, onToggleOpenPopover }: PopoverMenuProps
 					{title && onClick ? (
 						<Tooltip
 							title={tooltip?.text}
-							placement={'left'}
+							placement="left"
 							color={tooltip?.color}
 							offsetTooltip={10}
 							shouldShowTooltip={!!(disabled && tooltip?.text)}

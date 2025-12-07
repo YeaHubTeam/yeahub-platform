@@ -55,9 +55,7 @@ export const DeleteMyResourceRequestButton = ({
 				buttonPrimaryClick={handleConfirm}
 				buttonOutlineClick={handleClose}
 				onClose={handleClose}
-			>
-				{''}
-			</Modal>
+			></Modal>
 		</>
 	);
 };

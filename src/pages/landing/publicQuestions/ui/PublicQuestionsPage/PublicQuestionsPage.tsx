@@ -114,7 +114,7 @@ const PublicQuestionsPage = () => {
 					limit={questions.limit}
 					total={questions.total}
 				/>
-				{questions.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetFilters} />}
+				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
 			</Card>
 			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</Flex>

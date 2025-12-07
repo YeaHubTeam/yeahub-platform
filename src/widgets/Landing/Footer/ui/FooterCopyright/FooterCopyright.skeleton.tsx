@@ -6,9 +6,9 @@ export const FooterCopyrightSkeleton = () => {
 
 	return (
 		<TextSkeleton
-			dataTestId={'FooterCopyrightSkeleton'}
+			dataTestId="FooterCopyrightSkeleton"
 			width={isMobileS ? 80 : 100}
-			variant={'body2'}
+			variant="body2"
 		/>
 	);
 };

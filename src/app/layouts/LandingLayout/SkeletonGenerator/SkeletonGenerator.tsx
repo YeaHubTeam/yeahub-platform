@@ -22,16 +22,16 @@ export const SkeletonGenerator = () => {
 	const isMediaPage = useMatch(ROUTES.media.page);
 	const isHhAnalyticsPage = useMatch(ROUTES.hhAnalytics.page);
 
-	if (isLandingPage) return <LandingPageSkeleton data-testid={'LandingPageSkeleton'} />;
+	if (isLandingPage) return <LandingPageSkeleton data-testid="LandingPageSkeleton" />;
 	if (isQuizPage)
-		return <CreatePublicQuizPageSkeleton data-testid={'CreatePublicQuizPageSkeleton'} />;
-	if (isNewQuizPage) return <PublicQuizPageSkeleton dataTestId={'PublicQuizPageSkeleton'} />;
+		return <CreatePublicQuizPageSkeleton data-testid="CreatePublicQuizPageSkeleton" />;
+	if (isNewQuizPage) return <PublicQuizPageSkeleton dataTestId="PublicQuizPageSkeleton" />;
 	if (isQuizResultPage)
-		return <PublicQuizResultPageSkeleton dataTestId={'PublicQuizResultPageSkeleton'} />;
+		return <PublicQuizResultPageSkeleton dataTestId="PublicQuizResultPageSkeleton" />;
 	if (isQuestionsPage)
-		return <PublicQuestionsPageSkeleton dataTestId={'PublicQuestionsPageSkeleton'} />;
+		return <PublicQuestionsPageSkeleton dataTestId="PublicQuestionsPageSkeleton" />;
 	if (isQuestionDetailPage)
-		return <PublicQuestionPageSkeleton dataTestId={'PublicQuestionPageSkeleton'} />;
+		return <PublicQuestionPageSkeleton dataTestId="PublicQuestionPageSkeleton" />;
 	if (isMediaPage) return <MediaPageSkeleton />;
 	if (isHhAnalyticsPage) return <HhAnalyticsPageSkeleton />;
 

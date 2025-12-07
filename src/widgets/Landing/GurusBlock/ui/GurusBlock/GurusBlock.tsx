@@ -26,11 +26,11 @@ export const GurusBlock = () => {
 		<Flex direction="column" gap="20">
 			<Card>
 				<Flex direction="column" gap="20">
-					<Flex direction={'column'} gap={'8'}>
+					<Flex direction="column" gap="8">
 						<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 							{t(Landing.GURU_TITLE)}
 						</Text>
-						<Text variant={'body3'} className={styles.description}>
+						<Text variant="body3" className={styles.description}>
 							{t(Landing.GURU_DESCRIPTION)}
 						</Text>
 					</Flex>

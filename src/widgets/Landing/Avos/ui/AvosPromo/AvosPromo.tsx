@@ -40,7 +40,7 @@ export const AvosPromo = () => {
 						loading="lazy"
 					/>
 
-					<Flex wrap={'wrap'} gap={isMobileS ? '8' : '12'} className={styles.chips}>
+					<Flex wrap="wrap" gap={isMobileS ? '8' : '12'} className={styles.chips}>
 						{chips.map((chip, i) => (
 							<Chip
 								key={i}

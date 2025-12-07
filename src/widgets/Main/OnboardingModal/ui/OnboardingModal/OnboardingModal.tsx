@@ -86,7 +86,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 			className={styles['onboarding-modal']}
 		>
 			<Flex direction={isMobileM ? 'column' : 'row'}>
-				<Flex direction={'column'} className={styles['stepper-container']}>
+				<Flex direction="column" className={styles['stepper-container']}>
 					<OnboardingHeader activeStep={activeStepIndex + 1} finalStep={steps.length} />
 					<Stepper
 						steps={steps}
@@ -95,7 +95,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 						isMobile={isMobileM}
 					/>
 				</Flex>
-				<Flex align={'center'} className={styles['active-step-content']}>
+				<Flex align="center" className={styles['active-step-content']}>
 					<StepComponent />
 				</Flex>
 			</Flex>

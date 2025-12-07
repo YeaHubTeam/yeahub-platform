@@ -51,7 +51,7 @@ export const ProfilePageSkeleton = () => {
 						</Flex>
 						<div style={{ flex: '1 0' }} className={styles['sleleton-link-profile']}>
 							<div className={styles['sleleton-link']}>
-								<Skeleton width={'100%'} height={'100%'} />
+								<Skeleton width="100%" height="100%" />
 							</div>
 						</div>
 					</div>
@@ -62,14 +62,14 @@ export const ProfilePageSkeleton = () => {
 							<Skeleton width={81} height={27} />
 							<div style={{ flex: '1 0' }}>
 								<div className={styles['sleleton-link']}>
-									<Skeleton width={'100%'} height={'100%'} />
+									<Skeleton width="100%" height="100%" />
 								</div>
 							</div>
 						</Flex>
 					</div>
 					<Flex direction="column" gap="8" style={{ width: '100%' }}>
 						{[...Array(6)].map((_, index) => (
-							<Skeleton width={'100%'} height={14} key={index} />
+							<Skeleton width="100%" height={14} key={index} />
 						))}
 					</Flex>
 				</Card>
@@ -79,7 +79,7 @@ export const ProfilePageSkeleton = () => {
 							<Skeleton width={81} height={27} />
 							<div style={{ flex: '1 0' }}>
 								<div className={styles['sleleton-link']}>
-									<Skeleton width={'100%'} height={'100%'} />
+									<Skeleton width="100%" height="100%" />
 								</div>
 							</div>
 						</Flex>

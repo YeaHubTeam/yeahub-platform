@@ -24,7 +24,7 @@ export const CompanyCreateFormHeader = () => {
 	};
 
 	return (
-		<Flex align="center" gap="8" justify={'between'}>
+		<Flex align="center" gap="8" justify="between">
 			<BackButton />
 			<Button disabled={isLoading} onClick={handleSubmit(onCreateCompany)}>
 				{t(Translation.SAVE, { ns: 'translation' })}
