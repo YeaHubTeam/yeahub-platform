@@ -1,5 +1,4 @@
 {
   "./**/*.{ts,tsx,js,jsx}": ["npm run prettier", "npm run lint:ts:fix"],
-  "*.css": "npm run lint:css:fix",
-  "./src/**/*.{ts,tsx,js,jsx}": "npm run lint:fsd",
+  "*.css": "npm run lint:css:fix"
 }
