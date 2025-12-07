@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import GuruBanner from '@/shared/assets/images/landing/learning/guru-banner.png';
+import GuruBanner from '@/shared/assets/images/landing/learning/guruBanner.png';
 import { i18Namespace, Landing } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Banner } from '@/shared/ui/Banner';

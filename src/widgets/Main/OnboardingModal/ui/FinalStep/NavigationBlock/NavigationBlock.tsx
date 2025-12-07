@@ -17,7 +17,7 @@ export const NavigationBlock = () => {
 
 	const navItems: NavItem[] = [
 		{
-			icon: 'question',
+			icon: 'questions',
 			label: t(Onboarding.FINAL_QUESTIONS_LINK),
 			route: ROUTES.wiki.questions.page,
 		},

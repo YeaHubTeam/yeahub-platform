@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { Table } from './Table';
 

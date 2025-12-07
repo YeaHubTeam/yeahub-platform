@@ -7,7 +7,9 @@ import { profileActions } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 import { useGetUserProfileByIdQuery } from '@/entities/user';
 
-import { InfoBlock, SkillsBlock, UserBlock } from '@/widgets/Profile';
+import { InfoBlock } from '@/widgets/Profile/InfoBlock';
+import { SkillsBlock } from '@/widgets/Profile/SkillsBlock';
+import { UserBlock } from '@/widgets/Profile/UserBlock';
 
 import styles from './UserProfilePage.module.css';
 

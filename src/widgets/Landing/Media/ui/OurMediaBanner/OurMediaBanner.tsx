@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import Books from '@/shared/assets/images/books.png';
+import Books from '@/shared/assets/images/booksImg.png';
 import { i18Namespace, Media } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';

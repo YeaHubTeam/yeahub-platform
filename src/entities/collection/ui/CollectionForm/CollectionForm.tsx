@@ -7,19 +7,15 @@ import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { CompanySelect } from '@/entities/company';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { ChooseQuestionsDrawer } from '@/entities/question';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { CompanySelect } from '@/entities/company/@x/collection';
+import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
+import { SpecializationSelect } from '@/entities/specialization/@x/collection';
 
 import { useGetCollectionQuestionsQuery } from '../../api/collectionApi';
 
@@ -94,7 +90,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex className={`${styles['collectionDetail-input']}`} gap="120">
+				<Flex className={`${styles['collection-input']}`} gap="120">
 					<Flex className={styles['text-wrapper']} direction="column" gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.TITLE_FULL)}

@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/constants';
 import { StatusChip, StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 

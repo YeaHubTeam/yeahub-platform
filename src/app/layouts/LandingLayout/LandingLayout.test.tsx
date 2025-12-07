@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { lazy, Suspense } from 'react';
 import { useMatch } from 'react-router-dom';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { LandingLayout } from './LandingLayout';
 import { LandingLayoutSkeleton } from './LandingLayout.skeleton';

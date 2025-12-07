@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
+import ProSubIcon from '@/shared/assets/icons/proSub.svg';
 import { i18Namespace, User, Translation } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';

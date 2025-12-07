@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import avatarImage from '@/shared/assets/icons/authorized_profile_photo.avif';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
 import { AuthorizedBlock } from '../../AuthorizedBlock/AuthorizedBlock';
@@ -33,7 +33,7 @@ export const Authenticated: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {
@@ -52,7 +52,7 @@ export const NotAuthenticated: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {
@@ -70,7 +70,7 @@ export const Loading: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import PlusSvg from '@/shared/assets/icons/Plus1.svg';
+import PlusSvg from '@/shared/assets/icons/plus1.svg';
 import { i18Namespace, Translation } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
