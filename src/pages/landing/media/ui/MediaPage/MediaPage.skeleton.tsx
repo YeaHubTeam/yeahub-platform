@@ -3,8 +3,8 @@ import { BannerSkeleton } from '@/shared/ui/Banner';
 import { Flex } from '@/shared/ui/Flex';
 
 import {
-	OurMediaBannerSkeleton,
 	GurusBlockSkeleton,
+	OurMediaBannerSkeleton,
 	TelegramChannelsSkeleton,
 } from '@/widgets/Landing/Media';
 

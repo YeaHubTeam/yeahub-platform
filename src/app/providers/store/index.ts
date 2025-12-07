@@ -1,2 +1,1 @@
-export { createReduxStore, type RootState } from './config';
-export { StoreProvider } from './StoreProvider';
+export { type RootState, reducers } from './config';

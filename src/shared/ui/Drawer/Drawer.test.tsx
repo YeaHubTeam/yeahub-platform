@@ -1,8 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { useState } from 'react';
 
-import { getKeyboardFireEventObject } from '@/shared/libs/jest';
-import { renderComponent } from '@/shared/libs/jest';
+import { getKeyboardFireEventObject, renderComponent } from '@/shared/libs';
 
 import Drawer, { DrawerProps, drawerTestIds } from './Drawer';
 

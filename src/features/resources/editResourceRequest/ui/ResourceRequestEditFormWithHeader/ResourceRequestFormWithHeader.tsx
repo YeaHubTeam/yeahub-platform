@@ -8,9 +8,11 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
-
-import { ResourceEditFormHeader } from '@/features/resources/editResource/ui/ResourceEditFormHeader/ResourceEditFormHeader';
+import {
+	ResourceEditFormHeader,
+	ResourceForm,
+	ResourceRequestStatusChip,
+} from '@/entities/resource';
 
 import type { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
 

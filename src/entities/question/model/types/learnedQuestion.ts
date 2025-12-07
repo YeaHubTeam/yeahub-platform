@@ -1,9 +1,7 @@
 import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Skill } from '@/entities/skill/@x/question';
+import { Specialization } from '@/entities/specialization/@x/question';
 
 export interface LearnedQuestion {
 	id: number;

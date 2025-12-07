@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
 import { HeaderNavDesktop } from './HeaderNavDesktop';
@@ -29,7 +29,7 @@ export const Default: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {

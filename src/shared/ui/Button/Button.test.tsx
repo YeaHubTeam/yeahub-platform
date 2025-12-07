@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { Button } from './Button';
 import { ButtonProps } from './types';

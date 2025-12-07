@@ -3,8 +3,7 @@ import { matchPath, useLocation } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile/@x/quiz';
 
 import { changeMockQuestionAnswer, changeQuestionAnswer } from '../slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../types/quiz';

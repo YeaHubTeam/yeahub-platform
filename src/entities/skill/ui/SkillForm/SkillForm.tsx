@@ -11,8 +11,7 @@ import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { SpecializationSelect } from '@/entities/specialization/@x/skill';
 
 import styles from './SkillForm.module.css';
 

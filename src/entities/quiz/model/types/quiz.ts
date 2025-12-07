@@ -1,7 +1,6 @@
 import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Question } from '@/entities/question';
+import { Question } from '@/entities/question/@x/quiz';
 
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN';

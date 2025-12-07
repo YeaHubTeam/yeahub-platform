@@ -1,4 +1,4 @@
-import { QuestionsFilterParams } from '@/features/question/filterQuestions';
+import { QuestionsFilterParams } from '@/entities/question';
 
 export const normalizeFilters = (filters: QuestionsFilterParams) => {
 	const { status, ...rest } = filters;

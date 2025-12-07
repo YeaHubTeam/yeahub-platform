@@ -1,5 +1,4 @@
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Specialization } from '@/entities/specialization/@x/socialMedia';
 
 import { mediaLinks } from '../constants/media';
 
