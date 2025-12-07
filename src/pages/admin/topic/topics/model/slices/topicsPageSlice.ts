@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { SelectedAdminEntities } from '@/shared/libs/app';
+import { SelectedAdminEntities } from '@/shared/libs';
 
 import { TopicsPageState } from '../types/topicsPageTypes';
 

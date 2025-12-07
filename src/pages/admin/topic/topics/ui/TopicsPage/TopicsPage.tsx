@@ -1,6 +1,4 @@
-import { SelectedAdminEntities } from '@/shared/libs/app';
-import { useAppDispatch } from '@/shared/libs/redux';
-import { useAppSelector } from '@/shared/libs/redux';
+import { SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 
 import { useGetTopicsListQuery } from '@/entities/topic';

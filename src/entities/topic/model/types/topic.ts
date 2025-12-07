@@ -1,7 +1,6 @@
-import { Response } from '@/shared/libs/query';
+import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
+import { Skill } from '@/entities/skill/@x/topic';
 
 export interface Topic {
 	id: number;

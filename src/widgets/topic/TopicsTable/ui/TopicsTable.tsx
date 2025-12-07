@@ -1,11 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Topics, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { SelectedAdminEntities } from '@/shared/libs/app';
-import { formatDate } from '@/shared/libs/fp';
+import { i18Namespace, Topics, Translation, ROUTES } from '@/shared/config';
+import { SelectedAdminEntities, formatDate } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Table } from '@/shared/ui/Table';
