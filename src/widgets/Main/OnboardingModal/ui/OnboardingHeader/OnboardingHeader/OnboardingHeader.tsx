@@ -16,9 +16,9 @@ export const OnboardingHeader = ({ activeStep, finalStep }: OnboardingHeaderProp
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const { isSmallScreen, isMobileM } = useScreenSize();
 	return (
-		<Flex gap={isSmallScreen ? '4' : '8'} align={'start'}>
-			<Flex direction={'column'} gap={'8'}>
-				<Text variant={'head3'} color={isMobileM ? 'black-900' : 'white-900'}>
+		<Flex gap={isSmallScreen ? '4' : '8'} align="start">
+			<Flex direction="column" gap="8">
+				<Text variant="head3" color={isMobileM ? 'black-900' : 'white-900'}>
 					{t(Onboarding.TITLE)}
 				</Text>
 				<Text

@@ -117,7 +117,7 @@ const QuestionsPage = () => {
 						/>
 					</>
 				)}
-				{isEmpty && <Stub type={'filter-empty'} onClick={resetAll} />}
+				{isEmpty && <Stub type="filter-empty" onClick={resetAll} />}
 			</Card>
 		</Flex>
 	);

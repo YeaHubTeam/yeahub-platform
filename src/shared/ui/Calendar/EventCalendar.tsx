@@ -57,7 +57,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					form="square"
 					icon={<Icon icon="calendar" color="black-600" size={20} />}
 					size="small"
-					variant={'tertiary'}
+					variant="tertiary"
 					onClick={onToggle}
 				/>
 				<Drawer
@@ -69,7 +69,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					})}
 					hasCloseButton
 				>
-					<Card className={'calendar-block'}>
+					<Card className="calendar-block">
 						<Calendar
 							onChange={onDateChange}
 							showNeighboringMonth={false}
@@ -83,8 +83,8 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					</Card>
 				</Drawer>
 			</div>
-			<div className={'additional-info-wrapper'}>
-				<Card className={'calendar-block'}>
+			<div className="additional-info-wrapper">
+				<Card className="calendar-block">
 					<Calendar
 						onChange={onDateChange}
 						showNeighboringMonth={false}

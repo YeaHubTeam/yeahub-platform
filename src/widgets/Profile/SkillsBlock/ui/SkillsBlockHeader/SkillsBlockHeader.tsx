@@ -16,7 +16,7 @@ export const SkillsBlockHeader = () => {
 	return (
 		<div className={styles['skills-header']}>
 			<h3 className={styles['skills-title']}>{t(Profile.TABS_SKILLS)}</h3>
-			{isEdit && <UserEditButton tab={'skills'} />}
+			{isEdit && <UserEditButton tab="skills" />}
 		</div>
 	);
 };

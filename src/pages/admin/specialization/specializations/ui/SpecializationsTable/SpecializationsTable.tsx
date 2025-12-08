@@ -56,10 +56,10 @@ export const SpecializationsTable = ({
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
-						<Text variant={'body3-accent'}>{v}</Text>
+						<Text variant="body3-accent">{v}</Text>
 					</Link>
 				) : (
-					<Text variant={'body3-accent'}>{v}</Text>
+					<Text variant="body3-accent">{v}</Text>
 				)}
 			</td>
 		));

@@ -47,7 +47,7 @@ export const CollectionsContent = ({
 					<CollectionsList collections={collections} queryFilter={search} />
 					{banner}
 					{pagination}
-					{collections.length === 0 && <Stub type={'filter-empty'} onClick={resetFilters} />}
+					{collections.length === 0 && <Stub type="filter-empty" onClick={resetFilters} />}
 				</Flex>
 			</Card>
 		</div>

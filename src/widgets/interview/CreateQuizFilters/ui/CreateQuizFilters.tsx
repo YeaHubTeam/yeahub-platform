@@ -40,11 +40,7 @@ export const CreateQuizFilters = ({
 			direction={isTablet ? 'column' : 'row'}
 			className={styles.wrapper}
 		>
-			<Flex
-				className={styles['skills-selection']}
-				gap={isMobile ? '16' : '24'}
-				direction={'column'}
-			>
+			<Flex className={styles['skills-selection']} gap={isMobile ? '16' : '24'} direction="column">
 				{onChangeSpecialization && project === 'landing' && (
 					<SpecializationsListField
 						selectedSpecialization={filters.specialization}

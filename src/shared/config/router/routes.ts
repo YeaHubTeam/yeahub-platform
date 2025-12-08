@@ -123,6 +123,10 @@ export const ROUTES = {
 				page: '/admin/companies/:companyId',
 			},
 		},
+		topics: {
+			route: 'topics',
+			page: '/admin/topics',
+		},
 	},
 	auth: {
 		route: 'auth',
