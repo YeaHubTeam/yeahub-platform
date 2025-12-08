@@ -19,7 +19,7 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
+	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree, onChangeCompany } =
 		useCollectionsFilters({
 			page: 1,
 		});
@@ -34,6 +34,7 @@ const CollectionsPage = () => {
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
+		companies: filters.company,
 		isFree: filters.isFree,
 		page: filters.page,
 	});
@@ -44,6 +45,7 @@ const CollectionsPage = () => {
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeIsFree={onChangeIsFree}
+			onChangeCompany={onChangeCompany}
 			filter={{
 				title: filters.title,
 				isFree: filters.isFree,

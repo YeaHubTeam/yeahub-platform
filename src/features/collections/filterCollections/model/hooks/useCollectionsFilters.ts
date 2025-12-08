@@ -16,7 +16,8 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		Boolean(filters.title) ||
 		Boolean(filters.specialization) ||
 		Boolean(filters.authorId) ||
-		Boolean(filters.isMy);
+		Boolean(filters.isMy) ||
+		Boolean(filters.company);
 
 	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -25,6 +26,13 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 	const onChangeSpecialization = (specialization: CollectionsFilterParams['specialization']) => {
 		onFilterChange({
 			specialization,
+			page: 1,
+		});
+	};
+
+	const onChangeCompany = (company: CollectionsFilterParams['company']) => {
+		onFilterChange({
+			company,
 			page: 1,
 		});
 	};
@@ -58,6 +66,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onResetFilters,
 		onChangeTitle,
 		onChangeSpecialization,
+		onChangeCompany,
 		onChangeIsFree,
 		onChangePage,
 		onChangeAuthor,
