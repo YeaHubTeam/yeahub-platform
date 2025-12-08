@@ -5,7 +5,7 @@ export type CreateSpecializationFormValues = Omit<CreateOrEditSpecializationForm
 export type CreateSpecializationBodyRequest = CreateSpecializationFormValues;
 export type CreateSpecializationResponse = Specialization;
 
-export type CreateSpecializationsError =
+export type CreateSpecializationError =
 	| 'auth.auth.unauthorized'
 	| 'auth.user.verified'
 	| 'specialization.user.not_found'

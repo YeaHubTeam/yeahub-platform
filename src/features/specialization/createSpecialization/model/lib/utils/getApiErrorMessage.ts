@@ -1,9 +1,11 @@
 import i18n from '@/shared/config/i18n/i18n';
 import { Translation } from '@/shared/config/i18n/i18nTranslations';
 
-import { CreateSpecializationsError } from '../../types/specializationCreateTypes';
+import { CreateSpecializationError } from '../../types/specializationCreateTypes';
 
-export const getSpecializationsErrorMessage = (error: ApiErrorData<CreateSpecializationsError>) => {
+export const getCreateSpecializationErrorMessage = (
+	error: ApiErrorData<CreateSpecializationError>,
+) => {
 	switch (error.message) {
 		case 'auth.auth.unauthorized':
 			return i18n.t(Translation.TOAST_SPECIALIZATION_AUTH_UNAUTHORIZED);

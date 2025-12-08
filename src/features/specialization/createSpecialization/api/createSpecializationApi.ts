@@ -1,10 +1,9 @@
 import { ROUTES, i18n, Translation, ApiTags, baseApi, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { handleApiError } from '@/shared/libs/query/handleApiError/handleApiError';
+import { route, handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { createSpecializationApiUrls } from '../model/constants/createSpecializationConstants';
-import { getSpecializationsErrorMessage } from '../model/lib/utils/getApiErrorMessage';
+import { getCreateSpecializationErrorMessage } from '../model/lib/utils/getApiErrorMessage';
 import {
 	CreateSpecializationBodyRequest,
 	CreateSpecializationResponse,
@@ -28,7 +27,7 @@ export const createSpecializationApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.specializations.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(handleApiError(error, getSpecializationsErrorMessage)));
+					toast.error(i18n.t(handleApiError(error, getCreateSpecializationErrorMessage)));
 					//eslint-disable-next-line no-console
 					console.error(error);
 				}

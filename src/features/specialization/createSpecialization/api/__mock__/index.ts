@@ -1,7 +1,3 @@
-import { createSpecializationErrorMock } from './createSpecializationErrorMock';
 import { createSpecializationMock } from './createSpecializationMock';
 
-export const specializationCreateHandlers = [
-	createSpecializationMock,
-	createSpecializationErrorMock,
-];
+export const specializationCreateHandlers = [createSpecializationMock];

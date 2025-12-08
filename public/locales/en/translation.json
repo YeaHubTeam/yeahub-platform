@@ -263,20 +263,26 @@
 				}
 			},
 			"user": {
-				"not_found": "User not found."
+				"not.found": "User not found."
 			},
 			"auth": {
-				"unauthorized": "Authentication failed.",
+				"unauthorized": "The user is not authorized",
 				"user": {
-					"verified": "The route is available for verified users"
+					"verified": "No access to functionality"
 				}
 			},
 			"tinify": {
-				"compress_failed": "Failed to compress image with TinyPNG",
-				"resize_failed": "Failed to resize image"
+				"compress": {
+					"failed": "Failed to compress image with TinyPNG"
+				},
+				"resize": {
+					"failed": "Failed to resize image"
+				}
 			},
 			"title": {
-				"conflict": "Specialization with this title already exists"
+				"conflict": {
+					"specialization": "Specialization with this title already exists"
+				}
 			}
 		},
 		"collections": {
