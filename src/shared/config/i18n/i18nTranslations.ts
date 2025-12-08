@@ -354,6 +354,7 @@ export enum Auth {
 	PASSWORD_RECOVERY_TITLE = 'password.recovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'password.recovery.subtitle',
 	PASSWORD_RECOVERY_SUBMIT = 'password.recovery.submit',
+	QUESTIONS_COUNT_AVAILABLE_AUTHORIZED = 'questions.count.available.authorized',
 }
 
 export enum Specializations {
