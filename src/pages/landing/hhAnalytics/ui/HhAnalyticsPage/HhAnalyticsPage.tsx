@@ -69,7 +69,7 @@ const HhAnalyticsPage = () => {
 	return (
 		<Card>
 			<Flex direction="column" gap="24">
-				<Text variant={'body6'}>
+				<Text variant="body6">
 					{mode === 'skills'
 						? t(Analytics.HH_ANALYTICS_TITLE_SKILLS)
 						: t(Analytics.HH_ANALYTICS_TITLE_KEYWORDS)}

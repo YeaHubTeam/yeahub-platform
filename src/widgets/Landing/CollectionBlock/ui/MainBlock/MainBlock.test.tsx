@@ -1,12 +1,11 @@
 import { screen } from '@testing-library/react';
 import Slider from 'react-slick';
 
-import { useScreenSize } from '@/shared/libs';
-import { renderComponent } from '@/shared/libs/jest';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { MainBlock } from './MainBlock';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobileS: false,
 	})),

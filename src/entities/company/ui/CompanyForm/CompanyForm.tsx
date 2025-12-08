@@ -57,7 +57,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 					</FormControl>
 				</Flex>
 				<Flex gap="120">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Companies.ICON_TITLE)}
 						</Text>

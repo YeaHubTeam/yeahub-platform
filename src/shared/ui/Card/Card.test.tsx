@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 
 import { Translation } from '@/shared/config';
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { Card } from './Card';
 

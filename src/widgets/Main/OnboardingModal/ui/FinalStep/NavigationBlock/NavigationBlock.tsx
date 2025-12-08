@@ -17,7 +17,7 @@ export const NavigationBlock = () => {
 
 	const navItems: NavItem[] = [
 		{
-			icon: 'question',
+			icon: 'questions',
 			label: t(Onboarding.FINAL_QUESTIONS_LINK),
 			route: ROUTES.wiki.questions.page,
 		},
@@ -39,21 +39,21 @@ export const NavigationBlock = () => {
 
 	return (
 		<Flex
-			componentType={'ul'}
-			justify={'center'}
-			gap={'20'}
-			wrap={'wrap'}
+			componentType="ul"
+			justify="center"
+			gap="20"
+			wrap="wrap"
 			className={styles['list-container']}
 		>
 			{navItems.map(({ icon, label, route }) => (
 				<Button
 					key={label}
 					variant="link-purple"
-					size={'small'}
+					size="small"
 					onClick={() => onMoveService(route)}
 					preffix={<Icon icon={icon} size={20} />}
 				>
-					<Text variant={'body2'} color={'purple-700'}>
+					<Text variant="body2" color="purple-700">
 						{label}
 					</Text>
 				</Button>

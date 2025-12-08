@@ -4,7 +4,7 @@ import { getFromLS, setToLS, removeFromLS } from '@/shared/libs';
 
 import { Timer } from './Timer';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/browser', () => ({
 	getFromLS: jest.fn(),
 	setToLS: jest.fn(),
 	removeFromLS: jest.fn(),

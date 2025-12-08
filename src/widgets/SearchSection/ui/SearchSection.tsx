@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import PlusSvg from '@/shared/assets/icons/Plus1.svg';
+import PlusSvg from '@/shared/assets/icons/plus1.svg';
 import { i18Namespace, Translation } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -16,7 +16,7 @@ interface SearchSectionProps {
 	to?: string;
 	showRemoveButton?: boolean;
 	showResetFilterButton?: boolean;
-	onSearch: (value: string) => void;
+	onSearch?: (value: string) => void;
 	searchValue?: string;
 	renderRemoveButton?: () => ReactNode;
 	renderFilter?: () => ReactNode;
@@ -42,11 +42,13 @@ export const SearchSection = ({
 			<Flex className={styles.section} justify="between">
 				<Flex gap="10">
 					{renderFilter && <FiltersDrawer hasFilters={hasFilters}>{renderFilter()}</FiltersDrawer>}
-					<SearchInput
-						placeholder={t(Translation.SEARCH)}
-						onSearch={onSearch}
-						currentValue={searchValue}
-					/>
+					{onSearch && (
+						<SearchInput
+							placeholder={t(Translation.SEARCH)}
+							onSearch={onSearch}
+							currentValue={searchValue}
+						/>
+					)}
 				</Flex>
 				<Flex gap="10" align="center">
 					{onResetFilters && showResetFilterButton && (

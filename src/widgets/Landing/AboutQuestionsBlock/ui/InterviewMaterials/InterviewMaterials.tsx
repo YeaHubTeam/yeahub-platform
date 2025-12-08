@@ -11,9 +11,9 @@ import styles from './InterviewMaterials.module.css';
 
 export const InterviewMaterials = () => {
 	return (
-		<Flex className={styles.content} dataTestId={'InterviewMaterials_content'}>
+		<Flex className={styles.content} dataTestId="InterviewMaterials_content">
 			<About />
-			<div className={styles.cards} data-testid={'InterviewMaterials_cards'}>
+			<div className={styles.cards} data-testid="InterviewMaterials_cards">
 				<Slider {...interviewMaterialsSliderSettings} className={styles['slider-container']}>
 					<SpecializationCard />
 					<SkillsCard />

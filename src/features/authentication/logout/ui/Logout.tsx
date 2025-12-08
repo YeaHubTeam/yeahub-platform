@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import LogoutIcon from '@/shared/assets/icons/logout-icon.svg';
+import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import { Translation } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 

@@ -10,11 +10,14 @@ import { Flex } from '@/shared/ui/Flex';
 import { StatusChipVariant } from '@/shared/ui/StatusChip';
 
 import { getIsVerified } from '@/entities/profile';
-import { ResourceRequestStatus, useGetResourceRequestByIdQuery } from '@/entities/resource';
+import {
+	ResourceRequestStatus,
+	useGetResourceRequestByIdQuery,
+	ResourceAdditionalInfo,
+} from '@/entities/resource';
 
 import { DeleteMyResourceRequestButton } from '@/features/resources/deleteMyResourceRequest';
 
-import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 

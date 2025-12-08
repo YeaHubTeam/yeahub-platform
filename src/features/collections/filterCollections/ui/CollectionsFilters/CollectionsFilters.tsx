@@ -4,11 +4,9 @@ import { i18Namespace, Collections } from '@/shared/config';
 import { useCurrentProject } from '@/shared/libs';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
-import { ChooseCollectionAccess } from '@/entities/collection';
+import { ChooseCollectionAccess, CollectionsFilterParams } from '@/entities/collection';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
-
-import { CollectionsFilterParams } from '../../model/types/types';
 
 import styles from './CollectionsFilters.module.css';
 

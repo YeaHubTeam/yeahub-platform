@@ -1,13 +1,11 @@
 import { StoryFn } from '@storybook/react';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { StoreProvider } from '@/app/providers/store';
+import { RootReducer, State, StoreProvider } from '../../redux';
 
-import { State } from '../../store';
-
-// eslint-disable-next-line react/display-name
-export const StoreDecorator = (state: DeepPartial<State>) => (Story: StoryFn) => (
-	<StoreProvider initialState={state}>
-		<Story />
-	</StoreProvider>
-);
+export const StoreDecorator =
+	// eslint-disable-next-line react/display-name
+	(state: DeepPartial<State>, reducers: DeepPartial<RootReducer>) => (Story: StoryFn) => (
+		<StoreProvider initialState={state} reducers={reducers}>
+			<Story />
+		</StoreProvider>
+	);

@@ -1,11 +1,11 @@
 import { screen, fireEvent, waitFor, RenderResult } from '@testing-library/react';
 
 import { Landing } from '@/shared/config';
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { CookiesWarning } from './CookiesWarning';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/browser', () => ({
 	getJSONFromLS: jest.fn(() => null),
 	setToLS: jest.fn(),
 }));

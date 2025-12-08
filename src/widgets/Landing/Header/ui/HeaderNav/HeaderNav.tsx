@@ -11,7 +11,7 @@ export const HeaderNav = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	return (
-		<nav data-testid={'HeaderNav'} aria-label={t(Landing.HEADER_NAV_ARIA_LABEL)}>
+		<nav data-testid="HeaderNav" aria-label={t(Landing.HEADER_NAV_ARIA_LABEL)}>
 			{isLargeScreen ? <HeaderNavDesktop /> : <HeaderNavMobile />}
 		</nav>
 	);

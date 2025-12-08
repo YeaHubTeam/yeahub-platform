@@ -3,7 +3,8 @@ import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { ResourceAdditionalInfoSkeleton } from '@/widgets/resources/ResourceAdditionalInfo';
+import { ResourceAdditionalInfoSkeleton } from '@/entities/resource';
+
 import { ResourceBodySkeleton } from '@/widgets/resources/ResourceBody';
 import { ResourceHeaderSkeleton } from '@/widgets/resources/ResourceHeader';
 

@@ -73,10 +73,10 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.resources.details.route, resource.id)}>
-						<Text variant={'body3-accent'}>{v}</Text>
+						<Text variant="body3-accent">{v}</Text>
 					</Link>
 				) : (
-					<Text variant={'body3-accent'}>{v}</Text>
+					<Text variant="body3-accent">{v}</Text>
 				)}
 			</td>
 		));

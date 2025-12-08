@@ -24,7 +24,7 @@ export const ServiceOverviewStep = ({ goNextStep }: ServiceOverviewStepProps) =>
 			buttonPrimaryText={t(Onboarding.OVERVIEW_SERVICE_BUTTON)}
 		>
 			<AdvantagesBlock items={services} />
-			<Text variant={'body3-accent'}>{t(Onboarding.OVERVIEW_SERVICE_DESCRIPTION)}</Text>
+			<Text variant="body3-accent">{t(Onboarding.OVERVIEW_SERVICE_DESCRIPTION)}</Text>
 		</LayoutStepComponent>
 	);
 };

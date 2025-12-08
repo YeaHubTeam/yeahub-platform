@@ -5,9 +5,10 @@ import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
+import { QuestionAdditionalInfoSkeleton } from '@/entities/question';
+
 import { DeleteQuestionButtonSkeleton } from '@/features/question/deleteQuestion';
 
-import { QuestionAdditionalInfoSkeleton } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBodySkeleton } from '@/widgets/question/QuestionBody';
 import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
 
