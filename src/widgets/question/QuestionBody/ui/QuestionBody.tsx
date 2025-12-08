@@ -4,14 +4,17 @@ import { i18Namespace, Questions } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
+import { QuestionNotAuthorizedStub } from '@/features/question/stubQuestion';
+
 import styles from './QuestionBody.module.css';
 
 interface QuestionBodyProps {
 	shortAnswer: string;
 	longAnswer: string;
+	unauthorized?: boolean;
 }
 
-export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => {
+export const QuestionBody = ({ shortAnswer, longAnswer, unauthorized }: QuestionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
@@ -23,14 +26,18 @@ export const QuestionBody = ({ shortAnswer, longAnswer }: QuestionBodyProps) => 
 			>
 				<TextHtml html={shortAnswer} />
 			</Card>
-			<Card
-				expandable
-				title={t(Questions.LONG_ANSWER_TITLE)}
-				withOutsideShadow
-				className={styles['long-block']}
-			>
-				<TextHtml html={longAnswer} />
-			</Card>
+			{unauthorized ? (
+				<QuestionNotAuthorizedStub />
+			) : (
+				<Card
+					expandable
+					title={t(Questions.LONG_ANSWER_TITLE)}
+					withOutsideShadow
+					className={styles['long-block']}
+				>
+					<TextHtml html={longAnswer} />
+				</Card>
+			)}
 		</>
 	);
 };

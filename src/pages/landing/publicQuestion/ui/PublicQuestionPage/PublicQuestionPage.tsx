@@ -103,7 +103,7 @@ const PublicQuestionPage = () => {
 							isDisabled={isDisabled}
 						/>
 					</Card>
-					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} unauthorized={true} />
 					{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{!isMobile && !isTablet && (

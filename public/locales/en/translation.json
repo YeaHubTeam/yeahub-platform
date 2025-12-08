@@ -66,6 +66,9 @@
 			"subtitle": "Try changing your search or use our categories.",
 			"submit": "Reset filter"
 		},
+		"not.auth": {
+			"title": "The detailed answer is available only to registered users."
+		},
 		"error": {
 			"title": "Failed to load data",
 			"subtitle": "Try again or refresh the page",
