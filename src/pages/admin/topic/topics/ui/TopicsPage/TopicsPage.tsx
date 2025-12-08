@@ -1,8 +1,10 @@
 import { SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetTopicsListQuery } from '@/entities/topic';
 
+import { SearchSection } from '@/widgets/SearchSection';
 import { TopicsTable } from '@/widgets/topic/TopicsTable';
 
 import { getSelectedTopics } from '../../model/selectors/topicsPageSelectors';
@@ -19,13 +21,16 @@ const TopicsPage = () => {
 	};
 
 	return (
-		<Card>
-			<TopicsTable
-				topics={topics?.data}
-				selectedTopics={selectedTopics}
-				onSelectTopics={onSelectTopics}
-			/>
-		</Card>
+		<Flex componentType="main" direction="column" gap="24">
+			<SearchSection to="create" />
+			<Card>
+				<TopicsTable
+					topics={topics?.data}
+					selectedTopics={selectedTopics}
+					onSelectTopics={onSelectTopics}
+				/>
+			</Card>
+		</Flex>
 	);
 };
 

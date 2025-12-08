@@ -19,7 +19,7 @@ interface TopicsTableProps {
 }
 
 export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
-	const { t } = useTranslation([i18Namespace.topics, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 
 	const renderTableColumnWidth = () => {
 		const columnWidths = {
@@ -65,7 +65,7 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 					</Text>
 				</Flex>
 			),
-			createdAt: formatDate(new Date(topic.createdAt), 'dd.MM.yyyy'),
+			createdAt: topic.createdAt ? formatDate(new Date(topic.createdAt), 'dd.MM.yyyy') : '',
 		};
 
 		return Object.entries(columns).map(([k, v]) => (

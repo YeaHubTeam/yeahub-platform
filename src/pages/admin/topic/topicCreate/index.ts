@@ -1,1 +1,1 @@
-export { TopicCreatePage } from './ui/TopicCreatePage.lazy';
+export { TopicCreatePage } from './ui/TopicCreatePage/TopicCreatePage.lazy';

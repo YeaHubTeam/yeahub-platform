@@ -11,7 +11,7 @@ import { TextArea } from '@/shared/ui/TextArea';
 
 import { SkillSelect } from '@/entities/skill/@x/topic';
 
-import { CreateOrEditTopicFormValues } from '../model/types/topic';
+import { CreateOrEditTopicFormValues } from '../../model/types/topic';
 
 import styles from './TopicForm.module.css';
 
