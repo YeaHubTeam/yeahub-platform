@@ -2,6 +2,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './HistorySlide.module.css';
+
 interface HistorySlideProps {
 	src: string;
 	alt: string;

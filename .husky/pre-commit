@@ -3,10 +3,10 @@
 
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
-#if ! echo "$branch_name" | grep -qE "^(((feature|fix)\/YH-\d+(-\d+)?)|(release\/\d+\.\d+\.\d+))+$"; then
-#  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/X.X.X'"
-#  exit 1
-#fi
+if ! echo "$branch_name" | grep -qE "^(((feature|fix)/YH-[0-9]+(-[0-9]+)?)|(release/[0-9]+\.[0-9]+\.[0-9]+))+$"; then
+  echo "Ошибка: Название ветки должно быть в формате 'feature/YH-XXX', 'fix/YH-XXX' или 'release/X.X.X'"
+  exit 1
+fi
 
 export FORCE_COLOR=1
 
@@ -15,6 +15,12 @@ echo '🔍🎨 Formating and checking staged files before committing!'
 npx lint-staged ||
 (
   echo '💀❌ Ooops! Formating and checking process has failed!';
+  false;
+)
+	
+npx npx steiger ./src || 
+(
+  echo '💀❌ Ooops! Check FSD rules. There are errors now!  ';
   false;
 )
 

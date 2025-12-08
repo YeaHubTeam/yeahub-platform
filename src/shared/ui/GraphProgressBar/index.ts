@@ -1,1 +1,1 @@
-export { GraphProgressBar } from './ui/GraphProgressBar';
+export { GraphProgressBar } from './GraphProgressBar';

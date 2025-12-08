@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Learning } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Learning } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -13,7 +12,7 @@ export const AdvantagesBlock = () => {
 	return (
 		<>
 			<Flex gap="20" direction="column">
-				<Flex direction="column" gap={'8'} className={styles.process}>
+				<Flex direction="column" gap="8" className={styles.process}>
 					<Text variant="head2" className={styles['main-text']}>
 						{t(Learning.BANNER_TITLE)}
 					</Text>

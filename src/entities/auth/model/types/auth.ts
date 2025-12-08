@@ -1,7 +1,5 @@
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SocialNetwork } from '@/entities/socialNetwork';
+import { Skill } from '@/entities/skill/@x/auth';
+import { SocialNetwork } from '@/entities/socialNetwork/@x/auth';
 
 export interface LoginFormValues {
 	username: string;
@@ -138,3 +136,12 @@ export type ProfileResponse = FullProfile;
 
 export type TelegramLoginBodyRequest = TelegramUser;
 export type TelegramLoginResponse = AuthResponse;
+
+export type TelegramLoginError =
+	| 'auth.auth.unauthorized'
+	| 'auth.telegram.invalid_data'
+	| 'auth.telegram.data_outdated'
+	| 'user.telegram.already_linked'
+	| 'user.telegram.linked_to_another_user'
+	| 'auth.telegram.verify_denied'
+	| 'user.user.id.not_found';

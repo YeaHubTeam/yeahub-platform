@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
-import { ChooseCollectionAccess } from '@/entities/collection';
-import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/media';
+import { ChooseCollectionAccess, CollectionsFilterParams } from '@/entities/collection';
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 import { UserSelect } from '@/entities/user';
 

@@ -1,8 +1,7 @@
 import { screen } from '@testing-library/react';
 import { useLocation, useMatches } from 'react-router-dom';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { Breadcrumbs } from './Breadcrumbs';
 
@@ -12,7 +11,7 @@ jest.mock('react-router-dom', () => ({
 	useLocation: jest.fn(),
 }));
 
-jest.mock('@/shared/hooks/useScreenSize', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(),
 }));
 

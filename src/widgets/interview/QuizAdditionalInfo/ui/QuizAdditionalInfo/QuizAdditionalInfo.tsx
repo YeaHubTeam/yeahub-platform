@@ -1,10 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { formatDate } from '@/shared/helpers/formatDate';
-import { formatTime } from '@/shared/helpers/formatTime';
-import { getTimeDifference } from '@/shared/helpers/getTimeDifference';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
+import { formatDate, formatTime, getTimeDifference } from '@/shared/libs';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
 import { Quiz } from '@/entities/quiz';

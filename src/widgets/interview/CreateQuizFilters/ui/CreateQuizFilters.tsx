@@ -1,5 +1,4 @@
-import { MAX_CHOOSE_QUESTION_COUNT } from '@/shared/constants/queryConstants';
-import { useAppSelector, useCurrentProject, useScreenSize } from '@/shared/hooks';
+import { useAppSelector, useScreenSize, useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getHasPremiumAccess, getSpecializationId } from '@/entities/profile';
@@ -9,6 +8,8 @@ import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
 
 import styles from './CreateQuizFilters.module.css';
+
+const MAX_CHOOSE_QUESTION_COUNT = 8;
 
 interface CreateQuizFiltersProps {
 	filters: CreateQuizFilterParams;
@@ -39,11 +40,7 @@ export const CreateQuizFilters = ({
 			direction={isTablet ? 'column' : 'row'}
 			className={styles.wrapper}
 		>
-			<Flex
-				className={styles['skills-selection']}
-				gap={isMobile ? '16' : '24'}
-				direction={'column'}
-			>
+			<Flex className={styles['skills-selection']} gap={isMobile ? '16' : '24'} direction="column">
 				{onChangeSpecialization && project === 'landing' && (
 					<SpecializationsListField
 						selectedSpecialization={filters.specialization}

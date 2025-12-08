@@ -1,10 +1,10 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import IconCheck from '@/shared/assets/icons/iconCheck.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { i18Namespace, SubscriptionCard as SubscriptionCardI18 } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -18,8 +18,8 @@ import styles from './SubscriptionCard.module.css';
 interface SubscriptionCardProps {
 	subscription: Subscription;
 	className?: string;
-	renderSubscribeButton: () => React.ReactNode;
-	renderTrialButton?: () => React.ReactNode;
+	renderSubscribeButton: () => ReactNode;
+	renderTrialButton?: () => ReactNode;
 }
 
 export const SubscriptionCard = ({

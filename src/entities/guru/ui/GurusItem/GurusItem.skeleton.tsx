@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
@@ -11,7 +11,7 @@ export const GurusItemSkeleton = () => {
 	const { isMobile, isMobileM } = useScreenSize();
 	return (
 		<Flex componentType="li" direction="column" gap="12" className={styles['border-skeleton']}>
-			<Flex gap="8" align={'center'}>
+			<Flex gap="8" align="center">
 				<IconSkeleton size={40} borderRadius="50%" />
 				<Flex gap="4" direction="column">
 					<TextSkeleton variant="body3-accent" color="black-800" width={150} />

@@ -1,6 +1,6 @@
-import { useQueryFilterParams } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/libs';
 
-import { CollectionsFilterParams } from '../types/types';
+import { CollectionsFilterParams } from '@/entities/collection';
 
 import { useGetCollectionsFilterParams } from './useGetCollectionsFilterParams';
 

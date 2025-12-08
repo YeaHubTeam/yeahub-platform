@@ -1,16 +1,15 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize, useCurrentProject, useModal } from '@/shared/hooks';
+import PopoverIcon from '@/shared/assets/icons/diplomaVerified.svg';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
 
 import { Collection } from '@/entities/collection';
-import { getChannelsForSpecialization } from '@/entities/media';
+import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
 import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
 

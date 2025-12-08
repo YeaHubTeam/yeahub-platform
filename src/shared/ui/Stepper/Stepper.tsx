@@ -46,8 +46,8 @@ export const Stepper = <T,>({
 	return (
 		<Flex
 			direction={isMobile ? 'row' : 'column'}
-			componentType={'ul'}
-			gap={'20'}
+			componentType="ul"
+			gap="20"
 			className={classNames(isMobile ? styles['stepper-mobile'] : styles['stepper'], className)}
 		>
 			{steps.map((step, index) => {
