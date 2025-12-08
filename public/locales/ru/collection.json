@@ -79,18 +79,18 @@
 		"disclaimer": "Важно отметить: мы не имеем отношения к этим компаниям и не пытаемся вмешиваться в их процессы найма. Все вопросы собраны из открытых источников и личного опыта соискателей. Наша цель — сделать подготовку более осознанной, а не давать готовые ответы."
 	},
 	"banner.interview": {
-		"title": "Записи собеседований",
-		"description": "1000+ записей реальных собеседований",
-		"link": "Присоединиться",
-		"watch.button": "Смотреть"
+		"title": "Interview recordings",
+		"description": "1000+ real interview recordings",
+		"link": "Join",
+		"watch.button": "Watch"
 	},
 	"noCollections": {
-		"title": "Похоже здесь пока нет коллекций",
-		"subtitle": "Коллекции периодически добавляются, стоит только немного подождать"
+		"title": "No collections found yet",
+		"subtitle": "Collections are added periodically, just wait a bit"
 	},
 	"sort": {
 		"author": {
-			"title": "Мои коллекции"
+			"title": "My Collections"
 		}
 	}
 }

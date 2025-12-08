@@ -68,18 +68,18 @@
 		"disclaimer": "It’s important to note that we are not affiliated with these companies and do not aim to interfere with their hiring processes. All questions are collected from public sources and candidates’ personal experiences. Our goal is to help you prepare more thoughtfully — not to provide ready-made answers."
 	},
 	"banner.interview": {
-		"title": "Interview recordings",
-		"description": "1000+ real interview recordings",
-		"link": "Join",
-		"watch.button": "Watch"
+		"title": "Записи собеседований",
+		"description": "1000+ записей реальных собеседований",
+		"link": "Присоединиться",
+		"watch.button": "Смотреть"
 	},
 	"noCollections": {
-		"title": "No collections found yet",
-		"subtitle": "Collections are added periodically, just wait a bit"
+		"title": "Похоже здесь пока нет коллекций",
+		"subtitle": "Коллекции периодически добавляются, стоит только немного подождать"
 	},
 	"sort": {
 		"author": {
-			"title": "My Collections"
+			"title": "Мои коллекции"
 		}
 	}
 }
