@@ -6,7 +6,7 @@ import styles from './CreatePublicQuizPage.module.css';
 
 export const CreatePublicQuizPageSkeleton = () => {
 	return (
-		<section data-testid={'CreatePublicQuizPageSkeleton'}>
+		<section data-testid="CreatePublicQuizPageSkeleton">
 			<Card>
 				<Skeleton width={200} height={33} className={styles.title} />
 				<Flex className={styles.content} direction="row" justify="between" gap="40">

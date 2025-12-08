@@ -53,10 +53,10 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 			<td key={k}>
 				{k === 'username' ? (
 					<Link to={route(ROUTES.admin.users.detail.page, user.id)}>
-						<Text variant={'body3-accent'}>{v}</Text>
+						<Text variant="body3-accent">{v}</Text>
 					</Link>
 				) : (
-					<Text variant={'body3-accent'}>{v}</Text>
+					<Text variant="body3-accent">{v}</Text>
 				)}
 			</td>
 		));

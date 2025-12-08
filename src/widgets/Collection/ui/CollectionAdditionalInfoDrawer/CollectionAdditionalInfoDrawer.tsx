@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import PopoverIcon from '@/shared/assets/icons/DiplomaVerified.svg';
+import PopoverIcon from '@/shared/assets/icons/diplomaVerified.svg';
 import { i18Namespace, Collections } from '@/shared/config';
 import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';

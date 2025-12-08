@@ -90,7 +90,7 @@ export const ResourceRequestsTable = ({
 			<td key={k}>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.resources.requests.view.page, request.id)}>
-						<Text variant={'body3'} color={'purple-700'}>
+						<Text variant="body3" color="purple-700">
 							{v}
 						</Text>
 					</Link>

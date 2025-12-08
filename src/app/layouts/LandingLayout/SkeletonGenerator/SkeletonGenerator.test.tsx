@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { useMatch } from 'react-router-dom';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { SkeletonGenerator } from './SkeletonGenerator';
 

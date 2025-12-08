@@ -1,8 +1,7 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 
 import { Translation, i18n } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
-import { renderComponent } from '@/shared/libs/jest';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import {
 	sidebarAdminEditorMenuMock,
@@ -12,7 +11,7 @@ import {
 
 import { Sidebar } from './Sidebar';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobile: false,
 		isTablet: false,

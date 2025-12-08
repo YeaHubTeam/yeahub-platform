@@ -14,8 +14,6 @@ import { DEFAULT_SPECIALIZATION_ID, LS_ACTIVE_SPECIALIZATION_ID } from '@/entiti
 
 import { CreateQuizFilters } from '@/widgets/interview/CreateQuizFilters';
 
-import { PublicQuizPageSkeleton } from '../../../publicQuiz';
-
 import styles from './CreatePublicQuizPage.module.css';
 import { CreatePublicQuizPageSkeleton } from './CreatePublicQuizPage.skeleton';
 
@@ -59,7 +57,6 @@ const CreatePublicQuizPage = () => {
 	};
 
 	if (isLoadingCategories) return <CreatePublicQuizPageSkeleton />;
-	if (isCreateNewMockQuizLoading) return <PublicQuizPageSkeleton />;
 
 	return (
 		<section>

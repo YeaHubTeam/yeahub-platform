@@ -1,11 +1,10 @@
 import { screen } from '@testing-library/react';
 
-import { useScreenSize } from '@/shared/libs';
-import { renderComponent } from '@/shared/libs/jest';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { FooterCopyright } from './FooterCopyright';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isSmallScreen: false,
 	})),

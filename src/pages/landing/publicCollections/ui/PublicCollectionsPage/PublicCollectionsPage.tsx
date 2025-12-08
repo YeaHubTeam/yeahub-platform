@@ -70,7 +70,7 @@ const PublicCollectionsPage = () => {
 				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
 				banner={!isLargeScreen && <InterviewRecordingsBanner />}
 			/>
-			<Flex direction="column" gap={'20'}>
+			<Flex direction="column" gap="20">
 				{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
 				{isLargeScreen && <InterviewRecordingsBanner />}
 			</Flex>

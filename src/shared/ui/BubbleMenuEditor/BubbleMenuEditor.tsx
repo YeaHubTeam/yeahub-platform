@@ -317,7 +317,7 @@ const BubbleMenuEditor = ({ editor }: BubbleMenuProps) => {
 					}
 					title={t(TextEditor.BLOCKQUOTE)}
 				>
-					{'" "'}
+					{`" "`}
 				</button>
 				<button
 					type="button"

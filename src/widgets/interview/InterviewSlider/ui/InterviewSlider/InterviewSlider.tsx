@@ -74,7 +74,7 @@ export const InterviewSlider = ({
 					isPublic ? undefined : (
 						<FavoriteQuestionButton
 							questionId={id}
-							size={'small'}
+							size="small"
 							isFavorite={isFavorite}
 							isQuiz={true}
 						/>

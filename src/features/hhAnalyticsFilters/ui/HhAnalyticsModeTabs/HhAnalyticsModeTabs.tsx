@@ -38,7 +38,7 @@ export const HhAnalyticsModeTabs = ({ mode, onChange }: HhAnalyticsModeTabsProps
 				return (
 					<Button
 						key={id}
-						size={'large'}
+						size="large"
 						variant={id === mode ? 'secondary' : 'outline'}
 						onClick={() => onChange(id)}
 						fullWidth={isMobile}

@@ -83,7 +83,7 @@ const CollectionsPage = () => {
 					limit={collections.limit}
 					total={collections.total}
 				/>
-				{collections.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetAll} />}
+				{collections.data.length === 0 && <Stub type="filter-empty" onClick={onResetAll} />}
 			</Card>
 		</Flex>
 	);

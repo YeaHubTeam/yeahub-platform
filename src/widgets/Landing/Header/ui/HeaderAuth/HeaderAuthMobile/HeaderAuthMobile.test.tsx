@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 
 import { ROUTES } from '@/shared/config';
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { useProfileQuery } from '@/entities/auth';
 

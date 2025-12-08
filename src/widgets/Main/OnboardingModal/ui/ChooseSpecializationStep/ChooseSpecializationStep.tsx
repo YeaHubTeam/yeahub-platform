@@ -47,7 +47,7 @@ export const ChooseSpecializationStep = ({ goNextStep }: ChooseSpecializationSte
 			buttonPrimaryText={t(Onboarding.CHOOSE_SPECIALIZATION_BUTTON)}
 		>
 			<div className={styles['select-container']}>
-				<Text variant={'body2'} color={'black-700'}>
+				<Text variant="body2" color="black-700">
 					{t(Onboarding.CHOOSE_SPECIALIZATION_SELECT_LABEL)}
 				</Text>
 				<SpecializationSelect

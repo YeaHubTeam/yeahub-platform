@@ -1,9 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ReactNode } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
-import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
+import FreeSubIcon from '@/shared/assets/icons/freeSub.svg';
+import ProSubIcon from '@/shared/assets/icons/proSub.svg';
 import { i18Namespace, SubscriptionCard as SubscriptionCardI18, ROUTES } from '@/shared/config';
 import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
@@ -20,8 +21,6 @@ import {
 	subscriptionPrices,
 } from '@/entities/subscription';
 
-import { TrialButton } from '@/features/subscriptions/trial';
-
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
 import { SubscribeButton } from '../SubscribeButton/SubscribeButton';
@@ -30,7 +29,11 @@ import styles from './AgreementForm.module.css';
 
 const parseI18nText = (text: string) => text.split(/<processingLink>|<\/processingLink>/);
 
-export const AgreementForm = () => {
+interface AgreementFormProps {
+	trialButton: ReactNode;
+}
+
+export const AgreementForm = ({ trialButton }: AgreementFormProps) => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);
 	const { isMobile } = useScreenSize();
 
@@ -143,9 +146,7 @@ export const AgreementForm = () => {
 							)}
 							{...(hasTrialSubscriptions
 								? {
-										renderTrialButton: () => (
-											<TrialButton className={styles['subscription-button']} />
-										),
+										renderTrialButton: () => trialButton,
 									}
 								: {})}
 							className={styles.premium}

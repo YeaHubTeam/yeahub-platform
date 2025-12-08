@@ -7,7 +7,7 @@ import { CardBlockLayout } from '../../CardBlockLayout/CardBlockLayout';
 export const SpecializationBlock = () => {
 	return (
 		<CardBlockLayout hasOffset>
-			<Flex gap={'16'}>
+			<Flex gap="16">
 				<SkillChip
 					src={specializations.dataScience.src}
 					alt={specializations.dataScience.alt}
@@ -16,7 +16,7 @@ export const SpecializationBlock = () => {
 				<SkillChip src={specializations.ml.src} alt={specializations.ml.alt} showLabel />
 				<SkillChip src={specializations.testing.src} alt={specializations.testing.alt} showLabel />
 			</Flex>
-			<Flex gap={'16'}>
+			<Flex gap="16">
 				<SkillChip src={specializations.testing.src} alt={specializations.testing.alt} showLabel />
 				<SkillChip
 					src={specializations.frontend.src}
@@ -29,7 +29,7 @@ export const SpecializationBlock = () => {
 					showLabel
 				/>
 			</Flex>
-			<Flex gap={'16'}>
+			<Flex gap="16">
 				<SkillChip
 					src={specializations.androidDev.src}
 					alt={specializations.androidDev.alt}

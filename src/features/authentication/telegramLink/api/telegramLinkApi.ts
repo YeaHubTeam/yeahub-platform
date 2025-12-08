@@ -4,8 +4,8 @@ import { toast } from '@/shared/ui/Toast';
 
 import { TelegramLoginBodyRequest, TelegramLoginResponse } from '@/entities/auth';
 
+import { getTelegramLinkApiErrorMessage } from '../lib/utils/getTelegramLinkApiErrorMessage';
 import { linkTelegramApiUrls } from '../model/constants/telegramLinkConstants';
-import { getTelegramLinkApiErrorMessage } from '../model/lib/utils/getTelegramLinkApiErrorMessage';
 
 export const telegramLinkApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

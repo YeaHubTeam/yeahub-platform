@@ -63,7 +63,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					}}
 				/>
 			</svg>
-			<Text color={'black-700'} variant="body4" className={styles['gauge-text']}>
+			<Text color="black-700" variant="body4" className={styles['gauge-text']}>
 				{!isNaN(passedQuestionsPercent) && <span>{passedQuestionsPercent}%</span>}
 				{!isNaN(passedQuestionsPercent) && <br />}
 				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}

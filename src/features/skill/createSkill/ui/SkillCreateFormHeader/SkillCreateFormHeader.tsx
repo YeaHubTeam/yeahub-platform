@@ -19,7 +19,7 @@ export const SkillCreateFormHeader = () => {
 	};
 
 	return (
-		<Flex align="center" gap="8" justify={'between'}>
+		<Flex align="center" gap="8" justify="between">
 			<BackButton />
 			<Button disabled={isLoading} onClick={handleSubmit(onCreateSkill)}>
 				{t(Translation.SAVE, { ns: 'translation' })}

@@ -1,2 +1,2 @@
-export { QuestionHeaderSkeleton } from './ui/QuestionHeader.skeleton';
-export { QuestionHeader } from './ui/QuestionHeader';
+export { QuestionHeaderSkeleton } from './ui/QuestionHeader/QuestionHeader.skeleton';
+export { QuestionHeader } from './ui/QuestionHeader/QuestionHeader';
