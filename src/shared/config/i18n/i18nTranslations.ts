@@ -775,6 +775,8 @@ export enum Collections {
 	TARIFF_FREE = 'tariff.free',
 	SELECT_SELECTED = 'select.selected',
 	EMPTY = 'empty',
+	NO_COLLECTIONS_TITLE = 'noCollections.title',
+	NO_COLLECTIONS_SUBTITLE = 'noCollections.subtitle',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',

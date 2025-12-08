@@ -30,10 +30,32 @@ export const CollectionsContent = ({
 	resetFilters,
 	renderDrawer,
 	banner,
+	filter,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
 	const { search } = useLocation();
+	const hasActiveFilters = Object.keys(filter).some((key) => {
+		if (key === 'page' || key === 'limit' || key === 'perPage') {
+			return false;
+		}
+
+		const value = filter[key as keyof CollectionsFilterParams];
+
+		if (value === undefined || value === null) {
+			return false;
+		}
+
+		if (Array.isArray(value)) {
+			return value.length > 0;
+		}
+
+		if (typeof value === 'string') {
+			return value.trim() !== '';
+		}
+
+		return true;
+	});
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
@@ -44,10 +66,23 @@ export const CollectionsContent = ({
 					{isSmallScreen && renderDrawer()}
 				</Flex>
 				<Flex direction="column" gap="20">
-					<CollectionsList collections={collections} queryFilter={search} />
-					{banner}
-					{pagination}
-					{collections.length === 0 && <Stub type="filter-empty" onClick={resetFilters} />}
+					{collections.length === 0 ? (
+						hasActiveFilters ? (
+							<Stub type="filter-empty" onClick={resetFilters} />
+						) : (
+							<Stub
+								type="empty"
+								title={t(Collections.NO_COLLECTIONS_TITLE)}
+								subtitle={t(Collections.NO_COLLECTIONS_SUBTITLE)}
+							/>
+						)
+					) : (
+						<>
+							<CollectionsList collections={collections} queryFilter={search} />
+							{banner}
+							{pagination}
+						</>
+					)}
 				</Flex>
 			</Card>
 		</div>

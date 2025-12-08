@@ -72,5 +72,9 @@
 		"description": "1000+ real interview recordings",
 		"link": "Join",
 		"watch.button": "Watch"
+	},
+	"noCollections": {
+		"title": "No collections found yet",
+		"subtitle": "Collections are added periodically, just wait a bit"
 	}
 }
