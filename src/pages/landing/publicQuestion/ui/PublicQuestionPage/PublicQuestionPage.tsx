@@ -2,26 +2,26 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { i18Namespace, Translation, ROUTES } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
+import { useScreenSize, LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
-import { useGetPublicQuestionByIdQuery } from '@/entities/question';
+import { useGetPublicQuestionByIdQuery, QuestionAdditionalInfo } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
 import {
+	QuestionNavigationButtons,
 	usePublicQuestionNavigation,
 	useQuestionQueryNavigate,
 } from '@/features/question/navigateQuestion';
 
-import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
-import { QuestionNavigation } from '@/widgets/question/QuestionNavigation';
 
 import styles from './PublicQuestionPage.module.css';
 import { PublicQuestionPageSkeleton } from './PublicQuestionPage.skeleton';
@@ -67,7 +67,11 @@ const PublicQuestionPage = () => {
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
 	const showAuthor = guru ? false : true;
 
+	const buttonVariant = isMobile ? 'link-gray' : 'tertiary';
+
 	const media = getChannelsForSpecialization(question.questionSpecializations);
+
+	const isAuthorized = !!getFromLS(LS_ACCESS_TOKEN_KEY);
 
 	const onMovePrev = () => {
 		handleNavigation(prevId, prevPage);
@@ -93,12 +97,19 @@ const PublicQuestionPage = () => {
 			<Flex gap="20" maxWidth>
 				<Flex gap="20" direction="column" flex={1} maxWidth>
 					<QuestionHeader question={question} />
-					<QuestionNavigation
-						onMovePrev={onMovePrev}
-						onMoveNext={onMoveNext}
-						isDisabled={isDisabled}
+					<Card withOutsideShadow>
+						<QuestionNavigationButtons
+							variant={buttonVariant}
+							onMovePrev={onMovePrev}
+							onMoveNext={onMoveNext}
+							isDisabled={isDisabled}
+						/>
+					</Card>
+					<QuestionBody
+						shortAnswer={shortAnswer}
+						longAnswer={longAnswer}
+						isAuthorized={isAuthorized}
 					/>
-					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
 					{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{!isMobile && !isTablet && (

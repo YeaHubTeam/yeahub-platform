@@ -60,7 +60,7 @@ export const ResourcesRequestsTab = () => {
 					</>
 				)}
 				{resourceRequests?.data && resourceRequests.data.length === 0 && (
-					<Stub type={'filter-empty'} onClick={onResetFilters} />
+					<Stub type="filter-empty" onClick={onResetFilters} />
 				)}
 			</Card>
 		</Flex>

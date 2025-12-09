@@ -28,7 +28,7 @@ const CollectionCreateFormHeader: React.FC<CollectionCreateFormHeaderProps> = ()
 	};
 
 	return (
-		<Flex align="center" gap="8" justify={'between'}>
+		<Flex align="center" gap="8" justify="between">
 			<BackButton />
 			<Button disabled={isLoading} onClick={handleSubmit(onCreateCollection)}>
 				{t(Translation.SAVE, { ns: i18Namespace.translation })}

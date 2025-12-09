@@ -58,7 +58,8 @@
 			"resources": "Ресурсы",
 			"skills": "Навыки",
 			"companies": "Компании",
-			"analytics": "Аналитика"
+			"analytics": "Аналитика",
+			"topics": "Темы"
 		}
 	},
 	"stub": {
@@ -287,6 +288,12 @@
 				"conflict": {
 					"specialization": "Специализация с таким названием уже существует"
 				}
+			}
+		},
+		"topics": {
+			"create": {
+				"success": "Тема успешно создана",
+				"failed": "Не удалось создать тему"
 			}
 		},
 		"collections": {

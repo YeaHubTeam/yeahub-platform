@@ -3,11 +3,11 @@ import { route, handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { createSpecializationApiUrls } from '../model/constants/createSpecializationConstants';
-import { getCreateSpecializationErrorMessage } from '../model/lib/utils/getApiErrorMessage';
 import {
 	CreateSpecializationBodyRequest,
 	CreateSpecializationResponse,
 } from '../model/types/specializationCreateTypes';
+import { getCreateSpecializationErrorMessage } from '../model/utils/getApiErrorMessage';
 
 export const createSpecializationApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

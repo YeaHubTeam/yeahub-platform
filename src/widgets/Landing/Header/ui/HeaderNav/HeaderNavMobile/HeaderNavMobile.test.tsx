@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 
 import { Landing } from '@/shared/config';
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { HEADER_NAV_LINKS } from '../../../model/constants/headerConstants';
 

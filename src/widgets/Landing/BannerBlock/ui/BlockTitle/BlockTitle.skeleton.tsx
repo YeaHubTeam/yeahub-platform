@@ -10,7 +10,7 @@ export const BlockTitleSkeleton = () => {
 
 	return (
 		<TextSkeleton
-			width={'100%'}
+			width="100%"
 			variant={isMobile ? 'body5-accent' : 'head3'}
 			className={classNames(styles.title, styles.desktop)}
 		/>

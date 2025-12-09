@@ -11,7 +11,7 @@ export const FooterCopyright = () => {
 			variant={isSmallScreen ? 'body2' : 'body2-accent'}
 			color="black-400"
 		>
-			© {currentYear} {'YeaHub'}
+			© {currentYear} YeaHub
 		</Text>
 	);
 };

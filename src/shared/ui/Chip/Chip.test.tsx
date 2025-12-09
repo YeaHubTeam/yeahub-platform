@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import uE from '@testing-library/user-event';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { Chip } from './Chip';
 import { ChipSkeleton } from './Chip.skeleton';

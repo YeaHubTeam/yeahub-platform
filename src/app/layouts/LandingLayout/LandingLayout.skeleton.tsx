@@ -8,11 +8,11 @@ import { SkeletonGenerator } from './SkeletonGenerator/SkeletonGenerator';
 
 export const LandingLayoutSkeleton = () => {
 	return (
-		<Flex dataTestId={'LandingLayoutSkeleton_Wrapper'} direction="column">
+		<Flex dataTestId="LandingLayoutSkeleton_Wrapper" direction="column">
 			<HeaderSkeleton />
-			<main data-testid={'LandingLayoutSkeleton_Main'} className={styles.main}>
+			<main data-testid="LandingLayoutSkeleton_Main" className={styles.main}>
 				<Flex
-					dataTestId={'LandingLayoutSkeleton_MainContent'}
+					dataTestId="LandingLayoutSkeleton_MainContent"
 					direction="column"
 					className={styles['main-content']}
 				>

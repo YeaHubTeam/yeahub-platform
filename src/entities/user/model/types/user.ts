@@ -1,7 +1,6 @@
 import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { FullProfile } from '@/entities/auth';
+import { FullProfile } from '@/entities/auth/@x/user';
 
 export type UserStatus = 'public' | 'draft';
 

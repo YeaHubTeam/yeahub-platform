@@ -111,7 +111,7 @@ const ResourcesPage = () => {
 						/>
 					</>
 				) : (
-					<Stub type={'filter-empty'} onClick={onResetFilters} />
+					<Stub type="filter-empty" onClick={onResetFilters} />
 				)}
 			</Card>
 			{isEmailVerified && (

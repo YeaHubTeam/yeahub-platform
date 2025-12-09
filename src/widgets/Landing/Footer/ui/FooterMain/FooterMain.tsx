@@ -17,7 +17,7 @@ export const FooterMain = () => {
 			<Icon
 				dataTestId="FooterMain_Logo"
 				className={styles['footer-logo']}
-				icon={'logoText'}
+				icon="logoText"
 				aria-label={t(Landing.APP_LOGO_ARIA_LABEL)}
 				color="white-900"
 			/>

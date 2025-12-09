@@ -5,3 +5,4 @@ export * from './query';
 export * from './fp';
 export * from './browser';
 export * from './textEditor';
+export * from './jest';

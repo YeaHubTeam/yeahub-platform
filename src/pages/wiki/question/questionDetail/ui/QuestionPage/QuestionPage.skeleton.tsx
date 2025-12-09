@@ -1,11 +1,12 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { ProgressBlockSkeleton } from '@/widgets/question/ProgressBlock';
-import { QuestionActionsSkeleton } from '@/widgets/question/QuestionActions';
-import { QuestionAdditionalInfoSkeleton } from '@/widgets/question/QuestionAdditionalInfo';
+import { QuestionAdditionalInfoSkeleton, ProgressBlockSkeleton } from '@/entities/question';
+
 import { QuestionBodySkeleton } from '@/widgets/question/QuestionBody';
 import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
+
+import { QuestionActionsSkeleton } from '../QuestionActions/QuestionActions.skeleton';
 
 import styles from './QuestionPage.module.css';
 

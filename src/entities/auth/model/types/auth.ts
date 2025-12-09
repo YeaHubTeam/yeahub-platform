@@ -1,7 +1,5 @@
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SocialNetwork } from '@/entities/socialNetwork';
+import { Skill } from '@/entities/skill/@x/auth';
+import { SocialNetwork } from '@/entities/socialNetwork/@x/auth';
 
 export interface LoginFormValues {
 	username: string;

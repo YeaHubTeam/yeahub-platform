@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { SkillChip } from './SkillChip';
 

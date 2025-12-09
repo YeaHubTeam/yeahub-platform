@@ -25,7 +25,7 @@ export const InterviewQuizPageSkeleton = () => {
 						{Array(2)
 							.fill(0)
 							.map((_, i) => (
-								<Skeleton key={i} width={28} height={28} borderRadius={'50%'} />
+								<Skeleton key={i} width={28} height={28} borderRadius="50%" />
 							))}
 					</Flex>
 					<div className={styles['slider-skeleton']}>

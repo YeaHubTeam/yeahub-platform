@@ -6,7 +6,11 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getProfileId } from '@/entities/profile';
-import { useGetQuestionByIdQuery } from '@/entities/question';
+import {
+	useGetQuestionByIdQuery,
+	QuestionAdditionalInfo,
+	ProgressBlock,
+} from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
 import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
@@ -15,11 +19,10 @@ import {
 	useQuestionQueryNavigate,
 } from '@/features/question/navigateQuestion';
 
-import { ProgressBlock } from '@/widgets/question/ProgressBlock';
-import { QuestionActions } from '@/widgets/question/QuestionActions';
-import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
+
+import { QuestionActions } from '../QuestionActions/QuestionActions';
 
 import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';

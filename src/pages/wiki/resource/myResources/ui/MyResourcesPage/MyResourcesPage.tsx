@@ -119,7 +119,7 @@ const MyResourcesPage = () => {
 								/>
 							</>
 						)}
-						{!hasResources && hasFilters && <Stub type={'filter-empty'} onClick={onResetFilters} />}
+						{!hasResources && hasFilters && <Stub type="filter-empty" onClick={onResetFilters} />}
 						{!hasResources && !hasFilters && (
 							<Stub
 								type="empty"

@@ -65,7 +65,7 @@ export const UsersTablePage = () => {
 						/>
 					</>
 				)}
-				{isEmpty && <Stub type={'filter-empty'} onClick={onResetFilters} />}
+				{isEmpty && <Stub type="filter-empty" onClick={onResetFilters} />}
 			</Card>
 		</Flex>
 	);

@@ -10,11 +10,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
-import { useGetQuestionByIdQuery } from '@/entities/question';
+import { useGetQuestionByIdQuery, QuestionAdditionalInfo } from '@/entities/question';
 
 import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
-import { QuestionAdditionalInfo } from '@/widgets/question/QuestionAdditionalInfo';
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
 
@@ -59,7 +58,7 @@ export const QuestionPage = () => {
 				<DeleteQuestionButton questionId={id} isDetailPage disabled={isDisabled} />
 				<Tooltip
 					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-					placement={'bottom-start'}
+					placement="bottom-start"
 					color="red"
 					offsetTooltip={10}
 					shouldShowTooltip={isDisabled}

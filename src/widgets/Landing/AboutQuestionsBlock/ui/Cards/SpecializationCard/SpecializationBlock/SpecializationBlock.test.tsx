@@ -1,4 +1,4 @@
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { SpecializationBlock } from './SpecializationBlock';
 

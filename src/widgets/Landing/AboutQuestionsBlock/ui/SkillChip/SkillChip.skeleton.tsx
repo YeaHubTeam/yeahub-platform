@@ -13,7 +13,7 @@ export const SkillChipSkeleton = ({ label, showLabel = false }: SkillChipProps) 
 
 	return (
 		<ChipSkeleton
-			variant={'big'}
+			variant="big"
 			className={styles.chip}
 			label={label ? label : ''}
 			withText={80}

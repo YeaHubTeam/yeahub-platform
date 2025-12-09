@@ -5,7 +5,7 @@ export type ModalView = 'default' | 'notification';
 export type ModalProps = {
 	isOpen: boolean;
 	onClose: () => void;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	buttonPrimaryText?: string;
 	buttonOutlineText?: string;
 	buttonPrimaryClick?: () => void;

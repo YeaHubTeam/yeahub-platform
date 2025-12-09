@@ -8,7 +8,7 @@ export type IconName =
 	| 'clock'
 	| 'calendar'
 	| 'check'
-	| 'question'
+	| 'questions'
 	| 'checkList'
 	| 'handShake'
 	| 'specialization'

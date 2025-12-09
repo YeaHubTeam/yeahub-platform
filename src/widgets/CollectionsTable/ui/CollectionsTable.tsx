@@ -79,10 +79,10 @@ export const CollectionsTable = ({
 			>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.collections.details.route, collection.id)}>
-						<Text variant={'body3-accent'}>{v}</Text>
+						<Text variant="body3-accent">{v}</Text>
 					</Link>
 				) : (
-					<Text variant={'body3-accent'}>{v}</Text>
+					<Text variant="body3-accent">{v}</Text>
 				)}
 			</td>
 		));

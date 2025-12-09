@@ -8,12 +8,15 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
-import { isResourceDisabled, useGetResourceByIdQuery } from '@/entities/resource';
+import {
+	isResourceDisabled,
+	useGetResourceByIdQuery,
+	ResourceAdditionalInfo,
+} from '@/entities/resource';
 
 import { DeleteResourceButton } from '@/features/resources/deleteResource';
 import { ResourceEditButton } from '@/features/resources/editResource';
 
-import { ResourceAdditionalInfo } from '@/widgets/resources/ResourceAdditionalInfo';
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 

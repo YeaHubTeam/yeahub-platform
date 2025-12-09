@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 
 import { Translation } from '@/shared/config';
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 
 import { BackButton } from './BackButton';
 import styles from './BackButton.module.css';

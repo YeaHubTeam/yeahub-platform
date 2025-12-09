@@ -13,11 +13,11 @@ export const HistoryTextBlockSkeleton = () => {
 		<Flex direction="column" justify="center" className={styles['text-block']}>
 			<Flex gap="12" direction="column" className={classNames(styles['content'], styles.skeleton)}>
 				<TextSkeleton
-					width={'100%'}
+					width="100%"
 					variant={isMobile ? 'body5-accent' : 'head3'}
 					className={styles.title}
 				/>
-				<TextSkeleton width={'100%'} variant="body3" />
+				<TextSkeleton width="100%" variant="body3" />
 			</Flex>
 		</Flex>
 	);

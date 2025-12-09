@@ -8,7 +8,7 @@ import styles from './Header.module.css';
 
 export const HeaderSkeleton = () => {
 	return (
-		<Flex dataTestId={'HeaderSkeleton_Wrapper'} className={styles.header}>
+		<Flex dataTestId="HeaderSkeleton_Wrapper" className={styles.header}>
 			<Flex className={styles['header-content']}>
 				<Flex className={styles['header-main']}>
 					<AppLogoSkeleton />
