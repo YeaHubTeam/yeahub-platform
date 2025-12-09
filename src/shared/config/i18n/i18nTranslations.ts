@@ -54,7 +54,6 @@ export enum Translation {
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
-	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
@@ -614,6 +613,7 @@ export enum Questions {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
+	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
 }
 
 export enum InterviewHistory {

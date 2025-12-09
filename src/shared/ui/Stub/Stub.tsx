@@ -2,13 +2,11 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import NotAuthorized from '@/shared/assets/icons/notAuthorized.png';
 import AccessDeniedImg from '@/shared/assets/images/accessDenied.png';
 import LoadError from '@/shared/assets/images/loadError.png';
 import FilterEmptyImg from '@/shared/assets/images/notFound.avif';
 import SearchImg from '@/shared/assets/images/searchPage.png';
-import { i18Namespace } from '@/shared/config';
-import { Translation } from '@/shared/config';
+import { i18Namespace, Translation } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -17,7 +15,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
 
-type StubType = 'empty' | 'error' | 'access-denied' | 'filter-empty' | 'not-authorized';
+type StubType = 'empty' | 'error' | 'access-denied' | 'filter-empty';
 
 type StubProps = {
 	type: StubType;
@@ -26,18 +24,9 @@ type StubProps = {
 	buttonText?: string;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	className?: string;
-	iconImg?: boolean;
 };
 
-export const Stub = ({
-	type,
-	title,
-	subtitle,
-	buttonText,
-	onClick,
-	className,
-	iconImg,
-}: StubProps) => {
+export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: StubProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const { isMobile } = useScreenSize();
@@ -49,7 +38,6 @@ export const Stub = ({
 		empty: '',
 		'access-denied': t(Translation.ACCESS_DENIED_TITLE),
 		'filter-empty': t(Translation.STUB_FILTER_TITLE),
-		'not-authorized': t(Translation.STUB_NOT_AUTH_TITLE),
 	};
 
 	const subtitleByType: Record<StubType, string> = {
@@ -57,7 +45,6 @@ export const Stub = ({
 		empty: '',
 		'access-denied': t(Translation.ACCESS_DENIED_DESCRIPTION),
 		'filter-empty': t(Translation.STUB_FILTER_SUBTITLE),
-		'not-authorized': '',
 	};
 
 	const buttonTextByType: Record<StubType, string> = {
@@ -65,7 +52,6 @@ export const Stub = ({
 		empty: '',
 		'access-denied': t(Translation.ACCESS_DENIED_BUTTON),
 		'filter-empty': t(Translation.STUB_FILTER_SUBMIT),
-		'not-authorized': '',
 	};
 
 	const imgByType: Record<StubType, string> = {
@@ -73,7 +59,6 @@ export const Stub = ({
 		error: LoadError,
 		'access-denied': AccessDeniedImg,
 		'filter-empty': FilterEmptyImg,
-		'not-authorized': NotAuthorized,
 	};
 
 	const resolvedTitle = title ?? titleByType[type];
@@ -84,12 +69,7 @@ export const Stub = ({
 	return (
 		<Card withOutsideShadow className={classNames(styles.wrapper, className)}>
 			<Flex gap="20" justify="between" align="center" direction="column">
-				<img
-					src={imgByType[type]}
-					alt=""
-					loading="lazy"
-					className={classNames(styles.img, iconImg && styles.icon)}
-				/>
+				<img src={imgByType[type]} alt="" loading="lazy" className={styles.img} />
 
 				{(resolvedTitle || resolvedSubtitle) && (
 					<Flex gap="6" align="center" direction="column">
