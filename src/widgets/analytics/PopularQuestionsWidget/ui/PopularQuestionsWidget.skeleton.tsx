@@ -3,13 +3,13 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { PreviewQuestionsItemSkeleton } from '@/entities/question';
 
-const QUESTIONS_COUNT = 3;
+import { ITEMS_COUNT } from '../model/constants';
 
 export const PopularQuestionsWidgetSkeleton = () => {
 	return (
 		<CardSkeleton actionRoute="actionRoute" title="title" size="medium" isActionPositionBottom>
 			<Flex direction="column" gap="8">
-				{[...Array(QUESTIONS_COUNT)].map((_, i) => (
+				{[...Array(ITEMS_COUNT)].map((_, i) => (
 					<PreviewQuestionsItemSkeleton key={i} />
 				))}
 			</Flex>

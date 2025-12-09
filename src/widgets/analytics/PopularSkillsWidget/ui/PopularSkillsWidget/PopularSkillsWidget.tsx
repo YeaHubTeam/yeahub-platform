@@ -8,6 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { getSpecializationId } from '@/entities/profile';
 import { useGetPopularSkillsQuery } from '@/entities/skill';
 
+import { ITEMS_COUNT } from '../../model/constants';
 import { PopularSkillItem } from '../PopularSkillItem/PopularSkillItem';
 
 import styles from './PopularSkillsWidget.module.css';
@@ -18,7 +19,11 @@ const PopularSkillsWidget = () => {
 
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data, isLoading } = useGetPopularSkillsQuery({ limit: 3, page: 1, specializationId });
+	const { data, isLoading } = useGetPopularSkillsQuery({
+		limit: ITEMS_COUNT,
+		page: 1,
+		specializationId,
+	});
 
 	if (isLoading) return <PopularSkillsWidgetSkeleton />;
 

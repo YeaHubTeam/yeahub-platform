@@ -8,6 +8,8 @@ import {
 	useGetSpecializationsGeneralProgressQuery,
 } from '@/entities/specialization';
 
+import { ITEMS_COUNT } from '../../model/constants';
+
 import styles from './SpecializationProgressWidget.module.css';
 import { SpecializationProgressWidgetSkeleton } from './SpecializationProgressWidget.skeleton';
 
@@ -15,7 +17,7 @@ export const SpecializationProgressWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
 	const { data: specializationsProgress, isLoading } = useGetSpecializationsGeneralProgressQuery({
-		limit: 5,
+		limit: ITEMS_COUNT,
 	});
 
 	if (isLoading) return <SpecializationProgressWidgetSkeleton />;

@@ -1,9 +1,9 @@
 import { CardSkeleton } from '@/shared/ui/Card';
 import { TableSkeleton } from '@/shared/ui/Table';
 
-import styles from './SpecializationProgressWidget.module.css';
+import { ITEMS_COUNT } from '../../model/constants';
 
-const ROWS_COUNT = 5;
+import styles from './SpecializationProgressWidget.module.css';
 
 export const SpecializationProgressWidgetSkeleton = () => {
 	return (
@@ -13,7 +13,7 @@ export const SpecializationProgressWidgetSkeleton = () => {
 			title="title"
 			isActionPositionBottom
 		>
-			<TableSkeleton rowCount={ROWS_COUNT} columnCount={1} hasSelectors={false} />
+			<TableSkeleton rowCount={ITEMS_COUNT} columnCount={1} hasSelectors={false} />
 		</CardSkeleton>
 	);
 };
