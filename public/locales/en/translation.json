@@ -292,6 +292,12 @@
 				"failed": "Topic could not be created"
 			}
 		},
+		"topics": {
+			"create": {
+				"success": "Topic successfully created",
+				"failed": "Topic could not be created"
+			}
+		},
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",
