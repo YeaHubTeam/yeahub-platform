@@ -12,6 +12,7 @@ import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
+import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
 import { CreateQuizPageSkeleton } from '@/pages/interview/createQuiz';
 import { InterviewPageSkeleton } from '@/pages/interview/interview';
 import { InterviewHistoryPageSkeleton } from '@/pages/interview/interviewHistory';
@@ -73,6 +74,8 @@ const SkeletonGenerator = () => {
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.media.page:
 			return <MediaPageSkeleton />;
+		case ROUTES.analytics.page:
+			return <AnalyticsPageSkeleton />;
 		default:
 			return <Loader />;
 	}

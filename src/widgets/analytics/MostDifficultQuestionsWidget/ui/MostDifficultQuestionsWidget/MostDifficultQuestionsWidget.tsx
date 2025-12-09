@@ -8,15 +8,17 @@ import { Flex } from '@/shared/ui/Flex';
 import { getSpecializationId } from '@/entities/profile';
 import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/question';
 
+import { ITEMS_COUNT_DESKTOP, ITEMS_COUNT_MOBILE } from '../../model/constants';
 import { MostDifficultQuestionItem } from '../MostDifficultQuestionItem/MostDifficultQuestionItem';
 
 import styles from './MostDifficultQuestionsWidget.module.css';
+import { MostDifficultQuestionsWidgetSkeleton } from './MostDifficultQuestionsWidget.skeleton';
 
 export const MostDifficultQuestionsWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
 
-	const { data: difficultQuestions } =
+	const { data: difficultQuestions, isLoading } =
 		useGetMostDifficultQuestionsBySpecializationIdQuery(specializationId);
 
 	const { isSmallScreen } = useScreenSize();
@@ -25,8 +27,10 @@ export const MostDifficultQuestionsWidget = () => {
 		difficultQuestions && [...difficultQuestions.topStat].sort(() => Math.random() - 0.5);
 
 	const filteredQuestions = isSmallScreen
-		? mixedQuestions?.slice(0, 3)
-		: mixedQuestions?.slice(0, 6);
+		? mixedQuestions?.slice(0, ITEMS_COUNT_MOBILE)
+		: mixedQuestions?.slice(0, ITEMS_COUNT_DESKTOP);
+
+	if (isLoading) return <MostDifficultQuestionsWidgetSkeleton />;
 
 	return (
 		<Card
