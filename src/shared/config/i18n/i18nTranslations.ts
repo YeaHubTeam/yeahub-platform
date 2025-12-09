@@ -611,6 +611,7 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	REGISTER = 'register',
 	NAVIGATION_PREVIOUS = 'navigation.previous',
 	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
@@ -626,6 +627,7 @@ export enum Questions {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
+	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
 }
 
 export enum InterviewHistory {

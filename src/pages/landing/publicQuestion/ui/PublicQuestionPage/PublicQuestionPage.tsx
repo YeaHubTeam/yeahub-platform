@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { i18Namespace, Translation, ROUTES } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
+import { useScreenSize, LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -71,6 +71,8 @@ const PublicQuestionPage = () => {
 
 	const media = getChannelsForSpecialization(question.questionSpecializations);
 
+	const isAuthorized = !!getFromLS(LS_ACCESS_TOKEN_KEY);
+
 	const onMovePrev = () => {
 		handleNavigation(prevId, prevPage);
 	};
@@ -103,7 +105,11 @@ const PublicQuestionPage = () => {
 							isDisabled={isDisabled}
 						/>
 					</Card>
-					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
+					<QuestionBody
+						shortAnswer={shortAnswer}
+						longAnswer={longAnswer}
+						isAuthorized={isAuthorized}
+					/>
 					{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{!isMobile && !isTablet && (

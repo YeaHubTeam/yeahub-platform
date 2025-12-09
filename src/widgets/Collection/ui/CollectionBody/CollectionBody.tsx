@@ -4,11 +4,11 @@ import { i18Namespace, Questions } from '@/shared/config';
 import { getFromLS, LS_ACCESS_TOKEN_KEY, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { SimpleStub } from '@/shared/ui/SimpleStub';
 
 import { Collection, CollectionWarningInfo } from '@/entities/collection';
 import { Question, PreviewQuestionsItem } from '@/entities/question';
 
-import { NoQuestionsCard } from '../NoQuestionsCard/NoQuestionsCard';
 import { RegistrationBanner } from '../RegistrationBanner/RegistrationBanner';
 
 import styles from './CollectionBody.module.css';
@@ -43,7 +43,7 @@ export const CollectionBody = ({
 				actionTitle={t(Questions.COMMUNITY_JOIN)}
 				withOutsideShadow
 			>
-				<NoQuestionsCard icon="lock" text={t(Questions.PREVIEW_LOCKED_COLLECTION)} />
+				<SimpleStub variant="no-access" text={t(Questions.PREVIEW_LOCKED_COLLECTION)} />
 			</Card>
 		);
 
@@ -69,7 +69,7 @@ export const CollectionBody = ({
 					{showRegistrationBanner && <RegistrationBanner questionsCount={hiddenQuestionsCount} />}
 				</Flex>
 			) : (
-				<NoQuestionsCard icon="clock" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
+				<SimpleStub variant="empty" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />
 			)}
 		</Card>
 	);
