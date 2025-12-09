@@ -34,4 +34,5 @@ export enum ApiTags {
 	POPULAR_QUESTIONS = 'questions_popular',
 	SPECIALIZATIONS_GENERAL_PROGRESS = 'general_progress',
 	TOPICS = 'topics',
+	USERS_RATING = 'users_rating',
 }

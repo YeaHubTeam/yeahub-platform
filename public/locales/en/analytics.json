@@ -63,11 +63,19 @@
 			"skills": "Skills",
 			"keywords": "Keywords"
 		},
-		"table" : {
+		"table": {
 			"index": "№",
 			"skills": "Skills",
 			"keywords": "Keywords",
 			"count": "Count"
+		}
+	},
+	"topUsers": {
+		"title": {
+			"widget": "Top 3 users by speciality"
+		},
+		"no.data": {
+			"widget": "No top users found for this speciality"
 		}
 	}
 }

@@ -1,0 +1,29 @@
+.user-rating {
+  padding: 12px 4px;
+  width: 100%;
+}
+
+.user-name {
+  max-width: 87px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rating-score {
+  max-width: 104px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (width < 480px) {
+  .user-name {
+    max-width: 58px;
+  }
+
+  .rating-score {
+    max-width: 69px;
+  }
+
+}
