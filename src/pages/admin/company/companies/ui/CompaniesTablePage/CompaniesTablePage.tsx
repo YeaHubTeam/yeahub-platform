@@ -72,7 +72,7 @@ const CompaniesTablePage = () => {
 					total={companies.total}
 				/>
 
-				{companies.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetFilters} />}
+				{companies.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
 			</Card>
 		</Flex>
 	);

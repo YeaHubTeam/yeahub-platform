@@ -20,7 +20,11 @@ export const MediaLinkItem = ({ channel }: MediaLinkItemProps) => {
 	return (
 		<Flex justify="between" className={styles['item']} align="center" componentType="li">
 			<Flex gap="12" align="start">
-				{channel.image && <div className={styles['svg-wrapper']}>{<channel.image />}</div>}
+				{channel.image && (
+					<div className={styles['svg-wrapper']}>
+						<channel.image />
+					</div>
+				)}
 				<Flex direction="column" gap="6">
 					<Text variant="body3-strong">{channel.title}</Text>
 					<Text variant="body3">{t(MediaTranslation.TELEGRAM_DESCRIPTION)}</Text>

@@ -9,7 +9,7 @@ export const HistorySlideSkeleton = () => {
 		<Flex justify="center" align="center" className={styles['slide-item']}>
 			<Flex direction="column" justify="center" align="center" className={styles['slide-card']}>
 				<Skeleton className={styles['slide-image']} />
-				<TextSkeleton width={'100%'} variant="body3" className={styles['slide-text']} />
+				<TextSkeleton width="100%" variant="body3" className={styles['slide-text']} />
 			</Flex>
 		</Flex>
 	);

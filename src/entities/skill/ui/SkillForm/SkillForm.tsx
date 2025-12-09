@@ -55,7 +55,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					</FormControl>
 				</Flex>
 				<Flex gap="120">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body4">{t(Skills.ICON_TITLE)}</Text>
 						<Text variant="body2">{t(Skills.ICON_LABEL)}</Text>
 					</Flex>

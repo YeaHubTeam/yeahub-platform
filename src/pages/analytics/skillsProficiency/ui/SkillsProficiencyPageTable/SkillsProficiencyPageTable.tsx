@@ -42,7 +42,7 @@ export const SkillsProficiencyPageTable = ({
 				return (
 					<td key={k}>
 						<Flex direction="column" gap="4">
-							<Text variant={'body3-accent'}>{questionData.title}</Text>
+							<Text variant="body3-accent">{questionData.title}</Text>
 							<Flex>
 								<StatusChip status={{ text: questionData.total, variant: 'green' }} />
 							</Flex>
@@ -52,7 +52,7 @@ export const SkillsProficiencyPageTable = ({
 			}
 			return (
 				<td key={k}>
-					<Text variant={'body3-accent'}>{v as string}</Text>
+					<Text variant="body3-accent">{v as string}</Text>
 				</td>
 			);
 		});

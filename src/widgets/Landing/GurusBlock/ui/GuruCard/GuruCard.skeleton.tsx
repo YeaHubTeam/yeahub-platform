@@ -12,18 +12,18 @@ export const GuruCardSkeleton = () => {
 	return (
 		<CardSkeleton withOutsideShadow>
 			<Flex componentType="li" direction="column">
-				<Flex gap="20" direction={'column'}>
-					<Flex gap="8" direction={'column'} align={'center'}>
+				<Flex gap="20" direction="column">
+					<Flex gap="8" direction="column" align="center">
 						<IconSkeleton size={40} borderRadius="50%" />
 						<StatusChipSkeleton />
 					</Flex>
 
-					<Flex gap={'4'} direction={'column'}>
+					<Flex gap="4" direction="column">
 						<TextSkeleton variant="body3-accent" color="black-800" width={140} />
 						<TextSkeleton variant="body3-accent" color="black-500" width={140} />
 					</Flex>
 
-					<TextSkeleton variant="head1" color="black-800" width={'100%'} />
+					<TextSkeleton variant="head1" color="black-800" width="100%" />
 
 					<TextSkeleton
 						variant="body3-accent"

@@ -26,7 +26,7 @@ export const UserBlock = ({ profile, profileSpecialization }: UserBlockProps) =>
 					<UserImageBlock avatar={profile.avatarUrl} />
 					<UserInfoBlock profile={profile} profileSpecialization={profileSpecialization} />
 				</div>
-				{isEdit && <UserEditButton tab={'personal-information'} />}
+				{isEdit && <UserEditButton tab="personal-information" />}
 			</div>
 		</Card>
 	);

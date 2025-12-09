@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions } from '@/shared/config';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
+import { getFromLS, LS_ACCESS_TOKEN_KEY, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleStub } from '@/shared/ui/SimpleStub';
@@ -9,7 +9,11 @@ import { SimpleStub } from '@/shared/ui/SimpleStub';
 import { Collection, CollectionWarningInfo } from '@/entities/collection';
 import { Question, PreviewQuestionsItem } from '@/entities/question';
 
+import { RegistrationBanner } from '../RegistrationBanner/RegistrationBanner';
+
 import styles from './CollectionBody.module.css';
+
+const GUEST_QUESTIONS_COUNT = 5;
 
 interface CollectionBodyProps extends Pick<Collection, 'isFree'> {
 	questions: Question[];
@@ -25,6 +29,10 @@ export const CollectionBody = ({
 }: CollectionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	// TODO: Добавить роут для сообщества
+	const isAuthorized = getFromLS(LS_ACCESS_TOKEN_KEY);
+	const showRegistrationBanner = !isAuthorized && questions.length > GUEST_QUESTIONS_COUNT;
+	const hiddenQuestionsCount = questions.length - GUEST_QUESTIONS_COUNT;
+	const displayedQuestions = isAuthorized ? questions : questions.slice(0, GUEST_QUESTIONS_COUNT);
 
 	if (!isFree && !hasPremiumAccess && !isAdmin)
 		return (
@@ -46,9 +54,9 @@ export const CollectionBody = ({
 			headerAction={<CollectionWarningInfo />}
 			withOutsideShadow
 		>
-			{questions.length ? (
+			{displayedQuestions.length ? (
 				<Flex componentType="ul" direction="column" gap="12">
-					{questions?.map((question) => (
+					{displayedQuestions?.map((question) => (
 						<PreviewQuestionsItem
 							key={question.id}
 							title={question.title}
@@ -58,6 +66,7 @@ export const CollectionBody = ({
 							imageSrc={question.questionSkills[0].imageSrc ?? undefined}
 						/>
 					))}
+					{showRegistrationBanner && <RegistrationBanner questionsCount={hiddenQuestionsCount} />}
 				</Flex>
 			) : (
 				<SimpleStub variant="empty" text={t(Questions.PREVIEW_EMPTY_COLLECTION)} />

@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Books from '@/shared/assets/icons/books.svg';
+import Cards from '@/shared/assets/icons/cards.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
 import Companies from '@/shared/assets/icons/companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
@@ -52,6 +53,8 @@ import { SpecializationCreatePage } from '@/pages/admin/specialization/specializ
 import { SpecializationDetailPage } from '@/pages/admin/specialization/specializationDetail';
 import { SpecializationEditPage } from '@/pages/admin/specialization/specializationEdit';
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
+import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
+import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
@@ -263,6 +266,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.resources.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
 		icon: Books,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.topics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
+		icon: Cards,
 		roles: listAdminRoles,
 	},
 ];
@@ -505,6 +515,20 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.topics.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TopicsPage />,
+					},
+					{
+						path: ROUTES.admin.topics.create.route,
+						element: <TopicCreatePage />,
 					},
 				],
 			},

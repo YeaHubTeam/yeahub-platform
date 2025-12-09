@@ -63,7 +63,7 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 								{t(Landing.HEADER_NAV_PUBLIC_QUIZ)}
 							</HeaderLink>
 
-							<HeaderLink link={ROUTES.collections.page} path={'/collections/'}>
+							<HeaderLink link={ROUTES.collections.page} path="/collections/">
 								{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 							</HeaderLink>
 						</Flex>

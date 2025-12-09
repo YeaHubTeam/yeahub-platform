@@ -43,7 +43,7 @@ export const PopularQuestionsPageTable = ({ popularQuestions }: PopularQuestions
 					<td key={k}>
 						<Flex gap="4" align="center">
 							<ImageWithWrapper src={questionData.img} className={styles.icon} />
-							<Text variant={'body3-accent'}>{questionData.title}</Text>
+							<Text variant="body3-accent">{questionData.title}</Text>
 						</Flex>
 					</td>
 				);
@@ -51,7 +51,7 @@ export const PopularQuestionsPageTable = ({ popularQuestions }: PopularQuestions
 
 			return (
 				<td key={k}>
-					<Text variant={'body3-accent'}>{String(v)}</Text>
+					<Text variant="body3-accent">{String(v)}</Text>
 				</td>
 			);
 		});

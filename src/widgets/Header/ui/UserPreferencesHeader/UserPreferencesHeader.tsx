@@ -38,10 +38,10 @@ export const UserPreferencesHeader = ({ isPremiumUser }: UserPreferencesHeaderPr
 							)}
 						</div>
 						<div className={styles['header-text']}>
-							<Text variant={'body3-accent'} className={styles['full-name']}>
+							<Text variant="body3-accent" className={styles['full-name']}>
 								{profile.username}
 							</Text>
-							<Text variant={'body2'} color="black-700">
+							<Text variant="body2" color="black-700">
 								{profile.email}
 							</Text>
 						</div>

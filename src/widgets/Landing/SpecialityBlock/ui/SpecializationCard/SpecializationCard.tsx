@@ -16,13 +16,13 @@ export const SpecializationCard = ({ title, description, image, alt, link }: IMo
 	const navigate = useNavigate();
 
 	return (
-		<Flex direction={'column'} justify={'between'} className={styles.card}>
-			<Flex direction={'row'} justify={'between'} align={'start'} className={styles['card-title']}>
-				<Text variant={'body6'}>{title}</Text>
+		<Flex direction="column" justify="between" className={styles.card}>
+			<Flex direction="row" justify="between" align="start" className={styles['card-title']}>
+				<Text variant="body6">{title}</Text>
 				<img src={image} alt={alt} />
 			</Flex>
-			<Flex direction={'column'} justify={'end'}>
-				<Text variant={'body3'} className={styles['card-description']}>
+			<Flex direction="column" justify="end">
+				<Text variant="body3" className={styles['card-description']}>
 					{description}
 				</Text>
 				<Button

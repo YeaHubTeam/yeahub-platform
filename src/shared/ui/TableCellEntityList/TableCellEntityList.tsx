@@ -41,7 +41,7 @@ export const TableCellEntityList = <T extends { id: number; title: string }>({
 						{itemsToShow.map((item) => (
 							<Fragment key={item.id}>
 								<Link to={route(url, item.id)} className={styles.link}>
-									<Text variant={'body3-accent'}>{item.title}</Text>
+									<Text variant="body3-accent">{item.title}</Text>
 								</Link>
 								{itemsToShow.indexOf(item) < itemsToShow.length - 1 && <span>, </span>}
 							</Fragment>

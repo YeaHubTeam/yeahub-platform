@@ -17,8 +17,8 @@ export const OurMediaBannerSkeleton = () => {
 		>
 			<Flex direction="column" gap="12" justify="center" className={styles['intro-text-wrapper']}>
 				<TextSkeleton width={150} variant={isMobile ? 'head5' : 'head3'} />
-				<TextSkeleton className={styles['intro-description']} variant="body3" width={'100%'} />
-				<TextSkeleton className={styles['intro-description']} variant="body3" width={'100%'} />
+				<TextSkeleton className={styles['intro-description']} variant="body3" width="100%" />
+				<TextSkeleton className={styles['intro-description']} variant="body3" width="100%" />
 			</Flex>
 			<Flex className={styles['books-img']}>
 				<Skeleton width={206} />

@@ -22,12 +22,12 @@ export const AvosBanner = () => {
 				gap={isSmallScreen ? '12' : undefined}
 			>
 				<div className={styles.promo}>
-					<Text variant="body3" color={'black-30'}>
+					<Text variant="body3" color="black-30">
 						{!isMobileM && t(Landing.AVOS_SUBTITLE)} {t(Landing.AVOS_INTERVIEWS)}
 					</Text>
 					<Text
 						variant={isMobileM ? 'body5-accent' : 'head3'}
-						color={'black-30'}
+						color="black-30"
 						isMainTitle
 						className={styles.title}
 					>

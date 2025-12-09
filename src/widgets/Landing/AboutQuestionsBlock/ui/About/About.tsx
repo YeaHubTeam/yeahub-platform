@@ -15,7 +15,7 @@ export const About = () => {
 			<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 				{t(Landing.QUESTIONS_TITLE)}
 			</Text>
-			<Text variant={'body3'} className={styles.description}>
+			<Text variant="body3" className={styles.description}>
 				{t(Landing.QUESTIONS_DESCRIPTION)}
 			</Text>
 		</div>

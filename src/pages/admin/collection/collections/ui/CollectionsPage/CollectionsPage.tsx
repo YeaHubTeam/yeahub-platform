@@ -9,9 +9,11 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
-import { UserSelect } from '@/entities/user';
 
-import { useCollectionsFilters } from '@/features/collections/filterCollections';
+import {
+	CollectionsFilters,
+	useCollectionsFilters,
+} from '@/features/collections/filterCollections';
 
 import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -30,10 +32,18 @@ const CollectionsPage = () => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
 	};
 
-	const { filters, hasFilters, onResetFilters, onChangeTitle, onChangePage, onChangeAuthor } =
-		useCollectionsFilters({
-			page: 1,
-		});
+	const {
+		filters,
+		hasFilters,
+		onResetFilters,
+		onChangeTitle,
+		onChangePage,
+		onChangeIsFree,
+		onChangeSpecialization,
+		onChangeIsMy,
+	} = useCollectionsFilters({
+		page: 1,
+	});
 
 	const onResetAll = () => {
 		dispatch(collectionsPageActions.resetFilters());
@@ -41,7 +51,7 @@ const CollectionsPage = () => {
 	};
 
 	const { data: allCollections } = useGetCollectionsListQuery({
-		authorId: filters.authorId,
+		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
 	});
@@ -69,7 +79,14 @@ const CollectionsPage = () => {
 				searchValue={filters.title}
 				onSearch={onChangeTitle}
 				hasFilters={hasFilters}
-				renderFilter={() => <UserSelect value={filters.authorId} onChange={onChangeAuthor} />}
+				renderFilter={() => (
+					<CollectionsFilters
+						filter={filters}
+						onChangeSpecialization={onChangeSpecialization}
+						onChangeIsFree={onChangeIsFree}
+						onChangeIsMy={onChangeIsMy}
+					/>
+				)}
 			/>
 			<Card className={styles.content}>
 				<CollectionsTable
@@ -83,7 +100,7 @@ const CollectionsPage = () => {
 					limit={collections.limit}
 					total={collections.total}
 				/>
-				{collections.data.length === 0 && <Stub type={'filter-empty'} onClick={onResetAll} />}
+				{collections.data.length === 0 && <Stub type="filter-empty" onClick={onResetAll} />}
 			</Card>
 		</Flex>
 	);

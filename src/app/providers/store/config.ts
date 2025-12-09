@@ -16,6 +16,7 @@ import {
 } from '@/pages/admin/resource/resources';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
+import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';
@@ -33,6 +34,7 @@ export const reducers = {
 	profile: profileReducer,
 	collectionsPage: collectionsPageReducer,
 	resourcesRequestsTab: resourcesRequestsTabReducer,
+	topicsPage: topicsPageReducer,
 };
 
 export const getStore = (initialState?: State) =>
