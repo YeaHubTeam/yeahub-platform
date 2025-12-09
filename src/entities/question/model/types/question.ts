@@ -1,10 +1,8 @@
 import { Response } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Skill } from '@/entities/skill/@x/question';
+import { Specialization } from '@/entities/specialization/@x/question';
 
 export type QuestionStatus = 'public' | 'draft';
 

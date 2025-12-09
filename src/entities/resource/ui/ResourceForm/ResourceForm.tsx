@@ -13,10 +13,8 @@ import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SkillSelect } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { SkillSelect } from '@/entities/skill/@x/resource';
+import { SpecializationSelect } from '@/entities/specialization/@x/resource';
 
 import { ResourcesSelect } from '../ResourceSelect/ResourceSelect';
 

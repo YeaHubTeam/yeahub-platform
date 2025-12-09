@@ -28,7 +28,7 @@ export const CompanyCard = ({ company }: CompanyCardProps) => {
 							className={styles['card-image']}
 						/>
 					</div>
-					<Text variant={'body6'}>{company.title}</Text>
+					<Text variant="body6">{company.title}</Text>
 				</Flex>
 			</Card>
 		</Flex>

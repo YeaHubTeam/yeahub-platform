@@ -1,4 +1,4 @@
-import { QuestionsFilterParams } from '@/features/question/filterQuestions';
+import { QuestionsFilterParams } from '@/entities/question';
 
 export type QuestionNavigation = {
 	questionId: number | string;

@@ -1,11 +1,10 @@
 import { screen } from '@testing-library/react';
 
-import { useScreenSize } from '@/shared/libs';
-import { renderComponent } from '@/shared/libs/jest';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { FooterMainSkeleton } from './FooterMain.skeleton';
 
-jest.mock('@/shared/libs', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobile: false,
 		isMobileS: false,
@@ -18,6 +17,7 @@ describe('FooterMainSkeleton', () => {
 	});
 
 	test('should render FooterMainSkeleton wrapper', () => {
+		console.log(1111, renderComponent);
 		renderComponent(<FooterMainSkeleton />);
 
 		const wrapper = screen.getByTestId('FooterMainSkeleton');

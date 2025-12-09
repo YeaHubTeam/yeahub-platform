@@ -16,10 +16,10 @@ export const FooterLinks = () => {
 	const { t } = useTranslation(i18Namespace.landing);
 
 	return (
-		<Flex dataTestId={'FooterLinks'} className={styles['footer-resources-links']}>
-			<NavLink data-testid="Footer_NavDocs" to={'/docs'}>
+		<Flex dataTestId="FooterLinks" className={styles['footer-resources-links']}>
+			<NavLink data-testid="Footer_NavDocs" to="/docs">
 				<Text
-					dataTestId={'Footer_Docs'}
+					dataTestId="Footer_Docs"
 					className={styles['docs-link']}
 					variant={isSmallScreen ? 'body2' : 'body2-accent'}
 					color="black-400"
@@ -27,9 +27,9 @@ export const FooterLinks = () => {
 					{t(Landing.FOOTER_DOCS)}
 				</Text>
 			</NavLink>
-			<NavLink data-testid="Footer_NavMedia" to={'/socialMedia'}>
+			<NavLink data-testid="Footer_NavMedia" to="/socialMedia">
 				<Text
-					dataTestId={'Footer_Media'}
+					dataTestId="Footer_Media"
 					className={styles['docs-link']}
 					variant={isSmallScreen ? 'body2' : 'body2-accent'}
 					color="black-400"

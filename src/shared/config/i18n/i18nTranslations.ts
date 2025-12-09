@@ -49,6 +49,7 @@ export enum Translation {
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
+	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.title',
@@ -216,6 +217,8 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_REJECT_FAILED = 'toast.resource.request.reject.failed',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
+	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
+	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
 	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
 	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
@@ -351,6 +354,7 @@ export enum Auth {
 	PASSWORD_RECOVERY_TITLE = 'password.recovery.title',
 	PASSWORD_RECOVERY_SUBTITLE = 'password.recovery.subtitle',
 	PASSWORD_RECOVERY_SUBMIT = 'password.recovery.submit',
+	QUESTIONS_COUNT_AVAILABLE_AUTHORIZED = 'questions.count.available.authorized',
 }
 
 export enum Specializations {
@@ -380,6 +384,16 @@ export enum Specializations {
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 	FILTER_IS_MY_TITLE = 'filter.is.my.title',
+}
+
+export enum Topics {
+	TITLE_FULL = 'title.full',
+	TITLE_LABEL = 'title.label',
+	DESCRIPTION_FULL = 'description.full',
+	DESCRIPTION_LABEL = 'description.label',
+	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum Analytics {
@@ -597,6 +611,7 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	REGISTER = 'register',
 	NAVIGATION_PREVIOUS = 'navigation.previous',
 	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
@@ -612,6 +627,7 @@ export enum Questions {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
+	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
 }
 
 export enum InterviewHistory {
@@ -800,6 +816,7 @@ export enum Collections {
 	BANNER_INTERVIEW_DESCRIPTION = 'banner.interview.description',
 	BANNER_INTERVIEW_LINK = 'banner.interview.link',
 	BANNER_INTERVIEW_WATCH_BUTTON = 'banner.interview.watch.button',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
 }
 
 export enum Companies {
@@ -1154,4 +1171,11 @@ export enum Marketplace {
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
 	REQUEST_TITLE = 'requests.title',
+}
+
+export enum Topics {
+	TITLE_SHORT = 'title.short',
+	DESCRIPTION_SHORT = 'description.short',
+	SKILLS_SHORT = 'skills.short',
+	CREATED_AT = 'created.at',
 }

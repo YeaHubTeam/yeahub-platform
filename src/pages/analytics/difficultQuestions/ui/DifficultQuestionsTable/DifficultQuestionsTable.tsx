@@ -38,7 +38,7 @@ export const DifficultQuestionsTable = ({ difficultQuestions }: DifficultQuestio
 
 		return Object.entries(columns).map(([k, v]) => (
 			<th key={k}>
-				<Text variant={'body3-accent'} color={'white-900'}>
+				<Text variant="body3-accent" color="white-900">
 					{v}
 				</Text>
 			</th>

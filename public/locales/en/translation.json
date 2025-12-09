@@ -57,7 +57,8 @@
 			"questions": "Questions",
 			"skills": "Skills",
 			"companies": "Companies",
-			"analytics": "Analytics"
+			"analytics": "Analytics",
+			"topics": "Topics"
 		}
 	},
 	"stub": {
@@ -261,6 +262,12 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			}
+		},
+		"topics": {
+			"create": {
+				"success": "Topic successfully created",
+				"failed": "Topic could not be created"
 			}
 		},
 		"collections": {

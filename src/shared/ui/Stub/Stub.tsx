@@ -2,12 +2,11 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import AccessDeniedImg from '@/shared/assets/images/AccessDenied.png';
-import LoadError from '@/shared/assets/images/LoadError.png';
+import AccessDeniedImg from '@/shared/assets/images/accessDenied.png';
+import LoadError from '@/shared/assets/images/loadError.png';
 import FilterEmptyImg from '@/shared/assets/images/notFound.avif';
-import SearchImg from '@/shared/assets/images/SearchPage.png';
-import { i18Namespace } from '@/shared/config';
-import { Translation } from '@/shared/config';
+import SearchImg from '@/shared/assets/images/searchPage.png';
+import { i18Namespace, Translation } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';

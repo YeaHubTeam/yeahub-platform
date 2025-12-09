@@ -19,7 +19,7 @@ export const QuestionCreateFormHeader = () => {
 	};
 
 	return (
-		<Flex align="center" gap="8" justify={'between'}>
+		<Flex align="center" gap="8" justify="between">
 			<BackButton />
 			<Button disabled={isLoading} onClick={handleSubmit(onCreateQuestion)}>
 				{t(Translation.SAVE, { ns: 'translation' })}

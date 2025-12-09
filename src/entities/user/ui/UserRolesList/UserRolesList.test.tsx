@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest';
+import { renderComponent } from '@/shared/libs';
 import { FlexProps } from '@/shared/ui/Flex';
 import { StatusChipProps } from '@/shared/ui/StatusChip';
 
-import type { Role } from '@/entities/auth';
+import { Role } from '@/entities/auth/@x/user';
 
 import { userRolesMock } from '../../__mocks__/data/userRolesMock';
 import { userRoleColors } from '../../model/constants/userRoleColors';

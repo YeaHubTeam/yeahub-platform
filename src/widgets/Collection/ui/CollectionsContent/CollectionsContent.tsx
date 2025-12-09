@@ -9,9 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
-import { Collection } from '@/entities/collection';
-
-import { CollectionsFilterParams } from '@/features/collections/filterCollections';
+import { Collection, CollectionsFilterParams } from '@/entities/collection';
 
 import { CollectionsList } from '../CollectionsList/CollectionsList';
 
@@ -49,7 +47,7 @@ export const CollectionsContent = ({
 					<CollectionsList collections={collections} queryFilter={search} />
 					{banner}
 					{pagination}
-					{collections.length === 0 && <Stub type={'filter-empty'} onClick={resetFilters} />}
+					{collections.length === 0 && <Stub type="filter-empty" onClick={resetFilters} />}
 				</Flex>
 			</Card>
 		</div>

@@ -108,7 +108,7 @@ export const CollectionPreview = ({
 						<Flex direction="column" gap="20">
 							<Text
 								className={classnames(styles['card-title'], styles[variant])}
-								variant={'body3-accent'}
+								variant="body3-accent"
 								maxRows={2}
 							>
 								{title}
@@ -116,14 +116,14 @@ export const CollectionPreview = ({
 							<div className={styles['access-container']}>
 								<div className={styles['access-item']}>
 									{!isFree && <Star />}
-									<Text variant={'body2'} color="purple-700">
+									<Text variant="body2" color="purple-700">
 										{accessText[isFree ? 'free' : 'paid']}
 									</Text>
 								</div>
 								{!!questionsCount && (
 									<div className={styles['access-item']}>
 										<Question />
-										<Text variant={'body2'} color="purple-700">
+										<Text variant="body2" color="purple-700">
 											{t(Collections.QUESTIONS_COUNT, {
 												ns: i18Namespace.collection,
 												count: questionsCount,
@@ -134,7 +134,7 @@ export const CollectionPreview = ({
 							</div>
 							<div className={styles['specialization-container']}>
 								{specializations?.map((spec) => (
-									<Text variant={'body3-accent'} key={spec.id}>
+									<Text variant="body3-accent" key={spec.id}>
 										{spec.title}
 									</Text>
 								))}

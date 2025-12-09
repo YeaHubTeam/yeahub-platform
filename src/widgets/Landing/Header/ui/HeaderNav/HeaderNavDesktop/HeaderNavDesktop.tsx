@@ -13,7 +13,7 @@ export const HeaderNavDesktop = () => {
 	const navLinks = accessToken ? HEADER_NAV_LINKS_AUTH : HEADER_NAV_LINKS;
 
 	return (
-		<Flex dataTestId={'HeaderNavDesktop_Wrapper'} gap="6">
+		<Flex dataTestId="HeaderNavDesktop_Wrapper" gap="6">
 			{navLinks.map(({ link, path, title }) => (
 				<HeaderNavLink key={title} link={link} path={path}>
 					{t(title)}

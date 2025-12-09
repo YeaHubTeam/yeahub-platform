@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import PlusSvg from '@/shared/assets/icons/Plus1.svg';
+import PlusSvg from '@/shared/assets/icons/plus1.svg';
 import { i18Namespace, Collections, Translation } from '@/shared/config';
 import { useModal } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';

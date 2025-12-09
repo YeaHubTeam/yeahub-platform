@@ -1,7 +1,7 @@
 import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/libs';
-import { getFromLS } from '@/shared/libs';
+import { getFromLS } from '../../libs/browser';
+import { LS_ACCESS_TOKEN_KEY } from '../../libs/query';
 
 import { apiAccessTokenIsBrokenEvent } from './apiAccessTokenIsBrokenEvent';
 import { ApiTags } from './apiTags';

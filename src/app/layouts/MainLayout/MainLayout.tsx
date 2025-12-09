@@ -100,6 +100,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 						onClose={onToggleOpenSidebarDrawer}
 						position="left"
 						className={styles.drawer}
+						width={280}
 					>
 						<Sidebar
 							isMobileSidebar

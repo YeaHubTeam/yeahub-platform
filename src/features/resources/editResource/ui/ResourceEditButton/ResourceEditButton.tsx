@@ -17,7 +17,7 @@ export const ResourceEditButton = ({ isDisabled, resourceId }: ResourceEditButto
 	return (
 		<Tooltip
 			title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-			placement={'bottom-start'}
+			placement="bottom-start"
 			color="red"
 			offsetTooltip={10}
 			shouldShowTooltip={isDisabled}

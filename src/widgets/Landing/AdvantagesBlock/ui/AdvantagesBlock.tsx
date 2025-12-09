@@ -12,7 +12,7 @@ export const AdvantagesBlock = () => {
 	return (
 		<>
 			<Flex gap="20" direction="column">
-				<Flex direction="column" gap={'8'} className={styles.process}>
+				<Flex direction="column" gap="8" className={styles.process}>
 					<Text variant="head2" className={styles['main-text']}>
 						{t(Learning.BANNER_TITLE)}
 					</Text>

@@ -8,6 +8,10 @@ import { Flex } from '@/shared/ui/Flex';
 import { getSpecializationId } from '@/entities/profile';
 import { PreviewQuestionsItem, useGetPopularQuestionsQuery } from '@/entities/question';
 
+import { ITEMS_COUNT } from '../model/constants';
+
+import { PopularQuestionsWidgetSkeleton } from './PopularQuestionsWidget.skeleton';
+
 export const PopularQuestionsWidget = () => {
 	const { data, isLoading } = useGetPopularQuestionsQuery();
 	const specializationId = useAppSelector(getSpecializationId);
@@ -15,7 +19,9 @@ export const PopularQuestionsWidget = () => {
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.analytics]);
 	const currentSpecializationData =
 		data?.find((question) => question.specializationId === specializationId) ?? data?.[0];
-	const popularQuestions = currentSpecializationData?.topStat?.slice(0, 3) || [];
+	const popularQuestions = currentSpecializationData?.topStat?.slice(0, ITEMS_COUNT) || [];
+
+	if (isLoading) return <PopularQuestionsWidgetSkeleton />;
 
 	return (
 		<Card
@@ -25,20 +31,17 @@ export const PopularQuestionsWidget = () => {
 			actionRoute={ROUTES.analytics['popular-questions'].route}
 			isActionPositionBottom
 		>
-			{isLoading && null}
-			{!isLoading && (
-				<Flex direction="column" gap="12">
-					{popularQuestions.map((question) => (
-						<PreviewQuestionsItem
-							key={question.questionId}
-							questionId={question.questionId}
-							title={question.title}
-							frequency={question.frequencyStat}
-							imageSrc={question.imageSrc}
-						/>
-					))}
-				</Flex>
-			)}
+			<Flex direction="column" gap="12">
+				{popularQuestions.map((question) => (
+					<PreviewQuestionsItem
+						key={question.questionId}
+						questionId={question.questionId}
+						title={question.title}
+						frequency={question.frequencyStat}
+						imageSrc={question.imageSrc}
+					/>
+				))}
+			</Flex>
 		</Card>
 	);
 };

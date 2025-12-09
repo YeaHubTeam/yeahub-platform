@@ -17,5 +17,11 @@ npx lint-staged ||
   echo '💀❌ Ooops! Formating and checking process has failed!';
   false;
 )
+	
+npx npx steiger ./src || 
+(
+  echo '💀❌ Ooops! Check FSD rules. There are errors now!  ';
+  false;
+)
 
 echo '🥳✅ Formating and checking process has been successfully completed!'

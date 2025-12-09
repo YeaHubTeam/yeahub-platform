@@ -23,7 +23,7 @@ export const InterviewCardSkeleton = () => {
 
 			<Flex gap="16" direction="column" className={styles['card-text']}>
 				<IconSkeleton size={32} className={styles['text-icon']} />
-				<TextSkeleton width={'100%'} variant="body3" />
+				<TextSkeleton width="100%" variant="body3" />
 				<ButtonSkeleton />
 			</Flex>
 		</Flex>

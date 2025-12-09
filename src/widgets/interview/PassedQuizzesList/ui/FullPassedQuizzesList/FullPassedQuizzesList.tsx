@@ -66,7 +66,7 @@ export const FullPassedQuizzesList = ({
 	if (isEmptyData) {
 		return (
 			<Card>
-				<Stub type={'filter-empty'} onClick={resetFilters} />
+				<Stub type="filter-empty" onClick={resetFilters} />
 			</Card>
 		);
 	}

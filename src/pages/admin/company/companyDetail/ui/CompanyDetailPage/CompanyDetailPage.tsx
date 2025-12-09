@@ -29,21 +29,21 @@ const CompanyDetailPage = () => {
 
 	return (
 		<main>
-			<Flex align={'center'} justify={'between'} gap={'8'} style={{ marginBottom: 24 }}>
+			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
 				<BackButton />
-				<Flex gap={'16'}>
+				<Flex gap="16">
 					<Tooltip
 						title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-						color={'red'}
-						placement={'bottom-start'}
+						color="red"
+						placement="bottom-start"
 						shouldShowTooltip={isDisabled}
 					>
 						<DeleteCompanyButton companyId={company.id} isDetailPage disabled={isDisabled} />
 					</Tooltip>
 					<Tooltip
 						title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-						color={'red'}
-						placement={'bottom-start'}
+						color="red"
+						placement="bottom-start"
 						shouldShowTooltip={isDisabled}
 					>
 						<NavLink to={route(ROUTES.admin.companies.edit.page, company.id)}>

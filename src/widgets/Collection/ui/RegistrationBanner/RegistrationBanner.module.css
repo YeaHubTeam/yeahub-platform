@@ -1,0 +1,14 @@
+.button {
+  min-width: 240px;
+}
+
+.card {
+  padding: 16px 20px;
+  min-height: 80px;
+}
+
+@media (width < 768px) {
+  .button {
+    min-width: 300px;
+  }
+}
