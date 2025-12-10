@@ -46,6 +46,7 @@ const PublicCollectionsPage = () => {
 				title: filters.title,
 				specialization: filters.specialization,
 				isFree: filters.isFree,
+				company: filters.company,
 			}}
 		/>
 	);

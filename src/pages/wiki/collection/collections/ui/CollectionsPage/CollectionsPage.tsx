@@ -49,6 +49,7 @@ const CollectionsPage = () => {
 			filter={{
 				title: filters.title,
 				isFree: filters.isFree,
+				company: filters.company,
 			}}
 		/>
 	);

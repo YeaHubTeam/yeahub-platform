@@ -834,8 +834,8 @@ export enum Companies {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
-	SELECT_FILTER_TITLE = 'select-filter.title',
-	SELECT_FILTER_CHOOSE = 'select-filter.choose',
+	SELECT_FILTER_TITLE = 'select.filter.title',
+	SELECT_FILTER_CHOOSE = 'select.filter.choose',
 }
 
 export enum ResourceRequests {

@@ -14,10 +14,10 @@
 	"select": {
 		"choose": "Choose company name",
 		"empty": "No companies available",
-		"selected": "Selected company"
-	},
-	"select-filter": {
-		"title": "Company",
-		"choose": "Select a company"
+		"selected": "Selected company",
+		"filter": {
+			"title": "Company",
+			"choose": "Select a company"
+		}
 	}
 }

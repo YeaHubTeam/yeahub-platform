@@ -19,7 +19,7 @@ export type PublicCompanySelectProps = Omit<
 	disabled?: boolean;
 };
 
-const COMPANY_ID_NOT_FOUND_KEY = 'toast.companies.filter.not_found';
+const COMPANY_ID_NOT_FOUND_KEY = 'toast.companies.filter.not.found';
 
 export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompanySelectProps) => {
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);

@@ -7,8 +7,8 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import { ChooseCollectionAccess, CollectionsFilterParams } from '@/entities/collection';
-import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { PublicCompanySelect } from '@/entities/company';
+import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 import { UserSelect } from '@/entities/user';
 
@@ -79,7 +79,9 @@ export const CollectionsFilters = ({
 					onChangeSpecialization={handleSpecializationChange}
 				/>
 			)}
-			<PublicCompanySelect onChange={onChangeCompany} value={company}/>
+			{(project === 'landing' || project === 'platform') && (
+				<PublicCompanySelect onChange={onChangeCompany} value={company} />
+			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 
 			{media && <MediaLinksBanner mediaLink={media} />}
