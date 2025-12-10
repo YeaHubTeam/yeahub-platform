@@ -24,6 +24,7 @@
 	"total.questions": "Total questions",
 	"back.button": "Go back to the previous page",
 	"author": "Author",
+	"error": "Unknown error",
 	"sort": {
 		"title": "Sort by",
 		"ascending": "Ascending",
@@ -56,12 +57,14 @@
 			"questions": "Questions",
 			"skills": "Skills",
 			"companies": "Companies",
-			"analytics": "Analytics"
+			"analytics": "Analytics",
+			"topics": "Topics"
 		}
 	},
 	"stub": {
 		"filter": {
-			"text": "Unfortunately, nothing was found for the query {{text}}. Try to change the query or use our categories",
+			"title": "Unfortunately, nothing was found for the query.",
+			"subtitle": "Try changing your search or use our categories.",
 			"submit": "Reset filter"
 		},
 		"error": {
@@ -69,6 +72,11 @@
 			"subtitle": "Try again or refresh the page",
 			"submit": "Try again"
 		}
+	},
+	"access.denied": {
+		"title": "Access Denied",
+		"description": "You don't have access to view this section. If you think this is an error, please contact support",
+		"button": "Return to Home"
 	},
 	"modal": {
 		"block": {
@@ -167,7 +175,16 @@
 			"telegram": {
 				"verification": {
 					"link.success": "Telegram is successfully linked to your account!",
-					"link.error": "Failed to link your Telegram to your account."
+					"link.error": {
+						"error": "Failed to link your Telegram to your account.",
+						"unauthorized": "Authentication failed.",
+						"invalid.data": "Invalid Telegram data.",
+						"data.outdated": "Your Telegram data is outdated.",
+						"already.linked": "This Telegram account is already linked to your profile.",
+						"linked.to.another.user": "This Telegram account is linked to another user.",
+						"verify.denied": "Telegram verification denied.",
+						"user.not.found": "User not found."
+					}
 				}
 			}
 		},
@@ -245,6 +262,12 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			}
+		},
+		"topics": {
+			"create": {
+				"success": "Topic successfully created",
+				"failed": "Topic could not be created"
 			}
 		},
 		"collections": {

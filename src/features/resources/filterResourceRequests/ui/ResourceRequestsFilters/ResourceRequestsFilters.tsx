@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Marketplace } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
+import { getSpecializationId } from '@/entities/profile';
 import { ResourcesStatusBlock, ResourcesTypesFilterSection } from '@/entities/resource';
+import { SkillsListField } from '@/entities/skill';
 
 import { ResourceRequestsFilterParams } from '../../model/types/filters';
 
@@ -14,6 +16,7 @@ interface MyResourcesFiltersPanelProps {
 	onChangeTitle: (title: ResourceRequestsFilterParams['title']) => void;
 	onChangeStatus: (status: ResourceRequestsFilterParams['status']) => void;
 	onChangeTypes: (types: ResourceRequestsFilterParams['types']) => void;
+	onChangeSkills: (skills: ResourceRequestsFilterParams['skills']) => void;
 }
 
 export const ResourceRequestsFilters = ({
@@ -21,9 +24,11 @@ export const ResourceRequestsFilters = ({
 	onChangeTitle,
 	onChangeStatus,
 	onChangeTypes,
+	onChangeSkills,
 }: MyResourcesFiltersPanelProps) => {
 	const { types, title, status } = filters;
 	const { t } = useTranslation(i18Namespace.marketplace);
+	const specializationId = useAppSelector(getSpecializationId);
 
 	return (
 		<Flex direction="column" justify="start" gap="24">
@@ -32,6 +37,12 @@ export const ResourceRequestsFilters = ({
 				onSearch={onChangeTitle}
 				currentValue={title}
 			/>
+			<SkillsListField
+				selectedSkills={filters.skills}
+				onChangeSkills={onChangeSkills}
+				selectedSpecialization={specializationId}
+			/>
+
 			<ResourcesStatusBlock selectedStatus={status} onChooseStatus={onChangeStatus} />
 			<ResourcesTypesFilterSection selectedTypes={types} onChooseTypes={onChangeTypes} />
 		</Flex>

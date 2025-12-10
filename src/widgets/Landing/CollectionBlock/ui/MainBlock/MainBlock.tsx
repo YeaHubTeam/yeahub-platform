@@ -1,17 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Slider } from '@/shared/ui/Slider';
 
 import { CollectionPreview } from '@/entities/collection';
 
-import sberImg from '@/widgets/Landing/CollectionBlock/model/assets/sber.avif';
-import tbankImg from '@/widgets/Landing/CollectionBlock/model/assets/tbank.avif';
-import vkImg from '@/widgets/Landing/CollectionBlock/model/assets/vk.avif';
-
+import { sberImg, vkImg, tbankImg } from '../../model/assets';
 import { sliderSettings } from '../../model/constants';
 
 import styles from './MainBlock.module.css';

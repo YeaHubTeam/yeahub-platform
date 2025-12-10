@@ -2,11 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppSelector } from '@/shared/hooks';
+import { Profile, Translation, i18Namespace } from '@/shared/config';
+import { useAppSelector, getFromLS, LS_ACCESS_TOKEN_KEY } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -16,7 +13,7 @@ import { Text } from '@/shared/ui/Text';
 import { getFullProfile } from '@/entities/profile';
 
 import { useChangePasswordMutation } from '../api/changePasswordApi';
-import { createChangePasswordSchema } from '../model/lib/validation/changePasswordSchema';
+import { createChangePasswordSchema } from '../lib/validation/changePasswordSchema';
 import { ChangePasswordFormValues, ChangePasswordSchema } from '../model/types/changePasswordTypes';
 
 import styles from './ChangePasswordForm.module.css';

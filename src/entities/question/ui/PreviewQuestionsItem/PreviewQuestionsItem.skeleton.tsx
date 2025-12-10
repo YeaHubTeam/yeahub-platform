@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
@@ -11,7 +11,7 @@ import { QuestionGradeListSkeleton } from '../QuestionGradeList/QuestionGradeLis
 import styles from './PreviewQuestionsItem.module.css';
 
 export const PreviewQuestionsItemSkeleton = () => {
-	const { isMobileS } = useScreenSize();
+	const { isMobileS, isMobileM } = useScreenSize();
 	return (
 		<li>
 			<Card withOutsideShadow size="small">
@@ -20,7 +20,7 @@ export const PreviewQuestionsItemSkeleton = () => {
 					<Flex direction="column" gap="8">
 						<TextSkeleton
 							variant="body3-accent"
-							width={380}
+							width={isMobileM ? 280 : 380}
 							className={classNames(styles.title, styles['title-skeleton'])}
 						/>
 						<QuestionGradeListSkeleton className={styles.params} size="small" />

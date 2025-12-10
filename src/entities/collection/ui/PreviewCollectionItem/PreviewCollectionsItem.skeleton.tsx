@@ -15,11 +15,11 @@ export const PreviewCollectionsItemSkeleton = () => {
 				</Flex>
 
 				<TextSkeleton variant="body3-accent" width={280} className={styles['title-skeleton']} />
-				<TextSkeleton variant={'body3-accent'} width={40} />
+				<TextSkeleton variant="body3-accent" width={40} />
 
 				<Flex direction="row" gap="20">
-					<TextSkeleton variant={'body3-accent'} width={50} />
-					<TextSkeleton variant={'body3-accent'} width={50} />
+					<TextSkeleton variant="body3-accent" width={50} />
+					<TextSkeleton variant="body3-accent" width={50} />
 				</Flex>
 			</Flex>
 		</Flex>

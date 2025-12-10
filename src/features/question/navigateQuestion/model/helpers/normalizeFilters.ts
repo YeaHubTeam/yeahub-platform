@@ -1,6 +1,6 @@
-import { FilterFromUser } from '@/shared/hooks';
+import { QuestionsFilterParams } from '@/entities/question';
 
-export const normalizeFilters = (filters: FilterFromUser) => {
+export const normalizeFilters = (filters: QuestionsFilterParams) => {
 	const { status, ...rest } = filters;
 
 	if (status === 'favorite') {

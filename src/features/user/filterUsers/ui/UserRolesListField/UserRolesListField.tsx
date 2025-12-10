@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { User } from '@/shared/config/i18n/i18nTranslations';
-import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+import { i18Namespace, User } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { useGetUserRolesListQuery, UserRole } from '@/entities/user';
+import { useGetUserRolesListQuery, UserRole, convertRoleNameToEnumKey } from '@/entities/user';
 
 interface UserRolesListFieldProps {
 	selectedRoles?: number[];

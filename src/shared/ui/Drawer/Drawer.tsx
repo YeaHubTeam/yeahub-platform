@@ -16,6 +16,7 @@ export const drawerTestIds = {
 export interface DrawerProps {
 	isOpen: boolean;
 	position?: 'right' | 'left' | 'bottom';
+	width?: number;
 	onClose: () => void;
 	children: React.ReactNode;
 	className?: string;
@@ -34,6 +35,7 @@ const Drawer = ({
 	isOpen,
 	children,
 	position = 'right',
+	width,
 	onClose,
 	className,
 	rootName = 'mainLayout',
@@ -72,6 +74,10 @@ const Drawer = ({
 		}
 	};
 
+	const drawerWidth = width !== undefined ? width : 360;
+
+	const drawerStyle = position !== 'bottom' ? { width: `${drawerWidth}px` } : undefined;
+
 	return createPortal(
 		<div
 			aria-hidden={isOpen}
@@ -85,6 +91,7 @@ const Drawer = ({
 				className={classNames(styles['drawer'], styles[position], className, {
 					[styles['absolute']]: rootName === 'mainLayout',
 				})}
+				style={drawerStyle}
 				role="dialog"
 			>
 				{hasCloseButton && (

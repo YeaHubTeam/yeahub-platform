@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react';
 import Slider from 'react-slick';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 
 import { SkillsListTicker } from './SkillsListTicker';
 

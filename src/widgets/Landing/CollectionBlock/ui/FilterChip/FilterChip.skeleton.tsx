@@ -6,7 +6,7 @@ import styles from './FilterChip.module.css';
 export const FilterChipSkeleton = () => {
 	return (
 		<ChipSkeleton
-			variant={'big'}
+			variant="big"
 			className={styles.chip}
 			label="..."
 			withText={60}
