@@ -12,7 +12,6 @@ import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/
 import { UserSelect } from '@/entities/user';
 
 import { useCollectionsFilters } from '../../model/hooks/useCollectionsFilters';
-import { CollectionsFilterParams } from '../../model/types/types';
 
 interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
