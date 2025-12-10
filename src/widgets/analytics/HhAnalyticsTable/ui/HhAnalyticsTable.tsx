@@ -10,7 +10,7 @@ import { Text } from '@/shared/ui/Text';
 import styles from './HhAnalyticsTable.module.css';
 
 export type HhAnalyticsMode = 'skills' | 'keywords';
-export type HhAnalyticsRow = SelectedEntity<number> & {
+export type HhAnalyticsRow = SelectedEntity<string> & {
 	index: number;
 	count: number;
 	isTop20: boolean;
@@ -78,6 +78,7 @@ export const HhAnalyticsTable = ({ rows, mode }: HhAnalyticsTableProps) => {
 			renderTableColumnWidths={renderTableColumnWidths}
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
+			hasCopyButton
 		/>
 	);
 };

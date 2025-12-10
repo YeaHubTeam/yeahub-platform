@@ -51,7 +51,7 @@ const HhAnalyticsPage = () => {
 			const absolutelyIndex = idx + start;
 
 			return {
-				id: idx,
+				id: item.title,
 				index: absolutelyIndex + 1,
 				count: item.count,
 				title: item.title,

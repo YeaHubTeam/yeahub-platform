@@ -5,11 +5,10 @@ import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetResourcesListQuery } from '@/entities/resource';
+import { ResourcesStub, useGetResourcesListQuery } from '@/entities/resource';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
 import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
@@ -30,6 +29,7 @@ const PublicResourcesPage = () => {
 		filters,
 		onChangePage,
 		onResetFilters,
+		hasFilters,
 	} = useResourcesFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 
 	const {
@@ -45,6 +45,7 @@ const PublicResourcesPage = () => {
 	});
 
 	const resources = resourcesResponse?.data ?? [];
+	const hasResources = resources.length > 0;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -83,7 +84,7 @@ const PublicResourcesPage = () => {
 					</Flex>
 				</Flex>
 
-				{resourcesResponse ? (
+				{resourcesResponse && resourcesResponse.data && hasResources ? (
 					<>
 						<ResourcesList resources={resources} />
 						<TablePagination
@@ -94,7 +95,11 @@ const PublicResourcesPage = () => {
 						/>
 					</>
 				) : (
-					<Stub type="filter-empty" onClick={onResetFilters} />
+					<ResourcesStub
+						hasFilters={hasFilters}
+						hasResources={hasResources}
+						onResetFilters={onResetFilters}
+					/>
 				)}
 			</Card>
 
