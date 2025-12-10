@@ -9,12 +9,12 @@ import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
-import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { getIsVerified, getSpecializationId } from '@/entities/profile';
 import {
+	ResourcesStub,
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
 } from '@/entities/resource';
@@ -32,8 +32,15 @@ const ResourcesPage = () => {
 	const specializationId = useSelector(getSpecializationId);
 	const isEmailVerified = useAppSelector(getIsVerified);
 
-	const { onChangeTitle, onChangeSkills, onChangeTypes, filters, onChangePage, onResetFilters } =
-		useResourcesFilters({ page: 1 });
+	const {
+		onChangeTitle,
+		onChangeSkills,
+		onChangeTypes,
+		filters,
+		onChangePage,
+		onResetFilters,
+		hasFilters,
+	} = useResourcesFilters({ page: 1 });
 
 	const {
 		data: resourcesResponse,
@@ -49,6 +56,7 @@ const ResourcesPage = () => {
 	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 
 	const resources = resourcesResponse?.data ?? [];
+	const hasResources = resources.length > 0;
 
 	const { t } = useTranslation(i18Namespace.marketplace);
 
@@ -100,7 +108,7 @@ const ResourcesPage = () => {
 						{isEmailVerified && suggestButton}
 					</Flex>
 				</Flex>
-				{resourcesResponse ? (
+				{resourcesResponse && resourcesResponse.data && hasResources ? (
 					<>
 						<ResourcesList resources={resources} />
 						<TablePagination
@@ -111,7 +119,11 @@ const ResourcesPage = () => {
 						/>
 					</>
 				) : (
-					<Stub type="filter-empty" onClick={onResetFilters} />
+					<ResourcesStub
+						hasFilters={hasFilters}
+						hasResources={hasResources}
+						onResetFilters={onResetFilters}
+					/>
 				)}
 			</Card>
 			{isEmailVerified && (
