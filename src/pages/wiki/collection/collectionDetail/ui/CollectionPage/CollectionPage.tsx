@@ -18,7 +18,7 @@ import { useGetCollectionsFilterParams } from '@/features/collections/filterColl
 import {
 	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
-	usePublicCollectionNavigation,
+	useCollectionNavigation,
 } from '@/features/collections/navigateCollection';
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
 
@@ -51,7 +51,7 @@ export const CollectionPage = () => {
 		{ skip: !collection?.questionsCount },
 	);
 	const { onQueryNavigate } = useCollectionQueryNavigate();
-	const { prevId, nextId, prevPage, nextPage, isDisabled } = usePublicCollectionNavigation({
+	const { prevId, nextId, prevPage, nextPage, isDisabled } = useCollectionNavigation({
 		collectionId,
 		filter,
 	});
