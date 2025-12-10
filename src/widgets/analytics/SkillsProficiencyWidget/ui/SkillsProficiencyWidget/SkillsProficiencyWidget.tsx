@@ -12,10 +12,11 @@ import { useItemsSizeCalculation } from '../../model/hooks/useItemsSizeCalculati
 import { SkillProficiencyItem } from '../SkillProficiencyItem/SkillProficiencyItem';
 
 import styles from './SkillsProficiencyWidget.module.css';
+import { SkillsProficiencyWidgetSkeleton } from './SkillsProficiencyWidget.skeleton';
 
 export const SkillsProficiencyWidget = () => {
 	const specializationId = useAppSelector(getSpecializationId);
-	const { data: response } = useGetLearnedQuestionsQuery({
+	const { data: response, isLoading } = useGetLearnedQuestionsQuery({
 		page: 1,
 		limit: 6,
 		specializationId,
@@ -28,6 +29,8 @@ export const SkillsProficiencyWidget = () => {
 	});
 
 	const { t } = useTranslation(i18Namespace.analytics);
+
+	if (isLoading) return <SkillsProficiencyWidgetSkeleton />;
 
 	return (
 		<Card

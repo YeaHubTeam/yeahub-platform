@@ -20,6 +20,7 @@ import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton'
 const PublicCollectionsPage = () => {
 	const {
 		filters,
+		hasFilters,
 		onResetFilters,
 		onChangePage,
 		onChangeSpecialization,
@@ -58,6 +59,7 @@ const PublicCollectionsPage = () => {
 			<CollectionsContent
 				collections={collections.data}
 				filter={filters}
+				hasFilters={hasFilters}
 				resetFilters={onResetFilters}
 				pagination={
 					<TablePagination

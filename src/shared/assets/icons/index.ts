@@ -8,6 +8,7 @@ export { default as arrowRight } from './arrowRight.svg';
 export { default as arrowSelect } from './arrowSelect.svg';
 export { default as arrowShortDown } from './arrowShortDown.svg';
 export { default as arrowUpSquare } from './arrowUpSquare.svg';
+export { default as auth } from './auth.svg';
 export { default as authorized_profile_photo } from './authorized_profile_photo.avif';
 export { default as behance } from './behance.svg';
 export { default as book } from './book.svg';

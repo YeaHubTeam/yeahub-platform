@@ -54,6 +54,9 @@ export const AvosPromo = () => {
 					<Text variant="body3" className={styles.sum}>
 						{t(Landing.AVOS_PROMO_SUM)}
 					</Text>
+					<Text variant="body3" color="black-500" className={styles.sum}>
+						{t(Landing.AVOS_PROMO_WARN)}
+					</Text>
 					<Button size="large" className={styles.button} onClick={openTelegram}>
 						{t(Landing.AVOS_PROMO_JOIN_PRICE)}
 					</Button>

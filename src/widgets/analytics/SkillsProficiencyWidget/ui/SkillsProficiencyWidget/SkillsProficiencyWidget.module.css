@@ -3,6 +3,12 @@
   max-width: 455px;
 }
 
+@media (width > 1280px) {
+  .card-skeleton {
+    width: 455px;
+  }
+}
+
 @media (width < 1280px) {
   .card {
     padding: 16px;

@@ -551,6 +551,9 @@ export enum Resources {
 	WITHDRAW_TITLE = 'withdraw.title',
 	REQUESTS_TITLE_VIEW = 'requests.title.view',
 	REQUESTS_TITLE_EDIT = 'requests.title.edit',
+	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
+	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
+	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
 }
 
 export enum Questions {
@@ -611,6 +614,7 @@ export enum Questions {
 	LEARN = 'learn',
 	REPEAT = 'repeat',
 	FAVORITE = 'favorite',
+	REGISTER = 'register',
 	NAVIGATION_PREVIOUS = 'navigation.previous',
 	NAVIGATION_NEXT = 'navigation.next',
 	TOOLTIP_LEARN = 'tooltip.learn',
@@ -626,6 +630,7 @@ export enum Questions {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
+	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
 }
 
 export enum InterviewHistory {
@@ -776,8 +781,8 @@ export enum Collections {
 	TARIFF_FREE = 'tariff.free',
 	SELECT_SELECTED = 'select.selected',
 	EMPTY = 'empty',
-	NO_COLLECTIONS_TITLE = 'noCollections.title',
-	NO_COLLECTIONS_SUBTITLE = 'noCollections.subtitle',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -989,6 +994,7 @@ export enum Landing {
 	AVOS_PROMO_ABOUT = 'avos.promo.about',
 	AVOS_PROMO_LEARN = 'avos.promo.learn',
 	AVOS_PROMO_SUM = 'avos.promo.sum',
+	AVOS_PROMO_WARN = 'avos.promo.warn',
 	AVOS_PROMO_JOIN_PRICE = 'avos.promo.join.price',
 	AVOS_LISTEN_PRACTICE = 'avos.listen.practice',
 	AVOS_LISTEN_JOIN = 'avos.listen.join',

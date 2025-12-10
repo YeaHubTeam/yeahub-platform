@@ -22,6 +22,7 @@ interface CollectionsProps {
 	filter: CollectionsFilterParams;
 	resetFilters: () => void;
 	renderDrawer: () => ReactNode;
+	hasFilters: boolean;
 }
 
 export const CollectionsContent = ({
@@ -30,32 +31,16 @@ export const CollectionsContent = ({
 	resetFilters,
 	renderDrawer,
 	banner,
-	filter,
+	hasFilters,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
 	const { search } = useLocation();
-	const hasActiveFilters = Object.keys(filter).some((key) => {
-		if (key === 'page' || key === 'limit' || key === 'perPage') {
-			return false;
-		}
 
-		const value = filter[key as keyof CollectionsFilterParams];
+	const showEmptyCollectionsStub = collections.length === 0 && !hasFilters;
+	const showFilterEmptyStub = collections.length === 0 && hasFilters;
+	const showCollectionsList = collections.length > 0;
 
-		if (value === undefined || value === null) {
-			return false;
-		}
-
-		if (Array.isArray(value)) {
-			return value.length > 0;
-		}
-
-		if (typeof value === 'string') {
-			return value.trim() !== '';
-		}
-
-		return true;
-	});
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
@@ -66,17 +51,17 @@ export const CollectionsContent = ({
 					{isSmallScreen && renderDrawer()}
 				</Flex>
 				<Flex direction="column" gap="20">
-					{collections.length === 0 ? (
-						hasActiveFilters ? (
-							<Stub type="filter-empty" onClick={resetFilters} />
-						) : (
-							<Stub
-								type="empty"
-								title={t(Collections.NO_COLLECTIONS_TITLE)}
-								subtitle={t(Collections.NO_COLLECTIONS_SUBTITLE)}
-							/>
-						)
-					) : (
+					{showEmptyCollectionsStub && (
+						<Stub
+							type="empty"
+							title={t(Collections.STUB_EMPTY_TITLE)}
+							subtitle={t(Collections.STUB_EMPTY_SUBTITLE)}
+						/>
+					)}
+
+					{showFilterEmptyStub && <Stub type="filter-empty" onClick={resetFilters} />}
+
+					{showCollectionsList && (
 						<>
 							<CollectionsList collections={collections} queryFilter={search} />
 							{banner}
