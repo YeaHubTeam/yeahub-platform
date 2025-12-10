@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -12,23 +14,32 @@ export const AvosPromoSkeleton = () => {
 	return (
 		<Card className={styles.wrapper} withOutsideShadow>
 			<Flex justify="between" gap="20">
-				<div>
+				<Flex direction="column" className={styles.content}>
 					<TextSkeleton variant="body5" width="150px" />
 					<TextSkeleton variant="body3" width="250px" className={styles.subtitle} />
 
-					<Skeleton className={styles['tablet-screenshot']} width="100%" height={200} />
+					<Skeleton
+						className={classNames(
+							styles['tablet-screenshot'],
+							styles['tablet-screenshot-skeleton'],
+						)}
+					/>
 
 					<Flex wrap="wrap" gap={isMobileS ? '8' : '12'} className={styles.chips}>
-						{new Array(5).map((_, i) => (
-							<Skeleton key={i} width={isMobileS ? 80 : 100} height={32} borderRadius="16px" />
+						{Array.from({ length: 3 }, (_, i) => (
+							<Skeleton key={i} width={150} height={42} borderRadius="16px" />
 						))}
 					</Flex>
 
 					<TextSkeleton variant="body3" width="200px" className={styles.sum} />
-					<Skeleton width={200} height={48} className={styles.button} borderRadius="8px" />
-				</div>
+					<Skeleton
+						height={48}
+						className={classNames(styles.button, styles['button-skeleton'])}
+						borderRadius="8px"
+					/>
+				</Flex>
 
-				<Skeleton className={styles.screenshot} width={500} height={350} />
+				<Skeleton className={styles.screenshot} width={'100%'} height={350} />
 			</Flex>
 		</Card>
 	);
