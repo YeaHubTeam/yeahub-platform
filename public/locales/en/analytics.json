@@ -70,7 +70,7 @@
 			"count": "Count"
 		}
 	},
-	"topUsers": {
+	"top.users": {
 		"title": {
 			"widget": "Top 3 users by speciality"
 		},

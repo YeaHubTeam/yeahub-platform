@@ -2,22 +2,20 @@ import classNames from 'classnames';
 
 import { Avatar } from '@/shared/ui/Avatar';
 
-import { MAX_RATING } from '../../model/constants';
-
 import styles from './AvatarWithRating.module.css';
 
 interface AvatarWithRatingProps {
 	avatarUrl: string;
 	score: number;
 	radius: number;
-	maxRating?: number;
+	maxRating: number;
 	className?: string;
 }
 
 export const AvatarWithRating = ({
 	avatarUrl,
 	score,
-	maxRating = MAX_RATING,
+	maxRating,
 	radius,
 	className,
 }: AvatarWithRatingProps) => {

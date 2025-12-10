@@ -9,7 +9,7 @@ import { interviewHandlers } from '@/entities/quiz';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
 import { specializationsProgressHandlers } from '@/entities/specialization';
-import { usersRatingHandlers } from '@/entities/usersRating';
+import { usersRatingHandlers } from '@/entities/user';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';

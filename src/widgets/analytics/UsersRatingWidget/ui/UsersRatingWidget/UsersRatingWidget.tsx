@@ -7,21 +7,24 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetSpecializationByIdQuery } from '@/entities/specialization';
-import { useGetUsersRatingBySpecializationQuery } from '@/entities/usersRating';
+import { useGetUsersRatingBySpecializationQuery } from '@/entities/user';
 
 import { TOP_PLACES_COUNT } from '../../model/constants';
 import { UserRatingItem } from '../UserRatingItem/UserRatingItem';
 
 import styles from './UsersRatingWidget.module.css';
+import { UsersRatingWidgetSkeleton } from './UsersRatingWidget.skeleton';
 
 export const UsersRatingWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = String(useAppSelector(getSpecializationId));
-	const { data: specialization } = useGetSpecializationByIdQuery(specializationId);
-	const { data: users = [] } = useGetUsersRatingBySpecializationQuery(specializationId);
-	const topUsers = users.slice(0, TOP_PLACES_COUNT);
+	const { data, isLoading } = useGetUsersRatingBySpecializationQuery(specializationId);
+	const topUsers = data?.users.slice(0, TOP_PLACES_COUNT) || [];
 	const topUsersIsEmpty = topUsers.length === 0;
+	const specialization = data?.specialization;
+	const questionsCount = data?.questionsCount ?? 0;
+
+	if (isLoading) return <UsersRatingWidgetSkeleton />;
 
 	return (
 		<Card
@@ -33,7 +36,12 @@ export const UsersRatingWidget = () => {
 			{!topUsersIsEmpty ? (
 				<Flex direction="row" gap="16" align="end" justify="center">
 					{topUsers.map((data, i) => (
-						<UserRatingItem key={data.userId} userRating={data} place={(i + 1) as 1 | 2 | 3} />
+						<UserRatingItem
+							key={data.userId}
+							userRating={data}
+							place={(i + 1) as 1 | 2 | 3}
+							questionsCount={questionsCount}
+						/>
 					))}
 				</Flex>
 			) : (
