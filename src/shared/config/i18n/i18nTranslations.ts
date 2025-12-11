@@ -994,6 +994,7 @@ export enum Landing {
 	AVOS_PROMO_ABOUT = 'avos.promo.about',
 	AVOS_PROMO_LEARN = 'avos.promo.learn',
 	AVOS_PROMO_SUM = 'avos.promo.sum',
+	AVOS_PROMO_WARN = 'avos.promo.warn',
 	AVOS_PROMO_JOIN_PRICE = 'avos.promo.join.price',
 	AVOS_LISTEN_PRACTICE = 'avos.listen.practice',
 	AVOS_LISTEN_JOIN = 'avos.listen.join',
