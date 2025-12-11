@@ -7,6 +7,7 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import { ChooseCollectionAccess, CollectionsFilterParams } from '@/entities/collection';
+import { PublicCompanySelect } from '@/entities/company';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 import { UserSelect } from '@/entities/user';
@@ -17,6 +18,7 @@ interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
 	onChangeTitle?: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
+	onChangeCompany?: (company: CollectionsFilterParams['company']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
 	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
 	onChangeIsMy?: (isMy?: CollectionsFilterParams['isMy']) => void;
@@ -26,10 +28,11 @@ export const CollectionsFilters = ({
 	filter,
 	onChangeTitle,
 	onChangeSpecialization,
+	onChangeCompany,
 	onChangeIsFree,
 	onChangeIsMy,
 }: CollectionsFiltersProps) => {
-	const { specialization, isFree, isMy, title } = filter;
+	const { specialization, isFree, isMy, title, company} = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -75,6 +78,9 @@ export const CollectionsFilters = ({
 					selectedSpecialization={specialization}
 					onChangeSpecialization={handleSpecializationChange}
 				/>
+			)}
+			{(project === 'landing' || project === 'platform') && (
+				<PublicCompanySelect onChange={onChangeCompany} value={company} />
 			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 
