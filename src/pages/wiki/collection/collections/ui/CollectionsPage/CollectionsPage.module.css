@@ -4,6 +4,7 @@
 }
 
 .filters {
+  z-index: 1;
   flex-shrink: 0;
   width: 360px;
   height: fit-content;
@@ -14,5 +15,4 @@
   .filters {
     display: none;
   }
-
 }

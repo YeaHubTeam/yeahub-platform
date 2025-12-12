@@ -12,6 +12,7 @@ export { CollectionForm } from './ui/CollectionForm/CollectionForm';
 export * from './api/collectionApi';
 
 export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollectionAccess';
+export { KeywordSelect } from './ui/KeywordSelect/KeywordSelect';
 export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
 export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';
