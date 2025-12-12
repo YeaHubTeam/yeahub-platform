@@ -262,6 +262,34 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			},
+			"user": {
+				"not.found": "User not found."
+			},
+			"auth": {
+				"unauthorized": "The user is not authorized",
+				"user": {
+					"verified": "No access to functionality"
+				}
+			},
+			"tinify": {
+				"compress": {
+					"failed": "Failed to compress image with TinyPNG"
+				},
+				"resize": {
+					"failed": "Failed to resize image"
+				}
+			},
+			"title": {
+				"conflict": {
+					"specialization": "Specialization with this title already exists"
+				}
+			}
+		},
+		"topics": {
+			"create": {
+				"success": "Topic successfully created",
+				"failed": "Topic could not be created"
 			}
 		},
 		"topics": {
