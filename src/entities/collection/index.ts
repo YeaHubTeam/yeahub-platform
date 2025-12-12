@@ -3,8 +3,9 @@ export type {
 	CollectionTariff,
 	CreateOrEditCollectionFormValues,
 } from './model/types/collection';
+export type { CollectionsFilterParams } from './model/types/filters';
 export { LS_INIT_COLLECTION_ID } from './model/constants/collection';
-export { getCollectionRoute } from './model/lib/getCollectionRoute';
+export { getCollectionRoute } from '@/entities/collection/lib/getCollectionRoute';
 export { collectionsMock } from './api/__mock__/data';
 export { collectionHandlers } from './api/__mock__/index';
 export { CollectionForm } from './ui/CollectionForm/CollectionForm';
@@ -18,5 +19,4 @@ export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPre
 export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccessInfo';
 export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
 export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
-export { ChooseCollectionSpecializationSkeleton } from './ui/ChooseCollectionSpecialization/ChooseCollectionSpecialization.skeleton';
 export { CollectionWarningInfo } from './ui/СollectionWarningInfo/CollectionWarningInfo';

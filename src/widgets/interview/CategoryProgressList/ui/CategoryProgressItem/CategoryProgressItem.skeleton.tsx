@@ -1,4 +1,4 @@
-import { BarChartSkeleton } from '@/shared/ui/charts/BarChart';
+import { BarChartSkeleton } from '@/shared/ui/charts';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 

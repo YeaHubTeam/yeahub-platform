@@ -1,6 +1,6 @@
-import type { FilterFromUser } from '@/shared/hooks';
+import { QuestionsFilterParams } from '@/entities/question';
 
 export type QuestionNavigation = {
 	questionId: number | string;
-	filter: FilterFromUser;
+	filter: QuestionsFilterParams;
 };

@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import type { Specialization } from '@/entities/specialization';
+import type { Specialization } from '@/entities/specialization/@x/skill';
 
 export interface Skill {
 	id: number;
@@ -17,6 +17,7 @@ export type GetSkillsListParamsRequest = {
 	title?: string;
 	limit?: number;
 	specializations?: number[] | number;
+	authorId?: string;
 };
 export type GetSkillsListResponse = Response<Skill[]>;
 
@@ -32,16 +33,6 @@ export type CreateOrEditSkillFormValues = Pick<
 	skillImage?: string;
 	specializations?: number[];
 };
-
-export type EditSkillParamsRequest = GetSkillByIdParamsRequest;
-
-export type ErrorResponce = {
-	message: string;
-};
-
-export type EditSkillBodyRequest = CreateOrEditSkillFormValues;
-
-export type EditSkillResponse = Skill | ErrorResponce;
 
 export interface PopularSkill {
 	id: number;

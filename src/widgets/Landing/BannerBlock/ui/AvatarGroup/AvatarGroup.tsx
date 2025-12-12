@@ -2,10 +2,7 @@ import classNames from 'classnames';
 
 import { Flex } from '@/shared/ui/Flex';
 
-import avatar1 from '@/widgets/Landing/BannerBlock/model/assets/avatar1.avif';
-import avatar2 from '@/widgets/Landing/BannerBlock/model/assets/avatar2.avif';
-import avatar3 from '@/widgets/Landing/BannerBlock/model/assets/avatar3.avif';
-import avatar4 from '@/widgets/Landing/BannerBlock/model/assets/avatar4.avif';
+import { avatar1, avatar2, avatar3, avatar4 } from '../../model/assets';
 
 import styles from './AvatarGroup.module.css';
 

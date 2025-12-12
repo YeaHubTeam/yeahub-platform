@@ -5,7 +5,7 @@ import { FooterLinksSkeleton } from '../FooterLinks/FooterLinks.skeleton';
 
 export const FooterMetaSkeleton = () => {
 	return (
-		<Flex dataTestId={'FooterMetaSkeleton'} justify="between" align="center">
+		<Flex dataTestId="FooterMetaSkeleton" justify="between" align="center">
 			<FooterCopyrightSkeleton />
 			<FooterLinksSkeleton />
 		</Flex>

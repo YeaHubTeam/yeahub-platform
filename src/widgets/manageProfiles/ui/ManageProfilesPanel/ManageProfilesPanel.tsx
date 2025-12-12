@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Profile } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Tooltip } from '@/shared/ui/Tooltip';
@@ -17,14 +16,13 @@ import {
 
 import { CreateProfileButton } from '@/features/profile/createProfile';
 
-import { SwitchSpecializationInfoButton } from '@/widgets/manageProfiles/ui/SwitchSpecializationInfoButton';
-
 import {
 	MEMBER_PROFILES_COUNT_LIMIT,
 	NOT_MEMBER_PROFILES_COUNT_LIMIT,
 } from '../../model/constants/manageProfilesContants';
 import { ManageProfilesHeader } from '../ManageProfilesHeader/ManageProfilesHeader';
 import { ProfilesList } from '../ProfilesList/ProfilesList';
+import { SwitchSpecializationInfoButton } from '../SwitchSpecializationInfoButton/SwitchSpecializationInfoButton';
 
 import styles from './ManageProfilesPanel.module.css';
 
@@ -78,14 +76,10 @@ export const ManageProfilesPanel = () => {
 				isEmptySpecialization={isEmptySpecialization}
 				className={styles.mb}
 			/>
-			<div className={styles.tooltip}>
+			<div>
 				<Flex direction="row" justify="between" gap="20" align="center" wrap="wrap">
 					<SwitchSpecializationInfoButton />
-					<Tooltip
-						title={t(tooltipEntry)}
-						className={styles.tooltip}
-						shouldShowTooltip={createProfileDisabled}
-					>
+					<Tooltip title={t(tooltipEntry)} shouldShowTooltip={createProfileDisabled}>
 						<CreateProfileButton
 							className={styles['create-button']}
 							disabled={createProfileDisabled}

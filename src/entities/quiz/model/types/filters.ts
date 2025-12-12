@@ -1,4 +1,4 @@
-import { QuestionModeType } from '@/entities/quiz';
+import { QuestionModeType } from './quiz';
 
 export interface CreateQuizFilterParams {
 	skills?: number[];

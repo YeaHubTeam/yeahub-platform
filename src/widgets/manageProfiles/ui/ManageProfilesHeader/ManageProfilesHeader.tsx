@@ -1,15 +1,12 @@
-// src/pages/some-page/ui/ManageProfilesPanel/ManageProfilesHeader/ManageProfilesHeader.tsx
-
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Profile } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { ProfilesCounter } from '../ProfilesCounter/ProfilesCounter';
 
-import styles from './ManageProfilesHeader.module.css'; // Можно использовать стили родителя или создать свои
+import styles from './ManageProfilesHeader.module.css';
 
 interface ManageProfilesHeaderProps {
 	isMember: boolean;

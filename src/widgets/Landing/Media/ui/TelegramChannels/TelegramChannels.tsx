@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Media } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Media } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { MediaLinksList } from '@/entities/media';
+import { MediaLinksList } from '@/entities/socialMedia';
 
 import styles from './TelegramChannels.module.css';
 

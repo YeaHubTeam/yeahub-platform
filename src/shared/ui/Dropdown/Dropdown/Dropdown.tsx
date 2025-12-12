@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
 
-import Arrow from '@/shared/assets/icons/ArrowSelect.svg';
-import Lens from '@/shared/assets/icons/Magnifer.svg';
-import { useOutsideClick } from '@/shared/hooks';
+import Arrow from '@/shared/assets/icons/arrowSelect.svg';
+import Lens from '@/shared/assets/icons/magnifer.svg';
+import { useOutsideClick } from '@/shared/libs';
 import { Icon } from '@/shared/ui/Icon';
 
 import { DropdownSize } from '../DropdownTypes';

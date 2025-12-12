@@ -1,19 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector, useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useAppSelector, useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { OrderFilter } from '@/shared/ui/OrderFilter';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import { getSpecializationId } from '@/entities/profile';
-import { ChooseQuestionComplexity } from '@/entities/question';
+import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
 
-import { QuestionsFilterParams } from '../../model/types/filters';
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
 import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
 import { QuestionStatusFilter } from '../QuestionStatusFilter/QuestionStatusFilter';

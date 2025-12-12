@@ -1,6 +1,6 @@
-import { useQueryFilterParams } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/libs';
 
-import { CollectionsFilterParams } from '../types/types';
+import { CollectionsFilterParams } from '@/entities/collection';
 
 import { useGetCollectionsFilterParams } from './useGetCollectionsFilterParams';
 
@@ -16,6 +16,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		Boolean(filters.title) ||
 		Boolean(filters.specialization) ||
 		Boolean(filters.authorId) ||
+		Boolean(filters.isMy) ||
 		Boolean(filters.keyword);
 
 	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
@@ -48,6 +49,14 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onFilterChange({ keyword, page: 1 });
 	};
 
+	const onChangeIsMy = (isMy: CollectionsFilterParams['isMy']) => {
+		onFilterChange({
+			isMy,
+			page: 1,
+			authorId: undefined,
+		});
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -57,6 +66,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		onChangeIsFree,
 		onChangePage,
 		onChangeAuthor,
+		onChangeIsMy,
 		onChangeKeyword,
 	};
 };

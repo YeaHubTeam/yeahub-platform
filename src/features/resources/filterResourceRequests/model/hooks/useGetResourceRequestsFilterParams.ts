@@ -13,6 +13,7 @@ export const useGetResourceRequestsFilterParams = (initialParams: ResourceReques
 			? (parsedParams.types.split(',') as ResourceTypeCode[])
 			: initialParams.types,
 		status: (parsedParams.status as ResourceRequestsFilterParams['status']) || initialParams.status,
+		skills: parsedParams.skills ? parsedParams.skills.split(',').map(Number) : initialParams.skills,
 	};
 
 	return currentParams;

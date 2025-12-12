@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 
 import styles from './Loader.module.css';
@@ -19,11 +19,11 @@ export const Loader = ({ hasText = true, style, className }: LoaderProps) => {
 
 	return (
 		<div
-			data-testid={'Loader_Wrapper'}
+			data-testid="Loader_Wrapper"
 			className={classNames(styles.wrapper, className)}
 			style={style}
 		>
-			<Card dataTestId={'LoaderCard'}>
+			<Card dataTestId="LoaderCard">
 				<div className={styles.content}>
 					<span className={styles.loader}></span>
 					{hasText && <span className={styles.text}>{t(Translation.LOADING)}</span>}

@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
@@ -10,7 +10,7 @@ export const GurusBlockSkeleton = () => {
 	return (
 		<Flex direction="column" gap="12">
 			<TextSkeleton variant={isMobile ? 'body5-accent' : 'head3'} width={150} />
-			<TextSkeleton variant="body3" width={'100%'} />
+			<TextSkeleton variant="body3" width="100%" />
 			<GurusListSkeleton variant="list-with-borders" />
 		</Flex>
 	);

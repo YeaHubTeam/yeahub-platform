@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { clearStore } from '@/shared/config/store/clearStore';
+import { clearStore } from '@/shared/config';
 
 import { ActiveSubscriptionState, UserSubscription } from '../types/subscription';
 
