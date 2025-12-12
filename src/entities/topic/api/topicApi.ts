@@ -1,7 +1,12 @@
 import { ApiTags, baseApi } from '@/shared/config';
 
 import { topicApiUrl } from '../model/constants/topicConstants';
-import { GetTopicsListParamsRequest, GetTopicsListResponse } from '../model/types/topic';
+import {
+	GetTopicsListParamsRequest,
+	GetTopicsListResponse,
+	GetTopicByIdParamsRequest,
+	GetTopicByIdResponse,
+} from '../model/types/topic';
 
 export const topicApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -12,7 +17,13 @@ export const topicApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TOPICS],
 		}),
+		getTopicById: build.query<GetTopicByIdResponse, GetTopicByIdParamsRequest>({
+			query: (params) => ({
+				url: topicApiUrl.getTopicById(params.topicId),
+			}),
+			providesTags: [ApiTags.TOPICS],
+		}),
 	}),
 });
 
-export const { useGetTopicsListQuery } = topicApi;
+export const { useGetTopicsListQuery, useGetTopicByIdQuery } = topicApi;
