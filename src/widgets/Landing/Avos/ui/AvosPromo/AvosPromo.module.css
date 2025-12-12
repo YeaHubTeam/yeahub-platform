@@ -6,11 +6,11 @@
   margin-top: 20px;
 }
 
-.subtitle{
+.subtitle {
   margin-top: 8px;
 }
 
-.sum{
+.sum {
   margin-top: 16px;
 }
 
@@ -19,25 +19,41 @@
   width: 240px;
 }
 
+.button-skeleton {
+  margin-top: auto;
+}
+
 .screenshot {
   max-width: 50%;
   object-fit: contain;
 }
 
-.tablet-screenshot{
+.tablet-screenshot {
   display: none;
   object-fit: contain;
   width: 100%;
 }
 
 @media (width < 1024px) {
+  .content {
+    width: 100%;
+  }
+
   .screenshot {
     display: none;
   }
 
-  .tablet-screenshot{
+  .tablet-screenshot {
     display: block;
     margin-top: 20px;
+  }
+
+  .button-skeleton {
+    margin-top: 20px;
+  }
+
+  .tablet-screenshot-skeleton {
+    aspect-ratio: 1.8;
   }
 }
 
@@ -53,9 +69,13 @@
     padding: 12px;
   }
 
-  .tablet-screenshot{
-    justify-self:center; 
+  .tablet-screenshot {
+    justify-self: center;
     max-width: 304px;
+  }
+
+  .tablet-screenshot-skeleton {
+    align-self: center;
   }
 
   .button {
