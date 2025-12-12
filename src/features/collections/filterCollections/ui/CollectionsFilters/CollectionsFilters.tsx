@@ -22,7 +22,7 @@ interface CollectionsFiltersProps {
 	onChangeTitle?: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
-	onChangeKeyword: (keyword: CollectionsFilterParams['keyword']) => void;
+	onChangeKeyword?: (keyword: CollectionsFilterParams['keyword']) => void;
 	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
 	onChangeIsMy?: (isMy?: CollectionsFilterParams['isMy']) => void;
 }
@@ -35,7 +35,7 @@ export const CollectionsFilters = ({
 	onChangeKeyword,
 	onChangeIsMy,
 }: CollectionsFiltersProps) => {
-	const { title, specialization, isFree, keyword } = filter;
+	const { title, specialization, isFree, keyword, isMy } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -83,7 +83,7 @@ export const CollectionsFilters = ({
 				/>
 			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
-			<KeywordSelect value={keyword} onChange={onChangeKeyword} />
+			{onChangeKeyword && <KeywordSelect value={keyword} onChange={onChangeKeyword} />}
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);

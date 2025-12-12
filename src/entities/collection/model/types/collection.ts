@@ -57,9 +57,11 @@ export type GetCollectionByIdParamsRequest = {
 	limit?: number;
 };
 
-type Keyword = {
-	collectionId: number;
-	keywords: string[];
+export type GetCollectionKeywordsParamsRequest = {
+	page?: number;
+	limit?: number;
 };
 
-export type GetCollectionKeywordsResponse = Keyword[];
+export type GetCollectionKeywordsResponse = Omit<Response<string>, 'data'> & {
+	keywords: string[];
+};

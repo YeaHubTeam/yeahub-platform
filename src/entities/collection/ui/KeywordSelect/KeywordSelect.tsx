@@ -22,7 +22,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 
 	const [searchValue, setSearchValue] = useState('');
 
-	const { data: keywordsResponse, isFetching } = useGetCollectionKeywordsQuery();
+	const { data: keywordsResponse, isFetching } = useGetCollectionKeywordsQuery({});
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
@@ -43,7 +43,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	};
 
 	const options = useMemo(() => {
-		const keywords = keywordsResponse || [];
+		const keywords = keywordsResponse?.keywords || [];
 
 		const filteredKeywords = searchValue
 			? keywords.filter((keyword) => keyword.toLowerCase().includes(searchValue.toLowerCase()))

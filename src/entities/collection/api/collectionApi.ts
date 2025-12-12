@@ -5,6 +5,7 @@ import { collectionApiUrls } from '../model/constants/collection';
 import {
 	GetCollectionByIdParamsRequest,
 	GetCollectionByIdResponse,
+	GetCollectionKeywordsParamsRequest,
 	GetCollectionKeywordsResponse,
 	GetCollectionQuestionsResponse,
 	GetCollectionsListParamsRequest,
@@ -54,15 +55,18 @@ const collectionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
-		getCollectionKeywords: build.query<string[], void>({
+		getCollectionKeywords: build.query<
+			GetCollectionKeywordsResponse,
+			GetCollectionKeywordsParamsRequest
+		>({
 			query: () => ({
 				url: route(collectionApiUrls.getCollectionKeywords),
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
-			transformResponse: (response: GetCollectionKeywordsResponse): string[] => {
-				const allKeywords = response.flatMap(({ keywords }) => keywords);
-				return Array.from(new Set(allKeywords)).sort((a, b) => a.localeCompare(b, ['en', 'ru']));
-			},
+			// transformResponse: (response: GetCollectionKeywordsResponse): string[] => {
+			// 	const allKeywords = response.flatMap(({ keywords }) => keywords);
+			// 	return Array.from(new Set(allKeywords)).sort((a, b) => a.localeCompare(b, ['en', 'ru']));
+			// },
 		}),
 	}),
 });
