@@ -1,8 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Collections } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
