@@ -51,3 +51,10 @@ export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['
 export type ResourceRequestFormValues = CreateOrEditOrViewResourceFormValues & {
 	status: ResourceRequestStatus;
 };
+
+export type ResourceRequestCreateError =
+	| 'auth.auth.unauthorized'
+	| 'auth.user.verified'
+	| 'externalproducts.skill.not_found'
+	| 'externalproducts.specialization.not_found'
+	| 'externalproducts.resource_type.not_found';
