@@ -1,0 +1,14 @@
+.user-rating {
+  padding: 12px 4px;
+  width: 100%;
+}
+
+.user-name {
+  max-width: 87px;
+}
+
+@media (width < 480px) {
+  .user-name {
+    max-width: 58px;
+  }
+}

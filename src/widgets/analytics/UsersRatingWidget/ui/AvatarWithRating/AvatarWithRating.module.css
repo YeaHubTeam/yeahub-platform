@@ -1,0 +1,27 @@
+.avatar-with-rating {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-color: var(--color-white-900);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.empty-circle {
+  stroke: var(--color-purple-100);
+  fill: transparent;
+}
+
+.filled-circle {
+  stroke: var(--color-purple-700);
+  stroke-linecap: round;
+  fill: transparent;
+  transition: 'stroke-dashoffset 0.3s'
+}
