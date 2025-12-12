@@ -20,7 +20,7 @@ type CompanySelectProps = Omit<
 
 export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps) => {
 	const { t } = useTranslation(i18Namespace.companies);
-	const { data: companies } = useGetCompaniesListQuery({ limit: 100 });
+	const { data: companies } = useGetCompaniesListQuery({ limit: 200 });
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue || disabled) return;

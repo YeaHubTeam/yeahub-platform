@@ -73,6 +73,10 @@
 		"link": "Join",
 		"watch.button": "Watch"
 	},
+	"stub.empty": {
+		"title": "No collections found yet",
+		"subtitle": "Collections are added periodically, just wait a bit"
+	},
 	"sort": {
 		"author": {
 			"title": "My Collections"

@@ -19,7 +19,7 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
+	const { filters, hasFilters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
 		useCollectionsFilters({
 			page: 1,
 		});
@@ -63,6 +63,7 @@ const CollectionsPage = () => {
 			<CollectionsContent
 				collections={allCollections.data}
 				filter={filters}
+				hasFilters={hasFilters}
 				resetFilters={onResetFilters}
 				pagination={
 					<TablePagination
