@@ -87,8 +87,10 @@ export type ActiveQuiz = Omit<Quiz, 'endDate'>;
 
 export type CreateNewQuizResponse = ActiveQuiz;
 
-export interface CreateNewMockQuizParamsRequest
-	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
+export interface CreateNewMockQuizParamsRequest extends Omit<
+	CreateNewQuizParamsRequest,
+	'profileId'
+> {
 	specialization?: number[] | number;
 }
 
