@@ -226,6 +226,11 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_LINKED_TO_ANOTHER_USER = 'toast.auth.telegram.verification.link.error.linked.to.another.user',
 	TOAST_AUTH_TELEGRAM_VERIFY_DENIED = 'toast.auth.telegram.verification.link.error.verify.denied',
 	TOAST_AUTH_TELEGRAM_USER_NOT_FOUND = 'toast.auth.telegram.verification.link.error.user.not.found',
+	TOAST_QUESTIONS_CREATE_USER_NOT_FOUND = 'toast.questions.create.user.not.found',
+	TOAST_QUESTIONS_CREATE_AUTH_UNAUTHORIZED = 'toast.questions.create.auth.unauthorized',
+	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
+	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
+	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
 }
 
 export enum Profile {
