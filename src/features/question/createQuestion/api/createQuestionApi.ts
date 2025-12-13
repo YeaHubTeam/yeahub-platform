@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateQuestionsApiErrorMessage } from '../lib/utils/getCreateQuestionsApiErrorMessage';
 import { createQuestionApiUrls } from '../model/constants/createQuestionConstants';
 import {
 	CreateQuestionBodyRequest,
@@ -23,7 +24,7 @@ export const createQuestionApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.questions.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_QUESTION_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_QUESTION_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateQuestionsApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

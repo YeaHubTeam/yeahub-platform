@@ -207,7 +207,22 @@
 			},
 			"create": {
 				"success": "The question was created successfully",
-				"failed": "Failed to create a question"
+				"failed": "Failed to create a question",
+				"user": {
+					"not.found": "User not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"question": {
+					"title.conflict": "Question with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "The question was successfully changed",
