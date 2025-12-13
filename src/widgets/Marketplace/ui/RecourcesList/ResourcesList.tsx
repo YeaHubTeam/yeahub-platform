@@ -6,7 +6,7 @@ interface ResourcesListProps {
 	resources?: Resource[];
 }
 
-export const ResourcesList = ({ resources = resourcesMock }: ResourcesListProps) => {
+export const ResourcesList = ({ resources = resourcesMock.data }: ResourcesListProps) => {
 	return (
 		<Flex direction="column" gap="20">
 			{resources.map((resource) => (

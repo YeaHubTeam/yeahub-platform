@@ -1,5 +1,6 @@
 export * from './model/types/resource';
 export * from './api/__mock__/data/resourcesMock';
+export * from './api/__mock__';
 export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
