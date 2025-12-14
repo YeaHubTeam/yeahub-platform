@@ -81,35 +81,6 @@
       document.head.appendChild(metaTag);
     }
   </script>
-
-  <script defer>
-    document.addEventListener('keydown', function (e) {
-      if (
-        (e.ctrlKey && e.key.toLowerCase() === 'c') ||
-        (e.ctrlKey && e.key.toLowerCase() === 'u') ||
-        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i')
-      ) {
-        e.preventDefault();
-      }
-    });
-
-    document.addEventListener('copy', function (e) {
-      const selectedText = window.getSelection().toString();
-      const targetElement = e.target;
-
-      if (
-        targetElement.tagName.toLowerCase() === 'input' ||
-        targetElement.tagName.toLowerCase() === 'textarea'
-      ) {
-        e.clipboardData.setData('text/plain', selectedText);
-      } else if (selectedText) {
-        const copyText = 'https://yeahub.ru/ готовься к собеседованиям с нами';
-        e.clipboardData.setData('text/plain', copyText);
-      }
-
-      e.preventDefault();
-    });
-  </script>
   <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
 
   <noscript>

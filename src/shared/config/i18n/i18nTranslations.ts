@@ -781,6 +781,8 @@ export enum Collections {
 	TARIFF_FREE = 'tariff.free',
 	SELECT_SELECTED = 'select.selected',
 	EMPTY = 'empty',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
