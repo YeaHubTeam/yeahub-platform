@@ -2,9 +2,17 @@
   margin-top: 20px;
 }
 
+.inner-wrap {
+  width: 100%;
+}
+
 .button {
-  align-self:flex-end;
+  align-self: flex-end;
   min-width: 240px;
+}
+
+.button-skeleton {
+  height: 48px
 }
 
 @media (width < 1200px) {
@@ -12,13 +20,9 @@
     flex-direction: column;
     margin-bottom: 10px;
   }
-} 
+}
 
 @media (width < 480px) {
-  .headphones {
-    align-self: flex-start;
-  }
-
   .button {
     margin-top: 10px;
     width: 100%;
