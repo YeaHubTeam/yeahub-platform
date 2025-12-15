@@ -106,3 +106,12 @@ export interface ResourceType {
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;
+
+export type ResourceCreateError =
+	| 'auth.auth.unauthorized'
+	| 'auth.user.verified'
+	| 'externalproducts.skill.not_found'
+	| 'externalproducts.specialization.not_found'
+	| 'externalproducts.resource_type.not_found'
+	| 'tinify.tinify.compress_failed'
+	| 'tinify.tinify.resize_failed';
