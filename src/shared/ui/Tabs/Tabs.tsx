@@ -52,7 +52,7 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
 			<Flex
 				componentType="ul"
-				gap="24"
+				gap="10"
 				className={styles['tab-list']}
 				role="tablist"
 				data-testid="Tabs_List"
@@ -67,7 +67,7 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 						tabIndex={0}
 						data-testid={`Tabs_Item_${tab.id}`}
 					>
-						<Text variant="body4" color={activeTab.id === tab.id ? 'black-800' : 'black-500'}>
+						<Text variant="body4" color={activeTab.id === tab.id ? 'purple-700' : 'black-500'}>
 							{tab.label} {(tab.count ?? 0) > 0 && `(${tab.count})`}
 						</Text>
 					</li>
