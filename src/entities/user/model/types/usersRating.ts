@@ -5,12 +5,14 @@ export interface UserRating {
 	username: string;
 	avatarUrl: string;
 	ratingScore: number;
+	place: number;
 }
 
 export type UsersRatingBySpecialization = {
 	specialization: Specialization;
 	questionsCount: number;
 	users: UserRating[];
+	updatedAt: string;
 };
 
 export type GetUsersRatingBySpecializationResponse = UsersRatingBySpecialization;

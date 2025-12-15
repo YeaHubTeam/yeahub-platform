@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -15,9 +17,11 @@ interface AnalyticPageTemplateMobileListProps {
 export const AnalyticPageTemplateMobileList = ({ items }: AnalyticPageTemplateMobileListProps) => {
 	return (
 		<Flex componentType="ul" direction="column" gap="16">
-			{items.map((item) => (
-				<li key={item.title}>
-					<Card className={styles.card}>
+			{items.map((item, i) => (
+				<li key={i}>
+					<Card
+						className={classNames(styles.card, item.isCurrentUser && styles['current-user-rating'])}
+					>
 						<Flex gap="12" direction="column">
 							{item.badge && (
 								<StatusChip
@@ -37,6 +41,7 @@ export const AnalyticPageTemplateMobileList = ({ items }: AnalyticPageTemplateMo
 									</Flex>
 								</>
 							))}
+							{item.suffix}
 						</Flex>
 					</Card>
 				</li>

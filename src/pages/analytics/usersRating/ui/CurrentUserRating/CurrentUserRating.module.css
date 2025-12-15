@@ -1,0 +1,38 @@
+.wrapper {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: var(--color-purple-100);
+}
+
+.wrapper:hover {
+  background-color: var(--color-purple-200);
+}
+
+.index {
+  padding: 13px 14px;
+  width: auto;
+  min-width: 4.5%;
+  text-wrap: nowrap;
+}
+
+.place {
+  padding: 13px 14px;
+  width: 8%;
+}
+
+.user {
+  padding: 13px 14px 13px 20px;
+  width: 47.5%;
+}
+
+.progress {
+  padding: 13px 20px 13px 14px;
+  width: 20%;
+}   
+
+.questions-count {
+  padding: 13px 20px 13px 14px;
+  width: 20%;
+}
+ 

@@ -70,12 +70,27 @@
 			"count": "Count"
 		}
 	},
-	"top.users": {
+	"users.rating": {
+		"answers": "Answers",
 		"title": {
-			"widget": "Top 3 users by speciality"
+			"widget": "Top 3 users by speciality {{specialization}}",
+			"page": "{{specialization}} speciality rating"
 		},
 		"no.data": {
-			"widget": "No top users found for this speciality"
+			"widget": "No top users found for this speciality",
+			"page": "No top users found for this speciality"
+		},
+		"table": {
+			"index": "№",
+			"place": "Place",
+			"user": "User",
+			"questions.count": "Questions studied",
+			"progress": "Progress"
+		},
+		"tooltip": {
+			"users.count": "Total users: {{usersCount}}",
+			"progress": "Average progress: {{averageProgress}}%",
+			"updated.at": "Last updated: {{updatedAt}}"
 		}
 	}
 }

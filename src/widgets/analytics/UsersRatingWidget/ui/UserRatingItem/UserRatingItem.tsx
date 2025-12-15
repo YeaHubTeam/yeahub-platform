@@ -9,13 +9,14 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 import type { UserRating } from '@/entities/user';
 
 import { AVATAR_RADII, PLACE_ICONS } from '../../model/constants';
+import type { PrizePlace } from '../../model/types';
 import { AvatarWithRating } from '../AvatarWithRating/AvatarWithRating';
 
 import styles from './UserRatingItem.module.css';
 
 interface UserRatingItemProps {
 	userRating: UserRating;
-	place: 1 | 2 | 3;
+	place: PrizePlace;
 	questionsCount: number;
 }
 
@@ -46,7 +47,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 								isLimitSize={true}
 								className={styles['user-name']}
 							>
-								{userRating.username}
+								{userRating.username.split(' ')[0]}
 							</Text>
 						</Tooltip>
 					</Flex>

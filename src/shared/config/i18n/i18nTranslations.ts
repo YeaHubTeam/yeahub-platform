@@ -102,6 +102,7 @@ export enum Translation {
 	CRUMBS_ANALYTICS_SKILLSPROFICIENCY = 'crumbs.analytics.skillsProficiency',
 	CRUMBS_ANALYTICS_DIFFICULTQUESTIONS = 'crumbs.analytics.difficultQuestions',
 	CRUMBS_ANALYTICS_POPULAR_QUESTIONS = 'crumbs.analytics.popularQuestions',
+	CRUMBS_ANALYTICS_USERS_RATING = 'crumbs.analytics.usersRating',
 
 	/* Validation */
 	VALIDATION_REQUIRED = 'validation.required',
@@ -437,8 +438,19 @@ export enum Analytics {
 	HH_ANALYTICS_TABLE_SKILLS = 'hhAnalytics.table.skills',
 	HH_ANALYTICS_TABLE_KEYWORDS = 'hhAnalytics.table.keywords',
 	HH_ANALYTICS_TABLE_COUNT = 'hhAnalytics.table.count',
-	TOP_USERS_TITLE_WIDGET = 'top.users.title.widget',
-	TOP_USERS_NO_DATA_WIDGET = 'top.users.no.data.widget',
+	USERS_RATING_ANSWERS = 'users.rating.answers',
+	USERS_RATING_NO_DATA_WIDGET = 'users.rating.no.data.widget',
+	TUSERS_RATING_NO_DATA_PAGE = 'users.rating.no.data.page',
+	USERS_RATING_TABLE_INDEX = 'users.rating.table.index',
+	USERS_RATING_TABLE_PLACE = 'users.rating.table.place',
+	USERS_RATING_TABLE_USER = 'users.rating.table.user',
+	USERS_RATING_TABLE_QUESTIONS_COUNT = 'users.rating.table.questions.count',
+	USERS_RATING_TABLE_PROGRESS = 'users.rating.table.progress',
+	USERS_RATING_TITLE_WIDGET = 'users.rating.title.widget',
+	USERS_RATING_TITLE_PAGE = 'users.rating.title.page',
+	USERS_RATING_TOOLTIP_USERS_COUNT = 'users.rating.tooltip.users.count',
+	USERS_RATING_TOOLTIP_PROGRESS = 'users.rating.tooltip.progress',
+	USERS_RATING_TOOLTIP_UPDATED_AT = 'users.rating.tooltip.updated.at',
 }
 
 export enum InterviewQuiz {

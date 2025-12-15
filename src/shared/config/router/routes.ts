@@ -194,6 +194,10 @@ export const ROUTES = {
 			route: 'popular-questions',
 			page: '/dashboard/analytics/popular-questions',
 		},
+		'users-rating': {
+			route: 'users-rating',
+			page: '/dashboard/analytics/users-rating',
+		},
 	},
 	interview: {
 		route: 'interview',

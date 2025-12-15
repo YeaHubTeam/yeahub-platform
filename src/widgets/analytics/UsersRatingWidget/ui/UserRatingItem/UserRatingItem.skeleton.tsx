@@ -4,12 +4,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import { AVATAR_RADII } from '../../model/constants';
+import type { PrizePlace } from '../../model/types';
 import { AvatarWithRatingSkeleton } from '../AvatarWithRating/AvatarWithRating.skeleton';
 
 import styles from './UserRatingItem.module.css';
 
 interface UserRatingItemPropsSkeleton {
-	place: 1 | 2 | 3;
+	place: PrizePlace;
 }
 
 export const UserRatingItemSkeleton = ({ place }: UserRatingItemPropsSkeleton) => {

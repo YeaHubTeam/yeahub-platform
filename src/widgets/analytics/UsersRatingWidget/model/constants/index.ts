@@ -6,4 +6,4 @@ export const PLACE_ICONS = {
 	2: secondPlaceIcon,
 	3: thirdPlaceIcon,
 };
-export const TOP_PLACES_COUNT = 3;
+export const PRIZE_PLACES_COUNT = 3;

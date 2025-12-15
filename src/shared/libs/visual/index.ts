@@ -1,0 +1,1 @@
+export { getProgressColor } from './getProgressColor';
