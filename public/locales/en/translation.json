@@ -288,6 +288,25 @@
 			}
 		},
 		"resources": {
+			"create": {
+				"success": "Resource successfully created",
+				"failed": "Resource could not be created",
+				"unauthorized": "You have to be authorized to create a resource",
+				"unverified": "You have to be verified to create a resource",
+				"skill": {
+					"not.found": "One or more skills not found"
+				},
+				"specialization": {
+					"not.found": "One or more specializations not found"
+				},
+				"type": {
+					"not.found": "One or more resource types not found"
+				},
+				"image": {
+					"compress.failed": "Failed to compress image",
+					"resize.failed": "Failed to resize image"
+				}
+			},
 			"delete": {
 				"single": {
 					"success": "Resource deleted successfully",
@@ -304,6 +323,21 @@
 			}
 		},
 		"resource.request": {
+			"create": {
+				"success": "The resource request has been successfully created",
+				"failed": "Failed to create the resource request",
+				"unauthorized": "You have to be authorized to create a resource request",
+				"unverified": "You have to be verified to create a resource request",
+				"skill": {
+					"not.found": "One or more skills not found"
+				},
+				"specialization": {
+					"not.found": "One or more specializations not found"
+				},
+				"type": {
+					"not.found": "One or more resource types not found"
+				}
+			},
 			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"
