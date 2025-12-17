@@ -1,4 +1,5 @@
 import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { topicApiUrl } from '../model/constants/topicConstants';
 import {
@@ -19,9 +20,9 @@ export const topicApi = baseApi.injectEndpoints({
 		}),
 		getTopicById: build.query<GetTopicByIdResponse, GetTopicByIdParamsRequest>({
 			query: (params) => ({
-				url: topicApiUrl.getTopicById(params.topicId),
+				url: route(topicApiUrl.getTopicById, params.topicId),
 			}),
-			providesTags: [ApiTags.TOPICS],
+			providesTags: [ApiTags.TOPIC],
 		}),
 	}),
 });

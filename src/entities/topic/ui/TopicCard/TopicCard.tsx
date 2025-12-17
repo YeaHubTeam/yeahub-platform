@@ -1,5 +1,6 @@
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Text } from '@/shared/ui/Text';
 
 import { Topic } from '../../model/types/topic';
 
@@ -14,13 +15,13 @@ export const TopicCard = ({ topic }: TopicCardProps) => {
 		<Flex direction="column" gap="24" className={styles.wrap}>
 			<Card withOutsideShadow>
 				<Flex gap="16">
-					<h2>{topic.title}</h2>
+					<Text variant="head2">{topic.title}</Text>
 				</Flex>
 			</Card>
 
 			<Card withOutsideShadow expandable>
 				<Flex direction="column" gap="20">
-					<h3>{topic.title}</h3>
+					<Text variant="head3">Описание темы</Text>
 
 					<p>{topic.description}</p>
 				</Flex>

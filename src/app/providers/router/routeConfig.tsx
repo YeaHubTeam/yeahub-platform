@@ -54,7 +54,7 @@ import { SpecializationDetailPage } from '@/pages/admin/specialization/specializ
 import { SpecializationEditPage } from '@/pages/admin/specialization/specializationEdit';
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
-import { TopicDetailPage } from '@/pages/admin/topic/TopicDetailPage';
+import { TopicDetailPage } from '@/pages/admin/topic/TopicDetail';
 import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';

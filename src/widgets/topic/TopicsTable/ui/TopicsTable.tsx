@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace, Topics, Translation, ROUTES } from '@/shared/config';
-import { SelectedAdminEntities, formatDate } from '@/shared/libs';
+import { SelectedAdminEntities, formatDate, route } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Table } from '@/shared/ui/Table';
@@ -71,7 +71,7 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 		return Object.entries(columns).map(([k, v]) => (
 			<td key={k} className={styles.cell}>
 				{k === 'title' ? (
-					<Link to={ROUTES.admin.topics.page}>
+					<Link to={route(ROUTES.admin.topics.details.page, topic.id)}>
 						<Text variant="body2-accent">{v}</Text>
 					</Link>
 				) : (

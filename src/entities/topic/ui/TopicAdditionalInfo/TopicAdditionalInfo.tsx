@@ -47,7 +47,7 @@ export const TopicAdditionalInfo = ({ topic, className }: TopicAdditionalInfoPro
 
 					<Chip
 						theme="outlined"
-						label={topic.createdAt ? formatDate(new Date(topic.createdAt)) : '—'}
+						label={topic.createdAt ? formatDate(new Date(topic.createdAt), 'dd.MM.yyyy') : '—'}
 					/>
 				</Flex>
 
@@ -58,7 +58,7 @@ export const TopicAdditionalInfo = ({ topic, className }: TopicAdditionalInfoPro
 
 					<Chip
 						theme="outlined"
-						label={topic.updatedAt ? formatDate(new Date(topic.updatedAt)) : '—'}
+						label={topic.updatedAt ? formatDate(new Date(topic.updatedAt), 'dd.MM.yyyy') : '—'}
 					/>
 				</Flex>
 			</Flex>
