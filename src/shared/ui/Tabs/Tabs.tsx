@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Dispatch, Key, SetStateAction, useEffect, useRef } from 'react';
+import { Dispatch, Key, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Flex } from '@/shared/ui/Flex';
@@ -21,38 +21,18 @@ export interface TabsProps<T> {
 }
 
 export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
-	const lineRef = useRef<HTMLDivElement>(null);
 	const navigate = useNavigate();
 
-	const onTabToggle = (e: React.MouseEvent<HTMLLIElement>, tab: Tab<T>) => {
-		const tabElement = e.target as HTMLLIElement;
-		const tabRect = tabElement.offsetLeft;
-
+	const onTabToggle = (tab: Tab<T>) => {
 		setActiveTab(tab);
 		navigate(`#${tab.id}`, { replace: true });
-
-		if (lineRef.current) {
-			lineRef.current.style.width = tabElement.offsetWidth + 'px';
-			lineRef.current.style.left = `${tabRect}px`;
-		}
 	};
-
-	useEffect(() => {
-		const tabElement = document.querySelector(
-			`.${styles['tab-item']}.${styles.active}`,
-		) as HTMLLIElement | null;
-		if (tabElement && lineRef.current) {
-			const tabRect = tabElement.offsetLeft;
-			lineRef.current.style.width = `${tabElement.offsetWidth}px`;
-			lineRef.current.style.left = `${tabRect}px`;
-		}
-	}, [activeTab]);
 
 	return (
 		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
 			<Flex
 				componentType="ul"
-				gap="10"
+				gap="24"
 				className={styles['tab-list']}
 				role="tablist"
 				data-testid="Tabs_List"
@@ -62,7 +42,7 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 					<li
 						key={tab.id as Key}
 						className={classNames(styles['tab-item'], { [styles.active]: activeTab.id === tab.id })}
-						onClick={(e) => onTabToggle(e, tab)}
+						onClick={() => onTabToggle(tab)}
 						role="tab"
 						tabIndex={0}
 						data-testid={`Tabs_Item_${tab.id}`}
@@ -73,7 +53,6 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 					</li>
 				))}
 			</Flex>
-			<div ref={lineRef} className={styles['line-indicator']} data-testid="Tabs_Line" />
 		</Flex>
 	);
 };

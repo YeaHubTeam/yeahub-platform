@@ -19,7 +19,6 @@ export const TabsSkeleton = ({ tabs }: TabsSkeleton) => {
 					</li>
 				))}
 			</Flex>
-			<div className={styles['line-indicator']} />
 		</Flex>
 	);
 };
