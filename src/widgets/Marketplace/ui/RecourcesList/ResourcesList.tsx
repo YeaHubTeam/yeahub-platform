@@ -1,6 +1,6 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { Resource, resourcesMock, ResourceCard } from '@/entities/resource';
+import { Resource, ResourceCard, resourcesMock } from '@/entities/resource';
 
 interface ResourcesListProps {
 	resources?: Resource[];

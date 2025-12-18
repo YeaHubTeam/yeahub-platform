@@ -1,6 +1,6 @@
 import { Response } from '@/shared/types/types';
 
-import { Resource } from '@/entities/resource/model/types/resource';
+import type { Resource } from '@/entities/resource';
 
 export const resourcesMock: Response<Resource[]> = {
 	data: [
