@@ -1,4 +1,4 @@
-import { DropdownSkeleton } from '@/shared/ui/Dropdown/Dropdown/Dropdown.skeleton';
+import { DropdownSkeleton } from '@/shared/ui/Dropdown';
 
 export const SkillSelectSkeleton = () => {
 	return <DropdownSkeleton size="S" />;

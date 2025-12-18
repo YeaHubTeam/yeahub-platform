@@ -1,10 +1,8 @@
-import { Response, SortOrder } from '@/shared/types/types';
+import { Response, SortOrder } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Skill } from '@/entities/skill/@x/resource';
+import { Specialization } from '@/entities/specialization/@x/resource';
 
 export interface Resource {
 	id: string;
@@ -108,3 +106,12 @@ export interface ResourceType {
 
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;
+
+export type ResourceCreateError =
+	| 'auth.auth.unauthorized'
+	| 'auth.user.verified'
+	| 'externalproducts.skill.not_found'
+	| 'externalproducts.specialization.not_found'
+	| 'externalproducts.resource_type.not_found'
+	| 'tinify.tinify.compress_failed'
+	| 'tinify.tinify.resize_failed';

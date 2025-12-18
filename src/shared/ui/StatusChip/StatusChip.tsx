@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { Flex } from '@/shared/ui/Flex';
-import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/model/constants';
+import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/constants';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './StatusChip.module.css';

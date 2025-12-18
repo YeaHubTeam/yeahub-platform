@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import t from 'react-hot-toast';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 import { IconName } from '@/shared/ui/Icon';
 import { toastColor, toastIcon, toastTestIds, toastTitle } from '@/shared/ui/Toast/constants';
 

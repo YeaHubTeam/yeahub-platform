@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 
-import { getArrayFromTwoNumbers } from '@/shared/helpers/getArrayFromTwoNumbers';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Pagination.module.css';
+
+const getArrayFromTwoNumbers = (num1: number, num2: number) =>
+	Array.from({ length: num2 - num1 + 1 }, (_, i) => num1 + i);
 
 interface PaginationProps {
 	/**

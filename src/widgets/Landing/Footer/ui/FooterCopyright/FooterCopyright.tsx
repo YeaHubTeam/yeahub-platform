@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Text } from '@/shared/ui/Text';
 
 export const FooterCopyright = () => {
@@ -11,7 +11,7 @@ export const FooterCopyright = () => {
 			variant={isSmallScreen ? 'body2' : 'body2-accent'}
 			color="black-400"
 		>
-			© {currentYear} {'YeaHub'}
+			© {currentYear} YeaHub
 		</Text>
 	);
 };

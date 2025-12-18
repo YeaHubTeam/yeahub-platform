@@ -1,8 +1,7 @@
 import { isAfter, isEqual, parseISO } from 'date-fns';
 
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import { route } from '@/shared/helpers/route';
+import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import type { GetUserSubscriptionResponse } from '../';
 import { subscriptionApiUrls } from '../model/constants/subscriptionConstants';

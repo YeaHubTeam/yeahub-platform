@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 
 import { GradeChip, GradeChipProps, labelVariants, valueVariants } from './GradeChip';
 import styles from './GradeChip.module.css';

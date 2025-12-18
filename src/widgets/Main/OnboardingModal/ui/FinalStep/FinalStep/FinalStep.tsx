@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Onboarding } from '@/shared/config';
 
 import { LayoutStepComponent } from '../../LayoutStepComponent/LayoutStepComponent';
 import { NavigationBlock } from '../NavigationBlock/NavigationBlock';

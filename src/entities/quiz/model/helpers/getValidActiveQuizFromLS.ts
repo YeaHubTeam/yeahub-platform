@@ -1,6 +1,6 @@
-import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getJSONFromLS } from '@/shared/libs';
 
-import { Answers } from '@/entities/quiz';
+import { Answers } from '../types/quiz';
 
 export const getValidActiveQuizFromLS = (key: string): Answers[] | null => {
 	const activeQuizFromLS = getJSONFromLS(key);

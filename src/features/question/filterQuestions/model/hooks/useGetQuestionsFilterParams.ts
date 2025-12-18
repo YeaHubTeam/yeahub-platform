@@ -1,4 +1,4 @@
-import { QuestionFilterStatus, QuestionsFilterParams } from '../types/filters';
+import { QuestionFilterStatus, QuestionsFilterParams } from '@/entities/question';
 
 export const useGetQuestionsFilterParams = (initialParams: QuestionsFilterParams) => {
 	const params = new URLSearchParams(location.search);

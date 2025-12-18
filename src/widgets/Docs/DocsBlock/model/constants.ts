@@ -1,4 +1,4 @@
-import { Docs } from '@/shared/config/i18n/i18nTranslations';
+import { Docs } from '@/shared/config';
 
 import { DockItem } from './types/types';
 

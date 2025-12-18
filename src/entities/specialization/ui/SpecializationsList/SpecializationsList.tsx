@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Specializations } from '@/shared/config';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { Specialization } from '@/entities/specialization';
+import { Specialization } from '../../model/types/specialization';
 
 import styles from './SpecializationsList.module.css';
 

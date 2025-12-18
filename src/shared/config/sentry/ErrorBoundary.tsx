@@ -1,19 +1,19 @@
-import * as Sentry from '@sentry/react';
-import React from 'react';
+import { captureException } from '@sentry/react';
+import { ReactNode, Component } from 'react';
 
 import { setAppStateContext } from './appContext';
 
 interface SentryErrorBoundaryProps {
-	children: React.ReactNode;
+	children: ReactNode;
 	store?: { getState: () => unknown };
-	fallback?: React.ReactNode;
+	fallback?: ReactNode;
 }
 
 interface SentryErrorBoundaryState {
 	hasError: boolean;
 }
 
-export class SentryErrorBoundary extends React.Component<
+export class SentryErrorBoundary extends Component<
 	SentryErrorBoundaryProps,
 	SentryErrorBoundaryState
 > {
@@ -30,7 +30,7 @@ export class SentryErrorBoundary extends React.Component<
 		if (this.props.store) {
 			setAppStateContext(this.props.store.getState());
 		}
-		Sentry.captureException(error, {
+		captureException(error, {
 			extra: {
 				componentStack: errorInfo.componentStack,
 			},

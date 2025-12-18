@@ -1,3 +1,3 @@
 export { StatusChip } from './StatusChip';
 export { StatusChipSkeleton } from './StatusChip.skeleton';
-export type { StatusChipItem } from './StatusChip';
+export type { StatusChipItem, StatusChipVariant, StatusChipProps } from './StatusChip';

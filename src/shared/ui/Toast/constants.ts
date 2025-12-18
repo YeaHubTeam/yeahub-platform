@@ -1,5 +1,5 @@
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { Pallete } from '@/shared/types/types';
+import { Translation } from '@/shared/config';
+import { Pallete } from '@/shared/libs';
 import { IconName } from '@/shared/ui/Icon';
 import { ToastVariant } from '@/shared/ui/Toast/types';
 

@@ -1,15 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Collections, ROUTES } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetCollectionsListQuery } from '@/entities/collection';
-import { CollectionPreview } from '@/entities/collection';
+import { useGetCollectionsListQuery, CollectionPreview } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
 
 import styles from './PreviewCollectionsList.module.css';
