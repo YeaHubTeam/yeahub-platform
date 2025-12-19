@@ -3,6 +3,8 @@ import { route } from '@/shared/libs';
 
 import { challengeApiUrls } from '../model/constants/challenge';
 import {
+	ExecuteCodeRequest,
+	ExecuteCodeResponse,
 	GetChallengeByIdResponse,
 	GetChallengesListParams,
 	GetChallengesListResponse,
@@ -23,7 +25,26 @@ const challengeApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.CHALLENGE_DETAIL],
 		}),
+		executeCode: build.mutation<ExecuteCodeResponse, ExecuteCodeRequest>({
+			query: (body) => ({
+				url: challengeApiUrls.executeCode,
+				method: 'POST',
+				body,
+			}),
+		}),
+		testCode: build.mutation<ExecuteCodeResponse, ExecuteCodeRequest>({
+			query: (body) => ({
+				url: challengeApiUrls.testCode,
+				method: 'POST',
+				body,
+			}),
+		}),
 	}),
 });
 
-export const { useGetChallengesListQuery, useGetChallengeByIdQuery } = challengeApi;
+export const {
+	useGetChallengesListQuery,
+	useGetChallengeByIdQuery,
+	useExecuteCodeMutation,
+	useTestCodeMutation,
+} = challengeApi;

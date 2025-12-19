@@ -91,7 +91,8 @@ import { PublicQuestionsPage } from '@/pages/landing/publicQuestions';
 import { PublicQuizPage } from '@/pages/landing/publicQuiz';
 import { PublicQuizResultPage } from '@/pages/landing/publicQuizResult';
 import { PublicResourcesPage } from '@/pages/landing/publicResources';
-import { LiveCodingPage } from '@/pages/liveCoding';
+import { ChallengePage } from '@/pages/liveCoding/challenge';
+import { LiveCodingPage } from '@/pages/liveCoding/liveCoding';
 import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
@@ -712,10 +713,20 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.liveCoding.route,
-				element: <LiveCodingPage />,
+				element: <Outlet />,
 				handle: {
 					crumb: i18n.t(Translation.CRUMBS_LIVE_CODING),
 				},
+				children: [
+					{
+						index: true,
+						element: <LiveCodingPage />,
+					},
+					{
+						path: ':id',
+						element: <ChallengePage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.wiki.route,

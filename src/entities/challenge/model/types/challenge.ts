@@ -57,3 +57,34 @@ export interface GetChallengesListParams {
 export type GetChallengesListResponse = Response<ChallengeListItem[]>;
 
 export type GetChallengeByIdResponse = Challenge;
+
+export interface ExecuteCodeRequest {
+	taskId: string;
+	sourceCode: string;
+	languageId: number;
+	profileId?: string;
+}
+
+export interface ExecuteCodeResponse {
+	overall_status: string;
+	passed_tests: number;
+	total_tests: number;
+	success_rate: number;
+	total_execution_time: number;
+	average_memory_usage: number;
+	test_cases: {
+		status: string;
+		input: unknown;
+		expected_output: unknown;
+		actual_output: string;
+		error_message: string;
+		execution_time: number;
+		memory_usage: number;
+		is_hidden: boolean;
+	}[];
+	compilation_error: string;
+	runtime_output: string;
+	task_id: string;
+	language_id: number;
+	executed_at: string;
+}
