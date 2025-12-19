@@ -251,6 +251,10 @@ export enum Translation {
 	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
 	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
 	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
+
+	/* Live Coding */
+	LIVE_CODING_TITLE = 'live.coding.title',
+	LIVE_CODING_RUN = 'live.coding.run',
 }
 
 export enum Profile {
