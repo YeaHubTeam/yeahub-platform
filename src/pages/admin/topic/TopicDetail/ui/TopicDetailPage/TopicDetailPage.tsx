@@ -7,14 +7,14 @@ import { useGetTopicByIdQuery, TopicAdditionalInfo, TopicCard } from '@/entities
 
 const TopicDetailPage = () => {
 	const { topicId } = useParams<{ topicId: string }>();
-	const { data: topic } = useGetTopicByIdQuery({ topicId: topicId! });
+	const { data: topic } = useGetTopicByIdQuery(topicId!);
 
 	if (!topic) {
 		return null;
 	}
 
 	return (
-		<main>
+		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackButton />
 			</Flex>
@@ -23,7 +23,7 @@ const TopicDetailPage = () => {
 				<TopicCard topic={topic} />
 				<TopicAdditionalInfo topic={topic} />
 			</Flex>
-		</main>
+		</>
 	);
 };
 

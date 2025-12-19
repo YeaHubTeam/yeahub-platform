@@ -1,10 +1,14 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace, Topics, Translation, ROUTES } from '@/shared/config';
 import { SelectedAdminEntities, formatDate, route } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
@@ -19,6 +23,7 @@ interface TopicsTableProps {
 }
 
 export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
+	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 
 	const renderTableColumnWidth = () => {
@@ -81,6 +86,35 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 		));
 	};
 
+	const renderActions = (topic: Topic) => {
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.topics.details.page, topic.id));
+				},
+			},
+			// Добавить редактировать и удалить если нужно
+		];
+		return (
+			<Flex gap="4">
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="actions"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							size="medium"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
+				</Popover>
+			</Flex>
+		);
+	};
+
 	if (!topics) {
 		return null;
 	}
@@ -93,6 +127,7 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 			renderTableColumnWidths={renderTableColumnWidth}
 			selectedItems={selectedTopics}
 			onSelectItems={onSelectTopics}
+			renderActions={renderActions}
 		/>
 	);
 };
