@@ -129,9 +129,11 @@ export const Modal = ({
 							{title}
 						</Text>
 					)}
-					<Text className={styles.text} variant="body3">
-						{children}
-					</Text>
+					{children && (
+						<Text className={styles.text} variant="body3">
+							{children}
+						</Text>
+					)}
 				</div>
 				{isButtons && (
 					<div className={classNames(styles.buttons, styles[`${variant}-buttons`])}>

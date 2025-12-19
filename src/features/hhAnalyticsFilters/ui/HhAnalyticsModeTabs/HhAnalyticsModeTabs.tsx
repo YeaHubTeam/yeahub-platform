@@ -2,13 +2,12 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Analytics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import type { HhAnalyticsMode } from '@/features/hhAnalyticsFilters';
+import type { HhAnalyticsMode } from '../../model/types/types';
 
 import styles from './HhAnalyticsModeTabs.module.css';
 
@@ -39,7 +38,7 @@ export const HhAnalyticsModeTabs = ({ mode, onChange }: HhAnalyticsModeTabsProps
 				return (
 					<Button
 						key={id}
-						size={'large'}
+						size="large"
 						variant={id === mode ? 'secondary' : 'outline'}
 						onClick={() => onChange(id)}
 						fullWidth={isMobile}

@@ -1,9 +1,7 @@
-import { Response, SelectedEntities } from '@/shared/types/types';
+import { Response, SelectedEntities } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Skill } from '@/entities/skill/@x/resource';
+import { Specialization } from '@/entities/specialization/@x/resource';
 
 import { CreateOrEditOrViewResourceFormValues, ResourceTypeCode } from './resource';
 
@@ -53,3 +51,10 @@ export type SelectedResourceRequestEntities = SelectedEntities<ResourceRequest['
 export type ResourceRequestFormValues = CreateOrEditOrViewResourceFormValues & {
 	status: ResourceRequestStatus;
 };
+
+export type ResourceRequestCreateError =
+	| 'auth.auth.unauthorized'
+	| 'auth.user.verified'
+	| 'externalproducts.skill.not_found'
+	| 'externalproducts.specialization.not_found'
+	| 'externalproducts.resource_type.not_found';

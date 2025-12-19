@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LoadError from '@/shared/assets/images/LoadError.png';
-import SearchImg from '@/shared/assets/images/SearchPage.png';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import AccessDeniedImg from '@/shared/assets/images/accessDenied.png';
+import LoadError from '@/shared/assets/images/loadError.png';
+import FilterEmptyImg from '@/shared/assets/images/notFound.avif';
+import SearchImg from '@/shared/assets/images/searchPage.png';
+import { i18Namespace, Translation } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -14,7 +15,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
 
-type StubType = 'empty' | 'error';
+type StubType = 'empty' | 'error' | 'access-denied' | 'filter-empty';
 
 type StubProps = {
 	type: StubType;
@@ -35,26 +36,35 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const titleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_TITLE),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_TITLE),
+		'filter-empty': t(Translation.STUB_FILTER_TITLE),
 	};
 
 	const subtitleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBTITLE),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_DESCRIPTION),
+		'filter-empty': t(Translation.STUB_FILTER_SUBTITLE),
 	};
 
 	const buttonTextByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBMIT),
 		empty: '',
+		'access-denied': t(Translation.ACCESS_DENIED_BUTTON),
+		'filter-empty': t(Translation.STUB_FILTER_SUBMIT),
 	};
 
 	const imgByType: Record<StubType, string> = {
 		empty: SearchImg,
 		error: LoadError,
+		'access-denied': AccessDeniedImg,
+		'filter-empty': FilterEmptyImg,
 	};
 
 	const resolvedTitle = title ?? titleByType[type];
 	const resolvedSubtitle = subtitle ?? subtitleByType[type];
 	const resolvedButtonText = buttonText ?? buttonTextByType[type];
+	const resolvedButtonType = type === 'filter-empty' ? 'outline' : 'primary';
 
 	return (
 		<Card withOutsideShadow className={classNames(styles.wrapper, className)}>
@@ -71,7 +81,7 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 				{Boolean(resolvedButtonText) && (
 					<Button
 						size="large"
-						variant="primary"
+						variant={resolvedButtonType}
 						onClick={onClick}
 						disabled={!onClick}
 						className={styles.button}

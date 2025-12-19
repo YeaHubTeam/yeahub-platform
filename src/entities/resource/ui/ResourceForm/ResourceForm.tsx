@@ -2,22 +2,19 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
+import { i18Namespace, Marketplace } from '@/shared/config';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
-import { FormField } from '@/shared/ui/FormField/FormField';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
-import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SkillSelect } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { SkillSelect } from '@/entities/skill/@x/resource';
+import { SpecializationSelect } from '@/entities/specialization/@x/resource';
 
 import { ResourcesSelect } from '../ResourceSelect/ResourceSelect';
 

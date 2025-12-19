@@ -1,17 +1,18 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace, Resources } from '@/shared/config/i18n/i18nTranslations';
-import { useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, Marketplace, Resources } from '@/shared/config';
+import { useCurrentProject } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
-
-import { ResourceEditFormHeader } from '@/features/resources/editResource/ui/ResourceEditFormHeader/ResourceEditFormHeader';
+import {
+	ResourceEditFormHeader,
+	ResourceForm,
+	ResourceRequestStatusChip,
+} from '@/entities/resource';
 
 import type { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
 

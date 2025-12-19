@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
 
-import { Pallete } from '@/shared/types/types';
+import { Pallete } from '@/shared/libs';
 
 import styles from './Icon.module.css';
 import { icons } from './icons';

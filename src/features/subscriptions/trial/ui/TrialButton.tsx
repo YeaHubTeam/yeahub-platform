@@ -3,12 +3,8 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { i18Namespace, Translation, Subscription, i18n } from '@/shared/config';
+import { useAppSelector, EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 
 import { getIsVerified } from '@/entities/profile';

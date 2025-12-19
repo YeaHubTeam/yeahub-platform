@@ -1,6 +1,5 @@
-import { ROUTES } from '@/shared/config/router/routes';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { ROUTES } from '@/shared/config';
+import { LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -20,7 +19,7 @@ export const Header = () => {
 	if (isLoading) return <HeaderSkeleton />;
 
 	return (
-		<header data-testid={'Header'} className={styles.header}>
+		<header data-testid="Header" className={styles.header}>
 			<Flex className={styles['header-content']}>
 				<Flex className={styles['header-main']}>
 					<AppLogo navigateTo={logoNavigateTo} />

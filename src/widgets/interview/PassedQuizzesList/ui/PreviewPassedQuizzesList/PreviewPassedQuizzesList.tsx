@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory, Profile, Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, ROUTES, InterviewHistory, Profile, Subscription } from '@/shared/config';
+import {
+	EMAIL_VERIFY_SETTINGS_TAB,
+	SELECT_TARIFF_SETTINGS_TAB,
+	useAppSelector,
+} from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

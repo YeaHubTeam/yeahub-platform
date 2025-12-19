@@ -1,5 +1,4 @@
-import { TelegramUser } from '@/entities/auth';
-import { TelegramWidget } from '@/entities/auth';
+import { TelegramUser, TelegramWidget } from '@/entities/auth';
 
 import { useLinkTelegramAccountMutation } from '../../api/telegramLinkApi';
 

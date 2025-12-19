@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
+import { quizCardPreview } from '@/shared/assets';
 import Vector from '@/shared/assets/icons/vector.svg';
-import QuizCard from '@/shared/assets/images/quiz-card-preview.avif';
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuiz as InterviewQuiz18 } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, InterviewQuiz as InterviewQuiz18 } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -39,15 +38,15 @@ export const PreviewInactiveQuiz = () => {
 	];
 
 	return (
-		<Flex gap={'20'} className={styles['preparation-empty']}>
+		<Flex gap="20" className={styles['preparation-empty']}>
 			<div className={styles['inactive-description']}>
 				<div className={styles['inactive-title']}>
 					<Vector className={styles['vector-icon']} />
 					<Text variant="body4">{t(InterviewQuiz18.START_QUIZ_TITLE)}</Text>
 				</div>
-				<Flex direction={'column'} gap={'20'}>
-					<Text variant={'body3-accent'}>{t(InterviewQuiz18.START_QUIZ_DESCRIPTION)}</Text>
-					<Flex componentType="ul" gap="16" direction={'column'} wrap="nowrap">
+				<Flex direction="column" gap="20">
+					<Text variant="body3-accent">{t(InterviewQuiz18.START_QUIZ_DESCRIPTION)}</Text>
+					<Flex componentType="ul" gap="16" direction="column" wrap="nowrap">
 						{quizSetupList.map(({ id, title }) => (
 							<Flex key={id} gap="10">
 								<Text variant="body4">{id}</Text>
@@ -60,7 +59,7 @@ export const PreviewInactiveQuiz = () => {
 			{!isMobile && (
 				<img
 					className={styles['preparation-noactiveimage']}
-					src={QuizCard}
+					src={quizCardPreview}
 					alt="no active quiz"
 					loading="lazy"
 				/>

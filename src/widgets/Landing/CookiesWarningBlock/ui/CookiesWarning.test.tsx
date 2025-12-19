@@ -1,11 +1,11 @@
 import { screen, fireEvent, waitFor, RenderResult } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing } from '@/shared/config';
+import { renderComponent } from '@/shared/libs';
 
 import { CookiesWarning } from './CookiesWarning';
 
-jest.mock('@/shared/helpers/manageLocalStorage', () => ({
+jest.mock('@/shared/libs/browser', () => ({
 	getJSONFromLS: jest.fn(() => null),
 	setToLS: jest.fn(),
 }));
@@ -61,7 +61,7 @@ describe('CookiesWarning', () => {
 	});
 
 	test('should save agreement to LS and remove banner and portal when Agree is clicked', async () => {
-		const { setToLS } = require('@/shared/helpers/manageLocalStorage');
+		const { setToLS } = require('@/shared/libs');
 
 		fireEvent.click(screen.getByTestId('CookiesWarning_AgreeButton'));
 
@@ -74,7 +74,7 @@ describe('CookiesWarning', () => {
 	});
 
 	test('should not render banner if agreement already exists in LS', () => {
-		const { getJSONFromLS } = require('@/shared/helpers/manageLocalStorage');
+		const { getJSONFromLS } = require('@/shared/libs');
 		getJSONFromLS.mockReturnValue(true);
 
 		renderResult.unmount();
@@ -91,7 +91,7 @@ describe('CookiesWarning', () => {
 	});
 
 	test('should render banner when LS flag is null', () => {
-		const { getJSONFromLS } = require('@/shared/helpers/manageLocalStorage');
+		const { getJSONFromLS } = require('@/shared/libs');
 		getJSONFromLS.mockReturnValue(null);
 
 		renderResult.unmount();

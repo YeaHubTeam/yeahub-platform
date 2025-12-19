@@ -1,14 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Auth } from '@/shared/config';
 import {
 	AD_CONSENT_LINK,
 	CONSENT_PROCESSING_LINK,
 	OFFER_AGREEMENT_LINK,
 	PRIVACY_POLICY_LINK,
-} from '@/shared/constants/documents';
+} from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormControl } from '@/shared/ui/FormControl';

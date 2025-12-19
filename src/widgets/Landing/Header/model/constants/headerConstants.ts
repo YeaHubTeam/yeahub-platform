@@ -1,5 +1,4 @@
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { Landing, ROUTES } from '@/shared/config';
 
 import { HeaderNavLinks } from '../types/headerTypes';
 

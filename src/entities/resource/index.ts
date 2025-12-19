@@ -4,7 +4,7 @@ export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
 
-export type { Resource } from './model/types/resource';
+export type { Resource, ResourceCreateError } from './model/types/resource';
 
 export { isResourceDisabled } from './model/helpers/isResourceDisabled';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
@@ -16,6 +16,10 @@ export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
 export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
 export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
 export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusBlock';
+export { ResourceEditFormHeader } from './ui/ResourceEditFormHeader/ResourceEditFormHeader';
+export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
+export { ResourceAdditionalInfoSkeleton } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo.skeleton';
+export { ResourcesStub } from './ui/ResourcesStub/ResourcesStub';
 
 export type {
 	ResourceRequest,
@@ -25,6 +29,7 @@ export type {
 	SelectedResourceRequestEntity,
 	SelectedResourceRequestEntities,
 	ResourceRequestFormValues,
+	ResourceRequestCreateError,
 } from './model/types/resourceRequest';
 export {
 	useGetResourceRequestsQuery,

@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { User } from '@/shared/config/i18n/i18nTranslations';
-import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+import { i18Namespace, User } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip } from '@/shared/ui/StatusChip';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Role } from '@/entities/auth';
+import { Role } from '@/entities/auth/@x/user';
 
 import { userRoleColors } from '../../model/constants/userRoleColors';
+import { convertRoleNameToEnumKey } from '../../model/utils/convertRoleNameToEnumKey';
 
 interface UserRolesListProps {
 	userRoles: Role[];
