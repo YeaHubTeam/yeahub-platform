@@ -1,14 +1,19 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Topics, Translation, ROUTES } from '@/shared/config';
-import { SelectedAdminEntities, formatDate } from '@/shared/libs';
+import { SelectedAdminEntities, formatDate, route } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
 import { Topic } from '@/entities/topic';
+
+import { DeleteTopicButton } from '@/features/topics/deleteTopic';
 
 import styles from './TopicsTable.module.css';
 
@@ -20,6 +25,7 @@ interface TopicsTableProps {
 
 export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
+	const navigate = useNavigate();
 
 	const renderTableColumnWidth = () => {
 		const columnWidths = {
@@ -81,6 +87,50 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 		));
 	};
 
+	const renderActions = (topic: Topic) => {
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.resources.details.route, topic.id));
+				},
+			},
+			{
+				icon: <Icon icon="pen" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
+				disabled: topic.disabled,
+				onClick: () => {
+					navigate(route(ROUTES.admin.resources.edit.route, topic.id));
+				},
+			},
+			{
+				renderComponent: () => <DeleteTopicButton topicId={topic.id} disabled={topic.disabled} />,
+			},
+		];
+
+		return (
+			<Flex gap="4">
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="go to details"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							size="medium"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
+				</Popover>
+			</Flex>
+		);
+	};
+
 	if (!topics) {
 		return null;
 	}
@@ -90,9 +140,11 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 			items={topics}
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
+			renderActions={renderActions}
 			renderTableColumnWidths={renderTableColumnWidth}
 			selectedItems={selectedTopics}
 			onSelectItems={onSelectTopics}
+			hasCopyButton
 		/>
 	);
 };
