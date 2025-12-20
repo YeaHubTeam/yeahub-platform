@@ -5,4 +5,5 @@ export interface CollectionsFilterParams {
 	page?: number;
 	authorId?: string;
 	isMy?: boolean;
+	keyword?: string;
 }
