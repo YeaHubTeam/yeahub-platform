@@ -38,7 +38,8 @@
 	"keyword": {
 		"label": "Keyword",
 		"placeholder": "Select keyword",
-		"not_found": "Keyword not found"
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
 	},
 	"tags": {
 		"title": "Tags"

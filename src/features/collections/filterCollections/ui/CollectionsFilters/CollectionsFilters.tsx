@@ -83,7 +83,9 @@ export const CollectionsFilters = ({
 				/>
 			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
-			{onChangeKeyword && <KeywordSelect value={keyword} onChange={onChangeKeyword} />}
+			{onChangeKeyword && (
+				<KeywordSelect value={keyword} key={keyword} onChange={onChangeKeyword} />
+			)}
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);

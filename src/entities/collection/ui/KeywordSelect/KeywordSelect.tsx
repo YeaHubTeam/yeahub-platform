@@ -19,10 +19,12 @@ export type KeywordSelectProps = Omit<
 
 export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
+	const [searchValue, setSearchValue] = useState(value || '');
 
-	const [searchValue, setSearchValue] = useState('');
-
-	const { data: keywordsResponse, isFetching } = useGetCollectionKeywordsQuery({});
+	const { data: keywordsResponse } = useGetCollectionKeywordsQuery({
+		limit: 100,
+		title: searchValue,
+	});
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
@@ -43,7 +45,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	};
 
 	const options = useMemo(() => {
-		const keywords = keywordsResponse?.keywords || [];
+		const keywords = keywordsResponse?.data || [];
 
 		const filteredKeywords = searchValue
 			? keywords.filter((keyword) => keyword.toLowerCase().includes(searchValue.toLowerCase()))
@@ -56,9 +58,8 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	}, [searchValue, keywordsResponse]);
 
 	const selectedKeyword = options.find((option) => option.value === value) || emptyKeyword;
-	const showNotFoundMessage = !isFetching && searchValue && options.length === 0;
 	const notFoundText = t(Collections.KEYWORD_NOT_FOUND);
-	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectedKeyword.label;
+	const displayValue = options.length === 0 ? notFoundText : searchValue || selectedKeyword.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
@@ -68,7 +69,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 			<Dropdown
 				size="S"
 				label={selectedKeyword.label}
-				disabled={disabled}
+				disabled={false}
 				value={displayValue}
 				isInput={true}
 				inputValue={searchValue}
@@ -82,8 +83,12 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 					setSearchValue(selected?.label ?? '');
 				}}
 			>
-				{showNotFoundMessage ? (
-					<Option value="not-found" label={notFoundText} disabled />
+				{options.length === 0 ? (
+					<Option
+						value="not-found"
+						label={searchValue ? notFoundText : t(Collections.KEYWORD_NOT_EXIST)}
+						disabled
+					/>
 				) : (
 					options.map((option) => (
 						<Option key={option.value} value={option.value} label={option.label} />
