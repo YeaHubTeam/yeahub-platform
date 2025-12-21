@@ -34,7 +34,7 @@ const TopicsPage = () => {
 				renderRemoveButton={() => (
 					<DeleteTopicsButton
 						topicsToRemove={selectedTopics}
-						onSuccess={() => clearSelectedTopics}
+						onSuccess={() => clearSelectedTopics()}
 					/>
 				)}
 			/>
@@ -43,6 +43,7 @@ const TopicsPage = () => {
 					topics={topics?.data}
 					selectedTopics={selectedTopics}
 					onSelectTopics={onSelectTopics}
+					onDeleteSuccess={() => clearSelectedTopics()}
 				/>
 			</Card>
 		</Flex>

@@ -21,9 +21,15 @@ interface TopicsTableProps {
 	topics?: Topic[];
 	selectedTopics?: SelectedAdminEntities;
 	onSelectTopics?: (ids: SelectedAdminEntities) => void;
+	onDeleteSuccess?: () => void;
 }
 
-export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
+export const TopicsTable = ({
+	topics,
+	selectedTopics,
+	onSelectTopics,
+	onDeleteSuccess,
+}: TopicsTableProps) => {
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 	const navigate = useNavigate();
 
@@ -93,7 +99,7 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 				icon: <Icon icon="eye" size={24} />,
 				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
 				onClick: () => {
-					navigate(route(ROUTES.admin.resources.details.route, topic.id));
+					navigate(route(ROUTES.admin.topics.details.page, topic.id));
 				},
 			},
 			{
@@ -105,11 +111,17 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 				},
 				disabled: topic.disabled,
 				onClick: () => {
-					navigate(route(ROUTES.admin.resources.edit.route, topic.id));
+					navigate(route(ROUTES.admin.topics.details.page, topic.id));
 				},
 			},
 			{
-				renderComponent: () => <DeleteTopicButton topicId={topic.id} disabled={topic.disabled} />,
+				renderComponent: () => (
+					<DeleteTopicButton
+						topicId={topic.id}
+						disabled={topic.disabled}
+						onSuccess={onDeleteSuccess}
+					/>
+				),
 			},
 		];
 
@@ -118,7 +130,7 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 				<Popover menuItems={menuItems}>
 					{({ onToggle }) => (
 						<IconButton
-							aria-label="go to details"
+							aria-label="actions"
 							form="square"
 							icon={<Icon icon="dotsThreeVertical" size={20} />}
 							size="medium"
