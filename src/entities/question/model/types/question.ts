@@ -117,11 +117,19 @@ export interface MostDifficultQuestion {
 	stat: number;
 }
 
-export interface MostDifficultQuestionsResponse {
+export interface MostDifficultQuestionSpecialization {
 	id: number;
 	specialization: Specialization;
 	calculatedAt: string;
 	topStat: MostDifficultQuestion[];
+}
+
+export type MostDifficultQuestionsResponse = Response<MostDifficultQuestionSpecialization>;
+
+export interface MostDifficultQuestionsRequestParams {
+	specId: number;
+	page?: number;
+	limit?: number;
 }
 
 export interface PopularQuestionStat {
