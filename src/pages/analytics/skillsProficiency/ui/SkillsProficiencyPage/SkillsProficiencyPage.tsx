@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import { useGetLearnedQuestionsQuery } from '@/entities/question';
 
@@ -11,16 +13,36 @@ import { SkillsProficiencyPageTable } from '../SkillsProficiencyPageTable/Skills
 
 export const SkillsProficiencyPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
 
 	const filters = useAnalyticFilters({
 		page: 1,
 	});
 
-	const { data: response } = useGetLearnedQuestionsQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetLearnedQuestionsQuery({
 		page: filters.filters.page,
 		specializationId: filters.filters.specialization,
 		skillId: filters.filters.skill,
 	});
+
+	if (isLoading || isFetching) {
+		return (
+			<AnalyticsPageSkeleton
+				showTitle={true}
+				showTooltip={true}
+				showFilters={true}
+				showSkillFilter={true}
+				showPagination={true}
+				displayMode={isMobile ? 'mobile' : 'table'}
+				tableRowsCount={10}
+				mobileItemsCount={3}
+			/>
+		);
+	}
 
 	const learnedQuestions = response?.data ?? [];
 
