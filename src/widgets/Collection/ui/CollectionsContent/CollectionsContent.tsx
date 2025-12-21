@@ -22,6 +22,7 @@ interface CollectionsProps {
 	filter: CollectionsFilterParams;
 	resetFilters: () => void;
 	renderDrawer: () => ReactNode;
+	hasFilters: boolean;
 }
 
 export const CollectionsContent = ({
@@ -30,10 +31,16 @@ export const CollectionsContent = ({
 	resetFilters,
 	renderDrawer,
 	banner,
+	hasFilters,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
 	const { search } = useLocation();
+
+	const showEmptyCollectionsStub = collections.length === 0 && !hasFilters;
+	const showFilterEmptyStub = collections.length === 0 && hasFilters;
+	const showCollectionsList = collections.length > 0;
+
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
@@ -44,10 +51,23 @@ export const CollectionsContent = ({
 					{isSmallScreen && renderDrawer()}
 				</Flex>
 				<Flex direction="column" gap="20">
-					<CollectionsList collections={collections} queryFilter={search} />
-					{banner}
-					{pagination}
-					{collections.length === 0 && <Stub type="filter-empty" onClick={resetFilters} />}
+					{showEmptyCollectionsStub && (
+						<Stub
+							type="empty"
+							title={t(Collections.STUB_EMPTY_TITLE)}
+							subtitle={t(Collections.STUB_EMPTY_SUBTITLE)}
+						/>
+					)}
+
+					{showFilterEmptyStub && <Stub type="filter-empty" onClick={resetFilters} />}
+
+					{showCollectionsList && (
+						<>
+							<CollectionsList collections={collections} queryFilter={search} />
+							{banner}
+							{pagination}
+						</>
+					)}
 				</Flex>
 			</Card>
 		</div>

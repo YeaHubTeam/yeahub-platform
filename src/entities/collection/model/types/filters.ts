@@ -6,4 +6,5 @@ export interface CollectionsFilterParams {
 	company?: string;
 	authorId?: string;
 	isMy?: boolean;
+	keyword?: string;
 }

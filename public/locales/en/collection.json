@@ -35,6 +35,12 @@
 		"aria.label": "Warning: You cannot create a new interview because there is already an active one."
 	},
 	"keywords": "Keywords:",
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"tags": {
 		"title": "Tags"
 	},
@@ -72,6 +78,10 @@
 		"description": "1000+ real interview recordings",
 		"link": "Join",
 		"watch.button": "Watch"
+	},
+	"stub.empty": {
+		"title": "No collections found yet",
+		"subtitle": "Collections are added periodically, just wait a bit"
 	},
 	"sort": {
 		"author": {

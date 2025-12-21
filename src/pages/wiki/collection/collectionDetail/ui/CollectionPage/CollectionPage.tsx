@@ -18,7 +18,7 @@ import { useGetCollectionsFilterParams } from '@/features/collections/filterColl
 import {
 	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
-	usePublicCollectionNavigation,
+	useCollectionNavigation,
 } from '@/features/collections/navigateCollection';
 import { TrainCollectionButton } from '@/features/collections/trainCollection';
 
@@ -51,12 +51,12 @@ export const CollectionPage = () => {
 		{ skip: !collection?.questionsCount },
 	);
 	const { onQueryNavigate } = useCollectionQueryNavigate();
-	const { prevId, nextId, prevPage, nextPage, isDisabled } = usePublicCollectionNavigation({
+	const { prevId, nextId, prevPage, nextPage, isDisabled } = useCollectionNavigation({
 		collectionId,
 		filter,
 	});
 
-	const { isMobileS, isLargeScreen, isSmallScreen } = useScreenSize();
+	const { isLargeScreen, isSmallScreen } = useScreenSize();
 
 	const questions = response?.data ?? [];
 
@@ -95,7 +95,7 @@ export const CollectionPage = () => {
 	const media = getChannelsForSpecialization(collection.specializations);
 
 	const renderHeaderAndActions = () => {
-		const canTrain = (isFree || hasPremiumAccess) && !isEmptyData && !isMobileS;
+		const canTrain = (isFree || hasPremiumAccess) && !isEmptyData;
 		return (
 			<>
 				<CollectionHeader
@@ -107,7 +107,7 @@ export const CollectionPage = () => {
 				/>
 				<Card withOutsideShadow className={styles['train-button']}>
 					<Flex direction="column" gap="12" justify="center" align="center">
-						<Flex direction="row" gap="12">
+						<Flex direction="row" gap="12" wrap="wrap" justify="center">
 							{canTrain && (
 								<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
 							)}

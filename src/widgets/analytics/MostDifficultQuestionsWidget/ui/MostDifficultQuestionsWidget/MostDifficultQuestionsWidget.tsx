@@ -19,12 +19,16 @@ export const MostDifficultQuestionsWidget = () => {
 	const specializationId = useAppSelector(getSpecializationId);
 
 	const { data: difficultQuestions, isLoading } =
-		useGetMostDifficultQuestionsBySpecializationIdQuery(specializationId);
+		useGetMostDifficultQuestionsBySpecializationIdQuery({
+			specId: specializationId,
+			limit: ITEMS_COUNT_DESKTOP,
+			page: 1,
+		});
 
 	const { isSmallScreen } = useScreenSize();
 
 	const mixedQuestions =
-		difficultQuestions && [...difficultQuestions.topStat].sort(() => Math.random() - 0.5);
+		difficultQuestions && [...difficultQuestions.data.topStat].sort(() => Math.random() - 0.5);
 
 	const filteredQuestions = isSmallScreen
 		? mixedQuestions?.slice(0, ITEMS_COUNT_MOBILE)
@@ -35,7 +39,7 @@ export const MostDifficultQuestionsWidget = () => {
 	return (
 		<Card
 			className={styles.card}
-			title={`${t(Analytics.MOST_DIFFICULT_QUESTIONS_TITLE_WIDGET)} ${difficultQuestions?.specialization.title}`}
+			title={`${t(Analytics.MOST_DIFFICULT_QUESTIONS_TITLE_WIDGET)} ${difficultQuestions?.data.specialization.title}`}
 			actionRoute={ROUTES.analytics['difficult-questions'].page}
 			isActionPositionBottom
 		>
