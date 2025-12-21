@@ -15,3 +15,7 @@ export { default as notFound } from './notFound.avif';
 export { default as questionImg } from './questionImg.avif';
 export { default as quizCardPreview } from './quizCardPreview.avif';
 export { default as searchPage } from './searchPage.png';
+export { default as firstPlaceIcon } from './firstPlace.png';
+export { default as secondPlaceIcon } from './secondPlace.png';
+export { default as thirdPlaceIcon } from './thirdPlace.png';
+export { default as trophyIcon } from './trophyIcon.png';

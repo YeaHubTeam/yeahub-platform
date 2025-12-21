@@ -70,5 +70,28 @@
 			"keywords": "Слова",
 			"count": "Количество"
 		}
+	},
+	"users.rating": {
+		"answers": "Ответов",
+		"title": {
+			"widget": "Топ 3 участника по специальности {{specialization}}",
+			"page": "Рейтинг по специальности {{specialization}}"
+		},
+		"no.data": {
+			"widget": "В топе по этой специальности пока никого нет",
+			"page": "В топе по этой специальности пока никого нет"
+		},
+		"table": {
+			"index": "№",
+			"place": "Место",
+			"user": "Пользователь",
+			"questions.count": "Изучено вопросов",
+			"progress": "Прогресс"
+		},
+		"tooltip": {
+			"users.count": "Всего участников: {{usersCount}}",
+			"progress": "Средний прогресс: {{averageProgress}}%",
+			"updated.at": "Обновлено: {{updatedAt}}"
+		}
 	}
 }

@@ -152,7 +152,8 @@
 		"popular.skills": "Популярные навыки",
 		"analytics.skillsProficiency": "Средний процент изученности навыка",
 		"analytics.difficultQuestions": "Самые сложные вопросы",
-		"analytics.popularQuestions": "Самые частые вопросы в подборках"
+		"analytics.popularQuestions": "Самые частые вопросы в подборках",
+		"analytics.usersRating": "Рейтинг пользователей"
 	},
 	"toast": {
 		"title": {

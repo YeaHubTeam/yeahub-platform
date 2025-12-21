@@ -64,6 +64,7 @@ import { PopularQuestionsPage } from '@/pages/analytics/popularQuestions';
 import { PopularSkillsPage } from '@/pages/analytics/popularSkills';
 import { ProgressSpecializationsPage } from '@/pages/analytics/progressSpecializations';
 import { SkillsProficiencyPage } from '@/pages/analytics/skillsProficiency';
+import { UsersRatingPage } from '@/pages/analytics/usersRating';
 import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
@@ -594,6 +595,13 @@ export const router = createBrowserRouter([
 						element: <PopularQuestionsPage />,
 						handle: {
 							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
+						},
+					},
+					{
+						path: ROUTES.analytics['users-rating'].route,
+						element: <UsersRatingPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
 						},
 					},
 				],
