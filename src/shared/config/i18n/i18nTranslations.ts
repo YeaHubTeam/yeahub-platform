@@ -1211,4 +1211,7 @@ export enum Topics {
 	DESCRIPTION_SHORT = 'description.short',
 	SKILLS_SHORT = 'skills.short',
 	CREATED_AT = 'created.at',
+	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
+	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
+	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
 }
