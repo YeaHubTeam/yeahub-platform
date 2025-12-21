@@ -1,6 +1,6 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { SkillSelect } from '@/entities/skill';
+import { SkillsListField } from '@/entities/skill';
 
 import { TopicsFilterParams } from '../../model/types/filters';
 
@@ -14,7 +14,10 @@ export const TopicsFilters = ({ filters, onChangeSkillIds }: TopicsFiltersProps)
 
 	return (
 		<Flex direction="column" gap="24">
-			<SkillSelect value={skillIds || []} onChange={(value) => onChangeSkillIds(value)} />
+			<SkillsListField
+				selectedSkills={skillIds}
+				onChangeSkills={(skills) => onChangeSkillIds(skills)}
+			/>
 		</Flex>
 	);
 };
