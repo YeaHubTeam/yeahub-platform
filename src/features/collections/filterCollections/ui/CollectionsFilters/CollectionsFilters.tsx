@@ -6,7 +6,11 @@ import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
-import { ChooseCollectionAccess, CollectionsFilterParams } from '@/entities/collection';
+import {
+	ChooseCollectionAccess,
+	CollectionsFilterParams,
+	KeywordSelect,
+} from '@/entities/collection';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 import { UserSelect } from '@/entities/user';
@@ -18,6 +22,7 @@ interface CollectionsFiltersProps {
 	onChangeTitle?: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
+	onChangeKeyword?: (keyword: CollectionsFilterParams['keyword']) => void;
 	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
 	onChangeIsMy?: (isMy?: CollectionsFilterParams['isMy']) => void;
 }
@@ -27,9 +32,10 @@ export const CollectionsFilters = ({
 	onChangeTitle,
 	onChangeSpecialization,
 	onChangeIsFree,
+	onChangeKeyword,
 	onChangeIsMy,
 }: CollectionsFiltersProps) => {
-	const { specialization, isFree, isMy, title } = filter;
+	const { title, specialization, isFree, keyword, isMy } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -77,7 +83,9 @@ export const CollectionsFilters = ({
 				/>
 			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
-
+			{onChangeKeyword && (
+				<KeywordSelect value={keyword} key={keyword} onChange={onChangeKeyword} />
+			)}
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);

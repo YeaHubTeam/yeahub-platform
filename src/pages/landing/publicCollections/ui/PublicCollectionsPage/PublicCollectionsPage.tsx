@@ -20,11 +20,13 @@ import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton'
 const PublicCollectionsPage = () => {
 	const {
 		filters,
+		hasFilters,
 		onResetFilters,
 		onChangePage,
 		onChangeSpecialization,
 		onChangeIsFree,
 		onChangeTitle,
+		onChangeKeyword,
 	} = useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
@@ -32,6 +34,7 @@ const PublicCollectionsPage = () => {
 		specializations: filters.specialization,
 		isFree: filters.isFree,
 		page: filters.page,
+		keywords: filters.keyword ? [filters.keyword] : undefined,
 	});
 
 	const renderFilter = () => (
@@ -39,10 +42,12 @@ const PublicCollectionsPage = () => {
 			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
 			onChangeIsFree={onChangeIsFree}
+			onChangeKeyword={onChangeKeyword}
 			filter={{
 				title: filters.title,
 				specialization: filters.specialization,
 				isFree: filters.isFree,
+				keyword: filters.keyword,
 			}}
 		/>
 	);
@@ -58,6 +63,7 @@ const PublicCollectionsPage = () => {
 			<CollectionsContent
 				collections={collections.data}
 				filter={filters}
+				hasFilters={hasFilters}
 				resetFilters={onResetFilters}
 				pagination={
 					<TablePagination

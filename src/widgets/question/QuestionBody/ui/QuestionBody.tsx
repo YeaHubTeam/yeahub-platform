@@ -13,7 +13,11 @@ interface QuestionBodyProps {
 	isAuthorized?: boolean;
 }
 
-export const QuestionBody = ({ shortAnswer, longAnswer, isAuthorized }: QuestionBodyProps) => {
+export const QuestionBody = ({
+	shortAnswer,
+	longAnswer,
+	isAuthorized = true,
+}: QuestionBodyProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	return (
