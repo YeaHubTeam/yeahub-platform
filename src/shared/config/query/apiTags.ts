@@ -35,4 +35,5 @@ export enum ApiTags {
 	SPECIALIZATIONS_GENERAL_PROGRESS = 'general_progress',
 	TOPICS = 'topics',
 	TOPICS_DETAIL = 'topics_detail',
+	TOPIC = 'topic',
 }

@@ -835,6 +835,10 @@ export enum Collections {
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
+	KEYWORD_LABEL = 'keyword.label',
+	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
+	KEYWORD_NOT_FOUND = 'keyword.not.found',
+	KEYWORD_NOT_EXIST = 'keyword.not.exist',
 	TAGS_TITLE = 'tags.title',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
@@ -1213,4 +1217,7 @@ export enum Topics {
 	DESCRIPTION_SHORT = 'description.short',
 	SKILLS_SHORT = 'skills.short',
 	CREATED_AT = 'created.at',
+	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
+	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
+	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
 }

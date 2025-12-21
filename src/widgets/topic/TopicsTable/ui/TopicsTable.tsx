@@ -83,7 +83,7 @@ export const TopicsTable = ({
 		return Object.entries(columns).map(([k, v]) => (
 			<td key={k} className={styles.cell}>
 				{k === 'title' ? (
-					<Link to={ROUTES.admin.topics.page}>
+					<Link to={route(ROUTES.admin.topics.details.page, topic.id)}>
 						<Text variant="body2-accent">{v}</Text>
 					</Link>
 				) : (
