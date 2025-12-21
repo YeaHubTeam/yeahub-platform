@@ -40,6 +40,7 @@ export enum Translation {
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
+	SIDEBAR_MENU_LIVE_CODING_TITLE = 'sidebar.menu.liveCoding.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
 	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
@@ -90,6 +91,7 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
+	CRUMBS_LIVE_CODING = 'crumbs.liveCoding',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
@@ -249,6 +251,10 @@ export enum Translation {
 	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
 	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
 	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
+
+	/* Live Coding */
+	LIVE_CODING_TITLE = 'live.coding.title',
+	LIVE_CODING_RUN = 'live.coding.run',
 }
 
 export enum Profile {

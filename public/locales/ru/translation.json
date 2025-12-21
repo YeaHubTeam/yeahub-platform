@@ -50,6 +50,9 @@
 				"title": "Обучение",
 				"interview": "Собеседование"
 			},
+			"liveCoding": {
+				"title": "Live Coding"
+			},
 			"wiki": {
 				"title": "База знаний",
 				"resources": "Ресурсы"
@@ -136,6 +139,7 @@
 		"collections.list": "Коллекции",
 		"collection.detail": "Список вопросов",
 		"quiz": "Собеседование",
+		"liveCoding": "Live Coding",
 		"new.quiz": "Викторина",
 		"main.page": "Главная",
 		"error.404": "Страница не найдена",
@@ -510,6 +514,10 @@
 				"info": "У вас нет доступа к этой функции"
 			}
 		}
+	},
+	"live.coding": {
+		"title": "Live Coding",
+		"run": "Выполнить"
 	},
 	"editor.bold": "Жирный",
 	"editor.italic": "Курсив",

@@ -91,6 +91,8 @@ import { PublicQuestionsPage } from '@/pages/landing/publicQuestions';
 import { PublicQuizPage } from '@/pages/landing/publicQuiz';
 import { PublicQuizResultPage } from '@/pages/landing/publicQuizResult';
 import { PublicResourcesPage } from '@/pages/landing/publicResources';
+import { ChallengePage } from '@/pages/liveCoding/challenge';
+import { LiveCodingPage } from '@/pages/liveCoding/liveCoding';
 import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
@@ -167,6 +169,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: ROUTES.interview.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.liveCoding.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_LIVE_CODING_TITLE),
+				icon: CursorSquare, // TODO: добавить иконку
 			},
 		],
 		roles: allRoles,
@@ -701,6 +708,23 @@ export const router = createBrowserRouter([
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
 						},
+					},
+				],
+			},
+			{
+				path: ROUTES.liveCoding.route,
+				element: <Outlet />,
+				handle: {
+					crumb: i18n.t(Translation.CRUMBS_LIVE_CODING),
+				},
+				children: [
+					{
+						index: true,
+						element: <LiveCodingPage />,
+					},
+					{
+						path: ':id',
+						element: <ChallengePage />,
 					},
 				],
 			},
