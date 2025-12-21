@@ -7,7 +7,7 @@ export const useGetCompaniesFilterParams = (initialParams: CompaniesFilterParams
 	const currentParams: CompaniesFilterParams = {
 		page: parsedParams.page ? Number(parsedParams.page) : initialParams.page,
 		title: parsedParams.title || initialParams.title,
-		userId: parsedParams.userId || initialParams.userId,
+		authorId: parsedParams.userId || initialParams.authorId,
 	};
 
 	return currentParams;
