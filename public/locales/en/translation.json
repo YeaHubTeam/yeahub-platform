@@ -61,6 +61,12 @@
 			"topics": "Topics"
 		}
 	},
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"stub": {
 		"filter": {
 			"title": "Unfortunately, nothing was found for the query.",

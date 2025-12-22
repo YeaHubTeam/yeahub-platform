@@ -28,6 +28,7 @@ export enum ApiTags {
 	INTERVIEW_STATISTICS = 'interview_statistics',
 	PUBLIC_QUESTION_DETAIL = 'public_question_detail',
 	COMPANIES = 'companies',
+	PUBLIC_COMPANIES = 'public_companies',
 	COMPANY_DETAIL = 'company_detail',
 	PAYMENTS = 'payments',
 	POPULAR_SKILLS = 'skills_popular',

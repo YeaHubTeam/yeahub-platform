@@ -35,12 +35,6 @@
 		"aria.label": "Warning: You cannot create a new interview because there is already an active one."
 	},
 	"keywords": "Keywords:",
-	"keyword": {
-		"label": "Keyword",
-		"placeholder": "Select keyword",
-		"not.found": "Keyword not found",
-		"not.exist": "Keywords are not exist"
-	},
 	"tags": {
 		"title": "Tags"
 	},
