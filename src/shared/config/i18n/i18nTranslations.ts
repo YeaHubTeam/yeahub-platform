@@ -470,6 +470,8 @@ export enum Analytics {
 	HH_ANALYTICS_TABLE_SKILLS = 'hhAnalytics.table.skills',
 	HH_ANALYTICS_TABLE_KEYWORDS = 'hhAnalytics.table.keywords',
 	HH_ANALYTICS_TABLE_COUNT = 'hhAnalytics.table.count',
+	TOP_USERS_TITLE_WIDGET = 'top.users.title.widget',
+	TOP_USERS_NO_DATA_WIDGET = 'top.users.no.data.widget',
 }
 
 export enum InterviewQuiz {

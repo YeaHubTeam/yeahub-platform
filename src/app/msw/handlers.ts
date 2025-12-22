@@ -10,6 +10,7 @@ import { resourceHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
 import { specializationsProgressHandlers } from '@/entities/specialization';
+import { usersRatingHandlers } from '@/entities/user';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
@@ -48,5 +49,6 @@ export const handlers = [
 	...difficultQuestionsHandler,
 	...learnedQuestionHandlers,
 	...specializationsProgressHandlers,
+	...usersRatingHandlers,
 	...resourceHandlers,
 ];
