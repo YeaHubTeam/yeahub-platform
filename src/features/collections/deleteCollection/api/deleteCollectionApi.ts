@@ -19,7 +19,7 @@ const deleteCollectionApi = baseApi.injectEndpoints({
 					await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_COLLECTION_DELETE_SUCCESS));
-					typedExtra.navigate(ROUTES.admin.questions.page);
+					typedExtra.navigate(ROUTES.admin.collections.page);
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_COLLECTION_DELETE_FAILED));
 					// eslint-disable-next-line no-console

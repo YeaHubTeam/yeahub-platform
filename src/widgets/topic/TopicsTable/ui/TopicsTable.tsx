@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Topics, Translation, ROUTES } from '@/shared/config';
 import { SelectedAdminEntities, formatDate, route } from '@/shared/libs';
@@ -14,17 +13,25 @@ import { Text } from '@/shared/ui/Text';
 
 import { Topic } from '@/entities/topic';
 
+import { DeleteTopicButton } from '@/features/topics/deleteTopic';
+
 import styles from './TopicsTable.module.css';
 
 interface TopicsTableProps {
 	topics?: Topic[];
 	selectedTopics?: SelectedAdminEntities;
 	onSelectTopics?: (ids: SelectedAdminEntities) => void;
+	onDeleteSuccess?: () => void;
 }
 
-export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
-	const navigate = useNavigate();
+export const TopicsTable = ({
+	topics,
+	selectedTopics,
+	onSelectTopics,
+	onDeleteSuccess,
+}: TopicsTableProps) => {
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
+	const navigate = useNavigate();
 
 	const renderTableColumnWidth = () => {
 		const columnWidths = {
@@ -95,8 +102,29 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 					navigate(route(ROUTES.admin.topics.details.page, topic.id));
 				},
 			},
-			// Добавить редактировать и удалить если нужно
+			{
+				icon: <Icon icon="pen" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
+				disabled: topic.disabled,
+				onClick: () => {
+					navigate(route(ROUTES.admin.topics.details.page, topic.id));
+				},
+			},
+			{
+				renderComponent: () => (
+					<DeleteTopicButton
+						topicId={topic.id}
+						disabled={topic.disabled}
+						onSuccess={onDeleteSuccess}
+					/>
+				),
+			},
 		];
+
 		return (
 			<Flex gap="4">
 				<Popover menuItems={menuItems}>
@@ -124,10 +152,11 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 			items={topics}
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
+			renderActions={renderActions}
 			renderTableColumnWidths={renderTableColumnWidth}
 			selectedItems={selectedTopics}
 			onSelectItems={onSelectTopics}
-			renderActions={renderActions}
+			hasCopyButton
 		/>
 	);
 };
