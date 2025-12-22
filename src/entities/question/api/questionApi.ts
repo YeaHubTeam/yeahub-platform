@@ -18,6 +18,7 @@ import {
 	GetQuestionsBySpecializationCountResponse,
 	MostDifficultQuestionsResponse,
 	GetPopularQuestionsResponse,
+	MostDifficultQuestionsRequestParams,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -83,10 +84,11 @@ const questionApi = baseApi.injectEndpoints({
 		),
 		getMostDifficultQuestionsBySpecializationId: build.query<
 			MostDifficultQuestionsResponse,
-			number
+			MostDifficultQuestionsRequestParams
 		>({
-			query: (specId) => ({
+			query: ({ specId, ...params }) => ({
 				url: route(questionApiUrls.getMostDifficultQuestionsBySpecializationId, specId),
+				params,
 			}),
 		}),
 		getPopularQuestions: build.query<GetPopularQuestionsResponse, void>({
