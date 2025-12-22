@@ -18,10 +18,8 @@ export type PublicCompanySelectProps = Omit<
 	disabled?: boolean;
 };
 
-const COMPANY_ID_NOT_FOUND_KEY = 'toast.companies.filter.not.found';
-
 export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompanySelectProps) => {
-	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
+	const { t } = useTranslation([i18Namespace.companies]);
 
 	const [searchValue, setSearchValue] = useState('');
 	const [debouncedValue, setDebouncedValue] = useState('');
@@ -36,8 +34,7 @@ export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompany
 		limit: 10,
 	});
 
-	let companies = data?.data.filter((company) => company.title) || [];
-	companies = [{ id: '', title: '' }, ...companies];
+	const companies = data?.data.filter((company) => company.title) || [];
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
@@ -61,9 +58,8 @@ export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompany
 		}));
 	}, [companies]);
 	const selectCompany = options.find((option) => option.value === value) || emptyCompany;
-	const showNotFoundMessage = !isFetching && debouncedValue && options.length < 2;
-	const notFoundText = t(COMPANY_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
-	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectCompany.label;
+	const notFoundText = t(Companies.SELECT_FILTER_NOT_FOUND);
+	const displayValue = options.length === 0 ? notFoundText : searchValue || selectCompany.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
@@ -85,8 +81,8 @@ export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompany
 					setSearchValue(selected?.label ?? '');
 				}}
 			>
-				{showNotFoundMessage ? (
-					<Option value="" label={notFoundText} disabled />
+				{options.length === 0 ? (
+					<Option value="not-found" label={notFoundText} disabled />
 				) : (
 					options.map((option) => (
 						<Option

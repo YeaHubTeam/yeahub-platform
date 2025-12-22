@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Collections } from '@/shared/config';
 import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import {
 	ChooseCollectionAccess,
 	CollectionsFilterParams,
-	KeywordSelect,
+	useGetCollectionKeywordsQuery,
 } from '@/entities/collection';
 import { PublicCompanySelect } from '@/entities/company';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
@@ -85,13 +86,18 @@ export const CollectionsFilters = ({
 					onChangeSpecialization={handleSpecializationChange}
 				/>
 			)}
+			{onChangeKeyword && (
+				<KeywordSelect
+					value={keyword}
+					key={keyword}
+					onChange={onChangeKeyword}
+					getKeywordsQuery={useGetCollectionKeywordsQuery}
+				/>
+			)}
 			{(project === 'landing' || project === 'platform') && (
 				<PublicCompanySelect onChange={onChangeCompany} value={company} />
 			)}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
-			{onChangeKeyword && (
-				<KeywordSelect value={keyword} key={keyword} onChange={onChangeKeyword} />
-			)}
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);
