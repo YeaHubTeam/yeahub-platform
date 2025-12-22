@@ -8,7 +8,6 @@
   padding: 10px;
   overflow-x: auto;
   border-radius: 18px;
-  background-color: var(--background-block);
   list-style-type: none;
   scrollbar-width: none;
 }
@@ -29,8 +28,26 @@
   background-color: var(--background-button);  
   color:var(--border-image-hover);
   transition: all .3s ease-in-out;
+  cursor: pointer;
 }
 
 .tab-item:hover > p {
   color:var(--border-image-hover);
+}
+
+.default {
+  background-color: var(--background-block);
+}
+
+.gray {
+  background-color: var(--background-light-hover);
+}
+
+.hoverable.active{
+  background-color: var(--background-block);  
+  transition: all .3s ease-in-out;
+}
+
+.hoverable:hover{
+  background-color:var(--background-block);  
 }

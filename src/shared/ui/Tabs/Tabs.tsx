@@ -17,10 +17,11 @@ export interface Tab<T> {
 export interface TabsProps<T> {
 	tabs: Tab<T>[];
 	activeTab: Tab<T>;
+	color?: 'default' | 'gray';
 	setActiveTab: Dispatch<SetStateAction<Tab<T>>>;
 }
 
-export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
+export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: TabsProps<T>) => {
 	const navigate = useNavigate();
 
 	const onTabToggle = (tab: Tab<T>) => {
@@ -33,7 +34,10 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 			<Flex
 				componentType="ul"
 				gap="24"
-				className={styles['tab-list']}
+				className={classNames(styles['tab-list'], {
+					[styles[color]]: color === 'default',
+					[styles.gray]: color === 'gray',
+				})}
 				role="tablist"
 				data-testid="Tabs_List"
 			>
@@ -41,7 +45,10 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<li
 						key={tab.id as Key}
-						className={classNames(styles['tab-item'], { [styles.active]: activeTab.id === tab.id })}
+						className={classNames(styles['tab-item'], {
+							[styles.active]: activeTab.id === tab.id,
+							[styles.hoverable]: color === 'gray',
+						})}
 						onClick={() => onTabToggle(tab)}
 						role="tab"
 						tabIndex={0}

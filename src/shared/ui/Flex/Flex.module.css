@@ -145,3 +145,11 @@
 .max-height {
   height: 100%;
 }
+
+.default {
+  background-color: var(--background-app);
+}
+
+.gray {
+  background-color: var(--background-light-hover);
+}
