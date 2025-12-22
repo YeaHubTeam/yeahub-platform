@@ -4,6 +4,8 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetTopicsListQuery } from '@/entities/topic';
 
+import { DeleteTopicsButton } from '@/features/topics/deleteTopics';
+
 import { SearchSection } from '@/widgets/SearchSection';
 import { TopicsTable } from '@/widgets/topic/TopicsTable';
 
@@ -20,14 +22,28 @@ const TopicsPage = () => {
 		dispatch(topicsPageActions.setSelectedTopics(ids));
 	};
 
+	const clearSelectedTopics = () => {
+		dispatch(topicsPageActions.setSelectedTopics([]));
+	};
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection to="create" />
+			<SearchSection
+				to="create"
+				showRemoveButton={selectedTopics.length > 0}
+				renderRemoveButton={() => (
+					<DeleteTopicsButton
+						topicsToRemove={selectedTopics}
+						onSuccess={() => clearSelectedTopics()}
+					/>
+				)}
+			/>
 			<Card>
 				<TopicsTable
 					topics={topics?.data}
 					selectedTopics={selectedTopics}
 					onSelectTopics={onSelectTopics}
+					onDeleteSuccess={() => clearSelectedTopics()}
 				/>
 			</Card>
 		</Flex>

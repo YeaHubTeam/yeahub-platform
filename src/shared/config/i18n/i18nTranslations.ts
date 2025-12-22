@@ -51,6 +51,10 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 
+	KEYWORD_LABEL = 'keyword.label',
+	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
+	KEYWORD_NOT_FOUND = 'keyword.not.found',
+	KEYWORD_NOT_EXIST = 'keyword.not.exist',
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
@@ -237,6 +241,12 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
 	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
+	TOAST_TOPIC_DELETE_SINGLE_SUCCESS = 'toast.topics.delete.single.success',
+	TOAST_TOPIC_DELETE_SINGLE_FAILED = 'toast.topics.delete.single.failed',
+	TOAST_TOPIC_DELETE_MULTIPLE_SUCCESS = 'toast.topics.delete.multiple.success',
+	TOAST_TOPIC_DELETE_MULTIPLE_FAILED = 'toast.topics.delete.multiple.failed',
+	TOAST_TOPIC_EDIT_SUCCESS = 'toast.topics.edit.success',
+	TOAST_TOPIC_EDIT_FAILED = 'toast.topics.edit.failed',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
 	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
 	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
@@ -831,10 +841,6 @@ export enum Collections {
 	SPECIALIZATION_LABEL = 'specialization.label',
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
-	KEYWORD_LABEL = 'keyword.label',
-	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
-	KEYWORD_NOT_FOUND = 'keyword.not.found',
-	KEYWORD_NOT_EXIST = 'keyword.not.exist',
 	TAGS_TITLE = 'tags.title',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
@@ -865,6 +871,9 @@ export enum Companies {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	SELECT_FILTER_TITLE = 'select.filter.title',
+	SELECT_FILTER_CHOOSE = 'select.filter.choose',
+	SELECT_FILTER_NOT_FOUND = 'select.filter.not.found',
 }
 
 export enum ResourceRequests {

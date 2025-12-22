@@ -57,7 +57,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
-	const isAllSelected = selectedItems?.length === items.length;
+	const isAllSelected = selectedItems?.length === items.length && items.length > 0;
 	const selectedItemsIds = selectedItems?.map(({ id }) => id) || [];
 
 	const onSelectAllItems = () => {

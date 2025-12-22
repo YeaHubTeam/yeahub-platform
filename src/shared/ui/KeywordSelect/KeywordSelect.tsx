@@ -1,29 +1,48 @@
-import { useMemo, useState } from 'react';
+import { BaseQueryFn, TypedUseQuery } from '@reduxjs/toolkit/query/react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Collections } from '@/shared/config';
+import { i18Namespace, Translation } from '@/shared/config';
+import { Response, useDebounce } from '@/shared/libs';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetCollectionKeywordsQuery } from '../../api/collectionApi';
-
 export type KeywordSelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value?: string;
 	onChange: (value?: string) => void;
 	disabled?: boolean;
+	getKeywordsQuery: TypedUseQuery<
+		Response<string[]>,
+		{
+			page?: number;
+			limit?: number;
+			title?: string;
+		},
+		BaseQueryFn
+	>;
 };
 
-export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps) => {
-	const { t } = useTranslation(i18Namespace.collection);
+export const KeywordSelect = ({
+	value,
+	onChange,
+	disabled,
+	getKeywordsQuery,
+}: KeywordSelectProps) => {
+	const { t } = useTranslation(i18Namespace.translation);
 	const [searchValue, setSearchValue] = useState(value || '');
+	const [debouncedValue, setDebouncedValue] = useState('');
 
-	const { data: keywordsResponse } = useGetCollectionKeywordsQuery({
-		limit: 100,
-		title: searchValue,
+	const debouncedSetValue = useDebounce((value: string) => {
+		setDebouncedValue(value);
+	}, 500);
+
+	const { data: keywordsResponse } = getKeywordsQuery({
+		limit: 10,
+		title: debouncedValue,
 	});
 
 	const handleChange = (newValue?: string) => {
@@ -33,11 +52,12 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 
 	const emptyKeyword = {
 		value: '',
-		label: t(Collections.KEYWORD_PLACEHOLDER),
+		label: t(Translation.KEYWORD_PLACEHOLDER),
 	};
 
 	const handleSearchChange = (val: string) => {
 		setSearchValue(val);
+		debouncedSetValue(val);
 	};
 
 	const onClearFilterValue = () => {
@@ -58,13 +78,13 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 	}, [searchValue, keywordsResponse]);
 
 	const selectedKeyword = options.find((option) => option.value === value) || emptyKeyword;
-	const notFoundText = t(Collections.KEYWORD_NOT_FOUND);
+	const notFoundText = t(Translation.KEYWORD_NOT_FOUND);
 	const displayValue = options.length === 0 ? notFoundText : searchValue || selectedKeyword.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
 			<Text variant="body2" color="black-700">
-				{t(Collections.KEYWORD_LABEL)}
+				{t(Translation.KEYWORD_LABEL)}
 			</Text>
 			<Dropdown
 				size="S"
@@ -86,7 +106,7 @@ export const KeywordSelect = ({ value, onChange, disabled }: KeywordSelectProps)
 				{options.length === 0 ? (
 					<Option
 						value="not-found"
-						label={searchValue ? notFoundText : t(Collections.KEYWORD_NOT_EXIST)}
+						label={searchValue ? notFoundText : t(Translation.KEYWORD_NOT_EXIST)}
 						disabled
 					/>
 				) : (

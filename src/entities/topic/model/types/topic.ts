@@ -10,6 +10,7 @@ export interface Topic {
 	skill: Skill;
 	createdAt?: string;
 	updatedAt?: string;
+	disabled?: boolean;
 }
 
 export interface GetTopicsListParamsRequest {

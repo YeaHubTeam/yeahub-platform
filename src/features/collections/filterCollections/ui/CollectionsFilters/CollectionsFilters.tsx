@@ -3,14 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Collections } from '@/shared/config';
 import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
 import {
 	ChooseCollectionAccess,
 	CollectionsFilterParams,
-	KeywordSelect,
+	useGetCollectionKeywordsQuery,
 } from '@/entities/collection';
+import { PublicCompanySelect } from '@/entities/company';
 import { getChannelsForSpecialization, MediaLinksBanner } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID, SpecializationsListField } from '@/entities/specialization';
 import { UserSelect } from '@/entities/user';
@@ -21,6 +23,7 @@ interface CollectionsFiltersProps {
 	filter: CollectionsFilterParams;
 	onChangeTitle?: (value: CollectionsFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: CollectionsFilterParams['specialization']) => void;
+	onChangeCompany?: (company: CollectionsFilterParams['company']) => void;
 	onChangeIsFree: (isFree: CollectionsFilterParams['isFree']) => void;
 	onChangeKeyword?: (keyword: CollectionsFilterParams['keyword']) => void;
 	onChangeAuthor?: (authorId?: CollectionsFilterParams['authorId']) => void;
@@ -31,11 +34,12 @@ export const CollectionsFilters = ({
 	filter,
 	onChangeTitle,
 	onChangeSpecialization,
+	onChangeCompany,
 	onChangeIsFree,
 	onChangeKeyword,
 	onChangeIsMy,
 }: CollectionsFiltersProps) => {
-	const { title, specialization, isFree, keyword, isMy } = filter;
+	const { title, specialization, isFree, keyword, isMy, company } = filter;
 	const { t } = useTranslation(i18Namespace.collection);
 	const project = useCurrentProject();
 
@@ -82,10 +86,18 @@ export const CollectionsFilters = ({
 					onChangeSpecialization={handleSpecializationChange}
 				/>
 			)}
-			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 			{onChangeKeyword && (
-				<KeywordSelect value={keyword} key={keyword} onChange={onChangeKeyword} />
+				<KeywordSelect
+					value={keyword}
+					key={keyword}
+					onChange={onChangeKeyword}
+					getKeywordsQuery={useGetCollectionKeywordsQuery}
+				/>
 			)}
+			{(project === 'landing' || project === 'platform') && (
+				<PublicCompanySelect onChange={onChangeCompany} value={company} />
+			)}
+			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>
 	);

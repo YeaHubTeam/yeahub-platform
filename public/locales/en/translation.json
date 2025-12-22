@@ -61,6 +61,12 @@
 			"topics": "Topics"
 		}
 	},
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"stub": {
 		"filter": {
 			"title": "Unfortunately, nothing was found for the query.",
@@ -305,12 +311,20 @@
 			"create": {
 				"success": "Topic successfully created",
 				"failed": "Topic could not be created"
-			}
-		},
-		"topics": {
-			"create": {
-				"success": "Topic successfully created",
-				"failed": "Topic could not be created"
+			},
+			"edit": {
+				"success": "Topic successfully changed",
+				"failed": "Topic could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Topic successfully deleted",
+					"failed": "Topic could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted topics:",
+					"failed": "Topic could not be deleted:"
+				}
 			}
 		},
 		"collections": {
