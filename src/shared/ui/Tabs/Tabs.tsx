@@ -14,10 +14,12 @@ export interface Tab<T> {
 	Component: () => JSX.Element;
 }
 
+type TabColor = 'default' | 'gray';
+
 export interface TabsProps<T> {
 	tabs: Tab<T>[];
 	activeTab: Tab<T>;
-	color?: 'default' | 'gray';
+	color?: TabColor;
 	setActiveTab: Dispatch<SetStateAction<Tab<T>>>;
 }
 
@@ -33,11 +35,8 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: T
 		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
 			<Flex
 				componentType="ul"
-				gap="24"
-				className={classNames(styles['tab-list'], {
-					[styles[color]]: color === 'default',
-					[styles.gray]: color === 'gray',
-				})}
+				gap="10"
+				className={classNames(styles['tab-list'], styles[color])}
 				role="tablist"
 				data-testid="Tabs_List"
 			>
@@ -45,9 +44,8 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: T
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<li
 						key={tab.id as Key}
-						className={classNames(styles['tab-item'], {
+						className={classNames(styles['tab-item'], styles[color], {
 							[styles.active]: activeTab.id === tab.id,
-							[styles.hoverable]: color === 'gray',
 						})}
 						onClick={() => onTabToggle(tab)}
 						role="tab"

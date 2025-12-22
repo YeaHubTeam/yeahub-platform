@@ -19,16 +19,20 @@
   cursor: pointer;
 }
 
-.tab-item.active {
-  position: relative;
-  background-color:var(--background-app);
-}
-
 .tab-item:hover{
-  background-color: var(--background-button);  
-  color:var(--border-image-hover);
+  color: var(--border-image-hover);
   transition: all .3s ease-in-out;
   cursor: pointer;
+}
+
+.tab-item.default:hover,
+.tab-item.default.active {
+  background-color: var(--background-app);
+}
+
+.tab-item.gray:hover,
+.tab-item.gray.active {
+  background-color: var(--background-block);
 }
 
 .tab-item:hover > p {
@@ -41,13 +45,4 @@
 
 .gray {
   background-color: var(--background-light-hover);
-}
-
-.hoverable.active{
-  background-color: var(--background-block);  
-  transition: all .3s ease-in-out;
-}
-
-.hoverable:hover{
-  background-color:var(--background-block);  
 }
