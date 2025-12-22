@@ -38,6 +38,18 @@
   transform: translate(-50%, -50%);
   content: "\2714"
 }
+
+.checkbox:indeterminate::after { 
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 14px;
+  height: 1.5px;
+  border-radius: 1.5px;
+  background-color: var(--color-white-900);
+  transform: translateY(-50%);
+}
 	
 .checkbox:disabled {
   border-color: var(--color-black-500);
