@@ -19,10 +19,18 @@ import styles from './CollectionsPage.module.css';
 import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
-	const { filters, hasFilters, onResetFilters, onChangePage, onChangeTitle, onChangeIsFree } =
-		useCollectionsFilters({
-			page: 1,
-		});
+	const {
+		filters,
+		hasFilters,
+		onResetFilters,
+		onChangePage,
+		onChangeTitle,
+		onChangeIsFree,
+		onChangeKeyword,
+		onChangeCompany,
+	} = useCollectionsFilters({
+		page: 1,
+	});
 
 	const specializationId = useAppSelector(getSpecializationId);
 
@@ -34,8 +42,10 @@ const CollectionsPage = () => {
 	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
+		companies: filters.company,
 		isFree: filters.isFree,
 		page: filters.page,
+		keywords: filters.keyword ? [filters.keyword] : undefined,
 	});
 
 	const { isLargeScreen } = useScreenSize();
@@ -44,9 +54,13 @@ const CollectionsPage = () => {
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeIsFree={onChangeIsFree}
+			onChangeCompany={onChangeCompany}
+			onChangeKeyword={onChangeKeyword}
 			filter={{
 				title: filters.title,
 				isFree: filters.isFree,
+				company: filters.company,
+				keyword: filters.keyword,
 			}}
 		/>
 	);
