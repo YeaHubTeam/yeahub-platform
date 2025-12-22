@@ -1,12 +1,8 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { route } from '@/shared/helpers/route';
+import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateResourceApiErrorMessage } from '../lib/utils/getCreateResourceApiErrorMessage';
 import { createResourceApiUrls } from '../model/constants/createResourceConstants';
 import {
 	CreateResourceBodyRequest,
@@ -36,12 +32,12 @@ export const createResourceApi = baseApi.injectEndpoints({
 						toast.success(i18n.t(Translation.TOAST_RESOURCE_CREATE_SUCCESS));
 					} else {
 						typedExtra.navigate(ROUTES.wiki.resources.my.page);
-						toast.success(i18n.t(Translation.TOAST_RESOURCE_REQUEST_SUCCESS));
+						toast.success(i18n.t(Translation.TOAST_RESOURCE_REQUEST_CREATE_SUCCESS));
 						// TODO: implement a modal for resource moderation, delete the toast!
 						// typedExtra.openResourceModerationModal?.(result.data);
 					}
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_RESOURCE_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateResourceApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace } from '@/shared/config';
+import { InterviewStatistics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -14,15 +14,6 @@ interface GaugeChartProps {
 	learned?: number;
 	percent?: number;
 }
-/**
- * GaugeChart component displays progress as a circle.
- * The fill color dynamically changes according to the progress value.
- *
- * @param total - Total number of questions.
- * @param learned - Number of questions studied.
- * @param percent - Progress percentage (0-100). If not provided, it is calculated as (learned / total) * 100.
- * @returns JSX.Element
- */
 
 export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 	const { t } = useTranslation(i18Namespace.interviewStatistics);
@@ -72,7 +63,7 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					}}
 				/>
 			</svg>
-			<Text color={'black-700'} variant="body4" className={styles['gauge-text']}>
+			<Text color="black-700" variant="body4" className={styles['gauge-text']}>
 				{!isNaN(passedQuestionsPercent) && <span>{passedQuestionsPercent}%</span>}
 				{!isNaN(passedQuestionsPercent) && <br />}
 				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}

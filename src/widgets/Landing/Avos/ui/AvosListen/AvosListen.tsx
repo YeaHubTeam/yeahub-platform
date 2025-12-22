@@ -1,12 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { AVOS_TELEGRAM_URL } from '@/shared/constants/media';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { AVOS_TELEGRAM_URL, useScreenSize } from '@/shared/libs';
 import { Banner } from '@/shared/ui/Banner';
 
-import headphones from '@/widgets/Landing/Avos/model/assets/headphones.jpg';
+import { headphones } from '../../model/assets';
 
 import styles from './AvosListen.module.css';
 

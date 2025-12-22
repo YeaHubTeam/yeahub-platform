@@ -1,7 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Question } from '@/entities/question';
+import { Question } from '@/entities/question/@x/quiz';
 
 export type QuestionModeType = 'REPEAT' | 'NEW' | 'RANDOM';
 export type QuizQuestionAnswerType = 'KNOWN' | 'UNKNOWN';
@@ -88,8 +87,10 @@ export type ActiveQuiz = Omit<Quiz, 'endDate'>;
 
 export type CreateNewQuizResponse = ActiveQuiz;
 
-export interface CreateNewMockQuizParamsRequest
-	extends Omit<CreateNewQuizParamsRequest, 'profileId'> {
+export interface CreateNewMockQuizParamsRequest extends Omit<
+	CreateNewQuizParamsRequest,
+	'profileId'
+> {
 	specialization?: number[] | number;
 }
 

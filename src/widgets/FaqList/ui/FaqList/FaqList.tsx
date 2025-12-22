@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { i18Namespace, Subscription } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';

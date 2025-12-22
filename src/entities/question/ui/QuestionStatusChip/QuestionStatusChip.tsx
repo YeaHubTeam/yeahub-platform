@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Questions } from '@/shared/config';
 import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 
-import { QuestionStatus } from '@/entities/question';
+import { QuestionStatus } from '../../model/types/question';
 
 interface QuestionStatusChipProps {
 	status: QuestionStatus;

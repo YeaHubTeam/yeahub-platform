@@ -1,1 +1,0 @@
-export { errorMessageAdapter } from './errorMessageAdapter';

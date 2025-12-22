@@ -1,6 +1,6 @@
-import type { FilterFromUser } from '@/shared/hooks';
+import { CollectionsFilterParams } from '@/entities/collection';
 
 export type CollectionNavigation = {
 	collectionId: number | string;
-	filter: FilterFromUser;
+	filter: CollectionsFilterParams;
 };

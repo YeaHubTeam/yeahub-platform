@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import * as yup from 'yup';
 
-import { createChangePasswordSchema } from '../lib/validation/changePasswordSchema';
+import { createChangePasswordSchema } from '../../lib/validation/changePasswordSchema';
 
 const tempSchema = createChangePasswordSchema(((key: string) => key) as TFunction);
 

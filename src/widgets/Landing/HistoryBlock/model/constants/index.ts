@@ -1,6 +1,4 @@
-import progressBarChart from '@/widgets/Landing/HistoryBlock/model/assets/progressBarChart.avif';
-import progressCircle from '@/widgets/Landing/HistoryBlock/model/assets/progressCircle.avif';
-import progressDescription from '@/widgets/Landing/HistoryBlock/model/assets/progressDesc.avif';
+import { progressBarChart, progressCircle, progressDesc } from '../assets';
 
 export const sliderSettings = {
 	dots: true,
@@ -17,7 +15,7 @@ export const historySlides = [
 	},
 	{
 		id: 'description',
-		src: progressDescription,
+		src: progressDesc,
 		altKey: 'HISTORY_IMG_DESCRIPTION',
 		textKey: 'HISTORY_SLIDES_SECOND',
 	},

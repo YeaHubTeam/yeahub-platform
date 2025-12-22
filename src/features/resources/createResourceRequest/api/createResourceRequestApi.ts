@@ -1,6 +1,8 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
+import { ApiTags, baseApi, i18n, Translation } from '@/shared/config';
+import { handleApiError } from '@/shared/libs';
+import { toast } from '@/shared/ui/Toast';
 
+import { getCreateResourceRequestApiErrorMessage } from '../lib/utils/getCreateResourceRequestApiErrorMessage';
 import { createResourceRequestApiUrls } from '../model/constants/createResourceRequestConstants';
 import {
 	CreateResourceBodyRequest,
@@ -16,6 +18,16 @@ export const createResourceRequestApi = baseApi.injectEndpoints({
 					method: 'POST',
 					body: resource,
 				}),
+				async onQueryStarted(_, { queryFulfilled }) {
+					try {
+						await queryFulfilled;
+						toast.success(i18n.t(Translation.TOAST_RESOURCE_REQUEST_CREATE_SUCCESS));
+					} catch (error) {
+						toast.error(i18n.t(handleApiError(error, getCreateResourceRequestApiErrorMessage)));
+						// eslint-disable-next-line no-console
+						console.error(error);
+					}
+				},
 				invalidatesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 			},
 		),

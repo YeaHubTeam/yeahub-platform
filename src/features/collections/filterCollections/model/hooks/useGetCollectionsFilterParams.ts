@@ -1,4 +1,4 @@
-import { CollectionsFilterParams } from '../types/types';
+import { CollectionsFilterParams } from '@/entities/collection';
 
 export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterParams) => {
 	const params = new URLSearchParams(location.search);
@@ -12,6 +12,7 @@ export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterPa
 		isFree: parsedParams.isFree ? Boolean(parsedParams.isFree) : initialParams.isFree,
 		title: parsedParams.title || initialParams.title,
 		authorId: parsedParams.authorId || initialParams.authorId,
+		keyword: parsedParams.keyword || initialParams.keyword,
 	};
 
 	return currentParams;

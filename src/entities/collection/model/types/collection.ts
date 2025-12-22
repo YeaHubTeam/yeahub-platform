@@ -1,11 +1,8 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Company } from '@/entities/company';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Question } from '@/entities/question';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Company } from '@/entities/company/@x/collection';
+import { Question } from '@/entities/question/@x/collection';
+import { Specialization } from '@/entities/specialization/@x/collection';
 
 export type CollectionTariff = 'free' | 'premium';
 
@@ -59,3 +56,11 @@ export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;
 	limit?: number;
 };
+
+export type GetCollectionKeywordsParamsRequest = {
+	page?: number;
+	limit?: number;
+	title?: string;
+};
+
+export type GetCollectionKeywordsResponse = Response<string[]>;

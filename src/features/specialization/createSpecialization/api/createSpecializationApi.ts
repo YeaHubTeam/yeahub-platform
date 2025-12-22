@@ -1,10 +1,5 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { route } from '@/shared/helpers/route';
+import { ROUTES, i18n, Translation, ApiTags, baseApi, ExtraArgument } from '@/shared/config';
+import { route, handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { createSpecializationApiUrls } from '../model/constants/createSpecializationConstants';
@@ -12,6 +7,7 @@ import {
 	CreateSpecializationBodyRequest,
 	CreateSpecializationResponse,
 } from '../model/types/specializationCreateTypes';
+import { getCreateSpecializationErrorMessage } from '../model/utils/getApiErrorMessage';
 
 export const createSpecializationApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -31,8 +27,8 @@ export const createSpecializationApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.specializations.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_SPECIALIZATION_CREATE_FAILED));
-					// eslint-disable-next-line no-console
+					toast.error(i18n.t(handleApiError(error, getCreateSpecializationErrorMessage)));
+					//eslint-disable-next-line no-console
 					console.error(error);
 				}
 			},

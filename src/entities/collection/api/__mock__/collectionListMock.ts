@@ -1,11 +1,10 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { collectionApiUrls } from '../../model/constants/collection';
 import type {
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
-} from '@/entities/collection/model/types/collection';
-
-import { collectionApiUrls } from '../../model/constants/collection';
+} from '../../model/types/collection';
 
 import { collectionsMock } from './data';
 

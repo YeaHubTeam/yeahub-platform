@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config';
 
 import { AvatarWithoutPhoto } from '../AvatarWithoutPhoto';
 

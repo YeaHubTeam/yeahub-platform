@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { matchPath, useLocation } from 'react-router-dom';
 
-// eslint-disable-next-line
-import { useAppDispatch, useAppSelector } from '@/shared/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/libs';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile/@x/quiz';
 
 import { changeMockQuestionAnswer, changeQuestionAnswer } from '../slices/activeQuizSlice';
 import { Answers, QuizQuestionAnswerType } from '../types/quiz';
+
 export const useSlideSwitcher = (questions: Answers[], initialSlideIndex?: number) => {
 	const [currentQuestion, setCurrentQuestion] = useState(initialSlideIndex || 0);
 
