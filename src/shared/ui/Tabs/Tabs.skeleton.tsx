@@ -12,7 +12,7 @@ interface TabsSkeleton {
 export const TabsSkeleton = ({ tabs }: TabsSkeleton) => {
 	return (
 		<Flex direction="column" gap="28" className={styles['tab-container']}>
-			<Flex componentType="ul" gap="24" className={styles['tab-list']}>
+			<Flex componentType="ul" gap="10" className={styles['tab-list']}>
 				{tabs?.map((tab) => (
 					<li key={tab as Key} className={classNames(styles['tab-item'])} role="tab" tabIndex={0}>
 						<TextSkeleton variant="body4" width={200} />

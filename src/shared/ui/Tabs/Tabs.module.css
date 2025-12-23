@@ -8,7 +8,6 @@
   padding: 10px;
   overflow-x: auto;
   border-radius: 18px;
-  background-color: var(--background-block);
   list-style-type: none;
   scrollbar-width: none;
 }
@@ -20,17 +19,30 @@
   cursor: pointer;
 }
 
-.tab-item.active {
-  position: relative;
-  background-color:var(--background-app);
+.tab-item:hover{
+  color: var(--border-image-hover);
+  transition: all .3s ease-in-out;
+  cursor: pointer;
 }
 
-.tab-item:hover{
-  background-color: var(--background-button);  
-  color:var(--border-image-hover);
-  transition: all .3s ease-in-out;
+.tab-item.default:hover,
+.tab-item.default.active {
+  background-color: var(--background-app);
+}
+
+.tab-item.gray:hover,
+.tab-item.gray.active {
+  background-color: var(--background-block);
 }
 
 .tab-item:hover > p {
   color:var(--border-image-hover);
+}
+
+.default {
+  background-color: var(--background-block);
+}
+
+.gray {
+  background-color: var(--background-light-hover);
 }
