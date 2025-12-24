@@ -1,9 +1,13 @@
-import { useAppSelector } from '@/shared/libs';
+import { useTranslation } from 'react-i18next';
+
+import { Questions } from '@/shared/config';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
+import { Text } from '@/shared/ui/Text';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -20,6 +24,7 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 const QuestionsPage = () => {
 	const {
 		filters,
+		hasFilters,
 		onChangePage,
 		onChangeTitle,
 		onChangeSkills,
@@ -88,6 +93,10 @@ const QuestionsPage = () => {
 		/>
 	);
 
+	const { t } = useTranslation('questions');
+	const { isSmallScreen } = useScreenSize();
+	const renderDrawer = () => <FiltersDrawer>{renderFilters()}</FiltersDrawer>;
+
 	if (isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories) {
 		return <QuestionsPageSkeleton />;
 	}
@@ -96,21 +105,48 @@ const QuestionsPage = () => {
 		return null;
 	}
 
+	const showEmptyQuestionsStub = questions.data.length === 0 && !hasFilters;
+	const showFilterEmptyStub = questions.data.length === 0 && hasFilters;
+	const showQuestionsList = questions.data.length > 0;
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
-				<FullQuestionsList
-					questions={questions.data}
-					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-					onMoveQuestionDetail={onMoveQuestionDetail}
-				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={questions.limit}
-					total={questions.total}
-				/>
-				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
+				<Flex direction="column">
+					{showEmptyQuestionsStub && (
+						<>
+							<Flex className={styles.header} direction="row" justify="between">
+								<Text variant="body6" className={styles.title}>
+									{t(Questions.TITLE_SHORT)}
+								</Text>
+								{isSmallScreen && renderDrawer()}
+							</Flex>
+							<Stub
+								type="empty"
+								title={t(Questions.STUB_EMPTY_TITLE)}
+								subtitle={t(Questions.STUB_EMPTY_SUBTITLE)}
+							/>
+						</>
+					)}
+
+					{showFilterEmptyStub && <Stub type="filter-empty" onClick={onResetFilters} />}
+
+					{showQuestionsList && (
+						<>
+							<FullQuestionsList
+								questions={questions.data}
+								filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+								onMoveQuestionDetail={onMoveQuestionDetail}
+							/>
+							<TablePagination
+								page={filters.page || 1}
+								onChangePage={onChangePage}
+								limit={questions.limit}
+								total={questions.total}
+							/>
+						</>
+					)}
+				</Flex>
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>
