@@ -51,6 +51,10 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 
+	KEYWORD_LABEL = 'keyword.label',
+	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
+	KEYWORD_NOT_FOUND = 'keyword.not.found',
+	KEYWORD_NOT_EXIST = 'keyword.not.exist',
 	/* Stub */
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
@@ -237,6 +241,12 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
 	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
+	TOAST_TOPIC_DELETE_SINGLE_SUCCESS = 'toast.topics.delete.single.success',
+	TOAST_TOPIC_DELETE_SINGLE_FAILED = 'toast.topics.delete.single.failed',
+	TOAST_TOPIC_DELETE_MULTIPLE_SUCCESS = 'toast.topics.delete.multiple.success',
+	TOAST_TOPIC_DELETE_MULTIPLE_FAILED = 'toast.topics.delete.multiple.failed',
+	TOAST_TOPIC_EDIT_SUCCESS = 'toast.topics.edit.success',
+	TOAST_TOPIC_EDIT_FAILED = 'toast.topics.edit.failed',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
 	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
 	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
@@ -244,6 +254,11 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_LINKED_TO_ANOTHER_USER = 'toast.auth.telegram.verification.link.error.linked.to.another.user',
 	TOAST_AUTH_TELEGRAM_VERIFY_DENIED = 'toast.auth.telegram.verification.link.error.verify.denied',
 	TOAST_AUTH_TELEGRAM_USER_NOT_FOUND = 'toast.auth.telegram.verification.link.error.user.not.found',
+	TOAST_QUESTIONS_CREATE_USER_NOT_FOUND = 'toast.questions.create.user.not.found',
+	TOAST_QUESTIONS_CREATE_AUTH_UNAUTHORIZED = 'toast.questions.create.auth.unauthorized',
+	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
+	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
+	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
 }
 
 export enum Profile {
@@ -455,6 +470,8 @@ export enum Analytics {
 	HH_ANALYTICS_TABLE_SKILLS = 'hhAnalytics.table.skills',
 	HH_ANALYTICS_TABLE_KEYWORDS = 'hhAnalytics.table.keywords',
 	HH_ANALYTICS_TABLE_COUNT = 'hhAnalytics.table.count',
+	TOP_USERS_TITLE_WIDGET = 'top.users.title.widget',
+	TOP_USERS_NO_DATA_WIDGET = 'top.users.no.data.widget',
 }
 
 export enum InterviewQuiz {
@@ -854,6 +871,9 @@ export enum Companies {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	SELECT_FILTER_TITLE = 'select.filter.title',
+	SELECT_FILTER_CHOOSE = 'select.filter.choose',
+	SELECT_FILTER_NOT_FOUND = 'select.filter.not.found',
 }
 
 export enum ResourceRequests {
@@ -1202,4 +1222,7 @@ export enum Topics {
 	DESCRIPTION_SHORT = 'description.short',
 	SKILLS_SHORT = 'skills.short',
 	CREATED_AT = 'created.at',
+	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
+	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
+	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
 }

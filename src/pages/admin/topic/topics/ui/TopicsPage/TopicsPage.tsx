@@ -5,7 +5,9 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetTopicsListQuery } from '@/entities/topic';
 
+
 import { TopicsFilters, useTopicsFilters } from '@/features/topic/filterTopics';
+import { DeleteTopicsButton } from '@/features/topics/deleteTopics';
 
 import { SearchSection } from '@/widgets/SearchSection';
 import { TopicsTable } from '@/widgets/topic/TopicsTable';
@@ -30,22 +32,36 @@ const TopicsPage = () => {
 		dispatch(topicsPageActions.setSelectedTopics(ids));
 	};
 
+	const clearSelectedTopics = () => {
+		dispatch(topicsPageActions.setSelectedTopics([]));
+	};
+
 	return (
 		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				onSearch={onChangeTitle}
-				searchValue={filters.title}
-				renderFilter={() => <TopicsFilters filters={filters} onChangeSkillIds={onChangeSkillIds} />}
-				onResetFilters={onResetFilters}
-				showResetFilterButton={hasFilters}
-				hasFilters={Boolean((filters.skillIds || []).length)}
+<SearchSection
+    to="create"
+    onSearch={onChangeTitle}
+    searchValue={filters.title}
+    renderFilter={() => <TopicsFilters filters={filters} onChangeSkillIds={onChangeSkillIds} />}
+    onResetFilters={onResetFilters}
+    showResetFilterButton={hasFilters}
+    hasFilters={Boolean((filters.skillIds || []).length)}
+    showRemoveButton={selectedTopics.length > 0}
+    renderRemoveButton={() => (
+        <DeleteTopicsButton
+            topicsToRemove={selectedTopics}
+            onSuccess={() => clearSelectedTopics()}
+        />
+    )}
+/>
+
 			/>
 			<Card>
 				<TopicsTable
 					topics={topicsWithTitle?.data}
 					selectedTopics={selectedTopics}
 					onSelectTopics={onSelectTopics}
+					onDeleteSuccess={() => clearSelectedTopics()}
 				/>
 				<TablePagination
 					page={filters.page || 1}
