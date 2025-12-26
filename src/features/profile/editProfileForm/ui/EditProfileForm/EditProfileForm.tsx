@@ -3,10 +3,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Profile, Translation, ROUTES } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -17,9 +15,9 @@ import { Text } from '@/shared/ui/Text';
 import { getFullProfile } from '@/entities/profile';
 
 import { useUpdateProfileMutation } from '../../api/editProfileApi';
+import { mapFormToProfile, mapProfileToForm } from '../../lib/helpers/editProfileFormHelpers';
+import { editProfileSchema } from '../../lib/validation/editProfileSchema';
 import { useGetEditProfileTabs } from '../../model/hooks/useGetEditProfileTabs';
-import { mapFormToProfile, mapProfileToForm } from '../../model/lib/helpers/editProfileFormHelpers';
-import { editProfileSchema } from '../../model/lib/validation/editProfileSchema';
 import { ProfileSchema } from '../../model/types/editProfileTypes';
 
 import styles from './EditProfileForm.module.css';
@@ -55,7 +53,7 @@ export const EditProfileForm = () => {
 			<Text variant="body5-strong" isMainTitle className={styles.title}>
 				{t(Profile.EDIT_PAGE_TITLE)}
 			</Text>
-			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} color="gray" />
 			<FormProvider {...methods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>

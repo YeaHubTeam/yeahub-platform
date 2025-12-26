@@ -2,11 +2,8 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
-import { SelectedAdminEntities } from '@/shared/types/types';
+import { i18Namespace, Collections, Translation, ROUTES } from '@/shared/config';
+import { route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -82,10 +79,10 @@ export const CollectionsTable = ({
 			>
 				{k === 'title' ? (
 					<Link to={route(ROUTES.admin.collections.details.route, collection.id)}>
-						<Text variant={'body3-accent'}>{v}</Text>
+						<Text variant="body3-accent">{v}</Text>
 					</Link>
 				) : (
-					<Text variant={'body3-accent'}>{v}</Text>
+					<Text variant="body3-accent">{v}</Text>
 				)}
 			</td>
 		));

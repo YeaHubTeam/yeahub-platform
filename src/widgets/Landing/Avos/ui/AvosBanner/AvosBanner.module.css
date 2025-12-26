@@ -5,12 +5,16 @@
   background-color: var(--color-purple-700);
 }
 
+.avos-banner-skeleton {
+  background-color: var(--color-white-900);
+}
+
 .content {
   margin-top: 11px;
 }
 
 .promo {
-  align-self:flex-end;
+  align-self: flex-end;
   max-width: 572px;
 }
 
@@ -25,13 +29,13 @@
     padding: 20px;
   }
 
-  .logo{
+  .logo {
     align-self: flex-end;
     max-width: 450px;
   }
 
   .promo {
-    align-self:flex-start
+    align-self: flex-start
   }
 }
 
@@ -44,14 +48,14 @@
     margin-top: 8px;
   }
 
-  .logo{
+  .logo {
     max-width: 304px;
   }
 }
 
 @media (width < 480px) {
-  .logo{
-    align-self:center;
+  .logo {
+    align-self: center;
   }
-  
+
 }

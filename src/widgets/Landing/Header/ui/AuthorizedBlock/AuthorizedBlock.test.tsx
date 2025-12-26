@@ -1,8 +1,7 @@
 import { screen, render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { MemoryRouter, useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config';
 
 import { AuthorizedBlock } from './AuthorizedBlock';
 

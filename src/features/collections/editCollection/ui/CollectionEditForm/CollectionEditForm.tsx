@@ -5,12 +5,11 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { CollectionForm } from '@/entities/collection';
-import { Collection } from '@/entities/collection';
+import { CollectionForm, Collection } from '@/entities/collection';
 
-import { collectionEditSchema } from '@/features/collections/editCollection/model/lib/validation/collectionEditSchema';
-import { CollectionEditFormValues } from '@/features/collections/editCollection/model/types/collectionEditTypes';
-import { CollectionEditFormHeader } from '@/features/collections/editCollection/ui/CollectionEditFormHeader/CollectionEditFormHeader';
+import { collectionEditSchema } from '../../lib/validation/collectionEditSchema';
+import { CollectionEditFormValues } from '../../model/types/collectionEditTypes';
+import { CollectionEditFormHeader } from '../CollectionEditFormHeader/CollectionEditFormHeader';
 
 import styles from './CollectionEditForm.module.css';
 

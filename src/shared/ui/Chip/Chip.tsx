@@ -5,7 +5,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
-import { chipTestIDs } from './model/constants';
+import { chipTestIDs } from './constants';
 import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(

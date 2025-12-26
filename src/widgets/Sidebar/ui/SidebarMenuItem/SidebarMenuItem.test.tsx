@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 
-import { MenuItem } from '@/widgets/Sidebar';
-import { sidebarUserMenuMock } from '@/widgets/Sidebar/model/data/sidebarMock';
+import { sidebarUserMenuMock } from '../..//model/data/sidebarMock';
+import { MenuItem } from '../../model/types/sidebar';
 
 import { SidebarMenuItem } from './SidebarMenuItem';
 

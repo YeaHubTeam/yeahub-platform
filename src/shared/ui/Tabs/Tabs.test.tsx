@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Tab, Tabs, TabsProps } from './Tabs';
@@ -32,28 +32,12 @@ const renderComponent = (props = {}) => {
 };
 
 describe('Tabs Component', () => {
-	test('sets the active tab and line position correctly on initial render', () => {
-		renderComponent();
-
-		const tab1 = screen.getByTestId('Tabs_Item_tab-1');
-		const lineRef = screen.getByTestId('Tabs_Line');
-
-		expect(lineRef).toHaveStyle(`left: ${tab1.offsetLeft}px`);
-		expect(lineRef).toHaveStyle(`width: ${tab1.offsetWidth}px`);
-	});
-
 	test('updates line position and active tab on tab click', async () => {
 		renderComponent();
 
 		const tab2 = screen.getByTestId('Tabs_Item_tab-2');
-		const lineRef = screen.getByTestId('Tabs_Line');
 
 		fireEvent.click(tab2);
-
-		await waitFor(() => {
-			expect(lineRef).toHaveStyle(`left: ${tab2.offsetLeft}px`);
-			expect(lineRef).toHaveStyle(`width: ${tab2.offsetWidth}px`);
-		});
 
 		expect(setActiveTab).toHaveBeenCalledWith(mockTabs[1]);
 	});

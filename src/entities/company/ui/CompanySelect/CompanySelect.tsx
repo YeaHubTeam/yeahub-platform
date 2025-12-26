@@ -1,8 +1,7 @@
-import { useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Companies } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Companies } from '@/shared/config';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
@@ -11,7 +10,7 @@ import { useGetCompaniesListQuery } from '../../api/companyApi';
 import styles from './CompanySelect.module.css';
 
 type CompanySelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: string;
@@ -21,7 +20,7 @@ type CompanySelectProps = Omit<
 
 export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps) => {
 	const { t } = useTranslation(i18Namespace.companies);
-	const { data: companies } = useGetCompaniesListQuery({ limit: 100 });
+	const { data: companies } = useGetCompaniesListQuery({ limit: 200 });
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue || disabled) return;

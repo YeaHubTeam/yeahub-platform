@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import { MostDifficultQuestionsResponse, Question } from '@/entities/question/model/types/question';
+import { MostDifficultQuestionsResponse, Question } from '../../../model/types/question';
 
 export const questionsMock: Response<Question[]> = {
 	data: [
@@ -1019,7 +1019,7 @@ export const questionsMock: Response<Question[]> = {
 			imageSrc: null,
 			keywords: ['темы', 'media'],
 			longAnswer:
-				'<p>Поддержка темной темы в веб-приложениях позволяет пользователям автоматически переключаться между светлой и темной темой на основе их системных настроек. Это достигается с помощью CSS-медиавыражения <code>prefers-color-scheme</code>. Это медиавыражение проверяет, какую цветовую схему предпочитает пользовательская система (светлую или темную), и применяет соответствующие стили.</p><p>&nbsp;</p><p><strong>Пример использования медиавыражения для темной темы:</strong></p><p>&nbsp;</p><p><code>/* Стиль по умолчанию (светлая тема) */\nbody {\n &nbsp;background-color: white;\n &nbsp;color: black;\n}\n\n/* Темная тема */\n@media (prefers-color-scheme: dark) {\n &nbsp;body {\n &nbsp; &nbsp;background-color: black;\n &nbsp; &nbsp;color: white;\n &nbsp;}\n}\n</code></p><p>&nbsp;</p><p>Это позволяет автоматически применять темную тему, если устройство пользователя настроено на темную цветовую схему.</p><p>&nbsp;</p><p>Для мануального переключения между темами с помощью кнопки можно использовать JavaScript. Например, можно хранить состояние темы в <code>localStorage</code> и динамически менять классы в DOM.</p><p>&nbsp;</p><p><strong>Пример с JavaScript для ручного переключения темы:</strong></p><p>&nbsp;</p><p><code>const toggleTheme = () =&gt; {\n &nbsp;const theme = document.body.classList.toggle(\'dark\') ? \'dark\' : \'light\';\n &nbsp;localStorage.setItem(\'theme\', theme);\n};\n\ndocument.addEventListener(\'DOMContentLoaded\', () =&gt; {\n &nbsp;const savedTheme = localStorage.getItem(\'theme\');\n &nbsp;if (savedTheme) {\n &nbsp; &nbsp;document.body.classList.add(savedTheme);\n &nbsp;}\n});\n</code></p><p>&nbsp;</p><p>С помощью этого кода можно сохранить выбор пользователя и применить его при следующем посещении страницы.</p><p>&nbsp;</p><p>Также можно использовать метатеги, такие как <code>theme-color</code>, для изменения цветовой схемы браузера:</p><p>&nbsp;</p><p><code>&lt;meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"&gt;\n&lt;meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"&gt;\n</code></p><p>&nbsp;</p><p>Эти метатеги настраивают цветовую схему интерфейса браузера в зависимости от темы. Поддержка темной темы делает веб-приложения более адаптивными и улучшает пользовательский опыт.</p><p>&nbsp;</p><p>&nbsp;</p>',
+				'<p>Поддержка темной темы в веб-приложениях позволяет пользователям автоматически переключаться между светлой и темной темой на основе их системных настроек. Это достигается с помощью CSS-медиавыражения <code>prefers-color-scheme</code>. Это медиавыражение проверяет, какую цветовую схему предпочитает пользовательская система (светлую или темную), и применяет соответствующие стили.</p><p>&nbsp;</p><p><strong>Пример использования медиавыражения для темной темы:</strong></p><p>&nbsp;</p><p><code>/* Стиль по умолчанию (светлая тема) */\nbody {\n &nbsp;background-color: white;\n &nbsp;color: black;\n}\n\n/* Темная тема */\n@socialMedia (prefers-color-scheme: dark) {\n &nbsp;body {\n &nbsp; &nbsp;background-color: black;\n &nbsp; &nbsp;color: white;\n &nbsp;}\n}\n</code></p><p>&nbsp;</p><p>Это позволяет автоматически применять темную тему, если устройство пользователя настроено на темную цветовую схему.</p><p>&nbsp;</p><p>Для мануального переключения между темами с помощью кнопки можно использовать JavaScript. Например, можно хранить состояние темы в <code>localStorage</code> и динамически менять классы в DOM.</p><p>&nbsp;</p><p><strong>Пример с JavaScript для ручного переключения темы:</strong></p><p>&nbsp;</p><p><code>const toggleTheme = () =&gt; {\n &nbsp;const theme = document.body.classList.toggle(\'dark\') ? \'dark\' : \'light\';\n &nbsp;localStorage.setItem(\'theme\', theme);\n};\n\ndocument.addEventListener(\'DOMContentLoaded\', () =&gt; {\n &nbsp;const savedTheme = localStorage.getItem(\'theme\');\n &nbsp;if (savedTheme) {\n &nbsp; &nbsp;document.body.classList.add(savedTheme);\n &nbsp;}\n});\n</code></p><p>&nbsp;</p><p>С помощью этого кода можно сохранить выбор пользователя и применить его при следующем посещении страницы.</p><p>&nbsp;</p><p>Также можно использовать метатеги, такие как <code>theme-color</code>, для изменения цветовой схемы браузера:</p><p>&nbsp;</p><p><code>&lt;meta name="theme-color" content="#000000" socialMedia="(prefers-color-scheme: dark)"&gt;\n&lt;meta name="theme-color" content="#ffffff" socialMedia="(prefers-color-scheme: light)"&gt;\n</code></p><p>&nbsp;</p><p>Эти метатеги настраивают цветовую схему интерфейса браузера в зависимости от темы. Поддержка темной темы делает веб-приложения более адаптивными и улучшает пользовательский опыт.</p><p>&nbsp;</p><p>&nbsp;</p>',
 			shortAnswer:
 				'<p>Темную тему можно реализовать с помощью CSS-медиавыражения <code>prefers-color-scheme</code>, которое определяет предпочтения пользователя относительно цветовой схемы (светлой или темной). В зависимости от предпочтений браузера применяются соответствующие стили. Также можно настроить переключение темы вручную с помощью JavaScript и CSS-классов.</p>',
 			status: 'public',
@@ -1545,52 +1545,57 @@ export const questionsMock: Response<Question[]> = {
 };
 
 export const mostDifficultQuestions: MostDifficultQuestionsResponse = {
-	id: 1,
-	specialization: {
+	data: {
 		id: 1,
-		title: 'React',
-		description: 'React разработчик',
-		imageSrc: 'http://example.com/image.jpg',
-		createdAt: '2024-12-10T10:00:00.000Z',
-		updatedAt: '2024-12-10T10:00:00.000Z',
+		specialization: {
+			id: 1,
+			title: 'React',
+			description: 'React разработчик',
+			imageSrc: 'http://example.com/image.jpg',
+			createdAt: '2024-12-10T10:00:00.000Z',
+			updatedAt: '2024-12-10T10:00:00.000Z',
+		},
+		calculatedAt: '2024-12-10T10:00:00.000Z',
+		topStat: [
+			{
+				questionId: 1,
+				title: 'Что такое Virtual DOM, и как он работает?',
+				answersCount: 82,
+				stat: 1,
+			},
+			{
+				questionId: 1,
+				title: 'Как работает event loop в JavaScript?',
+				answersCount: 72,
+				stat: 1,
+			},
+			{
+				questionId: 1,
+				title: 'Что такое Virtual DOM, и как он работает?',
+				answersCount: 62,
+				stat: 1,
+			},
+			{
+				questionId: 1,
+				title: 'Как работает event loop в JavaScript?',
+				answersCount: 52,
+				stat: 1,
+			},
+			{
+				questionId: 1,
+				title: 'Что такое Virtual DOM, и как он работает?',
+				answersCount: 42,
+				stat: 1,
+			},
+			{
+				questionId: 1,
+				title: 'Как работает event loop в JavaScript?',
+				answersCount: 32,
+				stat: 1,
+			},
+		],
 	},
-	calculatedAt: '2024-12-10T10:00:00.000Z',
-	topStat: [
-		{
-			questionId: 1,
-			title: 'Что такое Virtual DOM, и как он работает?',
-			answersCount: 82,
-			stat: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Как работает event loop в JavaScript?',
-			answersCount: 72,
-			stat: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Что такое Virtual DOM, и как он работает?',
-			answersCount: 62,
-			stat: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Как работает event loop в JavaScript?',
-			answersCount: 52,
-			stat: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Что такое Virtual DOM, и как он работает?',
-			answersCount: 42,
-			stat: 1,
-		},
-		{
-			questionId: 1,
-			title: 'Как работает event loop в JavaScript?',
-			answersCount: 32,
-			stat: 1,
-		},
-	],
+	page: 1,
+	limit: 10,
+	total: 6,
 };

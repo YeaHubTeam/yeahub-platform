@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import { forwardRef, ReactNode } from 'react';
 
-import { Pallete } from '@/shared/types/types';
+import { Pallete } from '@/shared/libs';
 
 import styles from './Text.module.css';
 import { TextVariant } from './types';

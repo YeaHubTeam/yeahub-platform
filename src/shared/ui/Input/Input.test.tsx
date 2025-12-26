@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 import { Icon } from '@/shared/ui/Icon';
 
 import { Input, InputProps } from './Input';

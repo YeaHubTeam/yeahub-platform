@@ -1,6 +1,5 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import { route } from '@/shared/helpers/route';
+import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { companyApiUrls } from '../model/constants/companyConstants';
 import {
@@ -25,7 +24,15 @@ const companyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COMPANIES],
 		}),
+		getPublicCompaniesList: build.query<GetCompaniesListResponse, GetCompaniesListParamsRequest>({
+			query: (params) => ({
+				url: companyApiUrls.getPublicCompaniesList,
+				params,
+			}),
+			providesTags: [ApiTags.PUBLIC_COMPANIES],
+		}),
 	}),
 });
 
-export const { useGetCompanyByIdQuery, useGetCompaniesListQuery } = companyApi;
+export const { useGetCompanyByIdQuery, useGetCompaniesListQuery, useGetPublicCompaniesListQuery } =
+	companyApi;

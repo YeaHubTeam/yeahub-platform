@@ -23,8 +23,8 @@
 	"most.difficult.questions": {
 		"title": {
 			"widget": "Most Difficult questions",
-			"page": "The most 10 difficult questions for {{text}}",
-			"page.all": "The most 10 difficult questions"
+			"page": "The most {{count}} difficult questions for {{text}}",
+			"page.all": "The most {{count}} difficult questions"
 		},
 		"tooltip": "We analyze the participants' responses to this question: how many users answered \"I don't know\" when they first saw this question",
 		"table": {
@@ -63,11 +63,19 @@
 			"skills": "Skills",
 			"keywords": "Keywords"
 		},
-		"table" : {
+		"table": {
 			"index": "№",
 			"skills": "Skills",
 			"keywords": "Keywords",
 			"count": "Count"
+		}
+	},
+	"top.users": {
+		"title": {
+			"widget": "Top 3 users by speciality"
+		},
+		"no.data": {
+			"widget": "No top users found for this speciality"
 		}
 	}
 }

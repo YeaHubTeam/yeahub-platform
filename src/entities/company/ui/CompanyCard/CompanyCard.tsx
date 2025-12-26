@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { Translation } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -28,7 +28,7 @@ export const CompanyCard = ({ company }: CompanyCardProps) => {
 							className={styles['card-image']}
 						/>
 					</div>
-					<Text variant={'body6'}>{company.title}</Text>
+					<Text variant="body6">{company.title}</Text>
 				</Flex>
 			</Card>
 		</Flex>

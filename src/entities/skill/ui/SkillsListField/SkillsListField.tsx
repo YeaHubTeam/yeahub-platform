@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Skills, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Skills, Translation } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -14,7 +13,7 @@ import { MAX_SHOW_LIMIT_SKILLS } from '../../model/constants/skillConstants';
 interface SkillsListFieldProps {
 	selectedSkills?: number[];
 	onChangeSkills: (skills: number[] | undefined) => void;
-	selectedSpecialization: number;
+	selectedSpecialization?: number;
 	showAllLabel?: boolean;
 }
 

@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
+import { i18Namespace } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-import { StatusChip } from '@/shared/ui/StatusChip';
-import { StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
+import { StatusChip, StatusChipVariant } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { ResourceRequest, ResourceRequestStatus } from '@/entities/resource';
+import { ResourceRequest, ResourceRequestStatus } from '../../model/types/resourceRequest';
 
 import styles from './MyResourceCard.module.css';
 
