@@ -14,4 +14,5 @@ export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
 	className?: string;
 	label?: ReactNode;
 	checked?: boolean;
+	isIntermediate?: boolean;
 }
