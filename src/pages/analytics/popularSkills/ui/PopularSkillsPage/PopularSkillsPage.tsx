@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import { useGetPopularSkillsQuery } from '@/entities/skill';
 
@@ -10,17 +12,38 @@ import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
 import { PopularSkillsPageTable } from '../PopularSkillsPageTable/PopularSkillsPageTable';
 
 export const PopularSkillsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
 		});
-	const { t } = useTranslation(i18Namespace.analytics);
 
-	const { data: popularSkills } = useGetPopularSkillsQuery({
+	const {
+		data: popularSkills,
+		isLoading,
+		isFetching,
+	} = useGetPopularSkillsQuery({
 		limit: 10,
 		page: filters.page,
 		specializationId: filters.specialization,
 	});
+
+	if (isLoading || isFetching) {
+		return (
+			<AnalyticsPageSkeleton
+				showTitle={true}
+				showTooltip={true}
+				showFilters={true}
+				showSkillFilter={false}
+				showPagination={true}
+				displayMode={isMobile ? 'mobile' : 'table'}
+				tableRowsCount={10}
+				mobileItemsCount={5}
+			/>
+		);
+	}
 
 	const specializationTitle = filters.specialization
 		? popularSkills?.data[0].specialization.title

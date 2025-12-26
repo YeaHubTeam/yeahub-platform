@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { useAppSelector } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
+import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/question';
@@ -13,6 +14,7 @@ import { DifficultQuestionsTable } from '../DifficultQuestionsTable/DifficultQue
 
 export const DifficultQuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
 	const specializationId = useAppSelector(getSpecializationId);
 
 	const { filters, onChangeSpecialization, onChangePage } = useAnalyticFilters({
@@ -20,10 +22,29 @@ export const DifficultQuestionsPage = () => {
 		page: 1,
 	});
 
-	const { data: response } = useGetMostDifficultQuestionsBySpecializationIdQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetMostDifficultQuestionsBySpecializationIdQuery({
 		specId: filters.specialization || specializationId,
 		page: filters.page || 1,
 	});
+
+	if (isLoading || isFetching) {
+		return (
+			<AnalyticsPageSkeleton
+				showTitle={true}
+				showTooltip={true}
+				showFilters={true}
+				showSkillFilter={false}
+				showPagination={true}
+				displayMode={isMobile ? 'mobile' : 'table'}
+				tableRowsCount={8}
+				mobileItemsCount={5}
+			/>
+		);
+	}
 
 	const difficultQuestions = response?.data.topStat ?? [];
 

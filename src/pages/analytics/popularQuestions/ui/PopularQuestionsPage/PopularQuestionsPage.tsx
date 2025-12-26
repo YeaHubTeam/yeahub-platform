@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import { PopularQuestionStat, useGetPopularQuestionsQuery } from '@/entities/question';
 
@@ -10,6 +12,9 @@ import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsLi
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
 
 export const PopularQuestionsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
@@ -17,8 +22,23 @@ export const PopularQuestionsPage = () => {
 
 	const DATA_LIMIT_IN_PAGE = 10;
 	const page = filters?.page || 1;
-	const { t } = useTranslation(i18Namespace.analytics);
-	const { data } = useGetPopularQuestionsQuery();
+
+	const { data, isLoading, isFetching } = useGetPopularQuestionsQuery();
+
+	if (isLoading || isFetching) {
+		return (
+			<AnalyticsPageSkeleton
+				showTitle={true}
+				showTooltip={true}
+				showFilters={true}
+				showSkillFilter={false}
+				showPagination={true}
+				displayMode={isMobile ? 'mobile' : 'table'}
+				tableRowsCount={DATA_LIMIT_IN_PAGE}
+				mobileItemsCount={5}
+			/>
+		);
+	}
 
 	const popularQuestionsByAllSpecializations = data?.reduce<PopularQuestionStat[]>(
 		(accum, item) => [...accum, ...item.topStat],

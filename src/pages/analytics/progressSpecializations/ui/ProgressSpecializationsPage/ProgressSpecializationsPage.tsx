@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import {
 	SpecializationProgressTable,
@@ -12,17 +14,35 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { ProgressSpecializationsList } from '../ProgressSpecializationsList/ProgressSpecializationsList';
 
 export const ProgressSpecializationsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
 		});
 
-	const { data: response } = useGetSpecializationsGeneralProgressQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetSpecializationsGeneralProgressQuery({
 		page: filters.page,
 		specializationId: filters.specialization,
 	});
 
-	const { t } = useTranslation(i18Namespace.analytics);
+	if (isLoading || isFetching) {
+		return (
+			<AnalyticsPageSkeleton
+				showTitle={true}
+				showTooltip={true}
+				showFilters={true}
+				showSkillFilter={false}
+				showPagination={true}
+				displayMode={isMobile ? 'mobile' : 'table'}
+			/>
+		);
+	}
 
 	const specializationsProgress = response?.data ?? [];
 
