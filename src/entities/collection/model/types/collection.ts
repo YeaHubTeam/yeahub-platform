@@ -42,6 +42,7 @@ export interface GetCollectionsListParamsRequest {
 	limit?: number;
 	isFree?: boolean;
 	specializations?: number | number[];
+	companies?: string | string[];
 	keywords?: string[];
 	titleOrDescriptionSearch?: string;
 	authorId?: string;
@@ -56,3 +57,11 @@ export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;
 	limit?: number;
 };
+
+export type GetCollectionKeywordsParamsRequest = {
+	page?: number;
+	limit?: number;
+	title?: string;
+};
+
+export type GetCollectionKeywordsResponse = Response<string[]>;

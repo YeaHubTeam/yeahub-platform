@@ -24,26 +24,34 @@ const PublicCollectionsPage = () => {
 		onResetFilters,
 		onChangePage,
 		onChangeSpecialization,
+		onChangeCompany,
 		onChangeIsFree,
 		onChangeTitle,
+		onChangeKeyword,
 	} = useCollectionsFilters({ page: 1, specialization: DEFAULT_SPECIALIZATION_ID });
 	const { isLargeScreen } = useScreenSize();
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
+		companies: filters.company,
 		isFree: filters.isFree,
 		page: filters.page,
+		keywords: filters.keyword ? [filters.keyword] : undefined,
 	});
 
 	const renderFilter = () => (
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
+			onChangeCompany={onChangeCompany}
 			onChangeIsFree={onChangeIsFree}
+			onChangeKeyword={onChangeKeyword}
 			filter={{
 				title: filters.title,
 				specialization: filters.specialization,
 				isFree: filters.isFree,
+				keyword: filters.keyword,
+				company: filters.company,
 			}}
 		/>
 	);

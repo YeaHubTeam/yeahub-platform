@@ -24,7 +24,15 @@ const companyApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COMPANIES],
 		}),
+		getPublicCompaniesList: build.query<GetCompaniesListResponse, GetCompaniesListParamsRequest>({
+			query: (params) => ({
+				url: companyApiUrls.getPublicCompaniesList,
+				params,
+			}),
+			providesTags: [ApiTags.PUBLIC_COMPANIES],
+		}),
 	}),
 });
 
-export const { useGetCompanyByIdQuery, useGetCompaniesListQuery } = companyApi;
+export const { useGetCompanyByIdQuery, useGetCompaniesListQuery, useGetPublicCompaniesListQuery } =
+	companyApi;

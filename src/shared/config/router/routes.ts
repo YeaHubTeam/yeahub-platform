@@ -130,6 +130,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/topics/create',
 			},
+			edit: {
+				route: ':topicId/edit',
+				page: '/admin/topics/:topicId/edit',
+			},
 			details: {
 				route: ':topicId',
 				page: '/admin/topics/:topicId',
