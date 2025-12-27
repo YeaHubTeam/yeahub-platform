@@ -714,6 +714,7 @@ export enum Onboarding {
 	CHOOSE_SPECIALIZATION_CONTENT = 'choose.specialization.content',
 	CHOOSE_SPECIALIZATION_SELECT_LABEL = 'choose.specialization.select.label',
 	CHOOSE_SPECIALIZATION_BUTTON = 'choose.specialization.button',
+	CHOOSE_SPECIALIZATION_NOT_SELECT = 'choose.specialization.not.select',
 	OVERVIEW_SERVICE_TITLE = 'overview.service.title',
 	OVERVIEW_SERVICE_LIST_FIRST = 'overview.service.list.first',
 	OVERVIEW_SERVICE_LIST_SECOND = 'overview.service.list.second',
