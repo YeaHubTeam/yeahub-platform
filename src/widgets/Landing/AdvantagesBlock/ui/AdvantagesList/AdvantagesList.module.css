@@ -10,6 +10,17 @@
   margin: 0 auto;
 }
 
+.icon-margin {
+  margin-bottom: 5px;
+}
+
+.card-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
 .card {
   display: flex;
   flex-direction: column;
