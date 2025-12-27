@@ -14,7 +14,7 @@ export interface Tab<T> {
 	Component: () => JSX.Element;
 }
 
-type TabColor = 'default' | 'gray';
+export type TabColor = 'default' | 'gray';
 
 export interface TabsProps<T> {
 	tabs: Tab<T>[];
