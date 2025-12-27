@@ -7,6 +7,7 @@ export type { GuruSocials, Guru } from './model/types/guru';
 
 export { gurus } from './model/constants/gurus';
 export { GurusItem } from './ui/GurusItem/GurusItem';
+export { GurusItemSkeleton } from '@/entities/guru/ui/GurusItem/GurusItem.skeleton';
 
 export { GurusList } from './ui/GurusList/GurusList';
 export { GurusListSkeleton } from './ui/GurusList/GurusList.skeleton';

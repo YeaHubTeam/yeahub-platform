@@ -7,6 +7,7 @@ import { AvosPageSkeleton } from '@/pages/landing/avos';
 import { CreatePublicQuizPageSkeleton } from '@/pages/landing/createPublicQuiz';
 import { HhAnalyticsPageSkeleton } from '@/pages/landing/hhAnalytics';
 import { LandingPageSkeleton } from '@/pages/landing/landing';
+import { LearningPageSkeleton } from '@/pages/landing/learning';
 import { MediaPageSkeleton } from '@/pages/landing/media';
 import { PublicQuestionPageSkeleton } from '@/pages/landing/publicQuestion';
 import { PublicQuestionsPageSkeleton } from '@/pages/landing/publicQuestions';
@@ -23,6 +24,7 @@ export const SkeletonGenerator = () => {
 	const isMediaPage = useMatch(ROUTES.media.page);
 	const isHhAnalyticsPage = useMatch(ROUTES.hhAnalytics.page);
 	const isAvosPage = useMatch(ROUTES.avos.page);
+	const isLearningPage = useMatch(ROUTES.learning.page);
 
 	if (isLandingPage) return <LandingPageSkeleton data-testid="LandingPageSkeleton" />;
 	if (isQuizPage)
@@ -37,6 +39,7 @@ export const SkeletonGenerator = () => {
 	if (isMediaPage) return <MediaPageSkeleton />;
 	if (isHhAnalyticsPage) return <HhAnalyticsPageSkeleton />;
 	if (isAvosPage) return <AvosPageSkeleton />;
+	if (isLearningPage) return <LearningPageSkeleton />;
 
 	return <Loader />;
 };
