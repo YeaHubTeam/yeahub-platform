@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
-import { AnalyticsPageSkeleton } from '@/shared/ui/AnalyticsPageSkeleton';
 
 import { useGetLearnedQuestionsQuery } from '@/entities/question';
 
@@ -11,9 +9,10 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { SkillsProficiencyList } from '../SkillsProficiencyList/SkillsProficiencyList';
 import { SkillsProficiencyPageTable } from '../SkillsProficiencyPageTable/SkillsProficiencyPageTable';
 
+import { SkillsProficiencyPageSkeleton } from './SkillsProficiencyPage.skeleton';
+
 export const SkillsProficiencyPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
-	const { isMobile } = useScreenSize();
 
 	const filters = useAnalyticFilters({
 		page: 1,
@@ -30,18 +29,7 @@ export const SkillsProficiencyPage = () => {
 	});
 
 	if (isLoading || isFetching) {
-		return (
-			<AnalyticsPageSkeleton
-				showTitle={true}
-				showTooltip={true}
-				showFilters={true}
-				showSkillFilter={true}
-				showPagination={true}
-				displayMode={isMobile ? 'mobile' : 'table'}
-				tableRowsCount={10}
-				mobileItemsCount={3}
-			/>
-		);
+		return <SkillsProficiencyPageSkeleton />;
 	}
 
 	const learnedQuestions = response?.data ?? [];
