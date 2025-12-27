@@ -84,6 +84,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 			onClose={onCloseModal}
 			withCloseIcon={allowClose}
 			className={styles['onboarding-modal']}
+			hasPadding={false}
 		>
 			<Flex direction={isMobileM ? 'column' : 'row'}>
 				<Flex direction="column" className={styles['stepper-container']}>
