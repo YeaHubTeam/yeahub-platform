@@ -6,7 +6,14 @@ import styles from './MentorCard.module.css';
 
 export const MentorCardSkeleton = () => {
 	return (
-		<CardSkeleton className={styles.card} withOutsideShadow size="small">
+		<CardSkeleton
+			className={styles.card}
+			withOutsideShadow
+			size="small"
+			actionTitle="actionTitle"
+			actionRoute="actionRoute"
+			isActionPositionBottom
+		>
 			<GurusItemSkeleton />
 		</CardSkeleton>
 	);
