@@ -1,17 +1,3 @@
-import { ReactNode } from 'react';
-
-export interface Subscription1 {
-	id: number;
-	icon: ReactNode;
-	name: string;
-	description: string;
-	price: number;
-	tooltipBody?: ReactNode;
-	hasSubscribeButton: boolean;
-	discountedPrice?: number;
-	advantages: { title: string; isActive: boolean }[];
-}
-
 export type SubscriptionPermission = {
 	id: number;
 	name: string;

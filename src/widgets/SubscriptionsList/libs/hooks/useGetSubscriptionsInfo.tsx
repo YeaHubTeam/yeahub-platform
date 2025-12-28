@@ -20,7 +20,6 @@ import {
 export const useGetSubscriptionsInfo = (): SubscriptionInfo[] => {
 	const { t } = useTranslation(i18Namespace.subscription);
 	const { data } = useGetSubscriptionsQuery();
-	console.log(data);
 
 	const hasTrialSubscriptions = useAppSelector(isAvailableTrial);
 
