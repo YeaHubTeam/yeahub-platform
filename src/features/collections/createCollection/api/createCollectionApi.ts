@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateCollectionsApiErrorMessage } from '../lib/utils/getCreateCollectionsApiErrorMessage';
 import { createCollectionApiUrls } from '../model/constants/createCollectionConstants';
 import {
 	CreateCollectionBodyRequest,
@@ -23,7 +24,7 @@ export const createCollectionApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.collections.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_COLLECTION_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COLLECTION_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateCollectionsApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
