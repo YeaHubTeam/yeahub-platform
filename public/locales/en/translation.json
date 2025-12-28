@@ -1,4 +1,10 @@
 {
+	"banner": {
+		"ny": {
+			"text": "Up to 50% discount on all tariffs",
+			"button": "Discounts 50%"
+		}
+	},
 	"language": "Russian",
 	"more": "More",
 	"return": "Return",
@@ -61,6 +67,12 @@
 			"topics": "Topics"
 		}
 	},
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"stub": {
 		"filter": {
 			"title": "Unfortunately, nothing was found for the query.",
@@ -79,6 +91,11 @@
 		"button": "Return to Home"
 	},
 	"modal": {
+		"ny": {
+			"title": "Up to 50% discount on all tariffs",
+			"text": "Now you can connect any of the 4 tariffs with a discount of up to 50%. 2028 Select the appropriate format — for launch, growth or scaling — and fix a favorable price.",
+			"button": "50% discount"
+		},
 		"block": {
 			"title": "Confirm action",
 			"description": "You have unsaved data. Do you want to continue?"
@@ -207,7 +224,22 @@
 			},
 			"create": {
 				"success": "The question was created successfully",
-				"failed": "Failed to create a question"
+				"failed": "Failed to create a question",
+				"user": {
+					"not.found": "User not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"question": {
+					"title.conflict": "Question with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "The question was successfully changed",
@@ -262,12 +294,48 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			},
+			"user": {
+				"not.found": "User not found."
+			},
+			"auth": {
+				"unauthorized": "The user is not authorized",
+				"user": {
+					"verified": "No access to functionality"
+				}
+			},
+			"tinify": {
+				"compress": {
+					"failed": "Failed to compress image with TinyPNG"
+				},
+				"resize": {
+					"failed": "Failed to resize image"
+				}
+			},
+			"title": {
+				"conflict": {
+					"specialization": "Specialization with this title already exists"
+				}
 			}
 		},
 		"topics": {
 			"create": {
 				"success": "Topic successfully created",
 				"failed": "Topic could not be created"
+			},
+			"edit": {
+				"success": "Topic successfully changed",
+				"failed": "Topic could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Topic successfully deleted",
+					"failed": "Topic could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted topics:",
+					"failed": "Topic could not be deleted:"
+				}
 			}
 		},
 		"collections": {
@@ -287,6 +355,25 @@
 			}
 		},
 		"resources": {
+			"create": {
+				"success": "Resource successfully created",
+				"failed": "Resource could not be created",
+				"unauthorized": "You have to be authorized to create a resource",
+				"unverified": "You have to be verified to create a resource",
+				"skill": {
+					"not.found": "One or more skills not found"
+				},
+				"specialization": {
+					"not.found": "One or more specializations not found"
+				},
+				"type": {
+					"not.found": "One or more resource types not found"
+				},
+				"image": {
+					"compress.failed": "Failed to compress image",
+					"resize.failed": "Failed to resize image"
+				}
+			},
 			"delete": {
 				"single": {
 					"success": "Resource deleted successfully",
@@ -303,6 +390,21 @@
 			}
 		},
 		"resource.request": {
+			"create": {
+				"success": "The resource request has been successfully created",
+				"failed": "Failed to create the resource request",
+				"unauthorized": "You have to be authorized to create a resource request",
+				"unverified": "You have to be verified to create a resource request",
+				"skill": {
+					"not.found": "One or more skills not found"
+				},
+				"specialization": {
+					"not.found": "One or more specializations not found"
+				},
+				"type": {
+					"not.found": "One or more resource types not found"
+				}
+			},
 			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"

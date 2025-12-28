@@ -4,7 +4,7 @@ export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
 
-export type { Resource } from './model/types/resource';
+export type { Resource, ResourceCreateError } from './model/types/resource';
 
 export { isResourceDisabled } from './model/helpers/isResourceDisabled';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
@@ -29,6 +29,7 @@ export type {
 	SelectedResourceRequestEntity,
 	SelectedResourceRequestEntities,
 	ResourceRequestFormValues,
+	ResourceRequestCreateError,
 } from './model/types/resourceRequest';
 export {
 	useGetResourceRequestsQuery,
@@ -36,3 +37,5 @@ export {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';
+
+export { resourceHandlers } from './api/__mock__/index';

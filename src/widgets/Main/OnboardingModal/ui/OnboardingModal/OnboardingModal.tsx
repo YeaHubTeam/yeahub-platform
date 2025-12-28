@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Onboarding } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { Step, Stepper } from '@/shared/ui/Stepper';
+import { toast } from '@/shared/ui/Toast';
+
+import { getSpecializationId } from '@/entities/profile';
 
 import { ChooseSpecializationStep } from '../ChooseSpecializationStep/ChooseSpecializationStep';
 import { FinalStep } from '../FinalStep/FinalStep/FinalStep';
@@ -59,6 +62,7 @@ const getSteps = (t: (arg: string) => string): Step<OnboardingStep>[] => [
 export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const steps = getSteps(t);
+	const specializationId = useAppSelector(getSpecializationId);
 
 	const { isMobileM } = useScreenSize();
 
@@ -71,8 +75,13 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 	};
 
 	const onCloseModal = () => {
-		if (allowClose) {
+		if (allowClose && specializationId) {
 			onClose();
+		}
+
+		if (!specializationId) {
+			toast.error(t(Onboarding.CHOOSE_SPECIALIZATION_NOT_SELECT));
+			setActiveStep(steps[1]);
 		}
 	};
 
@@ -84,6 +93,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 			onClose={onCloseModal}
 			withCloseIcon={allowClose}
 			className={styles['onboarding-modal']}
+			hasPadding={false}
 		>
 			<Flex direction={isMobileM ? 'column' : 'row'}>
 				<Flex direction="column" className={styles['stepper-container']}>

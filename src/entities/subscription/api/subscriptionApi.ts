@@ -3,6 +3,8 @@ import { isAfter, isEqual, parseISO } from 'date-fns';
 import { ApiTags, baseApi } from '@/shared/config';
 import { route } from '@/shared/libs';
 
+import { GetSubscriptionsResponse } from '@/entities/subscription/model/types/subscription';
+
 import type { GetUserSubscriptionResponse } from '../';
 import { subscriptionApiUrls } from '../model/constants/subscriptionConstants';
 import { setActiveSubscription } from '../model/slices/activeSubscriptionSlice';
@@ -13,7 +15,7 @@ export const subscriptionApi = baseApi.injectEndpoints({
 			query: (userId) => ({
 				url: route(subscriptionApiUrls.getUserSubscription, userId),
 			}),
-			providesTags: [ApiTags.SUBSCRIPTIONS],
+			providesTags: [ApiTags.SUBSCRIPTIONS_USER],
 			async onQueryStarted(_, { dispatch, queryFulfilled }) {
 				try {
 					const { data } = await queryFulfilled;
@@ -32,7 +34,16 @@ export const subscriptionApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		getSubscriptions: build.query<GetSubscriptionsResponse, void>({
+			query: () => ({
+				url: route(subscriptionApiUrls.getSubscriptions),
+			}),
+			transformResponse(subscriptions: GetSubscriptionsResponse) {
+				return subscriptions.filter((subscription) => subscription.isActive);
+			},
+			providesTags: [ApiTags.SUBSCRIPTIONS],
+		}),
 	}),
 });
 
-export const { useGetUserSubscriptionQuery } = subscriptionApi;
+export const { useGetUserSubscriptionQuery, useGetSubscriptionsQuery } = subscriptionApi;
