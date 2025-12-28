@@ -33,6 +33,7 @@ export const Modal = ({
 	buttonPrimaryDisabled,
 	buttonOutlineDisabled,
 	withCloseIcon = true,
+	hasPadding = true,
 	variant = 'default',
 	dataTestId = 'Modal',
 	children,
@@ -117,7 +118,7 @@ export const Modal = ({
 				)}
 				<div
 					data-testid={modalTestIds.modalContentWrapper}
-					className={classNames(styles['content-wrapper'], className)}
+					className={classNames(className, { [styles['content-wrapper']]: hasPadding })}
 				>
 					{title && (
 						<Text

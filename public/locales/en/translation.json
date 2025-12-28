@@ -1,4 +1,10 @@
 {
+	"banner": {
+		"ny": {
+			"text": "Up to 50% discount on all tariffs",
+			"button": "Discounts 50%"
+		}
+	},
 	"language": "Russian",
 	"more": "More",
 	"return": "Return",
@@ -85,6 +91,11 @@
 		"button": "Return to Home"
 	},
 	"modal": {
+		"ny": {
+			"title": "Up to 50% discount on all tariffs",
+			"text": "Now you can connect any of the 4 tariffs with a discount of up to 50%. 2028 Select the appropriate format — for launch, growth or scaling — and fix a favorable price.",
+			"button": "50% discount"
+		},
 		"block": {
 			"title": "Confirm action",
 			"description": "You have unsaved data. Do you want to continue?"

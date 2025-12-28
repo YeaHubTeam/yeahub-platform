@@ -13,6 +13,7 @@ export type ModalProps = {
 	buttonPrimaryDisabled?: boolean;
 	buttonOutlineDisabled?: boolean;
 	withCloseIcon?: boolean;
+	hasPadding?: boolean;
 	dataTestId?: string;
 	variant?: ModalVariant;
 	title?: string;
