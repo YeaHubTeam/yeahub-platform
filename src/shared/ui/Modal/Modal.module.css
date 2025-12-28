@@ -14,7 +14,7 @@
 .modal {
   position: relative;
   margin: 0 20px;
-  min-width: 462px;
+  min-width: 448px;
   max-width: 930px;
   border-radius: 24px;
   background-color: var(--background-block);

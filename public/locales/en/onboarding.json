@@ -17,7 +17,8 @@
 		"title": "Choose your specialty",
 		"content": "Choose a direction, for example Frontend. This way you will see only the necessary questions and materials for this area. \n\nYou can change your specialization later. One profile — one specialization, so that the training is convenient and understandable \uD83E\uDDD0",
 		"select.label": "Choosing a specialization",
-		"button": "Save and continue"
+		"button": "Save and continue",
+		"not.select": "Specialization is not selected"
 	},
 	"overview.service": {
 		"title": "The platform now has a service for preparing for interviews:",

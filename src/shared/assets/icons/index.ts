@@ -64,7 +64,7 @@ export { default as hamburgerMenu } from './hamburgerMenu.svg';
 export { default as handShake } from './handShake.svg';
 export { default as hh } from './hh.svg';
 export { default as home } from './home.svg';
-export { default as iconCheck } from './iconCheck.svg';
+export { default as sealCheckOutlined } from './sealCheckOutlined.svg';
 export { default as iconCross } from './iconCross.svg';
 export { default as imageEdit } from './imageEdit.svg';
 export { default as info } from './info.svg';
