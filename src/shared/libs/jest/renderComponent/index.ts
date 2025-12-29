@@ -1,0 +1,1 @@
+export { renderComponent } from './renderComponent';

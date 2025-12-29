@@ -1,0 +1,28 @@
+.modal {
+  max-width: 553px;
+}
+
+.list {
+  padding-left: 22px;
+}
+
+.label {
+  margin-bottom: 14px;
+  padding-bottom: 14px;	
+  border-bottom: 1px solid var(--color-purple-50);
+}
+
+.list-item {
+  padding-bottom: 17px;
+  list-style: decimal;
+}
+
+.text {
+  display: inline;
+  line-height: 100%;
+}
+
+.description {
+  padding-top: 10px;
+  padding-bottom: 12px;
+}

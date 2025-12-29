@@ -1,0 +1,6 @@
+.stat {
+  padding: 8px 12px;
+  box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
+  border-radius: 8px;
+  background-color: var(--background-block);
+}

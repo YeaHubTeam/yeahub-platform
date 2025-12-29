@@ -1,0 +1,17 @@
+.param {
+  padding: 2px 8px;
+  height: 20px;
+  border-radius: 30px;
+  background-color: var(--color-green-007);
+}
+
+.text {
+  color: var(--color-green-900);
+  font-weight: var(--font-weight-600);
+}
+
+.value {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: var(--text-color-link-active);
+}

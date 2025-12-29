@@ -1,0 +1,26 @@
+{
+	"title": {
+		"short": "Title",
+		"full": "Topic title",
+		"label": "Add topic title"
+	},
+	"subtitle": {
+		"description": "Topic description"
+	},
+	"skills": {
+		"short": "Skill",
+		"label": "Skill of the relevant topic"
+	},
+	"description": {
+		"short": "description",
+		"full": "Topic description",
+		"label": "Add topic description",
+		"placeholder": "Topic description"
+	},
+	"select": {
+		"choose": "Select skill from the list"
+	},
+	"create.page.title": "Topic",
+	"created.at": "Date of creation",
+	"updated.at": "Update date"
+}

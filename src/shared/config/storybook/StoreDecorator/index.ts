@@ -1,0 +1,1 @@
+export { StoreDecorator } from './StoreDecorator';

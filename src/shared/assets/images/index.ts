@@ -1,0 +1,17 @@
+export { default as accessDenied } from './accessDenied.png';
+export { default as alarm } from './alarm.png';
+export { default as booksImg } from './booksImg.png';
+export { default as container } from './container.png';
+export { default as emailModal } from './emailModal.avif';
+export { default as experience_1 } from './experience_1.avif';
+export { default as gallery } from './gallery.avif';
+export { default as interviewBanner } from './interviewBanner.png';
+export { default as loadError } from './loadError.png';
+export { default as logoImg } from './logoImg.avif';
+export { default as mockAvatar } from './mockAvatar.avif';
+export { default as multyProfile } from './multyProfile.png';
+export { default as noActiveQuizPlaceholder } from './noActiveQuizPlaceholder.avif';
+export { default as notFound } from './notFound.avif';
+export { default as questionImg } from './questionImg.avif';
+export { default as quizCardPreview } from './quizCardPreview.avif';
+export { default as searchPage } from './searchPage.png';

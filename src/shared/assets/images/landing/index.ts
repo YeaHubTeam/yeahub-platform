@@ -1,0 +1,11 @@
+export { default as avatarPlaceholder } from './avatarPlaceholder.avif';
+export { default as interviewImg } from './interviewImg.avif';
+export { default as interviewImgMobile } from './interviewImgMobile.avif';
+export { default as interviewImgTablet } from './interviewImgTablet.avif';
+export { default as questionInterfaceBg } from './questionInterfaceBg.avif';
+export { default as quizExample } from './quizExample.avif';
+export { default as trainImage1 } from './trainImage1.avif';
+export { default as trainImage2 } from './trainImage2.avif';
+export { default as trainImage3 } from './trainImage3.avif';
+export { default as trainImage4 } from './trainImage4.avif';
+export * from './learning';

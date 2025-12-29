@@ -1,0 +1,23 @@
+.description {
+  white-space: pre-line;
+}
+
+.links-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media (width < 768px) {
+  .description {
+    white-space: normal;
+  }
+
+  .links-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+}

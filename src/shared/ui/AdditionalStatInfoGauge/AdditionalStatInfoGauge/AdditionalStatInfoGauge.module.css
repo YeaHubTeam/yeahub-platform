@@ -1,0 +1,5 @@
+@media (width <= 767px) {
+  .wrapper {
+    gap: 12px;
+  }
+}

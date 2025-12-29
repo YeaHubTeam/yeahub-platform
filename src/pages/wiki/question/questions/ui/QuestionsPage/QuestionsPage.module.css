@@ -1,0 +1,18 @@
+.main {
+  flex-grow: 1;
+  height: auto;
+}
+
+.filters {
+  position: sticky;
+  top: 0;
+  min-width: 360px;
+  max-width: 360px;
+  height: auto;
+}
+
+@media (width < 1280px) {
+  .filters {
+    display: none;
+  }
+}

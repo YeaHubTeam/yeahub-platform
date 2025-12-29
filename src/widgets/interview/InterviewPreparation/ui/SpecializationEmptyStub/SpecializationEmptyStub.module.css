@@ -1,0 +1,24 @@
+.card {
+  padding: 16px 24px;
+}
+
+.card-text {
+  max-width: 644px;
+}
+
+.button {
+  align-self: end;
+  margin-top: 8px;
+}
+
+@media (width <= 1198px) {
+  .card {
+    padding: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  .card {
+    padding: 0;
+  }
+}

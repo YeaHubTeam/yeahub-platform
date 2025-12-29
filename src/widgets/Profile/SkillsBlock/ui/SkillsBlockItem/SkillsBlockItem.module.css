@@ -1,0 +1,23 @@
+.skills-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  width: fit-content;
+  height: 42px;
+  border: 1px solid var(--color-purple-700);
+  border-radius: 12px;
+}
+
+.skills-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.skills-name {
+  line-height: 22px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+  user-select: none;
+}

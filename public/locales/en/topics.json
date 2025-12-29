@@ -1,0 +1,12 @@
+{
+	"title": {
+		"short": "Name"
+	},
+	"description": {
+		"short": "Description"
+	},
+	"skills": {
+		"short": "Skills"
+	},
+	"created.at": "Created at"
+}

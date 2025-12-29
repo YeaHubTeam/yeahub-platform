@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 120px;
+  min-height: calc(100vh - var(--header-height-lg));
+}
+
+.main-content {
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+@media (width < 1440px) {
+  .main {
+    padding: 30px 60px 120px;
+  }
+}
+
+@media (width < 1200px) {
+  .main {
+    padding: 30px 30px 80px;
+    min-height: calc(100vh - var(--header-height-md));
+  }
+}
+
+@media (width < 768px) {
+  .main {
+    padding: 20px 10px 40px;
+    min-height: calc(100vh - var(--header-height-sm));
+  }
+}
