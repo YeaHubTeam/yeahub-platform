@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import questionImg1 from '@/widgets/Landing/InterviewTrainerBlock/model/assets/quiz-image.avif';
-
+import { quizImage } from '../../model/assets';
 import { AdditionalBlock } from '../AdditionalBlock/AdditionalBlock';
 import { MainBlock } from '../MainBlock/MainBlock';
 
@@ -33,10 +31,7 @@ export const InterviewTrainerBlock = () => {
 				className={styles['interview-trainer-wrapper']}
 				align="center"
 			>
-				<MainBlock
-					questionImg={questionImg1}
-					text={t(Landing.TRAINING_INTERVIEW_SUBTITLE_TABLET)}
-				/>
+				<MainBlock questionImg={quizImage} text={t(Landing.TRAINING_INTERVIEW_SUBTITLE_TABLET)} />
 				<AdditionalBlock
 					textFirst={t(Landing.TRAINING_INTERVIEW_ADVANTAGES_FIRST)}
 					textSecond={t(Landing.TRAINING_INTERVIEW_ADVANTAGES_SECOND)}

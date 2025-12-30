@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FooterLinks } from './FooterLinks';
@@ -13,7 +13,7 @@ const meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: 'Footer links section with docs, media and social links',
+				component: 'Footer links section with docs, socialMedia and social links',
 			},
 		},
 	},
@@ -29,7 +29,7 @@ export const Default: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {
@@ -47,7 +47,7 @@ export const Loading: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {

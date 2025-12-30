@@ -1,7 +1,7 @@
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 import styles from './SubscribeToMedia.module.css';
 
@@ -21,12 +21,12 @@ export const SubscribeToMediaSkeleton = () => {
 				<Flex gap={isMobileS ? '8' : '16'} direction="column">
 					<Flex gap="8" align="center">
 						<Skeleton width={20} height={20} />
-						<Skeleton width={'60%'} height={12} />
+						<Skeleton width="60%" height={12} />
 					</Flex>
 
 					<Flex gap="8" align="center">
 						<Skeleton width={20} height={20} />
-						<Skeleton width={'100%'} height={12} />
+						<Skeleton width="100%" height={12} />
 					</Flex>
 				</Flex>
 			</Flex>

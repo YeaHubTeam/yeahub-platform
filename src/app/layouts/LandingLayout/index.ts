@@ -1,1 +1,1 @@
-export { LandingLayout } from './ui/LandingLayout';
+export { LandingLayout } from './LandingLayout';

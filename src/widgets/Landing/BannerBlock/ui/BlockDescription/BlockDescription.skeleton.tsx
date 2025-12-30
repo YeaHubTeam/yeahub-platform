@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './BlockDescription.module.css';

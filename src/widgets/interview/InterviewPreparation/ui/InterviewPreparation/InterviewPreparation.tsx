@@ -1,10 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuiz, Profile } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize, useAppSelector, useAppDispatch } from '@/shared/hooks';
+import { i18Namespace, InterviewQuiz, Profile, ROUTES } from '@/shared/config';
+import { useAppDispatch, useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 
 import {
@@ -21,7 +19,7 @@ import {
 
 import { PreviewActiveQuiz } from '../PreviewActiveQuiz/PreviewActiveQuiz';
 import { PreviewInactiveQuiz } from '../PreviewInactiveQuiz/PreviewInactiveQuiz';
-import { SpecializationEmptyStub } from '../SpecializationEmptyStub';
+import { SpecializationEmptyStub } from '../SpecializationEmptyStub/SpecializationEmptyStub';
 
 export interface InterviewPreparationProps {
 	className?: string;

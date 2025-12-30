@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import { i18Namespace } from '@/shared/config/i18n/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Landing } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { mockSpecialization } from '@/widgets/Landing/SpecialityBlock/ui/SpecializationBlock/mockSpecialization';
-import { SpecializationCard } from '@/widgets/Landing/SpecialityBlock/ui/SpecializationCard/SpecializationCard';
+import { SpecializationCard } from '../SpecializationCard/SpecializationCard';
 
+import { mockSpecialization } from './mockSpecialization';
 import styles from './SpecializationBlock.module.css';
 
 export const SpecializationBlock = () => {
@@ -27,7 +26,7 @@ export const SpecializationBlock = () => {
 				: mockSpecialization;
 
 	return (
-		<Flex direction={'column'} className={styles.container} dataTestId="SpecializationBlock">
+		<Flex direction="column" className={styles.container} dataTestId="SpecializationBlock">
 			<Text variant={isMobile ? 'body5-accent' : 'head3'} className={styles.title}>
 				{t(Landing.SPECIALIZATION_NEW_TITLE)}
 			</Text>
@@ -46,7 +45,7 @@ export const SpecializationBlock = () => {
 			</ul>
 			{(isMobile || isLaptop) && !seeAll && (
 				<Button
-					variant={'outline'}
+					variant="outline"
 					className={styles.button}
 					onClick={() => setSeeAll(true)}
 					dataTestId="SpecializationButton"

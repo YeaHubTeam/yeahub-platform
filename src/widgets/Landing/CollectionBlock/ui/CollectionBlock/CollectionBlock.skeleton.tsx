@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
@@ -11,8 +11,8 @@ import styles from './CollectionBlock.module.css';
 export const CollectionBlockSkeleton = () => {
 	const { isMobile } = useScreenSize();
 	return (
-		<section className={styles.collection}>
-			<Flex gap="20" direction="column" align="center" className={styles['collection-wrapper']}>
+		<section>
+			<Flex gap="20" direction="column" align="center">
 				<div className={styles['title-block']}>
 					<TextSkeleton
 						width={isMobile ? 320 : 473}

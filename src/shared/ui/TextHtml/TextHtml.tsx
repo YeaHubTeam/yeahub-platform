@@ -5,8 +5,7 @@ import { common, createLowlight } from 'lowlight';
 import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect, useRef } from 'react';
 
-import { determineLanguage } from '@/shared/libs/utils/determineLanguage';
-import { normalizeHtmlContent } from '@/shared/utils/textEditor';
+import { normalizeHtmlContent, determineLanguage } from '@/shared/libs';
 
 import styles from './TextHtml.module.css';
 

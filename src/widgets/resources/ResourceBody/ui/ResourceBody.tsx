@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace, Resources } from '@/shared/config/i18n/i18nTranslations';
-import { formatDate } from '@/shared/helpers/formatDate';
+import { Marketplace, Resources, i18Namespace } from '@/shared/config';
+import { formatDate } from '@/shared/libs';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';

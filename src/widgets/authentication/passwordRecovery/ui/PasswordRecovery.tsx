@@ -2,13 +2,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Auth } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 
 import { PasswordRecoveryForm } from '@/features/authentication/passwordRecovery';
 
-import { passwordRecoverySchema } from '../model/lib/validation/passwordRecoverySchema';
+import { passwordRecoverySchema } from '../lib/validation/passwordRecoverySchema';
 import { PasswordRecoverySchema } from '../model/types/passwordRecoveryTypes';
 
 import styles from './PasswordRecovery.module.css';

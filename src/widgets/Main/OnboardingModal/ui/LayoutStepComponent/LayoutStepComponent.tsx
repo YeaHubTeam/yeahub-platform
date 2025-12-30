@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -41,7 +41,7 @@ export const LayoutStepComponent = ({
 	const withTitle = title || headTitle;
 
 	return (
-		<Flex direction={'column'} gap={'16'} className={className}>
+		<Flex direction="column" gap="16" className={className}>
 			{withTitle && (
 				<Text
 					variant={isSmallScreen || title ? 'body5-accent' : 'head3'}
@@ -57,11 +57,11 @@ export const LayoutStepComponent = ({
 			)}
 			{children}
 			{withButtons && (
-				<Flex gap={'14'} className={styles['button-container']}>
+				<Flex gap="14" className={styles['button-container']}>
 					<Button
 						disabled={buttonPrimaryDisabled}
-						variant={'primary'}
-						size={'large'}
+						variant="primary"
+						size="large"
 						onClick={buttonPrimaryClick}
 					>
 						{buttonPrimaryText}
@@ -69,8 +69,8 @@ export const LayoutStepComponent = ({
 					{buttonSecondaryText && (
 						<Button
 							disabled={buttonSecondaryDisabled}
-							variant={'outline'}
-							size={'large'}
+							variant="outline"
+							size="large"
 							onClick={buttonSecondaryClick}
 						>
 							{buttonSecondaryText}

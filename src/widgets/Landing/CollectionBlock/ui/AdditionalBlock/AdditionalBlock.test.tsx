@@ -1,12 +1,11 @@
 import { screen } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing } from '@/shared/config';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { AdditionalBlock } from './AdditionalBlock';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobileS: false,
 	})),
@@ -25,11 +24,11 @@ describe('AdditionalBlock', () => {
 	});
 
 	test('should render expand button only on mobile', () => {
-		require('@/shared/hooks').useScreenSize.mockReturnValue({ isMobileS: false });
+		require('@/shared/libs').useScreenSize.mockReturnValue({ isMobileS: false });
 		const { rerender } = renderComponent(<AdditionalBlock />);
 		expect(screen.queryByTestId('AdditionalBlock_ExpandButton')).toBeNull();
 
-		require('@/shared/hooks').useScreenSize.mockReturnValue({ isMobileS: true });
+		require('@/shared/libs').useScreenSize.mockReturnValue({ isMobileS: true });
 		rerender(<AdditionalBlock />);
 		const button = screen.getByTestId('AdditionalBlock_ExpandButton');
 		expect(button).toBeInTheDocument();

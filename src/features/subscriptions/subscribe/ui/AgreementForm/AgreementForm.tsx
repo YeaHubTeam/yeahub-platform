@@ -1,21 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ReactNode } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import FreeSubIcon from '@/shared/assets/icons/free-sub.svg';
-import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { SubscriptionCard as SubscriptionCardI18 } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import FreeSubIcon from '@/shared/assets/icons/freeSub.svg';
+import ProSubIcon from '@/shared/assets/icons/proSub.svg';
+import { i18Namespace, SubscriptionCard as SubscriptionCardI18, ROUTES } from '@/shared/config';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
-import { parseI18nText } from '@/shared/utils/parseI18nText';
 
 import { getFullProfile, isAvailableTrial } from '@/entities/profile';
 import {
@@ -24,15 +21,19 @@ import {
 	subscriptionPrices,
 } from '@/entities/subscription';
 
-import { TrialButton } from '@/features/subscriptions/trial';
-
 import { SubscriptionAgreeFormValues } from '../../model/types/subscriptionAgreeTypes';
 import { subscriptionAgreeSchema } from '../../model/validation/subscriptionAgreeSchema';
 import { SubscribeButton } from '../SubscribeButton/SubscribeButton';
 
 import styles from './AgreementForm.module.css';
 
-export const AgreementForm = () => {
+const parseI18nText = (text: string) => text.split(/<processingLink>|<\/processingLink>/);
+
+interface AgreementFormProps {
+	trialButton: ReactNode;
+}
+
+export const AgreementForm = ({ trialButton }: AgreementFormProps) => {
 	const { t } = useTranslation(i18Namespace.subscriptionCard);
 	const { isMobile } = useScreenSize();
 
@@ -145,9 +146,7 @@ export const AgreementForm = () => {
 							)}
 							{...(hasTrialSubscriptions
 								? {
-										renderTrialButton: () => (
-											<TrialButton className={styles['subscription-button']} />
-										),
+										renderTrialButton: () => trialButton,
 									}
 								: {})}
 							className={styles.premium}

@@ -1,1 +1,0 @@
-export { UserImageBlock } from './UserImageBlock';

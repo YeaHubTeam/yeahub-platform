@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
-import { useAppSelector, useCurrentProject } from '@/shared/hooks';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
+import { useAppSelector, useCurrentProject, getJSONFromLS } from '@/shared/libs';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
 import { getProfileId } from '@/entities/profile';
 import { Answers, LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 
-import { getQuestionsStats } from '../../model/lib/getQuestionsStats/getQuestionsStats';
+import { getQuestionsStats } from '../../lib/getQuestionsStats/getQuestionsStats';
 
 export interface PassedQuestionsStatisticProps {
 	total: number;

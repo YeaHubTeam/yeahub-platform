@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import ProSubIcon from '@/shared/assets/icons/pro-sub.svg';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation, User } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import ProSubIcon from '@/shared/assets/icons/proSub.svg';
+import { i18Namespace, User, Translation } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -39,10 +38,10 @@ export const UserPreferencesHeader = ({ isPremiumUser }: UserPreferencesHeaderPr
 							)}
 						</div>
 						<div className={styles['header-text']}>
-							<Text variant={'body3-accent'} className={styles['full-name']}>
+							<Text variant="body3-accent" className={styles['full-name']}>
 								{profile.username}
 							</Text>
-							<Text variant={'body2'} color="black-700">
+							<Text variant="body2" color="black-700">
 								{profile.email}
 							</Text>
 						</div>

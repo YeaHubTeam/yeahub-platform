@@ -1,5 +1,4 @@
-import { calculatePageNavigation } from '@/shared/helpers/calculatePageNavigation';
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector, calculatePageNavigation } from '@/shared/libs';
 
 import { Collection, useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';

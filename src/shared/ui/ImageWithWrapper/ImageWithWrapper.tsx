@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 
-import EmptyStub from '@/shared/assets/icons/EmptyStub.svg';
-import ErrorStub from '@/shared/assets/icons/ErrorStub.svg';
+import EmptyStub from '@/shared/assets/icons/emptyStub.svg';
+import ErrorStub from '@/shared/assets/icons/errorStub.svg';
 
 import styles from './ImageWithWrapper.module.css';
 

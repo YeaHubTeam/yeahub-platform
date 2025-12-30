@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Analytics, ROUTES } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -14,10 +12,11 @@ import { useItemsSizeCalculation } from '../../model/hooks/useItemsSizeCalculati
 import { SkillProficiencyItem } from '../SkillProficiencyItem/SkillProficiencyItem';
 
 import styles from './SkillsProficiencyWidget.module.css';
+import { SkillsProficiencyWidgetSkeleton } from './SkillsProficiencyWidget.skeleton';
 
 export const SkillsProficiencyWidget = () => {
 	const specializationId = useAppSelector(getSpecializationId);
-	const { data: response } = useGetLearnedQuestionsQuery({
+	const { data: response, isLoading } = useGetLearnedQuestionsQuery({
 		page: 1,
 		limit: 6,
 		specializationId,
@@ -30,6 +29,8 @@ export const SkillsProficiencyWidget = () => {
 	});
 
 	const { t } = useTranslation(i18Namespace.analytics);
+
+	if (isLoading) return <SkillsProficiencyWidgetSkeleton />;
 
 	return (
 		<Card

@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { To, useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18Namespace, Onboarding, ROUTES } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -19,7 +17,7 @@ export const NavigationBlock = () => {
 
 	const navItems: NavItem[] = [
 		{
-			icon: 'question',
+			icon: 'questions',
 			label: t(Onboarding.FINAL_QUESTIONS_LINK),
 			route: ROUTES.wiki.questions.page,
 		},
@@ -41,21 +39,21 @@ export const NavigationBlock = () => {
 
 	return (
 		<Flex
-			componentType={'ul'}
-			justify={'center'}
-			gap={'20'}
-			wrap={'wrap'}
+			componentType="ul"
+			justify="center"
+			gap="20"
+			wrap="wrap"
 			className={styles['list-container']}
 		>
 			{navItems.map(({ icon, label, route }) => (
 				<Button
 					key={label}
 					variant="link-purple"
-					size={'small'}
+					size="small"
 					onClick={() => onMoveService(route)}
 					preffix={<Icon icon={icon} size={20} />}
 				>
-					<Text variant={'body2'} color={'purple-700'}>
+					<Text variant="body2" color="purple-700">
 						{label}
 					</Text>
 				</Button>

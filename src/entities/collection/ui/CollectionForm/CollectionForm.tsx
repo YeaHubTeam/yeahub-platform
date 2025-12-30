@@ -2,25 +2,20 @@ import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { removeBase64Data } from '@/shared/helpers/removeBase64Data';
+import { i18Namespace, Collections } from '@/shared/config';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Input } from '@/shared/ui/Input';
-import { KeywordInput } from '@/shared/ui/KeywordInput/KeywordInput';
+import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { CompanySelect } from '@/entities/company';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { ChooseQuestionsDrawer } from '@/entities/question';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { SpecializationSelect } from '@/entities/specialization';
+import { CompanySelect } from '@/entities/company/@x/collection';
+import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
+import { SpecializationSelect } from '@/entities/specialization/@x/collection';
 
 import { useGetCollectionQuestionsQuery } from '../../api/collectionApi';
 
@@ -108,8 +103,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.COMPANY_TITLE)}
 						</Text>
@@ -145,7 +140,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					</FormControl>
 				</Flex>
 				<Flex gap="120">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.ICON_TITLE)}
 						</Text>
@@ -160,7 +155,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					/>
 				</Flex>
 				<Flex gap="120" align="center">
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.TARIFF_CHOOSE)}
 						</Text>
@@ -183,8 +178,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						/>
 					</Flex>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.SPECIALIZATION_TITLE)}
 						</Text>
@@ -200,8 +195,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						)}
 					</FormControl>
 				</Flex>
-				<Flex gap={'120'}>
-					<Flex direction={'column'} className={styles['text-wrapper']} gap="8">
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.KEYWORDS_TITLE)}
 						</Text>

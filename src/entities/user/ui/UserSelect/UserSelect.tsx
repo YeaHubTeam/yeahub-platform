@@ -1,9 +1,8 @@
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { User as UserI18n } from '@/shared/config/i18n/i18nTranslations';
-import { useDebounce } from '@/shared/hooks';
+import { i18Namespace, User as UserI18n } from '@/shared/config';
+import { useDebounce } from '@/shared/libs';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -11,7 +10,7 @@ import { Text } from '@/shared/ui/Text';
 import { useGetUsersListQuery } from '../../api/userApi';
 
 export type UserSelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value?: string;

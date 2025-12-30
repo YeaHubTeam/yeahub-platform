@@ -2,7 +2,9 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { SkillChipSkeleton } from '../../../SkillChip/SkillChip.skeleton';
 import { CardBlockLayoutSkeleton } from '../../CardBlockLayout/CardBlockLayout.skeleton';
+
 const rows = [2, 3, 4];
+
 export const SkillsBlockSkeleton = () => {
 	return (
 		<CardBlockLayoutSkeleton>

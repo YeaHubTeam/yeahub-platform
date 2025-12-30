@@ -1,11 +1,8 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { route } from '@/shared/helpers/route';
+import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
-import { deleteProfileApiUrls } from '@/features/profile/deleteProfile/model/constants/deleteProfileContants';
+import { deleteProfileApiUrls } from '../model/constants/deleteProfileContants';
 
 export const deleteProfileApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({

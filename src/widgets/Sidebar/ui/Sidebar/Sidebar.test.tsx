@@ -1,19 +1,17 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Translation, i18n } from '@/shared/config';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import {
 	sidebarAdminEditorMenuMock,
 	sidebarAdminPlatformMenuMock,
 	sidebarUserMenuMock,
-} from '@/widgets/Sidebar/model/data/sidebarMock';
+} from '../../model/data/sidebarMock';
 
 import { Sidebar } from './Sidebar';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobile: false,
 		isTablet: false,

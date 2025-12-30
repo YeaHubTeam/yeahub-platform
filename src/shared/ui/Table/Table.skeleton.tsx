@@ -29,7 +29,7 @@ export const TableSkeleton = ({
 
 					{Array.from({ length: columnCount }).map((_, index) => (
 						<th className={styles.cell} key={index}>
-							<TextSkeleton variant="body3" width={'10vw'} />
+							<TextSkeleton variant="body3" width="10vw" />
 						</th>
 					))}
 					<th className={styles['actions-column']}></th>
@@ -46,7 +46,7 @@ export const TableSkeleton = ({
 						) : null}
 						{Array.from({ length: columnCount }).map((_, index) => (
 							<td className={styles.cell} key={index}>
-								<TextSkeleton variant="body3" width={'80%'} />
+								<TextSkeleton variant="body3" width="80%" />
 							</td>
 						))}
 						<td className={styles.cell}>

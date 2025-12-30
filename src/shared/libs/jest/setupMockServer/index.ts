@@ -1,1 +1,0 @@
-export { setupMockServer } from './setupMockServer';

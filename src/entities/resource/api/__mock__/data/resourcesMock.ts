@@ -1,4 +1,4 @@
-import { Resource } from '@/entities/resource/model/types/resource';
+import { Resource } from '../../../model/types/resource';
 
 export const resourcesMock: Resource[] = [
 	{

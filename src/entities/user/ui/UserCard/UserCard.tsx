@@ -2,9 +2,8 @@ import classNames from 'classnames';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation, User as Users } from '@/shared/config/i18n/i18nTranslations';
-import { formatDate } from '@/shared/helpers/formatDate/formatDate';
+import { i18Namespace, Translation, User as Users } from '@/shared/config';
+import { formatDate } from '@/shared/libs';
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';

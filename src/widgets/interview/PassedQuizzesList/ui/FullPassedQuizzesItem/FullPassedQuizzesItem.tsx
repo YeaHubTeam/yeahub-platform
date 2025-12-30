@@ -2,10 +2,8 @@ import { MutableRefObject, LegacyRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
+import { i18Namespace, InterviewHistory, ROUTES } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 
 import type { QuizWithoutQuestions } from '@/entities/quiz';

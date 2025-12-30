@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 
-import { getFromLS, setToLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, setToLS, removeFromLS } from '@/shared/libs';
 
 import { Timer } from './Timer';
 
-jest.mock('@/shared/helpers/manageLocalStorage', () => ({
+jest.mock('@/shared/libs/browser', () => ({
 	getFromLS: jest.fn(),
 	setToLS: jest.fn(),
 	removeFromLS: jest.fn(),

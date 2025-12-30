@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18Namespace, Analytics, ROUTES } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 
 import {
@@ -10,12 +8,19 @@ import {
 	useGetSpecializationsGeneralProgressQuery,
 } from '@/entities/specialization';
 
+import { ITEMS_COUNT } from '../../model/constants';
+
 import styles from './SpecializationProgressWidget.module.css';
+import { SpecializationProgressWidgetSkeleton } from './SpecializationProgressWidget.skeleton';
 
 export const SpecializationProgressWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
-	const { data: specializationsProgress } = useGetSpecializationsGeneralProgressQuery({ limit: 5 });
+	const { data: specializationsProgress, isLoading } = useGetSpecializationsGeneralProgressQuery({
+		limit: ITEMS_COUNT,
+	});
+
+	if (isLoading) return <SpecializationProgressWidgetSkeleton />;
 
 	if (!specializationsProgress?.data) {
 		return null;

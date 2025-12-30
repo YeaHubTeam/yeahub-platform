@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 
 import { KeywordsListTestIds } from './KeywordsList';
 import { KeywordsList } from './KeywordsList';

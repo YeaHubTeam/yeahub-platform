@@ -3,14 +3,13 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EmailModal from '@/shared/assets/images/emailModal.avif';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Auth, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { getFromLS } from '@/shared/helpers/manageLocalStorage';
+import { Auth, Translation, i18Namespace } from '@/shared/config';
+import { getFromLS } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
-import { Timer } from '@/shared/ui/Timer/Timer';
+import { Timer } from '@/shared/ui/Timer';
 import { toast } from '@/shared/ui/Toast';
 
 import { useSendEmailRecoveryPasswordMutation } from '../../api/forgotPasswordApi';

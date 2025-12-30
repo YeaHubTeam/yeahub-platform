@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { Translation } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 

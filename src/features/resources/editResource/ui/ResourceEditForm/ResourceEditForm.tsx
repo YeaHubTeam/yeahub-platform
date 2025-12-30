@@ -5,14 +5,13 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { Resource, ResourceForm } from '@/entities/resource';
+import { Resource, ResourceEditFormHeader, ResourceForm } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
 import { useEditResourceMutation } from '../../api/editResourceApi';
-import { resourceEditSchema } from '../../model/lib/validation/resourceEditSchema';
+import { resourceEditSchema } from '../../lib/validation/resourceEditSchema';
 import { EditResourceFormValues } from '../../model/types/resourcesEditTypes';
-import { ResourceEditFormHeader } from '../ResourceEditFormHeader/ResourceEditFormHeader';
 
 import styles from './ResourceEditForm.module.css';
 

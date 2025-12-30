@@ -1,10 +1,8 @@
-import { Response, SortOrder } from '@/shared/types/types';
+import { Response, SortOrder } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Skill } from '@/entities/skill';
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Specialization } from '@/entities/specialization';
+import { Skill } from '@/entities/skill/@x/resource';
+import { Specialization } from '@/entities/specialization/@x/resource';
 
 export interface Resource {
 	id: string;

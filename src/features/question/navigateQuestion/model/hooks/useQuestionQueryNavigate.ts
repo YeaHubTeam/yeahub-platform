@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { useCurrentProject } from '@/shared/hooks';
+import { useCurrentProject } from '@/shared/libs';
 
 import { getQuestionRoute } from '@/entities/question';
 

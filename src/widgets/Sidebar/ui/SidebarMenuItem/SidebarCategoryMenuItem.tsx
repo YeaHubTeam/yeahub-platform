@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '@/shared/assets/icons/arrowShortDown.svg';
-import { i18Namespace } from '@/shared/config/i18n';
+import { i18Namespace } from '@/shared/config';
+import { isPathMatch } from '@/shared/libs';
 import { Tooltip } from '@/shared/ui/Tooltip';
-import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { CategoryMenuItem } from '../../model/types/sidebar';
 

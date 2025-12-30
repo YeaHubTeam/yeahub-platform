@@ -1,5 +1,5 @@
-import { baseApi } from '@/shared/config/api/baseApi';
-import { route } from '@/shared/helpers/route';
+import { baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { Question } from '@/entities/question';
 

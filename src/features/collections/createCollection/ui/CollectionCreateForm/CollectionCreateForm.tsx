@@ -7,7 +7,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { CollectionForm } from '@/entities/collection';
 
-import { collectionCreateSchema } from '../../model/lib/validation/collectionCreateSchema';
+import { collectionCreateSchema } from '../../lib/validation/collectionCreateSchema';
 import { CollectionCreateFormValues } from '../../model/types/collectionCreateTypes';
 import CollectionCreateFormHeader from '../CollectionCreateFormHeader/CollectionCreateFormHeader';
 

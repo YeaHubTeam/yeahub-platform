@@ -1,4 +1,4 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
 export interface Specialization {
 	id: number;

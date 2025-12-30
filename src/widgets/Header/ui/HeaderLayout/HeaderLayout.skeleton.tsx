@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import { UserPreferencesSkeleton } from '../UserPreferences/UserPreferences.skeleton';

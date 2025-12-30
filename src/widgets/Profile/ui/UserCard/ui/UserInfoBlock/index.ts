@@ -1,1 +1,0 @@
-export { UserInfoBlock } from './UserInfoBlock';

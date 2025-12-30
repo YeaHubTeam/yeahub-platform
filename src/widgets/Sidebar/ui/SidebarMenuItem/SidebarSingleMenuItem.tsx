@@ -2,11 +2,9 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { ROUTES } from '@/shared/config/router/routes';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, ROUTES } from '@/shared/config';
+import { useScreenSize, isPathMatch } from '@/shared/libs';
 import { Tooltip } from '@/shared/ui/Tooltip';
-import { isPathMatch } from '@/shared/utils/isPathMatch';
 
 import { SingleMenuItem } from '../../model/types/sidebar';
 

@@ -1,15 +1,8 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { ROUTES } from '@/shared/config/router/routes';
-import { clearStore } from '@/shared/config/store/clearStore';
-import { ExtraArgument } from '@/shared/config/store/types';
-import { LS_ACCESS_TOKEN_KEY } from '@/shared/constants/authConstants';
-import { removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { i18n, ApiTags, baseApi, ROUTES, clearStore, ExtraArgument } from '@/shared/config';
+import { LS_ACCESS_TOKEN_KEY, removeFromLS, setToLS } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { profileActions } from '@/entities/profile';
+import { profileActions } from '@/entities/profile/@x/auth';
 
 import { authApiUrls } from '../model/constants/authConstants';
 import {
@@ -31,12 +24,15 @@ export const authApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
-			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
+			async onQueryStarted(_, aaa) {
 				try {
+					const { queryFulfilled, extra, dispatch } = aaa;
+					console.log('aaa', aaa);
 					dispatch(baseApi.util.resetApiState());
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
+					console.log(typedExtra);
 					const searchParams = new URLSearchParams(window.location.search);
 					const returnPage = searchParams.get('returnPage') || ROUTES.interview.page;
 					typedExtra.navigate(returnPage);

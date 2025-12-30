@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Marketplace } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
@@ -10,7 +9,7 @@ import { useGetResourceTypesQuery } from '../../api/resourceApi';
 import { EMPTY_RESOURCE_ID } from '../../model/constants/resource';
 
 type ResourcesSelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: string | string[];

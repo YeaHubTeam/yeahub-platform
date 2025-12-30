@@ -1,8 +1,7 @@
 import type { Preview } from '@storybook/react';
 
 import i18n from '../../src/shared/config/i18n/i18n';
-import { RouteDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
-import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
+import { RouteDecorator, StyleDecorator } from '../../src/shared/config/storybook';
 
 const preview: Preview = {
 	globals: {

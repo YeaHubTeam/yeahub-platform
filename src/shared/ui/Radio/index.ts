@@ -1,1 +1,1 @@
-export { Radio } from './ui/Radio';
+export { Radio } from './Radio';

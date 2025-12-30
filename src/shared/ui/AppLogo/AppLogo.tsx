@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import logoDark from '@/shared/assets/icons/logoDark.avif';
 import logoLight from '@/shared/assets/icons/logoLight.avif';
 import LogoText from '@/shared/assets/icons/logoText.svg';
-import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config';
 
 import styles from './AppLogo.module.css';
 

@@ -5,12 +5,12 @@ import {
 	useState,
 } from 'react';
 
-import { ThemeMods } from '../model/types/themeProvider';
 import {
 	applyTheme,
 	getSavedTheme,
 	// getSystemTheme
-} from '../utils/themeUtils';
+} from '../model/helpers/themeUtils';
+import { ThemeMods } from '../model/types/themeProvider';
 
 // import styles from './ThemeSwitcher.module.css';
 

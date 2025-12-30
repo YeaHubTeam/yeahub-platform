@@ -7,7 +7,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Company, CompanyForm } from '@/entities/company';
 
-import { companyEditSchema } from '../../model/lib/validation/companyEditSchema';
+import { companyEditSchema } from '../../lib/validation/companyEditSchema';
 import { CompanyEditFormValues } from '../../model/types/companyEditPageTypes';
 import { CompanyEditFormHeader } from '../CompanyEditFormHeader/CompanyEditFormHeader';
 

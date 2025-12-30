@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, InterviewStatistics } from '@/shared/config';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
 import { ProfileQuestionsStat } from '@/entities/quiz';
 
-import { getQuestionsStats } from '../../model/lib/getQuestionsStats/getQuestionsStats';
+import { getQuestionsStats } from '../../lib/getQuestionsStats/getQuestionsStats';
 
 export interface FullQuestionsStatisticProps {
 	questionsStat?: ProfileQuestionsStat;

@@ -1,7 +1,6 @@
 import { DefaultBodyType, HttpResponse, http } from 'msw';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { skillsMock } from '@/entities/skill';
+import { skillsMock } from '@/entities/skill/@x/question';
 
 import { questionApiUrls } from '../../model/constants/question';
 import { GetQuestionsBySpecializationCountResponse } from '../../model/types/question';

@@ -5,7 +5,7 @@ import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
-import { chipTestIDs } from './model/constants';
+import { chipTestIDs } from './constants';
 import { ChipProps } from './types';
 
 export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(

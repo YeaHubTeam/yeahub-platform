@@ -1,14 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n/i18n';
-import { Questions, Subscription } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector } from '@/shared/hooks';
+import { i18Namespace, Questions, Subscription } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { getHasPremiumAccess } from '@/entities/profile';
-
-import { QuestionFilterStatus } from '../../model/types/filters';
+import { QuestionFilterStatus } from '@/entities/question';
 
 interface QuestionStatusFilterProps {
 	selectedStatus?: QuestionFilterStatus;

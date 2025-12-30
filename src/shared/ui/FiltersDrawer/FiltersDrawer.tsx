@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 
-import { useCurrentProject, useModal, useScreenSize } from '@/shared/hooks';
-import { Project } from '@/shared/hooks/useCurrentProject';
+import { useCurrentProject, useScreenSize, useModal, Project } from '@/shared/libs';
 import { Drawer } from '@/shared/ui/Drawer';
 import { DrawerProps } from '@/shared/ui/Drawer/Drawer';
 import { Icon } from '@/shared/ui/Icon';

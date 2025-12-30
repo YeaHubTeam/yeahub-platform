@@ -1,7 +1,7 @@
-import { useQueryFilterParams } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/libs';
 
-import type { HhAnalyticsFiltersParams, HhAnalyticsMode } from '@/features/hhAnalyticsFilters';
-import { useGetHhAnalyticsFilterParams } from '@/features/hhAnalyticsFilters/model/hooks/useGetHhAnalyticsFilterParams';
+import { useGetHhAnalyticsFilterParams } from '../hooks/useGetHhAnalyticsFilterParams';
+import type { HhAnalyticsFiltersParams, HhAnalyticsMode } from '../types/types';
 
 export const useHhAnalyticsFilters = (initialParams: HhAnalyticsFiltersParams) => {
 	const currentParams = useGetHhAnalyticsFilterParams(initialParams);

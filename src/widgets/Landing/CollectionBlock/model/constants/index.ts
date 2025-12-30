@@ -1,12 +1,5 @@
-import {
-	avito,
-	ozon,
-	sber,
-	tbank,
-	vk,
-	wb,
-	yandex,
-} from '@/widgets/Landing/CollectionBlock/model/assets/miniatures';
+import { avito, ozon, sber, tbank, vk, wb, yandex } from '../assets/miniatures';
+import {} from '../assets';
 
 type ImageItem = { src: string; alt: string };
 

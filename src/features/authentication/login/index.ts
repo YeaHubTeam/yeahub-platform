@@ -1,2 +1,2 @@
 export { LoginForm } from './ui/LoginForm/LoginForm';
-export { TelegramLogin } from './ui/TelegramLoginButton/ui/TelegramLogin/TelegramLogin';
+export { TelegramLogin } from '@/features/authentication/login/ui/TelegramLogin/TelegramLogin';

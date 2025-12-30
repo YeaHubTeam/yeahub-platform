@@ -2,9 +2,8 @@ import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
-import { useAppSelector, useModal } from '@/shared/hooks';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
+import { useAppSelector, useModal } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 
 import { getProfileId } from '@/entities/profile';

@@ -1,10 +1,10 @@
-import { CardSkeleton } from '@/shared/ui/Card';
-import { TextHtmlSkeleton } from '@/shared/ui/TextHtml';
+// import { CardSkeleton } from '@/shared/ui/Card';
+// import { TextHtmlSkeleton } from '@/shared/ui/TextHtml';
 
-export const TopicBodySkeleton = () => {
-	return (
-		<CardSkeleton title="title" withOutsideShadow>
-			<TextHtmlSkeleton />
-		</CardSkeleton>
-	);
-};
+// export const TopicBodySkeleton = () => {
+// 	return (
+// 		<CardSkeleton title="title" withOutsideShadow>
+// 			<TextHtmlSkeleton />
+// 		</CardSkeleton>
+// 	);
+// };

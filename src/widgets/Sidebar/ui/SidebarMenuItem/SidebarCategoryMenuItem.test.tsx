@@ -1,9 +1,9 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { i18n } from '@/shared/config';
+import { renderComponent } from '@/shared/libs';
 
-import { sidebarUserMenuMock } from '@/widgets/Sidebar/model/data/sidebarMock';
+import { sidebarUserMenuMock } from '../../model/data/sidebarMock';
 
 import SidebarCategoryMenuItem from './SidebarCategoryMenuItem';
 

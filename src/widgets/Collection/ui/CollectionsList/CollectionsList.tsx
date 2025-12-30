@@ -1,7 +1,6 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { Collection } from '@/entities/collection';
-import { CollectionPreview } from '@/entities/collection';
+import { Collection, CollectionPreview } from '@/entities/collection';
 
 interface CollectionsListProps {
 	collections: Collection[];

@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Translation } from '@/shared/config';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
@@ -9,7 +9,7 @@ import { useEditSpecializationMutation } from '../../api/editSpecializationApi';
 import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
 
 export const SpecializationEditFormHeader = () => {
-	const { t } = useTranslation(['specialization', 'translation']);
+	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
 
 	const { handleSubmit, reset } = useFormContext<EditSpecializationFormValues>();
 

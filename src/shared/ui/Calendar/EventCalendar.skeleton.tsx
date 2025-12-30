@@ -7,8 +7,8 @@ import styles from './EventCalendar.skeleton.module.css';
 
 export const EventCalendarSkeleton = () => {
 	return (
-		<div className={'additional-info-wrapper'}>
-			<CardSkeleton className={'calendar-block'}>
+		<div className="additional-info-wrapper">
+			<CardSkeleton className="calendar-block">
 				<Flex direction="column">
 					<Flex justify="between" className="react-calendar__navigation">
 						<IconSkeleton size={24} className={styles['element-wrapper']} />

@@ -1,9 +1,9 @@
 import { screen, fireEvent } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { Landing } from '@/shared/config';
+import { renderComponent } from '@/shared/libs';
 
-import { HEADER_NAV_LINKS } from '@/widgets/Landing/Header/model/constants/headerConstants';
+import { HEADER_NAV_LINKS } from '../../../model/constants/headerConstants';
 
 import { HeaderNavMobile } from './HeaderNavMobile';
 

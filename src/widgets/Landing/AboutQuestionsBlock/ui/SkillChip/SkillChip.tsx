@@ -13,7 +13,7 @@ export const SkillChip = ({ src, alt, showLabel = false }: SkillChipProps) => {
 
 	return (
 		<Chip
-			variant={'big'}
+			variant="big"
 			className={styles.chip}
 			label={showLabel ? alt : ''}
 			prefix={

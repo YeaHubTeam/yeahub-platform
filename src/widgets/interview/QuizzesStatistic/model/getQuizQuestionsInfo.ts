@@ -1,5 +1,4 @@
-import i18n, { i18Namespace } from '@/shared/config/i18n/i18n';
-import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, i18n, InterviewQuiz } from '@/shared/config';
 
 import { Answers } from '@/entities/quiz';
 

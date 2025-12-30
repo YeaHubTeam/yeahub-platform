@@ -1,4 +1,4 @@
-import { CollectionsFilterParams } from '../types/types';
+import { CollectionsFilterParams } from '@/entities/collection';
 
 export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterParams) => {
 	const params = new URLSearchParams(location.search);

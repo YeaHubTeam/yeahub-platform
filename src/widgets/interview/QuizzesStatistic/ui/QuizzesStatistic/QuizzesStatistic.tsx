@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewStatistics } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, InterviewStatistics } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { PercentsInfoPie } from '@/shared/ui/PercentsInfoPie';
 
 import { ProfileQuizzesStat } from '@/entities/quiz';

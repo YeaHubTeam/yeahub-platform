@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import { Specialization } from '@/entities/specialization';
+import { Specialization } from './specialization';
 
 export interface SpecializationsProgress {
 	id: number;

@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Onboarding } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
@@ -17,9 +16,9 @@ export const OnboardingHeader = ({ activeStep, finalStep }: OnboardingHeaderProp
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const { isSmallScreen, isMobileM } = useScreenSize();
 	return (
-		<Flex gap={isSmallScreen ? '4' : '8'} align={'start'}>
-			<Flex direction={'column'} gap={'8'}>
-				<Text variant={'head3'} color={isMobileM ? 'black-900' : 'white-900'}>
+		<Flex gap={isSmallScreen ? '4' : '8'} align="start">
+			<Flex direction="column" gap="8">
+				<Text variant="head3" color={isMobileM ? 'black-900' : 'white-900'}>
 					{t(Onboarding.TITLE)}
 				</Text>
 				<Text

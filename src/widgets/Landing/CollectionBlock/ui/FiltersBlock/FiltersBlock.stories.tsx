@@ -5,7 +5,7 @@ import { filters } from '../../model/constants';
 import { FiltersBlock } from './FiltersBlock';
 
 /*
- * Filter block for landing page collections for filtering collection cards
+ * Filter block for landing page collections for filtering collectionDetail cards
  * Uses mock filter list
  * In the future, it will receive filters via props and filter chips will be wrapped in a slider
  */
@@ -20,7 +20,7 @@ const meta = {
 		docs: {
 			description: {
 				component:
-					'Component for displaying collection filters. Currently uses mock data but will be refactored to accept props.',
+					'Component for displaying collectionDetail filters. Currently uses mock data but will be refactored to accept props.',
 			},
 		},
 	},

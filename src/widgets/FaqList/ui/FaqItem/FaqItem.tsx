@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 
-import { useScreenSize } from '@/shared/hooks/useScreenSize';
+import { useScreenSize } from '@/shared/libs';
 import { Text } from '@/shared/ui/Text';
 
 import { FaqProps } from '../../model/types/types';

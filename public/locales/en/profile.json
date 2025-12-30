@@ -104,7 +104,7 @@
 			"max.count": "You have reached the limit of profiles you can create"
 		},
 		"modal": {
-			"delete.profile:": {
+			"delete.profile": {
 				"title": "Delete Profile",
 				"description": "All your data, progress and activity will be permanently deleted. This action cannot be undone.",
 				"label": "Enter your username to confirm",

@@ -3,15 +3,13 @@ import { useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/constants/customRoutes';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { Translation, i18n } from '@/shared/config';
+import { useAppSelector, EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 
 import { getIsVerified } from '@/entities/profile';
 
-import { useLazyGetPaymentUrlQuery } from '@/features/subscriptions/subscribe/api/getPaymentUrl';
+import { useLazyGetPaymentUrlQuery } from '../../api/getPaymentUrl';
 
 import styles from './SubscribeButton.module.css';
 

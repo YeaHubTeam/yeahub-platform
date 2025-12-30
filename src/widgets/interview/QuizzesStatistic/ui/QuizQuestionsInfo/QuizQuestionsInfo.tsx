@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizResult } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, InterviewQuizResult } from '@/shared/config';
 import { PercentsInfoPie } from '@/shared/ui/PercentsInfoPie';
 
 import { Answers } from '@/entities/quiz';

@@ -4,8 +4,8 @@ import { DOMSerializer } from 'prosemirror-model';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { TextEditor } from '@/shared/config/i18n/i18nTranslations';
-import { convertSpacesToTabs } from '@/shared/utils/textEditor';
+import { TextEditor } from '@/shared/config';
+import { convertSpacesToTabs } from '@/shared/libs';
 
 import styles from './BubbleMenuEditor.module.css';
 
@@ -317,7 +317,7 @@ const BubbleMenuEditor = ({ editor }: BubbleMenuProps) => {
 					}
 					title={t(TextEditor.BLOCKQUOTE)}
 				>
-					{'" "'}
+					{`" "`}
 				</button>
 				<button
 					type="button"

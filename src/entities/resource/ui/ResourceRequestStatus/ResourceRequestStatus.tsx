@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { ResourceRequests } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, ResourceRequests } from '@/shared/config';
 import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 
 import { ResourceRequestStatus } from '../../model/types/resourceRequest';

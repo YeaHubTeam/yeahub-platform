@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getFromLS, removeFromLS, setToLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, removeFromLS, setToLS } from '@/shared/libs';
 
 import { Collection, LS_INIT_COLLECTION_ID } from '@/entities/collection';
 

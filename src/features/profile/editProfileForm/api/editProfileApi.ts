@@ -1,7 +1,4 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
 import { toast } from '@/shared/ui/Toast';
 
 import {
@@ -13,25 +10,25 @@ import {
 export const editProfileApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		updateProfile: build.mutation<void, EditProfileRequestData>({
-			query: ({ id, ...profileInfo }) => ({
+			query: ({ id, ...profile }) => ({
 				url: `profiles/${id}`,
-				body: profileInfo,
+				body: profile,
 				method: 'PUT',
 			}),
-			async onQueryStarted({ ...profileInfo }, { queryFulfilled, dispatch }) {
+			async onQueryStarted({ ...profile }, { queryFulfilled, dispatch }) {
 				try {
 					await queryFulfilled;
 					await dispatch(
 						editProfileApi.endpoints.updateUser.initiate({
-							id: profileInfo.user.id,
+							id: profile.user.id,
 							userInfo: {
-								username: profileInfo.user.username,
-								country: profileInfo.user.country,
-								city: profileInfo.user.city,
-								birthday: profileInfo.user.birthday,
-								address: profileInfo.user.address,
-								avatarUrl: profileInfo.user.avatarUrl,
-								avatarImage: profileInfo.user.avatarImage,
+								username: profile.user.username,
+								country: profile.user.country,
+								city: profile.user.city,
+								birthday: profile.user.birthday,
+								address: profile.user.address,
+								avatarUrl: profile.user.avatarUrl,
+								avatarImage: profile.user.avatarImage,
 							},
 						}),
 					);

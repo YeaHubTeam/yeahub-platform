@@ -1,4 +1,4 @@
-import { calculatePageNavigation } from '@/shared/helpers/calculatePageNavigation';
+import { calculatePageNavigation } from '@/shared/libs';
 
 import { Collection, useGetPublicCollectionsListQuery } from '@/entities/collection';
 

@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Analytics } from '@/shared/config';
 import { Table } from '@/shared/ui/Table';
 
-import { SpecializationsProgress } from '@/entities/specialization';
+import { SpecializationsProgress } from '../../model/types/specializationsProgress';
 
 interface SpecializationProgressTableProps {
 	specializationsProgress: SpecializationsProgress[];

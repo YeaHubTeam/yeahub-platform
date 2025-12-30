@@ -1,2 +1,2 @@
-export { AdditionalStatInfoGauge } from './ui/AdditionalStatInfoGauge/AdditionalStatInfoGauge';
-export { AdditionalStatInfoGaugeSkeleton } from './ui/AdditionalStatInfoGauge/AdditionalStatInfoGauge.skeleton';
+export { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge/AdditionalStatInfoGauge/AdditionalStatInfoGauge';
+export { AdditionalStatInfoGaugeSkeleton } from '@/shared/ui/AdditionalStatInfoGauge/AdditionalStatInfoGauge/AdditionalStatInfoGauge.skeleton';

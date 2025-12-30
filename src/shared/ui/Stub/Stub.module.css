@@ -8,6 +8,10 @@
   object-fit: contain;
 }
 
+.icon {
+  height: 76px;
+}
+
 .button {
   width: 240px;
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 

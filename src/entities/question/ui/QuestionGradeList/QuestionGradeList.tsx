@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions, Analytics } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Questions, Analytics } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { GradeChip } from '@/shared/ui/GradeChip';
 

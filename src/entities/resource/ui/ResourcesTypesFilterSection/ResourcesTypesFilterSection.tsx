@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Marketplace } from '@/shared/config/i18n/i18nTranslations';
-import { MAX_LIMIT_RESOURCES } from '@/shared/constants/queryConstants';
+import { i18Namespace, Marketplace } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 
-import { ResourceTypeCode } from '@/entities/resource';
-import { useGetResourceTypesQuery } from '@/entities/resource/api/resourceApi';
+import { useGetResourceTypesQuery } from '../../api/resourceApi';
+import { ResourceTypeCode } from '../../model/types/resource';
 
 import styles from './ResourcesTypesFilterSection.module.css';
 
@@ -17,6 +15,8 @@ interface ResourcesTypesFilterSectionProps {
 	selectedTypes?: ResourceTypeCode[];
 	onChooseTypes: (types?: ResourceTypeCode[]) => void;
 }
+
+const MAX_LIMIT_RESOURCES = 4;
 
 export const ResourcesTypesFilterSection = ({
 	resourceLimit,

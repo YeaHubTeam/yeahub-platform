@@ -7,9 +7,8 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { CompanyForm } from '@/entities/company';
 
-import { CreateCompanyFormValues } from '@/features/company/createCompany/model/types/companyCreateTypes';
-
-import { companyCreateSchema } from '../../model/lib/validation/companyCreateSchema';
+import { companyCreateSchema } from '../../lib/validation/companyCreateSchema';
+import { CreateCompanyFormValues } from '../../model/types/companyCreateTypes';
 import { CompanyCreateFormHeader } from '../CompanyCreateFormHeader/CompanyCreateFormHeader';
 
 import styles from './CompanyCreateForm.module.css';

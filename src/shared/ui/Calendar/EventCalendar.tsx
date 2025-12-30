@@ -6,9 +6,10 @@ import './EventCalendar.css';
 import 'react-calendar/dist/Calendar.css';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewHistory } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize, useModal } from '@/shared/hooks';
+import { i18Namespace } from '@/shared/config';
+import { InterviewHistory } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { useModal } from '@/shared/libs';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
@@ -56,7 +57,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					form="square"
 					icon={<Icon icon="calendar" color="black-600" size={20} />}
 					size="small"
-					variant={'tertiary'}
+					variant="tertiary"
 					onClick={onToggle}
 				/>
 				<Drawer
@@ -68,7 +69,7 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					})}
 					hasCloseButton
 				>
-					<Card className={'calendar-block'}>
+					<Card className="calendar-block">
 						<Calendar
 							onChange={onDateChange}
 							showNeighboringMonth={false}
@@ -82,8 +83,8 @@ export const EventCalendar = ({ onDateChange, selectedDates }: EventCalendarProp
 					</Card>
 				</Drawer>
 			</div>
-			<div className={'additional-info-wrapper'}>
-				<Card className={'calendar-block'}>
+			<div className="additional-info-wrapper">
+				<Card className="calendar-block">
 					<Calendar
 						onChange={onDateChange}
 						showNeighboringMonth={false}

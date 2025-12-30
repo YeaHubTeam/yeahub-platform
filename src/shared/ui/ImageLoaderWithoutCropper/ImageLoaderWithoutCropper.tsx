@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile, Translation } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace } from '@/shared/config';
+import { Profile, Translation } from '@/shared/config';
 import { FileLoader } from '@/shared/ui/FileLoader';
 import { Accept, Extension } from '@/shared/ui/FileLoader/types';
 import { Flex } from '@/shared/ui/Flex';
@@ -62,7 +62,7 @@ export const ImageLoaderWithoutCropper = ({
 			<Flex className={styles['picture-block']} gap="8" direction="column">
 				{isLoading && <Loader hasText={false} className={styles.loader} />}
 
-				{!isLoading && <ImageWithWrapper src={src} alt={'skill icon'} className={styles.img} />}
+				{!isLoading && <ImageWithWrapper src={src} alt="skill icon" className={styles.img} />}
 
 				{!isLoading && src && (
 					<button

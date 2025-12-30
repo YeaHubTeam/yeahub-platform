@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 
-import { getFromLS, setToLS, removeFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getFromLS, setToLS, removeFromLS } from '@/shared/libs';
 
 import styles from './Timer.module.css';
 

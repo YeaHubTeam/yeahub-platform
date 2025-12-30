@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 export const FooterCopyrightSkeleton = () => {
@@ -6,9 +6,9 @@ export const FooterCopyrightSkeleton = () => {
 
 	return (
 		<TextSkeleton
-			dataTestId={'FooterCopyrightSkeleton'}
+			dataTestId="FooterCopyrightSkeleton"
 			width={isMobileS ? 80 : 100}
-			variant={'body2'}
+			variant="body2"
 		/>
 	);
 };

@@ -1,10 +1,10 @@
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
-import { useAppSelector, useInfiniteScroll } from '@/shared/hooks';
-import { Value } from '@/shared/ui/Calendar/EventCalendar';
+import { useAppSelector, useInfiniteScroll } from '@/shared/libs';
+import { Value } from '@/shared/ui/Calendar';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 
 import { getProfileId } from '@/entities/profile';
 import { useGetHistoryQuizQuery } from '@/entities/quiz';
@@ -66,7 +66,7 @@ export const FullPassedQuizzesList = ({
 	if (isEmptyData) {
 		return (
 			<Card>
-				<EmptyFilterStub resetFilters={resetFilters} />
+				<Stub type="filter-empty" onClick={resetFilters} />
 			</Card>
 		);
 	}

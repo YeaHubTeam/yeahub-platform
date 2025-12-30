@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Profile } from '@/shared/config';
 import { Tab, useTabs } from '@/shared/ui/Tabs';
 
 import { AboutMeTabForm } from '../../ui/AboutMeTabForm/AboutMeTabForm';

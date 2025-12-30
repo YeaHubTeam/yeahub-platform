@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { User } from '@/shared/config/i18n/i18nTranslations';
-import { useModal } from '@/shared/hooks';
+import { i18Namespace, User } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
 import { User as UserType } from '@/entities/user';
 
-import { AdminDeleteAccountModal } from '../modals/AdminDeleteAccountModal/AdminDeleteAccountModal';
-import { UserDeleteAccountModal } from '../modals/UserDeleteAccountModal/UserDeleteAccountModal';
+import { AdminDeleteAccountModal } from '../AdminDeleteAccountModal/AdminDeleteAccountModal';
+import { UserDeleteAccountModal } from '../UserDeleteAccountModal/UserDeleteAccountModal';
 
 import styles from './DeleteAccountButton.module.css';
 

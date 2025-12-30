@@ -20,7 +20,7 @@ const config: Config = {
 	// The test environment that will be used for testing
 	testEnvironment: '@happy-dom/jest-environment',
 
-	// An array of regexp pattern strings used to skip coverage collection
+	// An array of regexp pattern strings used to skip coverage collectionDetail
 	coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
 	// An array of file extensions your modules use
@@ -97,7 +97,7 @@ const config: Config = {
 	//   "enableGlobally": false
 	// },
 
-	// Force coverage collection from ignored files using an array of glob patterns
+	// Force coverage collectionDetail from ignored files using an array of glob patterns
 	// forceCoverageMatch: [],
 
 	// A path to a module which exports an async function that is triggered once before all test suites

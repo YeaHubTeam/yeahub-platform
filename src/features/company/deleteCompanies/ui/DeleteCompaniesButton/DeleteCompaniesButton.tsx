@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useAppDispatch } from '@/shared/hooks';
-import { SelectedAdminEntities } from '@/shared/types/types';
+import { i18Namespace, Translation } from '@/shared/config';
+import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 
 import { deleteMultipleCompaniesThunk } from '../../model/thunks/deleteMultipleCompaniesThunk';

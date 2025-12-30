@@ -12,8 +12,7 @@ import ProjectIcon from '@/shared/assets/images/landing/learning/icons/projectIc
 import SupportIcon from '@/shared/assets/images/landing/learning/icons/supportIcon.png';
 import TeamIcon from '@/shared/assets/images/landing/learning/icons/teamIcon.png';
 import TechnoIcon from '@/shared/assets/images/landing/learning/icons/technoIcon.png';
-import { i18Namespace } from '@/shared/config/i18n';
-import { Learning } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Learning } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -70,17 +69,17 @@ export const AdvantagesList = () => {
 		<>
 			<Flex className={styles.container}>
 				{advantages.map((item) => (
-					<Card size={'medium'} key={item.id} className={styles['card-wrap']}>
+					<Card size="medium" key={item.id} className={styles['card-wrap']}>
 						<img src={item.icon} alt={item.icon} className={styles.icon} />
 						<Flex className={styles.card}>
-							<Flex gap={'8'} direction={'column'}>
-								<Text variant={'body5-strong'}>{item.title}</Text>
-								<Text variant={'body3-accent'} className={styles.description}>
+							<Flex gap="8" direction="column">
+								<Text variant="body5-strong">{item.title}</Text>
+								<Text variant="body3-accent" className={styles.description}>
 									{item.description}
 								</Text>
 							</Flex>
-							<Flex justify={'center'}>
-								<img src={item.banner} alt={'personBanner'} className={styles.banner} />
+							<Flex justify="center">
+								<img src={item.banner} alt="personBanner" className={styles.banner} />
 							</Flex>
 						</Flex>
 					</Card>

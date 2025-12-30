@@ -9,9 +9,8 @@ import { TextSelection } from 'prosemirror-state';
 import { useCallback, useEffect, useRef } from 'react';
 
 import 'highlight.js/styles/atom-one-dark.css';
-import { BubbleMenuEditor } from '@/shared/ui/BubbleMenuEditor/BubbleMenuEditor';
-import { createCustomCodeBlock, normalizeHtmlContent } from '@/shared/utils/textEditor';
-import { createPastePlugin } from '@/shared/utils/textEditor/createPastePlugin';
+import { createCustomCodeBlock, normalizeHtmlContent, createPastePlugin } from '@/shared/libs';
+import { BubbleMenuEditor } from '@/shared/ui/BubbleMenuEditor';
 
 import styles from './TextEditor.module.css';
 

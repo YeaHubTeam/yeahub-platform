@@ -1,4 +1,4 @@
-import { getJSONFromLS } from '@/shared/helpers/manageLocalStorage';
+import { getJSONFromLS } from '@/shared/libs';
 
 import { LS_ACTIVE_MOCK_QUIZ_KEY } from '../constants/quizConstants';
 import { Answers } from '../types/quiz';

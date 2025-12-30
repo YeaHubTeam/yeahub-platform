@@ -6,12 +6,9 @@ import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
+import { i18n, Translation, ROUTES } from '@/shared/config';
 
-import { MenuItem } from '@/widgets/Sidebar';
-import { SingleMenuItem } from '@/widgets/Sidebar/model/types/sidebar';
+import { MenuItem, SingleMenuItem } from '../types/sidebar';
 
 export const sidebarUserMenuMock: MenuItem[] = [
 	{

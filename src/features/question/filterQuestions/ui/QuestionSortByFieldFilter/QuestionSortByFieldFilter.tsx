@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Questions } from '@/shared/config';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { QuestionFilterOrderBy } from '../../model/types/filters';
+import { QuestionFilterOrderBy } from '@/entities/question';
 
 interface QuestionSortByFieldFilterProps {
 	onChangeOrderBy: (orderBy?: QuestionFilterOrderBy) => void;

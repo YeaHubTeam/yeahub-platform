@@ -1,4 +1,3 @@
-// FilterChip.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { filters } from '../../model/constants';

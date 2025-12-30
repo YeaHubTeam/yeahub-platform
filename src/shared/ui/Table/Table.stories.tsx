@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { SelectedEntities } from '@/shared/types/types';
+import { SelectedEntities } from '@/shared/libs';
 
 import { Table } from './Table';
 

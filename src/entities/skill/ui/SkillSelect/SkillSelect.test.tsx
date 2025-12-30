@@ -1,13 +1,14 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 
-import { Skills } from '@/shared/config/i18n/i18nTranslations';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
-import { setupMockServer } from '@/shared/libs/jest/setupMockServer';
+import { Skills } from '@/shared/config';
+import { renderComponent } from '@/shared/libs';
+import { setupMockServer } from '@/shared/msw';
 import { dropdownTestIds } from '@/shared/ui/Dropdown';
 import { selectWithChipsTestIds } from '@/shared/ui/SelectWithChips';
 
 import { skillsMock } from '../../api/__mocks__/data/skillsMock';
+import { skillListMock } from '../../api/__mocks__/skillListMock';
 import { skillApiUrls } from '../../model/constants/skillConstants';
 
 import { SkillSelect, SkillSelectProps } from './SkillSelect';
@@ -16,7 +17,7 @@ type OverrideProps = Partial<SkillSelectProps>;
 
 type RequiredSkillSelectProps = Pick<SkillSelectProps, 'value' | 'onChange'>;
 
-const server = setupMockServer();
+const server = setupMockServer([skillListMock]);
 
 const mockSkills = skillsMock;
 

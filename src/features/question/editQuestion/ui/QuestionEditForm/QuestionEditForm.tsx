@@ -9,7 +9,7 @@ import { Question, QuestionForm } from '@/entities/question';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
-import { questionEditSchema } from '../../model/lib/validation/questionEditSchema';
+import { questionEditSchema } from '../../lib/validation/questionEditSchema';
 import { EditQuestionFormValues } from '../../model/types/questionEditPageTypes';
 import { QuestionEditFormHeader } from '../QuestionEditFormHeader/QuestionEditFormHeader';
 

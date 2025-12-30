@@ -15,7 +15,7 @@ export const CardBlockLayout = ({ children, hasOffset = false, className }: Card
 	const cardContentClasses = classNames({ [styles.offset]: hasOffset }, className);
 
 	return (
-		<Flex direction={'column'} gap={'16'} className={cardContentClasses}>
+		<Flex direction="column" gap="16" className={cardContentClasses}>
 			{children}
 		</Flex>
 	);

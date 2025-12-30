@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n/i18n';
-import { Resources, Translation } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Resources, Translation } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Modal } from '@/shared/ui/Modal';
 
@@ -56,9 +55,7 @@ export const DeleteMyResourceRequestButton = ({
 				buttonPrimaryClick={handleConfirm}
 				buttonOutlineClick={handleClose}
 				onClose={handleClose}
-			>
-				{''}
-			</Modal>
+			/>
 		</>
 	);
 };

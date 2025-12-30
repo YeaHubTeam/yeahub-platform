@@ -1,8 +1,8 @@
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Questions } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Accordion } from '@/shared/ui/Accordion';
 import { Text } from '@/shared/ui/Text';
 
@@ -16,7 +16,7 @@ interface FullQuestionsListProps {
 	questions: Question[];
 	isPublic?: boolean;
 	additionalTitle?: string;
-	filterButton?: React.ReactNode;
+	filterButton?: ReactNode;
 	onMoveQuestionDetail: (id: number) => void;
 }
 

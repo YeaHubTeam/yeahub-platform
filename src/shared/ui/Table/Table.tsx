@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { SelectedEntities, SelectedEntity } from '@/shared/types/types';
+import { SelectedEntities, SelectedEntity } from '@/shared/libs';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { CopyButton } from '@/shared/ui/CopyButton';
 

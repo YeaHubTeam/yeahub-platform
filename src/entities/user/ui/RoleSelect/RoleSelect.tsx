@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { User } from '@/shared/config/i18n/i18nTranslations';
-import { convertRoleNameToEnumKey } from '@/shared/helpers/convertRoleNameToEnumKey';
+import { i18Namespace, User } from '@/shared/config';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
 import { UserRole } from '../../model/types/user';
+import { convertRoleNameToEnumKey } from '../../model/utils/convertRoleNameToEnumKey';
 
 import styles from './RoleSelect.module.css';
 

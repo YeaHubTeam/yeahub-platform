@@ -1,12 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { clearStore } from '@/shared/config/store/clearStore';
-import { setToLS } from '@/shared/helpers/manageLocalStorage';
-
-import { getValidActiveMockQuizFromLS } from '@/entities/quiz/model/helpers/getValidActiveMockQuizFromLS';
-import { getValidActiveQuizzesFromLS } from '@/entities/quiz/model/helpers/getValidActiveQuizzesFromLS';
+import { clearStore } from '@/shared/config';
+import { setToLS } from '@/shared/libs';
 
 import { LS_ACTIVE_MOCK_QUIZ_KEY, LS_ACTIVE_QUIZZES_KEY } from '../constants/quizConstants';
+import { getValidActiveMockQuizFromLS } from '../helpers/getValidActiveMockQuizFromLS';
+import { getValidActiveQuizzesFromLS } from '../helpers/getValidActiveQuizzesFromLS';
 import { updateQuestionAnswer } from '../helpers/updateQuestionAnswer';
 import { ActiveQuizState, Answers, ChangeQuestionAnswerParams } from '../types/quiz';
 

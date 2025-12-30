@@ -7,7 +7,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { SkillForm } from '@/entities/skill';
 
-import { skillCreateSchema } from '../../model/lib/validation/skillCreateSchema';
+import { skillCreateSchema } from '../../lib/validation/skillCreateSchema';
 import { CreateSkillFormValues } from '../../model/types/skillCreateTypes';
 import { SkillCreateFormHeader } from '../SkillCreateFormHeader/SkillCreateFormHeader';
 

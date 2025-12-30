@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 
-import { useCopy } from '../../hooks';
+import { useCopy } from '@/shared/libs';
+
 import { Icon } from '../Icon';
 import { IconButton } from '../IconButton';
 

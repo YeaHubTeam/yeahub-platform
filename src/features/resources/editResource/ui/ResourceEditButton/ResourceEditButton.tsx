@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
+import { Translation, ROUTES } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
@@ -18,7 +17,7 @@ export const ResourceEditButton = ({ isDisabled, resourceId }: ResourceEditButto
 	return (
 		<Tooltip
 			title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-			placement={'bottom-start'}
+			placement="bottom-start"
 			color="red"
 			offsetTooltip={10}
 			shouldShowTooltip={isDisabled}

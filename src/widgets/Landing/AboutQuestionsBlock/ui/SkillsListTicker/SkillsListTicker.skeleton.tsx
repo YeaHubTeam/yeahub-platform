@@ -8,7 +8,7 @@ export const SkillsListTickerSkeleton = () => {
 	const skills = 10;
 	return (
 		<div className={styles.list}>
-			<Flex className={styles['slider-container']} gap={'16'}>
+			<Flex className={styles['slider-container']} gap="16">
 				{[...Array(skills)].map((_, index) => (
 					<SkillChipSkeleton key={index} showLabel label="true" />
 				))}

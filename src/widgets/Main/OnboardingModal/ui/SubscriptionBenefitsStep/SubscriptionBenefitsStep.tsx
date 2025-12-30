@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/constants/customRoutes';
+import { i18Namespace, Onboarding } from '@/shared/config';
+import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 
 import { AdvantagesBlock } from '../AdvantagesBlock/AdvantagesBlock';
 import { LayoutStepComponent } from '../LayoutStepComponent/LayoutStepComponent';

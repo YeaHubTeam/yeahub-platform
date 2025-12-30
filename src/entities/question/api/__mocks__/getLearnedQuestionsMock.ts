@@ -1,12 +1,13 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { preparePaginatedData } from '../../lib/getPaginatedData';
 import { questionApiUrls } from '../../model/constants/question';
-import { preparePaginatedData } from '../../model/lib/getPaginatedData';
 import {
 	GetLearnedQuestionsParamsRequest,
 	GetLearnedQuestionsResponse,
 } from '../../model/types/learnedQuestion';
-import { learnedQuestionsMock } from '../__mocks__/data';
+
+import { learnedQuestionsMock } from './data';
 
 export const getLearnedQuestionsMock = http.get<
 	Record<keyof GetLearnedQuestionsParamsRequest, string>,

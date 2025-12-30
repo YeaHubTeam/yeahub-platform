@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { SortOrder } from '@/shared/types/types';
+import { i18Namespace } from '@/shared/config';
+import { Translation } from '@/shared/config';
+import { SortOrder } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 interface OrderFilterProps {

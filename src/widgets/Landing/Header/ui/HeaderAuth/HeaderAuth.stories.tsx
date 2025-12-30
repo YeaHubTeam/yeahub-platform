@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
 import { HeaderAuth } from './HeaderAuth';
@@ -32,7 +32,7 @@ export const DesktopVersion: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		viewport: {
@@ -54,7 +54,7 @@ export const DesktopLoading: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {
@@ -73,7 +73,7 @@ export const MobileVersion: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		viewport: {
@@ -95,7 +95,7 @@ export const MobileLoading: Story = {
 				<Story />
 			</Flex>
 		),
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		docs: {

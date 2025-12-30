@@ -1,9 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { State } from '@/shared/config/store/State';
+import { State } from '@/shared/config';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { FullProfile, Profile } from '@/entities/auth';
+import { FullProfile, Profile } from '@/entities/auth/@x/profile';
 
 export const getProfileIsEmailSent = (state: State) => {
 	return state.profile.isEmailSent;

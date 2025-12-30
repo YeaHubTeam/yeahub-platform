@@ -4,14 +4,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import i18n from '@/shared/config/i18n/i18n';
-import { Translation } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
+import { Translation, ROUTES, i18n } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { useCreateResourceRequestMutation } from '../../api/createResourceRequestApi';
-import { resourceRequestCreateSchema } from '../../model/lib/validation/resourceRequestCreateSchema';
+import { resourceRequestCreateSchema } from '../../lib/validation/resourceRequestCreateSchema';
 import {
 	CreateResourceBodyRequest,
 	CreateResourceRequestFormValues,

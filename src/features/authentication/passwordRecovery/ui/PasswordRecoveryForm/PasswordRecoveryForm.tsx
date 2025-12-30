@@ -2,8 +2,7 @@ import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Auth } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Auth } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { PasswordInput } from '@/shared/ui/PasswordInput';
 

@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 import uE from '@testing-library/user-event';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { renderComponent } from '@/shared/libs';
 
 import { Chip } from './Chip';
 import { ChipSkeleton } from './Chip.skeleton';
-import { ChipVariants, ChipThemes } from './model/constants';
-import { chipTestIDs } from './model/constants';
+import { ChipVariants, ChipThemes } from './constants';
+import { chipTestIDs } from './constants';
 import { ChipProps, ChipVariant, ChipTheme } from './types';
 
 const render = (props?: ChipProps) => {

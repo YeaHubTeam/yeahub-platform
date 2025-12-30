@@ -1,5 +1,4 @@
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { Role } from '@/entities/auth';
+import { Role } from '@/entities/auth/@x/user';
 
 export const userRolesMock: Role[] = [
 	{

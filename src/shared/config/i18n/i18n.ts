@@ -3,40 +3,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
+import { i18Namespace } from './i18nNamespaces';
+
 type Langs = 'en' | 'ru';
 
 const supportedLngs: Langs[] = ['en', 'ru'];
-
-export const i18Namespace = {
-	analytics: 'analytics',
-	auth: 'auth',
-	docs: 'docs',
-	interviewHistory: 'interviewHistory',
-	interviewQuiz: 'interviewQuiz',
-	interviewQuizCreate: 'interviewQuizCreate',
-	interviewQuizResult: 'interviewQuizResult',
-	interviewStatistics: 'interviewStatistics',
-	landing: 'landing',
-	learning: 'learning',
-	main: 'main',
-	onboarding: 'onboarding',
-	profile: 'profile',
-	questions: 'questions',
-	resources: 'resources',
-	resourceRequests: 'resourceRequests',
-	skill: 'skill',
-	specialization: 'specialization',
-	subscription: 'subscription',
-	subscriptionCard: 'subscriptionCard',
-	translation: 'translation',
-	user: 'user',
-	collection: 'collection',
-	marketplace: 'marketplace',
-	companies: 'companies',
-	editor: 'editor',
-	guru: 'guru',
-	media: 'media',
-};
 
 i18n
 	.use(Backend)

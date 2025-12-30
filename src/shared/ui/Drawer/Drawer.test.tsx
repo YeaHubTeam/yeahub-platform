@@ -1,8 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { useState } from 'react';
 
-import { getKeyboardFireEventObject } from '@/shared/libs/jest/getKeyboardFireEventObject';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
+import { getKeyboardFireEventObject, renderComponent } from '@/shared/libs';
 
 import Drawer, { DrawerProps, drawerTestIds } from './Drawer';
 
@@ -107,6 +106,11 @@ describe('Drawer component with default props', () => {
 	test('should has style overflow:hidden', () => {
 		const body = document.querySelector('body');
 		expect(body).toHaveStyle('overflow: hidden');
+	});
+
+	test('should have default width 360px when width prop is not provided', () => {
+		const drawer = screen.getByTestId(drawerTestIds.drawer);
+		expect(drawer).toHaveStyle('width: 360px');
 	});
 });
 

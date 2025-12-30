@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Onboarding } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Onboarding } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { Step, Stepper } from '@/shared/ui/Stepper';
@@ -87,7 +86,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 			className={styles['onboarding-modal']}
 		>
 			<Flex direction={isMobileM ? 'column' : 'row'}>
-				<Flex direction={'column'} className={styles['stepper-container']}>
+				<Flex direction="column" className={styles['stepper-container']}>
 					<OnboardingHeader activeStep={activeStepIndex + 1} finalStep={steps.length} />
 					<Stepper
 						steps={steps}
@@ -96,7 +95,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 						isMobile={isMobileM}
 					/>
 				</Flex>
-				<Flex align={'center'} className={styles['active-step-content']}>
+				<Flex align="center" className={styles['active-step-content']}>
 					<StepComponent />
 				</Flex>
 			</Flex>

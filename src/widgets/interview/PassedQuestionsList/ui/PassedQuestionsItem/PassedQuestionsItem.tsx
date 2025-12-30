@@ -1,11 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuiz } from '@/shared/config/i18n/i18nTranslations';
-import { ROUTES } from '@/shared/config/router/routes';
-import { route } from '@/shared/helpers/route';
-import { useCurrentProject, useScreenSize } from '@/shared/hooks';
+import { i18Namespace, InterviewQuiz, ROUTES } from '@/shared/config';
+import { route, useCurrentProject, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';

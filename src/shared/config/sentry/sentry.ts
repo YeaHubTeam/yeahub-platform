@@ -1,4 +1,10 @@
-import * as Sentry from '@sentry/react';
+import {
+	browserTracingIntegration,
+	captureException,
+	init,
+	replayIntegration,
+	setTag,
+} from '@sentry/react';
 
 export function initSentry() {
 	if (!process.env.SENTRY_DSN) {
@@ -8,12 +14,12 @@ export function initSentry() {
 	}
 
 	try {
-		Sentry.init({
+		init({
 			dsn: process.env.SENTRY_DSN,
 			environment: process.env.NODE_ENV || 'development',
 			integrations: [
-				Sentry.browserTracingIntegration(),
-				Sentry.replayIntegration({
+				browserTracingIntegration(),
+				replayIntegration({
 					maskAllText: true,
 					blockAllMedia: true,
 				}),
@@ -85,13 +91,13 @@ export function initSentry() {
 			},
 		});
 
-		Sentry.setTag('device', getDeviceType());
-		Sentry.setTag('os', getOSVersion());
-		Sentry.setTag('session_id', getSessionId());
+		setTag('device', getDeviceType());
+		setTag('os', getOSVersion());
+		setTag('session_id', getSessionId());
 
 		window.onerror = (_unused, source, lineno, colno, error: unknown) => {
 			if (error instanceof Error) {
-				Sentry.captureException(error, {
+				captureException(error, {
 					extra: {
 						source,
 						lineno,
@@ -103,7 +109,7 @@ export function initSentry() {
 		};
 
 		window.onunhandledrejection = (event: PromiseRejectionEvent) => {
-			Sentry.captureException(event.reason, {
+			captureException(event.reason, {
 				extra: {
 					type: 'unhandledrejection',
 				},

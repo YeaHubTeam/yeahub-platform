@@ -1,11 +1,12 @@
-//TODO: change name
+import { ReactNode } from 'react';
+
 export interface Subscription {
 	id: number;
-	icon: React.ReactNode;
+	icon: ReactNode;
 	name: string;
 	description: string;
 	price: number;
-	tooltipBody?: React.ReactNode;
+	tooltipBody?: ReactNode;
 	hasSubscribeButton: boolean;
 	discountedPrice?: number;
 	advantages: { title: string; isActive: boolean }[];

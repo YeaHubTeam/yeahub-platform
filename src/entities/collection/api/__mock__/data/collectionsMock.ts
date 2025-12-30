@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import { Collection } from '@/entities/collection/model/types/collection';
+import { Collection } from '../../../model/types/collection';
 
 export const collectionsMock: Response<Collection[]> = {
 	data: [

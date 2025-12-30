@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import { Specialization } from '@/entities/specialization/model/types/specialization';
+import { Specialization } from '../../../model/types/specialization';
 
 export const specializationsMock: Response<Specialization[]> = {
 	data: [

@@ -1,7 +1,7 @@
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 
-import { Skill } from '@/entities/skill';
+import { Skill } from '../../model/types/skill';
 
 interface SkillListProps {
 	skills: Skill[];

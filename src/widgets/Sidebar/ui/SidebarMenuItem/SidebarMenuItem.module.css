@@ -4,7 +4,7 @@
   align-items: center;
   padding: 10px 12px;
   border-radius: 12px;
-  background-color: transparent;
+  background-color: var(--background-block);
   color: var(--text-color-primary);
   text-decoration: none;
   transition: all 0.3s ease-out;
@@ -128,7 +128,7 @@
 .items {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   margin-top: 0;
   max-height: 0;
   overflow: hidden;

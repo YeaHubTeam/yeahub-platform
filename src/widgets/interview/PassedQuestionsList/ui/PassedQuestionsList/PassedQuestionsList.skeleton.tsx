@@ -1,10 +1,9 @@
 import { CardSkeleton } from '@/shared/ui/Card';
 
-import styles from '@/widgets/interview/PassedQuestionsList/ui/PassedQuestionsList/PassedQuestionsList.module.css';
-
 import { PassedQuestionsItemSkeleton } from '../PassedQuestionsItem/PassedQuestionsItem.skeleton';
 
 import { PassedQuestionsListProps } from './PassedQuestionsList';
+import styles from './PassedQuestionsList.module.css';
 
 export const PassedQuestionsListSkeleton = ({ className }: PassedQuestionsListProps) => {
 	return (

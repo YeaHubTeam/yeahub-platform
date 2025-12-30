@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Skills } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Skills } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Switch } from '@/shared/ui/Switch';
 

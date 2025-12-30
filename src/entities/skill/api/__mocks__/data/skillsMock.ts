@@ -1,6 +1,6 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
 
-import type { PopularSkillsResponse, Skill } from '@/entities/skill/model/types/skill';
+import type { PopularSkillsResponse, Skill } from '../../../model/types/skill';
 
 export const skillsMock: Response<Skill[]> = {
 	data: [

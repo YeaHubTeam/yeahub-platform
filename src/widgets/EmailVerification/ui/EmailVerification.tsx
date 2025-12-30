@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { useAppSelector } from '@/shared/hooks';
+import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 

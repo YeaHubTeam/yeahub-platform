@@ -1,6 +1,6 @@
 import { http, HttpResponse, PathParams } from 'msw';
 
-import { questionsMock } from '@/entities/question/api/__mocks__/data';
+import { questionsMock } from '@/entities/question';
 
 import { createQuestionApiUrls } from '../../model/constants/createQuestionConstants';
 import {

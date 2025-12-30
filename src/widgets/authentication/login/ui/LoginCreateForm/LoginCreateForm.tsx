@@ -7,7 +7,7 @@ import { RegistrationLabel } from '@/entities/auth';
 
 import { LoginForm, TelegramLogin } from '@/features/authentication/login';
 
-import { loginSchema } from '../../model/lib/validation/loginSchema';
+import { loginSchema } from '../../lib/validation/loginSchema';
 import { LoginSchema } from '../../model/types/loginTypes';
 
 import styles from './LoginCreateForm.module.css';

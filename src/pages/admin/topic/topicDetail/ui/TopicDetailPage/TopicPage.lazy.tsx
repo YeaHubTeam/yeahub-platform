@@ -1,3 +1,3 @@
-import { lazy } from 'react';
+// import { lazy } from 'react';
 
-export const TopicPage = lazy(() => import('./TopicPage'));
+// export const TopicPage = lazy(() => import('./TopicPage'));

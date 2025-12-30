@@ -18,8 +18,8 @@ export {
 	useGetPopularQuestionsQuery,
 } from './api/questionApi';
 export { LS_INIT_QUESTION_ID } from './model/constants/question';
-export { getQuestionRoute } from './model/lib/getQuestionRoute';
-export { getQuestionImage } from './model/lib/getQuestionImage';
+export { getQuestionRoute } from '@/entities/question/lib/getQuestionRoute';
+export { getQuestionImage } from '@/entities/question/lib/getQuestionImage';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
@@ -31,7 +31,10 @@ export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
 export { QuestionGradeListSkeleton } from './ui/QuestionGradeList/QuestionGradeList.skeleton';
 export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestionsItem';
 export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
-
+export { QuestionAdditionalInfo } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo';
+export { QuestionAdditionalInfoSkeleton } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo.skeleton';
+export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
+export { ProgressBlockSkeleton } from './ui/ProgressBlock/ProgressBlock.skeleton';
 export { questionsMock } from './api/__mocks__/data';
 
 export { quizHandlers, questionHandlers } from './api/__mocks__/index';
@@ -42,4 +45,9 @@ export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/quest
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
 
-export type { MostDifficultQuestion } from './model/types/question';
+export type { MostDifficultQuestion, GetQuestionsListParamsRequest } from './model/types/question';
+export type {
+	QuestionsFilterParams,
+	QuestionFilterStatus,
+	QuestionFilterOrderBy,
+} from './model/types/filters';

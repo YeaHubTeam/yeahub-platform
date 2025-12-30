@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Specializations } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Specializations } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
@@ -10,7 +9,7 @@ import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 import { Specialization } from '../../model/types/specialization';
 
 export type SpecializationSelectProps = Omit<
-	React.ComponentProps<typeof Dropdown>,
+	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
 	value: number | number[];

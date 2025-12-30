@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useEffect } from 'react';
 
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config';
 
 import { CookiesWarning } from './CookiesWarning';
 
@@ -30,7 +30,7 @@ const meta = {
 
 			return <Story />;
 		},
-		StoreDecorator({}),
+		StoreDecorator({}, {}),
 	],
 	parameters: {
 		layout: 'fullscreen',

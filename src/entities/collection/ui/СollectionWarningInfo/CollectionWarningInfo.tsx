@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useModal } from '@/shared/hooks';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Popover, PopoverTrigger } from '@/shared/ui/Popover';

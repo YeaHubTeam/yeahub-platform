@@ -1,14 +1,12 @@
 import { screen, within } from '@testing-library/react';
 
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
-
-import { AboutSkeleton } from '@/widgets/Landing/AboutQuestionsBlock/ui/About/About.skeleton';
+import { Landing } from '@/shared/config';
+import { useScreenSize, renderComponent } from '@/shared/libs';
 
 import { About } from './About';
+import { AboutSkeleton } from './About.skeleton';
 
-jest.mock('@/shared/hooks', () => ({
+jest.mock('@/shared/libs/dom', () => ({
 	useScreenSize: jest.fn(() => ({
 		isMobileS: false,
 	})),

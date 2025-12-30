@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { InterviewQuizCreate, Questions } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, InterviewQuizCreate, Questions } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Tooltip } from '@/shared/ui/Tooltip';
 

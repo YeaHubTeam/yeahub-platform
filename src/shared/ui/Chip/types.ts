@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 import { TextVariant } from '../Text/types';
 
@@ -13,7 +13,7 @@ export interface ChipProps {
 	prefix?: ReactNode;
 	onClick?: () => void;
 	className?: string;
-	style?: React.CSSProperties;
+	style?: CSSProperties;
 	withText?: number | string;
 	dataTestId?: string;
 }

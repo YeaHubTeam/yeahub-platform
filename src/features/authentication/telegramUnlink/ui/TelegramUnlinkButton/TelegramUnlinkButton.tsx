@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Profile } from '@/shared/config/i18n/i18nTranslations';
-import { useModal } from '@/shared/hooks';
+import { i18Namespace, Profile } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 
 import { useTelegramUnlinkMutation } from '../../api/telegramUnlinkApi';

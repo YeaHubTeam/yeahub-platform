@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config/router/routes';
+import { ROUTES } from '@/shared/config';
 import { AppLogo } from '@/shared/ui/AppLogo';
 // import { ThemeSwitcher } from '@/features/theme/switch-theme';
 import { Icon } from '@/shared/ui/Icon';

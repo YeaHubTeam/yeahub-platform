@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Main } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Main } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -24,7 +23,7 @@ export const SubscribeToMedia = () => {
 				<div className={styles.wrapper}>
 					<Flex gap="8" className={styles['yeahub-container']}>
 						<Icon icon="megaphone" size={20} color="purple-700" aria-hidden="true" />
-						<span className={styles['media-wrapper']}>
+						<span className={styles['socialMedia-wrapper']}>
 							<a href="https://t.me/yeahub" target="_blank" rel="noreferrer">
 								<Text color="purple-700" variant="body2">
 									{t(Main.SUBSCRIBE_MEDIA_YEAHUB_TITLE)}:{' '}
@@ -37,7 +36,7 @@ export const SubscribeToMedia = () => {
 					</Flex>
 					<Flex gap="8" className={styles['yeahub-community-container']}>
 						<Icon icon="yeaHubCommunity" size={20} color="purple-700" aria-hidden="true" />
-						<span className={styles['media-wrapper']}>
+						<span className={styles['socialMedia-wrapper']}>
 							<a href="https://t.me/yeahub_community" target="_blank" rel="noreferrer">
 								<Text color="purple-700" variant="body2">
 									{t(Main.SUBSCRIBE_MEDIA_YEAHUB_COMMUNITY_TITLE)}:{' '}

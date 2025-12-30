@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Landing } from '@/shared/config/i18n/i18nTranslations';
+import { i18Namespace, Landing } from '@/shared/config';
 
 import { CardLayout } from './../CardLayout/CardLayout';
 import { SpecializationBlock } from './SpecializationBlock/SpecializationBlock';

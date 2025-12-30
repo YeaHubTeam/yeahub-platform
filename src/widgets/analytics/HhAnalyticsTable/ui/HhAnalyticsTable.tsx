@@ -2,16 +2,15 @@ import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Analytics } from '@/shared/config/i18n/i18nTranslations';
-import { SelectedEntity } from '@/shared/types/types';
+import { i18Namespace, Analytics } from '@/shared/config';
+import { SelectedEntity } from '@/shared/libs';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './HhAnalyticsTable.module.css';
 
 export type HhAnalyticsMode = 'skills' | 'keywords';
-export type HhAnalyticsRow = SelectedEntity<number> & {
+export type HhAnalyticsRow = SelectedEntity<string> & {
 	index: number;
 	count: number;
 	isTop20: boolean;
@@ -79,6 +78,7 @@ export const HhAnalyticsTable = ({ rows, mode }: HhAnalyticsTableProps) => {
 			renderTableColumnWidths={renderTableColumnWidths}
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
+			hasCopyButton
 		/>
 	);
 };

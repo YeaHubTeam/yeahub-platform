@@ -1,6 +1,5 @@
-import { ApiTags } from '@/shared/config/api/apiTags';
-import { baseApi } from '@/shared/config/api/baseApi';
-import { route } from '@/shared/helpers/route';
+import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { specializationApiUrls } from '../model/constants/specializationConstants';
 import { specializationsProgressApiUrls } from '../model/constants/specializationsProgress';

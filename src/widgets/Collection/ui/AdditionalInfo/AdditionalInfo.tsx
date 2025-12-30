@@ -1,10 +1,9 @@
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { useScreenSize } from '@/shared/hooks';
-import { AuthorInfo } from '@/shared/ui/AuthorInfo/AuthorInfo';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip } from '@/shared/ui/StatusChip';
@@ -16,7 +15,7 @@ import {
 	CollectionCompanyInfo,
 	CollectionQuestionsCount,
 } from '@/entities/collection';
-import { Media, MediaLinksBanner } from '@/entities/media';
+import { Media, MediaLinksBanner } from '@/entities/socialMedia';
 import { SpecializationsList } from '@/entities/specialization';
 
 import styles from './AdditionalInfo.module.css';
@@ -47,7 +46,7 @@ export const AdditionalInfo = ({
 
 	return (
 		<>
-			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
+			<Card className={classnames(className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
 					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700" className={styles.title}>

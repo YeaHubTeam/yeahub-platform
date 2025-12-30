@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { useScreenSize } from '@/shared/hooks';
+import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { SpecializationSelect } from '@/entities/specialization';
 
-import type { HhAnalyticsMode } from '@/features/hhAnalyticsFilters';
-
+import type { HhAnalyticsMode } from '../../model/types/types';
 import { HhAnalyticsModeTabs } from '../HhAnalyticsModeTabs/HhAnalyticsModeTabs';
 
 type HhAnalyticsFiltersProps = {

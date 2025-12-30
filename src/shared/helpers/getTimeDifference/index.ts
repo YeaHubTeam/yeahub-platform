@@ -1,1 +1,0 @@
-export { getTimeDifference } from './getTimeDifference';

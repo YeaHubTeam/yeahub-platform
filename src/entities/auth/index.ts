@@ -10,6 +10,7 @@ export type {
 	TelegramUser,
 	TelegramLoginBodyRequest,
 	TelegramLoginResponse,
+	TelegramLoginError,
 } from './model/types/auth';
 export { listAdminRoles } from './model/constants/authConstants';
 export { authApi } from './api/authApi';

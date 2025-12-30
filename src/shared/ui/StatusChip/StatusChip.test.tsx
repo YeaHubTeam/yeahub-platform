@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 
-import { renderComponent } from '@/shared/libs/jest/renderComponent/renderComponent';
-import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/model/constants';
+import { renderComponent } from '@/shared/libs';
+import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/constants';
 import { StatusChip, StatusChipVariant } from '@/shared/ui/StatusChip/StatusChip';
 
 const testVariants = Object.keys(statusChipVariants) as StatusChipVariant[];

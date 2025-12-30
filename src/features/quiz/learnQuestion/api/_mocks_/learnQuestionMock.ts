@@ -1,9 +1,6 @@
 import { http, HttpResponse, PathParams } from 'msw';
 
-import {
-	LearnQuestionParams,
-	LearnQuestionResponse,
-} from '@/features/quiz/learnQuestion/model/types/learnQuestionTypes';
+import { LearnQuestionParams, LearnQuestionResponse } from '../../model/types/learnQuestionTypes';
 
 export const learnQuestionMock = http.put<
 	PathParams,

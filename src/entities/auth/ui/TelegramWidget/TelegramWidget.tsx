@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { TelegramUser } from '@/entities/auth';
-import { BOT_NAME, DEFAULT_SETTINGS } from '@/entities/auth/model/constants/telegramConstants';
+import { BOT_NAME, DEFAULT_SETTINGS } from '../../model/constants/telegramConstants';
+import { TelegramUser } from '../../model/types/auth';
 
 interface TelegramWidgetProps {
 	onTelegramAuth: (user: TelegramUser) => void;

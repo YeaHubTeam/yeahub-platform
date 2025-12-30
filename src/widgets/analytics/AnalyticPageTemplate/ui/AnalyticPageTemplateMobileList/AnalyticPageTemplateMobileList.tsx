@@ -28,12 +28,12 @@ export const AnalyticPageTemplateMobileList = ({ items }: AnalyticPageTemplateMo
 								/>
 							)}
 							{item.imageSrc && <ImageWithWrapper src={item.imageSrc} className={styles.icon} />}
-							<Text variant={'body3-accent'}>{item.title}</Text>
+							<Text variant="body3-accent">{item.title}</Text>
 							{item.fields.map((field) => (
 								<>
 									<Flex justify="between">
-										<Text variant={'body3-accent'}>{field.label}</Text>
-										<Text variant={'body3-accent'}>{field.value}</Text>
+										<Text variant="body3-accent">{field.label}</Text>
+										<Text variant="body3-accent">{field.value}</Text>
 									</Flex>
 								</>
 							))}

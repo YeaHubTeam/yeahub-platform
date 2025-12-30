@@ -2,15 +2,14 @@ import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-import { i18Namespace } from '@/shared/config/i18n';
-import { Collections } from '@/shared/config/i18n/i18nTranslations';
-import { FilterFromUser, useScreenSize } from '@/shared/hooks';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
-import { EmptyFilterStub } from '@/shared/ui/EmptyFilterStub';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
-import { Collection } from '@/entities/collection';
+import { Collection, CollectionsFilterParams } from '@/entities/collection';
 
 import { CollectionsList } from '../CollectionsList/CollectionsList';
 
@@ -20,22 +19,28 @@ interface CollectionsProps {
 	pagination: ReactNode;
 	banner?: ReactNode;
 	collections: Collection[];
-	filter: FilterFromUser;
+	filter: CollectionsFilterParams;
 	resetFilters: () => void;
 	renderDrawer: () => ReactNode;
+	hasFilters: boolean;
 }
 
 export const CollectionsContent = ({
 	collections,
 	pagination,
-	filter,
 	resetFilters,
 	renderDrawer,
 	banner,
+	hasFilters,
 }: CollectionsProps) => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isSmallScreen } = useScreenSize();
 	const { search } = useLocation();
+
+	const showEmptyCollectionsStub = collections.length === 0 && !hasFilters;
+	const showFilterEmptyStub = collections.length === 0 && hasFilters;
+	const showCollectionsList = collections.length > 0;
+
 	return (
 		<div className={styles['main-info-wrapper']}>
 			<Card className={styles.content}>
@@ -46,11 +51,22 @@ export const CollectionsContent = ({
 					{isSmallScreen && renderDrawer()}
 				</Flex>
 				<Flex direction="column" gap="20">
-					<CollectionsList collections={collections} queryFilter={search} />
-					{banner}
-					{pagination}
-					{collections.length === 0 && (
-						<EmptyFilterStub text={filter?.title} resetFilters={resetFilters} />
+					{showEmptyCollectionsStub && (
+						<Stub
+							type="empty"
+							title={t(Collections.STUB_EMPTY_TITLE)}
+							subtitle={t(Collections.STUB_EMPTY_SUBTITLE)}
+						/>
+					)}
+
+					{showFilterEmptyStub && <Stub type="filter-empty" onClick={resetFilters} />}
+
+					{showCollectionsList && (
+						<>
+							<CollectionsList collections={collections} queryFilter={search} />
+							{banner}
+							{pagination}
+						</>
 					)}
 				</Flex>
 			</Card>

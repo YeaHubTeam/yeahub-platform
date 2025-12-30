@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { ForgotPasswordForm } from '@/features/authentication/forgotPassword';
 
-import { forgotPasswordSchema } from '../../model/lib/validation/forgotPasswordSchema';
+import { forgotPasswordSchema } from '../../lib/validation/forgotPasswordSchema';
 import { ForgotPasswordSchema } from '../../model/types/forgotPasswordTypes';
 
 interface ForgotPasswordProps {

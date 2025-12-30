@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-import { useCurrentProject, useScreenSize } from '@/shared/hooks';
+import { useCurrentProject, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Text } from '@/shared/ui/Text';
 
-import { getQuestionRoute } from '../../model/lib/getQuestionRoute';
+import { getQuestionRoute } from '../../lib/getQuestionRoute';
 import { QuestionGradeList } from '../QuestionGradeList/QuestionGradeList';
 
 import styles from './PreviewQuestionsItem.module.css';

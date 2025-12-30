@@ -33,6 +33,7 @@
 		"__IS_DEV__": true
 	},
 	"rules": {
+		"linebreak-style": ["error", "unix"],
 		"prettier/prettier": ["error"],
 		"react/function-component-definition": [
 			2,
@@ -69,6 +70,12 @@
 		"react/react-in-jsx-scope": "off",
 		"padding-line-between-statements": "error",
 		"@conarti/feature-sliced/absolute-relative": "off",
-		"import/order": "warn"
+		"import/order": "warn",
+		"@conarti/feature-sliced/layers-slices": "warn",
+		"react/jsx-curly-brace-presence": ["error", "never"],
+		// TODO исправить на ошибку
+		"react/jsx-max-depth": ["warn", { "max": 5 }],
+		// TODO исправить на ошибку
+		"react-hooks/exhaustive-deps": "warn"
 	}
 }

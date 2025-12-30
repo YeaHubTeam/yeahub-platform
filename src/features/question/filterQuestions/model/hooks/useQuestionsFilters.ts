@@ -1,6 +1,6 @@
-import { useQueryFilterParams } from '@/shared/hooks';
+import { useQueryFilterParams } from '@/shared/libs';
 
-import { QuestionsFilterParams } from '../types/filters';
+import { QuestionsFilterParams } from '@/entities/question';
 
 import { useGetQuestionsFilterParams } from './useGetQuestionsFilterParams';
 

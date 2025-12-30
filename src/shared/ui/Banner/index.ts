@@ -1,2 +1,2 @@
-export { Banner } from './ui/Banner';
-export { BannerSkeleton } from './ui/Banner.skeleton';
+export { Banner } from './Banner';
+export { BannerSkeleton } from './Banner.skeleton';
