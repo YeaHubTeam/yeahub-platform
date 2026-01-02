@@ -16,7 +16,7 @@ export type ProfileSchema = yup.InferType<typeof editProfileSchema>;
  * @param email        - Required. The user's email address.
  * @param location     - Optional. The user's location, e.g., "Moscow, Russia." (optional)
  * @param skillLevel   - Optional. The user's skill level, e.g., "Junior," "Mid," "Senior." (optional)
- * @param socialNerworks  - Optional. Links to the user's social socialMedia profiles. (optional)
+ * @param socialNerworks  - Optional. Links to the user's social media profiles. (optional)
  *  @param aboutMe      - Optional. A short biography or information about the user. (optional)
  * @param skills       - Optional. A list of the user's skills. (optional)
  */
