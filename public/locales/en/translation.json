@@ -341,7 +341,37 @@
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",
-				"failed": "Collection could not be created"
+				"failed": "Collection could not be created",
+				"user": {
+					"id": {
+						"not.found": "User not found"
+					}
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"collection": {
+					"user": {
+						"deleted": "User is soft deleted"
+					},
+					"create": {
+						"conflict": "A collection with the same parameters already exists."
+					}
+				}
 			},
 			"delete": {
 				"single": {

@@ -264,6 +264,14 @@ export enum Translation {
 	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
 	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
 	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
+	TOAST_COLLECTIONS_CREATE_USER_ID_NOT_FOUND = 'toast.collections.create.user.id.not.found',
+	TOAST_COLLECTIONS_CREATE_AUTH_UNAUTHORIZED = 'toast.collections.create.auth.unauthorized',
+	TOAST_COLLECTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.collections.create.auth.user.verified',
+	TOAST_COLLECTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.collections.create.auth.roles.admin.or.author.required',
+	TOAST_COLLECTIONS_CREATE_TINIFY_COMPRESS_FAILED = 'toast.collections.create.tinify.compress.failed',
+	TOAST_COLLECTIONS_CREATE_TINIFY_RESIZE_FAILED = 'toast.collections.create.tinify.resize.failed',
+	TOAST_COLLECTIONS_CREATE_COLLECTION_USER_DELETED = 'toast.collections.create.collection.user.deleted',
+	TOAST_COLLECTIONS_CREATE_COLLECTION_CREATE_CONFLICT = 'toast.collections.create.collection.create.conflict',
 }
 
 export enum Profile {
