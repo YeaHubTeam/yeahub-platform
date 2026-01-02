@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config';
 import { SelectedAdminEntities } from '@/shared/libs';
 
-import { deleteMultipleSkillsThunk } from '@/features/skill/deleteSkills';
-
+import { deleteMultipleSkillsThunk } from '../../lib/thunks/deleteMultipleSkillsThunk';
 import { SkillsPageState } from '../types/skillsPageTypes';
 
 const initialState: SkillsPageState = {

@@ -10,9 +10,9 @@ import {
 } from '@/entities/profile';
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 
-import { InfoBlock } from '@/widgets/Profile/InfoBlock';
-import { SkillsBlock } from '@/widgets/Profile/SkillsBlock';
-import { UserBlock } from '@/widgets/Profile/UserBlock';
+import { InfoBlock } from '@/widgets/Profile/Info';
+import { SkillsBlock } from '@/widgets/Profile/Skills';
+import { UserBlock } from '@/widgets/Profile/User';
 
 import styles from './ProfilePage.module.css';
 

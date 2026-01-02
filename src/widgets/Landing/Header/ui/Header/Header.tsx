@@ -1,9 +1,14 @@
+import React from 'react';
+
 import { ROUTES } from '@/shared/config';
 import { LS_ACCESS_TOKEN_KEY, getFromLS } from '@/shared/libs';
 import { AppLogo } from '@/shared/ui/AppLogo';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useProfileQuery } from '@/entities/auth';
+
+import { LanguageSwitcher } from '@/features/internationalization/switch-language';
+import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
 import { HeaderAuth } from '../HeaderAuth/HeaderAuth';
 import { HeaderNav } from '../HeaderNav/HeaderNav';
@@ -12,6 +17,9 @@ import styles from './Header.module.css';
 import { HeaderSkeleton } from './Header.skeleton';
 
 export const Header = () => {
+	const showThemeButton = false;
+	const showLanguageButton = false;
+
 	const { isLoading } = useProfileQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const logoNavigateTo = accessToken ? ROUTES.platformRoute : ROUTES.appRoute;
@@ -25,6 +33,8 @@ export const Header = () => {
 					<AppLogo navigateTo={logoNavigateTo} />
 					<HeaderNav />
 				</Flex>
+				{showThemeButton && <ThemeSwitcher />}
+				{showLanguageButton && <LanguageSwitcher />}
 				<HeaderAuth />
 			</Flex>
 		</header>

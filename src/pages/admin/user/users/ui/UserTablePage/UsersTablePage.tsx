@@ -5,10 +5,10 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetUsersListQuery } from '@/entities/user';
 
-import { UsersFilters, useUsersFilters } from '@/features/user/filterUsers';
-
 import { SearchSection } from '@/widgets/SearchSection';
 
+import { useUsersFilters } from '../../lib/hooks/useUsersFilters';
+import { UsersFilters } from '../UsersFilters/UsersFilters';
 import { UsersTable } from '../UsersTable/UsersTable';
 
 import styles from './UsersTablePage.module.css';

@@ -19,9 +19,9 @@ import {
 	useGetResourcesListQuery,
 } from '@/entities/resource';
 
-import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
+import { ResourcesFilters, useResourcesFilters } from '@/features/resource/filterResources';
 
-import { ResourcesList } from '@/widgets/Marketplace';
+import { ResourcesList } from '@/widgets/resources/RecourcesList';
 
 import styles from './ResourcesPage.module.css';
 import { ResourcesPageSkeleton } from './ResourcesPage.skeleton';

@@ -8,16 +8,13 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { getUserId } from '@/entities/profile';
 import { useGetSpecializationsListQuery } from '@/entities/specialization';
 
-import { DeleteSpecializationsButton } from '@/features/specialization/deleteSpecializations';
-import {
-	SpecializationsFilters,
-	useSpecializationsFilters,
-} from '@/features/specialization/filterSpecializations';
-
 import { SearchSection } from '@/widgets/SearchSection';
 
+import { useSpecializationsFilters } from '../../lib/hooks/useSpecializationsFilters';
 import { getSelectedSpecializations } from '../../model/selectors/specializationsPageSelectors';
 import { specializationsPageActions } from '../../model/slices/specializationsPageSlice';
+import { DeleteSpecializationsButton } from '../DeleteSpecializationsButton/DeleteSpecializationsButton';
+import { SpecializationsFilters } from '../SpecializationsFilters/SpecializationsFilters';
 import { SpecializationsTable } from '../SpecializationsTable/SpecializationsTable';
 
 import styles from './SpecializationsPage.module.css';

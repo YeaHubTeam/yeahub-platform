@@ -7,10 +7,7 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import {
-	CollectionsFilters,
-	useCollectionsFilters,
-} from '@/features/collections/filterCollections';
+import { CollectionsFilters, useCollectionsFilters } from '@/features/collection/filterCollections';
 
 import { CollectionsContent, InterviewRecordingsBanner } from '@/widgets/Collection';
 

@@ -11,7 +11,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getHasPremiumAccess } from '@/entities/profile';
 
-import { Logout } from '@/features/authentication/logout';
+import { LogoutButton } from '@/widgets/Header/ui/LogoutButton/LogoutButton';
 
 import { UserPreferencesHeader } from '../UserPreferencesHeader/UserPreferencesHeader';
 
@@ -43,7 +43,7 @@ export const UserPreferences = () => {
 			},
 		},
 		{
-			renderComponent: () => <Logout />,
+			renderComponent: () => <LogoutButton />,
 		},
 	];
 

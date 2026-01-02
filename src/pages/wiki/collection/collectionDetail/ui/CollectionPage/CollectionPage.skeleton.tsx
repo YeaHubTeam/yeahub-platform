@@ -3,7 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import { CollectionNavigationButtonsSkeleton } from '@/features/collections/navigateCollection';
+import { CollectionNavigationButtonsSkeleton } from '@/features/collection/navigateCollection';
 
 import {
 	AdditionalInfoSkeleton,

@@ -23,7 +23,6 @@ import { Translation, i18n, ROUTES } from '@/shared/config';
 
 import { listAdminRoles, RoleName } from '@/entities/auth';
 
-import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate';
@@ -294,10 +293,6 @@ export const router = createBrowserRouter([
 			{
 				path: '*',
 				element: <Error404Page />,
-			},
-			{
-				path: 'test',
-				element: <CollectionBlock />,
 			},
 			{
 				path: ROUTES.resources.route,

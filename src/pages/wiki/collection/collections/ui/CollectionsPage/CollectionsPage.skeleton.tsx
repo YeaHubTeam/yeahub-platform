@@ -1,7 +1,7 @@
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { CollectionsFiltersSkeleton } from '@/features/collections/filterCollections';
+import { CollectionsFiltersSkeleton } from '@/features/collection/filterCollections';
 
 import { CollectionsContentSkeleton } from '@/widgets/Collection';
 

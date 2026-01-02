@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config';
 import { SelectedAdminEntities } from '@/shared/libs';
 
-import { deleteMultipleQuestionsThunk } from '@/features/question/deleteQuestions';
-
+import { deleteMultipleQuestionsThunk } from '../../lib/thunks/deleteMultipleQuestionsThunk';
 import { QuestionsTablePageState } from '../types/questionsTablePageTypes';
 
 export const initialState: QuestionsTablePageState = {

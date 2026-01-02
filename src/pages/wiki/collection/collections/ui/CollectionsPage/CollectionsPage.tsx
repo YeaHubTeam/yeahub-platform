@@ -8,10 +8,7 @@ import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getSpecializationId } from '@/entities/profile';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 
-import {
-	CollectionsFilters,
-	useCollectionsFilters,
-} from '@/features/collections/filterCollections';
+import { CollectionsFilters, useCollectionsFilters } from '@/features/collection/filterCollections';
 
 import { CollectionsContent, InterviewRecordingsBanner } from '@/widgets/Collection';
 

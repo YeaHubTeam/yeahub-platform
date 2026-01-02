@@ -6,7 +6,7 @@ import { useAppSelector } from '@/shared/libs';
 import { useGetCompanyByIdQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
-import { CompanyEditForm } from '@/features/company/editCompany';
+import { CompanyEditForm } from '../CompanyEditForm/CompanyEditForm';
 
 const CompanyEditPage = () => {
 	const { companyId } = useParams<{ companyId: string }>();

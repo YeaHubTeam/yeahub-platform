@@ -7,7 +7,7 @@ import { useAppSelector } from '@/shared/libs';
 import { getIsVerified } from '@/entities/profile';
 import { useGetResourceRequestByIdQuery } from '@/entities/resource';
 
-import { ResourceRequestEditForm } from '@/features/resources/editResourceRequest';
+import { ResourceRequestEditForm } from '@/features/resource/editResourceRequest';
 
 const RequestResourceEditPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();

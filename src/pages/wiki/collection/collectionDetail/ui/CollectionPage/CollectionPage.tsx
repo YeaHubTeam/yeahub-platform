@@ -14,13 +14,12 @@ import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
-import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
+import { useGetCollectionsFilterParams } from '@/features/collection/filterCollections';
 import {
 	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
 	useCollectionNavigation,
-} from '@/features/collections/navigateCollection';
-import { TrainCollectionButton } from '@/features/collections/trainCollection';
+} from '@/features/collection/navigateCollection';
 
 import {
 	AdditionalInfo,
@@ -28,6 +27,8 @@ import {
 	CollectionBody,
 	CollectionHeader,
 } from '@/widgets/Collection';
+
+import { TrainCollectionButton } from '../TrainCollectionButton/TrainCollectionButton';
 
 import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';

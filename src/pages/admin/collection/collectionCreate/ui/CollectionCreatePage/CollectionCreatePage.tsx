@@ -1,4 +1,4 @@
-import { CollectionCreateForm } from '@/features/collections/createCollection';
+import { CollectionCreateForm } from '../CollectionCreateForm/CollectionCreateForm';
 
 const CollectionCreatePage = () => {
 	return (

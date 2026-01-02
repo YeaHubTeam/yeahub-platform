@@ -7,12 +7,12 @@ import { Flex } from '@/shared/ui/Flex';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetHhTopBySpecQuery } from '@/entities/hh';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import { HhAnalyticsFilters, useHhAnalyticsFilters } from '@/features/hhAnalyticsFilters';
-
-import { HhAnalyticsRow, HhAnalyticsTable } from '@/widgets/analytics/HhAnalyticsTable';
+import { HhAnalyticsRow, HhAnalyticsTable } from '..//HhAnalyticsTable/HhAnalyticsTable';
+import { useGetHhTopBySpecQuery } from '../../api/hh';
+import { useHhAnalyticsFilters } from '../../lib/hooks/useHhAnalyticsFilters';
+import { HhAnalyticsFilters } from '../HhAnalyticsFilters/HhAnalyticsFilters';
 
 import { HhAnalyticsPageSkeleton } from './HhAnalyticsPage.skeleton';
 

@@ -6,7 +6,7 @@ import { useAppSelector } from '@/shared/libs';
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
-import { QuestionEditForm } from '@/features/question/editQuestion';
+import { QuestionEditForm } from '../QuestionEditForm/QuestionEditForm';
 
 const QuestionEditPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();

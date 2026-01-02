@@ -1,4 +1,4 @@
-import { ResourceCreateForm } from '@/features/resources/createResource';
+import { ResourceCreateForm } from '../ResourceCreateForm/ResourceCreateForm';
 
 const ResourceCreatePage = () => <ResourceCreateForm />;
 

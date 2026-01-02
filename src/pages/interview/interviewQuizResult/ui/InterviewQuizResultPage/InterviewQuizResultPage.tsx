@@ -6,15 +6,14 @@ import { Flex } from '@/shared/ui/Flex';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuizByProfileIdQuery } from '@/entities/quiz';
 
-import { CloneQuizButton } from '@/features/quiz/cloneQuiz';
-
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
-import { QuizAdditionalInfo } from '@/widgets/interview/QuizAdditionalInfo';
 import { QuizQuestionsInfo } from '@/widgets/interview/QuizzesStatistic';
 
-import { InterviewQuizResultPageSkeleton } from '@/pages/interview/interviewQuizResult';
+import { CloneQuizButton } from '../CloneQuizButton/CloneQuizButton';
+import { QuizAdditionalInfo } from '../QuizAdditionalInfo/QuizAdditionalInfo';
 
 import styles from './InterviewQuizResultPage.module.css';
+import { InterviewQuizResultPageSkeleton } from './InterviewQuizResultPage.skeleton';
 
 const InterviewQuizResultPage = () => {
 	const hasPremium = useAppSelector(getHasPremiumAccess);

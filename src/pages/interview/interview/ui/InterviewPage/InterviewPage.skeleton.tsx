@@ -1,10 +1,11 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { InterviewPreparationSkeleton } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesListSkeleton } from '@/widgets/interview/PassedQuizzesList';
-import { PreviewCollectionsListSkeleton } from '@/widgets/interview/PreviewCollectionsList';
 import { PreviewQuestionsStatisticsSkeleton } from '@/widgets/interview/QuestionsStatistic';
 import { PreviewQuestionsListSkeleton } from '@/widgets/question/QuestionsList';
+
+import { InterviewPreparationSkeleton } from '../InterviewPreparation/InterviewPreparation.skeleton';
+import { PreviewCollectionsListSkeleton } from '../PreviewCollectionsList/PreviewCollectionsList.skeleton';
 
 import styles from './InterviewPage.module.css';
 

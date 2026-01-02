@@ -1,12 +1,13 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { MostDifficultQuestionsWidgetSkeleton } from '@/widgets/analytics/MostDifficultQuestionsWidget';
-import { PopularQuestionsWidgetSkeleton } from '@/widgets/analytics/PopularQuestionsWidget';
-import { PopularSkillsWidgetSkeleton } from '@/widgets/analytics/PopularSkillsWidget';
-import { SkillsProficiencyWidgetSkeleton } from '@/widgets/analytics/SkillsProficiencyWidget';
-import { SpecializationProgressWidgetSkeleton } from '@/widgets/analytics/SpecializationProgressWidget';
-import { UsersRatingWidgetSkeleton } from '@/widgets/analytics/UsersRatingWidget';
+import { MostDifficultQuestionsWidgetSkeleton } from '../MostDifficultQuestionsWidget/MostDifficultQuestionsWidget.skeleton';
+import { PopularQuestionsWidgetSkeleton } from '../PopularQuestionsWidget/PopularQuestionsWidget.skeleton';
+import { PopularSkillsWidgetSkeleton } from '../PopularSkillsWidget/PopularSkillsWidget.skeleton';
+import { SkillsProficiencyWidgetSkeleton } from '../SkillsProficiencyWidget/SkillsProficiencyWidget.skeleton';
+import { SpecializationProgressWidgetSkeleton } from '../SpecializationProgressWidget/SpecializationProgressWidget.skeleton';
+
+// import { UsersRatingWidgetSkeleton } from '../UsersRatingWidget/UsersRatingWidget.skeleton';
 
 export const AnalyticsPageSkeleton = () => {
 	const { isSmallScreen, isLaptop, isTablet } = useScreenSize();
@@ -14,7 +15,7 @@ export const AnalyticsPageSkeleton = () => {
 	return (
 		<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">
 			<Flex direction="column" gap="20" maxWidth={isSmallScreen}>
-				<UsersRatingWidgetSkeleton />
+				{/*<UsersRatingWidgetSkeleton />*/}
 				<Flex direction={isTablet || isLaptop ? 'row' : 'column'} gap="20" maxWidth={isSmallScreen}>
 					<SkillsProficiencyWidgetSkeleton />
 					<MostDifficultQuestionsWidgetSkeleton />

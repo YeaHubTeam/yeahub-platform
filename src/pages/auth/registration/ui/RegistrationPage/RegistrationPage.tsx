@@ -1,4 +1,4 @@
-import { UserCreateForm } from '@/widgets/authentication/registration';
+import { UserCreateForm } from '../UserCreateForm/UserCreateForm';
 
 import styles from './RegistrationPage.module.css';
 

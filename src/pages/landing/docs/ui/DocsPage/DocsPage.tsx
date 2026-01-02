@@ -1,4 +1,4 @@
-import { DocsList } from '@/widgets/Docs/DocsBlock';
+import { DocsList } from '../DocsList/DocsList';
 
 import styles from './DocsPage.module.css';
 

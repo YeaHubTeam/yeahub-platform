@@ -13,7 +13,7 @@ import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
 
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
+import { DeleteResourceButton } from '@/features/resource/deleteResource';
 
 const SPECIALIZATION_SHOW_COUNT = 2;
 

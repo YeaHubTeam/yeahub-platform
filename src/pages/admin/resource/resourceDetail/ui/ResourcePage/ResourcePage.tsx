@@ -14,8 +14,8 @@ import {
 	ResourceAdditionalInfo,
 } from '@/entities/resource';
 
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
-import { ResourceEditButton } from '@/features/resources/editResource';
+import { DeleteResourceButton } from '@/features/resource/deleteResource';
+import { ResourceEditButton } from '@/features/resource/editResource';
 
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';

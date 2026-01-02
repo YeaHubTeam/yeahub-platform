@@ -10,11 +10,12 @@ import {
 import { useGetQuestionsListQuery } from '@/entities/question';
 import { useGetActiveQuizQuery, useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
-import { InterviewPreparation } from '@/widgets/interview/InterviewPreparation';
 import { PreviewPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
-import { PreviewCollectionsList } from '@/widgets/interview/PreviewCollectionsList';
 import { PreviewQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
 import { PreviewQuestionsList } from '@/widgets/question/QuestionsList';
+
+import { InterviewPreparation } from '../InterviewPreparation/InterviewPreparation';
+import { PreviewCollectionsList } from '../PreviewCollectionsList/PreviewCollectionsList';
 
 import styles from './InterviewPage.module.css';
 import { InterviewPageSkeleton } from './InterviewPage.skeleton';

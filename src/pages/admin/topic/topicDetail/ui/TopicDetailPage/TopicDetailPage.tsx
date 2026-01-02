@@ -5,9 +5,11 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetTopicByIdQuery, TopicAdditionalInfo, TopicCard } from '@/entities/topic';
 
+import { DeleteTopicButton } from '@/features/topic/deleteTopic';
+
 const TopicDetailPage = () => {
 	const { topicId } = useParams<{ topicId: string }>();
-	const { data: topic } = useGetTopicByIdQuery(topicId!);
+	const { data: topic } = useGetTopicByIdQuery(Number(topicId!));
 
 	if (!topic) {
 		return null;
@@ -17,6 +19,9 @@ const TopicDetailPage = () => {
 		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackButton />
+				<Flex gap="16">
+					<DeleteTopicButton topicId={Number(topicId!)} />
+				</Flex>
 			</Flex>
 
 			<Flex gap="20" direction="row">

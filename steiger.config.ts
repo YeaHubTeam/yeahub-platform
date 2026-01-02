@@ -3,22 +3,16 @@ import { defineConfig } from 'steiger';
 
 export default defineConfig([
 	...fsd.configs.recommended,
-	{
-		files: ['./src/**'],
-		rules: {
-			'fsd/insignificant-slice': 'off',
-		},
-	},
+	// {
+	// 	files: ['./src/**'],
+	// 	rules: {
+	// 		'fsd/insignificant-slice': 'off',
+	// 	},
+	// },
 	{
 		files: ['./src/app/**'],
 		rules: {
 			'fsd/no-public-api-sidestep': 'off',
-		},
-	},
-	{
-		files: ['./src/widgets/**'],
-		rules: {
-			'fsd/repetitive-naming': 'warn',
 		},
 	},
 	{

@@ -5,9 +5,9 @@ import { IconSkeleton } from '@/shared/ui/Icon';
 import { TablePaginationSkeleton } from '@/shared/ui/TablePagination';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { ResourcesFiltersSkeleton } from '@/features/resources/filterResources';
+import { ResourcesFiltersSkeleton } from '@/features/resource/filterResources';
 
-import { ResourcesListSkeleton } from '@/widgets/Marketplace';
+import { ResourcesListSkeleton } from '@/widgets/resources/RecourcesList';
 
 import styles from './ResourcesPage.module.css';
 

@@ -8,7 +8,7 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { SelectedResourceRequestEntities, useGetResourceRequestsQuery } from '@/entities/resource';
 
-import { useResourceRequestsFilters } from '@/features/resources/filterResourceRequests';
+import { useResourceRequestsFilters } from '@/features/resource/filterResourceRequests';
 
 import { SearchSection } from '@/widgets/SearchSection';
 

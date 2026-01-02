@@ -7,12 +7,13 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { getIsVerified } from '@/entities/profile';
 
-import { MostDifficultQuestionsWidget } from '@/widgets/analytics/MostDifficultQuestionsWidget';
-import { PopularQuestionsWidget } from '@/widgets/analytics/PopularQuestionsWidget';
-import { PopularSkillsWidget } from '@/widgets/analytics/PopularSkillsWidget';
-import { SkillsProficiencyWidget } from '@/widgets/analytics/SkillsProficiencyWidget';
-import { SpecializationProgressWidget } from '@/widgets/analytics/SpecializationProgressWidget';
-// import { UsersRatingWidget } from '@/widgets/analytics/UsersRatingWidget';
+import { MostDifficultQuestionsWidget } from '../MostDifficultQuestionsWidget/MostDifficultQuestionsWidget';
+import { PopularQuestionsWidget } from '../PopularQuestionsWidget/PopularQuestionsWidget';
+import { PopularSkillsWidget } from '../PopularSkillsWidget/PopularSkillsWidget';
+import { SkillsProficiencyWidget } from '../SkillsProficiencyWidget/SkillsProficiencyWidget';
+import { SpecializationProgressWidget } from '../SpecializationProgressWidget/SpecializationProgressWidget';
+
+// import { UsersRatingWidget } from '../UsersRatingWidget/UsersRatingWidget';
 
 export const AnalyticsPage = () => {
 	const { isSmallScreen, isLaptop, isTablet } = useScreenSize();

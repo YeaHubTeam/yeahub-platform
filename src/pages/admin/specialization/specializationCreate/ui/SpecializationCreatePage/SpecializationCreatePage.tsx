@@ -1,4 +1,4 @@
-import { SpecializationCreateForm } from '@/features/specialization/createSpecialization';
+import { SpecializationCreateForm } from '../SpecializationCreateForm/SpecializationCreateForm';
 
 const SpecializationCreatePage = () => {
 	return <SpecializationCreateForm />;

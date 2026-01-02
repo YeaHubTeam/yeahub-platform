@@ -5,9 +5,9 @@ import { IconSkeleton } from '@/shared/ui/Icon';
 import { TablePaginationSkeleton } from '@/shared/ui/TablePagination';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { ResourcesFiltersSkeleton } from '@/features/resources/filterResources';
+import { ResourcesFiltersSkeleton } from '@/features/resource/filterResources';
 
-import { ResourcesListSkeleton } from '@/widgets/Marketplace';
+import { MyResourcesListSkeleton } from '../MyRecourcesList/MyResourcesList.skeleton';
 
 import styles from './MyResourcesPage.module.css';
 
@@ -24,7 +24,7 @@ export const MyResourcesPageSkeleton = () => {
 						<IconSkeleton size={28} />
 					</Flex>
 				</Flex>
-				<ResourcesListSkeleton />
+				<MyResourcesListSkeleton />
 				<TablePaginationSkeleton />
 			</Card>
 			<Card className={styles.filters}>

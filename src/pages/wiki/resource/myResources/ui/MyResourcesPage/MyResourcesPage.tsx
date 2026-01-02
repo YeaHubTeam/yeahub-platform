@@ -19,9 +19,9 @@ import { ResourceRequestStatus, useGetMyRequestsResourcesQuery } from '@/entitie
 import {
 	ResourceRequestsFilters,
 	useResourceRequestsFilters,
-} from '@/features/resources/filterResourceRequests';
+} from '@/features/resource/filterResourceRequests';
 
-import { MyResourcesList } from '@/widgets/Marketplace';
+import { MyResourcesList } from '../MyRecourcesList/MyResourcesList';
 
 import styles from './MyResourcesPage.module.css';
 import { MyResourcesPageSkeleton } from './MyResourcesPage.skeleton';

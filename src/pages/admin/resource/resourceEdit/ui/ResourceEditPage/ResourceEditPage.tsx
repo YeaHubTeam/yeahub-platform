@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { useGetResourceByIdQuery } from '@/entities/resource';
 
-import { ResourceEditForm } from '@/features/resources/editResource';
+import { ResourceEditForm } from '@/features/resource/editResource';
 
 const ResourceEditPage = () => {
 	const { resourceId } = useParams<{ resourceId: string }>();
