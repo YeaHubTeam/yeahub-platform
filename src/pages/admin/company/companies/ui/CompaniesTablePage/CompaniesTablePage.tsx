@@ -24,7 +24,7 @@ const CompaniesTablePage = () => {
 	const selectedCompanies = useAppSelector(getSelectedCompanies);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
-	const { filters, onChangePage, onChangeTitle, onResetFilters, onChangeIsMy } =
+	const { filters, hasFilters, onChangePage, onChangeTitle, onResetFilters, onChangeIsMy } =
 		useCompaniesFilters({ page: 1 });
 
 	const userId = useAppSelector(getUserId);
@@ -37,7 +37,7 @@ const CompaniesTablePage = () => {
 		page: filters.page,
 		limit: 10,
 		titleOrLegalNameOrDescriptionSearch: filters.title,
-		userId: filters.isMy ? userId : undefined,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const companiesWithEditFlags = useMemo(() => {
@@ -58,6 +58,7 @@ const CompaniesTablePage = () => {
 				to="create"
 				onSearch={onChangeTitle}
 				searchValue={filters.title}
+				hasFilters={hasFilters}
 				showRemoveButton={selectedCompanies.length > 0}
 				renderRemoveButton={() => <DeleteCompaniesButton companiesToRemove={selectedCompanies} />}
 				renderFilter={() => <CompaniesFilters filters={filters} onChangeIsMy={onChangeIsMy} />}

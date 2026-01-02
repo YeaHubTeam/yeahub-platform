@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Companies } from '@/shared/config';
-import { useCurrentProject } from '@/shared/libs/app/useCurrentProject';
+import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Switch } from '@/shared/ui/Switch';
 
