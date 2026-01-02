@@ -1,9 +1,9 @@
-import { AboutQuestionsBlock } from '@/widgets/Landing/AboutQuestionsBlock';
-import { BannerBlock } from '@/widgets/Landing/BannerBlock';
-import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
-import { HistoryBlock } from '@/widgets/Landing/HistoryBlock';
-import { InterviewTrainerBlock } from '@/widgets/Landing/InterviewTrainerBlock';
-import { SpecializationBlock } from '@/widgets/Landing/SpecialityBlock';
+import { AboutQuestionsBlock } from '../AboutQuestionsBlock/AboutQuestionsBlock';
+import { BannerBlock } from '../BannerBlock/BannerBlock';
+import { CollectionBlock } from '../CollectionBlock/CollectionBlock';
+import { HistoryBlock } from '../HistoryBlock/HistoryBlock';
+import { InterviewTrainerBlock } from '../InterviewTrainerBlock/InterviewTrainerBlock';
+import { SpecializationBlock } from '../SpecializationBlock/SpecializationBlock';
 
 const LandingPage = () => {
 	return (

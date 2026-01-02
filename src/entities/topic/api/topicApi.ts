@@ -17,7 +17,7 @@ export const topicApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TOPICS],
 		}),
-		getTopicById: build.query<GetTopicByIdResponse, string>({
+		getTopicById: build.query<GetTopicByIdResponse, number>({
 			query: (param) => ({
 				url: route(topicApiUrl.getTopicById, param),
 			}),

@@ -1,7 +1,7 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { CollectionNavigationButtonsSkeleton } from '@/features/collections/navigateCollection';
+import { CollectionNavigationButtonsSkeleton } from '@/features/collection/navigateCollection';
 
 import {
 	AdditionalInfoSkeleton,

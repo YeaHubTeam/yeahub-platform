@@ -13,7 +13,7 @@ import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
-import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
+import { DeleteCollectionButton } from '@/features/collection/deleteCollection';
 
 import {
 	AdditionalInfo,

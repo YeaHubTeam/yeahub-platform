@@ -9,7 +9,7 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
 
-import { useResourcesFilters } from '@/features/resources/filterResources';
+import { useResourcesFilters } from '@/features/resource/filterResources';
 
 import { SearchSection } from '@/widgets/SearchSection';
 

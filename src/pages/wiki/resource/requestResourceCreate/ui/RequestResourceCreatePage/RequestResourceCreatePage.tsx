@@ -6,7 +6,7 @@ import { useAppSelector } from '@/shared/libs';
 
 import { getIsVerified } from '@/entities/profile';
 
-import { ResourceRequestCreateForm } from '@/features/resources/createResourceRequest';
+import { ResourceRequestCreateForm } from '../ResourceRequestCreateForm/ResourceRequestCreateForm';
 
 const RequestResourceCreatePage = () => {
 	const navigate = useNavigate();

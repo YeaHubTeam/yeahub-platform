@@ -9,13 +9,13 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 
-import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
 
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedQuestions } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
+import { DeleteQuestionsButton } from '../DeleteQuestionsButton/DeleteQuestionsButton';
 import { QuestionsTable } from '../QuestionsTable/QuestionsTable';
 
 import styles from './QuestionsTablePage.module.css';

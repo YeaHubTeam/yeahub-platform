@@ -5,14 +5,15 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetTopicsListQuery } from '@/entities/topic';
 
-import { TopicsFilters, useTopicsFilters } from '@/features/topic/filterTopics';
-import { DeleteTopicsButton } from '@/features/topics/deleteTopics';
-
 import { SearchSection } from '@/widgets/SearchSection';
-import { TopicsTable } from '@/widgets/topic/TopicsTable';
 
+import { useTopicsFilters } from '../../lib/hooks/useTopicsFilters';
 import { getSelectedTopics } from '../../model/selectors/topicsPageSelectors';
 import { topicsPageActions } from '../../model/slices/topicsPageSlice';
+import { DeleteTopicsButton } from '../DeleteTopicsButton/DeleteTopicsButton';
+import { TopicsFilters } from '../TopicsFilters/TopicsFilters';
+import { TopicsTable } from '../TopicsTable/TopicsTable';
+
 const TopicsPage = () => {
 	const dispatch = useAppDispatch();
 

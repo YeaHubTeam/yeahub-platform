@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config';
 import { SelectedAdminEntities } from '@/shared/libs';
 
-import { deleteMultipleCompaniesThunk } from '@/features/company/deleteCompanies';
-
+import { deleteMultipleCompaniesThunk } from '../../lib/thunks/deleteMultipleCompaniesThunk';
 import { CompaniesTablePageState } from '../types/companiesTablePageTypes';
 
 const initialState: CompaniesTablePageState = {

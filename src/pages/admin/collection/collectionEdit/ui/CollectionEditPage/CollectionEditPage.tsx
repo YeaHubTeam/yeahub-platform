@@ -6,7 +6,7 @@ import { useAppSelector } from '@/shared/libs';
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
-import { CollectionEditForm } from '@/features/collections/editCollection';
+import { CollectionEditForm } from '../CollectionEditForm/CollectionEditForm';
 
 const CollectionEditPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();

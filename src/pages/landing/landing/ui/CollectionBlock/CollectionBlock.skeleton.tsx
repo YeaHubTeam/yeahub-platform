@@ -1,0 +1,30 @@
+import { useScreenSize } from '@/shared/libs';
+import { Flex } from '@/shared/ui/Flex';
+import { TextSkeleton } from '@/shared/ui/Text';
+
+import { AdditionalBlockSkeleton } from '../CollectionAdditionalBlock/AdditionalBlock.skeleton';
+import { MainBlockSkeleton } from '../CollectionMainBlock/MainBlock.skeleton';
+import { FiltersBlockSkeleton } from '../FiltersBlock/FiltersBlock.skeleton';
+
+import styles from './CollectionBlock.module.css';
+
+export const CollectionBlockSkeleton = () => {
+	const { isMobile } = useScreenSize();
+	return (
+		<section>
+			<Flex gap="20" direction="column" align="center">
+				<div className={styles['title-block']}>
+					<TextSkeleton
+						width={isMobile ? 320 : 473}
+						variant={isMobile ? 'body5-accent' : 'head3'}
+						className={styles.title}
+					/>
+					<TextSkeleton width={isMobile ? 320 : 473} variant="body3" className={styles.subtitle} />
+				</div>
+				<FiltersBlockSkeleton />
+				<MainBlockSkeleton />
+				<AdditionalBlockSkeleton />
+			</Flex>
+		</section>
+	);
+};

@@ -6,7 +6,9 @@ import { useScreenSize } from '@/shared/libs';
 import { Banner } from '@/shared/ui/Banner';
 import { Flex } from '@/shared/ui/Flex';
 
-import { GurusBlock, OurMediaBanner, TelegramChannels } from '@/widgets/Landing/Media';
+import { GurusBlock } from '../GurusBlock/GurusBlock';
+import { OurMediaBanner } from '../OurMediaBanner/OurMediaBanner';
+import { TelegramChannels } from '../TelegramChannels/TelegramChannels';
 
 const MediaPage = () => {
 	const { isTablet, isMobile } = useScreenSize();

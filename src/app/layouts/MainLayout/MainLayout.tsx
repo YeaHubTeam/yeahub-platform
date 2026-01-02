@@ -21,7 +21,7 @@ import { listAdminRoles, useProfileQuery } from '@/entities/auth';
 import { getIsEmptySpecialization, getProfilesLength } from '@/entities/profile';
 
 import { Header } from '@/widgets/Header';
-import { OnboardingModal } from '@/widgets/Main/OnboardingModal';
+import { OnboardingModal } from '@/widgets/OnboardingModal';
 import { MenuItem, Sidebar } from '@/widgets/Sidebar';
 
 import styles from './MainLayout.module.css';

@@ -1,4 +1,6 @@
-import { AvosBanner, AvosPromo, AvosListen } from '@/widgets/Landing/Avos';
+import { AvosBanner } from '../AvosBanner/AvosBanner';
+import { AvosListen } from '../AvosListen/AvosListen';
+import { AvosPromo } from '../AvosPromo/AvosPromo';
 
 const AvosPage = () => {
 	return (

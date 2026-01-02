@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui/Button';
 import { useLazyLogoutQuery } from '@/entities/auth';
 import { getFullProfile } from '@/entities/profile';
 
-import { LoginCreateForm } from '@/widgets/authentication/login';
+import { LoginCreateForm } from '../LoginCreateForm/LoginCreateForm';
 
 import styles from './LoginPage.module.css';
 

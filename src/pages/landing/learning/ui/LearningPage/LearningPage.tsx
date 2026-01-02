@@ -1,8 +1,8 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { AdvantagesBlock } from '@/widgets/Landing/AdvantagesBlock';
-import { GurusBlock } from '@/widgets/Landing/GurusBlock';
-import { MentorsBlock } from '@/widgets/Landing/MentorsBlock';
+import { AdvantagesBlock } from '../AdvantagesBlock/AdvantagesBlock';
+import { GurusBlock } from '../GurusBlock/GurusBlock';
+import { MentorsBlock } from '../MentorsBlock/MentorsBlock';
 
 const LearningPage = () => {
 	return (

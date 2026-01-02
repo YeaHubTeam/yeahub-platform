@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { clearStore } from '@/shared/config';
 import { SelectedAdminEntities } from '@/shared/libs';
 
-import { deleteMultipleSpecializationsThunk } from '@/features/specialization/deleteSpecializations';
-
+import { deleteMultipleSpecializationsThunk } from '../../lib/thunks/deleteMultipleSkillsThunk';
 import { SpecializationsPageState } from '../types/specializationsPageTypes';
 
 const initialState: SpecializationsPageState = {

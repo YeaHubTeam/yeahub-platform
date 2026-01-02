@@ -1,6 +1,6 @@
 import { Tabs } from '@/shared/ui/Tabs';
 
-import { useGetSettingsProfileTabs } from '../../model/hooks/useGetSettingsProfileTabs';
+import { useGetSettingsProfileTabs } from '../../lib/hooks/useGetSettingsProfileTabs';
 
 const SettingsProfilePage = () => {
 	const { tabs, setActiveTab, activeTab } = useGetSettingsProfileTabs();

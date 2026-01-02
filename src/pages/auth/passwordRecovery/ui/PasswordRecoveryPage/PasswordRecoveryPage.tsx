@@ -1,5 +1,5 @@
-import { PasswordRecovery } from '@/widgets/authentication/passwordRecovery';
-import { Header } from '@/widgets/Landing/OldHeader';
+import { Header } from '../Header/Header';
+import { PasswordRecovery } from '../PasswordRecovery/PasswordRecovery';
 
 import styles from './PasswordRecoveryPage.module.css';
 

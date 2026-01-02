@@ -1,4 +1,4 @@
-import { TopicCreateForm } from '@/features/topics/createTopics';
+import { TopicCreateForm } from '../TopicCreateForm/TopicCreateForm';
 
 const TopicCreatePage = () => {
 	return <TopicCreateForm />;

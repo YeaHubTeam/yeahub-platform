@@ -19,10 +19,10 @@ import {
 	useSlideSwitcher,
 } from '@/entities/quiz';
 
-import { FinishQuizButton } from '@/features/quiz/finishQuiz';
-import { InterruptQuizButton } from '@/features/quiz/interruptQuiz';
-
 import { InterviewSlider } from '@/widgets/interview/InterviewSlider';
+
+import { FinishQuizButton } from '../FinishQuizButton/FinishQuizButton';
+import { InterruptQuizButton } from '../InterruptQuizButton/InterruptQuizButton';
 
 import styles from './InterviewQuizPage.module.css';
 

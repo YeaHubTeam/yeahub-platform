@@ -1,9 +1,9 @@
-import { AboutQuestionsBlockSkeleton } from '@/widgets/Landing/AboutQuestionsBlock';
-import { BannerBlockSkeleton } from '@/widgets/Landing/BannerBlock';
-import { CollectionBlockSkeleton } from '@/widgets/Landing/CollectionBlock';
-import { HistoryBlockSkeleton } from '@/widgets/Landing/HistoryBlock';
-import { InterviewTrainerBlockSkeleton } from '@/widgets/Landing/InterviewTrainerBlock';
-import { SpecializationBlockSkeleton } from '@/widgets/Landing/SpecialityBlock';
+import { AboutQuestionsBlockSkeleton } from '../AboutQuestionsBlock/AboutQuestionsBlock.skeleton';
+import { BannerBlockSkeleton } from '../BannerBlock/BannerBlock.skeleton';
+import { CollectionBlockSkeleton } from '../CollectionBlock/CollectionBlock.skeleton';
+import { HistoryBlockSkeleton } from '../HistoryBlock/HistoryBlock.skeleton';
+import { InterviewTrainerBlockSkeleton } from '../InterviewTrainerBlock/InterviewTrainerBlock.skeleton';
+import { SpecializationBlockSkeleton } from '../SpecializationBlock/SpecializationBlock.skeleton';
 
 export const LandingPageSkeleton = () => {
 	return (

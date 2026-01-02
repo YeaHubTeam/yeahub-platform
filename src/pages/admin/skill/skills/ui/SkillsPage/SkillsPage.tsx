@@ -8,13 +8,13 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { getUserId } from '@/entities/profile';
 import { useGetSkillsListQuery } from '@/entities/skill';
 
-import { DeleteSkillsButton } from '@/features/skill/deleteSkills';
-import { SkillsFilters, useSkillsFilters } from '@/features/skill/filterSkills';
-
 import { SearchSection } from '@/widgets/SearchSection';
 
+import { useSkillsFilters } from '../../lib/hooks/useSkillsFilters';
 import { getSelectedSkills } from '../../model/selectors/skillsPageSelectors';
 import { skillsPageActions } from '../../model/slices/skillsPageSlice';
+import { DeleteSkillsButton } from '../DeleteSkillsButton/DeleteSkillsButton';
+import { SkillsFilters } from '../SkillsFilters/SkillsFilters';
 import { SkillsTable } from '../SkillsTable/SkillsTable';
 
 import styles from './SkillsPage.module.css';

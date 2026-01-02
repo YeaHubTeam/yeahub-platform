@@ -7,12 +7,9 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { RegistrationLabel } from '@/entities/auth';
 
-import {
-	EmailSendModal,
-	IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY,
-} from '@/features/authentication/forgotPassword';
-
-import { ForgotPassword } from '@/widgets/authentication/forgotPassword';
+import { IS_EMAIL_SEND_MODAL_TIMER_STARTED_KEY } from '../../lib/constants/forgotPasswordConstants';
+import { EmailSendModal } from '../EmailSendModal/EmailSendModal';
+import { ForgotPassword } from '../ForgotPassword/ForgotPassword';
 
 import styles from './ForgotPasswordPage.module.css';
 

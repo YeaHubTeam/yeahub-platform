@@ -11,9 +11,9 @@ import { Text } from '@/shared/ui/Text';
 import { ResourcesStub, useGetResourcesListQuery } from '@/entities/resource';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
+import { ResourcesFilters, useResourcesFilters } from '@/features/resource/filterResources';
 
-import { ResourcesList } from '@/widgets/Marketplace';
+import { ResourcesList } from '@/widgets/resources/RecourcesList';
 
 import styles from './PublicResourcesPage.module.css';
 import { PublicResourcesPageSkeleton } from './PublicResourcesPage.skeleton';

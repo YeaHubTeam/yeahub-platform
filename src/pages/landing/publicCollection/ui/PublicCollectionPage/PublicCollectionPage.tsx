@@ -15,12 +15,12 @@ import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/enti
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 
-import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
+import { useGetCollectionsFilterParams } from '@/features/collection/filterCollections';
 import {
 	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
 	usePublicCollectionNavigation,
-} from '@/features/collections/navigateCollection';
+} from '@/features/collection/navigateCollection';
 
 import {
 	AdditionalInfo,

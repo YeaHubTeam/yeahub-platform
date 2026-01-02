@@ -1,8 +1,9 @@
 import { Flex } from '@/shared/ui/Flex';
 
 import { PassedQuestionsListSkeleton } from '@/widgets/interview/PassedQuestionsList';
-import { QuizAdditionalInfoSkeleton } from '@/widgets/interview/QuizAdditionalInfo';
 import { QuizQuestionsInfoSkeleton } from '@/widgets/interview/QuizzesStatistic';
+
+import { QuizAdditionalInfoSkeleton } from '../QuizAdditionalInfo/QuizAdditionalInfo.skeleton';
 
 import styles from './InterviewQuizResultPage.module.css';
 

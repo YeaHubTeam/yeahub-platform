@@ -10,16 +10,13 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
-import {
-	CollectionsFilters,
-	useCollectionsFilters,
-} from '@/features/collections/filterCollections';
+import { CollectionsFilters, useCollectionsFilters } from '@/features/collection/filterCollections';
 
-import { CollectionsTable } from '@/widgets/CollectionsTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
+import { CollectionsTable } from '../CollectionsTable/CollectionsTable';
 
 import styles from './CollectionsPage.module.css';
 

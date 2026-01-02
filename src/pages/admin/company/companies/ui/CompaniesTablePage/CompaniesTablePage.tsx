@@ -9,14 +9,13 @@ import { TablePagination } from '@/shared/ui/TablePagination';
 import { useGetCompaniesListQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
-import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
-import { useCompaniesFilters } from '@/features/company/filterCompanies';
-
-import { CompaniesTable } from '@/widgets/CompaniesTable';
 import { SearchSection } from '@/widgets/SearchSection';
 
+import { useCompaniesFilters } from '../../lib/hooks/useCompaniesFilters';
 import { getSelectedCompanies } from '../../model/selectors/companiesTablePageSelectors';
 import { companiesTablePageActions } from '../../model/slices/companiesTablePageSlice';
+import { CompaniesTable } from '../CompaniesTable/CompaniesTable';
+import { DeleteCompaniesButton } from '../DeleteCompaniesButton/DeleteCompaniesButton';
 
 import styles from './CompaniesTablePage.module.css';
 

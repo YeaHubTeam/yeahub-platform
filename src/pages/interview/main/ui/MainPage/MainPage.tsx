@@ -8,8 +8,8 @@ import { Text } from '@/shared/ui/Text';
 import { getRandomGurus, GurusBanner } from '@/entities/guru';
 import { EmailVerifyStub, getFullProfile } from '@/entities/profile';
 
-import { IncompleteProfileStub } from '@/widgets/Main/IncompleteProfileStub';
-import { SubscribeToMedia } from '@/widgets/Main/SubscribeToMedia';
+import { IncompleteProfileStub } from '../IncompleteProfileStub/IncompleteProfileStub';
+import { SubscribeToMedia } from '../SubscribeToMedia/SubscribeToMedia';
 
 import styles from './MainPage.module.css';
 

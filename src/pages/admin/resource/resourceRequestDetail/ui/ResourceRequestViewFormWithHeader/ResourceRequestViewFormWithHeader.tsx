@@ -12,8 +12,8 @@ import { Text } from '@/shared/ui/Text';
 
 import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
 
-import { ApproveRequestButton } from '@/features/resources/approveRequest';
-import { RejectResourceRequestButton } from '@/features/resources/rejectResourceRequest';
+import { ApproveRequestButton } from '../ApproveRequestButton/ApproveRequestButton';
+import { RejectResourceRequestButton } from '../RejectResourceRequestButton/RejectResourceRequestButton';
 
 import styles from './ResourceRequestViewFormWithHeader.module.css';
 

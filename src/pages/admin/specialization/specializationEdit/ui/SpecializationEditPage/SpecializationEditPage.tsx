@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 
-import { SpecializationEditForm } from '@/features/specialization/editSpecialization';
+import { SpecializationEditForm } from '../SpecializationEditForm/SpecializationEditForm';
 
 const SpecializationEditPage = () => {
 	const { specializationId } = useParams<{ specializationId: string }>();

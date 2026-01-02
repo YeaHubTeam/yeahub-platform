@@ -1,4 +1,4 @@
-import { SkillCreateForm } from '@/features/skill/createSkill';
+import { SkillCreateForm } from '../SkillCreateForm/SkillCreateForm';
 
 const SkillCreatePage = () => {
 	return <SkillCreateForm />;
