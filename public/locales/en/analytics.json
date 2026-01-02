@@ -69,5 +69,13 @@
 			"keywords": "Keywords",
 			"count": "Count"
 		}
+	},
+	"top.users": {
+		"title": {
+			"widget": "Top 3 users by speciality"
+		},
+		"no.data": {
+			"widget": "No top users found for this speciality"
+		}
 	}
 }

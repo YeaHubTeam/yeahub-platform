@@ -57,14 +57,35 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
-	const isAllSelected = selectedItems?.length === items.length;
+	const availableItems = items.filter((item) => !item.disabled);
+	const availableCount = availableItems.length;
 	const selectedItemsIds = selectedItems?.map(({ id }) => id) || [];
 
+	const availableSelected =
+		selectedItems?.filter((s) => availableItems.some((item) => item.id === s.id)) || [];
+	const allSelected = availableSelected.length;
+	const isAllSelected = allSelected === availableCount && availableCount > 0;
+	const isIntermediate = allSelected > 0 && allSelected < availableCount;
+
+	const isHeaderDisabled = availableCount === 0;
+
 	const onSelectAllItems = () => {
-		onSelectItems?.(isAllSelected ? [] : items.map((item) => ({ id: item.id, title: item.title })));
+		if (isHeaderDisabled) return;
+
+		onSelectItems?.(
+			isAllSelected
+				? []
+				: availableItems.map((item) => ({
+						id: item.id,
+						title: item.title,
+						disabled: item.disabled,
+					})),
+		);
 	};
 
 	const onSelectItem = (item: SelectedEntity<Id>) => () => {
+		if (item.disabled) return;
+
 		if (selectedItems) {
 			const isSelected = selectedItemsIds?.includes(item.id);
 			const itemsIds: SelectedEntities<Id> = isSelected
@@ -86,7 +107,12 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 				<tr>
 					{selectedItems && (
 						<td className={styles.cell}>
-							<Checkbox checked={isAllSelected} onChange={onSelectAllItems} />
+							<Checkbox
+								checked={isAllSelected}
+								onChange={onSelectAllItems}
+								isIntermediate={isIntermediate}
+								disabled={isHeaderDisabled}
+							/>
 						</td>
 					)}
 					{renderTableHeader()}

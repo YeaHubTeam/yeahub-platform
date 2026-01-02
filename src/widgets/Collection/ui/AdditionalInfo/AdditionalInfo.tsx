@@ -20,10 +20,11 @@ import { SpecializationsList } from '@/entities/specialization';
 
 import styles from './AdditionalInfo.module.css';
 
-interface AdditionalInfoProps extends Pick<
-	Collection,
-	'specializations' | 'isFree' | 'company' | 'questionsCount' | 'createdBy' | 'keywords'
-> {
+interface AdditionalInfoProps
+	extends Pick<
+		Collection,
+		'specializations' | 'isFree' | 'company' | 'questionsCount' | 'createdBy' | 'keywords'
+	> {
 	showAuthor?: boolean;
 	className?: string;
 	media?: Media | undefined;

@@ -24,6 +24,7 @@ const PublicCollectionsPage = () => {
 		onResetFilters,
 		onChangePage,
 		onChangeSpecialization,
+		onChangeCompany,
 		onChangeIsFree,
 		onChangeTitle,
 		onChangeKeyword,
@@ -32,6 +33,7 @@ const PublicCollectionsPage = () => {
 	const { data: collections, isLoading: isLoadingCollections } = useGetPublicCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
+		companies: filters.company,
 		isFree: filters.isFree,
 		page: filters.page,
 		keywords: filters.keyword ? [filters.keyword] : undefined,
@@ -41,6 +43,7 @@ const PublicCollectionsPage = () => {
 		<CollectionsFilters
 			onChangeTitle={onChangeTitle}
 			onChangeSpecialization={onChangeSpecialization}
+			onChangeCompany={onChangeCompany}
 			onChangeIsFree={onChangeIsFree}
 			onChangeKeyword={onChangeKeyword}
 			filter={{
@@ -48,6 +51,7 @@ const PublicCollectionsPage = () => {
 				specialization: filters.specialization,
 				isFree: filters.isFree,
 				keyword: filters.keyword,
+				company: filters.company,
 			}}
 		/>
 	);

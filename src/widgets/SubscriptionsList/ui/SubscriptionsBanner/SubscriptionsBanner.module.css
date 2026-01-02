@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+	
+}
+
+.list li {
+  position: relative;
+  flex: 1 1 45%;
+  padding: 2px 0;
+  padding-left: 16px;
+  min-width: 0;
+}
+
+.thanks {
+  flex: 1 1 45%;
+  min-width: 0;
+}
+
+.list li::before {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-purple-700);
+}
+
+@media screen and (width < 1279px) {
+  .list li {
+    flex: 1 1 100%;
+  }
+}

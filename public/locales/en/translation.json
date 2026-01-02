@@ -1,4 +1,10 @@
 {
+	"banner": {
+		"ny": {
+			"text": "Up to 50% discount on all tariffs",
+			"button": "Discounts 50%"
+		}
+	},
 	"language": "Russian",
 	"more": "More",
 	"return": "Return",
@@ -61,6 +67,12 @@
 			"topics": "Topics"
 		}
 	},
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"stub": {
 		"filter": {
 			"title": "Unfortunately, nothing was found for the query.",
@@ -79,6 +91,11 @@
 		"button": "Return to Home"
 	},
 	"modal": {
+		"ny": {
+			"title": "Up to 50% discount on all tariffs",
+			"text": "Now you can connect any of the 4 tariffs with a discount of up to 50%. 2028 Select the appropriate format — for launch, growth or scaling — and fix a favorable price.",
+			"button": "50% discount"
+		},
 		"block": {
 			"title": "Confirm action",
 			"description": "You have unsaved data. Do you want to continue?"
@@ -305,18 +322,56 @@
 			"create": {
 				"success": "Topic successfully created",
 				"failed": "Topic could not be created"
-			}
-		},
-		"topics": {
-			"create": {
-				"success": "Topic successfully created",
-				"failed": "Topic could not be created"
+			},
+			"edit": {
+				"success": "Topic successfully changed",
+				"failed": "Topic could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Topic successfully deleted",
+					"failed": "Topic could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted topics:",
+					"failed": "Topic could not be deleted:"
+				}
 			}
 		},
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",
-				"failed": "Collection could not be created"
+				"failed": "Collection could not be created",
+				"user": {
+					"id": {
+						"not.found": "User not found"
+					}
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"collection": {
+					"user": {
+						"deleted": "User is soft deleted"
+					},
+					"create": {
+						"conflict": "A collection with the same parameters already exists."
+					}
+				}
 			},
 			"delete": {
 				"single": {

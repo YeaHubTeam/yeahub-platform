@@ -39,7 +39,7 @@ export const AvosPromoSkeleton = () => {
 					/>
 				</Flex>
 
-				<Skeleton className={styles.screenshot} width={'100%'} height={350} />
+				<Skeleton className={styles.screenshot} width="100%" height={350} />
 			</Flex>
 		</Card>
 	);
