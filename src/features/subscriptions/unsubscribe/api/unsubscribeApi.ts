@@ -13,7 +13,12 @@ const unsubscribeApi = baseApi.injectEndpoints({
 				method: 'DELETE',
 				body,
 			}),
-			invalidatesTags: [ApiTags.PROFILE, ApiTags.ROLES, ApiTags.USER_DETAIL, ApiTags.SUBSCRIPTIONS],
+			invalidatesTags: [
+				ApiTags.PROFILE,
+				ApiTags.ROLES,
+				ApiTags.USER_DETAIL,
+				ApiTags.SUBSCRIPTIONS_USER,
+			],
 			async onQueryStarted() {
 				try {
 					toast.success(i18n.t(Translation.TOAST_SUBSCRIPTIONS_UNSUBSCRIBE_SUCCESS));
