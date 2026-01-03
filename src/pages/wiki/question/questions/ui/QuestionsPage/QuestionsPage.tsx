@@ -2,7 +2,6 @@ import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
@@ -20,6 +19,7 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 const QuestionsPage = () => {
 	const {
 		filters,
+		hasFilters,
 		onChangePage,
 		onChangeTitle,
 		onChangeSkills,
@@ -96,21 +96,26 @@ const QuestionsPage = () => {
 		return null;
 	}
 
+	const showQuestionsPagination = questions.data.length > 0;
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				<FullQuestionsList
 					questions={questions.data}
+					hasFilters={hasFilters}
+					onResetFilters={onResetFilters}
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={questions.limit}
-					total={questions.total}
-				/>
-				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
+				{showQuestionsPagination && (
+					<TablePagination
+						page={filters.page || 1}
+						onChangePage={onChangePage}
+						limit={questions.limit}
+						total={questions.total}
+					/>
+				)}
 			</Card>
 			<Card className={styles.filters}>{renderFilters()}</Card>
 		</Flex>

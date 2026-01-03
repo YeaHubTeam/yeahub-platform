@@ -2,7 +2,6 @@ import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
@@ -26,6 +25,7 @@ import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 const PublicQuestionsPage = () => {
 	const {
 		filters,
+		hasFilters,
 		onResetFilters,
 		onChangePage,
 		onChangeTitle,
@@ -98,23 +98,28 @@ const PublicQuestionsPage = () => {
 		</Flex>
 	);
 
+	const showQuestionsPagination = questions.data.length > 0;
+
 	return (
 		<Flex gap="20" align="start">
 			<Card className={styles.main}>
 				<FullQuestionsList
 					questions={questions.data}
+					hasFilters={hasFilters}
+					onResetFilters={onResetFilters}
 					isPublic
 					additionalTitle={additionalTitle}
 					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={questions.limit}
-					total={questions.total}
-				/>
-				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
+				{showQuestionsPagination && (
+					<TablePagination
+						page={filters.page || 1}
+						onChangePage={onChangePage}
+						limit={questions.limit}
+						total={questions.total}
+					/>
+				)}
 			</Card>
 			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
 		</Flex>
