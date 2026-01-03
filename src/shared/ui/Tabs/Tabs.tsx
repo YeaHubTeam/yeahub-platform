@@ -5,16 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { tabsTestIds } from './constants';
 import styles from './Tabs.module.css';
-
-export interface Tab<T> {
-	id: T;
-	label: string;
-	count?: number;
-	Component: () => JSX.Element;
-}
-
-export type TabColor = 'default' | 'gray';
+import type { Tab, TabColor } from './types';
 
 export interface TabsProps<T> {
 	tabs: Tab<T>[];
@@ -32,13 +25,18 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: T
 	};
 
 	return (
-		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
+		<Flex
+			direction="column"
+			gap="28"
+			className={styles['tab-container']}
+			data-testid={tabsTestIds.tabs}
+		>
 			<Flex
 				componentType="ul"
 				gap="10"
 				className={classNames(styles['tab-list'], styles[color])}
 				role="tablist"
-				data-testid="Tabs_List"
+				data-testid={tabsTestIds.list}
 			>
 				{tabs.map((tab) => (
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -50,7 +48,7 @@ export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: T
 						onClick={() => onTabToggle(tab)}
 						role="tab"
 						tabIndex={0}
-						data-testid={`Tabs_Item_${tab.id}`}
+						data-testid={tabsTestIds.item(String(tab.id))}
 					>
 						<Text variant="body4" color={activeTab.id === tab.id ? 'purple-700' : 'black-500'}>
 							{tab.label} {(tab.count ?? 0) > 0 && `(${tab.count})`}
