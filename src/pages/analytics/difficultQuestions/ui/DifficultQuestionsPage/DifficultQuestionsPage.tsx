@@ -11,6 +11,8 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { DifficultQuestionsList } from '../DifficultQuestionsList/DifficultQuestionsList';
 import { DifficultQuestionsTable } from '../DifficultQuestionsTable/DifficultQuestionsTable';
 
+import { DifficultQuestionsPageSkeleton } from './DifficultQuestionsPage.skeleton';
+
 export const DifficultQuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
@@ -20,10 +22,18 @@ export const DifficultQuestionsPage = () => {
 		page: 1,
 	});
 
-	const { data: response } = useGetMostDifficultQuestionsBySpecializationIdQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetMostDifficultQuestionsBySpecializationIdQuery({
 		specId: filters.specialization || specializationId,
 		page: filters.page || 1,
 	});
+
+	if (isLoading || isFetching) {
+		return <DifficultQuestionsPageSkeleton />;
+	}
 
 	const difficultQuestions = response?.data.topStat ?? [];
 

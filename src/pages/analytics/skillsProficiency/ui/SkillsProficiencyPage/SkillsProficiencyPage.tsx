@@ -9,6 +9,8 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { SkillsProficiencyList } from '../SkillsProficiencyList/SkillsProficiencyList';
 import { SkillsProficiencyPageTable } from '../SkillsProficiencyPageTable/SkillsProficiencyPageTable';
 
+import { SkillsProficiencyPageSkeleton } from './SkillsProficiencyPage.skeleton';
+
 export const SkillsProficiencyPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
@@ -16,11 +18,19 @@ export const SkillsProficiencyPage = () => {
 		page: 1,
 	});
 
-	const { data: response } = useGetLearnedQuestionsQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetLearnedQuestionsQuery({
 		page: filters.filters.page,
 		specializationId: filters.filters.specialization,
 		skillId: filters.filters.skill,
 	});
+
+	if (isLoading || isFetching) {
+		return <SkillsProficiencyPageSkeleton />;
+	}
 
 	const learnedQuestions = response?.data ?? [];
 
