@@ -10,7 +10,7 @@ import { useGetCompaniesListQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
-import { useCompaniesFilters } from '@/features/company/filterCompanies';
+import { CompaniesFilters, useCompaniesFilters } from '@/features/company/filterCompanies';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -24,7 +24,8 @@ const CompaniesTablePage = () => {
 	const selectedCompanies = useAppSelector(getSelectedCompanies);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
-	const { filters, onChangePage, onChangeTitle, onResetFilters } = useCompaniesFilters({ page: 1 });
+	const { filters, hasFilters, onChangePage, onChangeTitle, onResetFilters, onChangeIsMy } =
+		useCompaniesFilters({ page: 1 });
 
 	const userId = useAppSelector(getUserId);
 
@@ -36,6 +37,7 @@ const CompaniesTablePage = () => {
 		page: filters.page,
 		limit: 10,
 		titleOrLegalNameOrDescriptionSearch: filters.title,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const companiesWithEditFlags = useMemo(() => {
@@ -56,8 +58,10 @@ const CompaniesTablePage = () => {
 				to="create"
 				onSearch={onChangeTitle}
 				searchValue={filters.title}
+				hasFilters={hasFilters}
 				showRemoveButton={selectedCompanies.length > 0}
 				renderRemoveButton={() => <DeleteCompaniesButton companiesToRemove={selectedCompanies} />}
+				renderFilter={() => <CompaniesFilters filters={filters} onChangeIsMy={onChangeIsMy} />}
 			/>
 			<Card className={styles.content}>
 				<CompaniesTable

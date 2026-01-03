@@ -1,0 +1,37 @@
+.modal {
+  width: 100%;
+  max-width: 687px;
+  height: 509px;
+  border-radius: 24px;
+  background-color: var(--color-green-850);
+  background-image: url("../../assets/images/ny/ny-modal.png");
+  background-repeat: no-repeat;
+}
+
+.content {
+  justify-content: end;
+  padding: 40px;
+  height: 509px;
+}
+
+.button {
+  padding: 0 40px 0 24px;
+  width: 240px;
+  background-image: url("../../assets/images/ny/ny-decoration.png");
+  background-position: 100%;
+  background-size: 45px;
+  background-repeat: no-repeat;
+}
+
+@media screen and (width < 768px) {
+  .button {
+    width: 100%;
+    background-position: 95%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+

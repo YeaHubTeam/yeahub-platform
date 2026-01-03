@@ -23,6 +23,7 @@ export enum ApiTags {
 	INTERVIEW_QUIZ = 'interview_quiz',
 	HISTORY_QUIZ = 'historyQuiz',
 	SUBSCRIPTIONS = 'subscriptions',
+	SUBSCRIPTIONS_USER = 'subscriptions_user',
 	SPECIALIZATIONS = 'specializations',
 	SPECIALIZATION_DETAIL = 'specialization_detail',
 	INTERVIEW_STATISTICS = 'interview_statistics',
