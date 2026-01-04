@@ -5,10 +5,8 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { subscriptionPrices } from '@/entities/subscription';
 
-import { AgreementForm } from '@/features/subscriptions/subscribe';
-import { TrialButton } from '@/features/subscriptions/trial';
-
 import { FaqList } from '@/widgets/FaqList';
+import { SubscriptionsList } from '@/widgets/SubscriptionsList';
 
 export const FreeSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
@@ -40,7 +38,7 @@ export const FreeSubscriptionTab = () => {
 
 	return (
 		<Flex direction="column" gap="20">
-			<AgreementForm trialButton={<TrialButton />} />
+			<SubscriptionsList />
 			<FaqList faqList={faqList} />
 		</Flex>
 	);

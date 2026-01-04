@@ -24,7 +24,7 @@ describe('FooterLinks', () => {
 		expect(flexWrapper).toHaveClass('footer-resources-links');
 	});
 
-	test('should render docs and socialMedia links inside NavLink with correct href', () => {
+	test('should render docs and media links inside NavLink with correct href', () => {
 		renderComponent(<FooterLinks />);
 
 		const navDocs = screen.getByTestId('Footer_NavDocs');
@@ -33,10 +33,10 @@ describe('FooterLinks', () => {
 
 		const navMedia = screen.getByTestId('Footer_NavMedia');
 		expect(navMedia).toBeInTheDocument();
-		expect(navMedia).toHaveAttribute('href', '/socialMedia');
+		expect(navMedia).toHaveAttribute('href', '/media');
 	});
 
-	test('should render docs and socialMedia links with correct default variant, color, className and translation', () => {
+	test('should render docs and media links with correct default variant, color, className and translation', () => {
 		renderComponent(<FooterLinks />);
 
 		const docsLink = screen.getByTestId('Footer_Docs');
