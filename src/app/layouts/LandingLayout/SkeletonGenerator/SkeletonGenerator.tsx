@@ -1,5 +1,3 @@
-import { useMatch } from 'react-router-dom';
-
 import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
@@ -15,31 +13,28 @@ import { PublicQuizPageSkeleton } from '@/pages/landing/publicQuiz';
 import { PublicQuizResultPageSkeleton } from '@/pages/landing/publicQuizResult';
 
 export const SkeletonGenerator = () => {
-	const isLandingPage = useMatch(ROUTES.appRoute);
-	const isQuizPage = useMatch(ROUTES.quiz.page);
-	const isNewQuizPage = useMatch(ROUTES.quiz.new.page);
-	const isQuizResultPage = useMatch(ROUTES.quiz.result.page);
-	const isQuestionsPage = useMatch(ROUTES.questions.page);
-	const isQuestionDetailPage = useMatch(ROUTES.questions.detail.page);
-	const isMediaPage = useMatch(ROUTES.media.page);
-	const isHhAnalyticsPage = useMatch(ROUTES.hhAnalytics.page);
-	const isAvosPage = useMatch(ROUTES.avos.page);
-	const isLearningPage = useMatch(ROUTES.learning.page);
-
-	if (isLandingPage) return <LandingPageSkeleton data-testid="LandingPageSkeleton" />;
-	if (isQuizPage)
-		return <CreatePublicQuizPageSkeleton data-testid="CreatePublicQuizPageSkeleton" />;
-	if (isNewQuizPage) return <PublicQuizPageSkeleton dataTestId="PublicQuizPageSkeleton" />;
-	if (isQuizResultPage)
-		return <PublicQuizResultPageSkeleton dataTestId="PublicQuizResultPageSkeleton" />;
-	if (isQuestionsPage)
-		return <PublicQuestionsPageSkeleton dataTestId="PublicQuestionsPageSkeleton" />;
-	if (isQuestionDetailPage)
-		return <PublicQuestionPageSkeleton dataTestId="PublicQuestionPageSkeleton" />;
-	if (isMediaPage) return <MediaPageSkeleton />;
-	if (isHhAnalyticsPage) return <HhAnalyticsPageSkeleton />;
-	if (isAvosPage) return <AvosPageSkeleton />;
-	if (isLearningPage) return <LearningPageSkeleton />;
-
-	return <Loader />;
+	switch (location.pathname) {
+		case ROUTES.appRoute:
+			return <LandingPageSkeleton data-testid="LandingPageSkeleton" />;
+		case ROUTES.quiz.page:
+			return <CreatePublicQuizPageSkeleton data-testid="CreatePublicQuizPageSkeleton" />;
+		case ROUTES.quiz.new.page:
+			return <PublicQuizPageSkeleton dataTestId="PublicQuizPageSkeleton" />;
+		case ROUTES.quiz.result.page:
+			return <PublicQuizResultPageSkeleton dataTestId="PublicQuizResultPageSkeleton" />;
+		case ROUTES.questions.page:
+			return <PublicQuestionsPageSkeleton dataTestId="PublicQuestionsPageSkeleton" />;
+		case ROUTES.questions.detail.page:
+			return <PublicQuestionPageSkeleton dataTestId="PublicQuestionPageSkeleton" />;
+		case ROUTES.media.page:
+			return <MediaPageSkeleton />;
+		case ROUTES.hhAnalytics.page:
+			return <HhAnalyticsPageSkeleton />;
+		case ROUTES.avos.page:
+			return <AvosPageSkeleton />;
+		case ROUTES.learning.page:
+			return <LearningPageSkeleton />;
+		default:
+			return <Loader />;
+	}
 };
