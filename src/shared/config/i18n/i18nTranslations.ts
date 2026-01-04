@@ -67,11 +67,15 @@ export enum Translation {
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
-
-	/* Access Denied */
-	ACCESS_DENIED_TITLE = 'access.denied.title',
-	ACCESS_DENIED_DESCRIPTION = 'access.denied.description',
-	ACCESS_DENIED_BUTTON = 'access.denied.button',
+	STUB_ACCESS_DENIED_DEFAULT_TITLE = 'stub.access.denied.default.title',
+	STUB_ACCESS_DENIED_DEFAULT_DESCRIPTION = 'stub.access.denied.default.description',
+	STUB_ACCESS_DENIED_DEFAULT_BUTTON = 'stub.access.denied.default.button',
+	STUB_ACCESS_DENIED_VERIFY_TITLE = 'stub.access.denied.verify.title',
+	STUB_ACCESS_DENIED_VERIFY_DESCRIPTION = 'stub.access.denied.verify.description',
+	STUB_ACCESS_DENIED_VERIFY_BUTTON = 'stub.access.denied.verify.button',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_TITLE = 'stub.access.denied.subscription.title',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_DESCRIPTION = 'stub.access.denied.subscription.description',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_BUTTON = 'stub.access.denied.subscription.button',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',

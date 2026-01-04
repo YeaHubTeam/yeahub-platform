@@ -83,12 +83,24 @@
 			"title": "Failed to load data",
 			"subtitle": "Try again or refresh the page",
 			"submit": "Try again"
+		},
+		"access.denied": {
+			"default": {
+				"title": "No access to the page",
+				"description": "You don't have access to view this section. If you think this is an error, please contact support",
+				"button": "Return to Home"
+			},
+			"verify": {
+				"title": "No access to the page",
+				"description": "You do not have access to view this section because your account has not been verified",
+				"button": "For verification"
+			},
+			"subscription": {
+				"title": "No access to the page",
+				"description": "You do not have access to view this section because you do not have a subscription",
+				"button": "To subscriptions"
+			}
 		}
-	},
-	"access.denied": {
-		"title": "Access Denied",
-		"description": "You don't have access to view this section. If you think this is an error, please contact support",
-		"button": "Return to Home"
 	},
 	"modal": {
 		"ny": {

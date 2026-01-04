@@ -3,8 +3,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccessDeniedImg from '@/shared/assets/images/accessDenied.png';
+import EmptyImg from '@/shared/assets/images/empty.png';
 import LoadError from '@/shared/assets/images/loadError.png';
-import FilterEmptyImg from '@/shared/assets/images/notFound.avif';
 import SearchImg from '@/shared/assets/images/searchPage.png';
 import { i18Namespace, Translation } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
@@ -15,7 +15,13 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
 
-type StubType = 'empty' | 'error' | 'access-denied' | 'filter-empty';
+export type StubType =
+	| 'empty'
+	| 'filter-empty'
+	| 'error'
+	| 'access-denied'
+	| 'access-denied-verify'
+	| 'access-denied-subscription';
 
 type StubProps = {
 	type: StubType;
@@ -36,29 +42,37 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const titleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_TITLE),
 		empty: '',
-		'access-denied': t(Translation.ACCESS_DENIED_TITLE),
 		'filter-empty': t(Translation.STUB_FILTER_TITLE),
+		'access-denied': t(Translation.STUB_ACCESS_DENIED_DEFAULT_TITLE),
+		'access-denied-verify': t(Translation.STUB_ACCESS_DENIED_VERIFY_TITLE),
+		'access-denied-subscription': t(Translation.STUB_ACCESS_DENIED_SUBSCRIPTION_TITLE),
 	};
 
 	const subtitleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBTITLE),
 		empty: '',
-		'access-denied': t(Translation.ACCESS_DENIED_DESCRIPTION),
 		'filter-empty': t(Translation.STUB_FILTER_SUBTITLE),
+		'access-denied': t(Translation.STUB_ACCESS_DENIED_DEFAULT_DESCRIPTION),
+		'access-denied-verify': t(Translation.STUB_ACCESS_DENIED_VERIFY_DESCRIPTION),
+		'access-denied-subscription': t(Translation.STUB_ACCESS_DENIED_SUBSCRIPTION_DESCRIPTION),
 	};
 
 	const buttonTextByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBMIT),
 		empty: '',
-		'access-denied': t(Translation.ACCESS_DENIED_BUTTON),
 		'filter-empty': t(Translation.STUB_FILTER_SUBMIT),
+		'access-denied': t(Translation.STUB_ACCESS_DENIED_DEFAULT_BUTTON),
+		'access-denied-verify': t(Translation.STUB_ACCESS_DENIED_VERIFY_BUTTON),
+		'access-denied-subscription': t(Translation.STUB_ACCESS_DENIED_SUBSCRIPTION_BUTTON),
 	};
 
 	const imgByType: Record<StubType, string> = {
-		empty: SearchImg,
+		empty: EmptyImg,
 		error: LoadError,
+		'filter-empty': SearchImg,
 		'access-denied': AccessDeniedImg,
-		'filter-empty': FilterEmptyImg,
+		'access-denied-verify': AccessDeniedImg,
+		'access-denied-subscription': AccessDeniedImg,
 	};
 
 	const resolvedTitle = title ?? titleByType[type];
