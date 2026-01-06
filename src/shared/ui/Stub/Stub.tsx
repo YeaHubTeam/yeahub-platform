@@ -41,7 +41,7 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 
 	const titleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_TITLE),
-		empty: '',
+		empty: t(Translation.STUB_EMPTY_TITLE),
 		'filter-empty': t(Translation.STUB_FILTER_TITLE),
 		'access-denied': t(Translation.STUB_ACCESS_DENIED_DEFAULT_TITLE),
 		'access-denied-verify': t(Translation.STUB_ACCESS_DENIED_VERIFY_TITLE),
@@ -50,7 +50,7 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 
 	const subtitleByType: Record<StubType, string> = {
 		error: t(Translation.STUB_ERROR_SUBTITLE),
-		empty: '',
+		empty: t(Translation.STUB_EMPTY_SUBTITLE),
 		'filter-empty': t(Translation.STUB_FILTER_SUBTITLE),
 		'access-denied': t(Translation.STUB_ACCESS_DENIED_DEFAULT_DESCRIPTION),
 		'access-denied-verify': t(Translation.STUB_ACCESS_DENIED_VERIFY_DESCRIPTION),

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config';
 import { EMAIL_VERIFY_SETTINGS_TAB, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
+import { Loader } from '@/shared/ui/Loader';
 import { Stub, StubType } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
@@ -34,9 +35,11 @@ interface PageWrapperProps {
 	hasVerification?: boolean;
 	hasSubscription?: boolean;
 	hasData?: boolean;
+	isLoading?: boolean;
 	stubs: PageWrapperStubs;
 	paginationOptions?: Pagination;
 	content: ReactNode;
+	skeleton?: ReactNode;
 	children: ({ content, pagination }: ChildrenProps) => ReactNode;
 }
 
@@ -47,9 +50,11 @@ export const PageWrapper = ({
 	hasVerification = true,
 	hasSubscription = true,
 	hasData,
+	isLoading,
 	stubs,
 	paginationOptions,
 	content,
+	skeleton,
 	children,
 }: PageWrapperProps) => {
 	const navigate = useNavigate();
@@ -65,6 +70,10 @@ export const PageWrapper = ({
 	const onMoveSubscriptionPage = () => {
 		navigate(SELECT_TARIFF_SETTINGS_TAB);
 	};
+
+	if (isLoading) {
+		return skeleton || <Loader />;
+	}
 
 	if (!hasPermissions) {
 		return (

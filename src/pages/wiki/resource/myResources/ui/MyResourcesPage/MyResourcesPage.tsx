@@ -71,10 +71,6 @@ const MyResourcesPage = () => {
 	const resources = resourcesResponse?.data ?? [];
 	const hasResources = resources.length > 0;
 
-	if (isLoading) {
-		return <MyResourcesPageSkeleton />;
-	}
-
 	const renderFilters = () => (
 		<ResourceRequestsFilters
 			filters={filters}
@@ -103,6 +99,8 @@ const MyResourcesPage = () => {
 	return (
 		<>
 			<PageWrapper
+				isLoading={isLoading}
+				skeleton={<MyResourcesPageSkeleton />}
 				hasVerification={isEmailVerified}
 				hasError={isError}
 				hasFilters={hasFilters}

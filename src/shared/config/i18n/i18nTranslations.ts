@@ -64,6 +64,8 @@ export enum Translation {
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',

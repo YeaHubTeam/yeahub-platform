@@ -9,6 +9,19 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.questions-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-50);
+}
+
 .filters {
   position: sticky;
   top: 0;

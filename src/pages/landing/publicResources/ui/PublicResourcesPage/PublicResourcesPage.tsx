@@ -67,10 +67,6 @@ const PublicResourcesPage = () => {
 		/>
 	);
 
-	if (isLoading) {
-		return <PublicResourcesPageSkeleton />;
-	}
-
 	const stubs: PageWrapperStubs = {
 		'filter-empty': {
 			onClick: onResetFilters,
@@ -88,9 +84,11 @@ const PublicResourcesPage = () => {
 
 	return (
 		<PageWrapper
+			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}
 			hasData={hasResources}
+			skeleton={<PublicResourcesPageSkeleton />}
 			stubs={stubs}
 			paginationOptions={{
 				page: filters.page || 1,

@@ -64,10 +64,6 @@ const ResourcesPage = () => {
 		navigate(ROUTES.wiki.resources.my.page);
 	};
 
-	if (isLoading) {
-		return <ResourcesPageSkeleton />;
-	}
-
 	const renderFilters = () => (
 		<ResourcesFilters
 			filters={{
@@ -99,6 +95,8 @@ const ResourcesPage = () => {
 
 	return (
 		<PageWrapper
+			isLoading={isLoading}
+			skeleton={<ResourcesPageSkeleton />}
 			hasFilters={hasFilters}
 			hasData={hasResources}
 			hasError={isError}
