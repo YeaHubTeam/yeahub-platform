@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,12 +29,6 @@ const MyResourcesPage = () => {
 	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 	const navigate = useNavigate();
 	const isEmailVerified = useAppSelector(getIsVerified);
-
-	useEffect(() => {
-		if (!isEmailVerified) {
-			navigate(ROUTES.wiki.resources.page);
-		}
-	}, [isEmailVerified, navigate]);
 
 	const {
 		onChangeTypes,
@@ -101,7 +94,7 @@ const MyResourcesPage = () => {
 			<PageWrapper
 				isLoading={isLoading}
 				skeleton={<MyResourcesPageSkeleton />}
-				hasVerification={isEmailVerified}
+				shouldVerify
 				hasError={isError}
 				hasFilters={hasFilters}
 				hasData={hasResources}

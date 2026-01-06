@@ -2,10 +2,17 @@ import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config';
-import { EMAIL_VERIFY_SETTINGS_TAB, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
+import {
+	EMAIL_VERIFY_SETTINGS_TAB,
+	SELECT_TARIFF_SETTINGS_TAB,
+	useAppSelector,
+} from '@/shared/libs';
 import { Loader } from '@/shared/ui/Loader';
 import { Stub, StubType } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
+
+import { getFullProfile, getHasPremiumAccess, getIsVerified } from '@/entities/profile';
+import { RoleName } from '@/entities/user';
 
 type StubProps = {
 	title?: string;
@@ -31,12 +38,12 @@ type ChildrenProps = {
 interface PageWrapperProps {
 	hasError?: boolean;
 	hasFilters?: boolean;
-	hasPermissions?: boolean;
-	hasVerification?: boolean;
-	hasSubscription?: boolean;
+	shouldVerify?: boolean;
+	shouldPremium?: boolean;
 	hasData?: boolean;
 	isLoading?: boolean;
 	stubs: PageWrapperStubs;
+	roles?: RoleName[];
 	paginationOptions?: Pagination;
 	content: ReactNode;
 	skeleton?: ReactNode;
@@ -46,18 +53,26 @@ interface PageWrapperProps {
 export const PageWrapper = ({
 	hasError,
 	hasFilters,
-	hasPermissions = true,
-	hasVerification = true,
-	hasSubscription = true,
+	shouldVerify = false,
+	shouldPremium = false,
 	hasData,
 	isLoading,
 	stubs,
+	roles,
 	paginationOptions,
 	content,
 	skeleton,
 	children,
 }: PageWrapperProps) => {
 	const navigate = useNavigate();
+
+	const isVerified = useAppSelector(getIsVerified);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
+	const profile = useAppSelector(getFullProfile);
+
+	const hasPermission = roles
+		? roles?.some((role) => profile?.userRoles?.some(({ name }) => role === name))
+		: true;
 
 	const onMoveMainPage = () => {
 		navigate(ROUTES.interview.page);
@@ -75,13 +90,13 @@ export const PageWrapper = ({
 		return skeleton || <Loader />;
 	}
 
-	if (!hasPermissions) {
+	if (roles && !hasPermission) {
 		return (
 			<Stub type="access-denied" onClick={stubs['access-denied']?.onClick ?? onMoveMainPage} />
 		);
 	}
 
-	if (!hasVerification) {
+	if (shouldVerify && !isVerified) {
 		return (
 			<Stub
 				type="access-denied-verify"
@@ -90,7 +105,7 @@ export const PageWrapper = ({
 		);
 	}
 
-	if (!hasSubscription) {
+	if (shouldPremium && !hasPremiumAccess) {
 		return (
 			<Stub
 				type="access-denied-subscription"
