@@ -685,8 +685,11 @@ export enum Questions {
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
-	STUB_EMPTY_TITLE = 'stub.empty.title',
-	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_TITLE = 'stub.empty.questions.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.questions.subtitle',
+	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
+	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
+	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
 }
 
 export enum InterviewHistory {

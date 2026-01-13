@@ -1,15 +1,17 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
+import { i18Namespace, Questions, ROUTES } from '@/shared/config';
 import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getProfileId } from '@/entities/profile';
 import {
-	useGetQuestionByIdQuery,
-	QuestionAdditionalInfo,
 	ProgressBlock,
+	QuestionAdditionalInfo,
+	useGetQuestionByIdQuery,
 } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
@@ -28,12 +30,19 @@ import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
 
 export const QuestionPage = () => {
+	const { t } = useTranslation(i18Namespace.questions);
 	const filter = useGetQuestionsFilterParams({ page: 1, status: 'all' });
 	const { isMobile, isTablet } = useScreenSize();
 	const { questionId = '' } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
-	const { data: question, isLoading } = useGetQuestionByIdQuery({
+	const {
+		data: question,
+		isLoading,
+		isError,
+		error,
+		refetch,
+	} = useGetQuestionByIdQuery({
 		questionId,
 		profileId,
 	});
@@ -47,6 +56,24 @@ export const QuestionPage = () => {
 
 	if (isLoading) {
 		return <QuestionPageSkeleton />;
+	}
+
+	const errorStatus = error && typeof error === 'object' && 'status' in error ? error.status : null;
+
+	if (isError && errorStatus === 404) {
+		return (
+			<Stub
+				type="empty"
+				title={t(Questions.STUB_EMPTY_QUESTION_TITLE)}
+				subtitle={t(Questions.STUB_EMPTY_QUESTION_SUBTITLE)}
+				buttonText={t(Questions.STUB_EMPTY_QUESTION_SUBMIT)}
+				onClick={refetch}
+			/>
+		);
+	}
+
+	if (isError) {
+		return <Stub type="error" onClick={refetch} />;
 	}
 
 	if (!question) {

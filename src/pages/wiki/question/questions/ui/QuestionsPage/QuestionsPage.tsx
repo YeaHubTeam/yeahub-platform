@@ -48,7 +48,12 @@ const QuestionsPage = () => {
 	const { status, ...getParams } = filters;
 	const profileId = useAppSelector(getProfileId);
 
-	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
+	const {
+		data: allQuestions,
+		isLoading: isLoadingAllQuestions,
+		isError: errorAllQuestions,
+		refetch: refetchAllQuestions,
+	} = useGetQuestionsListQuery(
 		{
 			...getParams,
 			profileId,
@@ -73,6 +78,7 @@ const QuestionsPage = () => {
 		);
 
 	const questions = status === 'all' || status === 'favorite' ? allQuestions : learnedQuestions;
+	const questionsList = questions?.data || [];
 
 	const onMoveQuestionDetail = (id: number) => {
 		handleNavigation(id);
@@ -103,20 +109,21 @@ const QuestionsPage = () => {
 		'filter-empty': {
 			onClick: onResetFilters,
 		},
+		error: {
+			onClick: refetchAllQuestions,
+		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories}
+			hasError={!!errorAllQuestions}
 			skeleton={<QuestionsPageSkeleton />}
 			hasFilters={hasFilters}
-			hasData={(questions?.data || []).length > 0}
+			hasData={questionsList.length > 0}
 			stubs={stubs}
 			content={
-				<FullQuestionsList
-					questions={questions?.data || []}
-					onMoveQuestionDetail={onMoveQuestionDetail}
-				/>
+				<FullQuestionsList questions={questionsList} onMoveQuestionDetail={onMoveQuestionDetail} />
 			}
 			paginationOptions={{
 				page: filters.page || 1,
@@ -137,7 +144,7 @@ const QuestionsPage = () => {
 						<hr className={styles.divider} />
 						<>
 							{content}
-							{pagination}
+							{questionsList.length > 0 && pagination}
 						</>
 					</Card>
 					<Card className={styles.filters}>{renderFilters()}</Card>
