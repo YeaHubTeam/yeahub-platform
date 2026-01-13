@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { Stub } from '@/shared/ui/Stub';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
@@ -39,7 +40,14 @@ export const CollectionPage = () => {
 		page: 1,
 	});
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
-	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
+	const {
+		data: collection,
+		isFetching,
+		isLoading,
+		isError: isCollectionError,
+		isSuccess: isCollectionSuccess,
+		refetch: refetchCollection,
+	} = useGetCollectionByIdQuery({ collectionId });
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const profileId = useAppSelector(getProfileId);
 	const { data: response, isSuccess } = useGetQuestionsListQuery(
@@ -62,8 +70,29 @@ export const CollectionPage = () => {
 
 	const isEmptyData = isSuccess && questions.length === 0;
 
+	const isCollectionEmpty =
+		!collection || Object.keys(collection).length === 0 || collection.questionsCount === 0;
+
 	if (isLoading || isFetching) {
 		return <CollectionPageSkeleton />;
+	}
+
+	if (isCollectionError) {
+		return <Stub type="error" onClick={() => refetchCollection()} />;
+	}
+
+	if (isCollectionSuccess && isCollectionEmpty) {
+		return (
+			<div className={styles.errorWrapper}>
+				<Stub
+					type="empty"
+					title={t(Collections.STUB_EMPTY_COLLECTION_TITLE)}
+					subtitle={t(Collections.STUB_EMPTY_COLLECTION_SUBTITLE)}
+					buttonText={t(Collections.STUB_EMPTY_COLLECTION_SUBMIT)}
+					onClick={() => refetchCollection()}
+				/>
+			</div>
+		);
 	}
 
 	if (!collection) {

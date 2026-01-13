@@ -48,7 +48,12 @@ const CollectionsPage = () => {
 		specializations: [specializationId],
 	});
 
-	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
+	const {
+		data: allCollections,
+		isLoading: isLoadingAllCollections,
+		isError: isErrorAllCollections,
+		refetch: refetchCollections,
+	} = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
 		companies: filters.company,
@@ -82,6 +87,9 @@ const CollectionsPage = () => {
 		'filter-empty': {
 			onClick: onResetFilters,
 		},
+		error: {
+			onClick: () => refetchCollections(),
+		},
 	};
 
 	return (
@@ -90,6 +98,7 @@ const CollectionsPage = () => {
 			skeleton={<CollectionsPageSkeleton />}
 			hasFilters={hasFilters}
 			hasData={(allCollections?.data || []).length > 0}
+			hasError={isErrorAllCollections}
 			stubs={stubs}
 			content={<CollectionsList collections={allCollections?.data || []} queryFilter={search} />}
 			paginationOptions={{
