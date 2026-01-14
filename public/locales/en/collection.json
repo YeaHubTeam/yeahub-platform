@@ -75,8 +75,10 @@
 	},
 	"stub": {
 		"empty": {
-			"title": "No collections found yet",
-			"subtitle": "Collections are added periodically, just wait a bit",
+			"collections": {
+				"title": "No collections found yet",
+				"subtitle": "Collections are added periodically, just wait a bit"
+			},
 			"collection": {
 				"title": "It seems the collection data is missing",
 				"subtitle": "Try refreshing the page or repeating the request",
