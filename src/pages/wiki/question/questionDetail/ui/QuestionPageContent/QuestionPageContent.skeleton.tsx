@@ -1,16 +1,16 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { QuestionAdditionalInfoSkeleton, ProgressBlockSkeleton } from '@/entities/question';
+import { ProgressBlockSkeleton, QuestionAdditionalInfoSkeleton } from '@/entities/question';
 
 import { QuestionBodySkeleton } from '@/widgets/question/QuestionBody';
 import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
 
 import { QuestionActionsSkeleton } from '../QuestionActions/QuestionActions.skeleton';
 
-import styles from './QuestionPage.module.css';
+import styles from './QuestionPageContent.module.css';
 
-export const QuestionPageSkeleton = () => {
+export const QuestionPageContentSkeleton = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (

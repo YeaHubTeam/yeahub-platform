@@ -15,8 +15,8 @@ import {
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import { QuestionPageSkeleton } from './QuestionPage.skeleton';
-import { QuestionPageContent } from './QuestionPageContent';
+import { QuestionPageContent } from '../QuestionPageContent/QuestionPageContent';
+import { QuestionPageContentSkeleton } from '../QuestionPageContent/QuestionPageContent.skeleton';
 
 export const QuestionPage = () => {
 	const { t } = useTranslation(i18Namespace.questions);
@@ -61,7 +61,9 @@ export const QuestionPage = () => {
 		},
 	};
 
-	const content = question ? (
+	const hasQuestion = question && Object.keys(question).length > 0;
+
+	const content = hasQuestion ? (
 		<QuestionPageContent
 			question={question}
 			questionId={questionId}
@@ -74,9 +76,9 @@ export const QuestionPage = () => {
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasData={!!question}
+			hasData={hasQuestion}
 			hasError={isError}
-			skeleton={<QuestionPageSkeleton />}
+			skeleton={<QuestionPageContentSkeleton />}
 			stubs={stubs}
 			content={content}
 		>

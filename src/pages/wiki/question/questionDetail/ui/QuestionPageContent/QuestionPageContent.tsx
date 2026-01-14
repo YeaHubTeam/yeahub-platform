@@ -9,9 +9,9 @@ import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
 
-import { QuestionActions } from '@/pages/wiki/question/questionDetail/ui/QuestionActions/QuestionActions';
+import { QuestionActions } from '../QuestionActions/QuestionActions';
 
-import styles from './QuestionPage.module.css';
+import styles from './QuestionPageContent.module.css';
 
 interface QuestionPageContentProps {
 	question: Question;
