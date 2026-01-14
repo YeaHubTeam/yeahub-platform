@@ -1,4 +1,5 @@
-import { Response } from '@/shared/types/types';
+import { Response } from '@/shared/libs';
+
 import type { Resource } from '@/entities/resource';
 
 export const resourcesMock: Response<Resource[]> = {
