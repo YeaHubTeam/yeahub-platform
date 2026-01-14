@@ -14,7 +14,7 @@
 .modal {
   position: relative;
   margin: 0 20px;
-  min-width: 462px;
+  min-width: 448px;
   max-width: 930px;
   border-radius: 24px;
   background-color: var(--background-block);
@@ -57,25 +57,25 @@
   background-color: var(--color-black-25);
 }
 
-.notification-modal {
+.view-notification-modal {
   min-width: 328px;
   max-width: 410px;
 }
 
-.error-modal {
+.variant-error-modal {
   outline: 1px solid var(--color-red-600);
   background-color: var(--color-red-50);
 }
 
-.default-modal {
+.variant-default-modal {
   outline: 1px solid var(--color-purple-700);
 }
 
-.error-title {
+.variant-error-title {
   border-bottom: 1px solid var(--color-red-100);
 }
 
-.error-buttons {
+.variant-error-buttons {
   padding: 30px 40px 40px;
   border-radius: 0 0 24px 24px;
   background-color: var(--color-white-900);

@@ -111,6 +111,10 @@
 	"stub": {
 		"not.auth": {
 			"title": "The detailed answer is available only to registered users."
+		},
+		"empty": {
+			"title": "No questions found yet",
+			"subtitle": "Questions are added periodically, just wait a bit"
 		}
 	}
 }

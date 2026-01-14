@@ -1,4 +1,9 @@
 export enum Translation {
+	BANNER_NY_TEXT = 'banner.ny.text',
+	BANNER_NY_BUTTON = 'banner.ny.button',
+	MODAL_NY_TITLE = 'modal.ny.title',
+	MODAL_NY_TEXT = 'modal.ny.text',
+	MODAL_NY_BUTTON = 'modal.ny.button',
 	LANGUAGE = 'language',
 	MORE = 'more',
 	RETURN = 'return',
@@ -59,14 +64,20 @@ export enum Translation {
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
-
-	/* Access Denied */
-	ACCESS_DENIED_TITLE = 'access.denied.title',
-	ACCESS_DENIED_DESCRIPTION = 'access.denied.description',
-	ACCESS_DENIED_BUTTON = 'access.denied.button',
+	STUB_ACCESS_DENIED_DEFAULT_TITLE = 'stub.access.denied.default.title',
+	STUB_ACCESS_DENIED_DEFAULT_DESCRIPTION = 'stub.access.denied.default.description',
+	STUB_ACCESS_DENIED_DEFAULT_BUTTON = 'stub.access.denied.default.button',
+	STUB_ACCESS_DENIED_VERIFY_TITLE = 'stub.access.denied.verify.title',
+	STUB_ACCESS_DENIED_VERIFY_DESCRIPTION = 'stub.access.denied.verify.description',
+	STUB_ACCESS_DENIED_VERIFY_BUTTON = 'stub.access.denied.verify.button',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_TITLE = 'stub.access.denied.subscription.title',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_DESCRIPTION = 'stub.access.denied.subscription.description',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_BUTTON = 'stub.access.denied.subscription.button',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',
@@ -259,6 +270,14 @@ export enum Translation {
 	TOAST_QUESTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.questions.create.auth.user.verified',
 	TOAST_QUESTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.questions.create.auth.roles.admin.or.author.required',
 	TOAST_QUESTIONS_CREATE_QUESTION_TITLE_CONFLICT = 'toast.questions.create.question.title.conflict',
+	TOAST_COLLECTIONS_CREATE_USER_ID_NOT_FOUND = 'toast.collections.create.user.id.not.found',
+	TOAST_COLLECTIONS_CREATE_AUTH_UNAUTHORIZED = 'toast.collections.create.auth.unauthorized',
+	TOAST_COLLECTIONS_CREATE_AUTH_USER_VERIFIED = 'toast.collections.create.auth.user.verified',
+	TOAST_COLLECTIONS_CREATE_AUTH_ROLES_ADMIN_OR_AUTHOR_REQUIRED = 'toast.collections.create.auth.roles.admin.or.author.required',
+	TOAST_COLLECTIONS_CREATE_TINIFY_COMPRESS_FAILED = 'toast.collections.create.tinify.compress.failed',
+	TOAST_COLLECTIONS_CREATE_TINIFY_RESIZE_FAILED = 'toast.collections.create.tinify.resize.failed',
+	TOAST_COLLECTIONS_CREATE_COLLECTION_USER_DELETED = 'toast.collections.create.collection.user.deleted',
+	TOAST_COLLECTIONS_CREATE_COLLECTION_CREATE_CONFLICT = 'toast.collections.create.collection.create.conflict',
 }
 
 export enum Profile {
@@ -666,6 +685,8 @@ export enum Questions {
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 }
 
 export enum InterviewHistory {
@@ -709,6 +730,7 @@ export enum Onboarding {
 	CHOOSE_SPECIALIZATION_CONTENT = 'choose.specialization.content',
 	CHOOSE_SPECIALIZATION_SELECT_LABEL = 'choose.specialization.select.label',
 	CHOOSE_SPECIALIZATION_BUTTON = 'choose.specialization.button',
+	CHOOSE_SPECIALIZATION_NOT_SELECT = 'choose.specialization.not.select',
 	OVERVIEW_SERVICE_TITLE = 'overview.service.title',
 	OVERVIEW_SERVICE_LIST_FIRST = 'overview.service.list.first',
 	OVERVIEW_SERVICE_LIST_SECOND = 'overview.service.list.second',
@@ -863,6 +885,7 @@ export enum Companies {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
+	TITLE_MY = 'title.my',
 	ICON_TITLE = 'icon.title',
 	ICON_SHORT = 'icon.short',
 	ICON_LABEL = 'icon.label',
@@ -1045,6 +1068,8 @@ export enum Landing {
 }
 
 export enum Subscription {
+	TITLE = 'title',
+	DESCRIPTION = 'description',
 	SUBSCRIBE_ACTION = 'subscribeAction',
 	UNSUBSCRIBE_MODAL_TITLE = 'unsubscribe.modal.title',
 	UNSUBSCRIBE_MODAL_BUTTON_YES = 'unsubscribe.modal.button.yes',
@@ -1071,6 +1096,37 @@ export enum Subscription {
 	SUBSCRIPTION_FAQ_THIRD_ANSWER = 'faq.third.answer',
 	SUBSCRIPTION_FAQ_FOURTH_QUESTION = 'faq.fourth.question',
 	SUBSCRIPTION_FAQ_FOURTH_ANSWER = 'faq.fourth.answer',
+	CARD_BADGE_BASIC = 'card.badge.basic',
+	CARD_BADGE_DISCOUNT = 'card.badge.discount',
+	CARD_PRICE_ALL = 'card.price.all',
+	CARD_PRICE_MONTH = 'card.price.month',
+	CARD_TITLE_FREE = 'card.title.free',
+	CARD_TITLE_MONTH = 'card.title.month',
+	CARD_TITLE_YEAR = 'card.title.year',
+	CARD_SUBTITLE_FREE = 'card.subtitle.free',
+	CARD_SUBTITLE_MONTH = 'card.subtitle.month',
+	CARD_SUBTITLE_QUARTER = 'card.subtitle.quarter',
+	CARD_SUBTITLE_YEAR = 'card.subtitle.year',
+	CARD_BENEFITS_FIRST = 'card.benefits.first',
+	CARD_BENEFITS_SECOND = 'card.benefits.second',
+	CARD_BENEFITS_THIRD = 'card.benefits.third',
+	CARD_BENEFITS_FOURTH_FREE = 'card.benefits.fourth.free',
+	CARD_BENEFITS_FOURTH_PAID = 'card.benefits.fourth.paid',
+	BANNER_TITLE = 'banner.title',
+	BANNER_LIST_TITLE = 'banner.list.title',
+	BANNER_LIST_FIRST = 'banner.list.first',
+	BANNER_LIST_SECOND = 'banner.list.second',
+	BANNER_LIST_THIRD = 'banner.list.third',
+	BANNER_LIST_FOURTH = 'banner.list.fourth',
+	BANNER_LIST_FIFTH = 'banner.list.fifth',
+	BANNER_LIST_THANKS = 'banner.list.thanks',
+	SUBSCRIBE_MODAL_TITLE = 'subscribe.modal.title',
+	SUBSCRIBE_MODAL_EMAIL_DESCRIPTION = 'subscribe.modal.email.description',
+	SUBSCRIBE_MODAL_EMAIL_INPUT_VALUE = 'subscribe.modal.email.input.value',
+	SUBSCRIBE_MODAL_PRIVACY_TITLE = 'subscribe.modal.privacy.title',
+	SUBSCRIBE_MODAL_PRIVACY_OFFER_AGREEMENT = 'subscribe.modal.privacy.offer.agreement',
+	SUBSCRIBE_MODAL_PRIVACY_CONSENT = 'subscribe.modal.privacy.consent',
+	SUBSCRIBE_MODAL_BUTTON = 'subscribe.modal.button',
 }
 
 export enum SubscriptionCard {

@@ -5,7 +5,7 @@ import { i18Namespace } from '@/shared/config';
 import { Subscription } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
-import { TextHtml } from '@/shared/ui/TextHtml';
+import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile } from '@/entities/profile';
 
@@ -50,11 +50,11 @@ export const UnsubscribeModal = ({ isOpen, onClose }: RequiredModalProps) => {
 			buttonPrimaryClick={handleUnsubscribe}
 			isOpen={isOpen}
 			onClose={handleClose}
+			className={styles.modal}
 		>
-			<TextHtml
-				html={t(Subscription.UNSUBSCRIBE_MODAL_DESCRIPTION)}
-				className={styles.description}
-			/>
+			<Text variant="body3" className={styles.description}>
+				{t(Subscription.UNSUBSCRIBE_MODAL_DESCRIPTION)}
+			</Text>
 		</Modal>
 	);
 };
