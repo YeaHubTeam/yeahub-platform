@@ -1,19 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import { i18Namespace, Questions, ROUTES } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getProfileId } from '@/entities/profile';
-import {
-	ProgressBlock,
-	QuestionAdditionalInfo,
-	useGetQuestionByIdQuery,
-} from '@/entities/question';
-import { getChannelsForSpecialization } from '@/entities/socialMedia';
+import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { useGetQuestionsFilterParams } from '@/features/question/filterQuestions';
 import {
@@ -21,26 +13,21 @@ import {
 	useQuestionQueryNavigate,
 } from '@/features/question/navigateQuestion';
 
-import { QuestionBody } from '@/widgets/question/QuestionBody';
-import { QuestionHeader } from '@/widgets/question/QuestionHeader';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import { QuestionActions } from '../QuestionActions/QuestionActions';
-
-import styles from './QuestionPage.module.css';
 import { QuestionPageSkeleton } from './QuestionPage.skeleton';
+import { QuestionPageContent } from './QuestionPageContent';
 
 export const QuestionPage = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const filter = useGetQuestionsFilterParams({ page: 1, status: 'all' });
-	const { isMobile, isTablet } = useScreenSize();
 	const { questionId = '' } = useParams<{ questionId: string }>();
-
 	const profileId = useAppSelector(getProfileId);
+
 	const {
 		data: question,
 		isLoading,
 		isError,
-		error,
 		refetch,
 	} = useGetQuestionByIdQuery({
 		questionId,
@@ -54,37 +41,6 @@ export const QuestionPage = () => {
 		filter,
 	});
 
-	if (isLoading) {
-		return <QuestionPageSkeleton />;
-	}
-
-	const errorStatus = error && typeof error === 'object' && 'status' in error ? error.status : null;
-
-	if (isError && errorStatus === 404) {
-		return (
-			<Stub
-				type="empty"
-				title={t(Questions.STUB_EMPTY_QUESTION_TITLE)}
-				subtitle={t(Questions.STUB_EMPTY_QUESTION_SUBTITLE)}
-				buttonText={t(Questions.STUB_EMPTY_QUESTION_SUBMIT)}
-				onClick={refetch}
-			/>
-		);
-	}
-
-	if (isError) {
-		return <Stub type="error" onClick={refetch} />;
-	}
-
-	if (!question) {
-		return null;
-	}
-
-	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
-	const showAuthor = guru ? false : true;
-
-	const media = getChannelsForSpecialization(question.questionSpecializations);
-
 	const onMovePrev = () => {
 		handleNavigation(prevId, prevPage);
 	};
@@ -93,50 +49,39 @@ export const QuestionPage = () => {
 		handleNavigation(nextId, nextPage);
 	};
 
-	const {
-		createdBy,
-		checksCount,
-		rate,
-		keywords,
-		complexity,
-		questionSkills,
-		shortAnswer,
-		longAnswer,
-		isFavorite,
-	} = question;
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Questions.STUB_EMPTY_QUESTION_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTION_SUBTITLE),
+			buttonText: t(Questions.STUB_EMPTY_QUESTION_SUBMIT),
+			onClick: refetch,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
+
+	const content = question ? (
+		<QuestionPageContent
+			question={question}
+			questionId={questionId}
+			isDisabled={isDisabled}
+			onMovePrev={onMovePrev}
+			onMoveNext={onMoveNext}
+		/>
+	) : null;
 
 	return (
-		<Flex gap="20">
-			<Flex gap="20" direction="column" flex={1} maxWidth>
-				<QuestionHeader question={question} />
-				<QuestionActions
-					questionId={questionId}
-					checksCount={checksCount}
-					isFavorite={isFavorite}
-					onMovePrev={onMovePrev}
-					onMoveNext={onMoveNext}
-					isDisabled={isDisabled}
-				/>
-				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
-				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
-			</Flex>
-			{!isMobile && !isTablet && (
-				<Flex direction="column" gap="20" className={styles.additional}>
-					<ProgressBlock checksCount={checksCount} />
-					<QuestionAdditionalInfo
-						showAuthor={showAuthor}
-						rate={rate}
-						createdBy={createdBy}
-						keywords={keywords}
-						complexity={complexity}
-						questionSkills={questionSkills}
-						route={ROUTES.wiki.questions.page}
-						media={media}
-					/>
-					{guru && <GurusBanner gurus={[guru]} />}
-				</Flex>
-			)}
-		</Flex>
+		<PageWrapper
+			isLoading={isLoading}
+			hasData={!!question}
+			hasError={isError}
+			skeleton={<QuestionPageSkeleton />}
+			stubs={stubs}
+			content={content}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 

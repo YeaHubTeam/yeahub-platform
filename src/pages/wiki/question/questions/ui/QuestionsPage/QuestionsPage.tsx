@@ -51,7 +51,7 @@ const QuestionsPage = () => {
 	const {
 		data: allQuestions,
 		isLoading: isLoadingAllQuestions,
-		isError: errorAllQuestions,
+		isError: isErrorAllQuestions,
 		refetch: refetchAllQuestions,
 	} = useGetQuestionsListQuery(
 		{
@@ -103,8 +103,8 @@ const QuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Questions.STUB_EMPTY_TITLE),
-			subtitle: t(Questions.STUB_EMPTY_SUBTITLE),
+			title: t(Questions.STUB_EMPTY_QUESTIONS_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
@@ -117,7 +117,7 @@ const QuestionsPage = () => {
 	return (
 		<PageWrapper
 			isLoading={isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories}
-			hasError={!!errorAllQuestions}
+			hasError={isErrorAllQuestions}
 			skeleton={<QuestionsPageSkeleton />}
 			hasFilters={hasFilters}
 			hasData={questionsList.length > 0}
@@ -144,7 +144,7 @@ const QuestionsPage = () => {
 						<hr className={styles.divider} />
 						<>
 							{content}
-							{questionsList.length > 0 && pagination}
+							{pagination}
 						</>
 					</Card>
 					<Card className={styles.filters}>{renderFilters()}</Card>
