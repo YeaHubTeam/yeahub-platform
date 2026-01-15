@@ -19,6 +19,8 @@ import {
 	MostDifficultQuestionsResponse,
 	GetPopularQuestionsResponse,
 	MostDifficultQuestionsRequestParams,
+	GetFilterKeywordsResponse,
+	GetFilterKeywordsParamsRequest,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -97,6 +99,20 @@ const questionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.POPULAR_QUESTIONS],
 		}),
+		getQuestionsFilterKeywords: build.query<
+			GetFilterKeywordsResponse,
+			GetFilterKeywordsParamsRequest
+		>({
+			query: (params) => ({
+				url: questionApiUrls.getQuestionFilterKeywords,
+				params: {
+					page: 1,
+					limit: 100,
+					...params,
+				},
+			}),
+			providesTags: [ApiTags.QUESTIONS],
+		}),
 	}),
 });
 
@@ -110,4 +126,5 @@ export const {
 	useGetLearnedQuestionsQuery,
 	useGetMostDifficultQuestionsBySpecializationIdQuery,
 	useGetPopularQuestionsQuery,
+	useGetQuestionsFilterKeywordsQuery,
 } = questionApi;
