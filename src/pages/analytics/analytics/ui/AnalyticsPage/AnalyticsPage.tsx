@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
+import { EMAIL_VERIFY_SETTINGS_TAB, useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 
 import { getIsVerified } from '@/entities/profile';
 
@@ -19,11 +18,13 @@ export const AnalyticsPage = () => {
 	const navigate = useNavigate();
 	const isVerified = useAppSelector(getIsVerified);
 
-	useEffect(() => {
-		if (!isVerified) {
-			navigate(ROUTES.interview.page);
-		}
-	}, [isVerified, navigate]);
+	if (!isVerified) {
+		return (
+			<Flex justify="center" align="center" style={{ minHeight: '400px' }}>
+				<Stub type="access-denied-verify" onClick={() => navigate(EMAIL_VERIFY_SETTINGS_TAB)} />
+			</Flex>
+		);
+	}
 
 	return (
 		<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">
