@@ -113,8 +113,15 @@
 			"title": "The detailed answer is available only to registered users."
 		},
 		"empty": {
-			"title": "No questions found yet",
-			"subtitle": "Questions are added periodically, just wait a bit"
+			"questions": {
+				"title": "No questions found yet",
+				"subtitle": "Questions are added periodically, just wait a bit"
+			},
+			"question": {
+				"title": "No question data available",
+				"subtitle": "Please refresh the page or try the request again",
+				"submit": "Retry"
+			}
 		}
 	}
 }
