@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +15,7 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
 
+import { useGetQuestionsFilterKeywordsQuery } from '../../api/questionApi';
 import { QuestionStatus } from '../../model/types/question';
 
 import styles from './QuestionForm.module.css';
@@ -22,8 +24,9 @@ export const QuestionForm = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	const { control, watch } = useFormContext();
-
+	const { data: keywordsData } = useGetQuestionsFilterKeywordsQuery({});
 	const selectedSpecializations = watch('specializations');
+	const [dropdownValue, setDropdownValue] = useState('');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -35,6 +38,9 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
+
+	const keywordsItems: { label: string; value: string }[] =
+		keywordsData?.data.map((keyword) => ({ label: keyword, value: keyword })) || [];
 
 	return (
 		<Flex direction="column" gap="40">
@@ -165,9 +171,31 @@ export const QuestionForm = () => {
 				</Flex>
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value }) => {
+						const currentKeywords = Array.isArray(value) ? value : [];
+
+						const availableKeywordsItems = keywordsItems.filter(
+							(item) => !currentKeywords.includes(item.value),
+						);
+
 						return (
 							<div className={styles.select}>
-								<KeywordInput value={value} onChange={onChange} />
+								<Dropdown
+									width={360}
+									label={t(Questions.KEYWORDS_FILTER_PLACEHOLDER)}
+									onSelect={(val) => {
+										const keyword = String(val);
+										if (!currentKeywords.includes(keyword)) {
+											onChange([...currentKeywords, keyword]);
+											setDropdownValue('');
+										}
+									}}
+									value={dropdownValue}
+								>
+									{availableKeywordsItems.map((option) => (
+										<Option value={option.value} label={option.label} key={option.value} />
+									))}
+								</Dropdown>
+								<KeywordInput value={currentKeywords} onChange={onChange} />
 							</div>
 						);
 					}}

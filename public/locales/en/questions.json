@@ -76,7 +76,8 @@
 	},
 	"keywords": {
 		"title": "Keywords",
-		"label": "Add keywords to the text"
+		"label": "Add keywords to the text",
+		"filter.placeholder": "Choose your keywords"
 	},
 	"author": "Author",
 	"level": "Level:",

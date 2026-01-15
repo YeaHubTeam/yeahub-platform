@@ -146,3 +146,16 @@ export interface PopularQuestionsSpecialization {
 }
 
 export type GetPopularQuestionsResponse = PopularQuestionsSpecialization[];
+
+export interface GetFilterKeywordsResponse {
+	total: number;
+	page: number;
+	limit: number;
+	data: string[];
+}
+
+export interface GetFilterKeywordsParamsRequest {
+	page?: number;
+	limit?: number;
+	title?: string;
+}
