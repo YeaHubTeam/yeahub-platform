@@ -36,4 +36,5 @@ export {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';
+
 export { resourcesMock } from './api/__mock__/data';

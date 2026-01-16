@@ -11,9 +11,9 @@ import {
 	CollectionHeaderSkeleton,
 } from '@/widgets/Collection';
 
-import styles from './CollectionPage.module.css';
+import styles from './CollectionContent.module.css';
 
-export const CollectionPageSkeleton = () => {
+export const CollectionContentSkeleton = () => {
 	const { isMobileS } = useScreenSize();
 
 	return (
