@@ -17,7 +17,8 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 		Boolean(filters.title) ||
 		(filters?.types || [])?.length > 0 ||
 		(filters.skills || [])?.length > 0 ||
-		Boolean(filters.specialization);
+		Boolean(filters.specialization) ||
+		Boolean(filters.isMy);
 
 	const onChangeTitle = (title: ResourcesFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -43,6 +44,10 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 		onFilterChange({ page });
 	};
 
+	const onChangeIsMy = (isMy: ResourcesFilterParams['isMy']) => {
+		onFilterChange({ isMy: isMy ? true : undefined, page: 1 });
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -52,5 +57,6 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 		onChangeSpecialization,
 		onChangePage,
 		onResetFilters,
+		onChangeIsMy,
 	};
 };
