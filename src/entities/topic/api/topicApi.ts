@@ -6,6 +6,7 @@ import {
 	GetTopicsListParamsRequest,
 	GetTopicsListResponse,
 	GetTopicByIdResponse,
+	GetTopicByIdParamsRequest,
 } from '../model/types/topic';
 
 export const topicApi = baseApi.injectEndpoints({
@@ -17,11 +18,11 @@ export const topicApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TOPICS],
 		}),
-		getTopicById: build.query<GetTopicByIdResponse, string>({
-			query: (param) => ({
-				url: route(topicApiUrl.getTopicById, param),
+		getTopicById: build.query<GetTopicByIdResponse, GetTopicByIdParamsRequest>({
+			query: ({ topicId }) => ({
+				url: route(topicApiUrl.getTopicById, topicId || ''),
 			}),
-			providesTags: [ApiTags.TOPIC],
+			providesTags: [ApiTags.TOPICS],
 		}),
 	}),
 });
