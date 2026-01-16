@@ -13,7 +13,7 @@ import { AdditionalInfo } from '@/widgets/Collection';
 
 import { CollectionActions } from '../CollectionActions/CollectionActions';
 
-import styles from './CollectionPage.module.css';
+import styles from './CollectionContent.module.css';
 
 interface CollectionContentProps {
 	collection: CollectionType;

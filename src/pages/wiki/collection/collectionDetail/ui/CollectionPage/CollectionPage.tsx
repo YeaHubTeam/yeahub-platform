@@ -16,8 +16,8 @@ import {
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import { CollectionContent } from './CollectionContent';
-import { CollectionPageSkeleton } from './CollectionPage.skeleton';
+import { CollectionContent } from '../CollectionContent/CollectionContent';
+import { CollectionContentSkeleton } from '../CollectionContent/CollectionContent.skeleton';
 
 export const CollectionPage = () => {
 	const { t } = useTranslation(i18Namespace.collection);
@@ -27,7 +27,6 @@ export const CollectionPage = () => {
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
 	const {
 		data: collection,
-		isFetching,
 		isLoading,
 		isError: isCollectionError,
 		refetch: refetchCollection,
@@ -90,8 +89,8 @@ export const CollectionPage = () => {
 
 	return (
 		<PageWrapper
-			isLoading={isLoading || isFetching}
-			skeleton={<CollectionPageSkeleton />}
+			isLoading={isLoading}
+			skeleton={<CollectionContentSkeleton />}
 			hasData={!isCollectionEmpty}
 			hasError={isCollectionError}
 			hasFilters={false}
