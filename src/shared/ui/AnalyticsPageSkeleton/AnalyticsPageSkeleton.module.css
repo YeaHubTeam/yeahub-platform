@@ -1,0 +1,46 @@
+.header {
+  margin-bottom: 24px;
+}
+
+.filtersContainer {
+  margin-bottom: 24px;
+}
+
+.content {
+  min-height: 300px;
+}
+
+.tableBody {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  padding: 16px 12px;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  padding: 0 4px;
+}
+
+.mobileList {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mobileListItem {
+  padding: 16px;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 0 16px;
+}

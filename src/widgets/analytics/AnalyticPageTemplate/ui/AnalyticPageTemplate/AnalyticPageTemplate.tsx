@@ -29,7 +29,7 @@ interface AnalyticPageTemplateFilters {
 	onResetFilters?: () => void;
 }
 
-interface AnalyticPageTemplateProps {
+export interface AnalyticPageTemplateProps {
 	title: string;
 	tooltip?: string;
 	list: ReactNode;
