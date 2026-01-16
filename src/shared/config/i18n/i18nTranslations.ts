@@ -614,6 +614,8 @@ export enum Resources {
 	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
 	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
 	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
+	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
 
 export enum Questions {
