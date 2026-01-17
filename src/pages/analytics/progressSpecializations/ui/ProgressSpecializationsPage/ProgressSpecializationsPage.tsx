@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 
 import {
 	SpecializationProgressTable,
@@ -10,7 +8,7 @@ import {
 } from '@/entities/specialization';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { ProgressSpecializationsList } from '../ProgressSpecializationsList/ProgressSpecializationsList';
 
@@ -23,7 +21,7 @@ export const ProgressSpecializationsPage = () => {
 	const {
 		data: response,
 		isLoading,
-		error,
+		isError,
 		refetch,
 	} = useGetSpecializationsGeneralProgressQuery({
 		page: filters.page,
@@ -31,23 +29,22 @@ export const ProgressSpecializationsPage = () => {
 	});
 
 	const { t } = useTranslation(i18Namespace.analytics);
-	const navigate = useNavigate();
 
 	const specializationsProgress = response?.data ?? [];
 	const hasData = specializationsProgress.length > 0;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: () => refetch() },
+		'filter-empty': { onClick: onResetFilters },
+	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasError={!!error}
+			hasError={isError}
 			hasFilters={hasFilters}
 			hasData={hasData}
-			shouldVerify={true}
-			stubs={{
-				error: { onClick: () => refetch() },
-				'filter-empty': { onClick: onResetFilters },
-				'access-denied-verify': { onClick: () => navigate(EMAIL_VERIFY_SETTINGS_TAB) },
-			}}
+			shouldVerify
+			stubs={stubs}
 			content={
 				<AnalyticPageTemplate
 					title={t(Analytics.SPECIALIZATION_PROGRESS_TITLE)}

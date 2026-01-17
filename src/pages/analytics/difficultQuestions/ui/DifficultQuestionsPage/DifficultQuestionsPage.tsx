@@ -1,21 +1,19 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { EMAIL_VERIFY_SETTINGS_TAB, useAppSelector } from '@/shared/libs';
+import { useAppSelector } from '@/shared/libs';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/question';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { DifficultQuestionsList } from '../DifficultQuestionsList/DifficultQuestionsList';
 import { DifficultQuestionsTable } from '../DifficultQuestionsTable/DifficultQuestionsTable';
 
 export const DifficultQuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
-	const navigate = useNavigate();
 	const specializationId = useAppSelector(getSpecializationId);
 
 	const { filters, hasFilters, onResetFilters, onChangeSpecialization, onChangePage } =
@@ -27,7 +25,7 @@ export const DifficultQuestionsPage = () => {
 	const {
 		data: response,
 		isLoading,
-		error,
+		isError,
 		refetch,
 	} = useGetMostDifficultQuestionsBySpecializationIdQuery({
 		specId: filters.specialization || specializationId,
@@ -36,19 +34,19 @@ export const DifficultQuestionsPage = () => {
 
 	const difficultQuestions = response?.data?.topStat ?? [];
 	const hasData = difficultQuestions.length > 0;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: () => refetch() },
+		'filter-empty': { onClick: onResetFilters },
+	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasError={!!error}
+			hasError={isError}
 			hasFilters={hasFilters}
 			hasData={hasData}
-			shouldVerify={true}
-			stubs={{
-				error: { onClick: () => refetch() },
-				'filter-empty': { onClick: onResetFilters },
-				'access-denied-verify': { onClick: () => navigate(EMAIL_VERIFY_SETTINGS_TAB) },
-			}}
+			shouldVerify
+			stubs={stubs}
 			content={
 				<AnalyticPageTemplate
 					title={

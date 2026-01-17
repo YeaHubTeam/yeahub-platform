@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 
 import { useGetPopularSkillsQuery } from '@/entities/skill';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
 import { PopularSkillsPageTable } from '../PopularSkillsPageTable/PopularSkillsPageTable';
@@ -18,12 +16,11 @@ export const PopularSkillsPage = () => {
 			page: 1,
 		});
 	const { t } = useTranslation(i18Namespace.analytics);
-	const navigate = useNavigate();
 
 	const {
 		data: popularSkills,
 		isLoading,
-		error,
+		isError,
 		refetch,
 	} = useGetPopularSkillsQuery({
 		limit: 10,
@@ -35,19 +32,19 @@ export const PopularSkillsPage = () => {
 		? popularSkills?.data[0].specialization.title
 		: '';
 	const hasData = (popularSkills?.data?.length ?? 0) > 0;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: () => refetch() },
+		'filter-empty': { onClick: onResetFilters },
+	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasError={!!error}
+			hasError={isError}
 			hasData={hasData}
 			hasFilters={hasFilters}
-			shouldVerify={true}
-			stubs={{
-				error: { onClick: () => refetch() },
-				'filter-empty': { onClick: onResetFilters },
-				'access-denied-verify': { onClick: () => navigate(EMAIL_VERIFY_SETTINGS_TAB) },
-			}}
+			shouldVerify
+			stubs={stubs}
 			content={
 				<AnalyticPageTemplate
 					title={

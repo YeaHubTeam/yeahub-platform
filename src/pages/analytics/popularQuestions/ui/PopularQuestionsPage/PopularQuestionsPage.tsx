@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Analytics } from '@/shared/config';
-import { EMAIL_VERIFY_SETTINGS_TAB } from '@/shared/libs';
 
 import { PopularQuestionStat, useGetPopularQuestionsQuery } from '@/entities/question';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
@@ -21,8 +19,7 @@ export const PopularQuestionsPage = () => {
 	const DATA_LIMIT_IN_PAGE = 10;
 	const page = filters?.page || 1;
 	const { t } = useTranslation(i18Namespace.analytics);
-	const navigate = useNavigate();
-	const { data, isLoading, error, refetch } = useGetPopularQuestionsQuery();
+	const { data, isLoading, isError, refetch } = useGetPopularQuestionsQuery();
 
 	const popularQuestionsByAllSpecializations = data?.reduce<PopularQuestionStat[]>(
 		(accum, item) => [...accum, ...item.topStat],
@@ -39,19 +36,19 @@ export const PopularQuestionsPage = () => {
 		popularQuestions?.slice(DATA_LIMIT_IN_PAGE * (page - 1), DATA_LIMIT_IN_PAGE * page) || [];
 
 	const hasData = popularQuestionsInPage.length > 0;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: () => refetch() },
+		'filter-empty': { onClick: onResetFilters },
+	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasError={!!error}
+			hasError={isError}
 			hasFilters={hasFilters}
 			hasData={hasData}
-			shouldVerify={true}
-			stubs={{
-				error: { onClick: () => refetch() },
-				'filter-empty': { onClick: onResetFilters },
-				'access-denied-verify': { onClick: () => navigate(EMAIL_VERIFY_SETTINGS_TAB) },
-			}}
+			shouldVerify
+			stubs={stubs}
 			content={
 				<AnalyticPageTemplate
 					title={t(Analytics.POPULAR_QUESTIONS_TITLE)}
