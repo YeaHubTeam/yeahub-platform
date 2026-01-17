@@ -5,6 +5,7 @@ import { i18Namespace, Analytics } from '@/shared/config';
 import { PopularQuestionStat, useGetPopularQuestionsQuery } from '@/entities/question';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
@@ -18,7 +19,7 @@ export const PopularQuestionsPage = () => {
 	const DATA_LIMIT_IN_PAGE = 10;
 	const page = filters?.page || 1;
 	const { t } = useTranslation(i18Namespace.analytics);
-	const { data } = useGetPopularQuestionsQuery();
+	const { data, isLoading, isError, refetch } = useGetPopularQuestionsQuery();
 
 	const popularQuestionsByAllSpecializations = data?.reduce<PopularQuestionStat[]>(
 		(accum, item) => [...accum, ...item.topStat],
@@ -34,22 +35,40 @@ export const PopularQuestionsPage = () => {
 	const popularQuestionsInPage =
 		popularQuestions?.slice(DATA_LIMIT_IN_PAGE * (page - 1), DATA_LIMIT_IN_PAGE * page) || [];
 
+	const hasData = popularQuestionsInPage.length > 0;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: () => refetch() },
+		'filter-empty': { onClick: onResetFilters },
+	};
+
 	return (
-		<AnalyticPageTemplate
-			title={t(Analytics.POPULAR_QUESTIONS_TITLE)}
-			list={<PopularQuestionsList popularQuestions={popularQuestionsInPage} />}
-			tooltip={t(Analytics.POPULAR_QUESTIONS_TOOLTIP)}
-			table={<PopularQuestionsPageTable popularQuestions={popularQuestionsInPage} />}
-			filters={{
-				page,
-				specialization: filters.specialization,
-				limit: DATA_LIMIT_IN_PAGE,
-				total: popularQuestions?.length || 0,
-				onChangeSpecialization,
-				onChangePage,
-				onResetFilters,
-				hasFilters,
-			}}
-		/>
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			hasFilters={hasFilters}
+			hasData={hasData}
+			shouldVerify
+			stubs={stubs}
+			content={
+				<AnalyticPageTemplate
+					title={t(Analytics.POPULAR_QUESTIONS_TITLE)}
+					list={<PopularQuestionsList popularQuestions={popularQuestionsInPage} />}
+					tooltip={t(Analytics.POPULAR_QUESTIONS_TOOLTIP)}
+					table={<PopularQuestionsPageTable popularQuestions={popularQuestionsInPage} />}
+					filters={{
+						page,
+						specialization: filters.specialization,
+						limit: DATA_LIMIT_IN_PAGE,
+						total: popularQuestions?.length || 0,
+						onChangeSpecialization,
+						onChangePage,
+						onResetFilters,
+						hasFilters,
+					}}
+				/>
+			}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
