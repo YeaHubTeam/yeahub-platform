@@ -1,0 +1,24 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--secondary-bg-color);
+}
+
+.editor-container {
+  overflow: hidden;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+.output-container {
+  padding: 10px;
+  min-height: 100px;
+  border-radius: 4px;
+  background-color: var(--inverted-secondary-bg-color);
+  color: var(--inverted-primary-color);
+  white-space: pre-wrap;
+}
