@@ -37,7 +37,7 @@ export interface GetResourceRequestsParams {
 	status?: ResourceRequestStatus;
 	page?: number;
 	limit?: number;
-	search?: string;
+	name?: string;
 }
 
 export type GetResourceRequestsResponse = Response<ResourceRequest[]>;

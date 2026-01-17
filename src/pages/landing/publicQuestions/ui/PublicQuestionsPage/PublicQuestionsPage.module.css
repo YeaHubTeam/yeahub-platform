@@ -4,6 +4,19 @@
   height: auto;
 }
 
+.questions-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-50);
+}
+
 .header {
   margin-bottom: 20px;
   padding-bottom: 16px;
@@ -31,5 +44,9 @@
 @media screen and (width <= 767px) {
   .main {
     padding: 20px 10px;
+  }
+	
+  .content {
+    padding: 20px 16px;
   }
 }

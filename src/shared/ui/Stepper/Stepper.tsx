@@ -1,19 +1,14 @@
 import classNames from 'classnames';
 import React, { Dispatch, Key, SetStateAction } from 'react';
 
-import { Icon, type IconName } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui/Icon';
 
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 
+import { stepperTestIds } from './constants';
 import styles from './Stepper.module.css';
-
-export interface Step<T> {
-	id: T;
-	label: string;
-	image: IconName;
-	Component: (props: { goNextStep?: () => void }) => JSX.Element;
-}
+import type { Step } from './types';
 
 export interface StepperProps<T> {
 	steps: Step<T>[];
@@ -49,6 +44,7 @@ export const Stepper = <T,>({
 			componentType="ul"
 			gap="20"
 			className={classNames(isMobile ? styles['stepper-mobile'] : styles['stepper'], className)}
+			dataTestId={stepperTestIds.stepper}
 		>
 			{steps.map((step, index) => {
 				const status = getStepStatus(index);
@@ -65,6 +61,7 @@ export const Stepper = <T,>({
 							{!isLastStep && (
 								<div
 									className={classNames(styles['dashed-separator'], isMobile && styles.mobile)}
+									data-testid={stepperTestIds.separator}
 								/>
 							)}
 							<div
@@ -73,6 +70,7 @@ export const Stepper = <T,>({
 									isMobile ? styles['step-item-mobile'] : styles['step-item-desktop'],
 									status === 'active' && styles.active,
 								)}
+								data-testid={stepperTestIds.item(String(step.id))}
 							>
 								<div
 									className={classNames(
@@ -80,6 +78,7 @@ export const Stepper = <T,>({
 										styles[`icon-${status}`],
 										isMobile && styles.mobile,
 									)}
+									data-testid={stepperTestIds.icon(String(step.id))}
 								>
 									<Icon
 										icon={status === 'completed' ? 'check' : step.image}

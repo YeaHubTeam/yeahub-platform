@@ -65,14 +65,20 @@ export enum Translation {
 	STUB_FILTER_TITLE = 'stub.filter.title',
 	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 	STUB_ERROR_TITLE = 'stub.error.title',
 	STUB_ERROR_SUBTITLE = 'stub.error.subtitle',
 	STUB_ERROR_SUBMIT = 'stub.error.submit',
-
-	/* Access Denied */
-	ACCESS_DENIED_TITLE = 'access.denied.title',
-	ACCESS_DENIED_DESCRIPTION = 'access.denied.description',
-	ACCESS_DENIED_BUTTON = 'access.denied.button',
+	STUB_ACCESS_DENIED_DEFAULT_TITLE = 'stub.access.denied.default.title',
+	STUB_ACCESS_DENIED_DEFAULT_DESCRIPTION = 'stub.access.denied.default.description',
+	STUB_ACCESS_DENIED_DEFAULT_BUTTON = 'stub.access.denied.default.button',
+	STUB_ACCESS_DENIED_VERIFY_TITLE = 'stub.access.denied.verify.title',
+	STUB_ACCESS_DENIED_VERIFY_DESCRIPTION = 'stub.access.denied.verify.description',
+	STUB_ACCESS_DENIED_VERIFY_BUTTON = 'stub.access.denied.verify.button',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_TITLE = 'stub.access.denied.subscription.title',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_DESCRIPTION = 'stub.access.denied.subscription.description',
+	STUB_ACCESS_DENIED_SUBSCRIPTION_BUTTON = 'stub.access.denied.subscription.button',
 
 	/* Modal */
 	MODAL_BLOCK_TITLE = 'modal.block.title',
@@ -608,6 +614,8 @@ export enum Resources {
 	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
 	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
 	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
+	SORT_AUTHOR_TITLE = 'sort.author.title',
+	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
 
 export enum Questions {
@@ -685,8 +693,11 @@ export enum Questions {
 	COMMUNITY_JOIN = 'community.join',
 	FILTER_AUTHOR_QUESTIONS = 'my.questions',
 	STUB_NOT_AUTH_TITLE = 'stub.not.auth.title',
-	STUB_EMPTY_TITLE = 'stub.empty.title',
-	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_QUESTIONS_TITLE = 'stub.empty.questions.title',
+	STUB_EMPTY_QUESTIONS_SUBTITLE = 'stub.empty.questions.subtitle',
+	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
+	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
+	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
 }
 
 export enum InterviewHistory {
