@@ -61,15 +61,17 @@ export const KeywordInput = ({ value = [], onChange, disabled }: KeywordInputPro
 	};
 
 	return (
-		<Flex gap="24" direction="column" dataTestId="KeywordInput">
+		<Flex gap="24" direction="column" dataTestId="KeywordInput" align="start">
 			<Flex gap="8">
 				<Input
 					dataTestId="KeywordInput_Input"
 					type="text"
 					value={keywords}
+					className={styles.input}
 					onChange={changeHandler}
 					onKeyDown={handleKeyDown}
 					disabled={disabled}
+					placeholder={t(Questions.KEYWORDS_ADD_PLACEHOLDER)}
 				/>
 				<Button
 					className={styles.button}

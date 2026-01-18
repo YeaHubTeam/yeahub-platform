@@ -19,8 +19,8 @@ import {
 	MostDifficultQuestionsResponse,
 	GetPopularQuestionsResponse,
 	MostDifficultQuestionsRequestParams,
-	GetFilterKeywordsResponse,
-	GetFilterKeywordsParamsRequest,
+	GetQuestionKeywordsResponse,
+	GetQuestionKeywordsParamsRequest,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -100,8 +100,8 @@ const questionApi = baseApi.injectEndpoints({
 			providesTags: [ApiTags.POPULAR_QUESTIONS],
 		}),
 		getQuestionsFilterKeywords: build.query<
-			GetFilterKeywordsResponse,
-			GetFilterKeywordsParamsRequest
+			GetQuestionKeywordsResponse,
+			GetQuestionKeywordsParamsRequest
 		>({
 			query: (params) => ({
 				url: questionApiUrls.getQuestionFilterKeywords,

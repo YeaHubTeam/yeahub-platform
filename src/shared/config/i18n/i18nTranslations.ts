@@ -663,6 +663,7 @@ export enum Questions {
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
 	KEYWORDS_FILTER_PLACEHOLDER = 'keywords.filter.placeholder',
+	KEYWORDS_ADD_PLACEHOLDER = 'keywords.add.placeholder',
 	AUTHOR = 'author',
 	IMAGE_ALT = 'image.alt',
 	MORE = 'more',

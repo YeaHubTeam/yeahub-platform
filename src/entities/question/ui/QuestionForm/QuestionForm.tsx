@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +6,7 @@ import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -24,9 +24,7 @@ export const QuestionForm = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	const { control, watch } = useFormContext();
-	const { data: keywordsData } = useGetQuestionsFilterKeywordsQuery({});
 	const selectedSpecializations = watch('specializations');
-	const [dropdownValue, setDropdownValue] = useState('');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -38,10 +36,6 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
-
-	const keywordsItems: { label: string; value: string }[] =
-		keywordsData?.data.map((keyword) => ({ label: keyword, value: keyword })) || [];
-
 	return (
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
@@ -173,28 +167,22 @@ export const QuestionForm = () => {
 					{({ onChange, value }) => {
 						const currentKeywords = Array.isArray(value) ? value : [];
 
-						const availableKeywordsItems = keywordsItems.filter(
-							(item) => !currentKeywords.includes(item.value),
-						);
-
 						return (
 							<div className={styles.select}>
-								<Dropdown
-									width={360}
-									label={t(Questions.KEYWORDS_FILTER_PLACEHOLDER)}
-									onSelect={(val) => {
-										const keyword = String(val);
-										if (!currentKeywords.includes(keyword)) {
+								<KeywordSelect
+									getKeywordsQuery={useGetQuestionsFilterKeywordsQuery}
+									value={undefined}
+									onChange={(keyword) => {
+										if (keyword && !currentKeywords.includes(keyword)) {
 											onChange([...currentKeywords, keyword]);
-											setDropdownValue('');
 										}
 									}}
-									value={dropdownValue}
-								>
-									{availableKeywordsItems.map((option) => (
-										<Option value={option.value} label={option.label} key={option.value} />
-									))}
-								</Dropdown>
+									selectedKeywords={currentKeywords}
+									showLabel={false}
+									showSelected={false}
+									width={360}
+									label={t(Questions.KEYWORDS_FILTER_PLACEHOLDER)}
+								/>
 								<KeywordInput value={currentKeywords} onChange={onChange} />
 							</div>
 						);
