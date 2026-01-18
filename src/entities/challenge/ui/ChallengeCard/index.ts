@@ -1,1 +1,0 @@
-export { ChallengeCard } from './ChallengeCard';

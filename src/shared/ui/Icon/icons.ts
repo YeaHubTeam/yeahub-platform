@@ -74,6 +74,7 @@ import {
 	youtube,
 	youtubeWithBackground,
 	arrowShortDown,
+	refresh,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -154,4 +155,5 @@ export const icons: Record<IconName, IconComponent> = {
 	tickWithBackground,
 	copy,
 	watch,
+	refresh,
 };

@@ -1,0 +1,50 @@
+{
+	"description": {
+		"tab.title": "Описание",
+		"constraints": {
+			"title": "Ограничения"
+		}
+	},
+	"solutions": {
+		"tab.title": "Мои решения",
+		"tab.subtitle": "Здесь будут ваши решения задачи"
+	},
+	"editor": {
+		"actions": {
+			"run": "Выполнить",
+			"submit": "Отправить"
+		}
+	},
+	"output": {
+		"result": {
+			"tab.title": "Результат кода",
+			"stub.title": "Здесь появится результат выполнения кода",
+			"stub.subtitle": "Чтобы получить результат, запустите свой код",
+			"compilation.error": "Ошибка компиляции",
+			"runtime.output": "Результат выполнения",
+			"tests.passed": "Тесты пройдены",
+			"success.rate": "Успешность",
+			"execution.time": "Время выполнения",
+			"memory.usage": "Использование памяти"
+		},
+		"tests": {
+			"tab.title": "Тест кейсы",
+			"test": {
+				"case": {
+					"title": "Тест {{index}}",
+					"status": "Статус",
+					"passed": "Пройден",
+					"failed": "Не пройден",
+					"hidden": "Скрытый тест",
+					"input": "Входные данные",
+					"expected.output": "Ожидаемый результат",
+					"actual.output": "Полученный результат",
+					"error.message": "Ошибка",
+					"execution.time": "Время выполнения",
+					"memory.usage": "Использование памяти",
+					"empty": "Нет доступных тест-кейсов"
+				}
+			}
+		}
+	}
+}
