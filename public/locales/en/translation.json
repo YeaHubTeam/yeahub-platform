@@ -563,6 +563,47 @@
 				}
 			}
 		},
+		"companies": {
+			"edit": {
+				"success": "Company successfully changed",
+				"failed": "Company could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted companies:",
+					"failed": "Could not delete company:"
+				}
+			},
+			"create": {
+				"success": "Company successfully created",
+				"failed": "Company could not be created",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"conflict": "Such a company already exists",
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
+			},
+			"filter": {
+				"not.found": "Company is not found"
+			}
+		},
 		"subscriptions": {
 			"unsubscribe": {
 				"success": "Subscription disabled",

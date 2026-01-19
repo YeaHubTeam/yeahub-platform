@@ -18,9 +18,9 @@ const editCompanyApi = baseApi.injectEndpoints({
 					const result = await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
 					typedExtra.navigate(route(ROUTES.admin.companies.details.page, result.data.id));
-					toast.success(i18n.t(Translation.TOAST_COMPANY_EDIT_SUCCESS));
+					toast.success(i18n.t(Translation.TOAST_COMPANIES_EDIT_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COMPANY_EDIT_FAILED));
+					toast.error(i18n.t(Translation.TOAST_COMPANIES_EDIT_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
