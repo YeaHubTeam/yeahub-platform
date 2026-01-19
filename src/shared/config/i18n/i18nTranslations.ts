@@ -45,7 +45,7 @@ export enum Translation {
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
-	SIDEBAR_MENU_LIVE_CODING_TITLE = 'sidebar.menu.liveCoding.title',
+	SIDEBAR_MENU_TASKS_TITLE = 'sidebar.menu.tasks.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
 	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
@@ -106,7 +106,7 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
-	CRUMBS_LIVE_CODING = 'crumbs.liveCoding',
+	CRUMBS_TASKS = 'crumbs.tasks',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
@@ -282,8 +282,8 @@ export enum Translation {
 	TOAST_COLLECTIONS_CREATE_COLLECTION_CREATE_CONFLICT = 'toast.collections.create.collection.create.conflict',
 
 	/* Live Coding */
-	LIVE_CODING_TITLE = 'live.coding.title',
-	LIVE_CODING_RUN = 'live.coding.run',
+	TASKS_TITLE = 'tasks.title',
+	TASKS_RUN = 'tasks.run',
 }
 
 export enum Profile {
@@ -1294,7 +1294,7 @@ export enum Topics {
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
 }
 
-export enum Challenge {
+export enum Task {
 	DESCRIPTION_TAB_TITLE = 'description.tab.title',
 	DESCRIPTION_CONSTRAINTS_TITLE = 'description.constraints.title',
 	DESCRIPTION_TAB_SUBTITLE = 'description.tab.subtitle',

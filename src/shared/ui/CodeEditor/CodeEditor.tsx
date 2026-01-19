@@ -1,5 +1,5 @@
 import MonacoEditor from '@monaco-editor/react';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config/i18n';
@@ -9,7 +9,7 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './CodeEditor.module.css';
 
-export const CodeEditor: FC = () => {
+export const CodeEditor = () => {
 	const { t } = useTranslation([i18Namespace.translation]);
 	const [code, setCode] = useState('// type your code here');
 	const [output, setOutput] = useState('');
@@ -23,7 +23,7 @@ export const CodeEditor: FC = () => {
 
 	return (
 		<div className={styles.widget}>
-			<Text variant="head1">{t(Translation.LIVE_CODING_TITLE)}</Text>
+			<Text variant="head1">{t(Translation.TASKS_TITLE)}</Text>
 			<div className={styles['editor-container']}>
 				<MonacoEditor
 					height="400px"
@@ -33,7 +33,7 @@ export const CodeEditor: FC = () => {
 					theme="vs-dark"
 				/>
 			</div>
-			<Button onClick={handleRunCode}>{t(Translation.LIVE_CODING_RUN)}</Button>
+			<Button onClick={handleRunCode}>{t(Translation.TASKS_RUN)}</Button>
 			<div className={styles['output-container']}>
 				<pre>{output}</pre>
 			</div>

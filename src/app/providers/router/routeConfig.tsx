@@ -92,12 +92,12 @@ import { PublicQuestionsPage } from '@/pages/landing/publicQuestions';
 import { PublicQuizPage } from '@/pages/landing/publicQuiz';
 import { PublicQuizResultPage } from '@/pages/landing/publicQuizResult';
 import { PublicResourcesPage } from '@/pages/landing/publicResources';
-import { ChallengePage } from '@/pages/liveCoding/challenge';
-import { LiveCodingPage } from '@/pages/liveCoding/liveCoding';
 import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
+import { TaskPage } from '@/pages/tasks/task';
+import { TasksPage } from '@/pages/tasks/tasks';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -171,11 +171,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
 			},
-			{
-				route: ROUTES.liveCoding.route,
-				title: i18n.t(Translation.SIDEBAR_MENU_LIVE_CODING_TITLE),
-				icon: CursorSquare, // TODO: добавить иконку
-			},
+			// {
+			// 	route: ROUTES.tasks.route,
+			// 	title: i18n.t(Translation.SIDEBAR_MENU_TASKS_TITLE),
+			// 	icon: CursorSquare, // TODO: добавить иконку
+			// },
 		],
 		roles: allRoles,
 	},
@@ -717,19 +717,19 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.liveCoding.route,
+				path: ROUTES.tasks.route,
 				element: <Outlet />,
 				handle: {
-					crumb: i18n.t(Translation.CRUMBS_LIVE_CODING),
+					crumb: i18n.t(Translation.CRUMBS_TASKS),
 				},
 				children: [
 					{
 						index: true,
-						element: <LiveCodingPage />,
+						element: <TasksPage />,
 					},
 					{
 						path: ':id',
-						element: <ChallengePage />,
+						element: <TaskPage />,
 					},
 				],
 			},

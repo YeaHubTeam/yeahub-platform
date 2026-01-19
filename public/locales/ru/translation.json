@@ -56,7 +56,7 @@
 				"title": "Обучение",
 				"interview": "Собеседование"
 			},
-			"liveCoding": {
+			"tasks": {
 				"title": "Live Coding"
 			},
 			"wiki": {
@@ -589,7 +589,7 @@
 			}
 		}
 	},
-	"live.coding": {
+	"tasks": {
 		"title": "Live Coding",
 		"run": "Выполнить"
 	},

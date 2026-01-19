@@ -223,9 +223,9 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
-	liveCoding: {
-		route: 'live-coding',
-		page: '/dashboard/live-coding',
+	tasks: {
+		route: 'tasks',
+		page: '/dashboard/tasks',
 	},
 	wiki: {
 		route: 'wiki',
