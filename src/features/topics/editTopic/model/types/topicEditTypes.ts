@@ -1,4 +1,4 @@
-import { CreateOrEditTopicFormValues, Topic } from '@/entities/topic/index';
+import { CreateOrEditTopicFormValues, Topic } from '@/entities/topic';
 
 export type EditTopicFormValues = CreateOrEditTopicFormValues;
 export type EditTopicBodyRequest = EditTopicFormValues;

@@ -5,7 +5,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { Topic, TopicForm } from '@/entities/topic/index';
+import { Topic, TopicForm } from '@/entities/topic';
 
 import { useEditTopicMutation } from '../../api/editTopicApi';
 import { topicEditSchema } from '../../lib/validation/topicEditSchema';

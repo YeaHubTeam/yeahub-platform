@@ -25,7 +25,7 @@ export const editTopicApi = baseApi.injectEndpoints({
 					console.error(error);
 				}
 			},
-			invalidatesTags: [ApiTags.TOPICS, ApiTags.TOPICS_DETAIL],
+			invalidatesTags: [ApiTags.TOPICS, ApiTags.TOPIC_DETAIL],
 		}),
 	}),
 });

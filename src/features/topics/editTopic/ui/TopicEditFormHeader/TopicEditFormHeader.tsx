@@ -21,7 +21,7 @@ export const TopicEditFormHeader = <T extends CreateOrEditTopicFormValues>({
 	className,
 	btnVariant = 'secondary',
 }: TopicEditFormHeaderProps<T>) => {
-	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const { handleSubmit, reset, formState } = useFormContext<T>();
 

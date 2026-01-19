@@ -17,7 +17,7 @@ export const deleteMultipleTopicsThunk = createAsyncThunk<void, SelectedAdminEnt
 				),
 			);
 
-			dispatch(baseApi.util.invalidateTags([ApiTags.TOPICS, ApiTags.TOPICS_DETAIL]));
+			dispatch(baseApi.util.invalidateTags([ApiTags.TOPICS, ApiTags.TOPIC_DETAIL]));
 
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const successfulDeletions = responses.filter((response: any) => !response.value.error);

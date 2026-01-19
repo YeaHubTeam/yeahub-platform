@@ -24,9 +24,5 @@ export type CreateOrEditTopicFormValues = Pick<Topic, 'id' | 'title' | 'descript
 	skillId: number;
 };
 
-export type GetTopicByIdParamsRequest = {
-	topicId?: string;
-};
-
 export type GetTopicsListResponse = Response<Topic[]>;
 export type GetTopicByIdResponse = Topic;

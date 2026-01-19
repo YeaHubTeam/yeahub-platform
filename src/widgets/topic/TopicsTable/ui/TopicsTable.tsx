@@ -111,7 +111,7 @@ export const TopicsTable = ({
 				},
 				disabled: topic.disabled,
 				onClick: () => {
-					navigate(route(ROUTES.admin.topics.details.page, topic.id));
+					navigate(route(ROUTES.admin.topics.edit.page, topic.id));
 				},
 			},
 			{
