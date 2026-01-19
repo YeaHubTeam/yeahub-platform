@@ -1295,6 +1295,9 @@ export enum Topics {
 }
 
 export enum Task {
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_BUTTON = 'stub.empty.button',
 	DESCRIPTION_TAB_TITLE = 'description.tab.title',
 	DESCRIPTION_CONSTRAINTS_TITLE = 'description.constraints.title',
 	DESCRIPTION_TAB_SUBTITLE = 'description.tab.subtitle',

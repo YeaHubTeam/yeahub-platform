@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 import { useParams } from 'react-router-dom';
 
-import { Loader } from '@/shared/ui/Loader';
+import { i18Namespace, Task as TaskTranslations } from '@/shared/config';
 
 import { getProfileId } from '@/entities/profile';
 import {
@@ -14,15 +15,19 @@ import {
 	useTestCodeMutation,
 } from '@/entities/task';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { TaskTabs } from '@/widgets/task/TaskTabs';
 import { TaskWorkspace } from '@/widgets/task/TaskWorkspace';
 
 import styles from './TaskPage.module.css';
 
 const TaskPage = () => {
-	const { taskId } = useParams<{ taskId: string }>();
+	const { t } = useTranslation(i18Namespace.task);
+	const { id: taskId } = useParams<{ id: string }>();
 	const profileId = useSelector(getProfileId);
-	const { data, isLoading } = useGetTaskByIdQuery(taskId || '', { skip: !taskId });
+	const { data, isLoading, isError, refetch } = useGetTaskByIdQuery(taskId || '', {
+		skip: !taskId,
+	});
 	const [executeCode, { isLoading: isExecuting }] = useExecuteCodeMutation();
 	const [testCode, { isLoading: isTesting }] = useTestCodeMutation();
 
@@ -92,36 +97,52 @@ const TaskPage = () => {
 
 	const supportedLanguages = [{ id: LANGUAGE_IDS.JAVASCRIPT, name: 'JavaScript' }];
 
-	if (isLoading) {
-		return <Loader />;
-	}
-
-	if (!data) {
-		return <div>Not found</div>;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(TaskTranslations.STUB_EMPTY_TITLE),
+			subtitle: t(TaskTranslations.STUB_EMPTY_SUBTITLE),
+			buttonText: t(TaskTranslations.STUB_EMPTY_BUTTON),
+			onClick: () => refetch(),
+		},
+		error: {
+			onClick: () => refetch(),
+		},
+	};
 
 	return (
-		<Group orientation="horizontal" className={styles.page}>
-			<Panel defaultSize="50%" minSize="30%" maxSize="60%">
-				<TaskTabs task={data} />
-			</Panel>
-			<Separator className={styles['resize-handle']} />
-			<Panel minSize="40%">
-				<TaskWorkspace
-					code={code}
-					languageId={selectedLanguageId}
-					supportedLanguages={supportedLanguages}
-					isExecuting={isExecuting}
-					isTesting={isTesting}
-					output={output}
-					onCodeChange={setCode}
-					onLanguageChange={setSelectedLanguageId}
-					onReset={handleReset}
-					onRun={handleRunCode}
-					onSubmit={handleTestCode}
-				/>
-			</Panel>
-		</Group>
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={!!data}
+			stubs={stubs}
+			content={
+				data && (
+					<Group orientation="horizontal" className={styles.page}>
+						<Panel defaultSize="50%" minSize="30%" maxSize="60%">
+							<TaskTabs task={data} />
+						</Panel>
+						<Separator className={styles['resize-handle']} />
+						<Panel minSize="40%">
+							<TaskWorkspace
+								code={code}
+								languageId={selectedLanguageId}
+								supportedLanguages={supportedLanguages}
+								isExecuting={isExecuting}
+								isTesting={isTesting}
+								output={output}
+								onCodeChange={setCode}
+								onLanguageChange={setSelectedLanguageId}
+								onReset={handleReset}
+								onRun={handleRunCode}
+								onSubmit={handleTestCode}
+							/>
+						</Panel>
+					</Group>
+				)
+			}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 

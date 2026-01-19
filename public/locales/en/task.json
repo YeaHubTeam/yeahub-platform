@@ -5,6 +5,13 @@
 			"title": "Constraints"
 		}
 	},
+	"stub": {
+		"empty": {
+			"title": "Failed to load task data",
+			"subtitle": "Try again or refresh the page",
+			"buttonText": "Try again"
+		}
+	},
 	"solutions": {
 		"tab.title": "My solutions",
 		"tab.subtitle": "Here will be your solutions to the task"
