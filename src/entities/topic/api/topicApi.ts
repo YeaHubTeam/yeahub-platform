@@ -18,10 +18,10 @@ export const topicApi = baseApi.injectEndpoints({
 			providesTags: [ApiTags.TOPICS],
 		}),
 		getTopicById: build.query<GetTopicByIdResponse, string>({
-			query: (param) => ({
-				url: route(topicApiUrl.getTopicById, param),
+			query: (topicId) => ({
+				url: route(topicApiUrl.getTopicById, topicId || ''),
 			}),
-			providesTags: [ApiTags.TOPIC],
+			providesTags: [ApiTags.TOPIC_DETAIL],
 		}),
 	}),
 });
