@@ -275,7 +275,27 @@
 		"skills": {
 			"create": {
 				"success": "Skill created successfully",
-				"failed": "Failed to create Skill"
+				"failed": "Failed to create Skill",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"skill": {
+					"title.conflict": "Skill with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "Skill changed successfully",
