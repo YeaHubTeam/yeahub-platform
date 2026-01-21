@@ -97,6 +97,8 @@ import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
+import { TaskPage } from '@/pages/tasks/task';
+import { TasksPage } from '@/pages/tasks/tasks';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -170,6 +172,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
 			},
+			// {
+			// 	route: ROUTES.tasks.route,
+			// 	title: i18n.t(Translation.SIDEBAR_MENU_TASKS_TITLE),
+			// 	icon: CursorSquare, // TODO: добавить иконку
+			// },
 		],
 		roles: allRoles,
 	},
@@ -711,6 +718,23 @@ export const router = createBrowserRouter([
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
 						},
+					},
+				],
+			},
+			{
+				path: ROUTES.tasks.route,
+				element: <Outlet />,
+				handle: {
+					crumb: i18n.t(Translation.CRUMBS_TASKS),
+				},
+				children: [
+					{
+						index: true,
+						element: <TasksPage />,
+					},
+					{
+						path: ':id',
+						element: <TaskPage />,
 					},
 				],
 			},

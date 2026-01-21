@@ -1,0 +1,57 @@
+{
+	"description": {
+		"tab.title": "Description",
+		"constraints": {
+			"title": "Constraints"
+		}
+	},
+	"stub": {
+		"empty": {
+			"title": "Failed to load task data",
+			"subtitle": "Try again or refresh the page",
+			"buttonText": "Try again"
+		}
+	},
+	"solutions": {
+		"tab.title": "My solutions",
+		"tab.subtitle": "Here will be your solutions to the task"
+	},
+	"editor": {
+		"actions": {
+			"run": "Run",
+			"submit": "Submit"
+		}
+	},
+	"output": {
+		"result": {
+			"tab.title": "Code result",
+			"stub.title": "Here will be the result of the code execution",
+			"stub.subtitle": "To get the result, run your code",
+			"compilation.error": "Compilation error",
+			"runtime.output": "Result of the code execution",
+			"tests.passed": "Tests passed",
+			"success.rate": "Success rate",
+			"execution.time": "Execution time",
+			"memory.usage": "Memory usage"
+		},
+		"tests": {
+			"tab.title": "Test cases",
+			"test": {
+				"case": {
+					"title": "Test {{index}}",
+					"status": "Status",
+					"passed": "Passed",
+					"failed": "Failed",
+					"hidden": "Hidden test",
+					"input": "Input",
+					"expected.output": "Expected output",
+					"actual.output": "Actual output",
+					"error.message": "Error",
+					"execution.time": "Execution time",
+					"memory.usage": "Memory usage",
+					"empty": "No available test cases"
+				}
+			}
+		}
+	}
+}

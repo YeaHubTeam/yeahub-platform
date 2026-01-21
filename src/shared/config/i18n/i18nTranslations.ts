@@ -45,6 +45,7 @@ export enum Translation {
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
+	SIDEBAR_MENU_TASKS_TITLE = 'sidebar.menu.tasks.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
 	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
@@ -105,6 +106,7 @@ export enum Translation {
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
+	CRUMBS_TASKS = 'crumbs.tasks',
 	CRUMBS_WIKI = 'crumbs.wiki',
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
@@ -290,6 +292,10 @@ export enum Translation {
 	TOAST_COLLECTIONS_CREATE_TINIFY_RESIZE_FAILED = 'toast.collections.create.tinify.resize.failed',
 	TOAST_COLLECTIONS_CREATE_COLLECTION_USER_DELETED = 'toast.collections.create.collection.user.deleted',
 	TOAST_COLLECTIONS_CREATE_COLLECTION_CREATE_CONFLICT = 'toast.collections.create.collection.create.conflict',
+
+	/* Live Coding */
+	TASKS_TITLE = 'tasks.title',
+	TASKS_RUN = 'tasks.run',
 }
 
 export enum Profile {
@@ -1303,4 +1309,39 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+}
+
+export enum Task {
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_BUTTON = 'stub.empty.button',
+	DESCRIPTION_TAB_TITLE = 'description.tab.title',
+	DESCRIPTION_CONSTRAINTS_TITLE = 'description.constraints.title',
+	DESCRIPTION_TAB_SUBTITLE = 'description.tab.subtitle',
+	SOLUTIONS_TAB_TITLE = 'solutions.tab.title',
+	SOLUTIONS_TAB_SUBTITLE = 'solutions.tab.subtitle',
+	EDITOR_ACTIONS_RUN = 'editor.actions.run',
+	EDITOR_ACTIONS_SUBMIT = 'editor.actions.submit',
+	OUTPUT_RESULT_TAB_TITLE = 'output.result.tab.title',
+	OUTPUT_RESULT_STUB_TITLE = 'output.result.stub.title',
+	OUTPUT_RESULT_STUB_SUBTITLE = 'output.result.stub.subtitle',
+	OUTPUT_TESTS_TAB_TITLE = 'output.tests.tab.title',
+	OUTPUT_TESTS_TEST_CASE_TITLE = 'output.tests.test.case.title',
+	OUTPUT_TESTS_TEST_CASE_STATUS = 'output.tests.test.case.status',
+	OUTPUT_TESTS_TEST_CASE_PASSED = 'output.tests.test.case.passed',
+	OUTPUT_TESTS_TEST_CASE_FAILED = 'output.tests.test.case.failed',
+	OUTPUT_TESTS_TEST_CASE_HIDDEN = 'output.tests.test.case.hidden',
+	OUTPUT_TESTS_TEST_CASE_INPUT = 'output.tests.test.case.input',
+	OUTPUT_TESTS_TEST_CASE_EXPECTED_OUTPUT = 'output.tests.test.case.expected.output',
+	OUTPUT_TESTS_TEST_CASE_ACTUAL_OUTPUT = 'output.tests.test.case.actual.output',
+	OUTPUT_TESTS_TEST_CASE_ERROR_MESSAGE = 'output.tests.test.case.error.message',
+	OUTPUT_TESTS_TEST_CASE_EXECUTION_TIME = 'output.tests.test.case.execution.time',
+	OUTPUT_TESTS_TEST_CASE_MEMORY_USAGE = 'output.tests.test.case.memory.usage',
+	OUTPUT_TESTS_TEST_CASE_EMPTY = 'output.tests.test.case.empty',
+	OUTPUT_RESULT_COMPILATION_ERROR = 'output.result.compilation.error',
+	OUTPUT_RESULT_RUNTIME_OUTPUT = 'output.result.runtime.output',
+	OUTPUT_RESULT_TESTS_PASSED = 'output.result.tests.passed',
+	OUTPUT_RESULT_SUCCESS_RATE = 'output.result.success.rate',
+	OUTPUT_RESULT_EXECUTION_TIME = 'output.result.execution.time',
+	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 }
