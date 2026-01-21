@@ -39,6 +39,5 @@ export enum ApiTags {
 	TASKS = 'tasks',
 	TASK_DETAIL = 'task_detail',
 	USERS_RATING = 'users_rating',
-	TOPICS_DETAIL = 'topics_detail',
-	TOPIC = 'topic',
+	TOPIC_DETAIL = 'topic_detail',
 }

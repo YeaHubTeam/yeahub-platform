@@ -23,5 +23,6 @@ export interface GetTopicsListParamsRequest {
 export type CreateOrEditTopicFormValues = Pick<Topic, 'id' | 'title' | 'description'> & {
 	skillId: number;
 };
+
 export type GetTopicsListResponse = Response<Topic[]>;
 export type GetTopicByIdResponse = Topic;
