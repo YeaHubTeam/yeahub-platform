@@ -11,8 +11,30 @@
   border-radius: 24px;
 }
 
+.main-info-wrapper {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content {
+  padding: 20px;
+  border-radius: 24px;
+}
+
 @media screen and (width < 1024px) {
   .filters {
     display: none;
+  }
+}
+
+@media (width < 768px) {
+  .content {
+    padding: 20px 16px;
   }
 }

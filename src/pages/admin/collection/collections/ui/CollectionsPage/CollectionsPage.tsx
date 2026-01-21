@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
-import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -16,12 +14,14 @@ import {
 } from '@/features/collections/filterCollections';
 
 import { CollectionsTable } from '@/widgets/CollectionsTable';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
 import styles from './CollectionsPage.module.css';
+import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
@@ -50,7 +50,7 @@ const CollectionsPage = () => {
 		onResetFilters();
 	};
 
-	const { data: allCollections } = useGetCollectionsListQuery({
+	const { data: allCollections, isLoading } = useGetCollectionsListQuery({
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
@@ -67,42 +67,59 @@ const CollectionsPage = () => {
 		};
 	}, [allCollections, userId, isAuthor]);
 
-	if (!collections) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		'filter-empty': {
+			onClick: onResetAll,
+		},
+	};
 
 	return (
-		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				showRemoveButton={selectedCollections.length > 0}
-				searchValue={filters.title}
-				onSearch={onChangeTitle}
-				hasFilters={hasFilters}
-				renderFilter={() => (
-					<CollectionsFilters
-						filter={filters}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						onChangeIsMy={onChangeIsMy}
-					/>
-				)}
-			/>
-			<Card className={styles.content}>
+		<PageWrapper
+			isLoading={isLoading}
+			skeleton={<CollectionsPageSkeleton />}
+			hasFilters={hasFilters}
+			hasData={(collections?.data || []).length > 0}
+			stubs={stubs}
+			paginationOptions={{
+				page: filters.page || 1,
+				onChangePage,
+				limit: collections?.limit || 0,
+				total: collections?.total || 0,
+			}}
+			content={
 				<CollectionsTable
-					collections={collections.data}
+					collections={collections?.data || []}
 					selectedCollections={selectedCollections}
 					onSelectCollections={onSelectCollections}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={collections.limit}
-					total={collections.total}
-				/>
-				{collections.data.length === 0 && <Stub type="filter-empty" onClick={onResetAll} />}
-			</Card>
-		</Flex>
+			}
+		>
+			{({ content, pagination }) => (
+				<Flex componentType="main" direction="column" gap="24">
+					<SearchSection
+						to="create"
+						showRemoveButton={selectedCollections.length > 0}
+						searchValue={filters.title}
+						onSearch={onChangeTitle}
+						hasFilters={hasFilters}
+						renderFilter={() => (
+							<CollectionsFilters
+								filter={filters}
+								onChangeSpecialization={onChangeSpecialization}
+								onChangeIsFree={onChangeIsFree}
+								onChangeIsMy={onChangeIsMy}
+							/>
+						)}
+					/>
+					<Card className={styles.content}>
+						<>
+							{content}
+							{pagination}
+						</>
+					</Card>
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

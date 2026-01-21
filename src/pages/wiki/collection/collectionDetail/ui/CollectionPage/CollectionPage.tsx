@@ -1,48 +1,39 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, Collections, ROUTES } from '@/shared/config';
-import { useScreenSize, useAppSelector } from '@/shared/libs';
-import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
+import { i18Namespace, Collections } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
-import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
 import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
-	CollectionNavigationButtons,
 	useCollectionQueryNavigate,
 	useCollectionNavigation,
 } from '@/features/collections/navigateCollection';
-import { TrainCollectionButton } from '@/features/collections/trainCollection';
 
-import {
-	AdditionalInfo,
-	CollectionAdditionalInfoDrawer,
-	CollectionBody,
-	CollectionHeader,
-} from '@/widgets/Collection';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import styles from './CollectionPage.module.css';
-import { CollectionPageSkeleton } from './CollectionPage.skeleton';
+import { CollectionContent } from '../CollectionContent/CollectionContent';
+import { CollectionContentSkeleton } from '../CollectionContent/CollectionContent.skeleton';
 
 export const CollectionPage = () => {
-	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.collection);
 	const filter = useGetCollectionsFilterParams({
 		page: 1,
 	});
 	const { collectionId = '' } = useParams<{ collectionId: string }>();
-	const { data: collection, isFetching, isLoading } = useGetCollectionByIdQuery({ collectionId });
+	const {
+		data: collection,
+		isLoading,
+		isError: isCollectionError,
+		refetch: refetchCollection,
+	} = useGetCollectionByIdQuery({ collectionId });
 	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const profileId = useAppSelector(getProfileId);
-	const { data: response, isSuccess } = useGetQuestionsListQuery(
+	const { data: response } = useGetQuestionsListQuery(
 		{
 			collection: Number(collectionId),
 			profileId,
@@ -56,111 +47,57 @@ export const CollectionPage = () => {
 		filter,
 	});
 
-	const { isLargeScreen, isSmallScreen } = useScreenSize();
-
 	const questions = response?.data ?? [];
 
-	const isEmptyData = isSuccess && questions.length === 0;
+	const isCollectionEmpty =
+		!collection || Object.keys(collection).length === 0 || collection.questionsCount === 0;
 
-	if (isLoading || isFetching) {
-		return <CollectionPageSkeleton />;
-	}
-
-	if (!collection) {
-		return null;
-	}
 	const onMovePrev = () => {
 		onQueryNavigate(prevId, prevPage);
 	};
 	const onMoveNext = () => {
 		onQueryNavigate(nextId, nextPage);
 	};
-	const {
-		createdBy,
-		questionsCount,
-		isFree,
-		company,
-		specializations,
-		keywords,
-		title,
-		description,
-		imageSrc: collectionImageSrc,
-	} = collection;
 
-	const imageSrc = collectionImageSrc ?? company?.imageSrc;
-
-	const guru = getGuruWithMatchingSpecialization(collection.specializations);
-	const showAuthor = guru ? false : true;
-
-	const media = getChannelsForSpecialization(collection.specializations);
-
-	const renderHeaderAndActions = () => {
-		const canTrain = (isFree || hasPremiumAccess) && !isEmptyData;
+	const renderContent = () => {
+		if (!collection) return null;
 		return (
-			<>
-				<CollectionHeader
-					renderDrawer={() => <CollectionAdditionalInfoDrawer collection={collection} />}
-					title={title}
-					description={description}
-					imageSrc={imageSrc}
-					company={company}
-				/>
-				<Card withOutsideShadow className={styles['train-button']}>
-					<Flex direction="column" gap="12" justify="center" align="center">
-						<Flex direction="row" gap="12" wrap="wrap" justify="center">
-							{canTrain && (
-								<TrainCollectionButton collectionId={collectionId} profileId={profileId} />
-							)}
-							<Button
-								className={styles.button}
-								variant="tertiary"
-								preffix={<Icon icon="watch" size={24} />}
-								onClick={() => {
-									navigate(ROUTES.avos.page);
-								}}
-							>
-								{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
-							</Button>
-						</Flex>
-						<CollectionNavigationButtons
-							onMovePrev={onMovePrev}
-							onMoveNext={onMoveNext}
-							isDisabled={isDisabled}
-						/>
-					</Flex>
-				</Card>
-			</>
+			<CollectionContent
+				collection={collection}
+				collectionId={collectionId}
+				questions={questions}
+				hasPremiumAccess={hasPremiumAccess}
+				profileId={profileId}
+				onMovePrev={onMovePrev}
+				onMoveNext={onMoveNext}
+				isDisabled={isDisabled}
+			/>
 		);
 	};
 
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Collections.STUB_EMPTY_COLLECTION_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTION_SUBTITLE),
+			buttonText: t(Collections.STUB_EMPTY_COLLECTION_SUBMIT),
+			onClick: refetchCollection,
+		},
+		error: {
+			onClick: refetchCollection,
+		},
+	};
+
 	return (
-		<>
-			<section className={styles.wrapper}>
-				<div className={styles.main}>
-					{renderHeaderAndActions()}
-					<CollectionBody
-						isFree={isFree}
-						questions={questions}
-						hasPremiumAccess={hasPremiumAccess}
-					/>
-					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
-				</div>
-				{isLargeScreen && (
-					<Flex direction="column" gap="20" className={styles.additional}>
-						<AdditionalInfo
-							showAuthor={showAuthor}
-							specializations={specializations}
-							isFree={isFree}
-							company={company}
-							questionsCount={questionsCount}
-							createdBy={createdBy}
-							keywords={keywords}
-							media={media}
-						/>
-						{guru && <GurusBanner gurus={[guru]} />}
-					</Flex>
-				)}
-			</section>
-		</>
+		<PageWrapper
+			isLoading={isLoading}
+			skeleton={<CollectionContentSkeleton />}
+			hasData={!isCollectionEmpty}
+			hasError={isCollectionError}
+			hasFilters={false}
+			stubs={stubs}
+			content={renderContent()}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };

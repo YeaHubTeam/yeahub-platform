@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace, Questions } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
-import { TablePagination } from '@/shared/ui/TablePagination';
+import { Text } from '@/shared/ui/Text';
 
 import { useGetPublicQuestionsListQuery } from '@/entities/question';
 import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
@@ -13,6 +15,7 @@ import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
 import {
@@ -24,8 +27,11 @@ import styles from './PublicQuestionsPage.module.css';
 import { PublicQuestionsPageSkeleton } from './PublicQuestionsPage.skeleton';
 
 const PublicQuestionsPage = () => {
+	const { t } = useTranslation(i18Namespace.questions);
+
 	const {
 		filters,
+		hasFilters,
 		onResetFilters,
 		onChangePage,
 		onChangeTitle,
@@ -39,8 +45,7 @@ const PublicQuestionsPage = () => {
 	});
 
 	const { handleNavigation } = useQuestionQueryNavigate();
-
-	const { isMobile, isTablet } = useScreenSize();
+	const { isMobile, isMobileS, isTablet } = useScreenSize();
 
 	const { data: skills, isLoading: isLoadingCategories } = useGetSkillsListQuery(
 		{
@@ -63,14 +68,6 @@ const PublicQuestionsPage = () => {
 			skip: !filters.specialization,
 		},
 	);
-
-	if (isLoadingQuestions || isLoadingCategories) {
-		return <PublicQuestionsPageSkeleton />;
-	}
-
-	if (!questions) {
-		return null;
-	}
 
 	const media = getChannelsForSpecialization(filters.specialization);
 
@@ -98,26 +95,56 @@ const PublicQuestionsPage = () => {
 		</Flex>
 	);
 
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Questions.STUB_EMPTY_QUESTIONS_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_SUBTITLE),
+		},
+		'filter-empty': {
+			onClick: onResetFilters,
+		},
+	};
+
 	return (
-		<Flex gap="20" align="start">
-			<Card className={styles.main}>
+		<PageWrapper
+			isLoading={isLoadingQuestions || isLoadingCategories}
+			skeleton={<PublicQuestionsPageSkeleton />}
+			hasFilters={hasFilters}
+			hasData={(questions?.data || []).length > 0}
+			stubs={stubs}
+			content={
 				<FullQuestionsList
-					questions={questions.data}
+					questions={questions?.data || []}
 					isPublic
-					additionalTitle={additionalTitle}
-					filterButton={<FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 					onMoveQuestionDetail={onMoveQuestionDetail}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={questions.limit}
-					total={questions.total}
-				/>
-				{questions.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
-			</Card>
-			{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
-		</Flex>
+			}
+			paginationOptions={{
+				page: filters.page || 1,
+				onChangePage,
+				limit: questions?.limit || 0,
+				total: questions?.total || 0,
+			}}
+		>
+			{({ content, pagination }) => (
+				<Flex gap="20" align="start">
+					<Card className={styles.main}>
+						<div className={styles['questions-list-header']}>
+							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
+								{`${t(Questions.TITLE_SHORT)} ${additionalTitle}`}
+							</Text>
+							{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+						</div>
+						<hr className={styles.divider} />
+						<>
+							{content}
+							{pagination}
+						</>
+					</Card>
+					{(!isMobile || !isTablet) && <Card className={styles.filters}>{renderFilters()}</Card>}
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

@@ -1,5 +1,5 @@
 export * from './model/types/resource';
-export * from './api/__mock__/data/resourcesMock';
+export * from './api/__mock__';
 export * from './ui/ResourceCard/ResourceCard';
 export * from './ui/MyResourceCard/MyResourceCard';
 export * from './api/resourceApi';
@@ -19,7 +19,6 @@ export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusB
 export { ResourceEditFormHeader } from './ui/ResourceEditFormHeader/ResourceEditFormHeader';
 export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
 export { ResourceAdditionalInfoSkeleton } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo.skeleton';
-export { ResourcesStub } from './ui/ResourcesStub/ResourcesStub';
 
 export type {
 	ResourceRequest,
@@ -38,4 +37,4 @@ export {
 	useGetResourceRequestByIdQuery,
 } from './api/resourceApi';
 
-export { resourceHandlers } from './api/__mock__/index';
+export { resourcesMock } from './api/__mock__/data';

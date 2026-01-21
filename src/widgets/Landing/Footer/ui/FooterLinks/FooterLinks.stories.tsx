@@ -13,7 +13,7 @@ const meta = {
 	parameters: {
 		docs: {
 			description: {
-				component: 'Footer links section with docs, socialMedia and social links',
+				component: 'Footer links section with docs, media and social links',
 			},
 		},
 	},

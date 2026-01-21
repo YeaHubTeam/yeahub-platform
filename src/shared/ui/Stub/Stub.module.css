@@ -4,6 +4,7 @@
 }
 
 .img {
+  width: 186px;
   height: 186px;
   object-fit: contain;
 }

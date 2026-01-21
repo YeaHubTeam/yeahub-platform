@@ -12,7 +12,7 @@ const deleteTopicMutation = baseApi.injectEndpoints({
 				url: route(deleteTopicApiUrls.deleteTopic, topicId),
 				method: 'DELETE',
 			}),
-			invalidatesTags: [ApiTags.TOPICS, ApiTags.TOPICS_DETAIL],
+			invalidatesTags: [ApiTags.TOPICS, ApiTags.TOPIC_DETAIL],
 		}),
 	}),
 });

@@ -76,7 +76,9 @@
 	},
 	"keywords": {
 		"title": "Keywords",
-		"label": "Add keywords to the text"
+		"label": "Add keywords to the text",
+		"add.placeholder": "Add keywords",
+		"filter.placeholder": "Choose your keywords"
 	},
 	"author": "Author",
 	"level": "Level:",
@@ -111,6 +113,17 @@
 	"stub": {
 		"not.auth": {
 			"title": "The detailed answer is available only to registered users."
+		},
+		"empty": {
+			"questions": {
+				"title": "No questions found yet",
+				"subtitle": "Questions are added periodically, just wait a bit"
+			},
+			"question": {
+				"title": "No question data available",
+				"subtitle": "Please refresh the page or try the request again",
+				"submit": "Retry"
+			}
 		}
 	}
 }

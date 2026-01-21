@@ -55,6 +55,7 @@ import { SpecializationEditPage } from '@/pages/admin/specialization/specializat
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
+import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
 import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
@@ -534,6 +535,10 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.topics.details.route,
 						element: <TopicDetailPage />,
+					},
+					{
+						path: ROUTES.admin.topics.edit.route,
+						element: <TopicEditPage />,
 					},
 				],
 			},

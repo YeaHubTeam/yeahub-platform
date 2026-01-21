@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
+
+import { Collections, i18Namespace } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
-import { TablePagination } from '@/shared/ui/TablePagination';
+import { Text } from '@/shared/ui/Text';
 
 import { useGetPublicCollectionsListQuery } from '@/entities/collection';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
@@ -12,12 +16,17 @@ import {
 	useCollectionsFilters,
 } from '@/features/collections/filterCollections';
 
-import { CollectionsContent, InterviewRecordingsBanner } from '@/widgets/Collection';
+import { CollectionsList, InterviewRecordingsBanner } from '@/widgets/Collection';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import styles from './PublicCollectionsPage.module.css';
 import { PublicCollectionsPageSkeleton } from './PublicCollectionsPage.skeleton';
 
 const PublicCollectionsPage = () => {
+	const { isSmallScreen } = useScreenSize();
+	const { t } = useTranslation(i18Namespace.collection);
+	const { search } = useLocation();
+
 	const {
 		filters,
 		hasFilters,
@@ -55,36 +64,56 @@ const PublicCollectionsPage = () => {
 			}}
 		/>
 	);
-	if (isLoadingCollections) {
-		return <PublicCollectionsPageSkeleton />;
-	}
 
-	if (!collections) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTIONS_SUBTITLE),
+		},
+		'filter-empty': {
+			onClick: onResetFilters,
+		},
+	};
+
 	return (
-		<section className={styles.wrapper}>
-			<CollectionsContent
-				collections={collections.data}
-				filter={filters}
-				hasFilters={hasFilters}
-				resetFilters={onResetFilters}
-				pagination={
-					<TablePagination
-						page={filters.page || 1}
-						onChangePage={onChangePage}
-						limit={collections.limit}
-						total={collections.total}
-					/>
-				}
-				renderDrawer={() => <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
-				banner={!isLargeScreen && <InterviewRecordingsBanner />}
-			/>
-			<Flex direction="column" gap="20">
-				{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
-				{isLargeScreen && <InterviewRecordingsBanner />}
-			</Flex>
-		</section>
+		<PageWrapper
+			isLoading={isLoadingCollections}
+			skeleton={<PublicCollectionsPageSkeleton />}
+			hasFilters={hasFilters}
+			hasData={(collections?.data || []).length > 0}
+			stubs={stubs}
+			content={<CollectionsList collections={collections?.data || []} queryFilter={search} />}
+			paginationOptions={{
+				page: filters.page || 1,
+				onChangePage,
+				limit: collections?.limit || 0,
+				total: collections?.total || 0,
+			}}
+		>
+			{({ content, pagination }) => (
+				<section className={styles.wrapper}>
+					<div className={styles['main-info-wrapper']}>
+						<Card className={styles.content}>
+							<Flex className={styles.header} direction="row" justify="between">
+								<Text variant="body6" isMainTitle maxRows={1}>
+									{t(Collections.COLLECTIONS_TITLE)}
+								</Text>
+								{isSmallScreen && <FiltersDrawer>{renderFilter()}</FiltersDrawer>}
+							</Flex>
+							<>
+								{content}
+								{!isLargeScreen && <InterviewRecordingsBanner />}
+								{pagination}
+							</>
+						</Card>
+					</div>
+					<Flex direction="column" gap="20">
+						{isLargeScreen && <Card className={styles.filters}>{renderFilter()}</Card>}
+						{isLargeScreen && <InterviewRecordingsBanner />}
+					</Flex>
+				</section>
+			)}
+		</PageWrapper>
 	);
 };
 
