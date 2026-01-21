@@ -9,7 +9,11 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
 
+import { PopularQuestionsPageSkeleton } from './PopularQuestionsPage.skeleton';
+
 export const PopularQuestionsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
@@ -17,8 +21,12 @@ export const PopularQuestionsPage = () => {
 
 	const DATA_LIMIT_IN_PAGE = 10;
 	const page = filters?.page || 1;
-	const { t } = useTranslation(i18Namespace.analytics);
-	const { data } = useGetPopularQuestionsQuery();
+
+	const { data, isLoading, isFetching } = useGetPopularQuestionsQuery();
+
+	if (isLoading || isFetching) {
+		return <PopularQuestionsPageSkeleton />;
+	}
 
 	const popularQuestionsByAllSpecializations = data?.reduce<PopularQuestionStat[]>(
 		(accum, item) => [...accum, ...item.topStat],

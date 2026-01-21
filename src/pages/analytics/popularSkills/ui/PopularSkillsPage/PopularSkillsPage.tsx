@@ -9,18 +9,29 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
 import { PopularSkillsPageTable } from '../PopularSkillsPageTable/PopularSkillsPageTable';
 
+import { PopularSkillsPageSkeleton } from './PopularSkillsPage.skeleton';
+
 export const PopularSkillsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
 		});
-	const { t } = useTranslation(i18Namespace.analytics);
 
-	const { data: popularSkills } = useGetPopularSkillsQuery({
+	const {
+		data: popularSkills,
+		isLoading,
+		isFetching,
+	} = useGetPopularSkillsQuery({
 		limit: 10,
 		page: filters.page,
 		specializationId: filters.specialization,
 	});
+
+	if (isLoading || isFetching) {
+		return <PopularSkillsPageSkeleton />;
+	}
 
 	const specializationTitle = filters.specialization
 		? popularSkills?.data[0].specialization.title

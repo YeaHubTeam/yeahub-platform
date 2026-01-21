@@ -11,18 +11,28 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 
 import { ProgressSpecializationsList } from '../ProgressSpecializationsList/ProgressSpecializationsList';
 
+import { ProgressSpecializationsPageSkeleton } from './ProgressSpecializationsPage.skeleton';
+
 export const ProgressSpecializationsPage = () => {
+	const { t } = useTranslation(i18Namespace.analytics);
+
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
 			page: 1,
 		});
 
-	const { data: response } = useGetSpecializationsGeneralProgressQuery({
+	const {
+		data: response,
+		isLoading,
+		isFetching,
+	} = useGetSpecializationsGeneralProgressQuery({
 		page: filters.page,
 		specializationId: filters.specialization,
 	});
 
-	const { t } = useTranslation(i18Namespace.analytics);
+	if (isLoading || isFetching) {
+		return <ProgressSpecializationsPageSkeleton />;
+	}
 
 	const specializationsProgress = response?.data ?? [];
 
