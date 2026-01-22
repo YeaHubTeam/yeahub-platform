@@ -109,6 +109,7 @@ export enum Translation {
 	CRUMBS_RESOURCES = 'crumbs.resources',
 	CRUMBS_RESOURCES_MY = 'crumbs.resources.my',
 	CRUMBS_RESOURCES_MY_REQUEST = 'crumbs.resources.my.request',
+	CRUMBS_RESOURCES_MY_REQUESTS = 'crumbs.resources.my.requests',
 	CRUMBS_CREATE_REQUEST = 'crumbs.create.request',
 	CRUMBS_EDIT_REQUEST = 'crumbs.edit.request',
 	CRUMBS_ANALYTICS = 'crumbs.analytics',

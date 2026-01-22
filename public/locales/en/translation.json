@@ -175,6 +175,7 @@
 		"resources": "Resources",
 		"resources.my": "My resources",
 		"resources.my.request": "Request",
+		"resources.my.requests": "My requests",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
 		"analytics": "Analytics",

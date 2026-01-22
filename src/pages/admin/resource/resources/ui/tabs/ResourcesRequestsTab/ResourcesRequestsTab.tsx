@@ -4,9 +4,14 @@ import { useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { SelectedResourceRequestEntities, useGetResourceRequestsQuery } from '@/entities/resource';
+import {
+	SelectedResourceRequestEntities,
+	useGetResourceRequestsQuery,
+	useGetMyRequestsResourcesQuery,
+} from '@/entities/resource';
 
 import { useResourceRequestsFilters } from '@/features/resources/filterResourceRequests';
+import { useMyRequestsFilter } from '@/features/resources/myRequestsFilter';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -26,11 +31,19 @@ export const ResourcesRequestsTab = () => {
 			page: 1,
 		});
 
-	const { data: resourceRequests, isLoading } = useGetResourceRequestsQuery({
+	const { isMy } = useMyRequestsFilter();
+
+	const queryArgs = {
 		page: filters.page,
 		limit: 10,
 		name: filters.title,
-	});
+	};
+
+	const myRequestsQuery = useGetMyRequestsResourcesQuery(queryArgs);
+	const allRequestsQuery = useGetResourceRequestsQuery(queryArgs);
+
+	const resourceRequests = isMy ? myRequestsQuery.data : allRequestsQuery.data;
+	const isLoading = isMy ? myRequestsQuery.isLoading : allRequestsQuery.isLoading;
 
 	const onSelectResourceRequests = (ids: SelectedResourceRequestEntities) => {
 		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests(ids));
@@ -55,11 +68,14 @@ export const ResourcesRequestsTab = () => {
 				total: resourceRequests?.total || 0,
 			}}
 			content={
-				<ResourceRequestsTable
-					resourceRequests={resourceRequests?.data}
-					selectedResourceRequests={selectedResourceRequests}
-					onSelectResourceRequests={onSelectResourceRequests}
-				/>
+				<>
+					<ResourceRequestsTable
+						resourceRequests={resourceRequests?.data}
+						selectedResourceRequests={selectedResourceRequests}
+						onSelectResourceRequests={onSelectResourceRequests}
+					/>
+					{/* <MyRequestsToggle /> */}
+				</>
 			}
 		>
 			{({ content, pagination }) => (
