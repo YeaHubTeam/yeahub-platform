@@ -12,9 +12,9 @@ import { DeleteQuestionButtonSkeleton } from '@/features/question/deleteQuestion
 import { QuestionBodySkeleton } from '@/widgets/question/QuestionBody';
 import { QuestionHeaderSkeleton } from '@/widgets/question/QuestionHeader';
 
-import styles from './QuestionPage.module.css';
+import styles from './QuestionPageContent.module.css';
 
-export const QuestionPageSkeleton = () => {
+export const QuestionPageContentSkeleton = () => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
