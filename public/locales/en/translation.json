@@ -56,6 +56,9 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"tasks": {
+				"title": "Live Coding"
+			},
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
@@ -166,6 +169,7 @@
 		"questions.list": "List of questions",
 		"question.detail": "More details",
 		"quiz": "Interview",
+		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
 		"main.page": "Home",
 		"error.404": "Page not found",
@@ -275,7 +279,27 @@
 		"skills": {
 			"create": {
 				"success": "Skill created successfully",
-				"failed": "Failed to create Skill"
+				"failed": "Failed to create Skill",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"skill": {
+					"title.conflict": "Skill with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "Skill changed successfully",
@@ -543,6 +567,47 @@
 				}
 			}
 		},
+		"companies": {
+			"edit": {
+				"success": "Company successfully changed",
+				"failed": "Company could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted companies:",
+					"failed": "Could not delete company:"
+				}
+			},
+			"create": {
+				"success": "Company successfully created",
+				"failed": "Company could not be created",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"conflict": "Such a company already exists",
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
+			},
+			"filter": {
+				"not.found": "Company is not found"
+			}
+		},
 		"subscriptions": {
 			"unsubscribe": {
 				"success": "Subscription disabled",
@@ -563,6 +628,10 @@
 				"info": "You don't have access to this feature"
 			}
 		}
+	},
+	"tasks": {
+		"title": "Live Coding",
+		"run": "Run"
 	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",

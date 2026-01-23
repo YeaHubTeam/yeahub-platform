@@ -48,7 +48,12 @@ const QuestionsPage = () => {
 	const { status, ...getParams } = filters;
 	const profileId = useAppSelector(getProfileId);
 
-	const { data: allQuestions, isLoading: isLoadingAllQuestions } = useGetQuestionsListQuery(
+	const {
+		data: allQuestions,
+		isLoading: isLoadingAllQuestions,
+		isError: isErrorAllQuestions,
+		refetch: refetchAllQuestions,
+	} = useGetQuestionsListQuery(
 		{
 			...getParams,
 			profileId,
@@ -73,6 +78,7 @@ const QuestionsPage = () => {
 		);
 
 	const questions = status === 'all' || status === 'favorite' ? allQuestions : learnedQuestions;
+	const questionsList = questions?.data || [];
 
 	const onMoveQuestionDetail = (id: number) => {
 		handleNavigation(id);
@@ -97,26 +103,27 @@ const QuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Questions.STUB_EMPTY_TITLE),
-			subtitle: t(Questions.STUB_EMPTY_SUBTITLE),
+			title: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		error: {
+			onClick: refetchAllQuestions,
 		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoadingAllQuestions || isLoadingLearnedQuestions || isLoadingCategories}
+			hasError={isErrorAllQuestions}
 			skeleton={<QuestionsPageSkeleton />}
 			hasFilters={hasFilters}
-			hasData={(questions?.data || []).length > 0}
+			hasData={questionsList.length > 0}
 			stubs={stubs}
 			content={
-				<FullQuestionsList
-					questions={questions?.data || []}
-					onMoveQuestionDetail={onMoveQuestionDetail}
-				/>
+				<FullQuestionsList questions={questionsList} onMoveQuestionDetail={onMoveQuestionDetail} />
 			}
 			paginationOptions={{
 				page: filters.page || 1,

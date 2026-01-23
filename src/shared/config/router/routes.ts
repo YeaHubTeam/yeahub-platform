@@ -223,6 +223,10 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
+	tasks: {
+		route: 'tasks',
+		page: '/dashboard/tasks',
+	},
 	wiki: {
 		route: 'wiki',
 		page: '/dashboard/wiki',

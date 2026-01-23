@@ -1,3 +1,4 @@
-import { resourceTypesMock } from './resourceTypesMock';
+import { resourceByIdMock } from './resourceMock';
+import { resourcesListMock } from './resourcesListMock';
 
-export const resourceHandlers = [resourceTypesMock];
+export const resourcesHandlers = [resourcesListMock, resourceByIdMock];

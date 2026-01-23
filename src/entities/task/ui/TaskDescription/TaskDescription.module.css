@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 0 16px 16px;
+}
+
+.constraints {
+  margin-top: 24px;
+}
+
+.constraints-title {
+  margin-bottom: 12px;
+}
+
+.constraints-list {
+  padding-left: 18px;
+}
+
+.constraint-item {
+  margin-bottom: 8px;
+}

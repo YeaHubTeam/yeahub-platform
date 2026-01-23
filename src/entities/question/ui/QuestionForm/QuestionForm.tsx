@@ -6,6 +6,7 @@ import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -14,6 +15,7 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
 
+import { useGetQuestionsFilterKeywordsQuery } from '../../api/questionApi';
 import { QuestionStatus } from '../../model/types/question';
 
 import styles from './QuestionForm.module.css';
@@ -22,7 +24,6 @@ export const QuestionForm = () => {
 	const { t } = useTranslation(i18Namespace.questions);
 
 	const { control, watch } = useFormContext();
-
 	const selectedSpecializations = watch('specializations');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
@@ -35,7 +36,6 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
-
 	return (
 		<Flex direction="column" gap="40">
 			<Flex direction="column">
@@ -165,9 +165,25 @@ export const QuestionForm = () => {
 				</Flex>
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value }) => {
+						const currentKeywords = Array.isArray(value) ? value : [];
+
 						return (
 							<div className={styles.select}>
-								<KeywordInput value={value} onChange={onChange} />
+								<KeywordSelect
+									getKeywordsQuery={useGetQuestionsFilterKeywordsQuery}
+									value={undefined}
+									onChange={(keyword) => {
+										if (keyword && !currentKeywords.includes(keyword)) {
+											onChange([...currentKeywords, keyword]);
+										}
+									}}
+									selectedKeywords={currentKeywords}
+									showLabel={false}
+									showSelected={false}
+									width={360}
+									label={t(Questions.KEYWORDS_FILTER_PLACEHOLDER)}
+								/>
+								<KeywordInput value={currentKeywords} onChange={onChange} />
 							</div>
 						);
 					}}

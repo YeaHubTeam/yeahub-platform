@@ -15,6 +15,9 @@ export type KeywordSelectProps = Omit<
 	value?: string;
 	onChange: (value?: string) => void;
 	disabled?: boolean;
+	selectedKeywords?: string[];
+	showLabel?: boolean;
+	showSelected?: boolean;
 	getKeywordsQuery: TypedUseQuery<
 		Response<string[]>,
 		{
@@ -30,6 +33,9 @@ export const KeywordSelect = ({
 	value,
 	onChange,
 	disabled,
+	selectedKeywords = [],
+	showLabel = true,
+	showSelected = true,
 	getKeywordsQuery,
 }: KeywordSelectProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
@@ -41,7 +47,7 @@ export const KeywordSelect = ({
 	}, 500);
 
 	const { data: keywordsResponse } = getKeywordsQuery({
-		limit: 10,
+		limit: 100,
 		title: debouncedValue,
 	});
 
@@ -67,29 +73,40 @@ export const KeywordSelect = ({
 	const options = useMemo(() => {
 		const keywords = keywordsResponse?.data || [];
 
+		const availableKeywords = keywords.filter((keyword) => !selectedKeywords.includes(keyword));
+
 		const filteredKeywords = searchValue
-			? keywords.filter((keyword) => keyword.toLowerCase().includes(searchValue.toLowerCase()))
-			: keywords;
+			? availableKeywords.filter((keyword) =>
+					keyword.toLowerCase().includes(searchValue.toLowerCase()),
+				)
+			: availableKeywords;
 
 		return filteredKeywords.map((keyword) => ({
 			value: keyword,
 			label: keyword,
 		}));
-	}, [searchValue, keywordsResponse]);
+	}, [searchValue, keywordsResponse, selectedKeywords]);
 
 	const selectedKeyword = options.find((option) => option.value === value) || emptyKeyword;
 	const notFoundText = t(Translation.KEYWORD_NOT_FOUND);
-	const displayValue = options.length === 0 ? notFoundText : searchValue || selectedKeyword.label;
+	const displayValue =
+		options.length === 0
+			? notFoundText
+			: !showSelected
+				? t(Translation.KEYWORD_PLACEHOLDER)
+				: searchValue || selectedKeyword.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
-			<Text variant="body2" color="black-700">
-				{t(Translation.KEYWORD_LABEL)}
-			</Text>
+			{showLabel && (
+				<Text variant="body2" color="black-700">
+					{t(Translation.KEYWORD_LABEL)}
+				</Text>
+			)}
 			<Dropdown
 				size="S"
 				label={selectedKeyword.label}
-				disabled={false}
+				disabled={disabled}
 				value={displayValue}
 				isInput={true}
 				inputValue={searchValue}
@@ -98,9 +115,9 @@ export const KeywordSelect = ({
 				onSelect={(val) => {
 					if (val === 'not-found') return;
 
-					const selected = options.find((opt) => opt.value === val);
+					options.find((opt) => opt.value === val);
 					handleChange(String(val));
-					setSearchValue(selected?.label ?? '');
+					setSearchValue('');
 				}}
 			>
 				{options.length === 0 ? (

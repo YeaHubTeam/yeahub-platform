@@ -76,7 +76,9 @@
 	},
 	"keywords": {
 		"title": "Keywords",
-		"label": "Add keywords to the text"
+		"label": "Add keywords to the text",
+		"add.placeholder": "Add keywords",
+		"filter.placeholder": "Choose your keywords"
 	},
 	"author": "Author",
 	"level": "Level:",
@@ -113,8 +115,22 @@
 			"title": "The detailed answer is available only to registered users."
 		},
 		"empty": {
-			"title": "No questions found yet",
-			"subtitle": "Questions are added periodically, just wait a bit"
+			"questions": {
+				"public": {
+					"title": "No questions found yet",
+					"subtitle": "Questions are added periodically, just wait a bit"
+				},
+				"admin": {
+					"title": "No questions found yet",
+					"subtitle": "Create your first one — and start adding content to the knowledge base",
+					"submit": "Add a question"
+				}
+			},
+			"question": {
+				"title": "No question data available",
+				"subtitle": "Please refresh the page or try the request again",
+				"submit": "Retry"
+			}
 		}
 	}
 }

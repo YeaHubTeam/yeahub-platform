@@ -141,3 +141,4 @@ export { default as withoutPhotoIcon } from './withoutPhotoIcon.svg';
 export { default as yeaHubCommunity } from './yeaHubCommunity.svg';
 export { default as youtube } from './youtube.svg';
 export { default as youtubeWithBackground } from './youtubeWithBackground.svg';
+export { default as refresh } from './refresh.svg';

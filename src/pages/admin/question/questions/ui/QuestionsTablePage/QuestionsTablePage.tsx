@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
+import { i18Namespace, Questions, ROUTES } from '@/shared/config';
+import { route, SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -26,6 +29,8 @@ const QuestionsPage = () => {
 	const userId = useAppSelector(getUserId);
 	const selectedQuestions = useAppSelector(getSelectedQuestions);
 	const isAuthor = useAppSelector(getIsAuthor);
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.questions);
 
 	const {
 		filters,
@@ -44,7 +49,12 @@ const QuestionsPage = () => {
 		page: 1,
 	});
 
-	const { data: allQuestions, isLoading } = useGetQuestionsListQuery({
+	const {
+		data: allQuestions,
+		isLoading: isLoadingAllQuestions,
+		isError: isErrorAllQuestions,
+		refetch: refetchAllQuestions,
+	} = useGetQuestionsListQuery({
 		skills: filters.skills,
 		page: filters.page,
 		specialization: filters.specialization,
@@ -65,6 +75,10 @@ const QuestionsPage = () => {
 		onResetFilters();
 	};
 
+	const handleCreateQuestion = () => {
+		navigate(route(ROUTES.admin.questions.create.page));
+	};
+
 	const questions = useMemo(() => {
 		if (!allQuestions || !allQuestions.data) return undefined;
 
@@ -77,7 +91,18 @@ const QuestionsPage = () => {
 		};
 	}, [allQuestions, userId, isAuthor]);
 
+	const questionsList = questions?.data || [];
+
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBTITLE),
+			buttonText: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBMIT),
+			onClick: handleCreateQuestion,
+		},
+		error: {
+			onClick: refetchAllQuestions,
+		},
 		'filter-empty': {
 			onClick: resetAll,
 		},
@@ -85,14 +110,16 @@ const QuestionsPage = () => {
 
 	return (
 		<PageWrapper
-			isLoading={isLoading}
+			isLoading={isLoadingAllQuestions}
+			hasError={isErrorAllQuestions}
 			skeleton={<QuestionsTablePageSkeleton />}
 			hasFilters={hasFilters}
-			hasData={(questions?.data || []).length > 0}
+			hasData={questionsList.length > 0}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			content={
 				<QuestionsTable
-					questions={questions?.data}
+					questions={questionsList}
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
 				/>
