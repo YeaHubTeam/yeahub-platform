@@ -1,12 +1,15 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
+import { Collections, i18Namespace, ROUTES } from '@/shared/config';
+import { SelectedAdminEntities, useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
-import { getIsAuthor, getUserId } from '@/entities/profile';
+import { getFullProfile, getIsAuthor, getUserId } from '@/entities/profile';
 
 import {
 	CollectionsFilters,
@@ -25,8 +28,11 @@ import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.collection);
 	const userId = useSelector(getUserId);
 	const isAuthor = useSelector(getIsAuthor);
+	const profile = useSelector(getFullProfile);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
@@ -50,7 +56,12 @@ const CollectionsPage = () => {
 		onResetFilters();
 	};
 
-	const { data: allCollections, isLoading } = useGetCollectionsListQuery({
+	const {
+		data: allCollections,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCollectionsListQuery({
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
@@ -67,17 +78,30 @@ const CollectionsPage = () => {
 		};
 	}, [allCollections, userId, isAuthor]);
 
+	const canCreate = profile?.userRoles?.some(
+		(role) => role.name === 'admin' || role.name === 'author',
+	);
+
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Collections.STUB_EMPTY_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_DESCRIPTION),
+			buttonText: canCreate ? t(Collections.STUB_EMPTY_BUTTON) : undefined,
+			onClick: canCreate ? () => navigate(ROUTES.admin.collections.create.page) : undefined,
+		},
 		'filter-empty': {
 			onClick: onResetAll,
 		},
+		error: { onClick: refetch },
 	};
 
 	return (
 		<PageWrapper
+			roles={['admin', 'author']}
 			isLoading={isLoading}
 			skeleton={<CollectionsPageSkeleton />}
 			hasFilters={hasFilters}
+			hasError={isError}
 			hasData={(collections?.data || []).length > 0}
 			stubs={stubs}
 			paginationOptions={{
