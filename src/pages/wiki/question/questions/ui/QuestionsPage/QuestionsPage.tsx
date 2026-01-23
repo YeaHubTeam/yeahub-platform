@@ -103,8 +103,8 @@ const QuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Questions.STUB_EMPTY_QUESTIONS_TITLE),
-			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_SUBTITLE),
+			title: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
