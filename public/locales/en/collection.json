@@ -73,16 +73,20 @@
 		"link": "Join",
 		"watch.button": "Watch"
 	},
-	"stub.empty": {
-		"title": "No collections found yet",
-		"subtitle": "Collections are added periodically, just wait a bit",
-		"description": "Create the first — and start filling your knowledge base with content",
-		"button": "Add a collection"
-	},
-	"stub.detail.empty": {
-		"title": "Collection data is not available",
-		"subtitle": "Please try to refresh the page or repeat the request",
-		"button": "Repeat the request"
+	"stub": {
+		"empty": {
+			"collections": {
+				"title": "No collections found yet",
+				"subtitle": "Collections are added periodically, just wait a bit"
+			},
+			"collection": {
+				"title": "It seems the collection data is missing",
+				"subtitle": "Try refreshing the page or repeating the request",
+				"description": "Create the first — and start filling your knowledge base with content",
+				"button": "Add a collection",
+				"submit": "Try again"
+			}
+		}
 	},
 	"sort": {
 		"author": {

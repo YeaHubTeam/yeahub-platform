@@ -38,7 +38,7 @@ const CollectionEditPage = () => {
 			roles={['admin', 'author']}
 			isLoading={isLoading}
 			hasError={isError}
-			hasData={!!collection}
+			hasData={!!collection && Object.keys(collection).length > 0}
 			stubs={stubs}
 			content={collection ? <CollectionEditForm collection={collection} /> : null}
 		>

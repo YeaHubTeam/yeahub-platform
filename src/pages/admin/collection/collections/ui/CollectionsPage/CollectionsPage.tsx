@@ -9,7 +9,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
-import { getFullProfile, getIsAuthor, getUserId } from '@/entities/profile';
+import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import {
 	CollectionsFilters,
@@ -32,7 +32,6 @@ const CollectionsPage = () => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const userId = useSelector(getUserId);
 	const isAuthor = useSelector(getIsAuthor);
-	const profile = useSelector(getFullProfile);
 	const selectedCollections = useSelector(getSelectedCollections);
 	const onSelectCollections = (ids: SelectedAdminEntities) => {
 		dispatch(collectionsPageActions.setSelectedCollections(ids));
@@ -78,16 +77,12 @@ const CollectionsPage = () => {
 		};
 	}, [allCollections, userId, isAuthor]);
 
-	const canCreate = profile?.userRoles?.some(
-		(role) => role.name === 'admin' || role.name === 'author',
-	);
-
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Collections.STUB_EMPTY_TITLE),
-			subtitle: t(Collections.STUB_EMPTY_DESCRIPTION),
-			buttonText: canCreate ? t(Collections.STUB_EMPTY_BUTTON) : undefined,
-			onClick: canCreate ? () => navigate(ROUTES.admin.collections.create.page) : undefined,
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTION_DESCRIPTION),
+			buttonText: t(Collections.STUB_EMPTY_COLLECTION_BUTTON),
+			onClick: () => navigate(ROUTES.admin.collections.create.page),
 		},
 		'filter-empty': {
 			onClick: onResetAll,

@@ -56,9 +56,9 @@ export const CollectionPage = () => {
 	const hasData = questions.length > 0;
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Collections.STUB_DETAIL_EMPTY_TITLE),
-			subtitle: t(Collections.STUB_DETAIL_EMPTY_SUBTITLE),
-			buttonText: t(Collections.STUB_DETAIL_EMPTY_BUTTON),
+			title: t(Collections.STUB_EMPTY_COLLECTION_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTION_SUBTITLE),
+			buttonText: t(Collections.STUB_EMPTY_COLLECTION_SUBMIT),
 			onClick: () => refetch(),
 		},
 		error: { onClick: () => refetch() },
