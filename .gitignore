@@ -23,3 +23,10 @@ npm-debug.log*
 *.sln
 *.sw?
 *.local
+localhost.crt
+localhost.csr
+localhost.key
+root_ca.crt
+root_ca.key
+root_ca.srl
+san.ext

@@ -10,7 +10,9 @@
 		"additional": "Keywords"
 	},
 	"link": "Link",
-	"search.placeholder": "Enter resource...",
+	"search": {
+		"placeholder": "Enter resource..."
+	},
 	"skills": {
 		"additional": "Skills",
 		"title": "Skills"
@@ -84,6 +86,11 @@
 				"subtitle": "Create your first useful resource and start adding content to the knowledge base",
 				"submit": "Add resource"
 			}
+		}
+	},
+	"sort": {
+		"author": {
+			"title": "My resources"
 		}
 	}
 }

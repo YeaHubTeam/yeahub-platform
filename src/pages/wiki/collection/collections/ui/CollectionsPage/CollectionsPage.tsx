@@ -48,7 +48,12 @@ const CollectionsPage = () => {
 		specializations: [specializationId],
 	});
 
-	const { data: allCollections, isLoading: isLoadingAllCollections } = useGetCollectionsListQuery({
+	const {
+		data: allCollections,
+		isLoading: isLoadingAllCollections,
+		isError: isErrorAllCollections,
+		refetch: refetchCollections,
+	} = useGetCollectionsListQuery({
 		titleOrDescriptionSearch: filters.title,
 		specializations: specializationId,
 		companies: filters.company,
@@ -76,11 +81,14 @@ const CollectionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Collections.STUB_EMPTY_TITLE),
-			subtitle: t(Collections.STUB_EMPTY_SUBTITLE),
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTIONS_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		error: {
+			onClick: refetchCollections,
 		},
 	};
 
@@ -90,6 +98,7 @@ const CollectionsPage = () => {
 			skeleton={<CollectionsPageSkeleton />}
 			hasFilters={hasFilters}
 			hasData={(allCollections?.data || []).length > 0}
+			hasError={isErrorAllCollections}
 			stubs={stubs}
 			content={<CollectionsList collections={allCollections?.data || []} queryFilter={search} />}
 			paginationOptions={{

@@ -1,7 +1,8 @@
-import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { ApiTags, baseApi, ExtraArgument, i18n, ROUTES, Translation } from '@/shared/config';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateSkillApiErrorMessage } from '../lib/utils/getCreateSkillApiErrorMessage';
 import { createSkillApiUrls } from '../model/constants/createSkillConstants';
 import { CreateSkillBodyRequest, CreateSkillResponse } from '../model/types/skillCreateTypes';
 
@@ -20,7 +21,7 @@ export const createSkillApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.skills.detail.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SKILL_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_SKILL_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateSkillApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

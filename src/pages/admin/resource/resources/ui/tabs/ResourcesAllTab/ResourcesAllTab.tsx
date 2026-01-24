@@ -8,7 +8,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { isResourceDisabled, useGetResourcesListQuery } from '@/entities/resource';
 
-import { useResourcesFilters } from '@/features/resources/filterResources';
+import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -23,17 +23,32 @@ export const ResourcesAllTab = () => {
 	const userId = useAppSelector(getUserId);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
 
-	const { onChangeTitle, filters, onChangePage, onResetFilters, hasFilters } = useResourcesFilters({
+	const {
+		onChangeTitle,
+		filters,
+		onChangePage,
+		onResetFilters,
+		hasFilters,
+		onChangeSkills,
+		onChangeTypes,
+		onChangeSpecialization,
+		onChangeIsMy,
+	} = useResourcesFilters({
 		page: 1,
 	});
 
 	const { data: resources, isLoading } = useGetResourcesListQuery({
 		page: filters.page,
 		name: filters.title,
+		skills: filters.skills,
+		specializations: filters.specialization,
+		types: filters.types,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const resourcesWithEditFlags = useMemo(() => {
 		if (!resources?.data) return [];
+
 		return resources?.data.map((resource) => ({
 			...resource,
 			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource?.createdBy.id }),
@@ -65,8 +80,19 @@ export const ResourcesAllTab = () => {
 					<SearchSection
 						to="create"
 						showRemoveButton={selectedResources.length > 0}
-						searchValue={filters.title}
 						onSearch={onChangeTitle}
+						searchValue={filters.title}
+						hasFilters={hasFilters}
+						renderFilter={() => (
+							<ResourcesFilters
+								filters={filters}
+								onChangeTitle={onChangeTitle}
+								onChangeSkills={onChangeSkills}
+								onChangeTypes={onChangeTypes}
+								onChangeSpecialization={onChangeSpecialization}
+								onChangeIsMy={onChangeIsMy}
+							/>
+						)}
 					/>
 					<Card className={styles.content}>
 						<>

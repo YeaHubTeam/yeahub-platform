@@ -14,14 +14,23 @@ export interface TabsProps<T> {
 	activeTab: Tab<T>;
 	color?: TabColor;
 	setActiveTab: Dispatch<SetStateAction<Tab<T>>>;
+	disableHashUpdate?: boolean;
 }
 
-export const Tabs = <T,>({ tabs, activeTab, setActiveTab, color = 'default' }: TabsProps<T>) => {
+export const Tabs = <T,>({
+	tabs,
+	activeTab,
+	setActiveTab,
+	color = 'default',
+	disableHashUpdate = false,
+}: TabsProps<T>) => {
 	const navigate = useNavigate();
 
 	const onTabToggle = (tab: Tab<T>) => {
 		setActiveTab(tab);
-		navigate(`#${tab.id}`, { replace: true });
+		if (!disableHashUpdate) {
+			navigate(`#${tab.id}`, { replace: true });
+		}
 	};
 
 	return (

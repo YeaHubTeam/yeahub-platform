@@ -67,8 +67,8 @@ const PublicCollectionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Collections.STUB_EMPTY_TITLE),
-			subtitle: t(Collections.STUB_EMPTY_SUBTITLE),
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTIONS_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,

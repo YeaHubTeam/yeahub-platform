@@ -1,0 +1,11 @@
+.card {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 24px;
+}
+
+.button {
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 12px;
+}
