@@ -1,5 +1,6 @@
 import { Icon } from '@/shared/ui/Icon';
 
+import { counterTestIds } from './constants';
 import styles from './Counter.module.css';
 
 export interface CounterProps {
@@ -22,21 +23,23 @@ export const Counter = ({ count, onChange, maxCount }: CounterProps) => {
 	};
 
 	return (
-		<div className={styles.wrapper}>
+		<div data-testid={counterTestIds.counter} className={styles.wrapper}>
 			<Icon
 				icon="minus"
 				onClick={handleDecreaseCount}
 				color="purple-700"
 				size={20}
-				dataTestId="Counter_IconMinus"
+				dataTestId={counterTestIds.counterIconMinus}
 			/>
-			<div className={styles.count}>{count}</div>
+			<div data-testid={counterTestIds.counterValue} className={styles.count}>
+				{count}
+			</div>
 			<Icon
 				icon="plus"
 				onClick={handleIncreaseCount}
 				color="purple-700"
 				size={20}
-				dataTestId="Counter_IconPlus"
+				dataTestId={counterTestIds.counterIconPlus}
 			/>
 		</div>
 	);
