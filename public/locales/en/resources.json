@@ -75,7 +75,8 @@
 			"edit": "Review request form"
 		},
 		"reject": "Reject",
-		"approve": "Approve"
+		"approve": "Approve",
+		"my": "My requests"
 	},
 	"stub": {
 		"empty": {

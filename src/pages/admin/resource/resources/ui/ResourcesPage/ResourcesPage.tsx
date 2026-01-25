@@ -1,8 +1,6 @@
 import { Flex } from '@/shared/ui/Flex';
 import { Tabs, useTabs } from '@/shared/ui/Tabs';
 
-import { MyRequestsToggle } from '@/features/resources/myRequestsFilter';
-
 import { useGetResourcesPageTabs } from '../../model/hooks/useGetResourcesPageTabs';
 
 const ResourcesPage = () => {
@@ -13,10 +11,7 @@ const ResourcesPage = () => {
 
 	return (
 		<Flex componentType="main" direction="column">
-			<Flex componentType="main" direction="row" justify="between" align="center">
-				<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-				{activeTab.id === 'requests' && <MyRequestsToggle />}
-			</Flex>
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<ActiveComponent />
 		</Flex>
 	);

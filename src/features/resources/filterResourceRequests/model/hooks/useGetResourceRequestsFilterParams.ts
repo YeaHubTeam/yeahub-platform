@@ -14,6 +14,7 @@ export const useGetResourceRequestsFilterParams = (initialParams: ResourceReques
 			: initialParams.types,
 		status: (parsedParams.status as ResourceRequestsFilterParams['status']) || initialParams.status,
 		skills: parsedParams.skills ? parsedParams.skills.split(',').map(Number) : initialParams.skills,
+		isMy: parsedParams.isMy === 'true',
 	};
 
 	return currentParams;
