@@ -870,6 +870,8 @@ export enum Collections {
 	STUB_EMPTY_COLLECTIONS_SUBTITLE = 'stub.empty.collections.subtitle',
 	STUB_EMPTY_COLLECTION_TITLE = 'stub.empty.collection.title',
 	STUB_EMPTY_COLLECTION_SUBTITLE = 'stub.empty.collection.subtitle',
+	STUB_EMPTY_COLLECTION_DESCRIPTION = 'stub.empty.collection.description',
+	STUB_EMPTY_COLLECTION_BUTTON = 'stub.empty.collection.button',
 	STUB_EMPTY_COLLECTION_SUBMIT = 'stub.empty.collection.submit',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
