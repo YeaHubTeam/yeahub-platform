@@ -430,7 +430,6 @@ export enum Specializations {
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
-	EMPTY = 'empty',
 	IMAGE_SRC = 'image.src',
 	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -448,6 +447,12 @@ export enum Specializations {
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 	FILTER_IS_MY_TITLE = 'filter.is.my.title',
+	EMPTY_LIST_DESCRIPTION = 'empty.list.description',
+	EMPTY_LIST_TITLE = 'empty.list.title',
+	EMPTY_LIST_BUTTON = 'empty.list.button',
+	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
+	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
+	EMPTY_DETAIL_TITLE = 'empty.detail.title',
 }
 
 export enum Topics {
