@@ -83,6 +83,7 @@ export const ResourcesRequestsTab = () => {
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
 					<SearchSection
+						hasFilters={hasFilters}
 						onSearch={onChangeTitle}
 						searchValue={filters.title}
 						showRemoveButton={selectedResourceRequests?.length > 0}

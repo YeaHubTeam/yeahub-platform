@@ -37,7 +37,7 @@ export const useResourceRequestsFilters = (initialParams: ResourceRequestsFilter
 		onFilterChange({ skills, page: 1 });
 	};
 
-	const onChangeIsMy = (isMy: boolean) => {
+	const onChangeIsMy = (isMy: ResourceRequestsFilterParams['isMy']) => {
 		onFilterChange({ isMy, page: 1 });
 	};
 
