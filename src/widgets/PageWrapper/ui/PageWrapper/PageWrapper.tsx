@@ -117,21 +117,35 @@ export const PageWrapper = ({
 	const stub = (
 		<>
 			{hasError ? (
-				<Stub type="error" onClick={stubs.error?.onClick} />
+				<Stub
+					type="error"
+					title={stubs.error?.title}
+					subtitle={stubs.error?.subtitle}
+					buttonText={stubs.error?.buttonText}
+					onClick={stubs.error?.onClick}
+				/>
 			) : (
 				<>
 					{!hasData && hasFilters && (
-						<Stub type="filter-empty" onClick={stubs['filter-empty']?.onClick} />
+						<Stub
+							type="filter-empty"
+							title={stubs['filter-empty']?.title}
+							subtitle={stubs['filter-empty']?.subtitle}
+							buttonText={stubs['filter-empty']?.buttonText}
+							onClick={stubs['filter-empty']?.onClick}
+						/>
 					)}
+
 					{!hasData && !hasFilters && (
 						<Stub
 							type="empty"
-							subtitle={stubs.empty?.subtitle}
 							title={stubs.empty?.title}
+							subtitle={stubs.empty?.subtitle}
 							buttonText={stubs.empty?.buttonText}
 							onClick={stubs.empty?.onClick}
 						/>
 					)}
+
 					{hasData && <>{content}</>}
 				</>
 			)}

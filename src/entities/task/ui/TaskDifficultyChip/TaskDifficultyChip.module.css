@@ -1,0 +1,19 @@
+.difficulty-1 {
+  background-color: var(--color-green-750);
+}
+
+.difficulty-2 {
+  background-color: var(--color-green-700);
+}
+
+.difficulty-3 {
+  background-color: var(--color-yellow-600);
+}
+
+.difficulty-4 {
+  background-color: var(--color-yellow-800);
+}
+
+.difficulty-5 {
+  background-color: var(--color-red-600);
+}

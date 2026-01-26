@@ -223,9 +223,17 @@ export const ROUTES = {
 			page: '/dashboard/interview/new',
 		},
 	},
-	tasks: {
-		route: 'tasks',
-		page: '/dashboard/tasks',
+	liveCoding: {
+		route: 'live-coding',
+		page: '/dashboard/live-coding',
+		tasks: {
+			route: 'tasks',
+			page: '/dashboard/live-coding/tasks',
+			detail: {
+				route: ':taskId',
+				page: '/dashboard/live-coding/tasks/:taskId',
+			},
+		},
 	},
 	wiki: {
 		route: 'wiki',

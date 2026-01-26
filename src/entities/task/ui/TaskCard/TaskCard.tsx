@@ -1,11 +1,11 @@
-import classnames from 'classnames';
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
+
+import { TaskDifficultyChip } from '@/entities/task/ui/TaskDifficultyChip/TaskDifficultyChip';
 
 import { TaskListItem } from '../../model/types/task';
 
@@ -17,42 +17,27 @@ type TaskCardProps = {
 };
 
 export const TaskCard = ({ task, className }: TaskCardProps) => {
-	const { id, name, difficulty, mainCategory, status } = task;
+	const { id, name, difficulty } = task;
 
-	const taskPath = `${ROUTES.tasks.page}/${id}`;
+	const taskPath = generatePath(ROUTES.liveCoding.tasks.detail.page, { taskId: id });
 
 	return (
 		<Link to={taskPath} className={className}>
 			<Card withOutsideShadow className={styles.content}>
-				<div className={classnames(styles.wrapper, styles.row)}>
-					<Flex direction="column" gap="16" className={styles['wrapper-content']}>
-						<div className={styles.header}>
-							<ul className={styles.tags}>
-								<li>
-									<StatusChip status={{ text: mainCategory, variant: 'purple' }} />
-								</li>
-							</ul>
-							<StatusChip
-								status={{
-									text: status,
-									variant: status === 'SOLVED' ? 'green' : 'yellow',
-								}}
-							/>
-						</div>
-						<Flex direction="column" gap="20">
-							<Text className={styles['card-title']} variant="body3-accent" maxRows={2}>
-								{name}
-							</Text>
-							<div className={styles['info-container']}>
-								<div className={styles['access-item']}>
-									<Text variant="body2" color="purple-700">
-										Difficulty: {difficulty}
-									</Text>
-								</div>
-							</div>
-						</Flex>
+				<Flex direction="column" gap="20">
+					<Flex justify="between" align="start" gap="16">
+						<Text variant="body4" maxRows={2}>
+							{name}
+						</Text>
+
+						{/*TODO: Add Like Button + logic*/}
+						{/*<Text variant="body2">Like</Text>*/}
 					</Flex>
-				</div>
+
+					<Flex align="center" gap="10">
+						<TaskDifficultyChip difficulty={difficulty} />
+					</Flex>
+				</Flex>
 			</Card>
 		</Link>
 	);

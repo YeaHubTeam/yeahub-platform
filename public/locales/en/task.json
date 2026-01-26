@@ -1,15 +1,41 @@
 {
+	"title": {
+		"short": "Coding tasks"
+	},
 	"description": {
 		"tab.title": "Description",
 		"constraints": {
 			"title": "Constraints"
 		}
 	},
+	"search": {
+		"placeholder": "Enter a task..."
+	},
+	"difficulty": {
+		"title": "Question difficulty",
+		"title.short": "Difficulty"
+	},
+	"languages": {
+		"title": "Programming languages"
+	},
 	"stub": {
-		"empty": {
-			"title": "Failed to load task data",
-			"subtitle": "Try again or refresh the page",
-			"buttonText": "Try again"
+		"empty.tasks": {
+			"public": {
+				"title": "No tasks found yet",
+				"subtitle": "Tasks are added periodically, just wait a bit",
+				"filters": {
+					"subtitle": "Try changing the query or conditions to search for a task."
+				}
+			},
+			"admin": {}
+		},
+		"empty.task": {
+			"public": {
+				"title": "Failed to load task data",
+				"subtitle": "Try again or refresh the page",
+				"buttonText": "Try again"
+			},
+			"admin": {}
 		}
 	},
 	"solutions": {
