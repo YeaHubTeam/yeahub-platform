@@ -1,19 +1,16 @@
 import { Flex } from '@/shared/ui/Flex';
 
+import { docs } from '../../model/constants';
 import { DocItemSkeleton } from '../DocItem/DocItem.skeleton';
 
 import styles from './DocsList.module.css';
 
-interface DocsListSkeletonProps {
-	itemCount?: number;
-}
-
-export const DocsListSkeleton = ({ itemCount = 5 }: DocsListSkeletonProps) => {
+export const DocsListSkeleton = () => {
 	return (
 		<div className={styles['docs']}>
 			<Flex className={styles['docs-items']} direction="column" gap="40">
-				{Array.from({ length: itemCount }).map((_, index) => (
-					<DocItemSkeleton key={index} />
+				{docs.map((doc) => (
+					<DocItemSkeleton key={doc.link} />
 				))}
 			</Flex>
 		</div>

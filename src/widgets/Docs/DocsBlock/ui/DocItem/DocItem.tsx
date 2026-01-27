@@ -1,21 +1,23 @@
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg';
-import { Docs } from '@/shared/config';
+import { Docs, i18Namespace } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { DockItem, DocsTFunction } from '../../model/types/types';
+import { DockItem } from '../../model/types/types';
 
 import styles from './DocItem.module.css';
 
 interface DocItemProps {
 	doc: DockItem;
-	t: DocsTFunction;
 }
 
-export const DocItem = ({ doc, t }: DocItemProps) => {
+export const DocItem = ({ doc }: DocItemProps) => {
+	const { t } = useTranslation(i18Namespace.docs);
+
 	return (
 		<Flex className={styles['doc-item']} justify="between" align="center">
 			<Text variant="body3-accent">{t(doc.name)}</Text>
