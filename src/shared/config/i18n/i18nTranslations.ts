@@ -930,6 +930,12 @@ export enum Companies {
 	SELECT_FILTER_TITLE = 'select.filter.title',
 	SELECT_FILTER_CHOOSE = 'select.filter.choose',
 	SELECT_FILTER_NOT_FOUND = 'select.filter.not.found',
+	STUB_EMPTY_COMPANIES_TITLE = 'stub.empty.companies.title',
+	STUB_EMPTY_COMPANIES_SUBTITLE = 'stub.empty.companies.subtitle',
+	STUB_EMPTY_COMPANIES_SUBMIT = 'stub.empty.companies.submit',
+	STUB_EMPTY_COMPANY_TITLE = 'stub.empty.company.title',
+	STUB_EMPTY_COMPANY_SUBTITLE = 'stub.empty.company.subtitle',
+	STUB_EMPTY_COMPANY_SUBMIT = 'stub.empty.company.submit',
 }
 
 export enum ResourceRequests {

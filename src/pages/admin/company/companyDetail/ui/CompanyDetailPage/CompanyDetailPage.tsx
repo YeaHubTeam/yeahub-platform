@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Translation } from '@/shared/config';
+import { i18Namespace, ROUTES, Translation, Companies } from '@/shared/config';
 import { route, useAppSelector } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
@@ -13,21 +13,37 @@ import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompanyButton } from '@/features/company/deleteCompany';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 const CompanyDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
+	const { t: tCompanies } = useTranslation(i18Namespace.companies);
 
 	const { companyId } = useParams();
-	const { data: company } = useGetCompanyByIdQuery({ companyId: companyId! });
+	const {
+		data: company,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCompanyByIdQuery({ companyId: companyId! });
 	const userId = useAppSelector(getUserId);
 	const isAuthor = useAppSelector(getIsAuthor);
 
 	const isDisabled = isAuthor && company?.createdBy?.id !== userId;
 
-	if (!company) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: tCompanies(Companies.STUB_EMPTY_COMPANY_TITLE),
+			subtitle: tCompanies(Companies.STUB_EMPTY_COMPANY_SUBTITLE),
+			buttonText: tCompanies(Companies.STUB_EMPTY_COMPANY_SUBMIT),
+			onClick: refetch,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
 
-	return (
+	const content = company ? (
 		<main>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
 				<BackButton />
@@ -54,6 +70,19 @@ const CompanyDetailPage = () => {
 			</Flex>
 			<CompanyCard company={company} />
 		</main>
+	) : null;
+
+	return (
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={!!company}
+			roles={['admin', 'author']}
+			stubs={stubs}
+			content={content}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 
