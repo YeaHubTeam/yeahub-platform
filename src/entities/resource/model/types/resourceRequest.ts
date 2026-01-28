@@ -38,6 +38,7 @@ export interface GetResourceRequestsParams {
 	page?: number;
 	limit?: number;
 	name?: string;
+	authorId?: string;
 }
 
 export type GetResourceRequestsResponse = Response<ResourceRequest[]>;
