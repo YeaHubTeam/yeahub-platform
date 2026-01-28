@@ -3,6 +3,7 @@ import { Loader } from '@/shared/ui/Loader';
 
 import { AvosPageSkeleton } from '@/pages/landing/avos';
 import { CreatePublicQuizPageSkeleton } from '@/pages/landing/createPublicQuiz';
+import { DocsPageSkeleton } from '@/pages/landing/docs';
 import { HhAnalyticsPageSkeleton } from '@/pages/landing/hhAnalytics';
 import { LandingPageSkeleton } from '@/pages/landing/landing';
 import { LearningPageSkeleton } from '@/pages/landing/learning';
@@ -34,6 +35,8 @@ export const SkeletonGenerator = () => {
 			return <AvosPageSkeleton />;
 		case ROUTES.learning.page:
 			return <LearningPageSkeleton />;
+		case ROUTES.docs.page:
+			return <DocsPageSkeleton />;
 		default:
 			return <Loader />;
 	}

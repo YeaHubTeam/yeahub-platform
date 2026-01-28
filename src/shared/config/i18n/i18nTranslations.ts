@@ -625,6 +625,7 @@ export enum Resources {
 	WITHDRAW_TITLE = 'withdraw.title',
 	REQUESTS_TITLE_VIEW = 'requests.title.view',
 	REQUESTS_TITLE_EDIT = 'requests.title.edit',
+	REQUESTS_MY = 'requests.my',
 	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
 	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
 	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
