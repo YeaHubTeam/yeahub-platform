@@ -186,7 +186,9 @@
 		"progress.specializations": "Progress in the specialty",
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
-		"analytics.difficultQuestions": "The most difficult questions"
+		"analytics.difficultQuestions": "The most difficult questions",
+		"tasks.list": "Tasks",
+		"task.detail": "More details"
 	},
 	"toast": {
 		"title": {

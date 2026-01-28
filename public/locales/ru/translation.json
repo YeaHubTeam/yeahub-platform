@@ -172,7 +172,7 @@
 		"collections.list": "Коллекции",
 		"collection.detail": "Список вопросов",
 		"quiz": "Собеседование",
-		"liveCoding": "Live Coding",
+		"liveCoding": "Тренажер",
 		"new.quiz": "Викторина",
 		"main.page": "Главная",
 		"error.404": "Страница не найдена",
@@ -190,7 +190,9 @@
 		"popular.skills": "Популярные навыки",
 		"analytics.skillsProficiency": "Средний процент изученности навыка",
 		"analytics.difficultQuestions": "Самые сложные вопросы",
-		"analytics.popularQuestions": "Самые частые вопросы в подборках"
+		"analytics.popularQuestions": "Самые частые вопросы в подборках",
+		"tasks.list": "Список задач",
+		"task.detail": "Подробнее о задаче"
 	},
 	"toast": {
 		"title": {
