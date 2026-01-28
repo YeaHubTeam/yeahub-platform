@@ -1,21 +1,18 @@
-import classnames from 'classnames';
+import { Flex } from '@/shared/ui/Flex';
 
 import type { TaskListItem } from '@/entities/task';
 import { TaskCard } from '@/entities/task';
 
-import styles from './TasksList.module.css';
-
 interface TasksListProps {
 	tasks: TaskListItem[];
-	className?: string;
 }
 
-export const TasksList = ({ tasks, className }: TasksListProps) => {
+export const TasksList = ({ tasks }: TasksListProps) => {
 	return (
-		<div className={classnames(styles.list, className)}>
+		<Flex direction="column" gap="20">
 			{tasks.map((task) => (
 				<TaskCard key={task.id} task={task} />
 			))}
-		</div>
+		</Flex>
 	);
 };

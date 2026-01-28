@@ -17,7 +17,7 @@ export const MyRequestsToggle = () => {
 		<Switch
 			checked={isMy}
 			onChange={handleChange}
-			label={t(Translation.CRUMBS_RESOURCES_MY_REQUESTS)}
+			label={t(Translation.CRUMBS_RESOURCES_MY_REQUEST)}
 		/>
 	);
 };

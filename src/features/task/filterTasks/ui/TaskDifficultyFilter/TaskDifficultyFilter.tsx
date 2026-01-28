@@ -14,7 +14,12 @@ interface TaskDifficultyFilterProps {
 	onChangeDifficulty: (difficulty?: TaskDifficulty) => void;
 }
 
-const DIFFICULTY_OPTIONS: Array<{ id: TaskDifficulty; title: string }> = [
+type TaskDifficultyOption = {
+	id: TaskDifficulty;
+	title: string;
+};
+
+const DIFFICULTY_OPTIONS: TaskDifficultyOption[] = [
 	{ id: 1, title: '1' },
 	{ id: 2, title: '2' },
 	{ id: 3, title: '3' },

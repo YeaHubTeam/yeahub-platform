@@ -1,3 +1,9 @@
+.chip {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
 .difficulty-1 {
   background-color: var(--color-green-750);
 }

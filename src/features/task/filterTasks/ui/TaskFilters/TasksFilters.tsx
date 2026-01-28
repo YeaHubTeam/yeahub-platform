@@ -13,7 +13,7 @@ interface TasksFiltersProps {
 	filters: TasksFilterParams;
 	onChangeTitle: (title: TasksFilterParams['title']) => void;
 	onChangeDifficulty: (difficulty?: TasksFilterParams['difficulty']) => void;
-	onChangeLangIds: (langIds?: number[]) => void;
+	onChangeLangIds: (langIds?: TasksFilterParams['langIds']) => void;
 }
 
 export const TasksFilters = ({

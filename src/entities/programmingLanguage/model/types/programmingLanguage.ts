@@ -1,8 +1,10 @@
+type ProgrammingLanguageCode = 'cpp' | 'go' | 'java' | 'javascript' | 'python' | 'ruby';
+
 export interface ProgrammingLanguage {
 	id: number;
 	name: string;
 	version: string;
-	monacoLangId: string;
+	monacoLangId: ProgrammingLanguageCode;
 	fileExtension: string;
 	isActive: boolean;
 }

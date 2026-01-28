@@ -5,9 +5,8 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskDifficultyChip } from '@/entities/task/ui/TaskDifficultyChip/TaskDifficultyChip';
-
 import { TaskListItem } from '../../model/types/task';
+import { TaskDifficultyChip } from '../TaskDifficultyChip/TaskDifficultyChip';
 
 import styles from './TaskCard.module.css';
 
@@ -29,9 +28,6 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 						<Text variant="body4" maxRows={2}>
 							{name}
 						</Text>
-
-						{/*TODO: Add Like Button + logic*/}
-						{/*<Text variant="body2">Like</Text>*/}
 					</Flex>
 
 					<Flex align="center" gap="10">
