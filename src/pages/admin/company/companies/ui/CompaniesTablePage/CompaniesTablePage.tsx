@@ -83,6 +83,7 @@ const CompaniesTablePage = () => {
 			hasFilters={hasFilters}
 			hasData={companiesWithEditFlags.length > 0}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,
