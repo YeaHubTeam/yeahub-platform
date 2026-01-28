@@ -68,7 +68,7 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 
 	const [activeStep, setActiveStep] = useState<Step<OnboardingStep>>(steps[0]);
 	const activeStepIndex = steps.findIndex((step) => step.id === activeStep.id);
-	const allowClose = activeStepIndex === steps.length - 1;
+	const allowClose = activeStepIndex >= steps.length - 2;
 
 	const goNextStep = () => {
 		setActiveStep(steps[activeStepIndex + 1]);
@@ -85,13 +85,13 @@ export const OnboardingModal = ({ isOpen, onClose }: RequiredModalProps) => {
 		}
 	};
 
-	const StepComponent = () => activeStep.Component({ goNextStep });
+	const StepComponent = () => activeStep.Component({ goNextStep, onCloseModal });
 
 	return (
 		<Modal
 			isOpen={isOpen}
 			onClose={onCloseModal}
-			withCloseIcon={allowClose}
+			withCloseIcon={activeStepIndex === steps.length - 1}
 			className={styles['onboarding-modal']}
 			hasPadding={false}
 		>
