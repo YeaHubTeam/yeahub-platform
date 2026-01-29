@@ -19,7 +19,7 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
 import WikiIcon from '@/shared/assets/icons/wiki.svg';
 import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
-import { Translation, i18n, ROUTES } from '@/shared/config';
+import { i18n, ROUTES, Translation } from '@/shared/config';
 
 import { listAdminRoles, RoleName } from '@/entities/auth';
 
@@ -722,23 +722,6 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.tasks.route,
-				element: <Outlet />,
-				handle: {
-					crumb: i18n.t(Translation.CRUMBS_TASKS),
-				},
-				children: [
-					{
-						index: true,
-						element: <TasksPage />,
-					},
-					{
-						path: ':id',
-						element: <TaskPage />,
-					},
-				],
-			},
-			{
 				path: ROUTES.wiki.route,
 				element: <Outlet />,
 				handle: {
@@ -828,6 +811,35 @@ export const router = createBrowserRouter([
 								element: <InterviewCollectionPage />,
 								handle: {
 									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+								},
+							},
+						],
+					},
+				],
+			},
+			{
+				path: ROUTES.liveCoding.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_LIVE_CODING,
+				},
+				children: [
+					{
+						path: ROUTES.liveCoding.tasks.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_TASKS,
+						},
+						children: [
+							{
+								index: true,
+								element: <TasksPage />,
+							},
+							{
+								path: ROUTES.liveCoding.tasks.detail.route,
+								element: <TaskPage />,
+								handle: {
+									crumb: Translation.CRUMBS_TASK,
 								},
 							},
 						],

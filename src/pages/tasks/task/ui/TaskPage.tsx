@@ -23,7 +23,7 @@ import styles from './TaskPage.module.css';
 
 const TaskPage = () => {
 	const { t } = useTranslation(i18Namespace.task);
-	const { id: taskId } = useParams<{ id: string }>();
+	const { taskId } = useParams<{ taskId: string }>();
 	const profileId = useSelector(getProfileId);
 	const { data, isLoading, isError, refetch } = useGetTaskByIdQuery(taskId || '', {
 		skip: !taskId,
@@ -99,9 +99,9 @@ const TaskPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(TaskTranslations.STUB_EMPTY_TITLE),
-			subtitle: t(TaskTranslations.STUB_EMPTY_SUBTITLE),
-			buttonText: t(TaskTranslations.STUB_EMPTY_BUTTON),
+			title: t(TaskTranslations.STUB_EMPTY_TASK_PUBLIC_TITLE),
+			subtitle: t(TaskTranslations.STUB_EMPTY_TASK_PUBLIC_SUBTITLE),
+			buttonText: t(TaskTranslations.STUB_EMPTY_TASK_PUBLIC_SUBMIT),
 			onClick: () => refetch(),
 		},
 		error: {

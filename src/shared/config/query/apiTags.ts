@@ -40,4 +40,5 @@ export enum ApiTags {
 	TASK_DETAIL = 'task_detail',
 	USERS_RATING = 'users_rating',
 	TOPIC_DETAIL = 'topic_detail',
+	PROGRAMMING_LANGUAGE = 'programming_language',
 }

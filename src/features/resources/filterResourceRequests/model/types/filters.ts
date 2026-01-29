@@ -6,4 +6,5 @@ export interface ResourceRequestsFilterParams {
 	types?: ResourceTypeCode[];
 	status?: ResourceRequestStatus | 'all';
 	skills?: number[];
+	isMy?: boolean;
 }

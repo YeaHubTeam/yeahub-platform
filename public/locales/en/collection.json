@@ -82,6 +82,8 @@
 			"collection": {
 				"title": "It seems the collection data is missing",
 				"subtitle": "Try refreshing the page or repeating the request",
+				"description": "Create the first — and start filling your knowledge base with content",
+				"button": "Add a collection",
 				"submit": "Try again"
 			}
 		}

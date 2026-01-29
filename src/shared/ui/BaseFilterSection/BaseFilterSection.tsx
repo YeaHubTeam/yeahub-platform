@@ -19,11 +19,19 @@ export type BaseFilterItem<T> = {
 	iconName?: IconName;
 };
 
+export type BaseFilterSectionRenderItemArgs<T> = {
+	item: BaseFilterItem<T>;
+	onClick: () => void;
+	disabled: boolean;
+	active: boolean;
+};
+
 export interface BaseFilterSectionProps<T> {
 	title: string;
 	data: BaseFilterItem<T>[];
 	onClick: (id: T) => void;
 	disabled?: boolean;
+	renderItem?: (args: BaseFilterSectionRenderItemArgs<T>) => React.ReactNode;
 }
 
 export const BaseFilterSection = <T,>({
@@ -31,6 +39,7 @@ export const BaseFilterSection = <T,>({
 	data,
 	onClick,
 	disabled,
+	renderItem,
 }: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
 		onClick(id);
@@ -43,32 +52,49 @@ export const BaseFilterSection = <T,>({
 			</Text>
 			<Flex wrap="wrap" gap="8">
 				{data &&
-					data.map((item) => (
-						<Tooltip title={item.tooltip} key={item?.id as Key} shouldShowTooltip={item.disabled}>
-							<Chip
-								className={styles.chip}
-								label={item.title}
-								theme="primary"
-								prefix={
-									item.iconName ? (
-										<Icon icon={item.iconName} size={20} color="black-700" />
+					data.map((item) => {
+						const click = onHandleClick(item.id);
+						const isDisabled = Boolean(disabled || item.disabled);
+						const isActive = Boolean(!isDisabled && item.active);
+
+						return (
+							<Tooltip title={item.tooltip} key={item?.id as Key} shouldShowTooltip={item.disabled}>
+								<>
+									{renderItem ? (
+										renderItem({
+											item,
+											onClick: click,
+											disabled: isDisabled,
+											active: isActive,
+										})
 									) : (
-										item.imageSrc && (
-											<img
-												style={{ width: 20, height: 20 }}
-												src={item.imageSrc}
-												alt={item.title}
-												loading="lazy"
-											/>
-										)
-									)
-								}
-								onClick={onHandleClick(item.id)}
-								active={!disabled && item.active}
-								disabled={disabled || item.disabled}
-							/>
-						</Tooltip>
-					))}
+										<Chip
+											className={styles.chip}
+											label={item.title}
+											theme="primary"
+											prefix={
+												item.iconName ? (
+													<Icon icon={item.iconName} size={20} color="black-700" />
+												) : (
+													item.imageSrc && (
+														<img
+															style={{ width: 20, height: 20 }}
+															src={item.imageSrc}
+															alt={item.title}
+															loading="lazy"
+														/>
+													)
+												)
+											}
+											onClick={click}
+											active={isActive}
+											disabled={isDisabled}
+										/>
+									)}
+								</>
+							</Tooltip>
+						);
+					})}
 			</Flex>
 		</Flex>
 	);

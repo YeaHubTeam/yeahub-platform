@@ -4,5 +4,5 @@ export interface Step<T> {
 	id: T;
 	label: string;
 	image: IconName;
-	Component: (props: { goNextStep?: () => void }) => JSX.Element;
+	Component: (props: { goNextStep?: () => void; onCloseModal?: () => void }) => JSX.Element;
 }

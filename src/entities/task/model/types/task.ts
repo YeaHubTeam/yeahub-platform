@@ -1,12 +1,13 @@
 import { Response, SortOrder } from '@/shared/libs';
 
 export type TaskStatus = 'SOLVED' | 'UNSOLVED';
+export type TaskDifficulty = 1 | 2 | 3 | 4 | 5;
 
 export interface TaskListItem {
 	id: string;
 	name: string;
 	slug: string;
-	difficulty: number;
+	difficulty: TaskDifficulty;
 	supportedLanguagesIds: number[];
 	status: TaskStatus;
 	mainCategory: string;
@@ -30,7 +31,7 @@ export interface Task {
 	name: string;
 	slug: string;
 	description: string;
-	difficulty: number;
+	difficulty: TaskDifficulty;
 	langIds: number[];
 	categoryId: number;
 	constraints: string[];
@@ -43,9 +44,9 @@ export interface GetTasksListParams {
 	page?: number;
 	limit?: number;
 	id?: string;
-	name?: string;
+	title?: string;
 	slug?: string;
-	difficulty?: number;
+	difficulty?: TaskDifficulty;
 	categoryId?: number;
 	langIds?: number[];
 	isActive?: boolean;
