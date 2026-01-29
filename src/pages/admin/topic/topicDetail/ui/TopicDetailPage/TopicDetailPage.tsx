@@ -14,9 +14,9 @@ import { DeleteTopicButton } from '@/features/topics/deleteTopic';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const TopicDetailPage = () => {
-	const { topicId } = useParams<{ topicId: string }>();
-	const { t } = useTranslation(i18Namespace.topic);
-	const { data: topic, isLoading, isError, refetch } = useGetTopicByIdQuery(topicId!);
+	const { topicId = '' } = useParams<{ topicId: string }>();
+	const { t } = useTranslation(i18Namespace.translation);
+	const { data: topic, isLoading, isError, refetch } = useGetTopicByIdQuery(topicId);
 
 	const hasTopic = topic && Object.keys(topic).length > 0;
 
