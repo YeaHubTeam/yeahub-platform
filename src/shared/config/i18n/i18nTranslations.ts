@@ -466,6 +466,12 @@ export enum Topics {
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
+	STUB_EMPTY_TOPICS_TITLE = 'stub.empty.topics.title',
+	STUB_EMPTY_TOPICS_SUBTITLE = 'stub.empty.topics.subtitle',
+	STUB_EMPTY_TOPICS_SUBMIT = 'stub.empty.topics.submit',
+	STUB_EMPTY_TOPIC_TITLE = 'stub.empty.topic.title',
+	STUB_EMPTY_TOPIC_SUBTITLE = 'stub.empty.topic.subtitle',
+	STUB_EMPTY_TOPIC_SUBMIT = 'stub.empty.topic.submit',
 }
 
 export enum Analytics {
