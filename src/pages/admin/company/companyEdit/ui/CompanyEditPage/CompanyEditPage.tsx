@@ -11,16 +11,11 @@ import { CompanyEditForm } from '@/features/company/editCompany';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const CompanyEditPage = () => {
-	const { companyId } = useParams<{ companyId: string }>();
+	const { companyId = '' } = useParams<{ companyId: string }>();
 	const userId = useAppSelector(getUserId);
 	const isAuthor = useAppSelector(getIsAuthor);
 
-	const {
-		data: company,
-		isLoading,
-		isError,
-		refetch,
-	} = useGetCompanyByIdQuery({ companyId: companyId! });
+	const { data: company, isLoading, isError, refetch } = useGetCompanyByIdQuery({ companyId });
 
 	const hasCompany = company && Object.keys(company).length > 0;
 

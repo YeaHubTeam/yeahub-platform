@@ -19,17 +19,13 @@ const CompanyDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { t: tCompanies } = useTranslation(i18Namespace.companies);
 
-	const { companyId } = useParams();
-	const {
-		data: company,
-		isLoading,
-		isError,
-		refetch,
-	} = useGetCompanyByIdQuery({ companyId: companyId! });
+	const { companyId = '' } = useParams();
+	const { data: company, isLoading, isError, refetch } = useGetCompanyByIdQuery({ companyId });
 	const userId = useAppSelector(getUserId);
 	const isAuthor = useAppSelector(getIsAuthor);
 
 	const isDisabled = isAuthor && company?.createdBy?.id !== userId;
+	const hasData = !!company && Object.keys(company).length > 0;
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -44,7 +40,7 @@ const CompanyDetailPage = () => {
 	};
 
 	const content = company ? (
-		<main>
+		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 24 }}>
 				<BackButton />
 				<Flex gap="16">
@@ -69,14 +65,14 @@ const CompanyDetailPage = () => {
 				</Flex>
 			</Flex>
 			<CompanyCard company={company} />
-		</main>
+		</>
 	) : null;
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
-			hasData={!!company}
+			hasData={hasData}
 			roles={['admin', 'author']}
 			stubs={stubs}
 			content={content}

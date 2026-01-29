@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Companies } from '@/shared/config';
+import { i18Namespace, Companies, ROUTES } from '@/shared/config';
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -65,7 +65,7 @@ const CompaniesTablePage = () => {
 			title: t(Companies.STUB_EMPTY_COMPANIES_TITLE),
 			subtitle: t(Companies.STUB_EMPTY_COMPANIES_SUBTITLE),
 			buttonText: t(Companies.STUB_EMPTY_COMPANIES_SUBMIT),
-			onClick: () => navigate('/admin/companies/create'),
+			onClick: () => navigate(ROUTES.admin.companies.create.page),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
@@ -99,7 +99,7 @@ const CompaniesTablePage = () => {
 			}
 		>
 			{({ content, pagination }) => (
-				<Flex componentType="main" direction="column" gap="24">
+				<Flex direction="column" gap="24">
 					<SearchSection
 						to="create"
 						onSearch={onChangeTitle}
