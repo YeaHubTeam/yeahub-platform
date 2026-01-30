@@ -6,4 +6,5 @@ export const resourceApiUrls = {
 	getMyRequestsResources: 'external-products/request/my',
 	getResourceRequests: 'external-products/request',
 	getResourceRequestById: 'external-products/request/:requestId',
+	getResourceFilterKeywords: 'external-products/product/filter/keywords',
 };
