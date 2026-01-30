@@ -90,52 +90,52 @@ const SpecializationsPage = () => {
 	};
 
 	return (
-		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				showRemoveButton={selectedSpecializations.length > 0}
-				onSearch={onChangeTitle}
-				searchValue={filters.title}
-				hasFilters={hasFilters}
-				renderRemoveButton={() => (
-					<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
-				)}
-				renderFilter={() => (
-					<SpecializationsFilters
-						filters={filters}
-						onChangeAuthor={onChangeAuthor}
-						onChangeIsMy={onChangeIsMy}
+		<PageWrapper
+			isLoading={isLoading}
+			skeleton={<SpecializationsPageSkeleton />}
+			hasError={isError}
+			hasFilters={hasFilters}
+			hasData={hasData}
+			roles={['admin', 'author']}
+			paginationOptions={
+				specializations
+					? {
+							page: filters.page || 1,
+							limit: specializations.limit,
+							total: specializations.total,
+							onChangePage,
+						}
+					: undefined
+			}
+			stubs={stubs}
+			content={renderContent()}
+		>
+			{({ content, pagination }) => (
+				<Flex componentType="main" direction="column" gap="24">
+					<SearchSection
+						to="create"
+						showRemoveButton={selectedSpecializations.length > 0}
+						onSearch={onChangeTitle}
+						searchValue={filters.title}
+						hasFilters={hasFilters}
+						renderRemoveButton={() => (
+							<DeleteSpecializationsButton specializationsToRemove={selectedSpecializations} />
+						)}
+						renderFilter={() => (
+							<SpecializationsFilters
+								filters={filters}
+								onChangeAuthor={onChangeAuthor}
+								onChangeIsMy={onChangeIsMy}
+							/>
+						)}
 					/>
-				)}
-			/>
-			<PageWrapper
-				isLoading={isLoading}
-				skeleton={<SpecializationsPageSkeleton />}
-				hasError={isError}
-				hasFilters={hasFilters}
-				hasData={hasData}
-				roles={['admin', 'author']}
-				paginationOptions={
-					hasData
-						? {
-								page: filters.page || 1,
-								limit: specializations.limit,
-								total: specializations.total,
-								onChangePage,
-							}
-						: undefined
-				}
-				stubs={stubs}
-				content={renderContent()}
-			>
-				{({ content, pagination }) => (
 					<Card className={styles.content}>
 						{content}
 						{pagination}
 					</Card>
-				)}
-			</PageWrapper>
-		</Flex>
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

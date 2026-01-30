@@ -6,6 +6,7 @@ import { route } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { Loader } from '@/shared/ui/Loader';
 
 import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/specialization';
 
@@ -22,10 +23,6 @@ const SpecializationDetailPage = () => {
 		isError,
 		refetch,
 	} = useGetSpecializationByIdQuery(String(specializationId));
-
-	if (!specialization) {
-		return null;
-	}
 
 	const renderContent = () => (
 		<>
@@ -56,20 +53,22 @@ const SpecializationDetailPage = () => {
 			buttonText: t(Specializations.EMPTY_DETAIL_BUTTON),
 		},
 	};
+
+	const hasData = specialization && Object.keys(specialization).length > 0;
 	return (
-		<main>
+		<>
 			<PageWrapper
 				isLoading={isLoading}
-				skeleton={<SpecializationDetailPage />}
+				skeleton={<Loader />}
 				hasError={isError}
-				hasData={!!specialization}
+				hasData={hasData}
 				stubs={stubs}
 				roles={['admin', 'author']}
 				content={renderContent()}
 			>
 				{({ content }) => <>{content}</>}
 			</PageWrapper>
-		</main>
+		</>
 	);
 };
 
