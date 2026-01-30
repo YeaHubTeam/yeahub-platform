@@ -7,7 +7,16 @@
 		"placeholder": "Add description"
 	},
 	"keywords": {
-		"additional": "Keywords"
+		"additional": "Keywords",
+		"title": "Keywords",
+		"short": "Keywords",
+		"label": "Add keywords to improve search",
+		"add": {
+			"placeholder": "Enter keyword"
+		},
+		"filter": {
+			"placeholder": "Select existing keyword"
+		}
 	},
 	"link": "Link",
 	"search": {
