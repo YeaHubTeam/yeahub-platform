@@ -18,6 +18,11 @@
   max-width: 930px;
   border-radius: 24px;
   background-color: var(--background-block);
+  
+  div {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
 }
 
 .content-wrapper {
