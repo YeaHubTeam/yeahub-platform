@@ -10,12 +10,14 @@ import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
 import { SkillSelect } from '@/entities/skill/@x/resource';
 import { SpecializationSelect } from '@/entities/specialization/@x/resource';
 
+import { useGetResourceFilterKeywordsQuery } from '../../api/resourceApi';
 import { ResourcesSelect } from '../ResourceSelect/ResourceSelect';
 
 import styles from './ResourceForm.module.css';
@@ -140,11 +142,29 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 			</FormField>
 			<FormField label={t(Marketplace.KEYWORDS_SHORT)} description={t(Marketplace.KEYWORDS_LABEL)}>
 				<FormControl name="keywords" control={control}>
-					{({ onChange, value }) => (
-						<div className={styles.keywords}>
-							<KeywordInput value={value} onChange={onChange} disabled={readonly} />
-						</div>
-					)}
+					{({ onChange, value }) => {
+						const currentKeywords = Array.isArray(value) ? value : [];
+
+						return (
+							<div className={styles.select}>
+								<KeywordSelect
+									getKeywordsQuery={useGetResourceFilterKeywordsQuery}
+									value={undefined}
+									onChange={(keyword) => {
+										if (keyword && !currentKeywords.includes(keyword)) {
+											onChange([...currentKeywords, keyword]);
+										}
+									}}
+									selectedKeywords={currentKeywords}
+									showLabel={false}
+									showSelected={false}
+									width={360}
+									label={t(Marketplace.KEYWORDS_FILTER_PLACEHOLDER)}
+								/>
+								<KeywordInput value={currentKeywords} onChange={onChange} />
+							</div>
+						);
+					}}
 				</FormControl>
 			</FormField>
 			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>

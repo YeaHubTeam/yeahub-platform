@@ -10,6 +10,8 @@ import {
 	GetResourceByIdParamsRequest,
 	GetMyRequestsResourcesParamsRequest,
 	GetMyRequestsResourcesResponse,
+	GetResourceKeywordsResponse,
+	GetResourceKeywordsParamsRequest,
 } from '../model/types/resource';
 import {
 	GetResourceRequestsResponse,
@@ -83,6 +85,20 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCE_REQUEST],
 		}),
+		getResourceFilterKeywords: build.query<
+			GetResourceKeywordsResponse,
+			GetResourceKeywordsParamsRequest
+		>({
+			query: (params) => ({
+				url: resourceApiUrls.getResourceFilterKeywords,
+				params: {
+					page: 1,
+					limit: 100,
+					...params,
+				},
+			}),
+			providesTags: [ApiTags.RESOURCES],
+		}),
 	}),
 });
 
@@ -95,5 +111,6 @@ export const {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestsReviewCountQuery,
 	useGetResourceRequestByIdQuery,
+	useGetResourceFilterKeywordsQuery,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
