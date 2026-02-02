@@ -199,8 +199,8 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 						)}
 					</FormControl>
 				</Flex>
-				<Flex gap="32">
-					<Flex direction="column" className={styles.titles}>
+				<Flex gap="120">
+					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
 							{t(Collections.KEYWORDS_TITLE)}
 						</Text>
