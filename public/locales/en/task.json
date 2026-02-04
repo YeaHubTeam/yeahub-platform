@@ -27,7 +27,11 @@
 					"subtitle": "Try changing the query or conditions to search for a task."
 				}
 			},
-			"admin": {}
+			"admin": {
+				"title": "No tasks found yet",
+				"subtitle": "Create your first one — start adding content to the knowledge base",
+				"submit": "Add a task"
+			}
 		},
 		"empty.task": {
 			"public": {
@@ -37,6 +41,11 @@
 			},
 			"admin": {}
 		}
+	},
+	"table": {
+		"task.title": "Title",
+		"difficulty.title": "Difficulty",
+		"status.title": "Status"
 	},
 	"solutions": {
 		"tab.title": "My solutions",

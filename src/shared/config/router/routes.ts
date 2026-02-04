@@ -139,6 +139,10 @@ export const ROUTES = {
 				page: '/admin/topics/:topicId',
 			},
 		},
+		tasks: {
+			route: 'tasks',
+			page: '/admin/tasks',
+		},
 	},
 	auth: {
 		route: 'auth',

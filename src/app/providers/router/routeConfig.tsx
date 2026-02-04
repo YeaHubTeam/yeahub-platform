@@ -9,6 +9,7 @@ import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
+import TasksIcon from '@/shared/assets/icons/lifeBuoy.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
@@ -53,6 +54,7 @@ import { SpecializationCreatePage } from '@/pages/admin/specialization/specializ
 import { SpecializationDetailPage } from '@/pages/admin/specialization/specializationDetail';
 import { SpecializationEditPage } from '@/pages/admin/specialization/specializationEdit';
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
+import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
 import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
@@ -282,6 +284,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.topics.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
 		icon: Cards,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.tasks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
+		icon: TasksIcon,
 		roles: listAdminRoles,
 	},
 ];
@@ -546,6 +555,16 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.topics.edit.route,
 						element: <TopicEditPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.tasks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TasksTablePage />,
 					},
 				],
 			},
