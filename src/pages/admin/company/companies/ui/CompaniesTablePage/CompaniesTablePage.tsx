@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
+import { i18Namespace, Companies, ROUTES } from '@/shared/config';
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -22,6 +25,9 @@ import { companiesTablePageActions } from '../../model/slices/companiesTablePage
 import styles from './CompaniesTablePage.module.css';
 
 const CompaniesTablePage = () => {
+	const { t } = useTranslation(i18Namespace.companies);
+	const navigate = useNavigate();
+
 	const selectedCompanies = useAppSelector(getSelectedCompanies);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
@@ -34,7 +40,12 @@ const CompaniesTablePage = () => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
 	};
 
-	const { data: companies, isLoading } = useGetCompaniesListQuery({
+	const {
+		data: companies,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCompaniesListQuery({
 		page: filters.page,
 		limit: 10,
 		titleOrLegalNameOrDescriptionSearch: filters.title,
@@ -50,18 +61,29 @@ const CompaniesTablePage = () => {
 	}, [companies, userId, isAuthor]);
 
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Companies.STUB_EMPTY_COMPANIES_TITLE),
+			subtitle: t(Companies.STUB_EMPTY_COMPANIES_SUBTITLE),
+			buttonText: t(Companies.STUB_EMPTY_COMPANIES_SUBMIT),
+			onClick: () => navigate(ROUTES.admin.companies.create.page),
+		},
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		error: {
+			onClick: refetch,
 		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
+			hasError={isError}
 			skeleton={<CompaniesTablePageSkeleton />}
 			hasFilters={hasFilters}
 			hasData={companiesWithEditFlags.length > 0}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,
@@ -77,7 +99,7 @@ const CompaniesTablePage = () => {
 			}
 		>
 			{({ content, pagination }) => (
-				<Flex componentType="main" direction="column" gap="24">
+				<Flex direction="column" gap="24">
 					<SearchSection
 						to="create"
 						onSearch={onChangeTitle}
