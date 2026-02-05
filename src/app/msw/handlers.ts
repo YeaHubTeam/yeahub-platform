@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
 import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
@@ -53,4 +54,5 @@ export const handlers = [
 	...resourcesHandlers,
 	...usersRatingHandlers,
 	...topicHandlers,
+	...hhAnalyticsHandlers,
 ];
