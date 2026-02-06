@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Icon, type IconProps } from './Icon';
+import { icons } from './icons';
 
 const meta: Meta<typeof Icon> = {
 	title: 'shared/Icon',
@@ -12,84 +13,7 @@ const meta: Meta<typeof Icon> = {
 	argTypes: {
 		icon: {
 			control: 'select',
-			options: [
-				'arrowRight',
-				'arrowLeft',
-				'arrowUpSquare',
-				'arrowDownSquare',
-				'clock',
-				'calendar',
-				'check',
-				'questions',
-				'checkList',
-				'handShake',
-				'specialization',
-				'graphUp',
-				'keySquare',
-				'altArrowRight',
-				'altArrowLeft',
-				'dotsThree',
-				'dotsThreeVertical',
-				'more',
-				'student',
-				'clockCounterClockwise',
-				'arrowShortDown',
-				'slidersHorizontal',
-				'search',
-				'closeCircle',
-				'trash',
-				'pen',
-				'eye',
-				'eyeClosed',
-				'like',
-				'dislike',
-				'info',
-				'instagram',
-				'linkedin',
-				'twitter',
-				'facebook',
-				'github',
-				'githubWhite',
-				'behance',
-				'whatsapp',
-				'telegram',
-				'telegramWithBackground',
-				'youtube',
-				'youtubeWithBackground',
-				'tiktok',
-				'plus',
-				'minus',
-				'plusCircle',
-				'imageEdit',
-				'burger',
-				'checkCircle',
-				'warning',
-				'filter',
-				'settings',
-				'sealCheck',
-				'sealCheckOutlined',
-				'userCheckWithBackground',
-				'userSwitch',
-				'trendUp',
-				'notePencil',
-				'clipboardText',
-				'megaphone',
-				'yeaHubCommunity',
-				'figmaWhite',
-				'logoText',
-				'favorite',
-				'favoriteRed',
-				'listWithBackground',
-				'thumbsDown',
-				'thumbsUp',
-				'cross',
-				'burgerAndCross',
-				'lamp',
-				'tickWithBackground',
-				'copy',
-				'watch',
-				'refresh',
-			],
+			options: Object.keys(icons),
 			description: 'Icon name to display',
 		},
 		size: {
@@ -166,99 +90,31 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const createIconStory = (icon: IconProps['icon'], overrides?: Partial<IconProps>): Story => ({
+export const All: Story = {
 	args: {
-		icon,
 		size: 24,
 		color: 'black-900',
-		...overrides,
 	},
-});
+	render: (args) => {
+		const sortedIconNames = Object.keys(icons).sort();
 
-export const ArrowRight: Story = createIconStory('arrowRight');
-export const ArrowLeft: Story = createIconStory('arrowLeft');
-export const ArrowUpSquare: Story = createIconStory('arrowUpSquare');
-export const ArrowDownSquare: Story = createIconStory('arrowDownSquare');
-export const Clock: Story = createIconStory('clock');
-export const Calendar: Story = createIconStory('calendar');
-export const Questions: Story = createIconStory('questions');
-export const HandShake: Story = createIconStory('handShake');
-export const Specialization: Story = createIconStory('specialization');
-export const KeySquare: Story = createIconStory('keySquare');
-export const AltArrowRight: Story = createIconStory('altArrowRight');
-export const AltArrowLeft: Story = createIconStory('altArrowLeft');
-export const DotsThree: Story = createIconStory('dotsThree');
-export const DotsThreeVertical: Story = createIconStory('dotsThreeVertical');
-export const More: Story = createIconStory('more');
-export const Student: Story = createIconStory('student');
-export const ClockCounterClockwise: Story = createIconStory('clockCounterClockwise');
-export const ArrowShortDown: Story = createIconStory('arrowShortDown');
-export const SlidersHorizontal: Story = createIconStory('slidersHorizontal');
-export const Search: Story = createIconStory('search');
-export const Pen: Story = createIconStory('pen');
-export const Eye: Story = createIconStory('eye');
-export const EyeClosed: Story = createIconStory('eyeClosed');
-export const Linkedin: Story = createIconStory('linkedin');
-export const Twitter: Story = createIconStory('twitter');
-export const Facebook: Story = createIconStory('facebook');
-export const Github: Story = createIconStory('github');
-export const Behance: Story = createIconStory('behance');
-export const Telegram: Story = createIconStory('telegram');
-export const TelegramWithBackground: Story = createIconStory('telegramWithBackground');
-export const Tiktok: Story = createIconStory('tiktok');
-export const Plus: Story = createIconStory('plus');
-export const Minus: Story = createIconStory('minus');
-export const ImageEdit: Story = createIconStory('imageEdit');
-export const Burger: Story = createIconStory('burger');
-export const Filter: Story = createIconStory('filter');
-export const Settings: Story = createIconStory('settings');
-export const UserCheckWithBackground: Story = createIconStory('userCheckWithBackground');
-export const UserSwitch: Story = createIconStory('userSwitch');
-export const NotePencil: Story = createIconStory('notePencil');
-export const ClipboardText: Story = createIconStory('clipboardText');
-export const Megaphone: Story = createIconStory('megaphone');
-export const ListWithBackground: Story = createIconStory('listWithBackground');
-export const Cross: Story = createIconStory('cross');
-export const BurgerAndCross: Story = createIconStory('burgerAndCross');
-export const Copy: Story = createIconStory('copy');
-export const Watch: Story = createIconStory('watch');
-export const Refresh: Story = createIconStory('refresh');
-
-export const Check: Story = createIconStory('check', { color: 'green-750' });
-export const CheckList: Story = createIconStory('checkList', { color: 'green-750' });
-export const GraphUp: Story = createIconStory('graphUp', { color: 'green-750' });
-export const Like: Story = createIconStory('like', { color: 'green-750' });
-export const PlusCircle: Story = createIconStory('plusCircle', { color: 'green-750' });
-export const CheckCircle: Story = createIconStory('checkCircle', { color: 'green-750' });
-export const SealCheck: Story = createIconStory('sealCheck', { color: 'green-750' });
-export const SealCheckOutlined: Story = createIconStory('sealCheckOutlined', {
-	color: 'green-750',
-});
-export const TrendUp: Story = createIconStory('trendUp', { color: 'green-750' });
-export const ThumbsUp: Story = createIconStory('thumbsUp', { color: 'green-750' });
-export const TickWithBackground: Story = createIconStory('tickWithBackground', {
-	color: 'green-750',
-});
-export const Whatsapp: Story = createIconStory('whatsapp', { color: 'green-750' });
-
-export const CloseCircle: Story = createIconStory('closeCircle', { color: 'red-800' });
-export const Trash: Story = createIconStory('trash', { color: 'red-800' });
-export const Dislike: Story = createIconStory('dislike', { color: 'red-800' });
-export const Youtube: Story = createIconStory('youtube', { color: 'red-800' });
-export const YoutubeWithBackground: Story = createIconStory('youtubeWithBackground', {
-	color: 'red-800',
-});
-export const Favorite: Story = createIconStory('favorite', { color: 'red-800' });
-export const FavoriteRed: Story = createIconStory('favoriteRed', { color: 'red-800' });
-export const ThumbsDown: Story = createIconStory('thumbsDown', { color: 'red-800' });
-
-export const Warning: Story = createIconStory('warning', { color: 'yellow-800' });
-export const Lamp: Story = createIconStory('lamp', { color: 'yellow-800' });
-
-export const Info: Story = createIconStory('info', { color: 'purple-800' });
-export const Instagram: Story = createIconStory('instagram', { color: 'purple-600' });
-export const YeaHubCommunity: Story = createIconStory('yeaHubCommunity', { color: 'purple-800' });
-export const LogoText: Story = createIconStory('logoText', { color: 'purple-800' });
-
-export const GithubWhite: Story = createIconStory('githubWhite', { color: 'white-900' });
-export const FigmaWhite: Story = createIconStory('figmaWhite', { color: 'white-900' });
+		return (
+			<div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px' }}>
+				{sortedIconNames.map((iconName) => (
+					<div
+						key={iconName}
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							gap: '8px',
+						}}
+					>
+						<Icon icon={iconName as IconProps['icon']} size={args.size} color={args.color} />
+						<span style={{ fontSize: '12px' }}>{iconName}</span>
+					</div>
+				))}
+			</div>
+		);
+	},
+};
