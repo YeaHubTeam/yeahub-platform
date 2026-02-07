@@ -24,24 +24,28 @@ const SpecializationDetailPage = () => {
 		refetch,
 	} = useGetSpecializationByIdQuery(String(specializationId));
 
-	const renderContent = () => (
-		<>
-			<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-				<BackButton />
-				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-					<DeleteSpecializationButton specializationId={specialization!.id} isDetailPage />
-					<NavLink
-						style={{ marginLeft: 'auto' }}
-						to={route(ROUTES.admin.specializations.edit.page, specialization!.id)}
-					>
-						<Button>{t(Translation.EDIT)}</Button>
-					</NavLink>
+	const renderContent = () => {
+		if (!specialization) {
+			return null;
+		}
+		return (
+			<>
+				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
+					<BackButton />
+					<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+						<DeleteSpecializationButton specializationId={specialization.id} isDetailPage />
+						<NavLink
+							style={{ marginLeft: 'auto' }}
+							to={route(ROUTES.admin.specializations.edit.page, specialization.id)}
+						>
+							<Button>{t(Translation.EDIT)}</Button>
+						</NavLink>
+					</Flex>
 				</Flex>
-			</Flex>
-			<SpecializationCard specialization={specialization!} />
-		</>
-	);
-
+				<SpecializationCard specialization={specialization} />
+			</>
+		);
+	};
 	const stubs: PageWrapperStubs = {
 		error: {
 			onClick: refetch,
