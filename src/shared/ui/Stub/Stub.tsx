@@ -11,6 +11,7 @@ import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { stubTestIds } from '@/shared/ui/Stub/constants';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Stub.module.css';
@@ -86,9 +87,17 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 				<img src={imgByType[type]} alt="" loading="lazy" className={styles.img} />
 
 				{(resolvedTitle || resolvedSubtitle) && (
-					<Flex gap="6" align="center" direction="column">
-						{Boolean(resolvedTitle) && <Text variant={titleVariant}>{resolvedTitle}</Text>}
-						{Boolean(resolvedSubtitle) && <Text variant="body3">{resolvedSubtitle}</Text>}
+					<Flex dataTestId={stubTestIds.container} gap="6" align="center" direction="column">
+						{Boolean(resolvedTitle) && (
+							<Text dataTestId={stubTestIds.title} variant={titleVariant}>
+								{resolvedTitle}
+							</Text>
+						)}
+						{Boolean(resolvedSubtitle) && (
+							<Text dataTestId={stubTestIds.subtitle} variant="body3">
+								{resolvedSubtitle}
+							</Text>
+						)}
 					</Flex>
 				)}
 
@@ -99,6 +108,7 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 						onClick={onClick}
 						disabled={!onClick}
 						className={styles.button}
+						dataTestId={stubTestIds.button}
 					>
 						{resolvedButtonText}
 					</Button>
