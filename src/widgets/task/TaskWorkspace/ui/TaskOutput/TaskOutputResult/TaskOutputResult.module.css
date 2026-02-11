@@ -9,7 +9,7 @@
   padding: 12px;
   overflow-x: auto;
   border-radius: 8px;
-  background-color: var(--color-gray-100);
+  background-color: var(--color-black-400);
   color: var(--color-black-700);
   font-size: var(--font-size-p-s);
   font-family: var(--font-family-code);
@@ -19,5 +19,5 @@
 .stats {
   padding: 16px;
   border-radius: 8px;
-  background-color: var(--color-gray-50);
+  background-color: var(--color-black-100);
 }
