@@ -5,18 +5,22 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskListItem } from '../../model/types/task';
+import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
+
+import { Task } from '../../model/types/task';
+import { TaskCategoryChip } from '../TaskCategoryChip/TaskCategoryChip';
 import { TaskDifficultyChip } from '../TaskDifficultyChip/TaskDifficultyChip';
+import { TaskStatusChip } from '../TaskStatusChip/TaskStatusChip';
 
 import styles from './TaskCard.module.css';
 
 type TaskCardProps = {
-	task: TaskListItem;
+	task: Task;
 	className?: string;
 };
 
 export const TaskCard = ({ task, className }: TaskCardProps) => {
-	const { id, name, difficulty } = task;
+	const { id, name, difficulty, mainCategory, status, supportedLanguages } = task;
 
 	const taskPath = generatePath(ROUTES.liveCoding.tasks.detail.page, { taskId: id });
 
@@ -31,7 +35,10 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 					</Flex>
 
 					<Flex align="center" gap="10">
+						<TaskStatusChip status={status} size="medium" />
 						<TaskDifficultyChip difficulty={difficulty} />
+						<ProgrammingLanguageList languages={supportedLanguages} />
+						<TaskCategoryChip category={mainCategory} />
 					</Flex>
 				</Flex>
 			</Card>

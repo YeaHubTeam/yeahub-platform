@@ -142,6 +142,18 @@ export const ROUTES = {
 		tasks: {
 			route: 'tasks',
 			page: '/admin/tasks',
+			create: {
+				route: 'create',
+				page: '/admin/tasks/create',
+			},
+			edit: {
+				route: ':taskId/edit',
+				page: '/admin/tasks/:taskId/edit',
+			},
+			details: {
+				route: ':taskId',
+				page: '/admin/tasks/:taskId',
+			},
 		},
 	},
 	auth: {

@@ -1,41 +1,14 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
   height: 100%;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 1;
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.select {
-  padding: 8px 12px;
-  outline: none;
-  border: 1px solid var(--color-gray-300);
-  border-radius: 8px;
-  background-color: var(--color-white);
-  color: var(--color-black-700);
-  font-size: var(--font-size-p-s);
-  transition: border-color 0.2s;
-  cursor: pointer;
-}
-
-.select:hover {
-  border-color: var(--color-purple-500);
-}
-
-.select:focus {
-  border-color: var(--color-purple-700);
+.block {
+  height: 100%;
+  overflow: hidden;
 }
 
 .editor {

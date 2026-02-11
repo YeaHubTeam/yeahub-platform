@@ -1,16 +1,21 @@
 import MonacoEditor from '@monaco-editor/react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Task as TaskTranslations } from '@/shared/config';
+import { i18Namespace, Tasks } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
+
+import { ProgrammingLanguage, ProgrammingLanguageSelect } from '@/entities/programmingLanguage';
 
 import styles from './TaskEditor.module.css';
 
 type TaskEditorProps = {
 	code: string;
 	languageId: number;
-	supportedLanguages: { id: number; name: string }[];
+	supportedLanguages: ProgrammingLanguage[];
 	isExecuting: boolean;
 	isTesting: boolean;
 	onCodeChange: (code: string) => void;
@@ -36,46 +41,46 @@ export const TaskEditor = ({
 	const currentLanguage = supportedLanguages.find((lang) => lang.id === languageId);
 
 	return (
-		<div className={styles.wrapper}>
-			<div className={styles.header}>
-				<div className={styles.actions}>
-					<select
-						value={languageId}
-						onChange={(e) => onLanguageChange(Number(e.target.value))}
-						className={styles.select}
-					>
-						{supportedLanguages.map((lang) => (
-							<option key={lang.id} value={lang.id}>
-								{lang.name}
-							</option>
-						))}
-					</select>
-					<Button variant="secondary" size="small" onClick={onReset}>
-						<Icon icon="refresh" />
-					</Button>
+		<Flex direction="column" gap="16" className={styles.wrapper}>
+			<Card size="small" withOutsideShadow className={styles.header}>
+				<Flex align="center" justify="between" gap="24">
+					<Flex gap="12" align="center">
+						<ProgrammingLanguageSelect
+							width={200}
+							value={String(languageId)}
+							onChange={(value) => {
+								onLanguageChange(Number(value));
+							}}
+							supportedLanguages={supportedLanguages}
+						/>
+						<IconButton size="large" icon={<Icon icon="refresh" />} onClick={onReset} />
+					</Flex>
+					<Flex gap="12" align="center">
+						<Button variant="outline" size="large" onClick={onRun} disabled={isExecuting}>
+							{t(Tasks.EDITOR_ACTIONS_RUN)}
+						</Button>
+						<Button variant="primary" size="large" onClick={onSubmit} disabled={isTesting}>
+							{t(Tasks.EDITOR_ACTIONS_SUBMIT)}
+						</Button>
+					</Flex>
+				</Flex>
+			</Card>
+
+			<Card size="small" withOutsideShadow className={styles.block} classNameContent={styles.block}>
+				<div className={styles.editor}>
+					<MonacoEditor
+						defaultLanguage={currentLanguage?.name.toLowerCase() || 'javascript'}
+						value={code}
+						onChange={(value) => onCodeChange(value || '')}
+						theme="vs-light"
+						options={{
+							minimap: { enabled: false },
+							scrollBeyondLastLine: false,
+							fontSize: 14,
+						}}
+					/>
 				</div>
-				<div className={styles.actions}>
-					<Button variant="outline" size="small" onClick={onRun} disabled={isExecuting}>
-						{t(TaskTranslations.EDITOR_ACTIONS_RUN)}
-					</Button>
-					<Button variant="primary" size="small" onClick={onSubmit} disabled={isTesting}>
-						{t(TaskTranslations.EDITOR_ACTIONS_SUBMIT)}
-					</Button>
-				</div>
-			</div>
-			<div className={styles.editor}>
-				<MonacoEditor
-					defaultLanguage={currentLanguage?.name.toLowerCase() || 'javascript'}
-					value={code}
-					onChange={(value) => onCodeChange(value || '')}
-					theme="vs-light"
-					options={{
-						minimap: { enabled: false },
-						scrollBeyondLastLine: false,
-						fontSize: 14,
-					}}
-				/>
-			</div>
-		</div>
+			</Card>
+		</Flex>
 	);
 };

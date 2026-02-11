@@ -12,6 +12,7 @@
 .editor-card {
   display: flex;
   flex-direction: column;
+  padding: 16px;
   height: 100%;
   overflow: hidden;
 }
@@ -24,6 +25,7 @@
 .output-card {
   display: flex;
   flex-direction: column;
+  padding: 16px;
   height: 100%;
   overflow: hidden;
 }
