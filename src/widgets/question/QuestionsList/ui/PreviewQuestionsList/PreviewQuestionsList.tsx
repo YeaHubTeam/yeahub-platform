@@ -24,7 +24,7 @@ export const PreviewQuestionsList = ({ className }: PreviewQuestionsListProps) =
 	const { data: response, isSuccess } = useGetQuestionsListQuery({
 		random: true,
 		limit: 3,
-		specialization: specializationId,
+		specializationId,
 	});
 
 	const questions = response?.data ?? [];
