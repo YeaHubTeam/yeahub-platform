@@ -15,14 +15,12 @@ export const TaskBody = ({ description }: TaskBodyProps) => {
 	const { t } = useTranslation(i18Namespace.task);
 
 	return (
-		<Flex justify="start" gap="20" maxWidth>
-			<Flex direction="column" gap="20">
-				<Flex wrap="nowrap" gap="20">
-					<Text variant="body2" width={110} color="black-700">
-						{t(Tasks.DESCRIPTION_TITLE)}
-					</Text>
-					<TextHtml html={description} className={styles.description} />
-				</Flex>
+		<Flex direction="column" gap="20" maxWidth>
+			<Flex wrap="nowrap" gap="20">
+				<Text variant="body2" width={110} color="black-700">
+					{t(Tasks.DESCRIPTION_TITLE)}
+				</Text>
+				<TextHtml html={description} className={styles.description} />
 			</Flex>
 		</Flex>
 	);

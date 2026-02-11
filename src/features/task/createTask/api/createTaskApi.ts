@@ -20,7 +20,7 @@ export const createTaskApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.tasks.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_TASKS_CREATE_SUCCESS));
 				} catch (error) {
-					toast.success(i18n.t(Translation.TOAST_TASKS_CREATE_FAILED));
+					toast.error(i18n.t(Translation.TOAST_TASKS_CREATE_FAILED));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

@@ -108,7 +108,8 @@ export const TextHtml = ({ className, html, disableCodeCopy = false }: TextHtmlP
 				});
 			}
 		};
-
+		console.log(contentRef.current.clientWidth);
+		console.dir(contentRef.current);
 		contentRef.current.style.maxWidth = contentRef.current.clientWidth + 'px';
 		processCodeBlocks();
 	}, [html, disableCodeCopy]);

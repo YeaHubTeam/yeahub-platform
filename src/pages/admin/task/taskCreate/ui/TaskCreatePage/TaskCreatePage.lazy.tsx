@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const TaskCreatePage = lazy(() => import('././TaskCreatePage'));
+export const TaskCreatePage = lazy(() => import('./TaskCreatePage'));

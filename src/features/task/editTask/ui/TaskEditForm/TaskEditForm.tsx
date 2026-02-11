@@ -52,7 +52,7 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 	const [editTopicMutation] = useEditTaskMutation();
 
 	const onEditTopic = async (data: EditTaskFormValues) => {
-		editTopicMutation(data);
+		await editTopicMutation(data);
 	};
 
 	return (

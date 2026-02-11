@@ -78,7 +78,7 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 					</FormControl>
 				</FormField>
 				<FormField description={t(Tasks.CONSTRAINTS_SUBTITLE)} label={t(Tasks.CONSTRAINTS_TITLE)}>
-					<FormControl name="timeLimit" control={control} className={`${styles['input-form']}`}>
+					<FormControl name="constraints" control={control} className={`${styles['input-form']}`}>
 						{(_, hasError) => <TaskConstraintsField hasError={hasError} />}
 					</FormControl>
 				</FormField>

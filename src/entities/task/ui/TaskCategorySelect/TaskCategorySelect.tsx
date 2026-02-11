@@ -5,9 +5,8 @@ import { i18Namespace, Marketplace, Tasks } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
-import { taskCategories } from '@/entities/task/model/constants/task';
-
 import { useGetTaskCategoriesQuery } from '../../api/taskApi';
+import { taskCategories } from '../../model/constants/task';
 
 type TaskCategorySelectProps = Omit<
 	ComponentProps<typeof Dropdown>,

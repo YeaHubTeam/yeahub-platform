@@ -1,7 +1,7 @@
 import { Flex } from '@/shared/ui/Flex';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-import { ProgrammingLanguage } from '@/entities/programmingLanguage';
+import { ProgrammingLanguage } from '../../model/types/programmingLanguage';
 
 import styles from './ProgrammingLanguageList.module.css';
 
