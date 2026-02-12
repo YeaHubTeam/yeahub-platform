@@ -1,7 +1,10 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
+import { Collections, i18Namespace, ROUTES } from '@/shared/config';
+import { SelectedAdminEntities, useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -25,6 +28,8 @@ import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.collection);
 	const userId = useSelector(getUserId);
 	const isAuthor = useSelector(getIsAuthor);
 	const selectedCollections = useSelector(getSelectedCollections);
@@ -50,7 +55,12 @@ const CollectionsPage = () => {
 		onResetFilters();
 	};
 
-	const { data: allCollections, isLoading } = useGetCollectionsListQuery({
+	const {
+		data: allCollections,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCollectionsListQuery({
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
@@ -68,16 +78,25 @@ const CollectionsPage = () => {
 	}, [allCollections, userId, isAuthor]);
 
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTION_DESCRIPTION),
+			buttonText: t(Collections.STUB_EMPTY_COLLECTION_BUTTON),
+			onClick: () => navigate(ROUTES.admin.collections.create.page),
+		},
 		'filter-empty': {
 			onClick: onResetAll,
 		},
+		error: { onClick: refetch },
 	};
 
 	return (
 		<PageWrapper
+			roles={['admin', 'author']}
 			isLoading={isLoading}
 			skeleton={<CollectionsPageSkeleton />}
 			hasFilters={hasFilters}
+			hasError={isError}
 			hasData={(collections?.data || []).length > 0}
 			stubs={stubs}
 			paginationOptions={{

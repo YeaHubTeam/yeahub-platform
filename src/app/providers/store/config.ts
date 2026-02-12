@@ -16,6 +16,7 @@ import {
 } from '@/pages/admin/resource/resources';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
+import { tasksTablePageReducer } from '@/pages/admin/task/tasks';
 import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
@@ -35,6 +36,7 @@ export const reducers = {
 	collectionsPage: collectionsPageReducer,
 	resourcesRequestsTab: resourcesRequestsTabReducer,
 	topicsPage: topicsPageReducer,
+	tasksTablePage: tasksTablePageReducer,
 };
 
 export const getStore = (initialState?: State) =>

@@ -75,6 +75,7 @@ export type IconName =
 	| 'lamp'
 	| 'tickWithBackground'
 	| 'copy'
-	| 'watch';
+	| 'watch'
+	| 'refresh';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

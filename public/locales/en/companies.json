@@ -21,5 +21,19 @@
 			"choose": "Select a company",
 			"not.found": "Company is not found"
 		}
+	},
+	"stub": {
+		"empty": {
+			"companies": {
+				"title": "It looks like there are no companies yet",
+				"subtitle": "Create the first one — and start adding materials to the knowledge base",
+				"submit": "Add company"
+			},
+			"company": {
+				"title": "Company data appears to be missing",
+				"subtitle": "Try refreshing the page or try the request again",
+				"submit": "Retry"
+			}
+		}
 	}
 }

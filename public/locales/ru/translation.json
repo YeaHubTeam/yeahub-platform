@@ -56,6 +56,9 @@
 				"title": "Обучение",
 				"interview": "Собеседование"
 			},
+			"tasks": {
+				"title": "Задачи"
+			},
 			"wiki": {
 				"title": "База знаний",
 				"resources": "Ресурсы"
@@ -169,6 +172,7 @@
 		"collections.list": "Коллекции",
 		"collection.detail": "Список вопросов",
 		"quiz": "Собеседование",
+		"liveCoding": "Тренажер",
 		"new.quiz": "Викторина",
 		"main.page": "Главная",
 		"error.404": "Страница не найдена",
@@ -178,6 +182,7 @@
 		"resources": "Ресурсы",
 		"resources.my": "Мои заявки",
 		"resources.my.request": "Заявка",
+		"resources.my.requests": "Мои заявки",
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
 		"analytics": "Аналитика",
@@ -185,7 +190,9 @@
 		"popular.skills": "Популярные навыки",
 		"analytics.skillsProficiency": "Средний процент изученности навыка",
 		"analytics.difficultQuestions": "Самые сложные вопросы",
-		"analytics.popularQuestions": "Самые частые вопросы в подборках"
+		"analytics.popularQuestions": "Самые частые вопросы в подборках",
+		"tasks.list": "Список задач",
+		"task.detail": "Подробнее о задаче"
 	},
 	"toast": {
 		"title": {
@@ -222,6 +229,22 @@
 						"verify.denied": "Подтверждение Telegram отклонено.",
 						"user.not.found": "Пользователь не найден."
 					}
+				}
+			}
+		},
+		"tasks": {
+			"create": {
+				"success": "Задача успешно создана",
+				"failed": "Не удалось создать задачу"
+			},
+			"edit": {
+				"success": "Задача успешно изменена",
+				"failed": "Не удалось изменить задачу"
+			},
+			"delete": {
+				"single": {
+					"success": "Задача успешно удалена",
+					"failed": "Не удалось удалить задачу"
 				}
 			}
 		},
@@ -622,6 +645,10 @@
 				"info": "У вас нет доступа к этой функции"
 			}
 		}
+	},
+	"tasks": {
+		"title": "Live Coding",
+		"run": "Выполнить"
 	},
 	"editor.bold": "Жирный",
 	"editor.italic": "Курсив",

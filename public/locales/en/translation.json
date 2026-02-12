@@ -56,6 +56,9 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"tasks": {
+				"title": "Tasks"
+			},
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
@@ -166,6 +169,7 @@
 		"questions.list": "List of questions",
 		"question.detail": "More details",
 		"quiz": "Interview",
+		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
 		"main.page": "Home",
 		"error.404": "Page not found",
@@ -175,13 +179,16 @@
 		"resources": "Resources",
 		"resources.my": "My resources",
 		"resources.my.request": "Request",
+		"resources.my.requests": "My requests",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
 		"analytics": "Analytics",
 		"progress.specializations": "Progress in the specialty",
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
-		"analytics.difficultQuestions": "The most difficult questions"
+		"analytics.difficultQuestions": "The most difficult questions",
+		"tasks.list": "Tasks",
+		"task.detail": "More details"
 	},
 	"toast": {
 		"title": {
@@ -218,6 +225,22 @@
 						"verify.denied": "Telegram verification denied.",
 						"user.not.found": "User not found."
 					}
+				}
+			}
+		},
+		"tasks": {
+			"create": {
+				"success": "Task created successfully",
+				"failed": "Task could not be created"
+			},
+			"edit": {
+				"success": "Task successfully changed",
+				"failed": "Task could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Task successfully deleted",
+					"failed": "Task could not be deleted"
 				}
 			}
 		},
@@ -624,6 +647,10 @@
 				"info": "You don't have access to this feature"
 			}
 		}
+	},
+	"tasks": {
+		"title": "Live Coding",
+		"run": "Run"
 	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",

@@ -7,7 +7,11 @@ import { NavigationBlock } from '../NavigationBlock/NavigationBlock';
 
 import styles from './FinalStep.module.css';
 
-export const FinalStep = () => {
+interface FinalStepProps {
+	onCloseModal?: () => void;
+}
+
+export const FinalStep = ({ onCloseModal }: FinalStepProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 
 	return (
@@ -16,7 +20,7 @@ export const FinalStep = () => {
 			description={t(Onboarding.FINAL_CONTENT)}
 			className={styles['final']}
 		>
-			<NavigationBlock />
+			<NavigationBlock onCloseModal={onCloseModal} />
 		</LayoutStepComponent>
 	);
 };

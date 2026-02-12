@@ -34,6 +34,8 @@ export const Stepper = <T,>({
 	};
 
 	const onStepToggle = (clickedStep: Step<T>, clickedIndex: number) => {
+		if (clickedIndex < activeStepIndex) return;
+
 		if (clickedIndex <= activeStepIndex + 1) {
 			setActiveStep(clickedStep);
 		}

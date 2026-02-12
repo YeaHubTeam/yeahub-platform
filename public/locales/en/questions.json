@@ -116,8 +116,15 @@
 		},
 		"empty": {
 			"questions": {
-				"title": "No questions found yet",
-				"subtitle": "Questions are added periodically, just wait a bit"
+				"public": {
+					"title": "No questions found yet",
+					"subtitle": "Questions are added periodically, just wait a bit"
+				},
+				"admin": {
+					"title": "No questions found yet",
+					"subtitle": "Create your first one — and start adding content to the knowledge base",
+					"submit": "Add a question"
+				}
 			},
 			"question": {
 				"title": "No question data available",

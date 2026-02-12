@@ -11,7 +11,11 @@ import type { NavItem } from '../../../model/types/types';
 
 import styles from './NavigationBlock.module.css';
 
-export const NavigationBlock = () => {
+interface NavigationBlockProps {
+	onCloseModal?: () => void;
+}
+
+export const NavigationBlock = ({ onCloseModal }: NavigationBlockProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const navigate = useNavigate();
 
@@ -34,6 +38,7 @@ export const NavigationBlock = () => {
 	];
 
 	const onMoveService = (serviceLink: To) => {
+		onCloseModal?.();
 		navigate(serviceLink);
 	};
 

@@ -1,0 +1,157 @@
+{
+	"title": {
+		"short": "Coding tasks"
+	},
+	"name": {
+		"title": "Name",
+		"subtitle": "Add a task name"
+	},
+	"memory.limit": {
+		"title": "Memory",
+		"subtitle": "Add task memory limit",
+		"value": "{{count}}Kb"
+	},
+	"time.limit": {
+		"title": "Execution time",
+		"subtitle": "Add a task execution time limit",
+		"value": "{{count}}s"
+	},
+	"constraints": {
+		"title": "Constraints",
+		"subtitle": "Add task organization",
+		"add.button": "Add"
+	},
+	"test.cases": {
+		"title": "Test cases",
+		"subtitle": "Add test cases of the task",
+		"input": "Input data",
+		"expected.output": "Expected output",
+		"hidden": "Active",
+		"add.button": "Add"
+	},
+	"task.structures": {
+		"title": "Code templates",
+		"subtitle": "Add a task name",
+		"language": "Programming language",
+		"solution.stub": "Solution code template",
+		"text.fixture": "Solution code testing template",
+		"active": "Active",
+		"add.button": "Add"
+	},
+	"edit.page.title": "Editing task",
+	"create.page.title": "Creating task",
+	"description": {
+		"title": "Description",
+		"subtitle": "Add task description",
+		"tab.title": "Description",
+		"constraints": {
+			"title": "Constraints"
+		}
+	},
+	"select": {
+		"choose": "Select a task category from the list",
+		"empty": "There are no options",
+		"selected": "Selected task category"
+	},
+	"search": {
+		"placeholder": "Enter a task..."
+	},
+	"difficulty": {
+		"title": "Question difficulty",
+		"subtitle": "Select a task difficulty",
+		"title.short": "Difficulty"
+	},
+	"languages": {
+		"title": "Programming languages"
+	},
+	"status": {
+		"solved": "Solved",
+		"attempted": "Attempted",
+		"not.started": "Not started"
+	},
+	"category": {
+		"title": "Task category",
+		"label": "Add a task category",
+		"placeholder": "Add a category",
+		"data.structures": "Data structures",
+		"algorithms": "algorithmics",
+		"arrays": "Arrays",
+		"databases": "Databases",
+		"strings": "Strings",
+		"dynamic.programming": "Dynamic programming"
+	},
+	"stub": {
+		"empty.tasks": {
+			"public": {
+				"title": "No tasks found yet",
+				"subtitle": "Tasks are added periodically, just wait a bit",
+				"filters": {
+					"subtitle": "Try changing the query or conditions to search for a task."
+				}
+			},
+			"admin": {
+				"title": "No tasks found yet",
+				"subtitle": "Create your first one — start adding content to the knowledge base",
+				"submit": "Add a task"
+			}
+		},
+		"empty.task": {
+			"title": "Failed to load task data",
+			"subtitle": "Try again or refresh the page",
+			"buttonText": "Try again"
+		}
+	},
+	"table": {
+		"task": "Title",
+		"difficulty": "Difficulty",
+		"status": "Status",
+		"status.solved": "Solved",
+		"status.not.solved": "Not solved",
+		"memory": "Memory",
+		"time": "Time",
+		"language": "Language"
+	},
+	"solutions": {
+		"tab.title": "My solutions",
+		"tab.subtitle": "Here will be your solutions to the task",
+		"back.button": "Solutions list"
+	},
+	"editor": {
+		"actions": {
+			"run": "Run",
+			"submit": "Submit"
+		}
+	},
+	"output": {
+		"result": {
+			"tab.title": "Code result",
+			"stub.title": "Here will be the result of the code execution",
+			"stub.subtitle": "To get the result, run your code",
+			"compilation.error": "Compilation error",
+			"runtime.output": "Result of the code execution",
+			"tests.passed": "Tests passed",
+			"success.rate": "Success rate",
+			"execution.time": "Execution time",
+			"memory.usage": "Memory usage"
+		},
+		"tests": {
+			"tab.title": "Test cases",
+			"test": {
+				"case": {
+					"title": "Test {{index}}",
+					"status": "Status",
+					"passed": "Passed",
+					"failed": "Failed",
+					"hidden": "Hidden test",
+					"input": "Input",
+					"expected.output": "Expected output",
+					"actual.output": "Actual output",
+					"error.message": "Error",
+					"execution.time": "Execution time",
+					"memory.usage": "Memory usage",
+					"empty": "No available test cases"
+				}
+			}
+		}
+	}
+}

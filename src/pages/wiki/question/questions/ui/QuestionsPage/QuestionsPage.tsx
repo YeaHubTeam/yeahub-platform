@@ -41,7 +41,7 @@ const QuestionsPage = () => {
 	const specializationId = useAppSelector(getSpecializationId);
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_SHOW_LIMIT_SKILLS,
-		specializations: [specializationId],
+		specializations: specializationId,
 	});
 	const { handleNavigation } = useQuestionQueryNavigate();
 
@@ -57,7 +57,7 @@ const QuestionsPage = () => {
 		{
 			...getParams,
 			profileId,
-			specialization: specializationId,
+			specializationId,
 			areFavorites: status === 'favorite' ? true : undefined,
 		},
 		{
@@ -103,8 +103,8 @@ const QuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Questions.STUB_EMPTY_QUESTIONS_TITLE),
-			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_SUBTITLE),
+			title: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_PUBLIC_SUBTITLE),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,

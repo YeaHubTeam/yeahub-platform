@@ -9,6 +9,7 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
+import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -17,7 +18,10 @@ import { CompanySelect } from '@/entities/company/@x/collection';
 import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
 import { SpecializationSelect } from '@/entities/specialization/@x/collection';
 
-import { useGetCollectionQuestionsQuery } from '../../api/collectionApi';
+import {
+	useGetCollectionKeywordsQuery,
+	useGetCollectionQuestionsQuery,
+} from '../../api/collectionApi';
 
 import styles from './CollectionForm.module.css';
 
@@ -206,9 +210,27 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					</Flex>
 					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
+							const currentKeywords = Array.isArray(value) ? value : [];
+
 							return (
 								<div className={styles.select}>
-									<KeywordInput value={value} onChange={onChange} />
+									<Flex direction="column" gap="32">
+										<KeywordSelect
+											getKeywordsQuery={useGetCollectionKeywordsQuery}
+											value={undefined}
+											onChange={(keyword) => {
+												if (keyword && !currentKeywords.includes(keyword)) {
+													onChange([...currentKeywords, keyword]);
+												}
+											}}
+											selectedKeywords={currentKeywords}
+											showLabel={false}
+											showSelected={false}
+											width={360}
+											label={t(Collections.ADDITIONAL_INFO_ACCESS)}
+										/>
+										<KeywordInput value={currentKeywords} onChange={onChange} />
+									</Flex>
 								</div>
 							);
 						}}

@@ -1,5 +1,6 @@
-.modal {
-  width: 553px;
+.modal { 
+  width: 100%;
+  max-width: 553px;
 }
 
 .description {

@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { ReactNode } from 'react';
 
 import { SelectedEntities, SelectedEntity } from '@/shared/libs';
@@ -7,44 +8,17 @@ import { CopyButton } from '@/shared/ui/CopyButton';
 import styles from './Table.module.css';
 
 interface TableProps<Id extends string | number, T> {
-	/**
-	 * Array of elements displayed in the table
-	 */
 	items: T[];
-	/**
-	 * Render function for displaying the table header
-	 */
 	renderTableHeader: () => ReactNode;
-	/**
-	 * Render function for displaying the table body
-	 */
 	renderTableBody: (item: T, index?: number) => ReactNode;
-	/**
-	 * Render function for displaying the table actions in the last column
-	 */
 	renderActions?: (item: T) => ReactNode;
 	selectedItems?: SelectedEntities<Id>;
 	onSelectItems?: (ids: SelectedEntities<Id>) => void;
-	/**
-	 * Render function for defining column widths in the table.
-	 */
 	renderTableColumnWidths?: () => ReactNode;
-	/**
-	 * Shows a copy button
-	 */
 	hasCopyButton?: boolean;
+	onRowClick?: (item: T) => void;
 }
 
-/**
- * Component that is used to display data in a tabular structure.
- *
- * @param items - Array of elements displayed in the table.
- * @param renderTableHeader - Render function for displaying the table header.
- * @param renderTableBody - Render function for displaying the table body.
- * @param renderActions - Render function for displaying the table actions in the last column.
- * @param selectedItems - Array of currently selected entities.
- * @param onSelectItems - Callback function triggered when selection changes.
- */
 export const Table = <Id extends string | number, T extends SelectedEntity<Id>>({
 	items,
 	renderTableHeader,
@@ -54,6 +28,7 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 	onSelectItems,
 	renderTableColumnWidths,
 	hasCopyButton,
+	onRowClick,
 }: TableProps<Id, T>) => {
 	const hasActions = !!renderActions;
 
@@ -122,7 +97,12 @@ export const Table = <Id extends string | number, T extends SelectedEntity<Id>>(
 			</thead>
 			<tbody>
 				{items.map((item, index) => (
-					<tr key={item.id} className={styles.row} data-testid="table-row">
+					<tr
+						key={item.id}
+						className={classnames(styles.row, { [styles.click]: !!onRowClick })}
+						data-testid="table-row"
+						onClick={() => onRowClick?.(item)}
+					>
 						{selectedItems && (
 							<td className={styles.cell}>
 								<Checkbox

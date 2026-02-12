@@ -36,6 +36,11 @@ export enum ApiTags {
 	POPULAR_QUESTIONS = 'questions_popular',
 	SPECIALIZATIONS_GENERAL_PROGRESS = 'general_progress',
 	TOPICS = 'topics',
+	TASKS = 'tasks',
+	TASK_DETAIL = 'task_detail',
+	TASK_SOLUTIONS = 'task_solutions',
+	TASK_CATEGORIES = 'task_categories',
 	USERS_RATING = 'users_rating',
 	TOPIC_DETAIL = 'topic_detail',
+	PROGRAMMING_LANGUAGE = 'programming_language',
 }

@@ -1,6 +1,6 @@
 import { Response } from '@/shared/libs';
 
-import { Skill } from '@/entities/skill/@x/topic';
+import type { Skill } from '@/entities/skill/@x/topic';
 
 export interface Topic {
 	id: number;
@@ -18,6 +18,10 @@ export interface GetTopicsListParamsRequest {
 	limit?: number;
 	title?: string;
 	skillIds?: number[];
+}
+
+export interface GetTopicByIdParamsRequest {
+	topicId: number;
 }
 
 export type CreateOrEditTopicFormValues = Pick<Topic, 'id' | 'title' | 'description'> & {

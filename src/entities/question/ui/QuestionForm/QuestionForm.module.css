@@ -3,10 +3,10 @@
 }
 
 .select {
-  width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 36px;  
+  gap: 36px;
+  width: 360px;  
 }
 
 .status-select select {

@@ -9,6 +9,7 @@ import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
+import TasksIcon from '@/shared/assets/icons/lifeBuoy.svg';
 import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
@@ -19,7 +20,7 @@ import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
 import WikiIcon from '@/shared/assets/icons/wiki.svg';
 import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
-import { Translation, i18n, ROUTES } from '@/shared/config';
+import { i18n, ROUTES, Translation } from '@/shared/config';
 
 import { listAdminRoles, RoleName } from '@/entities/auth';
 
@@ -53,6 +54,10 @@ import { SpecializationCreatePage } from '@/pages/admin/specialization/specializ
 import { SpecializationDetailPage } from '@/pages/admin/specialization/specializationDetail';
 import { SpecializationEditPage } from '@/pages/admin/specialization/specializationEdit';
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
+import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
+import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
+import { TaskEditPage } from '@/pages/admin/task/taskEdit';
+import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
 import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
@@ -97,6 +102,8 @@ import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
+import { TaskPage } from '@/pages/tasks/task';
+import { TasksPage } from '@/pages/tasks/tasks';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -170,6 +177,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
 			},
+			// {
+			// 	route: ROUTES.tasks.route,
+			// 	title: i18n.t(Translation.SIDEBAR_MENU_TASKS_TITLE),
+			// 	icon: CursorSquare, // TODO: добавить иконку
+			// },
 		],
 		roles: allRoles,
 	},
@@ -275,6 +287,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		route: ROUTES.admin.topics.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
 		icon: Cards,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.tasks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
+		icon: TasksIcon,
 		roles: listAdminRoles,
 	},
 ];
@@ -543,6 +562,28 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
+				path: ROUTES.admin.tasks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TasksTablePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.create.route,
+						element: <TaskCreatePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.edit.route,
+						element: <TaskEditPage />,
+					},
+					{
+						path: ROUTES.admin.tasks.details.route,
+						element: <AdminTaskPage />,
+					},
+				],
+			},
+			{
 				path: '*',
 				element: <Error404Page />,
 			},
@@ -804,6 +845,35 @@ export const router = createBrowserRouter([
 								element: <InterviewCollectionPage />,
 								handle: {
 									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+								},
+							},
+						],
+					},
+				],
+			},
+			{
+				path: ROUTES.liveCoding.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_LIVE_CODING,
+				},
+				children: [
+					{
+						path: ROUTES.liveCoding.tasks.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_TASKS,
+						},
+						children: [
+							{
+								index: true,
+								element: <TasksPage />,
+							},
+							{
+								path: ROUTES.liveCoding.tasks.detail.route,
+								element: <TaskPage />,
+								handle: {
+									crumb: Translation.CRUMBS_TASK,
 								},
 							},
 						],

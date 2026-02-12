@@ -1,0 +1,31 @@
+.main {
+  flex-grow: 1;
+  height: auto;
+}
+
+.tasks-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.divider {
+  margin-bottom: 24px;
+  border-top-width: 0;
+  border-bottom-color: var(--color-black-50);
+}
+
+.filters {
+  position: sticky;
+  top: 0;
+  min-width: 360px;
+  max-width: 360px;
+  height: auto;
+}
+
+@media (width < 1280px) {
+  .filters {
+    display: none;
+  }
+}

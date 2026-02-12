@@ -139,6 +139,22 @@ export const ROUTES = {
 				page: '/admin/topics/:topicId',
 			},
 		},
+		tasks: {
+			route: 'tasks',
+			page: '/admin/tasks',
+			create: {
+				route: 'create',
+				page: '/admin/tasks/create',
+			},
+			edit: {
+				route: ':taskId/edit',
+				page: '/admin/tasks/:taskId/edit',
+			},
+			details: {
+				route: ':taskId',
+				page: '/admin/tasks/:taskId',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',
@@ -221,6 +237,18 @@ export const ROUTES = {
 		new: {
 			route: 'new',
 			page: '/dashboard/interview/new',
+		},
+	},
+	liveCoding: {
+		route: 'live-coding',
+		page: '/dashboard/live-coding',
+		tasks: {
+			route: 'tasks',
+			page: '/dashboard/live-coding/tasks',
+			detail: {
+				route: ':taskId',
+				page: '/dashboard/live-coding/tasks/:taskId',
+			},
 		},
 	},
 	wiki: {

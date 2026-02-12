@@ -32,7 +32,7 @@ const InterviewPage = () => {
 	const { isLoading: isQuestionsListLoading } = useGetQuestionsListQuery({
 		random: true,
 		limit: 3,
-		specialization: specializationId,
+		specializationId,
 	});
 
 	const { isLoading: isActiveQuizLoading } = useGetActiveQuizQuery(
