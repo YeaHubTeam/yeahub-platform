@@ -57,7 +57,7 @@ const QuestionsPage = () => {
 	} = useGetQuestionsListQuery({
 		skills: filters.skills,
 		page: filters.page,
-		specialization: filters.specialization,
+		specializationId: filters.specialization,
 		title: filters.title,
 		complexity: filters.complexity,
 		rate: filters.rate,

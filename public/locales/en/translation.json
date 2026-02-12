@@ -228,6 +228,22 @@
 				}
 			}
 		},
+		"tasks": {
+			"create": {
+				"success": "Task created successfully",
+				"failed": "Task could not be created"
+			},
+			"edit": {
+				"success": "Task successfully changed",
+				"failed": "Task could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Task successfully deleted",
+					"failed": "Task could not be deleted"
+				}
+			}
+		},
 		"questions": {
 			"learned": {
 				"success": "The question has been fully studied",

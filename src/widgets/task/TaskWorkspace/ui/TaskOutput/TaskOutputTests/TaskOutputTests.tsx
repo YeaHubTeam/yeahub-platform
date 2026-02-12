@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Task as TaskTranslations } from '@/shared/config';
+import { i18Namespace, Tasks } from '@/shared/config';
 import { Tab, Tabs } from '@/shared/ui/Tabs';
 import { Text } from '@/shared/ui/Text';
 
@@ -23,7 +23,7 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 
 		return result.test_cases.map((testCase, index) => ({
 			id: index,
-			label: t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_TITLE, { index: index + 1 }),
+			label: t(Tasks.OUTPUT_TESTS_TEST_CASE_TITLE, { index: index + 1 }),
 			Component: () => (
 				<div className={styles['test-content']}>
 					<div className={styles['test-status']}>
@@ -31,28 +31,26 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 							variant="body3-strong"
 							color={testCase.status === 'PASSED' ? 'green-500' : 'red-500'}
 						>
-							{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_STATUS)}:{' '}
+							{t(Tasks.OUTPUT_TESTS_TEST_CASE_STATUS)}:{' '}
 							{testCase.status === 'PASSED'
-								? t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_PASSED)
-								: t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_FAILED)}
+								? t(Tasks.OUTPUT_TESTS_TEST_CASE_PASSED)
+								: t(Tasks.OUTPUT_TESTS_TEST_CASE_FAILED)}
 						</Text>
 						{testCase.is_hidden && (
-							<Text variant="body3">{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_HIDDEN)}</Text>
+							<Text variant="body3">{t(Tasks.OUTPUT_TESTS_TEST_CASE_HIDDEN)}</Text>
 						)}
 					</div>
 
 					{!testCase.is_hidden && (
 						<>
 							<div className={styles['test-block']}>
-								<Text variant="body3-strong">
-									{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_INPUT)}:
-								</Text>
+								<Text variant="body3-strong">{t(Tasks.OUTPUT_TESTS_TEST_CASE_INPUT)}:</Text>
 								<pre className={styles.code}>{JSON.stringify(testCase.input, null, 2)}</pre>
 							</div>
 
 							<div className={styles['test-block']}>
 								<Text variant="body3-strong">
-									{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_EXPECTED_OUTPUT)}:
+									{t(Tasks.OUTPUT_TESTS_TEST_CASE_EXPECTED_OUTPUT)}:
 								</Text>
 								<pre className={styles.code}>
 									{JSON.stringify(testCase.expected_output, null, 2)}
@@ -60,9 +58,7 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 							</div>
 
 							<div className={styles['test-block']}>
-								<Text variant="body3-strong">
-									{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_ACTUAL_OUTPUT)}:
-								</Text>
+								<Text variant="body3-strong">{t(Tasks.OUTPUT_TESTS_TEST_CASE_ACTUAL_OUTPUT)}:</Text>
 								<pre className={styles.code}>{testCase.actual_output}</pre>
 							</div>
 						</>
@@ -71,7 +67,7 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 					{testCase.error_message && (
 						<div className={styles['test-block']}>
 							<Text variant="body3-strong" color="red-500">
-								{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_ERROR_MESSAGE)}:
+								{t(Tasks.OUTPUT_TESTS_TEST_CASE_ERROR_MESSAGE)}:
 							</Text>
 							<pre className={styles.code}>{testCase.error_message}</pre>
 						</div>
@@ -79,12 +75,11 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 
 					<div className={styles['test-metrics']}>
 						<Text variant="body3">
-							{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_EXECUTION_TIME)}:{' '}
-							{testCase.execution_time.toFixed(2)} мс
+							{t(Tasks.OUTPUT_TESTS_TEST_CASE_EXECUTION_TIME)}: {testCase.execution_time.toFixed(2)}{' '}
+							мс
 						</Text>
 						<Text variant="body3">
-							{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_MEMORY_USAGE)}:{' '}
-							{testCase.memory_usage.toFixed(2)} KB
+							{t(Tasks.OUTPUT_TESTS_TEST_CASE_MEMORY_USAGE)}: {testCase.memory_usage.toFixed(2)} KB
 						</Text>
 					</div>
 				</div>
@@ -99,7 +94,7 @@ export const TaskOutputTests = ({ result }: TaskOutputTestsProps) => {
 	if (testTabs.length === 0 || !activeTestTab) {
 		return (
 			<div className={styles.empty}>
-				<Text variant="body3">{t(TaskTranslations.OUTPUT_TESTS_TEST_CASE_EMPTY)}</Text>
+				<Text variant="body3">{t(Tasks.OUTPUT_TESTS_TEST_CASE_EMPTY)}</Text>
 			</div>
 		);
 	}

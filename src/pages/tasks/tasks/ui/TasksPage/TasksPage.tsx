@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Task } from '@/shared/config';
+import { i18Namespace, Tasks } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
@@ -57,11 +57,11 @@ const TasksPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Task.STUB_EMPTY_TASKS_PUBLIC_TITLE),
-			subtitle: t(Task.STUB_EMPTY_TASKS_PUBLIC_SUBTITLE),
+			title: t(Tasks.STUB_EMPTY_TASKS_PUBLIC_TITLE),
+			subtitle: t(Tasks.STUB_EMPTY_TASKS_PUBLIC_SUBTITLE),
 		},
 		'filter-empty': {
-			subtitle: t(Task.STUB_EMPTY_TASKS_PUBLIC_FILTERS_SUBTITLE),
+			subtitle: t(Tasks.STUB_EMPTY_TASKS_PUBLIC_FILTERS_SUBTITLE),
 			onClick: onResetFilters,
 		},
 		error: {
@@ -91,7 +91,7 @@ const TasksPage = () => {
 					<Card className={styles.main}>
 						<div className={styles['tasks-list-header']}>
 							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
-								{t(Task.TITLE_SHORT)}
+								{t(Tasks.TITLE_SHORT)}
 							</Text>
 							{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						</div>

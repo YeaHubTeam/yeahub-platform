@@ -25,7 +25,7 @@ interface RenderComponentOptions {
  */
 export const renderComponent = (component: ReactNode, options: RenderComponentOptions = {}) => {
 	const { route = '/', initialState = {}, reducers = {} } = options;
-	console.log(2222, component);
+
 	return render(
 		<StoreProvider initialState={initialState} reducers={reducers}>
 			<MemoryRouter initialEntries={[route]}>

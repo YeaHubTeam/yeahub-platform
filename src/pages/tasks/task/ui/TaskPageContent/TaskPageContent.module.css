@@ -1,6 +1,6 @@
 .page {
   width: 100%;
-  height: calc(100vh - var(--header-height) - var(--header-height-sm)) !important;
+  height: calc(100vh - var(--header-height) - var(--header-height-sm) - 48px) !important;
   border-radius: 16px;
   background-color: var(--background-block);
 }

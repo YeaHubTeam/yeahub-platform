@@ -67,7 +67,7 @@ export interface GetQuestionsListParamsRequest {
 	rate?: number[];
 	keywords?: string[];
 	skillFilterMode?: skillFilterMode;
-	specialization?: number | number[];
+	specializationId?: number | number[];
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
@@ -84,10 +84,8 @@ export type GetQuestionByIdParamsRequest = {
 };
 export type GetQuestionByIdResponse = Question;
 
-export interface GetQuestionsForLearnParamsRequest extends Omit<
-	GetQuestionsListParamsRequest,
-	'order' | 'orderBy' | 'random'
-> {
+export interface GetQuestionsForLearnParamsRequest
+	extends Omit<GetQuestionsListParamsRequest, 'order' | 'orderBy' | 'random'> {
 	profileId: string;
 	isLearned?: boolean;
 	areFavorites?: boolean;
