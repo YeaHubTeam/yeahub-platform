@@ -1,0 +1,14 @@
+.icon-button {
+  border: 1px solid var(--color-black-200);
+}
+
+.drawer {
+  top: 0;
+  min-width: 328px;
+  height: auto;
+  overflow-x: hidden;
+}
+
+.drawer-mobile {
+  padding-bottom: var(--header-height);
+}

@@ -12,10 +12,8 @@ import { Select } from '../Select/Select';
 
 import styles from './Dropdown.module.css';
 
-export interface DropdownProps extends Omit<
-	React.HTMLProps<HTMLDivElement>,
-	'prefix' | 'size' | 'onSelect' | 'value'
-> {
+export interface DropdownProps
+	extends Omit<React.HTMLProps<HTMLDivElement>, 'prefix' | 'size' | 'onSelect' | 'value'> {
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 	size?: DropdownSize;

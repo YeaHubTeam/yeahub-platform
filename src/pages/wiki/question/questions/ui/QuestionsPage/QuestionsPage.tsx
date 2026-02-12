@@ -57,7 +57,7 @@ const QuestionsPage = () => {
 		{
 			...getParams,
 			profileId,
-			specialization: specializationId,
+			specializationId,
 			areFavorites: status === 'favorite' ? true : undefined,
 		},
 		{

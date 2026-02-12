@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Task } from '@/shared/config';
+import { i18Namespace, Tasks } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 import { useGetLanguagesQuery } from '@/entities/programmingLanguage';
@@ -38,7 +38,7 @@ export const TaskLanguagesFilter = ({
 
 	return (
 		<BaseFilterSection
-			title={t(Task.LANGUAGES_TITLE)}
+			title={t(Tasks.LANGUAGES_TITLE)}
 			data={preparedData}
 			onClick={onToggleLanguage}
 			disabled={isLoading}

@@ -54,6 +54,9 @@ import { SpecializationCreatePage } from '@/pages/admin/specialization/specializ
 import { SpecializationDetailPage } from '@/pages/admin/specialization/specializationDetail';
 import { SpecializationEditPage } from '@/pages/admin/specialization/specializationEdit';
 import { SpecializationsPage } from '@/pages/admin/specialization/specializations';
+import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
+import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
+import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
@@ -565,6 +568,18 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <TasksTablePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.create.route,
+						element: <TaskCreatePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.edit.route,
+						element: <TaskEditPage />,
+					},
+					{
+						path: ROUTES.admin.tasks.details.route,
+						element: <AdminTaskPage />,
 					},
 				],
 			},
