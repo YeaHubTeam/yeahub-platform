@@ -147,6 +147,13 @@
 			"max_few": "Maximum length of {{count}} characters",
 			"max_many": "Maximum length of {{count}} characters"
 		},
+		"min": {
+			"value": "Minimum value {{min}}",
+			"array": "Select at least {{min}}"
+		},
+		"max": {
+			"value": "Maximum value {{max}}"
+		},
 		"password": {
 			"weak": "Password must contain uppercase and lowercase letters, numbers, and special characters",
 			"similar": "Passwords must match"

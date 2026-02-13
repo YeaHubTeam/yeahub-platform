@@ -14,12 +14,14 @@ export type SpecializationSelectProps = Omit<
 > & {
 	value: number | number[];
 	onChange: (value: number[] | number) => void;
+	onBlur?: () => void;
 	hasMultiple?: boolean;
 	disabled?: boolean;
 };
 
 export const SpecializationSelect = ({
 	onChange,
+	onBlur,
 	value,
 	hasMultiple,
 	disabled,
@@ -41,6 +43,7 @@ export const SpecializationSelect = ({
 			const updates = [...selectedSpecializations, numValue];
 			setSelectedSpecializations(updates);
 			onChange(updates);
+			onBlur?.();
 		} else {
 			setSelectedSpecializations([numValue]);
 			onChange([numValue]);
@@ -52,6 +55,7 @@ export const SpecializationSelect = ({
 		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
 		setSelectedSpecializations(updates);
 		onChange(updates);
+		onBlur?.();
 	};
 
 	const options = useMemo(() => {

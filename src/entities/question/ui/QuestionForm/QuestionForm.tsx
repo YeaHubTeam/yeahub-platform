@@ -49,6 +49,7 @@ export const QuestionForm = () => {
 							state={hasError ? 'error' : 'default'}
 							className={styles.title}
 							placeholder={t(Questions.TITLE_PLACEHOLDER)}
+							limit={255}
 						/>
 					)}
 				</FormControl>
@@ -64,6 +65,7 @@ export const QuestionForm = () => {
 							className={styles.description}
 							state={hasError ? 'error' : 'default'}
 							placeholder={t(Questions.DESCRIPTION_PLACEHOLDER)}
+							limit={1000}
 							{...field}
 						/>
 					)}
@@ -111,6 +113,7 @@ export const QuestionForm = () => {
 							label={t(Questions.STATUS_LABEL)}
 							onSelect={(val) => onChange(String(val))}
 							value={questionStatusesItems.find((status) => status.value === value)?.label || ''}
+							disabled={true}
 						>
 							{questionStatusesItems.map((option) => (
 								<Option value={option.value} label={option.label} key={option.label} />
@@ -129,9 +132,9 @@ export const QuestionForm = () => {
 					</Text>
 				</Flex>
 				<FormControl name="specializations" control={control}>
-					{({ onChange, value }) => (
+					{({ onChange, value, onBlur }) => (
 						<div className={styles.select}>
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							<SpecializationSelect onChange={onChange} value={value} hasMultiple onBlur={onBlur} />
 						</div>
 					)}
 				</FormControl>
@@ -148,11 +151,12 @@ export const QuestionForm = () => {
 					</Flex>
 
 					<FormControl name="skills" control={control}>
-						{({ onChange, value }) => (
+						{({ onChange, value, onBlur }) => (
 							<div className={styles.select}>
 								<SkillSelect
 									onChange={onChange}
 									value={value}
+									onBlur={onBlur}
 									selectedSpecializations={selectedSpecializations}
 								/>
 							</div>
@@ -170,7 +174,7 @@ export const QuestionForm = () => {
 					</Text>
 				</Flex>
 				<FormControl name="keywords" control={control}>
-					{({ onChange, value }) => {
+					{({ onChange, value, onBlur }) => {
 						const currentKeywords = Array.isArray(value) ? value : [];
 
 						return (
@@ -181,6 +185,7 @@ export const QuestionForm = () => {
 									onChange={(keyword) => {
 										if (keyword && !currentKeywords.includes(keyword)) {
 											onChange([...currentKeywords, keyword]);
+											onBlur();
 										}
 									}}
 									selectedKeywords={currentKeywords}
@@ -189,7 +194,13 @@ export const QuestionForm = () => {
 									width={360}
 									label={t(Questions.KEYWORDS_FILTER_PLACEHOLDER)}
 								/>
-								<KeywordInput value={currentKeywords} onChange={onChange} />
+								<KeywordInput
+									value={currentKeywords}
+									onChange={(newValue) => {
+										onChange(newValue);
+										onBlur();
+									}}
+								/>
 							</div>
 						);
 					}}
@@ -206,6 +217,7 @@ export const QuestionForm = () => {
 							isInline
 							className={styles.input}
 							data={field.value}
+							limit={5000}
 							{...field}
 						/>
 					)}
@@ -222,6 +234,7 @@ export const QuestionForm = () => {
 							isInline
 							className={styles.input}
 							data={field.value}
+							limit={10000}
 							{...field}
 						/>
 					)}

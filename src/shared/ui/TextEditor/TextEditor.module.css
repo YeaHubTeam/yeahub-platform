@@ -306,3 +306,11 @@
   white-space: pre;
   word-break: normal;
 }
+
+.counter {
+  position: absolute;
+  right: 0;
+  bottom: -26px;
+  color: var(--color-black-300);
+  font-size: var(--font-size-p-xs);
+}

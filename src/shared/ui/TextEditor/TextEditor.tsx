@@ -18,6 +18,7 @@ export interface TextEditorProps {
 	isInline?: boolean;
 	data?: string;
 	id?: string | number;
+	limit?: number;
 	disabled?: boolean;
 	config?: Record<string, unknown>;
 	autofocus?: boolean;
@@ -32,6 +33,7 @@ export const TextEditor = ({
 	isInline = false,
 	data = '',
 	id,
+	limit,
 	disabled = false,
 	autofocus = false,
 	className,
@@ -127,6 +129,8 @@ export const TextEditor = ({
 
 	const editorContentRef = useRef<HTMLDivElement>(null);
 
+	const textLength = editor?.getText().length || 0;
+
 	useEffect(() => {
 		if (editor && onReady) {
 			onReady(editor);
@@ -181,6 +185,11 @@ export const TextEditor = ({
 		>
 			<BubbleMenuEditor editor={editor} />
 			<EditorContent ref={editorContentRef} editor={editor} className={styles['editor-content']} />
+			{limit && (
+				<div className={styles.counter}>
+					{textLength}/{limit}
+				</div>
+			)}
 		</div>
 	);
 };
