@@ -1,10 +1,10 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import type { TaskListItem } from '@/entities/task';
+import type { Task } from '@/entities/task';
 import { TaskCard } from '@/entities/task';
 
 interface TasksListProps {
-	tasks: TaskListItem[];
+	tasks: Task[];
 }
 
 export const TasksList = ({ tasks }: TasksListProps) => {

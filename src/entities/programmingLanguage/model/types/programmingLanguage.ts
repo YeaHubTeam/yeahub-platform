@@ -1,4 +1,4 @@
-type ProgrammingLanguageCode = 'cpp' | 'go' | 'java' | 'javascript' | 'python' | 'ruby';
+export type ProgrammingLanguageCode = 'cpp' | 'go' | 'java' | 'javascript' | 'python' | 'ruby';
 
 export interface ProgrammingLanguage {
 	id: number;
@@ -7,6 +7,7 @@ export interface ProgrammingLanguage {
 	monacoLangId: ProgrammingLanguageCode;
 	fileExtension: string;
 	isActive: boolean;
+	imageSrc: string;
 }
 
 export type GetLanguagesResponse = ProgrammingLanguage[];

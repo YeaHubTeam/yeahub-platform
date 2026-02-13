@@ -6,8 +6,11 @@ import {
 	ExecuteCodeRequest,
 	ExecuteCodeResponse,
 	GetTaskByIdResponse,
+	GetTaskCategoriesResponse,
 	GetTasksListParams,
 	GetTasksListResponse,
+	GetTasksProfileSolutionsParamRequest,
+	GetTasksProfileSolutionsResponse,
 } from '../model/types/task';
 
 const taskApi = baseApi.injectEndpoints({
@@ -25,12 +28,22 @@ const taskApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TASK_DETAIL],
 		}),
+		getTasksProfileSolutions: build.query<
+			GetTasksProfileSolutionsResponse,
+			GetTasksProfileSolutionsParamRequest
+		>({
+			query: ({ taskId, profileId }) => ({
+				url: route(taskApiUrls.getTasksProfileSolutions, taskId, profileId),
+			}),
+			providesTags: [ApiTags.TASK_SOLUTIONS],
+		}),
 		executeCode: build.mutation<ExecuteCodeResponse, ExecuteCodeRequest>({
 			query: (body) => ({
 				url: taskApiUrls.executeCode,
 				method: 'POST',
 				body,
 			}),
+			invalidatesTags: [ApiTags.TASK_SOLUTIONS, ApiTags.TASKS, ApiTags.TASK_DETAIL],
 		}),
 		testCode: build.mutation<ExecuteCodeResponse, ExecuteCodeRequest>({
 			query: (body) => ({
@@ -38,6 +51,13 @@ const taskApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
+			invalidatesTags: [ApiTags.TASKS, ApiTags.TASK_DETAIL],
+		}),
+		getTaskCategories: build.query<GetTaskCategoriesResponse, void>({
+			query: () => ({
+				url: taskApiUrls.getTaskCategories,
+			}),
+			providesTags: [ApiTags.TASK_CATEGORIES],
 		}),
 	}),
 });
@@ -47,4 +67,6 @@ export const {
 	useGetTaskByIdQuery,
 	useExecuteCodeMutation,
 	useTestCodeMutation,
+	useGetTasksProfileSolutionsQuery,
+	useGetTaskCategoriesQuery,
 } = taskApi;

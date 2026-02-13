@@ -1,27 +1,34 @@
 import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Task } from '@/shared/config';
-import { type SelectedAdminEntities } from '@/shared/libs';
+import { i18Namespace, ROUTES, Tasks, Translation } from '@/shared/config';
+import { route, type SelectedAdminEntities } from '@/shared/libs';
+import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
-import type { TaskListItem } from '@/entities/task';
+import { Task } from '@/entities/task';
+
+import { DeleteTaskButton } from '@/features/task/deleteTask';
 
 interface TasksTableProps {
-	tasks: TaskListItem[];
+	tasks: Task[];
 	selectedTasks?: SelectedAdminEntities<string>;
 	onSelectTasks?: (ids: SelectedAdminEntities<string>) => void;
 }
 
-export const TasksTable = (props: TasksTableProps) => {
-	const { tasks, selectedTasks, onSelectTasks } = props;
+export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTableProps) => {
+	const navigate = useNavigate();
+
 	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
 
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
 			title: 'auto',
 			difficulty: '15%',
-			status: '15%',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -29,24 +36,69 @@ export const TasksTable = (props: TasksTableProps) => {
 
 	const renderTableHeader = () => {
 		const columns = {
-			title: t(Task.TABLE_TASK_TITLE),
-			difficulty: t(Task.TABLE_DIFFICULTY_TITLE),
-			status: t(Task.TABLE_STATUS_TITLE),
+			title: t(Tasks.TABLE_TASK),
+			difficulty: t(Tasks.TABLE_DIFFICULTY),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
-	const renderTableBody = (task: TaskListItem) => {
+	const renderTableBody = (task: Task) => {
 		const columns = {
-			title: task.name,
+			title: (
+				<Link to={route(ROUTES.admin.tasks.details.route, task.id)}>
+					<Text variant="body3-accent">{task.name}</Text>
+				</Link>
+			),
 			difficulty: task.difficulty,
-			status: task.status,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {
-			return <td key={k}>{k === 'title' ? <Text variant="body3-accent">{v}</Text> : v}</td>;
+			return <td key={k}>{v}</td>;
 		});
+	};
+
+	const renderActions = (task: Task) => {
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.tasks.details.route, task.id));
+				},
+			},
+			{
+				icon: <Icon icon="pen" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				onClick: () => {
+					navigate(route(ROUTES.admin.tasks.edit.route, task.id));
+				},
+				tooltip: {
+					color: 'red',
+					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
+				},
+			},
+			{
+				renderComponent: () => <DeleteTaskButton taskId={task.id} />,
+			},
+		];
+
+		return (
+			<Flex gap="4">
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="go to details"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							size="medium"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
+				</Popover>
+			</Flex>
+		);
 	};
 
 	return (
@@ -57,6 +109,7 @@ export const TasksTable = (props: TasksTableProps) => {
 			selectedItems={selectedTasks}
 			onSelectItems={onSelectTasks}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderActions={renderActions}
 			hasCopyButton
 		/>
 	);

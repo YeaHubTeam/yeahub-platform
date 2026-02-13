@@ -1,18 +1,9 @@
 import { Response, SortOrder } from '@/shared/libs';
 
-export type TaskStatus = 'SOLVED' | 'UNSOLVED';
-export type TaskDifficulty = 1 | 2 | 3 | 4 | 5;
+import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
 
-export interface TaskListItem {
-	id: string;
-	name: string;
-	slug: string;
-	difficulty: TaskDifficulty;
-	supportedLanguagesIds: number[];
-	status: TaskStatus;
-	mainCategory: string;
-	canSolve: boolean;
-}
+export type TaskStatus = 'solved' | 'attempted' | 'not_started';
+export type TaskDifficulty = 1 | 2 | 3 | 4 | 5;
 
 export interface TestCase {
 	input: Record<string, unknown>;
@@ -22,8 +13,9 @@ export interface TestCase {
 
 export interface TaskStructure {
 	languageId: number;
-	solutionTemplate: string;
+	solutionStub: string;
 	testFixture: string;
+	isActive: boolean;
 }
 
 export interface Task {
@@ -31,14 +23,38 @@ export interface Task {
 	name: string;
 	slug: string;
 	description: string;
+	status: TaskStatus;
 	difficulty: TaskDifficulty;
-	langIds: number[];
-	categoryId: number;
+	supportedLanguages: ProgrammingLanguage[];
+	mainCategory: TaskCategoryCode;
 	constraints: string[];
 	testCases: TestCase[];
 	taskStructures: TaskStructure[];
 	solutionSignature: string;
+	timeLimit: number;
+	memoryLimit: number;
+	canSolve: boolean;
 }
+
+export type TaskCategoryCode =
+	| 'algorithms'
+	| 'data-structures'
+	| 'databases'
+	| 'strings'
+	| 'arrays'
+	| 'dynamic-programming';
+
+export interface TaskCategory {
+	id: number;
+	name: string;
+	code: TaskCategoryCode;
+	description: string;
+	parentCode: string | null;
+	childrenCodes: TaskCategoryCode[];
+	isActive: boolean;
+}
+
+export type GetTaskCategoriesResponse = TaskCategory[];
 
 export interface GetTasksListParams {
 	page?: number;
@@ -55,9 +71,32 @@ export interface GetTasksListParams {
 	sortOrder?: SortOrder;
 }
 
-export type GetTasksListResponse = Response<TaskListItem[]>;
+export type GetTasksListResponse = Response<Task[]>;
 
 export type GetTaskByIdResponse = Task;
+
+export type GetTasksProfileSolutionsParamRequest = {
+	taskId: string;
+	profileId: string;
+};
+
+export type TaskSolution = {
+	id: string;
+	profileId: string;
+	taskId: string;
+	status: TaskStatus;
+	attemptsCount: number;
+	lastAttemptAt: string;
+	solvedAt: string;
+	bestExecutionTime: number;
+	bestMemoryUsage: number;
+	solutionCode: string;
+	solutionLanguage: ProgrammingLanguage;
+	createdAt: string;
+	updatedAt: string;
+};
+
+export type GetTasksProfileSolutionsResponse = TaskSolution[];
 
 export interface ExecuteCodeRequest {
 	taskId: string;
@@ -66,8 +105,10 @@ export interface ExecuteCodeRequest {
 	profileId?: string;
 }
 
+export type OverallStatus = 'ERROR' | 'SUCCESS';
+
 export interface ExecuteCodeResponse {
-	overall_status: string;
+	overall_status: OverallStatus;
 	passed_tests: number;
 	total_tests: number;
 	success_rate: number;
@@ -89,3 +130,16 @@ export interface ExecuteCodeResponse {
 	language_id: number;
 	executed_at: string;
 }
+
+export type CreateOrEditTaskFormValues = Omit<
+	Task,
+	| 'slug'
+	| 'supportedLanguages'
+	| 'status'
+	| 'solutionSignature'
+	| 'mainCategory'
+	| 'testCases'
+	| 'canSolve'
+> & {
+	categoryCode: TaskCategoryCode;
+};

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Task } from '@/shared/config';
+import { i18Namespace, Tasks } from '@/shared/config';
 import { type SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -58,9 +58,9 @@ const TasksTablePage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Task.STUB_EMPTY_TASKS_ADMIN_TITLE),
-			subtitle: t(Task.STUB_EMPTY_TASKS_ADMIN_SUBTITLE),
-			buttonText: t(Task.STUB_EMPTY_TASKS_ADMIN_SUBMIT),
+			title: t(Tasks.STUB_EMPTY_TASKS_ADMIN_TITLE),
+			subtitle: t(Tasks.STUB_EMPTY_TASKS_ADMIN_SUBTITLE),
+			buttonText: t(Tasks.STUB_EMPTY_TASKS_ADMIN_SUBMIT),
 		},
 		error: {
 			onClick: refetchAllTasks,

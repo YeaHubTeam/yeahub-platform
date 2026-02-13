@@ -44,7 +44,12 @@ export const QuestionForm = () => {
 				</Text>
 				<FormControl name="title" control={control} label={t(Questions.TITLE_LABEL)}>
 					{(field, hasError) => (
-						<TextArea {...field} state={hasError ? 'error' : 'default'} className={styles.title} />
+						<TextArea
+							{...field}
+							state={hasError ? 'error' : 'default'}
+							className={styles.title}
+							placeholder={t(Questions.TITLE_PLACEHOLDER)}
+						/>
 					)}
 				</FormControl>
 			</Flex>
@@ -58,6 +63,7 @@ export const QuestionForm = () => {
 							id="description"
 							className={styles.description}
 							state={hasError ? 'error' : 'default'}
+							placeholder={t(Questions.DESCRIPTION_PLACEHOLDER)}
 							{...field}
 						/>
 					)}
