@@ -18,6 +18,7 @@ export type SkillSelectProps = Omit<
 	onChange: (value: number[]) => void;
 	selectedSpecializations?: number[];
 	hasMultiple?: boolean;
+	withSpecialization?: boolean;
 };
 
 export const SkillSelect = ({
@@ -25,6 +26,7 @@ export const SkillSelect = ({
 	value,
 	selectedSpecializations,
 	hasMultiple = true,
+	withSpecialization = true,
 	disabled,
 }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
@@ -39,7 +41,7 @@ export const SkillSelect = ({
 			specializations: selectedSpecializations,
 		},
 		{
-			skip: !hasSpecializations,
+			skip: withSpecialization && !hasSpecializations,
 		},
 	);
 
