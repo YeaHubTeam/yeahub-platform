@@ -11,6 +11,7 @@ import type { StubType } from '@/shared/ui/Stub/types';
 import { Text } from '@/shared/ui/Text';
 
 import { stubTestIds, titleByType, subtitleByType, buttonTextByType, imgByType } from './constants';
+import styles from './Stub.module.css';
 
 type StubProps = {
 	type: StubType;
@@ -32,18 +33,18 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const resolvedButtonType = type === 'filter-empty' ? 'outline' : 'primary';
 
 	return (
-		<Card withOutsideShadow className={classNames(className)}>
+		<Card withOutsideShadow className={classNames(styles.wrapper, className)}>
 			<Flex gap="20" justify="between" align="center" direction="column">
-				<img src={imgByType[type]} alt="" loading="lazy" className="img" />
+				<img src={imgByType[type]} alt="" loading="lazy" className={styles.img} />
 
 				{(resolvedTitle || resolvedSubtitle) && (
 					<Flex dataTestId={stubTestIds.container} gap="6" align="center" direction="column">
-						{resolvedTitle && (
+						{Boolean(resolvedTitle) && (
 							<Text dataTestId={stubTestIds.title} variant={titleVariant}>
 								{resolvedTitle}
 							</Text>
 						)}
-						{resolvedSubtitle && (
+						{Boolean(resolvedSubtitle) && (
 							<Text dataTestId={stubTestIds.subtitle} variant="body3">
 								{resolvedSubtitle}
 							</Text>
@@ -51,12 +52,13 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 					</Flex>
 				)}
 
-				{resolvedButtonText && (
+				{Boolean(resolvedButtonText) && (
 					<Button
 						size="large"
 						variant={resolvedButtonType}
 						onClick={onClick}
 						disabled={!onClick}
+						className={styles.button}
 						dataTestId={stubTestIds.button}
 					>
 						{resolvedButtonText}
