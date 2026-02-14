@@ -9,6 +9,9 @@
 	"date": "Date",
 	"duration": "Duration",
 	"clone.button": "Take again",
+	"empty.title": "It looks like the interview data is missing",
+	"empty.subtitle": "Try refreshing the page or retry the request",
+	"empty.button": "Retry",
 	"join.community": {
 		"title": "Grow with us!",
 		"description": "Become a YeaHub community member and unlock full platform access!",
