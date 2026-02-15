@@ -19,8 +19,11 @@ export const TaskCreateForm = () => {
 		mode: 'onTouched',
 		defaultValues: {
 			constraints: [''],
-			taskStructures: [{ languageId: 0, solutionStub: '', testFixture: '', isActive: true }],
+			taskStructures: [
+				{ languageId: 0, solutionStub: '', testFixture: '', preloadedCode: '', isActive: true },
+			],
 			difficulty: 3,
+			subscriptionLevel: 'free',
 		},
 	});
 

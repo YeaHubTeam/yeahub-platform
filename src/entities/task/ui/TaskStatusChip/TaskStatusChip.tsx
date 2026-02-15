@@ -12,7 +12,7 @@ interface TaskStatusChipProps {
 
 export const TaskStatusChip = ({ status, size = 'small' }: TaskStatusChipProps) => {
 	const { t } = useTranslation(i18Namespace.task);
-
+	console.log(status);
 	const statuses: Record<TaskStatus, StatusChipItem> = {
 		attempted: {
 			text: t(Tasks.STATUS_ATTEMPTED),
