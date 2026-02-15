@@ -113,6 +113,27 @@ export const TaskStructuresField = () => {
 								)}
 							/>
 						</FormField>
+						<FormField label={t(Tasks.TASK_STRUCTURES_PRELOADED_CODE)} direction="column">
+							<Controller
+								control={control}
+								name={`taskStructures.${index}.preloadedCode`}
+								render={({ field }) => (
+									<MonacoEditor
+										className={styles.editor}
+										defaultLanguage={languages[taskStructuresValues[index].languageId]}
+										value={field.value || ''}
+										onChange={field.onChange}
+										theme="vs-light"
+										options={{
+											minimap: { enabled: false },
+											scrollBeyondLastLine: false,
+											fontSize: 14,
+											readOnly: !languages[taskStructuresValues[index].languageId],
+										}}
+									/>
+								)}
+							/>
+						</FormField>
 						{taskStructures.length > 1 && (
 							<IconButton
 								className={styles.delete}

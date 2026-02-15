@@ -6,6 +6,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
+import { Radio } from '@/shared/ui/Radio';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextEditor } from '@/shared/ui/TextEditor';
@@ -57,6 +58,27 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 				<FormField description={t(Tasks.CATEGORY_SUBTITLE)} label={t(Tasks.CATEGORY_TITLE)}>
 					<FormControl className={styles.select} name="categoryCode" control={control}>
 						{({ onChange, value }) => <TaskCategorySelect onChange={onChange} value={value} />}
+					</FormControl>
+				</FormField>
+				<FormField
+					description={t(Tasks.SUBSCRIPTION_LEVEL_SUBTITLE)}
+					label={t(Tasks.SUBSCRIPTION_LEVEL_TITLE)}
+				>
+					<FormControl className={styles.select} name="subscriptionLevel" control={control}>
+						{({ onChange, value }) => (
+							<Flex gap="60">
+								<Radio
+									label={t(Tasks.SUBSCRIPTION_LEVEL_FREE)}
+									checked={value === 'free'}
+									onChange={() => onChange('free')}
+								/>
+								<Radio
+									label={t(Tasks.SUBSCRIPTION_LEVEL_PREMIUM)}
+									checked={value === 'premium'}
+									onChange={() => onChange('premium')}
+								/>
+							</Flex>
+						)}
 					</FormControl>
 				</FormField>
 				<FormField
