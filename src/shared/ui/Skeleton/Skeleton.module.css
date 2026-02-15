@@ -1,7 +1,11 @@
-.skeleton {
+.skeleton.default {
   background: linear-gradient(-90deg, var(--background-skeleton) 0%, var(--text-color-more-lightest) 50%, var(--background-skeleton) 100%);
   background-size: 400% 400%;
   animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.skeleton.blur {
+  filter: blur(4px);
 }
 
 @keyframes skeleton-loading {

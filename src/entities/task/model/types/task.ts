@@ -15,8 +15,11 @@ export interface TaskStructure {
 	languageId: number;
 	solutionStub: string;
 	testFixture: string;
+	preloadedCode?: string | null;
 	isActive: boolean;
 }
+
+export type TaskSubscriptionLevel = 'free' | 'premium';
 
 export interface Task {
 	id: string;
@@ -34,6 +37,7 @@ export interface Task {
 	timeLimit: number;
 	memoryLimit: number;
 	canSolve: boolean;
+	subscriptionLevel: TaskSubscriptionLevel;
 }
 
 export type TaskCategoryCode =

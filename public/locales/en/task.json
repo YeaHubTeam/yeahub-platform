@@ -1,6 +1,12 @@
 {
+	"banner": {
+		"beta": {
+			"title": "The functionality is in beta testing. If you encounter any errors, please contact support"
+		}
+	},
 	"title": {
-		"short": "Coding tasks"
+		"short": "Coding tasks",
+		"hide": "The task name is only available to users with a subscription"
 	},
 	"name": {
 		"title": "Name",
@@ -24,8 +30,9 @@
 	"test.cases": {
 		"title": "Test cases",
 		"subtitle": "Add test cases of the task",
-		"input": "Input data",
-		"expected.output": "Expected output",
+		"input": "Input data:",
+		"output": "Output:",
+		"expected.output": "Expected output:",
 		"hidden": "Active",
 		"add.button": "Add"
 	},
@@ -35,6 +42,7 @@
 		"language": "Programming language",
 		"solution.stub": "Solution code template",
 		"text.fixture": "Solution code testing template",
+		"preloaded.code": "Preloaded code",
 		"active": "Active",
 		"add.button": "Add"
 	},
@@ -63,6 +71,12 @@
 	},
 	"languages": {
 		"title": "Programming languages"
+	},
+	"subscription.level": {
+		"title": "Subscription level",
+		"subtitle": "Specify the required subscription level for access to the task",
+		"free": "For everyone",
+		"premium": "For members"
 	},
 	"status": {
 		"solved": "Solved",
@@ -129,7 +143,7 @@
 			"stub.subtitle": "To get the result, run your code",
 			"compilation.error": "Compilation error",
 			"runtime.output": "Result of the code execution",
-			"tests.passed": "Tests passed",
+			"tests.passed": "{{passed}}/{{total}} passed tests",
 			"success.rate": "Success rate",
 			"execution.time": "Execution time",
 			"memory.usage": "Memory usage"
