@@ -28,7 +28,7 @@ export const TaskTabs = ({ task }: TaskTabsProps) => {
 				Component: () => <TaskSolutions />,
 			},
 		],
-		[task],
+		[t, task],
 	);
 
 	const { activeTab, setActiveTab } = useTaskTabsQuery(tabs);

@@ -15,6 +15,7 @@ export const TaskCreateFormHeader = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const onCreateTask = async (data: CreateTaskFormValues) => {
+		console.log(data);
 		await createTaskMutation(data);
 	};
 

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 
 import { useAppSelector } from '@/shared/libs';
@@ -23,7 +23,6 @@ interface TaskPageContentProps {
 
 export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const profileId = useAppSelector(getProfileId);
-
 	const [executeCode, { isLoading: isExecuting }] = useExecuteCodeMutation();
 	const [testCode, { isLoading: isTesting }] = useTestCodeMutation();
 
@@ -33,9 +32,9 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 		task.supportedLanguages[0],
 	);
 
-	const taskStructure = useMemo(() => {
-		return task.taskStructures.find(({ languageId }) => languageId === selectedLanguage.id);
-	}, [selectedLanguage, task]);
+	const taskStructure = task.taskStructures.find(
+		({ languageId }) => languageId === selectedLanguage.id,
+	);
 
 	const onChangeSelectedLanguage = (languageId: number) => {
 		const selectedLanguage =

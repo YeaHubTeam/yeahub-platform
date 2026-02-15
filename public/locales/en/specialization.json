@@ -20,7 +20,18 @@
 		"empty": "No options available",
 		"selected": "Selected specializations"
 	},
-	"empty": "No specializations",
+	"empty": {
+		"list": {
+			"title": "It looks like there are no specializations here yet",
+			"button": "Add Specialization",
+			"description": "Create your first one and start adding content to the knowledge base"
+		},
+		"detail": {
+			"title": "It looks like there are no specialization data available",
+			"description": "Please try refreshing the page or repeat your request",
+			"button": "Try again"
+		}
+	},
 	"image": {
 		"src": "Image url",
 		"alt": "Image of specialization"
