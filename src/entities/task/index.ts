@@ -8,6 +8,7 @@ export type {
 	TaskCategory,
 	TaskCategoryCode,
 	CreateOrEditTaskFormValues,
+	TaskSubscriptionLevel,
 } from './model/types/task';
 export type { TasksFilterParams } from './model/types/filters';
 export { taskApiUrls } from './model/constants/task';

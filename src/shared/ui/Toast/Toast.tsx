@@ -18,7 +18,7 @@ interface ToastProps {
 	variant: ToastVariant;
 }
 
-const Toast = ({ currentToast, message, variant }: ToastProps) => {
+export const Toast = ({ currentToast, message, variant }: ToastProps) => {
 	const { t: tI18 } = useTranslation(i18Namespace.translation);
 
 	return (

@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { generatePath, Link } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
+import { i18Namespace, ROUTES, Tasks } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text } from '@/shared/ui/Text';
 
 import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
@@ -20,18 +22,26 @@ type TaskCardProps = {
 };
 
 export const TaskCard = ({ task, className }: TaskCardProps) => {
-	const { id, name, difficulty, mainCategory, status, supportedLanguages } = task;
-
+	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve } = task;
+	const { t } = useTranslation(i18Namespace.task);
 	const taskPath = generatePath(ROUTES.liveCoding.tasks.detail.page, { taskId: id });
 
 	return (
-		<Link to={taskPath} className={className}>
-			<Card withOutsideShadow className={styles.content}>
+		<Link
+			to={canSolve ? taskPath : ''}
+			className={className}
+			onClick={(e) => !canSolve && e.preventDefault()}
+		>
+			<Card withOutsideShadow className={styles.content} withHover={canSolve}>
 				<Flex direction="column" gap="20">
 					<Flex justify="between" align="start" gap="16">
-						<Text variant="body4" maxRows={2}>
-							{name}
-						</Text>
+						{canSolve ? (
+							<Text variant="body4" maxRows={2}>
+								{name}
+							</Text>
+						) : (
+							<Skeleton variant="blur" text={<Text variant="body4">{t(Tasks.TITLE_HIDE)}</Text>} />
+						)}
 					</Flex>
 
 					<Flex align="center" gap="10">

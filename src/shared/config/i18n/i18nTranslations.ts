@@ -445,7 +445,6 @@ export enum Specializations {
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
-	EMPTY = 'empty',
 	IMAGE_SRC = 'image.src',
 	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -463,6 +462,12 @@ export enum Specializations {
 	PROGRESS_TABLE_PROGRESS = 'progress.table.progress',
 	PROGRESS_TABLE_NUMBER = 'progress.table.number',
 	FILTER_IS_MY_TITLE = 'filter.is.my.title',
+	EMPTY_LIST_DESCRIPTION = 'empty.list.description',
+	EMPTY_LIST_TITLE = 'empty.list.title',
+	EMPTY_LIST_BUTTON = 'empty.list.button',
+	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
+	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
+	EMPTY_DETAIL_TITLE = 'empty.detail.title',
 }
 
 export enum Topics {
@@ -1347,7 +1352,9 @@ export enum ProgrammingLanguages {
 }
 
 export enum Tasks {
+	BANNER_BETA_TITLE = 'banner.beta.title',
 	TITLE_SHORT = 'title.short',
+	TITLE_HIDE = 'title.hide',
 	NAME_TITLE = 'name.title',
 	NAME_SUBTITLE = 'name.subtitle',
 	MEMORY_LIMIT_TITLE = 'memory.limit.title',
@@ -1362,6 +1369,7 @@ export enum Tasks {
 	TEST_CASES_TITLE = 'test.cases.title',
 	TEST_CASES_SUBTITLE = 'test.cases.subtitle',
 	TEST_CASES_INPUT = 'test.cases.input',
+	TEST_CASES_OUTPUT = 'test.cases.output',
 	TEST_CASES_EXPECTED_OUTPUT = 'test.cases.expected.output',
 	TEST_CASES_HIDDEN = 'test.cases.hidden',
 	TEST_CASES_ADD_BUTTON = 'test.cases.add.button',
@@ -1370,6 +1378,7 @@ export enum Tasks {
 	TASK_STRUCTURES_LANGUAGE = 'task.structures.language',
 	TASK_STRUCTURES_SOLUTION_STUB = 'task.structures.solution.stub',
 	TASK_STRUCTURES_TEXT_FIXTURE = 'task.structures.text.fixture',
+	TASK_STRUCTURES_PRELOADED_CODE = 'task.structures.preloaded.code',
 	TASK_STRUCTURES_ACTIVE = 'task.structures.active',
 	TASK_STRUCTURES_ADD_BUTTON = 'task.structures.add.button',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -1407,6 +1416,10 @@ export enum Tasks {
 	STATUS_SOLVED = 'status.solved',
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_SUBTITLE = 'description.subtitle',
+	SUBSCRIPTION_LEVEL_TITLE = 'subscription.level.title',
+	SUBSCRIPTION_LEVEL_SUBTITLE = 'subscription.level.subtitle',
+	SUBSCRIPTION_LEVEL_FREE = 'subscription.level.free',
+	SUBSCRIPTION_LEVEL_PREMIUM = 'subscription.level.premium',
 	CATEGORY_TITLE = 'category.title',
 	CATEGORY_SUBTITLE = 'category.subtitle',
 	CATEGORY_PLACEHOLDER = 'category.placeholder',

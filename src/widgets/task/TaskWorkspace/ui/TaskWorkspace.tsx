@@ -55,7 +55,7 @@ export const TaskWorkspace = ({
 			<Panel
 				panelRef={editorPanelRef}
 				defaultSize="100%"
-				minSize="116px"
+				minSize="400px"
 				style={{ padding: '20px' }}
 			>
 				<TaskEditor

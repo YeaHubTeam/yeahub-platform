@@ -10,16 +10,22 @@ export const useTaskTabsQuery = (tabs: Tab<TaskTabId>[]) => {
 	const [activeTab, setActiveTab] = useState<Tab<TaskTabId> | null>(null);
 
 	const tabFromQuery = searchParams.get('tab') as TaskTabId | null;
+	const targetTab = tabFromQuery ? tabs.find((tab) => tab.id === tabFromQuery) : tabs[0];
 
 	useEffect(() => {
 		if (tabs.length === 0) return;
 
-		const targetTab = tabFromQuery ? tabs.find((tab) => tab.id === tabFromQuery) : tabs[0];
-
 		if (targetTab && (!activeTab || activeTab.id !== targetTab.id)) {
 			setActiveTab(targetTab);
+			return;
 		}
-	}, [tabFromQuery, activeTab, tabs]);
+	}, [tabFromQuery, activeTab, tabs, targetTab]);
+
+	useEffect(() => {
+		if (targetTab) {
+			setActiveTab(targetTab);
+		}
+	}, [tabs, targetTab]);
 
 	const handleSetActiveTab = useCallback(
 		(tab: Tab<TaskTabId>) => {

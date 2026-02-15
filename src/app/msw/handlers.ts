@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
 import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
@@ -13,6 +14,7 @@ import { specializationsProgressHandlers } from '@/entities/specialization';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
+import { createCompanyHandlers } from '@/features/company/createCompany';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -53,4 +55,6 @@ export const handlers = [
 	...resourcesHandlers,
 	...usersRatingHandlers,
 	...topicHandlers,
+	...hhAnalyticsHandlers,
+	...createCompanyHandlers,
 ];

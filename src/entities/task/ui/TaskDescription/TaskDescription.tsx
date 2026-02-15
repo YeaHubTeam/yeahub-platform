@@ -20,6 +20,7 @@ type TaskDescriptionProps = {
 
 export const TaskDescription = ({ task }: TaskDescriptionProps) => {
 	const { t } = useTranslation(i18Namespace.task);
+
 	return (
 		<Flex direction="column" gap="20">
 			<Text variant="body6" isMainTitle>
