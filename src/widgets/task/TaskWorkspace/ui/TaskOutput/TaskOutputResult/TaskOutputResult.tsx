@@ -1,6 +1,10 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Tasks } from '@/shared/config';
+import ChatIcon from '@/shared/assets/icons/chat.svg';
+import { i18Namespace, Tasks, Translation } from '@/shared/config';
+import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
@@ -19,7 +23,7 @@ type TaskOutputResultProps = {
 };
 
 export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutputResultProps) => {
-	const { t } = useTranslation(i18Namespace.task);
+	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
 
 	if (!result) {
 		return (
@@ -30,6 +34,7 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 			/>
 		);
 	}
+	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
 
 	const hasError = result?.overall_status === 'ERROR';
 	const hasFailedTests = !testCases?.summary?.success;
@@ -65,6 +70,19 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 					{showResult && <TaskOutputTestCaseInfo testCase={showResult} />}
 				</>
 			)}
+			<Card withOutsideShadow withBorder>
+				<Flex direction="column" align="end" gap="20">
+					<Text variant="body3-strong">{t(Tasks.BANNER_BETA_TITLE)}</Text>
+					<Button
+						className={styles.support}
+						size="large"
+						preffix={<ChatIcon />}
+						onClick={openSupportTab}
+					>
+						{t(Translation.SUPPORT, { ns: i18Namespace.translation })}
+					</Button>
+				</Flex>
+			</Card>
 		</Flex>
 	);
 };

@@ -1,14 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 
-import ChatIcon from '@/shared/assets/icons/chat.svg';
-import { i18Namespace, Tasks, Translation } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
-import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
-import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
 
 import { getProfileId } from '@/entities/profile';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage';
@@ -30,7 +23,6 @@ interface TaskPageContentProps {
 
 export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const profileId = useAppSelector(getProfileId);
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.task]);
 	const [executeCode, { isLoading: isExecuting }] = useExecuteCodeMutation();
 	const [testCode, { isLoading: isTesting }] = useTestCodeMutation();
 
@@ -88,50 +80,31 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 		}
 	};
 
-	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
-
 	const handleReset = useCallback(() => {
 		setCode(taskStructure?.solutionStub || '');
 	}, [taskStructure]);
 
 	return (
-		<Flex direction="column" gap="20">
-			<Card>
-				<Flex align="center" gap="20" justify="between">
-					<Text variant="body5-strong">
-						{t(Tasks.BANNER_BETA_TITLE, { ns: i18Namespace.task })}
-					</Text>
-					<Button
-						className={styles.support}
-						size="large"
-						preffix={<ChatIcon />}
-						onClick={openSupportTab}
-					>
-						{t(Translation.SUPPORT)}
-					</Button>
-				</Flex>
-			</Card>
-			<Group orientation="horizontal" className={styles.page}>
-				<Panel defaultSize="50%" minSize="30%" maxSize="60%" style={{ padding: '20px' }}>
-					<TaskTabs task={task} />
-				</Panel>
-				<Separator className={styles['resize-handle']} />
-				<Panel minSize="40%">
-					<TaskWorkspace
-						code={code}
-						languageId={selectedLanguage.id}
-						supportedLanguages={task.supportedLanguages}
-						isExecuting={isExecuting}
-						isTesting={isTesting}
-						output={output}
-						onCodeChange={setCode}
-						onLanguageChange={onChangeSelectedLanguage}
-						onReset={handleReset}
-						onRun={handleRunCode}
-						onSubmit={handleExecuteCode}
-					/>
-				</Panel>
-			</Group>
-		</Flex>
+		<Group orientation="horizontal" className={styles.page}>
+			<Panel defaultSize="50%" minSize="30%" maxSize="60%" style={{ padding: '20px' }}>
+				<TaskTabs task={task} />
+			</Panel>
+			<Separator className={styles['resize-handle']} />
+			<Panel minSize="40%">
+				<TaskWorkspace
+					code={code}
+					languageId={selectedLanguage.id}
+					supportedLanguages={task.supportedLanguages}
+					isExecuting={isExecuting}
+					isTesting={isTesting}
+					output={output}
+					onCodeChange={setCode}
+					onLanguageChange={onChangeSelectedLanguage}
+					onReset={handleReset}
+					onRun={handleRunCode}
+					onSubmit={handleExecuteCode}
+				/>
+			</Panel>
+		</Group>
 	);
 };

@@ -2,5 +2,13 @@
   padding: 8px;
   border-radius: 8px;
   background-color: var(--color-red-100);
-	
+}
+
+.support {
+  min-width: 190px;
+}
+
+.support > svg {
+  width: 24px;
+  height: 24px;
 }
