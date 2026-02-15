@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 16px;
   height: 100%;
+  overflow: auto;
 }
 
 .content {

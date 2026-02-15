@@ -1352,7 +1352,9 @@ export enum ProgrammingLanguages {
 }
 
 export enum Tasks {
+	BANNER_BETA_TITLE = 'banner.beta.title',
 	TITLE_SHORT = 'title.short',
+	TITLE_HIDE = 'title.hide',
 	NAME_TITLE = 'name.title',
 	NAME_SUBTITLE = 'name.subtitle',
 	MEMORY_LIMIT_TITLE = 'memory.limit.title',
@@ -1367,6 +1369,7 @@ export enum Tasks {
 	TEST_CASES_TITLE = 'test.cases.title',
 	TEST_CASES_SUBTITLE = 'test.cases.subtitle',
 	TEST_CASES_INPUT = 'test.cases.input',
+	TEST_CASES_OUTPUT = 'test.cases.output',
 	TEST_CASES_EXPECTED_OUTPUT = 'test.cases.expected.output',
 	TEST_CASES_HIDDEN = 'test.cases.hidden',
 	TEST_CASES_ADD_BUTTON = 'test.cases.add.button',
@@ -1375,6 +1378,7 @@ export enum Tasks {
 	TASK_STRUCTURES_LANGUAGE = 'task.structures.language',
 	TASK_STRUCTURES_SOLUTION_STUB = 'task.structures.solution.stub',
 	TASK_STRUCTURES_TEXT_FIXTURE = 'task.structures.text.fixture',
+	TASK_STRUCTURES_PRELOADED_CODE = 'task.structures.preloaded.code',
 	TASK_STRUCTURES_ACTIVE = 'task.structures.active',
 	TASK_STRUCTURES_ADD_BUTTON = 'task.structures.add.button',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -1412,6 +1416,10 @@ export enum Tasks {
 	STATUS_SOLVED = 'status.solved',
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_SUBTITLE = 'description.subtitle',
+	SUBSCRIPTION_LEVEL_TITLE = 'subscription.level.title',
+	SUBSCRIPTION_LEVEL_SUBTITLE = 'subscription.level.subtitle',
+	SUBSCRIPTION_LEVEL_FREE = 'subscription.level.free',
+	SUBSCRIPTION_LEVEL_PREMIUM = 'subscription.level.premium',
 	CATEGORY_TITLE = 'category.title',
 	CATEGORY_SUBTITLE = 'category.subtitle',
 	CATEGORY_PLACEHOLDER = 'category.placeholder',

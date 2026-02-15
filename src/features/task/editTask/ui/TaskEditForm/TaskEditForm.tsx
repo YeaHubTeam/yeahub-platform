@@ -29,6 +29,7 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 		id,
 		timeLimit,
 		memoryLimit,
+		subscriptionLevel,
 	} = task;
 
 	const methods = useForm<EditTaskFormValues>({
@@ -44,9 +45,11 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 			memoryLimit,
 			timeLimit,
 			id,
+			subscriptionLevel,
 		},
 	});
-
+	console.log(methods.formState.errors);
+	console.log(methods.getValues());
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	const [editTopicMutation] = useEditTaskMutation();

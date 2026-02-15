@@ -1,0 +1,9 @@
+.stats {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--color-purple-50);
+}
+
+.error {
+  background-color: var(--color-red-100);
+}
