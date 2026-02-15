@@ -43,7 +43,7 @@ export const TaskEditor = ({
 	return (
 		<Flex direction="column" gap="16" className={styles.wrapper}>
 			<Card size="small" withOutsideShadow className={styles.header}>
-				<Flex align="center" justify="between" gap="24">
+				<Flex align="center" justify="between" gap="24" wrap="wrap">
 					<Flex gap="12" align="center">
 						<ProgrammingLanguageSelect
 							width={200}

@@ -21,3 +21,12 @@
 .resize-handle:hover {
   background-color: var(--color-purple-500);
 }
+
+.support {
+  min-width: 190px;
+}
+
+.support > svg {
+  width: 24px;
+  height: 24px;
+}

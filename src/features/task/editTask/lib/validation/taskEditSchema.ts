@@ -2,7 +2,12 @@ import * as yup from 'yup';
 
 import { i18n, Translation } from '@/shared/config';
 
-import { TaskCategoryCode, TaskDifficulty, TaskStructure } from '@/entities/task';
+import {
+	TaskCategoryCode,
+	TaskDifficulty,
+	TaskStructure,
+	TaskSubscriptionLevel,
+} from '@/entities/task';
 
 import { EditTaskFormValues } from '../../model/types/taskEditTypes';
 
@@ -17,6 +22,9 @@ export const taskEditSchema: yup.ObjectSchema<EditTaskFormValues> = yup.object()
 	categoryCode: yup.string<TaskCategoryCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	memoryLimit: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	timeLimit: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	subscriptionLevel: yup
+		.string<TaskSubscriptionLevel>()
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	constraints: yup
 		.array()
 		.of(yup.string().required())
@@ -38,6 +46,7 @@ export const taskEditSchema: yup.ObjectSchema<EditTaskFormValues> = yup.object()
 				languageId: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 				solutionStub: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 				testFixture: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+				preloadedCode: yup.string().optional().nullable(),
 				isActive: yup.boolean().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 			}),
 		)

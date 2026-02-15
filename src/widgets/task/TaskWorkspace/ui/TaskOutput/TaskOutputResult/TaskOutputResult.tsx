@@ -7,13 +7,18 @@ import { Text } from '@/shared/ui/Text';
 
 import type { ExecuteCodeResponse } from '@/entities/task';
 
+import { TaskTestCaseResult } from '../../../model/types/types';
+import { TaskOutputTestCaseInfo } from '../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
+
 import styles from './TaskOutputResult.module.css';
 
 type TaskOutputResultProps = {
 	result: ExecuteCodeResponse | null;
+	testCases: TaskTestCaseResult;
+	errorMessage: string;
 };
 
-export const TaskOutputResult = ({ result }: TaskOutputResultProps) => {
+export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutputResultProps) => {
 	const { t } = useTranslation(i18Namespace.task);
 
 	if (!result) {
@@ -26,49 +31,40 @@ export const TaskOutputResult = ({ result }: TaskOutputResultProps) => {
 		);
 	}
 
+	const hasError = result?.overall_status === 'ERROR';
+	const hasFailedTests = !testCases?.summary?.success;
+
+	const showResult = hasFailedTests
+		? testCases?.tests?.find((testCase) => testCase.status === 'FAIL')
+		: testCases?.tests?.[0];
+
 	return (
 		<Flex direction="column" gap="16">
-			{/*{result.compilation_error && (*/}
-			{/*	<div className={styles.error}>*/}
-			{/*		<Text variant="body3-strong" color="red-500">*/}
-			{/*			{t(Tasks.OUTPUT_RESULT_COMPILATION_ERROR)}:*/}
-			{/*		</Text>*/}
-			{/*		<pre className={styles.code}>{result.compilation_error}</pre>*/}
-			{/*	</div>*/}
-			{/*)}*/}
-
-			{/*{result.runtime_output && (*/}
-			{/*	<div className={styles.output}>*/}
-			{/*		<Text variant="body3-strong">{t(Tasks.OUTPUT_RESULT_RUNTIME_OUTPUT)}:</Text>*/}
-			{/*		<pre className={styles.code}>{result.runtime_output}</pre>*/}
-			{/*	</div>*/}
-			{/*)}*/}
-			<Text
-				variant="body5-accent"
-				color={result.overall_status === 'SUCCESS' ? 'green-800' : 'red-700'}
-			>
-				{t(
-					result.overall_status === 'SUCCESS'
-						? Tasks.TABLE_STATUS_SOLVED
-						: Tasks.TABLE_STATUS_NOT_SOLVED,
-				)}
-			</Text>
-			<Flex direction="column" gap="8" className={styles.stats}>
-				{/*<Text variant="body3-strong">*/}
-				{/*	{t(Tasks.OUTPUT_RESULT_TESTS_PASSED)}: {result.passed_tests}/{result.total_tests}*/}
-				{/*</Text>*/}
-				{/*<Text variant="body3">*/}
-				{/*	{t(Tasks.OUTPUT_RESULT_SUCCESS_RATE)}: {result.success_rate.toFixed(2)}%*/}
-				{/*</Text>*/}
-				<Text variant="body3">
-					{t(Tasks.OUTPUT_RESULT_EXECUTION_TIME)}:{' '}
-					{t(Tasks.TIME_LIMIT_VALUE, { count: result.total_execution_time || 0 })}
-				</Text>
-				<Text variant="body3">
-					{t(Tasks.OUTPUT_RESULT_MEMORY_USAGE)}:{' '}
-					{t(Tasks.MEMORY_LIMIT_VALUE, { count: result.average_memory_usage || 0 })}
-				</Text>
-			</Flex>
+			{hasError ? (
+				<>
+					<Text variant="body5-accent" color="red-700">
+						{t(Tasks.OUTPUT_TESTS_TEST_CASE_ERROR_MESSAGE)}
+					</Text>
+					<div className={styles.error}>{errorMessage}</div>
+				</>
+			) : (
+				<>
+					<Flex gap="12" align="center">
+						<Text variant="body5-accent" color={hasFailedTests ? 'red-700' : 'green-800'}>
+							{t(hasFailedTests ? Tasks.TABLE_STATUS_NOT_SOLVED : Tasks.TABLE_STATUS_SOLVED)}
+						</Text>
+						{testCases.summary.total > 0 && (
+							<Text variant="body3-accent" color="black-500">
+								{t(Tasks.OUTPUT_RESULT_TESTS_PASSED, {
+									passed: testCases.summary.passed,
+									total: testCases.summary.total,
+								})}
+							</Text>
+						)}
+					</Flex>
+					{showResult && <TaskOutputTestCaseInfo testCase={showResult} />}
+				</>
+			)}
 		</Flex>
 	);
 };
