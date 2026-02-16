@@ -6,22 +6,32 @@ import { QuestionStatus } from '@/entities/question';
 
 import { CreateQuestionFormValues } from '../../model/types/questionCreateTypes';
 
+const isEmptyHtml = (value: string | undefined): boolean => {
+	if (!value) return true;
+	const textOnly = value.replace(/<[^>]*>/g, '').trim();
+	return textOnly.length === 0;
+};
+
 export const questionCreateSchema: yup.ObjectSchema<CreateQuestionFormValues> = yup.object().shape({
 	title: yup
 		.string()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED))
+		.trim()
 		.max(255, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 255 })),
 	description: yup
 		.string()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED))
+		.trim()
 		.max(1000, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 1000 })),
 	shortAnswer: yup
 		.string()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED))
+		.test('is-not-empty', i18n.t(Translation.VALIDATION_REQUIRED), (value) => !isEmptyHtml(value))
 		.max(5000, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 5000 })),
 	longAnswer: yup
 		.string()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED))
+		.test('is-not-empty', i18n.t(Translation.VALIDATION_REQUIRED), (value) => !isEmptyHtml(value))
 		.max(10000, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 10000 })),
 	imageSrc: yup.string().nullable(),
 	code: yup.string().nullable(),

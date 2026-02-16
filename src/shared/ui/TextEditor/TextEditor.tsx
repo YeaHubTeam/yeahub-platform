@@ -1,3 +1,4 @@
+import CharacterCount from '@tiptap/extension-character-count';
 import Code from '@tiptap/extension-code';
 import Strike from '@tiptap/extension-strike';
 import TextAlign from '@tiptap/extension-text-align';
@@ -89,6 +90,7 @@ export const TextEditor = ({
 				types: ['heading', 'paragraph'],
 			}),
 			Strike,
+			...(limit ? [CharacterCount.configure({ limit })] : []),
 		],
 		editorProps: {
 			attributes: {

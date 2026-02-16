@@ -5,10 +5,10 @@ import { i18Namespace, Questions } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Range } from '@/shared/ui/Range';
-import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 import { TextEditor } from '@/shared/ui/TextEditor';
 
@@ -36,13 +36,15 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
+
 	return (
 		<Flex direction="column" gap="40">
-			<Flex direction="column">
-				<Text variant="body3-strong" color="black-800">
-					{t(Questions.TITLE_SHORT)}
-				</Text>
-				<FormControl name="title" control={control} label={t(Questions.TITLE_LABEL)}>
+			<FormField
+				label={t(Questions.TITLE_SHORT)}
+				description={t(Questions.TITLE_LABEL)}
+				direction="column"
+			>
+				<FormControl name="title" control={control}>
 					{(field, hasError) => (
 						<TextArea
 							{...field}
@@ -53,12 +55,14 @@ export const QuestionForm = () => {
 						/>
 					)}
 				</FormControl>
-			</Flex>
-			<Flex direction="column">
-				<Text variant="body3-strong" color="black-800">
-					{t(Questions.DESCRIPTION_TITLE)}
-				</Text>
-				<FormControl name="description" control={control} label={t(Questions.DESCRIPTION_LABEL)}>
+			</FormField>
+
+			<FormField
+				label={t(Questions.DESCRIPTION_TITLE)}
+				description={t(Questions.DESCRIPTION_LABEL)}
+				direction="column"
+			>
+				<FormControl name="description" control={control}>
 					{(field, hasError) => (
 						<TextArea
 							id="description"
@@ -70,42 +74,21 @@ export const QuestionForm = () => {
 						/>
 					)}
 				</FormControl>
-			</Flex>
-			<Flex gap="32">
-				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.RATE_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.RATE_LABEL)}
-					</Text>
-				</Flex>
+			</FormField>
+
+			<FormField label={t(Questions.RATE_TITLE)} description={t(Questions.RATE_LABEL)}>
 				<FormControl name="rate" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
 				</FormControl>
-			</Flex>
-			<Flex gap="32">
-				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.COMPLEXITY_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.COMPLEXITY_LABEL)}
-					</Text>
-				</Flex>
+			</FormField>
+
+			<FormField label={t(Questions.COMPLEXITY_TITLE)} description={t(Questions.COMPLEXITY_LABEL)}>
 				<FormControl name="complexity" control={control} className={styles.rate}>
 					{(field) => <Range min={1} max={10} step={1} hasScale {...field} />}
 				</FormControl>
-			</Flex>
-			<Flex gap="32">
-				<Flex direction="column" justify="center" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.STATUS_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.STATUS_LABEL)}
-					</Text>
-				</Flex>
+			</FormField>
+
+			<FormField label={t(Questions.STATUS_TITLE)} description={t(Questions.STATUS_LABEL)}>
 				<FormControl name="status" control={control}>
 					{({ onChange, value }) => (
 						<Dropdown
@@ -121,16 +104,12 @@ export const QuestionForm = () => {
 						</Dropdown>
 					)}
 				</FormControl>
-			</Flex>
-			<Flex gap="32">
-				<Flex direction="column" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.SPECIALIZATION_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.SPECIALIZATION_LABEL)}
-					</Text>
-				</Flex>
+			</FormField>
+
+			<FormField
+				label={t(Questions.SPECIALIZATION_TITLE)}
+				description={t(Questions.SPECIALIZATION_LABEL)}
+			>
 				<FormControl name="specializations" control={control}>
 					{({ onChange, value, onBlur }) => (
 						<div className={styles.select}>
@@ -138,18 +117,10 @@ export const QuestionForm = () => {
 						</div>
 					)}
 				</FormControl>
-			</Flex>
-			{selectedSpecializations?.length ? (
-				<Flex gap="32">
-					<Flex direction="column" className={styles.titles}>
-						<Text variant="body3-strong" color="black-800">
-							{t(Questions.SKILLS_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Questions.SKILLS_LABEL)}
-						</Text>
-					</Flex>
+			</FormField>
 
+			{selectedSpecializations?.length ? (
+				<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
 					<FormControl name="skills" control={control}>
 						{({ onChange, value, onBlur }) => (
 							<div className={styles.select}>
@@ -162,17 +133,10 @@ export const QuestionForm = () => {
 							</div>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 			) : null}
-			<Flex gap="32">
-				<Flex direction="column" className={styles.titles}>
-					<Text variant="body3-strong" color="black-800">
-						{t(Questions.KEYWORDS_TITLE)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Questions.KEYWORDS_LABEL)}
-					</Text>
-				</Flex>
+
+			<FormField label={t(Questions.KEYWORDS_TITLE)} description={t(Questions.KEYWORDS_LABEL)}>
 				<FormControl name="keywords" control={control}>
 					{({ onChange, value, onBlur }) => {
 						const currentKeywords = Array.isArray(value) ? value : [];
@@ -205,12 +169,14 @@ export const QuestionForm = () => {
 						);
 					}}
 				</FormControl>
-			</Flex>
-			<Flex direction="column">
-				<Text variant="body3-strong" color="black-800">
-					{t(Questions.SHORT_ANSWER_TITLE)}
-				</Text>
-				<FormControl name="shortAnswer" control={control} label={t(Questions.SHORT_ANSWER_LABEL)}>
+			</FormField>
+
+			<FormField
+				label={t(Questions.SHORT_ANSWER_TITLE)}
+				description={t(Questions.SHORT_ANSWER_LABEL)}
+				direction="column"
+			>
+				<FormControl name="shortAnswer" control={control}>
 					{(field) => (
 						<TextEditor
 							id="shortAnswer"
@@ -222,12 +188,14 @@ export const QuestionForm = () => {
 						/>
 					)}
 				</FormControl>
-			</Flex>
-			<Flex direction="column">
-				<Text variant="body3-strong" color="black-800">
-					{t(Questions.LONG_ANSWER_TITLE)}
-				</Text>
-				<FormControl name="longAnswer" control={control} label={t(Questions.LONG_ANSWER_LABEL)}>
+			</FormField>
+
+			<FormField
+				label={t(Questions.LONG_ANSWER_TITLE)}
+				description={t(Questions.LONG_ANSWER_LABEL)}
+				direction="column"
+			>
+				<FormControl name="longAnswer" control={control}>
 					{(field) => (
 						<TextEditor
 							id="longAnswer"
@@ -239,7 +207,7 @@ export const QuestionForm = () => {
 						/>
 					)}
 				</FormControl>
-			</Flex>
+			</FormField>
 		</Flex>
 	);
 };
