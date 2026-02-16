@@ -18,11 +18,14 @@ import { resourcesRequestsTabActions } from '../../../model/slice/resourcesReque
 import { ResourceRequestsTable } from '../../ResourceRequestsTable/ResourceRequestsTable';
 
 import styles from './ResourcesRequestsTab.module.css';
+import { useTranslation } from 'react-i18next';
+import { Resources } from '@/shared/config';
 
 export const ResourcesRequestsTab = () => {
 	const dispatch = useAppDispatch();
 	const selectedResourceRequests = useSelector(getResourcesRequestsTabSelected);
 	const userId = useAppSelector(getUserId);
+	const { t } = useTranslation('resources');
 
 	const {
 		filters,
@@ -72,15 +75,15 @@ export const ResourcesRequestsTab = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: 'Похоже здесь пока нет заявок на ресурсы',
-			subtitle: 'Как только создадут первую заявку, она здесь отобразится',
+			title: t(Resources.STUB_EMPTY_RESOURCE_REQUESTS_TITLE),
+			subtitle: t(Resources.STUB_EMPTY_RESOURCE_REQUESTS_SUBTITLE),
 		},
 
 		'filter-empty': {
 			onClick: onResetFilters,
 		},
 		error: {
-			onClick: () => refetch(),
+			onClick: refetch,
 		},
 	};
 
@@ -91,6 +94,7 @@ export const ResourcesRequestsTab = () => {
 			hasFilters={hasRealFilters && !isSearching}
 			hasData={hasData}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,

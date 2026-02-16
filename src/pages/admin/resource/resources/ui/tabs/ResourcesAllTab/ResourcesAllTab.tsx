@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Resources } from '@/shared/config';
+import { i18Namespace, Resources, ROUTES } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -26,7 +26,7 @@ export const ResourcesAllTab = () => {
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
-	const { t } = useTranslation('resources');
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const {
 		onChangeTitle,
@@ -42,8 +42,9 @@ export const ResourcesAllTab = () => {
 	const {
 		data: resources,
 		isLoading,
-		error,
+		isError,
 		refetch,
+		isFetching,
 	} = useGetResourcesListQuery({
 		page: filters.page,
 		name: filters.title,
@@ -74,30 +75,29 @@ export const ResourcesAllTab = () => {
 			title: t(Resources.STUB_EMPTY_RESOURCES_TITLE),
 			subtitle: t(Resources.STUB_EMPTY_RESOURCES_SUBTITLE),
 			buttonText: t(Resources.STUB_EMPTY_RESOURCES_SUBMIT),
-			onClick: () => navigate('/admin/resources/create'),
+			onClick: () => navigate(ROUTES.admin.resources.create.page),
 		},
 		error: {
-			buttonText: 'Повторить попытку',
-			onClick: () => refetch(),
+			onClick: refetch,
 		},
 		'filter-empty': {
-			buttonText: 'Сбросить фильтры',
 			onClick: onResetFilters,
 		},
 	};
 
-	const hasData = (resources?.data?.length || 0) > 0;
-	const hasError = !!error;
+	const hasData = !!resources && (resources.data?.length ?? 0) > 0;
+	const hasError = !!isError;
 
-	const pageWrapperHasFilters = hasRealFilters;
+	const pageWrapperHasFilters = hasRealFilters && !hasSearch;
 
 	return (
 		<PageWrapper
-			isLoading={isLoading}
+			isLoading={isLoading || isFetching}
 			hasFilters={pageWrapperHasFilters}
 			hasData={hasData}
 			hasError={hasError}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,
