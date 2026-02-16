@@ -5,6 +5,7 @@ import { useScreenSize } from '@/shared/libs';
 
 import { Banner } from './Banner';
 import { BannerSkeleton } from './Banner.skeleton';
+import { bannerTestIds } from './constants';
 
 jest.mock('@/shared/libs', () => ({
 	useScreenSize: jest.fn(),
@@ -12,42 +13,47 @@ jest.mock('@/shared/libs', () => ({
 
 const mockedUseScreenSize = useScreenSize as jest.Mock;
 
-describe('Banner', () => {
-	beforeEach(() => {
-		mockedUseScreenSize.mockReturnValue({
-			isLargeScreen: false,
-			isLaptop: false,
-		});
+beforeEach(() => {
+	mockedUseScreenSize.mockReturnValue({
+		isLargeScreen: false,
+		isLaptop: false,
 	});
+});
 
+describe('Banner image', () => {
 	test('renders an image with the required src and alt', () => {
 		render(<Banner img="/img.png" alt="banner" />);
 
-		const img = screen.getByAltText('banner');
+		const img = screen.getByTestId(bannerTestIds.image);
 		expect(img).toBeInTheDocument();
 		expect(img).toHaveAttribute('src', '/img.png');
+		expect(img).toHaveAttribute('alt', 'banner');
 	});
 
 	test('uses empty alt when alt is not provided', () => {
 		render(<Banner img="/img.png" />);
 
-		const img = screen.getByRole('img');
+		const img = screen.getByTestId(bannerTestIds.image);
 		expect(img).toHaveAttribute('alt', '');
 	});
+});
 
+describe('Banner', () => {
 	test('renders the title and description with the correct text color', () => {
 		render(<Banner img="/img.png" title="Title" description="Description" color="white" />);
 
-		expect(screen.getByText('Title')).toBeInTheDocument();
-		expect(screen.getByText('Description')).toBeInTheDocument();
+		const title = screen.getByTestId(bannerTestIds.title);
+		const description = screen.getByTestId(bannerTestIds.description);
 
-		expect(screen.getByText('Title')).toHaveClass('text-black-900');
+		expect(title).toBeInTheDocument();
+		expect(description).toBeInTheDocument();
+		expect(title).toHaveClass('text-black-900');
 	});
 
 	test('uses titleVariant if passed', () => {
 		render(<Banner img="/img.png" title="Title" titleVariant="body1" />);
 
-		const title = screen.getByText('Title');
+		const title = screen.getByTestId(bannerTestIds.title);
 
 		expect(title).toBeInTheDocument();
 		expect(title).toHaveClass('body1');
@@ -61,7 +67,7 @@ describe('Banner', () => {
 
 		render(<Banner img="/img.png" title="title" />);
 
-		const title = screen.getByText('title');
+		const title = screen.getByTestId(bannerTestIds.title);
 		expect(title).toBeInTheDocument();
 		expect(title).toHaveClass('body6');
 	});
@@ -74,7 +80,7 @@ describe('Banner', () => {
 
 		render(<Banner img="/img.png" title="Laptop title" />);
 
-		const title = screen.getByText('Laptop title');
+		const title = screen.getByTestId(bannerTestIds.title);
 		expect(title).toBeInTheDocument();
 		expect(title).toHaveClass('body6');
 	});
@@ -87,7 +93,7 @@ describe('Banner', () => {
 
 		render(<Banner img="/img.png" title="Mobile title" />);
 
-		const title = screen.getByText('Mobile title');
+		const title = screen.getByTestId(bannerTestIds.title);
 		expect(title).toBeInTheDocument();
 		expect(title).toHaveClass('body5-accent');
 	});
@@ -95,8 +101,8 @@ describe('Banner', () => {
 	test('Does not render title and description if there are no props', () => {
 		render(<Banner img="/img.png" />);
 
-		expect(screen.queryByText('Title')).toBeNull();
-		expect(screen.queryByText('Description')).toBeNull();
+		expect(screen.queryByTestId(bannerTestIds.title)).toBeNull();
+		expect(screen.queryByTestId(bannerTestIds.description)).toBeNull();
 	});
 
 	test('renders the button and calls onButtonClick when clicked', async () => {
@@ -105,7 +111,7 @@ describe('Banner', () => {
 
 		render(<Banner img="/img.png" buttonLabel="Click me" onButtonClick={onButtonClick} />);
 
-		const button = screen.getByRole('button', { name: 'Click me' });
+		const button = screen.getByTestId(bannerTestIds.button);
 		expect(button).toBeInTheDocument();
 
 		await user.click(button);
@@ -116,13 +122,13 @@ describe('Banner', () => {
 	test('does not render the button if buttonLabel is not passed', () => {
 		render(<Banner img="/img.png" />);
 
-		expect(screen.queryByRole('button', { name: /.+/ })).toBeNull();
+		expect(screen.queryByTestId(bannerTestIds.button)).toBeNull();
 	});
 
 	test('Applies the alarm class to the image if className="alarm"', () => {
 		render(<Banner img="/img.png" className="alarm" />);
 
-		const img = screen.getByRole('img');
+		const img = screen.getByTestId(bannerTestIds.image);
 		expect(img).toHaveClass('alarm-img');
 	});
 
@@ -136,18 +142,18 @@ describe('Banner', () => {
 			/>,
 		);
 
-		const inner = screen.getByText('Button').previousSibling;
+		const inner = screen.getByTestId(bannerTestIds.innerWrapper);
 		expect(inner).toHaveClass('inner-wrap');
 
-		const button = screen.getByRole('button', { name: 'Button' });
+		const button = screen.getByTestId(bannerTestIds.button);
 		expect(button).toHaveClass('btn-class');
 	});
 
 	test('uses violet background and white text when color is violet', () => {
 		render(<Banner img="/img.png" title="Title" color="violet" />);
 
-		const wrapper = screen.getAllByTestId('Flex')[0];
-		const title = screen.getByText('Title');
+		const wrapper = screen.getByTestId(bannerTestIds.wrapper);
+		const title = screen.getByTestId(bannerTestIds.title);
 
 		expect(title).toHaveClass('text-white-900');
 		expect(wrapper).toHaveClass('violet');
@@ -156,7 +162,7 @@ describe('Banner', () => {
 	test('renders wrapper with default white background when color not provided', () => {
 		render(<Banner img="/img.png" title="Default color" />);
 
-		const wrapper = screen.getAllByTestId('Flex')[0];
+		const wrapper = screen.getByTestId(bannerTestIds.wrapper);
 		expect(wrapper).toHaveClass('white');
 	});
 });
@@ -165,7 +171,7 @@ describe('BannerSkeleton', () => {
 	test('renders BannerSkeleton on page', () => {
 		render(<BannerSkeleton />);
 
-		const skeleton = screen.getAllByTestId('Flex')[0];
+		const skeleton = screen.getByTestId(bannerTestIds.skeleton);
 		expect(skeleton).toBeInTheDocument();
 	});
 });
