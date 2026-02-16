@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import { Resources } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -19,25 +22,29 @@ import { ResourcesTable } from '../../ResourcesTable/ResourcesTable';
 import styles from './ResourcesAllTab.module.css';
 
 export const ResourcesAllTab = () => {
+	const navigate = useNavigate();
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
+	const { t } = useTranslation('resources');
 
 	const {
 		onChangeTitle,
 		filters,
 		onChangePage,
 		onResetFilters,
-		hasFilters,
 		onChangeSkills,
 		onChangeTypes,
 		onChangeSpecialization,
 		onChangeIsMy,
-	} = useResourcesFilters({
-		page: 1,
-	});
+	} = useResourcesFilters({ page: 1 });
 
-	const { data: resources, isLoading } = useGetResourcesListQuery({
+	const {
+		data: resources,
+		isLoading,
+		error,
+		refetch,
+	} = useGetResourcesListQuery({
 		page: filters.page,
 		name: filters.title,
 		skills: filters.skills,
@@ -48,24 +55,48 @@ export const ResourcesAllTab = () => {
 
 	const resourcesWithEditFlags = useMemo(() => {
 		if (!resources?.data) return [];
-
-		return resources?.data.map((resource) => ({
+		return resources.data.map((resource) => ({
 			...resource,
 			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource?.createdBy.id }),
 		}));
 	}, [resources, userId, isAuthor]);
 
+	const hasRealFilters =
+		(filters.skills?.length ?? 0) > 0 ||
+		(filters.types?.length ?? 0) > 0 ||
+		filters.specialization != null ||
+		filters.isMy === true;
+
+	const hasSearch = (filters.title?.trim()?.length ?? 0) > 0;
+
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Resources.STUB_EMPTY_RESOURCES_TITLE),
+			subtitle: t(Resources.STUB_EMPTY_RESOURCES_SUBTITLE),
+			buttonText: t(Resources.STUB_EMPTY_RESOURCES_SUBMIT),
+			onClick: () => navigate('/admin/resources/create'),
+		},
+		error: {
+			buttonText: 'Повторить попытку',
+			onClick: () => refetch(),
+		},
 		'filter-empty': {
+			buttonText: 'Сбросить фильтры',
 			onClick: onResetFilters,
 		},
 	};
 
+	const hasData = (resources?.data?.length || 0) > 0;
+	const hasError = !!error;
+
+	const pageWrapperHasFilters = hasRealFilters;
+
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasFilters={hasFilters}
-			hasData={(resources?.data || []).length > 0}
+			hasFilters={pageWrapperHasFilters}
+			hasData={hasData}
+			hasError={hasError}
 			stubs={stubs}
 			paginationOptions={{
 				page: filters.page || 1,
@@ -82,7 +113,7 @@ export const ResourcesAllTab = () => {
 						showRemoveButton={selectedResources.length > 0}
 						onSearch={onChangeTitle}
 						searchValue={filters.title}
-						hasFilters={hasFilters}
+						hasFilters={pageWrapperHasFilters || hasSearch}
 						renderFilter={() => (
 							<ResourcesFilters
 								filters={filters}
@@ -95,10 +126,8 @@ export const ResourcesAllTab = () => {
 						)}
 					/>
 					<Card className={styles.content}>
-						<>
-							{content}
-							{pagination}
-						</>
+						{content}
+						{pagination}
 					</Card>
 				</Flex>
 			)}

@@ -48,23 +48,48 @@ export const ResourcesRequestsTab = () => {
 		authorId: filters.isMy ? userId : undefined,
 	};
 
-	const { data: resourceRequests, isLoading } = useGetResourceRequestsQuery(queryArgs);
+	const {
+		data: resourceRequests,
+		isLoading,
+		error,
+		refetch,
+	} = useGetResourceRequestsQuery(queryArgs);
 
 	const onSelectResourceRequests = (ids: SelectedResourceRequestEntities) => {
 		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests(ids));
 	};
 
+	const hasRealFilters =
+		filters.status !== 'all' ||
+		(filters.types?.length ?? 0) > 0 ||
+		(filters.skills?.length ?? 0) > 0 ||
+		filters.isMy === true;
+
+	const hasData = (resourceRequests?.data?.length || 0) > 0;
+	const hasError = !!error;
+
+	const isSearching = (filters.title?.trim().length ?? 0) > 0;
+
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: 'Похоже здесь пока нет заявок на ресурсы',
+			subtitle: 'Как только создадут первую заявку, она здесь отобразится',
+		},
+
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		error: {
+			onClick: () => refetch(),
 		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
-			hasFilters={hasFilters}
-			hasData={(resourceRequests?.data || []).length > 0}
+			hasError={hasError}
+			hasFilters={hasRealFilters && !isSearching}
+			hasData={hasData}
 			stubs={stubs}
 			paginationOptions={{
 				page: filters.page || 1,
