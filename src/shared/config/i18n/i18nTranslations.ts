@@ -750,6 +750,9 @@ export enum InterviewHistory {
 	NO_PREMIUM = 'no.premium',
 	PREV_MONTH = 'prev.month',
 	NEXT_MONTH = 'next.month',
+	EMPTY_TITLE = 'empty.title',
+	EMPTY_DESCRIPTION = 'empty.description',
+	EMPTY_BUTTON = 'empty.button',
 }
 
 export enum Main {

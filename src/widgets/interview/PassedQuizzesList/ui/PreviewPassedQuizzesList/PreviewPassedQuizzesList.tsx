@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, InterviewHistory, Profile, Subscription } from '@/shared/config';
 import {
@@ -8,6 +9,7 @@ import {
 	SELECT_TARIFF_SETTINGS_TAB,
 	useAppSelector,
 } from '@/shared/libs';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -30,6 +32,7 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 	const profileId = useAppSelector(getProfileId);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const isVerified = fullProfile?.isVerified;
+	const navigate = useNavigate();
 	const { t } = useTranslation([
 		i18Namespace.interviewHistory,
 		i18Namespace.profile,
@@ -90,9 +93,21 @@ export const PreviewPassedQuizzesList = ({ className }: InterviewHistoryListProp
 				</Text>
 			)}
 			{isEmptyData && isVerified && (
-				<Text variant="body4" color="black-700" className={styles['no-history']}>
-					{t(InterviewHistory.EMPTY)}
-				</Text>
+				<Flex direction="column" align="center" gap="16" className={styles.empty}>
+					<Text variant="body4" color="black-700" className={styles['empty-title']}>
+						{t(InterviewHistory.EMPTY_TITLE)}
+					</Text>
+					<Text variant="body4" color="black-500" className={styles['empty-description']}>
+						{t(InterviewHistory.EMPTY_DESCRIPTION)}
+					</Text>
+					<Button
+						variant="primary"
+						size="small"
+						onClick={() => navigate(ROUTES.interview.quiz.page)}
+					>
+						{t(InterviewHistory.EMPTY_BUTTON)}
+					</Button>
+				</Flex>
 			)}
 			{!hasPremium && isVerified && (
 				<Text variant="body4" color="black-700" className={styles['no-history']}>
