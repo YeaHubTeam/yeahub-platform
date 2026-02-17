@@ -1,3 +1,7 @@
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { i18Namespace, ROUTES, User } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -13,6 +17,8 @@ import { UsersTable } from '../UsersTable/UsersTable';
 import styles from './UsersTablePage.module.css';
 
 export const UsersTablePage = () => {
+	const { t } = useTranslation([i18Namespace.user]);
+	const navigate = useNavigate();
 	const {
 		filters,
 		hasFilters,
@@ -25,7 +31,12 @@ export const UsersTablePage = () => {
 		page: 1,
 	});
 
-	const { data: users, isLoading } = useGetUsersListQuery({
+	const {
+		data: users,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetUsersListQuery({
 		page: filters.page,
 		search: filters.search,
 		isVerified: filters.isVerified || undefined,
@@ -34,18 +45,29 @@ export const UsersTablePage = () => {
 	});
 
 	const userData = users?.data ?? [];
+	const hasData = userData.length > 0;
 
 	const stubs: PageWrapperStubs = {
+		error: {
+			onClick: refetch,
+		},
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		empty: {
+			subtitle: t(User.STUB_EMPTY_USERS_SUBTITLE),
+			title: t(User.STUB_EMPTY_USERS_TITLE),
+			buttonText: t(User.STUB_EMPTY_USERS_SUBMIT),
+			onClick: () => navigate(ROUTES.admin.users.page),
 		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
+			hasError={isError}
 			hasFilters={hasFilters}
-			hasData={userData.length > 0}
+			hasData={hasData}
 			stubs={stubs}
 			paginationOptions={{
 				page: filters.page || 1,

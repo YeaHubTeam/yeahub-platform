@@ -33,6 +33,20 @@
 		"empty": "No options available",
 		"selected": "Selected specializations"
 	},
+	"stub": {
+		"empty": {
+			"users": {
+				"title": "No users found yet",
+				"subtitle": "Once the first user registers, they will be displayed here",
+				"submit": "Reset filters"
+			},
+			"user": {
+				"title": "No user data available",
+				"subtitle": "Please refresh the page or try the request again",
+				"submit": "Retry"
+			}
+		}
+	},
 	"filter": {
 		"role": {
 			"title": "User Roles"
