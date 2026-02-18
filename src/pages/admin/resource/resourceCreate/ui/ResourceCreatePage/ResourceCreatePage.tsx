@@ -1,4 +1,5 @@
 import { ResourceCreateForm } from '@/features/resources/createResource';
+
 import { PageWrapper } from '@/widgets/PageWrapper';
 
 const ResourceCreatePage = () => {

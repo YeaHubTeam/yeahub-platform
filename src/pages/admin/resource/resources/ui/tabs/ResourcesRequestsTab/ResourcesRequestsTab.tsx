@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { Resources } from '@/shared/config';
 import { useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -18,8 +20,6 @@ import { resourcesRequestsTabActions } from '../../../model/slice/resourcesReque
 import { ResourceRequestsTable } from '../../ResourceRequestsTable/ResourceRequestsTable';
 
 import styles from './ResourcesRequestsTab.module.css';
-import { useTranslation } from 'react-i18next';
-import { Resources } from '@/shared/config';
 
 export const ResourcesRequestsTab = () => {
 	const dispatch = useAppDispatch();

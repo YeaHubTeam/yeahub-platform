@@ -1,11 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+
+import { i18Namespace, Resources } from '@/shared/config';
 
 import { useGetResourceRequestByIdQuery } from '@/entities/resource';
 
-import { ResourceRequestViewForm } from '../ResourceRequestViewForm/ResourceRequestViewForm';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
-import { useTranslation } from 'react-i18next';
-import { Resources } from '@/shared/config';
+
+import { ResourceRequestViewForm } from '../ResourceRequestViewForm/ResourceRequestViewForm';
 
 const ResourceRequestViewPage = () => {
 	const { resourceId } = useParams<{ resourceId: string }>();
@@ -17,7 +19,7 @@ const ResourceRequestViewPage = () => {
 		refetch,
 	} = useGetResourceRequestByIdQuery(resourceId || '');
 
-	const { t } = useTranslation('resources');
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -30,12 +32,13 @@ const ResourceRequestViewPage = () => {
 			onClick: refetch,
 		},
 	};
+	const hasData = !!resource && Object.keys(resource).length > 0;
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
-			hasData={!!resource}
+			hasData={hasData}
 			stubs={stubs}
 			roles={['admin', 'author']}
 			content={resource ? <ResourceRequestViewForm resource={resource} /> : null}

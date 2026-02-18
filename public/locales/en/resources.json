@@ -96,16 +96,16 @@
 				"subtitle": "Create your first useful resource and start adding content to the knowledge base",
 				"submit": "Add resource"
 			},
-			"resourceDetail": {
+			"resource.detail": {
 				"title": "It looks like resource data is missing",
 				"subtitle": "Try refreshing the page or retry the request",
 				"submit": "Retry"
 			},
-			"resourceRequests": {
+			"resource.requests": {
 				"title": "It looks like there are no resoruce requests yet",
 				"subtitle": "Once the first requests is created, it will appear here"
 			},
-			"resourceRequestsDetail": {
+			"resource.request.detail": {
 				"title": "It seems the resource requests data is missing",
 				"subtitle": "Try refreshing the page or retry the requests",
 				"submit": "Retry"

@@ -1,22 +1,24 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
-import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
-import { ResourceEditButton } from '@/features/resources/editResource';
-import { ResourcePageSkeleton } from './ResourcePage.skeleton';
-import { useGetResourceByIdQuery, isResourceDisabled } from '@/entities/resource';
-import { getIsAuthor, getUserId } from '@/entities/profile';
-import { ResourcePageContent } from '../RecourcePageContent/ResourcePageContent';
-import { Resources, ROUTES } from '@/shared/config';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { i18Namespace, Resources, ROUTES } from '@/shared/config';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
+
+import { getIsAuthor, getUserId } from '@/entities/profile';
+import { useGetResourceByIdQuery, isResourceDisabled } from '@/entities/resource';
+
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
+import { ResourcePageContent } from '../RecourcePageContent/ResourcePageContent';
+
+import { ResourcePageSkeleton } from './ResourcePage.skeleton';
 
 export const ResourcePage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const { resourceId } = useParams<{ resourceId: string }>();
 	const navigate = useNavigate();
-	const { t } = useTranslation('resources');
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const isAuthor = useSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
@@ -66,19 +68,7 @@ export const ResourcePage = () => {
 				)
 			}
 		>
-			{({ content }) => (
-				<>
-					<BackHeader>
-						{resource && (
-							<>
-								<DeleteResourceButton resourceId={resource.id} isDetailPage disabled={isDisabled} />
-								<ResourceEditButton resourceId={resource.id} isDisabled={isDisabled} />
-							</>
-						)}
-					</BackHeader>
-					{content}
-				</>
-			)}
+			{({ content }) => <>{content}</>}
 		</PageWrapper>
 	);
 };
