@@ -31,6 +31,7 @@ export const ResourcesAllTab = () => {
 	const {
 		onChangeTitle,
 		filters,
+		hasFilters,
 		onChangePage,
 		onResetFilters,
 		onChangeSkills,
@@ -62,14 +63,6 @@ export const ResourcesAllTab = () => {
 		}));
 	}, [resources, userId, isAuthor]);
 
-	const hasRealFilters =
-		(filters.skills?.length ?? 0) > 0 ||
-		(filters.types?.length ?? 0) > 0 ||
-		filters.specialization != null ||
-		filters.isMy === true;
-
-	const hasSearch = (filters.title?.trim()?.length ?? 0) > 0;
-
 	const stubs: PageWrapperStubs = {
 		empty: {
 			title: t(Resources.STUB_EMPTY_RESOURCES_TITLE),
@@ -88,12 +81,10 @@ export const ResourcesAllTab = () => {
 	const hasData = !!resources && (resources.data?.length ?? 0) > 0;
 	const hasError = !!isError;
 
-	const pageWrapperHasFilters = hasRealFilters && !hasSearch;
-
 	return (
 		<PageWrapper
 			isLoading={isLoading || isFetching}
-			hasFilters={pageWrapperHasFilters}
+			hasFilters={hasFilters}
 			hasData={hasData}
 			hasError={hasError}
 			stubs={stubs}
@@ -113,7 +104,7 @@ export const ResourcesAllTab = () => {
 						showRemoveButton={selectedResources.length > 0}
 						onSearch={onChangeTitle}
 						searchValue={filters.title}
-						hasFilters={pageWrapperHasFilters || hasSearch}
+						hasFilters={hasFilters}
 						renderFilter={() => (
 							<ResourcesFilters
 								filters={filters}

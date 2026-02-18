@@ -54,7 +54,7 @@ export const ResourcesRequestsTab = () => {
 	const {
 		data: resourceRequests,
 		isLoading,
-		error,
+		isError,
 		refetch,
 	} = useGetResourceRequestsQuery(queryArgs);
 
@@ -62,16 +62,8 @@ export const ResourcesRequestsTab = () => {
 		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests(ids));
 	};
 
-	const hasRealFilters =
-		filters.status !== 'all' ||
-		(filters.types?.length ?? 0) > 0 ||
-		(filters.skills?.length ?? 0) > 0 ||
-		filters.isMy === true;
-
 	const hasData = (resourceRequests?.data?.length || 0) > 0;
-	const hasError = !!error;
-
-	const isSearching = (filters.title?.trim().length ?? 0) > 0;
+	const hasError = !!isError;
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -91,7 +83,7 @@ export const ResourcesRequestsTab = () => {
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={hasError}
-			hasFilters={hasRealFilters && !isSearching}
+			hasFilters={hasFilters}
 			hasData={hasData}
 			stubs={stubs}
 			roles={['admin', 'author']}
