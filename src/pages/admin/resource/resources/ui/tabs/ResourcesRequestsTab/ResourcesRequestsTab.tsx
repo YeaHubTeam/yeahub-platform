@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { Resources } from '@/shared/config';
+import { i18Namespace, Resources } from '@/shared/config';
 import { useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -25,7 +25,7 @@ export const ResourcesRequestsTab = () => {
 	const dispatch = useAppDispatch();
 	const selectedResourceRequests = useSelector(getResourcesRequestsTabSelected);
 	const userId = useAppSelector(getUserId);
-	const { t } = useTranslation('resources');
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const {
 		filters,
