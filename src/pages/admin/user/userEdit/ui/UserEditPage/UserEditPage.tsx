@@ -17,11 +17,16 @@ import {
 	UserFormValues,
 } from '@/entities/user';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 const UserEditPage = () => {
-	const { userId } = useParams<{ userId: string }>();
-	const { data: user } = useGetUserByIdQuery(String(userId));
+	const { userId = '' } = useParams<{ userId: string }>();
+	const { data: user, isLoading, isError, refetch } = useGetUserByIdQuery(String(userId));
 	const { t } = useTranslation(i18Namespace.translation);
+	const { t: tUser } = useTranslation(i18Namespace.user);
 	const navigate = useNavigate();
+
+	const hasUser = user !== undefined && user !== null;
 
 	const methods = useForm<UserFormValues>({
 		defaultValues: {
@@ -57,24 +62,49 @@ const UserEditPage = () => {
 		methods.reset();
 	};
 
-	if (!user) {
-		return null;
-	}
-	return (
-		<FormProvider {...methods}>
-			<form onSubmit={methods.handleSubmit(handleSave)}>
-				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-					<BackButton />
-					<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-						<Button variant="secondary" type="button" onClick={handleCancel}>
-							{t(Translation.CANCEL)}
-						</Button>
-						<Button type="submit">{t(Translation.SAVE)}</Button>
+	const content = user ? (
+		<>
+			<FormProvider {...methods}>
+				<form onSubmit={methods.handleSubmit(handleSave)}>
+					<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
+						<BackButton />
+						<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+							<Button variant="secondary" type="button" onClick={handleCancel}>
+								{t(Translation.CANCEL)}
+							</Button>
+							<Button type="submit">{t(Translation.SAVE)}</Button>
+						</Flex>
 					</Flex>
-				</Flex>
-				<UserCard user={user} disabledEditRole={false} />
-			</form>
-		</FormProvider>
+					<UserCard user={user} disabledEditRole={false} />
+				</form>
+			</FormProvider>
+		</>
+	) : null;
+
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: tUser(User.STUB_EMPTY_USER_TITLE),
+			subtitle: tUser(User.STUB_EMPTY_USER_SUBTITLE),
+			buttonText: tUser(User.STUB_EMPTY_USER_SUBMIT),
+			onClick: refetch,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
+
+	return (
+		<PageWrapper
+			hasData={hasUser}
+			isLoading={isLoading || false}
+			hasFilters={false}
+			hasError={isError || false}
+			stubs={stubs}
+			content={content}
+			roles={['admin', 'author']}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 
