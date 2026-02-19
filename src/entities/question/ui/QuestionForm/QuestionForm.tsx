@@ -111,9 +111,9 @@ export const QuestionForm = () => {
 				description={t(Questions.SPECIALIZATION_LABEL)}
 			>
 				<FormControl name="specializations" control={control}>
-					{({ onChange, value, onBlur }) => (
+					{({ onChange, value }) => (
 						<div className={styles.select}>
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple onBlur={onBlur} />
+							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
 						</div>
 					)}
 				</FormControl>
@@ -122,12 +122,11 @@ export const QuestionForm = () => {
 			{selectedSpecializations?.length ? (
 				<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
 					<FormControl name="skills" control={control}>
-						{({ onChange, value, onBlur }) => (
+						{({ onChange, value }) => (
 							<div className={styles.select}>
 								<SkillSelect
 									onChange={onChange}
 									value={value}
-									onBlur={onBlur}
 									selectedSpecializations={selectedSpecializations}
 								/>
 							</div>
@@ -138,7 +137,7 @@ export const QuestionForm = () => {
 
 			<FormField label={t(Questions.KEYWORDS_TITLE)} description={t(Questions.KEYWORDS_LABEL)}>
 				<FormControl name="keywords" control={control}>
-					{({ onChange, value, onBlur }) => {
+					{({ onChange, value }) => {
 						const currentKeywords = Array.isArray(value) ? value : [];
 
 						return (
@@ -149,7 +148,6 @@ export const QuestionForm = () => {
 									onChange={(keyword) => {
 										if (keyword && !currentKeywords.includes(keyword)) {
 											onChange([...currentKeywords, keyword]);
-											onBlur();
 										}
 									}}
 									selectedKeywords={currentKeywords}
@@ -162,7 +160,6 @@ export const QuestionForm = () => {
 									value={currentKeywords}
 									onChange={(newValue) => {
 										onChange(newValue);
-										onBlur();
 									}}
 								/>
 							</div>

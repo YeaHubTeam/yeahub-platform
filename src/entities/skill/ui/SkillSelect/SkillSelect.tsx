@@ -16,14 +16,12 @@ export type SkillSelectProps = Omit<
 > & {
 	value: number[] | number;
 	onChange: (value: number[]) => void;
-	onBlur?: () => void;
 	selectedSpecializations?: number[];
 	hasMultiple?: boolean;
 };
 
 export const SkillSelect = ({
 	onChange,
-	onBlur,
 	value,
 	selectedSpecializations,
 	hasMultiple = true,
@@ -46,7 +44,6 @@ export const SkillSelect = ({
 			const updates = [...(selectedSkills || []), +newValue];
 			setSelectedSkills(updates);
 			onChange(updates);
-			onBlur?.();
 		} else {
 			setSelectedSkills([+newValue]);
 			onChange([+newValue]);
@@ -57,7 +54,6 @@ export const SkillSelect = ({
 		const updates = selectedSkills.filter((skillId) => skillId !== id);
 		setSelectedSkills(updates);
 		onChange(updates);
-		onBlur?.();
 	};
 
 	const options = useMemo(() => {

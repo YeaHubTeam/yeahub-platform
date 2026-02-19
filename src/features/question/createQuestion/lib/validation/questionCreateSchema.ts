@@ -1,16 +1,11 @@
 import * as yup from 'yup';
 
 import { i18n, Translation } from '@/shared/config';
+import { isEmptyHtml } from '@/shared/libs';
 
 import { QuestionStatus } from '@/entities/question';
 
 import { CreateQuestionFormValues } from '../../model/types/questionCreateTypes';
-
-const isEmptyHtml = (value: string | undefined): boolean => {
-	if (!value) return true;
-	const textOnly = value.replace(/<[^>]*>/g, '').trim();
-	return textOnly.length === 0;
-};
 
 export const questionCreateSchema: yup.ObjectSchema<CreateQuestionFormValues> = yup.object().shape({
 	title: yup
