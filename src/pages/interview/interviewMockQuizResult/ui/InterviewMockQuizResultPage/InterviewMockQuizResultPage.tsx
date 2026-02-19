@@ -29,12 +29,13 @@ const InterviewMockQuizResultPage = () => {
 		useGetQuestionsSpecializationByIdCountQuery(specializationId);
 	const skillsData = useCalculationQuizResult(quizResults);
 
-	if (isLoading || loadingResult) return <InterviewMockQuizResultPageSkeleton />;
-
 	return (
 		<PageWrapper
+			hasData={true}
 			shouldVerify
 			stubs={{}}
+			isLoading={isLoading || loadingResult}
+			skeleton={<InterviewMockQuizResultPageSkeleton />}
 			content={
 				<Flex gap="20" direction="column">
 					<Card

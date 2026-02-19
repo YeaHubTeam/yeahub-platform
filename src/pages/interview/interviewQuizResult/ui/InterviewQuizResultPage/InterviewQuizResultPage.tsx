@@ -38,7 +38,7 @@ const InterviewQuizResultPage = () => {
 			quizId,
 			profileId,
 		},
-		{ skip: !isVerified },
+		{ skip: !isVerified || !hasPremium },
 	);
 
 	const questions = quiz?.response.answers;
@@ -47,9 +47,9 @@ const InterviewQuizResultPage = () => {
 			onClick: refetch,
 		},
 		empty: {
-			title: t(InterviewQuizResult.EMPTY_TITLE),
-			subtitle: t(InterviewQuizResult.EMPTY_SUBTITLE),
-			buttonText: t(InterviewQuizResult.EMPTY_BUTTON),
+			title: t(InterviewQuizResult.STUB_EMPTY_TITLE),
+			subtitle: t(InterviewQuizResult.STUB_EMPTY_SUBTITLE),
+			buttonText: t(InterviewQuizResult.STUB_EMPTY_BUTTON),
 			onClick: refetch,
 		},
 	};

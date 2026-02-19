@@ -61,7 +61,7 @@ const CreateQuizPage = () => {
 			limit: 1,
 			page: 1,
 		},
-		{ skip: !isVerified },
+		{ skip: !hasPremium },
 	);
 
 	if (activeQuiz?.questions) {
@@ -90,13 +90,13 @@ const CreateQuizPage = () => {
 		});
 	};
 
-	if (isActiveQuizLoading || isLoadingCategories) return <CreateQuizPageSkeleton />;
-
 	return (
 		<PageWrapper
 			shouldVerify
 			hasData
 			stubs={{}}
+			isLoading={isActiveQuizLoading || isLoadingCategories}
+			skeleton={<CreateQuizPageSkeleton />}
 			content={
 				<section>
 					<Card className={styles.container}>

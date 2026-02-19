@@ -8,7 +8,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-import { getHasPremiumAccess, getProfileId, getIsVerified } from '@/entities/profile';
+import { getHasPremiumAccess, getProfileId } from '@/entities/profile';
 import {
 	getActiveQuizQuestions,
 	getIsAllQuestionsAnswered,
@@ -30,7 +30,6 @@ import styles from './InterviewQuizPage.module.css';
 const InterviewQuizPage = () => {
 	const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
-	const isVerified = useAppSelector(getIsVerified);
 
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
 
@@ -52,7 +51,7 @@ const InterviewQuizPage = () => {
 			page: 1,
 			limit: 1,
 		},
-		{ skip: !isVerified },
+		{ skip: !hasPremium },
 	);
 
 	const activeQuizQuestions = useAppSelector(getActiveQuizQuestions);
