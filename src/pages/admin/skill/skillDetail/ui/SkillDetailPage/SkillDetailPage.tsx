@@ -11,16 +11,27 @@ import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
 
 import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 const SkillDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { skillId } = useParams<{ skillId: string }>();
-	const { data: skill } = useGetSkillByIdQuery({ skillId: skillId! });
 
-	if (!skill) {
-		return null;
-	}
+	const { data: skill, isLoading, isError, refetch } = useGetSkillByIdQuery({ skillId: skillId! });
 
-	return (
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: 'Похоже данные навыка отсутствуют',
+			subtitle: 'Попробуйте обновить страницу или повторите запрос',
+			buttonText: 'Повторить попытку.',
+			onClick: refetch,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
+
+	const content = skill ? (
 		<main>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackButton />
@@ -34,6 +45,19 @@ const SkillDetailPage = () => {
 			</Flex>
 			<SkillCard skill={skill} />
 		</main>
+	) : null;
+
+	return (
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={!!skill}
+			roles={['admin', 'author']}
+			stubs={stubs}
+			content={content}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 
