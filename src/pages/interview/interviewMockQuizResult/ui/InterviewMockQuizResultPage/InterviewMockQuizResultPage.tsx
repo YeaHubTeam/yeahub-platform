@@ -44,7 +44,10 @@ const InterviewMockQuizResultPage = () => {
 						headerAction={<QuizResultButton />}
 					>
 						<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
-							<PassedQuestionsStatistic total={quizResults!.total} className={styles.statistic} />
+							<PassedQuestionsStatistic
+								total={quizResults?.total ?? 0}
+								className={styles.statistic}
+							/>
 							<CategoryProgressList
 								title={t(InterviewQuizResult.INTERVIEW_STATISTIC_SCHEDULE)}
 								className={styles.progress}
