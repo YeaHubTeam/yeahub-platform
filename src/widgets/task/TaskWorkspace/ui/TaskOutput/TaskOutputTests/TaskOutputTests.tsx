@@ -18,7 +18,6 @@ type TaskOutputTestsProps = {
 
 export const TaskOutputTests = ({ testCases }: TaskOutputTestsProps) => {
 	const { t } = useTranslation(i18Namespace.task);
-	console.log(testCases);
 	const [activeTestCase, setActiveTestCase] = useState<number>(0);
 
 	if (!testCases.summary || !testCases.summary?.total) {

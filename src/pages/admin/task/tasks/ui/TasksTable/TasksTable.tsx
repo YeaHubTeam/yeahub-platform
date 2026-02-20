@@ -10,7 +10,7 @@ import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
-import { Task } from '@/entities/task';
+import { Task, taskCategories } from '@/entities/task';
 
 import { DeleteTaskButton } from '@/features/task/deleteTask';
 
@@ -28,7 +28,9 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
 			title: 'auto',
-			difficulty: '15%',
+			category: '20%',
+			difficulty: '10%',
+			languages: '20%',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -37,7 +39,9 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 	const renderTableHeader = () => {
 		const columns = {
 			title: t(Tasks.TABLE_TASK),
+			category: t(Tasks.CATEGORY_TITLE),
 			difficulty: t(Tasks.TABLE_DIFFICULTY),
+			languages: t(Tasks.LANGUAGES_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -50,7 +54,9 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 					<Text variant="body3-accent">{task.name}</Text>
 				</Link>
 			),
+			category: t(taskCategories[task.mainCategory]),
 			difficulty: task.difficulty,
+			languages: task.supportedLanguages.map((language) => language.name).join(', '),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {

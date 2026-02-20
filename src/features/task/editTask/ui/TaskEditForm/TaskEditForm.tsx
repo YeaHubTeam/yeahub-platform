@@ -27,8 +27,6 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 		constraints,
 		mainCategory,
 		id,
-		timeLimit,
-		memoryLimit,
 		subscriptionLevel,
 	} = task;
 
@@ -42,14 +40,10 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 			difficulty,
 			constraints,
 			categoryCode: mainCategory,
-			memoryLimit,
-			timeLimit,
 			id,
 			subscriptionLevel,
 		},
 	});
-	console.log(methods.formState.errors);
-	console.log(methods.getValues());
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	const [editTopicMutation] = useEditTaskMutation();

@@ -8,6 +8,7 @@ export interface ProgrammingLanguage {
 	fileExtension: string;
 	isActive: boolean;
 	imageSrc: string;
+	defaultPreloadedCode: string;
 }
 
 export type GetLanguagesResponse = ProgrammingLanguage[];
