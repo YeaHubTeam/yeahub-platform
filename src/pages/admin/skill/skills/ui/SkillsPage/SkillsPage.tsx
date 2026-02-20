@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { i18Namespace, Skills } from '@/shared/config';
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -25,6 +27,7 @@ const SkillsPage = () => {
 	const navigate = useNavigate();
 	const selectedSkills = useSelector(getSelectedSkills);
 	const userId = useAppSelector(getUserId);
+	const { t } = useTranslation(i18Namespace.skill);
 
 	const { filters, hasFilters, onChangePage, onChangeSpecialization, onChangeTitle, onChangeIsMy } =
 		useSkillsFilters({
@@ -63,9 +66,9 @@ const SkillsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: 'Похоже здесь пока нет навыков',
-			subtitle: 'Создайте первую — и начните добавлять материалы в базу знаний',
-			buttonText: 'Добавить навык',
+			title: t(Skills.STUB_EMPTY_SKILLS_TITLE),
+			subtitle: t(Skills.STUB_EMPTY_SKILLS_SUBTITLE),
+			buttonText: t(Skills.CREATE_PAGE_TITLE),
 			onClick: () => navigate('/admin/skills/create'),
 		},
 		'filter-empty': {
