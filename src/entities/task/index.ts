@@ -27,6 +27,6 @@ export { TaskDifficultyChip } from './ui/TaskDifficultyChip/TaskDifficultyChip';
 export { TaskStatusChip } from './ui/TaskStatusChip/TaskStatusChip';
 export { TaskForm } from './ui/TaskForm/TaskForm';
 export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';
-export { TaskConstraintsField } from './ui/TaskConstraintsField/TaskConstraintsField';
 export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresField';
+export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategoryFilterList';
 export { taskCategories } from './model/constants/task';

@@ -177,11 +177,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
 			},
-			// {
-			// 	route: ROUTES.tasks.route,
-			// 	title: i18n.t(Translation.SIDEBAR_MENU_TASKS_TITLE),
-			// 	icon: CursorSquare, // TODO: добавить иконку
-			// },
+			{
+				route: ROUTES.tasks.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
+				icon: CursorSquare,
+			},
 		],
 		roles: allRoles,
 	},
@@ -852,31 +852,22 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.liveCoding.route,
+				path: ROUTES.tasks.route,
 				element: <Outlet />,
 				handle: {
-					crumb: Translation.CRUMBS_LIVE_CODING,
+					crumb: Translation.CRUMBS_TASKS,
 				},
 				children: [
 					{
-						path: ROUTES.liveCoding.tasks.route,
-						element: <Outlet />,
+						index: true,
+						element: <TasksPage />,
+					},
+					{
+						path: ROUTES.tasks.detail.route,
+						element: <TaskPage />,
 						handle: {
-							crumb: Translation.CRUMBS_TASKS,
+							crumb: Translation.CRUMBS_TASK,
 						},
-						children: [
-							{
-								index: true,
-								element: <TasksPage />,
-							},
-							{
-								path: ROUTES.liveCoding.tasks.detail.route,
-								element: <TaskPage />,
-								handle: {
-									crumb: Translation.CRUMBS_TASK,
-								},
-							},
-						],
 					},
 				],
 			},

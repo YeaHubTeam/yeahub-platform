@@ -56,9 +56,7 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
-			"tasks": {
-				"title": "Tasks"
-			},
+			"tasks": "Tasks",
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
