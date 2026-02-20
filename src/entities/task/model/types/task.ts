@@ -67,12 +67,13 @@ export interface GetTasksListParams {
 	title?: string;
 	slug?: string;
 	difficulty?: TaskDifficulty;
-	categoryId?: number;
+	category?: TaskCategoryCode;
 	langIds?: number[];
 	isActive?: boolean;
 	search?: string;
 	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
 	sortOrder?: SortOrder;
+	canSolve?: boolean;
 }
 
 export type GetTasksListResponse = Response<Task[]>;
@@ -144,6 +145,8 @@ export type CreateOrEditTaskFormValues = Omit<
 	| 'mainCategory'
 	| 'testCases'
 	| 'canSolve'
+	| 'timeLimit'
+	| 'memoryLimit'
 > & {
 	categoryCode: TaskCategoryCode;
 };

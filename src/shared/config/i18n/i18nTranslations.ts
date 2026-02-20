@@ -45,7 +45,6 @@ export enum Translation {
 	SIDEBAR_MENU_SPECIALIZATIONS = 'sidebar.menu.specializations',
 	SIDEBAR_MENU_USERS = 'sidebar.menu.users',
 	SIDEBAR_MENU_EDUCATION_TITLE = 'sidebar.menu.education.title',
-	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks.title',
 	SIDEBAR_MENU_EDUCATION_INTERVIEW = 'sidebar.menu.education.interview',
 	SIDEBAR_MENU_WIKI_TITLE = 'sidebar.menu.wiki.title',
 	SIDEBAR_MENU_WIKI_RESOURCES_TITLE = 'sidebar.menu.wiki.resources',
@@ -56,7 +55,7 @@ export enum Translation {
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
-
+	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -1352,6 +1351,7 @@ export enum ProgrammingLanguages {
 }
 
 export enum Tasks {
+	NOT_AVAILABLE = 'not.available',
 	BANNER_BETA_TITLE = 'banner.beta.title',
 	TITLE_SHORT = 'title.short',
 	TITLE_HIDE = 'title.hide',

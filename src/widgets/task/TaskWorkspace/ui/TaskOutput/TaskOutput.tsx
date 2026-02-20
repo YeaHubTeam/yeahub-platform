@@ -36,8 +36,6 @@ export const TaskOutput = ({ result }: TaskOutputProps) => {
 		return result.test_cases[0].error_message;
 	}, [result]);
 
-	console.log(testCases);
-
 	const tabs: Tab<OutputTabId>[] = useMemo(
 		() => [
 			{

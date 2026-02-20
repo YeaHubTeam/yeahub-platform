@@ -6,6 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text } from '@/shared/ui/Text';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
 
@@ -24,34 +25,39 @@ type TaskCardProps = {
 export const TaskCard = ({ task, className }: TaskCardProps) => {
 	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve } = task;
 	const { t } = useTranslation(i18Namespace.task);
-	const taskPath = generatePath(ROUTES.liveCoding.tasks.detail.page, { taskId: id });
+	const taskPath = generatePath(ROUTES.tasks.detail.page, { taskId: id });
 
 	return (
-		<Link
-			to={canSolve ? taskPath : ''}
-			className={className}
-			onClick={(e) => !canSolve && e.preventDefault()}
-		>
-			<Card withOutsideShadow className={styles.content} withHover={canSolve}>
-				<Flex direction="column" gap="20">
-					<Flex justify="between" align="start" gap="16">
-						{canSolve ? (
-							<Text variant="body4" maxRows={2}>
-								{name}
-							</Text>
-						) : (
-							<Skeleton variant="blur" text={<Text variant="body4">{t(Tasks.TITLE_HIDE)}</Text>} />
-						)}
-					</Flex>
+		<Tooltip shouldShowTooltip={!canSolve} title={t(Tasks.NOT_AVAILABLE)} placement="right">
+			<Link
+				to={canSolve ? taskPath : ''}
+				className={className}
+				onClick={(e) => !canSolve && e.preventDefault()}
+			>
+				<Card withOutsideShadow className={styles.content} withHover={canSolve}>
+					<Flex direction="column" gap="20">
+						<Flex justify="between" align="start" gap="16">
+							{canSolve ? (
+								<Text variant="body4" maxRows={2}>
+									{name}
+								</Text>
+							) : (
+								<Skeleton
+									variant="blur"
+									text={<Text variant="body4">{t(Tasks.TITLE_HIDE)}</Text>}
+								/>
+							)}
+						</Flex>
 
-					<Flex align="center" gap="10">
-						<TaskStatusChip status={status} size="medium" />
-						<TaskDifficultyChip difficulty={difficulty} />
-						<ProgrammingLanguageList languages={supportedLanguages} />
-						<TaskCategoryChip category={mainCategory} />
+						<Flex align="center" gap="10">
+							<TaskStatusChip status={status} size="medium" />
+							<TaskDifficultyChip difficulty={difficulty} />
+							<ProgrammingLanguageList languages={supportedLanguages} />
+							<TaskCategoryChip category={mainCategory} />
+						</Flex>
 					</Flex>
-				</Flex>
-			</Card>
-		</Link>
+				</Card>
+			</Link>
+		</Tooltip>
 	);
 };

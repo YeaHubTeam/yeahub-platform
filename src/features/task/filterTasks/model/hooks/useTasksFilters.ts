@@ -16,6 +16,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		(filters.page || 1) > 1 ||
 		Boolean(filters.title) ||
 		Boolean(filters.difficulty) ||
+		Boolean(filters.category) ||
 		(filters.langIds || []).length > 0;
 
 	const onChangePage = (page: TasksFilterParams['page']) => {
@@ -31,6 +32,10 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onFilterChange({ difficulty, page: 1 });
 	};
 
+	const onChangeCategory = (category: TasksFilterParams['category']) => {
+		onFilterChange({ category, page: 1 });
+	};
+
 	const onChangeLangIds = (langIds?: TasksFilterParams['langIds']) => {
 		onFilterChange({ langIds, page: 1 });
 	};
@@ -42,6 +47,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onChangeTitle,
 		onChangeDifficulty,
 		onChangeLangIds,
+		onChangeCategory,
 		onResetFilters,
 	};
 };
