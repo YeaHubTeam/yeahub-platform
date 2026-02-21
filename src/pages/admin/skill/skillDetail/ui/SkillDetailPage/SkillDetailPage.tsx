@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink, useParams } from 'react-router-dom';
 
-import { i18Namespace, Translation, ROUTES } from '@/shared/config';
+import { i18Namespace, Translation, ROUTES, Skills } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
@@ -11,17 +11,31 @@ import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
 
 import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 const SkillDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
+	const { t: tSkill } = useTranslation(i18Namespace.skill);
 	const { skillId } = useParams<{ skillId: string }>();
-	const { data: skill } = useGetSkillByIdQuery({ skillId: skillId! });
 
-	if (!skill) {
-		return null;
-	}
+	const { data: skill, isLoading, isError, refetch } = useGetSkillByIdQuery({ skillId: skillId! });
 
-	return (
-		<main>
+	const isSkillEmpty = !skill || Object.keys(skill).length === 0;
+
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: tSkill(Skills.STUB_EMPTY_SKILL_TITLE),
+			subtitle: tSkill(Skills.STUB_EMPTY_SKILL_SUBTITLE),
+			buttonText: tSkill(Skills.STUB_EMPTY_SKILL_SUBMIT),
+			onClick: refetch,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
+
+	const content = !isSkillEmpty ? (
+		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackButton />
 
@@ -33,7 +47,20 @@ const SkillDetailPage = () => {
 				</Flex>
 			</Flex>
 			<SkillCard skill={skill} />
-		</main>
+		</>
+	) : null;
+
+	return (
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={!isSkillEmpty}
+			roles={['admin', 'author']}
+			stubs={stubs}
+			content={content}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 

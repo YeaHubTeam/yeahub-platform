@@ -839,6 +839,11 @@ export enum Skills {
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	MY_SKILLS_TITLE = 'my.skills.title',
+	STUB_EMPTY_SKILLS_TITLE = 'stub.empty.skills.title',
+	STUB_EMPTY_SKILLS_SUBTITLE = 'stub.empty.skills.subtitle',
+	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
+	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
+	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
 }
 
 export enum User {
