@@ -6,6 +6,7 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './Banner.module.css';
+import { bannerTestIds } from './constants';
 
 interface BannerSkeletonProps {
 	color?: 'white' | 'violet';
@@ -33,7 +34,7 @@ export const BannerSkeleton = ({
 	);
 
 	return (
-		<Flex className={wrapperClassName} gap="10" align="center">
+		<Flex className={wrapperClassName} gap="10" align="center" dataTestId={bannerTestIds.skeleton}>
 			<Flex gap="20" align="center" style={{ flex: 1 }} className={innerWrapClassName}>
 				<Skeleton className={styles['alarm-img']} />
 
