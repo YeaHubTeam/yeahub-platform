@@ -20,7 +20,6 @@ const SkillDetailPage = () => {
 
 	const { data: skill, isLoading, isError, refetch } = useGetSkillByIdQuery({ skillId: skillId! });
 
-	// ДОБАВЛЕНА ПРОВЕРКА ДЛЯ ОБЪЕКТА
 	const isSkillEmpty = !skill || Object.keys(skill).length === 0;
 
 	const stubs: PageWrapperStubs = {
@@ -35,9 +34,8 @@ const SkillDetailPage = () => {
 		},
 	};
 
-	// ТЕПЕРЬ ИСПОЛЬЗУЕМ isSkillEmpty ДЛЯ ОТРИСОВКИ КОНТЕНТА
 	const content = !isSkillEmpty ? (
-		<main>
+		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackButton />
 
@@ -49,14 +47,14 @@ const SkillDetailPage = () => {
 				</Flex>
 			</Flex>
 			<SkillCard skill={skill} />
-		</main>
+		</>
 	) : null;
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
-			hasData={!isSkillEmpty} // ПЕРЕДАЕМ ПРАВИЛЬНЫЙ ФЛАГ СЮДА
+			hasData={!isSkillEmpty}
 			roles={['admin', 'author']}
 			stubs={stubs}
 			content={content}

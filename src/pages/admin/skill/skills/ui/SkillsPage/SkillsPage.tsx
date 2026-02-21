@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Skills } from '@/shared/config';
+import { i18Namespace, ROUTES, Skills } from '@/shared/config';
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -29,10 +29,17 @@ const SkillsPage = () => {
 	const userId = useAppSelector(getUserId);
 	const { t } = useTranslation(i18Namespace.skill);
 
-	const { filters, hasFilters, onChangePage, onChangeSpecialization, onChangeTitle, onChangeIsMy } =
-		useSkillsFilters({
-			page: 1,
-		});
+	const {
+		filters,
+		hasFilters,
+		onChangePage,
+		onChangeSpecialization,
+		onChangeTitle,
+		onChangeIsMy,
+		onResetFilters,
+	} = useSkillsFilters({
+		page: 1,
+	});
 
 	const {
 		data: skillsData,
@@ -50,13 +57,6 @@ const SkillsPage = () => {
 		dispatch(skillsPageActions.setSelectedSkills(ids));
 	};
 
-	const onResetFilters = () => {
-		onChangeTitle('');
-		onChangePage(1);
-		if (onChangeSpecialization) onChangeSpecialization(undefined);
-		if (onChangeIsMy) onChangeIsMy(false);
-	};
-
 	const skills = skillsData?.data ?? [];
 	const hasSkills = skills.length > 0;
 
@@ -69,7 +69,7 @@ const SkillsPage = () => {
 			title: t(Skills.STUB_EMPTY_SKILLS_TITLE),
 			subtitle: t(Skills.STUB_EMPTY_SKILLS_SUBTITLE),
 			buttonText: t(Skills.CREATE_PAGE_TITLE),
-			onClick: () => navigate('/admin/skills/create'),
+			onClick: () => navigate(ROUTES.admin.skills.create.page),
 		},
 		'filter-empty': {
 			onClick: onResetFilters,
@@ -115,8 +115,7 @@ const SkillsPage = () => {
 					/>
 					<Card className={styles.content}>
 						{content}
-
-						{hasSkills && !isError && pagination}
+						{pagination}
 					</Card>
 				</Flex>
 			)}
