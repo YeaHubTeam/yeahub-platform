@@ -148,6 +148,7 @@
 		"@sentry/browser": "^8.35.0",
 		"@sentry/react": "^8.35.0",
 		"@sentry/tracing": "^7.114.0",
+		"@tiptap/extension-character-count": "^2.12.0",
 		"@tiptap/extension-code-block-lowlight": "^2.12.0",
 		"@tiptap/extension-strike": "^2.12.0",
 		"@tiptap/extension-text-align": "^2.12.0",

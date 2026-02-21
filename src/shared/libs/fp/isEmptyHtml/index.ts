@@ -1,0 +1,1 @@
+export { isEmptyHtml } from './isEmptyHtml';
