@@ -18,6 +18,7 @@ export type SkillSelectProps = Omit<
 	onChange: (value: number[]) => void;
 	selectedSpecializations?: number[];
 	hasMultiple?: boolean;
+	withSpecialization?: boolean;
 };
 
 export const SkillSelect = ({
@@ -25,14 +26,24 @@ export const SkillSelect = ({
 	value,
 	selectedSpecializations,
 	hasMultiple = true,
+	withSpecialization = true,
 	disabled,
 }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
-	const { data: skills, isLoading } = useGetSkillsListQuery({
-		limit: 100,
-		specializations: selectedSpecializations,
-	});
+	const hasSpecializations =
+		(Array.isArray(selectedSpecializations) && selectedSpecializations.length > 0) ||
+		typeof selectedSpecializations === 'number';
+
+	const { data: skills, isLoading } = useGetSkillsListQuery(
+		{
+			limit: 100,
+			specializations: selectedSpecializations,
+		},
+		{
+			skip: withSpecialization && !hasSpecializations,
+		},
+	);
 
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],

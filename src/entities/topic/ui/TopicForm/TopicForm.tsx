@@ -51,7 +51,12 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 						{({ onChange, value }) => {
 							return (
 								<div>
-									<SkillSelect onChange={onChange} value={value} hasMultiple={false} />
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										hasMultiple={false}
+										withSpecialization={false}
+									/>
 								</div>
 							);
 						}}
