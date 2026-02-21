@@ -101,7 +101,7 @@ const UserEditPage = () => {
 			hasError={isError || false}
 			stubs={stubs}
 			content={content}
-			roles={['admin', 'author']}
+			roles={['admin']}
 		>
 			{({ content }) => content}
 		</PageWrapper>

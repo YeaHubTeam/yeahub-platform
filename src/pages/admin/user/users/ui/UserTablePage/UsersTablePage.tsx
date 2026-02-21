@@ -69,6 +69,7 @@ export const UsersTablePage = () => {
 			hasFilters={hasFilters}
 			hasData={hasData}
 			stubs={stubs}
+			roles={['admin']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,

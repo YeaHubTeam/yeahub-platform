@@ -76,7 +76,7 @@ export const SpecializationsTable = ({
 			},
 			{
 				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.AVATAR, { ns: i18Namespace.translation }),
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
 					navigate(route(ROUTES.admin.specializations.edit.page, specialization.id));
 				},

@@ -81,7 +81,7 @@ const UserDetailPage = () => {
 			hasError={isError}
 			stubs={stubs}
 			content={content}
-			roles={['admin', 'author']}
+			roles={['admin']}
 		>
 			{({ content }) => content}
 		</PageWrapper>
