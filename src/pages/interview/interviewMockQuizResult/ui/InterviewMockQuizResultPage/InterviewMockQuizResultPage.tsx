@@ -12,6 +12,7 @@ import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { PassedQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
 import { QuizResultButton } from '@/widgets/Landing/QuizResultModal';
+import { PageWrapper } from '@/widgets/PageWrapper';
 
 import { useCalculationQuizResult } from '../../model/hooks/useCalculationQuizResult';
 import { useInterviewMockQuizResultData } from '../../model/hooks/useInterviewMockQuizResultData';
@@ -28,26 +29,38 @@ const InterviewMockQuizResultPage = () => {
 		useGetQuestionsSpecializationByIdCountQuery(specializationId);
 	const skillsData = useCalculationQuizResult(quizResults);
 
-	if (isLoading || loadingResult) return <InterviewMockQuizResultPageSkeleton />;
-
 	return (
-		<Flex gap="20" direction="column">
-			<Card
-				title={t(InterviewQuizResult.INTERVIEW_STATISTIC_TITLE)}
-				actionTitle={t(InterviewQuizResult.INTERVIEW_STATISTIC_LINK)}
-				headerAction={<QuizResultButton />}
-			>
-				<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
-					<PassedQuestionsStatistic total={quizResults!.total} className={styles.statistic} />
-					<CategoryProgressList
-						title={t(InterviewQuizResult.INTERVIEW_STATISTIC_SCHEDULE)}
-						className={styles.progress}
-						skillsStat={skillsData?.skillStat}
-					/>
+		<PageWrapper
+			hasData={true}
+			shouldVerify
+			stubs={{}}
+			isLoading={isLoading || loadingResult}
+			skeleton={<InterviewMockQuizResultPageSkeleton />}
+			content={
+				<Flex gap="20" direction="column">
+					<Card
+						title={t(InterviewQuizResult.INTERVIEW_STATISTIC_TITLE)}
+						actionTitle={t(InterviewQuizResult.INTERVIEW_STATISTIC_LINK)}
+						headerAction={<QuizResultButton />}
+					>
+						<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
+							<PassedQuestionsStatistic
+								total={quizResults?.total ?? 0}
+								className={styles.statistic}
+							/>
+							<CategoryProgressList
+								title={t(InterviewQuizResult.INTERVIEW_STATISTIC_SCHEDULE)}
+								className={styles.progress}
+								skillsStat={skillsData?.skillStat}
+							/>
+						</Flex>
+					</Card>
+					<PassedQuestionsList className={styles['questions-list']} questions={quizAnswers || []} />
 				</Flex>
-			</Card>
-			<PassedQuestionsList className={styles['questions-list']} questions={quizAnswers || []} />
-		</Flex>
+			}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };
 
