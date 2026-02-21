@@ -10,3 +10,4 @@ export type { Company, CreateOrEditCompanyFormValues } from './model/types/compa
 export { CompanyForm } from './ui/CompanyForm/CompanyForm';
 
 export { companyHandlers } from './api/__mocks__';
+export { companiesMock } from './api/__mocks__/data';
