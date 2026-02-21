@@ -9,3 +9,5 @@ export { TopicAdditionalInfo } from './ui/TopicAdditionalInfo/TopicAdditionalInf
 export { TopicCard } from './ui/TopicCard/TopicCard';
 
 export { topicHandlers } from './api/__mock__';
+
+export { topicsMocks } from './api/__mock__/data';
