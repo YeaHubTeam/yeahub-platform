@@ -192,6 +192,7 @@
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions",
+		"analytics.usersRating": "Users rating",
 		"tasks.list": "Tasks",
 		"task.detail": "More details"
 	},
