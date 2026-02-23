@@ -41,7 +41,7 @@ export const ChooseQuestionsDrawer = ({
 	const questions = useGetQuestionsListQuery({
 		title: collectionSearch,
 		limit: COLLECTION_QUESTIONS_LIMIT,
-		specialization: specializations?.length ? specializations : undefined,
+		specializationId: specializations?.length ? specializations : undefined,
 	});
 
 	const handleCollectionSearch = (e: ChangeEvent<HTMLInputElement>) => {

@@ -5,6 +5,8 @@ import { collectionApiUrls } from '../model/constants/collection';
 import {
 	GetCollectionByIdParamsRequest,
 	GetCollectionByIdResponse,
+	GetCollectionKeywordsParamsRequest,
+	GetCollectionKeywordsResponse,
 	GetCollectionQuestionsResponse,
 	GetCollectionsListParamsRequest,
 	GetCollectionsListResponse,
@@ -53,6 +55,16 @@ const collectionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.COLLECTIONS],
 		}),
+		getCollectionKeywords: build.query<
+			GetCollectionKeywordsResponse,
+			GetCollectionKeywordsParamsRequest
+		>({
+			query: (params) => ({
+				url: route(collectionApiUrls.getCollectionKeywords),
+				params,
+			}),
+			providesTags: [ApiTags.COLLECTIONS],
+		}),
 	}),
 });
 export const {
@@ -61,4 +73,5 @@ export const {
 	useGetCollectionByIdQuery,
 	useGetCollectionQuestionsQuery,
 	useGetPublicCollectionByIdQuery,
+	useGetCollectionKeywordsQuery,
 } = collectionApi;

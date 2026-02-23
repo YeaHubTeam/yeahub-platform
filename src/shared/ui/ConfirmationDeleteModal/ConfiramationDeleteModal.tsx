@@ -3,7 +3,6 @@ import { ChangeEvent, useState } from 'react';
 import { Input } from '@/shared/ui/Input';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
-import { TextHtml } from '@/shared/ui/TextHtml';
 
 import styles from './ConfirmationDeleteModal.module.css';
 
@@ -57,8 +56,11 @@ export const ConfirmationDeleteModal = ({
 			buttonPrimaryClick={handleDeleteAccount}
 			isOpen={isOpen}
 			onClose={handleClose}
+			className={styles.modal}
 		>
-			<TextHtml html={deleteDescriptionModal} className={styles.description} />
+			<Text variant="body3-accent" className={styles.description}>
+				{deleteDescriptionModal}
+			</Text>
 			<Text variant="body2" className={styles.label}>
 				{deleteLabel}
 			</Text>

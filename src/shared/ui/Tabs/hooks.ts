@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { Tab } from './Tabs';
+import type { Tab } from './types';
 
 export const useTabs = <T>(tabs: Tab<T>[]) => {
 	const { hash } = useLocation();

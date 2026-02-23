@@ -11,6 +11,10 @@
   color: var(--color-white-900);
   line-height: 130%;
 }
+
+.click {
+  cursor: pointer;
+}
  
 .bg {
   background-color: var(--color-purple-700);

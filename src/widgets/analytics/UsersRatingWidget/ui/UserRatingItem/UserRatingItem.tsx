@@ -47,7 +47,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 								isLimitSize={true}
 								className={styles['user-name']}
 							>
-								{userRating.username.split(' ')[0]}
+								{userRating.username}
 							</Text>
 						</Tooltip>
 					</Flex>

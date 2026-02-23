@@ -8,9 +8,16 @@ import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { CollectionEditForm } from '@/features/collections/editCollection';
 
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 const CollectionEditPage = () => {
 	const { collectionId } = useParams<{ collectionId: string }>();
-	const { data: collection } = useGetCollectionByIdQuery({ collectionId: collectionId! });
+	const {
+		data: collection,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCollectionByIdQuery({ collectionId: collectionId! });
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
 
@@ -22,7 +29,22 @@ const CollectionEditPage = () => {
 		return <Navigate to={ROUTES.admin.collections.page} />;
 	}
 
-	return <CollectionEditForm collection={collection} />;
+	const stubs: PageWrapperStubs = {
+		error: { onClick: refetch },
+	};
+
+	return (
+		<PageWrapper
+			roles={['admin', 'author']}
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={!!collection && Object.keys(collection).length > 0}
+			stubs={stubs}
+			content={collection ? <CollectionEditForm collection={collection} /> : null}
+		>
+			{({ content }) => content}
+		</PageWrapper>
+	);
 };
 
 export default CollectionEditPage;

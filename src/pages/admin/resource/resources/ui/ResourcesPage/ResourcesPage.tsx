@@ -10,7 +10,7 @@ const ResourcesPage = () => {
 	const ActiveComponent = activeTab.Component;
 
 	return (
-		<Flex componentType="main" direction="column" gap="24">
+		<Flex componentType="main" direction="column">
 			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<ActiveComponent />
 		</Flex>

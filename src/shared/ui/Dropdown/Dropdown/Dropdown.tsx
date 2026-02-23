@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import Arrow from '@/shared/assets/icons/arrowSelect.svg';
 import Lens from '@/shared/assets/icons/magnifer.svg';
 import { useOutsideClick } from '@/shared/libs';
+import { Icon } from '@/shared/ui/Icon';
 
 import { DropdownSize } from '../DropdownTypes';
 import { OptionProps } from '../Option/Option';
@@ -24,6 +25,7 @@ export interface DropdownProps
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
+	onChangeFilterValue?: () => void;
 }
 
 export const Dropdown = ({
@@ -41,6 +43,7 @@ export const Dropdown = ({
 	isInput = false,
 	inputValue,
 	onChangeValue,
+	onChangeFilterValue,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -60,6 +63,14 @@ export const Dropdown = ({
 		if (!isOpen && !disabled) {
 			setIsOpen(true);
 		}
+	};
+
+	const handleInputClear = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (disabled || !onChangeValue) return;
+
+		onChangeValue('');
+		if (onChangeFilterValue) onChangeFilterValue();
 	};
 
 	const filteredChildren = useMemo(() => {
@@ -92,7 +103,19 @@ export const Dropdown = ({
 				size={size}
 				prefix={prefix || <Lens className={styles.suffix} />}
 				suffix={
-					suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />
+					<>
+						{isInput && (
+							<Icon
+								icon="closeCircle"
+								size={20}
+								color="red-600"
+								onClick={handleInputClear}
+								className={styles['clear-button']}
+								style={{ display: !inputValue ? 'none' : undefined }}
+							/>
+						)}
+						{suffix || <Arrow className={classNames(styles.suffix, { [styles.active]: isOpen })} />}
+					</>
 				}
 				disabled={disabled}
 				onClick={onSelectClick}

@@ -50,6 +50,7 @@ import {
 	plusCircle,
 	questions,
 	sealCheck,
+	sealCheckOutlined,
 	search,
 	settings,
 	slidersHorizontal,
@@ -73,6 +74,7 @@ import {
 	youtube,
 	youtubeWithBackground,
 	arrowShortDown,
+	refresh,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -125,6 +127,7 @@ export const icons: Record<IconName, IconComponent> = {
 	filter,
 	settings,
 	sealCheck,
+	sealCheckOutlined,
 	check,
 	checkList,
 	questions,
@@ -152,4 +155,5 @@ export const icons: Record<IconName, IconComponent> = {
 	tickWithBackground,
 	copy,
 	watch,
+	refresh,
 };

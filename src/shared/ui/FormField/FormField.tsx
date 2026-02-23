@@ -7,25 +7,35 @@ import { Text } from '@/shared/ui/Text';
 import styles from './FormField.module.css';
 
 export interface FormFieldProps {
-	description: string;
+	description?: string;
 	label: string;
 	children: ReactNode;
 	isLimitWidth?: boolean;
+	direction?: 'row' | 'column';
 }
 
-export const FormField = ({ description, label, children, isLimitWidth }: FormFieldProps) => {
+export const FormField = ({
+	description,
+	label,
+	children,
+	isLimitWidth,
+	direction = 'row',
+}: FormFieldProps) => {
 	return (
 		<Flex
-			gap="120"
+			gap={direction === 'row' ? '120' : '20'}
+			direction={direction}
 			className={classNames(styles['form-field'], { [styles['limit-width']]: isLimitWidth })}
 		>
 			<Flex direction="column" className={styles.titles} gap="8">
 				<Text variant="body4" color="black-800">
 					{label}
 				</Text>
-				<Text variant="body2" color="black-800">
-					{description}
-				</Text>
+				{description && (
+					<Text variant="body2" color="black-800">
+						{description}
+					</Text>
+				)}
 			</Flex>
 			{children}
 		</Flex>

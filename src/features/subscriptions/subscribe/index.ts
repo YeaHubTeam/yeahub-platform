@@ -1,1 +1,1 @@
-export { AgreementForm } from './ui/AgreementForm/AgreementForm';
+export { SubscribeButton } from './ui/SubscribeButton/SubscribeButton';

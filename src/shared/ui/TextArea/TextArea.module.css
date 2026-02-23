@@ -1,3 +1,7 @@
+.wrapper {
+  position: relative;
+}
+
 .yeahub-textarea {
   padding: 1rem;
   width: inherit;
@@ -44,7 +48,7 @@
 }
   
 .yeahub-textarea-valid {
-  outline: 1px solid var(--color-green-50);
+  outline: 1px solid var(--color-green-100);
   border-color: var(--color-green-700);
 }
 
@@ -77,4 +81,12 @@
   
 .yeahub-textarea-error:active {
   border-color: var(--color-red-700);
+}
+
+.counter {
+  position: absolute;
+  right: 0;
+  bottom: -26px;
+  color: var(--color-black-300);
+  font-size: var(--font-size-p-xs);
 }

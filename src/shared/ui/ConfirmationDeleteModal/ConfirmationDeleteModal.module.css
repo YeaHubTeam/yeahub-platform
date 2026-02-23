@@ -1,3 +1,8 @@
+.modal { 
+  width: 100%;
+  max-width: 553px;
+}
+
 .description {
   margin-bottom: 20px;
 }

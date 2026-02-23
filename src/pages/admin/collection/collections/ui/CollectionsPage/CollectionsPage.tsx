@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
+import { Collections, i18Namespace, ROUTES } from '@/shared/config';
+import { SelectedAdminEntities, useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
-import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCollectionsListQuery } from '@/entities/collection';
 import { getIsAuthor, getUserId } from '@/entities/profile';
@@ -16,15 +17,19 @@ import {
 } from '@/features/collections/filterCollections';
 
 import { CollectionsTable } from '@/widgets/CollectionsTable';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
 
 import { getSelectedCollections } from '../../model/selectors/collectionsPageSelectors';
 import { collectionsPageActions } from '../../model/slices/collectionsPageSlice';
 
 import styles from './CollectionsPage.module.css';
+import { CollectionsPageSkeleton } from './CollectionsPage.skeleton';
 
 const CollectionsPage = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.collection);
 	const userId = useSelector(getUserId);
 	const isAuthor = useSelector(getIsAuthor);
 	const selectedCollections = useSelector(getSelectedCollections);
@@ -50,7 +55,12 @@ const CollectionsPage = () => {
 		onResetFilters();
 	};
 
-	const { data: allCollections } = useGetCollectionsListQuery({
+	const {
+		data: allCollections,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCollectionsListQuery({
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
@@ -67,42 +77,68 @@ const CollectionsPage = () => {
 		};
 	}, [allCollections, userId, isAuthor]);
 
-	if (!collections) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Collections.STUB_EMPTY_COLLECTIONS_TITLE),
+			subtitle: t(Collections.STUB_EMPTY_COLLECTION_DESCRIPTION),
+			buttonText: t(Collections.STUB_EMPTY_COLLECTION_BUTTON),
+			onClick: () => navigate(ROUTES.admin.collections.create.page),
+		},
+		'filter-empty': {
+			onClick: onResetAll,
+		},
+		error: { onClick: refetch },
+	};
 
 	return (
-		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				showRemoveButton={selectedCollections.length > 0}
-				searchValue={filters.title}
-				onSearch={onChangeTitle}
-				hasFilters={hasFilters}
-				renderFilter={() => (
-					<CollectionsFilters
-						filter={filters}
-						onChangeSpecialization={onChangeSpecialization}
-						onChangeIsFree={onChangeIsFree}
-						onChangeIsMy={onChangeIsMy}
-					/>
-				)}
-			/>
-			<Card className={styles.content}>
+		<PageWrapper
+			roles={['admin', 'author']}
+			isLoading={isLoading}
+			skeleton={<CollectionsPageSkeleton />}
+			hasFilters={hasFilters}
+			hasError={isError}
+			hasData={(collections?.data || []).length > 0}
+			stubs={stubs}
+			paginationOptions={{
+				page: filters.page || 1,
+				onChangePage,
+				limit: collections?.limit || 0,
+				total: collections?.total || 0,
+			}}
+			content={
 				<CollectionsTable
-					collections={collections.data}
+					collections={collections?.data || []}
 					selectedCollections={selectedCollections}
 					onSelectCollections={onSelectCollections}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={collections.limit}
-					total={collections.total}
-				/>
-				{collections.data.length === 0 && <Stub type="filter-empty" onClick={onResetAll} />}
-			</Card>
-		</Flex>
+			}
+		>
+			{({ content, pagination }) => (
+				<Flex componentType="main" direction="column" gap="24">
+					<SearchSection
+						to="create"
+						showRemoveButton={selectedCollections.length > 0}
+						searchValue={filters.title}
+						onSearch={onChangeTitle}
+						hasFilters={hasFilters}
+						renderFilter={() => (
+							<CollectionsFilters
+								filter={filters}
+								onChangeSpecialization={onChangeSpecialization}
+								onChangeIsFree={onChangeIsFree}
+								onChangeIsMy={onChangeIsMy}
+							/>
+						)}
+					/>
+					<Card className={styles.content}>
+						<>
+							{content}
+							{pagination}
+						</>
+					</Card>
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

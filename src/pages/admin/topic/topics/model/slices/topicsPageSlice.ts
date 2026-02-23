@@ -15,6 +15,9 @@ const TopicsPageSlice = createSlice({
 		setSelectedTopics: (state, action: PayloadAction<SelectedAdminEntities>) => {
 			state.selectedTopics = action.payload;
 		},
+		clearSelectedTopics: (state) => {
+			state.selectedTopics = [];
+		},
 	},
 });
 

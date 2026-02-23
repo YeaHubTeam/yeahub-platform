@@ -33,6 +33,7 @@ export const Modal = ({
 	buttonPrimaryDisabled,
 	buttonOutlineDisabled,
 	withCloseIcon = true,
+	hasPadding = true,
 	variant = 'default',
 	dataTestId = 'Modal',
 	children,
@@ -99,7 +100,11 @@ export const Modal = ({
 		>
 			<div
 				data-testid={dataTestId}
-				className={classNames(styles.modal, styles[`${variant}-modal`], styles[`${view}-modal`])}
+				className={classNames(
+					styles.modal,
+					styles[`variant-${variant}-modal`],
+					styles[`view-${view}-modal`],
+				)}
 				ref={overlayRef}
 			>
 				{withCloseIcon && (
@@ -117,11 +122,11 @@ export const Modal = ({
 				)}
 				<div
 					data-testid={modalTestIds.modalContentWrapper}
-					className={classNames(styles['content-wrapper'], className)}
+					className={classNames(className, { [styles['content-wrapper']]: hasPadding })}
 				>
 					{title && (
 						<Text
-							className={classNames(styles.title, styles[`${variant}-title`])}
+							className={classNames(styles.title, styles[`variant-${variant}-title`])}
 							variant="body5-accent"
 							color={titleColors[variant]}
 							dataTestId={modalTestIds.modalTitle}
@@ -136,7 +141,7 @@ export const Modal = ({
 					)}
 				</div>
 				{isButtons && (
-					<div className={classNames(styles.buttons, styles[`${variant}-buttons`])}>
+					<div className={classNames(styles.buttons, styles[`variant-${variant}-buttons`])}>
 						{buttonPrimaryText && (
 							<Button
 								style={{ maxWidth: '240px' }}

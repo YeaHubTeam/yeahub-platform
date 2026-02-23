@@ -1,5 +1,6 @@
 export const subscriptionApiUrls = {
 	getUserSubscription: '/subscriptions/users/:userId',
+	getSubscriptions: 'subscriptions',
 };
 
 export const subscriptionPrices = {

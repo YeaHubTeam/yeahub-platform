@@ -7,6 +7,7 @@ export const handleApiError = <T>(error: unknown, handler: (error: ApiErrorData<
 		return handler(typedError.error.data);
 	} else {
 		return i18n.t(Translation.ERROR);
+		//eslint-disable-next-line no-console
 		console.error(error);
 	}
 };

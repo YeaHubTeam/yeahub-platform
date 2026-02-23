@@ -13,7 +13,7 @@ import { MAX_SHOW_LIMIT_SKILLS } from '../../model/constants/skillConstants';
 interface SkillsListFieldProps {
 	selectedSkills?: number[];
 	onChangeSkills: (skills: number[] | undefined) => void;
-	selectedSpecialization: number;
+	selectedSpecialization?: number;
 	showAllLabel?: boolean;
 }
 

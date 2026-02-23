@@ -7,10 +7,21 @@
 		"placeholder": "Add description"
 	},
 	"keywords": {
-		"additional": "Keywords"
+		"additional": "Keywords",
+		"title": "Keywords",
+		"short": "Keywords",
+		"label": "Add keywords to improve search",
+		"add": {
+			"placeholder": "Enter keyword"
+		},
+		"filter": {
+			"placeholder": "Select existing keyword"
+		}
 	},
 	"link": "Link",
-	"search.placeholder": "Enter resource...",
+	"search": {
+		"placeholder": "Enter resource..."
+	},
 	"skills": {
 		"additional": "Skills",
 		"title": "Skills"
@@ -75,7 +86,8 @@
 			"edit": "Review request form"
 		},
 		"reject": "Reject",
-		"approve": "Approve"
+		"approve": "Approve",
+		"my": "My requests"
 	},
 	"stub": {
 		"empty": {
@@ -83,7 +95,26 @@
 				"title": "It seems that there are no resources here yet",
 				"subtitle": "Create your first useful resource and start adding content to the knowledge base",
 				"submit": "Add resource"
+			},
+			"resource.detail": {
+				"title": "It looks like resource data is missing",
+				"subtitle": "Try refreshing the page or retry the request",
+				"submit": "Retry"
+			},
+			"resource.requests": {
+				"title": "It looks like there are no resoruce requests yet",
+				"subtitle": "Once the first requests is created, it will appear here"
+			},
+			"resource.request.detail": {
+				"title": "It seems the resource requests data is missing",
+				"subtitle": "Try refreshing the page or retry the requests",
+				"submit": "Retry"
 			}
+		}
+	},
+	"sort": {
+		"author": {
+			"title": "My resources"
 		}
 	}
 }

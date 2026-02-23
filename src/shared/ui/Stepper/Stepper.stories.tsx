@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
-import { Step, Stepper } from './Stepper';
+import { Stepper } from './Stepper';
+import type { Step } from './types';
 
 type StoryStep = 'step1' | 'step2' | 'step3' | 'step4' | 'step5';
 

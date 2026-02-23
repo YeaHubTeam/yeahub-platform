@@ -16,6 +16,7 @@ export const useGetResourcesFilterParams = (initialParams: ResourcesFilterParams
 			? (parsedParams.types.split(',') as ResourceTypeCode[])
 			: initialParams.types,
 		skills: parsedParams.skills ? parsedParams.skills.split(',').map(Number) : initialParams.skills,
+		isMy: parsedParams.isMy ? parsedParams.isMy === 'true' : initialParams.isMy,
 	};
 
 	return currentParams;

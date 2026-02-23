@@ -2,11 +2,13 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Translation, User } from '@/shared/config';
 import { Modal, RequiredModalProps } from '@/shared/ui/Modal';
-import { TextHtml } from '@/shared/ui/TextHtml';
+import { Text } from '@/shared/ui/Text';
 
 import { User as UserType } from '@/entities/user';
 
 import { useDeleteAccountMutation } from '../../api/deleteAccountApi';
+
+import styles from './AdminDeleteAccountModal.module.css';
 
 interface AdminDeleteAccountModalProps extends RequiredModalProps {
 	user: UserType;
@@ -27,6 +29,7 @@ export const AdminDeleteAccountModal = ({
 
 	return (
 		<Modal
+			className={styles.modal}
 			title={t(User.DELETE_ADMIN_TITLE)}
 			variant="error"
 			isOpen={isOpen}
@@ -36,7 +39,9 @@ export const AdminDeleteAccountModal = ({
 			buttonPrimaryClick={handleDeleteAccount}
 			buttonOutlineClick={onClose}
 		>
-			<TextHtml html={t(User.DELETE_ADMIN_DESCRIPTION_MODAL, { username: user.username })} />
+			<Text variant="body3-accent">
+				{t(User.DELETE_ADMIN_DESCRIPTION_MODAL, { username: user.username })}
+			</Text>
 		</Modal>
 	);
 };

@@ -27,7 +27,7 @@ export const FooterLinks = () => {
 					{t(Landing.FOOTER_DOCS)}
 				</Text>
 			</NavLink>
-			<NavLink data-testid="Footer_NavMedia" to="/socialMedia">
+			<NavLink data-testid="Footer_NavMedia" to="/media">
 				<Text
 					dataTestId="Footer_Media"
 					className={styles['docs-link']}

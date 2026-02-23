@@ -25,6 +25,7 @@ export interface CardProps {
 	actionTitle?: string;
 	actionDisabled?: boolean;
 	withShadow?: boolean;
+	withHover?: boolean;
 	withOutsideShadow?: boolean;
 	withBorder?: boolean;
 	isActionPositionBottom?: boolean;
@@ -77,6 +78,7 @@ export const Card = ({
 	className = '',
 	classNameContent = '',
 	withShadow = false,
+	withHover = false,
 	withOutsideShadow = false,
 	withBorder = false,
 	expandable = false,
@@ -136,6 +138,7 @@ export const Card = ({
 				[styles['card-expandable']]: isHeightForExpand,
 				[styles['card-outside-shadow']]: withOutsideShadow,
 				[styles.border]: withBorder,
+				[styles['with-hover']]: withHover,
 			})}
 			style={{
 				height: isExpand ? `${contentHeight + 120}px` : '',

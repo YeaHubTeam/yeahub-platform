@@ -2,12 +2,20 @@ import { Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { ROUTES, SentryRouteTracker } from '@/shared/config';
-import { useAppSelector, useModal } from '@/shared/libs';
+import {
+	getFromLS,
+	LS_BANNER_NY_DASHBOARD_KEY,
+	LS_MODAL_NY_DASHBOARD_KEY,
+	useAppSelector,
+	useModal,
+} from '@/shared/libs';
 import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { Drawer } from '@/shared/ui/Drawer';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { ErrorElement } from '@/shared/ui/ErrorElement';
+import { NYBanner } from '@/shared/ui/NYBanner';
+import { NYModal } from '@/shared/ui/NYModal';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
 import { getIsEmptySpecialization, getProfilesLength } from '@/entities/profile';
@@ -28,6 +36,8 @@ interface MainLayoutProps {
 export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const [isOpenSidebarDrawer, setIsOpenSidebarDrawer] = useState(false);
 	const { isOpen, onOpen, onClose } = useModal();
+	const isOpenNYBanner = getFromLS(LS_BANNER_NY_DASHBOARD_KEY);
+	const isOpenNYModal = getFromLS(LS_MODAL_NY_DASHBOARD_KEY);
 
 	const location = useLocation();
 
@@ -85,6 +95,8 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
 						<main className={styles.main}>
 							<div className={styles.container}>
+								<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_DASHBOARD_KEY} />
+								<NYModal isOpenModal={!isOpenNYModal} />
 								<Breadcrumbs />
 								<Suspense fallback={<SkeletonGenerator />}>
 									<Outlet />

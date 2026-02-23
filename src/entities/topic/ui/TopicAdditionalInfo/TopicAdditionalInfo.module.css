@@ -1,0 +1,12 @@
+.normal-height {
+  width: 360px;
+  height: auto;
+  min-height: 300px;
+}
+    
+      
+    
+.normal-height:has(.author-info) {
+  min-height: 400px;
+}
+    

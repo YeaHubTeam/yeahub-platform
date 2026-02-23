@@ -22,6 +22,7 @@ import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 
 import styles from './RequestInfoPage.module.css';
+import { RequestInfoPageSkeleton } from './RequestInfoPage.skeleton';
 
 const statusesText: Record<ResourceRequestStatus, string> = {
 	approved: 'status.approved',
@@ -39,7 +40,7 @@ export const RequestInfoPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const { requestId } = useParams<{ requestId: string }>();
-	const { data: request } = useGetResourceRequestByIdQuery(requestId || '');
+	const { data: request, isLoading, isFetching } = useGetResourceRequestByIdQuery(requestId || '');
 	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.translation]);
 	const isEmailVerified = useAppSelector(getIsVerified);
 
@@ -48,6 +49,10 @@ export const RequestInfoPage = () => {
 			navigate(ROUTES.wiki.resources.page);
 		}
 	}, [isEmailVerified, navigate]);
+
+	if (isLoading || isFetching) {
+		return <RequestInfoPageSkeleton />;
+	}
 
 	if (!request) {
 		return null;

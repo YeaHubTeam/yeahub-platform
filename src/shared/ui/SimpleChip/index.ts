@@ -1,1 +1,0 @@
-export { SimpleChip } from './SimpleChip';

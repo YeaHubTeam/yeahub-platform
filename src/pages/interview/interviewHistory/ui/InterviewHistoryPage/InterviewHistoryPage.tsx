@@ -1,12 +1,18 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import { i18Namespace } from '@/shared/config';
+import { InterviewHistory, ROUTES } from '@/shared/config';
 import { EventCalendar, Value } from '@/shared/ui/Calendar';
 import { Flex } from '@/shared/ui/Flex';
 
 import { FullPassedQuizzesList } from '@/widgets/interview/PassedQuizzesList';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { useInterviewHistoryData } from '../../model/hooks/useInterviewHistoryData';
 import { getInterviewHistoryPageDateRange } from '../../model/selectors/InterviewHistoryPageSelectors';
 import { interviewHistoryPageActions } from '../../model/slices/InterviewHistoryPageSlice';
 
@@ -15,11 +21,15 @@ import { InterviewHistoryPageSkeleton } from './InterviewHistoryPage.skeleton';
 
 const InterviewHistoryPage = () => {
 	const [selectedDates, setSelectedDates] = useState<Value>(null);
-	const [listLoaded, setListLoaded] = useState(false);
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const dateRange = useSelector(getInterviewHistoryPageDateRange);
+	const { data, isLoading, isError, refetch, onLoadNext } = useInterviewHistoryData(dateRange);
+	const { t } = useTranslation(i18Namespace.interviewHistory);
+
+	const hasFilters = selectedDates !== null;
 
 	const onDateChange = (dates: Value) => {
 		setSelectedDates(dates);
@@ -31,26 +41,54 @@ const InterviewHistoryPage = () => {
 		dispatch(interviewHistoryPageActions.resetDateRange());
 	};
 
+	const onMoveToInterview = () => {
+		navigate(ROUTES.interview.quiz.page);
+	};
+
 	useEffect(() => {
 		return () => {
 			dispatch(interviewHistoryPageActions.resetDateRange());
 		};
 	}, [dispatch]);
 
+	const stubs: PageWrapperStubs = {
+		error: {
+			onClick: refetch,
+		},
+		'filter-empty': {
+			onClick: onResetFilters,
+		},
+		empty: {
+			title: t(InterviewHistory.STUB_EMPTY_TITLE),
+			subtitle: t(InterviewHistory.STUB_EMPTY_SUBTITLE),
+			buttonText: t(InterviewHistory.STUB_EMPTY_BUTTON),
+			onClick: onMoveToInterview,
+		},
+	};
+
 	return (
-		<Flex gap="20">
-			{!listLoaded && <InterviewHistoryPageSkeleton />}
-			<div className={classNames(style['container-list'], { [style.hidden]: !listLoaded })}>
-				<FullPassedQuizzesList
-					dateRange={dateRange}
-					onLoaded={() => {
-						setListLoaded(true);
-					}}
-					resetFilters={onResetFilters}
-				/>
-			</div>
-			{listLoaded && <EventCalendar onDateChange={onDateChange} selectedDates={selectedDates} />}
-		</Flex>
+		<PageWrapper
+			shouldVerify
+			shouldPremium
+			isLoading={isLoading}
+			hasError={isError}
+			hasData={Boolean(data?.length)}
+			hasFilters={hasFilters}
+			stubs={stubs}
+			skeleton={<InterviewHistoryPageSkeleton />}
+			content={
+				<div className={classNames(style['container-list'])}>
+					<FullPassedQuizzesList data={data ?? []} onLoadNext={onLoadNext} />
+				</div>
+			}
+		>
+			{({ content }) => (
+				<Flex gap="20">
+					{content}
+					<EventCalendar onDateChange={onDateChange} selectedDates={selectedDates} />
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

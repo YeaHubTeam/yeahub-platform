@@ -2,6 +2,13 @@
   flex: 1;
 }
 
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 360px;  
+}
+
 .description {
   display: block;
   width: 100%;

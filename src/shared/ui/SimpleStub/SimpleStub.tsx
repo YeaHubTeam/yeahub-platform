@@ -8,6 +8,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { simpleStubTestIds } from './constants';
 import styles from './SimpleStub.module.css';
 
 export type SimpleStubVariant = 'no-authorized' | 'empty' | 'no-access';
@@ -32,8 +33,13 @@ export const SimpleStub = ({ variant, text }: SimpleStubProps) => {
 	return (
 		<Card className={styles.wrapper} withOutsideShadow>
 			<Flex justify="center" align="center" gap="8" direction="column">
-				<Image width={size} height={size} className={styles.icon} />
-				<Text variant="body4" className={styles.text}>
+				<Image
+					width={size}
+					height={size}
+					className={styles.icon}
+					data-testid={simpleStubTestIds.simpleStubIcon(variant)}
+				/>
+				<Text variant="body4" className={styles.text} dataTestId={simpleStubTestIds.simpleStubText}>
 					{text}
 				</Text>
 			</Flex>

@@ -1,79 +1,70 @@
 import classNames from 'classnames';
-import { Dispatch, Key, SetStateAction, useEffect, useRef } from 'react';
+import { Dispatch, Key, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { tabsTestIds } from './constants';
 import styles from './Tabs.module.css';
-
-export interface Tab<T> {
-	id: T;
-	label: string;
-	count?: number;
-	Component: () => JSX.Element;
-}
+import type { Tab, TabColor } from './types';
 
 export interface TabsProps<T> {
 	tabs: Tab<T>[];
 	activeTab: Tab<T>;
+	color?: TabColor;
 	setActiveTab: Dispatch<SetStateAction<Tab<T>>>;
+	disableHashUpdate?: boolean;
 }
 
-export const Tabs = <T,>({ tabs, activeTab, setActiveTab }: TabsProps<T>) => {
-	const lineRef = useRef<HTMLDivElement>(null);
+export const Tabs = <T,>({
+	tabs,
+	activeTab,
+	setActiveTab,
+	color = 'default',
+	disableHashUpdate = false,
+}: TabsProps<T>) => {
 	const navigate = useNavigate();
 
-	const onTabToggle = (e: React.MouseEvent<HTMLLIElement>, tab: Tab<T>) => {
-		const tabElement = e.target as HTMLLIElement;
-		const tabRect = tabElement.offsetLeft;
-
+	const onTabToggle = (tab: Tab<T>) => {
 		setActiveTab(tab);
-		navigate(`#${tab.id}`, { replace: true });
-
-		if (lineRef.current) {
-			lineRef.current.style.width = tabElement.offsetWidth + 'px';
-			lineRef.current.style.left = `${tabRect}px`;
+		if (!disableHashUpdate) {
+			navigate(`#${tab.id}`, { replace: true });
 		}
 	};
 
-	useEffect(() => {
-		const tabElement = document.querySelector(
-			`.${styles['tab-item']}.${styles.active}`,
-		) as HTMLLIElement | null;
-		if (tabElement && lineRef.current) {
-			const tabRect = tabElement.offsetLeft;
-			lineRef.current.style.width = `${tabElement.offsetWidth}px`;
-			lineRef.current.style.left = `${tabRect}px`;
-		}
-	}, [activeTab]);
-
 	return (
-		<Flex direction="column" gap="28" className={styles['tab-container']} data-testid="Tabs">
+		<Flex
+			direction="column"
+			gap="28"
+			className={styles['tab-container']}
+			data-testid={tabsTestIds.tabs}
+		>
 			<Flex
 				componentType="ul"
-				gap="24"
-				className={styles['tab-list']}
+				gap="10"
+				className={classNames(styles['tab-list'], styles[color])}
 				role="tablist"
-				data-testid="Tabs_List"
+				data-testid={tabsTestIds.list}
 			>
 				{tabs.map((tab) => (
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<li
 						key={tab.id as Key}
-						className={classNames(styles['tab-item'], { [styles.active]: activeTab.id === tab.id })}
-						onClick={(e) => onTabToggle(e, tab)}
+						className={classNames(styles['tab-item'], styles[color], {
+							[styles.active]: activeTab.id === tab.id,
+						})}
+						onClick={() => onTabToggle(tab)}
 						role="tab"
 						tabIndex={0}
-						data-testid={`Tabs_Item_${tab.id}`}
+						data-testid={tabsTestIds.item(String(tab.id))}
 					>
-						<Text variant="body4" color={activeTab.id === tab.id ? 'black-800' : 'black-500'}>
+						<Text variant="body4" color={activeTab.id === tab.id ? 'purple-700' : 'black-500'}>
 							{tab.label} {(tab.count ?? 0) > 0 && `(${tab.count})`}
 						</Text>
 					</li>
 				))}
 			</Flex>
-			<div ref={lineRef} className={styles['line-indicator']} data-testid="Tabs_Line" />
 		</Flex>
 	);
 };

@@ -11,12 +11,14 @@ export const useCompaniesFilters = (initialParams: CompaniesFilterParams) => {
 		currentParams,
 	);
 
-	const hasFilters = (filters.page || 1) > 1 || Boolean(filters.title);
+	const hasFilters = (filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.isMy);
 
 	const onChangeTitle = (title: CompaniesFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
 	};
-
+	const onChangeIsMy = (isMy: CompaniesFilterParams['isMy']) => {
+		onFilterChange({ isMy, page: 1 });
+	};
 	const onChangePage = (page: CompaniesFilterParams['page']) => {
 		onFilterChange({ page });
 	};
@@ -27,5 +29,6 @@ export const useCompaniesFilters = (initialParams: CompaniesFilterParams) => {
 		onResetFilters,
 		onChangeTitle,
 		onChangePage,
+		onChangeIsMy,
 	};
 };

@@ -125,21 +125,6 @@ export const gurus: Guru[] = [
 		},
 	},
 	{
-		title: '1C Developer Guru',
-		name: 'Nadvorny Vladimir',
-		specializations: [41, 43],
-		hasPractice: false,
-		description:
-			'Отвечает за направление 1C: следит за актуальностью материалов, помогает формировать контент и добавляет вопросы для практики и интервью.',
-		image:
-			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%B3%D1%83%D1%80%D1%831%D1%81.jpg',
-		socials: {
-			telegram: 'https://t.me/Mentor1CProfi',
-			profileId: '73771794-59d6-4c5b-8449-07e1887ea0d2',
-			landing: 'https://t.me/Mentor1CProfi',
-		},
-	},
-	{
 		title: 'Unity Guru',
 		name: 'Oleg Miroshkin',
 		specializations: [35],

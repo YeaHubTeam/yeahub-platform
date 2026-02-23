@@ -53,7 +53,7 @@ export const EditProfileForm = () => {
 			<Text variant="body5-strong" isMainTitle className={styles.title}>
 				{t(Profile.EDIT_PAGE_TITLE)}
 			</Text>
-			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} color="gray" />
 			<FormProvider {...methods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<form onSubmit={methods.handleSubmit(onSubmit)}>

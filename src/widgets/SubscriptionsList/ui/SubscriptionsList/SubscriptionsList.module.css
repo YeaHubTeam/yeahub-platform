@@ -1,0 +1,21 @@
+.subtitle {
+  width: 100%;
+  max-width: 578px;
+}
+
+.list {
+  flex: 0 0 calc(25% - 15px);
+  margin-top: 20px;
+}
+
+@media screen and (width < 1279px) {
+  .list > * {
+    flex: 0 0 calc(50% - 10px); 
+  }
+}
+
+@media screen and (width < 767px) {
+  .list > * {
+    flex: 0 0 100%; 
+  }
+}

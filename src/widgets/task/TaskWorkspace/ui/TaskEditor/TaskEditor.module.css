@@ -1,0 +1,17 @@
+.wrapper {
+  height: 100%;
+}
+
+.header {
+  z-index: 1;
+}
+
+.block {
+  height: 100%;
+  overflow: hidden;
+}
+
+.editor {
+  flex: 1;
+  overflow: hidden;
+}

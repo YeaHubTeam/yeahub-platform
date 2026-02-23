@@ -18,7 +18,6 @@ export const i18Namespace = {
 	skill: 'skill',
 	specialization: 'specialization',
 	subscription: 'subscription',
-	subscriptionCard: 'subscriptionCard',
 	translation: 'translation',
 	user: 'user',
 	collection: 'collection',
@@ -28,4 +27,6 @@ export const i18Namespace = {
 	guru: 'guru',
 	media: 'media',
 	topic: 'topic',
+	task: 'task',
+	programmingLanguage: 'programmingLanguage',
 };

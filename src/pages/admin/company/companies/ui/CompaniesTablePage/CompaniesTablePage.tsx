@@ -1,19 +1,23 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
+import { i18Namespace, Companies, ROUTES } from '@/shared/config';
 import { useAppDispatch, useAppSelector, SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
-import { TablePagination } from '@/shared/ui/TablePagination';
 
 import { useGetCompaniesListQuery } from '@/entities/company';
 import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { DeleteCompaniesButton } from '@/features/company/deleteCompanies';
-import { useCompaniesFilters } from '@/features/company/filterCompanies';
+import { CompaniesFilters, useCompaniesFilters } from '@/features/company/filterCompanies';
 
 import { CompaniesTable } from '@/widgets/CompaniesTable';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
+
+import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 
 import { getSelectedCompanies } from '../../model/selectors/companiesTablePageSelectors';
 import { companiesTablePageActions } from '../../model/slices/companiesTablePageSlice';
@@ -21,10 +25,14 @@ import { companiesTablePageActions } from '../../model/slices/companiesTablePage
 import styles from './CompaniesTablePage.module.css';
 
 const CompaniesTablePage = () => {
+	const { t } = useTranslation(i18Namespace.companies);
+	const navigate = useNavigate();
+
 	const selectedCompanies = useAppSelector(getSelectedCompanies);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
-	const { filters, onChangePage, onChangeTitle, onResetFilters } = useCompaniesFilters({ page: 1 });
+	const { filters, hasFilters, onChangePage, onChangeTitle, onResetFilters, onChangeIsMy } =
+		useCompaniesFilters({ page: 1 });
 
 	const userId = useAppSelector(getUserId);
 
@@ -32,10 +40,16 @@ const CompaniesTablePage = () => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
 	};
 
-	const { data: companies } = useGetCompaniesListQuery({
+	const {
+		data: companies,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetCompaniesListQuery({
 		page: filters.page,
 		limit: 10,
 		titleOrLegalNameOrDescriptionSearch: filters.title,
+		authorId: filters.isMy ? userId : undefined,
 	});
 
 	const companiesWithEditFlags = useMemo(() => {
@@ -46,35 +60,66 @@ const CompaniesTablePage = () => {
 		}));
 	}, [companies, userId, isAuthor]);
 
-	if (!companies) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Companies.STUB_EMPTY_COMPANIES_TITLE),
+			subtitle: t(Companies.STUB_EMPTY_COMPANIES_SUBTITLE),
+			buttonText: t(Companies.STUB_EMPTY_COMPANIES_SUBMIT),
+			onClick: () => navigate(ROUTES.admin.companies.create.page),
+		},
+		'filter-empty': {
+			onClick: onResetFilters,
+		},
+		error: {
+			onClick: refetch,
+		},
+	};
 
 	return (
-		<Flex componentType="main" direction="column" gap="24">
-			<SearchSection
-				to="create"
-				onSearch={onChangeTitle}
-				searchValue={filters.title}
-				showRemoveButton={selectedCompanies.length > 0}
-				renderRemoveButton={() => <DeleteCompaniesButton companiesToRemove={selectedCompanies} />}
-			/>
-			<Card className={styles.content}>
+		<PageWrapper
+			isLoading={isLoading}
+			hasError={isError}
+			skeleton={<CompaniesTablePageSkeleton />}
+			hasFilters={hasFilters}
+			hasData={companiesWithEditFlags.length > 0}
+			stubs={stubs}
+			roles={['admin', 'author']}
+			paginationOptions={{
+				page: filters.page || 1,
+				onChangePage,
+				limit: companies?.limit || 0,
+				total: companies?.total || 0,
+			}}
+			content={
 				<CompaniesTable
 					companies={companiesWithEditFlags}
 					selectedCompanies={selectedCompanies}
 					onSelectCompanies={onSelectCompanies}
 				/>
-				<TablePagination
-					page={filters.page || 1}
-					onChangePage={onChangePage}
-					limit={companies.limit}
-					total={companies.total}
-				/>
-
-				{companies.data.length === 0 && <Stub type="filter-empty" onClick={onResetFilters} />}
-			</Card>
-		</Flex>
+			}
+		>
+			{({ content, pagination }) => (
+				<Flex direction="column" gap="24">
+					<SearchSection
+						to="create"
+						onSearch={onChangeTitle}
+						searchValue={filters.title}
+						hasFilters={hasFilters}
+						showRemoveButton={selectedCompanies.length > 0}
+						renderRemoveButton={() => (
+							<DeleteCompaniesButton companiesToRemove={selectedCompanies} />
+						)}
+						renderFilter={() => <CompaniesFilters filters={filters} onChangeIsMy={onChangeIsMy} />}
+					/>
+					<Card className={styles.content}>
+						<>
+							{content}
+							{pagination}
+						</>
+					</Card>
+				</Flex>
+			)}
+		</PageWrapper>
 	);
 };
 

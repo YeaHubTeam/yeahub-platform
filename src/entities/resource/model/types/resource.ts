@@ -107,6 +107,14 @@ export interface ResourceType {
 export type GetResourceTypesResponse = ResourceType[];
 export type GetMyRequestsResourcesResponse = Response<ResourceRequest[]>;
 
+export type GetResourceKeywordsResponse = Response<string[]>;
+
+export interface GetResourceKeywordsParamsRequest {
+	page?: number;
+	limit?: number;
+	title?: string;
+}
+
 export type ResourceCreateError =
 	| 'auth.auth.unauthorized'
 	| 'auth.user.verified'

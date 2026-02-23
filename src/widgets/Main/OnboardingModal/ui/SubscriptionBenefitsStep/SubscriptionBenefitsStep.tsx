@@ -9,9 +9,13 @@ import { LayoutStepComponent } from '../LayoutStepComponent/LayoutStepComponent'
 
 interface SubscriptionBenefitsStepProps {
 	goNextStep?: () => void;
+	onCloseModal?: () => void;
 }
 
-export const SubscriptionBenefitsStep = ({ goNextStep }: SubscriptionBenefitsStepProps) => {
+export const SubscriptionBenefitsStep = ({
+	goNextStep,
+	onCloseModal,
+}: SubscriptionBenefitsStepProps) => {
 	const { t } = useTranslation(i18Namespace.onboarding);
 	const navigate = useNavigate();
 
@@ -28,6 +32,7 @@ export const SubscriptionBenefitsStep = ({ goNextStep }: SubscriptionBenefitsSte
 	];
 
 	const onMoveSelectSubscription = () => {
+		onCloseModal?.();
 		navigate(SELECT_TARIFF_SETTINGS_TAB);
 	};
 	return (

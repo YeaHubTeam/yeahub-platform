@@ -67,7 +67,7 @@ export interface GetQuestionsListParamsRequest {
 	rate?: number[];
 	keywords?: string[];
 	skillFilterMode?: skillFilterMode;
-	specialization?: number | number[];
+	specializationId?: number | number[];
 	order?: string;
 	orderBy?: string;
 	random?: boolean;
@@ -115,11 +115,19 @@ export interface MostDifficultQuestion {
 	stat: number;
 }
 
-export interface MostDifficultQuestionsResponse {
+export interface MostDifficultQuestionSpecialization {
 	id: number;
 	specialization: Specialization;
 	calculatedAt: string;
 	topStat: MostDifficultQuestion[];
+}
+
+export type MostDifficultQuestionsResponse = Response<MostDifficultQuestionSpecialization>;
+
+export interface MostDifficultQuestionsRequestParams {
+	specId: number;
+	page?: number;
+	limit?: number;
 }
 
 export interface PopularQuestionStat {
@@ -138,3 +146,11 @@ export interface PopularQuestionsSpecialization {
 }
 
 export type GetPopularQuestionsResponse = PopularQuestionsSpecialization[];
+
+export type GetQuestionKeywordsResponse = Response<string[]>;
+
+export interface GetQuestionKeywordsParamsRequest {
+	page?: number;
+	limit?: number;
+	title?: string;
+}

@@ -7,7 +7,7 @@ import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
-import { QuestionPageSkeleton } from '@/pages/admin/question/questionDetail';
+import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
@@ -38,7 +38,7 @@ const SkeletonGenerator = () => {
 	}
 
 	if (isAdminQuestionDetailsPage) {
-		return <QuestionPageSkeleton />;
+		return <QuestionPageContentSkeleton />;
 	}
 
 	switch (location.pathname) {

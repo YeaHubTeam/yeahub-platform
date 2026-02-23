@@ -15,5 +15,19 @@
 	"select": {
 		"choose": "Select skill from the list"
 	},
-	"create.page.title": "Topic"
+	"create.page.title": "Topic",
+	"stub": {
+		"empty": {
+			"topics": {
+				"title": "No topics found yet",
+				"subtitle": "Create your first one — and start adding content to the knowledge base",
+				"submit": "Add a topic"
+			},
+			"topic": {
+				"title": "No topic data available",
+				"subtitle": "Please refresh the page or try the request again",
+				"submit": "Retry"
+			}
+		}
+	}
 }

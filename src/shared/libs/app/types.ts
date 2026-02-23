@@ -7,8 +7,8 @@ export interface SelectedEntity<Id extends string | number> {
 }
 export type SelectedEntities<Id extends string | number> = SelectedEntity<Id>[];
 
-export type SelectedAdminEntity = SelectedEntity<number>;
-export type SelectedAdminEntities = SelectedAdminEntity[];
+export type SelectedAdminEntity<Id extends string | number = number> = SelectedEntity<Id>;
+export type SelectedAdminEntities<Id extends string | number = number> = SelectedAdminEntity<Id>[];
 
 export type Pallete =
 	| 'purple-950'

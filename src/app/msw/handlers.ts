@@ -1,14 +1,17 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
 import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
 import { quizHandlers } from '@/entities/question';
 import { learnedQuestionHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
+import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
 import { specializationsProgressHandlers } from '@/entities/specialization';
+import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
 import { questionCreateHandlers } from '@/features/question/createQuestion';
@@ -22,6 +25,7 @@ import { skillEditHandlers } from '@/features/skill/editSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
+import { createTopicHandlers } from '@/features/topics/createTopics';
 
 export const handlers = [
 	...authHandlers,
@@ -48,5 +52,9 @@ export const handlers = [
 	...difficultQuestionsHandler,
 	...learnedQuestionHandlers,
 	...specializationsProgressHandlers,
+	...resourcesHandlers,
 	...usersRatingHandlers,
+	...topicHandlers,
+	...hhAnalyticsHandlers,
+	...createTopicHandlers,
 ];

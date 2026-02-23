@@ -3,6 +3,10 @@
 }
 
 .select {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 8px;
   width: 360px;
 }
 

@@ -1,0 +1,7 @@
+{
+	"select": {
+		"choose": "Select a language from the list",
+		"empty": "There are no options",
+		"selected": "Selected programming language"
+	}
+}

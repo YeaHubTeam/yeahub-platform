@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
-import { Tab, Tabs } from './Tabs';
+import { Tabs } from './Tabs';
+import type { Tab } from './types';
 
 type StoryTab = 'tab1' | 'tab2';
 

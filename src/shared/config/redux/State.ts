@@ -10,6 +10,7 @@ import { QuestionsTablePageState } from '@/pages/admin/question/questions';
 import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/resource/resources';
 import { SkillsPageState } from '@/pages/admin/skill/skills';
 import { SpecializationsPageState } from '@/pages/admin/specialization/specializations';
+import { TasksTablePageState } from '@/pages/admin/task/tasks';
 import { TopicsPageState } from '@/pages/admin/topic/topics';
 import { InterviewHistoryState } from '@/pages/interview/interviewHistory';
 
@@ -27,4 +28,5 @@ export interface State {
 	profile: ProfileState;
 	collectionsPage: CollectionsPageState;
 	topicsPage: TopicsPageState;
+	tasksTablePage: TasksTablePageState;
 }

@@ -1,29 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route, useScreenSize, useAppSelector } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
-import { Flex } from '@/shared/ui/Flex';
-import { Tooltip } from '@/shared/ui/Tooltip';
+import { i18Namespace, Questions } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
-import { useGetQuestionByIdQuery, QuestionAdditionalInfo } from '@/entities/question';
+import { useGetQuestionByIdQuery } from '@/entities/question';
 
-import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+import { PageWrapper, type PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import { QuestionBody } from '@/widgets/question/QuestionBody';
-import { QuestionHeader } from '@/widgets/question/QuestionHeader';
-
-import styles from './QuestionPage.module.css';
-import { QuestionPageSkeleton } from './QuestionPage.skeleton';
+import { QuestionPageContent } from '../QuestionPageContent/QuestionPageContent';
+import { QuestionPageContentSkeleton } from '../QuestionPageContent/QuestionPageContent.skeleton';
 
 export const QuestionPage = () => {
-	const { t } = useTranslation(i18Namespace.translation);
-
-	const { isMobile, isTablet } = useScreenSize();
+	const { t } = useTranslation(i18Namespace.questions);
 	const { questionId } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
@@ -32,60 +23,44 @@ export const QuestionPage = () => {
 
 	const {
 		data: question,
-		isFetching,
-		isLoading,
+		isLoading: isLoadingQuestion,
+		isError: isErrorQuestion,
+		refetch: refetchQuestion,
 	} = useGetQuestionByIdQuery({
 		questionId,
 		profileId,
 	});
 
-	if (isLoading || isFetching) {
-		return <QuestionPageSkeleton />;
-	}
+	const hasQuestion = question && Object.keys(question).length > 0;
+	const isDisabled = Boolean(hasQuestion && isAuthor && question.createdBy?.id !== userId);
 
-	if (!question) {
-		return null;
-	}
+	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Questions.STUB_EMPTY_QUESTION_TITLE),
+			subtitle: t(Questions.STUB_EMPTY_QUESTION_SUBTITLE),
+			buttonText: t(Questions.STUB_EMPTY_QUESTION_SUBMIT),
+			onClick: refetchQuestion,
+		},
+		error: {
+			onClick: () => refetchQuestion,
+		},
+	};
 
-	const { rate, keywords, complexity, questionSkills, shortAnswer, longAnswer, id, createdBy } =
-		question;
-
-	const isDisabled = isAuthor && createdBy?.id !== userId;
+	const content = hasQuestion ? (
+		<QuestionPageContent question={question} isDisabled={isDisabled} />
+	) : null;
 
 	return (
-		<>
-			<BackHeader>
-				<DeleteQuestionButton questionId={id} isDetailPage disabled={isDisabled} />
-				<Tooltip
-					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-					placement="bottom-start"
-					color="red"
-					offsetTooltip={10}
-					shouldShowTooltip={isDisabled}
-				>
-					<NavLink style={{ marginLeft: 'auto' }} to={route(ROUTES.admin.questions.edit.page, id)}>
-						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</Tooltip>
-			</BackHeader>
-			<Flex gap="20">
-				<Flex gap="20" direction="column" flex={1} maxWidth>
-					<QuestionHeader question={question} />
-					<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
-				</Flex>
-				{!isMobile && !isTablet && (
-					<Flex direction="column" gap="20" className={styles.additional}>
-						<QuestionAdditionalInfo
-							rate={rate}
-							createdBy={createdBy}
-							keywords={keywords}
-							complexity={complexity}
-							questionSkills={questionSkills}
-							route={ROUTES.wiki.questions.page}
-						/>
-					</Flex>
-				)}
-			</Flex>
-		</>
+		<PageWrapper
+			isLoading={isLoadingQuestion}
+			hasError={isErrorQuestion}
+			hasData={hasQuestion}
+			skeleton={<QuestionPageContentSkeleton />}
+			stubs={stubs}
+			roles={['admin', 'author']}
+			content={content}
+		>
+			{({ content }) => content}
+		</PageWrapper>
 	);
 };

@@ -1,0 +1,30 @@
+.tab {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--color-white-900);
+  cursor: pointer;
+}
+
+.tab.error {
+  border: 1px solid var(--color-red-700);
+}
+
+.tab.error.active {
+  background-color: var(--color-red-200);
+}
+
+.tab.error:hover {
+  background-color: var(--color-red-100);
+}
+
+.tab.success {
+  border: 1px solid var(--color-green-800);
+}
+
+.tab.success.active {
+  background-color: var(--color-green-300);
+}
+
+.tab.success:hover {
+  background-color: var(--color-green-100);
+}

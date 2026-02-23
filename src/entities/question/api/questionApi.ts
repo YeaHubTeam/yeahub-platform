@@ -18,6 +18,9 @@ import {
 	GetQuestionsBySpecializationCountResponse,
 	MostDifficultQuestionsResponse,
 	GetPopularQuestionsResponse,
+	MostDifficultQuestionsRequestParams,
+	GetQuestionKeywordsResponse,
+	GetQuestionKeywordsParamsRequest,
 } from '../model/types/question';
 
 const questionApi = baseApi.injectEndpoints({
@@ -83,10 +86,11 @@ const questionApi = baseApi.injectEndpoints({
 		),
 		getMostDifficultQuestionsBySpecializationId: build.query<
 			MostDifficultQuestionsResponse,
-			number
+			MostDifficultQuestionsRequestParams
 		>({
-			query: (specId) => ({
+			query: ({ specId, ...params }) => ({
 				url: route(questionApiUrls.getMostDifficultQuestionsBySpecializationId, specId),
+				params,
 			}),
 		}),
 		getPopularQuestions: build.query<GetPopularQuestionsResponse, void>({
@@ -94,6 +98,20 @@ const questionApi = baseApi.injectEndpoints({
 				url: questionApiUrls.popularQuestions,
 			}),
 			providesTags: [ApiTags.POPULAR_QUESTIONS],
+		}),
+		getQuestionsFilterKeywords: build.query<
+			GetQuestionKeywordsResponse,
+			GetQuestionKeywordsParamsRequest
+		>({
+			query: (params) => ({
+				url: questionApiUrls.getQuestionFilterKeywords,
+				params: {
+					page: 1,
+					limit: 100,
+					...params,
+				},
+			}),
+			providesTags: [ApiTags.QUESTIONS],
 		}),
 	}),
 });
@@ -108,4 +126,5 @@ export const {
 	useGetLearnedQuestionsQuery,
 	useGetMostDifficultQuestionsBySpecializationIdQuery,
 	useGetPopularQuestionsQuery,
+	useGetQuestionsFilterKeywordsQuery,
 } = questionApi;

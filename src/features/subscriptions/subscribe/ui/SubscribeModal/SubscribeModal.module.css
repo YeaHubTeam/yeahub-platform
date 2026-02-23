@@ -1,0 +1,22 @@
+.modal {
+  padding: 20px;
+  width: 448px;
+}
+
+.title {
+  text-align: center;
+}
+
+.form-control label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-control input {
+  background-color: transparent;
+
+  &::placeholder {
+    color: var(--color-black-900)
+  }
+}

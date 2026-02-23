@@ -7,6 +7,7 @@ import { Text } from '@/shared/ui/Text';
 import styles from './StatusChip.module.css';
 
 export type StatusChipVariant = 'green' | 'yellow' | 'red' | 'purple';
+export type StatusChipSize = 'small' | 'medium';
 
 export interface StatusChipItem {
 	text: string;
@@ -14,9 +15,10 @@ export interface StatusChipItem {
 }
 export interface StatusChipProps {
 	status: StatusChipItem;
+	size?: StatusChipSize;
 }
 
-export const StatusChip = ({ status }: StatusChipProps) => {
+export const StatusChip = ({ status, size = 'small' }: StatusChipProps) => {
 	const { variant, text } = status;
 
 	return (
@@ -24,7 +26,7 @@ export const StatusChip = ({ status }: StatusChipProps) => {
 			justify="center"
 			align="center"
 			dataTestId={statusChipTestIds.statusChip}
-			className={classNames(styles.wrapper, styles[`variant-${variant}`])}
+			className={classNames(styles.wrapper, styles[`variant-${variant}`], styles[`size-${size}`])}
 		>
 			<Text
 				dataTestId={statusChipTestIds.statusChipText}

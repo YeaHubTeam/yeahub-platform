@@ -1,4 +1,10 @@
 {
+	"banner": {
+		"ny": {
+			"text": "Up to 50% discount on all tariffs",
+			"button": "Discounts 50%"
+		}
+	},
 	"language": "Russian",
 	"more": "More",
 	"return": "Return",
@@ -50,6 +56,7 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
+			"tasks": "Tasks",
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
@@ -61,6 +68,12 @@
 			"topics": "Topics"
 		}
 	},
+	"keyword": {
+		"label": "Keyword",
+		"placeholder": "Select keyword",
+		"not.found": "Keyword not found",
+		"not.exist": "Keywords are not exist"
+	},
 	"stub": {
 		"filter": {
 			"title": "Unfortunately, nothing was found for the query.",
@@ -71,14 +84,35 @@
 			"title": "Failed to load data",
 			"subtitle": "Try again or refresh the page",
 			"submit": "Try again"
+		},
+		"empty": {
+			"title": "It looks like there is no data here yet",
+			"subtitle": "Data is added periodically, you just have to wait a bit"
+		},
+		"access.denied": {
+			"default": {
+				"title": "No access to the page",
+				"description": "You don't have access to view this section. If you think this is an error, please contact support",
+				"button": "Return to Home"
+			},
+			"verify": {
+				"title": "No access to the page",
+				"description": "You do not have access to view this section because your account has not been verified",
+				"button": "For verification"
+			},
+			"subscription": {
+				"title": "No access to the page",
+				"description": "You do not have access to view this section because you do not have a subscription",
+				"button": "To subscriptions"
+			}
 		}
 	},
-	"access.denied": {
-		"title": "Access Denied",
-		"description": "You don't have access to view this section. If you think this is an error, please contact support",
-		"button": "Return to Home"
-	},
 	"modal": {
+		"ny": {
+			"title": "Up to 50% discount on all tariffs",
+			"text": "Now you can connect any of the 4 tariffs with a discount of up to 50%. 2028 Select the appropriate format — for launch, growth or scaling — and fix a favorable price.",
+			"button": "50% discount"
+		},
 		"block": {
 			"title": "Confirm action",
 			"description": "You have unsaved data. Do you want to continue?"
@@ -111,6 +145,13 @@
 			"max_few": "Maximum length of {{count}} characters",
 			"max_many": "Maximum length of {{count}} characters"
 		},
+		"min": {
+			"value": "Minimum value {{min}}",
+			"array": "Select at least {{min}}"
+		},
+		"max": {
+			"value": "Maximum value {{max}}"
+		},
 		"password": {
 			"weak": "Password must contain uppercase and lowercase letters, numbers, and special characters",
 			"similar": "Passwords must match"
@@ -133,6 +174,7 @@
 		"questions.list": "List of questions",
 		"question.detail": "More details",
 		"quiz": "Interview",
+		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
 		"main.page": "Home",
 		"error.404": "Page not found",
@@ -142,6 +184,7 @@
 		"resources": "Resources",
 		"resources.my": "My resources",
 		"resources.my.request": "Request",
+		"resources.my.requests": "My requests",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
 		"analytics": "Analytics",
@@ -150,6 +193,8 @@
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions",
 		"analytics.usersRating": "Users rating"
+		"tasks.list": "Tasks",
+		"task.detail": "More details"
 	},
 	"toast": {
 		"title": {
@@ -189,6 +234,22 @@
 				}
 			}
 		},
+		"tasks": {
+			"create": {
+				"success": "Task created successfully",
+				"failed": "Task could not be created"
+			},
+			"edit": {
+				"success": "Task successfully changed",
+				"failed": "Task could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Task successfully deleted",
+					"failed": "Task could not be deleted"
+				}
+			}
+		},
 		"questions": {
 			"learned": {
 				"success": "The question has been fully studied",
@@ -208,7 +269,22 @@
 			},
 			"create": {
 				"success": "The question was created successfully",
-				"failed": "Failed to create a question"
+				"failed": "Failed to create a question",
+				"user": {
+					"not.found": "User not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"question": {
+					"title.conflict": "Question with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "The question was successfully changed",
@@ -228,7 +304,27 @@
 		"skills": {
 			"create": {
 				"success": "Skill created successfully",
-				"failed": "Failed to create Skill"
+				"failed": "Failed to create Skill",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"skill": {
+					"title.conflict": "Skill with same title already exists"
+				}
 			},
 			"edit": {
 				"success": "Skill changed successfully",
@@ -263,18 +359,84 @@
 					"success": "Successfully deleted specializations:",
 					"failed": "Specialization could not be deleted:"
 				}
+			},
+			"user": {
+				"not.found": "User not found."
+			},
+			"auth": {
+				"unauthorized": "The user is not authorized",
+				"user": {
+					"verified": "No access to functionality"
+				}
+			},
+			"tinify": {
+				"compress": {
+					"failed": "Failed to compress image with TinyPNG"
+				},
+				"resize": {
+					"failed": "Failed to resize image"
+				}
+			},
+			"title": {
+				"conflict": {
+					"specialization": "Specialization with this title already exists"
+				}
 			}
 		},
 		"topics": {
 			"create": {
 				"success": "Topic successfully created",
 				"failed": "Topic could not be created"
+			},
+			"edit": {
+				"success": "Topic successfully changed",
+				"failed": "Topic could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Topic successfully deleted",
+					"failed": "Topic could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted topics:",
+					"failed": "Topic could not be deleted:"
+				}
 			}
 		},
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",
-				"failed": "Collection could not be created"
+				"failed": "Collection could not be created",
+				"user": {
+					"id": {
+						"not.found": "User not found"
+					}
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Not enough rights"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				},
+				"collection": {
+					"user": {
+						"deleted": "User is soft deleted"
+					},
+					"create": {
+						"conflict": "A collection with the same parameters already exists."
+					}
+				}
 			},
 			"delete": {
 				"single": {
@@ -430,6 +592,47 @@
 				}
 			}
 		},
+		"companies": {
+			"edit": {
+				"success": "Company successfully changed",
+				"failed": "Company could not be changed"
+			},
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted companies:",
+					"failed": "Could not delete company:"
+				}
+			},
+			"create": {
+				"success": "Company successfully created",
+				"failed": "Company could not be created",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"user": {
+					"not_found": "User not found"
+				},
+				"conflict": "Such a company already exists",
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
+			},
+			"filter": {
+				"not.found": "Company is not found"
+			}
+		},
 		"subscriptions": {
 			"unsubscribe": {
 				"success": "Subscription disabled",
@@ -450,6 +653,10 @@
 				"info": "You don't have access to this feature"
 			}
 		}
+	},
+	"tasks": {
+		"title": "Live Coding",
+		"run": "Run"
 	},
 	"editor.bold": "Bold",
 	"editor.italic": "Italic",

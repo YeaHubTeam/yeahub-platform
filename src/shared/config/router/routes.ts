@@ -130,9 +130,29 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/topics/create',
 			},
+			edit: {
+				route: ':topicId/edit',
+				page: '/admin/topics/:topicId/edit',
+			},
 			details: {
 				route: ':topicId',
 				page: '/admin/topics/:topicId',
+			},
+		},
+		tasks: {
+			route: 'tasks',
+			page: '/admin/tasks',
+			create: {
+				route: 'create',
+				page: '/admin/tasks/create',
+			},
+			edit: {
+				route: ':taskId/edit',
+				page: '/admin/tasks/:taskId/edit',
+			},
+			details: {
+				route: ':taskId',
+				page: '/admin/tasks/:taskId',
 			},
 		},
 	},
@@ -221,6 +241,15 @@ export const ROUTES = {
 		new: {
 			route: 'new',
 			page: '/dashboard/interview/new',
+		},
+	},
+
+	tasks: {
+		route: 'tasks',
+		page: '/dashboard/tasks',
+		detail: {
+			route: ':taskId',
+			page: '/dashboard/tasks/:taskId',
 		},
 	},
 	wiki: {

@@ -3,6 +3,7 @@ export type {
 	UserStatus,
 	CreateOrEditUserFormValues,
 	UserRole,
+	RoleName,
 	UserFormValues,
 } from './model/types/user';
 export {

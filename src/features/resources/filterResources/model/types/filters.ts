@@ -6,4 +6,5 @@ export interface ResourcesFilterParams {
 	page?: number;
 	skills?: number[];
 	types?: ResourceTypeCode[];
+	isMy?: boolean;
 }

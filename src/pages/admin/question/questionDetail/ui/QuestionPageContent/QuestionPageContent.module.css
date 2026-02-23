@@ -1,0 +1,19 @@
+.additional {
+  display: flex;           
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  height: auto;
+}
+
+@media (width <= 1023px) {
+  .additional {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+    width: 360px;
+    height: auto;
+  }
+}
+ 

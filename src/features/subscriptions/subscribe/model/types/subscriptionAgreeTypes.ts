@@ -5,6 +5,6 @@ export interface SubscriptionAgreeFormValues {
 }
 
 export interface GetPaymentUrlParamsRequest {
-	subscriptionId: string;
+	subscriptionId: number;
 	email: string;
 }
