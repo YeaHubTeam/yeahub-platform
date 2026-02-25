@@ -1,13 +1,15 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
+import { WithFeature } from '@/entities/featureToggle';
+
 import { MostDifficultQuestionsWidget } from '@/widgets/analytics/MostDifficultQuestionsWidget';
 import { PopularQuestionsWidget } from '@/widgets/analytics/PopularQuestionsWidget';
 import { PopularSkillsWidget } from '@/widgets/analytics/PopularSkillsWidget';
 import { SkillsProficiencyWidget } from '@/widgets/analytics/SkillsProficiencyWidget';
 import { SpecializationProgressWidget } from '@/widgets/analytics/SpecializationProgressWidget';
+import { UsersRatingWidget } from '@/widgets/analytics/UsersRatingWidget';
 import { PageWrapper } from '@/widgets/PageWrapper';
-// import { UsersRatingWidget } from '@/widgets/analytics/UsersRatingWidget';
 
 export const AnalyticsPage = () => {
 	const { isSmallScreen, isLaptop, isTablet } = useScreenSize();
@@ -20,7 +22,9 @@ export const AnalyticsPage = () => {
 			content={
 				<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">
 					<Flex direction="column" gap="20" maxWidth={isSmallScreen}>
-						{/*<UsersRatingWidget />*/}
+						<WithFeature featureId="usersRating">
+							<UsersRatingWidget />
+						</WithFeature>
 						<Flex
 							direction={isTablet || isLaptop ? 'row' : 'column'}
 							gap="20"
