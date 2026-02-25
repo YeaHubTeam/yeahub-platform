@@ -30,11 +30,12 @@ interface AnalyticPageTemplateFilters {
 }
 
 interface AnalyticPageTemplateProps {
-	title: string;
-	tooltip?: string;
+	title: string | ReactNode;
+	tooltip?: string | ReactNode;
 	list: ReactNode;
 	table: ReactNode;
 	filters: AnalyticPageTemplateFilters;
+	suffix?: ReactNode;
 }
 
 export const AnalyticPageTemplate = ({
@@ -43,6 +44,7 @@ export const AnalyticPageTemplate = ({
 	table,
 	list,
 	filters,
+	suffix,
 }: AnalyticPageTemplateProps) => {
 	const {
 		specialization,
@@ -110,6 +112,7 @@ export const AnalyticPageTemplate = ({
 				)}
 			</Flex>
 			{isMobile ? list : table}
+			{suffix}
 			{page && total && limit && onChangePage ? (
 				<TablePagination page={page} onChangePage={onChangePage} total={total} limit={limit} />
 			) : null}

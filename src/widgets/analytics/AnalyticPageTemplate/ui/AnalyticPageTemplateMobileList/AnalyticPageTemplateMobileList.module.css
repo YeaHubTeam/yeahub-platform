@@ -7,3 +7,7 @@
   height: 30px;
   border-radius: 8px;
 }
+
+.current-user-rating {
+  background-color: var(--color-purple-100);
+}

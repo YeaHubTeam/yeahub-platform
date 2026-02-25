@@ -6,7 +6,7 @@ import type { GetUsersRatingBySpecializationResponse } from '../model/types/user
 
 const usersRatingApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getUsersRatingBySpecialization: build.query<GetUsersRatingBySpecializationResponse, string>({
+		getUsersRatingBySpecialization: build.query<GetUsersRatingBySpecializationResponse, number>({
 			query: (specializationId) => ({
 				url: route(usersRatingApiUrls.getUsersRatingBySpecialization, specializationId),
 			}),

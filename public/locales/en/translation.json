@@ -145,6 +145,13 @@
 			"max_few": "Maximum length of {{count}} characters",
 			"max_many": "Maximum length of {{count}} characters"
 		},
+		"min": {
+			"value": "Minimum value {{min}}",
+			"array": "Select at least {{min}}"
+		},
+		"max": {
+			"value": "Maximum value {{max}}"
+		},
 		"password": {
 			"weak": "Password must contain uppercase and lowercase letters, numbers, and special characters",
 			"similar": "Passwords must match"
@@ -185,6 +192,7 @@
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions",
+		"analytics.usersRating": "Users rating",
 		"tasks.list": "Tasks",
 		"task.detail": "More details"
 	},

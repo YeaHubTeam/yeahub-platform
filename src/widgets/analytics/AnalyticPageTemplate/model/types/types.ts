@@ -1,17 +1,21 @@
+import type { ReactNode } from 'react';
+
 export interface AnalyticFilterParams {
 	skill?: number;
 	specialization?: number;
 	page?: number;
 }
 
-interface AnalyticPageTemplateMobileListItemField {
+export interface AnalyticPageTemplateMobileListItemField {
 	label: string;
 	value: string | number;
 }
 
 export interface AnalyticPageTemplateMobileListItem {
-	title: string;
+	title: string | ReactNode;
 	badge?: string;
 	imageSrc?: string;
 	fields: AnalyticPageTemplateMobileListItemField[];
+	suffix?: ReactNode;
+	isCurrentUser?: boolean;
 }

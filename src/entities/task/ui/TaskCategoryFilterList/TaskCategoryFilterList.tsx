@@ -14,7 +14,7 @@ import styles from './TaskCategoryFilterList.module.css';
 interface TaskCategoryFilterListProps {
 	categoriesLimit?: number;
 	selectedCategory?: TaskCategoryCode;
-	onChooseCategory: (category: TaskCategoryCode) => void;
+	onChooseCategory: (category?: TaskCategoryCode) => void;
 }
 
 const MAX_LIMIT_CATEGORIES = 4;
@@ -46,7 +46,7 @@ export const TaskCategoryFilterList = ({
 	}));
 
 	const onChooseType = (id: TaskCategoryCode) => {
-		onChooseCategory(id);
+		onChooseCategory(selectedCategory === id ? undefined : id);
 	};
 
 	return (

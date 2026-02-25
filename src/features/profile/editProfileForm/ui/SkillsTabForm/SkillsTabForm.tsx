@@ -20,7 +20,9 @@ export const SkillsTabForm = () => {
 		<Flex className={styles.container} gap="20">
 			<FormField description={t(Profile.SKILLS_DESCRIPTION)} label={t(Profile.SKILLS_TITLE)}>
 				<FormControl name="skills" control={control} label={t(Profile.FORM_SKILLS)}>
-					{({ onChange, value }) => <SkillSelect onChange={onChange} value={value} />}
+					{({ onChange, value }) => (
+						<SkillSelect withSpecialization={false} onChange={onChange} value={value} />
+					)}
 				</FormControl>
 			</FormField>
 		</Flex>

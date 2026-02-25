@@ -6,6 +6,8 @@ import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Flex } from '@/shared/ui/Flex';
 import { NYBanner } from '@/shared/ui/NYBanner';
 
+import { WithFeature } from '@/entities/featureToggle';
+
 import { CookiesWarning } from '@/widgets/Landing/CookiesWarningBlock';
 import { Footer } from '@/widgets/Landing/Footer';
 import { Header } from '@/widgets/Landing/Header';
@@ -29,7 +31,9 @@ export const LandingLayout = () => {
 							className={styles['main-content']}
 						>
 							<Suspense fallback={<SkeletonGenerator />}>
-								<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_LANDING_KEY} />
+								<WithFeature featureId="nyBanner">
+									<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_LANDING_KEY} />
+								</WithFeature>
 								<Outlet />
 							</Suspense>
 						</Flex>

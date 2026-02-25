@@ -71,6 +71,7 @@ import { PopularQuestionsPage } from '@/pages/analytics/popularQuestions';
 import { PopularSkillsPage } from '@/pages/analytics/popularSkills';
 import { ProgressSpecializationsPage } from '@/pages/analytics/progressSpecializations';
 import { SkillsProficiencyPage } from '@/pages/analytics/skillsProficiency';
+import { UsersRatingPage } from '@/pages/analytics/usersRating';
 import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
@@ -117,12 +118,10 @@ import { ResourcesPage } from '@/pages/wiki/resource/resources';
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
-import { PremiumRoute } from '@/app/providers/router/PremiumRoute';
 
 import { AuthRoute } from './AuthRoute';
 import { InterviewRoute } from './InterviewRoute';
 import { UnAuthRoute } from './UnAuthRoute';
-import { VerifiedEmailRoute } from './VerifiedEmailRoute';
 
 import '../../styles/App.css';
 
@@ -647,6 +646,13 @@ export const router = createBrowserRouter([
 							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
 						},
 					},
+					{
+						path: ROUTES.analytics['users-rating'].route,
+						element: <UsersRatingPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
+						},
+					},
 				],
 			},
 			{
@@ -695,13 +701,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.interview.history.route,
-						element: (
-							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<Outlet />
-								</PremiumRoute>
-							</VerifiedEmailRoute>
-						),
+						element: <Outlet />,
 						handle: {
 							crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
 						},
@@ -721,34 +721,20 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ROUTES.interview.statistic.route,
-						element: (
-							<VerifiedEmailRoute>
-								<PremiumRoute>
-									<InterviewStatisticsPage />
-								</PremiumRoute>
-							</VerifiedEmailRoute>
-						),
+						element: <InterviewStatisticsPage />,
 						handle: {
 							crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
 						},
 					},
 					{
 						path: ROUTES.interview.quiz.route,
-						element: (
-							<VerifiedEmailRoute>
-								<Outlet />
-							</VerifiedEmailRoute>
-						),
+						element: <Outlet />,
 						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
 						children: [{ index: true, element: <CreateQuizPage /> }],
 					},
 					{
 						path: ROUTES.interview.new.route,
-						element: (
-							<VerifiedEmailRoute>
-								<InterviewQuizPage />
-							</VerifiedEmailRoute>
-						),
+						element: <InterviewQuizPage />,
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
 						},
