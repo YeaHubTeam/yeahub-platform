@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -6,6 +7,8 @@ import { AppLogo } from '@/shared/ui/AppLogo';
 // import { ThemeSwitcher } from '@/features/theme/switch-theme';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
+
+import { LanguageSwitcher } from '@/features/internationalization/switch-language';
 
 import { UserPreferences } from '../UserPreferences/UserPreferences';
 
@@ -21,8 +24,8 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 			<NavLink to={ROUTES.appRoute} className={styles.logo}>
 				<AppLogo isOpen />
 			</NavLink>
-
 			{/* <ThemeSwitcher /> */}
+			<LanguageSwitcher />
 			<UserPreferences />
 			<IconButton
 				aria-label="go to preferences"

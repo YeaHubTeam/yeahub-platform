@@ -1,0 +1,44 @@
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  width: 47px;
+  height: 22px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-primary);
+}
+
+.ru-icon,
+.en-icon {
+  position: absolute;
+  transition: transform 2s ease-in-out;
+}
+
+.ru-icon {
+  transform: translateX(1px);
+}
+
+.en-icon {
+  transform: translateX(29px);
+}
+
+.button.active .ru-icon {
+  transform: translateX(-29px);
+}
+
+.button.active .en-icon {
+  transform: translateX(1px);
+}
+
+.ru-icon circle {
+  cx: 9;
+  cy: 9;
+  r: 9;
+  fill: url("#pattern0_35669_177715");
+}
+
+.en-icon path {
+  fill: url("#pattern0_35669_177719");
+}
