@@ -36,7 +36,7 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 	}
 	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
 
-	const hasError = result?.overall_status === 'ERROR';
+	const hasError = result?.test_cases?.[0]?.status === 'ERROR';
 	const hasFailedTests = !testCases?.summary?.success;
 
 	const showResult = hasFailedTests
@@ -58,7 +58,7 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 						<Text variant="body5-accent" color={hasFailedTests ? 'red-700' : 'green-800'}>
 							{t(hasFailedTests ? Tasks.TABLE_STATUS_NOT_SOLVED : Tasks.TABLE_STATUS_SOLVED)}
 						</Text>
-						{testCases.summary.total > 0 && (
+						{testCases.summary?.total > 0 && (
 							<Text variant="body3-accent" color="black-500">
 								{t(Tasks.OUTPUT_RESULT_TESTS_PASSED, {
 									passed: testCases.summary.passed,

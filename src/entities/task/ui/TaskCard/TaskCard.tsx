@@ -49,7 +49,7 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 							)}
 						</Flex>
 
-						<Flex align="center" gap="10">
+						<Flex align="center" gap="10" wrap="wrap">
 							<TaskStatusChip status={status} size="medium" />
 							<TaskDifficultyChip difficulty={difficulty} />
 							<ProgrammingLanguageList languages={supportedLanguages} />

@@ -24,8 +24,29 @@ export const TaskOutput = ({ result }: TaskOutputProps) => {
 		if (!result) {
 			return {};
 		}
+		const output = result.test_cases[0].actual_output;
 
-		return result.test_cases[0].actual_output ? JSON.parse(result.test_cases[0].actual_output) : {};
+		if (!output) {
+			return {};
+		}
+
+		if (output.substring(0, 10).includes('tests')) {
+			return JSON.parse(output);
+		} else {
+			const separators = ['{"tests', '{\n"tests', '{\n "tests', '{ "tests'];
+			const index = output.indexOf(
+				separators.find((separator) => output.includes(separator)) || '',
+			);
+
+			if (index !== -1) {
+				const tests = output.slice(index);
+				const result: TaskTestCaseResult = tests ? JSON.parse(tests) : {};
+
+				return result;
+			}
+
+			return JSON.parse(output);
+		}
 	}, [result]);
 
 	const errorMessage = useMemo(() => {

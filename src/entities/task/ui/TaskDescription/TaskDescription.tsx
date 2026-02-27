@@ -19,7 +19,7 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
 			<Text variant="body6" isMainTitle>
 				{task.name}
 			</Text>
-			<Flex gap="10">
+			<Flex gap="10" wrap="wrap">
 				<TaskStatusChip status={task.status} size="medium" />
 				<TaskDifficultyChip difficulty={task.difficulty} />
 				<ProgrammingLanguageList languages={task.supportedLanguages} />

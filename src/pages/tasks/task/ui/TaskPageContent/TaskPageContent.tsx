@@ -1,7 +1,8 @@
+import classnames from 'classnames';
 import React, { useCallback, useState } from 'react';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 
-import { useAppSelector } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 
 import { getProfileId } from '@/entities/profile';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage';
@@ -25,6 +26,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const [executeCode, { isLoading: isExecuting }] = useExecuteCodeMutation();
 	const [testCode, { isLoading: isTesting }] = useTestCodeMutation();
+	const { isMobile, isTablet } = useScreenSize();
 
 	const [code, setCode] = useState<string>(task.taskStructures[0].solutionStub);
 	const [output, setOutput] = useState<ExecuteCodeResponse | null>(null);
@@ -85,11 +87,15 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	}, [taskStructure]);
 
 	return (
-		<Group orientation="horizontal" className={styles.page}>
+		<Group orientation={isMobile || isTablet ? 'vertical' : 'horizontal'} className={styles.page}>
 			<Panel defaultSize="50%" minSize="30%" maxSize="60%" style={{ padding: '20px' }}>
 				<TaskTabs task={task} />
 			</Panel>
-			<Separator className={styles['resize-handle']} />
+			<Separator
+				className={classnames(styles['resize-handle'], {
+					[styles['resize-handle-mobile']]: isMobile || isTablet,
+				})}
+			/>
 			<Panel minSize="40%">
 				<TaskWorkspace
 					code={code}

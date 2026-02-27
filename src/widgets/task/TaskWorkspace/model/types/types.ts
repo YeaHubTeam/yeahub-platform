@@ -7,6 +7,7 @@ export interface TaskTestCaseResultTest {
 	expected: unknown;
 	result: unknown;
 	status: TaskTestCaseResultTestStatus;
+	logs?: string[];
 }
 
 export interface TaskTestCaseResultSummary {

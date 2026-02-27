@@ -25,6 +25,16 @@ export const TaskOutputTestCaseInfo = ({ testCase }: TaskOutputTestCaseInfoProps
 					</Flex>
 				);
 			})}
+			{testCase.logs && testCase.logs.length > 0 && (
+				<Flex gap="20" direction="column">
+					<Text variant="body3-strong">{t(Tasks.TEST_CASES_LOG)}</Text>
+					{testCase.logs.map((log, index) => (
+						<div key={index} className={styles.stats}>
+							{log}
+						</div>
+					))}
+				</Flex>
+			)}
 			<Flex gap="20" direction="column">
 				<Text variant="body3-strong">{t(Tasks.TEST_CASES_OUTPUT)}</Text>
 				<div

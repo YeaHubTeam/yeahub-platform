@@ -110,7 +110,8 @@ export interface ExecuteCodeRequest {
 	profileId?: string;
 }
 
-export type OverallStatus = 'ERROR' | 'SUCCESS';
+export type OverallStatus = 'FAILED' | 'SUCCESS';
+export type TestCaseStatus = 'FAILED' | 'PASSED' | 'ERROR';
 
 export interface ExecuteCodeResponse {
 	overall_status: OverallStatus;
@@ -120,7 +121,7 @@ export interface ExecuteCodeResponse {
 	total_execution_time: number;
 	average_memory_usage: number;
 	test_cases: {
-		status: string;
+		status: TestCaseStatus;
 		input: unknown;
 		expected_output: unknown;
 		actual_output: string;

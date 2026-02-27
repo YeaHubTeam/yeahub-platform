@@ -4,8 +4,12 @@ import type { Configuration as DevServerConfiguration } from 'webpack-dev-server
 
 import { WebpackOptions } from './types/types';
 
-export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConfiguration => {
-	return {
+export const webpackDevServer = ({
+	port,
+	paths,
+	notSsl,
+}: WebpackOptions): DevServerConfiguration => {
+	const devServerConfig: DevServerConfiguration = {
 		port: port ?? 3001,
 		open: process.env.BROWSER
 			? {
@@ -16,12 +20,17 @@ export const webpackDevServer = ({ port, paths }: WebpackOptions): DevServerConf
 			: true,
 		historyApiFallback: true,
 		hot: true,
-		server: {
+	};
+
+	if (!notSsl) {
+		devServerConfig.server = {
 			type: 'https',
 			options: {
 				cert: readFileSync(paths.httpsCert),
 				key: readFileSync(paths.httpsKey),
 			},
-		},
-	};
+		};
+	}
+
+	return devServerConfig;
 };
