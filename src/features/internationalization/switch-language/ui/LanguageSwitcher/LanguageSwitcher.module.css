@@ -7,7 +7,7 @@
   height: 22px;
   border: none;
   border-radius: 20px;
-  background-color: var(--color-primary);
+  background-color: var(--button-background-primary);
 }
 
 .ru-icon,

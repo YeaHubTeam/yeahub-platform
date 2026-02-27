@@ -27,10 +27,18 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const { isMobile } = useScreenSize();
 	const titleVariant = isMobile ? 'body3-strong' : 'body4';
 
+	console.log('t(titleByType[type]): ', t(titleByType[type]));
+	console.log('titleByType: ', titleByType);
+	console.log('type: ', titleByType[type]);
+
 	const resolvedTitle = title ?? t(titleByType[type]);
 	const resolvedSubtitle = subtitle ?? t(subtitleByType[type]);
 	const resolvedButtonText = buttonText ?? t(buttonTextByType[type]);
 	const resolvedButtonType = type === 'filter-empty' ? 'outline' : 'primary';
+
+	console.log('resolvedTitle: ', resolvedTitle);
+	console.log('resolvedSubtitle: ', resolvedSubtitle);
+	console.log('resolvedButtonText: ', resolvedButtonText);
 
 	return (
 		<Card withOutsideShadow className={classNames(styles.wrapper, className)}>
