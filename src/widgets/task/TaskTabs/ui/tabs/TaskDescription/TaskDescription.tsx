@@ -3,11 +3,7 @@ import { Text } from '@/shared/ui/Text';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
 import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
-import { TaskCategoryChip } from '@/entities/task/ui/TaskCategoryChip/TaskCategoryChip';
-
-import type { Task } from '../../model/types/task';
-import { TaskDifficultyChip } from '../TaskDifficultyChip/TaskDifficultyChip';
-import { TaskStatusChip } from '../TaskStatusChip/TaskStatusChip';
+import { TaskDifficultyChip, TaskStatusChip, TaskCategoryChip, Task } from '@/entities/task';
 
 type TaskDescriptionProps = {
 	task: Task;

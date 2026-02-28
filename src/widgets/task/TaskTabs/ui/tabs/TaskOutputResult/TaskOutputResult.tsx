@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ChatIcon from '@/shared/assets/icons/chat.svg';
@@ -9,21 +9,27 @@ import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
-import type { ExecuteCodeResponse } from '@/entities/task';
+import type { ExecuteCodeResponse, TaskTestCaseResult } from '@/entities/task';
 
-import { TaskTestCaseResult } from '../../../model/types/types';
-import { TaskOutputTestCaseInfo } from '../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
+import { TaskOutputTestCaseInfo } from '../../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
 
 import styles from './TaskOutputResult.module.css';
 
 type TaskOutputResultProps = {
 	result: ExecuteCodeResponse | null;
 	testCases: TaskTestCaseResult;
-	errorMessage: string;
 };
 
-export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutputResultProps) => {
+export const TaskOutputResult = ({ result, testCases }: TaskOutputResultProps) => {
 	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
+
+	const errorMessage = useMemo(() => {
+		if (!result) {
+			return '';
+		}
+
+		return result.test_cases[0].error_message;
+	}, [result]);
 
 	if (!result) {
 		return (

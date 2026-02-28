@@ -5,7 +5,7 @@ import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskTestCaseResultTest } from '../../../model/types/types';
+import { TaskTestCaseResultTest } from '@/entities/task';
 
 import styles from './TaskOutputTestCaseInfo.module.css';
 
@@ -15,6 +15,7 @@ interface TaskOutputTestCaseInfoProps {
 
 export const TaskOutputTestCaseInfo = ({ testCase }: TaskOutputTestCaseInfoProps) => {
 	const { t } = useTranslation(i18Namespace.task);
+
 	return (
 		<Flex direction="column" gap="20">
 			{testCase.inputs.map((input, index) => {

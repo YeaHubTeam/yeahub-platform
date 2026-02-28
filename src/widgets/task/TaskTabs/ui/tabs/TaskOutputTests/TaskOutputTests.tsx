@@ -7,8 +7,9 @@ import { Flex } from '@/shared/ui/Flex';
 import { SimpleStub } from '@/shared/ui/SimpleStub';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskTestCaseResult } from '../../../model/types/types';
-import { TaskOutputTestCaseInfo } from '../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
+import type { TaskTestCaseResult } from '@/entities/task';
+
+import { TaskOutputTestCaseInfo } from '../../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
 
 import styles from './TaskOutputTests.module.css';
 
