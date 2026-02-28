@@ -27,12 +27,10 @@ export const authApi = baseApi.injectEndpoints({
 			async onQueryStarted(_, aaa) {
 				try {
 					const { queryFulfilled, extra, dispatch } = aaa;
-					console.log('aaa', aaa);
 					dispatch(baseApi.util.resetApiState());
 					const result = await queryFulfilled;
 					setToLS(LS_ACCESS_TOKEN_KEY, result.data.access_token);
 					const typedExtra = extra as ExtraArgument;
-					console.log(typedExtra);
 					const searchParams = new URLSearchParams(window.location.search);
 					const returnPage = searchParams.get('returnPage') || ROUTES.interview.page;
 					typedExtra.navigate(returnPage);

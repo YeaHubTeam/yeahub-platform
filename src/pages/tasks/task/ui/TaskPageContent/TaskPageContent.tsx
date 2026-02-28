@@ -33,7 +33,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const [selectedLanguage, setSelectedLanguage] = useState<ProgrammingLanguage>(
 		task.supportedLanguages[0],
 	);
-	console.log(output);
+
 	const taskStructure = task.taskStructures.find(
 		({ languageId }) => languageId === selectedLanguage.id,
 	);
