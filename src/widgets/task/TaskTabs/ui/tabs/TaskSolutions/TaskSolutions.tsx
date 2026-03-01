@@ -9,10 +9,9 @@ import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
 import { getProfileId } from '@/entities/profile/@x/task';
+import { TaskSolution, useGetTasksProfileSolutionsQuery } from '@/entities/task';
 
-import { useGetTasksProfileSolutionsQuery } from '../../api/taskApi';
-import { TaskSolution } from '../../model/types/task';
-import { TaskSolutionInfo } from '../TaskSolutionInfo/TaskSolutionInfo';
+import { TaskSolutionInfo } from '../../TaskSolutionInfo/TaskSolutionInfo';
 
 export const TaskSolutions = () => {
 	const { taskId = '' } = useParams<Partial<{ taskId?: string }>>();

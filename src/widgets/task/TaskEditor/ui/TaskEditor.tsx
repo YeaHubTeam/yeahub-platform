@@ -2,6 +2,7 @@ import MonacoEditor from '@monaco-editor/react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -38,6 +39,8 @@ export const TaskEditor = ({
 	onSubmit,
 }: TaskEditorProps) => {
 	const { t } = useTranslation(i18Namespace.task);
+	const { isMobile, isTablet } = useScreenSize();
+
 	const currentLanguage = supportedLanguages.find((lang) => lang.id === languageId);
 
 	return (
@@ -69,6 +72,7 @@ export const TaskEditor = ({
 			<Card size="small" withOutsideShadow className={styles.block} classNameContent={styles.block}>
 				<div className={styles.editor}>
 					<MonacoEditor
+						height={isTablet || isMobile ? 500 : '100%'}
 						defaultLanguage={currentLanguage?.name.toLowerCase() || 'javascript'}
 						value={code}
 						onChange={(value) => onCodeChange(value || '')}
