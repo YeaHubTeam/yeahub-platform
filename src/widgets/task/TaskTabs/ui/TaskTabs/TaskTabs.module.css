@@ -11,3 +11,9 @@
   flex: 1;
   overflow-y: auto;
 }
+
+@media screen and (width < 1024px) {
+  .wrapper {
+    width: 100%;
+  }
+}

@@ -16,3 +16,9 @@
   flex: 1;
   overflow: hidden;
 }
+
+@media screen and (width < 1024px) {
+  .wrapper {
+    width: 100%;
+  }
+}

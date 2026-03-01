@@ -87,8 +87,8 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	}, [taskStructure]);
 
 	return (
-		<Card withOutsideShadow className={styles.page} classNameContent={styles.content}>
-			<Flex gap="20" direction={isMobile || isTablet ? 'column' : 'row'} maxHeight>
+		<Card withOutsideShadow className={styles.page} classNameContent={styles['content-wrapper']}>
+			<Flex gap="20" direction={isMobile || isTablet ? 'column' : 'row'} className={styles.content}>
 				<TaskTabs task={task} result={output} />
 				<TaskEditor
 					code={code}

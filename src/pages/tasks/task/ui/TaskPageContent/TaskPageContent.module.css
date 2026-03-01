@@ -1,6 +1,10 @@
 .page {
   width: 100%;
-  height: calc(100vh - var(--header-height) - var(--header-height-sm) - 48px) !important;
+  height: calc(100vh - var(--header-height) - var(--header-height-sm) - 48px);
+}
+
+.content-wrapper {
+  height: 100%;
 }
 
 .content {
@@ -27,5 +31,19 @@
 
 .resize-handle:hover {
   background-color: var(--color-purple-500);
+}
+
+@media screen and (width < 1024px) {
+  .content-wrapper {
+    height: auto;
+  }
+	
+  .content {
+    height: auto;
+  }
+
+  .page {
+    height: auto;
+  }
 }
 
