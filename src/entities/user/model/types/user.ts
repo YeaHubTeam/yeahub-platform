@@ -72,3 +72,12 @@ export type GetUserByIdResponse = User;
 export type GetUserProfileByIdResponse = FullProfile;
 
 export type UserFormValues = Omit<CreateOrEditUserFormValues, 'id'>;
+
+export interface GetRatingStatsResponse {
+	specialization: {
+		title: string;
+	};
+	allUsers: number;
+	allQuestions: number;
+	averageProgress: number;
+}

@@ -9,6 +9,7 @@ import {
 	GetUsersListParamsRequest,
 	GetUsersListResponse,
 	UserRolesMutationRequest,
+	GetRatingStatsResponse,
 } from '../model/types/user';
 
 const userApi = baseApi.injectEndpoints({
@@ -60,6 +61,13 @@ const userApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: [ApiTags.USER_DETAIL, ApiTags.USERS],
 		}),
+
+		getRatingStats: build.query<GetRatingStatsResponse, string | number>({
+			query: (specializationId) => ({
+				url: '/ratings/stats',
+				params: { specializationId },
+			}),
+		}),
 	}),
 });
 
@@ -70,4 +78,5 @@ export const {
 	useGetUserRolesListQuery,
 	useAddUserRolesMutation,
 	useRemoveUserRolesMutation,
+	useGetRatingStatsQuery,
 } = userApi;
