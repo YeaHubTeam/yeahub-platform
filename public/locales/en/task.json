@@ -34,6 +34,7 @@
 		"input": "Input data:",
 		"output": "Output:",
 		"expected.output": "Expected output:",
+		"log": "Console log:",
 		"hidden": "Active",
 		"add.button": "Add"
 	},

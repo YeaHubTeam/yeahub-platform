@@ -9,6 +9,8 @@ export type {
 	TaskCategoryCode,
 	CreateOrEditTaskFormValues,
 	TaskSubscriptionLevel,
+	TaskTestCaseResult,
+	TaskTestCaseResultTest,
 } from './model/types/task';
 export type { TasksFilterParams } from './model/types/filters';
 export { taskApiUrls } from './model/constants/task';
@@ -21,9 +23,8 @@ export {
 	useGetTaskCategoriesQuery,
 } from './api/taskApi';
 export { TaskCard } from './ui/TaskCard/TaskCard';
-export { TaskDescription } from './ui/TaskDescription/TaskDescription';
-export { TaskSolutions } from './ui/TaskSolutions/TaskSolutions';
 export { TaskDifficultyChip } from './ui/TaskDifficultyChip/TaskDifficultyChip';
+export { TaskCategoryChip } from './ui/TaskCategoryChip/TaskCategoryChip';
 export { TaskStatusChip } from './ui/TaskStatusChip/TaskStatusChip';
 export { TaskForm } from './ui/TaskForm/TaskForm';
 export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';

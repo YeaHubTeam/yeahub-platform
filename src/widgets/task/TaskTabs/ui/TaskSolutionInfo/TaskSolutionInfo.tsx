@@ -7,7 +7,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
-import { TaskSolution } from '../../model/types/task';
+import { TaskSolution } from '@/entities/task';
 
 import styles from './TaskSolutionInfo.module.css';
 

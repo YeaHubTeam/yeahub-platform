@@ -1,4 +1,5 @@
 .wrapper {
+  width: 60%;
   height: 100%;
 }
 
@@ -14,4 +15,10 @@
 .editor {
   flex: 1;
   overflow: hidden;
+}
+
+@media screen and (width < 1024px) {
+  .wrapper {
+    width: 100%;
+  }
 }

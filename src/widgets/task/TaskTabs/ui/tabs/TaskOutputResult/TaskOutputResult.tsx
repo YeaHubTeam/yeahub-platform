@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ChatIcon from '@/shared/assets/icons/chat.svg';
@@ -9,21 +9,27 @@ import { Flex } from '@/shared/ui/Flex';
 import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
 
-import type { ExecuteCodeResponse } from '@/entities/task';
+import type { ExecuteCodeResponse, TaskTestCaseResult } from '@/entities/task';
 
-import { TaskTestCaseResult } from '../../../model/types/types';
-import { TaskOutputTestCaseInfo } from '../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
+import { TaskOutputTestCaseInfo } from '../../TaskOutputTestCaseInfo/TaskOutputTestCaseInfo';
 
 import styles from './TaskOutputResult.module.css';
 
 type TaskOutputResultProps = {
 	result: ExecuteCodeResponse | null;
 	testCases: TaskTestCaseResult;
-	errorMessage: string;
 };
 
-export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutputResultProps) => {
+export const TaskOutputResult = ({ result, testCases }: TaskOutputResultProps) => {
 	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
+
+	const errorMessage = useMemo(() => {
+		if (!result) {
+			return '';
+		}
+
+		return result.test_cases[0].error_message;
+	}, [result]);
 
 	if (!result) {
 		return (
@@ -36,7 +42,7 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 	}
 	const openSupportTab = () => window.open('https://t.me/yeahub_support', '_blank');
 
-	const hasError = result?.overall_status === 'ERROR';
+	const hasError = result?.test_cases?.[0]?.status === 'ERROR';
 	const hasFailedTests = !testCases?.summary?.success;
 
 	const showResult = hasFailedTests
@@ -58,7 +64,7 @@ export const TaskOutputResult = ({ result, testCases, errorMessage }: TaskOutput
 						<Text variant="body5-accent" color={hasFailedTests ? 'red-700' : 'green-800'}>
 							{t(hasFailedTests ? Tasks.TABLE_STATUS_NOT_SOLVED : Tasks.TABLE_STATUS_SOLVED)}
 						</Text>
-						{testCases.summary.total > 0 && (
+						{testCases.summary?.total > 0 && (
 							<Text variant="body3-accent" color="black-500">
 								{t(Tasks.OUTPUT_RESULT_TESTS_PASSED, {
 									passed: testCases.summary.passed,

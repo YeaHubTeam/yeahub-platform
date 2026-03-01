@@ -5,7 +5,7 @@ import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskTestCaseResultTest } from '../../../model/types/types';
+import { TaskTestCaseResultTest } from '@/entities/task';
 
 import styles from './TaskOutputTestCaseInfo.module.css';
 
@@ -15,6 +15,7 @@ interface TaskOutputTestCaseInfoProps {
 
 export const TaskOutputTestCaseInfo = ({ testCase }: TaskOutputTestCaseInfoProps) => {
 	const { t } = useTranslation(i18Namespace.task);
+
 	return (
 		<Flex direction="column" gap="20">
 			{testCase.inputs.map((input, index) => {
@@ -25,6 +26,16 @@ export const TaskOutputTestCaseInfo = ({ testCase }: TaskOutputTestCaseInfoProps
 					</Flex>
 				);
 			})}
+			{testCase.logs && testCase.logs.length > 0 && (
+				<Flex gap="20" direction="column">
+					<Text variant="body3-strong">{t(Tasks.TEST_CASES_LOG)}</Text>
+					{testCase.logs.map((log, index) => (
+						<div key={index} className={styles.stats}>
+							{log}
+						</div>
+					))}
+				</Flex>
+			)}
 			<Flex gap="20" direction="column">
 				<Text variant="body3-strong">{t(Tasks.TEST_CASES_OUTPUT)}</Text>
 				<div
