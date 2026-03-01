@@ -77,7 +77,6 @@ export const ActiveSubscriptionInfo = ({ renderActions }: ActiveSubscriptionInfo
 						},
 					)}
 				</Text>
-				<Text variant="body3">{t(Subscription.SUBSCRIPTION_ACCESS_WARNING)}</Text>
 			</Flex>
 			{subscriptions.length > 0 && subscriptionState === 'active' && (
 				<div className={styles.actions}>

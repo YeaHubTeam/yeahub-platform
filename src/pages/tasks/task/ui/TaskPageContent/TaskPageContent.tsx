@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { Group, Panel, Separator } from 'react-resizable-panels';
 
-import { useAppSelector } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
+import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { getProfileId } from '@/entities/profile';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage';
@@ -12,8 +13,8 @@ import {
 	useTestCodeMutation,
 } from '@/entities/task';
 
+import { TaskEditor } from '@/widgets/task/TaskEditor';
 import { TaskTabs } from '@/widgets/task/TaskTabs';
-import { TaskWorkspace } from '@/widgets/task/TaskWorkspace';
 
 import styles from './TaskPageContent.module.css';
 
@@ -25,6 +26,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const [executeCode, { isLoading: isExecuting }] = useExecuteCodeMutation();
 	const [testCode, { isLoading: isTesting }] = useTestCodeMutation();
+	const { isMobile, isTablet } = useScreenSize();
 
 	const [code, setCode] = useState<string>(task.taskStructures[0].solutionStub);
 	const [output, setOutput] = useState<ExecuteCodeResponse | null>(null);
@@ -85,26 +87,22 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	}, [taskStructure]);
 
 	return (
-		<Group orientation="horizontal" className={styles.page}>
-			<Panel defaultSize="50%" minSize="30%" maxSize="60%" style={{ padding: '20px' }}>
-				<TaskTabs task={task} />
-			</Panel>
-			<Separator className={styles['resize-handle']} />
-			<Panel minSize="40%">
-				<TaskWorkspace
+		<Card withOutsideShadow className={styles.page} classNameContent={styles.content}>
+			<Flex gap="20" direction={isMobile || isTablet ? 'column' : 'row'} maxHeight>
+				<TaskTabs task={task} result={output} />
+				<TaskEditor
 					code={code}
 					languageId={selectedLanguage.id}
 					supportedLanguages={task.supportedLanguages}
 					isExecuting={isExecuting}
 					isTesting={isTesting}
-					output={output}
 					onCodeChange={setCode}
 					onLanguageChange={onChangeSelectedLanguage}
 					onReset={handleReset}
 					onRun={handleRunCode}
 					onSubmit={handleExecuteCode}
 				/>
-			</Panel>
-		</Group>
+			</Flex>
+		</Card>
 	);
 };

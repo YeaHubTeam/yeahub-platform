@@ -1413,6 +1413,7 @@ export enum Tasks {
 	TEST_CASES_INPUT = 'test.cases.input',
 	TEST_CASES_OUTPUT = 'test.cases.output',
 	TEST_CASES_EXPECTED_OUTPUT = 'test.cases.expected.output',
+	TEST_CASES_LOG = 'test.cases.log',
 	TEST_CASES_HIDDEN = 'test.cases.hidden',
 	TEST_CASES_ADD_BUTTON = 'test.cases.add.button',
 	TASK_STRUCTURES_TITLE = 'task.structures.title',

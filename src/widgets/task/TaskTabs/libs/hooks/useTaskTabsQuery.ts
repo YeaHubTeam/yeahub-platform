@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import type { Tab } from '@/shared/ui/Tabs';
 
-import type { TaskTabId } from '../types/types';
+import { TaskTabId } from '../../model/types/types';
 
 export const useTaskTabsQuery = (tabs: Tab<TaskTabId>[]) => {
 	const [searchParams, setSearchParams] = useSearchParams();

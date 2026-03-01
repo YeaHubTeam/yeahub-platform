@@ -7,6 +7,8 @@ import { WebpackMode, WebpackOptions, WebpackPaths } from './config/webpack/type
 import { webpackConfig } from './config/webpack/webpackConfig';
 
 interface EnvVariables {
+	mock?: string;
+	ssl?: string;
 	mode: WebpackMode;
 	port?: number | string;
 }
@@ -53,7 +55,9 @@ export default (env: EnvVariables) => {
 	}
 
 	const isDev = env.mode === 'development';
-	const port = env.port ?? process.env.PORT ?? 3001;
+	const isMock = env.mode === 'development' && env.mock === 'true';
+	const notSsl = env.mode === 'development' && env.ssl === 'false';
+	const port = notSsl ? 3001 : (env.port ?? process.env.PORT ?? 3001);
 
 	// Добавляем DefinePlugin для передачи переменных окружения в приложение
 	const envVars = {
@@ -63,6 +67,7 @@ export default (env: EnvVariables) => {
 		'process.env.API_URL': JSON.stringify(process.env.API_URL),
 		'process.env.LANDING_URL': JSON.stringify(process.env.LANDING_URL),
 		'process.env.TELEGRAM_BOT_NAME': JSON.stringify(process.env.TELEGRAM_BOT_NAME),
+		'process.env.MOCK': JSON.stringify(isMock),
 	};
 
 	const options: WebpackOptions = {
@@ -71,6 +76,7 @@ export default (env: EnvVariables) => {
 		isDev,
 		paths,
 		envs: envVars,
+		notSsl,
 	};
 
 	const config: Configuration = webpackConfig(options);
