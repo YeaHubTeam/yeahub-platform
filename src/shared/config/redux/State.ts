@@ -7,6 +7,7 @@ import { ActiveSubscriptionState } from '@/entities/subscription';
 import { CollectionsPageState } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageState } from '@/pages/admin/company/companies';
 import { QuestionsTablePageState } from '@/pages/admin/question/questions';
+import { ReferralsPageState } from '@/pages/admin/referral/referrals';
 import { ResourcesAllTabState, ResourcesRequestsTabState } from '@/pages/admin/resource/resources';
 import { SkillsPageState } from '@/pages/admin/skill/skills';
 import { SpecializationsPageState } from '@/pages/admin/specialization/specializations';
@@ -29,4 +30,5 @@ export interface State {
 	collectionsPage: CollectionsPageState;
 	topicsPage: TopicsPageState;
 	tasksTablePage: TasksTablePageState;
+	referralsPage: ReferralsPageState;
 }

@@ -56,6 +56,7 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
+	SIDEBAR_MENU_REFERRALS = 'sidebar.menu.referrals',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -858,6 +859,21 @@ export enum Skills {
 	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
 	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
+}
+
+export enum Referrals {
+	REF_CODE = 'table.columns.refCode',
+	URL = 'table.columns.url',
+	OWNER_USERNAME = 'table.columns.ownerUsername',
+	LINKED_COUNT = 'table.columns.linkedCount',
+	AMOUNT_SUM = 'table.columns.amountSum',
+	CREATED_AT = 'table.columns.createdAt',
+	STUB_EMPTY_REFERRALS_TITLE = 'stub.empty.referrals.title',
+	STUB_EMPTY_REFERRALS_SUBTITLE = 'stub.empty.referrals.subtitle',
+	STUB_EMPTY_REFERRALS_SUBMIT = 'stub.empty.referrals.submit',
+	STUB_ERROR_REFERRALS_TITLE = 'stub.empty.referrals.requests.title',
+	STUB_ERROR_REFERRALS_SUBTITLE = 'stub.empty.referrals.requests.subtitle',
+	STUB_ERROR_REFERRALS_SUBMIT = 'stub.empty.referrals.requests.submit',
 }
 
 export enum User {

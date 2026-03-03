@@ -21,6 +21,7 @@ import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';
+import { referralsPageReducer } from '@/pages/admin/referral/referrals';
 
 export const reducers = {
 	skillsPage: skillsPageReducer,
@@ -37,6 +38,7 @@ export const reducers = {
 	resourcesRequestsTab: resourcesRequestsTabReducer,
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
+	referralsPage: referralsPageReducer,
 };
 
 export const getStore = (initialState?: State) =>

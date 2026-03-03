@@ -16,6 +16,7 @@ export const i18Namespace = {
 	resources: 'resources',
 	resourceRequests: 'resourceRequests',
 	skill: 'skill',
+	referral: 'referral',
 	specialization: 'specialization',
 	subscription: 'subscription',
 	translation: 'translation',
