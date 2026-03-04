@@ -17,6 +17,7 @@ import { TextArea } from '@/shared/ui/TextArea';
 import { CompanySelect } from '@/entities/company/@x/collection';
 import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
 import { SpecializationSelect } from '@/entities/specialization/@x/collection';
+import { ChooseTasksDrawer } from '@/entities/task/@x/collection';
 
 import {
 	useGetCollectionKeywordsQuery,
@@ -36,6 +37,9 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 	const imageSrc = watch('imageSrc');
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
+
+	const [selectedTasks, setSelectedTasks] = useState<{ title: string; id: number | string }[]>([]);
+
 	const collectionId = watch('id');
 	const specializations = watch('specializations');
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
@@ -85,6 +89,21 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 		setValue(
 			'questions',
 			watchCollectionQuestions.filter((questionId: number) => questionId !== id),
+		);
+	};
+
+	const watchCollectionTasks = watch('taskIds', []);
+
+	const handleSelectTask = (task: { title: string; id: number | string }) => {
+		setSelectedTasks((prev) => [...prev, task]);
+		setValue('taskIds', [...watchCollectionTasks, task.id]);
+	};
+
+	const handleUnselectTask = (id: number | string) => {
+		setSelectedTasks((prev) => prev.filter((item) => item.id !== id));
+		setValue(
+			'taskIds',
+			watchCollectionTasks.filter((taskId: number | string) => taskId !== id),
 		);
 	};
 
@@ -244,6 +263,16 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 							handleSelectQuestion={handleSelectQuestion}
 							handleUnselectQuestion={handleUnselectQuestion}
 							specializations={specializations}
+						/>
+					)}
+				</FormControl>
+
+				<FormControl name="taskIds" control={control}>
+					{() => (
+						<ChooseTasksDrawer
+							selectedTasks={selectedTasks}
+							handleSelectTask={handleSelectTask}
+							handleUnselectTask={handleUnselectTask}
 						/>
 					)}
 				</FormControl>
