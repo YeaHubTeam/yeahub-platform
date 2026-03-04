@@ -48,7 +48,7 @@ export const CurrentUserRating = ({ user, maxRating }: CurrentUserRatingProps) =
 					<Flex
 						className={styles['questions-count']}
 						justify="end"
-					>{`${user.ratingScore}/${maxRating}`}</Flex>
+					>{`${user.ratingPoints}/${maxRating}`}</Flex>
 					<Flex className={styles.progress}>
 						<UsersRatingProgressBar rankedUser={user} maxRating={maxRating} />
 					</Flex>

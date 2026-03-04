@@ -13,14 +13,14 @@ interface UsersRatingProgressBarProps {
 }
 
 export const UsersRatingProgressBar = ({ rankedUser, maxRating }: UsersRatingProgressBarProps) => {
-	const userProgress = Math.floor((rankedUser.ratingScore / maxRating) * 100);
+	const userProgress = rankedUser.progress;
 	return (
 		<Flex direction="column" maxWidth>
 			<Flex align="start">
 				<Text variant="body1">{userProgress}%</Text>
 			</Flex>
 			<ProgressBar
-				currentCount={rankedUser.ratingScore}
+				currentCount={rankedUser.ratingPoints}
 				totalCount={maxRating}
 				variant="medium"
 				color={getProgressColor(userProgress)}
