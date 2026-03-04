@@ -6,7 +6,11 @@ import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetUsersRatingBySpecializationQuery } from '@/entities/user';
+import {
+	useGetUsersRatingBySpecializationQuery,
+	useGetUserProfilePositionQuery,
+} from '@/entities/user';
+import { mapUserProfilePosition } from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
@@ -30,7 +34,6 @@ export const UsersRatingPage = () => {
 		filters.specialization || specializationId,
 	);
 
-	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
 	const maxRating = data?.questionsCount ?? 0;
 	const usersCount = data?.users.length ?? 0;
 	const averageProgress = getOverallProgress(data);
@@ -41,11 +44,37 @@ export const UsersRatingPage = () => {
 	// const currentUserRating = data?.users.find((u) => u.userId === userId);
 
 	// TODO: comment this block when backend for users rating is ready
-	const currentUserRating = data?.users.find((u) => u.userId === '7');
+	// const currentUserRating = data?.users.find((u) => u.userId === '7');
 
-	const showCurrentUserRating = !usersOnPage.filter((u) => u.userId === currentUserRating?.userId)
-		.length;
+	const userId = '42';
+	const { data: currentUserRating } = useGetUserProfilePositionQuery(userId, { skip: !userId });
+	const currentUserRatingMapped = mapUserProfilePosition(currentUserRating);
 
+	let usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
+
+	if (currentUserRatingMapped) {
+		const alreadyInPage = usersOnPage.some((u) => u.userId === currentUserRatingMapped.userId);
+
+		if (!alreadyInPage && currentUserRatingMapped.place <= PLACES_COUNT_ON_PAGE) {
+			usersOnPage = usersOnPage.map((u) => {
+				if (u.place >= currentUserRatingMapped.place) {
+					return { ...u, place: u.place + 1 };
+				}
+				return u;
+			});
+
+			usersOnPage = [
+				...usersOnPage.slice(0, currentUserRatingMapped.place - 1),
+				currentUserRatingMapped,
+				...usersOnPage.slice(currentUserRatingMapped.place - 1),
+			].slice(0, PLACES_COUNT_ON_PAGE);
+		}
+	}
+	const currentUserInPage = usersOnPage.some(
+		(u) => String(u.userId) === String(currentUserRatingMapped?.userId),
+	);
+
+	const showCurrentUserRating = !!currentUserRatingMapped && !currentUserInPage;
 	return (
 		<AnalyticPageTemplate
 			title={
@@ -58,7 +87,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingList
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRating}
+					currentUserRating={currentUserRatingMapped}
 				/>
 			}
 			tooltip={
@@ -72,7 +101,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingTable
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRating}
+					currentUserRating={currentUserRatingMapped}
 				/>
 			}
 			filters={{
@@ -86,9 +115,9 @@ export const UsersRatingPage = () => {
 				hasFilters,
 			}}
 			suffix={
-				currentUserRating &&
+				currentUserRatingMapped &&
 				showCurrentUserRating && (
-					<CurrentUserRating user={currentUserRating} maxRating={maxRating} />
+					<CurrentUserRating user={currentUserRatingMapped} maxRating={maxRating} />
 				)
 			}
 		/>

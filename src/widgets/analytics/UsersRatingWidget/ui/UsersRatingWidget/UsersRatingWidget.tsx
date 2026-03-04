@@ -27,6 +27,7 @@ export const UsersRatingWidget = () => {
 	const questionsCount = data?.questionsCount ?? 0;
 
 	if (isLoading) return <UsersRatingWidgetSkeleton />;
+	console.log(data);
 
 	return (
 		<Card

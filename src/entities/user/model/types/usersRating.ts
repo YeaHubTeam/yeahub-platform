@@ -16,3 +16,14 @@ export type UsersRatingBySpecialization = {
 };
 
 export type GetUsersRatingBySpecializationResponse = UsersRatingBySpecialization;
+
+export interface UserProfilePositionResponse {
+	userId: number;
+	username: string;
+	imageSrc: string;
+	specialization: string;
+	place: number;
+	ratingPoints: number;
+	progress: number;
+	allUsers: number;
+}

@@ -24,20 +24,35 @@ export const UsersRatingList = ({
 }: UsersRatingListProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
-	const rankedUsersFields: AnalyticPageTemplateMobileListItem[] = rankedUsers.map((rankedUser) => {
-		const isCurrentUser = rankedUser.userId === currentUserRating?.userId;
-		return {
-			title: <UsersTitle rankedUser={rankedUser} />,
-			fields: [
-				{
-					label: t(Analytics.USERS_RATING_ANSWERS),
-					value: `${rankedUser.ratingScore}/${maxRating}`,
-				},
-			],
-			suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
-			isCurrentUser,
-		};
+	const mapUserToItem = (
+		rankedUser: UserRating,
+		isCurrentUser: boolean,
+	): AnalyticPageTemplateMobileListItem => ({
+		title: <UsersTitle rankedUser={rankedUser} />,
+		fields: [
+			{
+				label: t(Analytics.USERS_RATING_ANSWERS),
+				value: `${rankedUser.ratingScore}/${maxRating}`,
+			},
+		],
+		suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
+		isCurrentUser,
 	});
 
-	return <AnalyticPageTemplateMobileList items={rankedUsersFields} />;
+	const isUserInCurrentPage = rankedUsers.some((user) => user.userId === currentUserRating?.userId);
+
+	const rankedUsersFields = rankedUsers.map((user) =>
+		mapUserToItem(user, user.userId === currentUserRating?.userId),
+	);
+
+	const currentUserItem =
+		currentUserRating && !isUserInCurrentPage ? mapUserToItem(currentUserRating, true) : null;
+
+	return (
+		<>
+			<AnalyticPageTemplateMobileList items={rankedUsersFields} />
+
+			{currentUserItem && <AnalyticPageTemplateMobileList items={[currentUserItem]} />}
+		</>
+	);
 };
