@@ -13,7 +13,7 @@ import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
 
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
-import { RatingStatsTooltip } from '../RatingStatsTooltip/RatingStatsTooltip';
+import { RatingStatsTooltip } from '../User/RatingStatsTooltip';
 import { UsersRatingList } from '../UsersRatingList/UsersRatingList';
 import { UsersRatingTable } from '../UsersRatingTable/UsersRatingTable';
 

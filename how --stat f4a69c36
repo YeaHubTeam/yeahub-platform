@@ -1,0 +1,38 @@
+[33mf4a69c36[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/YH-1750[m[33m)[m HEAD@{0}: commit (merge): YH-1750: applied code review changes
+[33m2642534b[m[33m ([m[1;31morigin/feature/YH-1750[m[33m)[m HEAD@{1}: checkout: moving from feature/YH-1761 to feature/YH-1750
+[33ma880d0ef[m[33m ([m[1;31morigin/feature/YH-1761[m[33m, [m[1;32mfeature/YH-1761[m[33m)[m HEAD@{2}: checkout: moving from develop to feature/YH-1761
+[33m88d1d5f1[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{3}: checkout: moving from feature/YH-1761 to develop
+[33ma880d0ef[m[33m ([m[1;31morigin/feature/YH-1761[m[33m, [m[1;32mfeature/YH-1761[m[33m)[m HEAD@{4}: commit: YH-1761: added tasks selection to collection form
+[33m88d1d5f1[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{5}: checkout: moving from develop to feature/YH-1761
+[33m88d1d5f1[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33m88d1d5f1[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{7}: pull origin develop: Fast-forward
+[33m951edbae[m HEAD@{8}: checkout: moving from feature/YH-1750 to develop
+[33m2642534b[m[33m ([m[1;31morigin/feature/YH-1750[m[33m)[m HEAD@{9}: reset: moving to HEAD
+[33m2642534b[m[33m ([m[1;31morigin/feature/YH-1750[m[33m)[m HEAD@{10}: commit: YH-1750: added specialization stats logic and fixed rating filters
+[33m951edbae[m HEAD@{11}: reset: moving to HEAD
+[33m951edbae[m HEAD@{12}: reset: moving to HEAD
+[33m951edbae[m HEAD@{13}: reset: moving to HEAD
+[33m951edbae[m HEAD@{14}: reset: moving to HEAD
+[33m951edbae[m HEAD@{15}: checkout: moving from develop to feature/YH-1750
+[33m951edbae[m HEAD@{16}: checkout: moving from feature/YH-1750 to develop
+[33m951edbae[m HEAD@{17}: checkout: moving from develop to feature/YH-1750
+[33m951edbae[m HEAD@{18}: checkout: moving from feature/YH-1750 to develop
+[33m951edbae[m HEAD@{19}: checkout: moving from develop to feature/YH-1750
+[33m951edbae[m HEAD@{20}: pull --tags origin develop: Fast-forward
+[33mf1cec4bb[m HEAD@{21}: checkout: moving from feature/YH-1625 to develop
+[33m26b43dd7[m[33m ([m[1;31morigin/feature/YH-1625[m[33m, [m[1;32mfeature/YH-1625[m[33m)[m HEAD@{22}: reset: moving to HEAD
+[33m26b43dd7[m[33m ([m[1;31morigin/feature/YH-1625[m[33m, [m[1;32mfeature/YH-1625[m[33m)[m HEAD@{23}: commit: YH-1625: fix hasData check and add i18n
+[33mc0c8f8e1[m HEAD@{24}: commit (amend): YH-1625: add stubs for admin skill pages
+[33m64605b70[m[33m ([m[1;31morigin/feature/YH-1514[m[33m)[m HEAD@{25}: Branch: renamed refs/heads/feature/YH-1514 to refs/heads/feature/YH-1625
+[33m64605b70[m[33m ([m[1;31morigin/feature/YH-1514[m[33m)[m HEAD@{27}: checkout: moving from develop to feature/YH-1514
+[33mf1cec4bb[m HEAD@{28}: checkout: moving from feature/YH-1514 to develop
+[33m64605b70[m[33m ([m[1;31morigin/feature/YH-1514[m[33m)[m HEAD@{29}: commit: YH-1514: add stubs for admin skill pages
+[33mf1cec4bb[m HEAD@{30}: reset: moving to HEAD
+[33mf1cec4bb[m HEAD@{31}: reset: moving to HEAD
+[33mf1cec4bb[m HEAD@{32}: reset: moving to HEAD
+[33mf1cec4bb[m HEAD@{33}: reset: moving to HEAD
+[33mf1cec4bb[m HEAD@{34}: Branch: renamed refs/heads/YH-1514-admin-skills-stubs to refs/heads/feature/YH-1514
+[33mf1cec4bb[m HEAD@{36}: checkout: moving from develop to YH-1514-admin-skills-stubs
+[33mf1cec4bb[m HEAD@{37}: pull: Fast-forward
+[33mc89b2417[m[33m ([m[1;31morigin/feature/YH-1628-review[m[33m, [m[1;32mmain[m[33m)[m HEAD@{38}: checkout: moving from main to develop
+[33mc89b2417[m[33m ([m[1;31morigin/feature/YH-1628-review[m[33m, [m[1;32mmain[m[33m)[m HEAD@{39}: clone: from https://github.com/YeaHubTeam/yeahub-platform.git

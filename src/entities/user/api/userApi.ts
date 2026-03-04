@@ -62,7 +62,6 @@ const userApi = baseApi.injectEndpoints({
 			invalidatesTags: [ApiTags.USER_DETAIL, ApiTags.USERS],
 		}),
 
-		// Исправлено: только number и URL берется из констант
 		getRatingStats: build.query<GetRatingStatsResponse, number>({
 			query: (specializationId) => ({
 				url: userApiUrls.getRatingStats,
