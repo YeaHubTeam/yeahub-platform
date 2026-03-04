@@ -13,14 +13,14 @@ import styles from './ChooseTasksDrawer.module.css';
 import { TasksSearchList } from './TasksSearchList';
 
 interface TaskData {
-	id: string | number;
+	id: string;
 	title: string;
 }
 
 interface ChooseTasksDrawerProps {
 	selectedTasks: TaskData[];
 	handleSelectTask: (task: TaskData) => void;
-	handleUnselectTask: (id: string | number) => void;
+	handleUnselectTask: (id: string) => void;
 }
 
 export const ChooseTasksDrawer = ({
@@ -66,7 +66,10 @@ export const ChooseTasksDrawer = ({
 				</Button>
 			</Flex>
 			<Drawer isOpen={isOpen} onClose={onClose} rootName="body" className={styles['drawer']}>
-				<TasksSearchList selectedTasks={selectedTasks} onSelectTask={handleSelectTask} />
+				<TasksSearchList
+					selectedTasks={selectedTasks}
+					onSelectTask={(task) => handleSelectTask({ ...task, id: String(task.id) })}
+				/>
 			</Drawer>
 		</>
 	);

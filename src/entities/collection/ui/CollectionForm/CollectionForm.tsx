@@ -22,6 +22,7 @@ import { ChooseTasksDrawer } from '@/entities/task/@x/collection';
 import {
 	useGetCollectionKeywordsQuery,
 	useGetCollectionQuestionsQuery,
+	useGetCollectionTasksQuery,
 } from '../../api/collectionApi';
 
 import styles from './CollectionForm.module.css';
@@ -29,19 +30,21 @@ import styles from './CollectionForm.module.css';
 export interface CollectionFormProps {
 	isEdit?: boolean;
 	questionsCount?: number;
+	tasksCount?: number;
 }
 
-export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) => {
+export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, setValue, watch } = useFormContext();
 	const imageSrc = watch('imageSrc');
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
-	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 
-	const [selectedTasks, setSelectedTasks] = useState<{ title: string; id: number | string }[]>([]);
+	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
+	const [selectedTasks, setSelectedTasks] = useState<{ title: string; id: string }[]>([]);
 
 	const collectionId = watch('id');
 	const specializations = watch('specializations');
+
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
 		{
 			collectionId: collectionId!,
@@ -49,6 +52,15 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 		},
 		{ skip: questionsCount === undefined },
 	);
+
+	const { data: collectionTasks } = useGetCollectionTasksQuery(
+		{
+			collectionId: collectionId!,
+			limit: tasksCount,
+		},
+		{ skip: !isEdit || collectionId === undefined },
+	);
+
 	useEffect(() => {
 		if (collectionQuestions) {
 			setValue(
@@ -64,12 +76,27 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 		}
 	}, [collectionQuestions, setValue]);
 
+	useEffect(() => {
+		if (collectionTasks) {
+			setValue(
+				'tasks',
+				collectionTasks.data.map((task) => String(task.id)),
+			);
+			setSelectedTasks(
+				collectionTasks.data.map((task) => ({
+					id: String(task.id),
+					title: task.title,
+				})),
+			);
+		}
+	}, [collectionTasks, setValue]);
+
 	const isFree = watch('isFree', true);
 	const watchCollectionQuestions = watch('questions', []);
+	const watchCollectionTasks = watch('tasks', []);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
-
 		setPreviewImg(imageBase64);
 		setValue('collectionImage', image);
 	};
@@ -92,18 +119,16 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 		);
 	};
 
-	const watchCollectionTasks = watch('taskIds', []);
-
-	const handleSelectTask = (task: { title: string; id: number | string }) => {
+	const handleSelectTask = (task: { title: string; id: string }) => {
 		setSelectedTasks((prev) => [...prev, task]);
-		setValue('taskIds', [...watchCollectionTasks, task.id]);
+		setValue('tasks', [...watchCollectionTasks, task.id]);
 	};
 
-	const handleUnselectTask = (id: number | string) => {
+	const handleUnselectTask = (id: string) => {
 		setSelectedTasks((prev) => prev.filter((item) => item.id !== id));
 		setValue(
-			'taskIds',
-			watchCollectionTasks.filter((taskId: number | string) => taskId !== id),
+			'tasks',
+			watchCollectionTasks.filter((taskId: string) => taskId !== id),
 		);
 	};
 
@@ -267,7 +292,7 @@ export const CollectionForm = ({ isEdit, questionsCount }: CollectionFormProps) 
 					)}
 				</FormControl>
 
-				<FormControl name="taskIds" control={control}>
+				<FormControl name="tasks" control={control}>
 					{() => (
 						<ChooseTasksDrawer
 							selectedTasks={selectedTasks}
