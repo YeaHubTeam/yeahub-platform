@@ -21,12 +21,10 @@ const root = document.getElementById('root');
 const container = createRoot(root as HTMLElement);
 
 async function deferRender(): Promise<ServiceWorkerRegistration | undefined> {
-	if (process.env.NODE_ENV != 'development') {
-		return;
+	if (process.env.NODE_ENV === 'development' && process.env.MOCK) {
+		const { worker } = await import('./msw/browser');
+		return worker.start();
 	}
-
-	const { worker } = await import('./msw/browser');
-	return worker.start();
 }
 
 initSentry();

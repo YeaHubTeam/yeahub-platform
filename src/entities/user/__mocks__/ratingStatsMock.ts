@@ -1,19 +1,24 @@
 import { http, HttpResponse } from 'msw';
 
-export const ratingStatsMock = http.get('*/ratings/stats', ({ request }) => {
+import { Specialization, specializationsMock } from '@/entities/specialization/@x/user';
+
+import { userApiUrls } from '../model/constants/userConstants';
+import { GetRatingStatsResponse } from '../model/types/user';
+
+export const ratingStatsMock = http.get(`*${userApiUrls.getRatingStats}`, ({ request }) => {
 	const url = new URL(request.url);
-	const specializationId = url.searchParams.get('specializationId');
+	const specializationId = Number(url.searchParams.get('specializationId'));
 
-	let title = 'React Frontend Developer';
-	if (specializationId === '2') title = 'Java Backend Developer';
-	if (specializationId === '3') title = 'DevOps Engineer';
+	const foundSpecialization = specializationsMock.data.find(
+		(spec: Specialization) => spec.id === specializationId,
+	);
 
-	return HttpResponse.json({
-		specialization: {
-			title: title,
-		},
+	const fallbackSpecialization = specializationsMock.data[0];
+
+	return HttpResponse.json<GetRatingStatsResponse>({
+		specialization: foundSpecialization || fallbackSpecialization,
 		allUsers: 1842,
-		allQuestions: 1200,
+		allQuestions: 756,
 		averageProgress: 42,
 	});
 });

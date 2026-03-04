@@ -64,6 +64,8 @@ const CollectionsPage = () => {
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
+		specializations: filters.specialization,
+		isFree: filters.isFree,
 	});
 
 	const collections = useMemo(() => {

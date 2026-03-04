@@ -17,7 +17,6 @@ describe('FooterMainSkeleton', () => {
 	});
 
 	test('should render FooterMainSkeleton wrapper', () => {
-		console.log(1111, renderComponent);
 		renderComponent(<FooterMainSkeleton />);
 
 		const wrapper = screen.getByTestId('FooterMainSkeleton');

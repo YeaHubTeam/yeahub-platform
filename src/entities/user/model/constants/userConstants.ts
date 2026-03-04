@@ -5,4 +5,5 @@ export const userApiUrls = {
 	getUserRolesList: 'users/roles',
 	addUserRoles: `users/:userId/roles-add`,
 	removeUserRoles: `users/:userId/roles-remove`,
+	getRatingStats: '/ratings/stats',
 };

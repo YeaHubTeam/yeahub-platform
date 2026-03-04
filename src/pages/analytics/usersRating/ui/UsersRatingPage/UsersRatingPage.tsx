@@ -13,6 +13,7 @@ import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
 
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
+import { RatingStatsTooltip } from '../RatingStatsTooltip/RatingStatsTooltip';
 import { UsersRatingList } from '../UsersRatingList/UsersRatingList';
 import { UsersRatingTable } from '../UsersRatingTable/UsersRatingTable';
 
@@ -28,19 +29,23 @@ export const UsersRatingPage = () => {
 	const page = filters?.page || 1;
 	const currentSpecialization = filters.specialization || specializationId;
 
+	const specIdNumber = Number(currentSpecialization);
+
 	const isFilterActive = page > 1 || String(currentSpecialization) !== String(specializationId);
 
 	const { data } = useGetUsersRatingBySpecializationQuery(currentSpecialization);
 
-	const { data: statsData } = useGetRatingStatsQuery(currentSpecialization);
+	const { data: statsData } = useGetRatingStatsQuery(specIdNumber);
 
 	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
 
 	const maxRating = statsData?.allQuestions ?? 0;
 
 	const currentUserRating = data?.users.find((u) => u.userId === '7');
-	const showCurrentUserRating = !usersOnPage.filter((u) => u.userId === currentUserRating?.userId)
-		.length;
+
+	const showCurrentUserRating = !usersOnPage.some(
+		(u: { userId: string }) => u.userId === currentUserRating?.userId,
+	);
 
 	return (
 		<AnalyticPageTemplate
@@ -60,15 +65,15 @@ export const UsersRatingPage = () => {
 				/>
 			}
 			tooltip={
-				<>
-					{t(Analytics.USERS_RATING_TOOLTIP_USERS_COUNT, { usersCount: statsData?.allUsers ?? 0 })}{' '}
-					<br />
-					Всего вопросов: {statsData?.allQuestions ?? 0} <br />
-					{t(Analytics.USERS_RATING_TOOLTIP_PROGRESS, {
-						averageProgress: statsData?.averageProgress ?? 0,
-					})}{' '}
-					<br />
-				</>
+				statsData ? (
+					<RatingStatsTooltip
+						allUsers={statsData.allUsers}
+						allQuestions={statsData.allQuestions}
+						averageProgress={statsData.averageProgress}
+					/>
+				) : (
+					<></>
+				)
 			}
 			table={
 				<UsersRatingTable

@@ -45,12 +45,14 @@ export const UsersRatingTable = ({
 	};
 
 	const tableItems: UsersRatingTableRow[] = rankedUsers.map((rankedUser) => {
+		const safeStudiedQuestions = Math.min(rankedUser.ratingScore, maxRating);
+
 		return {
 			id: rankedUser.userId,
 			place: rankedUser.place,
 			user: <UsersTitle rankedUser={rankedUser} />,
 			avatarUrl: rankedUser.avatarUrl,
-			studiedQuestions: `${rankedUser.ratingScore}/${maxRating}`,
+			studiedQuestions: `${safeStudiedQuestions}/${maxRating}`,
 			progress: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
 			rowId: rankedUser.place,
 		};
