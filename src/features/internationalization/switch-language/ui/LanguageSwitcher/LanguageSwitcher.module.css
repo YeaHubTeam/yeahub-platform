@@ -1,44 +1,39 @@
-.button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: 10px;
+.switch input + span.pin::before {
+  background-image: url("../../assets/icons/ru.png");
+  transform: translateX(12px);
+}
+
+.switch input:checked + span.pin::before {
+  background-image: url("../../assets/icons/en.png");
+  transform: translateX(37px);
+}
+
+.switch input:focus + span.pin {
+  box-shadow: none;
+}
+
+.wrapper {
   width: 47px;
   height: 22px;
-  border: none;
-  border-radius: 20px;
-  background-color: var(--button-background-primary);
 }
 
-.ru-icon,
-.en-icon {
+.switch span::before {
   position: absolute;
-  transition: transform 2s ease-in-out;
+  bottom: 2px;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-white-900);
+  background-size: 18px;
+  transition: 0.4s;
+  content: '';
 }
 
-.ru-icon {
-  transform: translateX(1px);
+.switch span {
+  background-color: var(--color-purple-700);
 }
 
-.en-icon {
-  transform: translateX(29px);
-}
-
-.button.active .ru-icon {
-  transform: translateX(-29px);
-}
-
-.button.active .en-icon {
-  transform: translateX(1px);
-}
-
-.ru-icon circle {
-  cx: 9;
-  cy: 9;
-  r: 9;
-  fill: url("#pattern0_35669_177715");
-}
-
-.en-icon path {
-  fill: url("#pattern0_35669_177719");
+.switch:hover span {
+  background-color: var(--color-purple-500);
 }

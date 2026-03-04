@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { EnLang, RuLang } from '../../assets/icons';
+import { Switch } from '@/shared/ui/Switch';
+
 import { Languages } from '../../model/types/changingLanguage';
 
 import styles from './LanguageSwitcher.module.css';
@@ -14,19 +15,13 @@ export const LanguageSwitcher = memo(() => {
 	};
 
 	return (
-		<>
-			<button
-				className={styles['button']}
-				onClick={onChangeLanguage}
-				data-testid="LanguageSwitcher_Button"
-			>
-				{i18n.language === Languages.RU ? (
-					<RuLang className={styles['ru-icon']} />
-				) : (
-					<EnLang className={styles['en-icon']} />
-				)}
-			</button>
-		</>
+		<Switch
+			className={styles.switch}
+			switchClassName={styles.wrapper}
+			pinClassName={styles.pin}
+			checked={i18n.language === Languages.EN}
+			onChange={onChangeLanguage}
+		/>
 	);
 });
 

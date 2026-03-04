@@ -1,2 +1,2 @@
-export { default as RuLang } from './ruIcon.svg';
-export { default as EnLang } from './enIcon.svg';
+export { default as RuLang } from './ru.png';
+export { default as EnLang } from './en.png';
