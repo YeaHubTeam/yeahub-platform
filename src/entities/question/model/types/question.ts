@@ -3,6 +3,7 @@ import { Author } from '@/shared/ui/AuthorInfo';
 
 import { Skill } from '@/entities/skill/@x/question';
 import { Specialization } from '@/entities/specialization/@x/question';
+import { Topic } from '@/entities/topic/@x/question';
 
 export type QuestionStatus = 'public' | 'draft';
 
@@ -24,6 +25,7 @@ export interface Question {
 	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
+	questionTopics?: Topic[];
 	checksCount?: number;
 	isFavorite?: boolean;
 	isLearned?: boolean;
