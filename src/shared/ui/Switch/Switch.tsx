@@ -17,6 +17,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 			label,
 			labelClassName,
 			switchClassName,
+			pinClassName,
 			...otherProps
 		},
 		ref,
@@ -35,7 +36,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(
 						aria-checked={checked}
 						{...inputProps}
 					/>
-					<span className={styles['switch-slider']} />
+					<span className={classnames(styles['switch-slider'], pinClassName)} />
 				</label>
 				{label && (
 					<span className={classnames(styles['switch-label'], labelClassName)}>{label}</span>
