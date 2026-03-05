@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ import { getHasPremiumAccess } from '@/entities/profile';
 import { useGetPublicQuestionsListQuery, useGetQuestionsListQuery } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { DEFAULT_SPECIALIZATION_ID } from '@/entities/specialization';
+import { useGetTasksListQuery } from '@/entities/task';
 
 import { useGetCollectionsFilterParams } from '@/features/collections/filterCollections';
 import {
@@ -28,6 +30,7 @@ import {
 	CollectionBody,
 	CollectionHeader,
 } from '@/widgets/Collection';
+import { TasksController } from '@/widgets/task/TasksList';
 
 import styles from './PublicCollectionPage.module.css';
 import { PublicCollectionPageSkeleton } from './PublicCollectionPage.skeleton';
@@ -70,7 +73,18 @@ export const PublicCollectionPage = () => {
 		collectionId,
 		filter,
 	});
+	const { data: tasksResponse } = useGetTasksListQuery(
+		{
+			collectionId: collectionId ? Number(collectionId) : undefined,
+			limit: 50,
+			page: 1,
+		},
+		{
+			skip: !collectionId,
+		},
+	);
 
+	const tasks = tasksResponse?.data ?? [];
 	const questions = (hasPremiumAccess ? privateResponse?.data : publicResponse?.data) ?? [];
 
 	if (isLoading || isFetching) {
@@ -87,9 +101,11 @@ export const PublicCollectionPage = () => {
 	const onMoveNext = () => {
 		onQueryNavigate(nextId, nextPage);
 	};
+
 	const {
 		createdBy,
 		questionsCount,
+		tasksCount,
 		isFree,
 		company,
 		specializations,
@@ -140,6 +156,7 @@ export const PublicCollectionPage = () => {
 						questions={questions}
 						hasPremiumAccess={hasPremiumAccess}
 					/>
+					<TasksController isFree={isFree} tasks={tasks} hasPremiumAccess={hasPremiumAccess} />
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{isLargeScreen && (
@@ -150,6 +167,7 @@ export const PublicCollectionPage = () => {
 							isFree={isFree}
 							company={company}
 							questionsCount={questionsCount}
+							tasksCount={tasksCount}
 							createdBy={createdBy}
 							keywords={keywords}
 							media={media}

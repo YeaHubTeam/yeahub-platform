@@ -30,4 +30,5 @@ export { TaskForm } from './ui/TaskForm/TaskForm';
 export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';
 export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresField';
 export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategoryFilterList';
+export { TaskWarningInfo } from './ui/TaskWarningInfo/TaskWarningInfo';
 export { taskCategories } from './model/constants/task';

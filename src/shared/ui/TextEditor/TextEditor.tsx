@@ -1,4 +1,4 @@
-import CharacterCount from '@tiptap/extension-character-count';
+// import CharacterCount from '@tiptap/extension-character-count';
 import Code from '@tiptap/extension-code';
 import Strike from '@tiptap/extension-strike';
 import TextAlign from '@tiptap/extension-text-align';
@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { TextSelection } from 'prosemirror-state';
 import { useCallback, useEffect, useRef } from 'react';
 
-import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/atom-one-dark.css';
 import { createCustomCodeBlock, normalizeHtmlContent, createPastePlugin } from '@/shared/libs';
 import { BubbleMenuEditor } from '@/shared/ui/BubbleMenuEditor';
 
@@ -90,7 +90,7 @@ export const TextEditor = ({
 				types: ['heading', 'paragraph'],
 			}),
 			Strike,
-			...(limit ? [CharacterCount.configure({ limit })] : []),
+			// ...(limit ? [CharacterCount.configure({ limit })] : []),
 		],
 		editorProps: {
 			attributes: {

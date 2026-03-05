@@ -96,6 +96,22 @@
 		"strings": "Strings",
 		"dynamic.programming": "Dynamic programming"
 	},
+	"tasks": {
+		"short": "Tasks",
+		"length": {
+			"min_one": "{{count}} task",
+			"min_few": "{{count}} tasks",
+			"min_many": "{{count}} tasks"
+		}
+	},
+	"community": {
+		"join": "Become a member of the community"
+	},
+	"preview": {
+		"locked": {
+			"collection": "Community members will have a list of tasks."
+		}
+	},
 	"stub": {
 		"empty.tasks": {
 			"public": {
@@ -137,6 +153,10 @@
 			"run": "Run",
 			"submit": "Submit"
 		}
+	},
+	"warning": {
+		"intro": "This section is created by candidates for candidates. We share real interview tasks to help you prepare more effectively — understand which topics really matter, improve your knowledge, and feel more confident.",
+		"disclaimer": "It’s important to note that we are not affiliated with these companies and do not aim to interfere with their hiring processes. All tasks are collected from public sources and candidates’ personal experiences. Our goal is to help you prepare more thoughtfully — not to provide ready-made answers."
 	},
 	"output": {
 		"result": {

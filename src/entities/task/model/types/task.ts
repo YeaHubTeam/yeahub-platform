@@ -30,6 +30,7 @@ export interface Task {
 	difficulty: TaskDifficulty;
 	supportedLanguages: ProgrammingLanguage[];
 	mainCategory: TaskCategoryCode;
+	isFree?: boolean;
 	constraints: string[];
 	testCases: TestCase[];
 	taskStructures: TaskStructure[];
@@ -74,6 +75,7 @@ export interface GetTasksListParams {
 	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
+	collectionId?: number;
 }
 
 export type GetTasksListResponse = Response<Task[]>;

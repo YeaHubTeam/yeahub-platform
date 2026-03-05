@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Collections, Translation, ROUTES } from '@/shared/config';
+import { i18Namespace, Collections, Tasks, Translation, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
@@ -39,6 +39,7 @@ export const CollectionsTable = ({
 			title: '30%',
 			description: 'auto',
 			questionsCount: '90px',
+			tasksCount: '90px',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -50,6 +51,7 @@ export const CollectionsTable = ({
 			title: t(Collections.TITLE_SHORT),
 			description: t(Collections.DESCRIPTION_SHORT),
 			questionsCount: t(Collections.QUESTIONS_SHORT),
+			tasksCount: t(Tasks.TASKS),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -67,6 +69,7 @@ export const CollectionsTable = ({
 			title: collection.title,
 			description: collection.description,
 			questionsCount: collection.questionsCount,
+			tasksCount: collection.tasksCount,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (

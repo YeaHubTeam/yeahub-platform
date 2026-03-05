@@ -33,7 +33,6 @@ export const CollectionBody = ({
 	const showRegistrationBanner = !isAuthorized && questions.length > GUEST_QUESTIONS_COUNT;
 	const hiddenQuestionsCount = questions.length - GUEST_QUESTIONS_COUNT;
 	const displayedQuestions = isAuthorized ? questions : questions.slice(0, GUEST_QUESTIONS_COUNT);
-
 	if (!isFree && !hasPremiumAccess && !isAdmin)
 		return (
 			<Card

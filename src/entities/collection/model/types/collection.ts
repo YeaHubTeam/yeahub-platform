@@ -14,6 +14,7 @@ export interface Collection {
 	createdAt?: string;
 	updatedAt?: string;
 	questionsCount?: number;
+	tasksCount?: number;
 	keywords?: string[];
 	questions?: Question[];
 	specializations?: Specialization[];
