@@ -71,7 +71,6 @@ function fetchUsers(): Promise<User[]> {
 async function displayUsers() {
 	try {
 		const users = await fetchUsers();
-		console.log(users);
 	} catch (error) {
 		console.error('Ошибка при загрузке пользователей:', error);
 	}

@@ -1,0 +1,21 @@
+.left {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.right {
+  padding-right: 20px;
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.progress-bar{
+  line-height: 14px;
+}
+
+.current-user-rating {
+  background-color: var(--color-purple-100);
+}

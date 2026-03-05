@@ -50,6 +50,11 @@
 	"image.src": "Image URL",
 	"image.alt": "Image of company",
 	"create.page.title": "Collection",
+	"collections": {
+		"title": "Collections",
+		"detail": "Learn more",
+		"train": "Train"
+	},
 	"edit.page.title": "Edit collection",
 	"company": {
 		"title": "Company",

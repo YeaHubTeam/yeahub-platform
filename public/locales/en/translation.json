@@ -62,6 +62,7 @@
 				"resources": "Resources"
 			},
 			"questions": "Questions",
+
 			"skills": "Skills",
 			"companies": "Companies",
 			"analytics": "Analytics",
@@ -173,6 +174,8 @@
 		"interview.statistic": "Interview statistics",
 		"questions.list": "List of questions",
 		"question.detail": "More details",
+		"collections.list": "Collections",
+		"collection.detail": "Question List",
 		"quiz": "Interview",
 		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
@@ -192,6 +195,7 @@
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions",
+		"analytics.usersRating": "Users rating",
 		"tasks.list": "Tasks",
 		"task.detail": "More details"
 	},

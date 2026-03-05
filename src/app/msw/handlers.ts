@@ -26,6 +26,7 @@ import { specializationCreateHandlers } from '@/features/specialization/createSp
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 import { createTopicHandlers } from '@/features/topics/createTopics';
+import { topicDeleteHandlers } from '@/features/topics/deleteTopic';
 
 export const handlers = [
 	...authHandlers,
@@ -55,6 +56,7 @@ export const handlers = [
 	...resourcesHandlers,
 	...usersRatingHandlers,
 	...topicHandlers,
+	...topicDeleteHandlers,
 	...hhAnalyticsHandlers,
 	...createTopicHandlers,
 ];

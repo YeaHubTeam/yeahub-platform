@@ -6,3 +6,5 @@ export * from './fp';
 export * from './browser';
 export * from './textEditor';
 export * from './jest';
+export * from './math';
+export * from './visual';
