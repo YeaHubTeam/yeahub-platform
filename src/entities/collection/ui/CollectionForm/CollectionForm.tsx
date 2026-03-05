@@ -79,13 +79,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 	useEffect(() => {
 		if (collectionTasks) {
 			setValue(
-				'tasks',
+				'taskIds',
 				collectionTasks.data.map((task) => String(task.id)),
 			);
 			setSelectedTasks(
 				collectionTasks.data.map((task) => ({
 					id: String(task.id),
-					title: task.title,
+					title: task.name,
 				})),
 			);
 		}
@@ -93,7 +93,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 
 	const isFree = watch('isFree', true);
 	const watchCollectionQuestions = watch('questions', []);
-	const watchCollectionTasks = watch('tasks', []);
+	const watchCollectionTasks = watch('taskIds', []);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
@@ -121,13 +121,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 
 	const handleSelectTask = (task: { title: string; id: string }) => {
 		setSelectedTasks((prev) => [...prev, task]);
-		setValue('tasks', [...watchCollectionTasks, task.id]);
+		setValue('taskIds', [...watchCollectionTasks, task.id]);
 	};
 
 	const handleUnselectTask = (id: string) => {
 		setSelectedTasks((prev) => prev.filter((item) => item.id !== id));
 		setValue(
-			'tasks',
+			'taskIds',
 			watchCollectionTasks.filter((taskId: string) => taskId !== id),
 		);
 	};
@@ -292,7 +292,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					)}
 				</FormControl>
 
-				<FormControl name="tasks" control={control}>
+				<FormControl name="taskIds" control={control}>
 					{() => (
 						<ChooseTasksDrawer
 							selectedTasks={selectedTasks}
