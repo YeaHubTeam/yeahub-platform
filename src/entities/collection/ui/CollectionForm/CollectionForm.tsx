@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Collections } from '@/shared/config';
-import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
@@ -19,13 +17,12 @@ import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
 import { SpecializationSelect } from '@/entities/specialization/@x/collection';
 import { ChooseTasksDrawer } from '@/entities/task/@x/collection';
 
-import {
-	useGetCollectionKeywordsQuery,
-	useGetCollectionQuestionsQuery,
-	useGetCollectionTasksQuery,
-} from '../../api/collectionApi';
+import { useGetCollectionKeywordsQuery } from '../../api/collectionApi';
 
 import styles from './CollectionForm.module.css';
+import { useCollectionImage } from './hooks/useCollectionImage';
+import { useCollectionQuestions } from './hooks/useCollectionQuestions';
+import { useCollectionTasks } from './hooks/useCollectionTasks';
 
 export interface CollectionFormProps {
 	isEdit?: boolean;
@@ -35,102 +32,22 @@ export interface CollectionFormProps {
 
 export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
-	const { control, setValue, watch } = useFormContext();
-	const imageSrc = watch('imageSrc');
-	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
-
-	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
-	const [selectedTasks, setSelectedTasks] = useState<{ title: string; id: string }[]>([]);
+	const { control, watch, setValue } = useFormContext();
 
 	const collectionId = watch('id');
+	const isFree = watch('isFree', true);
 	const specializations = watch('specializations');
 
-	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
-		{
-			collectionId: collectionId!,
-			limit: questionsCount,
-		},
-		{ skip: questionsCount === undefined },
+	const { previewImg, changeImage, removeImage } = useCollectionImage();
+
+	const { selectedQuestions, handleSelectQuestion, handleUnselectQuestion } =
+		useCollectionQuestions(collectionId, questionsCount);
+
+	const { selectedTasks, handleSelectTask, handleUnselectTask } = useCollectionTasks(
+		collectionId,
+		tasksCount,
+		isEdit,
 	);
-
-	const { data: collectionTasks } = useGetCollectionTasksQuery(
-		{
-			collectionId: collectionId!,
-			limit: tasksCount,
-		},
-		{ skip: !isEdit || collectionId === undefined },
-	);
-
-	useEffect(() => {
-		if (collectionQuestions) {
-			setValue(
-				'questions',
-				collectionQuestions.data.map((collection) => collection.id),
-			);
-			setSelectedQuestions(
-				collectionQuestions.data.map((collection) => ({
-					id: collection.id,
-					title: collection.title,
-				})),
-			);
-		}
-	}, [collectionQuestions, setValue]);
-
-	useEffect(() => {
-		if (collectionTasks) {
-			setValue(
-				'taskIds',
-				collectionTasks.data.map((task) => String(task.id)),
-			);
-			setSelectedTasks(
-				collectionTasks.data.map((task) => ({
-					id: String(task.id),
-					title: task.name,
-				})),
-			);
-		}
-	}, [collectionTasks, setValue]);
-
-	const isFree = watch('isFree', true);
-	const watchCollectionQuestions = watch('questions', []);
-	const watchCollectionTasks = watch('taskIds', []);
-
-	const changeImage = (imageBase64: string) => {
-		const image = removeBase64Data(imageBase64);
-		setPreviewImg(imageBase64);
-		setValue('collectionImage', image);
-	};
-
-	const removeImage = () => {
-		setPreviewImg(null);
-		setValue('imageSrc', null);
-	};
-
-	const handleSelectQuestion = (question: { title: string; id: number }) => {
-		setSelectedQuestions((prev) => [...prev, question]);
-		setValue('questions', [...watchCollectionQuestions, question.id]);
-	};
-
-	const handleUnselectQuestion = (id: number) => {
-		setSelectedQuestions((prev) => prev.filter((item) => item.id !== id));
-		setValue(
-			'questions',
-			watchCollectionQuestions.filter((questionId: number) => questionId !== id),
-		);
-	};
-
-	const handleSelectTask = (task: { title: string; id: string }) => {
-		setSelectedTasks((prev) => [...prev, task]);
-		setValue('taskIds', [...watchCollectionTasks, task.id]);
-	};
-
-	const handleUnselectTask = (id: string) => {
-		setSelectedTasks((prev) => prev.filter((item) => item.id !== id));
-		setValue(
-			'taskIds',
-			watchCollectionTasks.filter((taskId: string) => taskId !== id),
-		);
-	};
 
 	return (
 		<>
@@ -151,6 +68,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</Flex>
+
 				<Flex gap="120">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
@@ -168,6 +86,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						)}
 					</FormControl>
 				</Flex>
+
 				<Flex direction="column" gap="8">
 					<Text variant="body3-strong" color="black-800">
 						{t(Collections.DESCRIPTION_FULL)}
@@ -187,6 +106,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						)}
 					</FormControl>
 				</Flex>
+
 				<Flex gap="120">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
@@ -202,6 +122,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						initialSrc={previewImg}
 					/>
 				</Flex>
+
 				<Flex gap="120" align="center">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
@@ -226,6 +147,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						/>
 					</Flex>
 				</Flex>
+
 				<Flex gap="120">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
@@ -243,6 +165,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 						)}
 					</FormControl>
 				</Flex>
+
 				<Flex gap="120">
 					<Flex direction="column" className={styles['text-wrapper']} gap="8">
 						<Text variant="body3-strong" color="black-800">
