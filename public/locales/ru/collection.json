@@ -52,6 +52,16 @@
 			"min_many": "{{count}} вопросов"
 		}
 	},
+	"tasks": {
+		"short": "Задачи",
+		"label": "Добавьте задачи",
+		"selected": "Выбранные задачи: {{count}}",
+		"length": {
+			"min_one": "{{count}} задача",
+			"min_few": "{{count}} задачи",
+			"min_many": "{{count}} задач"
+		}
+	},
 	"image.src": "Ссылка на картинку",
 	"create.page.title": "Коллекция",
 	"image.alt": "Изображение компании",
