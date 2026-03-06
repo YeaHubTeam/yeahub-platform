@@ -12,7 +12,7 @@ import { TasksList } from '@/widgets/task/TasksList';
 
 import styles from './TasksController.module.css';
 
-interface TasksControllerProps extends Pick<Task, 'isFree'> {
+interface TasksControllerProps {
 	tasks: Task[];
 	isAdmin?: boolean;
 	hasPremiumAccess?: boolean;
@@ -20,7 +20,6 @@ interface TasksControllerProps extends Pick<Task, 'isFree'> {
 
 export const TasksController = ({
 	tasks,
-	isFree,
 	isAdmin = false,
 	hasPremiumAccess,
 }: TasksControllerProps) => {
@@ -28,7 +27,7 @@ export const TasksController = ({
 
 	const taskCanSolve = tasks.map((item) => ({ ...item, canSolve: true }));
 
-	if (!isFree && !hasPremiumAccess && !isAdmin) {
+	if (!hasPremiumAccess && !isAdmin) {
 		return (
 			<Card
 				className={styles.wrapper}

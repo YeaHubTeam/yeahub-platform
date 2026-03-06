@@ -156,7 +156,7 @@ export const PublicCollectionPage = () => {
 						questions={questions}
 						hasPremiumAccess={hasPremiumAccess}
 					/>
-					<TasksController isFree={isFree} tasks={tasks} hasPremiumAccess={hasPremiumAccess} />
+					<TasksController tasks={tasks} hasPremiumAccess={hasPremiumAccess} />
 					{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 				</Flex>
 				{isLargeScreen && (

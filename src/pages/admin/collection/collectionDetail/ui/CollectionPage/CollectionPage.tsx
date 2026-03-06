@@ -113,7 +113,7 @@ export const CollectionPage = () => {
 					company={company}
 				/>{' '}
 				<CollectionBody isFree={isFree} isAdmin questions={questions} />
-				<TasksController isFree={isFree} isAdmin tasks={tasks} />
+				<TasksController isAdmin tasks={tasks} />
 			</section>
 		</>
 	);
@@ -162,7 +162,7 @@ export const CollectionPage = () => {
 									company={company}
 								/>{' '}
 								<CollectionBody isFree={isFree} isAdmin questions={questions} />
-								<TasksController isFree={isFree} isAdmin tasks={tasks} />
+								<TasksController isAdmin tasks={tasks} />
 							</div>
 							<div className={styles.additional}>
 								<AdditionalInfo
