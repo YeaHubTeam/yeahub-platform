@@ -15,27 +15,27 @@ export const titleByType: Record<StubType, string> = {
 	empty: 'stub.empty.title',
 	'filter-empty': 'stub.filter.title',
 	error: 'stub.error.title',
-	'access-denied': 'stub.accessDenied.default.title',
-	'access-denied-verify': 'stub.accessDenied.verify.title',
-	'access-denied-subscription': 'stub.accessDenied.subscription.title',
+	'access-denied': 'stub.access.denied.default.title',
+	'access-denied-verify': 'stub.access.denied.verify.title',
+	'access-denied-subscription': 'stub.access.denied.subscription.title',
 };
 
 export const subtitleByType: Record<StubType, string> = {
 	empty: 'stub.empty.subtitle',
 	'filter-empty': 'stub.filter.subtitle',
 	error: 'stub.error.subtitle',
-	'access-denied': 'stub.accessDenied.default.description',
-	'access-denied-verify': 'stub.accessDenied.verify.description',
-	'access-denied-subscription': 'stub.accessDenied.subscription.description',
+	'access-denied': 'stub.access.denied.default.description',
+	'access-denied-verify': 'stub.access.denied.verify.description',
+	'access-denied-subscription': 'stub.access.denied.subscription.description',
 };
 
 export const buttonTextByType: Record<StubType, string> = {
 	empty: '',
 	'filter-empty': 'stub.filter.submit',
 	error: 'stub.error.submit',
-	'access-denied': 'stub.accessDenied.default.button',
-	'access-denied-verify': 'stub.accessDenied.verify.button',
-	'access-denied-subscription': 'stub.accessDenied.subscription.button',
+	'access-denied': 'stub.access.denied.default.button',
+	'access-denied-verify': 'stub.access.denied.verify.button',
+	'access-denied-subscription': 'stub.access.denied.subscription.button',
 };
 
 export const imgByType: Record<StubType, string> = {

@@ -1208,6 +1208,7 @@ export enum Subscription {
 	CARD_SUBTITLE_MONTH = 'card.subtitle.month',
 	CARD_SUBTITLE_QUARTER = 'card.subtitle.quarter',
 	CARD_SUBTITLE_YEAR = 'card.subtitle.year',
+	CARD_SUBSCRIBE = 'card.subscribe',
 	CARD_BENEFITS_FIRST = 'card.benefits.first',
 	CARD_BENEFITS_SECOND = 'card.benefits.second',
 	CARD_BENEFITS_THIRD = 'card.benefits.third',

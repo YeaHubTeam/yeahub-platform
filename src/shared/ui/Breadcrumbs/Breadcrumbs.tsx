@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 import { useLocation, useMatches } from 'react-router-dom';
 
