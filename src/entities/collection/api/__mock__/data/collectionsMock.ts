@@ -59,6 +59,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 20,
+			tasksCount: 5,
 		},
 		{
 			id: 83,
@@ -115,6 +116,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 15,
+			tasksCount: 5,
 		},
 		{
 			id: 86,
@@ -171,6 +173,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 26,
+			tasksCount: 7,
 		},
 		{
 			id: 82,
@@ -227,6 +230,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 14,
+			tasksCount: 3,
 		},
 		{
 			id: 85,
@@ -283,6 +287,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 18,
+			tasksCount: 15,
 		},
 		{
 			id: 81,
@@ -331,6 +336,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 28,
+			tasksCount: 13,
 		},
 		{
 			id: 73,
@@ -370,6 +376,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 1,
+			tasksCount: 5,
 		},
 		{
 			id: 88,
@@ -410,6 +417,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 1,
+			tasksCount: 6,
 		},
 		{
 			id: 34,
@@ -450,6 +458,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 0,
+			tasksCount: 2,
 		},
 		{
 			id: 80,
@@ -498,6 +507,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 0,
+			tasksCount: 4,
 		},
 		{
 			id: 90,
@@ -538,6 +548,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 1,
+			tasksCount: 8,
 		},
 		{
 			id: 35,
@@ -578,6 +589,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 0,
+			tasksCount: 5,
 		},
 		{
 			id: 85,
@@ -618,6 +630,7 @@ export const collectionsMock: Response<Collection[]> = {
 				},
 			],
 			questionsCount: 0,
+			tasksCount: 1,
 		},
 	],
 	page: 1,
