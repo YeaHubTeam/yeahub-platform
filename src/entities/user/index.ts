@@ -27,4 +27,3 @@ export {
 } from './api/usersRatingApi';
 export type { UserRating, UsersRatingBySpecialization } from './model/types/usersRating';
 export { usersRatingHandlers } from './__mocks__';
-export { mapUserProfilePosition } from './lib/mapUserProfilePosition';

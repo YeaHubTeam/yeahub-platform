@@ -5,12 +5,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getSpecializationId } from '@/entities/profile';
+import { getProfileId, getSpecializationId } from '@/entities/profile';
 import {
 	useGetUsersRatingBySpecializationQuery,
 	useGetUserProfilePositionQuery,
 } from '@/entities/user';
-import { mapUserProfilePosition } from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
@@ -45,36 +44,24 @@ export const UsersRatingPage = () => {
 
 	// TODO: comment this block when backend for users rating is ready
 	// const currentUserRating = data?.users.find((u) => u.userId === '7');
+	const profileId = useAppSelector(getProfileId);
 
-	const userId = '42';
-	const { data: currentUserRating } = useGetUserProfilePositionQuery(userId, { skip: !userId });
-	const currentUserRatingMapped = mapUserProfilePosition(currentUserRating);
+	const { data: currentUserRating } = useGetUserProfilePositionQuery(profileId);
+	const currentUserRatingMapped = currentUserRating && {
+		userId: String(currentUserRating.userId),
+		username: currentUserRating.username,
+		avatarUrl: currentUserRating.imageSrc,
+		ratingScore: currentUserRating.ratingPoints,
+		place: currentUserRating.place,
+	};
 
-	let usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
+	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
 
-	if (currentUserRatingMapped) {
-		const alreadyInPage = usersOnPage.some((u) => u.userId === currentUserRatingMapped.userId);
-
-		if (!alreadyInPage && currentUserRatingMapped.place <= PLACES_COUNT_ON_PAGE) {
-			usersOnPage = usersOnPage.map((u) => {
-				if (u.place >= currentUserRatingMapped.place) {
-					return { ...u, place: u.place + 1 };
-				}
-				return u;
-			});
-
-			usersOnPage = [
-				...usersOnPage.slice(0, currentUserRatingMapped.place - 1),
-				currentUserRatingMapped,
-				...usersOnPage.slice(currentUserRatingMapped.place - 1),
-			].slice(0, PLACES_COUNT_ON_PAGE);
-		}
-	}
-	const currentUserInPage = usersOnPage.some(
-		(u) => String(u.userId) === String(currentUserRatingMapped?.userId),
+	const hasCurrentUserInPage = usersOnPage.some(
+		(u) => u.userId === currentUserRatingMapped?.userId,
 	);
 
-	const showCurrentUserRating = !!currentUserRatingMapped && !currentUserInPage;
+	const showCurrentUserRating = !!currentUserRatingMapped && !hasCurrentUserInPage;
 	return (
 		<AnalyticPageTemplate
 			title={

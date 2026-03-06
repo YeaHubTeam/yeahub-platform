@@ -18,7 +18,7 @@ export type UsersRatingBySpecialization = {
 export type GetUsersRatingBySpecializationResponse = UsersRatingBySpecialization;
 
 export interface UserProfilePositionResponse {
-	userId: number;
+	userId: string;
 	username: string;
 	imageSrc: string;
 	specialization: string;

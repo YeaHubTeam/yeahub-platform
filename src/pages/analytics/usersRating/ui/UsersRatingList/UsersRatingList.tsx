@@ -24,6 +24,10 @@ export const UsersRatingList = ({
 }: UsersRatingListProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
+	const hasCurrentUserInPage = rankedUsers.some(
+		(user) => user.userId === currentUserRating?.userId,
+	);
+
 	const mapUserToItem = (
 		rankedUser: UserRating,
 		isCurrentUser: boolean,
@@ -39,14 +43,12 @@ export const UsersRatingList = ({
 		isCurrentUser,
 	});
 
-	const isUserInCurrentPage = rankedUsers.some((user) => user.userId === currentUserRating?.userId);
-
 	const rankedUsersFields = rankedUsers.map((user) =>
 		mapUserToItem(user, user.userId === currentUserRating?.userId),
 	);
 
 	const currentUserItem =
-		currentUserRating && !isUserInCurrentPage ? mapUserToItem(currentUserRating, true) : null;
+		currentUserRating && !hasCurrentUserInPage ? mapUserToItem(currentUserRating, true) : null;
 
 	return (
 		<>
