@@ -291,7 +291,20 @@
 			},
 			"edit": {
 				"success": "The question was successfully changed",
-				"failed": "Couldn't edit the question"
+				"failed": "Couldn't edit the question",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"question": {
+					"not.found": "Question not found",
+					"internal": "Server exception occurred"
+				}
 			},
 			"delete": {
 				"single": {
