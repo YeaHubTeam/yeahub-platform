@@ -4,6 +4,7 @@ import { route } from '@/shared/libs';
 import { usersRatingApiUrls } from '../model/constants/usersRatingConstants';
 import type {
 	GetUsersRatingBySpecializationResponse,
+	GetUsersRatingRequest,
 	GetUsersRatingResponse,
 	GetUsersRatingStatsResponse,
 } from '../model/types/usersRating';
@@ -16,13 +17,10 @@ const usersRatingApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.USERS_RATING],
 		}),
-		getUsersRating: build.query<
-			GetUsersRatingResponse,
-			{ specializationId: number; page: number; limit: number }
-		>({
-			query: ({ specializationId, page, limit }) => ({
+		getUsersRating: build.query<GetUsersRatingResponse, GetUsersRatingRequest>({
+			query: (params) => ({
 				url: route(usersRatingApiUrls.getUsersRating),
-				params: { specializationId, page, limit },
+				params,
 			}),
 			providesTags: [ApiTags.USERS_RATING],
 		}),

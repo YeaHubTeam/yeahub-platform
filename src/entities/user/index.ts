@@ -29,6 +29,7 @@ export {
 export type {
 	UserRating,
 	UsersRatingBySpecialization,
+	GetUsersRatingRequest,
 	GetUsersRatingResponse,
 	GetUsersRatingStatsResponse,
 } from './model/types/usersRating';

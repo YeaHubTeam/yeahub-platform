@@ -9,7 +9,6 @@ import { getSpecializationId, getUserId } from '@/entities/profile';
 import { useGetUsersRatingQuery, useGetUsersRatingStatsQuery } from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
 
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
@@ -19,6 +18,7 @@ import { UsersRatingTable } from '../UsersRatingTable/UsersRatingTable';
 export const UsersRatingPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
+	const userId = useAppSelector(getUserId);
 	const { filters, onChangePage, onResetFilters, onChangeSpecialization } = useAnalyticFilters({
 		specialization: specializationId,
 		page: 1,
@@ -27,7 +27,7 @@ export const UsersRatingPage = () => {
 
 	const currentSpecialization = filters.specialization || specializationId;
 
-	const isFilterActive = page > 1 || String(currentSpecialization) !== String(specializationId);
+	const isFilterActive = page > 1 || currentSpecialization !== specializationId;
 
 	const { data: ratingData } = useGetUsersRatingQuery({
 		specializationId: currentSpecialization,
@@ -37,13 +37,12 @@ export const UsersRatingPage = () => {
 
 	const { data: statsData } = useGetUsersRatingStatsQuery(currentSpecialization);
 
-	const usersOnPage = getRankedUsers({ data: ratingData, limit: PLACES_COUNT_ON_PAGE, page });
+	const usersOnPage = ratingData?.data ?? [];
 
 	const maxRating = statsData?.allQuestions ?? 0;
 	const usersCount = statsData?.allUsers ?? 0;
 	const averageProgress = statsData?.averageProgress ?? 0;
 
-	const userId = useAppSelector(getUserId);
 	const currentUserRating = ratingData?.data?.find((u) => u.userId === userId);
 
 	const showCurrentUserRating = !usersOnPage?.filter((u) => u.userId === currentUserRating?.userId)

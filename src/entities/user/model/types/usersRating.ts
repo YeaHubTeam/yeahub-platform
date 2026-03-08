@@ -1,3 +1,5 @@
+import { Response } from '@/shared/libs';
+
 import type { Specialization } from '@/entities/specialization/@x/user';
 
 export interface UserRating {
@@ -16,12 +18,13 @@ export type UsersRatingBySpecialization = {
 	updatedAt: string;
 };
 
-export type GetUsersRatingResponse = {
-	data: UserRating[];
-	total: number;
-	page: number;
-	limit: number;
+export type GetUsersRatingRequest = {
+	specializationId: number;
+	page?: number;
+	limit?: number;
 };
+
+export type GetUsersRatingResponse = Response<UserRating[]>;
 
 export type GetUsersRatingStatsResponse = {
 	allUsers: number;

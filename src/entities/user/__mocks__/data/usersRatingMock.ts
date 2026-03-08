@@ -107,15 +107,20 @@ const usersRating = (): UserRating[] => [
 
 const sortedUsersRating = () => {
 	const res = [...usersRating()].sort((a, b) => b.ratingPoints - a.ratingPoints);
-	res.forEach((user, index) => (user.place = index + 1));
+	res.forEach((user, index) => {
+		user.place = index + 1;
+		user.progress = Math.floor((user.ratingPoints / 1200) * 100);
+	});
 	return res;
 };
+
+export const sortedUsers = sortedUsersRating();
 
 export const usersRatingMock: UsersRatingBySpecialization[] = specializations.map(
 	(specialization) => ({
 		specialization,
 		questionsCount: 1200,
-		users: sortedUsersRating(),
+		users: sortedUsers,
 		updatedAt: new Date().toLocaleDateString('ru-RU'),
 	}),
 );
