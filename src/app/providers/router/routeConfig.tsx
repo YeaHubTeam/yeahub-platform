@@ -299,7 +299,7 @@ const adminLayoutMenuItems: MenuItem[] = [
 
 export const router = createBrowserRouter([
 	{
-		path: ROUTES.appRoute,
+		path: process.env.LANDING_URL,
 		element: <LandingLayout />,
 		children: [
 			{
@@ -307,7 +307,7 @@ export const router = createBrowserRouter([
 				element: <LandingPage />,
 			},
 			{
-				path: '/learning',
+				path: ROUTES.public.learning.page,
 				element: <LearningPage />,
 			},
 			{
