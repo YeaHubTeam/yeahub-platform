@@ -4,7 +4,15 @@ export type CreateCompanyFormValues = Omit<CreateOrEditCompanyFormValues, 'id'> 
 	companyImage?: string | null;
 };
 
-export type CreateCompanyBodyRequest = CreateCompanyFormValues;
+export type CreateCompanyBodyRequest = {
+	title?: string;
+	legalName?: string;
+	description?: string;
+	imageSrc?: string;
+	inn?: string;
+	kpp?: string;
+	companyImage?: string;
+};
 export type CreateCompanyResponse = Company;
 
 export type CreateCompanyError =

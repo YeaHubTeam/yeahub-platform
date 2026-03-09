@@ -11,3 +11,4 @@ export { CompanyForm } from './ui/CompanyForm/CompanyForm';
 
 export { companyHandlers } from './api/__mocks__';
 export { companiesMock } from './api/__mocks__/data';
+export { companyApiUrls } from './model/constants/companyConstants';

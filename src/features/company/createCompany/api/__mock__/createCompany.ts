@@ -3,22 +3,16 @@ import { http, HttpResponse, DefaultBodyType } from 'msw';
 import { companiesMock } from '@/entities/company';
 import type { Company } from '@/entities/company';
 
-type CreateCompanyRequest = {
-	title: string;
-	legalName: string;
-	description: string;
-	imageSrc?: string;
-	inn: string;
-	kpp: string;
-	companyImage?: string;
-};
+import type { CreateCompanyBodyRequest } from '@/features/company/createCompany';
 
-export const createCompanyMock = http.post<CreateCompanyRequest, DefaultBodyType, Company>(
-	'/companies',
+import { createCompanyApiUrls } from '../../model/constants/createCompanyConstants';
+
+export const createCompanyMock = http.post<CreateCompanyBodyRequest, DefaultBodyType, Company>(
+	createCompanyApiUrls.createCompany,
 	async ({ request }) => {
-		const body = (await request.json()) as CreateCompanyRequest;
+		const body = (await request.json()) as CreateCompanyBodyRequest;
 
-		const newId = Math.max(...companiesMock.data.map((c) => Number(c.id) || 0)) + 1;
+		const newId = crypto.randomUUID();
 
 		const newCompany: Company = {
 			id: newId,
@@ -33,7 +27,7 @@ export const createCompanyMock = http.post<CreateCompanyRequest, DefaultBodyType
 			createdBy: { id: '1', username: 'admin' },
 		};
 
-		companiesMock.data.unshift(newCompany);
+		companiesMock.data.push(newCompany);
 
 		return HttpResponse.json(newCompany);
 	},
