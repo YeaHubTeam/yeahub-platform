@@ -57,7 +57,7 @@ export const CollectionActions = ({
 						variant={buttonVariant}
 						preffix={<Icon icon="watch" size={24} />}
 						onClick={(): void => {
-							navigate(ROUTES.avos.page);
+							navigate(ROUTES.public.avos.page);
 						}}
 					>
 						{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}

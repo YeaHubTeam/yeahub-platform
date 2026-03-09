@@ -147,7 +147,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
 		roles: allRoles,
@@ -219,7 +219,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 const adminLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
 		roles: listAdminRoles,
@@ -319,19 +319,19 @@ export const router = createBrowserRouter([
 				element: <CollectionBlock />,
 			},
 			{
-				path: ROUTES.resources.route,
+				path: ROUTES.public.resources.page,
 				element: <PublicResourcesPage />,
 			},
 			{
-				path: ROUTES.docs.page,
+				path: ROUTES.public.docs.page,
 				element: <DocsPage />,
 			},
 			{
-				path: ROUTES.media.page,
+				path: ROUTES.public.media.page,
 				element: <MediaPage />,
 			},
 			{
-				path: ROUTES.questions.route,
+				path: ROUTES.public.questions.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -339,13 +339,13 @@ export const router = createBrowserRouter([
 						element: <PublicQuestionsPage />,
 					},
 					{
-						path: ROUTES.questions.detail.route,
+						path: ROUTES.public.questions.detail.page,
 						element: <PublicQuestionPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.quiz.route,
+				path: ROUTES.public.quiz.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -353,17 +353,17 @@ export const router = createBrowserRouter([
 						element: <CreatePublicQuizPage />,
 					},
 					{
-						path: ROUTES.quiz.new.route,
+						path: ROUTES.public.quiz.new.page,
 						element: <PublicQuizPage />,
 					},
 					{
-						path: ROUTES.quiz.result.route,
+						path: ROUTES.public.quiz.result.page,
 						element: <PublicQuizResultPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.collections.route,
+				path: ROUTES.public.collections.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -371,17 +371,17 @@ export const router = createBrowserRouter([
 						element: <PublicCollectionsPage />,
 					},
 					{
-						path: ROUTES.collections.detail.route,
+						path: ROUTES.public.collections.detail.page,
 						element: <PublicCollectionPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.avos.route,
+				path: ROUTES.public.avos.page,
 				element: <AvosPage />,
 			},
 			{
-				path: ROUTES.hhAnalytics.route,
+				path: ROUTES.public.hhAnalytics.page,
 				element: <HhAnalyticsPage />,
 			},
 		],
@@ -589,7 +589,7 @@ export const router = createBrowserRouter([
 		],
 	},
 	{
-		path: ROUTES.platformRoute,
+		path: ROUTES.appRoute,
 		element: (
 			<AuthRoute>
 				<MainLayout sidebarItems={mainLayoutMenuItems} />
