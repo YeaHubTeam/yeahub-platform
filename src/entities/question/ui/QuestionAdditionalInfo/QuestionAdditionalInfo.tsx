@@ -2,8 +2,8 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Questions } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
+import { i18Namespace, Questions, ROUTES } from '@/shared/config';
+import { route, useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -12,6 +12,8 @@ import { Text } from '@/shared/ui/Text';
 
 import { Skill, SkillList } from '@/entities/skill/@x/question';
 import { Media, MediaLinksBanner } from '@/entities/socialMedia/@x/question';
+import { Topic } from '@/entities/topic/@x/question';
+import { TopicList } from '@/entities/topic/@x/question';
 
 import { QuestionGradeList } from '../QuestionGradeList/QuestionGradeList';
 
@@ -22,6 +24,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
+	questionTopics?: Topic[];
 	createdBy: Author;
 	className?: string;
 	route?: string;
@@ -33,10 +36,11 @@ export const QuestionAdditionalInfo = ({
 	rate,
 	complexity,
 	questionSkills,
+	questionTopics,
 	keywords,
 	createdBy,
 	className,
-	route,
+	route: baseRoute,
 	showAuthor = true,
 	media,
 }: QuestionAdditionalInfoProps) => {
@@ -44,8 +48,13 @@ export const QuestionAdditionalInfo = ({
 	const { isMobile, isTablet } = useScreenSize();
 
 	const { t } = useTranslation(i18Namespace.questions);
+
 	const onMoveToQuestionsWithSkills = (skillId: number) => {
-		navigate(`${route}?page=1&status=all&skills=` + encodeURIComponent(skillId));
+		navigate(`${baseRoute}?page=1&status=all&skills=` + encodeURIComponent(skillId));
+	};
+
+	const onMoveToTopicPage = (topicId: number) => {
+		navigate(route(ROUTES.admin.topics.details.page, topicId));
 	};
 
 	return (
@@ -63,6 +72,14 @@ export const QuestionAdditionalInfo = ({
 							{t(Questions.ADDITIONAL_INFO_SKILLS)}
 						</Text>
 						<SkillList skills={questionSkills} onClick={onMoveToQuestionsWithSkills} />
+					</Flex>
+					<Flex direction="column" gap="8">
+						<Text variant="body3" color="black-700">
+							{t(Questions.TOPIC_TITLE)}
+						</Text>
+						{questionTopics && questionTopics.length > 0 && (
+							<TopicList topics={questionTopics} onClick={onMoveToTopicPage} />
+						)}
 					</Flex>
 					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700">

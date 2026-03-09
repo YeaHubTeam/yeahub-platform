@@ -14,6 +14,7 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
+import { useGetTopicsListQuery } from '@/entities/topic/@x/question';
 
 import { useGetQuestionsFilterKeywordsQuery } from '../../api/questionApi';
 import { QuestionStatus } from '../../model/types/question';
@@ -25,6 +26,7 @@ export const QuestionForm = () => {
 
 	const { control, watch } = useFormContext();
 	const selectedSpecializations = watch('specializations');
+	const selectedSkills = watch('skills');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -37,6 +39,13 @@ export const QuestionForm = () => {
 		},
 	];
 
+	const { data: topicsData, isLoading } = useGetTopicsListQuery(
+		{
+			skillIds: selectedSkills || [],
+			limit: 100,
+		},
+		{ skip: !selectedSkills?.length },
+	);
 	return (
 		<Flex direction="column" gap="40">
 			<FormField
@@ -120,19 +129,51 @@ export const QuestionForm = () => {
 			</FormField>
 
 			{selectedSpecializations?.length ? (
-				<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
-					<FormControl name="skills" control={control}>
-						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<SkillSelect
-									onChange={onChange}
-									value={value}
-									selectedSpecializations={selectedSpecializations}
-								/>
-							</div>
-						)}
-					</FormControl>
-				</FormField>
+				<>
+					<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
+						<FormControl name="skills" control={control}>
+							{({ onChange, value }) => (
+								<div className={styles.select}>
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSpecializations={selectedSpecializations}
+									/>
+								</div>
+							)}
+						</FormControl>
+					</FormField>
+
+					<FormField label={t(Questions.TOPIC_TITLE)} description={t(Questions.TOPIC_LABEL)}>
+						<FormControl name="topics" control={control}>
+							{({ onChange, value }) => {
+								const topicOptions =
+									topicsData?.data?.map((topic) => ({
+										value: topic.id.toString(),
+										label: topic.title,
+									})) || [];
+
+								return (
+									<Dropdown
+										width={320}
+										label={t(Questions.TOPIC_LABEL)}
+										onSelect={(val) => onChange(val ? [Number(val)] : [])}
+										value={value?.[0]?.toString() || ''}
+										disabled={!selectedSkills?.length || isLoading}
+									>
+										{topicOptions.length > 0 ? (
+											topicOptions.map((option) => (
+												<Option value={option.value} label={option.label} key={option.value} />
+											))
+										) : (
+											<Option value="" label={t(Questions.TOPIC_EMPTY)} disabled />
+										)}
+									</Dropdown>
+								);
+							}}
+						</FormControl>
+					</FormField>
+				</>
 			) : null}
 
 			<FormField label={t(Questions.KEYWORDS_TITLE)} description={t(Questions.KEYWORDS_LABEL)}>

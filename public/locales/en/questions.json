@@ -60,6 +60,11 @@
 		"title": "Skills",
 		"label": "Select relevant skills"
 	},
+	"topics": {
+		"title": "Topics",
+		"label": "Select relevant topics",
+		"empty": "No topics available"
+	},
 	"long.answer": {
 		"title": "Long answer",
 		"label": "Add long answer",
