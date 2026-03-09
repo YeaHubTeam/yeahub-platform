@@ -1,0 +1,39 @@
+.switch input + span.pin::before {
+  background-image: url("../../assets/icons/ru.png");
+  transform: translateX(12px);
+}
+
+.switch input:checked + span.pin::before {
+  background-image: url("../../assets/icons/en.png");
+  transform: translateX(37px);
+}
+
+.switch input:focus + span.pin {
+  box-shadow: none;
+}
+
+.switch .wrapper {
+  width: 47px;
+  height: 22px;
+}
+
+.switch span::before {
+  position: absolute;
+  bottom: 2px;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-white-900);
+  background-size: 18px;
+  transition: 0.4s;
+  content: '';
+}
+
+.switch span {
+  background-color: var(--color-purple-700);
+}
+
+.switch:hover span {
+  background-color: var(--color-purple-500);
+}

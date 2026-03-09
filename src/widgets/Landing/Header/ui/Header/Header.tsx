@@ -14,7 +14,7 @@ import { HeaderSkeleton } from './Header.skeleton';
 export const Header = () => {
 	const { isLoading } = useProfileQuery();
 	const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
-	const logoNavigateTo = accessToken ? ROUTES.platformRoute : ROUTES.appRoute;
+	const logoNavigateTo = accessToken ? ROUTES.appRoute : ROUTES.auth.login.route;
 
 	if (isLoading) return <HeaderSkeleton />;
 

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { interviewBanner } from '@/shared/assets';
-import { i18Namespace, Collections } from '@/shared/config';
+import { i18Namespace, Collections, ROUTES } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -14,7 +14,7 @@ export const InterviewRecordingsBanner = () => {
 	return (
 		<>
 			<Card
-				actionRoute="/avos"
+				actionRoute={ROUTES.public.avos.page}
 				withBorder
 				actionTitle={t(Collections.BANNER_INTERVIEW_LINK)}
 				isActionPositionBottom

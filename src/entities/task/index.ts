@@ -31,3 +31,4 @@ export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';
 export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresField';
 export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategoryFilterList';
 export { taskCategories } from './model/constants/task';
+export { ChooseTasksDrawer } from './ui/ChooseTasksDrawer';
