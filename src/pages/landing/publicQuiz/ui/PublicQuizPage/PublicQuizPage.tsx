@@ -71,7 +71,7 @@ const PublicQuizPage = () => {
 	};
 
 	const onCheckQuizResult = () => {
-		navigate(ROUTES.quiz.result.page, { replace: true });
+		navigate(ROUTES.public.quiz.result.page, { replace: true });
 	};
 
 	const isLastQuestion = activeQuestion === totalCount;
@@ -99,7 +99,7 @@ const PublicQuizPage = () => {
 	const onInterruptQuiz = () => {
 		if (activeMockQuiz) {
 			removeFromLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY);
-			navigate(`${ROUTES.quiz.page}`);
+			navigate(`${ROUTES.public.quiz.page}`);
 		}
 		removeFromLS(LS_ACTIVE_SPECIALIZATION_ID);
 	};
