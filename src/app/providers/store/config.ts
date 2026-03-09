@@ -10,6 +10,7 @@ import { activeSubscriptionSlice } from '@/entities/subscription';
 import { collectionsPageReducer } from '@/pages/admin/collection/collections';
 import { companiesTablePageReducer } from '@/pages/admin/company/companies';
 import { questionsTablePageReducer } from '@/pages/admin/question/questions';
+import { referralLinksPageReducer } from '@/pages/admin/referralLink/referralLinks';
 import {
 	resourcesAllTabReducer,
 	resourcesRequestsTabReducer,
@@ -21,7 +22,6 @@ import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';
-import { referralsPageReducer } from '@/pages/admin/referral/referrals';
 
 export const reducers = {
 	skillsPage: skillsPageReducer,
@@ -38,7 +38,7 @@ export const reducers = {
 	resourcesRequestsTab: resourcesRequestsTabReducer,
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
-	referralsPage: referralsPageReducer,
+	referralLinksPage: referralLinksPageReducer,
 };
 
 export const getStore = (initialState?: State) =>

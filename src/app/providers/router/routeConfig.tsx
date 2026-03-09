@@ -41,7 +41,7 @@ import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ReferralPage } from '@/pages/admin/referral/referrals';
+import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
@@ -299,10 +299,10 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.referrals.route,
+		route: ROUTES.admin.referralLinks.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
 		icon: ReferralsIcon,
-		roles: listAdminRoles,
+		roles: ['admin'],
 	},
 ];
 
@@ -592,12 +592,12 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.admin.referrals.route,
+				path: ROUTES.admin.referralLinks.route,
 				element: <Outlet />,
 				children: [
 					{
 						index: true,
-						element: <ReferralPage />,
+						element: <ReferralLinksPage />,
 					},
 				],
 			},

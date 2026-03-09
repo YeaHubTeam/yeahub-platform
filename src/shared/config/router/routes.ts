@@ -155,20 +155,12 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
-		referrals: {
-			route: 'referrals',
-			page: '/admin/referrals',
-			create: {
-				route: 'create',
-				page: '/admin/referrals/create',
-			},
-			edit: {
-				route: ':referralId/edit',
-				page: '/admin/referrals/:referralId/edit',
-			},
+		referralLinks: {
+			route: 'referralLinks',
+			page: '/admin/referralLinks',
 			detail: {
-				route: ':referralId',
-				page: '/admin/referrals/:referralId',
+				route: ':referralLinkId',
+				page: '/admin/referralLinks/:referralLinkId',
 			},
 		},
 	},

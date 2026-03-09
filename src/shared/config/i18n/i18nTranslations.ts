@@ -861,19 +861,16 @@ export enum Skills {
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
 }
 
-export enum Referrals {
-	REF_CODE = 'table.columns.refCode',
+export enum ReferralLinks {
+	REF_CODE = 'table.columns.ref.code',
 	URL = 'table.columns.url',
-	OWNER_USERNAME = 'table.columns.ownerUsername',
-	LINKED_COUNT = 'table.columns.linkedCount',
-	AMOUNT_SUM = 'table.columns.amountSum',
-	CREATED_AT = 'table.columns.createdAt',
-	STUB_EMPTY_REFERRALS_TITLE = 'stub.empty.referrals.title',
-	STUB_EMPTY_REFERRALS_SUBTITLE = 'stub.empty.referrals.subtitle',
-	STUB_EMPTY_REFERRALS_SUBMIT = 'stub.empty.referrals.submit',
-	STUB_ERROR_REFERRALS_TITLE = 'stub.empty.referrals.requests.title',
-	STUB_ERROR_REFERRALS_SUBTITLE = 'stub.empty.referrals.requests.subtitle',
-	STUB_ERROR_REFERRALS_SUBMIT = 'stub.empty.referrals.requests.submit',
+	OWNER_USERNAME = 'table.columns.owner.username',
+	LINKED_COUNT = 'table.columns.linked.count',
+	AMOUNT_SUM = 'table.columns.amount.sum',
+	CREATED_AT = 'table.columns.created.at',
+	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
+	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
 }
 
 export enum User {
