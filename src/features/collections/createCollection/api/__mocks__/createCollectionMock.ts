@@ -1,19 +1,18 @@
 import { http, HttpResponse } from 'msw';
 
-import { Collection, CreateOrEditCollectionFormValues } from '../../model/types/collection';
+import { collectionsMock } from '@/entities/collection';
+import { Collection, CreateOrEditCollectionFormValues } from '@/entities/collection';
 
-import { collectionsMock } from './data/collectionsMock';
+import { createCollectionApiUrls } from '../../model/constants/createCollectionConstants';
 
 type MockCreateCollectionBody = Omit<CreateOrEditCollectionFormValues, 'id'>;
 type MockCreateCollectionResponse = Collection;
-
-const CREATE_COLLECTION_URL = `${process.env.API_URL}collections`;
 
 export const createCollectionMock = http.post<
 	Record<string, never>,
 	MockCreateCollectionBody,
 	MockCreateCollectionResponse
->(CREATE_COLLECTION_URL, async ({ request }) => {
+>(process.env.API_URL + createCollectionApiUrls.createCollection, async ({ request }) => {
 	const body = (await request.json()) as MockCreateCollectionBody;
 
 	const newId = Math.floor(Math.random() * 1000) + 500;
@@ -34,13 +33,13 @@ export const createCollectionMock = http.post<
 
 		specializations: (body.specializations || []).map((id: number) => ({
 			id,
-			title: `Спецификация ${id}`,
+			title: `Specialization ${id}`,
 			description: '',
 		})),
 
 		keywords: body.keywords || [],
 
-		company: body.companyId ? { id: body.companyId, title: 'Выбранная компания' } : undefined,
+		company: body.companyId ? { id: body.companyId, title: 'Mock Company' } : undefined,
 
 		createdBy: {
 			id: 'admin-uuid',

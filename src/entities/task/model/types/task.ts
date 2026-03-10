@@ -174,5 +174,3 @@ export interface TaskTestCaseResult {
 	summary: TaskTestCaseResultSummary;
 	tests: TaskTestCaseResultTest[];
 }
-
-export { ProgrammingLanguage };

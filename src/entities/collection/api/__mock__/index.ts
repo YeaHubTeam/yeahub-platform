@@ -1,6 +1,5 @@
 import { collectionByIdMock } from './collectionByIdMock';
 import { collectionListMock, publicCollectionListMock } from './collectionListMock';
-import { createCollectionMock } from './createCollectionMock';
 import { publicCollectionByIdMock } from './publicCollectionByIdMock';
 
 export const collectionHandlers = [
@@ -8,5 +7,4 @@ export const collectionHandlers = [
 	publicCollectionListMock,
 	collectionByIdMock,
 	publicCollectionByIdMock,
-	createCollectionMock,
 ];

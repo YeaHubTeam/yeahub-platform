@@ -1,14 +1,9 @@
 import { http, HttpResponse } from 'msw';
 
+import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
+
 import { taskApiUrls } from '../../model/constants/task';
-import {
-	GetTasksListResponse,
-	Task,
-	TaskStatus,
-	TaskCategoryCode,
-	TaskSubscriptionLevel,
-	ProgrammingLanguage,
-} from '../../model/types/task';
+import { GetTasksListResponse, Task } from '../../model/types/task';
 
 const mockJavaScript: ProgrammingLanguage = {
 	id: 1,
@@ -35,39 +30,39 @@ const mockPython: ProgrammingLanguage = {
 const mockTasks: Task[] = [
 	{
 		id: '1',
-		name: 'Написать функцию debounce',
+		name: 'Write debounce function',
 		slug: 'write-debounce-function',
-		description: 'Реализовать функцию, которая откладывает вызов переданной функции.',
-		status: 'PUBLISHED' as TaskStatus,
+		description: 'Implement a function that delays the invocation of the passed function.',
+		status: 'not_started',
 		difficulty: 2,
 		supportedLanguages: [mockJavaScript],
-		mainCategory: 'FRONTEND' as TaskCategoryCode,
-		constraints: ['O(1) memory', 'Не использовать сторонние библиотеки (lodash и т.д.)'],
+		mainCategory: 'algorithms',
+		constraints: ['O(1) memory', 'No third-party libraries (lodash, etc.)'],
 		testCases: [],
 		taskStructures: [],
 		solutionSignature: 'function debounce(fn, ms) {\n\n}',
 		timeLimit: 1000,
 		memoryLimit: 256,
 		canSolve: true,
-		subscriptionLevel: 'FREE' as TaskSubscriptionLevel,
+		subscriptionLevel: 'free',
 	},
 	{
 		id: '2',
-		name: 'Сверстать сетку на CSS Grid',
+		name: 'CSS Grid layout',
 		slug: 'css-grid-layout',
-		description: 'Создать адаптивную сетку из 3 колонок.',
-		status: 'PUBLISHED' as TaskStatus,
+		description: 'Create an adaptive 3-column grid.',
+		status: 'not_started',
 		difficulty: 3,
 		supportedLanguages: [mockJavaScript, mockPython],
-		mainCategory: 'LAYOUT' as TaskCategoryCode,
-		constraints: ['Только CSS Grid', 'Без media queries для мобильных устройств'],
+		mainCategory: 'algorithms',
+		constraints: ['CSS Grid only', 'No media queries'],
 		testCases: [],
 		taskStructures: [],
 		solutionSignature: '.grid-container {\n\n}',
 		timeLimit: 500,
 		memoryLimit: 128,
 		canSolve: true,
-		subscriptionLevel: 'PREMIUM' as TaskSubscriptionLevel,
+		subscriptionLevel: 'premium',
 	},
 ];
 
