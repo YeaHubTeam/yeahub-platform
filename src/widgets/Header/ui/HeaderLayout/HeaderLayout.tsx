@@ -9,6 +9,8 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
+import { WithFeature } from '@/entities/featureFlag';
+
 import { LanguageSwitcher } from '@/features/internationalization/switch-language';
 
 import { UserPreferences } from '../UserPreferences/UserPreferences';
@@ -27,7 +29,9 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 			</NavLink>
 			<Flex gap="16" align="center">
 				{/* <ThemeSwitcher /> */}
-				<LanguageSwitcher />
+				<WithFeature featureId="changeLanguage">
+					<LanguageSwitcher />
+				</WithFeature>
 				<UserPreferences />
 				<IconButton
 					aria-label="go to preferences"

@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import Question from '@/shared/assets/icons/collectionsQuestion.svg';
+import TasksIcon from '@/shared/assets/icons/cursorSquare.svg';
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
-import { i18Namespace, Collections, ROUTES } from '@/shared/config';
+import { i18Namespace, Collections, Tasks, ROUTES } from '@/shared/config';
 import { useCurrentProject } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -33,10 +35,23 @@ export const CollectionPreview = ({
 	variant = 'row',
 	queryFilter,
 }: CollectionProps) => {
-	const { id, title, isFree, imageSrc, questionsCount, keywords, specializations, company } =
-		collection;
+	const {
+		id,
+		title,
+		isFree,
+		imageSrc,
+		questionsCount,
+		keywords,
+		tasksCount,
+		specializations,
+		company,
+	} = collection;
 
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
+	const { t } = useTranslation([
+		i18Namespace.translation,
+		i18Namespace.collection,
+		i18Namespace.task,
+	]);
 
 	const renderActions = (keywords: string[] | undefined) => {
 		return (
@@ -77,7 +92,7 @@ export const CollectionPreview = ({
 	const path = getCollectionRoute[project](id);
 
 	const collectionPath = isLandingPageVariant
-		? ROUTES.collections.page
+		? ROUTES.public.collections.page
 		: { pathname: path, search: queryFilter };
 
 	return (
@@ -105,7 +120,7 @@ export const CollectionPreview = ({
 								keywords?.length > MAX_LIMIT_KEYWORDS &&
 								renderActions(keywords?.slice(MAX_LIMIT_KEYWORDS))}
 						</div>
-						<Flex direction="column" gap="20">
+						<Flex direction="column" gap="14">
 							<Text
 								className={classnames(styles['card-title'], styles[variant])}
 								variant="body3-accent"
@@ -120,17 +135,30 @@ export const CollectionPreview = ({
 										{accessText[isFree ? 'free' : 'paid']}
 									</Text>
 								</div>
-								{!!questionsCount && (
-									<div className={styles['access-item']}>
-										<Question />
-										<Text variant="body2" color="purple-700">
-											{t(Collections.QUESTIONS_COUNT, {
-												ns: i18Namespace.collection,
-												count: questionsCount,
-											})}
-										</Text>
-									</div>
-								)}
+								<div className={styles['access-item']}>
+									{!!questionsCount && (
+										<div className={styles['access-item']}>
+											<Question />
+											<Text variant="body2" color="purple-700">
+												{t(Collections.QUESTIONS_COUNT, {
+													ns: i18Namespace.collection,
+													count: questionsCount,
+												})}
+											</Text>
+										</div>
+									)}
+									{!!tasksCount && (
+										<div className={`${styles['access-item']} ${styles['access-item-task-icon']}`}>
+											<TasksIcon />
+											<Text variant="body2" color="purple-700">
+												{t(Tasks.TASKS_COUNT, {
+													ns: i18Namespace.task,
+													count: tasksCount,
+												})}
+											</Text>
+										</div>
+									)}
+								</div>
 							</div>
 							<div className={styles['specialization-container']}>
 								{specializations?.map((spec) => (

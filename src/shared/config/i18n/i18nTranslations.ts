@@ -56,6 +56,7 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
+	SIDEBAR_MENU_REFERRALS = 'sidebar.menu.referrals',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -861,6 +862,18 @@ export enum Skills {
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
 }
 
+export enum ReferralLinks {
+	REF_CODE = 'table.columns.ref.code',
+	URL = 'table.columns.url',
+	OWNER_USERNAME = 'table.columns.owner.username',
+	LINKED_COUNT = 'table.columns.linked.count',
+	AMOUNT_SUM = 'table.columns.amount.sum',
+	CREATED_AT = 'table.columns.created.at',
+	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
+	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
+}
+
 export enum User {
 	NAME = 'name',
 	ROLE = 'role',
@@ -960,6 +973,8 @@ export enum Collections {
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
 	TAGS_TITLE = 'tags.title',
+	TASKS_SHORT = 'tasks.short',
+	TASKS_ADDITIONAL_INFO = 'numberOfTasks',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
 	COMPANY_TITLE = 'company.title',
@@ -968,7 +983,6 @@ export enum Collections {
 	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
-	WARNING_DISCLAIMER = 'warning.disclaimer',
 
 	BANNER_INTERVIEW_TITLE = 'banner.interview.title',
 	BANNER_INTERVIEW_DESCRIPTION = 'banner.interview.description',
@@ -1398,6 +1412,7 @@ export enum Tasks {
 	NOT_AVAILABLE = 'not.available',
 	BANNER_BETA_TITLE = 'banner.beta.title',
 	TITLE_SHORT = 'title.short',
+	TITLE_LIST = 'title.list',
 	TITLE_HIDE = 'title.hide',
 	NAME_TITLE = 'name.title',
 	NAME_SUBTITLE = 'name.subtitle',
@@ -1410,6 +1425,8 @@ export enum Tasks {
 	CONSTRAINTS_TITLE = 'constraints.title',
 	CONSTRAINTS_SUBTITLE = 'constraints.subtitle',
 	CONSTRAINTS_ADD_BUTTON = 'constraints.add.button',
+	COMMUNITY_JOIN = 'community.join',
+	PREVIEW_LOCKED_COLLECTION = 'preview.locked.collection',
 	TEST_CASES_TITLE = 'test.cases.title',
 	TEST_CASES_SUBTITLE = 'test.cases.subtitle',
 	TEST_CASES_INPUT = 'test.cases.input',
@@ -1426,6 +1443,7 @@ export enum Tasks {
 	TASK_STRUCTURES_PRELOADED_CODE = 'task.structures.preloaded.code',
 	TASK_STRUCTURES_ACTIVE = 'task.structures.active',
 	TASK_STRUCTURES_ADD_BUTTON = 'task.structures.add.button',
+	TASKS_COUNT = 'tasks.length.min',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
@@ -1501,4 +1519,6 @@ export enum Tasks {
 	OUTPUT_RESULT_SUCCESS_RATE = 'output.result.success.rate',
 	OUTPUT_RESULT_EXECUTION_TIME = 'output.result.execution.time',
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
+
+	WARNING_INTRO = 'warning.intro',
 }

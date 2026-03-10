@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { generatePath, Link } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Tasks } from '@/shared/config';
+import { Project, useCurrentProject } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -25,19 +26,33 @@ type TaskCardProps = {
 export const TaskCard = ({ task, className }: TaskCardProps) => {
 	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve } = task;
 	const { t } = useTranslation(i18Namespace.task);
-	const taskPath = generatePath(ROUTES.tasks.detail.page, { taskId: id });
+	const project = useCurrentProject();
+
+	const taskPath: Record<Project, string> = {
+		admin: generatePath(ROUTES.admin.tasks.details.page, { taskId: id }),
+		platform: canSolve ? generatePath(ROUTES.tasks.detail.page, { taskId: id }) : '',
+		landing: '',
+	};
 
 	return (
-		<Tooltip shouldShowTooltip={!canSolve} title={t(Tasks.NOT_AVAILABLE)} placement="right">
+		<Tooltip
+			shouldShowTooltip={!canSolve && project === 'platform'}
+			title={t(Tasks.NOT_AVAILABLE)}
+			placement="right"
+		>
 			<Link
-				to={canSolve ? taskPath : ''}
+				to={taskPath[project]}
 				className={className}
-				onClick={(e) => !canSolve && e.preventDefault()}
+				onClick={(e) => !canSolve && project === 'platform' && e.preventDefault()}
 			>
-				<Card withOutsideShadow className={styles.content} withHover={canSolve}>
+				<Card
+					withOutsideShadow
+					className={styles.content}
+					withHover={canSolve || project === 'admin'}
+				>
 					<Flex direction="column" gap="20">
 						<Flex justify="between" align="start" gap="16">
-							{canSolve ? (
+							{canSolve || project === 'admin' ? (
 								<Text variant="body4" maxRows={2}>
 									{name}
 								</Text>
@@ -50,7 +65,7 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 						</Flex>
 
 						<Flex align="center" gap="10" wrap="wrap">
-							<TaskStatusChip status={status} size="medium" />
+							{project === 'platform' && <TaskStatusChip status={status} size="medium" />}
 							<TaskDifficultyChip difficulty={difficulty} />
 							<ProgrammingLanguageList languages={supportedLanguages} />
 							<TaskCategoryChip category={mainCategory} />

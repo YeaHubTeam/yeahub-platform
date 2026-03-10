@@ -1,6 +1,5 @@
 export const ROUTES = {
 	appRoute: '/',
-	platformRoute: '/dashboard',
 	adminRoute: '/admin',
 	admin: {
 		questions: {
@@ -155,6 +154,14 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
+		referralLinks: {
+			route: 'referralLinks',
+			page: '/admin/referralLinks',
+			detail: {
+				route: ':referralLinkId',
+				page: '/admin/referralLinks/:referralLinkId',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',
@@ -177,171 +184,160 @@ export const ROUTES = {
 	},
 	profile: {
 		route: 'profile',
-		page: '/dashboard/profile',
+		page: '/profile',
 		edit: {
 			route: 'edit',
-			page: '/dashboard/profile/edit',
+			page: '/profile/edit',
 		},
 	},
 	users: {
 		route: 'users/:userId',
-		page: '/dashboard/users/:userId',
+		page: '/users/:userId',
 	},
 	settings: {
 		route: 'settings',
-		page: '/dashboard/settings',
+		page: '/settings',
 	},
 	analytics: {
 		route: 'analytics',
-		page: '/dashboard/analytics',
+		page: '/analytics',
 		progressSpecializations: {
 			route: 'progress-specializations',
-			page: '/dashboard/analytics/progress-specializations',
+			page: '/analytics/progress-specializations',
 		},
 		'popular-skills': {
 			route: 'popular-skills',
-			page: '/dashboard/analytics/popular-skills',
+			page: '/analytics/popular-skills',
 		},
 		'skills-proficiency': {
 			route: 'skills',
-			page: '/dashboard/analytics/skills',
+			page: '/analytics/skills',
 		},
 		'difficult-questions': {
 			route: 'difficultQuestions',
-			page: '/dashboard/analytics/difficultQuestions',
+			page: '/analytics/difficultQuestions',
 		},
 		'popular-questions': {
 			route: 'popular-questions',
-			page: '/dashboard/analytics/popular-questions',
+			page: '/analytics/popular-questions',
 		},
 		'users-rating': {
 			route: 'users-rating',
-			page: '/dashboard/analytics/users-rating',
+			page: '/analytics/users-rating',
 		},
 	},
 	interview: {
 		route: 'interview',
-		page: '/dashboard/interview',
+		page: '/interview',
 		history: {
 			route: 'history',
-			page: '/dashboard/interview/history',
+			page: '/interview/history',
 			result: {
 				route: ':quizId',
-				page: '/dashboard/interview/history/:quizId',
+				page: '/interview/history/:quizId',
 			},
 		},
 		statistic: {
 			route: 'statistic',
-			page: '/dashboard/interview/statistic',
+			page: '/interview/statistic',
 		},
 		quiz: {
 			route: 'quiz',
-			page: '/dashboard/interview/quiz',
+			page: '/interview/quiz',
 		},
 		new: {
 			route: 'new',
-			page: '/dashboard/interview/new',
+			page: '/interview/new',
 		},
 	},
 
 	tasks: {
 		route: 'tasks',
-		page: '/dashboard/tasks',
+		page: '/tasks',
 		detail: {
 			route: ':taskId',
-			page: '/dashboard/tasks/:taskId',
+			page: '/tasks/:taskId',
 		},
 	},
 	wiki: {
 		route: 'wiki',
-		page: '/dashboard/wiki',
+		page: '/wiki',
 		questions: {
 			route: 'questions',
-			page: '/dashboard/wiki/questions',
+			page: '/wiki/questions',
 			detail: {
 				route: ':questionId',
-				page: '/dashboard/wiki/questions/:questionId',
+				page: '/wiki/questions/:questionId',
 			},
 		},
 		collections: {
 			route: 'collections',
-			page: '/dashboard/wiki/collections',
+			page: '/wiki/collections',
 			detail: {
 				route: ':collectionId',
-				page: '/dashboard/wiki/collections/:collectionId',
+				page: '/wiki/collections/:collectionId',
 			},
 		},
 		resources: {
 			route: 'resources',
-			page: '/dashboard/wiki/resources',
+			page: '/wiki/resources',
 			my: {
 				route: 'my-requests',
-				page: '/dashboard/wiki/resources/my-requests',
+				page: '/wiki/resources/my-requests',
 				create: {
 					route: 'create',
-					page: '/dashboard/wiki/resources/my-requests/create',
+					page: '/wiki/resources/my-requests/create',
 				},
 				edit: {
 					route: ':requestId/edit',
-					page: '/dashboard/wiki/resources/my-requests/:requestId/edit',
+					page: '/wiki/resources/my-requests/:requestId/edit',
 				},
 				request: {
 					route: ':requestId',
-					page: '/dashboard/wiki/resources/my-requests/:requestId',
+					page: '/wiki/resources/my-requests/:requestId',
 				},
 			},
 		},
 	},
-	docs: {
-		route: 'docs',
-		page: '/docs',
-	},
-	media: {
-		route: 'media',
-		page: '/media',
-	},
-	questions: {
-		route: 'questions',
-		page: '/questions',
-		detail: {
-			route: ':questionId',
-			page: '/questions/:questionId',
+	public: {
+		docs: {
+			page: `${process.env.LANDING_URL}/docs`,
 		},
-	},
-	quiz: {
-		route: 'quiz',
-		page: '/quiz',
-		new: {
-			route: 'new',
-			page: '/quiz/new',
+		media: {
+			page: `${process.env.LANDING_URL}/media`,
 		},
-		result: {
-			route: 'result',
-			page: '/quiz/result',
+		questions: {
+			page: `${process.env.LANDING_URL}/questions`,
+			detail: {
+				page: `${process.env.LANDING_URL}/questions/:questionId`,
+			},
 		},
-	},
-	collections: {
-		route: 'collections',
-		page: '/collections',
-		detail: {
-			route: ':collectionId',
-			page: '/collections/:collectionId',
+		quiz: {
+			page: `${process.env.LANDING_URL}/quiz`,
+			new: {
+				page: `${process.env.LANDING_URL}/quiz/new`,
+			},
+			result: {
+				page: `${process.env.LANDING_URL}/quiz/result`,
+			},
 		},
-	},
-	resources: {
-		route: 'resources',
-		page: '/resources',
-	},
-	learning: {
-		route: 'learning',
-		page: '/learning',
-	},
-	avos: {
-		route: 'avos',
-		page: '/avos',
-	},
-	hhAnalytics: {
-		route: 'hh-analytics',
-		page: '/hh-analytics',
+		collections: {
+			page: `${process.env.LANDING_URL}/collections`,
+			detail: {
+				page: `${process.env.LANDING_URL}/collections/:collectionId`,
+			},
+		},
+		resources: {
+			page: `${process.env.LANDING_URL}/resources`,
+		},
+		learning: {
+			page: `${process.env.LANDING_URL}/learning`,
+		},
+		avos: {
+			page: `${process.env.LANDING_URL}/avos`,
+		},
+		hhAnalytics: {
+			page: `${process.env.LANDING_URL}/hh-analytics`,
+		},
 	},
 } as const;
