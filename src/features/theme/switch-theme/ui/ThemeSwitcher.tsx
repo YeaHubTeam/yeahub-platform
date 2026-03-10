@@ -1,23 +1,19 @@
-import { useState } from 'react';
-
 import { Switch } from '@/shared/ui/Switch';
+
+import { useTheme } from '../model/hooks/useTheme';
 
 import styles from './ThemeSwitcher.module.css';
 
 export const ThemeSwitcher = () => {
-	const [checked, setChecked] = useState(false);
-
-	const onChange = () => {
-		setChecked((prev) => !prev);
-	};
+	const { isLight, toggleTheme } = useTheme();
 
 	return (
 		<Switch
 			className={styles.switch}
 			switchClassName={styles.wrapper}
 			pinClassName={styles.pin}
-			checked={checked}
-			onChange={onChange}
+			checked={isLight}
+			onChange={toggleTheme}
 		/>
 	);
 };
