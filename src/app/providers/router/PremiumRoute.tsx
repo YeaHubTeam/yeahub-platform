@@ -23,7 +23,7 @@ export const PremiumRoute = ({ children }: PremiumRouteProps) => {
 		if (location.state?.from) {
 			return <Navigate to={ROUTES.interview.page} />;
 		}
-		return <Navigate to={ROUTES.platformRoute} replace />;
+		return <Navigate to={ROUTES.appRoute} replace />;
 	}
 
 	return <>{children}</>;

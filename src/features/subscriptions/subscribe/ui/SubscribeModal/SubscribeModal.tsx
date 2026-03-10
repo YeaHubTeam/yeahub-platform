@@ -112,12 +112,12 @@ export const SubscribeModal = ({ isOpen, onClose, subscriptionId }: SubscribeMod
 										label={
 											<Text variant="body1" color="black-600">
 												{offerAgreementParts[0]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+												<a href={ROUTES.public.docs.page} target="_blank" rel="noopener noreferrer">
 													{' '}
 													{offerAgreementParts[1]}
 												</a>
 												{offerAgreementParts[2]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+												<a href={ROUTES.public.docs.page} target="_blank" rel="noopener noreferrer">
 													{' '}
 													{offerAgreementParts[3]}
 												</a>
@@ -137,7 +137,7 @@ export const SubscribeModal = ({ isOpen, onClose, subscriptionId }: SubscribeMod
 										label={
 											<Text variant="body1" color="black-600">
 												{consentParts[0]}
-												<a href={ROUTES.docs.page} target="_blank" rel="noopener noreferrer">
+												<a href={ROUTES.public.docs.page} target="_blank" rel="noopener noreferrer">
 													{' '}
 													{consentParts[1]}
 												</a>

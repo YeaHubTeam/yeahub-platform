@@ -47,10 +47,23 @@
 			"min_other": "{{count}} questions"
 		}
 	},
-	"tasks": "Tasks",
+	"tasks": {
+		"short": "Tasks",
+		"label": "Add tasks",
+		"selected": "Selected tasks: {{count}}",
+		"length": {
+			"one": "{{count}} task",
+			"other": "{{count}} tasks"
+		}
+	},
 	"image.src": "Image URL",
 	"image.alt": "Image of company",
 	"create.page.title": "Collection",
+	"collections": {
+		"title": "Collections",
+		"detail": "Learn more",
+		"train": "Train"
+	},
 	"edit.page.title": "Edit collection",
 	"company": {
 		"title": "Company",

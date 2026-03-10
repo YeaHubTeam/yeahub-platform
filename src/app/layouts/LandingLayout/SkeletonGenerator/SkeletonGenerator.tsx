@@ -17,25 +17,25 @@ export const SkeletonGenerator = () => {
 	switch (location.pathname) {
 		case ROUTES.appRoute:
 			return <LandingPageSkeleton data-testid="LandingPageSkeleton" />;
-		case ROUTES.quiz.page:
+		case ROUTES.public.quiz.page:
 			return <CreatePublicQuizPageSkeleton data-testid="CreatePublicQuizPageSkeleton" />;
-		case ROUTES.quiz.new.page:
+		case ROUTES.public.quiz.new.page:
 			return <PublicQuizPageSkeleton dataTestId="PublicQuizPageSkeleton" />;
-		case ROUTES.quiz.result.page:
+		case ROUTES.public.quiz.result.page:
 			return <PublicQuizResultPageSkeleton dataTestId="PublicQuizResultPageSkeleton" />;
-		case ROUTES.questions.page:
+		case ROUTES.public.questions.page:
 			return <PublicQuestionsPageSkeleton dataTestId="PublicQuestionsPageSkeleton" />;
-		case ROUTES.questions.detail.page:
+		case ROUTES.public.questions.detail.page:
 			return <PublicQuestionPageSkeleton dataTestId="PublicQuestionPageSkeleton" />;
-		case ROUTES.media.page:
+		case ROUTES.public.media.page:
 			return <MediaPageSkeleton />;
-		case ROUTES.hhAnalytics.page:
+		case ROUTES.public.hhAnalytics.page:
 			return <HhAnalyticsPageSkeleton />;
-		case ROUTES.avos.page:
+		case ROUTES.public.avos.page:
 			return <AvosPageSkeleton />;
-		case ROUTES.learning.page:
+		case ROUTES.public.learning.page:
 			return <LearningPageSkeleton />;
-		case ROUTES.docs.page:
+		case ROUTES.public.docs.page:
 			return <DocsPageSkeleton />;
 		default:
 			return <Loader />;

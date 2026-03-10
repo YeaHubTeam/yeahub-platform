@@ -40,7 +40,7 @@ export const FinishQuizButton = ({
 				finishQuiz(quizToSave);
 			}
 		} else {
-			navigate(ROUTES.quiz.result.route);
+			navigate(ROUTES.public.quiz.result.page);
 		}
 	};
 

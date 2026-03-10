@@ -9,4 +9,5 @@ export interface SwitchProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onCh
 	label?: string;
 	labelClassName?: string;
 	switchClassName?: string;
+	pinClassName?: string;
 }

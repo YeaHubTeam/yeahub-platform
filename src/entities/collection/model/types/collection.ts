@@ -3,6 +3,7 @@ import { Response } from '@/shared/libs';
 import { Company } from '@/entities/company/@x/collection';
 import { Question } from '@/entities/question/@x/collection';
 import { Specialization } from '@/entities/specialization/@x/collection';
+import { Task } from '@/entities/task/@x/collection';
 
 export type CollectionTariff = 'free' | 'premium';
 
@@ -17,6 +18,7 @@ export interface Collection {
 	tasksCount?: number;
 	keywords?: string[];
 	questions?: Question[];
+	tasks?: Task[];
 	specializations?: Specialization[];
 	tariff: CollectionTariff;
 	isFree?: boolean;
@@ -33,6 +35,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 > & {
 	isFree: boolean;
 	questions: number[];
+	taskIds: string[];
 	specializations: number[];
 	companyId?: string;
 	collectionImage?: string;
@@ -53,6 +56,7 @@ export type GetCollectionsListResponse = Response<Collection[]>;
 
 export type GetCollectionByIdResponse = Collection;
 export type GetCollectionQuestionsResponse = Response<Question[]>;
+export type GetCollectionTasksResponse = Response<Task[]>;
 
 export type GetCollectionByIdParamsRequest = {
 	collectionId?: string;

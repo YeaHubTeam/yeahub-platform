@@ -6,6 +6,7 @@ export { profileReducer, profileActions } from './model/slices/profileSlice';
 
 export {
 	getProfileIsEmailSent,
+	getUserRoles,
 	getFullProfile,
 	getUserId,
 	getProfiles,

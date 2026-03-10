@@ -92,7 +92,7 @@ export const CollectionPreview = ({
 	const path = getCollectionRoute[project](id);
 
 	const collectionPath = isLandingPageVariant
-		? ROUTES.collections.page
+		? ROUTES.public.collections.page
 		: { pathname: path, search: queryFilter };
 
 	return (

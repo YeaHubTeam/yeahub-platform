@@ -125,7 +125,7 @@ export const PublicCollectionPage = () => {
 								variant="tertiary"
 								preffix={<Icon icon="watch" size={24} />}
 								onClick={() => {
-									navigate(ROUTES.avos.page);
+									navigate(ROUTES.public.avos.page);
 								}}
 							>
 								{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
