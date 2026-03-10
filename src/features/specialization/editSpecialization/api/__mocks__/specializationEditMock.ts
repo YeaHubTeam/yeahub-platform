@@ -8,12 +8,50 @@ import {
 	EditSpecializationResponse,
 } from '../../model/types/specializationEditPageTypes';
 
+// 1. Создаем локальный тип для мока ошибки, чтобы TypeScript не ругался в дженерике http.patch
+interface MockErrorResponse {
+	message: string;
+	statusCode: number;
+	description: string;
+}
+
 export const editSpecializationMock = http.patch<
 	PathParams,
 	EditSpecializationBodyRequest,
-	EditSpecializationResponse | { error: string }
+	// 2. Указываем, что мок может вернуть либо успешный ответ, либо нашу Swagger-ошибку
+	EditSpecializationResponse | MockErrorResponse
 >(process.env.API_URL + editSpecializationApiUrls.editSpecialization, async ({ request }) => {
 	const formData = await request.json();
+
+	// --- СЦЕНАРИИ ТЕСТИРОВАНИЯ ОШИБОК (MOCKS) ---
+
+	// Сценарий А: Имитируем 409 Conflict (Конфликт имени)
+	// Введи в форме название 'Conflict', чтобы сработал этот блок
+	if (formData.title === 'Conflict') {
+		return HttpResponse.json(
+			{
+				message: 'specialization.specialization.title.conflict',
+				statusCode: 409,
+				description: 'Specialization with this title already exists',
+			},
+			{ status: 409 },
+		);
+	}
+
+	// Сценарий Б: Имитируем 500 Internal Server Error (Упал сервер картинок)
+	// Введи 'Error', чтобы проверить глобальный Toast
+	if (formData.title === 'Error') {
+		return HttpResponse.json(
+			{
+				message: 'tinify.tinify.resize_failed',
+				statusCode: 500,
+				description: 'Failed to resize image',
+			},
+			{ status: 500 },
+		);
+	}
+
+	// --- СТАНДАРТНАЯ ЛОГИКА УСПЕШНОГО ОТВЕТА ---
 
 	const specializationIndex = specializationsMock.data.findIndex((spec) => spec.id === formData.id);
 
@@ -31,5 +69,13 @@ export const editSpecializationMock = http.patch<
 		return HttpResponse.json(updatedSpecialization);
 	}
 
-	return HttpResponse.json({ error: 'Specialization not found' }, { status: 404 });
+	// 3. ИСПРАВЛЕНИЕ: Приводим 404 ошибку к единому стандарту Swagger
+	return HttpResponse.json(
+		{
+			message: 'specialization.specialization.not_found',
+			statusCode: 404,
+			description: 'Specialization not found',
+		},
+		{ status: 404 },
+	);
 });

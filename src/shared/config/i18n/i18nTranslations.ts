@@ -308,6 +308,7 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+	SUCCESS = 'SUCCESS',
 }
 
 export enum Profile {
