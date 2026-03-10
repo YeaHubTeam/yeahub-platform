@@ -27,9 +27,7 @@ export const TasksController = ({
 }: TasksControllerProps) => {
 	const { t } = useTranslation(i18Namespace.task);
 
-	const taskCanSolve = tasks.map((item) => ({ ...item, canSolve: true }));
-
-	if (!!isFree && !hasPremiumAccess && !isAdmin) {
+	if (!isFree && !hasPremiumAccess && !isAdmin) {
 		return (
 			<Card
 				className={styles.wrapper}
@@ -50,7 +48,7 @@ export const TasksController = ({
 			headerAction={<WarningPopover text={t(Tasks.WARNING_INTRO)} />}
 			withOutsideShadow
 		>
-			<TasksList tasks={taskCanSolve} />
+			<TasksList tasks={tasks} />
 		</Card>
 	);
 };

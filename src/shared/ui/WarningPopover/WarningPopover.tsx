@@ -12,6 +12,7 @@ interface WarningPopoverProps {
 
 export const WarningPopover = ({ text }: WarningPopoverProps) => {
 	const { isOpen, onToggle } = useModal();
+
 	return (
 		<Popover
 			isOpen={isOpen}
