@@ -14,7 +14,7 @@ export const InterviewRoute = ({ children }: InterviewRouteProps) => {
 	const isSpecializationEmpty = useAppSelector(getIsEmptySpecialization);
 	const location = useLocation();
 
-	if (location.pathname === ROUTES.appRoute + '/' + ROUTES.interview.route) return <>{children}</>;
+	if (location.pathname === ROUTES.interview.page) return <>{children}</>;
 
 	return isSpecializationEmpty ? <Navigate to={ROUTES.interview.page} /> : <>{children}</>;
 };

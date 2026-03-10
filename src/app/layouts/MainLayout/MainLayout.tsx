@@ -18,7 +18,7 @@ import { NYBanner } from '@/shared/ui/NYBanner';
 import { NYModal } from '@/shared/ui/NYModal';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
-import { WithFeature } from '@/entities/featureToggle';
+import { WithFeature } from '@/entities/featureFlag';
 import { getIsEmptySpecialization, getProfilesLength } from '@/entities/profile';
 
 import { Header } from '@/widgets/Header';

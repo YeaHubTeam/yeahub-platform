@@ -1,6 +1,6 @@
-import { FeatureToggles } from '../types/featureToggle';
+import { FeatureFlags } from '../types/featureFlag';
 
-export const featureToggles: FeatureToggles = {
+export const featureFlags: FeatureFlags = {
 	nyBanner: {
 		id: 'nyBanner',
 		enabled: false,
@@ -15,5 +15,11 @@ export const featureToggles: FeatureToggles = {
 		id: 'usersRating',
 		enabled: false,
 		description: 'Рейтинг пользователей по изучению вопросов',
+	},
+	changeLanguage: {
+		id: 'changeLanguage',
+		enabled: true,
+		description: 'Переключатель смены языка',
+		roles: ['admin'],
 	},
 };
