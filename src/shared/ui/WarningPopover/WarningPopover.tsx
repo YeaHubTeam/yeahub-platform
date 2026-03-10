@@ -1,17 +1,17 @@
-import { useTranslation } from 'react-i18next';
-
-import { i18Namespace, Tasks } from '@/shared/config';
 import { useModal } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Popover, PopoverTrigger } from '@/shared/ui/Popover';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './TaskWarningInfo.module.css';
+import styles from './WarningPopover.module.css';
 
-export const TaskWarningInfo = () => {
+interface WarningPopoverProps {
+	text: string;
+}
+
+export const WarningPopover = ({ text }: WarningPopoverProps) => {
 	const { isOpen, onToggle } = useModal();
-	const { t } = useTranslation(i18Namespace.task);
 	return (
 		<Popover
 			isOpen={isOpen}
@@ -21,8 +21,7 @@ export const TaskWarningInfo = () => {
 				<Flex direction="row" gap="16">
 					<Icon icon="warning" color="yellow-900" size={24} />
 					<Flex direction="column" gap="16" style={{ width: '290px' }}>
-						<Text variant="body3">{t(Tasks.WARNING_INTRO)}</Text>
-						<Text variant="body3">{t(Tasks.WARNING_DISCLAIMER)}</Text>
+						<Text variant="body3">{text}</Text>
 					</Flex>
 				</Flex>
 			}

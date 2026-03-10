@@ -19,4 +19,3 @@ export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccess
 export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
 export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
 export { CollectionTasksCount } from './ui/CollectionTasksCount/CollectionTasksCount';
-export { CollectionWarningInfo } from './ui/СollectionWarningInfo/CollectionWarningInfo';

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -113,7 +112,7 @@ export const CollectionPage = () => {
 					company={company}
 				/>{' '}
 				<CollectionBody isFree={isFree} isAdmin questions={questions} />
-				<TasksController isAdmin tasks={tasks} />
+				<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
 			</section>
 		</>
 	);
@@ -162,7 +161,7 @@ export const CollectionPage = () => {
 									company={company}
 								/>{' '}
 								<CollectionBody isFree={isFree} isAdmin questions={questions} />
-								<TasksController isAdmin tasks={tasks} />
+								<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
 							</div>
 							<div className={styles.additional}>
 								<AdditionalInfo

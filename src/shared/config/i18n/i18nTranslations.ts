@@ -959,6 +959,7 @@ export enum Collections {
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
 	TAGS_TITLE = 'tags.title',
+	TASKS = 'tasks',
 	TASKS_ADDITIONAL_INFO = 'numberOfTasks',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',
@@ -968,7 +969,6 @@ export enum Collections {
 	NAVIGATION_NEXT = 'navigation.next',
 
 	WARNING_INTRO = 'warning.intro',
-	WARNING_DISCLAIMER = 'warning.disclaimer',
 
 	BANNER_INTERVIEW_TITLE = 'banner.interview.title',
 	BANNER_INTERVIEW_DESCRIPTION = 'banner.interview.description',
@@ -1397,6 +1397,7 @@ export enum Tasks {
 	NOT_AVAILABLE = 'not.available',
 	BANNER_BETA_TITLE = 'banner.beta.title',
 	TITLE_SHORT = 'title.short',
+	TITLE_LIST = 'title.list',
 	TITLE_HIDE = 'title.hide',
 	NAME_TITLE = 'name.title',
 	NAME_SUBTITLE = 'name.subtitle',
@@ -1427,7 +1428,6 @@ export enum Tasks {
 	TASK_STRUCTURES_PRELOADED_CODE = 'task.structures.preloaded.code',
 	TASK_STRUCTURES_ACTIVE = 'task.structures.active',
 	TASK_STRUCTURES_ADD_BUTTON = 'task.structures.add.button',
-	TASKS = 'tasks.short',
 	TASKS_COUNT = 'tasks.length.min',
 	EDIT_PAGE_TITLE = 'edit.page.title',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -1506,5 +1506,4 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
-	WARNING_DISCLAIMER = 'warning.disclaimer',
 }

@@ -1,24 +1,26 @@
-/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
 import { SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { SimpleStub } from '@/shared/ui/SimpleStub';
+import { WarningPopover } from '@/shared/ui/WarningPopover';
 
-import { Task, TaskWarningInfo } from '@/entities/task';
+import { Task } from '@/entities/task';
 
-import { TasksList } from '@/widgets/task/TasksList';
+import { TasksList } from '../TasksList/TasksList';
 
 import styles from './TasksController.module.css';
 
 interface TasksControllerProps {
 	tasks: Task[];
+	isFree: boolean;
 	isAdmin?: boolean;
 	hasPremiumAccess?: boolean;
 }
 
 export const TasksController = ({
+	isFree,
 	tasks,
 	isAdmin = false,
 	hasPremiumAccess,
@@ -27,7 +29,7 @@ export const TasksController = ({
 
 	const taskCanSolve = tasks.map((item) => ({ ...item, canSolve: true }));
 
-	if (!hasPremiumAccess && !isAdmin) {
+	if (!!isFree && !hasPremiumAccess && !isAdmin) {
 		return (
 			<Card
 				className={styles.wrapper}
@@ -44,8 +46,8 @@ export const TasksController = ({
 	return (
 		<Card
 			className={styles.wrapper}
-			title={t(Tasks.TITLE_SHORT)}
-			headerAction={<TaskWarningInfo />}
+			title={t(Tasks.TITLE_LIST)}
+			headerAction={<WarningPopover text={t(Tasks.WARNING_INTRO)} />}
 			withOutsideShadow
 		>
 			<TasksList tasks={taskCanSolve} />

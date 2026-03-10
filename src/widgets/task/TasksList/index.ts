@@ -1,3 +1,4 @@
-export { TasksList } from './ui/TasksList';
-export { TasksController } from './TasksController/TasksController';
-export { TasksControllerSkeleton } from './TasksController/TasksController.skeleton';
+export { TasksList } from './ui/TasksList/TasksList';
+export { TasksListSkeleton } from './ui/TasksList/TasksList.skeleton';
+export { TasksController } from './ui/TasksController/TasksController';
+export { TasksControllerSkeleton } from './ui/TasksController/TasksController.skeleton';

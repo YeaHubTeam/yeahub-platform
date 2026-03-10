@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 import { generatePath, Link } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Tasks } from '@/shared/config';
+import { useCurrentProject } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -25,7 +27,36 @@ type TaskCardProps = {
 export const TaskCard = ({ task, className }: TaskCardProps) => {
 	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve } = task;
 	const { t } = useTranslation(i18Namespace.task);
-	const taskPath = generatePath(ROUTES.tasks.detail.page, { taskId: id });
+	const project = useCurrentProject();
+	const taskPath =
+		project === 'platform'
+			? generatePath(ROUTES.tasks.detail.page, { taskId: id })
+			: generatePath(ROUTES.admin.tasks.details.page, { taskId: id });
+
+	if (project === 'admin') {
+		return (
+			<Tooltip shouldShowTooltip={!canSolve} title={t(Tasks.NOT_AVAILABLE)} placement="right">
+				<Link to={taskPath} className={className} onClick={(e) => e.preventDefault()}>
+					<Card withOutsideShadow className={styles.content} withHover={canSolve}>
+						<Flex direction="column" gap="20">
+							<Flex justify="between" align="start" gap="16">
+								<Text variant="body4" maxRows={2}>
+									{name}
+								</Text>
+							</Flex>
+
+							<Flex align="center" gap="10" wrap="wrap">
+								<TaskStatusChip status={status} size="medium" />
+								<TaskDifficultyChip difficulty={difficulty} />
+								<ProgrammingLanguageList languages={supportedLanguages} />
+								<TaskCategoryChip category={mainCategory} />
+							</Flex>
+						</Flex>
+					</Card>
+				</Link>
+			</Tooltip>
+		);
+	}
 
 	return (
 		<Tooltip shouldShowTooltip={!canSolve} title={t(Tasks.NOT_AVAILABLE)} placement="right">

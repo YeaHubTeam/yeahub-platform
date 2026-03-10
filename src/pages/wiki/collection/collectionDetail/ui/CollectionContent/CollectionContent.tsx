@@ -94,7 +94,11 @@ export const CollectionContent = ({
 				/>
 
 				<CollectionBody isFree={isFree} questions={questions} hasPremiumAccess={hasPremiumAccess} />
-				<TasksController tasks={tasks} hasPremiumAccess={hasPremiumAccess} />
+				<TasksController
+					isFree={Boolean(isFree)}
+					tasks={tasks}
+					hasPremiumAccess={hasPremiumAccess}
+				/>
 				{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 			</div>
 
