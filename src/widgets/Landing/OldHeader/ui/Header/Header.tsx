@@ -28,21 +28,21 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 	const settingsMenuItems: PopoverMenuItem[] = [
 		{
 			renderComponent: () => (
-				<HeaderLink link={ROUTES.questions.page} path="/questions/">
+				<HeaderLink link={ROUTES.public.questions.page} path="/questions/">
 					{t(Landing.HEADER_NAV_QUESTIONS_LIST)}
 				</HeaderLink>
 			),
 		},
 		{
 			renderComponent: () => (
-				<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
+				<HeaderLink link={ROUTES.public.quiz.page} path="/quiz/">
 					{t(Landing.HEADER_NAV_PUBLIC_QUIZ)}
 				</HeaderLink>
 			),
 		},
 		{
 			renderComponent: () => (
-				<HeaderLink link={ROUTES.collections.page} path="/collections/">
+				<HeaderLink link={ROUTES.public.collections.page} path="/collections/">
 					{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 				</HeaderLink>
 			),
@@ -55,15 +55,15 @@ export const Header = ({ hasOnlyLogo }: HeaderProps = {}) => {
 					<Flex className={styles['header-nav']}>
 						<AppLogo isOpen={false} navigateTo={ROUTES.appRoute} />
 						<Flex className={styles.links}>
-							<HeaderLink link={ROUTES.questions.page} path="/questions/">
+							<HeaderLink link={ROUTES.public.questions.page} path="/questions/">
 								{t(Landing.HEADER_NAV_QUESTIONS_LIST)}
 							</HeaderLink>
 
-							<HeaderLink link={ROUTES.quiz.page} path="/quiz/">
+							<HeaderLink link={ROUTES.public.quiz.page} path="/quiz/">
 								{t(Landing.HEADER_NAV_PUBLIC_QUIZ)}
 							</HeaderLink>
 
-							<HeaderLink link={ROUTES.collections.page} path="/collections/">
+							<HeaderLink link={ROUTES.public.collections.page} path="/collections/">
 								{t(Landing.HEADER_NAV_PUBLIC_COLLECTIONS)}
 							</HeaderLink>
 						</Flex>

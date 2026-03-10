@@ -37,7 +37,7 @@ export const InterviewCard = ({ img, text, iconType }: InterviewCardProps) => {
 					<Icon color={iconType === 'settings' ? 'yellow-900' : 'green-900'} icon={iconType} />
 				</div>
 				<Text variant="body3">{text}</Text>
-				<Button onClick={() => navigate(ROUTES.quiz.page)}>
+				<Button onClick={() => navigate(ROUTES.public.quiz.page)}>
 					{t(Landing.TRAINING_INTERVIEW_LINK)}
 				</Button>
 			</Flex>

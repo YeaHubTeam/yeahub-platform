@@ -16,7 +16,7 @@ export const AuthorizedBlock = ({ username, avatarURL }: UserProfileProps) => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(ROUTES.platformRoute);
+		navigate(ROUTES.appRoute);
 	};
 
 	return (

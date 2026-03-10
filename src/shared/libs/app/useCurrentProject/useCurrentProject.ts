@@ -11,11 +11,7 @@ export const useCurrentProject = (): Project => {
 			return 'admin';
 		}
 
-		if (location.pathname.includes('dashboard')) {
-			return 'platform';
-		}
-
-		return 'landing';
+		return 'platform';
 	}, [location]);
 
 	return project;
