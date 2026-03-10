@@ -32,7 +32,6 @@ export const SpecializationEditForm = ({ specialization }: SpecializationEditFor
 				<Flex componentType="main" direction="column" gap="24">
 					<SpecializationEditFormHeader />
 					<Card className={styles.content}>
-						{/* Убедись, что SpecializationForm импортируется корректно */}
 						<SpecializationForm isEdit={true} />
 					</Card>
 				</Flex>

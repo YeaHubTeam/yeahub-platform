@@ -8,7 +8,6 @@ import {
 	EditSpecializationResponse,
 } from '../../model/types/specializationEditPageTypes';
 
-// 1. Создаем локальный тип для мока ошибки, чтобы TypeScript не ругался в дженерике http.patch
 interface MockErrorResponse {
 	message: string;
 	statusCode: number;
@@ -18,15 +17,10 @@ interface MockErrorResponse {
 export const editSpecializationMock = http.patch<
 	PathParams,
 	EditSpecializationBodyRequest,
-	// 2. Указываем, что мок может вернуть либо успешный ответ, либо нашу Swagger-ошибку
 	EditSpecializationResponse | MockErrorResponse
 >(process.env.API_URL + editSpecializationApiUrls.editSpecialization, async ({ request }) => {
 	const formData = await request.json();
 
-	// --- СЦЕНАРИИ ТЕСТИРОВАНИЯ ОШИБОК (MOCKS) ---
-
-	// Сценарий А: Имитируем 409 Conflict (Конфликт имени)
-	// Введи в форме название 'Conflict', чтобы сработал этот блок
 	if (formData.title === 'Conflict') {
 		return HttpResponse.json(
 			{
@@ -38,8 +32,6 @@ export const editSpecializationMock = http.patch<
 		);
 	}
 
-	// Сценарий Б: Имитируем 500 Internal Server Error (Упал сервер картинок)
-	// Введи 'Error', чтобы проверить глобальный Toast
 	if (formData.title === 'Error') {
 		return HttpResponse.json(
 			{
@@ -50,8 +42,6 @@ export const editSpecializationMock = http.patch<
 			{ status: 500 },
 		);
 	}
-
-	// --- СТАНДАРТНАЯ ЛОГИКА УСПЕШНОГО ОТВЕТА ---
 
 	const specializationIndex = specializationsMock.data.findIndex((spec) => spec.id === formData.id);
 
@@ -69,7 +59,6 @@ export const editSpecializationMock = http.patch<
 		return HttpResponse.json(updatedSpecialization);
 	}
 
-	// 3. ИСПРАВЛЕНИЕ: Приводим 404 ошибку к единому стандарту Swagger
 	return HttpResponse.json(
 		{
 			message: 'specialization.specialization.not_found',
