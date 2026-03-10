@@ -56,6 +56,7 @@ export enum Translation {
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
+	SIDEBAR_MENU_REFERRALS = 'sidebar.menu.referrals',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -858,6 +859,18 @@ export enum Skills {
 	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
 	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
+}
+
+export enum ReferralLinks {
+	REF_CODE = 'table.columns.ref.code',
+	URL = 'table.columns.url',
+	OWNER_USERNAME = 'table.columns.owner.username',
+	LINKED_COUNT = 'table.columns.linked.count',
+	AMOUNT_SUM = 'table.columns.amount.sum',
+	CREATED_AT = 'table.columns.created.at',
+	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
+	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
 }
 
 export enum User {

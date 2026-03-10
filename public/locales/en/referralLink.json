@@ -1,0 +1,24 @@
+{
+	"stub": {
+		"empty": {
+			"title": "It looks like there are no referral links yet",
+			"subtitle": "Wait until a user creates a referral link or create one yourself",
+			"submit": "Add",
+			"requests": {
+				"title": "Failed to load data",
+				"subtitle": "Please try again, this might resolve the issue",
+				"submit": "Retry"
+			}
+		}
+	},
+	"table": {
+		"columns": {
+			"ref.code": "Referral Code",
+			"url": "Link",
+			"owner.username": "Owner",
+			"linked.count": "Clicks",
+			"amount.sum": "Amount",
+			"created.at": "Created At"
+		}
+	}
+}
