@@ -206,6 +206,7 @@ export enum Translation {
 	TOAST_SPECIALIZATION_TITLE_CONFLICT = 'toast.specializations.title.conflict.specialization',
 	TOAST_SPECIALIZATION_AUTH_UNAUTHORIZED = 'toast.specializations.auth.unauthorized',
 	TOAST_SPECIALIZATION_AUTH_USER_VERIFIED = 'toast.specializations.auth.user.verified',
+	TOAST_SPECIALIZATION_NOT_FOUND = 'toast.specializations.specialization.not.found',
 	TOAST_AVATAR_UPDATE_SUCCESS = 'toast.avatar.update.success',
 	TOAST_AVATAR_UPDATE_FAILED = 'toast.avatar.update.failed',
 	TOAST_AVATAR_CREATE_SUCCESS = 'toast.avatar.create.success',
@@ -309,7 +310,6 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
-	SUCCESS = 'SUCCESS',
 }
 
 export enum Profile {
