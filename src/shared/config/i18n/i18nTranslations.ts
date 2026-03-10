@@ -972,7 +972,7 @@ export enum Collections {
 	KEYWORDS_TITLE = 'keywords.title',
 	KEYWORDS_LABEL = 'keywords.label',
 	TAGS_TITLE = 'tags.title',
-	TASKS = 'tasks',
+	TASKS_SHORT = 'tasks.short',
 	TASKS_ADDITIONAL_INFO = 'numberOfTasks',
 	TOOLTIP_TITLE = 'tooltip.title',
 	TOOLTIP_ARIA_LABEL = 'tooltip.aria.label',

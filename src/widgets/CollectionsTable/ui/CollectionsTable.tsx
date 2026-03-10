@@ -51,7 +51,7 @@ export const CollectionsTable = ({
 			title: t(Collections.TITLE_SHORT),
 			description: t(Collections.DESCRIPTION_SHORT),
 			questionsCount: t(Collections.QUESTIONS_SHORT),
-			tasksCount: t(Collections.TASKS),
+			tasksCount: t(Collections.TASKS_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
