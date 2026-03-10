@@ -19,7 +19,7 @@ describe('getQuestionRoute', () => {
 
 	it('returns correct landing question route', () => {
 		const result = getQuestionRoute.landing(testId);
-		const expected = ROUTES.questions.detail.page.replace(':questionId', testId);
+		const expected = ROUTES.public.questions.detail.page.replace(':questionId', testId);
 		expect(result).toBe(expected);
 	});
 

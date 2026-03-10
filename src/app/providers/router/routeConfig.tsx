@@ -14,6 +14,7 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
@@ -40,6 +41,7 @@ import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
+import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
@@ -147,7 +149,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
 		roles: allRoles,
@@ -219,7 +221,7 @@ const mainLayoutMenuItems: MenuItem[] = [
 const adminLayoutMenuItems: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
 		roles: listAdminRoles,
@@ -295,11 +297,18 @@ const adminLayoutMenuItems: MenuItem[] = [
 		icon: TasksIcon,
 		roles: listAdminRoles,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.referralLinks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
+		icon: ReferralsIcon,
+		roles: ['admin'],
+	},
 ];
 
 export const router = createBrowserRouter([
 	{
-		path: ROUTES.appRoute,
+		path: process.env.LANDING_URL,
 		element: <LandingLayout />,
 		children: [
 			{
@@ -307,7 +316,7 @@ export const router = createBrowserRouter([
 				element: <LandingPage />,
 			},
 			{
-				path: '/learning',
+				path: ROUTES.public.learning.page,
 				element: <LearningPage />,
 			},
 			{
@@ -319,19 +328,19 @@ export const router = createBrowserRouter([
 				element: <CollectionBlock />,
 			},
 			{
-				path: ROUTES.resources.route,
+				path: ROUTES.public.resources.page,
 				element: <PublicResourcesPage />,
 			},
 			{
-				path: ROUTES.docs.page,
+				path: ROUTES.public.docs.page,
 				element: <DocsPage />,
 			},
 			{
-				path: ROUTES.media.page,
+				path: ROUTES.public.media.page,
 				element: <MediaPage />,
 			},
 			{
-				path: ROUTES.questions.route,
+				path: ROUTES.public.questions.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -339,13 +348,13 @@ export const router = createBrowserRouter([
 						element: <PublicQuestionsPage />,
 					},
 					{
-						path: ROUTES.questions.detail.route,
+						path: ROUTES.public.questions.detail.page,
 						element: <PublicQuestionPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.quiz.route,
+				path: ROUTES.public.quiz.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -353,17 +362,17 @@ export const router = createBrowserRouter([
 						element: <CreatePublicQuizPage />,
 					},
 					{
-						path: ROUTES.quiz.new.route,
+						path: ROUTES.public.quiz.new.page,
 						element: <PublicQuizPage />,
 					},
 					{
-						path: ROUTES.quiz.result.route,
+						path: ROUTES.public.quiz.result.page,
 						element: <PublicQuizResultPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.collections.route,
+				path: ROUTES.public.collections.page,
 				element: <Outlet />,
 				children: [
 					{
@@ -371,17 +380,17 @@ export const router = createBrowserRouter([
 						element: <PublicCollectionsPage />,
 					},
 					{
-						path: ROUTES.collections.detail.route,
+						path: ROUTES.public.collections.detail.page,
 						element: <PublicCollectionPage />,
 					},
 				],
 			},
 			{
-				path: ROUTES.avos.route,
+				path: ROUTES.public.avos.page,
 				element: <AvosPage />,
 			},
 			{
-				path: ROUTES.hhAnalytics.route,
+				path: ROUTES.public.hhAnalytics.page,
 				element: <HhAnalyticsPage />,
 			},
 		],
@@ -583,13 +592,23 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
+				path: ROUTES.admin.referralLinks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <ReferralLinksPage />,
+					},
+				],
+			},
+			{
 				path: '*',
 				element: <Error404Page />,
 			},
 		],
 	},
 	{
-		path: ROUTES.platformRoute,
+		path: ROUTES.appRoute,
 		element: (
 			<AuthRoute>
 				<MainLayout sidebarItems={mainLayoutMenuItems} />

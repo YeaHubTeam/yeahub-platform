@@ -95,7 +95,7 @@ const quizApi = baseApi.injectEndpoints({
 					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, mockQuizResponse);
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
-					typedExtra.navigate(ROUTES.quiz.new.page);
+					typedExtra.navigate(ROUTES.public.quiz.new.page);
 					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
