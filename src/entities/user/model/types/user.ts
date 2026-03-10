@@ -1,16 +1,7 @@
 import { Response } from '@/shared/libs';
 
 import { FullProfile } from '@/entities/auth/@x/user';
-
-export interface RatingSpecialization {
-	id: number | string;
-	title: string;
-	slug: string;
-	description: string;
-	imageSrc: string | null;
-	createdAt: string;
-	updatedAt: string;
-}
+import { Specialization } from '@/entities/specialization/@x/collection';
 
 export type UserStatus = 'public' | 'draft';
 
@@ -84,7 +75,7 @@ export type GetUserProfileByIdResponse = FullProfile;
 export type UserFormValues = Omit<CreateOrEditUserFormValues, 'id'>;
 
 export interface GetRatingStatsResponse {
-	specialization: RatingSpecialization;
+	specialization: Specialization;
 	allUsers: number;
 	allQuestions: number;
 	averageProgress: number;

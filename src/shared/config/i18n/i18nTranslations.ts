@@ -308,6 +308,7 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+	SUCCESS = 'SUCCESS',
 }
 
 export enum Profile {
@@ -537,7 +538,7 @@ export enum Analytics {
 	USERS_RATING_TABLE_PLACE = 'users.rating.table.place',
 	USERS_RATING_TABLE_USER = 'users.rating.table.user',
 	USERS_RATING_TABLE_QUESTIONS_COUNT = 'users.rating.table.questions.count',
-	USERS_RATING_TOOLTIP_QUESTIONS_COUNT = 'usersRating.tooltip.questionsCount',
+	USERS_RATING_TOOLTIP_QUESTIONS_COUNT = 'users.rating.tooltip.questionsCount',
 	USERS_RATING_TABLE_PROGRESS = 'users.rating.table.progress',
 	USERS_RATING_TITLE_WIDGET = 'users.rating.title.widget',
 	USERS_RATING_TITLE_PAGE = 'users.rating.title.page',
@@ -1209,6 +1210,7 @@ export enum Subscription {
 	CARD_SUBTITLE_MONTH = 'card.subtitle.month',
 	CARD_SUBTITLE_QUARTER = 'card.subtitle.quarter',
 	CARD_SUBTITLE_YEAR = 'card.subtitle.year',
+	CARD_SUBSCRIBE = 'card.subscribe',
 	CARD_BENEFITS_FIRST = 'card.benefits.first',
 	CARD_BENEFITS_SECOND = 'card.benefits.second',
 	CARD_BENEFITS_THIRD = 'card.benefits.third',
