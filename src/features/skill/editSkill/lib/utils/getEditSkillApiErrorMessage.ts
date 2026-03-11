@@ -16,5 +16,7 @@ export const getEditSkillApiErrorMessage = (error: ApiErrorData<EditSkillError>)
 			return i18n.t(Translation.TOAST_SKILL_EDIT_TINIFY_COMPRESS_FAILED);
 		case 'tinify.tinify.resize_failed':
 			return i18n.t(Translation.TOAST_SKILL_EDIT_TINIFY_RESIZE_FAILED);
+		default:
+			return i18n.t(Translation.TOAST_SKILL_EDIT_FAILED);
 	}
 };
