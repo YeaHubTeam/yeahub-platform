@@ -28,4 +28,10 @@ export default defineConfig([
 			'fsd/no-public-api-sidestep': 'warn',
 		},
 	},
+	{
+		files: ['./src/entities/**'],
+		rules: {
+			'fsd/excessive-slicing': 'warn',
+		},
+	},
 ]);

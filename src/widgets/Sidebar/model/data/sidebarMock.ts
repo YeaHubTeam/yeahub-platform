@@ -13,7 +13,7 @@ import { MenuItem, SingleMenuItem } from '../types/sidebar';
 export const sidebarUserMenuMock: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
 		icon: MainIcon,
 	},
@@ -52,7 +52,7 @@ export const sidebarAdminPlatformMenuMock: MenuItem[] = [
 export const sidebarAdminEditorMenuMock: MenuItem[] = [
 	{
 		type: 'single',
-		route: ROUTES.platformRoute,
+		route: ROUTES.appRoute,
 		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
 		icon: CursorSquare,
 		isAdmin: true,
