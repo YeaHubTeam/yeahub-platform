@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getEditQuestionApiErrorMessage } from '../lib/utils/getEditQuestionApiErrorMessage';
 import { editQuestionApiUrls } from '../model/constants/editQuestionConstants';
 import {
 	EditQuestionBodyRequest,
@@ -23,7 +24,7 @@ const editQuestionApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.questions.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_QUESTION_EDIT_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_QUESTION_EDIT_FAILED));
+					toast.error(i18n.t(handleApiError(error, getEditQuestionApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

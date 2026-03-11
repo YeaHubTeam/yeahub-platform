@@ -73,10 +73,8 @@ const mockTasksResponse: GetTasksListResponse = {
 	total: 2,
 };
 
-const GET_TASKS_URL = `${process.env.API_URL}${taskApiUrls.getTasksList}`;
-
 export const taskListMock = http.get<Record<string, never>, never, GetTasksListResponse>(
-	GET_TASKS_URL,
+	`${process.env.API_URL}${taskApiUrls.getTasksList}`,
 	() => {
 		return HttpResponse.json(mockTasksResponse, { status: 200 });
 	},

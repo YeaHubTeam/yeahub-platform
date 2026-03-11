@@ -1,24 +1,26 @@
 import { http, HttpResponse } from 'msw';
 
 import { collectionsMock } from '@/entities/collection';
-import { Collection, CreateOrEditCollectionFormValues } from '@/entities/collection';
+import { companiesMock } from '@/entities/company';
+import { specializationsMock } from '@/entities/specialization';
 
 import { createCollectionApiUrls } from '../../model/constants/createCollectionConstants';
-
-type MockCreateCollectionBody = Omit<CreateOrEditCollectionFormValues, 'id'>;
-type MockCreateCollectionResponse = Collection;
+import {
+	CreateCollectionResponse,
+	CreateCollectionBodyRequest,
+} from '../../model/types/collectionCreateTypes';
 
 export const createCollectionMock = http.post<
 	Record<string, never>,
-	MockCreateCollectionBody,
-	MockCreateCollectionResponse
+	CreateCollectionBodyRequest,
+	CreateCollectionResponse
 >(process.env.API_URL + createCollectionApiUrls.createCollection, async ({ request }) => {
-	const body = (await request.json()) as MockCreateCollectionBody;
+	const body = (await request.json()) as CreateCollectionBodyRequest;
 
 	const newId = Math.floor(Math.random() * 1000) + 500;
 	const now = new Date().toISOString();
 
-	const newCollection: Collection = {
+	const newCollection: CreateCollectionResponse = {
 		id: newId,
 		title: body.title,
 		description: body.description,
@@ -31,15 +33,20 @@ export const createCollectionMock = http.post<
 		questionsCount: body.questions?.length || 0,
 		tasksCount: body.taskIds?.length || 0,
 
-		specializations: (body.specializations || []).map((id: number) => ({
-			id,
-			title: `Specialization ${id}`,
-			description: '',
-		})),
+		specializations: body.specializations?.map(
+			(id) =>
+				specializationsMock.data.find((spec) => spec.id === id) || {
+					id,
+					title: 'Unknown',
+					description: 'Unknown',
+				},
+		),
 
 		keywords: body.keywords || [],
 
-		company: body.companyId ? { id: body.companyId, title: 'Mock Company' } : undefined,
+		company: body.companyId
+			? companiesMock.data.find((c) => String(c.id) === body.companyId)
+			: undefined,
 
 		createdBy: {
 			id: 'admin-uuid',
@@ -47,7 +54,7 @@ export const createCollectionMock = http.post<
 		},
 	};
 
-	collectionsMock.data.unshift(newCollection);
+	collectionsMock.data.push(newCollection);
 	collectionsMock.total += 1;
 
 	return HttpResponse.json(newCollection, { status: 201 });
