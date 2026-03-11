@@ -5,8 +5,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getSpecializationId } from '@/entities/profile';
-import { useGetUsersRatingBySpecializationQuery } from '@/entities/user';
+import { getProfileId, getSpecializationId } from '@/entities/profile';
+import {
+	useGetUsersRatingBySpecializationQuery,
+	useGetUserProfilePositionQuery,
+} from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
@@ -30,7 +33,6 @@ export const UsersRatingPage = () => {
 		filters.specialization || specializationId,
 	);
 
-	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
 	const maxRating = data?.questionsCount ?? 0;
 	const usersCount = data?.users.length ?? 0;
 	const averageProgress = getOverallProgress(data);
@@ -41,11 +43,25 @@ export const UsersRatingPage = () => {
 	// const currentUserRating = data?.users.find((u) => u.userId === userId);
 
 	// TODO: comment this block when backend for users rating is ready
-	const currentUserRating = data?.users.find((u) => u.userId === '7');
+	// const currentUserRating = data?.users.find((u) => u.userId === '7');
+	const profileId = useAppSelector(getProfileId);
 
-	const showCurrentUserRating = !usersOnPage.filter((u) => u.userId === currentUserRating?.userId)
-		.length;
+	const { data: currentUserRating } = useGetUserProfilePositionQuery(profileId);
+	const currentUserRatingMapped = currentUserRating && {
+		userId: String(currentUserRating.userId),
+		username: currentUserRating.username,
+		avatarUrl: currentUserRating.imageSrc,
+		ratingScore: currentUserRating.ratingPoints,
+		place: currentUserRating.place,
+	};
 
+	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
+
+	const hasCurrentUserInPage = usersOnPage.some(
+		(u) => u.userId === currentUserRatingMapped?.userId,
+	);
+
+	const showCurrentUserRating = !!currentUserRatingMapped && !hasCurrentUserInPage;
 	return (
 		<AnalyticPageTemplate
 			title={
@@ -58,7 +74,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingList
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRating}
+					currentUserRating={currentUserRatingMapped}
 				/>
 			}
 			tooltip={
@@ -72,7 +88,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingTable
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRating}
+					currentUserRating={currentUserRatingMapped}
 				/>
 			}
 			filters={{
@@ -86,9 +102,9 @@ export const UsersRatingPage = () => {
 				hasFilters,
 			}}
 			suffix={
-				currentUserRating &&
+				currentUserRatingMapped &&
 				showCurrentUserRating && (
-					<CurrentUserRating user={currentUserRating} maxRating={maxRating} />
+					<CurrentUserRating user={currentUserRatingMapped} maxRating={maxRating} />
 				)
 			}
 		/>
