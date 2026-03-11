@@ -14,5 +14,7 @@ export const getEditQuestionApiErrorMessage = (error: ApiErrorData<EditQuestionE
 			return i18n.t(Translation.TOAST_QUESTION_EDIT_QUESTION_NOT_FOUND);
 		case 'question.question.internal':
 			return i18n.t(Translation.TOAST_QUESTION_EDIT_QUESTION_INTERNAL);
+		default:
+			return i18n.t(Translation.TOAST_QUESTION_EDIT_FAILED);
 	}
 };
