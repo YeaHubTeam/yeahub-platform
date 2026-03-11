@@ -90,6 +90,7 @@
 		},
 		"tooltip": {
 			"users.count": "Всего участников: {{usersCount}}",
+			"questionsCount": "Всего вопросов: {{allQuestions}}",
 			"progress": "Средний прогресс: {{averageProgress}}%",
 			"updated.at": "Обновлено: {{updatedAt}}"
 		}

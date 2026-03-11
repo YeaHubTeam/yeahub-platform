@@ -89,6 +89,7 @@
 		},
 		"tooltip": {
 			"users.count": "Total users: {{usersCount}}",
+			"questionsCount": "Total questions: {{allQuestions}}",
 			"progress": "Average progress: {{averageProgress}}%",
 			"updated.at": "Last updated: {{updatedAt}}"
 		}

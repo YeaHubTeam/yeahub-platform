@@ -314,6 +314,7 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+	SUCCESS = 'SUCCESS',
 }
 
 export enum Profile {
@@ -543,6 +544,7 @@ export enum Analytics {
 	USERS_RATING_TABLE_PLACE = 'users.rating.table.place',
 	USERS_RATING_TABLE_USER = 'users.rating.table.user',
 	USERS_RATING_TABLE_QUESTIONS_COUNT = 'users.rating.table.questions.count',
+	USERS_RATING_TOOLTIP_QUESTIONS_COUNT = 'users.rating.tooltip.questionsCount',
 	USERS_RATING_TABLE_PROGRESS = 'users.rating.table.progress',
 	USERS_RATING_TITLE_WIDGET = 'users.rating.title.widget',
 	USERS_RATING_TITLE_PAGE = 'users.rating.title.page',

@@ -13,6 +13,7 @@ export {
 	useAddUserRolesMutation,
 	useRemoveUserRolesMutation,
 	useGetUserRolesListQuery,
+	useGetRatingStatsQuery,
 } from './api/userApi';
 export { UserCard } from './ui/UserCard/UserCard';
 export { RoleSelect } from './ui/RoleSelect/RoleSelect';

@@ -17,6 +17,7 @@ interface UsersRatingListProps {
 	maxRating: number;
 	currentUserRating?: UserRating;
 }
+
 export const UsersRatingList = ({
 	rankedUsers,
 	maxRating,
@@ -26,12 +27,15 @@ export const UsersRatingList = ({
 
 	const rankedUsersFields: AnalyticPageTemplateMobileListItem[] = rankedUsers.map((rankedUser) => {
 		const isCurrentUser = rankedUser.userId === currentUserRating?.userId;
+
+		const safeStudiedQuestions = Math.min(rankedUser.ratingScore, maxRating);
+
 		return {
 			title: <UsersTitle rankedUser={rankedUser} />,
 			fields: [
 				{
 					label: t(Analytics.USERS_RATING_ANSWERS),
-					value: `${rankedUser.ratingScore}/${maxRating}`,
+					value: `${safeStudiedQuestions}/${maxRating}`,
 				},
 			],
 			suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
