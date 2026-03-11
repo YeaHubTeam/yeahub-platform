@@ -17,6 +17,6 @@ export const getEditSpecializationErrorMessage = (error: ApiErrorData<EditSpecia
 		case 'specialization.specialization.title.conflict':
 			return i18n.t(Translation.TOAST_SPECIALIZATION_TITLE_CONFLICT);
 		default:
-			return i18n.t(Translation.ERROR);
+			return i18n.t(Translation.TOAST_SPECIALIZATION_EDIT_FAILED);
 	}
 };
