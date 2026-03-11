@@ -5,19 +5,14 @@ import { specializationsMock } from '@/entities/specialization';
 import { editSpecializationApiUrls } from '../../model/constants/editSpecializationConstants';
 import {
 	EditSpecializationBodyRequest,
+	EditSpecializationError,
 	EditSpecializationResponse,
 } from '../../model/types/specializationEditPageTypes';
-
-interface MockErrorResponse {
-	message: string;
-	statusCode: number;
-	description: string;
-}
 
 export const editSpecializationMock = http.patch<
 	PathParams,
 	EditSpecializationBodyRequest,
-	EditSpecializationResponse | MockErrorResponse
+	EditSpecializationResponse | ApiErrorData<EditSpecializationError>
 >(process.env.API_URL + editSpecializationApiUrls.editSpecialization, async ({ request }) => {
 	const formData = await request.json();
 
