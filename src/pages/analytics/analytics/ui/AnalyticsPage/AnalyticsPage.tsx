@@ -1,7 +1,7 @@
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { WithFeature } from '@/entities/featureToggle';
+import { WithFeature } from '@/entities/featureFlag';
 
 import { MostDifficultQuestionsWidget } from '@/widgets/analytics/MostDifficultQuestionsWidget';
 import { PopularQuestionsWidget } from '@/widgets/analytics/PopularQuestionsWidget';

@@ -154,6 +154,14 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
+		referralLinks: {
+			route: 'referralLinks',
+			page: '/admin/referralLinks',
+			detail: {
+				route: ':referralLinkId',
+				page: '/admin/referralLinks/:referralLinkId',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',

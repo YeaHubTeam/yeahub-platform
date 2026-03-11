@@ -12,6 +12,7 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
+import { useGetTasksListQuery } from '@/entities/task';
 
 import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
 
@@ -22,6 +23,7 @@ import {
 	CollectionHeader,
 } from '@/widgets/Collection';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+import { TasksController } from '@/widgets/task/TasksList';
 
 import styles from './CollectionPage.module.css';
 import { CollectionPageSkeleton } from './CollectionPage.skeleton';
@@ -36,6 +38,17 @@ export const CollectionPage = () => {
 		isLoading,
 		isError: isCollectionError,
 	} = useGetCollectionByIdQuery({ collectionId });
+	const { data: tasksResponse } = useGetTasksListQuery(
+		{
+			collectionId: collectionId ? Number(collectionId) : undefined,
+			limit: 50,
+			page: 1,
+		},
+		{
+			skip: !collectionId,
+		},
+	);
+	const tasks = tasksResponse?.data ?? [];
 	const isAuthor = useSelector(getIsAuthor);
 	const profileId = useAppSelector(getProfileId);
 	const userId = useAppSelector(getUserId);
@@ -71,6 +84,7 @@ export const CollectionPage = () => {
 	const {
 		createdBy,
 		questionsCount,
+		tasksCount,
 		isFree,
 		company,
 		specializations,
@@ -98,6 +112,7 @@ export const CollectionPage = () => {
 					company={company}
 				/>{' '}
 				<CollectionBody isFree={isFree} isAdmin questions={questions} />
+				<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
 			</section>
 		</>
 	);
@@ -146,11 +161,13 @@ export const CollectionPage = () => {
 									company={company}
 								/>{' '}
 								<CollectionBody isFree={isFree} isAdmin questions={questions} />
+								<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
 							</div>
 							<div className={styles.additional}>
 								<AdditionalInfo
 									createdBy={createdBy}
 									questionsCount={questionsCount}
+									tasksCount={tasksCount}
 									isFree={isFree}
 									company={company}
 									specializations={specializations}

@@ -1,0 +1,12 @@
+import { RoleName } from '@/entities/auth/@x/featureFlag';
+
+export type FeatureFlagType = 'nyBanner' | 'nyModal' | 'usersRating' | 'changeLanguage';
+
+export interface FeatureFlag {
+	id: FeatureFlagType;
+	roles?: RoleName[];
+	enabled: boolean;
+	description: string;
+}
+
+export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
