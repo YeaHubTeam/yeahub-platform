@@ -10,7 +10,7 @@ import { useGetResourceByIdQuery, isResourceDisabled } from '@/entities/resource
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import { ResourcePageContent } from '../RecourcePageContent/ResourcePageContent';
+import { ResourcePageContent } from '../ResourcePageContent/ResourcePageContent';
 
 import { ResourcePageSkeleton } from './ResourcePage.skeleton';
 
