@@ -74,6 +74,7 @@ export interface GetTasksListParams {
 	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
+	collectionId?: number;
 }
 
 export type GetTasksListResponse = Response<Task[]>;

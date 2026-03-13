@@ -6,7 +6,7 @@ import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { Flex } from '@/shared/ui/Flex';
 import { NYBanner } from '@/shared/ui/NYBanner';
 
-import { WithFeature } from '@/entities/featureToggle';
+import { WithFeature } from '@/entities/featureFlag';
 
 import { CookiesWarning } from '@/widgets/Landing/CookiesWarningBlock';
 import { Footer } from '@/widgets/Landing/Footer';

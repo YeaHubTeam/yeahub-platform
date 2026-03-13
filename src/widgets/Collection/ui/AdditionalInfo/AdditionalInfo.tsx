@@ -14,6 +14,7 @@ import {
 	Collection,
 	CollectionCompanyInfo,
 	CollectionQuestionsCount,
+	CollectionTasksCount,
 } from '@/entities/collection';
 import { Media, MediaLinksBanner } from '@/entities/socialMedia';
 import { SpecializationsList } from '@/entities/specialization';
@@ -23,7 +24,13 @@ import styles from './AdditionalInfo.module.css';
 interface AdditionalInfoProps
 	extends Pick<
 		Collection,
-		'specializations' | 'isFree' | 'company' | 'questionsCount' | 'createdBy' | 'keywords'
+		| 'specializations'
+		| 'isFree'
+		| 'company'
+		| 'questionsCount'
+		| 'createdBy'
+		| 'tasksCount'
+		| 'keywords'
 	> {
 	showAuthor?: boolean;
 	className?: string;
@@ -35,6 +42,7 @@ export const AdditionalInfo = ({
 	isFree,
 	company,
 	questionsCount,
+	tasksCount,
 	createdBy,
 	keywords,
 	showAuthor = true,
@@ -62,6 +70,7 @@ export const AdditionalInfo = ({
 					<CollectionCompanyInfo company={company} />
 					<CollectionAccessInfo isFree={isFree} />
 					<CollectionQuestionsCount questionsCount={questionsCount} />
+					<CollectionTasksCount tasksCount={tasksCount} />
 					{isSmallScreen && showAuthor && createdBy && <AuthorInfo createdBy={createdBy} />}
 					{media && <MediaLinksBanner mediaLink={media} />}
 				</Flex>

@@ -25,7 +25,8 @@ export const CollectionAdditionalInfoDrawer = ({
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
 	const project = useCurrentProject();
-	const { createdBy, questionsCount, isFree, company, specializations, keywords } = collection;
+	const { createdBy, questionsCount, tasksCount, isFree, company, specializations, keywords } =
+		collection;
 
 	const media = getChannelsForSpecialization(collection.specializations);
 
@@ -55,6 +56,7 @@ export const CollectionAdditionalInfoDrawer = ({
 						className={styles['additional-info-wrapper']}
 						createdBy={createdBy}
 						questionsCount={questionsCount}
+						tasksCount={tasksCount}
 						isFree={isFree}
 						company={company}
 						specializations={specializations}
