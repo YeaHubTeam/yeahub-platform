@@ -92,9 +92,9 @@ const renderSelectWithChips = (props: Partial<SelectWithChipsProps> = {}) => {
 		dataTestId: selectWithChipsTestIds.selectWithChips,
 	};
 
-	return renderComponent(
-		<SelectWithChips {...defaultProps} {...(props as SelectWithChipsProps)} />,
-	);
+	const finalProps: SelectWithChipsProps = { ...defaultProps, ...props };
+
+	return renderComponent(<SelectWithChips {...finalProps} />);
 };
 
 describe('SelectWithChips', () => {
