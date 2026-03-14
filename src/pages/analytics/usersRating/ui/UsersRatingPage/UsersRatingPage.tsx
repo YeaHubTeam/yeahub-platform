@@ -5,13 +5,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getSpecializationId } from '@/entities/profile';
-import { useGetUsersRatingBySpecializationQuery } from '@/entities/user';
+import { getSpecializationId, getUserId } from '@/entities/profile';
+import { useGetUsersRatingQuery, useGetUsersRatingStatsQuery } from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
-import { getRankedUsers } from '@/widgets/analytics/UsersRatingWidget';
 
-import { getOverallProgress } from '../../lib/getOverallProgress/getOverallProgress';
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
 import { UsersRatingList } from '../UsersRatingList/UsersRatingList';
@@ -20,30 +18,34 @@ import { UsersRatingTable } from '../UsersRatingTable/UsersRatingTable';
 export const UsersRatingPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
-	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
-		useAnalyticFilters({
-			specialization: specializationId,
-			page: 1,
-		});
+	const userId = useAppSelector(getUserId);
+	const { filters, onChangePage, onResetFilters, onChangeSpecialization } = useAnalyticFilters({
+		specialization: specializationId,
+		page: 1,
+	});
 	const page = filters?.page || 1;
-	const { data } = useGetUsersRatingBySpecializationQuery(
-		filters.specialization || specializationId,
-	);
 
-	const usersOnPage = getRankedUsers({ data, limit: PLACES_COUNT_ON_PAGE, page });
-	const maxRating = data?.questionsCount ?? 0;
-	const usersCount = data?.users.length ?? 0;
-	const averageProgress = getOverallProgress(data);
-	const updatedAt = data?.updatedAt ?? '';
+	const currentSpecialization = filters.specialization || specializationId;
 
-	// TODO: use this block when backend for users rating is ready
-	// const userId = useAppSelector(getUserId);
-	// const currentUserRating = data?.users.find((u) => u.userId === userId);
+	const isFilterActive = page > 1 || currentSpecialization !== specializationId;
 
-	// TODO: comment this block when backend for users rating is ready
-	const currentUserRating = data?.users.find((u) => u.userId === '7');
+	const { data: ratingData } = useGetUsersRatingQuery({
+		specializationId: currentSpecialization,
+		page,
+		limit: PLACES_COUNT_ON_PAGE,
+	});
 
-	const showCurrentUserRating = !usersOnPage.filter((u) => u.userId === currentUserRating?.userId)
+	const { data: statsData } = useGetUsersRatingStatsQuery(currentSpecialization);
+
+	const usersOnPage = ratingData?.data ?? [];
+
+	const maxRating = statsData?.allQuestions ?? 0;
+	const usersCount = statsData?.allUsers ?? 0;
+	const averageProgress = statsData?.averageProgress ?? 0;
+
+	const currentUserRating = ratingData?.data?.find((u) => u.userId === userId);
+
+	const showCurrentUserRating = !usersOnPage?.filter((u) => u.userId === currentUserRating?.userId)
 		.length;
 
 	return (
@@ -51,7 +53,9 @@ export const UsersRatingPage = () => {
 			title={
 				<Flex direction="row" gap="12" align="center">
 					<img src={trophyIcon} alt="" />
-					{t(Analytics.USERS_RATING_TITLE_PAGE, { specialization: data?.specialization.title })}
+					{t(Analytics.USERS_RATING_TITLE_PAGE, {
+						specialization: statsData?.specialization?.title,
+					})}
 				</Flex>
 			}
 			list={
@@ -65,7 +69,6 @@ export const UsersRatingPage = () => {
 				<>
 					{t(Analytics.USERS_RATING_TOOLTIP_USERS_COUNT, { usersCount })} <br />
 					{t(Analytics.USERS_RATING_TOOLTIP_PROGRESS, { averageProgress })} <br />
-					{t(Analytics.USERS_RATING_TOOLTIP_UPDATED_AT, { updatedAt })} <br />
 				</>
 			}
 			table={
@@ -77,13 +80,13 @@ export const UsersRatingPage = () => {
 			}
 			filters={{
 				page,
-				specialization: filters.specialization,
+				specialization: currentSpecialization,
 				limit: PLACES_COUNT_ON_PAGE,
 				total: usersCount,
 				onChangeSpecialization,
 				onChangePage,
 				onResetFilters,
-				hasFilters,
+				hasFilters: isFilterActive,
 			}}
 			suffix={
 				currentUserRating &&
