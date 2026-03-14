@@ -31,7 +31,7 @@ export const UsersRatingList = ({
 			fields: [
 				{
 					label: t(Analytics.USERS_RATING_ANSWERS),
-					value: `${rankedUser.ratingScore}/${maxRating}`,
+					value: `${rankedUser.ratingPoints}/${maxRating}`,
 				},
 			],
 			suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
