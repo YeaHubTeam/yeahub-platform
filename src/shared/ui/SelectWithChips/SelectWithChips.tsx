@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/Text';
 import { selectWithChipsTestIds } from './constants';
 import styles from './SelectWithChips.module.css';
 
-type SelectWithChipsProps<T, U> = Omit<
+export type SelectWithChipsProps<T, U> = Omit<
 	React.ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
