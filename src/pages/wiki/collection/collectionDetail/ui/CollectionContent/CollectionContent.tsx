@@ -5,11 +5,13 @@ import { Collection as CollectionType } from '@/entities/collection';
 import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
 import { Question } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
+import { useGetTasksListQuery } from '@/entities/task';
 
 import { CollectionHeader } from '@/widgets/Collection';
 import { CollectionAdditionalInfoDrawer } from '@/widgets/Collection';
 import { CollectionBody } from '@/widgets/Collection';
 import { AdditionalInfo } from '@/widgets/Collection';
+import { TasksController } from '@/widgets/task/TasksList';
 
 import { CollectionActions } from '../CollectionActions/CollectionActions';
 
@@ -41,6 +43,7 @@ export const CollectionContent = ({
 	const {
 		createdBy,
 		questionsCount,
+		tasksCount,
 		isFree,
 		company,
 		specializations,
@@ -49,6 +52,18 @@ export const CollectionContent = ({
 		description,
 		imageSrc: collectionImageSrc,
 	} = collection;
+
+	const { data: tasksResponse } = useGetTasksListQuery(
+		{
+			collectionId: collectionId ? Number(collectionId) : undefined,
+			limit: 50,
+			page: 1,
+		},
+		{
+			skip: !collectionId,
+		},
+	);
+	const tasks = tasksResponse?.data ?? [];
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 	const guru = getGuruWithMatchingSpecialization(specializations);
@@ -79,7 +94,11 @@ export const CollectionContent = ({
 				/>
 
 				<CollectionBody isFree={isFree} questions={questions} hasPremiumAccess={hasPremiumAccess} />
-
+				<TasksController
+					isFree={Boolean(isFree)}
+					tasks={tasks}
+					hasPremiumAccess={hasPremiumAccess}
+				/>
 				{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 			</div>
 
@@ -91,6 +110,7 @@ export const CollectionContent = ({
 						isFree={isFree}
 						company={company}
 						questionsCount={questionsCount}
+						tasksCount={tasksCount}
 						createdBy={createdBy}
 						keywords={keywords}
 						media={media}

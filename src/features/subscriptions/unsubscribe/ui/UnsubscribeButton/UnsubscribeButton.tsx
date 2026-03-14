@@ -7,8 +7,6 @@ import { Button } from '@/shared/ui/Button';
 
 import { UnsubscribeModal } from '../UnsubscribeModal/UnsubscribeModal';
 
-import styles from './UnsubscribeButton.module.css';
-
 export const UnsubscribeButton = () => {
 	const {
 		isOpen: isUnsubscribeModalOpen,
@@ -20,10 +18,9 @@ export const UnsubscribeButton = () => {
 	return (
 		<>
 			<Button
-				variant="tertiary"
+				variant="destructive-outline"
 				aria-label="Cancel subscription"
 				onClick={handleUnsubscribeModalOpen}
-				className={styles['unsubscribe-button']}
 			>
 				{t(Subscription.CANCEL_SUBSCRIPTION)}
 			</Button>

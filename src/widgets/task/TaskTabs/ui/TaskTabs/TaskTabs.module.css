@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 40%;
+  height: 100%;
+  overflow: auto;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+@media screen and (width < 1024px) {
+  .wrapper {
+    width: 100%;
+  }
+}

@@ -30,7 +30,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 			<Flex justify="center" align="center" style={{ width: itemWidth, height: itemWidth }}>
 				<AvatarWithRating
 					avatarUrl={userRating.avatarUrl}
-					score={userRating.ratingScore}
+					score={userRating.ratingPoints}
 					radius={isMobileS ? AVATAR_RADII[place] / 1.5 : AVATAR_RADII[place]}
 					maxRating={questionsCount}
 				/>
@@ -52,7 +52,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 						</Tooltip>
 					</Flex>
 					<Text variant={isMobileS ? `body2-accent` : `body3-accent`}>
-						{userRating.ratingScore}/{questionsCount}
+						{userRating.ratingPoints}/{questionsCount}
 					</Text>
 				</Flex>
 			</Card>

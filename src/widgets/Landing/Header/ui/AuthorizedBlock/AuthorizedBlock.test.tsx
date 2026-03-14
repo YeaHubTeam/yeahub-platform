@@ -65,6 +65,6 @@ describe('AuthorizedBlock', () => {
 		const userWrapper = screen.getByTestId('UserWrapper');
 		userWrapper.click();
 
-		expect(mockNavigate).toHaveBeenCalledWith(ROUTES.platformRoute);
+		expect(mockNavigate).toHaveBeenCalledWith(ROUTES.appRoute);
 	});
 });

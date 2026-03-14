@@ -50,8 +50,8 @@
 	},
 	"card": {
 		"badge": {
-			"basic": "Базовый тариф",
-			"discount": "Экономия {{count}}%"
+			"basic": "Basic rate",
+			"discount": "Savings {{count}}%"
 		},
 		"price": {
 			"all": "{{count}}₽",
@@ -70,6 +70,7 @@
 			"quarter": "Optimal tariff",
 			"year": "All Inclusive tariff"
 		},
+		"subscribe": "Subscribe",
 		"benefits": {
 			"first": "All questions",
 			"second": "Advanced simulator",

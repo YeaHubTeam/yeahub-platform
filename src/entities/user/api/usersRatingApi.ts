@@ -4,7 +4,10 @@ import { route } from '@/shared/libs';
 import { usersRatingApiUrls } from '../model/constants/usersRatingConstants';
 import type {
 	GetUsersRatingBySpecializationResponse,
+	GetUsersRatingRequest,
+	GetUsersRatingResponse,
 	UserProfilePositionResponse,
+	GetUsersRatingStatsResponse,
 } from '../model/types/usersRating';
 
 const usersRatingApi = baseApi.injectEndpoints({
@@ -12,6 +15,20 @@ const usersRatingApi = baseApi.injectEndpoints({
 		getUsersRatingBySpecialization: build.query<GetUsersRatingBySpecializationResponse, number>({
 			query: (specializationId) => ({
 				url: route(usersRatingApiUrls.getUsersRatingBySpecialization, specializationId),
+			}),
+			providesTags: [ApiTags.USERS_RATING],
+		}),
+		getUsersRating: build.query<GetUsersRatingResponse, GetUsersRatingRequest>({
+			query: (params) => ({
+				url: route(usersRatingApiUrls.getUsersRating),
+				params,
+			}),
+			providesTags: [ApiTags.USERS_RATING],
+		}),
+		getUsersRatingStats: build.query<GetUsersRatingStatsResponse, number>({
+			query: (specializationId) => ({
+				url: route(usersRatingApiUrls.getUsersRatingStats),
+				params: { specializationId },
 			}),
 			providesTags: [ApiTags.USERS_RATING],
 		}),
@@ -24,5 +41,9 @@ const usersRatingApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useGetUsersRatingBySpecializationQuery, useGetUserProfilePositionQuery } =
-	usersRatingApi;
+export const {
+	useGetUsersRatingBySpecializationQuery,
+	useGetUsersRatingQuery,
+	useGetUserProfilePositionQuery,
+	useGetUsersRatingStatsQuery,
+} = usersRatingApi;

@@ -74,6 +74,7 @@ export interface GetTasksListParams {
 	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
+	collectionId?: number;
 }
 
 export type GetTasksListResponse = Response<Task[]>;
@@ -110,7 +111,8 @@ export interface ExecuteCodeRequest {
 	profileId?: string;
 }
 
-export type OverallStatus = 'ERROR' | 'SUCCESS';
+export type OverallStatus = 'FAILED' | 'SUCCESS';
+export type TestCaseStatus = 'FAILED' | 'PASSED' | 'ERROR';
 
 export interface ExecuteCodeResponse {
 	overall_status: OverallStatus;
@@ -120,7 +122,7 @@ export interface ExecuteCodeResponse {
 	total_execution_time: number;
 	average_memory_usage: number;
 	test_cases: {
-		status: string;
+		status: TestCaseStatus;
 		input: unknown;
 		expected_output: unknown;
 		actual_output: string;
@@ -150,3 +152,25 @@ export type CreateOrEditTaskFormValues = Omit<
 > & {
 	categoryCode: TaskCategoryCode;
 };
+
+export type TaskTestCaseResultTestStatus = 'PASS' | 'FAIL';
+
+export interface TaskTestCaseResultTest {
+	inputs: unknown[];
+	expected: unknown;
+	result: unknown;
+	status: TaskTestCaseResultTestStatus;
+	logs?: string[];
+}
+
+export interface TaskTestCaseResultSummary {
+	failed: number;
+	passed: number;
+	total: number;
+	success: boolean;
+}
+
+export interface TaskTestCaseResult {
+	summary: TaskTestCaseResultSummary;
+	tests: TaskTestCaseResultTest[];
+}
