@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Questions, ROUTES } from '@/shared/config';
-import { route, useScreenSize } from '@/shared/libs';
+import { route, useCurrentProject, useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -56,7 +56,7 @@ export const QuestionAdditionalInfo = ({
 	const onMoveToTopicPage = (topicId: number) => {
 		navigate(route(ROUTES.admin.topics.details.page, topicId));
 	};
-
+	const project = useCurrentProject();
 	return (
 		<>
 			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
@@ -73,14 +73,14 @@ export const QuestionAdditionalInfo = ({
 						</Text>
 						<SkillList skills={questionSkills} onClick={onMoveToQuestionsWithSkills} />
 					</Flex>
-					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
-							{t(Questions.TOPIC_TITLE)}
-						</Text>
-						{questionTopics && questionTopics.length > 0 && (
+					{project === 'admin' && questionTopics && questionTopics.length > 0 && (
+						<Flex direction="column" gap="8">
+							<Text variant="body3" color="black-700">
+								{t(Questions.TOPIC_TITLE)}
+							</Text>
 							<TopicList topics={questionTopics} onClick={onMoveToTopicPage} />
-						)}
-					</Flex>
+						</Flex>
+					)}
 					<Flex direction="column" gap="8">
 						<Text variant="body3" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_KEYWORDS)}

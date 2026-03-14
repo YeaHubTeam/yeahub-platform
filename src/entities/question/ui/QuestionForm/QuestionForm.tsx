@@ -14,7 +14,7 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
-import { useGetTopicsListQuery } from '@/entities/topic/@x/question';
+import { TopicSelect } from '@/entities/topic/@x/question';
 
 import { useGetQuestionsFilterKeywordsQuery } from '../../api/questionApi';
 import { QuestionStatus } from '../../model/types/question';
@@ -38,14 +38,6 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
-
-	const { data: topicsData, isLoading } = useGetTopicsListQuery(
-		{
-			skillIds: selectedSkills || [],
-			limit: 100,
-		},
-		{ skip: !selectedSkills?.length },
-	);
 	return (
 		<Flex direction="column" gap="40">
 			<FormField
@@ -143,34 +135,18 @@ export const QuestionForm = () => {
 							)}
 						</FormControl>
 					</FormField>
+				</>
+			) : null}
 
+			{selectedSkills?.length ? (
+				<>
 					<FormField label={t(Questions.TOPIC_TITLE)} description={t(Questions.TOPIC_LABEL)}>
 						<FormControl name="topics" control={control}>
-							{({ onChange, value }) => {
-								const topicOptions =
-									topicsData?.data?.map((topic) => ({
-										value: topic.id.toString(),
-										label: topic.title,
-									})) || [];
-
-								return (
-									<Dropdown
-										width={320}
-										label={t(Questions.TOPIC_LABEL)}
-										onSelect={(val) => onChange(val ? [Number(val)] : [])}
-										value={value?.[0]?.toString() || ''}
-										disabled={!selectedSkills?.length || isLoading}
-									>
-										{topicOptions.length > 0 ? (
-											topicOptions.map((option) => (
-												<Option value={option.value} label={option.label} key={option.value} />
-											))
-										) : (
-											<Option value="" label={t(Questions.TOPIC_EMPTY)} disabled />
-										)}
-									</Dropdown>
-								);
-							}}
+							{({ onChange, value }) => (
+								<div className={styles.select}>
+									<TopicSelect onChange={onChange} value={value} selectedSkills={selectedSkills} />
+								</div>
+							)}
 						</FormControl>
 					</FormField>
 				</>
