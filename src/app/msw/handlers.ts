@@ -11,9 +11,11 @@ import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
 import { specializationsProgressHandlers } from '@/entities/specialization';
+import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
+import { createCollectionHandlers } from '@/features/collections/createCollection';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -36,6 +38,7 @@ export const handlers = [
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
+	...taskHandlers,
 	...specializationHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
@@ -60,5 +63,6 @@ export const handlers = [
 	...topicDeleteHandlers,
 	...hhAnalyticsHandlers,
 	...createTopicHandlers,
+	...createCollectionHandlers,
 	...topicEditHandlers,
 ];
