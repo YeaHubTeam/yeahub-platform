@@ -99,5 +99,16 @@
 		"short": "Resource link",
 		"label": "Add a link",
 		"placeholder": "Paste a resource link"
+	},
+	"ref.code": {
+		"short": "Promo code",
+		"label": "Add a promo code",
+		"placeholder": "Add a promo code"
+	},
+	"owner.username": {
+		"short": "Owner",
+		"label": "Add an owner",
+		"placeholder": "Add an owner",
+		"my": "I am the owner"
 	}
 }

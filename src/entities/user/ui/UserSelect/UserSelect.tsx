@@ -16,11 +16,21 @@ export type UserSelectProps = Omit<
 	value?: string;
 	onChange: (value?: string) => void;
 	disabled?: boolean;
+	showLabel?: boolean;
+	currentUserId?: string;
+	currentUserLabel?: string;
 };
 
 const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
 
-export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
+export const UserSelect = ({
+	value,
+	onChange,
+	disabled,
+	showLabel = true,
+	currentUserId,
+	currentUserLabel,
+}: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const [searchValue, setSearchValue] = useState('');
@@ -58,16 +68,33 @@ export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
 		}));
 	}, [users]);
 
-	const selectUser = options.find((option) => option.value === value) || emptyUser;
+	const selectUser = useMemo(() => {
+		if (!value) return emptyUser;
+
+		const foundInOptions = options.find((option) => option.value === value);
+		if (foundInOptions) return foundInOptions;
+
+		if (currentUserId === value && currentUserLabel) {
+			return {
+				value: currentUserId,
+				label: currentUserLabel,
+			};
+		}
+
+		return emptyUser;
+	}, [options, value, currentUserId, currentUserLabel]);
+
 	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
 	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectUser.label;
 
 	return (
 		<Flex direction="column" align="start" gap="8">
-			<Text variant="body2" color="black-700">
-				{t(UserI18n.USER_NAME)}
-			</Text>
+			{showLabel && (
+				<Text variant="body2" color="black-700">
+					{t(UserI18n.USER_NAME)}
+				</Text>
+			)}
 			<Dropdown
 				size="S"
 				label={selectUser.label}

@@ -1,0 +1,20 @@
+@media (width <=920px) {
+  .wrapper {
+    gap: 40px;
+  }
+}
+
+.owner-field {
+  width: 100%;
+}
+
+.owner-checkbox {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.readonly-input {
+  background-color: var(--background-app);
+  cursor: not-allowed;
+}

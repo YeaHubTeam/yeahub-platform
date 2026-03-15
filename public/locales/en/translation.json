@@ -162,7 +162,8 @@
 			"size": "Large file size",
 			"type": "Invalid file format"
 		},
-		"link": "Links forbidden"
+		"link": "Links forbidden",
+		"no.spaces": "No spaces"
 	},
 	"crumbs": {
 		"profile": "Profile",

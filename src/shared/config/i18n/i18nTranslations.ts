@@ -139,6 +139,7 @@ export enum Translation {
 	VALIDATION_FILE_SIZE = 'validation.file.size',
 	VALIDATION_FILE_TYPE = 'validation.file.type',
 	VALIDATION_LINK = 'validation.link',
+	VALIDATION_NO_SPACE = 'validation.no.spaces',
 
 	/* Toast */
 	TOAST_TITLE_SUCCESS = 'toast.title.success',
@@ -280,6 +281,10 @@ export enum Translation {
 	TOAST_RESOURCE_REQUEST_CREATE_SKILL_NOT_FOUND = 'toast.resource.request.create.skill.not.found',
 	TOAST_RESOURCE_REQUEST_CREATE_SPECIALIZATION_NOT_FOUND = 'toast.resource.request.create.specialization.not.found',
 	TOAST_RESOURCE_REQUEST_CREATE_TYPE_NOT_FOUND = 'toast.resource.request.create.type.not.found',
+	TOAST_REFERRALLINK_CREATE_SUCCESS = 'toast.referralLink.create.success',
+	TOAST_REFERRALLINK_CREATE_FAILED = 'toast.referralLink.create.failed',
+	TOAST_REFERRALLINK_CREATE_UNAUTHORIZED = 'toast.referralLink.create.unauthorized',
+	TOAST_REFERRALLINK_CREATE_UNVERIFIED = 'toast.referralLink.create.unverified',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
@@ -1389,10 +1394,17 @@ export enum Marketplace {
 	URL_SHORT = 'url.short',
 	URL_LABEL = 'url.label',
 	URL_PLACEHOLDER = 'url.placeholder',
+	REF_CODE_SHORT = 'ref.code.short',
+	REF_CODE_LABEL = 'ref.code.label',
+	REF_CODE_PLACEHOLDER = 'ref.code.placeholder',
+	OWNER_USERNAME_SHORT = 'owner.username.short',
+	OWNER_USERNAME_LABEL = 'owner.username.label',
+	OWNER_USERNAME_PLACEHOLDER = 'owner.username.placeholder',
 	MY_RESOURCES = 'resources.my',
 	MY_RESOURCES_EMPTY_TITLE = 'resources.empty.title',
 	MY_RESOURCES_EMPTY_DESCRIPTION = 'resources.empty.description',
 	MY_RESOURCES_EMPTY_BUTTON = 'resources.empty.button',
+	MY_OWNER_USERNAME = 'owner.username.my',
 	REQUEST_TITLE = 'requests.title',
 }
 

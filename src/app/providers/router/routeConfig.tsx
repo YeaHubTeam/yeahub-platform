@@ -41,6 +41,7 @@ import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
+import { ReferralLinkCreatePage } from '@/pages/admin/referralLink/ReferralLinkCreate';
 import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
@@ -598,6 +599,10 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <ReferralLinksPage />,
+					},
+					{
+						path: ROUTES.admin.referralLinks.create.route,
+						element: <ReferralLinkCreatePage />,
 					},
 				],
 			},
