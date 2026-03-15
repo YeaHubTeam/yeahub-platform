@@ -314,6 +314,19 @@
 				"multiple": {
 					"success": "Successfully deleted questions:",
 					"failed": "The issue could not be deleted:"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"question": {
+					"not.found": "Question not found",
+					"in.collection": "Question is in collection and cannot be deleted"
 				}
 			}
 		},
