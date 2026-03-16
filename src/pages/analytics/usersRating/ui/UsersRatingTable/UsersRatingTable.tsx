@@ -50,7 +50,7 @@ export const UsersRatingTable = ({
 			place: rankedUser.place,
 			user: <UsersTitle rankedUser={rankedUser} isLink={false} />,
 			avatarUrl: rankedUser.avatarUrl,
-			studiedQuestions: `${rankedUser.ratingPoints}/${maxRating}`,
+			studiedQuestions: `${rankedUser.ratingPoints * 10}/${maxRating}`,
 			progress: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
 			rowId: rankedUser.place,
 		};

@@ -41,25 +41,20 @@ export const UsersRatingPage = () => {
 	});
 
 	const { data: statsData } = useGetUsersRatingStatsQuery(currentSpecialization);
+	const { data: currentUserRating } = useGetUserProfilePositionQuery(profileId);
 
 	const usersOnPage = ratingData?.data ?? [];
 	const maxRating = statsData?.allQuestions ?? 0;
 	const usersCount = statsData?.allUsers ?? 0;
 	const averageProgress = statsData?.averageProgress ?? 0;
-	const { data: currentUserRating } = useGetUserProfilePositionQuery(profileId);
-	const currentUserRatingMapped = currentUserRating && {
-		userId: String(currentUserRating.userId),
-		username: currentUserRating.username,
-		avatarUrl: currentUserRating.imageSrc,
-		ratingScore: currentUserRating.ratingPoints,
-		place: currentUserRating.place,
-	};
 
-	const hasCurrentUserInPage = usersOnPage.some(
-		(u) => u.userId === currentUserRatingMapped?.userId,
-	);
+	const hasCurrentUserInPage = usersOnPage.some((u) => u.username === currentUserRating?.username);
 
-	const showCurrentUserRating = !!currentUserRatingMapped && !hasCurrentUserInPage;
+	const showCurrentUserRating =
+		!!currentUserRating &&
+		!hasCurrentUserInPage &&
+		!!statsData &&
+		currentUserRating.specialization === statsData.specialization.title;
 
 	return (
 		<AnalyticPageTemplate
@@ -75,7 +70,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingList
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRatingMapped}
+					currentUserRating={currentUserRating}
 				/>
 			}
 			tooltip={
@@ -88,7 +83,7 @@ export const UsersRatingPage = () => {
 				<UsersRatingTable
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
-					currentUserRating={currentUserRatingMapped}
+					currentUserRating={currentUserRating}
 				/>
 			}
 			filters={{
@@ -102,9 +97,9 @@ export const UsersRatingPage = () => {
 				hasFilters: isFilterActive,
 			}}
 			suffix={
-				currentUserRatingMapped &&
+				currentUserRating &&
 				showCurrentUserRating && (
-					<CurrentUserRating user={currentUserRatingMapped} maxRating={maxRating} />
+					<CurrentUserRating user={currentUserRating} maxRating={maxRating} />
 				)
 			}
 		/>

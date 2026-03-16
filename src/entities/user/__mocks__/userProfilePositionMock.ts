@@ -13,7 +13,7 @@ export const userProfilePositionMock = http.get<
 	return HttpResponse.json({
 		userId: profileId,
 		username: 'Mock user',
-		imageSrc: '',
+		avatarUrl: '',
 		specialization: 'React developer',
 		place: 1,
 		ratingPoints: 9999,
