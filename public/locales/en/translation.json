@@ -314,6 +314,19 @@
 				"multiple": {
 					"success": "Successfully deleted questions:",
 					"failed": "The issue could not be deleted:"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"question": {
+					"not.found": "Question not found",
+					"in.collection": "Question is in collection and cannot be deleted"
 				}
 			}
 		},
@@ -644,6 +657,12 @@
 			}
 		},
 		"companies": {
+			"auth": {
+				"unauthorized": "Authentication failed",
+				"user": {
+					"verified": "Route is available for verified users!"
+				}
+			},
 			"edit": {
 				"success": "Company successfully changed",
 				"failed": "Company could not be changed"
@@ -651,7 +670,16 @@
 			"delete": {
 				"single": {
 					"success": "Company successfully deleted",
-					"failed": "Company could not be deleted"
+					"failed": "Company could not be deleted",
+					"not_found": "Company not found",
+					"image": {
+						"url_invalid": "image url can not be empty",
+						"not_found": "there is no such image in storage"
+					},
+					"key_violation": {
+						"collection": "Cannot delete company: it is referenced by some collection",
+						"company": "Cannot delete company due to a conflict with existing data"
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted companies:",
