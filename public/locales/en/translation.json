@@ -349,7 +349,42 @@
 			"delete": {
 				"single": {
 					"success": "Skill successfully deleted",
-					"failed": "The skill could not be deleted"
+					"failed": "The skill could not be deleted",
+					"storage": {
+						"image": {
+							"url": {
+								"invalid": "image url can not be empty"
+							},
+							"not_found": "there is no such image in storage"
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"skill": {
+						"not_found": "Skill not found",
+						"constraint": {
+							"foreign_key_violation": "Cannot delete skill because it is referenced by other entities"
+						},
+						"specialization": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some specialization"
+							}
+						},
+						"question": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some question"
+							}
+						},
+						"profile": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some profile"
+							}
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted skills:",
