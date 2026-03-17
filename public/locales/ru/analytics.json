@@ -89,9 +89,9 @@
 			"progress": "Прогресс"
 		},
 		"tooltip": {
-			"users.count": "Всего участников: {{usersCount}}",
-			"progress": "Средний прогресс: {{averageProgress}}%",
-			"updated.at": "Обновлено: {{updatedAt}}"
+			"users.count": "Всего участников:",
+			"questionsCount": "Всего вопросов:",
+			"progress": "Средний прогресс:"
 		}
 	},
 	"top.users": {

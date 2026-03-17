@@ -88,9 +88,9 @@
 			"progress": "Progress"
 		},
 		"tooltip": {
-			"users.count": "Total users: {{usersCount}}",
-			"progress": "Average progress: {{averageProgress}}%",
-			"updated.at": "Last updated: {{updatedAt}}"
+			"users.count": "Total users:",
+			"questionsCount": "Total questions:",
+			"progress": "Average progress:"
 		}
 	},
 	"top.users": {

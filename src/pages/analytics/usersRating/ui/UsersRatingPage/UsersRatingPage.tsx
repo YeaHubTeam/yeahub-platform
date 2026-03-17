@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { trophyIcon } from '@/shared/assets';
 import { i18Namespace, Analytics } from '@/shared/config';
-import { useAppSelector } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getSpecializationId, getProfileId } from '@/entities/profile';
@@ -16,11 +16,13 @@ import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/An
 
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
+import { RatingStatsTooltip } from '../RatingStatsTooltip/RatingStatsTooltip';
 import { UsersRatingList } from '../UsersRatingList/UsersRatingList';
 import { UsersRatingTable } from '../UsersRatingTable/UsersRatingTable';
 
 export const UsersRatingPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
+	const { isMobile } = useScreenSize();
 
 	const profileId = useAppSelector(getProfileId);
 	const specializationId = useAppSelector(getSpecializationId);
@@ -46,7 +48,6 @@ export const UsersRatingPage = () => {
 	const usersOnPage = ratingData?.data ?? [];
 	const maxRating = statsData?.allQuestions ?? 0;
 	const usersCount = statsData?.allUsers ?? 0;
-	const averageProgress = statsData?.averageProgress ?? 0;
 
 	const hasCurrentUserInPage = usersOnPage.some((u) => u.username === currentUserRating?.username);
 
@@ -71,13 +72,17 @@ export const UsersRatingPage = () => {
 					rankedUsers={usersOnPage}
 					maxRating={maxRating}
 					currentUserRating={currentUserRating}
+					showCurrentUserRating={showCurrentUserRating}
 				/>
 			}
 			tooltip={
-				<>
-					{t(Analytics.USERS_RATING_TOOLTIP_USERS_COUNT, { usersCount })} <br />
-					{t(Analytics.USERS_RATING_TOOLTIP_PROGRESS, { averageProgress })} <br />
-				</>
+				statsData ? (
+					<RatingStatsTooltip
+						allUsers={statsData.allUsers}
+						allQuestions={statsData.allQuestions}
+						averageProgress={statsData.averageProgress}
+					/>
+				) : null
 			}
 			table={
 				<UsersRatingTable
@@ -98,9 +103,8 @@ export const UsersRatingPage = () => {
 			}}
 			suffix={
 				currentUserRating &&
-				showCurrentUserRating && (
-					<CurrentUserRating user={currentUserRating} maxRating={maxRating} />
-				)
+				showCurrentUserRating &&
+				!isMobile && <CurrentUserRating user={currentUserRating} maxRating={maxRating} />
 			}
 		/>
 	);

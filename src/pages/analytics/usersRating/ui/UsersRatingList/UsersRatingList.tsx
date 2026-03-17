@@ -16,11 +16,13 @@ interface UsersRatingListProps {
 	rankedUsers: UserRating[];
 	maxRating: number;
 	currentUserRating?: UserRating;
+	showCurrentUserRating?: boolean;
 }
 export const UsersRatingList = ({
 	rankedUsers,
 	maxRating,
 	currentUserRating,
+	showCurrentUserRating,
 }: UsersRatingListProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
@@ -54,7 +56,9 @@ export const UsersRatingList = ({
 		<>
 			<AnalyticPageTemplateMobileList items={rankedUsersFields} />
 
-			{currentUserItem && <AnalyticPageTemplateMobileList items={[currentUserItem]} />}
+			{currentUserItem && showCurrentUserRating && (
+				<AnalyticPageTemplateMobileList items={[currentUserItem]} />
+			)}
 		</>
 	);
 };

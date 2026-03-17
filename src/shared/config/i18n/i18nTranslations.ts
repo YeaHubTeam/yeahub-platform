@@ -547,6 +547,7 @@ export enum Analytics {
 	USERS_RATING_TITLE_WIDGET = 'users.rating.title.widget',
 	USERS_RATING_TITLE_PAGE = 'users.rating.title.page',
 	USERS_RATING_TOOLTIP_USERS_COUNT = 'users.rating.tooltip.users.count',
+	USERS_RATING_TOOLTIP_QUESTIONS_COUNT = 'users.rating.tooltip.questionsCount',
 	USERS_RATING_TOOLTIP_PROGRESS = 'users.rating.tooltip.progress',
 	USERS_RATING_TOOLTIP_UPDATED_AT = 'users.rating.tooltip.updated.at',
 	TOP_USERS_TITLE_WIDGET = 'top.users.title.widget',
