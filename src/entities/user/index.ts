@@ -24,6 +24,7 @@ export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey
 export {
 	useGetUsersRatingBySpecializationQuery,
 	useGetUsersRatingQuery,
+	useGetUserProfilePositionQuery,
 	useGetUsersRatingStatsQuery,
 } from './api/usersRatingApi';
 export type {

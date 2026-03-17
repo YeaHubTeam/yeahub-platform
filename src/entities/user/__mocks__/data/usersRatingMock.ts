@@ -14,6 +14,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '2',
@@ -22,6 +24,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '3',
@@ -30,6 +34,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '4',
@@ -38,6 +44,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '5',
@@ -46,6 +54,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '6',
@@ -54,6 +64,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '7',
@@ -62,6 +74,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '8',
@@ -70,6 +84,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '9',
@@ -78,6 +94,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '10',
@@ -86,6 +104,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '11',
@@ -94,6 +114,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 	{
 		userId: '12',
@@ -102,6 +124,8 @@ const usersRating = (): UserRating[] => [
 		ratingPoints: getRandomInt(0, 1200),
 		place: 0,
 		progress: 0,
+		allUsers: 1000,
+		specialization: 'React',
 	},
 ];
 

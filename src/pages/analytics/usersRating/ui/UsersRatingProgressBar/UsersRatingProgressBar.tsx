@@ -19,7 +19,7 @@ export const UsersRatingProgressBar = ({ rankedUser, maxRating }: UsersRatingPro
 				<Text variant="body1">{rankedUser.progress}%</Text>
 			</Flex>
 			<ProgressBar
-				currentCount={rankedUser.ratingPoints}
+				currentCount={rankedUser.ratingPoints * 10}
 				totalCount={maxRating}
 				variant="medium"
 				color={getProgressColor(rankedUser.progress)}

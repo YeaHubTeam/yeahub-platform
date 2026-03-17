@@ -6,6 +6,7 @@ import type {
 	GetUsersRatingBySpecializationResponse,
 	GetUsersRatingRequest,
 	GetUsersRatingResponse,
+	UserProfilePositionResponse,
 	GetUsersRatingStatsResponse,
 } from '../model/types/usersRating';
 
@@ -31,11 +32,18 @@ const usersRatingApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.USERS_RATING],
 		}),
+		getUserProfilePosition: build.query<UserProfilePositionResponse, string>({
+			query: (profileId) => ({
+				url: route(usersRatingApiUrls.getUserProfilePosition, profileId),
+			}),
+			providesTags: [ApiTags.USERS_RATING],
+		}),
 	}),
 });
 
 export const {
 	useGetUsersRatingBySpecializationQuery,
 	useGetUsersRatingQuery,
+	useGetUserProfilePositionQuery,
 	useGetUsersRatingStatsQuery,
 } = usersRatingApi;
