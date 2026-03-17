@@ -46,7 +46,7 @@ export const UsersRatingTable = ({
 
 	const tableItems: UsersRatingTableRow[] = rankedUsers.map((rankedUser) => {
 		return {
-			id: rankedUser.userId,
+			id: rankedUser.username,
 			place: rankedUser.place,
 			user: <UsersTitle rankedUser={rankedUser} isLink={false} />,
 			avatarUrl: rankedUser.avatarUrl,
@@ -91,7 +91,7 @@ export const UsersRatingTable = ({
 			progress: tableItem.progress,
 		};
 
-		const isCurrentUser = tableItem.id === currentUserRating?.userId;
+		const isCurrentUser = tableItem.id === currentUserRating?.username;
 
 		return Object.entries(columns).map(([k, v], i) => (
 			<td

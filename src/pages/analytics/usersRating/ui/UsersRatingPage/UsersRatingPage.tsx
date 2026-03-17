@@ -13,6 +13,7 @@ import {
 } from '@/entities/user';
 
 import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PLACES_COUNT_ON_PAGE } from '../../model/constants';
 import { CurrentUserRating } from '../CurrentUserRating/CurrentUserRating';
@@ -36,14 +37,29 @@ export const UsersRatingPage = () => {
 
 	const isFilterActive = page > 1 || currentSpecialization !== specializationId;
 
-	const { data: ratingData } = useGetUsersRatingQuery({
+	const {
+		data: ratingData,
+		isError: isRatingDataError,
+		isLoading: isRatingDataLoading,
+		refetch: ratingDataRefetch,
+	} = useGetUsersRatingQuery({
 		specializationId: currentSpecialization,
 		page,
 		limit: PLACES_COUNT_ON_PAGE,
 	});
 
-	const { data: statsData } = useGetUsersRatingStatsQuery(currentSpecialization);
-	const { data: currentUserRating } = useGetUserProfilePositionQuery(profileId);
+	const {
+		data: statsData,
+		isError: isStatsDataError,
+		isLoading: isStatsDataLoading,
+		refetch: statsDataRefetch,
+	} = useGetUsersRatingStatsQuery(currentSpecialization);
+	const {
+		data: currentUserRating,
+		isError: isCurrentUserRatingError,
+		isLoading: isCurrentUserRatingLoading,
+		refetch: currentUserRatingRefetch,
+	} = useGetUserProfilePositionQuery(profileId);
 
 	const usersOnPage = ratingData?.data ?? [];
 	const maxRating = statsData?.allQuestions ?? 0;
@@ -57,55 +73,82 @@ export const UsersRatingPage = () => {
 		!!statsData &&
 		currentUserRating.specialization === statsData.specialization.title;
 
+	const stubs: PageWrapperStubs = {
+		error: {
+			onClick: () => {
+				isRatingDataError && ratingDataRefetch();
+				isStatsDataError && statsDataRefetch();
+				isCurrentUserRatingError && currentUserRatingRefetch();
+			},
+		},
+		empty: {
+			title: t(Analytics.USERS_RATING_STUB_EMPTY_TITLE),
+			subtitle: t(Analytics.USERS_RATING_STUB_EMPTY_SUBTITLE),
+		},
+	};
+
 	return (
-		<AnalyticPageTemplate
-			title={
-				<Flex direction="row" gap="12" align="center">
-					<img src={trophyIcon} alt="" />
-					{t(Analytics.USERS_RATING_TITLE_PAGE, {
-						specialization: statsData?.specialization?.title,
-					})}
-				</Flex>
-			}
-			list={
-				<UsersRatingList
-					rankedUsers={usersOnPage}
-					maxRating={maxRating}
-					currentUserRating={currentUserRating}
-					showCurrentUserRating={showCurrentUserRating}
-				/>
-			}
-			tooltip={
-				statsData ? (
-					<RatingStatsTooltip
-						allUsers={statsData.allUsers}
-						allQuestions={statsData.allQuestions}
-						averageProgress={statsData.averageProgress}
+		<PageWrapper
+			isLoading={isRatingDataLoading || isStatsDataLoading || isCurrentUserRatingLoading}
+			hasError={isRatingDataError || isStatsDataError}
+			hasData={usersOnPage.length > 0}
+			shouldVerify
+			stubs={stubs}
+			content={
+				isMobile ? (
+					<UsersRatingList
+						rankedUsers={usersOnPage}
+						maxRating={maxRating}
+						currentUserRating={currentUserRating}
+						showCurrentUserRating={showCurrentUserRating}
 					/>
-				) : null
+				) : (
+					<>
+						<UsersRatingTable
+							rankedUsers={usersOnPage}
+							maxRating={maxRating}
+							currentUserRating={currentUserRating}
+						/>
+						{currentUserRating && showCurrentUserRating && (
+							<CurrentUserRating user={currentUserRating} maxRating={maxRating} />
+						)}
+					</>
+				)
 			}
-			table={
-				<UsersRatingTable
-					rankedUsers={usersOnPage}
-					maxRating={maxRating}
-					currentUserRating={currentUserRating}
+		>
+			{({ content }) => (
+				<AnalyticPageTemplate
+					title={
+						<Flex direction="row" gap="12" align="center">
+							<img src={trophyIcon} alt="" />
+							{t(Analytics.USERS_RATING_TITLE_PAGE, {
+								specialization: statsData?.specialization?.title,
+							})}
+						</Flex>
+					}
+					list={content}
+					tooltip={
+						statsData ? (
+							<RatingStatsTooltip
+								allUsers={statsData.allUsers}
+								allQuestions={statsData.allQuestions}
+								averageProgress={statsData.averageProgress}
+							/>
+						) : null
+					}
+					table={content}
+					filters={{
+						page,
+						specialization: currentSpecialization,
+						limit: PLACES_COUNT_ON_PAGE,
+						total: usersCount,
+						onChangeSpecialization,
+						onChangePage,
+						onResetFilters,
+						hasFilters: isFilterActive,
+					}}
 				/>
-			}
-			filters={{
-				page,
-				specialization: currentSpecialization,
-				limit: PLACES_COUNT_ON_PAGE,
-				total: usersCount,
-				onChangeSpecialization,
-				onChangePage,
-				onResetFilters,
-				hasFilters: isFilterActive,
-			}}
-			suffix={
-				currentUserRating &&
-				showCurrentUserRating &&
-				!isMobile && <CurrentUserRating user={currentUserRating} maxRating={maxRating} />
-			}
-		/>
+			)}
+		</PageWrapper>
 	);
 };

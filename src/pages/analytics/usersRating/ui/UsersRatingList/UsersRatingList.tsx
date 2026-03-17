@@ -38,7 +38,7 @@ export const UsersRatingList = ({
 		fields: [
 			{
 				label: t(Analytics.USERS_RATING_ANSWERS),
-				value: `${rankedUser.ratingPoints}/${maxRating}`,
+				value: `${rankedUser.ratingPoints * 10}/${maxRating}`,
 			},
 		],
 		suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
@@ -46,7 +46,7 @@ export const UsersRatingList = ({
 	});
 
 	const rankedUsersFields = rankedUsers.map((user) =>
-		mapUserToItem(user, user.userId === currentUserRating?.userId),
+		mapUserToItem(user, user.username === currentUserRating?.username),
 	);
 
 	const currentUserItem =
