@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, User as UserI18n } from '@/shared/config';
@@ -35,6 +35,12 @@ export const UserSelect = ({ value, onChange, disabled }: UserSelectProps) => {
 		page: 1,
 		limit: 10,
 	});
+
+	useEffect(() => {
+		if (!value) {
+			setSearchValue('');
+		}
+	}, [value]);
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;

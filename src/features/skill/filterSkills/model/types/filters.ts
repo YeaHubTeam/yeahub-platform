@@ -3,4 +3,5 @@ export interface SkillsFilterParams {
 	page?: number;
 	specialization?: number;
 	isMy?: boolean;
+	author?: string;
 }
