@@ -470,7 +470,24 @@
 			"delete": {
 				"single": {
 					"success": "Collection successfully deleted",
-					"failed": "The collection could not be deleted"
+					"failed": "The collection could not be deleted",
+					"not_found": "Collection not found",
+					"image": {
+						"url_invalid": "image url can not be empty",
+						"not_found": "there is no such image in storage"
+					}
+				},
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"constraint": {
+					"foreign_key_violation": "Невозможно удалить коллекцию, поскольку на нее ссылаются другие объекты."
 				}
 			},
 			"edit": {
