@@ -22,4 +22,10 @@ export const featureFlags: FeatureFlags = {
 		description: 'Переключатель смены языка',
 		roles: ['admin'],
 	},
+	changeTheme: {
+		id: 'changeTheme',
+		enabled: true,
+		description: 'Переключатель смены темы',
+		roles: ['admin'],
+	},
 };

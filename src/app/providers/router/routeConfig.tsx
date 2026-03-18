@@ -14,6 +14,7 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
+import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
@@ -40,6 +41,7 @@ import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
+import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
@@ -294,6 +296,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
 		icon: TasksIcon,
 		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.referralLinks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
+		icon: ReferralsIcon,
+		roles: ['admin'],
 	},
 ];
 
@@ -579,6 +588,16 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.tasks.details.route,
 						element: <AdminTaskPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.referralLinks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <ReferralLinksPage />,
 					},
 				],
 			},

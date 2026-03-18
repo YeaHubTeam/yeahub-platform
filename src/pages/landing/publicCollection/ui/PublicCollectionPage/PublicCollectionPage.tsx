@@ -87,9 +87,11 @@ export const PublicCollectionPage = () => {
 	const onMoveNext = () => {
 		onQueryNavigate(nextId, nextPage);
 	};
+
 	const {
 		createdBy,
 		questionsCount,
+		tasksCount,
 		isFree,
 		company,
 		specializations,
@@ -150,6 +152,7 @@ export const PublicCollectionPage = () => {
 							isFree={isFree}
 							company={company}
 							questionsCount={questionsCount}
+							tasksCount={tasksCount}
 							createdBy={createdBy}
 							keywords={keywords}
 							media={media}

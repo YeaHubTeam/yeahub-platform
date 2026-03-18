@@ -16,30 +16,36 @@ import {
 
 interface UsersTitleProps {
 	rankedUser: UserRating;
+	isLink?: boolean;
 }
 
-export const UsersTitle = ({ rankedUser }: UsersTitleProps) => {
-	const isPrizePlace = rankedUser.place > 0 && rankedUser.place <= PRIZE_PLACES_COUNT;
+export const UsersTitle = ({ rankedUser, isLink = true }: UsersTitleProps) => {
 	const { isMobile } = useScreenSize();
-	return (
-		<Link to={route(ROUTES.users.page, rankedUser.userId)}>
-			<Flex direction="row" gap="8" align="center">
-				{isMobile &&
-					(isPrizePlace ? (
-						<img
-							src={PLACE_ICONS[rankedUser.place as PrizePlace]}
-							alt="medal"
-							width="13px"
-							height="20px"
-						/>
-					) : (
-						<Text variant="body3-accent">{rankedUser.place}</Text>
-					))}
-				<Avatar image={rankedUser.avatarUrl} size={24} />
-				<Flex justify="start">
-					<Text variant="body3-accent">{rankedUser.username}</Text>
-				</Flex>
+	const isPrizePlace = rankedUser.place > 0 && rankedUser.place <= PRIZE_PLACES_COUNT;
+
+	const content = (
+		<Flex direction="row" gap="8" align="center">
+			{isMobile &&
+				(isPrizePlace ? (
+					<img
+						src={PLACE_ICONS[rankedUser.place as PrizePlace]}
+						alt="medal"
+						width="13px"
+						height="20px"
+					/>
+				) : (
+					<Text variant="body3-accent">{rankedUser.place}</Text>
+				))}
+			<Avatar image={rankedUser.avatarUrl} size={24} />
+			<Flex justify="start">
+				<Text variant="body3-accent">{rankedUser.username}</Text>
 			</Flex>
-		</Link>
+		</Flex>
 	);
+
+	if (isLink) {
+		return <Link to={route(ROUTES.users.page, rankedUser.userId)}>{content}</Link>;
+	}
+
+	return content;
 };

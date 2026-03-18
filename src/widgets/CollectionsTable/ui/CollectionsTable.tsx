@@ -31,7 +31,7 @@ export const CollectionsTable = ({
 }: CollectionsTableProps) => {
 	const navigate = useNavigate();
 
-	const { t } = useTranslation([i18Namespace.collection, i18Namespace.translation]);
+	const { t } = useTranslation(i18Namespace.collection);
 
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
@@ -39,6 +39,7 @@ export const CollectionsTable = ({
 			title: '30%',
 			description: 'auto',
 			questionsCount: '90px',
+			tasksCount: '90px',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -50,6 +51,7 @@ export const CollectionsTable = ({
 			title: t(Collections.TITLE_SHORT),
 			description: t(Collections.DESCRIPTION_SHORT),
 			questionsCount: t(Collections.QUESTIONS_SHORT),
+			tasksCount: t(Collections.TASKS_SHORT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -67,6 +69,7 @@ export const CollectionsTable = ({
 			title: collection.title,
 			description: collection.description,
 			questionsCount: collection.questionsCount,
+			tasksCount: collection.tasksCount,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (

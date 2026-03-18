@@ -113,6 +113,18 @@
 
 .access-container {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.access-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
 
   & svg {
     width: 20px;
@@ -129,13 +141,9 @@
   }
 }
 
-.access-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  &:not(:last-child) {
-    margin-right: 16px;
+.access-item-task-icon {
+  & svg {
+    transform: scale(1.11);
   }
 }
 
