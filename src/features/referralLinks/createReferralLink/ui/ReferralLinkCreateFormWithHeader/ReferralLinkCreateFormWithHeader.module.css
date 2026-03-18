@@ -12,10 +12,6 @@
   justify-content: flex-end;
 }
 
-.content {
-  flex: 1 1 100%;
-}
-
 @media (width <= 768px) {
   .back,
   .buttons {
@@ -36,9 +32,5 @@
     .submit-button {
       flex: 1 1 70%;
     }
-  }
-
-  .content {
-    order: 2;
   }
 }

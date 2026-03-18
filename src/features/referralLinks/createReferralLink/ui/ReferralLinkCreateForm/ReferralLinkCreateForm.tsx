@@ -8,12 +8,13 @@ import { CreateRefferalLinkFormValues } from '../../model/types/refferalLinkCrea
 import { ReferralLinkCreateFormWithHeader } from '../ReferralLinkCreateFormWithHeader/ReferralLinkCreateFormWithHeader';
 
 export const ReferralLinkCreateForm = () => {
+	const BASE_URL = `${process.env.APP_URL}?ref_id=`;
 	const methods = useForm<CreateRefferalLinkFormValues>({
 		resolver: yupResolver(referralLinkCreateSchema),
 		mode: 'onTouched',
 		defaultValues: {
 			refCode: '',
-			url: '',
+			url: BASE_URL,
 			ownerId: '',
 		},
 	});

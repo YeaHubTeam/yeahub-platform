@@ -13,8 +13,3 @@
   gap: 10px;
   white-space: nowrap;
 }
-
-.readonly-input {
-  background-color: var(--background-app);
-  cursor: not-allowed;
-}

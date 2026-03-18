@@ -17,20 +17,11 @@ export type UserSelectProps = Omit<
 	onChange: (value?: string) => void;
 	disabled?: boolean;
 	showLabel?: boolean;
-	currentUserId?: string;
-	currentUserLabel?: string;
 };
 
 const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
 
-export const UserSelect = ({
-	value,
-	onChange,
-	disabled,
-	showLabel = true,
-	currentUserId,
-	currentUserLabel,
-}: UserSelectProps) => {
+export const UserSelect = ({ value, onChange, disabled, showLabel = true }: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const [searchValue, setSearchValue] = useState('');
@@ -74,15 +65,8 @@ export const UserSelect = ({
 		const foundInOptions = options.find((option) => option.value === value);
 		if (foundInOptions) return foundInOptions;
 
-		if (currentUserId === value && currentUserLabel) {
-			return {
-				value: currentUserId,
-				label: currentUserLabel,
-			};
-		}
-
 		return emptyUser;
-	}, [options, value, currentUserId, currentUserLabel]);
+	}, [options, value]);
 
 	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });

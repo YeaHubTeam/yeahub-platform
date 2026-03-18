@@ -5,6 +5,5 @@ export type {
 	ReferralLink,
 	GetReferralLinksListParamsRequest,
 	GetReferralLinksListResponse,
-	ReferralLinkCreateError,
 	CreateOrEditOrViewReferralLinkFormValues,
 } from './model/types/referralLinks';

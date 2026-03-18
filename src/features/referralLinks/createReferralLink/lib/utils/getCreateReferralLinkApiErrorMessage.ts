@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import { i18n, Translation } from '@/shared/config';
 
-import { ReferralLinkCreateError } from '@/entities/referralLink';
+import { ReferralLinkCreateError } from '../../model/types/refferalLinkCreateTypes';
 
 export const getCreateReferralLinkApiErrorMessage = (
 	error: ApiErrorData<ReferralLinkCreateError>,

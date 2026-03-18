@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateReferralLinkApiErrorMessage } from '../lib/utils/getCreateReferralLinkApiErrorMessage';
 import { createReferralLinkApiUrls } from '../model/constants/createReferralLinkApiUrls';
 import {
 	CreateRefferalLinkBodyRequest,
@@ -23,7 +24,7 @@ export const createReferralLinkApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.referralLinks.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_REFERRALLINK_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_REFERRALLINK_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateReferralLinkApiErrorMessage)));
 					console.error(error);
 				}
 			},

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -34,8 +33,6 @@ export const ReferralLinksPage = () => {
 
 	const referralLinks = data?.data ?? [];
 	const hasReferralLinks = referralLinks.length > 0;
-
-	console.log('DATA: ', referralLinks);
 
 	const onSelectReferralLinks = (ids: SelectedAdminEntities<string>) => {
 		dispatch(referralLinksPageActions.setSelectedReferralLinks(ids));
@@ -78,13 +75,7 @@ export const ReferralLinksPage = () => {
 		>
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
-					<SearchSection
-						to="create"
-						onSearch={() => String(onChangePage)}
-						searchValue={filters.page + ''}
-						hasFilters={hasFilters}
-						renderFilter={() => <div>DIV DIV</div>}
-					/>
+					<SearchSection to="create" />
 					<Card>
 						{content}
 						{pagination}

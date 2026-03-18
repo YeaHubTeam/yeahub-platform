@@ -27,5 +27,3 @@ export type CreateOrEditOrViewReferralLinkFormValues = Pick<
 	ReferralLink,
 	'id' | 'refCode' | 'url' | 'ownerId'
 >;
-
-export type ReferralLinkCreateError = 'auth.auth.unauthorized' | 'auth.user.verified';
