@@ -1,9 +1,10 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { Collection } from '@/entities/collection';
 
+import { getDeleteConllectionApiErrorMessage } from '../lib/utils/getDeleteConllectionApiMessage';
 import { deleteCollectionApiUrls } from '../model/constants/deleteCollectionConstants';
 
 const deleteCollectionApi = baseApi.injectEndpoints({
@@ -21,7 +22,7 @@ const deleteCollectionApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_COLLECTION_DELETE_SUCCESS));
 					typedExtra.navigate(ROUTES.admin.collections.page);
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COLLECTION_DELETE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getDeleteConllectionApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
