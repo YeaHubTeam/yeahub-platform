@@ -417,7 +417,37 @@
 			"delete": {
 				"single": {
 					"success": "Specialization successfully deleted",
-					"failed": "Specialization could not be deleted"
+					"failed": "Specialization could not be deleted",
+					"storage": {
+						"image": {
+							"not.found": "Image not found",
+							"url": {
+								"invalid": "Image URL can not be empty"
+							}
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"specialization": {
+						"not.found": "Specialization not found",
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by other entities"
+						}
+					},
+					"question": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some question"
+						}
+					},
+					"collection": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some collection"
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted specializations:",
