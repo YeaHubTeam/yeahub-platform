@@ -9,6 +9,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			createMultiple: {
+				route: 'create-multiple',
+				page: '/admin/questions/create-multiple',
+			},
 			details: {
 				route: ':questionId',
 				page: '/admin/questions/:questionId',

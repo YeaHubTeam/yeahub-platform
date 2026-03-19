@@ -8,6 +8,7 @@ export enum Translation {
 	MORE = 'more',
 	RETURN = 'return',
 	CREATE = 'create',
+	CREATE_MULTIPLE = 'create.multiple',
 	SEARCH = 'search',
 	REMOVE_SELECTED = 'remove.selected',
 	LOADING = 'loading',
