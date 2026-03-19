@@ -15,7 +15,7 @@ const companiesTablePageSlice = createSlice({
 	name: 'companiesTablePage',
 	initialState,
 	reducers: {
-		setSelectedCompanies: (state, action: PayloadAction<SelectedAdminEntities>) => {
+		setSelectedCompanies: (state, action: PayloadAction<SelectedAdminEntities<string>>) => {
 			state.selectedCompanies = action.payload;
 		},
 	},
