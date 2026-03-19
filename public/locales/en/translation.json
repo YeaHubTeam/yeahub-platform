@@ -357,7 +357,27 @@
 			},
 			"edit": {
 				"success": "Skill changed successfully",
-				"failed": "The Skill could not be changed"
+				"failed": "The Skill could not be changed",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				},
+				"skill": {
+					"not_found": "Skill not found",
+					"title": {
+						"conflict": "Skill with same title already exists"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"delete": {
 				"single": {
