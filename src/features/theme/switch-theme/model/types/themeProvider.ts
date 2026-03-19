@@ -1,5 +1,2 @@
-export type ThemeMods =
-	// 'auto'
-	'light';
-// | 'dark';
+export type ThemeMods = 'light' | 'dark';
 export type Themes = ThemeMods;

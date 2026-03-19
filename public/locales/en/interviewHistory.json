@@ -6,6 +6,13 @@
 	"result": "Result: ",
 	"link": "Details",
 	"empty": "Your interview history will appear here soon",
+	"stub": {
+		"empty": {
+			"title": "It looks like there is no interview history yet",
+			"subtitle": "Complete your first interview to see the history here",
+			"button": "Go to interview"
+		}
+	},
 	"unverified": "Your interview history is prepared after email confirmation",
 	"no.premium": "The interview history is only available to community members",
 	"prev.month": "Change month on previous",

@@ -13,7 +13,6 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { CreateOrEditTaskFormValues } from '../../model/types/task';
 import { TaskCategorySelect } from '../TaskCategorySelect/TaskCategorySelect';
-import { TaskConstraintsField } from '../TaskConstraintsField/TaskConstraintsField';
 import { TaskStructuresField } from '../TaskStructuresField/TaskStructuresField';
 
 import styles from './TaskForm.module.css';
@@ -87,21 +86,6 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 				>
 					<FormControl name="difficulty" control={control} className={styles.difficulty}>
 						{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
-					</FormControl>
-				</FormField>
-				<FormField description={t(Tasks.MEMORY_LIMIT_SUBTITLE)} label={t(Tasks.MEMORY_LIMIT_TITLE)}>
-					<FormControl name="memoryLimit" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} error={hasError} type="number" min={0} />}
-					</FormControl>
-				</FormField>
-				<FormField description={t(Tasks.TIME_LIMIT_SUBTITLE)} label={t(Tasks.TIME_LIMIT_TITLE)}>
-					<FormControl name="timeLimit" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} error={hasError} type="number" min={0} />}
-					</FormControl>
-				</FormField>
-				<FormField description={t(Tasks.CONSTRAINTS_SUBTITLE)} label={t(Tasks.CONSTRAINTS_TITLE)}>
-					<FormControl name="constraints" control={control} className={`${styles['input-form']}`}>
-						{(_, hasError) => <TaskConstraintsField hasError={hasError} />}
 					</FormControl>
 				</FormField>
 				<FormField

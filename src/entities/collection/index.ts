@@ -18,4 +18,4 @@ export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPre
 export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccessInfo';
 export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
 export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
-export { CollectionWarningInfo } from './ui/СollectionWarningInfo/CollectionWarningInfo';
+export { CollectionTasksCount } from './ui/CollectionTasksCount/CollectionTasksCount';

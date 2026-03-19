@@ -1,0 +1,24 @@
+.wrapper {
+  width: 60%;
+  height: 100%;
+}
+
+.header {
+  z-index: 1;
+}
+
+.block {
+  height: 100%;
+  overflow: hidden;
+}
+
+.editor {
+  flex: 1;
+  overflow: hidden;
+}
+
+@media screen and (width < 1024px) {
+  .wrapper {
+    width: 100%;
+  }
+}

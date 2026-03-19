@@ -9,8 +9,8 @@ import { Themes } from '../types/themeProvider';
 //  * We ask window if the user has dark mode enabled, if true, matches will be true.
 //  */
 
-// export const getSystemTheme = () =>
-// 	window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+export const getSystemTheme = () =>
+	window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 // /**
 //  * Retrieves the stored color scheme from localStorage.
@@ -46,7 +46,7 @@ import { Themes } from '../types/themeProvider';
 
  * We ask window if the user has dark mode enabled, if true, matches will be true.
  */
-export const getSystemTheme = (): Themes => 'light';
+// export const getSystemTheme = (): Themes => 'light';
 
 /**
  * Retrieves the stored color scheme from localStorage.

@@ -20,8 +20,6 @@ export const taskEditSchema: yup.ObjectSchema<EditTaskFormValues> = yup.object()
 		.transform((value) => (Number.isNaN(value) ? null : value))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	categoryCode: yup.string<TaskCategoryCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	memoryLimit: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	timeLimit: yup.number().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	subscriptionLevel: yup
 		.string<TaskSubscriptionLevel>()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),

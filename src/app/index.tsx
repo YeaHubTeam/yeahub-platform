@@ -8,6 +8,8 @@ import '@/shared/config/i18n/i18n';
 import { StoreProvider, ToastOptions, SentryErrorBoundary, initSentry } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
+import { initTheme } from '@/features/theme/switch-theme';
+
 import { router } from '@/app/providers/router';
 import AppInitSentryUser from '@/app/providers/sentry/AppInitSentryUser';
 
@@ -21,15 +23,15 @@ const root = document.getElementById('root');
 const container = createRoot(root as HTMLElement);
 
 async function deferRender() {
-	if (process.env.NODE_ENV != 'development') {
-		return;
+	if (process.env.NODE_ENV === 'development' && process.env.MOCK) {
+		const { worker } = await import('./msw/browser');
+		return worker.start();
 	}
-
-	// const { worker } = await import('./msw/browser');
-	// return worker.start();
 }
 
 initSentry();
+
+initTheme();
 
 deferRender().then(() => {
 	container.render(

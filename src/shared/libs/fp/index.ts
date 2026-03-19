@@ -6,5 +6,6 @@ export { formatTime } from './formatTime';
 export { formatDate } from './formatDate';
 export { getTimeDifference } from './getTimeDifference';
 export { isPathMatch } from './isPathMatch';
+export { isEmptyHtml } from './isEmptyHtml';
 export { calculatePageNavigation } from './calculatePageNavigation';
 export { DATE_FORMATS } from './dateFormats';

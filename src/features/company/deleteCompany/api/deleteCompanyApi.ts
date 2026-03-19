@@ -1,9 +1,10 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { Company } from '@/entities/company';
 
+import { getDeleteCompanyApiErrorMessage } from '../lib/utils/getDeleteCompanyApiErrorMessage';
 import { deleteCompanyApiUrls } from '../model/constants/deleteCompanyConstants';
 
 const deleteCompanyApi = baseApi.injectEndpoints({
@@ -20,7 +21,7 @@ const deleteCompanyApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_COMPANIES_DELETE_SINGLE_SUCCESS));
 					typedExtra.navigate(ROUTES.admin.companies.page);
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COMPANIES_DELETE_SINGLE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getDeleteCompanyApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

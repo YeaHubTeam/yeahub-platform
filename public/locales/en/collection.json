@@ -47,9 +47,23 @@
 			"min_other": "{{count}} questions"
 		}
 	},
+	"tasks": {
+		"short": "Tasks",
+		"label": "Add tasks",
+		"selected": "Selected tasks: {{count}}",
+		"length": {
+			"one": "{{count}} task",
+			"other": "{{count}} tasks"
+		}
+	},
 	"image.src": "Image URL",
 	"image.alt": "Image of company",
 	"create.page.title": "Collection",
+	"collections": {
+		"title": "Collections",
+		"detail": "Learn more",
+		"train": "Train"
+	},
 	"edit.page.title": "Edit collection",
 	"company": {
 		"title": "Company",
@@ -64,8 +78,7 @@
 		"aria.label": "Go to additional info"
 	},
 	"warning": {
-		"intro": "This section is created by candidates for candidates. We share real interview questions to help you prepare more effectively — understand which topics really matter, improve your knowledge, and feel more confident.",
-		"disclaimer": "It’s important to note that we are not affiliated with these companies and do not aim to interfere with their hiring processes. All questions are collected from public sources and candidates’ personal experiences. Our goal is to help you prepare more thoughtfully — not to provide ready-made answers."
+		"intro": "This section is created by candidates for candidates. We share real interview questions to help you prepare more effectively — understand which topics really matter, improve your knowledge, and feel more confident. \n\n It’s important to note that we are not affiliated with these companies and do not aim to interfere with their hiring processes. All questions are collected from public sources and candidates’ personal experiences. Our goal is to help you prepare more thoughtfully — not to provide ready-made answers."
 	},
 	"banner.interview": {
 		"title": "Interview recordings",

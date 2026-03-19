@@ -27,6 +27,7 @@ const TasksPage = () => {
 		onChangeTitle,
 		onChangeDifficulty,
 		onChangeLangIds,
+		onChangeCategory,
 		onResetFilters,
 	} = useTasksFilters({
 		page: 1,
@@ -38,6 +39,8 @@ const TasksPage = () => {
 		title: filters.title,
 		difficulty: filters.difficulty,
 		langIds: filters.langIds,
+		category: filters.category,
+		canSolve: filters.title ? true : undefined,
 	});
 
 	const tasksList = data?.data || [];
@@ -47,10 +50,12 @@ const TasksPage = () => {
 			onChangeTitle={onChangeTitle}
 			onChangeDifficulty={onChangeDifficulty}
 			onChangeLangIds={onChangeLangIds}
+			onChangeCategory={onChangeCategory}
 			filters={{
 				title: filters.title,
 				difficulty: filters.difficulty,
 				langIds: filters.langIds,
+				category: filters.category,
 			}}
 		/>
 	);

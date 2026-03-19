@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Questions } from '@/shared/config';
+import { Collections, i18Namespace, Questions } from '@/shared/config';
 import { getFromLS, LS_ACCESS_TOKEN_KEY, SELECT_TARIFF_SETTINGS_TAB } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { SimpleStub } from '@/shared/ui/SimpleStub';
+import { WarningPopover } from '@/shared/ui/WarningPopover';
 
-import { Collection, CollectionWarningInfo } from '@/entities/collection';
+import { Collection } from '@/entities/collection';
 import { Question, PreviewQuestionsItem } from '@/entities/question';
 
 import { RegistrationBanner } from '../RegistrationBanner/RegistrationBanner';
@@ -27,13 +28,12 @@ export const CollectionBody = ({
 	isAdmin = false,
 	hasPremiumAccess,
 }: CollectionBodyProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.collection]);
 	// TODO: Добавить роут для сообщества
 	const isAuthorized = getFromLS(LS_ACCESS_TOKEN_KEY);
 	const showRegistrationBanner = !isAuthorized && questions.length > GUEST_QUESTIONS_COUNT;
 	const hiddenQuestionsCount = questions.length - GUEST_QUESTIONS_COUNT;
 	const displayedQuestions = isAuthorized ? questions : questions.slice(0, GUEST_QUESTIONS_COUNT);
-
 	if (!isFree && !hasPremiumAccess && !isAdmin)
 		return (
 			<Card
@@ -51,7 +51,7 @@ export const CollectionBody = ({
 		<Card
 			className={styles.wrapper}
 			title={t(Questions.PREVIEW_TITLE)}
-			headerAction={<CollectionWarningInfo />}
+			headerAction={<WarningPopover text={t(Collections.WARNING_INTRO)} />}
 			withOutsideShadow
 		>
 			{displayedQuestions.length ? (

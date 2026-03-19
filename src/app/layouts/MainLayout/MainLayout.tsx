@@ -18,6 +18,7 @@ import { NYBanner } from '@/shared/ui/NYBanner';
 import { NYModal } from '@/shared/ui/NYModal';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
+import { WithFeature } from '@/entities/featureFlag';
 import { getIsEmptySpecialization, getProfilesLength } from '@/entities/profile';
 
 import { Header } from '@/widgets/Header';
@@ -95,8 +96,12 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
 						<main className={styles.main}>
 							<div className={styles.container}>
-								<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_DASHBOARD_KEY} />
-								<NYModal isOpenModal={!isOpenNYModal} />
+								<WithFeature featureId="nyBanner">
+									<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_DASHBOARD_KEY} />
+								</WithFeature>
+								<WithFeature featureId="nyModal">
+									<NYModal isOpenModal={!isOpenNYModal} />
+								</WithFeature>
 								<Breadcrumbs />
 								<Suspense fallback={<SkeletonGenerator />}>
 									<Outlet />

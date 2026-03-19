@@ -9,13 +9,14 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 import type { UserRating } from '@/entities/user';
 
 import { AVATAR_RADII, PLACE_ICONS } from '../../model/constants';
+import type { PrizePlace } from '../../model/types';
 import { AvatarWithRating } from '../AvatarWithRating/AvatarWithRating';
 
 import styles from './UserRatingItem.module.css';
 
 interface UserRatingItemProps {
 	userRating: UserRating;
-	place: 1 | 2 | 3;
+	place: PrizePlace;
 	questionsCount: number;
 }
 
@@ -29,7 +30,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 			<Flex justify="center" align="center" style={{ width: itemWidth, height: itemWidth }}>
 				<AvatarWithRating
 					avatarUrl={userRating.avatarUrl}
-					score={userRating.ratingScore}
+					score={userRating.ratingPoints}
 					radius={isMobileS ? AVATAR_RADII[place] / 1.5 : AVATAR_RADII[place]}
 					maxRating={questionsCount}
 				/>
@@ -51,7 +52,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 						</Tooltip>
 					</Flex>
 					<Text variant={isMobileS ? `body2-accent` : `body3-accent`}>
-						{userRating.ratingScore}/{questionsCount}
+						{userRating.ratingPoints}/{questionsCount}
 					</Text>
 				</Flex>
 			</Card>

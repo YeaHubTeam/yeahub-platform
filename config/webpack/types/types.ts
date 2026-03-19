@@ -24,4 +24,5 @@ export interface WebpackOptions {
 	envs: {
 		[key: string]: string | number;
 	};
+	notSsl: boolean;
 }

@@ -1,0 +1,10 @@
+
+.chip {
+  cursor: auto;
+  min-width: 40px; 
+}
+
+.chip:not(:last-of-type) {
+  margin-right: 10px; 
+}
+

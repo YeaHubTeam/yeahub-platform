@@ -1,4 +1,5 @@
 import MonacoEditor from '@monaco-editor/react';
+import { useEffect } from 'react';
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -21,10 +22,11 @@ import { CreateOrEditTaskFormValues } from '@/entities/task';
 import styles from './TaskStructuresField.module.css';
 
 type LanguageOptions = Record<number, ProgrammingLanguageCode>;
+type LanguagePreloadedCode = Record<number, string>;
 
 export const TaskStructuresField = () => {
 	const { t } = useTranslation(i18Namespace.task);
-	const { control, watch } = useFormContext<CreateOrEditTaskFormValues>();
+	const { control, watch, setValue } = useFormContext<CreateOrEditTaskFormValues>();
 	const {
 		fields: taskStructures,
 		append,
@@ -44,7 +46,26 @@ export const TaskStructuresField = () => {
 			return result;
 		}, {} as LanguageOptions) || {};
 
+	const languagePreloadedCodes =
+		data?.reduce((result, language) => {
+			result[language.id] = language.defaultPreloadedCode;
+			return result;
+		}, {} as LanguagePreloadedCode) || ({} as LanguagePreloadedCode);
+
 	const selectedLanguages = taskStructuresValues.map(({ languageId }) => Number(languageId));
+
+	useEffect(() => {
+		if (data) {
+			taskStructures.forEach((taskStructure, index) => {
+				if (taskStructure.preloadedCode !== languagePreloadedCodes[taskStructure.languageId]) {
+					setValue(
+						`taskStructures.${index}.preloadedCode`,
+						languagePreloadedCodes[taskStructure.languageId],
+					);
+				}
+			});
+		}
+	}, [data]);
 
 	return (
 		<Flex direction="column" gap="16">
@@ -66,7 +87,13 @@ export const TaskStructuresField = () => {
 									<ProgrammingLanguageSelect
 										selectedLanguageIds={selectedLanguages}
 										value={String(field.value)}
-										onChange={field.onChange}
+										onChange={(value) => {
+											field.onChange(value);
+											setValue(
+												`taskStructures.${index}.preloadedCode`,
+												languagePreloadedCodes[Number(Array.isArray(value) ? value[0] : value)],
+											);
+										}}
 									/>
 								)}
 							/>

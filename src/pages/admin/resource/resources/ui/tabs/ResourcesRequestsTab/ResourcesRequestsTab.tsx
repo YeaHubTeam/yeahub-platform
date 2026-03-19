@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { i18Namespace, Resources } from '@/shared/config';
 import { useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -23,6 +25,7 @@ export const ResourcesRequestsTab = () => {
 	const dispatch = useAppDispatch();
 	const selectedResourceRequests = useSelector(getResourcesRequestsTabSelected);
 	const userId = useAppSelector(getUserId);
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const {
 		filters,
@@ -48,24 +51,42 @@ export const ResourcesRequestsTab = () => {
 		authorId: filters.isMy ? userId : undefined,
 	};
 
-	const { data: resourceRequests, isLoading } = useGetResourceRequestsQuery(queryArgs);
+	const {
+		data: resourceRequests,
+		isLoading,
+		isError,
+		refetch,
+	} = useGetResourceRequestsQuery(queryArgs);
 
 	const onSelectResourceRequests = (ids: SelectedResourceRequestEntities) => {
 		dispatch(resourcesRequestsTabActions.setSelectedResourceRequests(ids));
 	};
 
+	const hasData = (resourceRequests?.data?.length || 0) > 0;
+	const hasError = !!isError;
+
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Resources.STUB_EMPTY_RESOURCE_REQUESTS_TITLE),
+			subtitle: t(Resources.STUB_EMPTY_RESOURCE_REQUESTS_SUBTITLE),
+		},
+
 		'filter-empty': {
 			onClick: onResetFilters,
+		},
+		error: {
+			onClick: refetch,
 		},
 	};
 
 	return (
 		<PageWrapper
 			isLoading={isLoading}
+			hasError={hasError}
 			hasFilters={hasFilters}
-			hasData={(resourceRequests?.data || []).length > 0}
+			hasData={hasData}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,

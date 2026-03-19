@@ -8,6 +8,7 @@ import { Button } from '../Button';
 import { TextVariant } from '../Text/types';
 
 import styles from './Banner.module.css';
+import { bannerTestIds } from './constants';
 
 interface BannerProps {
 	img: string;
@@ -49,22 +50,37 @@ export const Banner = ({
 	const textVariant = titleVariant || (isLargeScreen || isLaptop ? 'body6' : 'body5-accent');
 
 	return (
-		<Flex className={wrapperClassName} align="center" gap="10">
-			<Flex gap="20" align="center" className={innerWrapClassName}>
-				<img src={img} className={classNames(styles.img, imgClassName)} alt={alt} />
+		<Flex className={wrapperClassName} align="center" gap="10" dataTestId={bannerTestIds.wrapper}>
+			<Flex
+				gap="20"
+				align="center"
+				className={innerWrapClassName}
+				dataTestId={bannerTestIds.innerWrapper}
+			>
+				<img
+					src={img}
+					className={classNames(styles.img, imgClassName)}
+					alt={alt}
+					data-testid={bannerTestIds.image}
+				/>
 				{title && (
-					<Text variant={textVariant} color={textColor}>
+					<Text variant={textVariant} color={textColor} dataTestId={bannerTestIds.title}>
 						{title}
 					</Text>
 				)}
 				{description && (
-					<Text variant="body3-accent" color={textColor}>
+					<Text variant="body3-accent" color={textColor} dataTestId={bannerTestIds.description}>
 						{description}
 					</Text>
 				)}
 			</Flex>
 			{buttonLabel && (
-				<Button size="large" className={buttonClassName} onClick={onButtonClick}>
+				<Button
+					size="large"
+					className={buttonClassName}
+					onClick={onButtonClick}
+					dataTestId={bannerTestIds.button}
+				>
 					{buttonLabel}
 				</Button>
 			)}

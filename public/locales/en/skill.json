@@ -23,5 +23,18 @@
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",
 	"edit.page.title": "Edit skill",
-	"my.skills.title": "My Skills"
+	"my.skills.title": "My Skills",
+	"stub": {
+		"empty": {
+			"skills": {
+				"title": "No skills found yet",
+				"subtitle": "Skills are added periodically, just wait a bit"
+			},
+			"skill": {
+				"title": "It seems the skill data is missing",
+				"subtitle": "Try refreshing the page or repeating the request",
+				"submit": "Try again"
+			}
+		}
+	}
 }

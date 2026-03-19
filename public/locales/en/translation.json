@@ -56,14 +56,13 @@
 				"title": "Training",
 				"interview": "Interview"
 			},
-			"tasks": {
-				"title": "Tasks"
-			},
+			"tasks": "Tasks",
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"
 			},
 			"questions": "Questions",
+
 			"skills": "Skills",
 			"companies": "Companies",
 			"analytics": "Analytics",
@@ -147,6 +146,13 @@
 			"max_few": "Maximum length of {{count}} characters",
 			"max_many": "Maximum length of {{count}} characters"
 		},
+		"min": {
+			"value": "Minimum value {{min}}",
+			"array": "Select at least {{min}}"
+		},
+		"max": {
+			"value": "Maximum value {{max}}"
+		},
 		"password": {
 			"weak": "Password must contain uppercase and lowercase letters, numbers, and special characters",
 			"similar": "Passwords must match"
@@ -168,6 +174,8 @@
 		"interview.statistic": "Interview statistics",
 		"questions.list": "List of questions",
 		"question.detail": "More details",
+		"collections.list": "Collections",
+		"collection.detail": "Question List",
 		"quiz": "Interview",
 		"liveCoding": "Live Coding",
 		"new.quiz": "Quiz",
@@ -187,6 +195,7 @@
 		"popular.skills": "Popular skills",
 		"analytics.skillsProficiency": "Average percentage of skill mastered",
 		"analytics.difficultQuestions": "The most difficult questions",
+		"analytics.usersRating": "Users rating",
 		"tasks.list": "Tasks",
 		"task.detail": "More details"
 	},
@@ -282,7 +291,20 @@
 			},
 			"edit": {
 				"success": "The question was successfully changed",
-				"failed": "Couldn't edit the question"
+				"failed": "Couldn't edit the question",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"question": {
+					"not.found": "Question not found",
+					"internal": "Server exception occurred"
+				}
 			},
 			"delete": {
 				"single": {
@@ -292,6 +314,19 @@
 				"multiple": {
 					"success": "Successfully deleted questions:",
 					"failed": "The issue could not be deleted:"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"question": {
+					"not.found": "Question not found",
+					"in.collection": "Question is in collection and cannot be deleted"
 				}
 			}
 		},
@@ -327,7 +362,42 @@
 			"delete": {
 				"single": {
 					"success": "Skill successfully deleted",
-					"failed": "The skill could not be deleted"
+					"failed": "The skill could not be deleted",
+					"storage": {
+						"image": {
+							"url": {
+								"invalid": "image url can not be empty"
+							},
+							"not_found": "there is no such image in storage"
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"skill": {
+						"not_found": "Skill not found",
+						"constraint": {
+							"foreign_key_violation": "Cannot delete skill because it is referenced by other entities"
+						},
+						"specialization": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some specialization"
+							}
+						},
+						"question": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some question"
+							}
+						},
+						"profile": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some profile"
+							}
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted skills:",
@@ -347,7 +417,37 @@
 			"delete": {
 				"single": {
 					"success": "Specialization successfully deleted",
-					"failed": "Specialization could not be deleted"
+					"failed": "Specialization could not be deleted",
+					"storage": {
+						"image": {
+							"not.found": "Image not found",
+							"url": {
+								"invalid": "Image URL can not be empty"
+							}
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"specialization": {
+						"not.found": "Specialization not found",
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by other entities"
+						}
+					},
+					"question": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some question"
+						}
+					},
+					"collection": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some collection"
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted specializations:",
@@ -435,7 +535,24 @@
 			"delete": {
 				"single": {
 					"success": "Collection successfully deleted",
-					"failed": "The collection could not be deleted"
+					"failed": "The collection could not be deleted",
+					"not_found": "Collection not found",
+					"image": {
+						"url_invalid": "image url can not be empty",
+						"not_found": "there is no such image in storage"
+					}
+				},
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"constraint": {
+					"foreign_key_violation": "Невозможно удалить коллекцию, поскольку на нее ссылаются другие объекты."
 				}
 			},
 			"edit": {
@@ -587,6 +704,12 @@
 			}
 		},
 		"companies": {
+			"auth": {
+				"unauthorized": "Authentication failed",
+				"user": {
+					"verified": "Route is available for verified users!"
+				}
+			},
 			"edit": {
 				"success": "Company successfully changed",
 				"failed": "Company could not be changed"
@@ -594,7 +717,16 @@
 			"delete": {
 				"single": {
 					"success": "Company successfully deleted",
-					"failed": "Company could not be deleted"
+					"failed": "Company could not be deleted",
+					"not_found": "Company not found",
+					"image": {
+						"url_invalid": "image url can not be empty",
+						"not_found": "there is no such image in storage"
+					},
+					"key_violation": {
+						"collection": "Cannot delete company: it is referenced by some collection",
+						"company": "Cannot delete company due to a conflict with existing data"
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted companies:",

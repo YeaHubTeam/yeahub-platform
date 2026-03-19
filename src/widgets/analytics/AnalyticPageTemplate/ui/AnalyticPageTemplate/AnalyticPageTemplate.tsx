@@ -30,8 +30,8 @@ interface AnalyticPageTemplateFilters {
 }
 
 interface AnalyticPageTemplateProps {
-	title: string;
-	tooltip?: string;
+	title: string | ReactNode;
+	tooltip?: string | ReactNode;
 	list: ReactNode;
 	table: ReactNode;
 	filters: AnalyticPageTemplateFilters;

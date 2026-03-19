@@ -70,6 +70,31 @@
 			"count": "Count"
 		}
 	},
+	"users.rating": {
+		"answers": "Answers",
+		"title": {
+			"widget": "Top 3 users by speciality {{specialization}}",
+			"page": "{{specialization}} speciality rating"
+		},
+		"stub": {
+			"empty": {
+				"title": "It looks like there is no rating for studying questions in this specialization yet",
+				"subtitle": "Please wait for someone to start taking interviews or studying questions"
+			}
+		},
+		"table": {
+			"index": "№",
+			"place": "Place",
+			"user": "User",
+			"questions.count": "Questions studied",
+			"progress": "Progress"
+		},
+		"tooltip": {
+			"users.count": "Total users:",
+			"questionsCount": "Total questions:",
+			"progress": "Average progress:"
+		}
+	},
 	"top.users": {
 		"title": {
 			"widget": "Top 3 users by speciality"

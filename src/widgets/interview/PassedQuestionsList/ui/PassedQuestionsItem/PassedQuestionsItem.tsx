@@ -43,7 +43,7 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 
 	const questionLink =
 		project === 'landing'
-			? route(ROUTES.questions.detail.page, questionId)
+			? route(ROUTES.public.questions.detail.page, questionId)
 			: route(ROUTES.wiki.questions.detail.page, questionId);
 
 	const iconColor = answer === 'KNOWN' ? 'purple-700' : 'black-700';

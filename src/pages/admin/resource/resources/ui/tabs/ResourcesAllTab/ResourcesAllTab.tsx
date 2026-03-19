@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import { i18Namespace, Resources, ROUTES } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -19,25 +22,31 @@ import { ResourcesTable } from '../../ResourcesTable/ResourcesTable';
 import styles from './ResourcesAllTab.module.css';
 
 export const ResourcesAllTab = () => {
+	const navigate = useNavigate();
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
 	const selectedResources = useSelector(getResourcesAllTabSelected);
+	const { t } = useTranslation(i18Namespace.resources);
 
 	const {
 		onChangeTitle,
 		filters,
+		hasFilters,
 		onChangePage,
 		onResetFilters,
-		hasFilters,
 		onChangeSkills,
 		onChangeTypes,
 		onChangeSpecialization,
 		onChangeIsMy,
-	} = useResourcesFilters({
-		page: 1,
-	});
+	} = useResourcesFilters({ page: 1 });
 
-	const { data: resources, isLoading } = useGetResourcesListQuery({
+	const {
+		data: resources,
+		isLoading,
+		isError,
+		refetch,
+		isFetching,
+	} = useGetResourcesListQuery({
 		page: filters.page,
 		name: filters.title,
 		skills: filters.skills,
@@ -48,25 +57,38 @@ export const ResourcesAllTab = () => {
 
 	const resourcesWithEditFlags = useMemo(() => {
 		if (!resources?.data) return [];
-
-		return resources?.data.map((resource) => ({
+		return resources.data.map((resource) => ({
 			...resource,
 			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource?.createdBy.id }),
 		}));
 	}, [resources, userId, isAuthor]);
 
 	const stubs: PageWrapperStubs = {
+		empty: {
+			title: t(Resources.STUB_EMPTY_RESOURCES_TITLE),
+			subtitle: t(Resources.STUB_EMPTY_RESOURCES_SUBTITLE),
+			buttonText: t(Resources.STUB_EMPTY_RESOURCES_SUBMIT),
+			onClick: () => navigate(ROUTES.admin.resources.create.page),
+		},
+		error: {
+			onClick: refetch,
+		},
 		'filter-empty': {
 			onClick: onResetFilters,
 		},
 	};
 
+	const hasData = !!resources && (resources.data?.length ?? 0) > 0;
+	const hasError = !!isError;
+
 	return (
 		<PageWrapper
-			isLoading={isLoading}
+			isLoading={isLoading || isFetching}
 			hasFilters={hasFilters}
-			hasData={(resources?.data || []).length > 0}
+			hasData={hasData}
+			hasError={hasError}
 			stubs={stubs}
+			roles={['admin', 'author']}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,
@@ -95,10 +117,8 @@ export const ResourcesAllTab = () => {
 						)}
 					/>
 					<Card className={styles.content}>
-						<>
-							{content}
-							{pagination}
-						</>
+						{content}
+						{pagination}
 					</Card>
 				</Flex>
 			)}

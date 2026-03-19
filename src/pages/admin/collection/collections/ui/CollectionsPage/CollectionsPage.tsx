@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -64,6 +65,8 @@ const CollectionsPage = () => {
 		authorId: filters.isMy ? userId : filters.authorId,
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
+		specializations: filters.specialization,
+		isFree: filters.isFree,
 	});
 
 	const collections = useMemo(() => {
