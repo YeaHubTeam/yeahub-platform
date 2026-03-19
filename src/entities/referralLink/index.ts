@@ -5,3 +5,5 @@ export type {
 	GetReferralLinksListParamsRequest,
 	GetReferralLinksListResponse,
 } from './model/types/referralLinks';
+
+export { referralLinksHandlers } from './api/__mocks__';
