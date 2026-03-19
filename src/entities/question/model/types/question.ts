@@ -54,7 +54,7 @@ export type CreateOrEditQuestionFormValues = Pick<
 > & {
 	specializations: number[];
 	skills: number[];
-	topics: number[];
+	topics?: number[];
 };
 
 type skillFilterMode = 'ALL' | 'ANY';
