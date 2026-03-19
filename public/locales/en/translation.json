@@ -495,6 +495,11 @@
 				"conflict": {
 					"specialization": "Specialization with this title already exists"
 				}
+			},
+			"specialization": {
+				"not": {
+					"found": "Specialization not found"
+				}
 			}
 		},
 		"topics": {
