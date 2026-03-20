@@ -16,8 +16,6 @@ const QuestionCreateMultiplePage = () => {
 		CreateMultipleQuestionsResponseItem[] | null
 	>(getJSONFromLS(GENERATED_QUESTIONS_LS_KEY));
 
-	console.log('generatedQuestions', generatedQuestions);
-
 	const handleClose = () => {
 		setGeneratedQuestions([]);
 	};
