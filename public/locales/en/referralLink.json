@@ -20,5 +20,21 @@
 			"amount.sum": "Amount",
 			"created.at": "Created At"
 		}
+	},
+	"url": {
+		"short": "Link",
+		"label": "Add a link",
+		"placeholder": "Paste a link"
+	},
+	"ref.code": {
+		"short": "Promo code",
+		"label": "Add a promo code",
+		"placeholder": "Add a promo code"
+	},
+	"owner.username": {
+		"short": "Owner",
+		"label": "Add an owner",
+		"placeholder": "Add an owner",
+		"my": "I am the owner"
 	}
 }

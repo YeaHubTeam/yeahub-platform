@@ -162,7 +162,9 @@
 			"size": "Large file size",
 			"type": "Invalid file format"
 		},
-		"link": "Links forbidden"
+		"link": "Links forbidden",
+		"no.spaces": "No spaces",
+		"latin.and.number": "Only capital Latin letters and numbers"
 	},
 	"crumbs": {
 		"profile": "Profile",

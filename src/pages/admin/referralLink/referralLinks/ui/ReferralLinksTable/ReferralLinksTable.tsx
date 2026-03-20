@@ -19,7 +19,7 @@ export const ReferralLinksTable = ({
 	selectedReferralLinks,
 	onSelectReferralLinks,
 }: ReferralLinksTableProps) => {
-	const { t } = useTranslation(i18Namespace.referralLink);
+	const { t } = useTranslation([i18Namespace.referralLink, i18Namespace.translation]);
 
 	const renderTableHeader = () => {
 		const columns = {
@@ -37,7 +37,7 @@ export const ReferralLinksTable = ({
 	const renderTableBody = (ref: ReferralLink) => {
 		const columns = {
 			refCode: (
-				<Link to={route(ROUTES.admin.referralLinks.detail.page, ref.id)}>
+				<Link to={route(ROUTES.admin.referralLinks.details.page, ref.id)}>
 					<Text variant="body3-accent">{ref.refCode}</Text>
 				</Link>
 			),
