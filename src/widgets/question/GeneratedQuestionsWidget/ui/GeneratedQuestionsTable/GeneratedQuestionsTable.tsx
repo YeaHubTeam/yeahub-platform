@@ -26,7 +26,6 @@ interface GeneratedQuestion {
 	skills: { id: number; title: string }[];
 	rate: number;
 	complexity: number;
-	status: string;
 }
 
 interface GeneratedQuestionsTableProps {
@@ -67,7 +66,6 @@ export const GeneratedQuestionsTable = ({
 			})),
 			rate: question.generatedDto!.rate,
 			complexity: question.generatedDto!.complexity,
-			status: question.generatedDto!.status,
 		}));
 	}, [generatedQuestionsSuccess, specializationsMap, skillsMap]);
 
@@ -78,7 +76,6 @@ export const GeneratedQuestionsTable = ({
 			skills: '15%',
 			rate: '5%',
 			complexity: '5%',
-			status: '10%',
 		};
 
 		return Object.values(columnWidths).map((width, idx) => <col key={idx} style={{ width }} />);
@@ -91,7 +88,6 @@ export const GeneratedQuestionsTable = ({
 			skills: t(Questions.SKILLS_TITLE),
 			rate: t(Questions.RATE_TITLE_SHORT),
 			complexity: t(Questions.COMPLEXITY_TITLE_SHORT),
-			status: t(Questions.STATUS_TITLE),
 		};
 
 		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
@@ -125,7 +121,6 @@ export const GeneratedQuestionsTable = ({
 				</td>
 				<td>{question.rate}</td>
 				<td>{question.complexity}</td>
-				<td>{question.status}</td>
 			</>
 		);
 	};

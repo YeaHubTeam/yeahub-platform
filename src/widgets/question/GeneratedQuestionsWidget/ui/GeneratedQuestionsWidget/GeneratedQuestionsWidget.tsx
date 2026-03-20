@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Translation } from '@/shared/config';
+import { i18Namespace, Translation, Questions } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -28,7 +28,7 @@ export const GeneratedQuestionsWidget = ({
 	generatedQuestions,
 	onClose,
 }: GeneratedQuestionsWidgetProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
 	const clearStorage = () => {
 		localStorage.removeItem(GENERATED_QUESTIONS_LS_KEY);
@@ -59,9 +59,11 @@ export const GeneratedQuestionsWidget = ({
 	return (
 		<Flex direction="column" gap="24">
 			<Flex align="center" justify="between">
-				<Text variant="head3">{t(Translation.GENERATED_QUESTIONS_TITLE)}</Text>
+				<Text variant="head3">
+					{t(Questions.GENERATED_QUESTIONS_TITLE, { ns: i18Namespace.questions })}
+				</Text>
 				<Button variant="outline" size="large" onClick={handleClose}>
-					{t(Translation.RETURN)}
+					{t(Translation.RETURN, { ns: i18Namespace.translation })}
 				</Button>
 			</Flex>
 			<Card>

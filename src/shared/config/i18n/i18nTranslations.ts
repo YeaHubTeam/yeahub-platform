@@ -8,10 +8,7 @@ export enum Translation {
 	MORE = 'more',
 	RETURN = 'return',
 	CREATE = 'create',
-	CREATE_MULTIPLE = 'create.multiple',
 	QUESTIONS_ADD = 'questions.add',
-	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
-	GENERATED_QUESTIONS_ERRORS_TITLE = 'generated.questions.errors.title',
 	SEARCH = 'search',
 	REMOVE_SELECTED = 'remove.selected',
 	LOADING = 'loading',
@@ -797,6 +794,11 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
 	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
+
+	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
+	GENERATED_QUESTIONS_SUCCESS_TITLE = 'generated.questions.success.title',
+	GENERATED_QUESTIONS_ERRORS_TITLE = 'generated.questions.errors.title',
+	GENERATED_QUESTIONS_ERRORS_TITLE_CONFLICT = 'generated.questions.errors.conflict.title',
 }
 
 export enum InterviewHistory {

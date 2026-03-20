@@ -9,16 +9,7 @@
 	"more": "More",
 	"return": "Return",
 	"create": "Add",
-	"create.multiple": "Add multiple",
 	"questions.add": "Add questions",
-	"generated": {
-		"questions": {
-			"title": "Generated questions",
-			"errors": {
-				"title": "An error occurred while creating these questions"
-			}
-		}
-	},
 	"search": "Search",
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",

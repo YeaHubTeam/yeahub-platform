@@ -1,4 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+
+import { getJSONFromLS } from '@/shared/libs';
 
 import { QuestionCreateMultipleForm } from '@/features/question/createMultipleQuestions';
 import {
@@ -10,28 +12,22 @@ import { PageWrapper } from '@/widgets/PageWrapper';
 import { GeneratedQuestionsWidget } from '@/widgets/question/GeneratedQuestionsWidget';
 
 const QuestionCreateMultiplePage = () => {
-	const getGeneratedQuestions: () => CreateMultipleQuestionsResponseItem[] = useCallback(() => {
-		try {
-			const raw = localStorage.getItem(GENERATED_QUESTIONS_LS_KEY);
-			return raw ? JSON.parse(raw) : [];
-		} catch {
-			return [];
-		}
-	}, []);
+	const [generatedQuestions, setGeneratedQuestions] = useState<
+		CreateMultipleQuestionsResponseItem[] | null
+	>(getJSONFromLS(GENERATED_QUESTIONS_LS_KEY));
 
-	const [generatedQuestions, setGeneratedQuestions] =
-		useState<CreateMultipleQuestionsResponseItem[]>(getGeneratedQuestions());
+	console.log('generatedQuestions', generatedQuestions);
 
 	const handleClose = () => {
 		setGeneratedQuestions([]);
 	};
 
 	const handleOpenGeneratedQuestionsWidget = () => {
-		setGeneratedQuestions(getGeneratedQuestions());
+		setGeneratedQuestions(getJSONFromLS(GENERATED_QUESTIONS_LS_KEY));
 	};
 
 	const content =
-		generatedQuestions.length > 0 ? (
+		generatedQuestions && generatedQuestions.length > 0 ? (
 			<GeneratedQuestionsWidget generatedQuestions={generatedQuestions} onClose={handleClose} />
 		) : (
 			<QuestionCreateMultipleForm

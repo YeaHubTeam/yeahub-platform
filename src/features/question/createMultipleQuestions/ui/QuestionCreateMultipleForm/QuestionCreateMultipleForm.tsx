@@ -5,11 +5,10 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
-import { QuestionMultipleForm } from '@/entities/question';
-
 import { createMultipleQuestionsSchema } from '../../lib/validation/createMultipleQuestionsSchema';
 import { CreateMultipleQuestionsFormValues } from '../../model/types/createMultipleQuestionsTypes';
 import { QuestionCreateMultipleFormHeader } from '../QuestionCreateMultipleFormHeader/QuestionCreateMultipleFormHeader';
+import { QuestionMultipleForm } from '../QuestionMultipleForm/QuestionMultipleForm';
 
 import styles from './QuestionCreateMultipleForm.module.css';
 

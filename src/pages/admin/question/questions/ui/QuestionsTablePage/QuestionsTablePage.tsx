@@ -121,7 +121,7 @@ const QuestionsPage = () => {
 			onClick: handleCreateQuestion,
 		},
 		{
-			title: t(Translation.CREATE_MULTIPLE, { ns: i18Namespace.translation }),
+			title: t(Questions.GENERATED_QUESTIONS_TITLE, { ns: i18Namespace.questions }),
 			onClick: handleCreateMultipleQuestions,
 		},
 	];

@@ -14,6 +14,8 @@ import { Input } from '@/shared/ui/Input';
 
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
 
+import styles from './QuestionMultipleForm.module.css';
+
 export const QuestionMultipleForm = () => {
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
@@ -54,13 +56,12 @@ export const QuestionMultipleForm = () => {
 				</FormControl>
 			</FormField>
 
-			{questions.map((question, index) => (
-				<FormField
-					key={question.id}
-					label={t(Translation.QUESTIONS_ADD, { ns: i18Namespace.translation })}
-					direction="column"
-				>
-					<Flex gap="8" align="start">
+			<FormField
+				label={t(Translation.QUESTIONS_ADD, { ns: i18Namespace.translation })}
+				direction="column"
+			>
+				{questions.map((question, index) => (
+					<Flex gap="8" align="start" key={question.id}>
 						<Controller
 							control={control}
 							name={`questions.${index}`}
@@ -69,6 +70,8 @@ export const QuestionMultipleForm = () => {
 									{...field}
 									error={Boolean(fieldState.error)}
 									placeholder={t(Questions.TITLE_PLACEHOLDER)}
+									size="L"
+									className={styles.input}
 								/>
 							)}
 						/>
@@ -76,8 +79,8 @@ export const QuestionMultipleForm = () => {
 							<IconButton size="large" icon={<Icon icon="trash" onClick={() => remove(index)} />} />
 						)}
 					</Flex>
-				</FormField>
-			))}
+				))}
+			</FormField>
 
 			<Button variant="outline" size="large" onClick={() => append('')}>
 				{t(Translation.CREATE, { ns: i18Namespace.translation })}
