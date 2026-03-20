@@ -885,9 +885,16 @@ export enum ReferralLinks {
 	LINKED_COUNT = 'table.columns.linked.count',
 	AMOUNT_SUM = 'table.columns.amount.sum',
 	CREATED_AT = 'table.columns.created.at',
+	SORT_FIELD = 'sort.field',
+	SELECT_OWNER_PLACEHOLDER = 'select.placeholder',
 	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
 	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
 	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
+	STUB_EMPTY_FILTER__TITLE = 'stub.empty.filter.title',
+	STUB_EMPTY_FILTER_SUBTITLE = 'stub.empty.filter.subtitle',
+	STUB_EMPTY_FILTER_BUTTON = 'stub.empty.filter.button',
+	FILTER_MY_REFERRALS = 'filter.onlyMy',
+	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
 
 export enum User {

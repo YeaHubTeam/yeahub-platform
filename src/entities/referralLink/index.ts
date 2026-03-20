@@ -5,3 +5,4 @@ export type {
 	GetReferralLinksListParamsRequest,
 	GetReferralLinksListResponse,
 } from './model/types/referralLinks';
+export type { ReferralLinksFilterParams, ReferralLinksFilterOrderBy } from './model/types/filters';
