@@ -50,7 +50,14 @@ export const BaseFilterSection = <T,>({
 			<Text variant="body2" color="black-700">
 				{title}
 			</Text>
-			<Flex wrap="wrap" gap="8">
+			<Flex
+				wrap="wrap"
+				gap="8"
+				style={{
+					maxHeight: '500px',
+					overflowY: 'auto',
+				}}
+			>
 				{data &&
 					data.map((item) => {
 						const click = onHandleClick(item.id);

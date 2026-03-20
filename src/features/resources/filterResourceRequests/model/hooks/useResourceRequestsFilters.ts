@@ -12,7 +12,7 @@ export const useResourceRequestsFilters = (initialParams: ResourceRequestsFilter
 	const hasFilters =
 		(filters.page || 1) > 1 ||
 		Boolean(filters.title) ||
-		filters.status !== 'all' ||
+		(Boolean(filters.status) && filters.status !== 'all') ||
 		(filters?.skills || [])?.length > 0 ||
 		(filters?.types || [])?.length > 0 ||
 		filters.isMy === true;
