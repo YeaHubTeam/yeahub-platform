@@ -8,6 +8,8 @@ import '@/shared/config/i18n/i18n';
 import { StoreProvider, ToastOptions, SentryErrorBoundary, initSentry } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
+import { initTheme } from '@/features/theme/switch-theme';
+
 import { router } from '@/app/providers/router';
 import AppInitSentryUser from '@/app/providers/sentry/AppInitSentryUser';
 
@@ -28,6 +30,8 @@ async function deferRender() {
 }
 
 initSentry();
+
+initTheme();
 
 deferRender().then(() => {
 	container.render(

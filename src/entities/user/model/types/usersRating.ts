@@ -9,6 +9,8 @@ export interface UserRating {
 	ratingPoints: number;
 	place: number;
 	progress: number;
+	specialization: string;
+	allUsers: number;
 }
 
 export type UsersRatingBySpecialization = {
@@ -34,3 +36,5 @@ export type GetUsersRatingStatsResponse = {
 };
 
 export type GetUsersRatingBySpecializationResponse = UsersRatingBySpecialization;
+
+export type UserProfilePositionResponse = UserRating;

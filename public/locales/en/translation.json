@@ -357,12 +357,67 @@
 			},
 			"edit": {
 				"success": "Skill changed successfully",
-				"failed": "The Skill could not be changed"
+				"failed": "The Skill could not be changed",
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				},
+				"skill": {
+					"not_found": "Skill not found",
+					"title": {
+						"conflict": "Skill with same title already exists"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"delete": {
 				"single": {
 					"success": "Skill successfully deleted",
-					"failed": "The skill could not be deleted"
+					"failed": "The skill could not be deleted",
+					"storage": {
+						"image": {
+							"url": {
+								"invalid": "image url can not be empty"
+							},
+							"not_found": "there is no such image in storage"
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"skill": {
+						"not_found": "Skill not found",
+						"constraint": {
+							"foreign_key_violation": "Cannot delete skill because it is referenced by other entities"
+						},
+						"specialization": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some specialization"
+							}
+						},
+						"question": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some question"
+							}
+						},
+						"profile": {
+							"constraint": {
+								"foreign_key_violation": "Cannot delete skill because it is referenced by some profile"
+							}
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted skills:",
@@ -382,7 +437,37 @@
 			"delete": {
 				"single": {
 					"success": "Specialization successfully deleted",
-					"failed": "Specialization could not be deleted"
+					"failed": "Specialization could not be deleted",
+					"storage": {
+						"image": {
+							"not.found": "Image not found",
+							"url": {
+								"invalid": "Image URL can not be empty"
+							}
+						}
+					},
+					"auth": {
+						"unauthorized": "The user is not authorized",
+						"user": {
+							"verified": "Access only for verified users"
+						}
+					},
+					"specialization": {
+						"not.found": "Specialization not found",
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by other entities"
+						}
+					},
+					"question": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some question"
+						}
+					},
+					"collection": {
+						"constraint": {
+							"foreign.key.violation": "Cannot delete specialization because it is referenced by some collection"
+						}
+					}
 				},
 				"multiple": {
 					"success": "Successfully deleted specializations:",
@@ -409,6 +494,11 @@
 			"title": {
 				"conflict": {
 					"specialization": "Specialization with this title already exists"
+				}
+			},
+			"specialization": {
+				"not": {
+					"found": "Specialization not found"
 				}
 			}
 		},
@@ -470,7 +560,24 @@
 			"delete": {
 				"single": {
 					"success": "Collection successfully deleted",
-					"failed": "The collection could not be deleted"
+					"failed": "The collection could not be deleted",
+					"not_found": "Collection not found",
+					"image": {
+						"url_invalid": "image url can not be empty",
+						"not_found": "there is no such image in storage"
+					}
+				},
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"constraint": {
+					"foreign_key_violation": "Невозможно удалить коллекцию, поскольку на нее ссылаются другие объекты."
 				}
 			},
 			"edit": {

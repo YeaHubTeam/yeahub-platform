@@ -22,6 +22,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 						[styles[`${textAreaClassName}-valid`]]: state === 'valid',
 						[styles[`${textAreaClassName}-disabled`]]: isReadonly || disabled,
 					})}
+					value={value}
 					disabled={isReadonly || disabled}
 					{...otherProps}
 				/>

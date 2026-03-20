@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 import { ROUTES } from '@/shared/config';
 import { AppLogo } from '@/shared/ui/AppLogo';
-// import { ThemeSwitcher } from '@/features/theme/switch-theme';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -12,6 +11,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { WithFeature } from '@/entities/featureFlag';
 
 import { LanguageSwitcher } from '@/features/internationalization/switch-language';
+import { ThemeSwitcher } from '@/features/theme/switch-theme';
 
 import { UserPreferences } from '../UserPreferences/UserPreferences';
 
@@ -28,7 +28,9 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 				<AppLogo isOpen />
 			</NavLink>
 			<Flex gap="16" align="center">
-				{/* <ThemeSwitcher /> */}
+				<WithFeature featureId="changeTheme">
+					<ThemeSwitcher />
+				</WithFeature>
 				<WithFeature featureId="changeLanguage">
 					<LanguageSwitcher />
 				</WithFeature>

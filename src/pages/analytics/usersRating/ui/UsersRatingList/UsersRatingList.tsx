@@ -16,28 +16,49 @@ interface UsersRatingListProps {
 	rankedUsers: UserRating[];
 	maxRating: number;
 	currentUserRating?: UserRating;
+	showCurrentUserRating?: boolean;
 }
 export const UsersRatingList = ({
 	rankedUsers,
 	maxRating,
 	currentUserRating,
+	showCurrentUserRating,
 }: UsersRatingListProps) => {
 	const { t } = useTranslation([i18Namespace.analytics]);
 
-	const rankedUsersFields: AnalyticPageTemplateMobileListItem[] = rankedUsers.map((rankedUser) => {
-		const isCurrentUser = rankedUser.userId === currentUserRating?.userId;
-		return {
-			title: <UsersTitle rankedUser={rankedUser} />,
-			fields: [
-				{
-					label: t(Analytics.USERS_RATING_ANSWERS),
-					value: `${rankedUser.ratingPoints}/${maxRating}`,
-				},
-			],
-			suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
-			isCurrentUser,
-		};
+	const hasCurrentUserInPage = rankedUsers.some(
+		(user) => user.userId === currentUserRating?.userId,
+	);
+
+	const mapUserToItem = (
+		rankedUser: UserRating,
+		isCurrentUser: boolean,
+	): AnalyticPageTemplateMobileListItem => ({
+		title: <UsersTitle rankedUser={rankedUser} />,
+		fields: [
+			{
+				label: t(Analytics.USERS_RATING_ANSWERS),
+				value: `${rankedUser.ratingPoints * 10}/${maxRating}`,
+			},
+		],
+		suffix: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
+		isCurrentUser,
 	});
 
-	return <AnalyticPageTemplateMobileList items={rankedUsersFields} />;
+	const rankedUsersFields = rankedUsers.map((user) =>
+		mapUserToItem(user, user.username === currentUserRating?.username),
+	);
+
+	const currentUserItem =
+		currentUserRating && !hasCurrentUserInPage ? mapUserToItem(currentUserRating, true) : null;
+
+	return (
+		<>
+			<AnalyticPageTemplateMobileList items={rankedUsersFields} />
+
+			{currentUserItem && showCurrentUserRating && (
+				<AnalyticPageTemplateMobileList items={[currentUserItem]} />
+			)}
+		</>
+	);
 };

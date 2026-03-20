@@ -76,9 +76,11 @@
 			"widget": "Top 3 users by speciality {{specialization}}",
 			"page": "{{specialization}} speciality rating"
 		},
-		"no.data": {
-			"widget": "No top users found for this speciality",
-			"page": "No top users found for this speciality"
+		"stub": {
+			"empty": {
+				"title": "It looks like there is no rating for studying questions in this specialization yet",
+				"subtitle": "Please wait for someone to start taking interviews or studying questions"
+			}
 		},
 		"table": {
 			"index": "№",
@@ -88,9 +90,9 @@
 			"progress": "Progress"
 		},
 		"tooltip": {
-			"users.count": "Total users: {{usersCount}}",
-			"progress": "Average progress: {{averageProgress}}%",
-			"updated.at": "Last updated: {{updatedAt}}"
+			"users.count": "Total users:",
+			"questionsCount": "Total questions:",
+			"progress": "Average progress:"
 		}
 	},
 	"top.users": {

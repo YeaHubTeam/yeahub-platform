@@ -39,7 +39,7 @@ export const TaskStructuresField = () => {
 	const { data } = useGetLanguagesQuery();
 
 	const taskStructuresValues = watch('taskStructures');
-
+	console.log(watch());
 	const languages =
 		data?.reduce((result, language) => {
 			result[language.id] = language.monacoLangId;
@@ -57,7 +57,7 @@ export const TaskStructuresField = () => {
 	useEffect(() => {
 		if (data) {
 			taskStructures.forEach((taskStructure, index) => {
-				if (taskStructure.preloadedCode !== languagePreloadedCodes[taskStructure.languageId]) {
+				if (!taskStructure.preloadedCode) {
 					setValue(
 						`taskStructures.${index}.preloadedCode`,
 						languagePreloadedCodes[taskStructure.languageId],
