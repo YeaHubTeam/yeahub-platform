@@ -1,5 +1,3 @@
-import { describe } from 'node:test';
-
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { createRef, RefObject } from 'react';
@@ -34,6 +32,13 @@ describe('Switch', () => {
 			renderSwitch();
 			const switchEl = screen.getByTestId(switchTestIds.switch);
 			expect(switchEl).toBeInTheDocument();
+			expect(switchEl).toHaveClass('switch');
+		});
+
+		test('render with switchClassName props', () => {
+			renderSwitch({ switchClassName: 'custom-switch' });
+			const switchEl = screen.getByTestId(switchTestIds.switch);
+			expect(switchEl).toHaveClass('switch', 'custom-switch');
 		});
 	});
 
