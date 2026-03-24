@@ -16,7 +16,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['./src/widgets/**'],
+		files: ['./src/widgets/**', './src/features/**'],
 		rules: {
 			'fsd/repetitive-naming': 'warn',
 		},
