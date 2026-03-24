@@ -37,6 +37,12 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 		limit: 10,
 	});
 
+	useEffect(() => {
+		if (!value) {
+			setSearchValue('');
+		}
+	}, [value]);
+
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
 		onChange(newValue);
