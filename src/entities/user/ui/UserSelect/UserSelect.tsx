@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, User as UserI18n } from '@/shared/config';
@@ -71,6 +71,12 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
 	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectUser.label;
+
+	useEffect(() => {
+		if (!value) {
+			setSearchValue('');
+		}
+	}, [value]);
 
 	return (
 		<Flex direction="column" align="start" gap="8">
