@@ -36,5 +36,13 @@
 		"label": "Add an owner",
 		"placeholder": "Add an owner",
 		"my": "I am the owner"
+	},
+	"delete": {
+		"modal": {
+			"text": "Are you sure you want to delete the referral link?"
+		}
+	},
+	"actions": {
+		"delete": "Delete"
 	}
 }

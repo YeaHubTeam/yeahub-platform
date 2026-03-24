@@ -329,6 +329,12 @@ export enum Translation {
 	TOAST_REFERRALLINK_CREATE_FAILED = 'toast.referralLink.create.failed',
 	TOAST_REFERRALLINK_CREATE_UNAUTHORIZED = 'toast.referralLink.create.unauthorized',
 	TOAST_REFERRALLINK_CREATE_UNVERIFIED = 'toast.referralLink.create.unverified',
+	TOAST_REFERRALLINK_DELETE_SUCCESS = 'toast.referralLink.delete.success',
+	TOAST_REFERRALLINK_DELETE_FAILED = 'toast.referralLink.delete.failed',
+	TOAST_REFERRALLINK_DELETE_UNAUTHORIZED = 'toast.referralLink.delete.unauthorized',
+	TOAST_REFERRALLINK_DELETE_UNVERIFIED = 'toast.referralLink.delete.unverified',
+	TOAST_REFERRALLINK_DELETE_NOT_OWNER = 'toast.referralLink.delete.not_owner',
+	TOAST_REFERRALLINK_DELETE_NOT_FOUND = 'toast.referralLink.delete.not_found',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_SUCCESS = 'toast.auth.telegram.verification.link.success',
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
@@ -938,6 +944,8 @@ export enum ReferralLinks {
 	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
 	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
 	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
+	DELETE_MODAL_TEXT = 'delete.modal.text',
+	ACTION_DELETE = 'actions.delete',
 }
 
 export enum User {

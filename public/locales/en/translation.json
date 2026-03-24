@@ -643,6 +643,16 @@
 				"failed": "Failed to reject the resource request"
 			}
 		},
+		"referralLink": {
+			"delete": {
+				"success": "Referral link has been successfully deleted",
+				"failed": "Failed to delete referral link",
+				"unauthorized": "You have to be authorized to delete a referral link",
+				"unverified": "You have to be verified to delete a referral link",
+				"not_owner": "User must be an owner of link or admin",
+				"not_found": "Referral link not found"
+			}
+		},
 		"profile": {
 			"update": {
 				"success": "Profile has been successfully changed",
