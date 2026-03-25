@@ -38,6 +38,7 @@ import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
 import { CompanyEditPage } from '@/pages/admin/company/companyEdit';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
+import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreateMultiple';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
@@ -420,6 +421,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.questions.create.page,
 				element: <QuestionCreatePage />,
+			},
+			{
+				path: ROUTES.admin.questions.createMultiple.page,
+				element: <QuestionCreateMultiplePage />,
 			},
 			{
 				path: ROUTES.admin.questions.edit.page,

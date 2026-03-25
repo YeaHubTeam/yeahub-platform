@@ -8,6 +8,7 @@ export enum Translation {
 	MORE = 'more',
 	RETURN = 'return',
 	CREATE = 'create',
+	QUESTIONS_ADD = 'questions.add',
 	SEARCH = 'search',
 	REMOVE_SELECTED = 'remove.selected',
 	LOADING = 'loading',
@@ -197,6 +198,8 @@ export enum Translation {
 	TOAST_PROFILE_SET_FAILED = 'toast.profile.set.failed',
 	TOAST_QUESTION_CREATE_SUCCESS = 'toast.questions.create.success',
 	TOAST_QUESTION_CREATE_FAILED = 'toast.questions.create.failed',
+	TOAST_QUESTIONS_CREATE_MULTIPLE_SUCCESS = 'toast.questions.create.multiple.success',
+	TOAST_QUESTIONS_CREATE_MULTIPLE_FAILED = 'toast.questions.create.multiple.failed',
 	TOAST_QUESTION_EDIT_SUCCESS = 'toast.questions.edit.success',
 	TOAST_QUESTION_EDIT_FAILED = 'toast.questions.edit.failed',
 	TOAST_QUESTION_EDIT_AUTH_UNAUTHORIZED = 'toast.questions.edit.auth.unauthorized',
@@ -827,6 +830,11 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
 	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
+
+	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
+	GENERATED_QUESTIONS_SUCCESS_TITLE = 'generated.questions.success.title',
+	GENERATED_QUESTIONS_ERRORS_TITLE = 'generated.questions.errors.title',
+	GENERATED_QUESTIONS_ERRORS_TITLE_CONFLICT = 'generated.questions.errors.conflict.title',
 }
 
 export enum InterviewHistory {

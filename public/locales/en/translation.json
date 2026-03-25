@@ -9,6 +9,7 @@
 	"more": "More",
 	"return": "Return",
 	"create": "Add",
+	"questions.add": "Add questions",
 	"search": "Search",
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
@@ -275,6 +276,10 @@
 			"create": {
 				"success": "The question was created successfully",
 				"failed": "Failed to create a question",
+				"multiple": {
+					"success": "Questions created successfully",
+					"failed": "Failed to create questions"
+				},
 				"user": {
 					"not.found": "User not found"
 				},
