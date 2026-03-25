@@ -45,5 +45,13 @@
 		"created.at": "Created at",
 		"updated.at": "Updated at",
 		"owner": "Owner"
+	},
+	"delete": {
+		"modal": {
+			"text": "Are you sure you want to delete the referral link?"
+		}
+	},
+	"actions": {
+		"delete": "Delete"
 	}
 }

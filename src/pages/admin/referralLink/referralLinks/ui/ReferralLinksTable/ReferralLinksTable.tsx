@@ -12,6 +12,8 @@ import { Text } from '@/shared/ui/Text';
 
 import { ReferralLink } from '@/entities/referralLink';
 
+import { DeleteReferralLinkButton } from '@/features/referralLinks/deleteReferralLink';
+
 interface ReferralLinksTableProps {
 	referralLinks: ReferralLink[];
 	selectedReferralLinks?: SelectedAdminEntities<string>;
@@ -63,14 +65,13 @@ export const ReferralLinksTable = ({
 			</td>
 		));
 	};
+
 	const renderActions = (ref: ReferralLink) => {
 		const menuItems: PopoverMenuItem[] = [
 			{
 				icon: <Icon icon="eye" size={24} />,
 				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.referralLinks.details.page, ref.id));
-				},
+				onClick: () => navigate(route(ROUTES.admin.referralLinks.details.page, ref.id)),
 			},
 			{
 				icon: <Icon icon="pen" size={24} />,
@@ -78,9 +79,7 @@ export const ReferralLinksTable = ({
 				onClick: () => {},
 			},
 			{
-				icon: <Icon icon="trash" size={24} />,
-				title: t(Translation.DELETE, { ns: i18Namespace.translation }),
-				onClick: () => {},
+				renderComponent: () => <DeleteReferralLinkButton id={ref.id} />,
 			},
 		];
 
@@ -89,9 +88,9 @@ export const ReferralLinksTable = ({
 				<Popover menuItems={menuItems}>
 					{({ onToggle }: PopoverChildrenProps) => (
 						<IconButton
-							aria-label="go to details"
+							aria-label="open actions"
 							form="square"
-							icon={<Icon icon="dotsThreeVertical" />}
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
 							size="medium"
 							variant="tertiary"
 							onClick={onToggle}
@@ -101,6 +100,7 @@ export const ReferralLinksTable = ({
 			</Flex>
 		);
 	};
+
 	return (
 		<Table
 			items={referralLinks}
