@@ -37,6 +37,15 @@
 		"placeholder": "Add an owner",
 		"my": "I am the owner"
 	},
+	"detail": {
+		"ref.code": "Promo code",
+		"url": "Link",
+		"amount.sum": "Amount",
+		"linked.count": "Count",
+		"created.at": "Created at",
+		"updated.at": "Updated at",
+		"owner": "Owner"
+	},
 	"delete": {
 		"modal": {
 			"text": "Are you sure you want to delete the referral link?"

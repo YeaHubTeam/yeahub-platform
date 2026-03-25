@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { i18Namespace, ReferralLinks, ROUTES } from '@/shared/config';
+import { i18Namespace, ReferralLinks, ROUTES, Translation } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+import { Popover, PopoverChildrenProps, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
@@ -26,6 +26,7 @@ export const ReferralLinksTable = ({
 	onSelectReferralLinks,
 }: ReferralLinksTableProps) => {
 	const { t } = useTranslation([i18Namespace.referralLink, i18Namespace.translation]);
+	const navigate = useNavigate();
 
 	const renderTableHeader = () => {
 		const columns = {
@@ -68,6 +69,16 @@ export const ReferralLinksTable = ({
 	const renderActions = (ref: ReferralLink) => {
 		const menuItems: PopoverMenuItem[] = [
 			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				onClick: () => navigate(route(ROUTES.admin.referralLinks.details.page, ref.id)),
+			},
+			{
+				icon: <Icon icon="pen" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				onClick: () => {},
+			},
+			{
 				renderComponent: () => <DeleteReferralLinkButton id={ref.id} />,
 			},
 		];
@@ -75,7 +86,7 @@ export const ReferralLinksTable = ({
 		return (
 			<Flex gap="4">
 				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
+					{({ onToggle }: PopoverChildrenProps) => (
 						<IconButton
 							aria-label="open actions"
 							form="square"
