@@ -7,3 +7,5 @@ export type {
 	GetReferralLinksListResponse,
 	CreateOrEditOrViewReferralLinkFormValues,
 } from './model/types/referralLinks';
+
+export { referralLinksHandlers } from './api/__mocks__';
