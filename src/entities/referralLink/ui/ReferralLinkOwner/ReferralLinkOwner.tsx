@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
+import { i18Namespace, ReferralLinks, ROUTES } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -13,15 +14,13 @@ interface ReferralLinkSumProps {
 }
 
 export const ReferralLinkOwner = ({ ownerUsername, ownerId }: ReferralLinkSumProps) => {
+	const { t } = useTranslation(i18Namespace.referralLink);
 	const path = ROUTES.admin.users.detail.page;
-	if (!ownerUsername) {
-		return null;
-	}
 
 	return (
-		<Flex>
+		<Flex gap="8">
 			<Text variant="body2-accent" color="black-700">
-				Владелец:{' '}
+				{t(ReferralLinks.DETAIL_OWNER)}:
 			</Text>
 			<Link to={route(path, ownerId)}>
 				<Text variant="body2-accent" color="purple-700">

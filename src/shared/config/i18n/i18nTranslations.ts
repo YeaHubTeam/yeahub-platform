@@ -938,6 +938,13 @@ export enum ReferralLinks {
 	STUB_EMPTY_REFERRAL_LINKS_TITLE = 'stub.empty.title',
 	STUB_EMPTY_REFERRAL_LINKS_SUBTITLE = 'stub.empty.subtitle',
 	STUB_EMPTY_REFERRAL_LINKS_SUBMIT = 'stub.empty.submit',
+	DETAIL_REF_CODE = 'detail.ref.code',
+	DETAIL_URL = 'detail.url',
+	DETAIL_AMOUNT_SUM = 'detail.amount.sum',
+	DETAIL_LINKED_COUNT = 'detail.linked.count',
+	DETAIL_CREATED_AT = 'detail.created.at',
+	DETAIL_UPDATED_AT = 'detail.updated.at',
+	DETAIL_OWNER = 'detail.owner',
 }
 
 export enum User {

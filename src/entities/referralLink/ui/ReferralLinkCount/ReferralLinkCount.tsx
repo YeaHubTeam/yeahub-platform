@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -9,14 +12,12 @@ interface ReferralLinkCountProps {
 }
 
 export const ReferralLinkCount = ({ count }: ReferralLinkCountProps) => {
-	if (count === undefined || count === null) {
-		return null;
-	}
+	const { t } = useTranslation(i18Namespace.referralLink);
 
 	return (
 		<Flex direction="column" gap="16">
 			<Text variant="body3" color="black-700">
-				Количество:
+				{t(ReferralLinks.DETAIL_LINKED_COUNT)}:
 			</Text>
 			<Chip active label={count} />
 		</Flex>

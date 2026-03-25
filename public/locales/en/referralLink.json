@@ -36,5 +36,14 @@
 		"label": "Add an owner",
 		"placeholder": "Add an owner",
 		"my": "I am the owner"
+	},
+	"detail": {
+		"ref.code": "Promo code",
+		"url": "Link",
+		"amount.sum": "Amount",
+		"linked.count": "Count",
+		"created.at": "Created at",
+		"updated.at": "Updated at",
+		"owner": "Owner"
 	}
 }

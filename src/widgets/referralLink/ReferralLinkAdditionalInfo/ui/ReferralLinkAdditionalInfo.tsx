@@ -1,3 +1,4 @@
+import { ReferralLinks } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -29,8 +30,8 @@ export const ReferralLinkAdditionalInfo = ({
 			<Flex direction="column" gap="24">
 				<ReferralLinkSum amountSum={amountSum} />
 				<ReferralLinkCount count={linkedCount} />
-				<ReferralLinkDate label="Дата создания:" date={createdAt} />
-				<ReferralLinkDate label="Дата изменения:" date={updatedAt} />
+				<ReferralLinkDate label={ReferralLinks.DETAIL_CREATED_AT} date={createdAt} />
+				<ReferralLinkDate label={ReferralLinks.DETAIL_UPDATED_AT} date={updatedAt} />
 				<ReferralLinkOwner ownerId={ownerId} ownerUsername={ownerUsername} />
 			</Flex>
 		</Card>

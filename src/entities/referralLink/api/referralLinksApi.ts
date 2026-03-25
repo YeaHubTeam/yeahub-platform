@@ -26,7 +26,7 @@ const referralLinkApi = baseApi.injectEndpoints({
 				query: ({ id }) => ({
 					url: route(referralLinksApiUrls.getReferralLinkById, id),
 				}),
-				providesTags: [ApiTags.REFERRALS],
+				providesTags: [ApiTags.REFERRAL_DETAIL],
 			},
 		),
 	}),

@@ -1,26 +1,25 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { ReferralLink } from '../../model/types/referralLinks';
 
-import styles from './ReferralLinkSum.module.css';
-
 interface ReferralLinkSumProps {
 	amountSum: ReferralLink['amountSum'];
 }
 
 export const ReferralLinkSum = ({ amountSum }: ReferralLinkSumProps) => {
-	if (amountSum === undefined || amountSum === null) {
-		return null;
-	}
+	const { t } = useTranslation(i18Namespace.referralLink);
 
 	return (
 		<Flex direction="column" gap="16">
 			<Text variant="body3" color="black-700">
-				Сумма:
+				{t(ReferralLinks.DETAIL_AMOUNT_SUM)}:
 			</Text>
-			<Chip className={styles.chip} label={`${amountSum}₽`} />
+			<Chip activeInverse label={`${amountSum}₽`} />
 		</Flex>
 	);
 };
