@@ -18,6 +18,9 @@
 	"edit": {
 		"resource": {
 			"title": "Request review form"
+		},
+		"ref.code": {
+			"title": "Editing a referral link"
 		}
 	},
 	"delete": "Delete",
