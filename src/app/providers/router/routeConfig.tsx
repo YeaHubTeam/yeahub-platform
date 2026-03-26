@@ -42,10 +42,10 @@ import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreat
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ReferralLinkDetailPage } from '@/pages/admin/referralLink/ReferalLinkDetail';
 import { ReferralLinkCreatePage } from '@/pages/admin/referralLink/ReferralLinkCreate';
 import { ReferralLinkEditPage } from '@/pages/admin/referralLink/referralLinkEdit';
+import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
@@ -132,800 +132,804 @@ import { UnAuthRoute } from './UnAuthRoute';
 import '../../styles/App.css';
 
 export const allRoles: RoleName[] = [
-  'guest',
-  'candidate',
-  'member',
-  'admin',
-  'HR',
-  'candidate-free',
-  'candidate-premium',
-  'author',
+	'guest',
+	'candidate',
+	'member',
+	'admin',
+	'HR',
+	'candidate-free',
+	'candidate-premium',
+	'author',
 ];
 
 const mainLayoutMenuItems: MenuItem[] = [
-  {
-    type: 'single',
-    route: ROUTES.adminRoute,
-    title: i18n.t(Translation.SIDEBAR_MENU_ADMIN),
-    icon: Crown,
-    roles: listAdminRoles,
-    isAdmin: true,
-  },
-  {
-    type: 'single',
-    route: ROUTES.appRoute,
-    title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
-    icon: MainIcon,
-    roles: allRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.profile.route,
-    title: i18n.t(Translation.PROFILE),
-    icon: ProfileIcon,
-    roles: allRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.settings.route,
-    title: i18n.t(Translation.HEADER_MENU_SETTINGS),
-    icon: SettingsIcon,
-    roles: allRoles,
-  },
-  {
-    type: 'category',
-    title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_TITLE),
-    icon: EducationIcon,
-    elements: [
-      {
-        route: ROUTES.interview.route,
-        title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
-        icon: InterviewIcon,
-      },
-      {
-        route: ROUTES.tasks.route,
-        title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
-        icon: CursorSquare,
-      },
-    ],
-    roles: allRoles,
-  },
-  {
-    type: 'category',
-    title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
-    icon: WikiIcon,
-    elements: [
-      {
-        route: `${ROUTES.wiki.route}/${ROUTES.wiki.resources.route}`,
-        title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
-        icon: ResourcesIcon,
-      },
-      {
-        route: `${ROUTES.wiki.route}/${ROUTES.wiki.questions.route}`,
-        title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
-        icon: QuestionsIcon,
-      },
-      {
-        route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
-        title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
-        icon: Collection,
-      },
-    ],
-    roles: allRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.analytics.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
-    icon: AnalyticsIcon,
-    roles: allRoles,
-  },
+	{
+		type: 'single',
+		route: ROUTES.adminRoute,
+		title: i18n.t(Translation.SIDEBAR_MENU_ADMIN),
+		icon: Crown,
+		roles: listAdminRoles,
+		isAdmin: true,
+	},
+	{
+		type: 'single',
+		route: ROUTES.appRoute,
+		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
+		icon: MainIcon,
+		roles: allRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.profile.route,
+		title: i18n.t(Translation.PROFILE),
+		icon: ProfileIcon,
+		roles: allRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.settings.route,
+		title: i18n.t(Translation.HEADER_MENU_SETTINGS),
+		icon: SettingsIcon,
+		roles: allRoles,
+	},
+	{
+		type: 'category',
+		title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_TITLE),
+		icon: EducationIcon,
+		elements: [
+			{
+				route: ROUTES.interview.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
+				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.tasks.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
+				icon: CursorSquare,
+			},
+		],
+		roles: allRoles,
+	},
+	{
+		type: 'category',
+		title: i18n.t(Translation.SIDEBAR_MENU_WIKI_TITLE),
+		icon: WikiIcon,
+		elements: [
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.resources.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
+				icon: ResourcesIcon,
+			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.questions.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
+				icon: QuestionsIcon,
+			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+				icon: Collection,
+			},
+		],
+		roles: allRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.analytics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ANALYTICS),
+		icon: AnalyticsIcon,
+		roles: allRoles,
+	},
 ];
 
 const adminLayoutMenuItems: MenuItem[] = [
-  {
-    type: 'single',
-    route: ROUTES.appRoute,
-    title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
-    icon: CursorSquare,
-    roles: listAdminRoles,
-    isAdmin: true,
-  },
-  {
-    type: 'single',
-    route: ROUTES.adminRoute,
-    title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
-    icon: Home,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.questions.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
-    icon: QuestionsIcon,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.specializations.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_SPECIALIZATIONS),
-    icon: SpecializationIcon,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.skills.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_SKILLS),
-    icon: SkillsIcon,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.users.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_USERS),
-    icon: User,
-    roles: ['admin'],
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.collections.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
-    icon: Collection,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.companies.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
-    icon: Companies,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.resources.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
-    icon: Books,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.topics.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
-    icon: Cards,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.tasks.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
-    icon: TasksIcon,
-    roles: listAdminRoles,
-  },
-  {
-    type: 'single',
-    route: ROUTES.admin.referralLinks.route,
-    title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
-    icon: ReferralsIcon,
-    roles: ['admin'],
-  },
+	{
+		type: 'single',
+		route: ROUTES.appRoute,
+		title: i18n.t(Translation.SIDEBAR_MENU_PLATFORM),
+		icon: CursorSquare,
+		roles: listAdminRoles,
+		isAdmin: true,
+	},
+	{
+		type: 'single',
+		route: ROUTES.adminRoute,
+		title: i18n.t(Translation.SIDEBAR_MENU_MAIN),
+		icon: Home,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.questions.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
+		icon: QuestionsIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.specializations.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_SPECIALIZATIONS),
+		icon: SpecializationIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.skills.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_SKILLS),
+		icon: SkillsIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.users.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
+		icon: User,
+		roles: ['admin'],
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.collections.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
+		icon: Collection,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.companies.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
+		icon: Companies,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.resources.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
+		icon: Books,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.topics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
+		icon: Cards,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.tasks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
+		icon: TasksIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.referralLinks.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
+		icon: ReferralsIcon,
+		roles: ['admin'],
+	},
 ];
 
 export const router = createBrowserRouter([
-  {
-    path: process.env.LANDING_URL,
-    element: <LandingLayout />,
-    children: [
-      {
-        index: true,
-        element: <LandingPage />,
-      },
-      {
-        path: ROUTES.public.learning.page,
-        element: <LearningPage />,
-      },
-      {
-        path: '*',
-        element: <Error404Page />,
-      },
-      {
-        path: 'test',
-        element: <CollectionBlock />,
-      },
-      {
-        path: ROUTES.public.resources.page,
-        element: <PublicResourcesPage />,
-      },
-      {
-        path: ROUTES.public.docs.page,
-        element: <DocsPage />,
-      },
-      {
-        path: ROUTES.public.media.page,
-        element: <MediaPage />,
-      },
-      {
-        path: ROUTES.public.questions.page,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <PublicQuestionsPage />,
-          },
-          {
-            path: ROUTES.public.questions.detail.page,
-            element: <PublicQuestionPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.public.quiz.page,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <CreatePublicQuizPage />,
-          },
-          {
-            path: ROUTES.public.quiz.new.page,
-            element: <PublicQuizPage />,
-          },
-          {
-            path: ROUTES.public.quiz.result.page,
-            element: <PublicQuizResultPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.public.collections.page,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <PublicCollectionsPage />,
-          },
-          {
-            path: ROUTES.public.collections.detail.page,
-            element: <PublicCollectionPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.public.avos.page,
-        element: <AvosPage />,
-      },
-      {
-        path: ROUTES.public.hhAnalytics.page,
-        element: <HhAnalyticsPage />,
-      },
-    ],
-  },
-  {
-    path: ROUTES.adminRoute,
-    element: (
-      <AuthRoute>
-        <MainLayout sidebarItems={adminLayoutMenuItems} onlyAdmin />
-      </AuthRoute>
-    ),
-    children: [
-      {
-        index: true,
-        element: <AdminMainPage />,
-      },
-      {
-        path: ROUTES.admin.questions.route,
-        element: <QuestionsTablePage />,
-      },
-      {
-        path: ROUTES.admin.questions.details.page,
-        element: <AdminQuestionPage />,
-      },
-      {
-        path: ROUTES.admin.questions.create.page,
-        element: <QuestionCreatePage />,
-      },
-      {
-        path: ROUTES.admin.questions.edit.page,
-        element: <QuestionEditPage />,
-      },
-      {
-        path: ROUTES.admin.resources.page,
-        element: <AdminResourcesPage />,
-      },
-      {
-        path: ROUTES.admin.resources.details.page,
-        element: <ResourcePage />,
-      },
-      {
-        path: ROUTES.admin.resources.create.page,
-        element: <ResourceCreatePage />,
-      },
-      {
-        path: ROUTES.admin.resources.edit.page,
-        element: <ResourceEditPage />,
-      },
-      {
-        path: ROUTES.admin.resources.requests.view.page,
-        element: <ResourceRequestViewPage />,
-      },
-      {
-        path: ROUTES.admin.resources.requests.edit.page,
-        element: <ResourceRequestEditPage />,
-      },
-      {
-        path: ROUTES.admin.specializations.page,
-        element: <SpecializationsPage />,
-      },
-      {
-        path: ROUTES.admin.specializations.edit.page,
-        element: <SpecializationEditPage />,
-      },
-      {
-        path: ROUTES.admin.specializations.create.page,
-        element: <SpecializationCreatePage />,
-      },
-      {
-        path: ROUTES.admin.specializations.details.page,
-        element: <SpecializationDetailPage />,
-      },
-      {
-        path: ROUTES.admin.skills.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <SkillsPage />,
-          },
-          {
-            path: ROUTES.admin.skills.create.route,
-            element: <SkillCreatePage />,
-          },
-          {
-            path: ROUTES.admin.skills.edit.route,
-            element: <SkillEditPage />,
-          },
-          {
-            path: ROUTES.admin.skills.detail.route,
-            element: <SkillDetailPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.users.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <UsersTablePage />,
-          },
-          {
-            path: ROUTES.admin.users.detail.route,
-            element: <UserDetailPage />,
-          },
-          {
-            path: ROUTES.admin.users.edit.route,
-            element: <UserEditPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.collections.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <AdminCollectionsPage />,
-          },
-          {
-            path: ROUTES.admin.collections.create.route,
-            element: <CollectionCreatePage />,
-          },
-          {
-            path: ROUTES.admin.collections.edit.route,
-            element: <CollectionEditPage />,
-          },
-          {
-            path: ROUTES.admin.collections.details.route,
-            element: <AdminCollectionPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.companies.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <CompaniesTablePage />,
-          },
-          {
-            path: ROUTES.admin.companies.create.route,
-            element: <CompanyCreatePage />,
-          },
-          {
-            path: ROUTES.admin.companies.edit.route,
-            element: <CompanyEditPage />,
-          },
-          {
-            path: ROUTES.admin.companies.details.route,
-            element: <CompanyDetailPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.topics.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <TopicsPage />,
-          },
-          {
-            path: ROUTES.admin.topics.create.route,
-            element: <TopicCreatePage />,
-          },
-          {
-            path: ROUTES.admin.topics.details.route,
-            element: <TopicDetailPage />,
-          },
-          {
-            path: ROUTES.admin.topics.edit.route,
-            element: <TopicEditPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.tasks.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <TasksTablePage />,
-          },
-          {
-            path: ROUTES.admin.tasks.create.route,
-            element: <TaskCreatePage />,
-          },
-          {
-            path: ROUTES.admin.tasks.edit.route,
-            element: <TaskEditPage />,
-          },
-          {
-            path: ROUTES.admin.tasks.details.route,
-            element: <AdminTaskPage />,
-          },
-        ],
-      },
-      {
-        path: ROUTES.admin.referralLinks.route,
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <ReferralLinksPage />,
-          },
-          {
-            path: ROUTES.admin.referralLinks.create.route,
-            element: <ReferralLinkCreatePage />,
-          },
-          {
-            path: ROUTES.admin.referralLinks.details.route,
-            element: <ReferralLinkDetailPage />,
-          },
-          {
-            path: ROUTES.admin.referralLinks.edit.route,
-            element: <ReferralLinkEditPage />,
-          },
-        ],
-      },
-      {
-        path: '*',
-        element: <Error404Page />,
-      },
-    ],
-  },
-  {
-    path: ROUTES.appRoute,
-    element: (
-      <AuthRoute>
-        <MainLayout sidebarItems={mainLayoutMenuItems} />
-      </AuthRoute>
-    ),
-    children: [
-      {
-        index: true,
-        element: <MainPage />,
-      },
-      {
-        path: ROUTES.analytics.route,
-        element: <Outlet />,
-        handle: {
-          crumb: Translation.CRUMBS_ANALYTICS,
-        },
-        children: [
-          {
-            index: true,
-            element: <AnalyticsPage />,
-          },
-          {
-            path: ROUTES.analytics.progressSpecializations.route,
-            element: <ProgressSpecializationsPage />,
-            handle: {
-              crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
-            },
-          },
-          {
-            path: ROUTES.analytics['popular-skills'].route,
-            element: <PopularSkillsPage />,
-            handle: {
-              crumb: Translation.CRUMBS_POPULAR_SKILLS,
-            },
-          },
-          {
-            path: ROUTES.analytics['skills-proficiency'].route,
-            element: <SkillsProficiencyPage />,
-            handle: {
-              crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
-            },
-          },
-          {
-            path: ROUTES.analytics['difficult-questions'].route,
-            element: <DifficultQuestionsPage />,
-            handle: {
-              crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
-            },
-          },
-          {
-            path: ROUTES.analytics['popular-questions'].route,
-            element: <PopularQuestionsPage />,
-            handle: {
-              crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
-            },
-          },
-          {
-            path: ROUTES.analytics['users-rating'].route,
-            element: <UsersRatingPage />,
-            handle: {
-              crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
-            },
-          },
-        ],
-      },
-      {
-        path: ROUTES.profile.route,
-        element: <Outlet />,
-        handle: {
-          crumb: Translation.CRUMBS_PROFILE,
-        },
-        children: [
-          {
-            index: true,
-            element: <ProfilePage />,
-          },
-          {
-            path: ROUTES.profile.edit.route,
-            element: <EditProfilePage />,
-            handle: {
-              crumb: Translation.CRUMBS_PROFILE_EDITING,
-            },
-          },
-        ],
-      },
-      {
-        path: ROUTES.settings.route,
-        element: <SettingsProfilePage />,
-      },
-      {
-        path: ROUTES.interview.route,
-        element: (
-          <InterviewRoute>
-            <Outlet />
-          </InterviewRoute>
-        ),
-        handle: {
-          crumb: Translation.CRUMBS_INTERVIEW,
-        },
+	{
+		path: process.env.LANDING_URL,
+		element: <LandingLayout />,
+		children: [
+			{
+				index: true,
+				element: <LandingPage />,
+			},
+			{
+				path: ROUTES.public.learning.page,
+				element: <LearningPage />,
+			},
+			{
+				path: '*',
+				element: <Error404Page />,
+			},
+			{
+				path: 'test',
+				element: <CollectionBlock />,
+			},
+			{
+				path: ROUTES.public.resources.page,
+				element: <PublicResourcesPage />,
+			},
+			{
+				path: ROUTES.public.docs.page,
+				element: <DocsPage />,
+			},
+			{
+				path: ROUTES.public.media.page,
+				element: <MediaPage />,
+			},
+			{
+				path: ROUTES.public.questions.page,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicQuestionsPage />,
+					},
+					{
+						path: ROUTES.public.questions.detail.page,
+						element: <PublicQuestionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.public.quiz.page,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CreatePublicQuizPage />,
+					},
+					{
+						path: ROUTES.public.quiz.new.page,
+						element: <PublicQuizPage />,
+					},
+					{
+						path: ROUTES.public.quiz.result.page,
+						element: <PublicQuizResultPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.public.collections.page,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <PublicCollectionsPage />,
+					},
+					{
+						path: ROUTES.public.collections.detail.page,
+						element: <PublicCollectionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.public.avos.page,
+				element: <AvosPage />,
+			},
+			{
+				path: ROUTES.public.hhAnalytics.page,
+				element: <HhAnalyticsPage />,
+			},
+		],
+	},
+	{
+		path: ROUTES.adminRoute,
+		element: (
+			<AuthRoute>
+				<MainLayout sidebarItems={adminLayoutMenuItems} onlyAdmin />
+			</AuthRoute>
+		),
+		children: [
+			{
+				index: true,
+				element: <AdminMainPage />,
+			},
+			{
+				path: ROUTES.admin.questions.route,
+				element: <QuestionsTablePage />,
+			},
+			{
+				path: ROUTES.admin.questions.details.page,
+				element: <AdminQuestionPage />,
+			},
+			{
+				path: ROUTES.admin.questions.create.page,
+				element: <QuestionCreatePage />,
+			},
+			{
+				path: ROUTES.admin.questions.createMultiple.page,
+				element: <QuestionCreateMultiplePage />,
+			},
+			{
+				path: ROUTES.admin.questions.edit.page,
+				element: <QuestionEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.page,
+				element: <AdminResourcesPage />,
+			},
+			{
+				path: ROUTES.admin.resources.details.page,
+				element: <ResourcePage />,
+			},
+			{
+				path: ROUTES.admin.resources.create.page,
+				element: <ResourceCreatePage />,
+			},
+			{
+				path: ROUTES.admin.resources.edit.page,
+				element: <ResourceEditPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.view.page,
+				element: <ResourceRequestViewPage />,
+			},
+			{
+				path: ROUTES.admin.resources.requests.edit.page,
+				element: <ResourceRequestEditPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.page,
+				element: <SpecializationsPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.edit.page,
+				element: <SpecializationEditPage />,
+			},
+			{
+				path: ROUTES.admin.specializations.create.page,
+				element: <SpecializationCreatePage />,
+			},
+			{
+				path: ROUTES.admin.specializations.details.page,
+				element: <SpecializationDetailPage />,
+			},
+			{
+				path: ROUTES.admin.skills.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <SkillsPage />,
+					},
+					{
+						path: ROUTES.admin.skills.create.route,
+						element: <SkillCreatePage />,
+					},
+					{
+						path: ROUTES.admin.skills.edit.route,
+						element: <SkillEditPage />,
+					},
+					{
+						path: ROUTES.admin.skills.detail.route,
+						element: <SkillDetailPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.users.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <UsersTablePage />,
+					},
+					{
+						path: ROUTES.admin.users.detail.route,
+						element: <UserDetailPage />,
+					},
+					{
+						path: ROUTES.admin.users.edit.route,
+						element: <UserEditPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.collections.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <AdminCollectionsPage />,
+					},
+					{
+						path: ROUTES.admin.collections.create.route,
+						element: <CollectionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.collections.edit.route,
+						element: <CollectionEditPage />,
+					},
+					{
+						path: ROUTES.admin.collections.details.route,
+						element: <AdminCollectionPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.companies.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <CompaniesTablePage />,
+					},
+					{
+						path: ROUTES.admin.companies.create.route,
+						element: <CompanyCreatePage />,
+					},
+					{
+						path: ROUTES.admin.companies.edit.route,
+						element: <CompanyEditPage />,
+					},
+					{
+						path: ROUTES.admin.companies.details.route,
+						element: <CompanyDetailPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.topics.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TopicsPage />,
+					},
+					{
+						path: ROUTES.admin.topics.create.route,
+						element: <TopicCreatePage />,
+					},
+					{
+						path: ROUTES.admin.topics.details.route,
+						element: <TopicDetailPage />,
+					},
+					{
+						path: ROUTES.admin.topics.edit.route,
+						element: <TopicEditPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.tasks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TasksTablePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.create.route,
+						element: <TaskCreatePage />,
+					},
+					{
+						path: ROUTES.admin.tasks.edit.route,
+						element: <TaskEditPage />,
+					},
+					{
+						path: ROUTES.admin.tasks.details.route,
+						element: <AdminTaskPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.referralLinks.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <ReferralLinksPage />,
+					},
+					{
+						path: ROUTES.admin.referralLinks.create.route,
+						element: <ReferralLinkCreatePage />,
+					},
+					{
+						path: ROUTES.admin.referralLinks.details.route,
+						element: <ReferralLinkDetailPage />,
+					},
+					{
+						path: ROUTES.admin.referralLinks.edit.route,
+						element: <ReferralLinkEditPage />,
+					},
+				],
+			},
+			{
+				path: '*',
+				element: <Error404Page />,
+			},
+		],
+	},
+	{
+		path: ROUTES.appRoute,
+		element: (
+			<AuthRoute>
+				<MainLayout sidebarItems={mainLayoutMenuItems} />
+			</AuthRoute>
+		),
+		children: [
+			{
+				index: true,
+				element: <MainPage />,
+			},
+			{
+				path: ROUTES.analytics.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_ANALYTICS,
+				},
+				children: [
+					{
+						index: true,
+						element: <AnalyticsPage />,
+					},
+					{
+						path: ROUTES.analytics.progressSpecializations.route,
+						element: <ProgressSpecializationsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
+						},
+					},
+					{
+						path: ROUTES.analytics['popular-skills'].route,
+						element: <PopularSkillsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_POPULAR_SKILLS,
+						},
+					},
+					{
+						path: ROUTES.analytics['skills-proficiency'].route,
+						element: <SkillsProficiencyPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
+						},
+					},
+					{
+						path: ROUTES.analytics['difficult-questions'].route,
+						element: <DifficultQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
+						},
+					},
+					{
+						path: ROUTES.analytics['popular-questions'].route,
+						element: <PopularQuestionsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
+						},
+					},
+					{
+						path: ROUTES.analytics['users-rating'].route,
+						element: <UsersRatingPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
+						},
+					},
+				],
+			},
+			{
+				path: ROUTES.profile.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_PROFILE,
+				},
+				children: [
+					{
+						index: true,
+						element: <ProfilePage />,
+					},
+					{
+						path: ROUTES.profile.edit.route,
+						element: <EditProfilePage />,
+						handle: {
+							crumb: Translation.CRUMBS_PROFILE_EDITING,
+						},
+					},
+				],
+			},
+			{
+				path: ROUTES.settings.route,
+				element: <SettingsProfilePage />,
+			},
+			{
+				path: ROUTES.interview.route,
+				element: (
+					<InterviewRoute>
+						<Outlet />
+					</InterviewRoute>
+				),
+				handle: {
+					crumb: Translation.CRUMBS_INTERVIEW,
+				},
 
-        children: [
-          {
-            index: true,
-            element: <InterviewPage />,
-          },
-          {
-            path: 'new/result',
-            element: <InterviewMockQuizResultPage />,
-          },
-          {
-            path: ROUTES.interview.history.route,
-            element: <Outlet />,
-            handle: {
-              crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
-            },
-            children: [
-              {
-                index: true,
-                element: <InterviewHistoryPage />,
-              },
-              {
-                path: ROUTES.interview.history.result.route,
-                element: <InterviewQuizResultPage />,
-                handle: {
-                  crumb: Translation.CRUMBS_INTERVIEW_RESULT,
-                },
-              },
-            ],
-          },
-          {
-            path: ROUTES.interview.statistic.route,
-            element: <InterviewStatisticsPage />,
-            handle: {
-              crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
-            },
-          },
-          {
-            path: ROUTES.interview.quiz.route,
-            element: <Outlet />,
-            handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
-            children: [{ index: true, element: <CreateQuizPage /> }],
-          },
-          {
-            path: ROUTES.interview.new.route,
-            element: <InterviewQuizPage />,
-            handle: {
-              crumb: Translation.CRUMBS_QUIZ,
-            },
-          },
-        ],
-      },
-      {
-        path: ROUTES.wiki.route,
-        element: <Outlet />,
-        handle: {
-          crumb: Translation.CRUMBS_WIKI,
-        },
-        children: [
-          {
-            path: ROUTES.wiki.resources.route,
-            element: <Outlet />,
-            handle: {
-              crumb: Translation.CRUMBS_RESOURCES,
-            },
-            children: [
-              {
-                index: true,
-                element: <ResourcesPage />,
-              },
-              {
-                path: ROUTES.wiki.resources.my.route,
-                element: <Outlet />,
-                handle: {
-                  crumb: Translation.CRUMBS_RESOURCES_MY,
-                },
-                children: [
-                  {
-                    index: true,
-                    element: <MyResourcesPage />,
-                  },
-                  {
-                    path: ROUTES.wiki.resources.my.create.route,
-                    element: <RequestResourceCreatePage />,
-                    handle: {
-                      crumb: Translation.CRUMBS_CREATE_REQUEST,
-                    },
-                  },
-                  {
-                    path: ROUTES.wiki.resources.my.request.route,
-                    element: <RequestInfoPage />,
-                    handle: {
-                      crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
-                    },
-                  },
-                  {
-                    path: ROUTES.wiki.resources.my.edit.route,
-                    element: <RequestResourceEditPage />,
-                    handle: {
-                      crumb: Translation.CRUMBS_EDIT_REQUEST,
-                    },
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: ROUTES.wiki.questions.route,
-            element: <Outlet />,
-            handle: {
-              crumb: Translation.CRUMBS_QUESTIONS_LIST,
-            },
-            children: [
-              {
-                index: true,
-                element: <QuestionsPage />,
-              },
-              {
-                path: ROUTES.wiki.questions.detail.route,
-                element: <InterviewQuestionPage />,
-                handle: {
-                  crumb: Translation.CRUMBS_QUESTION_DETAIL,
-                },
-              },
-            ],
-          },
-          {
-            path: ROUTES.wiki.collections.route,
-            element: <Outlet />,
-            handle: {
-              crumb: Translation.CRUMBS_COLLECTIONS_LIST,
-            },
-            children: [
-              {
-                index: true,
-                element: <InterviewCollectionsPage />,
-              },
-              {
-                path: ROUTES.wiki.collections.detail.route,
-                element: <InterviewCollectionPage />,
-                handle: {
-                  crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: ROUTES.tasks.route,
-        element: <Outlet />,
-        handle: {
-          crumb: Translation.CRUMBS_TASKS,
-        },
-        children: [
-          {
-            index: true,
-            element: <TasksPage />,
-          },
-          {
-            path: ROUTES.tasks.detail.route,
-            element: <TaskPage />,
-            handle: {
-              crumb: Translation.CRUMBS_TASK,
-            },
-          },
-        ],
-      },
-      {
-        path: ROUTES.users.route,
-        element: <UserProfilePage />,
-      },
-      {
-        path: '*',
-        element: <Error404Page />,
-      },
-    ],
-  },
-  {
-    path: ROUTES.auth.route,
-    element: (
-      <UnAuthRoute>
-        <AuthLayout />
-      </UnAuthRoute>
-    ),
-    children: [
-      {
-        path: ROUTES.auth.login.route,
-        element: <LoginPage />,
-      },
-      {
-        path: ROUTES.auth.register.route,
-        element: <RegistrationPage />,
-      },
-      {
-        path: ROUTES.auth['forgot-password'].route,
-        element: <ForgotPasswordPage />,
-      },
-    ],
-  },
-  {
-    path: ROUTES.auth['password-recovery'].page,
-    element: <PasswordRecoveryPage />,
-  },
+				children: [
+					{
+						index: true,
+						element: <InterviewPage />,
+					},
+					{
+						path: 'new/result',
+						element: <InterviewMockQuizResultPage />,
+					},
+					{
+						path: ROUTES.interview.history.route,
+						element: <Outlet />,
+						handle: {
+							crumb: i18n.t(Translation.CRUMBS_INTERVIEW_HISTORY),
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewHistoryPage />,
+							},
+							{
+								path: ROUTES.interview.history.result.route,
+								element: <InterviewQuizResultPage />,
+								handle: {
+									crumb: Translation.CRUMBS_INTERVIEW_RESULT,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.interview.statistic.route,
+						element: <InterviewStatisticsPage />,
+						handle: {
+							crumb: Translation.CRUMBS_INTERVIEW_STATISTIC,
+						},
+					},
+					{
+						path: ROUTES.interview.quiz.route,
+						element: <Outlet />,
+						handle: { crumb: Translation.CRUMBS_INTERVIEW_CREATION },
+						children: [{ index: true, element: <CreateQuizPage /> }],
+					},
+					{
+						path: ROUTES.interview.new.route,
+						element: <InterviewQuizPage />,
+						handle: {
+							crumb: Translation.CRUMBS_QUIZ,
+						},
+					},
+				],
+			},
+			{
+				path: ROUTES.wiki.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+				},
+				children: [
+					{
+						path: ROUTES.wiki.resources.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_RESOURCES,
+						},
+						children: [
+							{
+								index: true,
+								element: <ResourcesPage />,
+							},
+							{
+								path: ROUTES.wiki.resources.my.route,
+								element: <Outlet />,
+								handle: {
+									crumb: Translation.CRUMBS_RESOURCES_MY,
+								},
+								children: [
+									{
+										index: true,
+										element: <MyResourcesPage />,
+									},
+									{
+										path: ROUTES.wiki.resources.my.create.route,
+										element: <RequestResourceCreatePage />,
+										handle: {
+											crumb: Translation.CRUMBS_CREATE_REQUEST,
+										},
+									},
+									{
+										path: ROUTES.wiki.resources.my.request.route,
+										element: <RequestInfoPage />,
+										handle: {
+											crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
+										},
+									},
+									{
+										path: ROUTES.wiki.resources.my.edit.route,
+										element: <RequestResourceEditPage />,
+										handle: {
+											crumb: Translation.CRUMBS_EDIT_REQUEST,
+										},
+									},
+								],
+							},
+						],
+					},
+					{
+						path: ROUTES.wiki.questions.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_QUESTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <QuestionsPage />,
+							},
+							{
+								path: ROUTES.wiki.questions.detail.route,
+								element: <InterviewQuestionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_QUESTION_DETAIL,
+								},
+							},
+						],
+					},
+					{
+						path: ROUTES.wiki.collections.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_COLLECTIONS_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <InterviewCollectionsPage />,
+							},
+							{
+								path: ROUTES.wiki.collections.detail.route,
+								element: <InterviewCollectionPage />,
+								handle: {
+									crumb: Translation.CRUMBS_COLLECTIONS_DETAIL,
+								},
+							},
+						],
+					},
+				],
+			},
+			{
+				path: ROUTES.tasks.route,
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_TASKS,
+				},
+				children: [
+					{
+						index: true,
+						element: <TasksPage />,
+					},
+					{
+						path: ROUTES.tasks.detail.route,
+						element: <TaskPage />,
+						handle: {
+							crumb: Translation.CRUMBS_TASK,
+						},
+					},
+				],
+			},
+			{
+				path: ROUTES.users.route,
+				element: <UserProfilePage />,
+			},
+			{
+				path: '*',
+				element: <Error404Page />,
+			},
+		],
+	},
+	{
+		path: ROUTES.auth.route,
+		element: (
+			<UnAuthRoute>
+				<AuthLayout />
+			</UnAuthRoute>
+		),
+		children: [
+			{
+				path: ROUTES.auth.login.route,
+				element: <LoginPage />,
+			},
+			{
+				path: ROUTES.auth.register.route,
+				element: <RegistrationPage />,
+			},
+			{
+				path: ROUTES.auth['forgot-password'].route,
+				element: <ForgotPasswordPage />,
+			},
+		],
+	},
+	{
+		path: ROUTES.auth['password-recovery'].page,
+		element: <PasswordRecoveryPage />,
+	},
 ]);
