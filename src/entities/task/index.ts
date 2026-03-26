@@ -32,3 +32,4 @@ export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresFiel
 export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategoryFilterList';
 export { taskCategories } from './model/constants/task';
 export { ChooseTasksDrawer } from './ui/ChooseTasksDrawer';
+export { tasksHandlers } from './api/__mocks__/index';
