@@ -13,7 +13,7 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 import styles from './SearchSection.module.css';
 
 interface SearchSectionProps {
-	to?: string;
+	to?: string | (() => ReactNode);
 	showRemoveButton?: boolean;
 	showResetFilterButton?: boolean;
 	onSearch?: (value: string) => void;
@@ -57,14 +57,16 @@ export const SearchSection = ({
 						</Button>
 					)}
 					{showRemoveButton && renderRemoveButton && renderRemoveButton()}
-					{to && (
-						<NavLink to={to}>
-							<Button size="large">
-								{t(Translation.CREATE)}
-								<PlusSvg className={styles['plus-svg']} />
-							</Button>
-						</NavLink>
-					)}
+					{typeof to === 'function'
+						? to()
+						: to && (
+								<NavLink to={to}>
+									<Button size="large">
+										{t(Translation.CREATE)}
+										<PlusSvg className={styles['plus-svg']} />
+									</Button>
+								</NavLink>
+							)}
 				</Flex>
 			</Flex>
 		</Card>

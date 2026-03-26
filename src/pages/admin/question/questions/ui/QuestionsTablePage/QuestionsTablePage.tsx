@@ -2,10 +2,13 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Questions, ROUTES } from '@/shared/config';
+import PlusSvg from '@/shared/assets/icons/plus1.svg';
+import { i18Namespace, Questions, ROUTES, Translation } from '@/shared/config';
 import { route, SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
@@ -30,7 +33,7 @@ const QuestionsPage = () => {
 	const selectedQuestions = useAppSelector(getSelectedQuestions);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const navigate = useNavigate();
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
 
 	const {
 		filters,
@@ -95,9 +98,9 @@ const QuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_TITLE),
-			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBTITLE),
-			buttonText: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBMIT),
+			title: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_TITLE, { ns: i18Namespace.questions }),
+			subtitle: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBTITLE, { ns: i18Namespace.questions }),
+			buttonText: t(Questions.STUB_EMPTY_QUESTIONS_ADMIN_SUBMIT, { ns: i18Namespace.questions }),
 			onClick: handleCreateQuestion,
 		},
 		error: {
@@ -106,6 +109,34 @@ const QuestionsPage = () => {
 		'filter-empty': {
 			onClick: resetAll,
 		},
+	};
+
+	const handleCreateMultipleQuestions = () => {
+		navigate(route(ROUTES.admin.questions.createMultiple.page));
+	};
+
+	const menuItems: PopoverMenuItem[] = [
+		{
+			title: t(Translation.CREATE, { ns: i18Namespace.translation }),
+			onClick: handleCreateQuestion,
+		},
+		{
+			title: t(Questions.GENERATED_QUESTIONS_TITLE, { ns: i18Namespace.questions }),
+			onClick: handleCreateMultipleQuestions,
+		},
+	];
+
+	const renderAddButton = () => {
+		return (
+			<Popover menuItems={menuItems}>
+				{({ onToggle }) => (
+					<Button size="large" onClick={onToggle}>
+						{t(Translation.CREATE, { ns: i18Namespace.translation })}
+						<PlusSvg className={styles['plus-svg']} />
+					</Button>
+				)}
+			</Popover>
+		);
 	};
 
 	return (
@@ -134,7 +165,7 @@ const QuestionsPage = () => {
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
 					<SearchSection
-						to="create"
+						to={renderAddButton}
 						showRemoveButton={selectedQuestions.length > 0}
 						onSearch={onChangeTitle}
 						searchValue={filters.title}
