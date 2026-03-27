@@ -88,7 +88,7 @@ export const QuestionsTable = ({
 			),
 			rate: question.rate,
 			complexity: question.complexity,
-			author: question.createdBy.username,
+			author: question.createdBy?.username,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {

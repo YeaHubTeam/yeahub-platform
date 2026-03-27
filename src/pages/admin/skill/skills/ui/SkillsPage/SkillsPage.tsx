@@ -37,6 +37,7 @@ const SkillsPage = () => {
 		onChangeTitle,
 		onChangeIsMy,
 		onResetFilters,
+		onChangeAuthor,
 	} = useSkillsFilters({
 		page: 1,
 	});
@@ -50,7 +51,7 @@ const SkillsPage = () => {
 		page: filters.page,
 		title: filters.title,
 		specializations: filters.specialization,
-		authorId: filters.isMy ? userId : undefined,
+		authorId: filters.isMy ? userId : filters.author,
 	});
 
 	const onSelectSkills = (ids: SelectedAdminEntities) => {
@@ -109,6 +110,7 @@ const SkillsPage = () => {
 								filters={filters}
 								onChangeSpecialization={onChangeSpecialization}
 								onChangeIsMy={onChangeIsMy}
+								onChangeAuthor={onChangeAuthor}
 							/>
 						)}
 						onResetFilters={onResetFilters}

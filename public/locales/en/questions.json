@@ -137,5 +137,14 @@
 				"submit": "Retry"
 			}
 		}
+	},
+	"generated": {
+		"questions": {
+			"title": "Generated questions",
+			"errors": {
+				"title": "An error occurred while creating these questions",
+				"conflict.title": "A question with this title already exists"
+			}
+		}
 	}
 }

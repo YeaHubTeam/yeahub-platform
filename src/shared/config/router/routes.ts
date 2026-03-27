@@ -9,6 +9,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			createMultiple: {
+				route: 'create-multiple',
+				page: '/admin/questions/create-multiple',
+			},
 			details: {
 				route: ':questionId',
 				page: '/admin/questions/:questionId',
@@ -157,7 +161,11 @@ export const ROUTES = {
 		referralLinks: {
 			route: 'referralLinks',
 			page: '/admin/referralLinks',
-			detail: {
+			create: {
+				route: 'create',
+				page: '/admin/referralLinks/create',
+			},
+			details: {
 				route: ':referralLinkId',
 				page: '/admin/referralLinks/:referralLinkId',
 			},

@@ -39,7 +39,7 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
-
+	console.log(methods.watch());
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
