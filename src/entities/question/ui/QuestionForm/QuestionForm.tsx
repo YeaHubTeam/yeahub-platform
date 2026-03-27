@@ -14,6 +14,7 @@ import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
+import { TopicSelect } from '@/entities/topic/@x/question';
 
 import { useGetQuestionsFilterKeywordsQuery } from '../../api/questionApi';
 import { QuestionStatus } from '../../model/types/question';
@@ -25,6 +26,7 @@ export const QuestionForm = () => {
 
 	const { control, watch } = useFormContext();
 	const selectedSpecializations = watch('specializations');
+	const selectedSkills = watch('skills');
 
 	const questionStatusesItems: { label: string; value: QuestionStatus }[] = [
 		{
@@ -36,7 +38,6 @@ export const QuestionForm = () => {
 			value: 'draft',
 		},
 	];
-
 	return (
 		<Flex direction="column" gap="40">
 			<FormField
@@ -120,19 +121,35 @@ export const QuestionForm = () => {
 			</FormField>
 
 			{selectedSpecializations?.length ? (
-				<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
-					<FormControl name="skills" control={control}>
-						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<SkillSelect
-									onChange={onChange}
-									value={value}
-									selectedSpecializations={selectedSpecializations}
-								/>
-							</div>
-						)}
-					</FormControl>
-				</FormField>
+				<>
+					<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
+						<FormControl name="skills" control={control}>
+							{({ onChange, value }) => (
+								<div className={styles.select}>
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSpecializations={selectedSpecializations}
+									/>
+								</div>
+							)}
+						</FormControl>
+					</FormField>
+				</>
+			) : null}
+
+			{selectedSkills?.length ? (
+				<>
+					<FormField label={t(Questions.TOPIC_TITLE)} description={t(Questions.TOPIC_LABEL)}>
+						<FormControl name="topics" control={control}>
+							{({ onChange, value }) => (
+								<div className={styles.select}>
+									<TopicSelect onChange={onChange} value={value} selectedSkills={selectedSkills} />
+								</div>
+							)}
+						</FormControl>
+					</FormField>
+				</>
 			) : null}
 
 			<FormField label={t(Questions.KEYWORDS_TITLE)} description={t(Questions.KEYWORDS_LABEL)}>

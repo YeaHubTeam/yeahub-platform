@@ -27,8 +27,17 @@ export const QuestionPageContent = ({ question, isDisabled }: QuestionPageConten
 	const { t } = useTranslation(i18Namespace.translation);
 	const { isMobile, isTablet } = useScreenSize();
 
-	const { rate, keywords, complexity, questionSkills, shortAnswer, longAnswer, id, createdBy } =
-		question;
+	const {
+		rate,
+		keywords,
+		complexity,
+		questionSkills,
+		shortAnswer,
+		longAnswer,
+		id,
+		createdBy,
+		questionTopics,
+	} = question;
 
 	return (
 		<>
@@ -55,6 +64,7 @@ export const QuestionPageContent = ({ question, isDisabled }: QuestionPageConten
 					<Flex direction="column" gap="20" className={styles.additional}>
 						<QuestionAdditionalInfo
 							rate={rate}
+							questionTopics={questionTopics}
 							createdBy={createdBy}
 							keywords={keywords}
 							complexity={complexity}

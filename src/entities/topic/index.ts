@@ -1,3 +1,4 @@
+export { TopicList } from './ui/TopicList/TopicList';
 export { TopicForm } from './ui/TopicForm/TopicForm';
 
 export type { Topic, CreateOrEditTopicFormValues } from './model/types/topic';
