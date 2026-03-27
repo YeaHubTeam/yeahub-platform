@@ -6,7 +6,7 @@ import { toast } from '@/shared/ui/Toast';
 
 import { deleteCompaniesApi } from '../../api/deleteCompaniesApi';
 
-export const deleteMultipleCompaniesThunk = createAsyncThunk<void, SelectedAdminEntities>(
+export const deleteMultipleCompaniesThunk = createAsyncThunk<void, SelectedAdminEntities<string>>(
 	'companies/deleteMultiple',
 	async (companies, { rejectWithValue, dispatch }) => {
 		try {

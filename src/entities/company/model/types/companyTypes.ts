@@ -1,16 +1,17 @@
 import { Response } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 export interface Company {
-	id: string | number;
+	id: string;
 	title?: string;
-	legalName?: string | null;
-	description?: string | null;
-	imageSrc?: string | null;
-	inn?: string | null;
-	kpp?: string | null;
-	createdAt?: string;
-	updatedAt?: string;
-	createdBy?: { id: string; username: string };
+	legalName?: string;
+	description?: string;
+	imageSrc?: string;
+	inn?: string;
+	kpp?: string;
+	createdAt: string;
+	updatedAt: string;
+	createdBy: Author;
 }
 
 export type GetCompanyByIdResponse = Company;

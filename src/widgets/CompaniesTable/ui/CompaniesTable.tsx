@@ -23,8 +23,8 @@ interface UICompany extends Company {
 
 interface CompaniesTableProps {
 	companies?: UICompany[];
-	selectedCompanies?: SelectedAdminEntities;
-	onSelectCompanies?: (ids: SelectedAdminEntities) => void;
+	selectedCompanies?: SelectedAdminEntities<string>;
+	onSelectCompanies?: (ids: SelectedAdminEntities<string>) => void;
 }
 
 export const CompaniesTable = ({
@@ -52,7 +52,7 @@ export const CompaniesTable = ({
 		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
 	};
 
-	const renderTableBody = (company: Company) => {
+	const renderTableBody = (company: UICompany) => {
 		const columns = {
 			imageSrc: (
 				<ImageWithWrapper
@@ -62,6 +62,7 @@ export const CompaniesTable = ({
 				/>
 			),
 			title: company.title,
+			createdBy: company.createdBy.username,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
@@ -132,7 +133,7 @@ export const CompaniesTable = ({
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
 			renderActions={renderActions}
-			items={companies as SelectedAdminEntities}
+			items={companies}
 			selectedItems={selectedCompanies}
 			onSelectItems={onSelectCompanies}
 			renderTableColumnWidths={renderTableColumnWidths}

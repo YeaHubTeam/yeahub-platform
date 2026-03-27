@@ -14,6 +14,7 @@ import { specializationsProgressHandlers } from '@/entities/specialization';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
+import { createCompanyHandlers } from '@/features/company/createCompany';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -59,4 +60,5 @@ export const handlers = [
 	...hhAnalyticsHandlers,
 	...createTopicHandlers,
 	...topicEditHandlers,
+	...createCompanyHandlers,
 ];
