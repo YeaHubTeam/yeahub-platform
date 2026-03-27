@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Marketplace } from '@/shared/config';
+import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -10,12 +10,11 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Text } from '@/shared/ui/Text';
 
 import { getUserId } from '@/entities/profile';
-import type { ReferralLink } from '@/entities/referralLink';
+import { ReferralLinkForm, type ReferralLink } from '@/entities/referralLink';
 
 import { referralLinkEditSchema } from '../../lib/validation/referralLinkEditSchema';
 import { EditReferralLinkFormValues } from '../../model/types/referralEditPageTypes';
 import { ReferralLinkEditFormHeader } from '../ReferralLinkEditFormHeader/ReferralLinkEditFormHeader';
-import { ReferralLinkForm } from '../ReferralLinkForm/ReferralLinkForm';
 
 import styles from './ReferralLinkEditForm.module.css';
 
@@ -24,14 +23,19 @@ interface ReferralLinkEditFormProps {
 }
 
 export const ReferralLinkEditForm = ({ referralLink }: ReferralLinkEditFormProps) => {
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { id, refCode, url, ownerId } = referralLink;
+
+	const { t } = useTranslation(i18Namespace.referralLink);
 	const userId = useAppSelector(getUserId);
 
 	const methods = useForm<EditReferralLinkFormValues>({
 		resolver: yupResolver(referralLinkEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
-			...referralLink,
+			id,
+			refCode,
+			url,
+			ownerId,
 		},
 	});
 
@@ -45,7 +49,7 @@ export const ReferralLinkEditForm = ({ referralLink }: ReferralLinkEditFormProps
 					<Card className={styles.content}>
 						<Flex direction="column" gap="28">
 							<Text variant="body5-strong" color="black-900">
-								{t(Marketplace.EDIT_REF_CODE_TITLE)}
+								{t(ReferralLinks.REF_CODE_TITLE)}
 							</Text>
 							<ReferralLinkForm userId={userId} referralLink={referralLink} />
 						</Flex>
