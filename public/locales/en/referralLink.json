@@ -8,8 +8,22 @@
 				"title": "Failed to load data",
 				"subtitle": "Please try again, this might resolve the issue",
 				"submit": "Retry"
+			},
+			"filter": {
+				"title": "Unfortunately, no referral links were found for your request",
+				"subtitle": "Try changing your search parameters or reset all filters",
+				"button": "Reset filter"
 			}
 		}
+	},
+	"filter": {
+		"onlyMy": "My referral links"
+	},
+	"sort": {
+		"field": "Sort by field"
+	},
+	"select": {
+		"placeholder": "Select owner"
 	},
 	"table": {
 		"columns": {

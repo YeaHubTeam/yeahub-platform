@@ -9,6 +9,7 @@ export type {
 	GetReferralLinkByIdParamsRequest,
 	GetReferralLinkByIdResponse,
 } from './model/types/referralLinks';
+export type { ReferralLinksFilterParams, ReferralLinksFilterOrderBy } from './model/types/filters';
 
 export { ReferralLinkCard } from './ui/ReferralLinkCard/ReferralLinkCard';
 export { ReferralLinkSum } from './ui/ReferralLinkSum/ReferralLinkSum';
