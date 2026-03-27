@@ -1,4 +1,4 @@
 export const referralLinksApiUrls = {
-	getReferralLinksList: 'ref-links',
-	getReferralLinkById: 'ref-links/:id',
+  getReferralLinksList: 'ref-links',
+  getReferralLinkById: 'ref-links/:id',
 };
