@@ -15,6 +15,7 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { TasksList } from '@/widgets/task/TasksList';
 
 import styles from './TasksPage.module.css';
+import { TasksPageSkeleton } from './TasksPage.skeleton';
 
 const TasksPage = () => {
 	const { isMobile, isMobileS, isTablet } = useScreenSize();
@@ -80,6 +81,7 @@ const TasksPage = () => {
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
+			skeleton={<TasksPageSkeleton />}
 			hasData={tasksList.length > 0}
 			hasFilters={hasFilters}
 			stubs={stubs}
