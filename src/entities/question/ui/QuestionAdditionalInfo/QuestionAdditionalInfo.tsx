@@ -5,15 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace, Questions, ROUTES } from '@/shared/config';
 import { route, useCurrentProject, useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
+import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsList } from '@/shared/ui/KeywordsList';
 import { Text } from '@/shared/ui/Text';
 
-import { Skill, SkillList } from '@/entities/skill/@x/question';
+import { Skill } from '@/entities/skill/@x/question';
 import { Media, MediaLinksBanner } from '@/entities/socialMedia/@x/question';
+import { Specialization } from '@/entities/specialization/@x/question';
 import { Topic } from '@/entities/topic/@x/question';
-import { TopicList } from '@/entities/topic/@x/question';
 
 import { QuestionGradeList } from '../QuestionGradeList/QuestionGradeList';
 
@@ -24,6 +25,7 @@ export interface QuestionAdditionalInfoProps {
 	complexity: number;
 	keywords: string[];
 	questionSkills: Skill[];
+	questionSpecializations: Specialization[];
 	questionTopics?: Topic[];
 	createdBy: Author;
 	className?: string;
@@ -36,6 +38,7 @@ export const QuestionAdditionalInfo = ({
 	rate,
 	complexity,
 	questionSkills,
+	questionSpecializations,
 	questionTopics,
 	keywords,
 	createdBy,
@@ -48,6 +51,12 @@ export const QuestionAdditionalInfo = ({
 	const { isMobile, isTablet } = useScreenSize();
 
 	const { t } = useTranslation(i18Namespace.questions);
+
+	const onMoveToQuestionsWithSpecializations = (specializationId: number) => {
+		navigate(
+			`${baseRoute}?page=1&status=all&specializations=` + encodeURIComponent(specializationId),
+		);
+	};
 
 	const onMoveToQuestionsWithSkills = (skillId: number) => {
 		navigate(`${baseRoute}?page=1&status=all&skills=` + encodeURIComponent(skillId));
@@ -62,27 +71,35 @@ export const QuestionAdditionalInfo = ({
 			<Card className={classnames(styles['normal-height'], className)} withOutsideShadow>
 				<Flex direction="column" gap="24">
 					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
+						<Text variant="body2" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_LEVEL)}
 						</Text>
 						<QuestionGradeList rate={rate} complexity={complexity} />
 					</Flex>
-					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
-							{t(Questions.ADDITIONAL_INFO_SKILLS)}
-						</Text>
-						<SkillList skills={questionSkills} onClick={onMoveToQuestionsWithSkills} />
-					</Flex>
+					{project === 'admin' && (
+						<BaseFilterSection
+							title={t(Questions.SPECIALIZATION_TITLE)}
+							data={questionSpecializations}
+							onClick={onMoveToQuestionsWithSpecializations}
+							isAllActive
+						/>
+					)}
+					<BaseFilterSection
+						title={t(Questions.ADDITIONAL_INFO_SKILLS)}
+						data={questionSkills}
+						onClick={onMoveToQuestionsWithSkills}
+						isAllActive
+					/>
 					{project === 'admin' && questionTopics && questionTopics.length > 0 && (
-						<Flex direction="column" gap="8">
-							<Text variant="body3" color="black-700">
-								{t(Questions.TOPIC_TITLE)}
-							</Text>
-							<TopicList topics={questionTopics} onClick={onMoveToTopicPage} />
-						</Flex>
+						<BaseFilterSection
+							title={t(Questions.TOPIC_TITLE)}
+							data={questionTopics}
+							onClick={onMoveToTopicPage}
+							isAllActive
+						/>
 					)}
 					<Flex direction="column" gap="8">
-						<Text variant="body3" color="black-700">
+						<Text variant="body2" color="black-700">
 							{t(Questions.ADDITIONAL_INFO_KEYWORDS)}
 						</Text>
 						<KeywordsList keywords={keywords} path={`${route}?page=1&status=all&$keywords=`} />

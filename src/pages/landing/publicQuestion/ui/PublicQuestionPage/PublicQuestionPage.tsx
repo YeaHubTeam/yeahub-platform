@@ -67,6 +67,7 @@ const PublicQuestionPage = () => {
 		keywords,
 		complexity,
 		questionSkills,
+		questionSpecializations,
 		shortAnswer,
 		longAnswer,
 		questionTopics,
@@ -130,6 +131,7 @@ const PublicQuestionPage = () => {
 							complexity={complexity}
 							questionSkills={questionSkills}
 							questionTopics={questionTopics}
+							questionSpecializations={questionSpecializations}
 							route={ROUTES.wiki.questions.page}
 							media={media}
 						/>

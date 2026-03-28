@@ -37,6 +37,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 		keywords,
 		complexity,
 		questionSkills,
+		questionSpecializations,
 		shortAnswer,
 		longAnswer,
 		isFavorite,
@@ -69,6 +70,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 						complexity={complexity}
 						questionSkills={questionSkills}
 						questionTopics={questionTopics}
+						questionSpecializations={questionSpecializations}
 						route={ROUTES.wiki.questions.page}
 						media={media}
 					/>

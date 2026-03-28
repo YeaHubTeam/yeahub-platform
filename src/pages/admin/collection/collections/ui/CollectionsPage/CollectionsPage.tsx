@@ -55,7 +55,7 @@ const CollectionsPage = () => {
 		dispatch(collectionsPageActions.resetFilters());
 		onResetFilters();
 	};
-
+	console.log(filters.isFree);
 	const {
 		data: allCollections,
 		isLoading,

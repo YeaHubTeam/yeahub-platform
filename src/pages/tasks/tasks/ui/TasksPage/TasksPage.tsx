@@ -17,7 +17,7 @@ import { TasksList } from '@/widgets/task/TasksList';
 import styles from './TasksPage.module.css';
 
 const TasksPage = () => {
-	const { isMobile, isMobileS, isTablet } = useScreenSize();
+	const { isMobileS, isSmallScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.task);
 
 	const {
@@ -28,6 +28,7 @@ const TasksPage = () => {
 		onChangeDifficulty,
 		onChangeLangIds,
 		onChangeCategory,
+		onChangeCompanyId,
 		onResetFilters,
 	} = useTasksFilters({
 		page: 1,
@@ -40,6 +41,7 @@ const TasksPage = () => {
 		difficulty: filters.difficulty,
 		langIds: filters.langIds,
 		category: filters.category,
+		companyId: filters.companyId,
 		canSolve: filters.title ? true : undefined,
 	});
 
@@ -51,11 +53,13 @@ const TasksPage = () => {
 			onChangeDifficulty={onChangeDifficulty}
 			onChangeLangIds={onChangeLangIds}
 			onChangeCategory={onChangeCategory}
+			onChangeCompanyId={onChangeCompanyId}
 			filters={{
 				title: filters.title,
 				difficulty: filters.difficulty,
 				langIds: filters.langIds,
 				category: filters.category,
+				companyId: filters.companyId,
 			}}
 		/>
 	);
@@ -98,7 +102,7 @@ const TasksPage = () => {
 							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
 								{t(Tasks.TITLE_SHORT)}
 							</Text>
-							{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+							{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						</div>
 						<hr className={styles.divider} />
 						<>

@@ -3,7 +3,7 @@ import { Author } from '@/shared/ui/AuthorInfo';
 
 export interface Company {
 	id: string;
-	title?: string;
+	title: string;
 	legalName?: string;
 	description?: string;
 	imageSrc?: string;

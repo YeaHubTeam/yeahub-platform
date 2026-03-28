@@ -63,7 +63,7 @@ export const CollectionsFilters = ({
 
 	return (
 		<Flex direction="column" gap="24">
-			{(project === 'landing' || project === 'platform') && (
+			{project === 'platform' && (
 				<SearchInput
 					placeholder={t(Collections.SEARCH_PLACEHOLDER)}
 					onSearch={handleSearch}
@@ -80,7 +80,7 @@ export const CollectionsFilters = ({
 			{project === 'admin' && (
 				<UserSelect value={filter.authorId} onChange={onChangeAuthor} disabled={!!isMy} />
 			)}
-			{(project === 'admin' || project === 'landing') && onChangeSpecialization && (
+			{project === 'admin' && onChangeSpecialization && (
 				<SpecializationsListField
 					selectedSpecialization={specialization}
 					onChangeSpecialization={handleSpecializationChange}
@@ -94,9 +94,7 @@ export const CollectionsFilters = ({
 					getKeywordsQuery={useGetCollectionKeywordsQuery}
 				/>
 			)}
-			{(project === 'landing' || project === 'platform') && (
-				<PublicCompanySelect onChange={onChangeCompany} value={company} />
-			)}
+			{project === 'platform' && <PublicCompanySelect onChange={onChangeCompany} value={company} />}
 			<ChooseCollectionAccess isFree={isFree} onChangeIsFree={onChangeIsFree} />
 			{media && <MediaLinksBanner mediaLink={media} />}
 		</Flex>

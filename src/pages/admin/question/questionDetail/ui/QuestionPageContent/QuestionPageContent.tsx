@@ -37,6 +37,7 @@ export const QuestionPageContent = ({ question, isDisabled }: QuestionPageConten
 		id,
 		createdBy,
 		questionTopics,
+		questionSpecializations,
 	} = question;
 
 	return (
@@ -69,6 +70,7 @@ export const QuestionPageContent = ({ question, isDisabled }: QuestionPageConten
 							keywords={keywords}
 							complexity={complexity}
 							questionSkills={questionSkills}
+							questionSpecializations={questionSpecializations}
 							route={ROUTES.wiki.questions.page}
 						/>
 					</Flex>

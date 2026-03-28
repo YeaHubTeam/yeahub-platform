@@ -94,11 +94,13 @@ export const CollectionContent = ({
 				/>
 
 				<CollectionBody isFree={isFree} questions={questions} hasPremiumAccess={hasPremiumAccess} />
-				<TasksController
-					isFree={Boolean(isFree)}
-					tasks={tasks}
-					hasPremiumAccess={hasPremiumAccess}
-				/>
+				{tasks.length ? (
+					<TasksController
+						isFree={Boolean(isFree)}
+						tasks={tasks}
+						hasPremiumAccess={hasPremiumAccess}
+					/>
+				) : null}
 				{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
 			</div>
 

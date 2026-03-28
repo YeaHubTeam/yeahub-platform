@@ -18,6 +18,7 @@ export const useCollectionsFilters = (initialParams: CollectionsFilterParams) =>
 		Boolean(filters.authorId) ||
 		Boolean(filters.isMy) ||
 		Boolean(filters.keyword) ||
+		filters.isFree !== undefined ||
 		Boolean(filters.company);
 
 	const onChangeTitle = (title: CollectionsFilterParams['title']) => {
