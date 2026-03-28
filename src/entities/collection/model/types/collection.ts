@@ -1,4 +1,5 @@
 import { Response } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 import { Company } from '@/entities/company/@x/collection';
 import { Question } from '@/entities/question/@x/collection';
@@ -19,13 +20,13 @@ export interface Collection {
 	keywords?: string[];
 	questions?: Question[];
 	tasks?: Task[];
-	specializations?: Specialization[];
+	specializations: Specialization[];
 	tariff: CollectionTariff;
 	isFree?: boolean;
-	company?: Company;
+	company: Company;
 	companyId?: string;
 	createdById?: string;
-	createdBy?: { id: string; username: string };
+	createdBy: Author;
 	disabled?: boolean;
 }
 

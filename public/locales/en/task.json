@@ -75,6 +75,9 @@
 	"languages": {
 		"title": "Programming languages"
 	},
+	"companies": {
+		"title": "Companies"
+	},
 	"subscription.level": {
 		"title": "Subscription level",
 		"subtitle": "Specify the required subscription level for access to the task",

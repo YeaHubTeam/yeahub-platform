@@ -23,8 +23,6 @@ export const getGeneratedQuestionsApiErrorMessage = (
 	generationError: string | null,
 	savingError: string | null,
 ) => {
-	console.log('generationError', generationError);
-	console.log('savingError', savingError);
 	if (generationError) {
 		return generationError;
 	}

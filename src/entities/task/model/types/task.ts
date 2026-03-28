@@ -1,5 +1,6 @@
 import { Response, SortOrder } from '@/shared/libs';
 
+import { Company } from '@/entities/company/@x/task';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
 
 export type TaskStatus = 'solved' | 'attempted' | 'not_started';
@@ -38,6 +39,7 @@ export interface Task {
 	memoryLimit: number;
 	canSolve: boolean;
 	subscriptionLevel: TaskSubscriptionLevel;
+	companies: Company[];
 }
 
 export type TaskCategoryCode =
@@ -102,6 +104,7 @@ export interface GetTasksListParams {
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
 	collectionId?: number;
+	companyId?: string;
 }
 
 export type GetTasksListResponse = Response<Task[]>;
@@ -176,6 +179,7 @@ export type CreateOrEditTaskFormValues = Omit<
 	| 'canSolve'
 	| 'timeLimit'
 	| 'memoryLimit'
+	| 'companies'
 > & {
 	categoryCode: TaskCategoryCode;
 };

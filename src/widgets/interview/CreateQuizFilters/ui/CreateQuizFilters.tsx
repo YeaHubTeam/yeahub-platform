@@ -1,11 +1,10 @@
-import { useAppSelector, useScreenSize, useCurrentProject } from '@/shared/libs';
+import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { getHasPremiumAccess, getSpecializationId } from '@/entities/profile';
 import { ChooseQuestionComplexity, ChooseQuestionCount } from '@/entities/question';
 import { CreateQuizFilterParams, QuizQuestionMode } from '@/entities/quiz';
 import { SkillsListField } from '@/entities/skill';
-import { SpecializationsListField } from '@/entities/specialization';
 
 import styles from './CreateQuizFilters.module.css';
 
@@ -15,7 +14,6 @@ interface CreateQuizFiltersProps {
 	filters: CreateQuizFilterParams;
 	onChangeMode: (mode: CreateQuizFilterParams['mode']) => void;
 	onChangeSkills: (skills: CreateQuizFilterParams['skills']) => void;
-	onChangeSpecialization?: (specialization: CreateQuizFilterParams['specialization']) => void;
 	onChangeComplexity: (complexity: CreateQuizFilterParams['complexity']) => void;
 	onChangeCount: (count: CreateQuizFilterParams['count']) => void;
 }
@@ -25,11 +23,9 @@ export const CreateQuizFilters = ({
 	onChangeCount,
 	onChangeSkills,
 	onChangeComplexity,
-	onChangeSpecialization,
 	onChangeMode,
 }: CreateQuizFiltersProps) => {
 	const { isMobile, isTablet } = useScreenSize();
-	const project = useCurrentProject();
 	const specializationId = useAppSelector(getSpecializationId);
 	const hasPremium = useAppSelector(getHasPremiumAccess);
 
@@ -41,12 +37,6 @@ export const CreateQuizFilters = ({
 			className={styles.wrapper}
 		>
 			<Flex className={styles['skills-selection']} gap={isMobile ? '16' : '24'} direction="column">
-				{onChangeSpecialization && project === 'landing' && (
-					<SpecializationsListField
-						selectedSpecialization={filters.specialization}
-						onChangeSpecialization={onChangeSpecialization}
-					/>
-				)}
 				<SkillsListField
 					selectedSpecialization={filters.specialization || specializationId}
 					selectedSkills={filters.skills}

@@ -1557,6 +1557,7 @@ export enum Tasks {
 	DIFFICULTY_SUBTITLE = 'difficulty.subtitle',
 	DIFFICULTY_TITLE_SHORT = 'difficulty.title.short',
 	LANGUAGES_TITLE = 'languages.title',
+	COMPANIES_TITLE = 'companies.title',
 	TABLE_TASK = 'table.task',
 	TABLE_DIFFICULTY = 'table.difficulty',
 	TABLE_STATUS = 'table.status',

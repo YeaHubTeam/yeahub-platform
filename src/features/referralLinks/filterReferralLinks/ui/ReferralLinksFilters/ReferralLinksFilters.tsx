@@ -38,7 +38,7 @@ export const RefferalLinksFilters = ({
 	};
 	return (
 		<Flex direction="column" gap="24">
-			{(project === 'landing' || project === 'platform') && (
+			{project === 'platform' && (
 				<SearchInput
 					placeholder={t(ReferralLinks.SEARCH_PLACEHOLDER)}
 					onSearch={handleSearch}

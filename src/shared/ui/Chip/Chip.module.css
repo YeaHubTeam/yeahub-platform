@@ -15,7 +15,7 @@
   background-color: transparent;
   font-weight: var(--font-weight-500);
   user-select: none;
-  cursor: pointer;
+  cursor: auto;
 
   &.chip-clickable {
     cursor: pointer;
