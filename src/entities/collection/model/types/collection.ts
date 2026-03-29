@@ -36,7 +36,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 > & {
 	isFree: boolean;
 	questions: number[];
-	taskIds: string[];
+	taskIds?: string[];
 	specializations: number[];
 	companyId?: string;
 	collectionImage?: string;
