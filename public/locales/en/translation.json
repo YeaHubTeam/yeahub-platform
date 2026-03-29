@@ -62,6 +62,7 @@
 				"resources": "Resources"
 			},
 			"questions": "Questions",
+			"featureFlags": "Feature flags",
 
 			"skills": "Skills",
 			"companies": "Companies",

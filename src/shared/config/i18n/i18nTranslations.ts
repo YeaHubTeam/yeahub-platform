@@ -57,6 +57,7 @@ export enum Translation {
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
 	SIDEBAR_MENU_REFERRALS = 'sidebar.menu.referrals',
+	SIDEBAR_MENU_FEATURE_FLAGS = 'sidebar.menu.featureFlags',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -526,6 +527,19 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
+}
+
+export enum FeatureFlags {
+	STUB_EMPTY_TITLE = 'stub.empty.featureFlags.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.featureFlags.subtitle',
+	STUB_EMPTY_SUBMIT = 'stub.empty.featureFlags.submit',
+	TABLE_FLAG = 'table.featureFlags.flag',
+	TABLE_DESCRIPTION = 'table.featureFlags.description',
+	TABLE_ENABLED = 'table.featureFlags.enabled',
+	TABLE_ROLES = 'table.featureFlags.roles',
+	TABLE_CLIENT_TYPE = 'table.featureFlags.clientType',
+	TABLE_CREATED_AT = 'table.featureFlags.createdAt',
+	TABLE_ACTIONS = 'table.featureFlags.actions',
 }
 
 export enum Topics {

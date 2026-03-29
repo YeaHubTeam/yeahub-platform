@@ -29,3 +29,7 @@ export const featureFlags: FeatureFlags = {
 		roles: ['admin'],
 	},
 };
+
+export const featureFlagApiUrls = {
+	getFeatureFlagsList: 'feature-flags',
+};
