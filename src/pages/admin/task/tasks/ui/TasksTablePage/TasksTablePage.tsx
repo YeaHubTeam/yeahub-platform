@@ -32,6 +32,7 @@ const TasksTablePage = () => {
 		onChangeDifficulty,
 		onChangeLangIds,
 		onChangeCategory,
+		onChangeCompanyId,
 	} = useTasksFilters({ page: 1 });
 
 	const {
@@ -45,6 +46,7 @@ const TasksTablePage = () => {
 		difficulty: filters.difficulty,
 		langIds: filters.langIds,
 		category: filters.category,
+		companyId: filters.companyId,
 	});
 
 	const onSelectTasks = (ids: SelectedAdminEntities<string>) => {
@@ -106,6 +108,7 @@ const TasksTablePage = () => {
 								onChangeDifficulty={onChangeDifficulty}
 								onChangeLangIds={onChangeLangIds}
 								onChangeCategory={onChangeCategory}
+								onChangeCompanyId={onChangeCompanyId}
 							/>
 						)}
 					/>

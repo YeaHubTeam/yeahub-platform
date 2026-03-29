@@ -1,4 +1,4 @@
-import { ReferralLinksFilterParams } from '../types/filters';
+import { ReferralLinksFilterParams } from '@/entities/referralLink';
 
 export const useGetReferralLinksFilterParams = (initialParams: ReferralLinksFilterParams) => {
 	const params = new URLSearchParams(location.search);

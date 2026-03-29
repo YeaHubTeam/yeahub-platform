@@ -15,7 +15,3 @@ export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollec
 export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
 export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';
-export { CollectionAccessInfo } from './ui/CollectionAccessInfo/CollectionAccessInfo';
-export { CollectionCompanyInfo } from './ui/CollectionCompanyInfo/CollectionCompanyInfo';
-export { CollectionQuestionsCount } from './ui/CollectionQuestionsCount/CollectionQuestionsCount';
-export { CollectionTasksCount } from './ui/CollectionTasksCount/CollectionTasksCount';

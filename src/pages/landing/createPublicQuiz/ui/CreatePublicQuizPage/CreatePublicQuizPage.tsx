@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, InterviewQuizCreate } from '@/shared/config';
@@ -18,11 +18,7 @@ import styles from './CreatePublicQuizPage.module.css';
 import { CreatePublicQuizPageSkeleton } from './CreatePublicQuizPage.skeleton';
 
 const CreatePublicQuizPage = () => {
-	const [selectedSpecialization, setSelectedSpecialization] = useState<number | undefined>(
-		DEFAULT_SPECIALIZATION_ID,
-	);
-
-	const { filters, onChangeSpecialization, onChangeSkills, onChangeCount } = useCreateQuizFilters({
+	const { filters, onChangeSkills, onChangeCount } = useCreateQuizFilters({
 		count: 1,
 		specialization: DEFAULT_SPECIALIZATION_ID,
 	});
@@ -32,7 +28,7 @@ const CreatePublicQuizPage = () => {
 
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_SHOW_LIMIT_SKILLS,
-		specializations: selectedSpecialization,
+		specializations: DEFAULT_SPECIALIZATION_ID,
 	});
 
 	const { t } = useTranslation(i18Namespace.interviewQuizCreate);
@@ -40,12 +36,6 @@ const CreatePublicQuizPage = () => {
 	useEffect(() => {
 		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(DEFAULT_SPECIALIZATION_ID));
 	}, []);
-
-	const onChangeSpecializationValue = (value?: number) => {
-		setSelectedSpecialization(value);
-		setToLS(LS_ACTIVE_SPECIALIZATION_ID, String(value));
-		onChangeSpecialization(value);
-	};
 
 	const onCreateNewMockQuiz = () => {
 		const newQuiz = {
@@ -68,7 +58,6 @@ const CreatePublicQuizPage = () => {
 					filters={filters}
 					onChangeMode={() => {}}
 					onChangeSkills={onChangeSkills}
-					onChangeSpecialization={onChangeSpecializationValue}
 					onChangeComplexity={() => {}}
 					onChangeCount={onChangeCount}
 				/>

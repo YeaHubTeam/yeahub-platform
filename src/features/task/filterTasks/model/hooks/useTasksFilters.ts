@@ -17,6 +17,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		Boolean(filters.title) ||
 		Boolean(filters.difficulty) ||
 		Boolean(filters.category) ||
+		Boolean(filters.companyId) ||
 		(filters.langIds || []).length > 0;
 
 	const onChangePage = (page: TasksFilterParams['page']) => {
@@ -36,6 +37,10 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onFilterChange({ category, page: 1 });
 	};
 
+	const onChangeCompanyId = (companyId: TasksFilterParams['companyId']) => {
+		onFilterChange({ companyId, page: 1 });
+	};
+
 	const onChangeLangIds = (langIds?: TasksFilterParams['langIds']) => {
 		onFilterChange({ langIds, page: 1 });
 	};
@@ -48,6 +53,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onChangeDifficulty,
 		onChangeLangIds,
 		onChangeCategory,
+		onChangeCompanyId,
 		onResetFilters,
 	};
 };

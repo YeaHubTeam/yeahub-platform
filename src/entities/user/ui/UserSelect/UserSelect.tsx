@@ -16,12 +16,21 @@ export type UserSelectProps = Omit<
 	value?: string;
 	onChange: (value?: string) => void;
 	disabled?: boolean;
+	title?: string;
+	placeholder?: string;
 	showLabel?: boolean;
 };
 
 const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
 
-export const UserSelect = ({ value, onChange, disabled, showLabel = true }: UserSelectProps) => {
+export const UserSelect = ({
+	value,
+	onChange,
+	disabled,
+	title,
+	placeholder,
+	showLabel = true,
+}: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const [searchValue, setSearchValue] = useState('');
@@ -50,7 +59,7 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 
 	const emptyUser = {
 		value: 'all',
-		label: t(UserI18n.SELECT_CHOOSE),
+		label: placeholder || t(UserI18n.SELECT_CHOOSE),
 	};
 
 	const handleSearchChange = (val: string) => {
@@ -88,7 +97,7 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 		<Flex direction="column" align="start" gap="8">
 			{showLabel && (
 				<Text variant="body2" color="black-700">
-					{t(UserI18n.USER_NAME)}
+					{title || t(UserI18n.USER_NAME)}
 				</Text>
 			)}
 			<Dropdown

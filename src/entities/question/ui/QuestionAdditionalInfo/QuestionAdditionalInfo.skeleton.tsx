@@ -2,12 +2,11 @@ import classNames from 'classnames';
 
 import { useScreenSize } from '@/shared/libs';
 import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo';
+import { BaseFilterSectionSkeleton } from '@/shared/ui/BaseFilterSection';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { KeywordsListSkeleton } from '@/shared/ui/KeywordsList';
 import { TextSkeleton } from '@/shared/ui/Text';
-
-import { SkillListSkeleton } from '@/entities/skill/@x/question';
 
 import { QuestionGradeListSkeleton } from '../QuestionGradeList/QuestionGradeList.skeleton';
 
@@ -27,10 +26,7 @@ export const QuestionAdditionalInfoSkeleton = ({
 						<TextSkeleton variant="body3" width={150} />
 						<QuestionGradeListSkeleton />
 					</Flex>
-					<Flex direction="column" gap="16">
-						<TextSkeleton variant="body3" width={150} />
-						<SkillListSkeleton />
-					</Flex>
+					<BaseFilterSectionSkeleton length={3} />
 					<Flex direction="column" gap="16">
 						<TextSkeleton variant="body3" width={150} />
 						<KeywordsListSkeleton />

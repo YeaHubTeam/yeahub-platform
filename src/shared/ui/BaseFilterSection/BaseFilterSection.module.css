@@ -1,3 +1,7 @@
+.wrapper {
+  max-width: max-content;
+}
+
 .chip span {
   padding: 0;
   line-height: 120%;

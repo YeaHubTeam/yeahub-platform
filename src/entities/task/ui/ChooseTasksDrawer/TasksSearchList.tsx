@@ -18,12 +18,19 @@ interface TasksSearchListProps {
 }
 
 export const TasksSearchList = ({ selectedTasks, onSelectTask }: TasksSearchListProps) => {
-	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
-	const [collectionSearch, setCollectionSearch] = useState('');
-	const { data: tasksResponse, isLoading, isError } = useGetTasksListQuery({});
+	const { t } = useTranslation(i18Namespace.translation);
+	const [taskSearch, setTaskSearch] = useState('');
+	const {
+		data: tasksResponse,
+		isLoading,
+		isError,
+	} = useGetTasksListQuery({
+		title: taskSearch,
+		limit: 20,
+	});
 
-	const handleCollectionSearch = (e: ChangeEvent<HTMLInputElement>) => {
-		setCollectionSearch(e.target.value);
+	const handleTaskSearch = (e: ChangeEvent<HTMLInputElement>) => {
+		setTaskSearch(e.target.value);
 	};
 
 	const filteredTasks = useMemo(() => {
@@ -33,14 +40,14 @@ export const TasksSearchList = ({ selectedTasks, onSelectTask }: TasksSearchList
 			const isAlreadySelected = selectedTasks.some(
 				(selected) => String(selected.id) === String(task.id),
 			);
-			return !isAlreadySelected && taskName.toLowerCase().includes(collectionSearch.toLowerCase());
+			return !isAlreadySelected && taskName.toLowerCase().includes(taskSearch.toLowerCase());
 		});
-	}, [tasksResponse?.data, selectedTasks, collectionSearch]);
+	}, [tasksResponse?.data, selectedTasks, taskSearch]);
 
 	return (
 		<Flex direction="column" gap="24" className={styles['drawer-content']}>
 			<Input
-				onChange={handleCollectionSearch}
+				onChange={handleTaskSearch}
 				className={styles.input}
 				prefix={<Icon icon="search" size={20} color="black-300" />}
 				placeholder={t(Translation.SEARCH)}

@@ -43,7 +43,7 @@ const CompaniesTablePage = () => {
 
 	const userId = useAppSelector(getUserId);
 
-	const onSelectCompanies = (ids: SelectedAdminEntities) => {
+	const onSelectCompanies = (ids: SelectedAdminEntities<string>) => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
 	};
 
