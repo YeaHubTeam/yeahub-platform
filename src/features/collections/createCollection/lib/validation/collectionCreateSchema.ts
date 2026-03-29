@@ -24,5 +24,5 @@ export const collectionCreateSchema: yup.ObjectSchema<CollectionCreateFormValues
 		questions: yup
 			.array(yup.number().required())
 			.required(i18n.t(Translation.VALIDATION_PARAMETER)),
-		taskIds: yup.array(yup.string().required()).required(i18n.t(Translation.VALIDATION_PARAMETER)),
+		taskIds: yup.array(yup.string().required()),
 	});
