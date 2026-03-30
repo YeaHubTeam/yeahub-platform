@@ -43,7 +43,8 @@
 	"ref.code": {
 		"short": "Promo code",
 		"label": "Add a promo code",
-		"placeholder": "Add a promo code"
+		"placeholder": "Add a promo code",
+		"title": "Editing a referral link"
 	},
 	"owner.username": {
 		"short": "Owner",

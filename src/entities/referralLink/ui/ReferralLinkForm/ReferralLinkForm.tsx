@@ -9,35 +9,40 @@ import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 
-import { UserSelect } from '@/entities/user';
+import { UserSelect } from '@/entities/user/@x/referralLink';
+
+import { ReferralLink } from '../../model/types/referralLinks';
 
 import styles from './ReferralLinkForm.module.css';
 
 interface ReferralLinkFormProps {
 	userId?: string;
+	referralLink?: ReferralLink;
 }
 
-export const ReferralLinkForm = ({ userId }: ReferralLinkFormProps) => {
+export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const { control, watch, formState, setValue } = useFormContext();
+	const { control, watch, setValue } = useFormContext();
 
 	const refCode = watch('refCode');
-	const [isOwnerChecked, setIsOwnerChecked] = useState(false);
+	const [isOwnerChecked, setIsOwnerChecked] = useState(userId === referralLink?.ownerId);
+
+	const BASE_URL = `${process.env.APP_URL}?ref_id=`;
 
 	const handleRefCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue('refCode', e.target.value);
 
 		if (e.target.value) {
-			setValue('url', `${formState.defaultValues?.url}${e.target.value}`);
+			setValue('url', `${BASE_URL}${e.target.value}`);
 		} else {
-			setValue('url', '');
+			setValue('url', BASE_URL);
 		}
 	};
 
 	return (
 		<Flex direction="column" gap="60" className={styles.wrapper}>
 			<FormField
-				label={t(ReferralLinks.REF_CODE_LABEL)}
+				label={t(ReferralLinks.REF_CODE_SHORT)}
 				description={t(ReferralLinks.REF_CODE_PLACEHOLDER)}
 			>
 				<FormControl name="refCode" control={control}>
@@ -46,7 +51,10 @@ export const ReferralLinkForm = ({ userId }: ReferralLinkFormProps) => {
 							{...field}
 							placeholder={t(ReferralLinks.REF_CODE_PLACEHOLDER)}
 							error={hasError}
-							onChange={handleRefCodeChange}
+							onChange={(e) => {
+								field.onChange(e);
+								handleRefCodeChange(e);
+							}}
 							maxLength={50}
 						/>
 					)}
@@ -76,9 +84,7 @@ export const ReferralLinkForm = ({ userId }: ReferralLinkFormProps) => {
 								<UserSelect
 									key={isOwnerChecked ? 'owner' : 'select'}
 									value={displayValue}
-									onChange={(userId) => {
-										field.onChange(userId);
-									}}
+									onChange={(userId) => field.onChange(userId)}
 									disabled={false || isOwnerChecked}
 									showLabel={false}
 								/>

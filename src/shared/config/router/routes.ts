@@ -165,6 +165,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/referralLinks/create',
 			},
+			edit: {
+				route: ':referralLinkId/edit',
+				page: '/admin/referralLinks/:referralLinkId/edit',
+			},
 			details: {
 				route: ':referralLinkId',
 				page: '/admin/referralLinks/:referralLinkId',
