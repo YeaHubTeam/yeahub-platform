@@ -63,7 +63,6 @@
 				"resources": "Resources"
 			},
 			"questions": "Questions",
-
 			"skills": "Skills",
 			"companies": "Companies",
 			"analytics": "Analytics",
@@ -521,11 +520,24 @@
 			"delete": {
 				"single": {
 					"success": "Topic successfully deleted",
-					"failed": "Topic could not be deleted"
+					"failed": "The topic could not be deleted",
+					"not_found": "Topic not found",
+					"image": {
+						"url_invalid": "Image url can not be empty",
+						"not_found": "There is no such image in storage"
+					}
 				},
-				"multiple": {
-					"success": "Successfully deleted topics:",
-					"failed": "Topic could not be deleted:"
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"constraint": {
+					"foreign_key_violation": "Cannot delete topic because it is referenced by other entities"
 				}
 			}
 		},
@@ -656,6 +668,24 @@
 				"unverified": "You have to be verified to delete a referral link",
 				"not_owner": "User must be an owner of link or admin",
 				"not_found": "Referral link not found"
+			},
+			"edit": {
+				"success": "Referral link successfully updated",
+				"failed": "Failed to update referral link",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Available only for verified users"
+					}
+				},
+				"referral": {
+					"user": {
+						"not.owner": "User is not the owner of this referral link"
+					},
+					"link": {
+						"not.find": "Referral link not found"
+					}
+				}
 			}
 		},
 		"profile": {

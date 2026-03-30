@@ -7,8 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getUserId } from '@/entities/profile';
-
-import { ReferralLinkForm } from '../ReferralLinkForm/ReferralLinkForm';
+import { ReferralLinkForm } from '@/entities/referralLink';
 
 import styles from './ReferralLinkCreateFormCard.module.css';
 
