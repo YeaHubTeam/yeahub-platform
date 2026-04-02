@@ -174,6 +174,18 @@ export const ROUTES = {
 				page: '/admin/referralLinks/:referralLinkId',
 			},
 		},
+		featureFlags: {
+			route: 'featureFlags',
+			page: '/admin/featureFlags',
+			create: {
+				route: 'create',
+				page: '/admin/featureFlags/create',
+			},
+			details: {
+				route: ':flagId',
+				page: '/admin/featureFlags/:flagId',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',

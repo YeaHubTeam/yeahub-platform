@@ -1,0 +1,28 @@
+{
+	"stub": {
+		"empty": {
+			"featureFlags": {
+				"title": "Похоже здесь пока нет фича флагов",
+				"subtitle": "Создайте фича флаг или подождите, пока кто-то создаст его",
+				"submit": "Добавить"
+			}
+		}
+	},
+	"table": {
+		"featureFlags": {
+			"flag": "Флаг",
+			"description": "Описание",
+			"enabled": "Активность",
+			"roles": "Роли",
+			"clientType": "Тип клиента",
+			"createdAt": "Дата создания",
+			"actions": "Действия"
+		}
+	},
+	"status": {
+		"featureFlags": {
+			"enabled": "Включен",
+			"disabled": "Выключен"
+		}
+	}
+}

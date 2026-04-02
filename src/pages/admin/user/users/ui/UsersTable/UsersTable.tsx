@@ -46,7 +46,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		const columns = {
 			username: `${user.username}`,
 			email: user.email,
-			roles: <UserRolesList userRoles={user.userRoles} />,
+			roles: <UserRolesList userRoles={user.userRoles?.map((role) => role.name) ?? []} />,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (
