@@ -12,7 +12,7 @@ export const featureFlagApi = baseApi.injectEndpoints({
 			{
 				query: (params) => ({
 					url: featureFlagApiUrls.getFeatureFlagsList,
-					params: { page: 1, limit: 10, ...params },
+					params: { page: 1, limit: 10, clientType: 'WEB', ...params },
 				}),
 				providesTags: [ApiTags.FEATURE_FLAGS],
 			},

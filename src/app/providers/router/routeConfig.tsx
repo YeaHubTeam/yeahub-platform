@@ -36,7 +36,7 @@ import { CompaniesTablePage } from '@/pages/admin/company/companies';
 import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
 import { CompanyEditPage } from '@/pages/admin/company/companyEdit';
-import { FeatureFlagPage } from '@/pages/admin/featureFlag';
+import { FeatureFlagsPage } from '@/pages/admin/featureFlag/featureFlags';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
@@ -606,15 +606,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <FeatureFlagPage />,
-					},
-					{
-						path: ROUTES.admin.featureFlags.create.route,
-						element: <FeatureFlagPage />,
-					},
-					{
-						path: ROUTES.admin.featureFlags.details.route,
-						element: <FeatureFlagPage />,
+						element: <FeatureFlagsPage />,
 					},
 				],
 			},

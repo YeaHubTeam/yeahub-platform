@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { FeatureFlags, i18Namespace, ROUTES } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { SelectedEntities } from '@/shared/libs';
+import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
+import { UserRolesList } from '@/entities/user';
 
 interface FeatureFlagsTableProps {
 	featureFlags?: FeatureFlagApiItem[];
@@ -51,14 +53,29 @@ export const FeatureFlagsTable = ({
 	};
 
 	const renderTableBody = (featureFlag: FeatureFlagApiItem) => {
+		const enabledStatus: StatusChipItem = featureFlag.enabled
+			? {
+					text: t(FeatureFlags.STATUS_ENABLED, { ns: i18Namespace.featureFlags }),
+					variant: 'green',
+				}
+			: {
+					text: t(FeatureFlags.STATUS_DISABLED, { ns: i18Namespace.featureFlags }),
+					variant: 'red',
+				};
+
 		const columns = {
 			flag: (
 				<Link to={route(ROUTES.admin.featureFlags.details.page, featureFlag.id)}>
-					<Text variant="body3-accent">{featureFlag.flag}</Text>
+					{featureFlag.flag}
 				</Link>
 			),
-			description: <Text variant="body3-accent">{featureFlag.description}</Text>,
-			roles: <Text variant="body3-accent">{featureFlag.roles.join(', ')}</Text>,
+			description: featureFlag.description,
+			enabled: <StatusChip status={enabledStatus} />,
+			roles: featureFlag.roles?.length ? (
+				<UserRolesList userRoles={featureFlag.roles} />
+			) : (
+				<Text variant="body3-accent">-</Text>
+			),
 			clientType: <Text variant="body3-accent">{featureFlag.clientType}</Text>,
 			createdAt: (
 				<Text variant="body3-accent">{new Date(featureFlag.createdAt).toLocaleDateString()}</Text>

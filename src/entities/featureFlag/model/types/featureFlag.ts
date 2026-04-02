@@ -1,3 +1,5 @@
+import { Response } from '@/shared/libs';
+
 import { RoleName } from '@/entities/auth/@x/featureFlag';
 
 export type FeatureFlagType =
@@ -18,6 +20,8 @@ export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
 
 export type ClientType = 'WEB' | 'MOBILE' | 'DESKTOP';
 
+export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
+
 export interface FeatureFlagApiItem {
 	id: string;
 	flag: string;
@@ -36,11 +40,4 @@ export interface GetFeatureFlagsListParamsRequest {
 	enabled?: boolean;
 	roleIds?: RoleName[];
 	clientType?: ClientType;
-}
-
-export interface GetFeatureFlagsListResponse {
-	total: number;
-	page: number;
-	limit: number;
-	data: FeatureFlagApiItem[];
 }

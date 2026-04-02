@@ -12,7 +12,7 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { FeatureFlagsTable } from './FeatureFlagsTablePage';
 
-export const FeatureFlagPage = () => {
+export const FeatureFlagsPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 
@@ -24,29 +24,18 @@ export const FeatureFlagPage = () => {
 		refetch,
 	} = useGetFeatureFlagsListQuery({
 		page,
-		limit: 10,
-		clientType: 'WEB',
 	});
 
 	const hasFeatureFlags = featureFlagsData?.data && featureFlagsData.data.length > 0;
 
-	const totalPages = Math.ceil((featureFlagsData?.total || 0) / 10);
+	const paginationOptions = {
+		page,
+		limit: 10,
+		total: featureFlagsData?.total || 0,
+		onChangePage: setPage,
+	};
 
-	const paginationOptions =
-		hasFeatureFlags && totalPages > 1
-			? {
-					page,
-					limit: 10,
-					total: featureFlagsData?.total || 0,
-					onChangePage: setPage,
-				}
-			: undefined;
-
-	const content = (
-		<div>
-			<div>{hasFeatureFlags && <FeatureFlagsTable featureFlags={featureFlagsData?.data} />}</div>
-		</div>
-	);
+	const content = hasFeatureFlags && <FeatureFlagsTable featureFlags={featureFlagsData?.data} />;
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -83,4 +72,4 @@ export const FeatureFlagPage = () => {
 	);
 };
 
-export default FeatureFlagPage;
+export default FeatureFlagsPage;

@@ -540,6 +540,8 @@ export enum FeatureFlags {
 	TABLE_CLIENT_TYPE = 'table.featureFlags.clientType',
 	TABLE_CREATED_AT = 'table.featureFlags.createdAt',
 	TABLE_ACTIONS = 'table.featureFlags.actions',
+	STATUS_ENABLED = 'status.featureFlags.enabled',
+	STATUS_DISABLED = 'status.featureFlags.disabled',
 }
 
 export enum Topics {

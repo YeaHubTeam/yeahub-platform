@@ -18,5 +18,11 @@
 			"createdAt": "Created at",
 			"actions": "Actions"
 		}
+	},
+	"status": {
+		"featureFlags": {
+			"enabled": "Enabled",
+			"disabled": "Disabled"
+		}
 	}
 }

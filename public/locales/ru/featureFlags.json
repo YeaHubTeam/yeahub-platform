@@ -18,5 +18,11 @@
 			"createdAt": "Дата создания",
 			"actions": "Действия"
 		}
+	},
+	"status": {
+		"featureFlags": {
+			"enabled": "Включен",
+			"disabled": "Выключен"
+		}
 	}
 }
