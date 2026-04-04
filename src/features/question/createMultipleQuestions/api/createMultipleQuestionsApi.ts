@@ -2,11 +2,10 @@ import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
 import { handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { GENERATED_QUESTIONS_LS_KEY } from '@/entities/question';
+
 import { getCreateMultipleQuestionsApiErrorMessage } from '../lib/utils/getCreateMultipleQuestionsApiErrorMessage';
-import {
-	createMultipleQuestionsApiUrls,
-	GENERATED_QUESTIONS_LS_KEY,
-} from '../model/constants/createMultipleQuestionsConstants';
+import { createMultipleQuestionsApiUrls } from '../model/constants/createMultipleQuestionsConstants';
 import {
 	CreateMultipleQuestionsBodyRequest,
 	CreateMultipleQuestionsResponse,

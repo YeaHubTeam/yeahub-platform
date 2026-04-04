@@ -1,2 +1,1 @@
-export { ReferralLinkEditPage } from "./ui/ReferralLinkEditPage/ReferralLinkEditPage.lazy";
-
+export { ReferralLinkEditPage } from './ui/ReferralLinkEditPage/ReferralLinkEditPage.lazy';
