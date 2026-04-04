@@ -117,11 +117,11 @@ const QuestionsPage = () => {
 
 	const menuItems: PopoverMenuItem[] = [
 		{
-			title: t(Translation.CREATE, { ns: i18Namespace.translation }),
+			title: t(Questions.POPOVER_ADD_SINGLE, { ns: i18Namespace.questions }),
 			onClick: handleCreateQuestion,
 		},
 		{
-			title: t(Questions.GENERATED_QUESTIONS_TITLE, { ns: i18Namespace.questions }),
+			title: t(Questions.POPOVER_ADD_MULTIPLY, { ns: i18Namespace.questions }),
 			onClick: handleCreateMultipleQuestions,
 		},
 	];
