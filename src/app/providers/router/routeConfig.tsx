@@ -44,6 +44,7 @@ import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
 import { ReferralLinkDetailPage } from '@/pages/admin/referralLink/ReferalLinkDetail';
 import { ReferralLinkCreatePage } from '@/pages/admin/referralLink/ReferralLinkCreate';
+import { ReferralLinkEditPage } from '@/pages/admin/referralLink/referralLinkEdit';
 import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
@@ -81,6 +82,7 @@ import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
+import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
@@ -614,6 +616,10 @@ export const router = createBrowserRouter([
 						path: ROUTES.admin.referralLinks.details.route,
 						element: <ReferralLinkDetailPage />,
 					},
+					{
+						path: ROUTES.admin.referralLinks.edit.route,
+						element: <ReferralLinkEditPage />,
+					},
 				],
 			},
 			{
@@ -633,6 +639,16 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+			},
+			{
+				path: ROUTES.career.route,
+				element: <Outlet />,
+				children: [
+					{
+						path: ROUTES.career['resume-analyzer'].route,
+						element: <ResumeAnalyzerPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.analytics.route,

@@ -76,7 +76,7 @@ export const ReferralLinksTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {},
+				onClick: () => navigate(route(ROUTES.admin.referralLinks.edit.page, ref.id)),
 			},
 			{
 				renderComponent: () => <DeleteReferralLinkButton id={ref.id} />,

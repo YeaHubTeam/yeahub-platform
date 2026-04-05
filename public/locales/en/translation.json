@@ -656,6 +656,24 @@
 				"unverified": "You have to be verified to delete a referral link",
 				"not_owner": "User must be an owner of link or admin",
 				"not_found": "Referral link not found"
+			},
+			"edit": {
+				"success": "Referral link successfully updated",
+				"failed": "Failed to update referral link",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Available only for verified users"
+					}
+				},
+				"referral": {
+					"user": {
+						"not.owner": "User is not the owner of this referral link"
+					},
+					"link": {
+						"not.find": "Referral link not found"
+					}
+				}
 			}
 		},
 		"profile": {

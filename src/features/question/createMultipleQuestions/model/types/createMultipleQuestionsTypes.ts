@@ -1,4 +1,4 @@
-import { QuestionStatus } from '@/entities/question';
+import { GeneratedQuestionDto } from '@/entities/question';
 
 export interface CreateMultipleQuestionsFormValues {
 	specializationId: number | null;
@@ -19,24 +19,6 @@ export interface GeneratedQuestionsWithErrors {
 	requestedQuestionText: string;
 	generationError: string | null;
 	savingError: string | null;
-}
-
-export interface GeneratedQuestionDto {
-	title: string;
-	description: string;
-	code: string | null;
-	imageSrc: string | null;
-	keywords: string[];
-	shortAnswer: string;
-	longAnswer: string;
-	status: QuestionStatus;
-	rate: number;
-	complexity: number;
-	specializations: number[];
-	skills: number[];
-	topics: number[];
-	createdById: string;
-	updatedById: string;
 }
 
 export interface CreateMultipleQuestionsResponseItem

@@ -332,6 +332,12 @@ export enum Translation {
 	TOAST_REFERRALLINK_CREATE_FAILED = 'toast.referralLink.create.failed',
 	TOAST_REFERRALLINK_CREATE_UNAUTHORIZED = 'toast.referralLink.create.unauthorized',
 	TOAST_REFERRALLINK_CREATE_UNVERIFIED = 'toast.referralLink.create.unverified',
+	TOAST_REFERRALLINK_EDIT_SUCCESS = 'toast.referralLink.edit.success',
+	TOAST_REFERRALLINK_EDIT_FAILED = 'toast.referralLink.edit.failed',
+	TOAST_REFERRALLINK_EDIT_AUTH_UNAUTHORIZED = 'toast.referralLink.edit.auth.unauthorized',
+	TOAST_REFERRALLINK_EDIT_AUTH_USER_VERIFIED = 'toast.referralLink.edit.auth.user.verified',
+	TOAST_REFERRALLINK_EDIT_REFERRAL_USER_NOT_OWNER = 'toast.referralLink.edit.referral.user.not.owner',
+	TOAST_REFERRALLINK_EDIT_REFERRAL_LINK_NOT_FIND = 'toast.referralLink.edit.referral.link.not.find',
 	TOAST_REFERRALLINK_DELETE_SUCCESS = 'toast.referralLink.delete.success',
 	TOAST_REFERRALLINK_DELETE_FAILED = 'toast.referralLink.delete.failed',
 	TOAST_REFERRALLINK_DELETE_UNAUTHORIZED = 'toast.referralLink.delete.unauthorized',
@@ -749,6 +755,8 @@ export enum Resources {
 }
 
 export enum Questions {
+	POPOVER_ADD_SINGLE = 'popover.add.single',
+	POPOVER_ADD_MULTIPLY = 'popover.add.multiply',
 	MOST_FREQ_LABEL = 'Популярность',
 	MOST_FREQ_TITLE_COLLECTION = 'Список самых популярных вопросов',
 	COUNT = 'count',
@@ -838,9 +846,15 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
 
 	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
+	GENERATED_QUESTIONS_CREATE_AGAIN = 'generated.questions.create.again',
+	GENERATED_QUESTIONS_ADD_TO_COLLECTION_NEW = 'generated.questions.add.to.collection.new',
+	GENERATED_QUESTIONS_ADD_TO_COLLECTION_OLD = 'generated.questions.add.to.collection.old',
 	GENERATED_QUESTIONS_SUCCESS_TITLE = 'generated.questions.success.title',
 	GENERATED_QUESTIONS_ERRORS_TITLE = 'generated.questions.errors.title',
 	GENERATED_QUESTIONS_ERRORS_TITLE_CONFLICT = 'generated.questions.errors.conflict.title',
+	MODAL_MOVE_TO_EXIST_COLLECTION_TITLE = 'modal.move.to.exist.collection.title',
+	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_OK = 'modal.move.to.exist.collection.button.ok',
+	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_CANCEL = 'modal.move.to.exist.collection.button.cancel',
 }
 
 export enum InterviewHistory {
@@ -961,6 +975,7 @@ export enum ReferralLinks {
 	REF_CODE_SHORT = 'ref.code.short',
 	REF_CODE_LABEL = 'ref.code.label',
 	REF_CODE_PLACEHOLDER = 'ref.code.placeholder',
+	REF_CODE_TITLE = 'ref.code.title',
 	OWNER_USERNAME_SHORT = 'owner.username.short',
 	OWNER_USERNAME_LABEL = 'owner.username.label',
 	OWNER_USERNAME_PLACEHOLDER = 'owner.username.placeholder',
@@ -1028,6 +1043,9 @@ export enum User {
 }
 
 export enum Collections {
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_TITLE = 'select.title',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
