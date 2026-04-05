@@ -202,6 +202,14 @@ export const ROUTES = {
 			page: '/profile/edit',
 		},
 	},
+	career: {
+		route: 'career',
+		page: '/career',
+		'resume-analyzer': {
+			route: 'resume-analyzer',
+			page: '/career/resume-analyzer',
+		},
+	},
 	users: {
 		route: 'users/:userId',
 		page: '/users/:userId',
