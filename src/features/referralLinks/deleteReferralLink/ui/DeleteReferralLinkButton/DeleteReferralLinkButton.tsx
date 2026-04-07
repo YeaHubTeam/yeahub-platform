@@ -9,17 +9,21 @@ import { DeleteReferralLinkModal } from '../DeleteReferralLinkModal/DeleteReferr
 
 interface DeleteReferralLinkButtonProps {
 	id: string;
+	isDetailPage?: boolean;
 }
 
-export const DeleteReferralLinkButton = ({ id }: DeleteReferralLinkButtonProps) => {
+export const DeleteReferralLinkButton = ({
+	id,
+	isDetailPage = false,
+}: DeleteReferralLinkButtonProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	return (
 		<>
 			<Button
-				variant="tertiary-link"
-				preffix={<Icon icon="trash" size={24} />}
+				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
+				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
 				onClick={() => setIsModalOpen(true)}
 			>
 				{t(ReferralLinks.ACTION_DELETE)}
