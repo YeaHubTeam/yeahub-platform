@@ -74,6 +74,7 @@ export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompany
 				isInput={true}
 				inputValue={searchValue}
 				onChangeValue={handleSearchChange}
+				onChangeFilterValue={() => handleChange(undefined)}
 				onSelect={(val) => {
 					const selected = options.find((opt) => opt.value === val);
 					handleChange(!val ? undefined : String(val));
