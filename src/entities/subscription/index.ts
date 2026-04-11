@@ -10,3 +10,4 @@ export type {
 	ActiveSubscriptionState,
 	SubscriptionCode,
 } from './model/types/subscription';
+export { subscriptionHandlers } from './api/__mocks__';
