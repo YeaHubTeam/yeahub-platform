@@ -1,1 +1,1 @@
-export { ReferralLinkEditForm } from "./ui/ReferralLinkEditForm/ReferralLinkEditForm";
+export { ReferralLinkEditForm } from './ui/ReferralLinkEditForm/ReferralLinkEditForm';

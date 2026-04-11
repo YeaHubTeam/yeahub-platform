@@ -1,3 +1,3 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-export const ReferralLinkEditPage = lazy(() => import('./ReferralLinkEditPage'))
+export const ReferralLinkEditPage = lazy(() => import('./ReferralLinkEditPage'));
