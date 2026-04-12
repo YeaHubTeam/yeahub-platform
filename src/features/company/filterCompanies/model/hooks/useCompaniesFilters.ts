@@ -11,16 +11,24 @@ export const useCompaniesFilters = (initialParams: CompaniesFilterParams) => {
 		currentParams,
 	);
 
-	const hasFilters = (filters.page || 1) > 1 || Boolean(filters.title) || Boolean(filters.isMy);
+	const hasFilters =
+		(filters.page || 1) > 1 ||
+		Boolean(filters.title) ||
+		Boolean(filters.author) ||
+		Boolean(filters.isMy);
 
 	const onChangeTitle = (title: CompaniesFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
 	};
 	const onChangeIsMy = (isMy: CompaniesFilterParams['isMy']) => {
-		onFilterChange({ isMy, page: 1 });
+		onFilterChange({ isMy, author: isMy ? undefined : filters.author, page: 1 });
 	};
 	const onChangePage = (page: CompaniesFilterParams['page']) => {
 		onFilterChange({ page });
+	};
+
+	const onChangeAuthor = (author?: CompaniesFilterParams['author']) => {
+		onFilterChange({ author, isMy: false, page: 1 });
 	};
 
 	return {
@@ -30,5 +38,6 @@ export const useCompaniesFilters = (initialParams: CompaniesFilterParams) => {
 		onChangeTitle,
 		onChangePage,
 		onChangeIsMy,
+		onChangeAuthor,
 	};
 };

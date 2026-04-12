@@ -12,3 +12,5 @@ export const questionApiUrls = {
 	getMostDifficultQuestionsBySpecializationId: 'questions-stats/most-difficult/:specId',
 	popularQuestions: 'questions-stats/question-popularity',
 };
+
+export const GENERATED_QUESTIONS_LS_KEY = 'YH:generated.questions.result';

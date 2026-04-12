@@ -1,0 +1,10 @@
+.image {
+  border-radius: 3px;
+}
+
+.list {
+  padding: 6px;
+  box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
+  border-radius: 8px;
+  background: var(--color-black-30);
+}

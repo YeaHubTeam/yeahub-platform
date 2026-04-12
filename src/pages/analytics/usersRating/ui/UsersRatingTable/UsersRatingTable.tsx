@@ -46,11 +46,11 @@ export const UsersRatingTable = ({
 
 	const tableItems: UsersRatingTableRow[] = rankedUsers.map((rankedUser) => {
 		return {
-			id: rankedUser.userId,
+			id: rankedUser.username,
 			place: rankedUser.place,
-			user: <UsersTitle rankedUser={rankedUser} />,
+			user: <UsersTitle rankedUser={rankedUser} isLink={false} />,
 			avatarUrl: rankedUser.avatarUrl,
-			studiedQuestions: `${rankedUser.ratingScore}/${maxRating}`,
+			studiedQuestions: `${rankedUser.ratingPoints * 10}/${maxRating}`,
 			progress: <UsersRatingProgressBar rankedUser={rankedUser} maxRating={maxRating} />,
 			rowId: rankedUser.place,
 		};
@@ -91,7 +91,7 @@ export const UsersRatingTable = ({
 			progress: tableItem.progress,
 		};
 
-		const isCurrentUser = tableItem.id === currentUserRating?.userId;
+		const isCurrentUser = tableItem.id === currentUserRating?.username;
 
 		return Object.entries(columns).map(([k, v], i) => (
 			<td
