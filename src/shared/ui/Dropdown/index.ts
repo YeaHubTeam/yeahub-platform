@@ -1,5 +1,5 @@
-export { Dropdown, DropdownProps } from './Dropdown/Dropdown';
+export { Dropdown, type DropdownProps } from './Dropdown/Dropdown';
 export { DropdownSkeleton } from './Dropdown/Dropdown.skeleton';
-export { Option, OptionProps } from './Option/Option';
+export { Option, type OptionProps } from './Option/Option';
 
 export { dropdownTestIds } from './Dropdown/constants';

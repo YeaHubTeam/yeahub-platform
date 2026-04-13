@@ -57,8 +57,10 @@ export const SelectWithChips = <
 			</Dropdown>
 			{!!selectedItems?.length && (
 				<>
-					<Text variant="body3-accent">{title}</Text>
-					<div className={styles.selection}>
+					<Text variant="body3-accent" dataTestId={selectWithChipsTestIds.title}>
+						{title}
+					</Text>
+					<div className={styles.selection} data-testid={selectWithChipsTestIds.list}>
 						{selectedItems.map((id) => (
 							<Chip
 								key={id}
@@ -75,7 +77,7 @@ export const SelectWithChips = <
 								onDelete={handleDeleteItem(id as U)}
 								disabled={disabled}
 								active
-								data-testid="chip"
+								dataTestId={selectWithChipsTestIds.chip}
 							/>
 						))}
 					</div>
