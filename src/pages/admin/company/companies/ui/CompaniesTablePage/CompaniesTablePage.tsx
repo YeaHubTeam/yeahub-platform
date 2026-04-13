@@ -31,12 +31,19 @@ const CompaniesTablePage = () => {
 	const selectedCompanies = useAppSelector(getSelectedCompanies);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const dispatch = useAppDispatch();
-	const { filters, hasFilters, onChangePage, onChangeTitle, onResetFilters, onChangeIsMy } =
-		useCompaniesFilters({ page: 1 });
+	const {
+		filters,
+		hasFilters,
+		onChangePage,
+		onChangeTitle,
+		onResetFilters,
+		onChangeIsMy,
+		onChangeAuthor,
+	} = useCompaniesFilters({ page: 1 });
 
 	const userId = useAppSelector(getUserId);
 
-	const onSelectCompanies = (ids: SelectedAdminEntities) => {
+	const onSelectCompanies = (ids: SelectedAdminEntities<string>) => {
 		dispatch(companiesTablePageActions.setSelectedCompanies(ids));
 	};
 
@@ -49,7 +56,7 @@ const CompaniesTablePage = () => {
 		page: filters.page,
 		limit: 10,
 		titleOrLegalNameOrDescriptionSearch: filters.title,
-		authorId: filters.isMy ? userId : undefined,
+		authorId: filters.isMy ? userId : filters.author,
 	});
 
 	const companiesWithEditFlags = useMemo(() => {
@@ -109,7 +116,13 @@ const CompaniesTablePage = () => {
 						renderRemoveButton={() => (
 							<DeleteCompaniesButton companiesToRemove={selectedCompanies} />
 						)}
-						renderFilter={() => <CompaniesFilters filters={filters} onChangeIsMy={onChangeIsMy} />}
+						renderFilter={() => (
+							<CompaniesFilters
+								filters={filters}
+								onChangeIsMy={onChangeIsMy}
+								onChangeAuthor={onChangeAuthor}
+							/>
+						)}
 					/>
 					<Card className={styles.content}>
 						<>

@@ -7,6 +7,7 @@ export interface ChipProps {
 	theme?: 'primary' | 'outlined';
 	label?: string | ReactNode;
 	labelVariant?: TextVariant;
+	activeInverse?: boolean;
 	onDelete?: () => void;
 	disabled?: boolean;
 	active?: boolean;

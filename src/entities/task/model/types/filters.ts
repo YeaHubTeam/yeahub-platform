@@ -6,4 +6,5 @@ export interface TasksFilterParams {
 	difficulty?: TaskDifficulty;
 	category?: TaskCategoryCode;
 	langIds?: number[];
+	companyId?: string;
 }

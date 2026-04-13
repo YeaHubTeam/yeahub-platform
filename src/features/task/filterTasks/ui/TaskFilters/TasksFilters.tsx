@@ -4,6 +4,7 @@ import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 
+import { PublicCompanySelect } from '@/entities/company';
 import { TaskCategoryFilterList, TasksFilterParams } from '@/entities/task';
 
 import { TaskDifficultyFilter } from '../TaskDifficultyFilter/TaskDifficultyFilter';
@@ -15,6 +16,7 @@ interface TasksFiltersProps {
 	onChangeDifficulty: (difficulty?: TasksFilterParams['difficulty']) => void;
 	onChangeLangIds: (langIds?: TasksFilterParams['langIds']) => void;
 	onChangeCategory: (category?: TasksFilterParams['category']) => void;
+	onChangeCompanyId: (companyId?: TasksFilterParams['companyId']) => void;
 }
 
 export const TasksFilters = ({
@@ -23,8 +25,9 @@ export const TasksFilters = ({
 	onChangeDifficulty,
 	onChangeLangIds,
 	onChangeCategory,
+	onChangeCompanyId,
 }: TasksFiltersProps) => {
-	const { title, difficulty, langIds, category } = filters;
+	const { title, difficulty, langIds, category, companyId } = filters;
 	const { t } = useTranslation(i18Namespace.task);
 
 	return (
@@ -42,6 +45,7 @@ export const TasksFilters = ({
 
 			<TaskLanguagesFilter selectedLangIds={langIds} onChangeLangIds={onChangeLangIds} />
 			<TaskCategoryFilterList onChooseCategory={onChangeCategory} selectedCategory={category} />
+			<PublicCompanySelect value={companyId} onChange={onChangeCompanyId} />
 		</Flex>
 	);
 };

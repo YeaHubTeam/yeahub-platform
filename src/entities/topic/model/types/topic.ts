@@ -8,8 +8,8 @@ export interface Topic {
 	description: string;
 	imageSrc?: string | null;
 	skill: Skill;
-	createdAt?: string;
-	updatedAt?: string;
+	createdAt: string;
+	updatedAt: string;
 	disabled?: boolean;
 }
 

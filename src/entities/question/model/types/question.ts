@@ -3,6 +3,7 @@ import { Author } from '@/shared/ui/AuthorInfo';
 
 import { Skill } from '@/entities/skill/@x/question';
 import { Specialization } from '@/entities/specialization/@x/question';
+import { Topic } from '@/entities/topic/@x/question';
 
 export type QuestionStatus = 'public' | 'draft';
 
@@ -24,11 +25,30 @@ export interface Question {
 	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
+	questionTopics?: Topic[];
 	checksCount?: number;
 	isFavorite?: boolean;
 	isLearned?: boolean;
 	profileId?: string;
 	disabled?: boolean;
+}
+
+export interface GeneratedQuestionDto {
+	title: string;
+	description: string;
+	code: string | null;
+	imageSrc: string | null;
+	keywords: string[];
+	shortAnswer: string;
+	longAnswer: string;
+	status: QuestionStatus;
+	rate: number;
+	complexity: number;
+	specializations: number[];
+	skills: number[];
+	topics: number[];
+	createdById: string;
+	updatedById: string;
 }
 
 export type PublicQuestion = Omit<
@@ -52,6 +72,7 @@ export type CreateOrEditQuestionFormValues = Pick<
 > & {
 	specializations: number[];
 	skills: number[];
+	topics?: number[];
 };
 
 type skillFilterMode = 'ALL' | 'ANY';

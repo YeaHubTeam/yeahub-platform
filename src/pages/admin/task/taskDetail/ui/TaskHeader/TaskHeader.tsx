@@ -2,6 +2,7 @@ import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { Company } from '@/entities/company';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage';
 import { TaskCategoryCode, TaskDifficulty } from '@/entities/task';
 
@@ -12,9 +13,16 @@ interface TaskHeaderProps {
 	languages: ProgrammingLanguage[];
 	difficulty: TaskDifficulty;
 	category: TaskCategoryCode;
+	companies: Company[];
 }
 
-export const TaskHeader = ({ name, languages, difficulty, category }: TaskHeaderProps) => {
+export const TaskHeader = ({
+	name,
+	languages,
+	difficulty,
+	category,
+	companies,
+}: TaskHeaderProps) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	return (
@@ -28,6 +36,7 @@ export const TaskHeader = ({ name, languages, difficulty, category }: TaskHeader
 						languages={languages}
 						difficulty={difficulty}
 						category={category}
+						companies={companies}
 					/>
 				)}
 			</Flex>

@@ -1,5 +1,6 @@
 import { Response, SortOrder } from '@/shared/libs';
 
+import { Company } from '@/entities/company/@x/task';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
 
 export type TaskStatus = 'solved' | 'attempted' | 'not_started';
@@ -38,6 +39,7 @@ export interface Task {
 	memoryLimit: number;
 	canSolve: boolean;
 	subscriptionLevel: TaskSubscriptionLevel;
+	companies: Company[];
 }
 
 export type TaskCategoryCode =
@@ -46,7 +48,34 @@ export type TaskCategoryCode =
 	| 'databases'
 	| 'strings'
 	| 'arrays'
-	| 'dynamic-programming';
+	| 'dynamic-programming'
+	| 'lists'
+	| 'matrices'
+	| 'objects'
+	| 'dictionaries'
+	| 'stack'
+	| 'queue'
+	| 'linked-lists'
+	| 'trees'
+	| 'graphs'
+	| 'sorting'
+	| 'search'
+	| 'greedy'
+	| 'recursion'
+	| 'conditions'
+	| 'loops'
+	| 'functions'
+	| 'iterators'
+	| 'generators'
+	| 'parsing'
+	| 'filtering'
+	| 'grouping'
+	| 'aggregation'
+	| 'serialization'
+	| 'async'
+	| 'caching'
+	| 'pointers'
+	| 'patterns';
 
 export interface TaskCategory {
 	id: number;
@@ -75,6 +104,7 @@ export interface GetTasksListParams {
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
 	collectionId?: number;
+	companyId?: string;
 }
 
 export type GetTasksListResponse = Response<Task[]>;
@@ -149,6 +179,7 @@ export type CreateOrEditTaskFormValues = Omit<
 	| 'canSolve'
 	| 'timeLimit'
 	| 'memoryLimit'
+	| 'companies'
 > & {
 	categoryCode: TaskCategoryCode;
 };

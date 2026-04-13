@@ -1,5 +1,5 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { route, handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { editSpecializationApiUrls } from '../model/constants/editSpecializationConstants';
@@ -7,6 +7,7 @@ import {
 	EditSpecializationBodyRequest,
 	EditSpecializationResponse,
 } from '../model/types/specializationEditPageTypes';
+import { getEditSpecializationErrorMessage } from '../model/utils/getApiErrorMessage';
 
 const editSpecializationApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -23,7 +24,7 @@ const editSpecializationApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.specializations.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SPECIALIZATION_EDIT_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_SPECIALIZATION_EDIT_FAILED));
+					toast.error(i18n.t(handleApiError(error, getEditSpecializationErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

@@ -9,6 +9,7 @@
 	"more": "More",
 	"return": "Return",
 	"create": "Add",
+	"questions.add": "Add questions",
 	"search": "Search",
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
@@ -162,7 +163,9 @@
 			"size": "Large file size",
 			"type": "Invalid file format"
 		},
-		"link": "Links forbidden"
+		"link": "Links forbidden",
+		"no.spaces": "No spaces",
+		"latin.and.number": "Only capital Latin letters and numbers"
 	},
 	"crumbs": {
 		"profile": "Profile",
@@ -273,6 +276,10 @@
 			"create": {
 				"success": "The question was created successfully",
 				"failed": "Failed to create a question",
+				"multiple": {
+					"success": "Questions created successfully",
+					"failed": "Failed to create questions"
+				},
 				"user": {
 					"not.found": "User not found"
 				},
@@ -495,6 +502,11 @@
 				"conflict": {
 					"specialization": "Specialization with this title already exists"
 				}
+			},
+			"specialization": {
+				"not": {
+					"found": "Specialization not found"
+				}
 			}
 		},
 		"topics": {
@@ -634,6 +646,34 @@
 			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"
+			}
+		},
+		"referralLink": {
+			"delete": {
+				"success": "Referral link has been successfully deleted",
+				"failed": "Failed to delete referral link",
+				"unauthorized": "You have to be authorized to delete a referral link",
+				"unverified": "You have to be verified to delete a referral link",
+				"not_owner": "User must be an owner of link or admin",
+				"not_found": "Referral link not found"
+			},
+			"edit": {
+				"success": "Referral link successfully updated",
+				"failed": "Failed to update referral link",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Available only for verified users"
+					}
+				},
+				"referral": {
+					"user": {
+						"not.owner": "User is not the owner of this referral link"
+					},
+					"link": {
+						"not.find": "Referral link not found"
+					}
+				}
 			}
 		},
 		"profile": {
