@@ -11,6 +11,7 @@ import { CollectionHeader } from '@/widgets/Collection';
 import { CollectionAdditionalInfoDrawer } from '@/widgets/Collection';
 import { CollectionBody } from '@/widgets/Collection';
 import { AdditionalInfo } from '@/widgets/Collection';
+import { SidebarBanner } from '@/widgets/SidebarBanner';
 import { TasksController } from '@/widgets/task/TasksList';
 
 import { CollectionActions } from '../CollectionActions/CollectionActions';
@@ -71,6 +72,8 @@ export const CollectionContent = ({
 	const media = getChannelsForSpecialization(specializations);
 	const isEmptyData = questions.length === 0;
 
+	const isSpecialization11 = specializations?.some((spec) => spec.id === 11);
+
 	return (
 		<section className={styles.wrapper}>
 			<div className={styles.main}>
@@ -117,7 +120,7 @@ export const CollectionContent = ({
 						keywords={keywords}
 						media={media}
 					/>
-					{guru && <GurusBanner gurus={[guru]} />}
+					<SidebarBanner guru={guru} isSpecialization11={isSpecialization11} />
 				</Flex>
 			)}
 		</section>

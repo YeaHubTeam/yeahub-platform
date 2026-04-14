@@ -8,6 +8,7 @@ import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
+import { SidebarBanner } from '@/widgets/SidebarBanner';
 
 import { QuestionActions } from '../QuestionActions/QuestionActions';
 
@@ -44,6 +45,8 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 		questionTopics,
 	} = question;
 
+	const isSpecialization11 = questionSpecializations?.some((spec) => spec.id === 11);
+
 	return (
 		<Flex gap="20">
 			<Flex gap="20" direction="column" flex={1} maxWidth>
@@ -74,7 +77,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 						route={ROUTES.wiki.questions.page}
 						media={media}
 					/>
-					{guru && <GurusBanner gurus={[guru]} />}
+					<SidebarBanner guru={guru} isSpecialization11={isSpecialization11} />
 				</Flex>
 			)}
 		</Flex>
