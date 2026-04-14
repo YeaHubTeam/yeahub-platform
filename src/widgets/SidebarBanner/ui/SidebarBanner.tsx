@@ -1,4 +1,5 @@
 import { Guru, GurusBanner } from '@/entities/guru';
+import { MentorBanner } from '@/entities/mentor';
 
 interface SidebarBannerProps {
 	guru?: Guru;
@@ -7,7 +8,7 @@ interface SidebarBannerProps {
 
 export const SidebarBanner = ({ guru, isSpecialization11 }: SidebarBannerProps) => {
 	if (isSpecialization11) {
-		return <div>ментор</div>;
+		return <MentorBanner />;
 	}
 
 	if (guru) {
