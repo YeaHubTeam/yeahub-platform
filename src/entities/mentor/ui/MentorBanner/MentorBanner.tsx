@@ -7,15 +7,17 @@ import { mentor } from '../../model/constans/mentor';
 import styles from './MentorBanner.module.css';
 
 export const MentorBanner = () => {
+	const { specializations, icons, title, description, buttonText } = mentor;
+
 	return (
 		<Card withBorder>
 			<div className={styles.header}>
 				<Text variant="body3-accent" color="white-900" className={styles.specialization}>
-					{mentor.specializations}
+					{specializations}
 				</Text>
 
 				<div className={styles.grid}>
-					{mentor.icons.map((icon, index) => (
+					{icons.map((icon, index) => (
 						<div key={index} className={styles.wrapper}>
 							{icon && <img src={icon} alt="tech" />}
 						</div>
@@ -25,14 +27,14 @@ export const MentorBanner = () => {
 
 			<div className={styles.content}>
 				<Text variant="body5-strong" color="black-900">
-					{mentor.title}
+					{title}
 				</Text>
 				<Text variant="body3" color="black-900">
-					{mentor.description}
+					{description}
 				</Text>
 
 				<Button size="large" variant="primary" destructive={false} fullWidth={false}>
-					{mentor.buttonText}
+					{buttonText}
 				</Button>
 			</div>
 		</Card>
