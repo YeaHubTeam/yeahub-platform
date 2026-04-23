@@ -2,7 +2,10 @@ import { ROUTES } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import {
+	getGuruWithMatchingSpecialization,
+	getNewGuruWithMatchingSpecialization,
+} from '@/entities/guru';
 import { ProgressBlock, type Question, QuestionAdditionalInfo } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
@@ -28,6 +31,8 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
+	const newGuru = getNewGuruWithMatchingSpecialization(question.questionSpecializations);
+
 	const showAuthor = guru ? false : true;
 	const media = getChannelsForSpecialization(question.questionSpecializations);
 
@@ -45,8 +50,6 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 		questionTopics,
 	} = question;
 
-	const isSpecialization11 = questionSpecializations?.some((spec) => spec.id === 11);
-
 	return (
 		<Flex gap="20">
 			<Flex gap="20" direction="column" flex={1} maxWidth>
@@ -60,7 +63,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 					isDisabled={isDisabled}
 				/>
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
-				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
+				{(isMobile || isTablet) && <SidebarBanner guru={guru} newGuru={newGuru} />}
 			</Flex>
 			{!isMobile && !isTablet && (
 				<Flex direction="column" gap="20" className={styles.additional}>
@@ -77,7 +80,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 						route={ROUTES.wiki.questions.page}
 						media={media}
 					/>
-					<SidebarBanner guru={guru} isSpecialization11={isSpecialization11} />
+					<SidebarBanner guru={guru} newGuru={newGuru} />
 				</Flex>
 			)}
 		</Flex>

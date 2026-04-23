@@ -1,14 +1,20 @@
-import { Guru, GurusBanner } from '@/entities/guru';
-import { MentorBanner } from '@/entities/mentor';
+import { Guru, GurusBanner, NewGuru, NewGuruBanner } from '@/entities/guru';
 
 interface SidebarBannerProps {
 	guru?: Guru;
-	isSpecialization11: boolean;
+	newGuru?: NewGuru;
 }
 
-export const SidebarBanner = ({ guru, isSpecialization11 }: SidebarBannerProps) => {
-	if (isSpecialization11) {
-		return <MentorBanner />;
+const specializationsForNewBanner = [11];
+
+export const SidebarBanner = ({ guru, newGuru }: SidebarBannerProps) => {
+	const isNewBanner =
+		guru?.specializations?.some((specialization) =>
+			specializationsForNewBanner.includes(specialization),
+		) || false;
+
+	if (isNewBanner && newGuru) {
+		return <NewGuruBanner guru={newGuru} />;
 	}
 
 	if (guru) {

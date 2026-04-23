@@ -2,7 +2,10 @@ import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { Collection as CollectionType } from '@/entities/collection';
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import {
+	getGuruWithMatchingSpecialization,
+	getNewGuruWithMatchingSpecialization,
+} from '@/entities/guru';
 import { Question } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { useGetTasksListQuery } from '@/entities/task';
@@ -68,11 +71,10 @@ export const CollectionContent = ({
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 	const guru = getGuruWithMatchingSpecialization(specializations);
+	const newGuru = getNewGuruWithMatchingSpecialization(specializations);
 	const showAuthor = !guru;
 	const media = getChannelsForSpecialization(specializations);
 	const isEmptyData = questions.length === 0;
-
-	const isSpecialization11 = specializations?.some((spec) => spec.id === 11);
 
 	return (
 		<section className={styles.wrapper}>
@@ -104,7 +106,7 @@ export const CollectionContent = ({
 						hasPremiumAccess={hasPremiumAccess}
 					/>
 				) : null}
-				{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
+				{isSmallScreen && <SidebarBanner guru={guru} newGuru={newGuru} />}
 			</div>
 
 			{isLargeScreen && (
@@ -120,7 +122,7 @@ export const CollectionContent = ({
 						keywords={keywords}
 						media={media}
 					/>
-					<SidebarBanner guru={guru} isSpecialization11={isSpecialization11} />
+					<SidebarBanner guru={guru} newGuru={newGuru} />
 				</Flex>
 			)}
 		</section>
