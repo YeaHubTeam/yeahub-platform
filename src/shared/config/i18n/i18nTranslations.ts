@@ -1431,6 +1431,7 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+	NEW_BANNER_BUTTON = 'new.banner.button',
 }
 
 export enum Learning {

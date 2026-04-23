@@ -1,4 +1,29 @@
-import { Guru } from '../types/guru';
+import cicd from '@/shared/assets/images/skills/cicd.png';
+import css from '@/shared/assets/images/skills/css.png';
+import docker from '@/shared/assets/images/skills/docker.png';
+import eslint from '@/shared/assets/images/skills/eslint.png';
+import html from '@/shared/assets/images/skills/html.png';
+import js from '@/shared/assets/images/skills/js.png';
+import redux from '@/shared/assets/images/skills/redux.png';
+import storybook from '@/shared/assets/images/skills/storybook.png';
+import ts from '@/shared/assets/images/skills/ts.png';
+
+import { Guru, NewGuru } from '../types/guru';
+
+export const newGurus: NewGuru[] = [
+	{
+		specializationTitle: 'Frontend developer',
+		specializations: [11],
+		title: 'Ментор по Frontend',
+		description:
+			'Полное сопровождение до оффера — без дорогих курсов, с оплатой после трудоустройства',
+		icons: [
+			[eslint, null, docker, html],
+			[storybook, ts, cicd, css],
+			[null, redux, null, js],
+		],
+	},
+];
 
 export const gurus: Guru[] = [
 	{
