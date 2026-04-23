@@ -17,11 +17,16 @@ export const createCollectionMock = http.post<
 >(process.env.API_URL + createCollectionApiUrls.createCollection, async ({ request }) => {
 	const body = (await request.json()) as CreateCollectionBodyRequest;
 
-	const newId = Math.floor(Math.random() * 1000) + 500;
 	const now = new Date().toISOString();
 
+	const company = companiesMock.data.find((c) => String(c.id) === body.companyId);
+
+	if (!company) {
+		return HttpResponse.json(null, { status: 404 });
+	}
+
 	const newCollection: CreateCollectionResponse = {
-		id: newId,
+		id: Date.now(),
 		title: body.title,
 		description: body.description,
 		isFree: body.isFree,
@@ -29,10 +34,8 @@ export const createCollectionMock = http.post<
 		tariff: body.isFree ? 'free' : 'premium',
 		createdAt: now,
 		updatedAt: now,
-
 		questionsCount: body.questions?.length || 0,
 		tasksCount: body.taskIds?.length || 0,
-
 		specializations: body.specializations?.map(
 			(id) =>
 				specializationsMock.data.find((spec) => spec.id === id) || {
@@ -41,13 +44,8 @@ export const createCollectionMock = http.post<
 					description: 'Unknown',
 				},
 		),
-
 		keywords: body.keywords || [],
-
-		company: body.companyId
-			? companiesMock.data.find((c) => String(c.id) === body.companyId)
-			: undefined,
-
+		company,
 		createdBy: {
 			id: 'admin-uuid',
 			username: 'admin',
