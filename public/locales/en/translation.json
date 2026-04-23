@@ -512,7 +512,29 @@
 		"topics": {
 			"create": {
 				"success": "Topic successfully created",
-				"failed": "Topic could not be created"
+				"failed": "Topic could not be created",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"topic": {
+					"skill": {
+						"not_found": "Skill not found"
+					},
+					"title": {
+						"conflict": "A topic with the same title already exists for this skill"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"edit": {
 				"success": "Topic successfully changed",

@@ -11,9 +11,11 @@ import {
 	quizHandlers,
 } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
+import { referralLinksHandlers } from '@/entities/referralLink';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers, specializationsProgressHandlers } from '@/entities/specialization';
+import { subscriptionHandlers } from '@/entities/subscription';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
@@ -50,6 +52,7 @@ export const handlers = [
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
 	...skillDeleteHandlers,
+	...subscriptionHandlers,
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
@@ -65,4 +68,5 @@ export const handlers = [
 	...topicEditHandlers,
 	...createCompanyHandlers,
 	...programmingLanguageHandlers,
+	...referralLinksHandlers,
 ];
