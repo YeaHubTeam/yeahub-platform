@@ -7,7 +7,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { AdditionalBlock } from '../AdditionalBlock/AdditionalBlock';
 import { FiltersBlock } from '../FiltersBlock/FiltersBlock';
-import { MainBlock } from '../MainBlock/MainBlock';
 
 import styles from './CollectionBlock.module.css';
 
@@ -27,7 +26,6 @@ export const CollectionBlock = () => {
 					</Text>
 				</div>
 				<FiltersBlock />
-				<MainBlock />
 				<AdditionalBlock />
 			</Flex>
 		</section>

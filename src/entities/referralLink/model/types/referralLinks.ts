@@ -22,3 +22,14 @@ export type GetReferralLinksListParamsRequest = {
 };
 
 export type GetReferralLinksListResponse = Response<ReferralLink[]>;
+
+export type CreateOrEditOrViewReferralLinkFormValues = Pick<
+	ReferralLink,
+	'id' | 'refCode' | 'url' | 'ownerId'
+>;
+
+export type GetReferralLinkByIdParamsRequest = {
+	id: string;
+};
+
+export type GetReferralLinkByIdResponse = ReferralLink;

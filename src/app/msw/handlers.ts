@@ -7,6 +7,7 @@ import { difficultQuestionsHandler, questionHandlers } from '@/entities/question
 import { quizHandlers } from '@/entities/question';
 import { learnedQuestionHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
+import { referralLinksHandlers } from '@/entities/referralLink';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers } from '@/entities/specialization';
@@ -16,6 +17,7 @@ import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
+import { createCompanyHandlers } from '@/features/company/createCompany';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -26,7 +28,6 @@ import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { skillEditHandlers } from '@/features/skill/editSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
-import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 import { createTopicHandlers } from '@/features/topics/createTopics';
 import { topicDeleteHandlers } from '@/features/topics/deleteTopic';
 import { topicEditHandlers } from '@/features/topics/editTopic';
@@ -49,7 +50,6 @@ export const handlers = [
 	...questionEditHandlers,
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
-	...specializationEditHandlers,
 	...skillDeleteHandlers,
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
@@ -65,4 +65,6 @@ export const handlers = [
 	...createTopicHandlers,
 	...createCollectionHandlers,
 	...topicEditHandlers,
+	...createCompanyHandlers,
+	...referralLinksHandlers,
 ];

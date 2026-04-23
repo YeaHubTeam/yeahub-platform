@@ -21,6 +21,17 @@ export { UserRolesList } from './ui/UserRolesList/UserRolesList';
 export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';
 export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey/convertRoleNameToEnumKey';
-export { useGetUsersRatingBySpecializationQuery } from './api/usersRatingApi';
-export type { UserRating, UsersRatingBySpecialization } from './model/types/usersRating';
+export {
+	useGetUsersRatingBySpecializationQuery,
+	useGetUsersRatingQuery,
+	useGetUserProfilePositionQuery,
+	useGetUsersRatingStatsQuery,
+} from './api/usersRatingApi';
+export type {
+	UserRating,
+	UsersRatingBySpecialization,
+	GetUsersRatingRequest,
+	GetUsersRatingResponse,
+	GetUsersRatingStatsResponse,
+} from './model/types/usersRating';
 export { usersRatingHandlers } from './__mocks__';

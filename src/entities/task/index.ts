@@ -33,3 +33,5 @@ export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategory
 export { taskCategories } from './model/constants/task';
 export { ChooseTasksDrawer } from './ui/ChooseTasksDrawer';
 export { taskHandlers } from './api/__mocks__';
+export { TaskCardSkeleton } from './ui/TaskCard/TaskCard.skeleton';
+export { TaskCategoryFilterListSkeleton } from './ui/TaskCategoryFilterList/TaskCategoryFilterList.skeleton';

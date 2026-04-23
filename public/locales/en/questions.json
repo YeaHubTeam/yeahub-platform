@@ -1,4 +1,10 @@
 {
+	"popover": {
+		"add": {
+			"single": "One question",
+			"multiply": "Some questions"
+		}
+	},
 	"count": "Questions count",
 	"count.tooltip.unauthorized": "After registration there will be no limitation in the choice of questions",
 	"preview": {
@@ -59,6 +65,11 @@
 	"skills": {
 		"title": "Skills",
 		"label": "Select relevant skills"
+	},
+	"topics": {
+		"title": "Topics",
+		"label": "Select relevant topics",
+		"empty": "No topics available"
 	},
 	"long.answer": {
 		"title": "Long answer",
@@ -130,6 +141,33 @@
 				"title": "No question data available",
 				"subtitle": "Please refresh the page or try the request again",
 				"submit": "Retry"
+			}
+		}
+	},
+	"modal": {
+		"move.to.exist.collection": {
+			"title": "Select an existing collection",
+			"button": {
+				"ok": "Go to collection",
+				"cancel": "Cancel"
+			}
+		}
+	},
+	"generated": {
+		"questions": {
+			"add": {
+				"to": {
+					"collection": {
+						"new": "Add to new collection",
+						"old": "Add to existing collection"
+					}
+				}
+			},
+			"title": "Generated questions",
+			"create.again": "Create again",
+			"errors": {
+				"title": "An error occurred while creating these questions",
+				"conflict.title": "A question with this title already exists"
 			}
 		}
 	}

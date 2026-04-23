@@ -10,7 +10,7 @@ export const useGetCollectionsFilterParams = (initialParams: CollectionsFilterPa
 			? Number(parsedParams.specialization)
 			: initialParams.specialization,
 		company: parsedParams.company || initialParams.company,
-		isFree: parsedParams.isFree ? Boolean(parsedParams.isFree) : initialParams.isFree,
+		isFree: parsedParams.isFree ? Boolean(parsedParams.isFree === 'true') : initialParams.isFree,
 		title: parsedParams.title || initialParams.title,
 		authorId: parsedParams.authorId || initialParams.authorId,
 		keyword: parsedParams.keyword || initialParams.keyword,

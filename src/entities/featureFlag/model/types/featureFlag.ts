@@ -1,6 +1,11 @@
 import { RoleName } from '@/entities/auth/@x/featureFlag';
 
-export type FeatureFlagType = 'nyBanner' | 'nyModal' | 'usersRating' | 'changeLanguage';
+export type FeatureFlagType =
+	| 'nyBanner'
+	| 'nyModal'
+	| 'usersRating'
+	| 'changeLanguage'
+	| 'changeTheme';
 
 export interface FeatureFlag {
 	id: FeatureFlagType;

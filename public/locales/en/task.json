@@ -75,6 +75,9 @@
 	"languages": {
 		"title": "Programming languages"
 	},
+	"companies": {
+		"title": "Companies"
+	},
 	"subscription.level": {
 		"title": "Subscription level",
 		"subtitle": "Specify the required subscription level for access to the task",
@@ -95,7 +98,34 @@
 		"arrays": "Arrays",
 		"databases": "Databases",
 		"strings": "Strings",
-		"dynamic.programming": "Dynamic programming"
+		"dynamic.programming": "Dynamic programming",
+		"lists": "Lists",
+		"matrices": "Matrices",
+		"objects": "Objects",
+		"dictionaries": "Dictionaries",
+		"stack": "Stack",
+		"queue": "Queue",
+		"linked.lists": "Linked lists",
+		"trees": "Trees",
+		"graphs": "Graphs",
+		"sorting": "Sorting",
+		"search": "Search",
+		"greedy": "Greedy algorithms",
+		"recursion": "Recursion",
+		"conditions": "Conditions",
+		"loops": "Loops",
+		"functions": "Functions",
+		"iterators": "Iterators",
+		"generators": "Generators",
+		"parsing": "Parsing",
+		"filtering": "Filtering",
+		"grouping": "Grouping",
+		"aggregation": "Aggregation",
+		"serialization": "Serialization",
+		"async": "Asynchronous",
+		"caching": "Caching",
+		"pointers": "Pointers",
+		"patterns": "Patterns"
 	},
 	"tasks": {
 		"length": {

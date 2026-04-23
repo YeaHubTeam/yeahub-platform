@@ -2,6 +2,10 @@ import { Themes } from '../types/themeProvider';
 
 import { applyTheme, getSavedTheme, getSystemTheme } from './themeUtils';
 
-// applyTheme(getSavedTheme() || getSystemTheme());
-const theme: Themes = getSavedTheme() || getSystemTheme();
-applyTheme(theme);
+export const initTheme = () => {
+	const savedTheme = getSavedTheme();
+	const theme: Themes = savedTheme ?? getSystemTheme();
+	const shouldPersist = !savedTheme;
+
+	applyTheme(theme, shouldPersist);
+};

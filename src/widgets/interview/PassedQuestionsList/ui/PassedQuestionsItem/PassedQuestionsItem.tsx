@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { i18Namespace, InterviewQuiz, ROUTES } from '@/shared/config';
-import { route, useCurrentProject, useScreenSize } from '@/shared/libs';
+import { route, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
@@ -25,7 +25,6 @@ interface QuestionAnswerItem {
 
 export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 	const { t } = useTranslation(i18Namespace.interviewQuiz);
-	const project = useCurrentProject();
 	const { isMobile } = useScreenSize();
 
 	const { imageSrc, answer, questionTitle, questionId } = question;
@@ -41,10 +40,7 @@ export const PassedQuestionsItem = ({ question }: PassedQuestionsItemProps) => {
 		},
 	};
 
-	const questionLink =
-		project === 'landing'
-			? route(ROUTES.public.questions.detail.page, questionId)
-			: route(ROUTES.wiki.questions.detail.page, questionId);
+	const questionLink = route(ROUTES.wiki.questions.detail.page, questionId);
 
 	const iconColor = answer === 'KNOWN' ? 'purple-700' : 'black-700';
 	const answerStyles = answer === 'KNOWN' ? styles['answer-known'] : styles['answer-unknown'];

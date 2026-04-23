@@ -118,7 +118,7 @@ export const SkillSelect = ({
 	return (
 		<SelectWithChips
 			disabled={disabled}
-			title={t(t(Skills.SELECT_SELECTED))}
+			title={t(Skills.SELECT_SELECTED)}
 			options={options}
 			onChange={handleChange}
 			placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}

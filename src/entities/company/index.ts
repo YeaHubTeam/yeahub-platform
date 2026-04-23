@@ -1,5 +1,6 @@
 export { CompanyCard } from './ui/CompanyCard/CompanyCard';
 export { CompanySelect } from './ui/CompanySelect/CompanySelect';
+export { CompanyCompactList } from './ui/CompanyCompactList/CompanyCompactList';
 export { PublicCompanySelect } from './ui/PublicCompanySelect/PublicCompanySelect';
 export {
 	useGetCompanyByIdQuery,
@@ -10,5 +11,5 @@ export type { Company, CreateOrEditCompanyFormValues } from './model/types/compa
 export { CompanyForm } from './ui/CompanyForm/CompanyForm';
 
 export { companyHandlers } from './api/__mocks__';
-
 export { companiesMock } from './api/__mocks__/data';
+export { companyApiUrls } from './model/constants/companyConstants';

@@ -47,7 +47,7 @@ export const QuestionsFilters = ({
 
 	return (
 		<Flex direction="column" gap="24">
-			{(project === 'landing' || project === 'platform') && onChangeTitle && (
+			{project === 'platform' && onChangeTitle && (
 				<SearchInput
 					placeholder={t(Questions.SEARCH_PLACEHOLDER)}
 					onSearch={onChangeTitle}
@@ -61,7 +61,7 @@ export const QuestionsFilters = ({
 					label={t(Questions.SORT_AUTHOR_TITLE)}
 				/>
 			)}
-			{(project === 'admin' || project === 'landing') && onChangeSpecialization && (
+			{project === 'admin' && onChangeSpecialization && (
 				<SpecializationsListField
 					selectedSpecialization={specialization}
 					onChangeSpecialization={onChangeSpecialization}

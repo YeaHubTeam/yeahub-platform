@@ -22,14 +22,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '9a9a686c-a013-4cc1-be5e-ce7310d8ff75',
 				title: 'Мегафон',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/4dbb981e-5b60-4c9c-9b84-939143bbdb9d',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-10T12:18:51.912Z',
 				updatedAt: '2025-08-10T12:18:51.912Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -79,14 +83,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '74c12291-8006-430c-a140-ea05867abfd7',
 				title: 'Avito',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/291345d4-3089-45d9-af5c-fb834f68c194',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-05-23T15:00:33.959Z',
 				updatedAt: '2025-05-23T15:00:33.959Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -136,14 +144,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
 				title: 'Диджетал Сектор',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-29T10:10:02.903Z',
 				updatedAt: '2025-08-29T10:10:02.903Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -193,14 +205,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '2791d8eb-4a8e-4049-a481-1cf850323b3c',
 				title: 'X5 Tech',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/68c33275-f338-45bc-bae1-04edd8038e41',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-06-02T20:15:06.652Z',
 				updatedAt: '2025-06-02T20:15:06.652Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -250,14 +266,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '2ee7d0d1-4dc1-4fc6-bc68-9fbc4a334511',
 				title: 'Билайн',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/e7b36262-c2b4-43cc-a335-1b23aeea3a7b',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-06-02T20:14:37.017Z',
 				updatedAt: '2025-06-02T20:14:37.017Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -307,14 +327,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '169b7272-85a6-47c6-a561-58370e36924f',
 				title: 'Домклик',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/10bbb81e-d6c5-4cfe-96f9-5fe9abb7444f',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-10T12:18:34.601Z',
 				updatedAt: '2025-08-10T12:18:34.601Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -355,14 +379,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
 				title: 'Диджетал Сектор',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-29T10:10:02.903Z',
 				updatedAt: '2025-08-29T10:10:02.903Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -404,6 +432,10 @@ export const collectionsMock: Response<Collection[]> = {
 				kpp: '123456789',
 				createdAt: '2025-04-15T07:59:38.970Z',
 				updatedAt: '2025-04-19T17:54:00.226Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -437,14 +469,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
 				title: 'Диджетал Сектор',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-29T10:10:02.903Z',
 				updatedAt: '2025-08-29T10:10:02.903Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -477,14 +513,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
 				title: 'Диджетал Сектор',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-29T10:10:02.903Z',
 				updatedAt: '2025-08-29T10:10:02.903Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -535,6 +575,10 @@ export const collectionsMock: Response<Collection[]> = {
 				kpp: '123456789',
 				createdAt: '2025-04-15T07:59:38.970Z',
 				updatedAt: '2025-04-19T17:54:00.226Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -568,14 +612,18 @@ export const collectionsMock: Response<Collection[]> = {
 			company: {
 				id: '431fb041-d303-4e56-a780-4dc3e2712bb3',
 				title: 'Диджетал Сектор',
-				legalName: null,
-				description: null,
+				legalName: '',
+				description: '',
 				imageSrc:
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/company/9cc46727-8f71-4b7b-acfa-047962571677',
-				inn: null,
-				kpp: null,
+				inn: '',
+				kpp: '',
 				createdAt: '2025-08-29T10:10:02.903Z',
 				updatedAt: '2025-08-29T10:10:02.903Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
@@ -617,6 +665,10 @@ export const collectionsMock: Response<Collection[]> = {
 				kpp: '123456789',
 				createdAt: '2025-04-15T07:59:38.970Z',
 				updatedAt: '2025-04-19T17:54:00.226Z',
+				createdBy: {
+					id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+					username: 'adminadminov499',
+				},
 			},
 			specializations: [
 				{
