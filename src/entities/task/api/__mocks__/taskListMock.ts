@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
+import { companiesMock } from '@/entities/company/@x/task';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
 
 import { taskApiUrls } from '../../model/constants/task';
@@ -45,6 +46,7 @@ const mockTasks: Task[] = [
 		memoryLimit: 256,
 		canSolve: true,
 		subscriptionLevel: 'free',
+		companies: companiesMock.data,
 	},
 	{
 		id: '2',
@@ -63,6 +65,7 @@ const mockTasks: Task[] = [
 		memoryLimit: 128,
 		canSolve: true,
 		subscriptionLevel: 'premium',
+		companies: companiesMock.data,
 	},
 ];
 
