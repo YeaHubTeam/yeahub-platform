@@ -48,7 +48,7 @@ export const TaskStructuresField = () => {
 
 	const languagePreloadedCodes =
 		data?.reduce((result, language) => {
-			result[language.id] = language.defaultPreloadedCode;
+			result[language.id] = language.defaultPreloadedCode ?? '';
 			return result;
 		}, {} as LanguagePreloadedCode) || ({} as LanguagePreloadedCode);
 

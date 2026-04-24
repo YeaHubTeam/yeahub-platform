@@ -3,15 +3,19 @@ import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
 import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
-import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
-import { quizHandlers } from '@/entities/question';
-import { learnedQuestionHandlers } from '@/entities/question';
+import { programmingLanguageHandlers } from '@/entities/programmingLanguage';
+import {
+	difficultQuestionsHandler,
+	learnedQuestionHandlers,
+	questionHandlers,
+	quizHandlers,
+} from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
 import { referralLinksHandlers } from '@/entities/referralLink';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
-import { specializationHandlers } from '@/entities/specialization';
-import { specializationsProgressHandlers } from '@/entities/specialization';
+import { specializationHandlers, specializationsProgressHandlers } from '@/entities/specialization';
+import { subscriptionHandlers } from '@/entities/subscription';
 import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
@@ -51,6 +55,7 @@ export const handlers = [
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
 	...skillDeleteHandlers,
+	...subscriptionHandlers,
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
@@ -66,5 +71,6 @@ export const handlers = [
 	...createCollectionHandlers,
 	...topicEditHandlers,
 	...createCompanyHandlers,
+	...programmingLanguageHandlers,
 	...referralLinksHandlers,
 ];
