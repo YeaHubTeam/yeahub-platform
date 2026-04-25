@@ -23,7 +23,7 @@ const root = document.getElementById('root');
 const container = createRoot(root as HTMLElement);
 
 async function deferRender() {
-	if (process.env.NODE_ENV === 'development' && process.env.MOCK) {
+	if (process.env.NODE_ENV === 'development' && process.env.MOCK === 'true') {
 		const { worker } = await import('./msw/browser');
 		return worker.start();
 	}

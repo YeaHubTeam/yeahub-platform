@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Guru, i18Namespace } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
@@ -16,6 +17,7 @@ interface NewGuruBannerProps {
 
 export const NewGuruBanner = ({ guru }: NewGuruBannerProps) => {
 	const { specializationTitle, icons, title, description } = guru;
+	const navigate = useNavigate();
 
 	const { t } = useTranslation(i18Namespace.guru);
 
@@ -50,10 +52,17 @@ export const NewGuruBanner = ({ guru }: NewGuruBannerProps) => {
 				<Text variant="body3" color="black-900">
 					{description}
 				</Text>
-
-				<Button size="large" variant="primary" destructive={false} fullWidth={false}>
-					{t(Guru.NEW_BANNER_BUTTON)}
-				</Button>
+				<Link to={`${process.env.LANDING_URL}mentor`}>
+					<Button
+						size="large"
+						variant="primary"
+						destructive={false}
+						fullWidth={false}
+						onClick={() => navigate(`${process.env.LANDING_URL}mentor`)}
+					>
+						{t(Guru.NEW_BANNER_BUTTON)}
+					</Button>
+				</Link>
 			</div>
 		</Card>
 	);
