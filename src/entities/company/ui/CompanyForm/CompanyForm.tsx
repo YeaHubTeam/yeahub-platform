@@ -6,6 +6,7 @@ import { i18Namespace, Companies } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
@@ -43,34 +44,26 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 				{isEdit ? t(Companies.EDIT_PAGE_TITLE) : t(Companies.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
-				<Flex className={`${styles['companies-input']}`} gap="120">
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Companies.TITLE_FULL)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Companies.TITLE_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Companies.TITLE_FULL)}
+					description={t(Companies.TITLE_LABEL)}
+					direction="row"
+				>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
-				</Flex>
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Companies.ICON_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Companies.ICON_LABEL)}
-						</Text>
-					</Flex>
+				</FormField>
+				<FormField
+					label={t(Companies.ICON_TITLE)}
+					description={t(Companies.ICON_LABEL)}
+					direction="row"
+				>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
 						initialSrc={previewImg}
 					/>
-				</Flex>
+				</FormField>
 			</Flex>
 		</>
 	);
