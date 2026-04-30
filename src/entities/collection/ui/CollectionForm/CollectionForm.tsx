@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Collections } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
@@ -55,29 +56,21 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex className={`${styles['collection-input']}`} gap="120">
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.TITLE_FULL)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.TITLE_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.TITLE_FULL)}
+					description={t(Collections.TITLE_LABEL)}
+					direction="row"
+				>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.COMPANY_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.COMPANY_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.COMPANY_TITLE)}
+					description={t(Collections.COMPANY_LABEL)}
+					direction="row"
+				>
 					<FormControl name="companyId" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
@@ -85,15 +78,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							</div>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex direction="column" gap="8">
-					<Text variant="body3-strong" color="black-800">
-						{t(Collections.DESCRIPTION_FULL)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Collections.DESCRIPTION_LABEL)}
-					</Text>
+				<FormField
+					label={t(Collections.DESCRIPTION_FULL)}
+					description={t(Collections.DESCRIPTION_LABEL)}
+					direction="column"
+				>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
@@ -105,33 +96,25 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.ICON_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.ICON_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.ICON_TITLE)}
+					description={t(Collections.ICON_LABEL)}
+					direction="row"
+				>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
 						initialSrc={previewImg}
 					/>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120" align="center">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.TARIFF_CHOOSE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.TARIFF_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.TARIFF_CHOOSE)}
+					description={t(Collections.TARIFF_LABEL)}
+					direction="row"
+				>
 					<Flex gap="60">
 						<Radio
 							label={t(Collections.TARIFF_PAID)}
@@ -146,17 +129,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							onChange={() => setValue('isFree', true)}
 						/>
 					</Flex>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.SPECIALIZATION_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.SPECIALIZATION_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.SPECIALIZATION_TITLE)}
+					description={t(Collections.SPECIALIZATION_LABEL)}
+					direction="row"
+				>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
@@ -164,17 +143,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							</div>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.KEYWORDS_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.KEYWORDS_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.KEYWORDS_TITLE)}
+					description={t(Collections.KEYWORDS_LABEL)}
+					direction="row"
+				>
 					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
 							const currentKeywords = Array.isArray(value) ? value : [];
@@ -202,7 +177,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							);
 						}}
 					</FormControl>
-				</Flex>
+				</FormField>
 
 				<FormControl name="questions" control={control}>
 					{() => (
