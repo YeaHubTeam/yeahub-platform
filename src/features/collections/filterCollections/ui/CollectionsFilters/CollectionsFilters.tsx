@@ -86,6 +86,9 @@ export const CollectionsFilters = ({
 					onChangeSpecialization={handleSpecializationChange}
 				/>
 			)}
+			{project === 'admin' && onChangeCompany && (
+				<PublicCompanySelect value={company} onChange={onChangeCompany} />
+			)}
 			{onChangeKeyword && (
 				<KeywordSelect
 					value={keyword}
