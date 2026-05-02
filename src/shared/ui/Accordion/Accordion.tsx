@@ -17,6 +17,10 @@ interface AccordionProps {
 	 *The part of content that appear when open
 	 */
 	children: ReactNode;
+	/**
+	 * Question learning status indicator
+	 */
+	status?: ReactNode;
 }
 
 /**
@@ -24,9 +28,10 @@ interface AccordionProps {
  * @param title
  * @param className
  * @param children
+ * @param status
  * @constructor
  */
-export const Accordion = ({ title, className, children }: AccordionProps) => {
+export const Accordion = ({ title, className, children, status }: AccordionProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const contentRef = useRef<HTMLDivElement | null>(null);
 	const { isMobileS } = useScreenSize();
@@ -41,7 +46,11 @@ export const Accordion = ({ title, className, children }: AccordionProps) => {
 		>
 			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
 				<button className={styles.button} onClick={onOpenAccordion}>
-					<Text variant={isMobileS ? 'body3-accent' : 'body5-accent'} className={styles.title}>
+					<Text
+						variant={isMobileS ? 'body3-accent' : 'body5-accent'}
+						className={classNames(styles.title, { [styles['with-status']]: !!status })}
+					>
+						{status}
 						{title}
 					</Text>
 					<Icon

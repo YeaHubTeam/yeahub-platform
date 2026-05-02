@@ -170,5 +170,12 @@
 				"conflict.title": "A question with this title already exists"
 			}
 		}
+	},
+	"study": {
+		"status": {
+			"learned": "Learned",
+			"in.progress": "In progress",
+			"not.learned": "Not learned"
+		}
 	}
 }

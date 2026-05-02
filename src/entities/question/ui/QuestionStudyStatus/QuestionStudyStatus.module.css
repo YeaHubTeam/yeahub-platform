@@ -1,0 +1,41 @@
+.indicator {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  margin-right: 8px;
+  padding: 2px 6px;
+  min-width: 80px;
+  height: 20px;
+  border-radius: 30px;
+  line-height: 1;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-xs);
+  white-space: nowrap;
+}
+
+.learned {
+  background-color: var(--color-green-007);
+  color: var(--color-green-750);
+}
+
+.in-progress {
+  background-color: var(--color-yellow-450);
+  color: var(--color-yellow-800);
+}
+
+.not-learned {
+  background-color: var(--color-purple-100);
+  color: var(--color-purple-700);
+}
+
+@media (width <= 767px) { 
+  .indicator {
+    margin-top: 0;
+    margin-right: 6px;
+    margin-left: 4px;
+    padding: 2px 4px;
+    font-size: var(--font-size-p-xss);
+  }
+}

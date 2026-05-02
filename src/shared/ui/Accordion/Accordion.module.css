@@ -52,6 +52,14 @@
   background-color: var(--text-color-link-active);
 }
 
+.title.with-status {
+  padding-left: 0;
+}
+
+.title.with-status::before {
+  display: none;
+}
+
 .title.skeleton::before {
   display: none;
 }
