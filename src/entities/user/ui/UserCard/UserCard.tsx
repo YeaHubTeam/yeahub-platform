@@ -8,6 +8,7 @@ import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Switch } from '@/shared/ui/Switch';
 import { Text } from '@/shared/ui/Text';
@@ -38,16 +39,10 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 				<Flex direction="column" gap="28">
 					<Text variant="body5-strong">{t(Users.USER_NAME)}</Text>
 					<Flex direction="column" gap="60">
-						<Flex align="center" gap="120">
-							<Text variant="body4" color="black-800" width={246}>
-								{t(Users.USERNAME)}
-							</Text>
+						<FormField label={t(Users.USERNAME)}>
 							<Input disabled type="text" placeholder={`${user.username}`} />
-						</Flex>
-						<Flex gap="120">
-							<Text variant="body4" color="black-800" width={246}>
-								{t(Users.AVATAR)}
-							</Text>
+						</FormField>
+						<FormField label={t(Users.AVATAR)}>
 							{user.avatarUrl ? (
 								<img className={styles['image']} src={user.avatarUrl} alt={t(Translation.AVATAR)} />
 							) : (
@@ -55,41 +50,26 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 									<AvatarWithoutPhoto />
 								</div>
 							)}
-						</Flex>
-						<Flex gap="120">
-							<Flex direction="column" gap="8">
-								<Text variant="body4" color="black-800" width={246}>
-									{t(Users.SELECT_ROLE_TITLE)}
-								</Text>
-								<Text variant="body2" color="black-800" width={246}>
-									{t(Users.SELECT_ROLE_LABEL)}
-								</Text>
-							</Flex>
-							<Flex direction="column" gap="20" maxWidth>
-								<FormControl name="userRoles" control={control}>
-									{({ onChange, value }) => (
-										<div className={styles.select}>
-											<RoleSelect
-												availableRoles={availableRoles}
-												value={value || userRoleIds}
-												onChange={onChange}
-												disabled={disabledEditRole}
-												hasMultiple
-											/>
-										</div>
-									)}
-								</FormControl>
-							</Flex>
-						</Flex>
-						<Flex align="center" gap="120">
-							<Flex direction="column" gap="8">
-								<Text variant="body4" color="black-800" width={246}>
-									{t(Users.CONFIRM_EMAIL_TITLE)}
-								</Text>
-								<Text variant="body2" color="black-800" width={246}>
-									{t(Users.CONFIRM_EMAIL_LABEL)}
-								</Text>
-							</Flex>
+						</FormField>
+						<FormField label={t(Users.SELECT_ROLE_TITLE)} description={t(Users.SELECT_ROLE_LABEL)}>
+							<FormControl name="userRoles" control={control}>
+								{({ onChange, value }) => (
+									<div className={styles.select}>
+										<RoleSelect
+											availableRoles={availableRoles}
+											value={value || userRoleIds}
+											onChange={onChange}
+											disabled={disabledEditRole}
+											hasMultiple
+										/>
+									</div>
+								)}
+							</FormControl>
+						</FormField>
+						<FormField
+							label={t(Users.CONFIRM_EMAIL_TITLE)}
+							description={t(Users.CONFIRM_EMAIL_LABEL)}
+						>
 							<Flex align="center" gap="10">
 								<Switch
 									switchClassName={classNames(styles['switch'])}
@@ -102,44 +82,32 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 										: t(Users.CONFIRM_EMAIL_UNCONFIRM)}
 								</Text>
 							</Flex>
-						</Flex>
-						<Flex align="center" gap="120">
-							<Text variant="body4" color="black-800" width={246}>
-								{t(Users.EMAIL)}
-							</Text>
+						</FormField>
+						<FormField label={t(Users.EMAIL)} description={t(Users.ADDRESS)}>
 							<Input disabled type="text" placeholder={user.email} />
-						</Flex>
-						<Flex gap="120">
-							<Text variant="body4" color="black-800" width={246}>
-								{t(Users.ADDRESS)}
-							</Text>
+						</FormField>
+						<FormField label={t(Users.ADDRESS)}>
 							<Flex direction="column" gap="20">
 								<Input disabled type="text" placeholder={user.country} />
 								<Input disabled type="text" placeholder={user.city} />
 								<Input disabled type="text" placeholder={user.address} />
 							</Flex>
-						</Flex>
+						</FormField>
 					</Flex>
-					<Flex align="center" gap="120">
-						<Text variant="body4" color="black-800" width={246}>
-							{t(Users.BIRTH_DATE)}
-						</Text>
+					<FormField label={t(Users.BIRTH_DATE)}>
 						<Input
 							disabled
 							type="text"
 							placeholder={user.birthday ? formatDate(new Date(user.birthday), 'dd.MM.yyyy') : ''}
 						/>
-					</Flex>
-					<Flex align="center" gap="120">
-						<Text variant="body4" color="black-800" width={246}>
-							{t(Users.REGISTRATION_DATE)}
-						</Text>
+					</FormField>
+					<FormField label={t(Users.REGISTRATION_DATE)}>
 						<Input
 							disabled
 							type="text"
 							placeholder={user.createdAt ? formatDate(new Date(user.createdAt), 'dd.MM.yyyy') : ''}
 						/>
-					</Flex>
+					</FormField>
 				</Flex>
 			</Card>
 		</Flex>
