@@ -46,6 +46,7 @@ const CollectionsPage = () => {
 		onChangePage,
 		onChangeIsFree,
 		onChangeSpecialization,
+		onChangeCompany,
 		onChangeIsMy,
 	} = useCollectionsFilters({
 		page: 1,
@@ -66,6 +67,7 @@ const CollectionsPage = () => {
 		page: filters.page,
 		titleOrDescriptionSearch: filters.title,
 		specializations: filters.specialization,
+		companies: filters.company,
 		isFree: filters.isFree,
 	});
 
@@ -128,6 +130,7 @@ const CollectionsPage = () => {
 							<CollectionsFilters
 								filter={filters}
 								onChangeSpecialization={onChangeSpecialization}
+								onChangeCompany={onChangeCompany}
 								onChangeIsFree={onChangeIsFree}
 								onChangeIsMy={onChangeIsMy}
 							/>
