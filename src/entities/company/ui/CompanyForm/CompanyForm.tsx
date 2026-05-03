@@ -44,20 +44,12 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 				{isEdit ? t(Companies.EDIT_PAGE_TITLE) : t(Companies.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
-				<FormField
-					label={t(Companies.TITLE_FULL)}
-					description={t(Companies.TITLE_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Companies.TITLE_FULL)} description={t(Companies.TITLE_LABEL)}>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</FormField>
-				<FormField
-					label={t(Companies.ICON_TITLE)}
-					description={t(Companies.ICON_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Companies.ICON_TITLE)} description={t(Companies.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
