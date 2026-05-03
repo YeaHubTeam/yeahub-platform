@@ -56,21 +56,13 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<FormField
-					label={t(Collections.TITLE_FULL)}
-					description={t(Collections.TITLE_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Collections.TITLE_FULL)} description={t(Collections.TITLE_LABEL)}>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</FormField>
 
-				<FormField
-					label={t(Collections.COMPANY_TITLE)}
-					description={t(Collections.COMPANY_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Collections.COMPANY_TITLE)} description={t(Collections.COMPANY_LABEL)}>
 					<FormControl name="companyId" control={control}>
 						{({ onChange, value }) => <CompanySelect onChange={onChange} value={value} />}
 					</FormControl>
@@ -94,11 +86,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					</FormControl>
 				</FormField>
 
-				<FormField
-					label={t(Collections.ICON_TITLE)}
-					description={t(Collections.ICON_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Collections.ICON_TITLE)} description={t(Collections.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
@@ -106,11 +94,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					/>
 				</FormField>
 
-				<FormField
-					label={t(Collections.TARIFF_CHOOSE)}
-					description={t(Collections.TARIFF_LABEL)}
-					direction="row"
-				>
+				<FormField label={t(Collections.TARIFF_CHOOSE)} description={t(Collections.TARIFF_LABEL)}>
 					<Flex gap="60">
 						<Radio
 							label={t(Collections.TARIFF_PAID)}
@@ -130,7 +114,6 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				<FormField
 					label={t(Collections.SPECIALIZATION_TITLE)}
 					description={t(Collections.SPECIALIZATION_LABEL)}
-					direction="row"
 				>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
@@ -142,7 +125,6 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				<FormField
 					label={t(Collections.KEYWORDS_TITLE)}
 					description={t(Collections.KEYWORDS_LABEL)}
-					direction="row"
 				>
 					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
