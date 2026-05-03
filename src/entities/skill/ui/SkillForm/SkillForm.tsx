@@ -6,6 +6,7 @@ import { i18Namespace, Questions, Skills } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
@@ -45,44 +46,32 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				{isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex className={`${styles['skills-input']}`} gap="120">
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body4">{t(Skills.TITLE_FULL)}</Text>
-						<Text variant="body2">{t(Skills.TITLE_LABEL)}</Text>
-					</Flex>
+				<FormField label={t(Skills.TITLE_FULL)} description={t(Skills.TITLE_LABEL)}>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
-				</Flex>
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body4">{t(Skills.ICON_TITLE)}</Text>
-						<Text variant="body2">{t(Skills.ICON_LABEL)}</Text>
-					</Flex>
+				</FormField>
+
+				<FormField label={t(Skills.ICON_TITLE)} description={t(Skills.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
 						initialSrc={previewImg}
 					/>
-				</Flex>
-				<Flex direction="row" className={`${styles['skills-select']}`} gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body4">
-							{t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
-						</Text>
-						<Text variant="body2">
-							{t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
-						</Text>
-					</Flex>
+				</FormField>
+
+				<FormField
+					label={t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
+					description={t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
+				>
 					<FormControl className={styles.select} name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
 						)}
 					</FormControl>
-				</Flex>
-				<Flex direction="column" gap="8">
-					<Text variant="body4">{t(Skills.DESCRIPTION_FULL)}</Text>
-					<Text variant="body2">{t(Skills.DESCRIPTION_LABEL)}</Text>
+				</FormField>
+
+				<FormField label={t(Skills.DESCRIPTION_FULL)} description={t(Skills.DESCRIPTION_LABEL)}>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
@@ -94,7 +83,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 			</Flex>
 		</>
 	);

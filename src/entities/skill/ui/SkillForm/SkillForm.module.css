@@ -1,10 +1,6 @@
-.text-wrapper {
-  width: 100%;
-  max-width: 246px;
-}
 
 .main-title {
-  margin-bottom: 28px; 
+  margin-bottom: 28px;
 }
 
 .textarea {
@@ -15,15 +11,6 @@
   min-height: 80px;
   resize: vertical;
   border-radius: 16px;
-}
-
-.skills-input {
-  align-items: center;
-  height: 48px;
-}
-
-.skills-select {
-  align-items: flex-start;
 }
 
 .input-form {
