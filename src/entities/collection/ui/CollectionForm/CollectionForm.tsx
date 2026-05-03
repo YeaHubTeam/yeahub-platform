@@ -72,11 +72,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					direction="row"
 				>
 					<FormControl name="companyId" control={control}>
-						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<CompanySelect onChange={onChange} value={value} />
-							</div>
-						)}
+						{({ onChange, value }) => <CompanySelect onChange={onChange} value={value} />}
 					</FormControl>
 				</FormField>
 
@@ -138,9 +134,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
-							</div>
+							<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
 						)}
 					</FormControl>
 				</FormField>
@@ -155,25 +149,23 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							const currentKeywords = Array.isArray(value) ? value : [];
 
 							return (
-								<div className={styles.select}>
-									<Flex direction="column" gap="32">
-										<KeywordSelect
-											getKeywordsQuery={useGetCollectionKeywordsQuery}
-											value={undefined}
-											onChange={(keyword) => {
-												if (keyword && !currentKeywords.includes(keyword)) {
-													onChange([...currentKeywords, keyword]);
-												}
-											}}
-											selectedKeywords={currentKeywords}
-											showLabel={false}
-											showSelected={false}
-											width={360}
-											label={t(Collections.ADDITIONAL_INFO_ACCESS)}
-										/>
-										<KeywordInput value={currentKeywords} onChange={onChange} />
-									</Flex>
-								</div>
+								<Flex direction="column" gap="32">
+									<KeywordSelect
+										getKeywordsQuery={useGetCollectionKeywordsQuery}
+										value={undefined}
+										onChange={(keyword) => {
+											if (keyword && !currentKeywords.includes(keyword)) {
+												onChange([...currentKeywords, keyword]);
+											}
+										}}
+										selectedKeywords={currentKeywords}
+										showLabel={false}
+										showSelected={false}
+										width={360}
+										label={t(Collections.ADDITIONAL_INFO_ACCESS)}
+									/>
+									<KeywordInput value={currentKeywords} onChange={onChange} />
+								</Flex>
 							);
 						}}
 					</FormControl>
