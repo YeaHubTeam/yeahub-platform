@@ -32,7 +32,7 @@ export const FullQuestionsList = ({
 				return (
 					<Accordion
 						key={question.id}
-						status={status ? <QuestionStudyStatus status={status} /> : undefined}
+						prefix={status ? <QuestionStudyStatus status={status} /> : undefined}
 						title={question.title}
 						className={styles.gap}
 					>

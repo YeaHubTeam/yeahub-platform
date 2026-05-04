@@ -1,20 +1,22 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions } from '@/shared/config';
+import { StatusChip, type StatusChipVariant } from '@/shared/ui/StatusChip';
 
 import { StudyStatus } from '../../lib/getStudyStatus';
 
-import styles from './QuestionStudyStatus.module.css';
-
-interface Props {
-	status: StudyStatus | undefined;
+interface QuestionStudyStatusProps {
+	status: StudyStatus;
 }
 
-export const QuestionStudyStatus = ({ status }: Props) => {
+export const QuestionStudyStatus = ({ status }: QuestionStudyStatusProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
-	if (!status) return null;
+	const variantMap: Record<StudyStatus, StatusChipVariant> = {
+		learned: 'green',
+		'in-progress': 'yellow',
+		'not-learned': 'red',
+	};
 
 	const labels = {
 		learned: t(Questions.STUDY_STATUS_LEARNED),
@@ -22,5 +24,13 @@ export const QuestionStudyStatus = ({ status }: Props) => {
 		'not-learned': t(Questions.STUDY_STATUS_NOT_LEARNED),
 	};
 
-	return <span className={classNames(styles.indicator, styles[status])}>{labels[status]}</span>;
+	return (
+		<StatusChip
+			status={{
+				text: labels[status],
+				variant: variantMap[status],
+			}}
+			size="small"
+		/>
+	);
 };

@@ -18,9 +18,9 @@ interface AccordionProps {
 	 */
 	children: ReactNode;
 	/**
-	 * Question learning status indicator
+	 * Question learning prefix indicator
 	 */
-	status?: ReactNode;
+	prefix?: ReactNode;
 }
 
 /**
@@ -28,10 +28,10 @@ interface AccordionProps {
  * @param title
  * @param className
  * @param children
- * @param status
+ * @param prefix
  * @constructor
  */
-export const Accordion = ({ title, className, children, status }: AccordionProps) => {
+export const Accordion = ({ title, className, children, prefix }: AccordionProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const contentRef = useRef<HTMLDivElement | null>(null);
 	const { isMobileS } = useScreenSize();
@@ -46,13 +46,16 @@ export const Accordion = ({ title, className, children, status }: AccordionProps
 		>
 			<div className={classNames(styles.heading, { [styles['accordion-opened']]: isOpen })}>
 				<button className={styles.button} onClick={onOpenAccordion}>
-					<Text
-						variant={isMobileS ? 'body3-accent' : 'body5-accent'}
-						className={classNames(styles.title, { [styles['with-status']]: !!status })}
-					>
-						{status}
-						{title}
-					</Text>
+					<div className={styles['left-content']}>
+						{prefix && <div className={styles['prefix-wrapper']}>{prefix}</div>}
+						<Text
+							variant={isMobileS ? 'body3-accent' : 'body5-accent'}
+							className={classNames(styles.title, { [styles['with-prefix']]: !!prefix })}
+						>
+							{title}
+						</Text>
+					</div>
+
 					<Icon
 						icon="arrowShortDown"
 						size={24}
