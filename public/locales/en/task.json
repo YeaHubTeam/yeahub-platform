@@ -5,6 +5,11 @@
 			"title": "The functionality is in beta testing. If you encounter any errors, please contact support"
 		}
 	},
+	"sort": {
+		"field": "Sort by field",
+		"name": "Title",
+		"createdAt": "Date created"
+	},
 	"title": {
 		"short": "Coding tasks",
 		"list": "Task list",

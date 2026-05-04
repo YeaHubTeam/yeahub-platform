@@ -1584,6 +1584,7 @@ export enum Tasks {
 	TABLE_LANGUAGE = 'table.language',
 	TABLE_MEMORY = 'table.memory',
 	TABLE_TIME = 'table.time',
+	SORT_FIELD = 'sort.field',
 	STUB_EMPTY_TASKS_PUBLIC_TITLE = 'stub.empty.tasks.public.title',
 	STUB_EMPTY_TASKS_PUBLIC_SUBTITLE = 'stub.empty.tasks.public.subtitle',
 	STUB_EMPTY_TASKS_PUBLIC_FILTERS_SUBTITLE = 'stub.empty.tasks.public.filters.subtitle',

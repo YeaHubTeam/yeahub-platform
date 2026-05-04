@@ -9,6 +9,10 @@ import { TaskCategoryFilterList, TasksFilterParams } from '@/entities/task';
 
 import { TaskDifficultyFilter } from '../TaskDifficultyFilter/TaskDifficultyFilter';
 import { TaskLanguagesFilter } from '../TaskLanguagesFilter/TaskLanguagesFilter';
+import {SortOrder} from "@/shared/libs";
+import {TaskFilterOrderBy} from "@/entities/task/model/types/task";
+import {TaskSortByFieldFilter} from "@/features/task/filterTasks/ui/TaskSortByFieldFilter/TaskSortByFieldFilter";
+import {OrderFilter} from "@/shared/ui/OrderFilter";
 
 interface TasksFiltersProps {
 	filters: TasksFilterParams;
@@ -17,6 +21,10 @@ interface TasksFiltersProps {
 	onChangeLangIds: (langIds?: TasksFilterParams['langIds']) => void;
 	onChangeCategory: (category?: TasksFilterParams['category']) => void;
 	onChangeCompanyId: (companyId?: TasksFilterParams['companyId']) => void;
+	sortBy?: TaskFilterOrderBy;
+	sortOrder?: SortOrder;
+	onChangeSortBy?: (sortBy?: TaskFilterOrderBy) => void;
+	onChangeSortOrder?: (sortOrder?: SortOrder) => void;
 }
 
 export const TasksFilters = ({
@@ -26,6 +34,10 @@ export const TasksFilters = ({
 	onChangeLangIds,
 	onChangeCategory,
 	onChangeCompanyId,
+															 onChangeSortBy,
+															 onChangeSortOrder,
+															 sortBy,
+															 sortOrder
 }: TasksFiltersProps) => {
 	const { title, difficulty, langIds, category, companyId } = filters;
 	const { t } = useTranslation(i18Namespace.task);
@@ -46,6 +58,15 @@ export const TasksFilters = ({
 			<TaskLanguagesFilter selectedLangIds={langIds} onChangeLangIds={onChangeLangIds} />
 			<TaskCategoryFilterList onChooseCategory={onChangeCategory} selectedCategory={category} />
 			<PublicCompanySelect value={companyId} onChange={onChangeCompanyId} />
+			{onChangeSortBy && (
+				<TaskSortByFieldFilter onChangeSortBy={onChangeSortBy} selectedSortBy={sortBy} />
+			)}
+			{onChangeSortOrder && (
+				<OrderFilter
+					changeOrder={onChangeSortOrder}
+					selectedOrder={sortOrder}
+				/>
+			)}
 		</Flex>
 	);
 };
