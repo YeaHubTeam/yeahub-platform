@@ -1,4 +1,5 @@
-import { ChangeEvent, useState, useMemo } from 'react';
+import classNames from 'classnames';
+import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Translation } from '@/shared/config';
@@ -8,16 +9,22 @@ import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 
+import { TaskData } from '../..';
 import { useGetTasksListQuery } from '../../api/taskApi';
 
 import styles from './ChooseTasksDrawer.module.css';
 
 interface TasksSearchListProps {
 	selectedTasks: { id: string | number; title: string }[];
-	onSelectTask: (task: { id: string | number; title: string }) => void;
+	handleSelectTask: (task: TaskData) => void;
+	handleUnselectTask: (id: string) => void;
 }
 
-export const TasksSearchList = ({ selectedTasks, onSelectTask }: TasksSearchListProps) => {
+export const TasksSearchList = ({
+	selectedTasks,
+	handleSelectTask,
+	handleUnselectTask,
+}: TasksSearchListProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const [taskSearch, setTaskSearch] = useState('');
 	const {
@@ -33,16 +40,15 @@ export const TasksSearchList = ({ selectedTasks, onSelectTask }: TasksSearchList
 		setTaskSearch(e.target.value);
 	};
 
-	const filteredTasks = useMemo(() => {
-		if (!tasksResponse?.data) return [];
-		return tasksResponse.data.filter((task) => {
-			const taskName = task.name || '';
-			const isAlreadySelected = selectedTasks.some(
-				(selected) => String(selected.id) === String(task.id),
-			);
-			return !isAlreadySelected && taskName.toLowerCase().includes(taskSearch.toLowerCase());
-		});
-	}, [tasksResponse?.data, selectedTasks, taskSearch]);
+	const filteredTasks = tasksResponse?.data || [];
+
+	const handleTaskClick = (question: { title: string; id: string }, isActive: boolean) => {
+		if (isActive) {
+			handleUnselectTask(question.id);
+		} else {
+			handleSelectTask(question);
+		}
+	};
 
 	return (
 		<Flex direction="column" gap="24" className={styles['drawer-content']}>
@@ -70,13 +76,20 @@ export const TasksSearchList = ({ selectedTasks, onSelectTask }: TasksSearchList
 					!isError &&
 					filteredTasks.map((task) => {
 						const taskName = task.name || '';
+						const isActive = selectedTasks.some((selected) => selected.id === task.id);
 						return (
 							<button
 								key={task.id}
-								onClick={() => onSelectTask({ title: taskName, id: task.id })}
+								onClick={() => handleTaskClick({ title: taskName, id: task.id }, isActive)}
 								className={styles['question-button']}
 							>
-								<Card withOutsideShadow className={styles['question-card']}>
+								<Card
+									withOutsideShadow
+									className={classNames(
+										styles['question-card'],
+										isActive && styles['task-card-active'],
+									)}
+								>
 									{taskName}
 								</Card>
 							</button>

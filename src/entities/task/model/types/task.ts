@@ -22,6 +22,11 @@ export interface TaskStructure {
 
 export type TaskSubscriptionLevel = 'free' | 'premium';
 
+export interface TaskData {
+	id: string;
+	title: string;
+}
+
 export interface Task {
 	id: string;
 	name: string;
