@@ -7,12 +7,15 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
+import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { TaskData } from '../..';
 import { useGetTasksListQuery } from '../../api/taskApi';
 
 import styles from './ChooseTasksDrawer.module.css';
+
+const COLLECTION_TASKS_LIMIT = 10;
 
 interface TasksSearchListProps {
 	selectedTasks: { id: string | number; title: string }[];
@@ -27,20 +30,21 @@ export const TasksSearchList = ({
 }: TasksSearchListProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const [taskSearch, setTaskSearch] = useState('');
+	const [page, setPage] = useState(1);
+
 	const {
 		data: tasksResponse,
 		isLoading,
 		isError,
 	} = useGetTasksListQuery({
 		title: taskSearch,
-		limit: 20,
+		limit: COLLECTION_TASKS_LIMIT,
+		page: page,
 	});
 
 	const handleTaskSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setTaskSearch(e.target.value);
 	};
-
-	const filteredTasks = tasksResponse?.data || [];
 
 	const handleTaskClick = (question: { title: string; id: string }, isActive: boolean) => {
 		if (isActive) {
@@ -49,6 +53,9 @@ export const TasksSearchList = ({
 			handleSelectTask(question);
 		}
 	};
+
+	const filteredTasks = tasksResponse?.data || [];
+	const totalQuestions = filteredTasks.length;
 
 	return (
 		<Flex direction="column" gap="24" className={styles['drawer-content']}>
@@ -96,6 +103,13 @@ export const TasksSearchList = ({
 						);
 					})}
 			</Flex>
+
+			<TablePagination
+				page={page}
+				total={totalQuestions}
+				limit={COLLECTION_TASKS_LIMIT}
+				onChangePage={setPage}
+			/>
 		</Flex>
 	);
 };
