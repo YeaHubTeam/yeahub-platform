@@ -861,6 +861,10 @@ export enum Questions {
 	MODAL_MOVE_TO_EXIST_COLLECTION_TITLE = 'modal.move.to.exist.collection.title',
 	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_OK = 'modal.move.to.exist.collection.button.ok',
 	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_CANCEL = 'modal.move.to.exist.collection.button.cancel',
+
+	STUDY_STATUS_LEARNED = 'study.status.learned',
+	STUDY_STATUS_IN_PROGRESS = 'study.status.in.progress',
+	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
 }
 
 export enum InterviewHistory {
