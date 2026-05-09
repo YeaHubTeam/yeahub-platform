@@ -1,9 +1,8 @@
-/* eslint-disable prettier/prettier */
 import { http } from 'msw';
 
 import { topicsMocks } from '@/entities/topic';
 
-import { deleteTopicApiUrls } from '../../model/deleteTopicConstants';
+import { deleteTopicApiUrls } from '../../model/constants/deleteTopicConstants';
 
 export const deleteTopicMock = http.delete(
 	process.env.API_URL + deleteTopicApiUrls.deleteTopic,
