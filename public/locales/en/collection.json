@@ -22,10 +22,9 @@
 		"free": "For all"
 	},
 	"select": {
-		"chooseCollections": "Collections",
-		"label": "Select option",
-		"paid": "Paid",
-		"free": "Free"
+		"choose": "Choose collection name",
+		"empty": "Collections not found",
+		"title": "Collection"
 	},
 	"access": "Access",
 	"specialization": "Specialization:",

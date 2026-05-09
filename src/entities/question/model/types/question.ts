@@ -33,6 +33,24 @@ export interface Question {
 	disabled?: boolean;
 }
 
+export interface GeneratedQuestionDto {
+	title: string;
+	description: string;
+	code: string | null;
+	imageSrc: string | null;
+	keywords: string[];
+	shortAnswer: string;
+	longAnswer: string;
+	status: QuestionStatus;
+	rate: number;
+	complexity: number;
+	specializations: number[];
+	skills: number[];
+	topics: number[];
+	createdById: string;
+	updatedById: string;
+}
+
 export type PublicQuestion = Omit<
 	Question,
 	'isLearned' | 'profileId' | 'checksCount' | 'isFavorite'

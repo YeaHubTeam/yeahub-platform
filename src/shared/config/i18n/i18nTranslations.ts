@@ -348,6 +348,12 @@ export enum Translation {
 	TOAST_AUTH_TELEGRAM_VERIFICATION_LINK_ERROR = 'toast.auth.telegram.verification.link.error.default',
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
 	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
+	TOAST_TOPIC_CREATE_AUTH_UNAUTHORIZED = 'toast.topics.create.auth.unauthorized',
+	TOAST_TOPIC_CREATE_AUTH_USER_VERIFIED = 'toast.topics.create.auth.user.verified',
+	TOAST_TOPIC_CREATE_TOPIC_SKILL_NOT_FOUND = 'toast.topics.create.topic.skill.not_found',
+	TOAST_TOPIC_CREATE_TOPIC_TITLE_CONFLICT = 'toast.topics.create.topic.title.conflict',
+	TOAST_TOPIC_CREATE_TINIFY_COMPRESS_FAILED = 'toast.topics.create.tinify.compress.failed',
+	TOAST_TOPIC_CREATE_TINIFY_RESIZE_FAILED = 'toast.topics.create.tinify.resize.failed',
 	TOAST_TOPIC_DELETE_SINGLE_SUCCESS = 'toast.topics.delete.single.success',
 	TOAST_TOPIC_DELETE_SINGLE_FAILED = 'toast.topics.delete.single.failed',
 	TOAST_TOPIC_DELETE_MULTIPLE_SUCCESS = 'toast.topics.delete.multiple.success',
@@ -762,6 +768,8 @@ export enum Resources {
 }
 
 export enum Questions {
+	POPOVER_ADD_SINGLE = 'popover.add.single',
+	POPOVER_ADD_MULTIPLY = 'popover.add.multiply',
 	MOST_FREQ_LABEL = 'Популярность',
 	MOST_FREQ_TITLE_COLLECTION = 'Список самых популярных вопросов',
 	COUNT = 'count',
@@ -851,9 +859,19 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
 
 	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
+	GENERATED_QUESTIONS_CREATE_AGAIN = 'generated.questions.create.again',
+	GENERATED_QUESTIONS_ADD_TO_COLLECTION_NEW = 'generated.questions.add.to.collection.new',
+	GENERATED_QUESTIONS_ADD_TO_COLLECTION_OLD = 'generated.questions.add.to.collection.old',
 	GENERATED_QUESTIONS_SUCCESS_TITLE = 'generated.questions.success.title',
 	GENERATED_QUESTIONS_ERRORS_TITLE = 'generated.questions.errors.title',
 	GENERATED_QUESTIONS_ERRORS_TITLE_CONFLICT = 'generated.questions.errors.conflict.title',
+	MODAL_MOVE_TO_EXIST_COLLECTION_TITLE = 'modal.move.to.exist.collection.title',
+	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_OK = 'modal.move.to.exist.collection.button.ok',
+	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_CANCEL = 'modal.move.to.exist.collection.button.cancel',
+
+	STUDY_STATUS_LEARNED = 'study.status.learned',
+	STUDY_STATUS_IN_PROGRESS = 'study.status.in.progress',
+	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
 }
 
 export enum InterviewHistory {
@@ -1042,6 +1060,9 @@ export enum User {
 }
 
 export enum Collections {
+	SELECT_CHOOSE = 'select.choose',
+	SELECT_EMPTY = 'select.empty',
+	SELECT_TITLE = 'select.title',
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
@@ -1421,6 +1442,7 @@ export enum TextEditor {
 export enum Guru {
 	BANNER_TITLE = 'banner.title',
 	BANNER_DESCRIPTION = 'banner.description',
+	NEW_BANNER_BUTTON = 'new.banner.button',
 }
 
 export enum Learning {

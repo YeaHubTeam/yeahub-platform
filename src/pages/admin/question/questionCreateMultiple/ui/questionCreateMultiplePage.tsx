@@ -2,11 +2,10 @@ import { useState } from 'react';
 
 import { getJSONFromLS } from '@/shared/libs';
 
+import { GENERATED_QUESTIONS_LS_KEY } from '@/entities/question';
+
 import { QuestionCreateMultipleForm } from '@/features/question/createMultipleQuestions';
-import {
-	CreateMultipleQuestionsResponseItem,
-	GENERATED_QUESTIONS_LS_KEY,
-} from '@/features/question/createMultipleQuestions';
+import { CreateMultipleQuestionsResponseItem } from '@/features/question/createMultipleQuestions';
 
 import { PageWrapper } from '@/widgets/PageWrapper';
 import { GeneratedQuestionsWidget } from '@/widgets/question/GeneratedQuestionsWidget';

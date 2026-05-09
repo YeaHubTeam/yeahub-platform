@@ -9,13 +9,10 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
+import { TaskData } from '../..';
+
 import styles from './ChooseTasksDrawer.module.css';
 import { TasksSearchList } from './TasksSearchList';
-
-interface TaskData {
-	id: string;
-	title: string;
-}
 
 interface ChooseTasksDrawerProps {
 	selectedTasks: TaskData[];
@@ -67,8 +64,9 @@ export const ChooseTasksDrawer = ({
 			</Flex>
 			<Drawer isOpen={isOpen} onClose={onClose} rootName="body" className={styles['drawer']}>
 				<TasksSearchList
+					handleSelectTask={handleSelectTask}
+					handleUnselectTask={handleUnselectTask}
 					selectedTasks={selectedTasks}
-					onSelectTask={(task) => handleSelectTask({ ...task, id: String(task.id) })}
 				/>
 			</Drawer>
 		</>

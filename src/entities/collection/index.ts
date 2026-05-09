@@ -15,3 +15,4 @@ export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollec
 export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
 export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';
+export { CollectionSelect } from './ui/CollectionSelect/CollectionSelect';

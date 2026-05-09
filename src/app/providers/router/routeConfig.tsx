@@ -82,6 +82,7 @@ import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
+import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
@@ -638,6 +639,16 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+			},
+			{
+				path: ROUTES.career.route,
+				element: <Outlet />,
+				children: [
+					{
+						path: ROUTES.career['resume-analyzer'].route,
+						element: <ResumeAnalyzerPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.analytics.route,

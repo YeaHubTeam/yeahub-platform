@@ -1,5 +1,5 @@
 import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
-import { handleApiError } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { getDeleteReferralLinkApiErrorMessage } from '../lib/utils/getDeleteReferralLinkApiErrorMessage';
@@ -13,7 +13,7 @@ export const deleteReferralLinkApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		deleteReferralLink: build.mutation<DeleteReferralLinkResponse, DeleteReferralLinkRequest>({
 			query: (id) => ({
-				url: `${deleteReferralLinkApiUrls.deleteReferralLink}/${id}`,
+				url: route(deleteReferralLinkApiUrls.deleteReferralLink, id),
 				method: 'DELETE',
 			}),
 			async onQueryStarted(_, { queryFulfilled }) {
