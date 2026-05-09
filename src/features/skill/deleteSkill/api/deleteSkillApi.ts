@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { route, handleApiError } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getDeleteSkillApiErrorMessage } from '../lib/utils/getDeleteSkillApiErrorMessage';
 import { deleteSkillApiUrls } from '../model/constants/deleteSkillConstants';
 
 const deleteSkillApi = baseApi.injectEndpoints({
@@ -18,7 +19,7 @@ const deleteSkillApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_SKILLS_DELETE_SINGLE_SUCCESS));
 					typedExtra.navigate(ROUTES.admin.skills.page);
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_SKILLS_DELETE_SINGLE_FAILED));
+					toast.error(handleApiError(error, getDeleteSkillApiErrorMessage));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

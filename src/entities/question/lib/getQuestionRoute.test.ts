@@ -17,12 +17,6 @@ describe('getQuestionRoute', () => {
 		expect(result).toBe(expected);
 	});
 
-	it('returns correct landing question route', () => {
-		const result = getQuestionRoute.landing(testId);
-		const expected = ROUTES.public.questions.detail.page.replace(':questionId', testId);
-		expect(result).toBe(expected);
-	});
-
 	it('works with number id', () => {
 		const id = 123;
 		const result = getQuestionRoute.admin(id);

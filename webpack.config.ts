@@ -66,6 +66,7 @@ export default (env: EnvVariables) => {
 		'process.env.PORT': JSON.stringify(process.env.PORT || port),
 		'process.env.API_URL': JSON.stringify(process.env.API_URL),
 		'process.env.LANDING_URL': JSON.stringify(process.env.LANDING_URL),
+		'process.env.APP_URL': JSON.stringify(process.env.APP_URL),
 		'process.env.TELEGRAM_BOT_NAME': JSON.stringify(process.env.TELEGRAM_BOT_NAME),
 		'process.env.MOCK': JSON.stringify(isMock),
 	};

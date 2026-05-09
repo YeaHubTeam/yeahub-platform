@@ -2,7 +2,10 @@ import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
 import { Collection as CollectionType } from '@/entities/collection';
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import {
+	getGuruWithMatchingSpecialization,
+	getNewGuruWithMatchingSpecialization,
+} from '@/entities/guru';
 import { Question } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 import { useGetTasksListQuery } from '@/entities/task';
@@ -11,6 +14,7 @@ import { CollectionHeader } from '@/widgets/Collection';
 import { CollectionAdditionalInfoDrawer } from '@/widgets/Collection';
 import { CollectionBody } from '@/widgets/Collection';
 import { AdditionalInfo } from '@/widgets/Collection';
+import { SidebarBanner } from '@/widgets/SidebarBanner';
 import { TasksController } from '@/widgets/task/TasksList';
 
 import { CollectionActions } from '../CollectionActions/CollectionActions';
@@ -67,6 +71,7 @@ export const CollectionContent = ({
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
 	const guru = getGuruWithMatchingSpecialization(specializations);
+	const newGuru = getNewGuruWithMatchingSpecialization(specializations);
 	const showAuthor = !guru;
 	const media = getChannelsForSpecialization(specializations);
 	const isEmptyData = questions.length === 0;
@@ -94,12 +99,14 @@ export const CollectionContent = ({
 				/>
 
 				<CollectionBody isFree={isFree} questions={questions} hasPremiumAccess={hasPremiumAccess} />
-				<TasksController
-					isFree={Boolean(isFree)}
-					tasks={tasks}
-					hasPremiumAccess={hasPremiumAccess}
-				/>
-				{isSmallScreen && guru && <GurusBanner gurus={[guru]} />}
+				{tasks.length ? (
+					<TasksController
+						isFree={Boolean(isFree)}
+						tasks={tasks}
+						hasPremiumAccess={hasPremiumAccess}
+					/>
+				) : null}
+				{isSmallScreen && <SidebarBanner guru={guru} newGuru={newGuru} />}
 			</div>
 
 			{isLargeScreen && (
@@ -115,7 +122,7 @@ export const CollectionContent = ({
 						keywords={keywords}
 						media={media}
 					/>
-					{guru && <GurusBanner gurus={[guru]} />}
+					<SidebarBanner guru={guru} newGuru={newGuru} />
 				</Flex>
 			)}
 		</section>

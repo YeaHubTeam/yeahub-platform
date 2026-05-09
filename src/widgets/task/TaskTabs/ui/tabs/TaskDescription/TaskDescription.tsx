@@ -2,6 +2,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 import { TextHtml } from '@/shared/ui/TextHtml';
 
+import { CompanyCompactList } from '@/entities/company';
 import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
 import { TaskDifficultyChip, TaskStatusChip, TaskCategoryChip, Task } from '@/entities/task';
 
@@ -20,6 +21,7 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
 				<TaskDifficultyChip difficulty={task.difficulty} />
 				<ProgrammingLanguageList languages={task.supportedLanguages} />
 				<TaskCategoryChip category={task.mainCategory} />
+				<CompanyCompactList companies={task.companies} />
 			</Flex>
 			<TextHtml html={task.description} />
 		</Flex>

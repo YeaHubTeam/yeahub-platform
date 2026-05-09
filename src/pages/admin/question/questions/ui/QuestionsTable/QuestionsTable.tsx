@@ -17,6 +17,7 @@ import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
 
 const SKILL_SHOW_COUNT = 4;
 const SPECIALIZATION_SHOW_COUNT = 2;
+const TOPIC_SHOW_COUNT = 4;
 
 interface QuestionsTableProps {
 	questions?: Question[];
@@ -38,6 +39,7 @@ export const QuestionsTable = ({
 			title: 'auto',
 			specialization: '20%',
 			skills: '15%',
+			topic: '15%',
 			rate: '5%',
 			complexity: '5%',
 			author: '10%',
@@ -51,6 +53,7 @@ export const QuestionsTable = ({
 			title: t(Questions.TITLE_SHORT),
 			specialization: t(Questions.SPECIALIZATION_TITLE),
 			skills: t(Questions.SKILLS_TITLE),
+			topic: t(Questions.TOPIC_TITLE),
 			rate: t(Questions.RATE_TITLE_SHORT),
 			complexity: t(Questions.COMPLEXITY_TITLE_SHORT),
 			author: t(Questions.AUTHOR),
@@ -74,6 +77,13 @@ export const QuestionsTable = ({
 					url={ROUTES.admin.skills.detail.page}
 					items={question.questionSkills}
 					showCount={SKILL_SHOW_COUNT}
+				/>
+			),
+			topic: (
+				<TableCellEntityList
+					url={ROUTES.admin.topics.details.page}
+					items={question.questionTopics || []}
+					showCount={TOPIC_SHOW_COUNT}
 				/>
 			),
 			rate: question.rate,

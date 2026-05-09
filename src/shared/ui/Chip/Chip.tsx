@@ -14,6 +14,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 			variant = 'small',
 			theme = 'primary',
 			label,
+			activeInverse,
 			labelVariant = 'body3-accent',
 			className,
 			disabled,
@@ -43,6 +44,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 					{
 						[styles['chip-primary']]: theme === 'primary',
 						[styles['chip-outlined']]: theme === 'outlined',
+						[styles['chip-active-inverse']]: activeInverse,
 						[styles['chip-clickable']]: onClick,
 						[styles['chip-disabled']]: disabled,
 						[styles['chip-active']]: active,

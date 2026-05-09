@@ -48,7 +48,7 @@ export const TaskStructuresField = () => {
 
 	const languagePreloadedCodes =
 		data?.reduce((result, language) => {
-			result[language.id] = language.defaultPreloadedCode;
+			result[language.id] = language.defaultPreloadedCode ?? '';
 			return result;
 		}, {} as LanguagePreloadedCode) || ({} as LanguagePreloadedCode);
 
@@ -57,7 +57,7 @@ export const TaskStructuresField = () => {
 	useEffect(() => {
 		if (data) {
 			taskStructures.forEach((taskStructure, index) => {
-				if (taskStructure.preloadedCode !== languagePreloadedCodes[taskStructure.languageId]) {
+				if (!taskStructure.preloadedCode) {
 					setValue(
 						`taskStructures.${index}.preloadedCode`,
 						languagePreloadedCodes[taskStructure.languageId],

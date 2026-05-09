@@ -1,7 +1,10 @@
 import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { referralLinksApiUrls } from '../model/constants/referralLinksConstants';
 import {
+	GetReferralLinkByIdParamsRequest,
+	GetReferralLinkByIdResponse,
 	GetReferralLinksListParamsRequest,
 	GetReferralLinksListResponse,
 } from '../model/types/referralLinks';
@@ -18,7 +21,15 @@ const referralLinkApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.REFERRALS],
 		}),
+		getReferralLinkById: build.query<GetReferralLinkByIdResponse, GetReferralLinkByIdParamsRequest>(
+			{
+				query: ({ id }) => ({
+					url: route(referralLinksApiUrls.getReferralLinkById, id),
+				}),
+				providesTags: [ApiTags.REFERRAL_DETAIL],
+			},
+		),
 	}),
 });
 
-export const { useGetReferralLinksListQuery } = referralLinkApi;
+export const { useGetReferralLinksListQuery, useGetReferralLinkByIdQuery } = referralLinkApi;

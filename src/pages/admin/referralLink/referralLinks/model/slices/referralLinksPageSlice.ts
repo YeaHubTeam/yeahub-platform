@@ -19,6 +19,7 @@ const referralLinksPageSlice = createSlice({
 		clearSelectedReferralLinks: (state) => {
 			state.selectedReferralLinks = [];
 		},
+		resetFilters: () => initialState,
 	},
 	extraReducers: (builder) => {
 		builder.addCase(clearStore, () => initialState);

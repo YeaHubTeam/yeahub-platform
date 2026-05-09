@@ -38,6 +38,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 							difficulty={task.difficulty}
 							languages={task.supportedLanguages}
 							category={task.mainCategory}
+							companies={task.companies}
 						/>
 						<TaskBody description={task.description} />
 					</Flex>
@@ -49,6 +50,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 						difficulty={task.difficulty}
 						route={ROUTES.admin.tasks.page}
 						category={task.mainCategory}
+						companies={task.companies}
 					/>
 				)}
 			</Flex>

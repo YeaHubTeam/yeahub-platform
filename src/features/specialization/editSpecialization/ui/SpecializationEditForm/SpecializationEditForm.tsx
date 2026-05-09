@@ -32,7 +32,7 @@ export const SpecializationEditForm = ({ specialization }: SpecializationEditFor
 				<Flex componentType="main" direction="column" gap="24">
 					<SpecializationEditFormHeader />
 					<Card className={styles.content}>
-						<SpecializationForm />
+						<SpecializationForm isEdit={true} />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

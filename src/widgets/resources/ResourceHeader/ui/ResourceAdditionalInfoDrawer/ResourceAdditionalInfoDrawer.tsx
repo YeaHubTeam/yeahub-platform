@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import SlidersHorizontalIcon from '@/shared/assets/icons/slidersHorizontal.svg';
 import { i18Namespace, Resources, ROUTES } from '@/shared/config';
-import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
+import { useScreenSize, useModal } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -30,7 +30,6 @@ export const ResourceAdditionalInfoDrawer = ({
 	const { t } = useTranslation(i18Namespace.resources);
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
-	const project = useCurrentProject();
 
 	return (
 		<>
@@ -46,7 +45,7 @@ export const ResourceAdditionalInfoDrawer = ({
 			<Drawer
 				isOpen={isOpen}
 				onClose={onClose}
-				rootName={isMobileS || project === 'landing' ? 'body' : 'mainLayout'}
+				rootName={isMobileS ? 'body' : 'mainLayout'}
 				className={classNames(styles.drawer, {
 					[styles['drawer-mobile']]: isMobileS,
 				})}

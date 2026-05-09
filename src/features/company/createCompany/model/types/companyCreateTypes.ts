@@ -1,7 +1,7 @@
 import { CreateOrEditCompanyFormValues, Company } from '@/entities/company';
 
 export type CreateCompanyFormValues = Omit<CreateOrEditCompanyFormValues, 'id'> & {
-	companyImage?: string | null;
+	companyImage?: string;
 };
 
 export type CreateCompanyBodyRequest = CreateCompanyFormValues;

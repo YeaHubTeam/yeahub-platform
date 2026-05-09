@@ -9,26 +9,28 @@ import { useEditSpecializationMutation } from '../../api/editSpecializationApi';
 import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
 
 export const SpecializationEditFormHeader = () => {
-	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
+	const { t } = useTranslation(i18Namespace.translation);
 
 	const { handleSubmit, reset } = useFormContext<EditSpecializationFormValues>();
 
 	const [editSpecializationMutation, { isLoading }] = useEditSpecializationMutation();
+
 	const onResetFormValues = () => {
 		reset();
 	};
 
-	const onEditSpecialization = async (data: EditSpecializationFormValues) => {
-		await editSpecializationMutation(data);
+	const onEditSpecialization = (data: EditSpecializationFormValues) => {
+		editSpecializationMutation(data);
 	};
 
 	return (
 		<BackHeader>
-			<Button onClick={onResetFormValues} variant="secondary">
-				{t(Translation.CANCEL, { ns: 'translation' })}
+			<Button disabled={isLoading} onClick={onResetFormValues} variant="secondary">
+				{t(Translation.CANCEL)}
 			</Button>
+
 			<Button disabled={isLoading} onClick={handleSubmit(onEditSpecialization)}>
-				{t(Translation.SAVE, { ns: 'translation' })}
+				{t(Translation.SAVE)}
 			</Button>
 		</BackHeader>
 	);

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, InterviewQuizResult } from '@/shared/config';
-import { useAppSelector, useCurrentProject, getJSONFromLS } from '@/shared/libs';
+import { useAppSelector, getJSONFromLS } from '@/shared/libs';
 import { AdditionalStatInfoGauge } from '@/shared/ui/AdditionalStatInfoGauge';
 
 import { getProfileId } from '@/entities/profile';
-import { Answers, LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
+import { Answers, LS_ACTIVE_MOCK_QUIZ_KEY } from '@/entities/quiz';
 
 import { getQuestionsStats } from '../../lib/getQuestionsStats/getQuestionsStats';
 
@@ -20,16 +20,11 @@ export const PassedQuestionsStatistic = ({
 	isLoading,
 	className,
 }: PassedQuestionsStatisticProps) => {
-	const project = useCurrentProject();
 	const profileId = useAppSelector(getProfileId);
 	const { t } = useTranslation(i18Namespace.interviewQuizResult);
 
-	const activeMockQuiz = getJSONFromLS(
-		project === 'landing' ? LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY : LS_ACTIVE_MOCK_QUIZ_KEY,
-	);
-	const answers =
-		project === 'landing' ? activeMockQuiz.response.answers : activeMockQuiz[profileId];
-	// const activeMockQuiz: Quiz = getJSONFromLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY);
+	const activeMockQuiz = getJSONFromLS(LS_ACTIVE_MOCK_QUIZ_KEY);
+	const answers = activeMockQuiz[profileId];
 	const inProcessCount = answers.filter((el: Answers) => el.answer === 'UNKNOWN').length;
 	const learnedCount = answers.filter((el: Answers) => el.answer === 'KNOWN').length;
 

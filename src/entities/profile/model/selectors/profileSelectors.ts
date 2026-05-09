@@ -96,5 +96,5 @@ export const getHasSubscriptions = (state: State) => {
 };
 
 export const getUserRoles = createSelector(getFullProfile, (fullProfile) => {
-	return fullProfile?.userRoles?.map((role) => role.name);
+	return fullProfile?.userRoles?.map((role) => role.name) || [];
 });

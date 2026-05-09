@@ -13,7 +13,9 @@
 		"placeholder": "Topic description"
 	},
 	"select": {
-		"choose": "Select skill from the list"
+		"choose": "Choose a topic from the list",
+		"empty": "No available options",
+		"selected": "Selected topic"
 	},
 	"create.page.title": "Topic",
 	"stub": {

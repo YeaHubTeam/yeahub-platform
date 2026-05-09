@@ -9,6 +9,7 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text } from '@/shared/ui/Text';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
+import { CompanyCompactList } from '@/entities/company/@x/task';
 import { ProgrammingLanguageList } from '@/entities/programmingLanguage/@x/task';
 
 import { Task } from '../../model/types/task';
@@ -24,14 +25,14 @@ type TaskCardProps = {
 };
 
 export const TaskCard = ({ task, className }: TaskCardProps) => {
-	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve } = task;
+	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve, companies } =
+		task;
 	const { t } = useTranslation(i18Namespace.task);
 	const project = useCurrentProject();
 
 	const taskPath: Record<Project, string> = {
 		admin: generatePath(ROUTES.admin.tasks.details.page, { taskId: id }),
 		platform: canSolve ? generatePath(ROUTES.tasks.detail.page, { taskId: id }) : '',
-		landing: '',
 	};
 
 	return (
@@ -69,6 +70,7 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 							<TaskDifficultyChip difficulty={difficulty} />
 							<ProgrammingLanguageList languages={supportedLanguages} />
 							<TaskCategoryChip category={mainCategory} />
+							<CompanyCompactList companies={companies} />
 						</Flex>
 					</Flex>
 				</Card>

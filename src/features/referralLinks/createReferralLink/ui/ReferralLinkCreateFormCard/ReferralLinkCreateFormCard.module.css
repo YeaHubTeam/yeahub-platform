@@ -1,0 +1,9 @@
+.content {
+  flex: 1 1 100%;
+}
+
+@media (width <=768px) {
+  .content {
+    order: 2;
+  }
+}

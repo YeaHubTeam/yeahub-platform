@@ -19,7 +19,7 @@ interface TableCellEntityListProps<T> {
 	url?: string;
 }
 
-export const TableCellEntityList = <T extends { id: number; title: string }>({
+export const TableCellEntityList = <T extends { id: number | string; title: string }>({
 	showCount,
 	items,
 	url,

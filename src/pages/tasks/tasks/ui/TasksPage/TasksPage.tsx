@@ -15,9 +15,10 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { TasksList } from '@/widgets/task/TasksList';
 
 import styles from './TasksPage.module.css';
+import { TasksPageSkeleton } from './TasksPage.skeleton';
 
 const TasksPage = () => {
-	const { isMobile, isMobileS, isTablet } = useScreenSize();
+	const { isMobileS, isSmallScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.task);
 
 	const {
@@ -28,6 +29,7 @@ const TasksPage = () => {
 		onChangeDifficulty,
 		onChangeLangIds,
 		onChangeCategory,
+		onChangeCompanyId,
 		onResetFilters,
 	} = useTasksFilters({
 		page: 1,
@@ -40,6 +42,7 @@ const TasksPage = () => {
 		difficulty: filters.difficulty,
 		langIds: filters.langIds,
 		category: filters.category,
+		companyId: filters.companyId,
 		canSolve: filters.title ? true : undefined,
 	});
 
@@ -51,11 +54,13 @@ const TasksPage = () => {
 			onChangeDifficulty={onChangeDifficulty}
 			onChangeLangIds={onChangeLangIds}
 			onChangeCategory={onChangeCategory}
+			onChangeCompanyId={onChangeCompanyId}
 			filters={{
 				title: filters.title,
 				difficulty: filters.difficulty,
 				langIds: filters.langIds,
 				category: filters.category,
+				companyId: filters.companyId,
 			}}
 		/>
 	);
@@ -80,6 +85,7 @@ const TasksPage = () => {
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
+			skeleton={<TasksPageSkeleton />}
 			hasData={tasksList.length > 0}
 			hasFilters={hasFilters}
 			stubs={stubs}
@@ -98,7 +104,7 @@ const TasksPage = () => {
 							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
 								{t(Tasks.TITLE_SHORT)}
 							</Text>
-							{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+							{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						</div>
 						<hr className={styles.divider} />
 						<>

@@ -6,6 +6,7 @@ export type {
 	PopularQuestionStat,
 	PopularQuestionsSpecialization,
 	GetPopularQuestionsResponse,
+	GeneratedQuestionDto,
 } from './model/types/question';
 export {
 	useGetQuestionByIdQuery,
@@ -51,3 +52,9 @@ export type {
 	QuestionFilterStatus,
 	QuestionFilterOrderBy,
 } from './model/types/filters';
+
+export { GENERATED_QUESTIONS_LS_KEY } from './model/constants/question';
+
+export { getStudyStatus } from './lib/getStudyStatus';
+export type { StudyStatus } from './lib/getStudyStatus';
+export { QuestionStudyStatus } from './ui/QuestionStudyStatus/QuestionStudyStatus';

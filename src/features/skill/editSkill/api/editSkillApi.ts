@@ -1,7 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getEditSkillApiErrorMessage } from '../lib/utils/getEditSkillApiErrorMessage';
 import { editSkillApiUrls } from '../model/constants/editSkillConstants';
 import { EditSkillBodyRequest, EditSkillResponse } from '../model/types/skillEditPageTypes';
 
@@ -21,6 +22,7 @@ const editSkillApi = baseApi.injectEndpoints({
 					toast.success(i18n.t(Translation.TOAST_SKILL_EDIT_SUCCESS));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_SKILL_EDIT_FAILED));
+					toast.error(i18n.t(handleApiError(error, getEditSkillApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

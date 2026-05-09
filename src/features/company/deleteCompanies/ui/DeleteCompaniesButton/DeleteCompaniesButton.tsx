@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui/Button';
 import { deleteMultipleCompaniesThunk } from '../../model/thunks/deleteMultipleCompaniesThunk';
 
 interface DeleteCompaniesButtonProps {
-	companiesToRemove: SelectedAdminEntities;
+	companiesToRemove: SelectedAdminEntities<string>;
 }
 
 export const DeleteCompaniesButton = ({ companiesToRemove }: DeleteCompaniesButtonProps) => {

@@ -15,5 +15,5 @@ export {
 	PRIVACY_POLICY_LINK,
 } from './documents';
 export { AVOS_TELEGRAM_URL } from './media';
-export { passwordRules } from './regexp';
+export { passwordRules, onlyLatAndNumber } from './regexp';
 export { EMAIL_VERIFY_SETTINGS_TAB, SELECT_TARIFF_SETTINGS_TAB } from './customRoutes';

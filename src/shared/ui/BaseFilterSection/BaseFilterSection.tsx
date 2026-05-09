@@ -1,4 +1,5 @@
-import { Key } from 'react';
+import classNames from 'classnames';
+import { Key, ReactNode } from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
@@ -21,7 +22,7 @@ export type BaseFilterItem<T> = {
 
 export type BaseFilterSectionRenderItemArgs<T> = {
 	item: BaseFilterItem<T>;
-	onClick: () => void;
+	onClick?: () => void;
 	disabled: boolean;
 	active: boolean;
 };
@@ -29,9 +30,12 @@ export type BaseFilterSectionRenderItemArgs<T> = {
 export interface BaseFilterSectionProps<T> {
 	title: string;
 	data: BaseFilterItem<T>[];
-	onClick: (id: T) => void;
+	onClick?: (id: T) => void;
 	disabled?: boolean;
-	renderItem?: (args: BaseFilterSectionRenderItemArgs<T>) => React.ReactNode;
+	renderItem?: (args: BaseFilterSectionRenderItemArgs<T>) => ReactNode;
+	isAllActive?: boolean;
+	imageSize?: 20 | 36;
+	chipClassName?: string;
 }
 
 export const BaseFilterSection = <T,>({
@@ -40,22 +44,32 @@ export const BaseFilterSection = <T,>({
 	onClick,
 	disabled,
 	renderItem,
+	isAllActive,
+	imageSize = 20,
+	chipClassName,
 }: BaseFilterSectionProps<T>) => {
 	const onHandleClick = (id: T) => () => {
-		onClick(id);
+		onClick?.(id);
 	};
 
 	return (
-		<Flex direction="column" gap="8" style={{ maxWidth: 'max-content' }}>
+		<Flex direction="column" gap="8" className={styles.wrapper}>
 			<Text variant="body2" color="black-700">
 				{title}
 			</Text>
-			<Flex wrap="wrap" gap="8">
+			<Flex
+				wrap="wrap"
+				gap="8"
+				style={{
+					maxHeight: '500px',
+					overflowY: 'auto',
+				}}
+			>
 				{data &&
 					data.map((item) => {
-						const click = onHandleClick(item.id);
+						const click = onClick ? onHandleClick(item.id) : undefined;
 						const isDisabled = Boolean(disabled || item.disabled);
-						const isActive = Boolean(!isDisabled && item.active);
+						const isActive = Boolean((!isDisabled && item.active) || isAllActive);
 
 						return (
 							<Tooltip title={item.tooltip} key={item?.id as Key} shouldShowTooltip={item.disabled}>
@@ -69,16 +83,16 @@ export const BaseFilterSection = <T,>({
 										})
 									) : (
 										<Chip
-											className={styles.chip}
+											className={classNames(styles.chip, chipClassName)}
 											label={item.title}
 											theme="primary"
 											prefix={
 												item.iconName ? (
-													<Icon icon={item.iconName} size={20} color="black-700" />
+													<Icon icon={item.iconName} size={imageSize} color="black-700" />
 												) : (
 													item.imageSrc && (
 														<img
-															style={{ width: 20, height: 20 }}
+															style={{ width: imageSize, height: imageSize }}
 															src={item.imageSrc}
 															alt={item.title}
 															loading="lazy"

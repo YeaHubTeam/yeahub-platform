@@ -8,6 +8,7 @@ import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Question, QuestionForm } from '@/entities/question';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
+import { Topic } from '@/entities/topic';
 
 import { questionEditSchema } from '../../lib/validation/questionEditSchema';
 import { EditQuestionFormValues } from '../../model/types/questionEditPageTypes';
@@ -23,7 +24,8 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
-	const { questionSkills, questionSpecializations, ...formattedQuestion } = question;
+	const { questionSkills, questionSpecializations, questionTopics, ...formattedQuestion } =
+		question;
 
 	const methods = useForm<EditQuestionFormValues>({
 		resolver: yupResolver(questionEditSchema),
@@ -32,11 +34,12 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 			...formattedQuestion,
 			skills: formatToFormField<Skill[]>(questionSkills),
 			specializations: formatToFormField<Specialization[]>(questionSpecializations),
+			topics: formatToFormField<Topic[]>(questionTopics),
 		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
-	console.log(methods.watch());
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>

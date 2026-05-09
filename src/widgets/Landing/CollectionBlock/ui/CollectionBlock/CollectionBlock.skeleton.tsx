@@ -4,7 +4,6 @@ import { TextSkeleton } from '@/shared/ui/Text';
 
 import { AdditionalBlockSkeleton } from '../AdditionalBlock/AdditionalBlock.skeleton';
 import { FiltersBlockSkeleton } from '../FiltersBlock/FiltersBlock.skeleton';
-import { MainBlockSkeleton } from '../MainBlock/MainBlock.skeleton';
 
 import styles from './CollectionBlock.module.css';
 
@@ -22,7 +21,6 @@ export const CollectionBlockSkeleton = () => {
 					<TextSkeleton width={isMobile ? 320 : 473} variant="body3" className={styles.subtitle} />
 				</div>
 				<FiltersBlockSkeleton />
-				<MainBlockSkeleton />
 				<AdditionalBlockSkeleton />
 			</Flex>
 		</section>

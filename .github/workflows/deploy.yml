@@ -55,11 +55,13 @@ jobs:
             IMAGE_TAG=${{ steps.docker_tag_dev.outputs.IMAGE_TAG }}
             API_URL="https://api.yeatwork.ru/"
             LANDING_URL="https://yeatwork.ru/"
+            APP_URL="https://app.yeatwork.ru/"
             TELEGRAM_BOT_NAME="yeahub_test_bot"
           else
             IMAGE_TAG=${{ steps.docker_tag_prod.outputs.IMAGE_TAG }}
             API_URL="https://api.yeahub.ru/"
             LANDING_URL="https://yeahub.ru/"
+            APP_URL="https://app.yeatwork.ru/"
             TELEGRAM_BOT_NAME="yeahub_bot"
           fi
 
@@ -67,6 +69,7 @@ jobs:
             -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$IMAGE_TAG \
             --build-arg API_URL=$API_URL \
             --build-arg LANDING_URL=$LANDING_URL \
+            --build-arg APP_URL=$APP_URL \
             --build-arg PORT=5173 \
             --build-arg NODE_ENV=production \
             --build-arg SENTRY_DSN="${{ secrets.SENTRY_DSN }}" \

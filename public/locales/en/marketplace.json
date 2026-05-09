@@ -10,6 +10,9 @@
 			"request.link": "Create request",
 			"title": "Add a resource",
 			"submit": "Send for moderation"
+		},
+		"ref.code": {
+			"request.link": "Creating a referral link"
 		}
 	},
 	"edit": {
