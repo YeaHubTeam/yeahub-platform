@@ -1,1 +1,3 @@
-export { deleteReferralLinkMock } from './deleteReferralLinkMock';
+import { deleteReferralLinkMock } from './deleteReferralLinkMock';
+
+export const referralLinkDeleteHandlers = [deleteReferralLinkMock];

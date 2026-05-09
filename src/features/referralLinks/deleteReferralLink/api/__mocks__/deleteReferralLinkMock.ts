@@ -4,22 +4,18 @@ import { referralLinksMock } from '@/entities/referralLink';
 
 import { deleteReferralLinkApiUrls } from '../../model/constants/deleteReferralLinkApiUrls';
 
-let mockLinks = [...referralLinksMock.data];
+export const deleteReferralLinkMock = http.delete(
+	`${process.env.API_URL}${deleteReferralLinkApiUrls.deleteReferralLink}`,
+	({ params }) => {
+		const { linkId } = params;
+		const isFound = referralLinksMock.data.some((link) => link.id === linkId);
 
-export const deleteReferralLinkMock = [
-	http.delete(
-		`${process.env.API_URL}${deleteReferralLinkApiUrls.deleteReferralLink}/:id`,
-		({ params }) => {
-			const { id } = params;
-			const isFound = mockLinks.some((link) => link.id === id);
+		if (!isFound) {
+			return HttpResponse.json({ message: 'Not found' }, { status: 404 });
+		}
 
-			if (!isFound) {
-				return HttpResponse.json({ message: 'Not found' }, { status: 404 });
-			}
-
-			mockLinks = mockLinks.filter((link) => link.id !== id);
-
-			return new HttpResponse(null, { status: 200 });
-		},
-	),
-];
+		referralLinksMock.data = referralLinksMock.data.filter((link) => link.id !== linkId);
+		referralLinksMock.total = referralLinksMock.total - 1;
+		return new HttpResponse(null, { status: 200 });
+	},
+);

@@ -1,3 +1,3 @@
 export const deleteReferralLinkApiUrls = {
-	deleteReferralLink: 'ref-links',
+	deleteReferralLink: 'ref-links/:linkId',
 };
