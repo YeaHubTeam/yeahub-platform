@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Collections } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
@@ -55,45 +56,23 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex className={`${styles['collection-input']}`} gap="120">
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.TITLE_FULL)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.TITLE_LABEL)}
-						</Text>
-					</Flex>
+				<FormField label={t(Collections.TITLE_FULL)} description={t(Collections.TITLE_LABEL)}>
 					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.COMPANY_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.COMPANY_LABEL)}
-						</Text>
-					</Flex>
+				<FormField label={t(Collections.COMPANY_TITLE)} description={t(Collections.COMPANY_LABEL)}>
 					<FormControl name="companyId" control={control}>
-						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<CompanySelect onChange={onChange} value={value} />
-							</div>
-						)}
+						{({ onChange, value }) => <CompanySelect onChange={onChange} value={value} />}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex direction="column" gap="8">
-					<Text variant="body3-strong" color="black-800">
-						{t(Collections.DESCRIPTION_FULL)}
-					</Text>
-					<Text variant="body2" color="black-800">
-						{t(Collections.DESCRIPTION_LABEL)}
-					</Text>
+				<FormField
+					label={t(Collections.DESCRIPTION_FULL)}
+					description={t(Collections.DESCRIPTION_LABEL)}
+					direction="column"
+				>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
@@ -105,33 +84,17 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.ICON_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.ICON_LABEL)}
-						</Text>
-					</Flex>
+				<FormField label={t(Collections.ICON_TITLE)} description={t(Collections.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
 						initialSrc={previewImg}
 					/>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120" align="center">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.TARIFF_CHOOSE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.TARIFF_LABEL)}
-						</Text>
-					</Flex>
+				<FormField label={t(Collections.TARIFF_CHOOSE)} description={t(Collections.TARIFF_LABEL)}>
 					<Flex gap="60">
 						<Radio
 							label={t(Collections.TARIFF_PAID)}
@@ -146,63 +109,49 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 							onChange={() => setValue('isFree', true)}
 						/>
 					</Flex>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.SPECIALIZATION_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.SPECIALIZATION_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.SPECIALIZATION_TITLE)}
+					description={t(Collections.SPECIALIZATION_LABEL)}
+				>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
-							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
-							</div>
+							<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 
-				<Flex gap="120">
-					<Flex direction="column" className={styles['text-wrapper']} gap="8">
-						<Text variant="body3-strong" color="black-800">
-							{t(Collections.KEYWORDS_TITLE)}
-						</Text>
-						<Text variant="body2" color="black-800">
-							{t(Collections.KEYWORDS_LABEL)}
-						</Text>
-					</Flex>
+				<FormField
+					label={t(Collections.KEYWORDS_TITLE)}
+					description={t(Collections.KEYWORDS_LABEL)}
+				>
 					<FormControl name="keywords" control={control}>
 						{({ onChange, value }) => {
 							const currentKeywords = Array.isArray(value) ? value : [];
 
 							return (
-								<div className={styles.select}>
-									<Flex direction="column" gap="32">
-										<KeywordSelect
-											getKeywordsQuery={useGetCollectionKeywordsQuery}
-											value={undefined}
-											onChange={(keyword) => {
-												if (keyword && !currentKeywords.includes(keyword)) {
-													onChange([...currentKeywords, keyword]);
-												}
-											}}
-											selectedKeywords={currentKeywords}
-											showLabel={false}
-											showSelected={false}
-											width={360}
-											label={t(Collections.ADDITIONAL_INFO_ACCESS)}
-										/>
-										<KeywordInput value={currentKeywords} onChange={onChange} />
-									</Flex>
-								</div>
+								<Flex direction="column" gap="32">
+									<KeywordSelect
+										getKeywordsQuery={useGetCollectionKeywordsQuery}
+										value={undefined}
+										onChange={(keyword) => {
+											if (keyword && !currentKeywords.includes(keyword)) {
+												onChange([...currentKeywords, keyword]);
+											}
+										}}
+										selectedKeywords={currentKeywords}
+										showLabel={false}
+										showSelected={false}
+										width={360}
+										label={t(Collections.ADDITIONAL_INFO_ACCESS)}
+									/>
+									<KeywordInput value={currentKeywords} onChange={onChange} />
+								</Flex>
 							);
 						}}
 					</FormControl>
-				</Flex>
+				</FormField>
 
 				<FormControl name="questions" control={control}>
 					{() => (
