@@ -44,7 +44,6 @@ export const handlers = [
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
-	...taskHandlers,
 	...specializationHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
@@ -75,4 +74,5 @@ export const handlers = [
 	...programmingLanguageHandlers,
 	...referralLinksHandlers,
 	...referralLinkDeleteHandlers,
+	...taskHandlers,
 ];
