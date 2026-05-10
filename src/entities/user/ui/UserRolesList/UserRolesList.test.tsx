@@ -4,7 +4,7 @@ import { renderComponent } from '@/shared/libs';
 import { FlexProps } from '@/shared/ui/Flex';
 import { StatusChipProps } from '@/shared/ui/StatusChip';
 
-import { Role } from '@/entities/auth/@x/user';
+import { RoleName } from '@/entities/user';
 
 import { userRolesMock } from '../../__mocks__/data/userRolesMock';
 import { userRoleColors } from '../../model/constants/userRoleColors';
@@ -29,26 +29,27 @@ jest.mock('@/shared/ui/StatusChip', () => ({
 
 describe('UserRolesList', () => {
 	test('renders', () => {
-		renderComponent(<UserRolesList userRoles={userRolesMock} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock.map((r) => r.name)} />);
 		expect(screen.getByTestId('UserRolesList')).toBeInTheDocument();
 	});
 
 	test('renders StatusChip for every role', () => {
-		renderComponent(<UserRolesList userRoles={userRolesMock} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock.map((r) => r.name)} />);
 		const chips = screen.getAllByTestId('StatusChip');
 		expect(chips).toHaveLength(userRolesMock.length);
 	});
 
 	test('applies correct color variants', () => {
-		renderComponent(<UserRolesList userRoles={userRolesMock} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock.map((r) => r.name)} />);
 
 		const chips = screen.getAllByTestId('StatusChip');
 
-		userRolesMock.forEach((role: Role, index: number) => {
-			const chip = chips[index];
-
-			expect(chip).toHaveAttribute('data-variant', userRoleColors[role.name]);
-		});
+		userRolesMock
+			.map((r) => r.name)
+			.forEach((roleName: RoleName, index: number) => {
+				const chip = chips[index];
+				expect(chip).toHaveAttribute('data-variant', userRoleColors[roleName]);
+			});
 	});
 
 	test('renders nothing when userRoles is empty', () => {
@@ -57,7 +58,7 @@ describe('UserRolesList', () => {
 	});
 
 	test('correct props to Flex', () => {
-		renderComponent(<UserRolesList userRoles={userRolesMock} />);
+		renderComponent(<UserRolesList userRoles={userRolesMock.map((r) => r.name)} />);
 
 		const flex = screen.getByTestId('UserRolesList');
 

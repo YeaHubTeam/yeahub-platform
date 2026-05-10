@@ -4,13 +4,13 @@ import { i18Namespace, User } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip } from '@/shared/ui/StatusChip';
 
-import { Role } from '@/entities/auth/@x/user';
+import { RoleName } from '@/entities/user';
 
 import { userRoleColors } from '../../model/constants/userRoleColors';
 import { convertRoleNameToEnumKey } from '../../model/utils/convertRoleNameToEnumKey';
 
 interface UserRolesListProps {
-	userRoles: Role[];
+	userRoles: RoleName[];
 }
 
 export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
@@ -18,12 +18,12 @@ export const UserRolesList = ({ userRoles }: UserRolesListProps) => {
 
 	return (
 		<Flex gap="12" align="start" wrap="wrap" dataTestId="UserRolesList">
-			{userRoles?.map((role) => (
+			{userRoles?.map((roleName) => (
 				<StatusChip
-					key={role.id}
+					key={roleName}
 					status={{
-						variant: userRoleColors[role.name],
-						text: t(User[convertRoleNameToEnumKey(role.name)]),
+						variant: userRoleColors[roleName],
+						text: t(User[convertRoleNameToEnumKey(roleName)]),
 					}}
 				/>
 			))}

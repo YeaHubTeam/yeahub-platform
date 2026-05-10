@@ -1,0 +1,28 @@
+{
+	"stub": {
+		"empty": {
+			"featureFlags": {
+				"title": "No feature flags found yet",
+				"subtitle": "Create a feature flag or wait until someone creates one",
+				"submit": "Add"
+			}
+		}
+	},
+	"table": {
+		"featureFlags": {
+			"flag": "Flag",
+			"description": "Description",
+			"enabled": "Enabled",
+			"roles": "Roles",
+			"clientType": "Client type",
+			"createdAt": "Created at",
+			"actions": "Actions"
+		}
+	},
+	"status": {
+		"featureFlags": {
+			"enabled": "Enabled",
+			"disabled": "Disabled"
+		}
+	}
+}

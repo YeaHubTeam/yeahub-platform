@@ -1,2 +1,12 @@
-export type { FeatureFlagType, FeatureFlag, FeatureFlags } from './model/types/featureFlag';
+export type {
+	FeatureFlagType,
+	FeatureFlag,
+	FeatureFlags,
+	FeatureFlagApiItem,
+	GetFeatureFlagsListParamsRequest,
+	GetFeatureFlagsListResponse,
+	ClientType,
+} from './model/types/featureFlag';
 export { WithFeature } from './ui/WithFeature/WithFeature';
+export { useGetFeatureFlagsListQuery } from './api/featureFlagApi';
+export { featureFlagHandlers } from './api/__mocks__';
