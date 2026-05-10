@@ -54,3 +54,7 @@ export type {
 } from './model/types/filters';
 
 export { GENERATED_QUESTIONS_LS_KEY } from './model/constants/question';
+
+export { getStudyStatus } from './lib/getStudyStatus';
+export type { StudyStatus } from './lib/getStudyStatus';
+export { QuestionStudyStatus } from './ui/QuestionStudyStatus/QuestionStudyStatus';

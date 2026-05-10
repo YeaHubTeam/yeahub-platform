@@ -1,4 +1,5 @@
 export type {
+	TaskData,
 	Task,
 	TestCase,
 	TaskStructure,
