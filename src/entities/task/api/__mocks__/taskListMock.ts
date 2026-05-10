@@ -1,32 +1,10 @@
 import { http, HttpResponse } from 'msw';
 
 import { companiesMock } from '@/entities/company/@x/task';
-import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
+import { programmingLanguagesMock } from '@/entities/programmingLanguage/@x/task';
 
 import { taskApiUrls } from '../../model/constants/task';
 import { GetTasksListResponse, Task } from '../../model/types/task';
-
-const mockJavaScript: ProgrammingLanguage = {
-	id: 1,
-	name: 'JavaScript',
-	version: 'Node.js 18',
-	monacoLangId: 'javascript',
-	fileExtension: 'js',
-	isActive: true,
-	imageSrc: 'https://yeatwork.ru/icons/js.png',
-	defaultPreloadedCode: 'function solution() {\n\n}',
-};
-
-const mockPython: ProgrammingLanguage = {
-	id: 2,
-	name: 'Python',
-	version: '3.10',
-	monacoLangId: 'python',
-	fileExtension: 'py',
-	isActive: true,
-	imageSrc: 'https://yeatwork.ru/icons/python.png',
-	defaultPreloadedCode: 'def solution():\n    pass',
-};
 
 const mockTasks: Task[] = [
 	{
@@ -36,7 +14,7 @@ const mockTasks: Task[] = [
 		description: 'Implement a function that delays the invocation of the passed function.',
 		status: 'not_started',
 		difficulty: 2,
-		supportedLanguages: [mockJavaScript],
+		supportedLanguages: [programmingLanguagesMock.javascript],
 		mainCategory: 'algorithms',
 		constraints: ['O(1) memory', 'No third-party libraries (lodash, etc.)'],
 		testCases: [],
@@ -46,7 +24,7 @@ const mockTasks: Task[] = [
 		memoryLimit: 256,
 		canSolve: true,
 		subscriptionLevel: 'free',
-		companies: companiesMock.data,
+		companies: companiesMock.data.slice(0, 3),
 	},
 	{
 		id: '2',
@@ -55,7 +33,7 @@ const mockTasks: Task[] = [
 		description: 'Create an adaptive 3-column grid.',
 		status: 'not_started',
 		difficulty: 3,
-		supportedLanguages: [mockJavaScript, mockPython],
+		supportedLanguages: [programmingLanguagesMock.javascript, programmingLanguagesMock.python],
 		mainCategory: 'algorithms',
 		constraints: ['CSS Grid only', 'No media queries'],
 		testCases: [],
@@ -65,7 +43,7 @@ const mockTasks: Task[] = [
 		memoryLimit: 128,
 		canSolve: true,
 		subscriptionLevel: 'premium',
-		companies: companiesMock.data,
+		companies: companiesMock.data.slice(3, 8),
 	},
 ];
 
