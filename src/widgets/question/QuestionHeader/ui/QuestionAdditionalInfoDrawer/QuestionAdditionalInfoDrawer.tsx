@@ -20,7 +20,16 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
 	const project = useCurrentProject();
-	const { createdBy, checksCount, rate, keywords, complexity, questionSkills } = question;
+	const {
+		createdBy,
+		checksCount,
+		rate,
+		keywords,
+		complexity,
+		questionSkills,
+		questionTopics,
+		questionSpecializations,
+	} = question;
 	const { t } = useTranslation(i18Namespace.questions);
 	return (
 		<div className={styles['popover-additional']}>
@@ -36,7 +45,7 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 			<Drawer
 				isOpen={isOpen}
 				onClose={onClose}
-				rootName={isMobileS || project === 'landing' ? 'body' : 'mainLayout'}
+				rootName={isMobileS ? 'body' : 'mainLayout'}
 				className={classNames(styles.drawer, {
 					[styles['drawer-mobile']]: isMobileS,
 				})}
@@ -55,6 +64,8 @@ export const QuestionAdditionalInfoDrawer = ({ question }: QuestionAdditionalInf
 						keywords={keywords}
 						complexity={complexity}
 						questionSkills={questionSkills}
+						questionSpecializations={questionSpecializations}
+						questionTopics={questionTopics}
 						createdBy={createdBy}
 						route={ROUTES.wiki.questions.page}
 					/>

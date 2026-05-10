@@ -3,8 +3,6 @@ export { SkillSelect } from './ui/SkillSelect/SkillSelect';
 export { SkillSelectSkeleton } from './ui/SkillSelect/SkillSelect.skeleton';
 export { SkillForm } from './ui/SkillForm/SkillForm';
 export { SkillCard } from './ui/SkillCard/SkillCard';
-export { SkillList } from './ui/SkillList/SkillList';
-export { SkillListSkeleton } from './ui/SkillList/SkillList.skeleton';
 export { SkillsListField } from './ui/SkillsListField/SkillsListField';
 export { SkillsListFieldSkeleton } from './ui/SkillsListField/SkillsListField.skeleton';
 export {

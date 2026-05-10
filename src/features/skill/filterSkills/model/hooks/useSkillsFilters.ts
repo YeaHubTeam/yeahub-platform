@@ -15,7 +15,8 @@ export const useSkillsFilters = (initialParams: SkillsFilterParams) => {
 		(filters.page || 1) > 1 ||
 		Boolean(filters.title) ||
 		Boolean(filters.specialization) ||
-		filters.isMy;
+		filters.isMy ||
+		Boolean(filters.author);
 
 	const onChangeTitle = (title: SkillsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -32,6 +33,9 @@ export const useSkillsFilters = (initialParams: SkillsFilterParams) => {
 	const onChangeIsMy = (isMy: SkillsFilterParams['isMy']) => {
 		onFilterChange({ isMy, page: 1 });
 	};
+	const onChangeAuthor = (author?: SkillsFilterParams['author']) => {
+		onFilterChange({ author, page: 1 });
+	};
 
 	return {
 		filters,
@@ -41,5 +45,6 @@ export const useSkillsFilters = (initialParams: SkillsFilterParams) => {
 		onChangeSpecialization,
 		onChangePage,
 		onChangeIsMy,
+		onChangeAuthor,
 	};
 };

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import PopoverIcon from '@/shared/assets/icons/diplomaVerified.svg';
 import { i18Namespace, Collections } from '@/shared/config';
-import { useCurrentProject, useScreenSize, useModal } from '@/shared/libs';
+import { useScreenSize, useModal } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
 import { IconButton } from '@/shared/ui/IconButton';
@@ -24,7 +24,6 @@ export const CollectionAdditionalInfoDrawer = ({
 }: CollectionAdditionalInfoDrawerProps) => {
 	const { isMobileS } = useScreenSize();
 	const { isOpen, onToggle, onClose } = useModal();
-	const project = useCurrentProject();
 	const { createdBy, questionsCount, tasksCount, isFree, company, specializations, keywords } =
 		collection;
 
@@ -45,7 +44,7 @@ export const CollectionAdditionalInfoDrawer = ({
 			<Drawer
 				isOpen={isOpen}
 				onClose={onClose}
-				rootName={isMobileS || project === 'landing' ? 'body' : 'mainLayout'}
+				rootName={isMobileS ? 'body' : 'mainLayout'}
 				className={classNames(styles.drawer, {
 					[styles['drawer-mobile']]: isMobileS,
 				})}

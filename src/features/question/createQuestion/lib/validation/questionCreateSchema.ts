@@ -50,6 +50,7 @@ export const questionCreateSchema: yup.ObjectSchema<CreateQuestionFormValues> = 
 		.array(yup.number().required())
 		.min(1, i18n.t(Translation.VALIDATION_MIN_ARRAY, { min: 1 }))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	topics: yup.array(yup.number().required()).optional(),
 	keywords: yup
 		.array()
 		.of(yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)))

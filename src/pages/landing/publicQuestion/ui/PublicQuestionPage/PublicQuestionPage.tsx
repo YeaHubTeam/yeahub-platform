@@ -61,8 +61,17 @@ const PublicQuestionPage = () => {
 		return null;
 	}
 
-	const { createdBy, rate, keywords, complexity, questionSkills, shortAnswer, longAnswer } =
-		question;
+	const {
+		createdBy,
+		rate,
+		keywords,
+		complexity,
+		questionSkills,
+		questionSpecializations,
+		shortAnswer,
+		longAnswer,
+		questionTopics,
+	} = question;
 
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
 	const showAuthor = guru ? false : true;
@@ -121,6 +130,8 @@ const PublicQuestionPage = () => {
 							keywords={keywords}
 							complexity={complexity}
 							questionSkills={questionSkills}
+							questionTopics={questionTopics}
+							questionSpecializations={questionSpecializations}
 							route={ROUTES.wiki.questions.page}
 							media={media}
 						/>

@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, User as UserI18n } from '@/shared/config';
@@ -16,12 +16,21 @@ export type UserSelectProps = Omit<
 	value?: string;
 	onChange: (value?: string) => void;
 	disabled?: boolean;
+	title?: string;
+	placeholder?: string;
 	showLabel?: boolean;
 };
 
 const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
 
-export const UserSelect = ({ value, onChange, disabled, showLabel = true }: UserSelectProps) => {
+export const UserSelect = ({
+	value,
+	onChange,
+	disabled,
+	title,
+	placeholder,
+	showLabel = true,
+}: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
 	const [searchValue, setSearchValue] = useState('');
@@ -37,6 +46,12 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 		limit: 10,
 	});
 
+	useEffect(() => {
+		if (!value) {
+			setSearchValue('');
+		}
+	}, [value]);
+
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
 		onChange(newValue);
@@ -44,7 +59,7 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 
 	const emptyUser = {
 		value: 'all',
-		label: t(UserI18n.SELECT_CHOOSE),
+		label: placeholder || t(UserI18n.SELECT_CHOOSE),
 	};
 
 	const handleSearchChange = (val: string) => {
@@ -72,11 +87,17 @@ export const UserSelect = ({ value, onChange, disabled, showLabel = true }: User
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
 	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectUser.label;
 
+	useEffect(() => {
+		if (!value) {
+			setSearchValue('');
+		}
+	}, [value]);
+
 	return (
 		<Flex direction="column" align="start" gap="8">
 			{showLabel && (
 				<Text variant="body2" color="black-700">
-					{t(UserI18n.USER_NAME)}
+					{title || t(UserI18n.USER_NAME)}
 				</Text>
 			)}
 			<Dropdown

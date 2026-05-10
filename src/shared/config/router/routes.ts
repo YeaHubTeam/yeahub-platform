@@ -9,6 +9,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/questions/create',
 			},
+			createMultiple: {
+				route: 'create-multiple',
+				page: '/admin/questions/create-multiple',
+			},
 			details: {
 				route: ':questionId',
 				page: '/admin/questions/:questionId',
@@ -161,6 +165,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/referralLinks/create',
 			},
+			edit: {
+				route: ':referralLinkId/edit',
+				page: '/admin/referralLinks/:referralLinkId/edit',
+			},
 			details: {
 				route: ':referralLinkId',
 				page: '/admin/referralLinks/:referralLinkId',
@@ -204,6 +212,14 @@ export const ROUTES = {
 		edit: {
 			route: 'edit',
 			page: '/profile/edit',
+		},
+	},
+	career: {
+		route: 'career',
+		page: '/career',
+		'resume-analyzer': {
+			route: 'resume-analyzer',
+			page: '/career/resume-analyzer',
 		},
 	},
 	users: {

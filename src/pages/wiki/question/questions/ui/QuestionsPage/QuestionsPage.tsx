@@ -22,7 +22,7 @@ import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.questions);
-	const { isMobile, isMobileS, isTablet } = useScreenSize();
+	const { isSmallScreen, isMobileS } = useScreenSize();
 
 	const {
 		filters,
@@ -139,7 +139,7 @@ const QuestionsPage = () => {
 							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
 								{t(Questions.TITLE_SHORT)}
 							</Text>
-							{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
+							{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
 						</div>
 						<hr className={styles.divider} />
 						<>

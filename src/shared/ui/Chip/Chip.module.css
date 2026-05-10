@@ -15,7 +15,7 @@
   background-color: transparent;
   font-weight: var(--font-weight-500);
   user-select: none;
-  cursor: pointer;
+  cursor: auto;
 
   &.chip-clickable {
     cursor: pointer;
@@ -46,6 +46,12 @@
 
   &.chip-outlined {
     border: 1px solid var(--color-purple-700);
+  }
+
+  &.chip-active-inverse {
+    border-color: var(--color-purple-700);
+    background-color: var(--color-purple-700);
+    color: var(--color-white-900);
   }
 }
 

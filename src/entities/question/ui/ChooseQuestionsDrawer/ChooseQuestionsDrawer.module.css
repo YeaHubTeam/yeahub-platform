@@ -37,6 +37,10 @@
   padding: 16px;
 }
 
+.question-card-active{
+  background-color: var(--color-purple-300);
+}
+
 .column {
   flex-direction: column;
   gap: 24px;

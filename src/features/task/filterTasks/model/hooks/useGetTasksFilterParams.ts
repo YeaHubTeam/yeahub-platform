@@ -13,6 +13,7 @@ export const useGetTasksFilterParams = (initialParams: TasksFilterParams) => {
 		langIds: parsedParams.langIds
 			? parsedParams.langIds.split(',').map(Number)
 			: initialParams.langIds,
+		companyId: parsedParams.companyId || initialParams.companyId,
 	};
 
 	return currentParams;

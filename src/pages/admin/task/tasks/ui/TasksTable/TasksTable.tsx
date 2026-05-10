@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { Text } from '@/shared/ui/Text';
 
 import { Task, taskCategories } from '@/entities/task';
@@ -31,6 +32,7 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 			category: '20%',
 			difficulty: '10%',
 			languages: '20%',
+			companies: '20%',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -42,6 +44,7 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 			category: t(Tasks.CATEGORY_TITLE),
 			difficulty: t(Tasks.TABLE_DIFFICULTY),
 			languages: t(Tasks.LANGUAGES_TITLE),
+			companies: t(Tasks.COMPANIES_TITLE),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -57,6 +60,13 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 			category: t(taskCategories[task.mainCategory]),
 			difficulty: task.difficulty,
 			languages: task.supportedLanguages.map((language) => language.name).join(', '),
+			companies: (
+				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
+					items={task.companies}
+					showCount={3}
+				/>
+			),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {

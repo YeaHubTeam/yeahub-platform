@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.mobile, .tablet {
+.mobile {
   flex-direction: column;
 }
 
@@ -123,7 +123,7 @@
   border: 1px solid var(--button-border-secondary-focus);
 }
 
-@media (width <= 1023px) {
+@media (width < 1280px) {
   .popover-additional {
     display: block;
   }

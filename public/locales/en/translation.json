@@ -9,6 +9,7 @@
 	"more": "More",
 	"return": "Return",
 	"create": "Add",
+	"questions.add": "Add questions",
 	"search": "Search",
 	"remove.selected": "Delete selected",
 	"loading": "Loading is underway...",
@@ -63,7 +64,6 @@
 			},
 			"questions": "Questions",
 			"featureFlags": "Feature flags",
-
 			"skills": "Skills",
 			"companies": "Companies",
 			"analytics": "Analytics",
@@ -276,6 +276,10 @@
 			"create": {
 				"success": "The question was created successfully",
 				"failed": "Failed to create a question",
+				"multiple": {
+					"success": "Questions created successfully",
+					"failed": "Failed to create questions"
+				},
 				"user": {
 					"not.found": "User not found"
 				},
@@ -508,7 +512,29 @@
 		"topics": {
 			"create": {
 				"success": "Topic successfully created",
-				"failed": "Topic could not be created"
+				"failed": "Topic could not be created",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"topic": {
+					"skill": {
+						"not_found": "Skill not found"
+					},
+					"title": {
+						"conflict": "A topic with the same title already exists for this skill"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"edit": {
 				"success": "Topic successfully changed",
@@ -517,11 +543,24 @@
 			"delete": {
 				"single": {
 					"success": "Topic successfully deleted",
-					"failed": "Topic could not be deleted"
+					"failed": "The topic could not be deleted",
+					"not_found": "Topic not found",
+					"image": {
+						"url_invalid": "Image url can not be empty",
+						"not_found": "There is no such image in storage"
+					}
 				},
-				"multiple": {
-					"success": "Successfully deleted topics:",
-					"failed": "Topic could not be deleted:"
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users!"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"constraint": {
+					"foreign_key_violation": "Cannot delete topic because it is referenced by other entities"
 				}
 			}
 		},
@@ -642,6 +681,34 @@
 			"reject": {
 				"success": "The resource request has been successfully rejected",
 				"failed": "Failed to reject the resource request"
+			}
+		},
+		"referralLink": {
+			"delete": {
+				"success": "Referral link has been successfully deleted",
+				"failed": "Failed to delete referral link",
+				"unauthorized": "You have to be authorized to delete a referral link",
+				"unverified": "You have to be verified to delete a referral link",
+				"not_owner": "User must be an owner of link or admin",
+				"not_found": "Referral link not found"
+			},
+			"edit": {
+				"success": "Referral link successfully updated",
+				"failed": "Failed to update referral link",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Available only for verified users"
+					}
+				},
+				"referral": {
+					"user": {
+						"not.owner": "User is not the owner of this referral link"
+					},
+					"link": {
+						"not.find": "Referral link not found"
+					}
+				}
 			}
 		},
 		"profile": {

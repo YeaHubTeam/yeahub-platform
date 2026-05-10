@@ -22,7 +22,6 @@ export const FiltersDrawer = ({ children, hasFilters }: FiltersDrawerProps) => {
 
 	const filterIconSize: Record<Project, IconButtonSize> = {
 		platform: 'medium',
-		landing: 'medium',
 		admin: 'large',
 	};
 

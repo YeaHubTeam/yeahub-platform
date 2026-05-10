@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useSearchParams } from 'react-router-dom';
+
+import { getJSONFromLS } from '@/shared/libs';
+
+import {
+	GENERATED_QUESTIONS_LS_KEY,
+	GeneratedQuestionDto,
+} from '@/entities/question/@x/collection';
 
 import { useGetCollectionQuestionsQuery } from '../../../api/collectionApi';
 
 export const useCollectionQuestions = (collectionId?: string | number, questionsCount?: number) => {
 	const { setValue, watch } = useFormContext();
-	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
+	const [searchParams] = useSearchParams();
+	const withGeneratedQuestions = searchParams.get('withGeneratedQuestions') === 'true';
 
+	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 	const watchCollectionQuestions = watch('questions', []);
 
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
@@ -19,16 +29,16 @@ export const useCollectionQuestions = (collectionId?: string | number, questions
 
 	useEffect(() => {
 		if (collectionQuestions) {
-			setValue(
-				'questions',
-				collectionQuestions.data.map((collection) => collection.id),
+			const filteredCollectionQuestions = collectionQuestions.data.filter(
+				(question) => !watchCollectionQuestions.includes(question.id),
 			);
-			setSelectedQuestions(
-				collectionQuestions.data.map((collection) => ({
-					id: collection.id,
-					title: collection.title,
-				})),
-			);
+			const mappedQuestions = filteredCollectionQuestions.map((collection) => ({
+				id: collection.id,
+				title: collection.title,
+			}));
+			const mappedQuestionIds = filteredCollectionQuestions.map((collection) => collection.id);
+			setValue('questions', [...mappedQuestionIds, ...watchCollectionQuestions]);
+			setSelectedQuestions((prev) => [...mappedQuestions, ...prev]);
 		}
 	}, [collectionQuestions, setValue]);
 
@@ -44,6 +54,31 @@ export const useCollectionQuestions = (collectionId?: string | number, questions
 			watchCollectionQuestions.filter((questionId: number) => questionId !== id),
 		);
 	};
+
+	useEffect(() => {
+		const generatedQuestions: { generatedDto: GeneratedQuestionDto; questionId: number }[] =
+			getJSONFromLS(GENERATED_QUESTIONS_LS_KEY);
+
+		if (generatedQuestions && withGeneratedQuestions) {
+			const filteredGeneratedQuestions = generatedQuestions.filter(
+				(question) =>
+					question.questionId && !watchCollectionQuestions.includes(question.questionId),
+			);
+
+			const mappedQuestions =
+				filteredGeneratedQuestions.map((question) => ({
+					id: question.questionId,
+					title: question.generatedDto.title,
+				})) || [];
+			const mappedQuestionIds =
+				filteredGeneratedQuestions.map((question) => question.questionId) || [];
+
+			if (mappedQuestions.length > 0) {
+				setValue('questions', [...watchCollectionQuestions, ...mappedQuestionIds]);
+				setSelectedQuestions((prev) => [...prev, ...mappedQuestions]);
+			}
+		}
+	}, []);
 
 	return { selectedQuestions, handleSelectQuestion, handleUnselectQuestion };
 };

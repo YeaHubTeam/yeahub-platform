@@ -27,3 +27,9 @@ export type CreateOrEditOrViewReferralLinkFormValues = Pick<
 	ReferralLink,
 	'id' | 'refCode' | 'url' | 'ownerId'
 >;
+
+export type GetReferralLinkByIdParamsRequest = {
+	id: string;
+};
+
+export type GetReferralLinkByIdResponse = ReferralLink;

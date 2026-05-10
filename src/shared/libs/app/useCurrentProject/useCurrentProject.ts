@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export type Project = 'admin' | 'platform' | 'landing';
+export type Project = 'admin' | 'platform';
 
 export const useCurrentProject = (): Project => {
 	const location = useLocation();

@@ -1,7 +1,8 @@
-import { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Companies } from '@/shared/config';
+import { useDebounce } from '@/shared/libs';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 
@@ -20,7 +21,18 @@ type CompanySelectProps = Omit<
 
 export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps) => {
 	const { t } = useTranslation(i18Namespace.companies);
-	const { data: companies } = useGetCompaniesListQuery({ limit: 200 });
+
+	const [searchValue, setSearchValue] = useState('');
+	const [debouncedValue, setDebouncedValue] = useState('');
+
+	const debouncedSetValue = useDebounce((value: string) => {
+		setDebouncedValue(value);
+	}, 500);
+
+	const { data: companies } = useGetCompaniesListQuery({
+		titleOrLegalNameOrDescriptionSearch: debouncedValue,
+		limit: 20,
+	});
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue || disabled) return;
@@ -32,6 +44,11 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 			if (disabled) return;
 			onChange('');
 		};
+	};
+
+	const handleSearchChange = (val: string) => {
+		setSearchValue(val);
+		debouncedSetValue(val);
 	};
 
 	const options = useMemo(() => {
@@ -69,6 +86,9 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 			placeholder={options.length ? t(Companies.SELECT_CHOOSE) : t(Companies.SELECT_EMPTY)}
 			disabled={disabled}
 			className={styles.select}
+			isInput
+			inputValue={searchValue}
+			onChangeValue={handleSearchChange}
 		/>
 	);
 };

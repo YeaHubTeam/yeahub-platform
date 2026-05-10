@@ -5,8 +5,10 @@
 
 .title {
   margin-bottom: 8px;
-  line-height: 19px;
-  font-size: var(--font-size-p-m);
+}
+
+.count {
+  min-width: 40px;
 }
 
 .param-wrapper {

@@ -39,7 +39,7 @@ export const TaskStructuresField = () => {
 	const { data } = useGetLanguagesQuery();
 
 	const taskStructuresValues = watch('taskStructures');
-	console.log(watch());
+
 	const languages =
 		data?.reduce((result, language) => {
 			result[language.id] = language.monacoLangId;
@@ -48,7 +48,7 @@ export const TaskStructuresField = () => {
 
 	const languagePreloadedCodes =
 		data?.reduce((result, language) => {
-			result[language.id] = language.defaultPreloadedCode;
+			result[language.id] = language.defaultPreloadedCode ?? '';
 			return result;
 		}, {} as LanguagePreloadedCode) || ({} as LanguagePreloadedCode);
 

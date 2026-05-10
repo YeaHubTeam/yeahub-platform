@@ -6,9 +6,13 @@ import { SelectedAdminEntities, useAppDispatch } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
+import { getUserId } from '@/entities/profile';
 import { useGetReferralLinksListQuery } from '@/entities/referralLink';
 
-import { useReferralLinksFilters } from '@/features/referralLinks/filterReferralLinks';
+import {
+	RefferalLinksFilters,
+	useReferralLinksFilters,
+} from '@/features/referralLinks/filterReferralLinks';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
@@ -21,14 +25,31 @@ export const ReferralLinksPage = () => {
 	const dispatch = useAppDispatch();
 	const selectedReferralLinks = useSelector(getSelectedReferralLinks);
 	const { t } = useTranslation(i18Namespace.referralLink);
-
-	const { filters, hasFilters, onChangePage } = useReferralLinksFilters({
+	const userId = useSelector(getUserId);
+	const {
+		filters,
+		hasFilters,
+		onChangePage,
+		onChangeIsMy,
+		onResetFilters,
+		onChangeTitle,
+		onChangeOwner,
+		onChangeOrderBy,
+		onChangeOrder,
+	} = useReferralLinksFilters({
 		page: 1,
 	});
-
+	const onResetAll = () => {
+		dispatch(referralLinksPageActions.resetFilters());
+		onResetFilters();
+	};
 	const { data, isLoading, isError, refetch } = useGetReferralLinksListQuery({
 		page: filters.page,
 		limit: 10,
+		search: filters.title,
+		ownerId: filters.isMy ? userId : filters.ownerId,
+		sortBy: filters.orderBy,
+		sortOrder: filters.order,
 	});
 
 	const referralLinks = data?.data ?? [];
@@ -52,11 +73,18 @@ export const ReferralLinksPage = () => {
 			subtitle: t(ReferralLinks.STUB_EMPTY_REFERRAL_LINKS_SUBTITLE),
 			buttonText: t(ReferralLinks.STUB_EMPTY_REFERRAL_LINKS_SUBMIT),
 		},
+		'filter-empty': {
+			onClick: onResetAll,
+			title: t(ReferralLinks.STUB_EMPTY_FILTER__TITLE),
+			subtitle: t(ReferralLinks.STUB_EMPTY_FILTER_SUBTITLE),
+			buttonText: t(ReferralLinks.STUB_EMPTY_FILTER_BUTTON),
+		},
 		error: {
 			onClick: refetch,
 		},
 	};
-
+	const shouldShowResetButton =
+		hasFilters || (filters.title && filters.title.length > 0) || (filters.page ?? 0) > 1;
 	return (
 		<PageWrapper
 			isLoading={isLoading}
@@ -67,7 +95,7 @@ export const ReferralLinksPage = () => {
 			content={content}
 			hasFilters={hasFilters}
 			paginationOptions={{
-				page: filters.page,
+				page: filters.page || 1,
 				onChangePage,
 				limit: 10,
 				total: data?.total ?? 0,
@@ -75,7 +103,23 @@ export const ReferralLinksPage = () => {
 		>
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
-					<SearchSection to="create" />
+					<SearchSection
+						to="create"
+						hasFilters={hasFilters}
+						searchValue={filters.title}
+						onResetFilters={onResetAll}
+						onSearch={onChangeTitle}
+						showResetFilterButton={shouldShowResetButton}
+						renderFilter={() => (
+							<RefferalLinksFilters
+								filter={filters}
+								onChangeIsMy={onChangeIsMy}
+								onChangeOwner={onChangeOwner}
+								onChangeOrderBy={onChangeOrderBy}
+								onChangeOrder={onChangeOrder}
+							/>
+						)}
+					/>
 					<Card>
 						{content}
 						{pagination}

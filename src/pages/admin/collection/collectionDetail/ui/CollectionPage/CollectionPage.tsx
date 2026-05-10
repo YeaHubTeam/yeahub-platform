@@ -30,7 +30,7 @@ import { CollectionPageSkeleton } from './CollectionPage.skeleton';
 
 export const CollectionPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
-	const { isSmallScreen, isMobile, isTablet } = useScreenSize();
+	const { isSmallScreen } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const {
 		data: collection,
@@ -100,8 +100,7 @@ export const CollectionPage = () => {
 		<>
 			<section
 				className={classNames(styles.wrapper, {
-					[styles.mobile]: isMobile,
-					[styles.tablet]: isTablet,
+					[styles.mobile]: isSmallScreen,
 				})}
 			>
 				<CollectionHeader
@@ -112,7 +111,7 @@ export const CollectionPage = () => {
 					company={company}
 				/>{' '}
 				<CollectionBody isFree={isFree} isAdmin questions={questions} />
-				<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
+				{tasks?.length ? <TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} /> : null}
 			</section>
 		</>
 	);
@@ -161,7 +160,9 @@ export const CollectionPage = () => {
 									company={company}
 								/>{' '}
 								<CollectionBody isFree={isFree} isAdmin questions={questions} />
-								<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
+								{tasks?.length ? (
+									<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
+								) : null}
 							</div>
 							<div className={styles.additional}>
 								<AdditionalInfo
