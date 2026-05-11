@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Landing } from '@/shared/config';
+import { Guru as GuruTranslation, i18Namespace } from '@/shared/config';
 import { Pallete } from '@/shared/libs';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Flex } from '@/shared/ui/Flex';
@@ -33,7 +33,7 @@ export const GurusItem = ({
 	layout,
 }: GurusItemProps) => {
 	const { image, name, title, socials, hasPractice } = guru;
-	const { t } = useTranslation(i18Namespace.landing);
+	const { t } = useTranslation(i18Namespace.guru);
 
 	const row = (
 		<Flex gap="8" align={description ? 'center' : 'start'}>
@@ -62,7 +62,9 @@ export const GurusItem = ({
 		<Flex gap="10" direction="column">
 			<Flex gap="6" direction="column" align="center">
 				<Avatar size={avatarSize} withBorder image={image} className={styles.avatar} />
-				{!hasPractice && <StatusChip status={{ text: t(Landing.GURU_BADGE), variant: 'green' }} />}
+				{!hasPractice && (
+					<StatusChip status={{ text: t(GuruTranslation.BADGE), variant: 'green' }} />
+				)}
 			</Flex>
 
 			<Flex gap="4" direction="column">

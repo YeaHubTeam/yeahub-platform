@@ -333,43 +333,46 @@ export const ROUTES = {
 	},
 	public: {
 		docs: {
-			page: `${process.env.LANDING_URL}/docs`,
+			page: `${process.env.LANDING_URL}docs`,
 		},
 		media: {
-			page: `${process.env.LANDING_URL}/media`,
+			page: `${process.env.LANDING_URL}media`,
 		},
 		questions: {
-			page: `${process.env.LANDING_URL}/questions`,
+			page: `${process.env.LANDING_URL}questions`,
 			detail: {
-				page: `${process.env.LANDING_URL}/questions/:questionId`,
+				page: `${process.env.LANDING_URL}questions/:questionId`,
 			},
 		},
 		quiz: {
-			page: `${process.env.LANDING_URL}/quiz`,
+			page: `${process.env.LANDING_URL}quiz`,
 			new: {
-				page: `${process.env.LANDING_URL}/quiz/new`,
+				page: `${process.env.LANDING_URL}quiz/new`,
 			},
 			result: {
-				page: `${process.env.LANDING_URL}/quiz/result`,
+				page: `${process.env.LANDING_URL}quiz/result`,
 			},
 		},
 		collections: {
-			page: `${process.env.LANDING_URL}/collections`,
+			page: `${process.env.LANDING_URL}collections`,
 			detail: {
-				page: `${process.env.LANDING_URL}/collections/:collectionId`,
+				page: `${process.env.LANDING_URL}collections/:collectionId`,
 			},
 		},
 		resources: {
-			page: `${process.env.LANDING_URL}/resources`,
+			page: `${process.env.LANDING_URL}resources`,
 		},
 		learning: {
-			page: `${process.env.LANDING_URL}/learning`,
+			page: `${process.env.LANDING_URL}learning`,
 		},
 		avos: {
-			page: `${process.env.LANDING_URL}/avos`,
+			page: `${process.env.LANDING_URL}avos`,
 		},
 		hhAnalytics: {
-			page: `${process.env.LANDING_URL}/hh-analytics`,
+			page: `${process.env.LANDING_URL}hh-analytics`,
+		},
+		mentor: {
+			page: `${process.env.LANDING_URL}mentor`,
 		},
 	},
 } as const;

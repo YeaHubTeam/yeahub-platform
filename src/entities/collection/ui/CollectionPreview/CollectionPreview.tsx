@@ -88,10 +88,10 @@ export const CollectionPreview = ({
 
 	const project = useCurrentProject();
 
-	const isLandingPageVariant = variant === 'column';
+	const isPublicPageVariant = variant === 'column';
 	const path = getCollectionRoute[project](id);
 
-	const collectionPath = isLandingPageVariant
+	const collectionPath = isPublicPageVariant
 		? ROUTES.public.collections.page
 		: { pathname: path, search: queryFilter };
 
