@@ -1,4 +1,5 @@
 // eslint-disable-next-line @conarti/feature-sliced/public-api
+import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router-dom';
@@ -12,9 +13,6 @@ import { initTheme } from '@/features/theme/switch-theme';
 
 import { router } from '@/app/providers/router';
 import AppInitSentryUser from '@/app/providers/sentry/AppInitSentryUser';
-
-import { Suspense } from 'react';
-
 import { reducers } from '@/app/providers/store';
 import { store } from '@/app/providers/store/config';
 
