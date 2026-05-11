@@ -13,17 +13,10 @@
 
 .wrapper {
   display: flex;
+  flex-direction: row;
   gap: 20px;
-  cursor: pointer;
   overflow: hidden;
-
-  &.row{
-    flex-direction: row;
-  }
-
-  &.column {
-    flex-direction: column;
-  }
+  cursor: pointer;
 }
 
 .wrapper-content {

@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
-import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import Question from '@/shared/assets/icons/collectionsQuestion.svg';
 import TasksIcon from '@/shared/assets/icons/cursorSquare.svg';
 import Star from '@/shared/assets/icons/starsMinimalistic.svg';
-import { i18Namespace, Collections, Tasks, ROUTES } from '@/shared/config';
+import { i18Namespace, Collections, Tasks } from '@/shared/config';
 import { useCurrentProject } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -26,15 +25,10 @@ const MAX_LIMIT_KEYWORDS = 4;
 
 type CollectionProps = {
 	collection: Collection;
-	variant?: 'row' | 'column';
 	queryFilter?: string;
 };
 
-export const CollectionPreview = ({
-	collection,
-	variant = 'row',
-	queryFilter,
-}: CollectionProps) => {
+export const CollectionPreview = ({ collection, queryFilter }: CollectionProps) => {
 	const {
 		id,
 		title,
@@ -87,22 +81,18 @@ export const CollectionPreview = ({
 	};
 
 	const project = useCurrentProject();
-
-	const isPublicPageVariant = variant === 'column';
 	const path = getCollectionRoute[project](id);
 
-	const collectionPath = isPublicPageVariant
-		? ROUTES.public.collections.page
-		: { pathname: path, search: queryFilter };
+	const collectionPath = { pathname: path, search: queryFilter };
 
 	return (
 		<Link to={collectionPath}>
 			<Card withOutsideShadow className={styles.content}>
-				<div className={classnames(styles.wrapper, styles[variant])}>
+				<div className={styles.wrapper}>
 					<ImageWithWrapper
 						src={imageSrc || company?.imageSrc}
 						alt={t(Collections.IMAGE_ALT, { ns: i18Namespace.collection })}
-						className={classnames(styles['image-wrapper'], styles[variant])}
+						className={styles['image-wrapper']}
 					/>
 					<Flex direction="column" gap="16">
 						<div className={styles.header}>
@@ -121,11 +111,7 @@ export const CollectionPreview = ({
 								renderActions(keywords?.slice(MAX_LIMIT_KEYWORDS))}
 						</div>
 						<Flex direction="column" gap="14">
-							<Text
-								className={classnames(styles['card-title'], styles[variant])}
-								variant="body3-accent"
-								maxRows={2}
-							>
+							<Text className={styles['card-title']} variant="body3-accent" maxRows={2}>
 								{title}
 							</Text>
 							<div className={styles['access-container']}>
