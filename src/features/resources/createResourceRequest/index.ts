@@ -1,2 +1,2 @@
 export { ResourceRequestCreateForm } from './ui/ResourceRequestCreateForm/ResourceRequestCreateForm';
-export { ResourceRequestFormWithHeaderSkeleton } from './ui/ResourceRequestCreateFormWithHeader/ResourceRequestFormWithHeader.skeleton';
+export { ResourceRequestCreateFormSkeleton } from './ui/ResourceRequestCreateForm/ResourceRequestCreateForm.skeleton';

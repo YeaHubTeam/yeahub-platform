@@ -1,69 +1,43 @@
 import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { ImageLoaderSkeleton } from '@/shared/ui/ImageLoader';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './ResourceForm.module.css';
 
 export const ResourceFormSkeleton = () => {
 	return (
 		<Flex direction="column" gap="60" className={styles.wrapper}>
-			<Flex direction="column" gap="8" className={styles['form-field']}>
-				<TextSkeleton variant="body4" width={110} />
-				<TextSkeleton variant="body2" width={150} />
+			<FormFieldSkeleton direction="column">
 				<Skeleton width={240} height={74} borderRadius={16} />
-			</Flex>
+			</FormFieldSkeleton>
 
-			<Flex direction="column" gap="8" className={styles['form-field']}>
-				<TextSkeleton variant="body4" width={140} />
-				<TextSkeleton variant="body2" width={170} />
+			<FormFieldSkeleton direction="column">
 				<Skeleton width={240} height={74} borderRadius={16} />
-			</Flex>
+			</FormFieldSkeleton>
 
-			<Flex direction="row" gap="120" className={styles['form-field']}>
-				<Flex direction="column" gap="8" className={styles['form-field']}>
-					<TextSkeleton variant="body4" width={140} />
-					<TextSkeleton variant="body2" width={170} />
-				</Flex>
-				<Flex>
-					<ImageLoaderSkeleton />
-				</Flex>
-			</Flex>
+			<FormFieldSkeleton>
+				<ImageLoaderSkeleton />
+			</FormFieldSkeleton>
 
-			<Flex direction="row" gap="120" className={styles['form-field']}>
-				<Flex direction="column" gap="8" className={styles['form-field']}>
-					<TextSkeleton variant="body4" width={140} />
-					<TextSkeleton variant="body2" width={170} />
-				</Flex>
+			<FormFieldSkeleton>
 				<InputSkeleton size="S" className={styles.select} />
-			</Flex>
+			</FormFieldSkeleton>
 
-			<Flex direction="row" gap="120" className={styles['form-field']}>
-				<Flex direction="column" gap="8" className={styles['form-field']}>
-					<TextSkeleton variant="body4" width={140} />
-					<TextSkeleton variant="body2" width={170} />
-				</Flex>
+			<FormFieldSkeleton>
 				<InputSkeleton size="S" className={styles.select} />
-			</Flex>
+			</FormFieldSkeleton>
 
-			<Flex direction="row" gap="120" className={styles['form-field']}>
-				<Flex direction="column" gap="8" className={styles['form-field']}>
-					<TextSkeleton variant="body4" width={140} />
-					<TextSkeleton variant="body2" width={170} />
-				</Flex>
+			<FormFieldSkeleton>
 				<InputSkeleton size="S" className={styles.select} />
 				<ButtonSkeleton size="large" width={210} className={styles['submit-button']} />
-			</Flex>
+			</FormFieldSkeleton>
 
-			<Flex direction="row" gap="120" className={styles['form-field']}>
-				<Flex direction="column" gap="8" className={styles['form-field']}>
-					<TextSkeleton variant="body4" width={140} />
-					<TextSkeleton variant="body2" width={170} />
-				</Flex>
+			<FormFieldSkeleton>
 				<InputSkeleton size="S" className={styles.select} />
-			</Flex>
+			</FormFieldSkeleton>
 		</Flex>
 	);
 };

@@ -1,5 +1,5 @@
 import { ButtonSkeleton } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
@@ -14,12 +14,12 @@ export const ResourceRequestFormWithHeaderSkeleton = () => {
 				<ButtonSkeleton size="large" width={210} className={styles['submit-button']} />
 			</Flex>
 
-			<Card className={styles.content}>
+			<CardSkeleton className={styles.content}>
 				<Flex direction="column" gap="28">
 					<TextSkeleton variant="body5-strong" width={220} />
 					<ResourceFormSkeleton />
 				</Flex>
-			</Card>
+			</CardSkeleton>
 		</Flex>
 	);
 };
