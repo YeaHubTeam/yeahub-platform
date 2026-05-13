@@ -1,4 +1,5 @@
 // eslint-disable-next-line @conarti/feature-sliced/public-api
+import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router-dom';
@@ -12,9 +13,6 @@ import { initTheme } from '@/features/theme/switch-theme';
 
 import { router } from '@/app/providers/router';
 import AppInitSentryUser from '@/app/providers/sentry/AppInitSentryUser';
-
-import { Suspense } from 'react';
-
 import { reducers } from '@/app/providers/store';
 import { store } from '@/app/providers/store/config';
 
@@ -23,7 +21,7 @@ const root = document.getElementById('root');
 const container = createRoot(root as HTMLElement);
 
 async function deferRender() {
-	if (process.env.NODE_ENV === 'development' && process.env.MOCK === 'true') {
+	if (process.env.NODE_ENV === 'development' && process.env.MOCK) {
 		const { worker } = await import('./msw/browser');
 		return worker.start();
 	}

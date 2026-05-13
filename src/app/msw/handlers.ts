@@ -1,6 +1,7 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { featureFlagHandlers } from '@/entities/featureFlag';
 import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
 import { programmingLanguageHandlers } from '@/entities/programmingLanguage';
@@ -27,6 +28,7 @@ import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
 import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
+import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteReferralLink';
 import { skillCreateHandlers } from '@/features/skill/createSkill';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { skillEditHandlers } from '@/features/skill/editSkill';
@@ -43,8 +45,8 @@ export const handlers = [
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
-	...taskHandlers,
 	...specializationHandlers,
+	...featureFlagHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
 	...questionEditHandlers,
@@ -73,4 +75,6 @@ export const handlers = [
 	...createCompanyHandlers,
 	...programmingLanguageHandlers,
 	...referralLinksHandlers,
+	...referralLinkDeleteHandlers,
+	...taskHandlers,
 ];

@@ -1,6 +1,6 @@
 .text-wrapper {
   width: 100%;
-  width: 246px; 
+  width: 246px;
 }
 
 .selected-questions {
@@ -35,6 +35,10 @@
 .question-card {
   cursor: pointer;
   padding: 16px;
+}
+
+.task-card-active {
+  background-color: var(--color-purple-300);
 }
 
 .column {

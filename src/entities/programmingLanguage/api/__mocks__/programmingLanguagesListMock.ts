@@ -10,5 +10,5 @@ export const programmingLanguagesListMock = http.get<
 	DefaultBodyType,
 	GetLanguagesResponse
 >(process.env.API_URL + programmingLanguagesApiUrls.getProgrammingLanguagesList, () => {
-	return HttpResponse.json(programmingLanguagesMock);
+	return HttpResponse.json(Object.values(programmingLanguagesMock));
 });

@@ -30,7 +30,7 @@ export interface ResourceRequest {
 		description: string;
 		url: string;
 		type: ResourceTypeCode;
-		imageSrc: string;
+		imageSrc?: string;
 		iconBase64?: string;
 		keywords: string[];
 	};

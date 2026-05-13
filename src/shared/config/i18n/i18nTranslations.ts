@@ -58,6 +58,7 @@ export enum Translation {
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
 	SIDEBAR_MENU_REFERRALS = 'sidebar.menu.referrals',
+	SIDEBAR_MENU_FEATURE_FLAGS = 'sidebar.menu.featureFlags',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -360,6 +361,13 @@ export enum Translation {
 	TOAST_TOPIC_DELETE_MULTIPLE_FAILED = 'toast.topics.delete.multiple.failed',
 	TOAST_TOPIC_EDIT_SUCCESS = 'toast.topics.edit.success',
 	TOAST_TOPIC_EDIT_FAILED = 'toast.topics.edit.failed',
+	TOAST_TOPIC_DELETE_SINGLE_IMAGE_URL_INVALID = 'toast.topics.delete.single.image.url_invalid',
+	TOAST_TOPIC_DELETE_AUTH_UNAUTHORIZED = 'toast.topics.delete.auth.unauthorized',
+	TOAST_TOPIC_DELETE_AUTH_USER_VERIFIED = 'toast.topics.delete.auth.user.verified',
+	TOAST_TOPIC_DELETE_AUTH_ROLES_AUTHOR_CAN_CHANGE_ONLY_OWN = 'toast.topics.delete.auth.roles.author.can.change.only.own',
+	TOAST_TOPIC_DELETE_SINGLE_NOTFOUND = 'toast.topics.delete.single.not_found',
+	TOAST_TOPIC_DELETE_SINGLE_IMAGE_NOT_FOUND = 'toast.topics.delete.single.image.not_found',
+	TOAST_TOPIC_DELETE_CONSTRAINT_KEY_VIOLATION = 'toast.topics.delete.constraint.foreign_key_violation',
 	TOAST_AUTH_TELEGRAM_UNAUTHORIZED = 'toast.auth.telegram.verification.link.error.unauthorized',
 	TOAST_AUTH_TELEGRAM_INVALID_DATA = 'toast.auth.telegram.verification.link.error.invalid.data',
 	TOAST_AUTH_TELEGRAM_DATA_OUTDATED = 'toast.auth.telegram.verification.link.error.data.outdated',
@@ -547,6 +555,21 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
+}
+
+export enum FeatureFlags {
+	STUB_EMPTY_TITLE = 'stub.empty.featureFlags.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.featureFlags.subtitle',
+	STUB_EMPTY_SUBMIT = 'stub.empty.featureFlags.submit',
+	TABLE_FLAG = 'table.featureFlags.flag',
+	TABLE_DESCRIPTION = 'table.featureFlags.description',
+	TABLE_ENABLED = 'table.featureFlags.enabled',
+	TABLE_ROLES = 'table.featureFlags.roles',
+	TABLE_CLIENT_TYPE = 'table.featureFlags.clientType',
+	TABLE_CREATED_AT = 'table.featureFlags.createdAt',
+	TABLE_ACTIONS = 'table.featureFlags.actions',
+	STATUS_ENABLED = 'status.featureFlags.enabled',
+	STATUS_DISABLED = 'status.featureFlags.disabled',
 }
 
 export enum Topics {
@@ -861,6 +884,10 @@ export enum Questions {
 	MODAL_MOVE_TO_EXIST_COLLECTION_TITLE = 'modal.move.to.exist.collection.title',
 	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_OK = 'modal.move.to.exist.collection.button.ok',
 	MODAL_MOVE_TO_EXIST_COLLECTION_BUTTON_CANCEL = 'modal.move.to.exist.collection.button.cancel',
+
+	STUDY_STATUS_LEARNED = 'study.status.learned',
+	STUDY_STATUS_IN_PROGRESS = 'study.status.in.progress',
+	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
 }
 
 export enum InterviewHistory {
