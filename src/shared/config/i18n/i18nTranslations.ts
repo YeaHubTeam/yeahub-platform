@@ -89,6 +89,7 @@ export enum Translation {
 	MODAL_DELETE_TITLE = 'modal.delete.title',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
+	MODAL_CANCEL_CHANGES = 'modal.cancel.changes',
 
 	FILE_LOADER_LINK = 'file.loader.link',
 	FILE_LOADER_TEXT = 'file.loader.text',

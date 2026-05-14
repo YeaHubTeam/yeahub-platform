@@ -125,6 +125,9 @@
 		"actions": {
 			"ok": "Yes",
 			"cancel": "No"
+		},
+		"cancel": {
+			"changes": "Are you sure you want to undo the changes?"
 		}
 	},
 	"file.loader": {

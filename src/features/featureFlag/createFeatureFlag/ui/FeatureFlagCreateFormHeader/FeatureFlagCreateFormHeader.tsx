@@ -92,6 +92,7 @@ export const FeatureFlagCreateFormHeader = () => {
 						onClose={handleCloseCancelModal}
 						onOk={handleConfirmCancel}
 						onCancel={handleCloseCancelModal}
+						message={Translation.MODAL_CANCEL_CHANGES}
 					/>
 				)}
 

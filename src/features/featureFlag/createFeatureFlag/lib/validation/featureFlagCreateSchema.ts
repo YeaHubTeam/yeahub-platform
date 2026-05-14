@@ -15,8 +15,8 @@ export const featureFlagCreateSchema: yup.ObjectSchema<CreateFeatureFlagFormValu
 			.string()
 			.trim()
 			.required(i18n.t(Translation.VALIDATION_REQUIRED))
-			.min(3, i18n.t(Translation.VALIDATION_LENGTH_MIN, { min: 3 }))
-			.max(50, i18n.t(Translation.VALIDATION_LENGTH_MAX, { max: 50 }))
+			.min(3, i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: 3 }))
+			.max(50, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 50 }))
 			.matches(onlyLatin, i18n.t(Translation.VALIDATION_LATIN_AND_NUMBER))
 			.test('no-spaces', i18n.t(Translation.VALIDATION_NO_SPACE), (value) => !value?.includes(' ')),
 

@@ -54,14 +54,7 @@ export const FeatureFlagForm = () => {
 				>
 					<FormControl name="description" control={control}>
 						{(field) => (
-							<TextEditor
-								id="description"
-								isInline
-								// className={styles.input}
-								data={field.value}
-								{...field}
-								limit={1000}
-							/>
+							<TextEditor id="description" isInline data={field.value} {...field} limit={1000} />
 						)}
 					</FormControl>
 				</FormField>
@@ -70,7 +63,7 @@ export const FeatureFlagForm = () => {
 					description={t(FeatureFlags.FORM_ROLES_SUBTITLE)}
 					label={t(FeatureFlags.FORM_ROLES_TITLE)}
 				>
-					<FormControl className={styles.select} name="roleIds" control={control}>
+					<FormControl name="roleIds" control={control}>
 						{({ onChange, value }) => (
 							<RoleSelect
 								value={value}
@@ -86,10 +79,10 @@ export const FeatureFlagForm = () => {
 					description={t(FeatureFlags.FORM_CLIENT_TYPE_SUBTITLE)}
 					label={t(FeatureFlags.FORM_CLIENT_TYPE_TITLE)}
 				>
-					<FormControl name="clientType" control={control} className={styles.difficulty}>
+					<FormControl name="clientType" control={control}>
 						{({ onChange, value }) => (
 							<Dropdown
-								width={320}
+								width={400}
 								label={t(FeatureFlags.FORM_CLIENT_TYPE_TITLE)}
 								value={value}
 								onSelect={(selectedValue) => onChange(selectedValue)}
@@ -106,11 +99,13 @@ export const FeatureFlagForm = () => {
 					description={t(FeatureFlags.FORM_ENABLED_SUBTITLE)}
 					label={t(FeatureFlags.FORM_ENABLED_TITLE)}
 				>
-					<FormControl name="enabled" control={control} className={styles.difficulty}>
+					<FormControl name="enabled" control={control}>
 						{(field) => (
 							<Switch
 								checked={field.value}
 								onChange={(event) => field.onChange(event.target.checked)}
+								switchClassName={styles['switch-wrapper']}
+								pinClassName={styles['switch-pin']}
 							/>
 						)}
 					</FormControl>
