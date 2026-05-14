@@ -214,6 +214,8 @@ export enum Translation {
 	TOAST_TASKS_EDIT_FAILED = 'toast.tasks.edit.failed',
 	TOAST_TASKS_DELETE_SINGLE_SUCCESS = 'toast.tasks.delete.single.success',
 	TOAST_TASKS_DELETE_SINGLE_FAILED = 'toast.tasks.delete.single.failed',
+	TOAST_FEATURE_FLAGS_CREATE_SUCCESS = 'toast.featureFlags.create.success',
+	TOAST_FEATURE_FLAGS_CREATE_FAILED = 'toast.featureFlags.create.failed',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
 	TOAST_COLLECTION_DELETE_SINGLE_NOTFOUND = 'toast.collections.delete.single.not_found',
@@ -570,6 +572,19 @@ export enum FeatureFlags {
 	TABLE_ACTIONS = 'table.featureFlags.actions',
 	STATUS_ENABLED = 'status.featureFlags.enabled',
 	STATUS_DISABLED = 'status.featureFlags.disabled',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
+	FORM_FLAG_TITLE = 'form.flag.title',
+	FORM_FLAG_SUBTITLE = 'form.flag.subtitle',
+	FORM_FLAG_PLACEHOLDER = 'form.flag.placeholder',
+	FORM_DESCRIPTION_TITLE = 'form.description.title',
+	FORM_DESCRIPTION_SUBTITLE = 'form.description.subtitle',
+	FORM_ROLES_TITLE = 'form.roles.title',
+	FORM_ROLES_SUBTITLE = 'form.roles.subtitle',
+	FORM_CLIENT_TYPE_TITLE = 'form.clientType.title',
+	FORM_CLIENT_TYPE_SUBTITLE = 'form.clientType.subtitle',
+	FORM_ENABLED_TITLE = 'form.enabled.title',
+	FORM_ENABLED_SUBTITLE = 'form.enabled.subtitle',
 }
 
 export enum Topics {

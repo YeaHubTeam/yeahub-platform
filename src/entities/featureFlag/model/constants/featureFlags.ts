@@ -1,4 +1,4 @@
-import { FeatureFlags } from '../types/featureFlag';
+import { FeatureFlags, ClientType } from '../types/featureFlag';
 
 export const featureFlags: FeatureFlags = {
 	nyBanner: {
@@ -33,3 +33,5 @@ export const featureFlags: FeatureFlags = {
 export const featureFlagApiUrls = {
 	getFeatureFlagsList: 'feature-flags',
 };
+
+export const clientTypes: ClientType[] = ['WEB', 'MOBILE', 'DESKTOP'];

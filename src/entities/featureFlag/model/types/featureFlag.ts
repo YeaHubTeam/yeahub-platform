@@ -41,3 +41,12 @@ export interface GetFeatureFlagsListParamsRequest {
 	roleIds?: RoleName[];
 	clientType?: ClientType;
 }
+
+export interface CreateOrEditFeatureFlagFormValues {
+	id: string;
+	flag: string;
+	description: string;
+	roleIds: number[];
+	clientType: ClientType;
+	enabled: boolean;
+}
