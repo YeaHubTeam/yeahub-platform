@@ -11,6 +11,7 @@ export type {
 	TaskSubscriptionLevel,
 	TaskTestCaseResult,
 	TaskTestCaseResultTest,
+	TaskFilterOrderBy
 } from './model/types/task';
 export type { TasksFilterParams } from './model/types/filters';
 export { taskApiUrls } from './model/constants/task';

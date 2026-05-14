@@ -206,4 +206,4 @@ export interface TaskTestCaseResult {
 	tests: TaskTestCaseResultTest[];
 }
 
-export type TaskFilterOrderBy = 'name' | 'createdAt'
+export type TaskFilterOrderBy = 'name' | 'createdAt';

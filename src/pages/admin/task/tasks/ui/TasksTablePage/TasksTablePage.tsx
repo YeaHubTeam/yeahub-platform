@@ -33,7 +33,7 @@ const TasksTablePage = () => {
 		onChangeLangIds,
 		onChangeCategory,
 		onChangeCompanyId,
-		onChangeSortBy,     
+		onChangeSortBy,
 		onChangeSortOrder,
 	} = useTasksFilters({ page: 1 });
 
@@ -49,7 +49,7 @@ const TasksTablePage = () => {
 		langIds: filters.langIds,
 		category: filters.category,
 		companyId: filters.companyId,
-		sortBy: filters.sortBy,        
+		sortBy: filters.sortBy,
 		sortOrder: filters.sortOrder,
 	});
 
@@ -113,10 +113,10 @@ const TasksTablePage = () => {
 								onChangeLangIds={onChangeLangIds}
 								onChangeCategory={onChangeCategory}
 								onChangeCompanyId={onChangeCompanyId}
-								sortBy={filters.sortBy}                    
-								sortOrder={filters.sortOrder}           
-								onChangeSortBy={onChangeSortBy}    
-								onChangeSortOrder={onChangeSortOrder} 
+								sortBy={filters.sortBy}
+								sortOrder={filters.sortOrder}
+								onChangeSortBy={onChangeSortBy}
+								onChangeSortOrder={onChangeSortOrder}
 							/>
 						)}
 					/>

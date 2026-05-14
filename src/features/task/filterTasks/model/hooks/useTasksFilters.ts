@@ -18,7 +18,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		Boolean(filters.difficulty) ||
 		Boolean(filters.category) ||
 		Boolean(filters.companyId) ||
-		Boolean(filters.sortBy) ||     
+		Boolean(filters.sortBy) ||
 		Boolean(filters.sortOrder) ||
 		(filters.langIds || []).length > 0;
 
@@ -66,6 +66,6 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onChangeCompanyId,
 		onResetFilters,
 		onChangeSortBy,
-		onChangeSortOrder
+		onChangeSortOrder,
 	};
 };
