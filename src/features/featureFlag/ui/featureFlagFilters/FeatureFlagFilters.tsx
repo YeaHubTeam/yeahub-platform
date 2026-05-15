@@ -3,20 +3,27 @@ import { useTranslation } from 'react-i18next';
 import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { Switch } from '@/shared/ui/Switch';
 
-import { GetFeatureFlagsListParamsRequest } from '@/entities/featureFlag';
+import { UserRolesListField } from '@/entities/user';
+
+import { FeatureFlagFiltersParams } from '../..';
 
 interface FeatureFlagFiltersProps {
-	filters: GetFeatureFlagsListParamsRequest;
-	onChangeIsEnabled: (enabled: GetFeatureFlagsListParamsRequest['enabled']) => void;
+	filters: FeatureFlagFiltersParams;
+	onChangeRoles: (roles?: FeatureFlagFiltersParams['selectedRoles']) => void;
+	onChangeIsEnabled: (enabled: FeatureFlagFiltersParams['enabled']) => void;
 }
 
-export const FeatureFlagFilters = ({ filters, onChangeIsEnabled }: FeatureFlagFiltersProps) => {
+export const FeatureFlagFilters = ({
+	filters,
+	onChangeRoles,
+	onChangeIsEnabled,
+}: FeatureFlagFiltersProps) => {
 	const { enabled } = filters;
 
 	const { t } = useTranslation(i18Namespace.featureFlags);
 
 	return (
-		<div>
+		<>
 			<Switch
 				checked={enabled ?? false}
 				onChange={(e) => {
@@ -24,6 +31,11 @@ export const FeatureFlagFilters = ({ filters, onChangeIsEnabled }: FeatureFlagFi
 				}}
 				label={t(FeatureFlags.TABLE_ENABLED)}
 			/>
-		</div>
+			<UserRolesListField
+				title={t(FeatureFlags.FILTER_ROLE)}
+				selectedRoles={filters.selectedRoles}
+				onChangeRoles={onChangeRoles}
+			/>
+		</>
 	);
 };

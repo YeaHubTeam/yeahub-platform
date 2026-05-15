@@ -38,6 +38,6 @@ export interface GetFeatureFlagsListParamsRequest {
 	limit?: number;
 	search?: string;
 	enabled?: boolean;
-	roleIds?: RoleName[];
+	roleIds?: string;
 	clientType?: ClientType;
 }

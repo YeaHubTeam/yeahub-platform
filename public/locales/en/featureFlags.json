@@ -24,5 +24,8 @@
 			"enabled": "Enabled",
 			"disabled": "Disabled"
 		}
+	},
+	"filter": {
+		"role": "Roles"
 	}
 }

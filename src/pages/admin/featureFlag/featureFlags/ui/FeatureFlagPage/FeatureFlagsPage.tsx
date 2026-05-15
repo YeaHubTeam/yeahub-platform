@@ -7,6 +7,7 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
+import { useGetUserRolesListQuery } from '@/entities/user';
 
 import { FeatureFlagFilters, useFeatureFlagFilters } from '@/features/featureFlag';
 
@@ -19,12 +20,14 @@ export const FeatureFlagsPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 
-	const { filters, hasFilters, onChangePage, onChangeSearch, onChangeIsEnabled } =
+	const { filters, hasFilters, onChangePage, onChangeSearch, onChangeIsEnabled, onChangeRoles } =
 		useFeatureFlagFilters({
 			page: 1,
 		});
 
-	const { page, enabled, search } = filters;
+	const { data: userRoles } = useGetUserRolesListQuery();
+
+	const { page, enabled, search, selectedRoles } = filters;
 	const {
 		data: featureFlagsData,
 		isError,
@@ -33,6 +36,13 @@ export const FeatureFlagsPage = () => {
 		page,
 		enabled,
 		search: filters.search ? search : undefined,
+		roleIds:
+			selectedRoles && userRoles?.length
+				? userRoles
+						.filter((item) => selectedRoles.includes(item.id))
+						.map((item) => item.id)
+						.join(', ')
+				: undefined,
 	});
 
 	const hasFeatureFlags = featureFlagsData?.data && featureFlagsData.data.length > 0;
@@ -77,7 +87,11 @@ export const FeatureFlagsPage = () => {
 						searchValue={filters.search}
 						onSearch={onChangeSearch}
 						renderFilter={() => (
-							<FeatureFlagFilters filters={filters} onChangeIsEnabled={onChangeIsEnabled} />
+							<FeatureFlagFilters
+								filters={filters}
+								onChangeIsEnabled={onChangeIsEnabled}
+								onChangeRoles={onChangeRoles}
+							/>
 						)}
 						hasFilters={hasFilters}
 						renderRemoveButton={() => <div>Button</div>}

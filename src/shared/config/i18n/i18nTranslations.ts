@@ -570,6 +570,7 @@ export enum FeatureFlags {
 	TABLE_ACTIONS = 'table.featureFlags.actions',
 	STATUS_ENABLED = 'status.featureFlags.enabled',
 	STATUS_DISABLED = 'status.featureFlags.disabled',
+	FILTER_ROLE = 'filter.role',
 }
 
 export enum Topics {

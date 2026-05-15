@@ -1,28 +1,32 @@
 import { useQueryFilterParams } from '@/shared/libs';
 
-import { GetFeatureFlagsListParamsRequest } from '@/entities/featureFlag';
+import { FeatureFlagFiltersParams } from '../types/filters';
 
 import { useGetFeatureFlagFilterParams } from './useGetFeatureFlagFilterParams';
 
-export const useFeatureFlagFilters = (initialParams: GetFeatureFlagsListParamsRequest) => {
+export const useFeatureFlagFilters = (initialParams: FeatureFlagFiltersParams) => {
 	const currentParams = useGetFeatureFlagFilterParams(initialParams);
-	const { filters, onFilterChange } = useQueryFilterParams<GetFeatureFlagsListParamsRequest>(
+	const { filters, onFilterChange } = useQueryFilterParams<FeatureFlagFiltersParams>(
 		initialParams,
 		currentParams,
 	);
 
 	const hasFilters = filters.enabled || Boolean(filters.search);
 
-	const onChangeSearch = (search: GetFeatureFlagsListParamsRequest['search']) => {
+	const onChangeSearch = (search: FeatureFlagFiltersParams['search']) => {
 		onFilterChange({ search, page: 1 });
 	};
 
-	const onChangePage = (page: GetFeatureFlagsListParamsRequest['page']) => {
+	const onChangePage = (page: FeatureFlagFiltersParams['page']) => {
 		onFilterChange({ page });
 	};
 
-	const onChangeIsEnabled = (enabled: GetFeatureFlagsListParamsRequest['enabled']) => {
+	const onChangeIsEnabled = (enabled: FeatureFlagFiltersParams['enabled']) => {
 		onFilterChange({ enabled, page: 1 });
+	};
+
+	const onChangeRoles = (selectedRoles?: FeatureFlagFiltersParams['selectedRoles']) => {
+		onFilterChange({ selectedRoles, page: 1 });
 	};
 
 	return {
@@ -31,5 +35,6 @@ export const useFeatureFlagFilters = (initialParams: GetFeatureFlagsListParamsRe
 		onChangePage,
 		onChangeSearch,
 		onChangeIsEnabled,
+		onChangeRoles,
 	};
 };
