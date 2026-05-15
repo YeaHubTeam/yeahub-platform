@@ -28,6 +28,7 @@ export const FeatureFlagsPage = () => {
 		onChangeIsEnabled,
 		onChangeRoles,
 		onChangeClientType,
+		onResetFilters,
 	} = useFeatureFlagFilters({
 		page: 1,
 	});
@@ -72,6 +73,12 @@ export const FeatureFlagsPage = () => {
 			onClick: () => {
 				navigate(route(ROUTES.admin.featureFlags.create.page));
 			},
+		},
+		'filter-empty': {
+			title: t(FeatureFlags.STUB_FILTER_EMPTY_TITLE),
+			subtitle: t(FeatureFlags.STUB_FILTER_EMPTY_SUBTITLE),
+			buttonText: t(FeatureFlags.STUB_FILTER_EMPTY_SUBMIT),
+			onClick: onResetFilters,
 		},
 		error: {
 			onClick: refetch,

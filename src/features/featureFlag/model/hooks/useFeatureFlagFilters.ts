@@ -6,13 +6,11 @@ import { useGetFeatureFlagFilterParams } from './useGetFeatureFlagFilterParams';
 
 export const useFeatureFlagFilters = (initialParams: FeatureFlagFiltersParams) => {
 	const currentParams = useGetFeatureFlagFilterParams(initialParams);
-	const { filters, onFilterChange } = useQueryFilterParams<FeatureFlagFiltersParams>(
-		initialParams,
-		currentParams,
-	);
+	const { filters, onFilterChange, onResetFilters } =
+		useQueryFilterParams<FeatureFlagFiltersParams>(initialParams, currentParams);
 
 	const hasFilters =
-		filters.enabled ||
+		filters.enabled !== undefined ||
 		Boolean(filters.search) ||
 		Boolean(filters.clientType) ||
 		(filters.selectedRoles || []).length > 0;
@@ -45,5 +43,6 @@ export const useFeatureFlagFilters = (initialParams: FeatureFlagFiltersParams) =
 		onChangeIsEnabled,
 		onChangeRoles,
 		onChangeClientType,
+		onResetFilters,
 	};
 };
