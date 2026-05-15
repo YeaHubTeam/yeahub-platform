@@ -6,17 +6,20 @@ import { Switch } from '@/shared/ui/Switch';
 import { UserRolesListField } from '@/entities/user';
 
 import { FeatureFlagFiltersParams } from '../..';
+import { ClientTypeFilter } from '../ClientTypeFilter/ClientTypeFilter';
 
 interface FeatureFlagFiltersProps {
 	filters: FeatureFlagFiltersParams;
 	onChangeRoles: (roles?: FeatureFlagFiltersParams['selectedRoles']) => void;
 	onChangeIsEnabled: (enabled: FeatureFlagFiltersParams['enabled']) => void;
+	onChangeClientType: (clientType: FeatureFlagFiltersParams['clientType']) => void;
 }
 
 export const FeatureFlagFilters = ({
 	filters,
-	onChangeRoles,
 	onChangeIsEnabled,
+	onChangeRoles,
+	onChangeClientType,
 }: FeatureFlagFiltersProps) => {
 	const { enabled } = filters;
 
@@ -35,6 +38,10 @@ export const FeatureFlagFilters = ({
 				title={t(FeatureFlags.FILTER_ROLE)}
 				selectedRoles={filters.selectedRoles}
 				onChangeRoles={onChangeRoles}
+			/>
+			<ClientTypeFilter
+				selectedClientType={filters.clientType}
+				onChangeClientType={onChangeClientType}
 			/>
 		</>
 	);

@@ -20,14 +20,21 @@ export const FeatureFlagsPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 
-	const { filters, hasFilters, onChangePage, onChangeSearch, onChangeIsEnabled, onChangeRoles } =
-		useFeatureFlagFilters({
-			page: 1,
-		});
+	const {
+		filters,
+		hasFilters,
+		onChangePage,
+		onChangeSearch,
+		onChangeIsEnabled,
+		onChangeRoles,
+		onChangeClientType,
+	} = useFeatureFlagFilters({
+		page: 1,
+	});
 
 	const { data: userRoles } = useGetUserRolesListQuery();
 
-	const { page, enabled, search, selectedRoles } = filters;
+	const { page, enabled, search, selectedRoles, clientType } = filters;
 	const {
 		data: featureFlagsData,
 		isError,
@@ -43,6 +50,7 @@ export const FeatureFlagsPage = () => {
 						.map((item) => item.id)
 						.join(', ')
 				: undefined,
+		clientType: clientType || undefined,
 	});
 
 	const hasFeatureFlags = featureFlagsData?.data && featureFlagsData.data.length > 0;
@@ -91,6 +99,7 @@ export const FeatureFlagsPage = () => {
 								filters={filters}
 								onChangeIsEnabled={onChangeIsEnabled}
 								onChangeRoles={onChangeRoles}
+								onChangeClientType={onChangeClientType}
 							/>
 						)}
 						hasFilters={hasFilters}

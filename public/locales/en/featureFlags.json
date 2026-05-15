@@ -26,6 +26,7 @@
 		}
 	},
 	"filter": {
-		"role": "Roles"
+		"role": "Roles",
+		"clientType": "Client type"
 	}
 }

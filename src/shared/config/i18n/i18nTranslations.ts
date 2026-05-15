@@ -571,6 +571,7 @@ export enum FeatureFlags {
 	STATUS_ENABLED = 'status.featureFlags.enabled',
 	STATUS_DISABLED = 'status.featureFlags.disabled',
 	FILTER_ROLE = 'filter.role',
+	CLIENT_TYPE = 'filter.clientType',
 }
 
 export enum Topics {

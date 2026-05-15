@@ -18,7 +18,7 @@ export interface FeatureFlag {
 
 export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
 
-export type ClientType = 'WEB' | 'MOBILE' | 'DESKTOP';
+export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
 export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
