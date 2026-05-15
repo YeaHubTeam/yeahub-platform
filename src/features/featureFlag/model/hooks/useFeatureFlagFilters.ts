@@ -11,7 +11,11 @@ export const useFeatureFlagFilters = (initialParams: GetFeatureFlagsListParamsRe
 		currentParams,
 	);
 
-	const hasFilters = filters.enabled;
+	const hasFilters = filters.enabled || Boolean(filters.search);
+
+	const onChangeSearch = (search: GetFeatureFlagsListParamsRequest['search']) => {
+		onFilterChange({ search, page: 1 });
+	};
 
 	const onChangePage = (page: GetFeatureFlagsListParamsRequest['page']) => {
 		onFilterChange({ page });
@@ -25,6 +29,7 @@ export const useFeatureFlagFilters = (initialParams: GetFeatureFlagsListParamsRe
 		filters,
 		hasFilters,
 		onChangePage,
+		onChangeSearch,
 		onChangeIsEnabled,
 	};
 };

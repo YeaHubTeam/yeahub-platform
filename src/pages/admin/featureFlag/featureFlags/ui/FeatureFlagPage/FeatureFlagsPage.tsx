@@ -19,17 +19,20 @@ export const FeatureFlagsPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 
-	const { filters, hasFilters, onChangePage, onChangeIsEnabled } = useFeatureFlagFilters({
-		page: 1,
-	});
+	const { filters, hasFilters, onChangePage, onChangeSearch, onChangeIsEnabled } =
+		useFeatureFlagFilters({
+			page: 1,
+		});
 
+	const { page, enabled, search } = filters;
 	const {
 		data: featureFlagsData,
 		isError,
 		refetch,
 	} = useGetFeatureFlagsListQuery({
-		page: filters.page,
-		enabled: filters.enabled,
+		page,
+		enabled,
+		search: filters.search ? search : undefined,
 	});
 
 	const hasFeatureFlags = featureFlagsData?.data && featureFlagsData.data.length > 0;
@@ -71,7 +74,8 @@ export const FeatureFlagsPage = () => {
 				<Flex direction="column" gap="24">
 					<SearchSection
 						to="create"
-						onSearch={() => {}}
+						searchValue={filters.search}
+						onSearch={onChangeSearch}
 						renderFilter={() => (
 							<FeatureFlagFilters filters={filters} onChangeIsEnabled={onChangeIsEnabled} />
 						)}
