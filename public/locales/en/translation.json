@@ -125,6 +125,11 @@
 		"actions": {
 			"ok": "Yes",
 			"cancel": "No"
+		},
+		"featureFlag": {
+			"delete": {
+				"description": "Do you really want to delete this feature flag?"
+			}
 		}
 	},
 	"file.loader": {
@@ -866,12 +871,32 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
+		},
+		"featureFlags": {
+			"delete": {
+				"single": {
+					"success": "Feature flag successfully deleted",
+					"failed": "Feature flag could not be deleted",
+					"not_found": "Feature flag not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				}
+			}
 		}
 	},
 	"tooltip": {
 		"collections": {
 			"disabled": {
 				"info": "You don't have access to this feature"
+			}
+		},
+		"featureFlags": {
+			"disabled": {
+				"info": "You can't delete enabled feature flag"
 			}
 		}
 	},
