@@ -1,14 +1,17 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, FeatureFlags } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
 
+import { FeatureFlagFilters, useFeatureFlagFilters } from '@/features/featureFlag';
+
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+import { SearchSection } from '@/widgets/SearchSection';
 
 import { FeatureFlagsTable } from './FeatureFlagsTablePage';
 
@@ -16,23 +19,26 @@ export const FeatureFlagsPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 
-	const [page, setPage] = useState(1);
+	const { filters, hasFilters, onChangePage, onChangeIsEnabled } = useFeatureFlagFilters({
+		page: 1,
+	});
 
 	const {
 		data: featureFlagsData,
 		isError,
 		refetch,
 	} = useGetFeatureFlagsListQuery({
-		page,
+		page: filters.page,
+		enabled: filters.enabled,
 	});
 
 	const hasFeatureFlags = featureFlagsData?.data && featureFlagsData.data.length > 0;
 
 	const paginationOptions = {
-		page,
+		page: filters.page || 1,
+		onChangePage: onChangePage,
 		limit: 10,
 		total: featureFlagsData?.total || 0,
-		onChangePage: setPage,
 	};
 
 	const content = hasFeatureFlags && <FeatureFlagsTable featureFlags={featureFlagsData?.data} />;
@@ -56,17 +62,28 @@ export const FeatureFlagsPage = () => {
 			roles={['admin']}
 			stubs={stubs}
 			content={content}
+			hasFilters={hasFilters}
 			hasData={hasFeatureFlags}
 			hasError={isError}
 			paginationOptions={paginationOptions}
 		>
 			{({ content, pagination }) => (
-				<Card>
-					<>
+				<Flex direction="column" gap="24">
+					<SearchSection
+						to="create"
+						onSearch={() => {}}
+						renderFilter={() => (
+							<FeatureFlagFilters filters={filters} onChangeIsEnabled={onChangeIsEnabled} />
+						)}
+						hasFilters={hasFilters}
+						renderRemoveButton={() => <div>Button</div>}
+						showResetFilterButton={true}
+					/>
+					<Card>
 						{content}
 						{pagination}
-					</>
-				</Card>
+					</Card>
+				</Flex>
 			)}
 		</PageWrapper>
 	);
