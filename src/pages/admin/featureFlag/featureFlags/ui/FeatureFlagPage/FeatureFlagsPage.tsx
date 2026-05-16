@@ -111,7 +111,8 @@ export const FeatureFlagsPage = () => {
 						)}
 						hasFilters={hasFilters}
 						renderRemoveButton={() => <div>Button</div>}
-						showResetFilterButton={true}
+						onResetFilters={onResetFilters}
+						showResetFilterButton={hasFilters || (page || 1) > 1}
 					/>
 					<Card>
 						{content}
