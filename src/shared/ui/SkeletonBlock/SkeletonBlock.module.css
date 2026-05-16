@@ -1,0 +1,25 @@
+.card-skeleton {
+  gap: 0;
+  padding: 24px;
+  height: auto;
+}
+
+.card-skeleton:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.header-card-skeleton {
+  margin-bottom: 20px;
+}
+
+.sleleton-link {
+  margin-left: auto;
+  width: 100px;
+  height: 20px;
+}
+
+@media (width <=1280px) {
+  .sleleton-link {
+    width: 20px;
+  }
+}

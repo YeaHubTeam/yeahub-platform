@@ -12,6 +12,31 @@
   width: 100%;
 }
 
+.profile-card-skeleton {
+  gap: 0;
+  margin-bottom: 24px;
+  padding: 16px;
+  height: auto;
+}
+
+.skeleton-link {
+  margin-left: auto;
+  width: 100px;
+  height: 20px;
+}
+
+.flex-profile-skeleton {
+  display: flex;
+  gap: 16px;
+}
+
+@media (width <=1280px) {
+  .skeleton-link {
+    width: 20px;
+  }
+}
+
+
 @media (width <= 768px) {
   .card {
     flex-direction: column;
@@ -27,5 +52,15 @@
     flex-direction: column;
     order: 2;
     width: 100%;
+  }
+}
+
+@media (width <=720px) {
+  .flex-profile-skeleton {
+    flex-direction: column;
+  }
+
+  .skeleton-link-profile {
+    order: -1;
   }
 }
