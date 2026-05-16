@@ -1,0 +1,48 @@
+.title {
+  margin-bottom: 50px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 442px;
+  height: 100%;
+}
+
+.form {
+  padding: 0 17px;
+}
+
+@media (width <= 768px) {
+  .form {
+    padding: 0;
+  }
+}
+
+.email-field {
+  margin-bottom: 20px;
+}
+
+.password-field {
+  margin-bottom: 36px;
+}
+
+.forgot-password {
+  margin-top: 6px;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+.registration {
+  margin-top: 48px;
+  width: 100%;
+  max-width: 408px;
+}
