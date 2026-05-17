@@ -8,5 +8,9 @@ export type {
 	ClientType,
 } from './model/types/featureFlag';
 export { WithFeature } from './ui/WithFeature/WithFeature';
-export { useGetFeatureFlagsListQuery, useGetFeatureFlagByIdQuery } from './api/featureFlagApi';
+export {
+	useGetFeatureFlagsListQuery,
+	useGetFeatureFlagByIdQuery,
+	useUpdateFeatureFlagStatusMutation,
+} from './api/featureFlagApi';
 export { featureFlagHandlers } from './api/__mocks__';

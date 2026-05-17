@@ -1,0 +1,42 @@
+{
+	"stub": {
+		"empty": {
+			"featureFlags": {
+				"title": "No feature flags found yet",
+				"subtitle": "Create a feature flag or wait until someone creates one",
+				"submit": "Add"
+			}
+		},
+		"error": {
+			"featureFlags": {
+				"title": "Failed to load data",
+				"subtitle": "Please try again, this might solve the problem",
+				"submit": "Try again"
+			}
+		}
+	},
+	"table": {
+		"featureFlags": {
+			"flag": "Flag",
+			"description": "Description",
+			"enabled": "Enabled",
+			"roles": "Roles",
+			"clientType": "Client type",
+			"createdAt": "Created at",
+			"actions": "Actions"
+		}
+	},
+	"status": {
+		"featureFlags": {
+			"enabled": "Enabled",
+			"disabled": "Disabled"
+		}
+	},
+	"details": {
+		"roles": "Roles",
+		"clientType": "Client type",
+		"activity": "Activity",
+		"createdAt": "Created at",
+		"updatedAt": "Updated at"
+	}
+}

@@ -132,6 +132,7 @@ import { InterviewRoute } from './InterviewRoute';
 import { UnAuthRoute } from './UnAuthRoute';
 
 import '../../styles/App.css';
+import {FeatureFlagDetailsPage} from "@/pages/admin/featureFlag/featureFlagDetail";
 
 export const allRoles: RoleName[] = [
 	'guest',
@@ -616,6 +617,10 @@ export const router = createBrowserRouter([
 						index: true,
 						element: <FeatureFlagsPage />,
 					},
+					{
+						path: ROUTES.admin.featureFlags.details.route,
+						element: <FeatureFlagDetailsPage />
+					}
 				],
 			},
 			{
