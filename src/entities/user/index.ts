@@ -17,6 +17,7 @@ export {
 export { UserCard } from './ui/UserCard/UserCard';
 export { RoleSelect } from './ui/RoleSelect/RoleSelect';
 export { UserEditButton } from './ui/UserEditButton/UserEditButton';
+export { UserEditButtonSkeleton } from './ui/UserEditButton/UserEditButton.skeleton';
 export { UserRolesList } from './ui/UserRolesList/UserRolesList';
 export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';

@@ -9,7 +9,6 @@
   font-size: var(--font-size-h-xs);
 }
 
-.skills-edit {
-  cursor: pointer;
-  font-size: var(--font-size-p-s);
+.header-card-skeleton {
+  margin-bottom: 20px;
 }
