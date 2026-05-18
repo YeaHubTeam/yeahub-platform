@@ -10,7 +10,11 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-  
+
+    .number {
+      white-space: nowrap;
+    }
+
     .dot {
       width: 3px;
       height: 3px;
