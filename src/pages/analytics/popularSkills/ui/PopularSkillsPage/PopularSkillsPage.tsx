@@ -4,7 +4,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 
 import { useGetPopularSkillsQuery } from '@/entities/skill';
 
-import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import {
+	AnalyticPageTemplate,
+	AnalyticPageTemplateSkeleton,
+	useAnalyticFilters,
+} from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
@@ -39,6 +43,7 @@ export const PopularSkillsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<AnalyticPageTemplateSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasData={hasData}

@@ -4,7 +4,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 
 import { PopularQuestionStat, useGetPopularQuestionsQuery } from '@/entities/question';
 
-import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import {
+	AnalyticPageTemplate,
+	AnalyticPageTemplateSkeleton,
+	useAnalyticFilters,
+} from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
@@ -43,6 +47,7 @@ export const PopularQuestionsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<AnalyticPageTemplateSkeleton withImage />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

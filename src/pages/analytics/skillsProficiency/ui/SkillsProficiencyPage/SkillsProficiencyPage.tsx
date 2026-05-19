@@ -4,7 +4,11 @@ import { i18Namespace, Analytics } from '@/shared/config';
 
 import { useGetLearnedQuestionsQuery } from '@/entities/question';
 
-import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import {
+	AnalyticPageTemplate,
+	AnalyticPageTemplateSkeleton,
+	useAnalyticFilters,
+} from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { SkillsProficiencyList } from '../SkillsProficiencyList/SkillsProficiencyList';
@@ -44,6 +48,7 @@ export const SkillsProficiencyPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<AnalyticPageTemplateSkeleton withChips withSkillFilter />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

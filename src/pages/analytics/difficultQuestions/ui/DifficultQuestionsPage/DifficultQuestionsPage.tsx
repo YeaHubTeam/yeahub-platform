@@ -6,7 +6,11 @@ import { useAppSelector } from '@/shared/libs';
 import { getSpecializationId } from '@/entities/profile';
 import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/question';
 
-import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
+import {
+	AnalyticPageTemplate,
+	AnalyticPageTemplateSkeleton,
+	useAnalyticFilters,
+} from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { DifficultQuestionsList } from '../DifficultQuestionsList/DifficultQuestionsList';
@@ -41,6 +45,7 @@ export const DifficultQuestionsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<AnalyticPageTemplateSkeleton fieldsCount={2} />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

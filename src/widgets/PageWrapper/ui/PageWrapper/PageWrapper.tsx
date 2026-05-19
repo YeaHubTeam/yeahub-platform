@@ -7,7 +7,6 @@ import {
 	SELECT_TARIFF_SETTINGS_TAB,
 	useAppSelector,
 } from '@/shared/libs';
-import { Loader } from '@/shared/ui/Loader';
 import { Stub, StubType } from '@/shared/ui/Stub';
 import { TablePagination } from '@/shared/ui/TablePagination';
 
@@ -87,7 +86,7 @@ export const PageWrapper = ({
 	};
 
 	if (isLoading) {
-		return skeleton || <Loader />;
+		return skeleton;
 	}
 
 	if (roles && !hasPermission) {
