@@ -1,6 +1,6 @@
 import { Flex } from '@/shared/ui/Flex';
 
-import { UserRolesListFieldSkeleton } from '../UserRolesListField/UserRolesListField.skeleton';
+import { UserRolesListFieldSkeleton } from '@/entities/user';
 
 export const UsersFiltersSkeleton = () => {
 	return (

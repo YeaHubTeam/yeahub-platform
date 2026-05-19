@@ -18,7 +18,7 @@ export interface FeatureFlag {
 
 export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
 
-export type ClientType = 'WEB' | 'MOBILE' | 'DESKTOP';
+export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
 export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
@@ -38,6 +38,6 @@ export interface GetFeatureFlagsListParamsRequest {
 	limit?: number;
 	search?: string;
 	enabled?: boolean;
-	roleIds?: RoleName[];
+	roleIds?: string;
 	clientType?: ClientType;
 }
