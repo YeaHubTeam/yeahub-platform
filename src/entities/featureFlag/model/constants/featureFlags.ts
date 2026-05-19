@@ -34,4 +34,4 @@ export const featureFlagApiUrls = {
 	getFeatureFlagsList: 'feature-flags',
 };
 
-export const clientTypes: ClientType[] = ['WEB', 'MOBILE', 'DESKTOP'];
+export const clientTypes: ClientType[] = ['WEB', 'IOS', 'ANDROID'];

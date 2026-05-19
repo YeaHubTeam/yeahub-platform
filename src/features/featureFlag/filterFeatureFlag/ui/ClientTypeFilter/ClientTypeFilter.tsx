@@ -3,14 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { ClientType } from '@/entities/featureFlag';
+import { ClientType, clientTypes } from '@/entities/featureFlag';
 
 interface ClientTypeFilterProps {
 	selectedClientType?: string;
 	onChangeClientType: (clientType?: ClientType) => void;
 }
-
-const data: ClientType[] = ['WEB', 'IOS', 'ANDROID'];
 
 export const ClientTypeFilter = ({
 	selectedClientType,
@@ -26,7 +24,7 @@ export const ClientTypeFilter = ({
 		onChangeClientType(clientType);
 	};
 
-	const preparedData = data.map((item) => ({
+	const preparedData = clientTypes.map((item) => ({
 		id: item,
 		title: item,
 		active: selectedClientType === item,
