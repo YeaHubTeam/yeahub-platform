@@ -10,9 +10,7 @@ interface ClientTypeFilterProps {
 	onChangeClientType: (clientType?: ClientType) => void;
 }
 
-type ClientTypeRecord = Record<number, ClientType>;
-
-const data: ClientTypeRecord = { 1: 'WEB', 2: 'IOS', 3: 'ANDROID' };
+const data: ClientType[] = ['WEB', 'IOS', 'ANDROID'];
 
 export const ClientTypeFilter = ({
 	selectedClientType,
@@ -20,18 +18,18 @@ export const ClientTypeFilter = ({
 }: ClientTypeFilterProps) => {
 	const { t } = useTranslation(i18Namespace.featureFlags);
 
-	const onClick = (clientTypeId: keyof ClientTypeRecord) => {
-		if (selectedClientType && data[clientTypeId] === selectedClientType) {
+	const onClick = (clientType: ClientType) => {
+		if (selectedClientType === clientType) {
 			onChangeClientType(undefined);
 			return;
 		}
-		onChangeClientType(data[clientTypeId]);
+		onChangeClientType(clientType);
 	};
 
-	const preparedData = Object.entries(data).map((item) => ({
-		id: Number(item[0]),
-		title: item[1],
-		active: selectedClientType === item[1],
+	const preparedData = data.map((item) => ({
+		id: item,
+		title: item,
+		active: selectedClientType === item,
 	}));
 
 	return (
