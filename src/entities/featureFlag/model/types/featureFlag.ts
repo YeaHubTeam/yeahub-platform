@@ -41,3 +41,10 @@ export interface GetFeatureFlagsListParamsRequest {
 	roleIds?: string;
 	clientType?: ClientType;
 }
+
+export type CreateOrEditFeatureFlagFormValues = Omit<
+	FeatureFlagApiItem,
+	'roles' | 'createdAt' | 'updatedAt'
+> & {
+	roleIds: number[];
+};
