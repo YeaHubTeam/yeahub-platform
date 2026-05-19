@@ -127,6 +127,11 @@
 		"actions": {
 			"ok": "Да",
 			"cancel": "Нет"
+		},
+		"featureFlag": {
+			"delete": {
+				"description": "Вы действительно хотите удалить фича флаг?"
+			}
 		}
 	},
 	"file.loader": {
@@ -868,6 +873,21 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
+		},
+		"featureFlags": {
+			"delete": {
+				"single": {
+					"success": "Фича флаг успешно удален",
+					"failed": "Не удалось удалить фича флаг",
+					"not_found": "Фича флаг не найден"
+				},
+				"auth": {
+					"unauthorized": "Пользователь не авторизован",
+					"user": {
+						"verified": "Доступно только для верифицированных пользователей"
+					}
+				}
+			}
 		}
 	},
 	"tooltip": {
@@ -879,6 +899,11 @@
 		"companies": {
 			"disabled": {
 				"info": "У вас нет доступа к этой функции"
+			}
+		},
+		"featureFlags": {
+			"disabled": {
+				"info": "Нельзя удалить активный фича флаг"
 			}
 		}
 	},

@@ -1,2 +1,2 @@
 export { useFeatureFlagFilters } from './model/hooks/useFeatureFlagFilters';
-export { FeatureFlagFilters } from './ui/FeatureFlagFilters/FeatureFlagFilters';
+export { FeatureFlagFilters } from './ui/featureFlagFilters/FeatureFlagFilters';
