@@ -9,7 +9,7 @@ export const titleColors: Record<ModalVariant, Pallete> = {
 };
 
 export const closeIconColors: Record<ModalVariant, Pallete> = {
-	default: 'purple-700',
+	default: 'white-900',
 	error: 'red-600',
 };
 

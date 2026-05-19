@@ -30,4 +30,5 @@ export const i18Namespace = {
 	topic: 'topic',
 	task: 'task',
 	programmingLanguage: 'programmingLanguage',
+	featureFlags: 'featureFlags',
 };

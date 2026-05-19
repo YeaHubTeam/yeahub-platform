@@ -47,7 +47,7 @@ export const UserInfoBlock = ({ profile, profileSpecialization }: UserInfoProps)
 					maxWidth
 				>
 					<Text variant="body6">{username}</Text>
-					<UserRolesList userRoles={userRoles} />
+					<UserRolesList userRoles={userRoles?.map((role) => role.name) ?? []} />
 				</Flex>
 				{!!birthday && (
 					<Text variant="body3-accent">{`${differenceInYears(new Date(), new Date(birthday))} лет`}</Text>

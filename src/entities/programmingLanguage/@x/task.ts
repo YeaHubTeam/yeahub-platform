@@ -5,3 +5,4 @@ export type {
 export { ProgrammingLanguageList } from '../ui/ProgrammingLanguageList/ProgrammingLanguageList';
 export { ProgrammingLanguageSelect } from '../ui/ProgrammingLanguageSelect/ProgrammingLanguageSelect';
 export { useGetLanguagesQuery } from '../api/programmingLanguageApi';
+export { programmingLanguagesMock } from '../api/__mocks__/data';

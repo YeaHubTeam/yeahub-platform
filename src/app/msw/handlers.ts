@@ -1,25 +1,35 @@
 import { authHandlers } from '@/entities/auth';
 import { collectionHandlers } from '@/entities/collection';
 import { companyHandlers } from '@/entities/company';
+import { featureFlagHandlers } from '@/entities/featureFlag';
 import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
-import { difficultQuestionsHandler, questionHandlers } from '@/entities/question';
-import { quizHandlers } from '@/entities/question';
-import { learnedQuestionHandlers } from '@/entities/question';
+import { programmingLanguageHandlers } from '@/entities/programmingLanguage';
+import {
+	difficultQuestionsHandler,
+	learnedQuestionHandlers,
+	questionHandlers,
+	quizHandlers,
+} from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
+import { referralLinksHandlers } from '@/entities/referralLink';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
-import { specializationHandlers } from '@/entities/specialization';
-import { specializationsProgressHandlers } from '@/entities/specialization';
+import { specializationHandlers, specializationsProgressHandlers } from '@/entities/specialization';
+import { subscriptionHandlers } from '@/entities/subscription';
+import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
 import { usersRatingHandlers } from '@/entities/user';
 
+import { createCollectionHandlers } from '@/features/collections/createCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
 import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
+import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteReferralLink';
+import { referralLinkEditHandlers } from '@/features/referralLinks/editReferralLink';
 import { skillCreateHandlers } from '@/features/skill/createSkill';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { skillEditHandlers } from '@/features/skill/editSkill';
@@ -37,6 +47,7 @@ export const handlers = [
 	...questionHandlers,
 	...collectionHandlers,
 	...specializationHandlers,
+	...featureFlagHandlers,
 	...questionCreateHandlers,
 	...questionDeleteHandlers,
 	...questionEditHandlers,
@@ -47,6 +58,7 @@ export const handlers = [
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
 	...skillDeleteHandlers,
+	...subscriptionHandlers,
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
@@ -59,6 +71,12 @@ export const handlers = [
 	...topicDeleteHandlers,
 	...hhAnalyticsHandlers,
 	...createTopicHandlers,
+	...createCollectionHandlers,
 	...topicEditHandlers,
 	...createCompanyHandlers,
+	...programmingLanguageHandlers,
+	...referralLinksHandlers,
+	...referralLinkDeleteHandlers,
+	...referralLinkEditHandlers,
+	...taskHandlers,
 ];

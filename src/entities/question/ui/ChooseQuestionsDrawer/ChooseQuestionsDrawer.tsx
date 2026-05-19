@@ -11,13 +11,14 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
+import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
 import { useGetQuestionsListQuery } from '../../api/questionApi';
 
 import styles from './ChooseQuestionsDrawer.module.css';
 
-const COLLECTION_QUESTIONS_LIMIT = 20;
+const COLLECTION_QUESTIONS_LIMIT = 10;
 
 interface ChooseQuestionsDrawerProps {
 	selectedQuestions: { title: string; id: number }[];
@@ -35,22 +36,32 @@ export const ChooseQuestionsDrawer = ({
 	const { t } = useTranslation([i18Namespace.translation, i18Namespace.collection]);
 
 	const [collectionSearch, setCollectionSearch] = useState('');
+	const [page, setPage] = useState(1);
 
 	const { isOpen, onToggle, onClose } = useModal();
 
 	const questions = useGetQuestionsListQuery({
 		title: collectionSearch,
 		limit: COLLECTION_QUESTIONS_LIMIT,
+		page: page,
 		specializationId: specializations?.length ? specializations : undefined,
 	});
 
 	const handleCollectionSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setCollectionSearch(e.target.value);
+		setPage(1);
 	};
 
-	const filteredQuestions = questions.data?.data.filter(
-		(question) => !selectedQuestions.some((selected) => selected.id === question.id),
-	);
+	const handleQuestionClick = (question: { title: string; id: number }, isActive: boolean) => {
+		if (isActive) {
+			handleUnselectQuestion(question.id);
+		} else {
+			handleSelectQuestion(question);
+		}
+	};
+
+	const questionsList = questions.data?.data || [];
+	const totalQuestions = questions.data?.total || 0;
 
 	return (
 		<>
@@ -100,18 +111,32 @@ export const ChooseQuestionsDrawer = ({
 						placeholder={t(Translation.SEARCH)}
 					/>
 					<Flex direction="column" gap="16">
-						{filteredQuestions?.map((question) => (
-							<button
-								key={question.id}
-								onClick={() => handleSelectQuestion({ title: question.title, id: question.id })}
-								className={styles['question-button']}
-							>
-								<Card withOutsideShadow className={styles['question-card']}>
-									{question.title}
-								</Card>
-							</button>
-						))}
+						{questionsList?.map((question) => {
+							const isActive = selectedQuestions.some((selected) => selected.id === question.id);
+							return (
+								<button
+									key={question.id}
+									onClick={() =>
+										handleQuestionClick({ title: question.title, id: question.id }, isActive)
+									}
+									className={styles['question-button']}
+								>
+									<Card
+										withOutsideShadow
+										className={`${styles['question-card']} ${isActive && styles['question-card-active']}`}
+									>
+										{question.title}
+									</Card>
+								</button>
+							);
+						})}
 					</Flex>
+					<TablePagination
+						page={page}
+						total={totalQuestions}
+						limit={COLLECTION_QUESTIONS_LIMIT}
+						onChangePage={setPage}
+					/>
 				</Flex>
 			</Drawer>
 		</>

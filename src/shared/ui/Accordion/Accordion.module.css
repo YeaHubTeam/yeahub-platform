@@ -31,6 +31,16 @@
   cursor: pointer;
 }
 
+.left-content{
+  display: flex;
+  gap: 8px;
+}
+
+.prefix-wrapper {
+  display: flex;
+  min-width: 84px;
+}
+
 .title {
   position: relative;
   display: flex;
@@ -50,6 +60,14 @@
   height: 8px;
   border-radius: 50%;
   background-color: var(--text-color-link-active);
+}
+
+.title.with-prefix {
+  padding-left: 0;
+}
+
+.title.with-prefix::before {
+  display: none;
 }
 
 .title.skeleton::before {
@@ -83,5 +101,10 @@
 
   .content {
     padding-left: 16px;
+  }
+
+  .left-content{
+    gap: 4px;
+    padding-left: 4px;
   }
 }

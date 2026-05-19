@@ -2,12 +2,16 @@ import { ROUTES } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getGuruWithMatchingSpecialization, GurusBanner } from '@/entities/guru';
+import {
+	getGuruWithMatchingSpecialization,
+	getNewGuruWithMatchingSpecialization,
+} from '@/entities/guru';
 import { ProgressBlock, type Question, QuestionAdditionalInfo } from '@/entities/question';
 import { getChannelsForSpecialization } from '@/entities/socialMedia';
 
 import { QuestionBody } from '@/widgets/question/QuestionBody';
 import { QuestionHeader } from '@/widgets/question/QuestionHeader';
+import { SidebarBanner } from '@/widgets/SidebarBanner';
 
 import { QuestionActions } from '../QuestionActions/QuestionActions';
 
@@ -27,6 +31,8 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 	const { isMobile, isTablet } = useScreenSize();
 
 	const guru = getGuruWithMatchingSpecialization(question.questionSpecializations);
+	const newGuru = getNewGuruWithMatchingSpecialization(question.questionSpecializations);
+
 	const showAuthor = guru ? false : true;
 	const media = getChannelsForSpecialization(question.questionSpecializations);
 
@@ -57,7 +63,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 					isDisabled={isDisabled}
 				/>
 				<QuestionBody shortAnswer={shortAnswer} longAnswer={longAnswer} />
-				{(isMobile || isTablet) && guru && <GurusBanner gurus={[guru]} />}
+				{(isMobile || isTablet) && <SidebarBanner guru={guru} newGuru={newGuru} />}
 			</Flex>
 			{!isMobile && !isTablet && (
 				<Flex direction="column" gap="20" className={styles.additional}>
@@ -74,7 +80,7 @@ export const QuestionPageContent = (props: QuestionPageContentProps) => {
 						route={ROUTES.wiki.questions.page}
 						media={media}
 					/>
-					{guru && <GurusBanner gurus={[guru]} />}
+					<SidebarBanner guru={guru} newGuru={newGuru} />
 				</Flex>
 			)}
 		</Flex>

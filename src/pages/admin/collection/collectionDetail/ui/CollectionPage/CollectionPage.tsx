@@ -92,7 +92,6 @@ export const CollectionPage = () => {
 		title,
 		description,
 		imageSrc: collectionImageSrc,
-		tasks: questionsTasks,
 	} = collection;
 
 	const isDisabled = isAuthor && createdBy?.id !== userId;
@@ -112,9 +111,7 @@ export const CollectionPage = () => {
 					company={company}
 				/>{' '}
 				<CollectionBody isFree={isFree} isAdmin questions={questions} />
-				{questionsTasks?.length ? (
-					<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
-				) : null}
+				{tasks?.length ? <TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} /> : null}
 			</section>
 		</>
 	);
@@ -163,7 +160,7 @@ export const CollectionPage = () => {
 									company={company}
 								/>{' '}
 								<CollectionBody isFree={isFree} isAdmin questions={questions} />
-								{questionsTasks?.length ? (
+								{tasks?.length ? (
 									<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
 								) : null}
 							</div>
