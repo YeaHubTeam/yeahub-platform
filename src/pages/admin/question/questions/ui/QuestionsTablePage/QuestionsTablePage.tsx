@@ -48,6 +48,7 @@ const QuestionsPage = () => {
 		onChangeIsMy,
 		onChangeOrder,
 		onChangeOrderBy,
+		onChangeTopics
 	} = useQuestionsFilters({
 		page: 1,
 	});
@@ -67,6 +68,7 @@ const QuestionsPage = () => {
 		orderBy: filters.orderBy,
 		order: filters.order,
 		authorId: filters.isMy ? userId : undefined,
+		topics: filters.topics,
 	});
 
 	const onSelectQuestions = (ids: SelectedAdminEntities) => {
@@ -139,6 +141,9 @@ const QuestionsPage = () => {
 		);
 	};
 
+	console.log('filters.topics:', filters.topics);
+	console.log('topics length:', filters.topics?.length);
+
 	return (
 		<PageWrapper
 			isLoading={isLoadingAllQuestions}
@@ -183,6 +188,7 @@ const QuestionsPage = () => {
 								onChangeOrder={onChangeOrder}
 								onChangeIsMy={onChangeIsMy}
 								onChangeOrderBy={onChangeOrderBy}
+								onChangeTopics={onChangeTopics}
 							/>
 						)}
 					/>

@@ -15,6 +15,7 @@ import { SpecializationsListField } from '@/entities/specialization';
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
 import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
 import { QuestionStatusFilter } from '../QuestionStatusFilter/QuestionStatusFilter';
+import {TopicFilterField} from "@/entities/topic/ui/TopicFilterField/TopicFilterField";
 
 interface QuestionsFiltersProps {
 	filters: QuestionsFilterParams;
@@ -27,6 +28,7 @@ interface QuestionsFiltersProps {
 	onChangeIsMy?: (isMy?: QuestionsFilterParams['isMy']) => void;
 	onChangeOrder?: (order?: QuestionsFilterParams['order']) => void;
 	onChangeOrderBy?: (orderBy?: QuestionsFilterParams['orderBy']) => void;
+	onChangeTopics?: (topics?: QuestionsFilterParams['topics']) => void;
 }
 export const QuestionsFilters = ({
 	filters,
@@ -39,8 +41,9 @@ export const QuestionsFilters = ({
 	onChangeIsMy,
 	onChangeOrder,
 	onChangeOrderBy,
+																	 onChangeTopics
 }: QuestionsFiltersProps) => {
-	const { skills, rate, complexity, status, title, specialization, isMy, order, orderBy } = filters;
+	const { skills, rate, complexity, status, title, specialization, isMy, order, orderBy, topics } = filters;
 	const { t } = useTranslation(i18Namespace.questions);
 	const specializationId = useAppSelector(getSpecializationId);
 	const project = useCurrentProject();
@@ -66,6 +69,12 @@ export const QuestionsFilters = ({
 					selectedSpecialization={specialization}
 					onChangeSpecialization={onChangeSpecialization}
 				/>
+			)}
+			{project === 'admin' && onChangeTopics && (
+				<TopicFilterField 
+					onChangeTopics={onChangeTopics} 
+					selectedSkills={skills}
+					selectedTopics={topics} />
 			)}
 			<SkillsListField
 				selectedSkills={skills}
