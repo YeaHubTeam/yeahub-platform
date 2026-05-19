@@ -396,6 +396,11 @@ export enum Translation {
 	TOAST_COLLECTIONS_CREATE_TINIFY_RESIZE_FAILED = 'toast.collections.create.tinify.resize.failed',
 	TOAST_COLLECTIONS_CREATE_COLLECTION_USER_DELETED = 'toast.collections.create.collection.user.deleted',
 	TOAST_COLLECTIONS_CREATE_COLLECTION_CREATE_CONFLICT = 'toast.collections.create.collection.create.conflict',
+	TOAST_FEATURE_FLAG_DELETE_SINGLE_SUCCESS = 'toast.featureFlags.delete.single.success',
+	TOAST_FEATURE_FLAG_DELETE_SINGLE_FAILED = 'toast.featureFlags.delete.single.failed',
+	TOAST_FEATURE_FLAG_DELETE_AUTH_UNAUTHORIZED = 'toast.featureFlags.delete.auth.unauthorized',
+	TOAST_FEATURE_FLAG_DELETE_AUTH_USER_VERIFIED = 'toast.featureFlags.delete.auth.user.verified',
+	TOAST_FEATURE_FLAG_DELETE_SINGLE_NOTFOUND = 'toast.featureFlags.delete.single.not_found',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
@@ -591,6 +596,8 @@ export enum FeatureFlags {
 	FORM_CLIENT_TYPE_SUBTITLE = 'form.clientType.subtitle',
 	FORM_ENABLED_TITLE = 'form.enabled.title',
 	FORM_ENABLED_SUBTITLE = 'form.enabled.subtitle',
+	TOOLTIP_FEATURE_FLAGS_DISABLED_INFO = 'tooltip.featureFlags.disabled.info',
+	MODAL_FEATURE_FLAG_DELETE_DESCRIPTION = 'modal.featureFlag.delete.description',
 }
 
 export enum Topics {

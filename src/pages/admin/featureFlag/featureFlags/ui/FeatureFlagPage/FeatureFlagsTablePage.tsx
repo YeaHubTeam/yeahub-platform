@@ -1,15 +1,21 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { FeatureFlags, i18Namespace, ROUTES } from '@/shared/config';
+import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { SelectedEntities } from '@/shared/libs';
+import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { IconButton } from '@/shared/ui/IconButton';
+import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
+
+import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
 
 interface FeatureFlagsTableProps {
 	featureFlags?: FeatureFlagApiItem[];
@@ -85,6 +91,45 @@ export const FeatureFlagsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	const renderActions = (featureFlag: FeatureFlagApiItem) => {
+		const menuItems: PopoverMenuItem[] = [
+			{
+				icon: <Icon icon="eye" size={24} />,
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				disabled: featureFlag.enabled,
+				onClick: () => {},
+			},
+			{
+				icon: <Icon icon="pen" size={24} />,
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				disabled: featureFlag.enabled,
+				onClick: () => {},
+			},
+			{
+				renderComponent: () => (
+					<DeleteFeatureFlagButton featureFlagId={featureFlag.id} disabled={featureFlag.enabled} />
+				),
+			},
+		];
+
+		return (
+			<Flex>
+				<Popover menuItems={menuItems}>
+					{({ onToggle }) => (
+						<IconButton
+							aria-label="actions"
+							form="square"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
+							size="medium"
+							variant="tertiary"
+							onClick={onToggle}
+						/>
+					)}
+				</Popover>
+			</Flex>
+		);
+	};
+
 	if (!featureFlags) {
 		return null;
 	}
@@ -95,6 +140,7 @@ export const FeatureFlagsTable = ({
 			renderTableBody={renderTableBody}
 			items={featureFlags}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderActions={renderActions}
 			hasCopyButton
 			selectedItems={selectedItems}
 			onSelectItems={onSelectItems}
