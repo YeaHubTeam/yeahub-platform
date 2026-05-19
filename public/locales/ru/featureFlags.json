@@ -33,6 +33,9 @@
 		}
 	},
 	"filter": {
+		"enabled": "Активность",
+		"enabledOn": "Включен",
+		"enabledOff": "Выключен",
 		"role": "Роли",
 		"clientType": "Тип клиента"
 	}
