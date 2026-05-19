@@ -5,7 +5,7 @@ import { Switch } from '@/shared/ui/Switch';
 
 import { UserRolesListField } from '@/entities/user';
 
-import { FeatureFlagFiltersParams } from '../..';
+import { FeatureFlagFiltersParams } from '../../model/types/filters';
 import { ClientTypeFilter } from '../ClientTypeFilter/ClientTypeFilter';
 
 interface FeatureFlagFiltersProps {

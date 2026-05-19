@@ -8,7 +8,10 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
 
-import { FeatureFlagFilters, useFeatureFlagFilters } from '@/features/featureFlag';
+import {
+	FeatureFlagFilters,
+	useFeatureFlagFilters,
+} from '@/features/featureFlag/filterFeatureFlag';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
