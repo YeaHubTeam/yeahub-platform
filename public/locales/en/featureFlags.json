@@ -6,6 +6,13 @@
 				"subtitle": "Create a feature flag or wait until someone creates one",
 				"submit": "Add"
 			}
+		},
+		"filterEmpty": {
+			"featureFlags": {
+				"title": "Unfortunately, no feature flags were found for your request.",
+				"subtitle": "Try changing your query parameters or reset all filters.",
+				"submit": "Reset filter"
+			}
 		}
 	},
 	"table": {
@@ -59,5 +66,12 @@
 			"title": "Activity",
 			"subtitle": "Select whether the feature flag is enabled or disabled"
 		}
+	},
+	"filter": {
+		"enabled": "Enabled",
+		"enabledOn": "Enabled",
+		"enabledOff": "Disabled",
+		"role": "Roles",
+		"clientType": "Client type"
 	}
 }
