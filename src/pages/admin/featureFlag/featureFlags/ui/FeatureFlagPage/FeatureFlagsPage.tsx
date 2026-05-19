@@ -7,7 +7,6 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
-import { useGetUserRolesListQuery } from '@/entities/user';
 
 import { FeatureFlagFilters, useFeatureFlagFilters } from '@/features/featureFlag';
 
@@ -33,9 +32,7 @@ export const FeatureFlagsPage = () => {
 		page: 1,
 	});
 
-	const { data: userRoles } = useGetUserRolesListQuery();
-
-	const { page, enabled, search, selectedRoles, clientType } = filters;
+	const { page, enabled, search, roleIds, clientType } = filters;
 	const {
 		data: featureFlagsData,
 		isError,
@@ -44,13 +41,7 @@ export const FeatureFlagsPage = () => {
 		page,
 		enabled,
 		search: filters.search ? search : undefined,
-		roleIds:
-			selectedRoles && userRoles?.length
-				? userRoles
-						.filter((item) => selectedRoles.includes(item.id))
-						.map((item) => item.id)
-						.join(', ')
-				: undefined,
+		roleIds: roleIds?.length ? roleIds.join(', ') : undefined,
 		clientType: clientType || undefined,
 	});
 

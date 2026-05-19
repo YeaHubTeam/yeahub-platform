@@ -10,9 +10,9 @@ export const useGetFeatureFlagFilterParams = (initialParams: FeatureFlagFiltersP
 		page: parsedParams.page ? Number(parsedParams.page) : initialParams.page,
 		search: parsedParams.search,
 		enabled: parsedParams.enabled ? parsedParams.enabled === 'true' : initialParams.enabled,
-		selectedRoles: parsedParams.selectedRoles
-			? parsedParams.selectedRoles.split(',').map(Number)
-			: initialParams.selectedRoles,
+		roleIds: parsedParams.roleIds
+			? parsedParams.roleIds.split(',').map(Number)
+			: initialParams.roleIds,
 		clientType: parsedParams.clientType as ClientType,
 	};
 

@@ -6,5 +6,5 @@ export interface FeatureFlagFiltersParams {
 	search?: string;
 	enabled?: boolean;
 	clientType?: ClientType;
-	selectedRoles?: number[];
+	roleIds?: number[];
 }

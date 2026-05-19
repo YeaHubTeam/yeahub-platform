@@ -13,7 +13,7 @@ export const useFeatureFlagFilters = (initialParams: FeatureFlagFiltersParams) =
 		filters.enabled !== undefined ||
 		Boolean(filters.search) ||
 		Boolean(filters.clientType) ||
-		(filters.selectedRoles || []).length > 0;
+		(filters.roleIds || []).length > 0;
 
 	const onChangeSearch = (search: FeatureFlagFiltersParams['search']) => {
 		onFilterChange({ search, page: 1 });
@@ -27,8 +27,8 @@ export const useFeatureFlagFilters = (initialParams: FeatureFlagFiltersParams) =
 		onFilterChange({ enabled, page: 1 });
 	};
 
-	const onChangeRoles = (selectedRoles?: FeatureFlagFiltersParams['selectedRoles']) => {
-		onFilterChange({ selectedRoles, page: 1 });
+	const onChangeRoles = (roleIds?: FeatureFlagFiltersParams['roleIds']) => {
+		onFilterChange({ roleIds, page: 1 });
 	};
 
 	const onChangeClientType = (clientType?: FeatureFlagFiltersParams['clientType']) => {

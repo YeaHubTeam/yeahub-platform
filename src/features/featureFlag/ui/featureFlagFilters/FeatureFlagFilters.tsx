@@ -10,7 +10,7 @@ import { ClientTypeFilter } from '../ClientTypeFilter/ClientTypeFilter';
 
 interface FeatureFlagFiltersProps {
 	filters: FeatureFlagFiltersParams;
-	onChangeRoles: (roles?: FeatureFlagFiltersParams['selectedRoles']) => void;
+	onChangeRoles: (roles?: FeatureFlagFiltersParams['roleIds']) => void;
 	onChangeIsEnabled: (enabled: FeatureFlagFiltersParams['enabled']) => void;
 	onChangeClientType: (clientType: FeatureFlagFiltersParams['clientType']) => void;
 }
@@ -36,7 +36,7 @@ export const FeatureFlagFilters = ({
 			/>
 			<UserRolesListField
 				title={t(FeatureFlags.FILTER_ROLE)}
-				selectedRoles={filters.selectedRoles}
+				selectedRoles={filters.roleIds}
 				onChangeRoles={onChangeRoles}
 			/>
 			<ClientTypeFilter
