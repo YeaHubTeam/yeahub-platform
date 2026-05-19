@@ -11,11 +11,9 @@ export interface QuestionsFilterParams {
 	isMy?: boolean;
 	order?: SortOrder;
 	orderBy?: QuestionFilterOrderBy;
-	topics?: QuestionFilterTopic
+	topics?: number[];
 }
 
 export type QuestionFilterStatus = 'all' | 'learned' | 'not-learned' | 'favorite';
 
 export type QuestionFilterOrderBy = 'title' | 'complexity' | 'rate';
-
-export type QuestionFilterTopic = number[]

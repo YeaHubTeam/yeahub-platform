@@ -48,7 +48,7 @@ const QuestionsPage = () => {
 		onChangeIsMy,
 		onChangeOrder,
 		onChangeOrderBy,
-		onChangeTopics
+		onChangeTopics,
 	} = useQuestionsFilters({
 		page: 1,
 	});
@@ -140,9 +140,6 @@ const QuestionsPage = () => {
 			</Popover>
 		);
 	};
-
-	console.log('filters.topics:', filters.topics);
-	console.log('topics length:', filters.topics?.length);
 
 	return (
 		<PageWrapper
