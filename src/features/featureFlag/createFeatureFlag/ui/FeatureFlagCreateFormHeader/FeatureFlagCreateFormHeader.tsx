@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Translation } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
@@ -15,9 +15,10 @@ import { CreateFeatureFlagFormValues } from '../../model/types/featureFlagCreate
 
 export const FeatureFlagCreateFormHeader = () => {
 	const [createFeatureFlagMutation, { isLoading }] = useCreateFeatureFlagMutation();
-	const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
-	const [isBackModalOpen, setIsBackModalOpen] = useState(false);
 	const navigate = useNavigate();
+
+	const backModal = useModal();
+	const cancelModal = useModal();
 
 	const {
 		handleSubmit,
@@ -28,19 +29,15 @@ export const FeatureFlagCreateFormHeader = () => {
 
 	const handleBackClick = () => {
 		if (isDirty) {
-			setIsBackModalOpen(true);
+			backModal.onOpen();
 			return;
 		}
 
 		navigate(-1);
 	};
 
-	const handleCloseBackModal = () => {
-		setIsBackModalOpen(false);
-	};
-
 	const handleConfirmBack = () => {
-		setIsBackModalOpen(false);
+		backModal.onClose();
 		navigate(-1);
 	};
 
@@ -49,16 +46,12 @@ export const FeatureFlagCreateFormHeader = () => {
 	};
 
 	const handleOpenCancelModal = () => {
-		setIsCancelModalOpen(true);
-	};
-
-	const handleCloseCancelModal = () => {
-		setIsCancelModalOpen(false);
+		cancelModal.onOpen();
 	};
 
 	const handleConfirmCancel = () => {
 		reset();
-		handleCloseCancelModal();
+		cancelModal.onClose();
 	};
 
 	return (
@@ -86,22 +79,22 @@ export const FeatureFlagCreateFormHeader = () => {
 					{t(Translation.SAVE)}
 				</Button>
 
-				{isCancelModalOpen && (
+				{cancelModal.isOpen && (
 					<BlockerDialog
-						isOpen={isCancelModalOpen}
-						onClose={handleCloseCancelModal}
+						isOpen={cancelModal.isOpen}
+						onClose={cancelModal.onClose}
 						onOk={handleConfirmCancel}
-						onCancel={handleCloseCancelModal}
+						onCancel={cancelModal.onClose}
 						message={Translation.MODAL_CANCEL_CHANGES}
 					/>
 				)}
 
-				{isBackModalOpen && (
+				{backModal.isOpen && (
 					<BlockerDialog
-						isOpen={isBackModalOpen}
-						onClose={handleCloseBackModal}
+						isOpen={backModal.isOpen}
+						onClose={backModal.onClose}
 						onOk={handleConfirmBack}
-						onCancel={handleCloseBackModal}
+						onCancel={backModal.onClose}
 					/>
 				)}
 			</Flex>

@@ -144,6 +144,8 @@ export enum Translation {
 	VALIDATION_LINK = 'validation.link',
 	VALIDATION_NO_SPACE = 'validation.no.spaces',
 	VALIDATION_LATIN_AND_NUMBER = 'validation.latin.and.number',
+	VALIDATION_LATIN_CHARACTERS = 'validation.latin.characters',
+	VALIDATION_NO_UPPERCASE = 'validation.no.uppercase',
 
 	/* Toast */
 	TOAST_TITLE_SUCCESS = 'toast.title.success',
@@ -217,6 +219,9 @@ export enum Translation {
 	TOAST_TASKS_DELETE_SINGLE_FAILED = 'toast.tasks.delete.single.failed',
 	TOAST_FEATURE_FLAGS_CREATE_SUCCESS = 'toast.featureFlags.create.success',
 	TOAST_FEATURE_FLAGS_CREATE_FAILED = 'toast.featureFlags.create.failed',
+	TOAST_FEATURE_FLAGS_CREATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.create.auth.unauthorized',
+	TOAST_FEATURE_FLAGS_CREATE_AUTH_USER_VERIFIED = 'toast.featureFlags.create.auth.user.verified',
+	TOAST_FEATURE_FLAGS_CREATE_ALREADY_EXISTS = 'toast.featureFlags.create.alreadyExists',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
 	TOAST_COLLECTION_DELETE_SINGLE_NOTFOUND = 'toast.collections.delete.single.not_found',

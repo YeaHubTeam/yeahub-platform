@@ -2,19 +2,18 @@ import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { FeatureFlags, i18Namespace } from '@/shared/config';
-import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Switch } from '@/shared/ui/Switch';
 import { Text } from '@/shared/ui/Text';
-import { TextEditor } from '@/shared/ui/TextEditor';
+import { TextArea } from '@/shared/ui/TextArea';
 
 import { RoleSelect, useGetUserRolesListQuery } from '@/entities/user/@x/featureFlag';
 
-import { clientTypes } from '../../model/constants/featureFlags';
 import { CreateOrEditFeatureFlagFormValues } from '../../model/types/featureFlag';
+import { FeatureFlagClientTypeSelect } from '../FeatureFlagClientTypeSelect/FeatureFlagClientTypeSelect';
 
 import styles from './FeatureFlagForm.module.css';
 
@@ -53,8 +52,14 @@ export const FeatureFlagForm = () => {
 					label={t(FeatureFlags.FORM_DESCRIPTION_TITLE)}
 				>
 					<FormControl name="description" control={control}>
-						{(field) => (
-							<TextEditor id="description" isInline data={field.value} {...field} limit={1000} />
+						{(field, hasError) => (
+							<TextArea
+								id="description"
+								className={styles.textarea}
+								state={hasError ? 'error' : 'default'}
+								limit={1000}
+								{...field}
+							/>
 						)}
 					</FormControl>
 				</FormField>
@@ -81,16 +86,11 @@ export const FeatureFlagForm = () => {
 				>
 					<FormControl name="clientType" control={control}>
 						{({ onChange, value }) => (
-							<Dropdown
-								width={400}
+							<FeatureFlagClientTypeSelect
 								label={t(FeatureFlags.FORM_CLIENT_TYPE_TITLE)}
 								value={value}
-								onSelect={(selectedValue) => onChange(selectedValue)}
-							>
-								{clientTypes.map((clientType) => (
-									<Option key={clientType} value={clientType} label={clientType} />
-								))}
-							</Dropdown>
+								onChange={onChange}
+							/>
 						)}
 					</FormControl>
 				</FormField>

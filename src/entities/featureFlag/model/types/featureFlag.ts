@@ -42,11 +42,9 @@ export interface GetFeatureFlagsListParamsRequest {
 	clientType?: ClientType;
 }
 
-export interface CreateOrEditFeatureFlagFormValues {
-	id: string;
-	flag: string;
-	description: string;
+export type CreateOrEditFeatureFlagFormValues = Omit<
+	FeatureFlagApiItem,
+	'roles' | 'createdAt' | 'updatedAt'
+> & {
 	roleIds: number[];
-	clientType: ClientType;
-	enabled: boolean;
-}
+};

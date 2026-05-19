@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { i18Namespace, ROUTES, FeatureFlags } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
+import { Flex } from '@/shared/ui/Flex';
 
 import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+import { SearchSection } from '@/widgets/SearchSection';
 
 import { FeatureFlagsTable } from './FeatureFlagsTablePage';
 
@@ -61,12 +63,16 @@ export const FeatureFlagsPage = () => {
 			paginationOptions={paginationOptions}
 		>
 			{({ content, pagination }) => (
-				<Card>
-					<>
-						{content}
-						{pagination}
-					</>
-				</Card>
+				<Flex direction="column" gap="24">
+					<SearchSection to="create" />
+
+					<Card>
+						<>
+							{content}
+							{pagination}
+						</>
+					</Card>
+				</Flex>
 			)}
 		</PageWrapper>
 	);

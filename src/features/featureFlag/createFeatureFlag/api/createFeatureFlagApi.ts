@@ -1,7 +1,8 @@
 import { ApiTags, baseApi, ExtraArgument, i18n, ROUTES, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getCreateFeatureFlagApiErrorMessage } from '../lib/utils/getCreateFeatureFlagApiErrorMessage';
 import { createFeatureFlagApiUrls } from '../model/constants/createFeatureFlagConstants';
 import {
 	CreateFeatureFlagBodyRequest,
@@ -23,7 +24,7 @@ export const createFeatureFlagApi = baseApi.injectEndpoints({
 					typedExtra.navigate(route(ROUTES.admin.featureFlags.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_FEATURE_FLAGS_CREATE_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_FEATURE_FLAGS_CREATE_FAILED));
+					toast.error(i18n.t(handleApiError(error, getCreateFeatureFlagApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
