@@ -15,7 +15,7 @@
 	"user.name": "User",
 	"username": "Nickname",
 	"avatar": "Profile Photo",
-	"select.role": {
+	"pick.role": {
 		"title": "Select User Role",
 		"label": "Select Tags by Role"
 	},
