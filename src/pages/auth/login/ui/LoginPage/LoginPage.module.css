@@ -18,6 +18,11 @@
   font-size: var(--font-size-h-l);
 }
 
+.title-skeleton {
+  width: 100%;
+  max-width: 406px;
+}
+
 @media (width <= 1024px) {
   .wrapper {
     padding-bottom: 40px;

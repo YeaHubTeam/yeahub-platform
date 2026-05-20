@@ -26,3 +26,4 @@ export { authHandlers } from './api/__mocks__';
 export { refreshMiddleware } from './api/refreshMiddleware';
 export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';
 export { TelegramWidget } from './ui/TelegramWidget/TelegramWidget';
+export { RegistrationLabelSkeleton } from './ui/RegistrationLabel/RegistrationLabel.skeleton';

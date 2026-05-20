@@ -8,7 +8,7 @@ import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { ErrorElement } from '@/shared/ui/ErrorElement';
 
 import { AuthAside } from '../AuthAside/AuthAside';
-import { AuthLayoutSkeleton } from '../AuthLayout.skeleton';
+import { AuthLayoutSkeleton } from '../AuthLayout/AuthLayout.skeleton';
 
 import styles from './AuthLayout.module.css';
 
