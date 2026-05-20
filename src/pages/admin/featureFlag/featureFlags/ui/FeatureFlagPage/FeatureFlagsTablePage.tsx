@@ -8,7 +8,6 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 import { Table } from '@/shared/ui/Table';
 import { Text } from '@/shared/ui/Text';
 
@@ -16,6 +15,7 @@ import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
 import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
+import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
 
 interface FeatureFlagsTableProps {
 	featureFlags?: FeatureFlagApiItem[];
@@ -34,9 +34,9 @@ export const FeatureFlagsTable = ({
 		const columnWidths = {
 			flag: 'auto',
 			description: 'auto',
-			enabled: '15%',
 			roles: '15%',
 			clientType: '15%',
+			enabled: '15%',
 			createdAt: '15%',
 			actions: '10%',
 		};
@@ -48,9 +48,9 @@ export const FeatureFlagsTable = ({
 		const columns = {
 			flag: t(FeatureFlags.TABLE_FLAG, { ns: i18Namespace.featureFlags }),
 			description: t(FeatureFlags.TABLE_DESCRIPTION, { ns: i18Namespace.featureFlags }),
-			enabled: t(FeatureFlags.TABLE_ENABLED, { ns: i18Namespace.featureFlags }),
 			roles: t(FeatureFlags.TABLE_ROLES, { ns: i18Namespace.featureFlags }),
 			clientType: t(FeatureFlags.TABLE_CLIENT_TYPE, { ns: i18Namespace.featureFlags }),
+			enabled: t(FeatureFlags.TABLE_ENABLED, { ns: i18Namespace.featureFlags }),
 			createdAt: t(FeatureFlags.TABLE_CREATED_AT, { ns: i18Namespace.featureFlags }),
 			actions: t(FeatureFlags.TABLE_ACTIONS, { ns: i18Namespace.featureFlags }),
 		};
@@ -59,16 +59,6 @@ export const FeatureFlagsTable = ({
 	};
 
 	const renderTableBody = (featureFlag: FeatureFlagApiItem) => {
-		const enabledStatus: StatusChipItem = featureFlag.enabled
-			? {
-					text: t(FeatureFlags.STATUS_ENABLED, { ns: i18Namespace.featureFlags }),
-					variant: 'green',
-				}
-			: {
-					text: t(FeatureFlags.STATUS_DISABLED, { ns: i18Namespace.featureFlags }),
-					variant: 'red',
-				};
-
 		const columns = {
 			flag: (
 				<Link to={route(ROUTES.admin.featureFlags.details.page, featureFlag.id)}>
@@ -76,13 +66,18 @@ export const FeatureFlagsTable = ({
 				</Link>
 			),
 			description: featureFlag.description,
-			enabled: <StatusChip status={enabledStatus} />,
 			roles: featureFlag.roles?.length ? (
 				<UserRolesList userRoles={featureFlag.roles} />
 			) : (
 				<Text variant="body3-accent">-</Text>
 			),
 			clientType: <Text variant="body3-accent">{featureFlag.clientType}</Text>,
+			enabled: (
+				<ToggleActiveFeatureFlagSwitch
+					featureFlagId={featureFlag.id}
+					enabled={featureFlag.enabled}
+				/>
+			),
 			createdAt: (
 				<Text variant="body3-accent">{new Date(featureFlag.createdAt).toLocaleDateString()}</Text>
 			),

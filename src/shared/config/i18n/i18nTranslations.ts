@@ -393,6 +393,14 @@ export enum Translation {
 	TOAST_FEATURE_FLAG_DELETE_AUTH_UNAUTHORIZED = 'toast.featureFlags.delete.auth.unauthorized',
 	TOAST_FEATURE_FLAG_DELETE_AUTH_USER_VERIFIED = 'toast.featureFlags.delete.auth.user.verified',
 	TOAST_FEATURE_FLAG_DELETE_SINGLE_NOTFOUND = 'toast.featureFlags.delete.single.not_found',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_SUCCESS = 'toast.featureFlags.update.single.enabled.success',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_FAILED = 'toast.featureFlags.update.single.enabled.failed',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_DISABLED_SUCCESS = 'toast.featureFlags.update.single.disabled.success',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_DISABLED_FAILED = 'toast.featureFlags.update.single.disabled.failed',
+	TOAST_FEATURE_FLAG_UPDATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.update.auth.unauthorized',
+	TOAST_FEATURE_FLAG_UPDATE_AUTH_USER_VERIFIED = 'toast.featureFlags.update.auth.user.verified',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_NOTFOUND = 'toast.featureFlags.update.single.not_found',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ALREADY_EXISTS = 'toast.featureFlags.update.single.already_exists',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',

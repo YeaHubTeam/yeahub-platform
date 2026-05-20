@@ -885,6 +885,26 @@
 						"verified": "Access only for verified users"
 					}
 				}
+			},
+			"update": {
+				"single": {
+					"enabled": {
+						"success": "Feature flag successfully enabled",
+						"failed": "Couldn't enable feature flag"
+					},
+					"disabled": {
+						"success": "Feature flag successfully disabled",
+						"failed": "Couldn't disable feature flag"
+					},
+					"not_found": "Feature flag not found",
+					"already_exists": "Feature flag with this key already exists for selected client type"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				}
 			}
 		}
 	},

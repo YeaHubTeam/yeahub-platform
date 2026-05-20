@@ -1,0 +1,47 @@
+import { i18n, Translation, baseApi, ROUTES, ExtraArgument, ApiTags } from '@/shared/config';
+import { handleApiError, route } from '@/shared/libs';
+import { toast } from '@/shared/ui/Toast';
+
+import { getToggleActiveFeatureFlagApiErrorMessage } from '../lib/utils/getToggleActiveFlagApiMessage';
+import { toggleActiveFeatureFlagApiUrls } from '../model/constants/toggleActiveFeatureFlagConstants';
+import { ToggleActiveFeatureFlagError } from '../model/types/toggleActiveFeatureFlagTypes';
+
+const updateFeatureFlagApi = baseApi.injectEndpoints({
+	endpoints: (build) => ({
+		toggleActiveFeatureFlag: build.mutation<void, { featureFlagId: string; enabled: boolean }>({
+			query: ({ featureFlagId, enabled }) => ({
+				url: route(toggleActiveFeatureFlagApiUrls.toggleActiveFeatureFlag, featureFlagId),
+				method: 'PATCH',
+				body: {
+					enabled: enabled,
+				},
+			}),
+
+			async onQueryStarted({ enabled }, { queryFulfilled, extra }) {
+				const typedExtra = extra as ExtraArgument;
+
+				try {
+					await queryFulfilled;
+					if (!enabled) {
+						toast.success(i18n.t(Translation.TOAST_FEATURE_FLAG_UPDATE_SINGLE_DISABLED_SUCCESS));
+					} else {
+						toast.success(i18n.t(Translation.TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_SUCCESS));
+					}
+					typedExtra.navigate(ROUTES.admin.featureFlags.page);
+				} catch (error) {
+					toast.error(
+						i18n.t(
+							handleApiError(error, (apiError: ApiErrorData<ToggleActiveFeatureFlagError>) =>
+								getToggleActiveFeatureFlagApiErrorMessage(apiError, enabled),
+							),
+						),
+					);
+				}
+			},
+
+			invalidatesTags: [ApiTags.FEATURE_FLAGS],
+		}),
+	}),
+});
+
+export const { useToggleActiveFeatureFlagMutation } = updateFeatureFlagApi;
