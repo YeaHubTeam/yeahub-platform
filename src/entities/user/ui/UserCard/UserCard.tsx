@@ -51,7 +51,7 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 								</div>
 							)}
 						</FormField>
-						<FormField label={t(Users.PICK_ROLE_TITLE)} description={t(Users.PICK_ROLE_LABEL)}>
+						<FormField label={t(Users.SELECT_ROLE_TITLE)} description={t(Users.SELECT_ROLE_LABEL)}>
 							<FormControl name="userRoles" control={control}>
 								{({ onChange, value }) => (
 									<div className={styles.select}>
