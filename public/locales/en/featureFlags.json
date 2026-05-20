@@ -6,6 +6,13 @@
 				"subtitle": "Create a feature flag or wait until someone creates one",
 				"submit": "Add"
 			}
+		},
+		"filterEmpty": {
+			"featureFlags": {
+				"title": "Unfortunately, no feature flags were found for your request.",
+				"subtitle": "Try changing your query parameters or reset all filters.",
+				"submit": "Reset filter"
+			}
 		}
 	},
 	"table": {
@@ -24,5 +31,47 @@
 			"enabled": "Enabled",
 			"disabled": "Disabled"
 		}
+	},
+	"create": {
+		"page": {
+			"title": "Creating a Flag feature"
+		},
+		"success": "Feature flag created successfully",
+		"failed": "Failed to create feature flag"
+	},
+	"edit": {
+		"page": {
+			"title": "Editing the Flag feature"
+		}
+	},
+	"form": {
+		"flag": {
+			"title": "Flag",
+			"subtitle": "Add flag",
+			"placeholder": "Add flag"
+		},
+		"description": {
+			"title": "Description",
+			"subtitle": "Add description"
+		},
+		"roles": {
+			"title": "Select user role",
+			"subtitle": "Select tags by role"
+		},
+		"clientType": {
+			"title": "Client type",
+			"subtitle": "Select the app type this flag is created for"
+		},
+		"enabled": {
+			"title": "Activity",
+			"subtitle": "Select whether the feature flag is enabled or disabled"
+		}
+	},
+	"filter": {
+		"enabled": "Enabled",
+		"enabledOn": "Enabled",
+		"enabledOff": "Disabled",
+		"role": "Roles",
+		"clientType": "Client type"
 	}
 }

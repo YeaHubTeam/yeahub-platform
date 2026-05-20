@@ -127,6 +127,14 @@
 		"actions": {
 			"ok": "Да",
 			"cancel": "Нет"
+		},
+		"cancel": {
+			"changes": "Вы действительно хотите отменить внесенные изменения?"
+		},
+		"featureFlag": {
+			"delete": {
+				"description": "Вы действительно хотите удалить фича флаг?"
+			}
 		}
 	},
 	"file.loader": {
@@ -167,7 +175,9 @@
 		},
 		"link": "Ссылки запрещены",
 		"no.spaces": "Без пробелов",
-		"latin.and.number": "Только заглавные латинские буквы и цифры"
+		"latin.and.number": "Только заглавные латинские буквы и цифры",
+		"latin.characters": "Только латинские буквы",
+		"no.uppercase": "Только строчные буквы"
 	},
 	"crumbs": {
 		"profile": "Профиль",
@@ -241,6 +251,19 @@
 						"user.not.found": "Пользователь не найден."
 					}
 				}
+			}
+		},
+		"featureFlags": {
+			"create": {
+				"success": "Фича флаг успешно создан",
+				"failed": "Не удалось создать фича флаг",
+				"auth": {
+					"unauthorized": "Ошибка аутентификации",
+					"user": {
+						"verified": "Маршрут доступен для пользователей с подтвержденной учетной записью!"
+					}
+				},
+				"alreadyExists": "Фичафлаг с этим ключом уже существует для выбранного типа клиента"
 			}
 		},
 		"tasks": {
@@ -868,6 +891,21 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
+		},
+		"featureFlags": {
+			"delete": {
+				"single": {
+					"success": "Фича флаг успешно удален",
+					"failed": "Не удалось удалить фича флаг",
+					"not_found": "Фича флаг не найден"
+				},
+				"auth": {
+					"unauthorized": "Пользователь не авторизован",
+					"user": {
+						"verified": "Доступно только для верифицированных пользователей"
+					}
+				}
+			}
 		}
 	},
 	"tooltip": {
@@ -879,6 +917,11 @@
 		"companies": {
 			"disabled": {
 				"info": "У вас нет доступа к этой функции"
+			}
+		},
+		"featureFlags": {
+			"disabled": {
+				"info": "Нельзя удалить активный фича флаг"
 			}
 		}
 	},

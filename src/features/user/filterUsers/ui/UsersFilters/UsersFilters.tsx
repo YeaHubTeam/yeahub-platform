@@ -1,7 +1,11 @@
+import { t } from 'i18next';
+
+import { User } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 
+import { UserRolesListField } from '@/entities/user';
+
 import { UsersFilterParams } from '../../model/types/filters';
-import { UserRolesListField } from '../UserRolesListField/UserRolesListField';
 import { VerifiedSwitch } from '../VerifiedSwitch/VerifiedSwitch';
 
 interface UsersFiltersProps {
@@ -15,7 +19,11 @@ export const UsersFilters = ({ filters, onChangeIsVerified, onChangeRoles }: Use
 
 	return (
 		<Flex direction="column" gap="24">
-			<UserRolesListField selectedRoles={roles} onChangeRoles={onChangeRoles} />
+			<UserRolesListField
+				title={t(User.FILTER_ROLE)}
+				selectedRoles={roles}
+				onChangeRoles={onChangeRoles}
+			/>
 			<VerifiedSwitch selectedVerified={isVerified} onChangeVerified={onChangeIsVerified} />
 		</Flex>
 	);
