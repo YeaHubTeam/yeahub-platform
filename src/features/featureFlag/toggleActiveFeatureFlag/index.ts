@@ -1,1 +1,1 @@
-export { ToggleActiveFeatureFlagSwitch } from './ui/ToggleActiveFeatureFlagSwitch';
+export { ToggleActiveFeatureFlagSwitch } from './ui/ToggleActiveFeatureFlagSwitch/ToggleActiveFeatureFlagSwitch';

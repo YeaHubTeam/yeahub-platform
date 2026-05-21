@@ -1,6 +1,6 @@
 import { Switch } from '@/shared/ui/Switch';
 
-import { useToggleActiveFeatureFlagMutation } from '../api/toggleActiveFeatureFlagApi';
+import { useToggleActiveFeatureFlagMutation } from '../../api/toggleActiveFeatureFlagApi';
 
 interface ToggleActiveFeatureFlagSwitchProps {
 	featureFlagId: string;
