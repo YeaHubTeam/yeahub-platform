@@ -585,6 +585,12 @@ export enum Specializations {
 }
 
 export enum FeatureFlags {
+	STUB_ERROR_TITLE = 'stub.error.featureFlags.title',
+	DETAILS_ROLES = 'details.roles',
+	DETAILS_CLIENT_TYPE = 'details.clientType',
+	DETAILS_ACTIVITY = 'details.activity',
+	DETAILS_CREATED_AT = 'details.createdAt',
+	DETAILS_UPDATED_AT = 'details.updatedAt',
 	STUB_EMPTY_TITLE = 'stub.empty.featureFlags.title',
 	STUB_EMPTY_SUBTITLE = 'stub.empty.featureFlags.subtitle',
 	STUB_EMPTY_SUBMIT = 'stub.empty.featureFlags.submit',
