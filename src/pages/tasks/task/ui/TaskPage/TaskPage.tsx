@@ -8,6 +8,7 @@ import { useGetTaskByIdQuery } from '@/entities/task';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { TaskPageContent } from '../TaskPageContent/TaskPageContent';
+import { TaskPageContentSkeleton } from '../TaskPageContent/TaskPageContent.skeleton';
 
 const TaskPage = () => {
 	const { t } = useTranslation(i18Namespace.task);
@@ -37,6 +38,7 @@ const TaskPage = () => {
 		<PageWrapper
 			isLoading={isLoading}
 			hasError={isError}
+			skeleton={<TaskPageContentSkeleton />}
 			hasData={task && Object.keys(task).length > 0}
 			stubs={stubs}
 			content={task && <TaskPageContent task={task} />}
