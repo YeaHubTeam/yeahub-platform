@@ -126,6 +126,9 @@
 			"ok": "Yes",
 			"cancel": "No"
 		},
+		"cancel": {
+			"changes": "Are you sure you want to undo the changes?"
+		},
 		"featureFlag": {
 			"delete": {
 				"description": "Do you really want to delete this feature flag?"
@@ -170,7 +173,9 @@
 		},
 		"link": "Links forbidden",
 		"no.spaces": "No spaces",
-		"latin.and.number": "Only capital Latin letters and numbers"
+		"latin.and.number": "Only capital Latin letters and numbers",
+		"latin.characters": "Only Latin characters",
+		"no.uppercase": "No uppercase letters"
 	},
 	"crumbs": {
 		"profile": "Profile",
@@ -243,6 +248,19 @@
 						"user.not.found": "User not found."
 					}
 				}
+			}
+		},
+		"featureFlags": {
+			"create": {
+				"success": "The function flag has been successfully created.",
+				"failed": "Failed to create the flag feature.",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type."
 			}
 		},
 		"tasks": {
@@ -878,6 +896,26 @@
 					"success": "Feature flag successfully deleted",
 					"failed": "Feature flag could not be deleted",
 					"not_found": "Feature flag not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				}
+			},
+			"update": {
+				"single": {
+					"enabled": {
+						"success": "Feature flag successfully enabled",
+						"failed": "Couldn't enable feature flag"
+					},
+					"disabled": {
+						"success": "Feature flag successfully disabled",
+						"failed": "Couldn't disable feature flag"
+					},
+					"not_found": "Feature flag not found",
+					"already_exists": "Feature flag with this key already exists for selected client type"
 				},
 				"auth": {
 					"unauthorized": "The user is not authorized",

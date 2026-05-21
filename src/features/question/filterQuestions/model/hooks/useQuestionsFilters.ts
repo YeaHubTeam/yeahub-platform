@@ -17,6 +17,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		Boolean(filters.specialization) ||
 		(filters.skills || []).length > 0 ||
 		(filters.rate || []).length > 0 ||
+		(filters.topics || []).length > 0 ||
 		(filters.complexity || []).length > 0 ||
 		(filters.status && filters.status !== 'all') ||
 		filters.isMy ||
@@ -38,6 +39,13 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 	const onChangeSkills = (skills: QuestionsFilterParams['skills']) => {
 		onFilterChange({
 			skills,
+			page: 1,
+		});
+	};
+
+	const onChangeTopics = (topics: QuestionsFilterParams['topics']) => {
+		onFilterChange({
+			topics: topics && topics.length > 0 ? topics : undefined,
 			page: 1,
 		});
 	};
@@ -78,6 +86,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		onChangeSpecialization,
 		onChangePage,
 		onChangeSkills,
+		onChangeTopics,
 		onChangeComplexity,
 		onChangeRate,
 		onChangeStatus,
