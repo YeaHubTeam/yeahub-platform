@@ -72,12 +72,7 @@ export const FeatureFlagsTable = ({
 				<Text variant="body3-accent">-</Text>
 			),
 			clientType: <Text variant="body3-accent">{featureFlag.clientType}</Text>,
-			enabled: (
-				<ToggleActiveFeatureFlagSwitch
-					featureFlagId={featureFlag.id}
-					enabled={featureFlag.enabled}
-				/>
-			),
+			enabled: <ToggleActiveFeatureFlagSwitch id={featureFlag.id} enabled={featureFlag.enabled} />,
 			createdAt: (
 				<Text variant="body3-accent">{new Date(featureFlag.createdAt).toLocaleDateString()}</Text>
 			),

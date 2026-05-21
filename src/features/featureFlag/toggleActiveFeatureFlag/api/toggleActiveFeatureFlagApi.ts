@@ -2,18 +2,26 @@ import { i18n, Translation, baseApi, ROUTES, ExtraArgument, ApiTags } from '@/sh
 import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { FeatureFlagApiItem } from '@/entities/featureFlag';
+
 import { getToggleActiveFeatureFlagApiErrorMessage } from '../lib/utils/getToggleActiveFlagApiMessage';
 import { toggleActiveFeatureFlagApiUrls } from '../model/constants/toggleActiveFeatureFlagConstants';
 import { ToggleActiveFeatureFlagError } from '../model/types/toggleActiveFeatureFlagTypes';
 
+type ToggleActiveFeatureFlagBodyRequest = Pick<FeatureFlagApiItem, 'id' | 'enabled'>;
+type ToggleActiveFeatureResponse = FeatureFlagApiItem;
+
 const updateFeatureFlagApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		toggleActiveFeatureFlag: build.mutation<void, { featureFlagId: string; enabled: boolean }>({
-			query: ({ featureFlagId, enabled }) => ({
-				url: route(toggleActiveFeatureFlagApiUrls.toggleActiveFeatureFlag, featureFlagId),
+		toggleActiveFeatureFlag: build.mutation<
+			ToggleActiveFeatureResponse,
+			ToggleActiveFeatureFlagBodyRequest
+		>({
+			query: ({ id, enabled }) => ({
+				url: route(toggleActiveFeatureFlagApiUrls.toggleActiveFeatureFlag, id),
 				method: 'PATCH',
 				body: {
-					enabled: enabled,
+					enabled,
 				},
 			}),
 

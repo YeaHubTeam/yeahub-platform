@@ -3,24 +3,19 @@ import { Switch } from '@/shared/ui/Switch';
 import { useToggleActiveFeatureFlagMutation } from '../../api/toggleActiveFeatureFlagApi';
 
 interface ToggleActiveFeatureFlagSwitchProps {
-	featureFlagId: string;
+	id: string;
 	enabled: boolean;
 }
 
 export const ToggleActiveFeatureFlagSwitch = ({
-	featureFlagId,
+	id,
 	enabled,
 }: ToggleActiveFeatureFlagSwitchProps) => {
-	const [toggleActiveFeatureFlag] = useToggleActiveFeatureFlagMutation();
+	const [toggleActiveFeatureFlag, { isLoading }] = useToggleActiveFeatureFlagMutation();
 
-	const onToggleActiveFeatureFlag = async () => {
-		try {
-			await toggleActiveFeatureFlag({ featureFlagId, enabled: !enabled }).unwrap();
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error(error);
-		}
+	const onToggleActiveFeatureFlag = () => {
+		toggleActiveFeatureFlag({ id, enabled: !enabled });
 	};
 
-	return <Switch checked={enabled} onChange={onToggleActiveFeatureFlag} />;
+	return <Switch checked={enabled} onChange={onToggleActiveFeatureFlag} disabled={isLoading} />;
 };
