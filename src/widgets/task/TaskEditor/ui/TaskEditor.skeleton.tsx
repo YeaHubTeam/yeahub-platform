@@ -14,7 +14,7 @@ export const TaskEditorSkeleton = () => {
 			<Card size="small" withOutsideShadow className={styles.header}>
 				<Flex align="center" justify="between" gap="24" wrap="wrap">
 					<Flex gap="12" align="center">
-						<ProgrammingLanguageSelectSkeleton />
+						<ProgrammingLanguageSelectSkeleton size="large" />
 						<IconButtonSkeleton size="large" />
 					</Flex>
 					<Flex gap="12" align="center">

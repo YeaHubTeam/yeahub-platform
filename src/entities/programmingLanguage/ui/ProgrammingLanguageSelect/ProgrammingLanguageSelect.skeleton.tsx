@@ -1,5 +1,11 @@
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-export const ProgrammingLanguageSelectSkeleton = () => {
-	return <Skeleton width={200} height={40} />;
+interface ProgrammingLanguageSelectSkeletonProps {
+	size?: 'medium' | 'large';
+}
+
+export const ProgrammingLanguageSelectSkeleton = ({
+	size,
+}: ProgrammingLanguageSelectSkeletonProps) => {
+	return <Skeleton width={200} height={size === 'medium' ? 40 : 48} />;
 };
