@@ -5,6 +5,8 @@ import { Loader } from '@/shared/ui/Loader';
 
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 
+import { AnalyticPageTemplateSkeleton } from '@/widgets/analytics/AnalyticPageTemplate';
+
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
@@ -73,6 +75,16 @@ const SkeletonGenerator = () => {
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
+		case ROUTES.analytics['skills-proficiency'].page:
+			return <AnalyticPageTemplateSkeleton />;
+		case ROUTES.analytics.progressSpecializations.page:
+			return <AnalyticPageTemplateSkeleton />;
+		case ROUTES.analytics['difficult-questions'].page:
+			return <AnalyticPageTemplateSkeleton />;
+		case ROUTES.analytics['popular-questions'].page:
+			return <AnalyticPageTemplateSkeleton />;
+		case ROUTES.analytics['popular-skills'].page:
+			return <AnalyticPageTemplateSkeleton />;
 		default:
 			return <Loader />;
 	}
