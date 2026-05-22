@@ -94,7 +94,6 @@ export const FeatureFlagsTable = ({
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				disabled: featureFlag.enabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.featureFlags.edit.route, featureFlag.id));
 				},

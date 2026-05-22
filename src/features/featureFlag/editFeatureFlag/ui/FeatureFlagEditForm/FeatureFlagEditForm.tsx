@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
@@ -49,6 +49,15 @@ export const FeatureFlagEditForm = ({ featureFlag }: FeatureFlagEditFormProps) =
 			roleIds,
 		},
 	});
+
+	useEffect(() => {
+		if (roleIds.length) {
+			methods.reset({
+				...methods.watch(),
+				roleIds,
+			});
+		}
+	}, [methods, roleIds]);
 
 	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
 

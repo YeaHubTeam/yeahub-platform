@@ -1,3 +1,3 @@
 export const editFeatureFlagApiUrls = {
-	editFeatureFlag: `/feature-flags/:flagId`,
+	editFeatureFlag: `feature-flags/:flagId`,
 };

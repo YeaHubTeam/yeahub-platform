@@ -183,7 +183,7 @@ export const ROUTES = {
 			},
 			edit: {
 				route: ':flagId/edit',
-				page: '/admin/featureFlags/:flagId//edit',
+				page: '/admin/featureFlags/:flagId/edit',
 			},
 			details: {
 				route: ':flagId',
