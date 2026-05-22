@@ -22,7 +22,7 @@ interface AnalyticPageTemplateSkeletonProps {
 }
 
 export const AnalyticPageTemplateSkeleton = ({
-	columnCount = 1,
+	columnCount = 3,
 	withChips = false,
 	withImage = false,
 	withSkillFilter = false,
