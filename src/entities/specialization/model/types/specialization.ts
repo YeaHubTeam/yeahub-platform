@@ -3,10 +3,15 @@ import { Response } from '@/shared/libs';
 export interface Specialization {
 	id: number;
 	title: string;
+	slug: string;
 	description: string;
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
+	createdBy: {
+		id: string;
+		username: string;
+	} | null;
 }
 
 export type GetSpecializationsListParamsRequest = {
