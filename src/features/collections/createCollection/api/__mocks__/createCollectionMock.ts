@@ -38,7 +38,7 @@ export const createCollectionMock = http.post<
 		tasksCount: body.taskIds?.length || 0,
 		specializations: body.specializations?.map(
 			(id) =>
-				specializationsMock.data.find((spec) => spec.id === id) || {
+				specializationsMock.find((spec) => spec.id === id) || {
 					id,
 					title: 'Unknown',
 					description: 'Unknown',
