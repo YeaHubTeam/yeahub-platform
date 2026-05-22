@@ -1,5 +1,9 @@
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { StatusChipSize, StatusChipSkeleton } from '@/shared/ui/StatusChip';
 
-export const TaskCategoryChipSkeleton = () => {
-	return <Skeleton height={32} width={60} />;
+interface TaskCategoryChipSkeletonProps {
+	size?: StatusChipSize;
+}
+
+export const TaskCategoryChipSkeleton = ({ size = 'small' }: TaskCategoryChipSkeletonProps) => {
+	return <StatusChipSkeleton size={size} />;
 };

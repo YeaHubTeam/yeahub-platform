@@ -18,10 +18,10 @@ export const TaskDescriptionSkeleton = () => {
 			<TextSkeleton variant="body6" width="100%" />
 
 			<Flex gap="10" wrap="wrap">
-				<TaskStatusChipSkeleton />
+				<TaskStatusChipSkeleton size="medium" />
 				<TaskDifficultyChipSkeleton />
 				<ProgrammingLanguageListSkeleton />
-				<TaskCategoryChipSkeleton />
+				<TaskCategoryChipSkeleton size="medium" />
 				<CompanyCompactListSkeleton />
 			</Flex>
 
