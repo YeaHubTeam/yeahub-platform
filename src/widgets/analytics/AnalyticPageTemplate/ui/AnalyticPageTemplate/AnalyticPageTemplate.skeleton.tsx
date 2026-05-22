@@ -23,7 +23,6 @@ interface AnalyticPageTemplateSkeletonProps {
 }
 
 export const AnalyticPageTemplateSkeleton = ({
-	rowsCount = 10,
 	fieldsCount = 1,
 	withChips = false,
 	withImage = false,
@@ -67,7 +66,7 @@ export const AnalyticPageTemplateSkeleton = ({
 						</tr>
 					</thead>
 					<tbody>
-						{Array.from({ length: rowsCount }).map((_, idx) => (
+						{Array.from({ length: 10 }).map((_, idx) => (
 							<tr key={idx}>
 								<td>
 									<CheckboxSkeleton />

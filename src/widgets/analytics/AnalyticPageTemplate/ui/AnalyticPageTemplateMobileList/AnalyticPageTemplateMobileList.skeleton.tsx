@@ -14,12 +14,11 @@ interface AnalyticPageTemplateMobileListSkeletonProps {
 export const AnalyticPageTemplateMobileListSkeleton = ({
 	withChips = false,
 	fieldsCount = 1,
-	rowsCount = 10,
 	withImage = false,
 }: AnalyticPageTemplateMobileListSkeletonProps) => {
 	return (
 		<Flex componentType="ul" direction="column" gap="16">
-			{Array.from({ length: rowsCount }).map((_, index) => (
+			{Array.from({ length: 10 }).map((_, index) => (
 				<li key={index}>
 					<Card>
 						<Flex gap="12" direction="column">
