@@ -17,7 +17,7 @@ export const specializationListMock = http.get<
 	const page = url.searchParams.get('page') ?? 1;
 	const limit = url.searchParams.get('limit') ?? 10;
 
-	const paginationData = specializationsMock.data.slice(
+	const paginationData = specializationsMock.slice(
 		(Number(page) - 1) * Number(limit),
 		Number(page) * Number(limit),
 	);

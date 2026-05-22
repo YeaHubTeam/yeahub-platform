@@ -3,12 +3,12 @@ import { Response } from '@/shared/libs';
 export interface Specialization {
 	id: number;
 	title: string;
-	slug: string;
+	slug?: string;
 	description: string;
 	imageSrc?: string | null;
 	createdAt?: string;
 	updatedAt?: string;
-	createdBy: {
+	createdBy?: {
 		id: string;
 		username: string;
 	} | null;

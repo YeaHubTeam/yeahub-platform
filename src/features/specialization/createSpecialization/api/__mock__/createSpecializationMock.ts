@@ -24,8 +24,7 @@ export const createSpecializationMock = http.post<
 		updatedAt: new Date().toISOString(),
 	};
 
-	specializationsMock.data.push(newSpecialization);
-	specializationsMock.total++;
+	specializationsMock.push(newSpecialization);
 
 	return HttpResponse.json<CreateSpecializationResponse>(newSpecialization, { status: 201 });
 });

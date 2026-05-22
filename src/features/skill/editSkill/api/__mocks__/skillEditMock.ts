@@ -17,7 +17,7 @@ export const skillEditMock = http.patch<PathParams, EditSkillBodyRequest, EditSk
 
 		const specializations = body.specializations?.map(
 			(id) =>
-				specializationsMock.data.find((spec) => spec.id === id) || {
+				specializationsMock.find((spec) => spec.id === id) || {
 					id,
 					title: 'Not found',
 					description: 'Not found',

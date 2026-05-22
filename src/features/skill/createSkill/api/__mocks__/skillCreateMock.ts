@@ -20,7 +20,7 @@ export const skillCreateMock = http.post<
 		imageSrc: body.imageSrc,
 		specializations: body.specializations?.map(
 			(id) =>
-				specializationsMock.data.find((spec) => spec.id === id) || {
+				specializationsMock.find((spec) => spec.id === id) || {
 					id,
 					title: 'Unknown',
 					description: 'Unknown',
