@@ -8,6 +8,8 @@ export { TopicAdditionalInfo } from './ui/TopicAdditionalInfo/TopicAdditionalInf
 
 export { TopicCard } from './ui/TopicCard/TopicCard';
 
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
+
 export { topicHandlers } from './api/__mock__';
 
 export { topicsMocks } from './api/__mock__/data';

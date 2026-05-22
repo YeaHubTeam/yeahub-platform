@@ -261,31 +261,6 @@
 					}
 				},
 				"alreadyExists": "Feature flag with this key already exists for selected client type."
-			},
-			"edit": {
-				"success": "The flag feature is changing successfully.",
-				"failed": "Failed to change feature flag",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type.",
-				"not_found": "Feature flag not found"
-			},
-			"delete": {
-				"single": {
-					"success": "Feature flag successfully deleted",
-					"failed": "Feature flag could not be deleted",
-					"not_found": "Feature flag not found"
-				},
-				"auth": {
-					"unauthorized": "The user is not authorized",
-					"user": {
-						"verified": "Access only for verified users"
-					}
-				}
 			}
 		},
 		"tasks": {
@@ -913,6 +888,53 @@
 			"trial": {
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
+			}
+		},
+		"featureFlags": {
+			"delete": {
+				"single": {
+					"success": "Feature flag successfully deleted",
+					"failed": "Feature flag could not be deleted",
+					"not_found": "Feature flag not found"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				}
+			},
+			"update": {
+				"single": {
+					"enabled": {
+						"success": "Feature flag successfully enabled",
+						"failed": "Couldn't enable feature flag"
+					},
+					"disabled": {
+						"success": "Feature flag successfully disabled",
+						"failed": "Couldn't disable feature flag"
+					},
+					"not_found": "Feature flag not found",
+					"already_exists": "Feature flag with this key already exists for selected client type"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					}
+				}
+			},
+			"edit": {
+				"success": "The flag feature is changing successfully.",
+				"failed": "Failed to change feature flag",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type.",
+				"not_found": "Feature flag not found"
 			}
 		}
 	},
