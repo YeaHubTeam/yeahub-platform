@@ -15,11 +15,11 @@ export const TaskEditorSkeleton = () => {
 				<Flex align="center" justify="between" gap="24" wrap="wrap">
 					<Flex gap="12" align="center">
 						<ProgrammingLanguageSelectSkeleton />
-						<IconButtonSkeleton />
+						<IconButtonSkeleton size="large" />
 					</Flex>
 					<Flex gap="12" align="center">
-						<ButtonSkeleton width={148} />
-						<ButtonSkeleton width={148} />
+						<ButtonSkeleton width={148} size="large" />
+						<ButtonSkeleton width={148} size="large" />
 					</Flex>
 				</Flex>
 			</Card>
