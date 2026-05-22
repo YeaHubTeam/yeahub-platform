@@ -18,86 +18,74 @@ describe('Flex', () => {
 	});
 
 	describe('justify', () => {
-		test('start', () => {
-			render({ justify: 'start' }, 'justify-start');
-		});
-
-		test('center', () => {
-			render({ justify: 'center' }, 'justify-center');
-		});
-
-		test('between', () => {
-			render({ justify: 'between' }, 'justify-between');
-		});
-
-		test('end', () => {
-			render({ justify: 'end' }, 'justify-end');
-		});
-
-		test('around', () => {
-			render({ justify: 'around' }, 'justify-around');
+		test.each([
+			['start', 'justify-start'],
+			['center', 'justify-center'],
+			['between', 'justify-between'],
+			['end', 'justify-end'],
+			['around', 'justify-around'],
+		] satisfies Array<[NonNullable<FlexProps['justify']>, string]>)('%s', (justify, className) => {
+			render({ justify }, className);
 		});
 	});
 
 	describe('direction', () => {
-		test('row', () => {
-			render({ direction: 'row' }, 'direction-row');
-		});
-
-		test('column', () => {
-			render({ direction: 'column' }, 'direction-column');
-		});
+		test.each([
+			['row', 'direction-row'],
+			['column', 'direction-column'],
+			['row-reverse', 'direction-row-reverse'],
+			['column-reverse', 'direction-column-reverse'],
+		] satisfies Array<[NonNullable<FlexProps['direction']>, string]>)(
+			'%s',
+			(direction, className) => {
+				render({ direction }, className);
+			},
+		);
 	});
 
 	describe('align', () => {
-		test('end', () => {
-			render({ align: 'end' }, 'align-end');
+		test.each([
+			['end', 'align-end'],
+			['start', 'align-start'],
+			['center', 'align-center'],
+			['normal', 'align-normal'],
+		] satisfies Array<[NonNullable<FlexProps['align']>, string]>)('%s', (align, className) => {
+			render({ align }, className);
 		});
+	});
 
-		test('start', () => {
-			render({ align: 'start' }, 'align-start');
-		});
-
-		test('center', () => {
-			render({ align: 'center' }, 'align-center');
+	describe('wrap', () => {
+		test.each([
+			['wrap', 'wrap'],
+			['nowrap', 'nowrap'],
+		] satisfies Array<[NonNullable<FlexProps['wrap']>, string]>)('%s', (wrap, className) => {
+			render({ wrap }, className);
 		});
 	});
 
 	describe('gap', () => {
-		test('4', () => {
-			render({ gap: '4' }, 'gap4');
-		});
-
-		test('8', () => {
-			render({ gap: '8' }, 'gap8');
-		});
-
-		test('12', () => {
-			render({ gap: '12' }, 'gap12');
-		});
-
-		test('14', () => {
-			render({ gap: '14' }, 'gap14');
-		});
-
-		test('16', () => {
-			render({ gap: '16' }, 'gap16');
-		});
-
-		test('24', () => {
-			render({ gap: '24' }, 'gap24');
-		});
-
-		test('32', () => {
-			render({ gap: '32' }, 'gap32');
-		});
-
-		test('40', () => {
-			render({ gap: '40' }, 'gap40');
-		});
-
-		test('120', () => {
-			render({ gap: '120' }, 'gap120');
+		test.each([
+			['4', 'gap4'],
+			['6', 'gap6'],
+			['8', 'gap8'],
+			['10', 'gap10'],
+			['12', 'gap12'],
+			['14', 'gap14'],
+			['16', 'gap16'],
+			['20', 'gap20'],
+			['24', 'gap24'],
+			['26', 'gap26'],
+			['28', 'gap28'],
+			['30', 'gap30'],
+			['32', 'gap32'],
+			['40', 'gap40'],
+			['48', 'gap48'],
+			['52', 'gap52'],
+			['60', 'gap60'],
+			['100', 'gap100'],
+			['120', 'gap120'],
+		] satisfies Array<[NonNullable<FlexProps['gap']>, string]>)('%s', (gap, className) => {
+			render({ gap }, className);
 		});
 	});
 
@@ -107,5 +95,38 @@ describe('Flex', () => {
 
 	test('maxHeight', () => {
 		render({ maxHeight: true }, 'max-height');
+	});
+
+	test('flex', () => {
+		render({ flex: 1 }, 'flex1');
+	});
+
+	test('applies custom className', () => {
+		render({ className: 'custom-class' }, 'custom-class');
+	});
+
+	test('renders children', () => {
+		renderComponent(<Flex>content</Flex>);
+
+		expect(screen.getByText('content')).toBeInTheDocument();
+	});
+
+	test('uses custom dataTestId', () => {
+		renderComponent(<Flex dataTestId="CustomFlex" />);
+
+		expect(screen.getByTestId('CustomFlex')).toBeInTheDocument();
+	});
+
+	test('renders custom componentType', () => {
+		renderComponent(<Flex componentType="section" dataTestId="FlexSection" />);
+		const component = screen.getByTestId('FlexSection');
+
+		expect(component.tagName).toBe('SECTION');
+	});
+
+	test('passes other props', () => {
+		renderComponent(<Flex aria-label="flex layout" />);
+
+		expect(screen.getByLabelText('flex layout')).toBeInTheDocument();
 	});
 });
