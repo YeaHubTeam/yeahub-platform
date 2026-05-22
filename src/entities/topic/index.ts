@@ -11,3 +11,5 @@ export { TopicCard } from './ui/TopicCard/TopicCard';
 export { topicHandlers } from './api/__mock__';
 
 export { topicsMocks } from './api/__mock__/data';
+
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';

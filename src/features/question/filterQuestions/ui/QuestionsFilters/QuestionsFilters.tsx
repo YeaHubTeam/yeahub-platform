@@ -11,7 +11,7 @@ import { getSpecializationId } from '@/entities/profile';
 import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
-import { TopicFilterField } from '@/entities/topic/ui/TopicFilterField/TopicFilterField';
+import { TopicFilterField } from '@/entities/topic';
 
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
 import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
