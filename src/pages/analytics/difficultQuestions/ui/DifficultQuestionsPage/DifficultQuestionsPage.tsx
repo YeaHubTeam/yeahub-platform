@@ -45,7 +45,7 @@ export const DifficultQuestionsPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton fieldsCount={2} />}
+			skeleton={<AnalyticPageTemplateSkeleton columnCount={4} />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

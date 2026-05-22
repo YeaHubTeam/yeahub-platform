@@ -43,7 +43,7 @@ export const ProgressSpecializationsPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton fieldsCount={3} />}
+			skeleton={<AnalyticPageTemplateSkeleton columnCount={5} />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}
