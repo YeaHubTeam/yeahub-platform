@@ -73,7 +73,7 @@ export const FeatureFlagEditForm = ({ featureFlag }: FeatureFlagEditFormProps) =
 				<Flex componentType="main" direction="column" gap="24">
 					<FeatureFlagEditFormHeader onSubmit={onEditTopic} />
 					<Card className={styles.content}>
-						<FeatureFlagForm />
+						<FeatureFlagForm isEdit />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>
