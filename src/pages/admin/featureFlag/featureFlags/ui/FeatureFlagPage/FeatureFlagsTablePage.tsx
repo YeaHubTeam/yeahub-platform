@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { FeatureFlags, i18Namespace, ROUTES } from '@/shared/config';
+import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { SelectedEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
@@ -14,6 +14,8 @@ import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
+
+import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
 
 interface FeatureFlagsTableProps {
 	featureFlags?: FeatureFlagApiItem[];
@@ -56,6 +58,8 @@ export const FeatureFlagsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
+	const navigate = useNavigate();
+
 	const renderTableBody = (featureFlag: FeatureFlagApiItem) => {
 		const enabledStatus: StatusChipItem = featureFlag.enabled
 			? {
@@ -89,43 +93,39 @@ export const FeatureFlagsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
-	const navigate = useNavigate();
-
 	const renderActions = (featureFlag: FeatureFlagApiItem) => {
 		const menuItems: PopoverMenuItem[] = [
 			{
 				icon: <Icon icon="eye" size={24} />,
-				title: 'Посмотреть',
+				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
+				disabled: featureFlag.enabled,
 				onClick: () => {
 					navigate(route(ROUTES.admin.featureFlags.details.page, featureFlag.id));
-				},
+				}
 			},
 			{
 				icon: <Icon icon="pen" size={24} />,
-				title: 'Редактировать',
-				onClick: () => {
-					navigate(`/admin/featureFlags/${featureFlag.id}/edit`);
-				},
+				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
+				disabled: featureFlag.enabled,
+				onClick: () => {},
 			},
 			{
-				icon: <Icon icon="trash" size={24} />,
-				title: 'Удалить',
-				onClick: () => {
-					console.log('delete', featureFlag.id);
-				},
+				renderComponent: () => (
+					<DeleteFeatureFlagButton featureFlagId={featureFlag.id} disabled={featureFlag.enabled} />
+				),
 			},
 		];
 
 		return (
-			<Flex gap="4">
+			<Flex>
 				<Popover menuItems={menuItems}>
 					{({ onToggle }) => (
 						<IconButton
 							aria-label="actions"
 							form="square"
+							icon={<Icon icon="dotsThreeVertical" size={20} />}
 							size="medium"
 							variant="tertiary"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
 							onClick={onToggle}
 						/>
 					)}
@@ -143,8 +143,8 @@ export const FeatureFlagsTable = ({
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
 			items={featureFlags}
-			renderActions={renderActions}
 			renderTableColumnWidths={renderTableColumnWidths}
+			renderActions={renderActions}
 			hasCopyButton
 			selectedItems={selectedItems}
 			onSelectItems={onSelectItems}
