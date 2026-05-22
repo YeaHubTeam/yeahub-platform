@@ -33,6 +33,8 @@ const TasksTablePage = () => {
 		onChangeLangIds,
 		onChangeCategory,
 		onChangeCompanyId,
+		onChangeSortField,
+		onChangeSortOrder,
 	} = useTasksFilters({ page: 1 });
 
 	const {
@@ -109,6 +111,8 @@ const TasksTablePage = () => {
 								onChangeLangIds={onChangeLangIds}
 								onChangeCategory={onChangeCategory}
 								onChangeCompanyId={onChangeCompanyId}
+								onChangeSortField={onChangeSortField}
+								onChangeSortOrder={onChangeSortOrder}
 							/>
 						)}
 					/>

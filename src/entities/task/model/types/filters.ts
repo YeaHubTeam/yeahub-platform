@@ -7,4 +7,6 @@ export interface TasksFilterParams {
 	category?: TaskCategoryCode;
 	langIds?: number[];
 	companyId?: string;
+	sortBy?: string;
+	sortOrder?: string;
 }

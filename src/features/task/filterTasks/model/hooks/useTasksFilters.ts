@@ -19,6 +19,7 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		Boolean(filters.category) ||
 		Boolean(filters.companyId) ||
 		(filters.langIds || []).length > 0;
+	Boolean(filters.sortBy) || Boolean(filters.sortOrder);
 
 	const onChangePage = (page: TasksFilterParams['page']) => {
 		onFilterChange({ page });
@@ -45,6 +46,14 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onFilterChange({ langIds, page: 1 });
 	};
 
+	const onChangeSortField = (sortBy?: TasksFilterParams['sortBy']) => {
+		onFilterChange({ sortBy, page: 1 });
+	};
+
+	const onChangeSortOrder = (sortOrder?: TasksFilterParams['sortOrder']) => {
+		onFilterChange({ sortOrder, page: 1 });
+	};
+
 	return {
 		filters,
 		hasFilters,
@@ -54,6 +63,8 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		onChangeLangIds,
 		onChangeCategory,
 		onChangeCompanyId,
+		onChangeSortField,
+		onChangeSortOrder,
 		onResetFilters,
 	};
 };

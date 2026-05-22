@@ -7,6 +7,8 @@ import { SearchInput } from '@/shared/ui/SearchInput';
 import { PublicCompanySelect } from '@/entities/company';
 import { TaskCategoryFilterList, TasksFilterParams } from '@/entities/task';
 
+import { SortTasksByField } from '../SortTasksByField/SortTasksByField';
+import { SortTasksByOrder } from '../SortTasksByOrder/SortTasksByOrder';
 import { TaskDifficultyFilter } from '../TaskDifficultyFilter/TaskDifficultyFilter';
 import { TaskLanguagesFilter } from '../TaskLanguagesFilter/TaskLanguagesFilter';
 
@@ -17,6 +19,8 @@ interface TasksFiltersProps {
 	onChangeLangIds: (langIds?: TasksFilterParams['langIds']) => void;
 	onChangeCategory: (category?: TasksFilterParams['category']) => void;
 	onChangeCompanyId: (companyId?: TasksFilterParams['companyId']) => void;
+	onChangeSortField: (sortBy?: TasksFilterParams['sortBy']) => void;
+	onChangeSortOrder: (sortOrder?: TasksFilterParams['sortOrder']) => void;
 }
 
 export const TasksFilters = ({
@@ -26,6 +30,8 @@ export const TasksFilters = ({
 	onChangeLangIds,
 	onChangeCategory,
 	onChangeCompanyId,
+	onChangeSortField,
+	onChangeSortOrder,
 }: TasksFiltersProps) => {
 	const { title, difficulty, langIds, category, companyId } = filters;
 	const { t } = useTranslation(i18Namespace.task);
@@ -46,6 +52,8 @@ export const TasksFilters = ({
 			<TaskLanguagesFilter selectedLangIds={langIds} onChangeLangIds={onChangeLangIds} />
 			<TaskCategoryFilterList onChooseCategory={onChangeCategory} selectedCategory={category} />
 			<PublicCompanySelect value={companyId} onChange={onChangeCompanyId} />
+			<SortTasksByField onChangeSortField={onChangeSortField} />
+			<SortTasksByOrder onChangeSortOrder={onChangeSortOrder} />
 		</Flex>
 	);
 };

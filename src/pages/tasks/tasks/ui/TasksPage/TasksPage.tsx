@@ -30,6 +30,8 @@ const TasksPage = () => {
 		onChangeLangIds,
 		onChangeCategory,
 		onChangeCompanyId,
+		onChangeSortField,
+		onChangeSortOrder,
 		onResetFilters,
 	} = useTasksFilters({
 		page: 1,
@@ -55,12 +57,16 @@ const TasksPage = () => {
 			onChangeLangIds={onChangeLangIds}
 			onChangeCategory={onChangeCategory}
 			onChangeCompanyId={onChangeCompanyId}
+			onChangeSortField={onChangeSortField}
+			onChangeSortOrder={onChangeSortOrder}
 			filters={{
 				title: filters.title,
 				difficulty: filters.difficulty,
 				langIds: filters.langIds,
 				category: filters.category,
 				companyId: filters.companyId,
+				sortBy: filters.sortBy,
+				sortOrder: filters.sortOrder,
 			}}
 		/>
 	);
