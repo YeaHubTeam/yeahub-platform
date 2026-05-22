@@ -6,14 +6,14 @@ import { TextSkeleton } from '@/shared/ui/Text';
 
 interface AnalyticPageTemplateMobileListSkeletonProps {
 	withChips?: boolean;
-	fieldsCount?: number;
+	columnCount?: number;
 	withImage?: boolean;
 	rowsCount?: number;
 }
 
 export const AnalyticPageTemplateMobileListSkeleton = ({
 	withChips = false,
-	fieldsCount = 1,
+	columnCount = 1,
 	withImage = false,
 }: AnalyticPageTemplateMobileListSkeletonProps) => {
 	return (
@@ -25,7 +25,7 @@ export const AnalyticPageTemplateMobileListSkeleton = ({
 							{withChips && <StatusChipSkeleton />}
 							{withImage && <ImageWithWrapperSkeleton />}
 							<TextSkeleton variant="body3-accent" width="70%" />
-							{Array.from({ length: fieldsCount }).map((_, fieldIndex) => (
+							{Array.from({ length: columnCount }).map((_, fieldIndex) => (
 								<Flex key={fieldIndex} justify="between">
 									<TextSkeleton variant="body3-accent" width="25%" />
 									<TextSkeleton variant="body3-accent" width="15%" />
