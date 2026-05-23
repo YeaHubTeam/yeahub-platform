@@ -1,4 +1,5 @@
 export { TopicForm } from './ui/TopicForm/TopicForm';
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 
 export type { Topic, CreateOrEditTopicFormValues } from './model/types/topic';
 
@@ -12,3 +13,5 @@ export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 export { topicHandlers } from './api/__mock__';
 
 export { topicsMocks } from './api/__mock__/data';
+
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';

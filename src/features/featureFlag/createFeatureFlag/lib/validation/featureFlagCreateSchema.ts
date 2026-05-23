@@ -26,7 +26,7 @@ export const featureFlagCreateSchema: yup.ObjectSchema<CreateFeatureFlagFormValu
 
 		description: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 
-		roleIds: yup.array().of(yup.number().required()).required(),
+		roleIds: yup.array().of(yup.number().required()).default([]).defined(),
 
 		clientType: yup
 			.mixed<ClientType>()
