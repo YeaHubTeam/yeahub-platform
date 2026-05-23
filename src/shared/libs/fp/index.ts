@@ -9,3 +9,5 @@ export { isPathMatch } from './isPathMatch';
 export { isEmptyHtml } from './isEmptyHtml';
 export { calculatePageNavigation } from './calculatePageNavigation';
 export { DATE_FORMATS } from './dateFormats';
+export { calculatePagination } from './calculatePagination';
+export { createSlug } from './createSlug';
