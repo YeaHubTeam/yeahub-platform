@@ -31,15 +31,6 @@ export const specializationListMock = http.get<
 		return hasSearch && hasAuthor;
 	});
 
-	// let filtered = [...specializationsMock];
-	//
-	// if (title) {
-	// 	filtered = filtered.filter((item) => item.title.toLowerCase().includes(title.toLowerCase()));
-	// }
-	// if (authorId) {
-	// 	filtered = filtered.filter((item) => item.createdBy?.id === authorId);
-	// }
-
 	const paginationData = calculatePagination(filteredSpecializations, page, limit);
 
 	return HttpResponse.json({
