@@ -7,6 +7,7 @@ export { useGetTopicsListQuery, useGetTopicByIdQuery } from './api/topicApi';
 export { TopicAdditionalInfo } from './ui/TopicAdditionalInfo/TopicAdditionalInfo';
 
 export { TopicCard } from './ui/TopicCard/TopicCard';
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 
 export { topicHandlers } from './api/__mock__';
 

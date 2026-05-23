@@ -5,6 +5,7 @@ export interface QuestionsFilterParams {
 	complexity?: number[];
 	rate?: number[];
 	status?: QuestionFilterStatus;
+	authorId?: string;
 	title?: string;
 	specialization?: number;
 	page?: number;
