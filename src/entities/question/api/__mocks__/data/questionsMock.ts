@@ -1,4 +1,4 @@
-import { Response } from '@/shared/libs';
+import { author, Response } from '@/shared/libs';
 
 import { MostDifficultQuestionsResponse, Question } from '../../../model/types/question';
 
@@ -34,6 +34,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -92,6 +94,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -148,6 +152,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -204,6 +210,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -258,6 +266,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -303,6 +313,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -348,6 +360,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -393,6 +407,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -438,6 +454,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -483,6 +501,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -533,6 +553,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -592,6 +614,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -648,6 +672,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -704,6 +730,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -760,6 +788,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -816,6 +846,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -872,6 +904,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -928,6 +962,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -984,6 +1020,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1040,6 +1078,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1104,6 +1144,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1150,6 +1192,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1199,6 +1243,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1245,6 +1291,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1292,6 +1340,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1338,6 +1388,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1384,6 +1436,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1430,6 +1484,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1476,6 +1532,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1522,6 +1580,8 @@ export const questionsMock: Response<Question[]> = {
 					imageSrc: null,
 					createdAt: '2024-10-03T09:08:10.605Z',
 					updatedAt: '2024-11-02T06:46:12.745Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			questionSkills: [
@@ -1554,6 +1614,8 @@ export const mostDifficultQuestions: MostDifficultQuestionsResponse = {
 			imageSrc: 'http://example.com/image.jpg',
 			createdAt: '2024-12-10T10:00:00.000Z',
 			updatedAt: '2024-12-10T10:00:00.000Z',
+			slug: 'slug',
+			createdBy: author,
 		},
 		calculatedAt: '2024-12-10T10:00:00.000Z',
 		topStat: [

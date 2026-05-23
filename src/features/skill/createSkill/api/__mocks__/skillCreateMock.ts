@@ -18,14 +18,11 @@ export const skillCreateMock = http.post<
 		title: body.title,
 		description: body.description,
 		imageSrc: body.imageSrc,
-		specializations: body.specializations?.map(
-			(id) =>
-				specializationsMock.find((spec) => spec.id === id) || {
-					id,
-					title: 'Unknown',
-					description: 'Unknown',
-				},
-		),
+		specializations: body.specializations?.map((id) => {
+			const index = specializationsMock.findIndex((spec) => spec.id === id);
+
+			return specializationsMock[index];
+		}),
 	};
 
 	skillsMock.data.push(newSkill);

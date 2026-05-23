@@ -22,21 +22,30 @@ export const specializationListMock = http.get<
 	const title = url.searchParams.get('title');
 	const authorId = url.searchParams.get('authorId');
 
-	let filtered = [...specializationsMock];
+	const filteredSpecializations = specializationsMock.filter((specialization) => {
+		const hasSearch = title
+			? specialization.title.toLowerCase().includes(title.toLowerCase())
+			: true;
+		const hasAuthor = authorId ? specialization.createdBy?.id === authorId : true;
 
-	if (title) {
-		filtered = filtered.filter((item) => item.title.toLowerCase().includes(title.toLowerCase()));
-	}
-	if (authorId) {
-		filtered = filtered.filter((item) => item.createdBy?.id === authorId);
-	}
+		return hasSearch && hasAuthor;
+	});
 
-	const paginationData = calculatePagination(filtered, page, limit);
+	// let filtered = [...specializationsMock];
+	//
+	// if (title) {
+	// 	filtered = filtered.filter((item) => item.title.toLowerCase().includes(title.toLowerCase()));
+	// }
+	// if (authorId) {
+	// 	filtered = filtered.filter((item) => item.createdBy?.id === authorId);
+	// }
+
+	const paginationData = calculatePagination(filteredSpecializations, page, limit);
 
 	return HttpResponse.json({
 		data: paginationData,
 		page,
-		total: filtered.length,
+		total: filteredSpecializations.length,
 		limit,
 	});
 });

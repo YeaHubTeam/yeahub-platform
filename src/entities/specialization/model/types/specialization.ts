@@ -1,17 +1,15 @@
 import { Response } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 export interface Specialization {
 	id: number;
 	title: string;
-	slug?: string;
+	slug: string;
 	description: string;
-	imageSrc?: string | null;
-	createdAt?: string;
-	updatedAt?: string;
-	createdBy?: {
-		id: string;
-		username: string;
-	} | null;
+	imageSrc: string | null;
+	createdAt: string;
+	updatedAt: string | null;
+	createdBy: Author;
 }
 
 export type GetSpecializationsListParamsRequest = {
@@ -31,5 +29,5 @@ export type GetSpecializationByIdResponse = Specialization;
 
 export type CreateOrEditSpecializationFormValues = Pick<
 	Specialization,
-	'id' | 'title' | 'description' | 'imageSrc'
+	'id' | 'title' | 'description'
 >;
