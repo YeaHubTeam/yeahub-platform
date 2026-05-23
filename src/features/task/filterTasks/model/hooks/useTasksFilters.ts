@@ -18,8 +18,9 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 		Boolean(filters.difficulty) ||
 		Boolean(filters.category) ||
 		Boolean(filters.companyId) ||
-		(filters.langIds || []).length > 0;
-	Boolean(filters.sortBy) || Boolean(filters.sortOrder);
+		(filters.langIds || []).length > 0 || 
+		Boolean(filters.sortBy) || 
+		Boolean(filters.sortOrder);
 
 	const onChangePage = (page: TasksFilterParams['page']) => {
 		onFilterChange({ page });

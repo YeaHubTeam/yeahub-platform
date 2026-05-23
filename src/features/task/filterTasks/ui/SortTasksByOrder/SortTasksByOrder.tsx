@@ -1,40 +1,25 @@
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
-
 import { i18Namespace, Tasks } from '@/shared/config';
-import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
-
 import { SORT_ORDER_DATA } from '../../model/constants/sort';
+import { SortOrder } from '@/shared/libs';
+import { SortFilterSection } from '@/shared/ui/SortFilterSection';
+import prepareSortFilterData from '../../model/helpers/prepareSortFilterData';
 
 interface SortTasksByOrderProps {
-	onChangeSortOrder: (sortOrder?: string | undefined) => void;
+	value?: SortOrder;
+	onChangeSortOrder: (sortOrder?: SortOrder) => void;
 }
 
-export const SortTasksByOrder = ({ onChangeSortOrder }: SortTasksByOrderProps) => {
-	const [searchParams] = useSearchParams();
-	const currentSort = searchParams?.get('sortOrder');
+export const SortTasksByOrder = ({ onChangeSortOrder, value }: SortTasksByOrderProps) => {
 	const { t } = useTranslation(i18Namespace.task);
-
-	const updatedSortOrderData = SORT_ORDER_DATA.map((order) => ({
-		...order,
-		title: t(order.label),
-		active: currentSort === order.value,
-	}));
-
-	const onChooseSortOrder = (id: number) => {
-		const order = SORT_ORDER_DATA.find((order) => order.id === id);
-
-		if (!order) return;
-		onChangeSortOrder(order.value);
-	};
+	const preparedData = prepareSortFilterData({data: SORT_ORDER_DATA, value, t})
 
 	return (
-		<>
-			<BaseFilterSection
-				title={t(Tasks.SORT_ORDER_TITLE)}
-				data={updatedSortOrderData}
-				onClick={onChooseSortOrder}
-			/>
-		</>
+		<SortFilterSection
+			title={t(Tasks.SORT_ORDER_TITLE)}
+			onChange={onChangeSortOrder}
+			data={preparedData}
+			value={value}
+		/>
 	);
 };

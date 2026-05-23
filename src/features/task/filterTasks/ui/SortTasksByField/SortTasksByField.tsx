@@ -1,40 +1,25 @@
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
-
 import { i18Namespace, Tasks } from '@/shared/config';
-import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
-
 import { SORT_FIELDS_DATA } from '../../model/constants/sort';
+import { SortBy } from '@/shared/libs/app/types';
+import { SortFilterSection } from '@/shared/ui/SortFilterSection';
+import prepareSortFilterData from '../../model/helpers/prepareSortFilterData';
 
 interface SortTasksFieldProps {
-	onChangeSortField: (field?: string) => void;
+	value?: SortBy;
+	onChangeSortField: (field?: SortBy) => void;
 }
 
-export const SortTasksByField = ({ onChangeSortField }: SortTasksFieldProps) => {
+export const SortTasksByField = ({ onChangeSortField, value }: SortTasksFieldProps) => {
 	const { t } = useTranslation(i18Namespace.task);
-	const [searchParams] = useSearchParams();
-	const currentSort = searchParams?.get('sortBy');
-
-	const updatedFieldsData = SORT_FIELDS_DATA.map((field) => ({
-		...field,
-		title: t(field.label),
-		active: currentSort === field.value,
-	}));
-
-	const onChooseField = (id: number) => {
-		const selectedField = SORT_FIELDS_DATA.find((field) => field.id === id);
-
-		if (!selectedField) return;
-		onChangeSortField(selectedField?.value);
-	};
+	const preparedData = prepareSortFilterData({data: SORT_FIELDS_DATA, value, t})
 
 	return (
-		<>
-			<BaseFilterSection
-				title={t(Tasks.SORT_FIELDS_TITLE)}
-				data={updatedFieldsData}
-				onClick={onChooseField}
-			/>
-		</>
+		<SortFilterSection
+			title={t(Tasks.SORT_FIELDS_TITLE)}
+			data={preparedData}
+			onChange={onChangeSortField}
+			value={value}
+		/>
 	);
 };

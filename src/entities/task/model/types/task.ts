@@ -2,6 +2,7 @@ import { Response, SortOrder } from '@/shared/libs';
 
 import { Company } from '@/entities/company/@x/task';
 import { ProgrammingLanguage } from '@/entities/programmingLanguage/@x/task';
+import { SortBy } from '@/shared/libs/app/types';
 
 export type TaskStatus = 'solved' | 'attempted' | 'not_started';
 export type TaskDifficulty = 1 | 2 | 3 | 4 | 5;
@@ -105,7 +106,7 @@ export interface GetTasksListParams {
 	langIds?: number[];
 	isActive?: boolean;
 	search?: string;
-	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
+	sortBy?: SortBy;
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
 	collectionId?: number;

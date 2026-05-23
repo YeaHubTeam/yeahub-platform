@@ -46,6 +46,8 @@ const TasksPage = () => {
 		category: filters.category,
 		companyId: filters.companyId,
 		canSolve: filters.title ? true : undefined,
+		sortBy: filters.sortBy,
+		sortOrder: filters.sortOrder
 	});
 
 	const tasksList = data?.data || [];

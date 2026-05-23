@@ -1,5 +1,5 @@
 export type SortOrder = 'ASC' | 'DESC';
-
+export type SortBy = 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
 export interface SelectedEntity<Id extends string | number> {
 	id: Id;
 	title?: string;

@@ -52,8 +52,8 @@ export const TasksFilters = ({
 			<TaskLanguagesFilter selectedLangIds={langIds} onChangeLangIds={onChangeLangIds} />
 			<TaskCategoryFilterList onChooseCategory={onChangeCategory} selectedCategory={category} />
 			<PublicCompanySelect value={companyId} onChange={onChangeCompanyId} />
-			<SortTasksByField onChangeSortField={onChangeSortField} />
-			<SortTasksByOrder onChangeSortOrder={onChangeSortOrder} />
+			<SortTasksByField value={filters.sortBy} onChangeSortField={onChangeSortField} />
+			<SortTasksByOrder value={filters.sortOrder} onChangeSortOrder={onChangeSortOrder} />
 		</Flex>
 	);
 };
