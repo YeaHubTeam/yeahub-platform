@@ -921,6 +921,18 @@
 						"verified": "Access only for verified users"
 					}
 				}
+			},
+			"edit": {
+				"success": "The flag feature is changing successfully.",
+				"failed": "Failed to change feature flag",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type.",
+				"not_found": "Feature flag not found"
 			}
 		}
 	},
