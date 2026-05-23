@@ -1,5 +1,12 @@
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-export const StatusChipSkeleton = () => {
-	return <Skeleton width={80} height={20} borderRadius={30} />;
+import { StatusChipSize } from './StatusChip';
+import styles from './StatusChip.module.css';
+
+interface StatusChipSkeletonProps {
+	size?: StatusChipSize;
+}
+
+export const StatusChipSkeleton = ({ size = 'small' }: StatusChipSkeletonProps) => {
+	return <Skeleton width={80} className={styles[`size-${size}`]} borderRadius={30} />;
 };
