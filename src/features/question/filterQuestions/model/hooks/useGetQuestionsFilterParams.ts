@@ -9,6 +9,7 @@ export const useGetQuestionsFilterParams = (initialParams: QuestionsFilterParams
 		specialization: parsedParams.specialization
 			? Number(parsedParams.specialization)
 			: initialParams.specialization,
+		authorId: parsedParams.authorId || initialParams.authorId,
 		title: parsedParams.title || initialParams.title,
 		skills: parsedParams.skills ? parsedParams.skills.split(',').map(Number) : initialParams.skills,
 		status: (parsedParams.status as QuestionFilterStatus) || initialParams.status,
