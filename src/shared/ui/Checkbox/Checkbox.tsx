@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
 import styles from './Checkbox.module.css';
+import { checkBoxTestIDs } from './constants';
 import { CheckboxProps } from './types';
 
 /**
@@ -26,17 +27,23 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
 		return (
 			<label
+				data-testid={checkBoxTestIDs.checkboxComponent}
 				className={classnames(styles['checkbox-wrapper'], className, {
 					[styles.disabled]: props.disabled,
 				})}
 			>
 				<input
+					data-testid={checkBoxTestIDs.checkbox}
 					ref={internalRef}
 					type="checkbox"
 					className={classnames(styles.checkbox)}
 					{...props}
 				/>
-				{label && <span className={styles.label}>{label}</span>}
+				{label && (
+					<span data-testid={checkBoxTestIDs.label} className={styles.label}>
+						{label}
+					</span>
+				)}
 			</label>
 		);
 	},
