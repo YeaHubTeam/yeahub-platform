@@ -78,7 +78,7 @@ describe('TaskCategorySelect', () => {
 		});
 
 		test('correct value should be displayed when value is selected (Dropdown)', async () => {
-			render({ value: ['algorithms'], hasMultiple: false });
+			render({ value: [mockTaskCategories[0].code], hasMultiple: false });
 			await waitFor(() => {
 				expect(screen.getByText(taskCategories[mockTaskCategories[0].code])).toBeInTheDocument();
 			});
