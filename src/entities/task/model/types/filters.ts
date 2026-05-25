@@ -1,6 +1,6 @@
 import { SortOrder } from '@/shared/libs';
-import type { TaskCategoryCode, TaskDifficulty } from './task';
-import { SortBy } from '@/shared/libs/app/types';
+
+import type { TaskCategoryCode, TaskDifficulty, TaskFilterOrderBy } from './task';
 
 export interface TasksFilterParams {
 	page?: number;
@@ -9,6 +9,6 @@ export interface TasksFilterParams {
 	category?: TaskCategoryCode;
 	langIds?: number[];
 	companyId?: string;
-	sortBy?: SortBy;
+	sortBy?: TaskFilterOrderBy;
 	sortOrder?: SortOrder;
 }

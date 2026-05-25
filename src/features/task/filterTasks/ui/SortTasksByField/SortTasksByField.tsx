@@ -1,25 +1,38 @@
 import { useTranslation } from 'react-i18next';
+
 import { i18Namespace, Tasks } from '@/shared/config';
-import { SORT_FIELDS_DATA } from '../../model/constants/sort';
-import { SortBy } from '@/shared/libs/app/types';
-import { SortFilterSection } from '@/shared/ui/SortFilterSection';
-import prepareSortFilterData from '../../model/helpers/prepareSortFilterData';
+import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
+
+import { TaskFilterOrderBy } from '@/entities/task';
 
 interface SortTasksFieldProps {
-	value?: SortBy;
-	onChangeSortField: (field?: SortBy) => void;
+	selectedOrderBy?: TaskFilterOrderBy;
+	onChangeSortField: (field?: TaskFilterOrderBy) => void;
 }
 
-export const SortTasksByField = ({ onChangeSortField, value }: SortTasksFieldProps) => {
+export const SortTasksByField = ({ onChangeSortField, selectedOrderBy }: SortTasksFieldProps) => {
 	const { t } = useTranslation(i18Namespace.task);
-	const preparedData = prepareSortFilterData({data: SORT_FIELDS_DATA, value, t})
+
+	const field: BaseFilterItem<TaskFilterOrderBy>[] = [
+		{ id: 'name', title: t(Tasks.SORT_FIELDS_NAME) },
+		{ id: 'difficulty', title: t(Tasks.SORT_DIFFICULTY) },
+		{ id: 'createdAt', title: t(Tasks.SORT_CREATED_AT) },
+	];
+
+	const preparedData = field.map((item) => ({
+		...item,
+		active: selectedOrderBy === item.id,
+	}));
+
+	const onChangeOrder = (orderBy: TaskFilterOrderBy) => {
+		onChangeSortField(orderBy === selectedOrderBy ? undefined : orderBy);
+	};
 
 	return (
-		<SortFilterSection
+		<BaseFilterSection
 			title={t(Tasks.SORT_FIELDS_TITLE)}
 			data={preparedData}
-			onChange={onChangeSortField}
-			value={value}
+			onClick={onChangeOrder}
 		/>
 	);
 };

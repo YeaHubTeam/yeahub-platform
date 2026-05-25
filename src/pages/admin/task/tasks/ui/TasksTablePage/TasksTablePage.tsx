@@ -49,6 +49,8 @@ const TasksTablePage = () => {
 		langIds: filters.langIds,
 		category: filters.category,
 		companyId: filters.companyId,
+		sortBy: filters.sortBy,
+		sortOrder: filters.sortOrder,
 	});
 
 	const onSelectTasks = (ids: SelectedAdminEntities<string>) => {
@@ -106,6 +108,7 @@ const TasksTablePage = () => {
 						renderFilter={() => (
 							<TasksFilters
 								filters={filters}
+								withSorting={true}
 								onChangeTitle={onChangeTitle}
 								onChangeDifficulty={onChangeDifficulty}
 								onChangeLangIds={onChangeLangIds}
