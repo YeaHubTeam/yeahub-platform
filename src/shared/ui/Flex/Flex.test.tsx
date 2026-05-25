@@ -2,7 +2,15 @@ import { screen } from '@testing-library/react';
 
 import { renderComponent } from '@/shared/libs';
 
+import {
+	alignClasses,
+	directionClasses,
+	gapClasses,
+	justifyClasses,
+	wrapClasses,
+} from './constants';
 import { Flex, FlexProps } from './Flex';
+import { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './types';
 
 const render = (props: FlexProps, className: string) => {
 	renderComponent(<Flex {...props} />);
@@ -18,24 +26,16 @@ describe('Flex', () => {
 	});
 
 	describe('justify', () => {
-		test.each([
-			['start', 'justify-start'],
-			['center', 'justify-center'],
-			['between', 'justify-between'],
-			['end', 'justify-end'],
-			['around', 'justify-around'],
-		] satisfies Array<[NonNullable<FlexProps['justify']>, string]>)('%s', (justify, className) => {
-			render({ justify }, className);
-		});
+		test.each(Object.entries(justifyClasses) as [FlexJustify, string][])(
+			'%s',
+			(justify, className) => {
+				render({ justify }, className);
+			},
+		);
 	});
 
 	describe('direction', () => {
-		test.each([
-			['row', 'direction-row'],
-			['column', 'direction-column'],
-			['row-reverse', 'direction-row-reverse'],
-			['column-reverse', 'direction-column-reverse'],
-		] satisfies Array<[NonNullable<FlexProps['direction']>, string]>)(
+		test.each(Object.entries(directionClasses) as [FlexDirection, string][])(
 			'%s',
 			(direction, className) => {
 				render({ direction }, className);
@@ -44,47 +44,19 @@ describe('Flex', () => {
 	});
 
 	describe('align', () => {
-		test.each([
-			['end', 'align-end'],
-			['start', 'align-start'],
-			['center', 'align-center'],
-			['normal', 'align-normal'],
-		] satisfies Array<[NonNullable<FlexProps['align']>, string]>)('%s', (align, className) => {
+		test.each(Object.entries(alignClasses) as [FlexAlign, string][])('%s', (align, className) => {
 			render({ align }, className);
 		});
 	});
 
 	describe('wrap', () => {
-		test.each([
-			['wrap', 'wrap'],
-			['nowrap', 'nowrap'],
-		] satisfies Array<[NonNullable<FlexProps['wrap']>, string]>)('%s', (wrap, className) => {
+		test.each(Object.entries(wrapClasses) as [FlexWrap, string][])('%s', (wrap, className) => {
 			render({ wrap }, className);
 		});
 	});
 
 	describe('gap', () => {
-		test.each([
-			['4', 'gap4'],
-			['6', 'gap6'],
-			['8', 'gap8'],
-			['10', 'gap10'],
-			['12', 'gap12'],
-			['14', 'gap14'],
-			['16', 'gap16'],
-			['20', 'gap20'],
-			['24', 'gap24'],
-			['26', 'gap26'],
-			['28', 'gap28'],
-			['30', 'gap30'],
-			['32', 'gap32'],
-			['40', 'gap40'],
-			['48', 'gap48'],
-			['52', 'gap52'],
-			['60', 'gap60'],
-			['100', 'gap100'],
-			['120', 'gap120'],
-		] satisfies Array<[NonNullable<FlexProps['gap']>, string]>)('%s', (gap, className) => {
+		test.each(Object.entries(gapClasses) as [FlexGap, string][])('%s', (gap, className) => {
 			render({ gap }, className);
 		});
 	});
