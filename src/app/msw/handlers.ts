@@ -23,6 +23,7 @@ import { usersRatingHandlers } from '@/entities/user';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
+import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -74,6 +75,7 @@ export const handlers = [
 	...createCollectionHandlers,
 	...topicEditHandlers,
 	...createCompanyHandlers,
+	...featureFlagDeleteHandlers,
 	...programmingLanguageHandlers,
 	...referralLinksHandlers,
 	...referralLinkDeleteHandlers,
