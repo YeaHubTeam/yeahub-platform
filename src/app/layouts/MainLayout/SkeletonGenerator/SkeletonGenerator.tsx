@@ -21,6 +21,7 @@ import { InterviewQuizResultPageSkeleton } from '@/pages/interview/interviewQuiz
 import { InterviewStatisticsPageSkeleton } from '@/pages/interview/interviewStatistics';
 import { MainPageSkeleton } from '@/pages/interview/main';
 import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
+import { TaskPageContentSkeleton } from '@/pages/tasks/task';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
 
 const SkeletonGenerator = () => {
@@ -31,6 +32,7 @@ const SkeletonGenerator = () => {
 		ROUTES.admin.questions.details.page,
 		location.pathname,
 	);
+	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -38,6 +40,10 @@ const SkeletonGenerator = () => {
 
 	if (isAdminQuestionDetailsPage) {
 		return <QuestionPageContentSkeleton />;
+	}
+
+	if (isTaskDetailsPage) {
+		return <TaskPageContentSkeleton />;
 	}
 
 	switch (location.pathname) {

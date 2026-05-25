@@ -250,19 +250,6 @@
 				}
 			}
 		},
-		"featureFlags": {
-			"create": {
-				"success": "The function flag has been successfully created.",
-				"failed": "Failed to create the flag feature.",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type."
-			}
-		},
 		"tasks": {
 			"create": {
 				"success": "Task created successfully",
@@ -891,6 +878,17 @@
 			}
 		},
 		"featureFlags": {
+			"create": {
+				"success": "The function flag has been successfully created.",
+				"failed": "Failed to create the flag feature.",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type."
+			},
 			"delete": {
 				"single": {
 					"success": "Feature flag successfully deleted",
@@ -923,6 +921,18 @@
 						"verified": "Access only for verified users"
 					}
 				}
+			},
+			"edit": {
+				"success": "The flag feature is changing successfully.",
+				"failed": "Failed to change feature flag",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type.",
+				"not_found": "Feature flag not found"
 			}
 		}
 	},
