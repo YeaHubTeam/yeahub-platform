@@ -7,13 +7,6 @@
 				"submit": "Add"
 			}
 		},
-		"error": {
-			"featureFlags": {
-				"title": "Failed to load data",
-				"text": "Please try again, this might solve the problem",
-				"button": "Retry"
-			}
-		},
 		"filterEmpty": {
 			"featureFlags": {
 				"title": "Unfortunately, no feature flags were found for your request.",

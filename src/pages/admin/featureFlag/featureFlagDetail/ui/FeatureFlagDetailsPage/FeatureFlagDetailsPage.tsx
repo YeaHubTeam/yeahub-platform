@@ -1,40 +1,28 @@
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-
-import { FeatureFlags, i18Namespace } from '@/shared/config';
 
 import { useGetFeatureFlagByIdQuery } from '@/entities/featureFlag';
 
-import { PageWrapper } from '@/widgets/PageWrapper';
+import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { FeatureFlagDetailsPageContent } from '../FeatureFlagDetailsPageContent/FeatureFlagDetailsPageContent';
 
 const FeatureFlagDetailsPage = () => {
-	const { flagId } = useParams<{ flagId: string }>();
-	const { t } = useTranslation([i18Namespace.featureFlags]);
+	const { flagId = '' } = useParams<{ flagId: string }>();
 
-	if (!flagId) {
-		return null;
-	}
-
-	const { data, isLoading, isError, refetch } = useGetFeatureFlagByIdQuery(flagId);
+	const { data, isLoading, isError, refetch, error } = useGetFeatureFlagByIdQuery(flagId);
 	const content = data && <FeatureFlagDetailsPageContent featureFlag={data} />;
-
-	const stubs = {
+	const hasData = data && Object.keys(data).length > 0;
+	const stubs: PageWrapperStubs = {
 		error: {
-			title: t(FeatureFlags.STUB_ERROR_TITLE),
-			text: t(FeatureFlags.STUB_ERROR_TEXT),
-			buttonText: t(FeatureFlags.STUB_ERROR_BUTTON),
 			onClick: refetch,
 		},
 	};
-
 	return (
 		<PageWrapper
 			roles={['admin']}
 			isLoading={isLoading}
 			hasError={isError}
-			hasData={!!data}
+			hasData={hasData}
 			stubs={stubs}
 			content={content}
 		>

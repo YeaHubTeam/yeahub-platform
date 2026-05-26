@@ -1,7 +1,8 @@
 import { ApiTags, baseApi } from '@/shared/config';
 
-import { featureFlagApiUrls } from '../model/constants/featureFlags';
+import { featureFlagApiUrls, getFeatureFlagByIdUrl } from '../model/constants/featureFlags';
 import {
+	FeatureFlagApiItem,
 	GetFeatureFlagsListParamsRequest,
 	GetFeatureFlagsListResponse,
 } from '../model/types/featureFlag';
@@ -17,7 +18,13 @@ export const featureFlagApi = baseApi.injectEndpoints({
 				providesTags: [ApiTags.FEATURE_FLAGS],
 			},
 		),
+		getFeatureFlagById: build.query<FeatureFlagApiItem, string>({
+			query: (id) => ({
+				url: getFeatureFlagByIdUrl(id),
+			}),
+			providesTags: [ApiTags.FEATURE_FLAG_DETAIL],
+		}),
 	}),
 });
 
-export const { useGetFeatureFlagsListQuery } = featureFlagApi;
+export const { useGetFeatureFlagsListQuery, useGetFeatureFlagByIdQuery } = featureFlagApi;

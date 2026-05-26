@@ -1,7 +1,10 @@
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
-import { FeatureFlags, i18Namespace } from '@/shared/config';
+import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
+import { route } from '@/shared/libs';
 import { BackHeader } from '@/shared/ui/BackHeader';
+import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
@@ -9,6 +12,9 @@ import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
+
+import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
+import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
 
 import styles from './FeatureFlagDetailsPageContent.module.css';
 
@@ -20,9 +26,15 @@ export const FeatureFlagDetailsPageContent = ({
 	featureFlag,
 }: FeatureFlagDetailsPageContentProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
+	const { t: tTranslate } = useTranslation([i18Namespace.translation]);
 	return (
 		<>
-			<BackHeader></BackHeader>
+			<BackHeader>
+				<DeleteFeatureFlagButton featureFlagId={featureFlag.id} />
+				<NavLink to={route(ROUTES.admin.featureFlags.edit.page, featureFlag.id)}>
+					<Button>{tTranslate(Translation.EDIT)}</Button>
+				</NavLink>
+			</BackHeader>
 
 			<Flex gap="20" align="start" justify="between">
 				<Card withOutsideShadow className={styles['main-card']}>
@@ -51,6 +63,7 @@ export const FeatureFlagDetailsPageContent = ({
 						<Flex align="start" direction="column" gap="16">
 							<Text variant="body1" color="black-700">
 								{t(FeatureFlags.DETAILS_ACTIVITY)}
+								<ToggleActiveFeatureFlagSwitch id={featureFlag.id} enabled={featureFlag.enabled} />
 							</Text>
 						</Flex>
 
