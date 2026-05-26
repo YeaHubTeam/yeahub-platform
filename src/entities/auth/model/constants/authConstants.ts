@@ -10,3 +10,14 @@ export const authApiUrls = {
 };
 
 export const listAdminRoles: RoleName[] = ['author', 'admin'];
+
+export const ROLE_ID_TO_NAME: Record<number, RoleName> = {
+	1: 'guest',
+	2: 'candidate',
+	3: 'member',
+	4: 'admin',
+	5: 'HR',
+	6: 'candidate-free',
+	7: 'candidate-premium',
+	8: 'author',
+};
