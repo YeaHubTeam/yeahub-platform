@@ -3,6 +3,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { baseApi, createReduxStore, State } from '@/shared/config';
 
 import { refreshMiddleware } from '@/entities/auth';
+import { featureFlagReducer } from '@/entities/featureFlag';
 import { profileReducer } from '@/entities/profile';
 import { activeQuizSlice } from '@/entities/quiz';
 import { activeSubscriptionSlice } from '@/entities/subscription';
@@ -39,6 +40,7 @@ export const reducers = {
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
 	referralLinksPage: referralLinksPageReducer,
+	featureFlag: featureFlagReducer,
 };
 
 export const getStore = (initialState?: State) =>

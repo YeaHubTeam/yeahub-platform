@@ -24,9 +24,11 @@ export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
 export type GetFeatureFlagByIdResponse = FeatureFlagApiItem;
 
+export type Flag = string;
+
 export interface FeatureFlagApiItem {
 	id: string;
-	flag: string;
+	flag: Flag;
 	enabled: boolean;
 	description: string;
 	roles: RoleName[];
