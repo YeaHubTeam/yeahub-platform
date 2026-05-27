@@ -174,7 +174,7 @@
 		"link": "Links forbidden",
 		"no.spaces": "No spaces",
 		"latin.and.number": "Only capital Latin letters and numbers",
-		"latin.characters": "Only Latin characters",
+		"latin.characters.and.symbols": "Only Latin characters, dots and dashes",
 		"no.uppercase": "No uppercase letters"
 	},
 	"crumbs": {
