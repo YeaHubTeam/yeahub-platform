@@ -9,6 +9,7 @@ import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
+import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
@@ -77,6 +78,8 @@ const SkeletonGenerator = () => {
 			return <CollectionsPageSkeleton />;
 		case ROUTES.admin.companies.page:
 			return <CompaniesTablePageSkeleton />;
+		case ROUTES.admin.referralLinks.create.page:
+			return <ReferralLinkCreatePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
 		default:
