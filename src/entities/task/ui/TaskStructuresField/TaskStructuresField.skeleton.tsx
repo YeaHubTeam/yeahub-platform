@@ -4,7 +4,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-import { ProgrammingLanguageSelectSkeleton } from '@/entities/programmingLanguage';
+import { ProgrammingLanguageSelectSkeleton } from '@/entities/programmingLanguage/@x/task';
 
 import styles from './TaskStructuresField.module.css';
 
