@@ -5,9 +5,8 @@ import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { TextSkeleton } from '@/shared/ui/Text';
-import { TextEditorSkeleton } from '@/shared/ui/TextEditor';
 
-// import { TaskStructuresFieldSkeleton } from '../TaskStructuresField/TaskStructuresField.skeleton';
+import { TaskStructuresFieldSkeleton } from '../TaskStructuresField/TaskStructuresField.skeleton';
 
 import styles from './TaskForm.module.css';
 
@@ -24,9 +23,7 @@ export const TaskFormSkeleton = () => {
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton direction="column">
-					<FormControlSkeleton>
-						<TextEditorSkeleton />
-					</FormControlSkeleton>
+					<Skeleton className={styles.editor} borderRadius={16} />
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton>
@@ -50,11 +47,11 @@ export const TaskFormSkeleton = () => {
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
-				{/* <FormFieldSkeleton direction="column">
+				<FormFieldSkeleton direction="column">
 					<FormControlSkeleton>
 						<TaskStructuresFieldSkeleton />
 					</FormControlSkeleton>
-				</FormFieldSkeleton> */}
+				</FormFieldSkeleton>
 			</Flex>
 		</>
 	);
