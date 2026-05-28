@@ -16,12 +16,6 @@ export const featureFlags: FeatureFlags = {
 		enabled: false,
 		description: 'Рейтинг пользователей по изучению вопросов',
 	},
-	changeLanguage: {
-		id: 'changeLanguage',
-		enabled: true,
-		description: 'Переключатель смены языка',
-		roles: ['admin'],
-	},
 	changeTheme: {
 		id: 'changeTheme',
 		enabled: true,

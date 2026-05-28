@@ -31,7 +31,7 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 				<WithFeature featureId="changeTheme">
 					<ThemeSwitcher />
 				</WithFeature>
-				<WithFeature featureId="changeLanguage">
+				<WithFeature featureId="common.app.change-language">
 					<LanguageSwitcher />
 				</WithFeature>
 				<UserPreferences />
