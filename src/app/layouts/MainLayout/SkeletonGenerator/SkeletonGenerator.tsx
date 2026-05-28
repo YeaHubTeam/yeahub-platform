@@ -4,6 +4,7 @@ import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
+import { ResourceRequestCreateFormSkeleton } from '@/features/resources/createResourceRequest';
 
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
@@ -79,6 +80,8 @@ const SkeletonGenerator = () => {
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
+		case ROUTES.wiki.resources.my.create.page:
+			return <ResourceRequestCreateFormSkeleton />;
 		default:
 			return <Loader />;
 	}

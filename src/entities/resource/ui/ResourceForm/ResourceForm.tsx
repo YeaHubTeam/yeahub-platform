@@ -11,7 +11,6 @@ import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
-import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
 import { SkillSelect } from '@/entities/skill/@x/resource';
@@ -48,12 +47,13 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 
 	return (
 		<Flex direction="column" gap="60" className={styles.wrapper}>
-			<Flex direction="column" gap="8" className={styles['form-field']}>
-				<Text variant="body4" color="black-800">
-					{t(Marketplace.NAME_SHORT)}
-				</Text>
+			<FormField
+				label={t(Marketplace.NAME_SHORT)}
+				direction="column"
+				description={t(Marketplace.NAME_LABEL)}
+			>
 				<div className={styles.form}>
-					<FormControl name="name" control={control} label={t(Marketplace.NAME_LABEL)}>
+					<FormControl name="name" control={control}>
 						{(field, hasError) => (
 							<TextArea
 								{...field}
@@ -65,17 +65,15 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 						)}
 					</FormControl>
 				</div>
-			</Flex>
-			<Flex direction="column" gap="8" className={styles['form-field']}>
-				<Text variant="body4" color="black-800">
-					{t(Marketplace.DESCRIPTION_SHORT)}
-				</Text>
+			</FormField>
+
+			<FormField
+				label={t(Marketplace.DESCRIPTION_SHORT)}
+				direction="column"
+				description={t(Marketplace.DESCRIPTION_LABEL)}
+			>
 				<div className={styles.form}>
-					<FormControl
-						name="description"
-						control={control}
-						label={t(Marketplace.DESCRIPTION_LABEL)}
-					>
+					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
 								{...field}
@@ -87,7 +85,8 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 						)}
 					</FormControl>
 				</div>
-			</Flex>
+			</FormField>
+
 			<FormField label={t(Marketplace.ICON_SHORT)} description={t(Marketplace.ICON_LABEL)}>
 				<ImageLoaderWithoutCropper
 					removeImage={removeImage}
@@ -113,6 +112,7 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 					)}
 				</FormControl>
 			</FormField>
+
 			{!!selectedSpecializations?.length && (
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
 					<FormControl name="skills" control={control}>
