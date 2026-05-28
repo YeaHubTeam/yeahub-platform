@@ -11,11 +11,6 @@ export const featureFlags: FeatureFlags = {
 		enabled: false,
 		description: 'Новогодняя модалка со скидками на подписку',
 	},
-	usersRating: {
-		id: 'usersRating',
-		enabled: false,
-		description: 'Рейтинг пользователей по изучению вопросов',
-	},
 	changeLanguage: {
 		id: 'changeLanguage',
 		enabled: true,

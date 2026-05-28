@@ -25,16 +25,6 @@ export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 			updatedAt: '2025-12-01T00:00:00.000Z',
 		},
 		{
-			id: 'usersRating',
-			flag: 'Рейтинг пользователей',
-			enabled: true,
-			description: 'Включает рейтинг в профиле',
-			roles: ['admin', 'author'],
-			clientType: 'WEB',
-			createdAt: '2025-01-10T00:00:00.000Z',
-			updatedAt: '2025-01-10T00:00:00.000Z',
-		},
-		{
 			id: 'changeTheme',
 			flag: 'Смена темы',
 			enabled: true,
