@@ -5,16 +5,6 @@ import { FeatureFlagApiItem } from '../../../model/types/featureFlag';
 export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 	data: [
 		{
-			id: 'nyBanner',
-			flag: 'Новогодний баннер',
-			enabled: false,
-			description: 'Скидки на подписку для всех новых пользователей',
-			roles: ['admin'],
-			clientType: 'WEB',
-			createdAt: '2025-12-01T00:00:00.000Z',
-			updatedAt: '2025-12-01T00:00:00.000Z',
-		},
-		{
 			id: 'nyModal',
 			flag: 'Новогодняя модалка',
 			enabled: false,

@@ -3,7 +3,7 @@ import { Response } from '@/shared/libs';
 import { RoleName } from '@/entities/auth/@x/featureFlag';
 
 export type FeatureFlagType =
-	| 'nyBanner'
+	| 'dashboard.subscription.show-ny-banner'
 	| 'nyModal'
 	| 'usersRating'
 	| 'changeLanguage'
@@ -16,7 +16,7 @@ export interface FeatureFlag {
 	description: string;
 }
 
-export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
+export type FeatureFlags = Partial<Record<FeatureFlagType, FeatureFlag>>;
 
 export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 

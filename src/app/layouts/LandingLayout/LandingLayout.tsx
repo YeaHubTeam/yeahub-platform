@@ -31,7 +31,7 @@ export const LandingLayout = () => {
 							className={styles['main-content']}
 						>
 							<Suspense fallback={<SkeletonGenerator />}>
-								<WithFeature featureId="nyBanner">
+								<WithFeature featureId="dashboard.subscription.show-ny-banner">
 									<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_LANDING_KEY} />
 								</WithFeature>
 								<Outlet />

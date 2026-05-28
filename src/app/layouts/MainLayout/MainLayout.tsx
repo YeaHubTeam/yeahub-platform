@@ -97,7 +97,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 					<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
 						<main className={styles.main}>
 							<div className={styles.container}>
-								<WithFeature featureId="nyBanner">
+								<WithFeature featureId="dashboard.subscription.show-ny-banner">
 									<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_DASHBOARD_KEY} />
 								</WithFeature>
 								<WithFeature featureId="nyModal">
