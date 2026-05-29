@@ -14,7 +14,7 @@ export const TasksControllerSkeleton = () => {
 	return (
 		<Card
 			className={styles.wrapper}
-			title={t(Tasks.TITLE_SHORT)}
+			title={t(Tasks.TITLE_LIST)}
 			headerAction={<WarningPopoverSkeleton />}
 			withOutsideShadow
 		>
