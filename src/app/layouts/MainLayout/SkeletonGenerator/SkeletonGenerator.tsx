@@ -7,6 +7,7 @@ import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
+import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
@@ -33,6 +34,7 @@ const SkeletonGenerator = () => {
 		location.pathname,
 	);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
+	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -44,6 +46,10 @@ const SkeletonGenerator = () => {
 
 	if (isTaskDetailsPage) {
 		return <TaskPageContentSkeleton />;
+	}
+
+	if (isCompanyDetailsPage) {
+		return <CompanyDetailPageSkeleton />;
 	}
 
 	switch (location.pathname) {
