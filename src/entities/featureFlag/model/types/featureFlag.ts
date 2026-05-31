@@ -5,9 +5,9 @@ import { RoleName } from '@/entities/auth/@x/featureFlag';
 export type FeatureFlagType =
 	| 'nyBanner'
 	| 'nyModal'
-	| 'usersRating'
+	| 'dashboard.analytic.user-rating'
 	| 'common.app.change-language'
-	| 'changeTheme';
+	| 'common.app.change-theme';
 
 export interface FeatureFlag {
 	id: FeatureFlagType;
