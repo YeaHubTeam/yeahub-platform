@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
-import { companiesMock } from '@/entities/company';
-import { ProgrammingLanguage } from '@/entities/programmingLanguage';
+import { createSlug } from '@/shared/libs';
+
 import { programmingLanguagesMock } from '@/entities/programmingLanguage';
 import { CreateOrEditTaskFormValues, Task, tasksMock } from '@/entities/task';
 
@@ -15,30 +15,39 @@ export const taskCreateMock = http.post<
 >(`${process.env.API_URL}${createTaskApiUrls.createTask}`, async ({ request }) => {
 	const body = await request.json();
 
-	const supportedLanguages = body.taskStructures
-		.map((item) =>
-			Object.values(programmingLanguagesMock).find((lang) => lang.id === item.languageId),
-		)
-		.filter((lang): lang is ProgrammingLanguage => lang !== undefined);
+	const {
+		name,
+		description,
+		difficulty,
+		categoryCode,
+		constraints,
+		taskStructures,
+		subscriptionLevel,
+	} = body;
+
+	const languagesIds = taskStructures.map(({ languageId }) => languageId);
+	const supportedLanguages = Object.values(programmingLanguagesMock).filter(({ id }) =>
+		languagesIds.includes(id),
+	);
 
 	const newTask: Task = {
-		id: String(Date.now()),
-		name: body.name,
-		slug: body.name.toLowerCase(),
-		description: body.description,
-		status: 'attempted',
-		difficulty: body.difficulty,
+		id: crypto.randomUUID(),
+		name,
+		slug: createSlug(name),
+		description,
+		status: 'not_started',
+		difficulty,
 		supportedLanguages,
-		mainCategory: body.categoryCode,
-		constraints: body.constraints,
+		mainCategory: categoryCode,
+		constraints,
 		testCases: [],
-		taskStructures: body.taskStructures,
+		taskStructures,
 		solutionSignature: 'function solution() {\n\n}',
 		timeLimit: 1000,
 		memoryLimit: 256,
 		canSolve: true,
-		subscriptionLevel: body.subscriptionLevel,
-		companies: companiesMock.data.slice(2, 5),
+		subscriptionLevel,
+		companies: [],
 	};
 
 	tasksMock.push(newTask);
