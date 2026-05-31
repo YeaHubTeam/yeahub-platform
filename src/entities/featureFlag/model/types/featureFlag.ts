@@ -7,7 +7,7 @@ export type FeatureFlagType =
 	| 'nyModal'
 	| 'usersRating'
 	| 'changeLanguage'
-	| 'changeTheme';
+	| 'common.app.change-theme';
 
 export interface FeatureFlag {
 	id: FeatureFlagType;
@@ -16,7 +16,7 @@ export interface FeatureFlag {
 	description: string;
 }
 
-export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
+export type FeatureFlags = Partial<Record<FeatureFlagType, FeatureFlag>>;
 
 export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
