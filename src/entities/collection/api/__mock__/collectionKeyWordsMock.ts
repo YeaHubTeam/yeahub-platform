@@ -1,5 +1,7 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { calculatePagination } from '@/shared/libs';
+
 import { collectionApiUrls } from '../../model/constants/collection';
 import {
 	GetCollectionKeywordsParamsRequest,
@@ -14,24 +16,22 @@ export const collectionKeyWordsMock = http.get<
 	GetCollectionKeywordsResponse
 >(process.env.API_URL + collectionApiUrls.getCollectionKeywords, ({ request }) => {
 	const url = new URL(request.url);
-
-	const page = url.searchParams.get('page') ?? '1';
-	const limit = url.searchParams.get('limit') ?? '10';
+	const page = Number(url.searchParams.get('page') ?? '1');
+	const limit = Number(url.searchParams.get('limit') ?? '10');
 	const title = url.searchParams.get('title');
 
-	let filteredKeyWords: string[] = [...keyWordsMock];
+	const filteredKeyWords = [...keyWordsMock].filter((keyword) => {
+		const hasSearch = title ? keyword.toLowerCase().includes(title.toLowerCase()) : true;
 
-	if (title) {
-		const searchTitle = title.toLowerCase().trim();
-		filteredKeyWords = keyWordsMock.filter((keyword) =>
-			keyword.toLowerCase().includes(searchTitle),
-		);
-	}
+		return hasSearch;
+	});
+
+	const paginationData = calculatePagination(filteredKeyWords, page, limit);
 
 	return HttpResponse.json({
-		data: filteredKeyWords,
-		limit: Number(limit),
-		page: Number(page),
+		data: paginationData,
+		limit,
+		page,
 		total: filteredKeyWords.length,
 	});
 });
