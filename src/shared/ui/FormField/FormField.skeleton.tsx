@@ -6,10 +6,15 @@ import { TextSkeleton } from '@/shared/ui/Text';
 import { FormFieldProps } from './FormField';
 import styles from './FormField.module.css';
 
-export const FormFieldSkeleton = ({ children, isLimitWidth }: Partial<FormFieldProps>) => {
+export const FormFieldSkeleton = ({
+	children,
+	isLimitWidth,
+	direction = 'row',
+}: Partial<FormFieldProps>) => {
 	return (
 		<Flex
-			gap="120"
+			gap={direction === 'row' ? '120' : '20'}
+			direction={direction}
 			className={classNames(styles['form-field'], { [styles['limit-width']]: isLimitWidth })}
 		>
 			<Flex direction="column" className={styles.titles} gap="8">

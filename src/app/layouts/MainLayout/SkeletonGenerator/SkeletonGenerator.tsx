@@ -4,9 +4,11 @@ import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
+import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
+import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
@@ -28,11 +30,11 @@ const SkeletonGenerator = () => {
 	const location = useLocation();
 
 	const isInterviewResultPage = matchPath(ROUTES.interview.history.result.page, location.pathname);
-	const isAdminQuestionDetailsPage = matchPath(
-		ROUTES.admin.questions.details.page,
-		location.pathname,
-	);
+	const isAdminQuestionDetailsPage =
+		matchPath(ROUTES.admin.questions.details.page, location.pathname) &&
+		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
+	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -44,6 +46,10 @@ const SkeletonGenerator = () => {
 
 	if (isTaskDetailsPage) {
 		return <TaskPageContentSkeleton />;
+	}
+
+	if (isCompanyDetailsPage) {
+		return <CompanyDetailPageSkeleton />;
 	}
 
 	switch (location.pathname) {
@@ -65,6 +71,8 @@ const SkeletonGenerator = () => {
 			return <ProfilePageSkeleton />;
 		case ROUTES.profile.edit.page:
 			return <EditProfileFormSkeleton />;
+		case ROUTES.admin.questions.create.page:
+			return <QuestionCreateFormSkeleton />;
 		case ROUTES.admin.questions.page:
 			return <QuestionsTablePageSkeleton />;
 		case ROUTES.admin.specializations.page:
