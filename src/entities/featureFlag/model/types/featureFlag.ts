@@ -5,9 +5,9 @@ import { RoleName } from '@/entities/auth/@x/featureFlag';
 export type FeatureFlagType =
 	| 'nyBanner'
 	| 'nyModal'
-	| 'usersRating'
+	| 'dashboard.analytic.user-rating'
 	| 'changeLanguage'
-	| 'changeTheme';
+	| 'common.app.change-theme';
 
 export interface FeatureFlag {
 	id: FeatureFlagType;
@@ -16,7 +16,7 @@ export interface FeatureFlag {
 	description: string;
 }
 
-export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
+export type FeatureFlags = Partial<Record<FeatureFlagType, FeatureFlag>>;
 
 export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
@@ -24,9 +24,11 @@ export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
 export type GetFeatureFlagByIdResponse = FeatureFlagApiItem;
 
+export type Flag = string;
+
 export interface FeatureFlagApiItem {
 	id: string;
-	flag: string;
+	flag: Flag;
 	enabled: boolean;
 	description: string;
 	roles: RoleName[];

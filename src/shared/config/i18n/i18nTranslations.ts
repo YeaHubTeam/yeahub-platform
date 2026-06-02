@@ -144,7 +144,7 @@ export enum Translation {
 	VALIDATION_LINK = 'validation.link',
 	VALIDATION_NO_SPACE = 'validation.no.spaces',
 	VALIDATION_LATIN_AND_NUMBER = 'validation.latin.and.number',
-	VALIDATION_LATIN_CHARACTERS = 'validation.latin.characters',
+	VALIDATION_LATIN_CHARACTERS_AND_SYMBOLS = 'validation.latin.characters.and.symbols',
 	VALIDATION_NO_UPPERCASE = 'validation.no.uppercase',
 
 	/* Toast */
