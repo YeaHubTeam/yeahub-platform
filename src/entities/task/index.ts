@@ -40,3 +40,4 @@ export { taskHandlers } from './api/__mocks__';
 export { TaskCardSkeleton } from './ui/TaskCard/TaskCard.skeleton';
 export { TaskCategoryFilterListSkeleton } from './ui/TaskCategoryFilterList/TaskCategoryFilterList.skeleton';
 export { TaskFormSkeleton } from './ui/TaskForm/TaskForm.skeleton';
+export { tasksMock } from './api/__mocks__/data/index';
