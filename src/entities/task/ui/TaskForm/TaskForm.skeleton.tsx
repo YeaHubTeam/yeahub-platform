@@ -1,11 +1,13 @@
-import { DropdownSkeleton } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { InputSkeleton } from '@/shared/ui/Input';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { RadioSkeleton } from '@/shared/ui/Radio';
+import { RangeSkeleton } from '@/shared/ui/Range';
 import { TextSkeleton } from '@/shared/ui/Text';
+import { TextEditorSkeleton } from '@/shared/ui/TextEditor';
 
+import { TaskCategorySelectSkeleton } from '../TaskCategorySelect/TaskCategorySelect.skeleton';
 import { TaskStructuresFieldSkeleton } from '../TaskStructuresField/TaskStructuresField.skeleton';
 
 import styles from './TaskForm.module.css';
@@ -23,27 +25,27 @@ export const TaskFormSkeleton = () => {
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton direction="column">
-					<Skeleton className={styles.editor} borderRadius={16} />
+					<TextEditorSkeleton />
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton>
 					<FormControlSkeleton className={styles.select}>
-						<DropdownSkeleton />
+						<TaskCategorySelectSkeleton />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton>
 					<FormControlSkeleton className={styles.select}>
 						<Flex gap="60">
-							<Skeleton width={120} height={24} borderRadius={12} />
-							<Skeleton width={150} height={24} borderRadius={12} />
+							<RadioSkeleton />
+							<RadioSkeleton />
 						</Flex>
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton>
 					<FormControlSkeleton className={styles.difficulty}>
-						<Skeleton width={360} height={32} borderRadius={16} />
+						<RangeSkeleton />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 

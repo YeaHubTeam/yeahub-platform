@@ -12,7 +12,7 @@ export const TaskCreateFormSkeleton = () => {
 		<Flex componentType="main" direction="column" gap="24">
 			<Flex align="center" gap="8" justify="between">
 				<BackButtonSkeleton />
-				<ButtonSkeleton width={120} />
+				<ButtonSkeleton width={150} />
 			</Flex>
 
 			<CardSkeleton className={styles.content}>

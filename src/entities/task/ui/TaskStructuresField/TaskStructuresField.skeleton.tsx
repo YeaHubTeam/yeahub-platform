@@ -3,6 +3,7 @@ import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { SwitchSkeleton } from '@/shared/ui/Switch';
 
 import { ProgrammingLanguageSelectSkeleton } from '@/entities/programmingLanguage/@x/task';
 
@@ -14,7 +15,7 @@ export const TaskStructuresFieldSkeleton = () => {
 			<CardSkeleton withOutsideShadow withBorder>
 				<Flex gap="16" direction="column">
 					<FormFieldSkeleton>
-						<Skeleton width={48} height={24} borderRadius={12} />
+						<SwitchSkeleton />
 					</FormFieldSkeleton>
 
 					<FormFieldSkeleton>

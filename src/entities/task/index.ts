@@ -32,6 +32,7 @@ export { TaskStatusChip } from './ui/TaskStatusChip/TaskStatusChip';
 export { TaskStatusChipSkeleton } from './ui/TaskStatusChip/TaskStatusChip.skeleton';
 export { TaskForm } from './ui/TaskForm/TaskForm';
 export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';
+export { TaskCategorySelectSkeleton } from './ui/TaskCategorySelect/TaskCategorySelect.skeleton';
 export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresField';
 export { TaskCategoryFilterList } from './ui/TaskCategoryFilterList/TaskCategoryFilterList';
 export { taskCategories } from './model/constants/task';
