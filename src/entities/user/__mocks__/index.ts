@@ -5,9 +5,10 @@ import { usersRatingMock } from './usersRatingMock';
 import { usersRatingStatsMock } from './usersRatingStatsMock';
 
 export const usersRatingHandlers = [
-	usersListMock,
 	usersRatingBySpecializationMock,
 	usersRatingMock,
 	userProfilePositionMock,
 	usersRatingStatsMock,
 ];
+
+export const userHandlers = [usersListMock];

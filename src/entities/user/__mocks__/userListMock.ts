@@ -1,5 +1,7 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { calculatePagination } from '@/shared/libs';
+
 import { userApiUrls } from '../model/constants/userConstants';
 import type { GetUsersListResponse } from '../model/types/user';
 
@@ -31,10 +33,7 @@ export const usersListMock = http.get<
 		return matchesSearch && matchesRoles && matchesIsVerified;
 	});
 
-	const start = (page - 1) * limit;
-	const end = start + limit;
-
-	const paginatedUsers = filteredUsers.slice(start, end);
+	const paginatedUsers = calculatePagination(filteredUsers, page, limit);
 
 	return HttpResponse.json({
 		data: paginatedUsers,
