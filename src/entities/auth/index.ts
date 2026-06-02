@@ -12,7 +12,7 @@ export type {
 	TelegramLoginResponse,
 	TelegramLoginError,
 } from './model/types/auth';
-export { listAdminRoles, ROLE_ID_TO_NAME } from './model/constants/authConstants';
+export { listAdminRoles } from './model/constants/authConstants';
 export { authApi } from './api/authApi';
 export {
 	useLoginMutation,
