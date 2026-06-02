@@ -7,7 +7,8 @@ export type FeatureFlagType =
 	| 'nyModal'
 	| 'dashboard.analytic.user-rating'
 	| 'changeLanguage'
-	| 'common.app.change-theme';
+	| 'common.app.change-theme'
+	| 'dashboard.subscription.show-tariffs';
 
 export interface FeatureFlag {
 	id: FeatureFlagType;
