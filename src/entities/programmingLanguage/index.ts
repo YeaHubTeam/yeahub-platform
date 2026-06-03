@@ -5,3 +5,4 @@ export { ProgrammingLanguageList } from './ui/ProgrammingLanguageList/Programmin
 export { ProgrammingLanguageListSkeleton } from './ui/ProgrammingLanguageList/ProgrammingLanguageList.skeleton';
 export { ProgrammingLanguageSelect } from './ui/ProgrammingLanguageSelect/ProgrammingLanguageSelect';
 export { ProgrammingLanguageSelectSkeleton } from './ui/ProgrammingLanguageSelect/ProgrammingLanguageSelect.skeleton';
+export { programmingLanguagesMock } from './api/__mocks__/data/index';

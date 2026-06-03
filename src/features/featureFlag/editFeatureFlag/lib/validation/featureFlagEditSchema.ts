@@ -15,7 +15,7 @@ export const featureFlagEditSchema: yup.ObjectSchema<CreateOrEditFeatureFlagForm
 			.required(i18n.t(Translation.VALIDATION_REQUIRED))
 			.min(3, i18n.t(Translation.VALIDATION_LENGTH_MIN, { count: 3 }))
 			.max(50, i18n.t(Translation.VALIDATION_LENGTH_MAX, { count: 50 }))
-			.matches(onlyLatin, i18n.t(Translation.VALIDATION_LATIN_CHARACTERS))
+			.matches(onlyLatin, i18n.t(Translation.VALIDATION_LATIN_CHARACTERS_AND_SYMBOLS))
 			.test('no-spaces', i18n.t(Translation.VALIDATION_NO_SPACE), (value) => !value?.includes(' '))
 			.test(
 				'no-uppercase',
