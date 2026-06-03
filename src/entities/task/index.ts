@@ -25,8 +25,11 @@ export {
 } from './api/taskApi';
 export { TaskCard } from './ui/TaskCard/TaskCard';
 export { TaskDifficultyChip } from './ui/TaskDifficultyChip/TaskDifficultyChip';
+export { TaskDifficultyChipSkeleton } from './ui/TaskDifficultyChip/TaskDifficultyChip.skeleton';
 export { TaskCategoryChip } from './ui/TaskCategoryChip/TaskCategoryChip';
+export { TaskCategoryChipSkeleton } from './ui/TaskCategoryChip/TaskCategoryChip.skeleton';
 export { TaskStatusChip } from './ui/TaskStatusChip/TaskStatusChip';
+export { TaskStatusChipSkeleton } from './ui/TaskStatusChip/TaskStatusChip.skeleton';
 export { TaskForm } from './ui/TaskForm/TaskForm';
 export { TaskCategorySelect } from './ui/TaskCategorySelect/TaskCategorySelect';
 export { TaskStructuresField } from './ui/TaskStructuresField/TaskStructuresField';
@@ -36,3 +39,4 @@ export { ChooseTasksDrawer } from './ui/ChooseTasksDrawer';
 export { taskHandlers } from './api/__mocks__';
 export { TaskCardSkeleton } from './ui/TaskCard/TaskCard.skeleton';
 export { TaskCategoryFilterListSkeleton } from './ui/TaskCategoryFilterList/TaskCategoryFilterList.skeleton';
+export { tasksMock } from './api/__mocks__/data/index';

@@ -144,7 +144,7 @@ export enum Translation {
 	VALIDATION_LINK = 'validation.link',
 	VALIDATION_NO_SPACE = 'validation.no.spaces',
 	VALIDATION_LATIN_AND_NUMBER = 'validation.latin.and.number',
-	VALIDATION_LATIN_CHARACTERS = 'validation.latin.characters',
+	VALIDATION_LATIN_CHARACTERS_AND_SYMBOLS = 'validation.latin.characters.and.symbols',
 	VALIDATION_NO_UPPERCASE = 'validation.no.uppercase',
 
 	/* Toast */
@@ -222,6 +222,12 @@ export enum Translation {
 	TOAST_FEATURE_FLAGS_CREATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.create.auth.unauthorized',
 	TOAST_FEATURE_FLAGS_CREATE_AUTH_USER_VERIFIED = 'toast.featureFlags.create.auth.user.verified',
 	TOAST_FEATURE_FLAGS_CREATE_ALREADY_EXISTS = 'toast.featureFlags.create.alreadyExists',
+	TOAST_FEATURE_FLAGS_EDIT_SUCCESS = 'toast.featureFlags.edit.success',
+	TOAST_FEATURE_FLAGS_EDIT_FAILED = 'toast.featureFlags.edit.failed',
+	TOAST_FEATURE_FLAGS_EDIT_AUTH_UNAUTHORIZED = 'toast.featureFlags.edit.auth.unauthorized',
+	TOAST_FEATURE_FLAGS_EDIT_AUTH_USER_VERIFIED = 'toast.featureFlags.edit.auth.user.verified',
+	TOAST_FEATURE_FLAGS_EDIT_ALREADY_EXISTS = 'toast.featureFlags.edit.alreadyExists',
+	TOAST_FEATURE_FLAGS_EDIT_NOT_FOUND = 'toast.featureFlags.edit.not_found',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
 	TOAST_COLLECTION_DELETE_SINGLE_NOTFOUND = 'toast.collections.delete.single.not_found',

@@ -1,0 +1,1 @@
+export { calculatePagination } from './calculatePagination';

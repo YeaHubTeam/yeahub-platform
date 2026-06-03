@@ -55,7 +55,7 @@ export const TasksSearchList = ({
 	};
 
 	const filteredTasks = tasksResponse?.data || [];
-	const totalQuestions = filteredTasks.length;
+	const totalTasks = tasksResponse?.total || 0;
 
 	return (
 		<Flex direction="column" gap="24" className={styles['drawer-content']}>
@@ -106,7 +106,7 @@ export const TasksSearchList = ({
 
 			<TablePagination
 				page={page}
-				total={totalQuestions}
+				total={totalTasks}
 				limit={COLLECTION_TASKS_LIMIT}
 				onChangePage={setPage}
 			/>

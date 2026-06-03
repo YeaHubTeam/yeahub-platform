@@ -18,10 +18,6 @@ const SpecializationEditPage = () => {
 
 	const hasData = specialization && Object.keys(specialization).length > 0;
 
-	if (!specialization) {
-		return null;
-	}
-
 	const stubs: PageWrapperStubs = {
 		error: {
 			onClick: refetch,

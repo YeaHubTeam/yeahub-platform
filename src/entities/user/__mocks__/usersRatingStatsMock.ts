@@ -13,9 +13,9 @@ export const usersRatingStatsMock = http.get<
 	const url = new URL(request.url);
 	const specializationId = url.searchParams.get('specializationId');
 
-	const specialization = specializationsMock.data.find((s) => String(s.id) === specializationId);
+	const specialization = specializationsMock.find((s) => String(s.id) === specializationId);
 
-	const defaultSpecialization = specializationsMock.data[0];
+	const defaultSpecialization = specializationsMock[0];
 
 	const data = {
 		allUsers: 12,

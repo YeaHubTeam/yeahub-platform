@@ -1,4 +1,5 @@
 export { TopicForm } from './ui/TopicForm/TopicForm';
+export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 
 export type { Topic, CreateOrEditTopicFormValues } from './model/types/topic';
 

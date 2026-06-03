@@ -25,7 +25,10 @@ const SidebarCategoryMenuItem = ({
 }: SidebarMenuCategoryItemProps) => {
 	const location = useLocation();
 
-	const [expanded, setExpanded] = useState(location.pathname.includes(menuItem.elements[0].route));
+	const initialExpandedState = menuItem.elements.some((elem) =>
+		location.pathname.includes(elem.route),
+	);
+	const [expanded, setExpanded] = useState(initialExpandedState);
 
 	const handleExpand = () => {
 		setExpanded((prev) => !prev);

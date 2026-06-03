@@ -15,10 +15,6 @@
 	"user.name": "User",
 	"username": "Nickname",
 	"avatar": "Profile Photo",
-	"select.role": {
-		"title": "Select User Role",
-		"label": "Select Tags by Role"
-	},
 	"confirm.email": {
 		"title": "Confirm E-mail",
 		"label": "Ability to verify e-mail",
@@ -29,6 +25,10 @@
 	"birth.date": "Date of Birth",
 	"registration.date": "Registration Date",
 	"select": {
+		"role": {
+			"title": "Select User Role",
+			"label": "Select Tags by Role"
+		},
 		"choose": "Select specialization from the list",
 		"empty": "No options available",
 		"selected": "Selected specializations"
