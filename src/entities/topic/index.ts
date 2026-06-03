@@ -12,3 +12,5 @@ export { TopicCard } from './ui/TopicCard/TopicCard';
 export { topicHandlers } from './api/__mock__';
 
 export { topicsMocks } from './api/__mock__/data';
+
+export { TopicFormSkeleton } from './ui/TopicForm/TopicForm.skeleton';
