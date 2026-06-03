@@ -29,8 +29,8 @@
 	"renewal": "Payment will be renewed automatically on {{Date}}",
 	"canceled": "You have canceled your subscription. Full access will be available until {{Date}}.",
 	"accessWarning": "Renew your subscription for full access",
-	"info": {
-		"unavailable": {
+	"stub": {
+		"hide.tariffs": {
 			"title": "Information about tariffs is temporarily unavailable",
 			"description": "We are currently making changes to the tariff plans. Pricing plans will be available again soon."
 		}

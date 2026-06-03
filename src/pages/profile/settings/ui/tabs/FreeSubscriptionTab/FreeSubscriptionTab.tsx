@@ -1,11 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Subscription } from '@/shared/config';
+import { i18Namespace, Subscription } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
-import { Stub } from '@/shared/ui/Stub';
 
-import { WithFeature } from '@/entities/featureFlag';
 import { subscriptionPrices } from '@/entities/subscription';
 
 import { FaqList } from '@/widgets/FaqList';
@@ -13,11 +10,6 @@ import { SubscriptionsList } from '@/widgets/SubscriptionsList';
 
 export const FreeSubscriptionTab = () => {
 	const { t } = useTranslation(i18Namespace.subscription);
-	const navigate = useNavigate();
-
-	const onMoveMainPage = () => {
-		navigate(ROUTES.interview.page);
-	};
 
 	const faqList = [
 		{
@@ -46,19 +38,7 @@ export const FreeSubscriptionTab = () => {
 
 	return (
 		<Flex direction="column" gap="20">
-			<WithFeature
-				featureId="dashboard.subscription.show-tariffs"
-				fallback={
-					<Stub
-						type="access-denied"
-						title={t(Subscription.SUBSCRIPTION_INFO_UNAVAILABLE_TITLE)}
-						subtitle={t(Subscription.SUBSCRIPTION_INFO_UNAVAILABLE_DESCRIPTION)}
-						onClick={onMoveMainPage}
-					/>
-				}
-			>
-				<SubscriptionsList />
-			</WithFeature>
+			<SubscriptionsList />
 			<FaqList faqList={faqList} />
 		</Flex>
 	);

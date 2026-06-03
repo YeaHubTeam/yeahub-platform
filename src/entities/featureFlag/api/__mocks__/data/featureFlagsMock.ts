@@ -45,11 +45,11 @@ export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 			updatedAt: '2026-05-30T16:13:54.178Z',
 		},
 		{
-			id: '19877f00-7b4d-4ec4-86db-52c4f4fed677',
+			id: 'dfe4d60d-7671-4dbc-907d-70068aaacb10',
 			flag: 'dashboard.subscription.show-tariffs',
 			enabled: true,
 			description: 'Фича флаг для показа списка тарифов',
-			roles: ['admin'],
+			roles: [],
 			clientType: 'WEB',
 			createdAt: '2026-06-01T00:00:00.000Z',
 			updatedAt: '2026-06-01T00:00:00.000Z',
