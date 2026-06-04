@@ -17,7 +17,11 @@ import { FeatureFlagClientTypeSelect } from '../FeatureFlagClientTypeSelect/Feat
 
 import styles from './FeatureFlagForm.module.css';
 
-export const FeatureFlagForm = () => {
+interface FeatureFlagFormProps {
+	isEdit?: boolean;
+}
+
+export const FeatureFlagForm = ({ isEdit }: FeatureFlagFormProps) => {
 	const { t } = useTranslation(i18Namespace.featureFlags);
 
 	const { control } = useFormContext<CreateOrEditFeatureFlagFormValues>();
@@ -27,7 +31,7 @@ export const FeatureFlagForm = () => {
 	return (
 		<>
 			<Text variant="body5-strong" isMainTitle className={styles['main-title']}>
-				{t(FeatureFlags.CREATE_PAGE_TITLE)}
+				{isEdit ? t(FeatureFlags.EDIT_PAGE_TITLE) : t(FeatureFlags.CREATE_PAGE_TITLE)}
 			</Text>
 
 			<Flex direction="column" gap="60">

@@ -174,7 +174,7 @@
 		"link": "Links forbidden",
 		"no.spaces": "No spaces",
 		"latin.and.number": "Only capital Latin letters and numbers",
-		"latin.characters": "Only Latin characters",
+		"latin.characters.and.symbols": "Only Latin characters, dots and dashes",
 		"no.uppercase": "No uppercase letters"
 	},
 	"crumbs": {
@@ -248,19 +248,6 @@
 						"user.not.found": "User not found."
 					}
 				}
-			}
-		},
-		"featureFlags": {
-			"create": {
-				"success": "The function flag has been successfully created.",
-				"failed": "Failed to create the flag feature.",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type."
 			}
 		},
 		"tasks": {
@@ -891,6 +878,17 @@
 			}
 		},
 		"featureFlags": {
+			"create": {
+				"success": "The function flag has been successfully created.",
+				"failed": "Failed to create the flag feature.",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type."
+			},
 			"delete": {
 				"single": {
 					"success": "Feature flag successfully deleted",
@@ -923,6 +921,18 @@
 						"verified": "Access only for verified users"
 					}
 				}
+			},
+			"edit": {
+				"success": "The flag feature is changing successfully.",
+				"failed": "Failed to change feature flag",
+				"auth": {
+					"unauthorized": "Authentication failed.",
+					"user": {
+						"verified": "Route is available for verified users!"
+					}
+				},
+				"alreadyExists": "Feature flag with this key already exists for selected client type.",
+				"not_found": "Feature flag not found"
 			}
 		}
 	},

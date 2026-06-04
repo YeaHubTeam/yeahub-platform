@@ -18,7 +18,7 @@ import { NYBanner } from '@/shared/ui/NYBanner';
 import { NYModal } from '@/shared/ui/NYModal';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
-import { WithFeature } from '@/entities/featureFlag';
+import { useGetFeatureFlagsListQuery, WithFeature } from '@/entities/featureFlag';
 import { getIsEmptySpecialization, getProfilesLength } from '@/entities/profile';
 
 import { Header } from '@/widgets/Header';
@@ -39,6 +39,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 	const { isOpen, onOpen, onClose } = useModal();
 	const isOpenNYBanner = getFromLS(LS_BANNER_NY_DASHBOARD_KEY);
 	const isOpenNYModal = getFromLS(LS_MODAL_NY_DASHBOARD_KEY);
+	useGetFeatureFlagsListQuery({ clientType: 'WEB' });
 
 	const location = useLocation();
 

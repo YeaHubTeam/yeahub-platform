@@ -49,6 +49,7 @@ const QuestionsPage = () => {
 		onChangeOrder,
 		onChangeOrderBy,
 		onChangeTopics,
+		onChangeAuthorId,
 	} = useQuestionsFilters({
 		page: 1,
 	});
@@ -67,7 +68,7 @@ const QuestionsPage = () => {
 		rate: filters.rate,
 		orderBy: filters.orderBy,
 		order: filters.order,
-		authorId: filters.isMy ? userId : undefined,
+		authorId: filters.isMy ? userId : filters.authorId,
 		topics: filters.topics,
 	});
 
@@ -186,6 +187,7 @@ const QuestionsPage = () => {
 								onChangeIsMy={onChangeIsMy}
 								onChangeOrderBy={onChangeOrderBy}
 								onChangeTopics={onChangeTopics}
+								onChangeAuthorId={onChangeAuthorId}
 							/>
 						)}
 					/>
