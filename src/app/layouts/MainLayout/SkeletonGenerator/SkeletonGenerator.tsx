@@ -3,6 +3,7 @@ import { matchPath, useLocation } from 'react-router-dom';
 import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
+import { CollectionCreateFormSkeleton } from '@/features/collections/createCollection';
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 
@@ -73,6 +74,8 @@ const SkeletonGenerator = () => {
 			return <EditProfileFormSkeleton />;
 		case ROUTES.admin.questions.create.page:
 			return <QuestionCreateFormSkeleton />;
+		case ROUTES.admin.collections.create.page:
+			return <CollectionCreateFormSkeleton />;
 		case ROUTES.admin.questions.page:
 			return <QuestionsTablePageSkeleton />;
 		case ROUTES.admin.specializations.page:

@@ -16,3 +16,4 @@ export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
 export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';
 export { CollectionSelect } from './ui/CollectionSelect/CollectionSelect';
+export { CollectionFormSkeleton } from './ui/CollectionForm/CollectionForm.skeleton';
