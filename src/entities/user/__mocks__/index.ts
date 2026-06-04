@@ -9,3 +9,5 @@ export const usersRatingHandlers = [
 	userProfilePositionMock,
 	usersRatingStatsMock,
 ];
+
+export { userRolesMock } from './data/userRolesMock';

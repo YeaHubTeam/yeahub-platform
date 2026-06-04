@@ -1,4 +1,6 @@
 export { CompanyCard } from './ui/CompanyCard/CompanyCard';
+export { CompanyCardSkeleton } from './ui/CompanyCard/CompanyCard.skeleton';
+
 export { CompanySelect } from './ui/CompanySelect/CompanySelect';
 export { CompanyCompactList } from './ui/CompanyCompactList/CompanyCompactList';
 export { CompanyCompactListSkeleton } from './ui/CompanyCompactList/CompanyCompactList.skeleton';
