@@ -11,12 +11,6 @@ export const featureFlags: FeatureFlags = {
 		enabled: false,
 		description: 'Новогодняя модалка со скидками на подписку',
 	},
-	changeLanguage: {
-		id: 'changeLanguage',
-		enabled: true,
-		description: 'Переключатель смены языка',
-		roles: ['admin'],
-	},
 };
 
 export const featureFlagApiUrls = {

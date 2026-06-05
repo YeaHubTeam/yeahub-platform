@@ -45,6 +45,16 @@ export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 			updatedAt: '2026-05-30T16:13:54.178Z',
 		},
 		{
+			id: '32a35636-3625-49fd-bb4a-14c2b98a016f',
+			flag: 'common.app.change-language',
+			enabled: true,
+			description: 'Переключатель смены языка ru/en',
+			clientType: 'WEB',
+			createdAt: '2026-05-28T09:34:05.758Z',
+			updatedAt: '2026-05-30T16:26:59.490Z',
+			roles: ['admin'],
+		},
+		{
 			id: 'dfe4d60d-7671-4dbc-907d-70068aaacb10',
 			flag: 'dashboard.subscription.show-tariffs',
 			enabled: true,
