@@ -22,7 +22,7 @@ export const WithFeature = ({ featureId, fallback = null, children }: WithFeatur
 
 	if (!featureFlag) return <>{fallback}</>;
 
-	const hasRole = featureFlag.roles
+	const hasRole = featureFlag.roles?.length
 		? userRoles.some((role) => featureFlag.roles.includes(role))
 		: true;
 	const isEnabled = featureFlag.enabled;

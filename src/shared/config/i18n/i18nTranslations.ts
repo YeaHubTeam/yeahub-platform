@@ -1406,6 +1406,8 @@ export enum Subscription {
 	SUBSCRIPTION_CANCELED = 'canceled',
 	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_TITLE = 'stub.hide.tariffs.title',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_DESCRIPTION = 'stub.hide.tariffs.description',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
 	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
