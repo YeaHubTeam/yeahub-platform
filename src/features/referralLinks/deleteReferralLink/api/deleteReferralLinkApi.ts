@@ -1,4 +1,4 @@
-import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
+import { i18n, Translation, ApiTags, baseApi, ExtraArgument, ROUTES } from '@/shared/config';
 import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
@@ -16,10 +16,12 @@ export const deleteReferralLinkApi = baseApi.injectEndpoints({
 				url: route(deleteReferralLinkApiUrls.deleteReferralLink, id),
 				method: 'DELETE',
 			}),
-			async onQueryStarted(_, { queryFulfilled }) {
+			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
 					await queryFulfilled;
+					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_REFERRALLINK_DELETE_SUCCESS));
+					typedExtra.navigate(ROUTES.admin.referralLinks.page);
 				} catch (error) {
 					toast.error(i18n.t(handleApiError(error, getDeleteReferralLinkApiErrorMessage)));
 					console.error(error);
