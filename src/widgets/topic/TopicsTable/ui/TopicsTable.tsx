@@ -21,15 +21,9 @@ interface TopicsTableProps {
 	topics?: Topic[];
 	selectedTopics?: SelectedAdminEntities;
 	onSelectTopics?: (ids: SelectedAdminEntities) => void;
-	onDeleteSuccess?: () => void;
 }
 
-export const TopicsTable = ({
-	topics,
-	selectedTopics,
-	onSelectTopics,
-	onDeleteSuccess,
-}: TopicsTableProps) => {
+export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 	const navigate = useNavigate();
 
@@ -115,13 +109,7 @@ export const TopicsTable = ({
 				},
 			},
 			{
-				renderComponent: () => (
-					<DeleteTopicButton
-						topicId={topic.id}
-						disabled={topic.disabled}
-						onSuccess={onDeleteSuccess}
-					/>
-				),
+				renderComponent: () => <DeleteTopicButton topicId={topic.id} disabled={topic.disabled} />,
 			},
 		];
 

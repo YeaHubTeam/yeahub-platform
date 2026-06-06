@@ -43,10 +43,6 @@ const TopicsPage = () => {
 		dispatch(topicsPageActions.setSelectedTopics(ids));
 	};
 
-	const clearSelectedTopics = () => {
-		dispatch(topicsPageActions.setSelectedTopics([]));
-	};
-
 	const topics = topicsWithTitle?.data ?? [];
 	const hasTopics = topics.length > 0;
 
@@ -55,7 +51,6 @@ const TopicsPage = () => {
 			topics={topicsWithTitle?.data}
 			selectedTopics={selectedTopics}
 			onSelectTopics={onSelectTopics}
-			onDeleteSuccess={clearSelectedTopics}
 		/>
 	) : null;
 
@@ -107,12 +102,7 @@ const TopicsPage = () => {
 						showResetFilterButton={hasFilters}
 						hasFilters={Boolean((filters.skillIds || []).length)}
 						showRemoveButton={selectedTopics.length > 0}
-						renderRemoveButton={() => (
-							<DeleteTopicsButton
-								topicsToRemove={selectedTopics}
-								onSuccess={() => clearSelectedTopics()}
-							/>
-						)}
+						renderRemoveButton={() => <DeleteTopicsButton topicsToRemove={selectedTopics} />}
 					/>
 					<Card>
 						{content}

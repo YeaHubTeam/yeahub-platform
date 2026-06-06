@@ -10,16 +10,9 @@ export interface DeleteTaskButtonProps {
 export const DeleteTaskButton = ({ taskId, isDetailPage = false }: DeleteTaskButtonProps) => {
 	const [deleteTaskMutation] = useDeleteTaskMutation();
 
-	const onDeleteTask = async (id: string) => {
-		await deleteTaskMutation(id).unwrap();
+	const onDeleteTask = () => {
+		deleteTaskMutation(taskId);
 	};
 
-	return (
-		<DeleteButton
-			id={taskId}
-			onDelete={onDeleteTask}
-			isDetailPage={isDetailPage}
-			showTooltip={false}
-		/>
-	);
+	return <DeleteButton onDelete={onDeleteTask} isDetailPage={isDetailPage} showTooltip={false} />;
 };

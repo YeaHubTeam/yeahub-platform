@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Translation } from '@/shared/config';
+import { useModal } from '@/shared/libs';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-interface DeleteButtonProps<Id extends string | number = string | number> {
-	id: Id;
-	onDelete: (id: Id) => Promise<void>;
-	onSuccess?: () => void;
+interface DeleteButtonProps {
+	onDelete: () => void;
 	isDetailPage?: boolean;
 	disabled?: boolean;
 	tooltipTitle?: string;
@@ -19,32 +17,17 @@ interface DeleteButtonProps<Id extends string | number = string | number> {
 	showTooltip?: boolean;
 }
 
-export const DeleteButton = <Id extends string | number = string | number>({
-	id,
+export const DeleteButton = ({
 	onDelete,
-	onSuccess,
 	isDetailPage = false,
 	disabled = false,
 	tooltipTitle = Translation.TOOLTIP_COLLECTION_DISABLED_INFO,
 	buttonText = Translation.DELETE,
 	modalMessage = Translation.MODAL_DELETE_TITLE,
 	showTooltip = true,
-}: DeleteButtonProps<Id>) => {
+}: DeleteButtonProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
-	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
-
-	const handleOpenModal = () => setIsModalOpen(true);
-	const handleCloseModal = () => setIsModalOpen(false);
-
-	const handleDelete = async () => {
-		try {
-			await onDelete(id);
-			// handleCloseModal(); т.к элемент удалится, то и модалка закроется сама
-			onSuccess?.();
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	const { isOpen, onOpen, onClose } = useModal();
 
 	const shouldShowTooltip = disabled && showTooltip;
 
@@ -66,19 +49,19 @@ export const DeleteButton = <Id extends string | number = string | number>({
 						justifyContent: isDetailPage ? 'center' : 'flex-start',
 					}}
 					variant={isDetailPage ? 'destructive' : 'tertiary-link'}
-					onClick={handleOpenModal}
+					onClick={onOpen}
 					preffix={isDetailPage ? undefined : <Icon icon="trash" size={24} />}
 				>
 					{t(buttonText)}
 				</Button>
 			</Tooltip>
 
-			{isDeleteModalOpen && (
+			{isOpen && (
 				<BlockerDialog
-					isOpen={isDeleteModalOpen}
-					onClose={handleCloseModal}
-					onOk={handleDelete}
-					onCancel={handleCloseModal}
+					isOpen={isOpen}
+					onClose={onClose}
+					onOk={onDelete}
+					onCancel={onClose}
 					message={t(modalMessage)}
 				/>
 			)}

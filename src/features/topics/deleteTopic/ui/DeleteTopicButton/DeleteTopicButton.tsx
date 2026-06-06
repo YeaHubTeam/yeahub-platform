@@ -12,28 +12,18 @@ interface DeleteCollectionButtonProps {
 	disabled?: boolean;
 	placementTooltip?: Placement;
 	offsetTooltip?: number;
-	onSuccess?: () => void;
 }
 
 export const DeleteTopicButton = ({
 	topicId,
 	isDetailPage = false,
 	disabled = false,
-	onSuccess,
 }: DeleteCollectionButtonProps) => {
 	const [deleteTopicMutation] = useDeleteTopicMutation();
 
-	const onDeleteTopic = async (id: Topic['id']) => {
-		await deleteTopicMutation(id).unwrap();
+	const onDeleteTopic = () => {
+		return deleteTopicMutation(topicId);
 	};
 
-	return (
-		<DeleteButton
-			id={topicId}
-			onDelete={onDeleteTopic}
-			isDetailPage={isDetailPage}
-			disabled={disabled}
-			onSuccess={onSuccess}
-		/>
-	);
+	return <DeleteButton onDelete={onDeleteTopic} isDetailPage={isDetailPage} disabled={disabled} />;
 };

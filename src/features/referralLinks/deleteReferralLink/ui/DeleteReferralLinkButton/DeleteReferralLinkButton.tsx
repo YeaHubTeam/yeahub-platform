@@ -17,13 +17,12 @@ export const DeleteReferralLinkButton = ({
 	const { t } = useTranslation(i18Namespace.referralLink);
 	const [deleteReferralLink] = useDeleteReferralLinkMutation();
 
-	const onDeleteReferralLink = async (id: string) => {
-		await deleteReferralLink(id).unwrap();
+	const onDeleteReferralLink = () => {
+		deleteReferralLink(referralId);
 	};
 
 	return (
 		<DeleteButton
-			id={referralId}
 			onDelete={onDeleteReferralLink}
 			isDetailPage={isDetailPage}
 			modalMessage={t(ReferralLinks.DELETE_MODAL_TEXT)}

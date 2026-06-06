@@ -17,16 +17,11 @@ export const DeleteResourceButton = ({
 }: DeleteResourceButtonProps) => {
 	const [deleteResourceMutation] = useDeleteResourceMutation();
 
-	const onDeleteResource = async (id: Resource['id']) => {
-		await deleteResourceMutation(id).unwrap();
+	const onDeleteResource = () => {
+		deleteResourceMutation(resourceId);
 	};
 
 	return (
-		<DeleteButton
-			id={resourceId}
-			onDelete={onDeleteResource}
-			isDetailPage={isDetailPage}
-			disabled={disabled}
-		/>
+		<DeleteButton onDelete={onDeleteResource} isDetailPage={isDetailPage} disabled={disabled} />
 	);
 };

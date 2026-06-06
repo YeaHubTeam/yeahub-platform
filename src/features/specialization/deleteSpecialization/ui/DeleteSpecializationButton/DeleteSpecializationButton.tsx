@@ -15,13 +15,12 @@ export const DeleteSpecializationButton = ({
 }: DeleteSpecializationButtonProps) => {
 	const [deleteSpecializationMutation] = useDeleteSpecializationMutation();
 
-	const onDeleteSpecialization = async (id: Specialization['id']) => {
-		await deleteSpecializationMutation(id).unwrap();
+	const onDeleteSpecialization = () => {
+		deleteSpecializationMutation(specializationId);
 	};
 
 	return (
 		<DeleteButton
-			id={specializationId}
 			onDelete={onDeleteSpecialization}
 			isDetailPage={isDetailPage}
 			showTooltip={false}

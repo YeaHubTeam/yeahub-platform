@@ -21,16 +21,11 @@ export const DeleteCollectionButton = ({
 }: DeleteCollectionButtonProps) => {
 	const [deleteCollectionMutation] = useDeleteCollectionMutation();
 
-	const onDeleteCollection = async (id: Collection['id']) => {
-		await deleteCollectionMutation(id).unwrap();
+	const onDeleteCollection = () => {
+		deleteCollectionMutation(collectionId);
 	};
 
 	return (
-		<DeleteButton
-			id={collectionId}
-			onDelete={onDeleteCollection}
-			isDetailPage={isDetailPage}
-			disabled={disabled}
-		/>
+		<DeleteButton onDelete={onDeleteCollection} isDetailPage={isDetailPage} disabled={disabled} />
 	);
 };

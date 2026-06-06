@@ -7,26 +7,22 @@ interface DeleteFeatureFlagButtonProps {
 	featureFlagId: string;
 	isDetailPage?: boolean;
 	disabled?: boolean;
-	onSuccess?: () => void;
 }
 
 export const DeleteFeatureFlagButton = ({
 	featureFlagId,
 	isDetailPage = false,
 	disabled = false,
-	onSuccess,
 }: DeleteFeatureFlagButtonProps) => {
 	const [deleteFeatureFlag] = useDeleteFeatureFlagMutation();
 
-	const onDeleteFeatureFlag = async (id: string) => {
-		await deleteFeatureFlag(id).unwrap();
+	const onDeleteFeatureFlag = () => {
+		deleteFeatureFlag(featureFlagId);
 	};
 
 	return (
 		<DeleteButton
-			id={featureFlagId}
 			onDelete={onDeleteFeatureFlag}
-			onSuccess={onSuccess}
 			isDetailPage={isDetailPage}
 			disabled={disabled}
 			tooltipTitle={FeatureFlags.TOOLTIP_FEATURE_FLAGS_DISABLED_INFO}

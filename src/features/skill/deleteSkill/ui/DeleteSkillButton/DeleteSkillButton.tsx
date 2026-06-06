@@ -12,16 +12,9 @@ interface DeleteSkillButtonProps {
 export const DeleteSkillButton = ({ skillId, isDetailPage = false }: DeleteSkillButtonProps) => {
 	const [deleteSkillMutation] = useDeleteSkillMutation();
 
-	const onDeleteSkill = async (id: Skill['id']) => {
-		await deleteSkillMutation(id).unwrap();
+	const onDeleteSkill = () => {
+		deleteSkillMutation(skillId);
 	};
 
-	return (
-		<DeleteButton
-			id={skillId}
-			onDelete={onDeleteSkill}
-			isDetailPage={isDetailPage}
-			showTooltip={false}
-		/>
-	);
+	return <DeleteButton onDelete={onDeleteSkill} isDetailPage={isDetailPage} showTooltip={false} />;
 };

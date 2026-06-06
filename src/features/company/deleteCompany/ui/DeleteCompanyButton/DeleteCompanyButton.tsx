@@ -18,13 +18,12 @@ export const DeleteCompanyButton = ({
 }: DeleteCompanyButtonProps) => {
 	const [deleteCompanyMutation] = useDeleteCompanyMutation();
 
-	const onDeleteCompany = async (id: Company['id']) => {
-		await deleteCompanyMutation(id).unwrap();
+	const onDeleteCompany = () => {
+		deleteCompanyMutation(companyId);
 	};
 
 	return (
 		<DeleteButton
-			id={companyId}
 			onDelete={onDeleteCompany}
 			isDetailPage={isDetailPage}
 			disabled={disabled}

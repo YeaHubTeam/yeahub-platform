@@ -17,16 +17,11 @@ export const DeleteQuestionButton = ({
 }: DeleteQuestionButtonProps) => {
 	const [deleteQuestionMutation] = useDeleteQuestionMutation();
 
-	const onDeleteQuestion = async (id: Question['id']) => {
-		await deleteQuestionMutation(id).unwrap();
+	const onDeleteQuestion = () => {
+		deleteQuestionMutation(questionId);
 	};
 
 	return (
-		<DeleteButton
-			id={questionId}
-			onDelete={onDeleteQuestion}
-			isDetailPage={isDetailPage}
-			disabled={disabled}
-		/>
+		<DeleteButton onDelete={onDeleteQuestion} isDetailPage={isDetailPage} disabled={disabled} />
 	);
 };
