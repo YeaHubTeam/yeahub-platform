@@ -1,0 +1,1 @@
+export { paymentsIdDataMock } from './paymentsIdMock';
