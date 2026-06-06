@@ -19,6 +19,7 @@ import { specializationHandlers, specializationsProgressHandlers } from '@/entit
 import { subscriptionHandlers } from '@/entities/subscription';
 import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
+import { userHandlers } from '@/entities/user';
 import { usersRatingHandlers } from '@/entities/user';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
@@ -69,6 +70,7 @@ export const handlers = [
 	...learnedQuestionHandlers,
 	...specializationsProgressHandlers,
 	...resourcesHandlers,
+	...userHandlers,
 	...usersRatingHandlers,
 	...topicHandlers,
 	...topicDeleteHandlers,
