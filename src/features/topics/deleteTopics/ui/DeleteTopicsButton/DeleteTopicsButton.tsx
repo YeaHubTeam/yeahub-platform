@@ -8,14 +8,17 @@ import { deleteMultipleTopicsThunk } from '../../model/thunks/deleteMultipleTopi
 
 interface DeleteTopicsButtonProps {
 	topicsToRemove: SelectedAdminEntities;
+	onSuccess?: () => void;
 }
 
-export const DeleteTopicsButton = ({ topicsToRemove }: DeleteTopicsButtonProps) => {
+export const DeleteTopicsButton = ({ topicsToRemove, onSuccess }: DeleteTopicsButtonProps) => {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const onRemoveTopics = async () => {
 		await dispatch(deleteMultipleTopicsThunk(topicsToRemove)).unwrap();
+
+		onSuccess?.();
 	};
 
 	return (
