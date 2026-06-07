@@ -27,10 +27,11 @@ export const FeatureFlagDetailsPageContent = ({
 }: FeatureFlagDetailsPageContentProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 	const { t: tTranslate } = useTranslation([i18Namespace.translation]);
+
 	return (
 		<>
 			<BackHeader>
-				<DeleteFeatureFlagButton featureFlagId={featureFlag.id} />
+				<DeleteFeatureFlagButton isDetailPage featureFlagId={featureFlag.id} />
 				<NavLink to={route(ROUTES.admin.featureFlags.edit.page, featureFlag.id)}>
 					<Button>{tTranslate(Translation.EDIT)}</Button>
 				</NavLink>
@@ -39,8 +40,8 @@ export const FeatureFlagDetailsPageContent = ({
 			<Flex gap="20" align="start" justify="between">
 				<Card withOutsideShadow className={styles['main-card']}>
 					<Flex direction="column" gap="20" maxWidth>
-						<Text variant="head2">{featureFlag.flag}</Text>
-						<Text variant="body1">{featureFlag.description}</Text>
+						<Text variant="body6">{featureFlag.flag}</Text>
+						<Text variant="body3">{featureFlag.description}</Text>
 					</Flex>
 				</Card>
 
@@ -63,28 +64,22 @@ export const FeatureFlagDetailsPageContent = ({
 						<Flex align="start" direction="column" gap="16">
 							<Text variant="body1" color="black-700">
 								{t(FeatureFlags.DETAILS_ACTIVITY)}
-								<ToggleActiveFeatureFlagSwitch id={featureFlag.id} enabled={featureFlag.enabled} />
 							</Text>
+							<ToggleActiveFeatureFlagSwitch id={featureFlag.id} enabled={featureFlag.enabled} />
 						</Flex>
 
 						<Flex align="start" direction="column" gap="16">
 							<Text variant="body1" color="black-700">
 								{t(FeatureFlags.DETAILS_CREATED_AT)}
 							</Text>
-							<Chip
-								theme="outlined"
-								label={new Date(featureFlag.createdAt).toLocaleDateString()}
-							></Chip>
+							<Chip theme="outlined" label={new Date(featureFlag.createdAt).toLocaleDateString()} />
 						</Flex>
 
 						<Flex align="start" direction="column" gap="16">
 							<Text variant="body1" color="black-700">
 								{t(FeatureFlags.DETAILS_UPDATED_AT)}
 							</Text>
-							<Chip
-								theme="outlined"
-								label={new Date(featureFlag.updatedAt).toLocaleDateString()}
-							></Chip>
+							<Chip theme="outlined" label={new Date(featureFlag.updatedAt).toLocaleDateString()} />
 						</Flex>
 					</Flex>
 				</Card>

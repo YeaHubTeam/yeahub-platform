@@ -9,7 +9,7 @@ import { FeatureFlagDetailsPageContent } from '../FeatureFlagDetailsPageContent/
 const FeatureFlagDetailsPage = () => {
 	const { flagId = '' } = useParams<{ flagId: string }>();
 
-	const { data, isLoading, isError, refetch, error } = useGetFeatureFlagByIdQuery(flagId);
+	const { data, isLoading, isError, refetch } = useGetFeatureFlagByIdQuery(flagId);
 	const content = data && <FeatureFlagDetailsPageContent featureFlag={data} />;
 	const hasData = data && Object.keys(data).length > 0;
 	const stubs: PageWrapperStubs = {
@@ -17,6 +17,7 @@ const FeatureFlagDetailsPage = () => {
 			onClick: refetch,
 		},
 	};
+
 	return (
 		<PageWrapper
 			roles={['admin']}

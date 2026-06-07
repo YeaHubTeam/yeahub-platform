@@ -35,6 +35,4 @@ export const featureFlagApiUrls = {
 	getFeatureFlagById: 'feature-flags/:flagId',
 };
 
-export const getFeatureFlagByIdUrl = (id: string) => `feature-flags/${id}`;
-
 export const clientTypes: ClientType[] = ['WEB', 'IOS', 'ANDROID'];
