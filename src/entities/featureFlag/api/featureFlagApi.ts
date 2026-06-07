@@ -3,7 +3,7 @@ import { route } from '@/shared/libs';
 
 import { featureFlagApiUrls } from '../model/constants/featureFlags';
 import {
-	FeatureFlagApiItem,
+	GetFeatureFlagByIdResponse,
 	GetFeatureFlagsListParamsRequest,
 	GetFeatureFlagsListResponse,
 } from '../model/types/featureFlag';
@@ -19,9 +19,9 @@ export const featureFlagApi = baseApi.injectEndpoints({
 				providesTags: [ApiTags.FEATURE_FLAGS],
 			},
 		),
-		getFeatureFlagById: build.query<FeatureFlagApiItem, string>({
-			query: (id) => ({
-				url: route(featureFlagApiUrls.getFeatureFlagById, id),
+		getFeatureFlagById: build.query<GetFeatureFlagByIdResponse, string>({
+			query: (flagId) => ({
+				url: route(featureFlagApiUrls.getFeatureFlagById, flagId),
 			}),
 			providesTags: [ApiTags.FEATURE_FLAG_DETAIL],
 		}),
