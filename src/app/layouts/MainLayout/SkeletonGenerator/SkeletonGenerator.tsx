@@ -13,6 +13,7 @@ import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDeta
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
+import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
 import { CreateQuizPageSkeleton } from '@/pages/interview/createQuiz';
@@ -87,6 +88,8 @@ const SkeletonGenerator = () => {
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
+		case ROUTES.admin.tasks.create.page:
+			return <TaskCreatePageSkeleton />;
 		default:
 			return <Loader />;
 	}
