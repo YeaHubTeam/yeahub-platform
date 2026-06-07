@@ -35,9 +35,9 @@ export const FeatureFlagsTable = ({
 		const columnWidths = {
 			flag: 'auto',
 			description: 'auto',
-			enabled: '15%',
 			roles: '15%',
 			clientType: '15%',
+			enabled: '15%',
 			createdAt: '15%',
 			actions: '10%',
 		};
@@ -49,9 +49,9 @@ export const FeatureFlagsTable = ({
 		const columns = {
 			flag: t(FeatureFlags.TABLE_FLAG, { ns: i18Namespace.featureFlags }),
 			description: t(FeatureFlags.TABLE_DESCRIPTION, { ns: i18Namespace.featureFlags }),
-			enabled: t(FeatureFlags.TABLE_ENABLED, { ns: i18Namespace.featureFlags }),
 			roles: t(FeatureFlags.TABLE_ROLES, { ns: i18Namespace.featureFlags }),
 			clientType: t(FeatureFlags.TABLE_CLIENT_TYPE, { ns: i18Namespace.featureFlags }),
+			enabled: t(FeatureFlags.TABLE_ENABLED, { ns: i18Namespace.featureFlags }),
 			createdAt: t(FeatureFlags.TABLE_CREATED_AT, { ns: i18Namespace.featureFlags }),
 			actions: t(FeatureFlags.TABLE_ACTIONS, { ns: i18Namespace.featureFlags }),
 		};
