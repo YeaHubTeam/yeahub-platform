@@ -4,7 +4,10 @@ import { i18Namespace, Subscription } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { Stub } from '@/shared/ui/Stub';
 import { Text } from '@/shared/ui/Text';
+
+import { WithFeature } from '@/entities/featureFlag';
 
 import { useGetSubscriptionsInfo } from '../../libs/hooks/useGetSubscriptionsInfo';
 import { SubscriptionCard } from '../SubscriptionCard/SubscriptionCard';
@@ -27,11 +30,23 @@ export const SubscriptionsList = () => {
 						{t(Subscription.DESCRIPTION)}
 					</Text>
 				</Flex>
-				<Flex gap="20" wrap="wrap" className={styles.list}>
-					{subscriptions.map((subscription) => (
-						<SubscriptionCard key={subscription.id} subscription={subscription} />
-					))}
-				</Flex>
+				<WithFeature
+					featureId="dashboard.subscription.show-tariffs"
+					fallback={
+						<Stub
+							type="access-denied"
+							title={t(Subscription.SUBSCRIPTION_STUB_HIDE_TARIFFS_TITLE)}
+							subtitle={t(Subscription.SUBSCRIPTION_STUB_HIDE_TARIFFS_DESCRIPTION)}
+							buttonText=""
+						/>
+					}
+				>
+					<Flex gap="20" wrap="wrap" className={styles.list}>
+						{subscriptions.map((subscription) => (
+							<SubscriptionCard key={subscription.id} subscription={subscription} />
+						))}
+					</Flex>
+				</WithFeature>
 				<SubscriptionsBanner />
 			</Flex>
 		</Card>

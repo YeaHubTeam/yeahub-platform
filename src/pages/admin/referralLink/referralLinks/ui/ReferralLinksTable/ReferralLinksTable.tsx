@@ -79,7 +79,7 @@ export const ReferralLinksTable = ({
 				onClick: () => navigate(route(ROUTES.admin.referralLinks.edit.page, ref.id)),
 			},
 			{
-				renderComponent: () => <DeleteReferralLinkButton id={ref.id} />,
+				renderComponent: () => <DeleteReferralLinkButton referralId={ref.id} />,
 			},
 		];
 

@@ -1,0 +1,66 @@
+import { GetUserSubscriptionResponse } from '@/entities/subscription/model/types/subscription';
+
+export const subscriptionByUserIdMockResponse: GetUserSubscriptionResponse = [
+	{
+		id: '47c05bd2-a105-49fb-99fb-3a2c1f126517',
+		createDate: '2026-03-09T16:54:30.664Z',
+		endDate: '2027-03-09T16:54:36.573Z',
+		subscriptionId: 5,
+		userId: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
+		state: 'canceled',
+		paymentAttemptsCount: 0,
+		paymentError: null,
+		fixedPrice: 3552,
+		subscription: {
+			id: 5,
+			name: 'Годовой премиум',
+			code: 'year',
+			isActive: true,
+			pricePerMonth: 400,
+			discount: 26,
+			monthPeriod: 12,
+			description: null,
+			promo: 'Yeahub выгоднее с каждым годом',
+			finalPrice: 3552,
+			parentId: 3,
+			roles: [
+				{
+					id: 7,
+					name: 'candidate-premium',
+					permissions: [],
+				},
+			],
+		},
+	},
+	{
+		id: 'a5943a4f-8b77-4912-98e9-c222891e6373',
+		createDate: '2025-06-21T18:35:26.602Z',
+		endDate: '2026-03-08T00:00:00.000Z',
+		subscriptionId: 3,
+		userId: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
+		state: 'inactive',
+		paymentAttemptsCount: 0,
+		paymentError: null,
+		fixedPrice: null,
+		subscription: {
+			id: 3,
+			name: 'Участник сообщества',
+			code: 'month',
+			isActive: true,
+			pricePerMonth: 800,
+			discount: 50,
+			monthPeriod: 1,
+			description: null,
+			finalPrice: 3552,
+			promo: null,
+			parentId: null,
+			roles: [
+				{
+					id: 7,
+					name: 'candidate-premium',
+					permissions: [],
+				},
+			],
+		},
+	},
+];
