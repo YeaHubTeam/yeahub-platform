@@ -1,8 +1,6 @@
 export { TopicForm } from './ui/TopicForm/TopicForm';
 export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 
-export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
-
 export type { Topic, CreateOrEditTopicFormValues } from './model/types/topic';
 
 export { useGetTopicsListQuery, useGetTopicByIdQuery } from './api/topicApi';
@@ -14,5 +12,3 @@ export { TopicCard } from './ui/TopicCard/TopicCard';
 export { topicHandlers } from './api/__mock__';
 
 export { topicsMocks } from './api/__mock__/data';
-
-export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
