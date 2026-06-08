@@ -5,12 +5,6 @@
   border-radius: 24px;
 }
 
-.card-title {
-  &.column {
-    min-height: 42px;
-  }
-}
-
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -56,20 +50,11 @@
 .image-wrapper {
   flex-shrink: 0;
   width: 100%;
+  width: 149px;
+  height: 157px;
   overflow: hidden;
   border-radius: 12px;
   place-content: center center;
-
-
-  &.row {
-    width: 149px;
-    height: 157px;
-  }
-
-  &.column {
-    width: 100%;
-    height: clamp(196px, 15.4vw, 222px);
-  }
 }
 
 .image-wrapper > img {
@@ -159,18 +144,14 @@
     padding: 10px 10px 18px;
   }
 
-  .image-wrapper {
-    &.row {
-      aspect-ratio: 1;
-      width: 100%;
-      height: auto;
-    }
+  .wrapper {
+    flex-direction: column;
   }
 
-  .wrapper {
-    &.row {
-      flex-direction: column;
-    }
+  .image-wrapper {
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
   }
 
   .specialization-container {
