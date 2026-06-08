@@ -4,7 +4,7 @@ import { RoleName } from '@/entities/auth/@x/featureFlag';
 
 export type FeatureFlagType =
 	| 'nyBanner'
-	| 'nyModal'
+	| 'dashboard.subscription.show-ny-modal'
 	| 'dashboard.analytic.user-rating'
 	| 'common.app.change-language'
 	| 'common.app.change-theme'
