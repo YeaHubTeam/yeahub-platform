@@ -15,14 +15,11 @@ export const skillEditMock = http.patch<PathParams, EditSkillBodyRequest, EditSk
 
 		const indexSkill = skillsMock.data.findIndex(({ id }) => String(id) === skillId);
 
-		const specializations = body.specializations?.map(
-			(id) =>
-				specializationsMock.data.find((spec) => spec.id === id) || {
-					id,
-					title: 'Not found',
-					description: 'Not found',
-				},
-		);
+		const specializations = body.specializations?.map((id) => {
+			const index = specializationsMock.findIndex((spec) => spec.id === id);
+
+			return specializationsMock[index];
+		});
 
 		const updSkill: Skill = { ...body, specializations };
 

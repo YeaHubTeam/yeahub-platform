@@ -1,4 +1,4 @@
-import { Response } from '@/shared/libs';
+import { Response, author } from '@/shared/libs';
 
 import { SpecializationsProgress } from '../../../model/types/specializationsProgress';
 
@@ -16,6 +16,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
@@ -31,6 +33,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
@@ -46,6 +50,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
@@ -61,6 +67,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
@@ -76,6 +84,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},
@@ -91,6 +101,8 @@ export const specializationsProgressMock: Response<SpecializationsProgress[]> = 
 				imageSrc: null,
 				createdAt: '2024-12-31T10:00:00.000Z',
 				updatedAt: '2024-12-31T10:00:00.000Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			calculatedAt: '2024-12-12T19:16:34.726Z',
 		},

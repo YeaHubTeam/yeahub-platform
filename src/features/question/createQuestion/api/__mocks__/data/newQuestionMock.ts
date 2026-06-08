@@ -1,6 +1,8 @@
+import { Question } from '@/entities/question';
+
 import { CreateQuestionBodyRequest } from '../../../model/types/questionCreateTypes';
 
-export const newQuestionMock = (formData: CreateQuestionBodyRequest, id: number) => {
+export const newQuestionMock = (formData: CreateQuestionBodyRequest, id: number): Question => {
 	return {
 		id: id,
 		title: formData.title,
@@ -28,6 +30,11 @@ export const newQuestionMock = (formData: CreateQuestionBodyRequest, id: number)
 				imageSrc: null,
 				createdAt: '2024-10-03T09:08:10.605Z',
 				updatedAt: '2024-11-02T06:46:12.745Z',
+				createdBy: {
+					id: '1e2ac9b6-c87d-4c9f-8a80-82f5fbbf2a1d',
+					username: 'gusekazulin',
+				},
+				slug: 'frontend',
 			},
 		],
 		questionSkills: [

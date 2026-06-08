@@ -19,10 +19,11 @@ export type Subscription = {
 	pricePerMonth: number;
 	discount: number;
 	monthPeriod: number;
-	description: boolean;
-	promo: string;
+	description: string | null;
+	promo: string | null;
 	roles: SubscriptionRole[];
 	finalPrice: number;
+	parentId: null | number;
 };
 
 type SubscriptionState = 'canceled' | 'active' | 'inactive';
@@ -34,6 +35,9 @@ export interface UserSubscription {
 	subscriptionId: number;
 	userId: string;
 	state: SubscriptionState;
+	fixedPrice: number | null;
+	paymentAttemptsCount: number;
+	paymentError: null;
 	subscription: Subscription;
 }
 export interface ActiveSubscriptionState {

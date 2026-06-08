@@ -1,11 +1,4 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
-import { i18Namespace, Translation } from '@/shared/config';
-import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import { Tooltip } from '@/shared/ui/Tooltip';
+import { DeleteButton } from '@/shared/ui/DeleteButton';
 
 import { Question } from '@/entities/question';
 
@@ -24,61 +17,11 @@ export const DeleteQuestionButton = ({
 }: DeleteQuestionButtonProps) => {
 	const [deleteQuestionMutation] = useDeleteQuestionMutation();
 
-	const { t } = useTranslation(i18Namespace.translation);
-	const [isDeleteModalOpen, setIsModalOpen] = useState(false);
-
-	const handleOpenModal = () => {
-		setIsModalOpen(true);
-	};
-
-	const handleCloseModal = () => {
-		setIsModalOpen(false);
-	};
-
-	const onDeleteQuestion = async () => {
-		try {
-			await deleteQuestionMutation(questionId);
-			handleCloseModal();
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error(error);
-		}
+	const onDeleteQuestion = () => {
+		deleteQuestionMutation(questionId);
 	};
 
 	return (
-		<>
-			<Tooltip
-				title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-				placement={isDetailPage ? 'bottom-start' : 'left'}
-				color="red"
-				offsetTooltip={10}
-				shouldShowTooltip={disabled}
-			>
-				<Button
-					aria-label="Large"
-					style={{
-						width: isDetailPage ? 'auto' : '100%',
-						padding: isDetailPage ? '0 32px' : '6px 10px',
-						justifyContent: isDetailPage ? 'center' : 'flex-start',
-					}}
-					preffix={!isDetailPage && <Icon icon="trash" size={24} />}
-					variant={isDetailPage ? 'destructive' : 'tertiary-link'}
-					onClick={handleOpenModal}
-					disabled={disabled}
-				>
-					{t(Translation.DELETE)}
-				</Button>
-			</Tooltip>
-
-			{isDeleteModalOpen && (
-				<BlockerDialog
-					isOpen={isDeleteModalOpen}
-					onClose={handleCloseModal}
-					onOk={onDeleteQuestion}
-					onCancel={handleCloseModal}
-					message={Translation.MODAL_DELETE_TITLE}
-				/>
-			)}
-		</>
+		<DeleteButton onDelete={onDeleteQuestion} isDetailPage={isDetailPage} disabled={disabled} />
 	);
 };
