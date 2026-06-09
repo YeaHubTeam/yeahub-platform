@@ -35,5 +35,7 @@ export type {
 	GetUsersRatingStatsResponse,
 } from './model/types/usersRating';
 export { usersRatingHandlers, userRolesMock } from './__mocks__';
+
+export { usersRatingHandlers, userHandlers, userRolesMock } from './__mocks__';
 export { UserRolesListField } from './ui/UserRolesListField/UserRolesListField';
 export { UserRolesListFieldSkeleton } from './ui/UserRolesListField/UserRolesListField.skeleton';

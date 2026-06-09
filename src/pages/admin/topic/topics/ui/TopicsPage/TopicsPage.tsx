@@ -55,7 +55,6 @@ const TopicsPage = () => {
 			topics={topicsWithTitle?.data}
 			selectedTopics={selectedTopics}
 			onSelectTopics={onSelectTopics}
-			onDeleteSuccess={clearSelectedTopics}
 		/>
 	) : null;
 
