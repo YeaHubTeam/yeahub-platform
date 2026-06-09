@@ -91,6 +91,12 @@ describe('TaskCategorySelect', () => {
 
 			expect(selectElement.className).toMatch(/wrapper-disabled/);
 		});
+
+		test('should initialize with empty string value', () => {
+			render({ value: '' });
+
+			expect(screen.getByTestId(dropdownTestIds.dropdown)).toBeInTheDocument();
+		});
 	});
 
 	describe('actions', () => {
@@ -171,6 +177,46 @@ describe('TaskCategorySelect', () => {
 
 			expect(screen.queryByLabelText('delete')).not.toBeInTheDocument();
 			expect(onChange).toHaveBeenCalledWith([]);
+		});
+
+		test('should not call onChange when disabled and category is selected (Dropdown)', async () => {
+			render({ disabled: true });
+
+			await waitFor(() => {
+				expect(screen.getByTestId(dropdownTestIds.dropdown)).toBeInTheDocument();
+			});
+
+			fireEvent.click(screen.getByTestId('dropdown-select'));
+
+			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		test('should not call onChange when disabled and category is selected (SelectWithChips)', async () => {
+			render({ hasMultiple: true, disabled: true });
+
+			await waitFor(() => {
+				expect(screen.getByText(Tasks.SELECT_CHOOSE)).toBeInTheDocument();
+			});
+
+			fireEvent.click(screen.getByText(Tasks.SELECT_CHOOSE));
+
+			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		test('should not delete chip when disabled', async () => {
+			render({ hasMultiple: true, value: [mockTaskCategories[0].code], disabled: true });
+
+			await waitFor(() => {
+				expect(screen.getByText(Tasks.SELECT_SELECTED)).toBeInTheDocument();
+			});
+
+			const deleteButton = within(
+				screen.getByText(taskCategories[mockTaskCategories[0].code]).parentElement!,
+			).getByLabelText('delete');
+
+			fireEvent.click(deleteButton);
+
+			expect(onChange).not.toHaveBeenCalled();
 		});
 	});
 });
