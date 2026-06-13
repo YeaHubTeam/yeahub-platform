@@ -1,17 +1,17 @@
-import { Card } from '@/shared/ui/Card';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { CollectionFormSkeleton } from '@/entities/collection';
 
-import { CollectionCreateFormHeaderSkeleton } from '@/features/collections/createCollection';
+import { CollectionCreateFormHeaderSkeleton } from '../../ui/CollectionCreateFormHeader/CollectionCreateFormHeader.skeleton';
 
 export const CollectionCreateFormSkeleton = () => {
 	return (
 		<Flex componentType="main" direction="column" gap="24">
 			<CollectionCreateFormHeaderSkeleton />
-			<Card>
+			<CardSkeleton>
 				<CollectionFormSkeleton />
-			</Card>
+			</CardSkeleton>
 		</Flex>
 	);
 };

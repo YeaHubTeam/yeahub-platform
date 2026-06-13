@@ -13,9 +13,8 @@ export const ButtonSkeleton = ({
 	fullWidth,
 	size = 'medium',
 	destructive,
-	width,
-	height,
-}: ButtonProps & { width?: string | number; height?: string | number }) => {
+	width
+}: ButtonProps & { width?: string | number }) => {
 	const tagName = getTagName(variant);
 
 	return (
@@ -23,7 +22,6 @@ export const ButtonSkeleton = ({
 			dataTestId={dataTestId}
 			borderRadius={12}
 			width={width}
-			height={height}
 			className={classnames(
 				styles[tagName],
 				styles[`${tagName}-${size}`],
