@@ -13,6 +13,7 @@ import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/sp
 import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+import { SpecializationDetailPageSkeleton } from './SpecializationDetailPage.skeleton';
 
 const SpecializationDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
@@ -63,7 +64,7 @@ const SpecializationDetailPage = () => {
 		<>
 			<PageWrapper
 				isLoading={isLoading}
-				skeleton={<Loader />}
+				skeleton={<SpecializationDetailPageSkeleton />}
 				hasError={isError}
 				hasData={hasData}
 				stubs={stubs}
