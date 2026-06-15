@@ -22,7 +22,7 @@ export const AnalyticsPage = () => {
 			content={
 				<Flex wrap={isSmallScreen ? 'wrap' : 'nowrap'} gap="20">
 					<Flex direction="column" gap="20" maxWidth={isSmallScreen}>
-						<WithFeature featureId="usersRating">
+						<WithFeature featureId="dashboard.analytic.user-rating">
 							<UsersRatingWidget />
 						</WithFeature>
 						<Flex
