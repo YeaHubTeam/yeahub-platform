@@ -39,7 +39,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[3]],
+		profileSkills: [skillsMock[3]],
 	},
 	{
 		id: 'baa51c8a-5ffc-441a-8579-89003bdf4150',
@@ -51,7 +51,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[7]],
+		profileSkills: [skillsMock[7]],
 	},
 	{
 		id: 'bae420a0-98be-4fb1-8a75-5a36cf45872b',
@@ -63,7 +63,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: 'https://example.com/image.jpg',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[8]],
+		profileSkills: [skillsMock[8]],
 	},
 	{
 		id: '81af7464-c4d5-434c-8cd3-4b84de1a621d',
@@ -75,7 +75,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: true,
-		profileSkills: [skillsMock.data[9], skillsMock.data[10]],
+		profileSkills: [skillsMock[9], skillsMock[10]],
 	},
 	{
 		id: 'ff3f5a75-b62e-4283-9dd2-337377db46c3',
@@ -87,7 +87,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[11]],
+		profileSkills: [skillsMock[11]],
 	},
 ];
 

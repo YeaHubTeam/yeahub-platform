@@ -1,5 +1,7 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { calculatePagination } from '@/shared/libs';
+
 import { skillApiUrls } from '../../model/constants/skillConstants';
 import { GetSkillsListParamsRequest, GetSkillsListResponse } from '../../model/types/skill';
 
@@ -11,12 +13,14 @@ export const skillListMock = http.get<
 	GetSkillsListResponse
 >(process.env.API_URL + skillApiUrls.getSkillsList, ({ request }) => {
 	const url = new URL(request.url);
-	const page = url.searchParams.get('page') ?? 1;
-	const limit = url.searchParams.get('limit') ?? 10;
+	const page = Number(url.searchParams.get('page') ?? 1);
+	const limit = Number(url.searchParams.get('limit') ?? 10);
 	const specialization = url.searchParams.get('specializations');
+	const authorId = url.searchParams.get('authorId');
+	const title = url.searchParams.get('title');
 
-	const data = skillsMock.data.filter((skill) => {
-		return specialization
+	const data = skillsMock.filter((skill) => {
+		const specializationMatch = specialization
 			? specialization
 					.split(',')
 					.some((specialization) =>
@@ -25,17 +29,20 @@ export const skillListMock = http.get<
 						),
 					)
 			: true;
+
+		const authorMatch = authorId ? skill.createdBy.id === authorId : true;
+
+		const titleMatch = title ? skill.title.toLowerCase().includes(title.toLowerCase()) : true;
+
+		return specializationMatch && authorMatch && titleMatch;
 	});
 
-	const paginationData = data.slice(
-		(Number(page) - 1) * Number(limit),
-		Number(page) * Number(limit),
-	);
+	const paginationData = calculatePagination(data, page, limit);
 
 	return HttpResponse.json({
 		data: paginationData,
-		page: Number(page),
-		total: skillsMock.total,
-		limit: skillsMock.limit,
+		page,
+		total: 10,
+		limit: 50,
 	});
 });

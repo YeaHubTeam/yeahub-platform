@@ -13,17 +13,22 @@ export const skillEditMock = http.patch<PathParams, EditSkillBodyRequest, EditSk
 
 		const body = await request.json();
 
-		const indexSkill = skillsMock.data.findIndex(({ id }) => String(id) === skillId);
+		const indexSkill = skillsMock.findIndex(({ id }) => String(id) === skillId);
 
-		const specializations = body.specializations?.map((id) => {
-			const index = specializationsMock.findIndex((spec) => spec.id === id);
+		const specializations =
+			body.specializations?.map((id) => {
+				const index = specializationsMock.findIndex((spec) => spec.id === id);
 
-			return specializationsMock[index];
-		});
+				return specializationsMock[index];
+			}) ?? [];
 
-		const updSkill: Skill = { ...body, specializations };
+		const createdAt = skillsMock[indexSkill].createdAt;
+		const updatedAt = new Date().toISOString();
+		const createdBy = skillsMock[indexSkill].createdBy;
 
-		skillsMock.data[indexSkill] = updSkill;
+		const updSkill: Skill = { ...body, specializations, createdAt, updatedAt, createdBy };
+
+		skillsMock[indexSkill] = updSkill;
 
 		return HttpResponse.json(updSkill);
 	},

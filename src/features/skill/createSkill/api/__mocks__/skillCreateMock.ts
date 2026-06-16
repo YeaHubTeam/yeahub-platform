@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+import { author } from '@/shared/libs';
+
 import { CreateOrEditSkillFormValues, Skill, skillsMock } from '@/entities/skill';
 import { specializationsMock } from '@/entities/specialization';
 
@@ -18,14 +20,18 @@ export const skillCreateMock = http.post<
 		title: body.title,
 		description: body.description,
 		imageSrc: body.imageSrc,
-		specializations: body.specializations?.map((id) => {
-			const index = specializationsMock.findIndex((spec) => spec.id === id);
+		specializations:
+			body.specializations?.map((id) => {
+				const index = specializationsMock.findIndex((spec) => spec.id === id);
 
-			return specializationsMock[index];
-		}),
+				return specializationsMock[index];
+			}) ?? [],
+		createdAt: new Date().toISOString(),
+		updatedAt: null,
+		createdBy: author,
 	};
 
-	skillsMock.data.push(newSkill);
+	skillsMock.push(newSkill);
 
 	return HttpResponse.json(newSkill);
 });

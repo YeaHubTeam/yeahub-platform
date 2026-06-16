@@ -54,7 +54,7 @@ const userFreeProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[6]],
+		profileSkills: [skillsMock[6]],
 	},
 	{
 		id: 'eb27c2e0-b121-4ed8-b167-a24820efae09',
@@ -114,7 +114,7 @@ const userFreeProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[1]],
+		profileSkills: [skillsMock[1]],
 	},
 ];
 

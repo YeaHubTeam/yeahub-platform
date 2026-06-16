@@ -49,7 +49,7 @@ const adminProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[4], skillsMock.data[5]],
+		profileSkills: [skillsMock[4], skillsMock[5]],
 	},
 	{
 		id: 'ffe99430-4ac2-40df-9e6b-4f5f8909748c',
@@ -71,7 +71,7 @@ const adminProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: true,
-		profileSkills: [skillsMock.data[0], skillsMock.data[1], skillsMock.data[2]],
+		profileSkills: [skillsMock[0], skillsMock[1], skillsMock[2]],
 	},
 ];
 
