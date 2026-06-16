@@ -1,19 +1,26 @@
-import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { ButtonSkeleton } from '@/shared/ui/Button';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import style from './SpecializationDetailPage.module.css';
+import { Flex } from '@/shared/ui/Flex';
+import { BackButtonSkeleton } from '@/shared/ui/BackButton';
+import { SpecializationCardSkeleton } from '@/entities/specialization';
 
 export const SpecializationDetailPageSkeleton = () => {
 	return (
 		<>
-			<BackHeaderSkeleton>
-				<ButtonSkeleton width={130} />
-				<ButtonSkeleton width={130} />
-			</BackHeaderSkeleton>
-			<div className={style.specializationDetailSkeleton}>
-				<Skeleton width={740} height={160} borderRadius={16} />
-				<Skeleton width={740} height={133} borderRadius={16} />
-			</div>
+			<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
+				<BackButtonSkeleton />
+				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<ButtonSkeleton
+						style={{
+							width: 'auto',
+							padding: '0 32px',
+							justifyContent: 'center',
+						}}
+						variant={'destructive'}
+					/>
+					<ButtonSkeleton style={{ marginLeft: 'auto' }} />
+				</Flex>
+			</Flex>
+			<SpecializationCardSkeleton />
 		</>
 	);
 };
