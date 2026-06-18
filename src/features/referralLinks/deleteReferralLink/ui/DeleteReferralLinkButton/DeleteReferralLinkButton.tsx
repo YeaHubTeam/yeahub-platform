@@ -1,34 +1,31 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, ReferralLinks } from '@/shared/config';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
+import { DeleteButton } from '@/shared/ui/DeleteButton';
 
-import { DeleteReferralLinkModal } from '../DeleteReferralLinkModal/DeleteReferralLinkModal';
+import { useDeleteReferralLinkMutation } from '../../api/deleteReferralLinkApi';
 
 interface DeleteReferralLinkButtonProps {
-	id: string;
+	referralId: string;
 	isDetailPage?: boolean;
 }
 
 export const DeleteReferralLinkButton = ({
-	id,
+	referralId,
 	isDetailPage = false,
 }: DeleteReferralLinkButtonProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [deleteReferralLink] = useDeleteReferralLinkMutation();
+
+	const onDeleteReferralLink = () => {
+		deleteReferralLink(referralId);
+	};
 
 	return (
-		<>
-			<Button
-				preffix={!isDetailPage && <Icon icon="trash" size={24} />}
-				variant={isDetailPage ? 'destructive' : 'tertiary-link'}
-				onClick={() => setIsModalOpen(true)}
-			>
-				{t(ReferralLinks.ACTION_DELETE)}
-			</Button>
-			<DeleteReferralLinkModal id={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-		</>
+		<DeleteButton
+			onDelete={onDeleteReferralLink}
+			isDetailPage={isDetailPage}
+			modalMessage={t(ReferralLinks.DELETE_MODAL_TEXT)}
+		/>
 	);
 };

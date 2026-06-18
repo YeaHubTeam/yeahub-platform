@@ -26,6 +26,13 @@
 			"actions": "Actions"
 		}
 	},
+	"details": {
+		"roles": "Roles",
+		"clientType": "Client type",
+		"activity": "Activity",
+		"createdAt": "Created at",
+		"updatedAt": "Updated at"
+	},
 	"status": {
 		"featureFlags": {
 			"enabled": "Enabled",

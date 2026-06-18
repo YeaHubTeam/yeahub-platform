@@ -585,6 +585,11 @@ export enum Specializations {
 }
 
 export enum FeatureFlags {
+	DETAILS_ROLES = 'details.roles',
+	DETAILS_CLIENT_TYPE = 'details.clientType',
+	DETAILS_ACTIVITY = 'details.activity',
+	DETAILS_CREATED_AT = 'details.createdAt',
+	DETAILS_UPDATED_AT = 'details.updatedAt',
 	STUB_EMPTY_TITLE = 'stub.empty.featureFlags.title',
 	STUB_EMPTY_SUBTITLE = 'stub.empty.featureFlags.subtitle',
 	STUB_EMPTY_SUBMIT = 'stub.empty.featureFlags.submit',
@@ -1406,6 +1411,8 @@ export enum Subscription {
 	SUBSCRIPTION_CANCELED = 'canceled',
 	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_TITLE = 'stub.hide.tariffs.title',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_DESCRIPTION = 'stub.hide.tariffs.description',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
 	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',
