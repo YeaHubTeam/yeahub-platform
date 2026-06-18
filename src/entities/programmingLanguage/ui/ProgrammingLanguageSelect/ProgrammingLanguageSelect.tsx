@@ -8,7 +8,7 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { useGetLanguagesQuery } from '../../api/programmingLanguageApi';
 import { ProgrammingLanguage } from '../../model/types/programmingLanguage';
 
-type ProgrammingLanguageSelectProps = Omit<
+export type ProgrammingLanguageSelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {

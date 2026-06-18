@@ -1,4 +1,4 @@
-import { Response } from '@/shared/libs';
+import { author, Response } from '@/shared/libs';
 
 import type { Resource } from '@/entities/resource';
 
@@ -30,6 +30,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2024-12-13T15:37:18.095Z',
 					updatedAt: '2024-12-13T15:37:18.095Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -70,6 +72,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -111,6 +115,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -152,6 +158,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -193,6 +201,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -234,6 +244,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2024-12-12T08:19:06.225Z',
 					updatedAt: '2024-12-12T08:19:06.225Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -275,6 +287,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -325,6 +339,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:42:12.680Z',
 					updatedAt: '2025-02-06T18:42:12.680Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -375,6 +391,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:41:59.722Z',
 					updatedAt: '2025-02-06T18:41:59.722Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -424,6 +442,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:41:59.722Z',
 					updatedAt: '2025-02-06T18:41:59.722Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -464,6 +484,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:41:59.722Z',
 					updatedAt: '2025-02-06T18:41:59.722Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [
@@ -504,6 +526,8 @@ export const resourcesMock: Response<Resource[]> = {
 					imageSrc: null,
 					createdAt: '2025-02-06T18:41:59.722Z',
 					updatedAt: '2025-02-06T18:41:59.722Z',
+					slug: 'slug',
+					createdBy: author,
 				},
 			],
 			skills: [

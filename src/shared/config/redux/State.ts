@@ -1,5 +1,6 @@
 import { baseApi } from '@/shared/config';
 
+import { FeatureFlagState } from '@/entities/featureFlag';
 import { ProfileState } from '@/entities/profile';
 import { ActiveQuizState } from '@/entities/quiz';
 import { ActiveSubscriptionState } from '@/entities/subscription';
@@ -31,4 +32,5 @@ export interface State {
 	topicsPage: TopicsPageState;
 	tasksTablePage: TasksTablePageState;
 	referralLinksPage: ReferralLinksPageState;
+	featureFlag: FeatureFlagState;
 }

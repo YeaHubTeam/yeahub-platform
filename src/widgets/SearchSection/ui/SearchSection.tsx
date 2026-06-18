@@ -49,13 +49,13 @@ export const SearchSection = ({
 							currentValue={searchValue}
 						/>
 					)}
-				</Flex>
-				<Flex gap="10" align="center">
 					{onResetFilters && showResetFilterButton && (
 						<Button size="large" onClick={onResetFilters} variant="outline">
 							{t(Translation.STUB_FILTER_SUBMIT)}
 						</Button>
 					)}
+				</Flex>
+				<Flex gap="10" align="center">
 					{showRemoveButton && renderRemoveButton && renderRemoveButton()}
 					{typeof to === 'function'
 						? to()

@@ -5,10 +5,10 @@ import { RoleName } from '@/entities/auth/@x/featureFlag';
 export type FeatureFlagType =
 	| 'nyBanner'
 	| 'nyModal'
-	| 'usersRating'
-	| 'changeLanguage'
-	| 'changeTheme';
-
+	| 'dashboard.analytic.user-rating'
+	| 'common.app.change-language'
+	| 'common.app.change-theme'
+	| 'dashboard.subscription.show-tariffs';
 export interface FeatureFlag {
 	id: FeatureFlagType;
 	roles?: RoleName[];
@@ -16,15 +16,19 @@ export interface FeatureFlag {
 	description: string;
 }
 
-export type FeatureFlags = Record<FeatureFlagType, FeatureFlag>;
+export type FeatureFlags = Partial<Record<FeatureFlagType, FeatureFlag>>;
 
-export type ClientType = 'WEB' | 'MOBILE' | 'DESKTOP';
+export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
 export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
+export type GetFeatureFlagByIdResponse = FeatureFlagApiItem;
+
+export type Flag = string;
+
 export interface FeatureFlagApiItem {
 	id: string;
-	flag: string;
+	flag: Flag;
 	enabled: boolean;
 	description: string;
 	roles: RoleName[];
@@ -38,6 +42,13 @@ export interface GetFeatureFlagsListParamsRequest {
 	limit?: number;
 	search?: string;
 	enabled?: boolean;
-	roleIds?: RoleName[];
+	roleIds?: string;
 	clientType?: ClientType;
 }
+
+export type CreateOrEditFeatureFlagFormValues = Omit<
+	FeatureFlagApiItem,
+	'roles' | 'createdAt' | 'updatedAt'
+> & {
+	roleIds: number[];
+};

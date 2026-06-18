@@ -36,14 +36,11 @@ export const createCollectionMock = http.post<
 		updatedAt: now,
 		questionsCount: body.questions?.length || 0,
 		tasksCount: body.taskIds?.length || 0,
-		specializations: body.specializations?.map(
-			(id) =>
-				specializationsMock.data.find((spec) => spec.id === id) || {
-					id,
-					title: 'Unknown',
-					description: 'Unknown',
-				},
-		),
+		specializations: body.specializations.map((id) => {
+			const index = specializationsMock.findIndex((spec) => spec.id === id);
+
+			return specializationsMock[index];
+		}),
 		keywords: body.keywords || [],
 		company,
 		createdBy: {

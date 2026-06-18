@@ -1,3 +1,5 @@
+import { author } from '@/shared/libs';
+
 import { GetLearnedQuestionsResponse } from '../../../model/types/learnedQuestion';
 
 export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
@@ -22,6 +24,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:37:18.095Z',
 				updatedAt: '2024-12-13T15:37:18.095Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 92,
@@ -48,6 +52,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-10-03T09:08:10.605Z',
 				updatedAt: '2024-12-13T15:29:16.935Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 72,
@@ -74,6 +80,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2025-02-06T18:42:12.680Z',
 				updatedAt: '2025-02-06T18:42:12.680Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 62,
@@ -100,6 +108,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2025-02-06T18:41:59.722Z',
 				updatedAt: '2025-02-06T18:41:59.722Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 32,
@@ -126,6 +136,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:32:58.103Z',
 				updatedAt: '2024-12-13T15:32:58.103Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 72,
@@ -152,6 +164,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:34:12.455Z',
 				updatedAt: '2024-12-13T15:34:12.455Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 92,

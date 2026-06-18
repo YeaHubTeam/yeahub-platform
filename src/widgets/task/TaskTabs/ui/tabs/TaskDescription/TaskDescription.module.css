@@ -13,3 +13,7 @@
 .constraint-item {
   margin-bottom: 8px;
 }
+
+.texthtml-skeleton > * {
+  min-height: 500px;
+}

@@ -10,7 +10,4 @@ export const specializationEditSchema: yup.ObjectSchema<EditSpecializationFormVa
 		id: yup.number().required(),
 		title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-		imageSrc: yup.string().nullable(),
-		createdAt: yup.string().required(),
-		updatedAt: yup.string().required(),
 	});
