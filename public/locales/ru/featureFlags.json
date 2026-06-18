@@ -32,6 +32,13 @@
 			"disabled": "Выключен"
 		}
 	},
+	"details": {
+		"roles": "Роли",
+		"clientType": "Тип клиента",
+		"activity": "Активность",
+		"createdAt": "Дата создания",
+		"updatedAt": "Дата изменения"
+	},
 	"filter": {
 		"enabled": "Активность",
 		"enabledOn": "Включен",
