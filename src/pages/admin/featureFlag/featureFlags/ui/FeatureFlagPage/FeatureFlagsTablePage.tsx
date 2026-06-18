@@ -29,7 +29,6 @@ export const FeatureFlagsTable = ({
 	onSelectItems,
 }: FeatureFlagsTableProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
-
 	const navigate = useNavigate();
 
 	const renderTableColumnWidths = () => {
@@ -88,14 +87,15 @@ export const FeatureFlagsTable = ({
 			{
 				icon: <Icon icon="eye" size={24} />,
 				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				disabled: featureFlag.enabled,
-				onClick: () => {},
+				onClick: () => {
+					navigate(route(ROUTES.admin.featureFlags.details.page, featureFlag.id));
+				},
 			},
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
 				onClick: () => {
-					navigate(route(ROUTES.admin.featureFlags.edit.route, featureFlag.id));
+					navigate(route(ROUTES.admin.featureFlags.edit.page, featureFlag.id));
 				},
 			},
 			{

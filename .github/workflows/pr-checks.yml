@@ -1,0 +1,67 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  pr-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate branch name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+
+          if ! echo "$BRANCH_NAME" | grep -qE '^(((feature|fix)/YH-[0-9]+(-[0-9]+)?)|(release/[0-9]+\.[0-9]+\.[0-9]+))+$'; then
+            echo "Ошибка: название ветки должно быть в формате:"
+            echo "  - feature/YH-XXX"
+            echo "  - fix/YH-XXX"
+            echo "  - release/X.X.X"
+            echo "Текущая ветка: $BRANCH_NAME"
+            exit 1
+          fi
+
+      - name: Validate commit messages
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
+
+      - name: Prettier
+        run: npx prettier --check "**/*.{ts,tsx,json}"
+
+      - name: ESLint
+        run: npm run lint:ts
+
+      - name: Stylelint
+        run: npm run lint:css
+
+      - name: FSD (steiger)
+        run: npx steiger ./src
+
+      # - name: Visual tests
+      #   run: npm run test:ui
+
+      # - name: Unit tests
+      #   run: npm run test:unit
