@@ -46,5 +46,6 @@ export enum ApiTags {
 	TOPIC_DETAIL = 'topic_detail',
 	PROGRAMMING_LANGUAGE = 'programming_language',
 	FEATURE_FLAGS = 'feature_flags',
+	FEATURE_FLAG_DETAIL = 'feature_flag_detail',
 	RESUME_ATS = 'resume_ats',
 }

@@ -20,3 +20,4 @@ export { ReferralLinkForm } from './ui/ReferralLinkForm/ReferralLinkForm';
 
 export { referralLinksHandlers } from './api/__mocks__';
 export { referralLinksMock } from './api/__mocks__/data';
+export { ReferralLinkFormSkeleton } from './ui/ReferralLinkForm/ReferralLinkForm.skeleton';

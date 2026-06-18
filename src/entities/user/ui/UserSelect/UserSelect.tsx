@@ -47,14 +47,20 @@ export const UserSelect = ({
 	});
 
 	useEffect(() => {
-		if (!value) {
+		if (!value && disabled) {
 			setSearchValue('');
 		}
-	}, [value]);
+	}, [value, disabled]);
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
 		onChange(newValue);
+	};
+
+	const handleClear = () => {
+		handleChange(undefined);
+		setSearchValue('');
+		setDebouncedValue('');
 	};
 
 	const emptyUser = {
@@ -66,7 +72,6 @@ export const UserSelect = ({
 		setSearchValue(val);
 		debouncedSetValue(val);
 	};
-
 	const options = useMemo(() => {
 		return (users?.data || []).map((user) => ({
 			value: user.id.toString(),
@@ -108,6 +113,7 @@ export const UserSelect = ({
 				isInput={true}
 				inputValue={searchValue}
 				onChangeValue={handleSearchChange}
+				onChangeFilterValue={handleClear}
 				onSelect={(val) => {
 					const selected = options.find((opt) => opt.value === val);
 					handleChange(val !== 'all' ? String(val) : undefined);

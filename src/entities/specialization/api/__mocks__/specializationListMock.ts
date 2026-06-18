@@ -1,5 +1,7 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
+import { calculatePagination } from '@/shared/libs';
+
 import { specializationApiUrls } from '../../model/constants/specializationConstants';
 import {
 	GetSpecializationsListResponse,
@@ -14,18 +16,27 @@ export const specializationListMock = http.get<
 	GetSpecializationsListResponse
 >(process.env.API_URL + specializationApiUrls.getSpecializationsList, ({ request }) => {
 	const url = new URL(request.url);
-	const page = url.searchParams.get('page') ?? 1;
-	const limit = url.searchParams.get('limit') ?? 10;
+	const page = Number(url.searchParams.get('page') ?? 1);
+	const limit = Number(url.searchParams.get('limit') ?? 10);
 
-	const paginationData = specializationsMock.data.slice(
-		(Number(page) - 1) * Number(limit),
-		Number(page) * Number(limit),
-	);
+	const title = url.searchParams.get('title');
+	const authorId = url.searchParams.get('authorId');
+
+	const filteredSpecializations = specializationsMock.filter((specialization) => {
+		const hasSearch = title
+			? specialization.title.toLowerCase().includes(title.toLowerCase())
+			: true;
+		const hasAuthor = authorId ? specialization.createdBy?.id === authorId : true;
+
+		return hasSearch && hasAuthor;
+	});
+
+	const paginationData = calculatePagination(filteredSpecializations, page, limit);
 
 	return HttpResponse.json({
 		data: paginationData,
-		page: Number(page),
-		total: specializationsMock.total,
-		limit: specializationsMock.limit,
+		page,
+		total: filteredSpecializations.length,
+		limit,
 	});
 });

@@ -17,7 +17,7 @@ export const specializationByIdMock = http.get<
 	({ params }) => {
 		const { specializationId } = params;
 
-		const specialization = specializationsMock.data.find((s) => String(s.id) === specializationId);
+		const specialization = specializationsMock.find((s) => String(s.id) === specializationId);
 
 		return HttpResponse.json(specialization);
 	},

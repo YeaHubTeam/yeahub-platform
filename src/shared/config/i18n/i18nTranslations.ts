@@ -144,7 +144,7 @@ export enum Translation {
 	VALIDATION_LINK = 'validation.link',
 	VALIDATION_NO_SPACE = 'validation.no.spaces',
 	VALIDATION_LATIN_AND_NUMBER = 'validation.latin.and.number',
-	VALIDATION_LATIN_CHARACTERS = 'validation.latin.characters',
+	VALIDATION_LATIN_CHARACTERS_AND_SYMBOLS = 'validation.latin.characters.and.symbols',
 	VALIDATION_NO_UPPERCASE = 'validation.no.uppercase',
 
 	/* Toast */
@@ -222,6 +222,12 @@ export enum Translation {
 	TOAST_FEATURE_FLAGS_CREATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.create.auth.unauthorized',
 	TOAST_FEATURE_FLAGS_CREATE_AUTH_USER_VERIFIED = 'toast.featureFlags.create.auth.user.verified',
 	TOAST_FEATURE_FLAGS_CREATE_ALREADY_EXISTS = 'toast.featureFlags.create.alreadyExists',
+	TOAST_FEATURE_FLAGS_EDIT_SUCCESS = 'toast.featureFlags.edit.success',
+	TOAST_FEATURE_FLAGS_EDIT_FAILED = 'toast.featureFlags.edit.failed',
+	TOAST_FEATURE_FLAGS_EDIT_AUTH_UNAUTHORIZED = 'toast.featureFlags.edit.auth.unauthorized',
+	TOAST_FEATURE_FLAGS_EDIT_AUTH_USER_VERIFIED = 'toast.featureFlags.edit.auth.user.verified',
+	TOAST_FEATURE_FLAGS_EDIT_ALREADY_EXISTS = 'toast.featureFlags.edit.alreadyExists',
+	TOAST_FEATURE_FLAGS_EDIT_NOT_FOUND = 'toast.featureFlags.edit.not_found',
 	TOAST_COLLECTION_DELETE_SUCCESS = 'toast.collections.delete.single.success',
 	TOAST_COLLECTION_DELETE_FAILED = 'toast.collections.delete.single.failed',
 	TOAST_COLLECTION_DELETE_SINGLE_NOTFOUND = 'toast.collections.delete.single.not_found',
@@ -401,6 +407,14 @@ export enum Translation {
 	TOAST_FEATURE_FLAG_DELETE_AUTH_UNAUTHORIZED = 'toast.featureFlags.delete.auth.unauthorized',
 	TOAST_FEATURE_FLAG_DELETE_AUTH_USER_VERIFIED = 'toast.featureFlags.delete.auth.user.verified',
 	TOAST_FEATURE_FLAG_DELETE_SINGLE_NOTFOUND = 'toast.featureFlags.delete.single.not_found',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_SUCCESS = 'toast.featureFlags.update.single.enabled.success',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_FAILED = 'toast.featureFlags.update.single.enabled.failed',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_DISABLED_SUCCESS = 'toast.featureFlags.update.single.disabled.success',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_DISABLED_FAILED = 'toast.featureFlags.update.single.disabled.failed',
+	TOAST_FEATURE_FLAG_UPDATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.update.auth.unauthorized',
+	TOAST_FEATURE_FLAG_UPDATE_AUTH_USER_VERIFIED = 'toast.featureFlags.update.auth.user.verified',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_NOTFOUND = 'toast.featureFlags.update.single.not_found',
+	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ALREADY_EXISTS = 'toast.featureFlags.update.single.already_exists',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
@@ -571,6 +585,11 @@ export enum Specializations {
 }
 
 export enum FeatureFlags {
+	DETAILS_ROLES = 'details.roles',
+	DETAILS_CLIENT_TYPE = 'details.clientType',
+	DETAILS_ACTIVITY = 'details.activity',
+	DETAILS_CREATED_AT = 'details.createdAt',
+	DETAILS_UPDATED_AT = 'details.updatedAt',
 	STUB_EMPTY_TITLE = 'stub.empty.featureFlags.title',
 	STUB_EMPTY_SUBTITLE = 'stub.empty.featureFlags.subtitle',
 	STUB_EMPTY_SUBMIT = 'stub.empty.featureFlags.submit',
@@ -1392,6 +1411,8 @@ export enum Subscription {
 	SUBSCRIPTION_CANCELED = 'canceled',
 	SUBSCRIPTION_BUTTON_TRIAL = 'button.trial',
 	SUBSCRIPTION_ACCESS_WARNING = 'accessWarning',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_TITLE = 'stub.hide.tariffs.title',
+	SUBSCRIPTION_STUB_HIDE_TARIFFS_DESCRIPTION = 'stub.hide.tariffs.description',
 	SUBSCRIPTION_FAQ_TITLE = 'faq.title',
 	SUBSCRIPTION_FAQ_FIRST_QUESTION = 'faq.first.question',
 	SUBSCRIPTION_FAQ_FIRST_ANSWER = 'faq.first.answer',

@@ -48,6 +48,8 @@ const QuestionsPage = () => {
 		onChangeIsMy,
 		onChangeOrder,
 		onChangeOrderBy,
+		onChangeTopics,
+		onChangeAuthorId,
 	} = useQuestionsFilters({
 		page: 1,
 	});
@@ -66,7 +68,8 @@ const QuestionsPage = () => {
 		rate: filters.rate,
 		orderBy: filters.orderBy,
 		order: filters.order,
-		authorId: filters.isMy ? userId : undefined,
+		authorId: filters.isMy ? userId : filters.authorId,
+		topics: filters.topics,
 	});
 
 	const onSelectQuestions = (ids: SelectedAdminEntities) => {
@@ -183,6 +186,8 @@ const QuestionsPage = () => {
 								onChangeOrder={onChangeOrder}
 								onChangeIsMy={onChangeIsMy}
 								onChangeOrderBy={onChangeOrderBy}
+								onChangeTopics={onChangeTopics}
+								onChangeAuthorId={onChangeAuthorId}
 							/>
 						)}
 					/>

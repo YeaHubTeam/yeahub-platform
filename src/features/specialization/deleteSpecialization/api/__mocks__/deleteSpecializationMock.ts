@@ -9,13 +9,12 @@ export const deleteSpecializationMock = http.delete(
 	async ({ params }) => {
 		const specializationId = Number(params.specializationId);
 
-		const index = specializationsMock.data.findIndex(
+		const index = specializationsMock.findIndex(
 			(specialization) => specialization.id === specializationId,
 		);
 
-		if (index !== 1) {
-			specializationsMock.data.splice(index, 1);
-			specializationsMock.total = specializationsMock.total - 1;
+		if (index !== -1) {
+			specializationsMock.splice(index, 1);
 		}
 
 		return new Response();
