@@ -5,6 +5,11 @@ on:
     branches:
       - develop
       - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
 
 concurrency:
   group: pr-checks-${{ github.event.pull_request.number }}
