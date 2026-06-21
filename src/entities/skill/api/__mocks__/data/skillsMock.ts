@@ -1,5 +1,7 @@
 import { author } from '@/shared/libs';
 
+import { adminAuthor, authorAuthor } from '@/entities/user/@x/skill';
+
 import type { PopularSkillsResponse, Skill } from '../../../model/types/skill';
 
 export const skillsMock: Skill[] = [
@@ -44,7 +46,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 27,
@@ -66,7 +68,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 28,
@@ -88,7 +90,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 157,
@@ -109,7 +111,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 158,
@@ -140,7 +142,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 12,
@@ -173,7 +175,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 7,
@@ -256,7 +258,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 1,
@@ -278,7 +280,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 16,
@@ -301,7 +303,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 15,
@@ -324,7 +326,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 22,
@@ -347,7 +349,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 2,
@@ -379,7 +381,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 159,
@@ -401,7 +403,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 6,
@@ -423,7 +425,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 8,
@@ -445,7 +447,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 160,
@@ -466,7 +468,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: authorAuthor,
 	},
 	{
 		id: 161,
@@ -487,7 +489,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 	{
 		id: 162,
@@ -529,7 +531,7 @@ export const skillsMock: Skill[] = [
 				createdBy: author,
 			},
 		],
-		createdBy: author,
+		createdBy: adminAuthor,
 	},
 ];
 

@@ -1,32 +1,7 @@
 import { skillsMock } from '@/entities/skill/@x/auth';
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { userPremiumUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const userPremiumCredentials = {
-	username: 'user-premium@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const userPremiumUserRoles = [
-	userRolesMock.find((role) => role.id === 3)!,
-	userRolesMock.find((role) => role.id === 7)!,
-];
-
-const userPremiumUser = {
-	id: '40b8f5bb-07d7-4fac-98ef-42ca16de4197',
-	username: 'yuzerpremium1',
-	telegramUsername: null,
-	country: '',
-	city: 'YeaHub1',
-	email: userPremiumCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl: '',
-	createdAt: '2025-02-20T08:02:57.032Z',
-	isVerified: true,
-	userRoles: userPremiumUserRoles,
-};
 
 const userPremiumProfiles: Profile[] = [
 	{

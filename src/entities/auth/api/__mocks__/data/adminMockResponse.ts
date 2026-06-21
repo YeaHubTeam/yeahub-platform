@@ -1,33 +1,7 @@
 import { skillsMock } from '@/entities/skill/@x/auth';
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { adminUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const adminCredentials = {
-	username: 'admin@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const adminUserRoles = [
-	userRolesMock.find((role) => role.id === 4)!,
-	userRolesMock.find((role) => role.id === 6)!,
-];
-
-const adminUser = {
-	id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
-	username: 'adminadminov4995',
-	telegramUsername: null,
-	country: '',
-	city: 'spppb',
-	email: adminCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl:
-		'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/users_avatars/dae97d47-514a-46b1-b8ea-11c75327ebe9',
-	createdAt: '2025-02-20T08:04:24.006Z',
-	isVerified: true,
-	userRoles: adminUserRoles,
-};
 
 const adminProfiles: Profile[] = [
 	{
