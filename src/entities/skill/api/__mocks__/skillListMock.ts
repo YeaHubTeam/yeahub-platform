@@ -42,7 +42,7 @@ export const skillListMock = http.get<
 	return HttpResponse.json({
 		data: paginationData,
 		page,
-		total: 10,
-		limit: 50,
+		total: data.length,
+		limit,
 	});
 });
