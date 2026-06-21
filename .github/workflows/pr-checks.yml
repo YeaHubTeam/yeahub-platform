@@ -5,6 +5,11 @@ on:
     branches:
       - develop
       - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
 
 concurrency:
   group: pr-checks-${{ github.event.pull_request.number }}
@@ -35,18 +40,42 @@ jobs:
       - name: Validate branch name
         run: |
           BRANCH_NAME="${{ github.head_ref }}"
+          BASE_BRANCH="${{ github.base_ref }}"
 
-          if ! echo "$BRANCH_NAME" | grep -qE '^(((feature|fix)/YH-[0-9]+(-[0-9]+)?)|(release/[0-9]+\.[0-9]+\.[0-9]+))+$'; then
-            echo "Ошибка: название ветки должно быть в формате:"
-            echo "  - feature/YH-XXX"
-            echo "  - fix/YH-XXX"
-            echo "  - release/X.X.X"
-            echo "Текущая ветка: $BRANCH_NAME"
-            exit 1
+          if [ "$BASE_BRANCH" = "main" ]; then
+            if ! echo "$BRANCH_NAME" | grep -qE '^release/[0-9]+\.[0-9]+\.[0-9]+$'; then
+              echo "Ошибка: PR в main допускается только из ветки release/X.X.X"
+              echo "Текущая ветка: $BRANCH_NAME"
+              echo "Для обычных задач создавайте PR в develop из feature/YH-XXX или fix/YH-XXX"
+              exit 1
+            fi
+          else
+            if ! echo "$BRANCH_NAME" | grep -qE '^((feature|fix)/YH-[0-9]+(-[0-9]+)?)$'; then
+              echo "Ошибка: PR в develop допускается только из веток:"
+              echo "  - feature/YH-XXX"
+              echo "  - fix/YH-XXX"
+              echo "Текущая ветка: $BRANCH_NAME"
+              exit 1
+            fi
           fi
 
       - name: Validate commit messages
-        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
+        run: |
+          BASE_BRANCH="${{ github.base_ref }}"
+          FROM_SHA="${{ github.event.pull_request.base.sha }}"
+          TO_SHA="${{ github.event.pull_request.head.sha }}"
+
+          if [ "$BASE_BRANCH" = "main" ]; then
+            LAST_COMMIT_MSG=$(git log -1 --format=%s "$TO_SHA")
+
+            if ! echo "$LAST_COMMIT_MSG" | grep -qi "Release"; then
+              echo "Ошибка: для PR в main последний коммит должен содержать слово Release"
+              echo "Последний коммит: $LAST_COMMIT_MSG"
+              exit 1
+            fi
+          else
+            npx commitlint --from "$FROM_SHA" --to "$TO_SHA"
+          fi
 
       - name: Prettier
         run: npx prettier --check "**/*.{ts,tsx,json}"
