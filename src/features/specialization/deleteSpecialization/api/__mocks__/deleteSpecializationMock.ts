@@ -1,6 +1,6 @@
-import { http, HttpResponse } from 'msw';
+import { DefaultBodyType, http, HttpResponse } from 'msw';
 
-import { authMockProfilesByAccessToken } from '@/entities/auth';
+import { getMockAuthProfile } from '@/entities/auth';
 import { collectionsMock } from '@/entities/collection';
 import { questionsMock } from '@/entities/question';
 import { resourcesMock } from '@/entities/resource';
@@ -8,15 +8,18 @@ import { skillsMock } from '@/entities/skill';
 import { specializationsMock } from '@/entities/specialization';
 
 import { deleteSpecializationApiUrls } from '../../model/constants/deleteSpecializationConstants';
+import { DeleteSpecializationError } from '../../model/types/deleteSpecializationTypes';
 
-export const deleteSpecializationMock = http.delete(
+export const deleteSpecializationMock = http.delete<
+	{ specializationId: string },
+	DefaultBodyType,
+	ApiErrorData<DeleteSpecializationError>
+>(
 	process.env.API_URL + deleteSpecializationApiUrls.deleteSpecialization,
 	async ({ params, request }) => {
 		const specializationId = Number(params.specializationId);
 
-		const authorizationHeader = request.headers.get('Authorization') ?? '';
-		const accessToken = authorizationHeader.replace(/^Bearer\s+/i, '');
-		const profileMockResponse = authMockProfilesByAccessToken[accessToken];
+		const profileMockResponse = getMockAuthProfile(request);
 
 		if (!profileMockResponse) {
 			return HttpResponse.json(
