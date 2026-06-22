@@ -11,3 +11,5 @@ export const authHandlers = [
 	authRefreshQueryMock(),
 	authSignupMutationMock(),
 ];
+
+export { authMockProfilesByAccessToken } from './data';
