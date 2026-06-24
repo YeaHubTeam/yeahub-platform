@@ -35,7 +35,7 @@ export interface User {
 	city: string;
 	address: string;
 	avatarUrl: string;
-	birthday: string;
+	birthday: string | null;
 	updatedAt: string;
 	createdAt: string;
 	userRoles: UserRole[];
