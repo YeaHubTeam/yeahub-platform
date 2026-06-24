@@ -90,7 +90,7 @@ export const deleteSpecializationMock = http.delete<
 		const hasResourceWithSpec = resourcesMock.data.some(({ specializations }) =>
 			specializations.some((spec) => spec.id === specializationId),
 		);
-		const hasSkillWithSpec = skillsMock.data.some(({ specializations }) =>
+		const hasSkillWithSpec = skillsMock.some(({ specializations }) =>
 			specializations?.some((spec) => spec.id === specializationId),
 		);
 

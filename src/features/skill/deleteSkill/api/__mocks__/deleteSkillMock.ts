@@ -18,7 +18,7 @@ export const deleteSkillMock = http.delete<
 
 	const profileMockResponse = getMockAuthProfile(request);
 
-	const currentSkill = skillsMock.data.find((skill) => String(skill.id) === skillId);
+	const currentSkill = skillsMock.find((skill) => String(skill.id) === skillId);
 
 	if (!profileMockResponse) {
 		return HttpResponse.json({
