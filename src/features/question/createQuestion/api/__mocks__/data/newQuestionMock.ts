@@ -1,3 +1,5 @@
+import { author } from '@/shared/libs';
+
 import { Question } from '@/entities/question';
 
 import { CreateQuestionBodyRequest } from '../../../model/types/questionCreateTypes';
@@ -46,6 +48,8 @@ export const newQuestionMock = (formData: CreateQuestionBodyRequest, id: number)
 				imageSrc: null,
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2024-11-01T21:33:13.635Z',
+				specializations: [],
+				createdBy: author,
 			},
 		],
 		checksCount: 0,
