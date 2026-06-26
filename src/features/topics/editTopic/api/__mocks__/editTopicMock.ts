@@ -7,19 +7,21 @@ import { editTopicApiUrls } from '../../model/constants/editTopicConstants';
 import { TopicEditError } from '../../model/types/topicEditErrorTypes';
 import { EditTopicBodyRequest, EditTopicResponse } from '../../model/types/topicEditTypes';
 
-export const editQuestionMock = http.patch<
+export const editTopicMock = http.patch<
 	PathParams,
 	EditTopicBodyRequest,
 	EditTopicResponse | ApiErrorData<TopicEditError>
 >(process.env.API_URL + editTopicApiUrls.editTopic, async ({ request }) => {
 	const formData = await request.json();
 
-	const topicId = topicsMocks.data.findIndex((topic) => topic.id === formData.id);
+	const topicIndex = topicsMocks.data.findIndex((topic) => topic.id === formData.id);
 
 	const profileMockResponse = getMockAuthProfile(request);
 
 	const isAdmin = profileMockResponse?.userRoles.some((role) => role.name === 'admin') ?? false;
 	const isAuthor = profileMockResponse?.userRoles.some((role) => role.name === 'author') ?? false;
+	const isAuthorOfThisTopic =
+		topicsMocks.data[topicIndex].createdBy?.id === profileMockResponse?.id;
 
 	if (!profileMockResponse) {
 		return HttpResponse.json(
@@ -43,18 +45,18 @@ export const editQuestionMock = http.patch<
 		);
 	}
 
-	if (!isAdmin && !isAuthor) {
+	if (!isAdmin && !(isAuthor && isAuthorOfThisTopic)) {
 		return HttpResponse.json(
 			{
-				message: 'auth.roles.admin_or_author_required',
+				message: 'auth.roles.author_can_change_only_own',
 				statusCode: 403,
-				description: 'Admin or author required',
+				description: 'Author can change only own data',
 			},
 			{ status: 403 },
 		);
 	}
 
-	if (topicsMocks.data[topicId].title === formData.title) {
+	if (topicsMocks.data[topicIndex].title === formData.title) {
 		return HttpResponse.json(
 			{
 				message: 'topic.topic.title.conflict',
@@ -65,22 +67,22 @@ export const editQuestionMock = http.patch<
 		);
 	}
 
-	if (topicId === -1) {
-		return HttpResponse.json(
-			{ message: 'topic.topic.not_found', statusCode: 404, description: 'Topic not found' },
-			{ status: 404 },
-		);
-	}
-
-	if (topicId !== -1) {
+	if (topicIndex !== -1) {
 		const updateTopic = {
-			...topicsMocks.data[topicId],
+			...topicsMocks.data[topicIndex],
 			...formData,
 			updatedAt: new Date().toISOString(),
 		};
 
-		topicsMocks.data[topicId] = updateTopic;
+		topicsMocks.data[topicIndex] = updateTopic;
 
 		return HttpResponse.json(updateTopic);
+	}
+
+	if (topicIndex === -1) {
+		return HttpResponse.json(
+			{ message: 'topic.topic.not_found', statusCode: 404, description: 'Topic not found' },
+			{ status: 404 },
+		);
 	}
 });
