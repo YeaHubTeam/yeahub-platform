@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+import { author } from '@/shared/libs';
+
 import { skillsMock } from '@/entities/skill';
 import { topicsMocks } from '@/entities/topic';
 
@@ -18,13 +20,15 @@ export const createTopicMock = http.post<never, CreateTopicBodyRequest, CreateTo
 			imageSrc: null,
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString(),
-			skill: skillsMock.data.find((skill) => skill.id === topic.skillId) ?? {
+			skill: skillsMock.find((skill) => skill.id === topic.skillId) ?? {
 				id: topic.skillId,
 				title: '',
 				description: '',
 				imageSrc: null,
 				createdAt: new Date().toISOString(),
 				updatedAt: new Date().toISOString(),
+				specializations: [],
+				createdBy: author,
 			},
 		};
 
