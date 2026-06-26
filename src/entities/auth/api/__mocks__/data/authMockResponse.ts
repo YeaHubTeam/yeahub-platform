@@ -1,47 +1,33 @@
 import { AuthResponse, ProfileResponse } from '../../../model/types/auth';
 
-import {
-	adminAuthMockResponse,
-	adminCredentials,
-	adminProfileMockResponse,
-} from './adminMockResponse';
-import {
-	authorAuthMockResponse,
-	authorCredentials,
-	authorProfileMockResponse,
-} from './authorMockResponse';
-import {
-	userFreeAuthMockResponse,
-	userFreeCredentials,
-	userFreeProfileMockResponse,
-} from './userFreeMockResponse';
+import { adminAuthMockResponse, adminProfileMockResponse } from './adminMockResponse';
+import { authorAuthMockResponse, authorProfileMockResponse } from './authorMockResponse';
+import { userFreeAuthMockResponse, userFreeProfileMockResponse } from './userFreeMockResponse';
 import {
 	userPremiumAuthMockResponse,
-	userPremiumCredentials,
 	userPremiumProfileMockResponse,
 } from './userPremiumMockResponse';
 import {
 	userUnverifiedAuthMockResponse,
-	userUnverifiedCredentials,
 	userUnverifiedProfileMockResponse,
 } from './userUnverifiedMockResponse';
 
 export const authMockResponse: AuthResponse = userUnverifiedAuthMockResponse;
 
 export const authMockPasswordsByEmail: Record<string, string> = {
-	[adminCredentials.username]: adminCredentials.password,
-	[authorCredentials.username]: authorCredentials.password,
-	[userFreeCredentials.username]: userFreeCredentials.password,
-	[userPremiumCredentials.username]: userPremiumCredentials.password,
-	[userUnverifiedCredentials.username]: userUnverifiedCredentials.password,
+	'admin@yeahub.ru': 'Password123!',
+	'author@yeahub.ru': 'Password123!',
+	'user-free@yeahub.ru': 'Password123!',
+	'user-premium@yeahub.ru': 'Password123!',
+	'user-unverified@yeahub.ru': 'Password123!',
 };
 
 export const authMockResponsesByEmail: Record<string, AuthResponse> = {
-	[adminCredentials.username]: adminAuthMockResponse,
-	[authorCredentials.username]: authorAuthMockResponse,
-	[userFreeCredentials.username]: userFreeAuthMockResponse,
-	[userPremiumCredentials.username]: userPremiumAuthMockResponse,
-	[userUnverifiedCredentials.username]: userUnverifiedAuthMockResponse,
+	'admin@yeahub.ru': adminAuthMockResponse,
+	'author@yeahub.ru': authorAuthMockResponse,
+	'user-free@yeahub.ru': userFreeAuthMockResponse,
+	'user-premium@yeahub.ru': userPremiumAuthMockResponse,
+	'user-unverified@yeahub.ru': userUnverifiedAuthMockResponse,
 };
 
 export const authMockProfilesByAccessToken: Record<string, ProfileResponse> = {
