@@ -1,3 +1,5 @@
+import { API_VERSION } from '@/shared/config';
+
 export const deleteTasksApiUrls = {
-	deleteTask: 'api/v1/live-coding/tasks/:taskId',
+	deleteTask: `${API_VERSION.V1}/live-coding/tasks/:taskId`,
 };

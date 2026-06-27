@@ -108,10 +108,7 @@ const TasksTablePage = () => {
 						hasFilters={hasFilters}
 						showRemoveButton={selectedTasks.length > 0}
 						renderRemoveButton={() => (
-							<DeleteTasksButton
-								tasksToRemove={selectedTasks}
-								onSuccess={() => clearSelectedTasks()}
-							/>
+							<DeleteTasksButton tasksToRemove={selectedTasks} onSuccess={clearSelectedTasks} />
 						)}
 						renderFilter={() => (
 							<TasksFilters

@@ -22,7 +22,7 @@ export const DeleteTasksButton = ({ tasksToRemove, onSuccess }: DeleteTasksButto
 	};
 
 	return (
-		<Button onClick={onRemoveTasks} variant="destructive-outline">
+		<Button onClick={onRemoveTasks} variant="destructive-outline" size="large">
 			{t(Translation.REMOVE_SELECTED)}
 		</Button>
 	);
