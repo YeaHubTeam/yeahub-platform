@@ -12,7 +12,7 @@ export const skillByIdMock = http.get<
 >(`${process.env.API_URL}${skillApiUrls.getSkillById}`, ({ params }) => {
 	const { skillId } = params;
 
-	const skill = skillsMock.data.find((skill) => String(skill.id) === skillId);
+	const skill = skillsMock.find((skill) => String(skill.id) === skillId);
 
 	return HttpResponse.json(skill);
 });

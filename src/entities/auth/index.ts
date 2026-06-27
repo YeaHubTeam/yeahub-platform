@@ -22,7 +22,11 @@ export {
 	useLazyLogoutQuery,
 	useLazyRefreshQuery,
 } from './api/authApi';
+
 export { authHandlers } from './api/__mocks__';
+export { authMockProfilesByAccessToken } from './api/__mocks__/data';
+
 export { refreshMiddleware } from './api/refreshMiddleware';
 export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';
 export { TelegramWidget } from './ui/TelegramWidget/TelegramWidget';
+export { getMockAuthProfile } from './api/__mocks__/helpers/getMockAuthProfile';
