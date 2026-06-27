@@ -13,4 +13,12 @@ export const usersRatingHandlers = [
 
 export const userHandlers = [usersListMock];
 export { userRolesMock } from './data/userRolesMock';
-export { usersMock } from './data/usersMock';
+
+export {
+	adminUser,
+	authorUser,
+	userFreeUser,
+	userPremiumUser,
+	userUnverifiedUser,
+} from './data/usersDataMock';
+export { authorAuthor, adminAuthor } from './data/userAuthorsMock';
