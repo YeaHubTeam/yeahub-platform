@@ -1,6 +1,6 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
-import { authMockProfilesByAccessToken } from '@/entities/auth';
+import { getMockAuthProfile } from '@/entities/auth';
 import { questionsMock } from '@/entities/question';
 import { topicsMocks } from '@/entities/topic';
 
@@ -14,9 +14,7 @@ export const deleteTopicMock = http.delete<
 >(process.env.API_URL + deleteTopicApiUrls.deleteTopic, ({ params, request }) => {
 	const topicId = Number(params.topicId);
 
-	const authorizationHeader = request.headers.get('Authorization') ?? '';
-	const accessToken = authorizationHeader.replace(/^Bearer\s+/i, '');
-	const profileMockResponse = authMockProfilesByAccessToken[accessToken];
+	const profileMockResponse = getMockAuthProfile(request);
 
 	if (!profileMockResponse) {
 		return HttpResponse.json(
@@ -36,13 +34,26 @@ export const deleteTopicMock = http.delete<
 				statusCode: 403,
 				description: 'Route is available for verified users!',
 			},
-			{ status: 401 },
+			{ status: 403 },
+		);
+	}
+
+	const currentTopic = topicsMocks.data.find((topic) => topic.id === topicId);
+
+	if (!currentTopic) {
+		return HttpResponse.json(
+			{
+				message: 'topic.topic.not_found',
+				statusCode: 404,
+				description: 'Topic no found',
+			},
+			{ status: 404 },
 		);
 	}
 
 	const isAdmin = profileMockResponse.userRoles.some((role) => role.name === 'admin');
 
-	const isAuthor = profileMockResponse.userRoles.some((role) => role.name === 'author');
+	const isAuthor = currentTopic.createdBy.id === profileMockResponse.id;
 
 	if (!isAdmin && !isAuthor) {
 		return HttpResponse.json(
@@ -52,19 +63,6 @@ export const deleteTopicMock = http.delete<
 				description: 'Author can change only own data',
 			},
 			{ status: 403 },
-		);
-	}
-
-	const index = topicsMocks.data.findIndex((topic) => topic.id === topicId);
-
-	if (index === -1) {
-		return HttpResponse.json(
-			{
-				message: 'topic.topic.not_found',
-				statusCode: 404,
-				description: 'Topic no found',
-			},
-			{ status: 404 },
 		);
 	}
 
@@ -82,6 +80,8 @@ export const deleteTopicMock = http.delete<
 			{ status: 409 },
 		);
 	}
+
+	const index = topicsMocks.data.findIndex((topic) => topic.id === topicId);
 
 	topicsMocks.data.splice(index, 1);
 
