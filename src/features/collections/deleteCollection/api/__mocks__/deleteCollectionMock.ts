@@ -37,7 +37,10 @@ export const deleteCollectionMock = http.delete<
 	}
 
 	const userRoles = profileMockResponse.userRoles?.map((role) => role.name) || [];
-	if (!userRoles.includes('admin') && !userRoles.includes('author')) {
+	const isAdmin = userRoles.includes('admin');
+	const isAuthor = userRoles.includes('author');
+
+	if (!isAdmin && !isAuthor) {
 		return HttpResponse.json(
 			{
 				message: 'auth.roles.author_can_change_only_own',
@@ -46,6 +49,21 @@ export const deleteCollectionMock = http.delete<
 			},
 			{ status: 403 },
 		);
+	}
+
+	if (isAuthor && !isAdmin) {
+		const collection = collectionsMock.data.find((c) => c.id === collectionId);
+
+		if (!collection || collection.createdById !== profileMockResponse.id) {
+			return HttpResponse.json(
+				{
+					message: 'auth.roles.author_can_change_only_own',
+					statusCode: 403,
+					description: 'Author can change only own data',
+				},
+				{ status: 403 },
+			);
+		}
 	}
 
 	const collectionIndex = collectionsMock.data.findIndex((c) => c.id === collectionId);

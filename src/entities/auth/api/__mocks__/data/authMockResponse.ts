@@ -26,7 +26,7 @@ import {
 	userUnverifiedProfileMockResponse,
 } from './userUnverifiedMockResponse';
 
-export const authMockResponse: AuthResponse = {} as AuthResponse;
+export const authMockResponse: AuthResponse = userUnverifiedAuthMockResponse;
 
 export const authMockPasswordsByEmail: Record<string, string> = {
 	[adminCredentials.username]: adminCredentials.password,
