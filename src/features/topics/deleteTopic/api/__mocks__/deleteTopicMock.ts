@@ -53,7 +53,7 @@ export const deleteTopicMock = http.delete<
 
 	const isAdmin = profileMockResponse.userRoles.some((role) => role.name === 'admin');
 
-	const isAuthor = currentTopic.createdBy.id === profileMockResponse.id;
+	const isAuthor = currentTopic.createdBy?.id === profileMockResponse.id;
 
 	if (!isAdmin && !isAuthor) {
 		return HttpResponse.json(
