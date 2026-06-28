@@ -217,6 +217,8 @@ export enum Translation {
 	TOAST_TASKS_EDIT_FAILED = 'toast.tasks.edit.failed',
 	TOAST_TASKS_DELETE_SINGLE_SUCCESS = 'toast.tasks.delete.single.success',
 	TOAST_TASKS_DELETE_SINGLE_FAILED = 'toast.tasks.delete.single.failed',
+	TOAST_TASKS_DELETE_MULTIPLE_SUCCESS = 'toast.tasks.delete.multiple.success',
+	TOAST_TASKS_DELETE_MULTIPLE_FAILED = 'toast.tasks.delete.multiple.failed',
 	TOAST_FEATURE_FLAGS_CREATE_SUCCESS = 'toast.featureFlags.create.success',
 	TOAST_FEATURE_FLAGS_CREATE_FAILED = 'toast.featureFlags.create.failed',
 	TOAST_FEATURE_FLAGS_CREATE_AUTH_UNAUTHORIZED = 'toast.featureFlags.create.auth.unauthorized',

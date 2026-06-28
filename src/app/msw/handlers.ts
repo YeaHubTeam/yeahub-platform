@@ -23,7 +23,9 @@ import { userHandlers } from '@/entities/user';
 import { usersRatingHandlers } from '@/entities/user';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
+import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
+import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
 import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
@@ -47,10 +49,12 @@ import { topicEditHandlers } from '@/features/topics/editTopic';
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
+	...deleteCompanyHandlers,
 	...paymentHandlers,
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
+	...collectionDeleteHandlers,
 	...specializationHandlers,
 	...featureFlagHandlers,
 	...questionCreateHandlers,
