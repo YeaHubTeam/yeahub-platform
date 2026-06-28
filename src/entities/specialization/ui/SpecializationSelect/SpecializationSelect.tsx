@@ -73,18 +73,16 @@ export const SpecializationSelect = ({
 	}, [selectedSpecializations, specializations]);
 
 	const specializationsDictionary = useMemo(() => {
-		const emptySpecialization: Specialization = {
+		const emptySpecialization = {
 			id: 0,
 			title: t(Specializations.SELECT_CHOOSE),
-			imageSrc: null,
-			description: '',
 		};
 		return (specializations?.data || []).reduce(
 			(acc, specialization) => {
-				acc[specialization.id] = specialization;
+				acc[specialization.id] = { id: specialization.id, title: specialization.title };
 				return acc;
 			},
-			{ 0: emptySpecialization } as Record<number, Specialization>,
+			{ 0: emptySpecialization } as Record<number, Pick<Specialization, 'id' | 'title'>>,
 		);
 	}, [specializations]);
 

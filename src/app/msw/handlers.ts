@@ -19,10 +19,15 @@ import { specializationHandlers, specializationsProgressHandlers } from '@/entit
 import { subscriptionHandlers } from '@/entities/subscription';
 import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
+import { userHandlers } from '@/entities/user';
 import { usersRatingHandlers } from '@/entities/user';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
+import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
+import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
+import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
+import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -35,6 +40,8 @@ import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { skillEditHandlers } from '@/features/skill/editSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
+import { paymentsIdHandlers } from '@/features/subscriptions/subscribe';
+import { taskCreateHandlers } from '@/features/task/createTask';
 import { createTopicHandlers } from '@/features/topics/createTopics';
 import { topicDeleteHandlers } from '@/features/topics/deleteTopic';
 import { topicEditHandlers } from '@/features/topics/editTopic';
@@ -42,10 +49,12 @@ import { topicEditHandlers } from '@/features/topics/editTopic';
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
+	...deleteCompanyHandlers,
 	...paymentHandlers,
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
+	...collectionDeleteHandlers,
 	...specializationHandlers,
 	...featureFlagHandlers,
 	...questionCreateHandlers,
@@ -66,6 +75,7 @@ export const handlers = [
 	...learnedQuestionHandlers,
 	...specializationsProgressHandlers,
 	...resourcesHandlers,
+	...userHandlers,
 	...usersRatingHandlers,
 	...topicHandlers,
 	...topicDeleteHandlers,
@@ -74,9 +84,13 @@ export const handlers = [
 	...createCollectionHandlers,
 	...topicEditHandlers,
 	...createCompanyHandlers,
+	...featureFlagDeleteHandlers,
+	...paymentsIdHandlers,
+	...createFeatureFlagHandlers,
 	...programmingLanguageHandlers,
 	...referralLinksHandlers,
 	...referralLinkDeleteHandlers,
 	...referralLinkEditHandlers,
 	...taskHandlers,
+	...taskCreateHandlers,
 ];

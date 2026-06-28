@@ -54,3 +54,8 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-p-s);
 }
+
+.editor {
+  width: 100%;
+  height: 200px;
+}
