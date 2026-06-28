@@ -7,7 +7,6 @@ export const i18Namespace = {
 	interviewQuizCreate: 'interviewQuizCreate',
 	interviewQuizResult: 'interviewQuizResult',
 	interviewStatistics: 'interviewStatistics',
-	landing: 'landing',
 	learning: 'learning',
 	main: 'main',
 	onboarding: 'onboarding',
