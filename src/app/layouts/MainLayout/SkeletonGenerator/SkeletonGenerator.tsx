@@ -14,6 +14,7 @@ import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
+import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
@@ -91,6 +92,8 @@ const SkeletonGenerator = () => {
 			return <ReferralLinkCreatePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
+		case ROUTES.admin.topics.create.page:
+			return <TopicCreatePageSkeleton />;
 		case ROUTES.admin.tasks.create.page:
 			return <TaskCreatePageSkeleton />;
 		default:
