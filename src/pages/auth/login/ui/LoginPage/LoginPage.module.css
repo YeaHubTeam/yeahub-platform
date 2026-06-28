@@ -13,14 +13,11 @@
 .title {
   margin-top: 0;
   margin-bottom: 30px;
+  max-width: 100%;
   line-height: normal;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-l);
-}
-
-.title-skeleton {
-  width: 100%;
-  max-width: 406px;
+	
 }
 
 @media (width <= 1024px) {

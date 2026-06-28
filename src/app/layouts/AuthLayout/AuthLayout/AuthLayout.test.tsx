@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import { renderComponent } from '@/shared/libs';
 
-import { AuthLayoutSkeleton } from './AuthLayout/AuthLayout.skeleton';
+import { AuthLayoutSkeleton } from './AuthLayout.skeleton';
 
 describe('AuthLayoutSkeleton', () => {
 	beforeEach(() => {

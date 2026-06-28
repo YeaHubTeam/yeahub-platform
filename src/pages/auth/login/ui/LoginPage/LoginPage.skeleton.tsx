@@ -11,9 +11,7 @@ interface LoginPageSkeletonProps {
 export const LoginPageSkeleton = ({ dataTestId }: LoginPageSkeletonProps) => {
 	return (
 		<div data-testid={dataTestId} className={styles.wrapper}>
-			<div className={styles['title-skeleton']}>
-				<Skeleton height={36} borderRadius={6} className={styles.title} />
-			</div>
+			<Skeleton height={36} borderRadius={6} width={400} className={styles.title} />
 			<LoginCreateFormSkeleton />
 		</div>
 	);

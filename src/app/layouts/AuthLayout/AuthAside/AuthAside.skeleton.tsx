@@ -1,3 +1,4 @@
+import { AppLogoSkeleton } from '@/shared/ui/AppLogo';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 import { BenefitsListSkeleton } from '../BenefitsList/BenefitsList.skeleton';
@@ -10,7 +11,7 @@ export const AuthAsideSkeleton = () => {
 			<div className={styles['content-wrapper']}>
 				<div className={styles.logo}>
 					<div className={styles['logo-wrapper']}>
-						<Skeleton width={140} height={35} borderRadius={8} />
+						<AppLogoSkeleton isOpen={false} />
 					</div>
 					<Skeleton width={280} height={20} borderRadius={4} />
 				</div>

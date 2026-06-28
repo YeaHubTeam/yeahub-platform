@@ -1,11 +1,12 @@
+import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 export const TelegramLoginSkeleton = () => {
 	return (
 		<Flex direction="column" gap="8" align="center">
-			<Skeleton width={300} height={18} borderRadius={4} />
-			<Skeleton width={238} height={40} borderRadius={4} />
+			<TextSkeleton variant="body2" width={200} />
+			<ButtonSkeleton width={238} />
 		</Flex>
 	);
 };
