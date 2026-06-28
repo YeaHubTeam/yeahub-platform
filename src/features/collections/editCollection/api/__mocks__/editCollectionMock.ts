@@ -4,6 +4,7 @@ import { collectionsMock } from '@/entities/collection';
 import { companiesMock } from '@/entities/company';
 import { Question } from '@/entities/question';
 import { specializationsMock } from '@/entities/specialization';
+import { Task } from '@/entities/task';
 
 import { editCollectionApiUrls } from '../../model/constants/editCollectionConstants';
 import {
@@ -33,18 +34,32 @@ export const editCollectionMock = http.patch<
 		return new HttpResponse(null, { status: 404 });
 	}
 
-	collectionsMock.data[index] = {
-		...collectionsMock.data[index],
-		...body,
-		company: company || collectionsMock.data[index].company,
+	const currentCollection = collectionsMock.data[index];
+
+	const updatedCollection: EditCollectionResponse = {
+		id: currentCollection.id,
+		title: body.title ?? currentCollection.title,
+		description: body.description ?? currentCollection.description,
+		isFree: body.isFree ?? currentCollection.isFree,
+		imageSrc: body.collectionImage ?? currentCollection.imageSrc ?? null,
+		tariff: (body.isFree ?? currentCollection.isFree) ? 'free' : 'premium',
+		createdAt: currentCollection.createdAt,
+		updatedAt: new Date().toISOString(),
+		questionsCount: body.questions?.length ?? currentCollection.questions?.length ?? 0,
+		tasksCount: body.taskIds?.length ?? currentCollection.tasks?.length ?? 0,
 		specializations: body.specializations
 			? body.specializations.map((id) => specializationsMock.find((spec) => spec.id === id)!)
-			: collectionsMock.data[index].specializations,
+			: currentCollection.specializations,
+		keywords: body.keywords ?? currentCollection.keywords ?? [],
+		company: company ?? currentCollection.company,
+		createdBy: currentCollection.createdBy,
 		questions: body.questions
 			? body.questions.map((id) => ({ id }) as Question)
-			: collectionsMock.data[index].questions,
-		updatedAt: new Date().toISOString(),
+			: currentCollection.questions,
+		tasks: body.taskIds ? body.taskIds.map((id) => ({ id }) as Task) : currentCollection.tasks,
 	};
 
-	return HttpResponse.json(collectionsMock.data[index]);
+	collectionsMock.data[index] = updatedCollection;
+
+	return HttpResponse.json(updatedCollection);
 });
