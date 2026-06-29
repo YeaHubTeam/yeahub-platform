@@ -1,9 +1,0 @@
-.description {
-  white-space: pre-line;
-}
-
-@media (width < 768px) {
-  .description {
-    white-space: normal;
-  }
-}
