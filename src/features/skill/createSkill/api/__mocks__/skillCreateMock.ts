@@ -2,21 +2,19 @@ import { http, HttpResponse } from 'msw';
 
 import { author } from '@/shared/libs';
 
-import { authMockProfilesByAccessToken } from '@/entities/auth';
+import { getMockAuthProfile } from '@/entities/auth';
 import { CreateOrEditSkillFormValues, Skill, skillsMock } from '@/entities/skill';
 import { specializationsMock } from '@/entities/specialization';
 
 import { createSkillApiUrls } from '../../model/constants/createSkillConstants';
-import { CreateSkillResponse } from '../../model/types/skillCreateTypes';
+import { type CreateSkillError, CreateSkillResponse } from '../../model/types/skillCreateTypes';
 
 export const skillCreateMock = http.post<
 	Record<string, never>,
 	CreateOrEditSkillFormValues,
-	CreateSkillResponse | { message: string; statusCode: number; description: string }
+	CreateSkillResponse | ApiErrorData<CreateSkillError>
 >(`${process.env.API_URL}${createSkillApiUrls.createSkill}`, async ({ request }) => {
-	const authorizationHeader = request.headers.get('Authorization') ?? '';
-	const accessToken = authorizationHeader.replace(/^Bearer\s+/i, '');
-	const profileMockResponse = authMockProfilesByAccessToken[accessToken];
+	const profileMockResponse = getMockAuthProfile(request);
 
 	if (!profileMockResponse) {
 		return HttpResponse.json(
@@ -42,7 +40,7 @@ export const skillCreateMock = http.post<
 
 	const body = await request.json();
 
-	const isTitleExists = skillsMock.data.some((skill) => skill.title === body.title);
+	const isTitleExists = skillsMock.some((skill) => skill.title === body.title);
 
 	if (isTitleExists) {
 		return HttpResponse.json(
