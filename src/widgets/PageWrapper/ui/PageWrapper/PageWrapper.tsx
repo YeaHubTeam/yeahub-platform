@@ -87,7 +87,7 @@ export const PageWrapper = ({
 	};
 
 	if (isLoading) {
-		return skeleton || <Loader />; 
+		return skeleton || <Loader />;
 	}
 
 	if (roles && !hasPermission) {

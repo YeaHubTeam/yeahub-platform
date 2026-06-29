@@ -44,7 +44,6 @@ const SpecializationDetailPage = () => {
 					</Flex>
 				</Flex>
 				<SpecializationCard specialization={specialization} />
-				<SpecializationDetailPageSkeleton />
 			</>
 		);
 	};
