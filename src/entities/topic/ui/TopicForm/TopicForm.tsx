@@ -29,11 +29,7 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 				{isEdit ? t(Topics.EDIT_PAGE_TITLE) : t(Topics.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<Flex gap="120" className={styles['skill-input']}>
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body4">{t(Topics.TITLE_FULL)}</Text>
-						<Text variant="body2">{t(Topics.TITLE_LABEL)}</Text>
-					</Flex>
+				<FormField label={t(Topics.TITLE_FULL)} description={t(Topics.TITLE_LABEL)}>
 					<FormControl name="title" control={control} className={styles['input-form']}>
 						{(register, hasError) => (
 							<Input
@@ -45,7 +41,7 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 				<FormField label={t(Marketplace.SKILLS_SHORT)} description={t(Marketplace.SKILLS_LABEL)}>
 					<FormControl name="skillId" control={control}>
 						{({ onChange, value }) => {
@@ -62,11 +58,11 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 						}}
 					</FormControl>
 				</FormField>
-				<Flex direction="column" gap="20">
-					<Flex direction="column" gap="8">
-						<Text variant="body4">{t(Topics.DESCRIPTION_FULL)}</Text>
-						<Text variant="body2">{t(Topics.DESCRIPTION_LABEL)}</Text>
-					</Flex>
+				<FormField
+					label={t(Topics.DESCRIPTION_FULL)}
+					description={t(Topics.DESCRIPTION_LABEL)}
+					direction="column"
+				>
 					<FormControl name="description" control={control} className={styles['input-form']}>
 						{(register, hasError) => (
 							<TextArea
@@ -77,7 +73,7 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 			</Flex>
 		</Flex>
 	);

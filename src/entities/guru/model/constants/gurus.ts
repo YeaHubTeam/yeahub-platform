@@ -59,21 +59,6 @@ export const gurus: Guru[] = [
 		},
 	},
 	{
-		title: 'iOS Guru',
-		name: 'Roman Isakov',
-		specializations: [26],
-		hasPractice: true,
-		description:
-			'Главный по iOS-направлению: учит проектировать и разрабатывать приложения для iPhone, делясь практикой реальной разработки.',
-		image: 'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/рома.jpg',
-		socials: {
-			telegram: 'https://t.me/isakov_ios',
-			youtube: 'https://www.youtube.com/watch?v=VdN4PKgnzRg&ab/_channel=RomanIsakov',
-			profileId: 'f917b016-280f-4127-8d4b-149a3c1aec71',
-			landing: 'https://t.me/isakov_ios',
-		},
-	},
-	{
 		title: 'Golang Guru',
 		name: 'Maxim Lukyanov',
 		specializations: [23],
@@ -116,22 +101,6 @@ export const gurus: Guru[] = [
 			telegram: 'https://t.me/DemetraIT',
 			profileId: 'c5e0ed42-3c59-4217-9de5-0a240afee6c8',
 			landing: 'https://clck.ru/3B9Mdi',
-		},
-	},
-	{
-		title: 'Rust Guru',
-		name: 'Eduard Paul',
-		specializations: [28],
-		hasPractice: false,
-		description:
-			'Редактор и эксперт по Rust: помогает поддерживать актуальность материалов, добавляет практические задания и контролирует качество контента.',
-		image:
-			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%9F%D0%B0%D1%83%D0%BB%D1%8C.jpg',
-		socials: {
-			telegram: 'https://t.me/EduardPaul_Rust',
-			youtube: 'https://youtube.com/@ed.paul_mentor',
-			profileId: 'c2d730c0-5f3f-4cd9-a85b-896aee31acc1',
-			landing: 'https://eduardpaul.it',
 		},
 	},
 	{
@@ -178,22 +147,6 @@ export const gurus: Guru[] = [
 			youtube: 'https://link.sergeyfilichkin.ru/50gs',
 			profileId: 'd173ffab-d458-49f4-9368-35336da765ab',
 			landing: 'https://www.sergeyfilichkin.ru',
-		},
-	},
-	{
-		title: 'PHP Guru',
-		name: 'Mikhail Savin',
-		specializations: [24],
-		hasPractice: false,
-		description:
-			'Следит за качеством и актуальностью материалов по PHP, добавляет вопросы, обновления и интервью, помогает развивать направление как эксперт и редактор.',
-		image:
-			'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/gurus/%D0%BF%D1%85%D0%BF%D0%BC%D0%B8%D1%85%D0%B0.jpeg',
-		socials: {
-			telegram: 'https://t.me/+OeP_aGXNhpNkMjEy',
-			youtube: 'https://www.youtube.com/@msavin_php',
-			profileId: '4b940663-07e3-470d-a6b3-fe0868c67706',
-			landing: 'https://teletype.in/@msavin_dev/mentoring',
 		},
 	},
 ];

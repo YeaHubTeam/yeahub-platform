@@ -1,28 +1,6 @@
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { userUnverifiedUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const userUnverifiedCredentials = {
-	username: 'user-unverified@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const userUnverifiedUserRoles = [userRolesMock.find((role) => role.id === 6)!];
-
-const userUnverifiedUser = {
-	id: '74ea2763-c4ce-455a-8b2f-e2597722802a',
-	username: 'yuzernevirificirovannyrrw',
-	telegramUsername: null,
-	country: '',
-	city: '',
-	email: userUnverifiedCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl: '',
-	createdAt: '2025-02-20T08:04:53.931Z',
-	isVerified: false,
-	userRoles: userUnverifiedUserRoles,
-};
 
 const userUnverifiedProfiles: Profile[] = [
 	{

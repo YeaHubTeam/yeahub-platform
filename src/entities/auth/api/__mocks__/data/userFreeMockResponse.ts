@@ -1,33 +1,7 @@
 import { skillsMock } from '@/entities/skill/@x/auth';
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { userFreeUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const userFreeCredentials = {
-	username: 'user-free@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const userFreeCity =
-	'123456789012345678990123111123845678901234567890123111123456789012345678901231111234567890123456789012311112345678901234567890123111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111';
-
-const userFreeUserRoles = [userRolesMock.find((role) => role.id === 6)!];
-
-const userFreeUser = {
-	id: '3ee85b3d-0c09-4a55-bdf1-f6a55ab1c3ee',
-	username: 'yuzerbesplatnyj',
-	telegramUsername: null,
-	country: '',
-	city: userFreeCity,
-	email: userFreeCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl:
-		'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/users_avatars/559d3df3-f179-4d43-8260-655fbf298ec2',
-	createdAt: '2025-02-20T08:03:36.468Z',
-	isVerified: true,
-	userRoles: userFreeUserRoles,
-};
 
 const userFreeProfiles: Profile[] = [
 	{
@@ -54,7 +28,7 @@ const userFreeProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[6]],
+		profileSkills: [skillsMock[6]],
 	},
 	{
 		id: 'eb27c2e0-b121-4ed8-b167-a24820efae09',
@@ -114,7 +88,7 @@ const userFreeProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[1]],
+		profileSkills: [skillsMock[1]],
 	},
 ];
 
