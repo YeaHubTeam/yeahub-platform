@@ -17,7 +17,7 @@ export const SpecializationCardSkeleton = () => {
 							<ImageWithWrapperSkeleton className={classNames(styles['title-img-block-image'])} />
 						</div>
 						<Flex maxWidth direction="column">
-							<Skeleton />
+							<Skeleton width="100%" height={32} />
 						</Flex>
 					</Flex>
 				</CardSkeleton>
