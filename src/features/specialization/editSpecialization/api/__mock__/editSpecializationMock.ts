@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+import { createSlug } from '@/shared/libs';
+
 import { specializationsMock } from '@/entities/specialization';
 
 import { editSpecializationApiUrls } from '../../model/constants/editSpecializationConstants';
@@ -21,13 +23,16 @@ export const editSpecializationMock = http.patch<
 		const index = specializationsMock.findIndex((s) => String(s.id) === specializationId);
 
 		if (index !== -1) {
-			specializationsMock[index] = {
+			const updatedSpecialization: EditSpecializationResponse = {
 				...specializationsMock[index],
-				...body,
+				title: body.title,
+				slug: createSlug(body.title),
+				description: body.description,
 				updatedAt: new Date().toISOString(),
 			};
+			specializationsMock[index] = updatedSpecialization;
 		}
 
-		return HttpResponse.json<EditSpecializationResponse>(specializationsMock[index]);
+		return HttpResponse.json(specializationsMock[index]);
 	},
 );
