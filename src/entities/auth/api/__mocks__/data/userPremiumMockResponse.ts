@@ -1,32 +1,7 @@
 import { skillsMock } from '@/entities/skill/@x/auth';
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { userPremiumUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const userPremiumCredentials = {
-	username: 'user-premium@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const userPremiumUserRoles = [
-	userRolesMock.find((role) => role.id === 3)!,
-	userRolesMock.find((role) => role.id === 7)!,
-];
-
-const userPremiumUser = {
-	id: '40b8f5bb-07d7-4fac-98ef-42ca16de4197',
-	username: 'yuzerpremium1',
-	telegramUsername: null,
-	country: '',
-	city: 'YeaHub1',
-	email: userPremiumCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl: '',
-	createdAt: '2025-02-20T08:02:57.032Z',
-	isVerified: true,
-	userRoles: userPremiumUserRoles,
-};
 
 const userPremiumProfiles: Profile[] = [
 	{
@@ -39,7 +14,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[3]],
+		profileSkills: [skillsMock[3]],
 	},
 	{
 		id: 'baa51c8a-5ffc-441a-8579-89003bdf4150',
@@ -51,7 +26,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[7]],
+		profileSkills: [skillsMock[7]],
 	},
 	{
 		id: 'bae420a0-98be-4fb1-8a75-5a36cf45872b',
@@ -63,7 +38,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: 'https://example.com/image.jpg',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[8]],
+		profileSkills: [skillsMock[8]],
 	},
 	{
 		id: '81af7464-c4d5-434c-8cd3-4b84de1a621d',
@@ -75,7 +50,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: true,
-		profileSkills: [skillsMock.data[9], skillsMock.data[10]],
+		profileSkills: [skillsMock[9], skillsMock[10]],
 	},
 	{
 		id: 'ff3f5a75-b62e-4283-9dd2-337377db46c3',
@@ -87,7 +62,7 @@ const userPremiumProfiles: Profile[] = [
 		image_src: '',
 		links: [],
 		isActive: false,
-		profileSkills: [skillsMock.data[11]],
+		profileSkills: [skillsMock[11]],
 	},
 ];
 

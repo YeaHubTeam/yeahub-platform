@@ -26,6 +26,8 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 
 	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
 
+	const tasksWithTitle = tasks.map((task) => ({ ...task, title: task.name }));
+
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
 			title: 'auto',
@@ -121,7 +123,7 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 		<Table
 			renderTableHeader={renderTableHeader}
 			renderTableBody={renderTableBody}
-			items={tasks}
+			items={tasksWithTitle}
 			selectedItems={selectedTasks}
 			onSelectItems={onSelectTasks}
 			renderTableColumnWidths={renderTableColumnWidths}
