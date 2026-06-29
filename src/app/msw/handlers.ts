@@ -40,6 +40,7 @@ import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { skillEditHandlers } from '@/features/skill/editSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
+import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 import { paymentsIdHandlers } from '@/features/subscriptions/subscribe';
 import { taskCreateHandlers } from '@/features/task/createTask';
 import { createTopicHandlers } from '@/features/topics/createTopics';
@@ -66,6 +67,7 @@ export const handlers = [
 	...questionEditHandlers,
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
+	...specializationEditHandlers,
 	...skillDeleteHandlers,
 	...subscriptionHandlers,
 	...learnQuestionHandlers,
