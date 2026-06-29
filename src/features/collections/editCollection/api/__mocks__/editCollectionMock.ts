@@ -2,9 +2,7 @@ import { http, HttpResponse } from 'msw';
 
 import { collectionsMock } from '@/entities/collection';
 import { companiesMock } from '@/entities/company';
-import { Question } from '@/entities/question';
 import { specializationsMock } from '@/entities/specialization';
-import { Task } from '@/entities/task';
 
 import { editCollectionApiUrls } from '../../model/constants/editCollectionConstants';
 import {
@@ -25,38 +23,25 @@ export const editCollectionMock = http.patch<
 		return HttpResponse.json(null, { status: 404 });
 	}
 
-	const body = (await request.json()) as EditCollectionBodyRequest;
-	const company = body.companyId
-		? companiesMock.data.find((c) => String(c.id) === body.companyId)
-		: collectionsMock.data[index].company;
-
-	if (body.companyId && !company) {
-		return new HttpResponse(null, { status: 404 });
-	}
+	const body = await request.json();
 
 	const currentCollection = collectionsMock.data[index];
+	const companyIndex = companiesMock.data.findIndex((c) => String(c.id) === body.companyId);
 
 	const updatedCollection: EditCollectionResponse = {
-		id: currentCollection.id,
+		...currentCollection,
 		title: body.title ?? currentCollection.title,
 		description: body.description ?? currentCollection.description,
-		isFree: body.isFree ?? currentCollection.isFree,
 		imageSrc: body.collectionImage ?? currentCollection.imageSrc ?? null,
 		tariff: (body.isFree ?? currentCollection.isFree) ? 'free' : 'premium',
-		createdAt: currentCollection.createdAt,
-		updatedAt: new Date().toISOString(),
 		questionsCount: body.questions?.length ?? currentCollection.questions?.length ?? 0,
 		tasksCount: body.taskIds?.length ?? currentCollection.tasks?.length ?? 0,
 		specializations: body.specializations
 			? body.specializations.map((id) => specializationsMock.find((spec) => spec.id === id)!)
 			: currentCollection.specializations,
 		keywords: body.keywords ?? currentCollection.keywords ?? [],
-		company: company ?? currentCollection.company,
+		company: companiesMock.data[companyIndex],
 		createdBy: currentCollection.createdBy,
-		questions: body.questions
-			? body.questions.map((id) => ({ id }) as Question)
-			: currentCollection.questions,
-		tasks: body.taskIds ? body.taskIds.map((id) => ({ id }) as Task) : currentCollection.tasks,
 	};
 
 	collectionsMock.data[index] = updatedCollection;
