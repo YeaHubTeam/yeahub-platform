@@ -6,13 +6,13 @@ import { route } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/specialization';
 
 import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
 import { SpecializationDetailPageSkeleton } from './SpecializationDetailPage.skeleton';
 
 const SpecializationDetailPage = () => {
@@ -44,6 +44,7 @@ const SpecializationDetailPage = () => {
 					</Flex>
 				</Flex>
 				<SpecializationCard specialization={specialization} />
+				<SpecializationDetailPageSkeleton />
 			</>
 		);
 	};

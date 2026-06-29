@@ -2,11 +2,12 @@ import classNames from 'classnames';
 
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import styles from './SpecializationCard.module.css';
 import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
-export function SpecializationCardSkeleton() {
+import styles from './SpecializationCard.module.css';
+
+export const SpecializationCardSkeleton = () => {
 	return (
 		<Flex>
 			<Flex direction="column" gap="24" style={{ flex: '0 1 740px' }}>
@@ -16,7 +17,7 @@ export function SpecializationCardSkeleton() {
 							<ImageWithWrapperSkeleton className={classNames(styles['title-img-block-image'])} />
 						</div>
 						<Flex maxWidth direction="column">
-							<Skeleton />
+							<Skeleton width="100%" height={32} />
 						</Flex>
 					</Flex>
 				</CardSkeleton>
@@ -27,4 +28,4 @@ export function SpecializationCardSkeleton() {
 			</Flex>
 		</Flex>
 	);
-}
+};
