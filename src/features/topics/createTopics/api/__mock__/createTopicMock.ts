@@ -1,7 +1,5 @@
 import { http, HttpResponse } from 'msw';
 
-import { createErrorResponse } from '@/shared/libs';
-
 import { getMockAuthProfile, listAdminRoles } from '@/entities/auth';
 import { skillsMock } from '@/entities/skill';
 import { topicsMocks } from '@/entities/topic';
@@ -18,40 +16,48 @@ export const createTopicMock = http.post<
 	const profileMockResponse = getMockAuthProfile(request);
 
 	if (!profileMockResponse) {
-		const { error, option } = createErrorResponse<TopicCreateError>(
-			'auth.auth.unauthorized',
-			401,
-			'Authentication failed',
+		return HttpResponse.json(
+			{
+				message: 'auth.auth.unauthorized',
+				statusCode: 401,
+				description: 'Authentication failed',
+			},
+			{ status: 401 },
 		);
-		return HttpResponse.json(error, option);
 	}
 	if (!profileMockResponse.isVerified) {
-		const { error, option } = createErrorResponse<TopicCreateError>(
-			'auth.user.verified',
-			403,
-			'Route is available for verified users!',
+		return HttpResponse.json(
+			{
+				message: 'auth.user.verified',
+				statusCode: 403,
+				description: 'Route is available for verified users!',
+			},
+			{ status: 403 },
 		);
-		return HttpResponse.json(error, option);
 	}
 
 	if (!profileMockResponse.userRoles.some((role) => listAdminRoles.includes(role.name))) {
-		const { error, option } = createErrorResponse<TopicCreateError>(
-			'auth.roles.admin_or_author_required',
-			403,
-			'Admin or author required',
+		return HttpResponse.json(
+			{
+				message: 'auth.roles.admin_or_author_required',
+				statusCode: 403,
+				description: 'Admin or author required',
+			},
+			{ status: 403 },
 		);
-		return HttpResponse.json(error, option);
 	}
 
 	const topic: CreateTopicBodyRequest = await request.json();
 
 	if (topicsMocks.data.some((t) => t.title === topic.title)) {
-		const { error, option } = createErrorResponse<TopicCreateError>(
-			'topic.topic.title.conflict',
-			409,
-			'A topic with the same title already exists for this skill',
+		return HttpResponse.json(
+			{
+				message: 'topic.topic.title.conflict',
+				statusCode: 409,
+				description: 'A topic with the same title already exists for this skill',
+			},
+			{ status: 409 },
 		);
-		return HttpResponse.json(error, option);
 	}
 
 	const date = new Date().toISOString();

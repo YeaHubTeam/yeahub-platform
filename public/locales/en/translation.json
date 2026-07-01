@@ -529,6 +529,9 @@
 						"verified": "Route is available for verified users!"
 					}
 				},
+				"rightsAcsses": {
+					"conflict": "Admin or author required"
+				},
 				"topic": {
 					"skill": {
 						"not_found": "Skill not found"
