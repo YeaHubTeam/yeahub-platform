@@ -366,6 +366,7 @@ export enum Translation {
 	TOAST_TOPIC_CREATE_SUCCESS = 'toast.topics.create.success',
 	TOAST_TOPIC_CREATE_FAILED = 'toast.topics.create.failed',
 	TOAST_TOPIC_CREATE_AUTH_UNAUTHORIZED = 'toast.topics.create.auth.unauthorized',
+	TOAST_TOPIC_ADMIN_OR_AUTHOR_REQUIRED = 'toast.topics.rightsAcsses.conflict',
 	TOAST_TOPIC_CREATE_AUTH_USER_VERIFIED = 'toast.topics.create.auth.user.verified',
 	TOAST_TOPIC_CREATE_TOPIC_SKILL_NOT_FOUND = 'toast.topics.create.topic.skill.not_found',
 	TOAST_TOPIC_CREATE_TOPIC_TITLE_CONFLICT = 'toast.topics.create.topic.title.conflict',
