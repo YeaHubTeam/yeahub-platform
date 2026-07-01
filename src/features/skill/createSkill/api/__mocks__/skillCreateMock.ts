@@ -2,18 +2,56 @@ import { http, HttpResponse } from 'msw';
 
 import { author } from '@/shared/libs';
 
+import { getMockAuthProfile } from '@/entities/auth';
 import { CreateOrEditSkillFormValues, Skill, skillsMock } from '@/entities/skill';
 import { specializationsMock } from '@/entities/specialization';
 
 import { createSkillApiUrls } from '../../model/constants/createSkillConstants';
-import { CreateSkillResponse } from '../../model/types/skillCreateTypes';
+import { type CreateSkillError, CreateSkillResponse } from '../../model/types/skillCreateTypes';
 
 export const skillCreateMock = http.post<
 	Record<string, never>,
 	CreateOrEditSkillFormValues,
-	CreateSkillResponse
+	CreateSkillResponse | ApiErrorData<CreateSkillError>
 >(`${process.env.API_URL}${createSkillApiUrls.createSkill}`, async ({ request }) => {
+	const profileMockResponse = getMockAuthProfile(request);
+
+	if (!profileMockResponse) {
+		return HttpResponse.json(
+			{
+				message: 'auth.auth.unauthorized',
+				statusCode: 401,
+				description: 'Authentication failed',
+			},
+			{ status: 401 },
+		);
+	}
+
+	if (!profileMockResponse.isVerified) {
+		return HttpResponse.json(
+			{
+				message: 'auth.user.verified',
+				statusCode: 403,
+				description: 'Route is available for verified users!',
+			},
+			{ status: 403 },
+		);
+	}
+
 	const body = await request.json();
+
+	const isTitleExists = skillsMock.some((skill) => skill.title === body.title);
+
+	if (isTitleExists) {
+		return HttpResponse.json(
+			{
+				message: 'skill.skill.title.conflict',
+				statusCode: 409,
+				description: 'A skill with the same title already exists',
+			},
+			{ status: 409 },
+		);
+	}
 
 	const newSkill: Skill = {
 		id: Date.now(),
@@ -33,5 +71,5 @@ export const skillCreateMock = http.post<
 
 	skillsMock.push(newSkill);
 
-	return HttpResponse.json(newSkill);
+	return HttpResponse.json(newSkill, { status: 201 });
 });

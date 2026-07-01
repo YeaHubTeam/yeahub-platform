@@ -17,7 +17,7 @@ export const useSlideSwitcher = (questions: Answers[], initialSlideIndex?: numbe
 	const location = useLocation();
 
 	const answeredCount = questions.filter((question) => question.answer !== undefined).length;
-	const isAuthRoute = !!matchPath('/dashboard/interview/new', location.pathname);
+	const isAuthRoute = !!matchPath('/interview/new', location.pathname);
 
 	const changeAnswer = (answer: QuizQuestionAnswerType) => {
 		hasPremium

@@ -1,0 +1,11 @@
+.button.button:hover {
+  text-decoration: none;
+}
+
+.icon {
+  transition: .3s ease-in-out;
+}
+
+.button:hover .icon {
+  transform: translateX(5px);
+}
