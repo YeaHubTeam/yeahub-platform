@@ -52,10 +52,10 @@ export const deleteQuestionMock = http.delete<
 	}
 
 	const isAdmin = profileMockResponse.userRoles.some((role) => role.name === 'admin');
-
+	const isAuthor = profileMockResponse.userRoles.some((role) => role.name === 'author');
 	const isOwner = currentQuestion.createdBy.id === profileMockResponse.id;
 
-	if (!isAdmin && !isOwner) {
+	if (!isAdmin && !(isAuthor && isOwner)) {
 		return HttpResponse.json(
 			{
 				message: 'auth.roles.author_can_change_only_own',
