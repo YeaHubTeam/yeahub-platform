@@ -1,1 +1,0 @@
-export { LandingLayout } from './LandingLayout';
