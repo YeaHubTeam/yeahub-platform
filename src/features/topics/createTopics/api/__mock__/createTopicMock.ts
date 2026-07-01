@@ -49,7 +49,7 @@ export const createTopicMock = http.post<
 
 	const topic: CreateTopicBodyRequest = await request.json();
 
-	if (topicsMocks.data.some((t) => t.title === topic.title)) {
+	if (topicsMocks.data.some((t) => t.title === topic.title && t.skill.id === topic.skillId)) {
 		return HttpResponse.json(
 			{
 				message: 'topic.topic.title.conflict',
@@ -69,13 +69,15 @@ export const createTopicMock = http.post<
 		imageSrc: null,
 		createdAt: date,
 		updatedAt: date,
-		skill: skillsMock.data.find((skill) => skill.id === topic.skillId) ?? {
+		skill: skillsMock.find((skill) => skill.id === topic.skillId) ?? {
 			id: topic.skillId,
 			title: '',
 			description: '',
 			imageSrc: null,
 			createdAt: date,
 			updatedAt: date,
+			specializations: [],
+			createdBy: { id: '', username: '' },
 		},
 	};
 
