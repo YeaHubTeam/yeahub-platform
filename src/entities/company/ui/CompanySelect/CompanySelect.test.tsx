@@ -4,6 +4,7 @@ import { companiesMock } from '../../api/__mocks__/data/companiesMock';
 import { useGetCompaniesListQuery } from '../../api/companyApi';
 
 import { CompanySelect } from './CompanySelect';
+import { companySelectTestIds } from './constants';
 
 const mockCompanies = companiesMock;
 const mockedQuery = useGetCompaniesListQuery as jest.Mock;
@@ -54,7 +55,7 @@ describe('CompanySelect component', () => {
 
 	test('renders CompanySelect component', () => {
 		render(<CompanySelect value="" onChange={onChangeMock} />);
-		expect(screen.getByTestId('dropdown-select')).toBeInTheDocument();
+		expect(screen.getByTestId(companySelectTestIds.select)).toBeInTheDocument();
 	});
 
 	test('displays company list', async () => {
@@ -88,7 +89,7 @@ describe('CompanySelect component', () => {
 
 		render(<CompanySelect value="" onChange={onChangeMock} />);
 
-		expect(screen.getByTestId('dropdown-select')).toBeInTheDocument();
+		expect(screen.getByTestId(companySelectTestIds.select)).toBeInTheDocument();
 	});
 
 	test('select company', async () => {
@@ -110,7 +111,7 @@ describe('CompanySelect component', () => {
 	test('disabled select', () => {
 		render(<CompanySelect value="" onChange={onChangeMock} disabled />);
 
-		fireEvent.click(screen.getByTestId('dropdown-select'));
+		fireEvent.click(screen.getByTestId(companySelectTestIds.select));
 
 		expect(onChangeMock).not.toHaveBeenCalled();
 	});

@@ -9,6 +9,7 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { useGetCompaniesListQuery } from '../../api/companyApi';
 
 import styles from './CompanySelect.module.css';
+import { companySelectTestIds } from './constants';
 
 type CompanySelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
@@ -77,6 +78,7 @@ export const CompanySelect = ({ onChange, value, disabled }: CompanySelectProps)
 
 	return (
 		<SelectWithChips
+			dataTestId={companySelectTestIds.select}
 			title={t(Companies.SELECT_SELECTED)}
 			options={options}
 			onChange={handleChange}
