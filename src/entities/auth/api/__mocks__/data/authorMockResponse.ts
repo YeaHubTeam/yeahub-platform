@@ -1,31 +1,6 @@
-import { userRolesMock } from '@/entities/user/@x/auth';
+import { authorUser } from '@/entities/user/@x/auth';
 
 import { AuthResponse, FullProfile, Profile } from '../../../model/types/auth';
-
-export const authorCredentials = {
-	username: 'author@yeahub.ru',
-	password: 'Password123!',
-} as const;
-
-const authorUserRoles = [
-	userRolesMock.find((role) => role.id === 8)!,
-	userRolesMock.find((role) => role.id === 6)!,
-];
-
-const authorUser = {
-	id: 'b26dc4c3-4a7e-479e-a852-d39dd85bf08e',
-	username: 'author',
-	telegramUsername: null,
-	country: '',
-	city: '',
-	email: authorCredentials.username,
-	birthday: null,
-	address: '',
-	avatarUrl: '',
-	createdAt: '2025-07-09T18:38:02.203Z',
-	isVerified: true,
-	userRoles: authorUserRoles,
-};
 
 const authorProfiles: Profile[] = [
 	{

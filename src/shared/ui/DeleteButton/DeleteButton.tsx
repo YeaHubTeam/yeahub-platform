@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { Tooltip } from '@/shared/ui/Tooltip';
 
-interface DeleteButtonProps {
+export interface DeleteButtonProps {
 	onDelete: () => void;
 	isDetailPage?: boolean;
 	disabled?: boolean;

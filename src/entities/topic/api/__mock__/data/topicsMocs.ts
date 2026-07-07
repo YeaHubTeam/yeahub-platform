@@ -1,4 +1,5 @@
 import { Response } from '@/shared/libs';
+import { author } from '@/shared/libs';
 
 import type { Topic } from '../../../model/types/topic';
 
@@ -21,6 +22,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/dc42634d-468b-427d-9f7a-ea6d501911c5',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:39:52.495Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -41,6 +44,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Typescript.svg/1200px-Typescript.svg.png',
 				createdAt: '2024-09-22T17:32:57.134Z',
 				updatedAt: '2024-09-22T17:32:57.134Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -61,6 +66,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/f116b975-3065-4a16-9568-d098522247e8',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:55:55.824Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -79,6 +86,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/75acb953-ed90-42c0-ae0e-cf600ae9f5b5',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:52:58.114Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -99,6 +108,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/44f67a37-e539-47d2-aba2-d7542dc0c124',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-10-28T21:04:57.099Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -118,6 +129,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/4ce88d39-82a8-4b75-9d5d-67dca5d935f7',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-03-10T17:56:45.336Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -137,6 +150,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-02-07T22:40:47.965Z',
 				updatedAt: '2025-02-07T22:40:47.965Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -155,6 +170,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-07T19:41:25.685Z',
 				updatedAt: '2024-12-07T19:41:25.685Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -173,6 +190,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-07T19:40:48.683Z',
 				updatedAt: '2024-12-07T19:40:48.683Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -192,6 +211,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/7f2921be-d268-4153-965e-70f93317d061',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:57:40.588Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -210,6 +231,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-14T23:14:06.710Z',
 				updatedAt: '2024-12-14T23:14:06.710Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -228,6 +251,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-16T15:16:54.666Z',
 				updatedAt: '2024-12-16T15:16:54.666Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -246,6 +271,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-12T08:19:33.308Z',
 				updatedAt: '2024-12-12T08:19:33.308Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -264,6 +291,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-14T23:13:35.458Z',
 				updatedAt: '2024-12-14T23:13:35.458Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -283,6 +312,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/62c5d6d7-8484-4cfd-8ecf-af757af98c01',
 				createdAt: '2024-10-06T06:32:44.139Z',
 				updatedAt: '2025-10-15T10:01:27.971Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -301,6 +332,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-16T18:45:30.869Z',
 				updatedAt: '2024-12-16T18:45:30.869Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -318,6 +351,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-07T19:43:35.647Z',
 				updatedAt: '2024-12-07T19:43:35.647Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -336,6 +371,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-07T19:41:56.820Z',
 				updatedAt: '2024-12-07T19:41:56.820Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -354,6 +391,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-23T21:01:28.910Z',
 				updatedAt: '2024-12-23T21:01:28.910Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -372,6 +411,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-17T16:32:01.763Z',
 				updatedAt: '2024-12-17T16:32:01.763Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -390,6 +431,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-20T11:52:20.550Z',
 				updatedAt: '2024-12-20T11:52:20.550Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -408,6 +451,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-20T11:52:34.177Z',
 				updatedAt: '2024-12-20T11:52:34.177Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -426,6 +471,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2024-12-20T11:52:06.612Z',
 				updatedAt: '2024-12-20T11:52:06.612Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -445,6 +492,8 @@ export const topicsMocks: Response<Topic[]> = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/d500508a-8427-4e35-bc86-c87159f50aa7',
 				createdAt: '2025-01-14T16:45:27.903Z',
 				updatedAt: '2025-01-18T19:46:25.840Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -463,6 +512,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-01-14T16:54:48.230Z',
 				updatedAt: '2025-01-14T16:55:24.290Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -481,6 +532,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-01-14T16:56:11.934Z',
 				updatedAt: '2025-01-14T16:56:11.934Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -499,6 +552,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-01-14T16:57:49.717Z',
 				updatedAt: '2025-01-14T16:57:49.717Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -517,6 +572,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-01-14T17:00:06.501Z',
 				updatedAt: '2025-01-14T17:00:06.501Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -534,6 +591,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-01-27T18:57:31.156Z',
 				updatedAt: '2025-01-27T18:57:31.156Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 		{
@@ -552,6 +611,8 @@ export const topicsMocks: Response<Topic[]> = {
 				imageSrc: null,
 				createdAt: '2025-02-08T09:33:23.206Z',
 				updatedAt: '2025-02-08T09:40:47.903Z',
+				specializations: [],
+				createdBy: author,
 			},
 		},
 	],

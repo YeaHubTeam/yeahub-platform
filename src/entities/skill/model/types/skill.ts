@@ -1,4 +1,5 @@
 import { Response } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 import type { Specialization } from '@/entities/specialization/@x/skill';
 
@@ -6,10 +7,11 @@ export interface Skill {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc?: string | null;
-	createdAt?: string;
-	updatedAt?: string;
-	specializations?: Specialization[];
+	imageSrc: string | null;
+	createdAt: string;
+	updatedAt: string | null;
+	specializations: Specialization[];
+	createdBy: Author;
 }
 
 export type GetSkillsListParamsRequest = {
