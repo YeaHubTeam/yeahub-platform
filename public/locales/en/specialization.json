@@ -11,6 +11,10 @@
 		"label": "Add specialization description",
 		"placeholder": "Specialization description"
 	},
+	"details": {
+		"createdAt": "Created at",
+		"updatedAt": "Updated at"
+	},
 	"stub.empty": {
 		"title": "Specialty not yet selected.",
 		"description": "You have not selected the major you want to study, go to your profile and fill it out to start preparing for interviews"
