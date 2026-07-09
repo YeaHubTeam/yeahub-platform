@@ -100,6 +100,7 @@ import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
+import { VacanciesPage } from '@/pages/vacancies';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -378,6 +379,7 @@ export const router = createBrowserRouter([
 				path: ROUTES.admin.specializations.details.page,
 				element: <SpecializationDetailPage />,
 			},
+
 			{
 				path: ROUTES.admin.skills.route,
 				element: <Outlet />,
@@ -831,6 +833,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.users.route,
 				element: <UserProfilePage />,
+			},
+			{
+				path: '/vacancies',
+				element: <VacanciesPage />,
 			},
 			{
 				path: '*',
