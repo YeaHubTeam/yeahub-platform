@@ -30,19 +30,14 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 							/>
 						</div>
 						<Flex maxWidth direction="column">
-							<Text
-								variant="body6"
-								color="black-800"
-								isMainTitle
-								className={styles['title-block-title']}
-							>
+							<Text variant="body6" color="black-800" isMainTitle>
 								{specialization.title}
 							</Text>
 						</Flex>
 					</Flex>
 				</Card>
 				<Card withOutsideShadow>
-					<Text variant="body5-accent" color="black-800" className={styles['title-description']}>
+					<Text variant="head2" color="black-800" className={styles['title-description']}>
 						{t(Specializations.DESCRIPTION_FULL)}
 					</Text>
 					<Text variant="body3-accent" color="black-800">
