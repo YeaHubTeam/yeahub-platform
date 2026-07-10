@@ -5,6 +5,7 @@ import { i18Namespace, Specializations } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Text } from '@/shared/ui/Text';
 
 import { Specialization } from '../../model/types/specialization';
 
@@ -29,15 +30,24 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 							/>
 						</div>
 						<Flex maxWidth direction="column">
-							<h1 className={classNames(styles['title-block-title'])}>{specialization.title}</h1>
+							<Text
+								variant="body6"
+								color="black-800"
+								isMainTitle
+								className={styles['title-block-title']}
+							>
+								{specialization.title}
+							</Text>
 						</Flex>
 					</Flex>
 				</Card>
 				<Card withOutsideShadow>
-					<h2 className={classNames(styles['title-description'])}>
+					<Text variant="body5-accent" color="black-800" className={styles['title-description']}>
 						{t(Specializations.DESCRIPTION_FULL)}
-					</h2>
-					<p>{specialization.description}</p>
+					</Text>
+					<Text variant="body3-accent" color="black-800">
+						{specialization.description}
+					</Text>
 				</Card>
 			</Flex>
 		</Flex>

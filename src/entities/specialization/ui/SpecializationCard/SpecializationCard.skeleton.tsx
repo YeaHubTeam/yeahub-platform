@@ -17,13 +17,13 @@ export const SpecializationCardSkeleton = () => {
 							<ImageWithWrapperSkeleton className={classNames(styles['title-img-block-image'])} />
 						</div>
 						<Flex maxWidth direction="column">
-							<Skeleton width="100%" height={32} />
+							<Skeleton width="100%" height={24} />
 						</Flex>
 					</Flex>
 				</CardSkeleton>
 				<CardSkeleton withOutsideShadow>
-					<Skeleton height={32} style={{ marginBottom: '8px' }} />
-					<Skeleton height={44} />
+					<Skeleton height={20} style={{ marginBottom: '20px' }} />
+					<Skeleton height={55} />
 				</CardSkeleton>
 			</Flex>
 		</Flex>
