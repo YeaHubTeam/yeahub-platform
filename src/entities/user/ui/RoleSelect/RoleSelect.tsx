@@ -2,19 +2,19 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, User } from '@/shared/config';
-import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { EntitySelect, type EntitySelectProps } from '@/shared/ui/EntitySelect';
 
 import { UserRole } from '../../model/types/user';
 import { convertRoleNameToEnumKey } from '../../model/utils/convertRoleNameToEnumKey';
 
 import styles from './RoleSelect.module.css';
 
-type RoleSelectProps = {
-	value: number[];
+export type RoleSelectProps = Pick<
+	EntitySelectProps<number>,
+	'value' | 'disabled' | 'hasMultiple'
+> & {
 	onChange: (value: number[]) => void;
 	availableRoles: UserRole[];
-	disabled?: boolean;
-	hasMultiple?: boolean;
 };
 
 export const RoleSelect = ({
@@ -22,57 +22,30 @@ export const RoleSelect = ({
 	onChange,
 	availableRoles,
 	disabled,
-}: RoleSelectProps): JSX.Element => {
-	const { t } = useTranslation([i18Namespace.user]);
+	hasMultiple = true,
+}: RoleSelectProps) => {
+	const { t } = useTranslation(i18Namespace.user);
 
-	const handleChange = (selectedValue?: string) => {
-		if (selectedValue) {
-			handleAddRole(selectedValue);
-		}
-	};
-
-	const handleAddRole = (roleId: string) => {
-		const updatedRoles = [...value, Number(roleId)];
-		onChange(updatedRoles);
-	};
-	const handleDeleteItem = (roleId: number) => () => {
-		const updatedRoles = value.filter((id) => id !== roleId);
-		onChange(updatedRoles);
-	};
-
-	const roleOptions = useMemo(
+	const items = useMemo(
 		() =>
-			availableRoles
-				.filter((role) => !value.includes(role.id))
-				.map((role) => ({
-					label: t(User[convertRoleNameToEnumKey(role.name)]),
-					value: role.id.toString(),
-				})),
-		[availableRoles, value],
-	);
-
-	const rolesDictionary = useMemo(
-		() =>
-			availableRoles.reduce(
-				(acc, role) => {
-					acc[role.id] = { id: role.id, title: t(User[convertRoleNameToEnumKey(role.name)]) };
-					return acc;
-				},
-				{} as Record<number, { id: number; title: string }>,
-			),
-		[availableRoles],
+			availableRoles.map((role) => ({
+				id: role.id,
+				title: t(User[convertRoleNameToEnumKey(role.name)]),
+			})),
+		[availableRoles, t],
 	);
 
 	return (
 		<div className={styles.container}>
-			<SelectWithChips
-				options={roleOptions}
-				onChange={handleChange}
-				selectedItems={value}
-				handleDeleteItem={handleDeleteItem}
-				itemsDictionary={rolesDictionary}
-				placeholder={t(User.SELECT_CHOOSE)}
+			<EntitySelect
+				items={items}
+				value={value}
+				onChange={(v) => onChange(Array.isArray(v) ? v : [v])}
+				hasMultiple={hasMultiple}
 				disabled={disabled}
+				chooseTranslationKey={t(User.SELECT_CHOOSE)}
+				emptyTranslationKey={t(User.SELECT_EMPTY)}
+				selectedTranslationKey={t(User.SELECT_SELECTED)}
 			/>
 		</div>
 	);
