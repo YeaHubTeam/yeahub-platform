@@ -13,11 +13,11 @@ type SelectWithChipsProps<T, U> = Omit<
 	placeholder?: string;
 	prefix?: string;
 	itemsDictionary?: Record<number | string, T>;
-	options: { label: string; value: string }[];
+	options: { label: string; value: string | number }[];
 	selectedItems?: U[];
 	disabled?: boolean;
 	handleDeleteItem: (id: U) => () => void;
-	onChange: (value?: string) => void;
+	onChange: (value?: string | number) => void;
 	isInput?: boolean;
 	inputValue?: string;
 	onChangeValue?: (value: string) => void;
@@ -49,7 +49,7 @@ export const SelectWithChips = <
 				onChangeValue={onChangeValue}
 				label={placeholder}
 				disabled={disabled}
-				onSelect={(val) => onChange(String(val))}
+				onSelect={(val) => onChange(val)}
 			>
 				{options.map((option) => (
 					<Option value={option.value} label={option.label} key={option.label} />

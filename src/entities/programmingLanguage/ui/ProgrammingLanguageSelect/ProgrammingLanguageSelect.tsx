@@ -1,29 +1,18 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, ProgrammingLanguages, Tasks } from '@/shared/config';
-import { Dropdown, Option } from '@/shared/ui/Dropdown';
-import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { i18Namespace, ProgrammingLanguages } from '@/shared/config';
+import { EntitySelect, type EntitySelectProps } from '@/shared/ui/EntitySelect';
 
 import { useGetLanguagesQuery } from '../../api/programmingLanguageApi';
 import { ProgrammingLanguage } from '../../model/types/programmingLanguage';
 
-export type ProgrammingLanguageSelectProps = Omit<
-	ComponentProps<typeof Dropdown>,
-	'options' | 'type' | 'value' | 'onChange' | 'children'
+export type ProgrammingLanguageSelectProps = Pick<
+	EntitySelectProps<string>,
+	'value' | 'onChange' | 'hasMultiple' | 'disabled' | 'width'
 > & {
-	value: string | string[];
-	onChange: (value: string[] | string) => void;
-	hasMultiple?: boolean;
-	disabled?: boolean;
 	selectedLanguageIds?: number[];
 	supportedLanguages?: ProgrammingLanguage[];
-	width?: number;
-};
-
-type LanguageType = {
-	id: string;
-	title: string;
 };
 
 export const ProgrammingLanguageSelect = ({
@@ -44,103 +33,23 @@ export const ProgrammingLanguageSelect = ({
 		title: language.name,
 	}));
 
-	const [selectedLanguages, setSelectedLanguages] = useState<string[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
+	const excludeIds = useMemo(
+		() => languages.filter((l) => selectedLanguageIds?.includes(Number(l.id))).map((l) => l.id),
+		[languages, selectedLanguageIds],
 	);
-
-	const handleChangeLanguage = (newValue: string | undefined) => {
-		if (disabled || !newValue) return;
-		const strValue = newValue;
-
-		if (hasMultiple) {
-			const updates = [...selectedLanguages, strValue];
-			setSelectedLanguages(updates);
-			onChange(updates);
-		} else {
-			setSelectedLanguages([strValue]);
-			onChange(strValue);
-		}
-	};
-
-	const handleDeleteLanguage = (id: string) => () => {
-		if (disabled) return;
-		const updates = selectedLanguages.filter((languageId) => languageId !== id);
-		setSelectedLanguages(updates);
-		onChange(updates);
-	};
-
-	const options = useMemo(() => {
-		if (hasMultiple) {
-			return languages
-				.map((language) => ({
-					label: language.title,
-					value: language.id,
-					limit: 100,
-				}))
-				.filter((language) => !selectedLanguages?.includes(language.value));
-		} else {
-			return languages.map((language) => ({
-				label: language.title,
-				value: language.id,
-				limit: 100,
-			}));
-		}
-	}, [selectedLanguages, languages]);
-
-	const languagesDictionary = useMemo(() => {
-		const emptyLanguage: LanguageType = {
-			id: '0',
-			title: t(Tasks.SELECT_CHOOSE),
-		};
-		return languages.reduce(
-			(acc, language) => {
-				acc[language.id] = language;
-				return acc;
-			},
-			{ 0: emptyLanguage } as Record<string, LanguageType>,
-		);
-	}, [languages]);
-
-	const filteredOptions = options.filter(
-		(option) => !selectedLanguageIds?.includes(Number(option.value)),
-	);
-
-	if (!hasMultiple) {
-		return (
-			<>
-				<Dropdown
-					width={width}
-					label={
-						options.length
-							? t(ProgrammingLanguages.SELECT_CHOOSE)
-							: t(ProgrammingLanguages.SELECT_EMPTY)
-					}
-					disabled={disabled}
-					value={languagesDictionary[selectedLanguages[0]]?.title ?? ''}
-					onSelect={(val) => handleChangeLanguage(String(val))}
-				>
-					{filteredOptions.map((option) => (
-						<Option value={option.value} label={option.label} key={option.label} />
-					))}
-				</Dropdown>
-			</>
-		);
-	}
 
 	return (
-		<SelectWithChips
-			title={t(ProgrammingLanguages.SELECT_SELECTED)}
-			options={options}
-			onChange={handleChangeLanguage}
-			selectedItems={selectedLanguages}
-			handleDeleteItem={handleDeleteLanguage}
-			itemsDictionary={languagesDictionary}
-			placeholder={
-				options.length
-					? t(ProgrammingLanguages.SELECT_CHOOSE)
-					: t(ProgrammingLanguages.SELECT_EMPTY)
-			}
+		<EntitySelect
+			width={width}
+			items={languages || []}
+			excludeIds={hasMultiple ? undefined : excludeIds}
+			value={value}
+			onChange={onChange}
+			hasMultiple={hasMultiple}
 			disabled={disabled}
+			chooseTranslationKey={t(ProgrammingLanguages.SELECT_CHOOSE)}
+			emptyTranslationKey={t(ProgrammingLanguages.SELECT_EMPTY)}
+			selectedTranslationKey={t(ProgrammingLanguages.SELECT_SELECTED)}
 		/>
 	);
 };

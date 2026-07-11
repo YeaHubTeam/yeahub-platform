@@ -1,22 +1,14 @@
-import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Specializations } from '@/shared/config';
-import { Dropdown, Option } from '@/shared/ui/Dropdown';
-import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { EntitySelect, type EntitySelectProps } from '@/shared/ui/EntitySelect';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
-import { Specialization } from '../../model/types/specialization';
 
-export type SpecializationSelectProps = Omit<
-	ComponentProps<typeof Dropdown>,
-	'options' | 'type' | 'value' | 'onChange' | 'children'
-> & {
-	value: number | number[];
-	onChange: (value: number[] | number) => void;
-	hasMultiple?: boolean;
-	disabled?: boolean;
-};
+export type SpecializationSelectProps = Pick<
+	EntitySelectProps<number>,
+	'value' | 'onChange' | 'hasMultiple' | 'disabled' | 'prefix' | 'className' | 'onKeyDown'
+>;
 
 export const SpecializationSelect = ({
 	onChange,
@@ -29,98 +21,19 @@ export const SpecializationSelect = ({
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
-	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
-	);
-
-	const handleChange = (newValue: string | undefined) => {
-		if (disabled || !newValue) return;
-		const numValue = +newValue;
-
-		if (hasMultiple) {
-			const updates = [...selectedSpecializations, numValue];
-			setSelectedSpecializations(updates);
-			onChange(updates);
-		} else {
-			setSelectedSpecializations([numValue]);
-			onChange([numValue]);
-		}
-	};
-
-	const handleDeleteSpecialization = (id: number) => () => {
-		if (disabled) return;
-		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
-		setSelectedSpecializations(updates);
-		onChange(updates);
-	};
-
-	const options = useMemo(() => {
-		if (hasMultiple) {
-			return (specializations?.data || [])
-				.map((specialization) => ({
-					label: specialization.title,
-					value: specialization.id.toString(),
-					limit: 100,
-				}))
-				.filter((specialization) => !selectedSpecializations?.includes(+specialization.value));
-		} else {
-			return (specializations?.data || []).map((specialization) => ({
-				label: specialization.title,
-				value: specialization.id.toString(),
-				limit: 100,
-			}));
-		}
-	}, [selectedSpecializations, specializations]);
-
-	const specializationsDictionary = useMemo(() => {
-		const emptySpecialization = {
-			id: 0,
-			title: t(Specializations.SELECT_CHOOSE),
-		};
-		return (specializations?.data || []).reduce(
-			(acc, specialization) => {
-				acc[specialization.id] = { id: specialization.id, title: specialization.title };
-				return acc;
-			},
-			{ 0: emptySpecialization } as Record<number, Pick<Specialization, 'id' | 'title'>>,
-		);
-	}, [specializations]);
-
-	if (!hasMultiple) {
-		return (
-			<>
-				<Dropdown
-					size="S"
-					label={
-						options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
-					}
-					disabled={disabled}
-					value={specializationsDictionary[Array.isArray(value) ? value[0] : value]?.title ?? ''}
-					onSelect={(val) => handleChange(String(val))}
-					prefix={prefix}
-					className={className}
-				>
-					{options.map((option) => (
-						<Option value={option.value} label={option.label} key={option.label} />
-					))}
-				</Dropdown>
-			</>
-		);
-	}
-
 	return (
-		<SelectWithChips
+		<EntitySelect
 			size="S"
-			title={t(Specializations.SELECT_SELECTED)}
-			options={options}
-			onChange={handleChange}
-			selectedItems={selectedSpecializations}
-			handleDeleteItem={handleDeleteSpecialization}
-			itemsDictionary={specializationsDictionary}
-			placeholder={
-				options.length ? t(Specializations.SELECT_CHOOSE) : t(Specializations.SELECT_EMPTY)
-			}
+			items={specializations?.data || []}
+			value={value}
+			onChange={(v) => onChange(Array.isArray(v) ? v : [v])}
+			hasMultiple={hasMultiple}
 			disabled={disabled}
+			chooseTranslationKey={t(Specializations.SELECT_CHOOSE)}
+			emptyTranslationKey={t(Specializations.SELECT_EMPTY)}
+			selectedTranslationKey={t(Specializations.SELECT_SELECTED)}
+			prefix={prefix}
+			className={className}
 		/>
 	);
 };

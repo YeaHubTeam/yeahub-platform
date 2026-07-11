@@ -64,7 +64,9 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 
 				<FormField label={t(Collections.COMPANY_TITLE)} description={t(Collections.COMPANY_LABEL)}>
 					<FormControl name="companyId" control={control}>
-						{({ onChange, value }) => <CompanySelect onChange={onChange} value={value} />}
+						{({ onChange, value }) => (
+							<CompanySelect onChange={onChange} value={value} hasMultiple={false} />
+						)}
 					</FormControl>
 				</FormField>
 
