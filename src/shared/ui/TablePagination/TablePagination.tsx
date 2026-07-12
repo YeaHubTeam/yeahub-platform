@@ -1,8 +1,9 @@
 import { Pagination } from '@/shared/ui/Pagination';
 
+import { tablePaginationTestIds } from './constants';
 import styles from './TablePagination.module.css';
 
-interface TablePaginationProps {
+export interface TablePaginationProps {
 	page: number;
 	total: number;
 	limit?: number;
@@ -32,7 +33,7 @@ export const TablePagination = ({
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper} data-testid={tablePaginationTestIds.tablePagination}>
 			<Pagination
 				onPrevPageClick={onPrevPageClick}
 				onNextPageClick={onNextPageClick}
