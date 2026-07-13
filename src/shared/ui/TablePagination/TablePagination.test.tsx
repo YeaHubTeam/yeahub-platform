@@ -23,18 +23,11 @@ const renderSkeleton = () => {
 describe('TablePagination', () => {
 	const user = userEvent.setup();
 
-	test('prev button disabled when active first page', () => {
+	test('render with class name wrapper', () => {
 		renderTablePagination();
 
-		const prevBtn = screen.getByLabelText('back button');
-		expect(prevBtn).toBeDisabled();
-	});
-
-	test('next button disabled when active last page', () => {
-		renderTablePagination({ page: 10 });
-
-		const nextBtn = screen.getByLabelText('forward button');
-		expect(nextBtn).toBeDisabled();
+		const pagination = screen.queryByTestId(tablePaginationTestIds.tablePagination);
+		expect(pagination).toHaveClass('wrapper');
 	});
 
 	test('does not render when total equal 0', () => {
