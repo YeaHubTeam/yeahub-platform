@@ -16,11 +16,3 @@
   height: 100%;
   object-fit: cover;
 }
-
-
-.title-description {
-  margin: 0 0 20px;
-  line-height:120%;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-h-xs);
-}

@@ -37,12 +37,14 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 					</Flex>
 				</Card>
 				<Card withOutsideShadow>
-					<Text variant="head2" color="black-800" className={styles['title-description']}>
-						{t(Specializations.DESCRIPTION_FULL)}
-					</Text>
-					<Text variant="body3-accent" color="black-800">
-						{specialization.description}
-					</Text>
+					<Flex direction="column" gap="20">
+						<Text variant="body5-accent" color="black-800">
+							{t(Specializations.DESCRIPTION_FULL)}
+						</Text>
+						<Text variant="body3-accent" color="black-800">
+							{specialization.description}
+						</Text>
+					</Flex>
 				</Card>
 			</Flex>
 		</Flex>
