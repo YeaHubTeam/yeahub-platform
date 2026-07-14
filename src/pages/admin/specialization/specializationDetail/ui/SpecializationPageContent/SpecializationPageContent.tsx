@@ -16,7 +16,7 @@ import {
 
 import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
 
-import { SpecializationHeader } from '@/widgets/specialization';
+import { SpecializationHeader } from '@/widgets/specialization/SpecializationHeader';
 
 import styles from './SpecializationPageContent.module.css';
 
