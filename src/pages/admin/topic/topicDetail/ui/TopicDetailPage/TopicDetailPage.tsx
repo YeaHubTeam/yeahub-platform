@@ -13,6 +13,8 @@ import { DeleteTopicButton } from '@/features/topics/deleteTopic';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { TopicDetailPageSkeleton } from './TopicDetailPage.skeleton';
+
 const TopicDetailPage = () => {
 	const { topicId = '' } = useParams<{ topicId: string }>();
 	const { t } = useTranslation(i18Namespace.translation);
@@ -62,6 +64,7 @@ const TopicDetailPage = () => {
 			stubs={stubs}
 			content={content}
 			roles={['admin', 'author']}
+			skeleton={<TopicDetailPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>
