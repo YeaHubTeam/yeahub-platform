@@ -7,6 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetTasksListQuery } from '@/entities/task';
 
+import { DeleteTasksButton } from '@/features/task/deleteTasks';
 import { TasksFilters, useTasksFilters } from '@/features/task/filterTasks';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
@@ -51,6 +52,10 @@ const TasksTablePage = () => {
 
 	const onSelectTasks = (ids: SelectedAdminEntities<string>) => {
 		dispatch(tasksTablePageActions.setSelectedTasks(ids));
+	};
+
+	const clearSelectedTasks = () => {
+		dispatch(tasksTablePageActions.setSelectedTasks([]));
 	};
 
 	const resetAll = () => {
@@ -101,6 +106,10 @@ const TasksTablePage = () => {
 						onSearch={onChangeTitle}
 						searchValue={filters.title}
 						hasFilters={hasFilters}
+						showRemoveButton={selectedTasks.length > 0}
+						renderRemoveButton={() => (
+							<DeleteTasksButton tasksToRemove={selectedTasks} onSuccess={clearSelectedTasks} />
+						)}
 						renderFilter={() => (
 							<TasksFilters
 								filters={filters}
