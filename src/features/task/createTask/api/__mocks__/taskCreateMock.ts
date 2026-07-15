@@ -39,6 +39,7 @@ export const taskCreateMock = http.post<
 		difficulty,
 		supportedLanguages,
 		mainCategory: categoryCode,
+		categories: [categoryCode],
 		constraints,
 		testCases: [],
 		taskStructures,
