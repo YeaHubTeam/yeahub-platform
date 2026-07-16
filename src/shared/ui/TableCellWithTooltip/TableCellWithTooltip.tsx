@@ -20,7 +20,12 @@ export const TableCellWithTooltip = ({ children, title, className }: TableCellWi
 	return (
 		<td>
 			<Tooltip shouldShowTooltip={isTruncated} title={title}>
-				<Text variant="body3-accent" ref={ref} className={classNames(styles.text, className)}>
+				<Text
+					isLimitSize
+					variant="body3-accent"
+					ref={ref}
+					className={classNames(styles.text, className)}
+				>
 					{children}
 				</Text>
 			</Tooltip>
