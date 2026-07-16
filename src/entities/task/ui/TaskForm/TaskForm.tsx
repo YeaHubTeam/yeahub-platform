@@ -11,7 +11,7 @@ import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextEditor } from '@/shared/ui/TextEditor';
 
-import { CreateOrEditTaskFormValues, TaskCategoryCode } from '../../model/types/task';
+import { CreateOrEditTaskFormValues } from '../../model/types/task';
 import { TaskCategorySelect } from '../TaskCategorySelect/TaskCategorySelect';
 import { TaskStructuresField } from '../TaskStructuresField/TaskStructuresField';
 
@@ -24,8 +24,7 @@ interface TaskFormProps {
 export const TaskForm = ({ isEdit }: TaskFormProps) => {
 	const { t } = useTranslation(i18Namespace.task);
 
-	//Времменно достал функцию. для обновления второго поля categoryCode
-	const { control, setValue } = useFormContext<CreateOrEditTaskFormValues>();
+	const { control } = useFormContext<CreateOrEditTaskFormValues>();
 
 	return (
 		<>
@@ -58,18 +57,7 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 				<FormField description={t(Tasks.CATEGORY_SUBTITLE)} label={t(Tasks.CATEGORY_TITLE)}>
 					<FormControl className={styles.select} name="categoryCodes" control={control}>
 						{({ onChange, value }) => (
-							<TaskCategorySelect
-								onChange={(newValue) => {
-									onChange(newValue);
-									if (Array.isArray(newValue)) {
-										setValue('categoryCode', newValue[0] as TaskCategoryCode, {
-											shouldDirty: true,
-										});
-									}
-								}}
-								value={value}
-								hasMultiple
-							/>
+							<TaskCategorySelect onChange={onChange} value={value} hasMultiple />
 						)}
 					</FormControl>
 				</FormField>
