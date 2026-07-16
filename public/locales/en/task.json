@@ -62,7 +62,7 @@
 	"select": {
 		"choose": "Select a task category from the list",
 		"empty": "There are no options",
-		"selected": "Selected task category"
+		"selected": "Selected task categories"
 	},
 	"search": {
 		"placeholder": "Enter a task..."
@@ -90,11 +90,11 @@
 		"not.started": "Not started"
 	},
 	"category": {
-		"title": "Task category",
-		"label": "Add a task category",
+		"title": "Task categories",
+		"label": "Add a task categories",
 		"placeholder": "Add a category",
 		"data.structures": "Data structures",
-		"algorithms": "algorithmics",
+		"algorithms": "Algorithmics",
 		"arrays": "Arrays",
 		"databases": "Databases",
 		"strings": "Strings",

@@ -26,6 +26,7 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 		difficulty,
 		constraints,
 		mainCategory,
+		categories,
 		id,
 		subscriptionLevel,
 	} = task;
@@ -40,6 +41,7 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 			difficulty,
 			constraints,
 			categoryCode: mainCategory,
+			categoryCodes: categories,
 			id,
 			subscriptionLevel,
 		},
