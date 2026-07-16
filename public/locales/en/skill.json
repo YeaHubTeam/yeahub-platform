@@ -12,6 +12,7 @@
 	},
 	"icon": {
 		"title": "Skill icon",
+		"title-short": "Icon",
 		"label": "Add skill icon"
 	},
 	"select": {
@@ -19,6 +20,11 @@
 		"empty": "No options available",
 		"selected": "Selected skill"
 	},
+	"specializations": {
+		"title": "Specializations"
+	},
+	"author": "Author",
+	"created-at": "Creation date",
 	"empty": "No skills",
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",
