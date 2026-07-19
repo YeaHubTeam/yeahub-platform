@@ -120,7 +120,9 @@
 			"description": "You have unsaved data. Do you want to continue?"
 		},
 		"delete": {
-			"title": "Do you really want to delete elements?"
+			"title": "Do you really want to delete elements?",
+			"confirmation_one": "Do you really want to delete {{count}} element",
+			"confirmation_other": "Do you really want to delete {{count}} elements"
 		},
 		"actions": {
 			"ok": "Yes",

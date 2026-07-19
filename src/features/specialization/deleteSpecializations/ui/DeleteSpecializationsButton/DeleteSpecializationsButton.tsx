@@ -1,8 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
-import { i18Namespace, Translation } from '@/shared/config';
 import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
-import { Button } from '@/shared/ui/Button';
+import { RemoveButton } from '@/shared/ui/RemoveButton';
 
 import { deleteMultipleSpecializationsThunk } from '../../model/thunks/deleteMultipleSkillsThunk';
 
@@ -14,15 +11,12 @@ export const DeleteSpecializationsButton = ({
 	specializationsToRemove,
 }: DeleteSpecializationsButtonProps) => {
 	const dispatch = useAppDispatch();
-	const { t } = useTranslation(i18Namespace.translation);
 
 	const onRemoveSpecializations = async () => {
 		await dispatch(deleteMultipleSpecializationsThunk(specializationsToRemove));
 	};
 
 	return (
-		<Button onClick={onRemoveSpecializations} variant="destructive-tertiary">
-			{t(Translation.REMOVE_SELECTED)}
-		</Button>
+		<RemoveButton toRemove={specializationsToRemove} removeElements={onRemoveSpecializations} />
 	);
 };
