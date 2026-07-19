@@ -1,0 +1,29 @@
+div.container {
+  padding: 12px 16px;
+}
+
+.source {
+  padding-right: 24px;
+}
+
+.source-logo {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.item {
+  position: relative;
+  padding-left: 24px;
+}
+
+.item:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: var(--color-black-100);
+}

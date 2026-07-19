@@ -1,0 +1,23 @@
+.tag-item {
+  flex: 1;
+  padding: 12px 16px;
+  box-shadow: 0 4px 10px 0 #6a63761a;
+  border-radius: 16px;
+}
+
+@media screen and (width < 1024px) {
+  .tag-list {
+    gap: 8px 12px;
+  }
+
+  .tag-item {
+    padding: 6px 12px;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .tag-item {
+    gap: 6px;
+    padding: 4px 10px;
+  }
+}

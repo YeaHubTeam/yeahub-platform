@@ -1,0 +1,12 @@
+.task-list {
+  padding-left: 16px;
+}
+
+.task {
+  display: list-item;
+  list-style: disc;
+
+  &::marker {
+    color: var(--text-color-link-active);
+  }
+}

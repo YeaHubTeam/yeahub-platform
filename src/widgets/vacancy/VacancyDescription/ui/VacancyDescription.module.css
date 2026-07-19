@@ -1,0 +1,9 @@
+.description-content > *:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (width < 768px) {
+  .title {
+    font-size: var(--font-size-h-xs);
+  }
+}

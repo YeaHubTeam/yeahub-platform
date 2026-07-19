@@ -350,4 +350,12 @@ export const ROUTES = {
 			page: `${process.env.LANDING_URL}mentor`,
 		},
 	},
+	vacancies: {
+		route: 'vacancies',
+		page: '/vacancies',
+		vacancy: {
+			route: ':vacancyId',
+			page: '/vacancies/:vacancyId',
+		},
+	},
 } as const;

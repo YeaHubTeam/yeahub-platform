@@ -1,0 +1,16 @@
+.container {
+  padding-left: 0;
+}
+
+.link {
+  display: flex;
+  gap: 8px;
+  color: var(--color-purple-700);
+  text-decoration: none;
+}
+
+@media screen and (width < 420px){
+  .container {
+    padding-left: 16;
+  }
+}

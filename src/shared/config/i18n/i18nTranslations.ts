@@ -422,6 +422,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -585,6 +588,8 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
+	COLLECTIONS_TITLE = 'collections.title',
+	COLLECTIONS_LINK = 'collections.link',
 }
 
 export enum FeatureFlags {
@@ -1615,4 +1620,86 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
+}
+
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_DESCRIPTION = 'list_page.description',
+	LIST_PAGE_KEYWORDS = 'list_page.keywords',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+
+	COUNT_SKILLS_ONE = 'count.skills.one',
+	COUNT_SKILLS_FEW = 'count.skills.few',
+	COUNT_SKILLS_MANY = 'count.skills.many',
+
+	COUNT_COLLECTIONS_ONE = 'count.collections.one',
+	COUNT_COLLECTIONS_FEW = 'count.collections.few',
+	COUNT_COLLECTIONS_MANY = 'count.collections.many',
+
+	COUNT_QUESTIONS_ONE = 'count.questions.one',
+	COUNT_QUESTIONS_FEW = 'count.questions.few',
+	COUNT_QUESTIONS_MANY = 'count.questions.many',
+
+	COUNT_TASKS_ONE = 'count.tasks.one',
+	COUNT_TASKS_FEW = 'count.tasks.few',
+	COUNT_TASKS_MANY = 'count.tasks.many',
+
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	SALARY_TITLE = 'salary.title',
+	INDUSTRY = 'industry',
+
+	ENGLISH_LEVEL = 'englishLevel',
+	EMPLOYMENT_TYPE = 'employmentType',
+
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+
+	DETAIL_PAGE_TITLE = 'detail_page.title',
+	DETAIL_PAGE_DESCRIPTION = 'detail_page.description',
+	DETAIL_PAGE_KEYWORDS = 'detail_page.keywords',
+
+	SALARY_FROM = 'salary.from',
+	SALARY_TO = 'salary.to',
+
+	BUTTONS_RESPOND = 'buttons.respond',
+
+	TAGS_AREA = 'tags.area',
+	TAGS_GRADE = 'tags.grade',
+	TAGS_EMPLOYMENT = 'tags.employment',
+	TAGS_INDUSTRY = 'tags.industry',
+	TAGS_COMPANY_TYPE = 'tags.company_type',
+
+	STATS_TITLE = 'stats.title',
+	STATS_INTERVIEWS = 'stats.interviews',
+	STATS_TASKS = 'stats.tasks',
+	STATS_QUESTIONS = 'stats.questions',
+
+	SOURCE_TITLE = 'source.title',
+	SOURCE_DATE_ADDED = 'source.date.added',
+	SOURCE_FORMAT = 'source.format',
+	SOURCE_INTERNSHIP_TITLE = 'source.internship.title',
+	SOURCE_INTERNSHIP_YES = 'source.internship.yes',
+	SOURCE_INTERNSHIP_NO = 'source.internship.no',
+
+	DESCRIPTION_TITLE = 'description.title',
+	PREPARATION_TITLE = 'preparation.title',
+	NEURO_FIELDS_TITLE = 'neuro_fields.title',
+	TASKS_TITLE = 'tasks.title',
+	TASKS_SECTION_TITLE = 'tasks.section.title',
+	TASKS_SECTION_LINK = 'tasks.section.link',
+	SKILLS_TITLE = 'skills.title',
+	KEYWORDS_TITLE = 'keywords.title',
+	PRIORITY_TITLE = 'priority.title',
+	COLLECTIONS_SECTION_TITLE = 'collections.section.title',
+	COLLECTIONS_SECTION_LINK = 'collections.section.link',
 }

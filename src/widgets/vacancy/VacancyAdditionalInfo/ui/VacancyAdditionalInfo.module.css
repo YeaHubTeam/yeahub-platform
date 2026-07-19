@@ -1,0 +1,19 @@
+.card {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.sidebar-content > *:not(:last-child) {
+  position: relative;
+}
+
+.sidebar-content > *:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  left: 0;
+  height: 1px;
+  border-radius: 1px;
+  background: var(--color-black-50);
+  content: '';
+}

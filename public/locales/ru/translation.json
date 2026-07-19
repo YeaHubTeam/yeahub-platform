@@ -981,5 +981,10 @@
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
 	"editor.ordered.list": "Нумерованный список",
-	"tooltip.premiumonly": "Доступно для участников"
+	"tooltip.premiumonly": "Доступно для участников",
+
+	"date": {
+		"today": "Сегодня",
+		"yesterday": "Вчера"
+	}
 }
