@@ -49,14 +49,14 @@
 		"company_type": "Type"
 	},
 	"stats": {
-    "title": "Preparation materials available",
-    "interviews_one": "interview",
-    "interviews_other": "interviews",
-    "tasks_one": "task",
-    "tasks_other": "tasks",
-    "questions_one": "question",
-    "questions_other": "questions"
-  },
+		"title": "Preparation materials available",
+		"interviews_one": "interview",
+		"interviews_other": "interviews",
+		"tasks_one": "task",
+		"tasks_other": "tasks",
+		"questions_one": "question",
+		"questions_other": "questions"
+	},
 	"source": {
 		"title": "Source",
 		"date": {

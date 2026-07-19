@@ -49,7 +49,7 @@
 		"company_type": "Тип"
 	},
 	"stats": {
-    "title": "Есть база подготовки",
+		"title": "Есть база подготовки",
 		"interviews_one": "собеседование",
 		"interviews_few": "собеседования",
 		"interviews_many": "собеседований",
