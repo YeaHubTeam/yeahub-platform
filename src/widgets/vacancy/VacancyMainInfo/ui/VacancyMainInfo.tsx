@@ -1,3 +1,5 @@
+import { useScreenSize } from '@/shared/libs';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import {
@@ -13,10 +15,11 @@ interface VacancyMainInfoProps {
 	vacancy: Vacancy;
 }
 export const VacancyMainInfo = ({ vacancy }: VacancyMainInfoProps) => {
-	return (
+	const { isMobile } = useScreenSize();
+	const content = (
 		<Flex gap="20" direction="column">
 			<VacancyHeader company={vacancy.company} title={vacancy.title} salary={vacancy.salary} />
-			<VacancyActions applyVacancyUrl={vacancy.applyVacancyUrl} />
+			{!isMobile && <VacancyActions applyVacancyUrl={vacancy.applyVacancyUrl} />}
 			<VacancyTags
 				area={vacancy.area}
 				grade={vacancy.grade}
@@ -33,4 +36,15 @@ export const VacancyMainInfo = ({ vacancy }: VacancyMainInfoProps) => {
 			/>
 		</Flex>
 	);
+
+	if (isMobile) {
+		return (
+			<>
+				<Card>{content}</Card>
+				<VacancyActions applyVacancyUrl={vacancy.applyVacancyUrl} />
+			</>
+		);
+	}
+
+	return content;
 };

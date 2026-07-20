@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace } from '@/shared/config';
+import { useScreenSize } from '@/shared/libs';
+import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
@@ -25,6 +27,7 @@ export const VacancyTags = ({
 	industry,
 	companyType,
 }: VacancyTagsProps) => {
+	const { isMobile } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.vacancies);
 
 	const tagsValue = {
@@ -34,6 +37,28 @@ export const VacancyTags = ({
 		industry: industry ?? '-',
 		companyType: companyType ?? '-',
 	};
+
+	if (isMobile) {
+		return (
+			<Card className={styles.card}>
+				<Flex componentType="ul" wrap="wrap" gap="14" className={styles.tagList}>
+					{tagList.map(({ id, icon, category }) => (
+						<Flex key={id} componentType="li" gap="8" align="start" className={styles.tagItem}>
+							<Icon size={20} icon={icon} color="green-900" />
+							<Flex gap="4" direction="column">
+								<Text variant="body3-strong" color="black-900" isNoWrap>
+									{tagsValue[id]}
+								</Text>
+								<Text variant="body3-accent" color="black-400" isNoWrap>
+									{t(category)}
+								</Text>
+							</Flex>
+						</Flex>
+					))}
+				</Flex>
+			</Card>
+		);
+	}
 
 	return (
 		<Flex componentType="ul" wrap="wrap" gap="14" align="start" className={styles['tag-list']}>

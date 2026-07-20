@@ -43,7 +43,6 @@ export const VacancySource = ({
 			label: t(Vacancies.SOURCE_TITLE),
 			value: source ? `${source}.ru` : '-',
 			icon: source && sourceImg[source] ? <img src={sourceImg[source]} alt={source} /> : null,
-			// <img className={styles['source-logo']} src={sourceImg[source]} alt={source || ''} />,
 		},
 		{
 			label: t(Vacancies.SOURCE_DATE_ADDED),
@@ -63,7 +62,7 @@ export const VacancySource = ({
 
 	return (
 		<Card withOutsideShadow className={styles.container}>
-			<Flex justify="between">
+			<Flex justify="between" className={styles.items}>
 				{infoItems.map((item) => (
 					<Flex gap="8" direction="column" key={item.label} className={styles.item}>
 						<Text variant="body3-accent" color="black-400">

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -34,7 +35,10 @@ export const CompanyInterviewCollections = ({
 						company: companyTitle,
 					})}
 				</Text>
-				<Link to={ROUTES.wiki.collections.page} className={styles.link}>
+				<Link
+					to={ROUTES.wiki.collections.page}
+					className={classNames(styles.link, styles['desktop-link'])}
+				>
 					{t(Vacancies.COLLECTIONS_SECTION_LINK)}
 					<Icon icon="arrowRight" size={24} />
 				</Link>
@@ -42,6 +46,10 @@ export const CompanyInterviewCollections = ({
 			{companyCollections.map((collection) => (
 				<CollectionPreview key={collection.id} collection={collection} />
 			))}
+			<Link to={ROUTES.tasks.page} className={classNames(styles.link, styles['mobile-link'])}>
+				{t(Vacancies.COLLECTIONS_SECTION_LINK)}
+				<Icon icon="arrowRight" size={24} />
+			</Link>
 		</Flex>
 	);
 };

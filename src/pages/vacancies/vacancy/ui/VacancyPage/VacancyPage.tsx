@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 
+import { useScreenSize } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -17,6 +18,7 @@ import { VacancyMainInfo } from '@/widgets/vacancy/VacancyMainInfo';
 import styles from './VacancyPage.module.css';
 
 export const VacancyPage = () => {
+	const { isMobile } = useScreenSize();
 	const { vacancyId = '' } = useParams<{ vacancyId: string }>();
 
 	const { data: vacancy } = useGetVacancyByIdQuery(vacancyId, {
@@ -54,9 +56,13 @@ export const VacancyPage = () => {
 			</Flex>
 			<Flex gap="20" className={styles.content}>
 				<Flex gap="20" direction="column" className={styles.main}>
-					<Card className={styles.card}>
+					{!isMobile ? (
+						<Card className={styles.card}>
+							<VacancyMainInfo vacancy={vacancy} />
+						</Card>
+					) : (
 						<VacancyMainInfo vacancy={vacancy} />
-					</Card>
+					)}
 					<Card className={styles.card}>
 						<VacancyDescription description={vacancy.description} />
 					</Card>

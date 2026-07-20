@@ -2,15 +2,26 @@
   padding-left: 0;
 }
 
-.link {
+.link{
   display: flex;
   gap: 8px;
   color: var(--color-purple-700);
   text-decoration: none;
 }
 
-@media screen and (width < 420px){
-  .container {
-    padding-left: 16;
+.mobile-link  {
+  display: none;
+}
+
+
+@media screen and (width < 767px) {
+  .desktop-link {
+    display: none;
+  }
+
+  .mobile-link {
+    display: flex;
+    justify-content: end;
+    color: var(--color-purple-700);
   }
 }

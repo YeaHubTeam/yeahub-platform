@@ -27,3 +27,16 @@ div.container {
   width: 1px;
   background-color: var(--color-black-100);
 }
+
+@media (width < 768px) {
+  .items{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    gap: 10px;
+  }
+
+  .item:not(:first-child)::before {
+    display: none;
+  }
+}

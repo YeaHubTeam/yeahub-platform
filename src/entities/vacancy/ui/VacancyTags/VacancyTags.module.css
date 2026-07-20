@@ -1,3 +1,10 @@
+.card{
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 10px 0 #6a63761a;
+  border-radius: 12px;
+}
+
 .tag-item {
   flex: 1;
   padding: 12px 16px;

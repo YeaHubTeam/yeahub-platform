@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -25,12 +26,16 @@ export const CompanyTasks = ({ companyTitle, tasks }: CompanyTasksProps) => {
 						company: companyTitle,
 					})}
 				</Text>
-				<Link to={ROUTES.tasks.page} className={styles.link}>
+				<Link to={ROUTES.tasks.page} className={classNames(styles.link, styles['desktop-link'])}>
 					{t(Vacancies.TASKS_SECTION_LINK)}
 					<Icon icon="arrowRight" size={24} />
 				</Link>
 			</Flex>
 			{tasks?.slice(0, 3).map((task) => <TaskCard key={task.id} task={task} />)}
+			<Link to={ROUTES.tasks.page} className={classNames(styles.link, styles['mobile-link'])}>
+				{t(Vacancies.TASKS_SECTION_LINK)}
+				<Icon icon="arrowRight" size={24} />
+			</Link>
 		</Flex>
 	);
 };
