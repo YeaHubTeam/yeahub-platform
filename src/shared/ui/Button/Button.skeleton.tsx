@@ -13,7 +13,7 @@ export const ButtonSkeleton = ({
 	fullWidth,
 	size = 'medium',
 	destructive,
-	width
+	width,
 }: ButtonProps & { width?: string | number }) => {
 	const tagName = getTagName(variant);
 

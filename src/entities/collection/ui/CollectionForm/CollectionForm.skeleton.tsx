@@ -14,16 +14,13 @@ import { ChooseQuestionsDrawerSkeleton } from '@/entities/question/@x/collection
 import { SpecializationSelectSkeleton } from '@/entities/specialization/@x/collection';
 import { ChooseTasksDrawerSkeleton } from '@/entities/task/@x/collection';
 
-import styles from './CollectionForm.module.css';
-
 export const CollectionFormSkeleton = () => {
 	return (
 		<>
-			<TextSkeleton width={160} variant="body5" />
-
+			<TextSkeleton width={160} variant="body5-strong" />
 			<Flex direction="column" gap="60">
 				<FormFieldSkeleton>
-					<FormControlSkeleton className={styles['skeleton-form-field']}>
+					<FormControlSkeleton>
 						<InputSkeleton size="L" />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
@@ -36,12 +33,7 @@ export const CollectionFormSkeleton = () => {
 
 				<FormFieldSkeleton direction="column">
 					<FormControlSkeleton>
-						<TextAreaSkeleton
-							className={styles['skeleton-textarea']}
-							width={225}
-							height={80}
-							borderRadius={24}
-						/>
+						<TextAreaSkeleton />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
@@ -63,7 +55,7 @@ export const CollectionFormSkeleton = () => {
 				</FormFieldSkeleton>
 
 				<FormFieldSkeleton>
-					<FormControlSkeleton className={styles['skeleton-keywords-control']}>
+					<FormControlSkeleton>
 						<Flex direction="column" gap="26" maxHeight={true}>
 							<KeywordSelectSkeleton />
 							<KeywordInputSkeleton />

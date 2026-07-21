@@ -1,6 +1,6 @@
-import { Flex } from "@/shared/ui/Flex";
-import { TextSkeleton } from "@/shared/ui/Text";
-import { ButtonSkeleton } from "@/shared/ui/Button";
+import { ButtonSkeleton } from '@/shared/ui/Button';
+import { Flex } from '@/shared/ui/Flex';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './ChooseTasksDrawer.module.css';
 
@@ -16,7 +16,7 @@ export const ChooseTasksDrawerSkeleton = () => {
 					<TextSkeleton variant="body3-accent" width={220} />
 				</Flex>
 			</Flex>
-			<ButtonSkeleton className={styles['add-button']} width={174} size='medium' />
+			<ButtonSkeleton className={styles['add-button']} width={174} size="medium" />
 		</Flex>
 	);
 };
